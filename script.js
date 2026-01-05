@@ -136,60 +136,29 @@ document.addEventListener('DOMContentLoaded', function() {
         statsObserver.observe(heroSection);
     }
 
-    // Mobile menu toggle (for future enhancement)
-    const createMobileMenu = () => {
-        const nav = document.querySelector('.nav-container');
-        const navLinks = document.querySelector('.nav-links');
-        
-        // Create mobile menu button
-        const mobileMenuBtn = document.createElement('button');
-        mobileMenuBtn.className = 'mobile-menu-btn';
-        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        mobileMenuBtn.style.display = 'none';
-        mobileMenuBtn.style.background = 'none';
-        mobileMenuBtn.style.border = 'none';
-        mobileMenuBtn.style.color = 'var(--primary-color)';
-        mobileMenuBtn.style.fontSize = '1.5rem';
-        mobileMenuBtn.style.cursor = 'pointer';
-        
-        nav.appendChild(mobileMenuBtn);
-        
-        // Show/hide mobile menu button based on screen size
-        const checkScreenSize = () => {
-            if (window.innerWidth <= 768) {
-                mobileMenuBtn.style.display = 'block';
-                navLinks.style.display = 'none';
+    // Simple mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('mobile-open');
+            const icon = this.querySelector('i');
+            if (navLinks.classList.contains('mobile-open')) {
+                icon.className = 'fas fa-times';
             } else {
-                mobileMenuBtn.style.display = 'none';
-                navLinks.style.display = 'flex';
-            }
-        };
-        
-        window.addEventListener('resize', checkScreenSize);
-        checkScreenSize();
-        
-        // Toggle mobile menu
-        mobileMenuBtn.addEventListener('click', () => {
-            if (navLinks.style.display === 'none' || !navLinks.style.display) {
-                navLinks.style.display = 'flex';
-                navLinks.style.flexDirection = 'column';
-                navLinks.style.position = 'absolute';
-                navLinks.style.top = '70px';
-                navLinks.style.left = '0';
-                navLinks.style.right = '0';
-                navLinks.style.background = 'white';
-                navLinks.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                navLinks.style.padding = '20px';
-                navLinks.style.gap = '15px';
-                mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
-            } else {
-                navLinks.style.display = 'none';
-                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                icon.className = 'fas fa-bars';
             }
         });
-    };
-    
-    createMobileMenu();
+        
+        // Close mobile menu when clicking on links
+        navLinks.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                navLinks.classList.remove('mobile-open');
+                mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+            }
+        });
+    }
 
     // Form handling (for future contact forms)
     const handleFormSubmission = (formId, successMessage) => {

@@ -33,6 +33,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
@@ -214,6 +219,132 @@
         </div>
     </section>
 
+    <!-- Command Examples Section -->
+    <section class="command-examples">
+        <div class="container">
+            <h2 class="section-title">Quick Command Reference</h2>
+            <p class="section-subtitle">See what FlorenceBot Pro can do for you</p>
+
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <i class="fas fa-terminal"></i>
+                        <code>/lab_values sodium</code>
+                    </div>
+                    <div class="command-output">
+                        <strong>Sodium (Na+)</strong><br>
+                        Normal: 135-145 mEq/L<br>
+                        Critical: &lt;120 or &gt;155 mEq/L
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-header">
+                        <i class="fas fa-terminal"></i>
+                        <code>/abg</code>
+                    </div>
+                    <div class="command-output">
+                        <strong>ABG Interpretation Guide</strong><br>
+                        Step-by-step analysis of pH, CO2, HCO3<br>
+                        Includes compensation rules
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-header">
+                        <i class="fas fa-terminal"></i>
+                        <code>/medication vancomycin</code>
+                    </div>
+                    <div class="command-output">
+                        <strong>Vancomycin</strong><br>
+                        Class: Glycopeptide antibiotic<br>
+                        Key nursing considerations included
+                    </div>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-header">
+                        <i class="fas fa-terminal"></i>
+                        <code>/nclex_question</code>
+                    </div>
+                    <div class="command-output">
+                        <strong>Daily NCLEX Practice</strong><br>
+                        Random practice question<br>
+                        Detailed rationales provided
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Everything you need to know about FlorenceBot Pro</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is FlorenceBot Pro really free?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! FlorenceBot Pro is 100% free to use. All features, commands, and resources are available at no cost to support nursing students in their education journey.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How do I add the bot to my Discord server?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Simply join The Nursing Collective Discord server using the invite link. The bot is already active there and ready to use. You can also request an invite link to add it to your own study group server.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How accurate is the clinical information?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>All information is sourced from evidence-based resources including nursing textbooks, professor materials, and current clinical guidelines. However, always verify critical information with your instructors and official resources.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I use this for clinical rotations?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>FlorenceBot Pro is designed as a study and reference tool. While it provides accurate information, always follow your clinical site's policies and consult with your preceptor for patient care decisions.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What nursing programs is this suitable for?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>FlorenceBot Pro supports all nursing programs including Pre-Nursing, ASN, BSN, ABSN, LPN-to-RN, and graduate nursing students. The content is relevant across all levels of nursing education.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating CTA Button -->
+    <div class="floating-cta" id="floating-cta">
+        <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary btn-large">
+            <i class="fab fa-discord"></i>
+            Join Discord
+        </a>
+    </div>
+
     <!-- Footer -->
     <footer id="contact" class="footer">
         <div class="container">
@@ -241,6 +372,11 @@
                         <i class="fas fa-envelope"></i>
                         <a href="mailto:support@florencebot.pro">support@florencebot.pro</a>
                     </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
             

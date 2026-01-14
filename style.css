@@ -73,8 +73,8 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
-    overflow: hidden;
+    min-height: 90px;
+    overflow: visible;
 }
 
 .nav-brand {
@@ -93,8 +93,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo {
-    height: 50px;
+    height: 120px;
     width: auto;
+    max-width: 280px;
     object-fit: contain;
     flex-shrink: 0;
 }
@@ -229,7 +230,7 @@ h1, h2, h3, h4, h5, h6 {
 .hero {
     background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-color) 50%, var(--primary-dark) 100%);
     color: white;
-    padding: 140px 0 80px;
+    padding: 160px 0 80px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -946,8 +947,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-logo {
-        height: 40px;
+        height: 80px;
         width: auto;
+        max-width: 200px;
     }
 
     .footer-logo {

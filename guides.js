@@ -2,7 +2,7 @@
 const guidesData = [
     {
         id: 'electrolytes',
-        title: 'Electrolyte Cheat Sheet',
+        title: 'Electrolyte Management Guide',
         description: 'Essential electrolyte ranges, nursing interventions, and clinical priorities. Includes sodium, potassium, calcium, magnesium, and phosphorus management.',
         category: 'lab-values',
         icon: '⚡',
@@ -13,7 +13,7 @@ const guidesData = [
     },
     {
         id: 'vital-signs',
-        title: 'Vital Signs Quick Reference',
+        title: 'Vital Signs Assessment Guide',
         description: 'Normal ranges, assessment techniques, and critical values for all age groups. Covers heart rate, blood pressure, respiratory rate, temperature, and oxygen saturation.',
         category: 'clinical-skills',
         icon: '💓',
@@ -24,7 +24,7 @@ const guidesData = [
     },
     {
         id: 'critical-lab-values',
-        title: 'Critical Lab Values',
+        title: 'Critical Laboratory Values',
         description: 'Life-threatening lab values that require immediate notification and intervention. Essential reference for clinical practice and NCLEX preparation.',
         category: 'lab-values',
         icon: '🧪',
@@ -46,7 +46,7 @@ const guidesData = [
     },
     {
         id: 'medication-math',
-        title: 'Medication Math Made Simple',
+        title: 'Medication Dosage Calculations',
         description: 'Essential drug calculations with step-by-step examples and practice problems. Covers dosage calculations, IV rates, and weight-based dosing.',
         category: 'medications',
         icon: '🧮',

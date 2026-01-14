@@ -27,24 +27,40 @@ export default {
         });
       }
 
-      // Subscribe to ConvertKit
-      const response = await fetch(`https://api.convertkit.com/v3/forms/${env.CONVERTKIT_FORM_ID}/subscribe`, {
+      // Subscribe to Mailchimp
+      const serverPrefix = env.MAILCHIMP_API_KEY.split('-')[1]; // Extract server prefix (e.g., us18)
+      const response = await fetch(`https://${serverPrefix}.api.mailchimp.com/3.0/lists/${env.MAILCHIMP_AUDIENCE_ID}/members`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Basic ${btoa(`anystring:${env.MAILCHIMP_API_KEY}`)}`
         },
         body: JSON.stringify({
-          api_key: env.CONVERTKIT_API_SECRET,
-          email: email,
+          email_address: email,
+          status: 'subscribed'
         })
       });
 
-      const ckData = await response.json();
+      const mcData = await response.json();
 
       if (!response.ok) {
-        console.error('ConvertKit error:', response.status, ckData);
-        throw new Error(`ConvertKit API error: ${response.status}`);
+        // Mailchimp returns 400 if email already subscribed - treat as success
+        if (response.status === 400 && mcData.title === 'Member Exists') {
+          console.log('Mailchimp: Email already subscribed');
+          return new Response(JSON.stringify({ success: true }), {
+            status: 200,
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': '*',
+            }
+          });
+        }
+        console.error('Mailchimp error:', response.status, mcData);
+        throw new Error(`Mailchimp API error: ${response.status}`);
       }
+
+      // Log the successful response for debugging
+      console.log('Mailchimp success response:', mcData);
 
       // Success!
       return new Response(JSON.stringify({ success: true }), {

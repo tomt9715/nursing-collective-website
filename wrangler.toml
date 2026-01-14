@@ -3,4 +3,4 @@ main = "worker.js"
 compatibility_date = "2025-01-13"
 
 [vars]
-CONVERTKIT_FORM_ID = "8971636"
+MAILCHIMP_AUDIENCE_ID = "32d9dab1cd"

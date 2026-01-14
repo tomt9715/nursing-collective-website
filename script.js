@@ -1,3 +1,9 @@
+// Force scroll to top on page load
+if (history.scrollRestoration) {
+    history.scrollRestoration = 'manual';
+}
+window.scrollTo(0, 0);
+
 // Page loader
 window.addEventListener('load', function() {
     const pageLoader = document.getElementById('page-loader');

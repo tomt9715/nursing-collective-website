@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nursing Study Guides - FlorenceBot Pro</title>
+    <meta name="description" content="Comprehensive nursing study guides covering electrolytes, vital signs, lab values, isolation precautions, and medication math. Free resources for nursing students.">
+
+    <!-- Open Graph / Social Media Preview -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://florencebot.pro/guides.html">
+    <meta property="og:title" content="Nursing Study Guides - FlorenceBot Pro">
+    <meta property="og:description" content="Free comprehensive nursing study guides. Master electrolytes, vital signs, lab values, and more.">
+    <meta property="og:image" content="https://florencebot.pro/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="guides-style.css">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Marked.js for markdown parsing -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-user-nurse nav-icon"></i>
+                <span>FlorenceBot Pro</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="guides.html" class="active">Study Guides</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#about">About</a>
+                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Guides Hero Section -->
+    <section class="guides-hero">
+        <div class="container">
+            <div class="guides-hero-content">
+                <h1>Nursing Study Guides</h1>
+                <p class="guides-hero-subtitle">
+                    Comprehensive, evidence-based study guides covering essential nursing topics.
+                    Master clinical concepts with our detailed references and quick-access materials.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="guides-search-section">
+        <div class="container">
+            <div class="search-filter-container">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon"></i>
+                    <input
+                        type="text"
+                        id="guide-search"
+                        placeholder="Search guides by title, topic, or keyword..."
+                        class="search-input"
+                    >
+                    <button class="clear-search" id="clear-search" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+
+                <div class="filter-chips">
+                    <button class="filter-chip active" data-category="all">
+                        <i class="fas fa-th"></i>
+                        All Guides
+                    </button>
+                    <button class="filter-chip" data-category="lab-values">
+                        <i class="fas fa-flask"></i>
+                        Lab Values
+                    </button>
+                    <button class="filter-chip" data-category="clinical-skills">
+                        <i class="fas fa-stethoscope"></i>
+                        Clinical Skills
+                    </button>
+                    <button class="filter-chip" data-category="medications">
+                        <i class="fas fa-pills"></i>
+                        Medications
+                    </button>
+                    <button class="filter-chip" data-category="safety">
+                        <i class="fas fa-shield-virus"></i>
+                        Safety
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guides Grid Section -->
+    <section class="guides-grid-section">
+        <div class="container">
+            <div class="guides-count">
+                <span id="showing-count">Showing 5 of 5</span> study guides
+            </div>
+
+            <div class="guides-grid" id="guides-grid">
+                <!-- Guide cards will be dynamically loaded here -->
+            </div>
+
+            <!-- No Results Message -->
+            <div class="no-results" id="no-results" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No guides found</h3>
+                <p>Try adjusting your search or filters to find what you're looking for.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Modal -->
+    <div class="guide-modal" id="guide-modal">
+        <div class="guide-modal-overlay" id="modal-overlay"></div>
+        <div class="guide-modal-content">
+            <button class="modal-close" id="modal-close">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <div class="modal-category" id="modal-category"></div>
+                <h2 class="modal-title" id="modal-title"></h2>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Markdown content will be rendered here -->
+            </div>
+            <div class="modal-footer">
+                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">
+                    <i class="fab fa-discord"></i>
+                    Discuss in Discord
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section class="guides-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Need More Help?</h2>
+                <p>Join The Nursing Collective on Discord for live discussions, study groups, and instant access to FlorenceBot Pro commands.</p>
+                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary btn-large">
+                    <i class="fab fa-discord"></i>
+                    Join The Nursing Collective
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-user-nurse footer-icon"></i>
+                        <span>FlorenceBot Pro</span>
+                    </div>
+                    <p>Empowering nursing students with AI-powered clinical references and study tools.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="guides.html">Study Guides</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord Server</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@florencebot.pro">support@florencebot.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FlorenceBot Pro. Built with ❤️ for nursing students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="guides.js"></script>
+</body>
+</html>

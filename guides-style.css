@@ -1,0 +1,777 @@
+/* Guides Page Specific Styles */
+
+/* Active nav link */
+.nav-links a.active {
+    color: var(--primary-color);
+    position: relative;
+}
+
+.nav-links a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-color);
+}
+
+/* Guides Hero Section */
+.guides-hero {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    color: white;
+    padding: 120px 0 60px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.guides-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><path d="M30 0l2 8h8l-6 5 2 7-6-4-6 4 2-7-6-5h8z" fill="rgba(255,255,255,0.03)"/></svg>');
+    opacity: 0.5;
+}
+
+.guides-hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.guides-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.guides-hero-subtitle {
+    font-size: 1.2rem;
+    margin: 0 auto;
+    max-width: 700px;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+/* Search and Filter Section */
+.guides-search-section {
+    padding: 40px 0;
+    background: var(--background-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.search-filter-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.search-box {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-light);
+    font-size: 1.1rem;
+}
+
+.search-input {
+    width: 100%;
+    padding: 18px 60px 18px 55px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--background-white);
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+}
+
+.clear-search {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: color 0.3s ease;
+}
+
+.clear-search:hover {
+    color: var(--text-primary);
+}
+
+/* Filter Chips */
+.filter-chips {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    border: 2px solid var(--border-color);
+    border-radius: 50px;
+    background: var(--background-white);
+    color: var(--text-primary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.filter-chip:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.filter-chip.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.filter-chip i {
+    font-size: 0.9rem;
+}
+
+/* Guides Grid Section */
+.guides-grid-section {
+    padding: 60px 0 100px;
+    background: var(--background-white);
+    min-height: 500px;
+}
+
+.guides-count {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.guides-count span {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Guides Grid */
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Guide Card */
+.guide-card {
+    background: var(--background-white);
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: var(--shadow-md);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.guide-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.guide-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-xl);
+    border-color: var(--primary-color);
+}
+
+.guide-card:hover::before {
+    opacity: 1;
+}
+
+.guide-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.guide-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+}
+
+.guide-category {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Category Colors */
+.category-lab-values .guide-icon {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: white;
+}
+
+.category-lab-values .guide-category {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.category-clinical-skills .guide-icon {
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+}
+
+.category-clinical-skills .guide-category {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.category-medications .guide-icon {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+}
+
+.category-medications .guide-category {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.category-safety .guide-icon {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    color: white;
+}
+
+.category-safety .guide-category {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.guide-card-body h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--text-primary);
+}
+
+.guide-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.guide-topics {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.topic-tag {
+    padding: 5px 12px;
+    background: var(--background-light);
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.guide-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.guide-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+.guide-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.read-guide {
+    color: var(--primary-color);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: gap 0.3s ease;
+}
+
+.guide-card:hover .read-guide {
+    gap: 12px;
+}
+
+/* No Results */
+.no-results {
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.no-results i {
+    font-size: 4rem;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.no-results h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.no-results p {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+}
+
+/* Guide Modal */
+.guide-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    overflow: hidden;
+}
+
+.guide-modal.active {
+    display: block;
+}
+
+.guide-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.guide-modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    max-width: 900px;
+    max-height: 90vh;
+    background: var(--background-white);
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -45%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(90deg);
+}
+
+.modal-header {
+    padding: 40px 40px 20px;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--background-light);
+}
+
+.modal-category {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px;
+}
+
+/* Markdown Content Styling */
+.modal-body h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 30px 0 20px;
+    color: var(--text-primary);
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.modal-body h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin: 25px 0 15px;
+    color: var(--text-primary);
+}
+
+.modal-body h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin: 20px 0 12px;
+    color: var(--text-primary);
+}
+
+.modal-body p {
+    line-height: 1.8;
+    margin-bottom: 15px;
+    color: var(--text-secondary);
+}
+
+.modal-body ul, .modal-body ol {
+    margin: 15px 0;
+    padding-left: 30px;
+}
+
+.modal-body li {
+    line-height: 1.8;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.modal-body strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.modal-body table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    box-shadow: var(--shadow-sm);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.modal-body table th {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.modal-body table td {
+    padding: 12px 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-body table tr:nth-child(even) {
+    background: var(--background-light);
+}
+
+.modal-body table tr:hover {
+    background: #e0f2fe;
+}
+
+.modal-body code {
+    background: var(--background-light);
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #dc2626;
+}
+
+.modal-body pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 20px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 20px 0;
+}
+
+.modal-body pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+}
+
+.modal-body blockquote {
+    border-left: 4px solid var(--primary-color);
+    padding-left: 20px;
+    margin: 20px 0;
+    font-style: italic;
+    color: var(--text-secondary);
+}
+
+.modal-body hr {
+    border: none;
+    border-top: 2px solid var(--border-color);
+    margin: 30px 0;
+}
+
+.modal-footer {
+    padding: 20px 40px;
+    border-top: 1px solid var(--border-color);
+    background: var(--background-light);
+    display: flex;
+    justify-content: center;
+}
+
+/* Guides CTA Section */
+.guides-cta {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1d4ed8 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.guides-cta h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.guides-cta p {
+    font-size: 1.15rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.guides-cta .btn-primary {
+    background: var(--background-white);
+    color: var(--primary-color);
+}
+
+.guides-cta .btn-primary:hover {
+    background: var(--background-light);
+    transform: translateY(-3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .guides-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .guides-hero-subtitle {
+        font-size: 1.05rem;
+    }
+
+    .guides-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-chips {
+        justify-content: flex-start;
+    }
+
+    .guide-modal-content {
+        width: 95%;
+        max-height: 95vh;
+    }
+
+    .modal-header {
+        padding: 30px 20px 15px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-footer {
+        padding: 15px 20px;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+    }
+
+    .modal-body h1 {
+        font-size: 1.6rem;
+    }
+
+    .modal-body h2 {
+        font-size: 1.3rem;
+    }
+
+    .guides-cta h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .guides-hero {
+        padding: 100px 0 40px;
+    }
+
+    .guides-hero h1 {
+        font-size: 2rem;
+    }
+
+    .guide-card {
+        padding: 20px;
+    }
+
+    .guide-card-header {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .search-input {
+        padding: 16px 50px 16px 50px;
+    }
+
+    .modal-body table {
+        font-size: 0.85rem;
+    }
+
+    .modal-body table th,
+    .modal-body table td {
+        padding: 10px;
+    }
+}
+
+/* Smooth scrolling for modal */
+.modal-body {
+    scroll-behavior: smooth;
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+    background: var(--background-light);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.modal-body::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-dark);
+}
+
+/* Loading animation for guide cards */
+@keyframes cardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.guide-card {
+    animation: cardFadeIn 0.5s ease forwards;
+}
+
+.guide-card:nth-child(1) { animation-delay: 0.1s; }
+.guide-card:nth-child(2) { animation-delay: 0.2s; }
+.guide-card:nth-child(3) { animation-delay: 0.3s; }
+.guide-card:nth-child(4) { animation-delay: 0.4s; }
+.guide-card:nth-child(5) { animation-delay: 0.5s; }

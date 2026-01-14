@@ -89,10 +89,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-logo {
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
-    object-fit: cover;
+    height: 35px;
+    width: auto;
+    object-fit: contain;
     flex-shrink: 0;
 }
 
@@ -854,8 +853,7 @@ h1, h2, h3, h4, h5, h6 {
 .footer-logo {
     height: 30px;
     width: 30px;
-    border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .footer-section h4 {
@@ -944,8 +942,8 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-logo {
-        height: 20px;
-        width: 20px;
+        height: 28px;
+        width: auto;
     }
 
     .footer-logo {

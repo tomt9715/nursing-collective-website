@@ -1,48 +1,52 @@
-# 🧮 Medication Math Made Simple
+# Medication Dosage Calculations
 
-*Essential drug calculations with step-by-step examples and practice problems*
+Essential drug calculation formulas with step-by-step examples and practice problems for safe medication administration.
 
 ---
 
-## 🎯 **ESSENTIAL FORMULAS**
+## Essential Formulas
 
-### **Basic Formula:**
+### Basic Dosage Formula
 ```
 Desired Dose
------------- × Quantity = Amount to Give
+------------ × Quantity = Amount to Administer
 Dose on Hand
 ```
 
-### **Dimensional Analysis:**
+### Dimensional Analysis
 ```
-Known × Conversion Factor = Unknown
+Known Value × Conversion Factor = Unknown Value
 ```
 
-### **Ratio and Proportion:**
+### Ratio and Proportion
 ```
-Known :: Unknown = Known : Unknown
+Known Ratio :: Unknown Ratio
+or
+Known : Known = Unknown : Unknown
 ```
 
 ---
 
-## 💊 **BASIC DOSAGE CALCULATIONS**
+## Basic Dosage Calculations
 
-### **Example 1: Tablets**
+### Example 1: Oral Tablets
+
 **Order:** Furosemide 80 mg PO
 **Available:** Furosemide 40 mg tablets
-**Calculate:** How many tablets to give?
+**Calculate:** How many tablets should be administered?
 
 **Solution:**
 ```
-Desired (80 mg)
--------------- × 1 tablet = 2 tablets
-On Hand (40 mg)
+80 mg (desired)
+--------------- × 1 tablet = 2 tablets
+40 mg (on hand)
 ```
 
-### **Example 2: Liquid Medication** 
+### Example 2: Liquid Oral Medications
+
 **Order:** Amoxicillin 500 mg PO
-**Available:** Amoxicillin 250 mg/5 mL
-**Calculate:** How many mL to give?
+**Available:** Amoxicillin suspension 250 mg/5 mL
+**Calculate:** How many mL should be administered?
 
 **Solution:**
 ```
@@ -51,25 +55,27 @@ On Hand (40 mg)
   1      250 mg
 ```
 
-### **Practice Problem:**
+### Practice Problem
+
 **Order:** Acetaminophen 650 mg
 **Available:** 325 mg tablets
-**Answer:** _____ tablets
+**Answer:** 2 tablets
 
 ---
 
-## 🩸 **IV FLOW RATE CALCULATIONS**
+## IV Flow Rate Calculations
 
-### **mL/hr Formula:**
+### mL/hr Calculation
 ```
 Total Volume (mL)
 ----------------- = mL/hr
-Total Time (hr)
+Total Time (hours)
 ```
 
-### **Example 1: Basic IV Rate**
-**Order:** 1000 mL NS over 8 hours
-**Calculate:** mL/hr rate
+### Example 1: Basic IV Infusion
+
+**Order:** 1000 mL normal saline over 8 hours
+**Calculate:** mL/hr rate for infusion pump
 
 **Solution:**
 ```
@@ -78,51 +84,58 @@ Total Time (hr)
 8 hours
 ```
 
-### **Example 2: Drops per Minute**
+### Example 2: Drops per Minute (Manual Regulation)
+
 **Order:** 1000 mL over 8 hours
 **Drop Factor:** 15 gtts/mL
-**Calculate:** gtts/min
+**Calculate:** Drops per minute
 
 **Formula:**
 ```
-Total Volume × Drop Factor
-------------------------- = gtts/min
-Total Time in Minutes
+Total Volume (mL) × Drop Factor (gtts/mL)
+--------------------------------------- = gtts/min
+Total Time (minutes)
 ```
 
 **Solution:**
 ```
 1000 mL × 15 gtts/mL
-------------------- = 31 gtts/min
+------------------- = 31 gtts/min (round to 31)
 480 minutes
 ```
 
-### **Quick Drop Factor Reference:**
-- **Macro drip:** 10, 15, or 20 gtts/mL
-- **Micro drip:** 60 gtts/mL
-- **For micro drip:** gtts/min = mL/hr
+### Drop Factor Quick Reference
+
+- **Macrodrip tubing:** 10, 15, or 20 gtts/mL
+- **Microdrip tubing:** 60 gtts/mL
+- **Important shortcut:** With 60 gtts/mL tubing, gtts/min = mL/hr
 
 ---
 
-## 💉 **DOSAGE BY WEIGHT**
+## Weight-Based Dosing
 
-### **mg/kg Formula:**
+### mg/kg Calculation Formula
 ```
-Weight (kg) × Dose (mg/kg) = Total Daily Dose
+Patient Weight (kg) × Ordered Dose (mg/kg) = Total Dose (mg)
 ```
 
-### **Example 1: Pediatric Dosing**
+### Example 1: Pediatric Dosing
+
 **Patient:** 25 kg child
-**Order:** Amoxicillin 25 mg/kg/day divided TID
+**Order:** Amoxicillin 25 mg/kg/day divided TID (three times daily)
 **Calculate:** mg per dose
 
 **Solution:**
 ```
+Step 1: Calculate total daily dose
 25 kg × 25 mg/kg = 625 mg/day
-625 mg ÷ 3 doses = 208.3 mg per dose
+
+Step 2: Divide by number of doses
+625 mg ÷ 3 doses = 208 mg per dose
 ```
 
-### **Example 2: Weight-Based IV Medication**
+### Example 2: Weight-Based Continuous Infusion
+
 **Patient:** 70 kg adult
 **Order:** Dopamine 5 mcg/kg/min
 **Calculate:** mcg/min
@@ -132,51 +145,53 @@ Weight (kg) × Dose (mg/kg) = Total Daily Dose
 70 kg × 5 mcg/kg/min = 350 mcg/min
 ```
 
-### **Converting Pounds to Kilograms:**
+### Converting Pounds to Kilograms
 ```
 Weight in pounds ÷ 2.2 = Weight in kg
 ```
 
+**Example:** 154 lbs ÷ 2.2 = 70 kg
+
 ---
 
-## ⏰ **CONCENTRATION CALCULATIONS**
+## Concentration Calculations
 
-### **mg/mL from Percentage:**
+### mg/mL from Percentage Solution
 ```
 Percentage × 10 = mg/mL
 ```
 
-**Example:**
+**Examples:**
 - 1% lidocaine = 10 mg/mL
-- 0.9% normal saline = 9 mg/mL
+- 0.9% normal saline = 9 mg/mL sodium chloride
 - 2% lidocaine = 20 mg/mL
 
-### **Units per mL:**
-**Example:** Insulin U-100
-- 100 units/mL
-- 1 unit = 0.01 mL
+### Ratio Strength Conversions
 
-### **Ratio Strength:**
 **Example:** Epinephrine 1:1000
-- 1 gram in 1000 mL
-- 1000 mg in 1000 mL  
-- 1 mg/mL
+
+This means 1 gram in 1000 mL
+- Convert to mg: 1 gram = 1000 mg
+- Calculate concentration: 1000 mg ÷ 1000 mL = 1 mg/mL
+
+**Example:** Epinephrine 1:10,000 = 0.1 mg/mL
 
 ---
 
-## 💧 **IV MEDICATION CALCULATIONS**
+## IV Medication Calculations
 
-### **Concentration Formula:**
+### Concentration Formula
 ```
 Amount of Drug (mg)
 ------------------ = Concentration (mg/mL)
 Total Volume (mL)
 ```
 
-### **Example 1: IV Push Medication**
+### Example 1: IV Push Medication
+
 **Order:** Furosemide 40 mg IV push
 **Available:** 100 mg/10 mL vial
-**Calculate:** mL to draw up
+**Calculate:** mL to withdraw
 
 **Solution:**
 ```
@@ -185,160 +200,209 @@ Total Volume (mL)
  1      100 mg
 ```
 
-### **Example 2: Continuous IV Infusion**
+### Example 2: Continuous IV Infusion with Titration
+
 **Order:** Dopamine 400 mg in 250 mL D5W at 350 mcg/min
 **Calculate:** mL/hr rate
 
-**Step 1:** Find concentration
+**Solution:**
+
+Step 1: Determine concentration in mcg/mL
 ```
 400 mg = 400,000 mcg
 400,000 mcg ÷ 250 mL = 1600 mcg/mL
 ```
 
-**Step 2:** Calculate rate
+Step 2: Calculate infusion rate
 ```
-350 mcg/min × 60 min/hr
------------------------ = 13.1 mL/hr
-1600 mcg/mL
+350 mcg/min × 60 min/hr   21,000 mcg/hr
+----------------------- = ------------- = 13.1 mL/hr
+1600 mcg/mL                1600 mcg/mL
 ```
 
 ---
 
-## 🧪 **COMPLEX CALCULATIONS**
+## Complex Calculations
 
-### **Alligation (Mixing Solutions):**
-When mixing different concentrations to get desired strength.
+### Alligation Method (Mixing Solutions)
 
-**Example:** Mix 10% and 2% solutions to make 500 mL of 5% solution
+**Used when mixing different concentrations to achieve desired strength.**
 
-**Setup:**
-- 10% (Higher) ← 3 parts → 5% (Desired)
-- 2% (Lower) ← 5 parts → 5% (Desired)
+**Problem:** Mix 10% and 2% solutions to make 500 mL of 5% solution
+
+**Method:**
+```
+Higher concentration (10%)  ← Difference from desired (5-2=3 parts)
+
+Desired concentration (5%)
+
+Lower concentration (2%)    ← Difference from desired (10-5=5 parts)
+```
 
 **Solution:**
-- Need 3:5 ratio
-- 3 + 5 = 8 total parts
-- 10% solution: (3/8) × 500 mL = 187.5 mL
-- 2% solution: (5/8) × 500 mL = 312.5 mL
+- Ratio is 3:5 (total 8 parts)
+- 10% solution needed: (3/8) × 500 mL = 187.5 mL
+- 2% solution needed: (5/8) × 500 mL = 312.5 mL
 
-### **Business Formula:**
-When you know the percentage strength of what you have and want to make a weaker solution.
+### Dilution Formula
 
-**Formula:**
+**When diluting a solution to weaker strength:**
 ```
-(% Have) × (Volume Have) = (% Want) × (Volume Want)
-```
+(Concentration Available) × (Volume Available) = (Concentration Desired) × (Volume Desired)
 
----
-
-## ⚕️ **COMMON MEDICATION CALCULATIONS**
-
-### **Insulin Calculations:**
-**Units/kg/hr for insulin drips:**
-- Weight: 80 kg
-- Rate: 5 units/hr
-- units/kg/hr = 5 ÷ 80 = 0.0625 units/kg/hr
-
-### **Heparin Calculations:**
-**Units/kg/hr protocol:**
-- Weight: 70 kg
-- Protocol: 18 units/kg/hr
-- Dose = 70 × 18 = 1260 units/hr
-
-### **Chemotherapy (BSA-based):**
-**Body Surface Area formula:**
-```
-BSA (m²) = √[(Height cm × Weight kg) ÷ 3600]
+or: C₁V₁ = C₂V₂
 ```
 
 ---
 
-## 🚨 **HIGH-ALERT MEDICATIONS**
+## Common Clinical Calculations
 
-### **Double-Check Required:**
-- **Insulin** calculations
-- **Heparin** dosing  
-- **Chemotherapy** doses
-- **Pediatric** calculations
-- **Vasoactive** drips
+### Insulin Drip Calculations
 
-### **Safety Tips:**
-1. **Have another nurse** verify calculations
-2. **Use calculator** for complex math
-3. **Know normal ranges** for medications
-4. **Question doses** that seem too high/low
-5. **Use available resources** (pharmacy, drug books)
+**Protocol:** Regular insulin infusion
+**Patient weight:** 80 kg
+**Current rate:** 5 units/hr
+**Calculate:** units/kg/hr
+
+**Solution:**
+```
+5 units/hr
+---------- = 0.0625 units/kg/hr
+80 kg
+```
+
+### Heparin Protocol Dosing
+
+**Protocol:** 18 units/kg/hr
+**Patient weight:** 70 kg
+**Calculate:** Infusion rate in units/hr
+
+**Solution:**
+```
+70 kg × 18 units/kg/hr = 1260 units/hr
+```
+
+**If concentration is 25,000 units in 250 mL:**
+```
+1260 units/hr     250 mL
+------------- × ------------ = 12.6 mL/hr
+     1          25,000 units
+```
+
+### Body Surface Area (BSA) Calculations
+
+**Used primarily for chemotherapy dosing:**
+```
+BSA (m²) = √[(Height in cm × Weight in kg) ÷ 3600]
+```
+
+**Alternative formula (Mosteller):**
+```
+BSA (m²) = √[(Height in cm × Weight in kg) ÷ 3600]
+```
 
 ---
 
-## 🎯 **CALCULATION SHORTCUTS**
+## High-Alert Medications
 
-### **Quick Mental Math:**
-- **Percentage to mg/mL:** Move decimal one place right
-- **Pounds to kg:** Divide by 2.2 (or × 0.45)
-- **Micro drip (60 gtts/mL):** gtts/min = mL/hr
+### Require Independent Double-Check
 
-### **Common Conversions:**
-- **1 kg** = 2.2 pounds
-- **1 tsp** = 5 mL
-- **1 tbsp** = 15 mL  
-- **1 oz** = 30 mL
-- **1 cup** = 240 mL
+- Insulin (all routes and formulations)
+- Heparin and low molecular weight heparins
+- Chemotherapy agents
+- Pediatric and neonatal medications
+- Vasoactive infusions (dopamine, norepinephrine, etc.)
+
+### Safety Guidelines
+
+1. Have another qualified nurse independently verify calculations
+2. Use calculator for complex calculations
+3. Know expected dose ranges for medications
+4. Question any dose that seems unusually high or low
+5. Utilize pharmacy and drug reference resources
+6. Never skip the verification step to save time
 
 ---
 
-## ✅ **SELF-CHECK QUESTIONS**
+## Calculation Shortcuts
 
-### **Practice Problems:**
+### Mental Math Tips
+
+- **Percentage to mg/mL:** Multiply percentage by 10
+- **Pounds to kg:** Divide by 2.2 (or multiply by 0.45 for estimation)
+- **Microdrip:** Drops/min = mL/hr when using 60 gtts/mL tubing
+
+### Common Conversions
+
+**Volume:**
+- 1 teaspoon = 5 mL
+- 1 tablespoon = 15 mL
+- 1 fluid ounce = 30 mL
+- 1 cup = 240 mL
+
+**Weight:**
+- 1 kg = 2.2 pounds
+- 1 gram = 1000 mg
+- 1 mg = 1000 mcg
+
+---
+
+## Practice Problems with Answers
+
+### Problem Set 1: Basic Calculations
+
 1. **Order:** Digoxin 0.5 mg
    **Available:** 0.25 mg tablets
-   **Give:** _____ tablets
+   **Give:** ___ tablets
+   **Answer:** 2 tablets
 
 2. **Order:** 1500 mL over 12 hours
-   **Calculate:** _____ mL/hr
+   **Calculate:** ___ mL/hr
+   **Answer:** 125 mL/hr
 
 3. **Patient:** 60 kg
-   **Order:** 10 mg/kg/day divided BID  
-   **Give:** _____ mg per dose
+   **Order:** 10 mg/kg/day divided BID
+   **Give:** ___ mg per dose
+   **Answer:** 300 mg per dose
 
-4. **Order:** Morphine 8 mg
+4. **Order:** Morphine 8 mg IV
    **Available:** 10 mg/mL
-   **Draw up:** _____ mL
-
-**Answers:** 1) 2 tablets, 2) 125 mL/hr, 3) 300 mg per dose, 4) 0.8 mL
+   **Draw up:** ___ mL
+   **Answer:** 0.8 mL
 
 ---
 
-## 🎯 **NCLEX CALCULATION TIPS**
+## NCLEX Strategy for Medication Calculations
 
-### **Test-Taking Strategy:**
-1. **Read carefully** - identify what's being asked
-2. **Set up equation** properly
-3. **Include units** in calculation
-4. **Check if answer** makes logical sense
-5. **Round appropriately** for the situation
+### Test-Taking Approach
 
-### **Common NCLEX Calculations:**
-- Basic dosage calculations
-- IV flow rates  
+1. **Read carefully:** Identify exactly what is being asked
+2. **Set up equation properly:** Write out formula before calculating
+3. **Include units:** Helps prevent errors and ensures dimensional accuracy
+4. **Check reasonableness:** Does answer make logical sense?
+5. **Round appropriately:** Follow standard rounding rules (typically to tenth)
+
+### Common Question Types
+
+- Basic dosage calculations (tablets, capsules, liquids)
+- IV flow rates (mL/hr and gtts/min)
 - Pediatric weight-based dosing
 - Unit conversions
-- Percentage solutions
+- Percentage solutions and dilutions
 
-### **Avoiding Errors:**
-- **Double-check** decimal placement
-- **Verify units** match throughout calculation
-- **Question** unusually large or small answers
-- **Use dimensional analysis** for complex problems
+### Error Prevention
 
----
-
-## 💬 **Practice & Discussion**
-
-**Want to practice more medication math?** Join our nursing community where students work through calculation problems together: [Join The Nursing Collective](https://discord.gg/nursing-collective)
-
-**📱 Quick Discord Access:** Type "medication math" for formula reminders!
+- Double-check decimal placement
+- Verify all units match throughout calculation
+- Question unusually large or small answers
+- Use dimensional analysis for complex multi-step problems
+- Never rush through calculation questions
 
 ---
 
-*Created by FlorenceBot Pro | Updated January 2025 | Evidence-based nursing education*
+## References and Further Reading
+
+This guide is based on standard pharmaceutical calculations and is regularly updated to reflect current practice. For additional practice problems or questions about medication calculations, connect with other nursing students in our study community.
+
+*Last Updated: January 2025*
+*Evidence-based clinical nursing education*

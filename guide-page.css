@@ -1,0 +1,455 @@
+/* Professional Medical Reference Guide Styling */
+
+:root {
+    --guide-primary: #1e40af;
+    --guide-secondary: #64748b;
+    --guide-accent: #0ea5e9;
+    --guide-text: #1e293b;
+    --guide-text-light: #64748b;
+    --guide-bg: #ffffff;
+    --guide-bg-subtle: #f8fafc;
+    --guide-border: #e2e8f0;
+    --guide-highlight: #fef3c7;
+}
+
+/* Guide Page Layout */
+.guide-page {
+    min-height: 100vh;
+    background: var(--guide-bg-subtle);
+    padding-top: 70px;
+}
+
+/* Breadcrumb Navigation */
+.guide-breadcrumb {
+    background: var(--guide-bg);
+    border-bottom: 1px solid var(--guide-border);
+    padding: 15px 0;
+}
+
+.breadcrumb-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--guide-text-light);
+}
+
+.breadcrumb-nav a {
+    color: var(--guide-primary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumb-nav a:hover {
+    color: var(--guide-accent);
+    text-decoration: underline;
+}
+
+.breadcrumb-separator {
+    color: var(--guide-border);
+}
+
+/* Guide Header */
+.guide-header {
+    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
+    color: white;
+    padding: 60px 0 40px;
+    margin-bottom: 40px;
+}
+
+.guide-header-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.guide-category-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 15px;
+}
+
+.guide-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.2;
+}
+
+.guide-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+.guide-meta {
+    display: flex;
+    gap: 25px;
+    margin-top: 25px;
+    font-size: 0.9rem;
+    opacity: 0.85;
+}
+
+.guide-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* Guide Content */
+.guide-content-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px 60px;
+}
+
+.guide-actions {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.guide-action-btn {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+}
+
+.btn-back {
+    background: var(--guide-bg);
+    color: var(--guide-text);
+    border: 2px solid var(--guide-border);
+}
+
+.btn-back:hover {
+    border-color: var(--guide-primary);
+    color: var(--guide-primary);
+}
+
+.btn-print {
+    background: var(--guide-bg);
+    color: var(--guide-text);
+    border: 2px solid var(--guide-border);
+    cursor: pointer;
+}
+
+.btn-print:hover {
+    border-color: var(--guide-primary);
+    color: var(--guide-primary);
+}
+
+/* Main Content Area */
+.guide-content {
+    background: var(--guide-bg);
+    border-radius: 12px;
+    padding: 50px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    line-height: 1.8;
+}
+
+/* Typography */
+.guide-content h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--guide-text);
+    margin: 40px 0 20px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid var(--guide-primary);
+}
+
+.guide-content h1:first-child {
+    margin-top: 0;
+}
+
+.guide-content h2 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: var(--guide-text);
+    margin: 35px 0 18px;
+}
+
+.guide-content h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--guide-text);
+    margin: 28px 0 15px;
+}
+
+.guide-content p {
+    margin-bottom: 18px;
+    color: var(--guide-secondary);
+}
+
+.guide-content strong {
+    color: var(--guide-text);
+    font-weight: 600;
+}
+
+/* Lists */
+.guide-content ul,
+.guide-content ol {
+    margin: 18px 0;
+    padding-left: 30px;
+}
+
+.guide-content li {
+    margin-bottom: 10px;
+    color: var(--guide-secondary);
+    line-height: 1.7;
+}
+
+.guide-content ul li {
+    list-style-type: disc;
+}
+
+/* Tables */
+.guide-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 28px 0;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.guide-content table th {
+    background: linear-gradient(135deg, var(--guide-primary), #1e3a8a);
+    color: white;
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.guide-content table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--guide-border);
+    color: var(--guide-secondary);
+}
+
+.guide-content table tr:last-child td {
+    border-bottom: none;
+}
+
+.guide-content table tr:nth-child(even) {
+    background: var(--guide-bg-subtle);
+}
+
+.guide-content table tr:hover {
+    background: #e0f2fe;
+}
+
+/* Code Blocks */
+.guide-content code {
+    background: var(--guide-bg-subtle);
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.9em;
+    color: #be185d;
+    border: 1px solid var(--guide-border);
+}
+
+.guide-content pre {
+    background: #1e293b;
+    color: #e2e8f0;
+    padding: 24px;
+    border-radius: 8px;
+    overflow-x: auto;
+    margin: 24px 0;
+    font-family: 'Courier New', Consolas, monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.guide-content pre code {
+    background: none;
+    padding: 0;
+    color: inherit;
+    border: none;
+}
+
+/* Blockquotes */
+.guide-content blockquote {
+    border-left: 4px solid var(--guide-primary);
+    padding-left: 24px;
+    margin: 24px 0;
+    font-style: italic;
+    color: var(--guide-text-light);
+    background: var(--guide-bg-subtle);
+    padding: 20px 20px 20px 24px;
+    border-radius: 0 8px 8px 0;
+}
+
+/* Horizontal Rules */
+.guide-content hr {
+    border: none;
+    border-top: 2px solid var(--guide-border);
+    margin: 40px 0;
+}
+
+/* Related Guides Section */
+.related-guides {
+    margin-top: 50px;
+    padding-top: 40px;
+    border-top: 2px solid var(--guide-border);
+}
+
+.related-guides h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--guide-text);
+}
+
+.related-guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.related-guide-card {
+    padding: 20px;
+    background: var(--guide-bg-subtle);
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: 1px solid var(--guide-border);
+}
+
+.related-guide-card:hover {
+    background: var(--guide-bg);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transform: translateY(-2px);
+}
+
+.related-guide-card h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--guide-primary);
+    margin-bottom: 8px;
+}
+
+.related-guide-card p {
+    font-size: 0.9rem;
+    color: var(--guide-text-light);
+    margin: 0;
+}
+
+/* Print Styles */
+@media print {
+    .navbar,
+    .guide-breadcrumb,
+    .guide-actions,
+    .footer,
+    .related-guides {
+        display: none !important;
+    }
+
+    .guide-page {
+        padding-top: 0;
+    }
+
+    .guide-header {
+        background: none;
+        color: black;
+        page-break-after: avoid;
+    }
+
+    .guide-content {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .guide-content table th {
+        background: #e2e8f0 !important;
+        color: black !important;
+        -webkit-print-color-adjust: exact;
+    }
+
+    .guide-content table tr:nth-child(even) {
+        background: #f8fafc !important;
+        -webkit-print-color-adjust: exact;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .guide-header {
+        padding: 40px 0 30px;
+    }
+
+    .guide-title {
+        font-size: 2rem;
+    }
+
+    .guide-content {
+        padding: 30px 20px;
+    }
+
+    .guide-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .guide-content h2 {
+        font-size: 1.3rem;
+    }
+
+    .guide-content table {
+        font-size: 0.85rem;
+    }
+
+    .guide-content table th,
+    .guide-content table td {
+        padding: 10px;
+    }
+
+    .related-guides-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .guide-header {
+        padding: 30px 0 20px;
+    }
+
+    .guide-title {
+        font-size: 1.75rem;
+    }
+
+    .guide-subtitle {
+        font-size: 1rem;
+    }
+
+    .guide-content {
+        padding: 25px 15px;
+        border-radius: 8px;
+    }
+
+    .guide-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .guide-actions {
+        flex-direction: column;
+    }
+
+    .guide-action-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Guide - FlorenceBot Pro</title>
+    <meta name="description" content="Professional nursing study guide - evidence-based clinical reference for nursing students and professionals">
+
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="guide-page.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <i class="fas fa-user-nurse nav-icon"></i>
+                <span>FlorenceBot Pro</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="guides.html">Study Guides</a>
+                <a href="index.html#features">Features</a>
+                <a href="index.html#about">About</a>
+                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="guide-breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.html">Home</a>
+                <span class="breadcrumb-separator">/</span>
+                <a href="guides.html">Study Guides</a>
+                <span class="breadcrumb-separator">/</span>
+                <span id="breadcrumb-current">Loading...</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Guide Header -->
+    <header class="guide-header">
+        <div class="container">
+            <div class="guide-header-content">
+                <span class="guide-category-badge" id="guide-category">Loading...</span>
+                <h1 class="guide-title" id="guide-title">Loading...</h1>
+                <p class="guide-subtitle" id="guide-subtitle">Loading...</p>
+                <div class="guide-meta">
+                    <div class="guide-meta-item">
+                        <i class="fas fa-clock"></i>
+                        <span id="guide-read-time">Loading...</span>
+                    </div>
+                    <div class="guide-meta-item">
+                        <i class="fas fa-signal"></i>
+                        <span id="guide-difficulty">Loading...</span>
+                    </div>
+                    <div class="guide-meta-item">
+                        <i class="fas fa-calendar"></i>
+                        <span>Updated January 2025</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="guide-page">
+        <div class="container">
+            <div class="guide-content-wrapper">
+                <!-- Action Buttons -->
+                <div class="guide-actions">
+                    <a href="guides.html" class="guide-action-btn btn-back">
+                        <i class="fas fa-arrow-left"></i>
+                        Back to All Guides
+                    </a>
+                    <button class="guide-action-btn btn-print" id="btn-print">
+                        <i class="fas fa-print"></i>
+                        Print Guide
+                    </button>
+                </div>
+
+                <!-- Guide Content -->
+                <article class="guide-content" id="guide-content">
+                    <div style="text-align: center; padding: 60px 20px;">
+                        <div class="loader-spinner"></div>
+                        <p style="margin-top: 20px; color: var(--guide-text-light);">Loading guide...</p>
+                    </div>
+                </article>
+
+                <!-- Related Guides -->
+                <section class="related-guides" id="related-guides-section">
+                    <h3>Related Study Guides</h3>
+                    <div class="related-guides-grid" id="related-guides-grid">
+                        <!-- Related guides will be loaded here -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-user-nurse footer-icon"></i>
+                        <span>FlorenceBot Pro</span>
+                    </div>
+                    <p>Empowering nursing students with AI-powered clinical references and study tools.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="guides.html">Study Guides</a></li>
+                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord Server</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@florencebot.pro">support@florencebot.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FlorenceBot Pro. Built with ❤️ for nursing students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="guide-page.js"></script>
+</body>
+</html>

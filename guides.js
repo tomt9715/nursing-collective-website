@@ -99,19 +99,8 @@ function setupEventListeners() {
         });
     });
 
-    // Modal controls
-    const modal = document.getElementById('guide-modal');
-    const modalOverlay = document.getElementById('modal-overlay');
-    const modalClose = document.getElementById('modal-close');
-
-    modalClose.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', closeModal);
-
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
-            closeModal();
-        }
         if (e.key === '/' && document.activeElement !== searchInput) {
             e.preventDefault();
             searchInput.focus();
@@ -187,7 +176,8 @@ function renderGuides(guides = guidesData) {
     document.querySelectorAll('.guide-card').forEach(card => {
         card.addEventListener('click', () => {
             const guideId = card.dataset.guideId;
-            openGuide(guideId);
+            // Navigate to guide page instead of opening modal
+            window.location.href = `guide.html?id=${guideId}`;
         });
     });
 }
@@ -197,58 +187,6 @@ function formatCategory(category) {
     return category.split('-').map(word =>
         word.charAt(0).toUpperCase() + word.slice(1)
     ).join(' ');
-}
-
-// Open guide in modal
-async function openGuide(guideId) {
-    const guide = guidesData.find(g => g.id === guideId);
-    if (!guide) return;
-
-    const modal = document.getElementById('guide-modal');
-    const modalTitle = document.getElementById('modal-title');
-    const modalCategory = document.getElementById('modal-category');
-    const modalBody = document.getElementById('modal-body');
-
-    // Update modal header
-    modalTitle.textContent = guide.title;
-    modalCategory.textContent = formatCategory(guide.category);
-    modalCategory.className = `modal-category category-${guide.category} guide-category`;
-
-    // Show loading state
-    modalBody.innerHTML = '<div style="text-align: center; padding: 40px;"><div class="loader-spinner"></div><p style="margin-top: 20px; color: var(--text-secondary);">Loading guide...</p></div>';
-
-    // Open modal
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-
-    // Fetch and render markdown content
-    try {
-        const response = await fetch(guide.file);
-        if (!response.ok) throw new Error('Failed to load guide');
-
-        const markdown = await response.text();
-        const html = marked.parse(markdown);
-
-        // Render the content
-        modalBody.innerHTML = html;
-        modalBody.scrollTop = 0;
-    } catch (error) {
-        console.error('Error loading guide:', error);
-        modalBody.innerHTML = `
-            <div style="text-align: center; padding: 40px;">
-                <i class="fas fa-exclamation-triangle" style="font-size: 3rem; color: var(--accent-color); margin-bottom: 20px;"></i>
-                <h3 style="color: var(--text-primary); margin-bottom: 10px;">Failed to Load Guide</h3>
-                <p style="color: var(--text-secondary);">We couldn't load this guide. Please try again later.</p>
-            </div>
-        `;
-    }
-}
-
-// Close modal
-function closeModal() {
-    const modal = document.getElementById('guide-modal');
-    modal.classList.remove('active');
-    document.body.style.overflow = 'auto';
 }
 
 // Hide page loader
@@ -261,17 +199,6 @@ function hideLoader() {
     }
 }
 
-// Configure marked.js options
-if (typeof marked !== 'undefined') {
-    marked.setOptions({
-        breaks: true,
-        gfm: true,
-        headerIds: true,
-        mangle: false
-    });
-}
-
 // Add keyboard shortcut hint
 console.log('%c💡 Keyboard Shortcuts', 'font-size: 14px; font-weight: bold; color: #2563eb;');
 console.log('%c/ - Focus search', 'font-size: 12px; color: #6b7280;');
-console.log('%cEsc - Close modal', 'font-size: 12px; color: #6b7280;');

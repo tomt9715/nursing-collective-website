@@ -1,299 +1,273 @@
-# 🧪 Critical Lab Values
+# Critical Laboratory Values
 
-*Life-threatening lab values every nurse must know with immediate nursing actions*
-
----
-
-## 🚨 **CRITICAL LAB VALUES - IMMEDIATE ACTION REQUIRED**
-
-*These values require immediate provider notification and intervention*
+Life-threatening laboratory values requiring immediate provider notification and intervention.
 
 ---
 
-## ⚡ **ELECTROLYTES**
+## Definition and Importance
 
-### **🔴 POTASSIUM**
+Critical values are laboratory results that indicate a life-threatening situation requiring immediate clinical action. These values fall outside the reference range to a degree that represents imminent danger to the patient. The Joint Commission mandates that healthcare facilities establish policies for reporting critical values.
+
+---
+
+## Electrolytes
+
+### Potassium
 - **Critical Low:** <2.5 mEq/L
 - **Critical High:** >6.5 mEq/L
-- **Immediate Actions:**
-  - Continuous cardiac monitoring
-  - Hold potassium supplements/medications
-  - Prepare for emergency interventions
-  - Check most recent ECG
 
-### **🔴 SODIUM** 
+**Immediate Actions:**
+- Initiate continuous cardiac monitoring
+- Hold potassium supplements and potassium-sparing medications
+- Obtain 12-lead ECG
+- Prepare for emergency interventions (calcium gluconate, insulin/dextrose, dialysis)
+
+**Life-threatening complications:**
+- Ventricular dysrhythmias
+- Cardiac arrest
+
+### Sodium
 - **Critical Low:** <120 mEq/L
 - **Critical High:** >160 mEq/L
-- **Immediate Actions:**
-  - Neuro checks q1h
-  - Seizure precautions
-  - Fluid restriction assessment
-  - Monitor I&O closely
 
-### **🔴 CALCIUM**
-- **Critical Low:** <7.0 mg/dL  
+**Immediate Actions:**
+- Perform neurological assessment every 1-2 hours
+- Institute seizure precautions
+- Assess fluid status and I&O
+- Monitor for cerebral edema (hyponatremia) or dehydration (hypernatremia)
+
+**Life-threatening complications:**
+- Seizures
+- Cerebral edema
+- Coma
+
+### Calcium
+- **Critical Low:** <7.0 mg/dL
 - **Critical High:** >12.0 mg/dL
-- **Immediate Actions:**
-  - Keep calcium gluconate at bedside
-  - Monitor for tetany/seizures
-  - Check for Chvostek's/Trousseau's signs
 
-### **🔴 MAGNESIUM**
+**Immediate Actions:**
+- Keep calcium gluconate 1-2g IV at bedside for hypocalcemia
+- Monitor for Chvostek's and Trousseau's signs
+- Institute seizure precautions for low values
+- Encourage hydration for high values
+
+**Life-threatening complications:**
+- Tetany, laryngospasm, seizures (low)
+- Cardiac dysrhythmias (high)
+
+### Magnesium
 - **Critical Low:** <1.0 mEq/L
-- **Critical High:** >4.0 mEq/L  
-- **Immediate Actions:**
-  - Monitor deep tendon reflexes
-  - Assess respiratory status
-  - Keep calcium gluconate available
+- **Critical High:** >4.0 mEq/L
+
+**Immediate Actions:**
+- Monitor deep tendon reflexes
+- Assess respiratory status (especially for hypermagnesemia)
+- Keep calcium gluconate available as antidote
+- Check concurrent potassium and calcium levels
 
 ---
 
-## 🩸 **HEMATOLOGY**
+## Glucose
 
-### **🔴 HEMOGLOBIN**
-- **Critical Low:** <7.0 g/dL
+### Hypoglycemia
+- **Critical:** <50 mg/dL
+
+**Immediate Actions:**
+- If conscious and able to swallow: 15-20g fast-acting carbohydrate
+- If altered mental status: D50W 25mL IV push (or per protocol)
+- Recheck glucose in 15 minutes
+- Identify and address underlying cause
+
+**Life-threatening complications:**
+- Loss of consciousness
+- Seizures
+- Death
+
+### Hyperglycemia
+- **Critical:** >500 mg/dL
+
+**Immediate Actions:**
+- Assess for diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS)
+- Check serum ketones and electrolytes
+- Initiate insulin therapy per protocol
+- IV fluid resuscitation
+- Monitor vital signs and mental status
+
+**Life-threatening complications:**
+- DKA
+- HHS
+- Cerebral edema (with rapid correction)
+
+---
+
+## Hematology
+
+### Hemoglobin
+- **Critical Low:** <5.0 g/dL
 - **Critical High:** >20.0 g/dL
-- **Immediate Actions:**
-  - Assess for bleeding/symptoms
-  - Prepare for possible transfusion
-  - Monitor vital signs
-  - O₂ saturation monitoring
 
-### **🔴 HEMATOCRIT**
-- **Critical Low:** <21%
-- **Critical High:** >60%
-- **Immediate Actions:**
-  - Same as hemoglobin
-  - Assess hydration status
-  - Monitor for thrombotic events (high values)
+**Immediate Actions for low values:**
+- Type and crossmatch for possible transfusion
+- Assess for active bleeding
+- Monitor vital signs for hemodynamic instability
+- Oxygen therapy as needed
 
-### **🔴 PLATELETS**
-- **Critical Low:** <50,000/μL
-- **Critical High:** >1,000,000/μL
-- **Immediate Actions:**
-  - Bleeding precautions (<50K)
-  - No IM injections
-  - Soft toothbrush
-  - Monitor for bleeding signs
+### Platelets
+- **Critical Low:** <20,000/mm³
 
-### **🔴 WHITE BLOOD CELLS**
-- **Critical Low:** <2,000/μL
-- **Critical High:** >50,000/μL
-- **Immediate Actions:**
-  - Infection precautions (low)
-  - Monitor for infection signs
-  - Assess for bleeding (high values)
+**Immediate Actions:**
+- Implement bleeding precautions
+- Assess for signs of bleeding (petechiae, ecchymosis, bleeding gums)
+- Avoid invasive procedures
+- Prepare for possible platelet transfusion
+- Hold anticoagulants and antiplatelet agents
 
----
+**Life-threatening complications:**
+- Spontaneous bleeding
+- Intracranial hemorrhage
 
-## 🫀 **CARDIAC MARKERS**
+### White Blood Cell Count
+- **Critical Low:** <1,000/mm³ (severe neutropenia)
+- **Critical High:** >30,000/mm³
 
-### **🔴 TROPONIN**
-- **Critical:** >0.1 ng/mL
-- **Immediate Actions:**
-  - 12-lead ECG immediately
-  - Assess chest pain
-  - Continuous monitoring
-  - Prepare for cardiac cath
-
-### **🔴 CK-MB**
-- **Critical:** >10 ng/mL
-- **Immediate Actions:**
-  - Same as troponin
-  - Serial cardiac enzymes
-  - Monitor for dysrhythmias
+**Immediate Actions for neutropenia:**
+- Institute neutropenic precautions
+- Monitor temperature closely (any fever is emergency)
+- Avoid invasive procedures
+- Assess for signs of infection
 
 ---
 
-## 🩸 **COAGULATION**
+## Arterial Blood Gas (ABG)
 
-### **🔴 PT/INR**
-- **Critical:** INR >5.0
-- **Critical:** PT >30 seconds
-- **Immediate Actions:**
-  - Hold warfarin
-  - Bleeding precautions
-  - Consider vitamin K
-  - Monitor for bleeding
+### pH
+- **Critical Low:** <7.20 (severe acidosis)
+- **Critical High:** >7.60 (severe alkalosis)
 
-### **🔴 PTT**
-- **Critical:** >100 seconds
-- **Immediate Actions:**
-  - Hold heparin
-  - Assess for bleeding
-  - Monitor vital signs
-  - Prepare protamine if needed
+**Immediate Actions:**
+- Assess respiratory status
+- Determine metabolic vs. respiratory cause
+- Address underlying etiology
+- Consider mechanical ventilation for respiratory causes
 
----
+### PaO₂
+- **Critical Low:** <50 mmHg
 
-## 🧪 **CHEMISTRY**
+**Immediate Actions:**
+- Apply or increase supplemental oxygen
+- Assess respiratory status and work of breathing
+- Consider need for advanced airway management
 
-### **🔴 GLUCOSE**
-- **Critical Low:** <50 mg/dL
-- **Critical High:** >500 mg/dL
-- **Immediate Actions:**
-  - **Hypoglycemia:** D50 IV, glucagon
-  - **Hyperglycemia:** Insulin protocol, fluids
-  - Neuro assessment
-  - Monitor closely
-
-### **🔴 CREATININE**
-- **Critical:** >4.0 mg/dL
-- **Immediate Actions:**
-  - Assess kidney function
-  - Review medications (hold nephrotoxic)
-  - Monitor I&O
-  - Prepare for dialysis consideration
-
-### **🔴 BUN**
-- **Critical:** >100 mg/dL
-- **Immediate Actions:**
-  - Same as creatinine
-  - Assess hydration
-  - Monitor electrolytes
-
-### **🔴 AMMONIA**
-- **Critical:** >150 μmol/L
-- **Immediate Actions:**
-  - Neuro assessment
-  - Lactulose administration
-  - Monitor for hepatic encephalopathy
-  - Protein restriction
-
----
-
-## 🫁 **ARTERIAL BLOOD GASES**
-
-### **🔴 pH**
-- **Critical Low:** <7.20
-- **Critical High:** >7.60
-- **Immediate Actions:**
-  - Assess respiratory status
-  - Consider mechanical ventilation
-  - Treat underlying cause
-
-### **🔴 PaCO₂**
+### PaCO₂
 - **Critical Low:** <20 mmHg
 - **Critical High:** >70 mmHg
-- **Immediate Actions:**
-  - Respiratory assessment
-  - Ventilation support consideration
-  - Monitor consciousness level
 
-### **🔴 PaO₂**
-- **Critical Low:** <60 mmHg
-- **Immediate Actions:**
-  - Increase O₂ immediately
-  - Respiratory support
-  - Position for optimal ventilation
+**Immediate Actions:**
+- For low values: assess for hyperventilation cause
+- For high values: assess for respiratory failure, consider ventilatory support
 
 ---
 
-## 💊 **THERAPEUTIC DRUG LEVELS**
+## Coagulation Studies
 
-### **🔴 DIGOXIN**
-- **Toxic:** >2.5 ng/mL
-- **Immediate Actions:**
-  - Hold digoxin
-  - Check K+, Mg²⁺ levels
-  - Cardiac monitoring
-  - Consider digoxin immune fab
+### INR (International Normalized Ratio)
+- **Critical High:** >5.0
 
-### **🔴 LITHIUM**
-- **Toxic:** >2.0 mEq/L
-- **Immediate Actions:**
-  - Hold lithium
-  - Increase fluids
-  - Monitor neuro status
-  - Consider dialysis
+**Immediate Actions:**
+- Assess for active bleeding
+- Hold warfarin
+- Consider vitamin K administration
+- Monitor closely for bleeding
 
-### **🔴 PHENYTOIN**
-- **Toxic:** >30 μg/mL
-- **Immediate Actions:**
-  - Hold phenytoin
-  - Monitor for toxicity signs
-  - Supportive care
+**Critical for procedures:** Patient safety requires specific INR targets before surgery or invasive procedures.
+
+### PTT (Partial Thromboplastin Time)
+- **Critical High:** >100 seconds (on heparin therapy)
+
+**Immediate Actions:**
+- Hold heparin infusion
+- Assess for bleeding
+- Consider protamine sulfate if active bleeding
 
 ---
 
-## ⚕️ **IMMEDIATE NURSING ACTIONS**
+## Cardiac Markers
 
-### **🚨 STAT Protocol:**
-1. **Verify critical value** with lab
-2. **Notify provider immediately** 
-3. **Assess patient** for symptoms
-4. **Document** time of notification
-5. **Implement** ordered interventions
-6. **Monitor closely** for changes
+### Troponin
+- **Critical:** Elevated above 99th percentile (varies by facility/assay)
 
-### **📞 Communication:**
-- **SBAR format** for provider notification
-- **Read back** orders to verify
-- **Document** all communications
-- **Follow up** on pending orders
+**Interpretation:**
+- Rising trend indicates acute myocardial injury
+- Serial measurements required for diagnosis
 
-### **🎯 Priority Assessment:**
-
-#### **Cardiovascular:**
-- Vital signs and rhythm
-- Perfusion and circulation
-- Cardiac monitoring
-
-#### **Neurologic:**
-- Level of consciousness
-- Pupil reaction
-- Motor/sensory function
-
-#### **Respiratory:**
-- Rate, depth, effort
-- Oxygen saturation
-- Breath sounds
+**Immediate Actions:**
+- Notify physician immediately
+- Obtain ECG
+- Institute cardiac monitoring
+- Initiate acute coronary syndrome protocol
 
 ---
 
-## 📱 **CRITICAL LAB QUICK REFERENCE**
+## Liver Function
 
-### **🔴 CALL PROVIDER IMMEDIATELY:**
-- K+ <2.5 or >6.5
-- Na+ <120 or >160  
-- Glucose <50 or >500
-- Hgb <7.0
-- Platelets <50K
-- INR >5.0
-- pH <7.20 or >7.60
+### Ammonia
+- **Critical High:** >200 mcg/dL
 
-### **🟡 MONITOR CLOSELY:**
-- K+ <3.0 or >5.5
-- Na+ <125 or >150
-- Glucose <70 or >300
-- Hgb <8.0
-- Platelets <100K
-- INR 3.5-5.0
+**Immediate Actions:**
+- Assess mental status (hepatic encephalopathy)
+- Administer lactulose as ordered
+- Protein restriction
+- Monitor for increased intracranial pressure
 
 ---
 
-## 🎯 **NCLEX TIPS**
+## Renal Function
 
-### **Priority Questions:**
-1. **Life-threatening** values first
-2. **Cardiac-related** electrolytes priority
-3. **Always verify** critical values
-4. **SBAR communication** format
+### Creatinine
+- **Critical High:** >5.0 mg/dL (or acute rise)
 
-### **Common Test Scenarios:**
-- Patient with chest pain + elevated troponin
-- Diabetic with glucose 45 mg/dL  
-- Post-op patient with low hemoglobin
-- Patient on warfarin with INR 6.0
+**Immediate Actions:**
+- Assess urine output
+- Review medications for nephrotoxins
+- Check electrolytes (especially potassium)
+- Prepare for possible dialysis
 
----
+### BUN (Blood Urea Nitrogen)
+- **Critical High:** >100 mg/dL
 
-## 💬 **Clinical Discussion**
-
-**Want to practice interpreting lab values?** Join our nursing community where students discuss real clinical scenarios and lab interpretations: [Join The Nursing Collective](https://discord.gg/nursing-collective)
-
-**📱 Discord Quick Access:** Type "lab values" for instant critical value reference!
+**Immediate Actions:**
+- Assess for uremia symptoms
+- Monitor fluid and electrolyte status
+- Consider dialysis consultation
 
 ---
 
-*Created by FlorenceBot Pro | Updated January 2025 | Evidence-based nursing education*
+## Provider Notification Protocol
+
+### When Critical Value is Identified
+
+1. **Immediate notification:** Contact provider immediately (within 15-30 minutes per facility policy)
+2. **Documentation:** Record:
+   - Critical value and date/time of result
+   - Name of provider notified and time
+   - Orders received
+   - Interventions implemented
+3. **Read-back verification:** Have provider read back critical value to ensure accuracy
+4. **Follow facility policy:** Adhere to established critical value reporting procedures
+
+### Information to Have Ready
+
+- Patient identification (name, MRN, location)
+- Critical value and reference range
+- Previous values for comparison
+- Relevant clinical information
+- Current treatments that may affect value
+
+---
+
+## References and Further Reading
+
+Critical values are facility-specific and may vary slightly between institutions. Always refer to your facility's approved critical value list. This guide is based on commonly accepted critical ranges and is regularly updated.
+
+*Last Updated: January 2025*
+*Evidence-based clinical nursing education*

@@ -115,6 +115,27 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 600);
         });
     });
+
+    // Newsletter form submission
+    const newsletterForm = document.getElementById('newsletter-form');
+
+    if (newsletterForm) {
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const emailInput = document.getElementById('newsletter-email');
+            const email = emailInput.value;
+
+            // Here you would normally send to your email service (Mailchimp, ConvertKit, etc.)
+            // For now, we'll just show a success message
+
+            const formGroup = newsletterForm.querySelector('.form-group');
+            formGroup.innerHTML = '<p style="color: var(--secondary-color); font-weight: 600; font-size: 1.1rem;"><i class="fas fa-check-circle"></i> Thanks for subscribing! Check your email for confirmation.</p>';
+
+            // Optional: Log email for now (remove in production)
+            console.log('Newsletter subscription:', email);
+        });
+    }
 });
 
 console.log('🏥 FlorenceBot Pro Website - Ready!');

@@ -58,8 +58,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 icon.className = 'fas fa-times';
                 // Prevent body scroll when menu is open
                 document.body.style.overflow = 'hidden';
-                // Change button color to white for visibility on dark overlay
-                mobileMenuBtn.style.color = 'white';
+                // Change button color based on theme
+                const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+                mobileMenuBtn.style.color = isDarkMode ? '#f9fafb' : '#1f2937';
                 mobileMenuBtn.style.position = 'fixed';
                 mobileMenuBtn.style.right = '20px';
                 mobileMenuBtn.style.top = '30px';

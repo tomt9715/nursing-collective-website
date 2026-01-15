@@ -164,6 +164,11 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--primary-color);
 }
 
+/* Join Discord button in navbar - force white text */
+.nav-links .btn-primary {
+    color: white !important;
+}
+
 /* Hide Home link on desktop (logo serves as home button) */
 .nav-link-home {
     display: none;

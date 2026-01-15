@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About FlorenceBot - FlorenceBot Pro</title>
+    <meta name="description" content="Learn about FlorenceBot, your AI-powered nursing study companion living in Discord.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2E86AB">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="florencebot-styles.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/images/header logo.png" alt="FlorenceBot Pro Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                
+                <a href="guides.html">Study Guides</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about-florencebot.html" class="active">About Bot</a>
+                <a href="login.html">Login</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun light-icon"></i>
+                    <i class="fas fa-moon dark-icon"></i>
+                </button>
+                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- About Hero Section -->
+    <section class="about-hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="bot-icon">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <h1>Meet FlorenceBot Pro</h1>
+                <p class="hero-subtitle">Your AI-powered nursing study companion living in Discord</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FlorenceBot Intro Section -->
+    <section class="florencebot-intro">
+        <div class="container">
+            <div class="two-column-layout">
+                <div class="content-column">
+                    <h2>What is FlorenceBot?</h2>
+                    <p>FlorenceBot Pro is an advanced Discord bot specifically designed for nursing students. Get instant access to clinical references, lab values, medication information, and NCLEX prep materials right in your Discord server.</p>
+
+                    <h3>Why Discord?</h3>
+                    <p>Discord is where nursing students collaborate, study together, and support each other. FlorenceBot brings professional clinical references directly into this environment, making it easier than ever to access critical information while studying with peers.</p>
+
+                    <div class="feature-highlights">
+                        <div class="highlight-item">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <h4>Instant Responses</h4>
+                                <p>Get lab values, vital signs, and medication info in seconds with simple slash commands.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Study with Friends</h4>
+                                <p>Access FlorenceBot in your study group servers for collaborative learning.</p>
+                            </div>
+                        </div>
+                        <div class="highlight-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <h4>Always Available</h4>
+                                <p>24/7 access to clinical references whenever you need them, day or night.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="discord-preview-column">
+                    <div class="mock-discord-window">
+                        <div class="discord-titlebar">
+                            <i class="fab fa-discord"></i>
+                            <span>Discord</span>
+                            <div class="titlebar-buttons">
+                                <span class="titlebar-btn">─</span>
+                                <span class="titlebar-btn">□</span>
+                                <span class="titlebar-btn">×</span>
+                            </div>
+                        </div>
+                        <div class="discord-header">
+                            <span class="channel-icon">#</span>
+                            <span class="channel-name">clinical-help</span>
+                        </div>
+                        <div class="discord-messages">
+                            <div class="message user-message">
+                                <div class="avatar user-avatar">👩‍⚕️</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <strong class="username">Sarah_RN2026</strong>
+                                        <span class="timestamp">Today at 2:45 PM</span>
+                                    </div>
+                                    <div class="message-text">/electrolytes</div>
+                                </div>
+                            </div>
+
+                            <div class="message bot-message typing-animation">
+                                <div class="avatar bot-avatar">🤖</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <strong class="bot-username">FlorenceBot Pro</strong>
+                                        <span class="bot-badge">BOT</span>
+                                        <span class="timestamp">Today at 2:45 PM</span>
+                                    </div>
+                                    <div class="embed-preview">
+                                        <div class="embed-accent"></div>
+                                        <div class="embed-content">
+                                            <div class="embed-title">⚡ Electrolytes Quick Reference</div>
+                                            <div class="embed-field">
+                                                <div class="field-name">Potassium (K+)</div>
+                                                <div class="field-value">3.5-5.0 mEq/L</div>
+                                            </div>
+                                            <div class="embed-field">
+                                                <div class="field-name">Sodium (Na+)</div>
+                                                <div class="field-value">135-145 mEq/L</div>
+                                            </div>
+                                            <div class="embed-field">
+                                                <div class="field-name">Calcium (Ca2+)</div>
+                                                <div class="field-value">8.5-10.5 mg/dL</div>
+                                            </div>
+                                            <div class="embed-field">
+                                                <div class="field-name">Magnesium (Mg2+)</div>
+                                                <div class="field-value">1.5-2.5 mEq/L</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="message user-message" style="animation-delay: 0.5s;">
+                                <div class="avatar user-avatar">👩‍⚕️</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <strong class="username">Sarah_RN2026</strong>
+                                        <span class="timestamp">Today at 2:46 PM</span>
+                                    </div>
+                                    <div class="message-text">Perfect! Thanks! 🎉</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="discord-input">
+                            <div class="input-area">
+                                <span class="input-placeholder">Message #clinical-help</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Commands Section -->
+    <section class="commands-section">
+        <div class="container">
+            <h2>Popular Commands</h2>
+            <p class="section-subtitle">Quick access to essential clinical information</p>
+
+            <div class="commands-grid">
+                <div class="command-card">
+                    <div class="command-header">
+                        <code>/labvalues</code>
+                    </div>
+                    <p>Get comprehensive lab value reference ranges instantly</p>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-header">
+                        <code>/vitals</code>
+                    </div>
+                    <p>Access normal vital sign ranges by age group</p>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-header">
+                        <code>/electrolytes</code>
+                    </div>
+                    <p>View electrolyte normal ranges and imbalance signs</p>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-header">
+                        <code>/abg</code>
+                    </div>
+                    <p>Interpret arterial blood gas results with guidance</p>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-header">
+                        <code>/medmath</code>
+                    </div>
+                    <p>Calculate medication dosages and IV drip rates</p>
+                </div>
+
+                <div class="command-card">
+                    <div class="command-header">
+                        <code>/isolation</code>
+                    </div>
+                    <p>Review isolation precautions and PPE requirements</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="florencebot-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Study Smarter?</h2>
+                <p>Join 1,200+ nursing students using FlorenceBot Pro in Discord</p>
+                <div class="cta-buttons">
+                    <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-large btn-primary" target="_blank">
+                        <i class="fab fa-discord"></i> Join Discord Server
+                    </a>
+                    <a href="guides.html" class="btn btn-large btn-secondary">
+                        <i class="fas fa-book-open"></i> Browse Study Guides
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <img src="assets/images/favicon.png" alt="FlorenceBot Pro" class="footer-logo">
+                        <span>FlorenceBot Pro</span>
+                    </div>
+                    <p>Empowering nursing students with AI-powered clinical references and study tools.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="guides.html">Study Guides</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord Server</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@florencebot.pro">support@florencebot.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 FlorenceBot Pro. Built with ❤️ for nursing students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Dark Mode Manager -->
+    <script src="dark-mode.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>

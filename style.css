@@ -223,6 +223,11 @@ h1, h2, h3, h4, h5, h6 {
     transform: rotate(0deg);
 }
 
+/* Dark mode mobile menu button */
+[data-theme="dark"] .mobile-menu-btn {
+    color: var(--text-primary);
+}
+
 .mobile-menu-btn {
     display: none;
     background: none;

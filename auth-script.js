@@ -1,6 +1,14 @@
 // Authentication Page JavaScript
 // Email form toggle, password strength, and form validation
 
+// API Configuration
+const API_URL = 'http://localhost:8000';
+
+// Check if user is already logged in
+if (localStorage.getItem('accessToken')) {
+    window.location.href = 'dashboard.html';
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Auth script loaded');
 
@@ -93,15 +101,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Form validation
     if (signupForm) {
-        signupForm.addEventListener('submit', function(e) {
+        signupForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
+            const submitBtn = signupForm.querySelector('button[type="submit"]');
+            const isSignIn = submitBtn.querySelector('i').classList.contains('fa-sign-in-alt');
 
-            // Validate password match
-            if (password !== confirmPassword) {
+            // Validate password match for signup
+            if (!isSignIn && password !== confirmPassword) {
                 alert('Passwords do not match. Please try again.');
                 confirmPasswordInput.focus();
                 return;
@@ -114,18 +124,26 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            // All validation passed
-            console.log('Form validation passed');
-            console.log('Email:', email);
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Please wait...</span>';
 
-            // Placeholder - replace with actual authentication logic
-            alert(`Account creation successful!\n\nEmail: ${email}\n\nThis is a demo. In production, this would create your account and redirect to the dashboard.`);
-
-            // In production, you would:
-            // 1. Send data to your backend
-            // 2. Create user account
-            // 3. Redirect to dashboard
-            // window.location.href = 'dashboard.html';
+            try {
+                if (isSignIn) {
+                    // Login
+                    await handleLogin(email, password);
+                } else {
+                    // Register
+                    await handleRegister(email, password);
+                }
+            } catch (error) {
+                console.error('Auth error:', error);
+                alert(error.message || 'Authentication failed. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = isSignIn
+                    ? '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>'
+                    : '<i class="fas fa-user-plus"></i><span>Create Account</span>';
+            }
         });
     }
 
@@ -164,6 +182,59 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Handle Login
+async function handleLogin(email, password) {
+    const response = await fetch(`${API_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || 'Login failed');
+    }
+
+    // Store tokens and user data
+    localStorage.setItem('accessToken', data.access_token);
+    localStorage.setItem('refreshToken', data.refresh_token);
+    localStorage.setItem('user', JSON.stringify(data.user));
+
+    // Redirect to dashboard
+    window.location.href = 'dashboard.html';
+}
+
+// Handle Registration
+async function handleRegister(email, password) {
+    const response = await fetch(`${API_URL}/auth/register`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            email,
+            password,
+            first_name: 'Student',
+            last_name: 'User',
+            nursing_program: 'BSN'
+        })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || 'Registration failed');
+    }
+
+    alert('Registration successful! Please check your email to verify your account.\n\nFor testing purposes, you can now login.');
+
+    // Auto-login after registration (for testing)
+    await handleLogin(email, password);
+}
+
 // Handle social authentication (placeholder)
 function handleSocialAuth(provider) {
     console.log(`${provider} authentication initiated`);
@@ -175,16 +246,10 @@ function handleSocialAuth(provider) {
         'apple': 'Apple'
     };
 
-    alert(`${providerNames[provider]} authentication\n\nThis is a demo. In production, this would redirect to ${providerNames[provider]}'s OAuth flow.`);
+    alert(`${providerNames[provider]} authentication\n\nThis feature will be available soon. Please use email authentication for now.`);
 
-    // In production, you would:
-    // 1. Redirect to OAuth provider
-    // 2. Handle callback
-    // 3. Create/login user
-    // 4. Redirect to dashboard
-
-    // Example:
-    // window.location.href = `https://oauth.provider.com/authorize?client_id=YOUR_CLIENT_ID&redirect_uri=${encodeURIComponent(window.location.origin + '/auth/callback')}`;
+    // In production, you would redirect to OAuth endpoints:
+    // window.location.href = `${API_URL}/auth/oauth/${provider}`;
 }
 
 // Add ripple effect to buttons (matching site interaction)

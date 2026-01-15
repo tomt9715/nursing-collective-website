@@ -46,26 +46,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Simple mobile menu toggle
+    // Enhanced mobile menu toggle
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    
+
     if (mobileMenuBtn && navLinks) {
         mobileMenuBtn.addEventListener('click', function() {
             navLinks.classList.toggle('mobile-open');
             const icon = this.querySelector('i');
             if (navLinks.classList.contains('mobile-open')) {
                 icon.className = 'fas fa-times';
+                // Prevent body scroll when menu is open
+                document.body.style.overflow = 'hidden';
+                // Change button color to white for visibility on dark overlay
+                mobileMenuBtn.style.color = 'white';
+                mobileMenuBtn.style.position = 'fixed';
+                mobileMenuBtn.style.right = '20px';
+                mobileMenuBtn.style.top = '30px';
+                mobileMenuBtn.style.zIndex = '10000';
             } else {
                 icon.className = 'fas fa-bars';
+                // Restore body scroll
+                document.body.style.overflow = '';
+                // Restore button color
+                mobileMenuBtn.style.color = '';
+                mobileMenuBtn.style.position = '';
+                mobileMenuBtn.style.right = '';
+                mobileMenuBtn.style.top = '';
+                mobileMenuBtn.style.zIndex = '';
             }
         });
-        
+
         // Close mobile menu when clicking on links
         navLinks.addEventListener('click', function(e) {
             if (e.target.tagName === 'A') {
                 navLinks.classList.remove('mobile-open');
-                mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.className = 'fas fa-bars';
+                // Restore body scroll
+                document.body.style.overflow = '';
+                // Restore button color
+                mobileMenuBtn.style.color = '';
+                mobileMenuBtn.style.position = '';
+                mobileMenuBtn.style.right = '';
+                mobileMenuBtn.style.top = '';
+                mobileMenuBtn.style.zIndex = '';
             }
         });
     }

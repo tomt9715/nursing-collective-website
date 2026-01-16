@@ -32,9 +32,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     anchorLinks.forEach(link => {
         link.addEventListener('click', function(e) {
+            const targetId = this.getAttribute('href');
+
+            // Skip if it's just '#' or invalid
+            if (!targetId || targetId === '#') {
+                return;
+            }
+
             e.preventDefault();
 
-            const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
 
             if (targetSection) {

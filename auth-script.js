@@ -249,21 +249,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Validate names for signup
                 if (!firstName || !lastName) {
-                    alert('Please enter your first and last name.');
+                    showAlert('Missing Information', 'Please enter your first and last name.', 'warning');
                     return;
                 }
             }
 
             // Validate password match for signup
             if (currentMode === 'signup' && password !== confirmPassword) {
-                alert('Passwords do not match. Please try again.');
+                showAlert('Password Mismatch', 'Passwords do not match. Please try again.', 'warning');
                 confirmPasswordInput.focus();
                 return;
             }
 
             // Validate password strength (minimum 8 characters)
             if (password.length < 8) {
-                alert('Password must be at least 8 characters long.');
+                showAlert('Weak Password', 'Password must be at least 8 characters long.', 'warning');
                 passwordInput.focus();
                 return;
             }
@@ -282,7 +282,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } catch (error) {
                 console.error('Auth error:', error);
-                alert(error.message || 'Authentication failed. Please try again.');
+                showAlert('Authentication Failed', error.message || 'Authentication failed. Please try again.', 'error');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = currentMode === 'signin'
                     ? '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>'
@@ -448,7 +448,7 @@ async function handleRegister(email, password, firstName, lastName) {
         }
 
         console.log('Registration successful, attempting auto-login...');
-        alert('Registration successful! Logging you in...');
+        showSuccess('Registration successful! Logging you in...');
 
         // Auto-login after registration (for testing)
         await handleLogin(email, password);
@@ -474,7 +474,7 @@ async function handleSocialAuth(provider) {
             'discord': 'Discord',
             'apple': 'Apple'
         };
-        alert(`${providerNames[provider]} authentication\n\nThis feature will be available soon. Please use Google or email authentication for now.`);
+        showAlert('Coming Soon', `${providerNames[provider]} authentication will be available soon.\n\nPlease use Google or email authentication for now.`, 'info');
         return;
     }
 
@@ -499,7 +499,7 @@ async function handleSocialAuth(provider) {
 
     } catch (error) {
         console.error(`${provider} OAuth initiation error:`, error);
-        alert(`Failed to sign in with ${provider}. Please try again or use email authentication.`);
+        showAlert('Sign In Failed', `Failed to sign in with ${provider}. Please try again or use email authentication.`, 'error');
     }
 }
 

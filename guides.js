@@ -194,7 +194,7 @@ function renderGuides(guides = guidesData) {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             // Scroll to pricing section or open payment modal
-            alert('Premium purchase coming soon! This will open a payment modal for the NCLEX-Ready bundle.');
+            showAlert('Premium Access', 'Premium purchase coming soon!\n\nThis will open a payment modal for the NCLEX-Ready bundle.', 'info');
         });
     });
 }

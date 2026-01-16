@@ -42,13 +42,11 @@ document.addEventListener('DOMContentLoaded', async function() {
                 // Handle logout
                 if (this.getAttribute('href') === '#logout') {
                     e.preventDefault();
-                    if (confirm('Are you sure you want to logout?')) {
-                        // Clear auth tokens
-                        localStorage.removeItem('accessToken');
-                        localStorage.removeItem('refreshToken');
-                        localStorage.removeItem('user');
-                        window.location.href = 'login.html';
-                    }
+                    // Clear auth tokens and redirect (no confirmation needed)
+                    localStorage.removeItem('accessToken');
+                    localStorage.removeItem('refreshToken');
+                    localStorage.removeItem('user');
+                    window.location.href = 'login.html';
                 }
                 userDropdown.classList.remove('active');
             });
@@ -111,7 +109,7 @@ async function loadUserProfile() {
 
     } catch (error) {
         console.error('Error loading profile:', error);
-        alert('Failed to load your profile. Please try logging in again.');
+        showAlert('Profile Load Failed', 'Failed to load your profile. Please try logging in again.', 'error');
     }
 }
 
@@ -124,7 +122,7 @@ function updateOAuthStatus(user) {
         discordStatus.textContent = 'Connected';
         discordStatus.style.color = '#10b981';
         discordBtn.innerHTML = '<i class="fas fa-unlink"></i> Disconnect';
-        discordBtn.onclick = () => alert('Disconnect feature coming soon!');
+        discordBtn.onclick = () => showAlert('Coming Soon', 'Disconnect feature will be available soon!', 'info');
     }
 
     // Google
@@ -134,7 +132,7 @@ function updateOAuthStatus(user) {
         googleStatus.textContent = 'Connected';
         googleStatus.style.color = '#10b981';
         googleBtn.innerHTML = '<i class="fas fa-unlink"></i> Disconnect';
-        googleBtn.onclick = () => alert('Disconnect feature coming soon!');
+        googleBtn.onclick = () => showAlert('Coming Soon', 'Disconnect feature will be available soon!', 'info');
     }
 
     // Apple
@@ -144,7 +142,7 @@ function updateOAuthStatus(user) {
         appleStatus.textContent = 'Connected';
         appleStatus.style.color = '#10b981';
         appleBtn.innerHTML = '<i class="fas fa-unlink"></i> Disconnect';
-        appleBtn.onclick = () => alert('Disconnect feature coming soon!');
+        appleBtn.onclick = () => showAlert('Coming Soon', 'Disconnect feature will be available soon!', 'info');
     }
 }
 
@@ -180,7 +178,7 @@ async function handleProfileUpdate(e) {
         localStorage.setItem('user', JSON.stringify(data.user));
 
         // Show success message
-        alert('Profile updated successfully!');
+        showSuccess('Profile updated successfully!');
 
         // Update avatar if name changed
         const userAvatar = document.querySelector('.user-avatar');
@@ -190,7 +188,7 @@ async function handleProfileUpdate(e) {
 
     } catch (error) {
         console.error('Error updating profile:', error);
-        alert(error.message || 'Failed to update profile. Please try again.');
+        showAlert('Update Failed', error.message || 'Failed to update profile. Please try again.', 'error');
     } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-save"></i> Save Changes';
@@ -207,13 +205,13 @@ async function handlePasswordChange(e) {
 
     // Validate passwords match
     if (newPassword !== confirmPassword) {
-        alert('New passwords do not match!');
+        showAlert('Password Mismatch', 'New passwords do not match!', 'warning');
         return;
     }
 
     // Validate password length
     if (newPassword.length < 8) {
-        alert('Password must be at least 8 characters long!');
+        showAlert('Weak Password', 'Password must be at least 8 characters long!', 'warning');
         return;
     }
 
@@ -241,14 +239,14 @@ async function handlePasswordChange(e) {
         }
 
         // Show success message
-        alert('Password updated successfully!');
+        showSuccess('Password updated successfully!');
 
         // Clear form
         document.getElementById('password-form').reset();
 
     } catch (error) {
         console.error('Error updating password:', error);
-        alert(error.message || 'Failed to update password. Please try again.');
+        showAlert('Update Failed', error.message || 'Failed to update password. Please try again.', 'error');
     } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-key"></i> Update Password';

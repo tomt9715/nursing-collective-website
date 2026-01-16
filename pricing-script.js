@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (planName.includes('Free')) {
                     window.location.href = 'https://discord.gg/y2Mh77wAV2';
                 } else {
-                    alert(`Redirecting to checkout for ${planName} plan...\n\nThis would integrate with your payment provider (Stripe, PayPal, etc.)`);
+                    showAlert('Coming Soon', `Checkout for ${planName} plan will be available soon!\n\nThis will integrate with your payment provider (Stripe, PayPal, etc.)`, 'info');
                     // window.location.href = '/checkout?plan=' + encodeURIComponent(planName);
                 }
             });

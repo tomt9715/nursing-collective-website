@@ -141,7 +141,7 @@ async function loadUserProfile() {
 
     } catch (error) {
         console.error('Error loading profile:', error);
-        alert('Failed to load your profile. Please try logging in again.');
+        showAlert('Profile Load Failed', 'Failed to load your profile. Please try logging in again.', 'error');
     }
 }
 
@@ -528,7 +528,13 @@ function renderUsersTable(users) {
 }
 
 async function togglePremium(userId, grantPremium) {
-    if (!confirm(`Are you sure you want to ${grantPremium ? 'grant' : 'remove'} premium status for this user?`)) {
+    const confirmed = await showConfirm(
+        'Update Premium Status',
+        `Are you sure you want to ${grantPremium ? 'grant' : 'remove'} premium status for this user?`,
+        'question'
+    );
+
+    if (!confirmed) {
         return;
     }
 
@@ -549,11 +555,11 @@ async function togglePremium(userId, grantPremium) {
         // Reload users
         await loadAdminUsers(currentFilter);
 
-        alert(`Premium status ${grantPremium ? 'granted' : 'removed'} successfully!`);
+        showSuccess(`Premium status ${grantPremium ? 'granted' : 'removed'} successfully!`);
 
     } catch (error) {
         console.error('Error updating user:', error);
-        alert('Failed to update user. Please try again.');
+        showAlert('Update Failed', 'Failed to update user. Please try again.', 'error');
     }
 }
 
@@ -561,25 +567,29 @@ function viewUserDetails(userId) {
     const user = allUsersData.find(u => u.id === userId);
     if (!user) return;
 
-    const details = `
-Name: ${user.first_name} ${user.last_name}
+    const details = `Name: ${user.first_name} ${user.last_name}
 Email: ${user.email}
 Nursing Program: ${user.nursing_program || 'Not specified'}
 Account Type: ${user.is_premium ? 'Premium' : 'Free'}
 Admin: ${user.is_admin ? 'Yes' : 'No'}
 Verified: ${user.is_verified ? 'Yes' : 'No'}
 Discord Connected: ${user.has_discord ? 'Yes' : 'No'}
-Joined: ${new Date(user.created_at).toLocaleString()}
-    `;
+Joined: ${new Date(user.created_at).toLocaleString()}`;
 
-    alert(details);
+    showAlert('User Details', details, 'info');
 }
 
 async function verifyUser(userId) {
     const user = allUsersData.find(u => u.id === userId);
     if (!user) return;
 
-    if (!confirm(`Manually verify email for ${user.first_name} ${user.last_name} (${user.email})?`)) {
+    const confirmed = await showConfirm(
+        'Verify User Email',
+        `Manually verify email for ${user.first_name} ${user.last_name} (${user.email})?`,
+        'question'
+    );
+
+    if (!confirmed) {
         return;
     }
 
@@ -599,11 +609,11 @@ async function verifyUser(userId) {
         // Reload users
         await loadAdminUsers(currentFilter);
 
-        alert('User email verified successfully!');
+        showSuccess('User email verified successfully!');
 
     } catch (error) {
         console.error('Error verifying user:', error);
-        alert('Failed to verify user. Please try again.');
+        showAlert('Verification Failed', 'Failed to verify user. Please try again.', 'error');
     }
 }
 
@@ -611,7 +621,15 @@ async function deleteUser(userId) {
     const user = allUsersData.find(u => u.id === userId);
     if (!user) return;
 
-    if (!confirm(`Are you sure you want to delete ${user.first_name} ${user.last_name} (${user.email})?\n\nThis action cannot be undone.`)) {
+    const confirmed = await showConfirm(
+        'Delete User',
+        `Are you sure you want to delete ${user.first_name} ${user.last_name} (${user.email})?\n\nThis action cannot be undone.`,
+        'danger',
+        'Delete',
+        'Cancel'
+    );
+
+    if (!confirmed) {
         return;
     }
 
@@ -634,10 +652,10 @@ async function deleteUser(userId) {
         await loadAdminUsers(currentFilter);
         await loadAdminDashboard(); // Refresh dashboard stats
 
-        alert('User deleted successfully!');
+        showSuccess('User deleted successfully!');
 
     } catch (error) {
         console.error('Error deleting user:', error);
-        alert(error.message || 'Failed to delete user. Please try again.');
+        showAlert('Delete Failed', error.message || 'Failed to delete user. Please try again.', 'error');
     }
 }

@@ -28,7 +28,7 @@
 /* Auth Header */
 .auth-header {
     text-align: center;
-    margin-bottom: 36px;
+    margin-bottom: 24px;
 }
 
 .auth-icon-circle {
@@ -58,6 +58,48 @@
     font-size: 1rem;
     color: var(--text-secondary);
     margin: 0;
+}
+
+/* Auth Mode Toggle */
+.auth-mode-toggle {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    padding: 6px;
+    background: var(--background-light);
+    border-radius: 12px;
+}
+
+.mode-btn {
+    flex: 1;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: 'Source Sans 3', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.mode-btn:hover {
+    color: var(--text-primary);
+}
+
+.mode-btn.active {
+    background: var(--card-bg);
+    color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mode-btn i {
+    font-size: 1rem;
 }
 
 /* Auth Options Container */
@@ -391,6 +433,24 @@
 }
 
 .form-checkbox label a:hover {
+    text-decoration: underline;
+}
+
+/* Forgot Password Link */
+.forgot-password-link {
+    text-align: right;
+    margin-top: -8px;
+    margin-bottom: 12px;
+}
+
+.forgot-password-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.forgot-password-link a:hover {
     text-decoration: underline;
 }
 
@@ -1044,7 +1104,40 @@
     }
 }
 
-/* Admin User Management Modal */
+/* Success/Error Message Styling */
+.success-message {
+    padding: 12px 16px;
+    background: rgba(16, 185, 129, 0.1);
+    border-left: 3px solid #10b981;
+    border-radius: 6px;
+    color: #10b981;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.error-message {
+    padding: 12px 16px;
+    background: rgba(239, 68, 68, 0.1);
+    border-left: 3px solid #ef4444;
+    border-radius: 6px;
+    color: #ef4444;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+[data-theme="dark"] .success-message {
+    background: rgba(16, 185, 129, 0.15);
+}
+
+[data-theme="dark"] .error-message {
+    background: rgba(239, 68, 68, 0.15);
+}
+
+/* Admin User Management Modal & Forgot Password Modal */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -1058,6 +1151,7 @@
     justify-content: center;
     padding: 20px;
     backdrop-filter: blur(4px);
+    animation: fadeIn 0.3s ease;
 }
 
 .modal-content {

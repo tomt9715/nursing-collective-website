@@ -12,6 +12,9 @@ if (localStorage.getItem('accessToken')) {
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Auth script loaded');
 
+    // Current auth mode: 'signin' or 'signup'
+    let currentMode = 'signin'; // Default to sign in mode for returning users
+
     // Get elements
     const emailToggleBtn = document.getElementById('email-toggle');
     const authOptions = document.getElementById('auth-options');
@@ -22,7 +25,131 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPasswordInput = document.getElementById('confirm-password');
     const passwordStrength = document.getElementById('password-strength');
     const emailInput = document.getElementById('email');
-    const emailError = document.getElementById('email-error');
+    const signinModeBtn = document.getElementById('signin-mode-btn');
+    const signupModeBtn = document.getElementById('signup-mode-btn');
+    const authTitle = document.getElementById('auth-title');
+    const nameFields = document.getElementById('name-fields');
+    const confirmPasswordGroup = document.getElementById('confirm-password-group');
+    const submitBtn = document.getElementById('submit-btn');
+    const formModeText = document.getElementById('form-mode-text');
+    const forgotPasswordLink = document.getElementById('forgot-password-link');
+    const firstNameInput = document.getElementById('first-name');
+    const lastNameInput = document.getElementById('last-name');
+
+    // Check for last used auth method
+    const lastAuthMethod = localStorage.getItem('lastAuthMethod');
+
+    // Highlight last used auth method if exists
+    if (lastAuthMethod) {
+        const authBtns = document.querySelectorAll('.auth-btn[data-auth-method]');
+        authBtns.forEach(btn => {
+            if (btn.getAttribute('data-auth-method') === lastAuthMethod) {
+                btn.style.borderColor = 'var(--primary-color)';
+                btn.style.borderWidth = '3px';
+            }
+        });
+    }
+
+    // Function to update UI based on current mode
+    function updateModeUI() {
+        if (currentMode === 'signin') {
+            // Update title
+            authTitle.textContent = 'Welcome Back';
+
+            // Update toggle buttons
+            signinModeBtn.classList.add('active');
+            signupModeBtn.classList.remove('active');
+
+            // Update social auth button text
+            document.querySelectorAll('.auth-btn-text').forEach(span => {
+                const btn = span.closest('.auth-btn');
+                if (btn.classList.contains('google')) {
+                    span.textContent = 'Sign in with Google';
+                } else if (btn.classList.contains('discord')) {
+                    span.textContent = 'Sign in with Discord';
+                } else if (btn.classList.contains('apple')) {
+                    span.textContent = 'Sign in with Apple';
+                } else if (btn.classList.contains('email')) {
+                    span.textContent = 'Sign in with Email';
+                }
+            });
+
+            // Update form elements
+            if (formModeText) formModeText.querySelector('span').textContent = 'Sign in to your account';
+            if (nameFields) nameFields.style.display = 'none';
+            if (confirmPasswordGroup) confirmPasswordGroup.style.display = 'none';
+            if (forgotPasswordLink) forgotPasswordLink.style.display = 'block';
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>';
+            }
+            if (passwordInput) passwordInput.placeholder = 'Enter your password';
+
+            // Remove required from signup-only fields
+            if (firstNameInput) firstNameInput.removeAttribute('required');
+            if (lastNameInput) lastNameInput.removeAttribute('required');
+            if (confirmPasswordInput) confirmPasswordInput.removeAttribute('required');
+
+        } else {
+            // Update title
+            authTitle.textContent = 'Access Your Study Dashboard';
+
+            // Update toggle buttons
+            signinModeBtn.classList.remove('active');
+            signupModeBtn.classList.add('active');
+
+            // Update social auth button text
+            document.querySelectorAll('.auth-btn-text').forEach(span => {
+                const btn = span.closest('.auth-btn');
+                if (btn.classList.contains('google')) {
+                    span.textContent = 'Continue with Google';
+                } else if (btn.classList.contains('discord')) {
+                    span.textContent = 'Continue with Discord';
+                } else if (btn.classList.contains('apple')) {
+                    span.textContent = 'Continue with Apple';
+                } else if (btn.classList.contains('email')) {
+                    span.textContent = 'Continue with Email';
+                }
+            });
+
+            // Update form elements
+            if (formModeText) formModeText.querySelector('span').textContent = 'Create your account';
+            if (nameFields) nameFields.style.display = 'grid';
+            if (confirmPasswordGroup) confirmPasswordGroup.style.display = 'block';
+            if (forgotPasswordLink) forgotPasswordLink.style.display = 'none';
+            if (submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-user-plus"></i><span>Create Account</span>';
+            }
+            if (passwordInput) passwordInput.placeholder = 'Create secure password (min. 8 characters)';
+
+            // Add required to signup fields
+            if (firstNameInput) firstNameInput.setAttribute('required', '');
+            if (lastNameInput) lastNameInput.setAttribute('required', '');
+            if (confirmPasswordInput) confirmPasswordInput.setAttribute('required', '');
+        }
+
+        // Hide password strength for sign in mode
+        if (currentMode === 'signin') {
+            passwordStrength.classList.remove('visible');
+        }
+    }
+
+    // Initialize UI with default mode
+    updateModeUI();
+
+    // Mode toggle buttons
+    if (signinModeBtn) {
+        signinModeBtn.addEventListener('click', function() {
+            currentMode = 'signin';
+            updateModeUI();
+        });
+    }
+
+    if (signupModeBtn) {
+        signupModeBtn.addEventListener('click', function() {
+            currentMode = 'signup';
+            updateModeUI();
+        });
+    }
 
     // Toggle to email form
     if (emailToggleBtn) {
@@ -30,6 +157,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Email toggle clicked');
             authOptions.style.display = 'none';
             emailForm.classList.add('active');
+            localStorage.setItem('lastAuthMethod', 'email');
         });
     }
 
@@ -53,11 +181,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = this.value;
             const strengthBar = passwordStrength.querySelector('.strength-bar');
             const strengthText = passwordStrength.querySelector('.strength-text');
-            const submitBtn = signupForm.querySelector('button[type="submit"]');
-            const isSignIn = submitBtn.querySelector('i').classList.contains('fa-sign-in-alt');
 
             // Only show password strength during sign up
-            if (password.length === 0 || isSignIn) {
+            if (password.length === 0 || currentMode === 'signin') {
                 passwordStrength.classList.remove('visible');
                 return;
             }
@@ -110,13 +236,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
-            const submitBtn = signupForm.querySelector('button[type="submit"]');
-            const isSignIn = submitBtn.querySelector('i').classList.contains('fa-sign-in-alt');
 
             // Get name fields (only needed for signup)
             let firstName = '';
             let lastName = '';
-            if (!isSignIn) {
+            if (currentMode === 'signup') {
                 const firstNameInput = document.getElementById('first-name');
                 const lastNameInput = document.getElementById('last-name');
 
@@ -131,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             // Validate password match for signup
-            if (!isSignIn && password !== confirmPassword) {
+            if (currentMode === 'signup' && password !== confirmPassword) {
                 alert('Passwords do not match. Please try again.');
                 confirmPasswordInput.focus();
                 return;
@@ -149,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Please wait...</span>';
 
             try {
-                if (isSignIn) {
+                if (currentMode === 'signin') {
                     // Login
                     await handleLogin(email, password);
                 } else {
@@ -160,56 +284,100 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Auth error:', error);
                 alert(error.message || 'Authentication failed. Please try again.');
                 submitBtn.disabled = false;
-                submitBtn.innerHTML = isSignIn
+                submitBtn.innerHTML = currentMode === 'signin'
                     ? '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>'
                     : '<i class="fas fa-user-plus"></i><span>Create Account</span>';
             }
         });
     }
 
-    // Toggle Sign In/Sign Up mode
-    const toggleSignin = document.getElementById('toggle-signin');
-    if (toggleSignin) {
-        toggleSignin.addEventListener('click', function(e) {
+    // Forgot Password Modal
+    const forgotModal = document.getElementById('forgot-password-modal');
+    const openForgotModalBtn = document.getElementById('open-forgot-modal');
+    const closeForgotModalBtn = document.getElementById('close-forgot-modal');
+    const forgotPasswordForm = document.getElementById('forgot-password-form');
+
+    if (openForgotModalBtn) {
+        openForgotModalBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            const authHeader = document.querySelector('.auth-header h1');
-            const submitBtn = signupForm.querySelector('button[type="submit"]');
-            const confirmPasswordGroup = document.querySelector('#confirm-password').closest('.form-group');
-            const nameFieldsGroup = document.querySelector('#first-name')?.closest('div[style*="grid"]');
-            const termsCheckbox = document.querySelector('.form-checkbox');
-            const firstNameInput = document.getElementById('first-name');
-            const lastNameInput = document.getElementById('last-name');
+            forgotModal.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        });
+    }
 
-            if (this.textContent === 'Sign In') {
-                // Switch to sign in mode
-                authHeader.textContent = 'Welcome Back';
-                submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>';
-                confirmPasswordGroup.style.display = 'none';
-                confirmPasswordInput.removeAttribute('required');
-                if (nameFieldsGroup) nameFieldsGroup.style.display = 'none';
-                if (firstNameInput) firstNameInput.removeAttribute('required');
-                if (lastNameInput) lastNameInput.removeAttribute('required');
-                passwordStrength.classList.remove('visible'); // Hide password strength for sign in
-                if (termsCheckbox) termsCheckbox.style.display = 'none';
-                this.parentElement.innerHTML = 'Don\'t have an account? <a href="#" id="toggle-signin">Sign Up</a>';
+    if (closeForgotModalBtn) {
+        closeForgotModalBtn.addEventListener('click', function() {
+            forgotModal.style.display = 'none';
+            document.body.style.overflow = '';
+            forgotPasswordForm.reset();
+            document.getElementById('forgot-password-message').style.display = 'none';
+        });
+    }
 
-                // Re-attach event listener
-                document.getElementById('toggle-signin').addEventListener('click', arguments.callee);
-            } else {
-                // Switch to sign up mode
-                authHeader.textContent = 'Access Your Study Dashboard';
-                submitBtn.innerHTML = '<i class="fas fa-user-plus"></i><span>Create Account</span>';
-                confirmPasswordGroup.style.display = 'block';
-                confirmPasswordInput.setAttribute('required', '');
-                if (nameFieldsGroup) nameFieldsGroup.style.display = 'grid';
-                if (firstNameInput) firstNameInput.setAttribute('required', '');
-                if (lastNameInput) lastNameInput.setAttribute('required', '');
-                // Password strength will show when user types
-                if (termsCheckbox) termsCheckbox.style.display = 'flex';
-                this.parentElement.innerHTML = 'Already have an account? <a href="#" id="toggle-signin">Sign In</a>';
+    // Close modal when clicking outside
+    if (forgotModal) {
+        forgotModal.addEventListener('click', function(e) {
+            if (e.target === forgotModal) {
+                closeForgotModalBtn.click();
+            }
+        });
+    }
 
-                // Re-attach event listener
-                document.getElementById('toggle-signin').addEventListener('click', arguments.callee);
+    // Handle forgot password form submission
+    if (forgotPasswordForm) {
+        forgotPasswordForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const email = document.getElementById('forgot-email').value;
+            const submitBtn = document.getElementById('forgot-submit-btn');
+            const messageDiv = document.getElementById('forgot-password-message');
+
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i><span>Sending...</span>';
+
+            try {
+                const response = await fetch(`${API_URL}/auth/forgot-password`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email })
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Failed to send reset email');
+                }
+
+                // Show success message
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'success-message';
+                messageDiv.innerHTML = `
+                    <i class="fas fa-check-circle"></i>
+                    <span>Password reset link sent! Check your email inbox.</span>
+                `;
+
+                // Reset form
+                forgotPasswordForm.reset();
+
+                // Close modal after 3 seconds
+                setTimeout(() => {
+                    closeForgotModalBtn.click();
+                }, 3000);
+
+            } catch (error) {
+                console.error('Forgot password error:', error);
+                messageDiv.style.display = 'block';
+                messageDiv.className = 'error-message';
+                messageDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>${error.message || 'Failed to send reset email. Please try again.'}</span>
+                `;
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i><span>Send Reset Link</span>';
             }
         });
     }
@@ -217,60 +385,86 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Handle Login
 async function handleLogin(email, password) {
-    const response = await fetch(`${API_URL}/auth/login`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password })
-    });
+    try {
+        console.log('Attempting login for:', email);
 
-    const data = await response.json();
+        const response = await fetch(`${API_URL}/auth/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password })
+        });
 
-    if (!response.ok) {
-        throw new Error(data.error || 'Login failed');
+        const data = await response.json();
+        console.log('Login response:', { status: response.status, hasToken: !!data.access_token });
+
+        if (!response.ok) {
+            console.error('Login failed:', data.error);
+            throw new Error(data.error || 'Login failed');
+        }
+
+        console.log('Login successful, storing tokens and redirecting...');
+
+        // Store tokens and user data
+        localStorage.setItem('accessToken', data.access_token);
+        localStorage.setItem('refreshToken', data.refresh_token);
+        localStorage.setItem('user', JSON.stringify(data.user));
+
+        // Redirect to dashboard
+        window.location.href = 'dashboard.html';
+
+    } catch (error) {
+        console.error('Login error:', error);
+        throw error; // Re-throw to be caught by caller
     }
-
-    // Store tokens and user data
-    localStorage.setItem('accessToken', data.access_token);
-    localStorage.setItem('refreshToken', data.refresh_token);
-    localStorage.setItem('user', JSON.stringify(data.user));
-
-    // Redirect to dashboard
-    window.location.href = 'dashboard.html';
 }
 
 // Handle Registration
 async function handleRegister(email, password, firstName, lastName) {
-    const response = await fetch(`${API_URL}/auth/register`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            email,
-            password,
-            first_name: firstName,
-            last_name: lastName,
-            nursing_program: 'BSN'
-        })
-    });
+    try {
+        console.log('Starting registration for:', email);
 
-    const data = await response.json();
+        const response = await fetch(`${API_URL}/auth/register`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email,
+                password,
+                first_name: firstName,
+                last_name: lastName,
+                nursing_program: 'BSN'
+            })
+        });
 
-    if (!response.ok) {
-        throw new Error(data.error || 'Registration failed');
+        const data = await response.json();
+        console.log('Registration response:', { status: response.status, data });
+
+        if (!response.ok) {
+            console.error('Registration failed:', data.error);
+            throw new Error(data.error || 'Registration failed');
+        }
+
+        console.log('Registration successful, attempting auto-login...');
+        alert('Registration successful! Logging you in...');
+
+        // Auto-login after registration (for testing)
+        await handleLogin(email, password);
+
+    } catch (error) {
+        console.error('Registration or auto-login error:', error);
+        throw error; // Re-throw to be caught by form handler
     }
-
-    alert('Registration successful! Please check your email to verify your account.\n\nFor testing purposes, you can now login.');
-
-    // Auto-login after registration (for testing)
-    await handleLogin(email, password);
 }
 
 // Handle social authentication (placeholder)
 function handleSocialAuth(provider) {
     console.log(`${provider} authentication initiated`);
+
+    // Remember last used auth method
+    localStorage.setItem('lastAuthMethod', provider);
 
     // Placeholder - replace with actual OAuth flow
     const providerNames = {

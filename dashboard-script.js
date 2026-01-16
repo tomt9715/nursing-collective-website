@@ -510,11 +510,17 @@ function renderUsersTable(users) {
                         <button class="action-btn" onclick="viewUserDetails('${user.id}')">
                             <i class="fas fa-eye"></i> View
                         </button>
+                        ${!user.is_verified ? `<button class="action-btn" onclick="verifyUser('${user.id}')">
+                            <i class="fas fa-check-circle"></i> Verify Email
+                        </button>` : ''}
                         ${!user.is_premium ? `<button class="action-btn" onclick="togglePremium('${user.id}', true)">
                             <i class="fas fa-crown"></i> Grant Premium
                         </button>` : `<button class="action-btn danger" onclick="togglePremium('${user.id}', false)">
                             <i class="fas fa-times"></i> Remove Premium
                         </button>`}
+                        ${!user.is_admin ? `<button class="action-btn danger" onclick="deleteUser('${user.id}')">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>` : ''}
                     </div>
                 </td>
             </tr>
@@ -568,4 +574,71 @@ Joined: ${new Date(user.created_at).toLocaleString()}
     `;
 
     alert(details);
+}
+
+async function verifyUser(userId) {
+    const user = allUsersData.find(u => u.id === userId);
+    if (!user) return;
+
+    if (!confirm(`Manually verify email for ${user.first_name} ${user.last_name} (${user.email})?`)) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_URL}/admin/users/${userId}/verify`, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to verify user');
+        }
+
+        // Reload users
+        await loadAdminUsers(currentFilter);
+
+        alert('User email verified successfully!');
+
+    } catch (error) {
+        console.error('Error verifying user:', error);
+        alert('Failed to verify user. Please try again.');
+    }
+}
+
+async function deleteUser(userId) {
+    const user = allUsersData.find(u => u.id === userId);
+    if (!user) return;
+
+    if (!confirm(`Are you sure you want to delete ${user.first_name} ${user.last_name} (${user.email})?\n\nThis action cannot be undone.`)) {
+        return;
+    }
+
+    try {
+        const response = await fetch(`${API_URL}/admin/users/${userId}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Failed to delete user');
+        }
+
+        // Reload users
+        await loadAdminUsers(currentFilter);
+        await loadAdminDashboard(); // Refresh dashboard stats
+
+        alert('User deleted successfully!');
+
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        alert(error.message || 'Failed to delete user. Please try again.');
+    }
 }

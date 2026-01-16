@@ -162,7 +162,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 authHeader.textContent = 'Welcome Back';
                 submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>';
                 confirmPasswordGroup.style.display = 'none';
-                termsCheckbox.style.display = 'none';
+                confirmPasswordInput.removeAttribute('required');
+                if (termsCheckbox) termsCheckbox.style.display = 'none';
                 this.parentElement.innerHTML = 'Don\'t have an account? <a href="#" id="toggle-signin">Sign Up</a>';
 
                 // Re-attach event listener
@@ -172,7 +173,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 authHeader.textContent = 'Access Your Study Dashboard';
                 submitBtn.innerHTML = '<i class="fas fa-user-plus"></i><span>Create Account</span>';
                 confirmPasswordGroup.style.display = 'block';
-                termsCheckbox.style.display = 'flex';
+                confirmPasswordInput.setAttribute('required', '');
+                if (termsCheckbox) termsCheckbox.style.display = 'flex';
                 this.parentElement.innerHTML = 'Already have an account? <a href="#" id="toggle-signin">Sign In</a>';
 
                 // Re-attach event listener

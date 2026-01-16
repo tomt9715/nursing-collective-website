@@ -335,6 +335,7 @@ function showGettingStartedCard(user) {
 }
 
 // Guides data - synced with guides.js
+// All guides cost $5.99 each, users purchase individually
 const guidesData = [
     {
         id: 'electrolytes',
@@ -346,7 +347,7 @@ const guidesData = [
         topics: ['Sodium', 'Potassium', 'Calcium', 'Magnesium', 'Phosphorus'],
         readTime: '8 min',
         difficulty: 'Intermediate',
-        accessLevel: 'free'
+        price: 5.99
     },
     {
         id: 'vital-signs',
@@ -358,7 +359,7 @@ const guidesData = [
         topics: ['Heart Rate', 'Blood Pressure', 'Respiratory Rate', 'Temperature', 'SpO₂'],
         readTime: '7 min',
         difficulty: 'Beginner',
-        accessLevel: 'free'
+        price: 5.99
     },
     {
         id: 'critical-lab-values',
@@ -370,7 +371,7 @@ const guidesData = [
         topics: ['Critical Values', 'Lab Ranges', 'Emergency Response'],
         readTime: '6 min',
         difficulty: 'Intermediate',
-        accessLevel: 'premium'
+        price: 5.99
     },
     {
         id: 'isolation-precautions',
@@ -382,7 +383,7 @@ const guidesData = [
         topics: ['Standard Precautions', 'Contact', 'Droplet', 'Airborne', 'PPE'],
         readTime: '9 min',
         difficulty: 'Intermediate',
-        accessLevel: 'premium'
+        price: 5.99
     },
     {
         id: 'medication-math',
@@ -394,38 +395,37 @@ const guidesData = [
         topics: ['Dosage Calculations', 'IV Flow Rates', 'Weight-Based Dosing', 'Conversions'],
         readTime: '12 min',
         difficulty: 'Advanced',
-        accessLevel: 'premium'
+        price: 5.99
     }
 ];
 
-// Load accessible guides based on user subscription
+// Load purchased guides from localStorage
 function loadAccessibleGuides(user) {
     const guideList = document.getElementById('guide-list');
     if (!guideList) return;
 
-    // Filter guides based on access level
-    const accessibleGuides = guidesData.filter(guide => {
-        if (guide.accessLevel === 'free') return true;
-        if (guide.accessLevel === 'premium' && user.is_premium) return true;
-        return false;
-    });
+    // Get purchased guides from localStorage (will be synced with backend later)
+    const purchasedGuides = JSON.parse(localStorage.getItem('purchasedGuides') || '[]');
+
+    // Filter to show only purchased guides
+    const purchasedGuidesData = guidesData.filter(guide => purchasedGuides.includes(guide.id));
 
     // Update study guides stat
     const guidesCountStat = document.querySelector('.user-stats .stat:first-child .number');
     if (guidesCountStat) {
-        guidesCountStat.textContent = accessibleGuides.length;
+        guidesCountStat.textContent = purchasedGuidesData.length;
     }
 
-    // If user has accessible guides, render them
-    if (accessibleGuides.length > 0) {
-        guideList.innerHTML = accessibleGuides.map(guide => `
+    // If user has purchased guides, render them
+    if (purchasedGuidesData.length > 0) {
+        guideList.innerHTML = purchasedGuidesData.map(guide => `
             <div class="guide-item" style="padding: 16px; background: var(--background-light); border-radius: 12px; margin-bottom: 12px; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent;" onclick="window.location.href='guide.html?id=${guide.id}'">
                 <div style="display: flex; align-items: center; gap: 16px;">
                     <div style="font-size: 32px; flex-shrink: 0;">${guide.icon}</div>
                     <div style="flex: 1;">
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px;">
+                        <div style="display: flex; align-items-center; gap: 8px; margin-bottom: 4px;">
                             <h4 style="margin: 0; font-size: 1rem; color: var(--text-primary);">${guide.title}</h4>
-                            ${guide.accessLevel === 'free' ? '<span class="badge bg-success" style="font-size: 0.65rem; padding: 3px 8px;">FREE</span>' : '<span class="badge bg-warning" style="font-size: 0.65rem; padding: 3px 8px;">PREMIUM</span>'}
+                            <span class="badge bg-success" style="font-size: 0.65rem; padding: 3px 8px;"><i class="fas fa-check"></i> OWNED</span>
                         </div>
                         <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">${guide.description}</p>
                         <div style="display: flex; align-items: center; gap: 16px; margin-top: 8px; font-size: 0.8rem; color: var(--text-secondary);">
@@ -452,12 +452,12 @@ function loadAccessibleGuides(user) {
             });
         });
     } else {
-        // Show empty state (shouldn't happen but just in case)
+        // Show empty state with browse guides CTA
         guideList.innerHTML = `
             <div class="empty-state" style="text-align: center; padding: 60px 20px;">
-                <i class="fas fa-book-open" style="font-size: 64px; color: var(--primary-color); opacity: 0.3; margin-bottom: 20px;"></i>
-                <h4 style="color: var(--text-primary); margin-bottom: 12px;">No Study Guides Yet</h4>
-                <p style="color: var(--text-secondary); margin-bottom: 24px;">Get started by browsing our collection of NCLEX-focused study materials</p>
+                <i class="fas fa-shopping-cart" style="font-size: 64px; color: var(--primary-color); opacity: 0.3; margin-bottom: 20px;"></i>
+                <h4 style="color: var(--text-primary); margin-bottom: 12px;">No Guides Purchased Yet</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 24px;">Browse our collection of NCLEX-focused study guides. Each guide is $5.99 with lifetime access!</p>
             </div>
         `;
     }

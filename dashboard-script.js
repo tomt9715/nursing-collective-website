@@ -97,7 +97,8 @@ async function loadUserProfile() {
         // Update dashboard header
         const dashboardHeader = document.querySelector('.dashboard-header h1');
         if (dashboardHeader) {
-            dashboardHeader.textContent = `Welcome back, ${user.first_name}!`;
+            const displayName = user.first_name || user.email?.split('@')[0] || 'Student';
+            dashboardHeader.textContent = `Welcome back, ${displayName}!`;
 
             // Add admin badge if admin
             if (user.is_admin) {

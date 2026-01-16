@@ -1,8 +1,64 @@
 // Pricing Page JavaScript
-// FAQ Accordion functionality
+// Class-based Package System with Tier Toggle
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Pricing script loaded');
+
+    // Tier Toggle functionality
+    const tierToggles = document.querySelectorAll('.tier-toggle');
+    const tierDescription = document.getElementById('tier-description');
+    let currentTier = 'full'; // Default to Full tier
+
+    tierToggles.forEach(toggle => {
+        toggle.addEventListener('click', function() {
+            const selectedTier = this.getAttribute('data-tier');
+
+            // Update active state on toggle buttons
+            tierToggles.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+
+            // Update current tier
+            currentTier = selectedTier;
+
+            // Switch tier description content
+            if (tierDescription) {
+                const fullContent = tierDescription.querySelector('.full-tier-content');
+                const liteContent = tierDescription.querySelector('.lite-tier-content');
+
+                if (selectedTier === 'full') {
+                    fullContent.style.display = 'block';
+                    liteContent.style.display = 'none';
+                } else {
+                    fullContent.style.display = 'none';
+                    liteContent.style.display = 'block';
+                }
+            }
+
+            // Update all price displays
+            const fullPrices = document.querySelectorAll('.full-price');
+            const litePrices = document.querySelectorAll('.lite-price');
+
+            fullPrices.forEach(price => {
+                price.style.display = selectedTier === 'full' ? 'block' : 'none';
+            });
+
+            litePrices.forEach(price => {
+                price.style.display = selectedTier === 'lite' ? 'block' : 'none';
+            });
+
+            // Update button text
+            const buttonTexts = document.querySelectorAll('.btn-text');
+            buttonTexts.forEach(btnText => {
+                if (selectedTier === 'full') {
+                    btnText.textContent = 'Get Full Package';
+                } else {
+                    btnText.textContent = 'Get Lite Package';
+                }
+            });
+
+            console.log('Switched to tier:', selectedTier);
+        });
+    });
 
     // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
@@ -10,21 +66,37 @@ document.addEventListener('DOMContentLoaded', function() {
 
     faqItems.forEach((item, index) => {
         const question = item.querySelector('.faq-question');
+        const answer = item.querySelector('.faq-answer');
 
-        if (question) {
+        if (question && answer) {
             question.addEventListener('click', function(e) {
                 e.preventDefault();
+                e.stopPropagation();
                 console.log('FAQ clicked:', index);
 
-                // Close all other items
+                const isActive = item.classList.contains('active');
+
+                // First, close all items (including this one)
                 faqItems.forEach(otherItem => {
-                    if (otherItem !== item && otherItem.classList.contains('active')) {
-                        otherItem.classList.remove('active');
+                    otherItem.classList.remove('active');
+                    const otherAnswer = otherItem.querySelector('.faq-answer');
+                    if (otherAnswer) {
+                        otherAnswer.style.display = 'none';
+                    }
+                    const otherIcon = otherItem.querySelector('.faq-question i');
+                    if (otherIcon) {
+                        otherIcon.style.transform = 'rotate(0deg)';
                     }
                 });
 
-                // Toggle current item
-                item.classList.toggle('active');
+                // Then, if this item wasn't active before, open it
+                if (!isActive) {
+                    item.classList.add('active');
+                    answer.style.display = 'block';
+                    const icon = question.querySelector('i');
+                    if (icon) icon.style.transform = 'rotate(180deg)';
+                }
+
                 console.log('Item active:', item.classList.contains('active'));
             });
         }
@@ -32,7 +104,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Optional: Open first FAQ by default
     if (faqItems.length > 0) {
+        const firstAnswer = faqItems[0].querySelector('.faq-answer');
+        const firstIcon = faqItems[0].querySelector('.faq-question i');
         faqItems[0].classList.add('active');
+        if (firstAnswer) firstAnswer.style.display = 'block';
+        if (firstIcon) firstIcon.style.transform = 'rotate(180deg)';
         console.log('First FAQ opened by default');
     }
 

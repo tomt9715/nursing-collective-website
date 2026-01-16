@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pricing - FlorenceBot Pro</title>
-    <meta name="description" content="Choose the perfect plan for your nursing education journey. Free Discord bot access or upgrade to NCLEX-Ready guides with practice questions.">
+    <title>Pricing - Study Packages by Class | FlorenceBot Pro</title>
+    <meta name="description" content="Choose your nursing class package. Lite ($24.99) includes all study guides. Full ($49.99) adds NCLEX questions, strategies, and PDF cards.">
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -42,7 +42,7 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="index.html" class="nav-link-home">Home</a>
+                <a href="index.html">Home</a>
                 <a href="guides.html">Study Guides</a>
                 <a href="pricing.html" class="active">Pricing</a>
                 <a href="about-florencebot.html">About FlorenceBot</a>
@@ -59,153 +59,329 @@
         </div>
     </nav>
 
-    <!-- Pricing Hero Section -->
-    <section class="pricing-hero">
+    <!-- Pricing Hero -->
+    <section class="pricing-hero" style="padding: 120px 0 80px; text-align: center; position: relative; overflow: hidden;">
         <div class="container">
-            <div class="pricing-hero-content">
-                <h1>Choose Your Learning Path</h1>
-                <p class="pricing-subtitle">
-                    Start with free access to our Discord bot and community. Upgrade anytime for comprehensive NCLEX prep materials.
+            <div style="display: inline-block; padding: 10px 24px; background: var(--primary-color); color: white; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px;">
+                <i class="fas fa-graduation-cap"></i> CLASS-BASED PACKAGES
+            </div>
+            <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2;">
+                Buy the Package for Your Class
+            </h1>
+            <p style="font-size: 1.25rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 40px;">
+                Each class offers two tiers: <strong>Lite</strong> for guides & summaries, or <strong>Full</strong> for everything including NCLEX prep.
+            </p>
+        </div>
+    </section>
+
+    <!-- Package Grid -->
+    <section style="padding: 40px 0 60px;">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Fundamentals of Nursing -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card" style="background: var(--card-background); border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 2px solid var(--border-color);">
+                        <!-- Class Header -->
+                        <div style="text-align: center; margin-bottom: 24px;">
+                            <div style="font-size: 3rem; margin-bottom: 12px;">📚</div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Fundamentals of Nursing</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Foundation & basics</p>
+                        </div>
+
+                        <!-- Included Guides Preview -->
+                        <div style="margin-bottom: 24px; padding: 16px; background: var(--background-light); border-radius: 12px; flex-grow: 1;">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; text-transform: uppercase;">Includes:</div>
+                            <div style="font-size: 0.85rem; color: var(--text-primary); line-height: 1.6;">
+                                Vital Signs • Infection Control • Documentation • Nursing Process • + more being added
+                            </div>
+                        </div>
+
+                        <!-- Pricing Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Full Package will be $49.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Full</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$49.99</span>
+                            </button>
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Lite Package will be $24.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Lite</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$24.99</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Medical-Surgical Nursing -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card" style="background: var(--card-background); border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 2px solid var(--border-color);">
+                        <!-- Class Header -->
+                        <div style="text-align: center; margin-bottom: 24px;">
+                            <div style="font-size: 3rem; margin-bottom: 12px;">🏥</div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Medical-Surgical Nursing</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Complex disease management</p>
+                        </div>
+
+                        <!-- Included Guides Preview -->
+                        <div style="margin-bottom: 24px; padding: 16px; background: var(--background-light); border-radius: 12px; flex-grow: 1;">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; text-transform: uppercase;">Includes:</div>
+                            <div style="font-size: 0.85rem; color: var(--text-primary); line-height: 1.6;">
+                                Electrolytes • Critical Labs • Cardiac Care • Respiratory • + more being added
+                            </div>
+                        </div>
+
+                        <!-- Pricing Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Full Package will be $49.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Full</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$49.99</span>
+                            </button>
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Lite Package will be $24.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Lite</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$24.99</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pharmacology (Popular) -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card" style="position: relative; background: var(--card-background); border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 2px solid var(--primary-color);">
+<!-- Popular Badge -->
+                        <div style="position: absolute; top: -12px; right: 20px; background: var(--primary-color); color: white; padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; font-weight: 700; box-shadow: 0 4px 12px rgba(46, 134, 171, 0.3);">
+                            <i class="fas fa-star"></i> POPULAR
+                        </div>
+
+                                                <!-- Class Header -->
+                        <div style="text-align: center; margin-bottom: 24px;">
+                            <div style="font-size: 3rem; margin-bottom: 12px;">💊</div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Pharmacology</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Drug classes &amp; calculations</p>
+                        </div>
+
+                        <!-- Included Guides Preview -->
+                        <div style="margin-bottom: 24px; padding: 16px; background: var(--background-light); border-radius: 12px; flex-grow: 1;">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; text-transform: uppercase;">Includes:</div>
+                            <div style="font-size: 0.85rem; color: var(--text-primary); line-height: 1.6;">
+                                Medication Calculations • Drug Classes • Common Meds • Side Effects • + more being added
+                            </div>
+                        </div>
+
+                        <!-- Pricing Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Full Package will be $49.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Full</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$49.99</span>
+                            </button>
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Lite Package will be $24.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Lite</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$24.99</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Maternal/OB Nursing -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card" style="background: var(--card-background); border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 2px solid var(--border-color);">
+                        <!-- Class Header -->
+                        <div style="text-align: center; margin-bottom: 24px;">
+                            <div style="font-size: 3rem; margin-bottom: 12px;">👶</div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Maternal/OB Nursing</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Pregnancy &amp; childbirth</p>
+                        </div>
+
+                        <!-- Included Guides Preview -->
+                        <div style="margin-bottom: 24px; padding: 16px; background: var(--background-light); border-radius: 12px; flex-grow: 1;">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; text-transform: uppercase;">Includes:</div>
+                            <div style="font-size: 0.85rem; color: var(--text-primary); line-height: 1.6;">
+                                Antepartum Care • Labor &amp; Delivery • Postpartum • Newborn Care • + more being added
+                            </div>
+                        </div>
+
+                        <!-- Pricing Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Full Package will be $49.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Full</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$49.99</span>
+                            </button>
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Lite Package will be $24.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Lite</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$24.99</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pediatric Nursing -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card" style="background: var(--card-background); border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 2px solid var(--border-color);">
+                        <!-- Class Header -->
+                        <div style="text-align: center; margin-bottom: 24px;">
+                            <div style="font-size: 3rem; margin-bottom: 12px;">🧸</div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Pediatric Nursing</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Children's health &amp; development</p>
+                        </div>
+
+                        <!-- Included Guides Preview -->
+                        <div style="margin-bottom: 24px; padding: 16px; background: var(--background-light); border-radius: 12px; flex-grow: 1;">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; text-transform: uppercase;">Includes:</div>
+                            <div style="font-size: 0.85rem; color: var(--text-primary); line-height: 1.6;">
+                                Growth &amp; Development • Pediatric Assessment • Conditions • Immunizations • + more being added
+                            </div>
+                        </div>
+
+                        <!-- Pricing Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Full Package will be $49.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Full</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$49.99</span>
+                            </button>
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Lite Package will be $24.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Lite</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$24.99</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mental Health Nursing -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="package-card" style="background: var(--card-background); border-radius: 20px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); transition: all 0.3s ease; height: 100%; display: flex; flex-direction: column; border: 2px solid var(--border-color);">
+                        <!-- Class Header -->
+                        <div style="text-align: center; margin-bottom: 24px;">
+                            <div style="font-size: 3rem; margin-bottom: 12px;">🧠</div>
+                            <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Mental Health Nursing</h3>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Psychiatric care &amp; therapy</p>
+                        </div>
+
+                        <!-- Included Guides Preview -->
+                        <div style="margin-bottom: 24px; padding: 16px; background: var(--background-light); border-radius: 12px; flex-grow: 1;">
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600; margin-bottom: 8px; text-transform: uppercase;">Includes:</div>
+                            <div style="font-size: 0.85rem; color: var(--text-primary); line-height: 1.6;">
+                                Psychiatric Disorders • Therapeutic Communication • Psychotropics • Crisis Intervention • + more being added
+                            </div>
+                        </div>
+
+                        <!-- Pricing Buttons -->
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Full Package will be $49.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Full</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$49.99</span>
+                            </button>
+                            <button class="btn btn-outline-primary" style="padding: 14px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; display: flex; flex-direction: column; align-items: center; gap: 4px; border: 2px solid var(--primary-color);" onclick="alert('Coming soon! Lite Package will be $24.99')">
+                                <span style="font-size: 0.75rem; opacity: 0.9;">Lite</span>
+                                <span style="font-size: 1.3rem; font-weight: 700;">$24.99</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What's Included Comparison -->
+    <section style="padding: 80px 0; background: var(--background-light);">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 50px;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 16px;">What's Included in Each Tier?</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;">
+                    Choose the tier that fits your study needs and budget
                 </p>
             </div>
-        </div>
-    </section>
 
-    <!-- Pricing Cards Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <div class="pricing-grid">
-                <!-- Free Plan -->
-                <div class="pricing-card">
-                    <div class="card-header">
-                        <div class="plan-icon">
-                            <i class="fas fa-book-open"></i>
+            <div class="row g-4">
+                <!-- Full Package -->
+                <div class="col-md-6">
+                    <div style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); padding: 40px; border-radius: 20px; color: white; height: 100%;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                            <i class="fas fa-star" style="font-size: 2rem;"></i>
+                            <div>
+                                <h3 style="color: white; margin: 0; font-size: 1.8rem; font-weight: 700;">Full Package</h3>
+                                <div style="font-size: 2rem; font-weight: 700; margin-top: 4px;">$49.99</div>
+                            </div>
                         </div>
-                        <h3 class="plan-name">Free Access</h3>
-                        <div class="price-display">
-                            <span class="currency">$</span>0
-                            <span class="period">/forever</span>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem;">All study guides (full content)</span>
+                            </li>
+                            <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem;">Key concept summaries</span>
+                            </li>
+                            <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem;">NCLEX-style practice questions</span>
+                            </li>
+                            <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem;">Detailed answer explanations</span>
+                            </li>
+                            <li style="padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.2); display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem;">Test-taking strategies & tips</span>
+                            </li>
+                            <li style="padding: 12px 0; display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem;">Printable PDF study cards</span>
+                            </li>
+                        </ul>
+                        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.2);">
+                            <p style="font-size: 0.9rem; margin: 0; opacity: 0.9;">
+                                <strong>Best for:</strong> Students who want complete NCLEX prep with practice questions and strategies
+                            </p>
                         </div>
-                        <p class="plan-description">Perfect for getting started with clinical references</p>
                     </div>
-
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> Discord bot access (all commands)</li>
-                        <li><i class="fas fa-check"></i> Basic study guide previews</li>
-                        <li><i class="fas fa-check"></i> Lab values & medication info</li>
-                        <li><i class="fas fa-check"></i> Community support</li>
-                        <li><i class="fas fa-check"></i> ABG interpretation guide</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Sample NCLEX questions only</li>
-                        <li class="disabled"><i class="fas fa-times"></i> Full study guides</li>
-                    </ul>
-
-                    <button class="pricing-cta secondary" onclick="window.location.href='https://discord.gg/y2Mh77wAV2'">
-                        <i class="fab fa-discord"></i> Join Free
-                    </button>
                 </div>
 
-                <!-- Premium Plan (Most Popular) -->
-                <div class="pricing-card popular">
-                    <div class="popular-badge">
-                        <i class="fas fa-star"></i> Most Popular
-                    </div>
-                    <div class="card-header">
-                        <div class="plan-icon">
-                            <i class="fas fa-graduation-cap"></i>
+                <!-- Lite Package -->
+                <div class="col-md-6">
+                    <div style="background: var(--card-background); padding: 40px; border-radius: 20px; border: 2px solid var(--border-color); height: 100%;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 24px;">
+                            <i class="fas fa-book" style="font-size: 2rem; color: var(--text-secondary);"></i>
+                            <div>
+                                <h3 style="color: var(--text-primary); margin: 0; font-size: 1.8rem; font-weight: 700;">Lite Package</h3>
+                                <div style="font-size: 2rem; font-weight: 700; margin-top: 4px; color: var(--text-primary);">$24.99</div>
+                            </div>
                         </div>
-                        <h3 class="plan-name">NCLEX-Ready</h3>
-                        <div class="price-display">
-                            <span class="currency">$</span>29
-                            <span class="period">/one-time</span>
+                        <ul style="list-style: none; padding: 0; margin: 0;">
+                            <li style="padding: 12px 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="font-size: 1.2rem; margin-right: 12px; color: var(--primary-color);"></i>
+                                <span style="font-size: 1rem; color: var(--text-primary);">All study guides (full content)</span>
+                            </li>
+                            <li style="padding: 12px 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="font-size: 1.2rem; margin-right: 12px; color: var(--primary-color);"></i>
+                                <span style="font-size: 1rem; color: var(--text-primary);">Key concept summaries</span>
+                            </li>
+                            <li style="padding: 12px 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; opacity: 0.4;">
+                                <i class="fas fa-times-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem; text-decoration: line-through;">NCLEX-style practice questions</span>
+                            </li>
+                            <li style="padding: 12px 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; opacity: 0.4;">
+                                <i class="fas fa-times-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem; text-decoration: line-through;">Detailed answer explanations</span>
+                            </li>
+                            <li style="padding: 12px 0; border-bottom: 1px solid var(--border-color); display: flex; align-items: center; opacity: 0.4;">
+                                <i class="fas fa-times-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem; text-decoration: line-through;">Test-taking strategies & tips</span>
+                            </li>
+                            <li style="padding: 12px 0; display: flex; align-items: center; opacity: 0.4;">
+                                <i class="fas fa-times-circle" style="font-size: 1.2rem; margin-right: 12px;"></i>
+                                <span style="font-size: 1rem; text-decoration: line-through;">Printable PDF study cards</span>
+                            </li>
+                        </ul>
+                        <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+                            <p style="font-size: 0.9rem; margin: 0 0 16px 0; color: var(--text-secondary);">
+                                <strong>Best for:</strong> Students who just need comprehensive study guides for reference
+                            </p>
+                            <div style="background: var(--background-light); padding: 16px; border-radius: 12px; border-left: 4px solid var(--primary-color);">
+                                <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">
+                                    <i class="fas fa-arrow-up"></i> Upgrade Anytime
+                                </div>
+                                <p style="font-size: 0.85rem; margin: 0; color: var(--text-secondary);">
+                                    Pay just $25 more to upgrade to Full Package and unlock NCLEX questions & strategies
+                                </p>
+                            </div>
                         </div>
-                        <p class="plan-description">Everything you need to pass the NCLEX</p>
-                    </div>
-
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> <strong>Everything in Free</strong></li>
-                        <li><i class="fas fa-check"></i> <strong>Full study guides (5 topics)</strong></li>
-                        <li><i class="fas fa-check"></i> 50+ NCLEX-style practice questions</li>
-                        <li><i class="fas fa-check"></i> Detailed answer explanations</li>
-                        <li><i class="fas fa-check"></i> Test-taking strategies</li>
-                        <li><i class="fas fa-check"></i> Printable PDF study cards</li>
-                        <li><i class="fas fa-check"></i> Priority updates & new content</li>
-                    </ul>
-
-                    <button class="pricing-cta primary">
-                        <i class="fas fa-rocket"></i> Get NCLEX-Ready
-                    </button>
-                    <p class="money-back">
-                        <i class="fas fa-shield-alt"></i> 30-day money-back guarantee
-                    </p>
-                </div>
-
-                <!-- Ultimate Bundle -->
-                <div class="pricing-card">
-                    <div class="savings-badge">Save $30</div>
-                    <div class="card-header">
-                        <div class="plan-icon">
-                            <i class="fas fa-crown"></i>
-                        </div>
-                        <h3 class="plan-name">Ultimate Bundle</h3>
-                        <div class="price-display">
-                            <span class="currency">$</span>49
-                            <span class="period">/one-time</span>
-                        </div>
-                        <p class="plan-description original-price">
-                            <s>$79</s> Best value for serious students
-                        </p>
-                    </div>
-
-                    <ul class="features-list">
-                        <li><i class="fas fa-check"></i> <strong>Everything in NCLEX-Ready</strong></li>
-                        <li><i class="fas fa-check"></i> 10+ comprehensive study guides</li>
-                        <li><i class="fas fa-check"></i> 150+ practice questions</li>
-                        <li><i class="fas fa-check"></i> Video explanations (coming soon)</li>
-                        <li><i class="fas fa-check"></i> Audio study notes (coming soon)</li>
-                        <li><i class="fas fa-check"></i> Lifetime updates</li>
-                        <li><i class="fas fa-check"></i> Priority support</li>
-                    </ul>
-
-                    <button class="pricing-cta secondary">
-                        <i class="fas fa-bolt"></i> Get Ultimate Bundle
-                    </button>
-                    <p class="money-back">
-                        <i class="fas fa-infinity"></i> Lifetime access & updates
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Social Proof -->
-    <section class="social-proof">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="stat-number">1,200+</div>
-                        <div class="stat-label">Active Students</div>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="stat-number">4.9/5</div>
-                        <div class="stat-label">Student Rating</div>
-                    </div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <div class="stat-content">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">Pass Rate</div>
                     </div>
                 </div>
             </div>
@@ -213,95 +389,111 @@
     </section>
 
     <!-- FAQ Section -->
-    <section class="faq-section">
+    <section style="padding: 100px 0;">
         <div class="container">
-            <h2 class="section-title">Frequently Asked Questions</h2>
-            <p class="section-subtitle">Everything you need to know about our pricing</p>
+            <div style="text-align: center; margin-bottom: 60px;">
+                <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 16px;">Frequently Asked Questions</h2>
+                <p style="font-size: 1.1rem; color: var(--text-secondary);">Everything you need to know about our class packages</p>
+            </div>
 
-            <div class="faq-accordion">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Is the Discord bot really free forever?</span>
-                        <i class="fas fa-chevron-down"></i>
+            <div style="max-width: 800px; margin: 0 auto;">
+                <div class="faq-item" style="margin-bottom: 16px; background: var(--card-background); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                    <button class="faq-question" style="width: 100%; padding: 24px; text-align: left; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">How do class packages work?</span>
+                        <i class="fas fa-chevron-down" style="color: var(--primary-color); transition: transform 0.3s ease;"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>Yes! The FlorenceBot Pro Discord bot will always be 100% free to use. All commands, basic features, and community access are available at no cost. The premium study guides are an optional upgrade for students who want comprehensive NCLEX prep materials.</p>
+                    <div class="faq-answer" style="padding: 0 24px 24px; display: none;">
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                            Each package includes ALL study guides for that specific nursing class. When you purchase a package, you get instant access to all current guides for that class, PLUS any future guides we add to that class at no extra cost. It's a one-time payment for lifetime access.
+                        </p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What's the difference between NCLEX-Ready and Ultimate Bundle?</span>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="faq-item" style="margin-bottom: 16px; background: var(--card-background); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                    <button class="faq-question" style="width: 100%; padding: 24px; text-align: left; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">What's the difference between Full and Lite?</span>
+                        <i class="fas fa-chevron-down" style="color: var(--primary-color); transition: transform 0.3s ease;"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>NCLEX-Ready includes 5 essential study guides with 50+ practice questions - perfect for focused exam prep. Ultimate Bundle includes 10+ guides with 150+ questions, plus future video/audio content and lifetime updates. It's our best value for students who want comprehensive coverage.</p>
+                    <div class="faq-answer" style="padding: 0 24px 24px; display: none;">
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                            <strong>Lite Package ($24.99):</strong> Includes all study guides with full content and key concept summaries - perfect for quick reference and review.<br><br>
+                            <strong>Full Package ($49.99):</strong> Everything in Lite PLUS NCLEX-style practice questions, detailed answer explanations, test-taking strategies, and printable PDF study cards - ideal for complete exam preparation.
+                        </p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Can I upgrade from NCLEX-Ready to Ultimate Bundle later?</span>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="faq-item" style="margin-bottom: 16px; background: var(--card-background); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                    <button class="faq-question" style="width: 100%; padding: 24px; text-align: left; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">What are "Key Concept Summaries"?</span>
+                        <i class="fas fa-chevron-down" style="color: var(--primary-color); transition: transform 0.3s ease;"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>Yes! You can upgrade anytime by paying the difference ($20). Contact us through Discord or email and we'll process your upgrade within 24 hours.</p>
+                    <div class="faq-answer" style="padding: 0 24px 24px; display: none;">
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                            Key Concept Summaries are bite-sized highlights of the most critical takeaways from each section. They're quick-reference boxes that organize essential information for faster review and better retention - perfect when you need to refresh your memory quickly before clinicals or exams.
+                        </p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How does the 30-day money-back guarantee work?</span>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="faq-item" style="margin-bottom: 16px; background: var(--card-background); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                    <button class="faq-question" style="width: 100%; padding: 24px; text-align: left; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">Will I get access to new guides added later?</span>
+                        <i class="fas fa-chevron-down" style="color: var(--primary-color); transition: transform 0.3s ease;"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>If you're not completely satisfied with your purchase within 30 days, simply email us at support@florencebot.pro and we'll issue a full refund, no questions asked. We want you to be confident in your investment.</p>
+                    <div class="faq-answer" style="padding: 0 24px 24px; display: none;">
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                            Yes! When you purchase a class package, you automatically get access to ALL future guides we add to that class. No additional purchases needed. We're constantly adding new content, and you'll benefit from all updates.
+                        </p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Do I need a subscription or is it really one-time?</span>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="faq-item" style="margin-bottom: 16px; background: var(--card-background); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                    <button class="faq-question" style="width: 100%; padding: 24px; text-align: left; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">Can I upgrade from Lite to Full later?</span>
+                        <i class="fas fa-chevron-down" style="color: var(--primary-color); transition: transform 0.3s ease;"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>It's truly one-time! No subscriptions, no recurring charges. Pay once and access your study guides forever. Ultimate Bundle members also get all future updates at no additional cost.</p>
+                    <div class="faq-answer" style="padding: 0 24px 24px; display: none;">
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                            Absolutely! You can upgrade from Lite to Full at any time by paying just the difference ($25). Your progress and access will be preserved, and you'll immediately unlock all the Full Package features including NCLEX questions and strategies.
+                        </p>
                     </div>
                 </div>
 
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Can I download the study guides?</span>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="faq-item" style="margin-bottom: 16px; background: var(--card-background); border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                    <button class="faq-question" style="width: 100%; padding: 24px; text-align: left; background: none; border: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 1.1rem; font-weight: 600; color: var(--text-primary);">Do I need to buy all packages? Will they match my professor's teaching?</span>
+                        <i class="fas fa-chevron-down" style="color: var(--primary-color); transition: transform 0.3s ease;"></i>
                     </button>
-                    <div class="faq-answer">
-                        <p>Yes! All premium purchases include downloadable PDF versions of study materials. You can print them, access them offline, or read them on any device.</p>
+                    <div class="faq-answer" style="padding: 0 24px 24px; display: none;">
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0 0 12px 0;">
+                            <strong>No, you don't need all packages!</strong> Purchase only what you need for your current classes. Each package is independent, and bundle discounts will be available soon.
+                        </p>
+                        <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                            Each class package covers major topics typically taught in that nursing course. However, every professor and program teaches differently and may emphasize different areas. Our guides provide comprehensive coverage aligned with standard nursing curricula and NCLEX test plans. Use them as a supplement to your class materials, not a replacement.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section class="final-cta">
-        <div class="container">
-            <div class="cta-card">
-                <h2>Ready to Ace Your NCLEX?</h2>
-                <p>Join 1,200+ nursing students who are studying smarter with FlorenceBot Pro</p>
-                <div class="cta-buttons">
-                    <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary btn-large">
-                        <i class="fab fa-discord"></i> Start Free Today
-                    </a>
-                    <a href="guides.html" class="btn btn-secondary btn-large">
-                        <i class="fas fa-book-open"></i> Browse Study Guides
-                    </a>
-                </div>
+    <!-- More Classes Coming Soon -->
+    <section style="padding: 80px 0 100px; background: var(--background-light);">
+        <div class="container text-center">
+            <div style="display: inline-block; padding: 8px 20px; background: var(--primary-color); color: white; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px;">
+                <i class="fas fa-plus-circle"></i> COMING SOON
             </div>
+            <h2 style="font-size: 2.5rem; font-weight: 700; margin-bottom: 20px;">More Classes on the Way</h2>
+            <p style="font-size: 1.1rem; color: var(--text-secondary); max-width: 700px; margin: 0 auto 40px;">
+                We're working on packages for Community Health, Leadership & Management, and specialty areas. Join our Discord to vote on which classes we should add next!
+            </p>
+            <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary btn-lg" style="padding: 16px 40px; border-radius: 12px; font-weight: 600;">
+                <i class="fab fa-discord"></i> Join Discord Community
+            </a>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="contact" class="footer">
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -315,9 +507,10 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="index.html#features">Features</a></li>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="guides.html">Study Guides</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="index.html#features">Features</a></li>
                         <li><a href="https://discord.gg/y2Mh77wAV2">Discord Server</a></li>
                     </ul>
                 </div>

@@ -704,4 +704,14 @@
     .features-list li {
         font-size: 0.9rem;
     }
+
+    /* Stack pricing buttons vertically on very small screens */
+    .package-card button {
+        font-size: 0.85rem !important;
+        padding: 12px !important;
+    }
+
+    .package-card button span:last-child {
+        font-size: 1.1rem !important;
+    }
 }

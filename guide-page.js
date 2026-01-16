@@ -6,7 +6,8 @@ function getGuideId() {
     return urlParams.get('id');
 }
 
-// Guide metadata with access levels
+// Guide metadata with pricing
+// All guides show 10% preview, full access costs $5.99 per guide
 const guidesMetadata = {
     'electrolytes': {
         title: 'Electrolyte Management Guide',
@@ -15,7 +16,7 @@ const guidesMetadata = {
         readTime: '8 min',
         difficulty: 'Intermediate',
         file: 'content/guides/electrolytes.md',
-        accessLevel: 'free'
+        price: 5.99
     },
     'vital-signs': {
         title: 'Vital Signs Assessment Guide',
@@ -24,7 +25,7 @@ const guidesMetadata = {
         readTime: '7 min',
         difficulty: 'Beginner',
         file: 'content/guides/vital-signs.md',
-        accessLevel: 'free'
+        price: 5.99
     },
     'critical-lab-values': {
         title: 'Critical Laboratory Values',
@@ -33,7 +34,7 @@ const guidesMetadata = {
         readTime: '6 min',
         difficulty: 'Intermediate',
         file: 'content/guides/critical-lab-values.md',
-        accessLevel: 'premium'
+        price: 5.99
     },
     'isolation-precautions': {
         title: 'Isolation Precautions Guide',
@@ -42,7 +43,7 @@ const guidesMetadata = {
         readTime: '9 min',
         difficulty: 'Intermediate',
         file: 'content/guides/isolation-precautions.md',
-        accessLevel: 'premium'
+        price: 5.99
     },
     'medication-math': {
         title: 'Medication Dosage Calculations',
@@ -51,7 +52,7 @@ const guidesMetadata = {
         readTime: '12 min',
         difficulty: 'Advanced',
         file: 'content/guides/medication-math.md',
-        accessLevel: 'premium'
+        price: 5.99
     }
 };
 
@@ -64,22 +65,12 @@ const relatedGuidesMap = {
     'medication-math': ['critical-lab-values', 'vital-signs']
 };
 
-// Check if user has access to a guide
+// Check if user has purchased this specific guide
 function checkGuideAccess(guideId) {
-    const metadata = guidesMetadata[guideId];
-    if (!metadata) return false;
-
-    // Free guides are accessible to everyone
-    if (metadata.accessLevel === 'free') return true;
-
-    // Premium guides require premium subscription
-    if (metadata.accessLevel === 'premium') {
-        // Check if user is logged in and has premium
-        const user = JSON.parse(localStorage.getItem('user') || '{}');
-        return user.is_premium === true;
-    }
-
-    return false;
+    // Check if user has purchased this guide
+    // TODO: This will need to check against backend when payment system is implemented
+    const purchasedGuides = JSON.parse(localStorage.getItem('purchasedGuides') || '[]');
+    return purchasedGuides.includes(guideId);
 }
 
 // Initialize page
@@ -139,29 +130,29 @@ async function loadGuideContent(file, hasAccess, guideId) {
         let contentToRender = markdown;
         let previewBadge = '';
 
-        // If user doesn't have access, show preview only
+        // Show preview for users who haven't purchased
         if (!hasAccess) {
             contentToRender = extractFreePreview(markdown);
-            console.log('Free preview length:', contentToRender.length);
+            console.log('Preview length:', contentToRender.length);
 
             // Add preview badge
             previewBadge = `
                 <div class="alert alert-info d-flex align-items-center mb-4" style="background: linear-gradient(135deg, #e0f2fe, #dbeafe); border: none; border-radius: 12px;">
-                    <i class="fas fa-info-circle me-3" style="font-size: 1.5rem; color: var(--primary-color);"></i>
+                    <i class="fas fa-eye me-3" style="font-size: 1.5rem; color: var(--primary-color);"></i>
                     <div>
-                        <h5 class="mb-1" style="color: var(--primary-color); font-weight: 600;">Free Preview Version</h5>
-                        <p class="mb-0" style="font-size: 0.9rem;">You're viewing the free preview with basic content. ${guidesMetadata[guideId].accessLevel === 'free' ? 'Sign in to see the full version.' : 'Upgrade to premium to access the complete guide with NCLEX-style questions, advanced clinical pearls, and test-taking strategies.'}</p>
+                        <h5 class="mb-1" style="color: var(--primary-color); font-weight: 600;">Free Preview (10% of Content)</h5>
+                        <p class="mb-0" style="font-size: 0.9rem;">You're viewing a preview. Purchase the full guide for $${guidesMetadata[guideId].price.toFixed(2)} to access all content, practice questions, and test-taking strategies.</p>
                     </div>
                 </div>
             `;
         } else {
-            // User has access - show full content badge
+            // User has purchased - show full content badge
             previewBadge = `
                 <div class="alert alert-success d-flex align-items-center mb-4" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); border: none; border-radius: 12px;">
                     <i class="fas fa-check-circle me-3" style="font-size: 1.5rem; color: #059669;"></i>
                     <div>
-                        <h5 class="mb-1" style="color: #059669; font-weight: 600;">Full Access</h5>
-                        <p class="mb-0" style="font-size: 0.9rem;">You're viewing the complete guide with all content, practice questions, and clinical pearls.</p>
+                        <h5 class="mb-1" style="color: #059669; font-weight: 600;">Full Access - Purchased</h5>
+                        <p class="mb-0" style="font-size: 0.9rem;">You own this guide! You're viewing the complete content with all practice questions and clinical pearls.</p>
                     </div>
                 </div>
             `;
@@ -174,32 +165,32 @@ async function loadGuideContent(file, hasAccess, guideId) {
 
         console.log('Rendered HTML length:', html.length);
 
-        // Add premium CTA at bottom only if user doesn't have access
-        let premiumCTA = '';
+        // Add purchase CTA at bottom only if user doesn't have access
+        let purchaseCTA = '';
         if (!hasAccess) {
-            const isLoggedIn = localStorage.getItem('accessToken');
-            const ctaButton = isLoggedIn
-                ? `<button class="btn btn-light btn-lg px-5 mb-3" onclick="window.location.href='pricing.html'" style="border-radius: 12px; font-weight: 600; color: var(--primary-color);">
-                       <i class="fas fa-star"></i> Upgrade to Premium - $29
-                   </button>`
-                : `<button class="btn btn-light btn-lg px-5 mb-3" onclick="window.location.href='login.html'" style="border-radius: 12px; font-weight: 600; color: var(--primary-color);">
-                       <i class="fas fa-sign-in-alt"></i> Sign In to Continue
-                   </button>`;
+            const guideTitle = guidesMetadata[guideId].title;
+            const guidePrice = guidesMetadata[guideId].price.toFixed(2);
 
-            premiumCTA = `
+            purchaseCTA = `
                 <div class="premium-cta-section" style="margin-top: 60px; padding: 50px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 20px; color: white; text-align: center;">
                     <div class="mb-4">
                         <i class="fas fa-lock" style="font-size: 3rem; opacity: 0.9;"></i>
                     </div>
-                    <h2 class="mb-3" style="font-weight: 700;">Want the Complete NCLEX-Ready Guide?</h2>
+                    <h2 class="mb-3" style="font-weight: 700;">Unlock the Complete Guide</h2>
                     <p class="mb-4" style="font-size: 1.1rem; opacity: 0.95; max-width: 600px; margin: 0 auto;">
-                        Unlock the full guide with comprehensive content including:
+                        Get instant access to the full <strong>${guideTitle}</strong> with:
                     </p>
                     <div class="row g-3 mb-4" style="max-width: 700px; margin: 0 auto;">
                         <div class="col-md-6">
                             <div class="d-flex align-items-start">
                                 <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">50+ NCLEX-style practice questions</span>
+                                <span style="text-align: left;">Complete guide content (100%)</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex align-items-start">
+                                <i class="fas fa-check-circle me-2 mt-1"></i>
+                                <span style="text-align: left;">NCLEX-style practice questions</span>
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -211,37 +202,37 @@ async function loadGuideContent(file, hasAccess, guideId) {
                         <div class="col-md-6">
                             <div class="d-flex align-items-start">
                                 <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Test-taking strategies & tips</span>
+                                <span style="text-align: left;">Test-taking strategies</span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="d-flex align-items-start">
                                 <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Advanced clinical pearls</span>
+                                <span style="text-align: left;">Clinical pearls & mnemonics</span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="d-flex align-items-start">
                                 <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Priority nursing interventions</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Printable PDF study cards</span>
+                                <span style="text-align: left;">Printable study cards (PDF)</span>
                             </div>
                         </div>
                     </div>
-                    ${ctaButton}
+                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px; max-width: 400px; margin: 0 auto 30px;">
+                        <div style="font-size: 3rem; font-weight: 700; margin-bottom: 8px;">$${guidePrice}</div>
+                        <div style="font-size: 1rem; opacity: 0.9;">One-time payment • Lifetime access</div>
+                    </div>
+                    <button class="btn btn-light btn-lg px-5 mb-3" onclick="alert('Payment integration coming soon! Guide will cost $${guidePrice}')" style="border-radius: 12px; font-weight: 600; color: var(--primary-color); font-size: 1.1rem;">
+                        <i class="fas fa-shopping-cart"></i> Purchase Full Guide - $${guidePrice}
+                    </button>
                     <p class="mb-0" style="font-size: 0.9rem; opacity: 0.8;">
-                        <i class="fas fa-shield-alt"></i> 30-day money-back guarantee • <i class="fas fa-sync"></i> Free lifetime updates
+                        <i class="fas fa-shield-alt"></i> Secure payment • <i class="fas fa-download"></i> Instant access • <i class="fas fa-sync"></i> Free updates
                     </p>
                 </div>
             `;
         }
 
-        contentElement.innerHTML = previewBadge + html + premiumCTA;
+        contentElement.innerHTML = previewBadge + html + purchaseCTA;
 
         // Smooth scroll to anchor links
         contentElement.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -268,15 +259,15 @@ async function loadGuideContent(file, hasAccess, guideId) {
     }
 }
 
-// Extract free preview (first ~30% of content)
+// Extract free preview (first ~10% of content)
 function extractFreePreview(markdown) {
     // Split by main sections (##)
     const sections = markdown.split(/(?=^##\s)/m);
 
-    // Take title + first 2-3 main sections (excluding NCLEX tips and advanced content)
-    const previewSections = sections.slice(0, 4).join('');
+    // Take title + first section only (about 10% of content)
+    const previewSections = sections.slice(0, 2).join('');
 
-    // Remove any NCLEX-specific sections
+    // Remove any NCLEX-specific sections and advanced content
     let preview = previewSections
         .replace(/###?\s*NCLEX.*?(?=###|$)/gis, '')
         .replace(/###?\s*Test-Taking.*?(?=###|$)/gis, '')

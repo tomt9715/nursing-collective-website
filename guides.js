@@ -1,5 +1,5 @@
-// Guides data with metadata and access levels
-// accessLevel: 'free' = available to all users, 'premium' = requires premium subscription
+// Guides data with metadata and pricing
+// All guides show 10% preview for free, full access requires $5.99 purchase
 const guidesData = [
     {
         id: 'electrolytes',
@@ -11,7 +11,7 @@ const guidesData = [
         topics: ['Sodium', 'Potassium', 'Calcium', 'Magnesium', 'Phosphorus'],
         readTime: '8 min',
         difficulty: 'Intermediate',
-        accessLevel: 'free' // Free preview guide
+        price: 5.99
     },
     {
         id: 'vital-signs',
@@ -23,7 +23,7 @@ const guidesData = [
         topics: ['Heart Rate', 'Blood Pressure', 'Respiratory Rate', 'Temperature', 'SpO₂'],
         readTime: '7 min',
         difficulty: 'Beginner',
-        accessLevel: 'free' // Free preview guide
+        price: 5.99
     },
     {
         id: 'critical-lab-values',
@@ -35,7 +35,7 @@ const guidesData = [
         topics: ['Critical Values', 'Lab Ranges', 'Emergency Response'],
         readTime: '6 min',
         difficulty: 'Intermediate',
-        accessLevel: 'premium' // Requires premium
+        price: 5.99
     },
     {
         id: 'isolation-precautions',
@@ -47,7 +47,7 @@ const guidesData = [
         topics: ['Standard Precautions', 'Contact', 'Droplet', 'Airborne', 'PPE'],
         readTime: '9 min',
         difficulty: 'Intermediate',
-        accessLevel: 'premium' // Requires premium
+        price: 5.99
     },
     {
         id: 'medication-math',
@@ -59,7 +59,7 @@ const guidesData = [
         topics: ['Dosage Calculations', 'IV Flow Rates', 'Weight-Based Dosing', 'Conversions'],
         readTime: '12 min',
         difficulty: 'Advanced',
-        accessLevel: 'premium' // Requires premium
+        price: 5.99
     }
 ];
 
@@ -151,21 +151,17 @@ function renderGuides(guides = guidesData) {
     noResults.style.display = 'none';
 
     guidesGrid.innerHTML = guides.map(guide => {
-        const isFree = guide.accessLevel === 'free';
-        const badgeClass = isFree ? 'bg-success' : 'bg-warning';
-        const badgeText = isFree ? 'FREE' : 'PREMIUM';
-
         return `
-        <div class="guide-card category-${guide.category} ${!isFree ? 'locked' : ''}" data-guide-id="${guide.id}">
+        <div class="guide-card category-${guide.category}" data-guide-id="${guide.id}">
             <div class="guide-card-header">
                 <div class="guide-icon">${guide.icon}</div>
                 <div class="d-flex justify-content-between align-items-center w-100">
                     <span class="guide-category">${formatCategory(guide.category)}</span>
-                    <span class="badge ${badgeClass}" style="font-size: 0.7rem;">${badgeText}</span>
+                    <span class="badge bg-primary" style="font-size: 0.75rem; font-weight: 600;">$${guide.price.toFixed(2)}</span>
                 </div>
             </div>
             <div class="guide-card-body">
-                <h3>${guide.title}${!isFree ? ' <i class="fas fa-lock" style="font-size: 0.9rem; opacity: 0.6;"></i>' : ''}</h3>
+                <h3>${guide.title}</h3>
                 <p class="guide-description">${guide.description}</p>
                 <div class="guide-topics">
                     ${guide.topics.slice(0, 3).map(topic => `
@@ -180,18 +176,9 @@ function renderGuides(guides = guidesData) {
                     <span><i class="fas fa-signal"></i> ${guide.difficulty}</span>
                 </div>
                 <div class="d-grid gap-2">
-                    ${isFree ? `
-                        <button class="btn btn-primary btn-sm preview-btn" data-guide-id="${guide.id}" style="border-radius: 8px;">
-                            <i class="fas fa-book-open"></i> View Free Guide
-                        </button>
-                    ` : `
-                        <button class="btn btn-outline-secondary btn-sm locked-btn" style="border-radius: 8px; opacity: 0.7;" disabled>
-                            <i class="fas fa-lock"></i> Premium Only
-                        </button>
-                        <button class="btn btn-primary btn-sm premium-btn" style="border-radius: 8px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border: none;">
-                            <i class="fas fa-crown"></i> Upgrade to Access
-                        </button>
-                    `}
+                    <button class="btn btn-primary btn-sm preview-btn" data-guide-id="${guide.id}" style="border-radius: 8px;">
+                        <i class="fas fa-eye"></i> Preview Guide
+                    </button>
                 </div>
             </div>
         </div>
@@ -204,15 +191,6 @@ function renderGuides(guides = guidesData) {
             e.stopPropagation();
             const guideId = btn.dataset.guideId;
             window.location.href = `guide.html?id=${guideId}`;
-        });
-    });
-
-    // Add click listeners for premium buttons
-    document.querySelectorAll('.premium-btn').forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            // Redirect to pricing page
-            window.location.href = 'pricing.html';
         });
     });
 }

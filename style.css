@@ -11,7 +11,7 @@ img, video, iframe {
 }
 
 :root {
-    /* FlorenceBot Pro Brand Colors (constant across themes) */
+    /* The Nursing Collective Brand Colors (constant across themes) */
     --primary-color: #2E86AB;        /* Medical Blue - Primary brand color */
     --primary-dark: #236b8a;         /* Darker blue for hover states */
     --primary-light: #5ba3c4;        /* Lighter blue for backgrounds */

@@ -7,7 +7,7 @@
 
 ## 📋 OVERVIEW
 
-Successfully optimized the FlorenceBot Pro homepage from a lengthy, content-heavy page to a streamlined, conversion-focused design. The page now loads faster, is easier to navigate, and works perfectly across all devices.
+Successfully optimized the The Nursing Collective homepage from a lengthy, content-heavy page to a streamlined, conversion-focused design. The page now loads faster, is easier to navigate, and works perfectly across all devices.
 
 ---
 
@@ -372,7 +372,7 @@ Implemented comprehensive CSS fixes to ensure **100% perfect centering** on mobi
 
 ## 🎉 CONCLUSION
 
-The FlorenceBot Pro homepage has been **successfully optimized** from a content-heavy, lengthy page to a **streamlined, conversion-focused experience**. The page now:
+The The Nursing Collective homepage has been **successfully optimized** from a content-heavy, lengthy page to a **streamlined, conversion-focused experience**. The page now:
 
 - ✅ Loads 40% faster
 - ✅ Has 58% fewer sections

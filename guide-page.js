@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const metadata = guidesMetadata[guideId];
 
     // Update page title
-    document.title = `${metadata.title} - FlorenceBot Pro`;
+    document.title = `${metadata.title} - The Nursing Collective`;
 
     // Update header
     document.getElementById('guide-category').textContent = metadata.category;

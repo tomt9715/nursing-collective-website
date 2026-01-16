@@ -701,7 +701,7 @@ export default {
             assets/images/hero-800.jpg 800w,
             assets/images/hero-1200.jpg 1200w"
     sizes="(max-width: 768px) 100vw, 50vw"
-    alt="FlorenceBot Pro - AI Nursing Study Companion"
+    alt="The Nursing Collective - AI Nursing Study Companion"
     loading="lazy"
     decoding="async">
 </picture>
@@ -773,7 +773,7 @@ node scripts/convert-images.js
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "FlorenceBot Pro",
+  "name": "The Nursing Collective",
   "description": "AI-Powered Nursing Study Companion",
   "url": "https://florencebot.pro",
   "logo": "https://florencebot.pro/assets/images/logo.png",
@@ -794,7 +794,7 @@ node scripts/convert-images.js
   "description": "Master drug classes, medication calculations, and NCLEX prep",
   "provider": {
     "@type": "Organization",
-    "name": "FlorenceBot Pro"
+    "name": "The Nursing Collective"
   },
   "offers": {
     "@type": "Offer",
@@ -942,7 +942,7 @@ if ('serviceWorker' in navigator) {
 **Create `manifest.json`:**
 ```json
 {
-  "name": "FlorenceBot Pro",
+  "name": "The Nursing Collective",
   "short_name": "FlorenceBot",
   "description": "AI-Powered Nursing Study Companion",
   "start_url": "/",

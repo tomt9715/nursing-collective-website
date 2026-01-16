@@ -1,7 +1,7 @@
 # Password Reset Implementation Guide
 
 ## Overview
-This document explains how to implement the password reset functionality for FlorenceBot Pro. The frontend is complete - you just need to add the backend endpoints and email service.
+This document explains how to implement the password reset functionality for The Nursing Collective. The frontend is complete - you just need to add the backend endpoints and email service.
 
 ---
 
@@ -113,9 +113,9 @@ async def forgot_password():
     # 8. Send email via Resend
     try:
         params = {
-            "from": "FlorenceBot Pro <noreply@florencebot.pro>",  # Use your verified domain
+            "from": "The Nursing Collective <noreply@florencebot.pro>",  # Use your verified domain
             "to": [email],
-            "subject": "Reset your FlorenceBot Pro password",
+            "subject": "Reset your The Nursing Collective password",
             "html": html_content
         }
 

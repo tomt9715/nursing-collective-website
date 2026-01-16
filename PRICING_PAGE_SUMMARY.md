@@ -7,7 +7,7 @@
 
 ## 📋 OVERVIEW
 
-Successfully created a premium pricing page for FlorenceBot Pro with advanced animations, dark mode support, and perfect consistency with the existing website design.
+Successfully created a premium pricing page for The Nursing Collective with advanced animations, dark mode support, and perfect consistency with the existing website design.
 
 ---
 

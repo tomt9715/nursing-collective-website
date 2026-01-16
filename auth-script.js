@@ -53,8 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const password = this.value;
             const strengthBar = passwordStrength.querySelector('.strength-bar');
             const strengthText = passwordStrength.querySelector('.strength-text');
+            const submitBtn = signupForm.querySelector('button[type="submit"]');
+            const isSignIn = submitBtn.querySelector('i').classList.contains('fa-sign-in-alt');
 
-            if (password.length === 0) {
+            // Only show password strength during sign up
+            if (password.length === 0 || isSignIn) {
                 passwordStrength.classList.remove('visible');
                 return;
             }
@@ -163,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>';
                 confirmPasswordGroup.style.display = 'none';
                 confirmPasswordInput.removeAttribute('required');
+                passwordStrength.classList.remove('visible'); // Hide password strength for sign in
                 if (termsCheckbox) termsCheckbox.style.display = 'none';
                 this.parentElement.innerHTML = 'Don\'t have an account? <a href="#" id="toggle-signin">Sign Up</a>';
 
@@ -174,6 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.innerHTML = '<i class="fas fa-user-plus"></i><span>Create Account</span>';
                 confirmPasswordGroup.style.display = 'block';
                 confirmPasswordInput.setAttribute('required', '');
+                // Password strength will show when user types
                 if (termsCheckbox) termsCheckbox.style.display = 'flex';
                 this.parentElement.innerHTML = 'Already have an account? <a href="#" id="toggle-signin">Sign In</a>';
 

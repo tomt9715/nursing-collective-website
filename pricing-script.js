@@ -192,6 +192,48 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
     });
+
+    // Individual Guides Filter functionality
+    const filterButtons = document.querySelectorAll('.guide-filter-btn');
+    const guideItems = document.querySelectorAll('.guide-item');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const filter = this.getAttribute('data-filter');
+
+            // Update active state on filter buttons
+            filterButtons.forEach(btn => {
+                btn.style.background = 'transparent';
+                btn.style.color = 'var(--text-primary)';
+                btn.style.borderColor = 'var(--border-color)';
+                btn.classList.remove('active');
+            });
+
+            this.style.background = 'var(--primary-color)';
+            this.style.color = 'white';
+            this.style.borderColor = 'var(--primary-color)';
+            this.classList.add('active');
+
+            // Filter guide items
+            guideItems.forEach(item => {
+                const category = item.getAttribute('data-category');
+
+                if (filter === 'all' || category === filter) {
+                    item.style.display = 'block';
+                    // Add fade-in animation
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        item.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 10);
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    });
 });
 
 // Add ripple animation CSS
@@ -211,6 +253,15 @@ style.textContent = `
             transform: scale(4);
             opacity: 0;
         }
+    }
+
+    .guide-filter-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .guide-item {
+        transition: opacity 0.3s ease, transform 0.3s ease;
     }
 `;
 document.head.appendChild(style);

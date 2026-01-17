@@ -514,7 +514,7 @@ h1, h2, h3, h4, h5, h6 {
     background-size: 200% 200%;
     animation: gradientShift 15s ease infinite;
     color: white;
-    padding: 120px 0 60px;
+    padding: 140px 0 100px;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -1759,7 +1759,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .hero {
-        padding: 100px 0 50px;
+        padding: 110px 0 70px;
     }
 
     .hero-content {

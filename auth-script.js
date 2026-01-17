@@ -474,7 +474,8 @@ async function handleSocialAuth(provider) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            }
+            },
+            mode: 'cors'
         });
 
         const data = await response.json();
@@ -488,7 +489,13 @@ async function handleSocialAuth(provider) {
 
     } catch (error) {
         console.error(`${provider} OAuth initiation error:`, error);
-        showAlert('Sign In Failed', `Failed to sign in with ${provider}. Please try again or use email authentication.`, 'error');
+
+        // Check if it's a CORS error
+        if (error instanceof TypeError && error.message === 'Load failed') {
+            showAlert('Connection Error', 'Unable to connect to authentication server. This is likely a CORS configuration issue on the backend. Please contact support or try email authentication.', 'error');
+        } else {
+            showAlert('Sign In Failed', `Failed to sign in with ${provider}. Please try again or use email authentication.`, 'error');
+        }
     }
 }
 

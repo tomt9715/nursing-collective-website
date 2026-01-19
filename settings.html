@@ -26,6 +26,60 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Fix form input readability */
+        .form-control,
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            background: var(--surface-color) !important;
+            color: var(--text-primary) !important;
+            border: 1px solid var(--border-color) !important;
+            padding: 12px 16px !important;
+            border-radius: 8px !important;
+            font-size: 15px !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .form-control:focus,
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="password"]:focus,
+        select:focus {
+            outline: none !important;
+            border-color: var(--accent-color) !important;
+            box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.1) !important;
+        }
+
+        .form-control:disabled {
+            background: var(--background-light) !important;
+            color: var(--text-secondary) !important;
+            cursor: not-allowed !important;
+            opacity: 0.7 !important;
+        }
+
+        /* Fix button styling */
+        .btn-primary {
+            background: linear-gradient(135deg, #2E86AB, #A23B72) !important;
+            color: white !important;
+            border: none !important;
+            padding: 14px 28px !important;
+            border-radius: 10px !important;
+            font-weight: 600 !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 8px !important;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 20px rgba(46, 134, 171, 0.3) !important;
+        }
+    </style>
 </head>
 <body>
     <!-- Page Loader -->

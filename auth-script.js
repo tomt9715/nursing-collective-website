@@ -457,7 +457,7 @@ async function handleSocialAuth(provider) {
     localStorage.setItem('lastAuthMethod', provider);
 
     // Currently supported providers
-    const supportedProviders = ['google'];
+    const supportedProviders = ['google', 'discord'];
 
     if (!supportedProviders.includes(provider)) {
         const providerNames = {
@@ -484,7 +484,7 @@ async function handleSocialAuth(provider) {
             throw new Error(data.error || `Failed to initiate ${provider} authentication`);
         }
 
-        // Redirect to OAuth provider (Google)
+        // Redirect to OAuth provider
         window.location.href = data.authorization_url;
 
     } catch (error) {

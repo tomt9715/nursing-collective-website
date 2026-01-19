@@ -384,18 +384,14 @@ function showGettingStartedCard(user) {
         // Show the card
         gettingStartedCard.style.display = 'block';
 
-        // Customize third step based on account type
-        if (user.is_premium) {
-            document.getElementById('premium-step-title').textContent = 'Explore Premium Features';
-            document.getElementById('premium-step-desc').textContent = 'You have access to all study guides and features';
-        }
-
         // Store dismissal in localStorage when user clicks "Got it!"
         const dismissBtn = gettingStartedCard.querySelector('button');
-        dismissBtn.onclick = function() {
-            gettingStartedCard.style.display = 'none';
-            localStorage.setItem('gettingStartedDismissed', 'true');
-        };
+        if (dismissBtn) {
+            dismissBtn.onclick = function() {
+                gettingStartedCard.style.display = 'none';
+                localStorage.setItem('gettingStartedDismissed', 'true');
+            };
+        }
     }
 }
 

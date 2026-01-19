@@ -122,6 +122,8 @@ function updateOAuthStatus(user) {
         discordStatus.style.color = '#10b981';
         discordBtn.innerHTML = '<i class="fas fa-unlink"></i> Disconnect';
         discordBtn.onclick = () => showAlert('Coming Soon', 'Disconnect feature will be available soon!', 'info');
+    } else {
+        discordBtn.onclick = () => connectOAuthProvider('discord');
     }
 
     // Google
@@ -132,16 +134,35 @@ function updateOAuthStatus(user) {
         googleStatus.style.color = '#10b981';
         googleBtn.innerHTML = '<i class="fas fa-unlink"></i> Disconnect';
         googleBtn.onclick = () => showAlert('Coming Soon', 'Disconnect feature will be available soon!', 'info');
+    } else {
+        googleBtn.onclick = () => connectOAuthProvider('google');
     }
+}
 
-    // Apple
-    const appleStatus = document.getElementById('apple-connection-status');
-    const appleBtn = document.getElementById('apple-connect-btn');
-    if (user.has_apple) {
-        appleStatus.textContent = 'Connected';
-        appleStatus.style.color = '#10b981';
-        appleBtn.innerHTML = '<i class="fas fa-unlink"></i> Disconnect';
-        appleBtn.onclick = () => showAlert('Coming Soon', 'Disconnect feature will be available soon!', 'info');
+// Connect OAuth provider
+async function connectOAuthProvider(provider) {
+    try {
+        const response = await fetch(`${API_URL}/auth/oauth/${provider}`, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        const data = await response.json();
+
+        if (!response.ok || !data.authorization_url) {
+            throw new Error(`Failed to get ${provider} authorization URL`);
+        }
+
+        // Store current page to return after OAuth
+        localStorage.setItem('oauth_return_page', 'settings.html');
+
+        // Redirect to OAuth provider
+        window.location.href = data.authorization_url;
+
+    } catch (error) {
+        console.error(`Error connecting ${provider}:`, error);
+        showAlert('Connection Failed', `Failed to connect ${provider}. Please try again.`, 'error');
     }
 }
 

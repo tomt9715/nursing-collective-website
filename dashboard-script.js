@@ -163,7 +163,8 @@ async function loadAdminDashboard() {
         });
 
         if (!response.ok) {
-            throw new Error('Failed to load admin dashboard');
+            console.error('Failed to load admin dashboard:', response.status, response.statusText);
+            return; // Silently fail - admin dashboard is optional
         }
 
         const data = await response.json();
@@ -267,16 +268,35 @@ function updateEmailVerificationBanner(user) {
                     const data = await response.json();
 
                     if (response.ok) {
-                        showSuccess('Verification email sent! Please check your inbox.');
+                        // Transform button to success state
+                        resendBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verification Sent!';
+                        resendBtn.style.background = '#10b981';
+                        resendBtn.style.color = 'white';
+
+                        // Reset button after 3 seconds
+                        setTimeout(() => {
+                            resendBtn.disabled = false;
+                            resendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Resend Email';
+                            resendBtn.style.background = 'white';
+                            resendBtn.style.color = '#d97706';
+                        }, 3000);
                     } else {
                         throw new Error(data.error || 'Failed to resend verification email');
                     }
                 } catch (error) {
                     console.error('Error resending verification:', error);
-                    showAlert('Error', error.message || 'Failed to resend verification email. Please try again.', 'error');
-                } finally {
-                    resendBtn.disabled = false;
-                    resendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Resend Email';
+                    // Transform button to error state
+                    resendBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to Send';
+                    resendBtn.style.background = '#ef4444';
+                    resendBtn.style.color = 'white';
+
+                    // Reset button after 3 seconds
+                    setTimeout(() => {
+                        resendBtn.disabled = false;
+                        resendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Resend Email';
+                        resendBtn.style.background = 'white';
+                        resendBtn.style.color = '#d97706';
+                    }, 3000);
                 }
             };
         }

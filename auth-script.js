@@ -315,9 +315,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (currentMode === 'signin') {
                     // Login
                     await handleLogin(email, password);
+                    // If we get here without error, redirect is happening - don't restore button
+                    return;
                 } else {
                     // Register
                     await handleRegister(email, password, firstName, lastName);
+                    // If we get here without error, redirect is happening - don't restore button
+                    return;
                 }
             } catch (error) {
                 console.error('Auth error:', error);
@@ -449,6 +453,9 @@ async function handleLogin(email, password) {
 
         // Redirect to dashboard
         window.location.href = 'dashboard.html';
+
+        // Return to prevent any further execution
+        return;
 
     } catch (error) {
         console.error('Login error:', error);

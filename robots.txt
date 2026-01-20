@@ -1,0 +1,45 @@
+# robots.txt for The Nursing Collective
+# https://thenursingcollective.pro
+
+User-agent: *
+
+# Allow public pages
+Allow: /
+Allow: /index.html
+Allow: /guides.html
+Allow: /pricing.html
+Allow: /store.html
+Allow: /about-florencebot.html
+Allow: /login.html
+Allow: /privacy.html
+Allow: /terms.html
+
+# Disallow protected/authenticated pages
+Disallow: /dashboard.html
+Disallow: /settings.html
+
+# Disallow utility/callback pages
+Disallow: /auth-callback.html
+Disallow: /reset-password.html
+Disallow: /verify-email.html
+Disallow: /guide.html
+
+# Disallow test pages
+Disallow: /test-*.html
+
+# Disallow admin areas (if any)
+Disallow: /admin/
+
+# Allow CSS and JS files for proper rendering
+Allow: /css/
+Allow: /*.css$
+Allow: /*.js$
+
+# Allow images
+Allow: /assets/
+
+# Sitemap location
+Sitemap: https://thenursingcollective.pro/sitemap.xml
+
+# Crawl rate (optional - adjust if needed)
+# Crawl-delay: 1

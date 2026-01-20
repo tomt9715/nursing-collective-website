@@ -115,6 +115,36 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
+/* Breadcrumbs */
+.breadcrumbs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 20px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.breadcrumbs a {
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.breadcrumbs a:hover {
+    color: var(--primary-color);
+}
+
+.breadcrumbs .separator {
+    color: var(--text-secondary);
+    opacity: 0.5;
+}
+
+.breadcrumbs .current {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
 
 /* ============================================
    NAVIGATION

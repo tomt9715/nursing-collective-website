@@ -58,6 +58,56 @@ document.addEventListener('DOMContentLoaded', async function() {
 });
 
 // Load user profile from API
+// Widget update functions for new dashboard layout
+function updateAccountWidget(user) {
+    const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Not set';
+    const email = user.email || 'Not set';
+    const hasDiscord = user.has_discord || false;
+
+    const nameElement = document.getElementById('widget-user-name');
+    const emailElement = document.getElementById('widget-user-email');
+    const discordElement = document.getElementById('widget-discord-status');
+
+    if (nameElement) nameElement.textContent = fullName;
+    if (emailElement) emailElement.textContent = email;
+
+    if (discordElement) {
+        if (hasDiscord) {
+            discordElement.className = 'status-badge connected';
+            discordElement.innerHTML = '<i class="fas fa-check-circle"></i> Connected';
+        } else {
+            discordElement.className = 'status-badge disconnected';
+            discordElement.innerHTML = '<i class="fas fa-times-circle"></i> Not connected';
+        }
+    }
+}
+
+function updatePurchasesWidget(user) {
+    const purchasesElement = document.getElementById('widget-total-purchases');
+    if (purchasesElement) {
+        const purchasedGuides = JSON.parse(localStorage.getItem('purchasedGuides') || '[]');
+        purchasesElement.textContent = purchasedGuides.length;
+    }
+}
+
+function updateCompactStats(user) {
+    const guidesCountElement = document.getElementById('guides-count');
+    const memberSinceElement = document.getElementById('member-since');
+
+    if (guidesCountElement) {
+        const purchasedGuides = JSON.parse(localStorage.getItem('purchasedGuides') || '[]');
+        guidesCountElement.textContent = purchasedGuides.length;
+    }
+
+    if (memberSinceElement && user.created_at) {
+        const date = new Date(user.created_at);
+        memberSinceElement.textContent = date.toLocaleDateString('en-US', {
+            month: 'short',
+            year: 'numeric'
+        });
+    }
+}
+
 async function loadUserProfile() {
     try {
         // Use apiCall for automatic token refresh
@@ -67,7 +117,35 @@ async function loadUserProfile() {
 
         const user = data.user;
 
-        // Update dashboard header
+        // Update compact header with user name
+        const userFirstNameEl = document.getElementById('user-first-name');
+        if (userFirstNameEl) {
+            const displayName = user.first_name || user.email?.split('@')[0] || 'Student';
+            userFirstNameEl.textContent = displayName;
+        }
+
+        // Add badges to compact header
+        const premiumBadgeEl = document.getElementById('premium-badge');
+        const adminBadgeEl = document.getElementById('admin-badge');
+
+        if (adminBadgeEl && user.is_admin) {
+            adminBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
+            adminBadgeEl.innerHTML = '<i class="fas fa-crown"></i> Admin';
+        }
+
+        if (premiumBadgeEl && user.is_premium) {
+            premiumBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
+            premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';
+        }
+
+        // Update new compact stats
+        updateCompactStats(user);
+
+        // Update new widgets
+        updateAccountWidget(user);
+        updatePurchasesWidget(user);
+
+        // Update dashboard header (old selector for compatibility)
         const dashboardHeader = document.querySelector('.dashboard-header h1');
         if (dashboardHeader) {
             const displayName = user.first_name || user.email?.split('@')[0] || 'Student';
@@ -468,7 +546,7 @@ const guidesData = [
 
 // Load purchased guides from localStorage
 function loadAccessibleGuides(user) {
-    const guideList = document.getElementById('guide-list');
+    const guideList = document.querySelector('.guides-grid-enhanced') || document.getElementById('guide-list');
     if (!guideList) return;
 
     // Remove skeleton loader
@@ -481,8 +559,8 @@ function loadAccessibleGuides(user) {
     // Filter to show only purchased guides
     const purchasedGuidesData = guidesData.filter(guide => purchasedGuides.includes(guide.id));
 
-    // Update study guides stat
-    const guidesCountStat = document.querySelector('.user-stats .stat:first-child .number');
+    // Update study guides stat in compact header
+    const guidesCountStat = document.getElementById('guides-count');
     if (guidesCountStat) {
         guidesCountStat.textContent = purchasedGuidesData.length;
     }
@@ -523,12 +601,17 @@ function loadAccessibleGuides(user) {
             });
         });
     } else {
-        // Show empty state with browse guides CTA
+        // Show enhanced empty state with browse guides CTA
         guideList.innerHTML = `
-            <div class="empty-state" style="text-align: center; padding: 60px 20px;">
-                <i class="fas fa-shopping-cart" style="font-size: 64px; color: var(--primary-color); opacity: 0.3; margin-bottom: 20px;"></i>
-                <h4 style="color: var(--text-primary); margin-bottom: 12px;">No Guides Purchased Yet</h4>
-                <p style="color: var(--text-secondary); margin-bottom: 24px;">Browse our collection of NCLEX-focused study guides. Each guide is $5.99 with lifetime access!</p>
+            <div class="empty-state-enhanced">
+                <div class="empty-icon">
+                    <i class="fas fa-book-open"></i>
+                </div>
+                <h3>Start Your NCLEX Journey</h3>
+                <p>Browse our collection of comprehensive study guides designed to help you pass the NCLEX on your first try.</p>
+                <button class="btn-secondary" onclick="window.location.href='guides.html'">
+                    <i class="fas fa-search"></i> Explore Study Guides
+                </button>
             </div>
         `;
     }

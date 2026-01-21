@@ -1635,3 +1635,53 @@ pre code {
     color: var(--text-secondary);
     margin: 8px 0 0 0;
 }
+
+/* Empty State Enhancement */
+.empty-state-enhanced {
+    text-align: center;
+    padding: 60px 40px;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.empty-state-enhanced .empty-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 24px;
+    font-size: 36px;
+    color: white;
+    box-shadow: 0 8px 30px rgba(46, 134, 171, 0.3);
+}
+
+.empty-state-enhanced h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.empty-state-enhanced p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 480px) {
+    .empty-state-enhanced {
+        padding: 40px 20px;
+    }
+
+    .empty-state-enhanced .empty-icon {
+        width: 64px;
+        height: 64px;
+        font-size: 28px;
+    }
+}

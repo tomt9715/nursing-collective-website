@@ -187,8 +187,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const userMenuBtn = document.getElementById('user-menu-btn');
     const userDropdown = document.getElementById('user-dropdown');
 
+    console.log('[script.js] isDashboardPage:', isDashboardPage, 'pathname:', window.location.pathname);
+    console.log('[script.js] userMenuBtn exists:', !!userMenuBtn, 'userDropdown exists:', !!userDropdown);
+
     if (userMenuBtn && userDropdown && !isDashboardPage) {
+        console.log('[script.js] Attaching user menu handler');
         userMenuBtn.addEventListener('click', function(e) {
+            console.log('[script.js] User menu clicked!');
             e.stopPropagation();
             userDropdown.classList.toggle('active');
         });

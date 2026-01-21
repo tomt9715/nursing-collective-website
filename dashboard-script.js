@@ -14,8 +14,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     const userMenuBtn = document.getElementById('user-menu-btn');
     const userDropdown = document.getElementById('user-dropdown');
 
+    console.log('[dashboard-script.js] userMenuBtn exists:', !!userMenuBtn, 'userDropdown exists:', !!userDropdown);
+
     if (userMenuBtn && userDropdown) {
+        console.log('[dashboard-script.js] Attaching user menu handler');
         userMenuBtn.addEventListener('click', function(e) {
+            console.log('[dashboard-script.js] User menu clicked!');
             e.stopPropagation();
             userDropdown.classList.toggle('active');
         });

@@ -51,7 +51,7 @@ class HeaderFooterCanvas(canvas.Canvas):
         # Footer
         self.setFont('Helvetica', 8)
         self.setFillColor(TEXT_SECONDARY)
-        footer_text = f"florencebot.pro | Page {page_num} of {page_count}"
+        footer_text = f"thenursingcollective.pro | Page {page_num} of {page_count}"
         self.drawCentredString(4.25 * inch, 0.5 * inch, footer_text)
 
 

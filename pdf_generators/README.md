@@ -79,7 +79,7 @@ All generated PDFs are saved to:
 
 This ensures they're web-accessible at:
 ```
-https://florencebot.pro/assets/downloads/[filename].pdf
+https://thenursingcollective.pro/assets/downloads/[filename].pdf
 ```
 
 ## Design Standards
@@ -100,7 +100,7 @@ https://florencebot.pro/assets/downloads/[filename].pdf
 
 ### Header & Footer
 - **Header**: "The Nursing Collective" in brand blue
-- **Footer**: "florencebot.pro | Page X of Y" centered
+- **Footer**: "thenursingcollective.pro | Page X of Y" centered
 
 ### Content Guidelines
 - Natural language from experienced nurses, not AI-generated tone

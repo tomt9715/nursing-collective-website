@@ -1033,7 +1033,7 @@
     position: absolute;
     top: calc(100% + 12px);
     right: 0;
-    background: var(--background);
+    background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
@@ -1134,7 +1134,7 @@
 
 /* Dark theme */
 [data-theme="dark"] .user-dropdown {
-    background: var(--background-dark);
+    background: var(--card-bg);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
 }
 

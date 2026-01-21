@@ -1,0 +1,488 @@
+/* ============================================
+   CHECKOUT.CSS - Checkout Page Styles
+   ============================================ */
+
+/* ============================================
+   CHECKOUT SECTION
+   ============================================ */
+
+.checkout-section {
+    padding-top: 120px;
+    padding-bottom: 60px;
+    min-height: calc(100vh - 200px);
+    background: var(--background-light);
+}
+
+.checkout-container {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   ORDER SUMMARY
+   ============================================ */
+
+.order-summary {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+    height: fit-content;
+    position: sticky;
+    top: 120px;
+}
+
+.order-summary h2 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.product-details {
+    margin-bottom: 24px;
+}
+
+.product-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.product-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: 'Outfit', sans-serif;
+}
+
+.product-description {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.product-category {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    background: rgba(46, 134, 171, 0.1);
+    padding: 4px 12px;
+    border-radius: 20px;
+    width: fit-content;
+    margin-top: 8px;
+}
+
+.product-price {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-top: 16px;
+    font-family: 'Outfit', sans-serif;
+}
+
+/* Package includes list */
+.package-includes {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.package-includes h4 {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+.package-includes ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.package-includes li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+}
+
+.package-includes li i {
+    color: var(--primary-color);
+    font-size: 0.8rem;
+}
+
+/* Order Total */
+.order-total {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.total-row.total-final {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    padding-top: 12px;
+    margin-top: 8px;
+    border-top: 2px solid var(--border-color);
+}
+
+/* Trust Badges */
+.trust-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.trust-badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.trust-badge i {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(46, 134, 171, 0.1);
+    color: var(--primary-color);
+    border-radius: 8px;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   PAYMENT FORM
+   ============================================ */
+
+.payment-form-container {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+    border: 1px solid var(--border-color);
+}
+
+.payment-form-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Form Groups */
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 14px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-primary);
+    background: var(--background-white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+.form-group input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
+}
+
+.form-group input[type="email"]::placeholder {
+    color: var(--text-light);
+}
+
+.form-hint {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+/* Stripe Payment Element Container */
+#payment-element {
+    min-height: 150px;
+    padding: 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--background-white);
+}
+
+.payment-element-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 40px 20px;
+    color: var(--text-secondary);
+}
+
+/* Submit Button */
+#payment-form button[type="submit"] {
+    width: 100%;
+    padding: 16px 24px;
+    margin-top: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+#payment-form button[type="submit"]:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#payment-form button[type="submit"]:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);
+}
+
+.btn-block {
+    width: 100%;
+}
+
+/* Security Note */
+.security-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.security-note i {
+    color: var(--primary-color);
+}
+
+/* Subscription Notice */
+.subscription-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px;
+    background: rgba(46, 134, 171, 0.1);
+    border: 1px solid rgba(46, 134, 171, 0.2);
+    border-radius: 8px;
+    margin-top: 24px;
+}
+
+.subscription-notice i {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.subscription-notice p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* Error Message Styles */
+#error-message {
+    margin-bottom: 20px;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+    .checkout-section {
+        padding-top: 100px;
+        padding-bottom: 40px;
+    }
+
+    .checkout-container {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .order-summary {
+        position: static;
+        padding: 24px;
+    }
+
+    .order-summary h2,
+    .payment-form-container h2 {
+        font-size: 1.25rem;
+        margin-bottom: 20px;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+    }
+
+    .payment-form-container {
+        padding: 24px;
+    }
+
+    .trust-badges {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .trust-badge {
+        flex: 1 1 auto;
+        min-width: 120px;
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .checkout-section {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .order-summary,
+    .payment-form-container {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    .form-group input[type="email"],
+    #payment-element {
+        padding: 12px;
+    }
+
+    #payment-form button[type="submit"] {
+        padding: 14px 20px;
+        font-size: 1rem;
+    }
+
+    .trust-badges {
+        gap: 16px;
+    }
+
+    .trust-badge {
+        min-width: 100%;
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+}
+
+/* ============================================
+   LOADING & ERROR STATES
+   ============================================ */
+
+/* Product loading skeleton */
+.product-details .skeleton {
+    margin-bottom: 12px;
+}
+
+.product-details .skeleton:last-child {
+    margin-bottom: 0;
+}
+
+/* Processing state */
+.processing {
+    pointer-events: none;
+}
+
+.processing .spinner {
+    display: inline-block !important;
+}
+
+.processing #button-text {
+    opacity: 0.7;
+}
+
+/* Error state for inputs */
+.form-group input.error {
+    border-color: #ef4444;
+}
+
+.form-group input.error:focus {
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15);
+}
+
+/* ============================================
+   DARK MODE ADJUSTMENTS
+   ============================================ */
+
+[data-theme="dark"] .checkout-section {
+    background: var(--background-white);
+}
+
+[data-theme="dark"] .order-summary,
+[data-theme="dark"] .payment-form-container {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .form-group input[type="email"],
+[data-theme="dark"] #payment-element {
+    background: var(--background-light);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .form-group input[type="email"]::placeholder {
+    color: var(--text-light);
+}
+
+[data-theme="dark"] .trust-badge i {
+    background: rgba(46, 134, 171, 0.2);
+}
+
+[data-theme="dark"] .product-category {
+    background: rgba(46, 134, 171, 0.2);
+}
+
+/* Stripe Elements dark mode - applied via JS appearance option */

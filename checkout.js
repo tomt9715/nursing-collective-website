@@ -11,6 +11,7 @@ let stripe = null;
 let elements = null;
 let paymentElement = null;
 let currentProduct = null;
+let currentPaymentIntentId = null;
 
 // Category display names
 const CATEGORY_NAMES = {
@@ -167,6 +168,9 @@ async function createPaymentIntent() {
 
         const data = await response.json();
 
+        // Store the payment intent ID for later use
+        currentPaymentIntentId = data.paymentIntentId;
+
         // Initialize Elements with the client secret
         const appearance = getStripeAppearance();
         elements = stripe.elements({
@@ -258,26 +262,7 @@ async function handleSubmit(event) {
         }
 
         // Handle one-time payment
-        // First, update the payment intent with the correct email
-        const updateResponse = await fetch(`${API_BASE_URL}/api/create-payment-intent`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                product_id: currentProduct.id,
-                email: email
-            }),
-        });
-
-        if (!updateResponse.ok) {
-            const error = await updateResponse.json();
-            throw new Error(error.error || 'Failed to process payment');
-        }
-
-        const paymentData = await updateResponse.json();
-
-        // Confirm payment with Stripe
+        // Confirm payment with Stripe using the existing payment intent
         const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
             elements,
             confirmParams: {
@@ -299,8 +284,8 @@ async function handleSubmit(event) {
             // Payment requires additional action or is processing
             window.location.href = `${window.location.origin}/success.html?product=${currentProduct.id}&payment_intent=${paymentIntent.id}`;
         } else {
-            // Fallback using the payment intent ID from creation
-            window.location.href = `${window.location.origin}/success.html?product=${currentProduct.id}&payment_intent=${paymentData.paymentIntentId}`;
+            // Fallback using the stored payment intent ID
+            window.location.href = `${window.location.origin}/success.html?product=${currentProduct.id}&payment_intent=${currentPaymentIntentId}`;
         }
 
     } catch (error) {

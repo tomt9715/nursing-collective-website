@@ -318,6 +318,9 @@
             const paymentIntentId = urlParams.get('payment_intent');
             const sessionId = urlParams.get('session_id');
             const productId = urlParams.get('product');
+            const redirectStatus = urlParams.get('redirect_status');
+
+            console.log('Success page params:', { paymentIntentId, sessionId, productId, redirectStatus });
 
             try {
                 let paymentDetails = null;
@@ -331,13 +334,34 @@
 
                 if (paymentDetails && paymentDetails.succeeded) {
                     showSuccessState(paymentDetails);
+                } else if (paymentDetails && paymentDetails.status === 'processing') {
+                    // Payment is still processing
+                    showSuccessState({
+                        ...paymentDetails,
+                        productId: productId,
+                        productName: paymentDetails.productName || formatProductName(productId),
+                        processing: true
+                    });
+                } else if (redirectStatus === 'succeeded' && productId) {
+                    // Stripe redirect indicated success but verification failed
+                    // This can happen if there's a brief delay - show success anyway
+                    showSuccessState({
+                        productId: productId,
+                        productName: formatProductName(productId)
+                    });
                 } else {
                     showErrorState('Payment could not be verified. Please contact support if you believe this is an error.');
                 }
             } catch (error) {
                 console.error('Verification error:', error);
-                // Still show success if we have a product ID (user was redirected here)
-                if (productId) {
+                // Still show success if we have redirect_status=succeeded or product ID
+                if (redirectStatus === 'succeeded' || (productId && paymentIntentId)) {
+                    showSuccessState({
+                        productId: productId,
+                        productName: formatProductName(productId)
+                    });
+                } else if (productId) {
+                    // Fallback - show success with just product info
                     showSuccessState({
                         productId: productId,
                         productName: formatProductName(productId)

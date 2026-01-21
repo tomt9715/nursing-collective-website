@@ -277,8 +277,8 @@ async function handleSubmit(event) {
 
         const paymentData = await updateResponse.json();
 
-        // Confirm payment with the new client secret
-        const { error: confirmError } = await stripe.confirmPayment({
+        // Confirm payment with Stripe
+        const { error: confirmError, paymentIntent } = await stripe.confirmPayment({
             elements,
             confirmParams: {
                 return_url: `${window.location.origin}/success.html?product=${currentProduct.id}`,
@@ -292,8 +292,16 @@ async function handleSubmit(event) {
         }
 
         // If we reach here without redirect, payment succeeded
-        // This can happen with some payment methods that don't require redirect
-        window.location.href = `${window.location.origin}/success.html?product=${currentProduct.id}&payment_intent=${paymentData.paymentIntentId}`;
+        // This can happen with some payment methods that don't require redirect (like cards)
+        if (paymentIntent && paymentIntent.status === 'succeeded') {
+            window.location.href = `${window.location.origin}/success.html?product=${currentProduct.id}&payment_intent=${paymentIntent.id}`;
+        } else if (paymentIntent) {
+            // Payment requires additional action or is processing
+            window.location.href = `${window.location.origin}/success.html?product=${currentProduct.id}&payment_intent=${paymentIntent.id}`;
+        } else {
+            // Fallback using the payment intent ID from creation
+            window.location.href = `${window.location.origin}/success.html?product=${currentProduct.id}&payment_intent=${paymentData.paymentIntentId}`;
+        }
 
     } catch (error) {
         console.error('Payment error:', error);

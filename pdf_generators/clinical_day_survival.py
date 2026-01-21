@@ -7,7 +7,7 @@ Practical tips and guidance for nervous nursing students on their first clinical
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, KeepTogether
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_JUSTIFY
 from reportlab.pdfgen import canvas
@@ -98,7 +98,8 @@ def create_clinical_survival_guide_pdf(output_path):
         textColor=PRIMARY_COLOR,
         spaceAfter=10,
         spaceBefore=14,
-        fontName='Helvetica-Bold'
+        fontName='Helvetica-Bold',
+        keepWithNext=True  # Keep header with next paragraph
     )
 
     subsection_style = ParagraphStyle(
@@ -108,8 +109,12 @@ def create_clinical_survival_guide_pdf(output_path):
         textColor=SECONDARY_COLOR,
         spaceAfter=6,
         spaceBefore=8,
-        fontName='Helvetica-Bold'
+        fontName='Helvetica-Bold',
+        keepWithNext=True  # Keep subsection header with next paragraph
     )
+
+    # Additional color for variety
+    highlight_color = colors.HexColor('#059669')  # Teal/Green for emphasis boxes
 
     body_style = ParagraphStyle(
         'CustomBody',
@@ -202,9 +207,11 @@ def create_clinical_survival_guide_pdf(output_path):
     elements.append(Spacer(1, 0.12*inch))
 
     # Section 4: Working with Your Nurse
-    elements.append(Paragraph("Working with Your Nurse", section_header_style))
+    nurse_section = []
+    nurse_section.append(Paragraph("Working with Your Nurse", section_header_style))
 
-    elements.append(Paragraph("<b>Do's:</b>", subsection_style))
+    # Do's in a colored box
+    dos_content = [Paragraph("<b>Do's:</b>", subsection_style)]
     dos = [
         "Ask questions, but pick appropriate times (not during emergencies or med pass)",
         "Volunteer to help before being asked",
@@ -213,10 +220,22 @@ def create_clinical_survival_guide_pdf(output_path):
         "Thank them at the end of the day"
     ]
     for item in dos:
-        elements.append(Paragraph(f"• {item}", bullet_style))
+        dos_content.append(Paragraph(f"• {item}", bullet_style))
 
-    elements.append(Spacer(1, 0.08*inch))
-    elements.append(Paragraph("<b>Don'ts:</b>", subsection_style))
+    dos_table = Table([dos_content], colWidths=[6.5*inch])
+    dos_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#ecfdf5')),  # Light teal
+        ('BOX', (0, 0), (-1, -1), 1.5, highlight_color),
+        ('TOPPADDING', (0, 0), (-1, -1), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+        ('LEFTPADDING', (0, 0), (-1, -1), 12),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 12),
+    ]))
+    nurse_section.append(dos_table)
+    nurse_section.append(Spacer(1, 0.12*inch))
+
+    # Don'ts in a colored box
+    donts_content = [Paragraph("<b>Don'ts:</b>", subsection_style)]
     donts = [
         "Don't hide in the corner or disappear from the floor",
         "Don't pretend to know something you don't",
@@ -225,9 +244,22 @@ def create_clinical_survival_guide_pdf(output_path):
         "Don't check your phone except during designated breaks"
     ]
     for item in donts:
-        elements.append(Paragraph(f"• {item}", bullet_style))
+        donts_content.append(Paragraph(f"• {item}", bullet_style))
 
-    elements.append(Spacer(1, 0.12*inch))
+    donts_table = Table([donts_content], colWidths=[6.5*inch])
+    donts_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#fef2f2')),  # Light red/pink
+        ('BOX', (0, 0), (-1, -1), 1.5, colors.HexColor('#dc2626')),  # Red border
+        ('TOPPADDING', (0, 0), (-1, -1), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+        ('LEFTPADDING', (0, 0), (-1, -1), 12),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 12),
+    ]))
+    nurse_section.append(donts_table)
+    nurse_section.append(Spacer(1, 0.12*inch))
+
+    # Keep the entire "Working with Your Nurse" section together
+    elements.append(KeepTogether(nurse_section))
 
     # Section 5: Patient Interaction
     elements.append(Paragraph("Interacting with Patients", section_header_style))
@@ -252,7 +284,8 @@ def create_clinical_survival_guide_pdf(output_path):
     elements.append(Spacer(1, 0.12*inch))
 
     # Section 6: Handling Nervousness
-    elements.append(Paragraph("Managing Anxiety & Nervousness", section_header_style))
+    anxiety_section = []
+    anxiety_section.append(Paragraph("Managing Anxiety & Nervousness", section_header_style))
 
     anxiety_strategies = [
         ("It's Normal to Be Nervous", "Every single nursing student feels this way. Your instructor and nurse "
@@ -265,8 +298,24 @@ def create_clinical_survival_guide_pdf(output_path):
          "Never fake competence.")
     ]
 
+    anxiety_content = []
     for header, text in anxiety_strategies:
-        elements.append(Paragraph(f"<b>{header}:</b> {text}", bullet_style))
+        anxiety_content.append(Paragraph(f"<b>{header}:</b> {text}", bullet_style))
+
+    # Wrap anxiety strategies in a calming colored box
+    anxiety_table = Table([anxiety_content], colWidths=[6.5*inch])
+    anxiety_table.setStyle(TableStyle([
+        ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f0f9ff')),  # Light blue - calming
+        ('BOX', (0, 0), (-1, -1), 1.5, PRIMARY_COLOR),
+        ('TOPPADDING', (0, 0), (-1, -1), 10),
+        ('BOTTOMPADDING', (0, 0), (-1, -1), 10),
+        ('LEFTPADDING', (0, 0), (-1, -1), 12),
+        ('RIGHTPADDING', (0, 0), (-1, -1), 12),
+    ]))
+    anxiety_section.append(anxiety_table)
+
+    # Keep anxiety section together
+    elements.append(KeepTogether(anxiety_section))
 
     elements.append(Spacer(1, 0.12*inch))
 

@@ -7,7 +7,7 @@ Generates a professional 1-page overview of the top 50 NCLEX priority concepts
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.units import inch
 from reportlab.lib import colors
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, KeepTogether
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.enums import TA_CENTER, TA_LEFT
 from reportlab.pdfgen import canvas
@@ -96,16 +96,36 @@ def create_nclex_priority_concepts_pdf(output_path):
         fontName='Helvetica'
     )
 
-    # Section header style
-    section_header_style = ParagraphStyle(
-        'SectionHeader',
-        parent=styles['Heading2'],
-        fontSize=12,
-        textColor=PRIMARY_COLOR,
-        spaceAfter=8,
-        spaceBefore=12,
-        fontName='Helvetica-Bold'
-    )
+    # Section header style - alternating colors for visual variety
+    section_header_styles = [
+        ParagraphStyle(
+            'SectionHeader1',
+            parent=styles['Heading2'],
+            fontSize=12,
+            textColor=PRIMARY_COLOR,
+            spaceAfter=8,
+            spaceBefore=12,
+            fontName='Helvetica-Bold'
+        ),
+        ParagraphStyle(
+            'SectionHeader2',
+            parent=styles['Heading2'],
+            fontSize=12,
+            textColor=SECONDARY_COLOR,
+            spaceAfter=8,
+            spaceBefore=12,
+            fontName='Helvetica-Bold'
+        ),
+        ParagraphStyle(
+            'SectionHeader3',
+            parent=styles['Heading2'],
+            fontSize=12,
+            textColor=colors.HexColor('#059669'),  # Teal/Green
+            spaceAfter=8,
+            spaceBefore=12,
+            fontName='Helvetica-Bold'
+        )
+    ]
 
     # Add title
     elements.append(Paragraph("Top 50 NCLEX Priority Concepts", title_style))
@@ -147,10 +167,19 @@ def create_nclex_priority_concepts_pdf(output_path):
         ])
     ]
 
-    # Create table data
-    for category, items in concepts:
-        # Add category header
-        elements.append(Paragraph(category, section_header_style))
+    # Create table data with alternating header colors and background colors
+    category_colors = [
+        colors.HexColor('#f0f9ff'),  # Light blue
+        colors.HexColor('#faf5ff'),  # Light purple
+        colors.HexColor('#ecfdf5'),  # Light teal
+    ]
+
+    for idx, (category, items) in enumerate(concepts):
+        section_content = []
+
+        # Use alternating header styles
+        header_style = section_header_styles[idx % 3]
+        section_content.append(Paragraph(category, header_style))
 
         # Format items into a compact table (3 columns)
         table_data = []
@@ -161,7 +190,8 @@ def create_nclex_priority_concepts_pdf(output_path):
                 row.append("")
             table_data.append(row)
 
-        # Create table
+        # Create table with alternating background colors
+        bg_color = category_colors[idx % 3]
         concept_table = Table(table_data, colWidths=[2.3*inch, 2.3*inch, 2.3*inch])
         concept_table.setStyle(TableStyle([
             ('FONT', (0, 0), (-1, -1), 'Helvetica', 9),
@@ -172,11 +202,14 @@ def create_nclex_priority_concepts_pdf(output_path):
             ('TOPPADDING', (0, 0), (-1, -1), 4),
             ('BOTTOMPADDING', (0, 0), (-1, -1), 4),
             ('GRID', (0, 0), (-1, -1), 0.5, colors.HexColor('#e5e7eb')),
-            ('BACKGROUND', (0, 0), (-1, -1), colors.HexColor('#f8fafc')),
+            ('BACKGROUND', (0, 0), (-1, -1), bg_color),
         ]))
 
-        elements.append(concept_table)
-        elements.append(Spacer(1, 0.08*inch))
+        section_content.append(concept_table)
+        section_content.append(Spacer(1, 0.08*inch))
+
+        # Keep section together - prevent page break between header and table
+        elements.append(KeepTogether(section_content))
 
     # Add footer note
     footer_note_style = ParagraphStyle(

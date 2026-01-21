@@ -1,8 +1,8 @@
 // Authentication Page JavaScript
 // Email form toggle, password strength, and form validation
 
-// API Configuration
-const API_URL = 'https://web-production-592c07.up.railway.app';
+// API Configuration is loaded from api-service.js (already defined globally)
+// const API_URL is declared in api-service.js and available globally
 
 // Check if user is already logged in
 if (localStorage.getItem('accessToken')) {

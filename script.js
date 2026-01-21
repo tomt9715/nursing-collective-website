@@ -182,10 +182,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // User menu dropdown toggle
+    // Note: dashboard.html uses dashboard-script.js for this, so skip if on dashboard
+    const isDashboardPage = window.location.pathname.includes('dashboard.html');
     const userMenuBtn = document.getElementById('user-menu-btn');
     const userDropdown = document.getElementById('user-dropdown');
 
-    if (userMenuBtn && userDropdown) {
+    if (userMenuBtn && userDropdown && !isDashboardPage) {
         userMenuBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             userDropdown.classList.toggle('active');

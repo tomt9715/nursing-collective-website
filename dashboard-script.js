@@ -389,39 +389,16 @@ function updateEmailVerificationBanner(user) {
 
 // Load user purchases
 function loadPurchases(user) {
-    // TODO: Implement when purchase tracking is added to backend
-    // For now, just show empty state
-    const purchasesList = document.getElementById('purchases-list');
-    if (purchasesList && user.is_premium) {
-        // If user has premium, show a placeholder purchase
-        purchasesList.innerHTML = `
-            <div style="padding: 16px; background: var(--background-light); border-radius: 12px; margin-bottom: 12px;">
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <div style="font-weight: 600; color: var(--text-primary); margin-bottom: 4px;">
-                            <i class="fas fa-crown" style="color: var(--primary-color);"></i> Premium Access
-                        </div>
-                        <div style="font-size: 0.9rem; color: var(--text-secondary);">Full access to all study guides</div>
-                    </div>
-                    <button class="btn-small" onclick="window.location.href='guides.html'" style="background: var(--primary-color); color: white;">
-                        <i class="fas fa-book-open"></i> View Guides
-                    </button>
-                </div>
-            </div>
-        `;
-    }
+    // Purchase info is now displayed via updatePurchasesWidget() in the new dashboard layout
+    // This function is kept for backward compatibility but is no longer used
+    console.log('loadPurchases: Purchase data updated via widget system');
 }
 
 // Update Discord connection status
 function updateDiscordStatus(user) {
-    const discordStatus = document.getElementById('discord-status');
-    const discordInfo = document.getElementById('discord-info');
-
-    if (user.has_discord) {
-        discordStatus.className = 'status connected';
-        discordStatus.innerHTML = '<i class="fas fa-check-circle"></i> Connected';
-        discordInfo.innerHTML = '<strong>Discord Account Linked</strong><br>Access FlorenceBot in The Nursing Collective server';
-    }
+    // Discord status is now updated via updateAccountWidget() in the new dashboard layout
+    // This function is kept for backward compatibility but is no longer used
+    console.log('updateDiscordStatus: Discord status updated via widget system');
 }
 
 // Animate dashboard stats

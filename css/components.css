@@ -200,25 +200,33 @@
 .btn-secondary {
     background: transparent;
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: 2.5px solid var(--primary-color);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(46, 134, 171, 0.15);
 }
 
 .btn-secondary:hover {
     background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);
+    border-color: var(--primary-color);
 }
 
 .btn-outline-primary {
     background: transparent;
     color: var(--primary-color);
-    border: 2px solid var(--primary-color);
+    border: 2.5px solid var(--primary-color);
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(46, 134, 171, 0.15);
 }
 
 .btn-outline-primary:hover {
     background: var(--primary-color);
     color: white;
     transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);
+    border-color: var(--primary-color);
 }
 
 .btn-light {

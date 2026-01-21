@@ -262,9 +262,16 @@ async function handleSubmit(event) {
         }
 
         // Handle one-time payment
-        // Confirm payment with Stripe - always redirect to ensure payment completes
+        // First, submit the Payment Element to validate the form
+        const { error: submitError } = await elements.submit();
+        if (submitError) {
+            throw new Error(submitError.message);
+        }
+
+        // Now confirm the payment - this will redirect to Stripe
         const { error: confirmError } = await stripe.confirmPayment({
             elements,
+            clientSecret: elements._commonOptions.clientSecret,
             confirmParams: {
                 return_url: `${window.location.origin}/success.html?product=${currentProduct.id}&payment_intent=${currentPaymentIntentId}`,
                 receipt_email: email,

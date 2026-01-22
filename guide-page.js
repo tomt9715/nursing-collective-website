@@ -141,6 +141,11 @@ const productCatalog = {
     'amputation-care': { name: 'Amputation Care Guide', category: 'med-surg', price: 5.99 },
     // Mental Health
     'eating-disorders': { name: 'Eating Disorders Guide', category: 'mental-health', price: 5.99 },
+    'depression-anxiety': { name: 'Depression & Anxiety Guide', category: 'mental-health', price: 5.99 },
+    'schizophrenia': { name: 'Schizophrenia Guide', category: 'mental-health', price: 5.99 },
+    'bipolar-disorder': { name: 'Bipolar Disorder Guide', category: 'mental-health', price: 5.99 },
+    'substance-abuse': { name: 'Substance Abuse Guide', category: 'mental-health', price: 5.99 },
+    'ptsd-trauma': { name: 'PTSD & Trauma Guide', category: 'mental-health', price: 5.99 },
     // Legacy free guides
     'electrolytes': { name: 'Electrolyte Management Guide', category: 'lab-values', price: 5.99 },
     'vital-signs': { name: 'Vital Signs Assessment Guide', category: 'clinical-skills', price: 5.99 },
@@ -571,13 +576,34 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
     const container = document.getElementById('related-guides-grid');
     const section = document.getElementById('related-guides-section');
 
-    if (!container || !section) return;
+    console.log('renderRelatedGuides called:', { currentGuideId, currentCategory });
+    console.log('Container found:', !!container, 'Section found:', !!section);
 
-    // Get the category of the current guide
+    if (!container || !section) {
+        console.log('Container or section not found, exiting');
+        return;
+    }
+
+    // Get the category of the current guide from our catalog
     const currentProduct = productCatalog[currentGuideId];
-    const category = currentCategory || (currentProduct ? currentProduct.category : null);
+
+    // Normalize category - handle both API formats and catalog formats
+    let category = currentCategory;
+
+    // If API category has underscores, convert to hyphens to match our catalog
+    if (category && category.includes('_')) {
+        category = category.replace(/_/g, '-');
+    }
+
+    // Fallback to catalog category if API category doesn't exist or doesn't match
+    if (!category || !Object.values(productCatalog).some(p => p.category === category)) {
+        category = currentProduct ? currentProduct.category : null;
+    }
+
+    console.log('Using category:', category, 'Product from catalog:', currentProduct);
 
     if (!category) {
+        console.log('No category found, hiding section');
         section.style.display = 'none';
         return;
     }
@@ -590,7 +616,10 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
         .filter(([id, product]) => product.category === category && id !== currentGuideId)
         .slice(0, 8); // Limit to 8 related guides
 
+    console.log('Found related guides:', relatedGuides.length, relatedGuides.map(([id]) => id));
+
     if (relatedGuides.length === 0) {
+        console.log('No related guides found, hiding section');
         section.style.display = 'none';
         return;
     }

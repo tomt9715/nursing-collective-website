@@ -1,8 +1,10 @@
 // Store Page JavaScript
 // Sidebar Filter Functionality, Shop Type Toggle & Cart Integration
 
+console.log('=== STORE-SCRIPT.JS FILE LOADED ===');
+
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('Store script loaded');
+    console.log('Store script DOMContentLoaded fired');
 
     // Convert "Buy Guide" links to "Add to Cart" buttons
     initializeAddToCartButtons();

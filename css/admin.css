@@ -1,5 +1,490 @@
 /* Admin Dashboard Styles */
 
+/* ===========================
+   ADMIN HERO HEADER
+   =========================== */
+.admin-hero {
+    position: relative;
+    padding: 120px 0 40px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.admin-hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+}
+
+.admin-hero-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+
+.admin-hero-text {
+    flex: 1;
+}
+
+.admin-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 24px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    backdrop-filter: blur(10px);
+}
+
+.admin-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 12px;
+    line-height: 1.2;
+}
+
+.admin-hero h1 span {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.admin-hero-subtitle {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.admin-hero-stats {
+    display: flex;
+    gap: 24px;
+}
+
+.hero-stat {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    padding: 24px 32px;
+    text-align: center;
+    min-width: 140px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.hero-stat-value {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    line-height: 1.2;
+}
+
+.hero-stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 4px;
+}
+
+/* ===========================
+   QUICK ACTIONS
+   =========================== */
+.admin-quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 32px;
+}
+
+.quick-action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    padding: 24px 16px;
+    background: var(--card-background);
+    border: 2px solid var(--border-color);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.quick-action-btn i {
+    font-size: 1.5rem;
+    color: #667eea;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 12px;
+}
+
+.quick-action-btn span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.quick-action-btn:hover {
+    border-color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+}
+
+.quick-action-btn:hover i {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+/* ===========================
+   STATS SECTIONS
+   =========================== */
+.stats-section {
+    margin-bottom: 32px;
+}
+
+.stats-section-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stats-section-title i {
+    color: #667eea;
+    font-size: 0.9rem;
+}
+
+/* Stat Trend Indicators */
+.stat-trend {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-left: auto;
+}
+
+.stat-trend.up {
+    background: rgba(22, 163, 74, 0.1);
+    color: #16a34a;
+}
+
+.stat-trend.down {
+    background: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
+}
+
+/* Stat Badges (percentage) */
+.stat-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    color: #667eea;
+    margin-left: auto;
+}
+
+/* Stat Subtext */
+.stat-subtext {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-left: auto;
+}
+
+/* Highlighted stat card */
+.admin-stat-card.highlight {
+    background: linear-gradient(135deg, rgba(22, 163, 74, 0.05) 0%, rgba(22, 163, 74, 0.02) 100%);
+    border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+/* ===========================
+   TWO COLUMN LAYOUT
+   =========================== */
+.admin-two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+/* Button link style */
+.btn-link {
+    background: none;
+    border: none;
+    color: #667eea;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s ease;
+}
+
+.btn-link:hover {
+    color: #764ba2;
+    text-decoration: underline;
+}
+
+/* ===========================
+   SYSTEM STATUS
+   =========================== */
+.system-status-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px;
+    background: var(--background-light);
+    border-radius: 12px;
+}
+
+.status-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-background);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+.status-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.status-name {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.status-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.status-value.online {
+    color: #16a34a;
+}
+
+.status-value.offline {
+    color: #dc2626;
+}
+
+/* Status indicator in header */
+.status-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+}
+
+.status-indicator.online {
+    background: rgba(22, 163, 74, 0.1);
+    color: #16a34a;
+}
+
+.status-indicator.online i {
+    font-size: 0.5rem;
+}
+
+.status-indicator.offline {
+    background: rgba(220, 38, 38, 0.1);
+    color: #dc2626;
+}
+
+/* ===========================
+   AUTH PROVIDER STATS
+   =========================== */
+.provider-stats {
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+}
+
+.provider-stats h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin: 0 0 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.provider-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.provider-bar {
+    display: grid;
+    grid-template-columns: 100px 1fr 50px;
+    align-items: center;
+    gap: 12px;
+}
+
+.provider-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+}
+
+.provider-label i {
+    width: 20px;
+    text-align: center;
+}
+
+.provider-progress {
+    height: 8px;
+    background: var(--background-light);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.progress-fill.email {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.progress-fill.google {
+    background: linear-gradient(90deg, #4285f4, #34a853);
+}
+
+.progress-fill.discord {
+    background: linear-gradient(90deg, #5865f2, #7289da);
+}
+
+.progress-fill.apple {
+    background: linear-gradient(90deg, #333, #666);
+}
+
+.provider-count {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-align: right;
+}
+
+/* ===========================
+   TOP GUIDES GRID
+   =========================== */
+.top-guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+}
+
+.top-guide-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px;
+    background: var(--background-light);
+    border-radius: 12px;
+    transition: all 0.2s ease;
+}
+
+.top-guide-card:hover {
+    background: var(--background-hover);
+}
+
+.top-guide-rank {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.top-guide-rank.gold {
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+}
+
+.top-guide-rank.silver {
+    background: linear-gradient(135deg, #9ca3af, #6b7280);
+}
+
+.top-guide-rank.bronze {
+    background: linear-gradient(135deg, #cd7f32, #a0522d);
+}
+
+.top-guide-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.top-guide-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.top-guide-stats {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.top-guide-stat {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.top-guide-stat i {
+    font-size: 0.75rem;
+}
+
 /* Admin Navbar */
 .admin-navbar {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
@@ -1071,9 +1556,51 @@
 }
 
 /* Responsive */
+@media (max-width: 1024px) {
+    .admin-hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .admin-hero-stats {
+        justify-content: center;
+    }
+
+    .admin-two-col {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
+    .admin-hero {
+        padding: 100px 0 30px;
+    }
+
+    .admin-hero h1 {
+        font-size: 1.75rem;
+    }
+
+    .admin-hero-stats {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .hero-stat {
+        padding: 16px 20px;
+        min-width: auto;
+    }
+
+    .hero-stat-value {
+        font-size: 1.5rem;
+    }
+
     .admin-dashboard {
-        padding: 120px 16px 40px;
+        padding: 20px 16px 40px;
     }
 
     .admin-tabs {
@@ -1084,12 +1611,40 @@
         justify-content: center;
     }
 
+    .admin-quick-actions {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+    }
+
+    .quick-action-btn {
+        padding: 16px 12px;
+    }
+
+    .quick-action-btn i {
+        width: 40px;
+        height: 40px;
+        font-size: 1.25rem;
+    }
+
     .admin-stats-grid {
         grid-template-columns: 1fr;
     }
 
     .admin-stat-card {
         padding: 20px;
+    }
+
+    .system-status-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .provider-bar {
+        grid-template-columns: 80px 1fr 40px;
+        gap: 8px;
+    }
+
+    .top-guides-grid {
+        grid-template-columns: 1fr;
     }
 
     .audit-filters {
@@ -1132,6 +1687,12 @@
     .btn {
         width: 100%;
         justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .admin-quick-actions {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1266,4 +1827,80 @@
 
 [data-theme="dark"] .toast {
     background: #1e1e2e;
+}
+
+/* Dark mode - Hero section doesn't change since it has its own gradient */
+
+[data-theme="dark"] .quick-action-btn {
+    background: #1e1e2e;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .quick-action-btn:hover {
+    border-color: #667eea;
+}
+
+[data-theme="dark"] .stats-section-title {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .stat-trend.up {
+    background: rgba(22, 163, 74, 0.2);
+}
+
+[data-theme="dark"] .stat-trend.down {
+    background: rgba(220, 38, 38, 0.2);
+}
+
+[data-theme="dark"] .stat-badge {
+    background: rgba(102, 126, 234, 0.2);
+}
+
+[data-theme="dark"] .admin-stat-card.highlight {
+    background: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.3);
+}
+
+[data-theme="dark"] .status-item {
+    background: #2a2a3e;
+}
+
+[data-theme="dark"] .status-icon {
+    background: #1e1e2e;
+}
+
+[data-theme="dark"] .status-indicator.online {
+    background: rgba(22, 163, 74, 0.2);
+}
+
+[data-theme="dark"] .status-indicator.offline {
+    background: rgba(220, 38, 38, 0.2);
+}
+
+[data-theme="dark"] .provider-stats {
+    border-top-color: #374151;
+}
+
+[data-theme="dark"] .provider-stats h4 {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .provider-progress {
+    background: #374151;
+}
+
+[data-theme="dark"] .top-guide-card {
+    background: #2a2a3e;
+}
+
+[data-theme="dark"] .top-guide-card:hover {
+    background: #343448;
+}
+
+[data-theme="dark"] .btn-link {
+    color: #818cf8;
+}
+
+[data-theme="dark"] .btn-link:hover {
+    color: #a78bfa;
 }

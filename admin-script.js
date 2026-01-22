@@ -22,10 +22,16 @@ document.addEventListener('DOMContentLoaded', async function() {
         return;
     }
 
-    // Update user dropdown
+    // Update user dropdown and admin name
     document.getElementById('dropdown-user-email').textContent = user.email;
-    document.getElementById('dropdown-user-name').textContent =
-        `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Admin';
+    const adminDisplayName = `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Admin';
+    document.getElementById('dropdown-user-name').textContent = adminDisplayName;
+
+    // Update hero admin name
+    const adminNameEl = document.getElementById('admin-name');
+    if (adminNameEl) {
+        adminNameEl.textContent = user.first_name || 'Admin';
+    }
 
     // Setup event listeners
     setupEventListeners();
@@ -123,7 +129,15 @@ async function loadDashboardOverview() {
     try {
         const data = await apiCall('/admin/dashboard/enhanced');
 
-        // Update stats
+        // Update hero stats
+        const heroTotalUsers = document.getElementById('hero-total-users');
+        const heroRevenue = document.getElementById('hero-revenue');
+        const heroNewToday = document.getElementById('hero-new-today');
+        if (heroTotalUsers) heroTotalUsers.textContent = data.statistics.total_users;
+        if (heroRevenue) heroRevenue.textContent = `$${data.revenue.this_month.toFixed(0)}`;
+        if (heroNewToday) heroNewToday.textContent = data.statistics.new_users_today;
+
+        // Update main stats
         document.getElementById('stat-total-users').textContent = data.statistics.total_users;
         document.getElementById('stat-premium-users').textContent = data.statistics.premium_users;
         document.getElementById('stat-new-today').textContent = data.statistics.new_users_today;
@@ -131,12 +145,49 @@ async function loadDashboardOverview() {
         document.getElementById('stat-admin-grants').textContent = data.purchases.admin_granted;
         document.getElementById('stat-revenue-month').textContent = `$${data.revenue.this_month.toFixed(2)}`;
 
+        // Update verified users if available
+        const verifiedUsersEl = document.getElementById('stat-verified-users');
+        if (verifiedUsersEl) {
+            verifiedUsersEl.textContent = data.statistics.verified_users || data.statistics.total_users;
+        }
+
+        // Update total guides owned
+        const totalGuidesEl = document.getElementById('stat-total-guides-sold');
+        if (totalGuidesEl) {
+            totalGuidesEl.textContent = (data.purchases.stripe_purchases || 0) + (data.purchases.admin_granted || 0);
+        }
+
+        // Update orders count
+        const ordersCountEl = document.getElementById('orders-count');
+        if (ordersCountEl) {
+            ordersCountEl.textContent = data.purchases.stripe_purchases || 0;
+        }
+
+        // Calculate and update rate badges
+        const totalUsers = data.statistics.total_users || 1;
+        const premiumRate = document.getElementById('premium-rate');
+        const verifiedRate = document.getElementById('verified-rate');
+        if (premiumRate) {
+            const rate = ((data.statistics.premium_users / totalUsers) * 100).toFixed(1);
+            premiumRate.textContent = `${rate}%`;
+        }
+        if (verifiedRate) {
+            const verified = data.statistics.verified_users || data.statistics.total_users;
+            const rate = ((verified / totalUsers) * 100).toFixed(1);
+            verifiedRate.textContent = `${rate}%`;
+        }
+
+        // Update auth provider stats if available
+        if (data.auth_providers) {
+            updateProviderBars(data.auth_providers, totalUsers);
+        }
+
         // Update recent activity
         const activityList = document.getElementById('recent-activity');
         if (data.recent_activity.length === 0) {
             activityList.innerHTML = '<div class="empty-state"><i class="fas fa-history"></i><p>No recent admin activity</p></div>';
         } else {
-            activityList.innerHTML = data.recent_activity.map(log => `
+            activityList.innerHTML = data.recent_activity.slice(0, 5).map(log => `
                 <div class="activity-item">
                     <div class="activity-icon ${getActivityIconClass(log.action_type)}">
                         <i class="fas ${getActivityIcon(log.action_type)}"></i>
@@ -152,9 +203,88 @@ async function loadDashboardOverview() {
                 </div>
             `).join('');
         }
+
+        // Load top guides
+        await loadTopGuides();
+
     } catch (error) {
         console.error('Error loading dashboard:', error);
         showToast('Failed to load dashboard data', 'error');
+    }
+}
+
+// Update auth provider progress bars
+function updateProviderBars(providers, totalUsers) {
+    const emailBar = document.getElementById('email-bar');
+    const googleBar = document.getElementById('google-bar');
+    const discordBar = document.getElementById('discord-bar');
+    const appleBar = document.getElementById('apple-bar');
+
+    const emailCount = document.getElementById('email-count');
+    const googleCount = document.getElementById('google-count');
+    const discordCount = document.getElementById('discord-count');
+    const appleCount = document.getElementById('apple-count');
+
+    // Calculate percentages
+    const email = providers.email || 0;
+    const google = providers.google || 0;
+    const discord = providers.discord || 0;
+    const apple = providers.apple || 0;
+
+    const maxCount = Math.max(email, google, discord, apple, 1);
+
+    if (emailBar) emailBar.style.width = `${(email / maxCount) * 100}%`;
+    if (googleBar) googleBar.style.width = `${(google / maxCount) * 100}%`;
+    if (discordBar) discordBar.style.width = `${(discord / maxCount) * 100}%`;
+    if (appleBar) appleBar.style.width = `${(apple / maxCount) * 100}%`;
+
+    if (emailCount) emailCount.textContent = email;
+    if (googleCount) googleCount.textContent = google;
+    if (discordCount) discordCount.textContent = discord;
+    if (appleCount) appleCount.textContent = apple;
+}
+
+// Load top guides by ownership
+async function loadTopGuides() {
+    const container = document.getElementById('top-guides');
+    if (!container) return;
+
+    try {
+        const data = await apiCall('/admin/guides');
+
+        if (!data.guides || data.guides.length === 0) {
+            container.innerHTML = '<div class="empty-state"><p>No guides available</p></div>';
+            return;
+        }
+
+        // Sort by total owners and take top 6
+        const topGuides = data.guides
+            .sort((a, b) => b.total_active_owners - a.total_active_owners)
+            .slice(0, 6);
+
+        container.innerHTML = topGuides.map((guide, index) => {
+            let rankClass = '';
+            if (index === 0) rankClass = 'gold';
+            else if (index === 1) rankClass = 'silver';
+            else if (index === 2) rankClass = 'bronze';
+
+            return `
+                <div class="top-guide-card">
+                    <div class="top-guide-rank ${rankClass}">${index + 1}</div>
+                    <div class="top-guide-info">
+                        <div class="top-guide-name">${escapeHtml(guide.name)}</div>
+                        <div class="top-guide-stats">
+                            <span class="top-guide-stat"><i class="fas fa-users"></i> ${guide.total_active_owners}</span>
+                            <span class="top-guide-stat"><i class="fas fa-credit-card"></i> ${guide.stripe_purchases}</span>
+                            <span class="top-guide-stat"><i class="fas fa-gift"></i> ${guide.admin_granted}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }).join('');
+    } catch (error) {
+        console.error('Error loading top guides:', error);
+        container.innerHTML = '<div class="empty-state"><p>Failed to load guides</p></div>';
     }
 }
 
@@ -854,6 +984,45 @@ function showConfirm(title, message) {
 
 function closeConfirmModal() {
     document.getElementById('confirm-modal').classList.remove('active');
+}
+
+// ==================== Quick Actions ====================
+
+// Switch to a specific tab (used by quick action buttons)
+function switchToTab(tabName) {
+    switchTab(tabName);
+    // Scroll to the tabs section
+    document.querySelector('.admin-tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Export all data
+async function exportAllData() {
+    try {
+        showToast('Preparing data export...', 'info');
+
+        // Export audit log
+        const token = localStorage.getItem('accessToken');
+        const response = await fetch(`${API_URL}/admin/audit-log/export`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        if (!response.ok) throw new Error('Export failed');
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `admin_export_${new Date().toISOString().slice(0, 10)}.csv`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+
+        showToast('Data exported successfully', 'success');
+    } catch (error) {
+        console.error('Error exporting data:', error);
+        showToast('Failed to export data', 'error');
+    }
 }
 
 // API_URL is defined in api-service.js which is loaded before this script

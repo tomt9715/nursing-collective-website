@@ -18,10 +18,10 @@
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="css/main.css?v=4.5.admin">
-    <link rel="stylesheet" href="css/components.css?v=4.5.admin">
-    <link rel="stylesheet" href="css/pages.css?v=4.5.admin">
-    <link rel="stylesheet" href="css/admin.css?v=4.5.admin">
+    <link rel="stylesheet" href="css/main.css?v=4.7.admin">
+    <link rel="stylesheet" href="css/components.css?v=4.7.admin">
+    <link rel="stylesheet" href="css/pages.css?v=4.7.admin">
+    <link rel="stylesheet" href="css/admin.css?v=4.7.admin">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -42,7 +42,7 @@
                 <a href="index.html">
                     <img src="assets/images/the-nursing-collective-logo.png" alt="The Nursing Collective Logo" class="nav-logo">
                 </a>
-                <span class="admin-badge-nav"><i class="fas fa-crown"></i> Admin</span>
+                <span class="admin-badge-nav"><i class="fas fa-shield-alt"></i> Admin</span>
             </div>
             <div class="nav-links">
                 <a href="dashboard.html">User Dashboard</a>
@@ -78,19 +78,43 @@
         </div>
     </nav>
 
+    <!-- Admin Hero Header -->
+    <section class="admin-hero">
+        <div class="admin-hero-bg"></div>
+        <div class="container">
+            <div class="admin-hero-content">
+                <div class="admin-hero-text">
+                    <div class="admin-hero-badge">
+                        <i class="fas fa-shield-alt"></i> Administrator Panel
+                    </div>
+                    <h1>Welcome back, <span id="admin-name">Admin</span></h1>
+                    <p class="admin-hero-subtitle">Manage users, guides, and monitor system activity</p>
+                </div>
+                <div class="admin-hero-stats">
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="hero-total-users">-</span>
+                        <span class="hero-stat-label">Total Users</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="hero-revenue">$0</span>
+                        <span class="hero-stat-label">This Month</span>
+                    </div>
+                    <div class="hero-stat">
+                        <span class="hero-stat-value" id="hero-new-today">-</span>
+                        <span class="hero-stat-label">New Today</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Admin Dashboard -->
     <section class="admin-dashboard">
         <div class="container">
-            <!-- Admin Header -->
-            <div class="admin-header">
-                <h1><i class="fas fa-crown"></i> Admin Dashboard</h1>
-                <p class="admin-subtitle">Manage users, guides, and monitor system activity</p>
-            </div>
-
             <!-- Admin Navigation Tabs -->
             <div class="admin-tabs">
                 <button class="admin-tab active" data-tab="overview">
-                    <i class="fas fa-chart-line"></i> Overview
+                    <i class="fas fa-chart-pie"></i> Overview
                 </button>
                 <button class="admin-tab" data-tab="users">
                     <i class="fas fa-users"></i> Users
@@ -107,56 +131,205 @@
             <div class="admin-content">
                 <!-- Overview Tab -->
                 <div class="admin-tab-content active" id="tab-overview">
-                    <!-- Stats Cards -->
-                    <div class="admin-stats-grid">
-                        <div class="admin-stat-card">
-                            <div class="stat-icon"><i class="fas fa-users"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="stat-total-users">-</span>
-                                <span class="stat-label">Total Users</span>
+
+                    <!-- Quick Actions -->
+                    <div class="admin-quick-actions">
+                        <button class="quick-action-btn" onclick="switchToTab('users')">
+                            <i class="fas fa-user-plus"></i>
+                            <span>Manage Users</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="switchToTab('guides')">
+                            <i class="fas fa-book-medical"></i>
+                            <span>View Guides</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="switchToTab('audit')">
+                            <i class="fas fa-clipboard-list"></i>
+                            <span>Audit Log</span>
+                        </button>
+                        <button class="quick-action-btn" onclick="exportAllData()">
+                            <i class="fas fa-download"></i>
+                            <span>Export Data</span>
+                        </button>
+                    </div>
+
+                    <!-- Stats Grid - Row 1: User Stats -->
+                    <div class="stats-section">
+                        <h3 class="stats-section-title"><i class="fas fa-users"></i> User Statistics</h3>
+                        <div class="admin-stats-grid">
+                            <div class="admin-stat-card">
+                                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-total-users">-</span>
+                                    <span class="stat-label">Total Users</span>
+                                </div>
+                                <div class="stat-trend up" id="trend-users">
+                                    <i class="fas fa-arrow-up"></i> <span>0%</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="admin-stat-card">
-                            <div class="stat-icon premium"><i class="fas fa-star"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="stat-premium-users">-</span>
-                                <span class="stat-label">Premium Users</span>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon premium"><i class="fas fa-crown"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-premium-users">-</span>
+                                    <span class="stat-label">Premium Users</span>
+                                </div>
+                                <div class="stat-badge" id="premium-rate">0%</div>
                             </div>
-                        </div>
-                        <div class="admin-stat-card">
-                            <div class="stat-icon success"><i class="fas fa-shopping-cart"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="stat-stripe-purchases">-</span>
-                                <span class="stat-label">Stripe Purchases</span>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon success"><i class="fas fa-check-circle"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-verified-users">-</span>
+                                    <span class="stat-label">Verified Users</span>
+                                </div>
+                                <div class="stat-badge" id="verified-rate">0%</div>
                             </div>
-                        </div>
-                        <div class="admin-stat-card">
-                            <div class="stat-icon info"><i class="fas fa-gift"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="stat-admin-grants">-</span>
-                                <span class="stat-label">Admin Grants</span>
-                            </div>
-                        </div>
-                        <div class="admin-stat-card">
-                            <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="stat-new-today">-</span>
-                                <span class="stat-label">New Today</span>
-                            </div>
-                        </div>
-                        <div class="admin-stat-card">
-                            <div class="stat-icon success"><i class="fas fa-dollar-sign"></i></div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="stat-revenue-month">-</span>
-                                <span class="stat-label">Revenue This Month</span>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon"><i class="fas fa-user-plus"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-new-today">-</span>
+                                    <span class="stat-label">New Today</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Recent Activity -->
+                    <!-- Stats Grid - Row 2: Revenue & Purchases -->
+                    <div class="stats-section">
+                        <h3 class="stats-section-title"><i class="fas fa-chart-line"></i> Revenue & Purchases</h3>
+                        <div class="admin-stats-grid">
+                            <div class="admin-stat-card highlight">
+                                <div class="stat-icon success"><i class="fas fa-dollar-sign"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-revenue-month">$0</span>
+                                    <span class="stat-label">Revenue This Month</span>
+                                </div>
+                                <div class="stat-subtext"><span id="orders-count">0</span> orders</div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon success"><i class="fas fa-shopping-cart"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-stripe-purchases">-</span>
+                                    <span class="stat-label">Stripe Purchases</span>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon info"><i class="fas fa-gift"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-admin-grants">-</span>
+                                    <span class="stat-label">Admin Grants</span>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon"><i class="fas fa-book"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="stat-total-guides-sold">-</span>
+                                    <span class="stat-label">Total Guides Owned</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Two Column Layout -->
+                    <div class="admin-two-col">
+                        <!-- Recent Activity -->
+                        <div class="admin-section">
+                            <div class="section-header">
+                                <h3><i class="fas fa-clock"></i> Recent Admin Activity</h3>
+                                <button class="btn-link" onclick="switchToTab('audit')">View All</button>
+                            </div>
+                            <div class="activity-list" id="recent-activity">
+                                <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                            </div>
+                        </div>
+
+                        <!-- System Status -->
+                        <div class="admin-section">
+                            <div class="section-header">
+                                <h3><i class="fas fa-server"></i> System Status</h3>
+                                <span class="status-indicator online"><i class="fas fa-circle"></i> Online</span>
+                            </div>
+                            <div class="system-status-grid">
+                                <div class="status-item">
+                                    <div class="status-icon"><i class="fas fa-database"></i></div>
+                                    <div class="status-info">
+                                        <span class="status-name">Database</span>
+                                        <span class="status-value online">Connected</span>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-icon"><i class="fab fa-stripe"></i></div>
+                                    <div class="status-info">
+                                        <span class="status-name">Stripe</span>
+                                        <span class="status-value online">Active</span>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-icon"><i class="fas fa-envelope"></i></div>
+                                    <div class="status-info">
+                                        <span class="status-name">Email Service</span>
+                                        <span class="status-value online">Operational</span>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-icon"><i class="fas fa-key"></i></div>
+                                    <div class="status-info">
+                                        <span class="status-name">Active Sessions</span>
+                                        <span class="status-value" id="active-sessions">-</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Auth Provider Stats -->
+                            <div class="provider-stats">
+                                <h4>Sign-in Methods</h4>
+                                <div class="provider-bars">
+                                    <div class="provider-bar">
+                                        <div class="provider-label">
+                                            <i class="fas fa-envelope"></i> Email
+                                        </div>
+                                        <div class="provider-progress">
+                                            <div class="progress-fill email" id="email-bar" style="width: 0%"></div>
+                                        </div>
+                                        <span class="provider-count" id="email-count">0</span>
+                                    </div>
+                                    <div class="provider-bar">
+                                        <div class="provider-label">
+                                            <i class="fab fa-google"></i> Google
+                                        </div>
+                                        <div class="provider-progress">
+                                            <div class="progress-fill google" id="google-bar" style="width: 0%"></div>
+                                        </div>
+                                        <span class="provider-count" id="google-count">0</span>
+                                    </div>
+                                    <div class="provider-bar">
+                                        <div class="provider-label">
+                                            <i class="fab fa-discord"></i> Discord
+                                        </div>
+                                        <div class="provider-progress">
+                                            <div class="progress-fill discord" id="discord-bar" style="width: 0%"></div>
+                                        </div>
+                                        <span class="provider-count" id="discord-count">0</span>
+                                    </div>
+                                    <div class="provider-bar">
+                                        <div class="provider-label">
+                                            <i class="fab fa-apple"></i> Apple
+                                        </div>
+                                        <div class="provider-progress">
+                                            <div class="progress-fill apple" id="apple-bar" style="width: 0%"></div>
+                                        </div>
+                                        <span class="provider-count" id="apple-count">0</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Top Guides Section -->
                     <div class="admin-section">
-                        <h3><i class="fas fa-clock"></i> Recent Admin Activity</h3>
-                        <div class="activity-list" id="recent-activity">
+                        <div class="section-header">
+                            <h3><i class="fas fa-fire"></i> Top Guides by Ownership</h3>
+                            <button class="btn-link" onclick="switchToTab('guides')">View All Guides</button>
+                        </div>
+                        <div class="top-guides-grid" id="top-guides">
                             <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
                         </div>
                     </div>
@@ -507,6 +680,6 @@
     <script src="api-service.js"></script>
 
     <!-- Admin Dashboard Script -->
-    <script src="admin-script.js?v=1.0.1"></script>
+    <script src="admin-script.js?v=1.0.3"></script>
 </body>
 </html>

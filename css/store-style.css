@@ -414,8 +414,8 @@ button.subcategory-chip.active i {
 
 /* Guide Icon */
 .guide-card .guide-icon {
-    width: 64px;
-    height: 64px;
+    width: 80px;
+    height: 80px;
     margin: 0 auto 20px;
     display: flex;
     align-items: center;

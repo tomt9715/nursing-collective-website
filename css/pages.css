@@ -2837,8 +2837,42 @@
 .guide-header {
     background: linear-gradient(135deg, #2E86AB 0%, #236b8a 100%);
     color: white;
-    padding: 40px 0;
+    padding: 50px 0 40px;
     margin-bottom: 40px;
+}
+
+.guide-category-badge {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+}
+
+.guide-header .guide-meta {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.guide-header .guide-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.guide-header .guide-meta-item i {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
 }
 
 .guide-title {

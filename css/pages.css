@@ -3652,6 +3652,12 @@
     color: white;
 }
 
+.resource-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
 .resource-card h3 {
     font-size: 1.25rem;
     font-weight: 700;

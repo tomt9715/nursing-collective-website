@@ -429,8 +429,8 @@ class CartUI {
         if (!progressSection) return;
 
         const currentCount = discountInfo.individualGuideCount;
-        // Tiers ordered highest to lowest: [10, 5, 3]
-        const tiers = CartManager.BULK_DISCOUNT_TIERS;
+        // Get tiers and ensure they're sorted highest to lowest by min_qty
+        const tiers = [...CartManager.BULK_DISCOUNT_TIERS].sort((a, b) => b.min_qty - a.min_qty);
 
         let html = '';
 

@@ -19,7 +19,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const packageCalloutSection = document.getElementById('package-callout-section');
     const switchToPackagesBtn = document.getElementById('switch-to-packages-btn');
 
+    // Search elements
+    const searchInput = document.getElementById('guide-search');
+    const searchClear = document.getElementById('search-clear');
+    const searchResultsCount = document.getElementById('search-results-count');
+
+    // Sub-category elements
+    const subcategoryChips = document.getElementById('subcategory-chips');
+    const subcategoryButtons = document.querySelectorAll('.subcategory-chip');
+
     let currentShopType = 'guides'; // Default to individual guides
+    let currentFilter = 'all';
+    let currentSubcategory = 'all';
+    let currentSearchTerm = '';
 
     // Category metadata
     const categories = {
@@ -53,6 +65,92 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
+    // Search functionality
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            currentSearchTerm = this.value.toLowerCase().trim();
+
+            // Show/hide clear button
+            if (searchClear) {
+                searchClear.style.display = currentSearchTerm ? 'flex' : 'none';
+            }
+
+            filterGuides();
+        });
+    }
+
+    if (searchClear) {
+        searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            currentSearchTerm = '';
+            this.style.display = 'none';
+            filterGuides();
+            searchInput.focus();
+        });
+    }
+
+    // Sub-category chip functionality
+    subcategoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            currentSubcategory = this.getAttribute('data-subcategory');
+
+            // Update active state
+            subcategoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+
+            filterGuides();
+        });
+    });
+
+    // Master filter function
+    function filterGuides() {
+        let visibleCount = 0;
+
+        guideCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            const subcategory = card.getAttribute('data-subcategory') || '';
+            const title = card.querySelector('h4')?.textContent.toLowerCase() || '';
+            const description = card.querySelector('p')?.textContent.toLowerCase() || '';
+
+            // Check category filter
+            const matchesCategory = currentFilter === 'all' || category === currentFilter;
+
+            // Check subcategory filter (only applies to med-surg)
+            const matchesSubcategory = currentSubcategory === 'all' ||
+                                       subcategory === currentSubcategory ||
+                                       currentFilter !== 'med-surg';
+
+            // Check search term
+            const matchesSearch = !currentSearchTerm ||
+                                  title.includes(currentSearchTerm) ||
+                                  description.includes(currentSearchTerm);
+
+            if (matchesCategory && matchesSubcategory && matchesSearch) {
+                card.style.display = 'flex';
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 10);
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        // Update search results count
+        if (searchResultsCount) {
+            if (currentSearchTerm) {
+                searchResultsCount.textContent = `${visibleCount} guide${visibleCount !== 1 ? 's' : ''} found`;
+                searchResultsCount.style.display = 'inline';
+            } else {
+                searchResultsCount.style.display = 'none';
+            }
+        }
+    }
+
     // Shop Type Toggle (Guides vs Packages)
     shopTypeButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -74,7 +172,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryTitle.textContent = 'All Study Guides';
                 categoryDescription.textContent = 'Browse our complete collection of nursing study guides';
 
-                // Reset filter to "All"
+                // Reset filters
+                currentFilter = 'all';
+                currentSubcategory = 'all';
+                currentSearchTerm = '';
+                if (searchInput) searchInput.value = '';
+                if (searchClear) searchClear.style.display = 'none';
+                if (searchResultsCount) searchResultsCount.style.display = 'none';
+                if (subcategoryChips) subcategoryChips.style.display = 'none';
+
+                // Reset filter buttons
                 filterButtons.forEach(btn => {
                     if (btn.getAttribute('data-filter') === 'all') {
                         btn.classList.add('active');
@@ -82,6 +189,17 @@ document.addEventListener('DOMContentLoaded', function() {
                         btn.classList.remove('active');
                     }
                 });
+
+                // Reset subcategory buttons
+                subcategoryButtons.forEach(btn => {
+                    if (btn.getAttribute('data-subcategory') === 'all') {
+                        btn.classList.add('active');
+                    } else {
+                        btn.classList.remove('active');
+                    }
+                });
+
+                filterGuides();
             } else if (shopType === 'packages') {
                 guidesGrid.style.display = 'none';
                 packagesGrid.style.display = 'grid';
@@ -126,10 +244,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Update filter functionality to work with both guides and packages
-    const originalFilterLogic = filterButtons.forEach;
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
+            currentFilter = filter;
 
             // Update active state on filter buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -148,25 +266,27 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
 
+            // Show/hide subcategory chips based on filter
+            if (subcategoryChips) {
+                if (filter === 'med-surg' && currentShopType === 'guides') {
+                    subcategoryChips.style.display = 'flex';
+                } else {
+                    subcategoryChips.style.display = 'none';
+                    // Reset subcategory filter when leaving med-surg
+                    currentSubcategory = 'all';
+                    subcategoryButtons.forEach(btn => {
+                        if (btn.getAttribute('data-subcategory') === 'all') {
+                            btn.classList.add('active');
+                        } else {
+                            btn.classList.remove('active');
+                        }
+                    });
+                }
+            }
+
             // Filter cards based on current shop type
             if (currentShopType === 'guides') {
-                // Filter guide cards
-                guideCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-
-                    if (filter === 'all' || category === filter) {
-                        card.style.display = 'flex';
-                        card.style.opacity = '0';
-                        card.style.transform = 'translateY(20px)';
-                        setTimeout(() => {
-                            card.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-                            card.style.opacity = '1';
-                            card.style.transform = 'translateY(0)';
-                        }, 10);
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
+                filterGuides();
             } else if (currentShopType === 'packages') {
                 // Filter package cards
                 packageCards.forEach(card => {

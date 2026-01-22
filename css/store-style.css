@@ -220,6 +220,133 @@
 }
 
 /* ============================================
+   SEARCH BAR
+   ============================================ */
+
+.store-search-container {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.store-search-box {
+    position: relative;
+    flex: 1;
+    max-width: 400px;
+    min-width: 250px;
+}
+
+.store-search-box i.fa-search {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.store-search-box input {
+    width: 100%;
+    padding: 12px 44px 12px 44px;
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-family: 'Source Sans 3', sans-serif;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.store-search-box input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
+}
+
+.store-search-box input::placeholder {
+    color: var(--text-secondary);
+}
+
+.search-clear {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--background-light);
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+}
+
+.search-clear:hover {
+    background: var(--primary-color);
+    color: white;
+}
+
+.search-results-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+/* ============================================
+   SUBCATEGORY CHIPS
+   ============================================ */
+
+.subcategory-chips {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.subcategory-chip {
+    padding: 8px 16px;
+    background: var(--background-light);
+    border: 2px solid transparent;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'Source Sans 3', sans-serif;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.subcategory-chip i {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+}
+
+.subcategory-chip:hover {
+    background: rgba(46, 134, 171, 0.1);
+    border-color: var(--primary-color);
+}
+
+.subcategory-chip.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.subcategory-chip.active i {
+    color: white;
+}
+
+/* ============================================
    GUIDE CARDS (Store Page)
    ============================================ */
 
@@ -403,6 +530,29 @@
     color: white;
 }
 
+[data-theme="dark"] .store-search-box input {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .store-search-box input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.2);
+}
+
+[data-theme="dark"] .search-clear {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .subcategory-chip {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .subcategory-chip:hover {
+    background: rgba(46, 134, 171, 0.2);
+}
+
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
@@ -482,6 +632,19 @@
         grid-template-columns: 1fr;
         gap: 20px;
     }
+
+    .store-search-box {
+        max-width: 100%;
+    }
+
+    .subcategory-chips {
+        gap: 6px;
+    }
+
+    .subcategory-chip {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+    }
 }
 
 /* Small Mobile (480px and below) */
@@ -542,5 +705,32 @@
 
     #package-callout-section p {
         font-size: 0.8rem;
+    }
+
+    .store-search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .store-search-box {
+        min-width: 100%;
+    }
+
+    .store-search-box input {
+        padding: 10px 40px 10px 40px;
+        font-size: 0.9rem;
+    }
+
+    .subcategory-chips {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 8px;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .subcategory-chip {
+        flex-shrink: 0;
+        padding: 6px 10px;
+        font-size: 0.75rem;
     }
 }

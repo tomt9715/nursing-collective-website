@@ -151,6 +151,30 @@
                     <div class="store-header">
                         <h2 id="category-title">All Study Guides</h2>
                         <p id="category-description">Browse our complete collection of nursing study guides</p>
+
+                        <!-- Search Bar -->
+                        <div class="store-search-container">
+                            <div class="store-search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="guide-search" placeholder="Search guides (e.g., heart, diabetes, stroke...)">
+                                <button class="search-clear" id="search-clear" style="display: none;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <span class="search-results-count" id="search-results-count"></span>
+                        </div>
+
+                        <!-- Sub-category Chips (shown when Med-Surg is selected) -->
+                        <div class="subcategory-chips" id="subcategory-chips" style="display: none;">
+                            <button class="subcategory-chip active" data-subcategory="all">All Med-Surg</button>
+                            <button class="subcategory-chip" data-subcategory="cardiovascular"><i class="fas fa-heart"></i> Cardiovascular</button>
+                            <button class="subcategory-chip" data-subcategory="respiratory"><i class="fas fa-lungs"></i> Respiratory</button>
+                            <button class="subcategory-chip" data-subcategory="endocrine"><i class="fas fa-disease"></i> Endocrine</button>
+                            <button class="subcategory-chip" data-subcategory="neurological"><i class="fas fa-brain"></i> Neurological</button>
+                            <button class="subcategory-chip" data-subcategory="renal"><i class="fas fa-kidneys"></i> Renal</button>
+                            <button class="subcategory-chip" data-subcategory="gastrointestinal"><i class="fas fa-stomach"></i> GI</button>
+                            <button class="subcategory-chip" data-subcategory="musculoskeletal"><i class="fas fa-bone"></i> Musculoskeletal</button>
+                        </div>
                     </div>
 
                     <!-- Guides Grid -->

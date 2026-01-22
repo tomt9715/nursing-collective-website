@@ -288,7 +288,7 @@ function showPurchasePrompt(guideId, accessResponse) {
                 ${description}
             </p>
 
-            <div style="background: var(--bg-secondary); border-radius: 16px; padding: 24px; margin-bottom: 32px; text-align: left;">
+            <div style="background: var(--background-light); border-radius: 16px; padding: 24px; margin-bottom: 32px; text-align: left;">
                 <p style="font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Get comprehensive coverage of:</p>
                 <ul style="list-style: none; padding: 0; margin: 0;">
                     <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-secondary);">
@@ -389,10 +389,10 @@ async function loadPurchasedContent(guideId, accessResponse) {
             </div>
         </div>
 
-        <div class="guide-pdf-container" style="background: var(--bg-secondary); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+        <div class="guide-pdf-container" style="background: var(--background-light); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
                 <div>
-                    <h3 style="margin: 0; color: var(--text-primary);">${guide.product_name}</h3>
+                    <h3 style="margin: 0; color: var(--text-primary); font-weight: 600;">${guide.product_name}</h3>
                     <p style="margin: 4px 0 0; color: var(--text-secondary); font-size: 0.9rem;">
                         PDF Study Guide
                     </p>
@@ -416,7 +416,7 @@ async function loadPurchasedContent(guideId, accessResponse) {
             </p>
         </div>
 
-        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px; text-align: center;">
+        <div style="background: var(--background-light); border-radius: 12px; padding: 20px; text-align: center;">
             <p style="margin: 0 0 12px; color: var(--text-secondary);">
                 <i class="fas fa-question-circle me-1"></i>Need help or have questions?
             </p>

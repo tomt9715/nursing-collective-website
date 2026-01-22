@@ -1,4 +1,5 @@
-// Guide Page JavaScript - Loads and renders markdown content
+// Guide Page JavaScript - Loads and renders content with access control
+// Uses backend API for access verification
 
 // Get guide ID from URL parameter
 function getGuideId() {
@@ -6,9 +7,9 @@ function getGuideId() {
     return urlParams.get('id');
 }
 
-// Guide metadata with pricing
-// All guides show 10% preview, full access costs $5.99 per guide
-const guidesMetadata = {
+// Guide metadata for free preview markdown guides (legacy)
+// New premium PDF guides use API product catalog
+const legacyGuidesMetadata = {
     'electrolytes': {
         title: 'Electrolyte Management Guide',
         subtitle: 'Essential electrolyte ranges, nursing interventions, and clinical priorities for safe patient care',
@@ -16,7 +17,8 @@ const guidesMetadata = {
         readTime: '8 min',
         difficulty: 'Intermediate',
         file: 'content/guides/electrolytes.md',
-        price: 5.99
+        price: 5.99,
+        isFree: true
     },
     'vital-signs': {
         title: 'Vital Signs Assessment Guide',
@@ -25,7 +27,8 @@ const guidesMetadata = {
         readTime: '7 min',
         difficulty: 'Beginner',
         file: 'content/guides/vital-signs.md',
-        price: 5.99
+        price: 5.99,
+        isFree: true
     },
     'critical-lab-values': {
         title: 'Critical Laboratory Values',
@@ -34,7 +37,8 @@ const guidesMetadata = {
         readTime: '6 min',
         difficulty: 'Intermediate',
         file: 'content/guides/critical-lab-values.md',
-        price: 5.99
+        price: 5.99,
+        isFree: true
     },
     'isolation-precautions': {
         title: 'Isolation Precautions Guide',
@@ -43,7 +47,8 @@ const guidesMetadata = {
         readTime: '9 min',
         difficulty: 'Intermediate',
         file: 'content/guides/isolation-precautions.md',
-        price: 5.99
+        price: 5.99,
+        isFree: true
     },
     'medication-math': {
         title: 'Medication Dosage Calculations',
@@ -52,7 +57,8 @@ const guidesMetadata = {
         readTime: '12 min',
         difficulty: 'Advanced',
         file: 'content/guides/medication-math.md',
-        price: 5.99
+        price: 5.99,
+        isFree: true
     }
 };
 
@@ -65,26 +71,86 @@ const relatedGuidesMap = {
     'medication-math': ['critical-lab-values', 'vital-signs']
 };
 
-// Check if user has purchased this specific guide
-function checkGuideAccess(guideId) {
-    // Check if user has purchased this guide
-    // TODO: This will need to check against backend when payment system is implemented
-    const purchasedGuides = JSON.parse(localStorage.getItem('purchasedGuides') || '[]');
-    return purchasedGuides.includes(guideId);
+// Category display names
+const categoryDisplayNames = {
+    'medsurg': 'Medical-Surgical',
+    'pharmacology': 'Pharmacology',
+    'fundamentals': 'Fundamentals',
+    'maternal': 'Maternal/OB',
+    'pediatrics': 'Pediatrics',
+    'mental-health': 'Mental Health'
+};
+
+// Check guide access via API
+async function checkGuideAccessAPI(guideId) {
+    try {
+        // Use apiCall if available, otherwise make direct fetch
+        if (typeof apiCall === 'function') {
+            const response = await apiCall(`/api/guides/${guideId}/access`);
+            return response;
+        } else {
+            const token = localStorage.getItem('accessToken');
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            const response = await fetch(`${API_URL}/api/guides/${guideId}/access`, {
+                headers
+            });
+            return await response.json();
+        }
+    } catch (error) {
+        console.error('Error checking guide access:', error);
+        return { success: false, error: 'network_error' };
+    }
+}
+
+// Get guide content via API
+async function getGuideContentAPI(guideId) {
+    try {
+        if (typeof apiCall === 'function') {
+            return await apiCall(`/api/guides/${guideId}/content`);
+        } else {
+            const token = localStorage.getItem('accessToken');
+            const response = await fetch(`${API_URL}/api/guides/${guideId}/content`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            return await response.json();
+        }
+    } catch (error) {
+        console.error('Error getting guide content:', error);
+        return { success: false, error: 'network_error' };
+    }
 }
 
 // Initialize page
 document.addEventListener('DOMContentLoaded', async () => {
     const guideId = getGuideId();
 
-    if (!guideId || !guidesMetadata[guideId]) {
-        // Redirect to guides page if invalid ID
+    if (!guideId) {
         window.location.href = 'guides.html';
         return;
     }
 
-    const metadata = guidesMetadata[guideId];
+    // Check if this is a legacy free guide
+    const legacyMetadata = legacyGuidesMetadata[guideId];
+    if (legacyMetadata && legacyMetadata.isFree) {
+        await loadLegacyGuide(guideId, legacyMetadata);
+        return;
+    }
 
+    // For premium guides, check access via API
+    await loadPremiumGuide(guideId);
+});
+
+// Load legacy free markdown guide
+async function loadLegacyGuide(guideId, metadata) {
     // Update page title
     document.title = `${metadata.title} - The Nursing Collective`;
 
@@ -98,9 +164,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Update breadcrumb
     document.getElementById('breadcrumb-current').textContent = metadata.title;
 
-    // Check access and load appropriate content
-    const hasAccess = checkGuideAccess(guideId);
-    await loadGuideContent(metadata.file, hasAccess, guideId);
+    // Load full content (free guides show everything)
+    await loadMarkdownContent(metadata.file, true, guideId);
 
     // Render related guides
     renderRelatedGuides(guideId);
@@ -112,10 +177,258 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Hide loader
     hideLoader();
-});
+}
 
-// Load and render markdown content
-async function loadGuideContent(file, hasAccess, guideId) {
+// Load premium guide with access control
+async function loadPremiumGuide(guideId) {
+    const contentElement = document.getElementById('guide-content');
+
+    // Show loading state
+    contentElement.innerHTML = `
+        <div style="text-align: center; padding: 60px 20px;">
+            <div class="loader-spinner"></div>
+            <p style="margin-top: 20px; color: var(--guide-text-light);">Checking access...</p>
+        </div>
+    `;
+
+    // Check access via API
+    const accessResponse = await checkGuideAccessAPI(guideId);
+
+    if (!accessResponse.success && accessResponse.error === 'unauthorized') {
+        // Not logged in - show login prompt
+        showLoginPrompt(guideId, accessResponse);
+        hideLoader();
+        return;
+    }
+
+    if (!accessResponse.success && accessResponse.error === 'not_found') {
+        // Guide not found
+        showGuideNotFound(guideId);
+        hideLoader();
+        return;
+    }
+
+    // Update page metadata
+    const productName = accessResponse.product_name || guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const category = categoryDisplayNames[accessResponse.category] || accessResponse.category || 'Study Guide';
+
+    document.title = `${productName} - The Nursing Collective`;
+    document.getElementById('guide-category').textContent = category;
+    document.getElementById('guide-title').textContent = productName;
+    document.getElementById('guide-subtitle').textContent = accessResponse.description || 'Comprehensive nursing study guide';
+    document.getElementById('guide-read-time').textContent = '15-20 min';
+    document.getElementById('guide-difficulty').textContent = 'Intermediate';
+    document.getElementById('breadcrumb-current').textContent = productName;
+
+    if (accessResponse.has_access) {
+        // User has access - load content
+        await loadPurchasedContent(guideId, accessResponse);
+    } else {
+        // User doesn't have access - show purchase prompt
+        showPurchasePrompt(guideId, accessResponse);
+    }
+
+    // Setup print button
+    document.getElementById('btn-print').addEventListener('click', () => {
+        window.print();
+    });
+
+    hideLoader();
+}
+
+// Show login prompt for unauthorized users
+function showLoginPrompt(guideId, accessResponse) {
+    const contentElement = document.getElementById('guide-content');
+    const productName = accessResponse.product_name || guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const loginUrl = accessResponse.login_url || `login.html?redirect=/guide.html?id=${guideId}`;
+
+    // Update header with product info
+    document.getElementById('guide-title').textContent = productName;
+    document.getElementById('guide-subtitle').textContent = 'Login required to access this content';
+    document.getElementById('breadcrumb-current').textContent = productName;
+
+    contentElement.innerHTML = `
+        <div style="text-align: center; padding: 60px 20px; max-width: 500px; margin: 0 auto;">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                <i class="fas fa-lock" style="font-size: 2rem; color: #d97706;"></i>
+            </div>
+            <h2 style="margin-bottom: 16px; color: var(--text-primary);">Login Required</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 32px; font-size: 1.1rem;">
+                Please log in to access this study guide.
+            </p>
+            <a href="${loginUrl}" class="btn btn-primary btn-lg" style="padding: 16px 48px; font-size: 1.1rem; border-radius: 12px;">
+                <i class="fas fa-sign-in-alt me-2"></i>Log In to Continue
+            </a>
+            <p style="margin-top: 24px; color: var(--text-secondary);">
+                Don't have an account? <a href="signup.html?redirect=/guide.html?id=${guideId}" style="color: var(--primary-color); font-weight: 600;">Sign Up</a>
+            </p>
+        </div>
+    `;
+}
+
+// Show purchase prompt for users without access
+function showPurchasePrompt(guideId, accessResponse) {
+    const contentElement = document.getElementById('guide-content');
+    const productName = accessResponse.product_name || guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const price = accessResponse.price || 5.99;
+    const description = accessResponse.description || 'Comprehensive nursing study guide with evidence-based content.';
+    const purchaseUrl = accessResponse.purchase_url || `store.html?product=${guideId}`;
+
+    contentElement.innerHTML = `
+        <div style="text-align: center; padding: 60px 20px; max-width: 600px; margin: 0 auto;">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                <i class="fas fa-lock" style="font-size: 2rem; color: #d97706;"></i>
+            </div>
+            <h2 style="margin-bottom: 16px; color: var(--text-primary);">Purchase Required</h2>
+
+            <h3 style="margin-bottom: 12px; color: var(--primary-color);">${productName}</h3>
+            <p style="font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px;">$${price.toFixed(2)}</p>
+
+            <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1rem; max-width: 450px; margin-left: auto; margin-right: auto;">
+                ${description}
+            </p>
+
+            <div style="background: var(--bg-secondary); border-radius: 16px; padding: 24px; margin-bottom: 32px; text-align: left;">
+                <p style="font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Get comprehensive coverage of:</p>
+                <ul style="list-style: none; padding: 0; margin: 0;">
+                    <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-secondary);">
+                        <i class="fas fa-check-circle" style="color: #10b981;"></i>
+                        Complete topic coverage with clinical applications
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-secondary);">
+                        <i class="fas fa-check-circle" style="color: #10b981;"></i>
+                        NCLEX-style practice questions
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-secondary);">
+                        <i class="fas fa-check-circle" style="color: #10b981;"></i>
+                        Key nursing interventions and rationales
+                    </li>
+                    <li style="display: flex; align-items: center; gap: 12px; color: var(--text-secondary);">
+                        <i class="fas fa-check-circle" style="color: #10b981;"></i>
+                        Printable PDF format for offline study
+                    </li>
+                </ul>
+            </div>
+
+            <a href="${purchaseUrl}" class="btn btn-primary btn-lg" style="padding: 16px 48px; font-size: 1.1rem; border-radius: 12px;">
+                <i class="fas fa-shopping-cart me-2"></i>Purchase This Guide - $${price.toFixed(2)}
+            </a>
+
+            <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-color);">
+                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 8px;">
+                    <i class="fas fa-receipt me-2"></i>Already purchased?
+                </p>
+                <a href="dashboard.html#claim-order" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">
+                    Claim with Order Number <i class="fas fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+        </div>
+    `;
+}
+
+// Show guide not found error
+function showGuideNotFound(guideId) {
+    const contentElement = document.getElementById('guide-content');
+
+    document.getElementById('guide-title').textContent = 'Guide Not Found';
+    document.getElementById('guide-subtitle').textContent = 'The requested study guide could not be found';
+    document.getElementById('breadcrumb-current').textContent = 'Not Found';
+
+    contentElement.innerHTML = `
+        <div style="text-align: center; padding: 60px 20px;">
+            <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fee2e2, #fecaca); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+                <i class="fas fa-exclamation-triangle" style="font-size: 2rem; color: #dc2626;"></i>
+            </div>
+            <h2 style="margin-bottom: 16px;">Guide Not Found</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 24px;">
+                The study guide "${guideId}" could not be found. It may have been moved or removed.
+            </p>
+            <a href="guides.html" class="btn btn-primary">
+                <i class="fas fa-arrow-left me-2"></i>Browse All Guides
+            </a>
+        </div>
+    `;
+}
+
+// Load purchased content (PDF viewer)
+async function loadPurchasedContent(guideId, accessResponse) {
+    const contentElement = document.getElementById('guide-content');
+    const productName = accessResponse.product_name || guideId;
+
+    // Get the content URL from API
+    const contentResponse = await getGuideContentAPI(guideId);
+
+    if (!contentResponse.success) {
+        contentElement.innerHTML = `
+            <div style="text-align: center; padding: 60px 20px;">
+                <div class="alert alert-warning" style="max-width: 500px; margin: 0 auto;">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    ${contentResponse.message || 'Unable to load guide content. Please try again later.'}
+                </div>
+                <button onclick="location.reload()" class="btn btn-primary mt-3">
+                    <i class="fas fa-redo me-2"></i>Try Again
+                </button>
+            </div>
+        `;
+        return;
+    }
+
+    const guide = contentResponse.guide;
+    const downloadUrl = guide.content_url;
+    const expiresIn = guide.expires_in_minutes || 60;
+
+    // Show access badge and PDF viewer
+    contentElement.innerHTML = `
+        <div class="alert alert-success d-flex align-items-center mb-4" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); border: none; border-radius: 12px;">
+            <i class="fas fa-check-circle me-3" style="font-size: 1.5rem; color: #059669;"></i>
+            <div>
+                <h5 class="mb-1" style="color: #059669; font-weight: 600;">Full Access - Purchased</h5>
+                <p class="mb-0" style="font-size: 0.9rem; color: #047857;">
+                    You own this guide! ${accessResponse.access_type === 'subscription' ? '(via Premium Subscription)' : ''}
+                </p>
+            </div>
+        </div>
+
+        <div class="guide-pdf-container" style="background: var(--bg-secondary); border-radius: 16px; padding: 24px; margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 16px;">
+                <div>
+                    <h3 style="margin: 0; color: var(--text-primary);">${guide.product_name}</h3>
+                    <p style="margin: 4px 0 0; color: var(--text-secondary); font-size: 0.9rem;">
+                        PDF Study Guide
+                    </p>
+                </div>
+                <a href="${downloadUrl}" target="_blank" class="btn btn-primary" download>
+                    <i class="fas fa-download me-2"></i>Download PDF
+                </a>
+            </div>
+
+            <div class="pdf-embed-wrapper" style="background: #f8fafc; border-radius: 12px; overflow: hidden; border: 1px solid var(--border-color);">
+                <iframe
+                    src="${downloadUrl}#toolbar=1&navpanes=0&scrollbar=1"
+                    style="width: 100%; height: 800px; border: none;"
+                    title="${guide.product_name} PDF Viewer"
+                ></iframe>
+            </div>
+
+            <p style="margin-top: 16px; font-size: 0.85rem; color: var(--text-secondary); text-align: center;">
+                <i class="fas fa-info-circle me-1"></i>
+                Download link expires in ${expiresIn} minutes. Refresh the page to get a new link.
+            </p>
+        </div>
+
+        <div style="background: var(--bg-secondary); border-radius: 12px; padding: 20px; text-align: center;">
+            <p style="margin: 0 0 12px; color: var(--text-secondary);">
+                <i class="fas fa-question-circle me-1"></i>Need help or have questions?
+            </p>
+            <a href="https://discord.gg/y2Mh77wAV2" target="_blank" class="btn btn-outline-primary">
+                <i class="fab fa-discord me-2"></i>Join our Discord Community
+            </a>
+        </div>
+    `;
+}
+
+// Load and render markdown content (for legacy free guides)
+async function loadMarkdownContent(file, hasAccess, guideId) {
     const contentElement = document.getElementById('guide-content');
 
     try {
@@ -127,107 +440,23 @@ async function loadGuideContent(file, hasAccess, guideId) {
         let contentToRender = markdown;
         let previewBadge = '';
 
-        // Show preview for users who haven't purchased
-        if (!hasAccess) {
-            contentToRender = extractFreePreview(markdown);
-
-            // Add preview badge
-            previewBadge = `
-                <div class="alert alert-info d-flex align-items-center mb-4" style="background: linear-gradient(135deg, #e0f2fe, #dbeafe); border: none; border-radius: 12px;">
-                    <i class="fas fa-eye me-3" style="font-size: 1.5rem; color: var(--primary-color);"></i>
-                    <div>
-                        <h5 class="mb-1" style="color: var(--primary-color); font-weight: 600;">Free Preview (10% of Content)</h5>
-                        <p class="mb-0" style="font-size: 0.9rem;">You're viewing a preview. Purchase the full guide for $${guidesMetadata[guideId].price.toFixed(2)} to access all content, practice questions, and test-taking strategies.</p>
-                    </div>
+        // Free guide - show full content badge
+        previewBadge = `
+            <div class="alert alert-success d-flex align-items-center mb-4" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); border: none; border-radius: 12px;">
+                <i class="fas fa-gift me-3" style="font-size: 1.5rem; color: #059669;"></i>
+                <div>
+                    <h5 class="mb-1" style="color: #059669; font-weight: 600;">Free Study Guide</h5>
+                    <p class="mb-0" style="font-size: 0.9rem;">This guide is free for all nursing students. Enjoy the complete content!</p>
                 </div>
-            `;
-        } else {
-            // User has purchased - show full content badge
-            previewBadge = `
-                <div class="alert alert-success d-flex align-items-center mb-4" style="background: linear-gradient(135deg, #d1fae5, #a7f3d0); border: none; border-radius: 12px;">
-                    <i class="fas fa-check-circle me-3" style="font-size: 1.5rem; color: #059669;"></i>
-                    <div>
-                        <h5 class="mb-1" style="color: #059669; font-weight: 600;">Full Access - Purchased</h5>
-                        <p class="mb-0" style="font-size: 0.9rem;">You own this guide! You're viewing the complete content with all practice questions and clinical pearls.</p>
-                    </div>
-                </div>
-            `;
-        }
+            </div>
+        `;
 
-        // Parse markdown - handle both marked() and marked.parse() API
+        // Parse markdown
         const html = typeof marked.parse === 'function'
             ? marked.parse(contentToRender)
             : marked(contentToRender);
 
-
-        // Add purchase CTA at bottom only if user doesn't have access
-        let purchaseCTA = '';
-        if (!hasAccess) {
-            const guideTitle = guidesMetadata[guideId].title;
-            const guidePrice = guidesMetadata[guideId].price.toFixed(2);
-
-            purchaseCTA = `
-                <div class="premium-cta-section" style="margin-top: 60px; padding: 50px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 20px; color: white; text-align: center;">
-                    <div class="mb-4">
-                        <i class="fas fa-lock" style="font-size: 3rem; opacity: 0.9;"></i>
-                    </div>
-                    <h2 class="mb-3" style="font-weight: 700;">Unlock the Complete Guide</h2>
-                    <p class="mb-4" style="font-size: 1.1rem; opacity: 0.95; max-width: 600px; margin: 0 auto;">
-                        Get instant access to the full <strong>${guideTitle}</strong> with:
-                    </p>
-                    <div class="row g-3 mb-4" style="max-width: 700px; margin: 0 auto;">
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Complete guide content (100%)</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">NCLEX-style practice questions</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Detailed answer explanations</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Test-taking strategies</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Clinical pearls & mnemonics</span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="d-flex align-items-start">
-                                <i class="fas fa-check-circle me-2 mt-1"></i>
-                                <span style="text-align: left;">Printable study cards (PDF)</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px; max-width: 400px; margin: 0 auto 30px;">
-                        <div style="font-size: 3rem; font-weight: 700; margin-bottom: 8px;">$${guidePrice}</div>
-                        <div style="font-size: 1rem; opacity: 0.9;">One-time payment • Lifetime access</div>
-                    </div>
-                    <button class="btn btn-light btn-lg px-5 mb-3" onclick="alert('Payment integration coming soon! Guide will cost $${guidePrice}')" style="border-radius: 12px; font-weight: 600; color: var(--primary-color); font-size: 1.1rem;">
-                        <i class="fas fa-shopping-cart"></i> Purchase Full Guide - $${guidePrice}
-                    </button>
-                    <p class="mb-0" style="font-size: 0.9rem; opacity: 0.8;">
-                        <i class="fas fa-shield-alt"></i> Secure payment • <i class="fas fa-download"></i> Instant access • <i class="fas fa-sync"></i> Free updates
-                    </p>
-                </div>
-            `;
-        }
-
-        contentElement.innerHTML = previewBadge + html + purchaseCTA;
+        contentElement.innerHTML = previewBadge + html;
 
         // Smooth scroll to anchor links
         contentElement.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -254,43 +483,33 @@ async function loadGuideContent(file, hasAccess, guideId) {
     }
 }
 
-// Extract free preview (first ~10% of content)
-function extractFreePreview(markdown) {
-    // Split by main sections (##)
-    const sections = markdown.split(/(?=^##\s)/m);
-
-    // Take title + first section only (about 10% of content)
-    const previewSections = sections.slice(0, 2).join('');
-
-    // Remove any NCLEX-specific sections and advanced content
-    let preview = previewSections
-        .replace(/###?\s*NCLEX.*?(?=###|$)/gis, '')
-        .replace(/###?\s*Test-Taking.*?(?=###|$)/gis, '')
-        .replace(/###?\s*Clinical Pearls.*?(?=###|$)/gis, '')
-        .replace(/###?\s*Practice Questions.*?(?=###|$)/gis, '');
-
-    return preview;
-}
-
 // Render related guides
 function renderRelatedGuides(currentGuideId) {
     const relatedGuides = relatedGuidesMap[currentGuideId] || [];
     const container = document.getElementById('related-guides-grid');
+    const section = document.getElementById('related-guides-section');
+
+    if (!container || !section) return;
 
     if (relatedGuides.length === 0) {
-        document.getElementById('related-guides-section').style.display = 'none';
+        section.style.display = 'none';
         return;
     }
 
     container.innerHTML = relatedGuides.map(guideId => {
-        const metadata = guidesMetadata[guideId];
+        const metadata = legacyGuidesMetadata[guideId];
+        if (!metadata) return '';
         return `
             <a href="guide.html?id=${guideId}" class="related-guide-card">
                 <h4>${metadata.title}</h4>
                 <p>${metadata.subtitle.substring(0, 80)}...</p>
             </a>
         `;
-    }).join('');
+    }).filter(Boolean).join('');
+
+    if (container.innerHTML === '') {
+        section.style.display = 'none';
+    }
 }
 
 // Hide page loader

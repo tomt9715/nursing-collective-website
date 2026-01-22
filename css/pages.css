@@ -1513,6 +1513,442 @@
     border: 1px solid var(--border-color);
 }
 
+/* View Toggle Controls */
+.view-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--background-light);
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.view-toggle-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.view-toggle-btn:hover {
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.view-toggle-btn.active {
+    background: var(--card-bg);
+    color: var(--primary-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid View Layout */
+.guides-grid-enhanced.view-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.guides-grid-enhanced.view-grid .guide-card-enhanced {
+    margin-bottom: 0;
+}
+
+/* List View Layout */
+.guides-grid-enhanced.view-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Enhanced Guide Card */
+.guide-card-enhanced {
+    background: var(--background-light);
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.guide-card-enhanced:hover {
+    border-color: var(--primary-color);
+    background: var(--card-bg);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(46, 134, 171, 0.15);
+}
+
+/* Card Header with Gradient */
+.guide-card-header {
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: relative;
+    min-height: 100px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.guide-card-header .guide-icon {
+    width: 56px;
+    height: 56px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    backdrop-filter: blur(10px);
+}
+
+.guide-card-header .guide-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Favorite Button */
+.favorite-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.favorite-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+.favorite-btn.favorited {
+    background: rgba(255, 255, 255, 0.95);
+    color: #f59e0b;
+}
+
+.favorite-btn.favorited i {
+    animation: heartPop 0.3s ease;
+}
+
+@keyframes heartPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+}
+
+/* Card Body */
+.guide-card-body {
+    padding: 20px;
+}
+
+.guide-card-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.guide-card-enhanced h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+/* Category Badge */
+.category-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.category-badge.med-surg {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.category-badge.pharmacology {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    color: white;
+}
+
+.category-badge.fundamentals {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: white;
+}
+
+.category-badge.maternity {
+    background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+    color: white;
+}
+
+.category-badge.pediatrics {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.category-badge.mental-health {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.category-badge.lab-values {
+    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
+    color: white;
+}
+
+.category-badge.clinical-skills {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+    color: white;
+}
+
+.category-badge.safety {
+    background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+    color: white;
+}
+
+.category-badge.medications {
+    background: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+    color: white;
+}
+
+/* Guide Preview/Description */
+.guide-preview {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Guide Meta Info */
+.guide-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.guide-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.guide-meta-item i {
+    font-size: 0.75rem;
+    color: var(--primary-color);
+}
+
+.guide-meta-item.last-studied {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Card Actions */
+.guide-card-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-continue {
+    flex: 1;
+    min-width: 140px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-continue:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 134, 171, 0.4);
+}
+
+.btn-download-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 16px;
+    background: var(--background-light);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-download-secondary:hover {
+    background: var(--card-bg);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Owned Badge */
+.owned-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 6px 12px;
+    background: rgba(16, 185, 129, 0.9);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* List View Specific Styles */
+.guides-grid-enhanced.view-list .guide-card-enhanced {
+    display: flex;
+    flex-direction: row;
+}
+
+.guides-grid-enhanced.view-list .guide-card-header {
+    width: 200px;
+    min-width: 200px;
+    min-height: unset;
+    border-radius: 16px 0 0 16px;
+}
+
+.guides-grid-enhanced.view-list .guide-card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.guides-grid-enhanced.view-list .guide-preview {
+    -webkit-line-clamp: 1;
+}
+
+.guides-grid-enhanced.view-list .guide-card-actions {
+    flex-wrap: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .guides-grid-enhanced.view-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guides-grid-enhanced.view-list .guide-card-enhanced {
+        flex-direction: column;
+    }
+
+    .guides-grid-enhanced.view-list .guide-card-header {
+        width: 100%;
+        min-width: unset;
+        border-radius: 16px 16px 0 0;
+    }
+
+    .guide-card-actions {
+        flex-direction: column;
+    }
+
+    .btn-continue,
+    .btn-download-secondary {
+        width: 100%;
+    }
+
+    .view-toggle-container {
+        display: none;
+    }
+}
+
+/* Dark Mode for Enhanced Guide Cards */
+[data-theme="dark"] .guide-card-enhanced {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .guide-card-enhanced:hover {
+    background: var(--background-light);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .guide-card-body {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .btn-download-secondary {
+    background: var(--background-light);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .btn-download-secondary:hover {
+    background: var(--card-bg);
+    border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .view-toggle-btn {
+    color: var(--text-secondary);
+}
+
+[data-theme="dark"] .view-toggle-btn:hover {
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .view-toggle-btn.active {
+    background: var(--card-bg);
+    color: var(--primary-color);
+}
+
+[data-theme="dark"] .view-toggle-container {
+    background: var(--background-light);
+}
+
 /* Dashboard Widgets */
 .dashboard-widgets-row {
     display: grid;

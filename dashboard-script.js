@@ -531,6 +531,122 @@ const guidesData = [
     }
 ];
 
+// Category mapping for guide cards
+const guideCategoryMap = {
+    // Cardiovascular
+    'heart-failure': { category: 'med-surg', label: 'Med-Surg', description: 'Comprehensive guide to heart failure management and nursing interventions.' },
+    'myocardial-infarction': { category: 'med-surg', label: 'Med-Surg', description: 'Acute MI recognition, treatment protocols, and patient care.' },
+    'arrhythmias': { category: 'med-surg', label: 'Med-Surg', description: 'Cardiac rhythm interpretation and emergency interventions.' },
+    'hypertension': { category: 'med-surg', label: 'Med-Surg', description: 'Blood pressure management and lifestyle modifications.' },
+    'coronary-artery-disease': { category: 'med-surg', label: 'Med-Surg', description: 'CAD pathophysiology and evidence-based treatments.' },
+    'peripheral-vascular-disease': { category: 'med-surg', label: 'Med-Surg', description: 'PVD assessment, wound care, and circulation optimization.' },
+    // Respiratory
+    'copd': { category: 'med-surg', label: 'Med-Surg', description: 'COPD staging, oxygen therapy, and exacerbation management.' },
+    'asthma': { category: 'med-surg', label: 'Med-Surg', description: 'Asthma triggers, medication protocols, and action plans.' },
+    'pneumonia': { category: 'med-surg', label: 'Med-Surg', description: 'Pneumonia types, antibiotic therapy, and respiratory care.' },
+    'oxygen-therapy': { category: 'clinical-skills', label: 'Clinical Skills', description: 'O2 delivery devices, flow rates, and monitoring.' },
+    'tuberculosis': { category: 'med-surg', label: 'Med-Surg', description: 'TB infection control and treatment protocols.' },
+    'chest-tubes': { category: 'clinical-skills', label: 'Clinical Skills', description: 'Chest tube management and troubleshooting.' },
+    // Endocrine
+    'diabetes-type1': { category: 'med-surg', label: 'Med-Surg', description: 'Type 1 diabetes management and insulin therapy.' },
+    'diabetes-type2': { category: 'med-surg', label: 'Med-Surg', description: 'Type 2 diabetes care and oral medications.' },
+    'thyroid-disorders': { category: 'med-surg', label: 'Med-Surg', description: 'Hypo/hyperthyroidism assessment and treatment.' },
+    'adrenal-disorders': { category: 'med-surg', label: 'Med-Surg', description: 'Adrenal crisis and Cushing syndrome management.' },
+    'pituitary-disorders': { category: 'med-surg', label: 'Med-Surg', description: 'Pituitary hormone imbalances and interventions.' },
+    // Neurological
+    'stroke': { category: 'med-surg', label: 'Med-Surg', description: 'Stroke types, FAST assessment, and acute care.' },
+    'seizures': { category: 'med-surg', label: 'Med-Surg', description: 'Seizure precautions and emergency response.' },
+    'spinal-cord-injury': { category: 'med-surg', label: 'Med-Surg', description: 'SCI levels, complications, and rehabilitation.' },
+    'traumatic-brain-injury': { category: 'med-surg', label: 'Med-Surg', description: 'TBI assessment scales and ICP monitoring.' },
+    'meningitis': { category: 'med-surg', label: 'Med-Surg', description: 'Meningitis signs, isolation, and treatment.' },
+    'parkinsons-ms': { category: 'med-surg', label: 'Med-Surg', description: 'Progressive neurological disorders management.' },
+    // Renal
+    'acute-kidney-injury': { category: 'med-surg', label: 'Med-Surg', description: 'AKI stages and fluid management.' },
+    'chronic-kidney-disease': { category: 'med-surg', label: 'Med-Surg', description: 'CKD staging and renal diet education.' },
+    'dialysis': { category: 'med-surg', label: 'Med-Surg', description: 'Hemodialysis and peritoneal dialysis care.' },
+    'urinary-tract-infections': { category: 'med-surg', label: 'Med-Surg', description: 'UTI prevention and antibiotic selection.' },
+    'kidney-stones': { category: 'med-surg', label: 'Med-Surg', description: 'Nephrolithiasis pain management and prevention.' },
+    'fluid-electrolytes': { category: 'lab-values', label: 'Lab Values', description: 'Electrolyte imbalances and IV fluid therapy.' },
+    // GI
+    'gi-bleeding': { category: 'med-surg', label: 'Med-Surg', description: 'Upper and lower GI bleed management.' },
+    'bowel-obstruction': { category: 'med-surg', label: 'Med-Surg', description: 'SBO vs LBO assessment and treatment.' },
+    'liver-disease': { category: 'med-surg', label: 'Med-Surg', description: 'Cirrhosis, hepatitis, and liver failure care.' },
+    'pancreatitis': { category: 'med-surg', label: 'Med-Surg', description: 'Acute and chronic pancreatitis management.' },
+    'inflammatory-bowel-disease': { category: 'med-surg', label: 'Med-Surg', description: 'Crohn\'s disease and ulcerative colitis.' },
+    'gerd-peptic-ulcer': { category: 'med-surg', label: 'Med-Surg', description: 'GERD and PUD treatment protocols.' },
+    // Musculoskeletal
+    'fractures': { category: 'med-surg', label: 'Med-Surg', description: 'Fracture types and orthopedic nursing care.' },
+    'arthritis': { category: 'med-surg', label: 'Med-Surg', description: 'OA and RA management strategies.' },
+    'hip-knee-replacement': { category: 'med-surg', label: 'Med-Surg', description: 'Joint replacement pre and post-op care.' },
+    'osteoporosis': { category: 'med-surg', label: 'Med-Surg', description: 'Bone density preservation and fall prevention.' },
+    'amputation-care': { category: 'med-surg', label: 'Med-Surg', description: 'Amputation wound care and prosthetics.' },
+    // Mental Health
+    'eating-disorders': { category: 'mental-health', label: 'Mental Health', description: 'Anorexia, bulimia, and binge eating interventions.' },
+    // Other categories
+    'electrolytes': { category: 'lab-values', label: 'Lab Values', description: 'Essential electrolyte ranges and nursing interventions.' },
+    'vital-signs': { category: 'clinical-skills', label: 'Clinical Skills', description: 'Assessment techniques and critical values.' },
+    'critical-lab-values': { category: 'lab-values', label: 'Lab Values', description: 'Life-threatening lab values requiring immediate action.' },
+    'isolation-precautions': { category: 'safety', label: 'Safety', description: 'Standard, contact, droplet, and airborne precautions.' },
+    'medication-math': { category: 'pharmacology', label: 'Pharmacology', description: 'Dosage calculations, IV rates, and conversions.' }
+};
+
+// Get favorites from localStorage
+function getFavorites() {
+    try {
+        return JSON.parse(localStorage.getItem('guideFavorites') || '[]');
+    } catch {
+        return [];
+    }
+}
+
+// Save favorites to localStorage
+function saveFavorites(favorites) {
+    localStorage.setItem('guideFavorites', JSON.stringify(favorites));
+}
+
+// Toggle favorite status
+function toggleFavorite(productId, button) {
+    const favorites = getFavorites();
+    const index = favorites.indexOf(productId);
+
+    if (index > -1) {
+        favorites.splice(index, 1);
+        button.classList.remove('favorited');
+        button.innerHTML = '<i class="far fa-star"></i>';
+    } else {
+        favorites.push(productId);
+        button.classList.add('favorited');
+        button.innerHTML = '<i class="fas fa-star"></i>';
+    }
+
+    saveFavorites(favorites);
+}
+
+// Get last studied date from localStorage
+function getLastStudied(productId) {
+    try {
+        const lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}');
+        return lastStudied[productId] || null;
+    } catch {
+        return null;
+    }
+}
+
+// Format relative time
+function formatRelativeTime(dateString) {
+    if (!dateString) return null;
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffMs = now - date;
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) return 'Today';
+    if (diffDays === 1) return 'Yesterday';
+    if (diffDays < 7) return `${diffDays} days ago`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? 's' : ''} ago`;
+    return formatDate(dateString);
+}
+
 // Load purchased guides from backend API
 async function loadAccessibleGuides(user) {
     const guideList = document.querySelector('.guides-grid-enhanced') || document.getElementById('guide-list');
@@ -561,44 +677,54 @@ async function loadAccessibleGuides(user) {
         const purchasedIds = purchases.map(p => p.product_id);
         localStorage.setItem('purchasedGuides', JSON.stringify(purchasedIds));
 
+        // Get favorites for rendering
+        const favorites = getFavorites();
+
         // If user has purchased guides, render them
         if (purchases.length > 0) {
             guideList.innerHTML = purchases.map(purchase => {
                 const icon = getGuideIcon(purchase.product_id);
+                const categoryInfo = guideCategoryMap[purchase.product_id] || { category: 'med-surg', label: 'Med-Surg', description: 'Comprehensive NCLEX study guide.' };
+                const isFavorited = favorites.includes(purchase.product_id);
+                const lastStudied = getLastStudied(purchase.product_id);
+                const lastStudiedText = formatRelativeTime(lastStudied);
+
                 return `
-                <div class="guide-item" style="padding: 16px; background: var(--background-light); border-radius: 12px; margin-bottom: 12px; transition: all 0.3s ease; border: 2px solid transparent;">
-                    <div style="display: flex; align-items: center; gap: 16px;">
-                        <div style="width: 40px; height: 40px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 32px;">${icon}</div>
-                        <div style="flex: 1;">
-                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
-                                <h4 style="margin: 0; font-size: 1rem; color: var(--text-primary);">${escapeHtml(purchase.product_name)}</h4>
-                                <span class="badge bg-success" style="font-size: 0.65rem; padding: 3px 8px;"><i class="fas fa-check"></i> OWNED</span>
-                            </div>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 10px; flex-wrap: wrap;">
-                                <button class="btn btn-primary btn-sm download-btn" data-product-id="${escapeHtml(purchase.product_id)}" onclick="downloadGuide('${escapeHtml(purchase.product_id)}', this)" style="padding: 6px 14px; font-size: 0.85rem;">
-                                    <i class="fas fa-download"></i> Download PDF
-                                </button>
-                                <span style="font-size: 0.75rem; color: var(--text-secondary);">
-                                    <i class="fas fa-calendar"></i> Purchased ${formatDate(purchase.purchased_at)}
-                                </span>
-                            </div>
+                <div class="guide-card-enhanced" data-product-id="${escapeHtml(purchase.product_id)}">
+                    <div class="guide-card-header">
+                        <div class="guide-icon">${icon}</div>
+                        <span class="owned-badge"><i class="fas fa-check"></i> Owned</span>
+                        <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" onclick="toggleFavorite('${escapeHtml(purchase.product_id)}', this)" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
+                            <i class="${isFavorited ? 'fas' : 'far'} fa-star"></i>
+                        </button>
+                    </div>
+                    <div class="guide-card-body">
+                        <div class="guide-card-title-row">
+                            <h4>${escapeHtml(purchase.product_name)}</h4>
+                            <span class="category-badge ${categoryInfo.category}">${categoryInfo.label}</span>
+                        </div>
+                        <p class="guide-preview">${categoryInfo.description}</p>
+                        <div class="guide-meta-row">
+                            <span class="guide-meta-item">
+                                <i class="fas fa-calendar-alt"></i> Purchased ${formatDate(purchase.purchased_at)}
+                            </span>
+                            ${lastStudiedText ? `<span class="guide-meta-item last-studied"><i class="fas fa-clock"></i> Studied ${lastStudiedText}</span>` : ''}
+                        </div>
+                        <div class="guide-card-actions">
+                            <button class="btn-continue" onclick="continueStudying('${escapeHtml(purchase.product_id)}')">
+                                <i class="fas fa-book-reader"></i> Continue Studying
+                            </button>
+                            <button class="btn-download-secondary download-btn" data-product-id="${escapeHtml(purchase.product_id)}" onclick="downloadGuide('${escapeHtml(purchase.product_id)}', this)">
+                                <i class="fas fa-download"></i> PDF
+                            </button>
                         </div>
                     </div>
                 </div>
             `;
             }).join('');
 
-            // Add hover effect
-            guideList.querySelectorAll('.guide-item').forEach(item => {
-                item.addEventListener('mouseenter', function() {
-                    this.style.borderColor = 'var(--primary-color)';
-                    this.style.background = 'var(--card-background)';
-                });
-                item.addEventListener('mouseleave', function() {
-                    this.style.borderColor = 'transparent';
-                    this.style.background = 'var(--background-light)';
-                });
-            });
+            // Setup view toggle
+            setupViewToggle();
         } else {
             // Show enhanced empty state with browse guides CTA
             guideList.innerHTML = `
@@ -633,6 +759,49 @@ async function loadAccessibleGuides(user) {
             </div>
         `;
     }
+}
+
+// Setup view toggle functionality
+function setupViewToggle() {
+    const toggleBtns = document.querySelectorAll('.view-toggle-btn');
+    const guideList = document.querySelector('.guides-grid-enhanced');
+
+    if (!toggleBtns.length || !guideList) return;
+
+    // Load saved preference
+    const savedView = localStorage.getItem('guideViewPreference') || 'grid';
+    setView(savedView);
+
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const view = this.dataset.view;
+            setView(view);
+            localStorage.setItem('guideViewPreference', view);
+        });
+    });
+
+    function setView(view) {
+        toggleBtns.forEach(btn => {
+            btn.classList.toggle('active', btn.dataset.view === view);
+        });
+        guideList.classList.remove('view-grid', 'view-list');
+        guideList.classList.add(`view-${view}`);
+    }
+}
+
+// Continue studying - navigates to guide and updates last studied
+function continueStudying(productId) {
+    // Update last studied timestamp
+    try {
+        const lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}');
+        lastStudied[productId] = new Date().toISOString();
+        localStorage.setItem('guideLastStudied', JSON.stringify(lastStudied));
+    } catch (e) {
+        console.error('Error saving last studied:', e);
+    }
+
+    // Navigate to the guide page
+    window.location.href = `guide.html?id=${productId}`;
 }
 
 // Download a guide by getting a secure download link

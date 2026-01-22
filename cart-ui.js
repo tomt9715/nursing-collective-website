@@ -196,7 +196,7 @@ class CartUI {
         if (items.length === 0) {
             container.innerHTML = `
                 <div class="cart-empty">
-                    <img src="images/bag.png" alt="Empty cart" class="cart-empty-img">
+                    <img src="assets/images/bag.png" alt="Empty cart" class="cart-empty-img">
                     <h3>Your cart is empty</h3>
                     <p>Add study guides to get started!</p>
                     <a href="store.html" class="btn btn-primary" onclick="cartUI.closeDrawer()">

@@ -535,7 +535,7 @@
          */
         function isUserLoggedIn() {
             try {
-                const accessToken = localStorage.getItem('florencebot_access_token');
+                const accessToken = localStorage.getItem('accessToken');
                 return !!accessToken;
             } catch (e) {
                 return false;

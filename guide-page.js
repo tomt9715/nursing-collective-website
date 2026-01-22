@@ -630,21 +630,66 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
         sectionTitle.textContent = `More ${categoryDisplayNames[category] || category} Guides`;
     }
 
-    // Get icon for guide based on category
-    const getGuideIcon = (guideCategory) => {
+    // Get icon for guide based on product ID (same mapping as store/dashboard)
+    const getGuideIcon = (productId) => {
         const iconMap = {
-            'mental-health': 'assets/images/guide-icons/mental-health.png',
-            'med-surg': 'assets/images/guide-icons/med-surg.png',
-            'pharmacology': 'assets/images/guide-icons/pharmacology.png',
-            'fundamentals': 'assets/images/guide-icons/fundamentals.png',
-            'maternity': 'assets/images/guide-icons/maternity.png',
-            'pediatrics': 'assets/images/guide-icons/pediatrics.png',
-            'lab-values': 'assets/images/guide-icons/lab-values.png',
-            'clinical-skills': 'assets/images/guide-icons/clinical-skills.png',
-            'safety': 'assets/images/guide-icons/safety.png',
-            'medications': 'assets/images/guide-icons/medications.png'
+            // Cardiovascular
+            'heart-failure': 'heart-failure.png',
+            'myocardial-infarction': 'heart-attack.png',
+            'arrhythmias': 'arrhythmias.png',
+            'hypertension': 'hypertension.png',
+            'coronary-artery-disease': 'cad.png',
+            'peripheral-vascular-disease': 'pad.png',
+            // Respiratory
+            'copd': 'copd.png',
+            'asthma': 'asthma.png',
+            'pneumonia': 'pneumonia.png',
+            'oxygen-therapy': 'oxygen.png',
+            'tuberculosis': 'tb.png',
+            'chest-tubes': 'chest.png',
+            // Endocrine
+            'diabetes-type1': 'type-1.png',
+            'diabetes-type2': 'type-2.png',
+            'thyroid-disorders': 'thyroid.png',
+            'adrenal-disorders': 'adrenal.png',
+            'pituitary-disorders': 'pituitary.png',
+            // Neurological
+            'stroke': 'stroke.png',
+            'seizures': 'seizure.png',
+            'spinal-cord-injury': 'spinal-cord-injury.png',
+            'traumatic-brain-injury': 'brain-injury.png',
+            'meningitis': 'meningitis.png',
+            'parkinsons-ms': 'shaking.png',
+            // Renal
+            'acute-kidney-injury': 'kidney-acute.png',
+            'chronic-kidney-disease': 'kidney-disease.png',
+            'dialysis': 'kidney-dialysis.png',
+            'urinary-tract-infections': 'urinary-tract-infection.png',
+            'kidney-stones': 'kidney.png',
+            'fluid-electrolytes': 'chemical.png',
+            // Gastrointestinal
+            'gi-bleeding': 'gi-bleeding.png',
+            'bowel-obstruction': 'bowel-obstruction.png',
+            'liver-disease': 'liver.png',
+            'pancreatitis': 'intestines.png',
+            'inflammatory-bowel-disease': 'intestines.png',
+            'gerd-peptic-ulcer': 'ulcer.png',
+            // Musculoskeletal
+            'fractures': 'broken-bone.png',
+            'arthritis': 'arthritis.png',
+            'hip-knee-replacement': 'prothesis.png',
+            'osteoporosis': 'osteoporosis.png',
+            'amputation-care': 'amputation.png',
+            // Mental Health
+            'eating-disorders': 'eating-disorder.png',
+            'depression-anxiety': 'depression.png',
+            'schizophrenia': 'schizophrenia.png',
+            'bipolar-disorder': 'bipolar.png',
+            'substance-abuse': 'drugs.png',
+            'ptsd-trauma': 'ptsd.png'
         };
-        return iconMap[guideCategory] || 'assets/images/guide-icons/default.png';
+        const iconFile = iconMap[productId];
+        return iconFile ? `assets/images/guide-icons/${iconFile}` : null;
     };
 
     // Get a short description for the guide
@@ -679,7 +724,10 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
                                     : `<span class="related-price-badge">$${product.price.toFixed(2)}</span>`
                                 }
                                 <div class="related-guide-icon">
-                                    <img src="${getGuideIcon(product.category)}" alt="${categoryName}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-book-medical\\' style=\\'font-size: 28px; color: white;\\'></i>';">
+                                    ${getGuideIcon(guideId)
+                                        ? `<img src="${getGuideIcon(guideId)}" alt="${categoryName}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-book-medical\\' style=\\'font-size: 28px; color: white;\\'></i>';">`
+                                        : `<i class="fas fa-book-medical" style="font-size: 28px; color: white;"></i>`
+                                    }
                                 </div>
                             </div>
                             <div class="related-guide-body">

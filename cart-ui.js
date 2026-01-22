@@ -453,16 +453,27 @@ class CartUI {
     updateAddToCartButtons() {
         const buttons = document.querySelectorAll('.add-to-cart-btn');
         const cartItems = cartManager ? cartManager.getItems() : [];
-        const cartProductIds = cartItems.map(item => item.product_id);
+        const cartItemMap = {};
+        cartItems.forEach(item => {
+            cartItemMap[item.product_id] = item.quantity || 1;
+        });
 
         buttons.forEach(button => {
             const productId = button.dataset.productId;
 
-            if (cartProductIds.includes(productId)) {
+            if (button.classList.contains('purchased')) {
+                // Already purchased - keep disabled
+                return;
+            }
+
+            if (cartItemMap[productId]) {
+                // Item is in cart - show quantity and allow adding more
+                const qty = cartItemMap[productId];
                 button.classList.add('in-cart');
-                button.innerHTML = '<i class="fas fa-check"></i> In Cart';
-                button.disabled = true;
-            } else if (!button.classList.contains('purchased')) {
+                button.innerHTML = `<i class="fas fa-cart-plus"></i> Add Another (${qty} in cart)`;
+                button.disabled = false;
+            } else {
+                // Not in cart - show normal add button
                 button.classList.remove('in-cart');
                 button.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
                 button.disabled = false;

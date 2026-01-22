@@ -268,6 +268,68 @@ class CartUI {
     }
 
     /**
+     * Get the icon path for a product
+     * @param {string} productId - Product ID
+     * @param {string} productType - Product type
+     * @returns {string|null} - Icon path or null if no custom icon
+     */
+    getGuideIconPath(productId, productType) {
+        // Only individual guides have custom icons
+        if (productType !== 'individual') return null;
+
+        // Map product IDs to icon filenames
+        const iconMap = {
+            'heart-failure': 'heart-failure.png',
+            'myocardial-infarction': 'heart-attack.png',
+            'arrhythmias': 'arrhythmias.png',
+            'hypertension': 'hypertension.png',
+            'coronary-artery-disease': 'cad.png',
+            'peripheral-vascular-disease': 'pad.png',
+            'copd': 'copd.png',
+            'asthma': 'asthma.png',
+            'pneumonia': 'pneumonia.png',
+            'oxygen-therapy': 'oxygen.png',
+            'tuberculosis': 'tb.png',
+            'chest-tubes': 'chest.png',
+            'diabetes-type1': 'type-1.png',
+            'diabetes-type2': 'type-2.png',
+            'thyroid-disorders': 'thyroid.png',
+            'adrenal-disorders': 'adrenal.png',
+            'pituitary-disorders': 'pituitary.png',
+            'stroke': 'stroke.png',
+            'seizures': 'seizure.png',
+            'spinal-cord-injury': 'spinal-cord-injury.png',
+            'traumatic-brain-injury': 'brain-injury.png',
+            'meningitis': 'meningitis.png',
+            'parkinsons-ms': 'shaking.png',
+            'acute-kidney-injury': 'kidney-acute.png',
+            'chronic-kidney-disease': 'kidney-disease.png',
+            'dialysis': 'kidney-dialysis.png',
+            'urinary-tract-infections': 'urinary-tract-infection.png',
+            'kidney-stones': 'kidney.png',
+            'fluid-electrolytes': 'chemical.png',
+            'gi-bleeding': 'gi-bleeding.png',
+            'bowel-obstruction': 'bowel-obstruction.png',
+            'liver-disease': 'liver.png',
+            'pancreatitis': 'intestines.png',
+            'inflammatory-bowel-disease': 'intestines.png',
+            'gerd-peptic-ulcer': 'ulcer.png',
+            'fractures': 'broken-bone.png',
+            'arthritis': 'arthritis.png',
+            'hip-knee-replacement': 'prothesis.png',
+            'osteoporosis': 'osteoporosis.png',
+            'amputation-care': 'amputation.png',
+            'eating-disorders': 'eating-disorder.png',
+        };
+
+        const iconFile = iconMap[productId];
+        if (iconFile) {
+            return `assets/images/guide-icons/${iconFile}`;
+        }
+        return null;
+    }
+
+    /**
      * Render a single cart item
      * @param {object} item - Cart item data
      * @returns {string} - HTML string
@@ -277,11 +339,17 @@ class CartUI {
         const iconClass = this.getTypeIcon(item.product_type);
         const quantity = item.quantity || 1;
         const itemTotal = (parseFloat(item.price) * quantity).toFixed(2);
+        const guideIconPath = this.getGuideIconPath(item.product_id, item.product_type);
+
+        // Use custom icon image if available, otherwise use Font Awesome icon
+        const iconHtml = guideIconPath
+            ? `<img src="${guideIconPath}" alt="${this.escapeHtml(item.product_name)}" class="cart-item-guide-icon">`
+            : `<i class="${iconClass}"></i>`;
 
         return `
             <div class="cart-item" data-product-id="${this.escapeHtml(item.product_id)}">
                 <div class="cart-item-icon">
-                    <i class="${iconClass}"></i>
+                    ${iconHtml}
                 </div>
                 <div class="cart-item-details">
                     <div class="cart-item-name">${this.escapeHtml(item.product_name)}</div>

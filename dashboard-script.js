@@ -669,37 +669,93 @@ async function downloadGuide(productId, button) {
 // Get icon for guide based on product ID
 function getGuideIcon(productId) {
     const icons = {
-        'cardiovascular-system': '❤️',
-        'respiratory-system': '🫁',
-        'endocrine-diabetes': '🩺',
-        'neurological-system': '🧠',
-        'renal-urinary': '🫘',
-        'gastrointestinal': '🍽️',
-        'musculoskeletal': '🦴',
+        // Cardiovascular (6)
+        'heart-failure': '💔',
+        'myocardial-infarction': '🫀',
+        'arrhythmias': '💓',
+        'hypertension': '🩺',
+        'coronary-artery-disease': '❤️',
+        'peripheral-vascular-disease': '🦵',
+
+        // Respiratory (6)
+        'copd': '🫁',
+        'asthma': '😤',
+        'pneumonia': '🤒',
+        'oxygen-therapy': '💨',
+        'tuberculosis': '🦠',
+        'chest-tubes': '🩻',
+
+        // Endocrine (5)
+        'diabetes-type1': '💉',
+        'diabetes-type2': '🍬',
+        'thyroid-disorders': '🦋',
+        'adrenal-disorders': '⚡',
+        'pituitary-disorders': '🧠',
+
+        // Neurological (6)
+        'stroke': '🧠',
+        'seizures': '⚡',
+        'spinal-cord-injury': '🦴',
+        'traumatic-brain-injury': '🤕',
+        'meningitis': '🔬',
+        'parkinsons-ms': '🫨',
+
+        // Renal (6)
+        'acute-kidney-injury': '🫘',
+        'chronic-kidney-disease': '🫘',
+        'dialysis': '🔄',
+        'urinary-tract-infections': '🚽',
+        'kidney-stones': '💎',
+        'fluid-electrolytes': '💧',
+
+        // Gastrointestinal (6)
+        'gi-bleeding': '🩸',
+        'bowel-obstruction': '🚫',
+        'liver-disease': '🫁',
+        'pancreatitis': '😖',
+        'inflammatory-bowel-disease': '🔥',
+        'gerd-peptic-ulcer': '🍽️',
+
+        // Musculoskeletal (5)
+        'fractures': '🦴',
+        'arthritis': '🦵',
+        'hip-knee-replacement': '🦿',
+        'osteoporosis': '💀',
+        'amputation-care': '🩹',
+
+        // Pharmacology (6)
         'cardiac-medications': '💊',
         'antibiotics-antivirals': '💉',
         'pain-management': '😣',
         'iv-medications': '🩹',
         'psychotropic-medications': '🧪',
         'emergency-medications': '🚨',
+
+        // Fundamentals (5)
         'assessment-skills': '📋',
         'infection-control': '🛡️',
         'documentation-charting': '📝',
         'patient-safety': '⚠️',
         'mobility-transfers': '🚶',
+
+        // Maternal/OB (4)
         'labor-delivery': '👶',
         'postpartum-care': '🤱',
         'high-risk-pregnancy': '⚕️',
         'antepartum-care': '🤰',
+
+        // Pediatrics (4)
         'growth-development': '📈',
         'pediatric-emergencies': '🚑',
         'infant-care': '🍼',
         'adolescent-health': '👦',
+
+        // Mental Health (5)
         'depression-anxiety': '💭',
         'crisis-intervention': '🆘',
         'therapeutic-communication': '💬',
         'substance-abuse': '🚫',
-        'eating-disorders': '🍎'
+        'eating-disorders': '🍽️'
     };
     return icons[productId] || '📚';
 }

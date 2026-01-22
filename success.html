@@ -307,117 +307,111 @@
     <!-- Scripts -->
     <script src="dark-mode.js"></script>
     <script>
-        // Configuration - Update this URL after deploying the API to Railway
-        const API_BASE_URL = 'https://florencebotpro-production.up.railway.app';
+        // Configuration - Main backend API URL for cart/order operations
+        const API_BASE_URL = 'https://web-production-592c07.up.railway.app';
 
         /**
          * Initialize success page
          */
         async function initSuccessPage() {
             const urlParams = new URLSearchParams(window.location.search);
-            const paymentIntentId = urlParams.get('payment_intent');
             const sessionId = urlParams.get('session_id');
-            const productId = urlParams.get('product');
-            const redirectStatus = urlParams.get('redirect_status');
+            const orderNumber = urlParams.get('order_number');
 
-            console.log('Success page params:', { paymentIntentId, sessionId, productId, redirectStatus });
+            console.log('Success page params:', { sessionId, orderNumber });
 
             try {
                 let paymentDetails = null;
 
-                // Verify payment status
-                if (paymentIntentId) {
-                    paymentDetails = await verifyPaymentIntent(paymentIntentId);
-                } else if (sessionId) {
-                    paymentDetails = await verifyCheckoutSession(sessionId);
+                // Verify payment status using session ID
+                if (sessionId) {
+                    paymentDetails = await getSessionStatus(sessionId);
                 }
 
-                if (paymentDetails && paymentDetails.succeeded) {
+                if (paymentDetails && (paymentDetails.payment_status === 'paid' || paymentDetails.status === 'complete')) {
                     showSuccessState(paymentDetails);
                 } else if (paymentDetails && paymentDetails.status === 'processing') {
                     // Payment is still processing
                     showSuccessState({
                         ...paymentDetails,
-                        productId: productId,
-                        productName: paymentDetails.productName || formatProductName(productId),
                         processing: true
-                    });
-                } else if (redirectStatus === 'succeeded' && productId) {
-                    // Stripe redirect indicated success but verification failed
-                    // This can happen if there's a brief delay - show success anyway
-                    showSuccessState({
-                        productId: productId,
-                        productName: formatProductName(productId)
                     });
                 } else {
                     showErrorState('Payment could not be verified. Please contact support if you believe this is an error.');
                 }
             } catch (error) {
                 console.error('Verification error:', error);
-                // Still show success if we have redirect_status=succeeded or product ID
-                if (redirectStatus === 'succeeded' || (productId && paymentIntentId)) {
-                    showSuccessState({
-                        productId: productId,
-                        productName: formatProductName(productId)
-                    });
-                } else if (productId) {
-                    // Fallback - show success with just product info
-                    showSuccessState({
-                        productId: productId,
-                        productName: formatProductName(productId)
-                    });
-                } else {
-                    showErrorState('Unable to verify payment status. Please check your email for confirmation.');
-                }
+                showErrorState('Unable to verify payment status. Please check your email for confirmation.');
             }
         }
 
         /**
-         * Verify payment intent
+         * Get checkout session status and order details
          */
-        async function verifyPaymentIntent(paymentIntentId) {
-            const response = await fetch(`${API_BASE_URL}/api/verify-payment`, {
-                method: 'POST',
+        async function getSessionStatus(sessionId) {
+            const response = await fetch(`${API_BASE_URL}/cart/checkout/session-status?session_id=${encodeURIComponent(sessionId)}`, {
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ payment_intent_id: paymentIntentId }),
             });
 
             if (!response.ok) {
-                throw new Error('Failed to verify payment');
+                throw new Error('Failed to get session status');
             }
 
             return await response.json();
         }
 
         /**
-         * Verify checkout session
+         * Clear the guest cart from localStorage after successful purchase
          */
-        async function verifyCheckoutSession(sessionId) {
-            const response = await fetch(`${API_BASE_URL}/api/verify-payment`, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ session_id: sessionId }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Failed to verify session');
+        function clearGuestCart() {
+            try {
+                localStorage.removeItem('florencebot_guest_cart');
+                console.log('Guest cart cleared after successful purchase');
+            } catch (e) {
+                console.error('Failed to clear guest cart:', e);
             }
-
-            return await response.json();
         }
 
         /**
          * Show success state
          */
         function showSuccessState(details) {
+            // Clear guest cart on successful purchase
+            clearGuestCart();
+
             const container = document.getElementById('success-content');
-            const productName = details.productName || formatProductName(details.productId);
-            const email = details.email || '';
+            const email = details.customer_email || '';
             const amount = details.amount ? `$${(details.amount / 100).toFixed(2)}` : '';
+            const order = details.order;
+
+            // Build items HTML - show each item purchased
+            let itemsHtml = '';
+            if (order && order.items && order.items.length > 0) {
+                itemsHtml = order.items.map(item => {
+                    const qty = item.quantity > 1 ? ` (x${item.quantity})` : '';
+                    return `
+                        <div class="order-item">
+                            <span class="order-item-label">${escapeHtml(item.product_name)}${qty}</span>
+                            <span class="order-item-value">$${parseFloat(item.price).toFixed(2)}</span>
+                        </div>
+                    `;
+                }).join('');
+            } else {
+                // Fallback if no order details
+                itemsHtml = `
+                    <div class="order-item">
+                        <span class="order-item-label">Product</span>
+                        <span class="order-item-value">Study Guide</span>
+                    </div>
+                `;
+            }
+
+            // Determine message based on item count
+            const itemCount = order && order.items ? order.items.length : 1;
+            const guideText = itemCount === 1 ? 'Your study guide is' : 'Your study guides are';
 
             container.innerHTML = `
                 <div class="success-icon">
@@ -425,19 +419,28 @@
                 </div>
                 <h1 class="success-title">Payment Successful!</h1>
                 <p class="success-message">
-                    Thank you for your purchase! Your study guide is now available.
+                    Thank you for your purchase! ${guideText} now available.
                 </p>
 
                 <div class="order-details">
                     <h3>Order Details</h3>
+                    ${order && order.order_number ? `
                     <div class="order-item">
-                        <span class="order-item-label">Product</span>
-                        <span class="order-item-value">${escapeHtml(productName)}</span>
+                        <span class="order-item-label">Order Number</span>
+                        <span class="order-item-value">${escapeHtml(order.order_number)}</span>
                     </div>
-                    ${amount ? `
+                    ` : ''}
+                    ${itemsHtml}
+                    ${order && order.discount_amount > 0 ? `
                     <div class="order-item">
-                        <span class="order-item-label">Amount Paid</span>
-                        <span class="order-item-value">${amount}</span>
+                        <span class="order-item-label">Discount</span>
+                        <span class="order-item-value" style="color: #10b981;">-$${order.discount_amount.toFixed(2)}</span>
+                    </div>
+                    ` : ''}
+                    ${amount ? `
+                    <div class="order-item" style="border-top: 2px solid var(--border-color); padding-top: 12px; margin-top: 8px;">
+                        <span class="order-item-label" style="font-weight: 600;">Total Paid</span>
+                        <span class="order-item-value" style="font-size: 1.1rem;">${amount}</span>
                     </div>
                     ` : ''}
                     ${email ? `
@@ -489,17 +492,6 @@
                     </div>
                 </div>
             `;
-        }
-
-        /**
-         * Format product slug to readable name
-         */
-        function formatProductName(slug) {
-            if (!slug) return 'Study Guide';
-            return slug
-                .split('-')
-                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-                .join(' ');
         }
 
         /**

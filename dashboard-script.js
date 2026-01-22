@@ -83,20 +83,18 @@ function updateAccountWidget(user) {
 }
 
 function updatePurchasesWidget(user) {
-    const purchasesElement = document.getElementById('widget-total-purchases');
-    if (purchasesElement) {
-        const purchasedGuides = JSON.parse(localStorage.getItem('purchasedGuides') || '[]');
-        purchasesElement.textContent = purchasedGuides.length;
-    }
+    // This is now handled by loadAccessibleGuides which fetches from backend
+    // Keeping function for backward compatibility
 }
 
 function updateCompactStats(user) {
     const guidesCountElement = document.getElementById('guides-count');
     const memberSinceElement = document.getElementById('member-since');
 
+    // Guide count is now updated by loadAccessibleGuides which fetches from backend
+    // Just set placeholder for now - it will be updated after API call
     if (guidesCountElement) {
-        const purchasedGuides = JSON.parse(localStorage.getItem('purchasedGuides') || '[]');
-        guidesCountElement.textContent = purchasedGuides.length;
+        guidesCountElement.textContent = '...';
     }
 
     if (memberSinceElement && user.created_at) {
@@ -521,77 +519,192 @@ const guidesData = [
     }
 ];
 
-// Load purchased guides from localStorage
-function loadAccessibleGuides(user) {
+// Load purchased guides from backend API
+async function loadAccessibleGuides(user) {
     const guideList = document.querySelector('.guides-grid-enhanced') || document.getElementById('guide-list');
     if (!guideList) return;
 
-    // Remove skeleton loader
-    const skeleton = guideList.querySelector('.skeleton-loader');
-    if (skeleton) skeleton.remove();
+    try {
+        // Fetch purchases from backend API
+        const purchaseData = await apiCall('/cart/purchases', { method: 'GET' });
+        const purchases = purchaseData.purchases || [];
 
-    // Get purchased guides from localStorage (will be synced with backend later)
-    const purchasedGuides = JSON.parse(localStorage.getItem('purchasedGuides') || '[]');
+        // Remove skeleton loader
+        const skeleton = guideList.querySelector('.skeleton-loader');
+        if (skeleton) skeleton.remove();
 
-    // Filter to show only purchased guides
-    const purchasedGuidesData = guidesData.filter(guide => purchasedGuides.includes(guide.id));
+        // Update study guides stat in compact header
+        const guidesCountStat = document.getElementById('guides-count');
+        if (guidesCountStat) {
+            guidesCountStat.textContent = purchases.length;
+        }
 
-    // Update study guides stat in compact header
-    const guidesCountStat = document.getElementById('guides-count');
-    if (guidesCountStat) {
-        guidesCountStat.textContent = purchasedGuidesData.length;
-    }
+        // Update purchases widget
+        const purchasesElement = document.getElementById('widget-total-purchases');
+        if (purchasesElement) {
+            purchasesElement.textContent = purchases.length;
+        }
 
-    // If user has purchased guides, render them
-    if (purchasedGuidesData.length > 0) {
-        guideList.innerHTML = purchasedGuidesData.map(guide => `
-            <div class="guide-item" style="padding: 16px; background: var(--background-light); border-radius: 12px; margin-bottom: 12px; cursor: pointer; transition: all 0.3s ease; border: 2px solid transparent;" onclick="window.location.href='guide.html?id=${guide.id}'">
-                <div style="display: flex; align-items: center; gap: 16px;">
-                    <div style="font-size: 32px; flex-shrink: 0;">${guide.icon}</div>
-                    <div style="flex: 1;">
-                        <div style="display: flex; align-items-center; gap: 8px; margin-bottom: 4px;">
-                            <h4 style="margin: 0; font-size: 1rem; color: var(--text-primary);">${guide.title}</h4>
-                            <span class="badge bg-success" style="font-size: 0.65rem; padding: 3px 8px;"><i class="fas fa-check"></i> OWNED</span>
-                        </div>
-                        <p style="margin: 0; font-size: 0.85rem; color: var(--text-secondary); line-height: 1.4;">${guide.description}</p>
-                        <div style="display: flex; align-items: center; gap: 16px; margin-top: 8px; font-size: 0.8rem; color: var(--text-secondary);">
-                            <span><i class="fas fa-clock"></i> ${guide.readTime}</span>
-                            <span><i class="fas fa-signal"></i> ${guide.difficulty}</span>
+        // Store purchased IDs in localStorage for other pages
+        const purchasedIds = purchases.map(p => p.product_id);
+        localStorage.setItem('purchasedGuides', JSON.stringify(purchasedIds));
+
+        // If user has purchased guides, render them
+        if (purchases.length > 0) {
+            guideList.innerHTML = purchases.map(purchase => {
+                const icon = getGuideIcon(purchase.product_id);
+                return `
+                <div class="guide-item" style="padding: 16px; background: var(--background-light); border-radius: 12px; margin-bottom: 12px; transition: all 0.3s ease; border: 2px solid transparent;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <div style="font-size: 32px; flex-shrink: 0;">${icon}</div>
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 4px; flex-wrap: wrap;">
+                                <h4 style="margin: 0; font-size: 1rem; color: var(--text-primary);">${escapeHtml(purchase.product_name)}</h4>
+                                <span class="badge bg-success" style="font-size: 0.65rem; padding: 3px 8px;"><i class="fas fa-check"></i> OWNED</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-top: 10px; flex-wrap: wrap;">
+                                <button class="btn btn-primary btn-sm download-btn" data-product-id="${escapeHtml(purchase.product_id)}" onclick="downloadGuide('${escapeHtml(purchase.product_id)}', this)" style="padding: 6px 14px; font-size: 0.85rem;">
+                                    <i class="fas fa-download"></i> Download PDF
+                                </button>
+                                <span style="font-size: 0.75rem; color: var(--text-secondary);">
+                                    <i class="fas fa-calendar"></i> Purchased ${formatDate(purchase.purchased_at)}
+                                </span>
+                            </div>
                         </div>
                     </div>
-                    <i class="fas fa-chevron-right" style="color: var(--text-secondary); opacity: 0.5;"></i>
                 </div>
-            </div>
-        `).join('');
+            `;
+            }).join('');
 
-        // Add hover effect
-        guideList.querySelectorAll('.guide-item').forEach(item => {
-            item.addEventListener('mouseenter', function() {
-                this.style.borderColor = 'var(--primary-color)';
-                this.style.background = 'var(--card-background)';
-                this.style.transform = 'translateX(4px)';
+            // Add hover effect
+            guideList.querySelectorAll('.guide-item').forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.style.borderColor = 'var(--primary-color)';
+                    this.style.background = 'var(--card-background)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.style.borderColor = 'transparent';
+                    this.style.background = 'var(--background-light)';
+                });
             });
-            item.addEventListener('mouseleave', function() {
-                this.style.borderColor = 'transparent';
-                this.style.background = 'var(--background-light)';
-                this.style.transform = 'translateX(0)';
-            });
-        });
-    } else {
-        // Show enhanced empty state with browse guides CTA
+        } else {
+            // Show enhanced empty state with browse guides CTA
+            guideList.innerHTML = `
+                <div class="empty-state-enhanced">
+                    <div class="empty-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <h3>Start Your NCLEX Journey</h3>
+                    <p>Browse our collection of comprehensive study guides designed to help you pass the NCLEX on your first try.</p>
+                    <button class="btn btn-secondary" onclick="window.location.href='store.html'">
+                        <i class="fas fa-store"></i> Visit Store
+                    </button>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('Error loading purchases:', error);
+        // Remove skeleton and show error
+        const skeleton = guideList.querySelector('.skeleton-loader');
+        if (skeleton) skeleton.remove();
+
         guideList.innerHTML = `
             <div class="empty-state-enhanced">
-                <div class="empty-icon">
-                    <i class="fas fa-book-open"></i>
+                <div class="empty-icon" style="color: var(--error-color);">
+                    <i class="fas fa-exclamation-circle"></i>
                 </div>
-                <h3>Start Your NCLEX Journey</h3>
-                <p>Browse our collection of comprehensive study guides designed to help you pass the NCLEX on your first try.</p>
-                <button class="btn btn-secondary" onclick="window.location.href='guides.html'">
-                    <i class="fas fa-search"></i> Explore Study Guides
+                <h3>Unable to Load Guides</h3>
+                <p>There was an error loading your purchased guides. Please try refreshing the page.</p>
+                <button class="btn btn-secondary" onclick="window.location.reload()">
+                    <i class="fas fa-redo"></i> Refresh Page
                 </button>
             </div>
         `;
     }
+}
+
+// Download a guide by getting a secure download link
+async function downloadGuide(productId, button) {
+    const originalText = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+
+    try {
+        const data = await apiCall(`/cart/downloads/${productId}`, { method: 'GET' });
+
+        if (data.download_url) {
+            // Open download in new tab
+            window.open(data.download_url, '_blank');
+            button.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+            setTimeout(() => {
+                button.disabled = false;
+                button.innerHTML = originalText;
+            }, 2000);
+        } else {
+            throw new Error('Download not available');
+        }
+    } catch (error) {
+        console.error('Download error:', error);
+        button.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
+        setTimeout(() => {
+            button.disabled = false;
+            button.innerHTML = originalText;
+        }, 2000);
+        showAlert('Download Error', 'Unable to download the guide. Please try again or contact support.', 'error');
+    }
+}
+
+// Get icon for guide based on product ID
+function getGuideIcon(productId) {
+    const icons = {
+        'cardiovascular-system': '❤️',
+        'respiratory-system': '🫁',
+        'endocrine-diabetes': '🩺',
+        'neurological-system': '🧠',
+        'renal-urinary': '🫘',
+        'gastrointestinal': '🍽️',
+        'musculoskeletal': '🦴',
+        'cardiac-medications': '💊',
+        'antibiotics-antivirals': '💉',
+        'pain-management': '😣',
+        'iv-medications': '🩹',
+        'psychotropic-medications': '🧪',
+        'emergency-medications': '🚨',
+        'assessment-skills': '📋',
+        'infection-control': '🛡️',
+        'documentation-charting': '📝',
+        'patient-safety': '⚠️',
+        'mobility-transfers': '🚶',
+        'labor-delivery': '👶',
+        'postpartum-care': '🤱',
+        'high-risk-pregnancy': '⚕️',
+        'antepartum-care': '🤰',
+        'growth-development': '📈',
+        'pediatric-emergencies': '🚑',
+        'infant-care': '🍼',
+        'adolescent-health': '👦',
+        'depression-anxiety': '💭',
+        'crisis-intervention': '🆘',
+        'therapeutic-communication': '💬',
+        'substance-abuse': '🚫',
+        'eating-disorders': '🍎'
+    };
+    return icons[productId] || '📚';
+}
+
+// Format date for display
+function formatDate(dateString) {
+    if (!dateString) return '';
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+// Escape HTML to prevent XSS
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }
 
 // Admin User Management Functions

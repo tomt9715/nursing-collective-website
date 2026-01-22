@@ -27,6 +27,9 @@ window.addEventListener('load', function() {
 
 // Simple website functionality without auto-scrolling
 document.addEventListener('DOMContentLoaded', function() {
+    // Update nav based on auth state
+    updateNavAuthState();
+
     // Smooth scrolling for navigation links (only when clicked)
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
 
@@ -304,4 +307,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         }
     });
 });
+
+// Update navigation based on authentication state
+function updateNavAuthState() {
+    const isLoggedIn = !!localStorage.getItem('accessToken');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (!navLinks) return;
+
+    // Find the Login link
+    const loginLink = navLinks.querySelector('a[href="login.html"]');
+
+    if (loginLink && isLoggedIn) {
+        // Replace Login with Dashboard
+        loginLink.href = 'dashboard.html';
+        loginLink.textContent = 'Dashboard';
+    }
+}
 

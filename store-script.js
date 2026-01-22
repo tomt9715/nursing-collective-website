@@ -94,9 +94,22 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             currentSubcategory = this.getAttribute('data-subcategory');
 
-            // Update active state
-            subcategoryButtons.forEach(btn => btn.classList.remove('active'));
+            // Update active state and inline styles
+            subcategoryButtons.forEach(btn => {
+                btn.classList.remove('active');
+                // Reset to inactive style
+                btn.style.background = '#ffffff';
+                btn.style.color = '#1f2937';
+                btn.style.borderColor = '#e5e7eb';
+                btn.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.06)';
+            });
+
+            // Apply active style to clicked button
             this.classList.add('active');
+            this.style.background = 'linear-gradient(135deg, #2E86AB 0%, #A23B72 100%)';
+            this.style.color = '#ffffff';
+            this.style.borderColor = 'transparent';
+            this.style.boxShadow = '0 4px 14px rgba(46, 134, 171, 0.35)';
 
             filterGuides();
         });
@@ -196,10 +209,23 @@ document.addEventListener('DOMContentLoaded', function() {
                 subcategoryButtons.forEach(btn => {
                     if (btn.getAttribute('data-subcategory') === 'all') {
                         btn.classList.add('active');
+                        btn.style.background = 'linear-gradient(135deg, #2E86AB 0%, #A23B72 100%)';
+                        btn.style.color = '#ffffff';
+                        btn.style.borderColor = 'transparent';
+                        btn.style.boxShadow = '0 4px 14px rgba(46, 134, 171, 0.35)';
                     } else {
                         btn.classList.remove('active');
+                        btn.style.background = '#ffffff';
+                        btn.style.color = '#1f2937';
+                        btn.style.borderColor = '#e5e7eb';
+                        btn.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.06)';
                     }
                 });
+
+                // Hide subcategory chips
+                if (subcategoryChips) {
+                    subcategoryChips.style.display = 'none';
+                }
 
                 filterGuides();
             } else if (shopType === 'packages') {
@@ -271,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show/hide subcategory chips based on filter
             if (subcategoryChips) {
                 if (filter === 'med-surg' && currentShopType === 'guides') {
-                    subcategoryChips.style.removeProperty('display');
+                    subcategoryChips.style.display = 'flex';
                     subcategoryChips.classList.add('visible');
                 } else {
                     subcategoryChips.style.display = 'none';
@@ -281,8 +307,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     subcategoryButtons.forEach(btn => {
                         if (btn.getAttribute('data-subcategory') === 'all') {
                             btn.classList.add('active');
+                            // Apply active style
+                            btn.style.background = 'linear-gradient(135deg, #2E86AB 0%, #A23B72 100%)';
+                            btn.style.color = '#ffffff';
+                            btn.style.borderColor = 'transparent';
+                            btn.style.boxShadow = '0 4px 14px rgba(46, 134, 171, 0.35)';
                         } else {
                             btn.classList.remove('active');
+                            // Reset to inactive style
+                            btn.style.background = '#ffffff';
+                            btn.style.color = '#1f2937';
+                            btn.style.borderColor = '#e5e7eb';
+                            btn.style.boxShadow = '0 2px 6px rgba(0, 0, 0, 0.06)';
                         }
                     });
                 }

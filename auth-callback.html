@@ -327,6 +327,7 @@
         const accessToken = urlParams.get('access_token');
         const refreshToken = urlParams.get('refresh_token');
         const error = urlParams.get('error');
+        const orderToClaim = urlParams.get('order'); // Order to claim after OAuth login
 
         const loadingState = document.getElementById('loading-state');
         const errorState = document.getElementById('error-state');
@@ -382,9 +383,15 @@
                         localStorage.setItem('user', JSON.stringify(data.user));
                         console.log('User data stored, redirecting to dashboard');
 
+                        // Build redirect URL (include order param if present)
+                        let redirectUrl = 'dashboard.html';
+                        if (orderToClaim) {
+                            redirectUrl += `?order=${encodeURIComponent(orderToClaim)}`;
+                        }
+
                         // Redirect to dashboard with minimum loading time
                         redirectWithMinTime(() => {
-                            window.location.href = 'dashboard.html';
+                            window.location.href = redirectUrl;
                         });
                     } else {
                         throw new Error('Failed to fetch user data');
@@ -394,8 +401,12 @@
                     console.error('Error fetching user data:', error);
                     // Still redirect to dashboard even if user fetch fails
                     // The dashboard can try to fetch user data again
+                    let redirectUrl = 'dashboard.html';
+                    if (orderToClaim) {
+                        redirectUrl += `?order=${encodeURIComponent(orderToClaim)}`;
+                    }
                     redirectWithMinTime(() => {
-                        window.location.href = 'dashboard.html';
+                        window.location.href = redirectUrl;
                     });
                 });
 

@@ -237,6 +237,40 @@
                         </button>
                     </div>
                 </div>
+
+                <!-- Claim Order Section -->
+                <section class="dashboard-section claim-order-section">
+                    <div class="section-header-enhanced">
+                        <h2><i class="fas fa-ticket-alt"></i> Claim a Purchase</h2>
+                    </div>
+                    <div class="claim-order-card">
+                        <p class="claim-description">Have an order number from a previous purchase? Enter it below to add those guides to your account.</p>
+                        <div class="claim-form">
+                            <div class="claim-input-group">
+                                <span class="claim-prefix">TNC-</span>
+                                <input type="text" id="claim-order-input" placeholder="ABC123" maxlength="6" autocomplete="off" />
+                            </div>
+                            <button class="btn btn-primary" id="claim-order-btn" onclick="claimOrder()">
+                                <i class="fas fa-plus-circle"></i> Claim Order
+                            </button>
+                        </div>
+                        <div id="claim-message" class="claim-message" style="display: none;"></div>
+                    </div>
+                </section>
+
+                <!-- Purchase History Section -->
+                <section class="dashboard-section purchase-history-section">
+                    <div class="section-header-enhanced">
+                        <h2><i class="fas fa-receipt"></i> Purchase History</h2>
+                    </div>
+                    <div class="purchase-history-list" id="purchase-history-list">
+                        <!-- Loading skeleton -->
+                        <div class="skeleton-loader">
+                            <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
+                            <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
     </section>

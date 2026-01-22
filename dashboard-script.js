@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load user profile from API
     await loadUserProfile();
 
+    // Check for order claim from URL parameter (from success page redirect)
+    await checkForOrderClaim();
+
     // User menu dropdown toggle
     const userMenuBtn = document.getElementById('user-menu-btn');
     const userDropdown = document.getElementById('user-dropdown');
@@ -215,6 +218,9 @@ async function loadUserProfile() {
 
         // Load accessible guides based on user subscription
         loadAccessibleGuides(user);
+
+        // Load purchase history
+        loadPurchaseHistory();
 
         // Load admin dashboard if admin
         if (user.is_admin) {
@@ -705,6 +711,229 @@ function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+}
+
+// ==================== Claim Order Functions ====================
+
+// Check if user arrived with an order to claim (from success page redirect)
+async function checkForOrderClaim() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const orderNumber = urlParams.get('order');
+
+    if (orderNumber) {
+        console.log('Found order to claim from URL:', orderNumber);
+
+        // Pre-fill the claim input
+        const input = document.getElementById('claim-order-input');
+        if (input) {
+            // Extract just the code portion (remove TNC- prefix if present)
+            let orderCode = orderNumber.toUpperCase();
+            if (orderCode.startsWith('TNC-')) {
+                orderCode = orderCode.substring(4);
+            }
+            input.value = orderCode;
+
+            // Scroll to claim section
+            const claimSection = document.querySelector('.claim-order-section');
+            if (claimSection) {
+                claimSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Auto-claim the order
+            setTimeout(async () => {
+                await claimOrder();
+
+                // Clear the URL parameter after claiming
+                const newUrl = window.location.pathname;
+                window.history.replaceState({}, document.title, newUrl);
+            }, 500);
+        }
+    }
+}
+
+// Claim order functionality
+async function claimOrder() {
+    const input = document.getElementById('claim-order-input');
+    const button = document.getElementById('claim-order-btn');
+    const messageDiv = document.getElementById('claim-message');
+
+    // Get the order number and validate
+    let orderCode = input.value.trim().toUpperCase();
+
+    // Remove TNC- prefix if user entered it
+    if (orderCode.startsWith('TNC-')) {
+        orderCode = orderCode.substring(4);
+    }
+
+    // Validate format (6 alphanumeric characters)
+    if (!orderCode || orderCode.length !== 6 || !/^[A-Z0-9]+$/.test(orderCode)) {
+        showClaimMessage('Please enter a valid 6-character order code (e.g., ABC123).', 'error');
+        return;
+    }
+
+    const fullOrderNumber = `TNC-${orderCode}`;
+
+    // Disable button and show loading
+    const originalText = button.innerHTML;
+    button.disabled = true;
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Claiming...';
+
+    try {
+        const response = await apiCall('/cart/orders/claim', {
+            method: 'POST',
+            body: JSON.stringify({ order_number: fullOrderNumber })
+        });
+
+        if (response.success) {
+            // Success
+            showClaimMessage(`Order ${fullOrderNumber} claimed successfully! ${response.products_added.length} product(s) added to your account.`, 'success');
+            input.value = '';
+
+            // Refresh the guides list and purchase history
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+            await loadAccessibleGuides(user);
+            await loadPurchaseHistory();
+        } else {
+            // Handle specific error types
+            let message = response.message || 'Failed to claim order.';
+            showClaimMessage(message, 'error');
+        }
+    } catch (error) {
+        console.error('Claim order error:', error);
+        let message = 'Failed to claim order. Please try again.';
+        if (error.message) {
+            message = error.message;
+        }
+        showClaimMessage(message, 'error');
+    } finally {
+        button.disabled = false;
+        button.innerHTML = originalText;
+    }
+}
+
+// Show claim message
+function showClaimMessage(message, type) {
+    const messageDiv = document.getElementById('claim-message');
+    if (!messageDiv) return;
+
+    messageDiv.innerHTML = `
+        <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+        <span>${escapeHtml(message)}</span>
+    `;
+    messageDiv.className = `claim-message ${type}`;
+    messageDiv.style.display = 'flex';
+
+    // Auto-hide after 5 seconds for success, keep error visible longer
+    if (type === 'success') {
+        setTimeout(() => {
+            messageDiv.style.display = 'none';
+        }, 5000);
+    }
+}
+
+// Handle Enter key on claim input
+document.addEventListener('DOMContentLoaded', function() {
+    const claimInput = document.getElementById('claim-order-input');
+    if (claimInput) {
+        claimInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                claimOrder();
+            }
+        });
+
+        // Auto-uppercase as user types
+        claimInput.addEventListener('input', function(e) {
+            this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+        });
+    }
+});
+
+// ==================== Purchase History Functions ====================
+
+// Load purchase history
+async function loadPurchaseHistory() {
+    const historyList = document.getElementById('purchase-history-list');
+    if (!historyList) return;
+
+    try {
+        const response = await apiCall('/cart/orders', { method: 'GET' });
+        const orders = response.orders || [];
+
+        // Remove skeleton
+        const skeleton = historyList.querySelector('.skeleton-loader');
+        if (skeleton) skeleton.remove();
+
+        if (orders.length === 0) {
+            historyList.innerHTML = `
+                <div class="purchase-history-empty">
+                    <i class="fas fa-receipt"></i>
+                    <h4>No Purchase History</h4>
+                    <p>You haven't made any purchases yet.</p>
+                    <button class="btn btn-secondary" onclick="window.location.href='store.html'">
+                        <i class="fas fa-store"></i> Browse Store
+                    </button>
+                </div>
+            `;
+            return;
+        }
+
+        // Render orders (only completed ones)
+        const completedOrders = orders.filter(o => o.status === 'completed');
+
+        if (completedOrders.length === 0) {
+            historyList.innerHTML = `
+                <div class="purchase-history-empty">
+                    <i class="fas fa-receipt"></i>
+                    <h4>No Completed Orders</h4>
+                    <p>Your completed orders will appear here.</p>
+                    <button class="btn btn-secondary" onclick="window.location.href='store.html'">
+                        <i class="fas fa-store"></i> Browse Store
+                    </button>
+                </div>
+            `;
+            return;
+        }
+
+        historyList.innerHTML = completedOrders.map(order => {
+            const itemsHtml = (order.items || []).map(item => `
+                <div class="purchase-item-row">
+                    <span class="purchase-item-name">${escapeHtml(item.product_name)}</span>
+                    <span class="purchase-item-price">$${parseFloat(item.price).toFixed(2)}</span>
+                </div>
+            `).join('');
+
+            return `
+                <div class="purchase-history-item">
+                    <div class="purchase-header">
+                        <span class="purchase-order-number">Order #${escapeHtml(order.order_number)}</span>
+                        <div class="purchase-meta">
+                            <span><i class="fas fa-calendar"></i> ${formatDate(order.created_at)}</span>
+                            <span><i class="fas fa-dollar-sign"></i> $${parseFloat(order.total).toFixed(2)}</span>
+                        </div>
+                    </div>
+                    <div class="purchase-items">
+                        ${itemsHtml}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+    } catch (error) {
+        console.error('Error loading purchase history:', error);
+        const skeleton = historyList.querySelector('.skeleton-loader');
+        if (skeleton) skeleton.remove();
+
+        historyList.innerHTML = `
+            <div class="purchase-history-empty">
+                <i class="fas fa-exclamation-circle" style="color: var(--error-color);"></i>
+                <h4>Unable to Load History</h4>
+                <p>There was an error loading your purchase history.</p>
+                <button class="btn btn-secondary" onclick="loadPurchaseHistory()">
+                    <i class="fas fa-redo"></i> Retry
+                </button>
+            </div>
+        `;
+    }
 }
 
 // Admin User Management Functions

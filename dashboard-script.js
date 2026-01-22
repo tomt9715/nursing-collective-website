@@ -134,6 +134,12 @@ async function loadUserProfile() {
             adminBadgeEl.innerHTML = '<i class="fas fa-crown"></i> Admin';
         }
 
+        // Show admin panel button for admin users
+        const adminPanelBtn = document.getElementById('admin-panel-btn');
+        if (adminPanelBtn && user.is_admin) {
+            adminPanelBtn.style.display = 'flex';
+        }
+
         if (premiumBadgeEl && user.is_premium) {
             premiumBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
             premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';

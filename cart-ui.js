@@ -55,8 +55,21 @@ class CartUI {
                 <!-- Items rendered dynamically -->
             </div>
             <div class="cart-drawer-footer">
+                <div class="cart-discount-section" id="cart-discount-section" style="display: none;">
+                    <div class="cart-original-price">
+                        <span>Original Price</span>
+                        <span id="cart-original-price">$0.00</span>
+                    </div>
+                    <div class="cart-savings">
+                        <span><i class="fas fa-tag"></i> Bundle Discount</span>
+                        <span id="cart-savings" class="savings-amount">-$0.00</span>
+                    </div>
+                </div>
+                <div class="cart-progress-section" id="cart-progress-section">
+                    <!-- Progress bars rendered dynamically -->
+                </div>
                 <div class="cart-subtotal">
-                    <span class="cart-subtotal-label">Subtotal</span>
+                    <span class="cart-subtotal-label">Total</span>
                     <span class="cart-subtotal-value" id="cart-subtotal">$0.00</span>
                 </div>
                 <button class="cart-checkout-btn" id="cart-checkout-btn">
@@ -172,6 +185,9 @@ class CartUI {
         const container = document.getElementById('cart-items-container');
         const subtotalEl = document.getElementById('cart-subtotal');
         const checkoutBtn = document.getElementById('cart-checkout-btn');
+        const discountSection = document.getElementById('cart-discount-section');
+        const originalPriceEl = document.getElementById('cart-original-price');
+        const savingsEl = document.getElementById('cart-savings');
 
         if (!container) return;
 
@@ -190,9 +206,32 @@ class CartUI {
             `;
             subtotalEl.textContent = '$0.00';
             checkoutBtn.disabled = true;
+            if (discountSection) discountSection.style.display = 'none';
+            const progressSection = document.getElementById('cart-progress-section');
+            if (progressSection) progressSection.innerHTML = '';
         } else {
             container.innerHTML = items.map(item => this.renderCartItem(item)).join('');
-            subtotalEl.textContent = `$${(cart.subtotal || 0).toFixed(2)}`;
+
+            // Calculate discount info
+            const discountInfo = cartManager.getDiscountInfo();
+
+            if (discountInfo.hasDiscount) {
+                // Show discount breakdown
+                if (discountSection) {
+                    discountSection.style.display = 'block';
+                    originalPriceEl.textContent = `$${discountInfo.originalSubtotal.toFixed(2)}`;
+                    savingsEl.textContent = `-$${discountInfo.totalDiscount.toFixed(2)}`;
+                }
+                subtotalEl.textContent = `$${discountInfo.discountedSubtotal.toFixed(2)}`;
+            } else {
+                // No discount - hide discount section
+                if (discountSection) discountSection.style.display = 'none';
+                subtotalEl.textContent = `$${discountInfo.originalSubtotal.toFixed(2)}`;
+            }
+
+            // Render discount progress bars
+            this.renderProgressBars(discountInfo);
+
             checkoutBtn.disabled = false;
 
             // Add remove button listeners
@@ -311,6 +350,135 @@ class CartUI {
                 badge.classList.remove('empty');
             }
         });
+    }
+
+    /**
+     * Render discount progress bars
+     * @param {object} discountInfo - Discount info from cartManager
+     */
+    renderProgressBars(discountInfo) {
+        const progressSection = document.getElementById('cart-progress-section');
+        if (!progressSection) return;
+
+        const currentCount = discountInfo.individualGuideCount;
+        const tiers = CartManager.BULK_DISCOUNT_TIERS.slice().reverse(); // 3, 5, 10
+
+        let html = '';
+
+        // Find which tier we're working towards or have achieved
+        let previousTierQty = 0;
+
+        for (let i = 0; i < tiers.length; i++) {
+            const tier = tiers[i];
+            const nextTier = tiers[i + 1];
+
+            if (currentCount >= tier.min_qty) {
+                // Already achieved this tier
+                if (nextTier) {
+                    // Show current tier unlocked + progress to next tier
+                    const progress = ((currentCount - tier.min_qty) / (nextTier.min_qty - tier.min_qty)) * 100;
+                    const remaining = nextTier.min_qty - currentCount;
+                    html = this.createProgressBarWithCurrentTier(
+                        Math.min(progress, 100),
+                        remaining,
+                        nextTier.min_qty,
+                        nextTier.savings_label,
+                        tier.min_qty,
+                        tier.savings_label
+                    );
+                } else {
+                    // At max tier - show completed state
+                    html = this.createCompletedBar();
+                }
+                break;
+            } else if (currentCount > previousTierQty || i === 0) {
+                // Working towards this tier
+                const startFrom = previousTierQty;
+                const progress = startFrom === 0
+                    ? (currentCount / tier.min_qty) * 100
+                    : ((currentCount - startFrom) / (tier.min_qty - startFrom)) * 100;
+                const remaining = tier.min_qty - currentCount;
+                html = this.createProgressBar(
+                    Math.max(0, Math.min(progress, 100)),
+                    remaining,
+                    tier.min_qty,
+                    tier.savings_label,
+                    currentCount === 0
+                );
+                break;
+            }
+
+            previousTierQty = tier.min_qty;
+        }
+
+        progressSection.innerHTML = html;
+    }
+
+    /**
+     * Create a progress bar HTML (no current tier unlocked yet)
+     */
+    createProgressBar(progress, remaining, tierQty, savingsLabel, isEmpty) {
+        const message = isEmpty
+            ? `Add ${remaining} guides to unlock bundle pricing!`
+            : `${remaining} more guide${remaining !== 1 ? 's' : ''} for ${tierQty}-pack deal!`;
+
+        return `
+            <div class="cart-discount-progress">
+                <div class="progress-header">
+                    <span class="progress-message">
+                        <i class="fas fa-gift"></i> ${message}
+                    </span>
+                    <span class="progress-savings">${savingsLabel}</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: ${progress}%"></div>
+                </div>
+                <div class="progress-tiers">
+                    <span class="tier-label">${tierQty}-pack: $${tierQty === 3 ? '15' : tierQty === 5 ? '25' : '50'}</span>
+                </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Create a progress bar showing current tier unlocked + progress to next
+     */
+    createProgressBarWithCurrentTier(progress, remaining, nextTierQty, nextSavingsLabel, currentTierQty, currentSavingsLabel) {
+        return `
+            <div class="cart-discount-progress has-current-tier">
+                <div class="current-tier-badge">
+                    <i class="fas fa-check-circle"></i> ${currentTierQty}-pack unlocked! (${currentSavingsLabel})
+                </div>
+                <div class="progress-header">
+                    <span class="progress-message">
+                        <i class="fas fa-arrow-up"></i> ${remaining} more for ${nextTierQty}-pack!
+                    </span>
+                    <span class="progress-savings">${nextSavingsLabel}</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: ${progress}%"></div>
+                </div>
+            </div>
+        `;
+    }
+
+    /**
+     * Create completed max tier bar
+     */
+    createCompletedBar() {
+        return `
+            <div class="cart-discount-progress completed">
+                <div class="progress-header">
+                    <span class="progress-message">
+                        <i class="fas fa-check-circle"></i> Max bundle discount unlocked!
+                    </span>
+                    <span class="progress-savings">Save $9.90</span>
+                </div>
+                <div class="progress-bar-container">
+                    <div class="progress-bar-fill" style="width: 100%"></div>
+                </div>
+            </div>
+        `;
     }
 
     /**

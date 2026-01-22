@@ -196,6 +196,8 @@ function displayCartItems() {
 
     cartItems.forEach(item => {
         const typeLabel = getTypeLabel(item.product_type);
+        const quantity = item.quantity || 1;
+        const itemTotal = parseFloat(item.price) * quantity;
         html += `
             <div class="checkout-item">
                 <div class="checkout-item-icon">
@@ -203,9 +205,9 @@ function displayCartItems() {
                 </div>
                 <div class="checkout-item-details">
                     <div class="checkout-item-name">${escapeHtml(item.product_name)}</div>
-                    <div class="checkout-item-type">${typeLabel}</div>
+                    <div class="checkout-item-type">${typeLabel}${quantity > 1 ? ` × ${quantity}` : ''}</div>
                 </div>
-                <div class="checkout-item-price">$${parseFloat(item.price).toFixed(2)}</div>
+                <div class="checkout-item-price">$${itemTotal.toFixed(2)}</div>
             </div>
         `;
     });
@@ -213,20 +215,120 @@ function displayCartItems() {
     html += '</div>';
 
     // Add item count summary
+    const totalItems = cartItems.reduce((sum, item) => sum + (item.quantity || 1), 0);
     html += `
         <div class="checkout-item-count" style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary);">
-            ${cartItems.length} item${cartItems.length !== 1 ? 's' : ''} in your order
+            ${totalItems} item${totalItems !== 1 ? 's' : ''} in your order
         </div>
     `;
 
     productDetailsEl.innerHTML = html;
 
-    // Update totals
-    subtotalEl.textContent = `$${cartSubtotal.toFixed(2)}`;
-    totalEl.textContent = `$${cartSubtotal.toFixed(2)}`;
+    // Calculate discounts using cartManager
+    const discountInfo = cartManager.getDiscountInfo();
+
+    // Update the order totals section with discount info
+    updateOrderTotals(discountInfo);
 
     // Add inline styles for checkout items
     addCheckoutItemStyles();
+}
+
+/**
+ * Update order totals section to show discounts
+ */
+function updateOrderTotals(discountInfo) {
+    const orderTotalEl = document.querySelector('.order-total');
+    if (!orderTotalEl) return;
+
+    let html = '';
+
+    if (discountInfo.hasDiscount) {
+        // Show original price with strikethrough
+        html += `
+            <div class="total-row" style="color: var(--text-secondary);">
+                <span>Original Price</span>
+                <span style="text-decoration: line-through;">$${discountInfo.originalSubtotal.toFixed(2)}</span>
+            </div>
+            <div class="total-row discount-row" style="color: #10b981; font-weight: 600;">
+                <span><i class="fas fa-tag" style="margin-right: 6px;"></i>Bundle Discount</span>
+                <span>-$${discountInfo.totalDiscount.toFixed(2)}</span>
+            </div>
+        `;
+    } else {
+        // Regular subtotal
+        html += `
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span id="subtotal">$${discountInfo.originalSubtotal.toFixed(2)}</span>
+            </div>
+        `;
+    }
+
+    // Final total
+    const finalTotal = discountInfo.hasDiscount ? discountInfo.discountedSubtotal : discountInfo.originalSubtotal;
+    html += `
+        <div class="total-row total-final">
+            <span>Total</span>
+            <span id="total">$${finalTotal.toFixed(2)}</span>
+        </div>
+    `;
+
+    // Show savings message or progress bar
+    if (discountInfo.hasDiscount) {
+        html += `
+            <div class="checkout-savings-message" style="
+                background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+                border: 1px solid rgba(16, 185, 129, 0.2);
+                border-radius: 8px;
+                padding: 12px;
+                margin-top: 16px;
+                text-align: center;
+            ">
+                <i class="fas fa-check-circle" style="color: #10b981; margin-right: 6px;"></i>
+                <span style="color: #10b981; font-weight: 600;">
+                    You're saving $${discountInfo.totalDiscount.toFixed(2)} with our bundle deal!
+                </span>
+            </div>
+        `;
+    } else if (discountInfo.nextTierInfo && discountInfo.individualGuideCount > 0) {
+        // Show progress bar for users close to a discount
+        const tier = discountInfo.nextTierInfo.tier;
+        const remaining = discountInfo.nextTierInfo.guidesNeeded;
+        const progress = (discountInfo.individualGuideCount / tier.min_qty) * 100;
+        html += `
+            <div class="checkout-upsell" style="
+                background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(99, 102, 241, 0.03));
+                border: 1px solid rgba(99, 102, 241, 0.2);
+                border-radius: 8px;
+                padding: 14px;
+                margin-top: 16px;
+            ">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <span style="font-size: 0.85rem; font-weight: 600; color: #6366f1;">
+                        <i class="fas fa-gift" style="margin-right: 6px;"></i>
+                        ${remaining} more guide${remaining !== 1 ? 's' : ''} for ${tier.min_qty}-pack deal!
+                    </span>
+                    <span style="font-size: 0.8rem; font-weight: 700; color: #10b981; background: rgba(16, 185, 129, 0.1); padding: 3px 8px; border-radius: 12px;">
+                        ${tier.savings_label}
+                    </span>
+                </div>
+                <div style="height: 6px; background: rgba(99, 102, 241, 0.15); border-radius: 3px; overflow: hidden;">
+                    <div style="width: ${progress}%; height: 100%; background: linear-gradient(90deg, #6366f1, #8b5cf6); border-radius: 3px;"></div>
+                </div>
+                <div style="text-align: right; margin-top: 6px;">
+                    <a href="store.html" style="font-size: 0.75rem; color: #6366f1; text-decoration: none;">
+                        <i class="fas fa-plus" style="margin-right: 4px;"></i>Add more guides
+                    </a>
+                </div>
+            </div>
+        `;
+    }
+
+    orderTotalEl.innerHTML = html;
+
+    // Store the final total for checkout
+    cartSubtotal = finalTotal;
 }
 
 /**
@@ -410,7 +512,8 @@ async function initEmbeddedCheckoutForGuest() {
                 product_id: item.product_id,
                 product_name: item.product_name,
                 product_type: item.product_type,
-                price: item.price
+                price: item.price,
+                quantity: item.quantity || 1
             }))
         };
 

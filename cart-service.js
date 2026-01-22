@@ -126,6 +126,117 @@ class CartManager {
     }
 
     /**
+     * Bulk discount tiers for individual guides
+     * Must match backend products.py BULK_DISCOUNT_TIERS
+     */
+    static BULK_DISCOUNT_TIERS = [
+        { min_qty: 10, total_price: 50.00, per_item: 5.00, savings_label: 'Save $9.90' },
+        { min_qty: 5, total_price: 25.00, per_item: 5.00, savings_label: 'Save $4.95' },
+        { min_qty: 3, total_price: 15.00, per_item: 5.00, savings_label: 'Save $2.97' },
+    ];
+
+    static INDIVIDUAL_GUIDE_PRICE = 5.99;
+
+    /**
+     * Calculate bulk discount for individual guides
+     * @param {number} individualGuideCount - Total number of individual guides
+     * @returns {object} - Discount info
+     */
+    calculateBulkDiscount(individualGuideCount) {
+        const originalTotal = individualGuideCount * CartManager.INDIVIDUAL_GUIDE_PRICE;
+
+        // Find the best applicable tier (highest quantity that applies)
+        let tierApplied = null;
+        for (const tier of CartManager.BULK_DISCOUNT_TIERS) {
+            if (individualGuideCount >= tier.min_qty) {
+                tierApplied = tier;
+                break;
+            }
+        }
+
+        if (tierApplied) {
+            const discountedTotal = tierApplied.total_price;
+            const discountAmount = originalTotal - discountedTotal;
+            const perItemPrice = tierApplied.per_item;
+
+            return {
+                originalTotal: Math.round(originalTotal * 100) / 100,
+                discountedTotal: Math.round(discountedTotal * 100) / 100,
+                discountAmount: Math.round(discountAmount * 100) / 100,
+                tierApplied: tierApplied,
+                perItemPrice: Math.round(perItemPrice * 100) / 100,
+                guideCount: individualGuideCount,
+                savingsLabel: tierApplied.savings_label
+            };
+        }
+
+        return {
+            originalTotal: Math.round(originalTotal * 100) / 100,
+            discountedTotal: Math.round(originalTotal * 100) / 100,
+            discountAmount: 0,
+            tierApplied: null,
+            perItemPrice: CartManager.INDIVIDUAL_GUIDE_PRICE,
+            guideCount: individualGuideCount,
+            savingsLabel: null
+        };
+    }
+
+    /**
+     * Get discount info for the current cart
+     * @returns {object} - Discount details for the cart
+     */
+    getDiscountInfo() {
+        const items = this.cart.items || [];
+
+        // Count individual guides (by total quantity)
+        let individualGuideCount = 0;
+        let otherItemsTotal = 0;
+
+        for (const item of items) {
+            const quantity = item.quantity || 1;
+            if (item.product_type === 'individual') {
+                individualGuideCount += quantity;
+            } else {
+                otherItemsTotal += (parseFloat(item.price) || 0) * quantity;
+            }
+        }
+
+        const bulkDiscount = this.calculateBulkDiscount(individualGuideCount);
+
+        return {
+            individualGuideCount,
+            bulkDiscount,
+            otherItemsTotal,
+            originalSubtotal: bulkDiscount.originalTotal + otherItemsTotal,
+            discountedSubtotal: bulkDiscount.discountedTotal + otherItemsTotal,
+            totalDiscount: bulkDiscount.discountAmount,
+            hasDiscount: bulkDiscount.discountAmount > 0,
+            nextTierInfo: this.getNextTierInfo(individualGuideCount)
+        };
+    }
+
+    /**
+     * Get info about the next discount tier (for upsell messaging)
+     * @param {number} currentCount - Current number of individual guides
+     * @returns {object|null} - Next tier info or null
+     */
+    getNextTierInfo(currentCount) {
+        // Find the next tier that isn't yet reached
+        const tiers = CartManager.BULK_DISCOUNT_TIERS.slice().reverse(); // Start from lowest
+        for (const tier of tiers) {
+            if (currentCount < tier.min_qty) {
+                const needed = tier.min_qty - currentCount;
+                return {
+                    tier,
+                    guidesNeeded: needed,
+                    message: `Add ${needed} more guide${needed > 1 ? 's' : ''} to save with our ${tier.min_qty}-pack deal!`
+                };
+            }
+        }
+        return null; // Already at highest tier
+    }
+
+    /**
      * Add item to cart
      * @param {string} productId - Product ID
      * @param {string} productName - Product name

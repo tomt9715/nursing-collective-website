@@ -613,3 +613,174 @@
 .add-to-cart-btn.just-added:hover {
     background: #059669;
 }
+
+/* ============================================
+   BULK DISCOUNT DISPLAY
+   ============================================ */
+
+.cart-discount-section {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.03));
+    border: 1px solid rgba(16, 185, 129, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+}
+
+.cart-original-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.cart-original-price span:last-child {
+    text-decoration: line-through;
+    color: var(--text-light);
+}
+
+.cart-savings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #10b981;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.cart-savings i {
+    margin-right: 6px;
+}
+
+.savings-amount {
+    font-weight: 700;
+}
+
+/* ============================================
+   DISCOUNT PROGRESS BAR
+   ============================================ */
+
+.cart-progress-section {
+    margin-bottom: 16px;
+}
+
+.cart-discount-progress {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.08), rgba(99, 102, 241, 0.03));
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 10px;
+    padding: 14px 16px;
+}
+
+.cart-discount-progress.completed {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.03));
+    border-color: rgba(16, 185, 129, 0.3);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.progress-message {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6366f1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.cart-discount-progress.completed .progress-message {
+    color: #10b981;
+}
+
+.progress-savings {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #10b981;
+    background: rgba(16, 185, 129, 0.1);
+    padding: 3px 8px;
+    border-radius: 12px;
+}
+
+.progress-bar-container {
+    height: 8px;
+    background: rgba(99, 102, 241, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.cart-discount-progress.completed .progress-bar-container {
+    background: rgba(16, 185, 129, 0.15);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #8b5cf6);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+}
+
+.cart-discount-progress.completed .progress-bar-fill {
+    background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+.progress-tiers {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.tier-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+/* Current tier badge (when a tier is already unlocked) */
+.cart-discount-progress.has-current-tier {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(99, 102, 241, 0.06));
+    border-color: rgba(16, 185, 129, 0.25);
+}
+
+.current-tier-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #10b981;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(16, 185, 129, 0.3);
+}
+
+.current-tier-badge i {
+    font-size: 0.9rem;
+}
+
+.has-current-tier .progress-message i {
+    color: #8b5cf6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .cart-discount-section {
+        padding: 12px 14px;
+    }
+
+    .cart-discount-progress {
+        padding: 12px 14px;
+    }
+
+    .progress-message {
+        font-size: 0.8rem;
+    }
+
+    .progress-savings {
+        font-size: 0.75rem;
+        padding: 2px 6px;
+    }
+}

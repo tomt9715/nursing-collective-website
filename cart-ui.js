@@ -432,6 +432,9 @@ class CartUI {
         // Get tiers and ensure they're sorted highest to lowest by min_qty
         const tiers = [...CartManager.BULK_DISCOUNT_TIERS].sort((a, b) => b.min_qty - a.min_qty);
 
+        // Helper to format savings label from tier
+        const getSavingsLabel = (tier) => `Save $${tier.savings_per_bundle.toFixed(2)}`;
+
         let html = '';
 
         // Find which tier the user has achieved (check from highest to lowest)
@@ -449,9 +452,9 @@ class CartUI {
                         Math.min(progress, 100),
                         remaining,
                         nextHigherTier.min_qty,
-                        nextHigherTier.savings_label,
+                        getSavingsLabel(nextHigherTier),
                         tier.min_qty,
-                        tier.savings_label
+                        getSavingsLabel(tier)
                     );
                 } else {
                     // At max tier (10-pack) - show completed state
@@ -470,7 +473,7 @@ class CartUI {
                 Math.max(0, Math.min(progress, 100)),
                 remaining,
                 lowestTier.min_qty,
-                lowestTier.savings_label,
+                getSavingsLabel(lowestTier),
                 currentCount === 0
             );
         }

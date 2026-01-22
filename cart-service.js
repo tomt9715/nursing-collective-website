@@ -128,26 +128,33 @@ class CartManager {
     /**
      * Bulk discount tiers for individual guides
      * Must match backend products.py BULK_DISCOUNT_TIERS
+     * Tiers are fixed bundles - extra items beyond the tier are charged at full price
      */
     static BULK_DISCOUNT_TIERS = [
-        { min_qty: 10, total_price: 50.00, per_item: 5.00, savings_label: 'Save $9.90' },
-        { min_qty: 5, total_price: 25.00, per_item: 5.00, savings_label: 'Save $4.95' },
-        { min_qty: 3, total_price: 15.00, per_item: 5.00, savings_label: 'Save $2.97' },
+        { min_qty: 10, bundle_price: 50.00, savings_per_bundle: 9.90 },
+        { min_qty: 5, bundle_price: 25.00, savings_per_bundle: 4.95 },
+        { min_qty: 3, bundle_price: 15.00, savings_per_bundle: 2.97 },
     ];
 
     static INDIVIDUAL_GUIDE_PRICE = 5.99;
 
     /**
      * Calculate bulk discount for individual guides
+     * Tiers are fixed bundles: 3 for $15, 5 for $25, 10 for $50
+     * Extra items beyond a tier are charged at full price ($5.99)
+     * Example: 4 guides = $15 + $5.99 = $20.99
+     * Example: 7 guides = $25 + (2 × $5.99) = $36.98
+     * Example: 12 guides = $50 + (2 × $5.99) = $61.98
      * @param {number} individualGuideCount - Total number of individual guides
      * @returns {object} - Discount info
      */
     calculateBulkDiscount(individualGuideCount) {
         const originalTotal = individualGuideCount * CartManager.INDIVIDUAL_GUIDE_PRICE;
+        const tiers = CartManager.BULK_DISCOUNT_TIERS; // [10, 5, 3] - highest to lowest
 
         // Find the best applicable tier (highest quantity that applies)
         let tierApplied = null;
-        for (const tier of CartManager.BULK_DISCOUNT_TIERS) {
+        for (const tier of tiers) {
             if (individualGuideCount >= tier.min_qty) {
                 tierApplied = tier;
                 break;
@@ -155,18 +162,24 @@ class CartManager {
         }
 
         if (tierApplied) {
-            const discountedTotal = tierApplied.total_price;
+            // Calculate: tier bundle price + (extra items × full price)
+            const extraItems = individualGuideCount - tierApplied.min_qty;
+            const discountedTotal = tierApplied.bundle_price + (extraItems * CartManager.INDIVIDUAL_GUIDE_PRICE);
             const discountAmount = originalTotal - discountedTotal;
-            const perItemPrice = tierApplied.per_item;
+
+            // Calculate effective per-item price for display
+            const effectivePerItem = discountedTotal / individualGuideCount;
 
             return {
                 originalTotal: Math.round(originalTotal * 100) / 100,
                 discountedTotal: Math.round(discountedTotal * 100) / 100,
                 discountAmount: Math.round(discountAmount * 100) / 100,
                 tierApplied: tierApplied,
-                perItemPrice: Math.round(perItemPrice * 100) / 100,
+                perItemPrice: Math.round(effectivePerItem * 100) / 100,
                 guideCount: individualGuideCount,
-                savingsLabel: tierApplied.savings_label
+                savingsLabel: `Save $${tierApplied.savings_per_bundle.toFixed(2)}`,
+                bundleQty: tierApplied.min_qty,
+                extraItems: extraItems
             };
         }
 
@@ -177,7 +190,9 @@ class CartManager {
             tierApplied: null,
             perItemPrice: CartManager.INDIVIDUAL_GUIDE_PRICE,
             guideCount: individualGuideCount,
-            savingsLabel: null
+            savingsLabel: null,
+            bundleQty: 0,
+            extraItems: 0
         };
     }
 
@@ -222,14 +237,18 @@ class CartManager {
      */
     getNextTierInfo(currentCount) {
         // Find the next tier that isn't yet reached
-        const tiers = CartManager.BULK_DISCOUNT_TIERS.slice().reverse(); // Start from lowest
+        const tiers = CartManager.BULK_DISCOUNT_TIERS.slice().reverse(); // Start from lowest [3, 5, 10]
         for (const tier of tiers) {
             if (currentCount < tier.min_qty) {
                 const needed = tier.min_qty - currentCount;
                 return {
-                    tier,
+                    tier: {
+                        min_qty: tier.min_qty,
+                        bundle_price: tier.bundle_price,
+                        savings_label: `Save $${tier.savings_per_bundle.toFixed(2)}`
+                    },
                     guidesNeeded: needed,
-                    message: `Add ${needed} more guide${needed > 1 ? 's' : ''} to save with our ${tier.min_qty}-pack deal!`
+                    message: `Add ${needed} more guide${needed > 1 ? 's' : ''} to get ${tier.min_qty} for $${tier.bundle_price}!`
                 };
             }
         }

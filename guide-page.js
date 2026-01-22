@@ -139,13 +139,35 @@ const productCatalog = {
     'hip-knee-replacement': { name: 'Hip & Knee Replacement Guide', category: 'med-surg', price: 5.99 },
     'osteoporosis': { name: 'Osteoporosis Guide', category: 'med-surg', price: 5.99 },
     'amputation-care': { name: 'Amputation Care Guide', category: 'med-surg', price: 5.99 },
-    // Mental Health
+    // Mental Health (only items in store)
     'eating-disorders': { name: 'Eating Disorders Guide', category: 'mental-health', price: 5.99 },
     'depression-anxiety': { name: 'Depression & Anxiety Guide', category: 'mental-health', price: 5.99 },
-    'schizophrenia': { name: 'Schizophrenia Guide', category: 'mental-health', price: 5.99 },
-    'bipolar-disorder': { name: 'Bipolar Disorder Guide', category: 'mental-health', price: 5.99 },
+    'crisis-intervention': { name: 'Crisis Intervention Guide', category: 'mental-health', price: 5.99 },
+    'therapeutic-communication': { name: 'Therapeutic Communication Guide', category: 'mental-health', price: 5.99 },
     'substance-abuse': { name: 'Substance Abuse Guide', category: 'mental-health', price: 5.99 },
-    'ptsd-trauma': { name: 'PTSD & Trauma Guide', category: 'mental-health', price: 5.99 },
+    // Pharmacology
+    'cardiac-medications': { name: 'Cardiac Medications Guide', category: 'pharmacology', price: 5.99 },
+    'antibiotics-antivirals': { name: 'Antibiotics & Antivirals Guide', category: 'pharmacology', price: 5.99 },
+    'pain-management': { name: 'Pain Management Guide', category: 'pharmacology', price: 5.99 },
+    'iv-medications': { name: 'IV Medications Guide', category: 'pharmacology', price: 5.99 },
+    'psychotropic-medications': { name: 'Psychotropic Medications Guide', category: 'pharmacology', price: 5.99 },
+    'emergency-medications': { name: 'Emergency Medications Guide', category: 'pharmacology', price: 5.99 },
+    // Fundamentals
+    'assessment-skills': { name: 'Assessment Skills Guide', category: 'fundamentals', price: 5.99 },
+    'infection-control': { name: 'Infection Control Guide', category: 'fundamentals', price: 5.99 },
+    'documentation-charting': { name: 'Documentation & Charting Guide', category: 'fundamentals', price: 5.99 },
+    'patient-safety': { name: 'Patient Safety Guide', category: 'fundamentals', price: 5.99 },
+    'mobility-transfers': { name: 'Mobility & Transfers Guide', category: 'fundamentals', price: 5.99 },
+    // Maternity
+    'labor-delivery': { name: 'Labor & Delivery Guide', category: 'maternity', price: 5.99 },
+    'postpartum-care': { name: 'Postpartum Care Guide', category: 'maternity', price: 5.99 },
+    'high-risk-pregnancy': { name: 'High-Risk Pregnancy Guide', category: 'maternity', price: 5.99 },
+    'antepartum-care': { name: 'Antepartum Care Guide', category: 'maternity', price: 5.99 },
+    // Pediatrics
+    'growth-development': { name: 'Growth & Development Guide', category: 'pediatrics', price: 5.99 },
+    'pediatric-emergencies': { name: 'Pediatric Emergencies Guide', category: 'pediatrics', price: 5.99 },
+    'infant-care': { name: 'Infant Care Guide', category: 'pediatrics', price: 5.99 },
+    'adolescent-health': { name: 'Adolescent Health Guide', category: 'pediatrics', price: 5.99 },
     // Legacy free guides
     'electrolytes': { name: 'Electrolyte Management Guide', category: 'lab-values', price: 5.99 },
     'vital-signs': { name: 'Vital Signs Assessment Guide', category: 'clinical-skills', price: 5.99 },
@@ -680,13 +702,8 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
             'hip-knee-replacement': 'prothesis.png',
             'osteoporosis': 'osteoporosis.png',
             'amputation-care': 'amputation.png',
-            // Mental Health
-            'eating-disorders': 'eating-disorder.png',
-            'depression-anxiety': 'depression.png',
-            'schizophrenia': 'schizophrenia.png',
-            'bipolar-disorder': 'bipolar.png',
-            'substance-abuse': 'drugs.png',
-            'ptsd-trauma': 'ptsd.png'
+            // Mental Health (only eating-disorders has icon currently)
+            'eating-disorders': 'eating-disorder.png'
         };
         const iconFile = iconMap[productId];
         return iconFile ? `assets/images/guide-icons/${iconFile}` : null;
@@ -695,12 +712,12 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
     // Get a short description for the guide
     const getGuideDesc = (guideId) => {
         const descMap = {
+            // Mental Health
             'depression-anxiety': 'Assessment, interventions, and therapeutic communication for mood disorders.',
-            'schizophrenia': 'Positive/negative symptoms, antipsychotics, and safety interventions.',
-            'bipolar-disorder': 'Mood stabilizers, mania vs depression phases, and nursing care.',
             'substance-abuse': 'Withdrawal protocols, detox nursing care, and patient education.',
-            'ptsd-trauma': 'Trauma-informed care, therapeutic interventions, and crisis management.',
-            'eating-disorders': 'Anorexia, bulimia, and binge eating interventions.'
+            'eating-disorders': 'Anorexia, bulimia, and binge eating interventions.',
+            'crisis-intervention': 'De-escalation techniques, safety protocols, and emergency interventions.',
+            'therapeutic-communication': 'Effective communication strategies for psychiatric nursing care.'
         };
         return descMap[guideId] || 'Comprehensive nursing study guide with clinical applications.';
     };

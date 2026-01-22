@@ -1553,6 +1553,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 20px;
+    align-items: stretch;
 }
 
 .guides-grid-enhanced.view-grid .guide-card-enhanced {
@@ -1574,6 +1575,9 @@
     border: 2px solid transparent;
     transition: all 0.3s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .guide-card-enhanced:hover {
@@ -1654,6 +1658,9 @@
 /* Card Body */
 .guide-card-body {
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .guide-card-title-row {
@@ -1746,6 +1753,11 @@
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+/* Flex spacer to push meta row and actions to bottom */
+.guide-card-body .guide-preview {
+    flex: 1;
 }
 
 /* Guide Meta Info */

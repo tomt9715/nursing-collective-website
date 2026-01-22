@@ -252,12 +252,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     card.style.display = 'block';
                 });
             }
-
-            // Scroll to top of content
-            const storeContent = document.querySelector('.store-content');
-            if (storeContent) {
-                storeContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
         });
     });
 
@@ -297,7 +291,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show/hide subcategory chips based on filter
             if (subcategoryChips) {
                 if (filter === 'med-surg' && currentShopType === 'guides') {
-                    subcategoryChips.style.display = 'flex';
+                    subcategoryChips.style.setProperty('display', 'flex', 'important');
                     subcategoryChips.classList.add('visible');
                 } else {
                     subcategoryChips.style.display = 'none';
@@ -347,11 +341,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
 
-            // Scroll to top of content
-            const storeContent = document.querySelector('.store-content');
-            if (storeContent && filter !== 'all') {
-                storeContent.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
         });
     });
 });

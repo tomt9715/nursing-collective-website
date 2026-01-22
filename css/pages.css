@@ -2835,7 +2835,7 @@
 
 /* Breadcrumb - needs padding for fixed navbar (navbar is 95px) */
 .guide-breadcrumb {
-    padding-top: 100px;
+    padding-top: 115px;
     background: linear-gradient(135deg, #2E86AB 0%, #236b8a 100%);
 }
 

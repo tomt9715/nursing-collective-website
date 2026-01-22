@@ -630,6 +630,36 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
         sectionTitle.textContent = `More ${categoryDisplayNames[category] || category} Guides`;
     }
 
+    // Get icon for guide based on category
+    const getGuideIcon = (guideCategory) => {
+        const iconMap = {
+            'mental-health': 'assets/images/guide-icons/mental-health.png',
+            'med-surg': 'assets/images/guide-icons/med-surg.png',
+            'pharmacology': 'assets/images/guide-icons/pharmacology.png',
+            'fundamentals': 'assets/images/guide-icons/fundamentals.png',
+            'maternity': 'assets/images/guide-icons/maternity.png',
+            'pediatrics': 'assets/images/guide-icons/pediatrics.png',
+            'lab-values': 'assets/images/guide-icons/lab-values.png',
+            'clinical-skills': 'assets/images/guide-icons/clinical-skills.png',
+            'safety': 'assets/images/guide-icons/safety.png',
+            'medications': 'assets/images/guide-icons/medications.png'
+        };
+        return iconMap[guideCategory] || 'assets/images/guide-icons/default.png';
+    };
+
+    // Get a short description for the guide
+    const getGuideDesc = (guideId) => {
+        const descMap = {
+            'depression-anxiety': 'Assessment, interventions, and therapeutic communication for mood disorders.',
+            'schizophrenia': 'Positive/negative symptoms, antipsychotics, and safety interventions.',
+            'bipolar-disorder': 'Mood stabilizers, mania vs depression phases, and nursing care.',
+            'substance-abuse': 'Withdrawal protocols, detox nursing care, and patient education.',
+            'ptsd-trauma': 'Trauma-informed care, therapeutic interventions, and crisis management.',
+            'eating-disorders': 'Anorexia, bulimia, and binge eating interventions.'
+        };
+        return descMap[guideId] || 'Comprehensive nursing study guide with clinical applications.';
+    };
+
     // Render carousel
     container.innerHTML = `
         <div class="related-guides-carousel">
@@ -639,17 +669,31 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
             <div class="carousel-track">
                 ${relatedGuides.map(([guideId, product]) => {
                     const isOwned = purchasedGuides.includes(guideId);
+                    const categoryClass = product.category || 'default';
+                    const categoryName = categoryDisplayNames[product.category] || product.category || 'Study Guide';
                     return `
                         <div class="related-guide-card ${isOwned ? 'owned' : ''}">
                             <div class="related-guide-header">
-                                <span class="related-guide-price">${isOwned ? '<i class="fas fa-check"></i> Owned' : '$' + product.price.toFixed(2)}</span>
-                            </div>
-                            <h4>${product.name}</h4>
-                            <div class="related-guide-actions">
                                 ${isOwned
-                                    ? `<a href="guide.html?id=${guideId}" class="btn-view-guide"><i class="fas fa-book-open"></i> View Guide</a>`
-                                    : `<a href="store.html?highlight=${guideId}" class="btn-purchase-guide"><i class="fas fa-cart-plus"></i> Add to Cart</a>`
+                                    ? `<span class="related-owned-badge"><i class="fas fa-check"></i> OWNED</span>`
+                                    : `<span class="related-price-badge">$${product.price.toFixed(2)}</span>`
                                 }
+                                <div class="related-guide-icon">
+                                    <img src="${getGuideIcon(product.category)}" alt="${categoryName}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\\'fas fa-book-medical\\' style=\\'font-size: 28px; color: white;\\'></i>';">
+                                </div>
+                            </div>
+                            <div class="related-guide-body">
+                                <div class="related-guide-title-row">
+                                    <h4>${product.name}</h4>
+                                    <span class="category-badge ${categoryClass}">${categoryName}</span>
+                                </div>
+                                <p class="related-guide-desc">${getGuideDesc(guideId)}</p>
+                                <div class="related-guide-actions">
+                                    ${isOwned
+                                        ? `<a href="guide.html?id=${guideId}" class="btn-view-guide"><i class="fas fa-book-reader"></i> Continue Studying</a>`
+                                        : `<a href="store.html?highlight=${guideId}" class="btn-purchase-guide"><i class="fas fa-cart-plus"></i> Add to Cart</a>`
+                                    }
+                                </div>
                             </div>
                         </div>
                     `;
@@ -669,7 +713,7 @@ function scrollRelatedGuides(direction) {
     const track = document.querySelector('.carousel-track');
     if (!track) return;
 
-    const cardWidth = 280; // card width + gap
+    const cardWidth = 320; // card width + gap
     track.scrollBy({
         left: direction * cardWidth * 2,
         behavior: 'smooth'

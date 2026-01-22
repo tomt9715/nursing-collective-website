@@ -3146,97 +3146,204 @@
     border-color: var(--primary-color);
 }
 
+/* Related Guide Card - Styled like Dashboard Cards */
 .related-guide-card {
     flex-shrink: 0;
-    width: 260px;
+    width: 300px;
     background: var(--background-light);
-    border-radius: 12px;
-    padding: 20px;
+    border-radius: 16px;
+    overflow: hidden;
     border: 2px solid transparent;
     transition: all 0.3s ease;
+    position: relative;
 }
 
 .related-guide-card:hover {
     border-color: var(--primary-color);
     transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
 .related-guide-card.owned {
     border-color: #10b981;
-    background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(16, 185, 129, 0.1));
 }
 
+/* Card Header with Gradient */
 .related-guide-header {
-    margin-bottom: 12px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: relative;
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.related-guide-price {
-    display: inline-block;
-    padding: 4px 10px;
+.related-guide-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+}
+
+.related-guide-icon img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+}
+
+/* Owned Badge */
+.related-owned-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    background: rgba(16, 185, 129, 0.9);
+    backdrop-filter: blur(10px);
+    color: white;
     border-radius: 20px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+/* Price Badge (for not owned) */
+.related-price-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 10px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.75rem;
     font-weight: 600;
 }
 
-.related-guide-card:not(.owned) .related-guide-price {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+/* Card Body */
+.related-guide-body {
+    padding: 16px 20px 20px;
 }
 
-.related-guide-card.owned .related-guide-price {
-    background: #10b981;
-    color: white;
+.related-guide-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
 }
 
 .related-guide-card h4 {
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin: 0 0 16px 0;
+    margin: 0;
     line-height: 1.4;
-    min-height: 44px;
+    flex: 1;
 }
 
+/* Category Badge in Related Cards */
+.related-guide-card .category-badge {
+    flex-shrink: 0;
+}
+
+/* Description */
+.related-guide-desc {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 14px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    min-height: 42px;
+}
+
+/* Card Actions */
 .related-guide-actions {
     display: flex;
-    gap: 8px;
+    align-items: center;
+    gap: 10px;
 }
 
-.btn-view-guide,
+.btn-view-guide {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-view-guide:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(46, 134, 171, 0.4);
+    color: white;
+}
+
 .btn-purchase-guide {
     flex: 1;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 6px;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 0.85rem;
-    font-weight: 500;
+    gap: 8px;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
     text-decoration: none;
-    transition: all 0.2s ease;
-}
-
-.btn-view-guide {
-    background: #10b981;
-    color: white;
-}
-
-.btn-view-guide:hover {
-    background: #059669;
-    color: white;
-}
-
-.btn-purchase-guide {
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
+    transition: all 0.3s ease;
 }
 
 .btn-purchase-guide:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(46, 134, 171, 0.4);
+    box-shadow: 0 6px 20px rgba(46, 134, 171, 0.4);
     color: white;
+}
+
+.btn-download-related {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px 14px;
+    background: var(--background-light);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.btn-download-related:hover {
+    background: var(--card-bg);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 /* Dark mode for related guides */

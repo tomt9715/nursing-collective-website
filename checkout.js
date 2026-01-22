@@ -306,73 +306,59 @@ function getTypeLabel(type) {
 }
 
 /**
- * Setup embedded checkout - shows email input first, then initializes Stripe
+ * Setup embedded checkout - loads Stripe immediately for authenticated users,
+ * shows email field for guests with payment form visible
  */
-function setupEmbeddedCheckout() {
+async function setupEmbeddedCheckout() {
     const paymentElementContainer = document.getElementById('payment-element');
     const submitButton = document.getElementById('submit-button');
     const buttonText = document.getElementById('button-text');
+    const emailInput = document.getElementById('email');
 
-    // Show message that payment form will appear after email
+    // If user is authenticated, load checkout immediately
+    if (isUserAuthenticated && emailInput.value) {
+        await initEmbeddedCheckout(emailInput.value);
+        return;
+    }
+
+    // For guests, show loading state then load checkout with placeholder
     paymentElementContainer.innerHTML = `
-        <div id="checkout-container">
-            <div style="padding: 20px; text-align: center; color: var(--text-secondary); background: var(--background-light); border-radius: 12px;">
-                <i class="fas fa-credit-card" style="font-size: 2rem; margin-bottom: 12px; color: var(--primary-color);"></i>
-                <p style="margin-bottom: 8px;">Enter your email above, then click the button to load the secure payment form.</p>
-                <p style="font-size: 0.85rem;">Pay securely with credit/debit card, Apple Pay, or Google Pay.</p>
+        <div id="checkout-container" style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
+            <div style="text-align: center;">
+                <div class="spinner spinner-primary" style="margin-bottom: 12px;"></div>
+                <p style="color: var(--text-secondary);">Loading secure payment form...</p>
             </div>
         </div>
     `;
 
-    // Update button text
-    buttonText.textContent = 'Continue to Payment';
+    // Update button for guests
+    buttonText.textContent = 'Complete Purchase';
     submitButton.disabled = false;
+
+    // Load embedded checkout for guests (email will be collected before final submit)
+    await initEmbeddedCheckoutForGuest();
 }
 
 /**
- * Initialize the Stripe embedded checkout after email is provided
+ * Initialize the Stripe embedded checkout for authenticated users (with email)
  */
 async function initEmbeddedCheckout(email) {
     const submitButton = document.getElementById('submit-button');
-    const buttonText = document.getElementById('button-text');
-    const spinner = document.getElementById('button-spinner');
     const paymentElementContainer = document.getElementById('payment-element');
 
     try {
-        // Show loading state
-        paymentElementContainer.innerHTML = `
-            <div id="checkout-container" style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
-                <div style="text-align: center;">
-                    <div class="spinner spinner-primary" style="margin-bottom: 12px;"></div>
-                    <p style="color: var(--text-secondary);">Loading secure payment form...</p>
-                </div>
-            </div>
-        `;
-
-        // Prepare payload
+        // Prepare payload with email for authenticated users
         const payload = {
             email: email,
             return_url: `${window.location.origin}/success.html`
         };
-
-        // If guest (not authenticated), include cart items
-        if (!isUserAuthenticated) {
-            payload.items = cartItems.map(item => ({
-                product_id: item.product_id,
-                product_name: item.product_name,
-                product_type: item.product_type,
-                price: item.price
-            }));
-        }
 
         // Call checkout API to get client secret
         const response = await fetch(`${AUTH_API_URL}/cart/checkout/create-embedded-session`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                ...(isUserAuthenticated && localStorage.getItem('accessToken')
-                    ? { 'Authorization': `Bearer ${localStorage.getItem('accessToken')}` }
-                    : {})
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
             body: JSON.stringify(payload)
         });
@@ -397,23 +383,90 @@ async function initEmbeddedCheckout(email) {
         document.getElementById('email').closest('.form-group').style.display = 'none';
         submitButton.style.display = 'none';
 
-        // Hide sign-in prompt since checkout is now in progress
-        const signInPrompt = document.getElementById('signin-prompt');
-        if (signInPrompt) {
-            signInPrompt.style.display = 'none';
-        }
+        // Hide the "Card Information" label
+        const cardLabel = paymentElementContainer.closest('.form-group').querySelector('label');
+        if (cardLabel) cardLabel.style.display = 'none';
 
     } catch (error) {
         console.error('Embedded checkout error:', error);
         showError(error.message || 'Failed to load payment form. Please try again.');
-
-        // Reset the form
-        setupEmbeddedCheckout();
-        submitButton.disabled = false;
-        buttonText.textContent = 'Continue to Payment';
-        spinner.style.display = 'none';
-        submitButton.classList.remove('processing');
+        showFallbackMessage(paymentElementContainer);
     }
+}
+
+/**
+ * Initialize the Stripe embedded checkout for guest users (no email required upfront)
+ * Stripe will collect the email in its embedded form
+ */
+async function initEmbeddedCheckoutForGuest() {
+    const submitButton = document.getElementById('submit-button');
+    const paymentElementContainer = document.getElementById('payment-element');
+
+    try {
+        // Prepare payload without email - Stripe will collect it
+        const payload = {
+            return_url: `${window.location.origin}/success.html`,
+            items: cartItems.map(item => ({
+                product_id: item.product_id,
+                product_name: item.product_name,
+                product_type: item.product_type,
+                price: item.price
+            }))
+        };
+
+        // Call checkout API to get client secret
+        const response = await fetch(`${AUTH_API_URL}/cart/checkout/create-embedded-session`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to create checkout session');
+        }
+
+        const data = await response.json();
+
+        // Initialize embedded checkout
+        checkout = await stripe.initEmbeddedCheckout({
+            clientSecret: data.clientSecret,
+        });
+
+        // Clear container and mount checkout
+        paymentElementContainer.innerHTML = '<div id="checkout-container"></div>';
+        checkout.mount('#checkout-container');
+
+        // Hide the custom email field since Stripe will collect it
+        document.getElementById('email').closest('.form-group').style.display = 'none';
+        submitButton.style.display = 'none';
+
+        // Hide the "Card Information" label
+        const cardLabel = paymentElementContainer.closest('.form-group').querySelector('label');
+        if (cardLabel) cardLabel.style.display = 'none';
+
+    } catch (error) {
+        console.error('Embedded checkout error:', error);
+        showError(error.message || 'Failed to load payment form. Please try again.');
+        showFallbackMessage(paymentElementContainer);
+    }
+}
+
+/**
+ * Show fallback message when checkout fails to load
+ */
+function showFallbackMessage(container) {
+    container.innerHTML = `
+        <div id="checkout-container">
+            <div style="padding: 20px; text-align: center; color: var(--text-secondary); background: var(--background-light); border-radius: 12px;">
+                <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 12px; color: var(--error-color);"></i>
+                <p style="margin-bottom: 8px;">Failed to load payment form.</p>
+                <p style="font-size: 0.85rem;">Please refresh the page and try again.</p>
+            </div>
+        </div>
+    `;
 }
 
 /**
@@ -442,7 +495,7 @@ function setupSubscriptionFlow() {
 }
 
 /**
- * Handle form submission
+ * Handle form submission (only used for subscriptions now)
  */
 async function handleSubmit(event) {
     event.preventDefault();
@@ -452,41 +505,35 @@ async function handleSubmit(event) {
     const spinner = document.getElementById('button-spinner');
     const emailInput = document.getElementById('email');
 
-    // Validate email
-    const email = emailInput.value.trim();
-    if (!email || !isValidEmail(email)) {
-        showError('Please enter a valid email address.');
-        emailInput.classList.add('error');
-        emailInput.focus();
-        return;
-    }
-    emailInput.classList.remove('error');
-
-    // Disable button and show loading state
-    submitButton.disabled = true;
-    buttonText.textContent = 'Processing...';
-    spinner.style.display = 'inline-block';
-    submitButton.classList.add('processing');
-
-    try {
-        // Handle subscription redirect (single product mode only)
-        if (singleProductMode && currentProduct && currentProduct.type === 'subscription') {
-            await handleSubscriptionCheckout(email);
+    // For subscriptions, we still need email validation
+    if (singleProductMode && currentProduct && currentProduct.type === 'subscription') {
+        const email = emailInput.value.trim();
+        if (!email || !isValidEmail(email)) {
+            showError('Please enter a valid email address.');
+            emailInput.classList.add('error');
+            emailInput.focus();
             return;
         }
+        emailInput.classList.remove('error');
 
-        // Initialize embedded checkout with the email
-        await initEmbeddedCheckout(email);
+        // Disable button and show loading state
+        submitButton.disabled = true;
+        buttonText.textContent = 'Processing...';
+        spinner.style.display = 'inline-block';
+        submitButton.classList.add('processing');
 
-    } catch (error) {
-        console.error('Checkout error:', error);
-        showError(error.message || 'Checkout failed. Please try again.');
+        try {
+            await handleSubscriptionCheckout(email);
+        } catch (error) {
+            console.error('Checkout error:', error);
+            showError(error.message || 'Checkout failed. Please try again.');
 
-        // Reset button state
-        submitButton.disabled = false;
-        buttonText.textContent = 'Continue to Payment';
-        spinner.style.display = 'none';
-        submitButton.classList.remove('processing');
+            // Reset button state
+            submitButton.disabled = false;
+            buttonText.textContent = 'Continue to Checkout';
+            spinner.style.display = 'none';
+            submitButton.classList.remove('processing');
+        }
     }
 }
 

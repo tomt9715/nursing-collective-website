@@ -107,8 +107,42 @@
                         </div>
                     </div>
 
+                    <!-- Promo Code Section -->
+                    <div class="promo-code-container">
+                        <button type="button" id="promo-toggle" class="promo-toggle">
+                            <i class="fas fa-tag"></i>
+                            <span>Have a promo code?</span>
+                            <i class="fas fa-chevron-down promo-toggle-icon"></i>
+                        </button>
+                        <div id="promo-input-container" class="promo-input-container" style="display: none;">
+                            <div class="promo-input-row">
+                                <input
+                                    type="text"
+                                    id="promo-code"
+                                    name="promo_code"
+                                    placeholder="Enter promo code"
+                                    autocomplete="off"
+                                >
+                                <button type="button" id="apply-promo-btn" class="btn btn-outline-primary btn-sm">
+                                    Apply
+                                </button>
+                            </div>
+                            <div id="promo-message" class="promo-message"></div>
+                        </div>
+                        <!-- Applied promo display -->
+                        <div id="promo-applied" class="promo-applied" style="display: none;">
+                            <div class="promo-applied-content">
+                                <i class="fas fa-check-circle"></i>
+                                <span id="promo-applied-text"></span>
+                            </div>
+                            <button type="button" id="remove-promo-btn" class="remove-promo-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+
                     <!-- Trust Badges -->
-                    <div class="trust-badges">
+                    <div class="trust-badges trust-badges-horizontal">
                         <div class="trust-badge">
                             <i class="fas fa-lock"></i>
                             <span>Secure Checkout</span>
@@ -116,10 +150,6 @@
                         <div class="trust-badge">
                             <i class="fas fa-bolt"></i>
                             <span>Instant Access</span>
-                        </div>
-                        <div class="trust-badge">
-                            <i class="fas fa-headset"></i>
-                            <span>24/7 Support</span>
                         </div>
                     </div>
                 </div>
@@ -293,42 +323,6 @@
                                     <!-- Stripe Card Element will be mounted here -->
                                 </div>
                                 <div id="card-errors" class="card-errors" role="alert"></div>
-                            </div>
-                        </div>
-
-                        <!-- Promo Code Section -->
-                        <div class="form-section promo-section">
-                            <div class="promo-code-container">
-                                <button type="button" id="promo-toggle" class="promo-toggle">
-                                    <i class="fas fa-tag"></i>
-                                    <span>Have a promo code?</span>
-                                    <i class="fas fa-chevron-down promo-toggle-icon"></i>
-                                </button>
-                                <div id="promo-input-container" class="promo-input-container" style="display: none;">
-                                    <div class="promo-input-row">
-                                        <input
-                                            type="text"
-                                            id="promo-code"
-                                            name="promo_code"
-                                            placeholder="Enter promo code"
-                                            autocomplete="off"
-                                        >
-                                        <button type="button" id="apply-promo-btn" class="btn btn-outline-primary btn-sm">
-                                            Apply
-                                        </button>
-                                    </div>
-                                    <div id="promo-message" class="promo-message"></div>
-                                </div>
-                                <!-- Applied promo display -->
-                                <div id="promo-applied" class="promo-applied" style="display: none;">
-                                    <div class="promo-applied-content">
-                                        <i class="fas fa-check-circle"></i>
-                                        <span id="promo-applied-text"></span>
-                                    </div>
-                                    <button type="button" id="remove-promo-btn" class="remove-promo-btn">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
                             </div>
                         </div>
 

@@ -159,6 +159,19 @@
     border-top: 1px solid var(--border-color);
 }
 
+/* Horizontal trust badges layout */
+.trust-badges.trust-badges-horizontal {
+    flex-direction: row;
+    justify-content: center;
+    gap: 24px;
+}
+
+.trust-badges.trust-badges-horizontal .trust-badge {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+}
+
 .trust-badge {
     display: flex;
     align-items: center;
@@ -177,6 +190,13 @@
     color: var(--primary-color);
     border-radius: 8px;
     font-size: 0.9rem;
+}
+
+/* Promo code in order summary */
+.order-summary .promo-code-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
 }
 
 /* ============================================

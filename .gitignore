@@ -11,6 +11,9 @@ dist/
 build/
 .cache/
 
+# CSS source maps (but keep bundle.min.css for deployment)
+css/bundle.min.css.map
+
 # IDE
 .idea/
 .vscode/

@@ -2273,6 +2273,647 @@
 
 
 /* ============================================
+   HOME PAGE - NEW SECTIONS
+   ============================================ */
+
+/* Category Browse Section */
+.category-browse {
+    padding: 80px 0;
+    background: var(--background-light);
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.category-card {
+    background: var(--card-background);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    text-decoration: none;
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.category-card:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(46, 134, 171, 0.15);
+    text-decoration: none;
+    color: var(--text-primary);
+}
+
+.category-card .category-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(162, 59, 114, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.category-card .category-icon i {
+    font-size: 28px;
+    color: var(--primary-color);
+}
+
+.category-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.category-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.category-count {
+    display: inline-block;
+    background: var(--primary-color);
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-top: auto;
+}
+
+/* Free Resources Home Section */
+.free-resources-home {
+    padding: 80px 0;
+    background: var(--background-color);
+}
+
+.free-resources-banner {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(162, 59, 114, 0.1));
+    border-radius: 16px;
+    padding: 32px 40px;
+    margin-bottom: 40px;
+    border: 1px solid rgba(46, 134, 171, 0.2);
+}
+
+.free-badge-large {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    min-width: 80px;
+}
+
+.free-badge-large i {
+    font-size: 24px;
+}
+
+.free-badge-large span {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.free-resources-content h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.free-resources-content p {
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.free-resources-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.free-resource-card {
+    background: var(--card-background);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.free-resource-card:hover {
+    border-color: #10b981;
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(16, 185, 129, 0.15);
+}
+
+.resource-icon-home {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(5, 150, 105, 0.1));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.resource-icon-home i {
+    font-size: 24px;
+    color: #10b981;
+}
+
+.free-resource-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.free-resource-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+/* FlorenceBot Spotlight Section */
+.florencebot-spotlight {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #2E86AB 0%, #4A90E2 50%, #7B68EE 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.florencebot-spotlight::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" xmlns="http://www.w3.org/2000/svg"><circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.08)"/></svg>');
+    opacity: 0.5;
+}
+
+.spotlight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.spotlight-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.spotlight-content h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.spotlight-subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    margin-bottom: 16px;
+}
+
+.spotlight-content > p {
+    opacity: 0.85;
+    line-height: 1.7;
+    margin-bottom: 24px;
+}
+
+.bot-commands-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.command-chip {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+}
+
+.command-chip code {
+    color: white;
+    background: transparent;
+}
+
+.spotlight-buttons {
+    display: flex;
+    gap: 12px;
+}
+
+.spotlight-buttons .btn-outline-primary {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: white;
+}
+
+.spotlight-buttons .btn-outline-primary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+/* Discord Mock */
+.discord-mock {
+    background: #36393f;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+.discord-mock-header {
+    background: #202225;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #8e9297;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.discord-mock-header i {
+    color: #5865f2;
+}
+
+.discord-mock-messages {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mock-message {
+    display: flex;
+    gap: 12px;
+}
+
+.mock-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #5865f2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.bot-avatar-icon {
+    background: linear-gradient(135deg, #2E86AB, #A23B72);
+    font-size: 18px;
+}
+
+.mock-content {
+    flex: 1;
+}
+
+.mock-username {
+    font-weight: 600;
+    color: #fff;
+    font-size: 0.95rem;
+}
+
+.bot-name {
+    color: #2E86AB;
+}
+
+.bot-tag {
+    background: #5865f2;
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.mock-text {
+    color: #dcddde;
+    margin-top: 4px;
+    display: block;
+}
+
+.mock-embed {
+    background: #2f3136;
+    border-left: 4px solid #2E86AB;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 8px;
+}
+
+.embed-title {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.embed-title i {
+    color: #f59e0b;
+    margin-right: 6px;
+}
+
+.embed-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.embed-field {
+    color: #dcddde;
+    font-size: 0.85rem;
+}
+
+.embed-field strong {
+    color: #2E86AB;
+}
+
+/* Pricing Preview Section */
+.pricing-preview {
+    padding: 80px 0;
+    background: var(--background-light);
+}
+
+.pricing-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.pricing-preview-card {
+    background: var(--card-background);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.pricing-preview-card.popular {
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.pricing-preview-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.pricing-preview-card.popular:hover {
+    transform: scale(1.05) translateY(-4px);
+}
+
+.pricing-label {
+    display: inline-block;
+    background: #10b981;
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.popular-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    white-space: nowrap;
+}
+
+.pricing-preview-card h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.pricing-amount {
+    font-family: 'Outfit', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 16px;
+}
+
+.pricing-amount span {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px 0;
+    text-align: left;
+}
+
+.pricing-features li {
+    padding: 8px 0;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.pricing-features li i {
+    color: #10b981;
+    margin-right: 10px;
+}
+
+/* Social Proof Section */
+.social-proof-section {
+    padding: 80px 0;
+    background: var(--background-color);
+}
+
+.social-proof-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.social-proof-stats {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.proof-stat {
+    text-align: center;
+}
+
+.proof-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    line-height: 1;
+}
+
+.proof-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+.proof-highlights {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.proof-highlight {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-primary);
+}
+
+.proof-highlight i {
+    color: #10b981;
+    font-size: 1.25rem;
+}
+
+/* Responsive Styles for New Sections */
+@media (max-width: 992px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .free-resources-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .spotlight-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .spotlight-demo {
+        order: -1;
+    }
+
+    .pricing-preview-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .pricing-preview-card.popular {
+        transform: none;
+    }
+
+    .pricing-preview-card.popular:hover {
+        transform: translateY(-4px);
+    }
+
+    .social-proof-stats {
+        gap: 30px;
+    }
+
+    .proof-highlights {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .free-resources-banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 24px;
+    }
+
+    .free-resources-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .florencebot-spotlight {
+        padding: 60px 0;
+    }
+
+    .spotlight-content h2 {
+        font-size: 2rem;
+    }
+
+    .spotlight-buttons {
+        flex-direction: column;
+    }
+
+    .social-proof-stats {
+        gap: 20px;
+    }
+
+    .proof-number {
+        font-size: 2.25rem;
+    }
+
+    .embed-fields {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================
    PRICING PAGE
    ============================================ */
 

@@ -531,12 +531,25 @@ async function setupStripeElements() {
 
         cardElement.mount('#card-element');
 
+        // Get wrapper element for styling
+        const cardWrapper = document.getElementById('card-element-wrapper');
+
         // Handle real-time validation errors
         cardElement.on('change', (event) => {
             if (event.error) {
                 cardErrorsEl.textContent = event.error.message;
+                cardWrapper.classList.add('invalid');
+                cardWrapper.classList.remove('complete');
             } else {
                 cardErrorsEl.textContent = '';
+                cardWrapper.classList.remove('invalid');
+            }
+
+            // Update complete state
+            if (event.complete) {
+                cardWrapper.classList.add('complete');
+            } else {
+                cardWrapper.classList.remove('complete');
             }
 
             // Enable submit button when card is complete
@@ -545,11 +558,11 @@ async function setupStripeElements() {
 
         // Handle focus/blur for styling
         cardElement.on('focus', () => {
-            document.getElementById('card-element').classList.add('StripeElement--focus');
+            cardWrapper.classList.add('focused');
         });
 
         cardElement.on('blur', () => {
-            document.getElementById('card-element').classList.remove('StripeElement--focus');
+            cardWrapper.classList.remove('focused');
         });
 
         // Listen for theme changes
@@ -1207,23 +1220,35 @@ async function recreatePaymentIntentWithPromo() {
 
             cardElement.mount('#card-element');
 
-            // Re-attach event listeners
+            // Re-attach event listeners with wrapper styling
+            const cardWrapper = document.getElementById('card-element-wrapper');
+
             cardElement.on('change', (event) => {
                 const cardErrorsEl = document.getElementById('card-errors');
                 if (event.error) {
                     cardErrorsEl.textContent = event.error.message;
+                    cardWrapper.classList.add('invalid');
+                    cardWrapper.classList.remove('complete');
                 } else {
                     cardErrorsEl.textContent = '';
+                    cardWrapper.classList.remove('invalid');
                 }
+
+                if (event.complete) {
+                    cardWrapper.classList.add('complete');
+                } else {
+                    cardWrapper.classList.remove('complete');
+                }
+
                 updateSubmitButton(event.complete);
             });
 
             cardElement.on('focus', () => {
-                document.getElementById('card-element').classList.add('StripeElement--focus');
+                cardWrapper.classList.add('focused');
             });
 
             cardElement.on('blur', () => {
-                document.getElementById('card-element').classList.remove('StripeElement--focus');
+                cardWrapper.classList.remove('focused');
             });
         }
     } catch (error) {

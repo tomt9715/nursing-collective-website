@@ -373,30 +373,76 @@
 }
 
 /* Stripe Card Element Container */
-.stripe-element {
-    padding: 14px 16px;
+.card-element-wrapper {
+    position: relative;
+    background: var(--background-white);
     border: 2px solid var(--border-color);
     border-radius: 8px;
-    background: var(--background-white);
     transition: border-color 0.2s, box-shadow 0.2s;
-    min-height: 48px;
 }
 
-.stripe-element:hover {
+.card-element-wrapper:hover {
     border-color: #a0aec0;
 }
 
-.stripe-element.StripeElement--focus {
+.card-element-wrapper.focused {
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
 }
 
-.stripe-element.StripeElement--invalid {
+.card-element-wrapper.invalid {
     border-color: #ef4444;
 }
 
-.stripe-element.StripeElement--complete {
+.card-element-wrapper.complete {
     border-color: #10b981;
+}
+
+/* Card icons row */
+.card-icons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+    padding: 10px 14px 0 14px;
+}
+
+.card-icons img {
+    height: 24px;
+    width: auto;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.card-icons img:hover {
+    opacity: 1;
+}
+
+/* Card brand icons using Font Awesome */
+.card-brand-icons {
+    display: flex;
+    gap: 6px;
+}
+
+.card-brand-icons i {
+    font-size: 1.5rem;
+    color: var(--text-light);
+    transition: color 0.2s;
+}
+
+.card-brand-icons i.fa-cc-visa { color: #1a1f71; }
+.card-brand-icons i.fa-cc-mastercard { color: #eb001b; }
+.card-brand-icons i.fa-cc-amex { color: #006fcf; }
+.card-brand-icons i.fa-cc-discover { color: #ff6000; }
+
+[data-theme="dark"] .card-brand-icons i {
+    opacity: 0.8;
+}
+
+.stripe-element {
+    padding: 14px 16px;
+    background: transparent;
+    min-height: 24px;
 }
 
 /* Card errors */
@@ -405,6 +451,27 @@
     font-size: 0.85rem;
     margin-top: 8px;
     min-height: 20px;
+}
+
+/* Status indicator for card element */
+.card-status {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 14px 10px 14px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.card-element-wrapper.complete .card-status {
+    opacity: 1;
+    color: #10b981;
+}
+
+.card-status i {
+    font-size: 0.75rem;
 }
 
 /* Legacy Payment Element Container (for embedded checkout fallback) */
@@ -656,11 +723,19 @@
 [data-theme="dark"] .form-group input[type="email"],
 [data-theme="dark"] .form-group input[type="text"],
 [data-theme="dark"] .form-group select,
-[data-theme="dark"] #payment-element,
-[data-theme="dark"] .stripe-element {
+[data-theme="dark"] #payment-element {
     background: var(--background-light);
     border-color: var(--border-color);
     color: var(--text-primary);
+}
+
+[data-theme="dark"] .card-element-wrapper {
+    background: var(--background-light);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .stripe-element {
+    background: transparent;
 }
 
 [data-theme="dark"] .form-group input[type="email"]::placeholder,

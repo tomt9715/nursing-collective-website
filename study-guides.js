@@ -62,10 +62,10 @@ Often results from left-sided failure. The right ventricle cannot effectively pu
 ---
 
 *This is a free preview. Purchase the full guide for complete coverage including:*
-- *Diagnostic tests and interpretation*
-- *Pharmacological management (ACE inhibitors, beta-blockers, diuretics)*
-- *Nursing interventions and patient education*
-- *NCLEX-style practice questions with rationales*
+- *In-depth content and detailed explanations*
+- *Key nursing interventions and priorities*
+- *Clinical pearls and memory aids*
+- *Printable study materials*
         `
     },
     'eating-disorders': {
@@ -132,11 +132,10 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 ---
 
 *This is a free preview. Purchase the full guide for complete coverage including:*
-- *Binge Eating Disorder assessment and treatment*
-- *Nutritional rehabilitation protocols*
-- *Therapeutic communication techniques*
-- *Medications used in treatment*
-- *NCLEX-style practice questions with rationales*
+- *In-depth content and detailed explanations*
+- *Key nursing interventions and priorities*
+- *Clinical pearls and memory aids*
+- *Printable study materials*
         `
     }
 };

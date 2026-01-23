@@ -648,6 +648,22 @@
     text-decoration: none;
 }
 
+/* Fix for unlock button hover in modal */
+.preview-unlock-prompt .btn-primary,
+.preview-unlock-prompt .btn-primary:hover,
+.preview-unlock-prompt .btn-primary:focus {
+    color: white !important;
+    background: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.preview-unlock-prompt .btn-primary:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
 /* Premium CTA Section */
 .premium-cta-section {
     padding: 100px 0;

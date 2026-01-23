@@ -166,13 +166,13 @@
                     </div>
 
                     <!-- Signed In User Info (shown when logged in) -->
-                    <div class="user-info-banner" id="user-info-banner" style="display: none;">
-                        <div class="user-info-icon">
-                            <i class="fas fa-check-circle"></i>
+                    <div class="user-info-banner" id="user-info-banner" style="display: none; flex-direction: row; align-items: center; gap: 16px; padding: 20px 24px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(16, 185, 129, 0.06)); border: 2px solid rgba(16, 185, 129, 0.25); border-radius: 16px; margin-bottom: 28px; box-shadow: 0 4px 16px rgba(16, 185, 129, 0.1);">
+                        <div class="user-info-icon" style="width: 52px; height: 52px; min-width: 52px; background: linear-gradient(135deg, #10b981, #059669); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);">
+                            <i class="fas fa-check-circle" style="color: white; font-size: 1.5rem;"></i>
                         </div>
-                        <div class="user-info-content">
-                            <p>Signed in as <strong id="user-email-display"></strong></p>
-                            <span class="user-info-note">Your purchase will be linked to your account.</span>
+                        <div class="user-info-content" style="flex: 1;">
+                            <p style="margin: 0; color: var(--text-primary); font-size: 1rem; font-weight: 600;">Signed in as <strong id="user-email-display" style="color: #10b981;"></strong></p>
+                            <span class="user-info-note" style="font-size: 0.85rem; color: var(--text-secondary); display: block; margin-top: 4px;">Your purchase will be linked to your account.</span>
                         </div>
                     </div>
 
@@ -199,8 +199,8 @@
                                 >
                                 <p class="form-hint" id="email-hint">Your receipt and guide access will be sent to this email.</p>
                                 <!-- Option to use different email when signed in -->
-                                <button type="button" id="use-different-email-btn" class="use-different-email-btn" style="display: none;">
-                                    <i class="fas fa-edit"></i> Use a different email
+                                <button type="button" id="use-different-email-btn" class="use-different-email-btn" style="display: none; background: none; border: 1px solid var(--primary-color); color: var(--primary-color); font-size: 0.85rem; cursor: pointer; padding: 8px 14px; margin-top: 10px; border-radius: 6px; transition: all 0.2s; font-weight: 500;">
+                                    <i class="fas fa-edit" style="margin-right: 6px;"></i>Use a different email
                                 </button>
                             </div>
 
@@ -314,20 +314,22 @@
                             <div class="form-group">
                                 <label for="card-element">Card Details <span class="required">*</span></label>
                                 <div class="card-element-wrapper" id="card-element-wrapper">
-                                    <div class="card-icons">
-                                        <div class="card-brand-icons">
-                                            <i class="fab fa-cc-visa" title="Visa"></i>
-                                            <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-                                            <i class="fab fa-cc-amex" title="American Express"></i>
-                                            <i class="fab fa-cc-discover" title="Discover"></i>
-                                        </div>
-                                    </div>
                                     <div id="card-element" class="stripe-element">
                                         <!-- Stripe Card Element will be mounted here -->
                                     </div>
                                     <div class="card-status">
                                         <i class="fas fa-check-circle"></i>
                                         <span>Card details complete</span>
+                                    </div>
+                                </div>
+                                <!-- Accepted cards shown below the input -->
+                                <div class="accepted-cards" style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+                                    <span style="font-size: 0.8rem; color: var(--text-secondary);">We accept:</span>
+                                    <div style="display: flex; gap: 6px;">
+                                        <i class="fab fa-cc-visa" style="font-size: 1.4rem; color: #1a1f71;" title="Visa"></i>
+                                        <i class="fab fa-cc-mastercard" style="font-size: 1.4rem; color: #eb001b;" title="Mastercard"></i>
+                                        <i class="fab fa-cc-amex" style="font-size: 1.4rem; color: #006fcf;" title="American Express"></i>
+                                        <i class="fab fa-cc-discover" style="font-size: 1.4rem; color: #ff6000;" title="Discover"></i>
                                     </div>
                                 </div>
                                 <div id="card-errors" class="card-errors" role="alert"></div>

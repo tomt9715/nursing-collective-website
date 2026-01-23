@@ -5,7 +5,7 @@
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://js.stripe.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://web-production-592c07.up.railway.app https://florencebotpro-production.up.railway.app https://api.stripe.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com; frame-src https://js.stripe.com; object-src 'none'; base-uri 'self'
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://js.stripe.com https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://web-production-592c07.up.railway.app https://florencebotpro-production.up.railway.app https://api.stripe.com; frame-src https://js.stripe.com; object-src 'none'; base-uri 'self'
 
 # Cache control for HTML pages
 /*.html

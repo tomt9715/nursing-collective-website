@@ -324,7 +324,8 @@
     <script>
         // Parse URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const oauthSuccess = urlParams.get('oauth');
+        const accessToken = urlParams.get('access_token');
+        const refreshToken = urlParams.get('refresh_token');
         const error = urlParams.get('error');
         const orderToClaim = urlParams.get('order'); // Order to claim after OAuth login
 
@@ -353,53 +354,66 @@
             console.error('OAuth error:', error);
             showError('Authentication failed. Please try again.');
         }
-        // Check for OAuth success (tokens are now in HttpOnly cookies)
-        else if (oauthSuccess === 'success') {
-            console.log('OAuth callback successful, fetching user data');
+        // Check if tokens are present
+        else if (!accessToken || !refreshToken) {
+            console.error('Missing tokens in callback URL');
+            showError('Authentication incomplete. Missing tokens.');
+        }
+        // Success - store tokens and redirect
+        else {
+            console.log('OAuth callback successful, storing tokens');
 
-            // Fetch user data using the cookie-based authentication
-            fetch('https://web-production-592c07.up.railway.app/auth/me', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include' // Send cookies with request
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to authenticate');
-                }
-                return response.json();
-            })
-            .then(data => {
-                if (data.user) {
-                    // Store user data (tokens are in HttpOnly cookies)
-                    localStorage.setItem('user', JSON.stringify(data.user));
-                    console.log('User data stored, redirecting to dashboard');
+            try {
+                // Store tokens
+                localStorage.setItem('accessToken', accessToken);
+                localStorage.setItem('refreshToken', refreshToken);
 
-                    // Build redirect URL (include order param if present)
+                // Fetch user data
+                fetch('https://web-production-592c07.up.railway.app/auth/me', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${accessToken}`,
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.user) {
+                        // Store user data
+                        localStorage.setItem('user', JSON.stringify(data.user));
+                        console.log('User data stored, redirecting to dashboard');
+
+                        // Build redirect URL (include order param if present)
+                        let redirectUrl = 'dashboard.html';
+                        if (orderToClaim) {
+                            redirectUrl += `?order=${encodeURIComponent(orderToClaim)}`;
+                        }
+
+                        // Redirect to dashboard with minimum loading time
+                        redirectWithMinTime(() => {
+                            window.location.href = redirectUrl;
+                        });
+                    } else {
+                        throw new Error('Failed to fetch user data');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching user data:', error);
+                    // Still redirect to dashboard even if user fetch fails
+                    // The dashboard can try to fetch user data again
                     let redirectUrl = 'dashboard.html';
                     if (orderToClaim) {
                         redirectUrl += `?order=${encodeURIComponent(orderToClaim)}`;
                     }
-
-                    // Redirect to dashboard with minimum loading time
                     redirectWithMinTime(() => {
                         window.location.href = redirectUrl;
                     });
-                } else {
-                    throw new Error('Failed to fetch user data');
-                }
-            })
-            .catch(error => {
-                console.error('Error fetching user data:', error);
+                });
+
+            } catch (error) {
+                console.error('Error storing tokens:', error);
                 showError('Failed to complete sign in. Please try again.');
-            });
-        }
-        // No success parameter - might be old URL format or direct access
-        else {
-            console.error('Invalid callback - missing oauth parameter');
-            showError('Authentication incomplete. Please try again.');
+            }
         }
 
         function showError(message) {

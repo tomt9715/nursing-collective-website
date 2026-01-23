@@ -4,8 +4,8 @@
 // API Configuration is loaded from api-service.js (already defined globally)
 // const API_URL is declared in api-service.js and available globally
 
-// Check if user is already logged in (using user data, not token)
-if (localStorage.getItem('user')) {
+// Check if user is already logged in
+if (localStorage.getItem('accessToken')) {
     window.location.href = 'dashboard.html';
 }
 
@@ -434,12 +434,12 @@ document.addEventListener('DOMContentLoaded', function() {
 // Handle Login
 async function handleLogin(email, password) {
     try {
+
         const response = await fetch(`${API_URL}/auth/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'include', // Allow cookies to be set
             body: JSON.stringify({ email, password })
         });
 
@@ -450,8 +450,14 @@ async function handleLogin(email, password) {
             throw new Error(data.error || 'Login failed');
         }
 
-        // Store user data only (tokens are now in HttpOnly cookies)
+
+        // Store tokens and user data
+        localStorage.setItem('accessToken', data.access_token);
+        localStorage.setItem('refreshToken', data.refresh_token);
         localStorage.setItem('user', JSON.stringify(data.user));
+
+        // Store login timestamp for token expiry tracking
+        localStorage.setItem('tokenTimestamp', Date.now().toString());
 
         // Merge guest cart if cartManager is available
         if (typeof cartManager !== 'undefined') {

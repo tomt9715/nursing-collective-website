@@ -20,7 +20,7 @@ class CartManager {
      * @returns {boolean}
      */
     isAuthenticated() {
-        return typeof isAuthenticated === 'function' ? isAuthenticated() : !!localStorage.getItem('user');
+        return typeof isAuthenticated === 'function' ? isAuthenticated() : !!localStorage.getItem('accessToken');
     }
 
     /**

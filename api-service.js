@@ -1,7 +1,7 @@
 /**
  * API Service Layer
  * Centralized API service with automatic token refresh and error handling
- * Uses HttpOnly cookies for secure token storage
+ * Used across dashboard, settings, and authentication pages
  */
 
 // API Configuration
@@ -15,17 +15,23 @@ const API_URL = 'https://web-production-592c07.up.railway.app';
  * @returns {Promise<object>} - Response data
  */
 async function apiCall(endpoint, options = {}, isRetry = false) {
+    const token = localStorage.getItem('accessToken');
+
     // Default headers
     const headers = {
         'Content-Type': 'application/json',
         ...options.headers
     };
 
+    // Add authorization header if token exists
+    if (token) {
+        headers['Authorization'] = `Bearer ${token}`;
+    }
+
     try {
         const response = await fetch(`${API_URL}${endpoint}`, {
             ...options,
-            headers,
-            credentials: 'include' // Send cookies with request
+            headers
         });
 
         // Handle 401 Unauthorized - Token expired
@@ -36,7 +42,7 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
                 // Attempt to refresh the token
                 await refreshToken();
 
-                // Retry the original request with new token (cookie will be updated)
+                // Retry the original request with new token
                 return await apiCall(endpoint, options, true);
 
             } catch (refreshError) {
@@ -68,25 +74,40 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
 }
 
 /**
- * Refresh the access token using the refresh token cookie
- * @returns {Promise<void>}
+ * Refresh the access token using the refresh token
+ * @returns {Promise<string>} - New access token
  */
 async function refreshToken() {
+    const refreshToken = localStorage.getItem('refreshToken');
+
+    if (!refreshToken) {
+        throw new Error('No refresh token available');
+    }
+
     try {
         const response = await fetch(`${API_URL}/auth/refresh`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'include' // Send cookies with request
+            body: JSON.stringify({ refresh_token: refreshToken })
         });
 
+        const data = await response.json();
+
         if (!response.ok) {
-            const data = await response.json();
             throw new Error(data.error || 'Token refresh failed');
         }
 
+        // Update tokens
+        localStorage.setItem('accessToken', data.access_token);
+        if (data.refresh_token) {
+            localStorage.setItem('refreshToken', data.refresh_token);
+        }
+        localStorage.setItem('tokenTimestamp', Date.now().toString());
+
         console.log('Token refreshed successfully');
+        return data.access_token;
 
     } catch (error) {
         console.error('Token refresh error:', error);
@@ -97,22 +118,12 @@ async function refreshToken() {
 /**
  * Logout function with cross-tab synchronization
  */
-async function performLogout() {
-    try {
-        // Call logout endpoint to clear cookies and revoke session
-        await fetch(`${API_URL}/auth/logout`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            credentials: 'include'
-        });
-    } catch (error) {
-        console.error('Logout API call failed:', error);
-    }
-
-    // Clear local user data (not tokens - those are HttpOnly cookies)
+function performLogout() {
+    // Clear all auth data
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');
+    localStorage.removeItem('tokenTimestamp');
 
     // Set logout flag for cross-tab sync
     localStorage.setItem('logoutEvent', Date.now().toString());
@@ -123,11 +134,10 @@ async function performLogout() {
 
 /**
  * Check if user is authenticated
- * Uses presence of user data as indicator (tokens are in HttpOnly cookies)
- * @returns {boolean} - True if user appears to be authenticated
+ * @returns {boolean} - True if user has valid access token
  */
 function isAuthenticated() {
-    return !!localStorage.getItem('user');
+    return !!localStorage.getItem('accessToken');
 }
 
 /**
@@ -155,31 +165,15 @@ function requireAuth() {
     }
 }
 
-/**
- * Verify authentication by calling the server
- * Use this when you need to confirm the user is actually authenticated
- * @returns {Promise<object|null>} - User object if authenticated, null otherwise
- */
-async function verifyAuth() {
-    try {
-        const data = await apiCall('/auth/me');
-        if (data.user) {
-            setCurrentUser(data.user);
-            return data.user;
-        }
-        return null;
-    } catch (error) {
-        console.error('Auth verification failed:', error);
-        return null;
-    }
-}
-
 // Listen for cross-tab logout events
 window.addEventListener('storage', function(e) {
     if (e.key === 'logoutEvent' && e.newValue) {
         // Another tab logged out, clear local data and redirect
         console.log('Logout detected in another tab');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
         localStorage.removeItem('user');
+        localStorage.removeItem('tokenTimestamp');
         window.location.href = 'login.html';
     }
 });

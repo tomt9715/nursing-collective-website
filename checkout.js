@@ -32,8 +32,8 @@ const CATEGORY_NAMES = {
  * Initialize the checkout page
  */
 async function initCheckout() {
-    // Check if user is authenticated (using user data, not token)
-    isUserAuthenticated = typeof isAuthenticated === 'function' ? isAuthenticated() : !!localStorage.getItem('user');
+    // Check if user is authenticated
+    isUserAuthenticated = typeof isAuthenticated === 'function' ? isAuthenticated() : !!localStorage.getItem('accessToken');
 
     // Show sign-in prompt for guest users
     const signInPrompt = document.getElementById('signin-prompt');
@@ -455,13 +455,13 @@ async function initEmbeddedCheckout(email) {
             return_url: `${window.location.origin}/success.html`
         };
 
-        // Call checkout API to get client secret (uses HttpOnly cookies for auth)
+        // Call checkout API to get client secret
         const response = await fetch(`${AUTH_API_URL}/cart/checkout/create-embedded-session`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
             },
-            credentials: 'include', // Send cookies with request
             body: JSON.stringify(payload)
         });
 

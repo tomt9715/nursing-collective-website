@@ -15,10 +15,11 @@
 
 .checkout-container {
     display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 40px;
-    max-width: 1200px;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 48px;
+    max-width: 1400px;
     margin: 0 auto;
+    padding: 0 24px;
 }
 
 /* ============================================
@@ -307,6 +308,15 @@
     flex: 1;
 }
 
+/* Wide/narrow variants for address fields */
+.form-group-wide {
+    flex: 2;
+}
+
+.form-group-narrow {
+    flex: 1;
+}
+
 /* Required field indicator */
 .required {
     color: #ef4444;
@@ -544,6 +554,22 @@
    RESPONSIVE DESIGN
    ============================================ */
 
+/* Large desktop - wider layout */
+@media (min-width: 1200px) {
+    .checkout-container {
+        max-width: 1500px;
+        gap: 56px;
+    }
+}
+
+@media (max-width: 992px) {
+    .checkout-container {
+        grid-template-columns: 1fr 1.3fr;
+        gap: 32px;
+        padding: 0 20px;
+    }
+}
+
 @media (max-width: 768px) {
     .checkout-section {
         padding-top: 100px;
@@ -553,6 +579,7 @@
     .checkout-container {
         grid-template-columns: 1fr;
         gap: 24px;
+        padding: 0 16px;
     }
 
     .order-summary {
@@ -588,12 +615,22 @@
         flex-direction: column;
         gap: 8px;
     }
+
+    /* Keep form rows side by side on tablet */
+    .form-row {
+        flex-direction: row;
+        gap: 12px;
+    }
 }
 
 @media (max-width: 480px) {
     .checkout-section {
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .checkout-container {
+        padding: 0;
     }
 
     .order-summary,
@@ -615,7 +652,9 @@
         gap: 0;
     }
 
-    .form-group-half {
+    .form-group-half,
+    .form-group-wide,
+    .form-group-narrow {
         flex: none;
         width: 100%;
     }

@@ -192,33 +192,35 @@
                         <div class="form-section">
                             <h3 class="form-section-title">Contact Information</h3>
 
-                            <div class="form-group" id="email-group">
-                                <label for="email">Email Address <span class="required">*</span></label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    placeholder="your@email.com"
-                                    required
-                                    autocomplete="email"
-                                >
-                                <p class="form-hint" id="email-hint">Your receipt and guide access will be sent to this email.</p>
-                                <!-- Option to use different email when signed in -->
-                                <button type="button" id="use-different-email-btn" class="use-different-email-btn" style="display: none; background: none; border: 1px solid var(--primary-color); color: var(--primary-color); font-size: 0.85rem; cursor: pointer; padding: 8px 14px; margin-top: 10px; border-radius: 6px; transition: all 0.2s; font-weight: 500;">
-                                    <i class="fas fa-edit" style="margin-right: 6px;"></i>Use a different email
-                                </button>
-                            </div>
+                            <div class="form-row">
+                                <div class="form-group form-group-half" id="email-group">
+                                    <label for="email">Email Address <span class="required">*</span></label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        name="email"
+                                        placeholder="your@email.com"
+                                        required
+                                        autocomplete="email"
+                                    >
+                                    <p class="form-hint" id="email-hint">Receipt sent here</p>
+                                    <!-- Option to use different email when signed in -->
+                                    <button type="button" id="use-different-email-btn" class="use-different-email-btn" style="display: none;">
+                                        <i class="fas fa-edit" style="margin-right: 6px;"></i>Use different email
+                                    </button>
+                                </div>
 
-                            <div class="form-group">
-                                <label for="name">Full Name <span class="required">*</span></label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    placeholder="John Doe"
-                                    required
-                                    autocomplete="name"
-                                >
+                                <div class="form-group form-group-half">
+                                    <label for="name">Full Name <span class="required">*</span></label>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name="name"
+                                        placeholder="John Doe"
+                                        required
+                                        autocomplete="name"
+                                    >
+                                </div>
                             </div>
                         </div>
 
@@ -226,27 +228,29 @@
                         <div class="form-section">
                             <h3 class="form-section-title">Billing Address</h3>
 
-                            <div class="form-group">
-                                <label for="address">Street Address <span class="required">*</span></label>
-                                <input
-                                    type="text"
-                                    id="address"
-                                    name="address"
-                                    placeholder="123 Main Street"
-                                    required
-                                    autocomplete="address-line1"
-                                >
-                            </div>
+                            <div class="form-row">
+                                <div class="form-group form-group-half form-group-wide">
+                                    <label for="address">Street Address <span class="required">*</span></label>
+                                    <input
+                                        type="text"
+                                        id="address"
+                                        name="address"
+                                        placeholder="123 Main Street"
+                                        required
+                                        autocomplete="address-line1"
+                                    >
+                                </div>
 
-                            <div class="form-group">
-                                <label for="address2">Apartment, suite, etc. (optional)</label>
-                                <input
-                                    type="text"
-                                    id="address2"
-                                    name="address2"
-                                    placeholder="Apt 4B"
-                                    autocomplete="address-line2"
-                                >
+                                <div class="form-group form-group-half form-group-narrow">
+                                    <label for="address2">Apt, suite (optional)</label>
+                                    <input
+                                        type="text"
+                                        id="address2"
+                                        name="address2"
+                                        placeholder="Apt 4B"
+                                        autocomplete="address-line2"
+                                    >
+                                </div>
                             </div>
 
                             <div class="form-row">

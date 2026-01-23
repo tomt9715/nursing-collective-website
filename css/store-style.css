@@ -673,6 +673,42 @@ button.subcategory-chip.active i {
     border-radius: 12px;
     text-transform: uppercase;
     letter-spacing: 0.3px;
+    cursor: help;
+    position: relative;
+}
+
+.savings-badge:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text-primary);
+    color: var(--background-white);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    text-transform: none;
+    letter-spacing: normal;
+    max-width: 280px;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.savings-badge:hover::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--text-primary);
+    z-index: 100;
 }
 
 .savings-badge.best-value {
@@ -686,6 +722,21 @@ button.subcategory-chip.active i {
     }
     50% {
         box-shadow: 0 0 0 6px rgba(245, 158, 11, 0);
+    }
+}
+
+/* Mobile: show tooltip below instead of above */
+@media (max-width: 768px) {
+    .savings-badge:hover::after {
+        bottom: auto;
+        top: calc(100% + 8px);
+    }
+
+    .savings-badge:hover::before {
+        bottom: auto;
+        top: calc(100% + 2px);
+        border-top-color: transparent;
+        border-bottom-color: var(--text-primary);
     }
 }
 

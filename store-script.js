@@ -6,6 +6,9 @@ console.log('=== STORE-SCRIPT.JS FILE LOADED ===');
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Store script DOMContentLoaded fired');
 
+    // Initialize dynamic savings badges
+    initializeSavingsBadges();
+
     // Convert "Buy Guide" links to "Add to Cart" buttons
     initializeAddToCartButtons();
 
@@ -593,4 +596,62 @@ async function handleAddToCartClick(e) {
         console.error('Cart UI not available');
         alert('Unable to add to cart. Please try again.');
     }
+}
+
+/**
+ * Initialize dynamic savings badges
+ * Calculates savings based on actual guide count in each category
+ */
+function initializeSavingsBadges() {
+    const GUIDE_PRICE = 5.99;
+    const FULL_PACKAGE_PRICE = 49.99;
+
+    // Count guides in each category
+    const guideCards = document.querySelectorAll('.guide-card');
+    const categoryCounts = {};
+
+    guideCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (category) {
+            categoryCounts[category] = (categoryCounts[category] || 0) + 1;
+        }
+    });
+
+    console.log('Guide counts by category:', categoryCounts);
+
+    // Update savings badges
+    const savingsBadges = document.querySelectorAll('.savings-badge[data-category]');
+
+    savingsBadges.forEach(badge => {
+        const category = badge.getAttribute('data-category');
+        const guideCount = categoryCounts[category] || 0;
+
+        if (guideCount === 0) {
+            badge.style.display = 'none';
+            return;
+        }
+
+        const individualTotal = guideCount * GUIDE_PRICE;
+        const savings = individualTotal - FULL_PACKAGE_PRICE;
+        const savingsPercent = Math.round((savings / individualTotal) * 100);
+
+        // Only show badge if there are actual savings
+        if (savingsPercent > 0) {
+            badge.textContent = `Save ${savingsPercent}%`;
+            badge.setAttribute('data-tooltip',
+                `${guideCount} guides at $${GUIDE_PRICE} each = $${individualTotal.toFixed(2)}. You save $${savings.toFixed(2)}!`
+            );
+
+            // Add best-value class for highest savings (over 50%)
+            if (savingsPercent >= 50) {
+                badge.classList.add('best-value');
+            }
+        } else {
+            // No savings - hide badge or show "Bundle Deal"
+            badge.textContent = 'Bundle Deal';
+            badge.setAttribute('data-tooltip',
+                `Get all ${guideCount} ${category} guides plus NCLEX questions & reference sheets!`
+            );
+        }
+    });
 }

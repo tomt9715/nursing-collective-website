@@ -241,6 +241,7 @@
     box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);
     position: relative;
     overflow: hidden;
+    z-index: 0;
 }
 
 .btn-outline-primary::before {
@@ -253,6 +254,7 @@
     background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
     opacity: 0;
     transition: opacity 0.3s ease;
+    z-index: -1;
 }
 
 .btn-outline-primary:hover::before {
@@ -266,7 +268,6 @@
 
 .btn-outline-primary * {
     position: relative;
-    z-index: 1;
 }
 
 .btn-light {

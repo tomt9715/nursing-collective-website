@@ -199,22 +199,74 @@
     border-bottom: 1px solid var(--border-color);
 }
 
+/* Form Sections */
+.form-section {
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.form-section-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-section-title::before {
+    content: '';
+    width: 4px;
+    height: 16px;
+    background: var(--primary-color);
+    border-radius: 2px;
+}
+
+/* Form Rows for side-by-side fields */
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-group-half {
+    flex: 1;
+}
+
+/* Required field indicator */
+.required {
+    color: #ef4444;
+    font-weight: 400;
+}
+
 /* Form Groups */
 .form-group {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
 }
 
 .form-group label {
     display: block;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--text-primary);
     margin-bottom: 8px;
 }
 
-.form-group input[type="email"] {
+.form-group input[type="email"],
+.form-group input[type="text"],
+.form-group select {
     width: 100%;
-    padding: 14px 16px;
+    padding: 12px 14px;
     border: 2px solid var(--border-color);
     border-radius: 8px;
     font-size: 1rem;
@@ -224,14 +276,26 @@
     font-family: 'Source Sans 3', sans-serif;
 }
 
-.form-group input[type="email"]:focus {
+.form-group input[type="email"]:focus,
+.form-group input[type="text"]:focus,
+.form-group select:focus {
     outline: none;
     border-color: var(--primary-color);
     box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
 }
 
-.form-group input[type="email"]::placeholder {
+.form-group input[type="email"]::placeholder,
+.form-group input[type="text"]::placeholder {
     color: var(--text-light);
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
 }
 
 .form-hint {
@@ -240,7 +304,42 @@
     margin-top: 8px;
 }
 
-/* Stripe Payment Element Container */
+/* Stripe Card Element Container */
+.stripe-element {
+    padding: 14px 16px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--background-white);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    min-height: 48px;
+}
+
+.stripe-element:hover {
+    border-color: #a0aec0;
+}
+
+.stripe-element.StripeElement--focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
+}
+
+.stripe-element.StripeElement--invalid {
+    border-color: #ef4444;
+}
+
+.stripe-element.StripeElement--complete {
+    border-color: #10b981;
+}
+
+/* Card errors */
+.card-errors {
+    color: #ef4444;
+    font-size: 0.85rem;
+    margin-top: 8px;
+    min-height: 20px;
+}
+
+/* Legacy Payment Element Container (for embedded checkout fallback) */
 #payment-element {
     min-height: 150px;
     padding: 16px;
@@ -397,8 +496,21 @@
     }
 
     .form-group input[type="email"],
-    #payment-element {
+    .form-group input[type="text"],
+    .form-group select,
+    #payment-element,
+    .stripe-element {
         padding: 12px;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .form-group-half {
+        flex: none;
+        width: 100%;
     }
 
     #payment-form button[type="submit"] {
@@ -467,14 +579,22 @@
 }
 
 [data-theme="dark"] .form-group input[type="email"],
-[data-theme="dark"] #payment-element {
+[data-theme="dark"] .form-group input[type="text"],
+[data-theme="dark"] .form-group select,
+[data-theme="dark"] #payment-element,
+[data-theme="dark"] .stripe-element {
     background: var(--background-light);
     border-color: var(--border-color);
     color: var(--text-primary);
 }
 
-[data-theme="dark"] .form-group input[type="email"]::placeholder {
+[data-theme="dark"] .form-group input[type="email"]::placeholder,
+[data-theme="dark"] .form-group input[type="text"]::placeholder {
     color: var(--text-light);
+}
+
+[data-theme="dark"] .form-group select {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%239ca3af' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
 [data-theme="dark"] .trust-badge i {

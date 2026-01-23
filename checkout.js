@@ -1,7 +1,9 @@
 /**
- * FlorenceBot Pro Checkout
- * Handles cart-based checkout with Stripe Embedded Checkout.
- * Supports both authenticated users and guest checkout.
+ * FlorenceBot Pro Checkout - Stripe Elements Implementation
+ *
+ * Uses Stripe Elements (CardElement) for a fully customizable payment form.
+ * Card data never touches our servers - goes directly to Stripe.
+ * We collect customer info (name, email, address) and send it with the payment.
  */
 
 // Configuration
@@ -10,12 +12,13 @@ const AUTH_API_URL = 'https://api.thenursingcollective.pro';
 
 // Global state
 let stripe = null;
-let checkout = null; // Stripe embedded checkout instance
+let cardElement = null;
 let cartItems = [];
 let cartSubtotal = 0;
 let isUserAuthenticated = false;
 let singleProductMode = false;
 let currentProduct = null;
+let clientSecret = null;
 
 // Category display names
 const CATEGORY_NAMES = {
@@ -41,11 +44,14 @@ async function initCheckout() {
         signInPrompt.style.display = 'block';
     }
 
-    // Pre-fill email if user is authenticated
+    // Pre-fill user data if authenticated
     if (isUserAuthenticated) {
         const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
         if (user.email) {
             document.getElementById('email').value = user.email;
+        }
+        if (user.name || user.displayName) {
+            document.getElementById('name').value = user.name || user.displayName;
         }
     }
 
@@ -70,8 +76,8 @@ async function initCheckout() {
         if (singleProductMode && currentProduct && currentProduct.type === 'subscription') {
             setupSubscriptionFlow();
         } else {
-            // Setup embedded checkout
-            setupEmbeddedCheckout();
+            // Setup Stripe Elements for card payment
+            await setupStripeElements();
         }
     } catch (error) {
         console.error('Checkout initialization error:', error);
@@ -421,9 +427,6 @@ function addCheckoutItemStyles() {
             color: var(--primary-color);
             font-size: 0.95rem;
         }
-        #checkout-container {
-            min-height: 400px;
-        }
     `;
     document.head.appendChild(styleEl);
 }
@@ -441,168 +444,162 @@ function getTypeLabel(type) {
 }
 
 /**
- * Setup embedded checkout - loads Stripe immediately for authenticated users,
- * shows email field for guests with payment form visible
+ * Setup Stripe Elements with CardElement
  */
-async function setupEmbeddedCheckout() {
-    const paymentElementContainer = document.getElementById('payment-element');
+async function setupStripeElements() {
     const submitButton = document.getElementById('submit-button');
-    const buttonText = document.getElementById('button-text');
-    const emailInput = document.getElementById('email');
-
-    // If user is authenticated, load checkout immediately
-    if (isUserAuthenticated && emailInput.value) {
-        await initEmbeddedCheckout(emailInput.value);
-        return;
-    }
-
-    // For guests, show loading state then load checkout with placeholder
-    paymentElementContainer.innerHTML = `
-        <div id="checkout-container" style="min-height: 400px; display: flex; align-items: center; justify-content: center;">
-            <div style="text-align: center;">
-                <div class="spinner spinner-primary" style="margin-bottom: 12px;"></div>
-                <p style="color: var(--text-secondary);">Loading secure payment form...</p>
-            </div>
-        </div>
-    `;
-
-    // Update button for guests
-    buttonText.textContent = 'Complete Purchase';
-    submitButton.disabled = false;
-
-    // Load embedded checkout for guests (email will be collected before final submit)
-    await initEmbeddedCheckoutForGuest();
-}
-
-/**
- * Initialize the Stripe embedded checkout for authenticated users (with email)
- */
-async function initEmbeddedCheckout(email) {
-    const submitButton = document.getElementById('submit-button');
-    const paymentElementContainer = document.getElementById('payment-element');
+    const cardErrorsEl = document.getElementById('card-errors');
 
     try {
-        // Prepare payload with email for authenticated users
-        const payload = {
-            email: email,
-            return_url: `${window.location.origin}/success.html`
-        };
+        // Create a PaymentIntent on the server
+        const paymentIntentData = await createPaymentIntent();
+        clientSecret = paymentIntentData.clientSecret;
 
-        // Call checkout API to get client secret
-        const response = await fetch(`${AUTH_API_URL}/cart/checkout/create-embedded-session`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            },
-            body: JSON.stringify(payload)
+        // Create Stripe Elements instance with appearance options
+        const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+        const appearance = getStripeAppearance(isDarkMode);
+
+        const elements = stripe.elements({
+            clientSecret,
+            appearance
         });
 
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.error || 'Failed to create checkout session');
-        }
-
-        const data = await response.json();
-
-        // Initialize embedded checkout
-        checkout = await stripe.initEmbeddedCheckout({
-            clientSecret: data.clientSecret,
+        // Create and mount the Card Element
+        cardElement = elements.create('card', {
+            style: getCardElementStyle(isDarkMode),
+            hidePostalCode: true // We collect postal code in our own form
         });
 
-        // Clear container and mount checkout
-        paymentElementContainer.innerHTML = '<div id="checkout-container"></div>';
-        checkout.mount('#checkout-container');
+        cardElement.mount('#card-element');
 
-        // Hide the form elements since Stripe handles everything
-        document.getElementById('email').closest('.form-group').style.display = 'none';
-        submitButton.style.display = 'none';
+        // Handle real-time validation errors
+        cardElement.on('change', (event) => {
+            if (event.error) {
+                cardErrorsEl.textContent = event.error.message;
+            } else {
+                cardErrorsEl.textContent = '';
+            }
 
-        // Hide the "Card Information" label
-        const cardLabel = paymentElementContainer.closest('.form-group').querySelector('label');
-        if (cardLabel) cardLabel.style.display = 'none';
+            // Enable submit button when card is complete
+            updateSubmitButton(event.complete);
+        });
+
+        // Handle focus/blur for styling
+        cardElement.on('focus', () => {
+            document.getElementById('card-element').classList.add('StripeElement--focus');
+        });
+
+        cardElement.on('blur', () => {
+            document.getElementById('card-element').classList.remove('StripeElement--focus');
+        });
+
+        // Listen for theme changes
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+                if (mutation.attributeName === 'data-theme') {
+                    const newIsDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+                    cardElement.update({ style: getCardElementStyle(newIsDarkMode) });
+                }
+            });
+        });
+        observer.observe(document.documentElement, { attributes: true });
+
+        // Enable submit button (form validation will handle the rest)
+        submitButton.disabled = false;
 
     } catch (error) {
-        console.error('Embedded checkout error:', error);
-        showError(error.message || 'Failed to load payment form. Please try again.');
-        showFallbackMessage(paymentElementContainer);
+        console.error('Stripe Elements setup error:', error);
+        showError(error.message || 'Failed to load payment form. Please refresh the page.');
     }
 }
 
 /**
- * Initialize the Stripe embedded checkout for guest users (no email required upfront)
- * Stripe will collect the email in its embedded form
+ * Create a PaymentIntent on the server
  */
-async function initEmbeddedCheckoutForGuest() {
+async function createPaymentIntent() {
+    const headers = {
+        'Content-Type': 'application/json'
+    };
+
+    // Add auth header if authenticated
+    if (isUserAuthenticated) {
+        headers['Authorization'] = `Bearer ${localStorage.getItem('accessToken')}`;
+    }
+
+    const payload = {
+        items: cartItems.map(item => ({
+            product_id: item.product_id,
+            product_name: item.product_name,
+            product_type: item.product_type,
+            price: item.price,
+            quantity: item.quantity || 1
+        })),
+        return_url: `${window.location.origin}/success.html`
+    };
+
+    const response = await fetch(`${AUTH_API_URL}/cart/checkout/create-payment-intent`, {
+        method: 'POST',
+        headers,
+        body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to create payment session');
+    }
+
+    return await response.json();
+}
+
+/**
+ * Get Stripe appearance config based on theme
+ */
+function getStripeAppearance(isDarkMode) {
+    return {
+        theme: isDarkMode ? 'night' : 'stripe',
+        variables: {
+            colorPrimary: '#2E86AB',
+            colorBackground: isDarkMode ? '#1e1e2e' : '#ffffff',
+            colorText: isDarkMode ? '#f5f5f5' : '#1a1a1a',
+            colorDanger: '#ef4444',
+            fontFamily: '"Source Sans 3", system-ui, sans-serif',
+            borderRadius: '8px'
+        }
+    };
+}
+
+/**
+ * Get Card Element styling based on theme
+ */
+function getCardElementStyle(isDarkMode) {
+    return {
+        base: {
+            color: isDarkMode ? '#f5f5f5' : '#1a1a1a',
+            fontFamily: '"Source Sans 3", system-ui, sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: isDarkMode ? '#6b7280' : '#9ca3af'
+            }
+        },
+        invalid: {
+            color: '#ef4444',
+            iconColor: '#ef4444'
+        }
+    };
+}
+
+/**
+ * Update submit button state
+ */
+function updateSubmitButton(cardComplete) {
     const submitButton = document.getElementById('submit-button');
-    const paymentElementContainer = document.getElementById('payment-element');
+    const form = document.getElementById('payment-form');
 
-    try {
-        // Prepare payload without email - Stripe will collect it
-        const payload = {
-            return_url: `${window.location.origin}/success.html`,
-            items: cartItems.map(item => ({
-                product_id: item.product_id,
-                product_name: item.product_name,
-                product_type: item.product_type,
-                price: item.price,
-                quantity: item.quantity || 1
-            }))
-        };
+    // Check if form is valid (all required fields filled)
+    const formValid = form.checkValidity();
 
-        // Call checkout API to get client secret
-        const response = await fetch(`${AUTH_API_URL}/cart/checkout/create-embedded-session`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        });
-
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.error || 'Failed to create checkout session');
-        }
-
-        const data = await response.json();
-
-        // Initialize embedded checkout
-        checkout = await stripe.initEmbeddedCheckout({
-            clientSecret: data.clientSecret,
-        });
-
-        // Clear container and mount checkout
-        paymentElementContainer.innerHTML = '<div id="checkout-container"></div>';
-        checkout.mount('#checkout-container');
-
-        // Hide the custom email field since Stripe will collect it
-        document.getElementById('email').closest('.form-group').style.display = 'none';
-        submitButton.style.display = 'none';
-
-        // Hide the "Card Information" label
-        const cardLabel = paymentElementContainer.closest('.form-group').querySelector('label');
-        if (cardLabel) cardLabel.style.display = 'none';
-
-    } catch (error) {
-        console.error('Embedded checkout error:', error);
-        showError(error.message || 'Failed to load payment form. Please try again.');
-        showFallbackMessage(paymentElementContainer);
-    }
-}
-
-/**
- * Show fallback message when checkout fails to load
- */
-function showFallbackMessage(container) {
-    container.innerHTML = `
-        <div id="checkout-container">
-            <div style="padding: 20px; text-align: center; color: var(--text-secondary); background: var(--background-light); border-radius: 12px;">
-                <i class="fas fa-exclamation-circle" style="font-size: 2rem; margin-bottom: 12px; color: var(--error-color);"></i>
-                <p style="margin-bottom: 8px;">Failed to load payment form.</p>
-                <p style="font-size: 0.85rem;">Please refresh the page and try again.</p>
-            </div>
-        </div>
-    `;
+    submitButton.disabled = !(cardComplete && formValid);
 }
 
 /**
@@ -610,66 +607,171 @@ function showFallbackMessage(container) {
  */
 function setupSubscriptionFlow() {
     const subscriptionNotice = document.getElementById('subscription-notice');
-    const paymentElementContainer = document.getElementById('payment-element');
+    const cardSection = document.querySelector('.form-section:last-of-type');
     const submitButton = document.getElementById('submit-button');
     const buttonText = document.getElementById('button-text');
+    const buttonIcon = document.getElementById('button-icon');
 
     // Show subscription notice
     subscriptionNotice.style.display = 'flex';
 
-    // Hide payment element and show redirect message
-    paymentElementContainer.innerHTML = `
-        <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
-            <i class="fas fa-external-link-alt" style="font-size: 2rem; margin-bottom: 12px; color: var(--primary-color);"></i>
-            <p>You'll be redirected to Stripe's secure checkout to complete your subscription.</p>
-        </div>
-    `;
+    // Hide card section - subscriptions use Stripe Checkout
+    if (cardSection) {
+        cardSection.innerHTML = `
+            <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
+                <i class="fas fa-external-link-alt" style="font-size: 2rem; margin-bottom: 12px; color: var(--primary-color);"></i>
+                <p>You'll be redirected to Stripe's secure checkout to complete your subscription.</p>
+            </div>
+        `;
+    }
 
-    // Update button text
+    // Update button
     buttonText.textContent = 'Continue to Checkout';
+    buttonIcon.className = 'fas fa-external-link-alt';
     submitButton.disabled = false;
 }
 
 /**
- * Handle form submission (only used for subscriptions now)
+ * Handle form submission
  */
 async function handleSubmit(event) {
     event.preventDefault();
 
     const submitButton = document.getElementById('submit-button');
     const buttonText = document.getElementById('button-text');
+    const buttonIcon = document.getElementById('button-icon');
     const spinner = document.getElementById('button-spinner');
-    const emailInput = document.getElementById('email');
 
-    // For subscriptions, we still need email validation
+    // Get form values
+    const email = document.getElementById('email').value.trim();
+    const name = document.getElementById('name').value.trim();
+    const address = document.getElementById('address').value.trim();
+    const address2 = document.getElementById('address2').value.trim();
+    const city = document.getElementById('city').value.trim();
+    const state = document.getElementById('state').value.trim();
+    const zip = document.getElementById('zip').value.trim();
+    const country = document.getElementById('country').value;
+
+    // Validate email
+    if (!email || !isValidEmail(email)) {
+        showError('Please enter a valid email address.');
+        document.getElementById('email').focus();
+        return;
+    }
+
+    // Validate required fields
+    if (!name || !address || !city || !state || !zip) {
+        showError('Please fill in all required fields.');
+        return;
+    }
+
+    hideError();
+
+    // Handle subscription checkout (redirect to Stripe)
     if (singleProductMode && currentProduct && currentProduct.type === 'subscription') {
-        const email = emailInput.value.trim();
-        if (!email || !isValidEmail(email)) {
-            showError('Please enter a valid email address.');
-            emailInput.classList.add('error');
-            emailInput.focus();
-            return;
-        }
-        emailInput.classList.remove('error');
-
-        // Disable button and show loading state
         submitButton.disabled = true;
-        buttonText.textContent = 'Processing...';
+        buttonText.textContent = 'Redirecting...';
+        buttonIcon.style.display = 'none';
         spinner.style.display = 'inline-block';
-        submitButton.classList.add('processing');
 
         try {
             await handleSubscriptionCheckout(email);
         } catch (error) {
-            console.error('Checkout error:', error);
-            showError(error.message || 'Checkout failed. Please try again.');
+            console.error('Subscription checkout error:', error);
+            showError(error.message || 'Failed to start checkout. Please try again.');
 
-            // Reset button state
             submitButton.disabled = false;
             buttonText.textContent = 'Continue to Checkout';
+            buttonIcon.style.display = 'inline-block';
+            buttonIcon.className = 'fas fa-external-link-alt';
             spinner.style.display = 'none';
-            submitButton.classList.remove('processing');
         }
+        return;
+    }
+
+    // Disable button and show loading state
+    submitButton.disabled = true;
+    buttonText.textContent = 'Processing...';
+    buttonIcon.style.display = 'none';
+    spinner.style.display = 'inline-block';
+
+    try {
+        // Confirm the payment with Stripe
+        const { error, paymentIntent } = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                card: cardElement,
+                billing_details: {
+                    name: name,
+                    email: email,
+                    address: {
+                        line1: address,
+                        line2: address2 || null,
+                        city: city,
+                        state: state,
+                        postal_code: zip,
+                        country: country
+                    }
+                }
+            },
+            receipt_email: email
+        });
+
+        if (error) {
+            // Show error to customer
+            if (error.type === 'card_error' || error.type === 'validation_error') {
+                showError(error.message);
+            } else {
+                showError('An unexpected error occurred. Please try again.');
+            }
+
+            // Report payment errors
+            if (typeof captureError === 'function') {
+                captureError(error, {
+                    action: 'payment_confirmation',
+                    errorType: error.type,
+                    errorCode: error.code
+                });
+            }
+
+            // Reset button
+            submitButton.disabled = false;
+            buttonText.textContent = 'Complete Purchase';
+            buttonIcon.style.display = 'inline-block';
+            buttonIcon.className = 'fas fa-lock';
+            spinner.style.display = 'none';
+        } else if (paymentIntent.status === 'succeeded') {
+            // Payment succeeded - redirect to success page
+            buttonText.textContent = 'Payment Successful!';
+
+            // Clear cart
+            if (typeof cartManager !== 'undefined') {
+                await cartManager.clearCart();
+            }
+
+            // Redirect to success page
+            window.location.href = `success.html?payment_intent=${paymentIntent.id}`;
+        } else if (paymentIntent.status === 'requires_action') {
+            // 3D Secure or other authentication required
+            // Stripe.js handles this automatically in most cases
+            buttonText.textContent = 'Authenticating...';
+        } else {
+            // Unexpected status
+            showError('Payment processing. Please wait...');
+        }
+
+    } catch (error) {
+        console.error('Payment error:', error);
+        showError('Payment failed. Please try again.');
+
+        if (typeof captureError === 'function') {
+            captureError(error, { action: 'payment_submission' });
+        }
+
+        submitButton.disabled = false;
+        buttonText.textContent = 'Complete Purchase';
+        buttonIcon.style.display = 'inline-block';
+        buttonIcon.className = 'fas fa-lock';
+        spinner.style.display = 'none';
     }
 }
 
@@ -677,33 +779,28 @@ async function handleSubmit(event) {
  * Handle subscription checkout redirect
  */
 async function handleSubscriptionCheckout(email) {
-    try {
-        const response = await fetch(`${PAYMENT_API_URL}/api/create-subscription`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                product_id: currentProduct.product_id,
-                email: email,
-                success_url: `${window.location.origin}/success.html?session_id={CHECKOUT_SESSION_ID}&product=${currentProduct.product_id}`,
-                cancel_url: `${window.location.origin}/checkout.html?product=${currentProduct.product_id}`,
-            }),
-        });
+    const response = await fetch(`${PAYMENT_API_URL}/api/create-subscription`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            product_id: currentProduct.product_id,
+            email: email,
+            success_url: `${window.location.origin}/success.html?session_id={CHECKOUT_SESSION_ID}&product=${currentProduct.product_id}`,
+            cancel_url: `${window.location.origin}/checkout.html?product=${currentProduct.product_id}`,
+        }),
+    });
 
-        if (!response.ok) {
-            const error = await response.json();
-            throw new Error(error.error || 'Failed to create subscription checkout');
-        }
-
-        const data = await response.json();
-
-        // Redirect to Stripe Checkout
-        window.location.href = data.url;
-
-    } catch (error) {
-        throw error;
+    if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.error || 'Failed to create subscription checkout');
     }
+
+    const data = await response.json();
+
+    // Redirect to Stripe Checkout
+    window.location.href = data.url;
 }
 
 /**
@@ -756,16 +853,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Setup form submission handler
     const paymentForm = document.getElementById('payment-form');
     paymentForm.addEventListener('submit', handleSubmit);
+
+    // Add input listeners for form validation
+    const requiredInputs = paymentForm.querySelectorAll('input[required], select[required]');
+    requiredInputs.forEach(input => {
+        input.addEventListener('input', () => {
+            // Trigger button state update
+            const cardComplete = cardElement && document.getElementById('card-element').classList.contains('StripeElement--complete');
+            updateSubmitButton(cardComplete || false);
+        });
+    });
 });
 
 // Re-initialize if user navigates back
 window.addEventListener('pageshow', (event) => {
     if (event.persisted) {
         // Page was loaded from cache (back button)
-        // Destroy existing checkout if any
-        if (checkout) {
-            checkout.destroy();
-            checkout = null;
+        // Destroy existing card element if any
+        if (cardElement) {
+            cardElement.destroy();
+            cardElement = null;
         }
         setTimeout(() => initCheckout(), 100);
     }
@@ -773,7 +880,7 @@ window.addEventListener('pageshow', (event) => {
 
 // Cleanup on page unload
 window.addEventListener('beforeunload', () => {
-    if (checkout) {
-        checkout.destroy();
+    if (cardElement) {
+        cardElement.destroy();
     }
 });

@@ -135,34 +135,142 @@
                     </div>
 
                     <form id="payment-form">
-                        <!-- Email Input -->
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                placeholder="your@email.com"
-                                required
-                                autocomplete="email"
-                            >
-                            <p class="form-hint">Your receipt and guide access will be sent to this email.</p>
+                        <!-- Contact Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Contact Information</h3>
+
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    placeholder="your@email.com"
+                                    required
+                                    autocomplete="email"
+                                >
+                                <p class="form-hint">Your receipt and guide access will be sent to this email.</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">Full Name <span class="required">*</span></label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    placeholder="John Doe"
+                                    required
+                                    autocomplete="name"
+                                >
+                            </div>
                         </div>
 
-                        <!-- Stripe Payment Element -->
-                        <div class="form-group">
-                            <label>Card Information</label>
-                            <div id="payment-element">
-                                <!-- Stripe Payment Element will be mounted here -->
-                                <div class="payment-element-loading">
-                                    <div class="spinner spinner-primary"></div>
-                                    <span>Loading payment form...</span>
+                        <!-- Billing Address -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Billing Address</h3>
+
+                            <div class="form-group">
+                                <label for="address">Street Address <span class="required">*</span></label>
+                                <input
+                                    type="text"
+                                    id="address"
+                                    name="address"
+                                    placeholder="123 Main Street"
+                                    required
+                                    autocomplete="address-line1"
+                                >
+                            </div>
+
+                            <div class="form-group">
+                                <label for="address2">Apartment, suite, etc. (optional)</label>
+                                <input
+                                    type="text"
+                                    id="address2"
+                                    name="address2"
+                                    placeholder="Apt 4B"
+                                    autocomplete="address-line2"
+                                >
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group form-group-half">
+                                    <label for="city">City <span class="required">*</span></label>
+                                    <input
+                                        type="text"
+                                        id="city"
+                                        name="city"
+                                        placeholder="New York"
+                                        required
+                                        autocomplete="address-level2"
+                                    >
                                 </div>
+                                <div class="form-group form-group-half">
+                                    <label for="state">State <span class="required">*</span></label>
+                                    <input
+                                        type="text"
+                                        id="state"
+                                        name="state"
+                                        placeholder="NY"
+                                        required
+                                        autocomplete="address-level1"
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group form-group-half">
+                                    <label for="zip">ZIP Code <span class="required">*</span></label>
+                                    <input
+                                        type="text"
+                                        id="zip"
+                                        name="zip"
+                                        placeholder="10001"
+                                        required
+                                        autocomplete="postal-code"
+                                    >
+                                </div>
+                                <div class="form-group form-group-half">
+                                    <label for="country">Country <span class="required">*</span></label>
+                                    <select id="country" name="country" required autocomplete="country">
+                                        <option value="US" selected>United States</option>
+                                        <option value="CA">Canada</option>
+                                        <option value="GB">United Kingdom</option>
+                                        <option value="AU">Australia</option>
+                                        <option value="DE">Germany</option>
+                                        <option value="FR">France</option>
+                                        <option value="IT">Italy</option>
+                                        <option value="ES">Spain</option>
+                                        <option value="NL">Netherlands</option>
+                                        <option value="BE">Belgium</option>
+                                        <option value="AT">Austria</option>
+                                        <option value="CH">Switzerland</option>
+                                        <option value="IE">Ireland</option>
+                                        <option value="NZ">New Zealand</option>
+                                        <option value="SG">Singapore</option>
+                                        <option value="JP">Japan</option>
+                                        <option value="MX">Mexico</option>
+                                        <option value="BR">Brazil</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Information -->
+                        <div class="form-section">
+                            <h3 class="form-section-title">Card Information</h3>
+
+                            <div class="form-group">
+                                <label for="card-element">Card Details <span class="required">*</span></label>
+                                <div id="card-element" class="stripe-element">
+                                    <!-- Stripe Card Element will be mounted here -->
+                                </div>
+                                <div id="card-errors" class="card-errors" role="alert"></div>
                             </div>
                         </div>
 
                         <!-- Submit Button -->
                         <button type="submit" id="submit-button" class="btn btn-primary btn-large btn-block" disabled>
+                            <i class="fas fa-lock" id="button-icon"></i>
                             <span id="button-text">Complete Purchase</span>
                             <div class="spinner" id="button-spinner" style="display: none;"></div>
                         </button>

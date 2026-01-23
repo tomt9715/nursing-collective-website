@@ -12,7 +12,16 @@
     gap: 40px;
     max-width: 1400px;
     margin: 0 auto;
-    align-items: start;
+    align-items: start !important;
+}
+
+/* Ensure parent containers don't break sticky */
+.store-section {
+    overflow: visible !important;
+}
+
+.store-section .container-fluid {
+    overflow: visible !important;
 }
 
 /* ============================================
@@ -24,13 +33,24 @@
     border-radius: 16px;
     padding: 24px;
     height: fit-content;
+    position: -webkit-sticky !important;
     position: sticky !important;
     top: 110px !important;
-    align-self: flex-start;
+    align-self: start !important;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--border-color);
     max-height: calc(100vh - 130px);
     overflow-y: auto;
+    z-index: 10;
+}
+
+/* Force sticky on desktop - override bundle.min.css responsive rules */
+@media (min-width: 969px) {
+    .store-sidebar {
+        position: -webkit-sticky !important;
+        position: sticky !important;
+        top: 110px !important;
+    }
 }
 
 .sidebar-section {

@@ -92,6 +92,12 @@
     box-shadow: none;
 }
 
+/* Packages Show More - span full grid width */
+#show-more-packages-container {
+    grid-column: 1 / -1; /* Span all columns */
+    text-align: center;
+}
+
 .sidebar-section {
     margin-bottom: 32px;
 }

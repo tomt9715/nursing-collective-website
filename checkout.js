@@ -75,6 +75,17 @@ async function initCheckout() {
         }
     } catch (error) {
         console.error('Checkout initialization error:', error);
+
+        // Report checkout errors to Sentry (critical path)
+        if (typeof captureError === 'function') {
+            captureError(error, {
+                action: 'checkout_init',
+                singleProductMode: singleProductMode,
+                cartItemCount: cartItems.length,
+                isAuthenticated: isUserAuthenticated
+            });
+        }
+
         showError('Failed to initialize checkout. Please try again later.');
     }
 }
@@ -93,6 +104,12 @@ async function initStripe() {
         stripe = Stripe(config.publishableKey);
     } catch (error) {
         console.error('Stripe initialization error:', error);
+
+        // Report Stripe init failures (critical)
+        if (typeof captureError === 'function') {
+            captureError(error, { action: 'stripe_init' });
+        }
+
         throw new Error('Failed to initialize payment system');
     }
 }

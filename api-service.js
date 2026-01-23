@@ -69,6 +69,16 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
             throw error;
         }
         console.error('API call error:', error);
+
+        // Report to Sentry with context
+        if (typeof captureError === 'function') {
+            captureError(error, {
+                endpoint: endpoint,
+                method: options.method || 'GET',
+                hasToken: !!token
+            });
+        }
+
         throw error;
     }
 }

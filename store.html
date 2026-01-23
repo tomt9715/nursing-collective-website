@@ -23,6 +23,9 @@
     <!-- Bundled CSS (Bootstrap + custom styles, purged and minified) -->
     <link rel="stylesheet" href="css/bundle.min.css">
 
+    <!-- Store-specific styles (includes new features) -->
+    <link rel="stylesheet" href="css/store-style.css?v=2">
+
 
     <!-- Bootstrap 5 CSS -->
 
@@ -248,8 +251,8 @@
                         <h2 id="category-title">All Study Guides</h2>
                         <p id="category-description">Browse our complete collection of nursing study guides</p>
 
-                        <!-- Search Bar -->
-                        <div class="store-search-container" style="margin-top: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+                        <!-- Search Bar (only shown for individual guides) -->
+                        <div class="store-search-container" id="search-container" style="margin-top: 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
                             <div class="store-search-box" style="position: relative; flex: 1; max-width: 450px; min-width: 280px;">
                                 <i class="fas fa-search" style="position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #2E86AB; font-size: 1.1rem; z-index: 2; pointer-events: none;"></i>
                                 <input type="text" id="guide-search" placeholder="Search guides (e.g., heart, diabetes, stroke...)" style="width: 100%; padding: 14px 48px; border: 2px solid #e5e7eb; border-radius: 50px; font-size: 1rem; font-family: 'Source Sans 3', sans-serif; background: #ffffff; color: #1f2937; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06); height: auto; line-height: 1.5;">

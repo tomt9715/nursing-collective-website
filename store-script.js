@@ -26,6 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const switchToPackagesBtn = document.getElementById('switch-to-packages-btn');
 
     // Search elements
+    const searchContainer = document.getElementById('search-container');
     const searchInput = document.getElementById('guide-search');
     const searchClear = document.getElementById('search-clear');
     const searchResultsCount = document.getElementById('search-results-count');
@@ -233,6 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (packageCalloutSection) packageCalloutSection.style.display = 'block';
                 if (packageComparison) packageComparison.style.display = 'none';
                 if (emptyState) emptyState.style.display = 'none';
+                if (searchContainer) searchContainer.style.display = 'flex';
 
                 // Update header
                 categoryTitle.textContent = 'All Study Guides';
@@ -288,6 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (packageCalloutSection) packageCalloutSection.style.display = 'none';
                 if (packageComparison) packageComparison.style.display = 'block';
                 if (emptyState) emptyState.style.display = 'none';
+                if (searchContainer) searchContainer.style.display = 'none';
 
                 // Update header
                 categoryTitle.textContent = 'Class Packages';

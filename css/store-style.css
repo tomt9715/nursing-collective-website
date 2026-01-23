@@ -17,6 +17,7 @@
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     padding: 30px;
     align-items: flex-start;
+    overflow: visible; /* Required for sticky to work */
 }
 
 .store-section {
@@ -38,11 +39,13 @@
     background: var(--background-light);
     border-radius: 16px;
     padding: 24px;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 100px;
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 100px !important;
     align-self: flex-start;
     border: 1px solid var(--border-color);
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
 }
 
 /* Content area */

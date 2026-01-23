@@ -568,6 +568,11 @@ function getProductIconPath(productId, productType) {
         'eating-disorder': 'eating-disorder'
     };
 
+    // Special case: pediatric-nursing is in main images folder, not guide-icons
+    if (productId === 'pediatric-nursing' || productId === 'pediatrics') {
+        return 'assets/images/pediatric-nursing.webp';
+    }
+
     // Try to find in map, otherwise use the product ID directly as file name
     const iconFile = iconMap[productId] || productId;
     return `assets/images/guide-icons/${iconFile}.webp`;

@@ -29,6 +29,14 @@
     max-width: 2000px;
 }
 
+/* Force equal column widths */
+.checkout-three-column .order-summary,
+.checkout-three-column .payment-details-column,
+.checkout-three-column .payment-method-column {
+    min-width: 0;
+    width: 100%;
+}
+
 .checkout-three-column .order-summary {
     position: sticky;
     top: 100px;

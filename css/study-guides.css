@@ -296,6 +296,10 @@
     background: transparent !important;
 }
 
+.guide-actions .btn-outline-primary::before {
+    display: none !important;
+}
+
 .guide-actions .btn-outline-primary:hover,
 .guide-actions .btn-outline-primary:focus {
     background: var(--primary-color) !important;
@@ -303,13 +307,19 @@
     border-color: var(--primary-color) !important;
 }
 
+.guide-actions .btn-primary::before {
+    display: none !important;
+}
+
 .guide-actions .btn-primary {
     color: white !important;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
 }
 
 .guide-actions .btn-primary:hover,
 .guide-actions .btn-primary:focus {
     color: white !important;
+    background: linear-gradient(135deg, var(--primary-dark, #236b87) 0%, var(--secondary-dark, #8f3366) 100%) !important;
 }
 
 /* Coming Soon Section */
@@ -660,6 +670,10 @@
 }
 
 /* Fix for unlock button hover in modal */
+.preview-unlock-prompt .btn-primary::before {
+    display: none !important;
+}
+
 .preview-unlock-prompt .btn-primary {
     color: white !important;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
@@ -675,10 +689,19 @@
 }
 
 /* Fix for modal footer purchase button */
+.btn-purchase-modal::before {
+    display: none !important;
+}
+
 .btn-purchase-modal,
 .btn-purchase-modal:hover,
 .btn-purchase-modal:focus {
     color: white !important;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
+}
+
+.btn-purchase-modal:hover {
+    background: linear-gradient(135deg, var(--primary-dark, #236b87) 0%, var(--secondary-dark, #8f3366) 100%) !important;
 }
 
 /* Premium CTA Section */

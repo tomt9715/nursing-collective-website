@@ -324,10 +324,13 @@
     <script>
         // Parse URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const accessToken = urlParams.get('access_token');
-        const refreshToken = urlParams.get('refresh_token');
+        const oauthSuccess = urlParams.get('oauth'); // New: cookies are set, just need to fetch user
         const error = urlParams.get('error');
         const orderToClaim = urlParams.get('order'); // Order to claim after OAuth login
+
+        // Legacy support for URL tokens (will be removed after migration)
+        const accessToken = urlParams.get('access_token');
+        const refreshToken = urlParams.get('refresh_token');
 
         const loadingState = document.getElementById('loading-state');
         const errorState = document.getElementById('error-state');
@@ -354,53 +357,62 @@
             console.error('OAuth error:', error);
             showError('Authentication failed. Please try again.');
         }
-        // Check if tokens are present
-        else if (!accessToken || !refreshToken) {
-            console.error('Missing tokens in callback URL');
-            showError('Authentication incomplete. Missing tokens.');
+        // New flow: OAuth success with HttpOnly cookies
+        else if (oauthSuccess === 'success') {
+            console.log('OAuth callback successful, fetching user data with cookies');
+
+            // Fetch user data using HttpOnly cookies
+            fetch('https://api.thenursingcollective.pro/auth/me', {
+                method: 'GET',
+                credentials: 'include' // Include HttpOnly cookies
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to authenticate');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.user) {
+                    // Store user data only (tokens are in HttpOnly cookies)
+                    localStorage.setItem('user', JSON.stringify(data.user));
+                    console.log('User data stored, redirecting to dashboard');
+
+                    // Build redirect URL (include order param if present)
+                    let redirectUrl = 'dashboard.html';
+                    if (orderToClaim) {
+                        redirectUrl += `?order=${encodeURIComponent(orderToClaim)}`;
+                    }
+
+                    // Redirect to dashboard with minimum loading time
+                    redirectWithMinTime(() => {
+                        window.location.href = redirectUrl;
+                    });
+                } else {
+                    throw new Error('Failed to fetch user data');
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching user data:', error);
+                showError('Failed to complete sign in. Please try again.');
+            });
         }
-        // Success - store tokens and redirect
-        else {
-            console.log('OAuth callback successful, storing tokens');
+        // Legacy flow: tokens in URL (for backwards compatibility during migration)
+        else if (accessToken && refreshToken) {
+            console.log('Legacy OAuth callback with URL tokens');
 
-            try {
-                // Store tokens
-                localStorage.setItem('accessToken', accessToken);
-                localStorage.setItem('refreshToken', refreshToken);
-
-                // Fetch user data
-                fetch('https://api.thenursingcollective.pro/auth/me', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${accessToken}`,
-                        'Content-Type': 'application/json'
-                    }
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.user) {
-                        // Store user data
-                        localStorage.setItem('user', JSON.stringify(data.user));
-                        console.log('User data stored, redirecting to dashboard');
-
-                        // Build redirect URL (include order param if present)
-                        let redirectUrl = 'dashboard.html';
-                        if (orderToClaim) {
-                            redirectUrl += `?order=${encodeURIComponent(orderToClaim)}`;
-                        }
-
-                        // Redirect to dashboard with minimum loading time
-                        redirectWithMinTime(() => {
-                            window.location.href = redirectUrl;
-                        });
-                    } else {
-                        throw new Error('Failed to fetch user data');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching user data:', error);
-                    // Still redirect to dashboard even if user fetch fails
-                    // The dashboard can try to fetch user data again
+            // Store user data by fetching from API
+            fetch('https://api.thenursingcollective.pro/auth/me', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${accessToken}`,
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.user) {
+                    localStorage.setItem('user', JSON.stringify(data.user));
                     let redirectUrl = 'dashboard.html';
                     if (orderToClaim) {
                         redirectUrl += `?order=${encodeURIComponent(orderToClaim)}`;
@@ -408,12 +420,18 @@
                     redirectWithMinTime(() => {
                         window.location.href = redirectUrl;
                     });
-                });
-
-            } catch (error) {
-                console.error('Error storing tokens:', error);
+                } else {
+                    throw new Error('Failed to fetch user data');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
                 showError('Failed to complete sign in. Please try again.');
-            }
+            });
+        }
+        else {
+            console.error('No OAuth success indicator or tokens in callback URL');
+            showError('Authentication incomplete. Please try again.');
         }
 
         function showError(message) {

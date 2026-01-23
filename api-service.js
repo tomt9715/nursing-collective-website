@@ -1,7 +1,7 @@
 /**
  * API Service Layer
  * Centralized API service with automatic token refresh and error handling
- * Used across dashboard, settings, and authentication pages
+ * Uses HttpOnly cookies for secure JWT storage
  */
 
 // API Configuration
@@ -15,23 +15,17 @@ const API_URL = 'https://api.thenursingcollective.pro';
  * @returns {Promise<object>} - Response data
  */
 async function apiCall(endpoint, options = {}, isRetry = false) {
-    const token = localStorage.getItem('accessToken');
-
     // Default headers
     const headers = {
         'Content-Type': 'application/json',
         ...options.headers
     };
 
-    // Add authorization header if token exists
-    if (token) {
-        headers['Authorization'] = `Bearer ${token}`;
-    }
-
     try {
         const response = await fetch(`${API_URL}${endpoint}`, {
             ...options,
-            headers
+            headers,
+            credentials: 'include' // Include HttpOnly cookies
         });
 
         // Handle 401 Unauthorized - Token expired
@@ -74,40 +68,25 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
 }
 
 /**
- * Refresh the access token using the refresh token
- * @returns {Promise<string>} - New access token
+ * Refresh the access token using HttpOnly cookie
+ * @returns {Promise<void>}
  */
 async function refreshToken() {
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    if (!refreshToken) {
-        throw new Error('No refresh token available');
-    }
-
     try {
         const response = await fetch(`${API_URL}/auth/refresh`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ refresh_token: refreshToken })
+            credentials: 'include' // Send refresh token cookie
         });
 
-        const data = await response.json();
-
         if (!response.ok) {
+            const data = await response.json();
             throw new Error(data.error || 'Token refresh failed');
         }
 
-        // Update tokens
-        localStorage.setItem('accessToken', data.access_token);
-        if (data.refresh_token) {
-            localStorage.setItem('refreshToken', data.refresh_token);
-        }
-        localStorage.setItem('tokenTimestamp', Date.now().toString());
-
         console.log('Token refreshed successfully');
-        return data.access_token;
 
     } catch (error) {
         console.error('Token refresh error:', error);
@@ -116,14 +95,24 @@ async function refreshToken() {
 }
 
 /**
- * Logout function with cross-tab synchronization
+ * Logout function - calls API to clear cookies and clears local state
  */
-function performLogout() {
-    // Clear all auth data
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
+async function performLogout() {
+    try {
+        // Call logout endpoint to clear HttpOnly cookies
+        await fetch(`${API_URL}/auth/logout`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include'
+        });
+    } catch (error) {
+        console.error('Logout API call failed:', error);
+    }
+
+    // Clear local user data
     localStorage.removeItem('user');
-    localStorage.removeItem('tokenTimestamp');
 
     // Set logout flag for cross-tab sync
     localStorage.setItem('logoutEvent', Date.now().toString());
@@ -133,11 +122,28 @@ function performLogout() {
 }
 
 /**
- * Check if user is authenticated
- * @returns {boolean} - True if user has valid access token
+ * Check if user is authenticated by verifying with server
+ * @returns {Promise<boolean>} - True if user has valid session
+ */
+async function checkAuthentication() {
+    try {
+        const response = await fetch(`${API_URL}/auth/me`, {
+            method: 'GET',
+            credentials: 'include'
+        });
+        return response.ok;
+    } catch (error) {
+        return false;
+    }
+}
+
+/**
+ * Synchronous check if user data exists locally
+ * Note: This doesn't guarantee valid session, use checkAuthentication() for that
+ * @returns {boolean}
  */
 function isAuthenticated() {
-    return !!localStorage.getItem('accessToken');
+    return !!localStorage.getItem('user');
 }
 
 /**
@@ -159,10 +165,30 @@ function setCurrentUser(userData) {
 /**
  * Require authentication - redirect to login if not authenticated
  */
-function requireAuth() {
-    if (!isAuthenticated()) {
+async function requireAuth() {
+    const isValid = await checkAuthentication();
+    if (!isValid) {
+        localStorage.removeItem('user');
         window.location.href = 'login.html';
     }
+}
+
+/**
+ * Require authentication (synchronous version for initial page load)
+ * Redirects immediately if no user data, then verifies with server
+ */
+function requireAuthSync() {
+    if (!localStorage.getItem('user')) {
+        window.location.href = 'login.html';
+        return;
+    }
+    // Verify with server in background
+    checkAuthentication().then(isValid => {
+        if (!isValid) {
+            localStorage.removeItem('user');
+            window.location.href = 'login.html';
+        }
+    });
 }
 
 // Listen for cross-tab logout events
@@ -170,10 +196,7 @@ window.addEventListener('storage', function(e) {
     if (e.key === 'logoutEvent' && e.newValue) {
         // Another tab logged out, clear local data and redirect
         console.log('Logout detected in another tab');
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
         localStorage.removeItem('user');
-        localStorage.removeItem('tokenTimestamp');
         window.location.href = 'login.html';
     }
 });

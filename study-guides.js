@@ -1,37 +1,143 @@
 // Study Guides Page JavaScript
-// Handles preview modal, 10% content preview, and purchase flow
+// Handles preview modal with placeholder content for Heart Failure and Eating Disorders
 
-// Guide metadata
-const guidesData = {
-    'electrolytes': {
-        title: 'Electrolyte Management Guide',
-        file: 'content/guides/electrolytes.md',
-        price: 5.99,
-        productId: 'electrolytes'
+// Guide preview content (realistic placeholder - 10% of full guide)
+const guidePreviewContent = {
+    'heart-failure': {
+        title: 'Heart Failure',
+        storeUrl: 'store.html?highlight=heart-failure',
+        content: `
+# Heart Failure Study Guide
+
+## Overview
+Heart failure (HF) is a complex clinical syndrome resulting from structural or functional cardiac disorders that impair the heart's ability to fill with or eject blood effectively. This guide covers the essential concepts every nursing student needs to master.
+
+---
+
+## Types of Heart Failure
+
+### Left-Sided Heart Failure
+The most common form, occurring when the left ventricle cannot effectively pump blood to the systemic circulation.
+
+**Systolic Dysfunction (HFrEF)**
+- Ejection Fraction < 40%
+- Impaired contractility
+- The heart cannot pump blood forward effectively
+
+**Diastolic Dysfunction (HFpEF)**
+- Ejection Fraction ≥ 50%
+- Impaired relaxation and filling
+- The heart cannot fill properly during diastole
+
+### Clinical Manifestations of Left-Sided HF
+- **Pulmonary congestion**: Dyspnea, orthopnea, paroxysmal nocturnal dyspnea (PND)
+- **Crackles/rales** in lung bases
+- **S3 heart sound** (ventricular gallop)
+- **Cough** - may be dry or produce pink, frothy sputum
+- **Fatigue and weakness**
+
+---
+
+## Right-Sided Heart Failure
+Often results from left-sided failure. The right ventricle cannot effectively pump blood to the pulmonary circulation.
+
+### Clinical Manifestations
+- **Peripheral edema** (dependent edema, pitting)
+- **Jugular venous distension (JVD)**
+- **Hepatomegaly** and hepatojugular reflux
+- **Ascites**
+- **Weight gain** from fluid retention
+
+---
+
+## Key Assessment Findings
+
+### FACES Mnemonic for HF Symptoms
+- **F**atigue
+- **A**ctivities limited
+- **C**hest congestion/cough
+- **E**dema
+- **S**hortness of breath
+
+---
+
+*This is a 10% preview. Purchase the full guide for complete coverage including:*
+- *Diagnostic tests and interpretation*
+- *Pharmacological management (ACE inhibitors, beta-blockers, diuretics)*
+- *Nursing interventions and patient education*
+- *NCLEX-style practice questions with rationales*
+        `
     },
-    'vital-signs': {
-        title: 'Vital Signs Assessment Guide',
-        file: 'content/guides/vital-signs.md',
-        price: 5.99,
-        productId: 'vital-signs'
-    },
-    'critical-lab-values': {
-        title: 'Critical Laboratory Values',
-        file: 'content/guides/critical-lab-values.md',
-        price: 5.99,
-        productId: 'critical-lab-values'
-    },
-    'isolation-precautions': {
-        title: 'Isolation Precautions Guide',
-        file: 'content/guides/isolation-precautions.md',
-        price: 5.99,
-        productId: 'isolation-precautions'
-    },
-    'medication-math': {
-        title: 'Medication Dosage Calculations',
-        file: 'content/guides/medication-math.md',
-        price: 5.99,
-        productId: 'medication-math'
+    'eating-disorders': {
+        title: 'Eating Disorders',
+        storeUrl: 'store.html?highlight=eating-disorders',
+        content: `
+# Eating Disorders Study Guide
+
+## Overview
+Eating disorders are serious mental health conditions characterized by persistent disturbances in eating behaviors and related thoughts and emotions. Early recognition and intervention are critical for positive outcomes.
+
+---
+
+## Types of Eating Disorders
+
+### Anorexia Nervosa
+A potentially life-threatening disorder characterized by self-starvation and excessive weight loss.
+
+**Key Diagnostic Criteria:**
+- Restriction of energy intake leading to significantly low body weight
+- Intense fear of gaining weight or becoming fat
+- Disturbance in body image perception
+- BMI < 18.5 kg/m² (adults)
+
+**Subtypes:**
+- **Restricting type**: Weight loss through dieting, fasting, or excessive exercise
+- **Binge-eating/purging type**: Episodes of binge eating or purging behaviors
+
+### Physical Assessment Findings
+- **Vital signs**: Bradycardia, hypotension, hypothermia
+- **Lanugo** (fine body hair)
+- **Dry, yellow skin**
+- **Hair loss**
+- **Amenorrhea** (in females)
+- **Muscle wasting**
+
+---
+
+### Bulimia Nervosa
+Characterized by recurrent episodes of binge eating followed by compensatory behaviors.
+
+**Key Features:**
+- Binge eating episodes (consuming large amounts in short time)
+- Sense of lack of control during binges
+- Compensatory behaviors: self-induced vomiting, laxative abuse, excessive exercise
+- Self-evaluation unduly influenced by body shape/weight
+
+**Physical Signs:**
+- **Russell's sign**: Calluses on knuckles from self-induced vomiting
+- **Dental erosion** from stomach acid
+- **Parotid gland enlargement** ("chipmunk cheeks")
+- **Electrolyte imbalances** (especially hypokalemia)
+
+---
+
+## Nursing Priorities
+
+### Safety First
+1. Monitor for **refeeding syndrome** in severely malnourished patients
+2. Assess for **suicidal ideation** (high comorbidity with depression)
+3. Monitor **vital signs** and **cardiac rhythm**
+4. Track **electrolytes** - especially potassium, phosphorus, magnesium
+
+---
+
+*This is a 10% preview. Purchase the full guide for complete coverage including:*
+- *Binge Eating Disorder assessment and treatment*
+- *Nutritional rehabilitation protocols*
+- *Therapeutic communication techniques*
+- *Medications used in treatment*
+- *NCLEX-style practice questions with rationales*
+        `
     }
 };
 
@@ -41,9 +147,7 @@ let currentPreviewGuide = null;
 // Initialize page
 document.addEventListener('DOMContentLoaded', () => {
     setupPreviewButtons();
-    setupPurchaseButtons();
     setupModalClose();
-    setupSmoothScroll();
     hideLoader();
 });
 
@@ -52,35 +156,12 @@ function setupPreviewButtons() {
     const previewButtons = document.querySelectorAll('.btn-preview');
 
     previewButtons.forEach(button => {
-        button.addEventListener('click', async (e) => {
-            e.preventDefault();
-            const guideId = button.dataset.guideId;
-            await openPreviewModal(guideId);
-        });
-    });
-}
-
-// Setup purchase button click handlers
-function setupPurchaseButtons() {
-    const purchaseButtons = document.querySelectorAll('.btn-purchase');
-
-    purchaseButtons.forEach(button => {
         button.addEventListener('click', (e) => {
             e.preventDefault();
             const guideId = button.dataset.guideId;
-            addToCartAndRedirect(guideId);
+            openPreviewModal(guideId);
         });
     });
-
-    // Modal purchase button
-    const modalPurchaseBtn = document.getElementById('btn-purchase-modal');
-    if (modalPurchaseBtn) {
-        modalPurchaseBtn.addEventListener('click', () => {
-            if (currentPreviewGuide) {
-                addToCartAndRedirect(currentPreviewGuide);
-            }
-        });
-    }
 }
 
 // Setup modal close handlers
@@ -108,161 +189,82 @@ function setupModalClose() {
     });
 }
 
-// Setup smooth scrolling for category links
-function setupSmoothScroll() {
-    const categoryLinks = document.querySelectorAll('.topic-card.available');
-
-    categoryLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                const navHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetElement.offsetTop - navHeight - 20;
-
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
-}
-
-// Open preview modal and load content
-async function openPreviewModal(guideId) {
-    const guide = guidesData[guideId];
-    if (!guide) return;
+// Open preview modal with content
+function openPreviewModal(guideId) {
+    const guide = guidePreviewContent[guideId];
+    if (!guide) {
+        console.error('Guide not found:', guideId);
+        return;
+    }
 
     currentPreviewGuide = guideId;
 
     const modal = document.getElementById('preview-modal');
     const titleEl = document.getElementById('preview-modal-title');
     const bodyEl = document.getElementById('preview-modal-body');
+    const purchaseBtn = document.getElementById('btn-purchase-modal');
 
     // Update title
-    titleEl.textContent = guide.title + ' - Preview';
+    titleEl.textContent = guide.title + ' - 10% Preview';
 
-    // Show loading state
+    // Update purchase button link
+    if (purchaseBtn) {
+        purchaseBtn.href = guide.storeUrl;
+    }
+
+    // Parse markdown to HTML
+    let html;
+    if (typeof marked !== 'undefined') {
+        html = typeof marked.parse === 'function'
+            ? marked.parse(guide.content)
+            : marked(guide.content);
+    } else {
+        // Fallback: basic markdown conversion
+        html = guide.content
+            .replace(/^# (.*$)/gm, '<h1>$1</h1>')
+            .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+            .replace(/^### (.*$)/gm, '<h3>$1</h3>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.*?)\*/g, '<em>$1</em>')
+            .replace(/^- (.*$)/gm, '<li>$1</li>')
+            .replace(/\n\n/g, '</p><p>')
+            .replace(/---/g, '<hr>');
+        html = '<p>' + html + '</p>';
+    }
+
+    // Render content
     bodyEl.innerHTML = `
-        <div class="preview-loading">
-            <div class="loader-spinner"></div>
-            <p>Loading preview...</p>
+        <div class="preview-notice">
+            <i class="fas fa-info-circle"></i>
+            <span>You're viewing a free 10% preview. Purchase for full access to all content.</span>
+        </div>
+        <div class="preview-content markdown-body">
+            ${html}
+        </div>
+        <div class="preview-fade-overlay">
+            <div class="preview-unlock-prompt">
+                <i class="fas fa-lock"></i>
+                <p>Continue reading with full access...</p>
+                <a href="${guide.storeUrl}" class="btn btn-primary">
+                    <i class="fas fa-unlock"></i> Unlock Full Guide - $5.99
+                </a>
+            </div>
         </div>
     `;
 
     // Show modal
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
-
-    // Load and render content
-    try {
-        const response = await fetch(guide.file);
-        if (!response.ok) throw new Error('Failed to load guide');
-
-        const markdown = await response.text();
-
-        // Calculate 10% of content
-        const previewContent = getPreviewContent(markdown, 0.10);
-
-        // Parse markdown to HTML
-        const html = typeof marked.parse === 'function'
-            ? marked.parse(previewContent)
-            : marked(previewContent);
-
-        // Render with preview notice
-        bodyEl.innerHTML = `
-            <div class="preview-notice">
-                <i class="fas fa-info-circle"></i>
-                <span>You're viewing the first 10% of this guide. Purchase for full access.</span>
-            </div>
-            <div class="preview-content markdown-body">
-                ${html}
-            </div>
-            <div class="preview-fade-overlay">
-                <div class="preview-unlock-prompt">
-                    <i class="fas fa-lock"></i>
-                    <p>Continue reading...</p>
-                    <button class="btn btn-primary" onclick="addToCartAndRedirect('${guideId}')">
-                        <i class="fas fa-unlock"></i> Unlock Full Guide - $5.99
-                    </button>
-                </div>
-            </div>
-        `;
-    } catch (error) {
-        console.error('Error loading guide preview:', error);
-        bodyEl.innerHTML = `
-            <div class="preview-error">
-                <i class="fas fa-exclamation-circle"></i>
-                <p>Unable to load preview. Please try again.</p>
-                <button class="btn btn-primary" onclick="openPreviewModal('${guideId}')">
-                    <i class="fas fa-redo"></i> Try Again
-                </button>
-            </div>
-        `;
-    }
 }
 
 // Close preview modal
 function closePreviewModal() {
     const modal = document.getElementById('preview-modal');
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
     currentPreviewGuide = null;
-}
-
-// Get preview content (first X% of the guide)
-function getPreviewContent(markdown, percentage) {
-    // Split by lines
-    const lines = markdown.split('\n');
-
-    // Calculate how many lines to show (at least show the header and first section)
-    const totalLines = lines.length;
-    const previewLines = Math.max(Math.floor(totalLines * percentage), 20);
-
-    // Get preview lines
-    let previewContent = lines.slice(0, previewLines).join('\n');
-
-    // Make sure we don't cut off in the middle of a section
-    // Find the last complete section (ends with ---)
-    const lastSectionBreak = previewContent.lastIndexOf('---');
-    if (lastSectionBreak > 100) {
-        // If there's a section break, end there
-        previewContent = previewContent.substring(0, lastSectionBreak + 3);
-    }
-
-    return previewContent;
-}
-
-// Add guide to cart and redirect to store
-function addToCartAndRedirect(guideId) {
-    const guide = guidesData[guideId];
-    if (!guide) return;
-
-    // Close modal if open
-    closePreviewModal();
-
-    // Add to cart using cart service if available
-    if (typeof cartUI !== 'undefined' && typeof cartUI.addToCart === 'function') {
-        cartUI.addToCart(
-            guide.productId,
-            guide.title,
-            'individual',
-            guide.price
-        ).then(() => {
-            // Open cart drawer or redirect to store
-            if (typeof cartUI.openCart === 'function') {
-                cartUI.openCart();
-            } else {
-                window.location.href = 'store.html';
-            }
-        });
-    } else {
-        // Fallback - redirect to store with product highlighted
-        window.location.href = `store.html?highlight=${guideId}`;
-    }
 }
 
 // Hide page loader
@@ -275,7 +277,7 @@ function hideLoader() {
     }
 }
 
-// Configure marked.js
+// Configure marked.js if available
 if (typeof marked !== 'undefined') {
     if (typeof marked.setOptions === 'function') {
         marked.setOptions({
@@ -293,6 +295,3 @@ if (typeof marked !== 'undefined') {
         });
     }
 }
-
-// Make addToCartAndRedirect available globally for onclick handlers
-window.addToCartAndRedirect = addToCartAndRedirect;

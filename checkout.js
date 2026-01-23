@@ -495,11 +495,11 @@ function getTypeLabel(type) {
  */
 function getProductIcon(type) {
     const icons = {
-        'individual': 'fas fa-file-alt',
-        'lite-package': 'fas fa-layer-group',
+        'individual': 'fas fa-file-medical',
+        'lite-package': 'fas fa-book-medical',
         'full-package': 'fas fa-box-open'
     };
-    return icons[type] || 'fas fa-file-alt';
+    return icons[type] || 'fas fa-file-medical';
 }
 
 /**

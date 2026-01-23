@@ -15,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize package add-to-cart buttons
     initializePackageButtons();
 
+    // Initialize Quick View feature
+    initializeQuickView();
+
     const filterButtons = document.querySelectorAll('.filter-item[data-filter]');
     const shopTypeButtons = document.querySelectorAll('.filter-item[data-shop-type]');
     const guideCards = document.querySelectorAll('.guide-card');
@@ -51,6 +54,133 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentFilter = 'all';
     let currentSubcategory = 'all';
     let currentSearchTerm = '';
+    let currentSort = 'default';
+
+    // Sort dropdown
+    const sortSelect = document.getElementById('sort-select');
+
+    // Popular guides (based on typical high-interest nursing topics)
+    const popularGuides = [
+        'heart-failure', 'diabetes-type2', 'copd', 'stroke', 'pneumonia',
+        'cardiac-medications', 'pain-management', 'depression-anxiety',
+        'labor-delivery', 'pediatric-emergencies', 'assessment-skills'
+    ];
+
+    // Quick filter state
+    let currentQuickFilter = null; // 'popular', 'recently-viewed', or null
+
+    // Quick filter elements
+    const popularBtn = document.getElementById('popular-btn');
+    const recentlyViewedBtn = document.getElementById('recently-viewed-btn');
+    const recentlyViewedCount = document.getElementById('recently-viewed-count');
+    const quickFiltersSection = document.getElementById('quick-filters-section');
+
+    // Recently viewed guides (stored in localStorage)
+    const RECENTLY_VIEWED_KEY = 'nursingCollective_recentlyViewed';
+    const MAX_RECENTLY_VIEWED = 20;
+
+    // Get recently viewed guides from localStorage
+    function getRecentlyViewed() {
+        try {
+            const stored = localStorage.getItem(RECENTLY_VIEWED_KEY);
+            return stored ? JSON.parse(stored) : [];
+        } catch (e) {
+            return [];
+        }
+    }
+
+    // Add guide to recently viewed
+    function addToRecentlyViewed(productId) {
+        if (!productId) return;
+
+        let recentlyViewed = getRecentlyViewed();
+
+        // Remove if already exists (to move to front)
+        recentlyViewed = recentlyViewed.filter(id => id !== productId);
+
+        // Add to front
+        recentlyViewed.unshift(productId);
+
+        // Limit to max
+        if (recentlyViewed.length > MAX_RECENTLY_VIEWED) {
+            recentlyViewed = recentlyViewed.slice(0, MAX_RECENTLY_VIEWED);
+        }
+
+        try {
+            localStorage.setItem(RECENTLY_VIEWED_KEY, JSON.stringify(recentlyViewed));
+        } catch (e) {
+            console.warn('Could not save recently viewed to localStorage');
+        }
+
+        updateRecentlyViewedCount();
+    }
+
+    // Update recently viewed count badge
+    function updateRecentlyViewedCount() {
+        const count = getRecentlyViewed().length;
+        if (recentlyViewedCount) {
+            if (count > 0) {
+                recentlyViewedCount.textContent = count;
+                recentlyViewedCount.classList.add('visible');
+                if (recentlyViewedBtn) recentlyViewedBtn.disabled = false;
+            } else {
+                recentlyViewedCount.classList.remove('visible');
+                if (recentlyViewedBtn) recentlyViewedBtn.disabled = true;
+            }
+        }
+    }
+
+    // Initialize recently viewed count
+    updateRecentlyViewedCount();
+
+    // Expose addToRecentlyViewed globally for use by Quick View
+    window.addToRecentlyViewed = addToRecentlyViewed;
+
+    // Quick filter button handlers
+    if (popularBtn) {
+        popularBtn.addEventListener('click', function() {
+            toggleQuickFilter('popular');
+        });
+    }
+
+    if (recentlyViewedBtn) {
+        recentlyViewedBtn.addEventListener('click', function() {
+            if (!this.disabled) {
+                toggleQuickFilter('recently-viewed');
+            }
+        });
+    }
+
+    // Toggle quick filter
+    function toggleQuickFilter(filter) {
+        if (currentQuickFilter === filter) {
+            // Deactivate if clicking the same filter
+            currentQuickFilter = null;
+            if (popularBtn) popularBtn.classList.remove('active');
+            if (recentlyViewedBtn) recentlyViewedBtn.classList.remove('active');
+
+            // Reset header
+            categoryTitle.textContent = categories[currentFilter]?.title || 'All Study Guides';
+            categoryDescription.textContent = categories[currentFilter]?.description || 'Browse our complete collection of nursing study guides';
+        } else {
+            // Activate new filter
+            currentQuickFilter = filter;
+
+            if (popularBtn) popularBtn.classList.toggle('active', filter === 'popular');
+            if (recentlyViewedBtn) recentlyViewedBtn.classList.toggle('active', filter === 'recently-viewed');
+
+            // Update header
+            if (filter === 'popular') {
+                categoryTitle.textContent = 'Popular Guides';
+                categoryDescription.textContent = 'Our most popular study guides chosen by nursing students';
+            } else if (filter === 'recently-viewed') {
+                categoryTitle.textContent = 'Recently Viewed';
+                categoryDescription.textContent = 'Guides you\'ve looked at recently';
+            }
+        }
+
+        filterGuides();
+    }
 
     // Show More functionality for Guides
     const GUIDES_PER_PAGE = 12; // Number of guides to show initially and per "show more" click
@@ -167,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Master filter function with Show More pagination
     function filterGuides(resetPagination = true) {
-        console.log('filterGuides called, search term:', currentSearchTerm, 'category:', currentFilter, 'subcategory:', currentSubcategory);
+        console.log('filterGuides called, search term:', currentSearchTerm, 'category:', currentFilter, 'subcategory:', currentSubcategory, 'sort:', currentSort);
 
         // Reset pagination when filter changes
         if (resetPagination) {
@@ -196,10 +326,32 @@ document.addEventListener('DOMContentLoaded', function() {
                                   title.includes(currentSearchTerm) ||
                                   description.includes(currentSearchTerm);
 
-            if (matchesCategory && matchesSubcategory && matchesSearch) {
+            // Get product ID for quick filter checks
+            const checkoutLink = card.querySelector('a[href*="checkout.html"]');
+            let productId = '';
+            if (checkoutLink) {
+                try {
+                    const url = new URL(checkoutLink.href, window.location.origin);
+                    productId = url.searchParams.get('product') || '';
+                } catch (e) {}
+            }
+
+            // Check quick filter (popular or recently viewed)
+            let matchesQuickFilter = true;
+            if (currentQuickFilter === 'popular') {
+                matchesQuickFilter = popularGuides.includes(productId);
+            } else if (currentQuickFilter === 'recently-viewed') {
+                const recentlyViewed = getRecentlyViewed();
+                matchesQuickFilter = recentlyViewed.includes(productId);
+            }
+
+            if (matchesCategory && matchesSubcategory && matchesSearch && matchesQuickFilter) {
                 matchingGuides.push(card);
             }
         });
+
+        // Sort matching guides
+        sortGuides(matchingGuides);
 
         const totalMatching = matchingGuides.length;
 
@@ -207,6 +359,13 @@ document.addEventListener('DOMContentLoaded', function() {
         guideCards.forEach(card => {
             card.style.display = 'none';
         });
+
+        // Reorder guides in DOM based on sort order
+        if (currentSort !== 'default' && guidesGrid) {
+            matchingGuides.forEach(card => {
+                guidesGrid.appendChild(card);
+            });
+        }
 
         matchingGuides.forEach((card, index) => {
             if (index < visibleGuidesCount) {
@@ -254,6 +413,69 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             }
         }
+    }
+
+    // Sort guides based on current sort option
+    function sortGuides(guides) {
+        if (currentSort === 'default') {
+            // Keep original DOM order by not sorting
+            return;
+        }
+
+        guides.sort((a, b) => {
+            const titleA = a.querySelector('h4')?.textContent || '';
+            const titleB = b.querySelector('h4')?.textContent || '';
+            const priceA = parseFloat(a.querySelector('.guide-price')?.textContent.replace('$', '') || 5.99);
+            const priceB = parseFloat(b.querySelector('.guide-price')?.textContent.replace('$', '') || 5.99);
+
+            // Get product IDs for popularity check
+            const linkA = a.querySelector('a[href*="checkout.html"]');
+            const linkB = b.querySelector('a[href*="checkout.html"]');
+            let productIdA = '';
+            let productIdB = '';
+
+            if (linkA) {
+                try {
+                    const urlA = new URL(linkA.href, window.location.origin);
+                    productIdA = urlA.searchParams.get('product') || '';
+                } catch (e) {}
+            }
+            if (linkB) {
+                try {
+                    const urlB = new URL(linkB.href, window.location.origin);
+                    productIdB = urlB.searchParams.get('product') || '';
+                } catch (e) {}
+            }
+
+            switch (currentSort) {
+                case 'name-asc':
+                    return titleA.localeCompare(titleB);
+                case 'name-desc':
+                    return titleB.localeCompare(titleA);
+                case 'price-asc':
+                    return priceA - priceB;
+                case 'price-desc':
+                    return priceB - priceA;
+                case 'popular':
+                    // Popular items first
+                    const isPopularA = popularGuides.includes(productIdA);
+                    const isPopularB = popularGuides.includes(productIdB);
+                    if (isPopularA && !isPopularB) return -1;
+                    if (!isPopularA && isPopularB) return 1;
+                    // Secondary sort by name
+                    return titleA.localeCompare(titleB);
+                default:
+                    return 0;
+            }
+        });
+    }
+
+    // Sort select change handler
+    if (sortSelect) {
+        sortSelect.addEventListener('change', function() {
+            currentSort = this.value;
+            filterGuides();
+        });
     }
 
     // Update Show More button state for guides
@@ -391,6 +613,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (packageComparison) packageComparison.style.display = 'none';
                 if (emptyState) emptyState.style.display = 'none';
                 if (searchContainer) searchContainer.style.display = 'flex';
+                if (quickFiltersSection) quickFiltersSection.style.display = 'block';
                 // Show guides Show More, hide packages Show More
                 if (showMorePackagesContainer) showMorePackagesContainer.style.display = 'none';
 
@@ -398,13 +621,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 categoryTitle.textContent = 'All Study Guides';
                 categoryDescription.textContent = 'Browse our complete collection of nursing study guides';
 
-                // Reset filters
+                // Reset filters and sort
                 currentFilter = 'all';
                 currentSubcategory = 'all';
                 currentSearchTerm = '';
+                currentSort = 'default';
                 if (searchInput) searchInput.value = '';
                 if (searchClear) searchClear.style.display = 'none';
                 if (searchResultsCount) searchResultsCount.style.display = 'none';
+                if (sortSelect) sortSelect.value = 'default';
+                // Reset quick filters
+                currentQuickFilter = null;
+                if (popularBtn) popularBtn.classList.remove('active');
+                if (recentlyViewedBtn) recentlyViewedBtn.classList.remove('active');
                 if (subcategoryChips) {
                     subcategoryChips.classList.remove('visible');
                 }
@@ -449,6 +678,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (packageComparison) packageComparison.style.display = 'block';
                 if (emptyState) emptyState.style.display = 'none';
                 if (searchContainer) searchContainer.style.display = 'none';
+                if (quickFiltersSection) quickFiltersSection.style.display = 'none';
                 // Hide guides Show More (it's inside guides-grid-wrapper which is hidden, but ensure it's hidden)
                 if (showMoreContainer) showMoreContainer.style.display = 'none';
 
@@ -493,6 +723,11 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
             currentFilter = filter;
+
+            // Clear quick filter when category is selected
+            currentQuickFilter = null;
+            if (popularBtn) popularBtn.classList.remove('active');
+            if (recentlyViewedBtn) recentlyViewedBtn.classList.remove('active');
 
             // Update active state on filter buttons
             filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -745,6 +980,164 @@ async function handleAddToCartClick(e) {
         // Fallback if cart UI not loaded
         console.error('Cart UI not available');
         alert('Unable to add to cart. Please try again.');
+    }
+}
+
+/**
+ * Initialize Quick View buttons on guide cards
+ */
+function initializeQuickView() {
+    const guideCards = document.querySelectorAll('.guide-card');
+    const modal = document.getElementById('quick-view-modal');
+    const overlay = document.getElementById('quick-view-overlay');
+    const closeBtn = document.getElementById('quick-view-close');
+    const addToCartBtn = document.getElementById('quick-view-add-to-cart');
+
+    // Category display names
+    const categoryNames = {
+        'med-surg': 'Medical-Surgical',
+        'pharmacology': 'Pharmacology',
+        'fundamentals': 'Fundamentals',
+        'maternity': 'Maternity/OB',
+        'pediatrics': 'Pediatrics',
+        'mental-health': 'Mental Health'
+    };
+
+    // Subcategory display names
+    const subcategoryNames = {
+        'cardiovascular': 'Cardiovascular',
+        'respiratory': 'Respiratory',
+        'endocrine': 'Endocrine',
+        'neurological': 'Neurological',
+        'renal': 'Renal',
+        'gastrointestinal': 'Gastrointestinal',
+        'musculoskeletal': 'Musculoskeletal'
+    };
+
+    let currentProductId = null;
+    let currentProductName = null;
+
+    // Add Quick View button to each guide card
+    guideCards.forEach(card => {
+        // Create quick view button
+        const quickViewBtn = document.createElement('button');
+        quickViewBtn.className = 'quick-view-btn';
+        quickViewBtn.title = 'Quick View';
+        quickViewBtn.innerHTML = '<i class="fas fa-eye"></i>';
+
+        // Insert at the beginning of the card
+        card.insertBefore(quickViewBtn, card.firstChild);
+
+        // Click handler for quick view button
+        quickViewBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            openQuickView(card);
+        });
+    });
+
+    // Open Quick View modal
+    function openQuickView(card) {
+        const title = card.querySelector('h4')?.textContent || 'Study Guide';
+        const description = card.querySelector('p')?.textContent || '';
+        const category = card.getAttribute('data-category') || '';
+        const subcategory = card.getAttribute('data-subcategory') || '';
+        const iconImg = card.querySelector('.guide-icon img');
+        const iconI = card.querySelector('.guide-icon i');
+
+        // Get product ID from the checkout link
+        const checkoutLink = card.querySelector('a[href*="checkout.html"]');
+        let productId = '';
+        if (checkoutLink) {
+            const url = new URL(checkoutLink.href, window.location.origin);
+            productId = url.searchParams.get('product') || '';
+        }
+
+        currentProductId = productId;
+        currentProductName = title;
+
+        // Track as recently viewed
+        if (productId && typeof window.addToRecentlyViewed === 'function') {
+            window.addToRecentlyViewed(productId);
+        }
+
+        // Update modal content
+        document.getElementById('quick-view-title').textContent = title;
+        document.getElementById('quick-view-description').textContent = description;
+
+        // Set category badge
+        let categoryDisplay = categoryNames[category] || category;
+        if (subcategory && subcategoryNames[subcategory]) {
+            categoryDisplay = subcategoryNames[subcategory];
+        }
+        document.getElementById('quick-view-category').textContent = categoryDisplay;
+
+        // Set icon
+        const iconContainer = document.getElementById('quick-view-icon');
+        if (iconImg) {
+            iconContainer.innerHTML = `<img src="${iconImg.src}" alt="${title}">`;
+        } else if (iconI) {
+            iconContainer.innerHTML = `<i class="${iconI.className}"></i>`;
+        } else {
+            iconContainer.innerHTML = '<i class="fas fa-book-medical"></i>';
+        }
+
+        // Show modal
+        modal.classList.add('visible');
+        document.body.style.overflow = 'hidden';
+
+        // Update add to cart button state
+        updateQuickViewCartButton();
+    }
+
+    // Update cart button state in modal
+    function updateQuickViewCartButton() {
+        if (!addToCartBtn || !currentProductId) return;
+
+        // Check if item is already in cart
+        if (typeof cartService !== 'undefined' && cartService.isInCart && cartService.isInCart(currentProductId)) {
+            addToCartBtn.innerHTML = '<i class="fas fa-check"></i> In Cart';
+            addToCartBtn.classList.add('added');
+            addToCartBtn.disabled = true;
+        } else {
+            addToCartBtn.innerHTML = '<i class="fas fa-cart-plus"></i> Add to Cart';
+            addToCartBtn.classList.remove('added');
+            addToCartBtn.disabled = false;
+        }
+    }
+
+    // Close Quick View modal
+    function closeQuickView() {
+        modal.classList.remove('visible');
+        document.body.style.overflow = '';
+        currentProductId = null;
+        currentProductName = null;
+    }
+
+    // Event listeners for closing modal
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closeQuickView);
+    }
+    if (overlay) {
+        overlay.addEventListener('click', closeQuickView);
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('visible')) {
+            closeQuickView();
+        }
+    });
+
+    // Add to cart from modal
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', async function() {
+            if (!currentProductId || !currentProductName) return;
+
+            if (typeof cartUI !== 'undefined') {
+                await cartUI.addToCart(currentProductId, currentProductName, 'individual', 5.99, addToCartBtn);
+                updateQuickViewCartButton();
+            }
+        });
     }
 }
 

@@ -543,13 +543,9 @@
     background-size: 200% 100%;
 }
 
-/* Legacy Payment Element Container (for embedded checkout fallback) */
+/* Payment Element inner container - Stripe mounts here */
 #payment-element {
-    min-height: 150px;
-    padding: 16px;
-    border: 2px solid var(--border-color);
-    border-radius: 8px;
-    background: var(--background-white);
+    min-height: 100px;
 }
 
 .payment-element-loading {

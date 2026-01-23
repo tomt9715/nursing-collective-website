@@ -1,21 +1,13 @@
 # Apple Pay Domain Verification
 
-This folder is used for Apple Pay domain verification with Stripe.
+## Status: VERIFIED
 
-## Setup Instructions
+The domain `thenursingcollective.pro` has been verified for Apple Pay through Stripe Dashboard.
 
-1. Go to the [Stripe Dashboard](https://dashboard.stripe.com)
-2. Navigate to **Settings > Payment methods > Apple Pay**
-3. Click **Add new domain**
-4. Add: `thenursingcollective.pro`
-5. Download the domain verification file (named `apple-developer-merchantid-domain-association`)
-6. Replace this README with that file (or place it alongside)
+The domain shows as "Enabled" in Stripe's Payment method domains settings, which means Apple Pay is ready to use on the production site.
 
-The file should be accessible at:
-`https://thenursingcollective.pro/.well-known/apple-developer-merchantid-domain-association`
+## Notes
 
-## Note
-
-The verification file content is specific to your Stripe account and cannot be generated programmatically. You must download it from your Stripe Dashboard.
-
-After placing the file here, commit and deploy to verify the domain in Stripe.
+- Stripe handles the domain verification automatically in most cases
+- If re-verification is ever needed, go to Stripe Dashboard > Settings > Payments > Payment method domains
+- The Payment Element will automatically show Apple Pay as an option on supported devices (Safari on Mac/iOS with Apple Pay configured)

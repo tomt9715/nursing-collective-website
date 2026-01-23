@@ -5,7 +5,7 @@
  */
 
 // API Configuration
-const API_URL = 'https://web-production-592c07.up.railway.app';
+const API_URL = 'https://api.thenursingcollective.pro';
 
 /**
  * Centralized API calling function with automatic token refresh

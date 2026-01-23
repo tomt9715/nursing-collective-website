@@ -369,7 +369,7 @@
                 localStorage.setItem('refreshToken', refreshToken);
 
                 // Fetch user data
-                fetch('https://web-production-592c07.up.railway.app/auth/me', {
+                fetch('https://api.thenursingcollective.pro/auth/me', {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${accessToken}`,

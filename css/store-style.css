@@ -51,31 +51,9 @@
     min-width: 0;
 }
 
-/* Products area - limited height with internal scroll */
+/* Products area - no scroll, Show More handles pagination */
 .guides-grid-wrapper {
-    max-height: 800px;
-    overflow-y: auto;
-    padding-right: 15px;
     margin-bottom: 20px;
-}
-
-/* Custom scrollbar for products area */
-.guides-grid-wrapper::-webkit-scrollbar {
-    width: 8px;
-}
-
-.guides-grid-wrapper::-webkit-scrollbar-track {
-    background: var(--background-light);
-    border-radius: 4px;
-}
-
-.guides-grid-wrapper::-webkit-scrollbar-thumb {
-    background: var(--primary-color);
-    border-radius: 4px;
-}
-
-.guides-grid-wrapper::-webkit-scrollbar-thumb:hover {
-    background: var(--primary-dark);
 }
 
 /* Show More button */

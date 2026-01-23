@@ -87,13 +87,18 @@ async function initCheckout() {
             document.getElementById('name').value = user.name || user.displayName;
         }
     } else {
-        // Guest user - show sign-in prompt
+        // Guest user - sign-in prompt is visible by default, just ensure it's showing
         if (signInPrompt) {
             signInPrompt.style.display = 'flex';
         }
         if (userInfoBanner) {
             userInfoBanner.style.display = 'none';
         }
+    }
+
+    // Hide sign-in prompt if authenticated (in case JS loaded late)
+    if (isUserAuthenticated && signInPrompt) {
+        signInPrompt.style.display = 'none';
     }
 
     try {

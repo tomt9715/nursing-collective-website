@@ -35,6 +35,11 @@ const CATEGORY_NAMES = {
 let useAccountEmail = true;
 let accountEmail = null;
 
+// Promo code state
+let appliedPromo = null;
+let promoDiscount = 0;
+let promoDiscountType = null; // 'percent' or 'amount'
+
 /**
  * Initialize the checkout page
  */
@@ -573,6 +578,11 @@ async function createPaymentIntent() {
         return_url: `${window.location.origin}/success.html`
     };
 
+    // Add promo code if applied
+    if (appliedPromo) {
+        payload.promo_code = appliedPromo.code;
+    }
+
     const response = await fetch(`${AUTH_API_URL}/cart/checkout/create-payment-intent`, {
         method: 'POST',
         headers,
@@ -910,11 +920,317 @@ function toggleEmailEdit() {
     }
 }
 
+/**
+ * Initialize promo code functionality
+ */
+function initPromoCode() {
+    const promoToggle = document.getElementById('promo-toggle');
+    const promoInputContainer = document.getElementById('promo-input-container');
+    const applyPromoBtn = document.getElementById('apply-promo-btn');
+    const removePromoBtn = document.getElementById('remove-promo-btn');
+    const promoCodeInput = document.getElementById('promo-code');
+
+    if (!promoToggle) return;
+
+    // Toggle promo input visibility
+    promoToggle.addEventListener('click', () => {
+        const isHidden = promoInputContainer.style.display === 'none';
+        promoInputContainer.style.display = isHidden ? 'block' : 'none';
+        promoToggle.querySelector('.promo-toggle-icon').style.transform = isHidden ? 'rotate(180deg)' : 'rotate(0deg)';
+        if (isHidden) {
+            promoCodeInput.focus();
+        }
+    });
+
+    // Apply promo code
+    applyPromoBtn.addEventListener('click', () => validateAndApplyPromo());
+
+    // Allow enter key to apply promo
+    promoCodeInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            validateAndApplyPromo();
+        }
+    });
+
+    // Remove promo code
+    removePromoBtn.addEventListener('click', () => removePromoCode());
+}
+
+/**
+ * Validate and apply promo code
+ */
+async function validateAndApplyPromo() {
+    const promoCodeInput = document.getElementById('promo-code');
+    const promoMessage = document.getElementById('promo-message');
+    const applyPromoBtn = document.getElementById('apply-promo-btn');
+    const promoCode = promoCodeInput.value.trim().toUpperCase();
+
+    if (!promoCode) {
+        showPromoMessage('Please enter a promo code', 'error');
+        return;
+    }
+
+    // Show loading state
+    applyPromoBtn.disabled = true;
+    applyPromoBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+    promoMessage.textContent = '';
+    promoMessage.className = 'promo-message';
+
+    try {
+        const response = await fetch(`${AUTH_API_URL}/cart/checkout/validate-promo`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                promo_code: promoCode,
+                subtotal: cartSubtotal * 100 // Convert to cents
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            showPromoMessage(data.error || 'Invalid promo code', 'error');
+            return;
+        }
+
+        // Successfully validated - apply the promo
+        appliedPromo = {
+            code: promoCode,
+            promo_id: data.promo_id,
+            coupon_id: data.coupon_id,
+            name: data.coupon_name,
+            discount_type: data.discount_type,
+            discount_value: data.discount_value,
+            discount_amount: data.discount_amount / 100 // Convert from cents
+        };
+        promoDiscount = appliedPromo.discount_amount;
+        promoDiscountType = data.discount_type;
+
+        // Update UI
+        applyPromoSuccess();
+
+        // Update order totals to reflect promo discount
+        updateOrderTotalsWithPromo();
+
+        // Recreate the payment intent with the promo code
+        await recreatePaymentIntentWithPromo();
+
+    } catch (error) {
+        console.error('Promo validation error:', error);
+        showPromoMessage('Failed to validate promo code. Please try again.', 'error');
+    } finally {
+        applyPromoBtn.disabled = false;
+        applyPromoBtn.innerHTML = 'Apply';
+    }
+}
+
+/**
+ * Show promo message (success or error)
+ */
+function showPromoMessage(message, type) {
+    const promoMessage = document.getElementById('promo-message');
+    promoMessage.textContent = message;
+    promoMessage.className = `promo-message ${type}`;
+}
+
+/**
+ * Apply promo success - update UI
+ */
+function applyPromoSuccess() {
+    const promoInputContainer = document.getElementById('promo-input-container');
+    const promoApplied = document.getElementById('promo-applied');
+    const promoAppliedText = document.getElementById('promo-applied-text');
+    const promoToggle = document.getElementById('promo-toggle');
+
+    // Hide input, show applied badge
+    promoInputContainer.style.display = 'none';
+    promoApplied.style.display = 'flex';
+    promoToggle.style.display = 'none';
+
+    // Format the discount text
+    let discountText = appliedPromo.code;
+    if (appliedPromo.discount_type === 'percent') {
+        discountText += ` (${appliedPromo.discount_value}% off)`;
+    } else {
+        discountText += ` ($${appliedPromo.discount_amount.toFixed(2)} off)`;
+    }
+    promoAppliedText.textContent = discountText;
+}
+
+/**
+ * Remove promo code
+ */
+async function removePromoCode() {
+    const promoInputContainer = document.getElementById('promo-input-container');
+    const promoApplied = document.getElementById('promo-applied');
+    const promoToggle = document.getElementById('promo-toggle');
+    const promoCodeInput = document.getElementById('promo-code');
+    const promoMessage = document.getElementById('promo-message');
+
+    // Reset promo state
+    appliedPromo = null;
+    promoDiscount = 0;
+    promoDiscountType = null;
+
+    // Reset UI
+    promoApplied.style.display = 'none';
+    promoToggle.style.display = 'flex';
+    promoInputContainer.style.display = 'none';
+    promoToggle.querySelector('.promo-toggle-icon').style.transform = 'rotate(0deg)';
+    promoCodeInput.value = '';
+    promoMessage.textContent = '';
+    promoMessage.className = 'promo-message';
+
+    // Update order totals
+    updateOrderTotalsWithPromo();
+
+    // Recreate payment intent without promo
+    await recreatePaymentIntentWithPromo();
+}
+
+/**
+ * Update order totals to show promo discount
+ */
+function updateOrderTotalsWithPromo() {
+    const orderTotalEl = document.querySelector('.order-total');
+    if (!orderTotalEl) return;
+
+    // Get base discount info from cart
+    const discountInfo = cartManager.getDiscountInfo();
+    const baseSubtotal = discountInfo.hasDiscount ? discountInfo.discountedSubtotal : discountInfo.originalSubtotal;
+
+    let html = '';
+
+    // Show bundle discount if applicable
+    if (discountInfo.hasDiscount) {
+        html += `
+            <div class="total-row" style="color: var(--text-secondary);">
+                <span>Original Price</span>
+                <span style="text-decoration: line-through;">$${discountInfo.originalSubtotal.toFixed(2)}</span>
+            </div>
+            <div class="total-row discount-row" style="color: #10b981; font-weight: 600;">
+                <span><i class="fas fa-tag" style="margin-right: 6px;"></i>Bundle Discount</span>
+                <span>-$${discountInfo.totalDiscount.toFixed(2)}</span>
+            </div>
+        `;
+    } else {
+        html += `
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span id="subtotal">$${discountInfo.originalSubtotal.toFixed(2)}</span>
+            </div>
+        `;
+    }
+
+    // Show promo discount if applied
+    if (appliedPromo && promoDiscount > 0) {
+        html += `
+            <div class="total-row promo-discount-row" style="color: #8b5cf6; font-weight: 600;">
+                <span><i class="fas fa-ticket-alt" style="margin-right: 6px;"></i>Promo: ${appliedPromo.code}</span>
+                <span>-$${promoDiscount.toFixed(2)}</span>
+            </div>
+        `;
+    }
+
+    // Calculate final total
+    const finalTotal = Math.max(0, baseSubtotal - promoDiscount);
+
+    html += `
+        <div class="total-row total-final">
+            <span>Total</span>
+            <span id="total">$${finalTotal.toFixed(2)}</span>
+        </div>
+    `;
+
+    // Show savings message
+    const totalSavings = (discountInfo.hasDiscount ? discountInfo.totalDiscount : 0) + promoDiscount;
+    if (totalSavings > 0) {
+        html += `
+            <div class="checkout-savings-message" style="
+                background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05));
+                border: 1px solid rgba(16, 185, 129, 0.2);
+                border-radius: 8px;
+                padding: 12px;
+                margin-top: 16px;
+                text-align: center;
+            ">
+                <i class="fas fa-check-circle" style="color: #10b981; margin-right: 6px;"></i>
+                <span style="color: #10b981; font-weight: 600;">
+                    You're saving $${totalSavings.toFixed(2)} on this order!
+                </span>
+            </div>
+        `;
+    }
+
+    orderTotalEl.innerHTML = html;
+
+    // Update cartSubtotal for payment
+    cartSubtotal = finalTotal;
+}
+
+/**
+ * Recreate payment intent with or without promo code
+ */
+async function recreatePaymentIntentWithPromo() {
+    try {
+        const paymentIntentData = await createPaymentIntent();
+        clientSecret = paymentIntentData.clientSecret;
+
+        // Update Stripe Elements with new client secret
+        if (cardElement) {
+            // We need to destroy and recreate Elements with new client secret
+            cardElement.destroy();
+            cardElement = null;
+
+            const isDarkMode = document.documentElement.getAttribute('data-theme') === 'dark';
+            const appearance = getStripeAppearance(isDarkMode);
+
+            const elements = stripe.elements({
+                clientSecret,
+                appearance
+            });
+
+            cardElement = elements.create('card', {
+                style: getCardElementStyle(isDarkMode),
+                hidePostalCode: true
+            });
+
+            cardElement.mount('#card-element');
+
+            // Re-attach event listeners
+            cardElement.on('change', (event) => {
+                const cardErrorsEl = document.getElementById('card-errors');
+                if (event.error) {
+                    cardErrorsEl.textContent = event.error.message;
+                } else {
+                    cardErrorsEl.textContent = '';
+                }
+                updateSubmitButton(event.complete);
+            });
+
+            cardElement.on('focus', () => {
+                document.getElementById('card-element').classList.add('StripeElement--focus');
+            });
+
+            cardElement.on('blur', () => {
+                document.getElementById('card-element').classList.remove('StripeElement--focus');
+            });
+        }
+    } catch (error) {
+        console.error('Error recreating payment intent:', error);
+        showError('Failed to update payment. Please refresh the page.');
+    }
+}
+
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', () => {
     // Small delay to ensure cart service is loaded
     setTimeout(() => {
         initCheckout();
+        initPromoCode();
     }, 100);
 
     // Setup form submission handler

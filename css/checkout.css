@@ -1291,3 +1291,84 @@
     border-color: var(--border-color);
     color: var(--text-primary);
 }
+
+/* ============================================
+   CHECKOUT WHAT YOU GET SECTION
+   ============================================ */
+
+.checkout-what-you-get {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.checkout-what-you-get h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+}
+
+.checkout-what-you-get ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-what-you-get li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.checkout-what-you-get li i {
+    width: 20px;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* ============================================
+   CHECKOUT ACCEPTED PAYMENTS
+   ============================================ */
+
+.checkout-accepted-payments {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+
+.checkout-accepted-payments span {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.checkout-accepted-payments .payment-icons {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.checkout-accepted-payments .payment-icons i {
+    font-size: 1.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+
+.checkout-accepted-payments .payment-icons i:hover {
+    opacity: 1;
+}
+
+[data-theme="dark"] .checkout-accepted-payments .payment-icons i {
+    color: var(--text-light);
+}

@@ -87,6 +87,22 @@ async function initCheckout() {
         }
 
         showError('Failed to initialize checkout. Please try again later.');
+    } finally {
+        // Hide page loader after initialization (success or failure)
+        hidePageLoader();
+    }
+}
+
+/**
+ * Hide the page loader
+ */
+function hidePageLoader() {
+    const loader = document.getElementById('page-loader');
+    if (loader) {
+        loader.classList.add('fade-out');
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 300);
     }
 }
 

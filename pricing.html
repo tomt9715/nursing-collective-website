@@ -37,8 +37,56 @@
     <!-- Sentry Error Tracking (load first) -->
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="sentry-init.js"></script>
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Pricing - The Nursing Collective",
+        "description": "Simple pricing for nursing students. Free tier, Full packages ($49.99), Lite packages ($24.99), or individual guides ($5.99). One-time payment, lifetime access.",
+        "url": "https://thenursingcollective.pro/pricing.html",
+        "mainEntity": {
+            "@type": "ItemList",
+            "name": "Pricing Options",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "name": "Free Tier",
+                    "description": "Access to Discord community, free study resources, and community support",
+                    "price": "0",
+                    "priceCurrency": "USD"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "Individual Guide",
+                    "description": "Single study guide with lifetime access",
+                    "price": "5.99",
+                    "priceCurrency": "USD"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "Lite Package",
+                    "description": "Class-specific study guide collection",
+                    "price": "24.99",
+                    "priceCurrency": "USD"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "Full Package",
+                    "description": "Complete class study guide collection with all guides",
+                    "price": "49.99",
+                    "priceCurrency": "USD"
+                }
+            ]
+        }
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-spinner"></div>
@@ -75,6 +123,7 @@
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Pricing Hero -->
     <section class="pricing-hero" style="padding: 140px 0 70px; text-align: center; position: relative; overflow: hidden;">
         <!-- Decorative circles -->
@@ -475,6 +524,8 @@
             </a>
         </div>
     </section>
+
+    </main>
 
     <!-- Footer -->
     <footer class="footer">

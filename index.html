@@ -55,8 +55,62 @@
     <!-- Sentry Error Tracking (load first) -->
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="sentry-init.js"></script>
+
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Organization",
+                "@id": "https://thenursingcollective.pro/#organization",
+                "name": "The Nursing Collective",
+                "url": "https://thenursingcollective.pro",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://thenursingcollective.pro/assets/images/the-nursing-collective-logo.webp"
+                },
+                "description": "Comprehensive study guides, practice questions, and personalized resources to support nursing students throughout their academic journey.",
+                "sameAs": [
+                    "https://discord.gg/y2Mh77wAV2"
+                ],
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "email": "support@thenursingcollective.pro",
+                    "contactType": "customer support"
+                }
+            },
+            {
+                "@type": "WebSite",
+                "@id": "https://thenursingcollective.pro/#website",
+                "url": "https://thenursingcollective.pro",
+                "name": "The Nursing Collective",
+                "publisher": {
+                    "@id": "https://thenursingcollective.pro/#organization"
+                },
+                "description": "Nursing school success hub with study guides, practice questions, and community support."
+            },
+            {
+                "@type": "WebPage",
+                "@id": "https://thenursingcollective.pro/",
+                "url": "https://thenursingcollective.pro/",
+                "name": "The Nursing Collective - Nursing School Success Hub",
+                "isPartOf": {
+                    "@id": "https://thenursingcollective.pro/#website"
+                },
+                "about": {
+                    "@id": "https://thenursingcollective.pro/#organization"
+                },
+                "description": "Comprehensive study guides, practice questions, and personalized resources to support nursing students throughout their academic journey."
+            }
+        ]
+    }
+    </script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-spinner"></div>
@@ -81,10 +135,10 @@
                     <i class="fas fa-sun light-icon"></i>
                     <i class="fas fa-moon dark-icon"></i>
                 </button>
-                <div class="cart-icon-container" aria-label="Shopping cart" title="View cart">
+                <button class="cart-icon-container" aria-label="Shopping cart" title="View cart" type="button">
                     <i class="fas fa-shopping-cart cart-icon"></i>
                     <span class="cart-badge empty">0</span>
-                </div>
+                </button>
                 <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
             </div>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -94,6 +148,7 @@
     </nav>
 
     <!-- Hero Section -->
+    <main id="main-content">
     <section class="hero">
         <div class="container">
             <div class="hero-content">
@@ -195,6 +250,8 @@
 
 
     <!-- Footer -->
+    </main>
+
     <footer id="contact" class="footer">
         <div class="container">
             <div class="footer-content">

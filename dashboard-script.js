@@ -1440,3 +1440,45 @@ async function deleteUser(userId) {
         showAlert('Delete Failed', error.message || 'Failed to delete user. Please try again.', 'error');
     }
 }
+
+// ==================== Event Listeners (replaces inline onclick handlers) ====================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Navigation buttons with data-navigate attribute
+    document.querySelectorAll('[data-navigate]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            window.location.href = this.dataset.navigate;
+        });
+    });
+
+    // External links with data-external attribute
+    document.querySelectorAll('[data-external]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            window.open(this.dataset.external, '_blank');
+        });
+    });
+
+    // Dismiss getting started card
+    const dismissBtn = document.getElementById('dismiss-getting-started-btn');
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', function() {
+            const card = document.getElementById('getting-started-card');
+            if (card) {
+                card.style.display = 'none';
+                localStorage.setItem('gettingStartedDismissed', 'true');
+            }
+        });
+    }
+
+    // Claim order button
+    const claimOrderBtn = document.getElementById('claim-order-btn');
+    if (claimOrderBtn) {
+        claimOrderBtn.addEventListener('click', claimOrder);
+    }
+
+    // Close admin modal button
+    const closeAdminModalBtn = document.getElementById('close-admin-modal-btn');
+    if (closeAdminModalBtn) {
+        closeAdminModalBtn.addEventListener('click', closeAdminModal);
+    }
+});

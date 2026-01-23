@@ -579,6 +579,25 @@ async function handleSocialAuth(provider) {
     }
 }
 
+// Setup social auth button event listeners (replaces inline onclick handlers)
+document.addEventListener('DOMContentLoaded', function() {
+    // Google auth button
+    const googleBtn = document.querySelector('.auth-btn.google[data-auth-method="google"]');
+    if (googleBtn) {
+        googleBtn.addEventListener('click', function() {
+            handleSocialAuth('google');
+        });
+    }
+
+    // Discord auth button
+    const discordBtn = document.querySelector('.auth-btn.discord[data-auth-method="discord"]');
+    if (discordBtn) {
+        discordBtn.addEventListener('click', function() {
+            handleSocialAuth('discord');
+        });
+    }
+});
+
 // Add ripple effect to buttons (matching site interaction)
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('auth-btn') || e.target.closest('.auth-btn')) {

@@ -1026,3 +1026,96 @@ async function exportAllData() {
 }
 
 // API_URL is defined in api-service.js which is loaded before this script
+
+// ==================== Event Listeners (replaces inline onclick handlers) ====================
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Tab switching buttons with data-switch-tab attribute
+    document.querySelectorAll('[data-switch-tab]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            switchToTab(this.dataset.switchTab);
+        });
+    });
+
+    // Export data button
+    const exportDataBtn = document.getElementById('export-data-btn');
+    if (exportDataBtn) {
+        exportDataBtn.addEventListener('click', exportAllData);
+    }
+
+    // User detail modal close button
+    const closeUserDetailModalBtn = document.getElementById('close-user-detail-modal-btn');
+    if (closeUserDetailModalBtn) {
+        closeUserDetailModalBtn.addEventListener('click', closeUserDetailModal);
+    }
+
+    // Add guide modal buttons
+    const openAddGuideModalBtn = document.getElementById('open-add-guide-modal-btn');
+    if (openAddGuideModalBtn) {
+        openAddGuideModalBtn.addEventListener('click', openAddGuideModal);
+    }
+
+    const closeAddGuideModalBtn = document.getElementById('close-add-guide-modal-btn');
+    if (closeAddGuideModalBtn) {
+        closeAddGuideModalBtn.addEventListener('click', closeAddGuideModal);
+    }
+
+    const cancelAddGuideBtn = document.getElementById('cancel-add-guide-btn');
+    if (cancelAddGuideBtn) {
+        cancelAddGuideBtn.addEventListener('click', closeAddGuideModal);
+    }
+
+    const submitAddGuideBtn = document.getElementById('submit-add-guide-btn');
+    if (submitAddGuideBtn) {
+        submitAddGuideBtn.addEventListener('click', submitAddGuide);
+    }
+
+    // Notes form buttons
+    const toggleAddNoteBtn = document.getElementById('toggle-add-note-btn');
+    if (toggleAddNoteBtn) {
+        toggleAddNoteBtn.addEventListener('click', toggleAddNoteForm);
+    }
+
+    const submitNoteBtn = document.getElementById('submit-note-btn');
+    if (submitNoteBtn) {
+        submitNoteBtn.addEventListener('click', submitNote);
+    }
+
+    const cancelNoteBtn = document.getElementById('cancel-note-btn');
+    if (cancelNoteBtn) {
+        cancelNoteBtn.addEventListener('click', toggleAddNoteForm);
+    }
+
+    // Guide owners modal buttons
+    const closeGuideOwnersModalBtn = document.getElementById('close-guide-owners-modal-btn');
+    if (closeGuideOwnersModalBtn) {
+        closeGuideOwnersModalBtn.addEventListener('click', closeGuideOwnersModal);
+    }
+
+    const openBulkGrantModalBtn = document.getElementById('open-bulk-grant-modal-btn');
+    if (openBulkGrantModalBtn) {
+        openBulkGrantModalBtn.addEventListener('click', openBulkGrantModal);
+    }
+
+    // Bulk grant modal buttons
+    const closeBulkGrantModalBtn = document.getElementById('close-bulk-grant-modal-btn');
+    if (closeBulkGrantModalBtn) {
+        closeBulkGrantModalBtn.addEventListener('click', closeBulkGrantModal);
+    }
+
+    const cancelBulkGrantBtn = document.getElementById('cancel-bulk-grant-btn');
+    if (cancelBulkGrantBtn) {
+        cancelBulkGrantBtn.addEventListener('click', closeBulkGrantModal);
+    }
+
+    const submitBulkGrantBtn = document.getElementById('submit-bulk-grant-btn');
+    if (submitBulkGrantBtn) {
+        submitBulkGrantBtn.addEventListener('click', submitBulkGrant);
+    }
+
+    // Confirm modal cancel button
+    const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
+    if (confirmCancelBtn) {
+        confirmCancelBtn.addEventListener('click', closeConfirmModal);
+    }
+});

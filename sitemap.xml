@@ -4,23 +4,39 @@
     <!-- Homepage -->
     <url>
         <loc>https://thenursingcollective.pro/</loc>
-        <lastmod>2026-01-20</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
 
-    <!-- Study Guides -->
+    <!-- Study Guides Main Page -->
     <url>
-        <loc>https://thenursingcollective.pro/guides.html</loc>
-        <lastmod>2026-01-20</lastmod>
+        <loc>https://thenursingcollective.pro/study-guides.html</loc>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
+    </url>
+
+    <!-- Study Guides Browse -->
+    <url>
+        <loc>https://thenursingcollective.pro/guides.html</loc>
+        <lastmod>2026-01-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- Individual Guide Page Template -->
+    <url>
+        <loc>https://thenursingcollective.pro/guide.html</loc>
+        <lastmod>2026-01-23</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
     </url>
 
     <!-- Pricing -->
     <url>
         <loc>https://thenursingcollective.pro/pricing.html</loc>
-        <lastmod>2026-01-20</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -28,7 +44,7 @@
     <!-- Store -->
     <url>
         <loc>https://thenursingcollective.pro/store.html</loc>
-        <lastmod>2026-01-20</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -36,7 +52,7 @@
     <!-- About FlorenceBot -->
     <url>
         <loc>https://thenursingcollective.pro/about-florencebot.html</loc>
-        <lastmod>2026-01-20</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -44,7 +60,7 @@
     <!-- Login -->
     <url>
         <loc>https://thenursingcollective.pro/login.html</loc>
-        <lastmod>2026-01-20</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
@@ -52,7 +68,7 @@
     <!-- Privacy Policy -->
     <url>
         <loc>https://thenursingcollective.pro/privacy.html</loc>
-        <lastmod>2026-01-20</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>
@@ -60,7 +76,7 @@
     <!-- Terms of Service -->
     <url>
         <loc>https://thenursingcollective.pro/terms.html</loc>
-        <lastmod>2026-01-20</lastmod>
+        <lastmod>2026-01-23</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.3</priority>
     </url>

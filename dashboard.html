@@ -39,6 +39,9 @@
     <script src="sentry-init.js"></script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-spinner"></div>
@@ -99,6 +102,7 @@
     </div>
 
     <!-- Dashboard -->
+    <main id="main-content">
     <section class="dashboard">
         <div class="container">
             <!-- Dashboard Header -->
@@ -138,27 +142,27 @@
             <!-- Quick Actions Hero -->
             <section class="quick-actions-hero">
                 <div class="quick-actions-grid-hero">
-                    <button class="action-card-hero primary" onclick="window.location.href='study-guides.html'">
+                    <button class="action-card-hero primary" data-navigate="study-guides.html">
                         <div class="action-icon-large"><i class="fas fa-book-open"></i></div>
                         <h3>Browse Study Guides</h3>
                         <p>Explore NCLEX resources</p>
                     </button>
-                    <button class="action-card-hero" onclick="window.location.href='store.html'">
+                    <button class="action-card-hero" data-navigate="store.html">
                         <div class="action-icon-large"><i class="fas fa-store"></i></div>
                         <h3>Visit Store</h3>
                         <p>Purchase guides & packages</p>
                     </button>
-                    <button class="action-card-hero" onclick="window.open('https://discord.gg/y2Mh77wAV2', '_blank')">
+                    <button class="action-card-hero" data-external="https://discord.gg/y2Mh77wAV2">
                         <div class="action-icon-large"><i class="fab fa-discord"></i></div>
                         <h3>Join Discord</h3>
                         <p>Connect with community</p>
                     </button>
-                    <button class="action-card-hero" onclick="window.location.href='settings.html'">
+                    <button class="action-card-hero" data-navigate="settings.html">
                         <div class="action-icon-large"><i class="fas fa-cog"></i></div>
                         <h3>Settings</h3>
                         <p>Manage your account</p>
                     </button>
-                    <button class="action-card-hero admin-only" id="admin-panel-btn" onclick="window.location.href='admin.html'" style="display: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <button class="action-card-hero admin-only" id="admin-panel-btn" data-navigate="admin.html" style="display: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
                         <div class="action-icon-large"><i class="fas fa-user-shield"></i></div>
                         <h3>Admin Panel</h3>
                         <p>Manage users & guides</p>
@@ -189,7 +193,7 @@
                             <p style="font-size: 0.9rem; opacity: 0.9;">Purchase individual guides or full class packages</p>
                         </div>
                     </div>
-                    <button style="background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; margin-top: 20px; cursor: pointer;" onclick="document.getElementById('getting-started-card').style.display='none';">
+                    <button style="background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; margin-top: 20px; cursor: pointer;" id="dismiss-getting-started-btn">
                         <i class="fas fa-check"></i> Got it!
                     </button>
                 </div>
@@ -207,7 +211,7 @@
                                     <i class="fas fa-list"></i>
                                 </button>
                             </div>
-                            <button class="btn btn-secondary" onclick="window.location.href='study-guides.html'">
+                            <button class="btn btn-secondary" data-navigate="study-guides.html">
                                 <i class="fas fa-plus"></i> Browse More
                             </button>
                         </div>
@@ -241,7 +245,7 @@
                                 </span>
                             </div>
                         </div>
-                        <button class="btn-link" onclick="window.location.href='settings.html'">
+                        <button class="btn-link" data-navigate="settings.html">
                             Manage Settings →
                         </button>
                     </div>
@@ -254,7 +258,7 @@
                                 <span class="stat-label">Total Purchases</span>
                             </div>
                         </div>
-                        <button class="btn-link" onclick="window.location.href='store.html'">
+                        <button class="btn-link" data-navigate="store.html">
                             Visit Store →
                         </button>
                     </div>
@@ -272,7 +276,7 @@
                                 <span class="claim-prefix">TNC-</span>
                                 <input type="text" id="claim-order-input" placeholder="ABC123" maxlength="6" autocomplete="off" />
                             </div>
-                            <button class="btn btn-primary" id="claim-order-btn" onclick="claimOrder()">
+                            <button class="btn btn-primary" id="claim-order-btn">
                                 <i class="fas fa-plus-circle"></i> Claim Order
                             </button>
                         </div>
@@ -302,7 +306,7 @@
         <div class="modal-content" style="max-width: 900px; max-height: 80vh; overflow-y: auto;">
             <div class="modal-header">
                 <h2 id="modal-title">Users</h2>
-                <button class="modal-close" onclick="closeAdminModal()">
+                <button class="modal-close" id="close-admin-modal-btn">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
@@ -336,6 +340,8 @@
     </div>
 
     <!-- Footer -->
+    </main>
+
     <footer class="footer">
         <div class="container">
             <div class="footer-content">

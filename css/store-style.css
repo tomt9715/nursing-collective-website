@@ -24,8 +24,8 @@
     border-radius: 16px;
     padding: 24px;
     height: fit-content;
-    position: sticky;
-    top: 110px;
+    position: sticky !important;
+    top: 110px !important;
     align-self: flex-start;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     border: 1px solid var(--border-color);
@@ -889,9 +889,11 @@ button.subcategory-chip.active i {
     }
 
     .store-sidebar {
-        position: relative;
-        top: 0;
+        position: relative !important;
+        top: 0 !important;
         padding: 20px;
+        max-height: none;
+        overflow-y: visible;
     }
 
     .sidebar-section {

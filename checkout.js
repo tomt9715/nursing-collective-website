@@ -6,7 +6,7 @@
 
 // Configuration
 const PAYMENT_API_URL = 'https://florencebotpro-production.up.railway.app';
-const AUTH_API_URL = 'https://web-production-592c07.up.railway.app';
+const AUTH_API_URL = 'https://api.thenursingcollective.pro';
 
 // Global state
 let stripe = null;

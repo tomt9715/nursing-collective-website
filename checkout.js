@@ -293,19 +293,12 @@ function displayCartItems() {
         const itemTotal = parseFloat(item.price) * quantity;
         const iconPath = getProductIconPath(item.product_id, item.product_type);
 
-        // Use image for individual guides, Font Awesome icon for packages
-        let iconHtml;
-        if (iconPath) {
-            // Always try to load icon, with fallback to Font Awesome on error
-            iconHtml = `<img src="${iconPath}" alt="${escapeHtml(item.product_name)}" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-file-medical" style="display: none; color: var(--primary-color); font-size: 1.2rem; width: 100%; height: 100%; align-items: center; justify-content: center;"></i>`;
-        } else {
-            const iconClass = getPackageIcon(item.product_type);
-            iconHtml = `<i class="${iconClass}" style="color: white; font-size: 1rem;"></i>`;
-        }
+        // Use custom icon image with fallback to Font Awesome if image fails to load
+        const iconHtml = `<img src="${iconPath}" alt="${escapeHtml(item.product_name)}" style="width: 100%; height: 100%; object-fit: contain;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-file-medical" style="display: none; color: var(--primary-color); font-size: 1.2rem; width: 100%; height: 100%; align-items: center; justify-content: center;"></i>`;
 
         html += `
             <div class="checkout-item" data-product-id="${escapeHtml(item.product_id)}">
-                <div class="checkout-item-icon" style="${iconPath ? 'background: var(--background-light); padding: 4px;' : ''}">
+                <div class="checkout-item-icon" style="background: var(--background-light); padding: 4px;">
                     ${iconHtml}
                 </div>
                 <div class="checkout-item-details">
@@ -591,17 +584,12 @@ function getTypeLabel(type) {
 
 /**
  * Get product icon image path based on product ID
- * For individual guides, use the product_id directly as the filename
- * Icon files should be named to match product IDs in assets/images/guide-icons/
+ * All products (guides and packages) use custom icons from assets/images/guide-icons/
+ * Icon files should be named to match product IDs: {product_id}.webp
  */
 function getProductIconPath(productId, productType) {
-    // For packages, use Font Awesome icon instead
-    if (productType === 'lite-package' || productType === 'full-package') {
-        return null;
-    }
-
-    // For individual products, use product_id directly as the icon filename
-    // Icons should be named: {product_id}.webp (e.g., thyroid-disorders.webp, diabetes-type-2.webp)
+    // All products use custom icons - individual guides and packages alike
+    // Icons should be named: {product_id}.webp (e.g., diabetes-type2.webp, pediatrics-full.webp)
     return `assets/images/guide-icons/${productId}.webp`;
 }
 

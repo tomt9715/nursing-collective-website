@@ -448,6 +448,23 @@ function addCheckoutItemStyles() {
             display: flex;
             flex-direction: column;
             gap: 12px;
+            max-height: 320px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .cart-items-checkout::-webkit-scrollbar {
+            width: 6px;
+        }
+        .cart-items-checkout::-webkit-scrollbar-track {
+            background: var(--background-light);
+            border-radius: 3px;
+        }
+        .cart-items-checkout::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+        .cart-items-checkout::-webkit-scrollbar-thumb:hover {
+            background: var(--text-secondary);
         }
         .checkout-item {
             display: flex;

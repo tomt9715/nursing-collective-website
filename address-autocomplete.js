@@ -127,10 +127,21 @@ function fillInAddress() {
         }
     });
 
-    // Focus on the next empty field (usually address2 or the form continues)
-    if (!fields.address2.value) {
-        fields.address2.focus();
-    }
+    // Hide the autocomplete dropdown by blurring and re-focusing elsewhere
+    fields.address.blur();
+
+    // Hide any visible pac-container dropdowns
+    const pacContainers = document.querySelectorAll('.pac-container');
+    pacContainers.forEach(container => {
+        container.style.display = 'none';
+    });
+
+    // Focus on the next field (address2 or city)
+    setTimeout(() => {
+        if (fields.address2) {
+            fields.address2.focus();
+        }
+    }, 50);
 
     console.log('Address fields auto-filled');
 }

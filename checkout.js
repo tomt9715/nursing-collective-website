@@ -58,8 +58,9 @@ async function initCheckout() {
 
     if (isUserAuthenticated) {
         // IMPORTANT: Hide sign-in prompt first thing when authenticated
+        // Use .hidden class to override bundle.min.css !important rules
         if (signInPrompt) {
-            signInPrompt.style.display = 'none';
+            signInPrompt.classList.add('hidden');
         }
 
         // User is signed in - get user data from localStorage
@@ -146,9 +147,9 @@ async function initCheckout() {
     } else {
         console.log('Checkout auth state:', { isAuthenticated: false });
 
-        // Guest user - show sign-in prompt (it's hidden by default in HTML to prevent flash)
+        // Guest user - show sign-in prompt (remove hidden class to show it)
         if (signInPrompt) {
-            signInPrompt.style.display = 'flex';
+            signInPrompt.classList.remove('hidden');
         }
         // Ensure user info banner is hidden for guests
         if (userInfoBanner) {

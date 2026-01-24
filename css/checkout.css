@@ -999,9 +999,15 @@
    SIGN IN / USER INFO BANNERS
    ============================================ */
 
+/* Hidden state for signin prompt - must use !important to override bundle.min.css */
+.signin-prompt.hidden,
+.payment-form-container .signin-prompt.hidden {
+    display: none !important;
+}
+
 .payment-form-container .signin-prompt,
 .signin-prompt {
-    /* Note: display is controlled by JavaScript - don't use !important here */
+    /* Note: display is controlled by JavaScript via .hidden class */
     flex-direction: row !important;
     align-items: center !important;
     gap: 16px !important;

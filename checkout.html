@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/bundle.min.css">
 
     <!-- Checkout-specific styles (loaded after bundle to override) -->
-    <link rel="stylesheet" href="css/checkout.css?v=6">
+    <link rel="stylesheet" href="css/checkout.css?v=7">
 
     <link rel="preconnect" href="https://js.stripe.com" crossorigin>
 
@@ -188,7 +188,7 @@
                     <h2>Payment Details</h2>
 
                     <!-- Sign In Prompt (shown for guest checkout, hidden by JS when authenticated) -->
-                    <div class="signin-prompt" id="signin-prompt" style="display: none; flex-direction: row; align-items: center; gap: 16px; padding: 16px 20px; background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(139, 92, 246, 0.1)); border: 2px solid rgba(99, 102, 241, 0.3); border-radius: 12px; margin-bottom: 24px;">
+                    <div class="signin-prompt hidden" id="signin-prompt">
                         <div class="signin-prompt-icon" style="width: 44px; height: 44px; min-width: 44px; background: linear-gradient(135deg, #6366f1, #8b5cf6); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                             <i class="fas fa-user-circle" style="color: white; font-size: 1.25rem;"></i>
                         </div>
@@ -435,7 +435,7 @@
     <script src="dark-mode.js"></script>
     <script src="api-service.js?v=1769142741"></script>
     <script src="cart-service.js?v=3"></script>
-    <script src="checkout.js?v=6"></script>
+    <script src="checkout.js?v=7"></script>
     <script>
         // Page loader
         window.addEventListener('load', function() {

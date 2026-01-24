@@ -1057,9 +1057,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // ==================== Purchase History Functions ====================
 
+// Purchase history state
+let allOrders = [];
+let filteredOrders = [];
+let currentPage = 1;
+const ordersPerPage = 5;
+
 // Load purchase history
 async function loadPurchaseHistory() {
     const historyList = document.getElementById('purchase-history-list');
+    const summaryEl = document.getElementById('purchase-history-summary');
     if (!historyList) return;
 
     try {
@@ -1070,68 +1077,16 @@ async function loadPurchaseHistory() {
         const skeleton = historyList.querySelector('.skeleton-loader');
         if (skeleton) skeleton.remove();
 
-        if (orders.length === 0) {
-            historyList.innerHTML = `
-                <div class="purchase-history-empty">
-                    <i class="fas fa-receipt"></i>
-                    <h4>No Purchase History</h4>
-                    <p>You haven't made any purchases yet.</p>
-                    <button class="btn btn-secondary" onclick="window.location.href='store.html'">
-                        <i class="fas fa-store"></i> Browse Store
-                    </button>
-                </div>
-            `;
-            return;
-        }
+        // Filter to completed orders and store
+        allOrders = orders.filter(o => o.status === 'completed');
+        filteredOrders = [...allOrders];
+        currentPage = 1;
 
-        // Render orders (only completed ones)
-        const completedOrders = orders.filter(o => o.status === 'completed');
+        // Setup event listeners for filters
+        setupPurchaseHistoryFilters();
 
-        if (completedOrders.length === 0) {
-            historyList.innerHTML = `
-                <div class="purchase-history-empty">
-                    <i class="fas fa-receipt"></i>
-                    <h4>No Completed Orders</h4>
-                    <p>Your completed orders will appear here.</p>
-                    <button class="btn btn-secondary" onclick="window.location.href='store.html'">
-                        <i class="fas fa-store"></i> Browse Store
-                    </button>
-                </div>
-            `;
-            return;
-        }
-
-        historyList.innerHTML = completedOrders.map(order => {
-            const itemsHtml = (order.items || []).map(item => {
-                const isRevoked = item.is_active === false;
-                const revokedClass = isRevoked ? ' revoked' : '';
-                const revokedBadge = isRevoked ? '<span class="revoked-badge"><i class="fas fa-ban"></i> Revoked</span>' : '';
-                const revokedReason = isRevoked && item.grant_reason ? `<div class="revoked-reason"><i class="fas fa-info-circle"></i> ${escapeHtml(item.grant_reason)}</div>` : '';
-
-                return `
-                    <div class="purchase-item-row${revokedClass}">
-                        <span class="purchase-item-name">${escapeHtml(item.product_name)}${revokedBadge}</span>
-                        <span class="purchase-item-price">$${parseFloat(item.price).toFixed(2)}</span>
-                    </div>
-                    ${revokedReason}
-                `;
-            }).join('');
-
-            return `
-                <div class="purchase-history-item">
-                    <div class="purchase-header">
-                        <span class="purchase-order-number">Order #${escapeHtml(order.order_number)}</span>
-                        <div class="purchase-meta">
-                            <span><i class="fas fa-calendar"></i> ${formatDate(order.created_at)}</span>
-                            <span><i class="fas fa-dollar-sign"></i> $${parseFloat(order.total).toFixed(2)}</span>
-                        </div>
-                    </div>
-                    <div class="purchase-items">
-                        ${itemsHtml}
-                    </div>
-                </div>
-            `;
-        }).join('');
+        // Render the orders
+        renderPurchaseHistory();
 
     } catch (error) {
         console.error('Error loading purchase history:', error);
@@ -1148,6 +1103,209 @@ async function loadPurchaseHistory() {
                 </button>
             </div>
         `;
+        if (summaryEl) summaryEl.innerHTML = '<span>Error loading orders</span>';
+    }
+}
+
+// Setup filter event listeners
+function setupPurchaseHistoryFilters() {
+    const searchInput = document.getElementById('purchase-search-input');
+    const dateFilter = document.getElementById('purchase-date-filter');
+    const statusFilter = document.getElementById('purchase-status-filter');
+    const prevBtn = document.getElementById('purchase-prev-btn');
+    const nextBtn = document.getElementById('purchase-next-btn');
+
+    if (searchInput) {
+        searchInput.addEventListener('input', debounce(() => {
+            applyPurchaseFilters();
+        }, 300));
+    }
+
+    if (dateFilter) {
+        dateFilter.addEventListener('change', applyPurchaseFilters);
+    }
+
+    if (statusFilter) {
+        statusFilter.addEventListener('change', applyPurchaseFilters);
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderPurchaseHistory();
+            }
+        });
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderPurchaseHistory();
+            }
+        });
+    }
+}
+
+// Debounce helper
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Apply filters to orders
+function applyPurchaseFilters() {
+    const searchInput = document.getElementById('purchase-search-input');
+    const dateFilter = document.getElementById('purchase-date-filter');
+    const statusFilter = document.getElementById('purchase-status-filter');
+
+    const searchTerm = (searchInput?.value || '').toLowerCase().trim();
+    const dateRange = dateFilter?.value || 'all';
+    const statusValue = statusFilter?.value || 'all';
+
+    filteredOrders = allOrders.filter(order => {
+        // Search filter - check order number and item names
+        if (searchTerm) {
+            const orderNumberMatch = order.order_number.toLowerCase().includes(searchTerm);
+            const itemMatch = (order.items || []).some(item =>
+                item.product_name.toLowerCase().includes(searchTerm)
+            );
+            if (!orderNumberMatch && !itemMatch) return false;
+        }
+
+        // Date filter
+        if (dateRange !== 'all') {
+            const days = parseInt(dateRange);
+            const orderDate = new Date(order.created_at);
+            const cutoffDate = new Date();
+            cutoffDate.setDate(cutoffDate.getDate() - days);
+            if (orderDate < cutoffDate) return false;
+        }
+
+        // Status filter
+        if (statusValue !== 'all') {
+            const hasRevoked = (order.items || []).some(item => item.is_active === false);
+            const hasActive = (order.items || []).some(item => item.is_active !== false);
+
+            if (statusValue === 'revoked' && !hasRevoked) return false;
+            if (statusValue === 'active' && !hasActive) return false;
+        }
+
+        return true;
+    });
+
+    currentPage = 1;
+    renderPurchaseHistory();
+}
+
+// Render purchase history with pagination
+function renderPurchaseHistory() {
+    const historyList = document.getElementById('purchase-history-list');
+    const summaryEl = document.getElementById('purchase-history-summary');
+    const paginationEl = document.getElementById('purchase-pagination');
+    const pageInfoEl = document.getElementById('purchase-page-info');
+    const prevBtn = document.getElementById('purchase-prev-btn');
+    const nextBtn = document.getElementById('purchase-next-btn');
+
+    if (!historyList) return;
+
+    // Update summary
+    if (summaryEl) {
+        const total = allOrders.length;
+        const showing = filteredOrders.length;
+        if (total === 0) {
+            summaryEl.innerHTML = '<span>No orders found</span>';
+        } else if (showing === total) {
+            summaryEl.innerHTML = `<span><strong>${total}</strong> order${total !== 1 ? 's' : ''}</span>`;
+        } else {
+            summaryEl.innerHTML = `<span>Showing <strong>${showing}</strong> of <strong>${total}</strong> orders</span>`;
+        }
+    }
+
+    // Handle empty state
+    if (filteredOrders.length === 0) {
+        if (allOrders.length === 0) {
+            historyList.innerHTML = `
+                <div class="purchase-history-empty">
+                    <i class="fas fa-receipt"></i>
+                    <h4>No Purchase History</h4>
+                    <p>You haven't made any purchases yet.</p>
+                    <button class="btn btn-secondary" onclick="window.location.href='store.html'">
+                        <i class="fas fa-store"></i> Browse Store
+                    </button>
+                </div>
+            `;
+        } else {
+            historyList.innerHTML = `
+                <div class="purchase-history-empty">
+                    <i class="fas fa-search"></i>
+                    <h4>No Matching Orders</h4>
+                    <p>Try adjusting your search or filters.</p>
+                </div>
+            `;
+        }
+        if (paginationEl) paginationEl.style.display = 'none';
+        return;
+    }
+
+    // Calculate pagination
+    const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
+    const startIndex = (currentPage - 1) * ordersPerPage;
+    const endIndex = Math.min(startIndex + ordersPerPage, filteredOrders.length);
+    const pageOrders = filteredOrders.slice(startIndex, endIndex);
+
+    // Render orders
+    historyList.innerHTML = pageOrders.map(order => {
+        const itemsHtml = (order.items || []).map(item => {
+            const isRevoked = item.is_active === false;
+            const revokedClass = isRevoked ? ' revoked' : '';
+            const revokedBadge = isRevoked ? '<span class="revoked-badge"><i class="fas fa-ban"></i> Revoked</span>' : '';
+            const revokedReason = isRevoked && item.grant_reason ? `<div class="revoked-reason"><i class="fas fa-info-circle"></i> ${escapeHtml(item.grant_reason)}</div>` : '';
+
+            return `
+                <div class="purchase-item-row${revokedClass}">
+                    <span class="purchase-item-name">${escapeHtml(item.product_name)}${revokedBadge}</span>
+                    <span class="purchase-item-price">$${parseFloat(item.price).toFixed(2)}</span>
+                </div>
+                ${revokedReason}
+            `;
+        }).join('');
+
+        return `
+            <div class="purchase-history-item">
+                <div class="purchase-header">
+                    <span class="purchase-order-number">Order #${escapeHtml(order.order_number)}</span>
+                    <div class="purchase-meta">
+                        <span><i class="fas fa-calendar"></i> ${formatDate(order.created_at)}</span>
+                        <span><i class="fas fa-dollar-sign"></i> $${parseFloat(order.total).toFixed(2)}</span>
+                    </div>
+                </div>
+                <div class="purchase-items">
+                    ${itemsHtml}
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    // Update pagination
+    if (paginationEl) {
+        if (totalPages > 1) {
+            paginationEl.style.display = 'flex';
+            if (pageInfoEl) pageInfoEl.textContent = `Page ${currentPage} of ${totalPages}`;
+            if (prevBtn) prevBtn.disabled = currentPage === 1;
+            if (nextBtn) nextBtn.disabled = currentPage === totalPages;
+        } else {
+            paginationEl.style.display = 'none';
+        }
     }
 }
 

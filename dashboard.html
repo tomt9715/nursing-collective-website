@@ -292,11 +292,50 @@
                     <div class="section-header-enhanced">
                         <h2><i class="fas fa-receipt"></i> Purchase History</h2>
                     </div>
-                    <div class="purchase-history-list" id="purchase-history-list">
-                        <!-- Loading skeleton -->
-                        <div class="skeleton-loader">
-                            <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
-                            <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
+                    <div class="purchase-history-container">
+                        <!-- Filters and Search -->
+                        <div class="purchase-history-controls">
+                            <div class="purchase-search-box">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="purchase-search-input" placeholder="Search orders..." />
+                            </div>
+                            <div class="purchase-filters">
+                                <select id="purchase-date-filter">
+                                    <option value="all">All Time</option>
+                                    <option value="30">Last 30 Days</option>
+                                    <option value="90">Last 90 Days</option>
+                                    <option value="365">Last Year</option>
+                                </select>
+                                <select id="purchase-status-filter">
+                                    <option value="all">All Status</option>
+                                    <option value="active">Active Only</option>
+                                    <option value="revoked">Revoked Only</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- Order Count -->
+                        <div class="purchase-history-summary" id="purchase-history-summary">
+                            <span id="purchase-count-text">Loading orders...</span>
+                        </div>
+                        <!-- Scrollable List -->
+                        <div class="purchase-history-scroll" id="purchase-history-scroll">
+                            <div class="purchase-history-list" id="purchase-history-list">
+                                <!-- Loading skeleton -->
+                                <div class="skeleton-loader">
+                                    <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
+                                    <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Pagination -->
+                        <div class="purchase-pagination" id="purchase-pagination" style="display: none;">
+                            <button class="pagination-btn" id="purchase-prev-btn" disabled>
+                                <i class="fas fa-chevron-left"></i> Previous
+                            </button>
+                            <span class="pagination-info" id="purchase-page-info">Page 1 of 1</span>
+                            <button class="pagination-btn" id="purchase-next-btn" disabled>
+                                Next <i class="fas fa-chevron-right"></i>
+                            </button>
                         </div>
                     </div>
                 </section>

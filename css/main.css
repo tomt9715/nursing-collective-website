@@ -345,6 +345,12 @@ h1, h2, h3, h4, h5, h6 {
 @media (max-width: 768px) {
     .mobile-menu-btn {
         display: block;
+        margin-left: auto; /* Push to far right edge */
+    }
+
+    .nav-container {
+        justify-content: space-between;
+        width: 100%;
     }
 
     .nav-links {

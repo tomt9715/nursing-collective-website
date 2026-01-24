@@ -67,11 +67,23 @@ function initAuthCallback() {
                 }
             })
             .then(response => response.json())
-            .then(data => {
+            .then(async data => {
                 if (data.user) {
                     // Store user data
                     localStorage.setItem('user', JSON.stringify(data.user));
-                    console.log('User data stored, determining redirect');
+                    console.log('User data stored:', data.user.email);
+
+                    // Merge guest cart with user's cart after OAuth login
+                    try {
+                        if (typeof cartManager !== 'undefined') {
+                            console.log('Merging guest cart after OAuth login...');
+                            await cartManager.mergeGuestCart();
+                            console.log('Guest cart merged successfully');
+                        }
+                    } catch (cartError) {
+                        console.error('Cart merge error (non-fatal):', cartError);
+                        // Continue with redirect even if cart merge fails
+                    }
 
                     // Determine redirect URL based on priority:
                     // 1. Stored redirect from before OAuth (e.g., store, checkout)

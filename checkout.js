@@ -146,10 +146,11 @@ async function initCheckout() {
     } else {
         console.log('Checkout auth state:', { isAuthenticated: false });
 
-        // Guest user - show sign-in prompt, hide user info banner
+        // Guest user - show sign-in prompt (it's hidden by default in HTML to prevent flash)
         if (signInPrompt) {
             signInPrompt.style.display = 'flex';
         }
+        // Ensure user info banner is hidden for guests
         if (userInfoBanner) {
             userInfoBanner.style.display = 'none';
         }

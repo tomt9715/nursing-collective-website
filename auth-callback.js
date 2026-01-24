@@ -6,12 +6,24 @@
 // and before cart-service.js DOMContentLoaded can interfere
 const GUEST_CART_KEY_CAPTURE = 'florencebot_guest_cart';
 let capturedGuestCart = null;
+
+// DEBUG: Log that auth-callback.js is running
+console.log('=== AUTH CALLBACK SCRIPT LOADED ===');
+console.log('Auth callback: Current URL:', window.location.href);
+
 try {
     const storedGuestCart = localStorage.getItem(GUEST_CART_KEY_CAPTURE);
     console.log('Auth callback: Raw guest cart from localStorage:', storedGuestCart);
+
+    // DEBUG: Also log all localStorage keys to see what's there
+    console.log('Auth callback: All localStorage keys:', Object.keys(localStorage));
+
     if (storedGuestCart) {
         capturedGuestCart = JSON.parse(storedGuestCart);
         console.log('Auth callback: Parsed guest cart:', JSON.stringify(capturedGuestCart));
+        console.log('Auth callback: Guest cart has', capturedGuestCart.items?.length || 0, 'items');
+    } else {
+        console.log('Auth callback: NO GUEST CART FOUND in localStorage');
     }
 } catch (e) {
     console.error('Auth callback: Failed to capture guest cart:', e);
@@ -97,8 +109,13 @@ function initAuthCallback() {
                         const newlyAddedIds = capturedGuestCart.items.map(item => item.product_id);
                         sessionStorage.setItem('newlyAddedCartItems', JSON.stringify(newlyAddedIds));
                         console.log('Auth callback: Stored newly added item IDs in sessionStorage:', newlyAddedIds);
+                        // Verify it was stored
+                        const verification = sessionStorage.getItem('newlyAddedCartItems');
+                        console.log('Auth callback: Verification - sessionStorage now contains:', verification);
                     } else {
                         console.log('Auth callback: No guest cart items found to store');
+                        console.log('Auth callback: capturedGuestCart value:', capturedGuestCart);
+                        console.log('Auth callback: capturedGuestCart.items:', capturedGuestCart?.items);
                     }
 
                     // Now merge guest cart with user's cart via API

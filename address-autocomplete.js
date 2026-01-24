@@ -127,15 +127,17 @@ function fillInAddress() {
         }
     });
 
-    // Hide the autocomplete dropdown
-    // First blur the address field to close the dropdown
-    fields.address.blur();
+    // Hide the autocomplete dropdown by simulating a click outside
+    // This is the most reliable way to close Google's pac-container
+    document.body.click();
 
-    // Move focus to city field (which doesn't have autocomplete attached)
-    // Using a small delay to ensure the blur completes first
+    // Also explicitly hide the dropdown
     setTimeout(() => {
-        fields.city.focus();
-    }, 10);
+        const pacContainers = document.querySelectorAll('.pac-container');
+        pacContainers.forEach(container => {
+            container.style.visibility = 'hidden';
+        });
+    }, 0);
 
     console.log('Address fields auto-filled');
 }

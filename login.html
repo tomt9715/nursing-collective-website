@@ -64,6 +64,10 @@
                     <i class="fas fa-sun light-icon"></i>
                     <i class="fas fa-moon dark-icon"></i>
                 </button>
+                <div class="cart-icon-container" aria-label="Shopping cart" title="View cart">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-badge empty">0</span>
+                </div>
                 <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
             </div>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
@@ -307,8 +311,9 @@
     <!-- API Service Layer -->
     <script src="api-service.js?v=1769142741"></script>
 
-    <!-- Cart Service (for cart merge on login) -->
+    <!-- Cart System -->
     <script src="cart-service.js"></script>
+    <script src="cart-ui.js"></script>
 
     <script src="script.js?v=4.0.1768966858"></script>
     <script src="auth-script.js?v=4.0.1768966858"></script>

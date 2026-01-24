@@ -336,13 +336,20 @@ async function loadUsers(page = 1) {
                 <td>${formatDate(user.created_at)}</td>
                 <td>
                     <div class="table-actions">
-                        <button class="action-btn primary" onclick="openUserDetail('${escapeHtml(user.email)}')">
+                        <button class="action-btn primary" data-view-user="${escapeHtml(user.email)}">
                             <i class="fas fa-eye"></i> View
                         </button>
                     </div>
                 </td>
             </tr>
         `).join('');
+
+        // Attach event listeners to View buttons
+        tbody.querySelectorAll('[data-view-user]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                openUserDetail(this.dataset.viewUser);
+            });
+        });
 
         // Update count
         const total = data.pagination ? data.pagination.total : data.total || data.users.length;
@@ -415,10 +422,11 @@ async function openUserDetail(email) {
         // Guides
         document.getElementById('modal-guides-count').textContent = data.guides.filter(g => g.is_active).length;
 
+        const guidesListEl = document.getElementById('user-guides-list');
         if (data.guides.length === 0) {
-            document.getElementById('user-guides-list').innerHTML = '<div class="empty-state"><p>No guides owned</p></div>';
+            guidesListEl.innerHTML = '<div class="empty-state"><p>No guides owned</p></div>';
         } else {
-            document.getElementById('user-guides-list').innerHTML = data.guides.map(guide => `
+            guidesListEl.innerHTML = data.guides.map(guide => `
                 <div class="guide-item-admin ${guide.is_active ? '' : 'revoked'}">
                     <div class="guide-info">
                         <div class="guide-name">${escapeHtml(guide.product_name)}</div>
@@ -430,18 +438,30 @@ async function openUserDetail(email) {
                     </div>
                     <div class="guide-actions">
                         ${guide.is_active ? `
-                            <button class="action-btn danger" onclick="revokeGuide('${escapeHtml(email)}', '${escapeHtml(guide.product_id)}')">
+                            <button class="action-btn danger" data-revoke-guide="${escapeHtml(guide.product_id)}" data-user-email="${escapeHtml(email)}">
                                 <i class="fas fa-times"></i> Revoke
                             </button>
                         ` : `
                             <span class="badge-status revoked">Revoked</span>
-                            <button class="action-btn success" onclick="restoreGuide('${escapeHtml(email)}', '${escapeHtml(guide.product_id)}')">
+                            <button class="action-btn success" data-restore-guide="${escapeHtml(guide.product_id)}" data-user-email="${escapeHtml(email)}">
                                 <i class="fas fa-redo"></i> Restore
                             </button>
                         `}
                     </div>
                 </div>
             `).join('');
+
+            // Attach event listeners for revoke/restore buttons
+            guidesListEl.querySelectorAll('[data-revoke-guide]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    revokeGuide(this.dataset.userEmail, this.dataset.revokeGuide);
+                });
+            });
+            guidesListEl.querySelectorAll('[data-restore-guide]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    restoreGuide(this.dataset.userEmail, this.dataset.restoreGuide);
+                });
+            });
         }
 
         // Notes
@@ -608,13 +628,20 @@ async function loadGuides() {
                 <td><strong>${guide.total_active_owners}</strong></td>
                 <td>
                     <div class="table-actions">
-                        <button class="action-btn primary" onclick="openGuideOwnersModal('${escapeHtml(guide.guide_id)}', '${escapeHtml(guide.name)}')">
+                        <button class="action-btn primary" data-view-guide-owners="${escapeHtml(guide.guide_id)}" data-guide-name="${escapeHtml(guide.name)}">
                             <i class="fas fa-users"></i> View Owners
                         </button>
                     </div>
                 </td>
             </tr>
         `).join('');
+
+        // Attach event listeners to View Owners buttons
+        tbody.querySelectorAll('[data-view-guide-owners]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                openGuideOwnersModal(this.dataset.viewGuideOwners, this.dataset.guideName);
+            });
+        });
     } catch (error) {
         console.error('Error loading guides:', error);
         tbody.innerHTML = '<tr><td colspan="7" class="loading-cell">Error loading guides</td></tr>';
@@ -649,7 +676,7 @@ async function openGuideOwnersModal(guideId, guideName) {
         tbody.innerHTML = data.owners.map(owner => `
             <tr>
                 <td>
-                    <a href="#" onclick="openUserDetail('${escapeHtml(owner.user_email)}'); closeGuideOwnersModal(); return false;">
+                    <a href="#" class="owner-user-link" data-user-email="${escapeHtml(owner.user_email)}">
                         ${escapeHtml(owner.user_email)}
                     </a>
                 </td>
@@ -664,6 +691,15 @@ async function openGuideOwnersModal(guideId, guideName) {
                 </td>
             </tr>
         `).join('');
+
+        // Attach event listeners to user links in owners table
+        tbody.querySelectorAll('.owner-user-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                openUserDetail(this.dataset.userEmail);
+                closeGuideOwnersModal();
+            });
+        });
     } catch (error) {
         console.error('Error loading guide owners:', error);
         tbody.innerHTML = '<tr><td colspan="5" class="loading-cell">Error loading owners</td></tr>';
@@ -789,7 +825,7 @@ async function loadAuditLog(page = 1) {
                     </span>
                 </td>
                 <td>
-                    <a href="#" onclick="openUserDetail('${escapeHtml(log.target_user_email)}'); return false;">
+                    <a href="#" class="audit-user-link" data-user-email="${escapeHtml(log.target_user_email)}">
                         ${escapeHtml(log.target_user_email)}
                     </a>
                 </td>
@@ -797,6 +833,14 @@ async function loadAuditLog(page = 1) {
                 <td>${escapeHtml(log.reason || '-')}</td>
             </tr>
         `).join('');
+
+        // Attach event listeners to user links in audit table
+        tbody.querySelectorAll('.audit-user-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                openUserDetail(this.dataset.userEmail);
+            });
+        });
 
         // Pagination
         if (data.pagination && data.pagination.pages > 1) {
@@ -864,14 +908,23 @@ async function loadProductsCatalog() {
 function renderPagination(containerId, pagination, loadFn) {
     const container = document.getElementById(containerId);
     container.innerHTML = `
-        <button class="pagination-btn" onclick="${loadFn.name}(${pagination.page - 1})" ${!pagination.has_prev ? 'disabled' : ''}>
+        <button class="pagination-btn pagination-prev" data-page="${pagination.page - 1}" ${!pagination.has_prev ? 'disabled' : ''}>
             <i class="fas fa-chevron-left"></i> Prev
         </button>
         <span class="pagination-info">Page ${pagination.page} of ${pagination.pages}</span>
-        <button class="pagination-btn" onclick="${loadFn.name}(${pagination.page + 1})" ${!pagination.has_next ? 'disabled' : ''}>
+        <button class="pagination-btn pagination-next" data-page="${pagination.page + 1}" ${!pagination.has_next ? 'disabled' : ''}>
             Next <i class="fas fa-chevron-right"></i>
         </button>
     `;
+
+    // Attach event listeners to pagination buttons
+    container.querySelectorAll('.pagination-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            if (!this.disabled) {
+                loadFn(parseInt(this.dataset.page));
+            }
+        });
+    });
 }
 
 function formatDate(dateString) {

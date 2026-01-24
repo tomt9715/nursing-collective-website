@@ -6,9 +6,8 @@
  * We collect customer info (name, email, address) and send it with the payment.
  */
 
-// Configuration
-const PAYMENT_API_URL = 'https://florencebotpro-production.up.railway.app';
-const AUTH_API_URL = 'https://api.thenursingcollective.pro';
+// Configuration - Single API URL for all backend calls
+const API_URL = 'https://api.thenursingcollective.pro';
 
 // Global state
 let stripe = null;
@@ -73,7 +72,7 @@ async function initCheckout() {
         if (!accountEmail) {
             console.log('User email missing from localStorage, fetching from API...');
             try {
-                const response = await fetch(`${AUTH_API_URL}/auth/me`, {
+                const response = await fetch(`${API_URL}/auth/me`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
@@ -225,7 +224,7 @@ function hidePageLoader() {
  */
 async function initStripe() {
     try {
-        const response = await fetch(`${PAYMENT_API_URL}/api/config`);
+        const response = await fetch(`${API_URL}/api/config`);
         if (!response.ok) {
             throw new Error('Failed to fetch Stripe configuration');
         }
@@ -249,7 +248,7 @@ async function initStripe() {
  */
 async function loadSingleProduct(productId) {
     try {
-        const response = await fetch(`${PAYMENT_API_URL}/api/product/${productId}`);
+        const response = await fetch(`${API_URL}/api/product/${productId}`);
         if (!response.ok) {
             if (response.status === 404) {
                 throw new Error('Product not found');
@@ -1003,7 +1002,7 @@ async function createPaymentIntent() {
         payload.promo_code = appliedPromo.code;
     }
 
-    const response = await fetch(`${AUTH_API_URL}/cart/checkout/create-payment-intent`, {
+    const response = await fetch(`${API_URL}/cart/checkout/create-payment-intent`, {
         method: 'POST',
         headers,
         body: JSON.stringify(payload)
@@ -1265,7 +1264,7 @@ async function handleSubmit(event) {
  * Handle subscription checkout redirect
  */
 async function handleSubscriptionCheckout(email) {
-    const response = await fetch(`${PAYMENT_API_URL}/api/create-subscription`, {
+    const response = await fetch(`${API_URL}/api/create-subscription`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1485,7 +1484,7 @@ async function validateAndApplyPromo() {
     promoMessage.className = 'promo-message';
 
     try {
-        const response = await fetch(`${AUTH_API_URL}/cart/checkout/validate-promo`, {
+        const response = await fetch(`${API_URL}/cart/checkout/validate-promo`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

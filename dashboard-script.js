@@ -974,7 +974,7 @@ async function claimOrder() {
 
     // Validate format (6 alphanumeric characters)
     if (!orderCode || orderCode.length !== 6 || !/^[A-Z0-9]+$/.test(orderCode)) {
-        showClaimMessage('Please enter a valid 6-character order code (e.g., ABC123).', 'error');
+        showClaimMessage('Please enter a valid 6-character order code (e.g., 123456).', 'error');
         return;
     }
 

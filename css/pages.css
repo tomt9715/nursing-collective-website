@@ -4703,11 +4703,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
     padding: 16px 20px;
     background: var(--background-light);
     border-bottom: 1px solid var(--border-color);
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 .purchase-search-box {
@@ -4719,8 +4719,8 @@
     border-radius: 8px;
     padding: 8px 14px;
     flex: 1;
-    max-width: 300px;
-    min-width: 180px;
+    max-width: 260px;
+    min-width: 150px;
 }
 
 .purchase-search-box i {
@@ -4744,7 +4744,8 @@
 .purchase-filters {
     display: flex;
     gap: 10px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
 }
 
 .purchase-filters select {
@@ -4756,7 +4757,7 @@
     font-size: 0.85rem;
     cursor: pointer;
     outline: none;
-    min-width: 130px;
+    min-width: 110px;
 }
 
 .purchase-filters select:focus {
@@ -4840,25 +4841,31 @@
     color: var(--text-secondary);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .purchase-history-controls {
         flex-direction: column;
         align-items: stretch;
+        flex-wrap: wrap;
     }
 
     .purchase-search-box {
         max-width: none;
+        width: 100%;
     }
 
     .purchase-filters {
-        justify-content: space-between;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
     }
 
     .purchase-filters select {
         flex: 1;
-        min-width: 0;
+        min-width: 100px;
     }
+}
 
+@media (max-width: 480px) {
     .purchase-pagination {
         flex-wrap: wrap;
         gap: 10px;

@@ -228,7 +228,7 @@ Convert inline styles in pricing.html to CSS classes
 ## File Organization
 
 ```
-FlorenceBot-website/
+nursing-collective-website/
 ├── css/
 │   ├── main.css          (Base styles & layout)
 │   ├── components.css    (Reusable components)

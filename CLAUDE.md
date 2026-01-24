@@ -112,7 +112,7 @@ git push origin --delete preview/<feature-name>
 
 ### Frontend Directory Structure
 ```
-FlorenceBot-website/
+nursing-collective-website/
 ├── index.html          # Homepage
 ├── login.html          # Auth page (Google, Discord, Email)
 ├── dashboard.html      # User dashboard (requires auth)

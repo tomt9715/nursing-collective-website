@@ -33,7 +33,7 @@ Apple Pay requires domain verification. This is **critical** and must be done be
 5. Host this file at: `https://thenursingcollective.pro/.well-known/apple-developer-merchantid-domain-association`
 
 **For Cloudflare Pages hosting:**
-- Create a folder: `FlorenceBot-website/.well-known/`
+- Create a folder: `nursing-collective-website/.well-known/`
 - Place the verification file inside
 - Commit and deploy to main branch
 - Verify in Stripe Dashboard that domain shows as "Verified"

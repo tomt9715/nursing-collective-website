@@ -1,7 +1,7 @@
 {
-  "name": "florencebot-website",
+  "name": "nursing-collective-website",
   "version": "1.0.0",
-  "description": "",
+  "description": "The Nursing Collective - E-commerce platform for nursing students",
   "main": "admin-script.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,16 +14,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/tomt9715/FlorenceBot-website.git"
+    "url": "git+https://github.com/tomt9715/nursing-collective-website.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "module",
   "bugs": {
-    "url": "https://github.com/tomt9715/FlorenceBot-website/issues"
+    "url": "https://github.com/tomt9715/nursing-collective-website/issues"
   },
-  "homepage": "https://github.com/tomt9715/FlorenceBot-website#readme",
+  "homepage": "https://github.com/tomt9715/nursing-collective-website#readme",
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^7.0.2",
     "cssnano": "^7.1.2",

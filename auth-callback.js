@@ -30,9 +30,9 @@ try {
 }
 
 // Parse URL parameters
+// Note: refresh_token is now set as an httpOnly cookie by the backend, not in URL
 const urlParams = new URLSearchParams(window.location.search);
 const accessToken = urlParams.get('access_token');
-const refreshToken = urlParams.get('refresh_token');
 const error = urlParams.get('error');
 const orderToClaim = urlParams.get('order'); // Order to claim after OAuth login
 
@@ -72,19 +72,18 @@ function initAuthCallback() {
         console.error('OAuth error:', error);
         showError('Authentication failed. Please try again.');
     }
-    // Check if tokens are present
-    else if (!accessToken || !refreshToken) {
-        console.error('Missing tokens in callback URL');
-        showError('Authentication incomplete. Missing tokens.');
+    // Check if access token is present (refresh token comes via httpOnly cookie)
+    else if (!accessToken) {
+        console.error('Missing access token in callback URL');
+        showError('Authentication incomplete. Missing access token.');
     }
-    // Success - store tokens and redirect
+    // Success - store access token and redirect (refresh token is in httpOnly cookie)
     else {
-        console.log('OAuth callback successful, storing tokens');
+        console.log('OAuth callback successful, storing access token');
 
         try {
-            // Store tokens
+            // Store access token (refresh token is set as httpOnly cookie by backend)
             localStorage.setItem('accessToken', accessToken);
-            localStorage.setItem('refreshToken', refreshToken);
 
             // Fetch user data
             fetch('https://api.thenursingcollective.pro/auth/me', {
@@ -92,7 +91,8 @@ function initAuthCallback() {
                 headers: {
                     'Authorization': `Bearer ${accessToken}`,
                     'Content-Type': 'application/json'
-                }
+                },
+                credentials: 'include' // Include httpOnly cookies
             })
             .then(response => response.json())
             .then(async data => {

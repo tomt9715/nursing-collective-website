@@ -1374,12 +1374,15 @@ function updateNavbarForAuth(user) {
         if (logoutBtn) {
             logoutBtn.addEventListener('click', function(e) {
                 e.preventDefault();
-                // Clear auth data
-                localStorage.removeItem('accessToken');
-                localStorage.removeItem('refreshToken');
-                localStorage.removeItem('user');
-                // Redirect to login
-                window.location.href = 'login.html';
+                // Use centralized logout function from api-service.js
+                if (typeof performLogout === 'function') {
+                    performLogout();
+                } else {
+                    // Fallback if api-service.js not loaded
+                    localStorage.removeItem('accessToken');
+                    localStorage.removeItem('user');
+                    window.location.href = 'login.html';
+                }
             });
         }
     }

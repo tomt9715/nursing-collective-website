@@ -361,10 +361,15 @@ function updateNavAuthState() {
                 logoutBtn.setAttribute('data-logout-attached', 'true');
                 logoutBtn.addEventListener('click', function(e) {
                     e.preventDefault();
-                    localStorage.removeItem('accessToken');
-                    localStorage.removeItem('refreshToken');
-                    localStorage.removeItem('user');
-                    window.location.href = 'login.html';
+                    // Use centralized logout function from api-service.js
+                    if (typeof performLogout === 'function') {
+                        performLogout();
+                    } else {
+                        // Fallback if api-service.js not loaded
+                        localStorage.removeItem('accessToken');
+                        localStorage.removeItem('user');
+                        window.location.href = 'login.html';
+                    }
                 });
             }
         }

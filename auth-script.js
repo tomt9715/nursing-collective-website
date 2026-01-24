@@ -440,7 +440,8 @@ async function handleLogin(email, password) {
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ email, password }),
+            credentials: 'include' // Include cookies for httpOnly refresh token
         });
 
         const data = await response.json();
@@ -451,9 +452,8 @@ async function handleLogin(email, password) {
         }
 
 
-        // Store tokens and user data
+        // Store access token and user data (refresh token is set as httpOnly cookie by backend)
         localStorage.setItem('accessToken', data.access_token);
-        localStorage.setItem('refreshToken', data.refresh_token);
         localStorage.setItem('user', JSON.stringify(data.user));
 
         // Store login timestamp for token expiry tracking

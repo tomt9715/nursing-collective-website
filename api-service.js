@@ -31,7 +31,8 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
     try {
         const response = await fetch(`${API_URL}${endpoint}`, {
             ...options,
-            headers
+            headers,
+            credentials: 'include' // Include cookies for httpOnly refresh token
         });
 
         // Handle 401 Unauthorized - Token expired
@@ -84,23 +85,18 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
 }
 
 /**
- * Refresh the access token using the refresh token
+ * Refresh the access token using the httpOnly cookie refresh token
  * @returns {Promise<string>} - New access token
  */
 async function refreshToken() {
-    const refreshToken = localStorage.getItem('refreshToken');
-
-    if (!refreshToken) {
-        throw new Error('No refresh token available');
-    }
-
     try {
+        // Refresh token is sent automatically via httpOnly cookie
         const response = await fetch(`${API_URL}/auth/refresh`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ refresh_token: refreshToken })
+            credentials: 'include' // Include httpOnly cookie with refresh token
         });
 
         const data = await response.json();
@@ -109,11 +105,8 @@ async function refreshToken() {
             throw new Error(data.error || 'Token refresh failed');
         }
 
-        // Update tokens
+        // Update access token (refresh token stays in httpOnly cookie)
         localStorage.setItem('accessToken', data.access_token);
-        if (data.refresh_token) {
-            localStorage.setItem('refreshToken', data.refresh_token);
-        }
         localStorage.setItem('tokenTimestamp', Date.now().toString());
 
         console.log('Token refreshed successfully');
@@ -130,8 +123,9 @@ let isLoggingOut = false;
 
 /**
  * Logout function with cross-tab synchronization
+ * Calls backend to revoke refresh token and clear httpOnly cookie
  */
-function performLogout() {
+async function performLogout() {
     // Prevent redirect loop
     if (isLoggingOut) {
         console.log('Logout already in progress');
@@ -139,9 +133,22 @@ function performLogout() {
     }
     isLoggingOut = true;
 
-    // Clear all auth data
+    try {
+        // Call backend to revoke session and clear httpOnly cookie
+        await fetch(`${API_URL}/auth/logout`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'include' // Include httpOnly cookie
+        });
+    } catch (error) {
+        // Log error but continue with local cleanup
+        console.error('Backend logout error:', error);
+    }
+
+    // Clear all local auth data
     localStorage.removeItem('accessToken');
-    localStorage.removeItem('refreshToken');
     localStorage.removeItem('user');
     localStorage.removeItem('tokenTimestamp');
 
@@ -189,9 +196,9 @@ function requireAuth() {
 window.addEventListener('storage', function(e) {
     if (e.key === 'logoutEvent' && e.newValue) {
         // Another tab logged out, clear local data and redirect
+        // (httpOnly cookie was already cleared by the first tab's backend call)
         console.log('Logout detected in another tab');
         localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
         localStorage.removeItem('user');
         localStorage.removeItem('tokenTimestamp');
         window.location.href = 'login.html';

@@ -493,10 +493,18 @@
 
 .admin-navbar .nav-container {
     overflow: visible !important;
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 .admin-navbar .nav-links {
     overflow: visible !important;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: 40px;
+    margin-right: auto;
 }
 
 .admin-navbar .user-menu {
@@ -522,6 +530,7 @@
 /* Nav right section - separate from nav-links to avoid CSS conflicts */
 .admin-navbar .nav-right {
     display: flex;
+    flex-direction: row;
     align-items: center;
     gap: 16px;
     margin-left: auto;
@@ -530,6 +539,10 @@
 .admin-navbar .nav-right .theme-toggle {
     border-color: rgba(255, 255, 255, 0.3);
     color: white;
+}
+
+.admin-navbar .nav-right .theme-toggle i {
+    color: white !important;
 }
 
 .admin-navbar .nav-right .theme-toggle:hover {

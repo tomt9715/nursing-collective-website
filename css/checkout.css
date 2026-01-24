@@ -91,8 +91,39 @@
     padding: 24px;
 }
 
-/* Responsive: tablet - stack to single column */
+/* Responsive: tablet landscape - narrower columns but still side by side */
 @media (max-width: 1300px) {
+    .checkout-container.checkout-three-column {
+        gap: 20px;
+        padding: 0 20px;
+    }
+
+    .checkout-three-column .order-summary {
+        flex: 0 0 320px;
+        width: 320px;
+        max-width: 320px;
+    }
+
+    .checkout-three-column .payment-details-column {
+        flex: 0 0 320px;
+        width: 320px;
+        max-width: 320px;
+    }
+
+    .checkout-three-column .payment-method-column {
+        flex: 0 0 300px;
+        width: 300px;
+        max-width: 300px;
+    }
+
+    .checkout-three-column .order-summary,
+    .checkout-three-column .payment-form-container {
+        padding: 20px;
+    }
+}
+
+/* Responsive: tablet portrait - stack to single column */
+@media (max-width: 1024px) {
     .checkout-container.checkout-three-column {
         flex-direction: column;
         gap: 20px;

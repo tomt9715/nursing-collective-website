@@ -1380,3 +1380,75 @@
     font-size: 0.85rem;
     text-align: center;
 }
+
+/* ============================================
+   GOLD ACCENT STYLING
+   ============================================ */
+
+/* Gold accent color variable for consistency */
+.checkout-section {
+    --gold-accent: #f59e0b;
+    --gold-accent-light: rgba(245, 158, 11, 0.15);
+    --gold-accent-dark: #d97706;
+}
+
+/* Total price with gold accent */
+.total-row.total-final .total-amount,
+.total-row.total-final span:last-child {
+    color: var(--gold-accent);
+}
+
+/* Trust badge icons with gold */
+.trust-badge i {
+    background: linear-gradient(135deg, var(--gold-accent-light), rgba(245, 158, 11, 0.08));
+    color: var(--gold-accent);
+}
+
+/* Security note icon in gold */
+.security-note i {
+    color: var(--gold-accent);
+}
+
+/* What You Get checkmarks in gold */
+.checkout-what-you-get li i {
+    color: var(--gold-accent);
+}
+
+/* Package includes checkmarks in gold */
+.package-includes li i {
+    color: var(--gold-accent);
+}
+
+/* Gold accent bar for Payment Method section title */
+.payment-method-column .form-section-title::before {
+    background: linear-gradient(180deg, var(--gold-accent), var(--gold-accent-dark));
+}
+
+/* Subtle gold border accent on order summary */
+.order-summary {
+    border-top: 3px solid var(--gold-accent);
+}
+
+/* Gold highlight on product price */
+.product-price {
+    background: linear-gradient(135deg, var(--gold-accent-light), transparent);
+    padding: 8px 12px;
+    border-radius: 8px;
+    display: inline-block;
+}
+
+/* Trust badges horizontal - gold icons */
+.trust-badges.trust-badges-horizontal .trust-badge i {
+    background: linear-gradient(135deg, var(--gold-accent-light), rgba(245, 158, 11, 0.05));
+    color: var(--gold-accent);
+}
+
+/* Dark mode adjustments for gold */
+[data-theme="dark"] .trust-badge i {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.2), rgba(245, 158, 11, 0.1));
+    color: var(--gold-accent);
+}
+
+[data-theme="dark"] .product-price {
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.12), transparent);
+}

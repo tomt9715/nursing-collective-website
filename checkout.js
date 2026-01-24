@@ -57,18 +57,45 @@ async function initCheckout() {
     const useDifferentEmailBtn = document.getElementById('use-different-email-btn');
 
     if (isUserAuthenticated) {
-        // User is signed in - show user info banner
-        const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
+        // IMPORTANT: Hide sign-in prompt first thing when authenticated
+        if (signInPrompt) {
+            signInPrompt.style.display = 'none';
+        }
+
+        // User is signed in - get user data from localStorage
+        let user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
 
         // Get email from user object - try different possible property names
         accountEmail = user.email || user.user_email || user.email_address || '';
 
-        console.log('Checkout auth state:', { isAuthenticated: true, user, accountEmail });
+        // If user data is incomplete (no email), try to fetch fresh data from API
+        if (!accountEmail) {
+            console.log('User email missing from localStorage, fetching from API...');
+            try {
+                const response = await fetch(`${AUTH_API_URL}/auth/me`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                        'Content-Type': 'application/json'
+                    }
+                });
 
-        // Hide sign-in prompt immediately
-        if (signInPrompt) {
-            signInPrompt.style.display = 'none';
+                if (response.ok) {
+                    const data = await response.json();
+                    if (data.user) {
+                        user = data.user;
+                        // Update localStorage with fresh data
+                        localStorage.setItem('user', JSON.stringify(user));
+                        accountEmail = user.email || user.user_email || user.email_address || '';
+                        console.log('Fetched fresh user data:', { email: accountEmail });
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
         }
+
+        console.log('Checkout auth state:', { isAuthenticated: true, user, accountEmail });
 
         // Show user info banner
         if (userInfoBanner) {
@@ -102,8 +129,16 @@ async function initCheckout() {
 
         // Pre-fill name if available
         const nameField = document.getElementById('name');
-        if (nameField && (user.name || user.displayName || user.full_name)) {
-            nameField.value = user.name || user.displayName || user.full_name;
+        if (nameField) {
+            let fullName = '';
+            if (user.first_name || user.last_name) {
+                fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
+            } else if (user.name || user.displayName || user.full_name) {
+                fullName = user.name || user.displayName || user.full_name;
+            }
+            if (fullName) {
+                nameField.value = fullName;
+            }
         }
 
         // Update navbar for authenticated user

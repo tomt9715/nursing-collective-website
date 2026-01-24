@@ -76,18 +76,24 @@ function initAuthCallback() {
                     // Merge guest cart with user's cart after OAuth login
                     try {
                         if (typeof cartManager !== 'undefined') {
-                            console.log('Merging guest cart after OAuth login...');
+                            console.log('Auth callback: Merging guest cart after OAuth login...');
 
                             // Before merging, store guest cart item IDs so checkout can identify newly added items
                             const guestCart = cartManager.getGuestCart();
+                            console.log('Auth callback: Guest cart found:', JSON.stringify(guestCart));
+
                             if (guestCart.items && guestCart.items.length > 0) {
                                 const newlyAddedIds = guestCart.items.map(item => item.product_id);
                                 sessionStorage.setItem('newlyAddedCartItems', JSON.stringify(newlyAddedIds));
-                                console.log('Stored newly added item IDs for checkout display:', newlyAddedIds);
+                                console.log('Auth callback: Stored newly added item IDs:', newlyAddedIds);
+                            } else {
+                                console.log('Auth callback: No guest cart items to store');
                             }
 
                             await cartManager.mergeGuestCart();
-                            console.log('Guest cart merged successfully');
+                            console.log('Auth callback: Guest cart merged successfully');
+                        } else {
+                            console.warn('Auth callback: cartManager not defined');
                         }
                     } catch (cartError) {
                         console.error('Cart merge error (non-fatal):', cartError);

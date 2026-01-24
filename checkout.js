@@ -341,12 +341,17 @@ function displayCartItems() {
     let newlyAddedIds = [];
     try {
         const stored = sessionStorage.getItem('newlyAddedCartItems');
+        console.log('Cart separation - sessionStorage newlyAddedCartItems:', stored);
         if (stored) {
             newlyAddedIds = JSON.parse(stored);
+            console.log('Cart separation - parsed newlyAddedIds:', newlyAddedIds);
         }
     } catch (e) {
         console.error('Error parsing newly added cart items:', e);
     }
+
+    // Debug: log cart items to compare IDs
+    console.log('Cart separation - cart items:', cartItems.map(i => ({ id: i.product_id, name: i.product_name })));
 
     // Separate items into previous session vs newly added
     const previousItems = [];

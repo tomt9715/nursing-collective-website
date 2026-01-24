@@ -984,7 +984,7 @@
 
 .payment-form-container .signin-prompt,
 .signin-prompt {
-    display: flex !important;
+    /* Note: display is controlled by JavaScript - don't use !important here */
     flex-direction: row !important;
     align-items: center !important;
     gap: 16px !important;

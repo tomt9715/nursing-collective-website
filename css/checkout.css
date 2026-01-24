@@ -1304,19 +1304,29 @@
     color: #ef4444;
 }
 
-/* Promo discount in order summary */
+/* Promo/Bundle discount in order summary - gold accent */
 .promo-discount-row {
-    color: #10b981 !important;
+    color: #f59e0b !important;
     font-weight: 600;
 }
 
 .promo-discount-row .promo-code-label {
     font-size: 0.8rem;
-    color: #10b981;
-    background: rgba(16, 185, 129, 0.1);
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.15);
     padding: 2px 8px;
     border-radius: 4px;
     margin-left: 8px;
+}
+
+/* Bundle discount styling */
+.bundle-discount-row {
+    color: #f59e0b !important;
+    font-weight: 600;
+}
+
+.bundle-discount-row span:last-child {
+    color: #f59e0b;
 }
 
 @media (max-width: 480px) {
@@ -1392,12 +1402,6 @@
     --gold-accent-dark: #d97706;
 }
 
-/* Total price with gold accent */
-.total-row.total-final .total-amount,
-.total-row.total-final span:last-child {
-    color: var(--gold-accent);
-}
-
 /* Trust badge icons with gold */
 .trust-badge i {
     background: linear-gradient(135deg, var(--gold-accent-light), rgba(245, 158, 11, 0.08));
@@ -1406,16 +1410,6 @@
 
 /* Security note icon in gold */
 .security-note i {
-    color: var(--gold-accent);
-}
-
-/* What You Get checkmarks in gold */
-.checkout-what-you-get li i {
-    color: var(--gold-accent);
-}
-
-/* Package includes checkmarks in gold */
-.package-includes li i {
     color: var(--gold-accent);
 }
 

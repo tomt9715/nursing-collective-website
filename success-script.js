@@ -98,11 +98,13 @@ function stopPolling() {
 
 /**
  * Clear the guest cart from localStorage after successful purchase
+ * Also clears the newlyAddedCartItems from sessionStorage
  */
 function clearGuestCart() {
     try {
         localStorage.removeItem('florencebot_guest_cart');
-        console.log('Guest cart cleared after successful purchase');
+        sessionStorage.removeItem('newlyAddedCartItems');
+        console.log('Guest cart and newlyAddedCartItems cleared after successful purchase');
     } catch (e) {
         console.error('Failed to clear guest cart:', e);
     }

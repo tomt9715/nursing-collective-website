@@ -353,6 +353,13 @@ function displayCartItems() {
     // Debug: log cart items to compare IDs
     console.log('Cart separation - cart items:', cartItems.map(i => ({ id: i.product_id, name: i.product_name })));
 
+    // Debug: Check which items will be separated
+    console.log('Cart separation - checking matches...');
+    cartItems.forEach(item => {
+        const isNewlyAdded = newlyAddedIds.includes(item.product_id);
+        console.log(`  - "${item.product_id}" (${item.product_name}): ${isNewlyAdded ? 'NEWLY ADDED' : 'previous session'}`);
+    });
+
     // Separate items into previous session vs newly added
     const previousItems = [];
     const newItems = [];
@@ -367,6 +374,7 @@ function displayCartItems() {
 
     // Only show separation if we have both categories
     const showSeparation = newlyAddedIds.length > 0 && previousItems.length > 0 && newItems.length > 0;
+    console.log('Cart separation - showSeparation:', showSeparation, `(newlyAddedIds: ${newlyAddedIds.length}, previousItems: ${previousItems.length}, newItems: ${newItems.length})`);
 
     // Build cart items HTML with scroll wrapper
     const needsScroll = cartItems.length > 4;
@@ -446,18 +454,14 @@ function displayCartItems() {
             html += renderItem(item);
         });
 
-        // Clear the sessionStorage after displaying so it doesn't persist across refreshes
-        sessionStorage.removeItem('newlyAddedCartItems');
+        // Keep sessionStorage - it will be cleared when items are removed or purchased
     } else {
         // No separation needed - just render all items
         cartItems.forEach(item => {
             html += renderItem(item);
         });
 
-        // Clear sessionStorage if we showed items (even without separation)
-        if (newlyAddedIds.length > 0) {
-            sessionStorage.removeItem('newlyAddedCartItems');
-        }
+        // Keep sessionStorage - it will be cleared when items are removed or purchased
     }
 
     html += '</div>';
@@ -638,7 +642,7 @@ function addCheckoutItemStyles() {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            max-height: 320px;
+            max-height: 450px;
             overflow-y: auto;
             padding-right: 4px;
         }
@@ -775,9 +779,28 @@ function attachRemoveButtonListeners() {
                 // Update local cartItems array
                 cartItems = cartItems.filter(ci => ci.product_id !== productId);
 
+                // Update sessionStorage to remove this item from newly added list
+                try {
+                    const storedNewlyAdded = sessionStorage.getItem('newlyAddedCartItems');
+                    if (storedNewlyAdded) {
+                        let newlyAddedIds = JSON.parse(storedNewlyAdded);
+                        newlyAddedIds = newlyAddedIds.filter(id => id !== productId);
+                        if (newlyAddedIds.length > 0) {
+                            sessionStorage.setItem('newlyAddedCartItems', JSON.stringify(newlyAddedIds));
+                        } else {
+                            // No more newly added items, clear the storage
+                            sessionStorage.removeItem('newlyAddedCartItems');
+                        }
+                    }
+                } catch (e) {
+                    console.error('Error updating newlyAddedCartItems:', e);
+                }
+
                 // Check if cart is now empty
                 if (cartItems.length === 0) {
                     showEmptyCartMessage();
+                    // Clear sessionStorage since cart is empty
+                    sessionStorage.removeItem('newlyAddedCartItems');
                     // Destroy payment element since we can't proceed
                     if (paymentElement) {
                         paymentElement.destroy();

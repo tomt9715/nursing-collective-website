@@ -127,21 +127,15 @@ function fillInAddress() {
         }
     });
 
-    // Hide the autocomplete dropdown by blurring and re-focusing elsewhere
+    // Hide the autocomplete dropdown
+    // First blur the address field to close the dropdown
     fields.address.blur();
 
-    // Hide any visible pac-container dropdowns
-    const pacContainers = document.querySelectorAll('.pac-container');
-    pacContainers.forEach(container => {
-        container.style.display = 'none';
-    });
-
-    // Focus on the next field (address2 or city)
+    // Move focus to city field (which doesn't have autocomplete attached)
+    // Using a small delay to ensure the blur completes first
     setTimeout(() => {
-        if (fields.address2) {
-            fields.address2.focus();
-        }
-    }, 50);
+        fields.city.focus();
+    }, 10);
 
     console.log('Address fields auto-filled');
 }

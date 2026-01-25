@@ -1273,6 +1273,14 @@ function initializeQuickView() {
 
     let currentProductId = null;
     let currentProductName = null;
+    let currentCardIndex = -1;
+    let visibleCards = [];
+
+    // Touch/swipe tracking for mobile
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
 
     // Add Quick View button to each guide card
     guideCards.forEach(card => {
@@ -1292,8 +1300,19 @@ function initializeQuickView() {
         });
     });
 
+    // Get currently visible guide cards (for navigation)
+    function getVisibleCards() {
+        return Array.from(guideCards).filter(card =>
+            card.style.display !== 'none' && card.offsetParent !== null
+        );
+    }
+
     // Open Quick View modal
     function openQuickView(card) {
+        // Update visible cards list and find current index
+        visibleCards = getVisibleCards();
+        currentCardIndex = visibleCards.indexOf(card);
+
         const title = card.querySelector('h4')?.textContent || 'Study Guide';
         const description = card.querySelector('p')?.textContent || '';
         const category = card.getAttribute('data-category') || '';
@@ -1315,8 +1334,6 @@ function initializeQuickView() {
             }
         }
 
-        console.log('Quick View - Product ID:', productId); // Debug log
-
         currentProductId = productId;
         currentProductName = title;
 
@@ -1327,6 +1344,9 @@ function initializeQuickView() {
 
         // Update modal content
         document.getElementById('quick-view-title').textContent = title;
+
+        // Update navigation buttons state
+        updateNavButtons();
 
         // Set main category badge
         const mainCategoryEl = document.getElementById('quick-view-category-main');
@@ -1402,13 +1422,80 @@ function initializeQuickView() {
         }
     }
 
-    // Close Quick View modal
+    // Close Quick View modal with animation
     function closeQuickView() {
-        modal.classList.remove('visible');
-        document.body.style.overflow = '';
-        currentProductId = null;
-        currentProductName = null;
+        const content = modal.querySelector('.quick-view-content');
+        if (content) {
+            content.classList.add('closing');
+            setTimeout(() => {
+                modal.classList.remove('visible');
+                content.classList.remove('closing');
+                document.body.style.overflow = '';
+                currentProductId = null;
+                currentProductName = null;
+                currentCardIndex = -1;
+            }, 150); // Match CSS animation duration
+        } else {
+            modal.classList.remove('visible');
+            document.body.style.overflow = '';
+            currentProductId = null;
+            currentProductName = null;
+            currentCardIndex = -1;
+        }
     }
+
+    // Navigate to previous guide
+    function navigatePrev() {
+        if (currentCardIndex > 0) {
+            openQuickView(visibleCards[currentCardIndex - 1]);
+        }
+    }
+
+    // Navigate to next guide
+    function navigateNext() {
+        if (currentCardIndex < visibleCards.length - 1) {
+            openQuickView(visibleCards[currentCardIndex + 1]);
+        }
+    }
+
+    // Update navigation button states
+    function updateNavButtons() {
+        const prevBtn = document.getElementById('quick-view-nav-prev');
+        const nextBtn = document.getElementById('quick-view-nav-next');
+
+        if (prevBtn) {
+            prevBtn.disabled = currentCardIndex <= 0;
+        }
+        if (nextBtn) {
+            nextBtn.disabled = currentCardIndex >= visibleCards.length - 1;
+        }
+    }
+
+    // Add navigation buttons to modal (if not already present)
+    function addNavButtons() {
+        const content = modal.querySelector('.quick-view-content');
+        if (!content || document.getElementById('quick-view-nav-prev')) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.id = 'quick-view-nav-prev';
+        prevBtn.className = 'quick-view-nav quick-view-nav-prev';
+        prevBtn.innerHTML = '<i class="fas fa-chevron-left"></i>';
+        prevBtn.title = 'Previous guide (←)';
+        prevBtn.addEventListener('click', navigatePrev);
+
+        const nextBtn = document.createElement('button');
+        nextBtn.id = 'quick-view-nav-next';
+        nextBtn.className = 'quick-view-nav quick-view-nav-next';
+        nextBtn.innerHTML = '<i class="fas fa-chevron-right"></i>';
+        nextBtn.title = 'Next guide (→)';
+        nextBtn.addEventListener('click', navigateNext);
+
+        content.appendChild(prevBtn);
+        content.appendChild(nextBtn);
+    }
+
+    // Initialize nav buttons
+    addNavButtons();
 
     // Event listeners for closing modal
     if (closeBtn) {
@@ -1418,12 +1505,61 @@ function initializeQuickView() {
         overlay.addEventListener('click', closeQuickView);
     }
 
-    // Close on Escape key
+    // Keyboard navigation
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.classList.contains('visible')) {
-            closeQuickView();
+        if (!modal.classList.contains('visible')) return;
+
+        switch(e.key) {
+            case 'Escape':
+                closeQuickView();
+                break;
+            case 'ArrowLeft':
+                e.preventDefault();
+                navigatePrev();
+                break;
+            case 'ArrowRight':
+                e.preventDefault();
+                navigateNext();
+                break;
         }
     });
+
+    // Touch/swipe support for mobile
+    const content = modal.querySelector('.quick-view-content');
+    if (content) {
+        content.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        content.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+    }
+
+    function handleSwipe() {
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+        const minSwipeDistance = 50;
+
+        // Only handle horizontal swipes (ignore vertical scrolling)
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+            if (deltaX > 0) {
+                // Swipe right - go to previous
+                navigatePrev();
+            } else {
+                // Swipe left - go to next
+                navigateNext();
+            }
+        }
+
+        // Swipe down to close
+        if (deltaY > 100 && Math.abs(deltaY) > Math.abs(deltaX)) {
+            closeQuickView();
+        }
+    }
 
     // Add to cart from modal
     if (addToCartBtn) {

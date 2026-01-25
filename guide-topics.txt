@@ -1,0 +1,380 @@
+===============================================================================
+                    THE NURSING COLLECTIVE - GUIDE TOPICS
+                         (64 Guides, 3 Topics Each)
+===============================================================================
+
+These topics are designed as learning objectives for each study guide.
+Use these to generate the actual guide content.
+
+===============================================================================
+                              CARDIOVASCULAR (6)
+===============================================================================
+
+HEART FAILURE (heart-failure)
+1. Identify left vs right-sided heart failure symptoms
+2. Differentiate systolic and diastolic dysfunction
+3. Prioritize nursing interventions for fluid overload
+
+MYOCARDIAL INFARCTION (myocardial-infarction)
+1. Recognize STEMI vs NSTEMI presentation
+2. Interpret cardiac biomarkers (troponin, CK-MB)
+3. Understand tPA administration criteria
+
+ARRHYTHMIAS (arrhythmias)
+1. Interpret common ECG rhythms
+2. Identify life-threatening dysrhythmias
+3. Know when to defibrillate vs cardiovert
+
+HYPERTENSION (hypertension)
+1. Classify hypertension stages accurately
+2. Teach lifestyle modifications effectively
+3. Recognize hypertensive crisis signs
+
+CORONARY ARTERY DISEASE (coronary-artery-disease)
+1. Explain stable vs unstable angina
+2. Identify modifiable risk factors
+3. Prepare patients for cardiac catheterization
+
+PERIPHERAL VASCULAR DISEASE (peripheral-vascular-disease)
+1. Differentiate arterial vs venous insufficiency
+2. Assess ankle-brachial index (ABI)
+3. Implement DVT prevention strategies
+
+===============================================================================
+                              RESPIRATORY (6)
+===============================================================================
+
+COPD (copd)
+1. Distinguish chronic bronchitis from emphysema
+2. Manage oxygen therapy safely (avoid CO2 retention)
+3. Teach pursed-lip breathing technique
+
+ASTHMA (asthma)
+1. Classify asthma severity levels
+2. Differentiate rescue vs controller medications
+3. Recognize status asthmaticus emergency
+
+PNEUMONIA (pneumonia)
+1. Compare community vs hospital-acquired pneumonia
+2. Identify high-risk patient populations
+3. Interpret chest X-ray findings
+
+OXYGEN THERAPY (oxygen-therapy)
+1. Select appropriate oxygen delivery devices
+2. Calculate FiO2 for different devices
+3. Monitor for oxygen toxicity signs
+
+TUBERCULOSIS (tuberculosis)
+1. Distinguish latent vs active TB infection
+2. Implement airborne isolation precautions
+3. Understand RIPE therapy regimen
+
+CHEST TUBES (chest-tubes)
+1. Manage chest drainage systems safely
+2. Recognize air leak vs tidaling
+3. Know when to clamp chest tubes
+
+===============================================================================
+                              ENDOCRINE (5)
+===============================================================================
+
+DIABETES TYPE 1 (diabetes-type1)
+1. Understand autoimmune pathophysiology
+2. Calculate insulin dosing accurately
+3. Recognize and treat DKA emergency
+
+DIABETES TYPE 2 (diabetes-type2)
+1. Explain insulin resistance mechanism
+2. Compare oral hypoglycemic agents
+3. Identify hyperosmolar hyperglycemic state (HHS)
+
+THYROID DISORDERS (thyroid-disorders)
+1. Differentiate hypo vs hyperthyroidism symptoms
+2. Recognize thyroid storm emergency
+3. Manage myxedema coma
+
+ADRENAL DISORDERS (adrenal-disorders)
+1. Compare Addison's vs Cushing's syndrome
+2. Manage adrenal crisis emergency
+3. Understand steroid tapering importance
+
+PITUITARY DISORDERS (pituitary-disorders)
+1. Differentiate SIADH vs diabetes insipidus
+2. Monitor fluid balance accurately
+3. Recognize hormone imbalance signs
+
+===============================================================================
+                              NEUROLOGICAL (6)
+===============================================================================
+
+STROKE (stroke)
+1. Use FAST assessment correctly
+2. Differentiate ischemic vs hemorrhagic stroke
+3. Know tPA inclusion/exclusion criteria
+
+SEIZURES (seizures)
+1. Classify seizure types accurately
+2. Manage status epilepticus emergency
+3. Implement seizure precautions
+
+SPINAL CORD INJURY (spinal-cord-injury)
+1. Identify level of injury implications
+2. Recognize autonomic dysreflexia emergency
+3. Prevent secondary complications
+
+TRAUMATIC BRAIN INJURY (traumatic-brain-injury)
+1. Calculate Glasgow Coma Scale accurately
+2. Monitor for increased ICP signs
+3. Implement brain injury precautions
+
+MENINGITIS (meningitis)
+1. Differentiate bacterial vs viral meningitis
+2. Assess for meningeal signs (Kernig, Brudzinski)
+3. Implement droplet precautions
+
+PARKINSON'S & MS (parkinsons-ms)
+1. Recognize cardinal Parkinson's symptoms
+2. Understand MS relapse patterns
+3. Manage medication timing for Parkinson's
+
+===============================================================================
+                                RENAL (6)
+===============================================================================
+
+ACUTE KIDNEY INJURY (acute-kidney-injury)
+1. Classify prerenal, intrarenal, postrenal causes
+2. Interpret BUN/creatinine ratios
+3. Monitor fluid balance strictly
+
+CHRONIC KIDNEY DISEASE (chronic-kidney-disease)
+1. Identify CKD stages by GFR
+2. Manage dietary restrictions (K+, Na+, phosphorus)
+3. Recognize uremic symptoms
+
+DIALYSIS (dialysis)
+1. Compare hemodialysis vs peritoneal dialysis
+2. Assess AV fistula properly (thrill, bruit)
+3. Recognize dialysis complications
+
+URINARY TRACT INFECTIONS (urinary-tract-infections)
+1. Differentiate lower vs upper UTI
+2. Implement CAUTI prevention bundles
+3. Interpret urinalysis results
+
+KIDNEY STONES (kidney-stones)
+1. Identify stone types and causes
+2. Manage acute renal colic pain
+3. Teach prevention strategies
+
+FLUID & ELECTROLYTES (fluid-electrolytes)
+1. Recognize electrolyte imbalance symptoms
+2. Calculate IV fluid rates
+3. Prioritize potassium safety
+
+===============================================================================
+                           GASTROINTESTINAL (6)
+===============================================================================
+
+GI BLEEDING (gi-bleeding)
+1. Differentiate upper vs lower GI bleed
+2. Recognize hematemesis vs melena vs hematochezia
+3. Prioritize hemodynamic stabilization
+
+BOWEL OBSTRUCTION (bowel-obstruction)
+1. Distinguish small vs large bowel obstruction
+2. Manage NG tube decompression
+3. Recognize strangulation signs
+
+LIVER DISEASE (liver-disease)
+1. Assess for hepatic encephalopathy
+2. Manage ascites and paracentesis
+3. Understand portal hypertension complications
+
+PANCREATITIS (pancreatitis)
+1. Recognize Cullen's and Grey Turner's signs
+2. Manage NPO and pain control
+3. Monitor for systemic complications
+
+INFLAMMATORY BOWEL DISEASE (inflammatory-bowel-disease)
+1. Compare Crohn's vs ulcerative colitis
+2. Manage acute flare-ups
+3. Provide ostomy care education
+
+GERD & PEPTIC ULCER (gerd-peptic-ulcer)
+1. Identify H. pylori treatment regimen
+2. Teach PPI administration timing
+3. Recognize perforation signs
+
+===============================================================================
+                           MUSCULOSKELETAL (5)
+===============================================================================
+
+FRACTURES (fractures)
+1. Identify fracture types and healing stages
+2. Recognize compartment syndrome early
+3. Implement neurovascular checks (5 P's)
+
+ARTHRITIS (arthritis)
+1. Compare osteoarthritis vs rheumatoid arthritis
+2. Understand DMARD therapy
+3. Teach joint protection techniques
+
+HIP & KNEE REPLACEMENT (hip-knee-replacement)
+1. Implement hip precautions correctly
+2. Prevent DVT post-operatively
+3. Manage pain and early mobility
+
+OSTEOPOROSIS (osteoporosis)
+1. Interpret DEXA scan results
+2. Teach bisphosphonate administration
+3. Implement fall prevention strategies
+
+AMPUTATION CARE (amputation-care)
+1. Manage stump positioning and wrapping
+2. Address phantom limb pain
+3. Support prosthetic readiness
+
+===============================================================================
+                            PHARMACOLOGY (6)
+===============================================================================
+
+CARDIAC MEDICATIONS (cardiac-medications)
+1. Understand beta blocker mechanisms
+2. Monitor ACE inhibitor side effects
+3. Calculate diuretic effectiveness
+
+ANTIBIOTICS & ANTIVIRALS (antibiotics-antivirals)
+1. Match antibiotic to infection type
+2. Recognize antibiotic resistance patterns
+3. Monitor for adverse reactions
+
+PAIN MANAGEMENT (pain-management)
+1. Apply WHO pain ladder correctly
+2. Recognize opioid toxicity signs
+3. Implement multimodal analgesia
+
+IV MEDICATIONS (iv-medications)
+1. Verify IV compatibility
+2. Calculate drip rates accurately
+3. Recognize infiltration vs extravasation
+
+PSYCHOTROPIC MEDICATIONS (psychotropic-medications)
+1. Understand SSRI mechanisms and side effects
+2. Monitor for serotonin syndrome
+3. Recognize extrapyramidal symptoms
+
+EMERGENCY MEDICATIONS (emergency-medications)
+1. Know ACLS drug dosages
+2. Understand vasopressor actions
+3. Prioritize code medications
+
+===============================================================================
+                            FUNDAMENTALS (5)
+===============================================================================
+
+ASSESSMENT SKILLS (assessment-skills)
+1. Perform systematic head-to-toe assessment
+2. Interpret vital sign trends
+3. Document findings accurately
+
+INFECTION CONTROL (infection-control)
+1. Apply standard and transmission-based precautions
+2. Perform proper hand hygiene technique
+3. Don and doff PPE correctly
+
+DOCUMENTATION & CHARTING (documentation-charting)
+1. Use proper nursing documentation format
+2. Avoid common charting errors
+3. Maintain legal and ethical standards
+
+PATIENT SAFETY (patient-safety)
+1. Implement fall prevention protocols
+2. Perform medication reconciliation
+3. Report errors using proper channels
+
+MOBILITY & TRANSFERS (mobility-transfers)
+1. Use proper body mechanics
+2. Select appropriate assistive devices
+3. Implement safe patient handling
+
+===============================================================================
+                             MATERNITY (4)
+===============================================================================
+
+LABOR & DELIVERY (labor-delivery)
+1. Identify stages and phases of labor
+2. Interpret fetal heart rate patterns
+3. Recognize labor complications
+
+POSTPARTUM CARE (postpartum-care)
+1. Assess uterine involution (BUBBLE-HE)
+2. Support breastfeeding initiation
+3. Recognize postpartum hemorrhage
+
+HIGH-RISK PREGNANCY (high-risk-pregnancy)
+1. Identify preeclampsia warning signs
+2. Manage gestational diabetes
+3. Monitor for placental complications
+
+ANTEPARTUM CARE (antepartum-care)
+1. Calculate estimated due date
+2. Perform Leopold's maneuvers
+3. Interpret prenatal lab results
+
+===============================================================================
+                             PEDIATRICS (4)
+===============================================================================
+
+GROWTH & DEVELOPMENT (growth-development)
+1. Identify age-appropriate milestones
+2. Administer vaccines per schedule
+3. Teach age-specific safety measures
+
+PEDIATRIC EMERGENCIES (pediatric-emergencies)
+1. Calculate pediatric medication doses
+2. Recognize respiratory distress signs
+3. Assess dehydration severity
+
+INFANT CARE (infant-care)
+1. Teach safe sleep practices (SIDS prevention)
+2. Assess feeding adequacy
+3. Perform developmental screening
+
+ADOLESCENT HEALTH (adolescent-health)
+1. Address confidentiality appropriately
+2. Screen for mental health concerns
+3. Discuss risk behavior prevention
+
+===============================================================================
+                           MENTAL HEALTH (5)
+===============================================================================
+
+DEPRESSION & ANXIETY (depression-anxiety)
+1. Use validated screening tools (PHQ-9, GAD-7)
+2. Recognize medication side effects
+3. Implement therapeutic communication
+
+CRISIS INTERVENTION (crisis-intervention)
+1. Assess suicide risk accurately
+2. Use de-escalation techniques
+3. Know when to implement safety protocols
+
+THERAPEUTIC COMMUNICATION (therapeutic-communication)
+1. Apply active listening techniques
+2. Maintain professional boundaries
+3. Use open-ended questions effectively
+
+SUBSTANCE ABUSE (substance-abuse)
+1. Recognize withdrawal syndromes
+2. Implement CIWA/COWS protocols
+3. Support recovery-oriented care
+
+EATING DISORDERS (eating-disorders)
+1. Differentiate anorexia vs bulimia
+2. Monitor for refeeding syndrome
+3. Support nutritional rehabilitation
+
+===============================================================================
+                              END OF FILE
+                         Total: 64 Guides, 192 Topics
+===============================================================================

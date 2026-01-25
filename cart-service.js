@@ -56,6 +56,34 @@ class CartManager {
                     subtotal: data.subtotal || 0,
                     item_count: data.item_count || 0
                 };
+
+                // If server cart is empty, check if there's a leftover guest cart
+                // This handles the case where cart merge failed
+                if (this.cart.items.length === 0) {
+                    const guestCart = this.getGuestCart();
+                    if (guestCart.items.length > 0) {
+                        console.log('Server cart empty but found guest cart, attempting merge...');
+                        // Try to merge the guest cart again
+                        try {
+                            const mergeData = await apiCall('/cart/merge', {
+                                method: 'POST',
+                                body: JSON.stringify({
+                                    items: guestCart.items
+                                })
+                            });
+                            if (mergeData.cart && mergeData.cart.items && mergeData.cart.items.length > 0) {
+                                // Merge succeeded, clear guest cart
+                                localStorage.removeItem(GUEST_CART_KEY);
+                                this.cart = mergeData.cart;
+                                console.log('Guest cart merge recovered', this.cart.items.length, 'items');
+                            }
+                        } catch (mergeError) {
+                            console.error('Failed to recover guest cart:', mergeError);
+                            // If merge fails again, at least show the guest cart locally
+                            this.cart = guestCart;
+                        }
+                    }
+                }
             } else {
                 // Get from localStorage
                 this.cart = this.getGuestCart();
@@ -418,10 +446,12 @@ class CartManager {
      * @returns {Promise<object>} - Merged cart
      */
     async mergeGuestCart() {
-        try {
-            const guestCart = this.getGuestCart();
+        // Capture guest cart FIRST before any API calls
+        const guestCart = this.getGuestCart();
+        const hadGuestItems = guestCart.items.length > 0;
 
-            if (guestCart.items.length === 0) {
+        try {
+            if (!hadGuestItems) {
                 // No guest items to merge, just fetch user's cart
                 return await this.getCart();
             }
@@ -431,6 +461,8 @@ class CartManager {
                 return guestCart;
             }
 
+            console.log('Merging guest cart with', guestCart.items.length, 'items');
+
             // Merge via API
             const data = await apiCall('/cart/merge', {
                 method: 'POST',
@@ -438,6 +470,8 @@ class CartManager {
                     items: guestCart.items
                 })
             });
+
+            console.log('Cart merge response:', data);
 
             // Clear guest cart after successful merge
             localStorage.removeItem(GUEST_CART_KEY);
@@ -447,7 +481,19 @@ class CartManager {
             return this.cart;
         } catch (error) {
             console.error('Failed to merge cart:', error);
-            // On error, still try to get the user's cart
+
+            // IMPORTANT: If merge failed but we had guest items, preserve them
+            // Don't clear the guest cart - user can retry or items will be there
+            if (hadGuestItems) {
+                console.log('Merge failed but preserving guest cart for retry');
+                // Keep the guest cart in localStorage (don't remove it)
+                // Set the local cart state to the guest cart so UI shows items
+                this.cart = guestCart;
+                this.notifyListeners();
+                return this.cart;
+            }
+
+            // If no guest items, just try to get the user's cart
             return await this.getCart();
         }
     }

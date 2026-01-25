@@ -1467,6 +1467,7 @@
     padding: 12px 14px;
     background: var(--background-light);
     border: none;
+    border-radius: 8px;
     cursor: pointer;
     text-align: left;
     font-size: 0.85rem;
@@ -1483,23 +1484,33 @@
     font-size: 0.7rem;
     color: var(--text-secondary);
     transition: transform 0.2s;
+    flex-shrink: 0;
 }
 
 .faq-question[aria-expanded="true"] i {
     transform: rotate(180deg);
 }
 
+/* FAQ answer - when open, remove border radius from question */
+.faq-question[aria-expanded="true"] {
+    border-radius: 8px 8px 0 0;
+}
+
 .faq-answer {
-    display: none;
-    padding: 12px 14px 14px 14px;
+    max-height: 0;
+    overflow: hidden;
     background: var(--card-bg);
-    border-top: 1px solid var(--border-color);
+    transition: max-height 0.3s ease;
 }
 
 .faq-answer.open {
-    display: block;
+    max-height: 200px; /* Enough for the answer text */
 }
 
+.faq-answer-content {
+    padding: 12px 14px 14px 14px;
+    border-top: 1px solid var(--border-color);
+}
 
 .faq-answer p {
     margin: 0;

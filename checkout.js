@@ -1858,3 +1858,26 @@ window.addEventListener('beforeunload', () => {
         paymentElement.destroy();
     }
 });
+
+// FAQ Accordion functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const isExpanded = question.getAttribute('aria-expanded') === 'true';
+            const answer = question.nextElementSibling;
+
+            // Close all other FAQs
+            faqQuestions.forEach(q => {
+                q.setAttribute('aria-expanded', 'false');
+                q.nextElementSibling.classList.remove('open');
+            });
+
+            // Toggle current FAQ
+            if (!isExpanded) {
+                question.setAttribute('aria-expanded', 'true');
+                answer.classList.add('open');
+            }
+        });
+    });
+});

@@ -1430,6 +1430,140 @@
 }
 
 /* ============================================
+   CHECKOUT FAQ SECTION
+   ============================================ */
+
+.checkout-faq {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.checkout-faq h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+}
+
+.faq-item {
+    margin-bottom: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.faq-item:last-child {
+    margin-bottom: 0;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 14px;
+    background: var(--background-light);
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    transition: background-color 0.2s;
+}
+
+.faq-question:hover {
+    background: var(--border-color);
+}
+
+.faq-question i {
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    transition: transform 0.2s;
+}
+
+.faq-question[aria-expanded="true"] i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    display: none;
+    padding: 0 14px 14px 14px;
+    background: var(--card-bg);
+}
+
+.faq-answer.open {
+    display: block;
+}
+
+.faq-answer p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ============================================
+   CHECKOUT SECURITY BADGES
+   ============================================ */
+
+.checkout-security-badges {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
+.security-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.security-badge i {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--background-light);
+    border-radius: 8px;
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.security-badge:first-child i {
+    color: #10b981;
+}
+
+.security-badge:nth-child(2) i {
+    color: #6366f1;
+}
+
+.security-badge:last-child i {
+    color: var(--gold-accent, #f59e0b);
+}
+
+/* Dark mode for FAQ and security badges */
+[data-theme="dark"] .faq-question {
+    background: var(--background-light);
+}
+
+[data-theme="dark"] .faq-question:hover {
+    background: var(--border-color);
+}
+
+[data-theme="dark"] .security-badge i {
+    background: var(--background-light);
+}
+
+/* ============================================
    GOLD ACCENT STYLING
    ============================================ */
 

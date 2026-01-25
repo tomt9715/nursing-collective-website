@@ -1553,6 +1553,12 @@
 
     </div>
 
+    <!-- Force light mode for PDF-style document -->
+    <script>
+        // Force light mode on this page only (don't affect global preference)
+        document.documentElement.removeAttribute('data-theme');
+    </script>
+
     <!-- Smooth scroll for TOC links -->
     <script>
         document.querySelectorAll('.table-of-contents a').forEach(link => {

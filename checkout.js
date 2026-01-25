@@ -308,12 +308,14 @@ async function loadCartItems() {
  */
 function showEmptyCartMessage() {
     const productDetailsEl = document.getElementById('product-details');
+    // Add empty-cart class to enable vertical centering
+    productDetailsEl.classList.add('empty-cart');
     productDetailsEl.innerHTML = `
-        <div style="text-align: center; padding: 40px 20px;">
-            <img src="assets/images/bag.webp" alt="Empty cart" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.6;">
-            <h3 style="color: var(--text-primary); margin-bottom: 8px;">Your cart is empty</h3>
-            <p style="color: var(--text-secondary); margin-bottom: 24px;">Add some study guides to get started!</p>
-            <a href="store.html" class="btn btn-primary">
+        <div style="text-align: center; padding: 20px;">
+            <img src="assets/images/bag.webp" alt="Empty cart" style="width: 80px; height: 80px; margin-bottom: 20px; opacity: 0.6;">
+            <h3 style="color: var(--text-primary); margin-bottom: 12px; font-size: 1.4rem;">Your cart is empty</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 28px; font-size: 1rem;">Add some study guides to get started!</p>
+            <a href="store.html" class="btn btn-primary" style="padding: 14px 28px; font-size: 1rem;">
                 <i class="fas fa-shopping-cart"></i> Browse Store
             </a>
         </div>

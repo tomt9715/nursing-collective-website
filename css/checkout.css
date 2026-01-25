@@ -117,6 +117,28 @@
     flex-direction: column;
 }
 
+/* Order summary layout - push bottom content down */
+.checkout-three-column .order-summary .product-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* When cart is empty, center the empty message */
+.checkout-three-column .order-summary .product-details.empty-cart {
+    justify-content: center;
+    align-items: center;
+}
+
+/* Push order totals and trust badges to bottom */
+.checkout-three-column .order-summary .order-total {
+    margin-top: auto;
+}
+
+.checkout-three-column .order-summary .trust-badges {
+    margin-top: 24px;
+}
+
 /* Responsive: tablet landscape - narrower columns but still side by side */
 @media (max-width: 1300px) {
     .checkout-container.checkout-three-column {

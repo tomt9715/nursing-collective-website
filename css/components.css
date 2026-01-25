@@ -1038,7 +1038,7 @@
     height: 44px;
     border-radius: 50%;
     border: 2px solid var(--primary-color);
-    background: transparent;
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(162, 59, 114, 0.1));
     color: var(--primary-color);
     font-size: 1.5rem;
     cursor: pointer;
@@ -1050,7 +1050,17 @@
 
 .user-avatar:hover {
     transform: scale(1.05);
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.2), rgba(162, 59, 114, 0.2));
     box-shadow: 0 4px 12px rgba(46, 134, 171, 0.3);
+}
+
+/* Dark mode avatar */
+[data-theme="dark"] .user-avatar {
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.2), rgba(162, 59, 114, 0.2));
+}
+
+[data-theme="dark"] .user-avatar:hover {
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.3), rgba(162, 59, 114, 0.3));
 }
 
 /* User Menu & Dropdown */

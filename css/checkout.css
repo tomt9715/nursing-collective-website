@@ -108,6 +108,15 @@
     padding: 24px;
 }
 
+/* Consistent height for all three columns - matches Payment Details height */
+.checkout-three-column .order-summary,
+.checkout-three-column .payment-details-column,
+.checkout-three-column .payment-method-column {
+    min-height: 780px;
+    display: flex;
+    flex-direction: column;
+}
+
 /* Responsive: tablet landscape - narrower columns but still side by side */
 @media (max-width: 1300px) {
     .checkout-container.checkout-three-column {
@@ -155,6 +164,7 @@
         width: 100%;
         max-width: 100%;
         position: static;
+        min-height: auto; /* Remove fixed height on mobile/tablet */
     }
 
     .checkout-three-column .order-summary,

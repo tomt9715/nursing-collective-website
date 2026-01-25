@@ -1079,7 +1079,7 @@ function continueStudying(productId) {
 
     // Check if HTML guide exists for this product
     // HTML guides are in /guides/{product-id}.html format
-    const htmlGuides = ['heart-failure']; // Add more as they're created
+    const htmlGuides = ['heart-failure', 'assessment-skills']; // Add more as they're created
 
     if (htmlGuides.includes(productId)) {
         // Navigate to the standalone HTML guide
@@ -1098,7 +1098,7 @@ async function downloadGuide(productId, button, source = 'dashboard') {
     button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
 
     // HTML guides that use server-side PDF generation
-    const htmlGuides = ['heart-failure'];
+    const htmlGuides = ['heart-failure', 'assessment-skills'];
 
     try {
         // Track the download event first

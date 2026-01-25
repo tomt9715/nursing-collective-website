@@ -1,0 +1,1711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment Skills Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Assessment Skills. Learn systematic head-to-toe assessment, vital sign interpretation, and accurate documentation techniques.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           PDF-STYLE STUDY GUIDE STYLES
+           ============================================ */
+
+        :root {
+            --primary-color: #2E86AB;
+            --primary-dark: #236b8a;
+            --secondary-color: #A23B72;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar - Fixed at top */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .download-bar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f0f9ff;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Document Container */
+        .document-container {
+            max-width: 850px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Cover Page */
+        .cover-page {
+            background: linear-gradient(135deg, #10b981 0%, #059669 50%, #047857 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .cover-logo i {
+            font-size: 40px;
+            color: #10b981;
+        }
+
+        .cover-category {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content {
+            padding: 60px;
+        }
+
+        /* Learning Objectives */
+        .learning-objectives {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .learning-objectives li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .learning-objectives li i {
+            color: #10b981;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Table of Contents */
+        .table-of-contents {
+            background: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .table-of-contents h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .table-of-contents li {
+            break-inside: avoid;
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .table-of-contents a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .toc-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .table-of-contents a:hover .toc-number {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .guide-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .guide-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 28px 0 14px;
+        }
+
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+        }
+
+        .guide-section p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            margin-bottom: 14px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+        }
+
+        .guide-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .info-box.clinical-pearl {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-color: #f59e0b;
+        }
+
+        .info-box.warning {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .info-box.tip {
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .info-box.nclex-tip {
+            background: #f5f3ff;
+            border-color: #8b5cf6;
+        }
+
+        .info-box.mnemonic {
+            background: #fffbeb;
+            border-color: #f59e0b;
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .guide-table thead {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .guide-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .guide-table td {
+            padding: 12px 14px;
+            color: var(--text-secondary);
+        }
+
+        .guide-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .comparison-card-header {
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: white;
+        }
+
+        .comparison-card.normal .comparison-card-header {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .comparison-card.abnormal .comparison-card-header {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .comparison-card.subjective .comparison-card-header {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .comparison-card.objective .comparison-card-header {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .comparison-card-body {
+            padding: 18px;
+        }
+
+        .comparison-card-body h4 {
+            font-size: 0.95rem;
+            margin: 0 0 10px;
+        }
+
+        .comparison-card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px;
+        }
+
+        .comparison-card-body li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+
+        .interventions-list h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .interventions-list h4 i { color: #10b981; }
+
+        .intervention-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intervention-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .intervention-content h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 4px;
+        }
+
+        .intervention-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Quick Reference */
+        .quick-reference {
+            background: white;
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .quick-reference h3 {
+            font-size: 1.1rem;
+            color: #10b981;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quick-ref-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .quick-ref-item .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .quick-ref-item .value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Key Points Summary */
+        .key-points-summary {
+            background: linear-gradient(135deg, #10b981, #059669);
+            border-radius: 12px;
+            padding: 28px;
+            margin: 40px 0 0;
+            color: white;
+        }
+
+        .key-points-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin: 0 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .key-points-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .key-point {
+            background: rgba(255,255,255,0.15);
+            padding: 14px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Footer */
+        .document-footer {
+            text-align: center;
+            padding: 30px 60px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .document-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Print Styles - Optimized for browser Save as PDF */
+        @media print {
+            /* Hide non-content elements */
+            .download-bar { display: none !important; }
+
+            /* Reset page layout */
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            /* Preserve colors in print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* Cover page styling */
+            .cover-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            /* Prevent awkward page breaks */
+            .info-box { page-break-inside: avoid; break-inside: avoid; }
+            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+            .comparison-card { page-break-inside: avoid; break-inside: avoid; }
+            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
+            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
+            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
+            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
+
+            /* Keep headings with their following content */
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* Keep heading + table together */
+            .guide-section h3 + .guide-table-wrapper,
+            .guide-section h3 + .info-box,
+            .guide-section h3 + .comparison-grid,
+            .guide-section h3 + .interventions-list {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+
+            /* Allow breaks within larger sections if needed */
+            .comparison-grid { page-break-inside: auto; }
+            .interventions-list { page-break-inside: auto; }
+
+            /* Ensure links are visible in print */
+            a { text-decoration: underline; }
+
+            /* Footer on each page */
+            .document-footer {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .download-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body data-product-id="assessment-skills" data-guide-name="Assessment-Skills">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <i class="fas fa-clipboard-list"></i>
+                </div>
+                <div class="cover-category">Fundamentals</div>
+                <h1 class="cover-title">Assessment Skills</h1>
+                <p class="cover-subtitle">Master systematic head-to-toe assessment techniques, vital sign interpretation, and accurate documentation to provide safe, comprehensive patient care.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">25-30 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Foundational</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">January 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Perform a systematic head-to-toe physical assessment</li>
+                    <li><i class="fas fa-check-circle"></i> Interpret vital sign trends and recognize abnormalities</li>
+                    <li><i class="fas fa-check-circle"></i> Document findings accurately using proper terminology</li>
+                    <li><i class="fas fa-check-circle"></i> Differentiate between subjective and objective data</li>
+                    <li><i class="fas fa-check-circle"></i> Apply the nursing process to patient assessment</li>
+                    <li><i class="fas fa-check-circle"></i> Recognize critical findings requiring immediate intervention</li>
+                </ul>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#introduction"><span class="toc-number">1</span> Introduction to Assessment</a></li>
+                    <li><a href="#data-collection"><span class="toc-number">2</span> Data Collection Methods</a></li>
+                    <li><a href="#vital-signs"><span class="toc-number">3</span> Vital Signs Assessment</a></li>
+                    <li><a href="#head-to-toe"><span class="toc-number">4</span> Head-to-Toe Assessment</a></li>
+                    <li><a href="#focused-assessment"><span class="toc-number">5</span> Focused Assessment</a></li>
+                    <li><a href="#documentation"><span class="toc-number">6</span> Documentation Techniques</a></li>
+                    <li><a href="#critical-findings"><span class="toc-number">7</span> Critical Findings</a></li>
+                </ul>
+            </nav>
+
+            <!-- Section 1: Introduction -->
+            <section class="guide-section" id="introduction">
+                <h2><span class="section-icon"><i class="fas fa-stethoscope"></i></span> Introduction to Assessment</h2>
+
+                <p>Assessment is the <strong>first step of the nursing process</strong> and forms the foundation for all nursing care. A thorough assessment helps identify patient problems, establish baselines, and detect changes in condition.</p>
+
+                <h3>Types of Nursing Assessment</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>When Used</th>
+                                <th>Scope</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Comprehensive</td>
+                                <td>Admission, annual physical</td>
+                                <td>Complete head-to-toe, full history</td>
+                            </tr>
+                            <tr>
+                                <td>Focused</td>
+                                <td>Specific complaint or problem</td>
+                                <td>Targeted to chief complaint</td>
+                            </tr>
+                            <tr>
+                                <td>Ongoing/Shift</td>
+                                <td>Each shift, routine monitoring</td>
+                                <td>System-specific, changes from baseline</td>
+                            </tr>
+                            <tr>
+                                <td>Emergency</td>
+                                <td>Life-threatening situations</td>
+                                <td>ABCs, rapid primary survey</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>The Four Assessment Techniques</h3>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: IPPA
+                    </div>
+                    <p>Remember the order of assessment techniques:</p>
+                    <ul>
+                        <li><strong>I</strong>nspection - Look (always first!)</li>
+                        <li><strong>P</strong>alpation - Touch/Feel</li>
+                        <li><strong>P</strong>ercussion - Tap</li>
+                        <li><strong>A</strong>uscultation - Listen</li>
+                    </ul>
+                    <p><em>Exception: For abdominal assessment, auscultate BEFORE palpation to avoid altering bowel sounds!</em></p>
+                </div>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Technique</th>
+                                <th>Description</th>
+                                <th>What You're Assessing</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Inspection</td>
+                                <td>Visual examination using sight and smell</td>
+                                <td>Color, size, shape, symmetry, movement, lesions, drainage</td>
+                            </tr>
+                            <tr>
+                                <td>Palpation</td>
+                                <td>Using hands to feel body parts</td>
+                                <td>Temperature, moisture, texture, tenderness, masses, pulses</td>
+                            </tr>
+                            <tr>
+                                <td>Percussion</td>
+                                <td>Tapping to produce sounds</td>
+                                <td>Density of underlying structures (resonance, dullness, tympany)</td>
+                            </tr>
+                            <tr>
+                                <td>Auscultation</td>
+                                <td>Listening with stethoscope</td>
+                                <td>Heart, lung, bowel sounds, bruits</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 2: Data Collection -->
+            <section class="guide-section" id="data-collection">
+                <h2><span class="section-icon"><i class="fas fa-database"></i></span> Data Collection Methods</h2>
+
+                <p>Effective assessment requires collecting both <strong>subjective</strong> and <strong>objective</strong> data from multiple sources.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card subjective">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-comments"></i> Subjective Data
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>What the Patient Tells You</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Symptoms (pain, nausea, dizziness)</li>
+                                <li><i class="fas fa-check"></i> Feelings and perceptions</li>
+                                <li><i class="fas fa-check"></i> Chief complaint</li>
+                                <li><i class="fas fa-check"></i> Health history</li>
+                                <li><i class="fas fa-check"></i> Allergies</li>
+                                <li><i class="fas fa-check"></i> Medications</li>
+                                <li><i class="fas fa-check"></i> Family history</li>
+                                <li><i class="fas fa-check"></i> Psychosocial information</li>
+                            </ul>
+                            <h4>Documentation Note</h4>
+                            <p>Use quotes: "Patient states..."</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card objective">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-chart-line"></i> Objective Data
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>What You Observe/Measure</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Vital signs</li>
+                                <li><i class="fas fa-check"></i> Physical exam findings</li>
+                                <li><i class="fas fa-check"></i> Lab values</li>
+                                <li><i class="fas fa-check"></i> Diagnostic test results</li>
+                                <li><i class="fas fa-check"></i> Observable behaviors</li>
+                                <li><i class="fas fa-check"></i> Wound appearance</li>
+                                <li><i class="fas fa-check"></i> I&O measurements</li>
+                                <li><i class="fas fa-check"></i> Weight, height</li>
+                            </ul>
+                            <h4>Documentation Note</h4>
+                            <p>Use measurable terms: "BP 140/90"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Health History Components</h3>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: SAMPLE History
+                    </div>
+                    <p>Use SAMPLE for quick history-taking:</p>
+                    <ul>
+                        <li><strong>S</strong>igns/Symptoms - What's wrong?</li>
+                        <li><strong>A</strong>llergies - Medications, food, environmental</li>
+                        <li><strong>M</strong>edications - Current prescriptions, OTC, supplements</li>
+                        <li><strong>P</strong>ast medical history - Surgeries, chronic conditions</li>
+                        <li><strong>L</strong>ast oral intake - When did they last eat/drink?</li>
+                        <li><strong>E</strong>vents leading up - What happened before symptoms started?</li>
+                    </ul>
+                </div>
+
+                <h3>Pain Assessment</h3>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: PQRST Pain Assessment
+                    </div>
+                    <ul>
+                        <li><strong>P</strong>rovokes/Palliates - What makes it better/worse?</li>
+                        <li><strong>Q</strong>uality - What does it feel like? (sharp, dull, burning)</li>
+                        <li><strong>R</strong>adiates - Does it spread anywhere?</li>
+                        <li><strong>S</strong>everity - Rate 0-10 scale</li>
+                        <li><strong>T</strong>iming - When did it start? Constant or intermittent?</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 3: Vital Signs -->
+            <section class="guide-section" id="vital-signs">
+                <h2><span class="section-icon"><i class="fas fa-heartbeat"></i></span> Vital Signs Assessment</h2>
+
+                <p>Vital signs are objective measurements of basic physiologic functions. They provide critical information about a patient's health status and must be assessed accurately and interpreted in context.</p>
+
+                <h3>Normal Adult Vital Sign Ranges</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Vital Sign</th>
+                                <th>Normal Adult Range</th>
+                                <th>Key Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Temperature</td>
+                                <td>97.8-99.1°F (36.5-37.3°C)</td>
+                                <td>Route affects reading; oral is standard</td>
+                            </tr>
+                            <tr>
+                                <td>Pulse</td>
+                                <td>60-100 bpm</td>
+                                <td>Assess rate, rhythm, and quality</td>
+                            </tr>
+                            <tr>
+                                <td>Respirations</td>
+                                <td>12-20 breaths/min</td>
+                                <td>Count for full 60 seconds; note effort</td>
+                            </tr>
+                            <tr>
+                                <td>Blood Pressure</td>
+                                <td>&lt;120/80 mmHg</td>
+                                <td>Proper cuff size is essential</td>
+                            </tr>
+                            <tr>
+                                <td>Oxygen Saturation</td>
+                                <td>95-100%</td>
+                                <td>Consider patient's baseline (COPD may be lower)</td>
+                            </tr>
+                            <tr>
+                                <td>Pain</td>
+                                <td>0 (5th vital sign)</td>
+                                <td>Use age-appropriate scale</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Interpreting Vital Sign Trends</h3>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Key Concept: Trends Over Single Values
+                    </div>
+                    <p>A single vital sign reading provides limited information. <strong>Trends over time</strong> are far more valuable for detecting deterioration. Always compare to the patient's baseline and previous readings.</p>
+                </div>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Finding</th>
+                                <th>Possible Causes</th>
+                                <th>Nursing Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tachycardia (&gt;100 bpm)</td>
+                                <td>Pain, fever, anxiety, hypovolemia, hypoxia, medication</td>
+                                <td>Assess for underlying cause; check other vitals</td>
+                            </tr>
+                            <tr>
+                                <td>Bradycardia (&lt;60 bpm)</td>
+                                <td>Athletic conditioning, medications (beta-blockers), increased ICP</td>
+                                <td>Assess LOC; check medications; notify provider if symptomatic</td>
+                            </tr>
+                            <tr>
+                                <td>Hypotension</td>
+                                <td>Dehydration, bleeding, sepsis, medications, cardiac issues</td>
+                                <td>Position supine; assess for shock signs; notify provider</td>
+                            </tr>
+                            <tr>
+                                <td>Hypertension</td>
+                                <td>Pain, anxiety, medications, kidney disease, stroke</td>
+                                <td>Recheck in 5 min; assess for symptoms; medicate PRN</td>
+                            </tr>
+                            <tr>
+                                <td>Tachypnea (&gt;20/min)</td>
+                                <td>Hypoxia, pain, anxiety, fever, metabolic acidosis</td>
+                                <td>Assess breath sounds; check O2 sat; elevate HOB</td>
+                            </tr>
+                            <tr>
+                                <td>Fever (&gt;100.4°F/38°C)</td>
+                                <td>Infection, inflammation, dehydration, medication reaction</td>
+                                <td>Assess for infection source; obtain cultures PRN; medicate</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-bookmark"></i> Blood Pressure Cuff Sizing</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Cuff Width</div>
+                            <div class="value">40% of arm circumference</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Bladder Length</div>
+                            <div class="value">80% of arm circumference</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Too Small Cuff</div>
+                            <div class="value">Falsely HIGH reading</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Too Large Cuff</div>
+                            <div class="value">Falsely LOW reading</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical Alert: Widening Pulse Pressure
+                    </div>
+                    <p><strong>Cushing's Triad</strong> indicates increased intracranial pressure (ICP):</p>
+                    <ul>
+                        <li>Widening pulse pressure (systolic rises, diastolic drops)</li>
+                        <li>Bradycardia</li>
+                        <li>Irregular respirations</li>
+                    </ul>
+                    <p>This is a <strong>late sign of neurological emergency</strong> - notify provider IMMEDIATELY!</p>
+                </div>
+            </section>
+
+            <!-- Section 4: Head-to-Toe Assessment -->
+            <section class="guide-section" id="head-to-toe">
+                <h2><span class="section-icon"><i class="fas fa-user"></i></span> Systematic Head-to-Toe Assessment</h2>
+
+                <p>A systematic approach ensures nothing is missed. Always work from <strong>head to toe</strong> and <strong>least invasive to most invasive</strong>.</p>
+
+                <h3>General Survey</h3>
+                <p>Begin with overall observations before touching the patient:</p>
+                <ul>
+                    <li><strong>Appearance:</strong> Age-appropriate, grooming, hygiene, body habitus</li>
+                    <li><strong>Behavior:</strong> Alert, cooperative, anxious, lethargic</li>
+                    <li><strong>Mobility:</strong> Gait, posture, use of assistive devices</li>
+                    <li><strong>Communication:</strong> Speech clarity, comprehension, language barriers</li>
+                </ul>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-check"></i> Head-to-Toe Assessment Sequence</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Neurological</h5>
+                            <p><strong>LOC:</strong> Alert, oriented x4 (person, place, time, situation). <strong>PERRLA:</strong> Pupils Equal, Round, Reactive to Light and Accommodation (3-5mm normal). <strong>Motor/Sensory:</strong> Grip strength, movement of all extremities.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Head, Eyes, Ears, Nose, Throat (HEENT)</h5>
+                            <p><strong>Head:</strong> Symmetry, lesions, tenderness. <strong>Eyes:</strong> Sclera color, conjunctiva, drainage. <strong>Ears:</strong> Hearing, drainage, tympanic membrane. <strong>Nose:</strong> Patency, discharge. <strong>Throat:</strong> Mucous membranes, dentition, swallowing.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Neck</h5>
+                            <p><strong>Inspect:</strong> Symmetry, JVD, tracheal position. <strong>Palpate:</strong> Lymph nodes, thyroid, carotid pulses (one at a time!). <strong>ROM:</strong> Flexion, extension, rotation.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Respiratory</h5>
+                            <p><strong>Inspect:</strong> Chest symmetry, respiratory effort, accessory muscle use. <strong>Auscultate:</strong> All lung fields anteriorly and posteriorly. Note breath sounds (clear, crackles, wheezes, diminished). <strong>Palpate:</strong> Chest expansion, tactile fremitus.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Cardiovascular</h5>
+                            <p><strong>Auscultate:</strong> Heart sounds at 5 auscultation points (Aortic, Pulmonic, Erb's Point, Tricuspid, Mitral - "APE To Man"). <strong>Assess:</strong> Peripheral pulses, capillary refill (&lt;3 seconds), edema, skin color/temperature.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">6</div>
+                        <div class="intervention-content">
+                            <h5>Gastrointestinal</h5>
+                            <p><strong>Inspect:</strong> Contour, symmetry, distension, scars. <strong>Auscultate:</strong> Bowel sounds in all 4 quadrants (5-30/min normal). <strong>Palpate:</strong> Light then deep; tenderness, masses, organomegaly. <strong>Percuss:</strong> Tympany vs. dullness.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">7</div>
+                        <div class="intervention-content">
+                            <h5>Genitourinary</h5>
+                            <p><strong>Assess:</strong> Urinary output, color, odor, continence. <strong>Inspect:</strong> Presence of Foley catheter, drainage. <strong>Palpate:</strong> Bladder distension (suprapubic area). Note last voiding.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">8</div>
+                        <div class="intervention-content">
+                            <h5>Musculoskeletal</h5>
+                            <p><strong>Inspect:</strong> Symmetry, deformities, swelling. <strong>Assess:</strong> ROM (active and passive), strength (0-5 scale), gait. <strong>Palpate:</strong> Joints for warmth, crepitus, tenderness.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">9</div>
+                        <div class="intervention-content">
+                            <h5>Integumentary</h5>
+                            <p><strong>Inspect:</strong> Color, lesions, bruising, rashes, wounds. <strong>Assess:</strong> Skin turgor, moisture, temperature. <strong>Document:</strong> Wound size, drainage, staging (for pressure injuries). Check high-risk areas.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">10</div>
+                        <div class="intervention-content">
+                            <h5>Psychosocial</h5>
+                            <p><strong>Assess:</strong> Mood, affect, anxiety level, coping mechanisms, support systems. <strong>Observe:</strong> Eye contact, body language, interaction with family. <strong>Screen:</strong> Depression, suicidal ideation if indicated.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Abdominal Assessment Order
+                    </div>
+                    <p>For the abdomen, the order changes: <strong>Inspect → Auscultate → Percuss → Palpate</strong></p>
+                    <p>Auscultate BEFORE palpation because touching the abdomen can stimulate or alter bowel sounds, giving you inaccurate findings.</p>
+                </div>
+            </section>
+
+            <!-- Section 5: Focused Assessment -->
+            <section class="guide-section" id="focused-assessment">
+                <h2><span class="section-icon"><i class="fas fa-search"></i></span> Focused Assessment</h2>
+
+                <p>A focused assessment targets a specific body system or problem. It's used for ongoing monitoring, follow-up on abnormal findings, or when a patient presents with a specific complaint.</p>
+
+                <h3>Common Focused Assessment Scenarios</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Complaint/Situation</th>
+                                <th>Key Assessment Focus</th>
+                                <th>Critical Findings to Report</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Chest Pain</td>
+                                <td>Cardiac: vitals, rhythm, pain characteristics, O2 sat, skin color</td>
+                                <td>ST changes, hypotension, diaphoresis, radiating pain</td>
+                            </tr>
+                            <tr>
+                                <td>Shortness of Breath</td>
+                                <td>Respiratory: breath sounds, work of breathing, O2 sat, positioning</td>
+                                <td>SpO2 &lt;90%, accessory muscle use, cyanosis, altered LOC</td>
+                            </tr>
+                            <tr>
+                                <td>Abdominal Pain</td>
+                                <td>GI: bowel sounds, tenderness location, rigidity, distension</td>
+                                <td>Rebound tenderness, absent bowel sounds, board-like rigidity</td>
+                            </tr>
+                            <tr>
+                                <td>Altered Mental Status</td>
+                                <td>Neuro: LOC, pupils, glucose, vitals, medication review</td>
+                                <td>Unequal pupils, new weakness, severe hypo/hyperglycemia</td>
+                            </tr>
+                            <tr>
+                                <td>Post-operative</td>
+                                <td>Incision site, drains, pain, vitals, neurovascular checks</td>
+                                <td>Excessive drainage, dehiscence, fever, absent pulses</td>
+                            </tr>
+                            <tr>
+                                <td>Fall/Trauma</td>
+                                <td>Neuro check, injury assessment, ROM, skin integrity</td>
+                                <td>LOC changes, unequal pupils, deformity, severe pain</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Neurovascular Assessment (6 P's)</h3>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: The 6 P's
+                    </div>
+                    <p>For extremity assessment (casts, post-op orthopedic, vascular concerns):</p>
+                    <ul>
+                        <li><strong>P</strong>ain - Especially with passive stretch (compartment syndrome sign)</li>
+                        <li><strong>P</strong>ulses - Present, quality, compare bilaterally</li>
+                        <li><strong>P</strong>allor - Color of extremity</li>
+                        <li><strong>P</strong>aresthesia - Numbness, tingling</li>
+                        <li><strong>P</strong>aralysis - Ability to move</li>
+                        <li><strong>P</strong>oikilothermia - Temperature (cool extremity is concerning)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Compartment Syndrome Alert
+                    </div>
+                    <p><strong>Pain out of proportion</strong> to injury, especially pain with passive stretch, is the EARLIEST sign of compartment syndrome. This is a surgical emergency - notify provider immediately!</p>
+                    <p>Other signs: Paresthesia, pallor, pulselessness, paralysis (late signs)</p>
+                </div>
+            </section>
+
+            <!-- Section 6: Documentation -->
+            <section class="guide-section" id="documentation">
+                <h2><span class="section-icon"><i class="fas fa-file-medical"></i></span> Documentation Techniques</h2>
+
+                <p>Accurate documentation is a <strong>legal requirement</strong> that protects both the patient and the nurse. It ensures continuity of care and provides evidence of nursing care provided.</p>
+
+                <h3>Principles of Documentation</h3>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> The Golden Rule of Documentation
+                    </div>
+                    <p><strong>"If it wasn't documented, it wasn't done."</strong></p>
+                    <p>Documentation should be timely, accurate, complete, and objective. Avoid vague terms and personal opinions.</p>
+                </div>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Do</th>
+                                <th>Don't</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Use objective, measurable terms</td>
+                                <td>Use vague terms ("good," "normal," "adequate")</td>
+                            </tr>
+                            <tr>
+                                <td>Document what you see, hear, smell, feel</td>
+                                <td>Document assumptions or interpretations</td>
+                            </tr>
+                            <tr>
+                                <td>Quote patient statements in quotation marks</td>
+                                <td>Paraphrase or summarize inaccurately</td>
+                            </tr>
+                            <tr>
+                                <td>Use approved abbreviations only</td>
+                                <td>Create your own abbreviations</td>
+                            </tr>
+                            <tr>
+                                <td>Document in real-time or as soon as possible</td>
+                                <td>Wait until end of shift to document</td>
+                            </tr>
+                            <tr>
+                                <td>Correct errors with single line through</td>
+                                <td>Use white-out or scribble out errors</td>
+                            </tr>
+                            <tr>
+                                <td>Sign and date all entries</td>
+                                <td>Leave entries unsigned or undated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Documentation Formats</h3>
+
+                <h4>SBAR - Situation, Background, Assessment, Recommendation</h4>
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> SBAR Communication Format
+                    </div>
+                    <ul>
+                        <li><strong>S</strong>ituation - "I'm calling about Mr. Smith in 302 who is having chest pain"</li>
+                        <li><strong>B</strong>ackground - "He's a 65-year-old admitted for CHF, has history of MI"</li>
+                        <li><strong>A</strong>ssessment - "His BP is 90/60, HR 110, he's diaphoretic and anxious"</li>
+                        <li><strong>R</strong>ecommendation - "I think he needs an EKG and evaluation. Can you come see him?"</li>
+                    </ul>
+                </div>
+
+                <h4>DAR - Data, Action, Response</h4>
+                <p>Used in focus charting:</p>
+                <ul>
+                    <li><strong>D</strong>ata - Subjective and objective findings</li>
+                    <li><strong>A</strong>ction - Nursing interventions performed</li>
+                    <li><strong>R</strong>esponse - Patient's response to interventions</li>
+                </ul>
+
+                <h4>SOAP - Subjective, Objective, Assessment, Plan</h4>
+                <p>Traditional format often used in progress notes:</p>
+                <ul>
+                    <li><strong>S</strong>ubjective - What the patient reports</li>
+                    <li><strong>O</strong>bjective - Observable, measurable data</li>
+                    <li><strong>A</strong>ssessment - Your nursing analysis</li>
+                    <li><strong>P</strong>lan - Next steps, interventions planned</li>
+                </ul>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-bookmark"></i> Common Approved Abbreviations</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">PRN</div>
+                            <div class="value">As needed</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">WNL</div>
+                            <div class="value">Within normal limits</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">BID/TID/QID</div>
+                            <div class="value">Twice/Three/Four times daily</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">NPO</div>
+                            <div class="value">Nothing by mouth</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> "Do Not Use" Abbreviations (Joint Commission)
+                    </div>
+                    <ul>
+                        <li><strong>U</strong> (for units) - Write "units"</li>
+                        <li><strong>IU</strong> (international units) - Write "international units"</li>
+                        <li><strong>QD, QOD</strong> - Write "daily" or "every other day"</li>
+                        <li><strong>Trailing zero</strong> (1.0 mg) - Write "1 mg"</li>
+                        <li><strong>Lack of leading zero</strong> (.5 mg) - Write "0.5 mg"</li>
+                        <li><strong>MS, MSO4, MgSO4</strong> - Write "morphine sulfate" or "magnesium sulfate"</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 7: Critical Findings -->
+            <section class="guide-section" id="critical-findings">
+                <h2><span class="section-icon"><i class="fas fa-exclamation-circle"></i></span> Critical Findings</h2>
+
+                <p>Recognizing critical findings and knowing when to escalate is essential for patient safety. These findings require <strong>immediate notification</strong> of the healthcare provider.</p>
+
+                <h3>Critical Vital Sign Values</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Vital Sign</th>
+                                <th>Critical Low</th>
+                                <th>Critical High</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Heart Rate</td>
+                                <td>&lt;50 bpm (symptomatic)</td>
+                                <td>&gt;130 bpm (sustained)</td>
+                            </tr>
+                            <tr>
+                                <td>Blood Pressure</td>
+                                <td>SBP &lt;90 mmHg</td>
+                                <td>SBP &gt;180 or DBP &gt;110 mmHg</td>
+                            </tr>
+                            <tr>
+                                <td>Respiratory Rate</td>
+                                <td>&lt;8 breaths/min</td>
+                                <td>&gt;28 breaths/min</td>
+                            </tr>
+                            <tr>
+                                <td>Temperature</td>
+                                <td>&lt;95°F (35°C)</td>
+                                <td>&gt;104°F (40°C)</td>
+                            </tr>
+                            <tr>
+                                <td>Oxygen Saturation</td>
+                                <td>&lt;90%</td>
+                                <td>N/A</td>
+                            </tr>
+                            <tr>
+                                <td>Blood Glucose</td>
+                                <td>&lt;60 mg/dL</td>
+                                <td>&gt;400 mg/dL</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Assessment Findings Requiring Immediate Action</h3>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card normal">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-brain"></i> Neurological
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-exclamation"></i> New onset confusion or decreased LOC</li>
+                                <li><i class="fas fa-exclamation"></i> Unequal pupils or new pupil changes</li>
+                                <li><i class="fas fa-exclamation"></i> New facial droop or slurred speech</li>
+                                <li><i class="fas fa-exclamation"></i> New weakness or paralysis</li>
+                                <li><i class="fas fa-exclamation"></i> Seizure activity</li>
+                                <li><i class="fas fa-exclamation"></i> Severe headache ("worst of life")</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card abnormal">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-heartbeat"></i> Cardiovascular
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-exclamation"></i> Chest pain (new or worsening)</li>
+                                <li><i class="fas fa-exclamation"></i> New arrhythmia or irregular rhythm</li>
+                                <li><i class="fas fa-exclamation"></i> Signs of shock (pale, cool, clammy)</li>
+                                <li><i class="fas fa-exclamation"></i> Absent peripheral pulses</li>
+                                <li><i class="fas fa-exclamation"></i> New onset JVD</li>
+                                <li><i class="fas fa-exclamation"></i> Pulseless extremity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card subjective">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-lungs"></i> Respiratory
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-exclamation"></i> Acute respiratory distress</li>
+                                <li><i class="fas fa-exclamation"></i> Stridor or severe wheezing</li>
+                                <li><i class="fas fa-exclamation"></i> Cyanosis (central)</li>
+                                <li><i class="fas fa-exclamation"></i> Absent breath sounds</li>
+                                <li><i class="fas fa-exclamation"></i> Pink frothy sputum</li>
+                                <li><i class="fas fa-exclamation"></i> Severe accessory muscle use</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card objective">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-stomach"></i> Gastrointestinal
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-exclamation"></i> Rigid, board-like abdomen</li>
+                                <li><i class="fas fa-exclamation"></i> Absent bowel sounds</li>
+                                <li><i class="fas fa-exclamation"></i> Coffee-ground emesis or melena</li>
+                                <li><i class="fas fa-exclamation"></i> Severe rebound tenderness</li>
+                                <li><i class="fas fa-exclamation"></i> Projectile vomiting</li>
+                                <li><i class="fas fa-exclamation"></i> Bright red blood per rectum</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Rapid Response Criteria
+                    </div>
+                    <p>Many facilities use Rapid Response Teams (RRT). Common triggers include:</p>
+                    <ul>
+                        <li>Acute change in mental status</li>
+                        <li>New onset of difficulty breathing</li>
+                        <li>Heart rate &lt;40 or &gt;130</li>
+                        <li>Systolic BP &lt;90 mmHg</li>
+                        <li>Respiratory rate &lt;8 or &gt;28</li>
+                        <li>SpO2 &lt;90% despite oxygen</li>
+                        <li>Staff member is worried about the patient</li>
+                    </ul>
+                    <p><strong>Trust your instincts!</strong> "Worried about the patient" is a valid reason to call.</p>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-list-ol"></i>
+                        <p><strong>IPPA</strong> = Inspect, Palpate, Percuss, Auscultate (abdomen: auscultate before palpate)</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-chart-line"></i>
+                        <p><strong>Trends matter</strong> more than single vital sign readings - compare to baseline</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-comments"></i>
+                        <p><strong>Subjective</strong> = patient reports; <strong>Objective</strong> = you observe/measure</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-file-alt"></i>
+                        <p><strong>Document objectively</strong> - avoid vague terms, use measurements</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-phone"></i>
+                        <p><strong>SBAR</strong> for provider communication: Situation, Background, Assessment, Recommendation</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Trust your gut</strong> - "worried about patient" is valid reason to escalate</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <p><strong>The Nursing Collective</strong> | <a href="https://thenursingcollective.pro">thenursingcollective.pro</a></p>
+            <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.7;">This study guide is for educational purposes only. Always follow your institution's policies and procedures.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts (external for CSP compliance) -->
+    <script src="guide-script.js"></script>
+</body>
+</html>

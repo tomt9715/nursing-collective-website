@@ -6,6 +6,10 @@ const PRODUCT_ID = document.body.dataset.productId || 'heart-failure';
 const GUIDE_NAME = document.body.dataset.guideName || 'Heart-Failure';
 const API_URL = 'https://api.thenursingcollective.pro';
 
+// Check for print token in URL (used for server-side PDF generation)
+const urlParams = new URLSearchParams(window.location.search);
+const PRINT_TOKEN = urlParams.get('print_token');
+
 // Force light mode on guide pages (don't affect global preference)
 document.documentElement.removeAttribute('data-theme');
 
@@ -167,9 +171,42 @@ function hideLoading() {
     }
 }
 
+// Validate print token with backend (for server-side PDF generation)
+async function validatePrintToken(token) {
+    try {
+        const response = await fetch(`${API_URL}/api/guides/validate-print-token?token=${encodeURIComponent(token)}&product_id=${encodeURIComponent(PRODUCT_ID)}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            return data.valid === true;
+        }
+        return false;
+    } catch (error) {
+        console.error('Print token validation error:', error);
+        return false;
+    }
+}
+
 // Verify user has access to this guide
 async function verifyAccess() {
     showLoading();
+
+    // Check for print token (server-side PDF generation)
+    if (PRINT_TOKEN) {
+        const isValidPrintToken = await validatePrintToken(PRINT_TOKEN);
+        if (isValidPrintToken) {
+            console.log('Valid print token - allowing access for PDF generation');
+            hideLoading();
+            return true;
+        }
+        // Invalid token - fall through to normal auth check
+        console.log('Invalid print token - falling back to normal auth');
+    }
 
     // Check if user is logged in
     const token = getAuthToken();

@@ -1301,13 +1301,21 @@ function initializeQuickView() {
         const iconImg = card.querySelector('.guide-icon img');
         const iconI = card.querySelector('.guide-icon i');
 
-        // Get product ID from the checkout link
-        const checkoutLink = card.querySelector('a[href*="checkout.html"]');
+        // Get product ID from the Add to Cart button (checkout links are replaced by initializeAddToCartButtons)
+        const addToCartButton = card.querySelector('.add-to-cart-btn');
         let productId = '';
-        if (checkoutLink) {
-            const url = new URL(checkoutLink.href, window.location.origin);
-            productId = url.searchParams.get('product') || '';
+        if (addToCartButton) {
+            productId = addToCartButton.getAttribute('data-product-id') || '';
+        } else {
+            // Fallback: try checkout link if button not found yet
+            const checkoutLink = card.querySelector('a[href*="checkout.html"]');
+            if (checkoutLink) {
+                const url = new URL(checkoutLink.href, window.location.origin);
+                productId = url.searchParams.get('product') || '';
+            }
         }
+
+        console.log('Quick View - Product ID:', productId); // Debug log
 
         currentProductId = productId;
         currentProductName = title;

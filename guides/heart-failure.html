@@ -757,14 +757,28 @@
             }
 
             /* Prevent awkward page breaks */
-            .guide-section { page-break-inside: avoid; }
-            .info-box { page-break-inside: avoid; }
-            .guide-table-wrapper { page-break-inside: avoid; }
-            .comparison-card { page-break-inside: avoid; }
-            .intervention-item { page-break-inside: avoid; }
-            .quick-reference { page-break-inside: avoid; }
-            .learning-objectives { page-break-inside: avoid; }
-            .key-points-summary { page-break-inside: avoid; }
+            .info-box { page-break-inside: avoid; break-inside: avoid; }
+            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+            .comparison-card { page-break-inside: avoid; break-inside: avoid; }
+            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
+            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
+            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
+            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
+
+            /* Keep headings with their following content */
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* Keep heading + table together */
+            .guide-section h3 + .guide-table-wrapper,
+            .guide-section h3 + .info-box,
+            .guide-section h3 + .comparison-grid,
+            .guide-section h3 + .interventions-list {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
 
             /* Allow breaks within larger sections if needed */
             .comparison-grid { page-break-inside: auto; }

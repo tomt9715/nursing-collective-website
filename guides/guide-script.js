@@ -1,7 +1,7 @@
 // Guide Page JavaScript
-// Handles PDF generation, download tracking, and UI interactions
+// Handles PDF generation via browser print, download tracking, and UI interactions
 
-// Configuration - will be set by data attributes on body element
+// Configuration - set by data attributes on body element
 const PRODUCT_ID = document.body.dataset.productId || 'heart-failure';
 const GUIDE_NAME = document.body.dataset.guideName || 'Heart-Failure';
 const API_BASE = 'https://florencebot-backend-production.up.railway.app/api';
@@ -22,16 +22,13 @@ document.querySelectorAll('.table-of-contents a').forEach(link => {
 
 // Get auth token from Firebase (if available) or localStorage
 async function getAuthToken() {
-    // Try Firebase first
     if (typeof firebase !== 'undefined' && firebase.auth) {
         const user = firebase.auth().currentUser;
         if (user) {
             return await user.getIdToken();
         }
     }
-    // Fall back to localStorage
-    const storedToken = localStorage.getItem('authToken');
-    return storedToken;
+    return localStorage.getItem('authToken');
 }
 
 // Track download event
@@ -60,79 +57,34 @@ async function trackDownload(source) {
             console.log(`Download tracked: ${PRODUCT_ID} from ${source}`);
         }
     } catch (error) {
-        // Don't block download if tracking fails
         console.error('Failed to track download:', error);
     }
 }
 
-// Generate and download PDF
-async function generatePDF(btn) {
-    const originalText = btn.innerHTML;
+// Print/Save as PDF function
+async function printGuide(btn) {
+    const originalText = btn ? btn.innerHTML : '';
 
-    // Show loading state
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
-    btn.disabled = true;
+    if (btn) {
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
+        btn.disabled = true;
+    }
 
     // Track the download
     await trackDownload('guide_page');
 
-    try {
-        // Add pdf-mode class to hide download bar during capture
-        document.body.classList.add('pdf-mode');
+    // Small delay to let tracking complete
+    await new Promise(r => setTimeout(r, 200));
 
-        const element = document.querySelector('.document-container');
-        const filename = `TNC-${GUIDE_NAME}.pdf`;
+    // Trigger browser print dialog
+    window.print();
 
-        // Wait a moment for styles to apply
-        await new Promise(r => setTimeout(r, 100));
-
-        const opt = {
-            margin: [10, 10, 10, 10],
-            filename: filename,
-            image: { type: 'jpeg', quality: 0.98 },
-            html2canvas: {
-                scale: 2,
-                useCORS: true,
-                letterRendering: true,
-                scrollY: -window.scrollY,
-                width: element.scrollWidth,
-                height: element.scrollHeight
-            },
-            jsPDF: {
-                unit: 'mm',
-                format: 'a4',
-                orientation: 'portrait'
-            },
-            pagebreak: {
-                mode: ['avoid-all', 'css', 'legacy'],
-                before: '.cover-page',
-                after: '.cover-page',
-                avoid: '.guide-section, .info-box, .guide-table-wrapper, .comparison-card, .intervention-item'
-            }
-        };
-
-        await html2pdf().set(opt).from(element).save();
-
-        // Remove pdf-mode class
-        document.body.classList.remove('pdf-mode');
-
-        btn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+    if (btn) {
+        btn.innerHTML = '<i class="fas fa-check"></i> Done!';
         setTimeout(() => {
             btn.innerHTML = originalText;
             btn.disabled = false;
         }, 2000);
-    } catch (error) {
-        console.error('PDF generation error:', error);
-        // Remove pdf-mode class on error too
-        document.body.classList.remove('pdf-mode');
-        btn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            btn.disabled = false;
-        }, 2000);
-        // Fallback to print dialog
-        alert('PDF generation failed. Opening print dialog instead.');
-        window.print();
     }
 }
 
@@ -140,20 +92,17 @@ async function generatePDF(btn) {
 const downloadBtn = document.getElementById('download-pdf-btn');
 if (downloadBtn) {
     downloadBtn.addEventListener('click', function() {
-        generatePDF(this);
+        printGuide(this);
     });
 }
 
-// Check for auto-download parameter (from dashboard PDF button)
+// Check for auto-print parameter (from dashboard PDF button)
 document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('download') === 'true') {
-        // Auto-trigger PDF download after a short delay to ensure page is loaded
+    if (urlParams.get('print') === 'true') {
+        // Auto-trigger print after page loads
         setTimeout(() => {
-            const btn = document.getElementById('download-pdf-btn');
-            if (btn) {
-                generatePDF(btn);
-            }
-        }, 1000);
+            printGuide(null);
+        }, 500);
     }
 });

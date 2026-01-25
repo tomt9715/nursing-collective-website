@@ -724,62 +724,58 @@
             text-decoration: none;
         }
 
-        /* PDF Generation Mode - hides non-content elements and optimizes for PDF */
-        body.pdf-mode .download-bar { display: none !important; }
-        body.pdf-mode { background: white !important; }
-        body.pdf-mode .document-container {
-            margin: 0 !important;
-            box-shadow: none !important;
-            max-width: 100% !important;
-            width: 100% !important;
-        }
-        body.pdf-mode .document-content {
-            padding: 40px 50px !important;
-        }
-        body.pdf-mode .cover-page {
-            padding: 60px 50px !important;
-        }
-        /* Ensure content doesn't get cut off in PDF */
-        body.pdf-mode .guide-section,
-        body.pdf-mode .info-box,
-        body.pdf-mode .guide-table-wrapper,
-        body.pdf-mode .comparison-grid,
-        body.pdf-mode .comparison-card,
-        body.pdf-mode .interventions-list,
-        body.pdf-mode .intervention-item,
-        body.pdf-mode .quick-reference,
-        body.pdf-mode .learning-objectives,
-        body.pdf-mode .table-of-contents,
-        body.pdf-mode .key-points-summary {
-            page-break-inside: avoid !important;
-            break-inside: avoid !important;
-        }
-        /* Force page break after cover */
-        body.pdf-mode .cover-page {
-            page-break-after: always !important;
-            break-after: page !important;
-        }
-
-        /* Print Styles */
+        /* Print Styles - Optimized for browser Save as PDF */
         @media print {
+            /* Hide non-content elements */
             .download-bar { display: none !important; }
-            body { background: white; }
+
+            /* Reset page layout */
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
             .document-container {
-                margin: 0;
-                box-shadow: none;
-                max-width: 100%;
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
             }
+
+            /* Preserve colors in print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* Cover page styling */
             .cover-page {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
                 page-break-after: always;
+                break-after: page;
             }
+
+            /* Prevent awkward page breaks */
             .guide-section { page-break-inside: avoid; }
+            .info-box { page-break-inside: avoid; }
             .guide-table-wrapper { page-break-inside: avoid; }
-            .comparison-grid { page-break-inside: avoid; }
-            .key-points-summary {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
+            .comparison-card { page-break-inside: avoid; }
+            .intervention-item { page-break-inside: avoid; }
+            .quick-reference { page-break-inside: avoid; }
+            .learning-objectives { page-break-inside: avoid; }
+            .key-points-summary { page-break-inside: avoid; }
+
+            /* Allow breaks within larger sections if needed */
+            .comparison-grid { page-break-inside: auto; }
+            .interventions-list { page-break-inside: auto; }
+
+            /* Ensure links are visible in print */
+            a { text-decoration: underline; }
+
+            /* Footer on each page */
+            .document-footer {
+                page-break-inside: avoid;
             }
         }
 
@@ -818,7 +814,7 @@
                 <i class="fas fa-arrow-left"></i> Back to Dashboard
             </a>
             <button class="btn-download" id="download-pdf-btn">
-                <i class="fas fa-download"></i> Download PDF
+                <i class="fas fa-file-pdf"></i> Save as PDF
             </button>
         </div>
     </div>
@@ -1588,9 +1584,6 @@
         </div>
 
     </div>
-
-    <!-- html2pdf.js for PDF generation -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Guide page scripts (external for CSP compliance) -->
     <script src="guide-script.js"></script>

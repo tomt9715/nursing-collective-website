@@ -855,21 +855,17 @@ async function downloadGuide(productId, button, source = 'dashboard') {
     button.disabled = true;
     button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing...';
 
-    // HTML guides configuration with their display names for PDF filename
-    const htmlGuides = {
-        'heart-failure': 'Heart-Failure'
-        // Add more guides here as they're created
-    };
+    // HTML guides that use browser print-to-PDF
+    const htmlGuides = ['heart-failure'];
 
     try {
         // Track the download event first
         await trackDownload(productId, source);
 
-        if (htmlGuides[productId]) {
-            // For HTML guides, generate PDF directly from dashboard using hidden iframe
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
-            await generateGuidePDF(productId, htmlGuides[productId]);
-            button.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+        if (htmlGuides.includes(productId)) {
+            // For HTML guides, open in print mode - browser's native PDF is much better
+            window.open(`guides/${productId}.html?print=true`, '_blank');
+            button.innerHTML = '<i class="fas fa-check"></i> Opening...';
             setTimeout(() => {
                 button.disabled = false;
                 button.innerHTML = originalText;
@@ -899,91 +895,6 @@ async function downloadGuide(productId, button, source = 'dashboard') {
         }, 2000);
         showAlert('Download Error', 'Unable to download the guide. Please try again or contact support.', 'error');
     }
-}
-
-// Generate PDF from HTML guide using hidden iframe
-async function generateGuidePDF(productId, guideName) {
-    return new Promise((resolve, reject) => {
-        // Load html2pdf if not already loaded
-        if (typeof html2pdf === 'undefined') {
-            const script = document.createElement('script');
-            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-            script.onload = () => proceedWithPDF();
-            script.onerror = () => reject(new Error('Failed to load PDF library'));
-            document.head.appendChild(script);
-        } else {
-            proceedWithPDF();
-        }
-
-        function proceedWithPDF() {
-            // Create hidden iframe to load the guide
-            const iframe = document.createElement('iframe');
-            iframe.style.cssText = 'position: absolute; left: -9999px; width: 850px; height: 1px;';
-            document.body.appendChild(iframe);
-
-            iframe.onload = async function() {
-                try {
-                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-
-                    // Add pdf-mode class to hide download bar and adjust styles
-                    iframeDoc.body.classList.add('pdf-mode');
-
-                    const element = iframeDoc.querySelector('.document-container');
-
-                    if (!element) {
-                        throw new Error('Guide content not found');
-                    }
-
-                    // Wait a moment for styles to apply
-                    await new Promise(r => setTimeout(r, 100));
-
-                    const filename = `TNC-${guideName}.pdf`;
-
-                    const opt = {
-                        margin: [10, 10, 10, 10],
-                        filename: filename,
-                        image: { type: 'jpeg', quality: 0.98 },
-                        html2canvas: {
-                            scale: 2,
-                            useCORS: true,
-                            letterRendering: true,
-                            scrollY: 0,
-                            width: element.scrollWidth,
-                            height: element.scrollHeight
-                        },
-                        jsPDF: {
-                            unit: 'mm',
-                            format: 'a4',
-                            orientation: 'portrait'
-                        },
-                        pagebreak: {
-                            mode: ['avoid-all', 'css', 'legacy'],
-                            before: '.cover-page',
-                            after: '.cover-page',
-                            avoid: '.guide-section, .info-box, .guide-table-wrapper, .comparison-card, .intervention-item'
-                        }
-                    };
-
-                    await html2pdf().set(opt).from(element).save();
-
-                    // Clean up iframe
-                    document.body.removeChild(iframe);
-                    resolve();
-                } catch (error) {
-                    document.body.removeChild(iframe);
-                    reject(error);
-                }
-            };
-
-            iframe.onerror = function() {
-                document.body.removeChild(iframe);
-                reject(new Error('Failed to load guide'));
-            };
-
-            // Load the guide page
-            iframe.src = `guides/${productId}.html`;
-        }
-    });
 }
 
 // Track download events for refund policy enforcement

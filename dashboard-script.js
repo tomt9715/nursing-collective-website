@@ -580,7 +580,34 @@ const guideCategoryMap = {
     'hip-knee-replacement': { category: 'med-surg', label: 'Med-Surg', description: 'Joint replacement pre and post-op care.' },
     'osteoporosis': { category: 'med-surg', label: 'Med-Surg', description: 'Bone density preservation and fall prevention.' },
     'amputation-care': { category: 'med-surg', label: 'Med-Surg', description: 'Amputation wound care and prosthetics.' },
+    // Pharmacology
+    'cardiac-medications': { category: 'pharmacology', label: 'Pharmacology', description: 'Cardiac drugs, antihypertensives, and anticoagulants.' },
+    'antibiotics-antivirals': { category: 'pharmacology', label: 'Pharmacology', description: 'Antimicrobial therapy and resistance prevention.' },
+    'pain-management': { category: 'pharmacology', label: 'Pharmacology', description: 'Analgesics, opioids, and multimodal pain control.' },
+    'iv-medications': { category: 'pharmacology', label: 'Pharmacology', description: 'IV drug administration and compatibility.' },
+    'psychotropic-medications': { category: 'pharmacology', label: 'Pharmacology', description: 'Psychiatric medications and side effects.' },
+    'emergency-medications': { category: 'pharmacology', label: 'Pharmacology', description: 'Code drugs and emergency protocols.' },
+    // Fundamentals / Clinical Skills
+    'assessment-skills': { category: 'clinical-skills', label: 'Clinical Skills', description: 'Systematic head-to-toe assessment and documentation.' },
+    'infection-control': { category: 'clinical-skills', label: 'Clinical Skills', description: 'Standard precautions and infection prevention.' },
+    'documentation-charting': { category: 'clinical-skills', label: 'Clinical Skills', description: 'Proper charting, documentation, and legal considerations.' },
+    'patient-safety': { category: 'clinical-skills', label: 'Clinical Skills', description: 'Fall prevention, medication safety, and patient advocacy.' },
+    'mobility-transfers': { category: 'clinical-skills', label: 'Clinical Skills', description: 'Safe patient handling and mobility assistance.' },
+    // Maternal/Newborn
+    'labor-delivery': { category: 'maternal-newborn', label: 'Maternal-Newborn', description: 'Stages of labor, fetal monitoring, and delivery care.' },
+    'postpartum-care': { category: 'maternal-newborn', label: 'Maternal-Newborn', description: 'Postpartum assessment and breastfeeding support.' },
+    'high-risk-pregnancy': { category: 'maternal-newborn', label: 'Maternal-Newborn', description: 'Complications in pregnancy and interventions.' },
+    'antepartum-care': { category: 'maternal-newborn', label: 'Maternal-Newborn', description: 'Prenatal care and fetal development.' },
+    // Pediatrics
+    'growth-development': { category: 'pediatrics', label: 'Pediatrics', description: 'Developmental milestones and pediatric assessment.' },
+    'pediatric-emergencies': { category: 'pediatrics', label: 'Pediatrics', description: 'Pediatric emergency response and interventions.' },
+    'infant-care': { category: 'pediatrics', label: 'Pediatrics', description: 'Newborn care, feeding, and safety.' },
+    'adolescent-health': { category: 'pediatrics', label: 'Pediatrics', description: 'Adolescent development and health concerns.' },
     // Mental Health
+    'depression-anxiety': { category: 'mental-health', label: 'Mental Health', description: 'Depression and anxiety assessment and interventions.' },
+    'crisis-intervention': { category: 'mental-health', label: 'Mental Health', description: 'Crisis management and suicide prevention.' },
+    'therapeutic-communication': { category: 'mental-health', label: 'Mental Health', description: 'Therapeutic techniques and patient rapport.' },
+    'substance-abuse': { category: 'mental-health', label: 'Mental Health', description: 'Substance use disorders and recovery support.' },
     'eating-disorders': { category: 'mental-health', label: 'Mental Health', description: 'Anorexia, bulimia, and binge eating interventions.' },
     // Other categories
     'electrolytes': { category: 'lab-values', label: 'Lab Values', description: 'Essential electrolyte ranges and nursing interventions.' },
@@ -870,7 +897,9 @@ function setupGuidesFiltering(purchases) {
             'clinical-skills': 'Clinical Skills',
             'safety': 'Safety',
             'pharmacology': 'Pharmacology',
-            'mental-health': 'Mental Health'
+            'mental-health': 'Mental Health',
+            'maternal-newborn': 'Maternal-Newborn',
+            'pediatrics': 'Pediatrics'
         };
 
         categories.forEach(cat => {
@@ -1166,60 +1195,91 @@ function getGuideIcon(productId) {
     const iconMap = {
         // Cardiovascular (6)
         'heart-failure': 'heart-failure.webp',
-        'myocardial-infarction': 'heart-attack.webp',
+        'myocardial-infarction': 'myocardial-infarction.webp',
         'arrhythmias': 'arrhythmias.webp',
         'hypertension': 'hypertension.webp',
-        'coronary-artery-disease': 'cad.webp',
-        'peripheral-vascular-disease': 'pad.webp',
+        'coronary-artery-disease': 'coronary-artery-disease.webp',
+        'peripheral-vascular-disease': 'peripheral-vascular-disease.webp',
 
         // Respiratory (6)
         'copd': 'copd.webp',
         'asthma': 'asthma.webp',
         'pneumonia': 'pneumonia.webp',
-        'oxygen-therapy': 'oxygen.webp',
-        'tuberculosis': 'tb.webp',
-        'chest-tubes': 'chest.webp',
+        'oxygen-therapy': 'oxygen-therapy.webp',
+        'tuberculosis': 'tuberculosis.webp',
+        'chest-tubes': 'chest-tubes.webp',
 
         // Endocrine (5)
-        'diabetes-type1': 'type-1.webp',
-        'diabetes-type2': 'type-2.webp',
-        'thyroid-disorders': 'thyroid.webp',
-        'adrenal-disorders': 'adrenal.webp',
-        'pituitary-disorders': 'pituitary.webp',
+        'diabetes-type1': 'diabetes-type1.webp',
+        'diabetes-type2': 'diabetes-type2.webp',
+        'thyroid-disorders': 'thyroid-disorders.webp',
+        'adrenal-disorders': 'adrenal-disorders.webp',
+        'pituitary-disorders': 'pituitary-disorders.webp',
 
         // Neurological (6)
         'stroke': 'stroke.webp',
-        'seizures': 'seizure.webp',
+        'seizures': 'seizures.webp',
         'spinal-cord-injury': 'spinal-cord-injury.webp',
-        'traumatic-brain-injury': 'brain-injury.webp',
+        'traumatic-brain-injury': 'traumatic-brain-injury.webp',
         'meningitis': 'meningitis.webp',
-        'parkinsons-ms': 'shaking.webp',
+        'parkinsons-ms': 'parkinsons-ms.webp',
 
         // Renal (6)
-        'acute-kidney-injury': 'kidney-acute.webp',
-        'chronic-kidney-disease': 'kidney-disease.webp',
-        'dialysis': 'kidney-dialysis.webp',
-        'urinary-tract-infections': 'urinary-tract-infection.webp',
-        'kidney-stones': 'kidney.webp',
-        'fluid-electrolytes': 'chemical.webp',
+        'acute-kidney-injury': 'acute-kidney-injury.webp',
+        'chronic-kidney-disease': 'chronic-kidney-disease.webp',
+        'dialysis': 'dialysis.webp',
+        'urinary-tract-infections': 'urinary-tract-infections.webp',
+        'kidney-stones': 'kidney-stones.webp',
+        'fluid-electrolytes': 'fluid-electrolytes.webp',
 
         // Gastrointestinal (6)
         'gi-bleeding': 'gi-bleeding.webp',
         'bowel-obstruction': 'bowel-obstruction.webp',
-        'liver-disease': 'liver.webp',
-        'pancreatitis': 'intestines.webp',
-        'inflammatory-bowel-disease': 'intestines.webp',
-        'gerd-peptic-ulcer': 'ulcer.webp',
+        'liver-disease': 'liver-disease.webp',
+        'pancreatitis': 'pancreatitis.webp',
+        'inflammatory-bowel-disease': 'inflammatory-bowel-disease.webp',
+        'gerd-peptic-ulcer': 'gerd-peptic-ulcer.webp',
 
         // Musculoskeletal (5)
-        'fractures': 'broken-bone.webp',
+        'fractures': 'fractures.webp',
         'arthritis': 'arthritis.webp',
-        'hip-knee-replacement': 'prothesis.webp',
+        'hip-knee-replacement': 'hip-knee-replacement.webp',
         'osteoporosis': 'osteoporosis.webp',
-        'amputation-care': 'amputation.webp',
+        'amputation-care': 'amputation-care.webp',
+
+        // Pharmacology (6)
+        'cardiac-medications': 'cardiac-medications.webp',
+        'antibiotics-antivirals': 'antibiotics-antivirals.webp',
+        'pain-management': 'pain-management.webp',
+        'iv-medications': 'iv-medications.webp',
+        'psychotropic-medications': 'psychotropic-medications.webp',
+        'emergency-medications': 'emergency-medications.webp',
+
+        // Clinical Skills / Fundamentals (5)
+        'assessment-skills': 'assessment-skills.webp',
+        'infection-control': 'infection-control.webp',
+        'documentation-charting': 'documentation-charting.webp',
+        'patient-safety': 'patient-safety.webp',
+        'mobility-transfers': 'mobility-transfers.webp',
+
+        // Maternal-Newborn (4)
+        'labor-delivery': 'labor-delivery.webp',
+        'postpartum-care': 'postpartum-care.webp',
+        'high-risk-pregnancy': 'high-risk-pregnancy.webp',
+        'antepartum-care': 'antepartum-care.webp',
+
+        // Pediatrics (4)
+        'growth-development': 'growth-development.webp',
+        'pediatric-emergencies': 'pediatric-emergencies.webp',
+        'infant-care': 'infant-care.webp',
+        'adolescent-health': 'adolescent-health.webp',
 
         // Mental Health (5)
-        'eating-disorders': 'eating-disorder.webp'
+        'depression-anxiety': 'depression-anxiety.webp',
+        'crisis-intervention': 'crisis-intervention.webp',
+        'therapeutic-communication': 'therapeutic-communication.webp',
+        'substance-abuse': 'substance-abuse.webp',
+        'eating-disorders': 'eating-disorders.webp'
     };
 
     const iconFile = iconMap[productId];

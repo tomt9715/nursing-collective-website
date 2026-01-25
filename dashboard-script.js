@@ -1392,10 +1392,14 @@ async function claimOrder() {
         }
     } catch (error) {
         console.error('Claim order error:', error);
-        let message = 'Failed to claim order. Please try again.';
-        if (error.message) {
-            message = error.message;
-        }
+        // Map error codes to friendly messages
+        const errorMessages = {
+            'already_yours': 'This order is already linked to your account. Your guides should appear above!',
+            'order_not_found': 'Order not found. Please check the order number and try again.',
+            'already_claimed': 'This order has already been claimed by another account.',
+            'invalid_order': 'Invalid order number format.'
+        };
+        let message = errorMessages[error.message] || error.message || 'Failed to claim order. Please try again.';
         showClaimMessage(message, 'error');
     } finally {
         button.disabled = false;

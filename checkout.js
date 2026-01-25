@@ -310,7 +310,7 @@ function showEmptyCartMessage() {
     const productDetailsEl = document.getElementById('product-details');
     productDetailsEl.innerHTML = `
         <div style="text-align: center; padding: 40px 20px;">
-            <i class="fas fa-shopping-bag" style="font-size: 3rem; color: var(--text-light); margin-bottom: 16px;"></i>
+            <img src="assets/images/bag.webp" alt="Empty cart" style="width: 64px; height: 64px; margin-bottom: 16px; opacity: 0.6;">
             <h3 style="color: var(--text-primary); margin-bottom: 8px;">Your cart is empty</h3>
             <p style="color: var(--text-secondary); margin-bottom: 24px;">Add some study guides to get started!</p>
             <a href="store.html" class="btn btn-primary">

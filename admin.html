@@ -525,6 +525,7 @@
                                     <th>Guide Name</th>
                                     <th>Source</th>
                                     <th>Date</th>
+                                    <th>Downloads</th>
                                     <th>Status</th>
                                     <th>Notes</th>
                                     <th>Actions</th>
@@ -702,6 +703,28 @@
                 </div>
                 <div class="bulk-grant-results" id="bulk-grant-results" style="display: none;">
                     <!-- Results populated by JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Download History Modal -->
+    <div class="modal-overlay" id="download-history-modal">
+        <div class="modal-content download-history-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-download"></i> Download History</h2>
+                <button class="modal-close" id="close-download-history-modal-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="download-history-info">
+                    <p><strong>User:</strong> <span id="download-history-user"></span></p>
+                    <p><strong>Guide:</strong> <span id="download-history-guide"></span></p>
+                    <p><strong>Total Downloads:</strong> <span id="download-history-count" class="download-count-badge">0</span></p>
+                </div>
+                <div class="download-history-list" id="download-history-list">
+                    <!-- Populated by JS -->
                 </div>
             </div>
         </div>

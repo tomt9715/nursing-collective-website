@@ -10,6 +10,7 @@ let productsCache = [];
 let usersPage = 1;
 let auditPage = 1;
 let selectedGuides = new Set();
+let userDownloadsCache = {}; // Cache download data per user
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', async function() {
@@ -394,11 +395,18 @@ async function openUserDetail(email) {
 
     document.getElementById('modal-user-email').textContent = email;
     document.getElementById('user-info-grid').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
-    document.getElementById('user-guides-table-body').innerHTML = '<tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
+    document.getElementById('user-guides-table-body').innerHTML = '<tr><td colspan="8" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
     document.getElementById('user-notes-list').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
 
     try {
-        const data = await apiCall(`/admin/users/by-email/${encodeURIComponent(email)}`);
+        // Fetch user details and download history in parallel
+        const [data, downloadsData] = await Promise.all([
+            apiCall(`/admin/users/by-email/${encodeURIComponent(email)}`),
+            apiCall(`/admin/users/by-email/${encodeURIComponent(email)}/downloads`).catch(() => ({ product_summary: [], downloads: [] }))
+        ]);
+
+        // Cache downloads for this user
+        userDownloadsCache[email] = downloadsData;
 
         // User info
         document.getElementById('user-info-grid').innerHTML = `
@@ -452,9 +460,21 @@ async function openUserDetail(email) {
         if (revokeAllBtn) revokeAllBtn.style.display = activeGuides.length > 0 ? 'inline-flex' : 'none';
 
         if (data.guides.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" class="empty-cell">No guides</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="8" class="empty-cell">No guides</td></tr>';
         } else {
-            tbody.innerHTML = data.guides.map(guide => `
+            // Create a map of download counts per product
+            const downloadCountMap = {};
+            if (downloadsData && downloadsData.product_summary) {
+                downloadsData.product_summary.forEach(item => {
+                    downloadCountMap[item.product_id] = item;
+                });
+            }
+
+            tbody.innerHTML = data.guides.map(guide => {
+                const downloadInfo = downloadCountMap[guide.product_id] || { download_count: 0, sources: [] };
+                const downloadCount = downloadInfo.download_count || 0;
+
+                return `
                 <tr class="${guide.is_active ? '' : 'revoked-row'}">
                     <td class="checkbox-col">
                         ${guide.is_active ? `
@@ -471,6 +491,16 @@ async function openUserDetail(email) {
                             : `<span class="source-badge admin"><i class="fas fa-gift"></i> Admin</span>`}
                     </td>
                     <td>${formatDate(guide.purchased_at)}</td>
+                    <td class="downloads-cell">
+                        <button class="download-count-btn ${downloadCount > 0 ? 'has-downloads' : 'no-downloads'}"
+                                data-guide-id="${escapeHtml(guide.product_id)}"
+                                data-guide-name="${escapeHtml(guide.product_name)}"
+                                data-user-email="${escapeHtml(email)}"
+                                title="${downloadCount > 0 ? 'Click to view download history' : 'No downloads yet'}">
+                            <i class="fas fa-download"></i>
+                            <span class="count">${downloadCount}</span>
+                        </button>
+                    </td>
                     <td>
                         ${guide.is_active
                             ? '<span class="badge-status active"><i class="fas fa-check"></i> Active</span>'
@@ -498,7 +528,7 @@ async function openUserDetail(email) {
                         `}
                     </td>
                 </tr>
-            `).join('');
+            `}).join('');
 
             // Attach event listeners for checkboxes
             tbody.querySelectorAll('.guide-select-checkbox').forEach(cb => {
@@ -525,6 +555,13 @@ async function openUserDetail(email) {
             tbody.querySelectorAll('.note-edit-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     openGuideNoteModal(this.dataset.guideId, this.dataset.currentNote);
+                });
+            });
+
+            // Attach event listeners for download count buttons
+            tbody.querySelectorAll('.download-count-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    openDownloadHistoryModal(this.dataset.userEmail, this.dataset.guideId, this.dataset.guideName);
                 });
             });
         }
@@ -554,6 +591,88 @@ async function openUserDetail(email) {
 function closeUserDetailModal() {
     document.getElementById('user-detail-modal').classList.remove('active');
     currentUserEmail = null;
+}
+
+// ==================== Download History Modal ====================
+
+function openDownloadHistoryModal(email, guideId, guideName) {
+    const modal = document.getElementById('download-history-modal');
+    modal.classList.add('active');
+
+    document.getElementById('download-history-user').textContent = email;
+    document.getElementById('download-history-guide').textContent = guideName;
+    document.getElementById('download-history-list').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+
+    // Get download data from cache
+    const downloadsData = userDownloadsCache[email];
+    if (!downloadsData) {
+        document.getElementById('download-history-count').textContent = '0';
+        document.getElementById('download-history-list').innerHTML = '<div class="empty-state"><p>No download data available</p></div>';
+        return;
+    }
+
+    // Filter downloads for this specific guide
+    const guideDownloads = downloadsData.downloads.filter(d => d.product_id === guideId);
+    document.getElementById('download-history-count').textContent = guideDownloads.length;
+
+    if (guideDownloads.length === 0) {
+        document.getElementById('download-history-list').innerHTML = `
+            <div class="empty-state">
+                <i class="fas fa-download" style="font-size: 2rem; opacity: 0.3; margin-bottom: 10px;"></i>
+                <p>User has not downloaded this guide yet</p>
+            </div>
+        `;
+        return;
+    }
+
+    // Render download history
+    document.getElementById('download-history-list').innerHTML = `
+        <table class="admin-table compact">
+            <thead>
+                <tr>
+                    <th>Date & Time</th>
+                    <th>Source</th>
+                    <th>IP Address</th>
+                </tr>
+            </thead>
+            <tbody>
+                ${guideDownloads.map(dl => `
+                    <tr>
+                        <td>${formatDateTime(dl.downloaded_at)}</td>
+                        <td>${getDownloadSourceBadge(dl.source)}</td>
+                        <td><code>${escapeHtml(dl.ip_address || 'Unknown')}</code></td>
+                    </tr>
+                `).join('')}
+            </tbody>
+        </table>
+    `;
+}
+
+function closeDownloadHistoryModal() {
+    document.getElementById('download-history-modal').classList.remove('active');
+}
+
+function getDownloadSourceBadge(source) {
+    const sourceMap = {
+        'dashboard': '<span class="source-badge dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</span>',
+        'guide_page': '<span class="source-badge guide-page"><i class="fas fa-book-open"></i> Guide Page</span>',
+        'email': '<span class="source-badge email"><i class="fas fa-envelope"></i> Email Link</span>',
+        'unknown': '<span class="source-badge unknown"><i class="fas fa-question"></i> Unknown</span>'
+    };
+    return sourceMap[source] || sourceMap['unknown'];
+}
+
+function formatDateTime(dateString) {
+    if (!dateString) return 'Unknown';
+    const date = new Date(dateString);
+    return date.toLocaleString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: '2-digit',
+        hour12: true
+    });
 }
 
 // ==================== Guide Actions ====================
@@ -1321,6 +1440,12 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeUserDetailModalBtn = document.getElementById('close-user-detail-modal-btn');
     if (closeUserDetailModalBtn) {
         closeUserDetailModalBtn.addEventListener('click', closeUserDetailModal);
+    }
+
+    // Download history modal close button
+    const closeDownloadHistoryModalBtn = document.getElementById('close-download-history-modal-btn');
+    if (closeDownloadHistoryModalBtn) {
+        closeDownloadHistoryModalBtn.addEventListener('click', closeDownloadHistoryModal);
     }
 
     // Add guide modal buttons

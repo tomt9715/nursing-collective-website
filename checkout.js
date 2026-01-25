@@ -319,8 +319,49 @@ function showEmptyCartMessage() {
         </div>
     `;
 
-    // Hide payment form
-    document.querySelector('.payment-form-container').style.display = 'none';
+    // Reset order totals to $0.00
+    const orderTotalEl = document.querySelector('.order-total');
+    if (orderTotalEl) {
+        orderTotalEl.innerHTML = `
+            <div class="total-row">
+                <span>Subtotal</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="total-row total-final">
+                <span>Total</span>
+                <span id="total">$0.00</span>
+            </div>
+        `;
+    }
+
+    // Hide promo code section when cart is empty
+    const promoSection = document.getElementById('promo-section');
+    if (promoSection) {
+        promoSection.style.display = 'none';
+    }
+
+    // Hide the item count if present
+    const itemCountEl = document.querySelector('.checkout-item-count');
+    if (itemCountEl) {
+        itemCountEl.style.display = 'none';
+    }
+
+    // Disable the submit button and show disabled state
+    const submitButton = document.getElementById('submit-button');
+    if (submitButton) {
+        submitButton.disabled = true;
+    }
+
+    // Show a message in the payment method section that cart is empty
+    const paymentElementWrapper = document.getElementById('payment-element-wrapper');
+    if (paymentElementWrapper) {
+        paymentElementWrapper.innerHTML = `
+            <div style="text-align: center; padding: 30px 20px; color: var(--text-secondary);">
+                <i class="fas fa-shopping-cart" style="font-size: 2rem; margin-bottom: 12px; opacity: 0.5;"></i>
+                <p style="margin: 0; font-size: 0.9rem;">Add items to your cart to continue</p>
+            </div>
+        `;
+    }
 }
 
 /**

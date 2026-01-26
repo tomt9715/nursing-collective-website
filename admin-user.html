@@ -565,9 +565,10 @@
         }
 
         @media (max-width: 768px) {
-            /* Page container */
+            /* Page container - add padding for fixed subnav */
             .user-profile-page {
                 padding: 12px 0;
+                padding-top: 60px;
             }
 
             .user-profile-page .container {
@@ -578,6 +579,11 @@
             .back-link {
                 margin-bottom: 12px;
                 font-size: 0.85rem;
+            }
+
+            /* Fix subnav link underlines */
+            .admin-subnav a {
+                text-decoration: none;
             }
 
             /* Profile header - compact version */
@@ -686,23 +692,23 @@
                 padding: 12px 14px;
             }
 
-            /* Info grid - compact */
+            /* Info grid - 2 columns on mobile */
             .info-grid {
-                grid-template-columns: 1fr;
-                gap: 10px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px 12px;
             }
 
             .info-item {
-                padding: 8px 0;
+                padding: 6px 0;
             }
 
             .info-label {
-                font-size: 0.7rem;
-                margin-bottom: 2px;
+                font-size: 0.65rem;
+                margin-bottom: 1px;
             }
 
             .info-value {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
 
             /* Guide items - compact */

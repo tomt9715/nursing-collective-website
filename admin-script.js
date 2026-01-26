@@ -221,6 +221,9 @@ async function loadDashboardOverview() {
         // Load top guides
         await loadTopGuides();
 
+        // Load recently deleted accounts
+        await loadRecentlyDeletedAccounts();
+
     } catch (error) {
         console.error('Error loading dashboard:', error);
         showToast('Failed to load dashboard data', 'error');
@@ -299,6 +302,122 @@ async function loadTopGuides() {
     } catch (error) {
         console.error('Error loading top guides:', error);
         container.innerHTML = '<div class="empty-state"><p>Failed to load guides</p></div>';
+    }
+}
+
+// Load recently deleted accounts
+async function loadRecentlyDeletedAccounts() {
+    const tbody = document.getElementById('deleted-accounts-body');
+    const emptyState = document.getElementById('no-deleted-accounts');
+    const tableContainer = document.querySelector('.deleted-accounts-table-container');
+
+    if (!tbody) return;
+
+    try {
+        const data = await apiCall('/admin/deleted-accounts?per_page=10');
+
+        if (!data.deleted_accounts || data.deleted_accounts.length === 0) {
+            tbody.innerHTML = '';
+            if (tableContainer) tableContainer.style.display = 'none';
+            if (emptyState) emptyState.style.display = 'block';
+            return;
+        }
+
+        if (tableContainer) tableContainer.style.display = 'block';
+        if (emptyState) emptyState.style.display = 'none';
+
+        tbody.innerHTML = data.deleted_accounts.map(account => `
+            <tr>
+                <td><strong>${escapeHtml(account.email)}</strong></td>
+                <td>${escapeHtml(`${account.first_name || ''} ${account.last_name || ''}`.trim() || '-')}</td>
+                <td>
+                    ${account.total_purchases > 0
+                        ? `<span class="badge-status premium">${account.total_purchases} guides</span>`
+                        : '<span class="badge-status">None</span>'}
+                </td>
+                <td>
+                    ${account.deletion_reason === 'admin_deleted'
+                        ? `<span class="badge-status revoked" title="Deleted by ${escapeHtml(account.deleted_by || 'admin')}"><i class="fas fa-shield-alt"></i> Admin</span>`
+                        : '<span class="badge-status"><i class="fas fa-user"></i> Self</span>'}
+                </td>
+                <td>${formatDate(account.deleted_at)}</td>
+            </tr>
+        `).join('');
+    } catch (error) {
+        console.error('Error loading deleted accounts:', error);
+        tbody.innerHTML = '<tr><td colspan="5" class="loading-cell">Failed to load deleted accounts</td></tr>';
+    }
+}
+
+// ==================== Deleted Accounts Modal ====================
+
+let deletedAccountsPage = 1;
+
+function openDeletedAccountsModal() {
+    document.getElementById('deleted-accounts-modal').classList.add('active');
+    loadDeletedAccountsFull(1);
+}
+
+function closeDeletedAccountsModal() {
+    document.getElementById('deleted-accounts-modal').classList.remove('active');
+}
+
+async function loadDeletedAccountsFull(page = 1) {
+    deletedAccountsPage = page;
+    const tbody = document.getElementById('deleted-accounts-full-body');
+    tbody.innerHTML = '<tr><td colspan="8" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
+
+    try {
+        const reason = document.getElementById('deleted-filter-reason').value;
+        const params = new URLSearchParams({
+            page: page,
+            per_page: 25
+        });
+        if (reason) params.append('reason', reason);
+
+        const data = await apiCall(`/admin/deleted-accounts?${params}`);
+
+        if (!data.deleted_accounts || data.deleted_accounts.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="8" class="loading-cell">No deleted accounts found</td></tr>';
+            document.getElementById('deleted-accounts-pagination').innerHTML = '';
+            return;
+        }
+
+        tbody.innerHTML = data.deleted_accounts.map(account => `
+            <tr>
+                <td><strong>${escapeHtml(account.email)}</strong></td>
+                <td>${escapeHtml(`${account.first_name || ''} ${account.last_name || ''}`.trim() || '-')}</td>
+                <td>
+                    ${account.total_purchases > 0
+                        ? `<span class="badge-status premium">${account.total_purchases}</span>`
+                        : '-'}
+                </td>
+                <td>
+                    ${account.had_discord ? '<i class="fab fa-discord" title="Discord" style="color: #5865F2; margin-right: 4px;"></i>' : ''}
+                    ${account.had_google ? '<i class="fab fa-google" title="Google" style="color: #DB4437; margin-right: 4px;"></i>' : ''}
+                    ${!account.had_discord && !account.had_google ? '-' : ''}
+                </td>
+                <td>
+                    ${account.deletion_reason === 'admin_deleted'
+                        ? '<span class="badge-status revoked"><i class="fas fa-shield-alt"></i> Admin</span>'
+                        : '<span class="badge-status"><i class="fas fa-user"></i> Self</span>'}
+                </td>
+                <td>${escapeHtml(account.deleted_by || '-')}</td>
+                <td>${formatDate(account.account_created_at)}</td>
+                <td>${formatDate(account.deleted_at)}</td>
+            </tr>
+        `).join('');
+
+        // Pagination
+        if (data.pagination && data.pagination.pages > 1) {
+            renderPagination('deleted-accounts-pagination', data.pagination, loadDeletedAccountsFull);
+        } else {
+            document.getElementById('deleted-accounts-pagination').innerHTML = '';
+        }
+    } catch (error) {
+        console.error('Error loading deleted accounts:', error);
+        tbody.innerHTML = '<tr><td colspan="8" class="loading-cell">Error loading deleted accounts</td></tr>';
+        showToast('Failed to load deleted accounts', 'error');
     }
 }
 
@@ -1569,5 +1688,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const cancelGuideNoteBtn = document.getElementById('cancel-guide-note-btn');
     if (cancelGuideNoteBtn) {
         cancelGuideNoteBtn.addEventListener('click', closeGuideNoteModal);
+    }
+
+    // View All Deleted Accounts button
+    const viewAllDeletedBtn = document.getElementById('view-all-deleted-btn');
+    if (viewAllDeletedBtn) {
+        viewAllDeletedBtn.addEventListener('click', openDeletedAccountsModal);
+    }
+
+    // Deleted accounts modal close button
+    const closeDeletedAccountsModalBtn = document.getElementById('close-deleted-accounts-modal-btn');
+    if (closeDeletedAccountsModalBtn) {
+        closeDeletedAccountsModalBtn.addEventListener('click', closeDeletedAccountsModal);
+    }
+
+    // Deleted accounts filter apply button
+    const deletedFilterApplyBtn = document.getElementById('deleted-filter-apply-btn');
+    if (deletedFilterApplyBtn) {
+        deletedFilterApplyBtn.addEventListener('click', () => loadDeletedAccountsFull(1));
     }
 });

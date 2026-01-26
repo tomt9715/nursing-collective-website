@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/bundle.min.css">
 
     <!-- Admin-specific styles (loaded after bundle to override) -->
-    <link rel="stylesheet" href="css/admin.css?v=2">
+    <link rel="stylesheet" href="css/admin.css?v=3">
 
     <!-- Bootstrap 5 CSS -->
 
@@ -345,6 +345,34 @@
                         </div>
                         <div class="top-guides-grid" id="top-guides">
                             <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                        </div>
+                    </div>
+
+                    <!-- Recently Deleted Accounts Section -->
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-user-slash"></i> Recently Deleted Accounts</h3>
+                            <button class="btn-link" id="view-all-deleted-btn">View All</button>
+                        </div>
+                        <div class="deleted-accounts-table-container">
+                            <table class="admin-table" id="deleted-accounts-table">
+                                <thead>
+                                    <tr>
+                                        <th>Email</th>
+                                        <th>Name</th>
+                                        <th>Guides Owned</th>
+                                        <th>Reason</th>
+                                        <th>Deleted</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="deleted-accounts-body">
+                                    <tr><td colspan="5" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="empty-state" id="no-deleted-accounts" style="display: none;">
+                            <i class="fas fa-check-circle"></i>
+                            <p>No accounts have been deleted recently.</p>
                         </div>
                     </div>
                 </div>
@@ -749,6 +777,53 @@
         </div>
     </div>
 
+    <!-- Deleted Accounts Modal -->
+    <div class="modal-overlay" id="deleted-accounts-modal">
+        <div class="modal-content deleted-accounts-modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-user-slash"></i> Deleted Accounts</h2>
+                <button class="modal-close" id="close-deleted-accounts-modal-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="deleted-accounts-filters">
+                    <div class="filter-group">
+                        <label>Filter by Reason</label>
+                        <select id="deleted-filter-reason">
+                            <option value="">All</option>
+                            <option value="user_requested">Self-Deleted</option>
+                            <option value="admin_deleted">Admin Deleted</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-secondary" id="deleted-filter-apply-btn">
+                        <i class="fas fa-filter"></i> Apply
+                    </button>
+                </div>
+                <div class="deleted-accounts-full-table-container">
+                    <table class="admin-table" id="deleted-accounts-full-table">
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>Name</th>
+                                <th>Guides Owned</th>
+                                <th>OAuth</th>
+                                <th>Reason</th>
+                                <th>Deleted By</th>
+                                <th>Account Created</th>
+                                <th>Deleted</th>
+                            </tr>
+                        </thead>
+                        <tbody id="deleted-accounts-full-body">
+                            <tr><td colspan="8" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="pagination-controls" id="deleted-accounts-pagination"></div>
+            </div>
+        </div>
+    </div>
+
     <!-- Toast Notifications -->
     <div class="toast-container" id="toast-container"></div>
 
@@ -772,6 +847,6 @@
     <script src="api-service.js?v=1769142741"></script>
 
     <!-- Admin Dashboard Script -->
-    <script src="admin-script.js?v=1.0.6"></script>
+    <script src="admin-script.js?v=1.0.7"></script>
 </body>
 </html>

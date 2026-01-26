@@ -18,3 +18,6 @@
 @import "./checkout.css";
 @import "./store-style.css";
 @import "./study-guides.css";
+
+/* Cookie consent styles */
+@import "./cookie-consent.css";

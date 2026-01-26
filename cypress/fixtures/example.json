@@ -1,0 +1,25 @@
+{
+    "testUser": {
+        "email": "test@example.com",
+        "name": "Test User"
+    },
+    "testProduct": {
+        "id": "guide-test-123",
+        "name": "Test Study Guide",
+        "price": 5.99,
+        "type": "individual"
+    },
+    "testCart": {
+        "items": [
+            {
+                "product_id": "guide-1",
+                "product_name": "Medical-Surgical Nursing Guide",
+                "product_type": "individual",
+                "price": 5.99,
+                "quantity": 1
+            }
+        ],
+        "subtotal": 5.99,
+        "item_count": 1
+    }
+}

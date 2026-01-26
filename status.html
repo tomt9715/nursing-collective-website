@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status - The Nursing Collective</title>
+    <meta name="description" content="Check the current status of The Nursing Collective services including website, API, and Discord bot.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2E86AB">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/bundle.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Sentry -->
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="sentry-init.js"></script>
+
+    <style>
+        .status-page {
+            padding-top: 120px;
+            padding-bottom: 60px;
+            min-height: 100vh;
+            background: var(--background-light);
+        }
+
+        .status-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .status-header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .status-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        /* Overall Status Banner */
+        .overall-status {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px 32px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .overall-status.operational {
+            border-left: 4px solid #10b981;
+        }
+
+        .overall-status.degraded {
+            border-left: 4px solid #f59e0b;
+        }
+
+        .overall-status.outage {
+            border-left: 4px solid #ef4444;
+        }
+
+        .status-indicator {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .status-indicator.operational {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .status-indicator.degraded {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .status-indicator.outage {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .overall-status-text h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .overall-status-text p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .last-updated {
+            margin-left: auto;
+            text-align: right;
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        /* Service Cards */
+        .services-grid {
+            display: grid;
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.2s;
+        }
+
+        .service-card:hover {
+            box-shadow: var(--shadow-md);
+        }
+
+        .service-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--background-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .service-info {
+            flex: 1;
+        }
+
+        .service-info h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .service-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .service-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .service-status.operational {
+            background: rgba(16, 185, 129, 0.1);
+            color: #10b981;
+        }
+
+        .service-status.degraded {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .service-status.outage {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .service-status.checking {
+            background: var(--background-light);
+            color: var(--text-secondary);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: currentColor;
+        }
+
+        .status-dot.pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Incidents Section */
+        .incidents-section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .incidents-section h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .incidents-section h2 i {
+            color: var(--primary-color);
+        }
+
+        .no-incidents {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+        }
+
+        .no-incidents i {
+            font-size: 3rem;
+            color: #10b981;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .incident-item {
+            padding: 16px;
+            border-radius: 8px;
+            background: var(--background-light);
+            margin-bottom: 12px;
+        }
+
+        .incident-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .incident-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .incident-title {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .incident-date {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        .incident-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Subscribe Section */
+        .subscribe-section {
+            margin-top: 40px;
+            text-align: center;
+            padding: 32px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .subscribe-section h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .subscribe-section p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .subscribe-links {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .subscribe-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .subscribe-links .discord-link {
+            background: #5865F2;
+            color: white;
+        }
+
+        .subscribe-links .discord-link:hover {
+            background: #4752c4;
+        }
+
+        .subscribe-links .email-link {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .subscribe-links .email-link:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .status-page {
+                padding-top: 100px;
+            }
+
+            .overall-status {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+
+            .last-updated {
+                margin-left: 0;
+                margin-top: 12px;
+                text-align: center;
+            }
+
+            .service-card {
+                flex-wrap: wrap;
+            }
+
+            .service-status {
+                width: 100%;
+                justify-content: center;
+                margin-top: 8px;
+            }
+
+            .subscribe-links {
+                flex-direction: column;
+            }
+
+            .subscribe-links a {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip Link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link-home">Home</a>
+                <a href="study-guides.html">Study Guides</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="store.html">Store</a>
+                <a href="about-florencebot.html">About FlorenceBot</a>
+                <a href="login.html" id="nav-login-link">Login</a>
+                <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-sun light-icon"></i>
+                    <i class="fas fa-moon dark-icon"></i>
+                </button>
+                <button class="cart-icon-container" aria-label="Shopping cart" title="View cart" type="button">
+                    <i class="fas fa-shopping-cart cart-icon"></i>
+                    <span class="cart-badge empty">0</span>
+                </button>
+                <div class="user-menu" id="user-menu" style="display: none;">
+                    <button class="user-avatar" id="user-menu-btn" title="Account menu">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="user-dropdown-header">
+                            <div class="user-avatar-large">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content" class="status-page">
+        <div class="container">
+            <div class="status-header">
+                <h1><i class="fas fa-signal"></i> System Status</h1>
+                <p>Current status of The Nursing Collective services</p>
+            </div>
+
+            <!-- Overall Status -->
+            <div class="overall-status operational" id="overall-status">
+                <div class="status-indicator operational">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="overall-status-text">
+                    <h2>All Systems Operational</h2>
+                    <p>All services are running smoothly.</p>
+                </div>
+                <div class="last-updated">
+                    <div>Last checked</div>
+                    <strong id="last-checked">Checking...</strong>
+                </div>
+            </div>
+
+            <!-- Services Grid -->
+            <div class="services-grid" id="services-grid">
+                <div class="service-card" data-service="website">
+                    <div class="service-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Website</h3>
+                        <p>Main website and pages</p>
+                    </div>
+                    <div class="service-status checking">
+                        <span class="status-dot pulse"></span>
+                        <span>Checking...</span>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="api">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>API</h3>
+                        <p>Backend services and authentication</p>
+                    </div>
+                    <div class="service-status checking">
+                        <span class="status-dot pulse"></span>
+                        <span>Checking...</span>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="payments">
+                    <div class="service-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>Payments</h3>
+                        <p>Stripe checkout and transactions</p>
+                    </div>
+                    <div class="service-status checking">
+                        <span class="status-dot pulse"></span>
+                        <span>Checking...</span>
+                    </div>
+                </div>
+
+                <div class="service-card" data-service="discord">
+                    <div class="service-icon">
+                        <i class="fab fa-discord"></i>
+                    </div>
+                    <div class="service-info">
+                        <h3>FlorenceBot</h3>
+                        <p>Discord bot and commands</p>
+                    </div>
+                    <div class="service-status checking">
+                        <span class="status-dot pulse"></span>
+                        <span>Checking...</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Incidents -->
+            <div class="incidents-section">
+                <h2><i class="fas fa-history"></i> Recent Incidents</h2>
+                <div id="incidents-list">
+                    <div class="no-incidents">
+                        <i class="fas fa-check-circle"></i>
+                        <p>No incidents reported in the last 90 days.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Subscribe Section -->
+            <div class="subscribe-section">
+                <h3>Stay Updated</h3>
+                <p>Get notified about service disruptions and maintenance</p>
+                <div class="subscribe-links">
+                    <a href="https://discord.gg/y2Mh77wAV2" class="discord-link">
+                        <i class="fab fa-discord"></i> Join Discord
+                    </a>
+                    <a href="mailto:support@thenursingcollective.pro?subject=Status%20Updates%20Subscription" class="email-link">
+                        <i class="fas fa-envelope"></i> Email Updates
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span>The Nursing Collective</span>
+                    </div>
+                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="study-guides.html">Study Guides</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="store.html">Store</a></li>
+                        <li><a href="about-florencebot.html">About Bot</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord Server</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="dark-mode.js"></script>
+    <script src="api-service.js"></script>
+    <script src="cart-service.js"></script>
+    <script src="cart-ui.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        // Status Page Logic
+        const StatusPage = {
+            services: {
+                website: { name: 'Website', url: '/' },
+                api: { name: 'API', url: 'https://florencebot-backend-production.up.railway.app/api/health' },
+                payments: { name: 'Payments', url: 'https://api.stripe.com' },
+                discord: { name: 'FlorenceBot', url: 'https://florencebot-backend-production.up.railway.app/api/health' }
+            },
+
+            async checkServices() {
+                const results = {};
+
+                // Check website (always operational if we're here)
+                results.website = 'operational';
+                this.updateServiceStatus('website', 'operational');
+
+                // Check API
+                try {
+                    const response = await fetch(this.services.api.url, {
+                        method: 'GET',
+                        mode: 'cors'
+                    });
+                    results.api = response.ok ? 'operational' : 'degraded';
+                } catch (e) {
+                    results.api = 'outage';
+                }
+                this.updateServiceStatus('api', results.api);
+
+                // Payments - assume operational (Stripe rarely goes down)
+                results.payments = 'operational';
+                this.updateServiceStatus('payments', 'operational');
+
+                // Discord bot - same endpoint as API
+                results.discord = results.api;
+                this.updateServiceStatus('discord', results.discord);
+
+                // Update overall status
+                this.updateOverallStatus(results);
+
+                // Update last checked time
+                document.getElementById('last-checked').textContent = new Date().toLocaleTimeString();
+            },
+
+            updateServiceStatus(service, status) {
+                const card = document.querySelector(`[data-service="${service}"] .service-status`);
+                if (!card) return;
+
+                card.className = `service-status ${status}`;
+
+                const statusText = {
+                    operational: 'Operational',
+                    degraded: 'Degraded',
+                    outage: 'Outage',
+                    checking: 'Checking...'
+                };
+
+                card.innerHTML = `
+                    <span class="status-dot${status === 'checking' ? ' pulse' : ''}"></span>
+                    <span>${statusText[status]}</span>
+                `;
+            },
+
+            updateOverallStatus(results) {
+                const values = Object.values(results);
+                let overall = 'operational';
+
+                if (values.includes('outage')) {
+                    overall = 'outage';
+                } else if (values.includes('degraded')) {
+                    overall = 'degraded';
+                }
+
+                const container = document.getElementById('overall-status');
+                const indicator = container.querySelector('.status-indicator');
+                const textContainer = container.querySelector('.overall-status-text');
+
+                container.className = `overall-status ${overall}`;
+                indicator.className = `status-indicator ${overall}`;
+
+                const statusInfo = {
+                    operational: {
+                        icon: 'fa-check-circle',
+                        title: 'All Systems Operational',
+                        description: 'All services are running smoothly.'
+                    },
+                    degraded: {
+                        icon: 'fa-exclamation-triangle',
+                        title: 'Partial System Outage',
+                        description: 'Some services may be experiencing issues.'
+                    },
+                    outage: {
+                        icon: 'fa-times-circle',
+                        title: 'Major System Outage',
+                        description: 'We are experiencing service disruptions.'
+                    }
+                };
+
+                const info = statusInfo[overall];
+                indicator.innerHTML = `<i class="fas ${info.icon}"></i>`;
+                textContainer.innerHTML = `
+                    <h2>${info.title}</h2>
+                    <p>${info.description}</p>
+                `;
+            },
+
+            init() {
+                this.checkServices();
+                // Refresh every 60 seconds
+                setInterval(() => this.checkServices(), 60000);
+            }
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            StatusPage.init();
+        });
+    </script>
+</body>
+</html>

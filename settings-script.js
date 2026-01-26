@@ -10,6 +10,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load user profile
     await loadUserProfile();
 
+    // Load notification preferences
+    await loadNotificationPreferences();
+
+    // Setup notification preference toggles
+    setupNotificationToggles();
+
     // User menu dropdown toggle
     const userMenuBtn = document.getElementById('user-menu-btn');
     const userDropdown = document.getElementById('user-dropdown');
@@ -321,5 +327,83 @@ function checkPasswordMatch(password1, password2, containerId) {
     } else {
         container.textContent = '✗ Passwords do not match';
         container.style.color = '#ef4444';
+    }
+}
+
+// Load notification preferences from server
+async function loadNotificationPreferences() {
+    try {
+        const data = await apiCall('/user/notification-preferences', {
+            method: 'GET'
+        });
+
+        const prefs = data.notification_preferences;
+
+        // Update toggle states
+        const newGuidesToggle = document.getElementById('pref-new-guides');
+        const promotionsToggle = document.getElementById('pref-promotions');
+        const marketingToggle = document.getElementById('pref-marketing');
+
+        if (newGuidesToggle) newGuidesToggle.checked = prefs.new_guides !== false;
+        if (promotionsToggle) promotionsToggle.checked = prefs.promotions !== false;
+        if (marketingToggle) marketingToggle.checked = prefs.marketing !== false;
+
+    } catch (error) {
+        console.error('Error loading notification preferences:', error);
+    }
+}
+
+// Setup notification preference toggle handlers
+function setupNotificationToggles() {
+    const toggleIds = ['pref-new-guides', 'pref-promotions', 'pref-marketing'];
+
+    toggleIds.forEach(id => {
+        const toggle = document.getElementById(id);
+        if (toggle) {
+            toggle.addEventListener('change', handleNotificationToggle);
+        }
+    });
+}
+
+// Handle notification toggle change
+async function handleNotificationToggle() {
+    const statusEl = document.getElementById('notification-save-status');
+
+    // Show saving status
+    if (statusEl) {
+        statusEl.style.display = 'block';
+        statusEl.textContent = 'Saving...';
+        statusEl.style.color = 'var(--text-secondary)';
+    }
+
+    try {
+        const prefs = {
+            new_guides: document.getElementById('pref-new-guides')?.checked ?? true,
+            promotions: document.getElementById('pref-promotions')?.checked ?? true,
+            marketing: document.getElementById('pref-marketing')?.checked ?? true
+        };
+
+        await apiCall('/user/notification-preferences', {
+            method: 'PUT',
+            body: JSON.stringify(prefs)
+        });
+
+        // Show success
+        if (statusEl) {
+            statusEl.textContent = '✓ Preferences saved';
+            statusEl.style.color = '#10b981';
+            setTimeout(() => {
+                statusEl.style.display = 'none';
+            }, 2000);
+        }
+
+    } catch (error) {
+        console.error('Error saving notification preferences:', error);
+
+        // Show error
+        if (statusEl) {
+            statusEl.textContent = '✗ Failed to save preferences';
+            statusEl.style.color = '#ef4444';
+        }
     }
 }

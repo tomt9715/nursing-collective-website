@@ -2997,23 +2997,154 @@
     .user-count {
         font-size: 0.8rem;
     }
+
+    /* Hide desktop table, show mobile cards */
+    .desktop-only {
+        display: none !important;
+    }
+
+    .mobile-only {
+        display: block !important;
+    }
 }
 
 @media (max-width: 480px) {
     .admin-quick-actions {
         grid-template-columns: 1fr;
     }
+}
 
-    /* Even smaller screens - further reduce table size */
-    .users-table-container .admin-table {
-        min-width: 550px;
-        font-size: 0.8rem;
-    }
+/* Desktop/Mobile visibility defaults */
+.desktop-only {
+    display: block;
+}
 
-    .users-table-container .admin-table th,
-    .users-table-container .admin-table td {
-        padding: 8px 10px;
-    }
+.mobile-only {
+    display: none;
+}
+
+/* ===========================
+   MOBILE USER CARDS
+   =========================== */
+.users-mobile-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 16px;
+}
+
+.user-card {
+    display: block;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.user-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+    transform: translateY(-1px);
+}
+
+.user-card:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.user-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.user-card-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #111827;
+}
+
+.user-card-arrow {
+    color: #9ca3af;
+    font-size: 0.85rem;
+    transition: transform 0.2s ease;
+}
+
+.user-card:hover .user-card-arrow {
+    transform: translateX(3px);
+    color: #667eea;
+}
+
+.user-card-email {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 12px;
+    word-break: break-all;
+}
+
+.user-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 12px;
+    border-top: 1px solid #f3f4f6;
+}
+
+.user-card-guides {
+    font-size: 0.8rem;
+    color: #6b7280;
+    font-weight: 500;
+}
+
+.user-card-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.user-card-badges .badge-status {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+}
+
+/* Dark mode for mobile cards */
+[data-theme="dark"] .user-card {
+    background: #1e1e2e;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .user-card:hover {
+    border-color: #667eea;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.25);
+}
+
+[data-theme="dark"] .user-card-name {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .user-card-email {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .user-card-footer {
+    border-top-color: #374151;
+}
+
+[data-theme="dark"] .user-card-guides {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .user-card-arrow {
+    color: #6b7280;
+}
+
+[data-theme="dark"] .user-card:hover .user-card-arrow {
+    color: #667eea;
 }
 
 /* Dark mode adjustments */

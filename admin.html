@@ -517,7 +517,8 @@
                             <h3><i class="fas fa-users"></i> Users</h3>
                             <span class="user-count" id="user-count">0 users</span>
                         </div>
-                        <div class="users-table-container">
+                        <!-- Desktop Table View -->
+                        <div class="users-table-container desktop-only">
                             <table class="admin-table" id="users-table">
                                 <thead>
                                     <tr>
@@ -533,6 +534,10 @@
                                     <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading users...</td></tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <!-- Mobile Cards View -->
+                        <div class="users-mobile-cards mobile-only" id="users-mobile-cards">
+                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading users...</div>
                         </div>
                         <!-- Pagination -->
                         <div class="pagination-controls" id="users-pagination"></div>

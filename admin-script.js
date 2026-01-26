@@ -793,9 +793,11 @@ async function loadUsers(page = 1) {
         }));
 
         // Render table (Name first, then Email)
+        const displayName = user => escapeHtml(`${user.first_name || ''} ${user.last_name || ''}`.trim() || '-');
+
         tbody.innerHTML = usersWithGuides.map(user => `
-            <tr>
-                <td><strong>${escapeHtml(`${user.first_name || ''} ${user.last_name || ''}`.trim() || '-')}</strong></td>
+            <tr data-user-email="${escapeHtml(user.email)}">
+                <td><strong>${displayName(user)}</strong></td>
                 <td>${escapeHtml(user.email)}</td>
                 <td>${user.guides_count}</td>
                 <td>${getUserStatusBadges(user)}</td>
@@ -810,7 +812,25 @@ async function loadUsers(page = 1) {
             </tr>
         `).join('');
 
-        // Attach event listeners to View buttons
+        // Render mobile cards (hidden on desktop via CSS)
+        const mobileCardsContainer = document.getElementById('users-mobile-cards');
+        if (mobileCardsContainer) {
+            mobileCardsContainer.innerHTML = usersWithGuides.map(user => `
+                <a href="admin-user.html?email=${encodeURIComponent(user.email)}" class="user-card">
+                    <div class="user-card-header">
+                        <div class="user-card-name">${displayName(user)}</div>
+                        <i class="fas fa-chevron-right user-card-arrow"></i>
+                    </div>
+                    <div class="user-card-email">${escapeHtml(user.email)}</div>
+                    <div class="user-card-footer">
+                        <span class="user-card-guides">${user.guides_count} guide${user.guides_count !== 1 ? 's' : ''}</span>
+                        <div class="user-card-badges">${getUserStatusBadges(user)}</div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Attach event listeners to View buttons (desktop)
         tbody.querySelectorAll('[data-view-user]').forEach(btn => {
             btn.addEventListener('click', function() {
                 openUserDetail(this.dataset.viewUser);

@@ -85,11 +85,10 @@ async function loadUserProfile() {
         document.getElementById('profile-name').textContent = displayName;
         document.getElementById('profile-email').textContent = data.email;
 
-        // Avatar
+        // Avatar - use first initial or email initial
         const avatar = document.getElementById('profile-avatar');
-        if (data.first_name) {
-            avatar.innerHTML = '<span>' + data.first_name.charAt(0).toUpperCase() + '</span>';
-        }
+        const initial = data.first_name ? data.first_name.charAt(0).toUpperCase() : data.email.charAt(0).toUpperCase();
+        avatar.innerHTML = '<span>' + initial + '</span>';
 
         // Badges
         const badges = document.getElementById('profile-badges');
@@ -107,6 +106,16 @@ async function loadUserProfile() {
         }
         badges.innerHTML = badgesHtml;
 
+        // Determine auth provider
+        let authProvider = 'Email';
+        if (data.has_google) {
+            authProvider = 'Google';
+        } else if (data.has_discord) {
+            authProvider = 'Discord';
+        } else if (data.has_apple) {
+            authProvider = 'Apple';
+        }
+
         // Account info
         document.getElementById('account-info-grid').innerHTML =
             '<div class="info-item">' +
@@ -123,35 +132,41 @@ async function loadUserProfile() {
             '</div>' +
             '<div class="info-item">' +
                 '<span class="info-label">Auth Provider</span>' +
-                '<span class="info-value">' + escapeHtml(data.oauth_provider || 'Email') + '</span>' +
+                '<span class="info-value"><i class="' + getAuthProviderIcon(authProvider) + '"></i> ' + authProvider + '</span>' +
             '</div>' +
             '<div class="info-item">' +
                 '<span class="info-label">Account Created</span>' +
                 '<span class="info-value">' + formatDate(data.created_at) + '</span>' +
             '</div>' +
             '<div class="info-item">' +
-                '<span class="info-label">Last Updated</span>' +
-                '<span class="info-value">' + formatDate(data.updated_at) + '</span>' +
+                '<span class="info-label">Last Login</span>' +
+                '<span class="info-value">' + formatDate(data.last_login) + '</span>' +
             '</div>';
 
-        // Guides
+        // Guides - use correct field names from Purchase model
         const guides = userData.guides || [];
-        document.getElementById('guides-count').textContent = guides.length;
+        const activeGuides = guides.filter(function(g) { return g.is_active; });
+        document.getElementById('guides-count').textContent = activeGuides.length;
 
         if (guides.length === 0) {
-            document.getElementById('guides-list').innerHTML = '<p style="color: #6b7280;">No guides owned yet.</p>';
+            document.getElementById('guides-list').innerHTML = '<p style="color: #6b7280; padding: 12px 0;">No guides owned yet.</p>';
         } else {
             let guidesHtml = '';
             guides.forEach(function(g) {
-                const sourceIcon = g.source === 'stripe' ? '<i class="fas fa-credit-card"></i> Purchased' : '<i class="fas fa-gift"></i> Admin Grant';
-                const statusClass = g.is_active ? 'verified' : 'revoked';
+                // Use correct field names: product_name, product_id, purchased_at, source, is_active
+                const sourceIcon = g.source === 'stripe'
+                    ? '<i class="fas fa-credit-card" style="color: #6772e5;"></i> Purchased'
+                    : '<i class="fas fa-gift" style="color: #10b981;"></i> Admin Grant';
+                const statusClass = g.is_active ? 'active' : 'revoked';
                 const statusText = g.is_active ? 'Active' : 'Revoked';
+                const guideName = g.product_name || g.product_id || 'Unknown Guide';
+
                 guidesHtml +=
-                    '<div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 0; border-bottom: 1px solid #f3f4f6;">' +
-                        '<div>' +
-                            '<div style="font-weight: 500;">' + escapeHtml(g.guide_id) + '</div>' +
-                            '<div style="font-size: 0.85rem; color: #6b7280;">' +
-                                sourceIcon + ' - ' + formatDate(g.granted_at) +
+                    '<div class="guide-item">' +
+                        '<div class="guide-item-info">' +
+                            '<div class="guide-item-name">' + escapeHtml(guideName) + '</div>' +
+                            '<div class="guide-item-meta">' +
+                                sourceIcon + ' &bull; ' + formatDate(g.purchased_at) +
                             '</div>' +
                         '</div>' +
                         '<span class="badge-status ' + statusClass + '">' + statusText + '</span>' +
@@ -160,20 +175,21 @@ async function loadUserProfile() {
             document.getElementById('guides-list').innerHTML = guidesHtml;
         }
 
-        // Activity timeline (downloads)
+        // Activity timeline (downloads) - show product name
         const downloads = downloadsData.downloads || [];
         if (downloads.length === 0) {
-            document.getElementById('activity-timeline').innerHTML = '<p style="color: #6b7280;">No activity recorded yet.</p>';
+            document.getElementById('activity-timeline').innerHTML = '<p style="color: #6b7280; padding: 12px 0;">No activity recorded yet.</p>';
         } else {
             let activityHtml = '';
             downloads.slice(0, 10).forEach(function(d) {
+                const productName = d.product_name || d.product_id || 'Unknown';
                 activityHtml +=
                     '<div class="activity-item">' +
                         '<div class="activity-icon download">' +
                             '<i class="fas fa-download"></i>' +
                         '</div>' +
                         '<div class="activity-content">' +
-                            '<div class="activity-title">Downloaded ' + escapeHtml(d.product_id) + '</div>' +
+                            '<div class="activity-title">Downloaded ' + escapeHtml(productName) + '</div>' +
                             '<div class="activity-meta">' + formatDate(d.downloaded_at) + '</div>' +
                         '</div>' +
                     '</div>';
@@ -181,18 +197,18 @@ async function loadUserProfile() {
             document.getElementById('activity-timeline').innerHTML = activityHtml;
         }
 
-        // Admin notes
-        const notes = userData.admin_notes || [];
+        // Admin notes - use correct field name: note_text (not note)
+        const notes = userData.notes || [];
         if (notes.length === 0) {
-            document.getElementById('notes-list').innerHTML = '<p style="color: #6b7280;">No admin notes yet.</p>';
+            document.getElementById('notes-list').innerHTML = '<p style="color: #6b7280; padding: 12px 0;">No admin notes yet.</p>';
         } else {
             let notesHtml = '';
             notes.forEach(function(n) {
                 notesHtml +=
-                    '<div style="padding: 12px; background: #f9fafb; border-radius: 8px; margin-bottom: 12px;">' +
-                        '<p style="margin: 0 0 8px; color: var(--text-color, #1f2937);">' + escapeHtml(n.note) + '</p>' +
-                        '<div style="font-size: 0.8rem; color: #6b7280;">' +
-                            '<i class="fas fa-user"></i> ' + escapeHtml(n.admin_email) + ' - ' + formatDate(n.created_at) +
+                    '<div class="note-item">' +
+                        '<p class="note-text">' + escapeHtml(n.note_text) + '</p>' +
+                        '<div class="note-meta">' +
+                            '<i class="fas fa-user"></i> ' + escapeHtml(n.admin_email) + ' &bull; ' + formatDate(n.created_at) +
                         '</div>' +
                     '</div>';
             });
@@ -210,6 +226,19 @@ async function loadUserProfile() {
         document.getElementById('guides-list').innerHTML = '<p style="color: #dc2626;">Failed to load guides.</p>';
         document.getElementById('activity-timeline').innerHTML = '<p style="color: #dc2626;">Failed to load activity.</p>';
         document.getElementById('notes-list').innerHTML = '<p style="color: #dc2626;">Failed to load notes.</p>';
+    }
+}
+
+function getAuthProviderIcon(provider) {
+    switch (provider) {
+        case 'Google':
+            return 'fab fa-google';
+        case 'Discord':
+            return 'fab fa-discord';
+        case 'Apple':
+            return 'fab fa-apple';
+        default:
+            return 'fas fa-envelope';
     }
 }
 
@@ -241,9 +270,10 @@ function setupEventListeners() {
             }
 
             try {
+                // API expects note_text field
                 await apiCall('/admin/users/by-email/' + encodeURIComponent(userEmail) + '/notes', {
                     method: 'POST',
-                    body: JSON.stringify({ note: noteText })
+                    body: JSON.stringify({ note_text: noteText })
                 });
                 showToast('Note added successfully', 'success');
                 document.getElementById('add-note-form').style.display = 'none';
@@ -260,6 +290,18 @@ function setupEventListeners() {
         addGuideBtn.addEventListener('click', function() {
             // Redirect to admin with modal trigger
             window.location.href = 'admin.html?action=add-guide&email=' + encodeURIComponent(userEmail);
+        });
+    }
+
+    // Add Note button in header (same as toggle)
+    const addNoteBtnHeader = document.getElementById('add-note-btn');
+    if (addNoteBtnHeader) {
+        addNoteBtnHeader.addEventListener('click', function() {
+            const form = document.getElementById('add-note-form');
+            form.style.display = 'block';
+            document.getElementById('note-text').focus();
+            // Scroll to the notes section
+            document.querySelector('.profile-section:last-child').scrollIntoView({ behavior: 'smooth' });
         });
     }
 }
@@ -292,6 +334,7 @@ function showToast(message, type) {
     let iconName = 'info-circle';
     if (type === 'success') iconName = 'check-circle';
     else if (type === 'error') iconName = 'exclamation-circle';
+    else if (type === 'warning') iconName = 'exclamation-triangle';
 
     toast.innerHTML = '<i class="fas fa-' + iconName + '"></i><span>' + message + '</span>';
     container.appendChild(toast);

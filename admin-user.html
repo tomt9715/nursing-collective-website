@@ -232,6 +232,121 @@
             color: #6b7280;
         }
 
+        /* Guide Items */
+        .guide-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .guide-item:last-child {
+            border-bottom: none;
+        }
+
+        .guide-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .guide-item-name {
+            font-weight: 600;
+            color: var(--text-color, #1f2937);
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .guide-item-meta {
+            font-size: 0.8rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .guide-item-meta i {
+            font-size: 0.75rem;
+        }
+
+        /* Note Items */
+        .note-item {
+            padding: 14px;
+            background: #f9fafb;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+
+        .note-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .note-item .note-text {
+            margin: 0 0 10px;
+            color: var(--text-color, #1f2937);
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .note-item .note-meta {
+            font-size: 0.8rem;
+            color: #6b7280;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .note-item .note-meta i {
+            font-size: 0.75rem;
+        }
+
+        /* Badge statuses */
+        .badge-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .badge-status.active {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-status.revoked {
+            background: #fee2e2;
+            color: #991b1b;
+        }
+
+        /* Info value with icon */
+        .info-value i {
+            margin-right: 6px;
+            font-size: 0.9rem;
+        }
+
+        /* Dark mode */
+        [data-theme="dark"] .guide-item {
+            border-bottom-color: #374151;
+        }
+
+        [data-theme="dark"] .note-item {
+            background: #374151;
+        }
+
+        [data-theme="dark"] .badge-status.active {
+            background: rgba(16, 185, 129, 0.2);
+            color: #34d399;
+        }
+
+        [data-theme="dark"] .badge-status.revoked {
+            background: rgba(239, 68, 68, 0.2);
+            color: #f87171;
+        }
+
         /* Dark mode */
         [data-theme="dark"] .profile-header,
         [data-theme="dark"] .profile-section {
@@ -444,6 +559,6 @@
     <script src="api-service.js?v=1769142741"></script>
 
     <!-- User Profile Script (External to comply with CSP) -->
-    <script src="admin-user-script.js?v=1"></script>
+    <script src="admin-user-script.js?v=2"></script>
 </body>
 </html>

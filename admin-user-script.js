@@ -19,6 +19,38 @@ let currentGuidesSort = 'date-desc';
 document.addEventListener('DOMContentLoaded', async function() {
     const pageLoader = document.getElementById('page-loader');
 
+    // Mobile menu toggle (hamburger menu)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            const isOpen = navLinks.classList.contains('mobile-open');
+            navLinks.classList.toggle('mobile-open');
+            mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+
+            // Toggle icon between bars and times
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon) {
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            }
+        });
+
+        // Close mobile menu when clicking a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    }
+
     try {
         // Check if api-service.js loaded properly
         if (typeof isAuthenticated !== 'function') {

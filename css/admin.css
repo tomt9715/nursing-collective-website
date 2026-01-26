@@ -100,42 +100,45 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
     .admin-subnav {
-        top: 60px;
+        top: 0;
+        padding-top: 70px; /* Reduced for smaller mobile navbar */
     }
 
     .admin-subnav-content {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 0;
     }
 
     .admin-subnav-brand {
-        padding: 10px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .admin-subnav-tabs {
-        padding: 8px 0;
-        justify-content: flex-start;
-    }
-
-    .admin-subnav-tab {
-        padding: 10px 16px;
+        padding: 0;
+        border-bottom: none;
         font-size: 0.85rem;
     }
-}
 
-@media (max-width: 480px) {
-    .admin-subnav-tab span {
+    .admin-subnav-brand span {
         display: none;
     }
 
-    .admin-subnav-tab i {
-        font-size: 1.1rem;
+    .admin-subnav-tabs {
+        padding: 0;
+        flex: 1;
+        justify-content: flex-end;
     }
 
     .admin-subnav-tab {
-        padding: 12px 16px;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        gap: 5px;
+    }
+
+    .admin-subnav-tab i {
+        font-size: 0.85rem;
+    }
+
+    .admin-subnav-tab span {
+        display: none;
     }
 }
 

@@ -308,7 +308,7 @@ function setupEventListeners() {
     document.getElementById('audit-filter-btn').addEventListener('click', loadAuditLog);
     document.getElementById('audit-export-btn').addEventListener('click', exportAuditLog);
 
-    // Audit sort dropdown (mobile)
+    // Audit sort dropdown
     const auditSortSelect = document.getElementById('audit-sort');
     if (auditSortSelect) {
         auditSortSelect.addEventListener('change', function() {

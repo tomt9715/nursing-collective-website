@@ -460,7 +460,7 @@
 .admin-hero {
     position: relative;
     padding: 48px 0;
-    padding-top: 170px; /* Space for fixed navbar (85px) + fixed subnav (~55px) + breathing room */
+    padding-top: 190px; /* Space for fixed navbar (85px) + fixed subnav (~55px) + extra breathing room */
     overflow: hidden;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }

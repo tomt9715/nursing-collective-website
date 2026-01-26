@@ -1942,11 +1942,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Export data button
-    const exportDataBtn = document.getElementById('export-data-btn');
-    if (exportDataBtn) {
-        exportDataBtn.addEventListener('click', exportAllData);
-    }
+    // Note: Export button listener is set up in setupEventListeners() to show dropdown options
 
     // User detail modal close button
     const closeUserDetailModalBtn = document.getElementById('close-user-detail-modal-btn');

@@ -161,6 +161,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Setup event listeners
     setupEventListeners();
 
+    // Initialize guide search
+    initGuideSearch();
+
     // Load initial data
     await loadDashboardOverview();
     await loadProductsCatalog();
@@ -1615,8 +1618,130 @@ function switchGuideType(type) {
         btn.classList.toggle('active', btn.dataset.type === type);
     });
 
+    // Update search placeholder
+    const searchInput = document.getElementById('guide-search');
+    if (searchInput) {
+        searchInput.placeholder = type === 'study_guide' ? 'Search study guides...' : 'Search class packages...';
+        searchInput.value = '';
+        document.getElementById('guide-search-clear').style.display = 'none';
+        document.getElementById('guide-search-results').classList.remove('active');
+    }
+
     // Reload guides with new filter
     loadGuides();
+}
+
+// ==================== Guide Search ====================
+
+function initGuideSearch() {
+    const searchInput = document.getElementById('guide-search');
+    const clearBtn = document.getElementById('guide-search-clear');
+    const resultsContainer = document.getElementById('guide-search-results');
+
+    if (!searchInput) return;
+
+    let highlightedIndex = -1;
+
+    // Input handler
+    searchInput.addEventListener('input', function() {
+        const query = this.value.trim().toLowerCase();
+        clearBtn.style.display = query ? 'flex' : 'none';
+        highlightedIndex = -1;
+
+        if (query.length < 1) {
+            resultsContainer.classList.remove('active');
+            return;
+        }
+
+        // Filter guides based on current type and search query
+        const filteredGuides = guidesCache.filter(guide => {
+            // Check type filter
+            if (currentGuideType === 'study_guide' && guide.type !== 'individual') return false;
+            if (currentGuideType === 'class_package' && guide.type !== 'lite-package' && guide.type !== 'full-package') return false;
+
+            // Check search query
+            return guide.name.toLowerCase().includes(query);
+        });
+
+        if (filteredGuides.length === 0) {
+            resultsContainer.innerHTML = '<div class="guide-search-no-results">No matches found</div>';
+            resultsContainer.classList.add('active');
+            return;
+        }
+
+        // Render results (limit to 10)
+        resultsContainer.innerHTML = filteredGuides.slice(0, 10).map((guide, index) => `
+            <div class="guide-search-result" data-index="${index}" data-guide-id="${escapeHtml(guide.guide_id)}" data-guide-name="${escapeHtml(guide.name)}">
+                <div class="guide-search-result-name">${escapeHtml(guide.name)}</div>
+                <div class="guide-search-result-meta"><span class="price">$${guide.price.toFixed(2)}</span> · ${guide.total_active_owners} owners</div>
+            </div>
+        `).join('');
+
+        resultsContainer.classList.add('active');
+
+        // Add click handlers to results
+        resultsContainer.querySelectorAll('.guide-search-result').forEach(result => {
+            result.addEventListener('click', function() {
+                openGuideOwnersModal(this.dataset.guideId, this.dataset.guideName);
+                searchInput.value = '';
+                clearBtn.style.display = 'none';
+                resultsContainer.classList.remove('active');
+            });
+        });
+    });
+
+    // Keyboard navigation
+    searchInput.addEventListener('keydown', function(e) {
+        const results = resultsContainer.querySelectorAll('.guide-search-result');
+        if (results.length === 0) return;
+
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedIndex = Math.min(highlightedIndex + 1, results.length - 1);
+            updateHighlight(results);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedIndex = Math.max(highlightedIndex - 1, 0);
+            updateHighlight(results);
+        } else if (e.key === 'Enter' && highlightedIndex >= 0) {
+            e.preventDefault();
+            results[highlightedIndex].click();
+        } else if (e.key === 'Escape') {
+            resultsContainer.classList.remove('active');
+            searchInput.blur();
+        }
+    });
+
+    function updateHighlight(results) {
+        results.forEach((r, i) => {
+            r.classList.toggle('highlighted', i === highlightedIndex);
+            if (i === highlightedIndex) {
+                r.scrollIntoView({ block: 'nearest' });
+            }
+        });
+    }
+
+    // Clear button
+    clearBtn.addEventListener('click', function() {
+        searchInput.value = '';
+        clearBtn.style.display = 'none';
+        resultsContainer.classList.remove('active');
+        searchInput.focus();
+    });
+
+    // Close results when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!e.target.closest('.guide-search-container')) {
+            resultsContainer.classList.remove('active');
+        }
+    });
+
+    // Show results on focus if there's a query
+    searchInput.addEventListener('focus', function() {
+        if (this.value.trim().length >= 1) {
+            this.dispatchEvent(new Event('input'));
+        }
+    });
 }
 
 // ==================== Guide Owners Modal ====================

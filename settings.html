@@ -137,6 +137,18 @@
         .toggle-switch input:focus + .toggle-slider {
             box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.2);
         }
+
+        /* Danger Button */
+        .btn-danger:hover {
+            background: #b91c1c !important;
+            transform: translateY(-1px);
+        }
+
+        .btn-danger:disabled {
+            background: #fca5a5 !important;
+            cursor: not-allowed;
+            transform: none;
+        }
     </style>
     <!-- Sentry Error Tracking (load first) -->
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
@@ -335,6 +347,86 @@
                         <button class="btn-small secondary" id="google-connect-btn">
                             <i class="fab fa-google"></i> Connect
                         </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Account Card -->
+            <div class="dashboard-card" style="margin-top: 24px; border: 2px solid #fecaca;">
+                <h3 style="color: #dc2626;"><i class="fas fa-exclamation-triangle"></i> Danger Zone</h3>
+                <div style="margin-top: 24px;">
+                    <div style="padding: 20px; background: #fef2f2; border-radius: 12px; border: 1px solid #fecaca;">
+                        <div style="font-weight: 600; color: #dc2626; margin-bottom: 8px;">Delete Your Account</div>
+                        <p style="font-size: 0.9rem; color: #7f1d1d; margin-bottom: 16px; line-height: 1.6;">
+                            This action is <strong>permanent and cannot be undone</strong>. Deleting your account will:
+                        </p>
+                        <ul style="font-size: 0.9rem; color: #7f1d1d; margin-bottom: 16px; padding-left: 20px; line-height: 1.8;">
+                            <li>Remove all your profile information</li>
+                            <li>Revoke access to <strong>all purchased study guides</strong></li>
+                            <li>Delete your purchase history and download records</li>
+                            <li>Remove any connected accounts (Discord, Google)</li>
+                        </ul>
+                        <div style="padding: 12px; background: #fee2e2; border-radius: 8px; margin-bottom: 16px;">
+                            <p style="font-size: 0.85rem; color: #991b1b; margin: 0;">
+                                <i class="fas fa-info-circle"></i> <strong>Important:</strong> Make sure to download any purchased guides before deleting your account. You will lose access to all guides immediately upon deletion.
+                            </p>
+                        </div>
+                        <button class="btn-danger" id="delete-account-btn" style="background: #dc2626; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease;">
+                            <i class="fas fa-trash-alt"></i> Delete My Account
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Delete Account Confirmation Modal -->
+            <div id="delete-account-modal" style="display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 9999; align-items: center; justify-content: center;">
+                <div style="background: white; border-radius: 16px; max-width: 480px; width: 90%; padding: 32px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);">
+                    <div style="text-align: center; margin-bottom: 24px;">
+                        <div style="width: 64px; height: 64px; background: #fef2f2; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px;">
+                            <i class="fas fa-exclamation-triangle" style="font-size: 28px; color: #dc2626;"></i>
+                        </div>
+                        <h3 style="color: #1f2937; margin-bottom: 8px;">Are you sure?</h3>
+                        <p style="color: #6b7280; font-size: 0.95rem;">This will permanently delete your account and all associated data.</p>
+                    </div>
+
+                    <!-- Step 1: First confirmation -->
+                    <div id="delete-step-1">
+                        <p style="color: #7f1d1d; font-size: 0.9rem; background: #fef2f2; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
+                            <strong>You will lose access to all purchased guides.</strong> This cannot be reversed.
+                        </p>
+                        <div style="display: flex; gap: 12px;">
+                            <button id="cancel-delete-btn" style="flex: 1; padding: 12px; background: #f3f4f6; color: #374151; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                                Cancel
+                            </button>
+                            <button id="continue-delete-btn" style="flex: 1; padding: 12px; background: #dc2626; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                                Yes, Continue
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Final confirmation with password -->
+                    <div id="delete-step-2" style="display: none;">
+                        <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 16px;">
+                            To confirm deletion, please enter your password:
+                        </p>
+                        <div class="form-group" style="margin-bottom: 16px;">
+                            <input type="password" id="delete-confirm-password" class="form-control" placeholder="Enter your password" style="width: 100%;">
+                        </div>
+                        <p style="color: #6b7280; font-size: 0.85rem; margin-bottom: 20px;">
+                            Type <strong style="color: #dc2626;">DELETE</strong> to confirm:
+                        </p>
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <input type="text" id="delete-confirm-text" class="form-control" placeholder="Type DELETE" style="width: 100%;">
+                        </div>
+                        <div id="delete-error" style="display: none; color: #dc2626; font-size: 0.85rem; margin-bottom: 12px; padding: 8px; background: #fef2f2; border-radius: 6px;"></div>
+                        <div style="display: flex; gap: 12px;">
+                            <button id="back-delete-btn" style="flex: 1; padding: 12px; background: #f3f4f6; color: #374151; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                                Go Back
+                            </button>
+                            <button id="confirm-delete-btn" style="flex: 1; padding: 12px; background: #dc2626; color: white; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;" disabled>
+                                Delete Forever
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

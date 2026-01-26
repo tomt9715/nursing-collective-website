@@ -16,6 +16,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Setup notification preference toggles
     setupNotificationToggles();
 
+    // Setup delete account handlers
+    setupDeleteAccount();
+
     // User menu dropdown toggle
     const userMenuBtn = document.getElementById('user-menu-btn');
     const userDropdown = document.getElementById('user-dropdown');
@@ -405,5 +408,121 @@ async function handleNotificationToggle() {
             statusEl.textContent = '✗ Failed to save preferences';
             statusEl.style.color = '#ef4444';
         }
+    }
+}
+
+// Setup delete account handlers
+function setupDeleteAccount() {
+    const deleteBtn = document.getElementById('delete-account-btn');
+    const modal = document.getElementById('delete-account-modal');
+    const step1 = document.getElementById('delete-step-1');
+    const step2 = document.getElementById('delete-step-2');
+    const cancelBtn = document.getElementById('cancel-delete-btn');
+    const continueBtn = document.getElementById('continue-delete-btn');
+    const backBtn = document.getElementById('back-delete-btn');
+    const confirmBtn = document.getElementById('confirm-delete-btn');
+    const passwordInput = document.getElementById('delete-confirm-password');
+    const confirmTextInput = document.getElementById('delete-confirm-text');
+    const errorDiv = document.getElementById('delete-error');
+
+    if (!deleteBtn || !modal) return;
+
+    // Open modal
+    deleteBtn.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        step1.style.display = 'block';
+        step2.style.display = 'none';
+        resetDeleteForm();
+    });
+
+    // Cancel - close modal
+    cancelBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        resetDeleteForm();
+    });
+
+    // Close modal on background click
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.style.display = 'none';
+            resetDeleteForm();
+        }
+    });
+
+    // Continue to step 2
+    continueBtn.addEventListener('click', () => {
+        step1.style.display = 'none';
+        step2.style.display = 'block';
+    });
+
+    // Back to step 1
+    backBtn.addEventListener('click', () => {
+        step1.style.display = 'block';
+        step2.style.display = 'none';
+        resetDeleteForm();
+    });
+
+    // Enable/disable confirm button based on input
+    function checkConfirmEnabled() {
+        const passwordFilled = passwordInput.value.length > 0;
+        const textCorrect = confirmTextInput.value.toUpperCase() === 'DELETE';
+        confirmBtn.disabled = !(passwordFilled && textCorrect);
+    }
+
+    passwordInput.addEventListener('input', checkConfirmEnabled);
+    confirmTextInput.addEventListener('input', checkConfirmEnabled);
+
+    // Final delete confirmation
+    confirmBtn.addEventListener('click', handleDeleteAccount);
+
+    function resetDeleteForm() {
+        if (passwordInput) passwordInput.value = '';
+        if (confirmTextInput) confirmTextInput.value = '';
+        if (errorDiv) {
+            errorDiv.style.display = 'none';
+            errorDiv.textContent = '';
+        }
+        if (confirmBtn) confirmBtn.disabled = true;
+    }
+}
+
+// Handle account deletion
+async function handleDeleteAccount() {
+    const confirmBtn = document.getElementById('confirm-delete-btn');
+    const passwordInput = document.getElementById('delete-confirm-password');
+    const errorDiv = document.getElementById('delete-error');
+    const modal = document.getElementById('delete-account-modal');
+
+    const originalText = confirmBtn.innerHTML;
+    confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Deleting...';
+    confirmBtn.disabled = true;
+
+    try {
+        await apiCall('/user/account', {
+            method: 'DELETE',
+            body: JSON.stringify({
+                password: passwordInput.value
+            })
+        });
+
+        // Clear local storage
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
+        localStorage.removeItem('tokenTimestamp');
+
+        // Show success and redirect
+        modal.style.display = 'none';
+        showAlert('Account Deleted', 'Your account has been permanently deleted. You will be redirected to the homepage.', 'info');
+
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 2000);
+
+    } catch (error) {
+        console.error('Error deleting account:', error);
+        errorDiv.textContent = error.message || 'Failed to delete account. Please check your password and try again.';
+        errorDiv.style.display = 'block';
+        confirmBtn.innerHTML = originalText;
+        confirmBtn.disabled = false;
     }
 }

@@ -547,42 +547,22 @@
                     </div>
                 </div>
 
-                <!-- Owned Guides Section -->
+                <!-- Owned Guides Section (Simplified) -->
                 <div class="user-detail-section">
                     <div class="section-header-inline">
                         <h3><i class="fas fa-book"></i> Guides (<span id="modal-guides-count">0</span>)</h3>
-                        <div class="header-actions">
-                            <button class="btn btn-secondary btn-sm" id="select-all-guides-btn">
-                                <i class="fas fa-check-double"></i> Select All
-                            </button>
-                            <button class="btn btn-danger btn-sm" id="revoke-all-guides-btn">
-                                <i class="fas fa-ban"></i> Revoke All
-                            </button>
-                            <button class="btn btn-danger btn-sm" id="bulk-revoke-btn" style="display: none;">
-                                <i class="fas fa-times"></i> Revoke (<span id="selected-guides-count">0</span>)
-                            </button>
-                            <button class="btn btn-primary btn-sm" id="open-add-guide-modal-btn">
-                                <i class="fas fa-plus"></i> Add Guide
-                            </button>
-                        </div>
+                        <button class="btn btn-primary btn-sm" id="open-add-guide-modal-btn">
+                            <i class="fas fa-plus"></i> Add Guide
+                        </button>
                     </div>
                     <div class="user-guides-table-container">
                         <table class="admin-table compact" id="user-guides-table">
                             <thead>
                                 <tr>
-                                    <th class="checkbox-col">
-                                        <label class="table-checkbox">
-                                            <input type="checkbox" id="select-all-guides">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                    </th>
                                     <th>Guide Name</th>
                                     <th>Source</th>
-                                    <th>Date</th>
-                                    <th>Downloads</th>
                                     <th>Status</th>
-                                    <th>Notes</th>
-                                    <th>Actions</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody id="user-guides-table-body">
@@ -590,28 +570,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
-
-                <!-- Admin Notes Section -->
-                <div class="user-detail-section">
-                    <div class="section-header-inline">
-                        <h3><i class="fas fa-sticky-note"></i> Admin Notes</h3>
-                        <button class="btn btn-secondary btn-sm" id="toggle-add-note-btn">
-                            <i class="fas fa-plus"></i> Add Note
-                        </button>
-                    </div>
-                    <div class="add-note-form" id="add-note-form" style="display: none;">
-                        <textarea id="new-note-text" placeholder="Enter note..." rows="3"></textarea>
-                        <div class="form-actions">
-                            <button class="btn btn-primary btn-sm" id="submit-note-btn">
-                                <i class="fas fa-save"></i> Save Note
-                            </button>
-                            <button class="btn btn-secondary btn-sm" id="cancel-note-btn">Cancel</button>
-                        </div>
-                    </div>
-                    <div class="notes-list" id="user-notes-list">
-                        <!-- Populated by JS -->
-                    </div>
+                    <p class="modal-hint"><i class="fas fa-info-circle"></i> For bulk actions, notes, and download history, use <strong>Full Profile</strong></p>
                 </div>
             </div>
         </div>

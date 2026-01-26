@@ -672,8 +672,7 @@ async function openUserDetail(email) {
 
     document.getElementById('modal-user-email').textContent = email;
     document.getElementById('user-info-grid').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
-    document.getElementById('user-guides-table-body').innerHTML = '<tr><td colspan="8" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
-    document.getElementById('user-notes-list').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+    document.getElementById('user-guides-table-body').innerHTML = '<tr><td colspan="4" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
 
     try {
         // Fetch user details and download history in parallel
@@ -717,36 +716,14 @@ async function openUserDetail(email) {
             </div>
         `;
 
-        // Guides - render as table
-        const activeGuides = data.guides.filter(g => g.is_active);
+        // Guides - render as simplified table (4 columns: Name, Source, Status, Action)
         document.getElementById('modal-guides-count').textContent = data.guides.length;
 
         const tbody = document.getElementById('user-guides-table-body');
-        const bulkRevokeBtn = document.getElementById('bulk-revoke-btn');
-        const selectAllCheckbox = document.getElementById('select-all-guides');
-
-        // Reset bulk selection state
-        selectedGuides.clear();
-        bulkRevokeBtn.style.display = 'none';
-        if (selectAllCheckbox) selectAllCheckbox.checked = false;
-
-        // Show/hide Select All and Revoke All buttons based on active guides
-        const selectAllBtn = document.getElementById('select-all-guides-btn');
-        const revokeAllBtn = document.getElementById('revoke-all-guides-btn');
-        if (selectAllBtn) selectAllBtn.style.display = activeGuides.length > 0 ? 'inline-flex' : 'none';
-        if (revokeAllBtn) revokeAllBtn.style.display = activeGuides.length > 0 ? 'inline-flex' : 'none';
 
         if (data.guides.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="8" class="empty-cell">No guides</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="4" class="empty-cell">No guides owned</td></tr>';
         } else {
-            // Create a map of download counts per product
-            const downloadCountMap = {};
-            if (downloadsData && downloadsData.product_summary) {
-                downloadsData.product_summary.forEach(item => {
-                    downloadCountMap[item.product_id] = item;
-                });
-            }
-
             // Sort guides by purchased_at date (newest first)
             const sortedGuides = [...data.guides].sort((a, b) => {
                 const dateA = new Date(a.purchased_at || 0);
@@ -754,51 +731,18 @@ async function openUserDetail(email) {
                 return dateB - dateA;
             });
 
-            tbody.innerHTML = sortedGuides.map(guide => {
-                const downloadInfo = downloadCountMap[guide.product_id] || { download_count: 0, sources: [] };
-                const downloadCount = downloadInfo.download_count || 0;
-
-                return `
+            tbody.innerHTML = sortedGuides.map(guide => `
                 <tr class="${guide.is_active ? '' : 'revoked-row'}">
-                    <td class="checkbox-col">
-                        ${guide.is_active ? `
-                            <label class="table-checkbox">
-                                <input type="checkbox" class="guide-select-checkbox" data-guide-id="${escapeHtml(guide.product_id)}">
-                                <span class="checkmark"></span>
-                            </label>
-                        ` : ''}
-                    </td>
                     <td><strong>${escapeHtml(guide.product_name)}</strong></td>
                     <td>
                         ${guide.source === 'stripe'
                             ? '<span class="source-badge stripe"><i class="fas fa-credit-card"></i> Stripe</span>'
-                            : `<span class="source-badge admin"><i class="fas fa-gift"></i> Admin</span>`}
-                    </td>
-                    <td>${formatDate(guide.purchased_at)}</td>
-                    <td class="downloads-cell">
-                        <button class="download-count-btn ${downloadCount > 0 ? 'has-downloads' : 'no-downloads'}"
-                                data-guide-id="${escapeHtml(guide.product_id)}"
-                                data-guide-name="${escapeHtml(guide.product_name)}"
-                                data-user-email="${escapeHtml(email)}"
-                                title="${downloadCount > 0 ? 'Click to view download history' : 'No downloads yet'}">
-                            <i class="fas fa-download"></i>
-                            <span class="count">${downloadCount}</span>
-                        </button>
+                            : '<span class="source-badge admin"><i class="fas fa-gift"></i> Admin</span>'}
                     </td>
                     <td>
                         ${guide.is_active
                             ? '<span class="badge-status active"><i class="fas fa-check"></i> Active</span>'
                             : '<span class="badge-status revoked"><i class="fas fa-times"></i> Revoked</span>'}
-                    </td>
-                    <td class="guide-notes-cell">
-                        <div class="guide-note-container">
-                            ${guide.admin_note ? `
-                                <span class="guide-note-text" title="${escapeHtml(guide.admin_note)}">${escapeHtml(guide.admin_note.length > 20 ? guide.admin_note.substring(0, 20) + '...' : guide.admin_note)}</span>
-                            ` : '<span class="guide-note-empty">-</span>'}
-                            <button class="note-edit-btn" data-guide-id="${escapeHtml(guide.product_id)}" data-current-note="${escapeHtml(guide.admin_note || '')}" title="Edit note">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </div>
                     </td>
                     <td>
                         ${guide.is_active ? `
@@ -812,14 +756,7 @@ async function openUserDetail(email) {
                         `}
                     </td>
                 </tr>
-            `}).join('');
-
-            // Attach event listeners for checkboxes
-            tbody.querySelectorAll('.guide-select-checkbox').forEach(cb => {
-                cb.addEventListener('change', function() {
-                    handleGuideSelection(this.dataset.guideId, this.checked);
-                });
-            });
+            `).join('');
 
             // Attach event listeners for revoke buttons
             tbody.querySelectorAll('[data-revoke-guide]').forEach(btn => {
@@ -834,35 +771,6 @@ async function openUserDetail(email) {
                     restoreGuide(this.dataset.userEmail, this.dataset.restoreGuide);
                 });
             });
-
-            // Attach event listeners for note edit buttons
-            tbody.querySelectorAll('.note-edit-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    openGuideNoteModal(this.dataset.guideId, this.dataset.currentNote);
-                });
-            });
-
-            // Attach event listeners for download count buttons
-            tbody.querySelectorAll('.download-count-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    openDownloadHistoryModal(this.dataset.userEmail, this.dataset.guideId, this.dataset.guideName);
-                });
-            });
-        }
-
-        // Notes
-        if (data.notes.length === 0) {
-            document.getElementById('user-notes-list').innerHTML = '<div class="empty-state"><p>No admin notes</p></div>';
-        } else {
-            document.getElementById('user-notes-list').innerHTML = data.notes.map(note => `
-                <div class="note-item">
-                    <div class="note-header">
-                        <span>${escapeHtml(note.admin_email)}</span>
-                        <span>${formatDate(note.created_at)}</span>
-                    </div>
-                    <div class="note-text">${escapeHtml(note.note_text)}</div>
-                </div>
-            `).join('');
         }
 
     } catch (error) {

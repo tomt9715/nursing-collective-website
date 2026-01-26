@@ -10,7 +10,8 @@
     background: #4a5568; /* Darker gray to contrast with hero */
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding-top: 120px; /* Space for fixed main navbar */
+    padding-top: 130px; /* Space for fixed main navbar */
+    margin-top: 10px; /* Extra breathing room below main navbar */
 }
 
 .admin-subnav-content {
@@ -102,7 +103,8 @@
 @media (max-width: 768px) {
     .admin-subnav {
         top: 0;
-        padding-top: 70px; /* Reduced for smaller mobile navbar */
+        padding-top: 80px; /* Reduced for smaller mobile navbar */
+        margin-top: 8px; /* Extra breathing room below main navbar */
     }
 
     .admin-subnav-content {

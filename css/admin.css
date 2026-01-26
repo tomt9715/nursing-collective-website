@@ -124,9 +124,10 @@
     }
 
     .admin-subnav-tabs {
-        padding: 0;
+        padding: 0 4px;
         flex: 1;
         justify-content: flex-end;
+        gap: 2px;
     }
 
     .admin-subnav-tab {

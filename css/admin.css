@@ -266,15 +266,16 @@
 
 .search-autocomplete-badges .badge-status {
     font-size: 0.65rem;
-    padding: 2px 8px;
+    padding: 3px 10px;
     display: inline-flex;
     align-items: center;
-    gap: 3px;
+    gap: 4px;
 }
 
 .search-autocomplete-badges .badge-status i {
-    font-size: 0.55rem;
+    font-size: 0.6rem;
     flex-shrink: 0;
+    width: auto;
 }
 
 .search-autocomplete-empty {

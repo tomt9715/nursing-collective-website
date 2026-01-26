@@ -284,7 +284,7 @@ async function loadAdminDashboard() {
         if (dashboardGrid) {
             const adminCard = document.createElement('div');
             adminCard.className = 'dashboard-card';
-            adminCard.style.cssText = 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; grid-column: 1 / -1;';
+            adminCard.style.cssText = 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; grid-column: 1 / -1; margin-bottom: 24px;';
 
             adminCard.innerHTML = `
                 <h3 style="color: white;"><i class="fas fa-crown"></i> Admin Overview</h3>

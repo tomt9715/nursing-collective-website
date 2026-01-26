@@ -712,7 +712,8 @@
 .status-item {
     display: flex;
     flex-direction: column;
-    background: var(--background-light);
+    background: var(--background-light, #f9fafb);
+    border: 1px solid var(--border-color, #e5e7eb);
     border-radius: 12px;
     overflow: hidden;
     transition: all 0.3s ease;

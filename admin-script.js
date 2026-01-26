@@ -11,6 +11,8 @@ let usersPage = 1;
 let auditPage = 1;
 let selectedGuides = new Set();
 let userDownloadsCache = {}; // Cache download data per user
+let currentGuideType = 'study_guide'; // 'study_guide' or 'class_package'
+let guidesCache = []; // Cache guides data
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', async function() {
@@ -1072,19 +1074,34 @@ async function submitNote() {
 
 // ==================== Guides Tab ====================
 
-async function loadGuides() {
+async function loadGuides(forceRefresh = false) {
     const tbody = document.getElementById('guides-table-body');
     tbody.innerHTML = '<tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</td></tr>';
 
     try {
-        const data = await apiCall('/admin/guides');
+        // Fetch from API if cache is empty or force refresh
+        if (guidesCache.length === 0 || forceRefresh) {
+            const data = await apiCall('/admin/guides');
+            guidesCache = data.guides || [];
+        }
 
-        if (data.guides.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="7" class="loading-cell">No guides found</td></tr>';
+        // Filter guides by current type
+        const filteredGuides = guidesCache.filter(guide => {
+            if (currentGuideType === 'study_guide') {
+                return guide.type === 'study_guide' || !guide.type;
+            } else if (currentGuideType === 'class_package') {
+                return guide.type === 'class_package';
+            }
+            return true;
+        });
+
+        if (filteredGuides.length === 0) {
+            const typeLabel = currentGuideType === 'study_guide' ? 'study guides' : 'class packages';
+            tbody.innerHTML = `<tr><td colspan="7" class="loading-cell">No ${typeLabel} found</td></tr>`;
             return;
         }
 
-        tbody.innerHTML = data.guides.map(guide => `
+        tbody.innerHTML = filteredGuides.map(guide => `
             <tr>
                 <td><strong>${escapeHtml(guide.name)}</strong></td>
                 <td>${escapeHtml(guide.category || '-')}</td>
@@ -1113,6 +1130,19 @@ async function loadGuides() {
         tbody.innerHTML = '<tr><td colspan="7" class="loading-cell">Error loading guides</td></tr>';
         showToast('Failed to load guides', 'error');
     }
+}
+
+// Switch guide type (study_guide or class_package)
+function switchGuideType(type) {
+    currentGuideType = type;
+
+    // Update toggle button states
+    document.querySelectorAll('.guide-type-toggle .toggle-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.type === type);
+    });
+
+    // Reload guides with new filter
+    loadGuides();
 }
 
 // ==================== Guide Owners Modal ====================
@@ -1706,5 +1736,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const deletedFilterApplyBtn = document.getElementById('deleted-filter-apply-btn');
     if (deletedFilterApplyBtn) {
         deletedFilterApplyBtn.addEventListener('click', () => loadDeletedAccountsFull(1));
+    }
+
+    // Guide type toggle buttons
+    const toggleStudyGuidesBtn = document.getElementById('toggle-study-guides');
+    const toggleClassPackagesBtn = document.getElementById('toggle-class-packages');
+
+    if (toggleStudyGuidesBtn) {
+        toggleStudyGuidesBtn.addEventListener('click', () => switchGuideType('study_guide'));
+    }
+
+    if (toggleClassPackagesBtn) {
+        toggleClassPackagesBtn.addEventListener('click', () => switchGuideType('class_package'));
     }
 });

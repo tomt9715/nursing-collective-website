@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/bundle.min.css">
 
     <!-- Admin-specific styles (loaded after bundle to override) -->
-    <link rel="stylesheet" href="css/admin.css?v=3">
+    <link rel="stylesheet" href="css/admin.css?v=4">
 
     <!-- Bootstrap 5 CSS -->
 
@@ -421,6 +421,14 @@
                     <div class="admin-section">
                         <div class="section-header">
                             <h3><i class="fas fa-book"></i> Guide Statistics</h3>
+                            <div class="guide-type-toggle">
+                                <button class="toggle-btn active" id="toggle-study-guides" data-type="study_guide">
+                                    <i class="fas fa-book-open"></i> Study Guides
+                                </button>
+                                <button class="toggle-btn" id="toggle-class-packages" data-type="class_package">
+                                    <i class="fas fa-box"></i> Class Packages
+                                </button>
+                            </div>
                         </div>
                         <div class="guides-table-container">
                             <table class="admin-table" id="guides-table">
@@ -847,6 +855,6 @@
     <script src="api-service.js?v=1769142741"></script>
 
     <!-- Admin Dashboard Script -->
-    <script src="admin-script.js?v=1.0.7"></script>
+    <script src="admin-script.js?v=1.0.8"></script>
 </body>
 </html>

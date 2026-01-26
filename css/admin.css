@@ -2528,3 +2528,62 @@
 [data-theme="dark"] #deleted-accounts-modal .modal-body {
     background: #1e1e2e;
 }
+
+/* ===========================
+   GUIDE TYPE TOGGLE
+   =========================== */
+.guide-type-toggle {
+    display: flex;
+    gap: 8px;
+    background: var(--background-light, #f3f4f6);
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.guide-type-toggle .toggle-btn {
+    padding: 8px 16px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.guide-type-toggle .toggle-btn:hover {
+    color: var(--text-primary);
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.guide-type-toggle .toggle-btn.active {
+    background: var(--primary-color, #667eea);
+    color: white;
+    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.3);
+}
+
+.guide-type-toggle .toggle-btn i {
+    font-size: 0.85rem;
+}
+
+[data-theme="dark"] .guide-type-toggle {
+    background: #2a2a3e;
+}
+
+[data-theme="dark"] .guide-type-toggle .toggle-btn {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .guide-type-toggle .toggle-btn:hover {
+    color: #f9fafb;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .guide-type-toggle .toggle-btn.active {
+    background: var(--primary-color, #667eea);
+    color: white;
+}

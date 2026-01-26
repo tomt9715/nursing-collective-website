@@ -633,8 +633,16 @@
                     </div>
 
                     <div class="admin-section">
-                        <div class="section-header">
+                        <div class="section-header audit-section-header">
                             <h3><i class="fas fa-history"></i> Admin Actions</h3>
+                            <div class="audit-sort-container mobile-only">
+                                <select id="audit-sort" class="audit-sort-select">
+                                    <option value="newest">Newest First</option>
+                                    <option value="oldest">Oldest First</option>
+                                    <option value="action-asc">Action A-Z</option>
+                                    <option value="action-desc">Action Z-A</option>
+                                </select>
+                            </div>
                         </div>
                         <!-- Desktop Table View -->
                         <div class="audit-table-container desktop-only">

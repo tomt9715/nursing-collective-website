@@ -13,6 +13,8 @@ let selectedGuides = new Set();
 let userDownloadsCache = {}; // Cache download data per user
 let currentGuideType = 'study_guide'; // 'study_guide' or 'class_package'
 let guidesCache = []; // Cache guides data
+let auditCache = []; // Cache audit data for sorting
+let currentAuditSort = 'newest'; // Current audit sort option
 
 // Animated count-up function for stats
 function animateValue(element, start, end, duration, prefix = '', suffix = '', decimals = 0) {
@@ -305,6 +307,17 @@ function setupEventListeners() {
     // Audit filters
     document.getElementById('audit-filter-btn').addEventListener('click', loadAuditLog);
     document.getElementById('audit-export-btn').addEventListener('click', exportAuditLog);
+
+    // Audit sort dropdown (mobile)
+    const auditSortSelect = document.getElementById('audit-sort');
+    if (auditSortSelect) {
+        auditSortSelect.addEventListener('change', function() {
+            currentAuditSort = this.value;
+            if (auditCache.length > 0) {
+                renderAuditLog();
+            }
+        });
+    }
 
     // User menu dropdown
     const userMenuBtn = document.getElementById('user-menu-btn');
@@ -2076,7 +2089,10 @@ async function loadAuditLog(page = 1) {
 
         const data = await apiCall(`/admin/audit-log?${params}`);
 
-        if (data.audit_log.length === 0) {
+        // Cache the audit data for sorting
+        auditCache = data.audit_log || [];
+
+        if (auditCache.length === 0) {
             tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">No audit log entries found</td></tr>';
             if (mobileContainer) {
                 mobileContainer.innerHTML = '<div class="loading-cell">No audit log entries found</div>';
@@ -2085,63 +2101,8 @@ async function loadAuditLog(page = 1) {
             return;
         }
 
-        // Desktop table view
-        tbody.innerHTML = data.audit_log.map(log => `
-            <tr>
-                <td>${formatDateTime(log.timestamp)}</td>
-                <td>${escapeHtml(log.admin_email)}</td>
-                <td>
-                    <span class="badge-status ${getActionBadgeClass(log.action_type)}">
-                        <i class="fas ${getActivityIcon(log.action_type)}"></i>
-                        ${formatActionType(log.action_type)}
-                    </span>
-                </td>
-                <td>
-                    <a href="#" class="audit-user-link" data-user-email="${escapeHtml(log.target_user_email)}">
-                        ${escapeHtml(log.target_user_email)}
-                    </a>
-                </td>
-                <td>${escapeHtml(log.guide_id || '-')}</td>
-                <td>${escapeHtml(log.reason || '-')}</td>
-            </tr>
-        `).join('');
-
-        // Mobile cards view
-        if (mobileContainer) {
-            mobileContainer.innerHTML = data.audit_log.map(log => `
-                <div class="audit-card">
-                    <div class="audit-card-header">
-                        <span class="audit-card-action ${getAuditCardClass(log.action_type)}">
-                            <i class="fas ${getActivityIcon(log.action_type)}"></i>
-                            ${formatActionType(log.action_type)}
-                        </span>
-                        <span class="audit-card-time">${formatDateTime(log.timestamp)}</span>
-                    </div>
-                    <div class="audit-card-body">
-                        <strong>${escapeHtml(log.admin_email)}</strong> →
-                        <a href="#" class="audit-user-link" data-user-email="${escapeHtml(log.target_user_email)}">${escapeHtml(log.target_user_email)}</a>
-                        ${log.guide_id ? `<br><small>Guide: ${escapeHtml(log.guide_id)}</small>` : ''}
-                    </div>
-                    ${log.reason ? `<div class="audit-card-reason">Reason: <span>${escapeHtml(log.reason)}</span></div>` : ''}
-                </div>
-            `).join('');
-
-            // Attach event listeners to user links in mobile cards
-            mobileContainer.querySelectorAll('.audit-user-link').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    openUserDetail(this.dataset.userEmail);
-                });
-            });
-        }
-
-        // Attach event listeners to user links in audit table
-        tbody.querySelectorAll('.audit-user-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                openUserDetail(this.dataset.userEmail);
-            });
-        });
+        // Render with current sort
+        renderAuditLog();
 
         // Pagination
         if (data.pagination && data.pagination.pages > 1) {
@@ -2157,6 +2118,85 @@ async function loadAuditLog(page = 1) {
         }
         showToast('Failed to load audit log', 'error');
     }
+}
+
+function renderAuditLog() {
+    const tbody = document.getElementById('audit-table-body');
+    const mobileContainer = document.getElementById('audit-mobile-cards');
+
+    // Sort the cached data
+    const sortedLogs = [...auditCache].sort((a, b) => {
+        switch (currentAuditSort) {
+            case 'newest':
+                return new Date(b.timestamp) - new Date(a.timestamp);
+            case 'oldest':
+                return new Date(a.timestamp) - new Date(b.timestamp);
+            case 'action-asc':
+                return (a.action_type || '').localeCompare(b.action_type || '');
+            case 'action-desc':
+                return (b.action_type || '').localeCompare(a.action_type || '');
+            default:
+                return new Date(b.timestamp) - new Date(a.timestamp);
+        }
+    });
+
+    // Desktop table view
+    tbody.innerHTML = sortedLogs.map(log => `
+        <tr>
+            <td>${formatDateTime(log.timestamp)}</td>
+            <td>${escapeHtml(log.admin_email)}</td>
+            <td>
+                <span class="badge-status ${getActionBadgeClass(log.action_type)}">
+                    <i class="fas ${getActivityIcon(log.action_type)}"></i>
+                    ${formatActionType(log.action_type)}
+                </span>
+            </td>
+            <td>
+                <a href="#" class="audit-user-link" data-user-email="${escapeHtml(log.target_user_email)}">
+                    ${escapeHtml(log.target_user_email)}
+                </a>
+            </td>
+            <td>${escapeHtml(log.guide_id || '-')}</td>
+            <td>${escapeHtml(log.reason || '-')}</td>
+        </tr>
+    `).join('');
+
+    // Mobile cards view
+    if (mobileContainer) {
+        mobileContainer.innerHTML = sortedLogs.map(log => `
+            <div class="audit-card">
+                <div class="audit-card-header">
+                    <span class="audit-card-action ${getAuditCardClass(log.action_type)}">
+                        <i class="fas ${getActivityIcon(log.action_type)}"></i>
+                        ${formatActionType(log.action_type)}
+                    </span>
+                    <span class="audit-card-time">${formatDateTime(log.timestamp)}</span>
+                </div>
+                <div class="audit-card-body">
+                    <strong>${escapeHtml(log.admin_email)}</strong> →
+                    <a href="#" class="audit-user-link" data-user-email="${escapeHtml(log.target_user_email)}">${escapeHtml(log.target_user_email)}</a>
+                    ${log.guide_id ? `<br><small>Guide: ${escapeHtml(log.guide_id)}</small>` : ''}
+                </div>
+                ${log.reason ? `<div class="audit-card-reason">Reason: <span>${escapeHtml(log.reason)}</span></div>` : ''}
+            </div>
+        `).join('');
+
+        // Attach event listeners to user links in mobile cards
+        mobileContainer.querySelectorAll('.audit-user-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                openUserDetail(this.dataset.userEmail);
+            });
+        });
+    }
+
+    // Attach event listeners to user links in audit table
+    tbody.querySelectorAll('.audit-user-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            openUserDetail(this.dataset.userEmail);
+        });
+    });
 }
 
 // Helper function for audit card action class

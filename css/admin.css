@@ -1622,11 +1622,63 @@
     align-items: flex-end;
 }
 
+/* Audit Section Header with Sort */
+.audit-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.audit-sort-container {
+    display: flex;
+    align-items: center;
+}
+
+.audit-sort-select {
+    padding: 8px 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    background: #fff;
+    color: #374151;
+    cursor: pointer;
+    min-width: 140px;
+}
+
+.audit-sort-select:focus {
+    outline: none;
+    border-color: var(--primary-color, #667eea);
+}
+
 /* Audit Mobile Cards */
 .audit-mobile-cards {
     display: flex;
     flex-direction: column;
     gap: 12px;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Custom scrollbar for audit mobile cards */
+.audit-mobile-cards::-webkit-scrollbar {
+    width: 6px;
+}
+
+.audit-mobile-cards::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.audit-mobile-cards::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.audit-mobile-cards::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
 }
 
 .audit-card {
@@ -1725,6 +1777,24 @@
 
 [data-theme="dark"] .audit-card-reason span {
     color: #d1d5db;
+}
+
+[data-theme="dark"] .audit-sort-select {
+    background: #374151;
+    border-color: #4b5563;
+    color: #f9fafb;
+}
+
+[data-theme="dark"] .audit-mobile-cards::-webkit-scrollbar-track {
+    background: #374151;
+}
+
+[data-theme="dark"] .audit-mobile-cards::-webkit-scrollbar-thumb {
+    background: #6b7280;
+}
+
+[data-theme="dark"] .audit-mobile-cards::-webkit-scrollbar-thumb:hover {
+    background: #9ca3af;
 }
 
 /* Activity List */

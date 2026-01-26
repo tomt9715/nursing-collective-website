@@ -565,25 +565,242 @@
         }
 
         @media (max-width: 768px) {
+            /* Page container */
+            .user-profile-page {
+                padding: 12px 0;
+            }
+
+            .user-profile-page .container {
+                padding: 0 12px;
+            }
+
+            /* Back link */
+            .back-link {
+                margin-bottom: 12px;
+                font-size: 0.85rem;
+            }
+
+            /* Profile header - compact version */
             .profile-header {
                 flex-direction: column;
                 text-align: center;
+                padding: 16px;
+                margin-bottom: 16px;
+                gap: 12px;
+            }
+
+            .profile-avatar {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+                margin: 0 auto;
+            }
+
+            .profile-info h1 {
+                font-size: 1.25rem;
+                margin-bottom: 4px;
+            }
+
+            .profile-email {
+                font-size: 0.85rem;
+                margin-bottom: 10px;
+                word-break: break-all;
             }
 
             .profile-badges {
                 justify-content: center;
+                gap: 6px;
+            }
+
+            .profile-badge {
+                font-size: 0.7rem;
+                padding: 3px 10px;
             }
 
             .profile-actions {
                 justify-content: center;
+                width: 100%;
+                gap: 8px;
             }
 
+            .profile-actions .btn {
+                flex: 1;
+                padding: 10px 12px;
+                font-size: 0.85rem;
+                justify-content: center;
+            }
+
+            /* Sections grid */
             .profile-sections {
                 grid-template-columns: 1fr;
+                gap: 12px;
             }
 
+            .profile-section {
+                border-radius: 12px;
+            }
+
+            /* Section headers - compact */
+            .profile-section-header {
+                padding: 12px 14px;
+                gap: 8px;
+            }
+
+            .profile-section-header h2 {
+                font-size: 0.95rem;
+                gap: 8px;
+            }
+
+            .profile-section-header h2 i {
+                font-size: 0.9rem;
+            }
+
+            /* Header controls - stack on mobile */
+            .header-controls {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .filter-toggles {
+                gap: 3px;
+            }
+
+            .filter-toggle-btn {
+                font-size: 0.65rem;
+                padding: 3px 6px;
+            }
+
+            .filter-toggle-btn .count {
+                min-width: 14px;
+                height: 14px;
+                font-size: 0.6rem;
+            }
+
+            .sort-dropdown {
+                font-size: 0.65rem;
+                padding: 3px 20px 3px 6px;
+            }
+
+            /* Section content - less padding */
+            .profile-section-content {
+                padding: 12px 14px;
+            }
+
+            /* Info grid - compact */
             .info-grid {
                 grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            .info-item {
+                padding: 8px 0;
+            }
+
+            .info-label {
+                font-size: 0.7rem;
+                margin-bottom: 2px;
+            }
+
+            .info-value {
+                font-size: 0.85rem;
+            }
+
+            /* Guide items - compact */
+            .guide-item {
+                padding: 10px 8px;
+            }
+
+            .guide-item-name {
+                font-size: 0.85rem;
+            }
+
+            .guide-item-meta {
+                font-size: 0.7rem;
+            }
+
+            .badge-status {
+                font-size: 0.65rem;
+                padding: 2px 6px;
+            }
+
+            /* Activity items - compact */
+            .activity-item {
+                padding: 10px 0;
+            }
+
+            .activity-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+            }
+
+            .activity-title {
+                font-size: 0.85rem;
+            }
+
+            .activity-meta {
+                font-size: 0.7rem;
+            }
+
+            /* Notes - compact */
+            .note-item {
+                padding: 10px;
+                margin-bottom: 8px;
+            }
+
+            .note-text {
+                font-size: 0.85rem;
+            }
+
+            .note-meta {
+                font-size: 0.7rem;
+            }
+
+            /* Scrollable containers - shorter on mobile */
+            .scrollable-container {
+                max-height: 250px;
+            }
+
+            /* Add note form */
+            .add-note-form textarea {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            .add-note-form .btn {
+                padding: 8px 14px;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Extra small screens */
+        @media (max-width: 400px) {
+            .profile-header {
+                padding: 12px;
+            }
+
+            .profile-avatar {
+                width: 50px;
+                height: 50px;
+                font-size: 1.25rem;
+            }
+
+            .profile-info h1 {
+                font-size: 1.1rem;
+            }
+
+            .profile-actions .btn {
+                font-size: 0.8rem;
+                padding: 8px 10px;
+            }
+
+            .profile-section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .header-controls {
+                width: 100%;
             }
         }
     </style>

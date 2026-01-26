@@ -140,6 +140,11 @@ async function loadUserProfile() {
             adminPanelBtn.style.display = 'flex';
         }
 
+        // Add admin class to body for admin-specific dashboard styling
+        if (user.is_admin) {
+            document.body.classList.add('is-admin-user');
+        }
+
         if (premiumBadgeEl && user.is_premium) {
             premiumBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
             premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';

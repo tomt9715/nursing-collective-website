@@ -5267,3 +5267,31 @@
 [data-theme="dark"] .purchase-item-row {
     background: var(--card-bg);
 }
+
+/* ==================== Admin Dashboard Customization ==================== */
+/* Hide certain sections for admin users on the dashboard */
+
+/* Hide Visit Store button */
+body.is-admin-user .action-card-hero[data-navigate="store.html"] {
+    display: none !important;
+}
+
+/* Hide Join Discord button */
+body.is-admin-user .action-card-hero[data-external="https://discord.gg/y2Mh77wAV2"] {
+    display: none !important;
+}
+
+/* Hide My Study Guides section */
+body.is-admin-user .dashboard-section-featured {
+    display: none !important;
+}
+
+/* Hide Claim a Purchase section */
+body.is-admin-user .claim-order-section {
+    display: none !important;
+}
+
+/* Hide Purchase History section */
+body.is-admin-user .purchase-history-section {
+    display: none !important;
+}

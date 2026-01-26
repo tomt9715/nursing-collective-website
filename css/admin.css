@@ -102,7 +102,7 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
     .admin-subnav {
-        top: 62px; /* Position below the smaller mobile navbar */
+        top: 72px; /* Position below the smaller mobile navbar */
     }
 
     .admin-subnav-content {

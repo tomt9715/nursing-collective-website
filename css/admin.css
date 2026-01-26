@@ -9,7 +9,7 @@
     background: #4a5568; /* Darker gray to contrast with hero */
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding-top: 100px; /* Space for fixed main navbar */
+    padding-top: 120px; /* Space for fixed main navbar */
 }
 
 .admin-subnav-content {

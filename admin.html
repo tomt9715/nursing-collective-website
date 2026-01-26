@@ -612,27 +612,32 @@
                             <label>Target User</label>
                             <input type="text" id="audit-user-filter" placeholder="User email...">
                         </div>
-                        <div class="filter-group">
-                            <label>Date From</label>
-                            <input type="date" id="audit-date-from">
+                        <div class="audit-date-row">
+                            <div class="filter-group">
+                                <label>Date From</label>
+                                <input type="date" id="audit-date-from">
+                            </div>
+                            <div class="filter-group">
+                                <label>Date To</label>
+                                <input type="date" id="audit-date-to">
+                            </div>
                         </div>
-                        <div class="filter-group">
-                            <label>Date To</label>
-                            <input type="date" id="audit-date-to">
+                        <div class="audit-btn-row">
+                            <button class="btn btn-primary" id="audit-filter-btn">
+                                <i class="fas fa-filter"></i> Apply Filters
+                            </button>
+                            <button class="btn btn-secondary" id="audit-export-btn">
+                                <i class="fas fa-download"></i> Export CSV
+                            </button>
                         </div>
-                        <button class="btn btn-primary" id="audit-filter-btn">
-                            <i class="fas fa-filter"></i> Apply Filters
-                        </button>
-                        <button class="btn btn-secondary" id="audit-export-btn">
-                            <i class="fas fa-download"></i> Export CSV
-                        </button>
                     </div>
 
                     <div class="admin-section">
                         <div class="section-header">
                             <h3><i class="fas fa-history"></i> Admin Actions</h3>
                         </div>
-                        <div class="audit-table-container">
+                        <!-- Desktop Table View -->
+                        <div class="audit-table-container desktop-only">
                             <table class="admin-table" id="audit-table">
                                 <thead>
                                     <tr>
@@ -648,6 +653,10 @@
                                     <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading audit log...</td></tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <!-- Mobile Cards View -->
+                        <div class="audit-mobile-cards mobile-only" id="audit-mobile-cards">
+                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading audit log...</div>
                         </div>
                         <!-- Pagination -->
                         <div class="pagination-controls" id="audit-pagination"></div>

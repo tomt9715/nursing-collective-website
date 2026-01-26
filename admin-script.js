@@ -1828,7 +1828,12 @@ async function submitBulkGrant() {
 async function loadAuditLog(page = 1) {
     auditPage = page;
     const tbody = document.getElementById('audit-table-body');
+    const mobileContainer = document.getElementById('audit-mobile-cards');
+
     tbody.innerHTML = '<tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading audit log...</td></tr>';
+    if (mobileContainer) {
+        mobileContainer.innerHTML = '<div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading audit log...</div>';
+    }
 
     try {
         const params = new URLSearchParams({
@@ -1850,10 +1855,14 @@ async function loadAuditLog(page = 1) {
 
         if (data.audit_log.length === 0) {
             tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">No audit log entries found</td></tr>';
+            if (mobileContainer) {
+                mobileContainer.innerHTML = '<div class="loading-cell">No audit log entries found</div>';
+            }
             document.getElementById('audit-pagination').innerHTML = '';
             return;
         }
 
+        // Desktop table view
         tbody.innerHTML = data.audit_log.map(log => `
             <tr>
                 <td>${formatDateTime(log.timestamp)}</td>
@@ -1874,6 +1883,35 @@ async function loadAuditLog(page = 1) {
             </tr>
         `).join('');
 
+        // Mobile cards view
+        if (mobileContainer) {
+            mobileContainer.innerHTML = data.audit_log.map(log => `
+                <div class="audit-card">
+                    <div class="audit-card-header">
+                        <span class="audit-card-action ${getAuditCardClass(log.action_type)}">
+                            <i class="fas ${getActivityIcon(log.action_type)}"></i>
+                            ${formatActionType(log.action_type)}
+                        </span>
+                        <span class="audit-card-time">${formatDateTime(log.timestamp)}</span>
+                    </div>
+                    <div class="audit-card-body">
+                        <strong>${escapeHtml(log.admin_email)}</strong> →
+                        <a href="#" class="audit-user-link" data-user-email="${escapeHtml(log.target_user_email)}">${escapeHtml(log.target_user_email)}</a>
+                        ${log.guide_id ? `<br><small>Guide: ${escapeHtml(log.guide_id)}</small>` : ''}
+                    </div>
+                    ${log.reason ? `<div class="audit-card-reason">Reason: <span>${escapeHtml(log.reason)}</span></div>` : ''}
+                </div>
+            `).join('');
+
+            // Attach event listeners to user links in mobile cards
+            mobileContainer.querySelectorAll('.audit-user-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    openUserDetail(this.dataset.userEmail);
+                });
+            });
+        }
+
         // Attach event listeners to user links in audit table
         tbody.querySelectorAll('.audit-user-link').forEach(link => {
             link.addEventListener('click', function(e) {
@@ -1891,7 +1929,21 @@ async function loadAuditLog(page = 1) {
     } catch (error) {
         console.error('Error loading audit log:', error);
         tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">Error loading audit log</td></tr>';
+        if (mobileContainer) {
+            mobileContainer.innerHTML = '<div class="loading-cell">Error loading audit log</div>';
+        }
         showToast('Failed to load audit log', 'error');
+    }
+}
+
+// Helper function for audit card action class
+function getAuditCardClass(actionType) {
+    switch (actionType) {
+        case 'grant_guide': return 'grant';
+        case 'revoke_guide': return 'revoke';
+        case 'restore_guide': return 'restore';
+        case 'add_note': return 'note';
+        default: return '';
     }
 }
 

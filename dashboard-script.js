@@ -129,25 +129,34 @@ async function loadUserProfile() {
         const premiumBadgeEl = document.getElementById('premium-badge');
         const adminBadgeEl = document.getElementById('admin-badge');
 
-        if (adminBadgeEl && user.is_admin) {
-            adminBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
+        // Check if user is admin
+        const isAdmin = user.is_admin || user.email === 'admin@thenursingcollective.pro';
+
+        if (adminBadgeEl && isAdmin) {
+            // Move admin badge below the welcome message
+            adminBadgeEl.style.cssText = 'display: block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; margin-top: 12px; width: fit-content;';
             adminBadgeEl.innerHTML = '<i class="fas fa-crown"></i> Admin';
+
+            // Hide stats for admin users (they're not regular members)
+            const statsCompact = document.querySelector('.user-stats-compact');
+            if (statsCompact) {
+                statsCompact.style.display = 'none';
+            }
         }
 
         // Show admin panel button for admin users
         const adminPanelBtn = document.getElementById('admin-panel-btn');
-        if (adminPanelBtn && user.is_admin) {
+        if (adminPanelBtn && isAdmin) {
             adminPanelBtn.style.display = 'flex';
         }
 
         // Add admin class to body for admin-specific dashboard styling
-        // Check both is_admin flag and admin email as fallback
-        const isAdmin = user.is_admin || user.email === 'admin@thenursingcollective.pro';
         if (isAdmin) {
             document.body.classList.add('is-admin-user');
         }
 
-        if (premiumBadgeEl && user.is_premium) {
+        // Only show premium badge for non-admin users
+        if (premiumBadgeEl && user.is_premium && !isAdmin) {
             premiumBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
             premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';
         }

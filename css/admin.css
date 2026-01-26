@@ -3172,11 +3172,11 @@
 
 /* Desktop/Mobile visibility defaults */
 .desktop-only {
-    display: block;
+    display: block !important;
 }
 
 .mobile-only {
-    display: none;
+    display: none !important;
 }
 
 /* ===========================

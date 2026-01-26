@@ -661,30 +661,40 @@
                 font-size: 0.9rem;
             }
 
-            /* Header controls - stack on mobile */
+            /* Header controls - align on same row */
             .header-controls {
                 width: 100%;
+                display: flex;
                 justify-content: space-between;
+                align-items: center;
+                gap: 8px;
             }
 
             .filter-toggles {
-                gap: 3px;
+                display: flex;
+                gap: 4px;
+                flex-wrap: nowrap;
             }
 
             .filter-toggle-btn {
-                font-size: 0.65rem;
-                padding: 3px 6px;
+                font-size: 0.7rem;
+                padding: 5px 8px;
+                height: 28px;
+                display: flex;
+                align-items: center;
             }
 
             .filter-toggle-btn .count {
-                min-width: 14px;
-                height: 14px;
+                min-width: 16px;
+                height: 16px;
                 font-size: 0.6rem;
+                margin-left: 4px;
             }
 
             .sort-dropdown {
-                font-size: 0.65rem;
-                padding: 3px 20px 3px 6px;
+                font-size: 0.7rem;
+                padding: 5px 24px 5px 8px;
+                height: 28px;
             }
 
             /* Section content - less padding */

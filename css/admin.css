@@ -5,10 +5,10 @@
    =========================== */
 .admin-subnav {
     position: relative;
-    z-index: 100;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    z-index: 500;
+    background: #4a5568; /* Darker gray to contrast with hero */
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     margin-top: 70px; /* Space for fixed main navbar */
 }
 
@@ -94,7 +94,7 @@
 
 /* Dark mode adjustments */
 [data-theme="dark"] .admin-subnav {
-    background: linear-gradient(135deg, #4c5fd5 0%, #5a3d8a 100%);
+    background: #2d3748;
 }
 
 /* Mobile responsive */

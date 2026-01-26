@@ -1515,7 +1515,12 @@ async function submitNote() {
 
 async function loadGuides(forceRefresh = false) {
     const tbody = document.getElementById('guides-table-body');
+    const mobileContainer = document.getElementById('guides-mobile-cards');
+
     tbody.innerHTML = '<tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</td></tr>';
+    if (mobileContainer) {
+        mobileContainer.innerHTML = '<div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</div>';
+    }
 
     try {
         // Fetch from API if cache is empty or force refresh
@@ -1538,9 +1543,13 @@ async function loadGuides(forceRefresh = false) {
         if (filteredGuides.length === 0) {
             const typeLabel = currentGuideType === 'study_guide' ? 'study guides' : 'class packages';
             tbody.innerHTML = `<tr><td colspan="7" class="loading-cell">No ${typeLabel} found</td></tr>`;
+            if (mobileContainer) {
+                mobileContainer.innerHTML = `<div class="loading-cell">No ${typeLabel} found</div>`;
+            }
             return;
         }
 
+        // Desktop table view
         tbody.innerHTML = filteredGuides.map(guide => `
             <tr>
                 <td><strong>${escapeHtml(guide.name)}</strong></td>
@@ -1559,7 +1568,46 @@ async function loadGuides(forceRefresh = false) {
             </tr>
         `).join('');
 
-        // Attach event listeners to View Owners buttons
+        // Mobile cards view
+        if (mobileContainer) {
+            mobileContainer.innerHTML = filteredGuides.map(guide => `
+                <div class="guide-card">
+                    <div class="guide-card-header">
+                        <div class="guide-card-name">${escapeHtml(guide.name)}</div>
+                        <div class="guide-card-price">$${guide.price.toFixed(2)}</div>
+                    </div>
+                    <div class="guide-card-category">
+                        <i class="fas fa-folder"></i> ${escapeHtml(guide.category || 'Uncategorized')}
+                    </div>
+                    <div class="guide-card-stats">
+                        <div class="guide-card-stat">
+                            <span class="guide-card-stat-value">${guide.stripe_purchases}</span>
+                            <span class="guide-card-stat-label">Stripe</span>
+                        </div>
+                        <div class="guide-card-stat">
+                            <span class="guide-card-stat-value">${guide.admin_granted}</span>
+                            <span class="guide-card-stat-label">Granted</span>
+                        </div>
+                        <div class="guide-card-stat highlight">
+                            <span class="guide-card-stat-value">${guide.total_active_owners}</span>
+                            <span class="guide-card-stat-label">Total</span>
+                        </div>
+                    </div>
+                    <button class="guide-card-action" data-view-guide-owners="${escapeHtml(guide.guide_id)}" data-guide-name="${escapeHtml(guide.name)}">
+                        <i class="fas fa-users"></i> View Owners
+                    </button>
+                </div>
+            `).join('');
+
+            // Attach event listeners to mobile card buttons
+            mobileContainer.querySelectorAll('[data-view-guide-owners]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    openGuideOwnersModal(this.dataset.viewGuideOwners, this.dataset.guideName);
+                });
+            });
+        }
+
+        // Attach event listeners to View Owners buttons (desktop)
         tbody.querySelectorAll('[data-view-guide-owners]').forEach(btn => {
             btn.addEventListener('click', function() {
                 openGuideOwnersModal(this.dataset.viewGuideOwners, this.dataset.guideName);
@@ -1568,6 +1616,9 @@ async function loadGuides(forceRefresh = false) {
     } catch (error) {
         console.error('Error loading guides:', error);
         tbody.innerHTML = '<tr><td colspan="7" class="loading-cell">Error loading guides</td></tr>';
+        if (mobileContainer) {
+            mobileContainer.innerHTML = '<div class="loading-cell">Error loading guides</div>';
+        }
         showToast('Failed to load guides', 'error');
     }
 }

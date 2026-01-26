@@ -547,7 +547,7 @@
                 <!-- Guides Tab -->
                 <div class="admin-tab-content" id="tab-guides">
                     <div class="admin-section">
-                        <div class="section-header">
+                        <div class="section-header guides-section-header">
                             <h3><i class="fas fa-book"></i> Guide Statistics</h3>
                             <div class="guide-type-toggle">
                                 <button class="toggle-btn active" id="toggle-study-guides" data-type="study_guide">
@@ -558,7 +558,8 @@
                                 </button>
                             </div>
                         </div>
-                        <div class="guides-table-container">
+                        <!-- Desktop Table View -->
+                        <div class="guides-table-container desktop-only">
                             <table class="admin-table" id="guides-table">
                                 <thead>
                                     <tr>
@@ -575,6 +576,10 @@
                                     <tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</td></tr>
                                 </tbody>
                             </table>
+                        </div>
+                        <!-- Mobile Cards View -->
+                        <div class="guides-mobile-cards mobile-only" id="guides-mobile-cards">
+                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</div>
                         </div>
                     </div>
                 </div>

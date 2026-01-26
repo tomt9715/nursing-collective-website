@@ -4,13 +4,14 @@
    ADMIN SUB-NAVIGATION
    =========================== */
 .admin-subnav {
-    position: sticky;
-    top: 80px; /* Stick below the fixed main navbar */
-    z-index: 500;
+    position: fixed;
+    top: 95px; /* Position below the fixed main navbar (95px height) */
+    left: 0;
+    right: 0;
+    z-index: 900;
     background: #4a5568; /* Darker gray to contrast with hero */
     border-bottom: 2px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    margin-top: 100px; /* Space for fixed main navbar when not stuck */
 }
 
 .admin-subnav-content {
@@ -101,8 +102,7 @@
 /* Mobile responsive */
 @media (max-width: 768px) {
     .admin-subnav {
-        top: 60px; /* Stick below the smaller mobile navbar */
-        margin-top: 70px; /* Space for fixed main navbar when not stuck */
+        top: 70px; /* Position below the smaller mobile navbar */
     }
 
     .admin-subnav-content {
@@ -458,6 +458,7 @@
 .admin-hero {
     position: relative;
     padding: 40px 0;
+    padding-top: 160px; /* Space for fixed navbar (95px) + fixed subnav (~55px) + breathing room */
     overflow: hidden;
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
@@ -2616,7 +2617,8 @@
 
 @media (max-width: 768px) {
     .admin-hero {
-        padding: 80px 0 16px;
+        padding: 16px 0;
+        padding-top: 130px; /* Space for fixed navbar (70px) + fixed subnav (~50px) + breathing room */
     }
 
     .admin-hero-badge {
@@ -2805,16 +2807,19 @@
     .status-info {
         flex: 1;
         min-width: 0;
+        overflow: hidden;
     }
 
-    .status-label {
-        font-size: 0.7rem;
+    .status-name {
+        font-size: 0.65rem;
         line-height: 1.2;
-        word-wrap: break-word;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 
     .status-value {
-        font-size: 0.9rem;
+        font-size: 0.8rem;
         font-weight: 600;
     }
 

@@ -4,8 +4,20 @@
  * Used across dashboard, settings, and authentication pages
  */
 
-// API Configuration
-const API_URL = 'https://api.thenursingcollective.pro';
+// API Configuration - automatically detect staging vs production
+const API_URL = (function () {
+    const hostname = window.location.hostname;
+
+    // Preview/staging branches use staging backend
+    if (hostname.includes('preview-') || hostname === 'localhost' || hostname === '127.0.0.1') {
+        console.log('[API] Using staging backend');
+        return 'https://staging-backend-production-365a.up.railway.app';
+    }
+
+    // Production
+    console.log('[API] Using production backend');
+    return 'https://api.thenursingcollective.pro';
+})();
 
 /**
  * Centralized API calling function with automatic token refresh
@@ -45,7 +57,6 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
 
                 // Retry the original request with new token
                 return await apiCall(endpoint, options, true);
-
             } catch (refreshError) {
                 console.error('Token refresh failed:', refreshError);
                 // Refresh failed, logout user
@@ -63,7 +74,6 @@ async function apiCall(endpoint, options = {}, isRetry = false) {
         }
 
         return data;
-
     } catch (error) {
         // Network or parsing error
         if (error.message.includes('Session expired')) {
@@ -94,7 +104,7 @@ async function refreshToken() {
         const response = await fetch(`${API_URL}/auth/refresh`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             credentials: 'include' // Include httpOnly cookie with refresh token
         });
@@ -111,7 +121,6 @@ async function refreshToken() {
 
         console.log('Token refreshed successfully');
         return data.access_token;
-
     } catch (error) {
         console.error('Token refresh error:', error);
         throw error;
@@ -138,7 +147,7 @@ async function performLogout() {
         await fetch(`${API_URL}/auth/logout`, {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
+                'Content-Type': 'application/json'
             },
             credentials: 'include' // Include httpOnly cookie
         });
@@ -193,7 +202,7 @@ function requireAuth() {
 }
 
 // Listen for cross-tab logout events
-window.addEventListener('storage', function(e) {
+window.addEventListener('storage', function (e) {
     if (e.key === 'logoutEvent' && e.newValue) {
         // Another tab logged out, clear local data and redirect
         // (httpOnly cookie was already cleared by the first tab's backend call)

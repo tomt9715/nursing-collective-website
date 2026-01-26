@@ -299,9 +299,98 @@ async function loadDashboardOverview() {
         // Load recently deleted accounts
         await loadRecentlyDeletedAccounts();
 
+        // Load system health metrics
+        await loadSystemHealth();
+
     } catch (error) {
         console.error('Error loading dashboard:', error);
         showToast('Failed to load dashboard data', 'error');
+    }
+}
+
+// Load system health metrics for the dashboard
+async function loadSystemHealth() {
+    try {
+        const data = await apiCall('/admin/system-health');
+
+        // API Response Time
+        const apiResponseEl = document.getElementById('status-api-response');
+        if (apiResponseEl) {
+            apiResponseEl.textContent = `${data.api_response_ms}ms`;
+            // Add color indicator based on response time
+            if (data.api_response_ms < 50) {
+                apiResponseEl.style.color = 'var(--success-color, #10b981)';
+            } else if (data.api_response_ms < 200) {
+                apiResponseEl.style.color = 'var(--warning-color, #f59e0b)';
+            } else {
+                apiResponseEl.style.color = 'var(--danger-color, #ef4444)';
+            }
+        }
+
+        // Last Deploy (use last activity as proxy)
+        const lastDeployEl = document.getElementById('status-last-deploy');
+        if (lastDeployEl) {
+            if (data.last_deploy) {
+                const deployDate = new Date(data.last_deploy);
+                const now = new Date();
+                const diffMs = now - deployDate;
+                const diffMins = Math.floor(diffMs / 60000);
+                const diffHours = Math.floor(diffMs / 3600000);
+                const diffDays = Math.floor(diffMs / 86400000);
+
+                if (diffMins < 60) {
+                    lastDeployEl.textContent = `${diffMins}m ago`;
+                } else if (diffHours < 24) {
+                    lastDeployEl.textContent = `${diffHours}h ago`;
+                } else {
+                    lastDeployEl.textContent = `${diffDays}d ago`;
+                }
+            } else {
+                lastDeployEl.textContent = '-';
+            }
+        }
+
+        // Storage / DB Size
+        const storageEl = document.getElementById('status-storage');
+        if (storageEl) {
+            storageEl.textContent = `${data.storage.total_records.toLocaleString()} records`;
+            storageEl.title = `Users: ${data.storage.breakdown.users}, Sessions: ${data.storage.breakdown.sessions}, Purchases: ${data.storage.breakdown.purchases}`;
+        }
+
+        // Failed Logins (24h)
+        const failedLoginsEl = document.getElementById('status-failed-logins');
+        if (failedLoginsEl) {
+            failedLoginsEl.textContent = data.failed_logins_24h || '0';
+            if (data.failed_logins_24h > 10) {
+                failedLoginsEl.style.color = 'var(--danger-color, #ef4444)';
+            } else if (data.failed_logins_24h > 0) {
+                failedLoginsEl.style.color = 'var(--warning-color, #f59e0b)';
+            }
+        }
+
+        // Error Rate (1h)
+        const errorRateEl = document.getElementById('status-error-rate');
+        if (errorRateEl) {
+            errorRateEl.textContent = `${data.error_rate_1h || 0}`;
+            if (data.error_rate_1h > 5) {
+                errorRateEl.style.color = 'var(--danger-color, #ef4444)';
+            }
+        }
+
+    } catch (error) {
+        console.error('Error loading system health:', error);
+        // Set fallback values if the endpoint fails
+        const fallbackEls = [
+            'status-api-response',
+            'status-last-deploy',
+            'status-storage',
+            'status-failed-logins',
+            'status-error-rate'
+        ];
+        fallbackEls.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = '-';
+        });
     }
 }
 

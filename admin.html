@@ -276,28 +276,56 @@
                                     <div class="status-icon"><i class="fas fa-database"></i></div>
                                     <div class="status-info">
                                         <span class="status-name">Database</span>
-                                        <span class="status-value online">Connected</span>
+                                        <span class="status-value online" id="status-database">Connected</span>
                                     </div>
                                 </div>
                                 <div class="status-item">
                                     <div class="status-icon"><i class="fab fa-stripe"></i></div>
                                     <div class="status-info">
                                         <span class="status-name">Stripe</span>
-                                        <span class="status-value online">Active</span>
+                                        <span class="status-value online" id="status-stripe">Active</span>
                                     </div>
                                 </div>
                                 <div class="status-item">
                                     <div class="status-icon"><i class="fas fa-envelope"></i></div>
                                     <div class="status-info">
                                         <span class="status-name">Email Service</span>
-                                        <span class="status-value online">Operational</span>
+                                        <span class="status-value online" id="status-email">Operational</span>
                                     </div>
                                 </div>
                                 <div class="status-item">
-                                    <div class="status-icon"><i class="fas fa-key"></i></div>
+                                    <div class="status-icon"><i class="fas fa-tachometer-alt"></i></div>
                                     <div class="status-info">
-                                        <span class="status-name">Active Sessions</span>
-                                        <span class="status-value" id="active-sessions">-</span>
+                                        <span class="status-name">API Response</span>
+                                        <span class="status-value" id="status-api-response">-</span>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-icon"><i class="fas fa-rocket"></i></div>
+                                    <div class="status-info">
+                                        <span class="status-name">Last Deploy</span>
+                                        <span class="status-value" id="status-last-deploy">-</span>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-icon"><i class="fas fa-hdd"></i></div>
+                                    <div class="status-info">
+                                        <span class="status-name">DB Size</span>
+                                        <span class="status-value" id="status-storage">-</span>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-icon"><i class="fas fa-shield-alt"></i></div>
+                                    <div class="status-info">
+                                        <span class="status-name">Failed Logins (24h)</span>
+                                        <span class="status-value" id="status-failed-logins">-</span>
+                                    </div>
+                                </div>
+                                <div class="status-item">
+                                    <div class="status-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                                    <div class="status-info">
+                                        <span class="status-name">Error Rate (1h)</span>
+                                        <span class="status-value" id="status-error-rate">-</span>
                                     </div>
                                 </div>
                             </div>

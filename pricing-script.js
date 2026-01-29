@@ -3,6 +3,65 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 
+    // Free Guide PDF Download functionality
+    const freeGuideButtons = document.querySelectorAll('[data-free-guide]');
+
+    freeGuideButtons.forEach(button => {
+        button.addEventListener('click', async function() {
+            const guideId = this.getAttribute('data-free-guide');
+            const originalText = this.innerHTML;
+
+            // Show loading state
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+            this.disabled = true;
+
+            try {
+                // Get API URL from apiService if available, otherwise use default
+                const apiUrl = (typeof apiService !== 'undefined' && apiService.baseUrl)
+                    ? apiService.baseUrl
+                    : 'https://api.thenursingcollective.pro';
+
+                const response = await fetch(`${apiUrl}/api/guides/free/${guideId}/pdf`, {
+                    method: 'GET'
+                });
+
+                if (!response.ok) {
+                    const errorData = await response.json().catch(() => ({}));
+                    throw new Error(errorData.message || 'Failed to generate PDF');
+                }
+
+                // Get the PDF blob and download it
+                const blob = await response.blob();
+                const url = window.URL.createObjectURL(blob);
+
+                // Create a temporary link to trigger download
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `TNC-${guideId}.pdf`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(url);
+
+                // Show success state
+                this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                }, 2000);
+
+            } catch (error) {
+                console.error('Free guide PDF download error:', error);
+                this.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
+                setTimeout(() => {
+                    this.innerHTML = originalText;
+                    this.disabled = false;
+                }, 2000);
+                alert('Unable to download PDF. Please try again or contact support.');
+            }
+        });
+    });
+
     // Tier Toggle functionality
     const tierToggles = document.querySelectorAll('.tier-toggle');
     const tierDescription = document.getElementById('tier-description');

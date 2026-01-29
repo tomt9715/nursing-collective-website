@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 50 NCLEX Priority Concepts - Free Study Guide | The Nursing Collective</title>
+    <meta name="description" content="Free NCLEX study guide covering the top 50 priority concepts organized by category. Quick reference guide for nursing students preparing for the NCLEX exam.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           FREE GUIDE STYLES - NCLEX Priority Concepts
+           ============================================ */
+
+        :root {
+            --primary-color: #2E86AB;
+            --primary-dark: #236b8a;
+            --secondary-color: #A23B72;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+            --success-color: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar - Fixed at top */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .download-bar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f0f9ff;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Free Badge */
+        .free-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            background: var(--success-color);
+            color: white;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Document Container */
+        .document-container {
+            max-width: 850px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Cover Page */
+        .cover-page {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #3b82f6 50%, var(--secondary-color) 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 12px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-category {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content {
+            padding: 60px;
+        }
+
+        /* Category Section */
+        .category-section {
+            margin-bottom: 40px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        .category-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 10px;
+            font-size: 1.1rem;
+        }
+
+        .category-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        /* Concept Grid */
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .concept-item {
+            padding: 14px 16px;
+            background: white;
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+
+        .concept-item:nth-child(3n) {
+            border-right: none;
+        }
+
+        .concept-item:nth-last-child(-n+3) {
+            border-bottom: none;
+        }
+
+        .concept-item:hover {
+            background: #f0f9ff;
+            color: var(--primary-color);
+        }
+
+        /* Alternating row colors */
+        .concept-grid .concept-item:nth-child(6n+1),
+        .concept-grid .concept-item:nth-child(6n+2),
+        .concept-grid .concept-item:nth-child(6n+3) {
+            background: #f9fafb;
+        }
+
+        .concept-grid .concept-item:nth-child(6n+1):hover,
+        .concept-grid .concept-item:nth-child(6n+2):hover,
+        .concept-grid .concept-item:nth-child(6n+3):hover {
+            background: #f0f9ff;
+        }
+
+        /* Study Tip Box */
+        .study-tip {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 40px;
+        }
+
+        .study-tip-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .study-tip p {
+            color: var(--text-secondary);
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .study-tip p em {
+            font-style: italic;
+        }
+
+        /* Footer */
+        .document-footer {
+            text-align: center;
+            padding: 30px 60px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .document-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .document-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Print Styles */
+        @media print {
+            .download-bar { display: none !important; }
+
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .cover-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .category-section {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .concept-grid {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            h2 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .download-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .concept-grid { grid-template-columns: 1fr; }
+            .concept-item { border-right: none !important; }
+            .concept-item:last-child { border-bottom: none; }
+        }
+
+        @media (max-width: 600px) {
+            .cover-title { font-size: 1.75rem; }
+            .cover-subtitle { font-size: 1rem; }
+            .category-header h2 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>Free Study Guide</span>
+            <span class="free-badge"><i class="fas fa-gift"></i> FREE</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../../pricing.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Pricing
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Download PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective">
+                </div>
+                <div class="cover-category">Quick Reference Guide</div>
+                <h1 class="cover-title">Top 50 NCLEX Priority Concepts</h1>
+                <p class="cover-subtitle">Quick Reference Guide for Nursing Students</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Format</div>
+                        <div class="value">Quick Reference</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Categories</div>
+                        <div class="value">8 NCLEX Categories</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Price</div>
+                        <div class="value">FREE</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Safety & Infection Control -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-icon"><i class="fas fa-shield-virus"></i></div>
+                    <h2>Safety & Infection Control</h2>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-item">Standard Precautions</div>
+                    <div class="concept-item">Isolation Techniques</div>
+                    <div class="concept-item">Fall Prevention</div>
+                    <div class="concept-item">Restraint Safety</div>
+                    <div class="concept-item">Error Prevention</div>
+                    <div class="concept-item">Emergency Response Protocol</div>
+                </div>
+            </section>
+
+            <!-- Pharmacology -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-icon"><i class="fas fa-pills"></i></div>
+                    <h2>Pharmacology</h2>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-item">Medication Rights (5-9 Rights)</div>
+                    <div class="concept-item">High-Alert Medications</div>
+                    <div class="concept-item">Adverse Reactions</div>
+                    <div class="concept-item">Drug Interactions</div>
+                    <div class="concept-item">Safe Dosage Calculations</div>
+                    <div class="concept-item">IV Medication Administration</div>
+                </div>
+            </section>
+
+            <!-- Physiological Adaptation -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-icon"><i class="fas fa-heartbeat"></i></div>
+                    <h2>Physiological Adaptation</h2>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-item">Shock Recognition & Management</div>
+                    <div class="concept-item">Fluid & Electrolyte Balance</div>
+                    <div class="concept-item">Acid-Base Balance</div>
+                    <div class="concept-item">Respiratory Distress</div>
+                    <div class="concept-item">Hemodynamic Monitoring</div>
+                    <div class="concept-item">Sepsis Criteria</div>
+                </div>
+            </section>
+
+            <!-- Basic Care & Comfort -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-icon"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h2>Basic Care & Comfort</h2>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-item">Pain Assessment & Management</div>
+                    <div class="concept-item">Nutrition Support</div>
+                    <div class="concept-item">Mobility & Positioning</div>
+                    <div class="concept-item">Wound Care Basics</div>
+                    <div class="concept-item">Catheter Care</div>
+                    <div class="concept-item">Sleep Pattern Management</div>
+                </div>
+            </section>
+
+            <!-- Reduction of Risk Potential -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h2>Reduction of Risk Potential</h2>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-item">Vital Signs Interpretation</div>
+                    <div class="concept-item">Lab Value Ranges</div>
+                    <div class="concept-item">Diagnostic Test Prep</div>
+                    <div class="concept-item">Pre/Post-Op Care</div>
+                    <div class="concept-item">Complication Prevention</div>
+                    <div class="concept-item">Monitoring High-Risk Patients</div>
+                </div>
+            </section>
+
+            <!-- Health Promotion -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-icon"><i class="fas fa-heart"></i></div>
+                    <h2>Health Promotion</h2>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-item">Developmental Milestones</div>
+                    <div class="concept-item">Immunization Schedule</div>
+                    <div class="concept-item">Prenatal Care</div>
+                    <div class="concept-item">Health Screening Guidelines</div>
+                    <div class="concept-item">Disease Prevention</div>
+                    <div class="concept-item">Patient Education Techniques</div>
+                </div>
+            </section>
+
+            <!-- Psychosocial Integrity -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-icon"><i class="fas fa-brain"></i></div>
+                    <h2>Psychosocial Integrity</h2>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-item">Therapeutic Communication</div>
+                    <div class="concept-item">Crisis Intervention</div>
+                    <div class="concept-item">Mental Health Assessment</div>
+                    <div class="concept-item">Grief Support</div>
+                    <div class="concept-item">Abuse Recognition</div>
+                    <div class="concept-item">Substance Use Disorders</div>
+                </div>
+            </section>
+
+            <!-- Management of Care -->
+            <section class="category-section">
+                <div class="category-header">
+                    <div class="category-icon"><i class="fas fa-clipboard-list"></i></div>
+                    <h2>Management of Care</h2>
+                </div>
+                <div class="concept-grid">
+                    <div class="concept-item">Delegation Principles</div>
+                    <div class="concept-item">Priority Setting (ABCs)</div>
+                    <div class="concept-item">Informed Consent</div>
+                    <div class="concept-item">Confidentiality/HIPAA</div>
+                    <div class="concept-item">Case Management</div>
+                    <div class="concept-item">Advocacy Role</div>
+                </div>
+            </section>
+
+            <!-- Study Tip -->
+            <div class="study-tip">
+                <div class="study-tip-header">
+                    <i class="fas fa-lightbulb"></i> Study Tip
+                </div>
+                <p>Focus on understanding the principles behind these concepts, not just memorization. <em>Practice applying them in clinical scenarios.</em></p>
+            </div>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <p><strong>The Nursing Collective</strong> | <a href="https://thenursingcollective.pro">thenursingcollective.pro</a></p>
+            <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.7;">This study guide is for educational purposes only. Always follow your institution's policies and procedures.</p>
+        </div>
+
+    </div>
+
+</body>
+</html>

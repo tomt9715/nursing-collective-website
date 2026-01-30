@@ -1022,6 +1022,17 @@ button.subcategory-chip.active i {
     }
 }
 
+/* Dark mode tooltip styling */
+[data-theme="dark"] .savings-badge:hover::after {
+    background: #ffffff;
+    color: #1a1a1a;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .savings-badge:hover::before {
+    border-top-color: #ffffff;
+}
+
 /* Mobile: show tooltip below instead of above */
 @media (max-width: 768px) {
     .savings-badge:hover::after {
@@ -1036,6 +1047,11 @@ button.subcategory-chip.active i {
         right: 12px;
         border-top-color: transparent;
         border-bottom-color: var(--text-primary);
+    }
+
+    [data-theme="dark"] .savings-badge:hover::before {
+        border-top-color: transparent;
+        border-bottom-color: #ffffff;
     }
 }
 

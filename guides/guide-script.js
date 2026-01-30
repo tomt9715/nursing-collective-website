@@ -368,12 +368,33 @@ async function downloadPDF(btn) {
             throw new Error(data.message || 'Download URL not available');
         }
 
-        // Open the presigned R2 URL directly - browser will handle the download
-        // Using window.open to trigger download from R2
-        window.open(data.redirect_url, '_blank');
+        // Update button to show downloading state
+        if (btn) {
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Downloading PDF...';
+        }
+
+        // Fetch the actual PDF from the presigned R2 URL
+        const pdfResponse = await fetch(data.redirect_url);
+
+        if (!pdfResponse.ok) {
+            throw new Error('Failed to download PDF from storage');
+        }
+
+        // Get the PDF as a blob
+        const pdfBlob = await pdfResponse.blob();
+
+        // Create a download link
+        const downloadUrl = window.URL.createObjectURL(pdfBlob);
+        const a = document.createElement('a');
+        a.href = downloadUrl;
+        a.download = `TNC-${GUIDE_NAME}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(downloadUrl);
 
         if (btn) {
-            btn.innerHTML = '<i class="fas fa-check"></i> Opening PDF...';
+            btn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;

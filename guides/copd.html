@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COPD Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for COPD. Learn to distinguish chronic bronchitis from emphysema, manage oxygen therapy safely to avoid CO2 retention, and teach pursed-lip breathing technique.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           PDF-STYLE STUDY GUIDE STYLES
+           ============================================ */
+
+        :root {
+            --primary-color: #2E86AB;
+            --primary-dark: #236b8a;
+            --secondary-color: #A23B72;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar - Fixed at top */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .download-bar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f0f9ff;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Document Container */
+        .document-container {
+            max-width: 850px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Cover Page - Colors inspired by respiratory/lung theme */
+        .cover-page {
+            background: linear-gradient(135deg, #0EA5E9 0%, #06B6D4 40%, #14B8A6 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 12px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-category {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content {
+            padding: 60px;
+        }
+
+        /* Learning Objectives */
+        .learning-objectives {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .learning-objectives li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .learning-objectives li i {
+            color: #10b981;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Table of Contents */
+        .table-of-contents {
+            background: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .table-of-contents h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .table-of-contents li {
+            break-inside: avoid;
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .table-of-contents a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .toc-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .table-of-contents a:hover .toc-number {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .guide-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .guide-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 28px 0 14px;
+        }
+
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+        }
+
+        .guide-section p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            margin-bottom: 14px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+        }
+
+        .guide-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .info-box.clinical-pearl {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-color: #f59e0b;
+        }
+
+        .info-box.warning {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .info-box.tip {
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .info-box.nclex-tip {
+            background: #f5f3ff;
+            border-color: #8b5cf6;
+        }
+
+        .info-box.mnemonic {
+            background: #fffbeb;
+            border-color: #f59e0b;
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .guide-table thead {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .guide-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .guide-table td {
+            padding: 12px 14px;
+            color: var(--text-secondary);
+        }
+
+        .guide-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .comparison-card-header {
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: white;
+        }
+
+        .comparison-card.bronchitis .comparison-card-header {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .comparison-card.emphysema .comparison-card-header {
+            background: linear-gradient(135deg, #ec4899, #db2777);
+        }
+
+        .comparison-card.blue-bloater .comparison-card-header {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+        }
+
+        .comparison-card.pink-puffer .comparison-card-header {
+            background: linear-gradient(135deg, #f472b6, #ec4899);
+        }
+
+        .comparison-card-body {
+            padding: 18px;
+        }
+
+        .comparison-card-body h4 {
+            font-size: 0.95rem;
+            margin: 0 0 10px;
+        }
+
+        .comparison-card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px;
+        }
+
+        .comparison-card-body li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+
+        .interventions-list h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .interventions-list h4 i { color: var(--primary-color); }
+
+        .intervention-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intervention-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .intervention-content h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 4px;
+        }
+
+        .intervention-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Quick Reference */
+        .quick-reference {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .quick-reference h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quick-ref-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .quick-ref-item .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .quick-ref-item .value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Breathing Technique Box */
+        .technique-box {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            border: 2px solid #0ea5e9;
+            border-radius: 12px;
+            padding: 24px;
+            margin: 20px 0;
+        }
+
+        .technique-box h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            color: #0369a1;
+            margin: 0 0 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .technique-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .technique-step {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            background: white;
+            padding: 14px;
+            border-radius: 8px;
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: #0ea5e9;
+            color: white;
+            border-radius: 50%;
+            font-weight: 700;
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        .step-content strong {
+            color: #0369a1;
+        }
+
+        /* Key Points Summary */
+        .key-points-summary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            padding: 28px;
+            margin: 40px 0 0;
+            color: white;
+        }
+
+        .key-points-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin: 0 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .key-points-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .key-point {
+            background: rgba(255,255,255,0.15);
+            padding: 14px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Footer */
+        .document-footer {
+            text-align: center;
+            padding: 30px 60px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .document-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        /* Print Styles - Optimized for browser Save as PDF */
+        @media print {
+            /* Hide non-content elements */
+            .download-bar { display: none !important; }
+
+            /* Reset page layout */
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            /* Preserve colors in print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* Cover page styling */
+            .cover-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            /* Prevent awkward page breaks */
+            .info-box { page-break-inside: avoid; break-inside: avoid; }
+            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+            .comparison-card { page-break-inside: avoid; break-inside: avoid; }
+            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
+            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
+            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
+            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
+            .technique-box { page-break-inside: avoid; break-inside: avoid; }
+
+            /* Keep headings with their following content */
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* Keep heading + table together */
+            .guide-section h3 + .guide-table-wrapper,
+            .guide-section h3 + .info-box,
+            .guide-section h3 + .comparison-grid,
+            .guide-section h3 + .interventions-list {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+
+            /* Allow breaks within larger sections if needed */
+            .comparison-grid { page-break-inside: auto; }
+            .interventions-list { page-break-inside: auto; }
+
+            /* Ensure links are visible in print */
+            a { text-decoration: underline; }
+
+            /* Footer on each page */
+            .document-footer {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .download-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body data-product-id="copd" data-guide-name="COPD">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/copd.webp" alt="COPD">
+                </div>
+                <div class="cover-category">Medical-Surgical Nursing</div>
+                <h1 class="cover-title">COPD</h1>
+                <p class="cover-subtitle">Comprehensive nursing study guide covering chronic bronchitis vs emphysema, safe oxygen therapy management to prevent CO2 retention, and pursed-lip breathing techniques.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">15-20 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">January 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Distinguish between chronic bronchitis and emphysema pathophysiology and clinical presentation</li>
+                    <li><i class="fas fa-check-circle"></i> Manage oxygen therapy safely to avoid CO2 retention in COPD patients</li>
+                    <li><i class="fas fa-check-circle"></i> Teach and demonstrate pursed-lip breathing technique effectively</li>
+                    <li><i class="fas fa-check-circle"></i> Understand the pathophysiology of airflow limitation in COPD</li>
+                    <li><i class="fas fa-check-circle"></i> Apply clinical reasoning to COPD patient scenarios and prioritize interventions</li>
+                </ul>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#anatomy"><span class="toc-number">1</span> Respiratory Anatomy & Physiology</a></li>
+                    <li><a href="#pathophysiology"><span class="toc-number">2</span> COPD Pathophysiology</a></li>
+                    <li><a href="#bronchitis-emphysema"><span class="toc-number">3</span> Chronic Bronchitis vs Emphysema</a></li>
+                    <li><a href="#oxygen-therapy"><span class="toc-number">4</span> Oxygen Therapy & CO2 Retention</a></li>
+                    <li><a href="#assessment"><span class="toc-number">5</span> Nursing Assessment</a></li>
+                    <li><a href="#breathing-techniques"><span class="toc-number">6</span> Breathing Techniques</a></li>
+                    <li><a href="#interventions"><span class="toc-number">7</span> Nursing Interventions</a></li>
+                    <li><a href="#medications"><span class="toc-number">8</span> Pharmacological Management</a></li>
+                </ul>
+            </nav>
+
+            <!-- Section 1: Anatomy & Physiology -->
+            <section class="guide-section" id="anatomy">
+                <h2><span class="section-icon"><i class="fas fa-lungs"></i></span> Respiratory Anatomy & Physiology Review</h2>
+
+                <p>Understanding normal respiratory function is essential for comprehending how COPD disrupts breathing. The respiratory system is responsible for gas exchange - bringing oxygen into the body and removing carbon dioxide.</p>
+
+                <h3>Key Respiratory Structures</h3>
+
+                <ul>
+                    <li><strong>Upper Airways:</strong> Nose, pharynx, larynx - warm, filter, and humidify air</li>
+                    <li><strong>Lower Airways:</strong> Trachea, bronchi, bronchioles - conduct air to gas exchange units</li>
+                    <li><strong>Alveoli:</strong> Tiny air sacs where gas exchange occurs (300 million in average adult)</li>
+                    <li><strong>Surfactant:</strong> Reduces surface tension, prevents alveolar collapse</li>
+                </ul>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Gas Exchange Basics
+                    </div>
+                    <p><strong>Oxygen diffuses from alveoli → blood</strong> (high O2 in alveoli, low O2 in blood)</p>
+                    <p><strong>CO2 diffuses from blood → alveoli</strong> (high CO2 in blood, low CO2 in alveoli)</p>
+                    <p>This simple diffusion depends on adequate ventilation AND perfusion!</p>
+                </div>
+
+                <h3>Normal Respiratory Drive</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Stimulus</th>
+                                <th>Location</th>
+                                <th>Normal Response</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>High CO2 (Primary)</td>
+                                <td>Central chemoreceptors (medulla)</td>
+                                <td>Increased respiratory rate and depth</td>
+                            </tr>
+                            <tr>
+                                <td>Low O2 (Secondary)</td>
+                                <td>Peripheral chemoreceptors (carotid/aortic bodies)</td>
+                                <td>Stimulates breathing when O2 drops significantly</td>
+                            </tr>
+                            <tr>
+                                <td>Low pH (Acidosis)</td>
+                                <td>Central and peripheral chemoreceptors</td>
+                                <td>Increased ventilation to "blow off" CO2</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Key Concept for COPD
+                    </div>
+                    <p>In healthy individuals, <strong>elevated CO2</strong> is the primary stimulus for breathing. This is critical to understand because COPD patients develop chronic CO2 retention, which changes their respiratory drive!</p>
+                </div>
+
+                <h3>Pulmonary Function Terms</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Term</th>
+                                <th>Definition</th>
+                                <th>Clinical Relevance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>FEV1</td>
+                                <td>Forced expiratory volume in 1 second</td>
+                                <td>Reduced in COPD; used to stage severity</td>
+                            </tr>
+                            <tr>
+                                <td>FVC</td>
+                                <td>Forced vital capacity (total exhaled after max inhale)</td>
+                                <td>May be normal or reduced</td>
+                            </tr>
+                            <tr>
+                                <td>FEV1/FVC Ratio</td>
+                                <td>Percentage of FVC exhaled in first second</td>
+                                <td>&lt; 70% confirms airflow obstruction</td>
+                            </tr>
+                            <tr>
+                                <td>Residual Volume</td>
+                                <td>Air remaining after maximal exhalation</td>
+                                <td>Increased in COPD (air trapping)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 2: Pathophysiology -->
+            <section class="guide-section" id="pathophysiology">
+                <h2><span class="section-icon"><i class="fas fa-dna"></i></span> COPD Pathophysiology</h2>
+
+                <p>Chronic Obstructive Pulmonary Disease (COPD) is a progressive, irreversible lung disease characterized by <strong>airflow limitation</strong> that is not fully reversible. It encompasses two main conditions: chronic bronchitis and emphysema, which often coexist.</p>
+
+                <h3>Definition</h3>
+                <p>COPD is a preventable and treatable disease characterized by persistent respiratory symptoms and airflow limitation due to airway and/or alveolar abnormalities, usually caused by significant exposure to noxious particles or gases.</p>
+
+                <h3>Risk Factors</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Risk Factor</th>
+                                <th>Details</th>
+                                <th>Impact</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cigarette Smoking</td>
+                                <td>#1 cause - 80-90% of cases</td>
+                                <td>Damages airways and alveoli; triggers inflammation</td>
+                            </tr>
+                            <tr>
+                                <td>Occupational Exposures</td>
+                                <td>Dust, chemicals, fumes</td>
+                                <td>Coal miners, farmers, textile workers at risk</td>
+                            </tr>
+                            <tr>
+                                <td>Air Pollution</td>
+                                <td>Indoor and outdoor pollutants</td>
+                                <td>Biomass fuel smoke significant in developing countries</td>
+                            </tr>
+                            <tr>
+                                <td>Alpha-1 Antitrypsin Deficiency</td>
+                                <td>Genetic deficiency (1-2% of cases)</td>
+                                <td>Early-onset emphysema; test young patients</td>
+                            </tr>
+                            <tr>
+                                <td>Recurrent Respiratory Infections</td>
+                                <td>Childhood infections</td>
+                                <td>May predispose to reduced lung function</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical Point: Smoking Cessation
+                    </div>
+                    <p><strong>Smoking cessation is the ONLY intervention proven to slow COPD progression!</strong> It should be addressed at every patient encounter. Even in advanced disease, quitting provides benefits.</p>
+                </div>
+
+                <h3>Pathophysiologic Changes</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-lungs-virus"></i> What Happens in COPD</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Chronic Inflammation</h5>
+                            <p>Inhaled irritants trigger ongoing inflammatory response in airways and lung parenchyma. Inflammatory cells (neutrophils, macrophages) release proteases that damage tissue.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Airway Remodeling</h5>
+                            <p>Repeated injury leads to thickening of airway walls, mucus gland hyperplasia, and increased mucus production. Airways narrow and become obstructed.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Alveolar Destruction</h5>
+                            <p>Protease/antiprotease imbalance destroys alveolar walls. Loss of elastic recoil causes air trapping and hyperinflation. Surface area for gas exchange decreases.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Air Trapping</h5>
+                            <p>Loss of elastic recoil and small airway collapse during exhalation traps air in lungs. This increases residual volume and causes barrel chest appearance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: COPD Changes
+                    </div>
+                    <p><strong>COPD = Can't Overcome Pulmonary Damage</strong></p>
+                    <ul>
+                        <li><strong>C</strong>hronic inflammation</li>
+                        <li><strong>O</strong>bstructed airways</li>
+                        <li><strong>P</strong>arenchymal destruction</li>
+                        <li><strong>D</strong>ecreased airflow</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 3: Bronchitis vs Emphysema -->
+            <section class="guide-section" id="bronchitis-emphysema">
+                <h2><span class="section-icon"><i class="fas fa-columns"></i></span> Chronic Bronchitis vs Emphysema</h2>
+
+                <p>While COPD is an umbrella term, understanding the distinct features of chronic bronchitis and emphysema helps guide assessment and treatment. Most patients have features of both, but one may predominate.</p>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Classic Patient Presentations
+                    </div>
+                    <p><strong>Blue Bloater</strong> = Chronic Bronchitis (cyanotic, edematous, productive cough)</p>
+                    <p><strong>Pink Puffer</strong> = Emphysema (thin, pursed-lip breathing, dyspneic, pink skin)</p>
+                    <p>These are classic descriptions - remember that most real patients have mixed features!</p>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card bronchitis">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-head-side-cough"></i> Chronic Bronchitis
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Definition</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">Productive cough for 3+ months in 2 consecutive years</p>
+                            <h4>Primary Problem</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Airway inflammation</strong> and mucus hypersecretion</li>
+                                <li><i class="fas fa-check"></i> Mucus gland hyperplasia</li>
+                                <li><i class="fas fa-check"></i> Airway wall thickening</li>
+                                <li><i class="fas fa-check"></i> Impaired mucociliary clearance</li>
+                            </ul>
+                            <h4>Key Clinical Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Chronic productive cough</li>
+                                <li><i class="fas fa-check"></i> Copious sputum production</li>
+                                <li><i class="fas fa-check"></i> Frequent respiratory infections</li>
+                                <li><i class="fas fa-check"></i> Cyanosis (hypoxemia)</li>
+                                <li><i class="fas fa-check"></i> Peripheral edema (cor pulmonale)</li>
+                                <li><i class="fas fa-check"></i> Overweight appearance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card emphysema">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-wind"></i> Emphysema
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Definition</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">Permanent enlargement of airspaces distal to terminal bronchioles with wall destruction</p>
+                            <h4>Primary Problem</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Alveolar destruction</strong> and loss of elastic recoil</li>
+                                <li><i class="fas fa-check"></i> Air trapping</li>
+                                <li><i class="fas fa-check"></i> Hyperinflation</li>
+                                <li><i class="fas fa-check"></i> Decreased surface area for gas exchange</li>
+                            </ul>
+                            <h4>Key Clinical Features</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Severe dyspnea (main symptom)</li>
+                                <li><i class="fas fa-check"></i> Minimal cough/sputum</li>
+                                <li><i class="fas fa-check"></i> Barrel chest</li>
+                                <li><i class="fas fa-check"></i> Pursed-lip breathing</li>
+                                <li><i class="fas fa-check"></i> Accessory muscle use</li>
+                                <li><i class="fas fa-check"></i> Thin, cachectic appearance</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Detailed Comparison</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Chronic Bronchitis ("Blue Bloater")</th>
+                                <th>Emphysema ("Pink Puffer")</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Age of Onset</td>
+                                <td>40-50 years</td>
+                                <td>50-60 years</td>
+                            </tr>
+                            <tr>
+                                <td>Primary Symptom</td>
+                                <td>Chronic productive cough</td>
+                                <td>Progressive dyspnea</td>
+                            </tr>
+                            <tr>
+                                <td>Sputum</td>
+                                <td>Copious, purulent</td>
+                                <td>Minimal, mucoid</td>
+                            </tr>
+                            <tr>
+                                <td>Body Habitus</td>
+                                <td>Overweight, edematous</td>
+                                <td>Thin, cachectic</td>
+                            </tr>
+                            <tr>
+                                <td>Skin Color</td>
+                                <td>Cyanotic (blue)</td>
+                                <td>Pink (maintains oxygenation)</td>
+                            </tr>
+                            <tr>
+                                <td>Chest Appearance</td>
+                                <td>Normal or slightly increased AP diameter</td>
+                                <td>Barrel chest (increased AP diameter)</td>
+                            </tr>
+                            <tr>
+                                <td>Breath Sounds</td>
+                                <td>Rhonchi, wheezes</td>
+                                <td>Diminished, distant</td>
+                            </tr>
+                            <tr>
+                                <td>CO2 Retention</td>
+                                <td>Significant (chronic hypercapnia)</td>
+                                <td>Minimal until late stage</td>
+                            </tr>
+                            <tr>
+                                <td>Cor Pulmonale</td>
+                                <td>Common and early</td>
+                                <td>Late in disease</td>
+                            </tr>
+                            <tr>
+                                <td>Respiratory Drive</td>
+                                <td>Hypoxic drive (relies on low O2)</td>
+                                <td>Usually maintains CO2 drive longer</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Why "Pink Puffer"?
+                    </div>
+                    <p>Emphysema patients maintain near-normal oxygen levels through increased work of breathing (puffing). They use pursed-lip breathing and accessory muscles to create back-pressure that keeps airways open. This extreme effort keeps them pink but causes severe dyspnea and muscle wasting.</p>
+                </div>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card blue-bloater">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-user"></i> "Blue Bloater" Profile
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Why "Blue"</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Chronic hypoxemia from V/Q mismatch</li>
+                                <li><i class="fas fa-check"></i> Mucus plugging impairs gas exchange</li>
+                                <li><i class="fas fa-check"></i> Central cyanosis visible</li>
+                            </ul>
+                            <h4>Why "Bloater"</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Right heart failure (cor pulmonale)</li>
+                                <li><i class="fas fa-check"></i> Peripheral edema</li>
+                                <li><i class="fas fa-check"></i> JVD present</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card pink-puffer">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-user"></i> "Pink Puffer" Profile
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Why "Pink"</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Maintains adequate oxygenation</li>
+                                <li><i class="fas fa-check"></i> Compensates with increased ventilation</li>
+                                <li><i class="fas fa-check"></i> No cyanosis until very late</li>
+                            </ul>
+                            <h4>Why "Puffer"</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Pursed-lip breathing visible</li>
+                                <li><i class="fas fa-check"></i> Prolonged expiratory phase</li>
+                                <li><i class="fas fa-check"></i> Uses accessory muscles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Oxygen Therapy -->
+            <section class="guide-section" id="oxygen-therapy">
+                <h2><span class="section-icon"><i class="fas fa-wind"></i></span> Oxygen Therapy & CO2 Retention</h2>
+
+                <p>Managing oxygen therapy in COPD patients requires understanding the shift in respiratory drive that occurs with chronic CO2 retention. Improper oxygen administration can lead to respiratory failure.</p>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical Safety Concept
+                    </div>
+                    <p><strong>In COPD patients with chronic CO2 retention, HIGH-FLOW OXYGEN CAN SUPPRESS THE RESPIRATORY DRIVE AND CAUSE RESPIRATORY FAILURE!</strong></p>
+                    <p>These patients have lost their sensitivity to elevated CO2 and rely on LOW OXYGEN LEVELS (hypoxic drive) to stimulate breathing.</p>
+                </div>
+
+                <h3>Understanding the Hypoxic Drive</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-brain"></i> The Respiratory Drive Shift</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Normal Respiratory Drive</h5>
+                            <p>In healthy individuals, <strong>elevated CO2</strong> (hypercapnia) is the primary stimulus for breathing. When CO2 rises, the brain signals to breathe faster/deeper.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Chronic CO2 Retention in COPD</h5>
+                            <p>COPD patients (especially chronic bronchitis) develop chronically elevated CO2 levels. The brain's chemoreceptors become "desensitized" to high CO2.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Shift to Hypoxic Drive</h5>
+                            <p>When CO2 drive is lost, the body switches to using <strong>low oxygen</strong> (hypoxemia) as the primary stimulus to breathe. Peripheral chemoreceptors in carotid/aortic bodies detect low O2.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Danger of High-Flow Oxygen</h5>
+                            <p>If you give high-flow O2, the hypoxic stimulus is removed. The patient may stop breathing adequately, leading to <strong>CO2 narcosis</strong> and respiratory arrest!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Priority
+                    </div>
+                    <p><strong>Target SpO2 for COPD patients with chronic hypercapnia: 88-92%</strong></p>
+                    <p>Do NOT try to achieve 100% saturation - this can suppress their respiratory drive!</p>
+                </div>
+
+                <h3>Oxygen Delivery Guidelines for COPD</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Delivery Device</th>
+                                <th>Flow Rate</th>
+                                <th>FiO2 Delivered</th>
+                                <th>Use in COPD</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nasal Cannula</td>
+                                <td>1-2 L/min</td>
+                                <td>24-28%</td>
+                                <td>PREFERRED for stable COPD</td>
+                            </tr>
+                            <tr>
+                                <td>Nasal Cannula</td>
+                                <td>3-4 L/min</td>
+                                <td>32-36%</td>
+                                <td>Use cautiously; monitor closely</td>
+                            </tr>
+                            <tr>
+                                <td>Venturi Mask</td>
+                                <td>Variable</td>
+                                <td>24-50% (precise)</td>
+                                <td>IDEAL for precise FiO2 control</td>
+                            </tr>
+                            <tr>
+                                <td>Simple Mask</td>
+                                <td>5-10 L/min</td>
+                                <td>40-60%</td>
+                                <td>Use with caution; not preferred</td>
+                            </tr>
+                            <tr>
+                                <td>Non-Rebreather</td>
+                                <td>10-15 L/min</td>
+                                <td>80-100%</td>
+                                <td>AVOID unless life-threatening emergency</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-bookmark"></i> Oxygen Therapy Quick Reference</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Target SpO2 (COPD)</div>
+                            <div class="value">88-92%</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Preferred Device</div>
+                            <div class="value">NC 1-2 L/min or Venturi</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Most Precise Control</div>
+                            <div class="value">Venturi Mask</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">AVOID High-Flow If</div>
+                            <div class="value">Chronic CO2 retainer</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Signs of CO2 Narcosis (Hypercapnic Respiratory Failure)</h3>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Warning Signs - Act Immediately!
+                    </div>
+                    <ul>
+                        <li><strong>Decreased level of consciousness</strong> (confusion → lethargy → unresponsive)</li>
+                        <li><strong>Headache</strong> (CO2 causes cerebral vasodilation)</li>
+                        <li><strong>Decreased respiratory rate</strong> or shallow breathing</li>
+                        <li><strong>Flushed, warm skin</strong> (vasodilation from CO2)</li>
+                        <li><strong>Asterixis</strong> (flapping tremor when wrists extended)</li>
+                        <li><strong>Paradoxical chest movement</strong></li>
+                    </ul>
+                    <p style="margin-top: 12px;"><strong>Action:</strong> Reduce oxygen flow rate, assess airway, prepare for possible intubation, notify provider STAT!</p>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: ABG Interpretation
+                    </div>
+                    <p><strong>Chronic CO2 Retainer ABG Pattern:</strong></p>
+                    <ul>
+                        <li>pH: Normal or slightly low (7.35-7.38) - compensated</li>
+                        <li>PaCO2: Elevated (50-70 mmHg is their "normal")</li>
+                        <li>HCO3: Elevated (compensation by kidneys)</li>
+                        <li>PaO2: Low (60-70 mmHg may be acceptable)</li>
+                    </ul>
+                    <p>This is <strong>compensated respiratory acidosis</strong> - their kidneys have retained bicarbonate to normalize pH!</p>
+                </div>
+            </section>
+
+            <!-- Section 5: Nursing Assessment -->
+            <section class="guide-section" id="assessment">
+                <h2><span class="section-icon"><i class="fas fa-stethoscope"></i></span> Nursing Assessment</h2>
+
+                <p>Thorough respiratory assessment is crucial for monitoring COPD patients, detecting exacerbations early, and evaluating treatment effectiveness.</p>
+
+                <h3>Comprehensive COPD Assessment</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-check"></i> Key Assessment Components</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Respiratory Assessment</h5>
+                            <p>Rate, rhythm, depth, effort. Note use of accessory muscles, pursed-lip breathing, tripod positioning. Auscultate for wheezes, rhonchi, diminished breath sounds. Measure SpO2.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Cough and Sputum</h5>
+                            <p>Frequency, productivity, sputum color/amount/consistency. Change from baseline may indicate infection. Clear → yellow/green suggests bacterial infection.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Physical Appearance</h5>
+                            <p>Barrel chest (increased AP diameter), cyanosis (central vs peripheral), clubbing of fingers, weight/nutritional status, JVD, peripheral edema (cor pulmonale).</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Functional Status</h5>
+                            <p>Dyspnea scale (0-10), activity tolerance, ADL performance, sleep quality, impact on daily life. Use standardized tools (mMRC Dyspnea Scale, CAT score).</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Mental Status</h5>
+                            <p>Level of consciousness, orientation, confusion, anxiety. Changes may indicate hypoxemia or CO2 retention. Baseline mental status important for comparison.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Signs of COPD Exacerbation</h3>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Recognize Early - Report Immediately!
+                    </div>
+                    <ul>
+                        <li><strong>Increased dyspnea</strong> beyond normal day-to-day variation</li>
+                        <li><strong>Increased sputum volume</strong> and/or purulence</li>
+                        <li><strong>Increased cough</strong> frequency or severity</li>
+                        <li><strong>Fever</strong> (may indicate infection)</li>
+                        <li><strong>Decreased activity tolerance</strong></li>
+                        <li><strong>Confusion or altered mental status</strong></li>
+                        <li><strong>Peripheral edema worsening</strong></li>
+                    </ul>
+                </div>
+
+                <h3>Key Diagnostic Indicators</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Purpose</th>
+                                <th>COPD Indicators</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Spirometry (PFTs)</td>
+                                <td>Diagnose and stage COPD</td>
+                                <td>FEV1/FVC &lt; 70%; FEV1 determines stage</td>
+                            </tr>
+                            <tr>
+                                <td>ABG</td>
+                                <td>Assess gas exchange</td>
+                                <td>Hypoxemia, hypercapnia, respiratory acidosis</td>
+                            </tr>
+                            <tr>
+                                <td>Chest X-Ray</td>
+                                <td>Rule out other conditions</td>
+                                <td>Hyperinflation, flat diaphragm, bullae</td>
+                            </tr>
+                            <tr>
+                                <td>Alpha-1 Antitrypsin</td>
+                                <td>Genetic testing</td>
+                                <td>Low levels indicate genetic cause</td>
+                            </tr>
+                            <tr>
+                                <td>CBC</td>
+                                <td>Monitor for polycythemia</td>
+                                <td>Elevated Hgb/Hct (compensation for hypoxemia)</td>
+                            </tr>
+                            <tr>
+                                <td>BNP</td>
+                                <td>Assess for cor pulmonale</td>
+                                <td>Elevated if right heart failure present</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: GOLD Classification
+                    </div>
+                    <p>COPD severity is staged by FEV1 (post-bronchodilator) according to GOLD guidelines:</p>
+                    <ul>
+                        <li><strong>GOLD 1 (Mild):</strong> FEV1 ≥ 80% predicted</li>
+                        <li><strong>GOLD 2 (Moderate):</strong> FEV1 50-79% predicted</li>
+                        <li><strong>GOLD 3 (Severe):</strong> FEV1 30-49% predicted</li>
+                        <li><strong>GOLD 4 (Very Severe):</strong> FEV1 &lt; 30% predicted</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 6: Breathing Techniques -->
+            <section class="guide-section" id="breathing-techniques">
+                <h2><span class="section-icon"><i class="fas fa-wind"></i></span> Breathing Techniques</h2>
+
+                <p>Teaching proper breathing techniques is a key nursing intervention for COPD patients. These techniques improve ventilation, reduce air trapping, and decrease the work of breathing.</p>
+
+                <h3>Pursed-Lip Breathing (PLB)</h3>
+
+                <div class="technique-box">
+                    <h4><i class="fas fa-lungs"></i> Pursed-Lip Breathing Technique</h4>
+                    <p style="color: #0369a1; margin-bottom: 16px;">This is the MOST important breathing technique for COPD patients. It creates back-pressure that keeps airways open during exhalation, preventing air trapping.</p>
+
+                    <div class="technique-steps">
+                        <div class="technique-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <strong>Relax</strong> - Have the patient sit comfortably with shoulders relaxed. Relaxation reduces oxygen demand.
+                            </div>
+                        </div>
+                        <div class="technique-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <strong>Inhale slowly through the nose</strong> - Count "1-2" while inhaling. Nose breathing warms and humidifies air.
+                            </div>
+                        </div>
+                        <div class="technique-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <strong>Purse lips</strong> - Like you're going to whistle or blow out a candle. This creates resistance.
+                            </div>
+                        </div>
+                        <div class="technique-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <strong>Exhale slowly through pursed lips</strong> - Count "1-2-3-4" (twice as long as inhalation). Don't force the air out.
+                            </div>
+                        </div>
+                        <div class="technique-step">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <strong>Repeat</strong> - Practice during activity and at rest. Use automatically when short of breath.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Key Teaching Points
+                    </div>
+                    <p><strong>The 1:2 Ratio:</strong> Exhalation should be TWICE as long as inhalation</p>
+                    <ul>
+                        <li>Inhale: 2 counts</li>
+                        <li>Exhale: 4 counts</li>
+                    </ul>
+                    <p style="margin-top: 8px;"><strong>Why it works:</strong> Creates positive pressure that prevents small airway collapse during exhalation, allowing trapped air to escape.</p>
+                </div>
+
+                <h3>Diaphragmatic (Abdominal) Breathing</h3>
+
+                <div class="technique-box">
+                    <h4><i class="fas fa-lungs"></i> Diaphragmatic Breathing Technique</h4>
+                    <p style="color: #0369a1; margin-bottom: 16px;">Strengthens the diaphragm and promotes more efficient breathing by reducing use of accessory muscles.</p>
+
+                    <div class="technique-steps">
+                        <div class="technique-step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <strong>Position</strong> - Lie on back with knees bent, or sit comfortably. Place one hand on chest, one on abdomen.
+                            </div>
+                        </div>
+                        <div class="technique-step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <strong>Inhale through nose</strong> - Feel the abdomen rise (hand moves outward). Chest should remain relatively still.
+                            </div>
+                        </div>
+                        <div class="technique-step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <strong>Exhale through pursed lips</strong> - Feel the abdomen fall. Gently tighten abdominal muscles to push air out.
+                            </div>
+                        </div>
+                        <div class="technique-step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <strong>Practice 5-10 minutes</strong> - 3-4 times daily. Progress to using during activities.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Additional Breathing Strategies</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Technique</th>
+                                <th>Purpose</th>
+                                <th>When to Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tripod Position</td>
+                                <td>Maximizes accessory muscle use</td>
+                                <td>Acute dyspnea; sit leaning forward on arms</td>
+                            </tr>
+                            <tr>
+                                <td>Paced Breathing</td>
+                                <td>Coordinates breathing with activity</td>
+                                <td>During exertion (exhale on effort)</td>
+                            </tr>
+                            <tr>
+                                <td>Controlled Coughing</td>
+                                <td>Clears secretions without exhaustion</td>
+                                <td>When mucus needs clearing</td>
+                            </tr>
+                            <tr>
+                                <td>Huff Coughing</td>
+                                <td>Moves secretions with less energy</td>
+                                <td>Alternative to forceful coughing</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> Patient Teaching Tips
+                    </div>
+                    <ul>
+                        <li><strong>Practice when NOT short of breath</strong> - Learn technique during calm periods so it's automatic during distress</li>
+                        <li><strong>Use during activities</strong> - Exhale during the exertion phase (lifting, climbing stairs)</li>
+                        <li><strong>Stay relaxed</strong> - Tension increases oxygen demand</li>
+                        <li><strong>Don't rush</strong> - Slow, controlled breathing is more effective than rapid breathing</li>
+                        <li><strong>Use a mirror</strong> - Helps patients visualize proper technique</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 7: Nursing Interventions -->
+            <section class="guide-section" id="interventions">
+                <h2><span class="section-icon"><i class="fas fa-user-nurse"></i></span> Nursing Interventions</h2>
+
+                <p>Nursing care for COPD patients focuses on optimizing oxygenation, managing symptoms, preventing complications, and promoting self-management.</p>
+
+                <h3>Priority Nursing Interventions</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-list"></i> Key Interventions</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Maintain Patent Airway</h5>
+                            <p>Position for optimal breathing (high Fowler's or tripod). Encourage effective coughing and deep breathing. Suction if unable to clear secretions. Ensure hydration to thin secretions.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Administer Oxygen Safely</h5>
+                            <p>Use LOW-FLOW oxygen (1-2 L/min NC or Venturi mask). Target SpO2 88-92%. Monitor closely for signs of CO2 retention. Titrate carefully based on patient response.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Administer Medications as Prescribed</h5>
+                            <p>Bronchodilators, corticosteroids, antibiotics for exacerbations. Ensure proper inhaler technique. Schedule bronchodilators before activities and meals.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Promote Energy Conservation</h5>
+                            <p>Plan activities with rest periods. Teach pacing techniques. Assist with ADLs as needed. Schedule care to allow recovery time.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Ensure Adequate Nutrition</h5>
+                            <p>Small, frequent meals (large meals compress diaphragm). High-protein, high-calorie diet for cachectic patients. Bronchodilator before meals to reduce dyspnea.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">6</div>
+                        <div class="intervention-content">
+                            <h5>Prevent Infections</h5>
+                            <p>Hand hygiene, avoid crowds during flu season. Ensure vaccinations current (influenza annually, pneumococcal). Teach early recognition of infection signs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Nutrition in COPD
+                    </div>
+                    <p>COPD patients with emphysema often have increased energy expenditure from the work of breathing, leading to weight loss and muscle wasting. Adequate nutrition is essential:</p>
+                    <ul>
+                        <li><strong>Small, frequent meals</strong> - Prevents abdominal distension that restricts breathing</li>
+                        <li><strong>High protein</strong> - Maintains respiratory muscle strength</li>
+                        <li><strong>Limit carbohydrates</strong> - Carb metabolism produces more CO2 than fat/protein</li>
+                        <li><strong>Rest before meals</strong> - Reduces dyspnea during eating</li>
+                    </ul>
+                </div>
+
+                <h3>Patient Education Priorities</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Key Teaching Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Smoking Cessation</td>
+                                <td>MOST important intervention; resources available; medications can help</td>
+                            </tr>
+                            <tr>
+                                <td>Medication Management</td>
+                                <td>Proper inhaler technique; difference between rescue and maintenance inhalers; don't stop suddenly</td>
+                            </tr>
+                            <tr>
+                                <td>Breathing Techniques</td>
+                                <td>Pursed-lip breathing; diaphragmatic breathing; when to use each</td>
+                            </tr>
+                            <tr>
+                                <td>Energy Conservation</td>
+                                <td>Pacing activities; rest periods; assistive devices; planning ahead</td>
+                            </tr>
+                            <tr>
+                                <td>Infection Prevention</td>
+                                <td>Vaccinations; hand hygiene; avoid sick contacts; early symptom recognition</td>
+                            </tr>
+                            <tr>
+                                <td>When to Seek Help</td>
+                                <td>Increased dyspnea; fever; sputum changes; confusion; worsening edema</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 8: Medications -->
+            <section class="guide-section" id="medications">
+                <h2><span class="section-icon"><i class="fas fa-pills"></i></span> Pharmacological Management</h2>
+
+                <p>Medication therapy for COPD focuses on bronchodilation, reducing inflammation, and treating exacerbations. Understanding drug classes and proper administration is essential.</p>
+
+                <h3>Bronchodilators (Cornerstone of COPD Treatment)</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Class</th>
+                                <th>Examples</th>
+                                <th>Mechanism</th>
+                                <th>Nursing Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SABA (Short-Acting Beta-Agonist)</strong></td>
+                                <td>Albuterol (ProAir, Ventolin)</td>
+                                <td>Relaxes bronchial smooth muscle</td>
+                                <td>RESCUE inhaler; monitor HR, tremors; use before activity</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SAMA (Short-Acting Muscarinic Antagonist)</strong></td>
+                                <td>Ipratropium (Atrovent)</td>
+                                <td>Blocks acetylcholine in airways</td>
+                                <td>Less tachycardia than SABA; dry mouth; avoid in glaucoma</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LABA (Long-Acting Beta-Agonist)</strong></td>
+                                <td>Salmeterol, Formoterol</td>
+                                <td>Sustained bronchodilation</td>
+                                <td>MAINTENANCE only - NOT for acute rescue; twice daily</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LAMA (Long-Acting Muscarinic Antagonist)</strong></td>
+                                <td>Tiotropium (Spiriva)</td>
+                                <td>24-hour bronchodilation</td>
+                                <td>Once daily; dry mouth; urinary retention in BPH</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Combination LABA/LAMA</strong></td>
+                                <td>Anoro Ellipta, Stiolto</td>
+                                <td>Dual bronchodilation</td>
+                                <td>More effective than single agent; one inhaler</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical Safety Alert
+                    </div>
+                    <p><strong>NEVER use LABA alone in COPD patients who also have asthma!</strong> LABAs without inhaled corticosteroids increase asthma mortality risk. If patient has asthma-COPD overlap, use LABA + ICS combination.</p>
+                </div>
+
+                <h3>Anti-Inflammatory Medications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Class</th>
+                                <th>Examples</th>
+                                <th>Use in COPD</th>
+                                <th>Nursing Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ICS (Inhaled Corticosteroids)</strong></td>
+                                <td>Fluticasone, Budesonide</td>
+                                <td>Severe COPD with frequent exacerbations</td>
+                                <td>Rinse mouth after use; increased pneumonia risk</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ICS/LABA Combination</strong></td>
+                                <td>Advair, Symbicort, Breo</td>
+                                <td>Moderate-severe COPD with exacerbations</td>
+                                <td>NOT for rescue; rinse mouth; monitor for thrush</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Systemic Corticosteroids</strong></td>
+                                <td>Prednisone, Methylprednisolone</td>
+                                <td>Acute exacerbations (short course)</td>
+                                <td>5-7 day burst; monitor glucose; don't stop abruptly</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PDE-4 Inhibitor</strong></td>
+                                <td>Roflumilast (Daliresp)</td>
+                                <td>Severe COPD with chronic bronchitis</td>
+                                <td>Reduce inflammation; GI side effects; weight loss</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Other Important Medications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Medication</th>
+                                <th>Purpose</th>
+                                <th>Nursing Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Antibiotics</td>
+                                <td>Bacterial exacerbations</td>
+                                <td>Give if purulent sputum + increased dyspnea/volume</td>
+                            </tr>
+                            <tr>
+                                <td>Mucolytics (Guaifenesin)</td>
+                                <td>Thin secretions</td>
+                                <td>Increase fluid intake; limited evidence in COPD</td>
+                            </tr>
+                            <tr>
+                                <td>Diuretics</td>
+                                <td>Cor pulmonale/edema</td>
+                                <td>Monitor electrolytes; may worsen metabolic alkalosis</td>
+                            </tr>
+                            <tr>
+                                <td>Anxiolytics</td>
+                                <td>Dyspnea-related anxiety</td>
+                                <td>Use cautiously - may depress respirations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> Inhaler Teaching Checklist
+                    </div>
+                    <ul>
+                        <li><strong>Shake MDI</strong> before use (if applicable)</li>
+                        <li><strong>Prime</strong> new inhalers or if not used for several days</li>
+                        <li><strong>Exhale fully</strong> before inhaling medication</li>
+                        <li><strong>Seal lips</strong> around mouthpiece or use spacer</li>
+                        <li><strong>Inhale slowly and deeply</strong> while activating</li>
+                        <li><strong>Hold breath 10 seconds</strong> if possible</li>
+                        <li><strong>Wait 1 minute</strong> between puffs if multiple doses</li>
+                        <li><strong>Rinse mouth</strong> after ICS to prevent thrush</li>
+                        <li><strong>Clean inhaler</strong> weekly per manufacturer instructions</li>
+                    </ul>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Inhaler Order
+                    </div>
+                    <p>When using multiple inhalers, use in this order:</p>
+                    <ol>
+                        <li><strong>Short-acting bronchodilator FIRST</strong> (opens airways)</li>
+                        <li><strong>Long-acting bronchodilator</strong> (if scheduled dose)</li>
+                        <li><strong>Corticosteroid inhaler LAST</strong> (deposits better in open airways)</li>
+                    </ol>
+                    <p style="margin-top: 8px;">Remember: <strong>"Bronchodilators Before Steroids"</strong></p>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-head-side-cough"></i>
+                        <p><strong>Chronic Bronchitis</strong> = "Blue Bloater" - productive cough, cyanosis, edema</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-wind"></i>
+                        <p><strong>Emphysema</strong> = "Pink Puffer" - dyspnea, barrel chest, pursed-lip breathing</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-percentage"></i>
+                        <p><strong>Target SpO2</strong> = 88-92% in COPD with chronic CO2 retention</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-lungs"></i>
+                        <p><strong>Pursed-lip breathing</strong> = Inhale 2 counts, exhale 4 counts (1:2 ratio)</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-smoking-ban"></i>
+                        <p><strong>Smoking cessation</strong> is the ONLY intervention that slows COPD progression</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>High-flow O2</strong> can cause CO2 narcosis in chronic retainers</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <p><strong>The Nursing Collective</strong> | <a href="https://thenursingcollective.pro">thenursingcollective.pro</a></p>
+            <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.7;">This study guide is for educational purposes only. Always follow your institution's policies and procedures.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts (external for CSP compliance) -->
+    <script src="guide-script.js"></script>
+</body>
+</html>

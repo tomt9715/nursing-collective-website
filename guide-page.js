@@ -2,7 +2,7 @@
 // Uses backend API for access verification
 
 // HTML guides that should redirect to /guides/{id}.html
-const htmlGuides = ['heart-failure', 'assessment-skills', 'myocardial-infarction'];
+const htmlGuides = ['heart-failure', 'assessment-skills', 'myocardial-infarction', 'copd'];
 
 // Check if this guide has an HTML version and redirect immediately
 (function() {
@@ -767,7 +767,7 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
                                 <p class="related-guide-desc">${getGuideDesc(guideId)}</p>
                                 <div class="related-guide-actions">
                                     ${isOwned
-                                        ? `<a href="${htmlGuides.includes(guideId) ? `guides/${guideId}.html` : `guide.html?id=${guideId}`}" class="btn-view-guide"><i class="fas fa-book-reader"></i> Continue Studying</a>`
+                                        ? `<a href="${htmlGuides.includes(guideId) ? `guides/${guideId}.html` : `guide.html?id=${guideId}`}" class="btn-view-guide"><i class="fas fa-book-reader"></i> Open Guide</a>`
                                         : `<a href="store.html?highlight=${guideId}" class="btn-purchase-guide"><i class="fas fa-cart-plus"></i> Add to Cart</a>`
                                     }
                                 </div>

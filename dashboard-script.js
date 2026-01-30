@@ -755,7 +755,7 @@ async function loadAccessibleGuides(user) {
                         </div>
                         <div class="guide-card-actions">
                             <button class="btn-continue" data-study="${escapeHtml(purchase.product_id)}">
-                                <i class="fas fa-book-reader"></i> Continue Studying
+                                <i class="fas fa-book-reader"></i> Open Guide
                             </button>
                             <button class="btn-download-secondary download-btn" data-download="${escapeHtml(purchase.product_id)}">
                                 <i class="fas fa-download"></i> PDF
@@ -1059,7 +1059,7 @@ function filterAndRenderGuides() {
                 </div>
                 <div class="guide-card-actions">
                     <button class="btn-continue" data-study="${escapeHtml(purchase.product_id)}">
-                        <i class="fas fa-book-reader"></i> Continue Studying
+                        <i class="fas fa-book-reader"></i> Open Guide
                     </button>
                     <button class="btn-download-secondary download-btn" data-download="${escapeHtml(purchase.product_id)}">
                         <i class="fas fa-download"></i> PDF
@@ -1106,75 +1106,47 @@ function continueStudying(productId) {
     }
 }
 
-// Download a guide by getting a secure download link
+// Download a guide by getting a secure download link from R2 storage
 // Tracks download event for refund policy enforcement
 async function downloadGuide(productId, button, source = 'dashboard') {
     const originalText = button.innerHTML;
     button.disabled = true;
-    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
-
-    // HTML guides that use server-side PDF generation
-    const htmlGuides = ['heart-failure', 'assessment-skills', 'myocardial-infarction', 'copd'];
+    button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing download...';
 
     try {
         // Track the download event first
         await trackDownload(productId, source);
 
-        if (htmlGuides.includes(productId)) {
-            // For HTML guides, use the server-side PDF generation endpoint
-            // This generates a clean PDF without browser headers/footers
-            const token = localStorage.getItem('accessToken');
-            if (!token) {
-                throw new Error('Please log in to download guides');
-            }
+        const token = localStorage.getItem('accessToken');
+        if (!token) {
+            throw new Error('Please log in to download guides');
+        }
 
-            // Fetch the PDF from the backend (uses API_URL from api-service.js)
-            const response = await fetch(`${API_URL}/api/guides/${productId}/pdf`, {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                },
-                credentials: 'include'
-            });
+        // All guides now use the same PDF endpoint which returns an R2 download URL
+        const response = await fetch(`${API_URL}/api/guides/${productId}/pdf`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
+            credentials: 'include'
+        });
 
-            if (!response.ok) {
-                const errorData = await response.json().catch(() => ({}));
-                throw new Error(errorData.message || 'Failed to generate PDF');
-            }
+        const data = await response.json();
 
-            // Get the PDF blob and download it
-            const blob = await response.blob();
-            const url = window.URL.createObjectURL(blob);
+        if (!response.ok) {
+            throw new Error(data.message || 'Failed to get download link');
+        }
 
-            // Create a temporary link to trigger download
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `TNC-${productId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase()).replace(/ /g, '-')}.pdf`;
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
-
+        if (data.success && data.redirect_url) {
+            // Open the R2 presigned URL to download the PDF
+            window.open(data.redirect_url, '_blank');
             button.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
             setTimeout(() => {
                 button.disabled = false;
                 button.innerHTML = originalText;
             }, 2000);
         } else {
-            // For other guides, use the backend download endpoint
-            const data = await apiCall(`/cart/downloads/${productId}`, { method: 'GET' });
-
-            if (data.download_url) {
-                // Open download in new tab
-                window.open(data.download_url, '_blank');
-                button.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
-                setTimeout(() => {
-                    button.disabled = false;
-                    button.innerHTML = originalText;
-                }, 2000);
-            } else {
-                throw new Error('Download not available');
-            }
+            throw new Error('Download not available');
         }
     } catch (error) {
         console.error('Download error:', error);

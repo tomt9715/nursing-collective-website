@@ -973,7 +973,7 @@ button.subcategory-chip.active i {
     content: attr(data-tooltip);
     position: absolute;
     bottom: calc(100% + 8px);
-    right: 0;
+    right: -10px;
     transform: none;
     background: var(--text-primary);
     color: var(--background-white);
@@ -981,27 +981,29 @@ button.subcategory-chip.active i {
     border-radius: 8px;
     font-size: 0.85rem;
     font-weight: 500;
-    z-index: 1000;
+    z-index: 9999;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-transform: none;
     letter-spacing: normal;
     width: max-content;
-    max-width: 280px;
-    min-width: 200px;
+    max-width: 260px;
+    min-width: 180px;
     white-space: normal;
     text-align: center;
     line-height: 1.5;
+    pointer-events: none;
 }
 
 .savings-badge:hover::before {
     content: '';
     position: absolute;
     bottom: calc(100% + 2px);
-    right: 12px;
+    right: 16px;
     transform: none;
     border: 6px solid transparent;
     border-top-color: var(--text-primary);
-    z-index: 1000;
+    z-index: 9999;
+    pointer-events: none;
 }
 
 .savings-badge.best-value {
@@ -1043,10 +1045,12 @@ button.subcategory-chip.active i {
     display: none; /* Hidden by default, shown via JS */
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 30px;
+    overflow: visible;
 }
 
 .packages-grid.visible {
     display: grid;
+    overflow: visible;
 }
 
 .package-card {

@@ -973,20 +973,20 @@ button.subcategory-chip.active i {
     content: attr(data-tooltip);
     position: absolute;
     bottom: calc(100% + 8px);
-    left: 50%;
-    transform: translateX(-50%);
+    right: 0;
+    transform: none;
     background: var(--text-primary);
     color: var(--background-white);
     padding: 12px 16px;
     border-radius: 8px;
     font-size: 0.85rem;
     font-weight: 500;
-    z-index: 100;
+    z-index: 1000;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-transform: none;
     letter-spacing: normal;
     width: max-content;
-    max-width: 320px;
+    max-width: 280px;
     min-width: 200px;
     white-space: normal;
     text-align: center;
@@ -997,11 +997,11 @@ button.subcategory-chip.active i {
     content: '';
     position: absolute;
     bottom: calc(100% + 2px);
-    left: 50%;
-    transform: translateX(-50%);
+    right: 12px;
+    transform: none;
     border: 6px solid transparent;
     border-top-color: var(--text-primary);
-    z-index: 100;
+    z-index: 1000;
 }
 
 .savings-badge.best-value {
@@ -1023,11 +1023,13 @@ button.subcategory-chip.active i {
     .savings-badge:hover::after {
         bottom: auto;
         top: calc(100% + 8px);
+        right: 0;
     }
 
     .savings-badge:hover::before {
         bottom: auto;
         top: calc(100% + 2px);
+        right: 12px;
         border-top-color: transparent;
         border-bottom-color: var(--text-primary);
     }
@@ -1056,6 +1058,7 @@ button.subcategory-chip.active i {
     transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
+    overflow: visible;
 }
 
 .package-card:hover {
@@ -1159,6 +1162,7 @@ button.subcategory-chip.active i {
     margin-top: auto;
     padding-top: 20px;
     border-top: 1px solid var(--border-color);
+    overflow: visible;
 }
 
 .package-price-row {
@@ -1166,6 +1170,7 @@ button.subcategory-chip.active i {
     align-items: center;
     justify-content: space-between;
     margin-bottom: 16px;
+    overflow: visible;
 }
 
 .package-price {

@@ -727,6 +727,10 @@
         }
 
         /* Print Styles - Optimized for browser Save as PDF */
+        @page {
+            margin: 0.6in 0.4in; /* Top/bottom: 0.6in, Left/right: 0.4in - safe for most printers */
+        }
+
         @media print {
             /* Hide non-content elements */
             .download-bar { display: none !important; }

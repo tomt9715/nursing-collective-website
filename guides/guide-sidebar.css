@@ -128,9 +128,12 @@
     transition: width 0.3s ease;
 }
 
-/* Right Sidebar - Quick Reference */
+/* ============================================
+   RIGHT SIDEBAR - FLORENCE STUDY BUDDY
+   ============================================ */
+
 .sidebar-right {
-    width: 280px;
+    width: 300px;
     flex-shrink: 0;
     position: sticky;
     top: 80px;
@@ -139,172 +142,265 @@
     overflow-y: auto;
 }
 
-.quick-ref-panel {
-    background: white;
-    border-radius: 16px;
-    padding: 24px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid var(--border-color, #e5e7eb);
-    margin-bottom: 20px;
+/* Florence Header Card */
+.florence-card {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
 }
 
-.quick-ref-header {
+.florence-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+.florence-header {
     display: flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 20px;
-    padding-bottom: 16px;
-    border-bottom: 2px solid var(--border-color, #e5e7eb);
-}
-
-.quick-ref-header i {
-    color: var(--accent-color, #f59e0b);
-    font-size: 1.1rem;
-}
-
-.quick-ref-header h3 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--text-primary, #1f2937);
-    margin: 0;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-}
-
-.quick-ref-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 14px;
-    background: #f8fafc;
-    border-radius: 10px;
-    margin-bottom: 12px;
-    border-left: 4px solid;
-}
-
-.quick-ref-item:last-child {
-    margin-bottom: 0;
-}
-
-.quick-ref-item.critical {
-    border-left-color: #ef4444;
-    background: linear-gradient(135deg, #fef2f2, #fee2e2);
-}
-
-.quick-ref-item.time {
-    border-left-color: #f59e0b;
-    background: linear-gradient(135deg, #fffbeb, #fef3c7);
-}
-
-.quick-ref-item.target {
-    border-left-color: #3b82f6;
-    background: linear-gradient(135deg, #eff6ff, #dbeafe);
-}
-
-.quick-ref-item.success {
-    border-left-color: #10b981;
-    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-}
-
-.quick-ref-item.warning {
-    border-left-color: #f97316;
-    background: linear-gradient(135deg, #fff7ed, #ffedd5);
-}
-
-.quick-ref-item.info {
-    border-left-color: #6366f1;
-    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
-}
-
-.quick-ref-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    color: white;
-    font-size: 0.9rem;
-}
-
-.quick-ref-item.critical .quick-ref-icon { background: #ef4444; }
-.quick-ref-item.time .quick-ref-icon { background: #f59e0b; }
-.quick-ref-item.target .quick-ref-icon { background: #3b82f6; }
-.quick-ref-item.success .quick-ref-icon { background: #10b981; }
-.quick-ref-item.warning .quick-ref-icon { background: #f97316; }
-.quick-ref-item.info .quick-ref-icon { background: #6366f1; }
-
-.quick-ref-content {
-    flex: 1;
-}
-
-.quick-ref-value {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.4rem;
-    font-weight: 700;
-    color: var(--text-primary, #1f2937);
-    line-height: 1.2;
-}
-
-.quick-ref-label {
-    font-size: 0.85rem;
-    color: var(--text-secondary, #4b5563);
-    margin-top: 2px;
-}
-
-/* Clinical Pearl Callouts Panel */
-.clinical-pearl-panel {
-    background: linear-gradient(135deg, #fefce8, #fef9c3);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    border: 1px solid #fde047;
-}
-
-.clinical-pearl-panel-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+    gap: 14px;
     margin-bottom: 16px;
 }
 
-.clinical-pearl-panel-header i {
-    color: #ca8a04;
-    font-size: 1.2rem;
+.florence-avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: white;
+    padding: 4px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
-.clinical-pearl-panel-header h3 {
+.florence-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.florence-info h3 {
     font-family: 'Outfit', sans-serif;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     font-weight: 700;
-    color: #854d0e;
+    color: white;
+    margin: 0 0 2px 0;
+}
+
+.florence-info span {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.8);
+}
+
+.florence-speech {
+    background: white;
+    border-radius: 16px;
+    padding: 14px 16px;
+    position: relative;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.florence-speech::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    left: 24px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    transform: rotate(45deg);
+    box-shadow: -2px -2px 4px rgba(0,0,0,0.04);
+}
+
+.florence-speech p {
+    font-size: 0.9rem;
+    color: #374151;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.florence-speech p strong {
+    color: #667eea;
+}
+
+/* Key Numbers - Compact Pills */
+.key-numbers-card {
+    background: white;
+    border-radius: 16px;
+    padding: 18px;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    border: 1px solid #f1f5f9;
+}
+
+.key-numbers-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.key-numbers-title i {
+    font-size: 0.7rem;
+}
+
+.key-numbers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.key-number {
+    padding: 12px 10px;
+    border-radius: 12px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.key-number:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.key-number.critical {
+    background: linear-gradient(135deg, #fef2f2, #fecaca);
+    border: 1px solid #fca5a5;
+}
+
+.key-number.time {
+    background: linear-gradient(135deg, #fffbeb, #fde68a);
+    border: 1px solid #fcd34d;
+}
+
+.key-number.target {
+    background: linear-gradient(135deg, #eff6ff, #bfdbfe);
+    border: 1px solid #93c5fd;
+}
+
+.key-number.success {
+    background: linear-gradient(135deg, #f0fdf4, #bbf7d0);
+    border: 1px solid #86efac;
+}
+
+.key-number.warning {
+    background: linear-gradient(135deg, #fff7ed, #fed7aa);
+    border: 1px solid #fdba74;
+}
+
+.key-number.info {
+    background: linear-gradient(135deg, #f5f3ff, #ddd6fe);
+    border: 1px solid #c4b5fd;
+}
+
+.key-number-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #1f2937;
+    line-height: 1.1;
+}
+
+.key-number-label {
+    font-size: 0.7rem;
+    color: #64748b;
+    margin-top: 4px;
+    line-height: 1.3;
+}
+
+/* Florence Tips - Clinical Pearls */
+.florence-tips-card {
+    background: linear-gradient(135deg, #fdf4ff, #fae8ff);
+    border-radius: 16px;
+    padding: 18px;
+    border: 1px solid #f0abfc;
+    box-shadow: 0 4px 16px rgba(168, 85, 247, 0.1);
+}
+
+.florence-tips-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.florence-tips-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.florence-tips-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.florence-tips-header h4 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #86198f;
     margin: 0;
 }
 
-.pearl-mini {
-    padding: 12px;
+.tip-item {
     background: white;
-    border-radius: 10px;
+    border-radius: 12px;
+    padding: 12px 14px;
     margin-bottom: 10px;
-    border-left: 3px solid #eab308;
+    position: relative;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    border-left: 3px solid #d946ef;
+    transition: transform 0.2s ease;
 }
 
-.pearl-mini:last-child {
+.tip-item:hover {
+    transform: translateX(4px);
+}
+
+.tip-item:last-child {
     margin-bottom: 0;
 }
 
-.pearl-mini-title {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #92400e;
+.tip-item-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #a21caf;
     margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
 }
 
-.pearl-mini-text {
-    font-size: 0.82rem;
-    color: var(--text-secondary, #4b5563);
+.tip-item-title::before {
+    content: '\f0eb';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 400;
+    font-size: 0.75rem;
+    color: #e879f9;
+}
+
+.tip-item-text {
+    font-size: 0.78rem;
+    color: #6b7280;
     line-height: 1.5;
 }
 

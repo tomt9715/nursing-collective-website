@@ -107,60 +107,80 @@ function createRightSidebar(quickRefItems, clinicalPearls) {
     const sidebar = document.createElement('aside');
     sidebar.className = 'sidebar-right';
 
-    // Quick Reference Panel
-    let quickRefHtml = '';
+    // Get guide name for Florence's message
+    const guideName = document.body.dataset.guideName || 'this topic';
+
+    // Florence Study Buddy Card
+    const florenceHtml = `
+        <div class="florence-card">
+            <div class="florence-header">
+                <div class="florence-avatar">
+                    <img src="../assets/images/healthcare.webp" alt="FlorenceBot">
+                </div>
+                <div class="florence-info">
+                    <h3>FlorenceBot</h3>
+                    <span>Your Study Buddy</span>
+                </div>
+            </div>
+            <div class="florence-speech">
+                <p>Hey! I pulled out the <strong>key numbers</strong> you need to memorize for ${guideName}. You've got this!</p>
+            </div>
+        </div>
+    `;
+
+    // Key Numbers Grid (Quick Reference)
+    let keyNumbersHtml = '';
     if (quickRefItems.length > 0) {
         let items = '';
         quickRefItems.forEach(item => {
             items += `
-                <div class="quick-ref-item ${item.type}">
-                    <div class="quick-ref-icon">
-                        <i class="fas ${item.icon}"></i>
-                    </div>
-                    <div class="quick-ref-content">
-                        <div class="quick-ref-value">${item.value}</div>
-                        <div class="quick-ref-label">${item.label}</div>
-                    </div>
+                <div class="key-number ${item.type}">
+                    <div class="key-number-value">${item.value}</div>
+                    <div class="key-number-label">${item.label}</div>
                 </div>
             `;
         });
 
-        quickRefHtml = `
-            <div class="quick-ref-panel">
-                <div class="quick-ref-header">
-                    <i class="fas fa-bookmark"></i>
-                    <h3>Quick Reference</h3>
+        keyNumbersHtml = `
+            <div class="key-numbers-card">
+                <div class="key-numbers-title">
+                    <i class="fas fa-star"></i>
+                    Memorize These
                 </div>
-                ${items}
+                <div class="key-numbers-grid">
+                    ${items}
+                </div>
             </div>
         `;
     }
 
-    // Clinical Pearls Panel
-    let pearlsHtml = '';
+    // Florence Tips (Clinical Pearls)
+    let tipsHtml = '';
     if (clinicalPearls.length > 0) {
-        let pearls = '';
+        let tips = '';
         clinicalPearls.forEach(pearl => {
-            pearls += `
-                <div class="pearl-mini">
-                    <div class="pearl-mini-title">${pearl.title}</div>
-                    <div class="pearl-mini-text">${pearl.text}</div>
+            tips += `
+                <div class="tip-item">
+                    <div class="tip-item-title">${pearl.title}</div>
+                    <div class="tip-item-text">${pearl.text}</div>
                 </div>
             `;
         });
 
-        pearlsHtml = `
-            <div class="clinical-pearl-panel">
-                <div class="clinical-pearl-panel-header">
-                    <i class="fas fa-gem"></i>
-                    <h3>Clinical Pearls</h3>
+        tipsHtml = `
+            <div class="florence-tips-card">
+                <div class="florence-tips-header">
+                    <div class="florence-tips-avatar">
+                        <img src="../assets/images/healthcare.webp" alt="Florence">
+                    </div>
+                    <h4>Florence's Pro Tips</h4>
                 </div>
-                ${pearls}
+                ${tips}
             </div>
         `;
     }
 
-    sidebar.innerHTML = quickRefHtml + pearlsHtml;
+    sidebar.innerHTML = florenceHtml + keyNumbersHtml + tipsHtml;
 
     return sidebar;
 }

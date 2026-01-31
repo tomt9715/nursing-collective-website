@@ -1057,7 +1057,344 @@
             a { text-decoration: underline; }
         }
 
+        /* ============================================
+           THREE-COLUMN LAYOUT WITH SIDEBARS
+           ============================================ */
+
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            max-width: 1600px;
+        }
+
+        /* Left Sidebar - Table of Contents */
+        .sidebar-left {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .toc-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+        }
+
+        .toc-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .toc-header i {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .toc-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .toc-item {
+            margin-bottom: 4px;
+        }
+
+        .toc-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .toc-link:hover {
+            background: #f1f5f9;
+            color: var(--primary-color);
+        }
+
+        .toc-link.active {
+            background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(162, 59, 114, 0.1));
+            color: var(--primary-color);
+            border-left-color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .toc-link i {
+            font-size: 0.85rem;
+            width: 18px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        .toc-progress {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .toc-progress-label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .toc-progress-bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .toc-progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        /* Right Sidebar - Quick Reference */
+        .sidebar-right {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .quick-ref-panel {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+        }
+
+        .quick-ref-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .quick-ref-header i {
+            color: var(--time-critical);
+            font-size: 1.1rem;
+        }
+
+        .quick-ref-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .quick-ref-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px;
+            background: #f8fafc;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            border-left: 4px solid;
+        }
+
+        .quick-ref-item.critical {
+            border-left-color: var(--hemorrhagic-color);
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+        }
+
+        .quick-ref-item.time {
+            border-left-color: var(--time-critical);
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+        }
+
+        .quick-ref-item.target {
+            border-left-color: var(--ischemic-color);
+            background: linear-gradient(135deg, #eff6ff, #dbeafe);
+        }
+
+        .quick-ref-item.success {
+            border-left-color: var(--tpa-green);
+            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+        }
+
+        .quick-ref-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .quick-ref-item.critical .quick-ref-icon { background: var(--hemorrhagic-color); }
+        .quick-ref-item.time .quick-ref-icon { background: var(--time-critical); }
+        .quick-ref-item.target .quick-ref-icon { background: var(--ischemic-color); }
+        .quick-ref-item.success .quick-ref-icon { background: var(--tpa-green); }
+
+        .quick-ref-content {
+            flex: 1;
+        }
+
+        .quick-ref-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .quick-ref-label {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 2px;
+        }
+
+        /* Clinical Pearl Callouts - Floating Style */
+        .clinical-pearl-panel {
+            background: linear-gradient(135deg, #fefce8, #fef9c3);
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid #fde047;
+        }
+
+        .clinical-pearl-panel-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .clinical-pearl-panel-header i {
+            color: #ca8a04;
+            font-size: 1.2rem;
+        }
+
+        .clinical-pearl-panel-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #854d0e;
+            margin: 0;
+        }
+
+        .pearl-mini {
+            padding: 12px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 3px solid #eab308;
+        }
+
+        .pearl-mini:last-child {
+            margin-bottom: 0;
+        }
+
+        .pearl-mini-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #92400e;
+            margin-bottom: 4px;
+        }
+
+        .pearl-mini-text {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        /* Update document container for new layout */
+        .document-container {
+            max-width: 900px;
+            flex: 1;
+            min-width: 0;
+            margin: 0;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Hide original sticky nav since we have sidebar TOC */
+        .sticky-nav {
+            display: none;
+        }
+
         /* Responsive */
+        @media (max-width: 1400px) {
+            .sidebar-right {
+                width: 240px;
+            }
+            .sidebar-left {
+                width: 220px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .sidebar-right {
+                display: none;
+            }
+            .page-wrapper {
+                max-width: 1100px;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .sidebar-left {
+                display: none;
+            }
+            .sticky-nav {
+                display: block;
+            }
+            .page-wrapper {
+                padding: 0 10px;
+            }
+        }
+
         @media (max-width: 768px) {
             .download-bar {
                 flex-direction: column;
@@ -1068,7 +1405,7 @@
                 width: 100%;
                 justify-content: center;
             }
-            .document-container { margin: 120px 10px 20px; }
+            .page-wrapper { margin-top: 120px; }
             .cover-page { padding: 50px 30px; }
             .cover-title { font-size: 2.5rem; }
             .cover-stats { flex-direction: column; gap: 20px; }
@@ -1084,6 +1421,21 @@
             .intervention-cards { grid-template-columns: 1fr; }
             .key-points-list { grid-template-columns: 1fr; }
             .sticky-nav { position: static; }
+        }
+
+        /* Print Styles - hide sidebars */
+        @media print {
+            .sidebar-left, .sidebar-right, .page-wrapper {
+                display: block !important;
+            }
+            .sidebar-left, .sidebar-right {
+                display: none !important;
+            }
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+            }
         }
     </style>
 </head>
@@ -1104,8 +1456,68 @@
         </div>
     </div>
 
-    <!-- Document -->
-    <div class="document-container">
+    <!-- Page Wrapper with Sidebars -->
+    <div class="page-wrapper">
+
+        <!-- Left Sidebar - Table of Contents -->
+        <aside class="sidebar-left">
+            <div class="toc-panel">
+                <div class="toc-header">
+                    <i class="fas fa-list-ul"></i>
+                    <h3>Contents</h3>
+                </div>
+                <ul class="toc-list">
+                    <li class="toc-item">
+                        <a href="#anatomy" class="toc-link" data-section="anatomy">
+                            <i class="fas fa-brain"></i>
+                            <span>Brain Anatomy</span>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#types" class="toc-link" data-section="types">
+                            <i class="fas fa-code-branch"></i>
+                            <span>Stroke Types</span>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#fast" class="toc-link" data-section="fast">
+                            <i class="fas fa-bolt"></i>
+                            <span>FAST Assessment</span>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#tpa" class="toc-link" data-section="tpa">
+                            <i class="fas fa-syringe"></i>
+                            <span>tPA Criteria</span>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#interventions" class="toc-link" data-section="interventions">
+                            <i class="fas fa-user-nurse"></i>
+                            <span>Interventions</span>
+                        </a>
+                    </li>
+                    <li class="toc-item">
+                        <a href="#medications" class="toc-link" data-section="medications">
+                            <i class="fas fa-pills"></i>
+                            <span>Medications</span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="toc-progress">
+                    <div class="toc-progress-label">
+                        <span>Reading Progress</span>
+                        <span class="toc-progress-percent">0%</span>
+                    </div>
+                    <div class="toc-progress-bar">
+                        <div class="toc-progress-fill"></div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Document -->
+        <div class="document-container">
 
         <!-- Cover Page -->
         <div class="cover-page">
@@ -2042,6 +2454,112 @@
             <p><strong>The Nursing Collective</strong> | <a href="https://thenursingcollective.pro">thenursingcollective.pro</a></p>
             <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.7;">This study guide is for educational purposes only. Always follow your institution's policies and procedures.</p>
         </div>
+
+        </div>
+
+        <!-- Right Sidebar - Quick Reference & Clinical Pearls -->
+        <aside class="sidebar-right">
+            <!-- Quick Reference Panel -->
+            <div class="quick-ref-panel">
+                <div class="quick-ref-header">
+                    <i class="fas fa-bookmark"></i>
+                    <h3>Quick Reference</h3>
+                </div>
+
+                <div class="quick-ref-item time">
+                    <div class="quick-ref-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="quick-ref-content">
+                        <div class="quick-ref-value">4.5 hrs</div>
+                        <div class="quick-ref-label">tPA Window</div>
+                    </div>
+                </div>
+
+                <div class="quick-ref-item critical">
+                    <div class="quick-ref-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="quick-ref-content">
+                        <div class="quick-ref-value">1.9M</div>
+                        <div class="quick-ref-label">Neurons lost/minute</div>
+                    </div>
+                </div>
+
+                <div class="quick-ref-item target">
+                    <div class="quick-ref-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="quick-ref-content">
+                        <div class="quick-ref-value">&lt;185/110</div>
+                        <div class="quick-ref-label">BP before tPA</div>
+                    </div>
+                </div>
+
+                <div class="quick-ref-item target">
+                    <div class="quick-ref-icon">
+                        <i class="fas fa-tachometer-alt"></i>
+                    </div>
+                    <div class="quick-ref-content">
+                        <div class="quick-ref-value">&lt;180/105</div>
+                        <div class="quick-ref-label">BP during/after tPA</div>
+                    </div>
+                </div>
+
+                <div class="quick-ref-item success">
+                    <div class="quick-ref-icon">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <div class="quick-ref-content">
+                        <div class="quick-ref-value">&lt;60 min</div>
+                        <div class="quick-ref-label">Door-to-needle goal</div>
+                    </div>
+                </div>
+
+                <div class="quick-ref-item time">
+                    <div class="quick-ref-icon">
+                        <i class="fas fa-syringe"></i>
+                    </div>
+                    <div class="quick-ref-content">
+                        <div class="quick-ref-value">0.9 mg/kg</div>
+                        <div class="quick-ref-label">tPA dose (max 90mg)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clinical Pearls Panel -->
+            <div class="clinical-pearl-panel">
+                <div class="clinical-pearl-panel-header">
+                    <i class="fas fa-gem"></i>
+                    <h3>Clinical Pearls</h3>
+                </div>
+
+                <div class="pearl-mini">
+                    <div class="pearl-mini-title">CT Before tPA!</div>
+                    <div class="pearl-mini-text">Always get non-contrast CT to rule out hemorrhage before giving thrombolytics.</div>
+                </div>
+
+                <div class="pearl-mini">
+                    <div class="pearl-mini-title">NPO First</div>
+                    <div class="pearl-mini-text">Keep patient NPO until swallow screen completed. Dysphagia occurs in up to 78% of stroke patients.</div>
+                </div>
+
+                <div class="pearl-mini">
+                    <div class="pearl-mini-title">Time = Brain</div>
+                    <div class="pearl-mini-text">Note the exact time symptoms started—this determines tPA eligibility.</div>
+                </div>
+
+                <div class="pearl-mini">
+                    <div class="pearl-mini-title">Watch for A-fib</div>
+                    <div class="pearl-mini-text">Continuous cardiac monitoring helps identify atrial fibrillation as embolic stroke source.</div>
+                </div>
+
+                <div class="pearl-mini">
+                    <div class="pearl-mini-title">Permissive HTN</div>
+                    <div class="pearl-mini-text">Without tPA, allow BP up to 220/120 to maintain cerebral perfusion.</div>
+                </div>
+            </div>
+        </aside>
 
     </div>
 

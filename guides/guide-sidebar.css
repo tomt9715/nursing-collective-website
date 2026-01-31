@@ -1,0 +1,376 @@
+/* ============================================
+   GUIDE SIDEBAR STYLES
+   Shared CSS for all study guide sidebars
+   ============================================ */
+
+/* Three-Column Layout */
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin: 80px auto 40px;
+    padding: 0 20px;
+    max-width: 1600px;
+}
+
+/* Left Sidebar - Table of Contents */
+.sidebar-left {
+    width: 260px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.toc-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.toc-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border-color, #e5e7eb);
+}
+
+.toc-header i {
+    color: var(--primary-color, #2E86AB);
+    font-size: 1.1rem;
+}
+
+.toc-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary, #1f2937);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.toc-item {
+    margin-bottom: 4px;
+}
+
+.toc-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    color: var(--text-secondary, #4b5563);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.toc-link:hover {
+    background: #f1f5f9;
+    color: var(--primary-color, #2E86AB);
+}
+
+.toc-link.active {
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(162, 59, 114, 0.1));
+    color: var(--primary-color, #2E86AB);
+    border-left-color: var(--primary-color, #2E86AB);
+    font-weight: 600;
+}
+
+.toc-link i {
+    font-size: 0.85rem;
+    width: 18px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+.toc-progress {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-color, #e5e7eb);
+}
+
+.toc-progress-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary, #4b5563);
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.toc-progress-bar {
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.toc-progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color, #2E86AB), var(--secondary-color, #A23B72));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+/* Right Sidebar - Quick Reference */
+.sidebar-right {
+    width: 280px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px;
+    height: fit-content;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+}
+
+.quick-ref-panel {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid var(--border-color, #e5e7eb);
+    margin-bottom: 20px;
+}
+
+.quick-ref-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border-color, #e5e7eb);
+}
+
+.quick-ref-header i {
+    color: var(--accent-color, #f59e0b);
+    font-size: 1.1rem;
+}
+
+.quick-ref-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary, #1f2937);
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.quick-ref-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px;
+    background: #f8fafc;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border-left: 4px solid;
+}
+
+.quick-ref-item:last-child {
+    margin-bottom: 0;
+}
+
+.quick-ref-item.critical {
+    border-left-color: #ef4444;
+    background: linear-gradient(135deg, #fef2f2, #fee2e2);
+}
+
+.quick-ref-item.time {
+    border-left-color: #f59e0b;
+    background: linear-gradient(135deg, #fffbeb, #fef3c7);
+}
+
+.quick-ref-item.target {
+    border-left-color: #3b82f6;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+}
+
+.quick-ref-item.success {
+    border-left-color: #10b981;
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+}
+
+.quick-ref-item.warning {
+    border-left-color: #f97316;
+    background: linear-gradient(135deg, #fff7ed, #ffedd5);
+}
+
+.quick-ref-item.info {
+    border-left-color: #6366f1;
+    background: linear-gradient(135deg, #eef2ff, #e0e7ff);
+}
+
+.quick-ref-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.quick-ref-item.critical .quick-ref-icon { background: #ef4444; }
+.quick-ref-item.time .quick-ref-icon { background: #f59e0b; }
+.quick-ref-item.target .quick-ref-icon { background: #3b82f6; }
+.quick-ref-item.success .quick-ref-icon { background: #10b981; }
+.quick-ref-item.warning .quick-ref-icon { background: #f97316; }
+.quick-ref-item.info .quick-ref-icon { background: #6366f1; }
+
+.quick-ref-content {
+    flex: 1;
+}
+
+.quick-ref-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary, #1f2937);
+    line-height: 1.2;
+}
+
+.quick-ref-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary, #4b5563);
+    margin-top: 2px;
+}
+
+/* Clinical Pearl Callouts Panel */
+.clinical-pearl-panel {
+    background: linear-gradient(135deg, #fefce8, #fef9c3);
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    border: 1px solid #fde047;
+}
+
+.clinical-pearl-panel-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.clinical-pearl-panel-header i {
+    color: #ca8a04;
+    font-size: 1.2rem;
+}
+
+.clinical-pearl-panel-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #854d0e;
+    margin: 0;
+}
+
+.pearl-mini {
+    padding: 12px;
+    background: white;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    border-left: 3px solid #eab308;
+}
+
+.pearl-mini:last-child {
+    margin-bottom: 0;
+}
+
+.pearl-mini-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #92400e;
+    margin-bottom: 4px;
+}
+
+.pearl-mini-text {
+    font-size: 0.82rem;
+    color: var(--text-secondary, #4b5563);
+    line-height: 1.5;
+}
+
+/* Document container adjustment for three-column layout */
+.page-wrapper .document-container {
+    max-width: 900px;
+    flex: 1;
+    min-width: 0;
+    margin: 0;
+}
+
+/* Hide original sticky nav when sidebar TOC is visible */
+.page-wrapper .sticky-nav {
+    display: none;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1400px) {
+    .sidebar-right {
+        width: 240px;
+    }
+    .sidebar-left {
+        width: 220px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .sidebar-right {
+        display: none;
+    }
+    .page-wrapper {
+        max-width: 1100px;
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar-left {
+        display: none;
+    }
+    .page-wrapper .sticky-nav {
+        display: block;
+    }
+    .page-wrapper {
+        padding: 0 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .page-wrapper {
+        margin-top: 120px;
+    }
+}
+
+/* Print Styles - hide sidebars */
+@media print {
+    .sidebar-left,
+    .sidebar-right {
+        display: none !important;
+    }
+    .page-wrapper {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .page-wrapper .document-container {
+        max-width: 100% !important;
+        margin: 0 !important;
+    }
+}

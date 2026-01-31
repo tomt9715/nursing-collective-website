@@ -19,11 +19,11 @@ const sidebarConfig = {
         { type: 'success', icon: 'fa-mask-face', value: 'Venturi', label: 'Precise FiO2 Control' }
     ],
     clinicalPearls: [
-        { id: 'tip-low-flow-first', title: 'Low-Flow First', text: 'Always start with 1-2 L/min via nasal cannula for chronic CO2 retainers to avoid suppressing hypoxic drive.' },
-        { id: 'tip-pursed-lip', title: 'Pursed-Lip Breathing', text: 'Inhale 2 counts through nose, exhale 4 counts through pursed lips. Creates back-pressure to keep airways open.' },
         { id: 'tip-blue-bloater', title: 'Blue Bloater vs Pink Puffer', text: 'Chronic bronchitis = blue, edematous, productive cough. Emphysema = thin, barrel chest, dyspneic.' },
+        { id: 'tip-low-flow-first', title: 'Low-Flow First', text: 'Always start with 1-2 L/min via nasal cannula for chronic CO2 retainers to avoid suppressing hypoxic drive.' },
         { id: 'tip-co2-narcosis', title: 'Watch for CO2 Narcosis', text: 'Confusion, decreased LOC, flushed skin, and asterixis signal CO2 retention. Reduce O2 and notify provider STAT.' },
-        { id: 'tip-bronchodilators-first', title: 'Bronchodilators Before Steroids', text: 'When using multiple inhalers, use SABA first to open airways, then LABA, then ICS last for better deposition.' },
-        { id: 'tip-rinse-after-ics', title: 'Rinse After ICS', text: 'Always rinse mouth after inhaled corticosteroids to prevent oral thrush and hoarseness.' }
+        { id: 'tip-pursed-lip', title: 'Pursed-Lip Breathing', text: 'Inhale 2 counts through nose, exhale 4 counts through pursed lips. Creates back-pressure to keep airways open.' },
+        { id: 'tip-rinse-after-ics', title: 'Rinse After ICS', text: 'Always rinse mouth after inhaled corticosteroids to prevent oral thrush and hoarseness.' },
+        { id: 'tip-bronchodilators-first', title: 'Bronchodilators Before Steroids', text: 'When using multiple inhalers, use SABA first to open airways, then LABA, then ICS last for better deposition.' }
     ]
 };

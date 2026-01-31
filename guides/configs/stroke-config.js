@@ -17,10 +17,10 @@ const sidebarConfig = {
         { type: 'time', icon: 'fa-syringe', value: '0.9 mg/kg', label: 'tPA dose (max 90mg)' }
     ],
     clinicalPearls: [
-        { id: 'tip-ct-before-tpa', title: 'CT Before tPA!', text: 'Always get non-contrast CT to rule out hemorrhage before giving thrombolytics.' },
-        { id: 'tip-npo-first', title: 'NPO First', text: 'Keep patient NPO until swallow screen completed. Dysphagia occurs in up to 78% of stroke patients.' },
-        { id: 'tip-time-brain', title: 'Time = Brain', text: 'Note the exact time symptoms started—this determines tPA eligibility.' },
-        { id: 'tip-watch-afib', title: 'Watch for A-fib', text: 'Continuous cardiac monitoring helps identify atrial fibrillation as embolic stroke source.' },
-        { id: 'tip-permissive-htn', title: 'Permissive HTN', text: 'Without tPA, allow BP up to 220/120 to maintain cerebral perfusion.' }
+        { id: 'tip-ct-before-tpa', title: 'CT Scan Before Clot-Busters!' },
+        { id: 'tip-npo-first', title: 'NPO First (Nothing By Mouth!)' },
+        { id: 'tip-time-brain', title: 'Time = Brain' },
+        { id: 'tip-watch-afib', title: 'Watch for A-fib' },
+        { id: 'tip-permissive-htn', title: 'Let the BP Stay High!' }
     ]
 };

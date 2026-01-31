@@ -245,12 +245,5 @@ function initializeTOCBehavior() {
     updateTOCState();
 }
 
-// Auto-initialize if sidebarConfig is defined globally
-document.addEventListener('DOMContentLoaded', function() {
-    // Wait a tick to ensure guide-script.js has verified access
-    setTimeout(function() {
-        if (typeof sidebarConfig !== 'undefined') {
-            initializeGuideSidebars(sidebarConfig);
-        }
-    }, 100);
-});
+// Note: Sidebars are initialized by guide-script.js after access verification
+// This ensures sidebars only appear for users with valid access

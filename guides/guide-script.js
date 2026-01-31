@@ -428,6 +428,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     const hasAccess = await verifyAccess();
 
     if (hasAccess) {
+        // Initialize sidebars if config is defined
+        if (typeof sidebarConfig !== 'undefined' && typeof initializeGuideSidebars === 'function') {
+            initializeGuideSidebars(sidebarConfig);
+        }
+
         // Check for auto-download parameter (from dashboard PDF button)
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('print') === 'true' || urlParams.get('download') === 'true') {

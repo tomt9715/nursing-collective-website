@@ -20,11 +20,11 @@ const sidebarConfig = {
         { type: 'info', icon: 'fa-eye', value: '3-5mm', label: 'Normal pupil size' }
     ],
     clinicalPearls: [
-        { title: 'IPPA Order', text: 'Inspect, Palpate, Percuss, Auscultate. Exception: Abdomen - auscultate BEFORE palpation to avoid altering bowel sounds.' },
-        { title: 'Trends Over Single Values', text: 'A single vital sign provides limited info. Compare trends over time to the patient\'s baseline.' },
-        { title: 'SBAR Communication', text: 'Situation, Background, Assessment, Recommendation - use this format when calling providers.' },
-        { title: 'Document Objectively', text: '"If it wasn\'t documented, it wasn\'t done." Use measurable terms, avoid vague language.' },
-        { title: 'Trust Your Gut', text: '"Worried about the patient" is a valid reason to call Rapid Response - trust your nursing instincts.' },
-        { title: 'Pain Assessment: PQRST', text: 'Provokes/Palliates, Quality, Radiates, Severity (0-10), Timing - complete pain evaluation.' }
+        { id: 'tip-ippa-order', title: 'IPPA Order', text: 'Inspect, Palpate, Percuss, Auscultate. Exception: Abdomen - auscultate BEFORE palpation to avoid altering bowel sounds.' },
+        { id: 'tip-trends-over-values', title: 'Trends Over Single Values', text: 'A single vital sign provides limited info. Compare trends over time to the patient\'s baseline.' },
+        { id: 'tip-sbar', title: 'SBAR Communication', text: 'Situation, Background, Assessment, Recommendation - use this format when calling providers.' },
+        { id: 'tip-document-objectively', title: 'Document Objectively', text: '"If it wasn\'t documented, it wasn\'t done." Use measurable terms, avoid vague language.' },
+        { id: 'tip-trust-your-gut', title: 'Trust Your Gut', text: '"Worried about the patient" is a valid reason to call Rapid Response - trust your nursing instincts.' },
+        { id: 'tip-pqrst', title: 'Pain Assessment: PQRST', text: 'Provokes/Palliates, Quality, Radiates, Severity (0-10), Timing - complete pain evaluation.' }
     ]
 };

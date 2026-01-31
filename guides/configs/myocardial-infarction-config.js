@@ -19,11 +19,11 @@ const sidebarConfig = {
         { type: 'info', icon: 'fa-lungs', value: 'SpO2 <90%', label: 'O2 only if hypoxic' }
     ],
     clinicalPearls: [
-        { title: 'Time is Muscle', text: 'Every minute of ischemia results in more myocardial cell death. Rapid reperfusion saves heart tissue.' },
-        { title: 'MONA-B Therapy', text: 'Morphine, Oxygen (if needed), Nitroglycerin, Aspirin, Beta-blockers form the initial treatment approach.' },
-        { title: 'RV Infarct Triad', text: 'Hypotension + JVD + Clear lungs. Avoid nitrates and diuretics - these patients are preload-dependent.' },
-        { title: 'Serial Troponins', text: 'A single negative troponin does not rule out MI. Check at 0, 3-6, and sometimes 12 hours.' },
-        { title: 'Atypical Presentations', text: 'Women, elderly, and diabetics may present without chest pain. Maintain high suspicion!' },
-        { title: 'Watch for VF', text: 'Ventricular fibrillation is the leading cause of death in the first hour. Keep defibrillator ready.' }
+        { id: 'tip-time-is-muscle', title: 'Time is Muscle', text: 'Every minute of ischemia results in more myocardial cell death. Rapid reperfusion saves heart tissue.' },
+        { id: 'tip-mona-b', title: 'MONA-B Therapy', text: 'Morphine, Oxygen (if needed), Nitroglycerin, Aspirin, Beta-blockers form the initial treatment approach.' },
+        { id: 'tip-rv-infarct', title: 'RV Infarct Triad', text: 'Hypotension + JVD + Clear lungs. Avoid nitrates and diuretics - these patients are preload-dependent.' },
+        { id: 'tip-serial-troponins', title: 'Serial Troponins', text: 'A single negative troponin does not rule out MI. Check at 0, 3-6, and sometimes 12 hours.' },
+        { id: 'tip-atypical-presentations', title: 'Atypical Presentations', text: 'Women, elderly, and diabetics may present without chest pain. Maintain high suspicion!' },
+        { id: 'tip-watch-for-vf', title: 'Watch for VF', text: 'Ventricular fibrillation is the leading cause of death in the first hour. Keep defibrillator ready.' }
     ]
 };

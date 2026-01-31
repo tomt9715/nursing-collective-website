@@ -17,11 +17,11 @@ const sidebarConfig = {
         { type: 'critical', icon: 'fa-exclamation-triangle', value: '>100 bpm', label: 'Tachycardia (early sign)' }
     ],
     clinicalPearls: [
-        { title: 'Initial Hgb Misleading', text: 'A normal initial hemoglobin does NOT rule out significant bleeding. Hemodilution takes 24-72 hours.' },
-        { title: 'Ligament of Treitz', text: 'The anatomical dividing line: above = UGIB, below = LGIB. Critical for determining workup.' },
-        { title: 'Massive UGIB Exception', text: 'Brisk upper GI bleeding can cause hematochezia. If hemodynamically unstable with BRBPR, consider UGIB first.' },
-        { title: 'Restrictive Transfusion', text: 'Hgb trigger of 7 g/dL improves outcomes. Over-transfusion in variceal bleeding increases portal pressure.' },
-        { title: 'Goal UOP', text: 'Monitor for > 0.5 mL/kg/hr. Oliguria indicates inadequate resuscitation.' },
-        { title: 'Hold Anticoagulants', text: 'Stop anticoagulants and antiplatelets. Weigh bleeding risk vs thrombotic risk with the team.' }
+        { id: 'tip-hgb-misleading', title: 'Initial Hgb Misleading', text: 'A normal initial hemoglobin does NOT rule out significant bleeding. Hemodilution takes 24-72 hours.' },
+        { id: 'tip-ligament-treitz', title: 'Ligament of Treitz', text: 'The anatomical dividing line: above = UGIB, below = LGIB. Critical for determining workup.' },
+        { id: 'tip-massive-ugib', title: 'Massive UGIB Exception', text: 'Brisk upper GI bleeding can cause hematochezia. If hemodynamically unstable with BRBPR, consider UGIB first.' },
+        { id: 'tip-restrictive-transfusion', title: 'Restrictive Transfusion', text: 'Hgb trigger of 7 g/dL improves outcomes. Over-transfusion in variceal bleeding increases portal pressure.' },
+        { id: 'tip-goal-uop', title: 'Goal UOP', text: 'Monitor for > 0.5 mL/kg/hr. Oliguria indicates inadequate resuscitation.' },
+        { id: 'tip-hold-anticoagulants', title: 'Hold Anticoagulants', text: 'Stop anticoagulants and antiplatelets. Weigh bleeding risk vs thrombotic risk with the team.' }
     ]
 };

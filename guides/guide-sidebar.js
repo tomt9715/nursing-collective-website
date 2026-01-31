@@ -202,15 +202,24 @@ function initializeTipNavigation() {
                 // Scroll to the tip
                 targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-                // Add highlight class after scroll completes (~500ms for smooth scroll)
-                setTimeout(() => {
-                    targetElement.classList.add('highlight');
+                // Wait for scroll to finish, then flash the glow
+                let scrollTimeout;
+                const onScrollEnd = () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        // Scrolling has stopped
+                        window.removeEventListener('scroll', onScrollEnd);
 
-                    // Remove highlight class after quick 250ms glow
-                    setTimeout(() => {
-                        targetElement.classList.remove('highlight');
-                    }, 250);
-                }, 500);
+                        // Flash the highlight
+                        targetElement.classList.add('highlight');
+                        setTimeout(() => {
+                            targetElement.classList.remove('highlight');
+                        }, 250);
+                    }, 100); // Wait 100ms after last scroll event
+                };
+
+                window.addEventListener('scroll', onScrollEnd);
+                onScrollEnd(); // Trigger once in case already at position
             }
         };
 

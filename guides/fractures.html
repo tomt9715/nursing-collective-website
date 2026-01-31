@@ -886,6 +886,31 @@
             text-decoration: underline;
         }
 
+        .diagram-images-row {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .diagram-images-row img {
+            flex: 1;
+            max-width: calc(50% - 10px);
+            height: auto;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .diagram-images-row {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .diagram-images-row img {
+                max-width: 100%;
+            }
+        }
+
         /* ============================================
            FRACTURE PATTERN IMAGE & SUMMARY
            ============================================ */
@@ -1956,11 +1981,16 @@
 
                 <figure class="diagram-container">
                     <h4 class="diagram-title"><i class="fas fa-x-ray"></i> Types of Fractures</h4>
-                    <img
-                        src="../assets/images/diagrams/types-of-fractures.jpg"
-                        alt="Types of bone fractures showing closed, open, transverse, spiral, comminuted, impacted, greenstick, and oblique fracture patterns"
-                        class="anatomy-diagram-img"
-                    >
+                    <div class="diagram-images-row">
+                        <img
+                            src="../assets/images/diagrams/types-of-fractures-1.jpg"
+                            alt="Types of bone fractures showing closed, open, transverse, and spiral fracture patterns"
+                        >
+                        <img
+                            src="../assets/images/diagrams/types-of-fractures-2.jpg"
+                            alt="Types of bone fractures showing comminuted, impacted, greenstick, and oblique fracture patterns"
+                        >
+                    </div>
                     <figcaption class="diagram-attribution">
                         Image: <a href="https://commons.wikimedia.org/wiki/File:612_Types_of_Fractures.jpg" target="_blank" rel="noopener">OpenStax College</a>,
                         <a href="https://creativecommons.org/licenses/by/4.0" target="_blank" rel="noopener">CC BY 4.0</a>, via Wikimedia Commons

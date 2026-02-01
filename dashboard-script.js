@@ -821,11 +821,46 @@ function renderFavoritesSection(purchases) {
 
     if (favoritedGuides.length > 0) {
         favoritesSection.style.display = 'block';
-        favoritesGrid.innerHTML = favoritedGuides.map(purchase => renderCompactGuideCard(purchase, true)).join('');
-        setupGuideCardListenersCompact(favoritesGrid);
+        favoritesGrid.innerHTML = favoritedGuides.map(purchase => renderFavoriteItem(purchase)).join('');
+        setupFavoriteListeners(favoritesGrid);
     } else {
         favoritesSection.style.display = 'none';
     }
+}
+
+// Render a single favorite item (compact, quick-access)
+function renderFavoriteItem(purchase) {
+    const icon = getGuideIcon(purchase.product_id);
+
+    return `
+        <div class="favorite-item" data-product-id="${escapeHtml(purchase.product_id)}">
+            <button class="favorite-remove" data-favorite="${escapeHtml(purchase.product_id)}" title="Remove from favorites">
+                <i class="fas fa-star"></i>
+            </button>
+            <div class="favorite-icon">${icon}</div>
+            <span class="favorite-title">${escapeHtml(purchase.product_name.replace(' Guide', ''))}</span>
+            <button class="favorite-open" data-study="${escapeHtml(purchase.product_id)}">
+                Open
+            </button>
+        </div>
+    `;
+}
+
+// Setup listeners for favorite items
+function setupFavoriteListeners(container) {
+    container.querySelectorAll('[data-study]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            continueStudying(this.dataset.study);
+        });
+    });
+
+    container.querySelectorAll('[data-favorite]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleFavoriteAndRefresh(this.dataset.favorite, this);
+        });
+    });
 }
 
 // Render category folders

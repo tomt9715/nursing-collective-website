@@ -5336,49 +5336,132 @@ body.is-admin-user .purchase-history-section {
 .favorites-header {
     display: flex;
     align-items: center;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
 .favorites-header h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: #d97706;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .favorites-header h3 i {
     color: #f59e0b;
+    font-size: 0.8rem;
 }
 
 .favorites-grid {
     display: flex;
-    gap: 16px;
+    gap: 12px;
     overflow-x: auto;
-    padding-bottom: 8px;
-    scroll-snap-type: x mandatory;
+    padding-bottom: 4px;
     -webkit-overflow-scrolling: touch;
 }
 
 .favorites-grid::-webkit-scrollbar {
-    height: 6px;
+    height: 4px;
 }
 
 .favorites-grid::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 3px;
+    background: transparent;
 }
 
 .favorites-grid::-webkit-scrollbar-thumb {
     background: rgba(245, 158, 11, 0.3);
-    border-radius: 3px;
+    border-radius: 2px;
 }
 
-.favorites-grid .guide-card-compact {
-    flex: 0 0 280px;
-    scroll-snap-align: start;
+/* Compact favorite item */
+.favorite-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid rgba(245, 158, 11, 0.2);
+    flex-shrink: 0;
+    transition: all 0.15s ease;
+}
+
+.favorite-item:hover {
+    border-color: rgba(245, 158, 11, 0.4);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.1);
+}
+
+.favorite-remove {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    color: #f59e0b;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    font-size: 0.85rem;
+    transition: all 0.15s ease;
+}
+
+.favorite-remove:hover {
+    color: #d97706;
+    transform: scale(1.1);
+}
+
+.favorite-icon {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.favorite-icon img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.favorite-title {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+.favorite-open {
+    padding: 6px 14px;
+    background: #f59e0b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    margin-left: 4px;
+}
+
+.favorite-open:hover {
+    background: #d97706;
+}
+
+/* Dark mode favorites */
+[data-theme="dark"] .favorite-item {
+    background: var(--card-bg);
+    border-color: rgba(245, 158, 11, 0.3);
+}
+
+[data-theme="dark"] .favorite-item:hover {
+    background: var(--background-light);
 }
 
 /* Category Folders Container */

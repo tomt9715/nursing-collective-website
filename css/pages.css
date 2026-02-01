@@ -5385,10 +5385,229 @@ body.is-admin-user .purchase-history-section {
 .guides-folders-container {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 24px;
 }
 
-/* ==================== Netflix-Style Category Rows ==================== */
+/* ==================== Minimal List View ==================== */
+
+.category-section {
+    background: var(--card-bg);
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+}
+
+.category-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    background: var(--background-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.category-section-header h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.category-section-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+}
+
+.category-section-list {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Individual Guide Row */
+.guide-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background 0.15s ease;
+}
+
+.guide-row:last-child {
+    border-bottom: none;
+}
+
+.guide-row:hover {
+    background: var(--background-light);
+}
+
+.guide-row-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.guide-row-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.guide-row-icon img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+}
+
+.guide-row-title {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.guide-row-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.guide-row-studied {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    white-space: nowrap;
+}
+
+/* Favorite button in row */
+.favorite-btn-row {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.15s ease;
+    flex-shrink: 0;
+}
+
+.favorite-btn-row:hover {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.favorite-btn-row.favorited {
+    color: #f59e0b;
+}
+
+/* Action buttons */
+.btn-row-open {
+    padding: 6px 16px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.btn-row-open:hover {
+    background: var(--secondary-color);
+}
+
+.btn-row-pdf {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+}
+
+.btn-row-pdf:hover {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+/* Category section icon colors */
+.category-section-icon.cardiovascular { background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(220, 38, 38, 0.1) 100%); color: #dc2626; }
+.category-section-icon.respiratory { background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%); color: #2563eb; }
+.category-section-icon.neurological { background: linear-gradient(135deg, rgba(168, 85, 247, 0.15) 0%, rgba(147, 51, 234, 0.1) 100%); color: #9333ea; }
+.category-section-icon.endocrine { background: linear-gradient(135deg, rgba(251, 146, 60, 0.15) 0%, rgba(234, 88, 12, 0.1) 100%); color: #ea580c; }
+.category-section-icon.renal { background: linear-gradient(135deg, rgba(20, 184, 166, 0.15) 0%, rgba(13, 148, 136, 0.1) 100%); color: #0d9488; }
+.category-section-icon.gastrointestinal { background: linear-gradient(135deg, rgba(132, 204, 22, 0.15) 0%, rgba(101, 163, 13, 0.1) 100%); color: #65a30d; }
+.category-section-icon.musculoskeletal { background: linear-gradient(135deg, rgba(120, 113, 108, 0.15) 0%, rgba(87, 83, 78, 0.1) 100%); color: #57534e; }
+.category-section-icon.clinical-skills { background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(79, 70, 229, 0.1) 100%); color: #4f46e5; }
+.category-section-icon.pharmacology { background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%); color: #7c3aed; }
+.category-section-icon.mental-health { background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%); color: #059669; }
+.category-section-icon.maternal-newborn { background: linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(219, 39, 119, 0.1) 100%); color: #db2777; }
+.category-section-icon.pediatrics { background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(217, 119, 6, 0.1) 100%); color: #d97706; }
+.category-section-icon.lab-values { background: linear-gradient(135deg, rgba(6, 182, 212, 0.15) 0%, rgba(8, 145, 178, 0.1) 100%); color: #0891b2; }
+.category-section-icon.safety { background: linear-gradient(135deg, rgba(249, 115, 22, 0.15) 0%, rgba(234, 88, 12, 0.1) 100%); color: #ea580c; }
+
+/* Responsive for minimal list */
+@media (max-width: 768px) {
+    .guide-row {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+
+    .guide-row-left {
+        width: 100%;
+    }
+
+    .guide-row-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .guide-row-studied {
+        flex: 1;
+    }
+}
+
+/* Dark mode for minimal list */
+[data-theme="dark"] .category-section {
+    background: var(--card-bg);
+}
+
+[data-theme="dark"] .category-section-header {
+    background: var(--background-color);
+}
+
+[data-theme="dark"] .guide-row:hover {
+    background: var(--background-color);
+}
+
+[data-theme="dark"] .btn-row-pdf {
+    background: var(--background-color);
+}
+
+/* ==================== Netflix-Style Category Rows (legacy) ==================== */
 
 .category-row {
     margin-bottom: 8px;

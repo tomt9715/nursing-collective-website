@@ -880,26 +880,21 @@ function renderCategoryFolders(purchases, searchTerm = '') {
         return;
     }
 
-    // Render each category as a horizontal scrolling row (Netflix-style)
+    // Render each category as a minimal list section
     foldersContainer.innerHTML = sortedCategories.map(category => {
         const guides = groupedByCategory[category];
         const config = categoryConfig[category] || { label: category, icon: 'fa-book' };
 
         return `
-            <div class="category-row" data-category="${category}">
-                <div class="category-row-header">
-                    <div class="category-row-title">
-                        <div class="category-icon ${category}">
-                            <i class="fas ${config.icon}"></i>
-                        </div>
-                        <h3>${config.label}</h3>
-                        <span class="category-count">${guides.length}</span>
+            <div class="category-section" data-category="${category}">
+                <div class="category-section-header">
+                    <div class="category-section-icon ${category}">
+                        <i class="fas ${config.icon}"></i>
                     </div>
+                    <h3>${config.label}</h3>
                 </div>
-                <div class="category-row-scroll">
-                    <div class="category-row-cards">
-                        ${guides.map(purchase => renderCompactGuideCard(purchase, false)).join('')}
-                    </div>
+                <div class="category-section-list">
+                    ${guides.map(purchase => renderCompactGuideCard(purchase, false)).join('')}
                 </div>
             </div>
         `;
@@ -909,37 +904,31 @@ function renderCategoryFolders(purchases, searchTerm = '') {
     setupGuideCardListenersCompact(foldersContainer);
 }
 
-// Render a compact guide card
+// Render a minimal list row (clean, compact)
 function renderCompactGuideCard(purchase, isFavoriteSection) {
     const icon = getGuideIcon(purchase.product_id);
-    const categoryInfo = guideCategoryMap[purchase.product_id] || { category: 'med-surg', label: 'Med-Surg', description: 'Comprehensive NCLEX study guide.' };
     const favorites = getFavorites();
     const isFavorited = favorites.includes(purchase.product_id);
     const lastStudied = getLastStudied(purchase.product_id);
     const lastStudiedText = formatRelativeTime(lastStudied);
 
     return `
-        <div class="guide-card-compact" data-product-id="${escapeHtml(purchase.product_id)}">
-            <div class="card-header-mini">
-                <div class="guide-icon-mini">${icon}</div>
-                <button class="favorite-btn-mini ${isFavorited ? 'favorited' : ''}" data-favorite="${escapeHtml(purchase.product_id)}" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
+        <div class="guide-row" data-product-id="${escapeHtml(purchase.product_id)}">
+            <div class="guide-row-left">
+                <button class="favorite-btn-row ${isFavorited ? 'favorited' : ''}" data-favorite="${escapeHtml(purchase.product_id)}" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
                     <i class="${isFavorited ? 'fas' : 'far'} fa-star"></i>
                 </button>
+                <div class="guide-row-icon">${icon}</div>
+                <span class="guide-row-title">${escapeHtml(purchase.product_name)}</span>
             </div>
-            <div class="card-body-mini">
-                <h4>${escapeHtml(purchase.product_name)}</h4>
-                <div class="guide-meta-mini">
-                    <i class="fas fa-clock"></i>
-                    ${lastStudiedText ? `Studied ${lastStudiedText}` : `Purchased ${formatDate(purchase.purchased_at)}`}
-                </div>
-                <div class="card-actions-mini">
-                    <button class="btn-open-mini" data-study="${escapeHtml(purchase.product_id)}">
-                        <i class="fas fa-book-reader"></i> Open
-                    </button>
-                    <button class="btn-pdf-mini" data-download="${escapeHtml(purchase.product_id)}">
-                        <i class="fas fa-download"></i>
-                    </button>
-                </div>
+            <div class="guide-row-right">
+                <span class="guide-row-studied">${lastStudiedText || 'Not studied yet'}</span>
+                <button class="btn-row-open" data-study="${escapeHtml(purchase.product_id)}">
+                    Open
+                </button>
+                <button class="btn-row-pdf" data-download="${escapeHtml(purchase.product_id)}" title="Download PDF">
+                    <i class="fas fa-download"></i>
+                </button>
             </div>
         </div>
     `;

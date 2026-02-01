@@ -2342,41 +2342,9 @@
 
     </div>
 
-    <!-- Sidebar Script -->
+    <!-- Guide page scripts (external for CSP compliance) -->
+    <script src="configs/arrhythmias-config.js"></script>
     <script src="guide-sidebar.js"></script>
-
-    <!-- Sidebar Configuration -->
-    <script>
-    const sidebarConfig = {
-        sections: [
-            { id: 'conduction', icon: 'fa-bolt', title: 'Conduction System' },
-            { id: 'ecg-basics', icon: 'fa-wave-square', title: 'ECG Basics' },
-            { id: 'sinus-rhythms', icon: 'fa-heart', title: 'Sinus Rhythms' },
-            { id: 'atrial-rhythms', icon: 'fa-heartbeat', title: 'Atrial Arrhythmias' },
-            { id: 'ventricular-rhythms', icon: 'fa-exclamation-triangle', title: 'Ventricular Arrhythmias' },
-            { id: 'heart-blocks', icon: 'fa-ban', title: 'Heart Blocks' },
-            { id: 'defib-cardiovert', icon: 'fa-bolt', title: 'Defib vs Cardiovert' },
-            { id: 'interventions', icon: 'fa-user-nurse', title: 'Nursing Interventions' }
-        ],
-        quickRef: [
-            { type: 'target', value: '60-100', label: 'SA Node Rate (bpm)' },
-            { type: 'warning', value: '40-60', label: 'AV Node Rate (bpm)' },
-            { type: 'critical', value: '20-40', label: 'Ventricle Rate (bpm)' },
-            { type: 'time', value: '<0.12s', label: 'Normal QRS Width' },
-            { type: 'success', value: '0.12-0.20s', label: 'Normal PR Interval' },
-            { type: 'info', value: '120-200J', label: 'Defib Energy (Biphasic)' }
-        ],
-        clinicalPearls: [
-            { id: 'tip-pacemaker-hierarchy', title: 'Pacemaker Hierarchy' },
-            { id: 'tip-afib-stroke', title: 'A-Fib & Stroke Risk' },
-            { id: 'tip-adenosine', title: 'Adenosine Technique' },
-            { id: 'tip-defib-vs-cardio', title: 'Defib vs Cardioversion' },
-            { id: 'tip-type1-vs-type2', title: 'Type I vs Type II Block' }
-        ]
-    };
-    </script>
-
-    <!-- Guide Script -->
     <script src="guide-script.js"></script>
 </body>
 </html>

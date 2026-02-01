@@ -828,15 +828,26 @@
         /* Footer */
         .document-footer {
             text-align: center;
-            padding: 30px 60px;
+            padding: 32px 48px;
             border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
         }
 
-        .document-footer a {
-            color: var(--primary-color);
-            text-decoration: none;
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            margin-bottom: 12px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
         }
 
         /* Print Styles - Optimized for browser Save as PDF */
@@ -2100,8 +2111,9 @@
 
         <!-- Document Footer -->
         <div class="document-footer">
-            <p><strong>The Nursing Collective</strong> | <a href="https://thenursingcollective.pro">thenursingcollective.pro</a></p>
-            <p style="margin-top: 8px; font-size: 0.85rem; opacity: 0.7;">This study guide is for educational purposes only. Always follow your institution's policies and procedures.</p>
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
+            <p class="footer-copyright">&copy; 2025 The Nursing Collective. All rights reserved.</p>
         </div>
 
     </div>

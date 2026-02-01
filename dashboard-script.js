@@ -690,10 +690,25 @@ function formatRelativeTime(dateString) {
     return formatDate(dateString);
 }
 
-// Load purchased guides from backend API
+// Category display configuration
+const categoryConfig = {
+    'med-surg': { label: 'Med-Surg', icon: 'fa-heartbeat', order: 1 },
+    'clinical-skills': { label: 'Clinical Skills', icon: 'fa-stethoscope', order: 2 },
+    'pharmacology': { label: 'Pharmacology', icon: 'fa-pills', order: 3 },
+    'lab-values': { label: 'Lab Values', icon: 'fa-flask', order: 4 },
+    'mental-health': { label: 'Mental Health', icon: 'fa-brain', order: 5 },
+    'maternal-newborn': { label: 'Maternal-Newborn', icon: 'fa-baby', order: 6 },
+    'pediatrics': { label: 'Pediatrics', icon: 'fa-child', order: 7 },
+    'safety': { label: 'Safety', icon: 'fa-shield-alt', order: 8 }
+};
+
+// Load purchased guides from backend API - NEW FOLDER SYSTEM
 async function loadAccessibleGuides(user) {
-    const guideList = document.querySelector('.guides-grid-enhanced') || document.getElementById('guide-list');
-    if (!guideList) return;
+    const foldersContainer = document.getElementById('guides-folders-container');
+    const searchBar = document.getElementById('guides-search-bar');
+    const favoritesSection = document.getElementById('guides-favorites-section');
+
+    if (!foldersContainer) return;
 
     try {
         // Fetch purchases from backend API
@@ -701,7 +716,7 @@ async function loadAccessibleGuides(user) {
         const purchases = purchaseData.purchases || [];
 
         // Remove skeleton loader
-        const skeleton = guideList.querySelector('.skeleton-loader');
+        const skeleton = foldersContainer.querySelector('.skeleton-loader');
         if (skeleton) skeleton.remove();
 
         // Update study guides stat in compact header
@@ -720,64 +735,31 @@ async function loadAccessibleGuides(user) {
         const purchasedIds = purchases.map(p => p.product_id);
         localStorage.setItem('purchasedGuides', JSON.stringify(purchasedIds));
 
-        // Get favorites for rendering
-        const favorites = getFavorites();
+        // Store all purchases for filtering
+        allPurchasedGuides = purchases;
 
-        // If user has purchased guides, render them
+        // If user has purchased guides, render folder system
         if (purchases.length > 0) {
-            guideList.innerHTML = purchases.map(purchase => {
-                const icon = getGuideIcon(purchase.product_id);
-                const categoryInfo = guideCategoryMap[purchase.product_id] || { category: 'med-surg', label: 'Med-Surg', description: 'Comprehensive NCLEX study guide.' };
-                const isFavorited = favorites.includes(purchase.product_id);
-                const lastStudied = getLastStudied(purchase.product_id);
-                const lastStudiedText = formatRelativeTime(lastStudied);
+            // Show search bar and update count
+            if (searchBar) searchBar.style.display = 'flex';
+            const countEl = document.getElementById('filtered-guides-count');
+            if (countEl) countEl.textContent = purchases.length;
 
-                return `
-                <div class="guide-card-enhanced" data-product-id="${escapeHtml(purchase.product_id)}">
-                    <div class="guide-card-header">
-                        <div class="guide-icon">${icon}</div>
-                        <span class="owned-badge"><i class="fas fa-check"></i> Owned</span>
-                        <button class="favorite-btn ${isFavorited ? 'favorited' : ''}" data-favorite="${escapeHtml(purchase.product_id)}" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
-                            <i class="${isFavorited ? 'fas' : 'far'} fa-star"></i>
-                        </button>
-                    </div>
-                    <div class="guide-card-body">
-                        <div class="guide-card-title-row">
-                            <h4>${escapeHtml(purchase.product_name)}</h4>
-                            <span class="category-badge ${categoryInfo.category}">${categoryInfo.label}</span>
-                        </div>
-                        <p class="guide-preview">${categoryInfo.description}</p>
-                        <div class="guide-meta-row">
-                            <span class="guide-meta-item">
-                                <i class="fas fa-calendar-alt"></i> Purchased ${formatDate(purchase.purchased_at)}
-                            </span>
-                            ${lastStudiedText ? `<span class="guide-meta-item last-studied"><i class="fas fa-clock"></i> Studied ${lastStudiedText}</span>` : ''}
-                        </div>
-                        <div class="guide-card-actions">
-                            <button class="btn-continue" data-study="${escapeHtml(purchase.product_id)}">
-                                <i class="fas fa-book-reader"></i> Open Guide
-                            </button>
-                            <button class="btn-download-secondary download-btn" data-download="${escapeHtml(purchase.product_id)}">
-                                <i class="fas fa-download"></i> PDF
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-            }).join('');
+            // Render favorites section
+            renderFavoritesSection(purchases);
 
-            // Setup event listeners for guide cards (CSP-compliant, no inline handlers)
-            setupGuideCardListeners();
+            // Render category folders
+            renderCategoryFolders(purchases);
 
-            // Setup view toggle
+            // Setup search functionality
+            setupFolderSearch(purchases);
+
+            // Setup view toggle (for future use)
             setupViewToggle();
-
-            // Setup search and filter functionality
-            setupGuidesFiltering(purchases);
         } else {
-            // Show enhanced empty state with browse guides CTA
-            guideList.innerHTML = `
-                <div class="empty-state-enhanced">
+            // Show enhanced empty state
+            foldersContainer.innerHTML = `
+                <div class="guides-empty-state">
                     <div class="empty-icon">
                         <i class="fas fa-book-open"></i>
                     </div>
@@ -789,19 +771,19 @@ async function loadAccessibleGuides(user) {
                 </div>
             `;
             // Setup navigation for empty state button
-            guideList.querySelector('[data-navigate]')?.addEventListener('click', function() {
+            foldersContainer.querySelector('[data-navigate]')?.addEventListener('click', function() {
                 window.location.href = this.dataset.navigate;
             });
         }
     } catch (error) {
         console.error('Error loading purchases:', error);
         // Remove skeleton and show error
-        const skeleton = guideList.querySelector('.skeleton-loader');
+        const skeleton = foldersContainer.querySelector('.skeleton-loader');
         if (skeleton) skeleton.remove();
 
-        guideList.innerHTML = `
-            <div class="empty-state-enhanced">
-                <div class="empty-icon" style="color: var(--error-color);">
+        foldersContainer.innerHTML = `
+            <div class="guides-empty-state">
+                <div class="empty-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626);">
                     <i class="fas fa-exclamation-circle"></i>
                 </div>
                 <h3>Unable to Load Guides</h3>
@@ -812,13 +794,251 @@ async function loadAccessibleGuides(user) {
             </div>
         `;
         // Setup reload button
-        guideList.querySelector('[data-action="reload"]')?.addEventListener('click', function() {
+        foldersContainer.querySelector('[data-action="reload"]')?.addEventListener('click', function() {
             window.location.reload();
         });
     }
 }
 
+// Render favorites section at top
+function renderFavoritesSection(purchases) {
+    const favoritesSection = document.getElementById('guides-favorites-section');
+    const favoritesGrid = document.getElementById('favorites-grid');
+    if (!favoritesSection || !favoritesGrid) return;
+
+    const favorites = getFavorites();
+    const favoritedGuides = purchases.filter(p => favorites.includes(p.product_id));
+
+    if (favoritedGuides.length > 0) {
+        favoritesSection.style.display = 'block';
+        favoritesGrid.innerHTML = favoritedGuides.map(purchase => renderCompactGuideCard(purchase, true)).join('');
+        setupGuideCardListenersCompact(favoritesGrid);
+    } else {
+        favoritesSection.style.display = 'none';
+    }
+}
+
+// Render category folders
+function renderCategoryFolders(purchases, searchTerm = '') {
+    const foldersContainer = document.getElementById('guides-folders-container');
+    if (!foldersContainer) return;
+
+    // Filter purchases by search term if provided
+    let filteredPurchases = purchases;
+    if (searchTerm) {
+        const term = searchTerm.toLowerCase();
+        filteredPurchases = purchases.filter(p => {
+            const name = p.product_name.toLowerCase();
+            const categoryInfo = guideCategoryMap[p.product_id];
+            const categoryLabel = categoryInfo?.label?.toLowerCase() || '';
+            const description = categoryInfo?.description?.toLowerCase() || '';
+            return name.includes(term) || categoryLabel.includes(term) || description.includes(term);
+        });
+    }
+
+    // Update count
+    const countEl = document.getElementById('filtered-guides-count');
+    if (countEl) countEl.textContent = filteredPurchases.length;
+
+    // Group purchases by category
+    const groupedByCategory = {};
+    filteredPurchases.forEach(purchase => {
+        const categoryInfo = guideCategoryMap[purchase.product_id] || { category: 'med-surg' };
+        const category = categoryInfo.category;
+        if (!groupedByCategory[category]) {
+            groupedByCategory[category] = [];
+        }
+        groupedByCategory[category].push(purchase);
+    });
+
+    // Sort categories by order
+    const sortedCategories = Object.keys(groupedByCategory).sort((a, b) => {
+        const orderA = categoryConfig[a]?.order || 99;
+        const orderB = categoryConfig[b]?.order || 99;
+        return orderA - orderB;
+    });
+
+    // If no results after filtering
+    if (sortedCategories.length === 0) {
+        foldersContainer.innerHTML = `
+            <div class="guides-no-results-folder">
+                <i class="fas fa-search"></i>
+                <h4>No guides found</h4>
+                <p>Try adjusting your search term</p>
+            </div>
+        `;
+        return;
+    }
+
+    // Get expanded state from localStorage
+    const expandedFolders = getExpandedFolders();
+
+    // Render each category folder
+    foldersContainer.innerHTML = sortedCategories.map(category => {
+        const guides = groupedByCategory[category];
+        const config = categoryConfig[category] || { label: category, icon: 'fa-book' };
+        const isExpanded = expandedFolders.includes(category);
+
+        return `
+            <div class="category-folder ${isExpanded ? 'expanded' : ''}" data-category="${category}">
+                <div class="folder-header" data-toggle-folder="${category}">
+                    <div class="folder-header-left">
+                        <div class="folder-icon ${category}">
+                            <i class="fas ${config.icon}"></i>
+                        </div>
+                        <div>
+                            <h3 class="folder-title">${config.label}</h3>
+                            <span class="folder-count">${guides.length} guide${guides.length !== 1 ? 's' : ''}</span>
+                        </div>
+                    </div>
+                    <div class="folder-header-right">
+                        <div class="folder-toggle">
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="folder-content">
+                    <div class="folder-guides-grid">
+                        ${guides.map(purchase => renderCompactGuideCard(purchase, false)).join('')}
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    // Setup folder toggle listeners
+    setupFolderToggleListeners();
+
+    // Setup guide card listeners
+    setupGuideCardListenersCompact(foldersContainer);
+}
+
+// Render a compact guide card
+function renderCompactGuideCard(purchase, isFavoriteSection) {
+    const icon = getGuideIcon(purchase.product_id);
+    const categoryInfo = guideCategoryMap[purchase.product_id] || { category: 'med-surg', label: 'Med-Surg', description: 'Comprehensive NCLEX study guide.' };
+    const favorites = getFavorites();
+    const isFavorited = favorites.includes(purchase.product_id);
+    const lastStudied = getLastStudied(purchase.product_id);
+    const lastStudiedText = formatRelativeTime(lastStudied);
+
+    return `
+        <div class="guide-card-compact" data-product-id="${escapeHtml(purchase.product_id)}">
+            <div class="card-header-mini">
+                <div class="guide-icon-mini">${icon}</div>
+                <button class="favorite-btn-mini ${isFavorited ? 'favorited' : ''}" data-favorite="${escapeHtml(purchase.product_id)}" title="${isFavorited ? 'Remove from favorites' : 'Add to favorites'}">
+                    <i class="${isFavorited ? 'fas' : 'far'} fa-star"></i>
+                </button>
+            </div>
+            <div class="card-body-mini">
+                <h4>${escapeHtml(purchase.product_name)}</h4>
+                <div class="guide-meta-mini">
+                    <i class="fas fa-clock"></i>
+                    ${lastStudiedText ? `Studied ${lastStudiedText}` : `Purchased ${formatDate(purchase.purchased_at)}`}
+                </div>
+                <div class="card-actions-mini">
+                    <button class="btn-open-mini" data-study="${escapeHtml(purchase.product_id)}">
+                        <i class="fas fa-book-reader"></i> Open
+                    </button>
+                    <button class="btn-pdf-mini" data-download="${escapeHtml(purchase.product_id)}">
+                        <i class="fas fa-download"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Setup folder toggle listeners
+function setupFolderToggleListeners() {
+    document.querySelectorAll('[data-toggle-folder]').forEach(header => {
+        header.addEventListener('click', function() {
+            const category = this.dataset.toggleFolder;
+            const folder = document.querySelector(`.category-folder[data-category="${category}"]`);
+            if (folder) {
+                folder.classList.toggle('expanded');
+                saveExpandedFolders();
+            }
+        });
+    });
+}
+
+// Setup guide card listeners for compact cards
+function setupGuideCardListenersCompact(container) {
+    // Study buttons
+    container.querySelectorAll('[data-study]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            continueStudying(this.dataset.study);
+        });
+    });
+
+    // Download PDF buttons
+    container.querySelectorAll('[data-download]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            downloadGuide(this.dataset.download, this);
+        });
+    });
+
+    // Favorite buttons
+    container.querySelectorAll('[data-favorite]').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            toggleFavoriteAndRefresh(this.dataset.favorite, this);
+        });
+    });
+}
+
+// Toggle favorite and refresh the folder view
+function toggleFavoriteAndRefresh(productId, button) {
+    const favorites = getFavorites();
+    const index = favorites.indexOf(productId);
+
+    if (index > -1) {
+        favorites.splice(index, 1);
+    } else {
+        favorites.push(productId);
+    }
+
+    saveFavorites(favorites);
+
+    // Refresh both favorites section and folders
+    renderFavoritesSection(allPurchasedGuides);
+    renderCategoryFolders(allPurchasedGuides, document.getElementById('guides-search-input')?.value || '');
+}
+
+// Get expanded folders from localStorage
+function getExpandedFolders() {
+    try {
+        return JSON.parse(localStorage.getItem('expandedFolders') || '[]');
+    } catch {
+        return [];
+    }
+}
+
+// Save expanded folders to localStorage
+function saveExpandedFolders() {
+    const expanded = [];
+    document.querySelectorAll('.category-folder.expanded').forEach(folder => {
+        expanded.push(folder.dataset.category);
+    });
+    localStorage.setItem('expandedFolders', JSON.stringify(expanded));
+}
+
+// Setup folder search
+function setupFolderSearch(purchases) {
+    const searchInput = document.getElementById('guides-search-input');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', debounceGuides(() => {
+        const searchTerm = searchInput.value.trim();
+        renderCategoryFolders(purchases, searchTerm);
+    }, 300));
+}
+
 // Setup event listeners for guide cards (CSP-compliant, no inline handlers)
+// This is kept for backward compatibility but the new folder system uses setupGuideCardListenersCompact
 function setupGuideCardListeners() {
     // Continue Studying buttons
     document.querySelectorAll('[data-study]').forEach(btn => {

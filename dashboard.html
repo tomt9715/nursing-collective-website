@@ -226,31 +226,29 @@
                         </div>
                     </div>
 
-                    <!-- Search and Filter Controls -->
-                    <div class="guides-controls" id="guides-controls" style="display: none;">
+                    <!-- Search Bar (always visible when user has guides) -->
+                    <div class="guides-search-bar" id="guides-search-bar" style="display: none;">
                         <div class="guides-search-box">
                             <i class="fas fa-search"></i>
                             <input type="text" id="guides-search-input" placeholder="Search your guides..." />
                         </div>
-                        <div class="guides-category-tabs" id="guides-category-tabs">
-                            <button class="category-tab active" data-category="all">All</button>
-                            <!-- Categories will be populated dynamically -->
-                        </div>
-                        <div class="guides-sort-dropdown">
-                            <select id="guides-sort">
-                                <option value="recent">Recently Studied</option>
-                                <option value="name">Name A-Z</option>
-                                <option value="purchased">Recently Purchased</option>
-                            </select>
+                        <div class="guides-count-display">
+                            <span id="filtered-guides-count">0</span> guides
                         </div>
                     </div>
 
-                    <!-- Guide count -->
-                    <div class="guides-count-display" id="guides-count-display" style="display: none;">
-                        <span id="filtered-guides-count">0</span> guides
+                    <!-- Favorites Section (pinned at top) -->
+                    <div class="guides-favorites-section" id="guides-favorites-section" style="display: none;">
+                        <div class="favorites-header">
+                            <h3><i class="fas fa-star"></i> Favorites</h3>
+                        </div>
+                        <div class="favorites-grid" id="favorites-grid">
+                            <!-- Favorited guides rendered here -->
+                        </div>
                     </div>
 
-                    <div class="guides-grid-enhanced view-grid" id="guide-list">
+                    <!-- Category Folders Container -->
+                    <div class="guides-folders-container" id="guides-folders-container">
                         <!-- Loading skeleton -->
                         <div class="skeleton-loader">
                             <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>

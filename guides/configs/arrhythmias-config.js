@@ -22,7 +22,7 @@ const sidebarConfig = {
         { id: 'tip-pacemaker-hierarchy', title: 'Pacemaker Hierarchy', text: 'SA node (60-100) → AV node (40-60) → Ventricles (20-40). Lower pacemaker = slower rate, wider QRS.' },
         { id: 'tip-afib-stroke', title: 'A-Fib & Stroke Risk', text: 'Irregularly irregular rhythm with no P waves. Blood pools in atria forming clots - anticoagulation is critical!' },
         { id: 'tip-adenosine', title: 'Adenosine Technique', text: 'Half-life <10 seconds! Rapid IV push + 20mL flush. Use closest IV site to heart. Warn patient of brief discomfort.' },
-        { id: 'tip-defib-vs-cardio', title: 'Defib vs Cardioversion', text: 'No pulse = Defibrillate. Has pulse but unstable = Synchronized Cardioversion. Remember the sync button!' },
-        { id: 'tip-type1-vs-type2', title: 'Type I vs Type II Block', text: 'Type I: "Longer, longer, DROP!" Type II: "Same, same, DROP!" Type II is worse - often needs pacemaker.' }
+        { id: 'tip-type1-vs-type2', title: 'Type I vs Type II Block', text: 'Type I: "Longer, longer, DROP!" Type II: "Same, same, DROP!" Type II is worse - often needs pacemaker.' },
+        { id: 'tip-defib-vs-cardio', title: 'Defib vs Cardioversion', text: 'No pulse = Defibrillate. Has pulse but unstable = Synchronized Cardioversion. Remember the sync button!' }
     ]
 };

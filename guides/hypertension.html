@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypertension Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Hypertension. Learn to classify blood pressure stages, teach lifestyle modifications, and recognize hypertensive crisis signs.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           PDF-STYLE STUDY GUIDE STYLES
+           Hypertension - Cardiovascular Category
+           Colors inspired by BP gauge icon
+           ============================================ */
+
+        :root {
+            --primary-color: #3B82F6;
+            --primary-dark: #2563EB;
+            --secondary-color: #EF4444;
+            --accent-color: #F59E0B;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar - Fixed at top */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .download-bar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f0f9ff;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Document Container */
+        .document-container {
+            max-width: 850px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Cover Page - Colors inspired by BP gauge (blue to red gradient) */
+        .cover-page {
+            background: linear-gradient(135deg, #3B82F6 0%, #F59E0B 50%, #EF4444 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 12px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-category {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content {
+            padding: 60px;
+        }
+
+        /* Learning Objectives */
+        .learning-objectives {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .learning-objectives li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .learning-objectives li i {
+            color: #10b981;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Table of Contents */
+        .table-of-contents {
+            background: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .table-of-contents h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .table-of-contents li {
+            break-inside: avoid;
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .table-of-contents a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .toc-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .table-of-contents a:hover .toc-number {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .guide-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .guide-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 28px 0 14px;
+        }
+
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+        }
+
+        .guide-section p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            margin-bottom: 14px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+        }
+
+        .guide-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .info-box.clinical-pearl {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-color: #f59e0b;
+        }
+
+        .info-box.warning {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .info-box.tip {
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .info-box.nclex-tip {
+            background: #f5f3ff;
+            border-color: #8b5cf6;
+        }
+
+        .info-box.mnemonic {
+            background: #fffbeb;
+            border-color: #f59e0b;
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .guide-table thead {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .guide-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .guide-table td {
+            padding: 12px 14px;
+            color: var(--text-secondary);
+        }
+
+        .guide-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* BP Classification Cards */
+        .bp-classification-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .bp-card {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .bp-card-header {
+            padding: 14px 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1rem;
+            color: white;
+        }
+
+        .bp-card.normal .bp-card-header {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .bp-card.elevated .bp-card-header {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .bp-card.stage1 .bp-card-header {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+        }
+
+        .bp-card.stage2 .bp-card-header {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .bp-card.crisis .bp-card-header {
+            background: linear-gradient(135deg, #991b1b, #7f1d1d);
+        }
+
+        .bp-card-body {
+            padding: 16px;
+            text-align: center;
+        }
+
+        .bp-card-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .bp-card-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .comparison-card-header {
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: white;
+        }
+
+        .comparison-card.primary .comparison-card-header {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .comparison-card.secondary .comparison-card-header {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .comparison-card.emergency .comparison-card-header {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+        }
+
+        .comparison-card.urgency .comparison-card-header {
+            background: linear-gradient(135deg, #f97316, #ea580c);
+        }
+
+        .comparison-card-body {
+            padding: 18px;
+        }
+
+        .comparison-card-body h4 {
+            font-size: 0.95rem;
+            margin: 0 0 10px;
+        }
+
+        .comparison-card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px;
+        }
+
+        .comparison-card-body li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+
+        .interventions-list h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .interventions-list h4 i { color: var(--primary-color); }
+
+        .intervention-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intervention-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .intervention-content h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 4px;
+        }
+
+        .intervention-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Quick Reference */
+        .quick-reference {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .quick-reference h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quick-ref-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .quick-ref-item .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .quick-ref-item .value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* FlorenceBot Tips */
+        .florencebot-tip {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            scroll-margin-top: 100px;
+        }
+
+        .florencebot-tip-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .florencebot-tip-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .florencebot-tip-label {
+            font-weight: 700;
+            color: #92400e;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .florencebot-tip-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #78350f;
+            margin-bottom: 8px;
+        }
+
+        .florencebot-tip-content {
+            color: #92400e;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .florencebot-tip.highlighted {
+            animation: pulse-highlight 2s ease-in-out;
+            box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+
+        @keyframes pulse-highlight {
+            0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.5); }
+            50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.8); }
+        }
+
+        /* Key Points Summary */
+        .key-points-summary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            padding: 28px;
+            margin: 40px 0 0;
+            color: white;
+        }
+
+        .key-points-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin: 0 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .key-points-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .key-point {
+            background: rgba(255,255,255,0.15);
+            padding: 14px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Footer */
+        .document-footer {
+            text-align: center;
+            padding: 32px 48px;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        }
+
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            margin-bottom: 12px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Print Styles */
+        @page {
+            margin: 0.6in 0.4in;
+        }
+
+        @media print {
+            .download-bar { display: none !important; }
+
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .cover-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .info-box { page-break-inside: avoid; break-inside: avoid; }
+            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+            .comparison-card { page-break-inside: avoid; break-inside: avoid; }
+            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
+            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
+            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
+            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
+            .florencebot-tip { page-break-inside: avoid; break-inside: avoid; }
+            .bp-card { page-break-inside: avoid; break-inside: avoid; }
+
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            a { text-decoration: underline; }
+
+            .document-footer {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .download-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .bp-classification-grid { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="guide-sidebar.css">
+</head>
+<body data-product-id="hypertension" data-guide-name="Hypertension">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/hypertension.webp" alt="Hypertension">
+                </div>
+                <div class="cover-category">Medical-Surgical Nursing</div>
+                <h1 class="cover-title">Hypertension</h1>
+                <p class="cover-subtitle">Comprehensive nursing study guide covering blood pressure classification, primary vs secondary hypertension, lifestyle modifications, pharmacological management, and hypertensive crisis recognition.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">18-22 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">January 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Classify hypertension stages accurately using current ACC/AHA guidelines</li>
+                    <li><i class="fas fa-check-circle"></i> Differentiate between primary (essential) and secondary hypertension</li>
+                    <li><i class="fas fa-check-circle"></i> Teach lifestyle modifications effectively to promote patient adherence</li>
+                    <li><i class="fas fa-check-circle"></i> Recognize hypertensive crisis signs and differentiate urgency from emergency</li>
+                    <li><i class="fas fa-check-circle"></i> Understand pharmacological management and nursing considerations for antihypertensives</li>
+                </ul>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#overview"><span class="toc-number">1</span> Understanding Blood Pressure</a></li>
+                    <li><a href="#classification"><span class="toc-number">2</span> BP Classification & Staging</a></li>
+                    <li><a href="#types"><span class="toc-number">3</span> Primary vs Secondary HTN</a></li>
+                    <li><a href="#complications"><span class="toc-number">4</span> Target Organ Damage</a></li>
+                    <li><a href="#assessment"><span class="toc-number">5</span> Nursing Assessment</a></li>
+                    <li><a href="#lifestyle"><span class="toc-number">6</span> Lifestyle Modifications</a></li>
+                    <li><a href="#medications"><span class="toc-number">7</span> Pharmacological Management</a></li>
+                    <li><a href="#crisis"><span class="toc-number">8</span> Hypertensive Crisis</a></li>
+                </ul>
+            </nav>
+
+            <!-- Section 1: Understanding Blood Pressure -->
+            <section class="guide-section" id="overview">
+                <h2><span class="section-icon"><i class="fas fa-heartbeat"></i></span> Understanding Blood Pressure</h2>
+
+                <p>Blood pressure (BP) is the force of blood pushing against arterial walls. It is expressed as systolic over diastolic pressure (e.g., 120/80 mmHg). Understanding the physiology behind blood pressure is essential for managing hypertension effectively.</p>
+
+                <h3>Components of Blood Pressure</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Definition</th>
+                                <th>Clinical Significance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Systolic Pressure (SBP)</td>
+                                <td>Pressure during ventricular contraction</td>
+                                <td>Reflects cardiac output and arterial stiffness</td>
+                            </tr>
+                            <tr>
+                                <td>Diastolic Pressure (DBP)</td>
+                                <td>Pressure during ventricular relaxation</td>
+                                <td>Reflects peripheral vascular resistance</td>
+                            </tr>
+                            <tr>
+                                <td>Pulse Pressure</td>
+                                <td>Difference between SBP and DBP</td>
+                                <td>Normal: 30-40 mmHg; widened indicates stiff arteries</td>
+                            </tr>
+                            <tr>
+                                <td>Mean Arterial Pressure (MAP)</td>
+                                <td>Average pressure during cardiac cycle</td>
+                                <td>MAP = DBP + 1/3(Pulse Pressure); Normal: 70-105 mmHg</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Blood Pressure Equation
+                    </div>
+                    <p><strong>BP = Cardiac Output (CO) x Systemic Vascular Resistance (SVR)</strong></p>
+                    <p>Understanding this equation helps you understand how antihypertensive medications work: they either decrease CO (beta-blockers) or decrease SVR (vasodilators, ACE inhibitors).</p>
+                </div>
+
+                <h3>Factors Affecting Blood Pressure</h3>
+
+                <ul>
+                    <li><strong>Cardiac Output:</strong> Heart rate and stroke volume</li>
+                    <li><strong>Blood Volume:</strong> Sodium and fluid retention increase BP</li>
+                    <li><strong>Peripheral Resistance:</strong> Vasoconstriction increases BP</li>
+                    <li><strong>Blood Viscosity:</strong> Thicker blood increases resistance</li>
+                    <li><strong>Arterial Elasticity:</strong> Stiff arteries increase systolic BP</li>
+                </ul>
+
+                <div class="florencebot-tip" id="tip-bp-equation">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">BP = CO x SVR</div>
+                    <div class="florencebot-tip-content">
+                        <strong>This equation is the key to understanding antihypertensive medications!</strong> Blood Pressure equals Cardiac Output times Systemic Vascular Resistance. Beta-blockers lower BP by decreasing CO (slower heart rate, weaker contractions). Vasodilators, ACE inhibitors, and calcium channel blockers lower BP by decreasing SVR (relaxing blood vessels). Diuretics work by decreasing blood volume, which reduces CO. When a patient's BP isn't controlled, think about which factor needs to be targeted next.
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Classification -->
+            <section class="guide-section" id="classification">
+                <h2><span class="section-icon"><i class="fas fa-chart-bar"></i></span> BP Classification & Staging</h2>
+
+                <p>The American College of Cardiology (ACC) and American Heart Association (AHA) updated hypertension guidelines in 2017, lowering the threshold for hypertension diagnosis. This classification is essential for NCLEX and clinical practice.</p>
+
+                <h3>2017 ACC/AHA Blood Pressure Categories</h3>
+
+                <div class="bp-classification-grid">
+                    <div class="bp-card normal">
+                        <div class="bp-card-header">
+                            <i class="fas fa-check-circle"></i> Normal
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-value">&lt;120/80</div>
+                            <div class="bp-card-description">Maintain healthy lifestyle habits</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card elevated">
+                        <div class="bp-card-header">
+                            <i class="fas fa-arrow-up"></i> Elevated
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-value">120-129/&lt;80</div>
+                            <div class="bp-card-description">Lifestyle modifications recommended</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card stage1">
+                        <div class="bp-card-header">
+                            <i class="fas fa-exclamation"></i> Stage 1 HTN
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-value">130-139/80-89</div>
+                            <div class="bp-card-description">Lifestyle changes; medication if high CV risk</div>
+                        </div>
+                    </div>
+
+                    <div class="bp-card stage2">
+                        <div class="bp-card-header">
+                            <i class="fas fa-exclamation-triangle"></i> Stage 2 HTN
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-value">&ge;140/90</div>
+                            <div class="bp-card-description">Lifestyle changes PLUS medication therapy</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bp-classification-grid" style="grid-template-columns: 1fr;">
+                    <div class="bp-card crisis">
+                        <div class="bp-card-header">
+                            <i class="fas fa-bolt"></i> Hypertensive Crisis
+                        </div>
+                        <div class="bp-card-body">
+                            <div class="bp-card-value">&gt;180/120</div>
+                            <div class="bp-card-description">Immediate medical attention required - assess for target organ damage</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Tip: Classification Rules
+                    </div>
+                    <ul>
+                        <li>If systolic and diastolic fall into different categories, classify by the <strong>HIGHER</strong> category</li>
+                        <li>Example: 145/82 = Stage 2 (even though diastolic is Stage 1)</li>
+                        <li>Diagnosis requires <strong>two or more readings</strong> on <strong>two or more occasions</strong></li>
+                        <li>Use the average of 2+ readings taken at least 1 minute apart</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-classify-higher">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Classify by Higher Number</div>
+                    <div class="florencebot-tip-content">
+                        <strong>When in doubt, go with the worse category!</strong> If a patient's systolic and diastolic pressures fall into different stages, always classify them based on the <strong>higher</strong> (more severe) category. For example, 152/84 mmHg would be Stage 2 hypertension because the systolic is 152 (Stage 2), even though the diastolic of 84 is only Stage 1. This ensures patients receive appropriately aggressive treatment based on their greatest risk factor.
+                    </div>
+                </div>
+
+                <h3>Proper Blood Pressure Measurement Technique</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-ruler"></i> Steps for Accurate BP Measurement</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Prepare the Patient</h5>
+                            <p>Rest for 5 minutes in a seated position. Empty bladder. No caffeine, exercise, or smoking for 30 minutes prior. Avoid talking during measurement.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Proper Positioning</h5>
+                            <p>Seated with back supported, feet flat on floor (not crossed). Arm supported at heart level on a flat surface. Remove clothing covering the arm.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Select Correct Cuff Size</h5>
+                            <p>Bladder should encircle 80% of arm circumference. Cuff too small = falsely HIGH reading. Cuff too large = falsely LOW reading.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Take Multiple Readings</h5>
+                            <p>Take at least 2 readings, 1-2 minutes apart. Record the average. If readings differ by more than 10 mmHg, take additional readings.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Common Measurement Errors
+                    </div>
+                    <ul>
+                        <li><strong>Wrong cuff size:</strong> Most common error! Using a small cuff on a large arm gives falsely elevated readings</li>
+                        <li><strong>Arm below heart level:</strong> Gives falsely HIGH reading</li>
+                        <li><strong>Arm above heart level:</strong> Gives falsely LOW reading</li>
+                        <li><strong>White coat hypertension:</strong> Elevated BP only in clinical settings (confirm with home monitoring)</li>
+                        <li><strong>Masked hypertension:</strong> Normal BP in office but elevated at home</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 3: Types of HTN -->
+            <section class="guide-section" id="types">
+                <h2><span class="section-icon"><i class="fas fa-code-branch"></i></span> Primary vs Secondary Hypertension</h2>
+
+                <p>Understanding the difference between primary and secondary hypertension is crucial because it determines the treatment approach. Most patients have primary hypertension, but identifying secondary causes can lead to potentially curable conditions.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card primary">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-question-circle"></i> Primary (Essential) HTN
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Characteristics</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>90-95%</strong> of all hypertension cases</li>
+                                <li><i class="fas fa-check"></i> <strong>No identifiable cause</strong></li>
+                                <li><i class="fas fa-check"></i> Develops gradually over years</li>
+                                <li><i class="fas fa-check"></i> Multifactorial etiology</li>
+                                <li><i class="fas fa-check"></i> Genetic predisposition plays a role</li>
+                                <li><i class="fas fa-check"></i> Requires lifelong management</li>
+                            </ul>
+                            <h4>Risk Factors</h4>
+                            <ul>
+                                <li><i class="fas fa-circle"></i> Age (risk increases with age)</li>
+                                <li><i class="fas fa-circle"></i> Family history</li>
+                                <li><i class="fas fa-circle"></i> Race (higher in Black populations)</li>
+                                <li><i class="fas fa-circle"></i> Obesity, sedentary lifestyle</li>
+                                <li><i class="fas fa-circle"></i> High sodium, low potassium diet</li>
+                                <li><i class="fas fa-circle"></i> Excessive alcohol, tobacco use</li>
+                                <li><i class="fas fa-circle"></i> Chronic stress</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card secondary">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-search"></i> Secondary HTN
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Characteristics</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>5-10%</strong> of all hypertension cases</li>
+                                <li><i class="fas fa-check"></i> <strong>Identifiable underlying cause</strong></li>
+                                <li><i class="fas fa-check"></i> Often has sudden onset</li>
+                                <li><i class="fas fa-check"></i> May be resistant to treatment</li>
+                                <li><i class="fas fa-check"></i> Potentially curable if cause is treated</li>
+                                <li><i class="fas fa-check"></i> Suspect if onset before age 30 or after 55</li>
+                            </ul>
+                            <h4>Common Causes</h4>
+                            <ul>
+                                <li><i class="fas fa-circle"></i> <strong>Renal:</strong> Renal artery stenosis, CKD</li>
+                                <li><i class="fas fa-circle"></i> <strong>Endocrine:</strong> Pheochromocytoma, Cushing's, Hyperaldosteronism, Thyroid disorders</li>
+                                <li><i class="fas fa-circle"></i> <strong>Vascular:</strong> Coarctation of aorta</li>
+                                <li><i class="fas fa-circle"></i> <strong>Medications:</strong> NSAIDs, steroids, OCPs, decongestants</li>
+                                <li><i class="fas fa-circle"></i> <strong>Sleep apnea:</strong> Obstructive sleep apnea</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: When to Suspect Secondary HTN
+                    </div>
+                    <p>Consider secondary causes when you see:</p>
+                    <ul>
+                        <li>Onset before age 30 (especially without family history or obesity)</li>
+                        <li>Sudden onset of severe hypertension</li>
+                        <li>Previously controlled BP that becomes resistant</li>
+                        <li>Poor response to 3+ antihypertensive medications (resistant HTN)</li>
+                        <li>Unprovoked hypokalemia (think hyperaldosteronism)</li>
+                        <li>Episodic HTN with headache, sweating, palpitations (think pheochromocytoma)</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-secondary-clues">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Secondary HTN Red Flags</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Think secondary hypertension when the presentation seems "off"!</strong> Key red flags include: hypertension in a young, healthy patient under 30; sudden onset of severe HTN in a previously normotensive patient; HTN resistant to 3+ medications; and unexplained hypokalemia (low potassium without diuretic use suggests hyperaldosteronism). A patient describing episodic severe headaches, sweating, and palpitations with BP spikes might have a pheochromocytoma - a tumor that secretes catecholamines. Finding and treating the underlying cause can sometimes <strong>cure</strong> the hypertension!
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: Target Organ Damage -->
+            <section class="guide-section" id="complications">
+                <h2><span class="section-icon"><i class="fas fa-exclamation-circle"></i></span> Target Organ Damage</h2>
+
+                <p>Uncontrolled hypertension damages blood vessels throughout the body, leading to serious complications in multiple organ systems. Understanding these complications helps communicate the importance of BP control to patients.</p>
+
+                <h3>End-Organ Effects of Chronic Hypertension</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Target Organ</th>
+                                <th>Complications</th>
+                                <th>Assessment Findings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><i class="fas fa-brain"></i> Brain</td>
+                                <td>Stroke (ischemic/hemorrhagic), TIA, Vascular dementia, Hypertensive encephalopathy</td>
+                                <td>Neuro deficits, altered LOC, cognitive changes, headache</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-eye"></i> Eyes</td>
+                                <td>Hypertensive retinopathy, Vision loss, Papilledema</td>
+                                <td>Fundoscopic exam: AV nicking, copper/silver wiring, hemorrhages, exudates</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-heart"></i> Heart</td>
+                                <td>Left ventricular hypertrophy (LVH), Heart failure, CAD, MI, Arrhythmias</td>
+                                <td>S4 gallop, displaced PMI, chest pain, dyspnea, ECG changes</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-kidneys"></i> Kidneys</td>
+                                <td>Nephrosclerosis, Chronic kidney disease, Proteinuria, Renal failure</td>
+                                <td>Elevated creatinine/BUN, decreased GFR, proteinuria, edema</td>
+                            </tr>
+                            <tr>
+                                <td><i class="fas fa-wave-square"></i> Blood Vessels</td>
+                                <td>Atherosclerosis, Aortic dissection, Peripheral arterial disease, Aneurysm</td>
+                                <td>Diminished pulses, bruits, claudication, cool extremities</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Target Organs
+                    </div>
+                    <p><strong>HTN damages "BREAK" organs:</strong></p>
+                    <ul>
+                        <li><strong>B</strong>rain (stroke, TIA)</li>
+                        <li><strong>R</strong>etina (hypertensive retinopathy)</li>
+                        <li><strong>E</strong>xtremities/vessels (PAD, aneurysm)</li>
+                        <li><strong>A</strong>orta/heart (LVH, HF, MI)</li>
+                        <li><strong>K</strong>idneys (nephrosclerosis, CKD)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> The "Silent Killer"
+                    </div>
+                    <p>Hypertension is often called the "silent killer" because it usually has <strong>NO SYMPTOMS</strong> until target organ damage occurs. This is why regular BP screening and patient education about the importance of treatment adherence are critical nursing responsibilities.</p>
+                </div>
+            </section>
+
+            <!-- Section 5: Nursing Assessment -->
+            <section class="guide-section" id="assessment">
+                <h2><span class="section-icon"><i class="fas fa-stethoscope"></i></span> Nursing Assessment</h2>
+
+                <p>A thorough nursing assessment helps identify hypertension, evaluate for target organ damage, and establish baseline data for monitoring treatment effectiveness.</p>
+
+                <h3>Comprehensive Hypertension Assessment</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-check"></i> Key Assessment Components</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Blood Pressure in Both Arms</h5>
+                            <p>Check BP in both arms initially. A difference of more than 10-15 mmHg between arms may indicate vascular disease. Use the arm with the higher reading for future measurements.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Orthostatic Vitals</h5>
+                            <p>Measure BP and HR lying, sitting, and standing. Wait 1-3 minutes between position changes. Orthostatic hypotension: drop of 20+ mmHg systolic or 10+ mmHg diastolic upon standing.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Cardiovascular Assessment</h5>
+                            <p>Auscultate heart sounds (S4 suggests LVH). Check for carotid bruits, peripheral pulses, and edema. Assess for JVD. Note any chest pain or dyspnea.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Neurological Assessment</h5>
+                            <p>Assess LOC, orientation, speech, motor/sensory function. Check for headache, visual changes, or dizziness. These may indicate hypertensive encephalopathy or stroke.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Renal Assessment</h5>
+                            <p>Monitor I&O, daily weights, and edema. Review BUN, creatinine, GFR, and urinalysis for proteinuria. Decreased urine output may indicate renal impairment.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">6</div>
+                        <div class="intervention-content">
+                            <h5>Medication and Lifestyle History</h5>
+                            <p>Review current medications (especially NSAIDs, decongestants, steroids). Assess diet (sodium, alcohol), exercise, smoking, and stress. Evaluate adherence barriers.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Diagnostic Studies for Hypertension</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Purpose</th>
+                                <th>Key Findings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Basic Metabolic Panel (BMP)</td>
+                                <td>Assess renal function, electrolytes</td>
+                                <td>Elevated BUN/Cr indicates kidney damage; K+ levels for med monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>Urinalysis</td>
+                                <td>Screen for kidney damage</td>
+                                <td>Proteinuria, microalbuminuria indicate nephropathy</td>
+                            </tr>
+                            <tr>
+                                <td>Lipid Panel</td>
+                                <td>Assess cardiovascular risk</td>
+                                <td>Elevated LDL increases atherosclerosis risk</td>
+                            </tr>
+                            <tr>
+                                <td>Fasting Glucose/HbA1c</td>
+                                <td>Screen for diabetes</td>
+                                <td>DM is a major cardiovascular risk factor</td>
+                            </tr>
+                            <tr>
+                                <td>ECG</td>
+                                <td>Assess cardiac effects</td>
+                                <td>LVH patterns, arrhythmias, prior MI</td>
+                            </tr>
+                            <tr>
+                                <td>Echocardiogram</td>
+                                <td>Evaluate heart structure/function</td>
+                                <td>LVH, wall motion abnormalities, EF</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 6: Lifestyle Modifications -->
+            <section class="guide-section" id="lifestyle">
+                <h2><span class="section-icon"><i class="fas fa-apple-alt"></i></span> Lifestyle Modifications</h2>
+
+                <p>Lifestyle modifications are the foundation of hypertension management. They are recommended for ALL patients with elevated BP or hypertension, either alone (elevated/Stage 1) or in combination with medications (Stage 1-2). These changes can significantly reduce BP and cardiovascular risk.</p>
+
+                <h3>Non-Pharmacological Interventions</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Modification</th>
+                                <th>Recommendation</th>
+                                <th>Expected BP Reduction</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>DASH Diet</strong></td>
+                                <td>Rich in fruits, vegetables, whole grains, low-fat dairy; reduced saturated fat</td>
+                                <td>~11 mmHg SBP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sodium Restriction</strong></td>
+                                <td>Less than 2,300 mg/day; ideally less than 1,500 mg/day</td>
+                                <td>5-6 mmHg SBP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Potassium Intake</strong></td>
+                                <td>3,500-5,000 mg/day from food sources (unless contraindicated)</td>
+                                <td>4-5 mmHg SBP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Weight Loss</strong></td>
+                                <td>Achieve/maintain BMI 18.5-24.9 kg/m&sup2;</td>
+                                <td>~1 mmHg per 1 kg lost</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Physical Activity</strong></td>
+                                <td>90-150 min/week of aerobic exercise; 3 sessions/week resistance training</td>
+                                <td>5-8 mmHg SBP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Alcohol Moderation</strong></td>
+                                <td>Men: &le;2 drinks/day; Women: &le;1 drink/day</td>
+                                <td>~4 mmHg SBP</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Smoking Cessation</strong></td>
+                                <td>Complete cessation of tobacco use</td>
+                                <td>Reduces overall CV risk (not direct BP effect)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> The DASH Diet
+                    </div>
+                    <p><strong>Dietary Approaches to Stop Hypertension</strong></p>
+                    <ul>
+                        <li>4-5 servings of fruits daily</li>
+                        <li>4-5 servings of vegetables daily</li>
+                        <li>6-8 servings of whole grains daily</li>
+                        <li>2-3 servings of low-fat dairy daily</li>
+                        <li>Limit red meat, sweets, and saturated fat</li>
+                        <li>Include nuts, seeds, and legumes</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-lifestyle-priority">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Lifestyle First, Always</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Lifestyle modifications are powerful medicine!</strong> Combined lifestyle changes can lower systolic BP by 20+ mmHg - that's as much as some medications! For patients with elevated BP or Stage 1 HTN without high CV risk, 3-6 months of lifestyle modifications alone may be tried before starting medications. For NCLEX, if a question asks about initial management for newly diagnosed Stage 1 HTN without complications, lifestyle modifications are the answer. The DASH diet alone can reduce SBP by about 11 mmHg. Teach patients that these changes are <strong>additive</strong> - the more changes they make, the greater the BP reduction.
+                    </div>
+                </div>
+
+                <h3>Patient Education Tips</h3>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-user-graduate"></i> Teaching Points for Sodium Reduction</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Read Labels</div>
+                            <div class="value">Check sodium content per serving</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Avoid Processed Foods</div>
+                            <div class="value">Canned, frozen meals, deli meats</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Cook at Home</div>
+                            <div class="value">Control ingredients and portions</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Use Herbs/Spices</div>
+                            <div class="value">Season without salt shaker</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 7: Pharmacological Management -->
+            <section class="guide-section" id="medications">
+                <h2><span class="section-icon"><i class="fas fa-pills"></i></span> Pharmacological Management</h2>
+
+                <p>When lifestyle modifications alone are insufficient, antihypertensive medications are prescribed. The choice of medication depends on the patient's BP level, comorbidities, and potential side effects. Understanding these drug classes is essential for safe medication administration.</p>
+
+                <h3>First-Line Antihypertensive Medications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Class</th>
+                                <th>Examples</th>
+                                <th>Mechanism</th>
+                                <th>Key Nursing Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Thiazide Diuretics</strong></td>
+                                <td>Hydrochlorothiazide (HCTZ), Chlorthalidone</td>
+                                <td>Decrease blood volume by increasing Na+ and water excretion</td>
+                                <td>Monitor K+, Na+, glucose. Give in AM. May cause hyperglycemia, hyperuricemia.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ACE Inhibitors</strong></td>
+                                <td>Lisinopril, Enalapril, Ramipril (-pril)</td>
+                                <td>Block conversion of angiotensin I to II; decrease SVR and aldosterone</td>
+                                <td>Dry cough (10-20%), hyperkalemia, angioedema risk. Avoid in pregnancy!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ARBs</strong></td>
+                                <td>Losartan, Valsartan, Irbesartan (-sartan)</td>
+                                <td>Block angiotensin II receptors; similar effects to ACE-I</td>
+                                <td>Alternative if ACE-I cough. Same K+ monitoring. Avoid in pregnancy!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Calcium Channel Blockers</strong></td>
+                                <td>Amlodipine, Nifedipine (DHP); Diltiazem, Verapamil (non-DHP)</td>
+                                <td>Relax vascular smooth muscle (vasodilation)</td>
+                                <td>Peripheral edema, constipation. Non-DHPs also slow HR (avoid with beta-blockers).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Second-Line & Add-On Medications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Class</th>
+                                <th>Examples</th>
+                                <th>Key Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Beta-Blockers</strong></td>
+                                <td>Metoprolol, Atenolol, Carvedilol (-olol)</td>
+                                <td>Not first-line for HTN alone; preferred if concurrent HF, post-MI, tachyarrhythmias. Don't stop abruptly!</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aldosterone Antagonists</strong></td>
+                                <td>Spironolactone, Eplerenone</td>
+                                <td>Good for resistant HTN. Risk of hyperkalemia. Spironolactone may cause gynecomastia.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Alpha-1 Blockers</strong></td>
+                                <td>Prazosin, Doxazosin, Terazosin</td>
+                                <td>First-dose hypotension risk - give at bedtime. Also used for BPH.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Direct Vasodilators</strong></td>
+                                <td>Hydralazine, Minoxidil</td>
+                                <td>Used for resistant HTN. May cause reflex tachycardia. Hydralazine can cause lupus-like syndrome.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Central Alpha-2 Agonists</strong></td>
+                                <td>Clonidine</td>
+                                <td>Used if other agents fail. Rebound HTN if stopped abruptly! Available as patch for adherence.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical: ACE-I/ARB Precautions
+                    </div>
+                    <ul>
+                        <li><strong>CONTRAINDICATED in pregnancy</strong> - teratogenic (can cause fetal abnormalities)</li>
+                        <li><strong>Monitor potassium</strong> - can cause hyperkalemia (hold if K+ &gt; 5.5)</li>
+                        <li><strong>Monitor renal function</strong> - can worsen renal function, especially if bilateral renal artery stenosis</li>
+                        <li><strong>Angioedema risk</strong> - more common with ACE-I; if occurs, discontinue immediately</li>
+                        <li>Do NOT combine ACE-I + ARB (increased adverse effects without benefit)</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-ace-cough">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">ACE-I Cough Solution</div>
+                    <div class="florencebot-tip-content">
+                        <strong>That persistent dry cough? Switch to an ARB!</strong> ACE inhibitors (like lisinopril) cause a dry, nonproductive cough in 10-20% of patients due to bradykinin accumulation. The cough can take weeks to months to develop and may persist for weeks after stopping the medication. If a patient develops this cough, the solution is to switch to an ARB (like losartan). ARBs provide similar BP-lowering and renal-protective benefits without causing cough. Don't just add a cough suppressant - the right answer is to change the medication class.
+                    </div>
+                </div>
+
+                <h3>Compelling Indications for Specific Medications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Comorbidity</th>
+                                <th>Preferred Medication Class</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Heart Failure (HFrEF)</td>
+                                <td>ACE-I/ARB, Beta-blocker, Aldosterone antagonist, Diuretic</td>
+                                <td>Improve survival and reduce symptoms</td>
+                            </tr>
+                            <tr>
+                                <td>Post-MI</td>
+                                <td>ACE-I, Beta-blocker</td>
+                                <td>Reduce remodeling and mortality</td>
+                            </tr>
+                            <tr>
+                                <td>Diabetes with Proteinuria</td>
+                                <td>ACE-I or ARB</td>
+                                <td>Renoprotective effects</td>
+                            </tr>
+                            <tr>
+                                <td>Chronic Kidney Disease</td>
+                                <td>ACE-I or ARB</td>
+                                <td>Slow progression of kidney disease</td>
+                            </tr>
+                            <tr>
+                                <td>Stroke Prevention</td>
+                                <td>ACE-I, Thiazide diuretic</td>
+                                <td>Proven to reduce recurrent stroke</td>
+                            </tr>
+                            <tr>
+                                <td>Atrial Fibrillation (rate control)</td>
+                                <td>Non-DHP CCB or Beta-blocker</td>
+                                <td>Slow ventricular response</td>
+                            </tr>
+                            <tr>
+                                <td>Benign Prostatic Hyperplasia</td>
+                                <td>Alpha-1 blocker</td>
+                                <td>Treats HTN and BPH symptoms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 8: Hypertensive Crisis -->
+            <section class="guide-section" id="crisis">
+                <h2><span class="section-icon"><i class="fas fa-bolt"></i></span> Hypertensive Crisis</h2>
+
+                <p>Hypertensive crisis is a severe elevation in blood pressure (typically &gt;180/120 mmHg) that requires immediate assessment and intervention. The distinction between urgency and emergency is critical for determining the appropriate treatment setting and speed of BP reduction.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card emergency">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-ambulance"></i> Hypertensive Emergency
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Definition</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Severe HTN (&gt;180/120) <strong>WITH</strong> acute target organ damage</li>
+                                <li><i class="fas fa-check"></i> Life-threatening condition</li>
+                                <li><i class="fas fa-check"></i> Requires <strong>ICU admission</strong></li>
+                            </ul>
+                            <h4>Signs of End-Organ Damage</h4>
+                            <ul>
+                                <li><i class="fas fa-brain"></i> Encephalopathy (confusion, seizures, visual changes)</li>
+                                <li><i class="fas fa-heart"></i> Acute MI, Pulmonary edema</li>
+                                <li><i class="fas fa-bolt"></i> Acute stroke, Intracranial hemorrhage</li>
+                                <li><i class="fas fa-kidneys"></i> Acute renal failure</li>
+                                <li><i class="fas fa-baby"></i> Eclampsia</li>
+                                <li><i class="fas fa-heartbeat"></i> Aortic dissection</li>
+                            </ul>
+                            <h4>Treatment</h4>
+                            <p><strong>IV antihypertensives</strong> (nitroprusside, nicardipine, labetalol). Reduce MAP by ~25% in first hour, then gradually over 24-48 hours.</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card urgency">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-clock"></i> Hypertensive Urgency
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Definition</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Severe HTN (&gt;180/120) <strong>WITHOUT</strong> acute target organ damage</li>
+                                <li><i class="fas fa-check"></i> Serious but not immediately life-threatening</li>
+                                <li><i class="fas fa-check"></i> Can be managed in <strong>outpatient setting</strong></li>
+                            </ul>
+                            <h4>Common Causes</h4>
+                            <ul>
+                                <li><i class="fas fa-pills"></i> Medication non-adherence</li>
+                                <li><i class="fas fa-ban"></i> Abrupt discontinuation of meds</li>
+                                <li><i class="fas fa-user-md"></i> Inadequate treatment</li>
+                                <li><i class="fas fa-utensils"></i> High sodium intake</li>
+                                <li><i class="fas fa-brain"></i> Anxiety, pain</li>
+                            </ul>
+                            <h4>Treatment</h4>
+                            <p><strong>Oral antihypertensives</strong>. Lower BP gradually over 24-48 hours. Resume/adjust chronic medications. Close outpatient follow-up in 24-72 hours.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical: Don't Drop BP Too Fast!
+                    </div>
+                    <p>Rapid BP reduction can cause <strong>ischemic stroke, MI, or renal failure</strong> due to impaired autoregulation. The brain, heart, and kidneys have adapted to higher pressures.</p>
+                    <ul>
+                        <li><strong>Emergency:</strong> Reduce MAP by no more than 25% in the first hour</li>
+                        <li><strong>Urgency:</strong> Lower BP over 24-48 hours</li>
+                        <li><strong>Exception:</strong> Aortic dissection requires rapid BP reduction to SBP &lt;120 within 20 minutes</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-dont-drop-fast">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Slow and Steady Saves Lives</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Dropping blood pressure too quickly can be just as dangerous as the high BP itself!</strong> In hypertensive crisis, the body's organs have adjusted their blood flow regulation to higher pressures. If BP drops too rapidly, organs may not get adequate blood flow, causing ischemic stroke, heart attack, or kidney failure. For emergencies, reduce MAP by only 25% in the first hour, then gradually normalize over 24-48 hours. The only exception is aortic dissection, where rapid reduction (SBP &lt;120 in 20 minutes) is needed to prevent aortic rupture.
+                    </div>
+                </div>
+
+                <h3>IV Medications for Hypertensive Emergency</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Medication</th>
+                                <th>Mechanism</th>
+                                <th>Key Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Nitroprusside</strong></td>
+                                <td>Arterial and venous vasodilator</td>
+                                <td>Rapid onset (seconds). Light-sensitive (cover IV bag). Risk of cyanide toxicity with prolonged use.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nicardipine</strong></td>
+                                <td>IV calcium channel blocker</td>
+                                <td>Preferred in stroke. Easily titratable. Avoid in heart failure.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Labetalol</strong></td>
+                                <td>Alpha and beta blocker</td>
+                                <td>Good for aortic dissection. Avoid in asthma, heart block, cocaine use.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Esmolol</strong></td>
+                                <td>Short-acting beta blocker</td>
+                                <td>Good for aortic dissection. Very short half-life - easy to titrate.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hydralazine</strong></td>
+                                <td>Direct vasodilator</td>
+                                <td>Commonly used in pregnancy/eclampsia. May cause reflex tachycardia.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fenoldopam</strong></td>
+                                <td>Dopamine agonist</td>
+                                <td>Increases renal perfusion. Good if renal impairment. Avoid with glaucoma.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-clipboard-list"></i> Nursing Priorities in Hypertensive Crisis</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Assess for End-Organ Damage</div>
+                            <div class="value">Neuro, cardiac, renal, visual symptoms</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Continuous BP Monitoring</div>
+                            <div class="value">Arterial line in ICU if emergency</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">IV Access</div>
+                            <div class="value">Large-bore IV for medication administration</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Identify Cause</div>
+                            <div class="value">Non-adherence? Secondary HTN? Precipitant?</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-chart-bar"></i>
+                        <p><strong>Classification:</strong> Normal &lt;120/80; Elevated 120-129/&lt;80; Stage 1: 130-139/80-89; Stage 2: &ge;140/90</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-question-circle"></i>
+                        <p><strong>Primary HTN (90-95%):</strong> No identifiable cause; requires lifelong management</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-apple-alt"></i>
+                        <p><strong>DASH Diet + Lifestyle:</strong> First-line treatment; can reduce SBP 10-20+ mmHg combined</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-pills"></i>
+                        <p><strong>First-line meds:</strong> Thiazides, ACE-I, ARBs, CCBs - choice depends on comorbidities</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-baby"></i>
+                        <p><strong>Pregnancy:</strong> ACE-I and ARBs are contraindicated - use methyldopa, labetalol, nifedipine</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-bolt"></i>
+                        <p><strong>Crisis:</strong> Emergency = organ damage (ICU, IV meds); Urgency = no damage (oral meds, gradual reduction)</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts (external for CSP compliance) -->
+    <script src="configs/hypertension-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+</body>
+</html>

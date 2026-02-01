@@ -2,7 +2,7 @@
 // Uses backend API for access verification
 
 // HTML guides that should redirect to /guides/{id}.html
-const htmlGuides = ['heart-failure', 'assessment-skills', 'myocardial-infarction', 'copd', 'stroke', 'gi-bleeding', 'fractures', 'hip-knee-replacement', 'arrhythmias'];
+const htmlGuides = ['heart-failure', 'assessment-skills', 'myocardial-infarction', 'copd', 'stroke', 'gi-bleeding', 'fractures', 'hip-knee-replacement', 'arrhythmias', 'hypertension'];
 
 // Check if this guide has an HTML version and redirect immediately
 (function() {

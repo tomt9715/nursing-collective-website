@@ -1275,7 +1275,7 @@
                     <h4 class="ecg-diagram-title"><i class="fas fa-heartbeat"></i> Normal ECG Complex</h4>
                     <div class="ecg-wave-visual">
                         <!-- SVG representation of ECG waveform -->
-                        <svg viewBox="0 0 400 150" class="ecg-wave-svg">
+                        <svg viewBox="0 0 400 200" class="ecg-wave-svg">
                             <!-- Grid lines -->
                             <defs>
                                 <pattern id="smallGrid" width="10" height="10" patternUnits="userSpaceOnUse">
@@ -1286,31 +1286,37 @@
                                     <path d="M 50 0 L 0 0 0 50" fill="none" stroke="#fca5a5" stroke-width="1"/>
                                 </pattern>
                             </defs>
-                            <rect width="400" height="150" fill="url(#grid)"/>
+                            <rect width="400" height="100" fill="url(#grid)"/>
 
                             <!-- Baseline -->
-                            <line x1="0" y1="90" x2="400" y2="90" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5,5"/>
+                            <line x1="0" y1="70" x2="400" y2="70" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5,5"/>
 
                             <!-- ECG Waveform -->
-                            <path d="M 20,90 L 50,90 Q 60,90 65,75 T 80,90 L 100,90 L 110,90 L 115,85 L 120,95 L 125,20 L 130,110 L 135,85 L 145,90 L 180,90 Q 200,90 210,70 T 240,90 L 280,90"
+                            <path d="M 20,70 L 50,70 Q 60,70 65,55 T 80,70 L 100,70 L 110,70 L 115,65 L 120,75 L 125,15 L 130,90 L 135,65 L 145,70 L 180,70 Q 200,70 210,50 T 240,70 L 280,70"
                                   fill="none" stroke="#ef4444" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 
-                            <!-- Labels -->
-                            <text x="70" y="65" fill="#ef4444" font-size="14" font-weight="600" text-anchor="middle">P</text>
-                            <text x="115" y="60" fill="#7c3aed" font-size="12" font-weight="600" text-anchor="middle">Q</text>
-                            <text x="127" y="15" fill="#7c3aed" font-size="14" font-weight="600" text-anchor="middle">R</text>
-                            <text x="138" y="105" fill="#7c3aed" font-size="12" font-weight="600" text-anchor="middle">S</text>
-                            <text x="210" y="60" fill="#10b981" font-size="14" font-weight="600" text-anchor="middle">T</text>
+                            <!-- Wave Labels -->
+                            <text x="70" y="45" fill="#ef4444" font-size="14" font-weight="600" text-anchor="middle">P</text>
+                            <text x="115" y="55" fill="#7c3aed" font-size="12" font-weight="600" text-anchor="middle">Q</text>
+                            <text x="127" y="10" fill="#7c3aed" font-size="14" font-weight="600" text-anchor="middle">R</text>
+                            <text x="140" y="98" fill="#7c3aed" font-size="12" font-weight="600" text-anchor="middle">S</text>
+                            <text x="210" y="42" fill="#10b981" font-size="14" font-weight="600" text-anchor="middle">T</text>
 
-                            <!-- Interval markers -->
-                            <line x1="50" y1="120" x2="100" y2="120" stroke="#f59e0b" stroke-width="2"/>
-                            <text x="75" y="135" fill="#f59e0b" font-size="11" font-weight="600" text-anchor="middle">PR Interval</text>
+                            <!-- Interval markers - Row 1: PR Interval -->
+                            <line x1="50" y1="115" x2="110" y2="115" stroke="#f59e0b" stroke-width="3"/>
+                            <text x="80" y="128" fill="#f59e0b" font-size="10" font-weight="600" text-anchor="middle">PR Interval</text>
 
-                            <line x1="110" y1="130" x2="145" y2="130" stroke="#7c3aed" stroke-width="2"/>
-                            <text x="127" y="145" fill="#7c3aed" font-size="11" font-weight="600" text-anchor="middle">QRS</text>
+                            <!-- Interval markers - Row 2: QRS Complex -->
+                            <line x1="110" y1="140" x2="145" y2="140" stroke="#7c3aed" stroke-width="3"/>
+                            <text x="127" y="153" fill="#7c3aed" font-size="10" font-weight="600" text-anchor="middle">QRS</text>
 
-                            <line x1="110" y1="140" x2="240" y2="140" stroke="#10b981" stroke-width="2"/>
-                            <text x="175" y="148" fill="#10b981" font-size="11" font-weight="600" text-anchor="middle">QT Interval</text>
+                            <!-- Interval markers - Row 2: ST Segment -->
+                            <line x1="145" y1="140" x2="190" y2="140" stroke="#3b82f6" stroke-width="3"/>
+                            <text x="167" y="153" fill="#3b82f6" font-size="10" font-weight="600" text-anchor="middle">ST Segment</text>
+
+                            <!-- Interval markers - Row 3: QT Interval -->
+                            <line x1="110" y1="170" x2="240" y2="170" stroke="#10b981" stroke-width="3"/>
+                            <text x="175" y="183" fill="#10b981" font-size="10" font-weight="600" text-anchor="middle">QT Interval</text>
                         </svg>
                     </div>
                     <div class="ecg-labels">
@@ -1321,6 +1327,10 @@
                         <div class="ecg-label">
                             <span class="ecg-label-color" style="background: #7c3aed;"></span>
                             QRS = Ventricular depolarization
+                        </div>
+                        <div class="ecg-label">
+                            <span class="ecg-label-color" style="background: #3b82f6;"></span>
+                            ST Segment = Early repolarization
                         </div>
                         <div class="ecg-label">
                             <span class="ecg-label-color" style="background: #10b981;"></span>

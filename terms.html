@@ -164,322 +164,74 @@
                 <a href="study-guides.html">Study Guides</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about-florencebot.html">About FlorenceBot</a>
-                <!-- Guest nav item (shown when not logged in) -->
-                <a href="login.html" id="nav-login-link">Login</a>
                 <!-- Authenticated nav item (shown when logged in) -->
                 <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-sun light-icon"></i>
-                    <i class="fas fa-moon dark-icon"></i>
-                </button>
-                <!-- User menu (shown when logged in) -->
-                <div class="user-menu" id="user-menu" style="display: none;">
+                                <!-- User menu (always visible, content changes based on login state) -->
+                <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <i class="fas fa-user-circle"></i>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <div class="user-dropdown-header">
-                            <div class="user-avatar-large">
+                        <!-- Guest content (shown when not logged in) -->
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
                                 <i class="fas fa-user-circle"></i>
+                                <span>Welcome!</span>
                             </div>
-                            <div class="user-info">
-                                <span class="user-name" id="dropdown-user-name">Loading...</span>
-                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
-                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
-                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <!-- Logged-in content (shown when logged in) -->
+                        <div class="dropdown-user-content" id="dropdown-user-content" style="display: none;">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
                     </div>
                 </div>
-                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
-            </div>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Terms of Service Content -->
-    <section class="legal-page">
-        <div class="container">
-            <div class="legal-header">
-                <h1>Terms of Service</h1>
-                <p>Please read these terms carefully before using our services</p>
-            </div>
-
-            <div class="legal-content">
-                <div class="last-updated">
-                    <i class="fas fa-calendar"></i> Last Updated: January 15, 2026
-                </div>
-
-                <h2>1. Agreement to Terms</h2>
-                <p>By accessing or using The Nursing Collective ("Service", "we", "us", or "our"), you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our Service.</p>
-                <p>We reserve the right to modify these terms at any time. We will notify users of any material changes via email or through our platform. Your continued use of the Service after changes constitutes acceptance of the modified terms.</p>
-
-                <h2>2. Description of Service</h2>
-                <p>The Nursing Collective provides:</p>
-                <ul>
-                    <li>A Discord bot with nursing clinical references and study tools</li>
-                    <li>Web-based study guides and educational materials</li>
-                    <li>NCLEX-style practice questions with explanations</li>
-                    <li>Progress tracking and learning analytics</li>
-                    <li>Community features and support</li>
-                </ul>
-                <p>The Service is designed as a supplementary educational tool for nursing students and should not replace official course materials, textbooks, or clinical instruction.</p>
-
-                <h2>3. User Accounts</h2>
-
-                <h3>3.1 Account Creation</h3>
-                <p>To access certain features, you must create an account. You agree to:</p>
-                <ul>
-                    <li>Provide accurate and complete information</li>
-                    <li>Maintain the security of your password</li>
-                    <li>Notify us immediately of any unauthorized access</li>
-                    <li>Take responsibility for all activities under your account</li>
-                </ul>
-
-                <h3>3.2 Account Eligibility</h3>
-                <p>You must be at least 13 years old to use our Service. Users under 18 should have parental or guardian consent. Our Service is primarily intended for nursing students and healthcare education professionals.</p>
-
-                <h3>3.3 Account Termination</h3>
-                <p>We reserve the right to suspend or terminate accounts that:</p>
-                <ul>
-                    <li>Violate these Terms of Service</li>
-                    <li>Engage in fraudulent or illegal activity</li>
-                    <li>Abuse or misuse our Service</li>
-                    <li>Attempt to circumvent payment or access controls</li>
-                </ul>
-
-                <h2>4. Acceptable Use Policy</h2>
-
-                <h3>4.1 Permitted Use</h3>
-                <p>You may use The Nursing Collective for:</p>
-                <ul>
-                    <li>Personal study and educational purposes</li>
-                    <li>Study group collaboration</li>
-                    <li>NCLEX exam preparation</li>
-                    <li>Clinical reference and learning</li>
-                </ul>
-
-                <h3>4.2 Prohibited Activities</h3>
-                <p>You agree NOT to:</p>
-                <ul>
-                    <li>Share your account credentials with others</li>
-                    <li>Copy, reproduce, or redistribute our content without permission</li>
-                    <li>Use the Service for commercial purposes without authorization</li>
-                    <li>Attempt to reverse engineer, decompile, or hack our systems</li>
-                    <li>Upload malware, viruses, or malicious code</li>
-                    <li>Harass, abuse, or harm other users</li>
-                    <li>Impersonate others or provide false information</li>
-                    <li>Scrape or data mine our platform</li>
-                    <li>Use bots or automated tools to access the Service</li>
-                    <li>Sell, trade, or transfer your account</li>
-                </ul>
-
-                <h2>5. Intellectual Property Rights</h2>
-
-                <h3>5.1 Our Content</h3>
-                <p>All content provided through The Nursing Collective, including but not limited to:</p>
-                <ul>
-                    <li>Study guides and educational materials</li>
-                    <li>Practice questions and explanations</li>
-                    <li>Bot commands and responses</li>
-                    <li>Text, images, graphics, and design</li>
-                    <li>Software, code, and algorithms</li>
-                </ul>
-                <p>...is owned by The Nursing Collective or our licensors and protected by copyright, trademark, and other intellectual property laws.</p>
-
-                <h3>5.2 Limited License</h3>
-                <p>We grant you a limited, non-exclusive, non-transferable license to access and use our Service for personal educational purposes. This license does not include the right to:</p>
-                <ul>
-                    <li>Redistribute or republish our content</li>
-                    <li>Create derivative works</li>
-                    <li>Use our content for commercial purposes</li>
-                    <li>Remove copyright or proprietary notices</li>
-                </ul>
-
-                <h3>5.3 User Content</h3>
-                <p>If you submit content to our platform (e.g., forum posts, feedback), you grant us a non-exclusive, worldwide, royalty-free license to use, reproduce, and display that content in connection with operating the Service.</p>
-
-                <h2>6. Payment and Subscriptions</h2>
-
-                <h3>6.1 Pricing</h3>
-                <p>We offer both free and premium tiers:</p>
-                <ul>
-                    <li><strong>Free Access:</strong> Discord bot and basic features at no cost</li>
-                    <li><strong>NCLEX-Ready Plan:</strong> One-time payment for full study guide access</li>
-                    <li><strong>Ultimate Bundle:</strong> One-time payment with lifetime access and updates</li>
-                </ul>
-                <p>Prices are displayed in USD and may be subject to change. We will provide advance notice of any price increases.</p>
-
-                <h3>6.2 Payment Processing</h3>
-                <p>Payments are processed through secure third-party payment processors. We do not store your full credit card information. By making a purchase, you agree to the payment processor's terms and conditions.</p>
-
-                <h3>6.3 Refund Policy for Digital Products</h3>
-                <p>Digital products (study guides, bundles) are subject to the following refund policy:</p>
-                <ul>
-                    <li><strong>Before Download:</strong> Full refund available within 7 days of purchase if content has not been downloaded or accessed</li>
-                    <li><strong>After Download:</strong> All sales are final once content has been downloaded or accessed</li>
-                    <li>Contact <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a> with your order details for refund requests</li>
-                    <li>Refunds are issued to the original payment method within 5-10 business days</li>
-                </ul>
-                <p><strong>Exceptions:</strong> We review refund requests on a case-by-case basis for technical issues preventing access, accidental duplicate purchases, or billing errors. See our <a href="contact.html">Contact page</a> for full refund policy details.</p>
-
-                <h3>6.4 Lifetime Access</h3>
-                <p>Premium purchases include lifetime access, which means:</p>
-                <ul>
-                    <li>No recurring subscription fees</li>
-                    <li>Access for as long as the Service operates</li>
-                    <li>Free content updates within your plan tier</li>
-                    <li>No guarantee that the Service will exist indefinitely</li>
-                </ul>
-
-                <h2>7. Educational Disclaimer</h2>
-                <p><strong>IMPORTANT:</strong> The Nursing Collective is a study aid and educational supplement. It is NOT a substitute for:</p>
-                <ul>
-                    <li>Official nursing school curriculum</li>
-                    <li>Licensed clinical instruction</li>
-                    <li>Professional medical advice</li>
-                    <li>Official NCLEX preparation courses</li>
-                    <li>Clinical judgment in practice</li>
-                </ul>
-                <p>Always follow your institution's guidelines, consult official sources, and seek guidance from qualified instructors. Do not use our content as the sole basis for clinical decision-making or patient care.</p>
-
-                <h2>8. Disclaimer of Warranties</h2>
-                <p>THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:</p>
-                <ul>
-                    <li>Accuracy or completeness of content</li>
-                    <li>Uninterrupted or error-free operation</li>
-                    <li>Fitness for a particular purpose</li>
-                    <li>Guarantee of passing NCLEX or any exam</li>
-                </ul>
-                <p>We make reasonable efforts to ensure content accuracy but cannot guarantee it. Always verify information with official sources.</p>
-
-                <h2>9. Limitation of Liability</h2>
-                <p>TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE NURSING COLLECTIVE SHALL NOT BE LIABLE FOR:</p>
-                <ul>
-                    <li>Indirect, incidental, or consequential damages</li>
-                    <li>Loss of profits, data, or opportunities</li>
-                    <li>Academic or exam performance</li>
-                    <li>Service interruptions or errors</li>
-                    <li>Third-party actions or content</li>
-                </ul>
-                <p>Our total liability shall not exceed the amount you paid us in the past 12 months, or $100, whichever is greater.</p>
-
-                <h2>10. Indemnification</h2>
-                <p>You agree to indemnify and hold harmless The Nursing Collective, its officers, employees, and affiliates from any claims, losses, or damages arising from:</p>
-                <ul>
-                    <li>Your violation of these Terms</li>
-                    <li>Your misuse of the Service</li>
-                    <li>Your violation of any laws or third-party rights</li>
-                    <li>Content you submit to the platform</li>
-                </ul>
-
-                <h2>11. Discord Integration</h2>
-                <p>Our Discord bot is subject to:</p>
-                <ul>
-                    <li>Discord's Terms of Service and Community Guidelines</li>
-                    <li>Server-specific rules where the bot is used</li>
-                    <li>Rate limits and API restrictions</li>
-                </ul>
-                <p>We are not responsible for Discord platform outages, policy changes, or server moderation decisions.</p>
-
-                <h2>12. Third-Party Services</h2>
-                <p>Our Service may integrate with or link to third-party services. We are not responsible for:</p>
-                <ul>
-                    <li>Third-party content or accuracy</li>
-                    <li>Third-party privacy practices</li>
-                    <li>Third-party service availability</li>
-                </ul>
-                <p>Use of third-party services is at your own risk and subject to their terms.</p>
-
-                <h2>13. Privacy and Data Protection</h2>
-                <p>Your use of the Service is also governed by our <a href="privacy.html">Privacy Policy</a>. By using our Service, you consent to our data practices as described in the Privacy Policy.</p>
-
-                <h2>14. FERPA Compliance</h2>
-                <p>For educational institutions, we comply with the Family Educational Rights and Privacy Act (FERPA):</p>
-                <ul>
-                    <li>We protect student educational records</li>
-                    <li>We do not share records without proper authorization</li>
-                    <li>Institutions maintain control over their student data</li>
-                    <li>We provide required access and amendment rights</li>
-                </ul>
-
-                <h2>15. Copyright Infringement</h2>
-                <p>We respect intellectual property rights. If you believe content on our platform infringes your copyright, contact us at:</p>
-                <p><strong>Email:</strong> <a href="mailto:legal@thenursingcollective.pro">legal@thenursingcollective.pro</a></p>
-                <p>Include:</p>
-                <ul>
-                    <li>Description of the copyrighted work</li>
-                    <li>Location of the infringing content</li>
-                    <li>Your contact information</li>
-                    <li>Statement of good faith belief</li>
-                    <li>Statement under penalty of perjury</li>
-                </ul>
-
-                <h2>16. Governing Law and Disputes</h2>
-
-                <h3>16.1 Governing Law</h3>
-                <p>These Terms are governed by the laws of the United States and the State of California, without regard to conflict of law provisions.</p>
-
-                <h3>16.2 Dispute Resolution</h3>
-                <p>For any disputes:</p>
-                <ul>
-                    <li>First, contact us at support@thenursingcollective.pro to resolve informally</li>
-                    <li>If unresolved, disputes will be settled through binding arbitration</li>
-                    <li>Arbitration will be conducted by JAMS or AAA</li>
-                    <li>You waive the right to participate in class actions</li>
-                </ul>
-
-                <h3>16.3 Exceptions</h3>
-                <p>Either party may seek injunctive relief in court for:</p>
-                <ul>
-                    <li>Intellectual property infringement</li>
-                    <li>Violations of confidentiality</li>
-                    <li>Unauthorized access or security breaches</li>
-                </ul>
-
-                <h2>17. General Provisions</h2>
-
-                <h3>17.1 Entire Agreement</h3>
-                <p>These Terms constitute the entire agreement between you and The Nursing Collective regarding the Service, superseding any prior agreements.</p>
-
-                <h3>17.2 Severability</h3>
-                <p>If any provision is found unenforceable, the remaining provisions remain in full effect.</p>
-
-                <h3>17.3 No Waiver</h3>
-                <p>Our failure to enforce any right or provision does not constitute a waiver of that right.</p>
-
-                <h3>17.4 Assignment</h3>
-                <p>You may not transfer or assign your rights under these Terms. We may assign our rights to any affiliate or successor.</p>
-
-                <h3>17.5 Force Majeure</h3>
-                <p>We are not liable for delays or failures due to circumstances beyond our reasonable control, including natural disasters, wars, pandemics, or internet outages.</p>
-
-                <h2>18. Contact Information</h2>
-                <p>For questions about these Terms of Service, contact us:</p>
-                <ul>
-                    <li><strong>General Support:</strong> <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a></li>
-                    <li><strong>Legal Inquiries:</strong> <a href="mailto:legal@thenursingcollective.pro">legal@thenursingcollective.pro</a></li>
-                    <li><strong>Discord:</strong> <a href="https://discord.gg/y2Mh77wAV2">Join our support server</a></li>
-                </ul>
-
-                <h2>19. Acknowledgment</h2>
-                <p>BY USING THE NURSING COLLECTIVE, YOU ACKNOWLEDGE THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE TERMS OF SERVICE.</p>
-
-                <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-color);">
-                    <p style="text-align: center; color: var(--text-light); font-size: 0.9rem;">
-                        <a href="privacy.html" style="margin: 0 12px;">Privacy Policy</a> |
-                        <a href="index.html" style="margin: 0 12px;">Home</a> |
-                        <a href="login.html" style="margin: 0 12px;">Login</a>
-                    </p>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Footer -->

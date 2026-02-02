@@ -355,72 +355,74 @@
                 <a href="pricing.html">Pricing</a>
                 <a href="store.html">Store</a>
                 <a href="about-florencebot.html">About FlorenceBot</a>
-                <!-- Guest nav item (shown when not logged in) -->
-                <a href="login.html" id="nav-login-link">Login</a>
                 <!-- Authenticated nav item (shown when logged in) -->
                 <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-sun light-icon"></i>
-                    <i class="fas fa-moon dark-icon"></i>
-                </button>
-                <!-- User menu (shown when logged in) -->
-                <div class="user-menu" id="user-menu" style="display: none;">
+                                <!-- User menu (always visible, content changes based on login state) -->
+                <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <i class="fas fa-user-circle"></i>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <div class="user-dropdown-header">
-                            <div class="user-avatar-large">
+                        <!-- Guest content (shown when not logged in) -->
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
                                 <i class="fas fa-user-circle"></i>
+                                <span>Welcome!</span>
                             </div>
-                            <div class="user-info">
-                                <span class="user-name" id="dropdown-user-name">Loading...</span>
-                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
-                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
-                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <!-- Logged-in content (shown when logged in) -->
+                        <div class="dropdown-user-content" id="dropdown-user-content" style="display: none;">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
                     </div>
                 </div>
-                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
-            </div>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Contact Page Content -->
-    <section class="contact-page">
-        <div class="container">
-            <div class="contact-header">
-                <h1>Contact Us</h1>
-                <p>Have a question, need help with a purchase, or want to share feedback? We're here to help!</p>
-            </div>
-
-            <div class="contact-grid">
-                <!-- Contact Methods -->
-                <div class="contact-card">
-                    <h2><i class="fas fa-headset"></i> Get in Touch</h2>
-
-                    <div class="contact-method">
-                        <div class="contact-method-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-method-info">
-                            <h3>Email Support</h3>
-                            <p>For refunds, account issues, and general inquiries</p>
-                            <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
-                            <div class="response-time">
-                                <i class="fas fa-clock"></i>
-                                Response within 24-48 hours
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="contact-method">
                         <div class="contact-method-icon discord">

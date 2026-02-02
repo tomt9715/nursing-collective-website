@@ -104,132 +104,78 @@
                 <a href="pricing.html" class="active">Pricing</a>
                 <a href="store.html">Store</a>
                 <a href="about-florencebot.html">About FlorenceBot</a>
-                <!-- Guest nav item (shown when not logged in) -->
-                <a href="login.html" id="nav-login-link">Login</a>
                 <!-- Authenticated nav item (shown when logged in) -->
                 <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-sun light-icon"></i>
-                    <i class="fas fa-moon dark-icon"></i>
-                </button>
                 <div class="cart-icon-container" aria-label="Shopping cart" title="View cart">
                     <i class="fas fa-shopping-cart cart-icon"></i>
                     <span class="cart-badge empty">0</span>
                 </div>
-                <!-- User menu (shown when logged in) -->
-                <div class="user-menu" id="user-menu" style="display: none;">
+                                <!-- User menu (always visible, content changes based on login state) -->
+                <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <i class="fas fa-user-circle"></i>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <div class="user-dropdown-header">
-                            <div class="user-avatar-large">
+                        <!-- Guest content (shown when not logged in) -->
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
                                 <i class="fas fa-user-circle"></i>
+                                <span>Welcome!</span>
                             </div>
-                            <div class="user-info">
-                                <span class="user-name" id="dropdown-user-name">Loading...</span>
-                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
-                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
-                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <!-- Logged-in content (shown when logged in) -->
+                        <div class="dropdown-user-content" id="dropdown-user-content" style="display: none;">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
                     </div>
                 </div>
-                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
-            </div>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-
-    <main id="main-content">
-    <!-- Pricing Hero -->
-    <section class="pricing-hero" style="padding: 140px 0 70px; text-align: center; position: relative; overflow: hidden;">
-        <!-- Decorative circles -->
-        <div style="position: absolute; top: -100px; left: -100px; width: 300px; height: 300px; background: rgba(255, 255, 255, 0.05); border-radius: 50%; pointer-events: none;"></div>
-        <div style="position: absolute; bottom: -150px; right: -150px; width: 400px; height: 400px; background: rgba(255, 255, 255, 0.05); border-radius: 50%; pointer-events: none;"></div>
-        <div style="position: absolute; top: 50%; left: 10%; width: 150px; height: 150px; background: rgba(255, 255, 255, 0.03); border-radius: 50%; pointer-events: none;"></div>
-        <div style="position: absolute; top: 20%; right: 15%; width: 200px; height: 200px; background: rgba(255, 255, 255, 0.03); border-radius: 50%; pointer-events: none;"></div>
-
-        <div class="container" style="position: relative; z-index: 1;">
-            <div style="display: inline-block; padding: 10px 24px; background: var(--primary-color); color: white; border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; box-shadow: 0 4px 15px rgba(46, 134, 171, 0.3);">
-                <i class="fas fa-tags"></i> PRICING OPTIONS
-            </div>
-            <h1 style="font-size: 3rem; font-weight: 700; margin-bottom: 20px; line-height: 1.2;">
-                Simple, Transparent Pricing
-            </h1>
-            <p style="font-size: 1.25rem; color: rgba(255, 255, 255, 0.95); max-width: 700px; margin: 0 auto 40px;">
-                Choose the option that works best for your study needs. No subscriptions, just one-time payments for lifetime access.
-            </p>
-        </div>
-    </section>
-
-    <!-- Free Resources Section -->
-    <section class="free-resources-section">
-        <div class="container">
-            <div class="free-resources-header">
-                <div class="free-badge">
-                    <i class="fas fa-gift"></i> FREE RESOURCES
-                </div>
-                <h2>Get Started with Free Study Tools</h2>
-                <p>No credit card required • Instant download • Created by nurses, for nurses</p>
-            </div>
-
-            <div class="resources-grid">
-                <!-- NCLEX Priority Concepts -->
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <img src="assets/images/pricing-think.webp" alt="NCLEX Priority Concepts" loading="lazy">
-                    </div>
-                    <h3>Top 50 NCLEX Priority Concepts</h3>
-                    <p>Quick reference guide covering the most essential concepts for NCLEX success, organized by category.</p>
-                    <ul class="resource-features">
-                        <li><i class="fas fa-check"></i> 50 priority concepts</li>
-                        <li><i class="fas fa-check"></i> Organized by NCLEX categories</li>
-                    </ul>
-                    <button class="btn btn-outline-primary btn-download" data-free-guide="nclex-priority-concepts">
-                        <i class="fas fa-download"></i> Download PDF
-                    </button>
-                </div>
-
-                <!-- First Clinical Day Survival Guide -->
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <img src="assets/images/pricing-nurse.webp" alt="Clinical Day Survival Guide" loading="lazy">
-                    </div>
-                    <h3>First Clinical Day Survival Guide</h3>
-                    <p>Essential tips and practical strategies to help nervous nursing students feel confident and prepared.</p>
-                    <ul class="resource-features">
-                        <li><i class="fas fa-check"></i> Pre-clinical preparation</li>
-                        <li><i class="fas fa-check"></i> Day-of strategies & tips</li>
-                    </ul>
-                    <button class="btn btn-outline-primary btn-download" data-free-guide="clinical-day-survival-guide">
-                        <i class="fas fa-download"></i> Download PDF
-                    </button>
-                </div>
-
-                <!-- Nursing School Supply List -->
-                <div class="resource-card">
-                    <div class="resource-icon">
-                        <img src="assets/images/pricing-checklist.webp" alt="Nursing School Supply List" loading="lazy">
-                    </div>
-                    <h3>Nursing School Supply List</h3>
-                    <p>Comprehensive supply checklist organized by program level with practical recommendations and money-saving tips.</p>
-                    <ul class="resource-features">
-                        <li><i class="fas fa-check"></i> Essential & optional items</li>
-                        <li><i class="fas fa-check"></i> Organized by program level</li>
-                    </ul>
-                    <button class="btn btn-outline-primary btn-download" data-free-guide="nursing-supply-list">
-                        <i class="fas fa-download"></i> Download PDF
-                    </button>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Pricing Tiers Comparison -->

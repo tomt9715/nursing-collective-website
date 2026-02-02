@@ -164,220 +164,74 @@
                 <a href="study-guides.html">Study Guides</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about-florencebot.html">About FlorenceBot</a>
-                <!-- Guest nav item (shown when not logged in) -->
-                <a href="login.html" id="nav-login-link">Login</a>
                 <!-- Authenticated nav item (shown when logged in) -->
                 <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-sun light-icon"></i>
-                    <i class="fas fa-moon dark-icon"></i>
-                </button>
-                <!-- User menu (shown when logged in) -->
-                <div class="user-menu" id="user-menu" style="display: none;">
+                                <!-- User menu (always visible, content changes based on login state) -->
+                <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <i class="fas fa-user-circle"></i>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <div class="user-dropdown-header">
-                            <div class="user-avatar-large">
+                        <!-- Guest content (shown when not logged in) -->
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
                                 <i class="fas fa-user-circle"></i>
+                                <span>Welcome!</span>
                             </div>
-                            <div class="user-info">
-                                <span class="user-name" id="dropdown-user-name">Loading...</span>
-                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
-                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
-                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <!-- Logged-in content (shown when logged in) -->
+                        <div class="dropdown-user-content" id="dropdown-user-content" style="display: none;">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
                     </div>
                 </div>
-                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
-            </div>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Privacy Policy Content -->
-    <section class="legal-page">
-        <div class="container">
-            <div class="legal-header">
-                <h1>Privacy Policy</h1>
-                <p>Your privacy is important to us</p>
-            </div>
-
-            <div class="legal-content">
-                <div class="last-updated">
-                    <i class="fas fa-calendar"></i> Last Updated: January 15, 2026
-                </div>
-
-                <h2>1. Introduction</h2>
-                <p>Welcome to The Nursing Collective. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and safeguard your information when you use our website and services.</p>
-
-                <h2>2. Information We Collect</h2>
-
-                <h3>2.1 Account Information</h3>
-                <p>When you create an account, we collect:</p>
-                <ul>
-                    <li>Email address</li>
-                    <li>Username (if provided)</li>
-                    <li>Password (encrypted and never stored in plain text)</li>
-                    <li>Account preferences and settings</li>
-                </ul>
-
-                <h3>2.2 Discord Integration</h3>
-                <p>If you connect your Discord account, we may collect:</p>
-                <ul>
-                    <li>Discord username and user ID</li>
-                    <li>Server membership information</li>
-                    <li>Bot command usage statistics</li>
-                </ul>
-
-                <h3>2.3 Usage Data</h3>
-                <p>We automatically collect certain information when you use our services:</p>
-                <ul>
-                    <li>Study guide access history</li>
-                    <li>Practice question performance</li>
-                    <li>Device information and browser type</li>
-                    <li>IP address and general location data</li>
-                    <li>Pages visited and features used</li>
-                </ul>
-
-                <h3>2.4 Payment Information</h3>
-                <p>For premium purchases, payment processing is handled by third-party payment processors. We do not store your full credit card information. We may retain:</p>
-                <ul>
-                    <li>Transaction history</li>
-                    <li>Purchase dates and amounts</li>
-                    <li>Last 4 digits of payment method (for reference)</li>
-                </ul>
-
-                <h2>3. How We Use Your Information</h2>
-                <p>We use the collected information for the following purposes:</p>
-                <ul>
-                    <li><strong>Service Delivery:</strong> To provide, maintain, and improve The Nursing Collective services</li>
-                    <li><strong>Personalization:</strong> To customize your learning experience and track your progress</li>
-                    <li><strong>Communication:</strong> To send important updates, newsletters, and respond to inquiries</li>
-                    <li><strong>Analytics:</strong> To understand usage patterns and improve our platform</li>
-                    <li><strong>Security:</strong> To protect against fraud, abuse, and unauthorized access</li>
-                    <li><strong>Legal Compliance:</strong> To comply with legal obligations and enforce our terms</li>
-                </ul>
-
-                <h2>4. Data Sharing and Disclosure</h2>
-                <p>We do not sell your personal information. We may share your data in the following circumstances:</p>
-
-                <h3>4.1 Service Providers</h3>
-                <p>We share information with trusted third-party service providers who assist us in:</p>
-                <ul>
-                    <li>Payment processing</li>
-                    <li>Email delivery and communications</li>
-                    <li>Analytics and performance monitoring</li>
-                    <li>Cloud hosting and storage</li>
-                </ul>
-
-                <h3>4.2 Legal Requirements</h3>
-                <p>We may disclose your information if required by law, court order, or to:</p>
-                <ul>
-                    <li>Comply with legal processes</li>
-                    <li>Protect our rights and property</li>
-                    <li>Prevent fraud or security issues</li>
-                    <li>Protect user safety</li>
-                </ul>
-
-                <h3>4.3 Business Transfers</h3>
-                <p>In the event of a merger, acquisition, or sale of assets, your information may be transferred to the new entity.</p>
-
-                <h2>5. Data Security</h2>
-                <p>We implement industry-standard security measures to protect your data:</p>
-                <ul>
-                    <li>Encryption of data in transit (SSL/TLS)</li>
-                    <li>Encryption of sensitive data at rest</li>
-                    <li>Regular security audits and updates</li>
-                    <li>Access controls and authentication</li>
-                    <li>Secure password storage with hashing</li>
-                </ul>
-                <p>However, no method of transmission over the internet is 100% secure. We cannot guarantee absolute security.</p>
-
-                <h2>6. Your Privacy Rights</h2>
-                <p>Depending on your location, you may have the following rights:</p>
-                <ul>
-                    <li><strong>Access:</strong> Request a copy of your personal data</li>
-                    <li><strong>Correction:</strong> Update or correct inaccurate information</li>
-                    <li><strong>Deletion:</strong> Request deletion of your account and data</li>
-                    <li><strong>Portability:</strong> Receive your data in a portable format</li>
-                    <li><strong>Opt-Out:</strong> Unsubscribe from marketing communications</li>
-                    <li><strong>Objection:</strong> Object to certain data processing activities</li>
-                </ul>
-                <p>To exercise these rights, contact us at <a href="mailto:privacy@thenursingcollective.pro">privacy@thenursingcollective.pro</a>.</p>
-
-                <h2>7. Student Privacy & FERPA Compliance</h2>
-                <p>We are committed to protecting student privacy and comply with the Family Educational Rights and Privacy Act (FERPA) guidelines:</p>
-                <ul>
-                    <li>We do not share student educational records without consent</li>
-                    <li>Educational institutions maintain control over student data</li>
-                    <li>We use data only for educational purposes</li>
-                    <li>Parents and eligible students have access rights to their data</li>
-                </ul>
-
-                <h2>8. Cookies and Tracking Technologies</h2>
-                <p>We use cookies and similar technologies to:</p>
-                <ul>
-                    <li>Remember your preferences and settings</li>
-                    <li>Understand how you use our platform</li>
-                    <li>Improve user experience</li>
-                    <li>Provide analytics data</li>
-                </ul>
-                <p>You can control cookies through your browser settings. Note that disabling cookies may limit some functionality.</p>
-
-                <h2>9. Third-Party Links</h2>
-                <p>Our website may contain links to third-party websites. We are not responsible for the privacy practices of these external sites. We encourage you to review their privacy policies.</p>
-
-                <h2>10. Children's Privacy</h2>
-                <p>The Nursing Collective is intended for use by nursing students, typically 18 years or older. We do not knowingly collect information from children under 13. If we discover that we have collected data from a child under 13, we will delete it promptly.</p>
-
-                <h2>11. International Data Transfers</h2>
-                <p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data in accordance with this privacy policy.</p>
-
-                <h2>12. Data Retention</h2>
-                <p>We retain your personal data for as long as necessary to:</p>
-                <ul>
-                    <li>Provide our services to you</li>
-                    <li>Comply with legal obligations</li>
-                    <li>Resolve disputes and enforce agreements</li>
-                    <li>Maintain security and prevent fraud</li>
-                </ul>
-                <p>When you delete your account, we will delete or anonymize your data within 30 days, except where retention is required by law.</p>
-
-                <h2>13. Changes to This Privacy Policy</h2>
-                <p>We may update this privacy policy from time to time. We will notify you of significant changes by:</p>
-                <ul>
-                    <li>Posting the new policy on this page</li>
-                    <li>Updating the "Last Updated" date</li>
-                    <li>Sending an email notification for material changes</li>
-                </ul>
-                <p>Your continued use of our services after changes constitutes acceptance of the updated policy.</p>
-
-                <h2>14. Contact Us</h2>
-                <p>If you have questions, concerns, or requests regarding this privacy policy or your data, please contact us:</p>
-                <ul>
-                    <li><strong>Email:</strong> <a href="mailto:privacy@thenursingcollective.pro">privacy@thenursingcollective.pro</a></li>
-                    <li><strong>Support:</strong> <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a></li>
-                    <li><strong>Discord:</strong> <a href="https://discord.gg/y2Mh77wAV2">Join our support server</a></li>
-                </ul>
-
-                <div style="margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--border-color);">
-                    <p style="text-align: center; color: var(--text-light); font-size: 0.9rem;">
-                        <a href="terms.html" style="margin: 0 12px;">Terms of Service</a> |
-                        <a href="index.html" style="margin: 0 12px;">Home</a> |
-                        <a href="login.html" style="margin: 0 12px;">Login</a>
-                    </p>
-                </div>
-            </div>
-        </div>
     </section>
 
     <!-- Footer -->

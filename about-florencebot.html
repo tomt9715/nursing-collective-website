@@ -56,96 +56,78 @@
                 <a href="pricing.html">Pricing</a>
                 <a href="store.html">Store</a>
                 <a href="about-florencebot.html" class="active">About Bot</a>
-                <!-- Guest nav item (shown when not logged in) -->
-                <a href="login.html" id="nav-login-link">Login</a>
                 <!-- Authenticated nav item (shown when logged in) -->
                 <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
-                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-                    <i class="fas fa-sun light-icon"></i>
-                    <i class="fas fa-moon dark-icon"></i>
-                </button>
                 <div class="cart-icon-container" aria-label="Shopping cart" title="View cart">
                     <i class="fas fa-shopping-cart cart-icon"></i>
                     <span class="cart-badge empty">0</span>
                 </div>
-                <!-- User menu (shown when logged in) -->
-                <div class="user-menu" id="user-menu" style="display: none;">
+                                <!-- User menu (always visible, content changes based on login state) -->
+                <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <i class="fas fa-user-circle"></i>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <div class="user-dropdown-header">
-                            <div class="user-avatar-large">
+                        <!-- Guest content (shown when not logged in) -->
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
                                 <i class="fas fa-user-circle"></i>
+                                <span>Welcome!</span>
                             </div>
-                            <div class="user-info">
-                                <span class="user-name" id="dropdown-user-name">Loading...</span>
-                                <span class="user-email" id="dropdown-user-email">Loading...</span>
-                            </div>
-                        </div>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
-                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
-                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
-                    </div>
-                </div>
-                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
-            </div>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </nav>
-
-    <!-- About Hero Section -->
-    <section class="about-hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="bot-icon">
-                    <i class="fas fa-robot"></i>
-                </div>
-                <h1>Meet FlorenceBot Pro</h1>
-                <p class="hero-subtitle">Your AI-powered nursing study companion living in Discord</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- FlorenceBot Intro Section -->
-    <section class="florencebot-intro">
-        <div class="container">
-            <div class="two-column-layout">
-                <div class="content-column">
-                    <h2>What is FlorenceBot?</h2>
-                    <p>FlorenceBot is an advanced Discord bot specifically designed for nursing students. Get instant access to clinical references, lab values, medication information, and NCLEX prep materials right in your Discord server.</p>
-
-                    <h3>Why Discord?</h3>
-                    <p>Discord is where nursing students collaborate, study together, and support each other. FlorenceBot brings professional clinical references directly into this environment, making it easier than ever to access critical information while studying with peers.</p>
-
-                    <div class="feature-highlights">
-                        <div class="highlight-item">
-                            <i class="fas fa-bolt"></i>
-                            <div>
-                                <h4>Instant Responses</h4>
-                                <p>Get lab values, vital signs, and medication info in seconds with simple slash commands.</p>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-users"></i>
-                            <div>
-                                <h4>Study with Friends</h4>
-                                <p>Access FlorenceBot in your study group servers for collaborative learning.</p>
+                        <!-- Logged-in content (shown when logged in) -->
+                        <div class="dropdown-user-content" id="dropdown-user-content" style="display: none;">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="highlight-item">
-                            <i class="fas fa-shield-alt"></i>
-                            <div>
-                                <h4>Always Available</h4>
-                                <p>24/7 access to clinical references whenever you need them, day or night.</p>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                        <i class="fas fa-sun"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                        <i class="fas fa-moon"></i>
+                                    </button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference">
+                                        <i class="fas fa-desktop"></i>
+                                    </button>
+                                </div>
                             </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
                         </div>
                     </div>
+                </div>
                 </div>
 
                 <div class="discord-preview-column">

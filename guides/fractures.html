@@ -1607,9 +1607,24 @@
         /* ============================================
            PRINT STYLES
            ============================================ */
+        /* ============================================
+           PDF-OPTIMIZED PRINT STYLES
+           Transforms web layout into clean document format
+           ============================================ */
         @media print {
+            /* === BASE RESET === */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+
             body {
-                background: white;
+                background: white !important;
+                font-size: 11pt;
+                line-height: 1.5;
             }
 
             .download-bar {
@@ -1618,64 +1633,247 @@
 
             .document-container {
                 margin: 0;
-                box-shadow: none;
-                border-radius: 0;
+                padding: 0;
                 max-width: 100%;
+                border-radius: 0;
             }
 
-            /* Preserve colors in print */
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
+            .document-content {
+                padding: 0.5in;
             }
 
-            /* Cover page - always on its own page */
+            /* === COVER PAGE === */
             .cover-page {
                 page-break-after: always;
                 break-after: page;
-            }
-
-            /* Remove text shadows and box shadows for clean PDF rendering */
-            .cover-title,
-            .cover-subtitle,
-            .cover-category {
-                text-shadow: none !important;
+                height: auto;
+                min-height: 100vh;
+                padding: 2in 1in;
             }
 
             .cover-logo {
-                box-shadow: none !important;
+                width: 80px;
+                height: 80px;
             }
 
-            /* Ensure no selection highlighting in print */
-            * {
-                -webkit-user-select: none;
-                user-select: none;
+            .cover-title {
+                font-size: 28pt;
             }
 
-            /* Section headings - never break after */
-            h2, h3, h4 {
+            .cover-subtitle {
+                font-size: 12pt;
+            }
+
+            .cover-meta {
+                margin-top: 24px;
+            }
+
+            /* === SECTION HEADERS - Simplified === */
+            .section-header {
+                display: block !important;
+                margin-bottom: 16px;
+                padding-bottom: 8px;
+                border-bottom: 2px solid var(--fracture-coral);
                 page-break-after: avoid;
                 break-after: avoid;
             }
 
-            /* Keep headings with their following content */
-            h2 + *,
-            h3 + *,
-            h4 + * {
-                page-break-before: avoid;
-                break-before: avoid;
+            .section-number {
+                display: inline-block;
+                width: auto;
+                height: auto;
+                padding: 4px 12px;
+                font-size: 12pt;
+                margin-right: 12px;
+                border-radius: 4px;
             }
 
-            /* Tables - avoid breaking inside */
+            .section-header h2 {
+                display: inline;
+                font-size: 16pt;
+            }
+
+            .section-title-group p {
+                display: block;
+                margin-top: 4px;
+                font-size: 10pt;
+                color: #666;
+            }
+
+            /* === GRIDS TO SINGLE COLUMN === */
+            .body-region-grid,
+            .intervention-grid,
+            .complication-grid,
+            .key-points-grid {
+                display: block !important;
+            }
+
+            /* === CARDS - Simplified to bordered boxes === */
+            .body-region-card,
+            .intervention-card,
+            .complication-card,
+            .healing-stage-card {
+                display: block;
+                border: 1px solid #ddd;
+                border-left: 4px solid var(--fracture-coral);
+                border-radius: 0;
+                padding: 12px 16px;
+                margin-bottom: 12px;
+                background: #fafafa !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .body-region-card:hover,
+            .intervention-card:hover,
+            .complication-card:hover {
+                transform: none !important;
+            }
+
+            /* Card headers inline */
+            .intervention-header,
+            .complication-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 8px;
+            }
+
+            .intervention-icon,
+            .complication-icon {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
+            }
+
+            .intervention-title,
+            .complication-title {
+                font-size: 11pt;
+                font-weight: 700;
+            }
+
+            .intervention-list,
+            .complication-list {
+                margin: 0;
+                padding-left: 20px;
+                font-size: 10pt;
+            }
+
+            .intervention-list li,
+            .complication-list li {
+                margin-bottom: 4px;
+            }
+
+            /* === INFO BOXES - Clean bordered style === */
+            .info-box {
+                display: block;
+                border-radius: 0;
+                border: 1px solid #ddd;
+                border-left: 4px solid;
+                padding: 12px 16px;
+                margin: 16px 0;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .info-box-icon {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+                margin-right: 8px;
+                vertical-align: middle;
+            }
+
+            .info-box-content {
+                display: inline;
+            }
+
+            .info-box-content strong {
+                display: block;
+                margin-bottom: 6px;
+                font-size: 11pt;
+            }
+
+            .info-box-content p {
+                font-size: 10pt;
+                margin: 0;
+            }
+
+            .info-box.warning { border-left-color: #ef4444; }
+            .info-box.clinical { border-left-color: #f59e0b; }
+            .info-box.nclex { border-left-color: #8b5cf6; }
+            .info-box.tip { border-left-color: #22c55e; }
+            .info-box.pediatric { border-left-color: #ec4899; }
+
+            /* === FLORENCEBOT TIPS - Simplified === */
+            .florencebot-tip {
+                border: 1px solid #e0f2fe;
+                border-left: 4px solid #0ea5e9;
+                border-radius: 0;
+                padding: 12px 16px;
+                margin: 16px 0;
+                background: #f0f9ff !important;
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .florencebot-tip-header {
+                margin-bottom: 8px;
+            }
+
+            .florencebot-tip-icon {
+                display: inline-block;
+                width: 24px;
+                height: 24px;
+                font-size: 12px;
+                margin-right: 8px;
+                vertical-align: middle;
+            }
+
+            .florencebot-tip-label {
+                font-size: 9pt;
+                color: #0369a1;
+            }
+
+            .florencebot-tip-title {
+                font-size: 11pt;
+                font-weight: 700;
+                margin-bottom: 6px;
+            }
+
+            .florencebot-tip-content {
+                font-size: 10pt;
+            }
+
+            /* === TABLES - Clean and simple === */
             .guide-table-wrapper {
-                page-break-inside: avoid;
-                break-inside: avoid;
+                margin: 16px 0;
+                border-radius: 0;
+                overflow: visible;
             }
 
-            table {
-                page-break-inside: avoid;
-                break-inside: avoid;
+            .guide-table {
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 9pt;
+            }
+
+            .guide-table th {
+                background: var(--fracture-coral) !important;
+                color: white;
+                padding: 8px 10px;
+                text-align: left;
+                font-weight: 600;
+            }
+
+            .guide-table td {
+                padding: 8px 10px;
+                border-bottom: 1px solid #e5e7eb;
+            }
+
+            .guide-table tr:nth-child(even) {
+                background: #f9fafb !important;
             }
 
             thead {
@@ -1687,104 +1885,221 @@
                 break-inside: avoid;
             }
 
-            /* Info boxes - never break inside */
-            .info-box {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            /* Cards - never break inside */
-            .body-region-card,
-            .intervention-card,
-            .complication-card,
-            .healing-stage-card {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            /* Card grids - allow breaking between cards but not inside */
-            .body-region-grid,
-            .intervention-grid,
-            .complication-grid {
-                page-break-inside: auto;
-                break-inside: auto;
-            }
-
-            /* Emergency alerts - never break */
-            .emergency-alert {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            /* FlorenceBot tips - never break */
-            .florencebot-tip {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            /* Learning objectives - keep together */
-            .learning-objectives {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            /* Key points summary - keep together */
-            .key-points-summary {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            .key-point-item {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            /* Guide sections - allow breaking but avoid orphaned headings */
-            .guide-section {
-                page-break-inside: auto;
-                break-inside: auto;
-            }
-
-            /* Timeline items */
-            .healing-timeline {
-                page-break-inside: auto;
-            }
-
-            /* Weight bearing progression - keep horizontal and together */
+            /* === WEIGHT BEARING - Horizontal simple boxes === */
             .weight-bearing-section {
                 page-break-inside: avoid;
                 break-inside: avoid;
+                margin: 16px 0;
+            }
+
+            .wb-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 12px;
+                padding: 8px 12px;
+                background: #f0fdf4 !important;
+                border-radius: 0;
+            }
+
+            .wb-header-icon {
+                width: 32px;
+                height: 32px;
             }
 
             .wb-progression {
                 display: flex !important;
                 flex-direction: row !important;
-                page-break-inside: avoid;
-                break-inside: avoid;
+                gap: 8px;
             }
 
             .wb-stage {
                 flex: 1;
-                page-break-inside: avoid;
-                break-inside: avoid;
+                text-align: center;
+                padding: 12px 8px;
+                border: 1px solid #ddd;
+                border-radius: 0;
+                background: white !important;
             }
 
             .wb-stage::after {
                 display: none !important;
             }
 
-            /* Section headers with their content */
-            .section-header {
+            .wb-icon-circle {
+                width: 40px;
+                height: 40px;
+                margin: 0 auto 8px;
+                font-size: 16px;
+            }
+
+            .wb-abbr {
+                font-size: 12pt;
+                font-weight: 800;
+            }
+
+            .wb-name {
+                font-size: 9pt;
+            }
+
+            .wb-desc {
+                font-size: 8pt;
+            }
+
+            /* === HEALING TIMELINE - Vertical simple list === */
+            .healing-timeline {
+                display: block !important;
+            }
+
+            .healing-stage-card {
+                display: flex;
+                align-items: flex-start;
+                gap: 16px;
+                padding: 12px;
+                margin-bottom: 8px;
+                border: 1px solid #ddd;
+                border-left: 4px solid var(--healing-green);
+            }
+
+            .healing-stage-card::before,
+            .healing-stage-card::after {
+                display: none !important;
+            }
+
+            /* === LEARNING OBJECTIVES === */
+            .learning-objectives {
+                border: 1px solid #bae6fd;
+                border-left: 4px solid #0ea5e9;
+                border-radius: 0;
+                padding: 16px;
+                margin-bottom: 24px;
+                background: #f0f9ff !important;
                 page-break-inside: avoid;
-                break-inside: avoid;
+            }
+
+            .learning-objectives h3 {
+                font-size: 12pt;
+                margin-bottom: 12px;
+            }
+
+            .learning-objectives ul {
+                margin: 0;
+                padding-left: 20px;
+            }
+
+            .learning-objectives li {
+                font-size: 10pt;
+                margin-bottom: 6px;
+            }
+
+            /* === KEY POINTS SUMMARY === */
+            .key-points-summary {
+                border: 2px solid var(--fracture-coral);
+                border-radius: 0;
+                padding: 16px;
+                margin-top: 24px;
+                background: #fff7ed !important;
+                page-break-inside: avoid;
+            }
+
+            .key-points-header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+
+            .key-points-icon {
+                width: 32px;
+                height: 32px;
+            }
+
+            .key-points-title {
+                font-size: 14pt;
+            }
+
+            .key-points-grid {
+                display: block !important;
+            }
+
+            .key-point-item {
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                padding: 8px 0;
+                border-bottom: 1px solid #fed7aa;
+                page-break-inside: avoid;
+            }
+
+            .key-point-item:last-child {
+                border-bottom: none;
+            }
+
+            .key-point-check {
+                width: 20px;
+                height: 20px;
+                font-size: 10px;
+                flex-shrink: 0;
+            }
+
+            .key-point-text {
+                font-size: 10pt;
+            }
+
+            /* === COMPLICATION TIMELINE === */
+            .complication-timeline {
+                display: block !important;
+            }
+
+            .complication-time-group {
+                margin-bottom: 16px;
+                page-break-inside: avoid;
+            }
+
+            .time-group-header {
+                font-size: 11pt;
+                font-weight: 700;
+                padding: 8px 12px;
+                margin-bottom: 8px;
+                border-radius: 0;
+            }
+
+            .complication-cards {
+                display: block !important;
+            }
+
+            /* === EMERGENCY ALERT === */
+            .emergency-alert {
+                border: 2px solid #ef4444;
+                border-radius: 0;
+                padding: 16px;
+                margin: 16px 0;
+                background: #fef2f2 !important;
+                page-break-inside: avoid;
+            }
+
+            /* === PAGE BREAKS === */
+            h2, h3, h4 {
                 page-break-after: avoid;
                 break-after: avoid;
             }
 
-            /* Pediatric section boxes */
-            .info-box.pediatric {
-                page-break-inside: avoid;
-                break-inside: avoid;
+            h2 + *,
+            h3 + *,
+            h4 + * {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+
+            .guide-section {
+                page-break-inside: auto;
+            }
+
+            /* Start major sections on new page for cleaner organization */
+            #compartment-syndrome,
+            #complications,
+            #pediatrics {
+                page-break-before: always;
             }
         }
 

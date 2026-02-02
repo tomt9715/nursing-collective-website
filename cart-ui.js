@@ -325,7 +325,7 @@ class CartUI {
             'hip-knee-replacement': 'prothesis.webp',
             'osteoporosis': 'osteoporosis.webp',
             'amputation-care': 'amputation.webp',
-            'eating-disorders': 'eating-disorder.webp',
+            'eating-disorders': 'eating-disorders.webp',
         };
 
         const iconFile = iconMap[productId];

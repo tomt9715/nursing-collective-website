@@ -715,7 +715,7 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
             'osteoporosis': 'osteoporosis.webp',
             'amputation-care': 'amputation.webp',
             // Mental Health (only eating-disorders has icon currently)
-            'eating-disorders': 'eating-disorder.webp'
+            'eating-disorders': 'eating-disorders.webp'
         };
         const iconFile = iconMap[productId];
         return iconFile ? `assets/images/guide-icons/${iconFile}` : null;

@@ -1750,20 +1750,35 @@
                 page-break-inside: auto;
             }
 
-            /* Weight bearing progression - keep entire section together */
+            /* Weight bearing progression - keep horizontal and together */
             .weight-bearing-section {
                 page-break-inside: avoid;
                 break-inside: avoid;
             }
 
             .wb-progression {
+                display: flex !important;
+                flex-direction: row !important;
                 page-break-inside: avoid;
                 break-inside: avoid;
             }
 
-            .wb-step {
+            .wb-stage {
+                flex: 1;
                 page-break-inside: avoid;
                 break-inside: avoid;
+            }
+
+            .wb-stage::after {
+                display: none !important;
+            }
+
+            /* Section headers with their content */
+            .section-header {
+                page-break-inside: avoid;
+                break-inside: avoid;
+                page-break-after: avoid;
+                break-after: avoid;
             }
 
             /* Pediatric section boxes */

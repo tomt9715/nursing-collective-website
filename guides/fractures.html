@@ -1628,6 +1628,19 @@
                 print-color-adjust: exact !important;
             }
 
+            /* Remove text shadows for clean PDF rendering */
+            .cover-title,
+            .cover-subtitle,
+            .cover-category {
+                text-shadow: none !important;
+            }
+
+            /* Ensure no selection highlighting in print */
+            * {
+                -webkit-user-select: none;
+                user-select: none;
+            }
+
             .guide-section {
                 page-break-inside: avoid;
             }

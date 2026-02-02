@@ -8,7 +8,8 @@ const sidebarConfig = {
         { id: 'assessment', icon: 'fa-stethoscope', title: 'Nursing Assessment' },
         { id: 'status-asthmaticus', icon: 'fa-exclamation-circle', title: 'Status Asthmaticus' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Interventions' },
-        { id: 'education', icon: 'fa-chalkboard-teacher', title: 'Patient Education' }
+        { id: 'education', icon: 'fa-chalkboard-teacher', title: 'Patient Education' },
+        { id: 'pediatrics', icon: 'fa-child', title: 'Pediatric Considerations' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-percentage', value: '≥92%', label: 'SpO2 Target (Asthma)' },

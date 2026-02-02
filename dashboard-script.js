@@ -1938,35 +1938,49 @@ function renderPurchaseHistory() {
     const endIndex = Math.min(startIndex + ordersPerPage, filteredOrders.length);
     const pageOrders = filteredOrders.slice(startIndex, endIndex);
 
-    // Render orders
+    // Render orders (collapsible, collapsed by default)
     historyList.innerHTML = pageOrders.map(order => {
         // Filter out revoked items - only show active items
         const activeItems = (order.items || []).filter(item => item.is_active !== false);
+        const itemCount = activeItems.length;
 
         const itemsHtml = activeItems.map(item => {
             return `
                 <div class="purchase-item-row">
                     <span class="purchase-item-name">${escapeHtml(item.product_name)}</span>
-                    <span class="purchase-item-price">$${parseFloat(item.price).toFixed(2)}</span>
                 </div>
             `;
         }).join('');
 
         return `
-            <div class="purchase-history-item">
-                <div class="purchase-header">
-                    <span class="purchase-order-number">Order #${escapeHtml(order.order_number)}</span>
-                    <div class="purchase-meta">
-                        <span><i class="fas fa-calendar"></i> ${formatDate(order.created_at)}</span>
-                        <span><i class="fas fa-dollar-sign"></i> $${parseFloat(order.total).toFixed(2)}</span>
+            <div class="purchase-history-item collapsed">
+                <button class="purchase-header" data-toggle-order>
+                    <div class="purchase-header-left">
+                        <span class="purchase-order-number">Order #${escapeHtml(order.order_number)}</span>
+                        <span class="purchase-item-count">${itemCount} item${itemCount !== 1 ? 's' : ''}</span>
                     </div>
-                </div>
+                    <div class="purchase-header-right">
+                        <span class="purchase-date"><i class="fas fa-calendar"></i> ${formatDate(order.created_at)}</span>
+                        <span class="purchase-total">$${parseFloat(order.total).toFixed(2)}</span>
+                        <i class="fas fa-chevron-down purchase-expand-icon"></i>
+                    </div>
+                </button>
                 <div class="purchase-items">
                     ${itemsHtml}
                 </div>
             </div>
         `;
     }).join('');
+
+    // Setup collapsible order toggles
+    historyList.querySelectorAll('[data-toggle-order]').forEach(btn => {
+        btn.addEventListener('click', function() {
+            const item = this.closest('.purchase-history-item');
+            if (item) {
+                item.classList.toggle('collapsed');
+            }
+        });
+    });
 
     // Update pagination
     if (paginationEl) {

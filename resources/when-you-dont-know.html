@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When You Don't Know What to Do (And You Will Feel This) | The Nursing Collective</title>
+    <meta name="description" content="How to ask for help without looking incompetent, what to do when you freeze, and how to recover from mistakes. Because this will happen to everyone.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Warm, supportive theme - rose/coral
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .guide-header {
+            background: linear-gradient(135deg, #be185d 0%, #f472b6 50%, #ec4899 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #be185d, #f472b6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #ec4899;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: #ec4899;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-support {
+            background: linear-gradient(135deg, #fce7f3 0%, #fdf2f8 100%);
+            border-color: #ec4899;
+        }
+
+        [data-theme="dark"] .callout-support {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(244, 114, 182, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        .callout-support .callout-header {
+            color: #be185d;
+        }
+
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+        [data-theme="dark"] .callout-support .callout-header { color: #f472b6; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #ec4899;
+            border-radius: 50%;
+        }
+
+        /* Script Box */
+        .script-box {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 2px solid #ec4899;
+        }
+
+        .script-box h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #ec4899;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .script-box .script-item {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .script-box .script-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .script-box .situation {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .script-box .response {
+            font-style: italic;
+            color: var(--text-secondary);
+            padding-left: 16px;
+            border-left: 3px solid #ec4899;
+        }
+
+        /* Numbered Steps */
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #ec4899;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .steps-list li strong {
+            color: var(--text-primary);
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #be185d 0%, #f472b6 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: #be185d;
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-heart"></i> Clinical Confidence
+            </span>
+            <h1 class="guide-title">When You Don't Know What to Do</h1>
+            <p class="guide-subtitle">And you will feel this. How to ask for help, what to do when you freeze, and how to recover from mistakes.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li>Every nursing student feels lost sometimes. This is normal and expected.</li>
+                <li>Asking for help is a professional skill, not a sign of weakness.</li>
+                <li>When you freeze, buy yourself time—the patient won't know you're stalling.</li>
+                <li>Mistakes are learning opportunities. How you handle them matters more than avoiding them.</li>
+                <li>This feeling gets better with experience. You will feel more confident as you practice.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">First: This Is Normal</h2>
+            </div>
+
+            <p>Let's start with the truth: <strong>you will have moments where you have no idea what to do.</strong> The patient is asking you something, or needs something, or something is happening, and your brain goes completely blank.</p>
+
+            <p>This happens to every nursing student. It happened to your instructor when they were a student. It still happens to experienced nurses sometimes. It's part of the learning process.</p>
+
+            <div class="callout callout-support">
+                <div class="callout-header">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    You're Not Alone
+                </div>
+                <p>The student who looks like they have it all together? They've had this feeling too. The nurse who seems so confident? They've been there. You're not uniquely unprepared or uniquely lost. You're exactly where every learner has been.</p>
+            </div>
+
+            <p>Feeling uncertain doesn't mean you're in the wrong field. It means you're learning something complex. The goal isn't to never feel lost—it's to know what to do when you do.</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">How to Ask for Help (Without Looking Incompetent)</h2>
+            </div>
+
+            <p>Many students avoid asking for help because they worry it makes them look stupid. Here's the reality: asking good questions makes you look engaged and thoughtful. It's the students who never ask questions who worry instructors.</p>
+
+            <p><strong>The key is how you ask:</strong></p>
+
+            <div class="script-box">
+                <h4><i class="fas fa-comments"></i> Good Ways to Ask for Help</h4>
+
+                <div class="script-item">
+                    <div class="situation">When you don't know what to do next:</div>
+                    <div class="response">"I've [done X and Y]. What would you recommend as the next step?"</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">When you want to verify your thinking:</div>
+                    <div class="response">"I'm thinking I should [do X] because [reason]. Does that sound right to you?"</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">When you need clarification:</div>
+                    <div class="response">"Can you help me understand why we're doing it this way? I want to make sure I'm thinking about this correctly."</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">When you're completely lost:</div>
+                    <div class="response">"I'm not sure how to approach this. Can you walk me through what you'd do?"</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">When you need hands-on guidance:</div>
+                    <div class="response">"I've practiced this in lab, but I'd feel better if you could watch me the first time. Can you observe while I do it?"</div>
+                </div>
+            </div>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    The Pattern
+                </div>
+                <p>Notice that good questions show you've thought about it first, or explain where you are in your thinking. They're specific rather than vague. "I don't know what to do" is less helpful than "I'm not sure whether I should do X or Y—what would you recommend?"</p>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">What to Do When You Freeze</h2>
+            </div>
+
+            <p>The patient asks you a question. Or something happens. And your mind goes completely blank. You're standing there, frozen, with no idea what to say or do.</p>
+
+            <p>Here's the good news: <strong>this moment feels much longer to you than it does to the patient.</strong> What feels like an eternity of standing there blankly is probably just a few seconds. You have more time than you think.</p>
+
+            <p><strong>Strategies for the freeze moment:</strong></p>
+
+            <ol class="steps-list">
+                <li><strong>Buy yourself time.</strong> "That's a good question—let me think about that for a moment." or "Let me check on that for you." Patients don't expect instant answers.</li>
+                <li><strong>Acknowledge the situation.</strong> "I want to make sure I give you accurate information. Let me find out." Being honest about wanting to verify is better than guessing.</li>
+                <li><strong>Take a breath.</strong> Literally. A slow breath activates your parasympathetic nervous system and helps your brain unfreeze. The patient won't notice.</li>
+                <li><strong>Fall back on assessment.</strong> When in doubt, assess. "How are you feeling right now?" or "Tell me more about that." Gathering information is always appropriate and gives you time to think.</li>
+                <li><strong>Get help.</strong> "I'm going to get my instructor/the nurse to help with this." There's no shame in this—it shows good judgment.</li>
+            </ol>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    From Someone Who's Been There
+                </div>
+                <p>A patient once asked me a question about their diagnosis and I had absolutely no idea. I said "That's a really important question. Let me find the best person to give you a complete answer—I'll be right back." Went and found their nurse. Came back with the information. The patient thanked me for being thorough. They had no idea I was panicking.</p>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">Recovering From Mistakes</h2>
+            </div>
+
+            <p>You will make mistakes. Not catastrophic, patient-harming mistakes (hopefully)—but you'll say the wrong thing, do something awkwardly, forget a step, or mess up in some way. This is part of learning.</p>
+
+            <p><strong>The key is how you handle it:</strong></p>
+
+            <ul>
+                <li><strong>Acknowledge it simply.</strong> "I made a mistake—let me fix that." Don't over-apologize or make it dramatic.</li>
+                <li><strong>Correct what you can.</strong> If you can fix it, fix it. If you can't, report it appropriately.</li>
+                <li><strong>Learn from it.</strong> What went wrong? What will you do differently next time?</li>
+                <li><strong>Move on.</strong> Don't let one mistake derail your whole day. Address it, learn from it, then refocus.</li>
+            </ul>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    The Mistake Spectrum
+                </div>
+                <p>Not all mistakes are equal. Forgetting to offer a patient water? Awkward, but fix it and move on. Giving the wrong medication? Serious—report immediately, follow incident procedures. Know the difference between "oops, let me fix that" mistakes and "I need to report this now" mistakes.</p>
+            </div>
+
+            <p><strong>After a mistake, you might feel:</strong></p>
+            <ul>
+                <li>Embarrassed or ashamed</li>
+                <li>Like you want to disappear</li>
+                <li>Like you'll never be a good nurse</li>
+                <li>Anxious about making more mistakes</li>
+            </ul>
+
+            <p>These feelings are normal. They'll pass. One mistake doesn't define you. What defines you is how you respond to it.</p>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">When the Patient Asks Something You Don't Know</h2>
+            </div>
+
+            <p>Patients will ask you questions you can't answer. About their diagnosis, their medications, their prognosis, their care plan. Sometimes you won't know, and that's okay.</p>
+
+            <div class="script-box">
+                <h4><i class="fas fa-comments"></i> Scripts for "I Don't Know"</h4>
+
+                <div class="script-item">
+                    <div class="situation">When you genuinely don't know:</div>
+                    <div class="response">"I don't want to give you incorrect information. Let me find out from [the nurse/doctor/my instructor] and get back to you."</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">When it's outside your scope to answer:</div>
+                    <div class="response">"That's a great question for your doctor. I can let them know you'd like to discuss it, or you can bring it up at your next visit."</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">When you know but aren't sure you should tell them:</div>
+                    <div class="response">"Let me check with your care team about the best way to answer that."</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">When they're frustrated you don't know:</div>
+                    <div class="response">"I understand you want answers. I want to make sure you get accurate information, so I'm going to find the right person to talk to you about this."</div>
+                </div>
+            </div>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    The Follow-Through
+                </div>
+                <p>If you tell a patient you'll find out something, actually follow through. Write yourself a note. Tell the nurse. Ask your instructor. Then go back and give them the answer. This builds trust and shows reliability.</p>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">Building Confidence Over Time</h2>
+            </div>
+
+            <p>The good news: this feeling of not knowing what to do gets better. Not because you suddenly know everything, but because:</p>
+
+            <ul>
+                <li><strong>You build a mental library.</strong> You've seen situations before and know how they turned out.</li>
+                <li><strong>You get better at thinking on your feet.</strong> The freeze happens less often.</li>
+                <li><strong>You learn how to find answers.</strong> You know who to ask, where to look, what resources to use.</li>
+                <li><strong>You become comfortable with uncertainty.</strong> You accept that you won't always know and that's okay.</li>
+                <li><strong>You trust yourself more.</strong> You've made it through uncertainty before and you'll do it again.</li>
+            </ul>
+
+            <p><strong>Things that help build confidence:</strong></p>
+            <ul>
+                <li>Practice, practice, practice—in lab, in simulation, in clinical</li>
+                <li>Reflecting on what went well and what you'd do differently</li>
+                <li>Asking for feedback and actually using it</li>
+                <li>Watching experienced nurses and learning from their approach</li>
+                <li>Being patient with yourself—confidence takes time</li>
+            </ul>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    The Confidence Curve
+                </div>
+                <p>Early in nursing school, you don't know what you don't know. Then you learn how much there is to know and feel less confident. Then you gradually build competence and your confidence matches your actual ability. This dip is normal—it means you're actually learning. Push through it.</p>
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">What to Tell Yourself</h2>
+            </div>
+
+            <p>When you're in that moment of not knowing what to do, your inner voice might be saying some unhelpful things. Here's a reframe:</p>
+
+            <ul>
+                <li><strong>Instead of:</strong> "I'm so stupid, I should know this."<br><strong>Try:</strong> "I'm learning. It's okay not to know everything yet."</li>
+                <li><strong>Instead of:</strong> "Everyone can see I have no idea what I'm doing."<br><strong>Try:</strong> "This feels more obvious to me than it looks to others."</li>
+                <li><strong>Instead of:</strong> "I'm going to fail out of this program."<br><strong>Try:</strong> "This is one moment. It doesn't predict my whole career."</li>
+                <li><strong>Instead of:</strong> "I can't ask for help, they'll think I'm incompetent."<br><strong>Try:</strong> "Asking for help is what competent people do when they need it."</li>
+                <li><strong>Instead of:</strong> "I'll never be a good nurse."<br><strong>Try:</strong> "I'm becoming a nurse. It's a process, not an instant transformation."</li>
+            </ul>
+
+            <div class="callout callout-support">
+                <div class="callout-header">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    Be Kind to Yourself
+                </div>
+                <p>You're learning one of the most complex jobs that exists. You're responsible for human lives while simultaneously trying to learn how to do that. That's incredibly hard. Give yourself credit for showing up, for trying, for caring enough to worry about doing it right.</p>
+            </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">8</span>
+                <h2 class="section-title">When to Worry (And When Not To)</h2>
+            </div>
+
+            <p><strong>Normal (don't worry):</strong></p>
+            <ul>
+                <li>Feeling uncertain in new situations</li>
+                <li>Needing to ask questions</li>
+                <li>Making small mistakes and learning from them</li>
+                <li>Feeling nervous before clinical</li>
+                <li>Not knowing the answer to every question</li>
+            </ul>
+
+            <p><strong>Maybe talk to someone if:</strong></p>
+            <ul>
+                <li>Anxiety is preventing you from functioning</li>
+                <li>You're making the same mistakes repeatedly</li>
+                <li>You're avoiding clinical or calling in frequently</li>
+                <li>The feedback you're getting indicates real problems</li>
+                <li>You feel like you genuinely can't do this, not just that it's hard</li>
+            </ul>
+
+            <p>Most of the time, feeling lost is just part of the process. But if it's interfering with your ability to learn and function, reach out to your instructor, advisor, or student support services. There's help available.</p>
+        </section>
+
+        <!-- Section 9 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">9</span>
+                <h2 class="section-title">Keep Going</h2>
+            </div>
+
+            <p>Here's what I want you to remember when you're standing there feeling completely lost:</p>
+
+            <p><strong>This moment will pass.</strong> The feeling of not knowing is temporary. You'll figure it out, ask for help, or the moment will move on. It won't last forever.</p>
+
+            <p><strong>You're supposed to be learning.</strong> If you already knew everything, there would be no point in clinical. The uncertainty is evidence that you're in the right place, doing the right thing.</p>
+
+            <p><strong>Everyone has been here.</strong> Every nurse you admire has had moments of complete confusion. They got through it. You will too.</p>
+
+            <p><strong>What you do next matters more than what you feel now.</strong> Feeling lost is just a feeling. What you do—ask for help, take a breath, figure it out—is what actually counts.</p>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    One Last Thing
+                </div>
+                <p>The fact that you're reading this guide means you care about doing well. That caring—that desire to be competent and helpful and safe—is the foundation of being a good nurse. The skills will come. The knowledge will build. The confidence will grow. The caring is already there. You're going to be okay.</p>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>You've Got This</h3>
+            <p>Explore our other clinical confidence guides, or dive into our study guides to strengthen your knowledge foundation.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

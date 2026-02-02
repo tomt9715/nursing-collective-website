@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Safety: Scope, Supervision, and Protecting Yourself | The Nursing Collective</title>
+    <meta name="description" content="Never do what you're uncomfortable with. Understanding the license chain, medication rules, how to speak up, and what to do when you make a mistake.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Clinical Safety theme - Navy/Professional blue
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .guide-header {
+            background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 50%, #1e40af 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #1e3a5f, #3b82f6);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #1e40af;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: #1e40af;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-critical {
+            background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%);
+            border-color: #dc2626;
+        }
+
+        [data-theme="dark"] .callout-critical {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(248, 113, 113, 0.1) 100%);
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-critical .callout-header {
+            color: #dc2626;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .callout-critical .callout-header { color: #f87171; }
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #1e40af;
+            border-radius: 50%;
+        }
+
+        /* Script Box */
+        .script-box {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 2px solid #1e40af;
+        }
+
+        .script-box h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #1e40af;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .script-box .script-item {
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .script-box .script-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .script-box .situation {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .script-box .response {
+            font-style: italic;
+            color: var(--text-secondary);
+            padding-left: 16px;
+            border-left: 3px solid #1e40af;
+        }
+
+        /* Numbered Steps */
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #1e40af;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .steps-list li strong {
+            color: var(--text-primary);
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: #1e40af;
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-shield-alt"></i> Clinical Confidence
+            </span>
+            <h1 class="guide-title">Clinical Safety: Scope, Supervision, and Protecting Yourself</h1>
+            <p class="guide-subtitle">Never do what you're uncomfortable with. Understanding the license chain, how to speak up, and what happens when mistakes occur.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li>Never do something you're uncomfortable with. This is safety, not weakness.</li>
+                <li>Your actions fall under your professor's license AND the nurse's license. Everyone is liable.</li>
+                <li>For medications: professor must be present unless you have explicit permission for RN supervision.</li>
+                <li>When unsure, always check with your instructor first—even if the nurse says it's fine.</li>
+                <li>Mistakes happen. Report immediately, don't hide it. Honesty protects everyone.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">The Most Important Rule</h2>
+            </div>
+
+            <p>Before we get into the details, let's establish the one rule that trumps everything else:</p>
+
+            <div class="callout callout-critical">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Never Do Something You're Uncomfortable With
+                </div>
+                <p>If you feel unprepared, uncertain, or unsafe doing something—<strong>don't do it.</strong> Stop and ask for help. This is not weakness. This is not being difficult. This is what safe nursing practice looks like. Knowing your limits IS being a good nurse.</p>
+            </div>
+
+            <p>You might worry that saying "I'm not comfortable with this" makes you look incompetent. The opposite is true. Nurses and instructors respect students who know their limits far more than students who pretend confidence they don't have.</p>
+
+            <p>A nurse who does something beyond their competence and harms a patient is liable. A student who says "I need more guidance with this" and asks for help is being professional. Which would you rather be?</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">Understanding the License Chain</h2>
+            </div>
+
+            <p>As a nursing student, you don't have your own license yet. That means your actions fall under someone else's. Understanding who is responsible for what protects everyone.</p>
+
+            <p><strong>Here's how it works:</strong></p>
+
+            <ul>
+                <li><strong>Your clinical instructor</strong> is ultimately responsible for supervising your clinical activities. They carry the primary liability for your actions as their student.</li>
+                <li><strong>The staff nurse</strong> assigned to your patient is also responsible for that patient's care. If they allow you to do something and it goes wrong, they share liability.</li>
+                <li><strong>You</strong> are responsible for practicing within your scope, following instructions, and speaking up when you need help or are unsure.</li>
+            </ul>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    What This Means Practically
+                </div>
+                <p>When a nurse tells you to do something, they're putting their license on the line. When your instructor approves something, they're putting their license on the line. And while you don't have a license yet, your actions can still result in dismissal from your program, inability to get licensed, or civil liability. Everyone has something to lose when things go wrong.</p>
+            </div>
+
+            <p>This isn't meant to scare you—it's meant to show why the supervision structures exist. They protect patients, staff, and you.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">Medication Administration Rules</h2>
+            </div>
+
+            <p>Medication administration is one of the highest-risk activities in nursing. As a student, there are usually specific rules about who must supervise you.</p>
+
+            <div class="callout callout-critical">
+                <div class="callout-header">
+                    <i class="fas fa-pills"></i>
+                    The Default Rule
+                </div>
+                <p><strong>Your instructor must be present when you administer medications.</strong> This is the standard policy at most programs. Exceptions require explicit permission and clear communication about who is supervising.</p>
+            </div>
+
+            <p><strong>Common scenarios and what to do:</strong></p>
+
+            <ul>
+                <li><strong>Instructor is present:</strong> Follow their guidance. They'll verify your checks and watch you administer.</li>
+                <li><strong>Instructor gives explicit permission for RN supervision:</strong> The RN must be physically present and actively supervising—not just available somewhere on the unit.</li>
+                <li><strong>RN says "go ahead and give it" but instructor isn't there:</strong> Check with your instructor first, even if it feels awkward. See scripts below.</li>
+                <li><strong>You're not sure who should supervise:</strong> Ask your instructor before doing anything. Better to delay a med than make an error.</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Know Your Program's Policy
+                </div>
+                <p>Policies vary by school. Some programs allow RN supervision for certain medications once students reach a certain semester. Some require instructor presence for all meds, always. Read your clinical handbook and ask your instructor if anything is unclear.</p>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">How to Speak Up (Scripts That Work)</h2>
+            </div>
+
+            <p>One of the hardest parts of clinical safety is actually saying something when you're unsure. Here are scripts for common situations:</p>
+
+            <div class="script-box">
+                <h4><i class="fas fa-comments"></i> What to Say When...</h4>
+
+                <div class="script-item">
+                    <div class="situation">The nurse says "go ahead and give that med" but your instructor isn't there:</div>
+                    <div class="response">"Thank you—I'd love to give it, but I need to check with my instructor first. Our program requires them to supervise meds. I'll be right back."</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">You're asked to do a skill you haven't done before or don't feel ready for:</div>
+                    <div class="response">"I haven't done that skill independently yet. Can I observe you do it first, or can we do it together with you guiding me?"</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">The nurse is busy and pressuring you to just do something:</div>
+                    <div class="response">"I understand you're busy, and I want to help. But I'm not comfortable doing this without supervision. Can we find a moment when you can watch, or should I find my instructor?"</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">You're asked to do something that seems outside your scope:</div>
+                    <div class="response">"I'm not sure if that's within my scope as a student. Let me check with my instructor to make sure I can do that."</div>
+                </div>
+
+                <div class="script-item">
+                    <div class="situation">You made an error and need to report it:</div>
+                    <div class="response">"I need to tell you something. [Describe what happened.] I wanted to report this immediately so we can make sure the patient is okay."</div>
+                </div>
+            </div>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    The Key Phrases
+                </div>
+                <p><strong>"Let me check with my instructor"</strong> is your universal safety phrase. It's polite, professional, and gives you an out for any situation where you're unsure. Use it liberally. No reasonable nurse will argue with a student who wants to verify with their instructor.</p>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">When You Make a Mistake</h2>
+            </div>
+
+            <p>Mistakes happen. Even experienced nurses make errors. What matters is how you handle it.</p>
+
+            <div class="callout callout-critical">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    The Cardinal Rule
+                </div>
+                <p><strong>Report immediately. Never hide an error.</strong> A covered-up mistake can harm the patient and end your nursing career before it starts. An honestly reported mistake—while serious—is something that can be addressed, learned from, and moved past.</p>
+            </div>
+
+            <p><strong>What to do if you make an error:</strong></p>
+
+            <ol class="steps-list">
+                <li><strong>Stop.</strong> Don't continue if there's any doubt about what happened or what to do next.</li>
+                <li><strong>Assess the patient.</strong> Are they in immediate danger? Do they need urgent intervention?</li>
+                <li><strong>Tell your instructor immediately.</strong> Find them. Interrupt whatever they're doing. This is urgent.</li>
+                <li><strong>Tell the staff nurse.</strong> They need to know what happened to monitor the patient appropriately.</li>
+                <li><strong>Follow your facility's incident reporting process.</strong> Your instructor will guide you through this.</li>
+                <li><strong>Document accurately.</strong> Write what happened factually. Don't minimize, don't over-explain, don't assign blame.</li>
+            </ol>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    What Happens Next
+                </div>
+                <p>After an error, you may need to complete an incident report, meet with your instructor, and possibly meet with your program coordinator. This feels scary, but it's a learning process—not necessarily a punishment. Students who report errors honestly and learn from them often continue in their programs. Students who hide errors and get caught often don't.</p>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">Protecting Yourself</h2>
+            </div>
+
+            <p>Beyond the ethical and patient-safety aspects, there are practical steps to protect yourself legally and professionally:</p>
+
+            <ul>
+                <li><strong>Document everything.</strong> If you provided care, document it. If something unusual happened, document it. Thorough documentation protects you.</li>
+                <li><strong>Follow chain of command.</strong> If you're concerned about something, go to your instructor. If they don't address it, go to your program coordinator. Don't skip levels.</li>
+                <li><strong>Don't practice outside your scope.</strong> Even if someone tells you it's okay. Even if you've seen it done. Even if you think you could do it. Stay within your defined scope as a student.</li>
+                <li><strong>Consider student nursing insurance.</strong> Some programs require it, some don't. It provides additional liability coverage beyond what your school carries. It's usually inexpensive.</li>
+                <li><strong>Keep records.</strong> Keep copies of your clinical logs, evaluations, and any incident reports you're involved in. You may never need them, but if you do, you'll be glad you have them.</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    The Best Protection
+                </div>
+                <p>The best protection is practicing safely in the first place. Ask questions. Verify before you act. Double-check your work. Stay within your scope. And when something goes wrong, report it immediately and honestly.</p>
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">Common Pressure Situations</h2>
+            </div>
+
+            <p>Sometimes you'll feel pressure to do things you shouldn't. Here's how to navigate those situations:</p>
+
+            <ul>
+                <li><strong>"The nurse does this all the time without supervision."</strong> What a licensed nurse can do independently is different from what a student can do. "I understand, but I still need my instructor for this" is appropriate.</li>
+                <li><strong>"We're short-staffed, we need you to help."</strong> You can help within your scope. But being short-staffed doesn't expand your scope or reduce supervision requirements.</li>
+                <li><strong>"Your classmates do this on their own."</strong> That may be true. Or they may be practicing unsafely. Either way, you're responsible for your own practice, not theirs.</li>
+                <li><strong>"I don't have time to supervise you."</strong> Then you can't do that skill right now. Offer to help with something else that doesn't require supervision.</li>
+                <li><strong>"Don't be a baby, just do it."</strong> This is inappropriate. If someone speaks to you this way, tell your instructor. Professional environments don't tolerate bullying students into unsafe practice.</li>
+            </ul>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    Remember
+                </div>
+                <p>No one can force you to practice unsafely. You always have the right to say "I need my instructor" or "I'm not comfortable with this." Anyone who tries to pressure you past those boundaries is the one acting inappropriately—not you.</p>
+            </div>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">8</span>
+                <h2 class="section-title">Building Safe Habits Now</h2>
+            </div>
+
+            <p>The safety habits you build as a student will carry into your practice as a nurse. Start now:</p>
+
+            <ul>
+                <li><strong>Always verify.</strong> Patient identity, medication rights, order accuracy. Make verification automatic.</li>
+                <li><strong>Speak up.</strong> If something seems wrong, say something. Even if you're not sure. Even if it's awkward.</li>
+                <li><strong>Ask questions.</strong> "Why are we doing this?" "What should I watch for?" "What would you do if...?" Questions show engagement, not ignorance.</li>
+                <li><strong>Know your limits.</strong> Be honest about what you can and can't do. There's no shame in being a learner.</li>
+                <li><strong>Stay humble.</strong> Confidence is good. Overconfidence is dangerous. Always leave room for the possibility that you might be wrong.</li>
+            </ul>
+
+            <p>Safe nurses aren't the ones who never make mistakes—they're the ones who catch mistakes before they cause harm, report them when they happen, and learn from every experience.</p>
+
+            <p>You're building those habits right now. Every time you pause to verify, every time you ask a question, every time you check with your instructor—you're becoming a safer nurse.</p>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>Feeling More Prepared?</h3>
+            <p>Check out our guide on what to do when you don't know what to do—because that moment will definitely happen.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

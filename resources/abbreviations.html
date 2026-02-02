@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medical Abbreviations & Terminology | The Nursing Collective</title>
+    <meta name="description" content="Common medical abbreviations used in clinical settings. Alphabetical reference plus dangerous 'Do Not Use' abbreviations every nursing student needs to know.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           QUICK REFERENCE TOOL STYLES
+           ============================================ */
+
+        .reference-tool {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .tool-header {
+            background: linear-gradient(135deg, #2E86AB 0%, #5ba3c4 50%, #A23B72 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .tool-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .tool-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Main Content */
+        .tool-content {
+            max-width: 900px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Alpha Jump Navigation */
+        .alpha-jump {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            position: sticky;
+            top: 20px;
+            z-index: 100;
+        }
+
+        .alpha-jump-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .alpha-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+        }
+
+        .alpha-links a {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--background-light);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            border: 1px solid var(--border-color);
+        }
+
+        .alpha-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        .alpha-links a.danger {
+            background: #fee2e2;
+            color: #dc2626;
+            border-color: #fecaca;
+        }
+
+        .alpha-links a.danger:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        [data-theme="dark"] .alpha-links a.danger {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+
+        /* Do Not Use Section */
+        .do-not-use {
+            background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%);
+            border: 2px solid #dc2626;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .do-not-use {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.15) 0%, rgba(239, 68, 68, 0.1) 100%);
+        }
+
+        .do-not-use-header {
+            background: #dc2626;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .do-not-use-header i {
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .do-not-use-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        .do-not-use-content {
+            padding: 24px;
+        }
+
+        .do-not-use-intro {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .do-not-use-intro strong {
+            color: #dc2626;
+        }
+
+        [data-theme="dark"] .do-not-use-intro strong {
+            color: #fca5a5;
+        }
+
+        /* Danger Table */
+        .danger-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .danger-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: #991b1b;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 2px solid #fecaca;
+            background: rgba(254, 202, 202, 0.5);
+        }
+
+        [data-theme="dark"] .danger-table th {
+            color: #fca5a5;
+            background: rgba(220, 38, 38, 0.2);
+            border-color: rgba(220, 38, 38, 0.3);
+        }
+
+        .danger-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid #fecaca;
+            font-size: 0.95rem;
+            vertical-align: top;
+        }
+
+        [data-theme="dark"] .danger-table td {
+            border-color: rgba(220, 38, 38, 0.2);
+        }
+
+        .danger-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .danger-abbrev {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-weight: 600;
+            color: #dc2626;
+            background: rgba(254, 202, 202, 0.5);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        [data-theme="dark"] .danger-abbrev {
+            color: #fca5a5;
+            background: rgba(220, 38, 38, 0.3);
+        }
+
+        .danger-table .use-instead {
+            color: #059669;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .danger-table .use-instead {
+            color: #34d399;
+        }
+
+        /* Abbreviation Sections */
+        .abbrev-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .abbrev-section-header {
+            background: var(--primary-color);
+            padding: 14px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .abbrev-section-header .letter {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .abbrev-section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+            margin: 0;
+        }
+
+        /* Abbreviation Grid */
+        .abbrev-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1px;
+            background: var(--border-color);
+        }
+
+        .abbrev-item {
+            background: var(--card-bg);
+            padding: 14px 20px;
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .abbrev-term {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            background: var(--background-light);
+            padding: 3px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+            flex-shrink: 0;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .abbrev-def {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        /* Search Box */
+        .search-box {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .search-box i {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            background: transparent;
+            font-size: 1rem;
+            color: var(--text-primary);
+            outline: none;
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-light);
+        }
+
+        .search-clear {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            padding: 4px;
+            display: none;
+        }
+
+        .search-clear.visible {
+            display: block;
+        }
+
+        .search-clear:hover {
+            color: var(--text-secondary);
+        }
+
+        /* No results message */
+        .no-results {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-secondary);
+            display: none;
+        }
+
+        .no-results.visible {
+            display: block;
+        }
+
+        /* Most Popular Panel */
+        .most-popular {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid #0ea5e9;
+            border-radius: 16px;
+            margin-bottom: 32px;
+            overflow: hidden;
+        }
+
+        [data-theme="dark"] .most-popular {
+            background: linear-gradient(135deg, rgba(14, 165, 233, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%);
+        }
+
+        .most-popular-header {
+            background: linear-gradient(135deg, #0ea5e9 0%, #38bdf8 100%);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .most-popular-header i {
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .most-popular-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        .most-popular-content {
+            padding: 24px;
+        }
+
+        .most-popular-intro {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .popular-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .popular-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 14px 16px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .popular-item:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .popular-abbrev {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0ea5e9;
+            margin-bottom: 4px;
+        }
+
+        [data-theme="dark"] .popular-abbrev {
+            color: #38bdf8;
+        }
+
+        .popular-meaning {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            line-height: 1.3;
+        }
+
+        @media (max-width: 480px) {
+            .popular-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Bottom CTA */
+        .tool-cta {
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .tool-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tool-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header {
+                padding: 40px 20px 60px;
+            }
+
+            .tool-title {
+                font-size: 1.9rem;
+            }
+
+            .alpha-jump {
+                position: static;
+            }
+
+            .alpha-links a {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+
+            .abbrev-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .danger-table {
+                display: block;
+            }
+
+            .danger-table thead {
+                display: none;
+            }
+
+            .danger-table tbody {
+                display: block;
+            }
+
+            .danger-table tr {
+                display: block;
+                padding: 16px;
+                border-bottom: 1px solid #fecaca;
+            }
+
+            .danger-table td {
+                display: block;
+                padding: 4px 0;
+                border: none;
+            }
+
+            .danger-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                color: #991b1b;
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            [data-theme="dark"] .danger-table td::before {
+                color: #fca5a5;
+            }
+
+            .tool-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-title {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Hide sections when searching */
+        .abbrev-section.hidden {
+            display: none;
+        }
+
+        .abbrev-item.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="reference-tool">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="tool-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="tool-category">
+                <i class="fas fa-table"></i> Quick Reference
+            </span>
+            <h1 class="tool-title">Medical Abbreviations</h1>
+            <p class="tool-subtitle">Common abbreviations you'll see in clinical settings. Plus the dangerous ones you should never use.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="tool-content">
+
+        <!-- Alphabet Jump -->
+        <nav class="alpha-jump" aria-label="Jump to letter">
+            <div class="alpha-jump-title">Jump to Letter</div>
+            <div class="alpha-links">
+                <a href="#do-not-use" class="danger" title="Do Not Use List"><i class="fas fa-ban"></i></a>
+                <a href="#section-a">A</a>
+                <a href="#section-b">B</a>
+                <a href="#section-c">C</a>
+                <a href="#section-d">D</a>
+                <a href="#section-e">E</a>
+                <a href="#section-f">F</a>
+                <a href="#section-g">G</a>
+                <a href="#section-h">H</a>
+                <a href="#section-i">I</a>
+                <a href="#section-j">J</a>
+                <a href="#section-k">K</a>
+                <a href="#section-l">L</a>
+                <a href="#section-m">M</a>
+                <a href="#section-n">N</a>
+                <a href="#section-o">O</a>
+                <a href="#section-p">P</a>
+                <a href="#section-q">Q</a>
+                <a href="#section-r">R</a>
+                <a href="#section-s">S</a>
+                <a href="#section-t">T</a>
+                <a href="#section-u">U</a>
+                <a href="#section-v">V</a>
+                <a href="#section-w">W</a>
+            </div>
+        </nav>
+
+        <!-- Search -->
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" id="abbrev-search" placeholder="Search abbreviations..." autocomplete="off">
+            <button class="search-clear" id="search-clear" aria-label="Clear search">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- No Results Message -->
+        <div class="no-results" id="no-results">
+            <i class="fas fa-search" style="font-size: 2rem; margin-bottom: 12px; opacity: 0.5;"></i>
+            <p>No abbreviations found. Try a different search term.</p>
+        </div>
+
+        <!-- Most Popular Abbreviations -->
+        <section class="most-popular">
+            <div class="most-popular-header">
+                <i class="fas fa-star"></i>
+                <h2>Most Common Abbreviations</h2>
+            </div>
+            <div class="most-popular-content">
+                <p class="most-popular-intro">These are the abbreviations you'll see constantly in clinical settings. Master these first!</p>
+                <div class="popular-grid">
+                    <div class="popular-item">
+                        <div class="popular-abbrev">BP</div>
+                        <div class="popular-meaning">Blood Pressure</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">HR</div>
+                        <div class="popular-meaning">Heart Rate</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">RR</div>
+                        <div class="popular-meaning">Respiratory Rate</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">SpO2</div>
+                        <div class="popular-meaning">Oxygen Saturation</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">NPO</div>
+                        <div class="popular-meaning">Nothing by Mouth</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">PRN</div>
+                        <div class="popular-meaning">As Needed</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">IV</div>
+                        <div class="popular-meaning">Intravenous</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">PO</div>
+                        <div class="popular-meaning">By Mouth (oral)</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">BID</div>
+                        <div class="popular-meaning">Twice Daily</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">TID</div>
+                        <div class="popular-meaning">Three Times Daily</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">QID</div>
+                        <div class="popular-meaning">Four Times Daily</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">IM</div>
+                        <div class="popular-meaning">Intramuscular</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">SubQ</div>
+                        <div class="popular-meaning">Subcutaneous</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">Hx</div>
+                        <div class="popular-meaning">History</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">Dx</div>
+                        <div class="popular-meaning">Diagnosis</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">Tx</div>
+                        <div class="popular-meaning">Treatment</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">Rx</div>
+                        <div class="popular-meaning">Prescription</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">WNL</div>
+                        <div class="popular-meaning">Within Normal Limits</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">SOB</div>
+                        <div class="popular-meaning">Shortness of Breath</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">c/o</div>
+                        <div class="popular-meaning">Complains Of</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">BM</div>
+                        <div class="popular-meaning">Bowel Movement</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">I&O</div>
+                        <div class="popular-meaning">Intake & Output</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">ADL</div>
+                        <div class="popular-meaning">Activities of Daily Living</div>
+                    </div>
+                    <div class="popular-item">
+                        <div class="popular-abbrev">VS</div>
+                        <div class="popular-meaning">Vital Signs</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DO NOT USE Section -->
+        <section id="do-not-use" class="do-not-use">
+            <div class="do-not-use-header">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h2>Do Not Use List (Joint Commission)</h2>
+            </div>
+            <div class="do-not-use-content">
+                <p class="do-not-use-intro">
+                    <strong>These abbreviations are banned by The Joint Commission</strong> because they've caused medication errors and patient harm. You may still see them on older charts, but you should never write them yourself.
+                </p>
+                <table class="danger-table">
+                    <thead>
+                        <tr>
+                            <th>Don't Use</th>
+                            <th>Problem</th>
+                            <th>Use Instead</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">U</span></td>
+                            <td data-label="Problem">Mistaken for "0" (zero), "4" (four), or "cc"</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "unit"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">IU</span></td>
+                            <td data-label="Problem">Mistaken for "IV" (intravenous) or "10" (ten)</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "international unit"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">Q.D., QD, q.d., qd</span></td>
+                            <td data-label="Problem">Mistaken for Q.O.D. (every other day) or "QID"</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "daily"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">Q.O.D., QOD, q.o.d., qod</span></td>
+                            <td data-label="Problem">Mistaken for Q.D. (daily) or "QID"</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "every other day"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">Trailing zero (X.0 mg)</span></td>
+                            <td data-label="Problem">Decimal point missed, 10x overdose</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "X mg" (no trailing zero)</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">Lack of leading zero (.X mg)</span></td>
+                            <td data-label="Problem">Decimal point missed, 10x overdose</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "0.X mg" (use leading zero)</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">MS, MSO4, MgSO4</span></td>
+                            <td data-label="Problem">Confused for one another (morphine vs magnesium)</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "morphine sulfate" or "magnesium sulfate"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">μg</span></td>
+                            <td data-label="Problem">Mistaken for "mg" (1000x overdose)</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "mcg" or "microgram"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">cc</span></td>
+                            <td data-label="Problem">Mistaken for "U" (units)</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "mL"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">AS, AD, AU</span></td>
+                            <td data-label="Problem">Mistaken for OS, OD, OU (eye abbreviations)</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "left ear," "right ear," "both ears"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">OS, OD, OU</span></td>
+                            <td data-label="Problem">Mistaken for AS, AD, AU (ear abbreviations)</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "left eye," "right eye," "both eyes"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">HS</span></td>
+                            <td data-label="Problem">Mistaken for "half-strength" or "hour of sleep"</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "at bedtime" or "half-strength"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">SC, SQ, sub q</span></td>
+                            <td data-label="Problem">SC mistaken for SL (sublingual); SQ mistaken for "5 every"</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "subcut" or "subcutaneously"</span></td>
+                        </tr>
+                        <tr>
+                            <td data-label="Don't Use"><span class="danger-abbrev">D/C</span></td>
+                            <td data-label="Problem">Mistaken for "discharge" or "discontinue"</td>
+                            <td data-label="Use Instead"><span class="use-instead">Write "discharge" or "discontinue"</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Section A -->
+        <section id="section-a" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">A</span>
+                <h2>Abbreviations starting with A</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">a.c.</span><span class="abbrev-def">Before meals (ante cibum)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ABG</span><span class="abbrev-def">Arterial blood gas</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ACS</span><span class="abbrev-def">Acute coronary syndrome</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ADH</span><span class="abbrev-def">Antidiuretic hormone</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ADL</span><span class="abbrev-def">Activities of daily living</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ad lib</span><span class="abbrev-def">As desired, freely</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AEB</span><span class="abbrev-def">As evidenced by</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">A-fib</span><span class="abbrev-def">Atrial fibrillation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AKA</span><span class="abbrev-def">Above-knee amputation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AKI</span><span class="abbrev-def">Acute kidney injury</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ALP</span><span class="abbrev-def">Alkaline phosphatase</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ALT</span><span class="abbrev-def">Alanine aminotransferase</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AMA</span><span class="abbrev-def">Against medical advice</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AMI</span><span class="abbrev-def">Acute myocardial infarction</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AMS</span><span class="abbrev-def">Altered mental status</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ant</span><span class="abbrev-def">Anterior</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">A&O</span><span class="abbrev-def">Alert and oriented</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">A&Ox3</span><span class="abbrev-def">Alert and oriented to person, place, time</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">A&Ox4</span><span class="abbrev-def">Alert and oriented to person, place, time, situation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AP</span><span class="abbrev-def">Anteroposterior</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ARDS</span><span class="abbrev-def">Acute respiratory distress syndrome</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ASAP</span><span class="abbrev-def">As soon as possible</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ASA</span><span class="abbrev-def">Aspirin</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AST</span><span class="abbrev-def">Aspartate aminotransferase</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AV</span><span class="abbrev-def">Atrioventricular</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">AVPU</span><span class="abbrev-def">Alert, Verbal, Pain, Unresponsive (scale)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Ax</span><span class="abbrev-def">Assessment</span></div>
+            </div>
+        </section>
+
+        <!-- Section B -->
+        <section id="section-b" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">B</span>
+                <h2>Abbreviations starting with B</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">b.i.d.</span><span class="abbrev-def">Twice a day (bis in die)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">bilat</span><span class="abbrev-def">Bilateral</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BKA</span><span class="abbrev-def">Below-knee amputation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BLE</span><span class="abbrev-def">Bilateral lower extremities</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BM</span><span class="abbrev-def">Bowel movement</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BMI</span><span class="abbrev-def">Body mass index</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BMP</span><span class="abbrev-def">Basic metabolic panel</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BNP</span><span class="abbrev-def">B-type natriuretic peptide</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BP</span><span class="abbrev-def">Blood pressure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BPH</span><span class="abbrev-def">Benign prostatic hyperplasia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BPM</span><span class="abbrev-def">Beats per minute</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BR</span><span class="abbrev-def">Bed rest</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BRP</span><span class="abbrev-def">Bathroom privileges</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BS</span><span class="abbrev-def">Blood sugar / Bowel sounds / Breath sounds</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BSA</span><span class="abbrev-def">Body surface area</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BSC</span><span class="abbrev-def">Bedside commode</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BUE</span><span class="abbrev-def">Bilateral upper extremities</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">BUN</span><span class="abbrev-def">Blood urea nitrogen</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Bx</span><span class="abbrev-def">Biopsy</span></div>
+            </div>
+        </section>
+
+        <!-- Section C -->
+        <section id="section-c" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">C</span>
+                <h2>Abbreviations starting with C</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">c̄</span><span class="abbrev-def">With (cum)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">C-diff</span><span class="abbrev-def">Clostridioides difficile</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">C-section</span><span class="abbrev-def">Cesarean section</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">C&S</span><span class="abbrev-def">Culture and sensitivity</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CA</span><span class="abbrev-def">Cancer / Cardiac arrest</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CABG</span><span class="abbrev-def">Coronary artery bypass graft</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CAD</span><span class="abbrev-def">Coronary artery disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">cap</span><span class="abbrev-def">Capsule</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">cath</span><span class="abbrev-def">Catheter / Catheterization</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CBC</span><span class="abbrev-def">Complete blood count</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CBG</span><span class="abbrev-def">Capillary blood glucose</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CC</span><span class="abbrev-def">Chief complaint</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CCU</span><span class="abbrev-def">Coronary care unit / Critical care unit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CHF</span><span class="abbrev-def">Congestive heart failure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CKD</span><span class="abbrev-def">Chronic kidney disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Cl</span><span class="abbrev-def">Chloride</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CMP</span><span class="abbrev-def">Comprehensive metabolic panel</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CNA</span><span class="abbrev-def">Certified nursing assistant</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CNS</span><span class="abbrev-def">Central nervous system</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">c/o</span><span class="abbrev-def">Complains of</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CO2</span><span class="abbrev-def">Carbon dioxide</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">COPD</span><span class="abbrev-def">Chronic obstructive pulmonary disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CPAP</span><span class="abbrev-def">Continuous positive airway pressure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CPR</span><span class="abbrev-def">Cardiopulmonary resuscitation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Cr</span><span class="abbrev-def">Creatinine</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CRP</span><span class="abbrev-def">C-reactive protein</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CSF</span><span class="abbrev-def">Cerebrospinal fluid</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CT</span><span class="abbrev-def">Computed tomography</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CTA</span><span class="abbrev-def">Clear to auscultation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CTAB</span><span class="abbrev-def">Clear to auscultation bilaterally</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CVA</span><span class="abbrev-def">Cerebrovascular accident (stroke)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CVP</span><span class="abbrev-def">Central venous pressure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">CXR</span><span class="abbrev-def">Chest X-ray</span></div>
+            </div>
+        </section>
+
+        <!-- Section D -->
+        <section id="section-d" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">D</span>
+                <h2>Abbreviations starting with D</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">D5NS</span><span class="abbrev-def">5% dextrose in normal saline</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">D5W</span><span class="abbrev-def">5% dextrose in water</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">D10W</span><span class="abbrev-def">10% dextrose in water</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DAT</span><span class="abbrev-def">Diet as tolerated</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DBP</span><span class="abbrev-def">Diastolic blood pressure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DIC</span><span class="abbrev-def">Disseminated intravascular coagulation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">diff</span><span class="abbrev-def">Differential (WBC)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DJD</span><span class="abbrev-def">Degenerative joint disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DKA</span><span class="abbrev-def">Diabetic ketoacidosis</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">dL</span><span class="abbrev-def">Deciliter</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DM</span><span class="abbrev-def">Diabetes mellitus</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DNI</span><span class="abbrev-def">Do not intubate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DNR</span><span class="abbrev-def">Do not resuscitate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DOA</span><span class="abbrev-def">Dead on arrival</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DOB</span><span class="abbrev-def">Date of birth</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DOE</span><span class="abbrev-def">Dyspnea on exertion</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DPT</span><span class="abbrev-def">Diphtheria, pertussis, tetanus (vaccine)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">drsg</span><span class="abbrev-def">Dressing</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DT</span><span class="abbrev-def">Delirium tremens</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">DVT</span><span class="abbrev-def">Deep vein thrombosis</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Dx</span><span class="abbrev-def">Diagnosis</span></div>
+            </div>
+        </section>
+
+        <!-- Section E -->
+        <section id="section-e" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">E</span>
+                <h2>Abbreviations starting with E</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">ECG/EKG</span><span class="abbrev-def">Electrocardiogram</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ED</span><span class="abbrev-def">Emergency department</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">EEG</span><span class="abbrev-def">Electroencephalogram</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">EF</span><span class="abbrev-def">Ejection fraction</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">eGFR</span><span class="abbrev-def">Estimated glomerular filtration rate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">elev</span><span class="abbrev-def">Elevated</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">elix</span><span class="abbrev-def">Elixir</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">EMG</span><span class="abbrev-def">Electromyogram</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">EMS</span><span class="abbrev-def">Emergency medical services</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">EMR</span><span class="abbrev-def">Electronic medical record</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">EMT</span><span class="abbrev-def">Emergency medical technician</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ENT</span><span class="abbrev-def">Ear, nose, throat</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">EOL</span><span class="abbrev-def">End of life</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">EPS</span><span class="abbrev-def">Extrapyramidal symptoms</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ER</span><span class="abbrev-def">Emergency room / Extended release</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ESR</span><span class="abbrev-def">Erythrocyte sedimentation rate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ESRD</span><span class="abbrev-def">End-stage renal disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ET</span><span class="abbrev-def">Endotracheal</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ETOH</span><span class="abbrev-def">Alcohol (ethanol)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ETT</span><span class="abbrev-def">Endotracheal tube</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ext</span><span class="abbrev-def">Extremity / External</span></div>
+            </div>
+        </section>
+
+        <!-- Section F -->
+        <section id="section-f" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">F</span>
+                <h2>Abbreviations starting with F</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">F</span><span class="abbrev-def">Fahrenheit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">FBG</span><span class="abbrev-def">Fasting blood glucose</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">FBS</span><span class="abbrev-def">Fasting blood sugar</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Fe</span><span class="abbrev-def">Iron</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">FHR</span><span class="abbrev-def">Fetal heart rate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">FiO2</span><span class="abbrev-def">Fraction of inspired oxygen</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">fl</span><span class="abbrev-def">Fluid</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">FLACC</span><span class="abbrev-def">Face, Legs, Activity, Cry, Consolability (pain scale)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">freq</span><span class="abbrev-def">Frequent / Frequency</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">FSH</span><span class="abbrev-def">Follicle-stimulating hormone</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">FTT</span><span class="abbrev-def">Failure to thrive</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">FUO</span><span class="abbrev-def">Fever of unknown origin</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Fx</span><span class="abbrev-def">Fracture</span></div>
+            </div>
+        </section>
+
+        <!-- Section G -->
+        <section id="section-g" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">G</span>
+                <h2>Abbreviations starting with G</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">g</span><span class="abbrev-def">Gram</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GA</span><span class="abbrev-def">General anesthesia / Gestational age</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GB</span><span class="abbrev-def">Gallbladder</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GBS</span><span class="abbrev-def">Group B strep / Guillain-Barré syndrome</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GCS</span><span class="abbrev-def">Glasgow Coma Scale</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GERD</span><span class="abbrev-def">Gastroesophageal reflux disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GFR</span><span class="abbrev-def">Glomerular filtration rate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GI</span><span class="abbrev-def">Gastrointestinal</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">gr</span><span class="abbrev-def">Grain</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GSW</span><span class="abbrev-def">Gunshot wound</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GTT</span><span class="abbrev-def">Glucose tolerance test</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">gtt</span><span class="abbrev-def">Drop(s) (guttae)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GU</span><span class="abbrev-def">Genitourinary</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">GYN</span><span class="abbrev-def">Gynecology</span></div>
+            </div>
+        </section>
+
+        <!-- Section H -->
+        <section id="section-h" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">H</span>
+                <h2>Abbreviations starting with H</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">H&H</span><span class="abbrev-def">Hemoglobin and hematocrit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">H&P</span><span class="abbrev-def">History and physical</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">H/O</span><span class="abbrev-def">History of</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HA</span><span class="abbrev-def">Headache</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HbA1c</span><span class="abbrev-def">Hemoglobin A1c (glycated hemoglobin)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HCO3</span><span class="abbrev-def">Bicarbonate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Hct</span><span class="abbrev-def">Hematocrit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HD</span><span class="abbrev-def">Hemodialysis</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HEENT</span><span class="abbrev-def">Head, eyes, ears, nose, throat</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Hgb</span><span class="abbrev-def">Hemoglobin</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HHS</span><span class="abbrev-def">Hyperosmolar hyperglycemic state</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HIPAA</span><span class="abbrev-def">Health Insurance Portability and Accountability Act</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HIT</span><span class="abbrev-def">Heparin-induced thrombocytopenia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HIV</span><span class="abbrev-def">Human immunodeficiency virus</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HLD</span><span class="abbrev-def">Hyperlipidemia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HOB</span><span class="abbrev-def">Head of bed</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HOH</span><span class="abbrev-def">Hard of hearing</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HR</span><span class="abbrev-def">Heart rate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">HTN</span><span class="abbrev-def">Hypertension</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Hx</span><span class="abbrev-def">History</span></div>
+            </div>
+        </section>
+
+        <!-- Section I -->
+        <section id="section-i" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">I</span>
+                <h2>Abbreviations starting with I</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">I&D</span><span class="abbrev-def">Incision and drainage</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">I&O</span><span class="abbrev-def">Intake and output</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IBD</span><span class="abbrev-def">Inflammatory bowel disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IBS</span><span class="abbrev-def">Irritable bowel syndrome</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ICD</span><span class="abbrev-def">Implantable cardioverter-defibrillator</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ICP</span><span class="abbrev-def">Intracranial pressure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ICU</span><span class="abbrev-def">Intensive care unit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ID</span><span class="abbrev-def">Intradermal / Infectious disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IDDM</span><span class="abbrev-def">Insulin-dependent diabetes mellitus</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IM</span><span class="abbrev-def">Intramuscular</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">INR</span><span class="abbrev-def">International normalized ratio</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IO</span><span class="abbrev-def">Intraosseous</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IOP</span><span class="abbrev-def">Intraocular pressure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IS</span><span class="abbrev-def">Incentive spirometer</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IT</span><span class="abbrev-def">Intrathecal</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IV</span><span class="abbrev-def">Intravenous</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IVF</span><span class="abbrev-def">Intravenous fluids / In vitro fertilization</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IVP</span><span class="abbrev-def">Intravenous push</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">IVPB</span><span class="abbrev-def">Intravenous piggyback</span></div>
+            </div>
+        </section>
+
+        <!-- Section J -->
+        <section id="section-j" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">J</span>
+                <h2>Abbreviations starting with J</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">JP</span><span class="abbrev-def">Jackson-Pratt (drain)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">JVD</span><span class="abbrev-def">Jugular vein distension</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">JVP</span><span class="abbrev-def">Jugular venous pressure</span></div>
+            </div>
+        </section>
+
+        <!-- Section K -->
+        <section id="section-k" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">K</span>
+                <h2>Abbreviations starting with K</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">K+</span><span class="abbrev-def">Potassium</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">KCl</span><span class="abbrev-def">Potassium chloride</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">kg</span><span class="abbrev-def">Kilogram</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">KUB</span><span class="abbrev-def">Kidneys, ureters, bladder (X-ray)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">KVO</span><span class="abbrev-def">Keep vein open</span></div>
+            </div>
+        </section>
+
+        <!-- Section L -->
+        <section id="section-l" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">L</span>
+                <h2>Abbreviations starting with L</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">L</span><span class="abbrev-def">Liter</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">L&D</span><span class="abbrev-def">Labor and delivery</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">lat</span><span class="abbrev-def">Lateral</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">lb</span><span class="abbrev-def">Pound</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LBP</span><span class="abbrev-def">Low back pain</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LDH</span><span class="abbrev-def">Lactate dehydrogenase</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LE</span><span class="abbrev-def">Lower extremity</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LFT</span><span class="abbrev-def">Liver function test</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">liq</span><span class="abbrev-def">Liquid</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LLE</span><span class="abbrev-def">Left lower extremity</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LLL</span><span class="abbrev-def">Left lower lobe</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LLQ</span><span class="abbrev-def">Left lower quadrant</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LMP</span><span class="abbrev-def">Last menstrual period</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LMWH</span><span class="abbrev-def">Low molecular weight heparin</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LOC</span><span class="abbrev-def">Level of consciousness / Loss of consciousness</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LOS</span><span class="abbrev-def">Length of stay</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LP</span><span class="abbrev-def">Lumbar puncture</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LPN</span><span class="abbrev-def">Licensed practical nurse</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LR</span><span class="abbrev-def">Lactated Ringer's (solution)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">lt</span><span class="abbrev-def">Left</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LUE</span><span class="abbrev-def">Left upper extremity</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LUL</span><span class="abbrev-def">Left upper lobe</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LUQ</span><span class="abbrev-def">Left upper quadrant</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">LVH</span><span class="abbrev-def">Left ventricular hypertrophy</span></div>
+            </div>
+        </section>
+
+        <!-- Section M -->
+        <section id="section-m" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">M</span>
+                <h2>Abbreviations starting with M</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">MAP</span><span class="abbrev-def">Mean arterial pressure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MAR</span><span class="abbrev-def">Medication administration record</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MCA</span><span class="abbrev-def">Middle cerebral artery</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">mcg</span><span class="abbrev-def">Microgram</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MCV</span><span class="abbrev-def">Mean corpuscular volume</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MD</span><span class="abbrev-def">Medical doctor</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MDI</span><span class="abbrev-def">Metered-dose inhaler</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">med</span><span class="abbrev-def">Medication</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">mEq</span><span class="abbrev-def">Milliequivalent</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Mg</span><span class="abbrev-def">Magnesium</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">mg</span><span class="abbrev-def">Milligram</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MI</span><span class="abbrev-def">Myocardial infarction</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MICU</span><span class="abbrev-def">Medical intensive care unit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">min</span><span class="abbrev-def">Minute</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">mL</span><span class="abbrev-def">Milliliter</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">mm</span><span class="abbrev-def">Millimeter</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">mmHg</span><span class="abbrev-def">Millimeters of mercury</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MoCA</span><span class="abbrev-def">Montreal Cognitive Assessment</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">mod</span><span class="abbrev-def">Moderate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MRI</span><span class="abbrev-def">Magnetic resonance imaging</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MRSA</span><span class="abbrev-def">Methicillin-resistant S. aureus</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MVA</span><span class="abbrev-def">Motor vehicle accident</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">MVR</span><span class="abbrev-def">Mitral valve replacement</span></div>
+            </div>
+        </section>
+
+        <!-- Section N -->
+        <section id="section-n" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">N</span>
+                <h2>Abbreviations starting with N</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">Na+</span><span class="abbrev-def">Sodium</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NaCl</span><span class="abbrev-def">Sodium chloride (saline)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NAD</span><span class="abbrev-def">No acute distress</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NC</span><span class="abbrev-def">Nasal cannula</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NEB</span><span class="abbrev-def">Nebulizer</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">neg</span><span class="abbrev-def">Negative</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">neuro</span><span class="abbrev-def">Neurological</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NG</span><span class="abbrev-def">Nasogastric</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NGT</span><span class="abbrev-def">Nasogastric tube</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NICU</span><span class="abbrev-def">Neonatal intensive care unit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NIDDM</span><span class="abbrev-def">Non-insulin dependent diabetes mellitus</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NKA</span><span class="abbrev-def">No known allergies</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NKDA</span><span class="abbrev-def">No known drug allergies</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NNT</span><span class="abbrev-def">Non-nutritive time</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">noct</span><span class="abbrev-def">Night (nocturnal)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NPO</span><span class="abbrev-def">Nothing by mouth (nil per os)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NRB</span><span class="abbrev-def">Non-rebreather mask</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NS</span><span class="abbrev-def">Normal saline (0.9% NaCl)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NSAID</span><span class="abbrev-def">Nonsteroidal anti-inflammatory drug</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NSR</span><span class="abbrev-def">Normal sinus rhythm</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NSTEMI</span><span class="abbrev-def">Non-ST elevation myocardial infarction</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NTG</span><span class="abbrev-def">Nitroglycerin</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">N/V</span><span class="abbrev-def">Nausea and vomiting</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">N/V/D</span><span class="abbrev-def">Nausea, vomiting, diarrhea</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">NWB</span><span class="abbrev-def">Non-weight bearing</span></div>
+            </div>
+        </section>
+
+        <!-- Section O -->
+        <section id="section-o" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">O</span>
+                <h2>Abbreviations starting with O</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">O2</span><span class="abbrev-def">Oxygen</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">O2 sat</span><span class="abbrev-def">Oxygen saturation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">OA</span><span class="abbrev-def">Osteoarthritis</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">OB</span><span class="abbrev-def">Obstetrics</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">OOB</span><span class="abbrev-def">Out of bed</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">OR</span><span class="abbrev-def">Operating room</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ORIF</span><span class="abbrev-def">Open reduction internal fixation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ortho</span><span class="abbrev-def">Orthopedics</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">OSA</span><span class="abbrev-def">Obstructive sleep apnea</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">OT</span><span class="abbrev-def">Occupational therapy</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">OTC</span><span class="abbrev-def">Over the counter</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">oz</span><span class="abbrev-def">Ounce</span></div>
+            </div>
+        </section>
+
+        <!-- Section P -->
+        <section id="section-p" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">P</span>
+                <h2>Abbreviations starting with P</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">p̄</span><span class="abbrev-def">After (post)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">p.c.</span><span class="abbrev-def">After meals (post cibum)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">p.o.</span><span class="abbrev-def">By mouth (per os)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PA</span><span class="abbrev-def">Physician assistant / Posteroanterior</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PAC</span><span class="abbrev-def">Premature atrial contraction</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PACU</span><span class="abbrev-def">Post-anesthesia care unit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PAD</span><span class="abbrev-def">Peripheral artery disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PaO2</span><span class="abbrev-def">Partial pressure of oxygen</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PCA</span><span class="abbrev-def">Patient-controlled analgesia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PCO2</span><span class="abbrev-def">Partial pressure of carbon dioxide</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PCP</span><span class="abbrev-def">Primary care provider</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PD</span><span class="abbrev-def">Peritoneal dialysis</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PE</span><span class="abbrev-def">Pulmonary embolism / Physical exam</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PEA</span><span class="abbrev-def">Pulseless electrical activity</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">peds</span><span class="abbrev-def">Pediatrics</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PEG</span><span class="abbrev-def">Percutaneous endoscopic gastrostomy</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PERRLA</span><span class="abbrev-def">Pupils equal, round, reactive to light & accommodation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PFT</span><span class="abbrev-def">Pulmonary function test</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">pH</span><span class="abbrev-def">Hydrogen ion concentration</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PICC</span><span class="abbrev-def">Peripherally inserted central catheter</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PIV</span><span class="abbrev-def">Peripheral IV</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PLT</span><span class="abbrev-def">Platelets</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PMH</span><span class="abbrev-def">Past medical history</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PMI</span><span class="abbrev-def">Point of maximal impulse</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PNA</span><span class="abbrev-def">Pneumonia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PO</span><span class="abbrev-def">By mouth (per os)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">POD</span><span class="abbrev-def">Postoperative day</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">pos</span><span class="abbrev-def">Positive</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">post-op</span><span class="abbrev-def">After surgery</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PPD</span><span class="abbrev-def">Purified protein derivative (TB skin test)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PPE</span><span class="abbrev-def">Personal protective equipment</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PPI</span><span class="abbrev-def">Proton pump inhibitor</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PR</span><span class="abbrev-def">Per rectum</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">pre-op</span><span class="abbrev-def">Before surgery</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">p.r.n.</span><span class="abbrev-def">As needed (pro re nata)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PSA</span><span class="abbrev-def">Prostate-specific antigen</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PSH</span><span class="abbrev-def">Past surgical history</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PT</span><span class="abbrev-def">Physical therapy / Prothrombin time</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PTCA</span><span class="abbrev-def">Percutaneous transluminal coronary angioplasty</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PTT</span><span class="abbrev-def">Partial thromboplastin time</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PUD</span><span class="abbrev-def">Peptic ulcer disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PVC</span><span class="abbrev-def">Premature ventricular contraction</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PVD</span><span class="abbrev-def">Peripheral vascular disease</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">PWB</span><span class="abbrev-def">Partial weight bearing</span></div>
+            </div>
+        </section>
+
+        <!-- Section Q -->
+        <section id="section-q" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">Q</span>
+                <h2>Abbreviations starting with Q</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">q</span><span class="abbrev-def">Every (quaque)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">q2h</span><span class="abbrev-def">Every 2 hours</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">q4h</span><span class="abbrev-def">Every 4 hours</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">q6h</span><span class="abbrev-def">Every 6 hours</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">q8h</span><span class="abbrev-def">Every 8 hours</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">q12h</span><span class="abbrev-def">Every 12 hours</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">q.i.d.</span><span class="abbrev-def">Four times a day</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">qhs</span><span class="abbrev-def">Every night at bedtime</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">QS</span><span class="abbrev-def">Quantity sufficient</span></div>
+            </div>
+        </section>
+
+        <!-- Section R -->
+        <section id="section-r" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">R</span>
+                <h2>Abbreviations starting with R</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">R/O</span><span class="abbrev-def">Rule out</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RA</span><span class="abbrev-def">Room air / Rheumatoid arthritis</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RASS</span><span class="abbrev-def">Richmond Agitation-Sedation Scale</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RBC</span><span class="abbrev-def">Red blood cell</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RCA</span><span class="abbrev-def">Right coronary artery</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RLE</span><span class="abbrev-def">Right lower extremity</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RLL</span><span class="abbrev-def">Right lower lobe</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RLQ</span><span class="abbrev-def">Right lower quadrant</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RML</span><span class="abbrev-def">Right middle lobe</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RN</span><span class="abbrev-def">Registered nurse</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ROM</span><span class="abbrev-def">Range of motion</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ROSC</span><span class="abbrev-def">Return of spontaneous circulation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RR</span><span class="abbrev-def">Respiratory rate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RRT</span><span class="abbrev-def">Rapid response team</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RSV</span><span class="abbrev-def">Respiratory syncytial virus</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">rt</span><span class="abbrev-def">Right</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RUE</span><span class="abbrev-def">Right upper extremity</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RUL</span><span class="abbrev-def">Right upper lobe</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RUQ</span><span class="abbrev-def">Right upper quadrant</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">RVR</span><span class="abbrev-def">Rapid ventricular response</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Rx</span><span class="abbrev-def">Prescription / Treatment</span></div>
+            </div>
+        </section>
+
+        <!-- Section S -->
+        <section id="section-s" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">S</span>
+                <h2>Abbreviations starting with S</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">s̄</span><span class="abbrev-def">Without (sine)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">S1, S2</span><span class="abbrev-def">First, second heart sound</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SA</span><span class="abbrev-def">Sinoatrial</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SAH</span><span class="abbrev-def">Subarachnoid hemorrhage</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SBAR</span><span class="abbrev-def">Situation, Background, Assessment, Recommendation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SBP</span><span class="abbrev-def">Systolic blood pressure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SCD</span><span class="abbrev-def">Sequential compression device</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SDH</span><span class="abbrev-def">Subdural hematoma</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">sec</span><span class="abbrev-def">Second</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SIADH</span><span class="abbrev-def">Syndrome of inappropriate ADH</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SICU</span><span class="abbrev-def">Surgical intensive care unit</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SIRS</span><span class="abbrev-def">Systemic inflammatory response syndrome</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SL</span><span class="abbrev-def">Sublingual</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SLE</span><span class="abbrev-def">Systemic lupus erythematosus</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SNF</span><span class="abbrev-def">Skilled nursing facility</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SOB</span><span class="abbrev-def">Shortness of breath</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">soln</span><span class="abbrev-def">Solution</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SOP</span><span class="abbrev-def">Standard operating procedure</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SpO2</span><span class="abbrev-def">Oxygen saturation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">s/p</span><span class="abbrev-def">Status post (after)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SR</span><span class="abbrev-def">Sustained release</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SS</span><span class="abbrev-def">Sliding scale</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SSI</span><span class="abbrev-def">Sliding scale insulin / Surgical site infection</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SSRI</span><span class="abbrev-def">Selective serotonin reuptake inhibitor</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">stat</span><span class="abbrev-def">Immediately (statim)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">STEMI</span><span class="abbrev-def">ST elevation myocardial infarction</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">STI</span><span class="abbrev-def">Sexually transmitted infection</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">subcut</span><span class="abbrev-def">Subcutaneous</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">supp</span><span class="abbrev-def">Suppository</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">susp</span><span class="abbrev-def">Suspension</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">SVT</span><span class="abbrev-def">Supraventricular tachycardia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Sx</span><span class="abbrev-def">Symptoms</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">syr</span><span class="abbrev-def">Syrup</span></div>
+            </div>
+        </section>
+
+        <!-- Section T -->
+        <section id="section-t" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">T</span>
+                <h2>Abbreviations starting with T</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">T</span><span class="abbrev-def">Temperature</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">T&A</span><span class="abbrev-def">Tonsillectomy and adenoidectomy</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">T3</span><span class="abbrev-def">Triiodothyronine</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">T4</span><span class="abbrev-def">Thyroxine</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">tab</span><span class="abbrev-def">Tablet</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">tachy</span><span class="abbrev-def">Tachycardia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TB</span><span class="abbrev-def">Tuberculosis</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TBI</span><span class="abbrev-def">Traumatic brain injury</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TCDB</span><span class="abbrev-def">Turn, cough, deep breathe</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TD</span><span class="abbrev-def">Transdermal</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TED</span><span class="abbrev-def">Thromboembolic deterrent (stockings)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">temp</span><span class="abbrev-def">Temperature</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TENS</span><span class="abbrev-def">Transcutaneous electrical nerve stimulation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TF</span><span class="abbrev-def">Tube feeding</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">THR</span><span class="abbrev-def">Total hip replacement</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TIA</span><span class="abbrev-def">Transient ischemic attack</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">t.i.d.</span><span class="abbrev-def">Three times a day</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TKR</span><span class="abbrev-def">Total knee replacement</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TLC</span><span class="abbrev-def">Total lung capacity / Tender loving care</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TM</span><span class="abbrev-def">Tympanic membrane</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TNF</span><span class="abbrev-def">Tumor necrosis factor</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TPA/tPA</span><span class="abbrev-def">Tissue plasminogen activator</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TPN</span><span class="abbrev-def">Total parenteral nutrition</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TPR</span><span class="abbrev-def">Temperature, pulse, respirations</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TSH</span><span class="abbrev-def">Thyroid-stimulating hormone</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">TURP</span><span class="abbrev-def">Transurethral resection of prostate</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">Tx</span><span class="abbrev-def">Treatment / Transplant</span></div>
+            </div>
+        </section>
+
+        <!-- Section U -->
+        <section id="section-u" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">U</span>
+                <h2>Abbreviations starting with U</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">UA</span><span class="abbrev-def">Urinalysis / Unstable angina</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">UAP</span><span class="abbrev-def">Unlicensed assistive personnel</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">UC</span><span class="abbrev-def">Ulcerative colitis</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">UE</span><span class="abbrev-def">Upper extremity</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">UGI</span><span class="abbrev-def">Upper gastrointestinal</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">ung</span><span class="abbrev-def">Ointment (unguentum)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">UO</span><span class="abbrev-def">Urine output</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">URI</span><span class="abbrev-def">Upper respiratory infection</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">US</span><span class="abbrev-def">Ultrasound</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">UTI</span><span class="abbrev-def">Urinary tract infection</span></div>
+            </div>
+        </section>
+
+        <!-- Section V -->
+        <section id="section-v" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">V</span>
+                <h2>Abbreviations starting with V</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">V-fib</span><span class="abbrev-def">Ventricular fibrillation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">V-tach</span><span class="abbrev-def">Ventricular tachycardia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VAD</span><span class="abbrev-def">Ventricular assist device</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VAP</span><span class="abbrev-def">Ventilator-associated pneumonia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VDRL</span><span class="abbrev-def">Venereal disease research lab (syphilis test)</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">vent</span><span class="abbrev-def">Ventilator</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VF</span><span class="abbrev-def">Ventricular fibrillation</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">vol</span><span class="abbrev-def">Volume</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VRE</span><span class="abbrev-def">Vancomycin-resistant enterococcus</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VS</span><span class="abbrev-def">Vital signs</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VSD</span><span class="abbrev-def">Ventricular septal defect</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VSS</span><span class="abbrev-def">Vital signs stable</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VT</span><span class="abbrev-def">Ventricular tachycardia</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">VTE</span><span class="abbrev-def">Venous thromboembolism</span></div>
+            </div>
+        </section>
+
+        <!-- Section W -->
+        <section id="section-w" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">W</span>
+                <h2>Abbreviations starting with W</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">w/</span><span class="abbrev-def">With</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">w/c</span><span class="abbrev-def">Wheelchair</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">w/o</span><span class="abbrev-def">Without</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">WBAT</span><span class="abbrev-def">Weight bearing as tolerated</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">WBC</span><span class="abbrev-def">White blood cell</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">WDL</span><span class="abbrev-def">Within defined limits</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">wk</span><span class="abbrev-def">Week</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">WNL</span><span class="abbrev-def">Within normal limits</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">wt</span><span class="abbrev-def">Weight</span></div>
+            </div>
+        </section>
+
+        <!-- Section X, Y, Z -->
+        <section id="section-x" class="abbrev-section">
+            <div class="abbrev-section-header">
+                <span class="letter">X-Z</span>
+                <h2>Abbreviations starting with X, Y, Z</h2>
+            </div>
+            <div class="abbrev-grid">
+                <div class="abbrev-item"><span class="abbrev-term">XR</span><span class="abbrev-def">Extended release</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">y/o</span><span class="abbrev-def">Years old</span></div>
+                <div class="abbrev-item"><span class="abbrev-term">yr</span><span class="abbrev-def">Year</span></div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <div class="tool-cta">
+            <h3>More Quick Reference Tools</h3>
+            <p>Check out our other quick reference tools designed for fast lookup during studying or clinicals.</p>
+            <div class="cta-buttons">
+                <a href="documentation-phrases.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-file-alt"></i>
+                    Documentation Phrases
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Search functionality -->
+    <script>
+        const searchInput = document.getElementById('abbrev-search');
+        const searchClear = document.getElementById('search-clear');
+        const noResults = document.getElementById('no-results');
+        const sections = document.querySelectorAll('.abbrev-section');
+        const doNotUseSection = document.querySelector('.do-not-use');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+
+            // Show/hide clear button
+            searchClear.classList.toggle('visible', query.length > 0);
+
+            if (query.length === 0) {
+                // Reset - show everything
+                sections.forEach(section => {
+                    section.classList.remove('hidden');
+                    section.querySelectorAll('.abbrev-item').forEach(item => {
+                        item.classList.remove('hidden');
+                    });
+                });
+                doNotUseSection.classList.remove('hidden');
+                noResults.classList.remove('visible');
+                return;
+            }
+
+            let hasResults = false;
+
+            // Hide do not use section when searching (unless searching for specific terms)
+            const doNotUseTerms = ['do not', 'don\'t', 'danger', 'banned', 'joint commission'];
+            const showDoNotUse = doNotUseTerms.some(term => query.includes(term));
+            doNotUseSection.classList.toggle('hidden', !showDoNotUse);
+            if (showDoNotUse) hasResults = true;
+
+            // Filter abbreviation sections
+            sections.forEach(section => {
+                const items = section.querySelectorAll('.abbrev-item');
+                let sectionHasMatch = false;
+
+                items.forEach(item => {
+                    const term = item.querySelector('.abbrev-term').textContent.toLowerCase();
+                    const def = item.querySelector('.abbrev-def').textContent.toLowerCase();
+                    const matches = term.includes(query) || def.includes(query);
+
+                    item.classList.toggle('hidden', !matches);
+                    if (matches) {
+                        sectionHasMatch = true;
+                        hasResults = true;
+                    }
+                });
+
+                section.classList.toggle('hidden', !sectionHasMatch);
+            });
+
+            noResults.classList.toggle('visible', !hasResults);
+        });
+
+        searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+        });
+    </script>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

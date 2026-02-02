@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What to Put in Your Clinical Bag | The Nursing Collective</title>
+    <meta name="description" content="The complete clinical bag checklist: what you need to buy, what your school provides, and the nice-to-haves that make clinical days easier.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Clinical Confidence theme - orange/amber
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .guide-header {
+            background: linear-gradient(135deg, #ea580c 0%, #fb923c 50%, #f97316 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #ea580c, #fb923c);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #ea580c;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: #ea580c;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #ea580c;
+            border-radius: 50%;
+        }
+
+        /* Category Box */
+        .category-box {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 2px solid;
+        }
+
+        .category-box.must-have {
+            border-color: #10b981;
+        }
+
+        .category-box.school-provides {
+            border-color: #3b82f6;
+        }
+
+        .category-box.nice-to-have {
+            border-color: #f59e0b;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 16px;
+        }
+
+        .category-box.must-have .category-header {
+            color: #059669;
+        }
+
+        .category-box.school-provides .category-header {
+            color: #2563eb;
+        }
+
+        .category-box.nice-to-have .category-header {
+            color: #d97706;
+        }
+
+        .category-box ul {
+            margin: 0;
+            columns: 2;
+            column-gap: 24px;
+        }
+
+        .category-box ul li {
+            break-inside: avoid;
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        /* Item description styling */
+        .item-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: block;
+            margin-top: 2px;
+        }
+
+        /* Single column for longer items */
+        .category-box.single-col ul {
+            columns: 1;
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #ea580c 0%, #fb923c 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: #ea580c;
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .category-box ul {
+                columns: 1;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-stethoscope"></i> Clinical Confidence
+            </span>
+            <h1 class="guide-title">What to Put in Your Clinical Bag</h1>
+            <p class="guide-subtitle">The complete checklist: essentials you need to buy, what school provides, and the extras that make life easier.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li><strong>Must-haves:</strong> Stethoscope, penlight, black pens, watch with second hand, badge, pocket reference.</li>
+                <li><strong>School provides (usually):</strong> BP cuffs, practice supplies, PPE, clinical paperwork.</li>
+                <li><strong>Nice-to-haves:</strong> Extra scrub top, compression socks, snacks, lunch, portable charger.</li>
+                <li>Pack your bag the night before and keep it ready to grab.</li>
+                <li>Less is more—hospitals may have limited storage space, especially for jackets and bulky items.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">The Essentials (You Need to Buy)</h2>
+            </div>
+
+            <p>These are items you'll use constantly and should own yourself. Most of these will serve you through nursing school and into your career.</p>
+
+            <div class="category-box must-have single-col">
+                <div class="category-header">
+                    <i class="fas fa-check-circle"></i>
+                    Must-Have Items
+                </div>
+                <ul>
+                    <li><strong>Stethoscope</strong>
+                        <span class="item-desc">A Littmann Classic III is the go-to, but any quality stethoscope works. Don't go too cheap—you need to actually hear things.</span>
+                    </li>
+                    <li><strong>Penlight</strong>
+                        <span class="item-desc">For pupil checks and looking in mouths/wounds. A cheap one from Amazon works fine.</span>
+                    </li>
+                    <li><strong>Black pens (several)</strong>
+                        <span class="item-desc">Pens disappear. Bring at least 3. Black ink only for documentation.</span>
+                    </li>
+                    <li><strong>Watch with second hand</strong>
+                        <span class="item-desc">For counting respirations and pulses. Can be analog or digital, just needs seconds visible. Nurses' fob watches are great if you can't wear wristwatches.</span>
+                    </li>
+                    <li><strong>ID badge and badge holder</strong>
+                        <span class="item-desc">Usually provided by school, but you may need a retractable badge reel.</span>
+                    </li>
+                    <li><strong>Pocket reference or app</strong>
+                        <span class="item-desc">Drug guide, lab values, assessment reference. Can be a pocket book or an app on your phone (check if phones are allowed at your site). Epocrates is a popular free app for drug lookups.</span>
+                    </li>
+                    <li><strong>Small notepad</strong>
+                        <span class="item-desc">For jotting patient info, vitals, reminders. Index cards work too.</span>
+                    </li>
+                    <li><strong>Permanent marker (Sharpie)</strong>
+                        <span class="item-desc">For labeling IV tubing, dating dressings, etc.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Pro Tip
+                </div>
+                <p>Write your name on everything, especially your stethoscope. Use a stethoscope ID tag or permanent marker on the tubing. Stethoscopes walk away from clinical sites constantly.</p>
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">What Your School Usually Provides</h2>
+            </div>
+
+            <p>Most nursing programs provide supplies for skills lab and practice. These typically stay at school or in lab—you don't need to buy your own.</p>
+
+            <div class="category-box school-provides single-col">
+                <div class="category-header">
+                    <i class="fas fa-university"></i>
+                    School-Provided (Usually)
+                </div>
+                <ul>
+                    <li><strong>Blood pressure cuffs</strong>
+                        <span class="item-desc">Manual BP cuffs for practice. Some schools issue personal ones; check with your program.</span>
+                    </li>
+                    <li><strong>Scrub top with school logo</strong>
+                        <span class="item-desc">Required uniform top. You'll likely need to buy pants separately.</span>
+                    </li>
+                    <li><strong>Practice medications (fake meds)</strong>
+                        <span class="item-desc">For medication administration practice in lab.</span>
+                    </li>
+                    <li><strong>IV bags, tubing, and supplies</strong>
+                        <span class="item-desc">For IV skills practice. Provided in lab.</span>
+                    </li>
+                    <li><strong>Needles and syringes</strong>
+                        <span class="item-desc">For injection practice. Never take these from lab.</span>
+                    </li>
+                    <li><strong>Silicone practice pads</strong>
+                        <span class="item-desc">For injection and IV practice at home or in open lab.</span>
+                    </li>
+                    <li><strong>Foley catheter kits</strong>
+                        <span class="item-desc">For catheterization practice.</span>
+                    </li>
+                    <li><strong>PPE (gloves, masks, gowns)</strong>
+                        <span class="item-desc">Provided at clinical sites. You shouldn't need to buy your own.</span>
+                    </li>
+                    <li><strong>Clinical paperwork and forms</strong>
+                        <span class="item-desc">Assessment sheets, care plan templates, clinical logs.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Check Your Program
+                </div>
+                <p>Every program is different. Some require you to buy your own BP cuff and stethoscope kit. Others provide everything. Check your syllabus or ask your clinical instructor before buying duplicates of what's provided.</p>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">Nice-to-Have Extras</h2>
+            </div>
+
+            <p>These aren't required, but they make clinical life easier. Add them as you figure out what you actually use.</p>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Don't Bring These
+                </div>
+                <p>You don't need to bring bandage scissors, hemostats, or other medical supplies—hospitals always have these available. Same with bandages, tape, and other wound care supplies. The facility will provide what you need for patient care.</p>
+            </div>
+
+            <div class="category-box nice-to-have single-col">
+                <div class="category-header">
+                    <i class="fas fa-star"></i>
+                    Nice-to-Have Items
+                </div>
+                <ul>
+                    <li><strong>Extra scrub top</strong>
+                        <span class="item-desc">In case something gets on your uniform. Keep one in your car.</span>
+                    </li>
+                    <li><strong>Compression socks</strong>
+                        <span class="item-desc">Your feet and legs will thank you. Seriously consider these.</span>
+                    </li>
+                    <li><strong>Lunch</strong>
+                        <span class="item-desc">If you're not planning to go out. Pack something easy to eat quickly during your break.</span>
+                    </li>
+                    <li><strong>Snacks</strong>
+                        <span class="item-desc">Granola bars, crackers, anything you can eat quickly. You will get hungry.</span>
+                    </li>
+                    <li><strong>Water bottle</strong>
+                        <span class="item-desc">Stay hydrated. Get one you can clip to your bag.</span>
+                    </li>
+                    <li><strong>Portable phone charger</strong>
+                        <span class="item-desc">Long clinical days drain batteries. Have backup power.</span>
+                    </li>
+                    <li><strong>Hair ties / bobby pins</strong>
+                        <span class="item-desc">Hair must be up and secured. Bring extras.</span>
+                    </li>
+                    <li><strong>Breath mints / gum</strong>
+                        <span class="item-desc">You'll be close to patients. Fresh breath matters.</span>
+                    </li>
+                    <li><strong>Deodorant</strong>
+                        <span class="item-desc">Clinical days are long and physical. Keep some in your bag.</span>
+                    </li>
+                    <li><strong>Small first aid items</strong>
+                        <span class="item-desc">Band-aids, ibuprofen, antacids for yourself. Just in case.</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    From Someone Who's Been There
+                </div>
+                <p>I didn't bring snacks my first clinical and nearly passed out by 11am. Now I always have a granola bar in my pocket. Also, compression socks changed my life—my feet hurt so much less at the end of the day.</p>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">What NOT to Bring</h2>
+            </div>
+
+            <p>Some things seem helpful but aren't worth the hassle or are actively problematic:</p>
+
+            <ul>
+                <li><strong>Expensive jewelry:</strong> Leave it at home. You shouldn't wear it anyway, and clinical bags get set down in random places.</li>
+                <li><strong>Your entire drug guide:</strong> The full textbook is too heavy. Bring a pocket version or use an app.</li>
+                <li><strong>Too many "just in case" items:</strong> You're not preparing for the apocalypse. If you haven't used something in 3 clinical days, take it out.</li>
+                <li><strong>Anything with strong scents:</strong> No perfume, cologne, or heavily scented lotions. Patients and staff can be sensitive.</li>
+                <li><strong>Valuables:</strong> Your bag may sit in a break room or locker. Don't bring anything you'd be devastated to lose.</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    The Pocket Test
+                </div>
+                <p>Most of what you actually need should fit in your scrub pockets: stethoscope around your neck, penlight, pens, notepad, phone. Your bag is for backup supplies and personal items—not everything you might ever need.</p>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">Choosing the Right Bag</h2>
+            </div>
+
+            <p>Your clinical bag doesn't need to be fancy, but it should be practical:</p>
+
+            <ul>
+                <li><strong>Size:</strong> Big enough for your supplies, small enough to fit in a locker. A medium backpack or large tote works well.</li>
+                <li><strong>Washable:</strong> Clinical settings are not clean. You want something you can wipe down or throw in the wash.</li>
+                <li><strong>Pockets/organization:</strong> Multiple compartments help you find things quickly instead of digging.</li>
+                <li><strong>Comfortable straps:</strong> If it's a backpack, padded straps matter on long days.</li>
+                <li><strong>Neutral color:</strong> Black, navy, or gray. Easier to keep looking clean than white or light colors.</li>
+            </ul>
+
+            <p>You don't need a special "nursing bag." A regular backpack works fine. Some students use small rolling bags if they have a lot to carry, but most facilities don't have much space for large bags.</p>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Storage Space Reality
+                </div>
+                <p>Many hospitals have very limited space for student belongings. Lockers might be small or shared. If you live somewhere cold, think carefully about your jacket—there may not be a good place to store a bulky winter coat. Pack accordingly and leave what you can in your car.</p>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">Keeping Your Bag Ready</h2>
+            </div>
+
+            <p>The key to a stress-free clinical morning is having your bag ready to grab. Here's how to maintain it:</p>
+
+            <ul>
+                <li><strong>Restock after every clinical:</strong> Check your bag that evening. Replace anything you used or ran out of.</li>
+                <li><strong>Clean it regularly:</strong> Wipe down the outside weekly. Wash it monthly or whenever it looks dirty.</li>
+                <li><strong>Check expiration dates:</strong> If you keep medications (for yourself) or snacks, rotate them out.</li>
+                <li><strong>Keep it in the same place:</strong> By the door, in your car, wherever—but always the same spot so you grab it automatically.</li>
+                <li><strong>Do a "dry run" before your first clinical:</strong> Pack everything, wear your full uniform, make sure nothing is missing.</li>
+            </ul>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    Night-Before Routine
+                </div>
+                <p>Every night before clinical, I do a quick check: stethoscope, badge, pens, phone charger, snacks, water. Takes 30 seconds. Beats the panic of realizing you forgot something at 5am.</p>
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">Quick Reference Checklist</h2>
+            </div>
+
+            <p>Print this out or screenshot it for a quick pre-clinical check:</p>
+
+            <div class="category-box must-have">
+                <div class="category-header">
+                    <i class="fas fa-clipboard-check"></i>
+                    Pre-Clinical Bag Check
+                </div>
+                <ul>
+                    <li>Stethoscope</li>
+                    <li>Penlight</li>
+                    <li>Black pens (3+)</li>
+                    <li>Watch with second hand</li>
+                    <li>ID badge</li>
+                    <li>Pocket reference/phone</li>
+                    <li>Notepad or index cards</li>
+                    <li>Sharpie</li>
+                    <li>Snacks</li>
+                    <li>Water bottle</li>
+                    <li>Clinical paperwork</li>
+                    <li>Phone charger</li>
+                </ul>
+            </div>
+
+            <p>Everything else is bonus. If you have these items, you're ready for clinical.</p>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>Bag Packed. Now What?</h3>
+            <p>Check out our guide on preparing the night before clinicals, or review common clinical skills you'll actually do.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

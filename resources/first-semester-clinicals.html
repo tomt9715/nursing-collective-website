@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What to Actually Expect Your First Semester of Clinicals | The Nursing Collective</title>
+    <meta name="description" content="Your first clinical rotation can be anything from basic care to hands-on skills. Here's what to realistically expect—because every program is different.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Clinical Confidence theme - teal/seafoam
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header - Clinical confidence theme */
+        .guide-header {
+            background: linear-gradient(135deg, #0d9488 0%, #5eead4 50%, #2dd4bf 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #0d9488, #2dd4bf);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #0d9488;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: #0d9488;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #0d9488;
+            border-radius: 50%;
+        }
+
+        /* Comparison Box */
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .comparison-side {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .comparison-side.minimal {
+            border: 2px solid #f59e0b;
+        }
+
+        .comparison-side.intensive {
+            border: 2px solid #0d9488;
+        }
+
+        .comparison-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .comparison-side.minimal .comparison-label {
+            color: #b45309;
+        }
+
+        .comparison-side.intensive .comparison-label {
+            color: #0d9488;
+        }
+
+        .comparison-side ul {
+            margin: 0;
+        }
+
+        .comparison-side ul li {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .comparison-side ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: #0d9488;
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-stethoscope"></i> Clinical Confidence
+            </span>
+            <h1 class="guide-title">What to Actually Expect Your First Semester of Clinicals</h1>
+            <p class="guide-subtitle">The range of experiences is huge. Here's what you might encounter—and why it's all normal.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li>Clinical experiences vary <strong>wildly</strong> between programs, facilities, and even individual days.</li>
+                <li>Some students do basic observation. Others are doing meds, trachs, and wound care by week two.</li>
+                <li>Both extremes are normal. Neither means you're behind or ahead.</li>
+                <li>The goal is learning the environment, not becoming an expert.</li>
+                <li>Feeling nervous, lost, or overwhelmed is part of the process—not a sign you don't belong.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">There Is No "Normal" First Clinical Experience</h2>
+            </div>
+
+            <p>Here's the thing nobody tells you: your first clinical semester might look completely different from your classmate's, even if you're in the same program.</p>
+
+            <p>Some students spend their first few weeks mostly observing—following nurses around, taking vital signs, maybe helping with a bed bath. Others are thrown into the deep end with medication administration, injections, tracheostomy care, wound dressing changes, and more.</p>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    The Reality
+                </div>
+                <p>I personally did bathing, meds, injections, trach care, suctioning, G-tubes, wound care, and isolation precautions—all in my first semester at a nursing home. A friend at a different hospital site didn't touch meds until her third semester. We both became nurses.</p>
+            </div>
+
+            <p>The variation depends on your clinical site, your instructor, the patients available that day, the facility's policies about student involvement, and sometimes just luck. None of this reflects on you or your future abilities.</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">The Spectrum of First-Semester Experiences</h2>
+            </div>
+
+            <p>Here's what the range actually looks like:</p>
+
+            <div class="comparison-box">
+                <div class="comparison-side minimal">
+                    <div class="comparison-label">
+                        <i class="fas fa-eye"></i>
+                        More Observation-Focused
+                    </div>
+                    <ul>
+                        <li>Shadowing nurses</li>
+                        <li>Taking vital signs</li>
+                        <li>Assisting with ADLs (bathing, feeding)</li>
+                        <li>Basic patient communication</li>
+                        <li>Watching procedures</li>
+                        <li>Documentation review</li>
+                    </ul>
+                </div>
+                <div class="comparison-side intensive">
+                    <div class="comparison-label">
+                        <i class="fas fa-hands"></i>
+                        More Hands-On
+                    </div>
+                    <ul>
+                        <li>Medication administration</li>
+                        <li>Injections (IM, subQ)</li>
+                        <li>Wound care and dressing changes</li>
+                        <li>Tracheostomy care and suctioning</li>
+                        <li>G-tube feedings</li>
+                        <li>Foley catheter care</li>
+                        <li>Full isolation precautions</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>If you're on the observation end, you might feel like you're not learning enough. If you're on the hands-on end, you might feel thrown in before you're ready. Both feelings are valid, and both experiences will prepare you—just differently.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">What You'll Probably Do (Almost Everyone)</h2>
+            </div>
+
+            <p>Regardless of your site or instructor, certain things are nearly universal in first semester:</p>
+
+            <ul>
+                <li><strong>Vital signs:</strong> You'll take a lot of blood pressures, temperatures, pulses, and respirations. Get comfortable with this quickly.</li>
+                <li><strong>Patient communication:</strong> Introducing yourself, explaining what you're doing, making small talk while you work.</li>
+                <li><strong>Basic hygiene care:</strong> Helping with bed baths, oral care, toileting, changing linens.</li>
+                <li><strong>Documentation:</strong> Learning the charting system, even if you're just reading at first.</li>
+                <li><strong>Safety checks:</strong> Bed rails, call lights, fall precautions, hand hygiene.</li>
+                <li><strong>Following your instructor:</strong> A lot of "come watch this" and "observe how I do this."</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Pro Tip
+                </div>
+                <p>Even if you're mostly observing, you're still learning. Watch how nurses organize their time, communicate with patients, and handle unexpected situations. This "soft" learning matters more than you think.</p>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">Why Nursing Homes Often Mean More Hands-On</h2>
+            </div>
+
+            <p>If your first clinical is at a skilled nursing facility (nursing home) rather than a hospital, you might find yourself doing more hands-on care earlier. Here's why:</p>
+
+            <ul>
+                <li><strong>Patients are more stable:</strong> Long-term residents have predictable needs, which means less acute decision-making and more opportunity for students to practice skills.</li>
+                <li><strong>Lower nurse-to-patient ratios aren't always possible:</strong> CNAs do a lot of the direct care, and students often step into that role.</li>
+                <li><strong>More repetition:</strong> You might do the same skills multiple times in one day, which builds confidence fast.</li>
+                <li><strong>Trach and G-tube patients:</strong> Many long-term care facilities have residents with trachs or feeding tubes who need routine care—great learning opportunities.</li>
+            </ul>
+
+            <p>Hospital clinicals might feel more "exciting," but nursing home clinicals often build stronger foundational skills. Neither is better—they're just different.</p>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">What Nobody Warns You About</h2>
+            </div>
+
+            <p>Some things about clinicals will surprise you. Here's the honest list:</p>
+
+            <ul>
+                <li><strong>You'll stand around sometimes.</strong> Waiting for your instructor, waiting for your patient to be ready, waiting for the right moment. This is normal.</li>
+                <li><strong>Some nurses won't be friendly.</strong> Not everyone loves having students. Don't take it personally.</li>
+                <li><strong>You might not get "your" patient.</strong> Sometimes assignments change last minute, or your patient gets discharged or transferred.</li>
+                <li><strong>It's physically exhausting.</strong> You'll be on your feet for hours. Your back might hurt. Wear good shoes.</li>
+                <li><strong>The smells are real.</strong> Bodies are bodies. You'll adapt faster than you think.</li>
+                <li><strong>You'll forget things you practiced.</strong> Skills you nailed in lab might feel impossible with a real patient. This is normal.</li>
+            </ul>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    From Someone Who's Been There
+                </div>
+                <p>My first clinical, I couldn't figure out how to lower the bed rail. I'd practiced it dozens of times in lab. With a real patient watching me, I froze. The nurse showed me (again), I felt embarrassed, and by the end of the day I'd done it 15 more times without thinking. That's how it goes.</p>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">How to Make the Most of It</h2>
+            </div>
+
+            <p>Whatever your clinical experience looks like, here's how to maximize your learning:</p>
+
+            <ul>
+                <li><strong>Volunteer for everything.</strong> When your instructor asks "who wants to try this?"—raise your hand. You're there to learn, not to stay comfortable.</li>
+                <li><strong>Ask questions.</strong> "Why are we doing it this way?" "What would happen if...?" "Can I watch you do that?" Curious students learn more.</li>
+                <li><strong>Talk to patients.</strong> Even if you're "just" taking vitals, ask them questions. How are they feeling? Do they need anything? This is nursing.</li>
+                <li><strong>Watch the nurses.</strong> How do they organize their med pass? Handle a difficult family member? Prioritize tasks? This is free mentorship.</li>
+                <li><strong>Reflect afterward.</strong> What went well? What would you do differently? What do you want to learn more about?</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    The Golden Rule
+                </div>
+                <p>Show up on time, be eager to help, don't complain, and thank the staff. Your attitude matters more than your skill level right now. Nurses remember students who are genuinely trying.</p>
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">Managing Your Nerves</h2>
+            </div>
+
+            <p>Almost everyone is nervous before their first clinical. That anxiety is normal and even useful—it means you care about doing well.</p>
+
+            <p><strong>What actually helps:</strong></p>
+            <ul>
+                <li><strong>Prepare what you can.</strong> Review your skills, know your patient (if you have access), pack your bag the night before.</li>
+                <li><strong>Arrive early.</strong> Rushing makes anxiety worse. Give yourself buffer time.</li>
+                <li><strong>Accept that you'll make mistakes.</strong> Not catastrophic ones, but small fumbles. Everyone does. It's expected.</li>
+                <li><strong>Focus on one thing at a time.</strong> Don't think about the whole shift—just think about the next task.</li>
+                <li><strong>Breathe.</strong> Literally. When you feel overwhelmed, take a breath. It sounds simple because it works.</li>
+            </ul>
+
+            <p>The nerves usually fade by the second or third clinical. You'll start to feel like you know what you're doing—or at least like you can figure it out.</p>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">8</span>
+                <h2 class="section-title">What Success Looks Like First Semester</h2>
+            </div>
+
+            <p>First semester isn't about being good at nursing. It's about starting to become a nurse. Here's what success actually looks like:</p>
+
+            <ul>
+                <li><strong>You show up consistently</strong> and on time, prepared as best you can be.</li>
+                <li><strong>You try things</strong> even when you're nervous.</li>
+                <li><strong>You ask for help</strong> when you need it (which is often).</li>
+                <li><strong>You're kind to patients</strong>—even when tasks feel awkward or embarrassing.</li>
+                <li><strong>You start to feel slightly more comfortable</strong> by the end than you did at the beginning.</li>
+            </ul>
+
+            <p>That's it. You don't need to be amazing. You don't need to impress anyone. You just need to keep showing up, keep learning, and keep growing.</p>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    Remember This
+                </div>
+                <p>Every nurse you admire was once a terrified first-semester student who didn't know how to lower a bed rail. You're exactly where you're supposed to be.</p>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>Want to Feel More Prepared?</h3>
+            <p>Check out our other clinical confidence guides for practical tips on preparing for clinicals, common skills, and what to do when you don't know what to do.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

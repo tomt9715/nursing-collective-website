@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Semester Medications to Know | The Nursing Collective</title>
+    <meta name="description" content="Essential medications for first-semester nursing students. Organized by drug class with uses, key nursing considerations, and what to watch for.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           QUICK REFERENCE TOOL STYLES
+           ============================================ */
+
+        .reference-tool {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .tool-header {
+            background: linear-gradient(135deg, #2E86AB 0%, #5ba3c4 50%, #A23B72 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .tool-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .tool-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Main Content */
+        .tool-content {
+            max-width: 1000px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Jump Navigation */
+        .quick-jump {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-jump-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quick-jump-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-jump-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--background-light);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-jump-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Tip Box */
+        .tip-box {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border: 1px solid #10b981;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        [data-theme="dark"] .tip-box {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .tip-box i {
+            color: #10b981;
+            font-size: 1.3rem;
+            margin-top: 2px;
+        }
+
+        .tip-box-content {
+            flex: 1;
+        }
+
+        .tip-box-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: #047857;
+            margin-bottom: 4px;
+        }
+
+        [data-theme="dark"] .tip-box-title {
+            color: #34d399;
+        }
+
+        .tip-box p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Drug Class Section */
+        .drug-class {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .drug-class-header {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .drug-class-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .drug-class-info h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .drug-class-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Color coding for drug classes */
+        .drug-class.cardiac .drug-class-icon { background: linear-gradient(135deg, #ef4444, #f87171); }
+        .drug-class.diuretics .drug-class-icon { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+        .drug-class.pain .drug-class-icon { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .drug-class.gi .drug-class-icon { background: linear-gradient(135deg, #10b981, #34d399); }
+        .drug-class.antibiotics .drug-class-icon { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+        .drug-class.respiratory .drug-class-icon { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+        .drug-class.anticoag .drug-class-icon { background: linear-gradient(135deg, #ec4899, #f472b6); }
+        .drug-class.diabetes .drug-class-icon { background: linear-gradient(135deg, #84cc16, #a3e635); }
+
+        /* Drug Cards Grid */
+        .drug-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            padding: 20px 24px;
+        }
+
+        .drug-card {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid var(--border-color);
+            transition: all 0.2s;
+        }
+
+        .drug-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-md);
+        }
+
+        .drug-name {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .drug-generic {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 12px;
+        }
+
+        .drug-use {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .drug-use i {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+
+        .drug-use span {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            line-height: 1.4;
+        }
+
+        .drug-considerations {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .drug-considerations li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .drug-considerations li:last-child {
+            margin-bottom: 0;
+        }
+
+        .drug-considerations li i {
+            font-size: 0.7rem;
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .drug-considerations li.warning {
+            color: #dc2626;
+        }
+
+        .drug-considerations li.warning i {
+            color: #dc2626;
+        }
+
+        [data-theme="dark"] .drug-considerations li.warning {
+            color: #fca5a5;
+        }
+
+        [data-theme="dark"] .drug-considerations li.warning i {
+            color: #fca5a5;
+        }
+
+        .drug-considerations li.tip {
+            color: #047857;
+        }
+
+        .drug-considerations li.tip i {
+            color: #10b981;
+        }
+
+        [data-theme="dark"] .drug-considerations li.tip {
+            color: #34d399;
+        }
+
+        /* Bottom CTA */
+        .tool-cta {
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .tool-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tool-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header {
+                padding: 40px 20px 60px;
+            }
+
+            .tool-title {
+                font-size: 1.9rem;
+            }
+
+            .drug-grid {
+                grid-template-columns: 1fr;
+                padding: 16px;
+            }
+
+            .drug-class-header {
+                padding: 16px;
+            }
+
+            .tool-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-title {
+                font-size: 1.6rem;
+            }
+
+            .tip-box {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="reference-tool">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="tool-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="tool-category">
+                <i class="fas fa-table"></i> Quick Reference
+            </span>
+            <h1 class="tool-title">First Semester Medications</h1>
+            <p class="tool-subtitle">The essential drugs you'll encounter early in nursing school. Organized by class with key nursing considerations.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="tool-content">
+
+        <!-- Quick Jump -->
+        <nav class="quick-jump" aria-label="Jump to section">
+            <div class="quick-jump-title">Jump to Drug Class</div>
+            <div class="quick-jump-links">
+                <a href="#cardiac"><i class="fas fa-heartbeat"></i> Cardiac</a>
+                <a href="#diuretics"><i class="fas fa-tint"></i> Diuretics</a>
+                <a href="#pain"><i class="fas fa-pills"></i> Pain</a>
+                <a href="#gi"><i class="fas fa-stomach"></i> GI</a>
+                <a href="#antibiotics"><i class="fas fa-bacteria"></i> Antibiotics</a>
+                <a href="#respiratory"><i class="fas fa-lungs"></i> Respiratory</a>
+                <a href="#anticoag"><i class="fas fa-bandage"></i> Anticoagulants</a>
+                <a href="#diabetes"><i class="fas fa-syringe"></i> Diabetes</a>
+            </div>
+        </nav>
+
+        <!-- Study Tip -->
+        <div class="tip-box">
+            <i class="fas fa-lightbulb"></i>
+            <div class="tip-box-content">
+                <div class="tip-box-title">How to Study Medications</div>
+                <p>Focus on drug <strong>classes</strong>, not individual drugs. Once you understand how beta-blockers work, you can apply that knowledge to any "-olol" drug. Look for patterns: suffix clues (like -pril, -olol, -statin) often tell you the drug class.</p>
+            </div>
+        </div>
+
+        <!-- Cardiac Medications -->
+        <section id="cardiac" class="drug-class cardiac">
+            <div class="drug-class-header">
+                <div class="drug-class-icon">
+                    <i class="fas fa-heartbeat"></i>
+                </div>
+                <div class="drug-class-info">
+                    <h2>Cardiac Medications</h2>
+                    <p>Blood pressure control, heart rate management, and cardiac protection</p>
+                </div>
+            </div>
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <div class="drug-name">Metoprolol (Lopressor)</div>
+                    <div class="drug-generic">Beta-blocker (-olol)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>HTN, angina, post-MI, heart failure, arrhythmias</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Hold if HR <60 or SBP <100</li>
+                        <li><i class="fas fa-circle"></i> Monitor for bradycardia, fatigue, dizziness</li>
+                        <li><i class="fas fa-circle"></i> Don't stop abruptly - taper off</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Masks hypoglycemia symptoms in diabetics</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Lisinopril (Zestril)</div>
+                    <div class="drug-generic">ACE Inhibitor (-pril)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>HTN, heart failure, diabetic nephropathy</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Watch for angioedema (swelling of lips/tongue)</li>
+                        <li><i class="fas fa-circle"></i> Dry cough is common side effect</li>
+                        <li><i class="fas fa-circle"></i> Monitor potassium (can cause hyperkalemia)</li>
+                        <li><i class="fas fa-circle"></i> Contraindicated in pregnancy</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Losartan (Cozaar)</div>
+                    <div class="drug-generic">ARB (-sartan)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>HTN, heart failure (when ACE-I not tolerated)</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> Similar to ACE-I but NO dry cough</li>
+                        <li><i class="fas fa-circle"></i> Still monitor potassium</li>
+                        <li><i class="fas fa-circle"></i> Contraindicated in pregnancy</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Good alternative if ACE-I cough occurs</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Amlodipine (Norvasc)</div>
+                    <div class="drug-generic">Calcium Channel Blocker (-dipine)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>HTN, angina</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> Peripheral edema (ankle swelling) common</li>
+                        <li><i class="fas fa-circle"></i> Can cause headache, flushing</li>
+                        <li><i class="fas fa-circle"></i> Avoid grapefruit juice</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Works well with other BP meds</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Digoxin (Lanoxin)</div>
+                    <div class="drug-generic">Cardiac Glycoside</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Heart failure, atrial fibrillation (rate control)</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Hold if HR <60 - ALWAYS check apical pulse</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Narrow therapeutic range (0.5-2.0 ng/mL)</li>
+                        <li><i class="fas fa-circle"></i> Toxicity signs: N/V, visual changes (yellow-green halos)</li>
+                        <li><i class="fas fa-circle"></i> Low K+ increases toxicity risk</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diuretics -->
+        <section id="diuretics" class="drug-class diuretics">
+            <div class="drug-class-header">
+                <div class="drug-class-icon">
+                    <i class="fas fa-tint"></i>
+                </div>
+                <div class="drug-class-info">
+                    <h2>Diuretics</h2>
+                    <p>Fluid management for HTN, heart failure, and edema</p>
+                </div>
+            </div>
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <div class="drug-name">Furosemide (Lasix)</div>
+                    <div class="drug-generic">Loop Diuretic</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Edema, heart failure, HTN, acute pulmonary edema</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Causes potassium loss - monitor K+</li>
+                        <li><i class="fas fa-circle"></i> Monitor I&O, daily weights</li>
+                        <li><i class="fas fa-circle"></i> Can cause ototoxicity (especially IV push too fast)</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Give in AM to avoid nighttime urination</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Hydrochlorothiazide (HCTZ)</div>
+                    <div class="drug-generic">Thiazide Diuretic</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>HTN (often first-line), mild edema</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Also causes potassium loss</li>
+                        <li><i class="fas fa-circle"></i> Increases sun sensitivity</li>
+                        <li><i class="fas fa-circle"></i> Can increase blood glucose</li>
+                        <li><i class="fas fa-circle"></i> Take in morning</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Spironolactone (Aldactone)</div>
+                    <div class="drug-generic">Potassium-Sparing Diuretic</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Heart failure, HTN, ascites, hyperaldosteronism</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> RETAINS potassium - watch for hyperkalemia</li>
+                        <li><i class="fas fa-circle"></i> Don't give with K+ supplements or ACE-I without monitoring</li>
+                        <li><i class="fas fa-circle"></i> Can cause gynecomastia in men</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Often paired with loop diuretics to balance K+</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pain Medications -->
+        <section id="pain" class="drug-class pain">
+            <div class="drug-class-header">
+                <div class="drug-class-icon">
+                    <i class="fas fa-pills"></i>
+                </div>
+                <div class="drug-class-info">
+                    <h2>Pain Medications</h2>
+                    <p>Analgesics from mild OTC options to controlled substances</p>
+                </div>
+            </div>
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <div class="drug-name">Acetaminophen (Tylenol)</div>
+                    <div class="drug-generic">Non-opioid Analgesic/Antipyretic</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Mild-moderate pain, fever</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Max 3-4g/day in healthy adults (less with liver disease)</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Hidden in many combo products - check for duplicates</li>
+                        <li><i class="fas fa-circle"></i> No anti-inflammatory effect</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Safe for most patients including pregnancy</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Ibuprofen (Advil, Motrin)</div>
+                    <div class="drug-generic">NSAID</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Pain, inflammation, fever</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Take with food - GI bleeding risk</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Avoid in renal impairment, heart failure</li>
+                        <li><i class="fas fa-circle"></i> Can increase BP and counteract antihypertensives</li>
+                        <li><i class="fas fa-circle"></i> Avoid in 3rd trimester pregnancy</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Morphine</div>
+                    <div class="drug-generic">Opioid Analgesic (Schedule II)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Moderate-severe pain, MI chest pain, dyspnea in palliative care</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Respiratory depression - monitor RR (hold if <12)</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Keep Narcan (naloxone) available</li>
+                        <li><i class="fas fa-circle"></i> Causes constipation - order stool softener</li>
+                        <li><i class="fas fa-circle"></i> Causes sedation, hypotension, N/V</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Hydrocodone/APAP (Norco)</div>
+                    <div class="drug-generic">Opioid Combo (Schedule II)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Moderate pain</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Contains acetaminophen - watch total daily dose</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Same opioid precautions as morphine</li>
+                        <li><i class="fas fa-circle"></i> Common post-op and discharge pain med</li>
+                        <li><i class="fas fa-circle"></i> High abuse potential</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Tramadol (Ultram)</div>
+                    <div class="drug-generic">Opioid-like Analgesic (Schedule IV)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Moderate pain</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Lower abuse potential but still controlled</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Seizure risk, especially with SSRIs</li>
+                        <li><i class="fas fa-circle"></i> Serotonin syndrome risk with antidepressants</li>
+                        <li><i class="fas fa-circle"></i> Can cause N/V, dizziness, constipation</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- GI Medications -->
+        <section id="gi" class="drug-class gi">
+            <div class="drug-class-header">
+                <div class="drug-class-icon">
+                    <i class="fas fa-pills"></i>
+                </div>
+                <div class="drug-class-info">
+                    <h2>GI Medications</h2>
+                    <p>Acid reduction, nausea control, and bowel management</p>
+                </div>
+            </div>
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <div class="drug-name">Omeprazole (Prilosec)</div>
+                    <div class="drug-generic">Proton Pump Inhibitor (-prazole)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>GERD, peptic ulcer, H. pylori (with antibiotics)</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> Take 30-60 min before meals</li>
+                        <li><i class="fas fa-circle"></i> Long-term use: fracture risk, B12/Mg deficiency</li>
+                        <li><i class="fas fa-circle"></i> Can interfere with Plavix absorption</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Most effective acid suppressant</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Famotidine (Pepcid)</div>
+                    <div class="drug-generic">H2 Blocker</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>GERD, heartburn, stress ulcer prevention</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> Less potent than PPIs but fewer long-term concerns</li>
+                        <li><i class="fas fa-circle"></i> Can cause headache, dizziness</li>
+                        <li><i class="fas fa-circle"></i> Adjust dose in renal impairment</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Often used PRN for breakthrough symptoms</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Ondansetron (Zofran)</div>
+                    <div class="drug-generic">Antiemetic (5-HT3 Antagonist)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Nausea/vomiting (post-op, chemo, general)</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> Can cause headache, constipation</li>
+                        <li><i class="fas fa-circle"></i> QT prolongation risk at high doses</li>
+                        <li><i class="fas fa-circle"></i> ODT (dissolving tablet) good for active vomiting</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Very commonly used - safe and effective</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Docusate (Colace)</div>
+                    <div class="drug-generic">Stool Softener</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Constipation prevention (especially with opioids)</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> Takes 1-3 days to work</li>
+                        <li><i class="fas fa-circle"></i> Prevention, not treatment of acute constipation</li>
+                        <li><i class="fas fa-circle"></i> Encourage fluids</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Almost always ordered with opioids</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Antibiotics -->
+        <section id="antibiotics" class="drug-class antibiotics">
+            <div class="drug-class-header">
+                <div class="drug-class-icon">
+                    <i class="fas fa-bacteria"></i>
+                </div>
+                <div class="drug-class-info">
+                    <h2>Antibiotics</h2>
+                    <p>Common anti-infectives you'll see frequently</p>
+                </div>
+            </div>
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <div class="drug-name">Amoxicillin</div>
+                    <div class="drug-generic">Penicillin-type</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Ear infections, strep throat, UTI, respiratory infections</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Check penicillin allergy - can be life-threatening</li>
+                        <li><i class="fas fa-circle"></i> Can cause diarrhea, rash</li>
+                        <li><i class="fas fa-circle"></i> Take full course even if feeling better</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Safe in pregnancy</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Azithromycin (Z-pack)</div>
+                    <div class="drug-generic">Macrolide</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Respiratory infections, STIs, skin infections</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> QT prolongation risk</li>
+                        <li><i class="fas fa-circle"></i> GI upset common</li>
+                        <li><i class="fas fa-circle"></i> Often used if penicillin allergy</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Convenient 5-day course</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Ciprofloxacin (Cipro)</div>
+                    <div class="drug-generic">Fluoroquinolone (-floxacin)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>UTI, respiratory, GI infections</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Tendon rupture risk - stop if tendon pain</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Avoid in children, pregnancy</li>
+                        <li><i class="fas fa-circle"></i> Don't take with dairy or antacids</li>
+                        <li><i class="fas fa-circle"></i> Can cause CNS effects (dizziness, confusion)</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Ceftriaxone (Rocephin)</div>
+                    <div class="drug-generic">Cephalosporin (3rd gen)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Serious infections: pneumonia, meningitis, gonorrhea</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Cross-reactivity with penicillin allergy (~1%)</li>
+                        <li><i class="fas fa-circle"></i> Given IV or IM</li>
+                        <li><i class="fas fa-circle"></i> Can cause diarrhea</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Broad spectrum - common in hospital</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Vancomycin</div>
+                    <div class="drug-generic">Glycopeptide</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>MRSA, serious gram-positive infections, C. diff (PO)</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Red Man Syndrome if infused too fast - slow the rate</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Monitor trough levels and renal function</li>
+                        <li><i class="fas fa-circle"></i> Ototoxic and nephrotoxic</li>
+                        <li><i class="fas fa-circle"></i> IV for systemic, PO for C. diff only</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Respiratory Medications -->
+        <section id="respiratory" class="drug-class respiratory">
+            <div class="drug-class-header">
+                <div class="drug-class-icon">
+                    <i class="fas fa-lungs"></i>
+                </div>
+                <div class="drug-class-info">
+                    <h2>Respiratory Medications</h2>
+                    <p>Bronchodilators and corticosteroids for airway management</p>
+                </div>
+            </div>
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <div class="drug-name">Albuterol (ProAir, Ventolin)</div>
+                    <div class="drug-generic">Short-Acting Beta-2 Agonist (SABA)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Acute bronchospasm, asthma rescue, COPD exacerbation</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> Fast-acting (minutes) - RESCUE inhaler</li>
+                        <li><i class="fas fa-circle"></i> Causes tachycardia, tremors, nervousness</li>
+                        <li><i class="fas fa-circle"></i> Rinse mouth after use</li>
+                        <li class="tip"><i class="fas fa-circle"></i> If using >2x/week, asthma not controlled</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Fluticasone (Flovent)</div>
+                    <div class="drug-generic">Inhaled Corticosteroid (ICS)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Asthma maintenance, COPD</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> NOT for acute attacks - maintenance only</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Rinse mouth to prevent thrush</li>
+                        <li><i class="fas fa-circle"></i> Takes days-weeks for full effect</li>
+                        <li><i class="fas fa-circle"></i> Use spacer for better delivery</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Prednisone</div>
+                    <div class="drug-generic">Oral Corticosteroid</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Asthma/COPD exacerbations, inflammation, allergic reactions</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Don't stop abruptly if >7-10 days - taper</li>
+                        <li><i class="fas fa-circle"></i> Raises blood glucose</li>
+                        <li><i class="fas fa-circle"></i> Can cause insomnia, mood changes, increased appetite</li>
+                        <li><i class="fas fa-circle"></i> Long-term: osteoporosis, adrenal suppression</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Anticoagulants -->
+        <section id="anticoag" class="drug-class anticoag">
+            <div class="drug-class-header">
+                <div class="drug-class-icon">
+                    <i class="fas fa-bandage"></i>
+                </div>
+                <div class="drug-class-info">
+                    <h2>Anticoagulants</h2>
+                    <p>Blood thinners for clot prevention and treatment</p>
+                </div>
+            </div>
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <div class="drug-name">Heparin</div>
+                    <div class="drug-generic">Anticoagulant (IV/SubQ)</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>DVT/PE treatment and prevention, ACS, dialysis</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> HIGH ALERT medication - double check dose</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Monitor PTT (goal usually 1.5-2.5x normal)</li>
+                        <li><i class="fas fa-circle"></i> Antidote: Protamine sulfate</li>
+                        <li><i class="fas fa-circle"></i> Watch for HIT (heparin-induced thrombocytopenia)</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Enoxaparin (Lovenox)</div>
+                    <div class="drug-generic">Low Molecular Weight Heparin</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>DVT prophylaxis, DVT/PE treatment</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> SubQ injection - don't rub site after</li>
+                        <li><i class="fas fa-circle"></i> No routine monitoring needed (unlike heparin)</li>
+                        <li><i class="fas fa-circle"></i> Adjust dose in renal impairment</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Common post-op DVT prophylaxis</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Warfarin (Coumadin)</div>
+                    <div class="drug-generic">Vitamin K Antagonist</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>A-fib stroke prevention, mechanical valves, DVT/PE</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Monitor INR (goal usually 2-3)</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Many drug and food interactions (vitamin K foods)</li>
+                        <li><i class="fas fa-circle"></i> Antidote: Vitamin K</li>
+                        <li><i class="fas fa-circle"></i> Takes 3-5 days to reach effect</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Aspirin (ASA)</div>
+                    <div class="drug-generic">Antiplatelet</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>MI/stroke prevention, acute MI</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li><i class="fas fa-circle"></i> Low dose (81mg) for prevention</li>
+                        <li><i class="fas fa-circle"></i> GI bleeding risk - take with food</li>
+                        <li><i class="fas fa-circle"></i> Hold before surgery as directed</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Chew during acute MI for faster absorption</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diabetes Medications -->
+        <section id="diabetes" class="drug-class diabetes">
+            <div class="drug-class-header">
+                <div class="drug-class-icon">
+                    <i class="fas fa-syringe"></i>
+                </div>
+                <div class="drug-class-info">
+                    <h2>Diabetes Medications</h2>
+                    <p>Insulin and oral agents for blood glucose control</p>
+                </div>
+            </div>
+            <div class="drug-grid">
+                <div class="drug-card">
+                    <div class="drug-name">Regular Insulin (Humulin R)</div>
+                    <div class="drug-generic">Short-Acting Insulin</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Mealtime coverage, sliding scale, IV for DKA</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> HIGH ALERT - always double check dose</li>
+                        <li><i class="fas fa-circle"></i> Onset 30-60 min, peak 2-4 hrs</li>
+                        <li><i class="fas fa-circle"></i> Give 30 min before meals</li>
+                        <li><i class="fas fa-circle"></i> Only insulin that can be given IV</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Insulin Lispro (Humalog)</div>
+                    <div class="drug-generic">Rapid-Acting Insulin</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Mealtime coverage</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> HIGH ALERT medication</li>
+                        <li><i class="fas fa-circle"></i> Onset 15 min, peak 1-2 hrs</li>
+                        <li><i class="fas fa-circle"></i> Give within 15 min of meal start</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Can give right before or after eating</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Insulin Glargine (Lantus)</div>
+                    <div class="drug-generic">Long-Acting Insulin</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Basal coverage (background insulin)</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> HIGH ALERT - never give IV</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Do NOT mix with other insulins</li>
+                        <li><i class="fas fa-circle"></i> No peak - lasts ~24 hours</li>
+                        <li><i class="fas fa-circle"></i> Give at same time daily</li>
+                    </ul>
+                </div>
+                <div class="drug-card">
+                    <div class="drug-name">Metformin (Glucophage)</div>
+                    <div class="drug-generic">Biguanide</div>
+                    <div class="drug-use">
+                        <i class="fas fa-check"></i>
+                        <span>Type 2 diabetes (often first-line)</span>
+                    </div>
+                    <ul class="drug-considerations">
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Hold before contrast dye procedures</li>
+                        <li class="warning"><i class="fas fa-exclamation-triangle"></i> Lactic acidosis risk (rare but serious)</li>
+                        <li><i class="fas fa-circle"></i> GI upset common - take with food</li>
+                        <li class="tip"><i class="fas fa-circle"></i> Doesn't cause hypoglycemia when used alone</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <div class="tool-cta">
+            <h3>More Quick Reference Tools</h3>
+            <p>Check out our other quick reference tools designed for fast lookup during studying or clinicals.</p>
+            <div class="cta-buttons">
+                <a href="lab-values.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-flask"></i>
+                    Lab Values Cheat Sheet
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

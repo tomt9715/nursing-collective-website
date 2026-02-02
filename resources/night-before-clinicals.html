@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Prepare the Night Before Clinicals | The Nursing Collective</title>
+    <meta name="description" content="Whether you have patient access or not, here's how to prepare for clinical the night before—and what to do the morning of.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Clinical Confidence theme - purple/indigo
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .guide-header {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #8b5cf6 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #7c3aed, #a78bfa);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #7c3aed;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-warning {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #ef4444;
+        }
+
+        [data-theme="dark"] .callout-warning {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(248, 113, 113, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        .callout-warning .callout-header {
+            color: #dc2626;
+        }
+
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+        [data-theme="dark"] .callout-warning .callout-header { color: #f87171; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #7c3aed;
+            border-radius: 50%;
+        }
+
+        /* Scenario Tabs */
+        .scenario-box {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border: 2px solid #7c3aed;
+        }
+
+        .scenario-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #7c3aed;
+            margin-bottom: 16px;
+        }
+
+        .scenario-box ul {
+            margin: 0;
+        }
+
+        /* Numbered Steps */
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .steps-list li strong {
+            color: var(--text-primary);
+        }
+
+        /* Checklist Box */
+        .checklist-box {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 20px 0;
+        }
+
+        .checklist-box h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #7c3aed;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checklist-box ul {
+            margin: 0;
+        }
+
+        .checklist-box ul li {
+            font-size: 0.95rem;
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: #7c3aed;
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-stethoscope"></i> Clinical Confidence
+            </span>
+            <h1 class="guide-title">How to Prepare the Night Before Clinicals</h1>
+            <p class="guide-subtitle">Whether you have patient access or you're going in blind, here's how to set yourself up for a good clinical day.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li>Many students <strong>don't</strong> get patient access the night before—only the professor sees charts.</li>
+                <li>If you're going in blind, you can still prepare. Focus on general readiness.</li>
+                <li>If you DO have access, research efficiently—don't try to know everything.</li>
+                <li>Pack your bag, lay out your clothes, and get to bed early. Seriously.</li>
+                <li>Morning-of routines matter. Give yourself buffer time.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">The Reality: Many Students Go In Blind</h2>
+            </div>
+
+            <p>Here's something that surprises a lot of students: at many programs, you don't get to see your patient's chart the night before. Only your professor has access to hospital records. You show up in the morning, get your assignment, and figure it out from there.</p>
+
+            <p>If that sounds stressful, it is—at first. But it's also how real nursing works much of the time. Nurses get patients they've never seen before. They adapt. You will too.</p>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    The Reality Check
+                </div>
+                <p>Don't assume everyone else has more information than you. In many clinical groups, everyone is equally in the dark until morning. If classmates seem more prepared, they might just be better at faking confidence (a useful nursing skill, actually).</p>
+            </div>
+
+            <p>This guide covers both scenarios: what to do when you have patient access, and what to do when you don't.</p>
+        </section>
+
+        <!-- Section 2: First Day Expectations -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">Your First Day: What to Expect</h2>
+            </div>
+
+            <p>If this is your very first clinical day ever, take a breath. <strong>You most likely won't be thrown straight into patient care.</strong></p>
+
+            <p>First days are typically about orientation:</p>
+
+            <ul>
+                <li><strong>Tours and layout:</strong> You'll learn where things are—supply rooms, medication rooms, break rooms, bathrooms, emergency equipment.</li>
+                <li><strong>Introductions:</strong> Meeting the staff, understanding the unit culture, learning who to go to for what.</li>
+                <li><strong>Paperwork and logistics:</strong> Badge access, locker assignments, documentation systems.</li>
+                <li><strong>Observation and shadowing:</strong> Following nurses or your instructor around, watching how things work.</li>
+            </ul>
+
+            <p>Later clinical days will gradually involve more patient interaction—but even then, you typically won't be "assigned" a patient the way a nurse is. Instead, you'll follow along with a nurse or your instructor, or get rotated to different areas for varied experiences.</p>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    How Clinical Structure Usually Works
+                </div>
+                <p>Students don't usually get independent patient assignments. You might be paired with a nurse and help with their patients, work with your instructor as a group, or rotate between different areas of the unit. The structure varies by program and clinical site, so ask your instructor what to expect.</p>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">If You DON'T Have Patient Access</h2>
+            </div>
+
+            <p>Going in blind doesn't mean you can't prepare. Here's what you can do:</p>
+
+            <div class="scenario-box">
+                <div class="scenario-header">
+                    <i class="fas fa-brain"></i>
+                    General Knowledge Prep
+                </div>
+                <ul>
+                    <li><strong>Review common conditions for your unit.</strong> Med-surg? Brush up on heart failure, COPD, diabetes. Peds? Review developmental stages and common childhood illnesses.</li>
+                    <li><strong>Review your skills.</strong> What have you covered in lab recently? Mentally walk through those procedures.</li>
+                    <li><strong>Review medications.</strong> Know the "big" drug classes—cardiac meds, blood thinners, insulin, pain meds, antibiotics.</li>
+                    <li><strong>Review normal vital signs</strong> for the population you're seeing (adults vs. peds vs. geriatric).</li>
+                </ul>
+            </div>
+
+            <div class="scenario-box">
+                <div class="scenario-header">
+                    <i class="fas fa-clipboard-check"></i>
+                    Practical Prep
+                </div>
+                <ul>
+                    <li><strong>Pack your clinical bag</strong> with everything you might need.</li>
+                    <li><strong>Lay out your uniform.</strong> Check for stains, wrinkles. Know where your ID badge is.</li>
+                    <li><strong>Review any paperwork</strong> your instructor requires (assessment forms, care plan templates).</li>
+                    <li><strong>Know your morning timeline.</strong> What time do you need to leave? Build in buffer time.</li>
+                    <li><strong>Get to bed early.</strong> You need to be alert, not caffeinated and foggy.</li>
+                </ul>
+            </div>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Pro Tip
+                </div>
+                <p>Make a "cheat sheet" of things you always want to remember—normal lab values, vital sign ranges, common med side effects. Keep it in your pocket for quick reference. This is studying that helps you no matter who your patient is.</p>
+            </div>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">If You DO Have Patient Access</h2>
+            </div>
+
+            <p>Lucky you—but don't fall into the trap of trying to know everything. You have limited time. Be strategic.</p>
+
+            <div class="scenario-box">
+                <div class="scenario-header">
+                    <i class="fas fa-search"></i>
+                    What to Look Up First
+                </div>
+                <ul>
+                    <li><strong>Admitting diagnosis:</strong> Why are they here? What's the main problem?</li>
+                    <li><strong>Relevant history:</strong> Other conditions that affect care (diabetes, heart disease, kidney issues).</li>
+                    <li><strong>Current medications:</strong> Focus on the scheduled ones. Know what they're for and major side effects.</li>
+                    <li><strong>Allergies:</strong> Critical. Know these cold.</li>
+                    <li><strong>Recent vitals and trends:</strong> What's their baseline? Anything concerning?</li>
+                    <li><strong>Today's plan:</strong> Any procedures, tests, or discharges planned?</li>
+                </ul>
+            </div>
+
+            <p><strong>Don't try to memorize the entire chart.</strong> You'll overwhelm yourself. Focus on what helps you give safe care and anticipate needs.</p>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    From Someone Who's Been There
+                </div>
+                <p>I used to spend hours reading every note in the chart. Then I'd show up exhausted and forget half of it. Now I focus on: diagnosis, meds, allergies, and what to watch for. That's what actually matters for one clinical day.</p>
+            </div>
+
+            <div class="checklist-box">
+                <h4><i class="fas fa-pills"></i> Medication Research Shortcut</h4>
+                <ul>
+                    <li>For each scheduled med, know: What is it for? Major side effects? Nursing considerations?</li>
+                    <li>Don't memorize PRN meds unless they're being used frequently.</li>
+                    <li>Flag anything you'll need to look up before giving (like insulin dosing or controlled substances).</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">The Night-Before Checklist (Everyone)</h2>
+            </div>
+
+            <p>Regardless of patient access, do these things the night before:</p>
+
+            <ol class="steps-list">
+                <li><strong>Pack your clinical bag.</strong> Check that you have everything—stethoscope, penlight, pens, pocket reference, snacks, water bottle. See our clinical bag guide for the full list.</li>
+                <li><strong>Prepare your uniform.</strong> Lay it out. Make sure it's clean, pressed, and complete (including socks, appropriate shoes, and ID badge).</li>
+                <li><strong>Set multiple alarms.</strong> One is not enough. Set two on your phone plus a backup if you have one. Place one across the room so you have to get up.</li>
+                <li><strong>Plan your morning meal.</strong> Have something ready to grab. You need fuel but you don't want to spend precious morning time cooking.</li>
+                <li><strong>Know your route.</strong> If it's your first time at the site, know exactly where to go, where to park, and how long it takes.</li>
+                <li><strong>Complete any paperwork.</strong> Fill out what you can on any clinical paperwork so you're not scrambling.</li>
+                <li><strong>Go to bed early.</strong> Aim for 7-8 hours. You're not going to perform well running on 4 hours of sleep and anxiety.</li>
+            </ol>
+
+            <div class="callout callout-warning">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Don't Do This
+                </div>
+                <p>Pulling an all-nighter to "prepare more" backfires. Sleep deprivation impairs judgment, slows your thinking, and makes you more anxious. A well-rested student who knows less will outperform an exhausted student who read everything.</p>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">The Morning Of</h2>
+            </div>
+
+            <p>Your morning routine sets the tone for the whole day. Here's how to start strong:</p>
+
+            <ul>
+                <li><strong>Wake up with buffer time.</strong> You should have at least 30 minutes more than you "need." Things go wrong. Alarms don't go off. Traffic happens.</li>
+                <li><strong>Eat something.</strong> Even if you're nervous and not hungry. Your brain needs glucose. A banana and peanut butter is better than nothing.</li>
+                <li><strong>Do a quick review.</strong> If you prepped the night before, skim your notes while eating. Don't try to learn new things—just reinforce what you already know.</li>
+                <li><strong>Double-check your bag.</strong> Quick visual scan: stethoscope, badge, pens, phone, paperwork.</li>
+                <li><strong>Arrive early.</strong> 15-20 minutes early is ideal. It shows professionalism and gives you time to settle in, use the bathroom, and calm your nerves.</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Nervous? Try This
+                </div>
+                <p>In the car or before you walk in, take 5 slow deep breaths. Inhale for 4 counts, hold for 4, exhale for 6. This activates your parasympathetic nervous system and genuinely reduces anxiety. It's not just "woo-woo"—it's physiology.</p>
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">Once You Get Your Assignment</h2>
+            </div>
+
+            <p>You've arrived, you're in your scrubs, and now you have a patient. Here's your rapid morning prep:</p>
+
+            <ol class="steps-list">
+                <li><strong>Get the essentials first:</strong> Room number, name, diagnosis, allergies, code status. Write these down immediately.</li>
+                <li><strong>Check the MAR:</strong> What meds are due during your shift? Any that need to be given soon?</li>
+                <li><strong>Review recent notes:</strong> What happened overnight? Any changes? New orders?</li>
+                <li><strong>Check vitals trends:</strong> What's their baseline? Anything out of range?</li>
+                <li><strong>Ask the nurse:</strong> "Anything I should know about this patient?" They'll tell you the stuff not in the chart.</li>
+                <li><strong>Make a plan:</strong> What's your priority? What do you need to do first?</li>
+            </ol>
+
+            <p>Then go introduce yourself to your patient. From there, you're in clinical mode—one task at a time, asking for help when needed.</p>
+        </section>
+
+        <!-- Section 8 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">8</span>
+                <h2 class="section-title">When Plans Change (And They Will)</h2>
+            </div>
+
+            <p>Sometimes your patient gets discharged before you arrive. Sometimes they're in a procedure all morning. Sometimes you get reassigned to someone completely different. This is normal.</p>
+
+            <p><strong>How to handle it:</strong></p>
+            <ul>
+                <li><strong>Don't panic.</strong> This happens to everyone. It's not a reflection of you.</li>
+                <li><strong>Ask your instructor:</strong> "What would you like me to do?" They'll reassign you or find you another learning opportunity.</li>
+                <li><strong>Stay flexible.</strong> The ability to adapt is a core nursing skill. Today is practice.</li>
+                <li><strong>Use downtime wisely.</strong> If you're waiting for a new assignment, observe, review your notes, or ask if you can help with another student's patient.</li>
+            </ul>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    Remember This
+                </div>
+                <p>The students who do best in clinicals aren't the ones who never face problems—they're the ones who handle problems calmly. Flexibility and adaptability are more valuable than perfect preparation.</p>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>Ready to Pack Your Bag?</h3>
+            <p>Check out our clinical bag checklist so you never show up missing something important.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Clinical Skills You'll Actually Do | The Nursing Collective</title>
+    <meta name="description" content="Quick refreshers on the skills you'll use most in clinicals: vital signs, bed baths, medication administration, wound care, PPE, and documentation.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Clinical Confidence theme - emerald/green
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .guide-header {
+            background: linear-gradient(135deg, #059669 0%, #34d399 50%, #10b981 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #059669, #34d399);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #059669;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: #059669;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-warning {
+            background: linear-gradient(135deg, #fee2e2 0%, #fef2f2 100%);
+            border-color: #ef4444;
+        }
+
+        [data-theme="dark"] .callout-warning {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(248, 113, 113, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        .callout-warning .callout-header {
+            color: #dc2626;
+        }
+
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+        [data-theme="dark"] .callout-warning .callout-header { color: #f87171; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #059669;
+            border-radius: 50%;
+        }
+
+        /* Skill Box */
+        .skill-box {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 24px;
+            margin: 24px 0;
+            border-left: 4px solid #059669;
+        }
+
+        .skill-box h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #059669;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-box ul {
+            margin: 0;
+        }
+
+        .skill-box ul li {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .skill-box p {
+            font-size: 0.95rem;
+            margin: 12px 0 0 0;
+        }
+
+        /* Quick Reference Table */
+        .reference-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        .reference-table th,
+        .reference-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .reference-table th {
+            background: var(--background-light);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: #059669;
+        }
+
+        .reference-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #059669 0%, #34d399 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: #059669;
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .reference-table {
+                font-size: 0.85rem;
+            }
+
+            .reference-table th,
+            .reference-table td {
+                padding: 8px;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-stethoscope"></i> Clinical Confidence
+            </span>
+            <h1 class="guide-title">Common Clinical Skills You'll Actually Do</h1>
+            <p class="guide-subtitle">Quick refreshers on vital signs, bed baths, medication administration, wound care, PPE, and documentation basics.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li>These are quick refreshers, not comprehensive how-tos. Use your skills lab materials for detailed procedures.</li>
+                <li>Most clinical skills follow the same pattern: prepare, perform, document.</li>
+                <li>When in doubt, ask your instructor before you do something.</li>
+                <li>The best way to get comfortable is practice—volunteer for every opportunity.</li>
+                <li>Mistakes happen. What matters is how you handle them.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1: Vital Signs -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">Vital Signs</h2>
+            </div>
+
+            <p>You'll take vital signs constantly. This is often the first skill you'll do independently, and it's foundational to everything else.</p>
+
+            <div class="skill-box">
+                <h4><i class="fas fa-heartbeat"></i> Quick Refresher</h4>
+                <ul>
+                    <li><strong>Blood pressure:</strong> Cuff 1 inch above antecubital space, stethoscope over brachial artery, inflate to 180mmHg (or 30 above expected systolic), deflate slowly (2-3mmHg/second), listen for Korotkoff sounds.</li>
+                    <li><strong>Pulse:</strong> Radial is standard. Count for 30 seconds and multiply by 2, or full 60 seconds if irregular. Note rate, rhythm, and strength.</li>
+                    <li><strong>Respirations:</strong> Count while pretending to take pulse so patient doesn't change their breathing. 30 seconds x 2, or full minute if irregular.</li>
+                    <li><strong>Temperature:</strong> Oral is common (wait 15 min after eating/drinking). Temporal, tympanic, or axillary are alternatives. Know your facility's equipment.</li>
+                    <li><strong>SpO2:</strong> Fingertip pulse ox. Remove nail polish if present. Check perfusion if reading seems off.</li>
+                </ul>
+            </div>
+
+            <table class="reference-table">
+                <thead>
+                    <tr>
+                        <th>Vital Sign</th>
+                        <th>Normal Adult Range</th>
+                        <th>Notify If</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BP</td>
+                        <td>90-140/60-90 mmHg</td>
+                        <td>&lt;90 systolic or &gt;160/100</td>
+                    </tr>
+                    <tr>
+                        <td>HR</td>
+                        <td>60-100 bpm</td>
+                        <td>&lt;50 or &gt;120, or irregular</td>
+                    </tr>
+                    <tr>
+                        <td>RR</td>
+                        <td>12-20/min</td>
+                        <td>&lt;10 or &gt;24</td>
+                    </tr>
+                    <tr>
+                        <td>Temp</td>
+                        <td>97.8-99.1°F (36.5-37.3°C)</td>
+                        <td>&gt;101°F or &lt;96°F</td>
+                    </tr>
+                    <tr>
+                        <td>SpO2</td>
+                        <td>95-100%</td>
+                        <td>&lt;92% (or per order)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Pro Tips
+                </div>
+                <p>Always compare to the patient's baseline—their "normal" might be different. Document the position (sitting, lying, standing) and any factors that might affect readings (just walked, anxious, pain). If a vital sign is abnormal, retake it before panicking.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Bed Baths and Hygiene -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">Bed Baths and Hygiene Care</h2>
+            </div>
+
+            <p>Providing hygiene care feels awkward at first—you're bathing a stranger. It gets easier, and it's an important part of patient dignity and comfort.</p>
+
+            <div class="skill-box">
+                <h4><i class="fas fa-bath"></i> Quick Refresher</h4>
+                <ul>
+                    <li><strong>Privacy first:</strong> Close door/curtain, cover patient with bath blanket, expose only area being washed.</li>
+                    <li><strong>Work clean to dirty:</strong> Face first (no soap usually), then arms, chest, abdomen, legs, back, perineum last.</li>
+                    <li><strong>Change water:</strong> At minimum before perineal care, or whenever it looks dirty/cool.</li>
+                    <li><strong>Skin assessment:</strong> While bathing, check for redness, breakdown, rashes—especially pressure points (sacrum, heels, elbows).</li>
+                    <li><strong>Pat dry thoroughly:</strong> Moisture in skin folds leads to breakdown. Check under breasts, between toes, groin.</li>
+                </ul>
+            </div>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    Making It Less Awkward
+                </div>
+                <p>Talk to the patient. Ask about their life, their day, what they'd like. Explain what you're doing as you go. The conversation distracts both of you from the intimacy of the task. Treat it as normal care—because it is—and the patient will follow your lead.</p>
+            </div>
+
+            <p><strong>Don't forget:</strong> Oral care (every shift), hair care if needed, nail care if appropriate. These details matter for comfort and dignity.</p>
+        </section>
+
+        <!-- Section 3: Medication Administration -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">Medication Administration</h2>
+            </div>
+
+            <p>Giving meds is high-stakes, which is why students typically need instructor supervision. The "rights" exist for a reason—use them every single time.</p>
+
+            <div class="skill-box">
+                <h4><i class="fas fa-pills"></i> The Rights of Medication Administration</h4>
+                <ul>
+                    <li><strong>Right patient:</strong> Check ID band and have patient state their name.</li>
+                    <li><strong>Right medication:</strong> Verify drug name against MAR.</li>
+                    <li><strong>Right dose:</strong> Calculate if needed, verify amount.</li>
+                    <li><strong>Right route:</strong> Oral, IV, IM, SubQ, topical—know how it's supposed to be given.</li>
+                    <li><strong>Right time:</strong> Within 30-60 minutes of scheduled time usually.</li>
+                    <li><strong>Right documentation:</strong> Document immediately after giving (not before).</li>
+                </ul>
+                <p>Some programs add: Right reason, Right response, Right to refuse.</p>
+            </div>
+
+            <div class="callout callout-warning">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    Critical Safety Points
+                </div>
+                <p><strong>Never give a medication you didn't prepare yourself.</strong> Never give a medication you don't understand. Always check allergies. Three checks: when pulling from drawer, when preparing, and at bedside. If something seems wrong, stop and verify. It's better to delay a med than give the wrong one.</p>
+            </div>
+
+            <p>As a student, you'll typically need your instructor present for medication administration. Know your program's policy. When the nurse says "go ahead and give it," you should still say "let me check with my instructor first" unless you have explicit permission otherwise.</p>
+        </section>
+
+        <!-- Section 4: Wound Care -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">Basic Wound Care</h2>
+            </div>
+
+            <p>Wound care varies widely based on the wound type and provider orders. These are general principles for basic dressing changes.</p>
+
+            <div class="skill-box">
+                <h4><i class="fas fa-band-aid"></i> Quick Refresher</h4>
+                <ul>
+                    <li><strong>Gather supplies first:</strong> Clean gloves, sterile supplies (if ordered), dressing materials, tape, trash bag.</li>
+                    <li><strong>Remove old dressing:</strong> Clean gloves, note what's on the dressing (drainage amount, color, odor).</li>
+                    <li><strong>Assess the wound:</strong> Size, depth, color, drainage, surrounding skin, any signs of infection.</li>
+                    <li><strong>Clean as ordered:</strong> Usually sterile saline, from clean to dirty, or center outward.</li>
+                    <li><strong>Apply new dressing:</strong> Follow orders—type of dressing matters. Secure with tape, date and initial.</li>
+                </ul>
+            </div>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Documentation Points
+                </div>
+                <p>Document: wound location, size (measure if required), appearance (color of wound bed, edges), drainage (amount, color, odor), surrounding skin, dressing applied. Compare to previous documentation to track changes.</p>
+            </div>
+
+            <p>Complex wounds (surgical, pressure ulcers, wound vacs) require more specialized knowledge. As a student, you'll observe these first and participate with close supervision. Ask questions—wound care is a whole specialty.</p>
+        </section>
+
+        <!-- Section 5: PPE and Isolation -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">PPE and Isolation Precautions</h2>
+            </div>
+
+            <p>PPE protects you AND the patient. Know when to use what, and practice proper donning/doffing until it's automatic.</p>
+
+            <div class="skill-box">
+                <h4><i class="fas fa-shield-virus"></i> Standard Precautions (Every Patient)</h4>
+                <ul>
+                    <li>Hand hygiene before and after patient contact</li>
+                    <li>Gloves when touching blood, body fluids, non-intact skin, mucous membranes</li>
+                    <li>Additional PPE if splashing/spraying is likely</li>
+                    <li>Safe sharps handling</li>
+                    <li>Respiratory hygiene/cough etiquette</li>
+                </ul>
+            </div>
+
+            <table class="reference-table">
+                <thead>
+                    <tr>
+                        <th>Precaution Type</th>
+                        <th>When</th>
+                        <th>PPE Needed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Contact</td>
+                        <td>C. diff, MRSA, VRE, scabies</td>
+                        <td>Gown + gloves</td>
+                    </tr>
+                    <tr>
+                        <td>Droplet</td>
+                        <td>Flu, RSV, pertussis, meningitis</td>
+                        <td>Surgical mask (+ eye protection if spraying)</td>
+                    </tr>
+                    <tr>
+                        <td>Airborne</td>
+                        <td>TB, measles, chickenpox, COVID</td>
+                        <td>N95 + eye protection, negative pressure room</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Donning and Doffing
+                </div>
+                <p><strong>Order matters.</strong> Donning: gown, mask/respirator, eye protection, gloves. Doffing: gloves (most contaminated), eye protection, gown, mask (touch only straps). Hand hygiene between steps. The contaminated outside never touches the clean inside. Practice until it's muscle memory.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Documentation Basics -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">Documentation Basics</h2>
+            </div>
+
+            <p>If you didn't document it, you didn't do it. Documentation is a legal record and a communication tool for the care team.</p>
+
+            <div class="skill-box">
+                <h4><i class="fas fa-file-medical"></i> Key Principles</h4>
+                <ul>
+                    <li><strong>Timely:</strong> Document as close to the event as possible. Don't save it all for end of shift.</li>
+                    <li><strong>Accurate:</strong> Document what you observed, not what you assumed or interpreted.</li>
+                    <li><strong>Complete:</strong> Include relevant details—assessments, interventions, patient responses.</li>
+                    <li><strong>Objective:</strong> "Patient states 'I feel dizzy'" not "Patient seems dizzy." Quote when possible.</li>
+                    <li><strong>Never falsify:</strong> Document what actually happened, even if it's a mistake. Late entries are okay; lying is not.</li>
+                </ul>
+            </div>
+
+            <p><strong>Common things to document:</strong></p>
+            <ul>
+                <li>Assessments and changes in condition</li>
+                <li>Medications given (right after, not before)</li>
+                <li>Procedures performed and patient tolerance</li>
+                <li>Patient education provided</li>
+                <li>Communications with providers</li>
+                <li>Safety measures (fall precautions, restraint checks)</li>
+                <li>Intake and output</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Student Tip
+                </div>
+                <p>Ask your instructor what you're allowed to document and how. Some programs have students document separately, some co-sign with instructors, some don't allow student documentation in the official chart. Know your program's policy and follow it exactly.</p>
+            </div>
+        </section>
+
+        <!-- Section 7: General Tips -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">General Tips for All Skills</h2>
+            </div>
+
+            <p>A few principles that apply to every clinical skill:</p>
+
+            <ul>
+                <li><strong>Introduce yourself and explain what you're doing.</strong> Patients feel more comfortable when they know what's happening.</li>
+                <li><strong>Gather all supplies before starting.</strong> Walking away mid-procedure is unprofessional and can compromise sterility.</li>
+                <li><strong>Hand hygiene, hand hygiene, hand hygiene.</strong> Before and after every patient contact. No exceptions.</li>
+                <li><strong>Ask before you do.</strong> If you're unsure about anything, stop and ask your instructor. It's not weakness—it's safety.</li>
+                <li><strong>Practice in lab.</strong> The more you practice in a low-stakes environment, the more confident you'll be with real patients.</li>
+                <li><strong>Reflect afterward.</strong> What went well? What would you do differently? This is how you improve.</li>
+            </ul>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    The Confidence Paradox
+                </div>
+                <p>You'll feel most incompetent when you're actually learning the most. First attempts feel terrible. By your tenth bed bath, it's routine. By your hundredth blood pressure, you don't even think about it. Trust the process—competence comes from repetition, not perfection on the first try.</p>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>Want to Go Deeper?</h3>
+            <p>Our study guides break down complex nursing topics in detail. Perfect for when you need more than a quick refresher.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

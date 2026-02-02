@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Management for Nursing Students | The Nursing Collective</title>
+    <meta name="description" content="Balancing clinicals, lectures, studying, and life is brutal. Here's how to plan your week, protect your time, and avoid burning out before finals.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Lighter, more conversational than clinical guides
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header - Simple and welcoming */
+        .guide-header {
+            background: linear-gradient(135deg, #059669 0%, #34d399 50%, #2E86AB 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box - Top of content */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #10b981;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: #059669;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #059669;
+            border-radius: 50%;
+        }
+
+        /* Weekly Schedule */
+        .schedule-block {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            border-left: 4px solid #059669;
+        }
+
+        .schedule-day {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: #059669;
+            margin-bottom: 8px;
+        }
+
+        .schedule-block p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Time Blocks */
+        .time-block {
+            display: flex;
+            gap: 16px;
+            margin: 16px 0;
+            padding: 16px;
+            background: var(--background-light);
+            border-radius: 12px;
+        }
+
+        .time-block-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .time-block-icon.study { background: #3b82f6; }
+        .time-block-icon.clinical { background: #059669; }
+        .time-block-icon.life { background: #f59e0b; }
+        .time-block-icon.rest { background: #8b5cf6; }
+
+        .time-block-content h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+
+        .time-block-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #059669 0%, #2E86AB 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: #059669;
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .time-block {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-lightbulb"></i> Nursing School Survival
+            </span>
+            <h1 class="guide-title">Time Management for Nursing Students</h1>
+            <p class="guide-subtitle">Clinicals, lectures, studying, work, life—it's a lot. Here's how to fit it all in without completely burning out.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li>Plan your week on <strong>Sunday</strong>. Don't wing it.</li>
+                <li>Study in focused blocks, not marathon sessions.</li>
+                <li>Treat study time like a class—it's non-negotiable.</li>
+                <li>Build in buffer time. Things always take longer than expected.</li>
+                <li>Rest is productive. Sleep is not optional.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">Why Nursing School Time Is Different</h2>
+            </div>
+
+            <p>In most college programs, you can cram the night before and survive. Nursing school doesn't work that way. The content builds on itself, clinicals require preparation, and exhaustion catches up with you fast.</p>
+
+            <p>You're also juggling more than just classes:</p>
+            <ul>
+                <li>Lectures (hours of new content each week)</li>
+                <li>Clinicals (early mornings, paperwork, emotional labor)</li>
+                <li>Skills lab and simulation</li>
+                <li>Care plans, concept maps, and written assignments</li>
+                <li>Studying for exams that cover massive amounts of material</li>
+                <li>Maybe work. Maybe family. Maybe both.</li>
+            </ul>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    The Reality Check
+                </div>
+                <p>You will not have enough time to do everything perfectly. The goal isn't perfection—it's strategic prioritization. Done is better than perfect, especially at 11pm before a clinical day.</p>
+            </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">The Sunday Planning Ritual</h2>
+            </div>
+
+            <p>The single most helpful habit I developed in nursing school: spending 20-30 minutes every Sunday planning the week ahead.</p>
+
+            <p><strong>Here's what to do:</strong></p>
+            <ul>
+                <li>Look at your calendar: clinicals, classes, exams, deadlines</li>
+                <li>Identify your "big rocks"—what HAS to happen this week?</li>
+                <li>Block out study sessions for specific topics (not just "study")</li>
+                <li>Schedule buffer time for the unexpected</li>
+                <li>Identify one day or evening that's protected for rest</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Make It Specific
+                </div>
+                <p>"Study" is too vague. "Review cardiac medications and do 20 practice questions" is specific and actionable. When you sit down, you'll know exactly what to do instead of wasting time deciding.</p>
+            </div>
+
+            <p>Write it down somewhere you'll actually see it—your phone, a planner, sticky notes, whatever works. A plan in your head isn't a plan.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">Study Blocks > Study Marathons</h2>
+            </div>
+
+            <p>Six hours of continuous studying sounds productive. It's not. After about 90 minutes, your brain stops retaining information effectively. You're just going through the motions.</p>
+
+            <p><strong>A better approach: focused study blocks</strong></p>
+
+            <div class="time-block">
+                <div class="time-block-icon study"><i class="fas fa-brain"></i></div>
+                <div class="time-block-content">
+                    <h4>The 50/10 Method</h4>
+                    <p>Study with full focus for 50 minutes. Take a 10-minute break (actually step away). Repeat 2-3 times, then take a longer break.</p>
+                </div>
+            </div>
+
+            <div class="time-block">
+                <div class="time-block-icon study"><i class="fas fa-clock"></i></div>
+                <div class="time-block-content">
+                    <h4>The 25/5 Method (Pomodoro)</h4>
+                    <p>If 50 minutes feels too long, try 25 minutes on, 5 minutes off. Four cycles = one "set." Good for content that's hard to focus on.</p>
+                </div>
+            </div>
+
+            <p>The key is the break. Your brain consolidates information during rest. Skipping breaks doesn't make you more productive—it makes you more exhausted.</p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">Protect Your Study Time</h2>
+            </div>
+
+            <p>Here's a mindset shift that helped me: treat study time like a class you can't skip.</p>
+
+            <p>If you had lecture at 2pm, you wouldn't let someone schedule a lunch that runs until 2:30. But we let things eat into our study time all the time—social obligations, errands, "quick" favors that take an hour.</p>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    From Someone Who's Been There
+                </div>
+                <p>I started telling people "I have class" when I had scheduled study time. It wasn't a lie—it was a commitment I made to myself. The people who matter will understand. Nursing school is temporary; you need to protect it.</p>
+            </div>
+
+            <p><strong>Practical tips:</strong></p>
+            <ul>
+                <li>Put study blocks in your calendar as actual events</li>
+                <li>Turn off phone notifications (or leave your phone in another room)</li>
+                <li>Study somewhere that feels like "work mode"—not your bed</li>
+                <li>Let roommates/family know when you're unavailable</li>
+            </ul>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">Use Your Small Pockets of Time</h2>
+            </div>
+
+            <p>You don't always need a two-hour block to be productive. Those 15-minute gaps add up.</p>
+
+            <p><strong>Things you can do in 15 minutes:</strong></p>
+            <ul>
+                <li>Review flashcards (especially digital ones on your phone)</li>
+                <li>Do 5-10 practice questions</li>
+                <li>Re-read your notes from today's lecture</li>
+                <li>Listen to a nursing podcast episode</li>
+                <li>Review one medication or lab value</li>
+            </ul>
+
+            <p><strong>Good times to use:</strong></p>
+            <ul>
+                <li>Waiting for class to start</li>
+                <li>On public transit or waiting for a ride</li>
+                <li>Eating lunch alone</li>
+                <li>Waiting at appointments</li>
+                <li>Before bed (but keep it light—no stressful content)</li>
+            </ul>
+
+            <p>This isn't about grinding every second. It's about using bits of time that would otherwise be lost to scrolling social media.</p>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">A Sample Weekly Flow</h2>
+            </div>
+
+            <p>Everyone's schedule is different, but here's a realistic framework:</p>
+
+            <div class="schedule-block">
+                <div class="schedule-day">Sunday</div>
+                <p>Plan the week. Light review or reading ahead for Monday's content. Meal prep if that's your thing. Rest.</p>
+            </div>
+
+            <div class="schedule-block">
+                <div class="schedule-day">Weekdays with Class</div>
+                <p>Attend lecture. Review that day's content for 30-60 minutes (same day review = better retention). Evening: practice questions or assignment work.</p>
+            </div>
+
+            <div class="schedule-block">
+                <div class="schedule-day">Clinical Days</div>
+                <p>Minimal studying—you're already learning. Night before: prep your patient info if you have access. Night after: decompress, light review only. Don't force a study marathon after a 12-hour day.</p>
+            </div>
+
+            <div class="schedule-block">
+                <div class="schedule-day">Days Off</div>
+                <p>Longer study blocks (2-3 hours total, with breaks). Catch up on assignments. But also: actually rest. One day per week with minimal school stuff protects your mental health.</p>
+            </div>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">Rest Is Productive</h2>
+            </div>
+
+            <p>This is the part nursing students resist most: you need rest, and rest is not laziness.</p>
+
+            <p>Sleep is when your brain consolidates memories. Skip sleep to study more, and you'll remember less. It's counterproductive.</p>
+
+            <p>Burnout is real, and nursing school is a marathon. Students who burn out in week 8 don't make it to finals as well as students who paced themselves.</p>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Non-Negotiables
+                </div>
+                <p><strong>Sleep:</strong> Aim for 7+ hours. Yes, even during exam weeks.<br><br>
+                <strong>One full day off per week:</strong> Or at least a half-day. Your brain needs time to process.<br><br>
+                <strong>Movement:</strong> Even 20 minutes of walking helps with stress and retention.</p>
+            </div>
+
+            <p>You can't pour from an empty cup. Taking care of yourself isn't selfish—it's what makes everything else sustainable.</p>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>Need Help Making the Most of Your Study Time?</h3>
+            <p>Our study guides are designed to be efficient—focused content that helps you learn what matters without wading through filler.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vital Signs Reference (All Ages) | The Nursing Collective</title>
+    <meta name="description" content="Quick reference for vital signs by age group. Normal ranges for HR, RR, BP, temp, and SpO2 from newborn through adult. Know what's normal and what's concerning.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           QUICK REFERENCE TOOL STYLES
+           ============================================ */
+
+        .reference-tool {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .tool-header {
+            background: linear-gradient(135deg, #2E86AB 0%, #5ba3c4 50%, #A23B72 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .tool-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .tool-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Main Content */
+        .tool-content {
+            max-width: 1000px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Jump Navigation */
+        .quick-jump {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-jump-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quick-jump-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-jump-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--background-light);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-jump-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Key Concepts Box */
+        .key-concepts {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .key-concepts-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .key-concepts-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #3b82f6, #60a5fa);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .key-concepts-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .concept-item {
+            background: var(--background-light);
+            padding: 16px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .concept-item strong {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .concept-item span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.4;
+        }
+
+        /* Main Vitals Table Card */
+        .vitals-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .vitals-card-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .vitals-card-header i {
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .vitals-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        /* Main Table */
+        .vitals-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .vitals-table thead {
+            background: var(--background-light);
+        }
+
+        .vitals-table th {
+            padding: 14px 16px;
+            text-align: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .vitals-table th:first-child {
+            text-align: left;
+        }
+
+        .vitals-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border-color);
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .vitals-table td:first-child {
+            text-align: left;
+        }
+
+        .vitals-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .vitals-table tbody tr:hover {
+            background: var(--background-light);
+        }
+
+        /* Age Group Labels */
+        .age-group {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .age-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1.05rem;
+            color: var(--text-primary);
+        }
+
+        .age-range {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Value Cells */
+        .value-cell {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            background: var(--background-light);
+            padding: 8px 12px;
+            border-radius: 6px;
+            display: inline-block;
+        }
+
+        /* Age Group Colors */
+        .age-newborn .age-name { color: #f59e0b; }
+        .age-infant .age-name { color: #10b981; }
+        .age-child .age-name { color: #3b82f6; }
+        .age-adolescent .age-name { color: #8b5cf6; }
+        .age-adult .age-name { color: #ef4444; }
+
+        /* Individual Vital Sign Sections */
+        .vital-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .vital-section-header {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .vital-section-left {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .vital-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .vital-section.heart-rate .vital-icon { background: linear-gradient(135deg, #ef4444, #f87171); }
+        .vital-section.respiratory .vital-icon { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+        .vital-section.blood-pressure .vital-icon { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+        .vital-section.temperature .vital-icon { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .vital-section.oxygen .vital-icon { background: linear-gradient(135deg, #10b981, #34d399); }
+
+        .vital-info h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .vital-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        .vital-section-right {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .concern-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .concern-high {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .concern-low {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .concern-high {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+        }
+
+        [data-theme="dark"] .concern-low {
+            background: rgba(29, 78, 216, 0.2);
+            color: #93c5fd;
+        }
+
+        .vital-content {
+            padding: 0 24px 24px;
+        }
+
+        /* Age Cards Grid */
+        .age-cards {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+
+        .age-card {
+            background: var(--background-light);
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .age-card:hover {
+            border-color: var(--primary-color);
+        }
+
+        .age-card-label {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .age-card-range {
+            font-size: 0.75rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+        }
+
+        .age-card-value {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            background: var(--card-bg);
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
+
+        /* Color coding for age cards */
+        .age-card.newborn { border-top: 3px solid #f59e0b; }
+        .age-card.infant { border-top: 3px solid #10b981; }
+        .age-card.child { border-top: 3px solid #3b82f6; }
+        .age-card.adolescent { border-top: 3px solid #8b5cf6; }
+        .age-card.adult { border-top: 3px solid #ef4444; }
+
+        .age-card.newborn .age-card-label { color: #f59e0b; }
+        .age-card.infant .age-card-label { color: #10b981; }
+        .age-card.child .age-card-label { color: #3b82f6; }
+        .age-card.adolescent .age-card-label { color: #8b5cf6; }
+        .age-card.adult .age-card-label { color: #ef4444; }
+
+        /* Clinical Notes */
+        .clinical-note {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 10px;
+            padding: 16px 20px;
+            margin-top: 16px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+
+        [data-theme="dark"] .clinical-note {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .clinical-note i {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            margin-top: 2px;
+        }
+
+        .clinical-note p {
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .clinical-note strong {
+            color: #b45309;
+        }
+
+        [data-theme="dark"] .clinical-note strong {
+            color: #fbbf24;
+        }
+
+        /* Bottom CTA */
+        .tool-cta {
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .tool-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tool-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .age-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .tool-header {
+                padding: 40px 20px 60px;
+            }
+
+            .tool-title {
+                font-size: 1.9rem;
+            }
+
+            .age-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .vital-section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .tool-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-title {
+                font-size: 1.6rem;
+            }
+
+            .age-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .concept-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="reference-tool">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="tool-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="tool-category">
+                <i class="fas fa-table"></i> Quick Reference
+            </span>
+            <h1 class="tool-title">Vital Signs Reference</h1>
+            <p class="tool-subtitle">Normal ranges by age group. Know what's normal, what's concerning, and when to escalate.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="tool-content">
+
+        <!-- Quick Jump -->
+        <nav class="quick-jump" aria-label="Jump to section">
+            <div class="quick-jump-title">Jump to Vital Sign</div>
+            <div class="quick-jump-links">
+                <a href="#heart-rate"><i class="fas fa-heartbeat"></i> Heart Rate</a>
+                <a href="#respiratory"><i class="fas fa-lungs"></i> Respiratory Rate</a>
+                <a href="#blood-pressure"><i class="fas fa-stethoscope"></i> Blood Pressure</a>
+                <a href="#temperature"><i class="fas fa-thermometer-half"></i> Temperature</a>
+                <a href="#oxygen"><i class="fas fa-wind"></i> SpO2</a>
+            </div>
+        </nav>
+
+        <!-- Key Concepts -->
+        <div class="key-concepts">
+            <div class="key-concepts-header">
+                <div class="key-concepts-icon">
+                    <i class="fas fa-lightbulb"></i>
+                </div>
+                <h2 class="key-concepts-title">Quick Concepts</h2>
+            </div>
+            <div class="concept-grid">
+                <div class="concept-item">
+                    <strong>Younger = Faster</strong>
+                    <span>Infants and children have higher HR and RR than adults. This is normal.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>BP Increases with Age</strong>
+                    <span>Normal BP is lower in children. Adult BP norms don't apply to kids.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Trends Matter Most</strong>
+                    <span>A single reading is less important than changes over time.</span>
+                </div>
+                <div class="concept-item">
+                    <strong>Context is Everything</strong>
+                    <span>Crying, fever, pain, and activity all affect vitals. Consider the whole picture.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Heart Rate Section -->
+        <section id="heart-rate" class="vital-section heart-rate">
+            <div class="vital-section-header">
+                <div class="vital-section-left">
+                    <div class="vital-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <div class="vital-info">
+                        <h3>Heart Rate</h3>
+                        <p>Beats per minute (bpm) - Count for 60 seconds or multiply 15-sec count by 4</p>
+                    </div>
+                </div>
+                <div class="vital-section-right">
+                    <span class="concern-tag concern-high"><i class="fas fa-arrow-up"></i> Tachycardia</span>
+                    <span class="concern-tag concern-low"><i class="fas fa-arrow-down"></i> Bradycardia</span>
+                </div>
+            </div>
+            <div class="vital-content">
+                <div class="age-cards">
+                    <div class="age-card newborn">
+                        <div class="age-card-label">Newborn</div>
+                        <div class="age-card-range">0-28 days</div>
+                        <div class="age-card-value">120-160</div>
+                    </div>
+                    <div class="age-card infant">
+                        <div class="age-card-label">Infant</div>
+                        <div class="age-card-range">1-12 months</div>
+                        <div class="age-card-value">100-150</div>
+                    </div>
+                    <div class="age-card child">
+                        <div class="age-card-label">Child</div>
+                        <div class="age-card-range">1-10 years</div>
+                        <div class="age-card-value">70-120</div>
+                    </div>
+                    <div class="age-card adolescent">
+                        <div class="age-card-label">Adolescent</div>
+                        <div class="age-card-range">11-17 years</div>
+                        <div class="age-card-value">60-100</div>
+                    </div>
+                    <div class="age-card adult">
+                        <div class="age-card-label">Adult</div>
+                        <div class="age-card-range">18+ years</div>
+                        <div class="age-card-value">60-100</div>
+                    </div>
+                </div>
+                <div class="clinical-note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p><strong>When to be concerned:</strong> Sustained rates outside these ranges, irregular rhythms, or rates that don't match the clinical picture (e.g., bradycardia in a crying infant). Athletes may have lower resting HR (40-60) which can be normal.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Respiratory Rate Section -->
+        <section id="respiratory" class="vital-section respiratory">
+            <div class="vital-section-header">
+                <div class="vital-section-left">
+                    <div class="vital-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <div class="vital-info">
+                        <h3>Respiratory Rate</h3>
+                        <p>Breaths per minute - Count chest rises for 60 seconds (or 30 sec x 2)</p>
+                    </div>
+                </div>
+                <div class="vital-section-right">
+                    <span class="concern-tag concern-high"><i class="fas fa-arrow-up"></i> Tachypnea</span>
+                    <span class="concern-tag concern-low"><i class="fas fa-arrow-down"></i> Bradypnea</span>
+                </div>
+            </div>
+            <div class="vital-content">
+                <div class="age-cards">
+                    <div class="age-card newborn">
+                        <div class="age-card-label">Newborn</div>
+                        <div class="age-card-range">0-28 days</div>
+                        <div class="age-card-value">30-60</div>
+                    </div>
+                    <div class="age-card infant">
+                        <div class="age-card-label">Infant</div>
+                        <div class="age-card-range">1-12 months</div>
+                        <div class="age-card-value">25-40</div>
+                    </div>
+                    <div class="age-card child">
+                        <div class="age-card-label">Child</div>
+                        <div class="age-card-range">1-10 years</div>
+                        <div class="age-card-value">20-30</div>
+                    </div>
+                    <div class="age-card adolescent">
+                        <div class="age-card-label">Adolescent</div>
+                        <div class="age-card-range">11-17 years</div>
+                        <div class="age-card-value">12-20</div>
+                    </div>
+                    <div class="age-card adult">
+                        <div class="age-card-label">Adult</div>
+                        <div class="age-card-range">18+ years</div>
+                        <div class="age-card-value">12-20</div>
+                    </div>
+                </div>
+                <div class="clinical-note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p><strong>Look for work of breathing:</strong> Retractions (intercostal, subcostal, suprasternal), nasal flaring, head bobbing (infants), grunting, use of accessory muscles. These signs of respiratory distress are often more important than the rate alone.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blood Pressure Section -->
+        <section id="blood-pressure" class="vital-section blood-pressure">
+            <div class="vital-section-header">
+                <div class="vital-section-left">
+                    <div class="vital-icon">
+                        <i class="fas fa-stethoscope"></i>
+                    </div>
+                    <div class="vital-info">
+                        <h3>Blood Pressure</h3>
+                        <p>Systolic/Diastolic in mmHg - Use appropriate cuff size (covers 80% of upper arm)</p>
+                    </div>
+                </div>
+                <div class="vital-section-right">
+                    <span class="concern-tag concern-high"><i class="fas fa-arrow-up"></i> Hypertension</span>
+                    <span class="concern-tag concern-low"><i class="fas fa-arrow-down"></i> Hypotension</span>
+                </div>
+            </div>
+            <div class="vital-content">
+                <div class="age-cards">
+                    <div class="age-card newborn">
+                        <div class="age-card-label">Newborn</div>
+                        <div class="age-card-range">0-28 days</div>
+                        <div class="age-card-value">60-90 / 20-60</div>
+                    </div>
+                    <div class="age-card infant">
+                        <div class="age-card-label">Infant</div>
+                        <div class="age-card-range">1-12 months</div>
+                        <div class="age-card-value">80-100 / 55-65</div>
+                    </div>
+                    <div class="age-card child">
+                        <div class="age-card-label">Child</div>
+                        <div class="age-card-range">1-10 years</div>
+                        <div class="age-card-value">90-110 / 55-75</div>
+                    </div>
+                    <div class="age-card adolescent">
+                        <div class="age-card-label">Adolescent</div>
+                        <div class="age-card-range">11-17 years</div>
+                        <div class="age-card-value">100-120 / 60-75</div>
+                    </div>
+                    <div class="age-card adult">
+                        <div class="age-card-label">Adult</div>
+                        <div class="age-card-range">18+ years</div>
+                        <div class="age-card-value"><120 / <80</div>
+                    </div>
+                </div>
+                <div class="clinical-note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p><strong>Adult BP categories:</strong> Normal (<120/<80), Elevated (120-129/<80), Stage 1 HTN (130-139 or 80-89), Stage 2 HTN (≥140 or ≥90), Hypertensive Crisis (>180 and/or >120 - requires immediate attention). For kids, use age/height percentile charts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Temperature Section -->
+        <section id="temperature" class="vital-section temperature">
+            <div class="vital-section-header">
+                <div class="vital-section-left">
+                    <div class="vital-icon">
+                        <i class="fas fa-thermometer-half"></i>
+                    </div>
+                    <div class="vital-info">
+                        <h3>Temperature</h3>
+                        <p>Route matters - Rectal most accurate, oral standard for adults, axillary/temporal for screening</p>
+                    </div>
+                </div>
+                <div class="vital-section-right">
+                    <span class="concern-tag concern-high"><i class="fas fa-arrow-up"></i> Fever / Hyperthermia</span>
+                    <span class="concern-tag concern-low"><i class="fas fa-arrow-down"></i> Hypothermia</span>
+                </div>
+            </div>
+            <div class="vital-content">
+                <div class="age-cards">
+                    <div class="age-card newborn">
+                        <div class="age-card-label">Newborn</div>
+                        <div class="age-card-range">0-28 days</div>
+                        <div class="age-card-value">97.7-99.5°F</div>
+                    </div>
+                    <div class="age-card infant">
+                        <div class="age-card-label">Infant</div>
+                        <div class="age-card-range">1-12 months</div>
+                        <div class="age-card-value">97.7-99.5°F</div>
+                    </div>
+                    <div class="age-card child">
+                        <div class="age-card-label">Child</div>
+                        <div class="age-card-range">1-10 years</div>
+                        <div class="age-card-value">97.0-99.0°F</div>
+                    </div>
+                    <div class="age-card adolescent">
+                        <div class="age-card-label">Adolescent</div>
+                        <div class="age-card-range">11-17 years</div>
+                        <div class="age-card-value">97.0-99.0°F</div>
+                    </div>
+                    <div class="age-card adult">
+                        <div class="age-card-label">Adult</div>
+                        <div class="age-card-range">18+ years</div>
+                        <div class="age-card-value">97.0-99.0°F</div>
+                    </div>
+                </div>
+                <div class="clinical-note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p><strong>Fever definition:</strong> Generally ≥100.4°F (38°C). In neonates <28 days, ANY fever is an emergency - notify provider immediately. Hypothermia (<95°F/35°C) also requires urgent attention. Elderly patients may not mount a fever even with serious infection.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Oxygen Saturation Section -->
+        <section id="oxygen" class="vital-section oxygen">
+            <div class="vital-section-header">
+                <div class="vital-section-left">
+                    <div class="vital-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="vital-info">
+                        <h3>Oxygen Saturation (SpO2)</h3>
+                        <p>Measured by pulse oximetry - Ensure good waveform, warm extremities, no nail polish</p>
+                    </div>
+                </div>
+                <div class="vital-section-right">
+                    <span class="concern-tag concern-low"><i class="fas fa-arrow-down"></i> Hypoxemia</span>
+                </div>
+            </div>
+            <div class="vital-content">
+                <div class="age-cards">
+                    <div class="age-card newborn">
+                        <div class="age-card-label">Newborn</div>
+                        <div class="age-card-range">0-28 days</div>
+                        <div class="age-card-value">95-100%*</div>
+                    </div>
+                    <div class="age-card infant">
+                        <div class="age-card-label">Infant</div>
+                        <div class="age-card-range">1-12 months</div>
+                        <div class="age-card-value">95-100%</div>
+                    </div>
+                    <div class="age-card child">
+                        <div class="age-card-label">Child</div>
+                        <div class="age-card-range">1-10 years</div>
+                        <div class="age-card-value">95-100%</div>
+                    </div>
+                    <div class="age-card adolescent">
+                        <div class="age-card-label">Adolescent</div>
+                        <div class="age-card-range">11-17 years</div>
+                        <div class="age-card-value">95-100%</div>
+                    </div>
+                    <div class="age-card adult">
+                        <div class="age-card-label">Adult</div>
+                        <div class="age-card-range">18+ years</div>
+                        <div class="age-card-value">95-100%</div>
+                    </div>
+                </div>
+                <div class="clinical-note">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p><strong>Critical thresholds:</strong> <94% on room air is concerning and may need supplemental O2. <90% is hypoxemic and needs immediate intervention. *Newborns: pre-ductal SpO2 checked at 24-48 hrs; levels <90% require evaluation. COPD patients may have different target ranges (88-92%) - check orders.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <div class="tool-cta">
+            <h3>More Quick Reference Tools</h3>
+            <p>Check out our other quick reference tools designed for fast lookup during studying or clinicals.</p>
+            <div class="cta-buttons">
+                <a href="lab-values.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-flask"></i>
+                    Lab Values Cheat Sheet
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

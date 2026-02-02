@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Not Be Overwhelmed by Nursing School Content | The Nursing Collective</title>
+    <meta name="description" content="Feeling buried by nursing school content? Learn how to prioritize what matters, use the 80/20 rule, and know when you've studied 'enough.'">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Lighter, more conversational than clinical guides
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header - Simple and welcoming */
+        .guide-header {
+            background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 50%, #2E86AB 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box - Top of content */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #10b981;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: #7c3aed;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: #7c3aed;
+            border-radius: 50%;
+        }
+
+        /* Priority Tiers */
+        .priority-tier {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 16px 0;
+            border-left: 4px solid;
+        }
+
+        .priority-tier.high {
+            border-color: #ef4444;
+        }
+
+        .priority-tier.medium {
+            border-color: #f59e0b;
+        }
+
+        .priority-tier.low {
+            border-color: #6b7280;
+        }
+
+        .priority-label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .priority-tier.high .priority-label {
+            color: #dc2626;
+        }
+
+        .priority-tier.medium .priority-label {
+            color: #d97706;
+        }
+
+        .priority-tier.low .priority-label {
+            color: #6b7280;
+        }
+
+        .priority-tier p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #7c3aed 0%, #2E86AB 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: #7c3aed;
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-lightbulb"></i> Nursing School Survival
+            </span>
+            <h1 class="guide-title">How to Not Be Overwhelmed by the Content</h1>
+            <p class="guide-subtitle">There's too much to learn. Here's how to focus on what actually matters and stop drowning in information.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li>You <strong>cannot</strong> learn everything. Stop trying.</li>
+                <li>80% of exam questions come from 20% of the content. Find that 20%.</li>
+                <li>Your professor tells you what matters. Listen for the signals.</li>
+                <li>Perfect understanding isn't the goal. "Good enough to be safe" is.</li>
+                <li>Feeling overwhelmed is normal. It doesn't mean you're failing.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">First, Accept This Truth</h2>
+            </div>
+
+            <p>Nursing school gives you more content than any human can fully master. This isn't a flaw in your study habits—it's by design. They're preparing you to handle a career where you'll constantly encounter things you don't know.</p>
+
+            <p>The students who struggle most are often the ones trying to learn <em>everything</em>. They read every page, highlight every paragraph, and still feel unprepared because there's always more.</p>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    The Reality Check
+                </div>
+                <p>You will walk into exams not knowing everything. You will graduate not knowing everything. You will be a nurse not knowing everything. The skill isn't "know it all"—it's "know enough to be safe and know how to find the rest."</p>
+            </div>
+
+            <p>Once you accept this, you can stop chasing the impossible and start being strategic.</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">The 80/20 Rule of Nursing School</h2>
+            </div>
+
+            <p>Here's a pattern that holds true across most nursing exams: roughly 80% of the questions come from about 20% of the material. Your job is to identify that high-yield 20% and master it.</p>
+
+            <p><strong>Where to find the high-yield content:</strong></p>
+            <ul>
+                <li>Topics your professor spends the most lecture time on</li>
+                <li>Anything they say "this is important" or "you'll see this again"</li>
+                <li>Content that appears in multiple places (lecture, textbook, and skills lab)</li>
+                <li>Common conditions you'll actually see in clinical (heart failure, diabetes, pneumonia)</li>
+                <li>Safety topics (medication errors, fall prevention, infection control)</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    Pro Tip
+                </div>
+                <p>Look at the learning objectives at the start of each chapter or unit. Exams are built around these. If you can answer every learning objective, you're probably ready.</p>
+            </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">How to Prioritize What to Study</h2>
+            </div>
+
+            <p>Not all content is created equal. Here's a framework for deciding what deserves your limited time and energy:</p>
+
+            <div class="priority-tier high">
+                <div class="priority-label"><i class="fas fa-arrow-up"></i> HIGH PRIORITY - Master This</div>
+                <p>Nursing interventions, safety considerations, priority actions, patient teaching, medication side effects, and "what do you do first" scenarios. This is what exams actually test.</p>
+            </div>
+
+            <div class="priority-tier medium">
+                <div class="priority-label"><i class="fas fa-minus"></i> MEDIUM PRIORITY - Understand It</div>
+                <p>Pathophysiology basics (enough to understand WHY we do what we do), assessment findings, lab values and what they mean, disease progression.</p>
+            </div>
+
+            <div class="priority-tier low">
+                <div class="priority-label"><i class="fas fa-arrow-down"></i> LOW PRIORITY - Skim or Skip</div>
+                <p>Detailed anatomy beyond what's clinically relevant, historical context, rare complications, memorizing exact statistics, anything that wasn't mentioned in lecture.</p>
+            </div>
+
+            <p>When you're short on time, work from the top down. A student who deeply understands priorities and interventions will outperform one who memorized a lot of pathophysiology details.</p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">Reading Your Professor's Signals</h2>
+            </div>
+
+            <p>Your professor is constantly telling you what matters. You just have to learn to listen.</p>
+
+            <p><strong>High-importance signals:</strong></p>
+            <ul>
+                <li>"This will be on the exam" (obviously)</li>
+                <li>"This is really important for clinical practice"</li>
+                <li>"I see students miss this all the time"</li>
+                <li>Spending 20 minutes on one concept vs. 2 minutes on another</li>
+                <li>Repeating something multiple times or in multiple ways</li>
+                <li>Creating a separate handout or slide for something</li>
+            </ul>
+
+            <p><strong>Low-importance signals:</strong></p>
+            <ul>
+                <li>"You don't need to memorize this, but..."</li>
+                <li>"This is just for your reference"</li>
+                <li>"We won't go deep into this"</li>
+                <li>Quickly flipping through slides without discussion</li>
+                <li>Content that's in the textbook but not mentioned in lecture</li>
+            </ul>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    From Someone Who's Been There
+                </div>
+                <p>I used to try to learn everything equally. Then I started tracking what my professor emphasized vs. what appeared on exams. The overlap was almost perfect. They're not trying to trick you—they're trying to teach you what matters.</p>
+            </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">How to Know When You've Studied "Enough"</h2>
+            </div>
+
+            <p>This is the question that haunts every nursing student: "Have I studied enough?" The anxiety of not knowing can lead to endless reviewing that doesn't actually help.</p>
+
+            <p><strong>Signs you're ready:</strong></p>
+            <ul>
+                <li>You can explain the main concepts out loud without looking at notes</li>
+                <li>You're getting 70-80%+ on practice questions (not 100%—that's not realistic)</li>
+                <li>You can answer "what would you do first?" for the major conditions</li>
+                <li>You understand the "why" behind nursing interventions, not just the "what"</li>
+                <li>You've reviewed your weak areas from practice questions</li>
+            </ul>
+
+            <p><strong>Signs you're over-studying (diminishing returns):</strong></p>
+            <ul>
+                <li>You're re-reading the same notes for the third time</li>
+                <li>You're memorizing details you've never seen in practice questions</li>
+                <li>You're exhausted and nothing is sticking anymore</li>
+                <li>You're studying content that wasn't covered in lecture</li>
+            </ul>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    The "Enough" Test
+                </div>
+                <p>Can you teach this topic to a classmate? If you can explain it simply and answer their questions, you know it. If you're just reciting memorized facts, you might need more active review.</p>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">When Overwhelm Hits (And It Will)</h2>
+            </div>
+
+            <p>Even with the best strategy, there will be moments when it all feels like too much. That's normal. Here's what to do:</p>
+
+            <p><strong>In the moment:</strong></p>
+            <ul>
+                <li>Step away for 15-30 minutes. Seriously. Walk, stretch, breathe.</li>
+                <li>Write down everything swirling in your head. Getting it out of your brain helps.</li>
+                <li>Pick ONE thing to focus on next. Just one.</li>
+                <li>Remember: this feeling is temporary. It will pass.</li>
+            </ul>
+
+            <p><strong>For the bigger picture:</strong></p>
+            <ul>
+                <li>Talk to classmates. They're feeling it too.</li>
+                <li>Visit your professor's office hours. They want to help.</li>
+                <li>Use your school's tutoring or academic support services.</li>
+                <li>Remind yourself why you're doing this. That reason is still valid.</li>
+            </ul>
+
+            <p>Feeling overwhelmed doesn't mean you're not cut out for nursing. It means you're in nursing school. Every nurse you admire felt this way too.</p>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>Need Help With Specific Topics?</h3>
+            <p>Our study guides break down complex nursing topics into focused, digestible content so you can stop drowning in information.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

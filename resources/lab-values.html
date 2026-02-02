@@ -1,0 +1,1424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Values Cheat Sheet | The Nursing Collective</title>
+    <meta name="description" content="Quick reference for common lab values. Normal ranges, critical values, and what abnormal results mean. Organized by system for fast lookup.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           QUICK REFERENCE TOOL STYLES
+           Scannable, table-heavy, fast lookup
+           ============================================ */
+
+        .reference-tool {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .tool-header {
+            background: linear-gradient(135deg, #2E86AB 0%, #5ba3c4 50%, #A23B72 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .tool-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .tool-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Main Content */
+        .tool-content {
+            max-width: 900px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Jump Navigation */
+        .quick-jump {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-jump-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quick-jump-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-jump-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--background-light);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-jump-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Important Note Box */
+        .important-note {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border: 1px solid #f59e0b;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-bottom: 32px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+
+        [data-theme="dark"] .important-note {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .important-note i {
+            color: #f59e0b;
+            font-size: 1.3rem;
+            margin-top: 2px;
+        }
+
+        .important-note-content {
+            flex: 1;
+        }
+
+        .important-note-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            color: #b45309;
+            margin-bottom: 4px;
+        }
+
+        [data-theme="dark"] .important-note-title {
+            color: #fbbf24;
+        }
+
+        .important-note p {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Lab Section */
+        .lab-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .lab-section-header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 100%);
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lab-section-header i {
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .lab-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        /* Lab Table */
+        .lab-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .lab-table thead {
+            background: var(--background-light);
+        }
+
+        .lab-table th {
+            padding: 12px 16px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .lab-table td {
+            padding: 14px 16px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            vertical-align: top;
+        }
+
+        .lab-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .lab-table tbody tr:hover {
+            background: var(--background-light);
+        }
+
+        /* Lab Name Column */
+        .lab-name {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .lab-abbrev {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Normal Range */
+        .normal-range {
+            font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            background: var(--background-light);
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+
+        /* Critical Values */
+        .critical-value {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .critical-high, .critical-low {
+            font-size: 0.85rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            width: fit-content;
+        }
+
+        .critical-high {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        [data-theme="dark"] .critical-high {
+            background: rgba(220, 38, 38, 0.2);
+            color: #fca5a5;
+        }
+
+        .critical-low {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .critical-low {
+            background: rgba(29, 78, 216, 0.2);
+            color: #93c5fd;
+        }
+
+        /* Significance Column */
+        .significance {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .sig-high, .sig-low {
+            margin-bottom: 6px;
+        }
+
+        .sig-high:last-child, .sig-low:last-child {
+            margin-bottom: 0;
+        }
+
+        .sig-label {
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .sig-high .sig-label {
+            color: #dc2626;
+        }
+
+        .sig-low .sig-label {
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .sig-high .sig-label {
+            color: #fca5a5;
+        }
+
+        [data-theme="dark"] .sig-low .sig-label {
+            color: #93c5fd;
+        }
+
+        /* Responsive Table */
+        @media (max-width: 768px) {
+            .lab-table {
+                display: block;
+            }
+
+            .lab-table thead {
+                display: none;
+            }
+
+            .lab-table tbody {
+                display: block;
+            }
+
+            .lab-table tr {
+                display: block;
+                padding: 16px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .lab-table tr:last-child {
+                border-bottom: none;
+            }
+
+            .lab-table td {
+                display: block;
+                padding: 4px 0;
+                border: none;
+            }
+
+            .lab-table td:first-child {
+                font-size: 1.05rem;
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .lab-table td::before {
+                content: attr(data-label);
+                font-weight: 600;
+                font-size: 0.75rem;
+                text-transform: uppercase;
+                color: var(--text-secondary);
+                display: block;
+                margin-bottom: 4px;
+            }
+
+            .lab-table td:first-child::before {
+                display: none;
+            }
+        }
+
+        /* Tool Header Colors by Section */
+        .lab-section.cbc .lab-section-header {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+        }
+
+        .lab-section.metabolic .lab-section-header {
+            background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        }
+
+        .lab-section.electrolytes .lab-section-header {
+            background: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 100%);
+        }
+
+        .lab-section.renal .lab-section-header {
+            background: linear-gradient(135deg, #0891b2 0%, #06b6d4 100%);
+        }
+
+        .lab-section.liver .lab-section-header {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+        }
+
+        .lab-section.cardiac .lab-section-header {
+            background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+        }
+
+        .lab-section.coagulation .lab-section-header {
+            background: linear-gradient(135deg, #c026d3 0%, #d946ef 100%);
+        }
+
+        .lab-section.thyroid .lab-section-header {
+            background: linear-gradient(135deg, #ea580c 0%, #f97316 100%);
+        }
+
+        /* Bottom CTA */
+        .tool-cta {
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .tool-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tool-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header {
+                padding: 40px 20px 60px;
+            }
+
+            .tool-title {
+                font-size: 1.9rem;
+            }
+
+            .quick-jump {
+                padding: 20px;
+            }
+
+            .quick-jump-links {
+                gap: 8px;
+            }
+
+            .quick-jump-links a {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+
+            .tool-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-title {
+                font-size: 1.6rem;
+            }
+
+            .important-note {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+    </style>
+</head>
+<body class="reference-tool">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="tool-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="tool-category">
+                <i class="fas fa-table"></i> Quick Reference
+            </span>
+            <h1 class="tool-title">Lab Values Cheat Sheet</h1>
+            <p class="tool-subtitle">Normal ranges, critical values, and what abnormal results mean. Organized by system for fast lookup.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="tool-content">
+
+        <!-- Quick Jump -->
+        <nav class="quick-jump" aria-label="Jump to section">
+            <div class="quick-jump-title">Jump to Section</div>
+            <div class="quick-jump-links">
+                <a href="#cbc"><i class="fas fa-tint"></i> CBC</a>
+                <a href="#metabolic"><i class="fas fa-flask"></i> Metabolic</a>
+                <a href="#electrolytes"><i class="fas fa-bolt"></i> Electrolytes</a>
+                <a href="#renal"><i class="fas fa-kidneys"></i> Renal</a>
+                <a href="#liver"><i class="fas fa-liver"></i> Liver</a>
+                <a href="#cardiac"><i class="fas fa-heartbeat"></i> Cardiac</a>
+                <a href="#coagulation"><i class="fas fa-bandage"></i> Coagulation</a>
+                <a href="#thyroid"><i class="fas fa-brain"></i> Thyroid</a>
+            </div>
+        </nav>
+
+        <!-- Important Note -->
+        <div class="important-note">
+            <i class="fas fa-exclamation-triangle"></i>
+            <div class="important-note-content">
+                <div class="important-note-title">Adult Values Only</div>
+                <p>These are adult reference ranges. Pediatric values differ significantly, especially for newborns and infants. Always verify ranges with your facility's lab reference.</p>
+            </div>
+        </div>
+
+        <!-- CBC Section -->
+        <section id="cbc" class="lab-section cbc">
+            <div class="lab-section-header">
+                <i class="fas fa-tint"></i>
+                <h2 class="lab-section-title">Complete Blood Count (CBC)</h2>
+            </div>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lab Test</th>
+                        <th>Normal Range</th>
+                        <th>Critical Values</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">WBC</div>
+                            <div class="lab-abbrev">White Blood Cells</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">4,500-11,000/μL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >30,000</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <2,000</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Infection, inflammation, leukemia, stress</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Bone marrow suppression, immunodeficiency, chemotherapy</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">RBC</div>
+                            <div class="lab-abbrev">Red Blood Cells</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">M: 4.5-5.5 million/μL</span><br>
+                            <span class="normal-range">F: 4.0-5.0 million/μL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <2.0 million</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Dehydration, polycythemia, chronic hypoxia</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Anemia, hemorrhage, bone marrow failure</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Hemoglobin</div>
+                            <div class="lab-abbrev">Hgb / Hb</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">M: 13.5-17.5 g/dL</span><br>
+                            <span class="normal-range">F: 12.0-16.0 g/dL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >20 g/dL</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <7 g/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Dehydration, polycythemia, COPD</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Anemia, blood loss, nutritional deficiency</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Hematocrit</div>
+                            <div class="lab-abbrev">Hct</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">M: 38-50%</span><br>
+                            <span class="normal-range">F: 36-44%</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >60%</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <20%</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Dehydration, polycythemia</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Anemia, overhydration, blood loss</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Platelets</div>
+                            <div class="lab-abbrev">PLT / Thrombocytes</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">150,000-400,000/μL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >1,000,000</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <50,000</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Inflammation, malignancy, post-splenectomy</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Bleeding risk, bone marrow suppression, DIC</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Basic Metabolic Panel -->
+        <section id="metabolic" class="lab-section metabolic">
+            <div class="lab-section-header">
+                <i class="fas fa-flask"></i>
+                <h2 class="lab-section-title">Basic Metabolic Panel (BMP)</h2>
+            </div>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lab Test</th>
+                        <th>Normal Range</th>
+                        <th>Critical Values</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Glucose</div>
+                            <div class="lab-abbrev">Fasting Blood Sugar</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">70-100 mg/dL (fasting)</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >400 mg/dL</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <50 mg/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Diabetes, stress, steroids, infection</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Insulin overdose, sepsis, liver failure</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">HbA1c</div>
+                            <div class="lab-abbrev">Glycated Hemoglobin</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range"><5.7%</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >10%</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Poor glycemic control over 2-3 months</div>
+                                <div class="sig-low"><span class="sig-label">Goal:</span> <7% for most diabetics</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Electrolytes -->
+        <section id="electrolytes" class="lab-section electrolytes">
+            <div class="lab-section-header">
+                <i class="fas fa-bolt"></i>
+                <h2 class="lab-section-title">Electrolytes</h2>
+            </div>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lab Test</th>
+                        <th>Normal Range</th>
+                        <th>Critical Values</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Sodium</div>
+                            <div class="lab-abbrev">Na+</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">136-145 mEq/L</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >160 mEq/L</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <120 mEq/L</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Dehydration, diabetes insipidus, hyperaldosteronism</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> SIADH, diuretics, heart failure, vomiting</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Potassium</div>
+                            <div class="lab-abbrev">K+</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">3.5-5.0 mEq/L</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >6.5 mEq/L</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <2.5 mEq/L</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Renal failure, ACE inhibitors, tissue damage - CARDIAC RISK</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Diuretics, vomiting, diarrhea - CARDIAC RISK</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Chloride</div>
+                            <div class="lab-abbrev">Cl-</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">98-106 mEq/L</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >120 mEq/L</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <80 mEq/L</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Dehydration, metabolic acidosis</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Vomiting, metabolic alkalosis, diuretics</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Calcium</div>
+                            <div class="lab-abbrev">Ca++</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">8.5-10.5 mg/dL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >13 mg/dL</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <6 mg/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Hyperparathyroidism, malignancy, immobility</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Hypoparathyroidism, vitamin D deficiency, renal failure</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Magnesium</div>
+                            <div class="lab-abbrev">Mg++</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">1.5-2.5 mEq/L</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >4.0 mEq/L</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <1.0 mEq/L</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Renal failure, antacid overuse</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Alcoholism, malnutrition, diuretics - affects K+ and Ca++</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Phosphorus</div>
+                            <div class="lab-abbrev">PO4</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">2.5-4.5 mg/dL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >8.0 mg/dL</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <1.0 mg/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Renal failure, hypoparathyroidism</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Malnutrition, alcoholism, antacids</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Renal Function -->
+        <section id="renal" class="lab-section renal">
+            <div class="lab-section-header">
+                <i class="fas fa-tint"></i>
+                <h2 class="lab-section-title">Renal Function</h2>
+            </div>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lab Test</th>
+                        <th>Normal Range</th>
+                        <th>Critical Values</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">BUN</div>
+                            <div class="lab-abbrev">Blood Urea Nitrogen</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">7-20 mg/dL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >100 mg/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Dehydration, renal failure, GI bleeding, high protein diet</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Liver failure, malnutrition, overhydration</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Creatinine</div>
+                            <div class="lab-abbrev">Cr</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">M: 0.7-1.3 mg/dL</span><br>
+                            <span class="normal-range">F: 0.6-1.1 mg/dL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >10 mg/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Renal impairment (more specific than BUN)</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Low muscle mass, pregnancy</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">GFR</div>
+                            <div class="lab-abbrev">Glomerular Filtration Rate</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">>90 mL/min/1.73m²</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <15 (Stage 5 CKD)</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> CKD staging: 60-89 (Stage 2), 30-59 (Stage 3), 15-29 (Stage 4), <15 (Stage 5/ESRD)</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Liver Function -->
+        <section id="liver" class="lab-section liver">
+            <div class="lab-section-header">
+                <i class="fas fa-flask"></i>
+                <h2 class="lab-section-title">Liver Function Tests (LFTs)</h2>
+            </div>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lab Test</th>
+                        <th>Normal Range</th>
+                        <th>Critical Values</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">ALT</div>
+                            <div class="lab-abbrev">Alanine Aminotransferase</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">7-56 U/L</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >1000 U/L</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Hepatitis, liver damage, hepatotoxic drugs (more liver-specific than AST)</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">AST</div>
+                            <div class="lab-abbrev">Aspartate Aminotransferase</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">10-40 U/L</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >1000 U/L</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Liver damage, MI, muscle injury (less liver-specific)</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">ALP</div>
+                            <div class="lab-abbrev">Alkaline Phosphatase</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">44-147 U/L</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >500 U/L</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Biliary obstruction, bone disease, pregnancy</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Total Bilirubin</div>
+                            <div class="lab-abbrev">T. Bili</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">0.1-1.2 mg/dL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >12 mg/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Jaundice visible >2.5, liver disease, hemolysis, biliary obstruction</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Albumin</div>
+                            <div class="lab-abbrev">Alb</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">3.5-5.0 g/dL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <2.0 g/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Liver disease, malnutrition, nephrotic syndrome - edema risk</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Cardiac Markers -->
+        <section id="cardiac" class="lab-section cardiac">
+            <div class="lab-section-header">
+                <i class="fas fa-heartbeat"></i>
+                <h2 class="lab-section-title">Cardiac Markers</h2>
+            </div>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lab Test</th>
+                        <th>Normal Range</th>
+                        <th>Critical Values</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Troponin I</div>
+                            <div class="lab-abbrev">cTnI</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range"><0.04 ng/mL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >0.4 ng/mL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> MI (rises 3-6 hrs, peaks 12-24 hrs), myocarditis, PE</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">BNP</div>
+                            <div class="lab-abbrev">B-type Natriuretic Peptide</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range"><100 pg/mL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >400 pg/mL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Heart failure (higher = worse HF), renal failure can also elevate</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">CK-MB</div>
+                            <div class="lab-abbrev">Creatine Kinase-MB</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range"><5% of total CK</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >5% of total CK</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> MI (rises 4-8 hrs, returns to normal 48-72 hrs), cardiac surgery</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Coagulation -->
+        <section id="coagulation" class="lab-section coagulation">
+            <div class="lab-section-header">
+                <i class="fas fa-bandage"></i>
+                <h2 class="lab-section-title">Coagulation Studies</h2>
+            </div>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lab Test</th>
+                        <th>Normal Range</th>
+                        <th>Critical Values</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">PT</div>
+                            <div class="lab-abbrev">Prothrombin Time</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">11-13 seconds</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >20 seconds</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ Prolonged:</span> Warfarin therapy, liver disease, vitamin K deficiency</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">INR</div>
+                            <div class="lab-abbrev">International Normalized Ratio</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">0.9-1.1</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >4.0</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">Therapeutic:</span> 2.0-3.0 for most on warfarin, 2.5-3.5 for mechanical valves</div>
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Bleeding risk, hold warfarin, consider vitamin K</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">PTT / aPTT</div>
+                            <div class="lab-abbrev">Partial Thromboplastin Time</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">25-35 seconds</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >100 seconds</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">Therapeutic:</span> 1.5-2.5x normal for heparin therapy</div>
+                                <div class="sig-high"><span class="sig-label">↑ Prolonged:</span> Heparin, hemophilia, DIC</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">D-dimer</div>
+                            <div class="lab-abbrev">Fibrin Degradation Product</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range"><0.5 μg/mL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> Varies by assay</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> DVT, PE, DIC, recent surgery, pregnancy (negative rules out clot)</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Thyroid -->
+        <section id="thyroid" class="lab-section thyroid">
+            <div class="lab-section-header">
+                <i class="fas fa-sync-alt"></i>
+                <h2 class="lab-section-title">Thyroid Function</h2>
+            </div>
+            <table class="lab-table">
+                <thead>
+                    <tr>
+                        <th>Lab Test</th>
+                        <th>Normal Range</th>
+                        <th>Critical Values</th>
+                        <th>Clinical Significance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">TSH</div>
+                            <div class="lab-abbrev">Thyroid Stimulating Hormone</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">0.4-4.0 mU/L</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >20 mU/L</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <0.1 mU/L</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Hypothyroidism (thyroid underactive, body makes more TSH)</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Hyperthyroidism (thyroid overactive, body suppresses TSH)</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Free T4</div>
+                            <div class="lab-abbrev">Free Thyroxine</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">0.8-1.8 ng/dL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >5.0 ng/dL</span>
+                                <span class="critical-low"><i class="fas fa-arrow-down"></i> <0.4 ng/dL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Hyperthyroidism, thyroiditis</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Hypothyroidism</div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td data-label="">
+                            <div class="lab-name">Free T3</div>
+                            <div class="lab-abbrev">Free Triiodothyronine</div>
+                        </td>
+                        <td data-label="Normal Range">
+                            <span class="normal-range">2.3-4.2 pg/mL</span>
+                        </td>
+                        <td data-label="Critical Values">
+                            <div class="critical-value">
+                                <span class="critical-high"><i class="fas fa-arrow-up"></i> >8.0 pg/mL</span>
+                            </div>
+                        </td>
+                        <td data-label="Significance">
+                            <div class="significance">
+                                <div class="sig-high"><span class="sig-label">↑ High:</span> Hyperthyroidism, T3 toxicosis</div>
+                                <div class="sig-low"><span class="sig-label">↓ Low:</span> Hypothyroidism, severe illness</div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Bottom CTA -->
+        <div class="tool-cta">
+            <h3>More Quick Reference Tools</h3>
+            <p>Check out our other quick reference tools designed for fast lookup during studying or clinicals.</p>
+            <div class="cta-buttons">
+                <a href="vital-signs.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-heartbeat"></i>
+                    Vital Signs Reference
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

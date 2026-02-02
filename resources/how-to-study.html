@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Study for Nursing Exams | The Nursing Collective</title>
+    <meta name="description" content="Nursing exams are different. Learn why re-reading notes won't work, how to tackle NCLEX-style questions, and study strategies that actually help you pass.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           SURVIVAL GUIDE STYLES
+           Lighter, more conversational than clinical guides
+           ============================================ */
+
+        .survival-guide {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header - Simple and welcoming */
+        .guide-header {
+            background: linear-gradient(135deg, #2E86AB 0%, #5ba3c4 50%, #A23B72 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .guide-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .guide-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .guide-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .guide-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Container */
+        .guide-content {
+            max-width: 750px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Wins Box - Top of content */
+        .quick-wins {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-wins-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .quick-wins-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .quick-wins-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .quick-wins-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .quick-wins-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .quick-wins-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .quick-wins-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #10b981;
+            font-size: 0.9rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 36px;
+            margin-bottom: 28px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 24px;
+        }
+
+        .section-number {
+            width: 36px;
+            height: 36px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        .content-section p {
+            font-size: 1.05rem;
+            line-height: 1.75;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+        }
+
+        .content-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Callout Boxes */
+        .callout {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 24px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-reality {
+            background: linear-gradient(135deg, #fef3c7 0%, #fef9c3 100%);
+            border-color: #f59e0b;
+        }
+
+        [data-theme="dark"] .callout-reality {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(251, 191, 36, 0.1) 100%);
+        }
+
+        .callout-tip {
+            background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%);
+            border-color: #10b981;
+        }
+
+        [data-theme="dark"] .callout-tip {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(52, 211, 153, 0.1) 100%);
+        }
+
+        .callout-mentor {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border-color: #3b82f6;
+        }
+
+        [data-theme="dark"] .callout-mentor {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .callout-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 10px;
+        }
+
+        .callout-reality .callout-header {
+            color: #b45309;
+        }
+
+        .callout-tip .callout-header {
+            color: #047857;
+        }
+
+        .callout-mentor .callout-header {
+            color: #1d4ed8;
+        }
+
+        [data-theme="dark"] .callout-reality .callout-header { color: #fbbf24; }
+        [data-theme="dark"] .callout-tip .callout-header { color: #34d399; }
+        [data-theme="dark"] .callout-mentor .callout-header { color: #60a5fa; }
+
+        .callout p {
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* Simple Lists */
+        .content-section ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .content-section ul li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 14px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .content-section ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+        }
+
+        /* Comparison Box */
+        .comparison-box {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 24px 0;
+        }
+
+        .comparison-side {
+            background: var(--background-light);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .comparison-side.wrong {
+            border: 2px solid #ef4444;
+        }
+
+        .comparison-side.right {
+            border: 2px solid #10b981;
+        }
+
+        .comparison-label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .comparison-side.wrong .comparison-label {
+            color: #dc2626;
+        }
+
+        .comparison-side.right .comparison-label {
+            color: #059669;
+        }
+
+        .comparison-side ul {
+            margin: 0;
+        }
+
+        .comparison-side ul li {
+            font-size: 0.95rem;
+            margin-bottom: 10px;
+        }
+
+        .comparison-side ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Numbered Steps */
+        .steps-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .steps-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 48px;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+
+        .steps-list li::before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .steps-list li strong {
+            color: var(--text-primary);
+        }
+
+        /* Bottom CTA */
+        .guide-cta {
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .guide-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .guide-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-header {
+                padding: 40px 20px 60px;
+            }
+
+            .guide-title {
+                font-size: 1.9rem;
+            }
+
+            .guide-subtitle {
+                font-size: 1.05rem;
+            }
+
+            .content-section {
+                padding: 28px 24px;
+            }
+
+            .quick-wins {
+                padding: 24px;
+            }
+
+            .comparison-box {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .guide-title {
+                font-size: 1.6rem;
+            }
+
+            .section-title {
+                font-size: 1.2rem;
+            }
+
+            .content-section p,
+            .content-section ul li {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="survival-guide">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="guide-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="guide-category">
+                <i class="fas fa-lightbulb"></i> Nursing School Survival
+            </span>
+            <h1 class="guide-title">How to Study for Nursing Exams</h1>
+            <p class="guide-subtitle">Why re-reading your notes isn't working, and what to do instead. From someone who figured it out the hard way.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="guide-content">
+
+        <!-- Quick Wins -->
+        <div class="quick-wins">
+            <div class="quick-wins-header">
+                <div class="quick-wins-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h2 class="quick-wins-title">The Short Version</h2>
+            </div>
+            <ul class="quick-wins-list">
+                <li>Nursing exams test <strong>application</strong>, not memorization. Knowing facts isn't enough.</li>
+                <li>Practice questions are worth more than hours of re-reading notes.</li>
+                <li>You can't read the entire textbook. Learn to find what matters.</li>
+                <li>NCLEX-style questions have patterns. Learn them early.</li>
+                <li>Study to understand <em>why</em>, not just <em>what</em>.</li>
+            </ul>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">1</span>
+                <h2 class="section-title">Nursing Exams Are Different</h2>
+            </div>
+
+            <p>If you studied for your pre-reqs by reading the textbook, making flashcards, and memorizing key terms, I have some news: that approach probably won't work in nursing school.</p>
+
+            <p>Nursing exams aren't testing whether you <em>know</em> something. They're testing whether you can <em>apply</em> it. The question isn't "What are the signs of heart failure?" It's "Your patient with heart failure is suddenly short of breath. What do you do <strong>first</strong>?"</p>
+
+            <div class="callout callout-reality">
+                <div class="callout-header">
+                    <i class="fas fa-exclamation-circle"></i>
+                    The Reality Check
+                </div>
+                <p>You can memorize every symptom of hypokalemia and still get the question wrong if you don't understand which symptom is the priority, or what nursing action comes first.</p>
+            </div>
+
+            <p>This is why students who did great in A&P or microbiology sometimes struggle in nursing. It's a different kind of thinking. The good news? It's a skill you can learn.</p>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">2</span>
+                <h2 class="section-title">Why Re-Reading Notes Doesn't Work</h2>
+            </div>
+
+            <p>Here's what a lot of students do: they go to lecture, take notes, then "study" by reading those notes over and over. Maybe they highlight things. Maybe they re-copy them in neater handwriting.</p>
+
+            <p>This feels productive. It's not.</p>
+
+            <p>Re-reading is <strong>passive</strong>. Your brain isn't working hard enough to retain anything. You're recognizing information, not learning it. That's why you can read your notes for hours and still blank on the exam.</p>
+
+            <div class="comparison-box">
+                <div class="comparison-side wrong">
+                    <div class="comparison-label">
+                        <i class="fas fa-times-circle"></i>
+                        Passive Studying
+                    </div>
+                    <ul>
+                        <li>Re-reading notes or slides</li>
+                        <li>Highlighting the textbook</li>
+                        <li>Watching videos without pausing</li>
+                        <li>Copying notes over again</li>
+                    </ul>
+                </div>
+                <div class="comparison-side right">
+                    <div class="comparison-label">
+                        <i class="fas fa-check-circle"></i>
+                        Active Studying
+                    </div>
+                    <ul>
+                        <li>Doing practice questions</li>
+                        <li>Teaching concepts out loud</li>
+                        <li>Drawing diagrams from memory</li>
+                        <li>Explaining "why" to yourself</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>Active studying forces your brain to <em>retrieve</em> information, which is exactly what you'll need to do on the exam. It's harder and less comfortable, which is exactly why it works.</p>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">3</span>
+                <h2 class="section-title">Practice Questions Are Everything</h2>
+            </div>
+
+            <p>If I could go back and give first-semester me one piece of advice, it would be this: <strong>do more practice questions, earlier</strong>.</p>
+
+            <p>Practice questions aren't just for "testing yourself" after you've studied. They <em>are</em> the studying. Every question you do—especially the ones you get wrong—teaches you how nursing exams think.</p>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-lightbulb"></i>
+                    How to Actually Use Practice Questions
+                </div>
+                <p>Don't just check if you got it right or wrong. Read the rationale for <strong>every answer</strong>—even the ones you got right. The explanation teaches you more than the question itself.</p>
+            </div>
+
+            <p>Where to find practice questions:</p>
+            <ul>
+                <li>Your textbook's online resources (often included but underused)</li>
+                <li>NCLEX prep apps (even early in your program)</li>
+                <li>Questions at the end of each textbook chapter</li>
+                <li>Your professor's old exams if they share them</li>
+            </ul>
+
+            <p>Start with 10-15 questions per topic. Focus on understanding <em>why</em> each answer is right or wrong, not on your score.</p>
+        </section>
+
+        <!-- Section 4 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">4</span>
+                <h2 class="section-title">You Can't Read the Whole Textbook</h2>
+            </div>
+
+            <p>Your nursing textbook is probably 1,400+ pages. You're not going to read all of it. Nobody does. And here's a secret: you don't need to.</p>
+
+            <p>The textbook is a <strong>reference</strong>, not a novel. Your job is to learn how to find what you need, not to read cover to cover.</p>
+
+            <div class="callout callout-mentor">
+                <div class="callout-header">
+                    <i class="fas fa-user-graduate"></i>
+                    What Actually Works
+                </div>
+                <p>Use your syllabus and lecture slides to identify what topics matter. Then go to those specific sections in the textbook. Read the learning objectives, headers, and summary boxes first. Deep-read only what you don't understand from class.</p>
+            </div>
+
+            <p><strong>The 80/20 of nursing textbooks:</strong></p>
+            <ul>
+                <li><strong>Read carefully:</strong> Nursing interventions, priority actions, patient teaching, safety considerations</li>
+                <li><strong>Skim:</strong> Pathophysiology basics (enough to understand the "why")</li>
+                <li><strong>Reference only:</strong> Detailed anatomy, historical background, rare complications</li>
+            </ul>
+
+            <p>If something wasn't mentioned in lecture, it probably won't be on the exam. Professors test what they teach.</p>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">5</span>
+                <h2 class="section-title">Understand the NCLEX Question Pattern</h2>
+            </div>
+
+            <p>Even if the NCLEX feels far away, your nursing exams are written in the same style. Learning this pattern now will help you immediately.</p>
+
+            <p><strong>The typical NCLEX-style question asks:</strong></p>
+            <ul>
+                <li>What do you do <strong>first</strong>? (Priority)</li>
+                <li>What's the <strong>best</strong> response? (There may be multiple "okay" answers)</li>
+                <li>What requires <strong>immediate</strong> action? (Recognizing deterioration)</li>
+                <li>What indicates the patient <strong>understood</strong> teaching? (Evaluation)</li>
+            </ul>
+
+            <p>These questions usually have multiple answers that <em>could</em> be correct in some situation. Your job is to pick the <strong>most correct</strong> one for that specific scenario.</p>
+
+            <div class="callout callout-tip">
+                <div class="callout-header">
+                    <i class="fas fa-key"></i>
+                    Key Strategies
+                </div>
+                <p><strong>ABCs first:</strong> Airway, Breathing, Circulation. If an answer addresses one of these, it's often the priority.<br><br>
+                <strong>Assessment before intervention:</strong> Usually you need to gather more information before acting—unless it's an emergency.<br><br>
+                <strong>Safety always matters:</strong> Patient safety trumps most other considerations.</p>
+            </div>
+        </section>
+
+        <!-- Section 6 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">6</span>
+                <h2 class="section-title">A Study Approach That Works</h2>
+            </div>
+
+            <p>Here's a practical approach you can start using this week:</p>
+
+            <ol class="steps-list">
+                <li><strong>Before lecture:</strong> Skim the chapter headings and learning objectives. Just 10 minutes to prime your brain.</li>
+                <li><strong>During lecture:</strong> Focus on understanding, not transcribing. Write down things the professor emphasizes or repeats.</li>
+                <li><strong>After lecture (same day):</strong> Spend 20-30 minutes reviewing. Explain the key concepts out loud as if teaching someone.</li>
+                <li><strong>Before the exam:</strong> Do practice questions. Lots of them. Read every rationale.</li>
+                <li><strong>The night before:</strong> Light review only. Get sleep. Seriously.</li>
+            </ol>
+
+            <p>This works because you're spacing out your learning (not cramming), actively engaging with the material, and practicing the same type of thinking the exam requires.</p>
+        </section>
+
+        <!-- Section 7 -->
+        <section class="content-section">
+            <div class="section-header">
+                <span class="section-number">7</span>
+                <h2 class="section-title">When You Get a Question Wrong</h2>
+            </div>
+
+            <p>Wrong answers are not failures. They're data. Every wrong answer tells you exactly what you need to study.</p>
+
+            <p>When you miss a question, ask yourself:</p>
+            <ul>
+                <li>Did I not know the content? (Go back and learn it)</li>
+                <li>Did I know it but misread the question? (Practice reading more carefully)</li>
+                <li>Did I know it but pick the wrong priority? (Study the "first/best" framework)</li>
+                <li>Did I second-guess myself and change my answer? (Trust your first instinct more)</li>
+            </ul>
+
+            <p>Keep a running list of concepts you keep missing. That's your personalized study guide for the final.</p>
+        </section>
+
+        <!-- Final CTA -->
+        <div class="guide-cta">
+            <h3>Ready to Go Deeper?</h3>
+            <p>Our study guides break down complex nursing topics into clear, exam-focused content that actually makes sense.</p>
+            <div class="cta-buttons">
+                <a href="../guides.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-book-medical"></i>
+                    Browse Study Guides
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

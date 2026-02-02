@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clinical Documentation Phrases | The Nursing Collective</title>
+    <meta name="description" content="Copy-paste charting phrases for nursing documentation. EMR-friendly language for assessments, interventions, patient responses, and teaching.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/main.css">
+
+    <style>
+        /* ============================================
+           QUICK REFERENCE TOOL STYLES
+           ============================================ */
+
+        .reference-tool {
+            font-family: 'Source Sans 3', sans-serif;
+            color: var(--text-primary);
+            background: var(--background-light);
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .tool-header {
+            background: linear-gradient(135deg, #2E86AB 0%, #5ba3c4 50%, #A23B72 100%);
+            padding: 60px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+
+        .tool-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: var(--background-light);
+            border-radius: 40px 40px 0 0;
+        }
+
+        .header-content {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .tool-category {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tool-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+            line-height: 1.2;
+        }
+
+        .tool-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.15rem;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            transition: color 0.2s;
+        }
+
+        .header-content .back-link {
+            display: block;
+            text-align: left;
+            width: fit-content;
+        }
+
+        .back-link:hover {
+            color: white;
+        }
+
+        /* Main Content */
+        .tool-content {
+            max-width: 900px;
+            margin: -20px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Quick Jump Navigation */
+        .quick-jump {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-jump-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .quick-jump-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-jump-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 8px 16px;
+            background: var(--background-light);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border: 1px solid var(--border-color);
+        }
+
+        .quick-jump-links a:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+
+        /* Documentation Tips Box */
+        .doc-tips {
+            background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 100%);
+            border: 1px solid #3b82f6;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        [data-theme="dark"] .doc-tips {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(96, 165, 250, 0.1) 100%);
+        }
+
+        .doc-tips-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .doc-tips-header i {
+            color: #3b82f6;
+            font-size: 1.3rem;
+        }
+
+        .doc-tips-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1d4ed8;
+            margin: 0;
+        }
+
+        [data-theme="dark"] .doc-tips-header h2 {
+            color: #60a5fa;
+        }
+
+        .doc-tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+        }
+
+        .doc-tip-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+        }
+
+        .doc-tip-item i {
+            color: #10b981;
+            font-size: 0.85rem;
+            margin-top: 3px;
+        }
+
+        /* Phrase Section */
+        .phrase-section {
+            background: var(--card-bg);
+            border-radius: 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .phrase-section-header {
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .phrase-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        .phrase-section.assessment .phrase-icon { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
+        .phrase-section.interventions .phrase-icon { background: linear-gradient(135deg, #10b981, #34d399); }
+        .phrase-section.response .phrase-icon { background: linear-gradient(135deg, #8b5cf6, #a78bfa); }
+        .phrase-section.teaching .phrase-icon { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
+        .phrase-section.pain .phrase-icon { background: linear-gradient(135deg, #ef4444, #f87171); }
+        .phrase-section.safety .phrase-icon { background: linear-gradient(135deg, #ec4899, #f472b6); }
+
+        .phrase-info h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .phrase-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Phrase Content */
+        .phrase-content {
+            padding: 20px 24px;
+        }
+
+        /* Phrase Category */
+        .phrase-category {
+            margin-bottom: 24px;
+        }
+
+        .phrase-category:last-child {
+            margin-bottom: 0;
+        }
+
+        .phrase-category-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Phrase List */
+        .phrase-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .phrase-item {
+            background: var(--background-light);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+            border: 1px solid transparent;
+            transition: all 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .phrase-item:hover {
+            border-color: var(--primary-color);
+            background: var(--card-bg);
+        }
+
+        .phrase-item::after {
+            content: 'Click to copy';
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.75rem;
+            color: var(--text-light);
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+
+        .phrase-item:hover::after {
+            opacity: 1;
+        }
+
+        .phrase-item.copied::after {
+            content: 'Copied!';
+            color: #10b981;
+            opacity: 1;
+        }
+
+        /* Placeholder styling */
+        .phrase-item .placeholder {
+            background: #fef3c7;
+            color: #92400e;
+            padding: 1px 6px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        [data-theme="dark"] .phrase-item .placeholder {
+            background: rgba(245, 158, 11, 0.3);
+            color: #fbbf24;
+        }
+
+        /* Phrase Grid for shorter phrases */
+        .phrase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 8px;
+        }
+
+        .phrase-grid .phrase-item {
+            padding: 10px 14px;
+            font-size: 0.9rem;
+        }
+
+        .phrase-grid .phrase-item::after {
+            display: none;
+        }
+
+        /* Bottom CTA */
+        .tool-cta {
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+        }
+
+        .tool-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .tool-cta p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 24px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-btn-primary {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-btn-secondary {
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tool-header {
+                padding: 40px 20px 60px;
+            }
+
+            .tool-title {
+                font-size: 1.9rem;
+            }
+
+            .phrase-section-header {
+                padding: 16px;
+            }
+
+            .phrase-content {
+                padding: 16px;
+            }
+
+            .phrase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .phrase-item::after {
+                display: none;
+            }
+
+            .tool-cta {
+                padding: 32px 24px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .cta-btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tool-title {
+                font-size: 1.6rem;
+            }
+
+            .doc-tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="reference-tool">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Header -->
+    <header class="tool-header">
+        <div class="header-content">
+            <a href="../resources.html" class="back-link">
+                <i class="fas fa-arrow-left"></i>
+                Back to Resources
+            </a>
+            <span class="tool-category">
+                <i class="fas fa-table"></i> Quick Reference
+            </span>
+            <h1 class="tool-title">Clinical Documentation Phrases</h1>
+            <p class="tool-subtitle">EMR-ready charting language. Click any phrase to copy it, then customize the highlighted portions for your patient.</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="tool-content">
+
+        <!-- Quick Jump -->
+        <nav class="quick-jump" aria-label="Jump to section">
+            <div class="quick-jump-title">Jump to Category</div>
+            <div class="quick-jump-links">
+                <a href="#assessment"><i class="fas fa-stethoscope"></i> Assessment</a>
+                <a href="#interventions"><i class="fas fa-hand-holding-medical"></i> Interventions</a>
+                <a href="#response"><i class="fas fa-chart-line"></i> Patient Response</a>
+                <a href="#teaching"><i class="fas fa-chalkboard-teacher"></i> Teaching</a>
+                <a href="#pain"><i class="fas fa-user-injured"></i> Pain</a>
+                <a href="#safety"><i class="fas fa-shield-alt"></i> Safety</a>
+            </div>
+        </nav>
+
+        <!-- Documentation Tips -->
+        <div class="doc-tips">
+            <div class="doc-tips-header">
+                <i class="fas fa-lightbulb"></i>
+                <h2>Documentation Essentials</h2>
+            </div>
+            <div class="doc-tips-grid">
+                <div class="doc-tip-item">
+                    <i class="fas fa-check"></i>
+                    <span><strong>Be objective</strong> - Document what you see, not what you think</span>
+                </div>
+                <div class="doc-tip-item">
+                    <i class="fas fa-check"></i>
+                    <span><strong>Be specific</strong> - Use numbers and measurements when possible</span>
+                </div>
+                <div class="doc-tip-item">
+                    <i class="fas fa-check"></i>
+                    <span><strong>Be timely</strong> - Document as close to the event as possible</span>
+                </div>
+                <div class="doc-tip-item">
+                    <i class="fas fa-check"></i>
+                    <span><strong>If it's not documented, it wasn't done</strong></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Assessment Findings -->
+        <section id="assessment" class="phrase-section assessment">
+            <div class="phrase-section-header">
+                <div class="phrase-icon">
+                    <i class="fas fa-stethoscope"></i>
+                </div>
+                <div class="phrase-info">
+                    <h2>Assessment Findings</h2>
+                    <p>Documenting what you observe during assessment</p>
+                </div>
+            </div>
+            <div class="phrase-content">
+                <!-- General/Neuro -->
+                <div class="phrase-category">
+                    <div class="phrase-category-title">General / Neurological</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Patient alert and oriented x4 (person, place, time, situation).</div>
+                        <div class="phrase-item">Patient alert and oriented x3 (person, place, time). Confused to situation.</div>
+                        <div class="phrase-item">Patient lethargic but arousable to verbal stimuli.</div>
+                        <div class="phrase-item">Patient unresponsive to verbal stimuli, responds to painful stimuli.</div>
+                        <div class="phrase-item">PERRLA (pupils equal, round, reactive to light and accommodation).</div>
+                        <div class="phrase-item">Pupils <span class="placeholder">[size]</span> mm bilaterally, reactive to light.</div>
+                        <div class="phrase-item">Speech clear and coherent. Follows commands appropriately.</div>
+                        <div class="phrase-item">Grip strength equal bilaterally. Moves all extremities.</div>
+                    </div>
+                </div>
+
+                <!-- Cardiovascular -->
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Cardiovascular</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Heart sounds S1 S2 present, regular rate and rhythm. No murmurs, rubs, or gallops.</div>
+                        <div class="phrase-item">Heart sounds irregular. <span class="placeholder">[Describe rhythm]</span></div>
+                        <div class="phrase-item">Peripheral pulses palpable bilaterally, <span class="placeholder">[+1/+2/+3]</span>.</div>
+                        <div class="phrase-item">Capillary refill <span class="placeholder">[<3 sec / >3 sec]</span>.</div>
+                        <div class="phrase-item">Extremities warm and dry. No cyanosis or pallor.</div>
+                        <div class="phrase-item">Lower extremity edema noted, <span class="placeholder">[+1/+2/+3/+4]</span> pitting, bilateral.</div>
+                        <div class="phrase-item">No peripheral edema noted.</div>
+                        <div class="phrase-item">Telemetry showing <span class="placeholder">[rhythm]</span> at <span class="placeholder">[rate]</span> bpm.</div>
+                    </div>
+                </div>
+
+                <!-- Respiratory -->
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Respiratory</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Lung sounds clear to auscultation bilaterally. No adventitious sounds.</div>
+                        <div class="phrase-item">Lung sounds diminished at bases bilaterally.</div>
+                        <div class="phrase-item">Crackles noted in <span class="placeholder">[location: bilateral bases / RLL / LLL]</span>.</div>
+                        <div class="phrase-item">Wheezes noted throughout lung fields bilaterally.</div>
+                        <div class="phrase-item">Rhonchi noted, cleared with cough.</div>
+                        <div class="phrase-item">Respirations even and unlabored. No accessory muscle use.</div>
+                        <div class="phrase-item">Patient in mild respiratory distress. Using accessory muscles. Retractions noted.</div>
+                        <div class="phrase-item">Patient on <span class="placeholder">[O2 delivery device]</span> at <span class="placeholder">[L/min]</span>. SpO2 <span class="placeholder">[%]</span>.</div>
+                        <div class="phrase-item">Cough present, <span class="placeholder">[productive/nonproductive]</span>. Sputum <span class="placeholder">[color/consistency]</span>.</div>
+                    </div>
+                </div>
+
+                <!-- GI -->
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Gastrointestinal</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Abdomen soft, non-tender, non-distended. Bowel sounds active x4 quadrants.</div>
+                        <div class="phrase-item">Abdomen distended. Bowel sounds <span class="placeholder">[hypoactive/hyperactive/absent]</span>.</div>
+                        <div class="phrase-item">Tenderness noted in <span class="placeholder">[quadrant]</span> with palpation.</div>
+                        <div class="phrase-item">Patient reports last BM <span class="placeholder">[date/time]</span>.</div>
+                        <div class="phrase-item">Patient tolerating <span class="placeholder">[diet type]</span> without nausea or vomiting.</div>
+                        <div class="phrase-item">Patient NPO per orders.</div>
+                        <div class="phrase-item">NG tube to <span class="placeholder">[low wall suction / gravity]</span>, draining <span class="placeholder">[amount, color]</span>.</div>
+                    </div>
+                </div>
+
+                <!-- Skin/Wounds -->
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Skin / Wounds</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Skin warm, dry, and intact. No breakdown noted.</div>
+                        <div class="phrase-item">Skin pale and diaphoretic.</div>
+                        <div class="phrase-item">Braden score <span class="placeholder">[score]</span>. Pressure injury precautions in place.</div>
+                        <div class="phrase-item">Surgical incision <span class="placeholder">[location]</span> - edges well-approximated, no redness, swelling, or drainage.</div>
+                        <div class="phrase-item">Wound <span class="placeholder">[location]</span> with <span class="placeholder">[serous/sanguinous/purulent]</span> drainage noted.</div>
+                        <div class="phrase-item">IV site <span class="placeholder">[location]</span> patent without redness, swelling, or infiltration.</div>
+                        <div class="phrase-item">Foley catheter draining clear yellow urine.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interventions -->
+        <section id="interventions" class="phrase-section interventions">
+            <div class="phrase-section-header">
+                <div class="phrase-icon">
+                    <i class="fas fa-hand-holding-medical"></i>
+                </div>
+                <div class="phrase-info">
+                    <h2>Interventions Performed</h2>
+                    <p>Documenting nursing actions and care provided</p>
+                </div>
+            </div>
+            <div class="phrase-content">
+                <!-- Medication Administration -->
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Medication Administration</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item"><span class="placeholder">[Medication name]</span> <span class="placeholder">[dose]</span> administered <span class="placeholder">[route]</span> per order.</div>
+                        <div class="phrase-item">PRN <span class="placeholder">[medication]</span> administered for <span class="placeholder">[indication]</span>.</div>
+                        <div class="phrase-item">Patient's home medications reviewed and reconciled.</div>
+                        <div class="phrase-item">Insulin administered per sliding scale. Blood glucose <span class="placeholder">[value]</span>.</div>
+                        <div class="phrase-item">IV antibiotics infusing via pump. Site assessed, no signs of infiltration.</div>
+                    </div>
+                </div>
+
+                <!-- Procedures -->
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Procedures / Treatments</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Vital signs obtained and documented.</div>
+                        <div class="phrase-item">Blood glucose checked via fingerstick. Result: <span class="placeholder">[value]</span> mg/dL.</div>
+                        <div class="phrase-item">Wound care performed per protocol. <span class="placeholder">[Describe dressing applied]</span>.</div>
+                        <div class="phrase-item">Foley catheter inserted using sterile technique. <span class="placeholder">[Size]</span> Fr. Immediate return of <span class="placeholder">[amount]</span> mL clear yellow urine.</div>
+                        <div class="phrase-item">Incentive spirometer use encouraged. Patient demonstrated proper technique.</div>
+                        <div class="phrase-item">Sequential compression devices applied bilaterally.</div>
+                        <div class="phrase-item">Patient repositioned to <span class="placeholder">[position]</span>. Pressure points padded.</div>
+                        <div class="phrase-item">Assisted patient to ambulate <span class="placeholder">[distance]</span> with <span class="placeholder">[assistive device / assistance level]</span>.</div>
+                        <div class="phrase-item">Suctioning performed. <span class="placeholder">[Amount/color]</span> secretions obtained.</div>
+                    </div>
+                </div>
+
+                <!-- Communication -->
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Communication</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Provider notified of <span class="placeholder">[finding/concern]</span>. New orders received.</div>
+                        <div class="phrase-item">Rapid Response called for <span class="placeholder">[indication]</span>.</div>
+                        <div class="phrase-item">Report given to oncoming RN at bedside.</div>
+                        <div class="phrase-item">Family updated on patient's condition per patient's consent.</div>
+                        <div class="phrase-item">Pharmacy notified of <span class="placeholder">[concern]</span>.</div>
+                        <div class="phrase-item">Social work consult placed for <span class="placeholder">[reason]</span>.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Response -->
+        <section id="response" class="phrase-section response">
+            <div class="phrase-section-header">
+                <div class="phrase-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="phrase-info">
+                    <h2>Patient Response</h2>
+                    <p>Documenting how the patient responded to interventions</p>
+                </div>
+            </div>
+            <div class="phrase-content">
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Positive Responses</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Patient reports pain relief following medication administration. Pain now <span class="placeholder">[new score]</span>/10.</div>
+                        <div class="phrase-item">Patient tolerated procedure without complications.</div>
+                        <div class="phrase-item">Patient tolerated ambulation well. No dizziness or shortness of breath reported.</div>
+                        <div class="phrase-item">SpO2 improved to <span class="placeholder">[%]</span> following oxygen therapy.</div>
+                        <div class="phrase-item">Patient's respiratory distress resolved following treatment.</div>
+                        <div class="phrase-item">Blood pressure responded to medication. Now <span class="placeholder">[BP reading]</span>.</div>
+                        <div class="phrase-item">Patient resting comfortably. No acute distress noted.</div>
+                        <div class="phrase-item">Nausea resolved following antiemetic administration.</div>
+                    </div>
+                </div>
+
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Concerning Responses / No Improvement</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Patient reports no relief from pain medication. Provider notified.</div>
+                        <div class="phrase-item">Patient's condition unchanged despite intervention. Continuing to monitor.</div>
+                        <div class="phrase-item">Patient experienced <span class="placeholder">[adverse effect]</span> following medication. Medication held. Provider notified.</div>
+                        <div class="phrase-item">Blood pressure remains elevated at <span class="placeholder">[BP]</span> despite medication. Provider aware.</div>
+                        <div class="phrase-item">Patient became hypotensive following <span class="placeholder">[intervention]</span>. IV fluids initiated per order.</div>
+                        <div class="phrase-item">Patient required increased oxygen support. Now on <span class="placeholder">[device]</span> at <span class="placeholder">[L/min]</span>.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Patient Teaching -->
+        <section id="teaching" class="phrase-section teaching">
+            <div class="phrase-section-header">
+                <div class="phrase-icon">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                </div>
+                <div class="phrase-info">
+                    <h2>Patient Teaching</h2>
+                    <p>Documenting education provided and patient understanding</p>
+                </div>
+            </div>
+            <div class="phrase-content">
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Teaching Provided</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Patient educated on <span class="placeholder">[topic]</span> using <span class="placeholder">[teach-back / demonstration / written materials]</span>.</div>
+                        <div class="phrase-item">Medication teaching provided including purpose, dosage, side effects, and when to call provider.</div>
+                        <div class="phrase-item">Discharge instructions reviewed with patient and family.</div>
+                        <div class="phrase-item">Fall prevention education provided. Patient verbalized understanding.</div>
+                        <div class="phrase-item">Diet education provided. Patient able to identify appropriate food choices.</div>
+                        <div class="phrase-item">Wound care instructions demonstrated. Patient performed return demonstration correctly.</div>
+                        <div class="phrase-item">Signs and symptoms to report discussed. Patient verbalized when to seek medical attention.</div>
+                        <div class="phrase-item">Incentive spirometer use taught. Patient demonstrated correct technique.</div>
+                    </div>
+                </div>
+
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Patient Understanding</div>
+                    <div class="phrase-grid">
+                        <div class="phrase-item">Patient verbalized understanding.</div>
+                        <div class="phrase-item">Patient demonstrated understanding via teach-back.</div>
+                        <div class="phrase-item">Patient able to return demonstrate correctly.</div>
+                        <div class="phrase-item">Patient had questions which were answered.</div>
+                        <div class="phrase-item">Family present and verbalized understanding.</div>
+                        <div class="phrase-item">Written materials provided for reference.</div>
+                        <div class="phrase-item">Interpreter used for teaching. Patient verbalized understanding.</div>
+                        <div class="phrase-item">Further teaching needed. Will reinforce.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pain Assessment & Management -->
+        <section id="pain" class="phrase-section pain">
+            <div class="phrase-section-header">
+                <div class="phrase-icon">
+                    <i class="fas fa-user-injured"></i>
+                </div>
+                <div class="phrase-info">
+                    <h2>Pain Assessment & Management</h2>
+                    <p>Documenting pain and interventions</p>
+                </div>
+            </div>
+            <div class="phrase-content">
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Pain Assessment</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Patient rates pain <span class="placeholder">[0-10]</span>/10 at <span class="placeholder">[location]</span>.</div>
+                        <div class="phrase-item">Pain described as <span class="placeholder">[sharp/dull/aching/burning/throbbing]</span>.</div>
+                        <div class="phrase-item">Pain <span class="placeholder">[constant / intermittent]</span>, worsened by <span class="placeholder">[movement/breathing/etc]</span>.</div>
+                        <div class="phrase-item">Patient denies pain at this time.</div>
+                        <div class="phrase-item">Nonverbal pain indicators observed: <span class="placeholder">[grimacing/guarding/restlessness]</span>.</div>
+                        <div class="phrase-item">FLACC score <span class="placeholder">[score]</span> (for nonverbal patients).</div>
+                    </div>
+                </div>
+
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Pain Interventions & Response</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">PRN pain medication administered per order. Will reassess in <span class="placeholder">[30-60]</span> minutes.</div>
+                        <div class="phrase-item">Nonpharmacologic interventions implemented: <span class="placeholder">[repositioning/ice/heat/distraction]</span>.</div>
+                        <div class="phrase-item">Patient reassessed. Pain now <span class="placeholder">[new score]</span>/10. Patient reports adequate relief.</div>
+                        <div class="phrase-item">Pain goal of <span class="placeholder">[#]</span>/10 met. Patient comfortable and able to <span class="placeholder">[rest/ambulate/perform ADLs]</span>.</div>
+                        <div class="phrase-item">Pain unrelieved by current regimen. Provider notified for additional orders.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Safety -->
+        <section id="safety" class="phrase-section safety">
+            <div class="phrase-section-header">
+                <div class="phrase-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div class="phrase-info">
+                    <h2>Safety Documentation</h2>
+                    <p>Falls, precautions, and safety measures</p>
+                </div>
+            </div>
+            <div class="phrase-content">
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Fall Prevention</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Fall risk assessment completed. Morse Fall Scale score: <span class="placeholder">[score]</span>. <span class="placeholder">[Low/Moderate/High]</span> risk.</div>
+                        <div class="phrase-item">Fall precautions in place: bed in low position, call light within reach, non-skid footwear provided.</div>
+                        <div class="phrase-item">Patient instructed to call for assistance before getting out of bed.</div>
+                        <div class="phrase-item">Bed alarm activated.</div>
+                        <div class="phrase-item">Yellow fall risk bracelet applied.</div>
+                        <div class="phrase-item">Patient ambulating with <span class="placeholder">[walker/cane/gait belt]</span> and standby assist.</div>
+                    </div>
+                </div>
+
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Isolation / Precautions</div>
+                    <div class="phrase-grid">
+                        <div class="phrase-item">Contact precautions in place.</div>
+                        <div class="phrase-item">Droplet precautions in place.</div>
+                        <div class="phrase-item">Airborne precautions in place. N95 worn.</div>
+                        <div class="phrase-item">Isolation signage posted on door.</div>
+                        <div class="phrase-item">Hand hygiene performed before and after patient care.</div>
+                        <div class="phrase-item">PPE donned/doffed per protocol.</div>
+                    </div>
+                </div>
+
+                <div class="phrase-category">
+                    <div class="phrase-category-title">Restraints (if applicable)</div>
+                    <div class="phrase-list">
+                        <div class="phrase-item">Soft wrist restraints applied per provider order for <span class="placeholder">[indication]</span>.</div>
+                        <div class="phrase-item">Restraints assessed. Circulation, sensation, and movement intact to restrained extremities.</div>
+                        <div class="phrase-item">Restraint released for ROM and skin assessment. No skin breakdown noted.</div>
+                        <div class="phrase-item">Less restrictive alternatives attempted: <span class="placeholder">[reorientation/family presence/diversional activities]</span>.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom CTA -->
+        <div class="tool-cta">
+            <h3>More Quick Reference Tools</h3>
+            <p>Check out our other quick reference tools designed for fast lookup during studying or clinicals.</p>
+            <div class="cta-buttons">
+                <a href="abbreviations.html" class="cta-btn cta-btn-primary">
+                    <i class="fas fa-spell-check"></i>
+                    Medical Abbreviations
+                </a>
+                <a href="../resources.html" class="cta-btn cta-btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Back to Resources
+                </a>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Copy to clipboard functionality -->
+    <script>
+        document.querySelectorAll('.phrase-item').forEach(item => {
+            item.addEventListener('click', function() {
+                // Get the text content, replacing placeholder spans with bracket notation
+                let text = this.innerHTML;
+                // Convert placeholder spans to bracketed text
+                text = text.replace(/<span class="placeholder">\[([^\]]+)\]<\/span>/g, '[$1]');
+                // Remove any remaining HTML tags
+                text = text.replace(/<[^>]*>/g, '');
+                // Trim whitespace
+                text = text.trim();
+
+                // Copy to clipboard
+                navigator.clipboard.writeText(text).then(() => {
+                    // Visual feedback
+                    this.classList.add('copied');
+                    setTimeout(() => {
+                        this.classList.remove('copied');
+                    }, 1500);
+                });
+            });
+        });
+    </script>
+
+    <!-- Dark mode script -->
+    <script src="../dark-mode.js"></script>
+</body>
+</html>

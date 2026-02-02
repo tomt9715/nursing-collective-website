@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asthma Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Asthma. Learn to classify asthma severity levels, differentiate rescue vs controller medications, and recognize status asthmaticus emergency.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           PDF-STYLE STUDY GUIDE STYLES - ASTHMA
+           ============================================ */
+
+        :root {
+            --primary-color: #2E86AB;
+            --primary-dark: #236b8a;
+            --secondary-color: #A23B72;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar - Fixed at top */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .download-bar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f0f9ff;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Document Container */
+        .document-container {
+            max-width: 850px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Cover Page - Colors inspired by asthma inhaler (light blue/teal) */
+        .cover-page {
+            background: linear-gradient(135deg, #7DD3FC 0%, #38BDF8 40%, #0EA5E9 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 12px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-category {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content {
+            padding: 60px;
+        }
+
+        /* Learning Objectives */
+        .learning-objectives {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .learning-objectives li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .learning-objectives li i {
+            color: #10b981;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Table of Contents */
+        .table-of-contents {
+            background: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .table-of-contents h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .table-of-contents li {
+            break-inside: avoid;
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .table-of-contents a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .toc-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .table-of-contents a:hover .toc-number {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .guide-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .guide-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 28px 0 14px;
+        }
+
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+        }
+
+        .guide-section p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            margin-bottom: 14px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+        }
+
+        .guide-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .info-box.clinical-pearl {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-color: #f59e0b;
+        }
+
+        .info-box.warning {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .info-box.tip {
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .info-box.nclex-tip {
+            background: #f5f3ff;
+            border-color: #8b5cf6;
+        }
+
+        .info-box.mnemonic {
+            background: #fffbeb;
+            border-color: #f59e0b;
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .guide-table thead {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .guide-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .guide-table td {
+            padding: 12px 14px;
+            color: var(--text-secondary);
+        }
+
+        .guide-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Comparison Cards - Asthma vs COPD */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .comparison-card-header {
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: white;
+        }
+
+        .comparison-card.asthma .comparison-card-header {
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+        }
+
+        .comparison-card.copd .comparison-card-header {
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+        }
+
+        .comparison-card.rescue .comparison-card-header {
+            background: linear-gradient(135deg, #f87171, #ef4444);
+        }
+
+        .comparison-card.controller .comparison-card-header {
+            background: linear-gradient(135deg, #34d399, #10b981);
+        }
+
+        .comparison-card.intermittent .comparison-card-header {
+            background: linear-gradient(135deg, #a3e635, #84cc16);
+        }
+
+        .comparison-card.mild-persistent .comparison-card-header {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .comparison-card.moderate-persistent .comparison-card-header {
+            background: linear-gradient(135deg, #fb923c, #f97316);
+        }
+
+        .comparison-card.severe-persistent .comparison-card-header {
+            background: linear-gradient(135deg, #f87171, #ef4444);
+        }
+
+        .comparison-card-body {
+            padding: 18px;
+        }
+
+        .comparison-card-body h4 {
+            font-size: 0.95rem;
+            margin: 0 0 10px;
+        }
+
+        .comparison-card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px;
+        }
+
+        .comparison-card-body li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+
+        .interventions-list h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .interventions-list h4 i { color: var(--primary-color); }
+
+        .intervention-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intervention-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .intervention-content h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 4px;
+        }
+
+        .intervention-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Quick Reference */
+        .quick-reference {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .quick-reference h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quick-ref-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .quick-ref-item .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .quick-ref-item .value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Severity Level Cards */
+        .severity-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        /* Key Points Summary */
+        .key-points-summary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            padding: 28px;
+            margin: 40px 0 0;
+            color: white;
+        }
+
+        .key-points-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin: 0 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .key-points-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .key-point {
+            background: rgba(255,255,255,0.15);
+            padding: 14px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Footer */
+        .document-footer {
+            text-align: center;
+            padding: 32px 48px;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        }
+
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            margin-bottom: 12px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Print Styles - Optimized for browser Save as PDF */
+        @page {
+            margin: 0.6in 0.4in;
+        }
+
+        @media print {
+            .download-bar { display: none !important; }
+
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .cover-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .info-box { page-break-inside: avoid; break-inside: avoid; }
+            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+            .comparison-card { page-break-inside: avoid; break-inside: avoid; }
+            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
+            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
+            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
+            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
+
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            .guide-section h3 + .guide-table-wrapper,
+            .guide-section h3 + .info-box,
+            .guide-section h3 + .comparison-grid,
+            .guide-section h3 + .interventions-list {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+
+            .comparison-grid { page-break-inside: auto; }
+            .interventions-list { page-break-inside: auto; }
+
+            a { text-decoration: underline; }
+
+            .document-footer {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .download-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .severity-grid { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="guide-sidebar.css">
+</head>
+<body data-product-id="asthma" data-guide-name="Asthma">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/asthma.webp" alt="Asthma">
+                </div>
+                <div class="cover-category">Medical-Surgical Nursing</div>
+                <h1 class="cover-title">Asthma</h1>
+                <p class="cover-subtitle">Comprehensive nursing study guide covering asthma severity classification, rescue vs controller medications, and recognition and management of status asthmaticus emergency.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">15-20 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">February 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Classify asthma severity levels using symptom frequency and lung function criteria</li>
+                    <li><i class="fas fa-check-circle"></i> Differentiate between rescue (reliever) and controller (maintenance) medications</li>
+                    <li><i class="fas fa-check-circle"></i> Recognize status asthmaticus as a medical emergency and implement appropriate interventions</li>
+                    <li><i class="fas fa-check-circle"></i> Understand the pathophysiology of airway inflammation and bronchospasm</li>
+                    <li><i class="fas fa-check-circle"></i> Apply clinical reasoning to asthma patient scenarios and prioritize nursing interventions</li>
+                </ul>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#anatomy"><span class="toc-number">1</span> Respiratory Anatomy & Physiology</a></li>
+                    <li><a href="#pathophysiology"><span class="toc-number">2</span> Asthma Pathophysiology</a></li>
+                    <li><a href="#severity"><span class="toc-number">3</span> Asthma Severity Classification</a></li>
+                    <li><a href="#medications"><span class="toc-number">4</span> Rescue vs Controller Medications</a></li>
+                    <li><a href="#assessment"><span class="toc-number">5</span> Nursing Assessment</a></li>
+                    <li><a href="#status-asthmaticus"><span class="toc-number">6</span> Status Asthmaticus Emergency</a></li>
+                    <li><a href="#interventions"><span class="toc-number">7</span> Nursing Interventions</a></li>
+                    <li><a href="#education"><span class="toc-number">8</span> Patient Education</a></li>
+                </ul>
+            </nav>
+
+            <!-- Section 1: Anatomy & Physiology -->
+            <section class="guide-section" id="anatomy">
+                <h2><span class="section-icon"><i class="fas fa-lungs"></i></span> Respiratory Anatomy & Physiology Review</h2>
+
+                <p>Understanding normal airway anatomy and physiology is essential for comprehending how asthma disrupts breathing. Asthma primarily affects the lower airways, causing reversible airway obstruction.</p>
+
+                <h3>Key Airway Structures Affected in Asthma</h3>
+
+                <ul>
+                    <li><strong>Bronchi:</strong> Large airways that branch from the trachea; contain cartilage for support and smooth muscle in walls</li>
+                    <li><strong>Bronchioles:</strong> Smaller airways without cartilage; highly susceptible to smooth muscle constriction</li>
+                    <li><strong>Smooth Muscle:</strong> Surrounds airways; contraction causes bronchoconstriction (narrowing)</li>
+                    <li><strong>Mucous Glands:</strong> Line airways; secrete mucus for trapping particles and humidification</li>
+                    <li><strong>Epithelial Lining:</strong> Contains ciliated cells that move mucus upward; becomes inflamed in asthma</li>
+                </ul>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Asthma vs COPD Airway Changes
+                    </div>
+                    <p><strong>Asthma:</strong> Airway obstruction is REVERSIBLE - bronchodilators can open airways</p>
+                    <p><strong>COPD:</strong> Airway obstruction is largely IRREVERSIBLE - structural damage is permanent</p>
+                    <p>This distinction is critical for treatment and prognosis!</p>
+                </div>
+
+                <h3>Normal Airway Control</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Effect on Airways</th>
+                                <th>Clinical Relevance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Parasympathetic (Vagal)</td>
+                                <td>Bronchoconstriction, increased mucus</td>
+                                <td>Anticholinergics block this effect</td>
+                            </tr>
+                            <tr>
+                                <td>Sympathetic (Beta-2)</td>
+                                <td>Bronchodilation, decreased mucus</td>
+                                <td>Beta-agonists stimulate this response</td>
+                            </tr>
+                            <tr>
+                                <td>Inflammatory Mediators</td>
+                                <td>Bronchoconstriction, edema, mucus</td>
+                                <td>Corticosteroids reduce inflammation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Key Concept: Beta-2 Receptors
+                    </div>
+                    <p><strong>Beta-2 receptors are found in bronchial smooth muscle.</strong> When stimulated by medications like albuterol, they cause smooth muscle relaxation and bronchodilation. This is why short-acting beta-agonists (SABAs) are the first-line rescue medications for acute asthma symptoms.</p>
+                </div>
+            </section>
+
+            <!-- Section 2: Pathophysiology -->
+            <section class="guide-section" id="pathophysiology">
+                <h2><span class="section-icon"><i class="fas fa-dna"></i></span> Asthma Pathophysiology</h2>
+
+                <p>Asthma is a chronic inflammatory disorder of the airways characterized by <strong>reversible airflow obstruction</strong>, <strong>airway hyperresponsiveness</strong>, and <strong>chronic inflammation</strong>. Understanding the underlying pathophysiology helps guide treatment decisions.</p>
+
+                <h3>Definition</h3>
+                <p>Asthma is a chronic respiratory disease characterized by recurrent episodes of wheezing, breathlessness, chest tightness, and coughing, particularly at night or in the early morning. These episodes are associated with widespread but variable airflow obstruction that is often reversible either spontaneously or with treatment.</p>
+
+                <h3>The Three Key Features of Asthma</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-lungs-virus"></i> What Happens in Asthma</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Chronic Airway Inflammation</h5>
+                            <p>Triggered by allergens, irritants, or infections. Involves mast cells, eosinophils, T-lymphocytes, and other inflammatory cells. Releases histamine, leukotrienes, and prostaglandins that cause swelling and mucus production.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Bronchospasm (Bronchoconstriction)</h5>
+                            <p>Smooth muscle surrounding airways contracts in response to triggers. Causes rapid narrowing of airway lumen. Results in wheezing, shortness of breath, and chest tightness. Reversible with bronchodilators.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Airway Hyperresponsiveness</h5>
+                            <p>Airways become "twitchy" and overreact to triggers that don't affect normal airways. Even mild stimuli (cold air, exercise, smoke) can trigger bronchoconstriction. Increases with ongoing inflammation if untreated.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Common Asthma Triggers</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Examples</th>
+                                <th>Prevention Strategies</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Allergens</td>
+                                <td>Dust mites, pet dander, pollen, mold</td>
+                                <td>Allergen avoidance, HEPA filters, dust-proof covers</td>
+                            </tr>
+                            <tr>
+                                <td>Irritants</td>
+                                <td>Smoke, strong odors, air pollution, chemicals</td>
+                                <td>Avoid exposure, proper ventilation</td>
+                            </tr>
+                            <tr>
+                                <td>Infections</td>
+                                <td>Viral respiratory infections (especially RSV, rhinovirus)</td>
+                                <td>Hand hygiene, vaccinations, avoid sick contacts</td>
+                            </tr>
+                            <tr>
+                                <td>Exercise</td>
+                                <td>Physical activity, especially in cold/dry air</td>
+                                <td>Pre-treatment with SABA, warm-up, breathing techniques</td>
+                            </tr>
+                            <tr>
+                                <td>Weather</td>
+                                <td>Cold air, humidity changes, thunderstorms</td>
+                                <td>Cover mouth/nose in cold, monitor pollen counts</td>
+                            </tr>
+                            <tr>
+                                <td>Medications</td>
+                                <td>Aspirin, NSAIDs, beta-blockers</td>
+                                <td>Identify sensitivities, use alternatives</td>
+                            </tr>
+                            <tr>
+                                <td>Emotions/Stress</td>
+                                <td>Strong emotions, stress, anxiety</td>
+                                <td>Stress management, breathing exercises</td>
+                            </tr>
+                            <tr>
+                                <td>GERD</td>
+                                <td>Acid reflux irritating airways</td>
+                                <td>Treat GERD, elevate head of bed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-identify-triggers">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Identify Personal Triggers</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Every asthma patient has a unique set of triggers!</strong> Help patients identify their personal triggers by keeping an asthma diary that tracks symptoms, exposures, and peak flow readings. Common triggers include dust mites, pet dander, pollen, smoke, exercise, cold air, and respiratory infections. Once triggers are identified, develop an avoidance plan. Remember: trigger avoidance is just as important as medication management for long-term asthma control!
+                    </div>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Asthma Triad
+                    </div>
+                    <p><strong>The "I-B-H" of Asthma:</strong></p>
+                    <ul>
+                        <li><strong>I</strong>nflammation - Chronic airway inflammation</li>
+                        <li><strong>B</strong>ronchospasm - Smooth muscle constriction</li>
+                        <li><strong>H</strong>yperresponsiveness - Exaggerated airway reactivity</li>
+                    </ul>
+                </div>
+
+                <h3>Early vs Late Phase Asthma Response</h3>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card asthma">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-bolt"></i> Early Phase (Minutes)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Timing</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">Occurs within 10-30 minutes of trigger exposure</p>
+                            <h4>What Happens</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Mast cells degranulate</li>
+                                <li><i class="fas fa-check"></i> Histamine and leukotrienes released</li>
+                                <li><i class="fas fa-check"></i> Immediate bronchoconstriction</li>
+                                <li><i class="fas fa-check"></i> Responds to bronchodilators (SABA)</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card copd">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-clock"></i> Late Phase (Hours)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Timing</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">Occurs 4-12 hours after trigger exposure</p>
+                            <h4>What Happens</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Eosinophils and T-cells infiltrate</li>
+                                <li><i class="fas fa-check"></i> Ongoing inflammation</li>
+                                <li><i class="fas fa-check"></i> Mucus hypersecretion, edema</li>
+                                <li><i class="fas fa-check"></i> Requires corticosteroids to control</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical Point: Airway Remodeling
+                    </div>
+                    <p><strong>Uncontrolled chronic inflammation leads to permanent airway changes!</strong> Over time, repeated inflammation causes structural changes including smooth muscle hypertrophy, subepithelial fibrosis, and goblet cell hyperplasia. This "airway remodeling" can make asthma irreversible and harder to treat. This is why controller medications to reduce inflammation are essential even when patients feel well.</p>
+                </div>
+            </section>
+
+            <!-- Section 3: Severity Classification -->
+            <section class="guide-section" id="severity">
+                <h2><span class="section-icon"><i class="fas fa-chart-bar"></i></span> Asthma Severity Classification</h2>
+
+                <p>Asthma severity classification guides initial treatment decisions. Severity is determined by symptom frequency, nighttime awakenings, rescue inhaler use, activity limitation, and lung function before treatment is started.</p>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Key Distinction: Severity vs Control
+                    </div>
+                    <p><strong>Severity</strong> = Intrinsic disease intensity (assessed BEFORE starting treatment)</p>
+                    <p><strong>Control</strong> = How well symptoms are managed WITH treatment</p>
+                    <p>A patient can have severe asthma that is well-controlled, or mild asthma that is poorly controlled!</p>
+                </div>
+
+                <h3>Asthma Severity Levels (NAEPP Guidelines)</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Severity Level</th>
+                                <th>Daytime Symptoms</th>
+                                <th>Nighttime Symptoms</th>
+                                <th>SABA Use</th>
+                                <th>FEV1</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="background: #ecfdf5;"><strong>Intermittent</strong></td>
+                                <td>≤2 days/week</td>
+                                <td>≤2 nights/month</td>
+                                <td>≤2 days/week</td>
+                                <td>>80% predicted</td>
+                            </tr>
+                            <tr>
+                                <td style="background: #fffbeb;"><strong>Mild Persistent</strong></td>
+                                <td>>2 days/week (not daily)</td>
+                                <td>3-4 nights/month</td>
+                                <td>>2 days/week (not daily)</td>
+                                <td>>80% predicted</td>
+                            </tr>
+                            <tr>
+                                <td style="background: #fff7ed;"><strong>Moderate Persistent</strong></td>
+                                <td>Daily</td>
+                                <td>>1 night/week (not nightly)</td>
+                                <td>Daily</td>
+                                <td>60-80% predicted</td>
+                            </tr>
+                            <tr>
+                                <td style="background: #fef2f2;"><strong>Severe Persistent</strong></td>
+                                <td>Throughout the day</td>
+                                <td>Often 7 nights/week</td>
+                                <td>Several times/day</td>
+                                <td><60% predicted</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-step-therapy">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Step Therapy Approach</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Asthma treatment follows a "step-up, step-down" approach!</strong> Start treatment at the step appropriate for the patient's severity. If asthma is not well-controlled after 2-6 weeks, step UP to the next level. If asthma has been well-controlled for at least 3 months, consider stepping DOWN to find the minimum medication needed. Always ensure good inhaler technique and medication adherence before stepping up therapy!
+                    </div>
+                </div>
+
+                <h3>Treatment Steps Based on Severity</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Severity</th>
+                                <th>Step</th>
+                                <th>Preferred Treatment</th>
+                                <th>Alternative</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Intermittent</td>
+                                <td>Step 1</td>
+                                <td>SABA as needed (no daily controller)</td>
+                                <td>-</td>
+                            </tr>
+                            <tr>
+                                <td>Mild Persistent</td>
+                                <td>Step 2</td>
+                                <td>Low-dose ICS daily</td>
+                                <td>LTRA, cromolyn</td>
+                            </tr>
+                            <tr>
+                                <td>Moderate Persistent</td>
+                                <td>Step 3-4</td>
+                                <td>Medium-dose ICS + LABA</td>
+                                <td>Medium-dose ICS + LTRA</td>
+                            </tr>
+                            <tr>
+                                <td>Severe Persistent</td>
+                                <td>Step 5-6</td>
+                                <td>High-dose ICS + LABA ± oral steroids</td>
+                                <td>Add biologics (omalizumab)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: The 2-2-2 Rule
+                    </div>
+                    <p>A simple way to identify <strong>well-controlled asthma</strong>:</p>
+                    <ul>
+                        <li>Symptoms ≤ <strong>2</strong> days per week</li>
+                        <li>Nighttime awakenings ≤ <strong>2</strong> times per month</li>
+                        <li>SABA (rescue inhaler) use ≤ <strong>2</strong> days per week</li>
+                    </ul>
+                    <p style="margin-top: 8px;">If any of these thresholds are exceeded, asthma is NOT well-controlled and treatment may need adjustment.</p>
+                </div>
+            </section>
+
+            <!-- Section 4: Medications -->
+            <section class="guide-section" id="medications">
+                <h2><span class="section-icon"><i class="fas fa-pills"></i></span> Rescue vs Controller Medications</h2>
+
+                <p>Understanding the difference between rescue (reliever) and controller (maintenance) medications is essential for proper asthma management and patient education. Each type serves a distinct purpose in treatment.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card rescue">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-first-aid"></i> Rescue (Reliever) Medications
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Purpose</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">Quick relief of acute symptoms; used as needed</p>
+                            <h4>Key Characteristics</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Fast onset (minutes)</li>
+                                <li><i class="fas fa-check"></i> Short duration (4-6 hours)</li>
+                                <li><i class="fas fa-check"></i> Treats bronchoconstriction</li>
+                                <li><i class="fas fa-check"></i> Does NOT treat inflammation</li>
+                                <li><i class="fas fa-check"></i> Overuse indicates poor control</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card controller">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-shield-alt"></i> Controller (Maintenance) Medications
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Purpose</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">Long-term prevention; used daily regardless of symptoms</p>
+                            <h4>Key Characteristics</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Slow onset (days to weeks)</li>
+                                <li><i class="fas fa-check"></i> Long-lasting protection</li>
+                                <li><i class="fas fa-check"></i> Reduces inflammation</li>
+                                <li><i class="fas fa-check"></i> Prevents airway remodeling</li>
+                                <li><i class="fas fa-check"></i> Must be taken consistently</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-rescue-vs-controller">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Rescue vs Controller - The Key Difference</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Think of it like a fire analogy!</strong> A <strong>rescue inhaler</strong> (like albuterol) is like a fire extinguisher - it puts out the fire (bronchospasm) quickly but doesn't prevent future fires. A <strong>controller medication</strong> (like an inhaled corticosteroid) is like a fireproof coating - it prevents fires from starting by reducing the underlying inflammation. Patients need to understand: using only rescue inhalers is like constantly putting out fires without fixing the faulty wiring!
+                    </div>
+                </div>
+
+                <h3>Rescue Medications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Class</th>
+                                <th>Examples</th>
+                                <th>Onset</th>
+                                <th>Nursing Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>SABA (Short-Acting Beta-Agonist)</strong></td>
+                                <td>Albuterol (ProAir, Ventolin), Levalbuterol (Xopenex)</td>
+                                <td>5-15 min</td>
+                                <td>First-line rescue; monitor HR/tremors; use before exercise</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SAMA (Short-Acting Muscarinic Antagonist)</strong></td>
+                                <td>Ipratropium (Atrovent)</td>
+                                <td>15-30 min</td>
+                                <td>Less effective alone; often combined with SABA in acute attacks</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Combination SABA/SAMA</strong></td>
+                                <td>Albuterol-Ipratropium (Combivent, DuoNeb)</td>
+                                <td>5-15 min</td>
+                                <td>Used in acute exacerbations; dual bronchodilation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical Safety Alert: SABA Overuse
+                    </div>
+                    <p><strong>Using a rescue inhaler more than 2 days/week indicates poorly controlled asthma!</strong></p>
+                    <ul>
+                        <li>Needing a rescue inhaler >2 times/week (excluding pre-exercise use) = poor control</li>
+                        <li>Using >1 canister per month is associated with increased risk of severe exacerbations</li>
+                        <li>Overreliance on SABA without controller therapy increases mortality risk</li>
+                        <li>If overusing: assess controller medication adherence, technique, and triggers</li>
+                    </ul>
+                </div>
+
+                <h3>Controller Medications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Class</th>
+                                <th>Examples</th>
+                                <th>Mechanism</th>
+                                <th>Nursing Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ICS (Inhaled Corticosteroids)</strong></td>
+                                <td>Fluticasone (Flovent), Budesonide (Pulmicort), Beclomethasone (QVAR)</td>
+                                <td>Reduces airway inflammation</td>
+                                <td>MOST effective controller; rinse mouth after; may cause thrush/hoarseness</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LABA (Long-Acting Beta-Agonist)</strong></td>
+                                <td>Salmeterol, Formoterol</td>
+                                <td>Sustained bronchodilation (12+ hrs)</td>
+                                <td>NEVER use alone - must combine with ICS; not for acute rescue</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ICS/LABA Combination</strong></td>
+                                <td>Advair (fluticasone/salmeterol), Symbicort (budesonide/formoterol)</td>
+                                <td>Anti-inflammatory + bronchodilation</td>
+                                <td>More effective than either alone; rinse mouth; NOT for rescue</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LTRA (Leukotriene Receptor Antagonist)</strong></td>
+                                <td>Montelukast (Singulair), Zafirlukast (Accolate)</td>
+                                <td>Blocks inflammatory leukotrienes</td>
+                                <td>Oral tablet; good for allergic/exercise-induced asthma; monitor mood changes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>LAMA (Long-Acting Muscarinic Antagonist)</strong></td>
+                                <td>Tiotropium (Spiriva Respimat)</td>
+                                <td>Sustained bronchodilation</td>
+                                <td>Add-on for severe asthma; once daily; dry mouth</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Biologics</strong></td>
+                                <td>Omalizumab (Xolair), Dupilumab (Dupixent), Mepolizumab (Nucala)</td>
+                                <td>Target specific inflammatory pathways (IgE, IL-4, IL-5)</td>
+                                <td>Injection; for severe persistent asthma; monitor for anaphylaxis</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-ics-most-effective">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">ICS is the Most Effective Controller</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Inhaled corticosteroids (ICS) are the cornerstone of asthma treatment!</strong> They are the most effective medication for reducing airway inflammation, preventing exacerbations, and improving lung function. Key teaching points: ICS are different from systemic steroids - they work locally in the lungs with minimal systemic effects. Patients must use them <strong>daily</strong> even when feeling well. Effects aren't immediate - it takes days to weeks to see full benefit. Always rinse mouth after use to prevent thrush!
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> BLACK BOX WARNING: LABA Monotherapy
+                    </div>
+                    <p><strong>LABAs must NEVER be used alone in asthma - always combine with ICS!</strong></p>
+                    <p>LABA monotherapy increases the risk of asthma-related death. LABAs should only be used in combination with an inhaled corticosteroid in patients whose asthma is not adequately controlled on other asthma-controller medications.</p>
+                </div>
+
+                <h3>Inhaler Technique Essentials</h3>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> MDI (Metered-Dose Inhaler) Steps
+                    </div>
+                    <ol>
+                        <li>Shake inhaler well (5-10 seconds)</li>
+                        <li>Exhale fully away from inhaler</li>
+                        <li>Place mouthpiece in mouth with tight seal (or 1-2 inches away)</li>
+                        <li>Begin slow, deep inhalation while pressing canister</li>
+                        <li>Continue inhaling for 3-5 seconds</li>
+                        <li>Hold breath for 10 seconds (or as long as comfortable)</li>
+                        <li>Wait 1 minute between puffs if multiple doses needed</li>
+                        <li>Rinse mouth after ICS use</li>
+                    </ol>
+                    <p style="margin-top: 10px;"><strong>Use a spacer with MDIs for better drug delivery and reduced oral deposition!</strong></p>
+                </div>
+            </section>
+
+            <!-- Section 5: Nursing Assessment -->
+            <section class="guide-section" id="assessment">
+                <h2><span class="section-icon"><i class="fas fa-stethoscope"></i></span> Nursing Assessment</h2>
+
+                <p>Thorough assessment of asthma patients is crucial for determining severity, recognizing exacerbations, and evaluating treatment effectiveness. Assessment includes subjective history and objective physical findings.</p>
+
+                <h3>Comprehensive Asthma Assessment</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-check"></i> Key Assessment Components</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Respiratory Assessment</h5>
+                            <p>Rate, rhythm, depth, effort. Note wheezing (expiratory > inspiratory), prolonged expiratory phase, use of accessory muscles, nasal flaring, retractions. Measure SpO2 and peak flow.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Symptom Frequency</h5>
+                            <p>Daytime symptoms (how many days/week), nighttime awakenings, rescue inhaler use, activity limitations. Use standardized tools: ACT (Asthma Control Test) score.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Trigger Identification</h5>
+                            <p>Environmental exposures, allergens, irritants, infections, exercise, weather changes, medications (aspirin, beta-blockers), emotional stress. Assess home/work environment.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Medication Review</h5>
+                            <p>Current medications (rescue and controller), adherence, inhaler technique, understanding of each medication's purpose. Frequency of SABA use indicates control level.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Peak Flow Monitoring</h5>
+                            <p>Personal best established during good control. Compare current readings to personal best. Green (80-100%), Yellow (50-79%), Red (<50%) zones guide action.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Physical Examination Findings</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Finding</th>
+                                <th>Mild Exacerbation</th>
+                                <th>Moderate Exacerbation</th>
+                                <th>Severe Exacerbation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Breathlessness</td>
+                                <td>With activity</td>
+                                <td>When talking</td>
+                                <td>At rest</td>
+                            </tr>
+                            <tr>
+                                <td>Speech</td>
+                                <td>Sentences</td>
+                                <td>Phrases</td>
+                                <td>Words only</td>
+                            </tr>
+                            <tr>
+                                <td>Alertness</td>
+                                <td>May be agitated</td>
+                                <td>Usually agitated</td>
+                                <td>Confused, drowsy</td>
+                            </tr>
+                            <tr>
+                                <td>Respiratory Rate</td>
+                                <td>Increased</td>
+                                <td>>30/min</td>
+                                <td>>30/min or decreased</td>
+                            </tr>
+                            <tr>
+                                <td>Accessory Muscles</td>
+                                <td>Minimal use</td>
+                                <td>Common</td>
+                                <td>Paradoxical movement</td>
+                            </tr>
+                            <tr>
+                                <td>Wheezing</td>
+                                <td>End-expiratory</td>
+                                <td>Throughout expiration</td>
+                                <td>Absent ("silent chest")</td>
+                            </tr>
+                            <tr>
+                                <td>SpO2</td>
+                                <td>>95%</td>
+                                <td>90-95%</td>
+                                <td><90%</td>
+                            </tr>
+                            <tr>
+                                <td>Peak Flow (% personal best)</td>
+                                <td>>70%</td>
+                                <td>40-69%</td>
+                                <td><40%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> DANGER SIGN: Silent Chest
+                    </div>
+                    <p><strong>Absence of wheezing in an asthma patient with respiratory distress is an ominous sign!</strong></p>
+                    <p>A "silent chest" indicates such severe airway obstruction that insufficient air is moving to produce wheezing. This is a sign of impending respiratory failure and requires immediate intervention. Do NOT be falsely reassured by absence of wheezing in a severely distressed patient!</p>
+                </div>
+            </section>
+
+            <!-- Section 6: Status Asthmaticus -->
+            <section class="guide-section" id="status-asthmaticus">
+                <h2><span class="section-icon"><i class="fas fa-exclamation-circle"></i></span> Status Asthmaticus Emergency</h2>
+
+                <p>Status asthmaticus is a severe, life-threatening asthma exacerbation that does not respond to standard bronchodilator therapy. It is a medical emergency requiring immediate intervention to prevent respiratory failure and death.</p>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Status Asthmaticus = MEDICAL EMERGENCY
+                    </div>
+                    <p><strong>This is a life-threatening condition!</strong> Status asthmaticus is characterized by:</p>
+                    <ul>
+                        <li>Severe bronchospasm unresponsive to initial bronchodilator therapy</li>
+                        <li>Progressive respiratory distress despite treatment</li>
+                        <li>Risk of respiratory failure, hypoxemia, acidosis, and death</li>
+                        <li>Requires aggressive treatment, possible ICU admission, and may need intubation</li>
+                    </ul>
+                </div>
+
+                <h3>Recognition of Status Asthmaticus</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Warning Sign</th>
+                                <th>Clinical Significance</th>
+                                <th>Nursing Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Silent chest (no wheezing)</td>
+                                <td>Severe obstruction - no air movement</td>
+                                <td>EMERGENCY - prepare for intubation</td>
+                            </tr>
+                            <tr>
+                                <td>Cyanosis</td>
+                                <td>Severe hypoxemia (SpO2 <90%)</td>
+                                <td>High-flow O2, prepare for escalation</td>
+                            </tr>
+                            <tr>
+                                <td>Altered mental status</td>
+                                <td>Hypoxia/hypercapnia affecting brain</td>
+                                <td>Call rapid response, prepare for intubation</td>
+                            </tr>
+                            <tr>
+                                <td>Unable to speak</td>
+                                <td>Too breathless - severe distress</td>
+                                <td>Continuous nebulizer, IV steroids</td>
+                            </tr>
+                            <tr>
+                                <td>Peak flow <25% predicted</td>
+                                <td>Severe airway obstruction</td>
+                                <td>Escalate care, may need ICU</td>
+                            </tr>
+                            <tr>
+                                <td>Paradoxical chest movement</td>
+                                <td>Respiratory muscle fatigue</td>
+                                <td>Impending respiratory failure</td>
+                            </tr>
+                            <tr>
+                                <td>Bradycardia</td>
+                                <td>Pre-arrest sign in respiratory distress</td>
+                                <td>EMERGENCY - imminent arrest</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-status-asthmaticus">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Recognize Status Asthmaticus EARLY</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Time is critical in status asthmaticus - early recognition saves lives!</strong> Watch for these red flags: patient sitting in tripod position, speaking only 1-2 words between breaths, diaphoresis, agitation progressing to lethargy, peak flow <40% of personal best, and most importantly - a <strong>silent chest</strong> (no wheezing despite severe distress). A silent chest means no air is moving and is a sign of impending respiratory arrest. Don't wait - escalate care immediately when you see these signs!
+                    </div>
+                </div>
+
+                <h3>Emergency Management</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-first-aid"></i> Status Asthmaticus Treatment Protocol</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Oxygen Therapy</h5>
+                            <p>High-flow oxygen to maintain SpO2 ≥92%. Unlike COPD, asthma patients do not have chronic CO2 retention - give oxygen liberally. May need non-rebreather mask initially.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Continuous Nebulized Beta-Agonists</h5>
+                            <p>Albuterol continuous nebulization (10-15 mg/hour) or frequent intermittent treatments (2.5-5 mg q20min x3). May add ipratropium for severe exacerbations.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Systemic Corticosteroids</h5>
+                            <p>IV methylprednisolone (125 mg or 1-2 mg/kg) or oral prednisone (40-60 mg) immediately. Reduces inflammation - onset in 4-6 hours. Critical for preventing late-phase response.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Magnesium Sulfate</h5>
+                            <p>IV magnesium sulfate (2 grams over 20 minutes) for severe exacerbations. Causes smooth muscle relaxation. Monitor for hypotension, flushing.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Epinephrine (if needed)</h5>
+                            <p>Subcutaneous or IM epinephrine (0.3-0.5 mg) for severe cases, especially if anaphylaxis suspected. Provides potent bronchodilation.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">6</div>
+                        <div class="intervention-content">
+                            <h5>Prepare for Intubation</h5>
+                            <p>If patient deteriorating despite treatment, prepare for endotracheal intubation and mechanical ventilation. Use ketamine for induction (bronchodilator properties).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-bookmark"></i> Status Asthmaticus Quick Reference</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Peak Flow Danger Zone</div>
+                            <div class="value"><25% predicted</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Target SpO2</div>
+                            <div class="value">≥92% (higher for pregnancy)</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">IV Methylprednisolone</div>
+                            <div class="value">125 mg or 1-2 mg/kg</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">IV Magnesium Sulfate</div>
+                            <div class="value">2 g over 20 min</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Priority: Oxygen in Asthma vs COPD
+                    </div>
+                    <p><strong>Key Difference:</strong></p>
+                    <ul>
+                        <li><strong>Asthma:</strong> Give high-flow oxygen freely! Asthma patients do not have chronic CO2 retention and rely on normal respiratory drive.</li>
+                        <li><strong>COPD:</strong> Use low-flow oxygen (1-2 L/min) cautiously to avoid suppressing hypoxic drive in chronic CO2 retainers.</li>
+                    </ul>
+                    <p style="margin-top: 8px;">In status asthmaticus, hypoxia is the immediate threat - treat it aggressively!</p>
+                </div>
+            </section>
+
+            <!-- Section 7: Nursing Interventions -->
+            <section class="guide-section" id="interventions">
+                <h2><span class="section-icon"><i class="fas fa-user-nurse"></i></span> Nursing Interventions</h2>
+
+                <p>Nursing care for asthma patients focuses on symptom management, medication administration, trigger avoidance, and patient education to promote self-management and prevent exacerbations.</p>
+
+                <h3>Priority Nursing Interventions</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-list"></i> Key Interventions</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Maintain Airway and Optimize Oxygenation</h5>
+                            <p>Position upright (high Fowler's). Administer oxygen as prescribed. Monitor SpO2 continuously during exacerbations. Assess respiratory status frequently. Keep calm environment to reduce oxygen demand.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Administer Medications as Prescribed</h5>
+                            <p>Give bronchodilators and corticosteroids as ordered. Ensure proper inhaler/nebulizer technique. Space controller medications appropriately. Monitor for side effects (tachycardia, tremors, thrush).</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Monitor for Deterioration</h5>
+                            <p>Watch for signs of worsening: increased work of breathing, decreased responsiveness, silent chest, falling SpO2. Monitor peak flow if patient able. Report deterioration immediately.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Reduce Anxiety and Promote Calm Breathing</h5>
+                            <p>Stay calm and reassuring. Dyspnea causes anxiety which worsens symptoms. Coach pursed-lip and diaphragmatic breathing. Remove unnecessary stimulation. Stay with patient during acute episodes.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Ensure Adequate Hydration</h5>
+                            <p>Encourage fluid intake (2-3 L/day unless contraindicated) to help thin secretions. IV fluids may be needed during acute exacerbations. Monitor I&O.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">6</div>
+                        <div class="intervention-content">
+                            <h5>Prevent Triggers in Hospital Environment</h5>
+                            <p>Minimize exposure to allergens and irritants. Avoid strong perfumes, cleaning products. Maintain clean air. Consider HEPA filter if available. Keep room dust-free.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-inhaler-technique">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Always Assess Inhaler Technique</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Poor inhaler technique is a major cause of uncontrolled asthma!</strong> Studies show up to 90% of patients use inhalers incorrectly. Before stepping up therapy for "uncontrolled" asthma, always assess and correct inhaler technique. Have the patient demonstrate their technique - don't just ask if they know how. Common errors include: not exhaling before inhaling, inhaling too fast, not holding breath after, and not using a spacer with MDIs. Teach and re-teach at every visit!
+                    </div>
+                </div>
+
+                <h3>Asthma Action Plan</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Zone</th>
+                                <th>Peak Flow</th>
+                                <th>Symptoms</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: #ecfdf5;">
+                                <td><strong>GREEN (Good Control)</strong></td>
+                                <td>80-100% of personal best</td>
+                                <td>No symptoms, sleeping well, can do usual activities</td>
+                                <td>Continue controller medications as prescribed</td>
+                            </tr>
+                            <tr style="background: #fffbeb;">
+                                <td><strong>YELLOW (Caution)</strong></td>
+                                <td>50-79% of personal best</td>
+                                <td>Cough, wheeze, chest tightness, nighttime symptoms</td>
+                                <td>Use rescue inhaler; may need to increase controller; call provider if not improving</td>
+                            </tr>
+                            <tr style="background: #fef2f2;">
+                                <td><strong>RED (Emergency)</strong></td>
+                                <td><50% of personal best</td>
+                                <td>Severe shortness of breath, rescue inhaler not helping</td>
+                                <td>Use rescue inhaler immediately; take oral steroids if prescribed; CALL 911 or go to ER</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 8: Patient Education -->
+            <section class="guide-section" id="education">
+                <h2><span class="section-icon"><i class="fas fa-chalkboard-teacher"></i></span> Patient Education</h2>
+
+                <p>Patient education is essential for successful asthma self-management. Teaching should include medication use, trigger avoidance, symptom monitoring, and when to seek emergency care.</p>
+
+                <h3>Key Teaching Topics</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Key Teaching Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rescue vs Controller Medications</td>
+                                <td>Rescue for quick relief of symptoms; controller taken daily to prevent symptoms. Don't skip controller even when feeling well!</td>
+                            </tr>
+                            <tr>
+                                <td>Inhaler Technique</td>
+                                <td>Demonstrate proper technique; practice with patient; use spacer with MDI; rinse mouth after ICS</td>
+                            </tr>
+                            <tr>
+                                <td>Peak Flow Monitoring</td>
+                                <td>How to use peak flow meter; establish personal best; understand zones; when to act</td>
+                            </tr>
+                            <tr>
+                                <td>Trigger Identification</td>
+                                <td>Keep symptom diary; identify personal triggers; develop avoidance strategies</td>
+                            </tr>
+                            <tr>
+                                <td>Asthma Action Plan</td>
+                                <td>Review written plan; understand green/yellow/red zones; know when to seek emergency care</td>
+                            </tr>
+                            <tr>
+                                <td>Signs of Worsening</td>
+                                <td>Increased symptoms, nighttime awakenings, using rescue inhaler more often, decreased peak flow</td>
+                            </tr>
+                            <tr>
+                                <td>When to Seek Emergency Care</td>
+                                <td>Severe dyspnea, unable to speak, rescue inhaler not helping, peak flow in red zone, cyanosis</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-written-action-plan">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Every Patient Needs a Written Action Plan</div>
+                    <div class="florencebot-tip-content">
+                        <strong>A written asthma action plan reduces ER visits and hospitalizations!</strong> Every asthma patient should have a personalized written action plan that includes: daily medications, personal best peak flow, green/yellow/red zone actions, and emergency contact information. Review the plan with the patient, post copies at home and work/school, and update it regularly. Studies show patients with written action plans have better outcomes than those with only verbal instructions.
+                    </div>
+                </div>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> Tips for Trigger Avoidance
+                    </div>
+                    <ul>
+                        <li><strong>Dust mites:</strong> Dust-proof pillow/mattress covers, wash bedding in hot water weekly, reduce humidity</li>
+                        <li><strong>Pet dander:</strong> Keep pets out of bedroom, use HEPA filters, bathe pets regularly</li>
+                        <li><strong>Pollen:</strong> Keep windows closed during high pollen, shower after outdoor activities</li>
+                        <li><strong>Mold:</strong> Fix water leaks, use exhaust fans in bathrooms/kitchen, clean visible mold</li>
+                        <li><strong>Smoke:</strong> No smoking in home/car, avoid secondhand smoke, avoid wood fires</li>
+                        <li><strong>Exercise:</strong> Use SABA 15 minutes before exercise, warm up gradually, avoid cold dry air</li>
+                    </ul>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Signs to Seek Emergency Care
+                    </div>
+                    <p><strong>"ASTHMA Emergency" - When to Call 911:</strong></p>
+                    <ul>
+                        <li><strong>A</strong>lbuterol not working after 3 treatments</li>
+                        <li><strong>S</strong>peech limited to single words</li>
+                        <li><strong>T</strong>ripod positioning to breathe</li>
+                        <li><strong>H</strong>ard to breathe even at rest</li>
+                        <li><strong>M</strong>ental status changes (confusion, lethargy)</li>
+                        <li><strong>A</strong>ppearance: cyanosis, grey, diaphoretic</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-lungs"></i>
+                        <p><strong>Asthma = reversible</strong> airway obstruction (inflammation + bronchospasm + hyperresponsiveness)</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-pills"></i>
+                        <p><strong>Rescue</strong> = quick relief (SABA); <strong>Controller</strong> = daily prevention (ICS)</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-chart-bar"></i>
+                        <p><strong>Severity classification</strong> guides initial treatment step; control guides adjustments</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Silent chest</strong> in distress = EMERGENCY - no air moving, impending arrest</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-shield-alt"></i>
+                        <p><strong>ICS is most effective</strong> controller; LABAs must NEVER be used alone</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-file-alt"></i>
+                        <p><strong>Written action plan</strong> with peak flow zones improves outcomes</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts (external for CSP compliance) -->
+    <script src="configs/asthma-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+</body>
+</html>

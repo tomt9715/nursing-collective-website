@@ -1,0 +1,1983 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pneumonia Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Pneumonia. Learn to compare community vs hospital-acquired pneumonia, identify high-risk populations, and interpret chest X-ray findings.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           PDF-STYLE STUDY GUIDE STYLES - PNEUMONIA
+           ============================================ */
+
+        :root {
+            --primary-color: #2E86AB;
+            --primary-dark: #236b8a;
+            --secondary-color: #A23B72;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar - Fixed at top */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .download-bar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f0f9ff;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Document Container */
+        .document-container {
+            max-width: 850px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Cover Page - Colors inspired by pneumonia/infected lung theme (pink/coral) */
+        .cover-page {
+            background: linear-gradient(135deg, #FDA4AF 0%, #FB7185 40%, #F43F5E 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 12px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-category {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content {
+            padding: 60px;
+        }
+
+        /* Learning Objectives */
+        .learning-objectives {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .learning-objectives li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .learning-objectives li i {
+            color: #10b981;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Table of Contents */
+        .table-of-contents {
+            background: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .table-of-contents h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .table-of-contents li {
+            break-inside: avoid;
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .table-of-contents a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .toc-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .table-of-contents a:hover .toc-number {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .guide-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .guide-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 28px 0 14px;
+        }
+
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+        }
+
+        .guide-section p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            margin-bottom: 14px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+        }
+
+        .guide-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .info-box.clinical-pearl {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-color: #f59e0b;
+        }
+
+        .info-box.warning {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .info-box.tip {
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .info-box.nclex-tip {
+            background: #f5f3ff;
+            border-color: #8b5cf6;
+        }
+
+        .info-box.mnemonic {
+            background: #fffbeb;
+            border-color: #f59e0b;
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .guide-table thead {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .guide-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .guide-table td {
+            padding: 12px 14px;
+            color: var(--text-secondary);
+        }
+
+        .guide-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-card {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .comparison-card-header {
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: white;
+        }
+
+        .comparison-card.cap .comparison-card-header {
+            background: linear-gradient(135deg, #34d399, #10b981);
+        }
+
+        .comparison-card.hap .comparison-card-header {
+            background: linear-gradient(135deg, #f87171, #ef4444);
+        }
+
+        .comparison-card.vap .comparison-card-header {
+            background: linear-gradient(135deg, #fb923c, #f97316);
+        }
+
+        .comparison-card.bacterial .comparison-card-header {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .comparison-card.viral .comparison-card-header {
+            background: linear-gradient(135deg, #a78bfa, #8b5cf6);
+        }
+
+        .comparison-card.aspiration .comparison-card-header {
+            background: linear-gradient(135deg, #60a5fa, #3b82f6);
+        }
+
+        .comparison-card-body {
+            padding: 18px;
+        }
+
+        .comparison-card-body h4 {
+            font-size: 0.95rem;
+            margin: 0 0 10px;
+        }
+
+        .comparison-card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px;
+        }
+
+        .comparison-card-body li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+
+        .interventions-list h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .interventions-list h4 i { color: var(--primary-color); }
+
+        .intervention-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intervention-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .intervention-content h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 4px;
+        }
+
+        .intervention-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Quick Reference */
+        .quick-reference {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .quick-reference h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quick-ref-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .quick-ref-item .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .quick-ref-item .value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Key Points Summary */
+        .key-points-summary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            padding: 28px;
+            margin: 40px 0 0;
+            color: white;
+        }
+
+        .key-points-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin: 0 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .key-points-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .key-point {
+            background: rgba(255,255,255,0.15);
+            padding: 14px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Footer */
+        .document-footer {
+            text-align: center;
+            padding: 32px 48px;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        }
+
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            margin-bottom: 12px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Print Styles */
+        @page {
+            margin: 0.6in 0.4in;
+        }
+
+        @media print {
+            .download-bar { display: none !important; }
+
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .cover-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .info-box { page-break-inside: avoid; break-inside: avoid; }
+            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+            .comparison-card { page-break-inside: avoid; break-inside: avoid; }
+            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
+            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
+            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
+            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
+
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            .guide-section h3 + .guide-table-wrapper,
+            .guide-section h3 + .info-box,
+            .guide-section h3 + .comparison-grid,
+            .guide-section h3 + .interventions-list {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+
+            .comparison-grid { page-break-inside: auto; }
+            .interventions-list { page-break-inside: auto; }
+
+            a { text-decoration: underline; }
+
+            .document-footer {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .download-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="guide-sidebar.css">
+</head>
+<body data-product-id="pneumonia" data-guide-name="Pneumonia">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/pneumonia.webp" alt="Pneumonia">
+                </div>
+                <div class="cover-category">Medical-Surgical Nursing</div>
+                <h1 class="cover-title">Pneumonia</h1>
+                <p class="cover-subtitle">Comprehensive nursing study guide covering community vs hospital-acquired pneumonia, high-risk patient populations, chest X-ray interpretation, and evidence-based nursing interventions.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">15-20 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">February 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Compare and contrast community-acquired pneumonia (CAP) vs hospital-acquired pneumonia (HAP)</li>
+                    <li><i class="fas fa-check-circle"></i> Identify high-risk patient populations for pneumonia development and complications</li>
+                    <li><i class="fas fa-check-circle"></i> Interpret chest X-ray findings associated with different types of pneumonia</li>
+                    <li><i class="fas fa-check-circle"></i> Understand the pathophysiology of pulmonary infection and inflammatory response</li>
+                    <li><i class="fas fa-check-circle"></i> Apply clinical reasoning to prioritize nursing interventions for pneumonia patients</li>
+                </ul>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#anatomy"><span class="toc-number">1</span> Respiratory Anatomy & Physiology</a></li>
+                    <li><a href="#pathophysiology"><span class="toc-number">2</span> Pneumonia Pathophysiology</a></li>
+                    <li><a href="#classification"><span class="toc-number">3</span> CAP vs HAP vs VAP</a></li>
+                    <li><a href="#high-risk"><span class="toc-number">4</span> High-Risk Populations</a></li>
+                    <li><a href="#assessment"><span class="toc-number">5</span> Clinical Assessment</a></li>
+                    <li><a href="#diagnostics"><span class="toc-number">6</span> Diagnostics & Chest X-Ray</a></li>
+                    <li><a href="#treatment"><span class="toc-number">7</span> Treatment & Antibiotics</a></li>
+                    <li><a href="#interventions"><span class="toc-number">8</span> Nursing Interventions</a></li>
+                </ul>
+            </nav>
+
+            <!-- Section 1: Anatomy & Physiology -->
+            <section class="guide-section" id="anatomy">
+                <h2><span class="section-icon"><i class="fas fa-lungs"></i></span> Respiratory Anatomy & Physiology Review</h2>
+
+                <p>Understanding normal pulmonary anatomy and defense mechanisms is essential for comprehending how pneumonia develops and why certain populations are at higher risk for infection.</p>
+
+                <h3>Lower Respiratory Tract Structures</h3>
+
+                <ul>
+                    <li><strong>Trachea:</strong> Main airway; lined with ciliated epithelium and mucus-secreting cells for particle trapping</li>
+                    <li><strong>Bronchi:</strong> Branch from trachea into left and right; contain cartilage rings for support</li>
+                    <li><strong>Bronchioles:</strong> Smaller airways without cartilage; terminal bronchioles lead to respiratory zone</li>
+                    <li><strong>Alveoli:</strong> 300 million air sacs where gas exchange occurs; thin walls allow O2/CO2 diffusion</li>
+                    <li><strong>Pulmonary Capillaries:</strong> Surround alveoli; site of gas exchange between air and blood</li>
+                </ul>
+
+                <h3>Pulmonary Defense Mechanisms</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Defense Mechanism</th>
+                                <th>Location</th>
+                                <th>Function</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Mucociliary Escalator</td>
+                                <td>Airways (trachea to bronchioles)</td>
+                                <td>Cilia beat upward to move trapped particles out of lungs</td>
+                            </tr>
+                            <tr>
+                                <td>Cough Reflex</td>
+                                <td>Irritant receptors in airways</td>
+                                <td>Forceful expulsion of foreign material and secretions</td>
+                            </tr>
+                            <tr>
+                                <td>Alveolar Macrophages</td>
+                                <td>Alveoli</td>
+                                <td>Engulf and destroy pathogens that reach alveoli</td>
+                            </tr>
+                            <tr>
+                                <td>IgA Antibodies</td>
+                                <td>Mucosal surfaces</td>
+                                <td>Neutralize pathogens before they invade tissue</td>
+                            </tr>
+                            <tr>
+                                <td>Surfactant</td>
+                                <td>Alveolar surface</td>
+                                <td>Contains antimicrobial proteins; prevents alveolar collapse</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Defense Mechanism Impairment
+                    </div>
+                    <p><strong>Pneumonia develops when pathogens overwhelm or bypass pulmonary defenses.</strong></p>
+                    <ul>
+                        <li><strong>Smoking:</strong> Paralyzes cilia, damages mucociliary escalator</li>
+                        <li><strong>Intubation:</strong> Bypasses upper airway defenses, provides direct bacterial access</li>
+                        <li><strong>Sedation/Anesthesia:</strong> Suppresses cough reflex and mucociliary function</li>
+                        <li><strong>Immunosuppression:</strong> Impairs macrophage function and antibody production</li>
+                    </ul>
+                </div>
+
+                <h3>Normal Gas Exchange</h3>
+
+                <p>In healthy lungs, oxygen diffuses from alveoli into pulmonary capillaries while carbon dioxide moves from blood into alveoli. This process requires:</p>
+
+                <ul>
+                    <li><strong>Adequate Ventilation:</strong> Air reaching alveoli (V)</li>
+                    <li><strong>Adequate Perfusion:</strong> Blood flow through pulmonary capillaries (Q)</li>
+                    <li><strong>Intact Alveolar-Capillary Membrane:</strong> Thin barrier for diffusion</li>
+                </ul>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Key Concept: V/Q Mismatch in Pneumonia
+                    </div>
+                    <p><strong>Pneumonia causes V/Q mismatch:</strong> Infected alveoli fill with inflammatory exudate and cannot participate in gas exchange. Blood flows past these non-ventilated alveoli without picking up oxygen (shunting), leading to hypoxemia that may not respond well to supplemental oxygen.</p>
+                </div>
+            </section>
+
+            <!-- Section 2: Pathophysiology -->
+            <section class="guide-section" id="pathophysiology">
+                <h2><span class="section-icon"><i class="fas fa-dna"></i></span> Pneumonia Pathophysiology</h2>
+
+                <p>Pneumonia is an acute infection of the lung parenchyma (alveoli and surrounding tissue) that causes inflammation, consolidation, and impaired gas exchange. Understanding the pathophysiology helps guide assessment and treatment.</p>
+
+                <h3>Definition</h3>
+                <p>Pneumonia is an inflammatory condition of the lung parenchyma caused by infectious agents (bacteria, viruses, fungi) or aspiration of gastric contents. It results in alveolar filling with inflammatory exudate, impairing gas exchange and causing characteristic clinical and radiographic findings.</p>
+
+                <h3>How Pneumonia Develops</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-lungs-virus"></i> Pathophysiologic Sequence</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Pathogen Entry</h5>
+                            <p>Organisms reach lower respiratory tract via inhalation of droplets, aspiration of oropharyngeal secretions, or hematogenous spread from another infection site.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Defense Failure</h5>
+                            <p>Pathogens overcome or evade pulmonary defense mechanisms. Large inoculum, virulent organisms, or impaired host defenses allow infection to establish.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Inflammatory Response</h5>
+                            <p>Alveolar macrophages trigger inflammatory cascade. Cytokines released cause vasodilation, increased capillary permeability, and neutrophil recruitment to infection site.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Alveolar Filling (Consolidation)</h5>
+                            <p>Alveoli fill with inflammatory exudate: fluid, WBCs, cellular debris, and bacteria. This "consolidation" appears as opacity on chest X-ray and impairs gas exchange.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Impaired Gas Exchange</h5>
+                            <p>Consolidated alveoli cannot participate in oxygen exchange. Blood passing through these areas returns to circulation without being oxygenated (intrapulmonary shunting), causing hypoxemia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-consolidation">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Understanding Consolidation</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Consolidation is the hallmark of pneumonia!</strong> When alveoli fill with inflammatory exudate instead of air, the lung tissue becomes "solid" or consolidated. This produces characteristic findings: dullness to percussion (like tapping on a solid object instead of a drum), bronchial breath sounds where you'd normally hear vesicular sounds, and increased tactile fremitus (vibrations are transmitted better through solid than air-filled tissue). On chest X-ray, consolidation appears as a white opacity where you'd normally see black air-filled lung.
+                    </div>
+                </div>
+
+                <h3>Types of Pneumonia by Etiology</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Common Pathogens</th>
+                                <th>Key Features</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Bacterial</strong></td>
+                                <td>Streptococcus pneumoniae (#1), H. influenzae, Staph aureus, Klebsiella</td>
+                                <td>High fever, productive cough with purulent sputum, lobar consolidation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Viral</strong></td>
+                                <td>Influenza, RSV, SARS-CoV-2, Adenovirus</td>
+                                <td>Gradual onset, dry cough, diffuse interstitial infiltrates, may precede bacterial superinfection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Atypical</strong></td>
+                                <td>Mycoplasma, Legionella, Chlamydophila</td>
+                                <td>"Walking pneumonia," dry cough, extrapulmonary symptoms, patchy infiltrates</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fungal</strong></td>
+                                <td>Pneumocystis jirovecii, Aspergillus, Histoplasma</td>
+                                <td>Immunocompromised patients, gradual onset, may need specific antifungals</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aspiration</strong></td>
+                                <td>Oral anaerobes, gram-negatives from GI tract</td>
+                                <td>Foul-smelling sputum, right lower lobe common, risk with dysphagia/LOC changes</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: #1 Bacterial Pathogen
+                    </div>
+                    <p><strong>"Strep pneumo is #1 in the community!"</strong></p>
+                    <p>Streptococcus pneumoniae (pneumococcus) is the most common cause of community-acquired bacterial pneumonia. This is why pneumococcal vaccination is so important for high-risk populations!</p>
+                </div>
+            </section>
+
+            <!-- Section 3: Classification -->
+            <section class="guide-section" id="classification">
+                <h2><span class="section-icon"><i class="fas fa-sitemap"></i></span> CAP vs HAP vs VAP</h2>
+
+                <p>Pneumonia is classified by where the infection was acquired because this determines the likely pathogens and guides antibiotic selection. The distinction between community-acquired and healthcare-associated pneumonia is clinically crucial.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card cap">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-home"></i> Community-Acquired (CAP)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Definition</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">Acquired outside healthcare settings or within 48 hours of hospital admission</p>
+                            <h4>Common Pathogens</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> S. pneumoniae (#1 bacterial)</li>
+                                <li><i class="fas fa-check"></i> H. influenzae</li>
+                                <li><i class="fas fa-check"></i> Mycoplasma pneumoniae</li>
+                                <li><i class="fas fa-check"></i> Respiratory viruses</li>
+                                <li><i class="fas fa-check"></i> Legionella (exposure history)</li>
+                            </ul>
+                            <h4>Treatment</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Often outpatient treatment</li>
+                                <li><i class="fas fa-check"></i> Macrolides or doxycycline</li>
+                                <li><i class="fas fa-check"></i> Fluoroquinolones if severe</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card hap">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-hospital"></i> Hospital-Acquired (HAP)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Definition</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 14px;">Develops ≥48 hours after hospital admission (not incubating at admission)</p>
+                            <h4>Common Pathogens</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Pseudomonas aeruginosa</li>
+                                <li><i class="fas fa-check"></i> MRSA</li>
+                                <li><i class="fas fa-check"></i> Klebsiella, E. coli</li>
+                                <li><i class="fas fa-check"></i> Acinetobacter</li>
+                                <li><i class="fas fa-check"></i> Multi-drug resistant organisms</li>
+                            </ul>
+                            <h4>Treatment</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Broad-spectrum IV antibiotics</li>
+                                <li><i class="fas fa-check"></i> Anti-pseudomonal coverage</li>
+                                <li><i class="fas fa-check"></i> Consider MRSA coverage</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-cap-vs-hap">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Why CAP vs HAP Matters</div>
+                    <div class="florencebot-tip-content">
+                        <strong>The 48-hour rule determines antibiotic choice!</strong> CAP pathogens are typically susceptible to standard antibiotics. HAP pathogens are often resistant "hospital bugs" like Pseudomonas and MRSA that require broad-spectrum, sometimes multiple antibiotics. If you give CAP antibiotics for HAP, treatment may fail. If you give HAP antibiotics for CAP, you contribute to antibiotic resistance. Always document the timeline of symptom onset relative to admission!
+                    </div>
+                </div>
+
+                <h3>Ventilator-Associated Pneumonia (VAP)</h3>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> VAP: A Serious Hospital-Acquired Infection
+                    </div>
+                    <p><strong>VAP develops ≥48-72 hours after endotracheal intubation.</strong></p>
+                    <ul>
+                        <li>Most common ICU-acquired infection</li>
+                        <li>Mortality rate 20-50%</li>
+                        <li>Same resistant pathogens as HAP (Pseudomonas, MRSA, Acinetobacter)</li>
+                        <li>Largely PREVENTABLE with VAP bundle interventions</li>
+                    </ul>
+                </div>
+
+                <h3>Detailed Comparison Table</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>CAP</th>
+                                <th>HAP</th>
+                                <th>VAP</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Onset</td>
+                                <td>Before or &lt;48h after admission</td>
+                                <td>≥48h after admission</td>
+                                <td>≥48-72h after intubation</td>
+                            </tr>
+                            <tr>
+                                <td>Setting</td>
+                                <td>Home, community</td>
+                                <td>Any hospitalized patient</td>
+                                <td>ICU, mechanically ventilated</td>
+                            </tr>
+                            <tr>
+                                <td>#1 Pathogen</td>
+                                <td>S. pneumoniae</td>
+                                <td>Pseudomonas, MRSA</td>
+                                <td>Pseudomonas, MRSA</td>
+                            </tr>
+                            <tr>
+                                <td>Resistance</td>
+                                <td>Usually susceptible</td>
+                                <td>Often MDR organisms</td>
+                                <td>Often MDR organisms</td>
+                            </tr>
+                            <tr>
+                                <td>Treatment Setting</td>
+                                <td>Often outpatient</td>
+                                <td>Inpatient</td>
+                                <td>ICU</td>
+                            </tr>
+                            <tr>
+                                <td>Mortality</td>
+                                <td>~1-5% outpatient, higher if admitted</td>
+                                <td>15-30%</td>
+                                <td>20-50%</td>
+                            </tr>
+                            <tr>
+                                <td>Prevention Focus</td>
+                                <td>Vaccination</td>
+                                <td>Hand hygiene, mobility</td>
+                                <td>VAP bundle</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> VAP Prevention Bundle
+                    </div>
+                    <p>The "VAP Bundle" is a set of evidence-based interventions that significantly reduce VAP rates:</p>
+                    <ul>
+                        <li><strong>Elevate HOB 30-45 degrees</strong> - Reduces aspiration risk</li>
+                        <li><strong>Daily sedation vacation</strong> - Assess readiness to extubate</li>
+                        <li><strong>Daily spontaneous breathing trial</strong> - Minimize ventilator days</li>
+                        <li><strong>Peptic ulcer prophylaxis</strong> - Prevent stress ulcers</li>
+                        <li><strong>DVT prophylaxis</strong> - Prevent thromboembolism</li>
+                        <li><strong>Oral care with chlorhexidine</strong> - Reduce oral bacteria</li>
+                        <li><strong>Subglottic suctioning</strong> - Remove secretions above cuff</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 4: High-Risk Populations -->
+            <section class="guide-section" id="high-risk">
+                <h2><span class="section-icon"><i class="fas fa-user-shield"></i></span> High-Risk Patient Populations</h2>
+
+                <p>Identifying patients at high risk for pneumonia is essential for prevention, early recognition, and appropriate management. Risk factors relate to impaired host defenses, increased pathogen exposure, or both.</p>
+
+                <h3>Risk Factor Categories</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Risk Factors</th>
+                                <th>Mechanism</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Age</strong></td>
+                                <td>Age >65 years, infants/young children</td>
+                                <td>Weakened immune response, immature immune system</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chronic Lung Disease</strong></td>
+                                <td>COPD, asthma, cystic fibrosis, bronchiectasis</td>
+                                <td>Impaired mucociliary clearance, structural damage</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Immunosuppression</strong></td>
+                                <td>HIV/AIDS, chemotherapy, transplant, steroids</td>
+                                <td>Impaired cellular and humoral immunity</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chronic Disease</strong></td>
+                                <td>Diabetes, heart failure, renal failure, liver disease</td>
+                                <td>Impaired immune function, fluid overload</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lifestyle</strong></td>
+                                <td>Smoking, alcohol abuse, malnutrition</td>
+                                <td>Damaged airways, impaired cough, poor immunity</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aspiration Risk</strong></td>
+                                <td>Dysphagia, GERD, decreased LOC, NG tube</td>
+                                <td>Direct pathogen entry into lower airways</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Healthcare Exposure</strong></td>
+                                <td>Recent hospitalization, nursing home, dialysis</td>
+                                <td>Exposure to resistant organisms</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-high-risk">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">The High-Risk Patient Profile</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Think about who needs extra vigilance!</strong> Your highest-risk pneumonia patients often have multiple risk factors: an elderly patient with COPD who smokes, or a diabetic patient on steroids with swallowing difficulties. When you see these patients, prioritize: aspiration precautions, incentive spirometry, early mobilization, meticulous oral care, and close monitoring for early signs of respiratory infection. Prevention is key - pneumonia in these patients can be devastating.
+                    </div>
+                </div>
+
+                <h3>Special Populations</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-users"></i> Patients Requiring Special Consideration</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Elderly (>65 years)</h5>
+                            <p>May present atypically - confusion, falls, decreased appetite instead of classic symptoms. Lower baseline temperature means fever may be "normal" temp. Higher mortality risk.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Immunocompromised</h5>
+                            <p>Consider opportunistic pathogens (Pneumocystis, fungal). May have minimal inflammatory response. Requires broader antibiotic coverage and possibly prophylaxis.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Post-Surgical Patients</h5>
+                            <p>Pain limits deep breathing and coughing. Anesthesia effects on mucociliary function. Immobility increases risk. Incentive spirometry and early mobilization critical.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Stroke/Neurological Impairment</h5>
+                            <p>Dysphagia increases aspiration risk dramatically. May have impaired cough reflex. Requires swallow evaluation before oral intake. HOB elevation essential.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Nursing Home Residents</h5>
+                            <p>Exposed to resistant organisms. Often have multiple comorbidities. May present atypically. Sometimes classified as healthcare-associated pneumonia requiring broader coverage.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Atypical Presentation in Elderly
+                    </div>
+                    <p><strong>Elderly patients may NOT present with classic pneumonia symptoms!</strong></p>
+                    <ul>
+                        <li>May be afebrile or have only low-grade temperature</li>
+                        <li>Confusion or altered mental status may be the first sign</li>
+                        <li>Falls, weakness, decreased appetite, incontinence</li>
+                        <li>May lack productive cough or have only mild symptoms</li>
+                        <li>Don't wait for "classic" presentation - have high index of suspicion!</li>
+                    </ul>
+                </div>
+
+                <h3>Vaccination Recommendations</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Vaccine</th>
+                                <th>Who Should Receive</th>
+                                <th>Schedule</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Pneumococcal (PCV20 or PCV15+PPSV23)</strong></td>
+                                <td>Adults ≥65, immunocompromised, chronic disease</td>
+                                <td>See current CDC guidelines for sequence</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Influenza</strong></td>
+                                <td>Everyone ≥6 months, especially high-risk groups</td>
+                                <td>Annually before flu season</td>
+                            </tr>
+                            <tr>
+                                <td><strong>COVID-19</strong></td>
+                                <td>Everyone eligible, especially high-risk groups</td>
+                                <td>Per current CDC recommendations</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 5: Clinical Assessment -->
+            <section class="guide-section" id="assessment">
+                <h2><span class="section-icon"><i class="fas fa-stethoscope"></i></span> Clinical Assessment</h2>
+
+                <p>Thorough assessment is crucial for early recognition of pneumonia, determining severity, and monitoring response to treatment. Assessment includes history, physical examination, and recognition of complications.</p>
+
+                <h3>Classic Pneumonia Presentation</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Signs & Symptoms</th>
+                                <th>Clinical Significance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Respiratory</strong></td>
+                                <td>Cough (productive or dry), dyspnea, tachypnea, pleuritic chest pain</td>
+                                <td>Cough with purulent sputum suggests bacterial infection</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Systemic</strong></td>
+                                <td>Fever, chills, rigors, fatigue, malaise</td>
+                                <td>High fever with rigors classic for bacterial pneumonia</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Auscultation</strong></td>
+                                <td>Crackles (rales), bronchial breath sounds, decreased breath sounds</td>
+                                <td>Bronchial sounds over peripheral lung = consolidation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Percussion</strong></td>
+                                <td>Dullness over affected area</td>
+                                <td>Consolidation replaces air-filled lung</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tactile Fremitus</strong></td>
+                                <td>Increased over consolidated area</td>
+                                <td>Sound transmits better through solid tissue</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Oxygenation</strong></td>
+                                <td>Hypoxemia, SpO2 &lt;94%</td>
+                                <td>V/Q mismatch from consolidation</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-assessment-findings">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">The Consolidation Triad</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Three findings that indicate lung consolidation:</strong> (1) <strong>Dullness to percussion</strong> - solid tissue sounds dull, not resonant like air-filled lung. (2) <strong>Bronchial breath sounds</strong> - normally heard only over trachea, but heard over peripheral lung when consolidated. (3) <strong>Increased tactile fremitus</strong> - have patient say "99" while you palpate chest; vibrations are stronger over consolidated lung. When you find this triad, you've found the pneumonia!
+                    </div>
+                </div>
+
+                <h3>Severity Assessment: CURB-65 Score</h3>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> CURB-65: Pneumonia Severity Score
+                    </div>
+                    <p>Each criterion scores 1 point. Higher scores = higher mortality risk.</p>
+                    <ul>
+                        <li><strong>C</strong>onfusion (new onset)</li>
+                        <li><strong>U</strong>rea >7 mmol/L (BUN >19 mg/dL)</li>
+                        <li><strong>R</strong>espiratory rate ≥30/min</li>
+                        <li><strong>B</strong>lood pressure: SBP &lt;90 or DBP ≤60 mmHg</li>
+                        <li><strong>65</strong> years of age or older</li>
+                    </ul>
+                    <p style="margin-top: 10px;"><strong>Score 0-1:</strong> Outpatient treatment | <strong>Score 2:</strong> Consider admission | <strong>Score 3-5:</strong> Hospitalize (consider ICU if 4-5)</p>
+                </div>
+
+                <h3>Signs of Severe Pneumonia/Respiratory Failure</h3>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Warning Signs - Escalate Care Immediately
+                    </div>
+                    <ul>
+                        <li><strong>Severe hypoxemia:</strong> SpO2 &lt;90% despite supplemental O2</li>
+                        <li><strong>Respiratory distress:</strong> RR >30, accessory muscle use, inability to speak full sentences</li>
+                        <li><strong>Hemodynamic instability:</strong> SBP &lt;90, MAP &lt;65, requiring vasopressors</li>
+                        <li><strong>Altered mental status:</strong> Confusion, lethargy, agitation</li>
+                        <li><strong>Multi-lobar involvement:</strong> Bilateral or >2 lobes on chest X-ray</li>
+                        <li><strong>Rapidly progressing infiltrates:</strong> >50% increase in 48 hours</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 6: Diagnostics & Chest X-Ray -->
+            <section class="guide-section" id="diagnostics">
+                <h2><span class="section-icon"><i class="fas fa-x-ray"></i></span> Diagnostics & Chest X-Ray Interpretation</h2>
+
+                <p>Diagnostic testing confirms the diagnosis of pneumonia, identifies the causative pathogen when possible, and assesses severity. Chest X-ray is the cornerstone of pneumonia diagnosis.</p>
+
+                <h3>Key Diagnostic Tests</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Purpose</th>
+                                <th>Expected Findings</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Chest X-Ray</strong></td>
+                                <td>Confirm diagnosis, identify pattern</td>
+                                <td>Infiltrates, consolidation, air bronchograms</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CBC with Differential</strong></td>
+                                <td>Assess inflammatory response</td>
+                                <td>Leukocytosis with left shift (bacterial); may be normal or lymphocytic (viral)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Basic Metabolic Panel</strong></td>
+                                <td>Assess hydration, kidney function</td>
+                                <td>BUN elevation (dehydration, severity marker)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sputum Culture</strong></td>
+                                <td>Identify pathogen, guide antibiotics</td>
+                                <td>Organism identification and sensitivities</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Blood Cultures</strong></td>
+                                <td>Detect bacteremia (severe cases)</td>
+                                <td>Positive in ~10-20% of hospitalized patients</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Procalcitonin</strong></td>
+                                <td>Distinguish bacterial vs viral</td>
+                                <td>Elevated in bacterial infection; guides antibiotic use</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ABG/SpO2</strong></td>
+                                <td>Assess oxygenation status</td>
+                                <td>Hypoxemia; may show respiratory alkalosis early</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Chest X-Ray Interpretation</h3>
+
+                <div class="florencebot-tip" id="tip-cxr-interpretation">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Reading a Pneumonia Chest X-Ray</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Normal lung = black (air-filled). Pneumonia = white opacity (consolidation).</strong> Look for: (1) <strong>Location</strong> - which lobe(s) are affected? (2) <strong>Pattern</strong> - lobar (one segment, sharp borders) suggests typical bacterial; patchy/diffuse suggests atypical or viral. (3) <strong>Air bronchograms</strong> - dark branching airways visible within white consolidation (air in bronchi surrounded by fluid-filled alveoli). (4) <strong>Pleural effusion</strong> - blunting of costophrenic angle suggests parapneumonic effusion.
+                    </div>
+                </div>
+
+                <h3>Chest X-Ray Patterns by Pneumonia Type</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Pattern</th>
+                                <th>Appearance</th>
+                                <th>Typical Cause</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Lobar Consolidation</strong></td>
+                                <td>Dense opacity filling entire lobe with air bronchograms; sharp borders at fissures</td>
+                                <td>Typical bacterial (S. pneumoniae, Klebsiella)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bronchopneumonia</strong></td>
+                                <td>Patchy, multifocal opacities; often bilateral; follows bronchial distribution</td>
+                                <td>S. aureus, gram-negatives, aspiration</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Interstitial Pattern</strong></td>
+                                <td>Diffuse, reticular (net-like) opacities; ground glass appearance</td>
+                                <td>Viral, Pneumocystis, atypical bacteria</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cavitation</strong></td>
+                                <td>Air-filled cavity within consolidation (necrosis)</td>
+                                <td>S. aureus, Klebsiella, TB, anaerobes</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pleural Effusion</strong></td>
+                                <td>Blunted costophrenic angle; layering on decubitus film</td>
+                                <td>Parapneumonic effusion; may need drainage if empyema</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-bookmark"></i> Chest X-Ray Quick Reference</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Lobar Pneumonia</div>
+                            <div class="value">Dense, homogeneous opacity</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Air Bronchograms</div>
+                            <div class="value">Dark airways in white lung</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Effusion Sign</div>
+                            <div class="value">Blunted costophrenic angle</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Interstitial Pattern</div>
+                            <div class="value">Diffuse, reticular, ground glass</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: CXR Limitations
+                    </div>
+                    <p><strong>Chest X-ray findings may lag behind clinical presentation!</strong></p>
+                    <ul>
+                        <li>Early pneumonia may have normal CXR - infiltrates take time to develop</li>
+                        <li>Severely dehydrated patients may have minimal infiltrates until rehydrated</li>
+                        <li>Neutropenic patients may not mount enough inflammatory response for visible infiltrates</li>
+                        <li>CT scan is more sensitive if clinical suspicion high with negative CXR</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Section 7: Treatment & Antibiotics -->
+            <section class="guide-section" id="treatment">
+                <h2><span class="section-icon"><i class="fas fa-pills"></i></span> Treatment & Antibiotics</h2>
+
+                <p>Antibiotic therapy is the cornerstone of bacterial pneumonia treatment. Selection depends on the classification (CAP vs HAP/VAP), severity, local resistance patterns, and patient factors.</p>
+
+                <h3>Empiric Antibiotic Selection</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Setting</th>
+                                <th>Recommended Antibiotics</th>
+                                <th>Duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>CAP - Outpatient (healthy)</strong></td>
+                                <td>Amoxicillin OR Doxycycline OR Macrolide (azithromycin)</td>
+                                <td>5-7 days</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CAP - Outpatient (comorbidities)</strong></td>
+                                <td>Respiratory fluoroquinolone (levofloxacin) OR Amoxicillin-clavulanate + macrolide</td>
+                                <td>5-7 days</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CAP - Inpatient (non-ICU)</strong></td>
+                                <td>Beta-lactam (ceftriaxone) + macrolide OR Respiratory fluoroquinolone alone</td>
+                                <td>5-7 days</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CAP - ICU</strong></td>
+                                <td>Beta-lactam + macrolide OR Beta-lactam + fluoroquinolone</td>
+                                <td>7 days or until stable</td>
+                            </tr>
+                            <tr>
+                                <td><strong>HAP/VAP</strong></td>
+                                <td>Anti-pseudomonal beta-lactam (piperacillin-tazobactam, cefepime) ± MRSA coverage (vancomycin)</td>
+                                <td>7 days (may extend)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Aspiration Pneumonia</strong></td>
+                                <td>Ampicillin-sulbactam OR Clindamycin (anaerobic coverage)</td>
+                                <td>7-14 days</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-antibiotic-timing">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Antibiotic Timing Matters</div>
+                    <div class="florencebot-tip-content">
+                        <strong>First dose of antibiotics should be given within 4 hours of diagnosis!</strong> For severe pneumonia or sepsis, aim for within 1 hour. Studies show that delayed antibiotic administration increases mortality. As a nurse, once pneumonia is diagnosed and antibiotics are ordered, prioritize getting that first dose administered promptly. Don't wait for cultures to result before starting empiric therapy - cultures can guide adjustments later.
+                    </div>
+                </div>
+
+                <h3>Supportive Treatment</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-hand-holding-medical"></i> Beyond Antibiotics</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Oxygen Therapy</h5>
+                            <p>Maintain SpO2 ≥92% (≥88-92% for COPD with CO2 retention). Use nasal cannula, high-flow, or non-invasive ventilation as needed. Monitor closely for respiratory failure.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>IV Fluids</h5>
+                            <p>Treat dehydration from fever, decreased intake. Use caution in heart failure. Adequate hydration helps thin secretions.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Antipyretics/Analgesics</h5>
+                            <p>Acetaminophen or NSAIDs for fever and pleuritic chest pain. Improved comfort promotes deep breathing and mobility.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Airway Clearance</h5>
+                            <p>Encourage coughing and deep breathing. Chest physiotherapy if indicated. Suctioning for patients unable to clear secretions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Watch for Treatment Failure
+                    </div>
+                    <p><strong>Signs that antibiotic therapy is not working (after 48-72 hours):</strong></p>
+                    <ul>
+                        <li>Persistent or worsening fever</li>
+                        <li>No improvement in respiratory status</li>
+                        <li>Increasing oxygen requirements</li>
+                        <li>Worsening infiltrates on repeat chest X-ray</li>
+                        <li>Development of new complications (effusion, empyema)</li>
+                    </ul>
+                    <p style="margin-top: 8px;"><strong>Action:</strong> Notify provider for possible antibiotic adjustment, additional cultures, or imaging.</p>
+                </div>
+            </section>
+
+            <!-- Section 8: Nursing Interventions -->
+            <section class="guide-section" id="interventions">
+                <h2><span class="section-icon"><i class="fas fa-user-nurse"></i></span> Nursing Interventions</h2>
+
+                <p>Nursing care for pneumonia patients focuses on optimizing oxygenation, promoting airway clearance, administering treatments, preventing complications, and providing patient education.</p>
+
+                <h3>Priority Nursing Interventions</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-list"></i> Key Interventions</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Maintain Oxygenation</h5>
+                            <p>Monitor SpO2 continuously. Administer oxygen as prescribed to maintain SpO2 ≥92%. Position in high Fowler's to maximize lung expansion. Report desaturation or increased O2 requirements promptly.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Promote Airway Clearance</h5>
+                            <p>Encourage coughing, deep breathing, and use of incentive spirometer every 1-2 hours while awake. Assist with position changes. Ensure adequate hydration to thin secretions. Suction if unable to clear.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Administer Antibiotics Promptly</h5>
+                            <p>Give first dose within 4 hours of diagnosis (1 hour if severe/sepsis). Obtain cultures before antibiotics if possible without delaying treatment. Monitor for allergic reactions and effectiveness.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Monitor for Complications</h5>
+                            <p>Watch for respiratory failure (increasing RR, desaturation, altered LOC), sepsis (fever, tachycardia, hypotension), and pleural effusion (decreased breath sounds, dullness). Report changes immediately.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Prevent Aspiration</h5>
+                            <p>HOB elevation ≥30 degrees. Assess swallow function before oral intake. Provide oral care every 4 hours. Supervise meals for patients at risk. Keep suction available.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">6</div>
+                        <div class="intervention-content">
+                            <h5>Promote Mobility</h5>
+                            <p>Early mobilization reduces complications and improves outcomes. Assist with ambulation as tolerated. Progress activity gradually. Out of bed to chair for meals when able.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-incentive-spirometry">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Incentive Spirometry Technique</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Proper technique makes incentive spirometry effective!</strong> Teach patients to: (1) Sit upright or at 45+ degrees. (2) Exhale normally, then seal lips around mouthpiece. (3) Inhale slowly and deeply - aim for 3-5 seconds to raise the indicator. (4) Hold breath for 5-10 seconds at maximum inspiration. (5) Remove mouthpiece and exhale normally. (6) Repeat 10 times every 1-2 hours while awake. The goal is sustained maximal inspiration, not speed - slow and steady opens collapsed alveoli!
+                    </div>
+                </div>
+
+                <h3>Patient Education</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Topic</th>
+                                <th>Key Teaching Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Medications</td>
+                                <td>Complete full antibiotic course even if feeling better; take as prescribed; report allergic reactions</td>
+                            </tr>
+                            <tr>
+                                <td>Activity</td>
+                                <td>Gradual return to activity; fatigue may persist for weeks; rest as needed but stay mobile</td>
+                            </tr>
+                            <tr>
+                                <td>Follow-up</td>
+                                <td>Follow-up chest X-ray often recommended in 6-8 weeks to confirm resolution</td>
+                            </tr>
+                            <tr>
+                                <td>Prevention</td>
+                                <td>Pneumococcal and influenza vaccinations; hand hygiene; avoid smoking; manage chronic conditions</td>
+                            </tr>
+                            <tr>
+                                <td>Warning Signs</td>
+                                <td>Return for worsening symptoms: increasing dyspnea, persistent high fever, confusion, chest pain</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Pneumonia Nursing Priorities
+                    </div>
+                    <p><strong>"BREATHE" for Pneumonia Care:</strong></p>
+                    <ul>
+                        <li><strong>B</strong>reathing - Monitor respiratory status, oxygenation</li>
+                        <li><strong>R</strong>est and activity balance</li>
+                        <li><strong>E</strong>ncourage coughing, deep breathing, IS</li>
+                        <li><strong>A</strong>ntibiotics - Give promptly, monitor effectiveness</li>
+                        <li><strong>T</strong>urn and reposition regularly</li>
+                        <li><strong>H</strong>ydration - Encourage fluids to thin secretions</li>
+                        <li><strong>E</strong>ducate - Prevention, medications, warning signs</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-home"></i>
+                        <p><strong>CAP</strong> = community pathogens (S. pneumoniae #1); <strong>HAP</strong> = hospital pathogens (Pseudomonas, MRSA)</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-clock"></i>
+                        <p><strong>48-hour rule:</strong> Pneumonia onset ≥48h after admission = HAP, requiring broader antibiotic coverage</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-user-shield"></i>
+                        <p><strong>High-risk:</strong> Elderly, immunocompromised, chronic disease, smokers, aspiration risk</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-x-ray"></i>
+                        <p><strong>CXR:</strong> Consolidation = white opacity with air bronchograms; lobar vs patchy patterns</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-pills"></i>
+                        <p><strong>Antibiotics within 4 hours</strong> of diagnosis (1 hour if severe); don't delay for cultures</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-lungs"></i>
+                        <p><strong>Nursing priorities:</strong> Oxygenation, airway clearance, early mobility, aspiration prevention</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts (external for CSP compliance) -->
+    <script src="configs/pneumonia-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+</body>
+</html>

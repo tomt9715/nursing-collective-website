@@ -1187,6 +1187,104 @@
     background: var(--border-color);
 }
 
+/* Guest Dropdown Header */
+.guest-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    background: var(--background-light);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.guest-dropdown-header i {
+    font-size: 2rem;
+    color: var(--text-secondary);
+}
+
+.guest-dropdown-header span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+[data-theme="dark"] .guest-dropdown-header {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Theme Selector in User Dropdown */
+.theme-selector {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    gap: 12px;
+}
+
+.theme-selector-label {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.theme-selector-label i {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+}
+
+.theme-selector-options {
+    display: flex;
+    gap: 4px;
+    background: var(--background-light);
+    padding: 4px;
+    border-radius: 8px;
+}
+
+.theme-option {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+}
+
+.theme-option:hover {
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+.theme-option.active {
+    background: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 6px rgba(46, 134, 171, 0.3);
+}
+
+.theme-option i {
+    font-size: 0.85rem;
+}
+
+/* Dark theme */
+[data-theme="dark"] .theme-selector-options {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .theme-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .theme-option.active {
+    background: var(--primary-color);
+}
+
 /* Dark theme */
 [data-theme="dark"] .user-dropdown {
     background: var(--card-bg);

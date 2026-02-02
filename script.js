@@ -316,82 +316,81 @@ function updateNavAuthState() {
     if (!navLinks) return;
 
     // Get nav elements
-    const navLoginLink = document.getElementById('nav-login-link');
     const navDashboardLink = document.getElementById('nav-dashboard-link');
     const userMenu = document.getElementById('user-menu');
+    const dropdownGuestContent = document.getElementById('dropdown-guest-content');
+    const dropdownUserContent = document.getElementById('dropdown-user-content');
 
     if (isLoggedIn) {
-        // Hide login link, show dashboard link
-        if (navLoginLink) navLoginLink.style.display = 'none';
+        // Show dashboard link
         if (navDashboardLink) navDashboardLink.style.display = 'inline';
 
-        // Show and populate user menu
-        if (userMenu) {
-            userMenu.style.display = 'block';
+        // Switch dropdown to logged-in content
+        if (dropdownGuestContent) dropdownGuestContent.style.display = 'none';
+        if (dropdownUserContent) dropdownUserContent.style.display = 'block';
 
-            // Get user data from localStorage
-            const userData = localStorage.getItem('user');
-            if (userData) {
-                try {
-                    const user = JSON.parse(userData);
-                    // Build display name from first_name + last_name, or fall back to email prefix
-                    let userName = 'User';
-                    if (user.first_name || user.last_name) {
-                        userName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
-                    } else if (user.name || user.displayName || user.full_name) {
-                        userName = user.name || user.displayName || user.full_name;
-                    } else if (user.email) {
-                        userName = user.email.split('@')[0];
-                    }
-                    const userEmail = user.email || user.user_email || '';
-
-                    const dropdownUserName = document.getElementById('dropdown-user-name');
-                    const dropdownUserEmail = document.getElementById('dropdown-user-email');
-
-                    if (dropdownUserName) dropdownUserName.textContent = userName;
-                    if (dropdownUserEmail) dropdownUserEmail.textContent = userEmail;
-
-                    // Update user avatar with initial (same as dashboard)
-                    const userAvatar = document.querySelector('.user-avatar');
-                    const initial = user.first_name ? user.first_name.charAt(0).toUpperCase() :
-                                   (userName ? userName.charAt(0).toUpperCase() : 'U');
-                    if (userAvatar) {
-                        userAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${initial}</span>`;
-                    }
-
-                    // Update user avatar large in dropdown
-                    const userAvatarLarge = document.querySelector('.user-avatar-large');
-                    if (userAvatarLarge) {
-                        userAvatarLarge.innerHTML = `<span style="font-weight: 600; font-size: 24px;">${initial}</span>`;
-                    }
-                } catch (e) {
-                    console.error('Error parsing user data:', e);
+        // Get user data from localStorage
+        const userData = localStorage.getItem('user');
+        if (userData) {
+            try {
+                const user = JSON.parse(userData);
+                // Build display name from first_name + last_name, or fall back to email prefix
+                let userName = 'User';
+                if (user.first_name || user.last_name) {
+                    userName = `${user.first_name || ''} ${user.last_name || ''}`.trim();
+                } else if (user.name || user.displayName || user.full_name) {
+                    userName = user.name || user.displayName || user.full_name;
+                } else if (user.email) {
+                    userName = user.email.split('@')[0];
                 }
-            }
+                const userEmail = user.email || user.user_email || '';
 
-            // Setup logout button
-            const logoutBtn = document.getElementById('logout-btn');
-            if (logoutBtn && !logoutBtn.hasAttribute('data-logout-attached')) {
-                logoutBtn.setAttribute('data-logout-attached', 'true');
-                logoutBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    // Use centralized logout function from api-service.js
-                    if (typeof performLogout === 'function') {
-                        performLogout();
-                    } else {
-                        // Fallback if api-service.js not loaded
-                        localStorage.removeItem('accessToken');
-                        localStorage.removeItem('user');
-                        window.location.href = 'login.html';
-                    }
-                });
+                const dropdownUserName = document.getElementById('dropdown-user-name');
+                const dropdownUserEmail = document.getElementById('dropdown-user-email');
+
+                if (dropdownUserName) dropdownUserName.textContent = userName;
+                if (dropdownUserEmail) dropdownUserEmail.textContent = userEmail;
+
+                // Update user avatar with initial (same as dashboard)
+                const userAvatar = document.querySelector('.user-avatar');
+                const initial = user.first_name ? user.first_name.charAt(0).toUpperCase() :
+                               (userName ? userName.charAt(0).toUpperCase() : 'U');
+                if (userAvatar) {
+                    userAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${initial}</span>`;
+                }
+
+                // Update user avatar large in dropdown
+                const userAvatarLarge = document.querySelector('.user-avatar-large');
+                if (userAvatarLarge) {
+                    userAvatarLarge.innerHTML = `<span style="font-weight: 600; font-size: 24px;">${initial}</span>`;
+                }
+            } catch (e) {
+                console.error('Error parsing user data:', e);
             }
         }
+
+        // Setup logout button
+        const logoutBtn = document.getElementById('logout-btn');
+        if (logoutBtn && !logoutBtn.hasAttribute('data-logout-attached')) {
+            logoutBtn.setAttribute('data-logout-attached', 'true');
+            logoutBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Use centralized logout function from api-service.js
+                if (typeof performLogout === 'function') {
+                    performLogout();
+                } else {
+                    // Fallback if api-service.js not loaded
+                    localStorage.removeItem('accessToken');
+                    localStorage.removeItem('user');
+                    window.location.href = 'login.html';
+                }
+            });
+        }
     } else {
-        // Ensure login link is shown, dashboard link and user menu hidden
-        if (navLoginLink) navLoginLink.style.display = 'inline';
+        // Ensure dashboard link hidden, show guest content in dropdown
         if (navDashboardLink) navDashboardLink.style.display = 'none';
-        if (userMenu) userMenu.style.display = 'none';
+        if (dropdownGuestContent) dropdownGuestContent.style.display = 'block';
+        if (dropdownUserContent) dropdownUserContent.style.display = 'none';
     }
 
     // Fallback for pages without the new nav structure - just change Login to Dashboard

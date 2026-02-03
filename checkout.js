@@ -321,58 +321,75 @@ function displaySubscriptionDetails(plan, planId) {
     }
 
     productDetailsEl.innerHTML = `
-        <div class="subscription-plan-card" style="
-            background: linear-gradient(135deg, ${planStyle.color}15 0%, ${planStyle.color}08 100%);
-            border: 2px solid ${planStyle.color}30;
-            border-radius: 16px;
-            padding: 24px;
-            text-align: center;
+        <div class="subscription-plan-layout" style="
+            display: flex;
+            gap: 20px;
+            align-items: stretch;
         ">
-            <div class="plan-icon" style="
-                width: 64px;
-                height: 64px;
-                background: linear-gradient(135deg, ${planStyle.color}, ${planStyle.color}cc);
+            <div class="subscription-plan-card" style="
+                flex: 1;
+                background: linear-gradient(135deg, ${planStyle.color}15 0%, ${planStyle.color}08 100%);
+                border: 2px solid ${planStyle.color}30;
                 border-radius: 16px;
+                padding: 20px;
+                text-align: center;
                 display: flex;
-                align-items: center;
+                flex-direction: column;
                 justify-content: center;
-                margin: 0 auto 16px;
-                box-shadow: 0 8px 24px ${planStyle.color}40;
             ">
-                <i class="fas ${planStyle.icon}" style="font-size: 1.5rem; color: white;"></i>
-            </div>
-            <h3 style="margin: 0 0 8px; font-size: 1.4rem; color: var(--text-primary);">${plan.name}</h3>
-            ${billingInfo}
-            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid ${planStyle.color}20;">
-                <div style="font-size: 2rem; font-weight: 700; color: ${planStyle.color};">
-                    $${plan.price.toFixed(2)}
+                <div class="plan-icon" style="
+                    width: 56px;
+                    height: 56px;
+                    background: linear-gradient(135deg, ${planStyle.color}, ${planStyle.color}cc);
+                    border-radius: 14px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin: 0 auto 12px;
+                    box-shadow: 0 6px 20px ${planStyle.color}40;
+                ">
+                    <i class="fas ${planStyle.icon}" style="font-size: 1.3rem; color: white;"></i>
+                </div>
+                <h3 style="margin: 0 0 6px; font-size: 1.2rem; color: var(--text-primary);">${plan.name}</h3>
+                ${billingInfo}
+                <div style="margin-top: 12px; padding-top: 12px; border-top: 1px solid ${planStyle.color}20;">
+                    <div style="font-size: 1.75rem; font-weight: 700; color: ${planStyle.color};">
+                        $${plan.price.toFixed(2)}
+                    </div>
                 </div>
             </div>
+            <div class="plan-features" style="
+                flex: 1;
+                padding: 16px;
+                background: var(--background-light);
+                border-radius: 12px;
+                display: flex;
+                flex-direction: column;
+            ">
+                <h4 style="margin: 0 0 10px; font-size: 0.85rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">
+                    <i class="fas fa-check-circle" style="color: #10b981; margin-right: 6px;"></i>What's Included
+                </h4>
+                <ul style="margin: 0; padding: 0; list-style: none; font-size: 0.85rem; color: var(--text-primary); flex: 1;">
+                    <li style="padding: 6px 0; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-book-medical" style="color: var(--primary-color); width: 18px; font-size: 0.8rem;"></i>
+                        All study guides
+                    </li>
+                    <li style="padding: 6px 0; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-download" style="color: var(--primary-color); width: 18px; font-size: 0.8rem;"></i>
+                        Unlimited PDF downloads
+                    </li>
+                    <li style="padding: 6px 0; display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-sync-alt" style="color: var(--primary-color); width: 18px; font-size: 0.8rem;"></i>
+                        Free content updates
+                    </li>
+                    <li style="padding: 6px 0; display: flex; align-items: center; gap: 8px;">
+                        <i class="fab fa-discord" style="color: var(--primary-color); width: 18px; font-size: 0.8rem;"></i>
+                        Discord community
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="plan-features" style="margin-top: 20px; padding: 16px; background: var(--background-light); border-radius: 12px;">
-            <h4 style="margin: 0 0 12px; font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">
-                <i class="fas fa-check-circle" style="color: #10b981; margin-right: 6px;"></i>What's Included
-            </h4>
-            <ul style="margin: 0; padding: 0; list-style: none; font-size: 0.9rem; color: var(--text-primary);">
-                <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-book-medical" style="color: var(--primary-color); width: 20px;"></i>
-                    All study guides (current & future)
-                </li>
-                <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-download" style="color: var(--primary-color); width: 20px;"></i>
-                    Unlimited PDF downloads
-                </li>
-                <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
-                    <i class="fas fa-sync-alt" style="color: var(--primary-color); width: 20px;"></i>
-                    Free content updates
-                </li>
-                <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
-                    <i class="fab fa-discord" style="color: var(--primary-color); width: 20px;"></i>
-                    Discord community access
-                </li>
-            </ul>
-        </div>
-        <div class="checkout-item-count" style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary); text-align: center;">
+        <div class="checkout-item-count" style="margin-top: 12px; font-size: 0.85rem; color: var(--text-secondary); text-align: center;">
             1 subscription in your order
         </div>
     `;

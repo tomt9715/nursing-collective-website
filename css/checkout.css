@@ -49,11 +49,11 @@
     padding: 0 24px;
 }
 
-/* Left column - Order Summary (narrower, ~40%) */
+/* Left column - Order Summary (wider for subscription side-by-side layout) */
 .checkout-two-column .order-summary {
-    flex: 0 0 380px;
-    width: 380px;
-    max-width: 380px;
+    flex: 0 0 520px;
+    width: 520px;
+    max-width: 520px;
     box-sizing: border-box;
     position: sticky;
     top: 100px;
@@ -148,14 +148,26 @@
     }
 
     .checkout-two-column .order-summary {
-        flex: 0 0 320px;
-        width: 320px;
-        max-width: 320px;
+        flex: 0 0 400px;
+        width: 400px;
+        max-width: 400px;
     }
 
     .checkout-two-column .order-summary,
     .checkout-two-column .payment-form-container {
         padding: 24px;
+    }
+
+    /* Stack subscription layout on tablet */
+    .subscription-plan-layout {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    .subscription-plan-layout .subscription-plan-card,
+    .subscription-plan-layout .plan-features {
+        flex: none !important;
+        width: 100% !important;
     }
 }
 

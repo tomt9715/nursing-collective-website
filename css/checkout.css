@@ -1395,9 +1395,50 @@
 }
 
 /* ============================================
-   CHECKOUT WHAT YOU GET SECTION
+   CHECKOUT WHAT YOU GET SECTION (Inline in Order Summary)
    ============================================ */
 
+/* Inline version inside order summary */
+.checkout-what-you-get-inline {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+.checkout-what-you-get-inline h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 14px;
+}
+
+.checkout-what-you-get-inline .benefits-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.checkout-what-you-get-inline .benefit-item-inline {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.checkout-what-you-get-inline .benefit-item-inline i {
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.1), rgba(46, 134, 171, 0.05));
+    color: var(--primary-color);
+    border-radius: 6px;
+    font-size: 0.8rem;
+}
+
+/* Legacy version */
 .checkout-what-you-get {
     margin-top: 24px;
     padding-top: 24px;

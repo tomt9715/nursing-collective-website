@@ -18,15 +18,183 @@ async function initSuccessPage() {
     const sessionId = urlParams.get('session_id');
     const paymentIntent = urlParams.get('payment_intent');
     const orderNumber = urlParams.get('order_number');
+    const purchaseType = urlParams.get('type'); // 'subscription' for subscription purchases
 
-    console.log('Success page params:', { sessionId, paymentIntent, orderNumber });
+    console.log('Success page params:', { sessionId, paymentIntent, orderNumber, purchaseType });
 
     if (!sessionId && !paymentIntent) {
         showErrorState('No payment information found. Please check your email for order confirmation.');
         return;
     }
 
-    await verifyPayment(paymentIntent, sessionId);
+    // Handle subscription purchases differently
+    if (purchaseType === 'subscription') {
+        await verifySubscription(sessionId);
+    } else {
+        await verifyPayment(paymentIntent, sessionId);
+    }
+}
+
+/**
+ * Verify subscription purchase via Stripe checkout session
+ */
+async function verifySubscription(sessionId) {
+    try {
+        // Poll for subscription status - webhook may take a moment to process
+        showPendingState();
+        pollStartTime = Date.now();
+
+        const checkStatus = async () => {
+            const elapsed = Date.now() - pollStartTime;
+
+            if (elapsed >= MAX_POLL_TIME) {
+                showSubscriptionTimeoutState();
+                return;
+            }
+
+            try {
+                // Check if the user now has an active subscription
+                const response = await fetch(`${API_BASE_URL}/api/subscription-status`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('accessToken') || ''}`
+                    }
+                });
+
+                const data = await response.json();
+                console.log('Subscription status check:', data);
+
+                if (data.has_access && data.subscription) {
+                    showSubscriptionSuccess(data.subscription);
+                    return;
+                }
+
+                // Not ready yet, keep polling
+                setTimeout(checkStatus, POLL_INTERVAL);
+            } catch (error) {
+                console.error('Subscription status check error:', error);
+                setTimeout(checkStatus, POLL_INTERVAL);
+            }
+        };
+
+        // Start polling
+        checkStatus();
+
+    } catch (error) {
+        console.error('Subscription verification error:', error);
+        showErrorState('Unable to verify subscription. Please check your dashboard or contact support.');
+    }
+}
+
+/**
+ * Show subscription success state
+ */
+function showSubscriptionSuccess(subscription) {
+    clearGuestCart(); // Clear any cart items
+
+    const container = document.getElementById('success-content');
+    const isLoggedIn = isUserLoggedIn();
+
+    // Determine plan display name
+    const planNames = {
+        'monthly-access': 'Monthly Access',
+        'semester-access': 'Semester Access',
+        'lifetime-access': 'Lifetime Access'
+    };
+    const planName = planNames[subscription.plan_id] || subscription.plan_name || 'Subscription';
+
+    // Format expiration date if exists
+    let accessInfo = '';
+    if (subscription.expires_at) {
+        const expiresDate = new Date(subscription.expires_at);
+        accessInfo = `Your access is valid until ${expiresDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}.`;
+    } else {
+        accessInfo = 'You have lifetime access to all premium content.';
+    }
+
+    container.innerHTML = `
+        <div class="success-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <i class="fas fa-crown"></i>
+        </div>
+        <h1 class="success-title">Welcome to Premium!</h1>
+        <p class="success-message">
+            Your ${escapeHtml(planName)} subscription is now active. You have unlimited access to all study guides, clinical resources, and quick reference tools.
+        </p>
+
+        <div class="order-details">
+            <h3>Subscription Details</h3>
+            <div class="order-item">
+                <span class="order-item-label">Plan</span>
+                <span class="order-item-value">${escapeHtml(planName)}</span>
+            </div>
+            <div class="order-item">
+                <span class="order-item-label">Status</span>
+                <span class="order-item-value" style="color: #10b981;"><i class="fas fa-check-circle"></i> Active</span>
+            </div>
+            <div class="order-item">
+                <span class="order-item-label">Access</span>
+                <span class="order-item-value">${accessInfo}</span>
+            </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: left;">
+            <h4 style="margin: 0 0 12px 0; font-size: 1rem; color: var(--text-primary);"><i class="fas fa-lightbulb" style="color: #10b981; margin-right: 8px;"></i>What's included:</h4>
+            <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
+                <li>17+ comprehensive study guides</li>
+                <li>7 clinical confidence resources</li>
+                <li>5 quick reference tools</li>
+                <li>New guides added regularly</li>
+            </ul>
+        </div>
+
+        <div class="success-actions">
+            <a href="dashboard.html" class="btn btn-primary btn-large">
+                <i class="fas fa-book-open"></i>
+                Start Studying
+            </a>
+            <a href="guides.html" class="btn btn-light">
+                <i class="fas fa-list"></i>
+                Browse All Guides
+            </a>
+        </div>
+
+        <div class="email-note">
+            <i class="fas fa-envelope"></i>
+            <p>A confirmation email with your subscription details has been sent to your email address.</p>
+        </div>
+    `;
+}
+
+/**
+ * Show subscription timeout state
+ */
+function showSubscriptionTimeoutState() {
+    const container = document.getElementById('success-content');
+
+    container.innerHTML = `
+        <div class="pending-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <i class="fas fa-clock" style="animation: none;"></i>
+        </div>
+        <h1 class="success-title">Almost There!</h1>
+        <p class="success-message">
+            Your payment was received and your subscription is being activated. This may take a moment to process.
+        </p>
+        <div class="email-note">
+            <i class="fas fa-info-circle"></i>
+            <p>Your subscription should be active within a few minutes. Try refreshing your dashboard. If you don't have access after 5 minutes, please contact support.</p>
+        </div>
+        <div class="success-actions" style="margin-top: 24px;">
+            <a href="dashboard.html" class="btn btn-primary btn-large">
+                <i class="fas fa-book-open"></i>
+                Go to Dashboard
+            </a>
+            <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-light">
+                <i class="fab fa-discord"></i>
+                Contact Support
+            </a>
+        </div>
+    `;
 }
 
 /**

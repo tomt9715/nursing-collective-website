@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="css/bundle.min.css">
 
     <!-- Checkout-specific styles (loaded after bundle to override) -->
-    <link rel="stylesheet" href="css/checkout.css?v=16">
+    <link rel="stylesheet" href="css/checkout.css?v=17">
 
     <link rel="preconnect" href="https://js.stripe.com" crossorigin>
 
@@ -208,18 +208,6 @@
                             </button>
                         </div>
                     </div>
-
-                    <!-- Trust Badges -->
-                    <div class="trust-badges trust-badges-horizontal" style="display: flex; flex-direction: row; justify-content: center; gap: 32px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border-color);">
-                        <div class="trust-badge" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; font-size: 0.9rem; color: var(--text-secondary);">
-                            <i class="fas fa-lock" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: rgba(46, 134, 171, 0.1); color: var(--primary-color); border-radius: 8px;"></i>
-                            <span>Secure Checkout</span>
-                        </div>
-                        <div class="trust-badge" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; font-size: 0.9rem; color: var(--text-secondary);">
-                            <i class="fas fa-bolt" style="width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: rgba(46, 134, 171, 0.1); color: var(--primary-color); border-radius: 8px;"></i>
-                            <span>Instant Access</span>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Column 2: Payment Details (Right - Main Content) -->
@@ -328,6 +316,22 @@
 
             <!-- Bottom Section - Centered below columns -->
             <div class="checkout-bottom-section">
+                <!-- Security Badges (First) -->
+                <div class="checkout-security-badges-centered">
+                    <div class="security-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>SSL Secure</span>
+                    </div>
+                    <div class="security-badge">
+                        <i class="fab fa-stripe"></i>
+                        <span>Stripe</span>
+                    </div>
+                    <div class="security-badge">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Protected</span>
+                    </div>
+                </div>
+
                 <!-- What You Get Section -->
                 <div class="checkout-what-you-get-centered">
                     <h4>What You Get</h4>
@@ -377,22 +381,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-
-                <!-- Security Badges -->
-                <div class="checkout-security-badges-centered">
-                    <div class="security-badge">
-                        <i class="fas fa-lock"></i>
-                        <span>SSL Secure</span>
-                    </div>
-                    <div class="security-badge">
-                        <i class="fab fa-stripe"></i>
-                        <span>Stripe</span>
-                    </div>
-                    <div class="security-badge">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Protected</span>
                     </div>
                 </div>
             </div>

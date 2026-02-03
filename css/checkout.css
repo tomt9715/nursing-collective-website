@@ -47,7 +47,7 @@
     margin: 0 auto;
     justify-content: center;
     padding: 0 24px;
-    align-items: stretch; /* Make both columns equal height */
+    align-items: flex-start; /* Let columns be their natural height */
 }
 
 /* Left column - Order Summary (wider for subscription side-by-side layout) */
@@ -56,10 +56,10 @@
     width: 520px;
     max-width: 520px;
     box-sizing: border-box;
-    position: relative;
+    position: sticky;
+    top: 100px;
+    height: fit-content;
     overflow: visible;
-    display: flex;
-    flex-direction: column;
 }
 
 /* Right column - Payment Details (wider, ~60%) */
@@ -67,8 +67,6 @@
     flex: 1;
     max-width: 600px;
     box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
 }
 
 .checkout-two-column .payment-form-container h2 {

@@ -40,14 +40,38 @@ document.addEventListener('DOMContentLoaded', function() {
         button.disabled = true;
 
         try {
-            // Get user email
+            // Get user email - try multiple sources
+            let userEmail = null;
+
+            // Try getCurrentUser() first
             const user = getCurrentUser();
-            if (!user || !user.email) {
-                throw new Error('Unable to get user email');
+            if (user && user.email) {
+                userEmail = user.email;
+            }
+
+            // If no email in localStorage, fetch from API
+            if (!userEmail) {
+                console.log('No email in localStorage, fetching from API...');
+                try {
+                    const profileData = await apiCall('/user/profile');
+                    if (profileData && profileData.email) {
+                        userEmail = profileData.email;
+                        // Update localStorage for future use
+                        setCurrentUser({ ...user, email: profileData.email });
+                    }
+                } catch (profileError) {
+                    console.error('Failed to fetch profile:', profileError);
+                }
+            }
+
+            if (!userEmail) {
+                // Last resort - ask user to re-login
+                alert('Unable to get your account email. Please log out and log back in.');
+                return;
             }
 
             // Create checkout session
-            const data = await createSubscriptionCheckout(planId, user.email);
+            const data = await createSubscriptionCheckout(planId, userEmail);
 
             // Redirect to Stripe Checkout
             if (data.url) {

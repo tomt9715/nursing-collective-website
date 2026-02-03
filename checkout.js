@@ -19,6 +19,9 @@ let singleProductMode = false;
 let currentProduct = null;
 let clientSecret = null;
 let paymentElementComplete = false;
+let intentType = 'payment_intent'; // 'payment_intent' or 'setup_intent'
+let stripeCustomerId = null;
+let stripePriceId = null;
 
 // Category display names
 const CATEGORY_NAMES = {
@@ -159,11 +162,16 @@ async function initCheckout() {
         // Initialize Stripe
         await initStripe();
 
-        // Check for single product mode (legacy URL param)
+        // Check for subscription plan mode or single product mode
         const urlParams = new URLSearchParams(window.location.search);
+        const planId = urlParams.get('plan');
         const productId = urlParams.get('product');
 
-        if (productId) {
+        if (planId) {
+            // Subscription plan mode - load plan and setup embedded payment
+            singleProductMode = true;
+            await loadSubscriptionPlan(planId);
+        } else if (productId) {
             // Single product mode - legacy support
             singleProductMode = true;
             await loadSingleProduct(productId);
@@ -178,13 +186,8 @@ async function initCheckout() {
             return;
         }
 
-        // Check if it's a subscription (single product mode only)
-        if (singleProductMode && currentProduct && currentProduct.type === 'subscription') {
-            setupSubscriptionFlow();
-        } else {
-            // Setup Stripe Elements for card payment
-            await setupStripeElements();
-        }
+        // Setup Stripe Elements for all payment types (including subscriptions)
+        await setupStripeElements();
     } catch (error) {
         console.error('Checkout initialization error:', error);
 
@@ -239,6 +242,154 @@ async function initStripe() {
         }
 
         throw new Error('Failed to initialize payment system');
+    }
+}
+
+/**
+ * Load subscription plan for embedded checkout
+ */
+async function loadSubscriptionPlan(planId) {
+    try {
+        // Fetch subscription plan details
+        const response = await fetch(`${API_URL}/api/subscription-plans`);
+        if (!response.ok) {
+            throw new Error('Failed to load subscription plans');
+        }
+
+        const data = await response.json();
+        const plan = data.plans[planId];
+
+        if (!plan) {
+            throw new Error(`Plan "${planId}" not found`);
+        }
+
+        // Store as current product for checkout flow
+        currentProduct = {
+            product_id: planId,
+            name: plan.name,
+            description: plan.description,
+            price: plan.price,
+            type: plan.type || 'subscription',
+            interval: plan.interval,
+            access_days: plan.access_days
+        };
+
+        // Convert to cart item format for display
+        cartItems = [{
+            product_id: planId,
+            product_name: plan.name,
+            product_type: plan.type === 'subscription' ? 'subscription' : 'one-time-access',
+            price: plan.price
+        }];
+        cartSubtotal = plan.price;
+
+        // Update page title
+        document.title = `Checkout - ${plan.name} - The Nursing Collective`;
+
+        // Display subscription details
+        displaySubscriptionDetails(plan, planId);
+    } catch (error) {
+        console.error('Subscription plan loading error:', error);
+        showError('Subscription plan not found. Please go back to pricing and select a plan.');
+    }
+}
+
+/**
+ * Display subscription details in order summary
+ */
+function displaySubscriptionDetails(plan, planId) {
+    const productDetailsEl = document.getElementById('product-details');
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
+
+    // Determine plan icon and color
+    const planIcons = {
+        'monthly-access': { icon: 'fa-calendar-alt', color: '#6366f1' },
+        'semester-access': { icon: 'fa-graduation-cap', color: '#8b5cf6' },
+        'lifetime-access': { icon: 'fa-infinity', color: '#f59e0b' }
+    };
+    const planStyle = planIcons[planId] || { icon: 'fa-star', color: '#2E86AB' };
+
+    // Format billing info
+    let billingInfo = '';
+    if (plan.type === 'subscription') {
+        billingInfo = `<span style="color: var(--text-secondary); font-size: 0.85rem;">Billed ${plan.interval}ly</span>`;
+    } else if (plan.access_days) {
+        billingInfo = `<span style="color: var(--text-secondary); font-size: 0.85rem;">${plan.access_days} days access</span>`;
+    } else {
+        billingInfo = `<span style="color: var(--text-secondary); font-size: 0.85rem;">One-time purchase</span>`;
+    }
+
+    productDetailsEl.innerHTML = `
+        <div class="subscription-plan-card" style="
+            background: linear-gradient(135deg, ${planStyle.color}15 0%, ${planStyle.color}08 100%);
+            border: 2px solid ${planStyle.color}30;
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+        ">
+            <div class="plan-icon" style="
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, ${planStyle.color}, ${planStyle.color}cc);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 16px;
+                box-shadow: 0 8px 24px ${planStyle.color}40;
+            ">
+                <i class="fas ${planStyle.icon}" style="font-size: 1.5rem; color: white;"></i>
+            </div>
+            <h3 style="margin: 0 0 8px; font-size: 1.4rem; color: var(--text-primary);">${plan.name}</h3>
+            ${billingInfo}
+            <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid ${planStyle.color}20;">
+                <div style="font-size: 2rem; font-weight: 700; color: ${planStyle.color};">
+                    $${plan.price.toFixed(2)}
+                </div>
+            </div>
+        </div>
+        <div class="plan-features" style="margin-top: 20px; padding: 16px; background: var(--background-light); border-radius: 12px;">
+            <h4 style="margin: 0 0 12px; font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px;">
+                <i class="fas fa-check-circle" style="color: #10b981; margin-right: 6px;"></i>What's Included
+            </h4>
+            <ul style="margin: 0; padding: 0; list-style: none; font-size: 0.9rem; color: var(--text-primary);">
+                <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-book-medical" style="color: var(--primary-color); width: 20px;"></i>
+                    All study guides (current & future)
+                </li>
+                <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-download" style="color: var(--primary-color); width: 20px;"></i>
+                    Unlimited PDF downloads
+                </li>
+                <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fas fa-sync-alt" style="color: var(--primary-color); width: 20px;"></i>
+                    Free content updates
+                </li>
+                <li style="padding: 8px 0; display: flex; align-items: center; gap: 10px;">
+                    <i class="fab fa-discord" style="color: var(--primary-color); width: 20px;"></i>
+                    Discord community access
+                </li>
+            </ul>
+        </div>
+        <div class="checkout-item-count" style="margin-top: 12px; font-size: 0.9rem; color: var(--text-secondary); text-align: center;">
+            1 subscription in your order
+        </div>
+    `;
+
+    // Update totals
+    if (subtotalEl) subtotalEl.textContent = `$${plan.price.toFixed(2)}`;
+    if (totalEl) totalEl.textContent = `$${plan.price.toFixed(2)}`;
+
+    // Hide promo section for now (Stripe handles it)
+    const promoSection = document.getElementById('promo-section');
+    if (promoSection) {
+        promoSection.innerHTML = `
+            <div style="display: flex; align-items: center; gap: 8px; padding: 12px; background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.03)); border-radius: 8px; border: 1px solid rgba(16, 185, 129, 0.2);">
+                <i class="fas fa-ticket-alt" style="color: #10b981;"></i>
+                <span style="font-size: 0.85rem; color: var(--text-secondary);">Have a promo code? You can enter it on the payment form below.</span>
+            </div>
+        `;
     }
 }
 
@@ -1030,7 +1181,7 @@ async function setupStripeElements() {
 }
 
 /**
- * Create a PaymentIntent on the server
+ * Create a PaymentIntent on the server (handles both cart items and subscription plans)
  */
 async function createPaymentIntent() {
     const headers = {
@@ -1045,6 +1196,40 @@ async function createPaymentIntent() {
     // Get the current email from the form
     const checkoutEmail = document.getElementById('email')?.value?.trim() || '';
 
+    // Check if this is a subscription plan checkout
+    const urlParams = new URLSearchParams(window.location.search);
+    const planId = urlParams.get('plan');
+
+    if (planId && currentProduct) {
+        // Subscription plan - use dedicated endpoint
+        const payload = {
+            plan_id: planId,
+            email: checkoutEmail,
+            return_url: `${window.location.origin}/success.html?plan=${planId}`
+        };
+
+        const response = await fetch(`${API_URL}/api/create-subscription-intent`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+            const error = await response.json();
+            throw new Error(error.error || 'Failed to create subscription');
+        }
+
+        const data = await response.json();
+
+        // Store subscription-specific data for later use
+        intentType = data.type || 'payment_intent';
+        stripeCustomerId = data.customerId;
+        stripePriceId = data.priceId;
+
+        return data;
+    }
+
+    // Regular cart checkout
     const payload = {
         items: cartItems.map(item => ({
             product_id: item.product_id,
@@ -1133,35 +1318,6 @@ function updateSubmitButton(paymentComplete) {
 }
 
 /**
- * Setup subscription flow (redirect to Stripe Checkout)
- */
-function setupSubscriptionFlow() {
-    const subscriptionNotice = document.getElementById('subscription-notice');
-    const cardSection = document.querySelector('.form-section:last-of-type');
-    const submitButton = document.getElementById('submit-button');
-    const buttonText = document.getElementById('button-text');
-    const buttonIcon = document.getElementById('button-icon');
-
-    // Show subscription notice
-    subscriptionNotice.style.display = 'flex';
-
-    // Hide card section - subscriptions use Stripe Checkout
-    if (cardSection) {
-        cardSection.innerHTML = `
-            <div style="padding: 20px; text-align: center; color: var(--text-secondary);">
-                <i class="fas fa-external-link-alt" style="font-size: 2rem; margin-bottom: 12px; color: var(--primary-color);"></i>
-                <p>You'll be redirected to Stripe's secure checkout to complete your subscription.</p>
-            </div>
-        `;
-    }
-
-    // Update button
-    buttonText.textContent = 'Continue to Checkout';
-    buttonIcon.className = 'fas fa-external-link-alt';
-    submitButton.disabled = false;
-}
-
-/**
  * Handle form submission
  */
 async function handleSubmit(event) {
@@ -1192,28 +1348,6 @@ async function handleSubmit(event) {
 
     hideError();
 
-    // Handle subscription checkout (redirect to Stripe)
-    if (singleProductMode && currentProduct && currentProduct.type === 'subscription') {
-        submitButton.disabled = true;
-        buttonText.textContent = 'Redirecting...';
-        buttonIcon.style.display = 'none';
-        spinner.style.display = 'inline-block';
-
-        try {
-            await handleSubscriptionCheckout(email);
-        } catch (error) {
-            console.error('Subscription checkout error:', error);
-            showError(error.message || 'Failed to start checkout. Please try again.');
-
-            submitButton.disabled = false;
-            buttonText.textContent = 'Continue to Checkout';
-            buttonIcon.style.display = 'inline-block';
-            buttonIcon.className = 'fas fa-external-link-alt';
-            spinner.style.display = 'none';
-        }
-        return;
-    }
-
     // Disable button and show loading state
     submitButton.disabled = true;
     buttonText.textContent = 'Processing...';
@@ -1221,75 +1355,107 @@ async function handleSubmit(event) {
     spinner.style.display = 'inline-block';
 
     try {
-        // Confirm the payment using the Payment Element
-        // This handles all payment methods: Cards, Apple Pay, Google Pay, Link
-        const { error, paymentIntent } = await stripe.confirmPayment({
-            elements,
-            confirmParams: {
-                return_url: `${window.location.origin}/success.html`,
-                receipt_email: email,
-                payment_method_data: {
-                    billing_details: {
-                        name: name,
-                        email: email
+        // Build return URL with plan info if it's a subscription
+        const urlParams = new URLSearchParams(window.location.search);
+        const planId = urlParams.get('plan');
+        let returnUrl = `${window.location.origin}/success.html`;
+        if (planId) {
+            returnUrl += `?plan=${planId}`;
+        }
+
+        // Handle SetupIntent (for recurring subscriptions) vs PaymentIntent
+        if (intentType === 'setup_intent') {
+            // For recurring subscriptions, confirm the SetupIntent
+            const { error, setupIntent } = await stripe.confirmSetup({
+                elements,
+                confirmParams: {
+                    return_url: returnUrl,
+                },
+                redirect: 'if_required'
+            });
+
+            if (error) {
+                handlePaymentError(error, submitButton, buttonText, buttonIcon, spinner);
+            } else if (setupIntent && setupIntent.status === 'succeeded') {
+                // SetupIntent succeeded - now create the subscription on the server
+                buttonText.textContent = 'Activating subscription...';
+
+                try {
+                    const subResponse = await fetch(`${API_URL}/api/activate-subscription`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                        },
+                        body: JSON.stringify({
+                            setup_intent_id: setupIntent.id,
+                            customer_id: stripeCustomerId,
+                            price_id: stripePriceId,
+                            plan_id: planId,
+                            email: email
+                        })
+                    });
+
+                    if (!subResponse.ok) {
+                        const subError = await subResponse.json();
+                        throw new Error(subError.error || 'Failed to activate subscription');
                     }
+
+                    const subData = await subResponse.json();
+                    buttonText.textContent = 'Subscription Activated!';
+
+                    // Redirect to success page
+                    window.location.href = `success.html?subscription=${subData.subscriptionId}&plan=${planId}`;
+                } catch (subError) {
+                    console.error('Subscription activation error:', subError);
+                    showError('Payment method saved, but failed to activate subscription. Please contact support.');
+                    resetButton(submitButton, buttonText, buttonIcon, spinner);
                 }
-            },
-            redirect: 'if_required' // Only redirect if necessary (3D Secure, wallet auth, etc.)
-        });
-
-        if (error) {
-            // Show error to customer
-            if (error.type === 'card_error' || error.type === 'validation_error') {
-                showError(error.message);
-            } else {
-                showError('An unexpected error occurred. Please try again.');
             }
-
-            // Also show in payment message area
-            const paymentMessageEl = document.getElementById('payment-message');
-            if (paymentMessageEl) {
-                paymentMessageEl.textContent = error.message;
-            }
-
-            // Report payment errors
-            if (typeof captureError === 'function') {
-                captureError(error, {
-                    action: 'payment_confirmation',
-                    errorType: error.type,
-                    errorCode: error.code
-                });
-            }
-
-            // Reset button
-            submitButton.disabled = false;
-            buttonText.textContent = 'Complete Purchase';
-            buttonIcon.style.display = 'inline-block';
-            buttonIcon.className = 'fas fa-lock';
-            spinner.style.display = 'none';
-        } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-            // Payment succeeded without redirect - redirect to success page
-            buttonText.textContent = 'Payment Successful!';
-
-            // Clear cart
-            if (typeof cartManager !== 'undefined') {
-                await cartManager.clearCart();
-            }
-
-            // Redirect to success page
-            window.location.href = `success.html?payment_intent=${paymentIntent.id}`;
-        } else if (paymentIntent && paymentIntent.status === 'requires_action') {
-            // 3D Secure or other authentication required
-            // Stripe.js handles this automatically in most cases
-            buttonText.textContent = 'Authenticating...';
-        } else if (paymentIntent && paymentIntent.status === 'processing') {
-            // Some payment methods (like bank transfers) take time
-            buttonText.textContent = 'Processing...';
-            // Redirect to success page to show pending state
-            window.location.href = `success.html?payment_intent=${paymentIntent.id}`;
         } else {
-            // Unexpected status or redirect happened
-            showError('Payment processing. Please wait...');
+            // Regular PaymentIntent confirmation
+            const { error, paymentIntent } = await stripe.confirmPayment({
+                elements,
+                confirmParams: {
+                    return_url: returnUrl,
+                    receipt_email: email,
+                    payment_method_data: {
+                        billing_details: {
+                            name: name,
+                            email: email
+                        }
+                    }
+                },
+                redirect: 'if_required'
+            });
+
+            if (error) {
+                handlePaymentError(error, submitButton, buttonText, buttonIcon, spinner);
+            } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+                // Payment succeeded without redirect
+                buttonText.textContent = 'Payment Successful!';
+
+                // Clear cart (only for non-subscription purchases)
+                if (!planId && typeof cartManager !== 'undefined') {
+                    await cartManager.clearCart();
+                }
+
+                // Redirect to success page
+                const successUrl = planId
+                    ? `success.html?payment_intent=${paymentIntent.id}&plan=${planId}`
+                    : `success.html?payment_intent=${paymentIntent.id}`;
+                window.location.href = successUrl;
+            } else if (paymentIntent && paymentIntent.status === 'requires_action') {
+                buttonText.textContent = 'Authenticating...';
+            } else if (paymentIntent && paymentIntent.status === 'processing') {
+                buttonText.textContent = 'Processing...';
+                const successUrl = planId
+                    ? `success.html?payment_intent=${paymentIntent.id}&plan=${planId}`
+                    : `success.html?payment_intent=${paymentIntent.id}`;
+                window.location.href = successUrl;
+            } else {
+                showError('Payment processing. Please wait...');
+            }
         }
         // Note: If redirect happened, user is taken to return_url automatically
 
@@ -1310,31 +1476,44 @@ async function handleSubmit(event) {
 }
 
 /**
- * Handle subscription checkout redirect
+ * Handle payment errors
  */
-async function handleSubscriptionCheckout(email) {
-    const response = await fetch(`${API_URL}/api/create-subscription`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            product_id: currentProduct.product_id,
-            email: email,
-            success_url: `${window.location.origin}/success.html?session_id={CHECKOUT_SESSION_ID}&product=${currentProduct.product_id}`,
-            cancel_url: `${window.location.origin}/checkout.html?product=${currentProduct.product_id}`,
-        }),
-    });
-
-    if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.error || 'Failed to create subscription checkout');
+function handlePaymentError(error, submitButton, buttonText, buttonIcon, spinner) {
+    // Show error to customer
+    if (error.type === 'card_error' || error.type === 'validation_error') {
+        showError(error.message);
+    } else {
+        showError('An unexpected error occurred. Please try again.');
     }
 
-    const data = await response.json();
+    // Also show in payment message area
+    const paymentMessageEl = document.getElementById('payment-message');
+    if (paymentMessageEl) {
+        paymentMessageEl.textContent = error.message;
+    }
 
-    // Redirect to Stripe Checkout
-    window.location.href = data.url;
+    // Report payment errors
+    if (typeof captureError === 'function') {
+        captureError(error, {
+            action: 'payment_confirmation',
+            errorType: error.type,
+            errorCode: error.code
+        });
+    }
+
+    // Reset button
+    resetButton(submitButton, buttonText, buttonIcon, spinner);
+}
+
+/**
+ * Reset submit button to default state
+ */
+function resetButton(submitButton, buttonText, buttonIcon, spinner) {
+    submitButton.disabled = false;
+    buttonText.textContent = 'Complete Purchase';
+    buttonIcon.style.display = 'inline-block';
+    buttonIcon.className = 'fas fa-lock';
+    spinner.style.display = 'none';
 }
 
 /**

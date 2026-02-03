@@ -35,79 +35,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Show loading state
-        const originalText = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Preparing checkout...';
-        button.disabled = true;
-        button.style.opacity = '0.8';
-
-        try {
-            // Get user email - try multiple sources
-            let userEmail = null;
-
-            // Try getCurrentUser() first
-            const user = getCurrentUser();
-            if (user && user.email) {
-                userEmail = user.email;
-            }
-
-            // If no email in localStorage, fetch from API
-            if (!userEmail) {
-                try {
-                    const profileData = await apiCall('/user/profile');
-                    if (profileData && profileData.email) {
-                        userEmail = profileData.email;
-                    }
-                } catch (profileError) {
-                    console.error('Failed to fetch profile:', profileError);
-                }
-            }
-
-            if (!userEmail) {
-                throw new Error('Unable to get your account email. Please log out and log back in.');
-            }
-
-            // Create Stripe checkout session
-            const data = await createSubscriptionCheckout(planId, userEmail);
-
-            // Redirect to Stripe Checkout
-            if (data.url) {
-                button.innerHTML = '<i class="fas fa-external-link-alt"></i> Redirecting to Stripe...';
-                window.location.href = data.url;
-            } else {
-                throw new Error('No checkout URL returned');
-            }
-
-        } catch (error) {
-            console.error('Subscription checkout error:', error);
-            button.innerHTML = originalText;
-            button.disabled = false;
-            button.style.opacity = '1';
-
-            // Show a nicer error toast instead of alert
-            showSubscriptionError(error.message || 'Unable to start checkout. Please try again.');
-        }
-    }
-
-    // Show error message as a toast notification
-    function showSubscriptionError(message) {
-        // Remove any existing error toast
-        const existingToast = document.querySelector('.subscription-error-toast');
-        if (existingToast) existingToast.remove();
-
-        const toast = document.createElement('div');
-        toast.className = 'subscription-error-toast';
-        toast.innerHTML = `
-            <i class="fas fa-exclamation-circle"></i>
-            <span>${message}</span>
-            <button onclick="this.parentElement.remove()" aria-label="Dismiss">
-                <i class="fas fa-times"></i>
-            </button>
-        `;
-        document.body.appendChild(toast);
-
-        // Auto-remove after 5 seconds
-        setTimeout(() => toast.remove(), 5000);
+        // Redirect to checkout page with the subscription product
+        window.location.href = `/checkout.html?plan=${planId}`;
     }
 
     // Check if user came back after login with an intended plan
@@ -446,62 +375,6 @@ style.textContent = `
 
     .guide-item {
         transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    /* Subscription error toast */
-    .subscription-error-toast {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%);
-        background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-        border: 1px solid #f87171;
-        color: #b91c1c;
-        padding: 16px 20px;
-        border-radius: 12px;
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-        z-index: 10000;
-        animation: slideUp 0.3s ease;
-        max-width: 90vw;
-    }
-
-    .subscription-error-toast i:first-child {
-        font-size: 1.2rem;
-        flex-shrink: 0;
-    }
-
-    .subscription-error-toast span {
-        font-weight: 500;
-        font-size: 0.95rem;
-    }
-
-    .subscription-error-toast button {
-        background: none;
-        border: none;
-        color: #b91c1c;
-        cursor: pointer;
-        padding: 4px;
-        margin-left: 8px;
-        opacity: 0.7;
-        transition: opacity 0.2s;
-    }
-
-    .subscription-error-toast button:hover {
-        opacity: 1;
-    }
-
-    @keyframes slideUp {
-        from {
-            opacity: 0;
-            transform: translateX(-50%) translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-        }
     }
 `;
 document.head.appendChild(style);

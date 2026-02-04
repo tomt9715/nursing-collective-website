@@ -378,7 +378,10 @@ function setupEventListeners() {
                     body = { days_remaining: parseInt(btn.dataset.days) };
                 }
 
-                const response = await apiService.post(endpoint, body);
+                const response = await apiCall(endpoint, {
+                    method: 'POST',
+                    body: JSON.stringify(body)
+                });
                 showToast(response.message || 'Test email sent! Check your inbox.', 'success');
             } catch (error) {
                 showToast(error.message || 'Failed to send test email', 'error');

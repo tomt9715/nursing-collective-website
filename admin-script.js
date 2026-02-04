@@ -1,18 +1,14 @@
 /**
  * Admin Dashboard JavaScript
- * User management, guide management, and audit log functionality
+ * User management, subscription management, and audit log functionality
  */
 
 // State management
 let currentUserEmail = null;
-let currentGuideId = null;
-let productsCache = [];
+let subscriptionModalMode = null; // 'grant', 'change', or 'extend'
 let usersPage = 1;
 let auditPage = 1;
-let selectedGuides = new Set();
-let userDownloadsCache = {}; // Cache download data per user
-let currentGuideType = 'study_guide'; // 'study_guide' or 'class_package'
-let guidesCache = []; // Cache guides data
+let subscriptionsPage = 1;
 let auditCache = []; // Cache audit data for sorting
 let currentAuditSort = 'newest'; // Current audit sort option
 
@@ -163,26 +159,22 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Setup event listeners
     setupEventListeners();
 
-    // Initialize guide search
-    initGuideSearch();
-
     // Load initial data
     await loadDashboardOverview();
-    await loadProductsCatalog();
 
     // Hide page loader
     document.getElementById('page-loader').style.display = 'none';
 
     // Handle URL hash for tab navigation (e.g., admin.html#users)
     const hash = window.location.hash.replace('#', '');
-    if (hash && ['overview', 'users', 'guides', 'audit'].includes(hash)) {
+    if (hash && ['overview', 'users', 'subscriptions', 'audit'].includes(hash)) {
         switchTab(hash);
     }
 
     // Also listen for hash changes
     window.addEventListener('hashchange', function() {
         const newHash = window.location.hash.replace('#', '');
-        if (newHash && ['overview', 'users', 'guides', 'audit'].includes(newHash)) {
+        if (newHash && ['overview', 'users', 'subscriptions', 'audit'].includes(newHash)) {
             switchTab(newHash);
         }
     });
@@ -389,8 +381,8 @@ function switchTab(tabName) {
         case 'users':
             loadUsers();
             break;
-        case 'guides':
-            loadGuides();
+        case 'subscriptions':
+            loadSubscriptions();
             break;
         case 'audit':
             loadAuditLog();
@@ -442,9 +434,7 @@ async function loadDashboardOverview() {
         const conversionRate = (data.statistics.premium_users / totalUsers) * 100;
         updateStatWithAnimation('stat-conversion-rate', conversionRate, '', '%', 1);
 
-        // Update Revenue & Purchases stats with animations
-        updateStatWithAnimation('stat-stripe-purchases', data.purchases.stripe_purchases);
-        updateStatWithAnimation('stat-admin-grants', data.purchases.admin_granted);
+        // Update Revenue & Subscription stats with animations
         updateStatWithAnimation('stat-revenue-month', data.revenue.this_month, '$', '', 2);
 
         // Update revenue label based on time period
@@ -455,12 +445,15 @@ async function loadDashboardOverview() {
             revenueLabel.textContent = `Revenue (${selectedOption})`;
         }
 
-        // Update total guides owned with animation
-        const totalGuides = (data.purchases.stripe_purchases || 0) + (data.purchases.admin_granted || 0);
-        updateStatWithAnimation('stat-total-guides-sold', totalGuides);
-
         // Update orders count with animation
         updateStatWithAnimation('orders-count', data.revenue.orders_this_month || data.purchases.stripe_purchases || 0);
+
+        // Update subscription tier counts
+        if (data.subscription_stats) {
+            updateStatWithAnimation('stat-monthly-subs', data.subscription_stats.monthly_active || 0);
+            updateStatWithAnimation('stat-semester-subs', data.subscription_stats.semester_active || 0);
+            updateStatWithAnimation('stat-lifetime-subs', data.subscription_stats.lifetime_active || 0);
+        }
 
         // Calculate and update rate badges with animation
         const premiumRateValue = (data.statistics.premium_users / totalUsers) * 100;
@@ -488,7 +481,7 @@ async function loadDashboardOverview() {
                         <div class="activity-title">${formatActionType(log.action_type)}</div>
                         <div class="activity-meta">
                             ${escapeHtml(log.admin_email)} → ${escapeHtml(log.target_user_email)}
-                            ${log.guide_id ? ` • ${escapeHtml(log.guide_id)}` : ''}
+                            ${log.guide_id ? ` • ${escapeHtml(log.guide_id)}` : ''}${log.details && log.details.plan_name ? ` • ${escapeHtml(log.details.plan_name)}` : ''}
                         </div>
                         <div class="activity-meta">${formatDate(log.timestamp)}</div>
                     </div>
@@ -496,8 +489,8 @@ async function loadDashboardOverview() {
             `).join('');
         }
 
-        // Load top guides
-        await loadTopGuides();
+        // Load subscription overview
+        await loadSubscriptionOverview();
 
         // Load recently deleted accounts
         await loadRecentlyDeletedAccounts();
@@ -628,47 +621,79 @@ function updateProviderBars(providers, totalUsers) {
     if (appleCount) appleCount.textContent = apple;
 }
 
-// Load top guides by ownership
-async function loadTopGuides() {
-    const container = document.getElementById('top-guides');
+// Load subscription overview for dashboard
+async function loadSubscriptionOverview() {
+    const container = document.getElementById('subscription-overview');
     if (!container) return;
 
     try {
-        const data = await apiCall('/admin/guides');
+        // Use the subscription_stats already loaded in the dashboard data
+        // Re-fetch to get the latest
+        const data = await apiCall('/admin/dashboard/enhanced');
+        const stats = data.subscription_stats || {};
 
-        if (!data.guides || data.guides.length === 0) {
-            container.innerHTML = '<div class="empty-state"><p>No guides available</p></div>';
+        const totalActive = stats.total_active || 0;
+        const monthly = stats.monthly_active || 0;
+        const semester = stats.semester_active || 0;
+        const lifetime = stats.lifetime_active || 0;
+        const cancelled = stats.cancelled || 0;
+
+        if (totalActive === 0 && cancelled === 0) {
+            container.innerHTML = '<div class="empty-state"><i class="fas fa-id-badge"></i><p>No subscriptions yet</p></div>';
             return;
         }
 
-        // Sort by total owners and take top 6
-        const topGuides = data.guides
-            .sort((a, b) => b.total_active_owners - a.total_active_owners)
-            .slice(0, 6);
-
-        container.innerHTML = topGuides.map((guide, index) => {
-            let rankClass = '';
-            if (index === 0) rankClass = 'gold';
-            else if (index === 1) rankClass = 'silver';
-            else if (index === 2) rankClass = 'bronze';
-
-            return `
+        container.innerHTML = `
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px;">
                 <div class="top-guide-card">
-                    <div class="top-guide-rank ${rankClass}">${index + 1}</div>
+                    <div class="top-guide-rank" style="background: var(--primary-color, #2E86AB);">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
                     <div class="top-guide-info">
-                        <div class="top-guide-name">${escapeHtml(guide.name)}</div>
+                        <div class="top-guide-name">Monthly</div>
                         <div class="top-guide-stats">
-                            <span class="top-guide-stat"><i class="fas fa-users"></i> ${guide.total_active_owners}</span>
-                            <span class="top-guide-stat"><i class="fas fa-credit-card"></i> ${guide.stripe_purchases}</span>
-                            <span class="top-guide-stat"><i class="fas fa-gift"></i> ${guide.admin_granted}</span>
+                            <span class="top-guide-stat"><i class="fas fa-users"></i> ${monthly} active</span>
                         </div>
                     </div>
                 </div>
-            `;
-        }).join('');
+                <div class="top-guide-card">
+                    <div class="top-guide-rank" style="background: var(--secondary-color, #A23B72);">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="top-guide-info">
+                        <div class="top-guide-name">Semester</div>
+                        <div class="top-guide-stats">
+                            <span class="top-guide-stat"><i class="fas fa-users"></i> ${semester} active</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-guide-card">
+                    <div class="top-guide-rank" style="background: var(--accent-color, #F18F01);">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <div class="top-guide-info">
+                        <div class="top-guide-name">Lifetime</div>
+                        <div class="top-guide-stats">
+                            <span class="top-guide-stat"><i class="fas fa-users"></i> ${lifetime} active</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-guide-card">
+                    <div class="top-guide-rank" style="background: var(--text-color-muted, #999);">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="top-guide-info">
+                        <div class="top-guide-name">Cancelled</div>
+                        <div class="top-guide-stats">
+                            <span class="top-guide-stat"><i class="fas fa-times-circle"></i> ${cancelled} total</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
     } catch (error) {
-        console.error('Error loading top guides:', error);
-        container.innerHTML = '<div class="empty-state"><p>Failed to load guides</p></div>';
+        console.error('Error loading subscription overview:', error);
+        container.innerHTML = '<div class="empty-state"><p>Failed to load subscription data</p></div>';
     }
 }
 
@@ -812,24 +837,14 @@ async function loadUsers(page = 1) {
             return;
         }
 
-        // Get guide counts for each user
-        const usersWithGuides = await Promise.all(data.users.map(async (user) => {
-            try {
-                const guideData = await apiCall(`/admin/users/by-email/${encodeURIComponent(user.email)}`);
-                return { ...user, guides_count: guideData.guides_count || 0 };
-            } catch {
-                return { ...user, guides_count: 0 };
-            }
-        }));
-
         // Render table (Name first, then Email)
         const displayName = user => escapeHtml(`${user.first_name || ''} ${user.last_name || ''}`.trim() || '-');
 
-        tbody.innerHTML = usersWithGuides.map(user => `
+        tbody.innerHTML = data.users.map(user => `
             <tr data-user-email="${escapeHtml(user.email)}">
                 <td><strong>${displayName(user)}</strong></td>
                 <td>${escapeHtml(user.email)}</td>
-                <td>${user.guides_count}</td>
+                <td>${getPlanBadge(user)}</td>
                 <td>${getUserStatusBadges(user)}</td>
                 <td>${formatDate(user.created_at)}</td>
                 <td>
@@ -845,7 +860,7 @@ async function loadUsers(page = 1) {
         // Render mobile cards (hidden on desktop via CSS)
         const mobileCardsContainer = document.getElementById('users-mobile-cards');
         if (mobileCardsContainer) {
-            mobileCardsContainer.innerHTML = usersWithGuides.map(user => `
+            mobileCardsContainer.innerHTML = data.users.map(user => `
                 <a href="admin-user.html?email=${encodeURIComponent(user.email)}" class="user-card">
                     <div class="user-card-header">
                         <div class="user-card-name">${displayName(user)}</div>
@@ -853,7 +868,7 @@ async function loadUsers(page = 1) {
                     </div>
                     <div class="user-card-email">${escapeHtml(user.email)}</div>
                     <div class="user-card-footer">
-                        <span class="user-card-guides">${user.guides_count} guide${user.guides_count !== 1 ? 's' : ''}</span>
+                        ${getPlanBadge(user)}
                         <div class="user-card-badges">${getUserStatusBadges(user)}</div>
                     </div>
                 </a>
@@ -1098,17 +1113,11 @@ async function openUserDetail(email) {
 
     document.getElementById('modal-user-email').textContent = email;
     document.getElementById('user-info-grid').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
-    document.getElementById('user-guides-table-body').innerHTML = '<tr><td colspan="4" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
+    document.getElementById('user-subscription-info').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+    document.getElementById('user-subscription-actions').innerHTML = '';
 
     try {
-        // Fetch user details and download history in parallel
-        const [data, downloadsData] = await Promise.all([
-            apiCall(`/admin/users/by-email/${encodeURIComponent(email)}`),
-            apiCall(`/admin/users/by-email/${encodeURIComponent(email)}/downloads`).catch(() => ({ product_summary: [], downloads: [] }))
-        ]);
-
-        // Cache downloads for this user
-        userDownloadsCache[email] = downloadsData;
+        const data = await apiCall(`/admin/users/by-email/${encodeURIComponent(email)}`);
 
         // User info
         document.getElementById('user-info-grid').innerHTML = `
@@ -1138,43 +1147,69 @@ async function openUserDetail(email) {
             </div>
         `;
 
-        // Guides - filter to only show active guides in the popup (revoked shown in Full Profile)
-        const activeGuides = data.guides.filter(g => g.is_active);
-        document.getElementById('modal-guides-count').textContent = activeGuides.length;
+        // Subscription info
+        const sub = data.subscription;
+        const subInfoEl = document.getElementById('user-subscription-info');
+        const subActionsEl = document.getElementById('user-subscription-actions');
 
-        const tbody = document.getElementById('user-guides-table-body');
+        if (sub && sub.status === 'active') {
+            const expiresText = sub.expires_at
+                ? `Expires ${formatDate(sub.expires_at)}`
+                : 'Never expires';
 
-        if (activeGuides.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="3" class="empty-cell">No active guides</td></tr>';
-        } else {
-            // Sort guides by purchased_at date (newest first)
-            const sortedGuides = [...activeGuides].sort((a, b) => {
-                const dateA = new Date(a.purchased_at || 0);
-                const dateB = new Date(b.purchased_at || 0);
-                return dateB - dateA;
+            subInfoEl.innerHTML = `
+                <div style="padding: 12px; background: var(--background-color-alt, #f8f9fa); border-radius: 8px; border-left: 4px solid ${getPlanColor(sub.plan_id)};">
+                    <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+                        ${getSubscriptionPlanBadge(sub.plan_id, sub.plan_name)}
+                        <span class="badge-status active"><i class="fas fa-check"></i> Active</span>
+                    </div>
+                    <div style="font-size: 13px; color: var(--text-color-muted, #666);">
+                        <p style="margin: 4px 0;"><i class="fas fa-calendar-alt"></i> Started: ${formatDate(sub.starts_at || sub.created_at)}</p>
+                        <p style="margin: 4px 0;"><i class="fas fa-clock"></i> ${expiresText}</p>
+                        ${sub.stripe_subscription_id ? '<p style="margin: 4px 0;"><i class="fab fa-stripe"></i> Stripe subscription</p>' : ''}
+                        ${sub.cancel_at_period_end ? '<p style="margin: 4px 0; color: var(--warning-color, #f59e0b);"><i class="fas fa-exclamation-triangle"></i> Cancels at period end</p>' : ''}
+                    </div>
+                </div>
+            `;
+
+            subActionsEl.innerHTML = `
+                <button class="btn btn-secondary btn-sm" id="modal-change-subscription-btn">
+                    <i class="fas fa-exchange-alt"></i> Change Plan
+                </button>
+                <button class="btn btn-secondary btn-sm" id="modal-extend-subscription-btn">
+                    <i class="fas fa-calendar-plus"></i> Extend
+                </button>
+                <button class="btn btn-danger btn-sm" id="modal-revoke-subscription-btn">
+                    <i class="fas fa-times"></i> Revoke
+                </button>
+            `;
+
+            // Attach event listeners
+            document.getElementById('modal-change-subscription-btn').addEventListener('click', () => {
+                openSubscriptionModal(email, 'change');
             });
+            document.getElementById('modal-extend-subscription-btn').addEventListener('click', () => {
+                openSubscriptionModal(email, 'extend');
+            });
+            document.getElementById('modal-revoke-subscription-btn').addEventListener('click', () => {
+                revokeSubscription(email);
+            });
+        } else {
+            subInfoEl.innerHTML = `
+                <div style="padding: 12px; background: var(--background-color-alt, #f8f9fa); border-radius: 8px; text-align: center; color: var(--text-color-muted, #666);">
+                    <i class="fas fa-id-badge" style="font-size: 24px; opacity: 0.3; margin-bottom: 8px; display: block;"></i>
+                    <p style="margin: 0;">No active subscription</p>
+                </div>
+            `;
 
-            tbody.innerHTML = sortedGuides.map(guide => `
-                <tr>
-                    <td><strong>${escapeHtml(guide.product_name)}</strong></td>
-                    <td>
-                        ${guide.source === 'stripe'
-                            ? '<span class="source-badge stripe"><i class="fas fa-credit-card"></i> Stripe</span>'
-                            : '<span class="source-badge admin"><i class="fas fa-gift"></i> Admin</span>'}
-                    </td>
-                    <td>
-                        <button class="action-btn danger btn-sm" data-revoke-guide="${escapeHtml(guide.product_id)}" data-user-email="${escapeHtml(email)}">
-                            <i class="fas fa-times"></i> Revoke
-                        </button>
-                    </td>
-                </tr>
-            `).join('');
+            subActionsEl.innerHTML = `
+                <button class="btn btn-primary btn-sm" id="modal-grant-subscription-btn">
+                    <i class="fas fa-plus"></i> Grant Subscription
+                </button>
+            `;
 
-            // Attach event listeners for revoke buttons
-            tbody.querySelectorAll('[data-revoke-guide]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    revokeGuide(this.dataset.userEmail, this.dataset.revokeGuide);
-                });
+            document.getElementById('modal-grant-subscription-btn').addEventListener('click', () => {
+                openSubscriptionModal(email, 'grant');
             });
         }
 
@@ -1190,872 +1225,250 @@ function closeUserDetailModal() {
     currentUserEmail = null;
 }
 
-// ==================== Download History Modal ====================
+// ==================== Subscription Management ====================
 
-function openDownloadHistoryModal(email, guideId, guideName) {
-    const modal = document.getElementById('download-history-modal');
-    modal.classList.add('active');
-
-    document.getElementById('download-history-user').textContent = email;
-    document.getElementById('download-history-guide').textContent = guideName;
-    document.getElementById('download-history-list').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
-
-    // Get download data from cache
-    const downloadsData = userDownloadsCache[email];
-    if (!downloadsData) {
-        document.getElementById('download-history-count').textContent = '0';
-        document.getElementById('download-history-list').innerHTML = '<div class="empty-state"><p>No download data available</p></div>';
-        return;
+// Helper to get plan display badge
+function getPlanBadge(user) {
+    if (!user.is_premium) {
+        return '<span class="badge-status">Free</span>';
     }
-
-    // Filter downloads for this specific guide
-    const guideDownloads = downloadsData.downloads.filter(d => d.product_id === guideId);
-    document.getElementById('download-history-count').textContent = guideDownloads.length;
-
-    if (guideDownloads.length === 0) {
-        document.getElementById('download-history-list').innerHTML = `
-            <div class="empty-state">
-                <i class="fas fa-download" style="font-size: 2rem; opacity: 0.3; margin-bottom: 10px;"></i>
-                <p>User has not downloaded this guide yet</p>
-            </div>
-        `;
-        return;
-    }
-
-    // Render download history
-    document.getElementById('download-history-list').innerHTML = `
-        <table class="admin-table compact">
-            <thead>
-                <tr>
-                    <th>Date & Time</th>
-                    <th>Source</th>
-                    <th>IP Address</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${guideDownloads.map(dl => `
-                    <tr>
-                        <td>${formatDateTime(dl.downloaded_at)}</td>
-                        <td>${getDownloadSourceBadge(dl.source)}</td>
-                        <td><code>${escapeHtml(dl.ip_address || 'Unknown')}</code></td>
-                    </tr>
-                `).join('')}
-            </tbody>
-        </table>
-    `;
+    return '<span class="badge-status premium"><i class="fas fa-crown"></i> Premium</span>';
 }
 
-function closeDownloadHistoryModal() {
-    document.getElementById('download-history-modal').classList.remove('active');
-}
-
-function getDownloadSourceBadge(source) {
-    const sourceMap = {
-        'dashboard': '<span class="source-badge dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</span>',
-        'guide_page': '<span class="source-badge guide-page"><i class="fas fa-book-open"></i> Guide Page</span>',
-        'email': '<span class="source-badge email"><i class="fas fa-envelope"></i> Email Link</span>',
-        'unknown': '<span class="source-badge unknown"><i class="fas fa-question"></i> Unknown</span>'
+function getPlanColor(planId) {
+    const colors = {
+        'monthly-access': '#2E86AB',
+        'semester-access': '#A23B72',
+        'lifetime-access': '#F18F01'
     };
-    return sourceMap[source] || sourceMap['unknown'];
+    return colors[planId] || '#666';
 }
 
-function formatDateTime(dateString) {
-    if (!dateString) return 'Unknown';
-    const date = new Date(dateString);
-    return date.toLocaleString('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-        hour: 'numeric',
-        minute: '2-digit',
-        hour12: true
-    });
+function getSubscriptionPlanBadge(planId, planName) {
+    const color = getPlanColor(planId);
+    const icons = {
+        'monthly-access': 'fa-sync-alt',
+        'semester-access': 'fa-calendar-alt',
+        'lifetime-access': 'fa-infinity'
+    };
+    const icon = icons[planId] || 'fa-id-badge';
+    return `<span class="badge-status" style="background: ${color}; color: white;"><i class="fas ${icon}"></i> ${escapeHtml(planName || planId)}</span>`;
 }
 
-// ==================== Guide Actions ====================
+function openSubscriptionModal(email, mode) {
+    subscriptionModalMode = mode;
+    currentUserEmail = email;
 
-async function revokeGuide(email, guideId) {
-    if (!await showConfirm('Revoke Guide Access', `Are you sure you want to revoke access to this guide for ${email}? They will no longer be able to access it.`)) {
+    const titleEl = document.getElementById('subscription-modal-title');
+    const userEmailEl = document.getElementById('subscription-modal-user-email');
+    const submitTextEl = document.getElementById('subscription-submit-text');
+
+    userEmailEl.textContent = email;
+    document.getElementById('subscription-notes').value = '';
+    document.getElementById('subscription-reason-select').value = mode === 'grant' ? 'promotional_giveaway' : 'admin_change';
+
+    switch (mode) {
+        case 'grant':
+            titleEl.textContent = 'Grant Subscription';
+            submitTextEl.textContent = 'Grant Subscription';
+            break;
+        case 'change':
+            titleEl.textContent = 'Change Subscription Plan';
+            submitTextEl.textContent = 'Change Plan';
+            break;
+        case 'extend':
+            titleEl.textContent = 'Extend Subscription';
+            submitTextEl.textContent = 'Extend Subscription';
+            break;
+    }
+
+    document.getElementById('subscription-modal').classList.add('active');
+}
+
+function closeSubscriptionModal() {
+    document.getElementById('subscription-modal').classList.remove('active');
+    subscriptionModalMode = null;
+}
+
+async function submitSubscription() {
+    const planId = document.getElementById('subscription-plan-select').value;
+    const reason = document.getElementById('subscription-reason-select').value;
+    const notes = document.getElementById('subscription-notes').value;
+    const submitBtn = document.getElementById('submit-subscription-btn');
+
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+    try {
+        const encodedEmail = encodeURIComponent(currentUserEmail);
+
+        if (subscriptionModalMode === 'grant') {
+            await apiCall(`/admin/users/by-email/${encodedEmail}/subscription`, {
+                method: 'POST',
+                body: JSON.stringify({ plan_id: planId, reason, notes })
+            });
+            showToast('Subscription granted successfully', 'success');
+        } else if (subscriptionModalMode === 'change') {
+            await apiCall(`/admin/users/by-email/${encodedEmail}/subscription`, {
+                method: 'PUT',
+                body: JSON.stringify({ plan_id: planId, reason, notes, action: 'change' })
+            });
+            showToast('Subscription plan changed successfully', 'success');
+        } else if (subscriptionModalMode === 'extend') {
+            await apiCall(`/admin/users/by-email/${encodedEmail}/subscription`, {
+                method: 'PUT',
+                body: JSON.stringify({ plan_id: planId, reason, notes, action: 'extend' })
+            });
+            showToast('Subscription extended successfully', 'success');
+        }
+
+        closeSubscriptionModal();
+        openUserDetail(currentUserEmail);
+    } catch (error) {
+        console.error('Error managing subscription:', error);
+        showToast(error.message || 'Failed to manage subscription', 'error');
+    } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-check"></i> <span id="subscription-submit-text">Submit</span>';
+    }
+}
+
+async function revokeSubscription(email) {
+    if (!await showConfirm('Revoke Subscription', `Are you sure you want to revoke the subscription for ${email}? They will lose premium access immediately.`)) {
         return;
     }
 
     try {
-        await apiCall(`/admin/users/by-email/${encodeURIComponent(email)}/guides/${guideId}?reason=Admin%20revoked`, {
+        await apiCall(`/admin/users/by-email/${encodeURIComponent(email)}/subscription?reason=Admin%20revoked`, {
             method: 'DELETE'
         });
-        showToast('Guide access revoked', 'success');
-        openUserDetail(email); // Refresh
+        showToast('Subscription revoked', 'success');
+        openUserDetail(email);
     } catch (error) {
-        console.error('Error revoking guide:', error);
-        showToast(error.message || 'Failed to revoke guide', 'error');
+        console.error('Error revoking subscription:', error);
+        showToast(error.message || 'Failed to revoke subscription', 'error');
     }
 }
 
-async function restoreGuide(email, guideId) {
-    try {
-        await apiCall(`/admin/users/by-email/${encodeURIComponent(email)}/guides/${guideId}/restore`, {
-            method: 'POST'
-        });
-        showToast('Guide access restored', 'success');
-        openUserDetail(email); // Refresh
-    } catch (error) {
-        console.error('Error restoring guide:', error);
-        showToast(error.message || 'Failed to restore guide', 'error');
-    }
-}
+// ==================== Subscriptions Tab ====================
 
-// ==================== Guide Notes ====================
+async function loadSubscriptions(page = 1) {
+    subscriptionsPage = page;
+    const tbody = document.getElementById('subscriptions-table-body');
+    const mobileContainer = document.getElementById('subscriptions-mobile-cards');
 
-let currentGuideNoteId = null;
-
-function openGuideNoteModal(guideId, currentNote) {
-    currentGuideNoteId = guideId;
-    document.getElementById('guide-note-text').value = currentNote || '';
-    document.getElementById('guide-note-modal').classList.add('active');
-    document.getElementById('guide-note-text').focus();
-}
-
-function closeGuideNoteModal() {
-    document.getElementById('guide-note-modal').classList.remove('active');
-    currentGuideNoteId = null;
-}
-
-async function saveGuideNote() {
-    const noteText = document.getElementById('guide-note-text').value.trim();
-
-    try {
-        await apiCall(`/admin/users/by-email/${encodeURIComponent(currentUserEmail)}/guides/${currentGuideNoteId}/note`, {
-            method: 'PUT',
-            body: JSON.stringify({ note: noteText })
-        });
-        showToast('Guide note saved', 'success');
-        closeGuideNoteModal();
-        openUserDetail(currentUserEmail); // Refresh
-    } catch (error) {
-        console.error('Error saving guide note:', error);
-        showToast(error.message || 'Failed to save note', 'error');
-    }
-}
-
-// ==================== Select All / Revoke All ====================
-
-function selectAllGuides() {
-    const checkboxes = document.querySelectorAll('.guide-select-checkbox');
-    const selectAllCheckbox = document.getElementById('select-all-guides');
-
-    checkboxes.forEach(cb => {
-        cb.checked = true;
-        selectedGuides.add(cb.dataset.guideId);
-    });
-
-    if (selectAllCheckbox) selectAllCheckbox.checked = true;
-    updateBulkActionsBar();
-}
-
-async function revokeAllGuides() {
-    const activeCheckboxes = document.querySelectorAll('.guide-select-checkbox');
-    const activeCount = activeCheckboxes.length;
-
-    if (activeCount === 0) {
-        showToast('No active guides to revoke', 'info');
-        return;
-    }
-
-    if (!await showConfirm('Revoke All Guides', `Are you sure you want to revoke ALL ${activeCount} active guide${activeCount > 1 ? 's' : ''} for ${currentUserEmail}? This cannot be easily undone.`)) {
-        return;
-    }
-
-    const guideIds = Array.from(activeCheckboxes).map(cb => cb.dataset.guideId);
-    let successCount = 0;
-    let failCount = 0;
-
-    for (const guideId of guideIds) {
-        try {
-            await apiCall(`/admin/users/by-email/${encodeURIComponent(currentUserEmail)}/guides/${guideId}?reason=Admin%20revoked%20all`, {
-                method: 'DELETE'
-            });
-            successCount++;
-        } catch (error) {
-            console.error(`Error revoking guide ${guideId}:`, error);
-            failCount++;
-        }
-    }
-
-    if (failCount === 0) {
-        showToast(`Successfully revoked all ${successCount} guides`, 'success');
-    } else {
-        showToast(`Revoked ${successCount}, failed ${failCount}`, 'error');
-    }
-
-    selectedGuides.clear();
-    openUserDetail(currentUserEmail); // Refresh
-}
-
-// ==================== Bulk Guide Operations ====================
-
-function handleGuideSelection(guideId, isSelected) {
-    if (isSelected) {
-        selectedGuides.add(guideId);
-    } else {
-        selectedGuides.delete(guideId);
-    }
-    updateBulkActionsBar();
-}
-
-function updateBulkActionsBar() {
-    const bulkRevokeBtn = document.getElementById('bulk-revoke-btn');
-    const countEl = document.getElementById('selected-guides-count');
-
-    if (selectedGuides.size > 0) {
-        bulkRevokeBtn.style.display = 'inline-flex';
-        countEl.textContent = selectedGuides.size;
-    } else {
-        bulkRevokeBtn.style.display = 'none';
-    }
-
-    // Update select all checkbox state
-    const allCheckboxes = document.querySelectorAll('.guide-select-checkbox');
-    const selectAllCheckbox = document.getElementById('select-all-guides');
-    if (selectAllCheckbox && allCheckboxes.length > 0) {
-        const allChecked = Array.from(allCheckboxes).every(cb => cb.checked);
-        const someChecked = Array.from(allCheckboxes).some(cb => cb.checked);
-        selectAllCheckbox.checked = allChecked;
-        selectAllCheckbox.indeterminate = someChecked && !allChecked;
-    }
-}
-
-
-async function bulkRevokeGuides() {
-    if (selectedGuides.size === 0) return;
-
-    const count = selectedGuides.size;
-    if (!await showConfirm('Bulk Revoke Guides', `Are you sure you want to revoke access to ${count} guide${count > 1 ? 's' : ''} for ${currentUserEmail}?`)) {
-        return;
-    }
-
-    const guideIds = Array.from(selectedGuides);
-    let successCount = 0;
-    let failCount = 0;
-
-    for (const guideId of guideIds) {
-        try {
-            await apiCall(`/admin/users/by-email/${encodeURIComponent(currentUserEmail)}/guides/${guideId}?reason=Bulk%20admin%20revoke`, {
-                method: 'DELETE'
-            });
-            successCount++;
-        } catch (error) {
-            console.error(`Error revoking guide ${guideId}:`, error);
-            failCount++;
-        }
-    }
-
-    if (failCount === 0) {
-        showToast(`Successfully revoked ${successCount} guide${successCount > 1 ? 's' : ''}`, 'success');
-    } else {
-        showToast(`Revoked ${successCount}, failed ${failCount}`, 'error');
-    }
-
-    selectedGuides.clear();
-    openUserDetail(currentUserEmail); // Refresh
-}
-
-
-// ==================== Add Guide Modal (Enhanced) ====================
-
-let addGuideSelectedItems = new Set();
-let addGuideCurrentType = 'study_guide';
-let addGuideSearchQuery = '';
-
-function openAddGuideModal() {
-    if (!currentUserEmail) return;
-
-    // Reset state
-    addGuideSelectedItems.clear();
-    addGuideCurrentType = 'study_guide';
-    addGuideSearchQuery = '';
-
-    document.getElementById('add-guide-user-email').textContent = currentUserEmail;
-    document.getElementById('add-guide-reason').value = 'promotional_giveaway';
-    document.getElementById('add-guide-notes').value = '';
-
-    // Reset type toggle
-    document.querySelectorAll('.add-guide-type-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.type === 'study_guide');
-    });
-
-    // Reset search
-    const searchInput = document.getElementById('add-guide-search');
-    if (searchInput) {
-        searchInput.value = '';
-        searchInput.placeholder = 'Search study guides...';
-    }
-    const clearBtn = document.getElementById('add-guide-search-clear');
-    if (clearBtn) clearBtn.style.display = 'none';
-
-    // Render guide list
-    renderAddGuideList();
-    updateSelectedGuidesDisplay();
-
-    // Disable submit button
-    document.getElementById('submit-add-guide-btn').disabled = true;
-
-    document.getElementById('add-guide-modal').classList.add('active');
-}
-
-function renderAddGuideList() {
-    const listContainer = document.getElementById('add-guide-list');
-    if (!listContainer) return;
-
-    // Filter guides based on type and search
-    const filteredGuides = productsCache.filter(p => {
-        if (p.type === 'subscription') return false;
-
-        const isStudyGuide = p.type === 'individual';
-        const isPackage = p.type === 'lite-package' || p.type === 'full-package';
-
-        if (addGuideCurrentType === 'study_guide' && !isStudyGuide) return false;
-        if (addGuideCurrentType === 'class_package' && !isPackage) return false;
-
-        if (addGuideSearchQuery && !p.name.toLowerCase().includes(addGuideSearchQuery.toLowerCase())) {
-            return false;
-        }
-
-        return true;
-    });
-
-    if (filteredGuides.length === 0) {
-        listContainer.innerHTML = `
-            <div class="add-guide-empty">
-                <i class="fas fa-search"></i>
-                No ${addGuideCurrentType === 'study_guide' ? 'study guides' : 'class packages'} found
-            </div>
-        `;
-        return;
-    }
-
-    listContainer.innerHTML = filteredGuides.map(guide => `
-        <div class="add-guide-item ${addGuideSelectedItems.has(guide.id) ? 'selected' : ''}"
-             data-guide-id="${escapeHtml(guide.id)}"
-             data-guide-name="${escapeHtml(guide.name)}">
-            <div class="add-guide-item-checkbox"></div>
-            <div class="add-guide-item-info">
-                <div class="add-guide-item-name">${escapeHtml(guide.name)}</div>
-                <div class="add-guide-item-price">$${guide.price}</div>
-            </div>
-        </div>
-    `).join('');
-
-    // Add click listeners
-    listContainer.querySelectorAll('.add-guide-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const guideId = this.dataset.guideId;
-            const guideName = this.dataset.guideName;
-
-            if (addGuideSelectedItems.has(guideId)) {
-                addGuideSelectedItems.delete(guideId);
-                this.classList.remove('selected');
-            } else {
-                addGuideSelectedItems.add(guideId);
-                this.classList.add('selected');
-            }
-
-            updateSelectedGuidesDisplay();
-        });
-    });
-}
-
-function updateSelectedGuidesDisplay() {
-    const container = document.getElementById('selected-guides-container');
-    const chipsContainer = document.getElementById('selected-guides-chips');
-    const countSpan = document.getElementById('selected-guides-count');
-    const submitBtn = document.getElementById('submit-add-guide-btn');
-
-    if (addGuideSelectedItems.size === 0) {
-        container.style.display = 'none';
-        submitBtn.disabled = true;
-        return;
-    }
-
-    container.style.display = 'block';
-    countSpan.textContent = addGuideSelectedItems.size;
-    submitBtn.disabled = false;
-
-    // Get guide names from cache
-    const chips = [];
-    addGuideSelectedItems.forEach(guideId => {
-        const guide = productsCache.find(p => p.id === guideId);
-        if (guide) {
-            chips.push(`
-                <div class="selected-guide-chip" data-guide-id="${escapeHtml(guideId)}">
-                    <span>${escapeHtml(guide.name.length > 25 ? guide.name.substring(0, 25) + '...' : guide.name)}</span>
-                    <button class="selected-guide-chip-remove" data-guide-id="${escapeHtml(guideId)}">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            `);
-        }
-    });
-
-    chipsContainer.innerHTML = chips.join('');
-
-    // Add remove listeners
-    chipsContainer.querySelectorAll('.selected-guide-chip-remove').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const guideId = this.dataset.guideId;
-            addGuideSelectedItems.delete(guideId);
-
-            // Update list item if visible
-            const listItem = document.querySelector(`.add-guide-item[data-guide-id="${guideId}"]`);
-            if (listItem) listItem.classList.remove('selected');
-
-            updateSelectedGuidesDisplay();
-        });
-    });
-}
-
-function initAddGuideModalListeners() {
-    // Type toggle buttons
-    document.querySelectorAll('.add-guide-type-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
-            document.querySelectorAll('.add-guide-type-btn').forEach(b => b.classList.remove('active'));
-            this.classList.add('active');
-            addGuideCurrentType = this.dataset.type;
-
-            // Update search placeholder
-            const searchInput = document.getElementById('add-guide-search');
-            if (searchInput) {
-                searchInput.placeholder = addGuideCurrentType === 'study_guide'
-                    ? 'Search study guides...'
-                    : 'Search class packages...';
-            }
-
-            renderAddGuideList();
-        });
-    });
-
-    // Search input
-    const searchInput = document.getElementById('add-guide-search');
-    const clearBtn = document.getElementById('add-guide-search-clear');
-
-    if (searchInput) {
-        searchInput.addEventListener('input', function() {
-            addGuideSearchQuery = this.value.trim();
-            clearBtn.style.display = addGuideSearchQuery ? 'flex' : 'none';
-            renderAddGuideList();
-        });
-
-        searchInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') {
-                this.value = '';
-                addGuideSearchQuery = '';
-                clearBtn.style.display = 'none';
-                renderAddGuideList();
-            }
-        });
-    }
-
-    if (clearBtn) {
-        clearBtn.addEventListener('click', function() {
-            searchInput.value = '';
-            addGuideSearchQuery = '';
-            this.style.display = 'none';
-            renderAddGuideList();
-            searchInput.focus();
-        });
-    }
-}
-
-function closeAddGuideModal() {
-    document.getElementById('add-guide-modal').classList.remove('active');
-    addGuideSelectedItems.clear();
-}
-
-async function submitAddGuide() {
-    if (addGuideSelectedItems.size === 0) {
-        showToast('Please select at least one guide', 'error');
-        return;
-    }
-
-    const reason = document.getElementById('add-guide-reason').value;
-    const notes = document.getElementById('add-guide-notes').value;
-    const submitBtn = document.getElementById('submit-add-guide-btn');
-
-    // Disable button during submission
-    submitBtn.disabled = true;
-    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Granting...';
-
-    let successCount = 0;
-    let errorCount = 0;
-    const selectedIds = Array.from(addGuideSelectedItems);
-
-    for (const guideId of selectedIds) {
-        try {
-            await apiCall(`/admin/users/by-email/${encodeURIComponent(currentUserEmail)}/guides`, {
-                method: 'POST',
-                body: JSON.stringify({ guide_id: guideId, reason, notes })
-            });
-            successCount++;
-        } catch (error) {
-            console.error('Error granting guide:', guideId, error);
-            errorCount++;
-        }
-    }
-
-    // Reset button
-    submitBtn.innerHTML = '<i class="fas fa-check"></i> Grant Access';
-    submitBtn.disabled = false;
-
-    if (successCount > 0) {
-        const plural = successCount > 1 ? 'guides' : 'guide';
-        showToast(`Successfully granted ${successCount} ${plural}`, 'success');
-    }
-    if (errorCount > 0) {
-        showToast(`Failed to grant ${errorCount} guide(s)`, 'error');
-    }
-
-    closeAddGuideModal();
-    openUserDetail(currentUserEmail); // Refresh user detail view
-}
-
-// ==================== Notes ====================
-
-function toggleAddNoteForm() {
-    const form = document.getElementById('add-note-form');
-    form.style.display = form.style.display === 'none' ? 'block' : 'none';
-    if (form.style.display === 'block') {
-        document.getElementById('new-note-text').focus();
-    }
-}
-
-async function submitNote() {
-    const noteText = document.getElementById('new-note-text').value.trim();
-    if (!noteText) {
-        showToast('Please enter a note', 'error');
-        return;
-    }
-
-    try {
-        await apiCall(`/admin/users/by-email/${encodeURIComponent(currentUserEmail)}/notes`, {
-            method: 'POST',
-            body: JSON.stringify({ note_text: noteText })
-        });
-        showToast('Note added', 'success');
-        document.getElementById('new-note-text').value = '';
-        toggleAddNoteForm();
-        openUserDetail(currentUserEmail); // Refresh
-    } catch (error) {
-        console.error('Error adding note:', error);
-        showToast(error.message || 'Failed to add note', 'error');
-    }
-}
-
-// ==================== Guides Tab ====================
-
-async function loadGuides(forceRefresh = false) {
-    const tbody = document.getElementById('guides-table-body');
-    const mobileContainer = document.getElementById('guides-mobile-cards');
-
-    tbody.innerHTML = '<tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading subscriptions...</td></tr>';
     if (mobileContainer) {
-        mobileContainer.innerHTML = '<div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</div>';
+        mobileContainer.innerHTML = '<div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading subscriptions...</div>';
     }
 
     try {
-        // Fetch from API if cache is empty or force refresh
-        if (guidesCache.length === 0 || forceRefresh) {
-            const data = await apiCall('/admin/guides');
-            guidesCache = data.guides || [];
-        }
+        const search = document.getElementById('subscription-search')?.value?.trim() || '';
+        const planFilter = document.getElementById('subscription-plan-filter')?.value || '';
+        const statusFilter = document.getElementById('subscription-status-filter')?.value || 'active';
 
-        // Clear search when loading
-        currentSearchQuery = '';
-        const searchInput = document.getElementById('guide-search');
-        if (searchInput) {
-            searchInput.value = '';
-            document.getElementById('guide-search-clear').style.display = 'none';
-        }
-
-        // Render filtered guides
-        renderFilteredGuides();
-    } catch (error) {
-        console.error('Error loading guides:', error);
-        tbody.innerHTML = '<tr><td colspan="7" class="loading-cell">Error loading guides</td></tr>';
-        if (mobileContainer) {
-            mobileContainer.innerHTML = '<div class="loading-cell">Error loading guides</div>';
-        }
-        showToast('Failed to load guides', 'error');
-    }
-}
-
-// Switch guide type (study_guide or class_package)
-function switchGuideType(type) {
-    currentGuideType = type;
-
-    // Update toggle button states
-    document.querySelectorAll('.guide-type-toggle .toggle-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.type === type);
-    });
-
-    // Update search placeholder and clear search
-    const searchInput = document.getElementById('guide-search');
-    if (searchInput) {
-        searchInput.placeholder = type === 'study_guide' ? 'Search study guides...' : 'Search class packages...';
-        searchInput.value = '';
-        document.getElementById('guide-search-clear').style.display = 'none';
-    }
-
-    // Reload guides with new filter
-    loadGuides();
-}
-
-// ==================== Guide Search ====================
-
-let currentSearchQuery = '';
-
-function initGuideSearch() {
-    const searchInput = document.getElementById('guide-search');
-    const clearBtn = document.getElementById('guide-search-clear');
-
-    if (!searchInput) return;
-
-    // Input handler - filter the table/list directly
-    searchInput.addEventListener('input', function() {
-        currentSearchQuery = this.value.trim().toLowerCase();
-        clearBtn.style.display = currentSearchQuery ? 'flex' : 'none';
-
-        // Re-render guides with search filter
-        renderFilteredGuides();
-    });
-
-    // Clear button
-    clearBtn.addEventListener('click', function() {
-        searchInput.value = '';
-        currentSearchQuery = '';
-        clearBtn.style.display = 'none';
-        renderFilteredGuides();
-        searchInput.focus();
-    });
-
-    // Escape to clear
-    searchInput.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            searchInput.value = '';
-            currentSearchQuery = '';
-            clearBtn.style.display = 'none';
-            renderFilteredGuides();
-            searchInput.blur();
-        }
-    });
-}
-
-// Render guides filtered by both type and search query
-function renderFilteredGuides() {
-    const tbody = document.getElementById('guides-table-body');
-    const mobileContainer = document.getElementById('guides-mobile-cards');
-
-    // Filter guides by current type AND search query
-    const filteredGuides = guidesCache.filter(guide => {
-        // Check type filter
-        if (currentGuideType === 'study_guide' && guide.type !== 'individual') return false;
-        if (currentGuideType === 'class_package' && guide.type !== 'lite-package' && guide.type !== 'full-package') return false;
-
-        // Check search query
-        if (currentSearchQuery && !guide.name.toLowerCase().includes(currentSearchQuery)) return false;
-
-        return true;
-    });
-
-    if (filteredGuides.length === 0) {
-        const typeLabel = currentGuideType === 'study_guide' ? 'study guides' : 'class packages';
-        const message = currentSearchQuery ? `No ${typeLabel} match "${currentSearchQuery}"` : `No ${typeLabel} found`;
-        tbody.innerHTML = `<tr><td colspan="7" class="loading-cell">${message}</td></tr>`;
-        if (mobileContainer) {
-            mobileContainer.innerHTML = `<div class="guide-list-empty">${message}</div>`;
-        }
-        return;
-    }
-
-    // Desktop table view
-    tbody.innerHTML = filteredGuides.map(guide => `
-        <tr>
-            <td><strong>${escapeHtml(guide.name)}</strong></td>
-            <td>${escapeHtml(guide.category || '-')}</td>
-            <td>$${guide.price.toFixed(2)}</td>
-            <td>${guide.stripe_purchases}</td>
-            <td>${guide.admin_granted}</td>
-            <td><strong>${guide.total_active_owners}</strong></td>
-            <td>
-                <div class="table-actions">
-                    <button class="action-btn primary" data-view-guide-owners="${escapeHtml(guide.guide_id)}" data-guide-name="${escapeHtml(guide.name)}">
-                        <i class="fas fa-users"></i> View Owners
-                    </button>
-                </div>
-            </td>
-        </tr>
-    `).join('');
-
-    // Mobile list view
-    if (mobileContainer) {
-        mobileContainer.innerHTML = filteredGuides.map(guide => `
-            <div class="guide-list-item" data-view-guide-owners="${escapeHtml(guide.guide_id)}" data-guide-name="${escapeHtml(guide.name)}">
-                <div class="guide-list-info">
-                    <div class="guide-list-name">${escapeHtml(guide.name)}</div>
-                    <div class="guide-list-meta"><span class="price">$${guide.price.toFixed(2)}</span> · ${guide.total_active_owners} owners</div>
-                </div>
-                <div class="guide-list-right">
-                    <i class="fas fa-chevron-right guide-list-arrow"></i>
-                </div>
-            </div>
-        `).join('');
-
-        // Attach event listeners to list items
-        mobileContainer.querySelectorAll('.guide-list-item').forEach(item => {
-            item.addEventListener('click', function() {
-                openGuideOwnersModal(this.dataset.viewGuideOwners, this.dataset.guideName);
-            });
+        const params = new URLSearchParams({
+            page: page,
+            per_page: 25,
+            search: search
         });
-    }
 
-    // Attach event listeners to View Owners buttons (desktop)
-    tbody.querySelectorAll('[data-view-guide-owners]').forEach(btn => {
-        btn.addEventListener('click', function() {
-            openGuideOwnersModal(this.dataset.viewGuideOwners, this.dataset.guideName);
-        });
-    });
-}
+        const data = await apiCall(`/admin/users?${params}`);
 
-// ==================== Guide Owners Modal ====================
+        // Fetch subscription data for users
+        const usersWithSubs = [];
+        for (const user of data.users) {
+            try {
+                const userData = await apiCall(`/admin/users/by-email/${encodeURIComponent(user.email)}`);
+                if (userData.subscription) {
+                    if (planFilter && userData.subscription.plan_id !== planFilter) continue;
+                    if (statusFilter && userData.subscription.status !== statusFilter) continue;
+                    usersWithSubs.push({ user, subscription: userData.subscription });
+                }
+            } catch {
+                continue;
+            }
+        }
 
-async function openGuideOwnersModal(guideId, guideName) {
-    currentGuideId = guideId;
-    document.getElementById('guide-owners-title').textContent = `${guideName} - Owners`;
-    document.getElementById('bulk-grant-guide-name').textContent = guideName;
-
-    const modal = document.getElementById('guide-owners-modal');
-    modal.classList.add('active');
-
-    const tbody = document.getElementById('guide-owners-body');
-    tbody.innerHTML = '<tr><td colspan="5" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>';
-
-    try {
-        const data = await apiCall(`/admin/guides/${guideId}/owners`);
-
-        document.getElementById('guide-owners-total').textContent = data.total;
-        document.getElementById('guide-owners-active').textContent = data.active;
-
-        if (data.owners.length === 0) {
-            tbody.innerHTML = '<tr><td colspan="5" class="loading-cell">No owners found</td></tr>';
+        if (usersWithSubs.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">No subscriptions found</td></tr>';
+            if (mobileContainer) {
+                mobileContainer.innerHTML = '<div class="loading-cell">No subscriptions found</div>';
+            }
+            document.getElementById('subscriptions-count').textContent = '0 subscriptions';
+            document.getElementById('subscriptions-pagination').innerHTML = '';
             return;
         }
 
-        tbody.innerHTML = data.owners.map(owner => `
+        document.getElementById('subscriptions-count').textContent = `${usersWithSubs.length} subscription${usersWithSubs.length !== 1 ? 's' : ''}`;
+
+        const displayName = user => escapeHtml(`${user.first_name || ''} ${user.last_name || ''}`.trim() || user.email);
+
+        // Desktop table
+        tbody.innerHTML = usersWithSubs.map(({ user, subscription: sub }) => `
             <tr>
                 <td>
-                    <a href="#" class="owner-user-link" data-user-email="${escapeHtml(owner.user_email)}">
-                        ${escapeHtml(owner.user_email)}
-                    </a>
+                    <strong>${displayName(user)}</strong>
+                    <div style="font-size: 12px; color: var(--text-color-muted, #666);">${escapeHtml(user.email)}</div>
                 </td>
-                <td>${owner.source === 'stripe' ? '<i class="fas fa-credit-card"></i> Stripe' : '<i class="fas fa-gift"></i> Admin'}</td>
-                <td>${escapeHtml(owner.granted_by || '-')}</td>
-                <td>${formatDate(owner.purchased_at)}</td>
+                <td>${getSubscriptionPlanBadge(sub.plan_id, sub.plan_name)}</td>
                 <td>
-                    ${owner.is_active ?
-                        '<span class="badge-status active"><i class="fas fa-check"></i> Active</span>' :
-                        '<span class="badge-status revoked"><i class="fas fa-times"></i> Revoked</span>'
-                    }
+                    ${sub.status === 'active'
+                        ? '<span class="badge-status active"><i class="fas fa-check"></i> Active</span>'
+                        : '<span class="badge-status revoked"><i class="fas fa-times"></i> Cancelled</span>'}
+                    ${sub.cancel_at_period_end ? '<br><small style="color: var(--warning-color, #f59e0b);">Cancels at end</small>' : ''}
+                </td>
+                <td>${formatDate(sub.starts_at || sub.created_at)}</td>
+                <td>${sub.expires_at ? formatDate(sub.expires_at) : '<em>Never</em>'}</td>
+                <td>
+                    <div class="table-actions">
+                        <button class="action-btn primary" data-view-user="${escapeHtml(user.email)}">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
                 </td>
             </tr>
         `).join('');
 
-        // Attach event listeners to user links in owners table
-        tbody.querySelectorAll('.owner-user-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                openUserDetail(this.dataset.userEmail);
-                closeGuideOwnersModal();
+        // Mobile cards
+        if (mobileContainer) {
+            mobileContainer.innerHTML = usersWithSubs.map(({ user, subscription: sub }) => `
+                <a href="admin-user.html?email=${encodeURIComponent(user.email)}" class="user-card">
+                    <div class="user-card-header">
+                        <div class="user-card-name">${displayName(user)}</div>
+                        <i class="fas fa-chevron-right user-card-arrow"></i>
+                    </div>
+                    <div class="user-card-email">${escapeHtml(user.email)}</div>
+                    <div class="user-card-footer">
+                        ${getSubscriptionPlanBadge(sub.plan_id, sub.plan_name)}
+                        <span style="font-size: 12px; color: var(--text-color-muted, #666);">
+                            ${sub.expires_at ? `Exp: ${formatDate(sub.expires_at)}` : 'Lifetime'}
+                        </span>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        // Attach event listeners
+        tbody.querySelectorAll('[data-view-user]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                openUserDetail(this.dataset.viewUser);
             });
         });
+
+        // Pagination
+        if (data.pagination && data.pagination.pages > 1) {
+            renderPagination('subscriptions-pagination', data.pagination, loadSubscriptions);
+        } else {
+            document.getElementById('subscriptions-pagination').innerHTML = '';
+        }
     } catch (error) {
-        console.error('Error loading guide owners:', error);
-        tbody.innerHTML = '<tr><td colspan="5" class="loading-cell">Error loading owners</td></tr>';
-        showToast('Failed to load guide owners', 'error');
-    }
-}
-
-function closeGuideOwnersModal() {
-    document.getElementById('guide-owners-modal').classList.remove('active');
-}
-
-// ==================== Bulk Grant Modal ====================
-
-function openBulkGrantModal() {
-    document.getElementById('bulk-grant-emails').value = '';
-    document.getElementById('bulk-grant-reason').value = 'promotional_giveaway';
-    document.getElementById('bulk-grant-notes').value = '';
-    document.getElementById('bulk-grant-results').style.display = 'none';
-    document.getElementById('bulk-grant-modal').classList.add('active');
-}
-
-function closeBulkGrantModal() {
-    document.getElementById('bulk-grant-modal').classList.remove('active');
-}
-
-async function submitBulkGrant() {
-    const emailsText = document.getElementById('bulk-grant-emails').value;
-    const reason = document.getElementById('bulk-grant-reason').value;
-    const notes = document.getElementById('bulk-grant-notes').value;
-
-    // Parse emails
-    const emails = emailsText
-        .split(/[,\n]+/)
-        .map(e => e.trim().toLowerCase())
-        .filter(e => e && e.includes('@'));
-
-    if (emails.length === 0) {
-        showToast('Please enter at least one valid email', 'error');
-        return;
-    }
-
-    if (emails.length > 50) {
-        showToast('Maximum 50 emails per bulk operation', 'error');
-        return;
-    }
-
-    try {
-        const data = await apiCall(`/admin/guides/${currentGuideId}/bulk-grant`, {
-            method: 'POST',
-            body: JSON.stringify({ emails, reason, notes })
-        });
-
-        // Show results
-        const resultsDiv = document.getElementById('bulk-grant-results');
-        resultsDiv.style.display = 'block';
-        resultsDiv.innerHTML = `
-            <h4>Results</h4>
-            <div class="result-category">
-                <div class="result-label">Granted: ${data.summary.granted}</div>
-                ${data.results.granted.length > 0 ? `<div class="result-list">${data.results.granted.join(', ')}</div>` : ''}
-            </div>
-            <div class="result-category">
-                <div class="result-label">Restored: ${data.summary.restored}</div>
-                ${data.results.restored.length > 0 ? `<div class="result-list">${data.results.restored.join(', ')}</div>` : ''}
-            </div>
-            <div class="result-category">
-                <div class="result-label">Already Has: ${data.summary.already_has}</div>
-                ${data.results.already_has.length > 0 ? `<div class="result-list">${data.results.already_has.join(', ')}</div>` : ''}
-            </div>
-            <div class="result-category">
-                <div class="result-label">User Not Found: ${data.summary.user_not_found}</div>
-                ${data.results.user_not_found.length > 0 ? `<div class="result-list">${data.results.user_not_found.join(', ')}</div>` : ''}
-            </div>
-        `;
-
-        showToast(`Bulk grant completed: ${data.summary.granted} granted, ${data.summary.restored} restored`, 'success');
-        openGuideOwnersModal(currentGuideId, document.getElementById('bulk-grant-guide-name').textContent); // Refresh owners
-    } catch (error) {
-        console.error('Error with bulk grant:', error);
-        showToast(error.message || 'Failed to complete bulk grant', 'error');
+        console.error('Error loading subscriptions:', error);
+        tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">Error loading subscriptions</td></tr>';
+        if (mobileContainer) {
+            mobileContainer.innerHTML = '<div class="loading-cell">Error loading subscriptions</div>';
+        }
+        showToast('Failed to load subscriptions', 'error');
     }
 }
 
@@ -2161,7 +1574,7 @@ function renderAuditLog() {
                     ${escapeHtml(log.target_user_email)}
                 </a>
             </td>
-            <td>${escapeHtml(log.guide_id || '-')}</td>
+            <td>${getAuditDetails(log)}</td>
             <td>${escapeHtml(log.reason || '-')}</td>
         </tr>
     `).join('');
@@ -2180,7 +1593,7 @@ function renderAuditLog() {
                 <div class="audit-card-body">
                     <strong>${escapeHtml(log.admin_email)}</strong> →
                     <a href="#" class="audit-user-link" data-user-email="${escapeHtml(log.target_user_email)}">${escapeHtml(log.target_user_email)}</a>
-                    ${log.guide_id ? `<br><small>Guide: ${escapeHtml(log.guide_id)}</small>` : ''}
+                    ${log.guide_id ? `<br><small>Guide: ${escapeHtml(log.guide_id)}</small>` : ''}${log.details && log.details.plan_name ? `<br><small>Plan: ${escapeHtml(log.details.plan_name)}</small>` : ''}
                 </div>
                 ${log.reason ? `<div class="audit-card-reason">Reason: <span>${escapeHtml(log.reason)}</span></div>` : ''}
             </div>
@@ -2205,8 +1618,25 @@ function renderAuditLog() {
 }
 
 // Helper function for audit card action class
+function getAuditDetails(log) {
+    // Show subscription plan details for subscription actions
+    if (log.details && log.details.plan_name) {
+        let detail = escapeHtml(log.details.plan_name);
+        if (log.details.old_plan_id && log.details.new_plan_id && log.details.old_plan_id !== log.details.new_plan_id) {
+            detail = `${escapeHtml(log.details.old_plan_id)} → ${escapeHtml(log.details.plan_name)}`;
+        }
+        return detail;
+    }
+    // Fall back to guide_id for legacy entries
+    return escapeHtml(log.guide_id || '-');
+}
+
 function getAuditCardClass(actionType) {
     switch (actionType) {
+        case 'grant_subscription': return 'grant';
+        case 'revoke_subscription': return 'revoke';
+        case 'change_subscription': return 'note';
+        case 'extend_subscription': return 'grant';
         case 'grant_guide': return 'grant';
         case 'revoke_guide': return 'revoke';
         case 'restore_guide': return 'restore';
@@ -2252,17 +1682,6 @@ async function exportAuditLog() {
     }
 }
 
-// ==================== Products Catalog ====================
-
-async function loadProductsCatalog() {
-    try {
-        const data = await apiCall('/admin/products');
-        productsCache = data.products;
-    } catch (error) {
-        console.error('Error loading products:', error);
-    }
-}
-
 // ==================== Utility Functions ====================
 
 function renderPagination(containerId, pagination, loadFn) {
@@ -2304,6 +1723,10 @@ function formatDateTime(dateString) {
 
 function formatActionType(action) {
     const types = {
+        'grant_subscription': 'Grant Subscription',
+        'revoke_subscription': 'Revoke Subscription',
+        'change_subscription': 'Change Subscription',
+        'extend_subscription': 'Extend Subscription',
         'grant_guide': 'Grant Guide',
         'revoke_guide': 'Revoke Guide',
         'restore_guide': 'Restore Guide',
@@ -2314,6 +1737,10 @@ function formatActionType(action) {
 
 function getActivityIcon(action) {
     const icons = {
+        'grant_subscription': 'fa-plus-circle',
+        'revoke_subscription': 'fa-minus-circle',
+        'change_subscription': 'fa-exchange-alt',
+        'extend_subscription': 'fa-calendar-plus',
         'grant_guide': 'fa-plus-circle',
         'revoke_guide': 'fa-minus-circle',
         'restore_guide': 'fa-redo',
@@ -2324,6 +1751,10 @@ function getActivityIcon(action) {
 
 function getActivityIconClass(action) {
     const classes = {
+        'grant_subscription': 'grant',
+        'revoke_subscription': 'revoke',
+        'change_subscription': 'note',
+        'extend_subscription': 'grant',
         'grant_guide': 'grant',
         'revoke_guide': 'revoke',
         'restore_guide': 'restore',
@@ -2334,6 +1765,10 @@ function getActivityIconClass(action) {
 
 function getActionBadgeClass(action) {
     const classes = {
+        'grant_subscription': 'active',
+        'revoke_subscription': 'revoked',
+        'change_subscription': 'unverified',
+        'extend_subscription': 'verified',
         'grant_guide': 'active',
         'revoke_guide': 'revoked',
         'restore_guide': 'verified',
@@ -2500,129 +1935,49 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Download history modal close button
-    const closeDownloadHistoryModalBtn = document.getElementById('close-download-history-modal-btn');
-    if (closeDownloadHistoryModalBtn) {
-        closeDownloadHistoryModalBtn.addEventListener('click', closeDownloadHistoryModal);
+    // Subscription modal buttons
+    const closeSubscriptionModalBtn = document.getElementById('close-subscription-modal-btn');
+    if (closeSubscriptionModalBtn) {
+        closeSubscriptionModalBtn.addEventListener('click', closeSubscriptionModal);
     }
 
-    // Add guide modal buttons
-    const openAddGuideModalBtn = document.getElementById('open-add-guide-modal-btn');
-    if (openAddGuideModalBtn) {
-        openAddGuideModalBtn.addEventListener('click', openAddGuideModal);
+    const cancelSubscriptionBtn = document.getElementById('cancel-subscription-btn');
+    if (cancelSubscriptionBtn) {
+        cancelSubscriptionBtn.addEventListener('click', closeSubscriptionModal);
     }
 
-    const closeAddGuideModalBtn = document.getElementById('close-add-guide-modal-btn');
-    if (closeAddGuideModalBtn) {
-        closeAddGuideModalBtn.addEventListener('click', closeAddGuideModal);
+    const submitSubscriptionBtn = document.getElementById('submit-subscription-btn');
+    if (submitSubscriptionBtn) {
+        submitSubscriptionBtn.addEventListener('click', submitSubscription);
     }
 
-    const cancelAddGuideBtn = document.getElementById('cancel-add-guide-btn');
-    if (cancelAddGuideBtn) {
-        cancelAddGuideBtn.addEventListener('click', closeAddGuideModal);
+    // Subscriptions tab search and filter
+    const subscriptionSearchBtn = document.getElementById('subscription-search-btn');
+    if (subscriptionSearchBtn) {
+        subscriptionSearchBtn.addEventListener('click', () => loadSubscriptions(1));
     }
 
-    const submitAddGuideBtn = document.getElementById('submit-add-guide-btn');
-    if (submitAddGuideBtn) {
-        submitAddGuideBtn.addEventListener('click', submitAddGuide);
+    const subscriptionSearchInput = document.getElementById('subscription-search');
+    if (subscriptionSearchInput) {
+        subscriptionSearchInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') loadSubscriptions(1);
+        });
     }
 
-    // Initialize enhanced add guide modal listeners
-    initAddGuideModalListeners();
-
-    // Notes form buttons
-    const toggleAddNoteBtn = document.getElementById('toggle-add-note-btn');
-    if (toggleAddNoteBtn) {
-        toggleAddNoteBtn.addEventListener('click', toggleAddNoteForm);
+    const subscriptionPlanFilter = document.getElementById('subscription-plan-filter');
+    if (subscriptionPlanFilter) {
+        subscriptionPlanFilter.addEventListener('change', () => loadSubscriptions(1));
     }
 
-    const submitNoteBtn = document.getElementById('submit-note-btn');
-    if (submitNoteBtn) {
-        submitNoteBtn.addEventListener('click', submitNote);
-    }
-
-    const cancelNoteBtn = document.getElementById('cancel-note-btn');
-    if (cancelNoteBtn) {
-        cancelNoteBtn.addEventListener('click', toggleAddNoteForm);
-    }
-
-    // Guide owners modal buttons
-    const closeGuideOwnersModalBtn = document.getElementById('close-guide-owners-modal-btn');
-    if (closeGuideOwnersModalBtn) {
-        closeGuideOwnersModalBtn.addEventListener('click', closeGuideOwnersModal);
-    }
-
-    const openBulkGrantModalBtn = document.getElementById('open-bulk-grant-modal-btn');
-    if (openBulkGrantModalBtn) {
-        openBulkGrantModalBtn.addEventListener('click', openBulkGrantModal);
-    }
-
-    // Bulk grant modal buttons
-    const closeBulkGrantModalBtn = document.getElementById('close-bulk-grant-modal-btn');
-    if (closeBulkGrantModalBtn) {
-        closeBulkGrantModalBtn.addEventListener('click', closeBulkGrantModal);
-    }
-
-    const cancelBulkGrantBtn = document.getElementById('cancel-bulk-grant-btn');
-    if (cancelBulkGrantBtn) {
-        cancelBulkGrantBtn.addEventListener('click', closeBulkGrantModal);
-    }
-
-    const submitBulkGrantBtn = document.getElementById('submit-bulk-grant-btn');
-    if (submitBulkGrantBtn) {
-        submitBulkGrantBtn.addEventListener('click', submitBulkGrant);
+    const subscriptionStatusFilter = document.getElementById('subscription-status-filter');
+    if (subscriptionStatusFilter) {
+        subscriptionStatusFilter.addEventListener('change', () => loadSubscriptions(1));
     }
 
     // Confirm modal cancel button
     const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
     if (confirmCancelBtn) {
         confirmCancelBtn.addEventListener('click', closeConfirmModal);
-    }
-
-    // Bulk revoke button
-    const bulkRevokeBtn = document.getElementById('bulk-revoke-btn');
-    if (bulkRevokeBtn) {
-        bulkRevokeBtn.addEventListener('click', bulkRevokeGuides);
-    }
-
-    // Select all guides checkbox
-    const selectAllGuidesCheckbox = document.getElementById('select-all-guides');
-    if (selectAllGuidesCheckbox) {
-        selectAllGuidesCheckbox.addEventListener('change', function() {
-            const checkboxes = document.querySelectorAll('.guide-select-checkbox');
-            checkboxes.forEach(cb => {
-                cb.checked = this.checked;
-                handleGuideSelection(cb.dataset.guideId, this.checked);
-            });
-        });
-    }
-
-    // Select All button
-    const selectAllGuidesBtn = document.getElementById('select-all-guides-btn');
-    if (selectAllGuidesBtn) {
-        selectAllGuidesBtn.addEventListener('click', selectAllGuides);
-    }
-
-    // Revoke All button
-    const revokeAllGuidesBtn = document.getElementById('revoke-all-guides-btn');
-    if (revokeAllGuidesBtn) {
-        revokeAllGuidesBtn.addEventListener('click', revokeAllGuides);
-    }
-
-    // Guide note modal buttons
-    const closeGuideNoteModalBtn = document.getElementById('close-guide-note-modal-btn');
-    if (closeGuideNoteModalBtn) {
-        closeGuideNoteModalBtn.addEventListener('click', closeGuideNoteModal);
-    }
-
-    const saveGuideNoteBtn = document.getElementById('save-guide-note-btn');
-    if (saveGuideNoteBtn) {
-        saveGuideNoteBtn.addEventListener('click', saveGuideNote);
-    }
-
-    const cancelGuideNoteBtn = document.getElementById('cancel-guide-note-btn');
-    if (cancelGuideNoteBtn) {
-        cancelGuideNoteBtn.addEventListener('click', closeGuideNoteModal);
     }
 
     // View All Deleted Accounts button
@@ -2643,15 +1998,4 @@ document.addEventListener('DOMContentLoaded', function() {
         deletedFilterApplyBtn.addEventListener('click', () => loadDeletedAccountsFull(1));
     }
 
-    // Guide type toggle buttons
-    const toggleStudyGuidesBtn = document.getElementById('toggle-study-guides');
-    const toggleClassPackagesBtn = document.getElementById('toggle-class-packages');
-
-    if (toggleStudyGuidesBtn) {
-        toggleStudyGuidesBtn.addEventListener('click', () => switchGuideType('study_guide'));
-    }
-
-    if (toggleClassPackagesBtn) {
-        toggleClassPackagesBtn.addEventListener('click', () => switchGuideType('class_package'));
-    }
 });

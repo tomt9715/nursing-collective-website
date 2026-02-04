@@ -118,8 +118,8 @@
                     <button class="admin-subnav-tab" data-tab="users">
                         <i class="fas fa-user-cog"></i> Manage Users
                     </button>
-                    <button class="admin-subnav-tab" data-tab="guides">
-                        <i class="fas fa-book"></i> Guides
+                    <button class="admin-subnav-tab" data-tab="subscriptions">
+                        <i class="fas fa-id-badge"></i> Subscriptions
                     </button>
                     <button class="admin-subnav-tab" data-tab="audit">
                         <i class="fas fa-history"></i> Audit Log
@@ -139,7 +139,7 @@
                         <i class="fas fa-shield-alt"></i> Administrator Panel
                     </div>
                     <h1>Welcome back, <span id="admin-name">Admin</span></h1>
-                    <p class="admin-hero-subtitle">Manage users, guides, and monitor system activity</p>
+                    <p class="admin-hero-subtitle">Manage users, subscriptions, and monitor system activity</p>
                 </div>
                 <div class="admin-hero-stats">
                     <div class="hero-stat">
@@ -230,9 +230,9 @@
                         </div>
                     </div>
 
-                    <!-- Stats Grid - Row 2: Revenue & Purchases -->
+                    <!-- Stats Grid - Row 2: Subscriptions -->
                     <div class="stats-section">
-                        <h3 class="stats-section-title"><i class="fas fa-chart-line"></i> Revenue & Purchases</h3>
+                        <h3 class="stats-section-title"><i class="fas fa-chart-line"></i> Subscriptions & Revenue</h3>
                         <div class="admin-stats-grid">
                             <div class="admin-stat-card highlight">
                                 <div class="stat-icon success"><i class="fas fa-dollar-sign"></i></div>
@@ -243,24 +243,24 @@
                                 <div class="stat-subtext"><span id="orders-count">0</span> orders</div>
                             </div>
                             <div class="admin-stat-card">
-                                <div class="stat-icon success"><i class="fas fa-shopping-cart"></i></div>
+                                <div class="stat-icon success"><i class="fas fa-sync-alt"></i></div>
                                 <div class="stat-info">
-                                    <span class="stat-value" id="stat-stripe-purchases">-</span>
-                                    <span class="stat-label">Stripe Purchases</span>
+                                    <span class="stat-value" id="stat-monthly-subs">-</span>
+                                    <span class="stat-label">Monthly</span>
                                 </div>
                             </div>
                             <div class="admin-stat-card">
-                                <div class="stat-icon info"><i class="fas fa-gift"></i></div>
+                                <div class="stat-icon info"><i class="fas fa-calendar-alt"></i></div>
                                 <div class="stat-info">
-                                    <span class="stat-value" id="stat-admin-grants">-</span>
-                                    <span class="stat-label">Admin Grants</span>
+                                    <span class="stat-value" id="stat-semester-subs">-</span>
+                                    <span class="stat-label">Semester</span>
                                 </div>
                             </div>
                             <div class="admin-stat-card">
-                                <div class="stat-icon"><i class="fas fa-book"></i></div>
+                                <div class="stat-icon premium"><i class="fas fa-infinity"></i></div>
                                 <div class="stat-info">
-                                    <span class="stat-value" id="stat-total-guides-sold">-</span>
-                                    <span class="stat-label">Total Guides Owned</span>
+                                    <span class="stat-value" id="stat-lifetime-subs">-</span>
+                                    <span class="stat-label">Lifetime</span>
                                 </div>
                             </div>
                         </div>
@@ -469,13 +469,13 @@
                         </div>
                     </div>
 
-                    <!-- Top Guides Section -->
+                    <!-- Subscription Overview Section -->
                     <div class="admin-section">
                         <div class="section-header">
-                            <h3><i class="fas fa-fire"></i> Top Guides by Ownership</h3>
-                            <button class="btn-link" data-switch-tab="guides">View All Guides</button>
+                            <h3><i class="fas fa-chart-bar"></i> Subscription Breakdown</h3>
+                            <button class="btn-link" data-switch-tab="subscriptions">View All</button>
                         </div>
-                        <div class="top-guides-grid" id="top-guides">
+                        <div class="subscription-overview-grid" id="subscription-overview">
                             <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
                         </div>
                     </div>
@@ -534,7 +534,7 @@
                                     <tr>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Guides</th>
+                                        <th>Plan</th>
                                         <th>Status</th>
                                         <th>Joined</th>
                                         <th>Actions</th>
@@ -554,53 +554,59 @@
                     </div>
                 </div>
 
-                <!-- Guides Tab -->
-                <div class="admin-tab-content" id="tab-guides">
+                <!-- Subscriptions Tab -->
+                <div class="admin-tab-content" id="tab-subscriptions">
                     <div class="admin-section">
-                        <div class="section-header guides-section-header">
-                            <h3><i class="fas fa-book"></i> Guide Statistics</h3>
-                            <div class="guide-type-toggle">
-                                <button class="toggle-btn active" id="toggle-study-guides" data-type="study_guide">
-                                    <i class="fas fa-book-open"></i> Study Guides
-                                </button>
-                                <button class="toggle-btn" id="toggle-class-packages" data-type="class_package">
-                                    <i class="fas fa-box"></i> Class Packages
-                                </button>
+                        <div class="section-header">
+                            <h3><i class="fas fa-id-badge"></i> Active Subscriptions</h3>
+                            <span class="user-count" id="subscriptions-count">0 subscriptions</span>
+                        </div>
+                        <!-- Subscription Search -->
+                        <div class="admin-search-bar">
+                            <div class="search-input-group">
+                                <i class="fas fa-search"></i>
+                                <input type="text" id="subscription-search" placeholder="Search subscribers by email..." autocomplete="off">
+                                <button class="search-btn" id="subscription-search-btn">Search</button>
                             </div>
                         </div>
-                        <!-- Guide Search -->
-                        <div class="guide-search-container">
-                            <div class="guide-search-input-wrapper">
-                                <i class="fas fa-search"></i>
-                                <input type="text" id="guide-search" placeholder="Search study guides..." autocomplete="off">
-                                <button class="guide-search-clear" id="guide-search-clear" style="display: none;">
-                                    <i class="fas fa-times"></i>
-                                </button>
-                            </div>
+                        <!-- Subscription Filter -->
+                        <div class="subscription-filter-row" style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+                            <select id="subscription-plan-filter" class="form-select" style="max-width: 200px;">
+                                <option value="">All Plans</option>
+                                <option value="monthly-access">Monthly</option>
+                                <option value="semester-access">Semester</option>
+                                <option value="lifetime-access">Lifetime</option>
+                            </select>
+                            <select id="subscription-status-filter" class="form-select" style="max-width: 200px;">
+                                <option value="active">Active</option>
+                                <option value="cancelled">Cancelled</option>
+                                <option value="">All Statuses</option>
+                            </select>
                         </div>
                         <!-- Desktop Table View -->
-                        <div class="guides-table-container desktop-only">
-                            <table class="admin-table" id="guides-table">
+                        <div class="subscriptions-table-container desktop-only">
+                            <table class="admin-table" id="subscriptions-table">
                                 <thead>
                                     <tr>
-                                        <th>Guide Name</th>
-                                        <th>Category</th>
-                                        <th>Price</th>
-                                        <th>Stripe Purchases</th>
-                                        <th>Admin Grants</th>
-                                        <th>Total Owners</th>
+                                        <th>User</th>
+                                        <th>Plan</th>
+                                        <th>Status</th>
+                                        <th>Started</th>
+                                        <th>Expires</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
-                                <tbody id="guides-table-body">
-                                    <tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</td></tr>
+                                <tbody id="subscriptions-table-body">
+                                    <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading subscriptions...</td></tr>
                                 </tbody>
                             </table>
                         </div>
                         <!-- Mobile Cards View -->
-                        <div class="guides-mobile-cards mobile-only" id="guides-mobile-cards">
-                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading guides...</div>
+                        <div class="subscriptions-mobile-cards mobile-only" id="subscriptions-mobile-cards">
+                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading subscriptions...</div>
                         </div>
+                        <!-- Pagination -->
+                        <div class="pagination-controls" id="subscriptions-pagination"></div>
                     </div>
                 </div>
 
@@ -612,6 +618,10 @@
                             <label>Action Type</label>
                             <select id="audit-action-filter">
                                 <option value="">All Actions</option>
+                                <option value="grant_subscription">Grant Subscription</option>
+                                <option value="revoke_subscription">Revoke Subscription</option>
+                                <option value="change_subscription">Change Subscription</option>
+                                <option value="extend_subscription">Extend Subscription</option>
                                 <option value="grant_guide">Grant Guide</option>
                                 <option value="revoke_guide">Revoke Guide</option>
                                 <option value="restore_guide">Restore Guide</option>
@@ -664,7 +674,7 @@
                                         <th>Admin</th>
                                         <th>Action</th>
                                         <th>Target User</th>
-                                        <th>Guide</th>
+                                        <th>Details</th>
                                         <th>Reason</th>
                                     </tr>
                                 </thead>
@@ -708,228 +718,64 @@
                     </div>
                 </div>
 
-                <!-- Owned Guides Section (Simplified) -->
+                <!-- Subscription Section -->
                 <div class="user-detail-section">
                     <div class="section-header-inline">
-                        <h3><i class="fas fa-book"></i> Guides (<span id="modal-guides-count">0</span>)</h3>
-                        <button class="btn btn-primary btn-sm" id="open-add-guide-modal-btn">
-                            <i class="fas fa-plus"></i> Add Guide
-                        </button>
+                        <h3><i class="fas fa-id-badge"></i> Subscription</h3>
                     </div>
-                    <div class="user-guides-table-container">
-                        <table class="admin-table compact" id="user-guides-table">
-                            <thead>
-                                <tr>
-                                    <th>Guide Name</th>
-                                    <th>Source</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody id="user-guides-table-body">
-                                <!-- Populated by JS -->
-                            </tbody>
-                        </table>
+                    <div id="user-subscription-info">
+                        <!-- Populated by JS -->
                     </div>
-                    <p class="modal-hint"><i class="fas fa-info-circle"></i> For revoked guides, notes, and download history, use <strong>Full Profile</strong></p>
+                    <div class="subscription-actions" id="user-subscription-actions" style="margin-top: 12px; display: flex; gap: 8px; flex-wrap: wrap;">
+                        <!-- Populated by JS -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Guide Note Modal -->
-    <div class="modal-overlay" id="guide-note-modal">
-        <div class="modal-content guide-note-modal">
+    <!-- Subscription Management Modal -->
+    <div class="modal-overlay" id="subscription-modal">
+        <div class="modal-content subscription-modal">
             <div class="modal-header">
-                <h2><i class="fas fa-sticky-note"></i> Edit Guide Note</h2>
-                <button class="modal-close" id="close-guide-note-modal-btn">
+                <h2><i class="fas fa-id-badge"></i> <span id="subscription-modal-title">Manage Subscription</span></h2>
+                <button class="modal-close" id="close-subscription-modal-btn">
                     <i class="fas fa-times"></i>
                 </button>
             </div>
             <div class="modal-body">
+                <p class="subscription-modal-user-info">User: <strong id="subscription-modal-user-email"></strong></p>
+
                 <div class="form-group">
-                    <label>Note</label>
-                    <textarea id="guide-note-text" class="form-control" rows="3" placeholder="Add a note about this guide assignment..."></textarea>
+                    <label>Plan</label>
+                    <select id="subscription-plan-select" class="form-select">
+                        <option value="monthly-access">Monthly Access ($14.99/mo)</option>
+                        <option value="semester-access">Semester Access ($44.99 / 120 days)</option>
+                        <option value="lifetime-access">Lifetime Access ($119 / never expires)</option>
+                    </select>
                 </div>
-                <div class="form-actions">
-                    <button class="btn btn-primary" id="save-guide-note-btn">
-                        <i class="fas fa-save"></i> Save Note
-                    </button>
-                    <button class="btn btn-secondary" id="cancel-guide-note-btn">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add Guide Modal (Enhanced for Mobile) -->
-    <div class="modal-overlay" id="add-guide-modal">
-        <div class="modal-content add-guide-modal">
-            <div class="modal-header">
-                <h2><i class="fas fa-plus-circle"></i> Add Guide to User</h2>
-                <button class="modal-close" id="close-add-guide-modal-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p class="add-guide-user-info">Grant access to <strong id="add-guide-user-email"></strong></p>
-
-                <!-- Guide Type Toggle -->
-                <div class="add-guide-type-toggle">
-                    <button class="add-guide-type-btn active" data-type="study_guide">
-                        <i class="fas fa-book"></i> Study Guides
-                    </button>
-                    <button class="add-guide-type-btn" data-type="class_package">
-                        <i class="fas fa-box"></i> Class Packages
-                    </button>
-                </div>
-
-                <!-- Search Bar -->
-                <div class="add-guide-search-wrapper">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="add-guide-search" placeholder="Search study guides..." autocomplete="off">
-                    <button class="add-guide-search-clear" id="add-guide-search-clear" style="display: none;">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-
-                <!-- Guide Selection List -->
-                <div class="add-guide-list-container">
-                    <div class="add-guide-list" id="add-guide-list">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
-                <!-- Selected Guides Chips -->
-                <div class="selected-guides-container" id="selected-guides-container" style="display: none;">
-                    <label>Selected (<span id="selected-guides-count">0</span>)</label>
-                    <div class="selected-guides-chips" id="selected-guides-chips">
-                        <!-- Populated by JS -->
-                    </div>
-                </div>
-
-                <!-- Reason and Notes -->
                 <div class="form-group">
                     <label>Reason</label>
-                    <select id="add-guide-reason" class="form-select">
+                    <select id="subscription-reason-select" class="form-select">
                         <option value="promotional_giveaway">Promotional giveaway</option>
                         <option value="refund_compensation">Refund compensation</option>
                         <option value="contest_winner">Contest winner</option>
                         <option value="support_resolution">Support resolution</option>
                         <option value="complimentary">Complimentary</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Comment (tracked to admin notes)</label>
-                    <textarea id="add-guide-notes" class="form-control" rows="2" placeholder="Why are you granting this guide?"></textarea>
-                </div>
-
-                <!-- Actions -->
-                <div class="form-actions">
-                    <button class="btn btn-primary" id="submit-add-guide-btn" disabled>
-                        <i class="fas fa-check"></i> Grant Access
-                    </button>
-                    <button class="btn btn-secondary" id="cancel-add-guide-btn">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Guide Owners Modal -->
-    <div class="modal-overlay" id="guide-owners-modal">
-        <div class="modal-content guide-owners-modal">
-            <div class="modal-header">
-                <h2><i class="fas fa-users"></i> <span id="guide-owners-title">Guide Owners</span></h2>
-                <button class="modal-close" id="close-guide-owners-modal-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="guide-owners-stats">
-                    <span class="stat"><i class="fas fa-users"></i> Total: <strong id="guide-owners-total">0</strong></span>
-                    <span class="stat"><i class="fas fa-check-circle"></i> Active: <strong id="guide-owners-active">0</strong></span>
-                </div>
-                <button class="btn btn-primary" id="open-bulk-grant-modal-btn">
-                    <i class="fas fa-users-cog"></i> Bulk Grant
-                </button>
-                <div class="owners-table-container">
-                    <table class="admin-table">
-                        <thead>
-                            <tr>
-                                <th>User Email</th>
-                                <th>Source</th>
-                                <th>Granted By</th>
-                                <th>Date</th>
-                                <th>Status</th>
-                            </tr>
-                        </thead>
-                        <tbody id="guide-owners-body">
-                            <!-- Populated by JS -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Bulk Grant Modal -->
-    <div class="modal-overlay" id="bulk-grant-modal">
-        <div class="modal-content bulk-grant-modal">
-            <div class="modal-header">
-                <h2><i class="fas fa-users-cog"></i> Bulk Grant Guide</h2>
-                <button class="modal-close" id="close-bulk-grant-modal-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Grant <strong id="bulk-grant-guide-name"></strong> to multiple users at once.</p>
-                <div class="form-group">
-                    <label>Email Addresses (one per line or comma-separated)</label>
-                    <textarea id="bulk-grant-emails" class="form-control" rows="6" placeholder="user1@example.com&#10;user2@example.com&#10;user3@example.com"></textarea>
-                </div>
-                <div class="form-group">
-                    <label>Reason</label>
-                    <select id="bulk-grant-reason" class="form-select">
-                        <option value="promotional_giveaway">Promotional giveaway</option>
-                        <option value="contest_winner">Contest winners</option>
-                        <option value="support_resolution">Support resolution</option>
-                        <option value="complimentary">Complimentary</option>
+                        <option value="admin_change">Admin change</option>
                         <option value="other">Other</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Notes (optional)</label>
-                    <input type="text" id="bulk-grant-notes" class="form-control" placeholder="Additional context...">
+                    <textarea id="subscription-notes" class="form-control" rows="2" placeholder="Why are you making this change?"></textarea>
                 </div>
-                <div class="form-actions">
-                    <button class="btn btn-primary" id="submit-bulk-grant-btn">
-                        <i class="fas fa-check"></i> Grant to All
-                    </button>
-                    <button class="btn btn-secondary" id="cancel-bulk-grant-btn">Cancel</button>
-                </div>
-                <div class="bulk-grant-results" id="bulk-grant-results" style="display: none;">
-                    <!-- Results populated by JS -->
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Download History Modal -->
-    <div class="modal-overlay" id="download-history-modal">
-        <div class="modal-content download-history-modal">
-            <div class="modal-header">
-                <h2><i class="fas fa-download"></i> Download History</h2>
-                <button class="modal-close" id="close-download-history-modal-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="download-history-info">
-                    <p><strong>User:</strong> <span id="download-history-user"></span></p>
-                    <p><strong>Guide:</strong> <span id="download-history-guide"></span></p>
-                    <p><strong>Total Downloads:</strong> <span id="download-history-count" class="download-count-badge">0</span></p>
-                </div>
-                <div class="download-history-list" id="download-history-list">
-                    <!-- Populated by JS -->
+                <div class="form-actions">
+                    <button class="btn btn-primary" id="submit-subscription-btn">
+                        <i class="fas fa-check"></i> <span id="subscription-submit-text">Grant Subscription</span>
+                    </button>
+                    <button class="btn btn-secondary" id="cancel-subscription-btn">Cancel</button>
                 </div>
             </div>
         </div>

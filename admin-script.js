@@ -359,6 +359,35 @@ function setupEventListeners() {
             item.classList.toggle('expanded', !wasExpanded);
         });
     });
+
+    // Test email buttons
+    document.querySelectorAll('[data-test-email]').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            const type = btn.dataset.testEmail;
+            const originalHtml = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+
+            try {
+                let endpoint, body;
+                if (type === 'confirmation') {
+                    endpoint = '/admin/test-email/confirmation';
+                    body = { plan_id: btn.dataset.plan };
+                } else {
+                    endpoint = '/admin/test-email/reminder';
+                    body = { days_remaining: parseInt(btn.dataset.days) };
+                }
+
+                const response = await apiService.post(endpoint, body);
+                showToast(response.message || 'Test email sent! Check your inbox.', 'success');
+            } catch (error) {
+                showToast(error.message || 'Failed to send test email', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalHtml;
+            }
+        });
+    });
 }
 
 // Switch between tabs

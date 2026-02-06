@@ -1339,6 +1339,16 @@ var QuizBank = (function () {
             '</div>';
         document.body.appendChild(overlay);
 
+        // Overlay is outside _root, so add its own click delegation
+        overlay.addEventListener('click', function (e) {
+            var btn = e.target.closest('[data-qb-action]');
+            if (!btn) return;
+            var action = btn.dataset.qbAction;
+            if (action === 'select-report-reason') { _selectReportReason(btn); }
+            else if (action === 'submit-report') { _submitReport(); }
+            else if (action === 'close-report') { _closeReportModal(); }
+        });
+
         // Animate in
         requestAnimationFrame(function () { overlay.classList.add('qb-report-overlay--visible'); });
     }

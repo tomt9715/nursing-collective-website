@@ -61,7 +61,7 @@ Often results from left-sided failure. The right ventricle cannot effectively pu
 
 ---
 
-*This is a free preview. Purchase the full guide for complete coverage including:*
+*This is a free preview. Subscribe for full access including:*
 - *In-depth content and detailed explanations*
 - *Key nursing interventions and priorities*
 - *Clinical pearls and memory aids*
@@ -131,7 +131,7 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 
 ---
 
-*This is a free preview. Purchase the full guide for complete coverage including:*
+*This is a free preview. Subscribe for full access including:*
 - *In-depth content and detailed explanations*
 - *Key nursing interventions and priorities*
 - *Clinical pearls and memory aids*
@@ -201,14 +201,14 @@ function openPreviewModal(guideId) {
     const modal = document.getElementById('preview-modal');
     const titleEl = document.getElementById('preview-modal-title');
     const bodyEl = document.getElementById('preview-modal-body');
-    const purchaseBtn = document.getElementById('btn-purchase-modal');
+    const subscribeBtn = document.getElementById('btn-subscribe-modal');
 
     // Update title
     titleEl.textContent = guide.title + ' - Free Preview';
 
-    // Update purchase button link
-    if (purchaseBtn) {
-        purchaseBtn.href = guide.storeUrl;
+    // Update subscribe button link
+    if (subscribeBtn) {
+        subscribeBtn.href = guide.storeUrl;
     }
 
     // Parse markdown to HTML
@@ -235,7 +235,7 @@ function openPreviewModal(guideId) {
     bodyEl.innerHTML = `
         <div class="preview-notice">
             <i class="fas fa-info-circle"></i>
-            <span>You're viewing a free preview. Purchase for full access to all content.</span>
+            <span>You're viewing a free preview. Subscribe for full access to all content.</span>
         </div>
         <div class="preview-content markdown-body">
             ${html}
@@ -245,7 +245,7 @@ function openPreviewModal(guideId) {
                 <i class="fas fa-lock"></i>
                 <p>Continue reading with full access...</p>
                 <a href="${guide.storeUrl}" class="btn btn-primary">
-                    <i class="fas fa-unlock"></i> Unlock Full Guide - $5.99
+                    <i class="fas fa-crown"></i> View Subscription Plans
                 </a>
             </div>
         </div>

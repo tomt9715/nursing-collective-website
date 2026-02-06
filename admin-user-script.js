@@ -180,9 +180,9 @@ async function loadUserProfile() {
                 '<span class="info-value">' + formatDate(data.last_login) + '</span>' +
             '</div>';
 
-        // Guides - use correct field names from Purchase model
-        const guides = userData.guides || [];
-        allGuidesData = guides; // Store for filtering
+        // Subscription data
+        const guides = []; // Legacy: individual guide purchases removed
+        allGuidesData = guides;
 
         const activeGuides = guides.filter(function(g) { return g.is_active; });
         const revokedGuides = guides.filter(function(g) { return !g.is_active; });
@@ -290,7 +290,6 @@ function renderGuides(filter, sort) {
             case 'name-desc':
                 return (b.product_name || '').localeCompare(a.product_name || '');
             case 'source':
-                // Admin grants first, then stripe purchases
                 if (a.source === b.source) return 0;
                 return a.source === 'admin' ? -1 : 1;
             default:
@@ -319,7 +318,7 @@ function renderGuides(filter, sort) {
     let guidesHtml = '';
     filteredGuides.forEach(function(g) {
         const sourceIcon = g.source === 'stripe'
-            ? '<i class="fas fa-credit-card" style="color: #6772e5;"></i> Purchased'
+            ? '<i class="fas fa-credit-card" style="color: #6772e5;"></i> Stripe'
             : '<i class="fas fa-gift" style="color: #10b981;"></i> Admin Grant';
         const statusClass = g.is_active ? 'active' : 'revoked';
         const statusText = g.is_active ? 'Active' : 'Revoked';
@@ -330,7 +329,7 @@ function renderGuides(filter, sort) {
                 '<div class="guide-item-info">' +
                     '<div class="guide-item-name">' + escapeHtml(guideName) + '</div>' +
                     '<div class="guide-item-meta">' +
-                        sourceIcon + ' &bull; ' + formatDate(g.purchased_at) +
+                        sourceIcon + ' &bull; ' + formatDate(g.purchased_at || g.created_at) +
                     '</div>' +
                 '</div>' +
                 '<span class="badge-status ' + statusClass + '">' + statusText + '</span>' +
@@ -482,7 +481,7 @@ async function loadProductsForModal() {
     if (productsCache.length > 0) return;
 
     try {
-        const data = await apiCall('/admin/guides');
+        const data = { guides: [] }; // Legacy: individual guide management removed
         productsCache = data.guides || [];
     } catch (error) {
         console.error('Error loading products:', error);

@@ -8,9 +8,10 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#2E86AB">
@@ -357,13 +358,13 @@
                         </p>
                         <ul style="font-size: 0.9rem; color: #7f1d1d; margin-bottom: 16px; padding-left: 20px; line-height: 1.8;">
                             <li>Remove all your profile information</li>
-                            <li>Revoke access to <strong>all purchased study guides</strong></li>
-                            <li>Delete your purchase history and download records</li>
+                            <li>Cancel your subscription and revoke access to <strong>all study guides</strong></li>
+                            <li>Delete your subscription history and download records</li>
                             <li>Remove any connected accounts (Discord, Google)</li>
                         </ul>
                         <div style="padding: 12px; background: #fee2e2; border-radius: 8px; margin-bottom: 16px;">
                             <p style="font-size: 0.85rem; color: #991b1b; margin: 0;">
-                                <i class="fas fa-info-circle"></i> <strong>Important:</strong> Make sure to download any purchased guides before deleting your account. You will lose access to all guides immediately upon deletion.
+                                <i class="fas fa-info-circle"></i> <strong>Important:</strong> Make sure to download any guides before deleting your account. You will lose access to all guides immediately upon deletion.
                             </p>
                         </div>
                         <button class="btn-danger" id="delete-account-btn" style="background: #dc2626; color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s ease;">
@@ -387,7 +388,7 @@
                     <!-- Step 1: First confirmation -->
                     <div id="delete-step-1">
                         <p style="color: #7f1d1d; font-size: 0.9rem; background: #fef2f2; padding: 12px; border-radius: 8px; margin-bottom: 20px;">
-                            <strong>You will lose access to all purchased guides.</strong> This cannot be reversed.
+                            <strong>You will lose access to all study guides.</strong> This cannot be reversed.
                         </p>
                         <div style="display: flex; gap: 12px;">
                             <button id="cancel-delete-btn" style="flex: 1; padding: 12px; background: #f3f4f6; color: #374151; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">

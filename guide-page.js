@@ -334,10 +334,10 @@ async function loadPremiumGuide(guideId) {
 
     if (accessResponse.has_access) {
         // User has access - load content
-        await loadPurchasedContent(guideId, accessResponse);
+        await loadSubscriberContent(guideId, accessResponse);
     } else {
-        // User doesn't have access - show purchase prompt
-        showPurchasePrompt(guideId, accessResponse);
+        // User doesn't have access - show subscribe prompt
+        showSubscribePrompt(guideId, accessResponse);
     }
 
     // Render related guides from same category
@@ -386,34 +386,32 @@ function showLoginPrompt(guideId, accessResponse) {
     `;
 }
 
-// Show purchase prompt for users without access
-function showPurchasePrompt(guideId, accessResponse) {
+// Show subscribe prompt for users without access
+function showSubscribePrompt(guideId, accessResponse) {
     const contentElement = document.getElementById('guide-content');
     const productName = accessResponse.product_name || guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-    const price = accessResponse.price || 5.99;
     const description = accessResponse.description || 'Comprehensive nursing study guide with evidence-based content.';
-    const purchaseUrl = accessResponse.purchase_url || `pricing.html`;
+    const subscribeUrl = accessResponse.subscribe_url || 'pricing.html';
 
     contentElement.innerHTML = `
         <div style="text-align: center; padding: 60px 20px; max-width: 600px; margin: 0 auto;">
             <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #fef3c7, #fde68a); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
                 <i class="fas fa-lock" style="font-size: 2rem; color: #d97706;"></i>
             </div>
-            <h2 style="margin-bottom: 16px; color: var(--text-primary);">Purchase Required</h2>
+            <h2 style="margin-bottom: 16px; color: var(--text-primary);">Subscription Required</h2>
 
             <h3 style="margin-bottom: 12px; color: var(--primary-color);">${productName}</h3>
-            <p style="font-size: 2.5rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px;">$${price.toFixed(2)}</p>
 
             <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 1rem; max-width: 450px; margin-left: auto; margin-right: auto;">
                 ${description}
             </p>
 
             <div style="background: var(--background-light); border-radius: 16px; padding: 24px; margin-bottom: 32px; text-align: left;">
-                <p style="font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Get comprehensive coverage of:</p>
+                <p style="font-weight: 600; margin-bottom: 16px; color: var(--text-primary);">Subscribe to unlock all guides:</p>
                 <ul style="list-style: none; padding: 0; margin: 0;">
                     <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-secondary);">
                         <i class="fas fa-check-circle" style="color: #10b981;"></i>
-                        Complete topic coverage with clinical applications
+                        Unlimited access to all 60+ study guides
                     </li>
                     <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-secondary);">
                         <i class="fas fa-check-circle" style="color: #10b981;"></i>
@@ -421,27 +419,18 @@ function showPurchasePrompt(guideId, accessResponse) {
                     </li>
                     <li style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px; color: var(--text-secondary);">
                         <i class="fas fa-check-circle" style="color: #10b981;"></i>
-                        Key nursing interventions and rationales
+                        Downloadable PDF format for offline study
                     </li>
                     <li style="display: flex; align-items: center; gap: 12px; color: var(--text-secondary);">
                         <i class="fas fa-check-circle" style="color: #10b981;"></i>
-                        Printable PDF format for offline study
+                        Plans starting at $14.99/month
                     </li>
                 </ul>
             </div>
 
-            <a href="${purchaseUrl}" class="btn btn-primary btn-lg" style="padding: 16px 48px; font-size: 1.1rem; border-radius: 12px;">
-                <i class="fas fa-shopping-cart me-2"></i>Purchase This Guide - $${price.toFixed(2)}
+            <a href="${subscribeUrl}" class="btn btn-primary btn-lg" style="padding: 16px 48px; font-size: 1.1rem; border-radius: 12px;">
+                <i class="fas fa-crown me-2"></i>View Subscription Plans
             </a>
-
-            <div style="margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border-color);">
-                <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 8px;">
-                    <i class="fas fa-receipt me-2"></i>Already purchased?
-                </p>
-                <a href="dashboard.html#claim-order" style="color: var(--primary-color); font-weight: 600; text-decoration: none;">
-                    Claim with Order Number <i class="fas fa-arrow-right ms-1"></i>
-                </a>
-            </div>
         </div>
     `;
 }
@@ -470,8 +459,8 @@ function showGuideNotFound(guideId) {
     `;
 }
 
-// Load purchased content (PDF viewer)
-async function loadPurchasedContent(guideId, accessResponse) {
+// Load subscriber content (PDF viewer)
+async function loadSubscriberContent(guideId, accessResponse) {
     const contentElement = document.getElementById('guide-content');
     const productName = accessResponse.product_name || guideId;
 
@@ -768,7 +757,7 @@ function renderRelatedGuides(currentGuideId, currentCategory) {
                                 <div class="related-guide-actions">
                                     ${isOwned
                                         ? `<a href="${htmlGuides.includes(guideId) ? `guides/${guideId}.html` : `guide.html?id=${guideId}`}" class="btn-view-guide"><i class="fas fa-book-reader"></i> Open Guide</a>`
-                                        : `<a href="pricing.html" class="btn-purchase-guide"><i class="fas fa-rocket"></i> Subscribe</a>`
+                                        : `<a href="pricing.html" class="btn-subscribe-guide"><i class="fas fa-rocket"></i> Subscribe</a>`
                                     }
                                 </div>
                             </div>

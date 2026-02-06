@@ -4,8 +4,16 @@
  * Used across dashboard, settings, and authentication pages
  */
 
-// API Configuration
-const API_URL = 'https://api.thenursingcollective.pro';
+// API Configuration - auto-detect environment
+const API_URL = (function() {
+    const hostname = window.location.hostname;
+    if (hostname === 'thenursingcollective.pro' || hostname === 'www.thenursingcollective.pro') {
+        return 'https://api.thenursingcollective.pro';
+    }
+    // Staging: preview branches, localhost, and any non-production host
+    console.log('[API] Using staging backend');
+    return 'https://staging-backend-production-365a.up.railway.app';
+})();
 
 /**
  * Centralized API calling function with automatic token refresh

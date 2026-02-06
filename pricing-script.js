@@ -35,8 +35,34 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // Redirect to checkout page with the subscription product
-        window.location.href = `/checkout.html?plan=${planId}`;
+        // Get user email for Stripe checkout
+        const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
+        const email = user.email || user.user_email || '';
+
+        if (!email) {
+            alert('Unable to determine your email. Please log out and log back in.');
+            return;
+        }
+
+        // Show loading state on button
+        const originalText = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting to checkout...';
+        button.disabled = true;
+
+        try {
+            // Create Stripe Checkout Session and redirect
+            const data = await createSubscriptionCheckout(planId, email);
+            if (data.url) {
+                window.location.href = data.url;
+            } else {
+                throw new Error('No checkout URL returned');
+            }
+        } catch (error) {
+            console.error('Checkout error:', error);
+            button.innerHTML = originalText;
+            button.disabled = false;
+            alert('Unable to start checkout. Please try again.');
+        }
     }
 
     // Check if user came back after login with an intended plan

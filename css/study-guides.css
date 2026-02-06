@@ -663,7 +663,7 @@
     color: #f59e0b;
 }
 
-.btn-purchase-modal {
+.btn-subscribe-modal {
     padding: 14px 28px;
     font-weight: 600;
     border-radius: 12px;
@@ -690,19 +690,19 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
-/* Fix for modal footer purchase button */
-.btn-purchase-modal::before {
+/* Fix for modal footer subscribe button */
+.btn-subscribe-modal::before {
     display: none !important;
 }
 
-.btn-purchase-modal,
-.btn-purchase-modal:hover,
-.btn-purchase-modal:focus {
+.btn-subscribe-modal,
+.btn-subscribe-modal:hover,
+.btn-subscribe-modal:focus {
     color: white !important;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%) !important;
 }
 
-.btn-purchase-modal:hover {
+.btn-subscribe-modal:hover {
     background: linear-gradient(135deg, var(--primary-dark, #236b87) 0%, var(--secondary-dark, #8f3366) 100%) !important;
 }
 

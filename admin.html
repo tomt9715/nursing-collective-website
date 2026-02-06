@@ -8,9 +8,10 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#667eea">
@@ -89,7 +90,7 @@
                         </div>
                         <div class="user-dropdown-divider"></div>
                         <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                        <a href="dashboard.html#purchases"><i class="fas fa-book-medical"></i> My Purchases</a>
+                        <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
                         <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
                         <div class="user-dropdown-divider"></div>
                         <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
@@ -296,7 +297,7 @@
                                         <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
                                     </div>
                                     <div class="status-details">
-                                        <p>PostgreSQL database hosted on Railway. Stores all user accounts, purchases, guides, and audit logs.</p>
+                                        <p>PostgreSQL database hosted on Railway. Stores all user accounts, subscriptions, guides, and audit logs.</p>
                                         <div class="status-details-meta">
                                             <span><i class="fas fa-server"></i> Railway PostgreSQL</span>
                                             <span><i class="fas fa-lock"></i> SSL Encrypted</span>
@@ -313,7 +314,7 @@
                                         <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
                                     </div>
                                     <div class="status-details">
-                                        <p>Payment processing via Stripe Checkout. Handles all guide purchases and subscription payments securely.</p>
+                                        <p>Payment processing via Stripe Checkout. Handles all subscription payments securely.</p>
                                         <div class="status-details-meta">
                                             <span><i class="fas fa-credit-card"></i> Checkout Sessions</span>
                                             <span><i class="fas fa-webhook"></i> Webhooks Active</span>
@@ -330,7 +331,7 @@
                                         <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
                                     </div>
                                     <div class="status-details">
-                                        <p>Transactional emails for purchase confirmations, password resets, and account notifications.</p>
+                                        <p>Transactional emails for subscription confirmations, password resets, and account notifications.</p>
                                         <div class="status-details-meta">
                                             <span><i class="fas fa-paper-plane"></i> SMTP Active</span>
                                             <span><i class="fas fa-check-circle"></i> Delivery OK</span>
@@ -381,7 +382,7 @@
                                         <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
                                     </div>
                                     <div class="status-details">
-                                        <p>Total number of records across all database tables (users, purchases, guides, audit logs, etc.).</p>
+                                        <p>Total number of records across all database tables (users, subscriptions, guides, audit logs, etc.).</p>
                                         <div class="status-details-meta">
                                             <span><i class="fas fa-table"></i> All Tables</span>
                                             <span><i class="fas fa-chart-bar"></i> Record Count</span>

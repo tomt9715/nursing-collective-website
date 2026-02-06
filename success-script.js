@@ -1,7 +1,7 @@
 // Success Page JavaScript
 // Payment verification and order confirmation
 
-// Configuration - Main backend API URL for cart/order operations
+// Configuration - Main backend API URL for payment verification
 const API_BASE_URL = 'https://api.thenursingcollective.pro';
 
 // Polling configuration
@@ -40,7 +40,7 @@ async function initSuccessPage() {
 }
 
 /**
- * Verify subscription purchase via Stripe checkout session
+ * Verify subscription payment via Stripe checkout session
  */
 async function verifySubscription(sessionId) {
     try {
@@ -95,7 +95,7 @@ async function verifySubscription(sessionId) {
  * Show subscription success state
  */
 function showSubscriptionSuccess(subscription) {
-    clearGuestCart(); // Clear any cart items
+    clearGuestCart(); // Clear any legacy cart items
 
     const container = document.getElementById('success-content');
     const isLoggedIn = isUserLoggedIn();
@@ -202,7 +202,11 @@ function showSubscriptionTimeoutState() {
 }
 
 /**
- * Verify payment status using the new verify endpoint
+ * Verify payment status using the verify endpoint
+ * NOTE: This is legacy code for one-time guide purchases (pre-subscription model).
+ * The /cart/orders/verify endpoint may no longer exist on the backend since cart
+ * routes were removed. Subscription payments use verifySubscription() instead.
+ * Kept for backwards compatibility with any old checkout sessions still in flight.
  */
 async function verifyPayment(paymentIntent, sessionId) {
     try {
@@ -211,6 +215,7 @@ async function verifyPayment(paymentIntent, sessionId) {
         if (paymentIntent) params.append('payment_intent', paymentIntent);
         if (sessionId) params.append('session_id', sessionId);
 
+        // Legacy endpoint - cart routes may have been removed from the backend
         const response = await fetch(`${API_BASE_URL}/cart/orders/verify?${params.toString()}`, {
             method: 'GET',
             headers: {
@@ -269,14 +274,14 @@ function stopPolling() {
 }
 
 /**
- * Clear the guest cart from localStorage after successful purchase
+ * Clear legacy guest cart data from localStorage
  * Also clears the newlyAddedCartItems from sessionStorage
  */
 function clearGuestCart() {
     try {
         localStorage.removeItem('florencebot_guest_cart');
         sessionStorage.removeItem('newlyAddedCartItems');
-        console.log('Guest cart and newlyAddedCartItems cleared after successful purchase');
+        console.log('Legacy guest cart and newlyAddedCartItems cleared');
     } catch (e) {
         console.error('Failed to clear guest cart:', e);
     }
@@ -384,7 +389,7 @@ function showSuccessState(order) {
     // Stop polling if active
     stopPolling();
 
-    // Clear guest cart on successful purchase
+    // Clear legacy cart data
     clearGuestCart();
 
     const container = document.getElementById('success-content');
@@ -428,20 +433,20 @@ function showSuccessState(order) {
 
     // Determine message based on item count and build item names
     const itemCount = order.items ? order.items.length : 1;
-    let purchaseMessage = '';
+    let confirmationMessage = '';
     if (order.items && order.items.length > 0) {
         const itemNames = order.items.map(item => item.product_name);
         if (itemNames.length === 1) {
-            purchaseMessage = `Thank you for your purchase! ${escapeHtml(itemNames[0])} is now available.`;
+            confirmationMessage = `Thank you for subscribing! ${escapeHtml(itemNames[0])} is now available.`;
         } else if (itemNames.length === 2) {
-            purchaseMessage = `Thank you for your purchase! ${escapeHtml(itemNames[0])} and ${escapeHtml(itemNames[1])} are now available.`;
+            confirmationMessage = `Thank you for subscribing! ${escapeHtml(itemNames[0])} and ${escapeHtml(itemNames[1])} are now available.`;
         } else {
             // 3+ items - list first two and say "and X more"
             const moreCount = itemNames.length - 2;
-            purchaseMessage = `Thank you for your purchase! ${escapeHtml(itemNames[0])}, ${escapeHtml(itemNames[1])}, and ${moreCount} more ${moreCount === 1 ? 'guide is' : 'guides are'} now available.`;
+            confirmationMessage = `Thank you for subscribing! ${escapeHtml(itemNames[0])}, ${escapeHtml(itemNames[1])}, and ${moreCount} more ${moreCount === 1 ? 'guide is' : 'guides are'} now available.`;
         }
     } else {
-        purchaseMessage = 'Thank you for your purchase! Your study guide is now available.';
+        confirmationMessage = 'Thank you for subscribing! Your study guide is now available.';
     }
 
     let actionsHtml = '';
@@ -517,7 +522,7 @@ function showSuccessState(order) {
         </div>
         <h1 class="success-title">Payment Successful!</h1>
         <p class="success-message">
-            ${purchaseMessage}
+            ${confirmationMessage}
         </p>
 
         ${savingsMessageHtml}

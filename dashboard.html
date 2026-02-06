@@ -9,9 +9,10 @@
 
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
     <meta name="theme-color" content="#2E86AB">
@@ -335,53 +336,6 @@
                     </div>
                 </section>
 
-                <!-- Purchase History (collapsed, secondary) -->
-                <section class="dashboard-section purchase-history-section collapsible collapsed">
-                    <button class="collapsible-header" id="purchase-history-toggle">
-                        <div class="collapsible-title">
-                            <i class="fas fa-receipt"></i>
-                            <span>Purchase History</span>
-                        </div>
-                        <i class="fas fa-chevron-down collapsible-icon"></i>
-                    </button>
-                    <div class="collapsible-content">
-                        <div class="purchase-history-container">
-                            <div class="purchase-history-controls">
-                                <div class="purchase-search-box">
-                                    <i class="fas fa-search"></i>
-                                    <input type="text" id="purchase-search-input" placeholder="Search orders..." />
-                                </div>
-                                <div class="purchase-filters">
-                                    <select id="purchase-date-filter">
-                                        <option value="all">All Time</option>
-                                        <option value="30">Last 30 Days</option>
-                                        <option value="90">Last 90 Days</option>
-                                        <option value="365">Last Year</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="purchase-history-summary" id="purchase-history-summary">
-                                <span>Loading...</span>
-                            </div>
-                            <div class="purchase-history-scroll" id="purchase-history-scroll">
-                                <div class="purchase-history-list" id="purchase-history-list">
-                                    <div class="skeleton-loader">
-                                        <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="purchase-pagination" id="purchase-pagination" style="display: none;">
-                                <button class="pagination-btn" id="purchase-prev-btn" disabled>
-                                    <i class="fas fa-chevron-left"></i> Previous
-                                </button>
-                                <span class="pagination-info" id="purchase-page-info">Page 1 of 1</span>
-                                <button class="pagination-btn" id="purchase-next-btn" disabled>
-                                    Next <i class="fas fa-chevron-right"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </section>
             </div>
         </div>
     </section>

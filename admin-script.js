@@ -478,7 +478,7 @@ async function loadDashboardOverview() {
         }
 
         // Update orders count with animation
-        updateStatWithAnimation('orders-count', data.revenue.orders_this_month || data.purchases.stripe_purchases || 0);
+        updateStatWithAnimation('orders-count', data.subscription_stats?.total_active || 0);
 
         // Update subscription tier counts
         if (data.subscription_stats) {
@@ -582,7 +582,7 @@ async function loadSystemHealth() {
         const storageEl = document.getElementById('status-storage');
         if (storageEl) {
             storageEl.textContent = `${data.storage.total_records.toLocaleString()} records`;
-            storageEl.title = `Users: ${data.storage.breakdown.users}, Sessions: ${data.storage.breakdown.sessions}, Purchases: ${data.storage.breakdown.purchases}`;
+            storageEl.title = `Users: ${data.storage.breakdown.users}, Sessions: ${data.storage.breakdown.sessions}, Subscriptions: ${data.storage.breakdown.subscriptions}`;
         }
 
         // Failed Logins (24h)
@@ -1041,7 +1041,7 @@ async function performUserTabAutocompleteSearch(query) {
 function showExportOptions() {
     const options = [
         { label: 'Export Users (CSV)', action: () => exportData('users') },
-        { label: 'Export Purchases (CSV)', action: () => exportData('purchases') },
+        { label: 'Export Subscriptions (CSV)', action: () => exportData('subscriptions') },
         { label: 'Export Audit Log (CSV)', action: () => exportAuditLog() }
     ];
 
@@ -1103,17 +1103,16 @@ async function exportData(type) {
                 u.is_verified ? 'Yes' : 'No',
                 u.created_at
             ]);
-        } else if (type === 'purchases') {
+        } else if (type === 'subscriptions') {
             data = await apiCall('/admin/dashboard/enhanced');
-            filename = `nursing-collective-purchases-${new Date().toISOString().split('T')[0]}.csv`;
-            headers = ['Guide', 'Category', 'Stripe Purchases', 'Admin Grants', 'Total Owners'];
-            rows = data.guide_stats.map(g => [
-                g.name,
-                g.category,
-                g.stripe_purchases,
-                g.admin_granted,
-                g.total_owners
-            ]);
+            filename = `nursing-collective-subscriptions-${new Date().toISOString().split('T')[0]}.csv`;
+            headers = ['Plan', 'Active Count', 'Cancelled Count'];
+            rows = [
+                ['Monthly Access', data.subscription_stats?.monthly_active || 0, ''],
+                ['Semester Access', data.subscription_stats?.semester_active || 0, ''],
+                ['Lifetime Access', data.subscription_stats?.lifetime_active || 0, ''],
+                ['Total', data.subscription_stats?.total_active || 0, data.subscription_stats?.cancelled || 0]
+            ];
         }
 
         // Convert to CSV

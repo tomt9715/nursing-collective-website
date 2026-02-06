@@ -486,33 +486,7 @@ async function handleLogin(email, password) {
         // Store login timestamp for token expiry tracking
         localStorage.setItem('tokenTimestamp', Date.now().toString());
 
-        // Capture guest cart BEFORE merging so checkout can show "Just Added" items separately
-        const GUEST_CART_KEY = 'florencebot_guest_cart';
-        try {
-            const storedGuestCart = localStorage.getItem(GUEST_CART_KEY);
-            console.log('Email login: Raw guest cart from localStorage:', storedGuestCart);
-            if (storedGuestCart) {
-                const guestCart = JSON.parse(storedGuestCart);
-                console.log('Email login: Parsed guest cart:', JSON.stringify(guestCart));
-                if (guestCart.items && guestCart.items.length > 0) {
-                    const newlyAddedIds = guestCart.items.map(item => item.product_id);
-                    sessionStorage.setItem('newlyAddedCartItems', JSON.stringify(newlyAddedIds));
-                    console.log('Email login: Stored newly added item IDs in sessionStorage:', newlyAddedIds);
-                }
-            }
-        } catch (e) {
-            console.error('Email login: Failed to capture guest cart:', e);
-        }
-
-        // Merge guest cart if cartManager is available
-        if (typeof cartManager !== 'undefined') {
-            try {
-                await cartManager.mergeGuestCart();
-                console.log('Email login: Guest cart merged successfully');
-            } catch (cartError) {
-                console.warn('Failed to merge cart:', cartError);
-            }
-        }
+        // Legacy cart system removed - subscriptions don't use guest carts
 
         // Check for redirect URL (e.g., from store, checkout) and order claim
         const urlParams = new URLSearchParams(window.location.search);

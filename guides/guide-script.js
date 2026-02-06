@@ -211,13 +211,13 @@ async function verifyAccess() {
     // Check if user is logged in
     const token = getAuthToken();
     if (!token) {
-        showAccessDenied('Please sign in to access this study guide. You must have purchased this guide to view it.', true);
+        showAccessDenied('Please sign in to access this study guide. An active subscription is required.', true);
         return false;
     }
 
     try {
-        // Fetch user's purchases from backend API
-        const response = await fetch(`${API_URL}/cart/purchases`, {
+        // Verify user's subscription access via API
+        const response = await fetch(`${API_URL}/api/guides/purchased`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -244,14 +244,14 @@ async function verifyAccess() {
         }
 
         const data = await response.json();
-        const purchases = data.purchases || [];
+        const guides = data.purchased_guides || [];
 
-        // Check if user has purchased this specific guide
-        const hasPurchased = purchases.some(p => p.product_id === PRODUCT_ID);
+        // Check if user has access to this guide via subscription
+        const hasAccess = data.has_premium || data.all_guides_access || guides.some(g => g.product_id === PRODUCT_ID);
 
-        if (!hasPurchased) {
+        if (!hasAccess) {
             showAccessDenied(
-                `You don't have access to this study guide. Please purchase "${GUIDE_NAME.replace(/-/g, ' ')}" from our store to view it.`,
+                `You don't have access to this study guide. Please subscribe to unlock all guides.`,
                 false
             );
             return false;
@@ -308,7 +308,7 @@ async function trackDownload(source) {
             return;
         }
 
-        const response = await fetch(`${API_URL}/cart/downloads/track`, {
+        const response = await fetch(`${API_URL}/api/downloads/track`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

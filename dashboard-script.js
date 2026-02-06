@@ -385,9 +385,6 @@ async function loadUserProfile() {
         // Load subscription management section
         loadSubscriptionManagement();
 
-        // Load purchase history
-        loadPurchaseHistory();
-
         // Load admin dashboard if admin
         if (user.is_admin) {
             await loadAdminDashboard();
@@ -484,14 +481,10 @@ function updateUserStats(user) {
 
     // Update stats
     const guidesOwnedEl = document.getElementById('guides-owned');
-    const totalPurchasesEl = document.getElementById('total-purchases');
     const memberSinceEl = document.getElementById('member-since');
 
     if (guidesOwnedEl) {
-        guidesOwnedEl.textContent = '0'; // TODO: Will be dynamic when purchases are tracked
-    }
-    if (totalPurchasesEl) {
-        totalPurchasesEl.textContent = '0'; // TODO: Will be dynamic when purchases are tracked
+        guidesOwnedEl.textContent = user.is_premium ? 'All Access' : 'None';
     }
     if (memberSinceEl) {
         memberSinceEl.textContent = memberSince;
@@ -1386,7 +1379,7 @@ function filterAndRenderGuides() {
                 <p class="guide-preview">${categoryInfo.description}</p>
                 <div class="guide-meta-row">
                     <span class="guide-meta-item">
-                        <i class="fas fa-calendar-alt"></i> Purchased ${formatDate(purchase.purchased_at)}
+                        <i class="fas fa-calendar-alt"></i> Added ${formatDate(purchase.purchased_at || purchase.created_at)}
                     </span>
                     ${lastStudiedText ? `<span class="guide-meta-item last-studied"><i class="fas fa-clock"></i> Studied ${lastStudiedText}</span>` : ''}
                 </div>
@@ -1495,7 +1488,7 @@ async function downloadGuide(productId, button, source = 'dashboard') {
 // Track download events for refund policy enforcement
 async function trackDownload(productId, source = 'unknown') {
     try {
-        await apiCall('/cart/downloads/track', {
+        await apiCall('/api/downloads/track', {
             method: 'POST',
             body: JSON.stringify({
                 product_id: productId,
@@ -1764,259 +1757,6 @@ async function loadSubscriptionManagement() {
             </div>
         `;
         container.querySelector('[data-action="reload"]')?.addEventListener('click', () => window.location.reload());
-    }
-}
-
-// ==================== Purchase History Functions ====================
-
-// Purchase history state
-let allOrders = [];
-let filteredOrders = [];
-let currentPage = 1;
-const ordersPerPage = 5;
-
-// Load purchase history
-async function loadPurchaseHistory() {
-    const historyList = document.getElementById('purchase-history-list');
-    const summaryEl = document.getElementById('purchase-history-summary');
-    if (!historyList) return;
-
-    try {
-        const response = await apiCall('/cart/orders', { method: 'GET' });
-        const orders = response.orders || [];
-
-        // Remove skeleton
-        const skeleton = historyList.querySelector('.skeleton-loader');
-        if (skeleton) skeleton.remove();
-
-        // Filter to completed orders and store
-        allOrders = orders.filter(o => o.status === 'completed');
-        filteredOrders = [...allOrders];
-        currentPage = 1;
-
-        // Setup event listeners for filters
-        setupPurchaseHistoryFilters();
-
-        // Render the orders
-        renderPurchaseHistory();
-
-    } catch (error) {
-        console.error('Error loading purchase history:', error);
-        const skeleton = historyList.querySelector('.skeleton-loader');
-        if (skeleton) skeleton.remove();
-
-        historyList.innerHTML = `
-            <div class="purchase-history-empty">
-                <i class="fas fa-exclamation-circle" style="color: var(--error-color);"></i>
-                <h4>Unable to Load History</h4>
-                <p>There was an error loading your purchase history.</p>
-                <button class="btn btn-secondary" onclick="loadPurchaseHistory()">
-                    <i class="fas fa-redo"></i> Retry
-                </button>
-            </div>
-        `;
-        if (summaryEl) summaryEl.innerHTML = '<span>Error loading orders</span>';
-    }
-}
-
-// Setup filter event listeners
-function setupPurchaseHistoryFilters() {
-    const searchInput = document.getElementById('purchase-search-input');
-    const dateFilter = document.getElementById('purchase-date-filter');
-    const prevBtn = document.getElementById('purchase-prev-btn');
-    const nextBtn = document.getElementById('purchase-next-btn');
-
-    if (searchInput) {
-        searchInput.addEventListener('input', debounce(() => {
-            applyPurchaseFilters();
-        }, 300));
-    }
-
-    if (dateFilter) {
-        dateFilter.addEventListener('change', applyPurchaseFilters);
-    }
-
-    if (prevBtn) {
-        prevBtn.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                renderPurchaseHistory();
-            }
-        });
-    }
-
-    if (nextBtn) {
-        nextBtn.addEventListener('click', () => {
-            const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
-            if (currentPage < totalPages) {
-                currentPage++;
-                renderPurchaseHistory();
-            }
-        });
-    }
-}
-
-// Debounce helper
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply filters to orders
-function applyPurchaseFilters() {
-    const searchInput = document.getElementById('purchase-search-input');
-    const dateFilter = document.getElementById('purchase-date-filter');
-
-    const searchTerm = (searchInput?.value || '').toLowerCase().trim();
-    const dateRange = dateFilter?.value || 'all';
-
-    filteredOrders = allOrders.filter(order => {
-        // Filter out orders that only contain revoked items
-        const activeItems = (order.items || []).filter(item => item.is_active !== false);
-        if (activeItems.length === 0) return false;
-
-        // Search filter - check order number and active item names only
-        if (searchTerm) {
-            const orderNumberMatch = order.order_number.toLowerCase().includes(searchTerm);
-            const itemMatch = activeItems.some(item =>
-                item.product_name.toLowerCase().includes(searchTerm)
-            );
-            if (!orderNumberMatch && !itemMatch) return false;
-        }
-
-        // Date filter
-        if (dateRange !== 'all') {
-            const days = parseInt(dateRange);
-            const orderDate = new Date(order.created_at);
-            const cutoffDate = new Date();
-            cutoffDate.setDate(cutoffDate.getDate() - days);
-            if (orderDate < cutoffDate) return false;
-        }
-
-        return true;
-    });
-
-    currentPage = 1;
-    renderPurchaseHistory();
-}
-
-// Render purchase history with pagination
-function renderPurchaseHistory() {
-    const historyList = document.getElementById('purchase-history-list');
-    const summaryEl = document.getElementById('purchase-history-summary');
-    const paginationEl = document.getElementById('purchase-pagination');
-    const pageInfoEl = document.getElementById('purchase-page-info');
-    const prevBtn = document.getElementById('purchase-prev-btn');
-    const nextBtn = document.getElementById('purchase-next-btn');
-
-    if (!historyList) return;
-
-    // Update summary
-    if (summaryEl) {
-        const total = allOrders.length;
-        const showing = filteredOrders.length;
-        if (total === 0) {
-            summaryEl.innerHTML = '<span>No orders found</span>';
-        } else if (showing === total) {
-            summaryEl.innerHTML = `<span><strong>${total}</strong> order${total !== 1 ? 's' : ''}</span>`;
-        } else {
-            summaryEl.innerHTML = `<span>Showing <strong>${showing}</strong> of <strong>${total}</strong> orders</span>`;
-        }
-    }
-
-    // Handle empty state
-    if (filteredOrders.length === 0) {
-        if (allOrders.length === 0) {
-            historyList.innerHTML = `
-                <div class="purchase-history-empty">
-                    <i class="fas fa-receipt"></i>
-                    <h4>No Purchase History</h4>
-                    <p>You haven't made any purchases yet.</p>
-                    <button class="btn btn-secondary" onclick="window.location.href='pricing.html'">
-                        <i class="fas fa-rocket"></i> View Plans
-                    </button>
-                </div>
-            `;
-        } else {
-            historyList.innerHTML = `
-                <div class="purchase-history-empty">
-                    <i class="fas fa-search"></i>
-                    <h4>No Matching Orders</h4>
-                    <p>Try adjusting your search or filters.</p>
-                </div>
-            `;
-        }
-        if (paginationEl) paginationEl.style.display = 'none';
-        return;
-    }
-
-    // Calculate pagination
-    const totalPages = Math.ceil(filteredOrders.length / ordersPerPage);
-    const startIndex = (currentPage - 1) * ordersPerPage;
-    const endIndex = Math.min(startIndex + ordersPerPage, filteredOrders.length);
-    const pageOrders = filteredOrders.slice(startIndex, endIndex);
-
-    // Render orders (collapsible, collapsed by default)
-    historyList.innerHTML = pageOrders.map(order => {
-        // Filter out revoked items - only show active items
-        const activeItems = (order.items || []).filter(item => item.is_active !== false);
-        const itemCount = activeItems.length;
-
-        const itemsHtml = activeItems.map(item => {
-            return `
-                <div class="purchase-item-row">
-                    <span class="purchase-item-name">${escapeHtml(item.product_name)}</span>
-                </div>
-            `;
-        }).join('');
-
-        return `
-            <div class="purchase-history-item collapsed">
-                <button class="purchase-header" data-toggle-order>
-                    <div class="purchase-header-left">
-                        <span class="purchase-order-number">Order #${escapeHtml(order.order_number)}</span>
-                        <span class="purchase-item-count">${itemCount} item${itemCount !== 1 ? 's' : ''}</span>
-                    </div>
-                    <div class="purchase-header-right">
-                        <span class="purchase-date"><i class="fas fa-calendar"></i> ${formatDate(order.created_at)}</span>
-                        <span class="purchase-total">$${parseFloat(order.total).toFixed(2)}</span>
-                        <i class="fas fa-chevron-down purchase-expand-icon"></i>
-                    </div>
-                </button>
-                <div class="purchase-items">
-                    ${itemsHtml}
-                </div>
-            </div>
-        `;
-    }).join('');
-
-    // Setup collapsible order toggles
-    historyList.querySelectorAll('[data-toggle-order]').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const item = this.closest('.purchase-history-item');
-            if (item) {
-                item.classList.toggle('collapsed');
-            }
-        });
-    });
-
-    // Update pagination
-    if (paginationEl) {
-        if (totalPages > 1) {
-            paginationEl.style.display = 'flex';
-            if (pageInfoEl) pageInfoEl.textContent = `Page ${currentPage} of ${totalPages}`;
-            if (prevBtn) prevBtn.disabled = currentPage === 1;
-            if (nextBtn) nextBtn.disabled = currentPage === totalPages;
-        } else {
-            paginationEl.style.display = 'none';
-        }
     }
 }
 
@@ -2343,17 +2083,6 @@ document.addEventListener('DOMContentLoaded', function() {
             if (card) {
                 card.style.display = 'none';
                 localStorage.setItem('gettingStartedDismissed', 'true');
-            }
-        });
-    }
-
-    // Collapsible section toggle (Purchase History)
-    const purchaseHistoryToggle = document.getElementById('purchase-history-toggle');
-    if (purchaseHistoryToggle) {
-        purchaseHistoryToggle.addEventListener('click', function() {
-            const section = this.closest('.collapsible');
-            if (section) {
-                section.classList.toggle('collapsed');
             }
         });
     }

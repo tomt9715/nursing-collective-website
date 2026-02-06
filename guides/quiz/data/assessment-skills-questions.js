@@ -1,6 +1,7 @@
 /**
  * Assessment Skills Quiz — Question Data
- * 10 NCLEX-style questions: 5 Single, 2 Ordering, 3 Matrix
+ * 10 NCLEX-style questions: 5 Single, 3 Ordering, 2 Matrix
+ * Types: IDs 1,2,6,7,9=single | IDs 4,5,8=ordering | IDs 3,10=matrix
  */
 
 /* exported assessmentSkillsQuizData */
@@ -122,28 +123,27 @@ var assessmentSkillsQuizData = {
         },
         {
             id: 5,
-            type: "matrix",
+            type: "ordering",
             subtype: null,
             difficulty: "knowledge",
-            matrixColumns: ["Correct Tool", "Incorrect Tool"],
-            stem: "A nurse is selecting pain assessment tools for patients on a medical-surgical unit. For each patient scenario, classify whether the pain tool assigned is the correct or incorrect choice.",
+            stem: "A nurse on a medical-surgical unit needs to assess pain for several patients. Place the pain assessment tool selection steps in the correct decision-making sequence according to best practice guidelines.",
             options: [
-                { id: "a", text: "Numeric Rating Scale (0-10) for a 45-year-old alert, oriented adult patient after surgery" },
-                { id: "b", text: "FLACC Scale for a 2-year-old non-verbal toddler in the post-anesthesia care unit" },
-                { id: "c", text: "Wong-Baker FACES Scale for a 72-year-old patient with advanced dementia who is non-communicative" },
-                { id: "d", text: "CPOT (Critical-Care Pain Observation Tool) for an intubated and sedated patient in the ICU" },
-                { id: "e", text: "Numeric Rating Scale (0-10) for a 4-year-old child in the emergency department" }
+                { id: "a", text: "Determine if the patient can self-report: ask the patient directly about their pain using an open-ended question (\"Can you tell me about your pain?\")" },
+                { id: "b", text: "If the patient CAN self-report: select an age-appropriate self-report tool — Numeric Rating Scale (0-10) for adults and children ≥8, Wong-Baker FACES for children ages 3-7" },
+                { id: "c", text: "If the patient CANNOT self-report (non-verbal, intubated, dementia, infant): select a behavioral observation tool — FLACC for children <7, CPOT for ICU/intubated, PAINAD for advanced dementia" },
+                { id: "d", text: "Assess for physiological indicators as supplemental data: vital sign changes (tachycardia, hypertension, tachypnea), diaphoresis, pallor, pupil dilation — these alone are NOT reliable pain indicators" },
+                { id: "e", text: "Reassess pain after intervention using the SAME tool: 30 minutes after IV analgesic, 60 minutes after PO analgesic — document score, intervention, and response" }
             ],
-            correct: { a: "Correct Tool", b: "Correct Tool", c: "Incorrect Tool", d: "Correct Tool", e: "Incorrect Tool" },
+            correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Pain assessment tool selection depends on patient age, cognitive status, and ability to self-report. Self-report tools (Numeric, FACES) require the patient to understand the concept. Behavioral tools (FLACC, CPOT) are used when self-report is not possible.",
-                a: "CORRECT — The Numeric Rating Scale (NRS 0-10) is the gold standard for alert, oriented adults who can self-report. It is simple, well-validated, and allows consistent tracking of pain severity over time.",
-                b: "CORRECT — The FLACC Scale (Face, Legs, Activity, Cry, Consolability) is designed for non-verbal or pre-verbal children ages 2 months to 7 years. It uses behavioral observation, making it ideal for a post-anesthesia toddler who cannot self-report.",
-                c: "INCORRECT — The Wong-Baker FACES Scale requires the patient to point to the face that represents their pain level. A patient with advanced dementia who is non-communicative cannot self-report. The correct tool is the PAINAD (Pain Assessment in Advanced Dementia) scale, which uses behavioral observation (breathing, vocalization, facial expression, body language, consolability).",
-                d: "CORRECT — The CPOT is specifically designed for critically ill patients who cannot self-report (intubated, sedated, altered consciousness). It assesses facial expression, body movements, muscle tension, and ventilator compliance.",
-                e: "INCORRECT — A 4-year-old child does not reliably understand the abstract concept of numeric scaling. The Wong-Baker FACES Scale (ages 3-8) or FLACC Scale would be more appropriate. Children under 7-8 years old generally cannot use the numeric scale reliably."
+                correct: "The pain assessment hierarchy follows a decision-tree approach: attempt self-report first (gold standard), select the correct tool based on ability and age, supplement with behavioral/physiological data, and always reassess after treatment.",
+                a: "FIRST — Self-report is the GOLD STANDARD of pain assessment. Always attempt to get the patient's own report before using observational tools. Even patients with mild cognitive impairment can often self-report if given simple, direct questions.",
+                b: "SECOND — If self-report is possible, match the tool to the patient's age and cognitive ability. The Numeric Rating Scale (NRS 0-10) is validated for adults and children ≥8 years old. The Wong-Baker FACES Scale works for children ages 3-7 who can point to a face representing their pain level.",
+                c: "THIRD — If self-report is NOT possible, use a validated behavioral observation tool matched to the population: FLACC (Face, Legs, Activity, Cry, Consolability) for infants/young children, CPOT (Critical-Care Pain Observation Tool) for intubated/sedated ICU patients, PAINAD (Pain Assessment in Advanced Dementia) for non-communicative dementia patients.",
+                d: "FOURTH — Physiological indicators (vital sign changes, diaphoresis) are supplemental data ONLY. They are not reliable standalone pain measures because they can be affected by medications (beta-blockers mask tachycardia), chronic pain adaptation, or other conditions. Use them to support, not replace, other assessment findings.",
+                e: "FIFTH — Reassessment completes the pain management cycle. Use the SAME tool for consistency. Reassess at appropriate intervals based on route of administration. Document the entire cycle: initial assessment → intervention → reassessment → response. This data drives care plan adjustments."
             },
-            testTakingTip: "Pain tool selection hierarchy: (1) Can the patient self-report? → Use NRS (adults) or FACES (children 3-8). (2) Can't self-report but conscious? → Use behavioral tool (FLACC for children, PAINAD for dementia). (3) Intubated/sedated? → Use CPOT or BPS. The NCLEX tests your ability to match the tool to the patient — not just knowing the tools exist.",
+            testTakingTip: "Pain assessment hierarchy: Self-report (gold standard) → Behavioral tool (if can't self-report) → Physiological signs (supplemental only) → Reassess after intervention. Tool matching: NRS for adults, FACES for children 3-7, FLACC for pre-verbal/non-verbal children, CPOT for intubated patients, PAINAD for dementia. Always reassess using the SAME tool for consistency.",
             guideSection: "Section 8 — Pain Assessment",
             guideSectionId: "pain-assessment"
         },

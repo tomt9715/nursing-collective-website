@@ -1,6 +1,7 @@
 /**
  * Hip & Knee Replacement Quiz — Question Data
  * 10 NCLEX-style questions: 5 Single, 3 Ordering, 2 Matrix
+ * Types: IDs 1,2,4,6,10=single | IDs 3,7,8=ordering | IDs 5,9=matrix
  */
 
 /* exported hipKneeReplacementQuizData */
@@ -187,24 +188,27 @@ var hipKneeReplacementQuizData = {
         },
         {
             id: 8,
-            type: "single",
+            type: "ordering",
             subtype: null,
             difficulty: "knowledge",
-            stem: "A nurse is reviewing the post-operative orders for a patient who had a total knee replacement this morning. The orders include 'continuous passive motion (CPM) machine — start at 30-40 degrees, increase as tolerated.' Which statement about CPM therapy is accurate?",
+            stem: "A patient had a total knee replacement this morning. Place the expected post-operative mobility milestones in the correct chronological sequence from day of surgery through discharge.",
             options: [
-                { id: "a", text: "CPM prevents deep vein thrombosis by compressing the calf muscles" },
-                { id: "b", text: "CPM gradually increases range of motion by passively flexing and extending the knee joint" },
-                { id: "c", text: "CPM should be used only while the patient is awake to prevent injury" },
-                { id: "d", text: "CPM replaces the need for physical therapy exercises and active range of motion" }
+                { id: "a", text: "Ankle pump exercises and quad sets in bed with CPM machine initiated at 30-40 degrees (post-op day 0)" },
+                { id: "b", text: "Dangle at bedside, transfer to chair with assistance, begin weight-bearing as tolerated with walker (post-op day 1)" },
+                { id: "c", text: "Ambulate in hallway with walker, PT works on active ROM exercises — goal knee flexion 70-80 degrees (post-op day 1-2)" },
+                { id: "d", text: "Stair training with PT (up with good leg, down with operative leg), independent transfers, CPM goal 90+ degrees (post-op day 2-3)" },
+                { id: "e", text: "Demonstrate independent ambulation with assistive device, meet discharge criteria: knee flexion ≥90°, independent ADLs, pain controlled on oral meds (post-op day 3-4)" }
             ],
-            correct: "b",
+            correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "The continuous passive motion (CPM) machine slowly and continuously moves the knee through a preset range of flexion and extension. It is used after total knee replacement to prevent joint adhesions (scar tissue that limits motion), reduce stiffness, promote cartilage healing, and gradually restore range of motion. It starts at a low arc (typically 30-40°) and is increased incrementally as the patient tolerates.",
-                a: "CPM does NOT compress the calf muscles and is not a DVT prevention device. DVT prevention uses sequential compression devices (SCDs), pharmacological anticoagulation, early ambulation, and ankle pump exercises.",
-                c: "CPM can be used while the patient is sleeping. The machine moves at a very slow, controlled pace and does not require the patient to be alert. Many facilities use CPM overnight to maximize therapy time.",
-                d: "CPM supplements but does NOT replace physical therapy. Active range of motion exercises, strengthening, and functional mobility training by a physical therapist are essential for optimal recovery. CPM alone is insufficient for full rehabilitation."
+                correct: "Post-TKR mobility follows a progressive sequence: immediate bed exercises → sitting/standing → hallway ambulation → stairs/independence → discharge readiness. Each milestone builds on the previous one.",
+                a: "FIRST (Day 0) — On the day of surgery, the patient begins ankle pumps (DVT prevention) and isometric quadriceps sets (muscle activation) in bed. CPM is initiated at a low arc (30-40°) to begin gentle passive ROM and prevent joint adhesions.",
+                b: "SECOND (Day 1) — The patient progresses to sitting at the bedside (dangling), then transferring to a chair with nursing assistance. Weight-bearing as tolerated (WBAT) is initiated with a walker, which is the standard for cemented TKR prostheses.",
+                c: "THIRD (Day 1-2) — Once the patient can transfer safely, hallway ambulation with a walker begins. Physical therapy initiates active ROM exercises. The initial knee flexion goal is 70-80 degrees, building toward the discharge goal of 90+.",
+                d: "FOURTH (Day 2-3) — Stair training is critical for safe discharge since most patients have stairs at home. The rule: 'up with the good, down with the bad' (good leg leads going up, operative leg leads going down). Independent transfers demonstrate functional recovery. CPM continues advancing toward 90+ degrees.",
+                e: "FIFTH (Day 3-4) — Discharge criteria include: knee flexion ≥90° (functional minimum for daily activities), independent ambulation with assistive device, ability to perform ADLs independently, and pain controlled on oral medications. Home PT referral is arranged."
             },
-            testTakingTip: "CPM therapy for total knee replacement: starts 30-40°, increased gradually (goal 90° by discharge), prevents adhesions. It does NOT prevent DVT — that's SCDs and anticoagulants. It does NOT replace PT — both are needed. Nursing role: monitor skin under the device, check settings match orders, assess ROM progress.",
+            testTakingTip: "TKR mobility milestones: Day 0 = bed exercises + CPM. Day 1 = dangle + chair + walk. Day 2 = hallway + stairs. Day 3-4 = discharge if criteria met. Key goals: knee flexion ≥90° at discharge (needed to climb stairs, get in/out of car). Stair rule: 'good up, bad down.' CPM starts at 30-40° and progresses — it does NOT replace PT.",
             guideSection: "Section 8 — Mobility",
             guideSectionId: "mobility"
         },

@@ -57,6 +57,7 @@ var QuizBank = (function () {
 
     function renderHub() {
         _view = 'hub';
+        _hideQuizHeader();
         window.removeEventListener('beforeunload', _boundBeforeUnload);
         window.scrollTo({ top: 0 });
 
@@ -422,6 +423,7 @@ var QuizBank = (function () {
         _currentTopicLabel = topicLabel;
         _currentChapterId = chapterId;
 
+        _showQuizHeader(topicLabel || 'Quiz');
         _shuffleAllOptions();
         window.addEventListener('beforeunload', _boundBeforeUnload);
         _renderQuestion();
@@ -795,6 +797,7 @@ var QuizBank = (function () {
 
     function _showResults() {
         _view = 'results';
+        _showResultsHeader(_currentTopicLabel || 'Results');
         window.removeEventListener('beforeunload', _boundBeforeUnload);
 
         // Record mastery
@@ -1095,6 +1098,7 @@ var QuizBank = (function () {
 
     function _renderPreQuizPanel(topicId, chapterId) {
         _view = 'config';
+        _hideQuizHeader();
         window.scrollTo({ top: 0 });
 
         // Look up topic/chapter info
@@ -1297,7 +1301,68 @@ var QuizBank = (function () {
         _startQuiz(questions, null, 'Custom Quiz', null, mode, size);
     }
 
-    // ── Report Question ──────────────────────────────────
+    // ── Quiz Header Bar ───────────────────────────────
+
+    function _showQuizHeader(title) {
+        _hideQuizHeader(); // remove any existing
+        document.body.classList.add('qb-quiz-active');
+
+        var header = document.createElement('div');
+        header.className = 'qb-header';
+        header.id = 'qb-quiz-header';
+        header.innerHTML =
+            '<div class="qb-header-left">' +
+                '<button class="qb-header-back" data-qb-action="quit-quiz" title="Back to Quiz Hub"><i class="fas fa-arrow-left"></i> <span>Quizzes</span></button>' +
+                '<span class="qb-header-title">' + _esc(title || 'Quiz') + '</span>' +
+            '</div>' +
+            '<div class="qb-header-right">' +
+                '<button class="qb-header-btn qb-header-btn--danger" data-qb-action="quit-quiz" title="End quiz"><i class="fas fa-times"></i> <span>End Quiz</span></button>' +
+            '</div>';
+        document.body.insertBefore(header, document.body.firstChild);
+
+        // Delegate clicks on the header (outside _root)
+        header.addEventListener('click', function (e) {
+            var btn = e.target.closest('[data-qb-action]');
+            if (!btn) return;
+            if (btn.dataset.qbAction === 'quit-quiz') {
+                if (confirm('Incomplete sets don\'t count toward mastery. Are you sure you want to quit?')) {
+                    renderHub();
+                }
+            }
+        });
+    }
+
+    function _showResultsHeader(title) {
+        _hideQuizHeader();
+        document.body.classList.add('qb-quiz-active');
+
+        var header = document.createElement('div');
+        header.className = 'qb-header';
+        header.id = 'qb-quiz-header';
+        header.innerHTML =
+            '<div class="qb-header-left">' +
+                '<button class="qb-header-back" data-qb-action="back-to-hub-direct" title="Back to Quiz Hub"><i class="fas fa-arrow-left"></i> <span>Quiz Hub</span></button>' +
+                '<span class="qb-header-title">' + _esc(title || 'Results') + '</span>' +
+            '</div>' +
+            '<div class="qb-header-right"></div>';
+        document.body.insertBefore(header, document.body.firstChild);
+
+        header.addEventListener('click', function (e) {
+            var btn = e.target.closest('[data-qb-action]');
+            if (!btn) return;
+            if (btn.dataset.qbAction === 'back-to-hub-direct') {
+                renderHub();
+            }
+        });
+    }
+
+    function _hideQuizHeader() {
+        document.body.classList.remove('qb-quiz-active');
+        var existing = document.getElementById('qb-quiz-header');
+        if (existing) existing.parentNode.removeChild(existing);
+    }
+
+    // ── Report Question ──────────────────────────────
 
     var _reportQuestionId = null;
     var _reportReason = null;

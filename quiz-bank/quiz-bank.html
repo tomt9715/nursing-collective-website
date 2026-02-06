@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Bank - The Nursing Collective</title>
+    <meta name="description" content="Practice NCLEX-style questions across 15 chapters and 129 topics. Track your mastery with our adaptive quiz bank. Single, Ordering, and Matrix question types.">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/quiz-bank/quiz-bank.html">
+    <meta property="og:title" content="Quiz Bank - The Nursing Collective">
+    <meta property="og:description" content="Practice NCLEX-style questions across 15 chapters and 129 topics with mastery tracking.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="../assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="../site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2E86AB">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Bundled CSS -->
+    <link rel="stylesheet" href="../css/bundle.min.css">
+
+    <!-- Quiz Bank CSS -->
+    <link rel="stylesheet" href="quiz-bank.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Sentry -->
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../sentry-init.js"></script>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="../index.html">
+                    <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html">Home</a>
+                <a href="../study-guides.html">Study Guides</a>
+                <a href="quiz-bank.html" class="active">Quiz Bank</a>
+                <a href="../pricing.html">Pricing</a>
+                <a href="../about.html">About</a>
+                <a href="../dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
+                <div class="user-menu" id="user-menu">
+                    <button class="user-avatar" id="user-menu-btn" title="Account menu">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Welcome!</span>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="../login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="../login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode"><i class="fas fa-sun"></i></button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode"><i class="fas fa-moon"></i></button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference"><i class="fas fa-desktop"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-user-content" id="dropdown-user-content" style="display: none;">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large"><i class="fas fa-user-circle"></i></div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <div class="theme-selector">
+                                <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                                <div class="theme-selector-options">
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode"><i class="fas fa-sun"></i></button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode"><i class="fas fa-moon"></i></button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference"><i class="fas fa-desktop"></i></button>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="../dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
+                            <a href="../settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="../contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Quiz Bank Hub -->
+    <main class="qb-container" id="quiz-bank-root">
+        <!-- Loading state (replaced by JS) -->
+        <div style="display:flex;align-items:center;justify-content:center;min-height:60vh;gap:16px;flex-direction:column;color:#4b5563;">
+            <div style="width:40px;height:40px;border:3px solid #e5e7eb;border-top-color:#2E86AB;border-radius:50%;animation:qb-spin 0.7s linear infinite;"></div>
+            <p>Loading Quiz Bank...</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span>The Nursing Collective</span>
+                    </div>
+                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../resources.html">Resources</a></li>
+                        <li><a href="../pricing.html">Pricing</a></li>
+                        <li><a href="../about-florencebot.html">About Bot</a></li>
+                        <li><a href="../about.html">About Us</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord Server</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="../privacy.html">Privacy Policy</a></li>
+                        <li><a href="../terms.html">Terms of Service</a></li>
+                        <li><a href="../contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <!-- Site scripts -->
+    <script src="../modal.js"></script>
+    <script src="../script.js"></script>
+    <script src="../dark-mode.js"></script>
+    <script src="../api-service.js"></script>
+
+    <!-- Quiz Bank scripts (order matters: registry -> mastery -> engine) -->
+    <script src="data/registry.js"></script>
+    <script src="mastery.js"></script>
+    <script src="quiz-bank.js"></script>
+
+    <!-- Initialize Quiz Bank (external file for CSP compliance) -->
+    <script src="quiz-bank-init.js"></script>
+</body>
+</html>

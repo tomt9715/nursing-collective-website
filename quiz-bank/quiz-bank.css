@@ -1623,11 +1623,12 @@
     align-items: center;
     justify-content: center;
     opacity: 0;
+    pointer-events: none;
     transition: opacity 0.2s ease;
     -webkit-backdrop-filter: blur(4px);
     backdrop-filter: blur(4px);
 }
-.qb-report-overlay--visible { opacity: 1; }
+.qb-report-overlay--visible { opacity: 1; pointer-events: auto; }
 
 .qb-report-modal {
     background: var(--card-bg, #fff);
@@ -1672,7 +1673,7 @@
 
 .qb-report-question-preview {
     background: var(--bg-subtle, #f8f9fa);
-    padding: 10px 14px;
+    padding: 14px;
     border-radius: 8px;
     font-size: 0.85rem;
     color: var(--text-muted, #666);
@@ -1680,6 +1681,41 @@
     line-height: 1.4;
     border-left: 3px solid var(--primary-color, #2E86AB);
 }
+
+.qb-report-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 8px;
+}
+
+.qb-report-meta-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+.qb-report-meta-tag--id { background: rgba(46, 134, 171, 0.1); color: var(--qb-primary); }
+.qb-report-meta-tag--chapter { background: rgba(162, 59, 114, 0.1); color: var(--qb-secondary); }
+.qb-report-meta-tag--topic { background: rgba(245, 158, 11, 0.1); color: #b45309; }
+.qb-report-meta-tag--type { background: rgba(99, 102, 241, 0.1); color: #6366f1; }
+.qb-report-meta-tag--difficulty { background: rgba(107, 114, 128, 0.1); color: #4b5563; }
+
+.qb-report-stem-text {
+    font-size: 0.88rem;
+    color: var(--qb-text, #1f2937);
+    line-height: 1.5;
+}
+
+[data-theme="dark"] .qb-report-meta-tag--id { background: rgba(46, 134, 171, 0.2); }
+[data-theme="dark"] .qb-report-meta-tag--chapter { background: rgba(162, 59, 114, 0.2); }
+[data-theme="dark"] .qb-report-meta-tag--topic { background: rgba(245, 158, 11, 0.15); color: #f59e0b; }
+[data-theme="dark"] .qb-report-meta-tag--type { background: rgba(99, 102, 241, 0.2); }
+[data-theme="dark"] .qb-report-meta-tag--difficulty { background: rgba(107, 114, 128, 0.2); color: #9ca3af; }
 
 .qb-report-prompt {
     font-weight: 600;

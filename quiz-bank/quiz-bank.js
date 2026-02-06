@@ -1371,12 +1371,40 @@ var QuizBank = (function () {
         _reportQuestionId = questionId;
         _reportReason = null;
 
-        // Find the question stem for context
+        // Find the question for context
         var q = null;
         for (var i = 0; i < _currentQuestions.length; i++) {
             if (_currentQuestions[i].id === questionId) { q = _currentQuestions[i]; break; }
         }
-        var stemPreview = q ? (q.stem.length > 80 ? q.stem.substring(0, 80) + '...' : q.stem) : questionId;
+
+        // Build rich preview with metadata
+        var previewHtml = '';
+        if (q) {
+            // Metadata tags
+            previewHtml += '<div class="qb-report-meta">';
+            previewHtml += '<span class="qb-report-meta-tag qb-report-meta-tag--id"><i class="fas fa-hashtag"></i> ' + _esc(q.id) + '</span>';
+            // Chapter label
+            var chapterLabel = _getChapterLabelForCategory(q.category);
+            if (chapterLabel) {
+                previewHtml += '<span class="qb-report-meta-tag qb-report-meta-tag--chapter"><i class="fas fa-book"></i> ' + _esc(chapterLabel) + '</span>';
+            }
+            // Topic label
+            if (q.topicLabel) {
+                previewHtml += '<span class="qb-report-meta-tag qb-report-meta-tag--topic"><i class="fas fa-tag"></i> ' + _esc(q.topicLabel) + '</span>';
+            }
+            // Type
+            var typeNames = { single: 'Single Best Answer', ordering: 'Ordering', matrix: 'Matrix' };
+            previewHtml += '<span class="qb-report-meta-tag qb-report-meta-tag--type"><i class="fas fa-th-list"></i> ' + (typeNames[q.type] || q.type) + '</span>';
+            // Difficulty
+            if (q.difficulty) {
+                previewHtml += '<span class="qb-report-meta-tag qb-report-meta-tag--difficulty"><i class="fas fa-signal"></i> ' + _capitalize(q.difficulty) + '</span>';
+            }
+            previewHtml += '</div>';
+            // Full stem
+            previewHtml += '<div class="qb-report-stem-text">' + _esc(q.stem) + '</div>';
+        } else {
+            previewHtml += '<div class="qb-report-stem-text">Question ID: ' + _esc(questionId) + '</div>';
+        }
 
         var overlay = document.createElement('div');
         overlay.className = 'qb-report-overlay';
@@ -1388,7 +1416,7 @@ var QuizBank = (function () {
                     '<button class="qb-report-close" data-qb-action="close-report"><i class="fas fa-times"></i></button>' +
                 '</div>' +
                 '<div class="qb-report-body">' +
-                    '<div class="qb-report-question-preview">' + _esc(stemPreview) + '</div>' +
+                    '<div class="qb-report-question-preview">' + previewHtml + '</div>' +
                     '<p class="qb-report-prompt">What\'s wrong with this question?</p>' +
                     '<div class="qb-report-reasons">' +
                         '<button class="qb-report-reason" data-qb-action="select-report-reason" data-reason="inaccurate"><i class="fas fa-exclamation-circle"></i> Inaccurate information</button>' +
@@ -1404,14 +1432,31 @@ var QuizBank = (function () {
             '</div>';
         document.body.appendChild(overlay);
 
-        // Overlay is outside _root, so add its own click delegation
+        // Overlay is outside _root — direct click handlers on buttons
+        var reasonBtns = overlay.querySelectorAll('.qb-report-reason');
+        for (var r = 0; r < reasonBtns.length; r++) {
+            reasonBtns[r].addEventListener('click', function (e) {
+                e.stopPropagation();
+                _selectReportReason(this);
+            });
+        }
+        var submitBtn = overlay.querySelector('.qb-report-submit');
+        if (submitBtn) {
+            submitBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                _submitReport();
+            });
+        }
+        var closeBtn = overlay.querySelector('.qb-report-close');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                _closeReportModal();
+            });
+        }
+        // Close on overlay background click
         overlay.addEventListener('click', function (e) {
-            var btn = e.target.closest('[data-qb-action]');
-            if (!btn) return;
-            var action = btn.dataset.qbAction;
-            if (action === 'select-report-reason') { _selectReportReason(btn); }
-            else if (action === 'submit-report') { _submitReport(); }
-            else if (action === 'close-report') { _closeReportModal(); }
+            if (e.target === overlay) { _closeReportModal(); }
         });
 
         // Animate in
@@ -1628,6 +1673,16 @@ var QuizBank = (function () {
             arr[j] = temp;
         }
         return arr;
+    }
+
+    function _getChapterLabelForCategory(categoryId) {
+        if (!categoryId || !QUIZ_BANK_REGISTRY || !QUIZ_BANK_REGISTRY.chapters) return null;
+        for (var i = 0; i < QUIZ_BANK_REGISTRY.chapters.length; i++) {
+            if (QUIZ_BANK_REGISTRY.chapters[i].id === categoryId) {
+                return QUIZ_BANK_REGISTRY.chapters[i].label;
+            }
+        }
+        return null;
     }
 
     function _getTypeName(q) {

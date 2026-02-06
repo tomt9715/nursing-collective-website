@@ -81,6 +81,14 @@
         <priority>0.4</priority>
     </url>
 
+    <!-- Resources -->
+    <url>
+        <loc>https://thenursingcollective.pro/resources.html</loc>
+        <lastmod>2026-02-05</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
     <!-- System Status -->
     <url>
         <loc>https://thenursingcollective.pro/status.html</loc>

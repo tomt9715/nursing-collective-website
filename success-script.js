@@ -1,8 +1,7 @@
 // Success Page JavaScript
 // Payment verification and order confirmation
 
-// Configuration - Main backend API URL for payment verification
-const API_BASE_URL = 'https://api.thenursingcollective.pro';
+// Use API_URL from api-service.js (auto-detects production vs staging)
 
 // Polling configuration
 const POLL_INTERVAL = 3000; // 3 seconds
@@ -58,7 +57,7 @@ async function verifySubscription(sessionId) {
 
             try {
                 // Check if the user now has an active subscription
-                const response = await fetch(`${API_BASE_URL}/api/subscription-status`, {
+                const response = await fetch(`${API_URL}/api/subscription-status`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
@@ -216,7 +215,7 @@ async function verifyPayment(paymentIntent, sessionId) {
         if (sessionId) params.append('session_id', sessionId);
 
         // Legacy endpoint - cart routes may have been removed from the backend
-        const response = await fetch(`${API_BASE_URL}/cart/orders/verify?${params.toString()}`, {
+        const response = await fetch(`${API_URL}/cart/orders/verify?${params.toString()}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

@@ -355,6 +355,9 @@
     <script src="sentry-init.js"></script>
 </head>
 <body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-spinner"></div>
@@ -448,6 +451,7 @@
         </div>
     </nav>
 
+    <main id="main-content">
     <!-- Success Section -->
     <section class="success-section">
         <div class="container">
@@ -460,31 +464,52 @@
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>The Nursing Collective</h4>
-                    <p>Comprehensive study guides and resources to help nursing students succeed.</p>
+                    <div class="footer-brand">
+                        <span>The Nursing Collective</span>
+                    </div>
+                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
                 </div>
+
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
+                        <li><a href="index.html">Home</a></li>
                         <li><a href="resources.html">Resources</a></li>
                         <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord Server</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-section">
-                    <h4>Support</h4>
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
                     <ul>
-                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord Community</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
                         <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
+
             <div class="footer-bottom">
                 <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
                 <p style="font-size: 0.7rem; margin-top: 8px; opacity: 0.5;">

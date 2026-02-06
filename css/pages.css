@@ -3668,6 +3668,334 @@
     box-shadow: 0 12px 30px rgba(46, 134, 171, 0.4);
 }
 
+/* Pricing Plans Grid (3-column) */
+.pricing-plans-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1000px;
+    margin: 0 auto;
+    align-items: start;
+}
+
+@media (max-width: 768px) {
+    .pricing-plans-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pricing-plan-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.pricing-plan-wrapper.featured {
+    z-index: 2;
+}
+
+.pricing-card {
+    background: var(--card-background);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid var(--border-color);
+}
+
+.pricing-card.featured {
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+    border-color: var(--primary-color);
+    transform: scale(1.05);
+    overflow: visible;
+}
+
+@media (max-width: 768px) {
+    .pricing-card.featured {
+        transform: none;
+    }
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.4);
+    white-space: nowrap;
+}
+
+.pricing-card-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.pricing-card-icon {
+    margin-bottom: 12px;
+    font-size: 3rem;
+    color: var(--primary-color);
+}
+
+.pricing-card-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+.pricing-card-header p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.pricing-card-price {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.pricing-card-amount {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.pricing-card-price p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 8px 0 0 0;
+}
+
+.pricing-card-features {
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.pricing-card-features ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pricing-card-features li {
+    padding: 8px 0;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.pricing-card-features li i {
+    color: var(--success-color);
+    margin-right: 8px;
+}
+
+.pricing-card-features li.highlight {
+    font-weight: 600;
+}
+
+.pricing-card-features li.highlight i {
+    color: var(--primary-color);
+}
+
+.pricing-card-features li.highlight-heart i {
+    color: #e11d48;
+}
+
+/* What's Included Section */
+.whats-included {
+    text-align: center;
+    margin-top: 60px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.whats-included h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.included-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.included-item {
+    padding: 20px;
+    background: var(--background-light);
+    border-radius: 12px;
+}
+
+.included-item-icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+
+.included-item strong {
+    color: var(--text-primary);
+}
+
+.included-item p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 8px 0 0 0;
+}
+
+/* Pricing Note */
+.pricing-note {
+    text-align: center;
+    margin-top: 40px;
+    padding: 24px;
+    background: var(--background-light);
+    border-radius: 12px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pricing-note p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+.pricing-note i,
+.free-resources-note i {
+    color: var(--primary-color);
+    margin-right: 8px;
+}
+
+.free-resources-note {
+    text-align: center;
+    margin-top: 24px;
+}
+
+.free-resources-note p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.free-resources-note a {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Pricing FAQ */
+.pricing-faq {
+    padding: 100px 0;
+}
+
+.pricing-faq-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.pricing-faq-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.pricing-faq-header p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.pricing-faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    margin-bottom: 16px;
+    background: var(--card-background);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 24px;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question span {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.faq-question i {
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    padding: 16px 24px 24px;
+    display: none;
+    border-top: 1px solid var(--border-color);
+}
+
+.faq-answer p {
+    color: var(--text-secondary);
+    line-height: 1.7;
+    margin: 0;
+}
+
+.faq-answer a {
+    color: var(--primary-color);
+}
+
+/* Pricing CTA Section */
+.pricing-cta-section {
+    padding: 80px 0 100px;
+    background: var(--background-light);
+}
+
+.pricing-cta-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.pricing-cta-section .cta-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.pricing-cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Plans section */
+.pricing-plans-section {
+    padding: 60px 0 80px;
+    scroll-margin-top: 80px;
+}
+
 /* FAQ Section on Pricing */
 .faq-section {
     padding: 80px 0;

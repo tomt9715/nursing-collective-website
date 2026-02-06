@@ -26,8 +26,8 @@ Disallow: /guide.html
 # Disallow test pages
 Disallow: /test-*.html
 
-# Disallow admin areas (if any)
-Disallow: /admin/
+# Disallow admin areas
+Disallow: /admin.html
 
 # Allow CSS and JS files for proper rendering
 Allow: /css/

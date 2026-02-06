@@ -766,7 +766,7 @@ class QuizEngine {
         }
 
         let frame = 0;
-        const maxFrames = 180; // ~3 seconds at 60fps
+        const maxFrames = 300; // ~5 seconds at 60fps
 
         const animate = () => {
             frame++;

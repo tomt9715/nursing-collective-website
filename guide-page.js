@@ -295,6 +295,13 @@ async function loadLegacyGuide(guideId, metadata) {
 async function loadPremiumGuide(guideId) {
     const contentElement = document.getElementById('guide-content');
 
+    // If guide isn't in our product catalog and isn't a legacy guide, show not found immediately
+    if (!productCatalog[guideId]) {
+        showGuideNotFound();
+        hideLoader();
+        return;
+    }
+
     // Show loading state
     contentElement.innerHTML = `
         <div style="text-align: center; padding: 60px 20px;">
@@ -315,13 +322,14 @@ async function loadPremiumGuide(guideId) {
 
     if (!accessResponse.success && accessResponse.error === 'not_found') {
         // Guide not found
-        showGuideNotFound(guideId);
+        showGuideNotFound();
         hideLoader();
         return;
     }
 
-    // Update page metadata
-    const productName = accessResponse.product_name || guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    // Update page metadata — use catalog name as primary, API name as fallback
+    const catalogProduct = productCatalog[guideId];
+    const productName = accessResponse.product_name || (catalogProduct ? catalogProduct.name : 'Study Guide');
     const category = categoryDisplayNames[accessResponse.category] || accessResponse.category || 'Study Guide';
 
     document.title = `${productName} - The Nursing Collective`;
@@ -359,7 +367,8 @@ async function loadPremiumGuide(guideId) {
 // Show login prompt for unauthorized users
 function showLoginPrompt(guideId, accessResponse) {
     const contentElement = document.getElementById('guide-content');
-    const productName = accessResponse.product_name || guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const catalogProduct = productCatalog[guideId];
+    const productName = accessResponse.product_name || (catalogProduct ? catalogProduct.name : 'Study Guide');
     const loginUrl = accessResponse.login_url || `login.html?redirect=/guide.html?id=${guideId}`;
 
     // Update header with product info
@@ -389,7 +398,8 @@ function showLoginPrompt(guideId, accessResponse) {
 // Show subscribe prompt for users without access
 function showSubscribePrompt(guideId, accessResponse) {
     const contentElement = document.getElementById('guide-content');
-    const productName = accessResponse.product_name || guideId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+    const catalogProduct = productCatalog[guideId];
+    const productName = accessResponse.product_name || (catalogProduct ? catalogProduct.name : 'Study Guide');
     const description = accessResponse.description || 'Comprehensive nursing study guide with evidence-based content.';
     const subscribeUrl = accessResponse.subscribe_url || 'pricing.html';
 
@@ -436,7 +446,7 @@ function showSubscribePrompt(guideId, accessResponse) {
 }
 
 // Show guide not found error
-function showGuideNotFound(guideId) {
+function showGuideNotFound() {
     const contentElement = document.getElementById('guide-content');
 
     document.getElementById('guide-title').textContent = 'Guide Not Found';

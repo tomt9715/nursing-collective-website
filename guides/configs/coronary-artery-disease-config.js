@@ -1,6 +1,7 @@
 // Coronary Artery Disease Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-heart', title: 'Coronary Anatomy' },
         { id: 'pathophysiology', icon: 'fa-dna', title: 'Pathophysiology' },
         { id: 'risk-factors', icon: 'fa-exclamation-triangle', title: 'Risk Factors' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'diagnostics', icon: 'fa-stethoscope', title: 'Diagnostic Testing' },
         { id: 'catheterization', icon: 'fa-syringe', title: 'Cardiac Catheterization' },
         { id: 'management', icon: 'fa-pills', title: 'Medical Management' },
-        { id: 'interventions', icon: 'fa-user-md', title: 'Surgical Interventions' }
+        { id: 'interventions', icon: 'fa-user-md', title: 'Surgical Interventions' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-tint', value: 'LDL <70', label: 'High-risk goal (mg/dL)' },

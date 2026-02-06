@@ -1,6 +1,7 @@
 // Oxygen Therapy Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'physiology', icon: 'fa-lungs', title: 'O2 Physiology' },
         { id: 'indications', icon: 'fa-clipboard-check', title: 'Indications' },
         { id: 'delivery-devices', icon: 'fa-mask', title: 'Delivery Devices' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'special-populations', icon: 'fa-users', title: 'Special Populations' },
         { id: 'oxygen-toxicity', icon: 'fa-radiation', title: 'Oxygen Toxicity' },
         { id: 'nursing-considerations', icon: 'fa-user-nurse', title: 'Nursing Care' },
-        { id: 'troubleshooting', icon: 'fa-tools', title: 'Troubleshooting' }
+        { id: 'troubleshooting', icon: 'fa-tools', title: 'Troubleshooting' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-percentage', value: '94-98%', label: 'Normal SpO2 Target' },

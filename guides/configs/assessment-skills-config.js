@@ -1,13 +1,16 @@
 // Assessment Skills Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'introduction', icon: 'fa-stethoscope', title: 'Introduction to Assessment' },
         { id: 'data-collection', icon: 'fa-database', title: 'Data Collection Methods' },
         { id: 'vital-signs', icon: 'fa-heartbeat', title: 'Vital Signs Assessment' },
         { id: 'head-to-toe', icon: 'fa-user', title: 'Head-to-Toe Assessment' },
         { id: 'focused-assessment', icon: 'fa-search', title: 'Focused Assessment' },
         { id: 'documentation', icon: 'fa-file-medical', title: 'Documentation Techniques' },
-        { id: 'critical-findings', icon: 'fa-exclamation-circle', title: 'Critical Findings' }
+        { id: 'critical-findings', icon: 'fa-exclamation-circle', title: 'Critical Findings' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-heartbeat', value: '60-100', label: 'Normal HR (bpm)' },

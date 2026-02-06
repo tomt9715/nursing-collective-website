@@ -1,6 +1,7 @@
 // Arrhythmias Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'conduction', icon: 'fa-bolt', title: 'Conduction System' },
         { id: 'ecg-basics', icon: 'fa-wave-square', title: 'ECG Basics' },
         { id: 'sinus-rhythms', icon: 'fa-heart', title: 'Sinus Rhythms' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'ventricular-rhythms', icon: 'fa-exclamation-triangle', title: 'Ventricular Arrhythmias' },
         { id: 'heart-blocks', icon: 'fa-ban', title: 'Heart Blocks' },
         { id: 'defib-cardiovert', icon: 'fa-bolt', title: 'Defib vs Cardiovert' },
-        { id: 'interventions', icon: 'fa-user-nurse', title: 'Nursing Interventions' }
+        { id: 'interventions', icon: 'fa-user-nurse', title: 'Nursing Interventions' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-heart', value: '60-100', label: 'SA Node Rate (bpm)' },

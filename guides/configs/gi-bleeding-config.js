@@ -1,12 +1,15 @@
 // GI Bleeding Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-lungs', title: 'GI Tract Anatomy' },
         { id: 'types', icon: 'fa-code-branch', title: 'Upper vs Lower GI' },
         { id: 'assessment', icon: 'fa-stethoscope', title: 'Assessment' },
         { id: 'diagnostics', icon: 'fa-microscope', title: 'Diagnostics' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Interventions' },
-        { id: 'medications', icon: 'fa-pills', title: 'Medications' }
+        { id: 'medications', icon: 'fa-pills', title: 'Medications' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'critical', icon: 'fa-tint', value: '7 g/dL', label: 'Hgb transfusion trigger' },

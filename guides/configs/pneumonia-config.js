@@ -1,6 +1,7 @@
 // Pneumonia Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-lungs', title: 'Respiratory Anatomy' },
         { id: 'pathophysiology', icon: 'fa-dna', title: 'Pathophysiology' },
         { id: 'classification', icon: 'fa-sitemap', title: 'CAP vs HAP vs VAP' },
@@ -9,7 +10,9 @@ const sidebarConfig = {
         { id: 'diagnostics', icon: 'fa-x-ray', title: 'Diagnostics & CXR' },
         { id: 'treatment', icon: 'fa-pills', title: 'Treatment & Antibiotics' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Nursing Interventions' },
-        { id: 'pediatrics', icon: 'fa-child', title: 'Pediatric Considerations' }
+        { id: 'pediatrics', icon: 'fa-child', title: 'Pediatric Considerations' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-percentage', value: '≥92%', label: 'SpO2 Target' },

@@ -1,6 +1,7 @@
 // Chest Tubes Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'pleural-space', icon: 'fa-lungs', title: 'Pleural Space' },
         { id: 'indications', icon: 'fa-clipboard-list', title: 'Indications' },
         { id: 'drainage-systems', icon: 'fa-box', title: 'Drainage Systems' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'assessment', icon: 'fa-stethoscope', title: 'Assessment' },
         { id: 'clamping', icon: 'fa-compress-alt', title: 'When to Clamp' },
         { id: 'complications', icon: 'fa-exclamation-triangle', title: 'Complications' },
-        { id: 'removal', icon: 'fa-check-double', title: 'Removal' }
+        { id: 'removal', icon: 'fa-check-double', title: 'Removal' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-water', value: '2 cm', label: 'Water Seal Level' },

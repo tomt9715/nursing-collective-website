@@ -1,6 +1,7 @@
 // Peripheral Vascular Disease Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-heart', title: 'Vascular Anatomy' },
         { id: 'arterial-venous', icon: 'fa-code-branch', title: 'Arterial vs Venous' },
         { id: 'pad', icon: 'fa-heartbeat', title: 'Peripheral Arterial Disease' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'venous', icon: 'fa-water', title: 'Venous Insufficiency' },
         { id: 'dvt', icon: 'fa-exclamation-circle', title: 'Deep Vein Thrombosis' },
         { id: 'prevention', icon: 'fa-shield-alt', title: 'DVT Prevention' },
-        { id: 'interventions', icon: 'fa-user-nurse', title: 'Treatment & Nursing' }
+        { id: 'interventions', icon: 'fa-user-nurse', title: 'Treatment & Nursing' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-ruler', value: '0.9-1.3', label: 'Normal ABI range' },

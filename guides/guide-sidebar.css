@@ -551,6 +551,234 @@
     }
 }
 
+/* ============================================
+   HIGH-YIELD SUMMARY BOX
+   Appears after Learning Objectives
+   ============================================ */
+
+.high-yield-summary {
+    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 50%, #fff7ed 100%);
+    border: 2px solid #f59e0b;
+    border-radius: 16px;
+    padding: 28px 32px;
+    margin: 30px 0;
+    position: relative;
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.15);
+}
+
+.high-yield-summary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #f59e0b, #ef4444, #f59e0b);
+    border-radius: 16px 16px 0 0;
+}
+
+.high-yield-summary h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #92400e;
+    margin: 0 0 6px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.high-yield-summary .high-yield-subtitle {
+    font-size: 0.85rem;
+    color: #b45309;
+    font-weight: 500;
+    margin-bottom: 18px;
+    font-style: italic;
+}
+
+.high-yield-summary ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.high-yield-summary li {
+    padding: 8px 0 8px 28px;
+    position: relative;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #1f2937;
+    border-bottom: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.high-yield-summary li:last-child {
+    border-bottom: none;
+}
+
+.high-yield-summary li::before {
+    content: '\f0e7';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 9px;
+    color: #f59e0b;
+    font-size: 0.85rem;
+}
+
+.high-yield-summary li strong {
+    color: #92400e;
+}
+
+.high-yield-summary .high-yield-cta {
+    margin-top: 18px;
+    padding-top: 14px;
+    border-top: 1px dashed #d97706;
+    font-size: 0.88rem;
+    color: #b45309;
+    font-style: italic;
+}
+
+/* ============================================
+   BOTTOM LINE CALLOUTS
+   Appear at end of each content section
+   ============================================ */
+
+.bottom-line {
+    background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+    border-left: 4px solid #3b82f6;
+    border-radius: 0 10px 10px 0;
+    padding: 14px 20px;
+    margin: 24px 0 8px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #1e3a5f;
+}
+
+.bottom-line strong:first-child {
+    color: #1d4ed8;
+    font-weight: 700;
+}
+
+/* ============================================
+   CROSS-REFERENCES SECTION
+   Appears before Key Takeaways footer
+   ============================================ */
+
+.cross-references {
+    background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0f9ff 100%);
+    border: 1px solid #86efac;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin: 30px 0;
+}
+
+.cross-references h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #166534;
+    margin: 0 0 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cross-ref-group {
+    margin-bottom: 16px;
+}
+
+.cross-ref-group:last-child {
+    margin-bottom: 0;
+}
+
+.cross-ref-group h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #15803d;
+    margin: 0 0 8px 0;
+}
+
+.cross-ref-group ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.cross-ref-group li {
+    font-size: 0.88rem;
+}
+
+.cross-ref-group li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: white;
+    color: #166534;
+    border: 1px solid #86efac;
+    border-radius: 20px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.cross-ref-group li a:hover {
+    background: #166534;
+    color: white;
+    border-color: #166534;
+}
+
+.cross-ref-group li a i {
+    font-size: 0.75rem;
+}
+
+.cross-ref-group li .coming-soon {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: #f9fafb;
+    color: #6b7280;
+    border: 1px dashed #d1d5db;
+    border-radius: 20px;
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* ============================================
+   PRACTICE QUESTIONS PLACEHOLDER
+   Appears after content, before cross-references
+   ============================================ */
+
+.practice-questions-placeholder {
+    background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+    border: 1px dashed #a78bfa;
+    border-radius: 14px;
+    padding: 28px 32px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.practice-questions-placeholder h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #5b21b6;
+    margin: 0 0 10px 0;
+}
+
+.practice-questions-placeholder p {
+    font-size: 0.92rem;
+    color: #6d28d9;
+    margin: 0;
+    line-height: 1.5;
+}
+
 /* Print Styles - hide sidebars */
 @media print {
     .sidebar-left,
@@ -565,5 +793,19 @@
     .page-wrapper .document-container {
         max-width: 100% !important;
         margin: 0 !important;
+    }
+    .high-yield-summary {
+        break-inside: avoid;
+        border: 2px solid #f59e0b;
+        box-shadow: none;
+    }
+    .bottom-line {
+        break-inside: avoid;
+    }
+    .cross-references {
+        break-inside: avoid;
+    }
+    .practice-questions-placeholder {
+        break-inside: avoid;
     }
 }

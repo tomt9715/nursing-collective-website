@@ -1,6 +1,7 @@
 // Hip & Knee Replacement Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-bone', title: 'Joint Anatomy' },
         { id: 'indications', icon: 'fa-clipboard-list', title: 'Indications & Types' },
         { id: 'preop', icon: 'fa-calendar-check', title: 'Preoperative Care' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'postop', icon: 'fa-procedures', title: 'Postoperative Care' },
         { id: 'dvt-prevention', icon: 'fa-shield-alt', title: 'DVT Prevention' },
         { id: 'mobility', icon: 'fa-walking', title: 'Mobility & Rehab' },
-        { id: 'complications', icon: 'fa-circle-exclamation', title: 'Complications' }
+        { id: 'complications', icon: 'fa-circle-exclamation', title: 'Complications' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'critical', value: '90°', label: 'Max hip flexion' },

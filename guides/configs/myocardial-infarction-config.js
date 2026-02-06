@@ -1,6 +1,7 @@
 // Myocardial Infarction Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-heart', title: 'Coronary Anatomy' },
         { id: 'pathophysiology', icon: 'fa-dna', title: 'Pathophysiology' },
         { id: 'stemi-nstemi', icon: 'fa-heartbeat', title: 'STEMI vs NSTEMI' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'ekg', icon: 'fa-wave-square', title: 'EKG Changes' },
         { id: 'thrombolytics', icon: 'fa-syringe', title: 'Thrombolytics (tPA)' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Nursing Interventions' },
-        { id: 'complications', icon: 'fa-exclamation-circle', title: 'Complications' }
+        { id: 'complications', icon: 'fa-exclamation-circle', title: 'Complications' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'critical', icon: 'fa-clock', value: '<90 min', label: 'Door-to-balloon (PCI)' },

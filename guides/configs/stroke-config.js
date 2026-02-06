@@ -1,12 +1,15 @@
 // Stroke Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-brain', title: 'Brain Anatomy' },
         { id: 'types', icon: 'fa-code-branch', title: 'Stroke Types' },
         { id: 'fast', icon: 'fa-bolt', title: 'FAST Assessment' },
         { id: 'tpa', icon: 'fa-syringe', title: 'tPA Criteria' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Interventions' },
-        { id: 'medications', icon: 'fa-pills', title: 'Medications' }
+        { id: 'medications', icon: 'fa-pills', title: 'Medications' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'time', icon: 'fa-clock', value: '4.5 hrs', label: 'tPA Window' },

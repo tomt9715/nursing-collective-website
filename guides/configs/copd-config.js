@@ -1,6 +1,7 @@
 // COPD Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-lungs', title: 'Respiratory Anatomy' },
         { id: 'pathophysiology', icon: 'fa-dna', title: 'Pathophysiology' },
         { id: 'bronchitis-emphysema', icon: 'fa-columns', title: 'Bronchitis vs Emphysema' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'assessment', icon: 'fa-stethoscope', title: 'Nursing Assessment' },
         { id: 'breathing-techniques', icon: 'fa-wind', title: 'Breathing Techniques' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Interventions' },
-        { id: 'medications', icon: 'fa-pills', title: 'Medications' }
+        { id: 'medications', icon: 'fa-pills', title: 'Medications' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-percentage', value: '88-92%', label: 'SpO2 Target (COPD)' },

@@ -4,7 +4,13 @@
 // Configuration - set by data attributes on body element
 const PRODUCT_ID = document.body.dataset.productId || 'heart-failure';
 const GUIDE_NAME = document.body.dataset.guideName || 'Heart-Failure';
-const API_URL = 'https://api.thenursingcollective.pro';
+const API_URL = (function() {
+    const hostname = window.location.hostname;
+    if (hostname === 'thenursingcollective.pro' || hostname === 'www.thenursingcollective.pro') {
+        return 'https://api.thenursingcollective.pro';
+    }
+    return 'https://staging-backend-production-365a.up.railway.app';
+})();
 
 // Check for print token in URL (used for server-side PDF generation)
 const urlParams = new URLSearchParams(window.location.search);

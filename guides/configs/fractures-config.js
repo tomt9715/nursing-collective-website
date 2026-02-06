@@ -1,6 +1,7 @@
 // Fractures Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-bone', title: 'Bone Anatomy' },
         { id: 'fracture-types', icon: 'fa-code-branch', title: 'Fracture Types' },
         { id: 'healing', icon: 'fa-heart-pulse', title: 'Bone Healing' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'compartment-syndrome', icon: 'fa-triangle-exclamation', title: 'Compartment Syndrome' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Nursing Interventions' },
         { id: 'complications', icon: 'fa-circle-exclamation', title: 'Complications' },
-        { id: 'pediatrics', icon: 'fa-child', title: 'Pediatric Considerations' }
+        { id: 'pediatrics', icon: 'fa-child', title: 'Pediatric Considerations' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'critical', value: '6 hrs', label: 'Compartment syndrome window' },

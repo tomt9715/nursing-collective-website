@@ -1,6 +1,7 @@
 // Asthma Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-lungs', title: 'Respiratory Anatomy' },
         { id: 'pathophysiology', icon: 'fa-dna', title: 'Pathophysiology' },
         { id: 'severity', icon: 'fa-chart-bar', title: 'Severity Classification' },
@@ -9,7 +10,9 @@ const sidebarConfig = {
         { id: 'status-asthmaticus', icon: 'fa-exclamation-circle', title: 'Status Asthmaticus' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Interventions' },
         { id: 'education', icon: 'fa-chalkboard-teacher', title: 'Patient Education' },
-        { id: 'pediatrics', icon: 'fa-child', title: 'Pediatric Considerations' }
+        { id: 'pediatrics', icon: 'fa-child', title: 'Pediatric Considerations' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-percentage', value: '≥92%', label: 'SpO2 Target (Asthma)' },

@@ -1,13 +1,16 @@
 // Heart Failure Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-heart', title: 'Cardiac Anatomy' },
         { id: 'pathophysiology', icon: 'fa-dna', title: 'Pathophysiology' },
         { id: 'left-vs-right', icon: 'fa-columns', title: 'Left vs Right HF' },
         { id: 'systolic-diastolic', icon: 'fa-heartbeat', title: 'Systolic vs Diastolic' },
         { id: 'assessment', icon: 'fa-stethoscope', title: 'Nursing Assessment' },
         { id: 'interventions', icon: 'fa-user-nurse', title: 'Interventions' },
-        { id: 'medications', icon: 'fa-pills', title: 'Medications' }
+        { id: 'medications', icon: 'fa-pills', title: 'Medications' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'target', icon: 'fa-percentage', value: '55-70%', label: 'Normal EF' },

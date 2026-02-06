@@ -1,6 +1,7 @@
 // Tuberculosis Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'anatomy', icon: 'fa-lungs', title: 'Respiratory Anatomy' },
         { id: 'pathophysiology', icon: 'fa-virus', title: 'TB Pathophysiology' },
         { id: 'latent-vs-active', icon: 'fa-balance-scale', title: 'Latent vs Active TB' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'diagnostics', icon: 'fa-vial', title: 'Diagnostic Testing' },
         { id: 'isolation', icon: 'fa-shield-virus', title: 'Airborne Isolation' },
         { id: 'ripe-therapy', icon: 'fa-pills', title: 'RIPE Therapy' },
-        { id: 'nursing-care', icon: 'fa-user-nurse', title: 'Nursing Care' }
+        { id: 'nursing-care', icon: 'fa-user-nurse', title: 'Nursing Care' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'critical', icon: 'fa-head-side-mask', value: 'N95', label: 'Required Respirator' },

@@ -1,6 +1,7 @@
 // Hypertension Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
         { id: 'overview', icon: 'fa-heartbeat', title: 'Understanding BP' },
         { id: 'classification', icon: 'fa-chart-bar', title: 'BP Classification' },
         { id: 'types', icon: 'fa-code-branch', title: 'Primary vs Secondary' },
@@ -8,7 +9,9 @@ const sidebarConfig = {
         { id: 'assessment', icon: 'fa-stethoscope', title: 'Nursing Assessment' },
         { id: 'lifestyle', icon: 'fa-apple-alt', title: 'Lifestyle Modifications' },
         { id: 'medications', icon: 'fa-pills', title: 'Medications' },
-        { id: 'crisis', icon: 'fa-bolt', title: 'Hypertensive Crisis' }
+        { id: 'crisis', icon: 'fa-bolt', title: 'Hypertensive Crisis' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'success', icon: 'fa-check', value: '<120/80', label: 'Normal BP' },

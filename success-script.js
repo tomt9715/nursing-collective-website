@@ -45,6 +45,16 @@ async function verifySubscription(sessionId) {
     try {
         // Poll for subscription status - webhook may take a moment to process
         showPendingState();
+
+        // If access token is missing or stale after Stripe redirect, refresh it first
+        if (!localStorage.getItem('accessToken')) {
+            try {
+                await refreshToken();
+            } catch (e) {
+                console.warn('Token refresh failed — user may need to log in again');
+            }
+        }
+
         pollStartTime = Date.now();
 
         const checkStatus = async () => {
@@ -57,15 +67,8 @@ async function verifySubscription(sessionId) {
 
             try {
                 // Check if the user now has an active subscription
-                const response = await fetch(`${API_URL}/api/subscription-status`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${localStorage.getItem('accessToken') || ''}`
-                    }
-                });
-
-                const data = await response.json();
+                // Use apiCall() for automatic token refresh on 401
+                const data = await apiCall('/api/subscription-status');
                 console.log('Subscription status check:', data);
 
                 if (data.has_access && data.subscription) {

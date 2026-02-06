@@ -676,6 +676,12 @@ var QuizBank = (function () {
 
         feedbackArea.innerHTML = feedbackHtml;
 
+        // Report question link (shown after every answered question)
+        var reportLink = document.createElement('div');
+        reportLink.className = 'qb-report-link';
+        reportLink.innerHTML = '<button class="qb-report-btn" data-qb-action="report-question" data-question-id="' + _esc(q.id) + '"><i class="fas fa-flag"></i> Report this question</button>';
+        feedbackArea.appendChild(reportLink);
+
         // Sticky next bar
         var existing = _root.querySelector('.qb-sticky-next');
         if (existing) existing.remove();
@@ -1001,6 +1007,18 @@ var QuizBank = (function () {
                         actionBtn.setAttribute('aria-expanded', item.classList.contains('qb-result-item--expanded'));
                     }
                     break;
+                case 'report-question':
+                    _showReportModal(actionBtn.dataset.questionId);
+                    break;
+                case 'submit-report':
+                    _submitReport();
+                    break;
+                case 'close-report':
+                    _closeReportModal();
+                    break;
+                case 'select-report-reason':
+                    _selectReportReason(actionBtn);
+                    break;
                 case 'quit-quiz':
                     if (confirm('Incomplete sets don\'t count toward mastery. Are you sure you want to quit?')) {
                         renderHub();
@@ -1277,6 +1295,131 @@ var QuizBank = (function () {
         var size = _setSize;
         _isCustom = true;
         _startQuiz(questions, null, 'Custom Quiz', null, mode, size);
+    }
+
+    // ── Report Question ──────────────────────────────────
+
+    var _reportQuestionId = null;
+    var _reportReason = null;
+
+    function _showReportModal(questionId) {
+        _reportQuestionId = questionId;
+        _reportReason = null;
+
+        // Find the question stem for context
+        var q = null;
+        for (var i = 0; i < _currentQuestions.length; i++) {
+            if (_currentQuestions[i].id === questionId) { q = _currentQuestions[i]; break; }
+        }
+        var stemPreview = q ? (q.stem.length > 80 ? q.stem.substring(0, 80) + '...' : q.stem) : questionId;
+
+        var overlay = document.createElement('div');
+        overlay.className = 'qb-report-overlay';
+        overlay.id = 'qb-report-overlay';
+        overlay.innerHTML =
+            '<div class="qb-report-modal">' +
+                '<div class="qb-report-header">' +
+                    '<h3><i class="fas fa-flag"></i> Report Question</h3>' +
+                    '<button class="qb-report-close" data-qb-action="close-report"><i class="fas fa-times"></i></button>' +
+                '</div>' +
+                '<div class="qb-report-body">' +
+                    '<div class="qb-report-question-preview">' + _esc(stemPreview) + '</div>' +
+                    '<p class="qb-report-prompt">What\'s wrong with this question?</p>' +
+                    '<div class="qb-report-reasons">' +
+                        '<button class="qb-report-reason" data-qb-action="select-report-reason" data-reason="inaccurate"><i class="fas fa-exclamation-circle"></i> Inaccurate information</button>' +
+                        '<button class="qb-report-reason" data-qb-action="select-report-reason" data-reason="wrong-answer"><i class="fas fa-times-circle"></i> Wrong correct answer</button>' +
+                        '<button class="qb-report-reason" data-qb-action="select-report-reason" data-reason="unclear"><i class="fas fa-question-circle"></i> Unclear or confusing</button>' +
+                        '<button class="qb-report-reason" data-qb-action="select-report-reason" data-reason="typo"><i class="fas fa-spell-check"></i> Typo or grammar error</button>' +
+                        '<button class="qb-report-reason" data-qb-action="select-report-reason" data-reason="other"><i class="fas fa-ellipsis-h"></i> Other</button>' +
+                    '</div>' +
+                    '<textarea class="qb-report-details" id="qb-report-details" placeholder="Add details (optional)..." rows="3"></textarea>' +
+                    '<button class="qb-btn qb-btn--primary qb-report-submit" data-qb-action="submit-report" disabled><i class="fas fa-paper-plane"></i> Submit Report</button>' +
+                    '<div class="qb-report-status" id="qb-report-status"></div>' +
+                '</div>' +
+            '</div>';
+        document.body.appendChild(overlay);
+
+        // Animate in
+        requestAnimationFrame(function () { overlay.classList.add('qb-report-overlay--visible'); });
+    }
+
+    function _selectReportReason(btn) {
+        _reportReason = btn.dataset.reason;
+        // Toggle active state
+        var reasons = document.querySelectorAll('.qb-report-reason');
+        for (var i = 0; i < reasons.length; i++) { reasons[i].classList.remove('qb-report-reason--active'); }
+        btn.classList.add('qb-report-reason--active');
+        // Enable submit
+        var submitBtn = document.querySelector('.qb-report-submit');
+        if (submitBtn) submitBtn.disabled = false;
+    }
+
+    function _closeReportModal() {
+        var overlay = document.getElementById('qb-report-overlay');
+        if (overlay) {
+            overlay.classList.remove('qb-report-overlay--visible');
+            setTimeout(function () { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 200);
+        }
+        _reportQuestionId = null;
+        _reportReason = null;
+    }
+
+    function _submitReport() {
+        if (!_reportQuestionId || !_reportReason) return;
+
+        var detailsEl = document.getElementById('qb-report-details');
+        var details = detailsEl ? detailsEl.value.trim() : '';
+        var statusEl = document.getElementById('qb-report-status');
+        var submitBtn = document.querySelector('.qb-report-submit');
+
+        if (submitBtn) { submitBtn.disabled = true; submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...'; }
+
+        // Find question data for context
+        var q = null;
+        if (window.QUIZ_BANK_QUESTIONS) {
+            for (var i = 0; i < window.QUIZ_BANK_QUESTIONS.length; i++) {
+                if (window.QUIZ_BANK_QUESTIONS[i].id === _reportQuestionId) { q = window.QUIZ_BANK_QUESTIONS[i]; break; }
+            }
+        }
+
+        var payload = {
+            question_id: _reportQuestionId,
+            reason: _reportReason,
+            details: details,
+            topic: q ? q.topic : null,
+            category: q ? q.category : null,
+            stem_preview: q ? q.stem.substring(0, 150) : null
+        };
+
+        // Send to backend
+        if (typeof apiCall === 'function') {
+            apiCall('/api/quiz/report', {
+                method: 'POST',
+                body: JSON.stringify(payload)
+            }).then(function () {
+                if (statusEl) { statusEl.className = 'qb-report-status qb-report-status--success'; statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Report submitted. Thank you!'; }
+                setTimeout(_closeReportModal, 1500);
+            }).catch(function () {
+                // Fallback: save locally if API fails
+                _saveReportLocally(payload);
+                if (statusEl) { statusEl.className = 'qb-report-status qb-report-status--success'; statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Report saved. Thank you!'; }
+                setTimeout(_closeReportModal, 1500);
+            });
+        } else {
+            // No apiCall available — save locally
+            _saveReportLocally(payload);
+            if (statusEl) { statusEl.className = 'qb-report-status qb-report-status--success'; statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Report saved. Thank you!'; }
+            setTimeout(_closeReportModal, 1500);
+        }
+    }
+
+    function _saveReportLocally(payload) {
+        try {
+            var reports = JSON.parse(localStorage.getItem('qb_pending_reports') || '[]');
+            payload.reported_at = new Date().toISOString();
+            reports.push(payload);
+            localStorage.setItem('qb_pending_reports', JSON.stringify(reports));
+        } catch (e) { /* silent */ }
     }
 
     function _countQuestionsForTopic(topicId) {

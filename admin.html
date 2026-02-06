@@ -123,6 +123,9 @@
                     <button class="admin-subnav-tab" data-tab="subscriptions">
                         <i class="fas fa-id-badge"></i> Subscriptions
                     </button>
+                    <button class="admin-subnav-tab" data-tab="quiz-reports">
+                        <i class="fas fa-flag"></i> Quiz Reports
+                    </button>
                     <button class="admin-subnav-tab" data-tab="audit">
                         <i class="fas fa-history"></i> Audit Log
                     </button>
@@ -644,6 +647,68 @@
                         </div>
                         <!-- Pagination -->
                         <div class="pagination-controls" id="subscriptions-pagination"></div>
+                    </div>
+                </div>
+
+                <!-- Quiz Reports Tab -->
+                <div class="admin-tab-content" id="tab-quiz-reports">
+                    <div class="admin-section">
+                        <div class="section-header">
+                            <h3><i class="fas fa-flag"></i> Quiz Question Reports</h3>
+                            <span class="user-count" id="quiz-reports-count">0 reports</span>
+                        </div>
+                        <!-- Status Filter -->
+                        <div style="display: flex; gap: 10px; margin-bottom: 16px; flex-wrap: wrap;">
+                            <select id="quiz-reports-status-filter" class="form-select" style="max-width: 200px;">
+                                <option value="open">Open</option>
+                                <option value="resolved">Resolved</option>
+                                <option value="dismissed">Dismissed</option>
+                                <option value="all">All</option>
+                            </select>
+                            <button class="btn btn-primary btn-sm" id="quiz-reports-filter-btn">
+                                <i class="fas fa-filter"></i> Filter
+                            </button>
+                        </div>
+                        <!-- Desktop Table -->
+                        <div class="quiz-reports-table-container desktop-only">
+                            <table class="admin-table" id="quiz-reports-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Question</th>
+                                        <th>Reason</th>
+                                        <th>Reporter</th>
+                                        <th>Status</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="quiz-reports-table-body">
+                                    <tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading reports...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- Mobile Cards -->
+                        <div class="quiz-reports-mobile-cards mobile-only" id="quiz-reports-mobile-cards">
+                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading reports...</div>
+                        </div>
+                        <!-- Pagination -->
+                        <div class="pagination-controls" id="quiz-reports-pagination"></div>
+                    </div>
+                </div>
+
+                <!-- Quiz Report Detail Modal -->
+                <div class="modal-overlay" id="quiz-report-detail-modal">
+                    <div class="modal-content" style="max-width: 560px;">
+                        <div class="modal-header">
+                            <h2><i class="fas fa-flag"></i> Report Details</h2>
+                            <button class="modal-close" id="close-quiz-report-modal-btn">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        <div class="modal-body" id="quiz-report-modal-body">
+                            <!-- Populated by JS -->
+                        </div>
                     </div>
                 </div>
 

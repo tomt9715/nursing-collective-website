@@ -167,14 +167,14 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Handle URL hash for tab navigation (e.g., admin.html#users)
     const hash = window.location.hash.replace('#', '');
-    if (hash && ['overview', 'users', 'subscriptions', 'audit'].includes(hash)) {
+    if (hash && ['overview', 'users', 'subscriptions', 'quiz-reports', 'audit'].includes(hash)) {
         switchTab(hash);
     }
 
     // Also listen for hash changes
     window.addEventListener('hashchange', function() {
         const newHash = window.location.hash.replace('#', '');
-        if (newHash && ['overview', 'users', 'subscriptions', 'audit'].includes(newHash)) {
+        if (newHash && ['overview', 'users', 'subscriptions', 'quiz-reports', 'audit'].includes(newHash)) {
             switchTab(newHash);
         }
     });
@@ -360,6 +360,12 @@ function setupEventListeners() {
         });
     });
 
+    // Quiz reports filter
+    const quizReportsFilterBtn = document.getElementById('quiz-reports-filter-btn');
+    if (quizReportsFilterBtn) {
+        quizReportsFilterBtn.addEventListener('click', () => loadQuizReports(1));
+    }
+
     // Test email buttons
     document.querySelectorAll('[data-test-email]').forEach(btn => {
         btn.addEventListener('click', async () => {
@@ -415,6 +421,9 @@ function switchTab(tabName) {
             break;
         case 'subscriptions':
             loadSubscriptions();
+            break;
+        case 'quiz-reports':
+            loadQuizReports();
             break;
         case 'audit':
             loadAuditLog();
@@ -1713,6 +1722,230 @@ async function exportAuditLog() {
     }
 }
 
+// ==================== Quiz Reports Tab ====================
+
+let quizReportsPage = 1;
+
+async function loadQuizReports(page = 1) {
+    quizReportsPage = page;
+    const tbody = document.getElementById('quiz-reports-table-body');
+    const mobileContainer = document.getElementById('quiz-reports-mobile-cards');
+
+    tbody.innerHTML = '<tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading reports...</td></tr>';
+    if (mobileContainer) {
+        mobileContainer.innerHTML = '<div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading reports...</div>';
+    }
+
+    try {
+        const statusFilter = document.getElementById('quiz-reports-status-filter')?.value || 'open';
+        const params = new URLSearchParams({
+            page: page,
+            per_page: 25,
+            status: statusFilter
+        });
+
+        const data = await apiCall(`/api/quiz/reports?${params}`);
+
+        const reports = data.reports || [];
+        const total = data.total || 0;
+
+        document.getElementById('quiz-reports-count').textContent = `${total} report${total !== 1 ? 's' : ''}`;
+
+        if (reports.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="7" class="loading-cell">No reports found</td></tr>';
+            if (mobileContainer) {
+                mobileContainer.innerHTML = '<div class="loading-cell">No reports found</div>';
+            }
+            document.getElementById('quiz-reports-pagination').innerHTML = '';
+            return;
+        }
+
+        const reasonLabels = {
+            'inaccurate': 'Inaccurate',
+            'wrong-answer': 'Wrong Answer',
+            'unclear': 'Unclear',
+            'typo': 'Typo',
+            'other': 'Other'
+        };
+
+        const statusBadge = (status) => {
+            switch (status) {
+                case 'open': return '<span class="badge-status" style="background: #f59e0b; color: #fff;"><i class="fas fa-exclamation-circle"></i> Open</span>';
+                case 'resolved': return '<span class="badge-status active"><i class="fas fa-check"></i> Resolved</span>';
+                case 'dismissed': return '<span class="badge-status inactive"><i class="fas fa-ban"></i> Dismissed</span>';
+                default: return `<span class="badge-status">${escapeHtml(status)}</span>`;
+            }
+        };
+
+        // Desktop table
+        tbody.innerHTML = reports.map(report => `
+            <tr>
+                <td>#${report.id}</td>
+                <td>
+                    <strong>${escapeHtml(report.question_id)}</strong>
+                    ${report.topic ? `<div style="font-size: 12px; color: var(--text-color-muted, #666);">${escapeHtml(report.topic)}</div>` : ''}
+                </td>
+                <td>${escapeHtml(reasonLabels[report.reason] || report.reason)}</td>
+                <td>${escapeHtml(report.reporter_email || 'Anonymous')}</td>
+                <td>${statusBadge(report.status)}</td>
+                <td>${formatDate(report.created_at)}</td>
+                <td>
+                    <div class="table-actions">
+                        <button class="action-btn primary" data-view-quiz-report="${report.id}">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `).join('');
+
+        // Mobile cards
+        if (mobileContainer) {
+            mobileContainer.innerHTML = reports.map(report => `
+                <div class="audit-card" style="cursor: pointer;" data-view-quiz-report-card="${report.id}">
+                    <div class="audit-card-header">
+                        <span class="audit-card-action">${escapeHtml(reasonLabels[report.reason] || report.reason)}</span>
+                        <span class="audit-card-time">${formatDate(report.created_at)}</span>
+                    </div>
+                    <div class="audit-card-body">
+                        <strong>${escapeHtml(report.question_id)}</strong>
+                        ${report.topic ? ` &middot; ${escapeHtml(report.topic)}` : ''}
+                        <br><small>Reporter: ${escapeHtml(report.reporter_email || 'Anonymous')}</small>
+                    </div>
+                    <div style="margin-top: 8px;">${statusBadge(report.status)}</div>
+                </div>
+            `).join('');
+
+            mobileContainer.querySelectorAll('[data-view-quiz-report-card]').forEach(card => {
+                card.addEventListener('click', function() {
+                    openQuizReportDetail(parseInt(this.dataset.viewQuizReportCard), reports);
+                });
+            });
+        }
+
+        // Attach desktop view handlers
+        tbody.querySelectorAll('[data-view-quiz-report]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                openQuizReportDetail(parseInt(this.dataset.viewQuizReport), reports);
+            });
+        });
+
+        // Pagination
+        const totalPages = Math.ceil(total / 25);
+        if (totalPages > 1) {
+            renderPagination('quiz-reports-pagination', {
+                page: page,
+                pages: totalPages,
+                has_prev: page > 1,
+                has_next: page < totalPages
+            }, loadQuizReports);
+        } else {
+            document.getElementById('quiz-reports-pagination').innerHTML = '';
+        }
+    } catch (error) {
+        console.error('Error loading quiz reports:', error);
+        tbody.innerHTML = '<tr><td colspan="7" class="loading-cell">Error loading reports</td></tr>';
+        if (mobileContainer) {
+            mobileContainer.innerHTML = '<div class="loading-cell">Error loading reports</div>';
+        }
+        showToast('Failed to load quiz reports', 'error');
+    }
+}
+
+function openQuizReportDetail(reportId, reports) {
+    const report = reports.find(r => r.id === reportId);
+    if (!report) return;
+
+    const modal = document.getElementById('quiz-report-detail-modal');
+    const body = document.getElementById('quiz-report-modal-body');
+
+    const reasonLabels = {
+        'inaccurate': 'Inaccurate information',
+        'wrong-answer': 'Wrong correct answer',
+        'unclear': 'Unclear or confusing',
+        'typo': 'Typo or grammar error',
+        'other': 'Other'
+    };
+
+    body.innerHTML = `
+        <div style="margin-bottom: 16px;">
+            <table style="width: 100%; font-size: 14px;">
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666); width: 120px;">Report ID</td><td style="padding: 6px 0;"><strong>#${report.id}</strong></td></tr>
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Question ID</td><td style="padding: 6px 0;"><code>${escapeHtml(report.question_id)}</code></td></tr>
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Topic</td><td style="padding: 6px 0;">${escapeHtml(report.topic || 'N/A')} / ${escapeHtml(report.category || 'N/A')}</td></tr>
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Reason</td><td style="padding: 6px 0; font-weight: 600; color: #ef4444;">${escapeHtml(reasonLabels[report.reason] || report.reason)}</td></tr>
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Reporter</td><td style="padding: 6px 0;">${escapeHtml(report.reporter_email || 'Anonymous')}</td></tr>
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Submitted</td><td style="padding: 6px 0;">${formatDateTime(report.created_at)}</td></tr>
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Status</td><td style="padding: 6px 0;">${escapeHtml(report.status)}</td></tr>
+            </table>
+        </div>
+
+        ${report.stem_preview ? `
+        <div style="background: var(--background-color-alt, #f8f9fa); border-left: 3px solid var(--primary-color, #2E86AB); padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 14px;">
+            <strong style="font-size: 12px; color: var(--text-color-muted, #666); display: block; margin-bottom: 4px;">Question Preview</strong>
+            ${escapeHtml(report.stem_preview)}
+        </div>` : ''}
+
+        ${report.details ? `
+        <div style="margin-bottom: 16px;">
+            <strong style="font-size: 13px; color: var(--text-color-muted, #666);">Reporter Details:</strong>
+            <p style="margin: 4px 0 0 0; font-size: 14px;">${escapeHtml(report.details)}</p>
+        </div>` : ''}
+
+        ${report.admin_notes ? `
+        <div style="margin-bottom: 16px;">
+            <strong style="font-size: 13px; color: var(--text-color-muted, #666);">Admin Notes:</strong>
+            <p style="margin: 4px 0 0 0; font-size: 14px;">${escapeHtml(report.admin_notes)}</p>
+        </div>` : ''}
+
+        ${report.status === 'open' ? `
+        <div style="border-top: 1px solid var(--border-color, #e5e7eb); padding-top: 16px; margin-top: 16px;">
+            <div class="form-group" style="margin-bottom: 12px;">
+                <label style="font-size: 13px; font-weight: 600; margin-bottom: 4px; display: block;">Admin Notes</label>
+                <textarea id="quiz-report-admin-notes" class="form-control" rows="2" placeholder="Notes about resolution..."></textarea>
+            </div>
+            <div style="display: flex; gap: 8px;">
+                <button class="btn btn-primary btn-sm" id="resolve-quiz-report-btn" data-report-id="${report.id}">
+                    <i class="fas fa-check"></i> Resolve
+                </button>
+                <button class="btn btn-secondary btn-sm" id="dismiss-quiz-report-btn" data-report-id="${report.id}">
+                    <i class="fas fa-ban"></i> Dismiss
+                </button>
+            </div>
+        </div>` : ''}
+    `;
+
+    modal.classList.add('active');
+
+    // Attach resolve/dismiss handlers
+    const resolveBtn = document.getElementById('resolve-quiz-report-btn');
+    if (resolveBtn) {
+        resolveBtn.addEventListener('click', () => resolveQuizReport(report.id, 'resolved'));
+    }
+    const dismissBtn = document.getElementById('dismiss-quiz-report-btn');
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', () => resolveQuizReport(report.id, 'dismissed'));
+    }
+}
+
+async function resolveQuizReport(reportId, status) {
+    const adminNotes = document.getElementById('quiz-report-admin-notes')?.value?.trim() || '';
+
+    try {
+        await apiCall(`/api/quiz/reports/${reportId}/resolve`, {
+            method: 'POST',
+            body: JSON.stringify({ status, admin_notes: adminNotes })
+        });
+
+        showToast(`Report ${status}`, 'success');
+        document.getElementById('quiz-report-detail-modal').classList.remove('active');
+        loadQuizReports(quizReportsPage);
+    } catch (error) {
+        console.error('Error resolving quiz report:', error);
+        showToast(error.message || 'Failed to update report', 'error');
+    }
+}
+
 // ==================== Utility Functions ====================
 
 function renderPagination(containerId, pagination, loadFn) {
@@ -2027,6 +2260,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const deletedFilterApplyBtn = document.getElementById('deleted-filter-apply-btn');
     if (deletedFilterApplyBtn) {
         deletedFilterApplyBtn.addEventListener('click', () => loadDeletedAccountsFull(1));
+    }
+
+    // Quiz report detail modal close button
+    const closeQuizReportModalBtn = document.getElementById('close-quiz-report-modal-btn');
+    if (closeQuizReportModalBtn) {
+        closeQuizReportModalBtn.addEventListener('click', () => {
+            document.getElementById('quiz-report-detail-modal').classList.remove('active');
+        });
     }
 
 });

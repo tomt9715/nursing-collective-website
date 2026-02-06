@@ -1572,7 +1572,10 @@ var QuizBank = (function () {
             apiCall('/api/quiz/report', {
                 method: 'POST',
                 body: JSON.stringify(payload)
-            }).then(function () {
+            }).then(function (resp) {
+                if (resp && resp.email_error) {
+                    console.warn('[QuizBank] Report saved but email notification failed:', resp.email_error);
+                }
                 if (statusEl) { statusEl.className = 'qb-report-status qb-report-status--success'; statusEl.innerHTML = '<i class="fas fa-check-circle"></i> Report submitted. Thank you!'; }
                 setTimeout(_closeReportModal, 1500);
             }).catch(function () {

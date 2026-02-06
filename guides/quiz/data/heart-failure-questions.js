@@ -106,6 +106,9 @@ var heartFailureQuizData = {
                 d: "\"Compensated heart failure\" describes a functional status (symptoms controlled), not an EF classification. This patient has active symptoms."
             },
             testTakingTip: "Know the EF cutoffs: <40% = HFrEF (reduced), 41-49% = HFmrEF (midrange), \u226550% = HFpEF (preserved). Don\u2019t be tricked by a \"normal\" EF \u2014 HFpEF patients still have heart failure!",
+            labValues: [
+                { name: "Ejection Fraction (EF)", normal: "55\u201370%" }
+            ],
             guideSection: "Section 4 \u2014 Systolic vs Diastolic Dysfunction",
             guideSectionId: "systolic-diastolic"
         },
@@ -115,6 +118,12 @@ var heartFailureQuizData = {
             subtype: null,
             difficulty: "analysis",
             stem: "A patient with HFrEF is taking furosemide 40 mg daily and lisinopril 10 mg daily. Today\u2019s lab results show: Potassium 3.2 mEq/L, BUN 28 mg/dL, Creatinine 1.4 mg/dL. Digoxin level is 1.8 ng/mL. Which lab value is the nurse MOST concerned about?",
+            labValues: [
+                { name: "Potassium (K+)", normal: "3.5\u20135.0 mEq/L" },
+                { name: "BUN", normal: "10\u201320 mg/dL" },
+                { name: "Creatinine", normal: "0.7\u20131.3 mg/dL" },
+                { name: "Digoxin", normal: "0.5\u20132.0 ng/mL" }
+            ],
             options: [
                 { id: "a", text: "BUN of 28 mg/dL" },
                 { id: "b", text: "Creatinine of 1.4 mg/dL" },
@@ -178,6 +187,9 @@ var heartFailureQuizData = {
                 d: "The rapid response team may be needed, but the nurse should first collect the critical data (potassium level) that will guide the team\u2019s interventions. The patient is not in immediate cardiac arrest."
             },
             testTakingTip: "U waves = think hyoUkalemia. When the NCLEX presents symptoms + a likely cause, the first step is usually to confirm with a diagnostic test before escalating care.",
+            labValues: [
+                { name: "Potassium (K+)", normal: "3.5\u20135.0 mEq/L" }
+            ],
             guideSection: "Section 7 \u2014 Pharmacological Management",
             guideSectionId: "medications"
         },

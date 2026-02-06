@@ -1356,6 +1356,99 @@ body {
     .quiz-result-detail {
         max-height: none;
     }
+
+    .quiz-lab-reference {
+        background: #f0f9ff !important;
+        border: 1px solid #bae6fd !important;
+        border-left: 4px solid #0ea5e9 !important;
+        break-inside: avoid;
+    }
+}
+
+/* ============================================
+   LAB REFERENCE PANEL (Practice Mode only)
+   ============================================ */
+.quiz-lab-reference {
+    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    border: 1px solid #bae6fd;
+    border-left: 4px solid #0ea5e9;
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin: 16px 0 20px;
+}
+
+.quiz-lab-header {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #0369a1;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.quiz-lab-header i {
+    font-size: 0.8rem;
+}
+
+.quiz-lab-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+}
+
+.quiz-lab-table th {
+    text-align: left;
+    font-weight: 600;
+    color: #475569;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 6px 10px;
+    border-bottom: 2px solid #bae6fd;
+}
+
+.quiz-lab-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #e0f2fe;
+}
+
+.quiz-lab-table tr:last-child td {
+    border-bottom: none;
+}
+
+.quiz-lab-name {
+    font-weight: 500;
+    color: #1e293b;
+}
+
+.quiz-lab-normal {
+    color: #0369a1;
+    font-weight: 600;
+    font-family: 'Source Sans 3', sans-serif;
+}
+
+/* Dark mode lab reference */
+[data-theme="dark"] .quiz-lab-reference {
+    background: linear-gradient(135deg, #0c2d48 0%, #0a3358 100%);
+    border-color: #1e5f8a;
+    border-left-color: #38bdf8;
+}
+
+[data-theme="dark"] .quiz-lab-header { color: #7dd3fc; }
+[data-theme="dark"] .quiz-lab-table th { color: #94a3b8; border-bottom-color: #1e5f8a; }
+[data-theme="dark"] .quiz-lab-table td { border-bottom-color: #1a3f5c; }
+[data-theme="dark"] .quiz-lab-name { color: #e2e8f0; }
+[data-theme="dark"] .quiz-lab-normal { color: #38bdf8; }
+
+/* Mobile lab reference */
+@media (max-width: 480px) {
+    .quiz-lab-reference { padding: 12px 14px; }
+    .quiz-lab-table { font-size: 0.85rem; }
+    .quiz-lab-table th { font-size: 0.75rem; }
 }
 
 /* ============================================

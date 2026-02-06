@@ -305,6 +305,7 @@ class QuizEngine {
                     ${this._escapeHtml(q.stem)}
                     ${isSATA ? '<span class="quiz-sata-instruction">Select all that apply.</span>' : ''}
                 </div>
+                ${this.mode === 'practice' && q.labValues && q.labValues.length > 0 ? this._renderLabReference(q.labValues) : ''}
                 <div class="quiz-options" role="${isSATA ? 'group' : 'radiogroup'}" aria-label="Answer options">
                     ${q.options.map(opt => this._renderOption(q, opt, inputType)).join('')}
                 </div>
@@ -332,6 +333,21 @@ class QuizEngine {
                 <span class="quiz-option-letter">${opt.id.toUpperCase()}.</span>
                 <span class="quiz-option-text">${this._escapeHtml(opt.text)}</span>
             </label>
+        `;
+    }
+
+    _renderLabReference(labValues) {
+        const rows = labValues.map(lv =>
+            `<tr><td class="quiz-lab-name">${this._escapeHtml(lv.name)}</td><td class="quiz-lab-normal">${this._escapeHtml(lv.normal)}</td></tr>`
+        ).join('');
+        return `
+            <div class="quiz-lab-reference" aria-label="Lab reference values">
+                <div class="quiz-lab-header"><i class="fas fa-flask"></i> Reference Ranges</div>
+                <table class="quiz-lab-table">
+                    <thead><tr><th>Lab Value</th><th>Normal Range</th></tr></thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>
         `;
     }
 

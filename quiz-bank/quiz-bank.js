@@ -266,10 +266,10 @@ var QuizBank = (function () {
         // Set size
         html += '<div class="qb-builder-group">';
         html += '<label class="qb-builder-label">Set Size</label>';
-        html += '<div class="qb-builder-chips">';
-        html += '<button class="qb-chip" data-qb-action="set-size" data-size="5">5 Questions</button>';
-        html += '<button class="qb-chip" data-qb-action="set-size" data-size="10">10 Questions</button>';
-        html += '<button class="qb-chip" data-qb-action="set-size" data-size="15">15 Questions</button>';
+        html += '<div class="qb-builder-chips" id="qb-size-chips">';
+        html += '<button class="qb-chip" data-qb-action="set-size" data-size="5" data-size-value="5" disabled>5 Questions</button>';
+        html += '<button class="qb-chip" data-qb-action="set-size" data-size="10" data-size-value="10" disabled>10 Questions</button>';
+        html += '<button class="qb-chip" data-qb-action="set-size" data-size="15" data-size-value="15" disabled>15 Questions</button>';
         html += '<button class="qb-chip" data-qb-action="set-size" data-size="max">Max (<span id="qb-builder-max-count">0</span>)</button>';
         html += '</div>';
         html += '</div>';
@@ -351,6 +351,21 @@ var QuizBank = (function () {
 
         var count = MasteryTracker.countAvailableQuestions(_getBuilderFilters());
         countEl.textContent = count + ' question' + (count !== 1 ? 's' : '') + ' match';
+
+        // Enable/disable set-size buttons based on available question count
+        _root.querySelectorAll('[data-qb-action="set-size"][data-size-value]').forEach(function (btn) {
+            var sizeVal = parseInt(btn.dataset.sizeValue, 10);
+            var tooFew = sizeVal > count;
+            btn.disabled = tooFew;
+            // Deselect if this size is now too large
+            if (tooFew && btn.classList.contains('qb-chip--active')) {
+                btn.classList.remove('qb-chip--active');
+                _setSize = null;
+            }
+        });
+        // Max button: disable if 0 questions
+        var maxBtn = _root.querySelector('[data-qb-action="set-size"][data-size="max"]');
+        if (maxBtn) maxBtn.disabled = count === 0;
 
         // Disable start if no questions match OR if mode/set-size not chosen
         var needsSelection = (_mode === null || _setSize === null);
@@ -1245,9 +1260,10 @@ var QuizBank = (function () {
         html += '<div class="qb-preconfig-group">';
         html += '<label class="qb-preconfig-label"><i class="fas fa-hashtag"></i> Number of Questions</label>';
         html += '<div class="qb-preconfig-chips">';
-        html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="5">5</button>';
-        html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="10">10</button>';
-        html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="15">15</button>';
+        [5, 10, 15].forEach(function (n) {
+            var dis = n > topicQuestionCount ? ' disabled' : '';
+            html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="' + n + '"' + dis + '>' + n + '</button>';
+        });
         html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="max">Max (' + topicQuestionCount + ')</button>';
         html += '</div>';
         html += '</div>';

@@ -24,7 +24,7 @@ var QuizBank = (function () {
     var _answers = {};             // questionId -> userAnswer
     var _results = {};             // questionId -> { correct, userAnswer, correctAnswer }
     var _submitted = {};           // questionId -> true
-    var _setSize = 5;
+    var _setSize = null;
     var _currentTopicId = null;
     var _currentTopicLabel = null;
     var _currentChapterId = null;
@@ -58,6 +58,8 @@ var QuizBank = (function () {
     function renderHub() {
         _view = 'hub';
         _hideQuizHeader();
+        _setSize = null;
+        _mode = null;
         window.removeEventListener('beforeunload', _boundBeforeUnload);
         window.scrollTo({ top: 0 });
 
@@ -243,7 +245,7 @@ var QuizBank = (function () {
         html += '<label class="qb-builder-label">Difficulty</label>';
         html += '<div class="qb-builder-chips" id="qb-difficulty-chips">';
         ['Knowledge', 'Application', 'Analysis'].forEach(function (d) {
-            html += '<button class="qb-chip qb-chip--active" data-qb-action="toggle-chip" data-chip-type="difficulty" data-chip-value="' + d.toLowerCase() + '">' + d + '</button>';
+            html += '<button class="qb-chip" data-qb-action="toggle-chip" data-chip-type="difficulty" data-chip-value="' + d.toLowerCase() + '">' + d + '</button>';
         });
         html += '</div>';
         html += '</div>';
@@ -253,7 +255,7 @@ var QuizBank = (function () {
         html += '<label class="qb-builder-label">Question Types</label>';
         html += '<div class="qb-builder-chips" id="qb-type-chips">';
         [['Single', 'single'], ['Ordering', 'ordering'], ['Matrix', 'matrix']].forEach(function (pair) {
-            html += '<button class="qb-chip qb-chip--active" data-qb-action="toggle-chip" data-chip-type="qtype" data-chip-value="' + pair[1] + '">' + pair[0] + '</button>';
+            html += '<button class="qb-chip" data-qb-action="toggle-chip" data-chip-type="qtype" data-chip-value="' + pair[1] + '">' + pair[0] + '</button>';
         });
         html += '</div>';
         html += '</div>';
@@ -262,7 +264,7 @@ var QuizBank = (function () {
         html += '<div class="qb-builder-group">';
         html += '<label class="qb-builder-label">Set Size</label>';
         html += '<div class="qb-builder-chips">';
-        html += '<button class="qb-chip qb-chip--active" data-qb-action="set-size" data-size="5">5 Questions</button>';
+        html += '<button class="qb-chip" data-qb-action="set-size" data-size="5">5 Questions</button>';
         html += '<button class="qb-chip" data-qb-action="set-size" data-size="10">10 Questions</button>';
         html += '<button class="qb-chip" data-qb-action="set-size" data-size="15">15 Questions</button>';
         html += '<button class="qb-chip" data-qb-action="set-size" data-size="max">Max (<span id="qb-builder-max-count">0</span>)</button>';
@@ -282,7 +284,7 @@ var QuizBank = (function () {
         html += '<div class="qb-builder-group">';
         html += '<label class="qb-builder-label">Mode</label>';
         html += '<div class="qb-builder-chips">';
-        html += '<button class="qb-chip qb-chip--active" data-qb-action="set-mode" data-mode="practice">Practice</button>';
+        html += '<button class="qb-chip" data-qb-action="set-mode" data-mode="practice">Practice</button>';
         html += '<button class="qb-chip" data-qb-action="set-mode" data-mode="exam">Exam</button>';
         html += '</div>';
         html += '</div>';
@@ -345,7 +347,10 @@ var QuizBank = (function () {
 
         var count = MasteryTracker.countAvailableQuestions(_getBuilderFilters());
         countEl.textContent = count + ' question' + (count !== 1 ? 's' : '') + ' match';
-        startBtn.disabled = count === 0;
+
+        // Disable start if no questions match OR if mode/set-size not chosen
+        var needsSelection = (_mode === null || _setSize === null);
+        startBtn.disabled = count === 0 || needsSelection;
 
         // Update the Max button count
         var maxCountEl = document.getElementById('qb-builder-max-count');
@@ -393,7 +398,7 @@ var QuizBank = (function () {
             if (selectedChapters.indexOf(chapter.id) === -1) return;
             chapter.topics.forEach(function (topic) {
                 var hasQuestions = topic.file !== null;
-                html += '<button class="qb-chip' + (hasQuestions ? ' qb-chip--active' : '') + '" data-qb-action="toggle-chip" data-chip-type="topic" data-chip-value="' + _esc(topic.id) + '"' + (!hasQuestions ? ' disabled' : '') + '>';
+                html += '<button class="qb-chip" data-qb-action="toggle-chip" data-chip-type="topic" data-chip-value="' + _esc(topic.id) + '"' + (!hasQuestions ? ' disabled' : '') + '>';
                 html += _esc(topic.label);
                 if (!hasQuestions) html += ' (0)';
                 html += '</button>';
@@ -1099,6 +1104,9 @@ var QuizBank = (function () {
     function _renderPreQuizPanel(topicId, chapterId) {
         _view = 'config';
         _hideQuizHeader();
+        _root._preconfigTypes = null;
+        _root._preconfigSize = null;
+        _root._preconfigMode = null;
         window.scrollTo({ top: 0 });
 
         // Look up topic/chapter info
@@ -1125,7 +1133,7 @@ var QuizBank = (function () {
         html += '<label class="qb-preconfig-label"><i class="fas fa-th-list"></i> Question Types</label>';
         html += '<div class="qb-preconfig-chips">';
         [['Multiple Choice', 'single'], ['Ordering', 'ordering'], ['Matrix', 'matrix']].forEach(function (pair) {
-            html += '<button class="qb-chip qb-chip--active" data-qb-action="toggle-preconfig-type" data-ptype="' + pair[1] + '">' + pair[0] + '</button>';
+            html += '<button class="qb-chip" data-qb-action="toggle-preconfig-type" data-ptype="' + pair[1] + '">' + pair[0] + '</button>';
         });
         html += '</div>';
         html += '</div>';
@@ -1135,7 +1143,7 @@ var QuizBank = (function () {
         html += '<div class="qb-preconfig-group">';
         html += '<label class="qb-preconfig-label"><i class="fas fa-hashtag"></i> Number of Questions</label>';
         html += '<div class="qb-preconfig-chips">';
-        html += '<button class="qb-chip qb-chip--active" data-qb-action="set-preconfig-size" data-psize="5">5</button>';
+        html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="5">5</button>';
         html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="10">10</button>';
         html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="15">15</button>';
         html += '<button class="qb-chip" data-qb-action="set-preconfig-size" data-psize="max">Max (' + topicQuestionCount + ')</button>';
@@ -1146,14 +1154,14 @@ var QuizBank = (function () {
         html += '<div class="qb-preconfig-group">';
         html += '<label class="qb-preconfig-label"><i class="fas fa-cog"></i> Mode</label>';
         html += '<div class="qb-preconfig-chips">';
-        html += '<button class="qb-chip qb-chip--active" data-qb-action="set-preconfig-mode" data-pmode="practice">Practice</button>';
+        html += '<button class="qb-chip" data-qb-action="set-preconfig-mode" data-pmode="practice">Practice</button>';
         html += '<button class="qb-chip" data-qb-action="set-preconfig-mode" data-pmode="exam">Exam</button>';
         html += '</div>';
         html += '<div class="qb-preconfig-mode-hint" id="qb-preconfig-mode-hint">Shows rationale after each question.</div>';
         html += '</div>';
 
         // Start
-        html += '<button class="qb-btn qb-btn--primary qb-btn--lg qb-preconfig-start" data-qb-action="start-preconfig" data-topic="' + _esc(topicId) + '" data-chapter="' + _esc(chapterId) + '"><i class="fas fa-play"></i> Start Quiz</button>';
+        html += '<button class="qb-btn qb-btn--primary qb-btn--lg qb-preconfig-start" data-qb-action="start-preconfig" data-topic="' + _esc(topicId) + '" data-chapter="' + _esc(chapterId) + '" disabled><i class="fas fa-play"></i> Start Quiz</button>';
 
         html += '</div>'; // card
         html += '</div>'; // preconfig
@@ -1205,12 +1213,14 @@ var QuizBank = (function () {
         btn.parentElement.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
         btn.classList.add('qb-chip--active');
         _setSize = btn.dataset.size === 'max' ? 'max' : (parseInt(btn.dataset.size, 10) || 10);
+        _updateBuilderCount();
     }
 
     function _handleSetMode(btn) {
         btn.parentElement.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
         btn.classList.add('qb-chip--active');
         _mode = btn.dataset.mode || 'practice';
+        _updateBuilderCount();
     }
 
     function _handleTogglePreconfigType(btn) {
@@ -1221,12 +1231,14 @@ var QuizBank = (function () {
             types.push(el.dataset.ptype);
         });
         _root._preconfigTypes = types;
+        _updatePreconfigStart();
     }
 
     function _handleSetPreconfigSize(btn) {
         btn.parentElement.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
         btn.classList.add('qb-chip--active');
         _root._preconfigSize = btn.dataset.psize === 'max' ? 'max' : parseInt(btn.dataset.psize, 10);
+        _updatePreconfigStart();
     }
 
     function _handleSetPreconfigMode(btn) {
@@ -1239,13 +1251,22 @@ var QuizBank = (function () {
                 ? 'Shows rationale after each question.'
                 : 'No feedback until the end. Simulates real exam conditions.';
         }
+        _updatePreconfigStart();
+    }
+
+    function _updatePreconfigStart() {
+        var startBtn = _root.querySelector('[data-qb-action="start-preconfig"]');
+        if (!startBtn) return;
+        var hasSize = !!_root._preconfigSize;
+        var hasMode = !!_root._preconfigMode;
+        startBtn.disabled = !hasSize || !hasMode;
     }
 
     function _handleStartPreconfig(btn) {
         var topicId = btn.dataset.topic;
         var chapterId = btn.dataset.chapter;
-        var types = _root._preconfigTypes || ['single', 'ordering', 'matrix'];
-        var size = _root._preconfigSize || 10;
+        var types = (_root._preconfigTypes && _root._preconfigTypes.length > 0) ? _root._preconfigTypes : ['single', 'ordering', 'matrix'];
+        var size = _root._preconfigSize || 5;
         var mode = _root._preconfigMode || 'practice';
 
         if (types.length === 0) {
@@ -1296,7 +1317,7 @@ var QuizBank = (function () {
         _shuffleArray(questions);
 
         var mode = _mode || 'practice';
-        var size = _setSize;
+        var size = _setSize || 5;
         _isCustom = true;
         _startQuiz(questions, null, 'Custom Quiz', null, mode, size);
     }

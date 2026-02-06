@@ -149,6 +149,14 @@ class QuizEngine {
                 case 'retake': this.retakeQuiz(); break;
                 case 'review-missed': this.reviewMissed(); break;
                 case 'back-to-start': this.phase = 'start'; this._renderStartScreen(); break;
+                case 'toggle-rationales': {
+                    const section = actionBtn.closest('.quiz-feedback-collapsible');
+                    if (section) {
+                        const isExpanded = section.classList.toggle('quiz-feedback-collapsible--open');
+                        actionBtn.setAttribute('aria-expanded', isExpanded);
+                    }
+                    break;
+                }
             }
             return;
         }
@@ -274,6 +282,10 @@ class QuizEngine {
     // ── Rendering: Question ─────────────────────────────────
 
     _renderQuestion() {
+        // Clean up sticky bar from previous question
+        const existingSticky = this.container.querySelector('.quiz-sticky-next');
+        if (existingSticky) existingSticky.remove();
+
         const q = this.activeQuestions[this.currentIndex];
         if (!q) return;
 
@@ -411,26 +423,41 @@ class QuizEngine {
             opt.setAttribute('aria-checked', input && input.checked ? 'true' : 'false');
         });
 
-        // Hide submit, show next
+        // Hide submit button
         const actions = this.container.querySelector('.quiz-actions');
-        if (actions) {
-            const isLast = this.currentIndex >= this.activeQuestions.length - 1;
-            actions.innerHTML = `
-                <button class="quiz-btn ${isLast ? 'quiz-btn--success' : 'quiz-btn--primary'}" data-quiz-action="next">
-                    ${isLast ? '<i class="fas fa-chart-bar"></i> See Results' : 'Next Question <i class="fas fa-arrow-right"></i>'}
-                </button>
-            `;
-        }
+        if (actions) actions.innerHTML = '';
+
+        const isLast = this.currentIndex >= this.activeQuestions.length - 1;
+        const nextBtnLabel = isLast ? '<i class="fas fa-chart-bar"></i> See Results' : 'Next Question <i class="fas fa-arrow-right"></i>';
+        const nextBtnClass = isLast ? 'quiz-btn--success' : 'quiz-btn--primary';
 
         // Show feedback
         const feedbackArea = document.getElementById('quiz-feedback-area');
         if (!feedbackArea) return;
 
+        let feedbackHtml = '';
         if (this.mode === 'practice') {
-            feedbackArea.innerHTML = this._buildPracticeFeedback(q, userAnswer, isCorrect, isPartial);
+            feedbackHtml = this._buildPracticeFeedback(q, userAnswer, isCorrect, isPartial);
         } else {
-            feedbackArea.innerHTML = this._buildExamIndicator(isCorrect, isPartial);
+            feedbackHtml = this._buildExamIndicator(isCorrect, isPartial);
         }
+
+        // Add inline next button at end of feedback
+        feedbackHtml += `
+            <div class="quiz-feedback-next">
+                <button class="quiz-btn ${nextBtnClass}" data-quiz-action="next">${nextBtnLabel}</button>
+            </div>
+        `;
+
+        feedbackArea.innerHTML = feedbackHtml;
+
+        // Add sticky bottom bar
+        const existingSticky = this.container.querySelector('.quiz-sticky-next');
+        if (existingSticky) existingSticky.remove();
+        const sticky = document.createElement('div');
+        sticky.className = 'quiz-sticky-next';
+        sticky.innerHTML = `<button class="quiz-btn ${nextBtnClass}" data-quiz-action="next">${nextBtnLabel}</button>`;
+        this.container.appendChild(sticky);
 
         // Focus feedback for accessibility
         const feedback = feedbackArea.firstElementChild;
@@ -473,15 +500,21 @@ class QuizEngine {
             html += `</div>`;
         }
 
-        // Wrong answer rationales
+        // Wrong answer rationales (collapsible)
         const wrongRationales = this._getWrongRationales(q, userAnswer);
         if (wrongRationales.length > 0) {
-            html += `<div class="quiz-feedback-section">`;
-            html += `<div class="quiz-feedback-label">${q.type === 'sata' ? 'Option explanations' : 'Why the other options are wrong'}</div>`;
+            const collapseLabel = q.type === 'sata' ? 'Option explanations' : 'Why the other options are wrong';
+            html += `<div class="quiz-feedback-section quiz-feedback-collapsible">`;
+            html += `<button class="quiz-feedback-collapse-toggle" data-quiz-action="toggle-rationales" aria-expanded="false">`;
+            html += `<span class="quiz-feedback-label">${collapseLabel}</span>`;
+            html += `<i class="fas fa-chevron-down quiz-feedback-collapse-icon"></i>`;
+            html += `</button>`;
+            html += `<div class="quiz-feedback-collapse-body">`;
             wrongRationales.forEach(r => {
                 const letter = this._getDisplayLetter(q.id, r.id);
                 html += `<div class="quiz-feedback-rationale-item"><strong>${letter.toUpperCase()}.</strong> ${this._escapeHtml(r.text)}</div>`;
             });
+            html += `</div>`;
             html += `</div>`;
         }
 
@@ -529,6 +562,10 @@ class QuizEngine {
     // ── Rendering: Results ──────────────────────────────────
 
     _renderResultsScreen() {
+        // Clean up sticky bar
+        const existingSticky = this.container.querySelector('.quiz-sticky-next');
+        if (existingSticky) existingSticky.remove();
+
         const total = this.activeQuestions.length;
         const correctCount = Array.from(this.results.values()).filter(r => r.correct).length;
         const pct = total > 0 ? Math.round((correctCount / total) * 100) : 0;

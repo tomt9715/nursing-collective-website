@@ -30,6 +30,8 @@ const sidebarConfig = {
         { id: 'tip-cxr-interpretation', title: 'CXR Reading', text: 'Normal lung = black (air). Pneumonia = white (consolidation). Look for lobar vs patchy pattern, air bronchograms, and pleural effusion.' },
         { id: 'tip-antibiotic-timing', title: 'Antibiotic Timing', text: 'First dose within 4 hours (1 hour if severe/sepsis). Delayed antibiotics increase mortality. Don\'t wait for cultures!' },
         { id: 'tip-incentive-spirometry', title: 'IS Technique', text: 'Sit upright, inhale slowly (3-5 sec), hold 5-10 sec at max. Goal is sustained inspiration, not speed. 10 reps q1-2h while awake.' },
-        { id: 'tip-pediatric-dehydration', title: 'Pediatric Dehydration Risk', text: 'Children with pneumonia dehydrate fast! Tachypnea increases fluid losses, fever increases demands, and sick kids refuse to drink. Monitor output and weights!' }
+        { id: 'tip-pediatric-dehydration', title: 'Pediatric Dehydration Risk', text: 'Children with pneumonia dehydrate fast! Tachypnea increases fluid losses, fever increases demands, and sick kids refuse to drink. Monitor output and weights!' },
+        { id: 'tip-sputum-collection', title: 'Sputum Before Antibiotics', text: 'Always collect sputum cultures BEFORE the first antibiotic dose! Even one dose can sterilize cultures. Collect specimen, then immediately give antibiotics.' },
+        { id: 'tip-aspiration-prevention', title: 'Aspiration Prevention', text: 'Three non-negotiables: HOB elevation (check every room entry), swallow status verification (match diet order to evaluation), and oral care q2-4h (reduces aspiration pneumonia by up to 40%).' }
     ]
 };

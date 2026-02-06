@@ -914,9 +914,12 @@
                     <li><strong>Classic presentation:</strong> Productive cough (rusty/green sputum), fever/chills, pleuritic chest pain, dyspnea, crackles on auscultation.</li>
                     <li><strong>Elderly and immunocompromised</strong> may present atypically — confusion, tachypnea, and hypothermia rather than classic fever and cough.</li>
                     <li><strong>Chest X-ray</strong> confirms diagnosis — look for infiltrates, consolidation, or air bronchograms. Lobar = typically bacterial. Diffuse/interstitial = atypical/viral.</li>
-                    <li><strong>Sputum culture</strong> — collect BEFORE starting antibiotics for accurate pathogen identification.</li>
+                    <li><strong>Sputum assessment:</strong> Rusty = S. pneumoniae, green/yellow = bacterial, foul-smelling = aspiration/anaerobic, "currant jelly" = Klebsiella. Appearance guides initial suspicion.</li>
+                    <li><strong>Sputum culture</strong> — collect BEFORE starting antibiotics for accurate pathogen identification. Rinse mouth with water first; deep cough, not throat clearing.</li>
+                    <li><strong>CURB-65 severity score:</strong> Confusion, Urea, Respiratory rate, Blood pressure, age 65+. Score 0-1 = outpatient. Score 2 = consider admission. Score 3-5 = hospitalize (ICU if 4-5).</li>
                     <li><strong>Incentive spirometry:</strong> 10 breaths every hour while awake. Most important non-pharmacological prevention intervention.</li>
-                    <li><strong>Aspiration pneumonia:</strong> Elevate HOB ≥ 30°, assess swallowing before feeding, provide oral care. High risk: stroke, sedation, NG tube, decreased LOC.</li>
+                    <li><strong>Aspiration pneumonia prevention:</strong> HOB ≥ 30°, swallow screen before feeding, oral care q2-4h, NPO until assessed (post-stroke, post-extubation), suction at bedside.</li>
+                    <li><strong>Aspiration risk factors:</strong> Stroke, decreased LOC, sedation, NG tube, GERD, poor dentition. Right lower lobe most commonly affected (wider, shorter right mainstem bronchus).</li>
                     <li><strong>Pneumococcal vaccine:</strong> PCV13 and PPSV23 recommended for adults ≥ 65 and high-risk groups.</li>
                     <li><strong>Common mistake:</strong> Starting antibiotics BEFORE collecting sputum — this makes culture results unreliable. Always collect the specimen first.</li>
                 </ul>
@@ -1096,7 +1099,108 @@
                     </div>
                 </div>
 
-                <h3>Types of Pneumonia by Etiology</h3>
+                <h3>Bacterial vs Viral vs Atypical: At a Glance</h3>
+
+                <div class="comparison-grid" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <div class="comparison-card bacterial">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-bacteria"></i> Bacterial Pneumonia
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Typical Presentation</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Sudden onset with high fever and shaking chills</li>
+                                <li><i class="fas fa-check"></i> Productive cough with purulent or rusty sputum</li>
+                                <li><i class="fas fa-check"></i> Pleuritic chest pain, tachypnea</li>
+                                <li><i class="fas fa-check"></i> Lobar consolidation on CXR</li>
+                            </ul>
+                            <h4>Common Organisms</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> S. pneumoniae (#1 overall)</li>
+                                <li><i class="fas fa-check"></i> H. influenzae</li>
+                                <li><i class="fas fa-check"></i> S. aureus (post-influenza)</li>
+                                <li><i class="fas fa-check"></i> Klebsiella (alcoholism, DM)</li>
+                            </ul>
+                            <h4>Treatment Approach</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Empiric antibiotics within 4 hours</li>
+                                <li><i class="fas fa-check"></i> Macrolide + beta-lactam (outpatient)</li>
+                                <li><i class="fas fa-check"></i> Fluoroquinolone if allergies/severe</li>
+                            </ul>
+                            <h4>Key Distinguishing Features</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">Elevated WBC with left shift, positive sputum Gram stain/culture, rapid response to antibiotics (48-72 hr improvement expected)</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card viral">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-virus"></i> Viral Pneumonia
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Typical Presentation</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Gradual onset over several days</li>
+                                <li><i class="fas fa-check"></i> Dry, nonproductive cough</li>
+                                <li><i class="fas fa-check"></i> Myalgias, headache, fatigue</li>
+                                <li><i class="fas fa-check"></i> Diffuse interstitial infiltrates on CXR</li>
+                            </ul>
+                            <h4>Common Organisms</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Influenza A &amp; B</li>
+                                <li><i class="fas fa-check"></i> SARS-CoV-2 (COVID-19)</li>
+                                <li><i class="fas fa-check"></i> RSV (especially children/elderly)</li>
+                                <li><i class="fas fa-check"></i> Adenovirus, Parainfluenza</li>
+                            </ul>
+                            <h4>Treatment Approach</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Primarily supportive care</li>
+                                <li><i class="fas fa-check"></i> Antivirals if available (oseltamivir for influenza)</li>
+                                <li><i class="fas fa-check"></i> Watch for bacterial superinfection</li>
+                            </ul>
+                            <h4>Key Distinguishing Features</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">WBC often normal or low, negative sputum cultures, bilateral diffuse pattern on CXR, may precede secondary bacterial pneumonia</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card aspiration">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-lungs-virus"></i> Atypical Pneumonia
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Typical Presentation</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Insidious onset, "walking pneumonia"</li>
+                                <li><i class="fas fa-check"></i> Persistent dry, hacking cough</li>
+                                <li><i class="fas fa-check"></i> Extrapulmonary symptoms (headache, sore throat, GI)</li>
+                                <li><i class="fas fa-check"></i> Patchy infiltrates on CXR, worse than exam suggests</li>
+                            </ul>
+                            <h4>Common Organisms</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Mycoplasma pneumoniae (#1 atypical)</li>
+                                <li><i class="fas fa-check"></i> Legionella pneumophila (water sources)</li>
+                                <li><i class="fas fa-check"></i> Chlamydophila pneumoniae</li>
+                                <li><i class="fas fa-check"></i> Coxiella burnetii (Q fever)</li>
+                            </ul>
+                            <h4>Treatment Approach</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Macrolides (azithromycin) first-line</li>
+                                <li><i class="fas fa-check"></i> Doxycycline or fluoroquinolone alternatives</li>
+                                <li><i class="fas fa-check"></i> Beta-lactams alone are INEFFECTIVE</li>
+                            </ul>
+                            <h4>Key Distinguishing Features</h4>
+                            <p style="font-size: 0.9rem; color: var(--text-secondary); margin: 0;">CXR looks worse than patient appears, mildly elevated or normal WBC, no organisms on Gram stain (no cell wall), positive serology or PCR for diagnosis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Pearl: Bacterial vs Atypical
+                    </div>
+                    <p><strong>The hallmark clue is the CXR-exam mismatch!</strong> In atypical pneumonia, the chest X-ray often looks significantly worse than the patient's clinical appearance. The patient may be walking around and talking comfortably while their CXR shows extensive infiltrates. This "looks well but CXR looks bad" pattern is a classic NCLEX distinguisher. Also remember: beta-lactams (penicillins, cephalosporins) do NOT cover atypical organisms because Mycoplasma lacks a cell wall.</p>
+                </div>
+
+                <h3>Detailed Pathogen Summary</h3>
 
                 <div class="guide-table-wrapper">
                     <table class="guide-table">
@@ -1538,19 +1642,135 @@
 
                 <h3>Severity Assessment: CURB-65 Score</h3>
 
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Mnemonic: CURB-65
+                    </div>
+                    <p><strong>Each letter represents one criterion worth 1 point:</strong></p>
+                    <ul>
+                        <li><strong>C</strong>onfusion — new-onset disorientation (AMT score ≤8 or new confusion)</li>
+                        <li><strong>U</strong>rea — BUN >19 mg/dL (>7 mmol/L)</li>
+                        <li><strong>R</strong>espiratory rate — ≥30 breaths per minute</li>
+                        <li><strong>B</strong>lood pressure — SBP &lt;90 mmHg OR DBP ≤60 mmHg</li>
+                        <li><strong>65</strong> — Age 65 years or older</li>
+                    </ul>
+                </div>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>CURB-65 Score</th>
+                                <th>Risk Level</th>
+                                <th>30-Day Mortality</th>
+                                <th>Recommended Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>0 - 1</strong></td>
+                                <td><span style="color: #10b981; font-weight: 600;">Low Risk</span></td>
+                                <td>&lt;3%</td>
+                                <td>Outpatient treatment appropriate; oral antibiotics, follow-up in 48 hours</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2</strong></td>
+                                <td><span style="color: #f59e0b; font-weight: 600;">Moderate Risk</span></td>
+                                <td>~9%</td>
+                                <td>Consider short inpatient stay OR closely supervised outpatient with 24-hour reassessment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3 - 5</strong></td>
+                                <td><span style="color: #ef4444; font-weight: 600;">High Risk</span></td>
+                                <td>15-40%</td>
+                                <td>Hospitalize immediately; consider ICU admission if score 4-5 or rapid deterioration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
                 <div class="info-box nclex-tip">
                     <div class="info-box-header">
-                        <i class="fas fa-graduation-cap"></i> CURB-65: Pneumonia Severity Score
+                        <i class="fas fa-graduation-cap"></i> NCLEX Application: CURB-65
                     </div>
-                    <p>Each criterion scores 1 point. Higher scores = higher mortality risk.</p>
+                    <p><strong>Think of CURB-65 as your triage tool!</strong> When an exam question asks "which patient requires hospital admission?", calculate the CURB-65. A patient with confusion, low BP, AND age >65 (score = 3) needs inpatient care. A young patient with only an elevated RR (score = 1) can likely be treated as an outpatient. Remember: the score guides the <em>disposition</em> decision, not the antibiotic choice.</p>
+                </div>
+
+                <h3>Sputum Assessment &amp; Culture</h3>
+
+                <p>Sputum characteristics provide important initial clues about the likely pathogen. Always assess color, consistency, amount, and odor before sending for culture and sensitivity.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Sputum Appearance</th>
+                                <th>Likely Pathogen / Significance</th>
+                                <th>Clinical Context</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Rusty / rust-colored</strong></td>
+                                <td>Streptococcus pneumoniae</td>
+                                <td>Classic finding in pneumococcal pneumonia; caused by RBC breakdown in alveoli</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Green or yellow (purulent)</strong></td>
+                                <td>Bacterial infection (general)</td>
+                                <td>Indicates neutrophil activity; green = more neutrophil enzyme (myeloperoxidase)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Blood-tinged (hemoptysis)</strong></td>
+                                <td>Klebsiella, TB, pulmonary embolism</td>
+                                <td>Assess amount; frank hemoptysis = emergency. Always rule out TB with isolation precautions</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Foul-smelling</strong></td>
+                                <td>Anaerobic bacteria / aspiration</td>
+                                <td>Strong indicator of aspiration pneumonia or lung abscess; often polymicrobial</td>
+                            </tr>
+                            <tr>
+                                <td><strong>White / mucoid</strong></td>
+                                <td>Viral or early infection</td>
+                                <td>Nonspecific; may also be seen in asthma, COPD, or allergic response</td>
+                            </tr>
+                            <tr>
+                                <td><strong>"Currant jelly" (thick, red-brown)</strong></td>
+                                <td>Klebsiella pneumoniae</td>
+                                <td>Classic textbook finding; associated with alcoholism, diabetes, and necrotizing pneumonia</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-gem"></i> Sputum Collection: Proper Technique
+                    </div>
+                    <p><strong>Accurate culture results depend on proper collection!</strong></p>
                     <ul>
-                        <li><strong>C</strong>onfusion (new onset)</li>
-                        <li><strong>U</strong>rea >7 mmol/L (BUN >19 mg/dL)</li>
-                        <li><strong>R</strong>espiratory rate ≥30/min</li>
-                        <li><strong>B</strong>lood pressure: SBP &lt;90 or DBP ≤60 mmHg</li>
-                        <li><strong>65</strong> years of age or older</li>
+                        <li><strong>Step 1:</strong> Collect specimen BEFORE starting antibiotics (most critical step)</li>
+                        <li><strong>Step 2:</strong> Have patient rinse mouth with water (not mouthwash) to reduce oral flora contamination</li>
+                        <li><strong>Step 3:</strong> Instruct patient to take several deep breaths, then cough deeply from the chest (not just throat clearing)</li>
+                        <li><strong>Step 4:</strong> Collect into a sterile container; aim for 5-10 mL of sputum</li>
+                        <li><strong>Step 5:</strong> Label correctly and transport to lab within 1-2 hours (or refrigerate)</li>
+                        <li><strong>Step 6:</strong> Document time collected, appearance, amount, and whether pre- or post-antibiotics</li>
                     </ul>
-                    <p style="margin-top: 10px;"><strong>Score 0-1:</strong> Outpatient treatment | <strong>Score 2:</strong> Consider admission | <strong>Score 3-5:</strong> Hospitalize (consider ICU if 4-5)</p>
+                    <p><strong>Quality check:</strong> A good specimen has &gt;25 WBCs and &lt;10 epithelial cells per low-power field. Excess epithelial cells indicate saliva contamination — may need to recollect.</p>
+                </div>
+
+                <div class="florencebot-tip" id="tip-sputum-collection">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Sputum Before Antibiotics: The Golden Rule</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Always collect sputum cultures BEFORE the first antibiotic dose!</strong> Even a single dose of antibiotics can sterilize cultures and make pathogen identification impossible. If the physician orders both "sputum culture" and "start antibiotics STAT," collect the specimen first, then immediately administer the antibiotic. This sequence takes only minutes but can make the difference between targeted therapy and prolonged empiric treatment. If antibiotics have already been started, still collect the specimen but note "post-antibiotic" on the lab requisition — partial results are still better than none.
+                    </div>
                 </div>
 
                 <h3>Signs of Severe Pneumonia/Respiratory Failure</h3>
@@ -1964,7 +2184,67 @@
                         <li><strong>E</strong>ducate - Prevention, medications, warning signs</li>
                     </ul>
                 </div>
-                <div class="bottom-line">🎯 Bottom Line: Position with good lung down (unless contraindicated), encourage incentive spirometry q1h, promote hydration (3L/day), administer O2 for SpO2 > 94%, and cluster care to conserve energy.</div>
+
+                <h3>Aspiration Pneumonia Prevention</h3>
+
+                <p>Aspiration pneumonia occurs when oropharyngeal or gastric contents enter the lower respiratory tract. Prevention is a core nursing responsibility, especially for patients with impaired protective reflexes.</p>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> High-Risk Factors for Aspiration
+                    </div>
+                    <ul>
+                        <li><strong>Neurological impairment:</strong> Stroke (especially with dysphagia), decreased level of consciousness, sedation, general anesthesia recovery</li>
+                        <li><strong>Mechanical factors:</strong> NG/OG tube, endotracheal tube, tracheostomy, enteral feeding</li>
+                        <li><strong>GI factors:</strong> GERD, gastroparesis, vomiting, bowel obstruction</li>
+                        <li><strong>Functional factors:</strong> Poor dentition, impaired cough reflex, advanced age, debilitation</li>
+                        <li><strong>Medication-related:</strong> Opioids, sedatives, anticholinergics, neuromuscular blocking agents</li>
+                    </ul>
+                </div>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-shield-alt"></i> Aspiration Prevention Bundle
+                    </div>
+                    <p><strong>Implement ALL of these measures for at-risk patients:</strong></p>
+                    <ul>
+                        <li><strong>HOB elevation ≥ 30-45 degrees</strong> — Maintain during and for 30-60 minutes after feeding. For continuous tube feeding, keep HOB elevated at all times</li>
+                        <li><strong>Swallow screening before ANY oral intake</strong> — NPO until bedside swallow screen is passed. If screen fails, obtain formal Speech-Language Pathology evaluation before advancing diet</li>
+                        <li><strong>Oral care every 2-4 hours</strong> — Reduces bacterial colonization of the oropharynx. Use chlorhexidine oral rinse for ventilated patients (VAP bundle). Brush teeth, suction oral cavity</li>
+                        <li><strong>NPO until assessed</strong> — Post-stroke, post-extubation, and post-sedation patients should receive nothing by mouth until swallowing is evaluated</li>
+                        <li><strong>Suction equipment at bedside</strong> — Functioning suction with Yankauer catheter immediately accessible for all high-risk patients</li>
+                        <li><strong>Check tube feeding residuals</strong> — Hold feeding if gastric residual volume exceeds institutional threshold (typically >250-500 mL). Reassess and notify provider</li>
+                        <li><strong>Medication administration:</strong> Crush medications only if safe to do so; use liquid formulations when available; position upright for all oral medications</li>
+                    </ul>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-gem"></i> Positioning for Aspiration Prevention
+                    </div>
+                    <p><strong>Position matters both for prevention AND when aspiration occurs:</strong></p>
+                    <ul>
+                        <li><strong>Prevention:</strong> High Fowler's (60-90 degrees) during eating and 30 minutes after. Semi-Fowler's (30-45 degrees) minimum at all other times for tube-fed patients</li>
+                        <li><strong>If active aspiration occurs:</strong> Immediately turn patient to the SIDE (lateral/recovery position) to allow drainage and prevent further aspiration into the unaffected lung</li>
+                        <li><strong>Post-aspiration:</strong> Suction airway, assess respiratory status, notify provider, anticipate chest X-ray and possible antibiotic order</li>
+                        <li><strong>Why the right lung?</strong> The right mainstem bronchus is wider, shorter, and more vertical than the left — aspirated material preferentially enters the right lung, especially the right lower lobe</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-aspiration-prevention">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">The 3 Non-Negotiables for Aspiration Prevention</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Every aspiration-risk patient needs three things assessed immediately:</strong> (1) HOB elevation — check it every time you enter the room, not just once per shift. Beds get lowered for procedures and repositioning and often stay flat. (2) Swallow status — verify the diet order matches the swallow evaluation. A well-meaning family member offering water to an NPO patient is a common and dangerous scenario. Post signage at bedside for NPO patients. (3) Oral care — a clean mouth means fewer pathogenic bacteria to aspirate. Studies show that consistent oral care protocols reduce aspiration pneumonia rates by up to 40% in high-risk populations. These three interventions are simple, nurse-driven, and save lives.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Position with good lung down (unless contraindicated), encourage incentive spirometry q1h, promote hydration (3L/day), administer O2 for SpO2 > 94%, and cluster care to conserve energy. For aspiration prevention: HOB ≥ 30°, swallow screen before feeding, oral care q2-4h.</div>
             </section>
 
             <!-- Section 9: Pediatric Considerations -->

@@ -88,7 +88,7 @@ var QuizBank = (function () {
             html += '<div class="qb-empty-actions"><a href="../login.html" class="qb-btn qb-btn--primary">Sign In</a></div>';
             html += '</div>';
         } else if (hasData) {
-            // User profile picture above mastery ring
+            // User data for profile picture
             var userData = null;
             try { userData = JSON.parse(localStorage.getItem('user')); } catch(e) {}
             var profilePic = (userData && userData.profile_picture) ? userData.profile_picture : 'robot.png';
@@ -98,17 +98,15 @@ var QuizBank = (function () {
                 if (!displayName) displayName = (userData.email || '').split('@')[0];
             }
 
-            if (typeof renderProfilePicture === 'function') {
-                html += '<div class="qb-user-profile-badge">';
-                html += renderProfilePicture(profilePic, 'xl', displayName);
-                if (displayName) {
-                    html += '<div class="qb-user-greeting">Hey, ' + _esc(displayName) + '!</div>';
-                }
-                html += '</div>';
-            }
+            // Mastery Ring with profile picture embedded in center
+            html += _buildMasteryRingWithAvatar(stats.averageLevel, 10, profilePic, displayName);
 
-            // Mastery Ring
-            html += _buildMasteryRing(stats.averageLevel, 10);
+            // Greeting + level below the ring
+            if (displayName) {
+                html += '<div class="qb-hero-greeting">Hey, ' + _esc(displayName) + '!</div>';
+            }
+            var masteryColor = MasteryTracker.getMasteryColor(Math.floor(stats.averageLevel));
+            html += '<div class="qb-hero-level-label">Level <span style="color:' + masteryColor + ';font-weight:700">' + stats.averageLevel.toFixed(1) + '</span> <span class="qb-hero-level-sub">/ 10</span></div>';
 
             // Stats Row
             var streakClass = 'qb-streak-flame--dim';
@@ -253,6 +251,29 @@ var QuizBank = (function () {
             '<div class="qb-mastery-ring-center">' +
             '<div class="qb-mastery-ring-level" style="color:' + color + '">' + level.toFixed(1) + '</div>' +
             '<div class="qb-mastery-ring-label">Average Level</div>' +
+            '</div></div></div>';
+    }
+
+    function _buildMasteryRingWithAvatar(level, maxLevel, profilePic, displayName) {
+        var circumference = 2 * Math.PI * 72;
+        var pct = Math.min(level / maxLevel, 1);
+        var offset = circumference - (pct * circumference);
+        var color = MasteryTracker.getMasteryColor(Math.floor(level));
+
+        var avatarHtml = '';
+        if (typeof renderProfilePicture === 'function') {
+            avatarHtml = renderProfilePicture(profilePic, 'lg', displayName);
+        }
+
+        return '<div class="qb-mastery-ring-wrap"><div class="qb-mastery-ring qb-mastery-ring--with-avatar">' +
+            '<svg viewBox="0 0 160 160">' +
+            '<circle class="qb-mastery-ring-bg" cx="80" cy="80" r="72"></circle>' +
+            '<circle class="qb-mastery-ring-fill" cx="80" cy="80" r="72" ' +
+            'stroke-dasharray="' + circumference + '" stroke-dashoffset="' + offset + '" ' +
+            'style="stroke:' + color + '"></circle>' +
+            '</svg>' +
+            '<div class="qb-mastery-ring-center">' +
+            '<div class="qb-ring-avatar">' + avatarHtml + '</div>' +
             '</div></div></div>';
     }
 

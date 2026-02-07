@@ -121,32 +121,53 @@
     animation: qb-fadeIn 0.4s ease;
 }
 
-/* ── User Profile Badge in Mastery Hero ──────── */
-.qb-user-profile-badge {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
+/* ── Profile Avatar inside Mastery Ring ──────── */
+.qb-mastery-ring--with-avatar {
+    width: 160px;
+    height: 160px;
 }
 
-.qb-user-profile-badge .profile-pic--xl {
+.qb-ring-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.qb-ring-avatar .profile-pic {
     width: 80px;
     height: 80px;
-    border: 3px solid var(--qb-accent, #f59e0b);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    object-fit: cover;
+    background: var(--qb-bg-white, #fff);
 }
 
-.qb-user-greeting {
+[data-theme="dark"] .qb-ring-avatar .profile-pic {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    background: var(--qb-card-bg, #1f2937);
+}
+
+/* Greeting + Level below the ring */
+.qb-hero-greeting {
     font-family: 'Outfit', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    color: var(--qb-text-secondary, #666);
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--qb-text);
+    margin-top: 12px;
+    margin-bottom: 2px;
 }
 
-[data-theme="dark"] .qb-user-profile-badge .profile-pic--xl {
-    border-color: var(--qb-accent, #f59e0b);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+.qb-hero-level-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: var(--qb-text-secondary);
+    margin-bottom: 20px;
+}
+
+.qb-hero-level-sub {
+    color: var(--qb-text-light);
+    font-weight: 400;
 }
 
 .qb-mastery-ring-wrap {
@@ -2238,6 +2259,8 @@
     .qb-hero-stats-row { gap: 20px; }
     .qb-hero-stat-value { font-size: 1.4rem; }
     .qb-mastery-ring { width: 150px; height: 150px; }
+    .qb-mastery-ring--with-avatar { width: 140px; height: 140px; }
+    .qb-ring-avatar .profile-pic { width: 68px; height: 68px; }
     .qb-mastery-ring-level { font-size: 2rem; }
 }
 

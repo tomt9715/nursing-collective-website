@@ -88,6 +88,25 @@ var QuizBank = (function () {
             html += '<div class="qb-empty-actions"><a href="../login.html" class="qb-btn qb-btn--primary">Sign In</a></div>';
             html += '</div>';
         } else if (hasData) {
+            // User profile picture above mastery ring
+            var userData = null;
+            try { userData = JSON.parse(localStorage.getItem('user')); } catch(e) {}
+            var profilePic = (userData && userData.profile_picture) ? userData.profile_picture : 'robot.png';
+            var displayName = '';
+            if (userData) {
+                displayName = (userData.first_name || '').trim();
+                if (!displayName) displayName = (userData.email || '').split('@')[0];
+            }
+
+            if (typeof renderProfilePicture === 'function') {
+                html += '<div class="qb-user-profile-badge">';
+                html += renderProfilePicture(profilePic, 'xl', displayName);
+                if (displayName) {
+                    html += '<div class="qb-user-greeting">Hey, ' + _esc(displayName) + '!</div>';
+                }
+                html += '</div>';
+            }
+
             // Mastery Ring
             html += _buildMasteryRing(stats.averageLevel, 10);
 

@@ -266,6 +266,48 @@ window.addEventListener('storage', function(e) {
 });
 
 // =============================================================================
+// PROFILE PICTURE HELPERS
+// =============================================================================
+
+/**
+ * Get the full image URL for a profile picture value.
+ * @param {string} profilePicture - Either a default icon filename or a full URL
+ * @returns {string} Full URL to the image
+ */
+function getProfilePictureUrl(profilePicture) {
+    if (!profilePicture) profilePicture = 'robot.png';
+
+    // If it's already a full URL (custom upload), return as-is
+    if (profilePicture.startsWith('http://') || profilePicture.startsWith('https://')) {
+        return profilePicture;
+    }
+
+    // Otherwise it's a default icon filename
+    // Determine base path based on current page depth
+    var basePath = '';
+    if (window.location.pathname.includes('/quiz-bank/')) {
+        basePath = '../';
+    } else if (window.location.pathname.includes('/guides/')) {
+        basePath = '../';
+    }
+    return basePath + 'assets/images/default-profile/' + profilePicture;
+}
+
+/**
+ * Render a profile picture <img> element as HTML string.
+ * @param {string} profilePicture - The profile_picture value from user data
+ * @param {string} size - CSS class suffix: 'sm' (28px), 'md' (40px), 'lg' (64px), 'xl' (96px)
+ * @param {string} alt - Alt text
+ * @returns {string} HTML string
+ */
+function renderProfilePicture(profilePicture, size, alt) {
+    var url = getProfilePictureUrl(profilePicture);
+    var safeUrl = url.replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+    var safeAlt = (alt || 'Profile').replace(/&/g, '&amp;').replace(/"/g, '&quot;');
+    return '<img src="' + safeUrl + '" alt="' + safeAlt + '" class="profile-pic profile-pic--' + (size || 'md') + '" loading="lazy">';
+}
+
+// =============================================================================
 // SUBSCRIPTION SERVICE
 // =============================================================================
 

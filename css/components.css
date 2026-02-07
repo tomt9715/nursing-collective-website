@@ -1045,6 +1045,36 @@
 
 
 /* ============================================
+   PROFILE PICTURES
+   ============================================ */
+
+.profile-pic {
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+    background: var(--background-light, #f0f0f0);
+}
+.profile-pic--sm { width: 28px; height: 28px; }
+.profile-pic--md { width: 40px; height: 40px; }
+.profile-pic--lg { width: 64px; height: 64px; }
+.profile-pic--xl { width: 96px; height: 96px; }
+
+/* Nav avatar override — replace the initial-letter circle with image */
+.user-avatar .profile-pic {
+    width: 100%;
+    height: 100%;
+}
+.user-avatar-large .profile-pic {
+    width: 100%;
+    height: 100%;
+}
+
+[data-theme="dark"] .profile-pic {
+    background: var(--card-bg, #2a2a2a);
+}
+
+
+/* ============================================
    ICONS AND AVATARS
    ============================================ */
 

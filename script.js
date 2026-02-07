@@ -357,18 +357,28 @@ function updateNavAuthState() {
                 if (dropdownUserName) dropdownUserName.textContent = userName;
                 if (dropdownUserEmail) dropdownUserEmail.textContent = userEmail;
 
-                // Update user avatar with initial (same as dashboard)
+                // Update user avatar with profile picture
                 const userAvatar = document.querySelector('.user-avatar');
-                const initial = user.first_name ? user.first_name.charAt(0).toUpperCase() :
-                               (userName ? userName.charAt(0).toUpperCase() : 'U');
                 if (userAvatar) {
-                    userAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${initial}</span>`;
+                    if (typeof renderProfilePicture === 'function') {
+                        userAvatar.innerHTML = renderProfilePicture(user.profile_picture, 'sm', userName);
+                    } else {
+                        const initial = user.first_name ? user.first_name.charAt(0).toUpperCase() :
+                                       (userName ? userName.charAt(0).toUpperCase() : 'U');
+                        userAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${initial}</span>`;
+                    }
                 }
 
                 // Update user avatar large in dropdown
                 const userAvatarLarge = document.querySelector('.user-avatar-large');
                 if (userAvatarLarge) {
-                    userAvatarLarge.innerHTML = `<span style="font-weight: 600; font-size: 24px;">${initial}</span>`;
+                    if (typeof renderProfilePicture === 'function') {
+                        userAvatarLarge.innerHTML = renderProfilePicture(user.profile_picture, 'lg', userName);
+                    } else {
+                        const initial = user.first_name ? user.first_name.charAt(0).toUpperCase() :
+                                       (userName ? userName.charAt(0).toUpperCase() : 'U');
+                        userAvatarLarge.innerHTML = `<span style="font-weight: 600; font-size: 24px;">${initial}</span>`;
+                    }
                 }
             } catch (e) {
                 console.error('Error parsing user data:', e);

@@ -106,11 +106,8 @@ async function loadUserProfile() {
         document.getElementById('email').value = user.email || '';
         document.getElementById('nursing-program').value = user.nursing_program || '';
 
-        // Update user avatar with initials
-        const userAvatar = document.querySelector('.user-avatar');
-        if (userAvatar && user.first_name) {
-            userAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${user.first_name.charAt(0)}</span>`;
-        }
+        // Initialize profile picture picker
+        initProfilePicture(user);
 
         // Update OAuth connection status
         updateOAuthStatus(user);
@@ -204,12 +201,6 @@ async function handleProfileUpdate(e) {
 
         // Show success message
         showSuccess('Profile updated successfully!');
-
-        // Update avatar if name changed
-        const userAvatar = document.querySelector('.user-avatar');
-        if (userAvatar && data.user.first_name) {
-            userAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${data.user.first_name.charAt(0)}</span>`;
-        }
 
     } catch (error) {
         console.error('Error updating profile:', error);
@@ -529,5 +520,205 @@ async function handleDeleteAccount() {
         errorDiv.style.display = 'block';
         confirmBtn.innerHTML = originalText;
         confirmBtn.disabled = false;
+    }
+}
+
+// ── Profile Picture ─────────────────────────────
+
+const DEFAULT_ICONS = [
+    'astronaut.png', 'cake.png', 'devil.png', 'doctor-female.png',
+    'doctor-male.png', 'frog.png', 'gnome.png', 'goblin.png',
+    'jester.png', 'man-3.png', 'monster-2.png', 'monster-3.png',
+    'monster.png', 'octopus.png', 'ogre.png', 'pirate.png',
+    'robot.png', 'wizard.png', 'woman-5.png'
+];
+
+let currentProfilePicture = 'robot.png';
+
+function initProfilePicture(user) {
+    currentProfilePicture = user.profile_picture || 'robot.png';
+    updateProfilePicPreview(currentProfilePicture);
+    populateIconGrid();
+    setupProfilePicListeners();
+}
+
+function updateProfilePicPreview(value) {
+    var img = document.getElementById('current-profile-img');
+    if (img) {
+        img.src = getProfilePictureUrl(value);
+    }
+}
+
+function populateIconGrid() {
+    var grid = document.getElementById('icon-picker-grid');
+    if (!grid) return;
+
+    grid.innerHTML = '';
+    DEFAULT_ICONS.forEach(function(icon) {
+        var div = document.createElement('div');
+        div.className = 'icon-picker-option' + (icon === currentProfilePicture ? ' selected' : '');
+        div.setAttribute('data-icon', icon);
+
+        var img = document.createElement('img');
+        img.src = 'assets/images/default-profile/' + icon;
+        img.alt = icon.replace('.png', '').replace(/-/g, ' ');
+        img.loading = 'lazy';
+
+        div.appendChild(img);
+        div.addEventListener('click', function() {
+            selectIcon(icon);
+        });
+        grid.appendChild(div);
+    });
+}
+
+async function selectIcon(iconFilename) {
+    // Highlight selection in grid
+    document.querySelectorAll('.icon-picker-option').forEach(function(el) {
+        el.classList.toggle('selected', el.getAttribute('data-icon') === iconFilename);
+    });
+
+    // Save to backend
+    try {
+        await apiCall('/user/profile', {
+            method: 'PUT',
+            body: JSON.stringify({ profile_picture: iconFilename })
+        });
+
+        currentProfilePicture = iconFilename;
+        updateProfilePicPreview(iconFilename);
+
+        // Update localStorage so nav avatar updates immediately
+        var userData = JSON.parse(localStorage.getItem('user') || '{}');
+        userData.profile_picture = iconFilename;
+        localStorage.setItem('user', JSON.stringify(userData));
+
+        // Update nav avatar immediately
+        var userAvatar = document.querySelector('.user-avatar');
+        if (userAvatar && typeof renderProfilePicture === 'function') {
+            userAvatar.innerHTML = renderProfilePicture(iconFilename, 'sm', userData.first_name || '');
+        }
+        var userAvatarLarge = document.querySelector('.user-avatar-large');
+        if (userAvatarLarge && typeof renderProfilePicture === 'function') {
+            userAvatarLarge.innerHTML = renderProfilePicture(iconFilename, 'lg', userData.first_name || '');
+        }
+
+        // Close modal
+        document.getElementById('icon-picker-overlay').style.display = 'none';
+
+        showAlert('Profile Picture Updated', 'Your icon has been changed!', 'success');
+    } catch (error) {
+        console.error('Failed to update profile picture:', error);
+        showAlert('Update Failed', 'Could not update your profile picture. Please try again.', 'error');
+    }
+}
+
+async function handleProfilePicUpload(file) {
+    if (!file) return;
+
+    // Client-side validation
+    var allowedTypes = ['image/png', 'image/jpeg', 'image/webp'];
+    if (allowedTypes.indexOf(file.type) === -1) {
+        showAlert('Invalid File', 'Please upload a PNG, JPG, or WEBP image.', 'error');
+        return;
+    }
+    if (file.size > 2 * 1024 * 1024) {
+        showAlert('File Too Large', 'Please upload an image under 2MB.', 'error');
+        return;
+    }
+
+    var formData = new FormData();
+    formData.append('profile_picture', file);
+
+    try {
+        // Show loading state
+        var preview = document.getElementById('current-profile-img');
+        if (preview) preview.style.opacity = '0.5';
+
+        // Upload — don't set Content-Type header, let browser add multipart boundary
+        var token = localStorage.getItem('accessToken');
+        var response = await fetch(API_URL + '/user/profile-picture/upload', {
+            method: 'POST',
+            headers: {
+                'Authorization': 'Bearer ' + token
+            },
+            body: formData
+        });
+
+        if (!response.ok) {
+            var errData = await response.json();
+            throw new Error(errData.error || 'Upload failed');
+        }
+
+        var result = await response.json();
+
+        currentProfilePicture = result.profile_picture;
+        updateProfilePicPreview(result.profile_picture);
+
+        // Update localStorage
+        var userData = JSON.parse(localStorage.getItem('user') || '{}');
+        userData.profile_picture = result.profile_picture;
+        localStorage.setItem('user', JSON.stringify(userData));
+
+        // Update nav avatar immediately
+        var userAvatar = document.querySelector('.user-avatar');
+        if (userAvatar && typeof renderProfilePicture === 'function') {
+            userAvatar.innerHTML = renderProfilePicture(result.profile_picture, 'sm', userData.first_name || '');
+        }
+        var userAvatarLarge = document.querySelector('.user-avatar-large');
+        if (userAvatarLarge && typeof renderProfilePicture === 'function') {
+            userAvatarLarge.innerHTML = renderProfilePicture(result.profile_picture, 'lg', userData.first_name || '');
+        }
+
+        if (preview) preview.style.opacity = '1';
+        showAlert('Photo Uploaded', 'Your profile picture has been updated!', 'success');
+    } catch (error) {
+        console.error('Failed to upload profile picture:', error);
+        var previewEl = document.getElementById('current-profile-img');
+        if (previewEl) previewEl.style.opacity = '1';
+        showAlert('Upload Failed', error.message || 'Could not upload your photo. Please try again.', 'error');
+    }
+}
+
+function setupProfilePicListeners() {
+    // "Choose Icon" button → open modal
+    var chooseBtn = document.getElementById('choose-icon-btn');
+    if (chooseBtn) {
+        chooseBtn.addEventListener('click', function() {
+            document.getElementById('icon-picker-overlay').style.display = 'flex';
+        });
+    }
+
+    // Close icon picker modal
+    var closeBtn = document.getElementById('icon-picker-close');
+    if (closeBtn) {
+        closeBtn.addEventListener('click', function() {
+            document.getElementById('icon-picker-overlay').style.display = 'none';
+        });
+    }
+
+    // Click outside modal to close
+    var overlay = document.getElementById('icon-picker-overlay');
+    if (overlay) {
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) {
+                overlay.style.display = 'none';
+            }
+        });
+    }
+
+    // "Upload Photo" button → trigger file input
+    var uploadBtn = document.getElementById('upload-photo-btn');
+    var fileInput = document.getElementById('profile-pic-upload');
+    if (uploadBtn && fileInput) {
+        uploadBtn.addEventListener('click', function() {
+            fileInput.click();
+        });
+        fileInput.addEventListener('change', function() {
+            if (this.files && this.files[0]) {
+                handleProfilePicUpload(this.files[0]);
+                this.value = ''; // Reset so same file can be re-selected
+            }
+        });
     }
 }

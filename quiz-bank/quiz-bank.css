@@ -121,6 +121,34 @@
     animation: qb-fadeIn 0.4s ease;
 }
 
+/* ── User Profile Badge in Mastery Hero ──────── */
+.qb-user-profile-badge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.qb-user-profile-badge .profile-pic--xl {
+    width: 80px;
+    height: 80px;
+    border: 3px solid var(--qb-accent, #f59e0b);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+}
+
+.qb-user-greeting {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--qb-text-secondary, #666);
+}
+
+[data-theme="dark"] .qb-user-profile-badge .profile-pic--xl {
+    border-color: var(--qb-accent, #f59e0b);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+}
+
 .qb-mastery-ring-wrap {
     display: flex;
     justify-content: center;

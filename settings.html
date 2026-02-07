@@ -139,6 +139,126 @@
             box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.2);
         }
 
+        /* ── Profile Picture Editor ──────────────────── */
+        .profile-pic-editor {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .profile-pic-current .profile-pic--xl {
+            width: 96px;
+            height: 96px;
+            border: 3px solid var(--border-color, #e0e0e0);
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-pic-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        /* ── Icon Picker Modal ───────────────────────── */
+        .icon-picker-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-picker-modal {
+            background: var(--surface-color, #fff);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 480px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        [data-theme="dark"] .icon-picker-modal {
+            background: var(--card-bg, #1f2937);
+        }
+
+        .icon-picker-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        .icon-picker-header h4 {
+            margin: 0;
+            font-family: 'Outfit', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .icon-picker-close {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            padding: 4px 8px;
+        }
+
+        .icon-picker-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .icon-picker-option {
+            aspect-ratio: 1;
+            border-radius: 12px;
+            border: 3px solid transparent;
+            background: var(--background-light, #f5f5f5);
+            cursor: pointer;
+            padding: 8px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-picker-option:hover {
+            border-color: var(--primary-color, #2E86AB);
+            transform: scale(1.05);
+        }
+
+        .icon-picker-option.selected {
+            border-color: var(--accent-color, #F18F01);
+            background: rgba(241, 143, 1, 0.1);
+        }
+
+        .icon-picker-option img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 480px) {
+            .profile-pic-editor {
+                flex-direction: column;
+                text-align: center;
+            }
+            .profile-pic-actions {
+                flex-direction: row;
+            }
+            .icon-picker-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         /* Danger Button */
         .btn-danger:hover {
             background: #b91c1c !important;
@@ -216,6 +336,38 @@
             <div class="dashboard-card" style="margin-bottom: 24px;">
                 <h3><i class="fas fa-user"></i> Profile Information</h3>
                 <form id="profile-form" style="margin-top: 24px;">
+
+                    <!-- Profile Picture Section -->
+                    <div class="profile-pic-editor" id="profile-picture-section">
+                        <div class="profile-pic-current" id="profile-pic-current">
+                            <img src="assets/images/default-profile/robot.png" alt="Current profile picture" class="profile-pic profile-pic--xl" id="current-profile-img">
+                        </div>
+                        <div class="profile-pic-actions">
+                            <button type="button" class="btn-small secondary" id="choose-icon-btn">
+                                <i class="fas fa-icons"></i> Choose Icon
+                            </button>
+                            <button type="button" class="btn-small secondary" id="upload-photo-btn">
+                                <i class="fas fa-camera"></i> Upload Photo
+                            </button>
+                        </div>
+                        <input type="file" id="profile-pic-upload" accept="image/png,image/jpeg,image/webp" style="display:none;">
+                    </div>
+
+                    <!-- Icon Picker Modal (hidden by default) -->
+                    <div class="icon-picker-overlay" id="icon-picker-overlay" style="display:none;">
+                        <div class="icon-picker-modal">
+                            <div class="icon-picker-header">
+                                <h4>Choose Your Icon</h4>
+                                <button type="button" class="icon-picker-close" id="icon-picker-close">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="icon-picker-grid" id="icon-picker-grid">
+                                <!-- Icons populated by JS -->
+                            </div>
+                        </div>
+                    </div>
+
                     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
                         <div class="form-group">
                             <label for="first-name" style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">First Name</label>

@@ -32,10 +32,13 @@ var QuizBank = (function () {
     var _isCustom = false;         // custom quiz builder session
     var _orderingSequence = [];    // ordering click order
     var _shuffledOptions = {};     // questionId -> { options, letterMap }
-    var _lastQuizParams = null;    // saved params for "retry same quiz"
+    var _lastQuizParams = null;    // saved params for "practice again"
+    var _isReviewSession = false;   // true during "review missed" — skips retry queue
     var _boundClickHandler = null;
     var _boundKeyHandler = null;
     var _boundBeforeUnload = null;
+
+    var RETRY_STORAGE_KEY = 'nursingCollective_retryQueue';
 
     // ── Init ───────────────────────────────────────────────
 
@@ -414,16 +417,27 @@ var QuizBank = (function () {
     }
 
     function _doStartQuiz(questions, topicId, topicLabel, chapterId, mode, setSize) {
-        // Save params for "retry same quiz"
+        // Compute scope key for retry queue
+        var scopeKey = null;
+        if (topicId) scopeKey = 'topic:' + topicId;
+        else if (topicLabel === 'Quick 10') scopeKey = 'quick10';
+        else if (topicLabel === 'Weak Spot Focus') scopeKey = 'weakfocus';
+        else if (_isCustom) scopeKey = 'custom';
+
+        // Save params for "practice again"
         _lastQuizParams = {
-            questions: questions.slice(), // copy before slicing
+            questions: questions.slice(),
             topicId: topicId,
             topicLabel: topicLabel,
             chapterId: chapterId,
             mode: mode,
             setSize: setSize,
-            isCustom: _isCustom
+            isCustom: _isCustom,
+            scopeKey: scopeKey
         };
+
+        _isReviewSession = false;
+        _initSessionCounter(scopeKey);
 
         _view = 'quiz';
         _mode = mode || 'practice';
@@ -940,6 +954,10 @@ var QuizBank = (function () {
             }
         }
 
+        // Update spaced repetition retry queue
+        var scopeKey = _lastQuizParams ? _lastQuizParams.scopeKey : _getRetryScope();
+        _updateRetryQueueAfterSession(scopeKey);
+
         var total = _currentQuestions.length;
         var correctCount = 0;
         _currentQuestions.forEach(function (q) {
@@ -1030,8 +1048,12 @@ var QuizBank = (function () {
         html += '</div>';
 
         // Action buttons
+        var retryCount = _getPendingRetryCount();
+        var retryLabel = 'Practice Again';
+        if (retryCount > 0) retryLabel += ' (' + retryCount + ' to review)';
+
         html += '<div class="qb-results-actions">';
-        html += '<button class="qb-btn qb-btn--primary" data-qb-action="retry-same"><i class="fas fa-redo"></i> Retry Same Quiz</button>';
+        html += '<button class="qb-btn qb-btn--primary" data-qb-action="practice-again"><i class="fas fa-redo"></i> ' + retryLabel + '</button>';
         if (missedCount > 0) {
             html += '<button class="qb-btn qb-btn--secondary" data-qb-action="review-missed"><i class="fas fa-sync-alt"></i> Review Missed (' + missedCount + ')</button>';
         }
@@ -1097,8 +1119,8 @@ var QuizBank = (function () {
                 case 'back-to-hub':
                     renderHub();
                     break;
-                case 'retry-same':
-                    _handleRetrySame();
+                case 'practice-again':
+                    _handlePracticeAgain();
                     break;
                 case 'review-missed':
                     _handleReviewMissed();
@@ -1755,7 +1777,8 @@ var QuizBank = (function () {
         });
         if (missed.length === 0) return;
 
-        // Start a review session (won't record mastery)
+        // Start a review session (won't record mastery or update retry queue)
+        _isReviewSession = true;
         _view = 'quiz';
         _currentQuestions = missed;
         _currentIndex = 0;
@@ -1769,16 +1792,194 @@ var QuizBank = (function () {
         _renderQuestion();
     }
 
-    function _handleRetrySame() {
-        if (!_lastQuizParams) {
-            renderHub();
+    // ── Spaced Repetition (Practice Again) ──────────────
+
+    function _getRetryScope() {
+        if (!_lastQuizParams) return null;
+        var p = _lastQuizParams;
+        if (p.scopeKey) return p.scopeKey;
+        if (p.topicId) return 'topic:' + p.topicId;
+        if (p.topicLabel === 'Quick 10') return 'quick10';
+        if (p.topicLabel === 'Weak Spot Focus') return 'weakfocus';
+        return 'custom';
+    }
+
+    function _loadRetryQueue() {
+        try {
+            var raw = localStorage.getItem(RETRY_STORAGE_KEY);
+            return raw ? JSON.parse(raw) : {};
+        } catch (e) { return {}; }
+    }
+
+    function _saveRetryQueue(data) {
+        try { localStorage.setItem(RETRY_STORAGE_KEY, JSON.stringify(data)); }
+        catch (e) { /* quota exceeded — silently degrade */ }
+    }
+
+    function _initSessionCounter(scopeKey) {
+        if (!scopeKey) return;
+        var all = _loadRetryQueue();
+        if (!all[scopeKey]) {
+            all[scopeKey] = { sessionCounter: 1, queue: [] };
+            _saveRetryQueue(all);
+        }
+    }
+
+    function _updateRetryQueueAfterSession(scopeKey) {
+        if (!scopeKey || _isReviewSession) return;
+        var all = _loadRetryQueue();
+        if (!all[scopeKey]) {
+            all[scopeKey] = { sessionCounter: 1, queue: [] };
+        }
+        var scope = all[scopeKey];
+        var session = scope.sessionCounter;
+
+        _currentQuestions.forEach(function (q) {
+            var fa = _firstAttemptResults[q.id];
+            var wasCorrect = fa && fa.correct;
+
+            // Find existing entry
+            var idx = -1;
+            for (var i = 0; i < scope.queue.length; i++) {
+                if (scope.queue[i].questionId === q.id) { idx = i; break; }
+            }
+
+            if (wasCorrect) {
+                // Mastered on retry — remove from queue
+                if (idx !== -1) scope.queue.splice(idx, 1);
+            } else {
+                if (idx !== -1) {
+                    var entry = scope.queue[idx];
+                    entry.attempts++;
+                    if (entry.attempts > 3) {
+                        // Retired after 3 failed retries
+                        scope.queue.splice(idx, 1);
+                    } else {
+                        entry.wrongInSession = session;
+                        entry.eligibleAtSession = session + 1;
+                    }
+                } else {
+                    // New wrong question
+                    scope.queue.push({
+                        questionId: q.id,
+                        wrongInSession: session,
+                        attempts: 1,
+                        eligibleAtSession: session + 1
+                    });
+                }
+            }
+        });
+
+        _saveRetryQueue(all);
+    }
+
+    function _getPendingRetryCount() {
+        var scopeKey = _getRetryScope();
+        if (!scopeKey) return 0;
+        var all = _loadRetryQueue();
+        var scope = all[scopeKey];
+        if (!scope) return 0;
+        var nextSession = scope.sessionCounter + 1;
+        var count = 0;
+        scope.queue.forEach(function (entry) {
+            if (entry.eligibleAtSession <= nextSession) count++;
+        });
+        return count;
+    }
+
+    function _handlePracticeAgain() {
+        if (!_lastQuizParams) { renderHub(); return; }
+
+        var p = _lastQuizParams;
+        var scopeKey = _getRetryScope();
+
+        // Fallback if no scope
+        if (!scopeKey) {
+            var fallback = p.questions.slice();
+            _shuffleArray(fallback);
+            _isCustom = p.isCustom;
+            _startQuiz(fallback, p.topicId, p.topicLabel, p.chapterId, p.mode, p.setSize);
             return;
         }
-        var p = _lastQuizParams;
-        var questions = p.questions.slice();
-        _shuffleArray(questions);
+
+        // Increment session counter
+        var all = _loadRetryQueue();
+        if (!all[scopeKey]) all[scopeKey] = { sessionCounter: 1, queue: [] };
+        all[scopeKey].sessionCounter++;
+        var newSession = all[scopeKey].sessionCounter;
+        _saveRetryQueue(all);
+
+        var scope = all[scopeKey];
+
+        // Gather eligible retry questions (delayed by 1 session)
+        var eligibleIds = [];
+        scope.queue.forEach(function (entry) {
+            if (entry.eligibleAtSession <= newSession) {
+                eligibleIds.push(entry.questionId);
+            }
+        });
+
+        // Look up full question objects from global bank
+        var allBank = window.QUIZ_BANK_QUESTIONS || [];
+        var retryQuestions = [];
+        eligibleIds.forEach(function (qid) {
+            for (var i = 0; i < allBank.length; i++) {
+                if (allBank[i].id === qid) { retryQuestions.push(allBank[i]); break; }
+            }
+        });
+
+        // Cap retries at 40% of set size
+        var targetSize = (p.setSize === 'max') ? p.questions.length : (p.setSize || 5);
+        var maxRetry = Math.max(1, Math.floor(targetSize * 0.4));
+        _shuffleArray(retryQuestions);
+        retryQuestions = retryQuestions.slice(0, maxRetry);
+        var retryIds = retryQuestions.map(function (q) { return q.id; });
+
+        // Exclusion sets
+        var justAnsweredIds = _currentQuestions.map(function (q) { return q.id; });
+        var allQueueIds = scope.queue.map(function (e) { return e.questionId; });
+
+        // Fresh question pool — exclude just-answered and queued questions
+        var freshPool = p.questions.filter(function (q) {
+            if (justAnsweredIds.indexOf(q.id) !== -1) return false;
+            if (allQueueIds.indexOf(q.id) !== -1) return false;
+            return true;
+        });
+        _shuffleArray(freshPool);
+
+        var freshCount = targetSize - retryQuestions.length;
+        var freshQuestions = freshPool.slice(0, freshCount);
+
+        // Backfill if not enough fresh questions
+        if (freshQuestions.length < freshCount) {
+            var deficit = freshCount - freshQuestions.length;
+            var usedIds = freshQuestions.map(function (q) { return q.id; }).concat(retryIds);
+            var backfill = p.questions.filter(function (q) {
+                if (usedIds.indexOf(q.id) !== -1) return false;
+                if (allQueueIds.indexOf(q.id) !== -1) return false;
+                return true;
+            });
+            _shuffleArray(backfill);
+            freshQuestions = freshQuestions.concat(backfill.slice(0, deficit));
+        }
+
+        // Last resort: allow any remaining from pool
+        if (freshQuestions.length + retryQuestions.length < targetSize) {
+            var stillNeeded = targetSize - freshQuestions.length - retryQuestions.length;
+            var allUsed = freshQuestions.map(function (q) { return q.id; }).concat(retryIds);
+            var any = p.questions.filter(function (q) {
+                return allUsed.indexOf(q.id) === -1;
+            });
+            _shuffleArray(any);
+            freshQuestions = freshQuestions.concat(any.slice(0, stillNeeded));
+        }
+
+        // Combine and shuffle
+        var combined = retryQuestions.concat(freshQuestions);
+        _shuffleArray(combined);
+
         _isCustom = p.isCustom;
-        _startQuiz(questions, p.topicId, p.topicLabel, p.chapterId, p.mode, p.setSize);
+        _startQuiz(combined, p.topicId, p.topicLabel, p.chapterId, p.mode, targetSize);
     }
 
     // ── Builder Modal ─────────────────────────────────────

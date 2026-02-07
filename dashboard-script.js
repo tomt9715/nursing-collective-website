@@ -372,19 +372,31 @@ async function loadUserProfile() {
             const subActionDesc = document.getElementById('subscription-action-desc');
             if (subActionBtn && subActionTitle && subActionDesc) {
                 subActionBtn.removeAttribute('data-navigate');
+                subActionBtn.dataset.subscriptionManage = 'true';
                 subActionTitle.textContent = 'Manage Subscription';
                 subActionDesc.textContent = 'Billing & cancellation';
                 subActionBtn.querySelector('.action-icon-large i').className = 'fas fa-cog';
-                subActionBtn.addEventListener('click', async function() {
+                // Clone to remove old data-navigate listener
+                var newBtn = subActionBtn.cloneNode(true);
+                subActionBtn.parentNode.replaceChild(newBtn, subActionBtn);
+                newBtn.addEventListener('click', async function() {
                     try {
+                        this.disabled = true;
+                        this.querySelector('h3').textContent = 'Opening...';
                         const response = await apiCall('/api/subscription/manage', {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ return_url: window.location.href })
                         });
                         if (response.url) window.location.href = response.url;
+                        else {
+                            this.disabled = false;
+                            this.querySelector('h3').textContent = 'Manage Subscription';
+                        }
                     } catch (error) {
                         console.error('Error opening subscription management:', error);
+                        this.disabled = false;
+                        this.querySelector('h3').textContent = 'Manage Subscription';
                     }
                 });
             }

@@ -1167,11 +1167,12 @@
     padding: 16px 18px;
     background: var(--background-light);
     border-bottom: 1px solid var(--border-color);
+    border-radius: 12px 12px 0 0;
 }
 
 .user-avatar-large {
-    width: 48px;
-    height: 48px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     background: var(--primary-color);
     color: white;
@@ -1181,27 +1182,34 @@
     font-size: 1.8rem;
     flex-shrink: 0;
     overflow: hidden;
+    border: 2px solid var(--primary-color);
 }
 
 /* --- PROFILE PIC AVATAR OVERRIDES ---
-   Must come AFTER .user-avatar / .user-avatar-large to win the cascade */
+   Must come AFTER .user-avatar / .user-avatar-large to win the cascade.
+   Use high specificity to beat .profile-pic--sm/md/lg size classes. */
 .user-avatar:has(.profile-pic) {
     background: var(--background-light, #f0f0f0);
     border-color: var(--border-color, #ddd);
 }
-.user-avatar .profile-pic {
+.user-avatar img.profile-pic {
     width: 100%;
     height: 100%;
+    min-width: 0;
+    min-height: 0;
     border-radius: 0;
     flex-shrink: 1;
     object-fit: cover;
 }
 .user-avatar-large:has(.profile-pic) {
     background: var(--background-light, #f0f0f0);
+    border-color: var(--border-color, #ddd);
 }
-.user-avatar-large .profile-pic {
+.user-avatar-large img.profile-pic {
     width: 100%;
     height: 100%;
+    min-width: 0;
+    min-height: 0;
     border-radius: 0;
     flex-shrink: 1;
     object-fit: cover;

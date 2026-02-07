@@ -34,9 +34,9 @@ var QUIZ_BANK_REGISTRY = {
             label: "Respiratory",
             emoji: "\ud83e\udec1",
             topics: [
-                { id: "copd", label: "COPD", file: null, hasGuide: true, guideUrl: "copd.html" },
-                { id: "asthma", label: "Asthma", file: null, hasGuide: true, guideUrl: "asthma.html" },
-                { id: "pneumonia", label: "Pneumonia", file: null, hasGuide: true, guideUrl: "pneumonia.html" },
+                { id: "copd", label: "COPD", file: "respiratory/copd.js", hasGuide: true, guideUrl: "copd.html" },
+                { id: "asthma", label: "Asthma", file: "respiratory/asthma.js", hasGuide: true, guideUrl: "asthma.html" },
+                { id: "pneumonia", label: "Pneumonia", file: "respiratory/pneumonia.js", hasGuide: true, guideUrl: "pneumonia.html" },
                 { id: "tuberculosis", label: "Tuberculosis", file: null, hasGuide: true, guideUrl: "tuberculosis.html" },
                 { id: "oxygen-therapy", label: "Oxygen Therapy", file: null, hasGuide: true, guideUrl: "oxygen-therapy.html" },
                 { id: "chest-tubes", label: "Chest Tubes", file: null, hasGuide: true, guideUrl: "chest-tubes.html" },

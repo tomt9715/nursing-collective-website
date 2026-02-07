@@ -89,14 +89,6 @@
         <priority>0.7</priority>
     </url>
 
-    <!-- Quiz Bank -->
-    <url>
-        <loc>https://thenursingcollective.pro/quiz-bank/quiz-bank.html</loc>
-        <lastmod>2026-02-07</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-    </url>
-
     <!-- System Status -->
     <url>
         <loc>https://thenursingcollective.pro/status.html</loc>

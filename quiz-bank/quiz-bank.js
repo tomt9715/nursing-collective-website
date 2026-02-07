@@ -137,16 +137,17 @@ var QuizBank = (function () {
         html += '<div class="qb-quick-cards">';
 
         var noQuestions = totalAvailableQuestions === 0;
+        var disableQuickStart = noQuestions || !isSignedIn;
 
         html += _quickCard(
             'fas fa-play-circle', 'Quick 10',
             '10 questions weighted toward weak topics',
-            noQuestions, 'quick-10'
+            disableQuickStart, 'quick-10'
         );
         html += _quickCard(
             'fas fa-crosshairs', 'Weak Spot Focus',
             'Drill your 3 lowest mastery topics',
-            noQuestions, 'weak-focus'
+            disableQuickStart, 'weak-focus'
         );
         html += _quickCard(
             'fas fa-sliders-h', 'Build Custom Quiz',
@@ -209,7 +210,7 @@ var QuizBank = (function () {
 
                 html += '</div>';
 
-                if (hasQuestions) {
+                if (hasQuestions && isSignedIn) {
                     html += '<button class="qb-topic-start" data-qb-action="start-topic" data-topic="' + _esc(topic.id) + '" data-chapter="' + _esc(chapter.id) + '">Practice <i class="fas fa-arrow-right"></i></button>';
                 }
 
@@ -228,6 +229,16 @@ var QuizBank = (function () {
         // ── Section D: Custom Quiz Builder ───────────────
         html += '<section class="qb-section qb-builder" id="qb-builder">';
         html += '<h2 class="qb-section-title"><i class="fas fa-sliders-h"></i> Custom Quiz Builder</h2>';
+
+        if (!isSignedIn) {
+            html += '<div class="qb-empty-state">';
+            html += '<div class="qb-empty-icon"><i class="fas fa-lock"></i></div>';
+            html += '<div class="qb-empty-title">Sign in to build custom quizzes</div>';
+            html += '<div class="qb-empty-desc">Subscribers can build custom quizzes by chapter, difficulty, question type, and more.</div>';
+            html += '<div class="qb-empty-actions"><a href="../login.html" class="btn btn-primary">Sign In</a></div>';
+            html += '</div>';
+            html += '</section>';
+        } else {
 
         html += '<div class="qb-builder-form">';
 
@@ -313,11 +324,12 @@ var QuizBank = (function () {
 
         html += '</div>';
         html += '</section>';
+        } // end isSignedIn else for builder
 
         _root.innerHTML = html;
 
         // Update match count
-        _updateBuilderCount();
+        if (isSignedIn) _updateBuilderCount();
     }
 
     // ── Hub Helpers ────────────────────────────────────────

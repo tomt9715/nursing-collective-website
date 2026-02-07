@@ -168,11 +168,48 @@ async function performLogout() {
 }
 
 /**
- * Check if user is authenticated
- * @returns {boolean} - True if user has valid access token
+ * Check if user is authenticated (has token in storage)
+ * Note: This only checks token presence, not validity.
+ * Use ensureValidToken() for a full validity check with refresh.
+ * @returns {boolean} - True if user has access token stored
  */
 function isAuthenticated() {
     return !!localStorage.getItem('accessToken');
+}
+
+/**
+ * Check if the stored access token is likely expired
+ * Uses tokenTimestamp to estimate without decoding the JWT
+ * @returns {boolean} - True if token is likely expired
+ */
+function isTokenStale() {
+    const timestamp = localStorage.getItem('tokenTimestamp');
+    if (!timestamp) return true; // No timestamp = assume stale
+    const ageMs = Date.now() - parseInt(timestamp, 10);
+    // Access tokens expire in 15 min (900s). Treat as stale after 14 min.
+    return ageMs > 14 * 60 * 1000;
+}
+
+/**
+ * Ensure the user has a valid (non-expired) access token.
+ * If the token is stale, attempts a silent refresh using the httpOnly cookie.
+ * @returns {Promise<boolean>} - True if user has a valid token, false if session is dead
+ */
+async function ensureValidToken() {
+    if (!isAuthenticated()) return false;
+    if (!isTokenStale()) return true; // Token is fresh, no action needed
+
+    // Token looks expired — try a silent refresh
+    try {
+        await refreshToken();
+        return true;
+    } catch (e) {
+        // Refresh failed — session is truly expired, clean up
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user');
+        localStorage.removeItem('tokenTimestamp');
+        return false;
+    }
 }
 
 /**
@@ -192,12 +229,27 @@ function setCurrentUser(userData) {
 }
 
 /**
- * Require authentication - redirect to login if not authenticated
+ * Require authentication - redirect to login if not authenticated.
+ * Tries a silent token refresh for returning users with stale tokens.
+ * Returns a promise so callers can await it before rendering.
  */
 function requireAuth() {
     if (!isAuthenticated()) {
         window.location.href = 'login.html';
+        return Promise.resolve(false);
     }
+
+    // If token looks stale, try refreshing before proceeding
+    if (isTokenStale()) {
+        return ensureValidToken().then(function(valid) {
+            if (!valid) {
+                window.location.href = 'login.html';
+            }
+            return valid;
+        });
+    }
+
+    return Promise.resolve(true);
 }
 
 // Listen for cross-tab logout events

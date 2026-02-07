@@ -3,9 +3,14 @@
 // Note: API service layer is now in api-service.js
 
 // Check authentication (uses api-service.js functions)
-requireAuth();
+// requireAuth() now returns a promise that resolves after token refresh if needed
+const authReady = requireAuth();
 
 document.addEventListener('DOMContentLoaded', async function() {
+
+    // Wait for auth check (including silent token refresh) before loading data
+    const isValid = await authReady;
+    if (isValid === false) return; // Redirect already in progress
 
     // Load user profile from API
     await loadUserProfile();

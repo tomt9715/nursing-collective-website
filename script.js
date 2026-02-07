@@ -26,7 +26,13 @@ window.addEventListener('load', function() {
 });
 
 // Simple website functionality without auto-scrolling
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
+    // If user has a stored token but it's stale, try silent refresh before updating nav
+    if (typeof ensureValidToken === 'function' && typeof isTokenStale === 'function'
+        && localStorage.getItem('accessToken') && isTokenStale()) {
+        await ensureValidToken();
+    }
+
     // Update nav based on auth state
     updateNavAuthState();
 

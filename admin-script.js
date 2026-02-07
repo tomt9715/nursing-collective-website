@@ -123,8 +123,9 @@ function getUserStatusBadges(user) {
 
 // Initialize on DOM load
 document.addEventListener('DOMContentLoaded', async function() {
-    // Check authentication
-    requireAuth();
+    // Check authentication (await token refresh for returning users)
+    const isValid = await requireAuth();
+    if (isValid === false) return; // Redirect already in progress
 
     // Verify admin access
     const user = getCurrentUser();

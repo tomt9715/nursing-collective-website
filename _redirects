@@ -1,7 +1,7 @@
 # Subdomain routing: learn.thenursingcollective.pro serves the app
-# Redirect root to /app/ so relative paths resolve correctly
-https://learn.thenursingcollective.pro/ /app/ 302
-https://learn.thenursingcollective.pro/index.html /app/ 302
+# Force (!) overrides the existing index.html at root
+https://learn.thenursingcollective.pro/ /app/ 302!
+https://learn.thenursingcollective.pro/index.html /app/ 302!
 
 # Redirect old quiz-bank paths on main domain to learn subdomain
 https://thenursingcollective.pro/quiz-bank/* https://learn.thenursingcollective.pro 301

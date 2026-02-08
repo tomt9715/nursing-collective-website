@@ -1667,6 +1667,18 @@ var QuizBank = (function () {
                 case 'clear-bookmarks':
                     _handleClearBookmarks();
                     break;
+                case 'review-next':
+                    if (_currentIndex < _currentQuestions.length - 1) { _currentIndex++; _renderReviewCard(); }
+                    break;
+                case 'review-prev':
+                    if (_currentIndex > 0) { _currentIndex--; _renderReviewCard(); }
+                    break;
+                case 'review-back':
+                    _exitReviewMode();
+                    break;
+                case 'review-remove-bookmark':
+                    _handleReviewRemoveBookmark(actionBtn);
+                    break;
                 case 'toggle-strikethrough':
                     _toggleStrikethrough();
                     break;
@@ -1810,6 +1822,26 @@ var QuizBank = (function () {
     }
 
     function _handleGlobalKeydown(e) {
+        // Review mode keyboard navigation
+        if (_view === 'review') {
+            if (e.key === 'ArrowRight' || e.key === 'Right') {
+                e.preventDefault();
+                if (_currentIndex < _currentQuestions.length - 1) { _currentIndex++; _renderReviewCard(); }
+                return;
+            }
+            if (e.key === 'ArrowLeft' || e.key === 'Left') {
+                e.preventDefault();
+                if (_currentIndex > 0) { _currentIndex--; _renderReviewCard(); }
+                return;
+            }
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                _exitReviewMode();
+                return;
+            }
+            return;
+        }
+
         // Only active during quiz view, not when typing in inputs
         if (_view !== 'quiz') return;
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
@@ -2465,53 +2497,36 @@ var QuizBank = (function () {
     }
 
     function _handleReviewMissed() {
-        // Filter to missed questions only and restart (doesn't count as set)
+        // Filter to missed questions only — show in study/review mode
         var missed = _currentQuestions.filter(function (q) {
             var r = _results[q.id];
             return r && !r.correct;
         });
         if (missed.length === 0) return;
 
-        // Start a review session (won't record mastery or update retry queue)
-        _isReviewSession = true;
-        _view = 'quiz';
+        _reviewSource = 'missed';
+        _view = 'review';
         _currentQuestions = missed;
         _currentIndex = 0;
-        _answers = {};
-        _results = {};
-        _submitted = {};
-        _firstAttemptResults = {};
-        _currentTopicId = null; // null = no mastery recording
-        _shuffleAllOptions();
-        window.addEventListener('beforeunload', _boundBeforeUnload);
-        _renderQuestion();
+        _renderReviewCard();
     }
 
     function _handleReviewBookmarked() {
-        // Filter to bookmarked questions only and restart (doesn't count as set)
+        // Filter to bookmarked questions from current quiz — show in study/review mode
         var bookmarked = _currentQuestions.filter(function (q) {
             return _flagged[q.id];
         });
         if (bookmarked.length === 0) return;
 
-        // Start a review session (won't record mastery or update retry queue)
-        _isReviewSession = true;
-        _view = 'quiz';
+        _reviewSource = 'bookmarked';
+        _view = 'review';
         _currentQuestions = bookmarked;
         _currentIndex = 0;
-        _answers = {};
-        _results = {};
-        _submitted = {};
-        _firstAttemptResults = {};
-        _flagged = {}; // Clear flags for the review session
-        _currentTopicId = null;
-        _shuffleAllOptions();
-        window.addEventListener('beforeunload', _boundBeforeUnload);
-        _renderQuestion();
+        _renderReviewCard();
     }
 
     function _handleReviewSaved() {
-        // Load all saved bookmarks, look up full question objects, start a review session
+        // Load all saved bookmarks, look up full question objects, show in study/review mode
         var bookmarks = _loadBookmarks();
         if (bookmarks.length === 0) return;
 
@@ -2531,10 +2546,12 @@ var QuizBank = (function () {
             return;
         }
 
-        _shuffleArray(questions);
-        _isReviewSession = true;
-        _isCustom = true;
-        _startQuiz(questions, null, 'Saved Questions', null, 'practice', questions.length);
+        _reviewSource = 'saved';
+        _view = 'review';
+        _currentQuestions = questions;
+        _currentIndex = 0;
+        _shuffleAllOptions();
+        _renderReviewCard();
     }
 
     function _handleRemoveBookmark(btn) {
@@ -2550,6 +2567,218 @@ var QuizBank = (function () {
         _saveBookmarks([]);
         MasteryTracker.syncToServer();
         renderHub();
+    }
+
+    // ── Review Mode (Study View) ────────────────────────
+
+    var _reviewSource = null; // 'saved' | 'bookmarked' | 'missed'
+
+    function _showReviewHeader(counter, total) {
+        _hideQuizHeader();
+        document.body.classList.add('qb-quiz-active');
+
+        var header = document.createElement('div');
+        header.className = 'qb-header';
+        header.id = 'qb-quiz-header';
+        header.innerHTML =
+            '<div class="qb-header-left">' +
+                '<button class="qb-header-back" data-qb-action="review-back" title="Back to Hub"><i class="fas fa-arrow-left"></i> <span>Back</span></button>' +
+                '<span class="qb-header-title"><i class="fas fa-bookmark" style="opacity:0.6"></i> Review Mode</span>' +
+            '</div>' +
+            '<div class="qb-header-right">' +
+                '<span class="qb-review-counter">' + counter + ' of ' + total + '</span>' +
+            '</div>';
+        document.body.insertBefore(header, document.body.firstChild);
+
+        header.addEventListener('click', function (e) {
+            var btn = e.target.closest('[data-qb-action]');
+            if (btn && btn.dataset.qbAction === 'review-back') {
+                _exitReviewMode();
+            }
+        });
+    }
+
+    function _exitReviewMode() {
+        _view = 'hub';
+        _hideQuizHeader();
+        renderHub();
+        window.scrollTo({ top: 0 });
+    }
+
+    function _renderReviewCard() {
+        var q = _currentQuestions[_currentIndex];
+        if (!q) { _exitReviewMode(); return; }
+
+        var total = _currentQuestions.length;
+        var num = _currentIndex + 1;
+
+        _showReviewHeader(num, total);
+        window.scrollTo({ top: 0 });
+
+        // Look up topic/chapter for context
+        var topicLabel = MasteryTracker.getTopicLabel(q.topic) || q.topic || '';
+        var chapterLabel = _getChapterLabelForCategory(q.category) || '';
+        var typeName = _getTypeName(q);
+        var typeClass = _getTypeClass(q);
+
+        var html = '<div class="qb-review-mode">';
+
+        // Topic / chapter context
+        html += '<div class="qb-review-context">';
+        if (chapterLabel) html += '<span class="qb-review-chapter-pill">' + _esc(chapterLabel) + '</span>';
+        if (topicLabel) html += '<span class="qb-review-topic-pill">' + _esc(topicLabel) + '</span>';
+        html += '<span class="qb-q-type ' + typeClass + '">' + typeName + '</span>';
+        html += '</div>';
+
+        // Question card
+        html += '<div class="qb-review-card">';
+
+        // Question stem
+        html += '<div class="qb-review-stem">' + _esc(q.stem) + '</div>';
+
+        // Options — rendered based on question type
+        if (q.type === 'ordering') {
+            html += _renderReviewOrdering(q);
+        } else if (q.type === 'matrix') {
+            html += _renderReviewMatrix(q);
+        } else {
+            html += _renderReviewMCOptions(q);
+        }
+
+        // Rationale
+        if (q.rationale && q.rationale.correct) {
+            html += '<div class="qb-feedback qb-feedback--correct qb-review-rationale">';
+            html += '<div class="qb-feedback-header"><i class="fas fa-check-circle"></i> Correct Answer Rationale</div>';
+            html += '<div class="qb-feedback-section">';
+            html += '<div class="qb-feedback-text">' + _esc(q.rationale.correct) + '</div>';
+            html += '</div>';
+            html += '</div>';
+        }
+
+        // Test-taking tip
+        if (q.testTakingTip) {
+            html += '<div class="qb-feedback-tip">';
+            html += '<div class="qb-feedback-tip-label"><i class="fas fa-lightbulb"></i> Test-Taking Tip</div>';
+            html += '<div class="qb-feedback-tip-text">' + _esc(q.testTakingTip) + '</div>';
+            html += '</div>';
+        }
+
+        // Study guide link
+        if (q.relatedGuide) {
+            var href = '../guides/' + _esc(q.relatedGuide);
+            if (q.relatedGuideSection) href += '#' + _esc(q.relatedGuideSection);
+            html += '<a href="' + href + '" class="qb-feedback-review" target="_blank">';
+            html += '<i class="fas fa-book"></i> Review in Study Guide <i class="fas fa-external-link-alt" style="font-size:0.75rem"></i>';
+            html += '</a>';
+        }
+
+        html += '</div>'; // .qb-review-card
+
+        // Remove bookmark button
+        html += '<div class="qb-review-actions">';
+        html += '<button class="qb-review-remove" data-qb-action="review-remove-bookmark" data-question-id="' + _esc(q.id) + '">';
+        html += '<i class="far fa-bookmark"></i> Remove Bookmark';
+        html += '</button>';
+        html += '</div>';
+
+        // Navigation
+        html += '<div class="qb-review-nav">';
+        if (_currentIndex > 0) {
+            html += '<button class="qb-btn qb-btn--ghost" data-qb-action="review-prev"><i class="fas fa-arrow-left"></i> Previous</button>';
+        } else {
+            html += '<span></span>'; // spacer for flex justify
+        }
+        if (_currentIndex < total - 1) {
+            html += '<button class="qb-btn qb-btn--primary" data-qb-action="review-next">Next <i class="fas fa-arrow-right"></i></button>';
+        } else {
+            html += '<button class="qb-btn qb-btn--success" data-qb-action="review-back"><i class="fas fa-home"></i> Back to Hub</button>';
+        }
+        html += '</div>';
+
+        html += '</div>'; // .qb-review-mode
+
+        _root.innerHTML = html;
+    }
+
+    function _renderReviewMCOptions(q) {
+        var shuffled = _getShuffledOptions(q.id) || q.options;
+        var html = '<div class="qb-options qb-review-options" role="list">';
+        shuffled.forEach(function (opt) {
+            var displayLetter = _getDisplayLetter(q.id, opt.id);
+            var isCorrect = opt.id === q.correct;
+            var cls = 'qb-option qb-option--disabled';
+            if (isCorrect) cls += ' qb-option--correct';
+            html += '<div class="' + cls + '" role="listitem">';
+            html += '<span class="qb-option-marker"></span>';
+            html += '<span class="qb-option-letter">' + displayLetter.toUpperCase() + '.</span>';
+            html += '<span class="qb-option-text">' + _esc(opt.text) + '</span>';
+            html += '</div>';
+        });
+        html += '</div>';
+        return html;
+    }
+
+    function _renderReviewOrdering(q) {
+        var html = '<div class="qb-review-ordering">';
+        html += '<div class="qb-review-ordering-label"><i class="fas fa-sort-amount-down"></i> Correct Order</div>';
+        q.correct.forEach(function (optId, idx) {
+            var opt = q.options.find(function (o) { return o.id === optId; });
+            html += '<div class="qb-review-ordering-step">';
+            html += '<span class="qb-review-ordering-num">' + (idx + 1) + '</span>';
+            html += '<span class="qb-review-ordering-text">' + _esc(opt ? opt.text : optId) + '</span>';
+            html += '</div>';
+            // Step rationale
+            if (q.rationale && q.rationale[optId]) {
+                html += '<div class="qb-review-ordering-rationale">' + _esc(q.rationale[optId]) + '</div>';
+            }
+        });
+        html += '</div>';
+        return html;
+    }
+
+    function _renderReviewMatrix(q) {
+        var correctMap = _getMatrixCorrectMap(q);
+        var html = '<div class="qb-review-matrix">';
+        html += '<div class="qb-review-ordering-label"><i class="fas fa-th"></i> Correct Answers</div>';
+        q.rows.forEach(function (row) {
+            var correctCol = correctMap[row.id];
+            var colLabel = '';
+            if (q.columns) {
+                var col = q.columns.find(function (c) { return c.id === correctCol; });
+                if (col) colLabel = col.label;
+            }
+            html += '<div class="qb-review-matrix-row">';
+            html += '<span class="qb-review-matrix-finding">' + _esc(row.label || row.id) + '</span>';
+            html += '<span class="qb-review-matrix-arrow"><i class="fas fa-arrow-right"></i></span>';
+            html += '<span class="qb-review-matrix-answer">' + _esc(colLabel || correctCol) + '</span>';
+            html += '</div>';
+        });
+        html += '</div>';
+        return html;
+    }
+
+    function _handleReviewRemoveBookmark(btn) {
+        var questionId = btn.dataset.questionId;
+        if (!questionId) return;
+
+        // Remove from persistent bookmarks
+        _removeBookmark(questionId);
+        MasteryTracker.syncToServer();
+
+        // Remove from current review set
+        _currentQuestions = _currentQuestions.filter(function (q) { return q.id !== questionId; });
+
+        if (_currentQuestions.length === 0) {
+            _exitReviewMode();
+            return;
+        }
+
+        // Adjust index if we removed the last one
+        if (_currentIndex >= _currentQuestions.length) {
+            _currentIndex = _currentQuestions.length - 1;
+        }
+
+        _renderReviewCard();
     }
 
     // ── Spaced Repetition (Practice Again) ──────────────

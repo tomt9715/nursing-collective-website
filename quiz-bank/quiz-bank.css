@@ -3186,6 +3186,226 @@ body.qb-quiz-active .qb-container {
 }
 
 /* ============================================
+   REVIEW MODE (Study View)
+   ============================================ */
+
+.qb-review-mode {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 4px;
+}
+
+.qb-review-counter {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--qb-text-secondary);
+}
+
+.qb-review-context {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.qb-review-chapter-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: var(--qb-primary);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.qb-review-topic-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: rgba(46, 134, 171, 0.1);
+    color: var(--qb-primary);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+}
+
+.qb-review-card {
+    background: var(--qb-card-bg);
+    border: 1px solid var(--qb-border);
+    border-radius: var(--qb-radius);
+    padding: 28px 24px;
+    box-shadow: var(--qb-shadow-sm);
+    margin-bottom: 16px;
+}
+
+.qb-review-card .qb-review-stem {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--qb-text);
+    margin-bottom: 20px;
+}
+
+/* Review options — reuse qb-option styles but always disabled */
+.qb-review-options .qb-option {
+    cursor: default;
+    pointer-events: none;
+}
+
+/* Review rationale — no top margin since it's inline with the card */
+.qb-review-rationale {
+    margin-top: 20px;
+    animation: none;
+}
+
+/* Ordering review */
+.qb-review-ordering {
+    margin-bottom: 20px;
+}
+
+.qb-review-ordering-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--qb-text-secondary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qb-review-ordering-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+    background: var(--qb-correct-bg);
+    border: 1px solid var(--qb-correct-border);
+    border-radius: var(--qb-radius-sm);
+    margin-bottom: 6px;
+}
+
+.qb-review-ordering-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    background: var(--qb-correct);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.qb-review-ordering-text {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--qb-text);
+    padding-top: 3px;
+}
+
+.qb-review-ordering-rationale {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--qb-text-secondary);
+    padding: 4px 16px 8px 56px;
+    font-style: italic;
+}
+
+/* Matrix review */
+.qb-review-matrix {
+    margin-bottom: 20px;
+}
+
+.qb-review-matrix-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    background: var(--qb-correct-bg);
+    border: 1px solid var(--qb-correct-border);
+    border-radius: var(--qb-radius-sm);
+    margin-bottom: 6px;
+}
+
+.qb-review-matrix-finding {
+    flex: 1;
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--qb-text);
+}
+
+.qb-review-matrix-arrow {
+    color: var(--qb-correct);
+    font-size: 0.85rem;
+}
+
+.qb-review-matrix-answer {
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--qb-correct);
+}
+
+/* Review actions (remove bookmark) */
+.qb-review-actions {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.qb-review-remove {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border: 1px solid var(--qb-border);
+    border-radius: var(--qb-radius-sm);
+    background: none;
+    color: var(--qb-text-secondary);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.qb-review-remove:hover {
+    border-color: var(--qb-incorrect);
+    color: var(--qb-incorrect);
+    background: var(--qb-incorrect-bg);
+}
+
+/* Review navigation */
+.qb-review-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    gap: 12px;
+}
+
+@media (max-width: 480px) {
+    .qb-review-card { padding: 20px 16px; }
+    .qb-review-card .qb-review-stem { font-size: 0.95rem; }
+    .qb-review-ordering-step { padding: 10px 12px; }
+    .qb-review-ordering-rationale { padding-left: 44px; }
+    .qb-review-matrix-row { padding: 8px 12px; flex-wrap: wrap; }
+    .qb-review-matrix-arrow { display: none; }
+    .qb-review-matrix-answer { width: 100%; padding-left: 0; }
+}
+
+/* ============================================
    SAVED QUESTIONS (Bookmarks Hub Section)
    ============================================ */
 

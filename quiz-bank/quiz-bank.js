@@ -2650,13 +2650,11 @@ var QuizBank = (function () {
             html += _renderReviewMCOptions(q);
         }
 
-        // Rationale
+        // Rationale — covers correct answer and why distractors are wrong
         if (q.rationale && q.rationale.correct) {
-            html += '<div class="qb-feedback qb-feedback--correct qb-review-rationale">';
-            html += '<div class="qb-feedback-header"><i class="fas fa-check-circle"></i> Correct Answer Rationale</div>';
-            html += '<div class="qb-feedback-section">';
-            html += '<div class="qb-feedback-text">' + _esc(q.rationale.correct) + '</div>';
-            html += '</div>';
+            html += '<div class="qb-review-rationale-box">';
+            html += '<div class="qb-review-rationale-header"><i class="fas fa-graduation-cap"></i> Answer Explanation</div>';
+            html += '<div class="qb-review-rationale-text">' + _esc(q.rationale.correct) + '</div>';
             html += '</div>';
         }
 
@@ -2717,11 +2715,20 @@ var QuizBank = (function () {
             var displayLetter = _getDisplayLetter(q.id, opt.id);
             var isCorrect = opt.id === q.correct;
             var cls = 'qb-option qb-option--disabled';
-            if (isCorrect) cls += ' qb-option--correct';
+            if (isCorrect) {
+                cls += ' qb-option--correct';
+            } else {
+                cls += ' qb-option--review-wrong';
+            }
             html += '<div class="' + cls + '" role="listitem">';
             html += '<span class="qb-option-marker"></span>';
             html += '<span class="qb-option-letter">' + displayLetter.toUpperCase() + '.</span>';
             html += '<span class="qb-option-text">' + _esc(opt.text) + '</span>';
+            if (isCorrect) {
+                html += '<span class="qb-review-option-tag qb-review-option-tag--correct"><i class="fas fa-check"></i> Correct</span>';
+            } else {
+                html += '<span class="qb-review-option-tag qb-review-option-tag--wrong"><i class="fas fa-times"></i> Incorrect</span>';
+            }
             html += '</div>';
         });
         html += '</div>';

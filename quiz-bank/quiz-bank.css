@@ -3258,10 +3258,79 @@ body.qb-quiz-active .qb-container {
     pointer-events: none;
 }
 
-/* Review rationale — no top margin since it's inline with the card */
-.qb-review-rationale {
-    margin-top: 20px;
-    animation: none;
+/* Incorrect option subtle styling in review */
+.qb-option--review-wrong {
+    opacity: 0.7;
+    border-left: 4px solid var(--qb-incorrect);
+}
+.qb-option--review-wrong .qb-option-marker {
+    border-color: var(--qb-incorrect);
+    background: var(--qb-incorrect);
+}
+.qb-option--review-wrong .qb-option-marker::after {
+    content: '\f00d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 11px;
+    color: #fff;
+    background: none;
+    border-radius: 0;
+    width: auto;
+    height: auto;
+    border: none;
+    transform: none;
+    margin-top: 0;
+}
+
+/* Correct/Incorrect tags on review options */
+.qb-review-option-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.qb-review-option-tag--correct {
+    background: var(--qb-correct-bg);
+    color: var(--qb-correct);
+    border: 1px solid var(--qb-correct-border);
+}
+.qb-review-option-tag--wrong {
+    background: var(--qb-incorrect-bg);
+    color: var(--qb-incorrect);
+    border: 1px solid var(--qb-incorrect-border, rgba(239, 68, 68, 0.2));
+}
+
+/* Review rationale box */
+.qb-review-rationale-box {
+    margin-top: 24px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(5, 150, 105, 0.06) 0%, rgba(16, 185, 129, 0.04) 100%);
+    border: 1px solid var(--qb-correct-border);
+    border-radius: var(--qb-radius);
+    border-left: 4px solid var(--qb-correct);
+}
+.qb-review-rationale-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--qb-correct);
+    margin-bottom: 10px;
+}
+.qb-review-rationale-text {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--qb-text);
 }
 
 /* Ordering review */
@@ -3398,6 +3467,9 @@ body.qb-quiz-active .qb-container {
 @media (max-width: 480px) {
     .qb-review-card { padding: 20px 16px; }
     .qb-review-card .qb-review-stem { font-size: 0.95rem; }
+    .qb-review-option-tag { font-size: 0.65rem; padding: 2px 8px; }
+    .qb-review-rationale-box { padding: 16px; }
+    .qb-review-rationale-text { font-size: 0.9rem; }
     .qb-review-ordering-step { padding: 10px 12px; }
     .qb-review-ordering-rationale { padding-left: 44px; }
     .qb-review-matrix-row { padding: 8px 12px; flex-wrap: wrap; }

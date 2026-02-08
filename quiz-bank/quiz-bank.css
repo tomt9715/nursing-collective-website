@@ -2955,6 +2955,94 @@ body.qb-quiz-active .qb-container {
     margin-right: 4px;
 }
 
+/* ── Exam mode: "Answer recorded" ─────────── */
+.qb-exam-recorded {
+    text-align: center;
+    padding: 12px 16px;
+    margin-top: 16px;
+    color: var(--qb-text-light);
+    font-size: 0.9rem;
+    font-weight: 500;
+    animation: qb-fadeIn 0.2s ease;
+}
+
+.qb-exam-recorded i {
+    color: var(--qb-primary);
+    margin-right: 6px;
+}
+
+/* ── Exam review (results page) ──────────── */
+.qb-review-stem {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--qb-text);
+    padding: 12px 0;
+    border-bottom: 1px solid var(--qb-border-light);
+    margin-bottom: 10px;
+}
+
+.qb-review-options {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+}
+
+.qb-review-option {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    padding: 8px 12px;
+    border-radius: 6px;
+    color: var(--qb-text-secondary);
+    background: var(--qb-border-light);
+}
+
+.qb-review-option--correct {
+    background: var(--qb-correct-bg);
+    color: var(--qb-correct);
+    font-weight: 600;
+    border: 1px solid var(--qb-correct-border);
+}
+
+.qb-review-option--incorrect {
+    background: var(--qb-incorrect-bg);
+    color: var(--qb-incorrect);
+    font-weight: 600;
+    border: 1px solid var(--qb-incorrect-border);
+}
+
+.qb-review-option-letter {
+    font-weight: 700;
+    min-width: 18px;
+    display: inline-block;
+}
+
+.qb-result-rationale-label,
+.qb-result-tip-label {
+    font-weight: 700;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.qb-result-rationale-label { color: var(--qb-primary); }
+.qb-result-tip-label { color: var(--qb-accent); }
+
+.qb-result-tip {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--qb-text-secondary);
+    padding: 10px 14px;
+    background: rgba(245, 158, 11, 0.06);
+    border-radius: 8px;
+    border-left: 3px solid var(--qb-accent);
+    margin-top: 10px;
+}
+
 /* ── Subtle background for quiz view ──────── */
 .qb-quiz-active .qb-container {
     background: radial-gradient(ellipse at 50% 0%, rgba(46, 134, 171, 0.03) 0%, transparent 60%);

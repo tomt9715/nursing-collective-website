@@ -565,7 +565,8 @@ var QuizBank = (function () {
 
         var accuracyPct = answeredSoFar > 0 ? Math.round((correctSoFar / answeredSoFar) * 100) : 0;
         var pillClass = accuracyPct >= 80 ? 'qb-accuracy-pill--good' : accuracyPct >= 60 ? 'qb-accuracy-pill--ok' : 'qb-accuracy-pill--low';
-        var scoreHtml = answeredSoFar > 0
+        // In exam mode, hide the running score — user shouldn't know performance mid-quiz
+        var scoreHtml = (answeredSoFar > 0 && _mode === 'practice')
             ? '<span class="qb-accuracy-pill ' + pillClass + '">' + correctSoFar + '/' + answeredSoFar + ' <i class="fas fa-check"></i></span>'
             : '';
 
@@ -772,7 +773,47 @@ var QuizBank = (function () {
     }
 
     function _showSubmitFeedback(q, userAnswer, isCorrect) {
-        // Disable interactions
+        // ── EXAM MODE: No per-question feedback ──────────────
+        if (_mode === 'exam') {
+            // Just disable the options (keep selected styling, no correct/incorrect reveal)
+            if (q.type === 'ordering') {
+                _root.querySelectorAll('.qb-ordering-item').forEach(function (item) {
+                    item.classList.add('qb-ordering-item--disabled');
+                });
+            } else if (q.type === 'matrix') {
+                _root.querySelectorAll('.qb-matrix-cell').forEach(function (cell) {
+                    cell.classList.add('qb-matrix-cell--disabled');
+                });
+            } else {
+                _root.querySelectorAll('.qb-option').forEach(function (opt) {
+                    opt.classList.add('qb-option--disabled');
+                });
+            }
+
+            // Hide submit button
+            var actions = _root.querySelector('.qb-actions');
+            if (actions) actions.innerHTML = '';
+
+            // Show brief "Answer recorded" confirmation
+            var feedbackArea = document.getElementById('qb-feedback-area');
+            if (feedbackArea) {
+                feedbackArea.innerHTML = '<div class="qb-exam-recorded"><i class="fas fa-check-circle"></i> Answer recorded</div>';
+            }
+
+            // Auto-advance after a short delay
+            var isLast = _currentIndex >= _currentQuestions.length - 1;
+            setTimeout(function () {
+                if (isLast) {
+                    _showResults();
+                } else {
+                    _currentIndex++;
+                    _renderQuestion();
+                }
+            }, 600);
+            return;
+        }
+
+        // ── PRACTICE MODE: Full feedback ─────────────────────
         if (q.type === 'ordering') {
             _root.querySelectorAll('.qb-ordering-item').forEach(function (item) {
                 item.classList.add('qb-ordering-item--disabled');
@@ -830,20 +871,11 @@ var QuizBank = (function () {
         if (!feedbackArea) return;
 
         var isLast = _currentIndex >= _currentQuestions.length - 1;
-        var feedbackHtml = '';
-
-        if (_mode === 'practice') {
-            feedbackHtml = _buildPracticeFeedback(q, userAnswer, isCorrect);
-        } else {
-            var cls = isCorrect ? 'qb-exam-indicator--correct' : 'qb-exam-indicator--incorrect';
-            var icon = isCorrect ? 'fa-check' : 'fa-times';
-            var text = isCorrect ? 'Correct' : 'Incorrect';
-            feedbackHtml = '<div class="qb-exam-indicator ' + cls + '"><i class="fas ' + icon + '"></i> ' + text + '</div>';
-        }
+        var feedbackHtml = _buildPracticeFeedback(q, userAnswer, isCorrect);
 
         feedbackArea.innerHTML = feedbackHtml;
 
-        // Report question link (shown after every answered question)
+        // Report question link
         var reportLink = document.createElement('div');
         reportLink.className = 'qb-report-link';
         reportLink.innerHTML = '<button class="qb-report-btn" data-qb-action="report-question" data-question-id="' + _esc(q.id) + '"><i class="fas fa-flag"></i> Report this question</button>';
@@ -1137,7 +1169,7 @@ var QuizBank = (function () {
 
         // Per-question breakdown
         html += '<div class="qb-results-breakdown">';
-        html += '<div class="qb-results-breakdown-title">Question Breakdown</div>';
+        html += '<div class="qb-results-breakdown-title">' + (_mode === 'exam' ? 'Exam Review' : 'Question Breakdown') + '</div>';
         _currentQuestions.forEach(function (q, i) {
             var r = _results[q.id];
             if (!r) return;
@@ -1163,9 +1195,51 @@ var QuizBank = (function () {
             html += '<div class="qb-result-detail">';
             html += '<div class="qb-result-detail-inner">';
 
+            // In exam mode, show the full question, user answer vs correct answer
+            if (_mode === 'exam' && q.type !== 'ordering' && q.type !== 'matrix') {
+                html += '<div class="qb-review-stem">' + _esc(q.stem) + '</div>';
+                var shuffled = _getShuffledOptions(q.id) || q.options;
+                html += '<div class="qb-review-options">';
+                shuffled.forEach(function (opt) {
+                    var displayLetter = _getDisplayLetter(q.id, opt.id);
+                    var optClass = 'qb-review-option';
+                    var optIcon = '';
+                    if (opt.id === q.correct) {
+                        optClass += ' qb-review-option--correct';
+                        optIcon = '<i class="fas fa-check-circle"></i> ';
+                    }
+                    if (opt.id === r.userAnswer && !r.correct) {
+                        optClass += ' qb-review-option--incorrect';
+                        optIcon = '<i class="fas fa-times-circle"></i> ';
+                    }
+                    if (opt.id === r.userAnswer && r.correct) {
+                        optIcon = '<i class="fas fa-check-circle"></i> ';
+                    }
+                    html += '<div class="' + optClass + '">';
+                    html += '<span class="qb-review-option-letter">' + displayLetter.toUpperCase() + '.</span> ';
+                    html += optIcon;
+                    html += _esc(opt.text);
+                    html += '</div>';
+                });
+                html += '</div>';
+            }
+
             // Rationale
             if (q.rationale && q.rationale.correct) {
-                html += '<div class="qb-result-rationale">' + _esc(q.rationale.correct) + '</div>';
+                html += '<div class="qb-result-rationale">';
+                if (_mode === 'exam') {
+                    html += '<div class="qb-result-rationale-label"><i class="fas fa-lightbulb"></i> Rationale</div>';
+                }
+                html += _esc(q.rationale.correct);
+                html += '</div>';
+            }
+
+            // Test-taking tip (show in exam review too)
+            if (q.testTakingTip) {
+                html += '<div class="qb-result-tip">';
+                html += '<div class="qb-result-tip-label"><i class="fas fa-graduation-cap"></i> Test-Taking Tip</div>';
+                html += _esc(q.testTakingTip);
+                html += '</div>';
             }
 
             // Review link for wrong

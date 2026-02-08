@@ -1312,8 +1312,11 @@ var QuizBank = (function () {
 
         var html = '<div class="qb-results">';
 
-        // Score ring
-        html += '<div class="qb-results-header">';
+        // ── Top summary row: Score + Mastery side-by-side on desktop ──
+        html += '<div class="qb-results-top">';
+
+        // Left: Score ring + percentage + message
+        html += '<div class="qb-results-score-col">';
         html += '<div class="qb-score-ring-wrap"><div class="qb-score-ring">';
         html += '<svg viewBox="0 0 140 140"><circle class="qb-score-ring-bg" cx="70" cy="70" r="62"></circle>';
         html += '<circle class="qb-score-ring-fill qb-score-ring-fill--' + perfTier + '" cx="70" cy="70" r="62" stroke-dasharray="' + circumference + '" stroke-dashoffset="' + offset + '"></circle>';
@@ -1322,14 +1325,17 @@ var QuizBank = (function () {
         html += '</div></div>';
         html += '<div class="qb-score-pct">' + pct + '%</div>';
         html += '<div class="qb-perf-msg">' + _esc(perfMsg) + '</div>';
-        html += '</div>';
+        html += '</div>'; // .qb-results-score-col
+
+        // Right: Mastery + Pacing stacked
+        html += '<div class="qb-results-side-col">';
 
         // Mastery update — single topic
         if (masteryResult) {
             html += _buildMasteryCard(masteryResult, _currentTopicLabel || _currentTopicId);
         }
 
-        // Mastery update — multi-topic (custom quiz spanning topics)
+        // Mastery update — multi-topic
         if (multiTopicResults.length > 0) {
             html += '<div class="qb-mastery-multi">';
             html += '<div class="qb-mastery-multi-title"><i class="fas fa-layer-group"></i> Mastery Progress</div>';
@@ -1339,7 +1345,59 @@ var QuizBank = (function () {
             html += '</div>';
         }
 
-        // Per-question breakdown
+        // Pacing summary (compact, inside the side column)
+        var totalTime = 0;
+        var slowCount = 0;
+        var questionCount = _currentQuestions.length;
+        _currentQuestions.forEach(function (q) {
+            if (_questionTimes[q.id]) {
+                totalTime += _questionTimes[q.id];
+                if (_questionTimes[q.id] >= 90) slowCount++;
+            }
+        });
+        if (totalTime > 0) {
+            var avgTime = Math.round(totalTime / questionCount);
+            var totalMins = Math.floor(totalTime / 60);
+            var totalSecs = totalTime % 60;
+            html += '<div class="qb-pacing-summary">';
+            html += '<div class="qb-pacing-summary-title"><i class="fas fa-stopwatch"></i> Pacing Summary</div>';
+            html += '<div class="qb-pacing-summary-stats">';
+            html += '<div class="qb-pacing-stat"><span class="qb-pacing-stat-value">' + totalMins + ':' + (totalSecs < 10 ? '0' : '') + totalSecs + '</span><span class="qb-pacing-stat-label">Total Time</span></div>';
+            html += '<div class="qb-pacing-stat"><span class="qb-pacing-stat-value">' + avgTime + 's</span><span class="qb-pacing-stat-label">Avg / Question</span></div>';
+            if (slowCount > 0) {
+                html += '<div class="qb-pacing-stat qb-pacing-stat--warn"><span class="qb-pacing-stat-value">' + slowCount + '</span><span class="qb-pacing-stat-label">Slow (&gt;90s)</span></div>';
+            }
+            html += '</div>';
+            if (avgTime > 90) {
+                html += '<div class="qb-pacing-summary-tip"><i class="fas fa-lightbulb"></i> Your average is over 90 seconds per question. On the NCLEX, you\'ll have about 1 minute per question. Practice making quicker decisions!</div>';
+            } else if (avgTime <= 60) {
+                html += '<div class="qb-pacing-summary-tip qb-pacing-summary-tip--good"><i class="fas fa-check-circle"></i> Great pacing! You\'re averaging under a minute per question.</div>';
+            }
+            html += '</div>';
+        }
+
+        html += '</div>'; // .qb-results-side-col
+        html += '</div>'; // .qb-results-top
+
+        // ── Action buttons (horizontal row) ──
+        var retryCount = _getPendingRetryCount();
+        var retryLabel = 'Practice Again';
+        if (retryCount > 0) retryLabel += ' (' + retryCount + ')';
+
+        html += '<div class="qb-results-actions">';
+        html += '<button class="qb-btn qb-btn--primary" data-qb-action="practice-again"><i class="fas fa-redo"></i> ' + retryLabel + '</button>';
+        if (missedCount > 0) {
+            html += '<button class="qb-btn qb-btn--secondary" data-qb-action="review-missed"><i class="fas fa-sync-alt"></i> Review Missed (' + missedCount + ')</button>';
+        }
+        var flaggedCount = Object.keys(_flagged).length;
+        if (flaggedCount > 0) {
+            html += '<button class="qb-btn qb-btn--secondary" data-qb-action="review-bookmarked"><i class="fas fa-bookmark"></i> Bookmarked (' + flaggedCount + ')</button>';
+        }
+        html += '<button class="qb-btn qb-btn--ghost" data-qb-action="scroll-builder"><i class="fas fa-sliders-h"></i> New Quiz</button>';
+        html += '<button class="qb-btn qb-btn--ghost" data-qb-action="back-to-hub"><i class="fas fa-th-large"></i> Hub</button>';
+        html += '</div>';
+
+        // ── Per-question breakdown ──
         html += '<div class="qb-results-breakdown">';
         html += '<div class="qb-results-breakdown-title">' + (_mode === 'exam' ? 'Exam Review' : 'Question Breakdown') + '</div>';
         _currentQuestions.forEach(function (q, i) {
@@ -1435,55 +1493,6 @@ var QuizBank = (function () {
             html += '</div></div>';
             html += '</div>';
         });
-        html += '</div>';
-
-        // Overall pacing summary
-        var totalTime = 0;
-        var slowCount = 0;
-        var questionCount = _currentQuestions.length;
-        _currentQuestions.forEach(function (q) {
-            if (_questionTimes[q.id]) {
-                totalTime += _questionTimes[q.id];
-                if (_questionTimes[q.id] >= 90) slowCount++;
-            }
-        });
-        if (totalTime > 0) {
-            var avgTime = Math.round(totalTime / questionCount);
-            var totalMins = Math.floor(totalTime / 60);
-            var totalSecs = totalTime % 60;
-            html += '<div class="qb-pacing-summary">';
-            html += '<div class="qb-pacing-summary-title"><i class="fas fa-stopwatch"></i> Pacing Summary</div>';
-            html += '<div class="qb-pacing-summary-stats">';
-            html += '<div class="qb-pacing-stat"><span class="qb-pacing-stat-value">' + totalMins + ':' + (totalSecs < 10 ? '0' : '') + totalSecs + '</span><span class="qb-pacing-stat-label">Total Time</span></div>';
-            html += '<div class="qb-pacing-stat"><span class="qb-pacing-stat-value">' + avgTime + 's</span><span class="qb-pacing-stat-label">Avg / Question</span></div>';
-            if (slowCount > 0) {
-                html += '<div class="qb-pacing-stat qb-pacing-stat--warn"><span class="qb-pacing-stat-value">' + slowCount + '</span><span class="qb-pacing-stat-label">Slow (&gt;90s)</span></div>';
-            }
-            html += '</div>';
-            if (avgTime > 90) {
-                html += '<div class="qb-pacing-summary-tip"><i class="fas fa-lightbulb"></i> Your average is over 90 seconds per question. On the NCLEX, you\'ll have about 1 minute per question. Practice making quicker decisions!</div>';
-            } else if (avgTime <= 60) {
-                html += '<div class="qb-pacing-summary-tip qb-pacing-summary-tip--good"><i class="fas fa-check-circle"></i> Great pacing! You\'re averaging under a minute per question.</div>';
-            }
-            html += '</div>';
-        }
-
-        // Action buttons
-        var retryCount = _getPendingRetryCount();
-        var retryLabel = 'Practice Again';
-        if (retryCount > 0) retryLabel += ' (' + retryCount + ' to review)';
-
-        html += '<div class="qb-results-actions">';
-        html += '<button class="qb-btn qb-btn--primary" data-qb-action="practice-again"><i class="fas fa-redo"></i> ' + retryLabel + '</button>';
-        if (missedCount > 0) {
-            html += '<button class="qb-btn qb-btn--secondary" data-qb-action="review-missed"><i class="fas fa-sync-alt"></i> Review Missed (' + missedCount + ')</button>';
-        }
-        var flaggedCount = Object.keys(_flagged).length;
-        if (flaggedCount > 0) {
-            html += '<button class="qb-btn qb-btn--secondary" data-qb-action="review-bookmarked"><i class="fas fa-bookmark"></i> Review Bookmarked (' + flaggedCount + ')</button>';
-        }
-        html += '<button class="qb-btn qb-btn--secondary" data-qb-action="scroll-builder"><i class="fas fa-sliders-h"></i> New Custom Quiz</button>';
-        html += '<button class="qb-btn qb-btn--ghost" data-qb-action="back-to-hub"><i class="fas fa-th-large"></i> Back to Hub</button>';
         html += '</div>';
 
         html += '</div>';

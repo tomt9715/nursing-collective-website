@@ -42,6 +42,7 @@ var QuizBank = (function () {
     var _questionTimerStart = null;  // timestamp when question was rendered
     var _questionTimes = {};       // questionId -> seconds spent
     var _timerInterval = null;     // setInterval ref for timer display
+    var _timerVisible = false;     // whether timer UI is shown (always true in exam)
 
     var RETRY_STORAGE_KEY = 'nursingCollective_retryQueue';
 
@@ -74,6 +75,7 @@ var QuizBank = (function () {
         _mode = null;
         _flagged = {};
         _questionTimes = {};
+        _timerVisible = false;
         if (_timerInterval) { clearInterval(_timerInterval); _timerInterval = null; }
         window.removeEventListener('beforeunload', _boundBeforeUnload);
         window.scrollTo({ top: 0 });
@@ -597,7 +599,11 @@ var QuizBank = (function () {
         html += '</button>';
         html += '</div>';
         html += '<div class="qb-q-toolbar-right">';
-        html += '<div class="qb-timer" id="qb-question-timer"><i class="fas fa-clock"></i> <span>0:00</span></div>';
+        // Timer always visible in exam mode; in practice mode, only if user toggled it on
+        var showTimer = (_mode === 'exam') || _timerVisible;
+        if (showTimer) {
+            html += '<div class="qb-timer" id="qb-question-timer"><i class="fas fa-clock"></i> <span>0:00</span></div>';
+        }
         html += '</div>';
         html += '</div>';
 
@@ -620,16 +626,19 @@ var QuizBank = (function () {
         _questionTimerStart = Date.now();
 
         _timerInterval = setInterval(function () {
-            var timerEl = document.getElementById('qb-question-timer');
-            if (!timerEl) { clearInterval(_timerInterval); return; }
             var elapsed = Math.floor((Date.now() - _questionTimerStart) / 1000);
-            var mins = Math.floor(elapsed / 60);
-            var secs = elapsed % 60;
-            var display = mins + ':' + (secs < 10 ? '0' : '') + secs;
-            timerEl.querySelector('span').textContent = display;
+
+            // Update timer UI if visible
+            var timerEl = document.getElementById('qb-question-timer');
+            if (timerEl) {
+                var mins = Math.floor(elapsed / 60);
+                var secs = elapsed % 60;
+                var display = mins + ':' + (secs < 10 ? '0' : '') + secs;
+                timerEl.querySelector('span').textContent = display;
+            }
 
             // Warning at 2 minutes
-            if (elapsed >= 120) {
+            if (timerEl && elapsed >= 120) {
                 timerEl.classList.add('qb-timer--warning');
             }
         }, 1000);
@@ -1249,10 +1258,52 @@ var QuizBank = (function () {
                 html += '<a href="' + href + '" class="qb-result-review-link" target="_blank"><i class="fas fa-book"></i> Review in Study Guide</a>';
             }
 
+            // Pacing feedback for slow questions
+            if (_questionTimes[q.id] && _questionTimes[q.id] >= 90) {
+                var pacingMsg = '';
+                if (_questionTimes[q.id] >= 180) {
+                    pacingMsg = 'You spent over 3 minutes here. On the NCLEX, aim for about 1–1.5 minutes per question. If you\'re unsure, eliminate obvious wrong answers and go with your best choice.';
+                } else {
+                    pacingMsg = 'This one took a while. Try to keep questions under 1.5 minutes. If you\'re stuck, flag it and move on — you can always come back.';
+                }
+                html += '<div class="qb-result-pacing"><i class="fas fa-hourglass-half"></i> <strong>Pacing tip:</strong> ' + pacingMsg + '</div>';
+            }
+
             html += '</div></div>';
             html += '</div>';
         });
         html += '</div>';
+
+        // Overall pacing summary
+        var totalTime = 0;
+        var slowCount = 0;
+        var questionCount = _currentQuestions.length;
+        _currentQuestions.forEach(function (q) {
+            if (_questionTimes[q.id]) {
+                totalTime += _questionTimes[q.id];
+                if (_questionTimes[q.id] >= 90) slowCount++;
+            }
+        });
+        if (totalTime > 0) {
+            var avgTime = Math.round(totalTime / questionCount);
+            var totalMins = Math.floor(totalTime / 60);
+            var totalSecs = totalTime % 60;
+            html += '<div class="qb-pacing-summary">';
+            html += '<div class="qb-pacing-summary-title"><i class="fas fa-stopwatch"></i> Pacing Summary</div>';
+            html += '<div class="qb-pacing-summary-stats">';
+            html += '<div class="qb-pacing-stat"><span class="qb-pacing-stat-value">' + totalMins + ':' + (totalSecs < 10 ? '0' : '') + totalSecs + '</span><span class="qb-pacing-stat-label">Total Time</span></div>';
+            html += '<div class="qb-pacing-stat"><span class="qb-pacing-stat-value">' + avgTime + 's</span><span class="qb-pacing-stat-label">Avg / Question</span></div>';
+            if (slowCount > 0) {
+                html += '<div class="qb-pacing-stat qb-pacing-stat--warn"><span class="qb-pacing-stat-value">' + slowCount + '</span><span class="qb-pacing-stat-label">Slow (&gt;90s)</span></div>';
+            }
+            html += '</div>';
+            if (avgTime > 90) {
+                html += '<div class="qb-pacing-summary-tip"><i class="fas fa-lightbulb"></i> Your average is over 90 seconds per question. On the NCLEX, you\'ll have about 1 minute per question. Practice making quicker decisions!</div>';
+            } else if (avgTime <= 60) {
+                html += '<div class="qb-pacing-summary-tip qb-pacing-summary-tip--good"><i class="fas fa-check-circle"></i> Great pacing! You\'re averaging under a minute per question.</div>';
+            }
+            html += '</div>';
+        }
 
         // Action buttons
         var retryCount = _getPendingRetryCount();
@@ -1368,6 +1419,12 @@ var QuizBank = (function () {
                     break;
                 case 'set-preconfig-mode':
                     _handleSetPreconfigMode(actionBtn);
+                    break;
+                case 'set-preconfig-timer':
+                    _handleSetPreconfigTimer(actionBtn);
+                    break;
+                case 'set-timer':
+                    _handleSetTimer(actionBtn);
                     break;
                 case 'start-preconfig':
                     _handleStartPreconfig(actionBtn);
@@ -1587,6 +1644,16 @@ var QuizBank = (function () {
         html += '<div class="qb-builder-desc">Practice = see rationale after each question. Exam = no feedback until the end, simulates real test conditions.</div>';
         html += '</div>';
 
+        // Timer toggle
+        html += '<div class="qb-preconfig-group qb-timer-toggle-group" id="qb-preconfig-timer-group">';
+        html += '<label class="qb-preconfig-label"><i class="fas fa-clock"></i> Timer</label>';
+        html += '<div class="qb-preconfig-chips">';
+        html += '<button class="qb-chip" data-qb-action="set-preconfig-timer" data-ptimer="off">Off</button>';
+        html += '<button class="qb-chip" data-qb-action="set-preconfig-timer" data-ptimer="on">On</button>';
+        html += '</div>';
+        html += '<div class="qb-builder-desc">Show a per-question timer to track your pacing. Always on in Exam mode.</div>';
+        html += '</div>';
+
         // Start
         html += '<button class="qb-btn qb-btn--primary qb-btn--lg qb-preconfig-start" data-qb-action="start-preconfig" data-topic="' + _esc(topicId) + '" data-chapter="' + _esc(chapterId) + '" disabled><i class="fas fa-play"></i> Start Quiz</button>';
 
@@ -1654,6 +1721,21 @@ var QuizBank = (function () {
         btn.parentElement.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
         btn.classList.add('qb-chip--active');
         _mode = btn.dataset.mode || 'practice';
+
+        // If exam mode selected, auto-enable timer and disable toggle
+        var timerGroup = document.getElementById('qb-builder-timer-group');
+        if (timerGroup) {
+            if (_mode === 'exam') {
+                _timerVisible = true;
+                timerGroup.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
+                timerGroup.querySelector('[data-timer="on"]').classList.add('qb-chip--active');
+                timerGroup.style.opacity = '0.5';
+                timerGroup.style.pointerEvents = 'none';
+            } else {
+                timerGroup.style.opacity = '1';
+                timerGroup.style.pointerEvents = 'auto';
+            }
+        }
         _updateBuilderCount();
     }
 
@@ -1679,7 +1761,35 @@ var QuizBank = (function () {
         btn.parentElement.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
         btn.classList.add('qb-chip--active');
         _root._preconfigMode = btn.dataset.pmode;
+
+        // If exam mode selected, auto-enable timer and disable toggle
+        var timerGroup = document.getElementById('qb-preconfig-timer-group');
+        if (timerGroup) {
+            if (btn.dataset.pmode === 'exam') {
+                // Force timer on
+                _root._preconfigTimer = true;
+                timerGroup.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
+                timerGroup.querySelector('[data-ptimer="on"]').classList.add('qb-chip--active');
+                timerGroup.style.opacity = '0.5';
+                timerGroup.style.pointerEvents = 'none';
+            } else {
+                timerGroup.style.opacity = '1';
+                timerGroup.style.pointerEvents = 'auto';
+            }
+        }
         _updatePreconfigStart();
+    }
+
+    function _handleSetPreconfigTimer(btn) {
+        btn.parentElement.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
+        btn.classList.add('qb-chip--active');
+        _root._preconfigTimer = btn.dataset.ptimer === 'on';
+    }
+
+    function _handleSetTimer(btn) {
+        btn.parentElement.querySelectorAll('.qb-chip').forEach(function (c) { c.classList.remove('qb-chip--active'); });
+        btn.classList.add('qb-chip--active');
+        _timerVisible = btn.dataset.timer === 'on';
     }
 
     function _updatePreconfigStart() {
@@ -1711,6 +1821,8 @@ var QuizBank = (function () {
         _shuffleArray(questions);
         var topicLabel = MasteryTracker.getTopicLabel(topicId);
         _isCustom = false;
+        // Set timer visibility from preconfig selection (exam mode always forces it on)
+        _timerVisible = _root._preconfigTimer || (mode === 'exam');
         _startQuiz(questions, topicId, topicLabel, chapterId, mode, size);
     }
 
@@ -2347,6 +2459,16 @@ var QuizBank = (function () {
         html += '<div class="qb-builder-desc">Practice = see rationale after each question. Exam = no feedback until the end, simulates real test conditions.</div>';
         html += '</div>';
 
+        // Timer toggle
+        html += '<div class="qb-builder-group qb-timer-toggle-group" id="qb-builder-timer-group">';
+        html += '<label class="qb-builder-label"><i class="fas fa-clock"></i> Timer</label>';
+        html += '<div class="qb-builder-chips">';
+        html += '<button class="qb-chip" data-qb-action="set-timer" data-timer="off">Off</button>';
+        html += '<button class="qb-chip" data-qb-action="set-timer" data-timer="on">On</button>';
+        html += '</div>';
+        html += '<div class="qb-builder-desc">Show a per-question timer to track your pacing. Always on in Exam mode.</div>';
+        html += '</div>';
+
         // Match count & start
         html += '<div class="qb-builder-footer">';
         html += '<div class="qb-builder-count" id="qb-match-count">0 questions match</div>';
@@ -2390,6 +2512,9 @@ var QuizBank = (function () {
                     break;
                 case 'set-mode':
                     _handleSetMode(actionBtn);
+                    break;
+                case 'set-timer':
+                    _handleSetTimer(actionBtn);
                     break;
                 case 'start-custom':
                     _closeBuilderModal();

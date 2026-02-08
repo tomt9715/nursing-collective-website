@@ -3043,6 +3043,100 @@ body.qb-quiz-active .qb-container {
     margin-top: 10px;
 }
 
+/* ── Per-question pacing tip ──────────────── */
+.qb-result-pacing {
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--qb-accent);
+    padding: 8px 12px;
+    background: rgba(245, 158, 11, 0.06);
+    border-radius: 6px;
+    border-left: 3px solid var(--qb-accent);
+    margin-top: 10px;
+}
+
+.qb-result-pacing i {
+    margin-right: 4px;
+    opacity: 0.8;
+}
+
+/* ── Overall pacing summary card ─────────── */
+.qb-pacing-summary {
+    background: var(--qb-card-bg);
+    border: 1px solid var(--qb-border);
+    border-radius: var(--qb-radius-lg);
+    padding: 24px;
+    margin-bottom: 24px;
+}
+
+.qb-pacing-summary-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--qb-text);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.qb-pacing-summary-title i {
+    color: var(--qb-primary);
+}
+
+.qb-pacing-summary-stats {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.qb-pacing-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 80px;
+}
+
+.qb-pacing-stat-value {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--qb-text);
+    font-variant-numeric: tabular-nums;
+}
+
+.qb-pacing-stat-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--qb-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.qb-pacing-stat--warn .qb-pacing-stat-value {
+    color: var(--qb-accent);
+}
+
+.qb-pacing-summary-tip {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--qb-accent);
+    padding: 10px 14px;
+    background: rgba(245, 158, 11, 0.06);
+    border-radius: 8px;
+    border-left: 3px solid var(--qb-accent);
+}
+
+.qb-pacing-summary-tip--good {
+    color: var(--qb-correct);
+    background: rgba(5, 150, 105, 0.06);
+    border-left-color: var(--qb-correct);
+}
+
+.qb-pacing-summary-tip i {
+    margin-right: 6px;
+}
+
 /* ── Subtle background for quiz view ──────── */
 .qb-quiz-active .qb-container {
     background: radial-gradient(ellipse at 50% 0%, rgba(46, 134, 171, 0.03) 0%, transparent 60%);

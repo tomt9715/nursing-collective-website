@@ -648,8 +648,8 @@ function handleProfilePicUpload(file) {
         showAlert('Invalid File', 'Please upload a PNG, JPG, or WEBP image.', 'error');
         return;
     }
-    if (file.size > 5 * 1024 * 1024) {
-        showAlert('File Too Large', 'Please upload an image under 5MB.', 'error');
+    if (file.size > 20 * 1024 * 1024) {
+        showAlert('File Too Large', 'Please upload an image under 20MB.', 'error');
         return;
     }
 

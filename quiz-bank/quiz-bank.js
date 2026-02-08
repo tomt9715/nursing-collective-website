@@ -1579,6 +1579,11 @@ var QuizBank = (function () {
                 html += '<div class="qb-result-pacing"><i class="fas fa-hourglass-half"></i> <strong>Pacing tip:</strong> ' + pacingMsg + '</div>';
             }
 
+            // Report question
+            html += '<div class="qb-report-link">';
+            html += '<button class="qb-report-btn" data-qb-action="report-question" data-question-id="' + _esc(q.id) + '"><i class="fas fa-flag"></i> Report this question</button>';
+            html += '</div>';
+
             html += '</div></div>';
             html += '</div>';
         });
@@ -2671,6 +2676,11 @@ var QuizBank = (function () {
             html += '<i class="fas fa-book"></i> Review in Study Guide <i class="fas fa-external-link-alt" style="font-size:0.75rem"></i>';
             html += '</a>';
         }
+
+        // Report question link
+        html += '<div class="qb-report-link">';
+        html += '<button class="qb-report-btn" data-qb-action="report-question" data-question-id="' + _esc(q.id) + '"><i class="fas fa-flag"></i> Report this question</button>';
+        html += '</div>';
 
         html += '</div>'; // .qb-review-card
 

@@ -285,11 +285,7 @@ function getProfilePictureUrl(profilePicture) {
     // Otherwise it's a default icon filename
     // Determine base path based on current page depth
     var basePath = '';
-    if (window.location.pathname.includes('/app/')) {
-        basePath = '../';
-    } else if (window.location.pathname.includes('/quiz-bank/')) {
-        basePath = '../';
-    } else if (window.location.pathname.includes('/guides/')) {
+    if (window.location.pathname.includes('/guides/')) {
         basePath = '../';
     }
     return basePath + 'assets/images/default-profile/' + profilePicture;

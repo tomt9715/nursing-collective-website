@@ -139,15 +139,19 @@ var QuizBank = (function () {
         var menu = document.getElementById('qb-hub-menu');
         if (menu) menu.classList.remove('qb-hub-menu--open');
 
+        var loginUrl = (window.location.hostname === 'learn.thenursingcollective.pro')
+            ? 'https://thenursingcollective.pro/login.html'
+            : '../login.html';
+
         // Sign out via Firebase if available
         if (typeof firebase !== 'undefined' && firebase.auth) {
             firebase.auth().signOut().then(function () {
-                window.location.href = '../login.html';
+                window.location.href = loginUrl;
             }).catch(function () {
-                window.location.href = '../login.html';
+                window.location.href = loginUrl;
             });
         } else {
-            window.location.href = '../login.html';
+            window.location.href = loginUrl;
         }
     }
 
@@ -196,9 +200,14 @@ var QuizBank = (function () {
             if (!displayName) displayName = (userData.email || '').split('@')[0];
         }
 
+        // Detect base URL for cross-subdomain links
+        var _mainSite = (window.location.hostname === 'learn.thenursingcollective.pro')
+            ? 'https://thenursingcollective.pro/'
+            : '../';
+
         html += '<div class="qb-hub-topbar">';
-        html += '<a href="../index.html" class="qb-hub-topbar-brand" title="Back to The Nursing Collective">';
-        html += '<img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="qb-hub-topbar-logo">';
+        html += '<a href="' + _mainSite + '" class="qb-hub-topbar-brand" title="Back to The Nursing Collective">';
+        html += '<img src="' + _mainSite + 'assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="qb-hub-topbar-logo">';
         html += '</a>';
         html += '<span class="qb-hub-topbar-title">Quiz Bank</span>';
         html += '<div class="qb-hub-topbar-right">';
@@ -213,14 +222,14 @@ var QuizBank = (function () {
             html += '<button class="qb-hub-topbar-avatar" data-qb-action="toggle-hub-menu" title="Account">' + avatarHtml + '</button>';
             html += '<div class="qb-hub-menu" id="qb-hub-menu">';
             html += '<div class="qb-hub-menu-header">' + _esc(displayName || 'My Account') + '</div>';
-            html += '<a href="../dashboard.html" class="qb-hub-menu-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>';
-            html += '<a href="../settings.html" class="qb-hub-menu-item"><i class="fas fa-cog"></i> Settings</a>';
-            html += '<a href="../contact.html" class="qb-hub-menu-item"><i class="fas fa-question-circle"></i> Help</a>';
+            html += '<a href="' + _mainSite + 'dashboard.html" class="qb-hub-menu-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>';
+            html += '<a href="' + _mainSite + 'settings.html" class="qb-hub-menu-item"><i class="fas fa-cog"></i> Settings</a>';
+            html += '<a href="' + _mainSite + 'contact.html" class="qb-hub-menu-item"><i class="fas fa-question-circle"></i> Help</a>';
             html += '<div class="qb-hub-menu-divider"></div>';
             html += '<button class="qb-hub-menu-item" data-qb-action="hub-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>';
             html += '</div>';
         } else {
-            html += '<a href="../login.html" class="qb-hub-topbar-signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>';
+            html += '<a href="' + _mainSite + 'login.html" class="qb-hub-topbar-signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>';
         }
         html += '</div>';
         html += '</div>';

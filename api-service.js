@@ -7,7 +7,7 @@
 // API Configuration - auto-detect environment
 const API_URL = (function() {
     const hostname = window.location.hostname;
-    if (hostname === 'thenursingcollective.pro' || hostname === 'www.thenursingcollective.pro') {
+    if (hostname === 'thenursingcollective.pro' || hostname === 'www.thenursingcollective.pro' || hostname === 'learn.thenursingcollective.pro') {
         return 'https://api.thenursingcollective.pro';
     }
     // Staging: preview branches, localhost, and any non-production host

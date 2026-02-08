@@ -105,6 +105,53 @@ var QuizBank = (function () {
     }
 
     // ══════════════════════════════════════════════════════
+    //  HUB TOP BAR
+    // ══════════════════════════════════════════════════════
+
+    function _toggleHubMenu() {
+        var menu = document.getElementById('qb-hub-menu');
+        if (!menu) return;
+        var isOpen = menu.classList.contains('qb-hub-menu--open');
+        if (isOpen) {
+            menu.classList.remove('qb-hub-menu--open');
+            document.removeEventListener('click', _closeHubMenuOutside, true);
+        } else {
+            menu.classList.add('qb-hub-menu--open');
+            // Delay adding close-on-outside so this click doesn't immediately close it
+            setTimeout(function () {
+                document.addEventListener('click', _closeHubMenuOutside, true);
+            }, 0);
+        }
+    }
+
+    function _closeHubMenuOutside(e) {
+        var menu = document.getElementById('qb-hub-menu');
+        var avatar = e.target.closest('.qb-hub-topbar-avatar');
+        if (avatar) return; // let toggle handle it
+        if (menu && !menu.contains(e.target)) {
+            menu.classList.remove('qb-hub-menu--open');
+            document.removeEventListener('click', _closeHubMenuOutside, true);
+        }
+    }
+
+    function _handleHubLogout() {
+        // Close the menu
+        var menu = document.getElementById('qb-hub-menu');
+        if (menu) menu.classList.remove('qb-hub-menu--open');
+
+        // Sign out via Firebase if available
+        if (typeof firebase !== 'undefined' && firebase.auth) {
+            firebase.auth().signOut().then(function () {
+                window.location.href = '../login.html';
+            }).catch(function () {
+                window.location.href = '../login.html';
+            });
+        } else {
+            window.location.href = '../login.html';
+        }
+    }
+
+    // ══════════════════════════════════════════════════════
     //  HUB PAGE
     // ══════════════════════════════════════════════════════
 
@@ -139,6 +186,45 @@ var QuizBank = (function () {
 
         var html = '';
 
+        // ── Hub Top Bar ──────────────────────────────
+        var userData = null;
+        try { userData = JSON.parse(localStorage.getItem('user')); } catch(e) {}
+        var profilePic = (userData && userData.profile_picture) ? userData.profile_picture : null;
+        var displayName = '';
+        if (userData) {
+            displayName = (userData.first_name || '').trim();
+            if (!displayName) displayName = (userData.email || '').split('@')[0];
+        }
+
+        html += '<div class="qb-hub-topbar">';
+        html += '<a href="../index.html" class="qb-hub-topbar-brand" title="Back to The Nursing Collective">';
+        html += '<img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="qb-hub-topbar-logo">';
+        html += '</a>';
+        html += '<span class="qb-hub-topbar-title">Quiz Bank</span>';
+        html += '<div class="qb-hub-topbar-right">';
+        if (isSignedIn) {
+            var avatarHtml = '';
+            if (typeof renderProfilePicture === 'function' && profilePic) {
+                avatarHtml = renderProfilePicture(profilePic, 'sm', displayName);
+            } else {
+                var initial = displayName ? displayName.charAt(0).toUpperCase() : 'U';
+                avatarHtml = '<span class="qb-hub-topbar-initial">' + initial + '</span>';
+            }
+            html += '<button class="qb-hub-topbar-avatar" data-qb-action="toggle-hub-menu" title="Account">' + avatarHtml + '</button>';
+            html += '<div class="qb-hub-menu" id="qb-hub-menu">';
+            html += '<div class="qb-hub-menu-header">' + _esc(displayName || 'My Account') + '</div>';
+            html += '<a href="../dashboard.html" class="qb-hub-menu-item"><i class="fas fa-tachometer-alt"></i> Dashboard</a>';
+            html += '<a href="../settings.html" class="qb-hub-menu-item"><i class="fas fa-cog"></i> Settings</a>';
+            html += '<a href="../contact.html" class="qb-hub-menu-item"><i class="fas fa-question-circle"></i> Help</a>';
+            html += '<div class="qb-hub-menu-divider"></div>';
+            html += '<button class="qb-hub-menu-item" data-qb-action="hub-logout"><i class="fas fa-sign-out-alt"></i> Logout</button>';
+            html += '</div>';
+        } else {
+            html += '<a href="../login.html" class="qb-hub-topbar-signin"><i class="fas fa-sign-in-alt"></i> Sign In</a>';
+        }
+        html += '</div>';
+        html += '</div>';
+
         // ── Section A: Mastery Hero ──────────────────
         html += '<section class="qb-section qb-mastery-hero">';
 
@@ -150,18 +236,9 @@ var QuizBank = (function () {
             html += '<div class="qb-empty-actions"><a href="../login.html" class="qb-btn qb-btn--primary">Sign In</a></div>';
             html += '</div>';
         } else if (hasData) {
-            // User data for profile picture
-            var userData = null;
-            try { userData = JSON.parse(localStorage.getItem('user')); } catch(e) {}
-            var profilePic = (userData && userData.profile_picture) ? userData.profile_picture : 'robot.png';
-            var displayName = '';
-            if (userData) {
-                displayName = (userData.first_name || '').trim();
-                if (!displayName) displayName = (userData.email || '').split('@')[0];
-            }
-
             // Mastery Ring with profile picture embedded in center
-            html += _buildMasteryRingWithAvatar(stats.averageLevel, 10, profilePic, displayName);
+            var ringPic = profilePic || 'robot.png';
+            html += _buildMasteryRingWithAvatar(stats.averageLevel, 10, ringPic, displayName);
 
             // Greeting + level below the ring
             if (displayName) {
@@ -1761,6 +1838,12 @@ var QuizBank = (function () {
                     break;
                 case 'select-report-reason':
                     _selectReportReason(actionBtn);
+                    break;
+                case 'toggle-hub-menu':
+                    _toggleHubMenu();
+                    break;
+                case 'hub-logout':
+                    _handleHubLogout();
                     break;
                 case 'quit-quiz':
                     if (confirm('Incomplete sets don\'t count toward mastery. Are you sure you want to quit?')) {

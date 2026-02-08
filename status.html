@@ -410,12 +410,11 @@
                 </a>
             </div>
             <div class="nav-links">
-                <a href="#" class="nav-link-home">Home</a>
+                <!-- Authenticated nav item (shown when logged in) -->
+                <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
                 <a href="resources.html">Resources</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about.html">About</a>
-                <a href="about-florencebot.html">About FlorenceBot</a>
-                <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
                 <div class="user-menu" id="user-menu" style="display: none;">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <i class="fas fa-user-circle"></i>
@@ -438,7 +437,6 @@
                         <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
                 </div>
-                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-primary">Join Discord</a>
             </div>
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>

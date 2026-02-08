@@ -198,8 +198,8 @@ var QuizBank = (function () {
 
             html += '<span class="qb-chapter-meta">' + totalTopicsInChapter + ' topics</span>';
             html += '<i class="fas fa-chevron-down qb-chapter-arrow"></i>';
-            html += chapterBarHtml;
             html += '</button>';
+            html += chapterBarHtml;
 
             html += '<div class="qb-chapter-topics">';
             chapter.topics.forEach(function (topic) {

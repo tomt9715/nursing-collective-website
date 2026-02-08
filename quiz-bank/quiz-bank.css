@@ -446,8 +446,8 @@
     background: var(--qb-border);
     border-radius: 2px;
     overflow: hidden;
-    margin-top: 8px;
-    width: 100%;
+    margin: 0 16px 8px;
+    width: calc(100% - 32px);
 }
 
 .qb-chapter-bar-fill {

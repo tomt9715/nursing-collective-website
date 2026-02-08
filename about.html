@@ -230,6 +230,95 @@
             border: 1px solid var(--border-color);
         }
 
+        /* Approach flow visual */
+        .approach-flow {
+            max-width: 800px;
+            margin: 0 auto 48px;
+        }
+
+        .approach-flow-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .approach-flow-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .approach-flow-header h2 i {
+            color: var(--primary-color);
+        }
+
+        .flow-steps {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            position: relative;
+        }
+
+        .flow-step {
+            flex: 1;
+            text-align: center;
+            padding: 28px 20px;
+            border-radius: 14px;
+            position: relative;
+            border: 1px solid var(--border-color);
+            background: var(--card-bg);
+        }
+
+        .flow-step-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 14px;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .flow-step:nth-child(1) .flow-step-icon {
+            background: linear-gradient(135deg, #ef4444, #f97316);
+        }
+        .flow-step:nth-child(2) .flow-step-icon {
+            background: linear-gradient(135deg, var(--primary-color), #4A90E2);
+        }
+        .flow-step:nth-child(3) .flow-step-icon {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+
+        .flow-step h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .flow-step p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.55;
+            margin: 0;
+        }
+
+        .flow-arrow {
+            display: flex;
+            align-items: center;
+            padding: 0 6px;
+            color: var(--text-light, #9ca3af);
+            font-size: 1.4rem;
+            flex-shrink: 0;
+        }
+
         @media (max-width: 768px) {
             .about-hero {
                 padding: 120px 0 60px;
@@ -253,6 +342,15 @@
                 justify-content: center;
                 margin: 8px auto;
                 max-width: 280px;
+            }
+            .flow-steps {
+                flex-direction: column;
+                gap: 0;
+            }
+            .flow-arrow {
+                justify-content: center;
+                padding: 8px 0;
+                transform: rotate(90deg);
             }
         }
 
@@ -385,6 +483,32 @@
                             <p>Here's the problem we kept seeing: most resources online are focused entirely on NCLEX prep. But nobody talks about actually getting <em>through</em> nursing school. The critical thinking, the prioritization, learning how to approach questions you've never seen before — that's the hard part, and that's what gets tested every single semester before you even sit for the NCLEX.</p>
                             <p>So we built what we wished we had: a platform that helps you develop those skills <em>now</em>, while you're still in school. Our study guides teach you to think like a nurse, and our quiz bank uses NCLEX-style questions from day one — so by the time you actually take the NCLEX, you've already been practicing that style of thinking for semesters. The goal isn't just to pass an exam. It's to walk in confident enough to pass on your first try.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Our Approach Flow -->
+            <div class="approach-flow">
+                <div class="approach-flow-header">
+                    <h2><i class="fas fa-route"></i> Our Approach</h2>
+                </div>
+                <div class="flow-steps">
+                    <div class="flow-step">
+                        <div class="flow-step-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h3>The Problem</h3>
+                        <p>Most resources only prep you for the NCLEX — but don't help you survive the semesters leading up to it.</p>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="flow-step">
+                        <div class="flow-step-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h3>Our Solution</h3>
+                        <p>Learn critical thinking and clinical reasoning <em>now</em> with NCLEX-style questions built into your everyday studying.</p>
+                    </div>
+                    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
+                    <div class="flow-step">
+                        <div class="flow-step-icon"><i class="fas fa-trophy"></i></div>
+                        <h3>The Result</h3>
+                        <p>By the time you sit for the NCLEX, you've already been thinking this way for semesters. First-try confidence.</p>
                     </div>
                 </div>
             </div>

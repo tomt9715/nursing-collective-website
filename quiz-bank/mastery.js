@@ -484,6 +484,7 @@ var MasteryTracker = (function () {
     // ── Server Sync (cross-device progress) ──────────────
 
     var RETRY_QUEUE_KEY = 'nursingCollective_retryQueue';
+    var BOOKMARKS_KEY = 'nursingCollective_bookmarks';
 
     function _isLoggedIn() {
         return !!localStorage.getItem('accessToken');
@@ -615,6 +616,31 @@ var MasteryTracker = (function () {
         } catch (e) {
             console.warn('[Mastery] Failed to merge retry queue:', e);
         }
+
+        // Merge bookmarks (union by questionId, keep earliest savedAt)
+        try {
+            var localBM = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) || '[]');
+            var remoteBM = serverData.bookmarks || [];
+            var bmMap = {};
+            var i, bm;
+            for (i = 0; i < localBM.length; i++) {
+                bm = localBM[i];
+                bmMap[bm.questionId] = bm;
+            }
+            for (i = 0; i < remoteBM.length; i++) {
+                bm = remoteBM[i];
+                if (!bmMap[bm.questionId]) {
+                    bmMap[bm.questionId] = bm;
+                }
+            }
+            var mergedBM = [];
+            for (var qId in bmMap) {
+                if (bmMap.hasOwnProperty(qId)) mergedBM.push(bmMap[qId]);
+            }
+            localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(mergedBM));
+        } catch (e) {
+            console.warn('[Mastery] Failed to merge bookmarks:', e);
+        }
     }
 
     /**
@@ -631,10 +657,18 @@ var MasteryTracker = (function () {
             retryQueue = {};
         }
 
+        var bookmarks;
+        try {
+            bookmarks = JSON.parse(localStorage.getItem(BOOKMARKS_KEY) || '[]');
+        } catch (e) {
+            bookmarks = [];
+        }
+
         var payload = {
             mastery_data: _loadAll(),
             streak_data: _loadStreak(),
-            retry_queue: retryQueue
+            retry_queue: retryQueue,
+            bookmarks: bookmarks
         };
 
         apiCall('/api/quiz/progress', {

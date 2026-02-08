@@ -46,6 +46,43 @@ var QuizBank = (function () {
     var _serverSynced = false;     // true after first pull from server (prevents repeat pulls)
 
     var RETRY_STORAGE_KEY = 'nursingCollective_retryQueue';
+    var BOOKMARKS_KEY = 'nursingCollective_bookmarks';
+
+    // ── Persistent Bookmarks ─────────────────────────────
+
+    function _loadBookmarks() {
+        try {
+            var raw = localStorage.getItem(BOOKMARKS_KEY);
+            return raw ? JSON.parse(raw) : [];
+        } catch (e) { return []; }
+    }
+
+    function _saveBookmarks(data) {
+        try { localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(data)); }
+        catch (e) { /* quota exceeded — silently degrade */ }
+    }
+
+    function _addBookmark(questionId, topic, category, stemPreview) {
+        var bookmarks = _loadBookmarks();
+        // Don't duplicate
+        for (var i = 0; i < bookmarks.length; i++) {
+            if (bookmarks[i].questionId === questionId) return;
+        }
+        bookmarks.push({
+            questionId: questionId,
+            topic: topic || null,
+            category: category || null,
+            stemPreview: (stemPreview || '').substring(0, 150),
+            savedAt: new Date().toISOString()
+        });
+        _saveBookmarks(bookmarks);
+    }
+
+    function _removeBookmark(questionId) {
+        var bookmarks = _loadBookmarks();
+        bookmarks = bookmarks.filter(function (b) { return b.questionId !== questionId; });
+        _saveBookmarks(bookmarks);
+    }
 
     // ── Init ───────────────────────────────────────────────
 
@@ -179,6 +216,37 @@ var QuizBank = (function () {
 
         html += '</div>';
         html += '</section>';
+
+        // ── Section B2: Saved Questions (Bookmarks) ─────
+        var savedBookmarks = _loadBookmarks();
+        if (isSignedIn && savedBookmarks.length > 0) {
+            html += '<section class="qb-section qb-saved-questions">';
+            html += '<h2 class="qb-section-title"><i class="fas fa-bookmark"></i> Saved Questions <span class="qb-saved-count">' + savedBookmarks.length + '</span></h2>';
+            html += '<p class="qb-section-desc">Questions you bookmarked for later review.</p>';
+            html += '<div class="qb-saved-list">';
+            var displayLimit = Math.min(savedBookmarks.length, 5);
+            for (var bi = 0; bi < displayLimit; bi++) {
+                var bm = savedBookmarks[bi];
+                var topicLabel = MasteryTracker.getTopicLabel(bm.topic) || bm.topic || 'Unknown';
+                html += '<div class="qb-saved-item">';
+                html += '<div class="qb-saved-item-icon"><i class="fas fa-bookmark"></i></div>';
+                html += '<div class="qb-saved-item-content">';
+                html += '<div class="qb-saved-item-topic">' + _esc(topicLabel) + '</div>';
+                html += '<div class="qb-saved-item-stem">' + _esc(bm.stemPreview || 'No preview available') + '</div>';
+                html += '</div>';
+                html += '<button class="qb-saved-item-remove" data-qb-action="remove-bookmark" data-bookmark-id="' + _esc(bm.questionId) + '" title="Remove bookmark"><i class="fas fa-times"></i></button>';
+                html += '</div>';
+            }
+            html += '</div>';
+            if (savedBookmarks.length > 5) {
+                html += '<div class="qb-saved-more">' + (savedBookmarks.length - 5) + ' more saved question' + (savedBookmarks.length - 5 > 1 ? 's' : '') + '</div>';
+            }
+            html += '<div class="qb-saved-actions">';
+            html += '<button class="qb-btn qb-btn--primary" data-qb-action="review-saved"><i class="fas fa-play-circle"></i> Review All Saved (' + savedBookmarks.length + ')</button>';
+            html += '<button class="qb-btn qb-btn--ghost" data-qb-action="clear-bookmarks"><i class="fas fa-trash-alt"></i> Clear All</button>';
+            html += '</div>';
+            html += '</section>';
+        }
 
         // ── Section C: Browse by Chapter ─────────────────
         html += '<section class="qb-section qb-chapters">';
@@ -674,9 +742,13 @@ var QuizBank = (function () {
         if (!q) return;
         if (_flagged[q.id]) {
             delete _flagged[q.id];
+            _removeBookmark(q.id);
         } else {
             _flagged[q.id] = true;
+            _addBookmark(q.id, q.topic, q.category, q.stem);
         }
+        // Sync bookmarks to server (non-blocking)
+        MasteryTracker.syncToServer();
         // Update the flag button UI without re-rendering the whole question
         var flagBtn = _root.querySelector('.qb-flag-btn');
         if (flagBtn) {
@@ -1342,6 +1414,10 @@ var QuizBank = (function () {
         if (missedCount > 0) {
             html += '<button class="qb-btn qb-btn--secondary" data-qb-action="review-missed"><i class="fas fa-sync-alt"></i> Review Missed (' + missedCount + ')</button>';
         }
+        var flaggedCount = Object.keys(_flagged).length;
+        if (flaggedCount > 0) {
+            html += '<button class="qb-btn qb-btn--secondary" data-qb-action="review-bookmarked"><i class="fas fa-bookmark"></i> Review Bookmarked (' + flaggedCount + ')</button>';
+        }
         html += '<button class="qb-btn qb-btn--secondary" data-qb-action="scroll-builder"><i class="fas fa-sliders-h"></i> New Custom Quiz</button>';
         html += '<button class="qb-btn qb-btn--ghost" data-qb-action="back-to-hub"><i class="fas fa-th-large"></i> Back to Hub</button>';
         html += '</div>';
@@ -1416,6 +1492,18 @@ var QuizBank = (function () {
                     break;
                 case 'review-missed':
                     _handleReviewMissed();
+                    break;
+                case 'review-bookmarked':
+                    _handleReviewBookmarked();
+                    break;
+                case 'review-saved':
+                    _handleReviewSaved();
+                    break;
+                case 'remove-bookmark':
+                    _handleRemoveBookmark(actionBtn);
+                    break;
+                case 'clear-bookmarks':
+                    _handleClearBookmarks();
                     break;
                 case 'quick-10':
                     _handleQuick10();
@@ -2199,6 +2287,71 @@ var QuizBank = (function () {
         _shuffleAllOptions();
         window.addEventListener('beforeunload', _boundBeforeUnload);
         _renderQuestion();
+    }
+
+    function _handleReviewBookmarked() {
+        // Filter to bookmarked questions only and restart (doesn't count as set)
+        var bookmarked = _currentQuestions.filter(function (q) {
+            return _flagged[q.id];
+        });
+        if (bookmarked.length === 0) return;
+
+        // Start a review session (won't record mastery or update retry queue)
+        _isReviewSession = true;
+        _view = 'quiz';
+        _currentQuestions = bookmarked;
+        _currentIndex = 0;
+        _answers = {};
+        _results = {};
+        _submitted = {};
+        _firstAttemptResults = {};
+        _flagged = {}; // Clear flags for the review session
+        _currentTopicId = null;
+        _shuffleAllOptions();
+        window.addEventListener('beforeunload', _boundBeforeUnload);
+        _renderQuestion();
+    }
+
+    function _handleReviewSaved() {
+        // Load all saved bookmarks, look up full question objects, start a review session
+        var bookmarks = _loadBookmarks();
+        if (bookmarks.length === 0) return;
+
+        var allBank = window.QUIZ_BANK_QUESTIONS || [];
+        var questions = [];
+        bookmarks.forEach(function (bm) {
+            for (var i = 0; i < allBank.length; i++) {
+                if (allBank[i].id === bm.questionId) {
+                    questions.push(allBank[i]);
+                    break;
+                }
+            }
+        });
+
+        if (questions.length === 0) {
+            alert('Could not find any of your saved questions in the current question bank.');
+            return;
+        }
+
+        _shuffleArray(questions);
+        _isReviewSession = true;
+        _isCustom = true;
+        _startQuiz(questions, null, 'Saved Questions', null, 'practice', questions.length);
+    }
+
+    function _handleRemoveBookmark(btn) {
+        var questionId = btn.dataset.bookmarkId;
+        if (!questionId) return;
+        _removeBookmark(questionId);
+        MasteryTracker.syncToServer();
+        renderHub();
+    }
+
+    function _handleClearBookmarks() {
+        if (!confirm('Remove all saved questions? This cannot be undone.')) return;
+        _saveBookmarks([]);
+        MasteryTracker.syncToServer();
+        renderHub();
     }
 
     // ── Spaced Repetition (Practice Again) ──────────────

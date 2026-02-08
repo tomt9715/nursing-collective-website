@@ -177,9 +177,14 @@ var QuizBank = (function () {
             else if (stats.streak >= 1) streakClass = 'qb-streak-flame--active';
 
             html += '<div class="qb-hero-stats-row">';
+            var totalChaptersWithQuestions = 0;
+            QUIZ_BANK_REGISTRY.chapters.forEach(function (c) {
+                if (c.topics.some(function (t) { return t.file !== null; })) totalChaptersWithQuestions++;
+            });
+
             html += '<div class="qb-hero-stat"><div class="qb-hero-stat-value">' + stats.accuracy + '%</div><div class="qb-hero-stat-label">Accuracy</div></div>';
             html += '<div class="qb-hero-stat"><div class="qb-hero-stat-value">' + stats.totalQuestionsAnswered.toLocaleString() + '</div><div class="qb-hero-stat-label">Answered</div></div>';
-            html += '<div class="qb-hero-stat"><div class="qb-hero-stat-value">' + stats.topicsMastered + '/' + totalTopics + '</div><div class="qb-hero-stat-label">Mastered</div></div>';
+            html += '<div class="qb-hero-stat"><div class="qb-hero-stat-value">' + stats.chaptersMastered + '/' + totalChaptersWithQuestions + '</div><div class="qb-hero-stat-label">Chapters Mastered</div></div>';
             html += '<div class="qb-hero-stat"><div class="qb-hero-stat-value"><i class="fas fa-fire qb-streak-flame ' + streakClass + '"></i> ' + stats.streak + '</div><div class="qb-hero-stat-label">Day Streak</div></div>';
             html += '</div>';
         } else {
@@ -255,8 +260,7 @@ var QuizBank = (function () {
         html += '<h2 class="qb-section-title"><i class="fas fa-book"></i> Browse by Chapter</h2>';
 
         QUIZ_BANK_REGISTRY.chapters.forEach(function (chapter) {
-            var topicIds = chapter.topics.map(function (t) { return t.id; });
-            var chapterMastery = MasteryTracker.getChapterMastery(topicIds);
+            var chapterMastery = MasteryTracker.getChapterMastery(chapter.id);
             var availableTopics = chapter.topics.filter(function (t) { return t.file !== null; }).length;
             var totalTopicsInChapter = chapter.topics.length;
 
@@ -267,9 +271,9 @@ var QuizBank = (function () {
 
             var chapterBarHtml = '';
             if (availableTopics > 0 && isSignedIn) {
-                var mastColor = MasteryTracker.getMasteryColor(Math.floor(chapterMastery.averageLevel));
-                var barPct = Math.min(100, (chapterMastery.averageLevel / 10) * 100);
-                html += '<span class="qb-chapter-mastery" style="color:' + mastColor + '">Level ' + chapterMastery.averageLevel.toFixed(1) + '</span>';
+                var mastColor = MasteryTracker.getMasteryColor(chapterMastery.chapterLevel);
+                var barPct = Math.min(100, (chapterMastery.chapterPoints / 80) * 100);
+                html += '<span class="qb-chapter-mastery" style="color:' + mastColor + '">Lv ' + chapterMastery.chapterLevel + ' — ' + _esc(chapterMastery.chapterLevelName) + '</span>';
                 chapterBarHtml = '<div class="qb-chapter-bar"><div class="qb-chapter-bar-fill" style="width:' + barPct + '%;background:' + mastColor + '"></div></div>';
             } else if (availableTopics > 0) {
                 html += '<span class="qb-chapter-meta">' + availableTopics + ' available</span>';
@@ -283,20 +287,27 @@ var QuizBank = (function () {
             html += chapterBarHtml;
 
             html += '<div class="qb-chapter-topics">';
+            var topicCap = chapterMastery.topicCap;
             chapter.topics.forEach(function (topic) {
                 var topicMastery = MasteryTracker.getTopicMastery(topic.id);
                 var hasQuestions = topic.file !== null;
-                var masteryBarPct = Math.min(100, (topicMastery.points / 80) * 100);
+                var cappedPts = Math.min(topicMastery.points, topicCap);
+                var topicBarPct = topicCap > 0 ? Math.min(100, (cappedPts / topicCap) * 100) : 0;
+                var atCap = cappedPts >= topicCap && topicMastery.points > 0;
 
                 html += '<div class="qb-topic' + (hasQuestions ? '' : ' qb-topic--locked') + '">';
                 html += '<div class="qb-topic-info">';
                 html += '<span class="qb-topic-name">' + _esc(topic.label) + '</span>';
 
                 if (hasQuestions && isSignedIn) {
-                    var topicColor = MasteryTracker.getMasteryColor(topicMastery.level);
+                    var topicColor = atCap ? 'var(--qb-correct, #059669)' : MasteryTracker.getMasteryColor(chapterMastery.chapterLevel);
                     html += '<div class="qb-topic-mastery-row">';
-                    html += '<div class="qb-topic-bar"><div class="qb-topic-bar-fill" style="width:' + masteryBarPct + '%;background:' + topicColor + '"></div></div>';
-                    html += '<span class="qb-topic-level" style="color:' + topicColor + '">Lv ' + topicMastery.level + '</span>';
+                    html += '<div class="qb-topic-bar"><div class="qb-topic-bar-fill" style="width:' + topicBarPct + '%;background:' + topicColor + '"></div></div>';
+                    if (atCap) {
+                        html += '<span class="qb-topic-maxed"><i class="fas fa-check"></i> Maxed</span>';
+                    } else {
+                        html += '<span class="qb-topic-pts">' + cappedPts + '/' + topicCap + '</span>';
+                    }
                     html += '</div>';
                 } else if (hasQuestions) {
                     html += '<span class="qb-topic-coming-soon" style="color: var(--text-muted, #999)"><i class="fas fa-question-circle"></i> Sign in to track</span>';
@@ -1131,73 +1142,138 @@ var QuizBank = (function () {
 
     // ── Mastery Card Builder ──────────────────────────────
 
-    function _buildMasteryCard(mr, topicLabel) {
+    /**
+     * Build a mastery card showing chapter-level progress.
+     * @param {Object} mr - result from recordSetResult (single-topic) or first result for chapter
+     * @param {string|Array} topicLabelOrResults - topic label string (single) or array of results (multi-topic)
+     */
+    function _buildMasteryCard(mr, topicLabelOrResults) {
         var thresholds = MasteryTracker.LEVEL_THRESHOLDS;
-        var levelNames = MasteryTracker.LEVEL_NAMES;
-        var color = MasteryTracker.getMasteryColor(mr.newLevel);
+        var chapterLevel = mr.newChapterLevel != null ? mr.newChapterLevel : mr.newLevel;
+        var chapterPoints = mr.chapterPoints != null ? mr.chapterPoints : mr.newPoints;
+        var chapterLabel = mr.chapterLabel || '';
+        var chapterLevelName = mr.chapterLevelName || mr.levelName;
+        var chapterLeveledUp = mr.chapterLeveledUp || false;
+        var chapterPointsToNext = mr.chapterPointsToNext != null ? mr.chapterPointsToNext : mr.pointsToNext;
+        var color = MasteryTracker.getMasteryColor(chapterLevel);
 
-        // Calculate progress within current level
-        var currentLevelPts = thresholds[mr.newLevel] || 0;
-        var nextLevelPts = thresholds[mr.newLevel + 1] || currentLevelPts;
+        // Determine if this is a multi-topic card (array of results)
+        var isMulti = Array.isArray(topicLabelOrResults);
+        var topicResults = isMulti ? topicLabelOrResults : [mr];
+        var topicLabel = isMulti ? '' : (topicLabelOrResults || '');
+
+        // Calculate chapter progress within current level
+        var currentLevelPts = thresholds[chapterLevel] || 0;
+        var nextLevelPts = thresholds[chapterLevel + 1] || currentLevelPts;
         var levelRange = nextLevelPts - currentLevelPts;
-        var progressInLevel = mr.newPoints - currentLevelPts;
-        var progressPct = mr.newLevel >= 10 ? 100 : (levelRange > 0 ? Math.min(100, Math.round((progressInLevel / levelRange) * 100)) : 0);
+        var progressInLevel = chapterPoints - currentLevelPts;
+        var progressPct = chapterLevel >= 10 ? 100 : (levelRange > 0 ? Math.min(100, Math.round((progressInLevel / levelRange) * 100)) : 0);
 
-        // Calculate the STARTING width (before points were earned) for animation
+        // Calculate starting width for animation
+        var effectiveGain = mr.effectiveChapterGain || 0;
+        if (isMulti) {
+            effectiveGain = 0;
+            topicResults.forEach(function (r) { effectiveGain += (r.effectiveChapterGain || 0); });
+        }
         var startPct = 0;
-        if (mr.pointsEarned > 0 && mr.newLevel < 10) {
-            if (mr.leveledUp) {
-                // Leveled up: bar was full (100%) at the OLD level, now show from 0 at new level
+        if (effectiveGain > 0 && chapterLevel < 10) {
+            if (chapterLeveledUp) {
                 startPct = 0;
             } else {
-                var startProgress = progressInLevel - mr.pointsEarned;
+                var startProgress = progressInLevel - effectiveGain;
                 startPct = levelRange > 0 ? Math.max(0, Math.round((startProgress / levelRange) * 100)) : 0;
             }
         }
 
-        // Unique ID for this card so we can animate it
-        var cardId = 'mastery-card-' + (mr.topicId || topicLabel).replace(/[^a-zA-Z0-9]/g, '-');
+        var cardId = 'mastery-card-' + (mr.chapterId || mr.topicId || 'card').replace(/[^a-zA-Z0-9]/g, '-');
 
         var h = '';
-        h += '<div class="qb-mastery-card' + (mr.leveledUp ? ' qb-mastery-card--leveled' : '') + '" id="' + cardId + '">';
+        h += '<div class="qb-mastery-card' + (chapterLeveledUp ? ' qb-mastery-card--leveled' : '') + '" id="' + cardId + '">';
 
         // Level-up celebration banner
-        if (mr.leveledUp) {
+        if (chapterLeveledUp) {
             h += '<div class="qb-mastery-levelup">';
-            h += '<i class="fas fa-star"></i> Level Up!';
+            h += '<i class="fas fa-star"></i> Chapter Level Up!';
             h += '</div>';
         }
 
         h += '<div class="qb-mastery-card-body">';
 
-        // Topic name
-        h += '<div class="qb-mastery-topic">' + _esc(topicLabel) + '</div>';
+        // Chapter name as primary label
+        h += '<div class="qb-mastery-topic">' + _esc(chapterLabel) + ' Mastery</div>';
 
         // Level badge + name
         h += '<div class="qb-mastery-level-row">';
-        h += '<span class="qb-mastery-level-badge" style="background:' + color + '">Lv ' + mr.newLevel + '</span>';
-        h += '<span class="qb-mastery-level-name">' + _esc(mr.levelName) + '</span>';
+        h += '<span class="qb-mastery-level-badge" style="background:' + color + '">Lv ' + chapterLevel + '</span>';
+        h += '<span class="qb-mastery-level-name">' + _esc(chapterLevelName) + '</span>';
         h += '</div>';
 
-        // Progress bar (starts at previous width, animates to current)
+        // Chapter progress bar
         h += '<div class="qb-mastery-progress">';
         h += '<div class="qb-mastery-progress-track">';
         h += '<div class="qb-mastery-progress-fill" data-target-width="' + progressPct + '" style="width:' + startPct + '%;background:' + color + '"></div>';
         h += '</div>';
-        if (mr.newLevel < 10) {
-            var ptsToNext = nextLevelPts - mr.newPoints;
+        if (chapterLevel < 10) {
             h += '<div class="qb-mastery-progress-label">';
-            h += '<span>' + mr.newPoints + ' pts</span>';
-            h += '<span>' + ptsToNext + ' pt' + (ptsToNext !== 1 ? 's' : '') + ' to next level</span>';
+            h += '<span>' + chapterPoints + ' / 80 pts</span>';
+            h += '<span>' + chapterPointsToNext + ' pt' + (chapterPointsToNext !== 1 ? 's' : '') + ' to next level</span>';
             h += '</div>';
         } else {
             h += '<div class="qb-mastery-progress-label"><span>Max Level Reached</span></div>';
         }
         h += '</div>';
 
-        // Points earned — shown as floating animation instead of static badge
+        // Topic contribution line(s)
+        var nudgeTopics = [];
+        topicResults.forEach(function (r) {
+            var tLabel = r.topicLabel || topicLabel;
+            var gain = r.effectiveChapterGain || 0;
+            var capped = r.cappedTopicPoints != null ? r.cappedTopicPoints : 0;
+            var cap = r.topicCap || 80;
+            var atCap = r.topicAtCap || false;
+
+            h += '<div class="qb-mastery-topic-line">';
+            h += '<span class="qb-mastery-topic-line-name">' + _esc(tLabel) + '</span>';
+            if (gain > 0) {
+                h += '<span class="qb-mastery-topic-line-gain">+' + gain + ' pts</span>';
+            }
+            h += '<span class="qb-mastery-topic-line-cap">' + capped + '/' + cap;
+            if (atCap) {
+                h += ' <span class="qb-topic-maxed">Maxed</span>';
+            }
+            h += '</span>';
+            h += '</div>';
+
+            // Collect nudge info for topics at cap
+            if (atCap && mr.chapterId) {
+                var chapterMastery = MasteryTracker.getChapterMastery(mr.chapterId);
+                if (chapterMastery && chapterMastery.topicBreakdown) {
+                    chapterMastery.topicBreakdown.forEach(function (tb) {
+                        if (!tb.atCap && tb.topicId !== r.topicId) {
+                            nudgeTopics.push(tb.label);
+                        }
+                    });
+                }
+            }
+        });
+
+        // Nudge to try other topics when at cap
+        if (nudgeTopics.length > 0) {
+            // Deduplicate
+            var seen = {};
+            var unique = [];
+            nudgeTopics.forEach(function (n) { if (!seen[n]) { seen[n] = true; unique.push(n); } });
+            var suggestion = unique.slice(0, 2).join(' or ');
+            h += '<div class="qb-mastery-nudge">';
+            h += '<i class="fas fa-lightbulb"></i> Practice <strong>' + _esc(suggestion) + '</strong> to keep leveling up ' + _esc(chapterLabel);
+            h += '</div>';
+        }
+
+        // Accuracy note
         h += '<div class="qb-mastery-earned">';
-        if (mr.pointsEarned > 0) {
+        var anyPointsEarned = false;
+        topicResults.forEach(function (r) { if (r.pointsEarned > 0) anyPointsEarned = true; });
+        if (anyPointsEarned) {
             h += '<span class="qb-mastery-earned-text">(' + mr.accuracy + '% accuracy)</span>';
         } else {
             h += '<span class="qb-mastery-earned-text qb-mastery-earned-text--zero">Score 70%+ to earn mastery points</span>';
@@ -1208,24 +1284,21 @@ var QuizBank = (function () {
         h += '</div>'; // card
 
         // Schedule the bar animation + floating points after DOM insert
-        if (mr.pointsEarned > 0) {
+        if (effectiveGain > 0) {
             setTimeout(function () {
                 var card = document.getElementById(cardId);
                 if (!card) return;
                 var fill = card.querySelector('.qb-mastery-progress-fill');
                 if (!fill) return;
 
-                // Animate the bar from start to target width
                 fill.style.width = fill.dataset.targetWidth + '%';
 
-                // Show floating +N badge rising from the bar
                 var progressEl = card.querySelector('.qb-mastery-progress');
                 if (progressEl) {
                     var floater = document.createElement('span');
                     floater.className = 'qb-pts-floater';
-                    floater.textContent = '+' + mr.pointsEarned;
+                    floater.textContent = '+' + effectiveGain;
                     progressEl.appendChild(floater);
-                    // Remove after animation completes
                     setTimeout(function () { if (floater.parentNode) floater.parentNode.removeChild(floater); }, 2200);
                 }
             }, 400);
@@ -1262,6 +1335,8 @@ var QuizBank = (function () {
         if (_currentTopicId) {
             // Single-topic quiz (preconfig path)
             masteryResult = MasteryTracker.recordSetResult(_currentTopicId, resultEntries);
+            masteryResult.topicId = _currentTopicId;
+            masteryResult.topicLabel = _currentTopicLabel || MasteryTracker.getTopicLabel(_currentTopicId);
         } else if (_isCustom) {
             // Custom/multi-topic quiz — group by topic and record each
             var byTopic = {};
@@ -1330,19 +1405,33 @@ var QuizBank = (function () {
         // Right: Mastery + Pacing stacked
         html += '<div class="qb-results-side-col">';
 
-        // Mastery update — single topic
+        // Mastery update — group by chapter
         if (masteryResult) {
+            // Single-topic quiz: one chapter card
             html += _buildMasteryCard(masteryResult, _currentTopicLabel || _currentTopicId);
         }
 
-        // Mastery update — multi-topic
         if (multiTopicResults.length > 0) {
-            html += '<div class="qb-mastery-multi">';
-            html += '<div class="qb-mastery-multi-title"><i class="fas fa-layer-group"></i> Mastery Progress</div>';
+            // Multi-topic quiz: group results by chapter, one card per chapter
+            var byChapter = {};
             multiTopicResults.forEach(function (mr) {
-                html += _buildMasteryCard(mr, mr.topicLabel || mr.topicId);
+                var chId = mr.chapterId || 'unknown';
+                if (!byChapter[chId]) {
+                    byChapter[chId] = { chapterLabel: mr.chapterLabel || chId, results: [] };
+                }
+                byChapter[chId].results.push(mr);
             });
-            html += '</div>';
+            var chapterIds = Object.keys(byChapter);
+            if (chapterIds.length > 0) {
+                html += '<div class="qb-mastery-multi">';
+                html += '<div class="qb-mastery-multi-title"><i class="fas fa-layer-group"></i> Chapter Mastery</div>';
+                chapterIds.forEach(function (chId) {
+                    // Use the first result's chapter data (all share the same chapter)
+                    var first = byChapter[chId].results[0];
+                    html += _buildMasteryCard(first, byChapter[chId].results);
+                });
+                html += '</div>';
+            }
         }
 
         // Pacing summary (compact, inside the side column)
@@ -1500,10 +1589,10 @@ var QuizBank = (function () {
         _root.innerHTML = html;
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Trigger confetti on level-up, perfect score, or excellent score (≥90%)
-        var anyLeveledUp = (masteryResult && masteryResult.leveledUp);
+        // Trigger confetti on chapter level-up, perfect score, or excellent score (≥90%)
+        var anyLeveledUp = (masteryResult && masteryResult.chapterLeveledUp);
         if (!anyLeveledUp && multiTopicResults.length > 0) {
-            multiTopicResults.forEach(function (mr) { if (mr.leveledUp) anyLeveledUp = true; });
+            multiTopicResults.forEach(function (mr) { if (mr.chapterLeveledUp) anyLeveledUp = true; });
         }
         if (anyLeveledUp || pct >= 90) {
             _triggerConfetti();
@@ -1810,17 +1899,28 @@ var QuizBank = (function () {
         // Look up topic/chapter info
         var topicLabel = MasteryTracker.getTopicLabel(topicId);
         var chapterInfo = _getChapterInfo(chapterId);
+        var chapterMastery = chapterId ? MasteryTracker.getChapterMastery(chapterId) : null;
+        var chapterColor = chapterMastery ? MasteryTracker.getMasteryColor(chapterMastery.chapterLevel) : '#6b7280';
         var topicMastery = MasteryTracker.getTopicMastery(topicId);
-        var masteryColor = MasteryTracker.getMasteryColor(topicMastery.level);
+        var topicCap = chapterId ? MasteryTracker.getTopicCap(chapterId) : 80;
+        var cappedPts = Math.min(topicMastery.points, topicCap);
 
         var html = '<div class="qb-preconfig">';
 
         // Header
         html += '<button class="qb-preconfig-back" data-qb-action="back-to-hub"><i class="fas fa-arrow-left"></i> Back to Quiz Hub</button>';
         html += '<div class="qb-preconfig-header">';
-        if (chapterInfo) html += '<span class="qb-preconfig-chapter">' + chapterInfo.emoji + ' ' + _esc(chapterInfo.label) + '</span>';
+        if (chapterInfo && chapterMastery) {
+            html += '<span class="qb-preconfig-chapter">' + chapterInfo.emoji + ' ' + _esc(chapterInfo.label);
+            html += ' &mdash; <span style="color:' + chapterColor + '">Lv ' + chapterMastery.chapterLevel + ' ' + _esc(chapterMastery.chapterLevelName) + '</span>';
+            html += '</span>';
+        } else if (chapterInfo) {
+            html += '<span class="qb-preconfig-chapter">' + chapterInfo.emoji + ' ' + _esc(chapterInfo.label) + '</span>';
+        }
         html += '<h2 class="qb-preconfig-title">' + _esc(topicLabel) + '</h2>';
-        html += '<div class="qb-preconfig-mastery" style="color:' + masteryColor + '">Level ' + topicMastery.level + ' &mdash; ' + _esc(topicMastery.levelName) + '</div>';
+        html += '<div class="qb-preconfig-mastery">' + cappedPts + '/' + topicCap + ' pts toward chapter';
+        if (cappedPts >= topicCap) html += ' <span class="qb-topic-maxed">Maxed</span>';
+        html += '</div>';
         html += '</div>';
 
         // Config card

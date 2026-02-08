@@ -37,7 +37,13 @@ var MasteryTracker = (function () {
     function _loadAll() {
         try {
             var raw = localStorage.getItem(STORAGE_KEY);
-            return raw ? JSON.parse(raw) : {};
+            var data = raw ? JSON.parse(raw) : {};
+            // Version migration — add marker on first load
+            if (!data._version) {
+                data._version = 2;
+                _saveAll(data);
+            }
+            return data;
         } catch (e) {
             console.error('[Mastery] Failed to load data:', e);
             return {};
@@ -67,6 +73,42 @@ var MasteryTracker = (function () {
         } catch (e) {
             console.error('[Mastery] Failed to save streak:', e);
         }
+    }
+
+    // ── Chapter Helpers ────────────────────────────────────
+
+    function _getChapterForTopic(topicId) {
+        if (!QUIZ_BANK_REGISTRY || !QUIZ_BANK_REGISTRY.chapters) return null;
+        for (var c = 0; c < QUIZ_BANK_REGISTRY.chapters.length; c++) {
+            var ch = QUIZ_BANK_REGISTRY.chapters[c];
+            for (var t = 0; t < ch.topics.length; t++) {
+                if (ch.topics[t].id === topicId) return ch;
+            }
+        }
+        return null;
+    }
+
+    function _getAvailableTopics(chapter) {
+        return chapter.topics.filter(function (t) { return t.file !== null; });
+    }
+
+    function _computeTopicCap(chapter) {
+        var available = _getAvailableTopics(chapter);
+        if (available.length === 0) return 80;
+        return Math.ceil(80 / available.length);
+    }
+
+    function _computeChapterPoints(chapter) {
+        var cap = _computeTopicCap(chapter);
+        var available = _getAvailableTopics(chapter);
+        var all = _loadAll();
+        var total = 0;
+        available.forEach(function (t) {
+            var topicData = all[t.id];
+            var raw = topicData ? (topicData.points || 0) : 0;
+            total += Math.min(raw, cap);
+        });
+        return total;
     }
 
     // ── Topic Data ─────────────────────────────────────────
@@ -262,6 +304,11 @@ var MasteryTracker = (function () {
         // Calculate points earned from this set
         var pointsEarned = _calculateSetPoints(correctCount, totalCount);
 
+        // Compute chapter state BEFORE earning points
+        var chapter = _getChapterForTopic(topicId);
+        var oldChapterPoints = chapter ? _computeChapterPoints(chapter) : 0;
+        var oldChapterLevel = _calculateLevel(oldChapterPoints);
+
         // Points only go UP
         topic.points += pointsEarned;
         topic.level = _calculateLevel(topic.points);
@@ -269,6 +316,15 @@ var MasteryTracker = (function () {
         topic.lastPracticed = _todayString();
 
         _saveAll(all);
+
+        // Compute chapter state AFTER earning points
+        var topicCap = chapter ? _computeTopicCap(chapter) : 80;
+        var newChapterPoints = chapter ? _computeChapterPoints(chapter) : topic.points;
+        var newChapterLevel = _calculateLevel(newChapterPoints);
+        var cappedTopicPoints = Math.min(topic.points, topicCap);
+
+        // Check if topic is at its cap (effective points earned for chapter may be 0)
+        var effectiveChapterGain = newChapterPoints - oldChapterPoints;
 
         // Update streak
         var streak = _updateStreak();
@@ -284,7 +340,21 @@ var MasteryTracker = (function () {
             leveledUp: topic.level > oldLevel,
             levelName: LEVEL_NAMES[topic.level] || 'Unknown',
             streak: streak,
-            pointsToNext: _pointsToNextLevel(topic.points)
+            pointsToNext: _pointsToNextLevel(topic.points),
+
+            // Chapter-level fields
+            chapterId: chapter ? chapter.id : null,
+            chapterLabel: chapter ? chapter.label : null,
+            topicCap: topicCap,
+            cappedTopicPoints: cappedTopicPoints,
+            topicAtCap: cappedTopicPoints >= topicCap,
+            chapterPoints: newChapterPoints,
+            oldChapterLevel: oldChapterLevel,
+            newChapterLevel: newChapterLevel,
+            chapterLeveledUp: newChapterLevel > oldChapterLevel,
+            chapterLevelName: LEVEL_NAMES[newChapterLevel] || 'Unknown',
+            chapterPointsToNext: _pointsToNextLevel(newChapterPoints),
+            effectiveChapterGain: effectiveChapterGain
         };
     }
 
@@ -320,71 +390,120 @@ var MasteryTracker = (function () {
         };
     }
 
-    function getChapterMastery(chapterTopicIds) {
-        if (!chapterTopicIds || chapterTopicIds.length === 0) {
-            return { averageLevel: 0, averageLevelName: LEVEL_NAMES[0] };
+    /**
+     * Get chapter mastery computed from per-topic capped points.
+     * Accepts a chapterId string (looks up registry) or a chapter object.
+     */
+    function getChapterMastery(chapterIdOrObj) {
+        var chapter = typeof chapterIdOrObj === 'string'
+            ? _findChapterById(chapterIdOrObj)
+            : chapterIdOrObj;
+
+        if (!chapter) {
+            return {
+                chapterLevel: 0, chapterLevelName: LEVEL_NAMES[0], chapterPoints: 0,
+                topicCap: 80, pointsToNext: LEVEL_THRESHOLDS[1],
+                topicBreakdown: [], availableCount: 0, totalCount: 0
+            };
         }
-        var sum = 0;
-        chapterTopicIds.forEach(function (topicId) {
-            var m = getTopicMastery(topicId);
-            sum += m.level;
+
+        var available = _getAvailableTopics(chapter);
+        var cap = _computeTopicCap(chapter);
+        var all = _loadAll();
+        var chapterPts = 0;
+        var breakdown = [];
+
+        available.forEach(function (t) {
+            var topicData = all[t.id];
+            var raw = topicData ? (topicData.points || 0) : 0;
+            var capped = Math.min(raw, cap);
+            chapterPts += capped;
+            breakdown.push({
+                topicId: t.id,
+                label: t.label,
+                rawPoints: raw,
+                cappedPoints: capped,
+                atCap: raw >= cap
+            });
         });
-        var avg = sum / chapterTopicIds.length;
-        var roundedAvg = Math.round(avg * 10) / 10; // 1 decimal
-        var displayLevel = Math.floor(avg);
+
+        var level = _calculateLevel(chapterPts);
         return {
-            averageLevel: roundedAvg,
-            averageLevelName: LEVEL_NAMES[displayLevel] || LEVEL_NAMES[0]
+            chapterLevel: level,
+            chapterLevelName: LEVEL_NAMES[level] || 'Unknown',
+            chapterPoints: chapterPts,
+            topicCap: cap,
+            pointsToNext: _pointsToNextLevel(chapterPts),
+            topicBreakdown: breakdown,
+            availableCount: available.length,
+            totalCount: chapter.topics.length
         };
+    }
+
+    function _findChapterById(chapterId) {
+        if (!QUIZ_BANK_REGISTRY || !QUIZ_BANK_REGISTRY.chapters) return null;
+        for (var i = 0; i < QUIZ_BANK_REGISTRY.chapters.length; i++) {
+            if (QUIZ_BANK_REGISTRY.chapters[i].id === chapterId) return QUIZ_BANK_REGISTRY.chapters[i];
+        }
+        return null;
     }
 
     function getOverallStats() {
         var all = _loadAll();
-        var topicIds = Object.keys(all);
 
+        // Aggregate question/set stats from per-topic data
         var totalAnswered = 0;
         var totalCorrect = 0;
         var totalSets = 0;
-        var levelSum = 0;
-        var masteredCount = 0; // Level 10
-        var practicedCount = 0;
-        var weakest = [];
-        var strongest = [];
-
-        topicIds.forEach(function (id) {
+        var topicKeys = Object.keys(all);
+        topicKeys.forEach(function (id) {
+            if (id === '_version') return; // skip metadata
             var t = all[id];
+            if (!t || !t.totalQuestionsAnswered) return;
             totalAnswered += t.totalQuestionsAnswered;
             totalCorrect += t.totalCorrect;
             totalSets += t.setsCompleted;
-            levelSum += t.level;
-            if (t.level >= 10) masteredCount++;
-            if (t.setsCompleted > 0) practicedCount++;
-
-            weakest.push({ id: id, level: t.level, points: t.points });
-            strongest.push({ id: id, level: t.level, points: t.points });
         });
 
-        // Sort weakest (lowest first) — only include topics that have been practiced
-        weakest = weakest.filter(function (w) { return true; }); // include all with data
-        weakest.sort(function (a, b) { return a.points - b.points; });
+        // Chapter-level stats
+        var chapterLevelSum = 0;
+        var chaptersMastered = 0;
+        var chaptersWithData = 0;
+        var weakestChapters = [];
+        var strongestChapters = [];
 
-        // Sort strongest (highest first)
-        strongest.sort(function (a, b) { return b.points - a.points; });
+        if (QUIZ_BANK_REGISTRY && QUIZ_BANK_REGISTRY.chapters) {
+            QUIZ_BANK_REGISTRY.chapters.forEach(function (ch) {
+                var available = _getAvailableTopics(ch);
+                if (available.length === 0) return; // skip chapters with no questions
+
+                var cm = getChapterMastery(ch);
+                chapterLevelSum += cm.chapterLevel;
+                chaptersWithData++;
+                if (cm.chapterLevel >= 10) chaptersMastered++;
+
+                weakestChapters.push({ id: ch.id, label: ch.label, level: cm.chapterLevel, points: cm.chapterPoints });
+                strongestChapters.push({ id: ch.id, label: ch.label, level: cm.chapterLevel, points: cm.chapterPoints });
+            });
+        }
+
+        weakestChapters.sort(function (a, b) { return a.points - b.points; });
+        strongestChapters.sort(function (a, b) { return b.points - a.points; });
 
         var streakData = _loadStreak();
 
         return {
-            topicsPracticed: practicedCount,
-            topicsMastered: masteredCount,
+            chaptersPracticed: chaptersWithData,
+            chaptersMastered: chaptersMastered,
             totalQuestionsAnswered: totalAnswered,
             totalCorrect: totalCorrect,
             accuracy: totalAnswered > 0 ? Math.round((totalCorrect / totalAnswered) * 100) : 0,
             totalSetsCompleted: totalSets,
-            averageLevel: practicedCount > 0 ? Math.round((levelSum / practicedCount) * 10) / 10 : 0,
+            averageLevel: chaptersWithData > 0 ? Math.round((chapterLevelSum / chaptersWithData) * 10) / 10 : 0,
             streak: streakData.currentStreak,
             lastPracticedDate: streakData.lastPracticedDate,
-            weakestTopics: weakest.slice(0, 3),
-            strongestTopics: strongest.slice(0, 3)
+            weakestChapters: weakestChapters.slice(0, 3),
+            strongestChapters: strongestChapters.slice(0, 3)
         };
     }
 
@@ -572,8 +691,11 @@ var MasteryTracker = (function () {
 
         var allTopics = {};
         var k;
-        for (k in local) { if (local.hasOwnProperty(k)) allTopics[k] = true; }
-        for (k in remote) { if (remote.hasOwnProperty(k)) allTopics[k] = true; }
+        for (k in local) { if (local.hasOwnProperty(k) && k !== '_version') allTopics[k] = true; }
+        for (k in remote) { if (remote.hasOwnProperty(k) && k !== '_version') allTopics[k] = true; }
+
+        // Preserve version marker
+        merged._version = Math.max(local._version || 1, remote._version || 1);
 
         for (k in allTopics) {
             if (!allTopics.hasOwnProperty(k)) continue;
@@ -725,6 +847,10 @@ var MasteryTracker = (function () {
         getMasteryColorClass: getMasteryColorClass,
         getTopicLabel: getTopicLabel,
         countAvailableQuestions: countAvailableQuestions,
+        getTopicCap: function (chapterId) {
+            var ch = _findChapterById(chapterId);
+            return ch ? _computeTopicCap(ch) : 80;
+        },
 
         // Server sync
         syncToServer: syncToServer,

@@ -2223,6 +2223,71 @@
     gap: 8px;
 }
 
+/* ── Chapter Mastery: Topic Points & Maxed Badge (hub + results) ── */
+.qb-topic-pts {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--qb-text-light);
+    white-space: nowrap;
+}
+.qb-topic-maxed {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--qb-correct);
+    white-space: nowrap;
+}
+.qb-topic-maxed i { font-size: 0.65rem; }
+
+/* Mastery card: topic contribution lines */
+.qb-mastery-topic-line {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--qb-border);
+    font-size: 0.82rem;
+}
+.qb-mastery-topic-line:last-of-type { border-bottom: none; }
+.qb-mastery-topic-line-name {
+    flex: 1;
+    color: var(--qb-text);
+    font-weight: 500;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.qb-mastery-topic-line-gain {
+    color: var(--qb-correct);
+    font-weight: 700;
+    white-space: nowrap;
+}
+.qb-mastery-topic-line-cap {
+    color: var(--qb-text-light);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* "Try other topics" nudge */
+.qb-mastery-nudge {
+    margin-top: 10px;
+    padding: 10px 14px;
+    background: var(--qb-info-bg, rgba(59, 130, 246, 0.08));
+    border: 1px solid var(--qb-info-border, rgba(59, 130, 246, 0.2));
+    border-radius: var(--qb-radius-sm);
+    font-size: 0.82rem;
+    color: var(--qb-text-secondary);
+    line-height: 1.5;
+}
+.qb-mastery-nudge i {
+    color: var(--qb-accent);
+    margin-right: 4px;
+}
+.qb-mastery-nudge strong { color: var(--qb-text); }
+
 /* Results breakdown */
 .qb-results-breakdown { margin-bottom: 32px; }
 .qb-results-breakdown-title { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; color: var(--qb-text); margin-bottom: 12px; }
@@ -2407,6 +2472,8 @@
     .qb-mastery-card-body { padding: 16px; }
     .qb-mastery-level-name { font-size: 1.1rem; }
     .qb-mastery-earned { flex-wrap: wrap; }
+    .qb-mastery-topic-line { font-size: 0.78rem; gap: 6px; }
+    .qb-mastery-nudge { font-size: 0.78rem; padding: 8px 12px; }
 
     .qb-btn { padding: 12px 18px; font-size: 0.9rem; min-height: 48px; }
     .qb-results-actions { gap: 8px; }

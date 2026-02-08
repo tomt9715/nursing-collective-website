@@ -1154,13 +1154,6 @@ var QuizBank = (function () {
         html += '<div class="qb-perf-msg">' + _esc(perfMsg) + '</div>';
         html += '</div>';
 
-        // Mastery badge display
-        if (masteryResult) {
-            html += '<div class="qb-results-badge-row">';
-            html += _getMasteryBadgeHtml(masteryResult.newLevel);
-            html += '</div>';
-        }
-
         // Mastery update — single topic
         if (masteryResult) {
             html += _buildMasteryCard(masteryResult, _currentTopicLabel || _currentTopicId);
@@ -1324,10 +1317,13 @@ var QuizBank = (function () {
         _root.innerHTML = html;
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        // Trigger confetti and level-up modal if mastery leveled up
-        if (masteryResult && masteryResult.leveledUp) {
+        // Trigger confetti on level-up, perfect score, or excellent score (≥90%)
+        var anyLeveledUp = (masteryResult && masteryResult.leveledUp);
+        if (!anyLeveledUp && multiTopicResults.length > 0) {
+            multiTopicResults.forEach(function (mr) { if (mr.leveledUp) anyLeveledUp = true; });
+        }
+        if (anyLeveledUp || pct >= 90) {
             _triggerConfetti();
-            _showLevelUpModal(masteryResult);
         }
     }
 
@@ -2563,32 +2559,6 @@ var QuizBank = (function () {
         setTimeout(function () { if (container.parentNode) container.parentNode.removeChild(container); }, 4000);
     }
 
-    function _showLevelUpModal(mr) {
-        var overlay = document.createElement('div');
-        overlay.className = 'qb-levelup-overlay';
-        var topicLabel = _currentTopicLabel || mr.topicId || '';
-        overlay.innerHTML =
-            '<div class="qb-levelup-modal">' +
-                '<div class="qb-levelup-badge qb-badge qb-badge--' + mr.newLevel + '"></div>' +
-                '<div class="qb-levelup-text">' +
-                    '<div class="qb-levelup-title">' + _esc(topicLabel) + '</div>' +
-                    '<div class="qb-levelup-level">Level ' + mr.newLevel + ' &mdash; ' + _esc(mr.levelName) + '</div>' +
-                '</div>' +
-                '<button class="qb-btn qb-btn--primary" data-qb-levelup-dismiss>Continue</button>' +
-            '</div>';
-        document.body.appendChild(overlay);
-        // Animate in
-        requestAnimationFrame(function () { overlay.classList.add('qb-levelup-overlay--visible'); });
-        // Dismiss handlers
-        var dismiss = function () {
-            overlay.classList.remove('qb-levelup-overlay--visible');
-            setTimeout(function () { if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 300);
-        };
-        overlay.querySelector('[data-qb-levelup-dismiss]').addEventListener('click', dismiss);
-        overlay.addEventListener('click', function (e) { if (e.target === overlay) dismiss(); });
-        // Auto-dismiss after 5 seconds
-        setTimeout(dismiss, 5000);
-    }
 
     // ── Ordering Display ───────────────────────────────────
 

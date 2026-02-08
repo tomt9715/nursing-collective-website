@@ -915,6 +915,11 @@
     font-size: 0.8rem;
     font-weight: 700;
 }
+.qb-chapter-mastery--not-started {
+    color: var(--qb-text-light, #9ca3af) !important;
+    font-weight: 500;
+    font-style: italic;
+}
 
 .qb-chapter-badge {
     font-size: 0.72rem;

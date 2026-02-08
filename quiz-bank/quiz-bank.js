@@ -271,10 +271,14 @@ var QuizBank = (function () {
 
             var chapterBarHtml = '';
             if (availableTopics > 0 && isSignedIn) {
-                var mastColor = MasteryTracker.getMasteryColor(chapterMastery.chapterLevel);
-                var barPct = Math.min(100, (chapterMastery.chapterPoints / 80) * 100);
-                html += '<span class="qb-chapter-mastery" style="color:' + mastColor + '">Lv ' + chapterMastery.chapterLevel + ' — ' + _esc(chapterMastery.chapterLevelName) + '</span>';
-                chapterBarHtml = '<div class="qb-chapter-bar"><div class="qb-chapter-bar-fill" style="width:' + barPct + '%;background:' + mastColor + '"></div></div>';
+                if (chapterMastery.chapterPoints > 0) {
+                    var mastColor = MasteryTracker.getMasteryColor(chapterMastery.chapterLevel);
+                    var barPct = Math.min(100, (chapterMastery.chapterPoints / 80) * 100);
+                    html += '<span class="qb-chapter-mastery" style="color:' + mastColor + '">Lv ' + chapterMastery.chapterLevel + ' — ' + _esc(chapterMastery.chapterLevelName) + '</span>';
+                    chapterBarHtml = '<div class="qb-chapter-bar"><div class="qb-chapter-bar-fill" style="width:' + barPct + '%;background:' + mastColor + '"></div></div>';
+                } else {
+                    html += '<span class="qb-chapter-mastery qb-chapter-mastery--not-started">Not Started</span>';
+                }
             } else if (availableTopics > 0) {
                 html += '<span class="qb-chapter-meta">' + availableTopics + ' available</span>';
             } else {
@@ -300,15 +304,17 @@ var QuizBank = (function () {
                 html += '<span class="qb-topic-name">' + _esc(topic.label) + '</span>';
 
                 if (hasQuestions && isSignedIn) {
-                    var topicColor = atCap ? 'var(--qb-correct, #059669)' : MasteryTracker.getMasteryColor(chapterMastery.chapterLevel);
-                    html += '<div class="qb-topic-mastery-row">';
-                    html += '<div class="qb-topic-bar"><div class="qb-topic-bar-fill" style="width:' + topicBarPct + '%;background:' + topicColor + '"></div></div>';
-                    if (atCap) {
-                        html += '<span class="qb-topic-maxed"><i class="fas fa-check"></i> Maxed</span>';
-                    } else {
-                        html += '<span class="qb-topic-pts">' + cappedPts + '/' + topicCap + '</span>';
+                    if (topicMastery.points > 0) {
+                        var topicColor = atCap ? 'var(--qb-correct, #059669)' : MasteryTracker.getMasteryColor(chapterMastery.chapterLevel);
+                        html += '<div class="qb-topic-mastery-row">';
+                        html += '<div class="qb-topic-bar"><div class="qb-topic-bar-fill" style="width:' + topicBarPct + '%;background:' + topicColor + '"></div></div>';
+                        if (atCap) {
+                            html += '<span class="qb-topic-maxed"><i class="fas fa-check"></i> Maxed</span>';
+                        } else {
+                            html += '<span class="qb-topic-pts">' + cappedPts + '/' + topicCap + '</span>';
+                        }
+                        html += '</div>';
                     }
-                    html += '</div>';
                 } else if (hasQuestions) {
                     html += '<span class="qb-topic-coming-soon" style="color: var(--text-muted, #999)"><i class="fas fa-question-circle"></i> Sign in to track</span>';
                 } else {
@@ -1947,7 +1953,7 @@ var QuizBank = (function () {
         // Header
         html += '<button class="qb-preconfig-back" data-qb-action="back-to-hub"><i class="fas fa-arrow-left"></i> Back to Quiz Hub</button>';
         html += '<div class="qb-preconfig-header">';
-        if (chapterInfo && chapterMastery) {
+        if (chapterInfo && chapterMastery && chapterMastery.chapterPoints > 0) {
             html += '<span class="qb-preconfig-chapter">' + chapterInfo.emoji + ' ' + _esc(chapterInfo.label);
             html += ' &mdash; <span style="color:' + chapterColor + '">Lv ' + chapterMastery.chapterLevel + ' ' + _esc(chapterMastery.chapterLevelName) + '</span>';
             html += '</span>';
@@ -1955,9 +1961,11 @@ var QuizBank = (function () {
             html += '<span class="qb-preconfig-chapter">' + chapterInfo.emoji + ' ' + _esc(chapterInfo.label) + '</span>';
         }
         html += '<h2 class="qb-preconfig-title">' + _esc(topicLabel) + '</h2>';
-        html += '<div class="qb-preconfig-mastery">' + cappedPts + '/' + topicCap + ' pts toward chapter';
-        if (cappedPts >= topicCap) html += ' <span class="qb-topic-maxed">Maxed</span>';
-        html += '</div>';
+        if (cappedPts > 0) {
+            html += '<div class="qb-preconfig-mastery">' + cappedPts + '/' + topicCap + ' pts toward chapter';
+            if (cappedPts >= topicCap) html += ' <span class="qb-topic-maxed">Maxed</span>';
+            html += '</div>';
+        }
         html += '</div>';
 
         // Config card

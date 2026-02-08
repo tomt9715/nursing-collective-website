@@ -1,8 +1,8 @@
-# Subdomain routing: learn.thenursingcollective.pro serves the Quiz Bank
-# Use 302 redirect so relative paths in quiz-bank.html resolve correctly
-https://learn.thenursingcollective.pro/ /quiz-bank/quiz-bank.html 302
-https://learn.thenursingcollective.pro/index.html /quiz-bank/quiz-bank.html 302
+# Subdomain routing: learn.thenursingcollective.pro serves the app
+# Redirect root to /app/ so relative paths resolve correctly
+https://learn.thenursingcollective.pro/ /app/ 302
+https://learn.thenursingcollective.pro/index.html /app/ 302
 
-# Redirect old quiz-bank path on main domain to learn subdomain
-https://thenursingcollective.pro/quiz-bank/quiz-bank.html https://learn.thenursingcollective.pro 301
-https://www.thenursingcollective.pro/quiz-bank/quiz-bank.html https://learn.thenursingcollective.pro 301
+# Redirect old quiz-bank paths on main domain to learn subdomain
+https://thenursingcollective.pro/quiz-bank/* https://learn.thenursingcollective.pro 301
+https://www.thenursingcollective.pro/quiz-bank/* https://learn.thenursingcollective.pro 301

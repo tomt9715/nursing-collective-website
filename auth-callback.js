@@ -15,6 +15,21 @@ const orderToClaim = urlParams.get('order'); // Order to claim after OAuth login
 // Check for stored redirect from before OAuth (e.g., checkout flow)
 const storedRedirect = sessionStorage.getItem('authRedirect');
 
+// Safely resolve redirect URL — only allow our own subdomains for full URLs
+function resolveRedirect(value) {
+    if (!value) return null;
+    if (value.startsWith('http')) {
+        try {
+            const url = new URL(value);
+            if (url.hostname.endsWith('.thenursingcollective.pro') || url.hostname === 'thenursingcollective.pro') {
+                return value;
+            }
+        } catch (e) { /* invalid URL */ }
+        return null; // reject external URLs
+    }
+    return `${value}.html`;
+}
+
 const loadingState = document.getElementById('loading-state');
 const errorState = document.getElementById('error-state');
 const errorMessage = document.getElementById('error-message');
@@ -84,9 +99,8 @@ function initAuthCallback() {
                     let redirectUrl = 'dashboard.html';
 
                     if (storedRedirect) {
-                        // Redirect back to the page user came from (store, checkout, etc.)
-                        redirectUrl = `${storedRedirect}.html`;
-                        // Clear the stored redirect
+                        var resolved = resolveRedirect(storedRedirect);
+                        if (resolved) redirectUrl = resolved;
                         sessionStorage.removeItem('authRedirect');
                     } else if (orderToClaim) {
                         redirectUrl = `dashboard.html?order=${encodeURIComponent(orderToClaim)}`;
@@ -109,7 +123,8 @@ function initAuthCallback() {
                 let redirectUrl = 'dashboard.html';
 
                 if (storedRedirect) {
-                    redirectUrl = `${storedRedirect}.html`;
+                    var resolved = resolveRedirect(storedRedirect);
+                    if (resolved) redirectUrl = resolved;
                     sessionStorage.removeItem('authRedirect');
                 } else if (orderToClaim) {
                     redirectUrl = `dashboard.html?order=${encodeURIComponent(orderToClaim)}`;

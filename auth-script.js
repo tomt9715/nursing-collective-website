@@ -501,8 +501,20 @@ async function handleLogin(email, password) {
         const orderToClaim = urlParams.get('order');
 
         if (redirectTo) {
-            // Redirect back to the page user came from (store, checkout, etc.)
-            window.location.href = `${redirectTo}.html`;
+            // Redirect back to the page user came from
+            // Full URLs allowed only for our own subdomains; relative names get .html appended
+            if (redirectTo.startsWith('http')) {
+                try {
+                    const url = new URL(redirectTo);
+                    if (url.hostname.endsWith('.thenursingcollective.pro') || url.hostname === 'thenursingcollective.pro') {
+                        window.location.href = redirectTo;
+                    } else {
+                        window.location.href = 'dashboard.html';
+                    }
+                } catch (e) { window.location.href = 'dashboard.html'; }
+            } else {
+                window.location.href = `${redirectTo}.html`;
+            }
         } else if (orderToClaim) {
             // Redirect to dashboard with order to claim
             window.location.href = `dashboard.html?order=${encodeURIComponent(orderToClaim)}`;

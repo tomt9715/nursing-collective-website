@@ -37,6 +37,11 @@ var QuizBank = (function () {
     var _boundClickHandler = null;
     var _boundKeyHandler = null;
     var _boundBeforeUnload = null;
+    var _boundGlobalKeyHandler = null; // global keyboard shortcuts (1-4, Enter)
+    var _flagged = {};             // questionId -> true (bookmarked for review)
+    var _questionTimerStart = null;  // timestamp when question was rendered
+    var _questionTimes = {};       // questionId -> seconds spent
+    var _timerInterval = null;     // setInterval ref for timer display
 
     var RETRY_STORAGE_KEY = 'nursingCollective_retryQueue';
 
@@ -49,9 +54,11 @@ var QuizBank = (function () {
         _boundClickHandler = _handleClick;
         _boundKeyHandler = _handleKeydown;
         _boundBeforeUnload = _handleBeforeUnload;
+        _boundGlobalKeyHandler = _handleGlobalKeydown;
 
         _root.addEventListener('click', _boundClickHandler);
         _root.addEventListener('keydown', _boundKeyHandler);
+        document.addEventListener('keydown', _boundGlobalKeyHandler);
 
         renderHub();
     }
@@ -65,6 +72,9 @@ var QuizBank = (function () {
         _hideQuizHeader();
         _setSize = null;
         _mode = null;
+        _flagged = {};
+        _questionTimes = {};
+        if (_timerInterval) { clearInterval(_timerInterval); _timerInterval = null; }
         window.removeEventListener('beforeunload', _boundBeforeUnload);
         window.scrollTo({ top: 0 });
 
@@ -538,6 +548,7 @@ var QuizBank = (function () {
         } else {
             var shuffled = _getShuffledOptions(q.id) || q.options;
             optionsHtml = '<div class="qb-options" role="radiogroup" aria-label="Answer options">';
+            var kbdIndex = 1;
             shuffled.forEach(function (opt) {
                 var displayLetter = _getDisplayLetter(q.id, opt.id);
                 optionsHtml += '<label class="qb-option" tabindex="0" role="radio" aria-checked="false">';
@@ -545,7 +556,9 @@ var QuizBank = (function () {
                 optionsHtml += '<span class="qb-option-marker"></span>';
                 optionsHtml += '<span class="qb-option-letter">' + displayLetter.toUpperCase() + '.</span>';
                 optionsHtml += '<span class="qb-option-text">' + _esc(opt.text) + '</span>';
+                optionsHtml += '<span class="qb-kbd-hint">' + kbdIndex + '</span>';
                 optionsHtml += '</label>';
+                kbdIndex++;
             });
             optionsHtml += '</div>';
         }
@@ -572,6 +585,21 @@ var QuizBank = (function () {
         html += '<span class="qb-q-type ' + typeClass + '">' + typeName + '</span>';
         html += '<span class="qb-q-difficulty">' + _capitalize(q.difficulty) + '</span>';
         html += '</div>';
+
+        // Toolbar: flag + timer
+        var isFlagged = _flagged[q.id] ? true : false;
+        html += '<div class="qb-q-toolbar">';
+        html += '<div class="qb-q-toolbar-left">';
+        html += '<button type="button" class="qb-flag-btn' + (isFlagged ? ' qb-flag-btn--active' : '') + '" data-qb-action="toggle-flag" title="Bookmark this question for review">';
+        html += '<i class="' + (isFlagged ? 'fas' : 'far') + ' fa-bookmark"></i>';
+        html += '<span>' + (isFlagged ? 'Bookmarked' : 'Bookmark') + '</span>';
+        html += '</button>';
+        html += '</div>';
+        html += '<div class="qb-q-toolbar-right">';
+        html += '<div class="qb-timer" id="qb-question-timer"><i class="fas fa-clock"></i> <span>0:00</span></div>';
+        html += '</div>';
+        html += '</div>';
+
         html += '<div class="qb-q-stem">' + _esc(q.stem) + instructionHtml + '</div>';
         html += optionsHtml;
         html += '<div class="qb-actions"><button class="qb-btn qb-btn--primary" data-qb-action="submit" disabled>' + submitLabel + '</button></div>';
@@ -580,6 +608,61 @@ var QuizBank = (function () {
         html += '</div>';
 
         _root.innerHTML = html;
+
+        // Start question timer
+        _startQuestionTimer();
+    }
+
+    function _startQuestionTimer() {
+        // Clear any existing timer
+        if (_timerInterval) clearInterval(_timerInterval);
+        _questionTimerStart = Date.now();
+
+        _timerInterval = setInterval(function () {
+            var timerEl = document.getElementById('qb-question-timer');
+            if (!timerEl) { clearInterval(_timerInterval); return; }
+            var elapsed = Math.floor((Date.now() - _questionTimerStart) / 1000);
+            var mins = Math.floor(elapsed / 60);
+            var secs = elapsed % 60;
+            var display = mins + ':' + (secs < 10 ? '0' : '') + secs;
+            timerEl.querySelector('span').textContent = display;
+
+            // Warning at 2 minutes
+            if (elapsed >= 120) {
+                timerEl.classList.add('qb-timer--warning');
+            }
+        }, 1000);
+    }
+
+    function _stopQuestionTimer() {
+        if (_timerInterval) {
+            clearInterval(_timerInterval);
+            _timerInterval = null;
+        }
+        if (_questionTimerStart) {
+            var q = _currentQuestions[_currentIndex];
+            if (q) {
+                _questionTimes[q.id] = Math.floor((Date.now() - _questionTimerStart) / 1000);
+            }
+            _questionTimerStart = null;
+        }
+    }
+
+    function _toggleFlag() {
+        var q = _currentQuestions[_currentIndex];
+        if (!q) return;
+        if (_flagged[q.id]) {
+            delete _flagged[q.id];
+        } else {
+            _flagged[q.id] = true;
+        }
+        // Update the flag button UI without re-rendering the whole question
+        var flagBtn = _root.querySelector('.qb-flag-btn');
+        if (flagBtn) {
+            var isFlagged = _flagged[q.id];
+            flagBtn.className = 'qb-flag-btn' + (isFlagged ? ' qb-flag-btn--active' : '');
+            flagBtn.innerHTML = '<i class="' + (isFlagged ? 'fas' : 'far') + ' fa-bookmark"></i><span>' + (isFlagged ? 'Bookmarked' : 'Bookmark') + '</span>';
+        }
     }
 
     function _renderOrderingOptions(q) {
@@ -956,6 +1039,7 @@ var QuizBank = (function () {
 
     function _showResults() {
         _view = 'results';
+        _stopQuestionTimer();
         _showResultsHeader(_currentTopicLabel || 'Results');
         window.removeEventListener('beforeunload', _boundBeforeUnload);
 
@@ -1062,9 +1146,18 @@ var QuizBank = (function () {
             var stemTrunc = q.stem.length > 120 ? q.stem.substring(0, 120) + '...' : q.stem;
 
             html += '<div class="qb-result-item">';
+            var flagHtml = _flagged[q.id] ? '<span class="qb-result-flag" title="Bookmarked"><i class="fas fa-bookmark"></i></span>' : '';
+            var timeHtml = '';
+            if (_questionTimes[q.id]) {
+                var mins = Math.floor(_questionTimes[q.id] / 60);
+                var secs = _questionTimes[q.id] % 60;
+                timeHtml = '<span class="qb-result-time">' + mins + ':' + (secs < 10 ? '0' : '') + secs + '</span>';
+            }
+
             html += '<button class="qb-result-summary" data-qb-action="toggle-result" aria-expanded="false">';
             html += '<span class="qb-result-icon ' + iconCls + '"><i class="fas ' + icon + '"></i></span>';
-            html += '<span class="qb-result-stem">' + _esc(stemTrunc) + '</span>';
+            html += '<span class="qb-result-stem">' + _esc(stemTrunc) + flagHtml + '</span>';
+            html += timeHtml;
             html += '<i class="fas fa-chevron-down qb-result-expand-icon"></i>';
             html += '</button>';
             html += '<div class="qb-result-detail">';
@@ -1151,7 +1244,11 @@ var QuizBank = (function () {
                     _handleStartTopic(actionBtn);
                     break;
                 case 'submit':
+                    _stopQuestionTimer();
                     _submitAnswer();
+                    break;
+                case 'toggle-flag':
+                    _toggleFlag();
                     break;
                 case 'next':
                     _nextQuestion();
@@ -1287,6 +1384,62 @@ var QuizBank = (function () {
             if (orderItem) { e.preventDefault(); orderItem.click(); return; }
             var matrixCell = e.target.closest('.qb-matrix-cell');
             if (matrixCell) { e.preventDefault(); matrixCell.click(); return; }
+        }
+    }
+
+    function _handleGlobalKeydown(e) {
+        // Only active during quiz view, not when typing in inputs
+        if (_view !== 'quiz') return;
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.isContentEditable) return;
+
+        var q = _currentQuestions[_currentIndex];
+        if (!q) return;
+
+        // 1-4 or 1-9 to select answer (single choice only)
+        if (!_submitted[q.id] && q.type !== 'ordering' && q.type !== 'matrix') {
+            var keyNum = parseInt(e.key);
+            if (keyNum >= 1 && keyNum <= 9) {
+                var options = _root.querySelectorAll('.qb-option');
+                var idx = keyNum - 1;
+                if (idx < options.length && !options[idx].classList.contains('qb-option--disabled')) {
+                    e.preventDefault();
+                    // Clear previous selection
+                    options.forEach(function (o) { o.classList.remove('qb-option--selected'); });
+                    options[idx].classList.add('qb-option--selected');
+                    var input = options[idx].querySelector('input');
+                    if (input) input.checked = true;
+                    _updateSubmitButton();
+                    return;
+                }
+            }
+        }
+
+        // Enter to submit (if answer selected and not yet submitted)
+        if (e.key === 'Enter' && !_submitted[q.id]) {
+            var submitBtn = _root.querySelector('[data-qb-action="submit"]');
+            if (submitBtn && !submitBtn.disabled) {
+                e.preventDefault();
+                _stopQuestionTimer();
+                _submitAnswer();
+                return;
+            }
+        }
+
+        // Enter or right arrow to go to next question (after submission)
+        if ((e.key === 'Enter' || e.key === 'ArrowRight') && _submitted[q.id]) {
+            var nextBtn = _root.querySelector('[data-qb-action="next"]');
+            if (nextBtn) {
+                e.preventDefault();
+                nextBtn.click();
+                return;
+            }
+        }
+
+        // F to toggle flag/bookmark
+        if (e.key === 'f' || e.key === 'F') {
+            e.preventDefault();
+            _toggleFlag();
+            return;
         }
     }
 

@@ -138,8 +138,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const prefillEmail = urlParams.get('email');
     const orderToClaim = urlParams.get('order');
 
-    // If signup=true is in URL, switch to signup mode
-    if (shouldSignup) {
+    // If signup=true is in URL or #signup hash, switch to signup mode
+    if (shouldSignup || window.location.hash === '#signup') {
         currentMode = 'signup';
     }
 

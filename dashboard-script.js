@@ -748,7 +748,8 @@ const AVAILABLE_GUIDES = new Set([
     'heart-failure', 'myocardial-infarction', 'arrhythmias', 'hypertension',
     'coronary-artery-disease', 'peripheral-vascular-disease',
     'copd', 'asthma', 'pneumonia', 'oxygen-therapy', 'tuberculosis', 'chest-tubes',
-    'stroke', 'fractures', 'hip-knee-replacement', 'gi-bleeding', 'assessment-skills'
+    'stroke', 'fractures', 'hip-knee-replacement', 'gi-bleeding', 'assessment-skills',
+    'diabetes-medications'
 ]);
 
 function guideHasPage(productId) {

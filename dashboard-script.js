@@ -672,8 +672,7 @@ const guideCategoryMap = {
     'tuberculosis': { category: 'respiratory', label: 'Respiratory', description: 'TB infection control and treatment protocols.' },
     'chest-tubes': { category: 'respiratory', label: 'Respiratory', description: 'Chest tube management and troubleshooting.' },
     // Endocrine
-    'diabetes-type1': { category: 'endocrine', label: 'Endocrine', description: 'Type 1 diabetes management and insulin therapy.' },
-    'diabetes-type2': { category: 'endocrine', label: 'Endocrine', description: 'Type 2 diabetes care and oral medications.' },
+    'diabetes-mellitus': { category: 'endocrine', label: 'Endocrine', description: 'Type 1 & Type 2 diabetes pathophysiology, insulin therapy, oral agents, and nursing management.' },
     'thyroid-disorders': { category: 'endocrine', label: 'Endocrine', description: 'Hypo/hyperthyroidism assessment and treatment.' },
     'adrenal-disorders': { category: 'endocrine', label: 'Endocrine', description: 'Adrenal crisis and Cushing syndrome management.' },
     'pituitary-disorders': { category: 'endocrine', label: 'Endocrine', description: 'Pituitary hormone imbalances and interventions.' },
@@ -748,7 +747,8 @@ const AVAILABLE_GUIDES = new Set([
     'heart-failure', 'myocardial-infarction', 'arrhythmias', 'hypertension',
     'coronary-artery-disease', 'peripheral-vascular-disease',
     'copd', 'asthma', 'pneumonia', 'oxygen-therapy', 'tuberculosis', 'chest-tubes',
-    'stroke', 'fractures', 'hip-knee-replacement', 'gi-bleeding', 'assessment-skills'
+    'stroke', 'fractures', 'hip-knee-replacement', 'gi-bleeding', 'assessment-skills',
+    'diabetes-mellitus'
 ]);
 
 function guideHasPage(productId) {
@@ -1579,9 +1579,8 @@ function getGuideIcon(productId) {
         'tuberculosis': 'tuberculosis.webp',
         'chest-tubes': 'chest-tubes.webp',
 
-        // Endocrine (5)
-        'diabetes-type1': 'diabetes-type1.webp',
-        'diabetes-type2': 'diabetes-type2.webp',
+        // Endocrine (4)
+        'diabetes-mellitus': 'diabetes-mellitus.webp',
         'thyroid-disorders': 'thyroid-disorders.webp',
         'adrenal-disorders': 'adrenal-disorders.webp',
         'pituitary-disorders': 'pituitary-disorders.webp',

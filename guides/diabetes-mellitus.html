@@ -1,0 +1,1331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Mellitus Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Diabetes Mellitus. Master Type 1 vs Type 2 pathophysiology, insulin therapy, oral agents, DKA vs HHS, and priority nursing interventions.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           DIABETES MELLITUS - ENDOCRINE GUIDE
+           Dashboard/Panel Layout
+           ============================================ */
+
+        :root {
+            --primary-color: #6B8DD6;
+            --primary-dark: #4A6DB5;
+            --secondary-color: #50BFA0;
+            --accent-color: #F09090;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-brand img { height: 32px; width: auto; }
+
+        .download-bar-actions { display: flex; gap: 12px; }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover { background: #f0f4ff; transform: translateY(-1px); }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover { background: rgba(255,255,255,0.25); }
+
+        /* Document Container */
+        .document-container {
+            max-width: 850px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Cover Page - Matches glucometer icon: soft blue/lavender → mint */
+        .cover-page {
+            background: linear-gradient(135deg, #4A6DB5 0%, #6B8DD6 40%, #50BFA0 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content { position: relative; z-index: 1; }
+
+        .cover-logo {
+            width: 80px; height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 12px;
+        }
+
+        .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+        .cover-category {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-meta-item { text-align: center; }
+        .cover-meta-item .label { font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cover-meta-item .value { font-size: 1.1rem; font-weight: 600; margin-top: 4px; }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content { padding: 60px; }
+
+        /* Learning Objectives */
+        .learning-objectives {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem; font-weight: 700; color: #059669;
+            margin-bottom: 16px; display: flex; align-items: center; gap: 10px;
+        }
+
+        .learning-objectives ul { list-style: none; margin: 0; padding: 0; }
+        .learning-objectives li { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; color: var(--text-primary); font-size: 1rem; }
+        .learning-objectives li i { color: #10b981; margin-top: 4px; flex-shrink: 0; }
+
+        /* High-Yield Summary */
+        .high-yield-summary {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .high-yield-summary h2 {
+            font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700;
+            color: #d97706; margin-bottom: 8px; display: flex; align-items: center; gap: 10px;
+            border-bottom: none; padding-bottom: 0;
+        }
+
+        .high-yield-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
+        .high-yield-summary ul { list-style: none; margin: 0; padding: 0; }
+        .high-yield-summary li { padding: 8px 0; border-bottom: 1px solid rgba(245,158,11,0.15); color: var(--text-secondary); font-size: 0.98rem; }
+        .high-yield-summary li:last-child { border-bottom: none; }
+        .high-yield-cta { margin-top: 16px; font-weight: 600; color: #d97706; font-size: 0.95rem; }
+
+        /* Table of Contents */
+        .table-of-contents {
+            background: #f9fafb; border: 1px solid var(--border-color);
+            border-radius: 12px; padding: 28px; margin-bottom: 40px;
+        }
+
+        .table-of-contents h2 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+        .table-of-contents ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 30px; }
+        .table-of-contents li { break-inside: avoid; margin-bottom: 8px; }
+        .table-of-contents a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; color: var(--text-secondary); text-decoration: none; border-radius: 6px; font-size: 0.95rem; transition: all 0.2s ease; }
+        .table-of-contents a:hover { background: var(--primary-color); color: white; }
+        .toc-number { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--primary-color); color: white; border-radius: 5px; font-size: 0.75rem; font-weight: 600; flex-shrink: 0; }
+        .table-of-contents a:hover .toc-number { background: white; color: var(--primary-color); }
+
+        /* Content Sections */
+        .guide-section { margin-bottom: 50px; scroll-margin-top: 80px; }
+        .guide-section h2 { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid var(--primary-color); display: flex; align-items: center; gap: 12px; }
+        .section-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 8px; font-size: 1rem; }
+        .guide-section h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin: 28px 0 14px; }
+        .guide-section h4 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--primary-color); margin: 20px 0 10px; }
+        .guide-section p { color: var(--text-secondary); font-size: 1.02rem; margin-bottom: 14px; }
+        .guide-section ul, .guide-section ol { color: var(--text-secondary); margin-bottom: 16px; padding-left: 24px; }
+        .guide-section li { margin-bottom: 8px; }
+        .guide-section strong { color: var(--text-primary); }
+
+        /* Info Boxes */
+        .info-box { border-radius: 10px; padding: 18px 22px; margin: 20px 0; border-left: 4px solid; }
+        .info-box.clinical-pearl { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-color: #f59e0b; }
+        .info-box.warning { background: #fef2f2; border-color: #ef4444; }
+        .info-box.tip { background: #ecfdf5; border-color: #10b981; }
+        .info-box.nclex-tip { background: #f5f3ff; border-color: #8b5cf6; }
+        .info-box.mnemonic { background: #fffbeb; border-color: #f59e0b; }
+        .info-box.pediatric { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border-color: #ec4899; }
+
+        .info-box-header { display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 10px; font-size: 0.95rem; }
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+        .info-box.pediatric .info-box-header { color: #db2777; }
+
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid var(--border-color); }
+        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+        .guide-table thead { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
+        .guide-table th { padding: 12px 14px; text-align: left; font-weight: 600; }
+        .guide-table tbody tr { border-bottom: 1px solid var(--border-color); }
+        .guide-table tbody tr:hover { background: #f9fafb; }
+        .guide-table td { padding: 12px 14px; color: var(--text-secondary); }
+        .guide-table td:first-child { font-weight: 600; color: var(--text-primary); }
+
+        /* Comparison Cards */
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .comparison-card { border-radius: 12px; border: 2px solid var(--border-color); overflow: hidden; }
+        .comparison-card-header { padding: 16px; text-align: center; font-weight: 700; font-size: 1.05rem; color: white; }
+        .comparison-card.type1 .comparison-card-header { background: linear-gradient(135deg, #6B8DD6, #4A6DB5); }
+        .comparison-card.type2 .comparison-card-header { background: linear-gradient(135deg, #50BFA0, #3DA88A); }
+        .comparison-card.dka .comparison-card-header { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .comparison-card.hhs .comparison-card-header { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .comparison-card.hypo .comparison-card-header { background: linear-gradient(135deg, #F09090, #e06060); }
+        .comparison-card.hyper .comparison-card-header { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .comparison-card-body { padding: 18px; }
+        .comparison-card-body h4 { font-size: 0.95rem; margin: 0 0 10px; }
+        .comparison-card-body ul { list-style: none; padding: 0; margin: 0 0 14px; }
+        .comparison-card-body li { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; color: var(--text-secondary); font-size: 0.9rem; border-bottom: 1px solid var(--border-color); }
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list { background: #f9fafb; border-radius: 12px; padding: 22px; margin: 20px 0; }
+        .interventions-list h4 { font-family: 'Outfit', sans-serif; font-size: 1rem; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+        .interventions-list h4 i { color: var(--primary-color); }
+        .intervention-item { display: flex; gap: 14px; padding: 14px; background: white; border-radius: 10px; margin-bottom: 10px; border: 1px solid var(--border-color); }
+        .intervention-number { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 8px; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .intervention-content h5 { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin: 0 0 4px; }
+        .intervention-content p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+
+        /* Quick Reference */
+        .quick-reference { background: white; border: 2px solid var(--primary-color); border-radius: 12px; padding: 20px; margin: 24px 0; }
+        .quick-reference h3 { font-size: 1.1rem; color: var(--primary-color); margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+        .quick-reference-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .quick-ref-item { background: #f9fafb; padding: 12px; border-radius: 8px; }
+        .quick-ref-item .label { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 2px; }
+        .quick-ref-item .value { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+
+        /* Bottom Line */
+        .bottom-line { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #93c5fd; border-radius: 10px; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: var(--text-primary); }
+
+        /* Dashboard/Panel Specific: Value Panels */
+        .value-panel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+        .value-panel { background: white; border: 2px solid var(--border-color); border-radius: 12px; padding: 18px; text-align: center; transition: border-color 0.2s; }
+        .value-panel:hover { border-color: var(--primary-color); }
+        .value-panel .vp-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .value-panel .vp-value { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--primary-color); }
+        .value-panel .vp-unit { font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px; }
+        .value-panel.critical .vp-value { color: #ef4444; }
+        .value-panel.critical { border-color: #fecaca; }
+        .value-panel.success .vp-value { color: #10b981; }
+        .value-panel.success { border-color: #a7f3d0; }
+
+        /* FlorenceBot Tips */
+        .florencebot-tip { background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-left: 4px solid #8b5cf6; border-radius: 10px; padding: 20px; margin: 20px 0; }
+        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .florencebot-tip-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; }
+        .florencebot-tip-label { font-size: 0.8rem; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.5px; }
+        .florencebot-tip-title { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+        .florencebot-tip-content { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+        /* Key Points Summary */
+        .key-points-summary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 12px; padding: 28px; margin: 40px 0 0; color: white; }
+        .key-points-summary h2 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; color: white; border-bottom: none; padding-bottom: 0; }
+        .key-points-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .key-point { background: rgba(255,255,255,0.15); padding: 14px; border-radius: 10px; display: flex; align-items: flex-start; gap: 10px; }
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Cross References */
+        .cross-references { background: #ecfdf5; border: 2px solid #10b981; border-radius: 12px; padding: 28px; margin-top: 30px; }
+        .cross-references h2 { color: #059669; border-bottom: none; padding-bottom: 0; font-size: 1.2rem; }
+        .cross-ref-group { margin-bottom: 16px; }
+        .cross-ref-group:last-child { margin-bottom: 0; }
+        .cross-ref-group h3 { font-size: 0.95rem; color: var(--text-secondary); margin: 0 0 8px; }
+        .cross-ref-group ul { list-style: none; margin: 0; padding: 0; }
+        .cross-ref-group li { margin-bottom: 4px; }
+        .cross-ref-group a { color: #059669; text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+        .cross-ref-group a:hover { text-decoration: underline; }
+        .coming-soon { color: var(--text-secondary); font-style: italic; display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+
+        /* Practice Questions */
+        .practice-questions h2 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .quiz-cta-box { display: flex; align-items: center; gap: 24px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 2px solid #3b82f6; border-radius: 14px; padding: 24px; }
+        .quiz-cta-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0; }
+        .quiz-cta-content { flex: 1; }
+        .quiz-cta-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin: 0 0 6px; }
+        .quiz-cta-content p { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 10px; }
+        .quiz-cta-stats { display: flex; gap: 16px; font-size: 0.85rem; color: var(--text-secondary); }
+        .quiz-cta-stats span { display: flex; align-items: center; gap: 5px; }
+        .quiz-cta-button { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; white-space: nowrap; transition: all 0.2s ease; }
+        .quiz-cta-button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
+
+        /* Footer */
+        .document-footer { text-align: center; padding: 32px 48px; border-top: 1px solid var(--border-color); background: linear-gradient(135deg, #f8fafc, #f1f5f9); }
+        .footer-logo { height: 48px; width: auto; margin-bottom: 12px; }
+        .footer-tagline { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px; }
+        .footer-copyright { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Print Styles */
+        @page { margin: 0.6in 0.4in; }
+        @media print {
+            .download-bar { display: none !important; }
+            body { background: white !important; margin: 0 !important; padding: 0 !important; }
+            .document-container { margin: 0 !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+            .cover-page { page-break-after: always; break-after: page; }
+            .info-box, .guide-table-wrapper, .comparison-card, .intervention-item, .quick-reference, .learning-objectives, .key-points-summary, .florencebot-tip, .value-panel { page-break-inside: avoid; break-inside: avoid; }
+            h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
+            .comparison-grid, .interventions-list { page-break-inside: auto; }
+            a { text-decoration: underline; }
+            .document-footer { page-break-inside: avoid; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar { flex-direction: column; gap: 12px; padding: 12px 16px; }
+            .download-bar-actions { width: 100%; justify-content: center; }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+            .value-panel-grid { grid-template-columns: 1fr 1fr; }
+            .quiz-cta-box { flex-direction: column; text-align: center; }
+        }
+    </style>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="guide-sidebar.css">
+</head>
+<body data-product-id="diabetes-mellitus" data-guide-name="Diabetes-Mellitus">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/diabetes-mellitus.webp" alt="Diabetes Mellitus">
+                </div>
+                <div class="cover-category">Endocrine</div>
+                <h1 class="cover-title">Diabetes Mellitus</h1>
+                <p class="cover-subtitle">Comprehensive guide covering Type 1 and Type 2 diabetes pathophysiology, insulin therapy, oral agents, acute complications (DKA vs HHS), chronic complications, and priority nursing interventions.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">25-30 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">February 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Compare the pathophysiology of Type 1 and Type 2 diabetes mellitus</li>
+                    <li><i class="fas fa-check-circle"></i> Differentiate between DKA and HHS including triggers, presentation, and treatment</li>
+                    <li><i class="fas fa-check-circle"></i> Compare onset, peak, and duration of insulin types and identify safe administration practices</li>
+                    <li><i class="fas fa-check-circle"></i> Explain mechanisms of action for oral and injectable antidiabetic medications</li>
+                    <li><i class="fas fa-check-circle"></i> Recognize signs of hypoglycemia and hyperglycemia and prioritize nursing interventions</li>
+                    <li><i class="fas fa-check-circle"></i> Identify chronic complications and appropriate patient teaching for long-term management</li>
+                    <li><i class="fas fa-check-circle"></i> Apply clinical reasoning to diabetes patient scenarios across the lifespan</li>
+                </ul>
+            </section>
+
+            <!-- High-Yield Summary -->
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary &mdash; Review This in 60 Seconds</h2>
+                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
+                <ul>
+                    <li><strong>Type 1 = autoimmune beta-cell destruction = absolute insulin deficiency.</strong> Always requires insulin. Prone to DKA. Usually diagnosed in youth.</li>
+                    <li><strong>Type 2 = insulin resistance + relative deficiency.</strong> Managed with lifestyle + oral agents + injectables. Prone to HHS. Usually diagnosed in adults (rising in youth).</li>
+                    <li><strong>DKA:</strong> Glucose 250-600, pH &lt; 7.35, ketones present, Kussmaul respirations, fruity breath. Treat with IV fluids + IV regular insulin + potassium replacement.</li>
+                    <li><strong>HHS:</strong> Glucose &gt; 600 (often &gt; 1000), NO significant ketones, severe dehydration, altered mental status. Treat with aggressive IV fluids first.</li>
+                    <li><strong>Insulin timing:</strong> Rapid (lispro/aspart) = with meals. Regular = 30 min before meals (only insulin for IV). NPH = cloudy, roll don't shake. Glargine = once daily, never mix.</li>
+                    <li><strong>Metformin is first-line for T2DM.</strong> No hypoglycemia alone. Hold for contrast dye. Contraindicated if eGFR &lt; 30.</li>
+                    <li><strong>Hypoglycemia (&lt; 70 mg/dL):</strong> Rule of 15 if conscious. IV D50 or IM glucagon if unconscious. Beta-blockers mask symptoms.</li>
+                    <li><strong>HbA1c &lt; 7%</strong> for most adults. Reflects average glucose over 2-3 months. Each 1% change &asymp; 28-30 mg/dL average glucose change.</li>
+                    <li><strong>Three P's of hyperglycemia:</strong> Polyuria, Polydipsia, Polyphagia. Plus fatigue and blurred vision.</li>
+                    <li><strong>Chronic complications:</strong> Retinopathy, nephropathy, neuropathy (microvascular). CAD, stroke, PVD (macrovascular). Annual eye/foot exams essential.</li>
+                </ul>
+                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#pathophysiology"><span class="toc-number">1</span> Pathophysiology: Type 1 vs Type 2</a></li>
+                    <li><a href="#assessment"><span class="toc-number">2</span> Assessment & Diagnosis</a></li>
+                    <li><a href="#acute-complications"><span class="toc-number">3</span> Acute Complications: DKA vs HHS</a></li>
+                    <li><a href="#chronic-complications"><span class="toc-number">4</span> Chronic Complications</a></li>
+                    <li><a href="#insulin-therapy"><span class="toc-number">5</span> Insulin Therapy</a></li>
+                    <li><a href="#oral-agents"><span class="toc-number">6</span> Oral &amp; Injectable Agents</a></li>
+                    <li><a href="#hypoglycemia"><span class="toc-number">7</span> Hypoglycemia Management</a></li>
+                    <li><a href="#nursing-management"><span class="toc-number">8</span> Nursing Management &amp; Teaching</a></li>
+                    <li><a href="#pediatric"><span class="toc-number">9</span> Pediatric Considerations</a></li>
+                </ul>
+            </nav>
+
+            <!-- ============================================ -->
+            <!-- Section 1: Pathophysiology -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="pathophysiology">
+                <h2><span class="section-icon"><i class="fas fa-dna"></i></span> Pathophysiology: Type 1 vs Type 2</h2>
+
+                <p>Diabetes mellitus is a group of metabolic disorders characterized by chronic hyperglycemia resulting from defects in insulin secretion, insulin action, or both. Understanding the fundamental differences between Type 1 and Type 2 guides all clinical decision-making.</p>
+
+                <h3>Insulin: The Key Player</h3>
+                <p><strong>Insulin</strong> is a hormone produced by the <strong>beta cells of the pancreatic islets of Langerhans</strong>. Its primary function is to allow glucose to enter cells for energy. Without adequate insulin (or when cells resist it), glucose accumulates in the blood while cells starve.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card type1">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-syringe"></i> Type 1 Diabetes Mellitus
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Autoimmune Beta-Cell Destruction</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Absolute insulin deficiency</strong> (no insulin produced)</li>
+                                <li><i class="fas fa-check"></i> Autoimmune destruction of beta cells</li>
+                                <li><i class="fas fa-check"></i> Usually diagnosed in childhood/adolescence</li>
+                                <li><i class="fas fa-check"></i> Sudden onset with classic "3 P's"</li>
+                                <li><i class="fas fa-check"></i> <strong>Requires exogenous insulin for survival</strong></li>
+                                <li><i class="fas fa-check"></i> Prone to <strong>DKA</strong> (diabetic ketoacidosis)</li>
+                                <li><i class="fas fa-check"></i> Accounts for 5-10% of all diabetes</li>
+                                <li><i class="fas fa-check"></i> Often normal or underweight at diagnosis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card type2">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-pills"></i> Type 2 Diabetes Mellitus
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Insulin Resistance + Relative Deficiency</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Cells resist insulin action</strong> (insulin present but ineffective)</li>
+                                <li><i class="fas fa-check"></i> Progressive beta-cell dysfunction over time</li>
+                                <li><i class="fas fa-check"></i> Usually diagnosed in adults (rising in youth)</li>
+                                <li><i class="fas fa-check"></i> Gradual onset, often asymptomatic initially</li>
+                                <li><i class="fas fa-check"></i> <strong>Managed with lifestyle + oral agents &plusmn; insulin</strong></li>
+                                <li><i class="fas fa-check"></i> Prone to <strong>HHS</strong> (hyperglycemic hyperosmolar state)</li>
+                                <li><i class="fas fa-check"></i> Accounts for 90-95% of all diabetes</li>
+                                <li><i class="fas fa-check"></i> Often overweight or obese at diagnosis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-type1-vs-type2">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Type 1 vs Type 2 Made Simple</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Think of it like a lock and key:</strong> In Type 1, there are <strong>no keys</strong> (no insulin produced) &mdash; you must provide external keys (inject insulin). In Type 2, the keys exist but the <strong>locks are rusty</strong> (cells resist insulin) &mdash; you can oil the locks (sensitizers like metformin), make more keys (sulfonylureas), or eventually provide new keys (insulin). Type 1 = no keys. Type 2 = rusty locks.
+                    </div>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: The Three P's of Hyperglycemia
+                    </div>
+                    <p><strong>P</strong>olyuria (excessive urination &mdash; osmotic diuresis from glucose in urine)</p>
+                    <p><strong>P</strong>olydipsia (excessive thirst &mdash; dehydration from fluid loss)</p>
+                    <p><strong>P</strong>olyphagia (excessive hunger &mdash; cells can't use glucose, body thinks it's starving)</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Type 1 = no insulin production (autoimmune), always needs insulin, prone to DKA. Type 2 = insulin resistance + declining production, starts with oral agents, prone to HHS. Type 2 is far more common (90-95%).</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 2: Assessment & Diagnosis -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="assessment">
+                <h2><span class="section-icon"><i class="fas fa-stethoscope"></i></span> Assessment &amp; Diagnosis</h2>
+
+                <h3>Diagnostic Criteria</h3>
+                <p>Any ONE of the following criteria confirms diabetes (must be confirmed on a separate day unless unequivocal hyperglycemia is present):</p>
+
+                <div class="value-panel-grid">
+                    <div class="value-panel critical">
+                        <div class="vp-label">Fasting Glucose</div>
+                        <div class="vp-value">&ge; 126</div>
+                        <div class="vp-unit">mg/dL (after 8+ hr fast)</div>
+                    </div>
+                    <div class="value-panel critical">
+                        <div class="vp-label">HbA1c</div>
+                        <div class="vp-value">&ge; 6.5%</div>
+                        <div class="vp-unit">Average glucose over 2-3 months</div>
+                    </div>
+                    <div class="value-panel critical">
+                        <div class="vp-label">Random Glucose</div>
+                        <div class="vp-value">&ge; 200</div>
+                        <div class="vp-unit">mg/dL + classic symptoms</div>
+                    </div>
+                </div>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-bullseye"></i> Glycemic Targets (ADA Guidelines)</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">HbA1c Goal</div>
+                            <div class="value">&lt; 7% (most adults)</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Fasting Glucose</div>
+                            <div class="value">80-130 mg/dL</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Postprandial (2hr)</div>
+                            <div class="value">&lt; 180 mg/dL</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Hypoglycemia Threshold</div>
+                            <div class="value">&lt; 70 mg/dL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Key Concept: HbA1c
+                    </div>
+                    <p><strong>HbA1c reflects average blood glucose over the past 2-3 months</strong> (correlates with RBC lifespan). An HbA1c of 7% &asymp; average glucose of 154 mg/dL. Conditions that affect RBC turnover (hemolytic anemia, blood transfusions, sickle cell disease) can give falsely low or high results. HbA1c does NOT require fasting.</p>
+                </div>
+
+                <h3>Prediabetes: The Warning Zone</h3>
+                <div class="value-panel-grid">
+                    <div class="value-panel">
+                        <div class="vp-label">Fasting Glucose</div>
+                        <div class="vp-value">100-125</div>
+                        <div class="vp-unit">mg/dL (impaired fasting)</div>
+                    </div>
+                    <div class="value-panel">
+                        <div class="vp-label">HbA1c</div>
+                        <div class="vp-value">5.7-6.4%</div>
+                        <div class="vp-unit">Increased risk</div>
+                    </div>
+                    <div class="value-panel">
+                        <div class="vp-label">2hr OGTT</div>
+                        <div class="vp-value">140-199</div>
+                        <div class="vp-unit">mg/dL (impaired tolerance)</div>
+                    </div>
+                </div>
+                <p>Prediabetes is reversible with lifestyle modifications: 7% weight loss and 150 min/week moderate exercise can reduce T2DM risk by 58%.</p>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Diagnose DM with fasting glucose &ge; 126, HbA1c &ge; 6.5%, or random glucose &ge; 200 with symptoms. Target HbA1c &lt; 7% for most adults. Prediabetes is reversible with lifestyle changes.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 3: Acute Complications -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="acute-complications">
+                <h2><span class="section-icon"><i class="fas fa-exclamation-triangle"></i></span> Acute Complications: DKA vs HHS</h2>
+
+                <p>These are <strong>life-threatening emergencies</strong> that require immediate recognition and intervention. Understanding the differences is essential for prioritizing treatment.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card dka">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-bolt"></i> DKA (Diabetic Ketoacidosis)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Primarily Type 1 (can occur in T2)</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Glucose: 250-600 mg/dL</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>pH &lt; 7.35</strong> (metabolic acidosis)</li>
+                                <li><i class="fas fa-check"></i> <strong>Ketones present</strong> (blood and urine)</li>
+                                <li><i class="fas fa-check"></i> <strong>Kussmaul respirations</strong> (deep, rapid)</li>
+                                <li><i class="fas fa-check"></i> <strong>Fruity/acetone breath</strong></li>
+                                <li><i class="fas fa-check"></i> Nausea, vomiting, abdominal pain</li>
+                                <li><i class="fas fa-check"></i> Dehydration, warm/dry skin</li>
+                                <li><i class="fas fa-check"></i> Develops rapidly (hours to days)</li>
+                            </ul>
+                            <h4>Triggers</h4>
+                            <p>Missed insulin, illness/infection, new-onset T1DM, surgery, stress</p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card hhs">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-tint-slash"></i> HHS (Hyperglycemic Hyperosmolar State)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Primarily Type 2</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Glucose: &gt; 600 mg/dL</strong> (often &gt; 1000)</li>
+                                <li><i class="fas fa-check"></i> <strong>pH normal or near-normal</strong> (&gt; 7.30)</li>
+                                <li><i class="fas fa-check"></i> <strong>No significant ketones</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>No Kussmaul respirations</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>No fruity breath</strong></li>
+                                <li><i class="fas fa-check"></i> Severe dehydration</li>
+                                <li><i class="fas fa-check"></i> <strong>Altered mental status</strong> (confusion &rarr; coma)</li>
+                                <li><i class="fas fa-check"></i> Develops slowly (days to weeks)</li>
+                            </ul>
+                            <h4>Triggers</h4>
+                            <p>Illness/infection, inadequate fluid intake, medications (steroids, thiazides), elderly</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-dka-vs-hhs">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">DKA vs HHS: The Key Distinction</div>
+                    <div class="florencebot-tip-content">
+                        <strong>The difference comes down to ketones.</strong> In DKA, there is NO insulin at all, so the body breaks down fat for energy, producing ketones that cause acidosis. In HHS, there IS some insulin (enough to prevent ketone formation but not enough to control glucose), so no acidosis occurs. Instead, glucose climbs extremely high, causing massive osmotic diuresis and dehydration. Remember: DKA = acidosis with ketones. HHS = extreme dehydration without ketones.
+                    </div>
+                </div>
+
+                <h3>DKA Treatment Priorities</h3>
+                <div class="interventions-list">
+                    <h4><i class="fas fa-first-aid"></i> DKA Management Protocol</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Aggressive IV Fluid Replacement</h5>
+                            <p>Start with 0.9% NS at 1-1.5 L/hr for the first hour. Switch to 0.45% NS when hemodynamically stable. Add dextrose (D5) when glucose reaches 250 mg/dL to prevent hypoglycemia while continuing insulin.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>IV Regular Insulin Drip</h5>
+                            <p>Continuous infusion of regular insulin (only type for IV use). Goal: decrease glucose 50-75 mg/dL per hour. Do NOT drop too fast (risk of cerebral edema, especially in children).</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Potassium Replacement</h5>
+                            <p><strong>Critical:</strong> Serum K+ may appear normal or high on admission, but total body potassium is depleted. As acidosis is corrected and insulin is given, K+ shifts into cells and levels DROP rapidly. Monitor K+ every 1-2 hours. Hold insulin if K+ &lt; 3.3 mEq/L until repleted.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Monitor & Correct Acidosis</h5>
+                            <p>Check ABGs frequently. Bicarbonate may be given if pH &lt; 6.9 (severe acidosis). Resolution = glucose &lt; 200 + pH &gt; 7.30 + bicarb &ge; 15 + anion gap closed.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical Alert: Potassium in DKA
+                    </div>
+                    <p><strong>Potassium is the #1 killer in DKA management.</strong> Insulin drives potassium into cells. If you give insulin without replacing potassium, the patient can develop fatal hypokalemia and cardiac arrest. Always check K+ BEFORE starting insulin. If K+ &lt; 3.3: hold insulin, replace K+ first. If K+ 3.3-5.3: give K+ with insulin. If K+ &gt; 5.3: hold K+, recheck in 2 hours.</p>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: HHS Treatment Difference
+                    </div>
+                    <p>HHS treatment prioritizes <strong>aggressive fluid replacement FIRST</strong> (patients may be 8-12 liters deficit). Insulin is secondary because the extreme glucose level will drop significantly with rehydration alone. HHS patients are usually elderly and at higher risk for fluid overload &mdash; monitor heart and lung sounds closely.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> DKA = acidosis with ketones (Type 1), treat with fluids + insulin + K+ replacement. HHS = extreme hyperglycemia without ketones (Type 2), treat with aggressive fluids first. Always check K+ before starting insulin in DKA.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 4: Chronic Complications -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="chronic-complications">
+                <h2><span class="section-icon"><i class="fas fa-heartbeat"></i></span> Chronic Complications</h2>
+
+                <p>Prolonged hyperglycemia damages blood vessels throughout the body. Complications are classified as <strong>microvascular</strong> (small vessel damage) or <strong>macrovascular</strong> (large vessel damage). Tight glucose control significantly reduces these risks.</p>
+
+                <h3>Microvascular Complications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Complication</th>
+                                <th>What Happens</th>
+                                <th>Nursing Priority</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Retinopathy</strong></td>
+                                <td>Damage to retinal blood vessels &rarr; microaneurysms, hemorrhages, vision loss</td>
+                                <td>Annual dilated eye exams. Report vision changes immediately.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nephropathy</strong></td>
+                                <td>Glomerular damage &rarr; proteinuria &rarr; progressive renal failure</td>
+                                <td>Annual urine albumin screening. Control BP (ACE-I/ARB are renoprotective). Monitor BUN/creatinine.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Neuropathy</strong></td>
+                                <td>Nerve damage &rarr; numbness/tingling in extremities (peripheral), gastroparesis, orthostatic hypotension (autonomic)</td>
+                                <td>Daily foot inspections. Test sensation with monofilament. Proper footwear. Report new numbness or tingling.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Macrovascular Complications</h3>
+                <ul>
+                    <li><strong>Coronary artery disease (CAD):</strong> DM patients have 2-4x higher risk of heart disease. #1 cause of death in diabetes.</li>
+                    <li><strong>Cerebrovascular disease:</strong> Increased stroke risk. Control BP, glucose, and lipids.</li>
+                    <li><strong>Peripheral vascular disease (PVD):</strong> Poor circulation to extremities &rarr; delayed wound healing &rarr; risk for amputation.</li>
+                </ul>
+
+                <div class="florencebot-tip" id="tip-foot-care">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Diabetic Foot Care is Life or Limb</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Foot complications are the #1 cause of non-traumatic lower-limb amputations.</strong> Neuropathy means patients can't feel injuries, and PVD means wounds heal poorly. Teach patients: inspect feet DAILY (use a mirror for soles), wash with warm (not hot) water, moisturize but NOT between toes, wear properly fitting shoes (never go barefoot), cut toenails straight across, and report ANY break in skin immediately. A small blister can become a limb-threatening infection.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Microvascular = eyes, kidneys, nerves. Macrovascular = heart, brain, peripheral vessels. Annual eye exams, urine albumin checks, and daily foot inspections are essential. Tight glucose AND BP control reduce all complications.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 5: Insulin Therapy -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="insulin-therapy">
+                <h2><span class="section-icon"><i class="fas fa-syringe"></i></span> Insulin Therapy</h2>
+
+                <p>Insulin is the cornerstone of Type 1 management and is often needed as Type 2 progresses. Knowing onset, peak, and duration for each type is critical for preventing hypoglycemia.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Generic (Brand)</th>
+                                <th>Onset</th>
+                                <th>Peak</th>
+                                <th>Duration</th>
+                                <th>Key Point</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Rapid-Acting</strong></td>
+                                <td>Lispro (Humalog), Aspart (NovoLog)</td>
+                                <td>10-15 min</td>
+                                <td>1-2 hr</td>
+                                <td>3-5 hr</td>
+                                <td>Give with meals (within 15 min)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Short-Acting</strong></td>
+                                <td>Regular (Humulin R, Novolin R)</td>
+                                <td>30-60 min</td>
+                                <td>2-4 hr</td>
+                                <td>6-8 hr</td>
+                                <td>Give 30 min before meals. Only insulin for IV.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Intermediate</strong></td>
+                                <td>NPH (Humulin N, Novolin N)</td>
+                                <td>1-2 hr</td>
+                                <td>4-12 hr</td>
+                                <td>18-24 hr</td>
+                                <td>Cloudy. Roll gently, never shake. Never give IV.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Long-Acting</strong></td>
+                                <td>Glargine (Lantus), Detemir (Levemir)</td>
+                                <td>1-2 hr</td>
+                                <td>No peak</td>
+                                <td>24 hr</td>
+                                <td>Give once daily at same time. Never mix.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Mixing Insulins
+                    </div>
+                    <p><strong>"RN" = Regular before NPH.</strong> When mixing in one syringe: inject air into NPH vial first (don't withdraw), inject air into Regular vial and draw up Regular, THEN draw up NPH. Clear before cloudy.</p>
+                </div>
+
+                <div class="florencebot-tip" id="tip-insulin-safety">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Insulin Peak = Hypoglycemia Risk</div>
+                    <div class="florencebot-tip-content">
+                        <strong>The peak is when insulin works hardest and hypoglycemia risk is greatest.</strong> Rapid-acting peaks in 1-2 hours (watch right after meals). NPH peaks at 4-12 hours (watch for late afternoon or overnight lows). Long-acting insulins have no peak (lower hypo risk). Always ensure food is available at peak times. A patient on NPH who skips lunch is at high risk for afternoon hypoglycemia.
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Safety Alert: Sound-Alike Insulins
+                    </div>
+                    <p><strong>Humalog vs. Humulin</strong> and <strong>NovoLog vs. Novolin</strong> are commonly confused. Humalog and NovoLog are rapid-acting. Humulin and Novolin can be R (Regular) or N (NPH). Always verify the exact insulin type, not just the brand name. Insulin is an ISMP high-alert medication &mdash; require independent double-check.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Know onset/peak/duration. Regular is the only insulin for IV. Never mix glargine or detemir. Draw Regular before NPH ("RN"). Peak time = highest hypo risk. Rotate injection sites within the same region.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 6: Oral & Injectable Agents -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="oral-agents">
+                <h2><span class="section-icon"><i class="fas fa-pills"></i></span> Oral &amp; Injectable Agents</h2>
+
+                <p>Type 2 diabetes is managed with a stepwise approach: lifestyle modifications first, then metformin, then add-on agents as needed. Understanding each class helps nurses anticipate side effects and provide targeted teaching.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Drug Class</th>
+                                <th>Key Drug(s)</th>
+                                <th>Mechanism</th>
+                                <th>Hypo Risk?</th>
+                                <th>Must-Know Nursing Point</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Biguanide</strong></td>
+                                <td>Metformin (Glucophage)</td>
+                                <td>Decreases hepatic glucose production</td>
+                                <td>No (alone)</td>
+                                <td>Hold for contrast dye. Monitor renal function. GI side effects common.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Sulfonylureas</strong></td>
+                                <td>Glipizide, Glyburide, Glimepiride</td>
+                                <td>Stimulates insulin secretion from beta cells</td>
+                                <td><strong>YES</strong></td>
+                                <td>Causes hypoglycemia and weight gain. Take before meals.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Meglitinides</strong></td>
+                                <td>Repaglinide (Prandin), Nateglinide (Starlix)</td>
+                                <td>Rapid, short insulin secretion</td>
+                                <td><strong>YES</strong></td>
+                                <td>"No meal, no pill." Take within 30 min of meals.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TZDs</strong></td>
+                                <td>Pioglitazone (Actos)</td>
+                                <td>Increases insulin sensitivity</td>
+                                <td>No (alone)</td>
+                                <td><strong>Contraindicated in HF (NYHA III-IV).</strong> Fluid retention, fracture risk.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>DPP-4 Inhibitors</strong></td>
+                                <td>Sitagliptin (Januvia), Linagliptin (Tradjenta)</td>
+                                <td>Prolongs natural incretin hormones</td>
+                                <td>No (alone)</td>
+                                <td>Well tolerated. Weight neutral. Watch for pancreatitis.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GLP-1 Agonists</strong></td>
+                                <td>Semaglutide (Ozempic), Liraglutide (Victoza)</td>
+                                <td>Mimics GLP-1 incretin at high levels</td>
+                                <td>No (alone)</td>
+                                <td><strong>Black box: thyroid C-cell tumors.</strong> Promotes weight loss. CV benefit.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>SGLT2 Inhibitors</strong></td>
+                                <td>Empagliflozin (Jardiance), Dapagliflozin (Farxiga)</td>
+                                <td>Blocks renal glucose reabsorption</td>
+                                <td>No (alone)</td>
+                                <td>Watch for UTIs, genital infections, <strong>euglycemic DKA</strong>. CV/renal benefit.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>AGIs</strong></td>
+                                <td>Acarbose (Precose)</td>
+                                <td>Slows carbohydrate absorption</td>
+                                <td>No (alone)</td>
+                                <td>GI effects (gas, bloating). Treat hypo with <strong>glucose tablets only</strong>.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-metformin-first">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Metformin: The First-Line Champion</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Metformin is first-line for T2DM for good reason:</strong> no hypoglycemia when used alone, weight neutral/slight loss, cardiovascular benefit, inexpensive, and well-established. The main concerns are GI side effects (take with food, use ER formulation) and lactic acidosis risk (hold for contrast dye, contraindicated if eGFR &lt; 30). Long-term use can cause B12 deficiency &mdash; monitor levels.
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Which Drugs Cause Hypoglycemia Alone?
+                    </div>
+                    <p>Only <strong>three classes</strong> cause hypoglycemia when used as monotherapy:</p>
+                    <ul>
+                        <li><strong>Insulin</strong> (replaces endogenous insulin)</li>
+                        <li><strong>Sulfonylureas</strong> (stimulate insulin release regardless of glucose)</li>
+                        <li><strong>Meglitinides</strong> (stimulate rapid insulin release)</li>
+                    </ul>
+                    <p>All other classes work through glucose-dependent mechanisms. However, ANY drug can contribute to hypoglycemia when combined with insulin or a sulfonylurea.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Metformin is first-line for T2DM. Only insulin, sulfonylureas, and meglitinides cause hypo alone. GLP-1 agonists and SGLT2 inhibitors offer weight loss + CV benefits. TZDs are contraindicated in severe HF. Treat hypo on acarbose with glucose tablets only.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 7: Hypoglycemia Management -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="hypoglycemia">
+                <h2><span class="section-icon"><i class="fas fa-exclamation-circle"></i></span> Hypoglycemia Management</h2>
+
+                <p>Hypoglycemia (BG &lt; 70 mg/dL) is the most dangerous acute complication of diabetes treatment. Rapid recognition and intervention prevent seizures, loss of consciousness, and death.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card hypo">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-bolt"></i> Mild-Moderate (Adrenergic)
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Tremors/shakiness</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Sweating</strong> (diaphoresis)</li>
+                                <li><i class="fas fa-check"></i> <strong>Tachycardia</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Hunger</strong></li>
+                                <li><i class="fas fa-check"></i> Anxiety, irritability</li>
+                                <li><i class="fas fa-check"></i> Pallor, tingling</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-card hyper">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-brain"></i> Severe (Neuroglycopenic)
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Confusion</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Slurred speech</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Seizures</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Loss of consciousness</strong></li>
+                                <li><i class="fas fa-check"></i> Behavioral changes</li>
+                                <li><i class="fas fa-check"></i> Visual disturbances</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-rule-of-15">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Rule of 15</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Conscious patient:</strong> Give <strong>15 grams</strong> of fast-acting carbohydrate (4 oz juice, 3-4 glucose tablets, 1 tbsp honey), wait <strong>15 minutes</strong>, recheck BG. Repeat if still &lt; 70. Follow with complex carb + protein snack. <strong>Unconscious patient:</strong> NEVER give anything by mouth (aspiration risk). Give IV dextrose 50% (D50W) 25-50 mL or IM glucagon 1 mg. Position on side to protect airway.
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Hypoglycemia Unawareness
+                    </div>
+                    <p><strong>Patients on beta-blockers or with long-standing diabetes may lose early warning signs.</strong> Beta-blockers block tachycardia and tremors &mdash; only sweating remains. These patients may progress directly to confusion or seizures without warning. They need more frequent monitoring and higher glucose targets.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Rule of 15 if conscious. IV D50 or IM glucagon if unconscious &mdash; never give oral glucose. Beta-blockers mask early warning signs. Always investigate the cause after treatment.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 8: Nursing Management -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="nursing-management">
+                <h2><span class="section-icon"><i class="fas fa-user-nurse"></i></span> Nursing Management &amp; Patient Teaching</h2>
+
+                <p>Diabetes management is 95% self-care. The nurse's role is to empower patients with knowledge and skills for safe, effective daily management.</p>
+
+                <h3>Sick Day Rules</h3>
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> Teach Patients These Sick Day Guidelines
+                    </div>
+                    <ul>
+                        <li><strong>NEVER stop taking insulin</strong> &mdash; illness increases glucose even if not eating (stress hormones)</li>
+                        <li>Check blood glucose every 4 hours</li>
+                        <li>Check urine ketones (Type 1) if BG &gt; 240 mg/dL</li>
+                        <li>Maintain fluid intake (small, frequent sips)</li>
+                        <li>If unable to eat regular meals, replace with simple carbs (regular soda, popsicles, gelatin)</li>
+                        <li>Call provider if: BG &gt; 300 twice, moderate-large ketones, vomiting &gt; 4 hours, fever persists</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-sick-day">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Never Skip Insulin When Sick</div>
+                    <div class="florencebot-tip-content">
+                        <strong>This is the #1 sick day mistake that sends patients to the ED.</strong> Patients think: "I'm not eating, so I don't need insulin." But illness triggers counter-regulatory hormones (cortisol, glucagon, epinephrine) that dramatically raise blood glucose. Type 1 patients who stop insulin during illness can develop DKA within hours. Always reinforce: <strong>sick = MORE insulin need, not less.</strong> They may need to adjust the dose, but never stop it entirely without provider guidance.
+                    </div>
+                </div>
+
+                <h3>Essential Patient Teaching Points</h3>
+                <div class="interventions-list">
+                    <h4><i class="fas fa-chalkboard-teacher"></i> Core Self-Management Skills</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Blood Glucose Monitoring</h5>
+                            <p>Teach technique: wash hands with warm water (avoids false readings from food residue), use side of fingertip (less pain), rotate sites. T1DM: check 4-6x/day minimum. T2DM on insulin: check as directed. CGMs are increasingly used.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Nutrition Management</h5>
+                            <p>Carbohydrate counting for insulin dosing. Consistent meal timing (especially on sulfonylureas/NPH). Focus on complex carbs, fiber, lean protein. Limit refined sugars and saturated fats. Refer to a diabetes educator/dietitian.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Exercise Guidelines</h5>
+                            <p>150 min/week moderate aerobic activity. Check BG before exercise: if &lt; 100, eat a snack first; if &gt; 250 with ketones, do not exercise. Carry fast-acting carbs. Exercise increases insulin sensitivity (lowers BG) &mdash; may need to reduce insulin dose.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Foot Care</h5>
+                            <p>Inspect feet daily. Wash with warm (not hot) water. Moisturize (not between toes). Wear proper shoes &mdash; never go barefoot. Cut nails straight across. Report any cuts, blisters, redness, or swelling immediately.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Medical Alert & Follow-up</h5>
+                            <p>Wear medical alert identification. Annual dilated eye exam, foot exam, urine albumin test. HbA1c every 3-6 months. Flu vaccine annually. Keep glucagon kit available and teach family to use it.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Never stop insulin when sick &mdash; illness raises glucose. Teach blood glucose monitoring, carb counting, exercise precautions, foot care, and sick day rules. Diabetes management is self-care &mdash; education IS the treatment.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 9: Pediatric Considerations -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="pediatric">
+                <h2><span class="section-icon"><i class="fas fa-baby"></i></span> Pediatric Considerations</h2>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-header">
+                        <i class="fas fa-baby"></i> Type 1 Diabetes in Children
+                    </div>
+                    <p><strong>T1DM is the most common form in children.</strong> Key pediatric considerations:</p>
+                    <ul>
+                        <li><strong>Insulin doses are weight-based</strong> (0.5-1.0 units/kg/day, higher in puberty due to growth hormones)</li>
+                        <li>Insulin pumps and CGMs are increasingly standard of care</li>
+                        <li>Hypoglycemia may present as: irritability, behavioral changes, difficulty concentrating, nightmares (nocturnal hypo)</li>
+                        <li>Young children cannot reliably report symptoms &mdash; educate parents AND school staff</li>
+                        <li><strong>DKA is the leading cause of death</strong> in children with T1DM &mdash; educate on sick day rules. Cerebral edema is a unique DKA complication in children (fluid/insulin must be corrected slowly)</li>
+                    </ul>
+                </div>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-header">
+                        <i class="fas fa-baby"></i> Type 2 Diabetes in Youth
+                    </div>
+                    <p><strong>T2DM is rising in children/adolescents, especially with obesity.</strong></p>
+                    <ul>
+                        <li><strong>Metformin is the only oral agent FDA-approved for children</strong> (age 10+)</li>
+                        <li>Liraglutide (GLP-1) recently approved for adolescents 10+ with T2DM</li>
+                        <li>Lifestyle modifications are heavily emphasized</li>
+                        <li>Adolescents may struggle with adherence due to peer pressure and body image</li>
+                        <li>Develop a <strong>Diabetes Medical Management Plan (DMMP)</strong> for school</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-peds-dka">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Cerebral Edema in Pediatric DKA</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Cerebral edema is a life-threatening complication unique to pediatric DKA.</strong> It occurs when glucose and osmolality are corrected too quickly, causing fluid to shift into brain cells. Signs include headache, altered LOC, bradycardia, and hypertension (Cushing's triad). Prevention: correct glucose gradually (no more than 50-75 mg/dL per hour), avoid hypotonic fluids early, and don't drop sodium too fast. This is why pediatric DKA management requires ICU-level monitoring.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> T1DM is most common in children; always weight-based insulin dosing. Cerebral edema is a unique pediatric DKA risk &mdash; correct slowly. For T2DM in youth, metformin is first-line. School staff education is essential.</div>
+            </section>
+
+            <!-- Practice Questions CTA -->
+            <section class="practice-questions" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> NCLEX Challenge &mdash; Test Your Knowledge</h2>
+                <div class="quiz-cta-box">
+                    <div class="quiz-cta-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="quiz-cta-content">
+                        <h3>Ready to Test Your Knowledge?</h3>
+                        <p>10 NCLEX-style questions with detailed rationales covering T1DM vs T2DM, DKA vs HHS, insulin types, oral agents, hypoglycemia management, and nursing interventions. Choose Practice Mode or Exam Mode.</p>
+                        <div class="quiz-cta-stats">
+                            <span><i class="fas fa-question-circle"></i> 10 Questions</span>
+                            <span><i class="fas fa-clock"></i> ~15 min</span>
+                            <span><i class="fas fa-layer-group"></i> 4 Question Types</span>
+                        </div>
+                    </div>
+                    <a href="quiz/diabetes-mellitus-quiz.html" class="quiz-cta-button">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </a>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-syringe"></i>
+                        <p><strong>Type 1 = no insulin</strong> (autoimmune). Always needs insulin. Prone to DKA.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-pills"></i>
+                        <p><strong>Type 2 = insulin resistance.</strong> Starts with metformin + lifestyle. Prone to HHS.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-bolt"></i>
+                        <p><strong>DKA:</strong> Ketones, acidosis, Kussmaul breathing. <strong>HHS:</strong> Extreme glucose, no ketones, altered mental status.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-vial"></i>
+                        <p><strong>Check K+ before insulin</strong> in DKA. Insulin drives K+ into cells &mdash; fatal hypokalemia risk.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-first-aid"></i>
+                        <p><strong>Rule of 15:</strong> 15g carbs, recheck in 15 min. Unconscious = IV D50 or IM glucagon.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-prescription-bottle-alt"></i>
+                        <p><strong>Metformin:</strong> First-line T2DM. No hypo alone. Hold for contrast dye.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-shoe-prints"></i>
+                        <p><strong>Daily foot inspections</strong> prevent amputations. Neuropathy + PVD = silent injuries.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-thermometer-half"></i>
+                        <p><strong>Sick day rule:</strong> NEVER stop insulin when sick. Illness raises glucose.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cross-References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Guides in the Library</h2>
+                <div class="cross-ref-group">
+                    <h3>Also relevant:</h3>
+                    <ul>
+                        <li><a href="heart-failure.html"><i class="fas fa-arrow-right"></i> Heart Failure (SGLT2 inhibitors in HF)</a></li>
+                        <li><a href="hypertension.html"><i class="fas fa-arrow-right"></i> Hypertension (ACE-I renal protection in DM)</a></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Thyroid Disorders &mdash; Coming Soon</span></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Fluid &amp; Electrolytes &mdash; Coming Soon</span></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts -->
+    <script src="configs/diabetes-mellitus-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="guide-questions.js"></script>
+    <script src="../content-gate.js"></script>
+</body>
+</html>

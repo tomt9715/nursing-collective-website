@@ -141,25 +141,25 @@ var giBleedingQuizData = {
         {
             id: 6,
             type: "single",
-            subtype: null,
-            difficulty: "knowledge",
-            stem: "A nurse is reviewing hemorrhagic shock classifications. A patient with a GI bleed has the following vital signs: HR 126 bpm, BP 88/56 mmHg, RR 28 breaths/min. The patient is anxious and confused. Based on these findings, which class of hemorrhagic shock is the patient MOST likely experiencing?",
+            subtype: "priority",
+            difficulty: "analysis",
+            stem: "A patient with a history of peptic ulcer disease is admitted with coffee-ground emesis and melena. After stabilization, the provider orders an EGD (esophagogastroduodenoscopy) for the following morning. Which pre-procedure nursing action is MOST important?",
             options: [
-                { id: "a", text: "Class I — <15% blood volume loss" },
-                { id: "b", text: "Class II — 15-30% blood volume loss" },
-                { id: "c", text: "Class III — 30-40% blood volume loss" },
-                { id: "d", text: "Class IV — >40% blood volume loss" }
+                { id: "a", text: "Ensure the patient remains NPO and verify that a type and screen has been drawn" },
+                { id: "b", text: "Administer an oral proton pump inhibitor with a sip of water" },
+                { id: "c", text: "Obtain a barium swallow study to localize the bleeding before the EGD" },
+                { id: "d", text: "Encourage the patient to drink clear liquids to improve visualization" }
             ],
-            correct: "c",
+            correct: "a",
             rationale: {
-                correct: "Class III hemorrhagic shock (30-40% blood volume loss, approximately 1,500-2,000 mL) presents with HR 120-140, decreased blood pressure, RR 30-40, and anxiety/confusion. This patient's vitals (HR 126, BP 88/56, RR 28, anxious/confused) are consistent with Class III.",
-                a: "Class I (<15% loss, <750 mL): HR <100, normal BP, slightly anxious. This patient's tachycardia and hypotension far exceed Class I parameters.",
-                b: "Class II (15-30% loss, 750-1,500 mL): HR 100-120, NORMAL blood pressure (compensated), mildly anxious. This patient has DECREASED BP, which doesn't occur until Class III.",
-                d: "Class IV (>40% loss, >2,000 mL): HR >140, severely decreased BP, confused/lethargic, minimal urine output. This patient's HR of 126 and level of consciousness (anxious but not lethargic) suggest Class III rather than IV."
+                correct: "NPO status is essential before EGD to prevent aspiration during sedation and to allow better visualization of the GI mucosa. A type and screen (or type and crossmatch) must be available in case the patient needs blood products during or after the procedure if bleeding recurs or therapeutic intervention causes hemorrhage.",
+                b: "While IV PPI (pantoprazole) is appropriate for peptic ulcer bleeding, the oral route is generally avoided before a procedure requiring sedation, and the PPI would already have been started IV during stabilization. The priority pre-procedure action is ensuring NPO and blood product availability.",
+                c: "Barium is absolutely contraindicated before EGD. Barium coats the mucosa and makes it impossible for the endoscopist to visualize the bleeding source. It also interferes with any subsequent CT angiography or surgery.",
+                d: "The patient should remain NPO before the procedure. Clear liquids would increase aspiration risk during sedation and may obscure the endoscopic view."
             },
-            testTakingTip: "The key differentiator between Class II and III is blood pressure: Class II maintains normal BP through compensatory vasoconstriction. When BP drops, the patient has lost enough volume to overwhelm compensatory mechanisms — that's Class III. HR >120 + decreased BP + confusion = Class III.",
-            guideSection: "Section 4 — Assessment & Hemodynamic Status",
-            guideSectionId: "assessment"
+            testTakingTip: "Pre-EGD priorities: NPO (aspiration risk during sedation), type and screen ready (bleeding risk), IV access, consent signed, remove dentures. NEVER give barium before endoscopy \u2014 it blocks visualization and is a classic NCLEX distractor.",
+            guideSection: "Section 5 \u2014 Diagnostic Procedures",
+            guideSectionId: "diagnostics"
         },
         {
             id: 7,

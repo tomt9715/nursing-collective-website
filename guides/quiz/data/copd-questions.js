@@ -112,25 +112,22 @@ var copdQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with COPD is receiving theophylline. The nurse checks the serum theophylline level and finds it is 24 mcg/mL. What is the appropriate nursing action?",
+            stem: "A patient with COPD is prescribed a fluticasone/salmeterol (Advair) inhaler and an albuterol (ProAir) rescue inhaler. Which statement by the patient indicates correct understanding of the medications?",
             options: [
-                { id: "a", text: "Administer the next scheduled dose and recheck in 6 hours" },
-                { id: "b", text: "Hold the medication and notify the provider" },
-                { id: "c", text: "Continue the medication \u2014 this is within therapeutic range" },
-                { id: "d", text: "Increase the dose as the level appears subtherapeutic" }
+                { id: "a", text: "\"I use my Advair inhaler when I feel short of breath and save the albuterol for bedtime.\"" },
+                { id: "b", text: "\"I take my Advair every day as scheduled, use my albuterol only when I need quick relief, and rinse my mouth after the Advair.\"" },
+                { id: "c", text: "\"I use whichever inhaler is closest when I have trouble breathing \u2014 they both do the same thing.\"" },
+                { id: "d", text: "\"I take my albuterol every morning and evening, and use Advair if the albuterol doesn\u2019t work.\"" }
             ],
             correct: "b",
             rationale: {
-                correct: "The therapeutic range for theophylline is 10-20 mcg/mL. A level of 24 mcg/mL is toxic. Theophylline has a narrow therapeutic index, and toxicity can cause tachycardia, seizures, and fatal arrhythmias. The nurse should hold the medication and notify the provider immediately.",
-                a: "Administering another dose when the level is already toxic would further increase it, potentially causing seizures or fatal cardiac arrhythmias.",
-                c: "24 mcg/mL exceeds the upper therapeutic limit of 20 mcg/mL. This is a toxic level requiring intervention.",
-                d: "The level is supratherapeutic (toxic), not subtherapeutic. Increasing the dose would be extremely dangerous."
+                correct: "Advair is a maintenance (controller) inhaler containing an inhaled corticosteroid (fluticasone) and a long-acting bronchodilator (salmeterol). It must be taken daily on schedule, not PRN. Albuterol is a short-acting rescue bronchodilator used only for acute symptoms. Rinsing the mouth after ICS prevents oral candidiasis (thrush).",
+                a: "Advair is NOT a rescue inhaler \u2014 it takes time to work and is meant for daily maintenance. Albuterol is the rescue inhaler for acute shortness of breath, not a bedtime medication.",
+                c: "These inhalers have completely different mechanisms and purposes. Using the wrong one in an emergency (Advair instead of albuterol) would not provide rapid relief and could delay appropriate treatment.",
+                d: "This reverses the roles. Albuterol should be used PRN for rescue, not on a fixed schedule. Advair is the scheduled maintenance inhaler. Using a SABA on a regular schedule without a controller indicates inadequate maintenance therapy."
             },
-            testTakingTip: "Theophylline therapeutic range: 10-20 mcg/mL. Narrow therapeutic index = toxicity risk is high. Early signs of toxicity: nausea, tachycardia, restlessness. Late signs: seizures, arrhythmias. Caffeine intake affects theophylline metabolism \u2014 counsel patients to limit caffeine.",
-            labValues: [
-                { name: "Theophylline", normal: "10\u201320 mcg/mL" }
-            ],
-            guideSection: "Section 7 \u2014 Theophylline",
+            testTakingTip: "Controller vs. rescue is one of the most tested inhaler concepts. SABAs (albuterol) = rescue/PRN. ICS or ICS/LABA combos (Advair, Symbicort) = scheduled maintenance. Always rinse mouth after ICS to prevent thrush. If a patient uses their rescue inhaler >2 days/week, their maintenance therapy needs to be stepped up.",
+            guideSection: "Section 7 \u2014 Medication Management",
             guideSectionId: "medications"
         },
         {

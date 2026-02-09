@@ -183,23 +183,23 @@ var coronaryArteryDiseaseQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient is scheduled for an adenosine pharmacologic stress test tomorrow morning. The nurse reviews the patient\u2019s dietary intake from today and finds the patient drank a large coffee at 2 PM. The nurse should:",
+            stem: "A patient returns to the nursing unit after a cardiac catheterization via the right femoral artery. Which nursing assessment is the HIGHEST priority during the first 4 hours post-procedure?",
             options: [
-                { id: "a", text: "Proceed with the test as scheduled" },
-                { id: "b", text: "Notify the provider that the test may need to be rescheduled" },
-                { id: "c", text: "Administer aminophylline to counteract the caffeine" },
-                { id: "d", text: "Switch the order to a dobutamine stress test" }
+                { id: "a", text: "Monitoring right pedal pulse, skin color, and temperature of the affected extremity" },
+                { id: "b", text: "Encouraging the patient to ambulate early to prevent deep vein thrombosis" },
+                { id: "c", text: "Elevating the right leg on two pillows to reduce swelling" },
+                { id: "d", text: "Restricting all oral intake until the sedation has fully worn off" }
             ],
-            correct: "b",
+            correct: "a",
             rationale: {
-                correct: "Caffeine is a competitive antagonist at adenosine receptors. Patients must abstain from ALL caffeine (coffee, tea, chocolate, energy drinks, some medications) for 24\u201348 hours before an adenosine or dipyridamole stress test. Coffee consumed the afternoon before may not have cleared sufficiently, making the test results unreliable. The provider should be notified.",
-                a: "Caffeine blocks adenosine receptors, rendering the stress agent ineffective. The test would produce false-negative results and waste resources.",
-                c: "Aminophylline is the reversal agent for adenosine side effects, not a prep medication. Giving it before would further block adenosine\u2019s effect.",
-                d: "Switching to a different test type requires a provider order. The nurse should notify the provider, who will decide whether to reschedule or change the test type."
+                correct: "After femoral artery catheterization, the highest nursing priority is neurovascular assessment of the affected extremity. The nurse should check the pedal pulse (dorsalis pedis and posterior tibial), skin color, temperature, sensation, and capillary refill distal to the access site every 15 minutes for the first hour, then every 30 minutes to hourly. Loss of pulse, pallor, coolness, or pain could indicate arterial occlusion from a thrombus or hematoma \u2014 a surgical emergency.",
+                b: "Early ambulation is contraindicated after femoral access. The patient must remain on bed rest with the affected leg straight for 2\u20136 hours to allow the arterial puncture site to seal. Bending the leg or ambulating too early can cause bleeding or hematoma formation.",
+                c: "The affected leg should be kept STRAIGHT and FLAT, not elevated. Bending at the hip (including pillow elevation) increases pressure on the femoral access site and can dislodge the hemostatic clot, causing bleeding.",
+                d: "While the patient should be assessed for swallowing ability after sedation, complete NPO status is not the highest priority. The patient is usually encouraged to drink fluids to help flush the contrast dye and protect kidney function."
             },
-            testTakingTip: "Caffeine is the #1 reason stress tests get cancelled. Hold ALL caffeine 24\u201348 hours before adenosine/dipyridamole tests. Caffeine doesn\u2019t affect dobutamine tests (different mechanism). Aminophylline = reversal agent, not preventive.",
-            guideSection: "Section 4 \u2014 Stress Testing",
-            guideSectionId: "diagnostics"
+            testTakingTip: "Post-femoral cath priorities: (1) Neurovascular checks q15min \u00d74, then hourly (pulse, color, temp, sensation). (2) Bed rest 2\u20136 hours, leg STRAIGHT. (3) Watch for retroperitoneal bleed (back pain + hypotension + dry dressing = hidden bleeding). (4) Encourage fluids to flush contrast dye.",
+            guideSection: "Section 6 \u2014 Post-Catheterization Complications",
+            guideSectionId: "catheterization"
         }
     ]
 };

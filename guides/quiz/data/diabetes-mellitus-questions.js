@@ -210,23 +210,23 @@ var diabetesMellitusQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with Type 2 diabetes is started on empagliflozin (Jardiance), an SGLT2 inhibitor. Which finding should the nurse report to the health care provider immediately?",
+            stem: "A patient with Type 1 diabetes calls the clinic and reports having the flu with nausea and vomiting. The patient states, \"I haven't eaten anything today, so I didn't take my insulin this morning.\" Which response by the nurse is MOST appropriate?",
             options: [
-                { id: "a", text: "The patient reports increased urinary frequency" },
-                { id: "b", text: "The patient has a blood glucose of 145 mg/dL with ketones on urine dipstick" },
-                { id: "c", text: "The patient has lost 3 pounds over the past month" },
-                { id: "d", text: "The patient reports mild genital itching" }
+                { id: "a", text: "\"That was the right decision. You should skip insulin when you can't eat to prevent low blood sugar.\"" },
+                { id: "b", text: "\"You need to take your insulin. Illness actually raises your blood sugar even if you're not eating. Check your glucose and ketones now.\"" },
+                { id: "c", text: "\"Take half your usual insulin dose and call back tomorrow if you're still not eating.\"" },
+                { id: "d", text: "\"Stop all medications until the flu is over, then resume your regular schedule.\"" }
             ],
             correct: "b",
             rationale: {
-                correct: "This describes euglycemic DKA — a serious and potentially life-threatening complication unique to SGLT2 inhibitors. The glucose may be normal or only mildly elevated (not the typical 250–600 of classic DKA), but ketones are present. This is dangerous because it is often missed due to the 'normal' glucose. The provider must be notified immediately.",
-                a: "Increased urinary frequency is an expected effect of SGLT2 inhibitors. They work by blocking glucose reabsorption in the kidneys, causing glycosuria (glucose in urine) which increases urine output.",
-                c: "Mild weight loss is an expected beneficial effect of SGLT2 inhibitors, caused by the caloric loss from urinary glucose excretion.",
-                d: "Genital itching (candidiasis) is a common side effect of SGLT2 inhibitors due to glucose in the urine creating an environment conducive to yeast growth. It is managed with antifungals and is not an emergency."
+                correct: "This is the #1 sick day mistake. During illness, counter-regulatory stress hormones (cortisol, glucagon, epinephrine) dramatically raise blood glucose even without food intake. Type 1 patients who skip insulin during illness can develop DKA within hours. The nurse should instruct the patient to take insulin, check blood glucose every 4 hours, check urine ketones, and maintain fluid intake.",
+                a: "This is dangerous misinformation. Skipping insulin during illness is the most common cause of DKA in known Type 1 patients. Illness increases glucose — the body needs MORE insulin during sickness, not less.",
+                c: "While dose adjustments may be necessary during illness, this should be determined by the provider based on current glucose readings, not arbitrarily halved. The immediate priority is to resume insulin and check glucose/ketones now.",
+                d: "Stopping all medications is dangerous. Type 1 patients have zero endogenous insulin production — stopping insulin can lead to DKA within hours, which is life-threatening."
             },
-            testTakingTip: "Euglycemic DKA is the 'trick' complication of SGLT2 inhibitors. The glucose looks normal, so providers may not suspect DKA. If a patient on an SGLT2 inhibitor has ketones — even with normal glucose — think euglycemic DKA and act immediately.",
-            guideSection: "Section 6 — Oral & Injectable Agents",
-            guideSectionId: "oral-agents"
+            testTakingTip: "Sick day rule #1: NEVER stop insulin when sick. Illness = stress hormones = higher blood glucose, even without eating. This is a top NCLEX topic because the wrong answer seems logical to patients ('not eating = don't need insulin').",
+            guideSection: "Section 8 — Nursing Management & Patient Teaching",
+            guideSectionId: "nursing-management"
         },
         {
             id: 10,

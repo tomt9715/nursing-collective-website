@@ -14,6 +14,7 @@ const sidebarConfig = {
         { id: 'transsphenoidal', icon: 'fa-procedures', title: 'Surgery Care' },
         { id: 'medications', icon: 'fa-pills', title: 'Medications' },
         { id: 'pediatric', icon: 'fa-baby', title: 'Pediatric Considerations' },
+        { id: 'memory-tricks', icon: 'fa-brain', title: 'Memory Tricks' },
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [

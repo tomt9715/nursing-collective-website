@@ -324,10 +324,16 @@ async function loadUserProfile() {
         // Load purchases
         loadPurchases(user);
 
-        // Update user avatar with initials
+        // Update user avatar with profile picture
         const userAvatar = document.querySelector('.user-avatar');
-        if (userAvatar && user.first_name) {
-            userAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${user.first_name.charAt(0)}</span>`;
+        if (userAvatar) {
+            const displayName = user.first_name || user.email?.split('@')[0] || 'User';
+            if (typeof renderProfilePicture === 'function') {
+                userAvatar.innerHTML = renderProfilePicture(user.profile_picture, 'sm', displayName);
+            } else {
+                const initial = user.first_name ? user.first_name.charAt(0).toUpperCase() : 'U';
+                userAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${initial}</span>`;
+            }
         }
 
         // Update Account Overview card
@@ -352,8 +358,14 @@ async function loadUserProfile() {
 
         // Update user avatar large in dropdown
         const userAvatarLarge = document.querySelector('.user-avatar-large');
-        if (userAvatarLarge && user.first_name) {
-            userAvatarLarge.innerHTML = `<span style="font-weight: 600; font-size: 24px;">${user.first_name.charAt(0)}</span>`;
+        if (userAvatarLarge) {
+            const displayName = user.first_name || user.email?.split('@')[0] || 'User';
+            if (typeof renderProfilePicture === 'function') {
+                userAvatarLarge.innerHTML = renderProfilePicture(user.profile_picture, 'lg', displayName);
+            } else {
+                const initial = user.first_name ? user.first_name.charAt(0).toUpperCase() : 'U';
+                userAvatarLarge.innerHTML = `<span style="font-weight: 600; font-size: 24px;">${initial}</span>`;
+            }
         }
 
         // Show getting started card for new users (less than 2 days old)
@@ -402,22 +414,6 @@ async function loadUserProfile() {
             }
         }
 
-        // Load accessible guides based on user subscription
-        loadAccessibleGuides(user);
-
-        // Load Quiz Bank mastery section (for premium users)
-        if (user.is_premium) {
-            loadQuizBankDashboard();
-        }
-
-        // Load subscription management section
-        loadSubscriptionManagement();
-
-        // Load admin dashboard if admin
-        if (user.is_admin) {
-            await loadAdminDashboard();
-        }
-
         // Update local storage
         localStorage.setItem('user', JSON.stringify(user));
 
@@ -452,6 +448,27 @@ async function loadUserProfile() {
                 window.location.reload();
             });
         }
+        return; // Don't load dashboard sections if profile failed
+    }
+
+    // Load dashboard sections separately so their errors don't show "Profile Load Failed"
+    try {
+        const user = JSON.parse(localStorage.getItem('user'));
+        if (!user) return;
+
+        loadAccessibleGuides(user);
+
+        if (user.is_premium) {
+            loadQuizBankDashboard();
+        }
+
+        loadSubscriptionManagement();
+
+        if (user.is_admin) {
+            await loadAdminDashboard();
+        }
+    } catch (error) {
+        console.error('Error loading dashboard sections:', error);
     }
 }
 

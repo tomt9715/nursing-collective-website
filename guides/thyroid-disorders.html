@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thyroid Disorders Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Thyroid Disorders. Master hypothyroidism, hyperthyroidism, Graves' disease, thyroid storm, myxedema coma, thyroidectomy care, and priority nursing interventions.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           THYROID DISORDERS - ENDOCRINE GUIDE
+           Dashboard/Panel Layout
+           ============================================ */
+
+        :root {
+            --primary-color: #0891B2;
+            --primary-dark: #0E7490;
+            --secondary-color: #6366F1;
+            --accent-color: #F09090;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar */
+        .download-bar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; padding: 12px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .download-bar-brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+        .download-bar-brand img { height: 32px; width: auto; }
+        .download-bar-actions { display: flex; gap: 12px; }
+        .btn-download {
+            display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+            background: white; color: var(--primary-color); border: none; border-radius: 8px;
+            font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+        }
+        .btn-download:hover { background: #f0f4ff; transform: translateY(-1px); }
+        .btn-back {
+            display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+            background: rgba(255,255,255,0.15); color: white;
+            border: 1px solid rgba(255,255,255,0.3); border-radius: 8px;
+            font-weight: 500; font-size: 0.95rem; cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+        }
+        .btn-back:hover { background: rgba(255,255,255,0.25); }
+
+        /* Document Container */
+        .document-container { max-width: 850px; margin: 80px auto 40px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+
+        /* Cover Page - Teal → Indigo gradient for Thyroid */
+        .cover-page {
+            background: linear-gradient(135deg, #0E7490 0%, #0891B2 40%, #6366F1 100%);
+            color: white; padding: 80px 60px; text-align: center; position: relative; overflow: hidden;
+        }
+        .cover-page::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .cover-content { position: relative; z-index: 1; }
+        .cover-logo {
+            width: 80px; height: 80px; background: white; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); padding: 12px;
+        }
+        .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
+        .cover-category {
+            display: inline-block; padding: 8px 24px; background: rgba(255,255,255,0.2);
+            border-radius: 50px; font-size: 0.9rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px;
+        }
+        .cover-title { font-family: 'Outfit', sans-serif; font-size: 3.5rem; font-weight: 700; margin-bottom: 20px; line-height: 1.1; }
+        .cover-subtitle { font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
+        .cover-meta { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); }
+        .cover-meta-item { text-align: center; }
+        .cover-meta-item .label { font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cover-meta-item .value { font-size: 1.1rem; font-weight: 600; margin-top: 4px; }
+        .cover-brand { margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.95rem; opacity: 0.9; }
+
+        /* Document Content */
+        .document-content { padding: 60px; }
+
+        /* Learning Objectives */
+        .learning-objectives { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 2px solid #10b981; border-radius: 12px; padding: 28px; margin-bottom: 40px; }
+        .learning-objectives h2 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: #059669; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .learning-objectives ul { list-style: none; margin: 0; padding: 0; }
+        .learning-objectives li { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; color: var(--text-primary); font-size: 1rem; }
+        .learning-objectives li i { color: #10b981; margin-top: 4px; flex-shrink: 0; }
+
+        /* High-Yield Summary */
+        .high-yield-summary { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #f59e0b; border-radius: 12px; padding: 28px; margin-bottom: 40px; }
+        .high-yield-summary h2 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: #d97706; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; border-bottom: none; padding-bottom: 0; }
+        .high-yield-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
+        .high-yield-summary ul { list-style: none; margin: 0; padding: 0; }
+        .high-yield-summary li { padding: 8px 0; border-bottom: 1px solid rgba(245,158,11,0.15); color: var(--text-secondary); font-size: 0.98rem; }
+        .high-yield-summary li:last-child { border-bottom: none; }
+        .high-yield-cta { margin-top: 16px; font-weight: 600; color: #d97706; font-size: 0.95rem; }
+
+        /* Table of Contents */
+        .table-of-contents { background: #f9fafb; border: 1px solid var(--border-color); border-radius: 12px; padding: 28px; margin-bottom: 40px; }
+        .table-of-contents h2 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+        .table-of-contents ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 30px; }
+        .table-of-contents li { break-inside: avoid; margin-bottom: 8px; }
+        .table-of-contents a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; color: var(--text-secondary); text-decoration: none; border-radius: 6px; font-size: 0.95rem; transition: all 0.2s ease; }
+        .table-of-contents a:hover { background: var(--primary-color); color: white; }
+        .toc-number { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--primary-color); color: white; border-radius: 5px; font-size: 0.75rem; font-weight: 600; flex-shrink: 0; }
+        .table-of-contents a:hover .toc-number { background: white; color: var(--primary-color); }
+
+        /* Content Sections */
+        .guide-section { margin-bottom: 50px; scroll-margin-top: 80px; }
+        .guide-section h2 { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid var(--primary-color); display: flex; align-items: center; gap: 12px; }
+        .section-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 8px; font-size: 1rem; }
+        .guide-section h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin: 28px 0 14px; }
+        .guide-section h4 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--primary-color); margin: 20px 0 10px; }
+        .guide-section p { color: var(--text-secondary); font-size: 1.02rem; margin-bottom: 14px; }
+        .guide-section ul, .guide-section ol { color: var(--text-secondary); margin-bottom: 16px; padding-left: 24px; }
+        .guide-section li { margin-bottom: 8px; }
+        .guide-section strong { color: var(--text-primary); }
+
+        /* Info Boxes */
+        .info-box { border-radius: 10px; padding: 18px 22px; margin: 20px 0; border-left: 4px solid; }
+        .info-box.clinical-pearl { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-color: #f59e0b; }
+        .info-box.warning { background: #fef2f2; border-color: #ef4444; }
+        .info-box.tip { background: #ecfdf5; border-color: #10b981; }
+        .info-box.nclex-tip { background: #f5f3ff; border-color: #8b5cf6; }
+        .info-box.mnemonic { background: #fffbeb; border-color: #f59e0b; }
+        .info-box.pediatric { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border-color: #ec4899; }
+        .info-box-header { display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 10px; font-size: 0.95rem; }
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+        .info-box.pediatric .info-box-header { color: #db2777; }
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid var(--border-color); }
+        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+        .guide-table thead { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
+        .guide-table th { padding: 12px 14px; text-align: left; font-weight: 600; }
+        .guide-table tbody tr { border-bottom: 1px solid var(--border-color); }
+        .guide-table tbody tr:hover { background: #f9fafb; }
+        .guide-table td { padding: 12px 14px; color: var(--text-secondary); }
+        .guide-table td:first-child { font-weight: 600; color: var(--text-primary); }
+
+        /* Comparison Cards */
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .comparison-card { border-radius: 12px; border: 2px solid var(--border-color); overflow: hidden; }
+        .comparison-card-header { padding: 16px; text-align: center; font-weight: 700; font-size: 1.05rem; color: white; }
+        .comparison-card.hypo .comparison-card-header { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .comparison-card.hyper .comparison-card-header { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .comparison-card.myxedema .comparison-card-header { background: linear-gradient(135deg, #1e40af, #1e3a5f); }
+        .comparison-card.storm .comparison-card-header { background: linear-gradient(135deg, #dc2626, #991b1b); }
+        .comparison-card.methimazole .comparison-card-header { background: linear-gradient(135deg, #0891B2, #0E7490); }
+        .comparison-card.ptu .comparison-card-header { background: linear-gradient(135deg, #6366F1, #4f46e5); }
+        .comparison-card-body { padding: 18px; }
+        .comparison-card-body h4 { font-size: 0.95rem; margin: 0 0 10px; }
+        .comparison-card-body ul { list-style: none; padding: 0; margin: 0 0 14px; }
+        .comparison-card-body li { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; color: var(--text-secondary); font-size: 0.9rem; border-bottom: 1px solid var(--border-color); }
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list { background: #f9fafb; border-radius: 12px; padding: 22px; margin: 20px 0; }
+        .interventions-list h4 { font-family: 'Outfit', sans-serif; font-size: 1rem; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+        .interventions-list h4 i { color: var(--primary-color); }
+        .intervention-item { display: flex; gap: 14px; padding: 14px; background: white; border-radius: 10px; margin-bottom: 10px; border: 1px solid var(--border-color); }
+        .intervention-number { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 8px; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .intervention-content h5 { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin: 0 0 4px; }
+        .intervention-content p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+
+        /* Quick Reference */
+        .quick-reference { background: white; border: 2px solid var(--primary-color); border-radius: 12px; padding: 20px; margin: 24px 0; }
+        .quick-reference h3 { font-size: 1.1rem; color: var(--primary-color); margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+        .quick-reference-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .quick-ref-item { background: #f9fafb; padding: 12px; border-radius: 8px; }
+        .quick-ref-item .label { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 2px; }
+        .quick-ref-item .value { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+
+        /* Bottom Line */
+        .bottom-line { background: linear-gradient(135deg, #ecfeff, #cffafe); border: 1px solid #06b6d4; border-radius: 10px; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: var(--text-primary); }
+
+        /* Value Panels */
+        .value-panel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+        .value-panel { background: white; border: 2px solid var(--border-color); border-radius: 12px; padding: 18px; text-align: center; transition: border-color 0.2s; }
+        .value-panel:hover { border-color: var(--primary-color); }
+        .value-panel .vp-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .value-panel .vp-value { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--primary-color); }
+        .value-panel .vp-unit { font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px; }
+        .value-panel.critical .vp-value { color: #ef4444; }
+        .value-panel.critical { border-color: #fecaca; }
+        .value-panel.success .vp-value { color: #10b981; }
+        .value-panel.success { border-color: #a7f3d0; }
+
+        /* FlorenceBot Tips */
+        .florencebot-tip { background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-left: 4px solid #8b5cf6; border-radius: 10px; padding: 20px; margin: 20px 0; }
+        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .florencebot-tip-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; }
+        .florencebot-tip-label { font-size: 0.8rem; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.5px; }
+        .florencebot-tip-title { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+        .florencebot-tip-content { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+        /* Key Points Summary */
+        .key-points-summary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 12px; padding: 28px; margin: 40px 0 0; color: white; }
+        .key-points-summary h2 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; color: white; border-bottom: none; padding-bottom: 0; }
+        .key-points-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .key-point { background: rgba(255,255,255,0.15); padding: 14px; border-radius: 10px; display: flex; align-items: flex-start; gap: 10px; }
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Cross References */
+        .cross-references { background: #ecfdf5; border: 2px solid #10b981; border-radius: 12px; padding: 28px; margin-top: 30px; }
+        .cross-references h2 { color: #059669; border-bottom: none; padding-bottom: 0; font-size: 1.2rem; }
+        .cross-ref-group { margin-bottom: 16px; }
+        .cross-ref-group:last-child { margin-bottom: 0; }
+        .cross-ref-group h3 { font-size: 0.95rem; color: var(--text-secondary); margin: 0 0 8px; }
+        .cross-ref-group ul { list-style: none; margin: 0; padding: 0; }
+        .cross-ref-group li { margin-bottom: 4px; }
+        .cross-ref-group a { color: #059669; text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+        .cross-ref-group a:hover { text-decoration: underline; }
+        .coming-soon { color: var(--text-secondary); font-style: italic; display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+
+        /* Practice Questions */
+        .practice-questions h2 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .quiz-cta-box { display: flex; align-items: center; gap: 24px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 2px solid #3b82f6; border-radius: 14px; padding: 24px; }
+        .quiz-cta-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0; }
+        .quiz-cta-content { flex: 1; }
+        .quiz-cta-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin: 0 0 6px; }
+        .quiz-cta-content p { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 10px; }
+        .quiz-cta-stats { display: flex; gap: 16px; font-size: 0.85rem; color: var(--text-secondary); }
+        .quiz-cta-stats span { display: flex; align-items: center; gap: 5px; }
+        .quiz-cta-button { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; white-space: nowrap; transition: all 0.2s ease; }
+        .quiz-cta-button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
+
+        /* Footer */
+        .document-footer { text-align: center; padding: 32px 48px; border-top: 1px solid var(--border-color); background: linear-gradient(135deg, #f8fafc, #f1f5f9); }
+        .footer-logo { height: 48px; width: auto; margin-bottom: 12px; }
+        .footer-tagline { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px; }
+        .footer-copyright { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Print Styles */
+        @page { margin: 0.6in 0.4in; }
+        @media print {
+            .download-bar { display: none !important; }
+            body { background: white !important; margin: 0 !important; padding: 0 !important; }
+            .document-container { margin: 0 !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+            .cover-page { page-break-after: always; break-after: page; }
+            .info-box, .guide-table-wrapper, .comparison-card, .intervention-item, .quick-reference, .learning-objectives, .key-points-summary, .florencebot-tip, .value-panel { page-break-inside: avoid; break-inside: avoid; }
+            h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
+            .comparison-grid, .interventions-list { page-break-inside: auto; }
+            a { text-decoration: underline; }
+            .document-footer { page-break-inside: avoid; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar { flex-direction: column; gap: 12px; padding: 12px 16px; }
+            .download-bar-actions { width: 100%; justify-content: center; }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+            .value-panel-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="guide-sidebar.css">
+</head>
+<body data-product-id="thyroid-disorders" data-guide-name="Thyroid-Disorders">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/thyroid.webp" alt="Thyroid Disorders">
+                </div>
+                <div class="cover-category">Endocrine</div>
+                <h1 class="cover-title">Thyroid Disorders</h1>
+                <p class="cover-subtitle">Comprehensive guide covering hypothyroidism, hyperthyroidism, Graves' disease, Hashimoto's thyroiditis, thyroid emergencies, medications, thyroidectomy care, and priority nursing interventions.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">30-35 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">February 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Describe the hypothalamic-pituitary-thyroid axis and negative feedback mechanism</li>
+                    <li><i class="fas fa-check-circle"></i> Interpret TSH, T3, and T4 lab values to differentiate hypothyroidism from hyperthyroidism</li>
+                    <li><i class="fas fa-check-circle"></i> Compare and contrast hypothyroidism and hyperthyroidism signs, symptoms, and management</li>
+                    <li><i class="fas fa-check-circle"></i> Recognize and manage thyroid emergencies: myxedema coma and thyroid storm</li>
+                    <li><i class="fas fa-check-circle"></i> Apply safe medication administration for levothyroxine, methimazole, PTU, and radioactive iodine</li>
+                    <li><i class="fas fa-check-circle"></i> Prioritize post-thyroidectomy nursing assessments and interventions</li>
+                    <li><i class="fas fa-check-circle"></i> Identify dietary considerations including iodine sources and goitrogens</li>
+                </ul>
+            </section>
+
+            <!-- High-Yield Summary -->
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary &mdash; Review This in 60 Seconds</h2>
+                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
+                <ul>
+                    <li><strong>TSH goes OPPOSITE of thyroid function.</strong> High TSH = hypothyroidism (pituitary screaming for more hormone). Low TSH = hyperthyroidism (pituitary shutting down because there's too much).</li>
+                    <li><strong>HYPOthyroid = everything LOW and SLOW.</strong> Cold intolerance, weight gain, bradycardia, constipation, fatigue, depression. Think "hibernation mode."</li>
+                    <li><strong>HYPERthyroid = everything HIGH and FAST.</strong> Heat intolerance, weight loss, tachycardia, diarrhea, anxiety, tremors. Think "running on overdrive."</li>
+                    <li><strong>Hashimoto's</strong> = most common cause of hypothyroidism in the US (autoimmune). <strong>Graves' disease</strong> = most common cause of hyperthyroidism (autoimmune).</li>
+                    <li><strong>Levothyroxine:</strong> Take on empty stomach 30-60 min before breakfast. Increases warfarin effect. Lifelong therapy. Monitor TSH every 6-8 weeks when adjusting.</li>
+                    <li><strong>PTU vs Methimazole:</strong> Methimazole is preferred (once daily, fewer side effects). PTU preferred in 1st trimester pregnancy only. PTU has black box for liver failure.</li>
+                    <li><strong>Thyroid storm:</strong> Fever &gt; 104&deg;F, extreme tachycardia, delirium, heart failure. Emergency: PTU + beta-blockers + corticosteroids + cooling. Mortality 20-30%.</li>
+                    <li><strong>Myxedema coma:</strong> Hypothermia, altered LOC, respiratory failure. IV levothyroxine + passive rewarming ONLY (active warming causes shock).</li>
+                    <li><strong>Post-thyroidectomy #1 priority: AIRWAY.</strong> Keep tracheostomy tray + calcium gluconate at bedside. Assess for hemorrhage, laryngeal nerve damage, and hypocalcemia (Chvostek's/Trousseau's signs).</li>
+                    <li><strong>Radioactive iodine (I-131):</strong> Destroys thyroid tissue. Pregnancy test required first. Radiation precautions for days after. Will likely need lifelong levothyroxine.</li>
+                </ul>
+                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#physiology"><span class="toc-number">1</span> Thyroid Gland Physiology</a></li>
+                    <li><a href="#lab-values"><span class="toc-number">2</span> Lab Value Interpretation</a></li>
+                    <li><a href="#hypothyroidism"><span class="toc-number">3</span> Hypothyroidism</a></li>
+                    <li><a href="#myxedema-coma"><span class="toc-number">4</span> Myxedema Coma</a></li>
+                    <li><a href="#hyperthyroidism"><span class="toc-number">5</span> Hyperthyroidism</a></li>
+                    <li><a href="#thyroid-storm"><span class="toc-number">6</span> Thyroid Storm</a></li>
+                    <li><a href="#medications"><span class="toc-number">7</span> Thyroid Medications</a></li>
+                    <li><a href="#goiter-nodules"><span class="toc-number">8</span> Goiter &amp; Thyroid Nodules</a></li>
+                    <li><a href="#thyroidectomy"><span class="toc-number">9</span> Thyroidectomy Nursing Care</a></li>
+                    <li><a href="#diet"><span class="toc-number">10</span> Diet Considerations</a></li>
+                    <li><a href="#pediatric"><span class="toc-number">11</span> Pediatric Considerations</a></li>
+                </ul>
+            </nav>
+
+            <!-- ============================================ -->
+            <!-- Section 1: Thyroid Physiology -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="physiology">
+                <h2><span class="section-icon"><i class="fas fa-dna"></i></span> Thyroid Gland Physiology</h2>
+
+                <h3>Anatomy &amp; Function</h3>
+                <p>The <strong>thyroid gland</strong> is a butterfly-shaped endocrine gland located in the anterior neck, just below the larynx and wrapping around the trachea. It consists of two lobes connected by an isthmus. The thyroid produces hormones that regulate <strong>metabolism, growth, development, and body temperature</strong> in virtually every organ system.</p>
+
+                <p>The thyroid produces three key hormones:</p>
+                <ul>
+                    <li><strong>T4 (Thyroxine):</strong> The primary hormone produced by the thyroid (~90% of output). It is a <strong>prohormone</strong> that is converted to the active form T3 in peripheral tissues. T4 has a longer half-life and is the form measured in most lab tests.</li>
+                    <li><strong>T3 (Triiodothyronine):</strong> The <strong>active form</strong> of thyroid hormone (~10% produced directly by thyroid, rest converted from T4). T3 is 3-5 times more potent than T4 and produces the metabolic effects.</li>
+                    <li><strong>Calcitonin:</strong> Produced by parafollicular C-cells. Lowers blood calcium by inhibiting osteoclast activity. Relevant in thyroid cancer monitoring and post-thyroidectomy care.</li>
+                </ul>
+
+                <h3>The Negative Feedback Loop</h3>
+                <p>The thyroid is regulated by a precise negative feedback system called the <strong>hypothalamic-pituitary-thyroid (HPT) axis</strong>:</p>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-sync-alt"></i> HPT Axis Feedback Loop</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Hypothalamus Detects Low Thyroid Hormone</h5>
+                            <p>When blood levels of T3/T4 are low, the hypothalamus releases <strong>TRH (thyrotropin-releasing hormone)</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Anterior Pituitary Responds</h5>
+                            <p>TRH stimulates the anterior pituitary to release <strong>TSH (thyroid-stimulating hormone)</strong> into the bloodstream.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Thyroid Gland Produces Hormones</h5>
+                            <p>TSH stimulates the thyroid to produce and release <strong>T3 and T4</strong>. Iodine is essential for this synthesis.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Negative Feedback Completes the Loop</h5>
+                            <p>When T3/T4 levels rise sufficiently, they <strong>inhibit</strong> the hypothalamus and pituitary, reducing TRH and TSH release. This prevents overproduction.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-tsh-inverse">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">The TSH Inverse Rule</div>
+                    <div class="florencebot-tip-content">
+                        <strong>TSH and thyroid hormone levels move in OPPOSITE directions.</strong> Think of TSH as the pituitary "yelling" at the thyroid. If the thyroid is underperforming (low T3/T4), the pituitary yells LOUDER (high TSH). If the thyroid is overproducing (high T3/T4), the pituitary goes quiet (low TSH). This is why <strong>TSH is the single best screening test</strong> for thyroid function: High TSH = hypothyroid. Low TSH = hyperthyroid.
+                    </div>
+                </div>
+
+                <h3>TSH and Drug Dosing</h3>
+                <p>Understanding the TSH feedback loop is critical for medication management:</p>
+                <ul>
+                    <li><strong>Hypothyroid patients on levothyroxine:</strong> If TSH remains HIGH, the dose is <strong>too low</strong> (pituitary still demanding more). Increase the dose.</li>
+                    <li><strong>Hypothyroid patients on levothyroxine:</strong> If TSH drops too LOW, the dose is <strong>too high</strong> (creating iatrogenic hyperthyroidism). Decrease the dose.</li>
+                    <li><strong>Goal:</strong> Titrate levothyroxine to achieve a normal TSH (0.4-4.0 mIU/L). Recheck TSH every 6-8 weeks after any dose change.</li>
+                </ul>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> The thyroid produces T4 (inactive prohormone) and T3 (active hormone). TSH from the pituitary drives thyroid production. TSH goes OPPOSITE of thyroid function &mdash; this is the foundation for all thyroid lab interpretation and drug dosing.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 2: Lab Value Interpretation -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="lab-values">
+                <h2><span class="section-icon"><i class="fas fa-vials"></i></span> Lab Value Interpretation</h2>
+
+                <h3>Normal Thyroid Lab Values</h3>
+                <div class="value-panel-grid">
+                    <div class="value-panel success">
+                        <div class="vp-label">TSH</div>
+                        <div class="vp-value">0.4-4.0</div>
+                        <div class="vp-unit">mIU/L</div>
+                    </div>
+                    <div class="value-panel success">
+                        <div class="vp-label">Free T4</div>
+                        <div class="vp-value">0.8-1.8</div>
+                        <div class="vp-unit">ng/dL</div>
+                    </div>
+                    <div class="value-panel success">
+                        <div class="vp-label">Free T3</div>
+                        <div class="vp-value">2.3-4.2</div>
+                        <div class="vp-unit">pg/mL</div>
+                    </div>
+                </div>
+
+                <h3>Lab Patterns in Thyroid Disease</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Condition</th>
+                                <th>TSH</th>
+                                <th>Free T4</th>
+                                <th>Free T3</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Primary Hypothyroidism</strong></td>
+                                <td>&uarr;&uarr; HIGH</td>
+                                <td>&darr; LOW</td>
+                                <td>&darr; LOW</td>
+                                <td>Thyroid failing &rarr; pituitary compensates by raising TSH</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Subclinical Hypothyroidism</strong></td>
+                                <td>&uarr; Mildly HIGH</td>
+                                <td>Normal</td>
+                                <td>Normal</td>
+                                <td>Early thyroid failure &mdash; TSH rises first before T4 drops</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Primary Hyperthyroidism</strong></td>
+                                <td>&darr;&darr; LOW</td>
+                                <td>&uarr; HIGH</td>
+                                <td>&uarr; HIGH</td>
+                                <td>Thyroid overproducing &rarr; pituitary suppresses TSH</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Subclinical Hyperthyroidism</strong></td>
+                                <td>&darr; Mildly LOW</td>
+                                <td>Normal</td>
+                                <td>Normal</td>
+                                <td>Mild overproduction &mdash; TSH drops first before T4 rises</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Secondary Hypothyroidism</strong></td>
+                                <td>&darr; LOW</td>
+                                <td>&darr; LOW</td>
+                                <td>&darr; LOW</td>
+                                <td>Pituitary failure &mdash; cannot produce TSH (rare)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> Key Concept: TSH Is the Screening Test
+                    </div>
+                    <p><strong>TSH is the FIRST test ordered</strong> to evaluate thyroid function because it is the most sensitive indicator. It changes before T3/T4 become abnormal (subclinical phase). A normal TSH essentially rules out primary thyroid disease. Free T4 is ordered to confirm and quantify the abnormality once TSH is out of range.</p>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Lab Interpretation
+                    </div>
+                    <p><strong>High TSH = "Help! Send Thyroid hormone!"</strong> &mdash; The pituitary is begging for more thyroid hormone because levels are too low (hypothyroid).</p>
+                    <p><strong>Low TSH = "Too much! Stop, Thyroid, Halt!"</strong> &mdash; The pituitary is shutting down because there's too much thyroid hormone (hyperthyroid).</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> TSH is the most sensitive screening test. High TSH = hypothyroid, Low TSH = hyperthyroid. Always remember TSH moves OPPOSITE of thyroid hormone levels. Free T4 confirms the diagnosis.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 3: Hypothyroidism -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="hypothyroidism">
+                <h2><span class="section-icon"><i class="fas fa-temperature-low"></i></span> Hypothyroidism</h2>
+
+                <p>Hypothyroidism results from <strong>insufficient thyroid hormone production</strong>, causing a generalized slowing of metabolic processes throughout the body. It is the most common thyroid disorder, affecting women 5-8 times more than men.</p>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: HYPOthyroid = Everything LOW and SLOW
+                    </div>
+                    <p>Think of hypothyroidism as the body in <strong>"hibernation mode"</strong> &mdash; everything slows down: heart rate, metabolism, digestion, energy, mood, and even reflexes.</p>
+                </div>
+
+                <h3>Causes</h3>
+                <ul>
+                    <li><strong>Hashimoto's thyroiditis</strong> &mdash; #1 cause in the US (autoimmune destruction of thyroid tissue)</li>
+                    <li>Thyroidectomy or radioactive iodine treatment (iatrogenic)</li>
+                    <li>Iodine deficiency (#1 cause worldwide)</li>
+                    <li>Medications: lithium, amiodarone, interferon</li>
+                    <li>Pituitary dysfunction (secondary hypothyroidism &mdash; rare)</li>
+                </ul>
+
+                <h3>Hashimoto's Thyroiditis</h3>
+                <p><strong>Hashimoto's thyroiditis</strong> is a chronic autoimmune condition where the immune system produces <strong>anti-thyroid peroxidase (anti-TPO) antibodies</strong> and <strong>anti-thyroglobulin antibodies</strong> that attack and gradually destroy thyroid tissue. Key features:</p>
+                <ul>
+                    <li>Most common autoimmune disease and most common cause of hypothyroidism in the US</li>
+                    <li>Progression is <strong>gradual</strong> &mdash; may take months to years before symptoms appear</li>
+                    <li>Often presents with a painless, diffuse <strong>goiter</strong> (enlarged thyroid) initially</li>
+                    <li>As destruction progresses, the gland shrinks and hormone production falls</li>
+                    <li>Strong genetic predisposition; often coexists with other autoimmune conditions (Type 1 DM, celiac disease, rheumatoid arthritis)</li>
+                    <li>Diagnosis: elevated TSH + positive anti-TPO antibodies</li>
+                </ul>
+
+                <h3>Signs and Symptoms</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Manifestation</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cardiovascular</strong></td>
+                                <td>Bradycardia, hypotension, elevated cholesterol</td>
+                                <td>Decreased metabolic rate slows heart</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Neurological</strong></td>
+                                <td>Fatigue, lethargy, depression, slowed reflexes, memory impairment</td>
+                                <td>Decreased CNS metabolism</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GI</strong></td>
+                                <td>Constipation, weight gain (despite decreased appetite)</td>
+                                <td>Decreased GI motility and metabolic rate</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Integumentary</strong></td>
+                                <td>Dry/coarse skin, brittle nails, hair loss, periorbital edema</td>
+                                <td>Decreased cellular turnover, mucopolysaccharide accumulation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thermoregulation</strong></td>
+                                <td>Cold intolerance</td>
+                                <td>Decreased heat production from slowed metabolism</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Reproductive</strong></td>
+                                <td>Menorrhagia (heavy periods), infertility</td>
+                                <td>Hormonal imbalance</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Musculoskeletal</strong></td>
+                                <td>Muscle weakness, myalgia, joint stiffness</td>
+                                <td>Impaired muscle metabolism</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Treatment: Levothyroxine (Synthroid)</h3>
+                <p><strong>Levothyroxine</strong> is the standard treatment for hypothyroidism. It is a synthetic form of T4 that restores normal thyroid hormone levels.</p>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-pills"></i> Levothyroxine Quick Reference</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Mechanism</div>
+                            <div class="value">Synthetic T4 &rarr; converted to active T3</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Timing</div>
+                            <div class="value">30-60 min before breakfast, empty stomach</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Monitoring</div>
+                            <div class="value">TSH every 6-8 weeks until stable</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Duration</div>
+                            <div class="value">Lifelong therapy (do not stop abruptly)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-levothyroxine">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Levothyroxine: The Patient Teaching Essentials</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Levothyroxine has critical timing and interaction rules:</strong> Take on an empty stomach 30-60 minutes before breakfast (food decreases absorption by up to 40%). Separate from <strong>calcium, iron, and antacids by at least 4 hours</strong> (they bind levothyroxine in the gut). <strong>Increases the effect of warfarin</strong> &mdash; patients on both need more frequent INR monitoring. Never stop abruptly. Teach patients to recognize signs of overdose (hyperthyroid symptoms: tachycardia, anxiety, weight loss, tremors) and underdose (hypothyroid symptoms persist).
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Levothyroxine + Warfarin Interaction
+                    </div>
+                    <p><strong>Levothyroxine increases the anticoagulant effect of warfarin</strong> by increasing catabolism of clotting factors. When starting or adjusting levothyroxine in a patient on warfarin, monitor INR closely and anticipate a warfarin dose reduction. This is a high-yield drug interaction for NCLEX.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Hypothyroidism = everything slow. Hashimoto's is the #1 cause in the US (autoimmune, anti-TPO antibodies). Treat with levothyroxine: empty stomach, separate from calcium/iron, monitor TSH. Watch for warfarin interaction. Lifelong therapy.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 4: Myxedema Coma -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="myxedema-coma">
+                <h2><span class="section-icon"><i class="fas fa-exclamation-triangle"></i></span> Myxedema Coma</h2>
+
+                <p><strong>Myxedema coma</strong> is a rare but <strong>life-threatening emergency</strong> representing the most severe form of hypothyroidism. Despite the name, patients may not always be comatose &mdash; but altered mental status is always present. Mortality rate is 30-60% even with treatment.</p>
+
+                <h3>Triggers</h3>
+                <ul>
+                    <li>Stopping levothyroxine abruptly</li>
+                    <li>Infection (most common precipitant)</li>
+                    <li>Cold exposure / hypothermia</li>
+                    <li>Surgery, trauma, or other physiologic stress</li>
+                    <li>Sedatives, opioids, or anesthesia (further depress CNS)</li>
+                    <li>Stroke, heart failure, or GI bleeding</li>
+                </ul>
+
+                <h3>Clinical Presentation</h3>
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Recognizing Myxedema Coma
+                    </div>
+                    <ul>
+                        <li><strong>Hypothermia</strong> (temperature may be &lt; 95&deg;F/35&deg;C &mdash; may not register on standard thermometer)</li>
+                        <li><strong>Altered mental status</strong> &rarr; lethargy &rarr; stupor &rarr; coma</li>
+                        <li><strong>Respiratory depression</strong> (hypoventilation, CO2 retention)</li>
+                        <li><strong>Severe bradycardia and hypotension</strong></li>
+                        <li><strong>Hyponatremia</strong> (dilutional, from impaired free water excretion)</li>
+                        <li><strong>Hypoglycemia</strong></li>
+                        <li>Non-pitting edema (myxedema) of face, hands, and extremities</li>
+                    </ul>
+                </div>
+
+                <h3>Emergency Management</h3>
+                <div class="interventions-list">
+                    <h4><i class="fas fa-first-aid"></i> Myxedema Coma Treatment Protocol</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Airway &amp; Ventilatory Support</h5>
+                            <p>Intubation and mechanical ventilation may be needed for respiratory depression. Monitor ABGs closely.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>IV Levothyroxine (T4) Loading Dose</h5>
+                            <p>High-dose IV levothyroxine to rapidly restore thyroid hormone levels. IV route is essential because GI absorption is impaired. Some protocols add IV liothyronine (T3) for faster onset.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>IV Corticosteroids (Hydrocortisone)</h5>
+                            <p>Given BEFORE or with thyroid hormone to prevent adrenal crisis. Severe hypothyroidism may coexist with adrenal insufficiency. Giving thyroid hormone alone can precipitate adrenal crisis.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Passive Rewarming ONLY</h5>
+                            <p>Use warm blankets only. <strong>Do NOT use active warming</strong> (heating blankets, warm IV fluids) &mdash; this causes peripheral vasodilation, worsening hypotension and potentially causing cardiovascular collapse.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Supportive Care</h5>
+                            <p>IV fluids (cautiously &mdash; hyponatremia). IV dextrose for hypoglycemia. Treat the precipitating cause (infection, etc.). Continuous cardiac monitoring.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-myxedema">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Why Passive Rewarming Only?</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Active warming is dangerous in myxedema coma.</strong> The severely hypothyroid body cannot compensate for vasodilation. Applying external heat causes peripheral blood vessels to dilate rapidly, blood pools in the extremities, and the already-weakened heart cannot maintain adequate circulation. The result: refractory hypotension and cardiovascular collapse. Use only warm blankets and a warm room. Temperature should rise no more than 1&deg;F per hour.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Myxedema coma = hypothermia + altered LOC + respiratory depression. Treat with IV levothyroxine + IV corticosteroids + passive rewarming ONLY. Active warming causes cardiovascular collapse. Treat the precipitating cause. Mortality is 30-60%.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 5: Hyperthyroidism -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="hyperthyroidism">
+                <h2><span class="section-icon"><i class="fas fa-temperature-high"></i></span> Hyperthyroidism</h2>
+
+                <p>Hyperthyroidism results from <strong>excessive thyroid hormone production</strong>, causing a hypermetabolic state. Everything speeds up: heart rate, metabolism, digestion, and neurological function.</p>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: HYPERthyroid = Everything HIGH and FAST
+                    </div>
+                    <p>Think of hyperthyroidism as the body <strong>"running on overdrive"</strong> &mdash; everything is accelerated: heart rate, temperature, weight loss, bowel motility, anxiety, and energy output.</p>
+                </div>
+
+                <h3>Hypothyroidism vs Hyperthyroidism Comparison</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card hypo">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-temperature-low"></i> Hypothyroidism (LOW &amp; SLOW)
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Bradycardia</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Weight gain</strong> (decreased metabolism)</li>
+                                <li><i class="fas fa-check"></i> <strong>Cold intolerance</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Constipation</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Fatigue, lethargy, depression</strong></li>
+                                <li><i class="fas fa-check"></i> Dry skin, brittle hair/nails</li>
+                                <li><i class="fas fa-check"></i> Menorrhagia (heavy periods)</li>
+                                <li><i class="fas fa-check"></i> Slowed reflexes</li>
+                                <li><i class="fas fa-check"></i> <strong>TSH: HIGH &uarr;</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>T3/T4: LOW &darr;</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-card hyper">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-temperature-high"></i> Hyperthyroidism (HIGH &amp; FAST)
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Tachycardia, palpitations, AFib</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Weight loss</strong> (despite increased appetite)</li>
+                                <li><i class="fas fa-check"></i> <strong>Heat intolerance, diaphoresis</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Diarrhea</strong> (increased GI motility)</li>
+                                <li><i class="fas fa-check"></i> <strong>Anxiety, irritability, insomnia, tremors</strong></li>
+                                <li><i class="fas fa-check"></i> Warm, moist, smooth skin</li>
+                                <li><i class="fas fa-check"></i> Oligomenorrhea (light/absent periods)</li>
+                                <li><i class="fas fa-check"></i> Hyperactive reflexes</li>
+                                <li><i class="fas fa-check"></i> <strong>TSH: LOW &darr;</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>T3/T4: HIGH &uarr;</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-hypo-vs-hyper">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Hypo vs Hyper Made Simple</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Everything in hypothyroidism and hyperthyroidism is opposite.</strong> Hypo is cold, hyper is hot. Hypo gains weight, hyper loses weight. Hypo is constipated, hyper has diarrhea. Hypo has bradycardia, hyper has tachycardia. Hypo is depressed, hyper is anxious. If you know one, you know the other &mdash; just flip everything. On the exam, look for the cluster of symptoms that matches either "slow" or "fast."
+                    </div>
+                </div>
+
+                <h3>Graves' Disease</h3>
+                <p><strong>Graves' disease</strong> is the most common cause of hyperthyroidism, accounting for 60-80% of cases. It is an <strong>autoimmune disorder</strong> in which the immune system produces <strong>thyroid-stimulating immunoglobulins (TSI)</strong> that mimic TSH and continuously stimulate the thyroid to overproduce hormones.</p>
+
+                <h4>Unique Features of Graves' Disease</h4>
+                <ul>
+                    <li><strong>Exophthalmos (proptosis):</strong> Bulging eyes from inflammation and swelling of orbital tissues. Unique to Graves' &mdash; does not occur in other forms of hyperthyroidism. May not resolve even after treatment of hyperthyroidism.</li>
+                    <li><strong>Diffuse goiter:</strong> Uniform, symmetric thyroid enlargement (vs. nodular goiter)</li>
+                    <li><strong>Pretibial myxedema:</strong> Thick, waxy, nonpitting edema on the shins (despite the "myxedema" name, this is a hyperthyroid finding)</li>
+                    <li><strong>Thyroid bruit:</strong> Audible whooshing sound over the thyroid due to increased blood flow</li>
+                </ul>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> Graves' Disease Patient Teaching
+                    </div>
+                    <ul>
+                        <li><strong>Eye care for exophthalmos:</strong> Wear sunglasses (photosensitivity), use artificial tears, elevate HOB at night to reduce periorbital edema, tape eyelids closed at night if they don't close fully</li>
+                        <li>Promote a calm, cool environment (heat intolerance)</li>
+                        <li>High-calorie diet to offset hypermetabolic weight loss</li>
+                        <li>Avoid caffeine and stimulants (worsen tachycardia and anxiety)</li>
+                        <li>Frequent rest periods for fatigue and muscle weakness</li>
+                    </ul>
+                </div>
+
+                <h3>Treatment Options for Hyperthyroidism</h3>
+                <p>Treatment aims to reduce thyroid hormone levels. Options include antithyroid drugs, radioactive iodine, or surgery:</p>
+
+                <h4>Beta-Blockers for Symptom Management</h4>
+                <p><strong>Propranolol</strong> is commonly used to manage the adrenergic symptoms of hyperthyroidism (tachycardia, tremors, anxiety, palpitations) while waiting for antithyroid drugs to take effect. Beta-blockers do NOT reduce thyroid hormone levels &mdash; they only control symptoms. They are used as an adjunct, not as sole therapy.</p>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Hyperthyroidism = everything fast and high. Graves' disease is the #1 cause (autoimmune TSI antibodies). Unique features: exophthalmos, diffuse goiter, pretibial myxedema. Treatment: antithyroid drugs, RAI, or surgery. Beta-blockers for symptom control only.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 6: Thyroid Storm -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="thyroid-storm">
+                <h2><span class="section-icon"><i class="fas fa-bolt"></i></span> Thyroid Storm (Thyrotoxic Crisis)</h2>
+
+                <p><strong>Thyroid storm</strong> is a rare but <strong>life-threatening emergency</strong> representing the most extreme form of hyperthyroidism. It is characterized by an acute, severe exacerbation of hyperthyroid symptoms that can rapidly progress to organ failure and death. Mortality rate is 20-30% even with aggressive treatment.</p>
+
+                <h3>Triggers</h3>
+                <ul>
+                    <li>Infection (most common trigger)</li>
+                    <li>Surgery (especially thyroid surgery in an unprepared patient)</li>
+                    <li>Abrupt discontinuation of antithyroid medications</li>
+                    <li>DKA or other metabolic stress</li>
+                    <li>Trauma, burns, or stroke</li>
+                    <li>Iodinated contrast dye or excessive iodine intake</li>
+                    <li>Labor and delivery</li>
+                </ul>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Recognizing Thyroid Storm
+                    </div>
+                    <ul>
+                        <li><strong>High fever &gt; 104&deg;F (40&deg;C)</strong> &mdash; the hallmark finding</li>
+                        <li><strong>Severe tachycardia</strong> (HR &gt; 130-140) &mdash; may progress to atrial fibrillation</li>
+                        <li><strong>Delirium, agitation, psychosis</strong> &rarr; may progress to seizures and coma</li>
+                        <li><strong>Heart failure</strong> (high-output) &mdash; from sustained tachycardia</li>
+                        <li>Severe nausea, vomiting, diarrhea</li>
+                        <li>Extreme diaphoresis and dehydration</li>
+                        <li>Systolic hypertension with wide pulse pressure</li>
+                    </ul>
+                </div>
+
+                <h3>Myxedema Coma vs Thyroid Storm</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card myxedema">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-snowflake"></i> Myxedema Coma
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Extreme Hypothyroid Emergency</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Hypothermia</strong> (&lt; 95&deg;F)</li>
+                                <li><i class="fas fa-check"></i> <strong>Bradycardia, hypotension</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Lethargy &rarr; stupor &rarr; coma</strong></li>
+                                <li><i class="fas fa-check"></i> Respiratory depression</li>
+                                <li><i class="fas fa-check"></i> Hyponatremia, hypoglycemia</li>
+                                <li><i class="fas fa-check"></i> Treatment: IV levothyroxine + passive rewarming</li>
+                                <li><i class="fas fa-check"></i> Mortality: 30-60%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-card storm">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-fire"></i> Thyroid Storm
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Extreme Hyperthyroid Emergency</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>High fever &gt; 104&deg;F</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Severe tachycardia, hypertension</strong></li>
+                                <li><i class="fas fa-check"></i> <strong>Delirium, agitation &rarr; seizures &rarr; coma</strong></li>
+                                <li><i class="fas fa-check"></i> Heart failure (high-output)</li>
+                                <li><i class="fas fa-check"></i> Severe dehydration</li>
+                                <li><i class="fas fa-check"></i> Treatment: PTU + beta-blockers + steroids + cooling</li>
+                                <li><i class="fas fa-check"></i> Mortality: 20-30%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Emergency Treatment</h3>
+                <div class="interventions-list">
+                    <h4><i class="fas fa-first-aid"></i> Thyroid Storm Management Protocol</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Block New Hormone Synthesis: PTU or Methimazole</h5>
+                            <p><strong>PTU is often preferred</strong> in thyroid storm because it also blocks peripheral T4-to-T3 conversion (dual mechanism). High loading dose followed by frequent maintenance doses.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Block Hormone Release: Iodine (Lugol's Solution or SSKI)</h5>
+                            <p>Given 1 hour AFTER PTU/methimazole to block release of preformed thyroid hormone. Must wait 1 hour &mdash; giving iodine first provides substrate for MORE hormone production (Wolff-Chaikoff effect timing).</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Block Adrenergic Effects: Beta-Blockers</h5>
+                            <p><strong>Propranolol IV</strong> to rapidly control tachycardia, hypertension, and tremors. Also inhibits peripheral T4-to-T3 conversion. Monitor for heart failure.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Block Peripheral Conversion: Corticosteroids</h5>
+                            <p><strong>IV hydrocortisone or dexamethasone</strong> to block T4-to-T3 conversion and prevent relative adrenal insufficiency from the hypermetabolic state.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Cooling Measures</h5>
+                            <p>Cooling blankets, ice packs, acetaminophen. <strong>Avoid aspirin</strong> &mdash; it displaces thyroid hormone from binding proteins, increasing free (active) hormone levels.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">6</div>
+                        <div class="intervention-content">
+                            <h5>Supportive Care</h5>
+                            <p>IV fluids with dextrose for dehydration and glucose replacement. Oxygen therapy. Continuous cardiac monitoring in ICU. Treat the precipitating cause.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-thyroid-storm">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Thyroid Storm: Remember "Block, Block, Block, Block"</div>
+                    <div class="florencebot-tip-content">
+                        <strong>The treatment strategy is four blocks:</strong> (1) <strong>Block synthesis</strong> with PTU/methimazole, (2) <strong>Block release</strong> with iodine (1 hour later), (3) <strong>Block adrenergic effects</strong> with beta-blockers, (4) <strong>Block peripheral conversion</strong> with corticosteroids. Plus cooling and supportive care. Also remember: <strong>NO aspirin</strong> for fever &mdash; use acetaminophen only. Aspirin increases free thyroid hormone and makes things worse.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Thyroid storm = fever &gt; 104&deg;F + severe tachycardia + delirium. Treatment: PTU &rarr; iodine (1 hr later) &rarr; beta-blockers &rarr; corticosteroids &rarr; cooling (NO aspirin). ICU level care. Mortality 20-30%.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 7: Thyroid Medications -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="medications">
+                <h2><span class="section-icon"><i class="fas fa-pills"></i></span> Thyroid Medications</h2>
+
+                <h3>Antithyroid Drugs: Methimazole vs PTU</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card methimazole">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-pills"></i> Methimazole (Tapazole)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Preferred Antithyroid Drug</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Once-daily dosing</strong> (better adherence)</li>
+                                <li><i class="fas fa-check"></i> Fewer side effects overall</li>
+                                <li><i class="fas fa-check"></i> Lower risk of hepatotoxicity</li>
+                                <li><i class="fas fa-check"></i> <strong>Preferred for ALL patients</strong> except first trimester pregnancy</li>
+                                <li><i class="fas fa-check"></i> Blocks thyroid hormone synthesis</li>
+                                <li><i class="fas fa-check"></i> Does NOT block T4 &rarr; T3 conversion</li>
+                                <li><i class="fas fa-check"></i> Teratogenic in 1st trimester (aplasia cutis)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-card ptu">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-pills"></i> Propylthiouracil (PTU)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Reserved for Special Situations</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Three-times-daily dosing</strong> (poor adherence)</li>
+                                <li><i class="fas fa-check"></i> More side effects</li>
+                                <li><i class="fas fa-check"></i> <strong>Black box warning: hepatotoxicity</strong> (liver failure/death)</li>
+                                <li><i class="fas fa-check"></i> <strong>Preferred in 1st trimester pregnancy</strong></li>
+                                <li><i class="fas fa-check"></i> Blocks thyroid hormone synthesis</li>
+                                <li><i class="fas fa-check"></i> <strong>ALSO blocks T4 &rarr; T3 conversion</strong> (dual mechanism)</li>
+                                <li><i class="fas fa-check"></i> Preferred in thyroid storm (dual mechanism)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-ptu-pregnancy">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">PTU in Pregnancy: The Special Exception</div>
+                    <div class="florencebot-tip-content">
+                        <strong>PTU is preferred ONLY in the first trimester</strong> because methimazole is associated with birth defects (aplasia cutis, choanal atresia). After the first trimester, switch to methimazole because PTU carries a higher risk of liver failure. The clinical pearl: <strong>1st trimester = PTU, 2nd/3rd trimester = methimazole.</strong> Both drugs cross the placenta, so use the lowest effective dose. Both are safe in breastfeeding.
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Agranulocytosis
+                    </div>
+                    <p><strong>Both methimazole and PTU can cause agranulocytosis</strong> (dangerously low WBC count), a rare but life-threatening side effect. Teach patients to <strong>report sore throat, fever, or mouth ulcers immediately</strong> &mdash; these are early signs of agranulocytosis. Obtain a CBC with differential before starting therapy and if symptoms develop. If WBC &lt; 1000, discontinue the drug immediately.</p>
+                </div>
+
+                <h3>Lugol's Solution (Strong Iodine/SSKI)</h3>
+                <ul>
+                    <li><strong>Purpose:</strong> Temporarily blocks release of thyroid hormone (Wolff-Chaikoff effect). Used pre-operatively before thyroidectomy and in thyroid storm.</li>
+                    <li><strong>Administration:</strong> Dilute in water or juice (stains teeth). Use a straw to minimize dental staining. Mix well.</li>
+                    <li><strong>Side effects:</strong> Metallic/brassy taste, GI upset, hypersensitivity reactions</li>
+                    <li><strong>Key point:</strong> In thyroid storm, must give AFTER antithyroid drug (1 hour delay) &mdash; giving iodine first provides raw material for more hormone synthesis</li>
+                </ul>
+
+                <h3>Radioactive Iodine (I-131)</h3>
+                <p><strong>RAI</strong> is a definitive treatment for hyperthyroidism. The thyroid gland concentrates iodine, so radioactive iodine selectively destroys thyroid tissue while sparing other organs.</p>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-radiation"></i> RAI (I-131) Key Points</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Mechanism</div>
+                            <div class="value">Destroys thyroid cells via radiation</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Onset</div>
+                            <div class="value">6-18 weeks for full effect</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Long-term Result</div>
+                            <div class="value">Most patients become hypothyroid</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Contraindications</div>
+                            <div class="value">Pregnancy, breastfeeding (ABSOLUTE)</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-rai-precautions">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">RAI Radiation Precautions</div>
+                    <div class="florencebot-tip-content">
+                        <strong>After RAI treatment, the patient is radioactive for several days.</strong> Key precautions: (1) <strong>Pregnancy test required before treatment</strong> &mdash; RAI destroys fetal thyroid. Avoid pregnancy for 6-12 months after. (2) Avoid close contact with pregnant women and young children for several days. (3) Sleep alone, use separate utensils and towels. (4) Flush toilet twice after use. (5) Maintain distance of 3+ feet from others when possible. (6) Good hand hygiene. Most patients will develop permanent hypothyroidism and require lifelong levothyroxine &mdash; this is an expected outcome, not a complication.
+                    </div>
+                </div>
+
+                <h3>Complete Medication Comparison</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Medication</th>
+                                <th>Class</th>
+                                <th>Use</th>
+                                <th>Key Nursing Consideration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Levothyroxine</strong></td>
+                                <td>Synthetic T4</td>
+                                <td>Hypothyroidism (replacement)</td>
+                                <td>Empty stomach AM, separate from Ca²⁺/Fe, increases warfarin effect</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Methimazole</strong></td>
+                                <td>Thioamide</td>
+                                <td>Hyperthyroidism (1st-line)</td>
+                                <td>Once daily; avoid in 1st trimester; monitor WBC for agranulocytosis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>PTU</strong></td>
+                                <td>Thioamide</td>
+                                <td>1st trimester, thyroid storm</td>
+                                <td>TID dosing; black box liver warning; also blocks T4&rarr;T3</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Propranolol</strong></td>
+                                <td>Beta-blocker</td>
+                                <td>Symptom control (adjunct)</td>
+                                <td>Does NOT reduce thyroid hormone; controls HR, tremors, anxiety</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lugol's/SSKI</strong></td>
+                                <td>Iodine solution</td>
+                                <td>Pre-op, thyroid storm</td>
+                                <td>Give 1 hr AFTER antithyroid drug; use straw; dilute in juice</td>
+                            </tr>
+                            <tr>
+                                <td><strong>RAI (I-131)</strong></td>
+                                <td>Radioactive iodine</td>
+                                <td>Definitive treatment</td>
+                                <td>Pregnancy test first; radiation precautions; expect hypothyroidism</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Methimazole is preferred over PTU (except 1st trimester pregnancy and thyroid storm). Both can cause agranulocytosis &mdash; report fever/sore throat. RAI destroys the thyroid (contraindicated in pregnancy). Levothyroxine: empty stomach, watch warfarin interaction.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 8: Goiter & Thyroid Nodules -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="goiter-nodules">
+                <h2><span class="section-icon"><i class="fas fa-search"></i></span> Goiter &amp; Thyroid Nodules</h2>
+
+                <h3>Goiter (Enlarged Thyroid)</h3>
+                <p>A <strong>goiter</strong> is any enlargement of the thyroid gland, regardless of the underlying cause. It can occur with hypothyroidism, hyperthyroidism, or even normal thyroid function (euthyroid goiter).</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Cause</th>
+                                <th>Thyroid Function</th>
+                                <th>Treatment</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Endemic Goiter</strong></td>
+                                <td>Iodine deficiency (most common cause worldwide)</td>
+                                <td>Often hypothyroid</td>
+                                <td>Iodine supplementation; levothyroxine</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Graves' Goiter</strong></td>
+                                <td>TSI antibody stimulation</td>
+                                <td>Hyperthyroid</td>
+                                <td>Antithyroid drugs, RAI, or surgery</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hashimoto's Goiter</strong></td>
+                                <td>Autoimmune inflammation</td>
+                                <td>Hypothyroid (eventually)</td>
+                                <td>Levothyroxine (may shrink goiter)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Multinodular Goiter</strong></td>
+                                <td>Multiple thyroid nodules</td>
+                                <td>Variable</td>
+                                <td>Based on function; may need surgery if compressive</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Assessment Findings</h4>
+                <ul>
+                    <li>Visible or palpable enlargement of anterior neck</li>
+                    <li>Difficulty swallowing (dysphagia) if gland compresses esophagus</li>
+                    <li>Difficulty breathing (dyspnea) or stridor if gland compresses trachea</li>
+                    <li>Hoarseness if recurrent laryngeal nerve is compressed</li>
+                    <li>Feeling of fullness or tightness in the neck</li>
+                </ul>
+
+                <h3>Thyroid Nodules</h3>
+                <p>Thyroid nodules are extremely common &mdash; found in up to 50% of the population on ultrasound. The vast majority (90-95%) are <strong>benign</strong>, but all nodules need evaluation to rule out malignancy.</p>
+
+                <h4>Evaluation Approach</h4>
+                <ul>
+                    <li><strong>TSH level:</strong> If low (suggesting a "hot" or hyperactive nodule), a thyroid scan is performed. Hot nodules are almost always benign.</li>
+                    <li><strong>Ultrasound:</strong> Evaluates size, characteristics (solid vs. cystic, calcifications, irregular margins), and guides biopsy.</li>
+                    <li><strong>Fine needle aspiration (FNA) biopsy:</strong> Gold standard for determining if a nodule is malignant. Indicated for nodules &gt; 1 cm or those with suspicious ultrasound features.</li>
+                </ul>
+
+                <h4>Cancer Risk Factors</h4>
+                <ul>
+                    <li>History of radiation exposure to head/neck (especially in childhood)</li>
+                    <li>Family history of thyroid cancer or MEN syndrome</li>
+                    <li>Rapidly growing nodule</li>
+                    <li>Fixed, hard, non-tender nodule</li>
+                    <li>Cervical lymphadenopathy (enlarged lymph nodes)</li>
+                    <li>Male sex (nodules are more common in women, but malignancy rates are higher in men)</li>
+                    <li>Age extremes (&lt; 20 or &gt; 60 years)</li>
+                </ul>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Thyroid Cancer Prognosis
+                    </div>
+                    <p>The most common type of thyroid cancer is <strong>papillary thyroid carcinoma</strong> (80% of cases), which has an <strong>excellent prognosis</strong> with &gt; 95% cure rate. Treatment is typically total thyroidectomy followed by RAI ablation and lifelong levothyroxine (TSH suppression therapy). Thyroid cancer is one of the most treatable cancers when caught early.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Goiters can be hypo-, hyper-, or euthyroid &mdash; treatment depends on the cause. Most thyroid nodules are benign. FNA biopsy is the gold standard for evaluation. Red flags: rapid growth, fixation, lymphadenopathy, radiation history. Papillary thyroid cancer has excellent prognosis.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 9: Thyroidectomy Nursing Care -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="thyroidectomy">
+                <h2><span class="section-icon"><i class="fas fa-procedures"></i></span> Thyroidectomy Nursing Care</h2>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> HIGH-YIELD NCLEX TOPIC: Post-Thyroidectomy Complications
+                    </div>
+                    <p>This is one of the <strong>most frequently tested</strong> surgical nursing topics on NCLEX. Know the complications, assessments, and emergency interventions cold.</p>
+                </div>
+
+                <h3>Pre-Operative Preparation</h3>
+                <ul>
+                    <li><strong>Achieve euthyroid state FIRST:</strong> Patients must be on antithyroid medications and/or beta-blockers until thyroid levels normalize before surgery. Operating on a hyperthyroid patient risks thyroid storm.</li>
+                    <li><strong>Lugol's solution (iodine):</strong> Given 10-14 days pre-op to decrease thyroid vascularity and reduce surgical bleeding.</li>
+                    <li>Baseline voice assessment (for post-op comparison)</li>
+                    <li>Teach patient about post-op positioning and importance of supporting the neck</li>
+                    <li>Ensure tracheostomy tray and calcium gluconate are available</li>
+                </ul>
+
+                <h3>Post-Operative Positioning</h3>
+                <ul>
+                    <li><strong>Semi-Fowler's position</strong> (head elevated 30-45 degrees) to reduce edema and promote drainage</li>
+                    <li><strong>Support head and neck</strong> with pillows &mdash; avoid flexion, extension, or rotation</li>
+                    <li>Teach patient to support head with hands when moving (place hands behind head when sitting up)</li>
+                </ul>
+
+                <h3>Post-Operative Complications</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-exclamation-circle"></i> Critical Post-Thyroidectomy Complications</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Hemorrhage / Hematoma &rarr; AIRWAY OBSTRUCTION</h5>
+                            <p><strong>#1 priority assessment.</strong> A hematoma in the neck can compress the trachea and cause airway obstruction within minutes. Assess: swelling at incision site, blood on dressing (check BEHIND the neck &mdash; blood pools posteriorly), sensation of tightness in the neck, difficulty breathing or stridor. <strong>If airway compromise is suspected: call surgeon immediately, open sutures at bedside to release hematoma if emergency, prepare for intubation.</strong></p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Laryngeal Nerve Damage</h5>
+                            <p>The recurrent laryngeal nerve runs adjacent to the thyroid gland. Damage causes: <strong>hoarseness, weak or breathy voice, difficulty swallowing, aspiration risk</strong>. <strong>Assess voice quality every 2-4 hours</strong> post-op (ask patient to say "eee"). Temporary hoarseness is common from intubation &mdash; persistent hoarseness (&gt; 2 weeks) suggests nerve injury. Bilateral nerve injury (rare) causes complete airway obstruction.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Hypocalcemia / Tetany &rarr; Parathyroid Damage</h5>
+                            <p>The four parathyroid glands sit on the posterior surface of the thyroid. They can be accidentally damaged or removed during surgery, causing acute <strong>hypoparathyroidism &rarr; hypocalcemia &rarr; tetany</strong>. Typically manifests <strong>24-72 hours post-op</strong>. Signs include:</p>
+                            <ul>
+                                <li><strong>Chvostek's sign:</strong> Tap facial nerve (in front of ear) &rarr; twitching of facial muscles on same side</li>
+                                <li><strong>Trousseau's sign:</strong> Inflate BP cuff above systolic for 3 min &rarr; carpal spasm (hand/wrist flexion)</li>
+                                <li>Numbness/tingling around mouth, fingers, and toes (paresthesias)</li>
+                                <li>Muscle cramps, spasms, seizures</li>
+                                <li>Positive Chvostek's and Trousseau's can appear BEFORE symptomatic hypocalcemia</li>
+                            </ul>
+                            <p><strong>Treatment: IV calcium gluconate</strong> (keep at bedside). Oral calcium and vitamin D for long-term management.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Thyroid Storm</h5>
+                            <p>Can occur if the patient was not adequately prepared (not euthyroid) before surgery, or if the thyroid was manipulated during surgery, releasing stored hormone. <strong>This is why achieving euthyroid state pre-operatively is essential.</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Emergency Equipment at Bedside</h3>
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Bedside Emergency Equipment
+                    </div>
+                    <p><strong>The following MUST be at the bedside of EVERY post-thyroidectomy patient:</strong></p>
+                    <ul>
+                        <li><strong>Tracheostomy tray</strong> (for emergency airway access if hematoma causes obstruction)</li>
+                        <li><strong>Suction equipment</strong> (for secretion management and blood)</li>
+                        <li><strong>Oxygen</strong> (supplemental O2 supplies)</li>
+                        <li><strong>Calcium gluconate IV</strong> (for emergency hypocalcemia treatment)</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-thyroidectomy">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">The Post-Thyroidectomy Assessment Checklist</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Think "ABCCC" for your post-thyroidectomy assessments:</strong> (A) <strong>Airway</strong> &mdash; priority #1, assess for stridor, dyspnea, neck swelling. (B) <strong>Bleeding</strong> &mdash; check dressing AND behind the neck. (C) <strong>Calcium</strong> &mdash; check for Chvostek's and Trousseau's signs, paresthesias. (C) <strong>Communication</strong> &mdash; assess voice every 2-4 hours. (C) <strong>Comfort</strong> &mdash; semi-Fowler's position, support the head, pain management. If any of the first four are abnormal, it's an emergency.
+                    </div>
+                </div>
+
+                <h3>Post-Operative Nursing Care</h3>
+                <ul>
+                    <li>Assess vital signs frequently (initially every 15-30 minutes)</li>
+                    <li>Check incision site and dressing for bleeding &mdash; check <strong>behind the neck</strong> (blood pools posteriorly)</li>
+                    <li>Assess voice quality every 2-4 hours (have patient say "eee")</li>
+                    <li>Monitor calcium levels and assess for Chvostek's/Trousseau's signs every shift</li>
+                    <li>Keep the head elevated and neck supported</li>
+                    <li>Manage drain output if drain is placed (Jackson-Pratt is common)</li>
+                    <li>Encourage gentle range of motion to the neck when cleared by surgeon</li>
+                    <li>After total thyroidectomy: patient will need lifelong levothyroxine replacement</li>
+                </ul>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Post-thyroidectomy: Airway is priority #1 (hemorrhage can obstruct in minutes). Keep trach tray + calcium gluconate at bedside. Assess voice every 2-4 hours, check for hypocalcemia (Chvostek's/Trousseau's), and check bleeding behind the neck. "ABCCC" = Airway, Bleeding, Calcium, Communication, Comfort.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 10: Diet Considerations -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="diet">
+                <h2><span class="section-icon"><i class="fas fa-utensils"></i></span> Diet Considerations</h2>
+
+                <h3>Iodine and the Thyroid</h3>
+                <p><strong>Iodine</strong> is an essential trace mineral required for thyroid hormone synthesis. The thyroid gland concentrates iodine from the bloodstream to produce T3 and T4. Both excess and deficiency can cause thyroid dysfunction.</p>
+
+                <h4>Dietary Iodine Sources</h4>
+                <ul>
+                    <li><strong>Iodized salt</strong> (primary source in the US)</li>
+                    <li>Seafood (fish, shrimp, seaweed/kelp)</li>
+                    <li>Dairy products (milk, yogurt, cheese)</li>
+                    <li>Eggs</li>
+                    <li>Bread and grain products (if made with iodate dough conditioners)</li>
+                </ul>
+
+                <h3>Goitrogens</h3>
+                <p><strong>Goitrogens</strong> are substances that interfere with thyroid hormone production and can contribute to goiter formation. Patients with hypothyroidism should be aware of goitrogenic foods, though cooking usually deactivates goitrogens.</p>
+
+                <h4>Common Goitrogenic Foods</h4>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Foods</th>
+                                <th>Clinical Guidance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cruciferous Vegetables</strong></td>
+                                <td>Cabbage, broccoli, cauliflower, Brussels sprouts, kale, turnips</td>
+                                <td>Cooking reduces goitrogenic effect. No need to avoid entirely &mdash; just limit raw consumption.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Soy Products</strong></td>
+                                <td>Tofu, soy milk, edamame, soy-based formulas</td>
+                                <td>May interfere with levothyroxine absorption. Separate from medication.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Other</strong></td>
+                                <td>Millet, peaches, strawberries, peanuts, sweet potatoes</td>
+                                <td>Minimal effect in moderate amounts with adequate iodine intake.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Goitrogen Counseling
+                    </div>
+                    <p><strong>Do not tell patients to avoid all goitrogenic foods.</strong> Cruciferous vegetables are highly nutritious and offer cancer-protective benefits. The goitrogenic effect is primarily a concern with large amounts of raw cruciferous vegetables in patients who are already iodine-deficient or hypothyroid. Cooking (steaming, boiling) significantly reduces goitrogenic activity. Advise: eat in moderation, cook when possible, and ensure adequate iodine intake.</p>
+                </div>
+
+                <h3>Diet by Condition</h3>
+                <ul>
+                    <li><strong>Hypothyroidism:</strong> Ensure adequate iodine intake. Limit large amounts of raw goitrogens. High-fiber diet for constipation. Monitor weight &mdash; may need calorie adjustment for slowed metabolism.</li>
+                    <li><strong>Hyperthyroidism:</strong> High-calorie, high-protein diet to compensate for hypermetabolic weight loss. Avoid excessive iodine. Avoid caffeine and stimulants (worsen tachycardia and anxiety).</li>
+                    <li><strong>Pre-RAI treatment:</strong> Low-iodine diet for 1-2 weeks before radioactive iodine therapy (increases RAI uptake by the thyroid).</li>
+                </ul>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Iodine is essential for thyroid hormone synthesis. Goitrogens (cruciferous vegetables, soy) can interfere with thyroid function &mdash; cooking reduces the effect. Don't eliminate these foods; counsel moderation. Separate soy from levothyroxine. Pre-RAI: low-iodine diet.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 11: Pediatric Considerations -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="pediatric">
+                <h2><span class="section-icon"><i class="fas fa-baby"></i></span> Pediatric Considerations</h2>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-header">
+                        <i class="fas fa-baby"></i> Congenital Hypothyroidism
+                    </div>
+                    <p><strong>Congenital hypothyroidism</strong> is one of the most common preventable causes of intellectual disability. Key points:</p>
+                    <ul>
+                        <li><strong>Newborn screening is mandatory</strong> in all 50 states &mdash; TSH is measured via heel stick at 24-48 hours of life</li>
+                        <li>If untreated, causes <strong>cretinism</strong>: intellectual disability, short stature, delayed development</li>
+                        <li><strong>Treatment must begin within 2 weeks of birth</strong> &mdash; levothyroxine oral suspension or crushed tablet in breast milk/formula</li>
+                        <li>Most common cause: thyroid dysgenesis (absent or underdeveloped thyroid gland)</li>
+                        <li>Early signs in newborns: prolonged jaundice, large fontanelles, macroglossia (large tongue), poor feeding, constipation, hypothermia, excessive sleepiness</li>
+                        <li>Lifelong levothyroxine replacement required</li>
+                    </ul>
+                </div>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-header">
+                        <i class="fas fa-baby"></i> Thyroid Disorders in Children &amp; Adolescents
+                    </div>
+                    <ul>
+                        <li><strong>Hashimoto's thyroiditis</strong> is the most common acquired thyroid disorder in children, often presenting during adolescence</li>
+                        <li>May cause <strong>growth failure</strong> and <strong>delayed puberty</strong> &mdash; monitor growth charts closely</li>
+                        <li><strong>Graves' disease</strong> can occur in children; antithyroid drugs (methimazole) are first-line treatment. RAI and surgery are reserved for refractory cases</li>
+                        <li>Levothyroxine dosing in children is <strong>weight-based</strong> and proportionally higher than in adults (children have faster metabolism)</li>
+                        <li>Adolescents may struggle with medication adherence &mdash; involve them in self-management education</li>
+                        <li>School performance decline may be the first sign of thyroid dysfunction in school-age children</li>
+                        <li>Thyroid nodules in children are <strong>more likely to be malignant</strong> than in adults (20-25% vs. 5-10%) &mdash; FNA biopsy should be performed promptly</li>
+                    </ul>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Newborn TSH screening is mandatory &mdash; untreated congenital hypothyroidism causes permanent intellectual disability. Start levothyroxine within 2 weeks. In children, hypothyroidism causes growth failure. Thyroid nodules in children have higher malignancy rates than adults &mdash; biopsy promptly.</div>
+            </section>
+
+            <!-- Practice Questions CTA -->
+            <section class="practice-questions" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> NCLEX Challenge &mdash; Test Your Knowledge</h2>
+                <div class="quiz-cta-box">
+                    <div class="quiz-cta-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="quiz-cta-content">
+                        <h3>Ready to Test Your Knowledge?</h3>
+                        <p>10 NCLEX-style questions with detailed rationales covering thyroid labs, thyroidectomy complications, thyroid emergencies, medications, and patient teaching. Choose Practice Mode or Exam Mode.</p>
+                        <div class="quiz-cta-stats">
+                            <span><i class="fas fa-question-circle"></i> 10 Questions</span>
+                            <span><i class="fas fa-clock"></i> ~15 min</span>
+                            <span><i class="fas fa-layer-group"></i> 4 Question Types</span>
+                        </div>
+                    </div>
+                    <a href="quiz/thyroid-disorders-quiz.html" class="quiz-cta-button">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </a>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-vials"></i>
+                        <p><strong>TSH goes OPPOSITE.</strong> High TSH = hypothyroid. Low TSH = hyperthyroid. TSH is the most sensitive screening test.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-temperature-low"></i>
+                        <p><strong>Hypothyroid = LOW &amp; SLOW.</strong> Hashimoto's #1 cause (US). Treat with levothyroxine on empty stomach.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-temperature-high"></i>
+                        <p><strong>Hyperthyroid = HIGH &amp; FAST.</strong> Graves' #1 cause. Exophthalmos is unique to Graves'.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-pills"></i>
+                        <p><strong>Levothyroxine + warfarin</strong> = increased bleeding risk. Monitor INR closely.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-fire"></i>
+                        <p><strong>Thyroid storm:</strong> Fever &gt; 104&deg;F + tachycardia + delirium. PTU + beta-blockers + steroids + cooling (NO aspirin).</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-snowflake"></i>
+                        <p><strong>Myxedema coma:</strong> Hypothermia + altered LOC. IV levothyroxine + passive rewarming ONLY.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-lungs"></i>
+                        <p><strong>Post-thyroidectomy #1:</strong> AIRWAY. Trach tray + Ca²⁺ gluconate at bedside. Check Chvostek's/Trousseau's.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-baby"></i>
+                        <p><strong>Newborn screening:</strong> Mandatory TSH. Treat within 2 weeks or risk permanent intellectual disability.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cross-References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Guides in the Library</h2>
+                <div class="cross-ref-group">
+                    <h3>Also relevant:</h3>
+                    <ul>
+                        <li><a href="diabetes-mellitus.html"><i class="fas fa-arrow-right"></i> Diabetes Mellitus (Endocrine fundamentals, DKA/HHS emergencies)</a></li>
+                        <li><a href="heart-failure.html"><i class="fas fa-arrow-right"></i> Heart Failure (Thyroid storm can cause high-output HF)</a></li>
+                        <li><a href="adrenal-disorders.html"><i class="fas fa-arrow-right"></i> Adrenal Disorders (Cushing's, Addison's, Adrenal Crisis)</a></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Fluid &amp; Electrolytes (Calcium/Hypocalcemia) &mdash; Coming Soon</span></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts -->
+    <script src="configs/thyroid-disorders-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="guide-questions.js"></script>
+    <script src="../content-gate.js"></script>
+</body>
+</html>

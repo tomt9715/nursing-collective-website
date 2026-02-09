@@ -218,122 +218,74 @@
                     </button>
                 </div>
 
-                <!-- My Study Guides Section -->
-                <section class="dashboard-section-featured">
-                    <div class="section-header-enhanced">
-                        <h2><i class="fas fa-book-medical"></i> My Study Guides</h2>
-                        <div class="section-actions">
-                            <div class="view-toggle-container">
-                                <button class="view-toggle-btn active" data-view="grid" title="Grid View">
-                                    <i class="fas fa-th-large"></i>
-                                </button>
-                                <button class="view-toggle-btn" data-view="list" title="List View">
-                                    <i class="fas fa-list"></i>
-                                </button>
+                <!-- Two-Column Hub: Recent Guides + Quiz Progress -->
+                <div class="dashboard-two-col">
+                    <!-- Recent Guides Widget -->
+                    <div class="recent-guides-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-book-medical"></i> Recent Guides</h3>
+                            <a href="study-guides.html" class="widget-header-link">Browse All →</a>
+                        </div>
+                        <div id="recent-guides-list" class="recent-guides-list">
+                            <!-- Loading skeleton -->
+                            <div class="skeleton-loader">
+                                <div class="skeleton skeleton-card" style="margin-bottom: 8px;"></div>
+                                <div class="skeleton skeleton-card" style="margin-bottom: 8px;"></div>
+                                <div class="skeleton skeleton-card" style="margin-bottom: 8px;"></div>
                             </div>
-                            <button class="btn btn-secondary" data-navigate="study-guides.html">
-                                <i class="fas fa-plus"></i> Browse More
+                        </div>
+                    </div>
+
+                    <!-- Quiz Bank Progress Widget -->
+                    <div class="qb-summary-widget" id="quiz-bank-dashboard-section" style="display: none;">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-brain"></i> Quiz Progress</h3>
+                            <a href="https://learn.thenursingcollective.pro" class="widget-header-link" id="qb-continue-btn">Continue →</a>
+                        </div>
+
+                        <!-- Empty State -->
+                        <div id="qb-empty-state" style="display: none; text-align: center; padding: 32px 16px;">
+                            <div style="font-size: 40px; margin-bottom: 12px; opacity: 0.3;"><i class="fas fa-brain"></i></div>
+                            <h4 style="margin-bottom: 6px; font-size: 1rem;">Track Your Progress</h4>
+                            <p style="opacity: 0.7; margin-bottom: 16px; font-size: 0.9rem;">Start a quiz to see your stats here.</p>
+                            <button class="btn btn-primary btn-sm" data-navigate="https://learn.thenursingcollective.pro">
+                                <i class="fas fa-rocket"></i> Start Practicing
                             </button>
                         </div>
-                    </div>
 
-                    <!-- Search Bar (always visible when user has guides) -->
-                    <div class="guides-search-bar" id="guides-search-bar" style="display: none;">
-                        <div class="guides-search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" id="guides-search-input" placeholder="Search your guides..." />
-                        </div>
-                        <div class="guides-count-display">
-                            <span id="filtered-guides-count">0</span> guides
-                        </div>
-                    </div>
-
-                    <!-- Favorites Section (pinned at top) -->
-                    <div class="guides-favorites-section" id="guides-favorites-section" style="display: none;">
-                        <div class="favorites-header">
-                            <h3><i class="fas fa-star"></i> Favorites</h3>
-                        </div>
-                        <div class="favorites-grid" id="favorites-grid">
-                            <!-- Favorited guides rendered here -->
-                        </div>
-                    </div>
-
-                    <!-- Category Folders Container -->
-                    <div class="guides-folders-container" id="guides-folders-container">
-                        <!-- Loading skeleton -->
-                        <div class="skeleton-loader">
-                            <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
-                            <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- Quiz Bank Mastery Section -->
-                <section class="dashboard-section" id="quiz-bank-dashboard-section" style="grid-column: 1 / -1; display: none;">
-                    <div class="section-header-enhanced">
-                        <h2><i class="fas fa-brain"></i> Quiz Bank Mastery</h2>
-                        <div class="section-actions">
-                            <button class="btn btn-secondary" id="qb-continue-btn" data-navigate="https://learn.thenursingcollective.pro">
-                                <i class="fas fa-play"></i> Continue Practicing
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Empty State (no mastery data yet) -->
-                    <div id="qb-empty-state" style="display: none; text-align: center; padding: 40px 20px;">
-                        <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.3;"><i class="fas fa-brain"></i></div>
-                        <h3 style="margin-bottom: 8px;">Track Your Mastery</h3>
-                        <p style="opacity: 0.7; margin-bottom: 20px;">Start your first quiz to see your progress here.</p>
-                        <button class="btn btn-primary" data-navigate="https://learn.thenursingcollective.pro">
-                            <i class="fas fa-rocket"></i> Start Practicing
-                        </button>
-                    </div>
-
-                    <!-- Mastery Overview (when data exists) -->
-                    <div id="qb-mastery-overview" style="display: none;">
-                        <!-- Compact Stats Row -->
-                        <div class="qb-stats-row">
-                            <div class="qb-stat-card">
-                                <div class="qb-stat-number" id="qb-avg-level">0</div>
-                                <div class="qb-stat-label">Avg Level</div>
-                            </div>
-                            <div class="qb-stat-card">
-                                <div class="qb-stat-number" id="qb-topics-practiced">0</div>
-                                <div class="qb-stat-label">Topics Practiced</div>
-                            </div>
-                            <div class="qb-stat-card">
-                                <div class="qb-stat-number" id="qb-topics-mastered">0</div>
-                                <div class="qb-stat-label">Mastered</div>
-                            </div>
-                            <div class="qb-stat-card">
-                                <div class="qb-stat-number" id="qb-total-answered">0</div>
-                                <div class="qb-stat-label">Answered</div>
-                            </div>
-                            <div class="qb-stat-card">
-                                <div class="qb-stat-number" id="qb-accuracy">0%</div>
-                                <div class="qb-stat-label">Accuracy</div>
-                            </div>
-                            <div class="qb-stat-card">
-                                <div class="qb-stat-number" id="qb-streak">0</div>
-                                <div class="qb-stat-label">Day Streak</div>
+                        <!-- Stats (when data exists) -->
+                        <div id="qb-mastery-overview" style="display: none;">
+                            <div class="qb-stats-row">
+                                <div class="qb-stat-card">
+                                    <div class="qb-stat-number" id="qb-avg-level">0</div>
+                                    <div class="qb-stat-label">Avg Level</div>
+                                </div>
+                                <div class="qb-stat-card">
+                                    <div class="qb-stat-number" id="qb-topics-practiced">0</div>
+                                    <div class="qb-stat-label">Topics</div>
+                                </div>
+                                <div class="qb-stat-card">
+                                    <div class="qb-stat-number" id="qb-topics-mastered">0</div>
+                                    <div class="qb-stat-label">Mastered</div>
+                                </div>
+                                <div class="qb-stat-card">
+                                    <div class="qb-stat-number" id="qb-total-answered">0</div>
+                                    <div class="qb-stat-label">Answered</div>
+                                </div>
+                                <div class="qb-stat-card">
+                                    <div class="qb-stat-number" id="qb-accuracy">0%</div>
+                                    <div class="qb-stat-label">Accuracy</div>
+                                </div>
+                                <div class="qb-stat-card">
+                                    <div class="qb-stat-number" id="qb-streak">0</div>
+                                    <div class="qb-stat-label">Streak</div>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Chapter Summaries -->
-                        <div id="qb-chapter-summaries" class="qb-chapter-list">
-                            <!-- Dynamically populated -->
-                        </div>
-
-                        <!-- Quick Actions -->
-                        <div class="qb-quick-actions">
-                            <button class="btn btn-secondary" id="qb-weak-spots-btn" data-navigate="https://learn.thenursingcollective.pro#weak-spots">
-                                <i class="fas fa-crosshairs"></i> Focus on Weak Spots
-                            </button>
-                        </div>
                     </div>
-                </section>
+                </div>
 
-                <!-- Account & Stats Widget -->
+                <!-- Account & Subscription (combined) -->
                 <div class="widget widget-account-enhanced">
                     <div class="widget-account-grid">
                         <!-- Left: Account Info -->
@@ -359,51 +311,17 @@
                                 Manage Settings →
                             </button>
                         </div>
-                        <!-- Right: Quick Stats -->
+                        <!-- Right: Subscription -->
                         <div class="account-stats-section">
-                            <div class="quick-stat-card" id="stat-subscription-card">
-                                <div class="quick-stat-icon guides">
-                                    <i class="fas fa-crown"></i>
-                                </div>
-                                <div class="quick-stat-info">
-                                    <span class="quick-stat-number" id="stat-subscription-plan">--</span>
-                                    <span class="quick-stat-label" id="stat-subscription-status">Subscription</span>
-                                </div>
-                            </div>
-                            <div class="quick-stat-card">
-                                <div class="quick-stat-icon studied">
-                                    <i class="fas fa-clock"></i>
-                                </div>
-                                <div class="quick-stat-info">
-                                    <span class="quick-stat-number" id="stat-last-studied">—</span>
-                                    <span class="quick-stat-label">Last Studied</span>
-                                </div>
-                            </div>
-                            <div class="quick-stat-card">
-                                <div class="quick-stat-icon category">
-                                    <i class="fas fa-heart"></i>
-                                </div>
-                                <div class="quick-stat-info">
-                                    <span class="quick-stat-number" id="stat-top-category">—</span>
-                                    <span class="quick-stat-label">Top Category</span>
+                            <div class="subscription-management-container" id="subscription-management-container">
+                                <!-- Loading skeleton -->
+                                <div class="skeleton-loader">
+                                    <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- Subscription Management Section -->
-                <section class="dashboard-section subscription-management-section" id="subscription-section">
-                    <div class="section-header-enhanced">
-                        <h2><i class="fas fa-crown"></i> Subscription</h2>
-                    </div>
-                    <div class="subscription-management-container" id="subscription-management-container">
-                        <!-- Loading skeleton -->
-                        <div class="skeleton-loader">
-                            <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
-                        </div>
-                    </div>
-                </section>
 
             </div>
         </div>

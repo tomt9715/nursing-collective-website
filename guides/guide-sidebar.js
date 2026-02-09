@@ -59,6 +59,9 @@ function initializeGuideSidebars(config) {
     pageWrapper.appendChild(documentContainer);
     pageWrapper.appendChild(rightSidebar);
 
+    // Create mobile navigation (FAB + bottom drawer)
+    createMobileNav(config);
+
     // Initialize TOC functionality (scroll tracking, progress bar)
     initializeTOCBehavior();
 
@@ -187,6 +190,258 @@ function createRightSidebar(quickRefItems, clinicalPearls) {
     sidebar.innerHTML = florenceHtml + keyNumbersHtml + tipsHtml;
 
     return sidebar;
+}
+
+// ============================================
+// MOBILE NAVIGATION
+// FAB button + bottom drawer with TOC & tools
+// ============================================
+
+function createMobileNav(config) {
+    var sections = config.sections || [];
+    var quickRef = config.quickRef || [];
+    var clinicalPearls = config.clinicalPearls || [];
+
+    // Create overlay backdrop
+    var overlay = document.createElement('div');
+    overlay.className = 'mobile-nav-overlay';
+
+    // Create the bottom drawer
+    var drawer = document.createElement('div');
+    drawer.className = 'mobile-nav-drawer';
+
+    // Drawer header with tabs
+    var hasTools = quickRef.length > 0 || clinicalPearls.length > 0;
+    var tabsHtml = '<div class="mobile-nav-header">' +
+        '<div class="mobile-nav-tabs">' +
+            '<button class="mobile-nav-tab active" data-mobile-tab="contents">' +
+                '<i class="fas fa-list-ul"></i> Contents' +
+            '</button>' +
+            (hasTools ? '<button class="mobile-nav-tab" data-mobile-tab="tools">' +
+                '<i class="fas fa-star"></i> Study Tools' +
+            '</button>' : '') +
+        '</div>' +
+        '<button class="mobile-nav-close" aria-label="Close navigation">' +
+            '<i class="fas fa-times"></i>' +
+        '</button>' +
+    '</div>';
+
+    // TOC panel
+    var tocItems = '';
+    sections.forEach(function(section) {
+        tocItems += '<li class="mobile-toc-item">' +
+            '<a href="#' + section.id + '" class="mobile-toc-link" data-section="' + section.id + '">' +
+                '<i class="fas ' + section.icon + '"></i>' +
+                '<span>' + section.title + '</span>' +
+            '</a>' +
+        '</li>';
+    });
+
+    var tocPanel = '<div class="mobile-nav-panel active" data-panel="contents">' +
+        '<div class="mobile-toc-progress">' +
+            '<div class="mobile-toc-progress-bar">' +
+                '<div class="mobile-toc-progress-fill"></div>' +
+            '</div>' +
+            '<span class="mobile-toc-progress-percent">0%</span>' +
+        '</div>' +
+        '<ul class="mobile-toc-list">' + tocItems + '</ul>' +
+    '</div>';
+
+    // Study Tools panel
+    var toolsPanel = '';
+    if (hasTools) {
+        var keyNumbersHtml = '';
+        if (quickRef.length > 0) {
+            var items = '';
+            quickRef.forEach(function(item) {
+                items += '<div class="mobile-key-number ' + item.type + '">' +
+                    '<div class="mobile-key-number-value">' + item.value + '</div>' +
+                    '<div class="mobile-key-number-label">' + item.label + '</div>' +
+                '</div>';
+            });
+            keyNumbersHtml = '<div class="mobile-key-numbers">' +
+                '<div class="mobile-section-label"><i class="fas fa-star"></i> Memorize These</div>' +
+                '<div class="mobile-key-numbers-grid">' + items + '</div>' +
+            '</div>';
+        }
+
+        var tipsHtml = '';
+        if (clinicalPearls.length > 0) {
+            var tips = '';
+            clinicalPearls.forEach(function(pearl) {
+                var tipId = pearl.id || 'tip-' + pearl.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '');
+                tips += '<div class="mobile-tip-item" data-tip-target="' + tipId + '" role="button" tabindex="0">' +
+                    '<i class="fas fa-lightbulb"></i>' +
+                    '<span>' + pearl.title + '</span>' +
+                '</div>';
+            });
+            tipsHtml = '<div class="mobile-tips">' +
+                '<div class="mobile-section-label"><i class="fas fa-lightbulb"></i> FlorenceBot Pro Tips</div>' +
+                tips +
+            '</div>';
+        }
+
+        toolsPanel = '<div class="mobile-nav-panel" data-panel="tools">' +
+            keyNumbersHtml + tipsHtml +
+        '</div>';
+    }
+
+    drawer.innerHTML = tabsHtml + tocPanel + toolsPanel;
+
+    // Create FAB button
+    var fab = document.createElement('button');
+    fab.className = 'mobile-nav-fab';
+    fab.setAttribute('aria-label', 'Open guide navigation');
+    fab.innerHTML = '<i class="fas fa-compass"></i>';
+
+    // Append to body
+    document.body.appendChild(overlay);
+    document.body.appendChild(drawer);
+    document.body.appendChild(fab);
+
+    // --- Event Handlers ---
+
+    function openDrawer() {
+        drawer.classList.add('open');
+        overlay.classList.add('visible');
+        fab.classList.add('hidden');
+        document.body.style.overflow = 'hidden';
+        // Sync progress with desktop sidebar
+        syncMobileProgress();
+    }
+
+    function closeDrawer() {
+        drawer.classList.remove('open');
+        overlay.classList.remove('visible');
+        fab.classList.remove('hidden');
+        document.body.style.overflow = '';
+    }
+
+    fab.addEventListener('click', openDrawer);
+    overlay.addEventListener('click', closeDrawer);
+
+    var closeBtn = drawer.querySelector('.mobile-nav-close');
+    if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+
+    // Tab switching
+    var tabs = drawer.querySelectorAll('.mobile-nav-tab');
+    var panels = drawer.querySelectorAll('.mobile-nav-panel');
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            var target = this.getAttribute('data-mobile-tab');
+            tabs.forEach(function(t) { t.classList.remove('active'); });
+            panels.forEach(function(p) { p.classList.remove('active'); });
+            this.classList.add('active');
+            var targetPanel = drawer.querySelector('[data-panel="' + target + '"]');
+            if (targetPanel) targetPanel.classList.add('active');
+        });
+    });
+
+    // TOC link clicks — scroll to section and close drawer
+    var mobileLinks = drawer.querySelectorAll('.mobile-toc-link');
+    mobileLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var targetId = this.getAttribute('href').substring(1);
+            var target = document.getElementById(targetId);
+            closeDrawer();
+            if (target) {
+                setTimeout(function() {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 300);
+            }
+        });
+    });
+
+    // Tip clicks — scroll to inline tip and close drawer
+    var mobileTips = drawer.querySelectorAll('.mobile-tip-item[data-tip-target]');
+    mobileTips.forEach(function(item) {
+        var handleClick = function() {
+            var targetId = item.getAttribute('data-tip-target');
+            var targetElement = document.getElementById(targetId);
+            closeDrawer();
+            if (targetElement) {
+                setTimeout(function() {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    setTimeout(function() {
+                        targetElement.classList.add('highlight');
+                        setTimeout(function() {
+                            targetElement.classList.remove('highlight');
+                        }, 250);
+                    }, 600);
+                }, 300);
+            }
+        };
+        item.addEventListener('click', handleClick);
+        item.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleClick();
+            }
+        });
+    });
+
+    // Sync mobile TOC active state with scroll
+    function syncMobileProgress() {
+        var progressFill = drawer.querySelector('.mobile-toc-progress-fill');
+        var progressPercent = drawer.querySelector('.mobile-toc-progress-percent');
+        var desktopFill = document.querySelector('.toc-progress-fill');
+        var desktopPercent = document.querySelector('.toc-progress-percent');
+
+        if (progressFill && desktopFill) {
+            progressFill.style.width = desktopFill.style.width;
+        }
+        if (progressPercent && desktopPercent) {
+            progressPercent.textContent = desktopPercent.textContent;
+        }
+
+        // Sync active section
+        var activeDesktop = document.querySelector('.toc-link.active');
+        if (activeDesktop) {
+            var activeSection = activeDesktop.getAttribute('data-section');
+            mobileLinks.forEach(function(link) {
+                if (link.getAttribute('data-section') === activeSection) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+    }
+
+    // Update mobile active state during scroll (even when drawer is closed)
+    var mobileTicking = false;
+    window.addEventListener('scroll', function() {
+        if (!mobileTicking) {
+            window.requestAnimationFrame(function() {
+                // Find current active section from desktop TOC
+                var activeDesktop = document.querySelector('.toc-link.active');
+                if (activeDesktop) {
+                    var activeSection = activeDesktop.getAttribute('data-section');
+                    mobileLinks.forEach(function(link) {
+                        if (link.getAttribute('data-section') === activeSection) {
+                            link.classList.add('active');
+                        } else {
+                            link.classList.remove('active');
+                        }
+                    });
+                }
+                // Sync progress
+                var progressFill = drawer.querySelector('.mobile-toc-progress-fill');
+                var progressPercent = drawer.querySelector('.mobile-toc-progress-percent');
+                var desktopFill = document.querySelector('.toc-progress-fill');
+                var desktopPercent = document.querySelector('.toc-progress-percent');
+                if (progressFill && desktopFill) {
+                    progressFill.style.width = desktopFill.style.width;
+                }
+                if (progressPercent && desktopPercent) {
+                    progressPercent.textContent = desktopPercent.textContent;
+                }
+                mobileTicking = false;
+            });
+            mobileTicking = true;
+        }
+    });
 }
 
 // Handle clicking on sidebar tips to scroll to inline callouts

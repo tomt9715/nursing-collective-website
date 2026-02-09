@@ -1249,3 +1249,373 @@
         box-shadow: none;
     }
 }
+
+/* ============================================
+   MOBILE NAVIGATION
+   FAB button + bottom drawer for TOC & tools.
+   Only visible when desktop sidebars are hidden.
+   ============================================ */
+
+/* FAB — hidden on desktop, shown on mobile */
+.mobile-nav-fab {
+    display: none;
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color, #2E86AB), var(--secondary-color, #A23B72));
+    color: #fff;
+    border: none;
+    font-size: 1.4rem;
+    cursor: pointer;
+    z-index: 9998;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-nav-fab:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.3);
+}
+
+.mobile-nav-fab:active {
+    transform: scale(0.95);
+}
+
+.mobile-nav-fab.hidden {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.6);
+}
+
+/* Overlay backdrop */
+.mobile-nav-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+}
+
+.mobile-nav-overlay.visible {
+    opacity: 1;
+}
+
+/* Bottom drawer */
+.mobile-nav-drawer {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 75vh;
+    background: #fff;
+    border-radius: 20px 20px 0 0;
+    z-index: 10000;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+    overflow: hidden;
+    box-shadow: 0 -4px 30px rgba(0,0,0,0.15);
+}
+
+.mobile-nav-drawer.open {
+    transform: translateY(0);
+}
+
+/* Drawer header */
+.mobile-nav-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-nav-tabs {
+    display: flex;
+    gap: 4px;
+}
+
+.mobile-nav-tab {
+    padding: 10px 16px;
+    border: none;
+    background: none;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #9ca3af;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-nav-tab i {
+    margin-right: 6px;
+    font-size: 0.8rem;
+}
+
+.mobile-nav-tab.active {
+    color: var(--primary-color, #2E86AB);
+    border-bottom-color: var(--primary-color, #2E86AB);
+}
+
+.mobile-nav-close {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: none;
+    background: #f3f4f6;
+    color: #6b7280;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    flex-shrink: 0;
+}
+
+.mobile-nav-close:hover {
+    background: #e5e7eb;
+}
+
+/* Panels */
+.mobile-nav-panel {
+    display: none;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 16px 20px 32px;
+    max-height: calc(75vh - 60px);
+}
+
+.mobile-nav-panel.active {
+    display: block;
+}
+
+/* Mobile TOC progress */
+.mobile-toc-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+.mobile-toc-progress-bar {
+    flex: 1;
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.mobile-toc-progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-color, #2E86AB), var(--secondary-color, #A23B72));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.mobile-toc-progress-percent {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary-color, #2E86AB);
+    min-width: 32px;
+    text-align: right;
+}
+
+/* Mobile TOC list */
+.mobile-toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mobile-toc-item {
+    margin-bottom: 2px;
+}
+
+.mobile-toc-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    border-radius: 10px;
+    transition: all 0.15s ease;
+    border-left: 3px solid transparent;
+}
+
+.mobile-toc-link:hover,
+.mobile-toc-link:active {
+    background: #f1f5f9;
+    color: var(--primary-color, #2E86AB);
+}
+
+.mobile-toc-link.active {
+    background: linear-gradient(135deg, rgba(46, 134, 171, 0.08), rgba(162, 59, 114, 0.08));
+    color: var(--primary-color, #2E86AB);
+    border-left-color: var(--primary-color, #2E86AB);
+    font-weight: 600;
+}
+
+.mobile-toc-link i {
+    font-size: 0.85rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    color: inherit;
+}
+
+/* Mobile Study Tools — Key Numbers */
+.mobile-section-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.mobile-section-label i {
+    font-size: 0.7rem;
+}
+
+.mobile-key-numbers {
+    margin-bottom: 24px;
+}
+
+.mobile-key-numbers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.mobile-key-number {
+    padding: 14px 12px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.mobile-key-number.critical {
+    background: linear-gradient(135deg, #fef2f2, #fecaca);
+    border: 1px solid #fca5a5;
+}
+.mobile-key-number.time {
+    background: linear-gradient(135deg, #fffbeb, #fde68a);
+    border: 1px solid #fcd34d;
+}
+.mobile-key-number.target {
+    background: linear-gradient(135deg, #eff6ff, #bfdbfe);
+    border: 1px solid #93c5fd;
+}
+.mobile-key-number.success {
+    background: linear-gradient(135deg, #f0fdf4, #bbf7d0);
+    border: 1px solid #86efac;
+}
+.mobile-key-number.warning {
+    background: linear-gradient(135deg, #fff7ed, #fed7aa);
+    border: 1px solid #fdba74;
+}
+.mobile-key-number.info {
+    background: linear-gradient(135deg, #f5f3ff, #ddd6fe);
+    border: 1px solid #c4b5fd;
+}
+
+.mobile-key-number-value {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #1f2937;
+    line-height: 1.1;
+}
+
+.mobile-key-number-label {
+    font-size: 0.72rem;
+    color: #64748b;
+    margin-top: 4px;
+    line-height: 1.3;
+}
+
+/* Mobile Tips */
+.mobile-tips {
+    margin-bottom: 16px;
+}
+
+.mobile-tip-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: linear-gradient(135deg, #fdf4ff, #fae8ff);
+    border: 1px solid #f0abfc;
+    border-radius: 10px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: transform 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-tip-item:active {
+    transform: scale(0.98);
+}
+
+.mobile-tip-item:last-child {
+    margin-bottom: 0;
+}
+
+.mobile-tip-item i {
+    color: #d946ef;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+}
+
+.mobile-tip-item span {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #a21caf;
+}
+
+/* Show mobile nav elements only on mobile */
+@media (max-width: 900px) {
+    .mobile-nav-fab {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .mobile-nav-overlay {
+        display: block;
+        pointer-events: none;
+    }
+    .mobile-nav-overlay.visible {
+        pointer-events: auto;
+    }
+    .mobile-nav-drawer {
+        display: block;
+    }
+}
+
+/* Print — hide mobile nav */
+@media print {
+    .mobile-nav-fab,
+    .mobile-nav-overlay,
+    .mobile-nav-drawer {
+        display: none !important;
+    }
+}

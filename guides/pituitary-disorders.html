@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pituitary &amp; Hypothalamus Disorders Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Pituitary and Hypothalamus Disorders. Master SIADH, Diabetes Insipidus, acromegaly, hyperprolactinemia, transsphenoidal surgery care, and priority nursing interventions.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           PITUITARY & HYPOTHALAMUS DISORDERS - ENDOCRINE GUIDE
+           Dashboard/Panel Layout
+           ============================================ */
+
+        :root {
+            --primary-color: #0EA5E9;
+            --primary-dark: #0284C7;
+            --secondary-color: #8B5CF6;
+            --accent-color: #F09090;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar */
+        .download-bar {
+            position: fixed; top: 0; left: 0; right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white; padding: 12px 24px;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        .download-bar-brand { display: flex; align-items: center; gap: 12px; font-weight: 600; }
+        .download-bar-brand img { height: 32px; width: auto; }
+        .download-bar-actions { display: flex; gap: 12px; }
+        .btn-download {
+            display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+            background: white; color: var(--primary-color); border: none; border-radius: 8px;
+            font-weight: 600; font-size: 0.95rem; cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+        }
+        .btn-download:hover { background: #f0f4ff; transform: translateY(-1px); }
+        .btn-back {
+            display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px;
+            background: rgba(255,255,255,0.15); color: white;
+            border: 1px solid rgba(255,255,255,0.3); border-radius: 8px;
+            font-weight: 500; font-size: 0.95rem; cursor: pointer; transition: all 0.2s ease; text-decoration: none;
+        }
+        .btn-back:hover { background: rgba(255,255,255,0.25); }
+
+        /* Document Container */
+        .document-container { max-width: 850px; margin: 80px auto 40px; background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+
+        /* Cover Page - Sky Blue to Violet gradient for Pituitary */
+        .cover-page {
+            background: linear-gradient(135deg, #0284C7 0%, #0EA5E9 40%, #8B5CF6 100%);
+            color: white; padding: 80px 60px; text-align: center; position: relative; overflow: hidden;
+        }
+        .cover-page::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+        .cover-content { position: relative; z-index: 1; }
+        .cover-logo {
+            width: 80px; height: 80px; background: white; border-radius: 20px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); padding: 12px;
+        }
+        .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
+        .cover-category {
+            display: inline-block; padding: 8px 24px; background: rgba(255,255,255,0.2);
+            border-radius: 50px; font-size: 0.9rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px;
+        }
+        .cover-title { font-family: 'Outfit', sans-serif; font-size: 3.2rem; font-weight: 700; margin-bottom: 20px; line-height: 1.1; }
+        .cover-subtitle { font-size: 1.2rem; opacity: 0.95; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
+        .cover-meta { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); }
+        .cover-meta-item { text-align: center; }
+        .cover-meta-item .label { font-size: 0.8rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 0.5px; }
+        .cover-meta-item .value { font-size: 1.1rem; font-weight: 600; margin-top: 4px; }
+        .cover-brand { margin-top: 50px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.2); font-size: 0.95rem; opacity: 0.9; }
+
+        /* Document Content */
+        .document-content { padding: 60px; }
+
+        /* Learning Objectives */
+        .learning-objectives { background: linear-gradient(135deg, #ecfdf5, #d1fae5); border: 2px solid #10b981; border-radius: 12px; padding: 28px; margin-bottom: 40px; }
+        .learning-objectives h2 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: #059669; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .learning-objectives ul { list-style: none; margin: 0; padding: 0; }
+        .learning-objectives li { display: flex; align-items: flex-start; gap: 12px; padding: 8px 0; color: var(--text-primary); font-size: 1rem; }
+        .learning-objectives li i { color: #10b981; margin-top: 4px; flex-shrink: 0; }
+
+        /* High-Yield Summary */
+        .high-yield-summary { background: linear-gradient(135deg, #fffbeb, #fef3c7); border: 2px solid #f59e0b; border-radius: 12px; padding: 28px; margin-bottom: 40px; }
+        .high-yield-summary h2 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: #d97706; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; border-bottom: none; padding-bottom: 0; }
+        .high-yield-subtitle { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px; }
+        .high-yield-summary ul { list-style: none; margin: 0; padding: 0; }
+        .high-yield-summary li { padding: 8px 0; border-bottom: 1px solid rgba(245,158,11,0.15); color: var(--text-secondary); font-size: 0.98rem; }
+        .high-yield-summary li:last-child { border-bottom: none; }
+        .high-yield-cta { margin-top: 16px; font-weight: 600; color: #d97706; font-size: 0.95rem; }
+
+        /* Table of Contents */
+        .table-of-contents { background: #f9fafb; border: 1px solid var(--border-color); border-radius: 12px; padding: 28px; margin-bottom: 40px; }
+        .table-of-contents h2 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin-bottom: 16px; }
+        .table-of-contents ul { list-style: none; margin: 0; padding: 0; columns: 2; column-gap: 30px; }
+        .table-of-contents li { break-inside: avoid; margin-bottom: 8px; }
+        .table-of-contents a { display: flex; align-items: center; gap: 10px; padding: 8px 12px; color: var(--text-secondary); text-decoration: none; border-radius: 6px; font-size: 0.95rem; transition: all 0.2s ease; }
+        .table-of-contents a:hover { background: var(--primary-color); color: white; }
+        .toc-number { display: inline-flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: var(--primary-color); color: white; border-radius: 5px; font-size: 0.75rem; font-weight: 600; flex-shrink: 0; }
+        .table-of-contents a:hover .toc-number { background: white; color: var(--primary-color); }
+
+        /* Content Sections */
+        .guide-section { margin-bottom: 50px; scroll-margin-top: 80px; }
+        .guide-section h2 { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 3px solid var(--primary-color); display: flex; align-items: center; gap: 12px; }
+        .section-icon { display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 8px; font-size: 1rem; }
+        .guide-section h3 { font-family: 'Outfit', sans-serif; font-size: 1.25rem; font-weight: 600; color: var(--text-primary); margin: 28px 0 14px; }
+        .guide-section h4 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--primary-color); margin: 20px 0 10px; }
+        .guide-section p { color: var(--text-secondary); font-size: 1.02rem; margin-bottom: 14px; }
+        .guide-section ul, .guide-section ol { color: var(--text-secondary); margin-bottom: 16px; padding-left: 24px; }
+        .guide-section li { margin-bottom: 8px; }
+        .guide-section strong { color: var(--text-primary); }
+
+        /* Info Boxes */
+        .info-box { border-radius: 10px; padding: 18px 22px; margin: 20px 0; border-left: 4px solid; }
+        .info-box.clinical-pearl { background: linear-gradient(135deg, #fffbeb, #fef3c7); border-color: #f59e0b; }
+        .info-box.warning { background: #fef2f2; border-color: #ef4444; }
+        .info-box.tip { background: #ecfdf5; border-color: #10b981; }
+        .info-box.nclex-tip { background: #f5f3ff; border-color: #8b5cf6; }
+        .info-box.mnemonic { background: #fffbeb; border-color: #f59e0b; }
+        .info-box.pediatric { background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%); border-color: #ec4899; }
+        .info-box-header { display: flex; align-items: center; gap: 8px; font-weight: 700; margin-bottom: 10px; font-size: 0.95rem; }
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+        .info-box.pediatric .info-box-header { color: #db2777; }
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper { overflow-x: auto; margin: 20px 0; border-radius: 10px; border: 1px solid var(--border-color); }
+        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+        .guide-table thead { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
+        .guide-table th { padding: 12px 14px; text-align: left; font-weight: 600; }
+        .guide-table tbody tr { border-bottom: 1px solid var(--border-color); }
+        .guide-table tbody tr:hover { background: #f9fafb; }
+        .guide-table td { padding: 12px 14px; color: var(--text-secondary); }
+        .guide-table td:first-child { font-weight: 600; color: var(--text-primary); }
+
+        /* Comparison Cards */
+        .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0; }
+        .comparison-card { border-radius: 12px; border: 2px solid var(--border-color); overflow: hidden; }
+        .comparison-card-header { padding: 16px; text-align: center; font-weight: 700; font-size: 1.05rem; color: white; }
+        .comparison-card.siadh .comparison-card-header { background: linear-gradient(135deg, #0EA5E9, #0284C7); }
+        .comparison-card.di .comparison-card-header { background: linear-gradient(135deg, #F59E0B, #D97706); }
+        .comparison-card.acromegaly .comparison-card-header { background: linear-gradient(135deg, #8B5CF6, #7C3AED); }
+        .comparison-card.gigantism .comparison-card-header { background: linear-gradient(135deg, #6366F1, #4F46E5); }
+        .comparison-card.gh-deficiency .comparison-card-header { background: linear-gradient(135deg, #10B981, #059669); }
+        .comparison-card.prolactinoma .comparison-card-header { background: linear-gradient(135deg, #EC4899, #DB2777); }
+        .comparison-card.central-di .comparison-card-header { background: linear-gradient(135deg, #F97316, #EA580C); }
+        .comparison-card.nephrogenic-di .comparison-card-header { background: linear-gradient(135deg, #EF4444, #DC2626); }
+        .comparison-card-body { padding: 18px; }
+        .comparison-card-body h4 { font-size: 0.95rem; margin: 0 0 10px; }
+        .comparison-card-body ul { list-style: none; padding: 0; margin: 0 0 14px; }
+        .comparison-card-body li { display: flex; align-items: flex-start; gap: 8px; padding: 6px 0; color: var(--text-secondary); font-size: 0.9rem; border-bottom: 1px solid var(--border-color); }
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list { background: #f9fafb; border-radius: 12px; padding: 22px; margin: 20px 0; }
+        .interventions-list h4 { font-family: 'Outfit', sans-serif; font-size: 1rem; margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+        .interventions-list h4 i { color: var(--primary-color); }
+        .intervention-item { display: flex; gap: 14px; padding: 14px; background: white; border-radius: 10px; margin-bottom: 10px; border: 1px solid var(--border-color); }
+        .intervention-number { display: flex; align-items: center; justify-content: center; width: 32px; height: 32px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; border-radius: 8px; font-weight: 700; font-size: 0.9rem; flex-shrink: 0; }
+        .intervention-content h5 { font-size: 0.95rem; font-weight: 600; color: var(--text-primary); margin: 0 0 4px; }
+        .intervention-content p { font-size: 0.9rem; color: var(--text-secondary); margin: 0; }
+
+        /* Value Panels */
+        .value-panel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 20px 0; }
+        .value-panel { background: white; border: 2px solid var(--border-color); border-radius: 12px; padding: 18px; text-align: center; transition: border-color 0.2s; }
+        .value-panel:hover { border-color: var(--primary-color); }
+        .value-panel .vp-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+        .value-panel .vp-value { font-family: 'Outfit', sans-serif; font-size: 1.6rem; font-weight: 700; color: var(--primary-color); }
+        .value-panel .vp-unit { font-size: 0.85rem; color: var(--text-secondary); margin-top: 2px; }
+        .value-panel.critical .vp-value { color: #ef4444; }
+        .value-panel.critical { border-color: #fecaca; }
+        .value-panel.success .vp-value { color: #10b981; }
+        .value-panel.success { border-color: #a7f3d0; }
+
+        /* FlorenceBot Tips */
+        .florencebot-tip { background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-left: 4px solid #8b5cf6; border-radius: 10px; padding: 20px; margin: 20px 0; }
+        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+        .florencebot-tip-icon { width: 28px; height: 28px; background: linear-gradient(135deg, #8b5cf6, #7c3aed); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: white; font-size: 0.8rem; }
+        .florencebot-tip-label { font-size: 0.8rem; font-weight: 700; color: #7c3aed; text-transform: uppercase; letter-spacing: 0.5px; }
+        .florencebot-tip-title { font-family: 'Outfit', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--text-primary); margin-bottom: 8px; }
+        .florencebot-tip-content { color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6; }
+
+        /* Bottom Line */
+        .bottom-line { background: linear-gradient(135deg, #ecfeff, #cffafe); border: 1px solid #06b6d4; border-radius: 10px; padding: 16px 20px; margin: 24px 0; font-size: 0.95rem; color: var(--text-primary); }
+
+        /* Quick Reference */
+        .quick-reference { background: white; border: 2px solid var(--primary-color); border-radius: 12px; padding: 20px; margin: 24px 0; }
+        .quick-reference h3 { font-size: 1.1rem; color: var(--primary-color); margin: 0 0 14px; display: flex; align-items: center; gap: 8px; }
+        .quick-reference-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .quick-ref-item { background: #f9fafb; padding: 12px; border-radius: 8px; }
+        .quick-ref-item .label { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 2px; }
+        .quick-ref-item .value { font-size: 1rem; font-weight: 600; color: var(--text-primary); }
+
+        /* Key Points Summary */
+        .key-points-summary { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); border-radius: 12px; padding: 28px; margin: 40px 0 0; color: white; }
+        .key-points-summary h2 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; color: white; border-bottom: none; padding-bottom: 0; }
+        .key-points-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        .key-point { background: rgba(255,255,255,0.15); padding: 14px; border-radius: 10px; display: flex; align-items: flex-start; gap: 10px; }
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Cross References */
+        .cross-references { background: #ecfdf5; border: 2px solid #10b981; border-radius: 12px; padding: 28px; margin-top: 30px; }
+        .cross-references h2 { color: #059669; border-bottom: none; padding-bottom: 0; font-size: 1.2rem; }
+        .cross-ref-group { margin-bottom: 16px; }
+        .cross-ref-group:last-child { margin-bottom: 0; }
+        .cross-ref-group h3 { font-size: 0.95rem; color: var(--text-secondary); margin: 0 0 8px; }
+        .cross-ref-group ul { list-style: none; margin: 0; padding: 0; }
+        .cross-ref-group li { margin-bottom: 4px; }
+        .cross-ref-group a { color: #059669; text-decoration: none; font-weight: 500; display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+        .cross-ref-group a:hover { text-decoration: underline; }
+        .coming-soon { color: var(--text-secondary); font-style: italic; display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+
+        /* Practice Questions */
+        .practice-questions h2 { font-family: 'Outfit', sans-serif; font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .quiz-cta-box { display: flex; align-items: center; gap: 24px; background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 2px solid #3b82f6; border-radius: 14px; padding: 24px; }
+        .quiz-cta-icon { width: 60px; height: 60px; background: linear-gradient(135deg, #3b82f6, #2563eb); border-radius: 14px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem; flex-shrink: 0; }
+        .quiz-cta-content { flex: 1; }
+        .quiz-cta-content h3 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin: 0 0 6px; }
+        .quiz-cta-content p { font-size: 0.9rem; color: var(--text-secondary); margin: 0 0 10px; }
+        .quiz-cta-stats { display: flex; gap: 16px; font-size: 0.85rem; color: var(--text-secondary); }
+        .quiz-cta-stats span { display: flex; align-items: center; gap: 5px; }
+        .quiz-cta-button { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; border-radius: 10px; font-weight: 600; font-size: 1rem; text-decoration: none; white-space: nowrap; transition: all 0.2s ease; }
+        .quiz-cta-button:hover { transform: translateY(-2px); box-shadow: 0 4px 12px rgba(59,130,246,0.4); }
+
+        /* Footer */
+        .document-footer { text-align: center; padding: 32px 48px; border-top: 1px solid var(--border-color); background: linear-gradient(135deg, #f8fafc, #f1f5f9); }
+        .footer-logo { height: 48px; width: auto; margin-bottom: 12px; }
+        .footer-tagline { font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 16px; }
+        .footer-copyright { font-size: 0.85rem; color: var(--text-secondary); }
+
+        /* Print Styles */
+        @page { margin: 0.6in 0.4in; }
+        @media print {
+            .download-bar { display: none !important; }
+            body { background: white !important; margin: 0 !important; padding: 0 !important; }
+            .document-container { margin: 0 !important; box-shadow: none !important; max-width: 100% !important; width: 100% !important; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; color-adjust: exact !important; }
+            .cover-page { page-break-after: always; break-after: page; }
+            .info-box, .guide-table-wrapper, .comparison-card, .intervention-item, .quick-reference, .learning-objectives, .key-points-summary, .florencebot-tip, .value-panel { page-break-inside: avoid; break-inside: avoid; }
+            h2, h3, h4 { page-break-after: avoid; break-after: avoid; }
+            .comparison-grid, .interventions-list { page-break-inside: auto; }
+            a { text-decoration: underline; }
+            .document-footer { page-break-inside: avoid; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar { flex-direction: column; gap: 12px; padding: 12px 16px; }
+            .download-bar-actions { width: 100%; justify-content: center; }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+            .value-panel-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+
+    <!-- Sidebar Styles -->
+    <link rel="stylesheet" href="guide-sidebar.css">
+</head>
+<body data-product-id="pituitary-disorders" data-guide-name="Pituitary-Disorders">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../dashboard.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Dashboard
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/pituitary.webp" alt="Pituitary Disorders">
+                </div>
+                <div class="cover-category">Endocrine</div>
+                <h1 class="cover-title">Pituitary &amp; Hypothalamus Disorders</h1>
+                <p class="cover-subtitle">Comprehensive guide covering SIADH, diabetes insipidus, acromegaly, growth hormone disorders, hyperprolactinemia, Cushing's disease, transsphenoidal surgery care, and priority nursing interventions.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">35-40 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">February 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Describe the anatomy and function of the hypothalamus and pituitary gland including the negative feedback loop</li>
+                    <li><i class="fas fa-check-circle"></i> Differentiate between SIADH and diabetes insipidus using lab values, symptoms, and urine characteristics</li>
+                    <li><i class="fas fa-check-circle"></i> Apply safe medication administration for desmopressin, tolvaptan, octreotide, somatropin, and cabergoline</li>
+                    <li><i class="fas fa-check-circle"></i> Recognize acromegaly, gigantism, and growth hormone deficiency presentations</li>
+                    <li><i class="fas fa-check-circle"></i> Identify hyperprolactinemia symptoms and dopamine agonist therapy</li>
+                    <li><i class="fas fa-check-circle"></i> Prioritize post-transsphenoidal hypophysectomy nursing assessments including CSF leak detection</li>
+                    <li><i class="fas fa-check-circle"></i> Interpret serum and urine osmolality, specific gravity, and serum sodium in pituitary disorders</li>
+                </ul>
+            </section>
+
+            <!-- High-Yield Summary -->
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary &mdash; Review This in 60 Seconds</h2>
+                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
+                <ul>
+                    <li><strong>SIADH = too much ADH &rarr; water retention &rarr; dilutional hyponatremia.</strong> Think "SIADH = Serum Is Abnormally Diluted and Hyponatremic." Treatment: fluid restriction (800-1000 mL/day) + tolvaptan. Correct sodium SLOWLY.</li>
+                    <li><strong>DI = not enough ADH (or kidneys ignore it) &rarr; massive water loss &rarr; hypernatremia.</strong> Think "DI = Dry Inside." Output 3-20 L/day of dilute urine. Treatment: desmopressin (DDAVP) for central DI + fluid replacement.</li>
+                    <li><strong>SIADH and DI are OPPOSITES:</strong> SIADH has concentrated urine + low sodium. DI has dilute urine + high sodium. Lab values mirror each other.</li>
+                    <li><strong>Tolvaptan (Samsca) for SIADH:</strong> Blocks V2 receptors, causes water excretion. Black box warning for liver toxicity. Monitor sodium closely &mdash; don't correct &gt;10-12 mEq/L in 24 hours (osmotic demyelination risk).</li>
+                    <li><strong>Post-transsphenoidal surgery #1 complication: CSF leak.</strong> Test nasal drainage for glucose (CSF is glucose-positive). Look for halo sign. No coughing, sneezing, nose blowing, bending, or straining. No toothbrushing for 2 weeks.</li>
+                    <li><strong>Transient DI is common after pituitary surgery.</strong> Watch for sudden urine output &gt;200 mL/hr with low specific gravity. May need desmopressin.</li>
+                    <li><strong>Acromegaly:</strong> Excess GH in adults from pituitary adenoma. Enlarged hands, feet, jaw, coarsened features. Treatment: transsphenoidal surgery + octreotide (somatostatin analog).</li>
+                    <li><strong>Prolactinoma:</strong> Most common pituitary tumor. Women: galactorrhea + amenorrhea. Men: erectile dysfunction + decreased libido. Treatment: cabergoline (dopamine agonist).</li>
+                    <li><strong>Pituitary adenomas cause bitemporal hemianopsia</strong> (loss of peripheral vision bilaterally) from optic chiasm compression.</li>
+                    <li><strong>Sheehan syndrome:</strong> Postpartum pituitary necrosis from hemorrhage/shock during delivery &rarr; inability to lactate is often the first sign.</li>
+                </ul>
+                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#anatomy"><span class="toc-number">1</span> Hypothalamus &amp; Pituitary Anatomy</a></li>
+                    <li><a href="#diabetes-insipidus"><span class="toc-number">2</span> Diabetes Insipidus (DI)</a></li>
+                    <li><a href="#siadh"><span class="toc-number">3</span> SIADH</a></li>
+                    <li><a href="#siadh-vs-di"><span class="toc-number">4</span> SIADH vs DI Comparison</a></li>
+                    <li><a href="#lab-values"><span class="toc-number">5</span> Lab Value Interpretation</a></li>
+                    <li><a href="#growth-hormone"><span class="toc-number">6</span> Growth Hormone Disorders</a></li>
+                    <li><a href="#hyperprolactinemia"><span class="toc-number">7</span> Hyperprolactinemia</a></li>
+                    <li><a href="#cushings-hypopituitarism"><span class="toc-number">8</span> Cushing's Disease &amp; Hypopituitarism</a></li>
+                    <li><a href="#pituitary-tumors"><span class="toc-number">9</span> Pituitary Adenomas &amp; Tumors</a></li>
+                    <li><a href="#transsphenoidal"><span class="toc-number">10</span> Transsphenoidal Surgery Care</a></li>
+                    <li><a href="#medications"><span class="toc-number">11</span> Medication Comparison</a></li>
+                    <li><a href="#pediatric"><span class="toc-number">12</span> Pediatric Considerations</a></li>
+                    <li><a href="#practice-questions"><span class="toc-number"><i class="fas fa-flask" style="font-size:0.65rem"></i></span> NCLEX Challenge Quiz</a></li>
+                </ul>
+            </nav>
+
+            <!-- ============================================ -->
+            <!-- Section 1: Hypothalamus & Pituitary Anatomy -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="anatomy">
+                <h2><span class="section-icon"><i class="fas fa-brain"></i></span> Hypothalamus &amp; Pituitary Anatomy</h2>
+
+                <h3>The Master Gland System</h3>
+                <p>The <strong>hypothalamus</strong> and <strong>pituitary gland</strong> form the central command center of the endocrine system. The hypothalamus, located at the base of the brain, connects the nervous system to the endocrine system. It receives signals from the brain and translates them into hormonal commands sent to the pituitary gland via the <strong>hypothalamic-hypophyseal portal system</strong> (a specialized blood vessel connection) and via direct neural connections.</p>
+
+                <p>The <strong>pituitary gland</strong> (hypophysis) sits in the <strong>sella turcica</strong>, a bony pocket at the base of the skull, directly below the hypothalamus. Despite being only the size of a pea (~1 cm), it controls virtually every other endocrine gland in the body. It has two functionally distinct lobes:</p>
+
+                <h3>Anterior Pituitary (Adenohypophysis)</h3>
+                <p>The anterior pituitary produces <strong>six major hormones</strong>, regulated by hypothalamic releasing and inhibiting hormones delivered through the portal blood system:</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Hormone</th>
+                                <th>Abbreviation</th>
+                                <th>Target &amp; Function</th>
+                                <th>Hypothalamic Control</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Growth Hormone</strong></td>
+                                <td>GH</td>
+                                <td>Liver, bones, tissues &mdash; promotes growth and metabolism</td>
+                                <td>GHRH (stimulates) / Somatostatin (inhibits)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prolactin</strong></td>
+                                <td>PRL</td>
+                                <td>Mammary glands &mdash; stimulates milk production</td>
+                                <td>Dopamine (inhibits) / TRH (stimulates)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Adrenocorticotropic Hormone</strong></td>
+                                <td>ACTH</td>
+                                <td>Adrenal cortex &mdash; stimulates cortisol production</td>
+                                <td>CRH (stimulates)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Thyroid-Stimulating Hormone</strong></td>
+                                <td>TSH</td>
+                                <td>Thyroid &mdash; stimulates T3/T4 production</td>
+                                <td>TRH (stimulates)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Follicle-Stimulating Hormone</strong></td>
+                                <td>FSH</td>
+                                <td>Gonads &mdash; follicle development, sperm production</td>
+                                <td>GnRH (stimulates)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Luteinizing Hormone</strong></td>
+                                <td>LH</td>
+                                <td>Gonads &mdash; ovulation, testosterone production</td>
+                                <td>GnRH (stimulates)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Anterior Pituitary Hormones &mdash; "FLAT PiG"
+                    </div>
+                    <p><strong>F</strong>SH, <strong>L</strong>H, <strong>A</strong>CTH, <strong>T</strong>SH, <strong>P</strong>rolact<strong>i</strong>n, <strong>G</strong>rowth Hormone. These six hormones are produced by the anterior pituitary. Remember: the anterior pituitary is the "factory" that makes hormones.</p>
+                </div>
+
+                <h3>Posterior Pituitary (Neurohypophysis)</h3>
+                <p>The posterior pituitary does <strong>not produce</strong> hormones. Instead, it <strong>stores and releases</strong> two hormones that are manufactured in the hypothalamus and transported down nerve axons:</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Hormone</th>
+                                <th>Other Name</th>
+                                <th>Function</th>
+                                <th>Clinical Significance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ADH</strong></td>
+                                <td>Vasopressin / Arginine vasopressin (AVP)</td>
+                                <td>Acts on kidney collecting ducts &rarr; increases water reabsorption &rarr; concentrates urine &rarr; decreases serum osmolality</td>
+                                <td>Deficiency = DI. Excess = SIADH.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Oxytocin</strong></td>
+                                <td>&mdash;</td>
+                                <td>Stimulates uterine contractions during labor; promotes milk letdown during breastfeeding</td>
+                                <td>Used therapeutically (Pitocin) for labor induction</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>ADH Regulation: The Key to SIADH &amp; DI</h3>
+                <p><strong>ADH (antidiuretic hormone)</strong> is the single most important hormone for understanding pituitary water balance disorders. Its regulation involves:</p>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-sync-alt"></i> ADH Feedback Loop</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Osmoreceptors Detect High Serum Osmolality</h5>
+                            <p>Specialized neurons in the hypothalamus detect rising blood concentration (dehydration, high sodium). This triggers ADH release from the posterior pituitary.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>ADH Acts on Kidney Collecting Ducts</h5>
+                            <p>ADH binds to <strong>V2 receptors</strong> on kidney collecting ducts, inserting aquaporin channels that allow water to be reabsorbed back into the bloodstream. This produces <strong>concentrated, low-volume urine</strong>.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Blood Volume Increases, Osmolality Decreases</h5>
+                            <p>As water is retained, blood becomes more dilute. Serum osmolality drops. Blood pressure rises slightly.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Negative Feedback Stops ADH Release</h5>
+                            <p>When osmolality returns to normal (~275-295 mOsm/kg), osmoreceptors signal the hypothalamus to stop ADH release. The kidneys then excrete more dilute urine.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-adh-regulation">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">ADH = "Anti-Diuretic" = Anti-Peeing Hormone</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Break down the name:</strong> "Anti" = against, "Diuretic" = producing urine. So ADH's job is to <strong>reduce urine output</strong> by holding onto water. When ADH is HIGH (SIADH), urine output is LOW and concentrated. When ADH is LOW or ineffective (DI), urine output is HIGH and dilute. The name tells you everything: <strong>more ADH = less pee. Less ADH = more pee.</strong>
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> The hypothalamus makes ADH and oxytocin; the posterior pituitary just stores and releases them. The anterior pituitary produces 6 hormones (FLAT PiG). ADH controls water balance by acting on kidney collecting ducts. ADH problems cause SIADH (too much) or DI (too little/ineffective).</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 2: Diabetes Insipidus -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="diabetes-insipidus">
+                <h2><span class="section-icon"><i class="fas fa-tint-slash"></i></span> Diabetes Insipidus (DI)</h2>
+
+                <p><strong>Diabetes insipidus</strong> is a condition of <strong>ADH deficiency or resistance</strong> resulting in the kidneys' inability to concentrate urine. The result is massive output of dilute, "tasteless" urine (the Latin "insipidus" means "tasteless," as opposed to diabetes "mellitus" meaning "honey-sweet"). Patients can produce <strong>3-20 liters of urine per day</strong>.</p>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: DI = "Dry Inside"
+                    </div>
+                    <p><strong>DI = Dry Inside.</strong> The body is losing all its water through massive urination, leading to dehydration. Think of a faucet that won't turn off &mdash; water is constantly draining out.</p>
+                </div>
+
+                <h3>Types of Diabetes Insipidus</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card central-di">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-brain"></i> Central (Neurogenic) DI
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Brain Can't Make/Release ADH</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Hypothalamus or posterior pituitary</strong> fails to produce or secrete adequate ADH</li>
+                                <li><i class="fas fa-check"></i> <strong>Causes:</strong> Head trauma, neurosurgery (esp. transsphenoidal), brain tumors, meningitis, encephalitis, aneurysm</li>
+                                <li><i class="fas fa-check"></i> Most common type overall</li>
+                                <li><i class="fas fa-check"></i> <strong>Responds to desmopressin (DDAVP)</strong> &mdash; providing synthetic ADH replaces what's missing</li>
+                                <li><i class="fas fa-check"></i> May be transient (post-surgical) or permanent</li>
+                                <li><i class="fas fa-check"></i> Water deprivation test: urine concentrates after DDAVP given</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-card nephrogenic-di">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-kidneys"></i> Nephrogenic DI
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Kidneys Ignore ADH</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Kidneys are resistant</strong> to ADH despite adequate ADH production</li>
+                                <li><i class="fas fa-check"></i> <strong>Causes:</strong> Lithium (#1 drug cause), demeclocycline, hypercalcemia, hypokalemia, genetic/hereditary</li>
+                                <li><i class="fas fa-check"></i> Less common than central DI</li>
+                                <li><i class="fas fa-check"></i> <strong>Does NOT respond to desmopressin</strong> &mdash; kidneys won't listen to ADH regardless</li>
+                                <li><i class="fas fa-check"></i> Treatment: thiazide diuretics (paradoxical effect), low-sodium diet, remove offending drug</li>
+                                <li><i class="fas fa-check"></i> Water deprivation test: urine stays dilute even after DDAVP</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Lithium and Nephrogenic DI
+                    </div>
+                    <p><strong>Lithium is the #1 drug cause of nephrogenic DI.</strong> Up to 40% of patients on long-term lithium develop some degree of concentrating defect. Monitor I&amp;O and serum sodium in all patients on lithium. Educate patients to report sudden increases in thirst or urination. If nephrogenic DI develops, the prescriber must weigh the risk of continuing lithium versus the DI.</p>
+                </div>
+
+                <h3>Signs and Symptoms</h3>
+                <ul>
+                    <li><strong>Polyuria:</strong> Large volumes of dilute urine (3-20 L/day) &mdash; the hallmark symptom</li>
+                    <li><strong>Polydipsia:</strong> Extreme, unrelenting thirst (compensatory mechanism)</li>
+                    <li><strong>Nocturia:</strong> Frequent nighttime urination disrupting sleep</li>
+                    <li><strong>Dehydration signs:</strong> Dry mucous membranes, poor skin turgor, sunken eyes, tachycardia, hypotension</li>
+                    <li><strong>Hypernatremia:</strong> Serum sodium &gt;145 mEq/L (water loss concentrates sodium)</li>
+                    <li><strong>Elevated serum osmolality:</strong> &gt;295 mOsm/kg</li>
+                    <li><strong>Low urine specific gravity:</strong> &lt;1.005 (very dilute urine)</li>
+                    <li><strong>Low urine osmolality:</strong> &lt;300 mOsm/kg (dilute)</li>
+                    <li><strong>Fatigue, irritability, muscle weakness</strong> (from dehydration and electrolyte imbalance)</li>
+                </ul>
+
+                <h3>Diagnostic Tests</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Expected Finding in DI</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Serum sodium</strong></td>
+                                <td>&uarr; Elevated (&gt;145 mEq/L)</td>
+                                <td>Confirms hypernatremia from water loss</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Serum osmolality</strong></td>
+                                <td>&uarr; Elevated (&gt;295 mOsm/kg)</td>
+                                <td>Concentrated blood from dehydration</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine osmolality</strong></td>
+                                <td>&darr; Decreased (&lt;300 mOsm/kg)</td>
+                                <td>Confirms kidneys are not concentrating urine</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine specific gravity</strong></td>
+                                <td>&darr; Decreased (&lt;1.005)</td>
+                                <td>Very dilute urine</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Water deprivation test</strong></td>
+                                <td>Urine remains dilute despite dehydration; then DDAVP is given</td>
+                                <td>Differentiates central from nephrogenic DI</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ADH level</strong></td>
+                                <td>Low (central DI) or normal/high (nephrogenic DI)</td>
+                                <td>Helps determine type</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Treatment</h3>
+                <h4>Central DI: Desmopressin (DDAVP)</h4>
+                <p><strong>Desmopressin</strong> is a synthetic analog of ADH and is the primary treatment for central DI. It replaces the missing hormone.</p>
+                <ul>
+                    <li><strong>Routes:</strong> Intranasal spray (most common outpatient), oral tablets, subcutaneous injection, IV (hospital setting)</li>
+                    <li><strong>MOA:</strong> Mimics ADH at V2 receptors &rarr; increases water reabsorption in collecting ducts &rarr; concentrates urine</li>
+                    <li><strong>Side effects:</strong> Hyponatremia (overcorrection), water intoxication, headache, nasal congestion/irritation (intranasal route), nausea</li>
+                </ul>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Desmopressin Monitoring
+                    </div>
+                    <p><strong>Monitor for water intoxication and hyponatremia</strong> &mdash; the most dangerous complication of desmopressin. Signs: headache, confusion, nausea, seizures, weight gain. Strictly monitor I&amp;O, daily weights, urine specific gravity (should increase toward normal 1.010-1.025), and serum sodium. Teach patients to carry their medication at all times and wear a medical alert identification.</p>
+                </div>
+
+                <h4>Nephrogenic DI Treatment</h4>
+                <ul>
+                    <li><strong>Remove the offending agent</strong> (discontinue lithium if possible)</li>
+                    <li><strong>Thiazide diuretics</strong> (hydrochlorothiazide) &mdash; paradoxically reduces urine output by promoting sodium and water reabsorption in the proximal tubule</li>
+                    <li><strong>Low-sodium, low-protein diet</strong> &mdash; reduces solute load on kidneys</li>
+                    <li><strong>NSAIDs (indomethacin)</strong> &mdash; may reduce urine output in some cases</li>
+                    <li><strong>Adequate fluid replacement</strong> &mdash; patient must have free access to water</li>
+                </ul>
+
+                <h3>Nursing Care for DI</h3>
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-list"></i> Priority Nursing Interventions</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Strict Intake and Output (I&amp;O)</h5>
+                            <p>Monitor and record all fluid intake and urine output every 1-2 hours in acute settings. Report urine output &gt;200 mL/hr or &gt;4 L/day.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Daily Weights</h5>
+                            <p>Weigh at the same time daily with same clothing and scale. A sudden weight loss indicates fluid loss. 1 kg = approximately 1 liter of fluid.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Monitor Urine Specific Gravity</h5>
+                            <p>Check specific gravity with each void or per protocol. In untreated DI it will be &lt;1.005. With effective treatment, it should rise toward normal (1.010-1.025).</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Assess Hydration Status</h5>
+                            <p>Monitor for dehydration: dry mucous membranes, poor skin turgor, tachycardia, hypotension, decreased LOC. Provide free access to fluids &mdash; keep water at bedside at all times.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Monitor Serum Sodium and Osmolality</h5>
+                            <p>Check labs per protocol. Report sodium &gt;145 mEq/L or rising trend. Correct hypernatremia gradually to prevent cerebral edema.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-di-postop">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Post-Surgical DI: The 200 mL/hr Rule</div>
+                    <div class="florencebot-tip-content">
+                        <strong>After any brain surgery (especially transsphenoidal), watch for sudden onset DI.</strong> If urine output suddenly jumps to &gt;200 mL/hr for 2+ consecutive hours with low specific gravity (&lt;1.005), suspect DI. This is often transient (resolves in days to weeks) but may require desmopressin. Report immediately &mdash; the patient can become dangerously dehydrated within hours at these output rates.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> DI = massive dilute urine output + dehydration + hypernatremia. Central DI responds to desmopressin; nephrogenic DI does not (kidneys ignore ADH). Lithium is the #1 drug cause of nephrogenic DI. Nursing priorities: strict I&amp;O, daily weights, urine specific gravity, hydration assessment, serum sodium monitoring.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 3: SIADH -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="siadh">
+                <h2><span class="section-icon"><i class="fas fa-tint"></i></span> SIADH (Syndrome of Inappropriate ADH)</h2>
+
+                <p><strong>SIADH</strong> is a condition of <strong>excess ADH secretion</strong> unrelated to the body's actual need. The result: the kidneys retain too much water, diluting the blood and causing <strong>dilutional hyponatremia</strong> &mdash; the serum sodium drops because there is too much water, not too little sodium.</p>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: SIADH Mnemonics
+                    </div>
+                    <p><strong>"SIADH = Serum Is Abnormally Diluted and Hyponatremic"</strong></p>
+                    <p><strong>"SIADH &rarr; SINK the sodium (low)"</strong> vs <strong>"DI &rarr; DRAIN the water (polyuria)"</strong></p>
+                    <p>Think of SIADH as a sponge that won't stop absorbing water &mdash; the body holds onto everything.</p>
+                </div>
+
+                <h3>Pathophysiology</h3>
+                <p>In SIADH, ADH is released continuously regardless of serum osmolality. The kidneys respond by reabsorbing excessive water from the collecting ducts. This causes:</p>
+                <ul>
+                    <li><strong>Water retention</strong> &rarr; expanded fluid volume (but usually NO edema because the excess water distributes intracellularly)</li>
+                    <li><strong>Dilutional hyponatremia</strong> &rarr; sodium is diluted by the excess water (total body sodium may actually be normal)</li>
+                    <li><strong>Concentrated urine</strong> &rarr; urine osmolality and specific gravity are inappropriately HIGH</li>
+                    <li><strong>Low serum osmolality</strong> &rarr; blood is too dilute</li>
+                    <li><strong>High urine sodium</strong> &rarr; kidneys excrete sodium in an attempt to match the dilute blood</li>
+                </ul>
+
+                <h3>Causes</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Specific Causes</th>
+                                <th>Key Details</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Malignancies</strong></td>
+                                <td>Small cell lung cancer (SCLC)</td>
+                                <td><strong>#1 malignant cause.</strong> Tumor cells produce ectopic ADH. Always check chest X-ray.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>CNS Disorders</strong></td>
+                                <td>Head trauma, stroke, brain tumors, meningitis, encephalitis, subarachnoid hemorrhage</td>
+                                <td>Any brain injury can disrupt hypothalamic regulation of ADH</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Medications</strong></td>
+                                <td>SSRIs, carbamazepine, vincristine, cyclophosphamide, opioids, oxytocin, NSAIDs</td>
+                                <td><strong>SSRIs are the #1 drug cause.</strong> Very common in elderly patients on antidepressants.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pulmonary</strong></td>
+                                <td>Pneumonia, TB, positive pressure ventilation (PPV/PEEP), lung abscess</td>
+                                <td>Pulmonary conditions can trigger ADH release</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Post-operative</strong></td>
+                                <td>General anesthesia, pain, nausea, stress response</td>
+                                <td>Transient SIADH is common after surgery &mdash; pain and anesthesia both stimulate ADH</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Connection: Small Cell Lung Cancer + Hyponatremia
+                    </div>
+                    <p><strong>If an NCLEX question describes a patient with lung cancer and low serum sodium, think SIADH.</strong> Small cell lung cancer is the classic ectopic ADH-producing tumor. This is a very high-yield connection.</p>
+                </div>
+
+                <h3>Signs and Symptoms</h3>
+                <p>Symptoms correlate with the <strong>severity and rate</strong> of sodium decline. Gradual hyponatremia may be asymptomatic; rapid drops are dangerous.</p>
+                <ul>
+                    <li><strong>Mild hyponatremia (Na+ 125-135):</strong> Headache, nausea, muscle cramps, weakness, fatigue, decreased appetite</li>
+                    <li><strong>Moderate hyponatremia (Na+ 115-125):</strong> Confusion, altered mental status, lethargy, personality changes</li>
+                    <li><strong>Severe hyponatremia (Na+ &lt;115):</strong> Seizures, coma, respiratory arrest, death</li>
+                    <li><strong>Weight gain WITHOUT edema</strong> (the excess water distributes intracellularly, not interstitially)</li>
+                    <li><strong>Concentrated urine:</strong> Dark, low volume, specific gravity &gt;1.030, high urine osmolality</li>
+                    <li><strong>Decreased urine output</strong> (body is retaining water)</li>
+                </ul>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Seizure Precautions
+                    </div>
+                    <p><strong>Hyponatremia &lt;120 mEq/L = HIGH seizure risk.</strong> Implement seizure precautions immediately: padded side rails, bed in lowest position, suction equipment at bedside, IV access maintained, frequent neuro checks. Seizures from severe hyponatremia can be fatal. Never discontinue seizure precautions until sodium is stable above 125 mEq/L.</p>
+                </div>
+
+                <h3>Diagnostic Findings</h3>
+                <div class="value-panel-grid">
+                    <div class="value-panel critical">
+                        <div class="vp-label">Serum Sodium</div>
+                        <div class="vp-value">&lt; 135</div>
+                        <div class="vp-unit">mEq/L (LOW)</div>
+                    </div>
+                    <div class="value-panel critical">
+                        <div class="vp-label">Serum Osmolality</div>
+                        <div class="vp-value">&lt; 275</div>
+                        <div class="vp-unit">mOsm/kg (LOW)</div>
+                    </div>
+                    <div class="value-panel">
+                        <div class="vp-label">Urine Osmolality</div>
+                        <div class="vp-value">&gt; 100</div>
+                        <div class="vp-unit">mOsm/kg (HIGH)</div>
+                    </div>
+                    <div class="value-panel">
+                        <div class="vp-label">Urine Spec Gravity</div>
+                        <div class="vp-value">&gt; 1.030</div>
+                        <div class="vp-unit">(concentrated)</div>
+                    </div>
+                    <div class="value-panel">
+                        <div class="vp-label">Urine Sodium</div>
+                        <div class="vp-value">&gt; 20</div>
+                        <div class="vp-unit">mEq/L (HIGH)</div>
+                    </div>
+                    <div class="value-panel success">
+                        <div class="vp-label">BUN</div>
+                        <div class="vp-value">&darr; Low</div>
+                        <div class="vp-unit">(diluted blood)</div>
+                    </div>
+                </div>
+
+                <h3>Treatment</h3>
+                <h4>1. Fluid Restriction (PRIMARY Treatment)</h4>
+                <p><strong>Fluid restriction to 800-1000 mL/day</strong> is the cornerstone of SIADH management. By limiting water intake, you allow the kidneys to gradually excrete the excess water and sodium levels to normalize.</p>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Enforcing Fluid Restriction
+                    </div>
+                    <p><strong>Fluid restriction is one of the hardest nursing interventions to enforce.</strong> Tips: (1) Divide the allowed volume across the shift (e.g., 400 mL day, 300 mL evening, 300 mL night). (2) Use small cups. (3) Provide ice chips (count as half-volume). (4) Offer mouth care and lip moisturizer to reduce oral discomfort. (5) Educate the patient WHY restriction is necessary. (6) Include all fluids: IV fluids, ice chips, foods that melt (gelatin, ice cream), and medication flushes.</p>
+                </div>
+
+                <h4>2. Tolvaptan (Samsca) &mdash; Oral Vasopressin Antagonist</h4>
+                <ul>
+                    <li><strong>MOA:</strong> Blocks V2 receptors in kidney collecting ducts &rarr; promotes excretion of free water WITHOUT sodium loss ("aquaretic" effect)</li>
+                    <li><strong>Indication:</strong> SIADH with persistent hyponatremia despite fluid restriction</li>
+                    <li><strong>Administration:</strong> Oral; must be initiated IN THE HOSPITAL for first 24 hours for sodium monitoring</li>
+                    <li><strong>Side effects:</strong> Thirst, dry mouth, polyuria, hypernatremia (overcorrection), <strong>liver toxicity (BLACK BOX WARNING)</strong></li>
+                    <li><strong>Monitoring:</strong> Serum sodium every 6 hours during initiation, hepatic function (ALT, AST, bilirubin)</li>
+                    <li><strong>Do NOT use with fluid restriction</strong> during initiation (risk of overly rapid sodium correction)</li>
+                    <li><strong>Maximum duration:</strong> 30 days (liver toxicity risk increases with prolonged use)</li>
+                </ul>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Osmotic Demyelination Syndrome (ODS)
+                    </div>
+                    <p><strong>CRITICAL: Do NOT correct sodium faster than 10-12 mEq/L in 24 hours.</strong> Rapid sodium correction can cause <strong>osmotic demyelination syndrome (ODS)</strong>, previously called central pontine myelinolysis. This causes irreversible brain damage: dysarthria, dysphagia, quadriparesis, locked-in syndrome. It is <strong>worse than the hyponatremia itself</strong>. Correct SLOWLY and monitor sodium frequently. If sodium rises too fast, the provider may need to give hypotonic fluids (D5W) to slow correction.</p>
+                </div>
+
+                <h4>3. Conivaptan (Vaprisol) &mdash; IV Vasopressin Antagonist</h4>
+                <ul>
+                    <li>Same mechanism as tolvaptan but given IV for hospitalized patients</li>
+                    <li>Blocks both V1a and V2 receptors</li>
+                    <li>Used for euvolemic or hypervolemic hyponatremia</li>
+                    <li>Must be given through a large vein (risk of phlebitis)</li>
+                </ul>
+
+                <h4>4. Hypertonic Saline (3% NaCl) &mdash; Severe Symptomatic Hyponatremia</h4>
+                <ul>
+                    <li><strong>Indication:</strong> Severe symptomatic hyponatremia (seizures, coma, Na+ &lt;120)</li>
+                    <li><strong>Administration:</strong> IV via infusion pump; often given as 100-150 mL boluses</li>
+                    <li><strong>Monitoring:</strong> Serum sodium every 1-2 hours; stop when symptoms resolve or Na+ rises 4-6 mEq/L</li>
+                    <li><strong>Goal:</strong> Do NOT exceed 10-12 mEq/L correction in 24 hours (ODS risk)</li>
+                    <li><strong>ALWAYS given in ICU setting</strong> with continuous monitoring</li>
+                </ul>
+
+                <h4>5. Additional Treatments</h4>
+                <ul>
+                    <li><strong>Treat underlying cause</strong> (e.g., treat pneumonia, remove offending medication, treat cancer)</li>
+                    <li><strong>Loop diuretics (furosemide)</strong> with salt replacement &mdash; promotes water excretion</li>
+                    <li><strong>Demeclocycline</strong> &mdash; older treatment that induces nephrogenic DI (blocks ADH at kidney)</li>
+                    <li><strong>High-sodium diet</strong> if chronic SIADH</li>
+                </ul>
+
+                <h3>Nursing Care for SIADH</h3>
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-list"></i> Priority Nursing Interventions</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Enforce Fluid Restriction</h5>
+                            <p>Strictly limit fluids to ordered amount (usually 800-1000 mL/day). Distribute across shifts. Include ALL fluid sources in the count.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Strict I&amp;O Monitoring</h5>
+                            <p>Record all intake and output accurately. In SIADH, output should be LOW relative to a normal patient (the body is retaining water).</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Daily Weights</h5>
+                            <p>Weight gain without edema is a hallmark of SIADH. Expect weight to decrease as treatment is effective.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Neurological Assessment</h5>
+                            <p>Monitor LOC, orientation, headache, confusion, muscle cramps, and seizure activity. Hyponatremia affects the brain first. Implement seizure precautions if Na+ &lt;125.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Monitor Serum Sodium Frequently</h5>
+                            <p>Every 4-6 hours during acute management. Ensure sodium is not correcting too rapidly (&lt;10-12 mEq/L per 24 hours). Report trends to provider.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-siadh-vs-di">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">The #1 SIADH vs DI Distinction</div>
+                    <div class="florencebot-tip-content">
+                        <strong>If you remember only one thing:</strong> SIADH = the body holds onto water (concentrated urine, low sodium, fluid restriction). DI = the body loses all its water (dilute urine, high sodium, replace fluids). They are <strong>exact opposites</strong> in every lab value and every treatment approach. <strong>SIADH restricts fluids. DI replaces fluids.</strong>
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> SIADH = excess ADH &rarr; water retention &rarr; dilutional hyponatremia + concentrated urine. Treatment: fluid restriction first, then tolvaptan or hypertonic saline for severe cases. Correct sodium SLOWLY (&lt;10-12 mEq/L/24hr) to prevent osmotic demyelination. #1 malignant cause: small cell lung cancer. #1 drug cause: SSRIs.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 4: SIADH vs DI Comparison -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="siadh-vs-di">
+                <h2><span class="section-icon"><i class="fas fa-balance-scale"></i></span> SIADH vs DI Comparison</h2>
+
+                <p>SIADH and DI are <strong>opposite disorders of the same hormone (ADH)</strong>. This comparison is one of the highest-yield topics for NCLEX. Every lab value, symptom, and treatment is reversed.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card siadh">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-tint"></i> SIADH (Too Much ADH)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Water Retention &amp; Dilution</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Urine output:</strong> &darr; Decreased (oliguric)</li>
+                                <li><i class="fas fa-check"></i> <strong>Urine concentration:</strong> &uarr; Concentrated (dark, high SG &gt;1.030)</li>
+                                <li><i class="fas fa-check"></i> <strong>Serum sodium:</strong> &darr; LOW (&lt;135 mEq/L)</li>
+                                <li><i class="fas fa-check"></i> <strong>Serum osmolality:</strong> &darr; LOW (&lt;275 mOsm/kg)</li>
+                                <li><i class="fas fa-check"></i> <strong>Urine osmolality:</strong> &uarr; HIGH</li>
+                                <li><i class="fas fa-check"></i> <strong>Weight:</strong> Gain (without edema)</li>
+                                <li><i class="fas fa-check"></i> <strong>Thirst:</strong> Not prominent</li>
+                                <li><i class="fas fa-check"></i> <strong>Key symptoms:</strong> Confusion, seizures, N/V</li>
+                                <li><i class="fas fa-check"></i> <strong>Treatment:</strong> RESTRICT fluids</li>
+                                <li><i class="fas fa-check"></i> <strong>Medications:</strong> Tolvaptan, hypertonic saline</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-card di">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-tint-slash"></i> DI (Not Enough ADH)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Water Loss &amp; Dehydration</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Urine output:</strong> &uarr;&uarr; Massively increased (3-20 L/day)</li>
+                                <li><i class="fas fa-check"></i> <strong>Urine concentration:</strong> &darr; Very dilute (clear, SG &lt;1.005)</li>
+                                <li><i class="fas fa-check"></i> <strong>Serum sodium:</strong> &uarr; HIGH (&gt;145 mEq/L)</li>
+                                <li><i class="fas fa-check"></i> <strong>Serum osmolality:</strong> &uarr; HIGH (&gt;295 mOsm/kg)</li>
+                                <li><i class="fas fa-check"></i> <strong>Urine osmolality:</strong> &darr; LOW</li>
+                                <li><i class="fas fa-check"></i> <strong>Weight:</strong> Loss (dehydration)</li>
+                                <li><i class="fas fa-check"></i> <strong>Thirst:</strong> Extreme polydipsia</li>
+                                <li><i class="fas fa-check"></i> <strong>Key symptoms:</strong> Polyuria, dehydration, thirst</li>
+                                <li><i class="fas fa-check"></i> <strong>Treatment:</strong> REPLACE fluids</li>
+                                <li><i class="fas fa-check"></i> <strong>Medications:</strong> Desmopressin (DDAVP)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Parameter</th>
+                                <th>SIADH</th>
+                                <th>DI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ADH Level</strong></td>
+                                <td>&uarr; Excess (inappropriate)</td>
+                                <td>&darr; Deficient or ineffective</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fluid Status</strong></td>
+                                <td>Fluid overload (euvolemic/hypervolemic)</td>
+                                <td>Dehydrated (hypovolemic)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Serum Na+</strong></td>
+                                <td>&darr; &lt;135 mEq/L (hyponatremia)</td>
+                                <td>&uarr; &gt;145 mEq/L (hypernatremia)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Serum Osmolality</strong></td>
+                                <td>&darr; &lt;275 mOsm/kg</td>
+                                <td>&uarr; &gt;295 mOsm/kg</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine Output</strong></td>
+                                <td>&darr; Decreased</td>
+                                <td>&uarr;&uarr; 3-20 L/day</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine Specific Gravity</strong></td>
+                                <td>&uarr; &gt;1.030 (concentrated)</td>
+                                <td>&darr; &lt;1.005 (very dilute)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine Osmolality</strong></td>
+                                <td>&uarr; HIGH (concentrated)</td>
+                                <td>&darr; LOW (dilute)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Primary Nursing Action</strong></td>
+                                <td>Restrict fluids + neuro checks</td>
+                                <td>Replace fluids + I&amp;O monitoring</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Danger</strong></td>
+                                <td>Seizures from hyponatremia</td>
+                                <td>Cardiovascular collapse from dehydration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-opposite-disorders">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">NCLEX Quick Decision: "Is This SIADH or DI?"</div>
+                    <div class="florencebot-tip-content">
+                        <strong>On the NCLEX, check TWO things:</strong> (1) <strong>Urine output</strong> &mdash; high or low? (2) <strong>Serum sodium</strong> &mdash; high or low? If urine is LOW and sodium is LOW = SIADH (holding onto water). If urine is HIGH and sodium is HIGH = DI (losing water). <strong>Then match the treatment:</strong> SIADH = restrict fluids (stop adding water). DI = give fluids + desmopressin (replace the water). Everything else follows logically from these two data points.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> SIADH and DI are mirror images. Every lab value is opposite. SIADH = water retention, low sodium, concentrated urine, restrict fluids. DI = water loss, high sodium, dilute urine, replace fluids. On the NCLEX: check urine output + serum sodium to differentiate instantly.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 5: Lab Value Interpretation -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="lab-values">
+                <h2><span class="section-icon"><i class="fas fa-vials"></i></span> Lab Value Interpretation</h2>
+
+                <h3>Normal Reference Values</h3>
+                <div class="value-panel-grid">
+                    <div class="value-panel success">
+                        <div class="vp-label">Serum Osmolality</div>
+                        <div class="vp-value">275-295</div>
+                        <div class="vp-unit">mOsm/kg</div>
+                    </div>
+                    <div class="value-panel success">
+                        <div class="vp-label">Serum Sodium</div>
+                        <div class="vp-value">135-145</div>
+                        <div class="vp-unit">mEq/L</div>
+                    </div>
+                    <div class="value-panel success">
+                        <div class="vp-label">Urine Osmolality</div>
+                        <div class="vp-value">300-900</div>
+                        <div class="vp-unit">mOsm/kg</div>
+                    </div>
+                    <div class="value-panel success">
+                        <div class="vp-label">Urine Spec. Gravity</div>
+                        <div class="vp-value">1.010-1.025</div>
+                        <div class="vp-unit">Normal range</div>
+                    </div>
+                    <div class="value-panel success">
+                        <div class="vp-label">GH (Adult)</div>
+                        <div class="vp-value">0-5</div>
+                        <div class="vp-unit">ng/mL</div>
+                    </div>
+                    <div class="value-panel success">
+                        <div class="vp-label">Prolactin</div>
+                        <div class="vp-value">2-29</div>
+                        <div class="vp-unit">ng/mL (women)</div>
+                    </div>
+                </div>
+
+                <h3>Lab Patterns by Disorder</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Lab Value</th>
+                                <th>Normal</th>
+                                <th>SIADH</th>
+                                <th>DI</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Serum Osmolality</strong></td>
+                                <td>275-295 mOsm/kg</td>
+                                <td>&darr; LOW (&lt;275)</td>
+                                <td>&uarr; HIGH (&gt;295)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Serum Sodium</strong></td>
+                                <td>135-145 mEq/L</td>
+                                <td>&darr; LOW (&lt;135)</td>
+                                <td>&uarr; HIGH (&gt;145)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine Osmolality</strong></td>
+                                <td>300-900 mOsm/kg</td>
+                                <td>&uarr; HIGH (concentrated)</td>
+                                <td>&darr; LOW (&lt;300, dilute)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine Specific Gravity</strong></td>
+                                <td>1.010-1.025</td>
+                                <td>&uarr; HIGH (&gt;1.030)</td>
+                                <td>&darr; LOW (&lt;1.005)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine Sodium</strong></td>
+                                <td>40-220 mEq/24hr</td>
+                                <td>&uarr; HIGH (&gt;20 mEq/L spot)</td>
+                                <td>&darr; LOW</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Urine Output</strong></td>
+                                <td>0.5-1.0 mL/kg/hr</td>
+                                <td>&darr; Decreased</td>
+                                <td>&uarr;&uarr; 3-20 L/day</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Strategy: Serum and Urine Move in Opposite Directions
+                    </div>
+                    <p><strong>In both SIADH and DI, the serum and urine values are OPPOSITES of each other.</strong> In SIADH: serum osmolality is LOW while urine osmolality is HIGH (body retains water in blood, concentrates urine). In DI: serum osmolality is HIGH while urine osmolality is LOW (body is dehydrated, urine is dilute). This "opposite" pattern is consistent across all lab values.</p>
+                </div>
+
+                <h3>Additional Pituitary Lab Values</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Normal Range</th>
+                                <th>High Suggests</th>
+                                <th>Low Suggests</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Growth Hormone (GH)</strong></td>
+                                <td>0-5 ng/mL (adult)</td>
+                                <td>Acromegaly / Gigantism</td>
+                                <td>GH deficiency / Hypopituitarism</td>
+                            </tr>
+                            <tr>
+                                <td><strong>IGF-1 (Somatomedin C)</strong></td>
+                                <td>Age-dependent</td>
+                                <td>Acromegaly (most reliable marker)</td>
+                                <td>GH deficiency</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prolactin</strong></td>
+                                <td>2-29 ng/mL (women)</td>
+                                <td>Prolactinoma, medications (antipsychotics)</td>
+                                <td>Sheehan syndrome</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ACTH</strong></td>
+                                <td>10-60 pg/mL (AM)</td>
+                                <td>Cushing's disease (pituitary source)</td>
+                                <td>Secondary adrenal insufficiency</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Oral Glucose Tolerance Test</strong></td>
+                                <td>GH suppresses to &lt;1 ng/mL</td>
+                                <td>Acromegaly (GH fails to suppress)</td>
+                                <td>&mdash;</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> In SIADH, serum values are LOW and urine values are HIGH (concentrated). In DI, serum values are HIGH and urine values are LOW (dilute). Serum and urine always move in opposite directions. IGF-1 is the best screening test for acromegaly. Prolactin levels &gt;200 ng/mL are virtually diagnostic of prolactinoma.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 6: Growth Hormone Disorders -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="growth-hormone">
+                <h2><span class="section-icon"><i class="fas fa-child"></i></span> Growth Hormone Disorders</h2>
+
+                <h3>Acromegaly (GH Excess in Adults)</h3>
+                <p><strong>Acromegaly</strong> occurs when excessive growth hormone (GH) is produced <strong>after growth plate closure</strong> in adults, almost always caused by a GH-secreting <strong>pituitary adenoma</strong>. Since bones can no longer grow in length, the excess GH causes thickening and enlargement of soft tissues, cartilage, and bone.</p>
+
+                <h4>Key Features of Acromegaly</h4>
+                <ul>
+                    <li><strong>Enlarged hands and feet</strong> &mdash; rings and shoes no longer fit (gradual onset over years)</li>
+                    <li><strong>Coarsened facial features:</strong> Broad nose, prominent brow ridge (frontal bossing), enlarged jaw (prognathism), thickened lips, widened spacing between teeth</li>
+                    <li><strong>Enlarged tongue (macroglossia)</strong> &mdash; contributes to sleep apnea and voice deepening</li>
+                    <li><strong>Thick, oily skin;</strong> excessive sweating; skin tags</li>
+                    <li><strong>Joint pain and arthritis</strong> (osteoarthritis from cartilage overgrowth)</li>
+                    <li><strong>Carpal tunnel syndrome</strong> (from soft tissue swelling)</li>
+                    <li><strong>Sleep apnea</strong> (from macroglossia and soft tissue enlargement)</li>
+                    <li><strong>Hypertension and cardiomegaly</strong> &rarr; eventually heart failure</li>
+                    <li><strong>Insulin resistance / diabetes mellitus</strong> (GH is counter-regulatory to insulin)</li>
+                    <li><strong>Headaches and visual disturbances</strong> (if adenoma is large enough to compress optic chiasm)</li>
+                    <li><strong>Deepened voice</strong> (vocal cord thickening)</li>
+                </ul>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Slow Onset Recognition
+                    </div>
+                    <p><strong>Acromegaly develops so gradually that patients and families may not notice the changes.</strong> Average time from symptom onset to diagnosis is 7-10 years. Comparing old photographs is one of the most effective ways to recognize the progressive facial changes. On the NCLEX, look for: "Patient reports rings and shoes feel tight" or "spouse noticed facial features have changed."</p>
+                </div>
+
+                <h4>Diagnosis</h4>
+                <ul>
+                    <li><strong>IGF-1 level (Somatomedin C):</strong> Most reliable screening test; elevated in acromegaly. IGF-1 is produced by the liver in response to GH and has a stable level (unlike GH, which is pulsatile).</li>
+                    <li><strong>Oral Glucose Tolerance Test (OGTT):</strong> Confirmatory test. Normally, a glucose load suppresses GH to &lt;1 ng/mL. In acromegaly, <strong>GH fails to suppress</strong> (remains elevated despite glucose administration).</li>
+                    <li><strong>MRI of the pituitary:</strong> Identifies the adenoma size and location.</li>
+                </ul>
+
+                <h4>Treatment</h4>
+                <ul>
+                    <li><strong>Transsphenoidal surgery</strong> &mdash; first-line treatment to remove the pituitary adenoma</li>
+                    <li><strong>Octreotide (Sandostatin) / Lanreotide (Somatuline)</strong> &mdash; somatostatin analogs that suppress GH release (see Medications section)</li>
+                    <li><strong>Pegvisomant (Somavert)</strong> &mdash; GH receptor antagonist; blocks GH action at tissues</li>
+                    <li><strong>Cabergoline</strong> &mdash; dopamine agonist; may help if tumor co-secretes prolactin</li>
+                    <li><strong>Radiation therapy</strong> &mdash; adjunct if surgery and medications are insufficient</li>
+                </ul>
+
+                <h3>Gigantism (GH Excess in Children)</h3>
+                <p><strong>Gigantism</strong> occurs when excess GH is produced <strong>before growth plate closure</strong> in children and adolescents. Because the growth plates are still open, the bones grow excessively in <strong>length</strong>, resulting in extreme height (some patients reaching 7-8+ feet).</p>
+                <ul>
+                    <li>Same causes as acromegaly (usually pituitary adenoma)</li>
+                    <li>Proportional overgrowth of the entire body (unlike acromegaly's localized thickening)</li>
+                    <li>Treatment: Same as acromegaly &mdash; surgery, somatostatin analogs, radiation</li>
+                    <li>Early treatment is critical to prevent extreme height and complications</li>
+                </ul>
+
+                <h3>Growth Hormone Deficiency</h3>
+                <div class="comparison-grid">
+                    <div class="comparison-card gh-deficiency">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-child"></i> GH Deficiency in Children
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Growth Failure</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Short stature</strong> (falling below growth curve percentiles)</li>
+                                <li><i class="fas fa-check"></i> <strong>Delayed puberty</strong></li>
+                                <li><i class="fas fa-check"></i> Proportional body &mdash; short but normal proportions</li>
+                                <li><i class="fas fa-check"></i> "Cherubic" (baby-faced) appearance</li>
+                                <li><i class="fas fa-check"></i> Delayed bone age on X-ray</li>
+                                <li><i class="fas fa-check"></i> Normal intelligence</li>
+                                <li><i class="fas fa-check"></i> Treatment: <strong>Somatropin (recombinant GH)</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-card prolactinoma">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-user"></i> GH Deficiency in Adults
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Metabolic Changes</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Decreased muscle mass</strong> and strength</li>
+                                <li><i class="fas fa-check"></i> <strong>Increased body fat</strong> (especially abdominal/visceral)</li>
+                                <li><i class="fas fa-check"></i> <strong>Fatigue</strong> and decreased exercise tolerance</li>
+                                <li><i class="fas fa-check"></i> <strong>Decreased bone density</strong> (osteoporosis risk)</li>
+                                <li><i class="fas fa-check"></i> Elevated LDL cholesterol</li>
+                                <li><i class="fas fa-check"></i> Decreased quality of life, depressed mood</li>
+                                <li><i class="fas fa-check"></i> Treatment: <strong>Somatropin</strong> if symptomatic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Somatropin (Recombinant Human Growth Hormone)</h4>
+                <ul>
+                    <li><strong>Route:</strong> Subcutaneous injection, usually given at <strong>bedtime</strong> (mimics natural GH secretion pattern, which peaks during sleep)</li>
+                    <li><strong>Side effects:</strong> Joint/muscle pain, edema, carpal tunnel syndrome, insulin resistance/hyperglycemia, intracranial hypertension (headache, visual changes), slipped capital femoral epiphysis (SCFE) in children</li>
+                    <li><strong>Monitoring:</strong> Growth rate (children &mdash; measure height regularly), blood glucose, thyroid function (GH can unmask hypothyroidism), IGF-1 levels</li>
+                    <li><strong>Contraindications:</strong> Active malignancy, diabetic retinopathy, closed epiphyses in children (for linear growth indication)</li>
+                    <li><strong>Patient teaching:</strong> Rotate injection sites, refrigerate medication, give at bedtime, report persistent headaches or vision changes</li>
+                </ul>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: SCFE in Children on Growth Hormone
+                    </div>
+                    <p><strong>Slipped capital femoral epiphysis (SCFE)</strong> is an orthopedic emergency that can occur in children receiving growth hormone therapy. Watch for: new onset limp, hip/knee/groin pain, limited hip range of motion, external rotation of the affected leg. Report immediately &mdash; requires surgical intervention. Risk is higher during rapid growth periods.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Acromegaly = GH excess in adults (enlarged hands, feet, facial features, organ enlargement). Gigantism = GH excess in children (extreme height). IGF-1 is the best screening test; OGTT is confirmatory. Treatment: surgery first, then octreotide. GH deficiency: short stature in children, metabolic changes in adults. Treat with somatropin at bedtime.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 7: Hyperprolactinemia -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="hyperprolactinemia">
+                <h2><span class="section-icon"><i class="fas fa-venus-mars"></i></span> Hyperprolactinemia</h2>
+
+                <p><strong>Hyperprolactinemia</strong> is excess prolactin in the blood, most commonly caused by a <strong>prolactinoma</strong> (prolactin-secreting pituitary adenoma). Prolactinomas are the <strong>most common type of pituitary tumor</strong>, accounting for about 40% of all pituitary adenomas.</p>
+
+                <h3>Causes</h3>
+                <ul>
+                    <li><strong>Prolactinoma</strong> &mdash; most common cause of pathological hyperprolactinemia</li>
+                    <li><strong>Medications:</strong> Antipsychotics (haloperidol, risperidone), metoclopramide, methyldopa &mdash; these block dopamine, which normally inhibits prolactin</li>
+                    <li><strong>Stalk effect:</strong> Any pituitary mass that compresses the pituitary stalk can prevent dopamine from reaching prolactin-secreting cells, causing mild hyperprolactinemia</li>
+                    <li><strong>Hypothyroidism:</strong> Elevated TRH stimulates prolactin release (always check TSH)</li>
+                    <li><strong>Pregnancy and breastfeeding:</strong> Physiological (normal) cause of elevated prolactin</li>
+                </ul>
+
+                <h3>Signs and Symptoms</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Women</th>
+                                <th>Men</th>
+                                <th>Both Sexes (Large Tumors)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Galactorrhea</strong> (spontaneous milky nipple discharge)</td>
+                                <td><strong>Erectile dysfunction</strong></td>
+                                <td><strong>Headaches</strong> (mass effect)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Amenorrhea</strong> or oligomenorrhea</td>
+                                <td><strong>Decreased libido</strong></td>
+                                <td><strong>Visual field defects</strong> (bitemporal hemianopsia)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Infertility</strong></td>
+                                <td><strong>Gynecomastia</strong> (rare)</td>
+                                <td><strong>Hypopituitarism</strong> (compression of normal pituitary)</td>
+                            </tr>
+                            <tr>
+                                <td>Decreased bone density</td>
+                                <td>Infertility, decreased sperm count</td>
+                                <td>Cranial nerve palsies (very large tumors)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Connection: Galactorrhea + Amenorrhea
+                    </div>
+                    <p><strong>A woman presenting with milky nipple discharge and absent menstrual periods = think prolactinoma.</strong> Always rule out pregnancy first, then check prolactin level. This is a classic NCLEX presentation. In men, prolactinomas are often diagnosed later because symptoms (ED, decreased libido) are less specific, so tumors tend to be larger at diagnosis.</p>
+                </div>
+
+                <h3>Treatment</h3>
+                <h4>Cabergoline (Dostinex) &mdash; Preferred Dopamine Agonist</h4>
+                <ul>
+                    <li><strong>MOA:</strong> Dopamine agonist &mdash; activates dopamine receptors on pituitary lactotroph cells, inhibiting prolactin secretion and shrinking the tumor</li>
+                    <li><strong>Dosing:</strong> Twice weekly (excellent adherence)</li>
+                    <li><strong>Side effects:</strong> Nausea, orthostatic hypotension, headache, dizziness, nasal congestion</li>
+                    <li><strong>Advantages:</strong> More effective and better tolerated than bromocriptine; shrinks tumors in up to 90% of cases</li>
+                    <li><strong>Rare but serious:</strong> Cardiac valve fibrosis with high doses (seen in Parkinson's disease doses, less concern at prolactinoma doses)</li>
+                </ul>
+
+                <h4>Bromocriptine (Parlodel) &mdash; Alternative Dopamine Agonist</h4>
+                <ul>
+                    <li><strong>MOA:</strong> Same as cabergoline (dopamine agonist)</li>
+                    <li><strong>Dosing:</strong> Daily (more frequent than cabergoline)</li>
+                    <li><strong>More side effects</strong> than cabergoline: nausea, vomiting, orthostatic hypotension, headache, fatigue</li>
+                    <li><strong>Patient teaching:</strong> Take with food to reduce GI side effects; rise slowly from sitting/lying (orthostatic hypotension); may take weeks to see full effect</li>
+                    <li><strong>May be preferred in pregnancy</strong> (more safety data than cabergoline)</li>
+                </ul>
+
+                <h4>Surgery</h4>
+                <ul>
+                    <li>Transsphenoidal surgery is reserved for cases that fail medical therapy or cannot tolerate dopamine agonists</li>
+                    <li>Also indicated for large tumors causing acute visual loss</li>
+                </ul>
+
+                <div class="florencebot-tip" id="tip-prolactinoma">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Prolactinoma: Medication First, Surgery Second</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Unlike most pituitary tumors, prolactinomas are treated with MEDICATION first, not surgery.</strong> Dopamine agonists (cabergoline) are remarkably effective at both normalizing prolactin AND shrinking the tumor. Surgery is second-line. This is the opposite approach from acromegaly or Cushing's disease where surgery is first-line. Remember: <strong>prolactinoma = pills first, acromegaly = surgery first.</strong>
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Prolactinoma is the most common pituitary tumor. Women: galactorrhea + amenorrhea + infertility. Men: ED + decreased libido. Treatment: dopamine agonists first (cabergoline preferred over bromocriptine). Medication shrinks the tumor in most cases. Surgery is reserved for medication failure.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 8: Cushing's Disease & Hypopituitarism -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="cushings-hypopituitarism">
+                <h2><span class="section-icon"><i class="fas fa-diagnoses"></i></span> Cushing's Disease &amp; Hypopituitarism</h2>
+
+                <h3>Cushing's Disease (Pituitary ACTH Excess)</h3>
+                <p><strong>Cushing's disease</strong> specifically refers to excess cortisol caused by an <strong>ACTH-secreting pituitary adenoma</strong>. The tumor produces too much ACTH, which drives the adrenal glands to overproduce cortisol. This is a subset of Cushing's <em>syndrome</em> (which includes all causes of excess cortisol).</p>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Cushing's Disease vs Syndrome
+                    </div>
+                    <p><strong>Cushing's disease</strong> = pituitary cause (ACTH-secreting adenoma). <strong>ACTH is HIGH</strong> because the pituitary tumor is producing it. <strong>Cushing's syndrome</strong> = any cause of excess cortisol (including exogenous steroids, adrenal tumors). If ACTH is LOW, the cause is adrenal (ACTH is suppressed by the high cortisol). If ACTH is HIGH, the cause is pituitary or ectopic. See the <a href="adrenal-disorders.html">Adrenal Disorders guide</a> for comprehensive Cushing's syndrome coverage.</p>
+                </div>
+
+                <h4>Classic Cushing's Features (Review)</h4>
+                <ul>
+                    <li><strong>Moon face</strong> (rounded facial fullness)</li>
+                    <li><strong>Buffalo hump</strong> (fat pad on upper back)</li>
+                    <li><strong>Truncal obesity</strong> with thin extremities</li>
+                    <li><strong>Purple striae</strong> on abdomen, thighs, breasts</li>
+                    <li><strong>Easy bruising, thin fragile skin</strong></li>
+                    <li><strong>Hyperglycemia / diabetes</strong> (cortisol raises blood glucose)</li>
+                    <li><strong>Hypertension</strong></li>
+                    <li><strong>Osteoporosis</strong> (cortisol breaks down bone)</li>
+                    <li><strong>Immunosuppression</strong> (increased infection risk)</li>
+                    <li><strong>Muscle wasting and weakness</strong> (protein catabolism)</li>
+                    <li><strong>Emotional lability, depression, psychosis</strong></li>
+                </ul>
+
+                <h4>Diagnosis</h4>
+                <ul>
+                    <li><strong>24-hour urine free cortisol:</strong> Elevated</li>
+                    <li><strong>Late-night salivary cortisol:</strong> Elevated (normally cortisol is lowest at midnight)</li>
+                    <li><strong>Low-dose dexamethasone suppression test:</strong> Cortisol fails to suppress</li>
+                    <li><strong>ACTH level:</strong> HIGH in Cushing's disease (pituitary origin)</li>
+                    <li><strong>MRI pituitary:</strong> Identifies the adenoma</li>
+                </ul>
+
+                <h4>Treatment</h4>
+                <p><strong>Transsphenoidal surgery</strong> to remove the ACTH-secreting pituitary adenoma is the first-line treatment. Post-operatively, patients will need temporary cortisol replacement (the remaining pituitary and adrenals are suppressed from chronic excess).</p>
+
+                <h3>Hypopituitarism (Panhypopituitarism)</h3>
+                <p><strong>Hypopituitarism</strong> is the decreased or absent function of one or more pituitary hormones. When ALL anterior pituitary hormones are deficient, it is called <strong>panhypopituitarism</strong>.</p>
+
+                <h4>Causes</h4>
+                <ul>
+                    <li><strong>Pituitary tumors</strong> &mdash; most common cause (tumor compresses normal tissue)</li>
+                    <li><strong>Pituitary surgery or radiation</strong></li>
+                    <li><strong>Sheehan syndrome</strong> &mdash; postpartum pituitary necrosis from massive hemorrhage/shock during delivery</li>
+                    <li><strong>Traumatic brain injury</strong></li>
+                    <li><strong>Sarcoidosis, hemochromatosis, autoimmune hypophysitis</strong></li>
+                </ul>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Sheehan Syndrome
+                    </div>
+                    <p><strong>Sheehan syndrome is postpartum pituitary necrosis.</strong> The pituitary gland enlarges during pregnancy and is vulnerable to ischemia if severe hemorrhage occurs during or after delivery. The <strong>first sign is often inability to lactate</strong> (due to prolactin deficiency). Other signs develop gradually: fatigue, amenorrhea, hypothyroidism, adrenal insufficiency. If a postpartum patient reports she "can't produce milk" after significant birth hemorrhage, suspect Sheehan syndrome.</p>
+                </div>
+
+                <h4>Symptoms Depend on Which Hormones Are Deficient</h4>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Deficient Hormone</th>
+                                <th>Resulting Condition</th>
+                                <th>Key Symptoms</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>ACTH</strong></td>
+                                <td>Secondary adrenal insufficiency</td>
+                                <td>Fatigue, weakness, hypotension, hypoglycemia. <strong>No hyperpigmentation</strong> (unlike primary Addison's).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>TSH</strong></td>
+                                <td>Secondary hypothyroidism</td>
+                                <td>Fatigue, cold intolerance, weight gain, constipation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GH</strong></td>
+                                <td>GH deficiency</td>
+                                <td>Children: growth failure. Adults: decreased muscle mass, increased body fat</td>
+                            </tr>
+                            <tr>
+                                <td><strong>FSH/LH</strong></td>
+                                <td>Hypogonadism</td>
+                                <td>Amenorrhea, infertility, decreased libido, erectile dysfunction</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prolactin</strong></td>
+                                <td>Prolactin deficiency</td>
+                                <td>Inability to lactate (often the first sign in Sheehan syndrome)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>ADH</strong></td>
+                                <td>Diabetes insipidus</td>
+                                <td>Polyuria, polydipsia (posterior pituitary involvement)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Treatment: Hormone Replacement</h4>
+                <p>Treatment is lifelong replacement of the deficient hormones. <strong>Critical order:</strong> Always replace <strong>cortisol FIRST</strong> before thyroid hormone. Starting thyroid hormone in a cortisol-deficient patient can precipitate <strong>adrenal crisis</strong> (thyroid hormone increases metabolic demand, exhausting the already insufficient adrenal glands).</p>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Cushing's disease = pituitary ACTH-secreting adenoma causing cortisol excess (ACTH is HIGH). Treatment: transsphenoidal surgery. Hypopituitarism = deficiency of one or more pituitary hormones. Sheehan syndrome = postpartum pituitary necrosis (inability to lactate is the first sign). Replace cortisol BEFORE thyroid hormone.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 9: Pituitary Adenomas & Tumors -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="pituitary-tumors">
+                <h2><span class="section-icon"><i class="fas fa-circle"></i></span> Pituitary Adenomas &amp; Tumors</h2>
+
+                <p><strong>Pituitary adenomas</strong> are benign tumors of the pituitary gland. They are classified by size and function:</p>
+
+                <h3>Classification</h3>
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>By Size</th>
+                                <th>By Function</th>
+                                <th>Most Common Types</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Microadenoma:</strong> &lt;10 mm</td>
+                                <td><strong>Functioning:</strong> Secretes excess hormone</td>
+                                <td>1. <strong>Prolactinoma</strong> (40% of all pituitary adenomas)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Macroadenoma:</strong> &ge;10 mm</td>
+                                <td><strong>Non-functioning:</strong> Does not secrete hormones; causes symptoms by mass effect</td>
+                                <td>2. <strong>GH-secreting</strong> (acromegaly) 3. <strong>ACTH-secreting</strong> (Cushing's disease)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Mass Effect Symptoms</h3>
+                <p>As a pituitary tumor grows, it can compress surrounding structures:</p>
+
+                <h4>Bitemporal Hemianopsia (Classic Finding)</h4>
+                <p>The <strong>optic chiasm</strong> sits directly above the pituitary gland. An upward-growing tumor compresses the optic chiasm from below, causing <strong>bitemporal hemianopsia</strong> &mdash; loss of the <strong>outer (temporal) visual fields</strong> in both eyes. Patients describe "tunnel vision" &mdash; they can see what's directly in front of them but lose peripheral vision bilaterally.</p>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Connection: Visual Field Defects
+                    </div>
+                    <p><strong>If an NCLEX question describes a patient with "bumping into things on the side" or "loss of peripheral vision in both eyes," think pituitary tumor compressing the optic chiasm.</strong> Bitemporal hemianopsia is virtually pathognomonic for a pituitary macroadenoma. This is a high-yield connection. The nurse should perform visual field testing (confrontation test) as part of the neurological assessment.</p>
+                </div>
+
+                <h4>Other Mass Effect Symptoms</h4>
+                <ul>
+                    <li><strong>Headaches</strong> (from stretching of the diaphragma sellae)</li>
+                    <li><strong>Cranial nerve palsies</strong> (if tumor extends into cavernous sinus &mdash; CN III, IV, VI involvement causing diplopia)</li>
+                    <li><strong>Hypopituitarism</strong> (compression of normal pituitary tissue)</li>
+                    <li><strong>CSF leak</strong> (if tumor erodes through the floor of the sella)</li>
+                    <li><strong>Pituitary apoplexy:</strong> Sudden hemorrhage into a pituitary adenoma &mdash; causes sudden severe headache, visual loss, altered consciousness, and acute hypopituitarism. This is a <strong>medical emergency</strong> requiring emergent surgery and corticosteroid administration.</li>
+                </ul>
+
+                <h3>Diagnosis</h3>
+                <ul>
+                    <li><strong>MRI with gadolinium contrast</strong> &mdash; imaging modality of choice</li>
+                    <li><strong>Comprehensive hormone panel</strong> (GH/IGF-1, prolactin, ACTH, cortisol, TSH, free T4, FSH, LH, testosterone/estradiol)</li>
+                    <li><strong>Visual field testing</strong> (formal perimetry)</li>
+                </ul>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Pituitary adenomas are benign but cause problems through hormone excess or mass effect. Bitemporal hemianopsia (loss of peripheral vision bilaterally) from optic chiasm compression is the classic finding. Prolactinomas are the most common type. Pituitary apoplexy (hemorrhage into tumor) is an emergency. MRI is the diagnostic imaging of choice.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 10: Transsphenoidal Surgery Care -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="transsphenoidal">
+                <h2><span class="section-icon"><i class="fas fa-procedures"></i></span> Transsphenoidal Hypophysectomy</h2>
+
+                <p><strong>Transsphenoidal hypophysectomy</strong> is the surgical removal of pituitary tumors through the nose and sphenoid sinus &mdash; a minimally invasive approach that avoids craniotomy. This is the <strong>first-line surgical treatment</strong> for most pituitary adenomas (except prolactinomas, which respond to medication first).</p>
+
+                <h3>Pre-Operative Care</h3>
+                <ul>
+                    <li><strong>Baseline neurological assessment</strong> &mdash; document LOC, cranial nerve function, and current symptoms</li>
+                    <li><strong>Baseline visual field testing</strong> &mdash; documents pre-operative deficits for comparison</li>
+                    <li><strong>Comprehensive hormone levels</strong> &mdash; establishes baseline for post-op management</li>
+                    <li><strong>Patient teaching (CRITICAL):</strong> Instruct patient that post-operatively they must <strong>avoid coughing, sneezing, nose blowing, bending, and straining</strong> &mdash; all of these increase intracranial pressure and can cause CSF leak</li>
+                    <li>Teach the patient to sneeze with an <strong>open mouth</strong> if they must sneeze</li>
+                </ul>
+
+                <h3>Post-Operative Positioning</h3>
+                <ul>
+                    <li><strong>Head of bed elevated 30-45 degrees</strong> at all times (reduces intracranial pressure and promotes drainage)</li>
+                    <li>Avoid hip flexion and Valsalva maneuvers</li>
+                </ul>
+
+                <h3>Post-Operative Complications</h3>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: CSF Leak &mdash; The Most Serious Complication
+                    </div>
+                    <p><strong>CSF leak is the most dangerous post-transsphenoidal surgery complication.</strong> It creates a direct pathway for bacteria to enter the CNS, causing meningitis.</p>
+                    <ul>
+                        <li><strong>Signs:</strong> Clear, watery nasal drainage; constant postnasal drip; severe headache that worsens when upright; patient reports "salty taste" in throat</li>
+                        <li><strong>Test drainage for glucose:</strong> CSF contains glucose (test with glucometer or Dextrostix). Mucus does NOT contain glucose.</li>
+                        <li><strong>Halo sign:</strong> If drainage is bloody, look for a yellowish ring surrounding the blood on gauze or linen &mdash; this indicates CSF mixed with blood.</li>
+                        <li><strong>Action:</strong> Report IMMEDIATELY. Patient may need surgical repair. Keep HOB elevated. Avoid any action that increases ICP.</li>
+                    </ul>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Nursing Alert: Transient Diabetes Insipidus
+                    </div>
+                    <p><strong>DI occurs in up to 30% of patients after transsphenoidal surgery</strong> due to manipulation of the posterior pituitary or stalk. Monitor for:</p>
+                    <ul>
+                        <li>Sudden large urine output (&gt;200 mL/hr for 2+ consecutive hours)</li>
+                        <li>Very dilute urine (specific gravity &lt;1.005)</li>
+                        <li>Rising serum sodium</li>
+                        <li>Excessive thirst</li>
+                    </ul>
+                    <p><strong>Often transient</strong> (resolves within days to weeks). May require temporary desmopressin. Some cases become permanent requiring lifelong DDAVP.</p>
+                </div>
+
+                <h4>Other Post-Operative Complications</h4>
+                <ul>
+                    <li><strong>Meningitis</strong> &mdash; monitor for fever, nuchal rigidity, headache, photophobia, altered LOC</li>
+                    <li><strong>Hemorrhage</strong> &mdash; monitor for increased nasal drainage, signs of shock, visual changes</li>
+                    <li><strong>Increased ICP</strong> &mdash; monitor neuro status closely</li>
+                    <li><strong>Visual changes</strong> &mdash; may worsen initially from surgical swelling; assess visual fields regularly</li>
+                    <li><strong>Hormonal deficiencies</strong> &mdash; may develop immediately or gradually; may need lifelong replacement therapy</li>
+                    <li><strong>SIADH</strong> &mdash; can occur as a "rebound" after initial DI phase (watch for hyponatremia)</li>
+                </ul>
+
+                <h3>Post-Operative Nursing Care</h3>
+                <div class="interventions-list">
+                    <h4><i class="fas fa-clipboard-list"></i> Priority Nursing Interventions</h4>
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Monitor for CSF Leak</h5>
+                            <p>Assess nasal drainage frequently. Test clear drainage for glucose. Look for halo sign. Report immediately if suspected. Place a mustache dressing under the nose and document drainage amount and character.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Strict I&amp;O and Urine Specific Gravity</h5>
+                            <p>Monitor urine output hourly. Check specific gravity every void or per protocol. Watch for sudden polyuria (DI) or oliguria (SIADH). Weigh daily.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Neurological Assessment</h5>
+                            <p>Assess LOC, orientation, pupil response, visual acuity, visual fields, and cranial nerve function every 1-2 hours initially. Compare to pre-operative baseline.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Nasal Packing Care</h5>
+                            <p>Nasal packing is usually placed during surgery and removed in 2-3 days. Do NOT remove or manipulate. Monitor for bleeding. Patient must mouth-breathe while packing is in place.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Oral Care</h5>
+                            <p><strong>No toothbrushing for approximately 2 weeks</strong> (to avoid disrupting the surgical site in the upper gum line/sphenoid area). Use gentle mouth rinses only. Provide lip care for mouth-breathing dryness.</p>
+                        </div>
+                    </div>
+                    <div class="intervention-item">
+                        <div class="intervention-number">6</div>
+                        <div class="intervention-content">
+                            <h5>Prevent ICP Elevation</h5>
+                            <p>Keep HOB elevated 30-45&deg;. Provide stool softeners (prevent straining). Remind patient: NO coughing, sneezing, nose blowing, bending forward, or heavy lifting. Teach open-mouth sneezing technique.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-transsphenoidal">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Post-Transsphenoidal "No" List</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Remember the "5 No's" after transsphenoidal surgery:</strong> (1) <strong>No nose blowing</strong> (2) <strong>No coughing</strong> (3) <strong>No sneezing</strong> (sneeze with mouth open) (4) <strong>No bending</strong> forward (5) <strong>No straining</strong> (stool softeners!). Add: <strong>No toothbrushing</strong> for 2 weeks. All of these increase ICP or can disrupt the surgical site, causing CSF leak. If you can remember the 5 No's, you can answer any post-transsphenoidal surgery NCLEX question.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Post-transsphenoidal priorities: (1) CSF leak detection (test nasal drainage for glucose, look for halo sign), (2) DI monitoring (sudden high urine output with low specific gravity), (3) Neuro checks. Enforce the "5 No's" to prevent ICP elevation. HOB up 30-45&deg;. No toothbrushing for 2 weeks. DI can be transient or permanent.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 11: Medication Comparison -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="medications">
+                <h2><span class="section-icon"><i class="fas fa-pills"></i></span> Medication Comparison</h2>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Medication</th>
+                                <th>Class</th>
+                                <th>Used For</th>
+                                <th>Key Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Desmopressin (DDAVP)</strong></td>
+                                <td>Synthetic ADH</td>
+                                <td>Central DI</td>
+                                <td>Intranasal/oral/IV/SQ. Monitor for hyponatremia and water intoxication. Carry at all times. Medical alert ID.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tolvaptan (Samsca)</strong></td>
+                                <td>Vasopressin V2 receptor antagonist</td>
+                                <td>SIADH</td>
+                                <td>Oral. Black box: liver toxicity (max 30 days). Initiate in hospital. Monitor Na+ q6h. Don't use with fluid restriction initially. Correct Na+ &lt;10-12 mEq/L/24hr.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Conivaptan (Vaprisol)</strong></td>
+                                <td>Vasopressin V1a/V2 antagonist</td>
+                                <td>SIADH (IV option)</td>
+                                <td>IV only. Large vein required (phlebitis risk). Hospital use only. Same sodium correction limits.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Octreotide (Sandostatin)</strong></td>
+                                <td>Somatostatin analog</td>
+                                <td>Acromegaly</td>
+                                <td>SQ or deep IM (long-acting). Suppresses GH/IGF-1. Side effects: GI upset, gallstones, hyperglycemia. Monitor blood glucose.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Lanreotide (Somatuline)</strong></td>
+                                <td>Somatostatin analog</td>
+                                <td>Acromegaly</td>
+                                <td>Deep SQ injection monthly. Same class as octreotide with similar effects.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Pegvisomant (Somavert)</strong></td>
+                                <td>GH receptor antagonist</td>
+                                <td>Acromegaly</td>
+                                <td>SQ daily. Blocks GH action at receptor. Monitor liver function. Does NOT shrink tumor.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Somatropin</strong></td>
+                                <td>Recombinant human GH</td>
+                                <td>GH deficiency</td>
+                                <td>SQ at bedtime. Monitor growth, glucose, thyroid. Contraindicated in active malignancy. Rotate sites. Refrigerate.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cabergoline (Dostinex)</strong></td>
+                                <td>Dopamine agonist</td>
+                                <td>Prolactinoma</td>
+                                <td>Oral, twice weekly. First-line for prolactinoma. Shrinks tumor. Side effects: nausea, orthostatic hypotension. Rise slowly.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Bromocriptine (Parlodel)</strong></td>
+                                <td>Dopamine agonist</td>
+                                <td>Prolactinoma</td>
+                                <td>Oral, daily. More side effects than cabergoline. Take with food. May prefer in pregnancy (more safety data).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-medications">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Quick Medication-Disorder Matching</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Match the drug to the disorder in seconds:</strong> <strong>Desmopressin</strong> = DI (replaces ADH). <strong>Tolvaptan</strong> = SIADH (blocks ADH). <strong>Octreotide</strong> = Acromegaly (suppresses GH). <strong>Somatropin</strong> = GH deficiency (replaces GH). <strong>Cabergoline</strong> = Prolactinoma (dopamine agonist inhibits prolactin). Notice: each medication is essentially the opposite action of the disease process.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Desmopressin for DI, tolvaptan for SIADH (black box: liver), octreotide for acromegaly (watch for gallstones and hyperglycemia), somatropin for GH deficiency (give at bedtime, monitor glucose), cabergoline for prolactinoma (first-line, twice weekly, shrinks tumor). Each drug reverses the underlying problem.</div>
+            </section>
+
+            <!-- ============================================ -->
+            <!-- Section 12: Pediatric Considerations -->
+            <!-- ============================================ -->
+            <section class="guide-section" id="pediatric">
+                <h2><span class="section-icon"><i class="fas fa-baby"></i></span> Pediatric Considerations</h2>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-header">
+                        <i class="fas fa-baby"></i> Growth Hormone Deficiency in Children
+                    </div>
+                    <p><strong>GH deficiency is the most common pituitary disorder in children.</strong> Key pediatric considerations:</p>
+                    <ul>
+                        <li><strong>Growth velocity is the most sensitive indicator</strong> &mdash; a declining growth rate crossing percentile lines is more concerning than absolute short stature</li>
+                        <li><strong>Bone age X-ray</strong> (left wrist) shows delayed bone maturation &mdash; key diagnostic tool</li>
+                        <li><strong>GH stimulation testing</strong> required for diagnosis (single random GH levels are unreliable due to pulsatile secretion)</li>
+                        <li><strong>Somatropin dosing is weight-based</strong> and adjusted as the child grows &mdash; requires frequent dose adjustments</li>
+                        <li><strong>Monitor for SCFE</strong> (slipped capital femoral epiphysis) &mdash; hip/knee pain, limping during growth hormone therapy</li>
+                        <li>Treatment is most effective when started early, before growth plates close</li>
+                        <li><strong>Psychosocial support is essential</strong> &mdash; short stature can cause bullying, social isolation, and low self-esteem in school-age children</li>
+                        <li>Adolescent adherence may decline &mdash; involve them in self-management and explain the importance of consistent injections</li>
+                    </ul>
+                </div>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-header">
+                        <i class="fas fa-baby"></i> DI and SIADH in Children
+                    </div>
+                    <ul>
+                        <li><strong>Central DI in children</strong> is most commonly caused by CNS tumors (craniopharyngioma is the classic pediatric pituitary region tumor), head trauma, or neurosurgery</li>
+                        <li><strong>Infants with DI</strong> cannot express thirst &mdash; present with irritability, poor feeding, failure to thrive, fever, and dehydration. They may have a preference for water over formula/milk.</li>
+                        <li><strong>Desmopressin dosing</strong> in children requires careful titration &mdash; children are more susceptible to water intoxication and hyponatremia</li>
+                        <li><strong>SIADH in children</strong> can occur with meningitis, pneumonia, or post-operatively &mdash; hyponatremia may cause seizures more quickly in children due to smaller body water reserves</li>
+                        <li><strong>School-age children with DI</strong> need bathroom access plans &mdash; frequent urination should not be restricted. Communicate with school nurses about the condition.</li>
+                        <li><strong>Nocturnal enuresis</strong> (bedwetting) may be a presenting symptom of DI in older children</li>
+                    </ul>
+                </div>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-header">
+                        <i class="fas fa-baby"></i> Craniopharyngioma &mdash; The Classic Pediatric Pituitary Tumor
+                    </div>
+                    <p><strong>Craniopharyngioma</strong> is the most common pituitary region tumor in children (peak age 5-14 years). Unlike adult pituitary adenomas, these arise from embryonic tissue near the pituitary stalk. Key features:</p>
+                    <ul>
+                        <li>Often causes <strong>growth failure</strong> and <strong>delayed puberty</strong> as first signs</li>
+                        <li><strong>Visual field defects</strong> (bitemporal hemianopsia) from optic chiasm compression</li>
+                        <li><strong>Diabetes insipidus</strong> commonly develops either from the tumor or after surgical removal</li>
+                        <li>Headaches and signs of increased ICP</li>
+                        <li>Treatment: surgical resection (often incomplete due to location) &plusmn; radiation</li>
+                        <li>Post-operative panhypopituitarism is common &mdash; lifelong hormone replacement therapy</li>
+                    </ul>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> GH deficiency is the most common pediatric pituitary disorder &mdash; growth velocity decline is the key red flag. Craniopharyngioma is the classic pediatric pituitary tumor. Infants with DI present with irritability and failure to thrive (they can't tell you they're thirsty). Children on desmopressin need careful monitoring for water intoxication.</div>
+            </section>
+
+            <!-- Practice Questions CTA -->
+            <section class="practice-questions" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> NCLEX Challenge &mdash; Test Your Knowledge</h2>
+                <div class="quiz-cta-box">
+                    <div class="quiz-cta-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="quiz-cta-content">
+                        <h3>Ready to Test Your Knowledge?</h3>
+                        <p>10 NCLEX-style questions with detailed rationales covering SIADH vs DI labs, transsphenoidal surgery complications, medication management, acromegaly recognition, and fluid balance nursing care. Choose Practice Mode or Exam Mode.</p>
+                        <div class="quiz-cta-stats">
+                            <span><i class="fas fa-question-circle"></i> 10 Questions</span>
+                            <span><i class="fas fa-clock"></i> ~15 min</span>
+                            <span><i class="fas fa-layer-group"></i> 4 Question Types</span>
+                        </div>
+                    </div>
+                    <a href="quiz/pituitary-disorders-quiz.html" class="quiz-cta-button">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </a>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-tint"></i>
+                        <p><strong>SIADH = water retention.</strong> Low sodium, concentrated urine. Treatment: fluid restriction + tolvaptan. Correct Na+ SLOWLY.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-tint-slash"></i>
+                        <p><strong>DI = water loss.</strong> High sodium, dilute urine. Treatment: fluid replacement + desmopressin (central DI).</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-balance-scale"></i>
+                        <p><strong>SIADH and DI are opposites.</strong> Every lab value, symptom, and treatment is reversed between them.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>ODS risk:</strong> Don't correct sodium &gt;10-12 mEq/L in 24 hours. Irreversible brain damage.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-procedures"></i>
+                        <p><strong>Post-transsphenoidal #1:</strong> CSF leak. Test nasal drainage for glucose. Halo sign. 5 No's.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-hand-paper"></i>
+                        <p><strong>Acromegaly:</strong> Enlarged hands, feet, jaw. IGF-1 screening. OGTT confirms. Surgery first-line.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-venus"></i>
+                        <p><strong>Prolactinoma:</strong> Galactorrhea + amenorrhea. Most common pituitary tumor. Cabergoline first-line (not surgery).</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-eye"></i>
+                        <p><strong>Bitemporal hemianopsia:</strong> Loss of peripheral vision bilaterally = pituitary tumor compressing optic chiasm.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-baby"></i>
+                        <p><strong>Sheehan syndrome:</strong> Postpartum pituitary necrosis. Inability to lactate is often the first sign.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-pills"></i>
+                        <p><strong>Med matching:</strong> Desmopressin=DI, Tolvaptan=SIADH, Octreotide=Acromegaly, Somatropin=GH deficiency, Cabergoline=Prolactinoma.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cross-References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Guides in the Library</h2>
+                <div class="cross-ref-group">
+                    <h3>Also relevant:</h3>
+                    <ul>
+                        <li><a href="thyroid-disorders.html"><i class="fas fa-arrow-right"></i> Thyroid Disorders (Hypothalamic-pituitary-thyroid axis, secondary hypothyroidism)</a></li>
+                        <li><a href="adrenal-disorders.html"><i class="fas fa-arrow-right"></i> Adrenal Disorders (Cushing's syndrome, Addison's disease, adrenal crisis)</a></li>
+                        <li><a href="diabetes-mellitus.html"><i class="fas fa-arrow-right"></i> Diabetes Mellitus (GH's counter-regulatory effects, insulin resistance in acromegaly)</a></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Fluid &amp; Electrolytes (Sodium, osmolality, water balance) &mdash; Coming Soon</span></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts -->
+    <script src="configs/pituitary-disorders-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="guide-questions.js"></script>
+    <script src="../content-gate.js"></script>
+</body>
+</html>

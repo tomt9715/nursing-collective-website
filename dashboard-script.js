@@ -125,7 +125,8 @@ async function loadUserProfile() {
         // Badges
         const premiumBadgeEl = document.getElementById('premium-badge');
         const adminBadgeEl = document.getElementById('admin-badge');
-        const isAdmin = user.is_admin || user.email === 'admin@thenursingcollective.pro';
+        // Admin panel only shows for the dedicated admin account
+        const isAdmin = user.email === 'admin@thenursingcollective.pro';
 
         if (adminBadgeEl && isAdmin) {
             adminBadgeEl.style.cssText = 'display: block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; margin: 12px auto 0 auto; width: fit-content;';
@@ -261,7 +262,7 @@ async function loadUserProfile() {
 
         loadSubscriptionManagement();
 
-        if (user.is_admin) {
+        if (user.email === 'admin@thenursingcollective.pro') {
             await loadAdminDashboard();
         }
     } catch (error) {
@@ -453,7 +454,11 @@ function updateEmailVerificationBanner(user) {
     const banner = document.getElementById('email-verification-banner');
     const resendBtn = document.getElementById('resend-verification-btn');
 
-    if (!user.is_verified && banner) {
+    // OAuth users (Google, Discord) are inherently verified — skip banner for them
+    const authMethod = localStorage.getItem('lastAuthMethod');
+    const isOAuthUser = authMethod === 'google' || authMethod === 'discord';
+
+    if (!user.is_verified && !isOAuthUser && banner) {
         banner.classList.remove('hidden');
 
         if (resendBtn) {

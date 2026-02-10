@@ -32,6 +32,28 @@ class QuizEngine {
         this._shuffledOptions = new Map(); // questionId -> shuffled options array
         this._orderingSequence = [];       // ordering type: array of selected option IDs in click order
 
+        // Timer state
+        this.sessionStartTime = null;
+        this.sessionElapsed = 0;
+        this._timerInterval = null;
+        this.timerMode = 'elapsed';      // 'elapsed' | 'countdown'
+        this.countdownSeconds = 0;
+        this.totalTimeSeconds = 0;
+
+        // Session size
+        this.selectedSessionSize = this.questions.length;
+
+        // Flag for review
+        this.flaggedQuestions = new Set();
+        this._reviewedFlags = false;
+
+        // Confidence tracking
+        this.confidenceRatings = new Map(); // questionId -> 'low' | 'medium' | 'high'
+        this._pendingFeedback = null;       // stores feedback data while confidence prompt is shown
+
+        // Resume state
+        this._saveKey = 'nursingCollective_quizState_' + (config.guideSlug || '');
+
         this._boundBeforeUnload = this._handleBeforeUnload.bind(this);
         this._boundClickHandler = this._handleClick.bind(this);
         this._boundKeyHandler = this._handleKeydown.bind(this);
@@ -53,9 +75,22 @@ class QuizEngine {
         this.answers.clear();
         this.results.clear();
         this.submitted.clear();
-        this.activeQuestions = this._shuffleArray([...this.questions]);
+        this.flaggedQuestions.clear();
+        this._reviewedFlags = false;
+        this.confidenceRatings.clear();
+        this._pendingFeedback = null;
+        this.activeQuestions = this._shuffleArray([...this.questions]).slice(0, this.selectedSessionSize || this.questions.length);
         this.isReviewMode = false;
         this._shuffleAllOptions();
+
+        // Timer
+        this.sessionStartTime = Date.now();
+        this.sessionElapsed = 0;
+        this.timerMode = (mode === 'exam') ? 'countdown' : 'elapsed';
+        this.countdownSeconds = (mode === 'exam') ? this.activeQuestions.length * 90 : 0;
+        this._startTimer();
+
+        this._clearSavedState();
         window.addEventListener('beforeunload', this._boundBeforeUnload);
         this._renderQuestion();
     }
@@ -80,12 +115,16 @@ class QuizEngine {
         });
 
         this._showSubmitFeedback(q, userAnswer, isCorrect, isPartial);
+        this._saveState();
     }
 
     nextQuestion() {
         if (this.currentIndex < this.activeQuestions.length - 1) {
             this.currentIndex++;
             this._renderQuestion();
+            this._saveState();
+        } else if (this.flaggedQuestions.size > 0 && !this._reviewedFlags) {
+            this._showFlagReviewPrompt();
         } else {
             this.showResults();
         }
@@ -93,19 +132,52 @@ class QuizEngine {
 
     showResults() {
         this.phase = 'results';
+        this._stopTimer();
+        this.totalTimeSeconds = Math.round((Date.now() - this.sessionStartTime) / 1000);
+        this._clearSavedState();
         window.removeEventListener('beforeunload', this._boundBeforeUnload);
+
+        // Record session in history
+        if (typeof QuizHistory !== 'undefined' && !this.isReviewMode) {
+            var correctCount = 0;
+            this.results.forEach(function (r) { if (r.correct) correctCount++; });
+            var total = this.activeQuestions.length;
+            QuizHistory.recordSession({
+                topicId: this.guideSlug,
+                topicName: this.guideName,
+                category: this.category,
+                mode: this.mode,
+                score: total > 0 ? Math.round((correctCount / total) * 100) : 0,
+                correct: correctCount,
+                total: total,
+                timeSeconds: this.totalTimeSeconds,
+                confidence: this._getConfidenceBreakdown()
+            });
+        }
+
         this._renderResultsScreen();
     }
 
     retakeQuiz() {
-        this.activeQuestions = this._shuffleArray([...this.questions]);
+        this.activeQuestions = this._shuffleArray([...this.questions]).slice(0, this.selectedSessionSize || this.questions.length);
         this.isReviewMode = false;
         this.phase = 'quiz';
         this.currentIndex = 0;
         this.answers.clear();
         this.results.clear();
         this.submitted.clear();
+        this.flaggedQuestions.clear();
+        this._reviewedFlags = false;
+        this.confidenceRatings.clear();
+        this._pendingFeedback = null;
         this._shuffleAllOptions();
+
+        this.sessionStartTime = Date.now();
+        this.sessionElapsed = 0;
+        this.countdownSeconds = (this.mode === 'exam') ? this.activeQuestions.length * 90 : 0;
+        this._startTimer();
+        this._clearSavedState();
+
         window.addEventListener('beforeunload', this._boundBeforeUnload);
         this._renderQuestion();
     }
@@ -124,12 +196,24 @@ class QuizEngine {
         this.answers.clear();
         this.results.clear();
         this.submitted.clear();
+        this.flaggedQuestions.clear();
+        this._reviewedFlags = false;
+        this.confidenceRatings.clear();
+        this._pendingFeedback = null;
         this._shuffleAllOptions();
+
+        this.sessionStartTime = Date.now();
+        this.sessionElapsed = 0;
+        this.countdownSeconds = 0;
+        this.timerMode = 'elapsed';
+        this._startTimer();
+
         window.addEventListener('beforeunload', this._boundBeforeUnload);
         this._renderQuestion();
     }
 
     destroy() {
+        this._stopTimer();
         window.removeEventListener('beforeunload', this._boundBeforeUnload);
         this.container.removeEventListener('click', this._boundClickHandler);
         this.container.removeEventListener('keydown', this._boundKeyHandler);
@@ -150,13 +234,101 @@ class QuizEngine {
                 case 'next': this.nextQuestion(); break;
                 case 'retake': this.retakeQuiz(); break;
                 case 'review-missed': this.reviewMissed(); break;
-                case 'back-to-start': this.phase = 'start'; this._renderStartScreen(); break;
+                case 'back-to-start':
+                    this._stopTimer();
+                    this._clearSavedState();
+                    this.phase = 'start';
+                    this._renderStartScreen();
+                    break;
                 case 'toggle-rationales': {
                     const section = actionBtn.closest('.quiz-feedback-collapsible');
                     if (section) {
                         const isExpanded = section.classList.toggle('quiz-feedback-collapsible--open');
                         actionBtn.setAttribute('aria-expanded', isExpanded);
                     }
+                    break;
+                }
+                case 'toggle-theme': {
+                    const current = document.documentElement.getAttribute('data-theme');
+                    const next = current === 'dark' ? 'light' : 'dark';
+                    document.documentElement.setAttribute('data-theme', next);
+                    localStorage.setItem('themeMode', next);
+                    const icon = this.container.querySelector('.quiz-theme-toggle i');
+                    if (icon) icon.className = 'fas ' + (next === 'dark' ? 'fa-sun' : 'fa-moon');
+                    break;
+                }
+                case 'set-size': {
+                    const size = parseInt(actionBtn.dataset.quizSize, 10);
+                    if (!isNaN(size)) {
+                        this.selectedSessionSize = size;
+                        this.container.querySelectorAll('.quiz-size-btn').forEach(b => b.classList.remove('quiz-size-btn--active'));
+                        actionBtn.classList.add('quiz-size-btn--active');
+                        const timeEl = this.container.querySelector('.quiz-est-time');
+                        if (timeEl) timeEl.innerHTML = '<i class="fas fa-clock"></i> ~' + Math.max(5, Math.round(size * 1.5)) + ' min';
+                    }
+                    break;
+                }
+                case 'toggle-flag': {
+                    const q = this.activeQuestions[this.currentIndex];
+                    if (q) {
+                        if (this.flaggedQuestions.has(q.id)) {
+                            this.flaggedQuestions.delete(q.id);
+                        } else {
+                            this.flaggedQuestions.add(q.id);
+                        }
+                        const btn = this.container.querySelector('.quiz-flag-btn');
+                        if (btn) btn.classList.toggle('quiz-flag-btn--active', this.flaggedQuestions.has(q.id));
+                        const countEl = this.container.querySelector('.quiz-flag-count');
+                        if (countEl) {
+                            if (this.flaggedQuestions.size > 0) {
+                                countEl.innerHTML = '<i class="fas fa-flag"></i> ' + this.flaggedQuestions.size;
+                                countEl.style.display = '';
+                            } else {
+                                countEl.style.display = 'none';
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 'confidence': {
+                    const level = actionBtn.dataset.confidence;
+                    const q = this.activeQuestions[this.currentIndex];
+                    if (q && level && this._pendingFeedback) {
+                        this.confidenceRatings.set(q.id, level);
+                        const pf = this._pendingFeedback;
+                        this._pendingFeedback = null;
+                        this._showFullFeedback(pf.q, pf.userAnswer, pf.isCorrect, pf.isPartial);
+                        this._saveState();
+                    }
+                    break;
+                }
+                case 'review-flagged': {
+                    this._reviewedFlags = true;
+                    const flaggedQs = this.activeQuestions.filter(q => this.flaggedQuestions.has(q.id) && !this.submitted.has(q.id));
+                    if (flaggedQs.length > 0) {
+                        // Navigate to first unsubmitted flagged question
+                        const firstFlagged = this.activeQuestions.indexOf(flaggedQs[0]);
+                        if (firstFlagged !== -1) {
+                            this.currentIndex = firstFlagged;
+                            this._renderQuestion();
+                        }
+                    } else {
+                        this.showResults();
+                    }
+                    break;
+                }
+                case 'skip-to-results': {
+                    this._reviewedFlags = true;
+                    this.showResults();
+                    break;
+                }
+                case 'resume': {
+                    this._loadSavedState();
+                    break;
+                }
+                case 'discard-saved': {
+                    this._clearSavedState();
+                    this.container.querySelector('.quiz-resume-banner')?.remove();
                     break;
                 }
             }
@@ -246,6 +418,57 @@ class QuizEngine {
             const matrixCell = e.target.closest('.quiz-matrix-cell');
             if (matrixCell) { e.preventDefault(); matrixCell.click(); return; }
         }
+
+        // Only process shortcuts during quiz phase (not on start/results screens)
+        if (this.phase !== 'quiz') return;
+
+        // Don't intercept if user is typing in an input field
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+
+        const q = this.activeQuestions[this.currentIndex];
+        if (!q) return;
+        const key = e.key.toLowerCase();
+
+        // Number keys 1-9: select answer option (only for single-answer, not ordering/matrix)
+        if (/^[1-9]$/.test(key) && (q.type === 'single' || q.subtype === 'priority') && !this.submitted.has(q.id)) {
+            const options = this.container.querySelectorAll('.quiz-option');
+            const idx = parseInt(key, 10) - 1;
+            if (idx < options.length) {
+                e.preventDefault();
+                options[idx].click();
+            }
+            return;
+        }
+
+        // S: Submit answer
+        if (key === 's' && !this.submitted.has(q.id)) {
+            const submitBtn = this.container.querySelector('[data-quiz-action="submit"]');
+            if (submitBtn && !submitBtn.disabled) {
+                e.preventDefault();
+                submitBtn.click();
+            }
+            return;
+        }
+
+        // N: Next question
+        if (key === 'n') {
+            const nextBtn = this.container.querySelector('[data-quiz-action="next"]');
+            if (nextBtn) {
+                e.preventDefault();
+                nextBtn.click();
+            }
+            return;
+        }
+
+        // F: Toggle flag
+        if (key === 'f') {
+            const flagBtn = this.container.querySelector('[data-quiz-action="toggle-flag"]');
+            if (flagBtn) {
+                e.preventDefault();
+                flagBtn.click();
+            }
+            return;
+        }
     }
 
     _handleBeforeUnload(e) {
@@ -263,12 +486,57 @@ class QuizEngine {
 
         const difficultyCount = this._getDifficultyBreakdown();
         const total = this.questions.length;
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const themeIcon = isDark ? 'fa-sun' : 'fa-moon';
+        const hasSaved = this._hasSavedState();
+        const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+        // Session size options
+        const sizeOptions = [5, 10, 15, 20];
+        const showAll = total > 20;
+        const selectedSize = this.selectedSessionSize || total;
+        const estTime = Math.max(5, Math.round(selectedSize * 1.5));
+
+        let sizeButtonsHtml = sizeOptions
+            .filter(s => s <= total)
+            .map(s => `<button class="quiz-size-btn ${s === selectedSize ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${s}">${s}</button>`)
+            .join('');
+        if (showAll) {
+            sizeButtonsHtml += `<button class="quiz-size-btn ${selectedSize === total ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${total}">All (${total})</button>`;
+        }
+
+        // Resume banner
+        let resumeHtml = '';
+        if (hasSaved) {
+            const saved = this._peekSavedState();
+            const savedProgress = saved ? `Question ${saved.currentIndex + 1} of ${saved.totalQuestions}` : 'In-progress quiz';
+            const savedMode = saved && saved.mode ? this._capitalize(saved.mode) : '';
+            resumeHtml = `
+                <div class="quiz-resume-banner">
+                    <div class="quiz-resume-icon"><i class="fas fa-history"></i></div>
+                    <div class="quiz-resume-info">
+                        <div class="quiz-resume-title">Resume Your Quiz</div>
+                        <div class="quiz-resume-detail">${savedMode} Mode &middot; ${savedProgress}</div>
+                    </div>
+                    <div class="quiz-resume-actions">
+                        <button class="quiz-btn quiz-btn--primary quiz-btn--sm" data-quiz-action="resume"><i class="fas fa-play"></i> Resume</button>
+                        <button class="quiz-btn quiz-btn--ghost quiz-btn--sm" data-quiz-action="discard-saved"><i class="fas fa-times"></i> Discard</button>
+                    </div>
+                </div>
+            `;
+        }
 
         this.container.innerHTML = `
-            <a href="../${this.guideSlug}.html" class="quiz-back-link">
-                <i class="fas fa-arrow-left"></i> Back to Study Guide
-            </a>
+            <div class="quiz-top-bar">
+                <a href="../${this.guideSlug}.html" class="quiz-back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Study Guide
+                </a>
+                <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
+                    <i class="fas ${themeIcon}"></i>
+                </button>
+            </div>
             <div class="quiz-start">
+                ${resumeHtml}
                 <div class="quiz-start-header">
                     <span class="quiz-start-badge" style="background: ${this._escapeAttr(this.categoryColor)}">${this._escapeHtml(this.category)}</span>
                     <h1 class="quiz-start-title">${this._escapeHtml(this.guideName)} Quiz</h1>
@@ -277,8 +545,13 @@ class QuizEngine {
 
                 <div class="quiz-start-stats">
                     <span class="quiz-stat"><i class="fas fa-question-circle"></i> ${total} Questions</span>
-                    <span class="quiz-stat"><i class="fas fa-clock"></i> ~${this.estimatedMinutes} min</span>
+                    <span class="quiz-stat quiz-est-time"><i class="fas fa-clock"></i> ~${estTime} min</span>
                     <span class="quiz-stat"><i class="fas fa-layer-group"></i> ${this._getTypeCount()} Types</span>
+                </div>
+
+                <div class="quiz-session-size">
+                    <div class="quiz-session-size-label">Questions per session</div>
+                    <div class="quiz-size-options">${sizeButtonsHtml}</div>
                 </div>
 
                 <div class="quiz-difficulty-breakdown">
@@ -302,10 +575,22 @@ class QuizEngine {
                         <div class="quiz-mode-icon"><i class="fas fa-clipboard-check"></i></div>
                         <div class="quiz-mode-info">
                             <div class="quiz-mode-name">Exam Mode</div>
-                            <div class="quiz-mode-desc">All rationales shown at the end</div>
+                            <div class="quiz-mode-desc">Timed &middot; All rationales shown at the end</div>
                         </div>
                     </button>
                 </div>
+
+                ${!isTouch ? `
+                <div class="quiz-keyboard-hints">
+                    <div class="quiz-keyboard-hints-title"><i class="fas fa-keyboard"></i> Keyboard Shortcuts</div>
+                    <div class="quiz-keyboard-hints-grid">
+                        <span class="quiz-kbd">1</span>–<span class="quiz-kbd">4</span> Select answer
+                        <span class="quiz-kbd">S</span> Submit
+                        <span class="quiz-kbd">N</span> Next
+                        <span class="quiz-kbd">F</span> Flag
+                    </div>
+                </div>
+                ` : ''}
             </div>
         `;
     }
@@ -341,6 +626,9 @@ class QuizEngine {
         const reviewLabel = this.isReviewMode ? ' (Review)' : '';
         const hasLabs = this.mode === 'practice' && q.labValues && q.labValues.length > 0;
         const labHtml = hasLabs ? this._renderLabReference(q.labValues) : '';
+        const isFlagged = this.flaggedQuestions.has(q.id);
+        const flagCount = this.flaggedQuestions.size;
+        const timerHtml = this._renderTimerDisplay();
 
         // Reset ordering state for ordering questions
         if (q.type === 'ordering') {
@@ -367,13 +655,24 @@ class QuizEngine {
         }
 
         this.container.innerHTML = `
-            <a href="../${this.guideSlug}.html" class="quiz-back-link">
-                <i class="fas fa-arrow-left"></i> Back to Study Guide
-            </a>
+            <div class="quiz-top-bar">
+                <a href="../${this.guideSlug}.html" class="quiz-back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Study Guide
+                </a>
+                <div class="quiz-top-bar-right">
+                    ${timerHtml}
+                    <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
+                        <i class="fas ${document.documentElement.getAttribute('data-theme') === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>
+                    </button>
+                </div>
+            </div>
             <div class="quiz-progress">
                 <div class="quiz-progress-header">
                     <span class="quiz-progress-text">Question ${num} of ${total}${reviewLabel}</span>
-                    <span class="quiz-progress-mode quiz-progress-mode--${this.mode}">${this.mode === 'practice' ? 'Practice' : 'Exam'}</span>
+                    <div class="quiz-progress-right">
+                        <span class="quiz-flag-count" style="${flagCount > 0 ? '' : 'display:none'}"><i class="fas fa-flag"></i> ${flagCount}</span>
+                        <span class="quiz-progress-mode quiz-progress-mode--${this.mode}">${this.mode === 'practice' ? 'Practice' : 'Exam'}</span>
+                    </div>
                 </div>
                 <div class="quiz-progress-track">
                     <div class="quiz-progress-fill" style="width: ${pct}%"></div>
@@ -385,6 +684,9 @@ class QuizEngine {
                         <span class="quiz-question-badge">${num}</span>
                         <span class="quiz-question-type ${typeClass}">${typeName}</span>
                         <span class="quiz-question-difficulty">${this._capitalize(q.difficulty)}</span>
+                        <button class="quiz-flag-btn ${isFlagged ? 'quiz-flag-btn--active' : ''}" data-quiz-action="toggle-flag" aria-label="Flag for review" title="Flag for review (F)">
+                            <i class="fas fa-flag"></i>
+                        </button>
                     </div>
                     <div class="quiz-question-stem">
                         ${this._escapeHtml(q.stem)}
@@ -608,6 +910,15 @@ class QuizEngine {
         const feedbackArea = document.getElementById('quiz-feedback-area');
         if (!feedbackArea) return;
 
+        // In practice mode, show confidence prompt BEFORE rationale
+        if (this.mode === 'practice' && !this.confidenceRatings.has(q.id)) {
+            this._pendingFeedback = { q, userAnswer, isCorrect, isPartial, nextBtnLabel, nextBtnClass };
+            feedbackArea.innerHTML = this._buildConfidencePrompt(isCorrect, isPartial);
+            const prompt = feedbackArea.firstElementChild;
+            if (prompt) { prompt.setAttribute('tabindex', '-1'); prompt.focus({ preventScroll: false }); }
+            return;
+        }
+
         let feedbackHtml = '';
         if (this.mode === 'practice') {
             feedbackHtml = this._buildPracticeFeedback(q, userAnswer, isCorrect, isPartial);
@@ -631,6 +942,29 @@ class QuizEngine {
             feedback.setAttribute('tabindex', '-1');
             feedback.focus({ preventScroll: false });
         }
+    }
+
+    _showFullFeedback(q, userAnswer, isCorrect, isPartial) {
+        const feedbackArea = document.getElementById('quiz-feedback-area');
+        if (!feedbackArea) return;
+
+        const isLast = this.currentIndex >= this.activeQuestions.length - 1;
+        const nextBtnLabel = isLast ? '<i class="fas fa-chart-bar"></i> See Results' : 'Next Question <i class="fas fa-arrow-right"></i>';
+        const nextBtnClass = isLast ? 'quiz-btn--success' : 'quiz-btn--primary';
+
+        const feedbackHtml = this._buildPracticeFeedback(q, userAnswer, isCorrect, isPartial);
+        feedbackArea.innerHTML = feedbackHtml;
+
+        // Add sticky bottom bar
+        const existingSticky = this.container.querySelector('.quiz-sticky-next');
+        if (existingSticky) existingSticky.remove();
+        const sticky = document.createElement('div');
+        sticky.className = 'quiz-sticky-next';
+        sticky.innerHTML = `<button class="quiz-btn ${nextBtnClass}" data-quiz-action="next">${nextBtnLabel}</button>`;
+        this.container.appendChild(sticky);
+
+        const feedback = feedbackArea.firstElementChild;
+        if (feedback) { feedback.setAttribute('tabindex', '-1'); feedback.focus({ preventScroll: false }); }
     }
 
     _buildPracticeFeedback(q, userAnswer, isCorrect, isPartial) {
@@ -749,13 +1083,20 @@ class QuizEngine {
         const perfTier = pct >= 90 ? 'excellent' : pct >= 70 ? 'good' : 'needs-work';
         const perfMsg = this._getPerformanceMessage(pct);
         const missedCount = total - correctCount;
+        const timeStr = this._formatTime(this.totalTimeSeconds);
+        const confBreakdown = this._getConfidenceBreakdown();
 
         const isPerfect = pct === 100;
 
         let html = `
-            <a href="../${this.guideSlug}.html" class="quiz-back-link">
-                <i class="fas fa-arrow-left"></i> Back to Study Guide
-            </a>
+            <div class="quiz-top-bar">
+                <a href="../${this.guideSlug}.html" class="quiz-back-link">
+                    <i class="fas fa-arrow-left"></i> Back to Study Guide
+                </a>
+                <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
+                    <i class="fas ${document.documentElement.getAttribute('data-theme') === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>
+                </button>
+            </div>
             <div class="quiz-results ${isPerfect ? 'quiz-celebration' : ''}">
                 ${isPerfect ? '<canvas class="quiz-confetti-canvas" id="quiz-confetti"></canvas>' : ''}
                 <div class="quiz-results-header">
@@ -774,8 +1115,27 @@ class QuizEngine {
                     </div>
                     <div class="quiz-score-percentage">${pct}%</div>
                     <div class="quiz-performance-msg">${this._escapeHtml(perfMsg)}</div>
+                    <div class="quiz-results-meta">
+                        <span class="quiz-results-meta-item"><i class="fas fa-clock"></i> ${timeStr}</span>
+                        <span class="quiz-results-meta-item"><i class="fas fa-${this.mode === 'exam' ? 'clipboard-check' : 'book-open'}"></i> ${this._capitalize(this.mode)} Mode</span>
+                    </div>
                 </div>
         `;
+
+        // Score history chart & stats
+        if (typeof QuizHistory !== 'undefined' && !this.isReviewMode) {
+            const chartHtml = QuizHistory.renderScoreChart(this.guideSlug, 10);
+            const statsHtml = QuizHistory.renderTopicStats(this.guideSlug);
+            if (chartHtml || statsHtml) {
+                html += `
+                    <div class="quiz-history-section">
+                        <div class="quiz-history-title"><i class="fas fa-chart-line"></i> Score History</div>
+                        ${chartHtml}
+                        ${statsHtml}
+                    </div>
+                `;
+            }
+        }
 
         // Celebration banner for perfect scores
         if (isPerfect) {
@@ -842,6 +1202,32 @@ class QuizEngine {
                     </div>
                 `;
             }
+        }
+
+        // Confidence breakdown (only if we have ratings)
+        if (confBreakdown.total > 0) {
+            html += `
+                <div class="quiz-confidence-summary">
+                    <div class="quiz-confidence-summary-title"><i class="fas fa-brain"></i> Confidence Breakdown</div>
+                    <div class="quiz-confidence-bars">
+                        <div class="quiz-confidence-bar-row">
+                            <span class="quiz-confidence-bar-label">Guessing</span>
+                            <div class="quiz-confidence-bar-track"><div class="quiz-confidence-bar-fill quiz-confidence-bar-fill--low" style="width: ${confBreakdown.total > 0 ? (confBreakdown.low / confBreakdown.total) * 100 : 0}%"></div></div>
+                            <span class="quiz-confidence-bar-count">${confBreakdown.low}</span>
+                        </div>
+                        <div class="quiz-confidence-bar-row">
+                            <span class="quiz-confidence-bar-label">Somewhat Sure</span>
+                            <div class="quiz-confidence-bar-track"><div class="quiz-confidence-bar-fill quiz-confidence-bar-fill--medium" style="width: ${confBreakdown.total > 0 ? (confBreakdown.medium / confBreakdown.total) * 100 : 0}%"></div></div>
+                            <span class="quiz-confidence-bar-count">${confBreakdown.medium}</span>
+                        </div>
+                        <div class="quiz-confidence-bar-row">
+                            <span class="quiz-confidence-bar-label">Very Confident</span>
+                            <div class="quiz-confidence-bar-track"><div class="quiz-confidence-bar-fill quiz-confidence-bar-fill--high" style="width: ${confBreakdown.total > 0 ? (confBreakdown.high / confBreakdown.total) * 100 : 0}%"></div></div>
+                            <span class="quiz-confidence-bar-count">${confBreakdown.high}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
         }
 
         // Per-question breakdown
@@ -947,11 +1333,22 @@ class QuizEngine {
 
         detailHtml += `</div>`;
 
+        // Confidence icon for this question
+        const conf = this.confidenceRatings.get(q.id);
+        const confIconMap = { low: 'fa-dice', medium: 'fa-balance-scale', high: 'fa-bullseye' };
+        const confLabelMap = { low: 'Guessing', medium: 'Somewhat Sure', high: 'Very Confident' };
+        const confHtml = conf ? `<span class="quiz-result-confidence quiz-result-confidence--${conf}" title="${confLabelMap[conf] || ''}"><i class="fas ${confIconMap[conf] || 'fa-question'}"></i></span>` : '';
+
+        // Flagged icon
+        const wasFlagged = this.flaggedQuestions.has(q.id);
+        const flagHtml = wasFlagged ? '<span class="quiz-result-flag" title="Flagged for review"><i class="fas fa-flag"></i></span>' : '';
+
         return `
             <div class="quiz-result-item">
                 <button class="quiz-result-summary" aria-expanded="false">
                     <span class="quiz-result-icon ${iconClass}"><i class="fas ${icon}"></i></span>
                     <span class="quiz-result-stem">${this._escapeHtml(truncatedStem)}</span>
+                    ${confHtml}${flagHtml}
                     <i class="fas fa-chevron-down quiz-result-expand-icon"></i>
                 </button>
                 <div class="quiz-result-detail">${detailHtml}</div>
@@ -1125,6 +1522,273 @@ class QuizEngine {
         if (q.type === 'matrix') return 'quiz-question-type--matrix';
         if (q.subtype === 'priority') return 'quiz-question-type--priority';
         return 'quiz-question-type--single';
+    }
+
+    // ── Timer ────────────────────────────────────────────────
+
+    _startTimer() {
+        this._stopTimer();
+        this._timerInterval = setInterval(() => {
+            this.sessionElapsed = Math.round((Date.now() - this.sessionStartTime) / 1000);
+
+            if (this.timerMode === 'countdown') {
+                const remaining = Math.max(0, this.countdownSeconds - this.sessionElapsed);
+                this._updateTimerDisplay(remaining);
+
+                // Flash warning at 60 seconds
+                const timerEl = this.container.querySelector('.quiz-timer');
+                if (timerEl) {
+                    timerEl.classList.toggle('quiz-timer--warning', remaining <= 60 && remaining > 0);
+                    timerEl.classList.toggle('quiz-timer--danger', remaining <= 10 && remaining > 0);
+                }
+
+                // Auto-submit at 0
+                if (remaining <= 0) {
+                    this._stopTimer();
+                    this._autoSubmitRemaining();
+                }
+            } else {
+                this._updateTimerDisplay(this.sessionElapsed);
+            }
+        }, 1000);
+    }
+
+    _stopTimer() {
+        if (this._timerInterval) {
+            clearInterval(this._timerInterval);
+            this._timerInterval = null;
+        }
+    }
+
+    _updateTimerDisplay(seconds) {
+        const timerEl = this.container.querySelector('.quiz-timer-value');
+        if (timerEl) {
+            timerEl.textContent = this._formatTime(seconds);
+        }
+    }
+
+    _renderTimerDisplay() {
+        if (this.timerMode === 'countdown') {
+            const remaining = Math.max(0, this.countdownSeconds - this.sessionElapsed);
+            return `<div class="quiz-timer quiz-timer--countdown${remaining <= 60 ? ' quiz-timer--warning' : ''}">
+                <i class="fas fa-hourglass-half"></i>
+                <span class="quiz-timer-value">${this._formatTime(remaining)}</span>
+            </div>`;
+        }
+        return `<div class="quiz-timer">
+            <i class="fas fa-clock"></i>
+            <span class="quiz-timer-value">${this._formatTime(this.sessionElapsed)}</span>
+        </div>`;
+    }
+
+    _formatTime(totalSeconds) {
+        const mins = Math.floor(totalSeconds / 60);
+        const secs = totalSeconds % 60;
+        return mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+
+    _autoSubmitRemaining() {
+        // Auto-submit all unanswered questions as incorrect, then show results
+        this.activeQuestions.forEach(q => {
+            if (!this.submitted.has(q.id)) {
+                this.submitted.add(q.id);
+                this.results.set(q.id, {
+                    correct: false,
+                    partial: false,
+                    userAnswer: null,
+                    correctAnswer: q.correct
+                });
+            }
+        });
+        this.showResults();
+    }
+
+    // ── Confidence Prompt ────────────────────────────────────
+
+    _buildConfidencePrompt(isCorrect, isPartial) {
+        let statusClass, statusIcon, statusText;
+        if (isCorrect) {
+            statusClass = 'quiz-confidence-status--correct';
+            statusIcon = 'fa-check-circle';
+            statusText = 'Correct!';
+        } else if (isPartial) {
+            statusClass = 'quiz-confidence-status--partial';
+            statusIcon = 'fa-star-half-alt';
+            statusText = 'Almost There!';
+        } else {
+            statusClass = 'quiz-confidence-status--incorrect';
+            statusIcon = 'fa-times-circle';
+            statusText = 'Incorrect';
+        }
+
+        return `
+            <div class="quiz-confidence-prompt">
+                <div class="quiz-confidence-status ${statusClass}">
+                    <i class="fas ${statusIcon}"></i> ${statusText}
+                </div>
+                <div class="quiz-confidence-question">How confident were you?</div>
+                <div class="quiz-confidence-options">
+                    <button class="quiz-confidence-btn quiz-confidence-btn--low" data-quiz-action="confidence" data-confidence="low">
+                        <i class="fas fa-dice"></i>
+                        <span>Guessing</span>
+                    </button>
+                    <button class="quiz-confidence-btn quiz-confidence-btn--medium" data-quiz-action="confidence" data-confidence="medium">
+                        <i class="fas fa-balance-scale"></i>
+                        <span>Somewhat Sure</span>
+                    </button>
+                    <button class="quiz-confidence-btn quiz-confidence-btn--high" data-quiz-action="confidence" data-confidence="high">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Very Confident</span>
+                    </button>
+                </div>
+            </div>
+        `;
+    }
+
+    _getConfidenceBreakdown() {
+        const breakdown = { low: 0, medium: 0, high: 0, total: 0 };
+        this.confidenceRatings.forEach(level => {
+            if (breakdown.hasOwnProperty(level)) breakdown[level]++;
+            breakdown.total++;
+        });
+        return breakdown;
+    }
+
+    // ── Flag Review Prompt ───────────────────────────────────
+
+    _showFlagReviewPrompt() {
+        const unansweredFlags = this.activeQuestions.filter(q => this.flaggedQuestions.has(q.id) && !this.submitted.has(q.id));
+        const answeredFlags = this.activeQuestions.filter(q => this.flaggedQuestions.has(q.id) && this.submitted.has(q.id));
+        const totalFlagged = this.flaggedQuestions.size;
+        const unansweredCount = unansweredFlags.length;
+
+        const feedbackArea = document.getElementById('quiz-feedback-area');
+        if (!feedbackArea) return;
+
+        // Clean up existing sticky
+        const existingSticky = this.container.querySelector('.quiz-sticky-next');
+        if (existingSticky) existingSticky.remove();
+
+        feedbackArea.innerHTML = `
+            <div class="quiz-flag-review-prompt">
+                <div class="quiz-flag-review-icon"><i class="fas fa-flag"></i></div>
+                <div class="quiz-flag-review-title">You flagged ${totalFlagged} question${totalFlagged !== 1 ? 's' : ''} for review</div>
+                ${unansweredCount > 0 ? `<div class="quiz-flag-review-detail">${unansweredCount} still unanswered</div>` : '<div class="quiz-flag-review-detail">All flagged questions have been answered</div>'}
+                <div class="quiz-flag-review-actions">
+                    ${unansweredCount > 0 ? `<button class="quiz-btn quiz-btn--primary" data-quiz-action="review-flagged"><i class="fas fa-flag"></i> Review Flagged (${unansweredCount})</button>` : ''}
+                    <button class="quiz-btn quiz-btn--${unansweredCount > 0 ? 'secondary' : 'primary'}" data-quiz-action="skip-to-results"><i class="fas fa-chart-bar"></i> See Results</button>
+                </div>
+            </div>
+        `;
+
+        const prompt = feedbackArea.firstElementChild;
+        if (prompt) { prompt.setAttribute('tabindex', '-1'); prompt.focus({ preventScroll: false }); }
+    }
+
+    // ── Resume / Save State ──────────────────────────────────
+
+    _saveState() {
+        if (this.phase !== 'quiz') return;
+        try {
+            const state = {
+                mode: this.mode,
+                currentIndex: this.currentIndex,
+                totalQuestions: this.activeQuestions.length,
+                answers: Array.from(this.answers.entries()),
+                results: Array.from(this.results.entries()),
+                submitted: Array.from(this.submitted),
+                flaggedQuestions: Array.from(this.flaggedQuestions),
+                confidenceRatings: Array.from(this.confidenceRatings.entries()),
+                activeQuestionIds: this.activeQuestions.map(q => q.id),
+                shuffledOptions: Array.from(this._shuffledOptions.entries()),
+                isReviewMode: this.isReviewMode,
+                sessionStartTime: this.sessionStartTime,
+                timerMode: this.timerMode,
+                countdownSeconds: this.countdownSeconds,
+                selectedSessionSize: this.selectedSessionSize,
+                savedAt: Date.now()
+            };
+            localStorage.setItem(this._saveKey, JSON.stringify(state));
+        } catch (e) {
+            // localStorage full or disabled — silently fail
+        }
+    }
+
+    _loadSavedState() {
+        try {
+            const raw = localStorage.getItem(this._saveKey);
+            if (!raw) return;
+            const state = JSON.parse(raw);
+
+            // Check expiry (24 hours)
+            if (Date.now() - state.savedAt > 86400000) {
+                this._clearSavedState();
+                return;
+            }
+
+            // Rebuild active questions from saved IDs
+            const idSet = new Set(state.activeQuestionIds);
+            const orderedQuestions = state.activeQuestionIds.map(id => this.questions.find(q => q.id === id)).filter(Boolean);
+            if (orderedQuestions.length === 0) { this._clearSavedState(); return; }
+
+            this.mode = state.mode;
+            this.phase = 'quiz';
+            this.activeQuestions = orderedQuestions;
+            this.currentIndex = state.currentIndex || 0;
+            this.answers = new Map(state.answers || []);
+            this.results = new Map(state.results || []);
+            this.submitted = new Set(state.submitted || []);
+            this.flaggedQuestions = new Set(state.flaggedQuestions || []);
+            this.confidenceRatings = new Map(state.confidenceRatings || []);
+            this._shuffledOptions = new Map(state.shuffledOptions || []);
+            this.isReviewMode = state.isReviewMode || false;
+            this.selectedSessionSize = state.selectedSessionSize || this.questions.length;
+
+            // Restore timer (adjust for time passed since save)
+            this.sessionStartTime = state.sessionStartTime;
+            this.timerMode = state.timerMode || 'elapsed';
+            this.countdownSeconds = state.countdownSeconds || 0;
+            this.sessionElapsed = Math.round((Date.now() - this.sessionStartTime) / 1000);
+            this._startTimer();
+
+            this._reviewedFlags = false;
+            this._pendingFeedback = null;
+
+            window.addEventListener('beforeunload', this._boundBeforeUnload);
+            this._renderQuestion();
+        } catch (e) {
+            this._clearSavedState();
+        }
+    }
+
+    _clearSavedState() {
+        try { localStorage.removeItem(this._saveKey); } catch (e) { /* ignore */ }
+    }
+
+    _hasSavedState() {
+        try {
+            const raw = localStorage.getItem(this._saveKey);
+            if (!raw) return false;
+            const state = JSON.parse(raw);
+            // Check expiry
+            if (Date.now() - state.savedAt > 86400000) {
+                this._clearSavedState();
+                return false;
+            }
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    _peekSavedState() {
+        try {
+            const raw = localStorage.getItem(this._saveKey);
+            if (!raw) return null;
+            return JSON.parse(raw);
+        } catch (e) {
+            return null;
+        }
     }
 
     // ── Utility ─────────────────────────────────────────────

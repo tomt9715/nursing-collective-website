@@ -18,8 +18,16 @@
         return 'https://staging-backend-production-365a.up.railway.app';
     })();
 
-    // Force light mode (match guide pages)
-    document.documentElement.removeAttribute('data-theme');
+    // Apply saved theme preference (or default to light)
+    var savedMode = localStorage.getItem('themeMode');
+    if (savedMode === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } else if (savedMode === 'system') {
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+    }
 
     function getAuthToken() {
         return localStorage.getItem('accessToken');

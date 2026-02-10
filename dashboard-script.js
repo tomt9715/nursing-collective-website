@@ -453,12 +453,19 @@ function loadQuizBankDashboard() {
 function updateEmailVerificationBanner(user) {
     const banner = document.getElementById('email-verification-banner');
     const resendBtn = document.getElementById('resend-verification-btn');
+    if (!banner) return;
 
     // OAuth users (Google, Discord) are inherently verified — skip banner for them
     const authMethod = localStorage.getItem('lastAuthMethod');
     const isOAuthUser = authMethod === 'google' || authMethod === 'discord';
 
-    if (!user.is_verified && !isOAuthUser && banner) {
+    // If verified or OAuth, ensure banner stays hidden
+    if (user.is_verified || isOAuthUser) {
+        banner.classList.add('hidden');
+        return;
+    }
+
+    if (!user.is_verified && !isOAuthUser) {
         banner.classList.remove('hidden');
 
         if (resendBtn) {

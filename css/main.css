@@ -65,8 +65,8 @@
     /* Gradient Accent Colors */
     --gradient-blue: #4A90E2;        /* Hero gradient blue stop */
     --gradient-purple: #7B68EE;      /* Hero gradient purple stop */
-    --indigo-primary: #667eea;       /* Admin/indigo gradient start */
-    --indigo-dark: #764ba2;          /* Admin/indigo gradient end */
+    --indigo-primary: #4f5fd9;       /* Admin/indigo gradient start */
+    --indigo-dark: #5a3996;          /* Admin/indigo gradient end */
     --pink-primary: #f093fb;         /* Premium gradient start */
     --pink-dark: #f5576c;            /* Premium gradient end */
 

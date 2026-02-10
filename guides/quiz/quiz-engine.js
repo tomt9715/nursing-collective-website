@@ -440,18 +440,18 @@ class QuizEngine {
             return;
         }
 
-        // S: Submit answer
-        if (key === 's' && !this.submitted.has(q.id)) {
-            const submitBtn = this.container.querySelector('[data-quiz-action="submit"]');
-            if (submitBtn && !submitBtn.disabled) {
-                e.preventDefault();
-                submitBtn.click();
+        // Enter / Space: Submit answer or go to next question
+        if (e.key === 'Enter' || e.key === ' ') {
+            // If not submitted, try submit
+            if (!this.submitted.has(q.id)) {
+                const submitBtn = this.container.querySelector('[data-quiz-action="submit"]');
+                if (submitBtn && !submitBtn.disabled) {
+                    e.preventDefault();
+                    submitBtn.click();
+                }
+                return;
             }
-            return;
-        }
-
-        // N: Next question
-        if (key === 'n') {
+            // If submitted, try next
             const nextBtn = this.container.querySelector('[data-quiz-action="next"]');
             if (nextBtn) {
                 e.preventDefault();
@@ -585,8 +585,7 @@ class QuizEngine {
                     <div class="quiz-keyboard-hints-title"><i class="fas fa-keyboard"></i> Keyboard Shortcuts</div>
                     <div class="quiz-keyboard-hints-grid">
                         <span class="quiz-kbd">1</span>–<span class="quiz-kbd">4</span> Select answer
-                        <span class="quiz-kbd">S</span> Submit
-                        <span class="quiz-kbd">N</span> Next
+                        <span class="quiz-kbd">Enter</span> / <span class="quiz-kbd">Space</span> Submit / Next
                         <span class="quiz-kbd">F</span> Flag
                     </div>
                 </div>
@@ -703,6 +702,13 @@ class QuizEngine {
                 </div>
                 ${hasLabs ? `<div class="quiz-lab-side">${labHtml}</div>` : ''}
             </div>
+            ${!('ontouchstart' in window || navigator.maxTouchPoints > 0) ? `
+            <div class="quiz-shortcut-bar">
+                <span class="quiz-kbd">1</span>–<span class="quiz-kbd">4</span> Select
+                <span class="quiz-kbd">Enter</span> / <span class="quiz-kbd">Space</span> Submit / Next
+                <span class="quiz-kbd">F</span> Flag
+            </div>
+            ` : ''}
         `;
 
         // Focus the question stem for screen readers
@@ -844,59 +850,26 @@ class QuizEngine {
     // ── Submit Feedback ─────────────────────────────────────
 
     _showSubmitFeedback(q, userAnswer, isCorrect, isPartial) {
-        if (q.type === 'ordering') {
-            // Mark ordering items correct/incorrect by position
-            this.container.querySelectorAll('.quiz-ordering-item').forEach(item => {
-                item.classList.add('quiz-ordering-item--disabled');
-                const optId = item.dataset.orderingId;
-                const userIdx = Array.isArray(userAnswer) ? userAnswer.indexOf(optId) : -1;
-                const correctIdx = Array.isArray(q.correct) ? q.correct.indexOf(optId) : -1;
-                if (userIdx !== -1 && userIdx === correctIdx) {
-                    item.classList.add('quiz-ordering-item--correct');
-                } else if (userIdx !== -1) {
-                    item.classList.add('quiz-ordering-item--incorrect');
-                }
-            });
-        } else if (q.type === 'matrix') {
-            // Mark matrix rows correct/incorrect
-            this.container.querySelectorAll('.quiz-matrix-row').forEach(row => {
-                const rowId = row.dataset.matrixRow;
-                row.querySelectorAll('.quiz-matrix-cell').forEach(cell => {
-                    cell.classList.add('quiz-matrix-cell--disabled');
-                });
-                const correctVal = q.correct[rowId];
-                const userVal = userAnswer ? userAnswer[rowId] : null;
-                if (userVal === correctVal) {
-                    row.classList.add('quiz-matrix-row--correct');
-                } else {
-                    row.classList.add('quiz-matrix-row--incorrect');
-                    // Show the correct answer
-                    row.querySelectorAll('.quiz-matrix-cell').forEach(cell => {
-                        const radio = cell.querySelector('input[type="radio"]');
-                        if (radio && radio.value === correctVal) {
-                            cell.classList.add('quiz-matrix-cell--correct-answer');
-                        }
-                    });
-                }
-            });
-        } else {
-            // Single-answer / priority questions
-            this.container.querySelectorAll('.quiz-option').forEach(opt => {
-                opt.classList.add('quiz-option--disabled');
-                const input = opt.querySelector('input');
-                const val = input ? input.value : '';
+        // In practice mode with confidence tracking: only disable options, don't reveal correct/incorrect yet
+        if (this.mode === 'practice' && !this.confidenceRatings.has(q.id)) {
+            this._disableOptions();
 
-                if (val === q.correct) {
-                    opt.classList.add('quiz-option--correct');
-                } else if (val === userAnswer) {
-                    opt.classList.add('quiz-option--incorrect');
-                }
-                opt.classList.remove('quiz-option--selected');
+            // Hide submit button
+            const actions = this.container.querySelector('.quiz-actions');
+            if (actions) actions.innerHTML = '';
 
-                // Update ARIA role state
-                opt.setAttribute('aria-checked', input && input.checked ? 'true' : 'false');
-            });
+            // Show confidence prompt (no correct/incorrect status)
+            this._pendingFeedback = { q, userAnswer, isCorrect, isPartial };
+            const feedbackArea = document.getElementById('quiz-feedback-area');
+            if (!feedbackArea) return;
+            feedbackArea.innerHTML = this._buildConfidencePrompt();
+            const prompt = feedbackArea.firstElementChild;
+            if (prompt) { prompt.setAttribute('tabindex', '-1'); prompt.focus({ preventScroll: false }); }
+            return;
         }
+
+        // Full option highlighting (correct/incorrect colors)
+        this._highlightOptions(q, userAnswer);
 
         // Hide submit button
         const actions = this.container.querySelector('.quiz-actions');
@@ -909,15 +882,6 @@ class QuizEngine {
         // Show feedback
         const feedbackArea = document.getElementById('quiz-feedback-area');
         if (!feedbackArea) return;
-
-        // In practice mode, show confidence prompt BEFORE rationale
-        if (this.mode === 'practice' && !this.confidenceRatings.has(q.id)) {
-            this._pendingFeedback = { q, userAnswer, isCorrect, isPartial, nextBtnLabel, nextBtnClass };
-            feedbackArea.innerHTML = this._buildConfidencePrompt(isCorrect, isPartial);
-            const prompt = feedbackArea.firstElementChild;
-            if (prompt) { prompt.setAttribute('tabindex', '-1'); prompt.focus({ preventScroll: false }); }
-            return;
-        }
 
         let feedbackHtml = '';
         if (this.mode === 'practice') {
@@ -944,7 +908,65 @@ class QuizEngine {
         }
     }
 
+    _disableOptions() {
+        this.container.querySelectorAll('.quiz-option').forEach(opt => { opt.classList.add('quiz-option--disabled'); });
+        this.container.querySelectorAll('.quiz-ordering-item').forEach(item => { item.classList.add('quiz-ordering-item--disabled'); });
+        this.container.querySelectorAll('.quiz-matrix-cell').forEach(cell => { cell.classList.add('quiz-matrix-cell--disabled'); });
+    }
+
+    _highlightOptions(q, userAnswer) {
+        if (q.type === 'ordering') {
+            this.container.querySelectorAll('.quiz-ordering-item').forEach(item => {
+                item.classList.add('quiz-ordering-item--disabled');
+                const optId = item.dataset.orderingId;
+                const userIdx = Array.isArray(userAnswer) ? userAnswer.indexOf(optId) : -1;
+                const correctIdx = Array.isArray(q.correct) ? q.correct.indexOf(optId) : -1;
+                if (userIdx !== -1 && userIdx === correctIdx) {
+                    item.classList.add('quiz-ordering-item--correct');
+                } else if (userIdx !== -1) {
+                    item.classList.add('quiz-ordering-item--incorrect');
+                }
+            });
+        } else if (q.type === 'matrix') {
+            this.container.querySelectorAll('.quiz-matrix-row').forEach(row => {
+                const rowId = row.dataset.matrixRow;
+                row.querySelectorAll('.quiz-matrix-cell').forEach(cell => {
+                    cell.classList.add('quiz-matrix-cell--disabled');
+                });
+                const correctVal = q.correct[rowId];
+                const userVal = userAnswer ? userAnswer[rowId] : null;
+                if (userVal === correctVal) {
+                    row.classList.add('quiz-matrix-row--correct');
+                } else {
+                    row.classList.add('quiz-matrix-row--incorrect');
+                    row.querySelectorAll('.quiz-matrix-cell').forEach(cell => {
+                        const radio = cell.querySelector('input[type="radio"]');
+                        if (radio && radio.value === correctVal) {
+                            cell.classList.add('quiz-matrix-cell--correct-answer');
+                        }
+                    });
+                }
+            });
+        } else {
+            this.container.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.add('quiz-option--disabled');
+                const input = opt.querySelector('input');
+                const val = input ? input.value : '';
+                if (val === q.correct) {
+                    opt.classList.add('quiz-option--correct');
+                } else if (val === userAnswer) {
+                    opt.classList.add('quiz-option--incorrect');
+                }
+                opt.classList.remove('quiz-option--selected');
+                opt.setAttribute('aria-checked', input && input.checked ? 'true' : 'false');
+            });
+        }
+    }
+
     _showFullFeedback(q, userAnswer, isCorrect, isPartial) {
+        // Now reveal correct/incorrect on the options
+        this._highlightOptions(q, userAnswer);
+
         const feedbackArea = document.getElementById('quiz-feedback-area');
         if (!feedbackArea) return;
 
@@ -1605,27 +1627,9 @@ class QuizEngine {
 
     // ── Confidence Prompt ────────────────────────────────────
 
-    _buildConfidencePrompt(isCorrect, isPartial) {
-        let statusClass, statusIcon, statusText;
-        if (isCorrect) {
-            statusClass = 'quiz-confidence-status--correct';
-            statusIcon = 'fa-check-circle';
-            statusText = 'Correct!';
-        } else if (isPartial) {
-            statusClass = 'quiz-confidence-status--partial';
-            statusIcon = 'fa-star-half-alt';
-            statusText = 'Almost There!';
-        } else {
-            statusClass = 'quiz-confidence-status--incorrect';
-            statusIcon = 'fa-times-circle';
-            statusText = 'Incorrect';
-        }
-
+    _buildConfidencePrompt() {
         return `
             <div class="quiz-confidence-prompt">
-                <div class="quiz-confidence-status ${statusClass}">
-                    <i class="fas ${statusIcon}"></i> ${statusText}
-                </div>
                 <div class="quiz-confidence-question">How confident were you?</div>
                 <div class="quiz-confidence-options">
                     <button class="quiz-confidence-btn quiz-confidence-btn--low" data-quiz-action="confidence" data-confidence="low">

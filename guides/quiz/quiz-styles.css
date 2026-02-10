@@ -2716,6 +2716,7 @@ body {
     border-radius: var(--quiz-radius-sm);
     padding: 14px 20px;
     text-align: center;
+    margin-top: 24px;
 }
 
 .quiz-keyboard-hints-title {
@@ -2756,6 +2757,31 @@ body {
     font-weight: 600;
     color: var(--quiz-text-primary);
     box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+/* ============================================
+   IN-QUIZ SHORTCUT BAR
+   ============================================ */
+.quiz-shortcut-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 10px 16px;
+    margin-top: 12px;
+    font-size: 0.78rem;
+    color: var(--quiz-text-light);
+    background: var(--quiz-card-bg);
+    border: 1px solid var(--quiz-border);
+    border-radius: var(--quiz-radius-sm);
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.quiz-shortcut-bar:hover { opacity: 1; }
+
+@media (max-width: 768px) {
+    .quiz-shortcut-bar { display: none; }
 }
 
 /* ============================================

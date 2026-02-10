@@ -94,27 +94,27 @@
 }
 
 .error-message.error {
-    background: rgba(239, 68, 68, 0.1);
+    background: var(--danger-bg-subtle);
     border: 1px solid rgba(239, 68, 68, 0.3);
-    color: #dc2626;
+    color: var(--danger-color);
 }
 
 .error-message.warning {
-    background: rgba(245, 158, 11, 0.1);
+    background: var(--warning-bg);
     border: 1px solid rgba(245, 158, 11, 0.3);
-    color: #d97706;
+    color: var(--warning-color);
 }
 
 .error-message.info {
-    background: rgba(59, 130, 246, 0.1);
+    background: var(--info-bg);
     border: 1px solid rgba(59, 130, 246, 0.3);
-    color: #2563eb;
+    color: var(--info-color);
 }
 
 .error-message.success {
-    background: rgba(16, 185, 129, 0.1);
+    background: var(--success-bg);
     border: 1px solid rgba(16, 185, 129, 0.3);
-    color: #059669;
+    color: var(--success-color);
 }
 
 .retry-button {
@@ -145,7 +145,7 @@
     border: none;
     border-radius: 8px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 0.95rem;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -348,13 +348,13 @@
 
     .btn-large {
         min-height: 48px;
-        padding: 14px 28px;
+        padding: 16px 24px;
     }
 }
 
 @media (max-width: 480px) {
     .btn-large {
-        padding: 14px 24px;
+        padding: 16px 24px;
         font-size: 0.95rem;
         min-height: 48px;
     }
@@ -368,7 +368,7 @@
 /* Feature Cards */
 .feature-card {
     background: var(--card-bg);
-    padding: 40px 30px;
+    padding: 40px 32px;
     border-radius: 16px;
     text-align: center;
     box-shadow: var(--shadow-md);
@@ -432,7 +432,7 @@
 .feature-card h3 {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
 
 .feature-card p {
@@ -444,7 +444,7 @@
 .feature-link {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     color: var(--primary-color);
     font-weight: 600;
     font-size: 0.95rem;
@@ -453,7 +453,7 @@
 }
 
 .feature-link:hover {
-    gap: 10px;
+    gap: 8px;
     color: var(--primary-dark);
 }
 
@@ -469,7 +469,7 @@
 /* Guide Cards */
 .guide-card {
     background: var(--card-bg);
-    padding: 40px 30px;
+    padding: 40px 32px;
     border-radius: 16px;
     text-align: center;
     box-shadow: var(--shadow-md);
@@ -507,7 +507,7 @@
 .guide-card h3 {
     font-size: 1.4rem;
     font-weight: 600;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     color: var(--text-primary);
 }
 
@@ -545,7 +545,7 @@
 .pricing-card {
     background: var(--card-bg);
     border-radius: 20px;
-    padding: 40px 30px;
+    padding: 40px 32px;
     box-shadow: var(--shadow-lg);
     border: 2px solid var(--border-color);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -629,7 +629,7 @@
 
 .form-group input {
     width: 100%;
-    padding: 14px 16px 14px 44px;
+    padding: 16px 16px 16px 48px;
     border: 2px solid var(--border-color);
     border-radius: 10px;
     background: var(--background-white);
@@ -662,7 +662,7 @@
 .form-checkbox {
     display: flex;
     align-items: flex-start;
-    gap: 10px;
+    gap: 8px;
 }
 
 .form-checkbox input[type="checkbox"] {
@@ -757,7 +757,7 @@
 }
 
 .custom-modal-header {
-    padding: 30px 30px 20px;
+    padding: 32px 32px 24px;
     text-align: center;
 }
 
@@ -769,56 +769,56 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 2rem;
 }
 
 .custom-modal-icon.info {
-    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    background: linear-gradient(135deg, var(--info-light), var(--info-color));
     color: white;
 }
 
 .custom-modal-icon.success {
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, var(--success-light), var(--success-color));
     color: white;
 }
 
 .custom-modal-icon.warning {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
+    background: linear-gradient(135deg, var(--warning-light), var(--warning-color));
     color: white;
 }
 
 .custom-modal-icon.error {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
+    background: linear-gradient(135deg, var(--danger-light), var(--danger-color));
     color: white;
 }
 
 .custom-modal-icon.question {
-    background: linear-gradient(135deg, #2E86AB, #A23B72);
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
 }
 
 .custom-modal-title {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 700;
-    color: #1a1a2e;
+    color: var(--text-primary);
     margin: 0 0 12px;
     letter-spacing: -0.5px;
 }
 
 .custom-modal-body {
-    padding: 0 30px 30px;
+    padding: 0 32px 32px;
 }
 
 .custom-modal-message {
-    font-size: 15px;
-    color: #64748b;
+    font-size: 0.9375rem;
+    color: var(--text-secondary);
     line-height: 1.6;
     text-align: center;
     white-space: pre-line;
 }
 
 .custom-modal-footer {
-    padding: 0 30px 30px;
+    padding: 0 32px 32px;
     display: flex;
     gap: 12px;
     justify-content: center;
@@ -826,10 +826,10 @@
 }
 
 .custom-modal-btn {
-    padding: 14px 28px;
+    padding: 16px 24px;
     border-radius: 12px;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 0.9375rem;
     border: none;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -848,7 +848,7 @@
 }
 
 .custom-modal-btn.primary {
-    background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     color: white;
     box-shadow: 0 4px 12px rgba(46, 134, 171, 0.3);
 }
@@ -858,18 +858,18 @@
 }
 
 .custom-modal-btn.secondary {
-    background: #f1f5f9;
-    color: #475569;
+    background: var(--background-light);
+    color: var(--text-secondary);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .custom-modal-btn.secondary:hover {
-    background: #e2e8f0;
+    background: var(--border-color);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .custom-modal-btn.danger {
-    background: linear-gradient(135deg, #ef4444, #dc2626);
+    background: linear-gradient(135deg, var(--danger-light), var(--danger-color));
     color: white;
     box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
@@ -879,7 +879,7 @@
 }
 
 .custom-modal-btn.success {
-    background: linear-gradient(135deg, #10b981, #059669);
+    background: linear-gradient(135deg, var(--success-light), var(--success-color));
     color: white;
     box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
@@ -890,19 +890,19 @@
 
 @media (max-width: 640px) {
     .custom-modal {
-        margin: 0 10px;
+        margin: 0 12px;
     }
 
     .custom-modal-header {
-        padding: 25px 25px 15px;
+        padding: 24px 24px 16px;
     }
 
     .custom-modal-body {
-        padding: 0 25px 25px;
+        padding: 0 24px 24px;
     }
 
     .custom-modal-footer {
-        padding: 0 25px 25px;
+        padding: 0 24px 24px;
         flex-direction: column;
     }
 
@@ -912,11 +912,11 @@
     }
 
     .custom-modal-title {
-        font-size: 20px;
+        font-size: 1.25rem;
     }
 
     .custom-modal-message {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 }
 
@@ -1001,7 +1001,7 @@
 }
 
 .user-badge.premium {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, var(--pink-primary) 0%, var(--pink-dark) 100%);
     color: white;
 }
 
@@ -1011,7 +1011,7 @@
 }
 
 .user-badge.admin {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
     color: white;
 }
 
@@ -1031,11 +1031,11 @@
 
 .status.active {
     background: rgba(16, 185, 129, 0.1);
-    color: #10b981;
+    color: var(--success-light);
 }
 
 .topic-tag {
-    padding: 4px 10px;
+    padding: 4px 8px;
     background: var(--background-light);
     border-radius: 6px;
     font-size: 0.8rem;
@@ -1135,7 +1135,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 14px 18px;
+    padding: 16px 16px;
     color: var(--text-primary);
     text-decoration: none;
     transition: all 0.2s ease;
@@ -1150,7 +1150,7 @@
 .user-dropdown a:hover {
     background: var(--background-light);
     color: var(--primary-color);
-    padding-left: 22px;
+    padding-left: 24px;
 }
 
 .user-dropdown a i {
@@ -1164,7 +1164,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 16px 18px;
+    padding: 16px 16px;
     background: var(--background-light);
     border-bottom: 1px solid var(--border-color);
     border-radius: 12px 12px 0 0;
@@ -1284,7 +1284,7 @@
     flex-direction: row !important;
     align-items: center !important;
     justify-content: space-between !important;
-    padding: 10px 16px;
+    padding: 8px 16px;
     gap: 12px;
 }
 
@@ -1295,7 +1295,7 @@
     font-weight: 500;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     white-space: nowrap;
 }
 
@@ -1391,13 +1391,13 @@
     input[type="url"],
     textarea,
     select {
-        font-size: 16px !important;
+        font-size: 1rem !important;
         min-height: 48px;
     }
 
     /* Ensure labels are readable too */
     label {
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 }
 
@@ -1465,19 +1465,19 @@
 
 .guide-progress.completed {
     background: rgba(16, 185, 129, 0.1);
-    color: #10b981;
+    color: var(--success-light);
 }
 
 .guide-progress.in-progress {
     background: rgba(245, 158, 11, 0.1);
-    color: #f59e0b;
+    color: var(--warning-light);
 }
 
 /* FAQ Accordion */
 .faq-item {
     background: var(--card-bg);
     border-radius: 12px;
-    margin-bottom: 15px;
+    margin-bottom: 16px;
     overflow: hidden;
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border-color);
@@ -1491,7 +1491,7 @@
 .faq-question {
     width: 100%;
     text-align: left;
-    padding: 20px 25px;
+    padding: 20px 24px;
     background: none;
     border: none;
     display: flex;
@@ -1528,7 +1528,7 @@
 }
 
 .faq-answer p {
-    padding: 0 25px 20px;
+    padding: 0 24px 20px;
     color: var(--text-secondary);
     line-height: 1.7;
 }
@@ -1544,12 +1544,12 @@ code {
     border-radius: 4px;
     font-family: 'Courier New', monospace;
     font-size: 0.9em;
-    color: #dc2626;
+    color: var(--danger-color);
 }
 
 pre {
-    background: #1e293b;
-    color: #e2e8f0;
+    background: var(--background-white);
+    color: var(--text-primary);
     padding: 20px;
     border-radius: 8px;
     overflow-x: auto;
@@ -1569,7 +1569,7 @@ pre code {
 
 @media (max-width: 768px) {
     .form-group input {
-        padding: 12px 14px 12px 40px;
+        padding: 12px 16px 12px 40px;
         font-size: 0.95rem;
     }
 
@@ -1626,7 +1626,7 @@ pre code {
 }
 
 .password-match-indicator {
-    margin-top: 6px;
+    margin-top: 8px;
     font-size: 0.9rem;
     font-weight: 500;
 }
@@ -1646,13 +1646,17 @@ pre code {
 }
 
 .footer-attribution {
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     margin-top: 8px;
     opacity: 0.5;
 }
 
 .footer-attribution a {
     color: inherit;
+    text-decoration: underline;
+}
+
+.footer-attribution a:last-of-type {
     text-decoration: none;
 }
 
@@ -1718,7 +1722,7 @@ pre code {
 /* Hero Badges */
 .hero-badge {
     display: inline-block;
-    padding: 10px 24px;
+    padding: 8px 24px;
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -1735,7 +1739,7 @@ pre code {
 .cta-card-enhanced {
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
     border-radius: 24px;
-    padding: 60px 40px;
+    padding: 64px 40px;
     text-align: center;
     box-shadow: 0 20px 60px rgba(46, 134, 171, 0.3);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1793,7 +1797,7 @@ pre code {
 
 .cta-description {
     font-size: 1.2rem;
-    margin-bottom: 50px;
+    margin-bottom: 48px;
     opacity: 0.95;
     max-width: 650px;
     margin-left: auto;
@@ -1871,7 +1875,7 @@ pre code {
 /* Empty State Enhancement */
 .empty-state-enhanced {
     text-align: center;
-    padding: 60px 40px;
+    padding: 64px 40px;
     opacity: 1;
     transition: opacity 0.4s ease;
 }
@@ -1885,7 +1889,7 @@ pre code {
     align-items: center;
     justify-content: center;
     margin: 0 auto 24px;
-    font-size: 36px;
+    font-size: 2.25rem;
     color: white;
     box-shadow: 0 8px 30px rgba(46, 134, 171, 0.3);
 }
@@ -1914,6 +1918,6 @@ pre code {
     .empty-state-enhanced .empty-icon {
         width: 64px;
         height: 64px;
-        font-size: 28px;
+        font-size: 1.75rem;
     }
 }

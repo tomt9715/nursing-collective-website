@@ -108,7 +108,7 @@
     </nav>
 
     <!-- Breadcrumbs -->
-    <div class="breadcrumbs" style="padding-top: 120px;">
+    <div class="breadcrumbs breadcrumbs-dashboard">
         <div class="container">
             <a href="index.html">Home</a>
             <span class="separator">/</span>
@@ -139,16 +139,16 @@
             </div>
 
             <!-- Email Verification Banner -->
-            <div id="email-verification-banner" style="display: none; background: linear-gradient(135deg, #f59e0b, #d97706); color: white; padding: 20px; border-radius: 16px; margin-bottom: 24px; box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);">
-                <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
-                    <div style="display: flex; align-items: center; gap: 16px;">
-                        <i class="fas fa-exclamation-triangle" style="font-size: 32px;"></i>
+            <div id="email-verification-banner" class="verification-banner hidden">
+                <div class="verification-banner-inner">
+                    <div class="verification-banner-content">
+                        <i class="fas fa-exclamation-triangle"></i>
                         <div>
-                            <h4 style="color: white; margin: 0 0 6px 0; font-size: 1.1rem;">Verify Your Email</h4>
-                            <p style="margin: 0; opacity: 0.95; font-size: 0.95rem;">Please check your inbox and verify your email address to unlock all features.</p>
+                            <h4>Verify Your Email</h4>
+                            <p>Please check your inbox and verify your email address to unlock all features.</p>
                         </div>
                     </div>
-                    <button id="resend-verification-btn" style="background: white; color: #d97706; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; white-space: nowrap;">
+                    <button id="resend-verification-btn" class="verification-banner-btn">
                         <i class="fas fa-paper-plane"></i> Resend Email
                     </button>
                 </div>
@@ -162,7 +162,7 @@
                         <h3>Browse Study Guides</h3>
                         <p>Explore NCLEX resources</p>
                     </button>
-                    <button class="action-card-hero" id="quiz-bank-action-btn" data-navigate="https://learn.thenursingcollective.pro" style="display: none;">
+                    <button class="action-card-hero hidden" id="quiz-bank-action-btn" data-navigate="https://learn.thenursingcollective.pro">
                         <div class="action-icon-large"><i class="fas fa-brain"></i></div>
                         <h3>Quiz Bank</h3>
                         <p>Practice questions by topic</p>
@@ -182,10 +182,10 @@
                         <h3>Settings</h3>
                         <p>Manage your account</p>
                     </button>
-                    <button class="action-card-hero admin-only" id="admin-panel-btn" data-navigate="admin.html" style="display: none; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
-                        <div class="action-icon-large" style="background: rgba(255,255,255,0.2); color: white;"><i class="fas fa-user-shield"></i></div>
-                        <h3 style="color: white;">Admin Panel</h3>
-                        <p style="color: rgba(255,255,255,0.9);">Manage users & guides</p>
+                    <button class="action-card-hero admin-only admin-action hidden" id="admin-panel-btn" data-navigate="admin.html">
+                        <div class="action-icon-large"><i class="fas fa-user-shield"></i></div>
+                        <h3>Admin Panel</h3>
+                        <p>Manage users & guides</p>
                     </button>
                 </div>
             </section>
@@ -193,27 +193,27 @@
             <!-- Dashboard Grid -->
             <div class="dashboard-grid">
                 <!-- Getting Started Card (only shows for new users) -->
-                <div class="dashboard-card" id="getting-started-card" style="grid-column: 1 / -1; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; display: none;">
-                    <h3 style="color: white;"><i class="fas fa-rocket"></i> Welcome to The Nursing Collective!</h3>
-                    <p style="margin: 16px 0; opacity: 0.95;">Get started with these quick steps to make the most of your account:</p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 20px;">
-                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px;">
-                            <i class="fas fa-book-open" style="font-size: 32px; margin-bottom: 12px;"></i>
-                            <h4 style="color: white; font-size: 1rem; margin-bottom: 8px;">Browse Study Guides</h4>
-                            <p style="font-size: 0.9rem; opacity: 0.9;">Explore our NCLEX-focused study materials</p>
+                <div class="dashboard-card getting-started-card hidden" id="getting-started-card">
+                    <h3><i class="fas fa-rocket"></i> Welcome to The Nursing Collective!</h3>
+                    <p>Get started with these quick steps to make the most of your account:</p>
+                    <div class="getting-started-grid">
+                        <div class="getting-started-step">
+                            <i class="fas fa-book-open"></i>
+                            <h4>Browse Study Guides</h4>
+                            <p>Explore our NCLEX-focused study materials</p>
                         </div>
-                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px;">
-                            <i class="fab fa-discord" style="font-size: 32px; margin-bottom: 12px;"></i>
-                            <h4 style="color: white; font-size: 1rem; margin-bottom: 8px;">Join Our Community</h4>
-                            <p style="font-size: 0.9rem; opacity: 0.9;">Connect with fellow nursing students on Discord</p>
+                        <div class="getting-started-step">
+                            <i class="fab fa-discord"></i>
+                            <h4>Join Our Community</h4>
+                            <p>Connect with fellow nursing students on Discord</p>
                         </div>
-                        <div style="background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px;">
-                            <i class="fas fa-rocket" style="font-size: 32px; margin-bottom: 12px;"></i>
-                            <h4 style="color: white; font-size: 1rem; margin-bottom: 8px;">Choose a Plan</h4>
-                            <p style="font-size: 0.9rem; opacity: 0.9;">Subscribe to unlock all study guides and resources</p>
+                        <div class="getting-started-step">
+                            <i class="fas fa-rocket"></i>
+                            <h4>Choose a Plan</h4>
+                            <p>Subscribe to unlock all study guides and resources</p>
                         </div>
                     </div>
-                    <button style="background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; margin-top: 20px; cursor: pointer;" id="dismiss-getting-started-btn">
+                    <button class="getting-started-dismiss-btn" id="dismiss-getting-started-btn">
                         <i class="fas fa-check"></i> Got it!
                     </button>
                 </div>
@@ -229,32 +229,32 @@
                         <div id="recent-guides-list" class="recent-guides-list">
                             <!-- Loading skeleton -->
                             <div class="skeleton-loader">
-                                <div class="skeleton skeleton-card" style="margin-bottom: 8px;"></div>
-                                <div class="skeleton skeleton-card" style="margin-bottom: 8px;"></div>
-                                <div class="skeleton skeleton-card" style="margin-bottom: 8px;"></div>
+                                <div class="skeleton skeleton-card skeleton-row"></div>
+                                <div class="skeleton skeleton-card skeleton-row"></div>
+                                <div class="skeleton skeleton-card skeleton-row"></div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Quiz Bank Progress Widget -->
-                    <div class="qb-summary-widget" id="quiz-bank-dashboard-section" style="display: none;">
+                    <div class="qb-summary-widget hidden" id="quiz-bank-dashboard-section">
                         <div class="widget-header">
                             <h3><i class="fas fa-brain"></i> Quiz Progress</h3>
                             <a href="https://learn.thenursingcollective.pro" class="widget-header-link" id="qb-continue-btn">Continue →</a>
                         </div>
 
                         <!-- Empty State -->
-                        <div id="qb-empty-state" style="display: none; text-align: center; padding: 32px 16px;">
-                            <div style="font-size: 40px; margin-bottom: 12px; opacity: 0.3;"><i class="fas fa-brain"></i></div>
-                            <h4 style="margin-bottom: 6px; font-size: 1rem;">Track Your Progress</h4>
-                            <p style="opacity: 0.7; margin-bottom: 16px; font-size: 0.9rem;">Start a quiz to see your stats here.</p>
+                        <div id="qb-empty-state" class="qb-empty-state hidden">
+                            <div class="qb-empty-state-icon"><i class="fas fa-brain"></i></div>
+                            <h4>Track Your Progress</h4>
+                            <p>Start a quiz to see your stats here.</p>
                             <button class="btn btn-primary btn-sm" data-navigate="https://learn.thenursingcollective.pro">
                                 <i class="fas fa-rocket"></i> Start Practicing
                             </button>
                         </div>
 
                         <!-- Stats (when data exists) -->
-                        <div id="qb-mastery-overview" style="display: none;">
+                        <div id="qb-mastery-overview" class="hidden">
                             <div class="qb-stats-row">
                                 <div class="qb-stat-card">
                                     <div class="qb-stat-number" id="qb-avg-level">0</div>
@@ -316,7 +316,7 @@
                             <div class="subscription-management-container" id="subscription-management-container">
                                 <!-- Loading skeleton -->
                                 <div class="skeleton-loader">
-                                    <div class="skeleton skeleton-card" style="margin-bottom: 12px;"></div>
+                                    <div class="skeleton skeleton-card skeleton-row-lg"></div>
                                 </div>
                             </div>
                         </div>
@@ -328,8 +328,8 @@
     </section>
 
     <!-- Admin User Management Modal -->
-    <div class="modal-overlay" id="admin-user-modal" style="display: none;">
-        <div class="modal-content" style="max-width: 900px; max-height: 80vh; overflow-y: auto;">
+    <div class="modal-overlay hidden" id="admin-user-modal">
+        <div class="modal-content admin-user-modal-content">
             <div class="modal-header">
                 <h2 id="modal-title">Users</h2>
                 <button class="modal-close" id="close-admin-modal-btn">
@@ -337,7 +337,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <div class="user-filters" style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;">
+                <div class="user-filters admin-filter-bar">
                     <button class="filter-btn active" data-filter="all">All Users</button>
                     <button class="filter-btn" data-filter="today">Joined Today</button>
                     <button class="filter-btn" data-filter="yesterday">Joined Yesterday</button>
@@ -415,8 +415,8 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
-                <p style="font-size: 0.7rem; margin-top: 8px; opacity: 0.5;">
-                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">Flaticon</a>
+                <p class="footer-attribution">
+                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
                 </p>
             </div>
         </div>

@@ -25,7 +25,7 @@
 .admin-subnav-brand {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
     color: white;
     font-weight: 600;
     font-size: 0.95rem;
@@ -56,7 +56,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 14px 24px;
+    padding: 16px 24px;
     background: transparent;
     border: none;
     color: rgba(255, 255, 255, 0.8);
@@ -132,8 +132,8 @@
 
     .admin-subnav-tab {
         padding: 8px 12px;
-        font-size: 0.75rem;
-        gap: 5px;
+        font-size: 0.85rem;
+        gap: 4px;
     }
 
     .admin-subnav-tab i {
@@ -154,7 +154,7 @@
     align-items: center;
     gap: 16px;
     margin-bottom: 24px;
-    padding: 16px 20px;
+    padding: 16px 24px;
     background: var(--card-bg, #fff);
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -180,7 +180,7 @@
 
 .toolbar-search input {
     width: 100%;
-    padding: 10px 12px 10px 40px;
+    padding: 8px 12px 8px 40px;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 0.9rem;
@@ -271,21 +271,21 @@
 }
 
 .search-autocomplete-badges .badge-status {
-    font-size: 0.65rem;
-    padding: 3px 10px;
+    font-size: 0.85rem;
+    padding: 4px 8px;
     display: inline-flex;
     align-items: center;
     gap: 4px;
 }
 
 .search-autocomplete-badges .badge-status i {
-    font-size: 0.6rem;
+    font-size: 0.85rem;
     flex-shrink: 0;
     width: auto;
 }
 
 .search-autocomplete-empty {
-    padding: 20px 16px;
+    padding: 24px 16px;
     text-align: center;
     color: #6b7280;
     font-size: 0.9rem;
@@ -326,7 +326,7 @@
 
 .time-filter select,
 .time-filter-dropdown select {
-    padding: 10px 32px 10px 14px;
+    padding: 8px 32px 8px 16px;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 0.85rem;
@@ -349,13 +349,13 @@
 }
 
 .time-filter-dropdown select {
-    padding-right: 36px;
+    padding-right: 32px;
 }
 
 .time-filter-dropdown > i {
     position: absolute;
     right: 12px;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     color: #6b7280;
     pointer-events: none;
     transition: transform 0.2s ease;
@@ -462,7 +462,7 @@
     padding: 48px 0;
     padding-top: 190px; /* Space for fixed navbar (85px) + fixed subnav (~55px) + extra breathing room */
     overflow: hidden;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
 }
 
 .admin-hero-bg {
@@ -521,7 +521,7 @@
 
 .admin-hero-stats {
     display: flex;
-    gap: 20px;
+    gap: 24px;
 }
 
 .hero-stat {
@@ -598,7 +598,7 @@
 }
 
 .quick-action-btn:hover i {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
     color: white;
 }
 
@@ -612,7 +612,7 @@
 .stats-section-title {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-secondary);
@@ -633,7 +633,7 @@
     gap: 4px;
     font-size: 0.8rem;
     font-weight: 600;
-    padding: 4px 10px;
+    padding: 4px 8px;
     border-radius: 20px;
     margin-left: auto;
 }
@@ -645,14 +645,14 @@
 
 .stat-trend.down {
     background: rgba(220, 38, 38, 0.1);
-    color: #dc2626;
+    color: var(--danger-color);
 }
 
 /* Stat Badges (percentage) */
 .stat-badge {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
-    padding: 4px 10px;
+    padding: 4px 8px;
     border-radius: 20px;
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
     color: #667eea;
@@ -737,7 +737,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 14px;
+    padding: 16px;
     width: 100%;
 }
 
@@ -769,12 +769,12 @@
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.3s ease, padding 0.3s ease;
-    padding: 0 14px;
+    padding: 0 16px;
 }
 
 .status-item.expanded .status-details {
     max-height: 250px;
-    padding: 12px 14px 14px 14px;
+    padding: 12px 16px 16px 16px;
     border-top: 1px solid var(--border-color, #e5e7eb);
 }
 
@@ -782,7 +782,7 @@
     font-size: 0.85rem;
     color: var(--text-secondary);
     line-height: 1.5;
-    margin: 0 0 10px 0;
+    margin: 0 0 12px 0;
 }
 
 .status-details-meta {
@@ -794,8 +794,8 @@
 .status-details-meta span {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    font-size: 0.7rem;
+    gap: 8px;
+    font-size: 0.85rem;
     color: var(--text-secondary);
     background: var(--background-light, #f3f4f6);
     padding: 4px 8px;
@@ -804,7 +804,7 @@
 
 .status-details-meta span i {
     color: #667eea;
-    font-size: 0.65rem;
+    font-size: 0.85rem;
 }
 
 .status-icon {
@@ -843,7 +843,7 @@
 }
 
 .status-value.offline {
-    color: #dc2626;
+    color: var(--danger-color);
 }
 
 /* Dark mode for expanded status items */
@@ -868,7 +868,7 @@
 .status-indicator {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     font-size: 0.8rem;
     font-weight: 600;
     padding: 4px 12px;
@@ -881,12 +881,12 @@
 }
 
 .status-indicator.online i {
-    font-size: 0.5rem;
+    font-size: 0.85rem;
 }
 
 .status-indicator.offline {
     background: rgba(220, 38, 38, 0.1);
-    color: #dc2626;
+    color: var(--danger-color);
 }
 
 /* ===========================
@@ -894,7 +894,7 @@
    =========================== */
 .provider-stats {
     border-top: 1px solid var(--border-color);
-    padding-top: 20px;
+    padding-top: 24px;
 }
 
 .provider-stats h4 {
@@ -946,7 +946,7 @@
 }
 
 .progress-fill.email {
-    background: linear-gradient(90deg, #667eea, #764ba2);
+    background: linear-gradient(90deg, var(--indigo-primary), var(--indigo-dark));
 }
 
 .progress-fill.google {
@@ -997,7 +997,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
     color: white;
     font-weight: 700;
     font-size: 1rem;
@@ -1006,7 +1006,7 @@
 }
 
 .top-guide-rank.gold {
-    background: linear-gradient(135deg, #f59e0b, #d97706);
+    background: linear-gradient(135deg, var(--accent-color), var(--warning-color));
 }
 
 .top-guide-rank.silver {
@@ -1046,12 +1046,12 @@
 }
 
 .top-guide-stat i {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 }
 
 /* Admin Navbar */
 .admin-navbar {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%) !important;
     overflow: visible !important;
 }
 
@@ -1059,14 +1059,14 @@
     overflow: visible !important;
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 24px;
 }
 
 .admin-navbar .nav-links {
     overflow: visible !important;
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 32px;
     margin-left: 40px;
     margin-right: auto;
 }
@@ -1140,10 +1140,10 @@
 .admin-badge-nav {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    padding: 6px 12px;
+    padding: 8px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
     font-weight: 600;
@@ -1152,7 +1152,7 @@
 
 /* Admin Dashboard Layout */
 .admin-dashboard {
-    padding: 24px 0 60px;
+    padding: 24px 0 64px;
     min-height: calc(100vh - 80px);
     background: var(--background-light);
 }
@@ -1212,7 +1212,7 @@
 }
 
 .admin-tab.active {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
     color: white;
 }
 
@@ -1239,7 +1239,7 @@
 .admin-stats-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 24px;
     margin-bottom: 32px;
 }
 
@@ -1266,14 +1266,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
     border-radius: 14px;
     color: white;
     font-size: 1.5rem;
 }
 
 .stat-icon.premium {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, var(--pink-primary) 0%, var(--pink-dark) 100%);
 }
 
 .stat-icon.success {
@@ -1315,10 +1315,10 @@
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .admin-section h3 i {
@@ -1329,7 +1329,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .section-header h3 {
@@ -1377,8 +1377,8 @@
 }
 
 .search-btn {
-    padding: 10px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 12px 24px;
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
     color: white;
     border: none;
     border-radius: 8px;
@@ -1400,7 +1400,7 @@
 
 .admin-table th {
     text-align: left;
-    padding: 14px 16px;
+    padding: 16px 16px;
     background: var(--background-light);
     color: var(--text-secondary);
     font-weight: 600;
@@ -1411,7 +1411,7 @@
 }
 
 .admin-table td {
-    padding: 14px 16px;
+    padding: 16px 16px;
     color: var(--text-primary);
     border-bottom: 1px solid var(--border-color);
     font-size: 0.95rem;
@@ -1436,27 +1436,27 @@
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
 }
 
 .badge-status {
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 4px 10px;
+    padding: 4px 8px;
     border-radius: 20px;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
     white-space: nowrap;
 }
 
 .badge-status.premium {
-    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    background: linear-gradient(135deg, var(--pink-primary) 0%, var(--pink-dark) 100%);
     color: white;
 }
 
 .badge-status.admin {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
     color: white;
 }
 
@@ -1466,29 +1466,29 @@
 }
 
 .badge-status.unverified {
-    background: #fef3c7;
-    color: #d97706;
+    background: var(--warning-bg);
+    color: var(--warning-color);
 }
 
 .badge-status.active {
-    background: #dbeafe;
-    color: #2563eb;
+    background: var(--info-bg);
+    color: var(--info-color);
 }
 
 .badge-status.new {
-    background: #f0fdf4;
+    background: var(--success-bg);
     color: #15803d;
     border: 1px solid #86efac;
 }
 
 .badge-status.inactive {
-    background: #f3f4f6;
-    color: #6b7280;
+    background: var(--background-light);
+    color: var(--text-secondary);
 }
 
 .badge-status.revoked {
-    background: #fee2e2;
-    color: #dc2626;
+    background: var(--danger-bg-subtle);
+    color: var(--danger-color);
 }
 
 /* Table Actions */
@@ -1498,7 +1498,7 @@
 }
 
 .action-btn {
-    padding: 6px 12px;
+    padding: 8px 12px;
     border: none;
     border-radius: 6px;
     font-size: 0.8rem;
@@ -1520,8 +1520,8 @@
 }
 
 .action-btn.danger {
-    background: #fee2e2;
-    color: #dc2626;
+    background: var(--danger-bg-subtle);
+    color: var(--danger-color);
 }
 
 .action-btn.danger:hover {
@@ -1578,7 +1578,7 @@
     gap: 16px;
     flex-wrap: wrap;
     margin-bottom: 24px;
-    padding: 20px;
+    padding: 24px;
     background: var(--card-background);
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
@@ -1588,7 +1588,7 @@
 .filter-group {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 8px;
 }
 
 .filter-group label {
@@ -1601,7 +1601,7 @@
 
 .filter-group select,
 .filter-group input {
-    padding: 10px 14px;
+    padding: 12px 16px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.9rem;
@@ -1625,7 +1625,7 @@
 /* Audit Sort Select - styled like other filter selects */
 .audit-sort-select {
     width: 100%;
-    padding: 10px 12px;
+    padding: 12px 12px;
     border: 1px solid #e5e7eb;
     border-radius: 8px;
     font-size: 0.9rem;
@@ -1672,21 +1672,21 @@
     background: #fff;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
-    padding: 14px;
+    padding: 16px;
 }
 
 .audit-card-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 .audit-card-action {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 4px 10px;
+    gap: 8px;
+    padding: 4px 8px;
     border-radius: 6px;
     font-size: 0.8rem;
     font-weight: 600;
@@ -1698,28 +1698,28 @@
 }
 
 .audit-card-action.revoke {
-    background: #fee2e2;
-    color: #dc2626;
+    background: var(--danger-bg-subtle);
+    color: var(--danger-color);
 }
 
 .audit-card-action.restore {
-    background: #dbeafe;
-    color: #2563eb;
+    background: var(--info-bg);
+    color: var(--info-color);
 }
 
 .audit-card-action.note {
-    background: #fef3c7;
-    color: #d97706;
+    background: var(--warning-bg);
+    color: var(--warning-color);
 }
 
 .audit-card-time {
-    font-size: 0.75rem;
-    color: #6b7280;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
 }
 
 .audit-card-body {
     font-size: 0.9rem;
-    color: #374151;
+    color: var(--text-primary);
     line-height: 1.5;
 }
 
@@ -1730,13 +1730,13 @@
 .audit-card-reason {
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px solid #f3f4f6;
+    border-top: 1px solid var(--border-color);
     font-size: 0.8rem;
-    color: #6b7280;
+    color: var(--text-secondary);
 }
 
 .audit-card-reason span {
-    color: #374151;
+    color: var(--text-primary);
 }
 
 /* Dark mode for audit cards */
@@ -1794,8 +1794,8 @@
 .activity-item {
     display: flex;
     align-items: flex-start;
-    gap: 14px;
-    padding: 14px;
+    gap: 16px;
+    padding: 16px;
     background: var(--background-light);
     border-radius: 10px;
     transition: all 0.2s ease;
@@ -1822,18 +1822,18 @@
 }
 
 .activity-icon.revoke {
-    background: #fee2e2;
-    color: #dc2626;
+    background: var(--danger-bg-subtle);
+    color: var(--danger-color);
 }
 
 .activity-icon.restore {
-    background: #dbeafe;
-    color: #2563eb;
+    background: var(--info-bg);
+    color: var(--info-color);
 }
 
 .activity-icon.note {
-    background: #fef3c7;
-    color: #d97706;
+    background: var(--warning-bg);
+    color: var(--warning-color);
 }
 
 .activity-content {
@@ -1869,7 +1869,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    padding: 20px;
+    padding: 24px;
     overflow-y: auto;
 }
 
@@ -1926,7 +1926,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 24px;
+    padding: 24px 24px;
     border-bottom: 1px solid #e5e7eb;
     background: #ffffff;
     border-radius: 16px 16px 0 0;
@@ -1943,7 +1943,7 @@
     margin: 0;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 #user-detail-modal .modal-header h2 i,
@@ -1957,7 +1957,7 @@
 .modal-header-actions {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .modal-header-actions .btn-sm {
@@ -1986,8 +1986,8 @@
 #add-guide-modal .modal-close:hover,
 #guide-owners-modal .modal-close:hover,
 #bulk-grant-modal .modal-close:hover {
-    background: #fee2e2;
-    color: #dc2626;
+    background: var(--danger-bg-subtle);
+    color: var(--danger-color);
 }
 
 #user-detail-modal .modal-body,
@@ -2002,7 +2002,7 @@
 
 /* User Detail Modal Sections */
 #user-detail-modal .user-detail-section {
-    margin-bottom: 28px;
+    margin-bottom: 24px;
     background: #ffffff;
 }
 
@@ -2078,7 +2078,7 @@
 }
 
 #user-detail-modal .info-label {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     font-weight: 600;
     color: #6b7280;
     text-transform: uppercase;
@@ -2104,7 +2104,7 @@
 
 .admin-table.compact th,
 .admin-table.compact td {
-    padding: 10px 12px;
+    padding: 8px 12px;
 }
 
 .admin-table .checkbox-col {
@@ -2115,7 +2115,7 @@
 .admin-table .empty-cell {
     text-align: center;
     color: #6b7280;
-    padding: 30px !important;
+    padding: 32px !important;
 }
 
 .admin-table .revoked-row {
@@ -2189,7 +2189,7 @@
     display: inline-flex;
     align-items: center;
     gap: 4px;
-    padding: 3px 8px;
+    padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 500;
@@ -2201,18 +2201,18 @@
 }
 
 .source-badge.admin {
-    background: #fef3c7;
-    color: #b45309;
+    background: var(--warning-bg);
+    color: var(--warning-dark);
 }
 
 .source-badge.dashboard {
-    background: #dbeafe;
-    color: #1d4ed8;
+    background: var(--info-bg);
+    color: var(--info-dark);
 }
 
 .source-badge.guide-page {
-    background: #d1fae5;
-    color: #059669;
+    background: var(--success-bg);
+    color: var(--success-color);
 }
 
 .source-badge.email {
@@ -2221,8 +2221,8 @@
 }
 
 .source-badge.unknown {
-    background: #f3f4f6;
-    color: #6b7280;
+    background: var(--background-light);
+    color: var(--text-secondary);
 }
 
 /* Download Count Button */
@@ -2233,8 +2233,8 @@
 .download-count-btn {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 12px;
+    gap: 8px;
+    padding: 8px 12px;
     border: none;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -2253,8 +2253,8 @@
 }
 
 .download-count-btn.has-downloads {
-    background: #fef3c7;
-    color: #b45309;
+    background: var(--warning-bg);
+    color: var(--warning-dark);
 }
 
 .download-count-btn.has-downloads:hover {
@@ -2275,7 +2275,7 @@
     background: #f9fafb;
     border-radius: 8px;
     padding: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .download-history-info p {
@@ -2287,9 +2287,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    background: #fef3c7;
-    color: #b45309;
-    padding: 2px 10px;
+    background: var(--warning-bg);
+    color: var(--warning-dark);
+    padding: 2px 8px;
     border-radius: 12px;
     font-weight: 700;
     font-size: 0.9rem;
@@ -2302,7 +2302,7 @@
 
 .download-history-list .empty-state {
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 24px;
     color: #9ca3af;
 }
 
@@ -2363,7 +2363,7 @@
 
 .download-history-list code {
     background: #f3f4f6;
-    padding: 2px 6px;
+    padding: 2px 8px;
     border-radius: 4px;
     font-size: 0.8rem;
     font-family: 'SF Mono', Monaco, 'Courier New', monospace;
@@ -2489,7 +2489,7 @@
 }
 
 #user-detail-modal .note-item {
-    padding: 14px;
+    padding: 16px;
     background: #f9fafb;
     border-radius: 10px;
     border-left: 4px solid #667eea;
@@ -2548,7 +2548,7 @@
 .form-select,
 .form-control {
     width: 100%;
-    padding: 12px 14px;
+    padding: 12px 16px;
     border: 1px solid var(--border-color);
     border-radius: 8px;
     font-size: 0.95rem;
@@ -2560,7 +2560,7 @@
     display: flex;
     gap: 12px;
     justify-content: flex-end;
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 /* Buttons */
@@ -2568,7 +2568,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 20px;
+    padding: 12px 24px;
     border: none;
     border-radius: 8px;
     font-size: 0.95rem;
@@ -2578,7 +2578,7 @@
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
     color: white;
 }
 
@@ -2598,16 +2598,16 @@
 }
 
 .btn-danger {
-    background: #dc2626;
+    background: var(--danger-color);
     color: white;
 }
 
 .btn-danger:hover {
-    background: #b91c1c;
+    background: var(--danger-dark);
 }
 
 .btn-sm {
-    padding: 8px 14px;
+    padding: 8px 16px;
     font-size: 0.85rem;
 }
 
@@ -2615,7 +2615,7 @@
 .guide-owners-stats {
     display: flex;
     gap: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .guide-owners-stats .stat {
@@ -2627,14 +2627,14 @@
 }
 
 .owners-table-container {
-    margin-top: 20px;
+    margin-top: 24px;
     max-height: 400px;
     overflow-y: auto;
 }
 
 /* Bulk Grant Results */
 .bulk-grant-results {
-    margin-top: 20px;
+    margin-top: 24px;
     padding: 16px;
     background: var(--background-light);
     border-radius: 10px;
@@ -2677,7 +2677,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 16px 20px;
+    padding: 16px 24px;
     background: var(--card-background);
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
@@ -2717,7 +2717,7 @@
 }
 
 .toast.error .toast-icon {
-    color: #dc2626;
+    color: var(--danger-color);
 }
 
 .toast.info .toast-icon {
@@ -2733,7 +2733,7 @@
 /* Admin Footer */
 .admin-footer {
     background: var(--card-background);
-    padding: 20px 0;
+    padding: 24px 0;
     text-align: center;
 }
 
@@ -2746,7 +2746,7 @@
 /* Empty State */
 .empty-state {
     text-align: center;
-    padding: 40px 20px;
+    padding: 40px 24px;
     color: var(--text-secondary);
 }
 
@@ -2804,13 +2804,13 @@
 @media (max-width: 768px) {
     .admin-hero {
         padding: 16px 0;
-        padding-top: 140px; /* Space for fixed navbar + fixed subnav + breathing room */
+        padding-top: 144px; /* Space for fixed navbar + fixed subnav + breathing room */
     }
 
     .admin-hero-badge {
-        padding: 5px 10px;
-        font-size: 0.7rem;
-        margin-bottom: 6px;
+        padding: 4px 8px;
+        font-size: 0.85rem;
+        margin-bottom: 8px;
     }
 
     .admin-hero h1 {
@@ -2831,7 +2831,7 @@
     }
 
     .hero-stat {
-        padding: 10px 12px;
+        padding: 8px 12px;
         min-width: 0;
         flex: 1;
         border-radius: 10px;
@@ -2842,7 +2842,7 @@
     }
 
     .hero-stat-label {
-        font-size: 0.6rem;
+        font-size: 0.85rem;
     }
 
     .admin-dashboard {
@@ -2874,12 +2874,12 @@
 
     .admin-stats-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 8px;
     }
 
     .admin-stat-card {
         padding: 12px;
-        gap: 10px;
+        gap: 8px;
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
@@ -2896,33 +2896,33 @@
     }
 
     .admin-stat-card .stat-label {
-        font-size: 0.65rem;
+        font-size: 0.85rem;
     }
 
     .admin-stat-card .stat-badge {
         position: absolute;
         top: 8px;
         right: 8px;
-        font-size: 0.6rem;
-        padding: 2px 6px;
+        font-size: 0.85rem;
+        padding: 2px 8px;
     }
 
     .admin-stat-card .stat-subtext {
-        font-size: 0.65rem;
+        font-size: 0.85rem;
     }
 
     .stats-section {
-        margin-bottom: 20px;
+        margin-bottom: 24px;
     }
 
     .stats-section-title {
-        font-size: 0.75rem;
-        margin-bottom: 10px;
+        font-size: 0.85rem;
+        margin-bottom: 12px;
     }
 
     /* Admin sections - more compact on mobile */
     .admin-section {
-        padding: 14px;
+        padding: 16px;
         border-radius: 12px;
     }
 
@@ -2945,8 +2945,8 @@
     }
 
     .activity-item {
-        padding: 10px;
-        gap: 10px;
+        padding: 8px;
+        gap: 8px;
     }
 
     .activity-icon {
@@ -2960,11 +2960,11 @@
     }
 
     .activity-info p {
-        font-size: 0.7rem;
+        font-size: 0.85rem;
     }
 
     .activity-time {
-        font-size: 0.65rem;
+        font-size: 0.85rem;
     }
 
     /* System status - 2 column grid on mobile */
@@ -2979,7 +2979,7 @@
 
     .status-item-header {
         padding: 12px;
-        gap: 10px;
+        gap: 8px;
         flex-wrap: wrap;
     }
 
@@ -2997,7 +2997,7 @@
     }
 
     .status-name {
-        font-size: 0.65rem;
+        font-size: 0.85rem;
         line-height: 1.2;
         white-space: nowrap;
         overflow: hidden;
@@ -3012,14 +3012,14 @@
     .status-expand-icon {
         width: 20px;
         height: 20px;
-        font-size: 0.7rem;
+        font-size: 0.85rem;
     }
 
     .provider-bar {
         grid-template-columns: 60px 1fr 35px;
-        gap: 6px;
-        padding: 8px 10px;
-        font-size: 0.75rem;
+        gap: 8px;
+        padding: 8px 8px;
+        font-size: 0.85rem;
     }
 
     /* Top guides - 2 column grid on mobile */
@@ -3039,7 +3039,7 @@
     .top-guide-rank {
         width: 26px;
         height: 26px;
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         margin-bottom: 4px;
     }
 
@@ -3050,19 +3050,19 @@
     .top-guide-info h4 {
         font-size: 0.8rem;
         line-height: 1.3;
-        margin-bottom: 6px;
+        margin-bottom: 8px;
         word-wrap: break-word;
     }
 
     .top-guide-info p {
-        font-size: 0.7rem;
+        font-size: 0.85rem;
         display: flex;
         flex-wrap: wrap;
-        gap: 6px;
+        gap: 8px;
     }
 
     .top-guide-stat {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
 
     /* Audit Filters Mobile */
@@ -3077,14 +3077,14 @@
     }
 
     .audit-filters .filter-group label {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
         margin-bottom: 4px;
     }
 
     .filter-group select,
     .filter-group input {
         min-width: 100%;
-        padding: 10px 12px;
+        padding: 8px 12px;
     }
 
     /* Date fields side by side on mobile */
@@ -3116,11 +3116,11 @@
 
     .admin-table th,
     .admin-table td {
-        padding: 10px 8px;
+        padding: 8px 8px;
     }
 
     .modal-content {
-        margin: 10px;
+        margin: 8px;
         max-height: calc(100vh - 20px);
     }
 
@@ -3158,7 +3158,7 @@
     .users-table-container .admin-table th,
     .users-table-container .admin-table td {
         white-space: nowrap;
-        padding: 10px 12px;
+        padding: 8px 12px;
     }
 
     /* Hide Joined column on mobile to save space */
@@ -3170,7 +3170,7 @@
     /* Compact the Actions column */
     .users-table-container .admin-table th:nth-child(6),
     .users-table-container .admin-table td:nth-child(6) {
-        padding: 10px 8px;
+        padding: 8px 8px;
     }
 
     /* Guides Table Mobile */
@@ -3188,7 +3188,7 @@
     /* Search section mobile */
     .search-input-group {
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
     }
 
     .search-input-group input {
@@ -3201,18 +3201,18 @@
 
     /* Compact action buttons on mobile */
     .table-actions .action-btn {
-        padding: 5px 10px;
-        font-size: 0.75rem;
+        padding: 4px 8px;
+        font-size: 0.85rem;
     }
 
     .table-actions .action-btn i {
-        font-size: 0.7rem;
+        font-size: 0.85rem;
     }
 
     /* Status badges more compact on mobile */
     .badge-status {
-        font-size: 0.65rem;
-        padding: 3px 6px;
+        font-size: 0.85rem;
+        padding: 4px 8px;
     }
 
     /* User count badge */
@@ -3316,13 +3316,13 @@
 
 .user-card-badges {
     display: flex;
-    gap: 6px;
+    gap: 8px;
     flex-wrap: wrap;
 }
 
 .user-card-badges .badge-status {
-    font-size: 0.7rem;
-    padding: 3px 8px;
+    font-size: 0.85rem;
+    padding: 4px 8px;
 }
 
 /* Dark mode for mobile cards */
@@ -3375,7 +3375,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 14px 16px;
+    padding: 16px 16px;
     border-bottom: 1px solid #f3f4f6;
     cursor: pointer;
     transition: background 0.15s ease;
@@ -3427,7 +3427,7 @@
 
 .guide-list-arrow {
     color: #9ca3af;
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 }
 
 /* Scrollable guide containers */
@@ -3463,7 +3463,7 @@
 
 .guide-search-input-wrapper input {
     width: 100%;
-    padding: 12px 40px 12px 42px;
+    padding: 12px 40px 12px 40px;
     border: 1px solid #e5e7eb;
     border-radius: 10px;
     font-size: 0.95rem;
@@ -3573,7 +3573,7 @@
     .guide-type-toggle .toggle-btn {
         flex: 1;
         justify-content: center;
-        padding: 10px 12px;
+        padding: 8px 12px;
         font-size: 0.8rem;
     }
 
@@ -3927,15 +3927,15 @@
 }
 
 #deleted-accounts-table .badge-status {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
 }
 
 #no-deleted-accounts {
-    padding: 30px 20px;
+    padding: 32px 24px;
 }
 
 #no-deleted-accounts i {
-    color: #10b981;
+    color: var(--success-light);
     font-size: 2.5rem;
     margin-bottom: 12px;
 }
@@ -3950,7 +3950,7 @@
     display: flex;
     align-items: flex-end;
     gap: 16px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     flex-wrap: wrap;
 }
 
@@ -3962,7 +3962,7 @@
     display: block;
     font-size: 0.85rem;
     color: var(--text-secondary);
-    margin-bottom: 6px;
+    margin-bottom: 8px;
 }
 
 .deleted-accounts-filters .filter-group select {
@@ -4023,7 +4023,7 @@
 }
 
 .guide-type-toggle .toggle-btn {
-    padding: 10px 20px;
+    padding: 12px 24px;
     border: none;
     background: transparent;
     color: var(--primary-color, #667eea);
@@ -4166,7 +4166,7 @@
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 10px 16px;
+    padding: 12px 16px;
     border: none;
     background: transparent;
     color: var(--primary-color, #667eea);
@@ -4265,7 +4265,7 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 12px 14px;
+    padding: 12px 16px;
     border-bottom: 1px solid #e5e7eb;
     cursor: pointer;
     transition: all 0.15s ease;
@@ -4304,7 +4304,7 @@
     content: '\f00c';
     font-family: 'Font Awesome 5 Free';
     font-weight: 900;
-    font-size: 0.7rem;
+    font-size: 0.85rem;
     color: white;
 }
 
@@ -4369,8 +4369,8 @@
 .selected-guide-chip {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 10px;
+    gap: 8px;
+    padding: 8px 8px;
     background: white;
     border: 1px solid #e5e7eb;
     border-radius: 20px;
@@ -4389,13 +4389,13 @@
     border-radius: 50%;
     color: #6b7280;
     cursor: pointer;
-    font-size: 0.65rem;
+    font-size: 0.85rem;
     transition: all 0.15s ease;
 }
 
 .selected-guide-chip-remove:hover {
-    background: #fee2e2;
-    color: #dc2626;
+    background: var(--danger-bg-subtle);
+    color: var(--danger-color);
 }
 
 /* Dark Mode for Enhanced Add Guide Modal */
@@ -4502,6 +4502,97 @@
     color: #fca5a5;
 }
 
+/* ===========================
+   INLINE STYLE EXTRACTIONS
+   =========================== */
+
+/* Test Emails / Database Migration Section */
+.admin-migration-desc {
+    color: var(--text-secondary);
+    font-size: 0.8125rem;
+    margin-bottom: 16px;
+}
+
+.admin-migration-heading {
+    font-size: 0.875rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.admin-migration-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.admin-migration-btn {
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    font-size: 0.8125rem;
+    cursor: pointer;
+    transition: opacity 0.2s ease, transform 0.1s ease;
+}
+
+.admin-migration-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.admin-migration-btn:active {
+    transform: translateY(0);
+}
+
+.admin-migration-btn.monthly {
+    background: linear-gradient(135deg, var(--primary-color), #0ea5e9);
+}
+
+.admin-migration-btn.semester {
+    background: linear-gradient(135deg, var(--cat-pharmacology), #6d28d9);
+}
+
+.admin-migration-btn.lifetime {
+    background: linear-gradient(135deg, var(--warning-color), var(--secondary-color));
+}
+
+.admin-migration-btn.reminder-14 {
+    background: linear-gradient(135deg, var(--accent-color), var(--warning-color));
+}
+
+.admin-migration-btn.reminder-3 {
+    background: linear-gradient(135deg, var(--danger-color), var(--danger-dark));
+}
+
+.test-email-group + .test-email-group {
+    margin-top: 12px;
+}
+
+/* Filter Row & Filter Select */
+.admin-filter-row {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.admin-filter-select {
+    max-width: 200px;
+}
+
+/* Modal Narrow Variant */
+.admin-modal-narrow {
+    max-width: 560px;
+}
+
+/* Button Row (subscription actions, etc.) */
+.admin-btn-row {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
 /* Mobile Adjustments for Add Guide Modal */
 @media (max-width: 768px) {
     #add-guide-modal .modal-content {
@@ -4513,7 +4604,7 @@
     }
 
     .add-guide-type-btn {
-        padding: 10px 12px;
+        padding: 8px 12px;
         font-size: 0.8rem;
     }
 
@@ -4526,7 +4617,7 @@
     }
 
     .add-guide-item {
-        padding: 10px 12px;
+        padding: 8px 12px;
     }
 
     .add-guide-item-name {
@@ -4534,7 +4625,7 @@
     }
 
     .add-guide-item-price {
-        font-size: 0.75rem;
+        font-size: 0.85rem;
     }
 
     .selected-guides-chips {
@@ -4542,7 +4633,34 @@
     }
 
     .selected-guide-chip {
-        font-size: 0.75rem;
-        padding: 5px 8px;
+        font-size: 0.85rem;
+        padding: 4px 8px;
     }
+}
+
+/* Admin user page: section padding (admin-user.html) */
+.admin-user-section-padding {
+    padding: 12px 16px;
+}
+
+/* Admin user page: note textarea (admin-user.html) */
+.admin-note-textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    resize: vertical;
+}
+
+[data-theme="dark"] .admin-note-textarea {
+    border-color: var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
+}
+
+/* Admin user page: note action buttons (admin-user.html) */
+.admin-note-actions {
+    display: flex;
+    gap: 8px;
 }

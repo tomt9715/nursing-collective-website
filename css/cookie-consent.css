@@ -38,7 +38,7 @@
     margin-bottom: 8px;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
 }
 
 .cookie-consent-text h3 i {
@@ -127,7 +127,7 @@
     font-family: 'Font Awesome 6 Free';
     font-weight: 900;
     color: white;
-    font-size: 12px;
+    font-size: 0.85rem;
 }
 
 .cookie-checkbox input:disabled + .checkmark {
@@ -260,7 +260,7 @@
     }
 
     .cookie-checkbox {
-        padding: 10px;
+        padding: 8px;
     }
 
     .cookie-consent-actions {
@@ -270,7 +270,7 @@
     .cookie-btn {
         width: 100%;
         justify-content: center;
-        padding: 14px 20px;
+        padding: 16px 20px;
     }
 }
 

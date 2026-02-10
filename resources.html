@@ -752,7 +752,7 @@
             </div>
             <div class="nav-links">
                 <!-- Authenticated nav item (shown when logged in) -->
-                <a href="dashboard.html" id="nav-dashboard-link" style="display: none;">Dashboard</a>
+                <a href="dashboard.html" id="nav-dashboard-link" class="hidden">Dashboard</a>
                 <a href="resources.html" class="active">Resources</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about.html">About</a>
@@ -788,7 +788,7 @@
                             </div>
                         </div>
                         <!-- Logged-in content (shown when logged in) -->
-                        <div class="dropdown-user-content" id="dropdown-user-content" style="display: none;">
+                        <div class="dropdown-user-content hidden" id="dropdown-user-content">
                             <div class="user-dropdown-header">
                                 <div class="user-avatar-large">
                                     <i class="fas fa-user-circle"></i>
@@ -841,9 +841,9 @@
                 <p>The stuff they don't teach you in orientation. Study strategies, time management, and what to do when nursing school feels overwhelming.</p>
 
                 <!-- CTA Button -->
-                <div style="margin-top: 32px;">
-                    <a href="#survival-guides" class="btn btn-light btn-lg" style="padding: 14px 28px; font-weight: 600;">
-                        <i class="fas fa-arrow-down" style="margin-right: 8px;"></i> Browse 5 Free Guides
+                <div class="resources-cta-spacing">
+                    <a href="#survival-guides" class="btn btn-light btn-lg resources-hero-cta-btn">
+                        <i class="fas fa-arrow-down resources-btn-icon"></i> Browse 5 Free Guides
                     </a>
                 </div>
             </div>
@@ -888,7 +888,7 @@
         </section>
 
         <!-- Wave Divider -->
-        <div class="wave-divider wave-white" style="background: var(--background-light);">
+        <div class="wave-divider wave-white wave-bg-light">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,googletag985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"></path>
             </svg>
@@ -899,7 +899,7 @@
             <div class="container">
                 <div class="section-header">
                     <div class="section-step-badge">
-                        <span class="section-step-number survival-color"><i class="fas fa-gift" style="font-size: 0.75rem;"></i></span>
+                        <span class="section-step-number survival-color"><i class="fas fa-gift resources-icon-sm"></i></span>
                         <span class="section-step-text">100% Free</span>
                     </div>
                     <div class="section-icon survival-icon">
@@ -952,7 +952,7 @@
         </section>
 
         <!-- Wave Divider -->
-        <div class="wave-divider wave-light" style="background: var(--background-white);">
+        <div class="wave-divider wave-light wave-bg-white">
             <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
                 <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
                 <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
@@ -964,47 +964,47 @@
         <section class="resources-section bg-light" id="premium-content">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-icon" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+                    <div class="section-icon resources-section-icon-gradient">
                         <i class="fas fa-crown"></i>
                     </div>
                     <h2>Go Deeper with Premium</h2>
                     <p>Clinical guides, quick reference tools, and comprehensive study guides for when you're ready to level up.</p>
                 </div>
 
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-bottom: 40px;">
+                <div class="resources-cards-grid">
                     <!-- Clinical Confidence Preview -->
-                    <div style="background: var(--card-bg); border-radius: 16px; padding: 28px; border: 1px solid var(--border-color);">
-                        <div class="resource-card-icon clinical-icon" style="margin-bottom: 16px;">
+                    <div class="resources-card">
+                        <div class="resource-card-icon clinical-icon resources-card-icon-wrap">
                             <i class="fas fa-stethoscope"></i>
                         </div>
-                        <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Clinical Confidence</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px;">7 guides covering first semester clinicals, head-to-toe assessments, clinical skills, and more.</p>
-                        <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-secondary);"><i class="fas fa-lock"></i> Premium</span>
+                        <h3 class="resources-card-title">Clinical Confidence</h3>
+                        <p class="resources-card-desc">7 guides covering first semester clinicals, head-to-toe assessments, clinical skills, and more.</p>
+                        <span class="resources-card-meta"><i class="fas fa-lock"></i> Premium</span>
                     </div>
 
                     <!-- Quick Reference Preview -->
-                    <div style="background: var(--card-bg); border-radius: 16px; padding: 28px; border: 1px solid var(--border-color);">
-                        <div class="resource-card-icon reference-icon" style="margin-bottom: 16px;">
+                    <div class="resources-card">
+                        <div class="resource-card-icon reference-icon resources-card-icon-wrap">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Quick Reference Tools</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px;">5 essential references: lab values, vital signs, medications, documentation phrases, and abbreviations.</p>
-                        <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-secondary);"><i class="fas fa-lock"></i> Premium</span>
+                        <h3 class="resources-card-title">Quick Reference Tools</h3>
+                        <p class="resources-card-desc">5 essential references: lab values, vital signs, medications, documentation phrases, and abbreviations.</p>
+                        <span class="resources-card-meta"><i class="fas fa-lock"></i> Premium</span>
                     </div>
 
                     <!-- Study Guides Preview -->
-                    <div style="background: var(--card-bg); border-radius: 16px; padding: 28px; border: 1px solid var(--border-color);">
-                        <div class="resource-card-icon" style="background: linear-gradient(135deg, #8b5cf6, #a855f7); margin-bottom: 16px;">
+                    <div class="resources-card">
+                        <div class="resource-card-icon resources-icon-purple">
                             <i class="fas fa-book-medical"></i>
                         </div>
-                        <h3 style="font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: var(--text-primary);">Comprehensive Study Guides</h3>
-                        <p style="color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 16px;">17+ in-depth guides covering cardiovascular, respiratory, neurological, and more with NCLEX-focused content.</p>
-                        <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 0.85rem; color: var(--text-secondary);"><i class="fas fa-lock"></i> Premium</span>
+                        <h3 class="resources-card-title">Comprehensive Study Guides</h3>
+                        <p class="resources-card-desc">17+ in-depth guides covering cardiovascular, respiratory, neurological, and more with NCLEX-focused content.</p>
+                        <span class="resources-card-meta"><i class="fas fa-lock"></i> Premium</span>
                     </div>
                 </div>
 
-                <div style="text-align: center;">
-                    <a href="pricing.html" class="btn btn-primary btn-lg" style="padding: 16px 32px;">
+                <div class="resources-cta-center">
+                    <a href="pricing.html" class="btn btn-primary btn-lg resources-premium-cta-btn">
                         <i class="fas fa-unlock"></i> Unlock All Resources - Starting at $14.99/mo
                     </a>
                 </div>
@@ -1080,8 +1080,8 @@
 
             <div class="footer-bottom">
                 <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
-                <p style="font-size: 0.7rem; margin-top: 8px; opacity: 0.5;">
-                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline;">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;">Flaticon</a>
+                <p class="footer-attribution">
+                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
                 </p>
             </div>
         </div>

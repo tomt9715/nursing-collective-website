@@ -135,7 +135,7 @@ async function loadUserProfile() {
         }
 
         const adminPanelBtn = document.getElementById('admin-panel-btn');
-        if (adminPanelBtn && isAdmin) adminPanelBtn.style.display = 'flex';
+        if (adminPanelBtn && isAdmin) adminPanelBtn.classList.remove('hidden');
         if (isAdmin) document.body.classList.add('is-admin-user');
 
         if (premiumBadgeEl && user.is_premium && !isAdmin) {
@@ -412,15 +412,15 @@ function loadQuizBankDashboard() {
     var overview = document.getElementById('qb-mastery-overview');
 
     if (stats.totalQuestionsAnswered === 0) {
-        if (emptyState) emptyState.style.display = '';
-        if (overview) overview.style.display = 'none';
+        if (emptyState) emptyState.classList.remove('hidden');
+        if (overview) overview.classList.add('hidden');
         var continueBtn = document.getElementById('qb-continue-btn');
         if (continueBtn) continueBtn.style.display = 'none';
         return;
     }
 
-    if (emptyState) emptyState.style.display = 'none';
-    if (overview) overview.style.display = '';
+    if (emptyState) emptyState.classList.add('hidden');
+    if (overview) overview.classList.remove('hidden');
 
     var avgLevelEl = document.getElementById('qb-avg-level');
     var practicedEl = document.getElementById('qb-topics-practiced');
@@ -454,7 +454,7 @@ function updateEmailVerificationBanner(user) {
     const resendBtn = document.getElementById('resend-verification-btn');
 
     if (!user.is_verified && banner) {
-        banner.style.display = 'block';
+        banner.classList.remove('hidden');
 
         if (resendBtn) {
             resendBtn.onclick = async function() {
@@ -504,11 +504,11 @@ function showGettingStartedCard(user) {
     const dismissed = localStorage.getItem('gettingStartedDismissed');
 
     if (daysOld < 2 && !dismissed) {
-        gettingStartedCard.style.display = 'block';
+        gettingStartedCard.classList.remove('hidden');
         const dismissBtn = gettingStartedCard.querySelector('button');
         if (dismissBtn) {
             dismissBtn.onclick = function() {
-                gettingStartedCard.style.display = 'none';
+                gettingStartedCard.classList.add('hidden');
                 localStorage.setItem('gettingStartedDismissed', 'true');
             };
         }
@@ -890,7 +890,7 @@ document.addEventListener('DOMContentLoaded', function() {
         dismissBtn.addEventListener('click', function() {
             const card = document.getElementById('getting-started-card');
             if (card) {
-                card.style.display = 'none';
+                card.classList.add('hidden');
                 localStorage.setItem('gettingStartedDismissed', 'true');
             }
         });

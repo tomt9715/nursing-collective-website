@@ -455,17 +455,19 @@ function updateEmailVerificationBanner(user) {
     const resendBtn = document.getElementById('resend-verification-btn');
     if (!banner) return;
 
-    // OAuth users (Google, Discord) are inherently verified — skip banner for them
+    // Check multiple signals: backend verified flag, OAuth via localStorage, or Discord-connected
     const authMethod = localStorage.getItem('lastAuthMethod');
     const isOAuthUser = authMethod === 'google' || authMethod === 'discord';
+    const hasDiscord = user.has_discord === true;
 
-    // If verified or OAuth, ensure banner stays hidden
-    if (user.is_verified || isOAuthUser) {
+    // If verified, OAuth user, or Discord-connected — hide the banner
+    if (user.is_verified || isOAuthUser || hasDiscord) {
         banner.classList.add('hidden');
         return;
     }
 
-    if (!user.is_verified && !isOAuthUser) {
+    // Only show for genuinely unverified email-only users
+    if (!user.is_verified) {
         banner.classList.remove('hidden');
 
         if (resendBtn) {

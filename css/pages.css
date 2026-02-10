@@ -2986,8 +2986,8 @@
 
 /* Email Verification / Renewal Banner */
 .verification-banner {
-    background: linear-gradient(135deg, #d97706, #b45309);
-    color: white;
+    background: linear-gradient(135deg, #d97706, #b45309) !important;
+    color: #ffffff !important;
     padding: 20px;
     border-radius: 16px;
     margin-bottom: 24px;
@@ -3010,17 +3010,18 @@
 
 .verification-banner-content > i {
     font-size: 32px;
+    color: #ffffff !important;
 }
 
 .verification-banner h4 {
-    color: white;
+    color: #ffffff !important;
     margin: 0 0 8px 0;
     font-size: 1.1rem;
 }
 
 .verification-banner p {
     margin: 0;
-    opacity: 0.95;
+    color: rgba(255, 255, 255, 0.95) !important;
     font-size: 0.95rem;
 }
 
@@ -3041,37 +3042,37 @@
 
 /* Admin Panel Action Card */
 .action-card-hero.admin-action {
-    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
-    color: white;
+    background: linear-gradient(135deg, #4f5fd9 0%, #5a3996 100%) !important;
+    color: #ffffff !important;
 }
 
 .action-card-hero.admin-action .action-icon-large {
     background: rgba(255, 255, 255, 0.2);
-    color: white;
+    color: #ffffff !important;
 }
 
 .action-card-hero.admin-action h3 {
-    color: white;
+    color: #ffffff !important;
 }
 
 .action-card-hero.admin-action p {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Getting Started Card */
 .getting-started-card {
     grid-column: 1 / -1;
-    background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--indigo-dark) 100%);
-    color: white;
+    background: linear-gradient(135deg, #4f5fd9 0%, #5a3996 100%) !important;
+    color: #ffffff !important;
 }
 
 .getting-started-card h3 {
-    color: white;
+    color: #ffffff !important;
 }
 
 .getting-started-card > p {
     margin: 16px 0;
-    opacity: 0.95;
+    color: rgba(255, 255, 255, 0.95) !important;
 }
 
 .getting-started-grid {
@@ -3093,19 +3094,19 @@
 }
 
 .getting-started-step h4 {
-    color: white;
+    color: #ffffff !important;
     font-size: 1rem;
     margin-bottom: 8px;
 }
 
 .getting-started-step p {
     font-size: 0.9rem;
-    opacity: 0.9;
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 .getting-started-dismiss-btn {
     background: white;
-    color: #667eea;
+    color: #4f5fd9;
     border: none;
     padding: 12px 24px;
     border-radius: 8px;

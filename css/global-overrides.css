@@ -9,6 +9,7 @@
 :root {
     --gradient-blue: #4A90E2;
     --gradient-purple: #7B68EE;
+    --warning-color: #d97706;
 }
 
 /* The bundle has .hidden { opacity:0; visibility:hidden }

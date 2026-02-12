@@ -1,39 +1,9 @@
 /* ============================================
    PAGES.CSS - Page-Specific Styles
+   (loaded only on dashboard + pricing)
+   Global overrides (.hidden, navbar) are in
+   global-overrides.css which loads on ALL pages.
    ============================================ */
-
-/* Override stale bundle.min.css .hidden definition.
-   The bundle uses opacity/visibility which doesn't properly hide
-   elements in grid/flex layouts. This must be display:none. */
-.hidden {
-    display: none !important;
-}
-
-/* ============================================
-   NAVBAR - Full-width override
-   (bundle.min.css has max-width:1200px and
-   margin-left:60px which cramps the layout)
-   ============================================ */
-.nav-container {
-    max-width: 100% !important;
-    padding: 0 48px !important;
-}
-
-.nav-links {
-    margin-left: auto !important;
-}
-
-@media (max-width: 768px) {
-    .nav-container {
-        padding: 0 32px !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .nav-container {
-        padding: 0 20px !important;
-    }
-}
 
 /* ============================================
    HOME PAGE

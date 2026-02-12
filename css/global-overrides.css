@@ -1,0 +1,34 @@
+/* ============================================
+   GLOBAL OVERRIDES
+   Loaded on ALL pages after bundle.min.css.
+   Fixes stale rules in the pre-built bundle.
+   ============================================ */
+
+/* The bundle has .hidden { opacity:0; visibility:hidden }
+   which doesn't hide elements in flex/grid layouts. */
+.hidden {
+    display: none !important;
+}
+
+/* Spread navbar full-width instead of the bundle's
+   max-width:1200px centered layout. */
+.nav-container {
+    max-width: 100% !important;
+    padding: 0 48px !important;
+}
+
+.nav-links {
+    margin-left: auto !important;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 32px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 20px !important;
+    }
+}

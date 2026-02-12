@@ -2,6 +2,13 @@
    PAGES.CSS - Page-Specific Styles
    ============================================ */
 
+/* Override stale bundle.min.css .hidden definition.
+   The bundle uses opacity/visibility which doesn't properly hide
+   elements in grid/flex layouts. This must be display:none. */
+.hidden {
+    display: none !important;
+}
+
 /* ============================================
    HOME PAGE
    ============================================ */

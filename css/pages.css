@@ -10,6 +10,32 @@
 }
 
 /* ============================================
+   NAVBAR - Full-width override
+   (bundle.min.css has max-width:1200px which
+   cramps everything toward center)
+   ============================================ */
+.nav-container {
+    max-width: 100%;
+    padding: 0 48px;
+}
+
+.nav-links {
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 0 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-container {
+        padding: 0 20px;
+    }
+}
+
+/* ============================================
    HOME PAGE
    ============================================ */
 

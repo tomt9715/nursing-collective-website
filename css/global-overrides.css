@@ -4,6 +4,13 @@
    Fixes stale rules in the pre-built bundle.
    ============================================ */
 
+/* CSS variables missing from the bundle (PurgeCSS dropped them).
+   These are needed by gradient backgrounds in pages.css. */
+:root {
+    --gradient-blue: #4A90E2;
+    --gradient-purple: #7B68EE;
+}
+
 /* The bundle has .hidden { opacity:0; visibility:hidden }
    which doesn't hide elements in flex/grid layouts. */
 .hidden {
@@ -15,10 +22,16 @@
 .nav-container {
     max-width: 100% !important;
     padding: 0 48px !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
 }
 
+/* Push nav links to far right. The brand already has
+   margin-right:auto from the bundle. */
 .nav-links {
     margin-left: auto !important;
+    flex-shrink: 0 !important;
 }
 
 @media (max-width: 768px) {

@@ -296,9 +296,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .nav-container {
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 48px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -333,7 +333,7 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
     gap: 32px;
-    margin-left: 64px;
+    margin-left: auto;
 }
 
 .nav-links a {
@@ -586,7 +586,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .nav-container {
-        padding: 0 24px;
+        padding: 0 32px;
         min-height: 80px;
     }
 
@@ -939,7 +939,7 @@ h1, h2, h3, h4, h5, h6 {
 
     .nav-container {
         min-height: 70px;
-        padding: 0 24px; /* Increased padding for better spacing */
+        padding: 0 20px;
     }
 
     .nav-logo {

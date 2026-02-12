@@ -107,6 +107,40 @@ class DarkModeManager {
                 this.applyTheme();
             }
         });
+
+        // Chrome on macOS can report a stale prefers-color-scheme value
+        // when the OS appearance is set to Auto. Re-check when the tab
+        // becomes visible again and periodically to catch delayed updates.
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden && this.mode === 'system') {
+                const current = this.getSystemTheme();
+                if (current !== this.appliedTheme) {
+                    this.applyTheme();
+                }
+            }
+        });
+
+        // Also re-check on window focus (covers switching between apps)
+        window.addEventListener('focus', () => {
+            if (this.mode === 'system') {
+                const current = this.getSystemTheme();
+                if (current !== this.appliedTheme) {
+                    this.applyTheme();
+                }
+            }
+        });
+
+        // Chrome on macOS can cache a stale prefers-color-scheme value
+        // when Auto appearance is used. Poll every 60s to catch delayed
+        // updates that the 'change' event missed.
+        this._systemCheckInterval = setInterval(() => {
+            if (this.mode === 'system') {
+                const current = this.getSystemTheme();
+                if (current !== this.appliedTheme) {
+                    this.applyTheme();
+                }
+            }
+        }, 60000);
     }
 }
 

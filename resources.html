@@ -731,6 +731,56 @@
                 font-size: 1.4rem;
             }
         }
+
+        /* ============================================
+           DARK MODE OVERRIDES
+           ============================================ */
+
+        /* Wave divider SVG fills need explicit dark values */
+        [data-theme="dark"] .wave-divider.wave-light svg {
+            fill: #1f2937;
+        }
+
+        [data-theme="dark"] .wave-divider.wave-white svg {
+            fill: #111827;
+        }
+
+        /* Premium cards need contrast against bg-light section */
+        [data-theme="dark"] .resources-card {
+            background: #111827;
+            border-color: #374151;
+        }
+
+        /* Section header text - ensure full contrast */
+        [data-theme="dark"] .section-header h2 {
+            color: #f9fafb;
+        }
+
+        [data-theme="dark"] .section-header p {
+            color: #d1d5db;
+        }
+
+        /* Resource cards - ensure text contrast */
+        [data-theme="dark"] .resource-card h3 {
+            color: #f9fafb;
+        }
+
+        [data-theme="dark"] .resource-card p {
+            color: #d1d5db;
+        }
+
+        /* Premium card text */
+        [data-theme="dark"] .resources-card-title {
+            color: #f9fafb;
+        }
+
+        [data-theme="dark"] .resources-card-desc {
+            color: #d1d5db;
+        }
+
+        [data-theme="dark"] .resources-card-meta {
+            color: #9ca3af;
+        }
     </style>
 </head>
 <body>

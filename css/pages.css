@@ -11,27 +11,27 @@
 
 /* ============================================
    NAVBAR - Full-width override
-   (bundle.min.css has max-width:1200px which
-   cramps everything toward center)
+   (bundle.min.css has max-width:1200px and
+   margin-left:60px which cramps the layout)
    ============================================ */
 .nav-container {
-    max-width: 100%;
-    padding: 0 48px;
+    max-width: 100% !important;
+    padding: 0 48px !important;
 }
 
 .nav-links {
-    margin-left: auto;
+    margin-left: auto !important;
 }
 
 @media (max-width: 768px) {
     .nav-container {
-        padding: 0 32px;
+        padding: 0 32px !important;
     }
 }
 
 @media (max-width: 480px) {
     .nav-container {
-        padding: 0 20px;
+        padding: 0 20px !important;
     }
 }
 

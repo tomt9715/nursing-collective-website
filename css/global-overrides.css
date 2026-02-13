@@ -34,7 +34,7 @@
 .nav-links {
     margin-left: auto !important;
     flex-shrink: 0 !important;
-    gap: 48px !important;
+    gap: 28px !important;
 }
 
 /* Override stale bundle styles for nav links */

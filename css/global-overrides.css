@@ -39,7 +39,7 @@
 
 /* Override stale bundle styles for nav links */
 .nav-links a {
-    font-size: 1.25rem !important;
+    font-size: 1.05rem !important;
     padding: 8px 16px !important;
     border-radius: 10px !important;
     transition: all 0.25s ease !important;

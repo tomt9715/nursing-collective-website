@@ -36,6 +36,11 @@
     flex-shrink: 0 !important;
 }
 
+/* Override stale bundle font-size for nav links */
+.nav-links a {
+    font-size: 1.25rem !important;
+}
+
 @media (max-width: 768px) {
     .nav-container {
         padding: 0 32px !important;

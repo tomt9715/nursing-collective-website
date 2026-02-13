@@ -37,9 +37,30 @@
     gap: 48px !important;
 }
 
-/* Override stale bundle font-size for nav links */
+/* Override stale bundle styles for nav links */
 .nav-links a {
     font-size: 1.25rem !important;
+    padding: 8px 16px !important;
+    border-radius: 10px !important;
+    transition: all 0.25s ease !important;
+}
+
+.nav-links a:hover {
+    background: rgba(46, 134, 171, 0.1) !important;
+    color: var(--primary-color) !important;
+}
+
+.nav-links a.active {
+    background: rgba(46, 134, 171, 0.15) !important;
+    color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .nav-links a:hover {
+    background: rgba(46, 134, 171, 0.2) !important;
+}
+
+[data-theme="dark"] .nav-links a.active {
+    background: rgba(46, 134, 171, 0.25) !important;
 }
 
 @media (max-width: 768px) {

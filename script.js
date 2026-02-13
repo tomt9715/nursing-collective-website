@@ -328,12 +328,12 @@ function updateNavAuthState() {
     const dropdownUserContent = document.getElementById('dropdown-user-content');
 
     if (isLoggedIn) {
-        // Show dashboard link
-        if (navDashboardLink) navDashboardLink.style.display = 'inline';
+        // Show dashboard link (use classList to override .hidden !important)
+        if (navDashboardLink) navDashboardLink.classList.remove('hidden');
 
         // Switch dropdown to logged-in content
-        if (dropdownGuestContent) dropdownGuestContent.style.display = 'none';
-        if (dropdownUserContent) dropdownUserContent.style.display = 'block';
+        if (dropdownGuestContent) dropdownGuestContent.classList.add('hidden');
+        if (dropdownUserContent) dropdownUserContent.classList.remove('hidden');
 
         // Get user data from localStorage
         const userData = localStorage.getItem('user');
@@ -404,9 +404,9 @@ function updateNavAuthState() {
         }
     } else {
         // Ensure dashboard link hidden, show guest content in dropdown
-        if (navDashboardLink) navDashboardLink.style.display = 'none';
-        if (dropdownGuestContent) dropdownGuestContent.style.display = 'block';
-        if (dropdownUserContent) dropdownUserContent.style.display = 'none';
+        if (navDashboardLink) navDashboardLink.classList.add('hidden');
+        if (dropdownGuestContent) dropdownGuestContent.classList.remove('hidden');
+        if (dropdownUserContent) dropdownUserContent.classList.add('hidden');
     }
 
     // Fallback for pages without the new nav structure - just change Login to Dashboard

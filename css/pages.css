@@ -1166,6 +1166,58 @@
     font-weight: 600;
 }
 
+/* Inline Email Entry (visible by default in auth-options) */
+.inline-email-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.inline-email-section .form-group {
+    margin: 0;
+}
+
+/* Email Display (shown on password step) */
+.email-display {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--background-white);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+}
+
+.email-display-icon {
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.email-display-text {
+    flex: 1;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.email-change-btn {
+    background: none;
+    border: none;
+    color: var(--primary-color);
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+}
+
+.email-change-btn:hover {
+    background: rgba(46, 134, 171, 0.1);
+}
+
 /* Email Auth Section */
 .email-auth-section {
     display: none;

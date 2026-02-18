@@ -15,7 +15,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentMode = 'signin'; // Default to sign in mode for returning users
 
     // Get elements
-    const emailToggleBtn = document.getElementById('email-toggle');
     const authOptions = document.getElementById('auth-options');
     const emailForm = document.getElementById('email-form');
     const backBtn = document.getElementById('back-to-options');
@@ -24,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const confirmPasswordInput = document.getElementById('confirm-password');
     const passwordStrength = document.getElementById('password-strength');
     const emailInput = document.getElementById('email');
+    const emailContinueBtn = document.getElementById('email-continue-btn');
+    const emailDisplayText = document.getElementById('email-display-text');
+    const emailChangeBtn = document.getElementById('email-change-btn');
     const signinModeBtn = document.getElementById('signin-mode-btn');
     const signupModeBtn = document.getElementById('signup-mode-btn');
     const authTitle = document.getElementById('auth-title');
@@ -34,6 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const forgotPasswordLink = document.getElementById('forgot-password-link');
     const firstNameInput = document.getElementById('first-name');
     const lastNameInput = document.getElementById('last-name');
+
+    // Track the email entered in step 1
+    let enteredEmail = '';
 
     // Check for last used auth method
     const lastAuthMethod = localStorage.getItem('lastAuthMethod');
@@ -47,6 +52,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 btn.style.borderWidth = '3px';
             }
         });
+        // If last method was email, focus the email input
+        if (lastAuthMethod === 'email' && emailInput) {
+            setTimeout(function() { emailInput.focus(); }, 300);
+        }
     }
 
     // Function to update UI based on current mode
@@ -68,10 +77,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     span.textContent = 'Sign in with Discord';
                 } else if (btn.classList.contains('apple')) {
                     span.textContent = 'Sign in with Apple';
-                } else if (btn.classList.contains('email')) {
-                    span.textContent = 'Sign in with Email';
                 }
             });
+
+            // Update Continue button text
+            if (emailContinueBtn) {
+                emailContinueBtn.querySelector('span').textContent = 'Continue';
+            }
 
             // Update form elements
             if (formModeText) formModeText.querySelector('span').textContent = 'Sign in to your account';
@@ -105,10 +117,13 @@ document.addEventListener('DOMContentLoaded', function() {
                     span.textContent = 'Continue with Discord';
                 } else if (btn.classList.contains('apple')) {
                     span.textContent = 'Continue with Apple';
-                } else if (btn.classList.contains('email')) {
-                    span.textContent = 'Continue with Email';
                 }
             });
+
+            // Update Continue button text
+            if (emailContinueBtn) {
+                emailContinueBtn.querySelector('span').textContent = 'Continue';
+            }
 
             // Update form elements
             if (formModeText) formModeText.querySelector('span').textContent = 'Create your account';
@@ -148,18 +163,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Pre-fill email if provided in URL (from guest checkout email)
     if (prefillEmail) {
+        var decodedEmail = decodeURIComponent(prefillEmail);
         if (emailInput) {
-            emailInput.value = decodeURIComponent(prefillEmail);
+            emailInput.value = decodedEmail;
         }
         // Also show a helpful banner if they have an order to claim
         if (orderToClaim) {
-            showOrderClaimBanner(orderToClaim, prefillEmail);
+            showOrderClaimBanner(orderToClaim, decodedEmail);
         }
-        // Auto-expand email form if email is pre-filled
-        if (authOptions && emailForm) {
-            authOptions.style.display = 'none';
-            emailForm.classList.add('active');
-        }
+        // Go straight to password step with pre-filled email
+        showPasswordStep(decodedEmail);
     }
 
     // Mode toggle buttons
@@ -177,25 +190,75 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Toggle to email form
-    if (emailToggleBtn) {
-        emailToggleBtn.addEventListener('click', function() {
-            authOptions.style.display = 'none';
-            emailForm.classList.add('active');
-            localStorage.setItem('lastAuthMethod', 'email');
+    // Helper: show password step (step 2)
+    function showPasswordStep(email) {
+        enteredEmail = email;
+        // Display email in read-only bar
+        if (emailDisplayText) emailDisplayText.textContent = email;
+        // Hide auth options, show email form
+        authOptions.style.display = 'none';
+        emailForm.classList.add('active');
+        localStorage.setItem('lastAuthMethod', 'email');
+        // Focus the password field
+        setTimeout(function() {
+            if (passwordInput) passwordInput.focus();
+        }, 100);
+    }
+
+    // Helper: go back to email entry (step 1)
+    function showEmailStep() {
+        emailForm.classList.remove('active');
+        authOptions.style.display = 'flex';
+        // Reset password form but keep email
+        if (passwordInput) passwordInput.value = '';
+        if (confirmPasswordInput) confirmPasswordInput.value = '';
+        if (firstNameInput) firstNameInput.value = '';
+        if (lastNameInput) lastNameInput.value = '';
+        if (passwordStrength) passwordStrength.classList.remove('visible');
+        // Focus the email input
+        setTimeout(function() {
+            if (emailInput) emailInput.focus();
+        }, 100);
+    }
+
+    // Continue button: validate email and go to password step
+    if (emailContinueBtn) {
+        emailContinueBtn.addEventListener('click', function() {
+            var email = emailInput ? emailInput.value.trim() : '';
+            if (!email) {
+                emailInput.focus();
+                return;
+            }
+            // Basic email format check
+            if (!emailInput.checkValidity()) {
+                emailInput.reportValidity();
+                return;
+            }
+            showPasswordStep(email);
+        });
+    }
+
+    // Allow Enter key on email input to trigger Continue
+    if (emailInput) {
+        emailInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (emailContinueBtn) emailContinueBtn.click();
+            }
+        });
+    }
+
+    // Change email button (pencil icon on password step)
+    if (emailChangeBtn) {
+        emailChangeBtn.addEventListener('click', function() {
+            showEmailStep();
         });
     }
 
     // Back to all options
     if (backBtn) {
         backBtn.addEventListener('click', function() {
-            emailForm.classList.remove('active');
-            authOptions.style.display = 'flex';
-            // Reset form
-            if (signupForm) {
-                signupForm.reset();
-                passwordStrength.classList.remove('visible');
-            }
+            showEmailStep();
         });
     }
 
@@ -299,7 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
         signupForm.addEventListener('submit', async function(e) {
             e.preventDefault();
 
-            const email = document.getElementById('email').value;
+            const email = enteredEmail;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirm-password').value;
 

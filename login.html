@@ -133,14 +133,20 @@
                         <span>or</span>
                     </div>
 
-                    <button class="auth-btn email" id="email-toggle" data-auth-method="email">
-                        <i class="fas fa-envelope auth-icon"></i>
-                        <span class="auth-btn-text">Sign in with Email</span>
-                    </button>
+                    <!-- Inline Email Entry -->
+                    <div class="inline-email-section" id="inline-email-section">
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder="Email" required>
+                            <span class="field-icon"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <button class="auth-btn primary full-width" id="email-continue-btn" type="button">
+                            <span>Continue</span>
+                        </button>
+                    </div>
 
                 </div>
 
-                <!-- Email Form (Initially Hidden) -->
+                <!-- Password Step (Initially Hidden) -->
                 <div class="email-auth-section" id="email-form">
                     <div class="auth-divider-text" id="form-mode-text">
                         <span>Sign in to your account</span>
@@ -159,11 +165,16 @@
                                 <span class="field-icon"><i class="fas fa-user"></i></span>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" placeholder="your.email@example.com" required>
-                            <span class="field-icon"><i class="fas fa-envelope"></i></span>
+
+                        <!-- Email display (read-only, showing what they entered) -->
+                        <div class="email-display" id="email-display">
+                            <span class="email-display-icon"><i class="fas fa-envelope"></i></span>
+                            <span class="email-display-text" id="email-display-text"></span>
+                            <button type="button" class="email-change-btn" id="email-change-btn" title="Change email">
+                                <i class="fas fa-pencil-alt"></i>
+                            </button>
                         </div>
+
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" id="password" placeholder="Enter your password" required minlength="8">

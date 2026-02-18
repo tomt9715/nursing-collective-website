@@ -268,6 +268,7 @@ async function loadUserProfile() {
             loadQuizBankDashboard();
         }
 
+        updateStatsRow();
         loadSubscriptionManagement();
 
         if (user.email === 'admin@thenursingcollective.pro') {
@@ -545,6 +546,28 @@ function loadQuizBankDashboard() {
         else if (stats.streak >= 7) streakFlameClass = 'qb-streak-flame--hot';
         else if (stats.streak >= 1) streakFlameClass = 'qb-streak-flame--active';
         streakEl.innerHTML = '<i class="fas fa-fire qb-streak-flame ' + streakFlameClass + '"></i> ' + stats.streak;
+    }
+}
+
+// ==================== Stats Row (hero mockup style) ====================
+
+function updateStatsRow() {
+    // Guides count
+    var guidesEl = document.getElementById('stat-guides-count');
+    if (guidesEl) {
+        var lastStudied = {};
+        try { lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch(e) {}
+        var count = Object.keys(lastStudied).length;
+        guidesEl.textContent = count > 0 ? count : '54';
+    }
+
+    // Quiz bank stats
+    if (typeof MasteryTracker !== 'undefined') {
+        var stats = MasteryTracker.getOverallStats();
+        var scoreEl = document.getElementById('stat-avg-score');
+        var streakEl = document.getElementById('stat-streak');
+        if (scoreEl) scoreEl.textContent = stats.totalQuestionsAnswered > 0 ? stats.accuracy + '%' : '--';
+        if (streakEl) streakEl.textContent = stats.totalQuestionsAnswered > 0 ? stats.streak : '0';
     }
 }
 

@@ -943,7 +943,98 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 /* -- Dashboard container -- */
 .dashboard {
     background: var(--dash-bg) !important;
-    padding: 100px 0 60px !important;
+    padding: 70px 0 0 !important;
+}
+
+/* -- Sidebar Layout -- */
+.dash-layout {
+    display: flex !important;
+    min-height: calc(100vh - 70px);
+}
+
+.dash-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background: var(--dash-card-bg);
+    border-right: 1px solid var(--dash-card-border);
+    padding-top: 24px;
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+}
+
+.dash-sidebar-inner {
+    padding: 0 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.dash-sidebar-section {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--dash-divider);
+    margin-bottom: 4px;
+}
+
+.dash-sidebar-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.dash-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--dash-label);
+    text-decoration: none;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.dash-sidebar-item:hover {
+    background: var(--dash-hover-bg);
+    color: var(--dash-heading);
+    text-decoration: none;
+}
+
+.dash-sidebar-item.active {
+    background: rgba(46, 134, 171, 0.1);
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.dash-sidebar-item i {
+    font-size: 0.95rem;
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Dark mode sidebar */
+[data-theme="dark"] .dash-sidebar {
+    background: var(--dash-card-bg);
+    border-color: var(--dash-card-border);
+}
+
+[data-theme="dark"] .dash-sidebar-item.active {
+    background: rgba(46, 134, 171, 0.15);
+    color: #3bb8e0;
+}
+
+/* Main content area */
+.dash-main {
+    flex: 1;
+    min-width: 0;
+    padding: 24px 0;
 }
 
 /* -- Welcome header -- */
@@ -978,8 +1069,14 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     font-size: 0.9rem !important;
 }
 
-/* -- Quick Actions: compact chips -- */
+/* Hide breadcrumbs on dashboard — sidebar provides navigation */
+.breadcrumbs-dashboard {
+    display: none !important;
+}
+
+/* -- Quick Actions: hidden on desktop (sidebar replaces them), visible on mobile -- */
 .quick-actions-hero {
+    display: none !important;
     background: none !important;
     border: none !important;
     border-radius: 0 !important;
@@ -1362,6 +1459,23 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 
 /* -- Dashboard responsive: Tablet -- */
 @media (max-width: 768px) {
+    .dash-sidebar {
+        display: none;
+    }
+
+    .dash-layout {
+        display: block !important;
+    }
+
+    .dashboard {
+        padding: 80px 0 40px !important;
+    }
+
+    /* Show quick actions on mobile since sidebar is hidden */
+    .quick-actions-hero {
+        display: block !important;
+    }
+
     .dashboard-header-compact {
         text-align: center !important;
     }
@@ -1378,7 +1492,7 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 /* -- Dashboard responsive: Mobile -- */
 @media (max-width: 480px) {
     .dashboard {
-        padding: 90px 0 40px !important;
+        padding: 80px 0 40px !important;
     }
 
     .dashboard-header-compact {

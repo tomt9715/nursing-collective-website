@@ -139,6 +139,10 @@ async function loadUserProfile() {
         if (adminPanelBtn && isAdmin) adminPanelBtn.classList.remove('hidden');
         if (isAdmin) document.body.classList.add('is-admin-user');
 
+        // Sync sidebar admin section visibility
+        const sidebarAdmin = document.getElementById('sidebar-admin-section');
+        if (sidebarAdmin && isAdmin) sidebarAdmin.classList.remove('hidden');
+
         if (premiumBadgeEl && user.is_premium && !isAdmin) {
             premiumBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
             premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';
@@ -184,6 +188,9 @@ async function loadUserProfile() {
         if (user.is_premium) {
             const quizBankBtn = document.getElementById('quiz-bank-action-btn');
             if (quizBankBtn) quizBankBtn.style.display = '';
+            // Sync sidebar quiz link visibility
+            const sidebarQuiz = document.getElementById('sidebar-quiz-link');
+            if (sidebarQuiz) sidebarQuiz.style.display = '';
         }
 
         // Update subscription quick action for premium users

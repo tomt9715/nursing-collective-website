@@ -123,6 +123,42 @@
     <!-- Dashboard -->
     <main id="main-content">
     <section class="dashboard">
+        <div class="dash-layout">
+            <!-- Sidebar Navigation -->
+            <aside class="dash-sidebar">
+                <div class="dash-sidebar-inner">
+                    <div class="dash-sidebar-section">
+                        <a href="study-guides.html" class="dash-sidebar-item active">
+                            <i class="fas fa-book-open"></i> Study Guides
+                        </a>
+                        <a href="https://learn.thenursingcollective.pro" class="dash-sidebar-item" id="sidebar-quiz-link" style="display:none;">
+                            <i class="fas fa-brain"></i> Quiz Bank
+                        </a>
+                        <a href="resources.html" class="dash-sidebar-item">
+                            <i class="fas fa-book-reader"></i> Resources
+                        </a>
+                    </div>
+                    <div class="dash-sidebar-section">
+                        <a href="pricing.html" class="dash-sidebar-item" id="sidebar-subscription-link">
+                            <i class="fas fa-crown"></i> Subscription
+                        </a>
+                        <a href="https://discord.gg/y2Mh77wAV2" class="dash-sidebar-item" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i> Discord
+                        </a>
+                        <a href="settings.html" class="dash-sidebar-item">
+                            <i class="fas fa-cog"></i> Settings
+                        </a>
+                    </div>
+                    <div class="dash-sidebar-section dash-sidebar-admin hidden" id="sidebar-admin-section">
+                        <a href="admin.html" class="dash-sidebar-item">
+                            <i class="fas fa-user-shield"></i> Admin Panel
+                        </a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content -->
+            <div class="dash-main">
         <div class="container">
             <!-- Dashboard Header -->
             <div class="dashboard-header-compact">
@@ -339,6 +375,8 @@
 
             </div>
         </div>
+            </div> <!-- end .dash-main -->
+        </div> <!-- end .dash-layout -->
     </section>
 
     <!-- Admin User Management Modal -->

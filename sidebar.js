@@ -1,15 +1,32 @@
 /**
- * Shared sidebar component
- * Include this script on any page that should have the dashboard sidebar.
- * It auto-detects the current page and highlights the active item.
+ * Shared sidebar component — app shell for logged-in pages
+ * Injects sidebar, hides hero banners, adds clean page headers.
  *
- * Usage:  <script src="sidebar.js"></script>
- *         Then wrap your page content in a <div class="dash-main"> inside <div class="dash-layout">.
- *         OR call injectSidebar() and it will wrap automatically.
+ * Include on: dashboard, study-guides, resources, settings, admin
+ * Do NOT include on: index, login, pricing, guide, success
  */
 
 (function () {
     'use strict';
+
+    // ── Page config: which pages get the sidebar + their titles ───
+    var PAGE_CONFIG = {
+        'dashboard':    { title: 'Dashboard',    icon: 'fa-th-large',    highlight: 'dashboard' },
+        'study-guides': { title: 'Study Guides', icon: 'fa-book-open',   highlight: 'study-guides' },
+        'resources':    { title: 'Resources',    icon: 'fa-book-reader', highlight: 'resources' },
+        'settings':     { title: 'Settings',     icon: 'fa-cog',         highlight: 'settings' },
+        'admin':        { title: 'Admin Panel',  icon: 'fa-user-shield', highlight: 'admin' }
+    };
+
+    // ── Hero selectors to hide on each page ──────────────────────
+    var HERO_SELECTORS = [
+        '.study-guides-hero',
+        '.resources-hero',
+        '.admin-hero',
+        '.wave-divider',
+        '.breadcrumbs',
+        '.settings-breadcrumbs'
+    ];
 
     // ── Sidebar HTML ──────────────────────────────────────────────
     var sidebarHTML =
@@ -45,47 +62,62 @@
             '</div>' +
         '</aside>';
 
-    // ── Sidebar CSS (inline to avoid external-CSS cache issues) ───
+    // ── CSS ───────────────────────────────────────────────────────
     var sidebarCSS =
-        '.dash-layout{display:flex!important;min-height:calc(100vh - 95px)}' +
+        /* Layout */
+        '.dash-layout{display:flex!important;min-height:calc(100vh - 95px);margin-top:95px}' +
         '.dash-sidebar{width:220px;flex-shrink:0;border-right:1px solid rgba(0,0,0,.06);padding-top:24px;position:sticky;top:95px;height:calc(100vh - 95px);overflow-y:auto;background:#fff;z-index:10}' +
         '.dash-sidebar-inner{padding:0 12px;display:flex;flex-direction:column;gap:8px}' +
         '.dash-sidebar-section{display:flex;flex-direction:column;gap:2px;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.06);margin-bottom:4px}' +
         '.dash-sidebar-section:last-child{border-bottom:none;margin-bottom:0}' +
+        /* Sidebar items */
         '.dash-sidebar-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:"Source Sans 3",sans-serif;font-size:.88rem;font-weight:500;color:#94a3b8;text-decoration:none;transition:all .15s ease;cursor:pointer}' +
         '.dash-sidebar-item:hover{background:rgba(46,134,171,.04);color:#0f172a;text-decoration:none}' +
         '.dash-sidebar-item.active{background:rgba(46,134,171,.1);color:#2E86AB;font-weight:600}' +
         '.dash-sidebar-item i{font-size:.95rem;width:20px;text-align:center;flex-shrink:0}' +
-        '.dash-main{flex:1;min-width:0;padding:0}' +
+        /* Main content */
+        '.dash-main{flex:1;min-width:0;padding:32px 24px 40px;background:var(--dash-bg,#f8fafc)}' +
+        /* App page header (replaces hero banners) */
+        '.app-page-header{margin-bottom:24px}' +
+        '.app-page-header h1{font-family:"Outfit",sans-serif;font-size:1.5rem;font-weight:600;color:var(--dash-heading,#0f172a);margin:0}' +
+        '.app-page-header h1 i{color:#94a3b8;margin-right:8px;font-size:1.2rem}' +
+        /* Dark mode */
         '[data-theme="dark"] .dash-sidebar{background:#1e293b;border-color:rgba(255,255,255,.06)}' +
         '[data-theme="dark"] .dash-sidebar-section{border-color:rgba(255,255,255,.06)}' +
         '[data-theme="dark"] .dash-sidebar-item{color:#6b7280}' +
         '[data-theme="dark"] .dash-sidebar-item:hover{background:rgba(255,255,255,.04);color:#f1f5f9}' +
         '[data-theme="dark"] .dash-sidebar-item.active{background:rgba(46,134,171,.15);color:#3bb8e0}' +
+        '[data-theme="dark"] .dash-main{background:var(--dash-bg,#0f172a)}' +
+        '[data-theme="dark"] .app-page-header h1{color:var(--dash-heading,#f1f5f9)}' +
+        /* Hide heroes & breadcrumbs */
         '.dash-layout .breadcrumbs{display:none!important}' +
-        '@media(max-width:768px){.dash-sidebar{display:none}.dash-layout{display:block!important}}';
+        '.sidebar-hidden{display:none!important}' +
+        /* Responsive */
+        '@media(max-width:768px){.dash-sidebar{display:none}.dash-layout{display:block!important}.dash-main{padding:20px 16px 40px}}';
 
-    // ── Detect current page ───────────────────────────────────────
+    // ── Detect current page ──────────────────────────────────────
     function detectCurrentPage() {
         var path = window.location.pathname.replace(/^\//, '').replace(/\.html$/, '');
-        // Map of pages that get the sidebar
-        var pageMap = {
-            'dashboard': 'dashboard',
-            'study-guides': 'study-guides',
-            'resources': 'resources',
-            'settings': 'settings',
-            'admin': 'admin',
-            'pricing': 'settings'
-        };
-        return pageMap[path] || null;
+        return PAGE_CONFIG[path] ? path : null;
     }
 
-    // ── Inject sidebar into page ──────────────────────────────────
-    function injectSidebar() {
-        var currentPage = detectCurrentPage();
-        if (!currentPage) return; // don't inject on homepage/login/etc
+    // ── Hide hero sections ───────────────────────────────────────
+    function hideHeroes() {
+        HERO_SELECTORS.forEach(function (sel) {
+            var els = document.querySelectorAll(sel);
+            for (var i = 0; i < els.length; i++) {
+                els[i].classList.add('sidebar-hidden');
+            }
+        });
+    }
 
-        // Don't double-inject (dashboard.html already has its own sidebar HTML)
+    // ── Inject sidebar ───────────────────────────────────────────
+    function injectSidebar() {
+        var pageName = detectCurrentPage();
+        if (!pageName) return;
+        var config = PAGE_CONFIG[pageName];
+
+        // Don't double-inject (dashboard.html already has inline sidebar)
         if (document.querySelector('.dash-sidebar')) return;
 
         // Inject CSS
@@ -93,45 +125,52 @@
         style.textContent = sidebarCSS;
         document.head.appendChild(style);
 
-        // Find the main content area to wrap
-        // Strategy: look for <main>, or first <section> after the nav
-        var mainContent = document.querySelector('main#main-content') ||
-                          document.querySelector('main') ||
-                          document.querySelector('.breadcrumbs + section') ||
-                          document.querySelector('nav.navbar ~ section');
+        // Hide hero banners & breadcrumbs
+        hideHeroes();
 
-        if (!mainContent) return;
+        // Find anchor point: first <main> or first <section> after nav
+        var anchor = document.querySelector('main#main-content') ||
+                     document.querySelector('main') ||
+                     document.querySelector('nav.navbar ~ .breadcrumbs + section') ||
+                     document.querySelector('nav.navbar ~ section');
 
-        // Create the layout wrapper
+        if (!anchor) return;
+
+        // Build layout
         var layout = document.createElement('div');
         layout.className = 'dash-layout';
 
-        // Insert sidebar HTML
         var sidebarContainer = document.createElement('div');
         sidebarContainer.innerHTML = sidebarHTML;
         var sidebar = sidebarContainer.firstChild;
 
-        // Wrap: insert layout before mainContent, move mainContent inside
         var mainWrapper = document.createElement('div');
         mainWrapper.className = 'dash-main';
 
-        // Collect all content between navbar and footer
-        var parent = mainContent.parentNode;
+        // Add app-style page header (skip for dashboard — it has its own)
+        if (pageName !== 'dashboard') {
+            var header = document.createElement('div');
+            header.className = 'app-page-header';
+            header.innerHTML = '<h1><i class="fas ' + config.icon + '"></i> ' + config.title + '</h1>';
+            mainWrapper.appendChild(header);
+        }
+
+        // Collect content nodes between anchor and footer
+        var parent = anchor.parentNode;
         var contentNodes = [];
         var started = false;
         var children = Array.prototype.slice.call(parent.childNodes);
         for (var i = 0; i < children.length; i++) {
             var node = children[i];
-            if (node === mainContent) started = true;
+            if (node === anchor) started = true;
             if (started) {
-                // Stop at footer
                 if (node.nodeType === 1 && (node.classList.contains('footer') || node.tagName === 'FOOTER')) break;
                 contentNodes.push(node);
             }
         }
 
-        // Insert layout into DOM
-        parent.insertBefore(layout, mainContent);
+        // Assemble layout
+        parent.insertBefore(layout, anchor);
         layout.appendChild(sidebar);
         layout.appendChild(mainWrapper);
         for (var j = 0; j < contentNodes.length; j++) {
@@ -139,39 +178,32 @@
         }
 
         // Highlight active page
-        if (currentPage) {
-            var activeItem = sidebar.querySelector('[data-sidebar-page="' + currentPage + '"]');
-            if (activeItem) activeItem.classList.add('active');
-        }
+        var activeItem = sidebar.querySelector('[data-sidebar-page="' + config.highlight + '"]');
+        if (activeItem) activeItem.classList.add('active');
 
-        // Show quiz bank link for premium users
+        // Sync permissions
         syncSidebarPermissions(sidebar);
     }
 
-    // ── Sync admin & quiz visibility ──────────────────────────────
+    // ── Sync admin & quiz visibility ─────────────────────────────
     function syncSidebarPermissions(sidebar) {
-        // Check localStorage for user data (set by dashboard-script.js)
         try {
             var user = JSON.parse(localStorage.getItem('user'));
             if (!user) return;
 
-            // Quiz bank for premium
             if (user.is_premium) {
                 var quizLink = sidebar.querySelector('#sidebar-quiz-link');
                 if (quizLink) quizLink.style.display = '';
             }
 
-            // Admin section
             if (user.email === 'admin@thenursingcollective.pro') {
                 var adminSection = sidebar.querySelector('#sidebar-admin-section');
                 if (adminSection) adminSection.classList.remove('hidden');
             }
-        } catch (e) {
-            // silently fail
-        }
+        } catch (e) { /* silent */ }
     }
 
-    // ── Init on DOM ready ─────────────────────────────────────────
+    // ── Init ─────────────────────────────────────────────────────
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', injectSidebar);
     } else {

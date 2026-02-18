@@ -72,9 +72,10 @@
         .dashboard{background:var(--dash-bg,#f8fafc)!important;padding:95px 0 0!important}
         [data-theme="dark"] .dashboard{background:var(--dash-bg,#0f172a)!important}
         /* Left-align header with sidebar layout */
-        .dashboard-header-compact{text-align:left!important;margin-bottom:20px!important}
-        .dashboard-header-compact h1{font-size:1.6rem!important}
-        .user-stats-compact{justify-content:flex-start!important}
+        .dashboard .dashboard-header-compact{text-align:left!important;margin-bottom:20px!important}
+        .dashboard .dashboard-header-compact h1{font-size:1.6rem!important;font-weight:600!important}
+        .dashboard .user-stats-compact{justify-content:flex-start!important}
+        .dash-stats-row .dash-stat{text-align:center!important}
         /* Hide breadcrumbs & quick actions on desktop */
         .breadcrumbs-dashboard{display:none!important}
         .quick-actions-hero{display:none!important}
@@ -84,6 +85,8 @@
             .dash-layout{display:block!important}
             .quick-actions-hero{display:block!important}
             .dash-stats-row{grid-template-columns:repeat(2,1fr)}
+            .dashboard .dashboard-header-compact{text-align:center!important}
+            .dashboard .user-stats-compact{justify-content:center!important}
         }
     </style>
 

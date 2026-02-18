@@ -131,17 +131,66 @@
 }
 
 /* ============================================
-   DARK PREMIUM HERO
-   Overrides the gradient hero in bundle.min.css
-   with a dark, high-end design (Stripe/Linear vibe).
+   PREMIUM HERO — Theme-Aware
+   Dark premium in dark mode, refined light in
+   light mode. Glow orbs + gradient accent in both.
    ============================================ */
+
+/* -- Hero theme variables -- */
+:root {
+    --hero-bg: #f8fafc;
+    --hero-heading: #0f172a;
+    --hero-sub: #475569;
+    --hero-orb-blue: rgba(46, 134, 171, 0.12);
+    --hero-orb-pink: rgba(162, 59, 114, 0.08);
+    --hero-orb-blur: 80px;
+    --hero-btn-shadow: rgba(46, 134, 171, 0.2);
+    --hero-btn-shadow-hover: rgba(46, 134, 171, 0.35);
+    --hero-ghost-bg: rgba(46, 134, 171, 0.06);
+    --hero-ghost-border: rgba(46, 134, 171, 0.25);
+    --hero-ghost-text: #2E86AB;
+    --hero-ghost-hover-bg: rgba(46, 134, 171, 0.1);
+    --hero-ghost-hover-border: rgba(46, 134, 171, 0.45);
+    --hero-accent-glow: rgba(46, 134, 171, 0.2);
+    --hero-nav-bg: rgba(248, 250, 252, 0.8);
+    --hero-nav-border: rgba(0, 0, 0, 0.06);
+    --hero-nav-link: #475569;
+    --hero-nav-link-hover: #0f172a;
+    --hero-nav-link-hover-bg: rgba(46, 134, 171, 0.08);
+    --hero-nav-active-bg: rgba(46, 134, 171, 0.12);
+    --hero-nav-icon: #334155;
+}
+
+[data-theme="dark"] {
+    --hero-bg: #0a0e1a;
+    --hero-heading: #ffffff;
+    --hero-sub: rgba(203, 213, 225, 0.85);
+    --hero-orb-blue: rgba(46, 134, 171, 0.2);
+    --hero-orb-pink: rgba(162, 59, 114, 0.15);
+    --hero-orb-blur: 60px;
+    --hero-btn-shadow: rgba(46, 134, 171, 0.3);
+    --hero-btn-shadow-hover: rgba(46, 134, 171, 0.5);
+    --hero-ghost-bg: rgba(255, 255, 255, 0.04);
+    --hero-ghost-border: rgba(255, 255, 255, 0.15);
+    --hero-ghost-text: rgba(255, 255, 255, 0.9);
+    --hero-ghost-hover-bg: rgba(255, 255, 255, 0.08);
+    --hero-ghost-hover-border: rgba(46, 134, 171, 0.5);
+    --hero-accent-glow: rgba(46, 134, 171, 0.4);
+    --hero-nav-bg: rgba(10, 14, 26, 0.7);
+    --hero-nav-border: rgba(255, 255, 255, 0.06);
+    --hero-nav-link: rgba(255, 255, 255, 0.75);
+    --hero-nav-link-hover: #ffffff;
+    --hero-nav-link-hover-bg: rgba(255, 255, 255, 0.08);
+    --hero-nav-active-bg: rgba(46, 134, 171, 0.2);
+    --hero-nav-icon: #ffffff;
+}
 
 /* -- Hero section -- */
 .hero {
-    background: #0a0e1a !important;
+    background: var(--hero-bg) !important;
     background-size: auto !important;
     animation: none !important;
-    color: #f1f5f9 !important;
+    color: var(--hero-heading) !important;
     padding: 0 !important;
     min-height: 100vh;
     min-height: 100dvh;
@@ -153,7 +202,7 @@
     text-align: center !important;
 }
 
-/* Ambient glow orbs behind the content */
+/* Ambient glow orb — blue, top-left */
 .hero::before {
     content: '' !important;
     position: absolute !important;
@@ -163,15 +212,16 @@
     bottom: auto !important;
     width: 600px !important;
     height: 600px !important;
-    background: radial-gradient(circle, rgba(46, 134, 171, 0.2) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, var(--hero-orb-blue) 0%, transparent 70%) !important;
     background-repeat: no-repeat !important;
     opacity: 1 !important;
     animation: heroOrbFloat 12s ease-in-out infinite !important;
     pointer-events: none;
     z-index: 0;
-    filter: blur(60px);
+    filter: blur(var(--hero-orb-blur));
 }
 
+/* Ambient glow orb — pink, bottom-right */
 .hero::after {
     content: '' !important;
     display: block !important;
@@ -180,12 +230,12 @@
     right: -5% !important;
     width: 500px !important;
     height: 500px !important;
-    background: radial-gradient(circle, rgba(162, 59, 114, 0.15) 0%, transparent 70%) !important;
+    background: radial-gradient(circle, var(--hero-orb-pink) 0%, transparent 70%) !important;
     background-size: auto !important;
     animation: heroOrbFloat 15s ease-in-out 3s infinite reverse !important;
     pointer-events: none;
     z-index: 0;
-    filter: blur(60px);
+    filter: blur(var(--hero-orb-blur));
 }
 
 /* -- Hero content container -- */
@@ -211,16 +261,16 @@
     z-index: 1 !important;
 }
 
-/* -- Typography: the headline -- */
+/* -- Headline -- */
 .hero-content h1 {
     font-family: 'Outfit', sans-serif !important;
     font-size: 4.5rem !important;
     font-weight: 700 !important;
     line-height: 1.1 !important;
     letter-spacing: -0.03em !important;
-    color: #ffffff !important;
+    color: var(--hero-heading) !important;
     margin-bottom: 28px !important;
-    text-shadow: 0 0 80px rgba(46, 134, 171, 0.3) !important;
+    text-shadow: none !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -229,7 +279,7 @@
     animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards !important;
 }
 
-/* Accent word — glowing blue */
+/* Accent word — gradient text + glow */
 .hero-content h1 .hero-accent {
     background: linear-gradient(135deg, #3bb8e0 0%, #2E86AB 50%, #7B68EE 100%);
     -webkit-background-clip: text;
@@ -237,7 +287,7 @@
     background-clip: text;
     position: relative;
     display: inline-block;
-    filter: drop-shadow(0 0 20px rgba(46, 134, 171, 0.4));
+    filter: drop-shadow(0 0 20px var(--hero-accent-glow));
 }
 
 /* -- Subtitle -- */
@@ -246,7 +296,7 @@
     font-size: 1.3rem !important;
     font-weight: 400 !important;
     line-height: 1.6 !important;
-    color: rgba(203, 213, 225, 0.85) !important;
+    color: var(--hero-sub) !important;
     max-width: 580px !important;
     margin: 0 auto 44px !important;
     opacity: 0;
@@ -266,7 +316,7 @@
     animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards !important;
 }
 
-/* Primary hero button — glowing blue */
+/* Primary button — gradient blue with glow */
 .hero .btn-primary {
     background: linear-gradient(135deg, #2E86AB 0%, #3bb8e0 100%) !important;
     color: white !important;
@@ -275,7 +325,7 @@
     font-size: 1.05rem !important;
     font-weight: 600 !important;
     border-radius: 10px !important;
-    box-shadow: 0 0 20px rgba(46, 134, 171, 0.3), 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 0 20px var(--hero-btn-shadow), 0 4px 12px rgba(0, 0, 0, 0.15) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     position: relative !important;
 }
@@ -286,14 +336,14 @@
 
 .hero .btn-primary:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 0 30px rgba(46, 134, 171, 0.5), 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+    box-shadow: 0 0 30px var(--hero-btn-shadow-hover), 0 8px 24px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Secondary hero button — ghost with glow border */
+/* Secondary button — ghost with theme-aware border */
 .hero .btn-outline-light {
-    background: rgba(255, 255, 255, 0.04) !important;
-    color: rgba(255, 255, 255, 0.9) !important;
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    background: var(--hero-ghost-bg) !important;
+    color: var(--hero-ghost-text) !important;
+    border: 1px solid var(--hero-ghost-border) !important;
     padding: 16px 32px !important;
     font-size: 1.05rem !important;
     font-weight: 600 !important;
@@ -303,49 +353,43 @@
 }
 
 .hero .btn-outline-light:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-    border-color: rgba(46, 134, 171, 0.5) !important;
-    color: white !important;
+    background: var(--hero-ghost-hover-bg) !important;
+    border-color: var(--hero-ghost-hover-border) !important;
+    color: var(--hero-ghost-text) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 0 20px rgba(46, 134, 171, 0.15) !important;
+    box-shadow: 0 0 20px rgba(46, 134, 171, 0.1) !important;
 }
 
-/* -- Navbar: transparent over dark hero, solid after scroll -- */
-.hero ~ .features,
-.hero ~ .cta {
-    /* Sections after hero stay unaffected */
-}
-
-/* Navbar sits on dark hero — make it dark-transparent */
+/* -- Navbar: blends with hero, then reverts on scroll -- */
 body:has(.hero) .navbar {
-    background: rgba(10, 14, 26, 0.7) !important;
+    background: var(--hero-nav-bg) !important;
     backdrop-filter: blur(16px) saturate(180%) !important;
     -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-bottom: 1px solid var(--hero-nav-border) !important;
     box-shadow: none !important;
 }
 
 body:has(.hero) .navbar .nav-links a {
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: var(--hero-nav-link) !important;
 }
 
 body:has(.hero) .navbar .nav-links a:hover {
-    color: white !important;
-    background: rgba(255, 255, 255, 0.08) !important;
+    color: var(--hero-nav-link-hover) !important;
+    background: var(--hero-nav-link-hover-bg) !important;
 }
 
 body:has(.hero) .navbar .nav-links a.active {
-    color: white !important;
-    background: rgba(46, 134, 171, 0.2) !important;
+    color: var(--hero-nav-link-hover) !important;
+    background: var(--hero-nav-active-bg) !important;
 }
 
 body:has(.hero) .navbar .nav-brand a,
 body:has(.hero) .navbar .user-avatar {
-    color: white !important;
+    color: var(--hero-nav-icon) !important;
 }
 
 body:has(.hero) .navbar .mobile-menu-btn {
-    color: white !important;
+    color: var(--hero-nav-icon) !important;
 }
 
 /* Once scrolled past hero, revert navbar to theme-default */

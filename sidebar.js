@@ -2,26 +2,23 @@
  * Shared sidebar component — app shell for logged-in pages
  * Injects sidebar, hides hero banners, adds clean page headers.
  *
- * Include on: dashboard, study-guides, resources, settings, admin
- * Do NOT include on: index, login, pricing, guide, success
+ * Include on: settings, admin (dashboard has its own inline sidebar)
+ * Do NOT include on: index, login, pricing, study-guides, resources, guide, success
  */
 
 (function () {
     'use strict';
 
     // ── Page config: which pages get the sidebar + their titles ───
+    // NOTE: study-guides & resources are public pages — no sidebar
     var PAGE_CONFIG = {
         'dashboard':    { title: 'Dashboard',    icon: 'fa-th-large',    highlight: 'dashboard' },
-        'study-guides': { title: 'Study Guides', icon: 'fa-book-open',   highlight: 'study-guides' },
-        'resources':    { title: 'Resources',    icon: 'fa-book-reader', highlight: 'resources' },
         'settings':     { title: 'Settings',     icon: 'fa-cog',         highlight: 'settings' },
         'admin':        { title: 'Admin Panel',  icon: 'fa-user-shield', highlight: 'admin' }
     };
 
     // ── Hero selectors to hide on each page ──────────────────────
     var HERO_SELECTORS = [
-        '.study-guides-hero',
-        '.resources-hero',
         '.admin-hero',
         '.wave-divider',
         '.breadcrumbs',

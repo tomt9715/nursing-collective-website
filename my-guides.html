@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Study Guides - The Nursing Collective</title>
+    <meta name="description" content="Browse all available nursing study guides organized by category.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2E86AB">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Bundled CSS -->
+    <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/pages.css?v=5.3.navbar">
+    <link rel="stylesheet" href="css/global-overrides.css?v=6.2.guides">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Sentry Error Tracking -->
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="sentry-init.js"></script>
+    <script src="lockscreen.js"></script>
+
+    <style>
+        /* ── Guide Library Styles ─────────────────────── */
+        .guide-library {
+            max-width: 960px;
+        }
+
+        /* Category section */
+        .guide-category {
+            margin-bottom: 32px;
+        }
+
+        .guide-category-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .guide-category-emoji {
+            font-size: 1.3rem;
+            line-height: 1;
+        }
+
+        .guide-category-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .guide-category-count {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .75rem;
+            font-weight: 500;
+            color: #94a3b8;
+            margin-left: auto;
+        }
+
+        /* Guide grid */
+        .guide-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 12px;
+        }
+
+        /* Guide card */
+        .guide-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+
+        .guide-card:hover {
+            border-color: rgba(46, 134, 171, 0.3);
+            background: rgba(46, 134, 171, 0.02);
+            text-decoration: none;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .guide-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1rem;
+            color: #fff;
+        }
+
+        .guide-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .guide-card-name {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .9rem;
+            font-weight: 600;
+            color: #0f172a;
+            line-height: 1.3;
+        }
+
+        .guide-card-meta {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .75rem;
+            color: #94a3b8;
+            margin-top: 2px;
+        }
+
+        .guide-card-arrow {
+            color: #cbd5e1;
+            font-size: .8rem;
+            flex-shrink: 0;
+            transition: color 0.15s ease;
+        }
+
+        .guide-card:hover .guide-card-arrow {
+            color: #2E86AB;
+        }
+
+        /* Coming soon cards */
+        .guide-card.coming-soon {
+            opacity: 0.55;
+            cursor: default;
+        }
+
+        .guide-card.coming-soon:hover {
+            border-color: rgba(0, 0, 0, 0.06);
+            background: #fff;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .guide-card.coming-soon .guide-card-arrow {
+            display: none;
+        }
+
+        .coming-soon-badge {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .65rem;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            background: rgba(0, 0, 0, 0.04);
+            padding: 2px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Category icon colors */
+        .icon-cardiovascular { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .icon-respiratory { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .icon-neurological { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .icon-gi { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .icon-musculoskeletal { background: linear-gradient(135deg, #10b981, #059669); }
+        .icon-endocrine { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .icon-fundamentals { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .icon-pharmacology { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+        .icon-renal { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .icon-maternal { background: linear-gradient(135deg, #f472b6, #ec4899); }
+        .icon-pediatrics { background: linear-gradient(135deg, #fb923c, #f97316); }
+        .icon-mental-health { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
+        .icon-oncology { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+        .icon-hematology { background: linear-gradient(135deg, #e11d48, #be123c); }
+        .icon-sensory { background: linear-gradient(135deg, #84cc16, #65a30d); }
+
+        /* Summary stats */
+        .guide-library-stats {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .guide-library-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .85rem;
+            color: #64748b;
+        }
+
+        .guide-library-stat i {
+            color: #2E86AB;
+            font-size: .9rem;
+        }
+
+        .guide-library-stat strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        /* Locked state for non-subscribers */
+        .guide-library-locked {
+            text-align: center;
+            padding: 60px 24px;
+        }
+
+        .guide-library-locked i {
+            font-size: 3rem;
+            color: #cbd5e1;
+            margin-bottom: 16px;
+        }
+
+        .guide-library-locked h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 8px;
+        }
+
+        .guide-library-locked p {
+            font-family: 'Source Sans 3', sans-serif;
+            color: #64748b;
+            margin-bottom: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Dark mode */
+        [data-theme="dark"] .guide-category-header {
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .guide-category-title {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .guide-card {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .guide-card:hover {
+            border-color: rgba(46, 134, 171, 0.3);
+            background: rgba(46, 134, 171, 0.05);
+        }
+
+        [data-theme="dark"] .guide-card-name {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .guide-card.coming-soon:hover {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .coming-soon-badge {
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .guide-library-stat strong {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .guide-library-locked h3 {
+            color: #f1f5f9;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .guide-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation (same as other pages) -->
+    <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand" aria-label="The Nursing Collective - Home">
+                <img src="assets/images/FlorenceBotLogo.svg" alt="" class="nav-logo" width="36" height="36" loading="eager">
+                <span class="nav-brand-text">The Nursing Collective</span>
+            </a>
+            <div class="nav-links" id="nav-links" role="menubar">
+                <a href="study-guides.html" role="menuitem">Study Guides</a>
+                <a href="resources.html" role="menuitem">Resources</a>
+                <a href="pricing.html" role="menuitem">Pricing</a>
+            </div>
+            <div class="nav-right">
+                <button class="dark-mode-toggle" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <a href="login.html" class="nav-btn login-btn" id="login-btn">Login</a>
+                <div class="user-dropdown-container hidden" id="user-dropdown-container">
+                    <button class="user-avatar-btn" id="user-avatar-btn" aria-label="User menu" aria-expanded="false">
+                        <img src="assets/images/default-avatar.svg" alt="Profile" class="user-avatar-img" id="nav-avatar-img">
+                    </button>
+                    <div class="user-dropdown-menu hidden" id="user-dropdown-menu">
+                        <div class="user-dropdown-header">
+                            <div class="user-dropdown-avatar">
+                                <img src="assets/images/default-avatar.svg" alt="Profile" id="dropdown-avatar-img">
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="dashboard.html"><i class="fas fa-th-large"></i> Dashboard</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="guide-library" id="guide-library">
+            <!-- Content populated by JS -->
+            <div class="guide-library-loading" style="text-align:center;padding:80px 24px;color:#94a3b8;">
+                <i class="fas fa-spinner fa-spin" style="font-size:1.5rem;margin-bottom:12px;display:block;"></i>
+                Loading study guides...
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <img src="assets/images/FlorenceBotLogo.svg" alt="The Nursing Collective" width="32" height="32">
+                        <span>The Nursing Collective</span>
+                    </div>
+                    <p class="footer-desc">Evidence-based study resources for nursing students.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Resources</h4>
+                    <a href="study-guides.html">Study Guides</a>
+                    <a href="resources.html">Free Resources</a>
+                    <a href="pricing.html">Pricing</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Community</h4>
+                    <a href="https://discord.gg/y2Mh77wAV2" target="_blank" rel="noopener">Discord Server</a>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <a href="terms.html">Terms of Service</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="contact.html">Contact Us</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 The Nursing Collective. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="dark-mode.js"></script>
+    <script src="api-service.js?v=1769142741"></script>
+    <script src="auth-script.js"></script>
+    <script src="script.js?v=4.8.dashboard"></script>
+    <script src="sidebar.js?v=1.1.guides"></script>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ── Guide catalog: 21 completed guides ─────────────────────
+        var GUIDE_CATALOG = [
+            {
+                category: 'Cardiovascular',
+                emoji: '\u2764\ufe0f',
+                icon: 'fa-heartbeat',
+                colorClass: 'icon-cardiovascular',
+                guides: [
+                    { name: 'Heart Failure', file: 'heart-failure' },
+                    { name: 'Myocardial Infarction', file: 'myocardial-infarction' },
+                    { name: 'Arrhythmias', file: 'arrhythmias' },
+                    { name: 'Hypertension', file: 'hypertension' },
+                    { name: 'Coronary Artery Disease', file: 'coronary-artery-disease' },
+                    { name: 'Peripheral Vascular Disease', file: 'peripheral-vascular-disease' }
+                ],
+                comingSoon: ['Valvular Heart Disease', 'Shock', 'Cardiac Medications', 'Heart Sounds & Murmurs']
+            },
+            {
+                category: 'Respiratory',
+                emoji: '\ud83e\udec1',
+                icon: 'fa-lungs',
+                colorClass: 'icon-respiratory',
+                guides: [
+                    { name: 'COPD', file: 'copd' },
+                    { name: 'Asthma', file: 'asthma' },
+                    { name: 'Pneumonia', file: 'pneumonia' },
+                    { name: 'Tuberculosis', file: 'tuberculosis' },
+                    { name: 'Oxygen Therapy', file: 'oxygen-therapy' },
+                    { name: 'Chest Tubes', file: 'chest-tubes' }
+                ],
+                comingSoon: ['Mechanical Ventilation', 'Pulmonary Embolism', 'ARDS', 'Tracheostomy Care']
+            },
+            {
+                category: 'Endocrine',
+                emoji: '\ud83e\ude78',
+                icon: 'fa-vial',
+                colorClass: 'icon-endocrine',
+                guides: [
+                    { name: 'Diabetes Mellitus', file: 'diabetes-mellitus' },
+                    { name: 'Thyroid Disorders', file: 'thyroid-disorders' },
+                    { name: 'Adrenal Disorders', file: 'adrenal-disorders' },
+                    { name: 'Pituitary Disorders', file: 'pituitary-disorders' }
+                ],
+                comingSoon: ['DKA vs HHS', 'SIADH vs Diabetes Insipidus']
+            },
+            {
+                category: 'Neurological',
+                emoji: '\ud83e\udde0',
+                icon: 'fa-brain',
+                colorClass: 'icon-neurological',
+                guides: [
+                    { name: 'Stroke', file: 'stroke' }
+                ],
+                comingSoon: ['Seizures / Epilepsy', 'TBI / Increased ICP', 'Spinal Cord Injury', 'Meningitis', "Parkinson's Disease"]
+            },
+            {
+                category: 'Gastrointestinal',
+                emoji: '\ud83d\udd2c',
+                icon: 'fa-stomach',
+                colorClass: 'icon-gi',
+                guides: [
+                    { name: 'GI Bleeding', file: 'gi-bleeding' }
+                ],
+                comingSoon: ['Liver Cirrhosis', "Crohn's vs UC", 'Pancreatitis', 'Bowel Obstruction']
+            },
+            {
+                category: 'Musculoskeletal',
+                emoji: '\ud83e\uddb4',
+                icon: 'fa-bone',
+                colorClass: 'icon-musculoskeletal',
+                guides: [
+                    { name: 'Fractures', file: 'fractures' },
+                    { name: 'Hip & Knee Replacement', file: 'hip-knee-replacement' }
+                ],
+                comingSoon: ['Osteoporosis', 'RA vs Osteoarthritis', 'Amputation']
+            },
+            {
+                category: 'Fundamentals',
+                emoji: '\ud83d\udccb',
+                icon: 'fa-clipboard-check',
+                colorClass: 'icon-fundamentals',
+                guides: [
+                    { name: 'Assessment Skills', file: 'assessment-skills' }
+                ],
+                comingSoon: ['Infection Control', 'IV Therapy', 'Delegation & Prioritization', 'Patient Safety', 'Wound Care']
+            }
+        ];
+
+        // ── Count totals ────────────────────────────────────────────
+        var totalAvailable = 0;
+        var totalComingSoon = 0;
+        GUIDE_CATALOG.forEach(function(cat) {
+            totalAvailable += cat.guides.length;
+            totalComingSoon += (cat.comingSoon || []).length;
+        });
+
+        // ── Build HTML ──────────────────────────────────────────────
+        function renderLibrary() {
+            var container = document.getElementById('guide-library');
+            if (!container) return;
+
+            var html = '';
+
+            // Stats summary
+            html += '<div class="guide-library-stats">';
+            html += '<div class="guide-library-stat"><i class="fas fa-book-open"></i> <strong>' + totalAvailable + '</strong> guides available</div>';
+            html += '<div class="guide-library-stat"><i class="fas fa-clock"></i> <strong>' + totalComingSoon + '</strong> coming soon</div>';
+            html += '<div class="guide-library-stat"><i class="fas fa-layer-group"></i> <strong>' + GUIDE_CATALOG.length + '</strong> categories</div>';
+            html += '</div>';
+
+            // Category sections
+            GUIDE_CATALOG.forEach(function(cat) {
+                var totalInCat = cat.guides.length + (cat.comingSoon || []).length;
+
+                html += '<div class="guide-category">';
+                html += '<div class="guide-category-header">';
+                html += '<span class="guide-category-emoji">' + cat.emoji + '</span>';
+                html += '<h2 class="guide-category-title">' + cat.category + '</h2>';
+                html += '<span class="guide-category-count">' + cat.guides.length + ' of ' + totalInCat + ' guides</span>';
+                html += '</div>';
+
+                html += '<div class="guide-grid">';
+
+                // Available guides
+                cat.guides.forEach(function(guide) {
+                    html += '<a href="guides/' + guide.file + '.html" class="guide-card">';
+                    html += '<div class="guide-card-icon ' + cat.colorClass + '"><i class="fas ' + cat.icon + '"></i></div>';
+                    html += '<div class="guide-card-info">';
+                    html += '<div class="guide-card-name">' + guide.name + '</div>';
+                    html += '<div class="guide-card-meta">Study Guide</div>';
+                    html += '</div>';
+                    html += '<i class="fas fa-chevron-right guide-card-arrow"></i>';
+                    html += '</a>';
+                });
+
+                // Coming soon
+                (cat.comingSoon || []).forEach(function(name) {
+                    html += '<div class="guide-card coming-soon">';
+                    html += '<div class="guide-card-icon ' + cat.colorClass + '" style="opacity:.4"><i class="fas ' + cat.icon + '"></i></div>';
+                    html += '<div class="guide-card-info">';
+                    html += '<div class="guide-card-name">' + name + '</div>';
+                    html += '<div class="guide-card-meta">Study Guide</div>';
+                    html += '</div>';
+                    html += '<span class="coming-soon-badge">Coming Soon</span>';
+                    html += '</div>';
+                });
+
+                html += '</div>'; // .guide-grid
+                html += '</div>'; // .guide-category
+            });
+
+            container.innerHTML = html;
+        }
+
+        // ── Init ────────────────────────────────────────────────────
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', renderLibrary);
+        } else {
+            renderLibrary();
+        }
+    })();
+    </script>
+</body>
+</html>

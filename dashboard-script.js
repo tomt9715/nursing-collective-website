@@ -337,7 +337,7 @@ async function loadRecentGuides() {
                     <div class="recent-guides-empty">
                         <i class="fas fa-book-open"></i>
                         <p>No guides studied yet</p>
-                        <button class="btn btn-primary btn-sm" data-navigate="study-guides.html">
+                        <button class="btn btn-primary btn-sm" data-navigate="my-guides.html">
                             <i class="fas fa-rocket"></i> Start Studying
                         </button>
                     </div>

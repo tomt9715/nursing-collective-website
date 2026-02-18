@@ -2,7 +2,7 @@
  * Shared sidebar component — app shell for logged-in pages
  * Injects sidebar, hides hero banners, adds clean page headers.
  *
- * Include on: settings, admin (dashboard has its own inline sidebar)
+ * Include on: my-guides, settings, admin (dashboard has its own inline sidebar)
  * Do NOT include on: index, login, pricing, study-guides, resources, guide, success
  */
 
@@ -13,6 +13,7 @@
     // NOTE: study-guides & resources are public pages — no sidebar
     var PAGE_CONFIG = {
         'dashboard':    { title: 'Dashboard',    icon: 'fa-th-large',    highlight: 'dashboard' },
+        'my-guides':    { title: 'Study Guides', icon: 'fa-book-open',   highlight: 'study-guides' },
         'settings':     { title: 'Settings',     icon: 'fa-cog',         highlight: 'settings' },
         'admin':        { title: 'Admin Panel',  icon: 'fa-user-shield', highlight: 'admin' }
     };
@@ -33,7 +34,7 @@
                     '<a href="dashboard.html" class="dash-sidebar-item" data-sidebar-page="dashboard">' +
                         '<i class="fas fa-th-large"></i> Dashboard' +
                     '</a>' +
-                    '<a href="study-guides.html" class="dash-sidebar-item" data-sidebar-page="study-guides">' +
+                    '<a href="my-guides.html" class="dash-sidebar-item" data-sidebar-page="study-guides">' +
                         '<i class="fas fa-book-open"></i> Study Guides' +
                     '</a>' +
                     '<a href="https://learn.thenursingcollective.pro" class="dash-sidebar-item" id="sidebar-quiz-link" style="display:none;" data-sidebar-page="quiz-bank">' +

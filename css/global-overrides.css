@@ -129,3 +129,315 @@
 .email-change-btn:hover {
     background: rgba(46, 134, 171, 0.1);
 }
+
+/* ============================================
+   MINIMALIST TYPOGRAPHY HERO
+   Overrides the gradient hero in bundle.min.css
+   with a clean, editorial typographic design.
+   ============================================ */
+
+/* -- Hero variables -- */
+:root {
+    --hero-bg: #FAFAFA;
+    --hero-text: #0f172a;
+    --hero-text-muted: #64748b;
+    --accent-primary: #2E86AB;
+    --accent-subtle: rgba(46, 134, 171, 0.06);
+}
+
+[data-theme="dark"] {
+    --hero-bg: #0f172a;
+    --hero-text: #f1f5f9;
+    --hero-text-muted: #94a3b8;
+    --accent-subtle: rgba(46, 134, 171, 0.12);
+}
+
+/* -- Hero section reset -- */
+.hero {
+    background: var(--hero-bg) !important;
+    background-size: auto !important;
+    animation: none !important;
+    color: var(--hero-text) !important;
+    padding: 0 !important;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-align: center !important;
+}
+
+/* Subtle grain texture overlay */
+.hero::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E") !important;
+    background-repeat: repeat !important;
+    opacity: 1 !important;
+    animation: none !important;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Remove second pseudo-element overlay */
+.hero::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* -- Hero content container -- */
+.hero .container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content {
+    max-width: 880px !important;
+    margin: 0 auto !important;
+    padding: 0 32px !important;
+    background: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    border-radius: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    animation: none !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* -- Typography: the headline -- */
+.hero-content h1 {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 5.5rem !important;
+    font-weight: 800 !important;
+    line-height: 1.05 !important;
+    letter-spacing: -0.03em !important;
+    color: var(--hero-text) !important;
+    margin-bottom: 32px !important;
+    text-shadow: none !important;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Staggered fade-in */
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 0.8s ease-out 0.1s forwards !important;
+}
+
+/* Accent word styling */
+.hero-content h1 .hero-accent {
+    color: var(--accent-primary);
+    position: relative;
+    display: inline-block;
+}
+
+/* Thick underline on accent word */
+.hero-content h1 .hero-accent::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 6px;
+    background: var(--accent-primary);
+    border-radius: 3px;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: accentUnderline 0.6s ease-out 0.9s forwards;
+}
+
+/* -- Subtitle -- */
+.hero-subtitle {
+    font-family: 'Source Sans 3', sans-serif !important;
+    font-size: 1.35rem !important;
+    font-weight: 400 !important;
+    line-height: 1.6 !important;
+    color: var(--hero-text-muted) !important;
+    max-width: 560px !important;
+    margin: 0 auto 48px !important;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 0.8s ease-out 0.3s forwards !important;
+}
+
+/* -- Hero buttons -- */
+.hero-buttons {
+    display: flex !important;
+    gap: 20px !important;
+    justify-content: center !important;
+    margin-bottom: 0 !important;
+    flex-wrap: wrap !important;
+    opacity: 0;
+    transform: translateY(24px);
+    animation: heroFadeIn 0.8s ease-out 0.5s forwards !important;
+}
+
+/* Primary hero button */
+.hero .btn-primary {
+    background: var(--accent-primary) !important;
+    color: white !important;
+    border: none !important;
+    padding: 18px 36px !important;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    box-shadow: 0 2px 8px rgba(46, 134, 171, 0.2) !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+}
+
+.hero .btn-primary::before {
+    display: none !important;
+}
+
+.hero .btn-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 24px rgba(46, 134, 171, 0.3) !important;
+}
+
+/* Secondary hero button */
+.hero .btn-outline-light {
+    background: transparent !important;
+    color: var(--accent-primary) !important;
+    border: 2px solid var(--accent-primary) !important;
+    padding: 18px 36px !important;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    border-radius: 10px !important;
+    box-shadow: none !important;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.hero .btn-outline-light:hover {
+    background: var(--accent-subtle) !important;
+    border-color: var(--accent-primary) !important;
+    color: var(--accent-primary) !important;
+    transform: translateY(-2px) !important;
+}
+
+/* Remove icons from hero buttons */
+.hero .btn i,
+.hero .btn .fab,
+.hero .btn .fas {
+    display: none !important;
+}
+
+/* -- Navbar refinement for hero overlap -- */
+.navbar {
+    background: rgba(250, 250, 250, 0.9) !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="dark"] .navbar {
+    background: rgba(15, 23, 42, 0.9) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="dark"] .navbar.scrolled {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* -- Hero animations -- */
+@keyframes heroFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes accentUnderline {
+    from {
+        transform: scaleX(0);
+    }
+    to {
+        transform: scaleX(1);
+    }
+}
+
+/* -- Responsive: Tablet -- */
+@media (max-width: 768px) {
+    .hero {
+        min-height: 90vh !important;
+        min-height: 90dvh !important;
+    }
+
+    .hero-content {
+        padding: 0 32px !important;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem !important;
+    }
+
+    .hero-subtitle {
+        font-size: 1.15rem !important;
+    }
+
+    .hero .btn-primary,
+    .hero .btn-outline-light {
+        padding: 16px 28px !important;
+        font-size: 1rem !important;
+    }
+}
+
+/* -- Responsive: Mobile -- */
+@media (max-width: 480px) {
+    .hero {
+        min-height: 85vh !important;
+        min-height: 85dvh !important;
+    }
+
+    .hero-content {
+        padding: 0 24px !important;
+    }
+
+    .hero-content h1 {
+        font-size: 2.75rem !important;
+        letter-spacing: -0.02em !important;
+    }
+
+    .hero-content h1 .hero-accent::after {
+        height: 4px;
+        bottom: -2px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.05rem !important;
+        margin-bottom: 40px !important;
+    }
+
+    .hero-buttons {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 12px !important;
+    }
+
+    .hero .btn-primary,
+    .hero .btn-outline-light {
+        width: 100% !important;
+        max-width: 320px !important;
+        justify-content: center !important;
+        padding: 16px 24px !important;
+    }
+}

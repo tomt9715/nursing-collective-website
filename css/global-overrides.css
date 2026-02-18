@@ -133,25 +133,29 @@
 /* ============================================
    PREMIUM HERO — Theme-Aware
    Dark premium in dark mode, refined light in
-   light mode. Glow orbs + gradient accent in both.
+   light mode. Intense orbs, grid, gradient accent.
    ============================================ */
 
 /* -- Hero theme variables -- */
 :root {
     --hero-bg: #f8fafc;
     --hero-heading: #0f172a;
+    --hero-heading-glow: none;
     --hero-sub: #475569;
-    --hero-orb-blue: rgba(46, 134, 171, 0.12);
-    --hero-orb-pink: rgba(162, 59, 114, 0.08);
-    --hero-orb-blur: 80px;
-    --hero-btn-shadow: rgba(46, 134, 171, 0.2);
-    --hero-btn-shadow-hover: rgba(46, 134, 171, 0.35);
+    --hero-orb1: rgba(46, 134, 171, 0.25);
+    --hero-orb2: rgba(162, 59, 114, 0.18);
+    --hero-orb3: rgba(123, 104, 238, 0.15);
+    --hero-orb-blur: 60px;
+    --hero-grid-color: rgba(46, 134, 171, 0.06);
+    --hero-grid-glow: rgba(46, 134, 171, 0.03);
+    --hero-btn-shadow: rgba(46, 134, 171, 0.25);
+    --hero-btn-shadow-hover: rgba(46, 134, 171, 0.4);
     --hero-ghost-bg: rgba(46, 134, 171, 0.06);
-    --hero-ghost-border: rgba(46, 134, 171, 0.25);
+    --hero-ghost-border: rgba(46, 134, 171, 0.3);
     --hero-ghost-text: #2E86AB;
-    --hero-ghost-hover-bg: rgba(46, 134, 171, 0.1);
-    --hero-ghost-hover-border: rgba(46, 134, 171, 0.45);
-    --hero-accent-glow: rgba(46, 134, 171, 0.2);
+    --hero-ghost-hover-bg: rgba(46, 134, 171, 0.12);
+    --hero-ghost-hover-border: rgba(46, 134, 171, 0.5);
+    --hero-accent-glow: rgba(46, 134, 171, 0.25);
     --hero-nav-bg: rgba(248, 250, 252, 0.8);
     --hero-nav-border: rgba(0, 0, 0, 0.06);
     --hero-nav-link: #475569;
@@ -164,18 +168,22 @@
 [data-theme="dark"] {
     --hero-bg: #0a0e1a;
     --hero-heading: #ffffff;
+    --hero-heading-glow: 0 0 80px rgba(46, 134, 171, 0.25);
     --hero-sub: rgba(203, 213, 225, 0.85);
-    --hero-orb-blue: rgba(46, 134, 171, 0.2);
-    --hero-orb-pink: rgba(162, 59, 114, 0.15);
-    --hero-orb-blur: 60px;
-    --hero-btn-shadow: rgba(46, 134, 171, 0.3);
-    --hero-btn-shadow-hover: rgba(46, 134, 171, 0.5);
+    --hero-orb1: rgba(46, 134, 171, 0.35);
+    --hero-orb2: rgba(162, 59, 114, 0.25);
+    --hero-orb3: rgba(123, 104, 238, 0.2);
+    --hero-orb-blur: 40px;
+    --hero-grid-color: rgba(255, 255, 255, 0.04);
+    --hero-grid-glow: rgba(46, 134, 171, 0.02);
+    --hero-btn-shadow: rgba(46, 134, 171, 0.35);
+    --hero-btn-shadow-hover: rgba(46, 134, 171, 0.55);
     --hero-ghost-bg: rgba(255, 255, 255, 0.04);
     --hero-ghost-border: rgba(255, 255, 255, 0.15);
     --hero-ghost-text: rgba(255, 255, 255, 0.9);
-    --hero-ghost-hover-bg: rgba(255, 255, 255, 0.08);
+    --hero-ghost-hover-bg: rgba(255, 255, 255, 0.1);
     --hero-ghost-hover-border: rgba(46, 134, 171, 0.5);
-    --hero-accent-glow: rgba(46, 134, 171, 0.4);
+    --hero-accent-glow: rgba(46, 134, 171, 0.5);
     --hero-nav-bg: rgba(10, 14, 26, 0.7);
     --hero-nav-border: rgba(255, 255, 255, 0.06);
     --hero-nav-link: rgba(255, 255, 255, 0.75);
@@ -202,40 +210,69 @@
     text-align: center !important;
 }
 
-/* Ambient glow orb — blue, top-left */
+/* Orb 1 — large blue, top-left */
 .hero::before {
     content: '' !important;
     position: absolute !important;
-    top: -20% !important;
-    left: -10% !important;
+    top: -15% !important;
+    left: -5% !important;
     right: auto !important;
     bottom: auto !important;
-    width: 600px !important;
-    height: 600px !important;
-    background: radial-gradient(circle, var(--hero-orb-blue) 0%, transparent 70%) !important;
+    width: 700px !important;
+    height: 700px !important;
+    background: radial-gradient(circle, var(--hero-orb1) 0%, transparent 65%) !important;
     background-repeat: no-repeat !important;
     opacity: 1 !important;
-    animation: heroOrbFloat 12s ease-in-out infinite !important;
+    animation: heroOrb1 14s ease-in-out infinite !important;
     pointer-events: none;
     z-index: 0;
     filter: blur(var(--hero-orb-blur));
 }
 
-/* Ambient glow orb — pink, bottom-right */
+/* Orb 2 — pink/magenta, bottom-right */
 .hero::after {
     content: '' !important;
     display: block !important;
     position: absolute !important;
-    bottom: -15% !important;
+    bottom: -10% !important;
     right: -5% !important;
-    width: 500px !important;
-    height: 500px !important;
-    background: radial-gradient(circle, var(--hero-orb-pink) 0%, transparent 70%) !important;
+    width: 600px !important;
+    height: 600px !important;
+    background: radial-gradient(circle, var(--hero-orb2) 0%, transparent 65%) !important;
     background-size: auto !important;
-    animation: heroOrbFloat 15s ease-in-out 3s infinite reverse !important;
+    animation: heroOrb2 16s ease-in-out 2s infinite !important;
     pointer-events: none;
     z-index: 0;
     filter: blur(var(--hero-orb-blur));
+}
+
+/* Grid overlay + third orb (via hero-grid element) */
+.hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* Dot grid pattern */
+    background-image:
+        radial-gradient(circle, var(--hero-grid-color) 1px, transparent 1px);
+    background-size: 40px 40px;
+    /* Mask: radial fade from center so grid is visible in middle, fades at edges */
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 20%, transparent 70%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 20%, transparent 70%);
+}
+
+/* Third orb — purple, center-right (child of hero-grid) */
+.hero-grid::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    right: 10%;
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--hero-orb3) 0%, transparent 65%);
+    filter: blur(var(--hero-orb-blur));
+    animation: heroOrb3 18s ease-in-out 4s infinite;
+    pointer-events: none;
 }
 
 /* -- Hero content container -- */
@@ -258,7 +295,7 @@
     box-shadow: none !important;
     animation: none !important;
     position: relative !important;
-    z-index: 1 !important;
+    z-index: 2 !important;
 }
 
 /* -- Headline -- */
@@ -270,7 +307,7 @@
     letter-spacing: -0.03em !important;
     color: var(--hero-heading) !important;
     margin-bottom: 28px !important;
-    text-shadow: none !important;
+    text-shadow: var(--hero-heading-glow) !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -281,13 +318,13 @@
 
 /* Accent word — gradient text + glow */
 .hero-content h1 .hero-accent {
-    background: linear-gradient(135deg, #3bb8e0 0%, #2E86AB 50%, #7B68EE 100%);
+    background: linear-gradient(135deg, #3bb8e0 0%, #2E86AB 40%, #7B68EE 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     position: relative;
     display: inline-block;
-    filter: drop-shadow(0 0 20px var(--hero-accent-glow));
+    filter: drop-shadow(0 0 25px var(--hero-accent-glow));
 }
 
 /* -- Subtitle -- */
@@ -325,7 +362,7 @@
     font-size: 1.05rem !important;
     font-weight: 600 !important;
     border-radius: 10px !important;
-    box-shadow: 0 0 20px var(--hero-btn-shadow), 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    box-shadow: 0 0 24px var(--hero-btn-shadow), 0 4px 12px rgba(0, 0, 0, 0.15) !important;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     position: relative !important;
 }
@@ -336,7 +373,7 @@
 
 .hero .btn-primary:hover {
     transform: translateY(-2px) !important;
-    box-shadow: 0 0 30px var(--hero-btn-shadow-hover), 0 8px 24px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 0 36px var(--hero-btn-shadow-hover), 0 8px 24px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Secondary button — ghost with theme-aware border */
@@ -357,7 +394,7 @@
     border-color: var(--hero-ghost-hover-border) !important;
     color: var(--hero-ghost-text) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 0 20px rgba(46, 134, 171, 0.1) !important;
+    box-shadow: 0 0 20px rgba(46, 134, 171, 0.12) !important;
 }
 
 /* -- Navbar: blends with hero, then reverts on scroll -- */
@@ -433,10 +470,24 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     }
 }
 
-@keyframes heroOrbFloat {
+@keyframes heroOrb1 {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    33% { transform: translate(40px, -30px) scale(1.05); }
-    66% { transform: translate(-20px, 20px) scale(0.95); }
+    25% { transform: translate(50px, -40px) scale(1.08); }
+    50% { transform: translate(20px, 30px) scale(0.95); }
+    75% { transform: translate(-30px, -10px) scale(1.03); }
+}
+
+@keyframes heroOrb2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(-40px, 20px) scale(1.05); }
+    50% { transform: translate(30px, -40px) scale(0.92); }
+    75% { transform: translate(-10px, 30px) scale(1.07); }
+}
+
+@keyframes heroOrb3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-50px, 40px) scale(1.1); }
+    66% { transform: translate(40px, -20px) scale(0.9); }
 }
 
 /* -- Responsive: Tablet -- */
@@ -465,13 +516,18 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     }
 
     .hero::before {
+        width: 400px !important;
+        height: 400px !important;
+    }
+
+    .hero::after {
         width: 350px !important;
         height: 350px !important;
     }
 
-    .hero::after {
-        width: 300px !important;
-        height: 300px !important;
+    .hero-grid::after {
+        width: 300px;
+        height: 300px;
     }
 }
 
@@ -511,12 +567,17 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     }
 
     .hero::before {
+        width: 300px !important;
+        height: 300px !important;
+    }
+
+    .hero::after {
         width: 250px !important;
         height: 250px !important;
     }
 
-    .hero::after {
-        width: 200px !important;
-        height: 200px !important;
+    .hero-grid::after {
+        width: 200px;
+        height: 200px;
     }
 }

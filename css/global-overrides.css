@@ -131,9 +131,9 @@
 }
 
 /* ============================================
-   PREMIUM HERO — Theme-Aware
-   Dark premium in dark mode, refined light in
-   light mode. Intense orbs, grid, gradient accent.
+   HERO — Linear-Style with Product Mockup
+   Headline + subtitle at top, CSS dashboard
+   mockup below. Theme-aware light/dark.
    ============================================ */
 
 /* -- Hero theme variables -- */
@@ -142,12 +142,11 @@
     --hero-heading: #0f172a;
     --hero-heading-glow: none;
     --hero-sub: #475569;
-    --hero-orb1: rgba(46, 134, 171, 0.25);
-    --hero-orb2: rgba(162, 59, 114, 0.18);
-    --hero-orb3: rgba(123, 104, 238, 0.15);
+    --hero-orb1: rgba(46, 134, 171, 0.2);
+    --hero-orb2: rgba(162, 59, 114, 0.14);
+    --hero-orb3: rgba(123, 104, 238, 0.12);
     --hero-orb-blur: 60px;
     --hero-grid-color: rgba(46, 134, 171, 0.06);
-    --hero-grid-glow: rgba(46, 134, 171, 0.03);
     --hero-btn-shadow: rgba(46, 134, 171, 0.25);
     --hero-btn-shadow-hover: rgba(46, 134, 171, 0.4);
     --hero-ghost-bg: rgba(46, 134, 171, 0.06);
@@ -163,19 +162,39 @@
     --hero-nav-link-hover-bg: rgba(46, 134, 171, 0.08);
     --hero-nav-active-bg: rgba(46, 134, 171, 0.12);
     --hero-nav-icon: #334155;
+    /* Mockup variables — light */
+    --mockup-bg: #ffffff;
+    --mockup-border: rgba(0, 0, 0, 0.08);
+    --mockup-shadow: 0 25px 80px rgba(0, 0, 0, 0.12), 0 8px 32px rgba(0, 0, 0, 0.08);
+    --mockup-titlebar-bg: #f1f5f9;
+    --mockup-titlebar-text: #94a3b8;
+    --mockup-sidebar-bg: #f8fafc;
+    --mockup-sidebar-text: #64748b;
+    --mockup-sidebar-active-bg: rgba(46, 134, 171, 0.1);
+    --mockup-sidebar-active-text: #2E86AB;
+    --mockup-main-bg: #ffffff;
+    --mockup-stat-bg: #f8fafc;
+    --mockup-stat-num: #0f172a;
+    --mockup-stat-label: #94a3b8;
+    --mockup-card-bg: #ffffff;
+    --mockup-card-border: rgba(0, 0, 0, 0.06);
+    --mockup-card-title: #0f172a;
+    --mockup-card-cat: #94a3b8;
+    --mockup-progress-bg: #e2e8f0;
+    --mockup-progress-fill: #2E86AB;
+    --mockup-section-title: #64748b;
 }
 
 [data-theme="dark"] {
     --hero-bg: #0a0e1a;
     --hero-heading: #ffffff;
-    --hero-heading-glow: 0 0 80px rgba(46, 134, 171, 0.25);
+    --hero-heading-glow: 0 0 80px rgba(46, 134, 171, 0.2);
     --hero-sub: rgba(203, 213, 225, 0.85);
-    --hero-orb1: rgba(46, 134, 171, 0.35);
-    --hero-orb2: rgba(162, 59, 114, 0.25);
-    --hero-orb3: rgba(123, 104, 238, 0.2);
-    --hero-orb-blur: 40px;
-    --hero-grid-color: rgba(255, 255, 255, 0.04);
-    --hero-grid-glow: rgba(46, 134, 171, 0.02);
+    --hero-orb1: rgba(46, 134, 171, 0.3);
+    --hero-orb2: rgba(162, 59, 114, 0.2);
+    --hero-orb3: rgba(123, 104, 238, 0.18);
+    --hero-orb-blur: 50px;
+    --hero-grid-color: rgba(255, 255, 255, 0.03);
     --hero-btn-shadow: rgba(46, 134, 171, 0.35);
     --hero-btn-shadow-hover: rgba(46, 134, 171, 0.55);
     --hero-ghost-bg: rgba(255, 255, 255, 0.04);
@@ -191,6 +210,27 @@
     --hero-nav-link-hover-bg: rgba(255, 255, 255, 0.08);
     --hero-nav-active-bg: rgba(46, 134, 171, 0.2);
     --hero-nav-icon: #ffffff;
+    /* Mockup variables — dark */
+    --mockup-bg: #111827;
+    --mockup-border: rgba(255, 255, 255, 0.08);
+    --mockup-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 8px 32px rgba(46, 134, 171, 0.1);
+    --mockup-titlebar-bg: #0f1629;
+    --mockup-titlebar-text: #4b5563;
+    --mockup-sidebar-bg: #0d1322;
+    --mockup-sidebar-text: #6b7280;
+    --mockup-sidebar-active-bg: rgba(46, 134, 171, 0.15);
+    --mockup-sidebar-active-text: #3bb8e0;
+    --mockup-main-bg: #111827;
+    --mockup-stat-bg: rgba(255, 255, 255, 0.04);
+    --mockup-stat-num: #f1f5f9;
+    --mockup-stat-label: #6b7280;
+    --mockup-card-bg: rgba(255, 255, 255, 0.03);
+    --mockup-card-border: rgba(255, 255, 255, 0.06);
+    --mockup-card-title: #f1f5f9;
+    --mockup-card-cat: #6b7280;
+    --mockup-progress-bg: rgba(255, 255, 255, 0.08);
+    --mockup-progress-fill: #3bb8e0;
+    --mockup-section-title: #6b7280;
 }
 
 /* -- Hero section -- */
@@ -200,21 +240,29 @@
     animation: none !important;
     color: var(--hero-heading) !important;
     padding: 0 !important;
-    min-height: 100vh;
-    min-height: 100dvh;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
+    min-height: auto !important;
+    display: block !important;
     position: relative !important;
     overflow: hidden !important;
     text-align: center !important;
+}
+
+/* Inner wrapper — vertical flex */
+.hero-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 140px;
+    padding-bottom: 0;
 }
 
 /* Orb 1 — large blue, top-left */
 .hero::before {
     content: '' !important;
     position: absolute !important;
-    top: -15% !important;
+    top: -10% !important;
     left: -5% !important;
     right: auto !important;
     bottom: auto !important;
@@ -234,7 +282,7 @@
     content: '' !important;
     display: block !important;
     position: absolute !important;
-    bottom: -10% !important;
+    bottom: 5% !important;
     right: -5% !important;
     width: 600px !important;
     height: 600px !important;
@@ -246,26 +294,23 @@
     filter: blur(var(--hero-orb-blur));
 }
 
-/* Grid overlay + third orb (via hero-grid element) */
+/* Grid overlay + third orb */
 .hero-grid {
     position: absolute;
     inset: 0;
     z-index: 0;
     pointer-events: none;
-    /* Dot grid pattern */
     background-image:
         radial-gradient(circle, var(--hero-grid-color) 1px, transparent 1px);
     background-size: 40px 40px;
-    /* Mask: radial fade from center so grid is visible in middle, fades at edges */
-    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 20%, transparent 70%);
-    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 20%, transparent 70%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, black 20%, transparent 70%);
 }
 
-/* Third orb — purple, center-right (child of hero-grid) */
 .hero-grid::after {
     content: '';
     position: absolute;
-    top: 10%;
+    top: 15%;
     right: 10%;
     width: 500px;
     height: 500px;
@@ -275,16 +320,13 @@
     pointer-events: none;
 }
 
-/* -- Hero content container -- */
+/* -- Hero content (text area) -- */
 .hero .container {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: none !important;
 }
 
 .hero-content {
-    max-width: 900px !important;
+    max-width: 800px !important;
     margin: 0 auto !important;
     padding: 0 32px !important;
     background: none !important;
@@ -303,10 +345,10 @@
     font-family: 'Outfit', sans-serif !important;
     font-size: 4.5rem !important;
     font-weight: 700 !important;
-    line-height: 1.1 !important;
+    line-height: 1.08 !important;
     letter-spacing: -0.03em !important;
     color: var(--hero-heading) !important;
-    margin-bottom: 28px !important;
+    margin-bottom: 24px !important;
     text-shadow: var(--hero-heading-glow) !important;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
@@ -330,12 +372,12 @@
 /* -- Subtitle -- */
 .hero-subtitle {
     font-family: 'Source Sans 3', sans-serif !important;
-    font-size: 1.3rem !important;
+    font-size: 1.25rem !important;
     font-weight: 400 !important;
     line-height: 1.6 !important;
     color: var(--hero-sub) !important;
-    max-width: 580px !important;
-    margin: 0 auto 44px !important;
+    max-width: 540px !important;
+    margin: 0 auto 36px !important;
     opacity: 0;
     transform: translateY(28px);
     animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards !important;
@@ -353,12 +395,12 @@
     animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.55s forwards !important;
 }
 
-/* Primary button — gradient blue with glow */
+/* Primary button */
 .hero .btn-primary {
     background: linear-gradient(135deg, #2E86AB 0%, #3bb8e0 100%) !important;
     color: white !important;
     border: none !important;
-    padding: 16px 32px !important;
+    padding: 14px 28px !important;
     font-size: 1.05rem !important;
     font-weight: 600 !important;
     border-radius: 10px !important;
@@ -376,12 +418,12 @@
     box-shadow: 0 0 36px var(--hero-btn-shadow-hover), 0 8px 24px rgba(0, 0, 0, 0.2) !important;
 }
 
-/* Secondary button — ghost with theme-aware border */
+/* Secondary button */
 .hero .btn-outline-light {
     background: var(--hero-ghost-bg) !important;
     color: var(--hero-ghost-text) !important;
     border: 1px solid var(--hero-ghost-border) !important;
-    padding: 16px 32px !important;
+    padding: 14px 28px !important;
     font-size: 1.05rem !important;
     font-weight: 600 !important;
     border-radius: 10px !important;
@@ -395,6 +437,225 @@
     color: var(--hero-ghost-text) !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 0 20px rgba(46, 134, 171, 0.12) !important;
+}
+
+/* ============================================
+   PRODUCT MOCKUP — Dashboard preview
+   ============================================ */
+.hero-mockup {
+    width: 100%;
+    max-width: 1100px;
+    margin: 56px auto 0;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    transform: translateY(40px);
+    animation: heroFadeIn 1s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+}
+
+.mockup-window {
+    background: var(--mockup-bg);
+    border: 1px solid var(--mockup-border);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--mockup-shadow);
+    /* Bottom fade — mockup gets cut off to suggest more content below */
+    -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+/* Title bar with traffic lights */
+.mockup-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: var(--mockup-titlebar-bg);
+    border-bottom: 1px solid var(--mockup-border);
+}
+
+.mockup-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.mockup-dot.red { background: #ff5f57; }
+.mockup-dot.yellow { background: #febc2e; }
+.mockup-dot.green { background: #28c840; }
+
+.mockup-titlebar-text {
+    flex: 1;
+    text-align: center;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--mockup-titlebar-text);
+    margin-right: 36px; /* balance dots on left */
+}
+
+/* Body: sidebar + main */
+.mockup-body {
+    display: flex;
+    min-height: 380px;
+}
+
+/* Sidebar */
+.mockup-sidebar {
+    width: 200px;
+    flex-shrink: 0;
+    background: var(--mockup-sidebar-bg);
+    border-right: 1px solid var(--mockup-border);
+    padding: 16px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.mockup-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--mockup-sidebar-text);
+    cursor: default;
+    transition: background 0.15s ease;
+}
+
+.mockup-sidebar-item.active {
+    background: var(--mockup-sidebar-active-bg);
+    color: var(--mockup-sidebar-active-text);
+    font-weight: 600;
+}
+
+.mockup-sidebar-item i {
+    font-size: 0.9rem;
+    width: 18px;
+    text-align: center;
+}
+
+/* Main content area */
+.mockup-main {
+    flex: 1;
+    padding: 20px 24px;
+    background: var(--mockup-main-bg);
+}
+
+/* Stats row */
+.mockup-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.mockup-stat {
+    background: var(--mockup-stat-bg);
+    border-radius: 10px;
+    padding: 16px 12px;
+    text-align: center;
+}
+
+.mockup-stat-num {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--mockup-stat-num);
+    line-height: 1.2;
+}
+
+.mockup-stat-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--mockup-stat-label);
+    margin-top: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* Section title */
+.mockup-section-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--mockup-section-title);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 12px;
+    text-align: left;
+}
+
+/* Guide cards */
+.mockup-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.mockup-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--mockup-card-bg);
+    border: 1px solid var(--mockup-card-border);
+    border-radius: 10px;
+    text-align: left;
+}
+
+.mockup-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: white;
+    font-size: 1rem;
+}
+
+.mockup-card-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.mockup-card-title {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--mockup-card-title);
+    line-height: 1.3;
+}
+
+.mockup-card-cat {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--mockup-card-cat);
+}
+
+/* Progress bar */
+.mockup-card-progress {
+    width: 100px;
+    height: 6px;
+    background: var(--mockup-progress-bg);
+    border-radius: 3px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.mockup-progress-fill {
+    height: 100%;
+    background: var(--mockup-progress-fill);
+    border-radius: 3px;
+    transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* -- Navbar: blends with hero, then reverts on scroll -- */
@@ -492,27 +753,44 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 
 /* -- Responsive: Tablet -- */
 @media (max-width: 768px) {
-    .hero {
-        min-height: 90vh !important;
-        min-height: 90dvh !important;
+    .hero-inner {
+        padding-top: 120px;
     }
 
     .hero-content {
-        padding: 0 32px !important;
+        padding: 0 24px !important;
     }
 
     .hero-content h1 {
-        font-size: 3.25rem !important;
+        font-size: 3rem !important;
     }
 
     .hero-subtitle {
-        font-size: 1.15rem !important;
+        font-size: 1.1rem !important;
     }
 
     .hero .btn-primary,
     .hero .btn-outline-light {
-        padding: 14px 26px !important;
+        padding: 12px 24px !important;
         font-size: 1rem !important;
+    }
+
+    .hero-mockup {
+        margin-top: 40px;
+        padding: 0 16px;
+    }
+
+    /* Hide sidebar on tablet */
+    .mockup-sidebar {
+        display: none;
+    }
+
+    .mockup-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .mockup-card-progress {
+        width: 70px;
     }
 
     .hero::before {
@@ -533,23 +811,22 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 
 /* -- Responsive: Mobile -- */
 @media (max-width: 480px) {
-    .hero {
-        min-height: 85vh !important;
-        min-height: 85dvh !important;
+    .hero-inner {
+        padding-top: 100px;
     }
 
     .hero-content {
-        padding: 0 24px !important;
+        padding: 0 20px !important;
     }
 
     .hero-content h1 {
-        font-size: 2.5rem !important;
+        font-size: 2.25rem !important;
         letter-spacing: -0.02em !important;
     }
 
     .hero-subtitle {
-        font-size: 1.05rem !important;
-        margin-bottom: 36px !important;
+        font-size: 1rem !important;
+        margin-bottom: 28px !important;
     }
 
     .hero-buttons {
@@ -561,9 +838,50 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     .hero .btn-primary,
     .hero .btn-outline-light {
         width: 100% !important;
-        max-width: 320px !important;
+        max-width: 300px !important;
         justify-content: center !important;
         padding: 14px 24px !important;
+    }
+
+    .hero-mockup {
+        margin-top: 32px;
+        padding: 0 12px;
+    }
+
+    .mockup-window {
+        border-radius: 12px;
+    }
+
+    .mockup-sidebar {
+        display: none;
+    }
+
+    .mockup-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .mockup-stat {
+        padding: 12px 8px;
+    }
+
+    .mockup-stat-num {
+        font-size: 1.2rem;
+    }
+
+    .mockup-card {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .mockup-card-icon {
+        width: 34px;
+        height: 34px;
+        font-size: 0.85rem;
+    }
+
+    .mockup-card-progress {
+        width: 50px;
     }
 
     .hero::before {

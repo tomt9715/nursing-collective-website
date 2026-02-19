@@ -223,9 +223,11 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
 
-        .guide-category-emoji {
-            font-size: 1.3rem;
-            line-height: 1;
+        .guide-category-icon {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+            flex-shrink: 0;
         }
 
         .guide-category-title {
@@ -495,6 +497,10 @@
                 flex-direction: column;
                 gap: 4px;
             }
+            .guide-category-icon {
+                width: 24px;
+                height: 24px;
+            }
         }
     </style>
 </head>
@@ -604,6 +610,6 @@
     <script src="script.js?v=4.8.dashboard"></script>
     <script src="sidebar.js?v=1.1.guides"></script>
 
-    <script src="my-guides-script.js?v=1.0"></script>
+    <script src="my-guides-script.js?v=1.1"></script>
 </body>
 </html>

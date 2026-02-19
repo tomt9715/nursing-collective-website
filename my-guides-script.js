@@ -2,6 +2,7 @@
     'use strict';
 
     var ICON_BASE = 'assets/images/guide-icons/';
+    var CATEGORY_ICON_BASE = 'assets/images/study-guide-page/';
 
     // ── Class-based guide catalog ────────────────────────────────
     var CLASS_CATALOG = [
@@ -14,7 +15,7 @@
             topics: [
                 {
                     category: 'Assessment & Clinical Skills',
-                    emoji: '\ud83d\udccb',
+                    categoryIcon: 'assessment-icon',
                     icon: 'fa-clipboard-check',
                     colorClass: 'icon-fundamentals',
                     guides: [
@@ -39,7 +40,7 @@
             topics: [
                 {
                     category: 'Cardiovascular',
-                    emoji: '\u2764\ufe0f',
+                    categoryIcon: 'cardiovascular-icon',
                     icon: 'fa-heartbeat',
                     colorClass: 'icon-cardiovascular',
                     guides: [
@@ -59,7 +60,7 @@
                 },
                 {
                     category: 'Respiratory',
-                    emoji: '\ud83e\udec1',
+                    categoryIcon: 'respiratory-icon',
                     icon: 'fa-lungs',
                     colorClass: 'icon-respiratory',
                     guides: [
@@ -79,7 +80,7 @@
                 },
                 {
                     category: 'Endocrine',
-                    emoji: '\ud83e\ude78',
+                    categoryIcon: 'endocrine-icon',
                     icon: 'fa-vial',
                     colorClass: 'icon-endocrine',
                     guides: [
@@ -95,7 +96,7 @@
                 },
                 {
                     category: 'Neurological',
-                    emoji: '\ud83e\udde0',
+                    categoryIcon: 'neurological-icon',
                     icon: 'fa-brain',
                     colorClass: 'icon-neurological',
                     guides: [
@@ -111,7 +112,7 @@
                 },
                 {
                     category: 'Gastrointestinal',
-                    emoji: '\ud83d\udd2c',
+                    categoryIcon: 'gastrointestinal-icon',
                     icon: 'fa-stomach',
                     colorClass: 'icon-gi',
                     guides: [
@@ -126,7 +127,7 @@
                 },
                 {
                     category: 'Musculoskeletal',
-                    emoji: '\ud83e\uddb4',
+                    categoryIcon: 'musculoskeletal-icon',
                     icon: 'fa-bone',
                     colorClass: 'icon-musculoskeletal',
                     guides: [
@@ -150,7 +151,7 @@
             topics: [
                 {
                     category: 'Maternal-Newborn',
-                    emoji: '\ud83e\udd30',
+                    categoryIcon: 'maternal-newborn-icon',
                     icon: 'fa-baby',
                     colorClass: 'icon-maternal',
                     guides: [],
@@ -172,7 +173,7 @@
             topics: [
                 {
                     category: 'Pediatric Nursing',
-                    emoji: '\ud83d\udc76',
+                    categoryIcon: 'pediatric-icon',
                     icon: 'fa-child',
                     colorClass: 'icon-pediatrics',
                     guides: [],
@@ -194,7 +195,7 @@
             topics: [
                 {
                     category: 'Psychiatric Nursing',
-                    emoji: '\ud83e\udde0',
+                    categoryIcon: 'psychiatric-icon',
                     icon: 'fa-comments',
                     colorClass: 'icon-mental-health',
                     guides: [],
@@ -217,7 +218,7 @@
             topics: [
                 {
                     category: 'Pharmacology',
-                    emoji: '\ud83d\udc8a',
+                    categoryIcon: 'pharmacology-icon',
                     icon: 'fa-pills',
                     colorClass: 'icon-pharmacology',
                     guides: [],
@@ -336,7 +337,7 @@
 
             html += '<div class="guide-category">';
             html += '<div class="guide-category-header">';
-            html += '<span class="guide-category-emoji">' + topic.emoji + '</span>';
+            html += '<img src="' + CATEGORY_ICON_BASE + topic.categoryIcon + '.webp" alt="" class="guide-category-icon" loading="lazy">';
             html += '<h2 class="guide-category-title">' + topic.category + '</h2>';
             html += '<span class="guide-category-count">' + topic.guides.length + ' of ' + totalInTopic + ' guides</span>';
             html += '</div>';

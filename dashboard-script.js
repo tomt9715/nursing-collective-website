@@ -315,8 +315,12 @@ async function loadRecentGuides() {
                 container.innerHTML = recentEntries.map(entry => {
                     const name = formatGuideName(entry.id);
                     const timeAgo = formatRelativeTime(entry.date.toISOString());
+                    const iconSrc = 'assets/images/guide-icons/' + entry.id + '.webp';
                     return `
                         <div class="recent-guide-item">
+                            <div class="recent-guide-icon-img">
+                                <img src="${iconSrc}" alt="" loading="lazy" onerror="this.parentElement.innerHTML='<i class=\\'fas fa-book-open\\'></i>'">
+                            </div>
                             <div class="recent-guide-info">
                                 <span class="recent-guide-name">${escapeHtml(name)}</span>
                                 <span class="recent-guide-time">${timeAgo || 'Recently'}</span>

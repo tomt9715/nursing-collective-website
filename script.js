@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
 
     const pageLoader = document.getElementById('page-loader');
     setTimeout(() => {
-        pageLoader.classList.add('hidden');
+        if (pageLoader) pageLoader.classList.add('hidden');
         // Final scroll to top after loader hides
         window.scrollTo(0, 0);
         document.documentElement.scrollTop = 0;

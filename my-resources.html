@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Resources - The Nursing Collective</title>
+    <meta name="description" content="Browse survival guides, clinical confidence resources, and quick reference tools.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2E86AB">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Bundled CSS -->
+    <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/pages.css?v=5.3.navbar">
+    <link rel="stylesheet" href="css/global-overrides.css?v=6.2.resources">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Sentry Error Tracking -->
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="sentry-init.js"></script>
+    <script src="lockscreen.js"></script>
+
+    <style>
+        /* ── Resource Library Styles ─────────────────────── */
+        .res-library {
+            width: 100%;
+        }
+
+        /* ── Stats Bar ─────────────────────────────────────── */
+        .res-library-stats {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .res-library-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .85rem;
+            color: #64748b;
+        }
+
+        .res-library-stat i {
+            color: #2E86AB;
+            font-size: .9rem;
+        }
+
+        .res-library-stat strong {
+            color: #0f172a;
+            font-weight: 600;
+        }
+
+        /* ── Category Section ──────────────────────────────── */
+        .res-section {
+            margin-bottom: 32px;
+        }
+
+        .res-section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .res-section-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #fff;
+            font-size: .95rem;
+        }
+
+        .res-section-icon.survival {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .res-section-icon.clinical {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .res-section-icon.reference {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        .res-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .res-section-count {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .75rem;
+            font-weight: 500;
+            color: #94a3b8;
+            margin-left: auto;
+        }
+
+        /* ── Resource Card Grid ────────────────────────────── */
+        .res-section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 12px;
+        }
+
+        .res-page-card {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 10px;
+            text-decoration: none;
+            transition: all 0.15s ease;
+            cursor: pointer;
+        }
+
+        .res-page-card:hover {
+            border-color: rgba(46, 134, 171, 0.3);
+            background: rgba(46, 134, 171, 0.02);
+            text-decoration: none;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+        }
+
+        .res-page-card.locked {
+            opacity: 0.55;
+        }
+
+        .res-page-card.locked:hover {
+            border-color: rgba(0, 0, 0, 0.06);
+            background: #fff;
+            transform: none;
+            box-shadow: none;
+            cursor: default;
+        }
+
+        /* Card Icon */
+        .res-page-card-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #fff;
+            font-size: .85rem;
+        }
+
+        .res-page-card-icon.survival {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+        }
+
+        .res-page-card-icon.clinical {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+        }
+
+        .res-page-card-icon.reference {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+        }
+
+        /* Card Info */
+        .res-page-card-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .res-page-card-title {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .9rem;
+            font-weight: 600;
+            color: #0f172a;
+            line-height: 1.3;
+        }
+
+        /* Badges & Lock */
+        .res-page-badge {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .05em;
+            padding: 2px 8px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        .res-page-badge.free {
+            background: rgba(16, 185, 129, 0.1);
+            color: #059669;
+        }
+
+        .res-page-lock {
+            color: #94a3b8;
+            font-size: .85rem;
+            flex-shrink: 0;
+        }
+
+        /* ── Dark Mode ──────────────────────────────────── */
+        [data-theme="dark"] .res-library-stat strong {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .res-section-header {
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .res-section-title {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .res-page-card {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .res-page-card:hover {
+            border-color: rgba(46, 134, 171, 0.3);
+            background: rgba(46, 134, 171, 0.05);
+        }
+
+        [data-theme="dark"] .res-page-card.locked:hover {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .res-page-card-title {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .res-page-badge.free {
+            background: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+
+        [data-theme="dark"] .res-page-lock {
+            color: #6b7280;
+        }
+
+        /* ── Responsive ─────────────────────────────────── */
+        @media (max-width: 768px) {
+            .res-section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .res-section-icon {
+                width: 30px;
+                height: 30px;
+                font-size: .8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="my-resources.html" class="active">Resources</a>
+                <a href="pricing.html">Pricing</a>
+                <div class="user-menu">
+                    <button class="user-avatar" id="user-menu-btn" title="Account menu">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="user-dropdown-header">
+                            <div class="user-avatar-large">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-divider"></div>
+                        <div class="theme-selector">
+                            <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                            <div class="theme-selector-options">
+                                <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                    <i class="fas fa-sun"></i>
+                                </button>
+                                <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button class="theme-option" data-theme-mode="system" title="System preference">
+                                    <i class="fas fa-desktop"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="res-library" id="my-resources-library">
+            <!-- Content populated by JS -->
+            <div class="res-library-loading" style="text-align:center;padding:80px 24px;color:#94a3b8;">
+                <i class="fas fa-spinner fa-spin" style="font-size:1.5rem;margin-bottom:12px;display:block;"></i>
+                Loading resources...
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span>The Nursing Collective</span>
+                    </div>
+                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="my-resources.html">Resources</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="https://learn.thenursingcollective.pro">Quiz Bank</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+                <p class="footer-attribution">
+                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="dark-mode.js"></script>
+    <script src="api-service.js?v=1769142741"></script>
+    <script src="script.js?v=4.8.dashboard"></script>
+    <script src="sidebar.js?v=1.3.resources"></script>
+
+    <script src="my-resources-script.js?v=1.0"></script>
+</body>
+</html>

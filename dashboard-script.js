@@ -262,7 +262,6 @@ async function loadUserProfile() {
         if (!user) return;
 
         loadRecentGuides();
-        loadDashboardResources();
 
         if (user.is_premium) {
             loadQuizBankDashboard();
@@ -406,98 +405,6 @@ function continueStudying(productId) {
         console.error('Error saving last studied:', e);
     }
     window.location.href = `guides/${productId}.html`;
-}
-
-// ==================== Resources & Quick Reference ====================
-
-const dashboardResources = [
-    // Survival Guides (free)
-    { id: 'how-to-study', title: 'How to Study for Nursing Exams', icon: 'fa-graduation-cap', category: 'survival', free: true },
-    { id: 'not-overwhelmed', title: 'How to Not Be Overwhelmed', icon: 'fa-mountain', category: 'survival', free: true },
-    { id: 'time-management', title: 'Time Management', icon: 'fa-clock', category: 'survival', free: true },
-    { id: 'care-plans', title: 'How to Write a Care Plan', icon: 'fa-clipboard-list', category: 'survival', free: true },
-    { id: 'feeling-like-failing', title: "When You Feel Like You're Failing", icon: 'fa-heart', category: 'survival', free: true },
-    // Clinical Confidence (premium)
-    { id: 'first-semester-clinicals', title: 'First Semester Clinicals', icon: 'fa-hospital', category: 'clinical', free: false },
-    { id: 'head-to-toe-assessment', title: 'Head-to-Toe Assessment', icon: 'fa-user-md', category: 'clinical', free: false },
-    { id: 'clinical-skills', title: 'Clinical Skills', icon: 'fa-hand-holding-medical', category: 'clinical', free: false },
-    { id: 'clinical-safety', title: 'Clinical Safety', icon: 'fa-shield-alt', category: 'clinical', free: false },
-    { id: 'clinical-bag', title: 'Clinical Bag Essentials', icon: 'fa-briefcase-medical', category: 'clinical', free: false },
-    { id: 'night-before-clinicals', title: 'Night Before Clinicals', icon: 'fa-moon', category: 'clinical', free: false },
-    { id: 'when-you-dont-know', title: "When You Don't Know", icon: 'fa-question-circle', category: 'clinical', free: false },
-    // Quick Reference (premium)
-    { id: 'lab-values', title: 'Lab Values', icon: 'fa-vial', category: 'reference', free: false },
-    { id: 'vital-signs', title: 'Vital Signs', icon: 'fa-heartbeat', category: 'reference', free: false },
-    { id: 'medications', title: 'Medications', icon: 'fa-pills', category: 'reference', free: false },
-    { id: 'documentation-phrases', title: 'Documentation Phrases', icon: 'fa-file-medical', category: 'reference', free: false },
-    { id: 'abbreviations', title: 'Abbreviations', icon: 'fa-spell-check', category: 'reference', free: false },
-];
-
-const resourceCategories = [
-    { key: 'survival', title: 'Survival Guides', icon: 'fa-lightbulb' },
-    { key: 'clinical', title: 'Clinical Confidence', icon: 'fa-stethoscope' },
-    { key: 'reference', title: 'Quick Reference Tools', icon: 'fa-bolt' },
-];
-
-async function loadDashboardResources() {
-    const container = document.getElementById('resources-section');
-    if (!container) return;
-
-    try {
-        const { hasAccess } = await getSubscriptionStatusCached();
-
-        const skeleton = container.querySelector('.skeleton-loader');
-        if (skeleton) skeleton.remove();
-
-        let html = '';
-
-        for (const cat of resourceCategories) {
-            const items = dashboardResources.filter(r => r.category === cat.key);
-
-            html += `
-                <div class="res-category">
-                    <div class="res-category-header">
-                        <div class="res-category-icon ${cat.key}">
-                            <i class="fas ${cat.icon}"></i>
-                        </div>
-                        <span class="res-category-title">${cat.title}</span>
-                        <span class="res-category-count">${items.length} guides</span>
-                    </div>
-                    <div class="res-grid">
-            `;
-
-            for (const item of items) {
-                const canAccess = item.free || hasAccess;
-                const href = canAccess ? `resources/${item.id}.html` : 'pricing.html';
-                const lockedClass = canAccess ? '' : ' locked';
-                const badge = item.free
-                    ? '<span class="res-card-badge free">Free</span>'
-                    : (canAccess ? '' : '<i class="fas fa-lock res-card-lock"></i>');
-
-                html += `
-                    <a href="${href}" class="res-card${lockedClass}">
-                        <div class="res-card-icon ${item.category}">
-                            <i class="fas ${item.icon}"></i>
-                        </div>
-                        <div class="res-card-info">
-                            <div class="res-card-title">${item.title}</div>
-                        </div>
-                        ${badge}
-                    </a>
-                `;
-            }
-
-            html += `
-                    </div>
-                </div>
-            `;
-        }
-
-        container.innerHTML = html;
-    } catch (error) {
-        console.error('Error loading dashboard resources:', error);
-        container.innerHTML = '';
-    }
 }
 
 // ==================== Quiz Bank Dashboard (Stats Only) ====================

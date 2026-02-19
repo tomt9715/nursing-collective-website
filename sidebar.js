@@ -12,10 +12,11 @@
     // ── Page config: which pages get the sidebar + their titles ───
     // NOTE: study-guides & resources are public pages — no sidebar
     var PAGE_CONFIG = {
-        'dashboard':    { title: 'Dashboard',    highlight: 'dashboard' },
-        'my-guides':    { title: 'Study Guides', highlight: 'study-guides' },
-        'settings':     { title: 'Settings',     highlight: 'settings' },
-        'admin':        { title: 'Admin Panel',  highlight: 'admin' }
+        'dashboard':      { title: 'Dashboard',    highlight: 'dashboard' },
+        'my-guides':      { title: 'Study Guides', highlight: 'study-guides' },
+        'my-resources':   { title: 'Resources',    highlight: 'resources' },
+        'settings':       { title: 'Settings',     highlight: 'settings' },
+        'admin':          { title: 'Admin Panel',  highlight: 'admin' }
     };
 
     // ── Hero selectors to hide on each page ──────────────────────
@@ -40,7 +41,7 @@
                     '<a href="https://learn.thenursingcollective.pro" class="dash-sidebar-item" id="sidebar-quiz-link" style="display:none;" data-sidebar-page="quiz-bank">' +
                         '<i class="fas fa-brain"></i> Quiz Bank' +
                     '</a>' +
-                    '<a href="resources.html" class="dash-sidebar-item" data-sidebar-page="resources">' +
+                    '<a href="my-resources.html" class="dash-sidebar-item" data-sidebar-page="resources">' +
                         '<i class="fas fa-book-reader"></i> Resources' +
                     '</a>' +
                 '</div>' +

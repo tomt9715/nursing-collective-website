@@ -12,11 +12,10 @@
     // ── Page config: which pages get the sidebar + their titles ───
     // NOTE: study-guides & resources are public pages — no sidebar
     var PAGE_CONFIG = {
-        'dashboard':    { title: 'Dashboard',    icon: 'fa-th-large',    highlight: 'dashboard' },
-        'my-guides':    { title: 'Study Guides', icon: 'fa-book-open',   highlight: 'study-guides',
-                          iconImg: 'assets/images/study-guide-page/study-guides-icon.webp' },
-        'settings':     { title: 'Settings',     icon: 'fa-cog',         highlight: 'settings' },
-        'admin':        { title: 'Admin Panel',  icon: 'fa-user-shield', highlight: 'admin' }
+        'dashboard':    { title: 'Dashboard',    highlight: 'dashboard' },
+        'my-guides':    { title: 'Study Guides', highlight: 'study-guides' },
+        'settings':     { title: 'Settings',     highlight: 'settings' },
+        'admin':        { title: 'Admin Panel',  highlight: 'admin' }
     };
 
     // ── Hero selectors to hide on each page ──────────────────────
@@ -79,8 +78,6 @@
         /* App page header (replaces hero banners) */
         '.app-page-header{margin-bottom:24px}' +
         '.app-page-header h1{font-family:"Outfit",sans-serif;font-size:1.5rem;font-weight:600;color:var(--dash-heading,#0f172a);margin:0}' +
-        '.app-page-header h1 i{color:#94a3b8;margin-right:8px;font-size:1.2rem}' +
-        '.app-page-header-icon{width:28px;height:28px;object-fit:contain;vertical-align:middle;margin-right:8px}' +
         /* Dark mode */
         '[data-theme="dark"] .dash-sidebar{background:#1e293b;border-color:rgba(255,255,255,.06)}' +
         '[data-theme="dark"] .dash-sidebar-section{border-color:rgba(255,255,255,.06)}' +
@@ -151,11 +148,7 @@
         if (pageName !== 'dashboard') {
             var header = document.createElement('div');
             header.className = 'app-page-header';
-            if (config.iconImg) {
-                header.innerHTML = '<h1><img src="' + config.iconImg + '" alt="" class="app-page-header-icon"> ' + config.title + '</h1>';
-            } else {
-                header.innerHTML = '<h1><i class="fas ' + config.icon + '"></i> ' + config.title + '</h1>';
-            }
+            header.innerHTML = '<h1>' + config.title + '</h1>';
             mainWrapper.appendChild(header);
         }
 

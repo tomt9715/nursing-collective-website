@@ -1,6 +1,8 @@
 (function() {
     'use strict';
 
+    var ICON_BASE = 'assets/images/guide-icons/';
+
     // ── Guide catalog: 21 completed guides ─────────────────────
     var GUIDE_CATALOG = [
         {
@@ -16,7 +18,12 @@
                 { name: 'Coronary Artery Disease', file: 'coronary-artery-disease' },
                 { name: 'Peripheral Vascular Disease', file: 'peripheral-vascular-disease' }
             ],
-            comingSoon: ['Valvular Heart Disease', 'Shock', 'Cardiac Medications', 'Heart Sounds & Murmurs']
+            comingSoon: [
+                { name: 'Valvular Heart Disease' },
+                { name: 'Shock' },
+                { name: 'Cardiac Medications', icon: 'cardiac-medications' },
+                { name: 'Heart Sounds & Murmurs' }
+            ]
         },
         {
             category: 'Respiratory',
@@ -31,7 +38,12 @@
                 { name: 'Oxygen Therapy', file: 'oxygen-therapy' },
                 { name: 'Chest Tubes', file: 'chest-tubes' }
             ],
-            comingSoon: ['Mechanical Ventilation', 'Pulmonary Embolism', 'ARDS', 'Tracheostomy Care']
+            comingSoon: [
+                { name: 'Mechanical Ventilation' },
+                { name: 'Pulmonary Embolism' },
+                { name: 'ARDS' },
+                { name: 'Tracheostomy Care' }
+            ]
         },
         {
             category: 'Endocrine',
@@ -44,7 +56,10 @@
                 { name: 'Adrenal Disorders', file: 'adrenal-disorders' },
                 { name: 'Pituitary Disorders', file: 'pituitary-disorders' }
             ],
-            comingSoon: ['DKA vs HHS', 'SIADH vs Diabetes Insipidus']
+            comingSoon: [
+                { name: 'DKA vs HHS', icon: 'type-1' },
+                { name: 'SIADH vs Diabetes Insipidus', icon: 'pituitary' }
+            ]
         },
         {
             category: 'Neurological',
@@ -54,7 +69,13 @@
             guides: [
                 { name: 'Stroke', file: 'stroke' }
             ],
-            comingSoon: ['Seizures / Epilepsy', 'TBI / Increased ICP', 'Spinal Cord Injury', 'Meningitis', "Parkinson's Disease"]
+            comingSoon: [
+                { name: 'Seizures / Epilepsy', icon: 'seizures' },
+                { name: 'TBI / Increased ICP', icon: 'traumatic-brain-injury' },
+                { name: 'Spinal Cord Injury', icon: 'spinal-cord-injury' },
+                { name: 'Meningitis', icon: 'meningitis' },
+                { name: "Parkinson's Disease", icon: 'parkinsons-ms' }
+            ]
         },
         {
             category: 'Gastrointestinal',
@@ -64,7 +85,12 @@
             guides: [
                 { name: 'GI Bleeding', file: 'gi-bleeding' }
             ],
-            comingSoon: ['Liver Cirrhosis', "Crohn's vs UC", 'Pancreatitis', 'Bowel Obstruction']
+            comingSoon: [
+                { name: 'Liver Cirrhosis', icon: 'liver-disease' },
+                { name: "Crohn's vs UC", icon: 'inflammatory-bowel-disease' },
+                { name: 'Pancreatitis', icon: 'pancreatitis' },
+                { name: 'Bowel Obstruction', icon: 'bowel-obstruction' }
+            ]
         },
         {
             category: 'Musculoskeletal',
@@ -75,7 +101,11 @@
                 { name: 'Fractures', file: 'fractures' },
                 { name: 'Hip & Knee Replacement', file: 'hip-knee-replacement' }
             ],
-            comingSoon: ['Osteoporosis', 'RA vs Osteoarthritis', 'Amputation']
+            comingSoon: [
+                { name: 'Osteoporosis', icon: 'osteoporosis' },
+                { name: 'RA vs Osteoarthritis', icon: 'arthritis' },
+                { name: 'Amputation', icon: 'amputation-care' }
+            ]
         },
         {
             category: 'Fundamentals',
@@ -85,7 +115,13 @@
             guides: [
                 { name: 'Assessment Skills', file: 'assessment-skills' }
             ],
-            comingSoon: ['Infection Control', 'IV Therapy', 'Delegation & Prioritization', 'Patient Safety', 'Wound Care']
+            comingSoon: [
+                { name: 'Infection Control', icon: 'infection-control' },
+                { name: 'IV Therapy', icon: 'iv-medications' },
+                { name: 'Delegation & Prioritization' },
+                { name: 'Patient Safety', icon: 'patient-safety' },
+                { name: 'Wound Care' }
+            ]
         }
     ];
 
@@ -124,10 +160,12 @@
 
             html += '<div class="guide-grid">';
 
-            // Available guides
+            // Available guides — use guide-specific image icon
             cat.guides.forEach(function(guide) {
                 html += '<a href="guides/' + guide.file + '.html" class="guide-card">';
-                html += '<div class="guide-card-icon ' + cat.colorClass + '"><i class="fas ' + cat.icon + '"></i></div>';
+                html += '<div class="guide-card-icon ' + cat.colorClass + '">';
+                html += '<img src="' + ICON_BASE + guide.file + '.webp" alt="" class="guide-card-img" loading="lazy">';
+                html += '</div>';
                 html += '<div class="guide-card-info">';
                 html += '<div class="guide-card-name">' + guide.name + '</div>';
                 html += '<div class="guide-card-meta">Study Guide</div>';
@@ -136,12 +174,18 @@
                 html += '</a>';
             });
 
-            // Coming soon
-            (cat.comingSoon || []).forEach(function(name) {
+            // Coming soon — use image icon if available, otherwise Font Awesome fallback
+            (cat.comingSoon || []).forEach(function(item) {
                 html += '<div class="guide-card coming-soon">';
-                html += '<div class="guide-card-icon ' + cat.colorClass + '" style="opacity:.4"><i class="fas ' + cat.icon + '"></i></div>';
+                html += '<div class="guide-card-icon ' + cat.colorClass + '">';
+                if (item.icon) {
+                    html += '<img src="' + ICON_BASE + item.icon + '.webp" alt="" class="guide-card-img" loading="lazy">';
+                } else {
+                    html += '<i class="fas ' + cat.icon + '"></i>';
+                }
+                html += '</div>';
                 html += '<div class="guide-card-info">';
-                html += '<div class="guide-card-name">' + name + '</div>';
+                html += '<div class="guide-card-name">' + item.name + '</div>';
                 html += '<div class="guide-card-meta">Study Guide</div>';
                 html += '</div>';
                 html += '<span class="coming-soon-badge">Coming Soon</span>';

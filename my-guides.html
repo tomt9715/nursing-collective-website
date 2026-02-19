@@ -43,7 +43,173 @@
             max-width: 960px;
         }
 
-        /* Category section */
+        /* ── Class Card Grid (Level 1) ──────────────────── */
+        .class-card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 16px;
+        }
+
+        .class-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 24px;
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .class-card:hover {
+            border-color: rgba(46, 134, 171, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .class-card:focus-visible {
+            outline: 2px solid #2E86AB;
+            outline-offset: 2px;
+        }
+
+        .class-card-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .class-card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .class-card-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0 0 4px;
+        }
+
+        .class-card-desc {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .85rem;
+            color: #64748b;
+            margin: 0 0 10px;
+            line-height: 1.4;
+        }
+
+        .class-card-meta {
+            display: flex;
+            gap: 16px;
+        }
+
+        .class-card-stat {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .75rem;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .class-card-stat i { font-size: .7rem; }
+
+        .class-card-arrow {
+            color: #cbd5e1;
+            font-size: .9rem;
+            flex-shrink: 0;
+            transition: color 0.15s ease, transform 0.15s ease;
+        }
+
+        .class-card:hover .class-card-arrow {
+            color: #2E86AB;
+            transform: translateX(2px);
+        }
+
+        /* ── Breadcrumb Navigation ──────────────────────── */
+        .guide-nav-breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .88rem;
+        }
+
+        .breadcrumb-back {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: none;
+            border: none;
+            color: #2E86AB;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .88rem;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 6px;
+            transition: background 0.15s ease;
+        }
+
+        .breadcrumb-back:hover {
+            background: rgba(46, 134, 171, 0.08);
+        }
+
+        .breadcrumb-sep {
+            color: #cbd5e1;
+            font-size: .65rem;
+        }
+
+        .breadcrumb-current {
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        /* ── Class Detail Header (Level 2) ──────────────── */
+        .class-detail-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .class-detail-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            color: #fff;
+        }
+
+        .class-detail-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0;
+        }
+
+        .class-detail-subtitle {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .85rem;
+            color: #94a3b8;
+            margin: 2px 0 0;
+        }
+
+        /* ── Topic Category Section (Level 2) ───────────── */
         .guide-category {
             margin-bottom: 32px;
         }
@@ -78,14 +244,13 @@
             margin-left: auto;
         }
 
-        /* Guide grid */
+        /* ── Guide Grid & Cards ─────────────────────────── */
         .guide-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 12px;
         }
 
-        /* Guide card */
         .guide-card {
             display: flex;
             align-items: center;
@@ -187,7 +352,7 @@
             flex-shrink: 0;
         }
 
-        /* Category icon colors */
+        /* ── Category Icon Colors ───────────────────────── */
         .icon-cardiovascular { background: linear-gradient(135deg, #ef4444, #dc2626); }
         .icon-respiratory { background: linear-gradient(135deg, #3b82f6, #2563eb); }
         .icon-neurological { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
@@ -200,11 +365,8 @@
         .icon-maternal { background: linear-gradient(135deg, #f472b6, #ec4899); }
         .icon-pediatrics { background: linear-gradient(135deg, #fb923c, #f97316); }
         .icon-mental-health { background: linear-gradient(135deg, #a78bfa, #8b5cf6); }
-        .icon-oncology { background: linear-gradient(135deg, #f43f5e, #e11d48); }
-        .icon-hematology { background: linear-gradient(135deg, #e11d48, #be123c); }
-        .icon-sensory { background: linear-gradient(135deg, #84cc16, #65a30d); }
 
-        /* Summary stats */
+        /* ── Summary Stats ──────────────────────────────── */
         .guide-library-stats {
             display: flex;
             gap: 16px;
@@ -231,79 +393,106 @@
             font-weight: 600;
         }
 
-        /* Locked state for non-subscribers */
-        .guide-library-locked {
-            text-align: center;
-            padding: 60px 24px;
+        /* ── Dark Mode ──────────────────────────────────── */
+        [data-theme="dark"] .class-card {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.06);
         }
-
-        .guide-library-locked i {
-            font-size: 3rem;
-            color: #cbd5e1;
-            margin-bottom: 16px;
+        [data-theme="dark"] .class-card:hover {
+            border-color: rgba(46, 134, 171, 0.3);
+            background: rgba(46, 134, 171, 0.05);
         }
-
-        .guide-library-locked h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #0f172a;
-            margin-bottom: 8px;
+        [data-theme="dark"] .class-card-title {
+            color: #f1f5f9;
         }
-
-        .guide-library-locked p {
-            font-family: 'Source Sans 3', sans-serif;
-            color: #64748b;
-            margin-bottom: 20px;
-            max-width: 400px;
-            margin-left: auto;
-            margin-right: auto;
+        [data-theme="dark"] .class-card-desc {
+            color: #94a3b8;
         }
-
-        /* Dark mode */
+        [data-theme="dark"] .class-card-arrow {
+            color: #475569;
+        }
+        [data-theme="dark"] .class-detail-title {
+            color: #f1f5f9;
+        }
+        [data-theme="dark"] .breadcrumb-back {
+            color: #5bb8d4;
+        }
+        [data-theme="dark"] .breadcrumb-back:hover {
+            background: rgba(46, 134, 171, 0.15);
+        }
+        [data-theme="dark"] .breadcrumb-current {
+            color: #94a3b8;
+        }
         [data-theme="dark"] .guide-category-header {
             border-color: rgba(255, 255, 255, 0.06);
         }
-
         [data-theme="dark"] .guide-category-title {
             color: #f1f5f9;
         }
-
         [data-theme="dark"] .guide-card {
             background: #1e293b;
             border-color: rgba(255, 255, 255, 0.06);
         }
-
         [data-theme="dark"] .guide-card:hover {
             border-color: rgba(46, 134, 171, 0.3);
             background: rgba(46, 134, 171, 0.05);
         }
-
         [data-theme="dark"] .guide-card-name {
             color: #f1f5f9;
         }
-
         [data-theme="dark"] .guide-card.coming-soon:hover {
             background: #1e293b;
             border-color: rgba(255, 255, 255, 0.06);
         }
-
         [data-theme="dark"] .coming-soon-badge {
             background: rgba(255, 255, 255, 0.06);
         }
-
         [data-theme="dark"] .guide-library-stat strong {
             color: #f1f5f9;
         }
 
-        [data-theme="dark"] .guide-library-locked h3 {
-            color: #f1f5f9;
-        }
-
-        /* Responsive */
+        /* ── Responsive ─────────────────────────────────── */
         @media (max-width: 768px) {
+            .class-card-grid {
+                grid-template-columns: 1fr;
+            }
+            .class-card {
+                padding: 18px;
+                gap: 14px;
+            }
+            .class-card-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.1rem;
+                border-radius: 12px;
+            }
+            .class-card-desc {
+                display: none;
+            }
             .guide-grid {
                 grid-template-columns: 1fr;
+            }
+            .class-detail-header {
+                gap: 12px;
+            }
+            .class-detail-title {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .class-card {
+                padding: 14px;
+                gap: 12px;
+            }
+            .class-card-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1rem;
+            }
+            .class-card-meta {
+                flex-direction: column;
+                gap: 4px;
             }
         }
     </style>

@@ -321,17 +321,19 @@ async function syncStudyHistory() {
         // Load server-side study history
         var serverData = {};
         try {
+            console.log('[StudySync] Fetching server study history...');
             var response = await apiCall('/api/study/history', { method: 'GET' });
             serverData = response.guide_last_studied || {};
+            console.log('[StudySync] Server has ' + Object.keys(serverData).length + ' guides');
         } catch (e) {
-            // Server unavailable — just use localStorage
-            console.warn('[StudySync] Server fetch failed, using local data only');
+            console.warn('[StudySync] Server fetch failed:', e.message || e);
             return;
         }
 
         // Load localStorage data
         var localData = {};
         try { localData = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch (e) {}
+        console.log('[StudySync] Local has ' + Object.keys(localData).length + ' guides');
 
         // Merge: for each guide, keep the most recent timestamp
         var merged = Object.assign({}, serverData);
@@ -368,15 +370,19 @@ async function syncStudyHistory() {
 
         // Push merged data back to server if there were differences
         if (hasNewData) {
+            console.log('[StudySync] Pushing ' + Object.keys(merged).length + ' merged guides to server...');
             try {
-                apiCall('/api/study/history', {
+                await apiCall('/api/study/history', {
                     method: 'PUT',
                     body: JSON.stringify({ guide_last_studied: merged })
-                }).catch(function() {});
-            } catch (e) { /* ignore push failures */ }
+                });
+                console.log('[StudySync] Push succeeded');
+            } catch (e) {
+                console.warn('[StudySync] Push failed:', e.message || e);
+            }
         }
 
-        console.log('[StudySync] Synced ' + Object.keys(merged).length + ' guides');
+        console.log('[StudySync] Synced ' + Object.keys(merged).length + ' guides (hasNewData=' + hasNewData + ')');
     } catch (e) {
         console.warn('[StudySync] Sync failed:', e);
     }

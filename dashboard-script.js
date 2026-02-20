@@ -738,8 +738,8 @@ function populateQuestionsFlyout() {
 
     var html = '';
     html += '<div class="flyout-row"><span class="flyout-row-label">Total Answered</span><span class="flyout-row-value">' + stats.totalQuestionsAnswered.toLocaleString() + '</span></div>';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Topics Practiced</span><span class="flyout-row-value">' + stats.topicsPracticed + '</span></div>';
-    html += '<div class="flyout-row"><span class="flyout-row-label">Topics Mastered</span><span class="flyout-row-value">' + stats.topicsMastered + '</span></div>';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Topics Practiced</span><span class="flyout-row-value">' + stats.chaptersPracticed + '</span></div>';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Topics Mastered</span><span class="flyout-row-value">' + stats.chaptersMastered + '</span></div>';
     html += '<div class="flyout-divider"></div>';
     html += '<div class="flyout-row"><span class="flyout-row-label">Avg Mastery Level</span><span class="flyout-row-value">' + stats.averageLevel.toFixed(1) + '</span></div>';
     container.innerHTML = html;

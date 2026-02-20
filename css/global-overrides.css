@@ -1970,3 +1970,253 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
         height: 30px;
     }
 }
+
+/* ============================================
+   PRICING PAGE — Clean Hero Override
+   Matches homepage's light aesthetic with orbs.
+   ============================================ */
+.pricing-hero.pricing-hero-clean {
+    background: var(--hero-bg, #f8fafc) !important;
+    background-size: auto !important;
+    animation: none !important;
+    color: var(--hero-heading, #0f172a) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    padding: 140px 0 80px !important;
+}
+
+.pricing-hero.pricing-hero-clean::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -10% !important;
+    left: -5% !important;
+    width: 600px !important;
+    height: 600px !important;
+    background: radial-gradient(circle, var(--hero-orb1, rgba(46, 134, 171, 0.2)) 0%, transparent 65%) !important;
+    opacity: 1 !important;
+    animation: heroOrb1 14s ease-in-out infinite !important;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(var(--hero-orb-blur, 60px));
+}
+
+.pricing-hero.pricing-hero-clean::after {
+    content: '' !important;
+    display: block !important;
+    position: absolute !important;
+    bottom: 5% !important;
+    right: -5% !important;
+    width: 500px !important;
+    height: 500px !important;
+    background: radial-gradient(circle, var(--hero-orb2, rgba(162, 59, 114, 0.14)) 0%, transparent 65%) !important;
+    background-size: auto !important;
+    animation: heroOrb2 16s ease-in-out 2s infinite !important;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(var(--hero-orb-blur, 60px));
+}
+
+.pricing-hero.pricing-hero-clean .container {
+    position: relative;
+    z-index: 2;
+}
+
+.pricing-hero-grid {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+        radial-gradient(circle, var(--hero-grid-color, rgba(46, 134, 171, 0.06)) 1px, transparent 1px);
+    background-size: 40px 40px;
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 20%, transparent 70%);
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, black 20%, transparent 70%);
+}
+
+.pricing-hero.pricing-hero-clean h1 {
+    color: var(--hero-heading, #0f172a) !important;
+    text-shadow: var(--hero-heading-glow, none) !important;
+    opacity: 0;
+    transform: translateY(28px);
+    animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards !important;
+}
+
+.pricing-hero.pricing-hero-clean .pricing-subtitle {
+    color: var(--hero-sub, #475569) !important;
+    opacity: 0;
+    transform: translateY(28px);
+    animation: heroFadeIn 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards !important;
+}
+
+/* Navbar blending for pricing hero */
+body:has(.pricing-hero-clean) .navbar {
+    background: var(--hero-nav-bg, rgba(248, 250, 252, 0.8)) !important;
+    backdrop-filter: blur(16px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+    border-bottom: 1px solid var(--hero-nav-border, rgba(0, 0, 0, 0.06)) !important;
+    box-shadow: none !important;
+}
+
+body:has(.pricing-hero-clean) .navbar .nav-links a {
+    color: var(--hero-nav-link, #475569) !important;
+}
+
+body:has(.pricing-hero-clean) .navbar .nav-links a:hover {
+    color: var(--hero-nav-link-hover, #0f172a) !important;
+    background: var(--hero-nav-link-hover-bg, rgba(46, 134, 171, 0.08)) !important;
+}
+
+body:has(.pricing-hero-clean) .navbar .nav-links a.active {
+    color: var(--hero-nav-link-hover, #0f172a) !important;
+    background: var(--hero-nav-active-bg, rgba(46, 134, 171, 0.12)) !important;
+}
+
+body:has(.pricing-hero-clean) .navbar .user-avatar,
+body:has(.pricing-hero-clean) .navbar .mobile-menu-btn {
+    color: var(--hero-nav-icon, #334155) !important;
+}
+
+/* Scrolled navbar revert */
+body:has(.pricing-hero-clean) .navbar.scrolled {
+    background: var(--navbar-bg) !important;
+    border-bottom: 1px solid var(--border-color) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+body:has(.pricing-hero-clean) .navbar.scrolled .nav-links a {
+    color: var(--text-primary) !important;
+}
+
+body:has(.pricing-hero-clean) .navbar.scrolled .nav-links a:hover {
+    color: var(--primary-color) !important;
+    background: rgba(46, 134, 171, 0.1) !important;
+}
+
+body:has(.pricing-hero-clean) .navbar.scrolled .nav-links a.active {
+    color: var(--primary-color) !important;
+    background: rgba(46, 134, 171, 0.15) !important;
+}
+
+body:has(.pricing-hero-clean) .navbar.scrolled .user-avatar,
+body:has(.pricing-hero-clean) .navbar.scrolled .mobile-menu-btn {
+    color: var(--text-primary) !important;
+}
+
+/* Responsive pricing hero */
+@media (max-width: 768px) {
+    .pricing-hero.pricing-hero-clean {
+        padding: 120px 0 60px !important;
+    }
+
+    .pricing-hero.pricing-hero-clean h1 {
+        font-size: 2.25rem !important;
+    }
+
+    .pricing-hero.pricing-hero-clean::before {
+        width: 350px !important;
+        height: 350px !important;
+    }
+
+    .pricing-hero.pricing-hero-clean::after {
+        width: 300px !important;
+        height: 300px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-hero.pricing-hero-clean {
+        padding: 100px 0 48px !important;
+    }
+
+    .pricing-hero.pricing-hero-clean h1 {
+        font-size: 2rem !important;
+    }
+
+    .pricing-hero.pricing-hero-clean h1 br {
+        display: none;
+    }
+
+    .pricing-hero.pricing-hero-clean::before {
+        width: 250px !important;
+        height: 250px !important;
+    }
+
+    .pricing-hero.pricing-hero-clean::after {
+        width: 200px !important;
+        height: 200px !important;
+    }
+}
+
+/* ============================================
+   PRICING PAGE — What's Included Icon Circles
+   Replaces emoji icons with styled FA icons.
+   ============================================ */
+.included-item-icon-styled {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #2E86AB 0%, #3bb8e0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+    color: white;
+    font-size: 1.2rem;
+}
+
+/* ============================================
+   PRICING PAGE — FAQ Header Gradient Text
+   ============================================ */
+.pricing-faq-header .section-title {
+    margin-bottom: 16px;
+}
+
+.pricing-faq-header .section-subtitle {
+    margin-bottom: 0;
+}
+
+/* ============================================
+   PRICING PAGE — CTA Ghost Button (light on dark)
+   ============================================ */
+.btn-ghost-light {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    padding: 14px 28px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-ghost-light:hover {
+    background: rgba(255, 255, 255, 0.25) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    color: white !important;
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+
+/* Spacing fix for pricing CTA section with card */
+.pricing-cta-section {
+    padding: 80px 0 96px !important;
+    background: var(--background-light) !important;
+}
+
+/* Pricing card grid — mobile stacking */
+@media (max-width: 768px) {
+    .pricing-plans-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 400px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .pricing-card.featured {
+        transform: none !important;
+    }
+}

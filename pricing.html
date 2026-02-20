@@ -186,10 +186,11 @@
     </nav>
 
     <main id="main-content">
-    <!-- Pricing Hero - Welcoming & Simple -->
-    <section class="pricing-hero">
+    <!-- Pricing Hero - Clean, matches homepage aesthetic -->
+    <section class="pricing-hero pricing-hero-clean">
+        <div class="pricing-hero-grid" aria-hidden="true"></div>
         <div class="container">
-            <h1>Choose the plan that works for you</h1>
+            <h1>Choose the plan that<br>works for you</h1>
             <p class="pricing-subtitle">
                 All plans include full access to every study guide, clinical resource, and quick reference tool we offer. No hidden fees, no surprises.
             </p>
@@ -307,19 +308,25 @@
                 <h3>What You Get With Full Access</h3>
                 <div class="included-grid">
                     <div class="included-item">
-                        <div class="included-item-icon">📚</div>
+                        <div class="included-item-icon-styled">
+                            <i class="fas fa-book-open"></i>
+                        </div>
                         <strong>Study Guides</strong>
-                        <p>17+ comprehensive guides covering cardiovascular, respiratory, and more</p>
+                        <p>50+ comprehensive guides across cardiovascular, respiratory, neuro, and more</p>
                     </div>
                     <div class="included-item">
-                        <div class="included-item-icon">🩺</div>
+                        <div class="included-item-icon-styled">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <strong>Quiz Bank</strong>
+                        <p>NCLEX-style practice questions to test your knowledge and track progress</p>
+                    </div>
+                    <div class="included-item">
+                        <div class="included-item-icon-styled">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
                         <strong>Clinical Resources</strong>
-                        <p>7 guides to help you feel confident in clinicals</p>
-                    </div>
-                    <div class="included-item">
-                        <div class="included-item-icon">📋</div>
-                        <strong>Quick References</strong>
-                        <p>Lab values, vital signs, medications, and more</p>
+                        <p>Lab values, vital signs, medications, and quick reference tools</p>
                     </div>
                 </div>
             </div>
@@ -347,8 +354,8 @@
     <section class="pricing-faq">
         <div class="container">
             <div class="pricing-faq-header">
-                <h2>Frequently Asked Questions</h2>
-                <p>Everything you need to know about our subscription plans</p>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Everything you need to know about our subscription plans</p>
             </div>
 
             <div class="pricing-faq-list">
@@ -359,7 +366,7 @@
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Every subscription gives you <strong>unlimited access</strong> to all our content: 17+ detailed study guides, 7 clinical confidence resources, 5 quick reference tools, and 5 nursing school survival guides. You also get access to any new content we release during your subscription.
+                            Every subscription gives you <strong>unlimited access</strong> to all our content: 50+ detailed study guides across 10 clinical topics, NCLEX-style quiz bank, clinical confidence resources, quick reference tools, and nursing school survival guides. You also get access to any new content we release during your subscription.
                         </p>
                     </div>
                 </div>
@@ -443,18 +450,28 @@
 
     <!-- CTA Section -->
     <section class="pricing-cta-section">
-        <div class="container text-center">
-            <h2>Ready to Survive Nursing School?</h2>
-            <p class="cta-subtitle">
-                Study guides and resources designed to help you feel more confident in class and clinicals.
-            </p>
-            <div class="pricing-cta-buttons">
-                <a href="#" class="btn btn-primary btn-lg" id="cta-subscribe-btn">
-                    <i class="fas fa-rocket"></i> Get Started - $14.99/mo
-                </a>
-                <a href="/resources.html" class="btn btn-outline-primary btn-lg">
-                    <i class="fas fa-book-open"></i> Try Free Resources
-                </a>
+        <div class="container">
+            <div class="cta-card-enhanced">
+                <div class="cta-decorative-blur cta-decorative-blur-1"></div>
+                <div class="cta-decorative-blur cta-decorative-blur-2"></div>
+
+                <div class="cta-card-content">
+                    <h2 class="cta-title">Ready to Ace Nursing School?</h2>
+                    <p class="cta-description">
+                        Study guides, quizzes, and resources designed to help you feel more confident in class and clinicals.
+                    </p>
+
+                    <div class="cta-buttons">
+                        <a href="#plans" class="btn btn-large btn-light" id="cta-subscribe-btn">
+                            <i class="fas fa-rocket"></i>
+                            Get Started - $14.99/mo
+                        </a>
+                        <a href="/resources.html" class="btn btn-large btn-ghost-light">
+                            <i class="fas fa-book-open"></i>
+                            Try Free Resources
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -529,37 +546,6 @@
     <script src="script.js"></script>
     <script src="pricing-script.js"></script>
 
-    <!-- Responsive styles for pricing hero -->
-    <style>
-        @media (max-width: 968px) {
-            .pricing-hero .container > div {
-                grid-template-columns: 1fr !important;
-                gap: 40px !important;
-                text-align: center;
-            }
-            .pricing-hero h1 {
-                font-size: 2.25rem !important;
-            }
-            .pricing-hero h1 br {
-                display: none;
-            }
-        }
-        @media (max-width: 768px) {
-            .pricing-hero {
-                padding: 120px 0 60px !important;
-            }
-            .pricing-hero h1 {
-                font-size: 2rem !important;
-            }
-            /* Make pricing cards stack on mobile */
-            #plans .container > div {
-                grid-template-columns: 1fr !important;
-                max-width: 400px !important;
-            }
-            #plans .pricing-card {
-                transform: none !important;
-            }
-        }
-    </style>
+    <!-- Responsive handled in global-overrides.css -->
 </body>
 </html>

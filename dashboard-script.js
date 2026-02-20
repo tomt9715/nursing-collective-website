@@ -531,66 +531,89 @@ function continueStudying(productId) {
 // ==================== Study Activity Calendar ====================
 
 function loadStudyActivityCalendar() {
-    var calendar = document.getElementById('activity-calendar');
-    if (!calendar) return;
+    var container = document.getElementById('activity-bars');
+    if (!container) return;
 
-    // Collect all activity dates from localStorage
     var activeDates = getActivityDates();
     var today = new Date();
     today.setHours(0, 0, 0, 0);
-
-    // Build 28-day grid (4 weeks) ending on Saturday of this week
     var dayOfWeek = today.getDay(); // 0=Sun
-    var endDate = new Date(today);
-    endDate.setDate(endDate.getDate() + (6 - dayOfWeek)); // Saturday of this week
-    var startDate = new Date(endDate);
-    startDate.setDate(startDate.getDate() - 27); // 28 days total
+
+    // Build 7 days: Sunday through Saturday of current week
+    var weekStart = new Date(today);
+    weekStart.setDate(weekStart.getDate() - dayOfWeek);
+
+    var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    // Find max count for scaling bars
+    var counts = [];
+    for (var i = 0; i < 7; i++) {
+        var d = new Date(weekStart);
+        d.setDate(d.getDate() + i);
+        var key = d.toISOString().split('T')[0];
+        counts.push(activeDates[key] || 0);
+    }
+    var maxCount = Math.max.apply(null, counts) || 1;
 
     var html = '';
+    var weekTotal = 0;
     var daysActive = 0;
-    var thisWeekCount = 0;
-    var longestStreak = 0;
-    var currentStreak = 0;
 
-    // Sunday of this week for "this week" counting
-    var thisWeekStart = new Date(today);
-    thisWeekStart.setDate(thisWeekStart.getDate() - dayOfWeek);
-
-    for (var i = 0; i < 28; i++) {
-        var d = new Date(startDate);
+    for (var i = 0; i < 7; i++) {
+        var d = new Date(weekStart);
         d.setDate(d.getDate() + i);
-        var dateKey = d.toISOString().split('T')[0];
-        var count = activeDates[dateKey] || 0;
-        var isFuture = d > today;
         var isToday = d.getTime() === today.getTime();
-
-        var levelClass = '';
-        if (isFuture) { levelClass = 'future'; }
-        else if (count >= 3) { levelClass = 'level-3'; }
-        else if (count >= 2) { levelClass = 'level-2'; }
-        else if (count >= 1) { levelClass = 'level-1'; }
+        var isFuture = d > today;
+        var count = counts[i];
+        var pct = isFuture ? 0 : Math.round((count / maxCount) * 100);
+        var dateLabel = monthNames[d.getMonth()] + ' ' + d.getDate();
 
         if (count > 0 && !isFuture) {
+            weekTotal += count;
             daysActive++;
-            currentStreak++;
-            if (currentStreak > longestStreak) longestStreak = currentStreak;
-        } else if (!isFuture) {
-            currentStreak = 0;
         }
 
-        if (d >= thisWeekStart && d <= today && count > 0) thisWeekCount++;
+        var rowClass = 'activity-bar-row';
+        if (isToday) rowClass += ' today';
+        if (count === 0 && !isFuture) rowClass += ' inactive';
 
-        html += '<div class="activity-day ' + levelClass + (isToday ? ' today' : '') + '" title="' + formatDate(dateKey) + (count > 0 ? ' — ' + count + ' guide' + (count > 1 ? 's' : '') : '') + '"></div>';
+        html += '<div class="' + rowClass + '">';
+        html += '<div class="activity-bar-label">' + dayNames[i] + '<span class="activity-date">' + dateLabel + '</span></div>';
+        html += '<div class="activity-bar-track"><div class="activity-bar-fill" style="width:' + (isFuture ? 0 : pct) + '%"></div></div>';
+        html += '<div class="activity-bar-count">' + (isFuture ? '' : count) + '</div>';
+        html += '</div>';
     }
 
-    calendar.innerHTML = html;
+    container.innerHTML = html;
 
+    // Streak: count consecutive days back from today with activity
+    var streak = 0;
+    for (var i = dayOfWeek; i >= 0; i--) {
+        if (counts[i] > 0) streak++;
+        else break;
+    }
+    // Continue counting into previous weeks if streak started from Sunday
+    if (streak > 0 && dayOfWeek >= 0) {
+        var prev = new Date(weekStart);
+        prev.setDate(prev.getDate() - 1);
+        while (true) {
+            var key = prev.toISOString().split('T')[0];
+            if (activeDates[key] && activeDates[key] > 0) {
+                streak++;
+                prev.setDate(prev.getDate() - 1);
+            } else {
+                break;
+            }
+        }
+    }
+
+    var weekTotalEl = document.getElementById('activity-week-total');
     var daysActiveEl = document.getElementById('activity-days-active');
-    var longestEl = document.getElementById('activity-longest-streak');
-    var thisWeekEl = document.getElementById('activity-this-week');
+    var streakEl = document.getElementById('activity-streak');
+    if (weekTotalEl) weekTotalEl.textContent = weekTotal;
     if (daysActiveEl) daysActiveEl.textContent = daysActive;
-    if (longestEl) longestEl.textContent = longestStreak;
-    if (thisWeekEl) thisWeekEl.textContent = thisWeekCount;
+    if (streakEl) streakEl.textContent = streak;
 }
 
 function getActivityDates() {

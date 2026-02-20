@@ -107,10 +107,22 @@ class QuizEngine {
         this.submitted.add(q.id);
 
         const isCorrect = this._checkAnswer(q, userAnswer);
-        const isPartial = !isCorrect && q.type === 'matrix' && this._hasMatrixPartialCredit(q, userAnswer);
+        const isPartial = !isCorrect && (
+            (q.type === 'matrix' && this._hasMatrixPartialCredit(q, userAnswer)) ||
+            (q.type === 'ordering' && this._hasOrderingPartialCredit(q, userAnswer))
+        );
+        // Calculate partial score fraction (e.g., 3 of 5 correct positions = 0.6)
+        let partialScore = 0;
+        if (isPartial && q.type === 'ordering') {
+            partialScore = this._getOrderingPartialScore(q, userAnswer);
+        } else if (isPartial && q.type === 'matrix') {
+            const correctRows = q.options.filter(opt => userAnswer[opt.id] === q.correct[opt.id]).length;
+            partialScore = correctRows / q.options.length;
+        }
         this.results.set(q.id, {
             correct: isCorrect,
             partial: isPartial,
+            partialScore: isCorrect ? 1 : partialScore,
             userAnswer: userAnswer,
             correctAnswer: q.correct
         });
@@ -141,7 +153,11 @@ class QuizEngine {
         // Record session in history
         if (typeof QuizHistory !== 'undefined' && !this.isReviewMode) {
             var correctCount = 0;
-            this.results.forEach(function (r) { if (r.correct) correctCount++; });
+            this.results.forEach(function (r) {
+                if (r.correct) correctCount++;
+                else if (r.partial && r.partialScore) correctCount += r.partialScore;
+            });
+            correctCount = Math.round(correctCount * 100) / 100; // clean float
             var total = this.activeQuestions.length;
             QuizHistory.recordSession({
                 topicId: this.guideSlug,
@@ -1041,8 +1057,12 @@ class QuizEngine {
         let html = `<div class="quiz-feedback ${statusClass}">`;
         html += `<div class="quiz-feedback-header"><i class="fas ${statusIcon}"></i> ${statusText}</div>`;
 
-        // Ordering: show correct sequence
+        // Ordering: show partial credit count + correct sequence
         if (q.type === 'ordering' && !isCorrect) {
+            const correctPositions = Array.isArray(userAnswer) ? userAnswer.filter((v, i) => v === q.correct[i]).length : 0;
+            if (correctPositions > 0) {
+                html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> You placed ${correctPositions} of ${q.correct.length} items in the correct position — partial credit awarded.</div>`;
+            }
             const correctSeqHtml = q.correct.map((id, i) => {
                 const opt = q.options.find(o => o.id === id);
                 return `<li>${this._escapeHtml(opt ? opt.text : id)}</li>`;
@@ -1131,12 +1151,18 @@ class QuizEngine {
         if (existingSticky) existingSticky.remove();
 
         const total = this.activeQuestions.length;
-        const correctCount = Array.from(this.results.values()).filter(r => r.correct).length;
+        // Count fully correct + partial credit fractions
+        let correctCount = 0;
+        Array.from(this.results.values()).forEach(r => {
+            if (r.correct) correctCount++;
+            else if (r.partial && r.partialScore) correctCount += r.partialScore;
+        });
+        correctCount = Math.round(correctCount * 100) / 100; // clean float
         const pct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         const circumference = 2 * Math.PI * 62; // r=62 for 160px ring
         // Ring starts empty — _animateScoreRing() drives fill + color
         const perfMsg = this._getPerformanceMessage(pct);
-        const missedCount = total - correctCount;
+        const missedCount = total - Math.floor(correctCount); // only fully correct don't count as missed
         const timeStr = this._formatTime(this.totalTimeSeconds);
         const confBreakdown = this._getConfidenceBreakdown();
 
@@ -1618,6 +1644,19 @@ class QuizEngine {
         if (!userAnswer || typeof userAnswer !== 'object' || !q.correct) return false;
         const correctCount = q.options.filter(opt => userAnswer[opt.id] === q.correct[opt.id]).length;
         return correctCount > 0 && correctCount < q.options.length;
+    }
+
+    _hasOrderingPartialCredit(q, userAnswer) {
+        if (!Array.isArray(userAnswer) || !Array.isArray(q.correct)) return false;
+        if (userAnswer.length !== q.correct.length) return false;
+        const correctPositions = userAnswer.filter((v, i) => v === q.correct[i]).length;
+        return correctPositions > 0 && correctPositions < q.correct.length;
+    }
+
+    _getOrderingPartialScore(q, userAnswer) {
+        if (!Array.isArray(userAnswer) || !Array.isArray(q.correct)) return 0;
+        const correctPositions = userAnswer.filter((v, i) => v === q.correct[i]).length;
+        return correctPositions / q.correct.length;
     }
 
     _getWrongRationales(q, userAnswer) {

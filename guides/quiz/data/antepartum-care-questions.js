@@ -135,24 +135,24 @@ var antepartumCareQuizData = {
             type: "ordering",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse is scheduling prenatal care visits for a low-risk primigravida who presents at 8 weeks gestation. Place the following prenatal milestones in the correct chronological order.",
+            stem: "A 32-year-old Rh-negative primigravida at 26 weeks gestation presents to the prenatal clinic with a 1-hour glucose challenge result of 162 mg/dL. Her initial prenatal labs and genetic screening were completed earlier in pregnancy. Place the nurse\u2019s next priority actions in the correct sequence.",
             options: [
-                { id: "a", text: "Confirm pregnancy and obtain baseline labs (CBC, blood type, Rh, rubella, STI screen)" },
-                { id: "b", text: "Perform maternal serum quad screen or cell-free DNA screening" },
-                { id: "c", text: "Administer RhoGAM to Rh-negative mothers" },
-                { id: "d", text: "Perform glucose challenge test (1-hour GCT) for gestational diabetes" },
-                { id: "e", text: "Obtain vaginal/rectal GBS culture" }
+                { id: "a", text: "Schedule the 3-hour glucose tolerance test to confirm or rule out gestational diabetes" },
+                { id: "b", text: "Administer RhoGAM at 28 weeks to prevent Rh sensitization" },
+                { id: "c", text: "Initiate dietary counseling and blood glucose self-monitoring if GDM is confirmed" },
+                { id: "d", text: "Obtain vaginal-rectal GBS culture to determine need for intrapartum antibiotics" },
+                { id: "e", text: "Increase fetal surveillance with non-stress tests if GDM requires insulin therapy" }
             ],
-            correct: ["a", "b", "c", "d", "e"],
+            correct: ["a", "c", "b", "d", "e"],
             rationale: {
-                correct: "The correct chronological order follows the standard prenatal care timeline: initial visit labs (8-12 weeks), genetic screening (15-20 weeks for quad screen or 10+ weeks for cfDNA), RhoGAM administration (28 weeks), glucose screening (24-28 weeks), and GBS screening (35-37 weeks).",
-                a: "FIRST (8-12 weeks) \u2014 The initial prenatal visit establishes baseline data including blood type, Rh status, immunity, and infection screening. This is foundational for all subsequent care planning.",
-                b: "SECOND (15-20 weeks) \u2014 Maternal serum screening (quad screen at 15-20 weeks or cell-free DNA as early as 10 weeks) identifies risk for chromosomal abnormalities and neural tube defects.",
-                c: "THIRD (28 weeks) \u2014 RhoGAM is administered at 28 weeks to Rh-negative mothers to prevent sensitization. This timing prevents antibody formation during the third trimester.",
-                d: "FOURTH (24-28 weeks) \u2014 The 1-hour glucose challenge test screens for gestational diabetes. If abnormal (\u2265140 mg/dL), a 3-hour glucose tolerance test follows.",
-                e: "FIFTH (35-37 weeks) \u2014 Vaginal and rectal GBS cultures determine if the mother needs intrapartum antibiotic prophylaxis to prevent neonatal GBS sepsis."
+                correct: "The sequence addresses the most immediate concern first (abnormal glucose screening requires confirmatory testing), then manages the confirmed diagnosis, then addresses time-sensitive preventive care (RhoGAM at 28 weeks), followed by later-pregnancy screenings and ongoing monitoring.",
+                a: "FIRST \u2014 The abnormal 1-hour GCT (\u2265140 mg/dL) requires a confirmatory 3-hour glucose tolerance test. This is the most immediate priority because it determines the treatment plan. GDM diagnosis changes the entire trajectory of care.",
+                c: "SECOND \u2014 If GDM is confirmed by the 3-hour GTT, dietary counseling and blood glucose self-monitoring begin immediately. Most women with GDM are managed with medical nutrition therapy first before considering pharmacological intervention.",
+                b: "THIRD \u2014 At 28 weeks, RhoGAM must be administered to this Rh-negative mother to prevent alloimmunization. This is a time-sensitive, non-negotiable intervention that protects the fetus from hemolytic disease.",
+                d: "FOURTH \u2014 GBS culture is obtained at 35\u201337 weeks. A positive result means the mother will receive IV penicillin during labor to prevent neonatal GBS sepsis \u2014 the leading cause of early-onset neonatal infection.",
+                e: "FIFTH \u2014 If GDM cannot be controlled with diet alone and insulin is required, fetal surveillance intensifies (typically starting at 32\u201336 weeks) because insulin-dependent GDM increases the risk of macrosomia, stillbirth, and uteroplacental insufficiency."
             },
-            testTakingTip: "Know the prenatal testing timeline: Initial labs (first visit), genetic screening (15-20 wk), RhoGAM (28 wk), glucose screening (24-28 wk), GBS (35-37 wk). The NCLEX loves asking when things happen during pregnancy.",
+            testTakingTip: "When a question presents an abnormal screening result, the first priority is always confirmatory testing before treatment. For GDM: 1-hour GCT screens, 3-hour GTT confirms. Also remember RhoGAM timing (28 weeks) and GBS timing (35-37 weeks) as key milestones.",
             guideSection: "Section 4 \u2014 Prenatal Assessment & Screening",
             guideSectionId: "prenatal-assessment"
         },

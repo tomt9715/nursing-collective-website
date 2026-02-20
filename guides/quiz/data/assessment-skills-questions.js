@@ -125,26 +125,26 @@ var assessmentSkillsQuizData = {
             id: 5,
             type: "ordering",
             subtype: null,
-            difficulty: "knowledge",
-            stem: "A nurse on a medical-surgical unit needs to assess pain for several patients. Place the pain assessment tool selection steps in the correct decision-making sequence according to best practice guidelines.",
+            difficulty: "application",
+            stem: "A nurse is caring for an 82-year-old patient with advanced dementia who is 6 hours post\u2013hip fracture repair. The patient cannot verbalize but is grimacing, rigid, and pulling away when repositioned. Vital signs show HR 102 and BP 158/94 (baseline 128/76). The provider has ordered morphine 2 mg IV PRN. Place the nurse\u2019s pain management actions in the correct sequence.",
             options: [
-                { id: "a", text: "Determine if the patient can self-report: ask the patient directly about their pain using an open-ended question (\"Can you tell me about your pain?\")" },
-                { id: "b", text: "If the patient CAN self-report: select an age-appropriate self-report tool — Numeric Rating Scale (0-10) for adults and children ≥8, Wong-Baker FACES for children ages 3-7" },
-                { id: "c", text: "If the patient CANNOT self-report (non-verbal, intubated, dementia, infant): select a behavioral observation tool — FLACC for children <7, CPOT for ICU/intubated, PAINAD for advanced dementia" },
-                { id: "d", text: "Assess for physiological indicators as supplemental data: vital sign changes (tachycardia, hypertension, tachypnea), diaphoresis, pallor, pupil dilation — these alone are NOT reliable pain indicators" },
-                { id: "e", text: "Reassess pain after intervention using the SAME tool: 30 minutes after IV analgesic, 60 minutes after PO analgesic — document score, intervention, and response" }
+                { id: "a", text: "Attempt a simple self-report question: hold the patient\u2019s hand and ask \u201cAre you hurting?\u201d while watching for any nod, grimace, or gesture" },
+                { id: "b", text: "Apply the PAINAD behavioral observation tool to quantify pain (score facial expression, body language, consolability)" },
+                { id: "c", text: "Note the elevated HR and BP as supporting evidence of pain, but recognize these alone are unreliable indicators" },
+                { id: "d", text: "Administer morphine 2 mg IV as ordered based on the assessment findings" },
+                { id: "e", text: "Reassess using the PAINAD tool 30 minutes after IV morphine to evaluate response and document the pain cycle" }
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "The pain assessment hierarchy follows a decision-tree approach: attempt self-report first (gold standard), select the correct tool based on ability and age, supplement with behavioral/physiological data, and always reassess after treatment.",
-                a: "FIRST — Self-report is the GOLD STANDARD of pain assessment. Always attempt to get the patient's own report before using observational tools. Even patients with mild cognitive impairment can often self-report if given simple, direct questions.",
-                b: "SECOND — If self-report is possible, match the tool to the patient's age and cognitive ability. The Numeric Rating Scale (NRS 0-10) is validated for adults and children ≥8 years old. The Wong-Baker FACES Scale works for children ages 3-7 who can point to a face representing their pain level.",
-                c: "THIRD — If self-report is NOT possible, use a validated behavioral observation tool matched to the population: FLACC (Face, Legs, Activity, Cry, Consolability) for infants/young children, CPOT (Critical-Care Pain Observation Tool) for intubated/sedated ICU patients, PAINAD (Pain Assessment in Advanced Dementia) for non-communicative dementia patients.",
-                d: "FOURTH — Physiological indicators (vital sign changes, diaphoresis) are supplemental data ONLY. They are not reliable standalone pain measures because they can be affected by medications (beta-blockers mask tachycardia), chronic pain adaptation, or other conditions. Use them to support, not replace, other assessment findings.",
-                e: "FIFTH — Reassessment completes the pain management cycle. Use the SAME tool for consistency. Reassess at appropriate intervals based on route of administration. Document the entire cycle: initial assessment → intervention → reassessment → response. This data drives care plan adjustments."
+                correct: "Pain assessment follows the hierarchy of pain assessment: attempt self-report first (gold standard, even with dementia patients), then use a validated behavioral tool (PAINAD for advanced dementia), note physiological signs as supplemental data, intervene, and reassess using the SAME tool.",
+                a: "FIRST \u2014 Self-report is always attempted first, even in patients with cognitive impairment. Some dementia patients can respond to simple yes/no questions with gestures, facial expressions, or sounds. Skipping this step underestimates the patient\u2019s ability and violates best practice guidelines.",
+                b: "SECOND \u2014 When self-report is not possible, the PAINAD (Pain Assessment in Advanced Dementia) scale is the validated tool for this population. It scores breathing patterns, negative vocalizations, facial expression, body language, and consolability on a 0\u201310 scale.",
+                c: "THIRD \u2014 The tachycardia (HR 102) and hypertension (BP 158/94 vs baseline 128/76) support the pain assessment but are NOT reliable standalone indicators. Beta-blockers can mask tachycardia, and chronic pain patients may adapt physiologically. These signs are supplemental data only.",
+                d: "FOURTH \u2014 Based on the behavioral assessment (grimacing, rigidity, withdrawal) and supporting vital signs, administering the ordered analgesic is appropriate. Post-surgical hip fracture pain is expected and undertreating it impairs mobility and recovery.",
+                e: "FIFTH \u2014 Reassessment 30 minutes after IV morphine completes the pain management cycle. Using the SAME tool (PAINAD) ensures consistent, comparable scoring. Document the initial score, intervention, and post-intervention score to guide ongoing pain management."
             },
-            testTakingTip: "Pain assessment hierarchy: Self-report (gold standard) → Behavioral tool (if can't self-report) → Physiological signs (supplemental only) → Reassess after intervention. Tool matching: NRS for adults, FACES for children 3-7, FLACC for pre-verbal/non-verbal children, CPOT for intubated patients, PAINAD for dementia. Always reassess using the SAME tool for consistency.",
-            guideSection: "Section 8 — Pain Assessment",
+            testTakingTip: "Pain assessment hierarchy: Self-report first (even in dementia) \u2192 Behavioral tool if no self-report (PAINAD for dementia, CPOT for intubated, FLACC for children) \u2192 Physiological signs as supplemental only \u2192 Intervene \u2192 Reassess with the SAME tool. The NCLEX tests whether you know that vital signs alone are NOT reliable pain indicators.",
+            guideSection: "Section 8 \u2014 Pain Assessment",
             guideSectionId: "pain-assessment"
         },
         {

@@ -2066,6 +2066,26 @@ body {
 }
 
 /* Ordering correct sequence in feedback */
+.quiz-ordering-partial {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fffbeb;
+    border: 1px solid #fcd34d;
+    border-radius: var(--quiz-radius-sm);
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 0.88rem;
+    color: #92400e;
+    font-weight: 500;
+}
+
+[data-theme="dark"] .quiz-ordering-partial {
+    background: rgba(251, 191, 36, 0.1);
+    border-color: rgba(251, 191, 36, 0.3);
+    color: #fbbf24;
+}
+
 .quiz-ordering-correct-sequence {
     background: var(--quiz-correct-bg);
     border: 1px solid var(--quiz-correct-border);

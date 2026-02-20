@@ -196,31 +196,31 @@ var oxygenTherapyQuizData = {
             type: "ordering",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse receives the following ABG result for a patient on supplemental oxygen: pH 7.28, PaCO2 58 mmHg, PaO2 72 mmHg, HCO3 26 mEq/L. Place the ABG interpretation steps in the correct order.",
+            stem: "A patient with COPD on 2 L/min nasal cannula becomes increasingly somnolent and difficult to arouse. RR has dropped from 18 to 8 breaths/min. Stat ABG shows: pH 7.22, PaCO2 78 mmHg, PaO2 58 mmHg, HCO3 32 mEq/L. The nurse recognizes acute-on-chronic respiratory acidosis with CO2 narcosis. Place the nursing actions in priority order.",
             options: [
-                { id: "a", text: "Evaluate pH: 7.28 is acidotic (below 7.35)" },
-                { id: "b", text: "Check PaCO2: 58 mmHg is elevated — matches the acidosis (respiratory cause)" },
-                { id: "c", text: "Check HCO3: 26 mEq/L is normal — kidneys have NOT compensated" },
-                { id: "d", text: "Interpret: Uncompensated respiratory acidosis with CO2 retention" },
-                { id: "e", text: "Evaluate PaO2: 72 mmHg on supplemental O2 indicates ongoing hypoxemia" }
+                { id: "a", text: "Maintain current O2 at 2 L/min \u2014 do NOT increase flow rate, as higher O2 can worsen CO2 retention by suppressing hypoxic drive" },
+                { id: "b", text: "Stimulate the patient and position upright (high Fowler\u2019s) to maximize diaphragm excursion and promote ventilation" },
+                { id: "c", text: "Notify the provider immediately and prepare for non-invasive ventilation (BiPAP) to support CO2 clearance" },
+                { id: "d", text: "Apply continuous pulse oximetry and capnography to monitor both oxygenation and ventilation trends" },
+                { id: "e", text: "Hold any sedating medications (opioids, benzodiazepines) and review the medication administration record for respiratory depressants" }
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Systematic ABG interpretation follows a structured approach: assess pH first to identify the primary disturbance, then determine the cause (respiratory vs metabolic), check for compensation, formulate the interpretation, and finally evaluate oxygenation status.",
-                a: "FIRST — Always start with pH to determine acidosis (<7.35) or alkalosis (>7.45). This patient's pH of 7.28 clearly indicates acidosis.",
-                b: "SECOND — Check PaCO2 to see if the respiratory system matches the pH disturbance. PaCO2 of 58 (elevated, normal 35–45) matches the acidosis → respiratory cause identified.",
-                c: "THIRD — Check HCO3 to assess metabolic compensation. HCO3 of 26 mEq/L is within normal range (22–26), meaning the kidneys have not yet compensated. If compensated, HCO3 would be elevated.",
-                d: "FOURTH — Synthesize: acidotic pH + elevated CO2 + normal HCO3 = uncompensated respiratory acidosis. The patient is retaining CO2 and the kidneys haven't had time to buffer.",
-                e: "FIFTH — Evaluate oxygenation last. PaO2 of 72 mmHg while ON supplemental oxygen is below normal, indicating the patient remains hypoxemic despite treatment. This patient may need escalation to CPAP/BiPAP."
+                correct: "The priority sequence addresses immediate safety: avoid worsening the crisis (do not increase O2), optimize what you can independently (positioning, stimulation), escalate to the provider for definitive treatment (BiPAP), establish monitoring, and eliminate contributing factors (sedating medications).",
+                a: "FIRST \u2014 In COPD patients with CO2 retention, the respiratory drive shifts from CO2-based to hypoxic drive. Increasing O2 above the prescribed low-flow rate can suppress the remaining drive to breathe, worsening hypoventilation and CO2 narcosis. Maintaining the current rate prevents iatrogenic harm.",
+                b: "SECOND \u2014 Physical stimulation can temporarily increase respiratory effort in a somnolent patient. High Fowler\u2019s position lowers abdominal pressure on the diaphragm, improving tidal volume. These are independent nursing actions that can be done immediately.",
+                c: "THIRD \u2014 A pH of 7.22 with PaCO2 of 78 indicates severe acute respiratory failure requiring ventilatory support. BiPAP (bilevel positive airway pressure) provides inspiratory pressure to augment tidal volume and expiratory pressure to maintain alveolar recruitment, promoting CO2 clearance without intubation.",
+                d: "FOURTH \u2014 Continuous monitoring detects further deterioration. Capnography (end-tidal CO2) provides real-time ventilation data between ABG draws. SpO2 target for COPD is 88\u201392% \u2014 higher levels suggest excessive O2 that may suppress respiratory drive.",
+                e: "FIFTH \u2014 Any sedating medications compound the respiratory depression. Reviewing the MAR identifies if opioids, benzodiazepines, or muscle relaxants contributed to the acute decompensation. Reversal agents (naloxone, flumazenil) may be needed if these medications are the trigger."
             },
             labValues: [
-                { name: "pH", normal: "7.35–7.45" },
-                { name: "PaCO2", normal: "35–45 mmHg" },
-                { name: "PaO2", normal: "80–100 mmHg" },
-                { name: "HCO3", normal: "22–26 mEq/L" }
+                { name: "pH", normal: "7.35\u20137.45" },
+                { name: "PaCO2", normal: "35\u201345 mmHg" },
+                { name: "PaO2", normal: "80\u2013100 mmHg" },
+                { name: "HCO3", normal: "22\u201326 mEq/L" }
             ],
-            testTakingTip: "ABG interpretation in 5 steps: (1) pH → acidotic or alkalotic? (2) PaCO2 → does respiratory match? (3) HCO3 → does metabolic match or compensate? (4) Name the disturbance. (5) Evaluate PaO2 for oxygenation. This systematic approach works for any ABG question.",
-            guideSection: "Section 5 — FiO2 Calculations",
+            testTakingTip: "COPD + somnolence + rising CO2 = CO2 narcosis. The #1 NCLEX trap: do NOT increase O2 in a COPD patient with CO2 retention \u2014 it suppresses hypoxic drive. Target SpO2 88\u201392%. Treatment is BiPAP (supports ventilation) not just more O2 (only helps oxygenation). The elevated HCO3 (32) tells you this is chronic compensation, meaning the acute crisis is layered on top of longstanding CO2 retention.",
+            guideSection: "Section 5 \u2014 FiO2 Calculations",
             guideSectionId: "fio2-calculations"
         },
         {

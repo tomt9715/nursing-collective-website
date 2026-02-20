@@ -46,31 +46,31 @@ var thyroidDisordersQuizData = {
             guideSectionId: "physiology"
         },
 
-        // Q2 — Feedback Loop Ordering (Application, Ordering)
+        // Q2 — Thyroid Storm Emergency (Application, Ordering)
         {
             id: "thyroid_002",
             type: "ordering",
             subtype: null,
             difficulty: "application",
-            stem: "A nurse educator is teaching the thyroid hormone negative feedback loop. Place the following steps in the correct physiological sequence.",
+            stem: "A patient with Graves\u2019 disease is admitted post-thyroidectomy. On post-operative day 1, the nurse finds the patient febrile (104.2\u00b0F), severely tachycardic (HR 168), agitated, and diaphoretic. The nurse suspects thyroid storm. Place the nursing interventions in the correct priority order.",
             options: [
-                { id: "a", text: "Hypothalamus secretes TRH (thyrotropin-releasing hormone)" },
-                { id: "b", text: "Anterior pituitary releases TSH into the bloodstream" },
-                { id: "c", text: "TSH stimulates the thyroid gland to synthesize and release T3 and T4" },
-                { id: "d", text: "Rising T3 and T4 levels are detected by the hypothalamus and pituitary" },
-                { id: "e", text: "Negative feedback suppresses further TRH and TSH secretion" }
+                { id: "a", text: "Administer IV propranolol (or esmolol) to control life-threatening tachycardia and prevent cardiac decompensation" },
+                { id: "b", text: "Administer high-dose antithyroid medication (PTU preferred) to block new thyroid hormone synthesis" },
+                { id: "c", text: "Administer IV hydrocortisone \u2014 thyroid storm depletes cortisol and steroids block T4-to-T3 conversion" },
+                { id: "d", text: "Apply cooling blankets and administer acetaminophen for hyperthermia (avoid aspirin \u2014 it displaces T4 from binding proteins)" },
+                { id: "e", text: "Administer iodine solution (SSKI or Lugol\u2019s) at least 1 hour AFTER antithyroid medication to block hormone release" }
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "The feedback loop follows a top-down cascade: (1) The hypothalamus releases TRH, (2) TRH stimulates the anterior pituitary to release TSH, (3) TSH acts on the thyroid to produce T3/T4, (4) Rising hormone levels are sensed centrally, and (5) Negative feedback shuts down further stimulation until levels drop again.",
-                a: "FIRST — The hypothalamus is the 'master controller' that initiates the cascade by releasing TRH into the hypothalamic-hypophyseal portal system.",
-                b: "SECOND — TRH binds receptors on thyrotroph cells in the anterior pituitary, triggering TSH release into the systemic circulation.",
-                c: "THIRD — TSH binds to TSH receptors on thyroid follicular cells, stimulating iodine uptake, thyroglobulin synthesis, and release of T3 and T4.",
-                d: "FOURTH — As circulating T3/T4 levels rise, they are detected by receptors in both the hypothalamus and the anterior pituitary.",
-                e: "FIFTH — Elevated T3/T4 directly inhibit TRH and TSH secretion, completing the negative feedback loop and preventing overproduction."
+                correct: "Thyroid storm management follows a multi-system stabilization approach: control the immediate cardiovascular threat first (beta-blocker), then block hormone production (antithyroid drug), support adrenal function (steroids), manage hyperthermia, and finally block hormone release (iodine \u2014 must be given AFTER antithyroid medication to avoid fueling new synthesis).",
+                a: "FIRST \u2014 Beta-blockers are the most urgent intervention because tachyarrhythmias are the leading cause of death in thyroid storm. Propranolol also partially blocks peripheral T4-to-T3 conversion, providing a dual benefit.",
+                b: "SECOND \u2014 PTU (propylthiouracil) is preferred over methimazole in thyroid storm because it both blocks new hormone synthesis AND inhibits peripheral T4-to-T3 conversion. This must be given BEFORE iodine.",
+                c: "THIRD \u2014 IV hydrocortisone addresses the relative adrenal insufficiency that occurs in thyroid storm (hypermetabolism depletes cortisol) and provides the additional benefit of blocking peripheral conversion of T4 to the more active T3.",
+                d: "FOURTH \u2014 Aggressive temperature management is critical because hyperthermia worsens the hypermetabolic state. Acetaminophen is used instead of aspirin because aspirin displaces T4 from thyroid-binding globulin, increasing free (active) hormone levels.",
+                e: "FIFTH \u2014 Iodine (SSKI or Lugol\u2019s) blocks the release of preformed thyroid hormone via the Wolff-Chaikoff effect. It MUST be given at least 1 hour after PTU \u2014 if given first, the thyroid would use the iodine to make MORE hormone, worsening the crisis."
             },
-            testTakingTip: "Remember the cascade: Hypothalamus → TRH → Pituitary → TSH → Thyroid → T3/T4 → Feedback. Think 'HyPo-ThY' (Hypothalamus, Pituitary, Thyroid) as the three stations.",
-            guideSection: "Section 1 — Thyroid Physiology",
+            testTakingTip: "Thyroid storm priority: Beta-blocker first (HR kills), then PTU, then steroids, then cooling, then iodine LAST (and only after antithyroid meds). Remember: aspirin is contraindicated in thyroid storm because it increases free T4. The iodine timing rule is heavily tested on NCLEX.",
+            guideSection: "Section 1 \u2014 Thyroid Physiology",
             guideSectionId: "physiology"
         },
 

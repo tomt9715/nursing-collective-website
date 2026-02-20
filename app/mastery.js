@@ -815,6 +815,8 @@ var MasteryTracker = (function () {
             .then(function (serverData) {
                 if (serverData && serverData.updated_at) {
                     _mergeFromServer(serverData);
+                    // Push merged result back so server has the combined data
+                    syncToServer();
                     return true;
                 }
                 // No server data yet — push local data up

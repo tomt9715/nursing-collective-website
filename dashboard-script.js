@@ -304,6 +304,7 @@ async function loadUserProfile() {
         loadAnnouncementBanner();
         loadContinueHero();
         loadRecentGuides();
+        await fetchAndCacheQuizSessions();
         loadStudyActivityCalendar();
 
         updateStatsRow();
@@ -582,7 +583,7 @@ function loadStudyActivityCalendar(weekOffset) {
         html += '<div class="' + rowClass + '">';
         html += '<div class="activity-bar-label">' + dayNames[i] + '<span class="activity-date">' + dateLabel + '</span></div>';
         html += '<div class="activity-bar-track"><div class="activity-bar-fill" style="width:' + (isFuture ? 0 : pct) + '%"></div></div>';
-        html += '<div class="activity-bar-count">' + (isFuture ? '' : count) + '</div>';
+        html += '<div class="activity-bar-count">' + (isFuture ? '' : count + (count === 1 ? ' set' : ' sets')) + '</div>';
         html += '</div>';
     }
 
@@ -617,9 +618,6 @@ function loadStudyActivityCalendar(weekOffset) {
     if (daysActiveEl) daysActiveEl.textContent = daysActive;
     if (streakEl) streakEl.textContent = streak;
 
-    // Summary label updates based on which week
-    var summaryLabel = weekTotalEl ? weekTotalEl.nextElementSibling : null;
-    if (summaryLabel) summaryLabel.textContent = offset === 0 ? 'This Week' : 'Last Week';
 
     // Wire up toggle buttons (only once)
     if (!container._toggleWired) {
@@ -636,34 +634,34 @@ function loadStudyActivityCalendar(weekOffset) {
     }
 }
 
+// Cached quiz sessions fetched from server
+var _cachedQuizSessions = null;
+
+async function fetchAndCacheQuizSessions() {
+    try {
+        var resp = await apiCall('/api/quiz/sessions?limit=100', { method: 'GET' });
+        _cachedQuizSessions = resp.sessions || [];
+        console.log('[Dashboard] Fetched ' + _cachedQuizSessions.length + ' quiz sessions');
+    } catch (e) {
+        console.warn('[Dashboard] Failed to fetch quiz sessions:', e.message || e);
+        _cachedQuizSessions = [];
+    }
+}
+
 function getActivityDates() {
     var dates = {};
 
-    // From guideLastStudied (each guide's last access date)
-    try {
-        var lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}');
-        Object.values(lastStudied).forEach(function(dateStr) {
-            var d = new Date(dateStr);
+    // Count quiz sessions (sets completed) per day
+    var sessions = _cachedQuizSessions || [];
+    sessions.forEach(function(s) {
+        if (s.created_at) {
+            var d = new Date(s.created_at);
             if (!isNaN(d.getTime())) {
                 var key = d.toISOString().split('T')[0];
                 dates[key] = (dates[key] || 0) + 1;
             }
-        });
-    } catch (e) { /* ignore */ }
-
-    // From MasteryTracker session history if available
-    if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getSessionHistory === 'function') {
-        try {
-            var sessions = MasteryTracker.getSessionHistory();
-            sessions.forEach(function(s) {
-                var d = new Date(s.date || s.timestamp);
-                if (!isNaN(d.getTime())) {
-                    var key = d.toISOString().split('T')[0];
-                    dates[key] = (dates[key] || 0) + 1;
-                }
-            });
-        } catch (e) { /* ignore */ }
-    }
+        }
+    });
 
     return dates;
 }

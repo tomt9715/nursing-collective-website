@@ -1134,8 +1134,7 @@ class QuizEngine {
         const correctCount = Array.from(this.results.values()).filter(r => r.correct).length;
         const pct = total > 0 ? Math.round((correctCount / total) * 100) : 0;
         const circumference = 2 * Math.PI * 62; // r=62 for 160px ring
-        const offset = circumference - (pct / 100) * circumference;
-        const perfTier = pct >= 90 ? 'excellent' : pct >= 70 ? 'good' : 'needs-work';
+        // Ring starts empty — _animateScoreRing() drives fill + color
         const perfMsg = this._getPerformanceMessage(pct);
         const missedCount = total - correctCount;
         const timeStr = this._formatTime(this.totalTimeSeconds);
@@ -1159,16 +1158,16 @@ class QuizEngine {
                         <div class="quiz-score-ring">
                             <svg viewBox="0 0 140 140">
                                 <circle class="quiz-score-ring-bg" cx="70" cy="70" r="62"></circle>
-                                <circle class="quiz-score-ring-fill quiz-score-ring-fill--${perfTier}" cx="70" cy="70" r="62"
-                                    stroke-dasharray="${circumference}" stroke-dashoffset="${offset}"></circle>
+                                <circle class="quiz-score-ring-fill" cx="70" cy="70" r="62"
+                                    stroke-dasharray="${circumference}" stroke-dashoffset="${circumference}"></circle>
                             </svg>
                             <div class="quiz-score-center">
-                                <div class="quiz-score-value">${correctCount}/${total}</div>
+                                <div class="quiz-score-value">0/${total}</div>
                                 <div class="quiz-score-label">correct</div>
                             </div>
                         </div>
                     </div>
-                    <div class="quiz-score-percentage">${pct}%</div>
+                    <div class="quiz-score-percentage">0%</div>
                     <div class="quiz-performance-msg">${this._escapeHtml(perfMsg)}</div>
                     <div class="quiz-results-meta">
                         <span class="quiz-results-meta-item"><i class="fas fa-clock"></i> ${timeStr}</span>
@@ -1345,6 +1344,104 @@ class QuizEngine {
 
         // Scroll to top
         window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // Animate the score ring after DOM is ready
+        requestAnimationFrame(() => this._animateScoreRing(pct, correctCount, total));
+    }
+
+    // ── Animated Score Ring ──────────────────────────────────
+
+    /**
+     * Animates the SVG score ring from 0% to the target percentage,
+     * transitioning through color milestones:
+     *   0–69%  → red (#ef4444)
+     *   70–79% → orange (#f97316)
+     *   80–89% → yellow (#eab308)
+     *   90–99% → green (#22c55e)
+     *   100%   → gold (#fbbf24) + continuous glow
+     */
+    _animateScoreRing(targetPct, correctCount, total) {
+        const ringEl = this.container.querySelector('.quiz-score-ring-fill');
+        const valueEl = this.container.querySelector('.quiz-score-value');
+        const pctEl = this.container.querySelector('.quiz-score-percentage');
+        const ringWrap = this.container.querySelector('.quiz-score-ring');
+        const centerEl = this.container.querySelector('.quiz-score-center');
+        if (!ringEl) return;
+
+        const circumference = 2 * Math.PI * 62;
+        const duration = 1500; // ms
+        const startTime = performance.now();
+
+        // Color milestones — the ring adopts a color once a threshold is reached
+        const milestones = [
+            { pct: 0,   color: '#ef4444' }, // red
+            { pct: 70,  color: '#f97316' }, // orange
+            { pct: 80,  color: '#eab308' }, // yellow
+            { pct: 90,  color: '#22c55e' }, // green
+            { pct: 100, color: '#fbbf24' }  // gold (exact 100 only)
+        ];
+
+        function getColorForPct(p) {
+            // Walk milestones in reverse to find the highest threshold reached
+            for (var i = milestones.length - 1; i >= 0; i--) {
+                if (p >= milestones[i].pct) return milestones[i].color;
+            }
+            return milestones[0].color;
+        }
+
+        // Easing: ease-out cubic for a satisfying deceleration
+        function easeOutCubic(t) {
+            return 1 - Math.pow(1 - t, 3);
+        }
+
+        const self = this;
+
+        function tick(now) {
+            const elapsed = now - startTime;
+            const rawProgress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeOutCubic(rawProgress);
+            const currentPct = easedProgress * targetPct;
+
+            // Update ring fill
+            const offset = circumference - (currentPct / 100) * circumference;
+            ringEl.setAttribute('stroke-dashoffset', offset);
+
+            // Update color based on current animated percentage
+            const currentColor = getColorForPct(Math.round(currentPct));
+            ringEl.setAttribute('stroke', currentColor);
+
+            // Update counter text
+            if (valueEl) {
+                const animatedCorrect = Math.round((currentPct / 100) * total);
+                valueEl.textContent = animatedCorrect + '/' + total;
+            }
+            if (pctEl) {
+                pctEl.textContent = Math.round(currentPct) + '%';
+            }
+
+            if (rawProgress < 1) {
+                requestAnimationFrame(tick);
+            } else {
+                // Ensure final values are exact
+                const finalOffset = circumference - (targetPct / 100) * circumference;
+                ringEl.setAttribute('stroke-dashoffset', finalOffset);
+                ringEl.setAttribute('stroke', getColorForPct(targetPct));
+                if (valueEl) valueEl.textContent = correctCount + '/' + total;
+                if (pctEl) pctEl.textContent = targetPct + '%';
+
+                // Pop animation on the score text
+                if (centerEl) centerEl.classList.add('quiz-score-center--pop');
+
+                // Gold glow for perfect scores
+                if (targetPct === 100 && ringWrap) {
+                    ringWrap.classList.add('quiz-score-ring--gold-glow');
+                }
+            }
+        }
+
+        // Start from empty ring
+        ringEl.setAttribute('stroke-dashoffset', circumference);
+        requestAnimationFrame(tick);
     }
 
     _renderResultItem(q, index) {

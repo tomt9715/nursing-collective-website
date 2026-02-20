@@ -1104,22 +1104,35 @@ body {
 
 .quiz-score-ring-fill {
     fill: none;
-    stroke: var(--quiz-primary);
+    stroke: #ef4444; /* Start red — JS animates color through milestones */
     stroke-width: 8;
     stroke-linecap: round;
-    transition: stroke-dashoffset 1s ease;
+    /* No CSS transition — JS drives the animation via requestAnimationFrame */
 }
 
-.quiz-score-ring-fill--excellent {
-    stroke: var(--quiz-correct);
+/* Gold glow pulse for perfect 100% scores */
+@keyframes quiz-gold-glow {
+    0%, 100% {
+        filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.5));
+    }
+    50% {
+        filter: drop-shadow(0 0 18px rgba(251, 191, 36, 0.85)) drop-shadow(0 0 30px rgba(245, 158, 11, 0.4));
+    }
 }
 
-.quiz-score-ring-fill--good {
-    stroke: var(--quiz-primary);
+.quiz-score-ring--gold-glow svg {
+    animation: quiz-gold-glow 2s ease-in-out infinite;
 }
 
-.quiz-score-ring-fill--needs-work {
-    stroke: var(--quiz-incorrect);
+/* Animated counter pulse on completion */
+@keyframes quiz-score-pop {
+    0% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.12); }
+    100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+.quiz-score-center--pop {
+    animation: quiz-score-pop 0.4s ease-out;
 }
 
 .quiz-score-center {

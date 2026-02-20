@@ -556,7 +556,7 @@ function loadStudyActivityCalendar(weekOffset) {
         var key = d.toISOString().split('T')[0];
         counts.push(activeDates[key] || 0);
     }
-    var maxCount = Math.max.apply(null, counts) || 1;
+    var FULL_BAR = 5; // 5 sets = 100% full bar
 
     var html = '';
     var weekTotal = 0;
@@ -568,7 +568,7 @@ function loadStudyActivityCalendar(weekOffset) {
         var isToday = d.getTime() === today.getTime();
         var isFuture = d > today;
         var count = counts[i];
-        var pct = isFuture ? 0 : Math.round((count / maxCount) * 100);
+        var pct = isFuture ? 0 : Math.min(100, Math.round((count / FULL_BAR) * 100));
         var dateLabel = monthNames[d.getMonth()] + ' ' + d.getDate();
 
         if (count > 0 && !isFuture) {

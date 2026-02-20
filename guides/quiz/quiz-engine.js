@@ -79,7 +79,8 @@ class QuizEngine {
         this._reviewedFlags = false;
         this.confidenceRatings.clear();
         this._pendingFeedback = null;
-        this.activeQuestions = this._shuffleArray([...this.questions]).slice(0, this.selectedSessionSize || this.questions.length);
+        const sessionSize = this.selectedSessionSize || this.questions.length;
+        this.activeQuestions = this._selectQuestionsWithReask(sessionSize);
         this.isReviewMode = false;
         this._shuffleAllOptions();
 
@@ -155,11 +156,33 @@ class QuizEngine {
             });
         }
 
+        // Save confidence tracker (re-ask guessing/somewhat-sure questions next time)
+        this._saveConfidenceTracker();
+
+        // Record mastery points (exam mode only)
+        if (typeof MasteryTracker !== 'undefined' && !this.isReviewMode && this.mode === 'exam') {
+            const masteryResults = [];
+            this.activeQuestions.forEach(q => {
+                const r = this.results.get(q.id);
+                if (r) {
+                    masteryResults.push({ questionId: q.id, correct: r.correct });
+                }
+            });
+            if (masteryResults.length > 0) {
+                MasteryTracker.recordSetResult(this.guideSlug, masteryResults);
+                // Sync to server if logged in
+                if (typeof MasteryTracker.syncToServer === 'function') {
+                    MasteryTracker.syncToServer();
+                }
+            }
+        }
+
         this._renderResultsScreen();
     }
 
     retakeQuiz() {
-        this.activeQuestions = this._shuffleArray([...this.questions]).slice(0, this.selectedSessionSize || this.questions.length);
+        const retakeSize = this.selectedSessionSize || this.questions.length;
+        this.activeQuestions = this._selectQuestionsWithReask(retakeSize);
         this.isReviewMode = false;
         this.phase = 'quiz';
         this.currentIndex = 0;
@@ -565,6 +588,14 @@ class QuizEngine {
                     </div>
                 </div>
 
+                ${(() => {
+                    const reaskIds = this._loadConfidenceReaskIds();
+                    if (reaskIds.length > 0) {
+                        return '<div class="quiz-reask-notice"><i class="fas fa-redo-alt"></i> <strong>' + reaskIds.length + ' question' + (reaskIds.length !== 1 ? 's' : '') + '</strong> will be prioritized from your last session — you marked ' + (reaskIds.length !== 1 ? 'them' : 'it') + ' as unsure.</div>';
+                    }
+                    return '';
+                })()}
+
                 <div class="quiz-start-modes">
                     <button class="quiz-mode-btn quiz-mode-btn--practice" data-quiz-action="start-practice">
                         <div class="quiz-mode-icon"><i class="fas fa-book-open"></i></div>
@@ -577,7 +608,7 @@ class QuizEngine {
                         <div class="quiz-mode-icon"><i class="fas fa-clipboard-check"></i></div>
                         <div class="quiz-mode-info">
                             <div class="quiz-mode-name">Exam Mode</div>
-                            <div class="quiz-mode-desc">Timed &middot; All rationales shown at the end</div>
+                            <div class="quiz-mode-desc">Timed &middot; All rationales shown at the end &middot; Counts toward mastery</div>
                         </div>
                     </button>
                 </div>
@@ -1151,9 +1182,32 @@ class QuizEngine {
             const chartHtml = QuizHistory.renderScoreChart(this.guideSlug, 10);
             const statsHtml = QuizHistory.renderTopicStats(this.guideSlug);
             if (chartHtml || statsHtml) {
+                // Build contextual comparison message
+                const topicStats = QuizHistory.getTopicStats(this.guideSlug);
+                let trendMsg = '';
+                if (topicStats.attempts >= 2) {
+                    const prevScore = topicStats.lastScore; // this is from BEFORE current session was recorded
+                    // lastScore was updated to current already, so compare with avg
+                    const entries = QuizHistory.getTopicHistory(this.guideSlug, 10);
+                    if (entries.length >= 2) {
+                        const previousScore = entries[entries.length - 2].score;
+                        const currentScore = pct;
+                        if (currentScore > previousScore) {
+                            const diff = currentScore - previousScore;
+                            trendMsg = '<div class="quiz-history-trend quiz-history-trend--up"><i class="fas fa-arrow-up"></i> Up ' + diff + '% from last time — nice improvement!</div>';
+                        } else if (currentScore === previousScore) {
+                            trendMsg = '<div class="quiz-history-trend quiz-history-trend--same"><i class="fas fa-equals"></i> Same score as last time — consistency is key!</div>';
+                        } else {
+                            const diff = previousScore - currentScore;
+                            trendMsg = '<div class="quiz-history-trend quiz-history-trend--down"><i class="fas fa-arrow-down"></i> Down ' + diff + '% from last time — keep reviewing, you\'ve got this!</div>';
+                        }
+                    }
+                }
                 html += `
                     <div class="quiz-history-section">
-                        <div class="quiz-history-title"><i class="fas fa-chart-line"></i> Score History</div>
+                        <div class="quiz-history-title"><i class="fas fa-chart-line"></i> Your Previous Scores</div>
+                        <div class="quiz-history-subtitle">How you've scored on this topic over time</div>
+                        ${trendMsg}
                         ${chartHtml}
                         ${statsHtml}
                     </div>
@@ -1859,5 +1913,98 @@ class QuizEngine {
     _getShuffledOptions(questionId) {
         const data = this._shuffledOptions.get(questionId);
         return data ? data.options : null;
+    }
+
+    // ── Confidence Re-Ask Tracker ─────────────────────────────
+
+    /**
+     * Save questions rated "guessing" or "somewhat sure" to localStorage
+     * so they are re-asked in future quiz sessions on the same topic.
+     * Questions rated "very confident" are removed from the tracker.
+     */
+    _saveConfidenceTracker() {
+        if (this.isReviewMode) return;
+        const key = 'nursingCollective_confidenceReask';
+        let tracker = {};
+        try {
+            tracker = JSON.parse(localStorage.getItem(key) || '{}');
+        } catch (e) { tracker = {}; }
+
+        if (!tracker[this.guideSlug]) {
+            tracker[this.guideSlug] = {};
+        }
+        const topicTracker = tracker[this.guideSlug];
+
+        this.confidenceRatings.forEach((level, questionId) => {
+            if (level === 'low' || level === 'medium') {
+                // Add/keep in re-ask pool
+                topicTracker[questionId] = level;
+            } else if (level === 'high') {
+                // Confident — remove from re-ask pool
+                delete topicTracker[questionId];
+            }
+        });
+
+        // Clean up empty topic entries
+        if (Object.keys(topicTracker).length === 0) {
+            delete tracker[this.guideSlug];
+        } else {
+            tracker[this.guideSlug] = topicTracker;
+        }
+
+        try {
+            localStorage.setItem(key, JSON.stringify(tracker));
+        } catch (e) { /* storage full — ignore */ }
+    }
+
+    /**
+     * Load questions that need re-asking for this topic.
+     * Returns array of question IDs that should be prioritized.
+     */
+    _loadConfidenceReaskIds() {
+        const key = 'nursingCollective_confidenceReask';
+        try {
+            const tracker = JSON.parse(localStorage.getItem(key) || '{}');
+            const topicData = tracker[this.guideSlug];
+            if (!topicData) return [];
+            return Object.keys(topicData);
+        } catch (e) {
+            return [];
+        }
+    }
+
+    /**
+     * Select questions for a new quiz, prioritizing confidence re-ask questions.
+     * Re-ask questions go first, then random questions fill the remaining slots.
+     */
+    _selectQuestionsWithReask(size) {
+        const reaskIds = new Set(this._loadConfidenceReaskIds());
+        const allQuestions = [...this.questions];
+
+        // Split into re-ask questions and normal pool
+        const reaskQuestions = [];
+        const normalPool = [];
+        allQuestions.forEach(q => {
+            if (reaskIds.has(q.id)) {
+                reaskQuestions.push(q);
+            } else {
+                normalPool.push(q);
+            }
+        });
+
+        // Shuffle both pools
+        const shuffledReask = this._shuffleArray(reaskQuestions);
+        const shuffledNormal = this._shuffleArray(normalPool);
+
+        // Take re-ask questions first (up to session size), then fill with normal
+        const selected = [];
+        for (let i = 0; i < shuffledReask.length && selected.length < size; i++) {
+            selected.push(shuffledReask[i]);
+        }
+        for (let i = 0; i < shuffledNormal.length && selected.length < size; i++) {
+            selected.push(shuffledNormal[i]);
+        }
+
+        return selected;
     }
 }

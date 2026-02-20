@@ -148,14 +148,14 @@ var QUIZ_BANK_REGISTRY = {
             label: "Maternal-Newborn",
             emoji: "\ud83d\udc76",
             topics: [
-                { id: "labor-delivery", label: "Labor & Delivery", file: null, hasGuide: false },
-                { id: "pregnancy-complications", label: "Pregnancy Complications", file: null, hasGuide: false },
                 { id: "antepartum", label: "Antepartum Care", file: null, hasGuide: false },
+                { id: "labor-delivery", label: "Labor & Delivery", file: null, hasGuide: false },
                 { id: "postpartum", label: "Postpartum Care", file: null, hasGuide: false },
-                { id: "newborn-assessment", label: "Newborn Assessment & Care", file: null, hasGuide: false },
+                { id: "high-risk-pregnancy", label: "High-Risk Pregnancy", file: null, hasGuide: false },
+                { id: "newborn-care", label: "Newborn Care & Transitioning", file: null, hasGuide: false },
                 { id: "high-risk-newborn", label: "High-Risk Newborn", file: null, hasGuide: false },
-                { id: "breastfeeding", label: "Breastfeeding & Lactation", file: null, hasGuide: false },
-                { id: "uterine-reproductive", label: "Uterine & Reproductive Disorders", file: null, hasGuide: false }
+                { id: "womens-health-gyn", label: "Women's Health & GYN Disorders", file: null, hasGuide: false },
+                { id: "stis-reproductive-infections", label: "STIs & Reproductive Infections", file: null, hasGuide: false }
             ]
         },
         {

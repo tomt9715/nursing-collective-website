@@ -146,7 +146,7 @@
             id: 'maternal-newborn',
             name: 'Maternal-Newborn Nursing',
             classIcon: 'maternal-newborn-nursing-class-icon',
-            description: 'Antepartum, labor & delivery, postpartum, and high-risk pregnancy care.',
+            description: 'Antepartum, labor & delivery, postpartum, newborn care, high-risk pregnancy, and women\'s health.',
             gradient: 'linear-gradient(135deg, #ec4899, #db2777)',
             topics: [
                 {
@@ -156,10 +156,14 @@
                     colorClass: 'icon-maternal',
                     guides: [],
                     comingSoon: [
+                        { name: 'Antepartum Care', icon: 'antepartum-care' },
                         { name: 'Labor & Delivery', icon: 'labor-delivery' },
                         { name: 'Postpartum Care', icon: 'postpartum-care' },
                         { name: 'High-Risk Pregnancy', icon: 'high-risk-pregnancy' },
-                        { name: 'Antepartum Care', icon: 'antepartum-care' }
+                        { name: 'Newborn Care & Transitioning', icon: 'newborn-care' },
+                        { name: 'High-Risk Newborn', icon: 'high-risk-newborn' },
+                        { name: "Women's Health & GYN Disorders", icon: 'womens-health-gyn' },
+                        { name: 'STIs & Reproductive Infections', icon: 'stis-reproductive-infections' }
                     ]
                 }
             ]

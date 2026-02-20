@@ -148,6 +148,9 @@
         .activity-bar-fill{height:100%;border-radius:6px;background:linear-gradient(90deg,#38bdf8,#2E86AB);transition:width .4s ease;min-width:0}
         .activity-bar-count{font-size:.72rem;font-weight:600;color:#0f172a;min-width:40px;text-align:right;flex-shrink:0}
         .activity-bar-row.today .activity-date{color:#2E86AB;font-weight:600;border:1.5px solid #2E86AB;border-radius:4px;padding:0 4px}
+        .activity-bar-row.fire{background:linear-gradient(90deg,#fffbeb,#fef3c7);border-radius:8px;padding:4px 8px;margin:-4px -8px}
+        .activity-bar-row.fire .activity-bar-fill{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+        .activity-bar-row.fire .activity-bar-count{color:#d97706}
         .activity-bar-row.inactive .activity-bar-count{color:#cbd5e1}
         .activity-summary{display:flex;gap:16px;margin-top:16px;padding-top:14px;border-top:1px solid rgba(0,0,0,.06)}
         .activity-summary-item{text-align:center;flex:1}
@@ -160,6 +163,9 @@
         [data-theme="dark"] .activity-bar-fill{background:linear-gradient(90deg,rgba(56,189,248,.6),#38bdf8)}
         [data-theme="dark"] .activity-bar-count{color:#f1f5f9}
         [data-theme="dark"] .activity-bar-row.today .activity-date{color:#38bdf8;border-color:#38bdf8}
+        [data-theme="dark"] .activity-bar-row.fire{background:linear-gradient(90deg,rgba(245,158,11,.1),rgba(239,68,68,.08))}
+        [data-theme="dark"] .activity-bar-row.fire .activity-bar-fill{background:linear-gradient(90deg,#f59e0b,#ef4444)}
+        [data-theme="dark"] .activity-bar-row.fire .activity-bar-count{color:#fbbf24}
         [data-theme="dark"] .activity-bar-row.inactive .activity-bar-count{color:#4b5563}
         [data-theme="dark"] .activity-summary-num{color:#f1f5f9}
 

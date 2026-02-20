@@ -577,13 +577,20 @@ function loadStudyActivityCalendar(weekOffset) {
         }
 
         var rowClass = 'activity-bar-row';
+        var isFireDay = count > 5 && !isFuture;
         if (isToday) rowClass += ' today';
+        if (isFireDay) rowClass += ' fire';
         if (count === 0 && !isFuture) rowClass += ' inactive';
+
+        var countLabel = '';
+        if (!isFuture) {
+            countLabel = isFireDay ? '<i class="fas fa-fire"></i> ' + count + ' sets' : count + (count === 1 ? ' set' : ' sets');
+        }
 
         html += '<div class="' + rowClass + '">';
         html += '<div class="activity-bar-label">' + dayNames[i] + '<span class="activity-date">' + dateLabel + '</span></div>';
         html += '<div class="activity-bar-track"><div class="activity-bar-fill" style="width:' + (isFuture ? 0 : pct) + '%"></div></div>';
-        html += '<div class="activity-bar-count">' + (isFuture ? '' : count + (count === 1 ? ' set' : ' sets')) + '</div>';
+        html += '<div class="activity-bar-count">' + countLabel + '</div>';
         html += '</div>';
     }
 

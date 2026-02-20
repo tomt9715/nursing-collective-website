@@ -604,6 +604,7 @@ var MasteryTracker = (function () {
 
     var RETRY_QUEUE_KEY = 'nursingCollective_retryQueue';
     var BOOKMARKS_KEY = 'nursingCollective_bookmarks';
+    var CONFIDENCE_REASK_KEY = 'nursingCollective_confidenceReask';
 
     function _isLoggedIn() {
         return !!localStorage.getItem('accessToken');
@@ -763,6 +764,34 @@ var MasteryTracker = (function () {
         } catch (e) {
             console.warn('[Mastery] Failed to merge bookmarks:', e);
         }
+
+        // Merge confidence re-ask tracker (union of topics, union of question IDs)
+        try {
+            var localConf = JSON.parse(localStorage.getItem(CONFIDENCE_REASK_KEY) || '{}');
+            var remoteConf = serverData.confidence_reask || {};
+            var mergedConf = {};
+            var topic;
+            // Collect all topics from both
+            var allConfTopics = {};
+            for (topic in localConf) { if (localConf.hasOwnProperty(topic)) allConfTopics[topic] = true; }
+            for (topic in remoteConf) { if (remoteConf.hasOwnProperty(topic)) allConfTopics[topic] = true; }
+            for (topic in allConfTopics) {
+                if (!allConfTopics.hasOwnProperty(topic)) continue;
+                var localQ = localConf[topic] || {};
+                var remoteQ = remoteConf[topic] || {};
+                var mergedQ = {};
+                var qKey;
+                // Union: if either side has it, keep it (local wins on conflict)
+                for (qKey in remoteQ) { if (remoteQ.hasOwnProperty(qKey)) mergedQ[qKey] = remoteQ[qKey]; }
+                for (qKey in localQ) { if (localQ.hasOwnProperty(qKey)) mergedQ[qKey] = localQ[qKey]; }
+                if (Object.keys(mergedQ).length > 0) {
+                    mergedConf[topic] = mergedQ;
+                }
+            }
+            localStorage.setItem(CONFIDENCE_REASK_KEY, JSON.stringify(mergedConf));
+        } catch (e) {
+            console.warn('[Mastery] Failed to merge confidence reask:', e);
+        }
     }
 
     /**
@@ -786,11 +815,19 @@ var MasteryTracker = (function () {
             bookmarks = [];
         }
 
+        var confidenceReask;
+        try {
+            confidenceReask = JSON.parse(localStorage.getItem(CONFIDENCE_REASK_KEY) || '{}');
+        } catch (e) {
+            confidenceReask = {};
+        }
+
         var payload = {
             mastery_data: _loadAll(),
             streak_data: _loadStreak(),
             retry_queue: retryQueue,
-            bookmarks: bookmarks
+            bookmarks: bookmarks,
+            confidence_reask: confidenceReask
         };
 
         apiCall('/api/quiz/progress', {

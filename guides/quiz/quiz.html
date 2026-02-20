@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - The Nursing Collective</title>
+    <meta name="description" content="NCLEX-style practice questions. Practice mode with detailed rationales or exam mode to simulate test conditions.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Quiz Styles -->
+    <link rel="stylesheet" href="quiz-styles.css">
+    <script src="../../lockscreen.js"></script>
+</head>
+<body>
+
+    <!-- Quiz Container -->
+    <div id="quiz-root" class="quiz-container">
+        <div class="quiz-loading">
+            <div class="quiz-loading-spinner"></div>
+            <p>Loading quiz...</p>
+        </div>
+    </div>
+
+    <!-- Core scripts (loaded first, topic data injected dynamically) -->
+    <script src="../../api-service.js"></script>
+    <script src="quiz-history.js"></script>
+    <script src="../../app/mastery.js"></script>
+    <script src="quiz-engine.js"></script>
+
+    <!-- Dynamic loader: reads ?topic= param, loads question data, and boots quiz -->
+    <script>
+    (function () {
+        'use strict';
+
+        // Parse topic from URL query string
+        var params = new URLSearchParams(window.location.search);
+        var topic = params.get('topic');
+
+        if (!topic || !/^[a-z0-9-]+$/.test(topic)) {
+            document.getElementById('quiz-root').innerHTML =
+                '<div style="text-align:center;padding:60px 20px;">' +
+                '<h2 style="color:#ef4444;">Quiz Not Found</h2>' +
+                '<p style="color:#6b7280;margin:12px 0 24px;">No topic specified. Please access quizzes from a study guide.</p>' +
+                '<a href="../../study-guides.html" style="color:#2E86AB;font-weight:600;">Browse Study Guides</a>' +
+                '</div>';
+            return;
+        }
+
+        // Set body data attributes (used by quiz-init.js for access check)
+        document.body.setAttribute('data-product-id', topic);
+
+        // Dynamically load the question data script
+        var script = document.createElement('script');
+        script.src = 'data/' + topic + '-questions.js';
+        script.onload = function () {
+            // Find the quiz data global (pattern: *QuizData)
+            var quizData = null;
+            var keys = Object.keys(window);
+            for (var i = 0; i < keys.length; i++) {
+                if (keys[i].endsWith('QuizData') && window[keys[i]] && window[keys[i]].questions) {
+                    quizData = window[keys[i]];
+                    break;
+                }
+            }
+
+            if (!quizData) {
+                document.getElementById('quiz-root').innerHTML =
+                    '<div style="text-align:center;padding:60px 20px;">' +
+                    '<h2 style="color:#ef4444;">Failed to Load Quiz</h2>' +
+                    '<p style="color:#6b7280;margin:12px 0 24px;">Could not find question data for this topic.</p>' +
+                    '<a href="../../study-guides.html" style="color:#2E86AB;font-weight:600;">Browse Study Guides</a>' +
+                    '</div>';
+                return;
+            }
+
+            // Set guide name on body (for content-gate)
+            document.body.setAttribute('data-guide-name', quizData.guideName || topic);
+
+            // Update page title
+            document.title = (quizData.guideName || topic) + ' Quiz - The Nursing Collective';
+
+            // Load quiz-init.js (handles access verification + engine bootstrap)
+            var initScript = document.createElement('script');
+            initScript.src = 'quiz-init.js';
+            document.body.appendChild(initScript);
+
+            // Load content-gate.js after init
+            var gateScript = document.createElement('script');
+            gateScript.src = '../../content-gate.js';
+            document.body.appendChild(gateScript);
+        };
+
+        script.onerror = function () {
+            document.getElementById('quiz-root').innerHTML =
+                '<div style="text-align:center;padding:60px 20px;">' +
+                '<h2 style="color:#ef4444;">Quiz Not Found</h2>' +
+                '<p style="color:#6b7280;margin:12px 0 24px;">No quiz exists for "' + topic.replace(/[<>"'&]/g, '') + '". Please check the URL.</p>' +
+                '<a href="../../study-guides.html" style="color:#2E86AB;font-weight:600;">Browse Study Guides</a>' +
+                '</div>';
+        };
+
+        document.body.appendChild(script);
+    })();
+    </script>
+</body>
+</html>

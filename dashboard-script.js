@@ -294,8 +294,12 @@ async function loadUserProfile() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user) return;
 
-        // Sync study history from server before rendering widgets
+        // Sync study history and quiz mastery from server before rendering widgets
         await syncStudyHistory();
+        if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.pullFromServer === 'function') {
+            await MasteryTracker.pullFromServer();
+            console.log('[Dashboard] Mastery data synced from server');
+        }
 
         loadAnnouncementBanner();
         loadContinueHero();

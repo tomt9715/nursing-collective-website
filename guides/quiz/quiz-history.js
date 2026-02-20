@@ -218,7 +218,7 @@ var QuizHistory = (function () {
         try {
             window.apiCall('/api/quiz/sessions', {
                 method: 'POST',
-                body: {
+                body: JSON.stringify({
                     topic_id: session.topicId,
                     category: session.category,
                     mode: session.mode,
@@ -227,7 +227,7 @@ var QuizHistory = (function () {
                     total_count: session.total,
                     time_seconds: session.timeSeconds,
                     confidence_breakdown: session.confidence
-                }
+                })
             }).catch(function () {
                 // Silently fail — local data is the source of truth
             });

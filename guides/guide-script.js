@@ -434,6 +434,23 @@ document.addEventListener('DOMContentLoaded', async function() {
     const hasAccess = await verifyAccess();
 
     if (hasAccess) {
+        // Record study activity (localStorage + server sync)
+        try {
+            var lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}');
+            lastStudied[PRODUCT_ID] = new Date().toISOString();
+            localStorage.setItem('guideLastStudied', JSON.stringify(lastStudied));
+
+            // Fire-and-forget server sync
+            var token = getAuthToken();
+            if (token) {
+                fetch(API_URL + '/api/study/record', {
+                    method: 'POST',
+                    headers: { 'Authorization': 'Bearer ' + token, 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ guide_id: PRODUCT_ID })
+                }).catch(function() { /* ignore sync failures */ });
+            }
+        } catch (e) { /* ignore localStorage errors */ }
+
         // Initialize sidebars if config is defined
         if (typeof sidebarConfig !== 'undefined' && typeof initializeGuideSidebars === 'function') {
             initializeGuideSidebars(sidebarConfig);

@@ -294,6 +294,9 @@ async function loadUserProfile() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user) return;
 
+        // Sync study history from server before rendering widgets
+        await syncStudyHistory();
+
         loadAnnouncementBanner();
         loadContinueHero();
         loadRecentGuides();
@@ -308,6 +311,74 @@ async function loadUserProfile() {
         }
     } catch (error) {
         console.error('Error loading dashboard sections:', error);
+    }
+}
+
+// ==================== Study History Sync ====================
+
+async function syncStudyHistory() {
+    try {
+        // Load server-side study history
+        var serverData = {};
+        try {
+            var response = await apiCall('/api/study/history', { method: 'GET' });
+            serverData = response.guide_last_studied || {};
+        } catch (e) {
+            // Server unavailable — just use localStorage
+            console.warn('[StudySync] Server fetch failed, using local data only');
+            return;
+        }
+
+        // Load localStorage data
+        var localData = {};
+        try { localData = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch (e) {}
+
+        // Merge: for each guide, keep the most recent timestamp
+        var merged = Object.assign({}, serverData);
+        var hasNewData = false;
+
+        Object.keys(localData).forEach(function(guideId) {
+            var localTs = localData[guideId];
+            var serverTs = merged[guideId];
+
+            if (!serverTs) {
+                merged[guideId] = localTs;
+                hasNewData = true;
+            } else {
+                try {
+                    var localDate = new Date(localTs);
+                    var serverDate = new Date(serverTs);
+                    if (!isNaN(localDate.getTime()) && localDate > serverDate) {
+                        merged[guideId] = localTs;
+                        hasNewData = true;
+                    }
+                } catch (e) { /* keep server version */ }
+            }
+        });
+
+        // Also check if server has guides not in local
+        Object.keys(serverData).forEach(function(guideId) {
+            if (!localData[guideId]) {
+                hasNewData = true;
+            }
+        });
+
+        // Write merged data to localStorage
+        localStorage.setItem('guideLastStudied', JSON.stringify(merged));
+
+        // Push merged data back to server if there were differences
+        if (hasNewData) {
+            try {
+                apiCall('/api/study/history', {
+                    method: 'PUT',
+                    body: JSON.stringify({ guide_last_studied: merged })
+                }).catch(function() {});
+            } catch (e) { /* ignore push failures */ }
+        }
+
+        console.log('[StudySync] Synced ' + Object.keys(merged).length + ' guides');
+    } catch (e) {
+        console.warn('[StudySync] Sync failed:', e);
     }
 }
 
@@ -437,6 +508,13 @@ function continueStudying(productId) {
     } catch (e) {
         console.error('Error saving last studied:', e);
     }
+    // Fire-and-forget server sync
+    try {
+        apiCall('/api/study/record', {
+            method: 'POST',
+            body: JSON.stringify({ guide_id: productId })
+        }).catch(function() {});
+    } catch (e) { /* ignore */ }
     window.location.href = `guides/${productId}.html`;
 }
 

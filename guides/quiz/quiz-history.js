@@ -141,34 +141,31 @@ var QuizHistory = (function () {
         var entries = getTopicHistory(topicId, limit);
         if (entries.length < 2) return '';
 
-        var W = 340;
-        var H = 130;
-        var PAD_LEFT = 38;  // Extra space for Y-axis labels
-        var PAD_RIGHT = 24;
-        var PAD_TOP = 20;
-        var PAD_BOTTOM = 16;
-        var plotW = W - PAD_LEFT - PAD_RIGHT;
-        var plotH = H - PAD_TOP - PAD_BOTTOM;
+        var W = 320;
+        var H = 120;
+        var PAD = 24;
+        var plotW = W - PAD * 2;
+        var plotH = H - PAD * 2;
         var n = entries.length;
         var stepX = plotW / (n - 1);
 
         // Build path
         var points = entries.map(function (e, i) {
-            var x = PAD_LEFT + i * stepX;
-            var y = PAD_TOP + plotH - (e.score / 100) * plotH;
+            var x = PAD + i * stepX;
+            var y = PAD + plotH - (e.score / 100) * plotH;
             return { x: x, y: y, score: e.score };
         });
 
         var pathD = 'M ' + points.map(function (p) { return p.x + ' ' + p.y; }).join(' L ');
 
         // Area fill
-        var areaD = pathD + ' L ' + points[points.length - 1].x + ' ' + (PAD_TOP + plotH) + ' L ' + points[0].x + ' ' + (PAD_TOP + plotH) + ' Z';
+        var areaD = pathD + ' L ' + points[points.length - 1].x + ' ' + (PAD + plotH) + ' L ' + points[0].x + ' ' + (PAD + plotH) + ' Z';
 
         // Grid lines at 25%, 50%, 75%
         var gridLines = [25, 50, 75].map(function (pct) {
-            var y = PAD_TOP + plotH - (pct / 100) * plotH;
-            return '<line x1="' + PAD_LEFT + '" y1="' + y + '" x2="' + (W - PAD_RIGHT) + '" y2="' + y + '" stroke="var(--quiz-border)" stroke-width="0.5" stroke-dasharray="3,3"/>' +
-                   '<text x="' + (PAD_LEFT - 6) + '" y="' + (y + 3) + '" font-size="8" fill="var(--quiz-text-light)" text-anchor="end">' + pct + '%</text>';
+            var y = PAD + plotH - (pct / 100) * plotH;
+            return '<line x1="' + PAD + '" y1="' + y + '" x2="' + (W - PAD) + '" y2="' + y + '" stroke="var(--quiz-border)" stroke-width="0.5" stroke-dasharray="3,3"/>' +
+                   '<text x="' + (PAD - 4) + '" y="' + (y + 3) + '" font-size="9" fill="var(--quiz-text-light)" text-anchor="end">' + pct + '%</text>';
         }).join('');
 
         // Data dots
@@ -177,12 +174,9 @@ var QuizHistory = (function () {
             return '<circle cx="' + p.x + '" cy="' + p.y + '" r="4" fill="' + color + '" stroke="var(--quiz-card-bg)" stroke-width="2"/>';
         }).join('');
 
-        // Score labels on first and last points — offset further from dots
-        var labelFirstY = Math.min(points[0].y - 10, PAD_TOP + plotH - 6);
-        var labelLastY = Math.min(points[points.length - 1].y - 10, PAD_TOP + plotH - 6);
-
-        var labelFirst = '<text x="' + points[0].x + '" y="' + labelFirstY + '" font-size="10" fill="var(--quiz-text-secondary)" text-anchor="middle" font-weight="600">' + points[0].score + '%</text>';
-        var labelLast = '<text x="' + points[points.length - 1].x + '" y="' + labelLastY + '" font-size="10" fill="var(--quiz-text-primary)" text-anchor="middle" font-weight="700">' + points[points.length - 1].score + '%</text>';
+        // Score labels on first and last points
+        var labelFirst = '<text x="' + points[0].x + '" y="' + (points[0].y - 8) + '" font-size="10" fill="var(--quiz-text-secondary)" text-anchor="middle" font-weight="600">' + points[0].score + '%</text>';
+        var labelLast = '<text x="' + points[points.length - 1].x + '" y="' + (points[points.length - 1].y - 8) + '" font-size="10" fill="var(--quiz-text-primary)" text-anchor="middle" font-weight="700">' + points[points.length - 1].score + '%</text>';
 
         return '<svg viewBox="0 0 ' + W + ' ' + H + '" class="quiz-score-chart" xmlns="http://www.w3.org/2000/svg">' +
             gridLines +

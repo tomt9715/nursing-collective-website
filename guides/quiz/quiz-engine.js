@@ -234,6 +234,8 @@ class QuizEngine {
                 case 'next': this.nextQuestion(); break;
                 case 'retake': this.retakeQuiz(); break;
                 case 'review-missed': this.reviewMissed(); break;
+                case 'new-quiz': window.location.href = '../../study-guides.html'; break;
+                case 'back-to-guide': window.location.href = '../' + this.guideSlug + '.html'; break;
                 case 'back-to-start':
                     this._stopTimer();
                     this._clearSavedState();
@@ -1197,9 +1199,9 @@ class QuizEngine {
                         <div class="quiz-next-step-title">Keep the Momentum Going</div>
                         <div class="quiz-next-step-desc">You're crushing it! Try a quiz on another topic to broaden your knowledge.</div>
                     </div>
-                    <a href="../../study-guides.html" class="quiz-btn quiz-btn--primary">
+                    <button class="quiz-btn quiz-btn--primary" data-quiz-action="new-quiz">
                         <i class="fas fa-arrow-right"></i> More Quizzes
-                    </a>
+                    </button>
                 </div>
             `;
         }
@@ -1269,14 +1271,14 @@ class QuizEngine {
         }
         html += `
                 <button class="quiz-btn quiz-btn--secondary" data-quiz-action="retake">
-                    <i class="fas fa-sync-alt"></i> Retake Full Quiz
+                    <i class="fas fa-sync-alt"></i> Practice Again
                 </button>
-                <a href="../${this.guideSlug}.html" class="quiz-btn quiz-btn--secondary">
-                    <i class="fas fa-book"></i> Back to Study Guide
-                </a>
-                <a href="../../study-guides.html" class="quiz-btn quiz-btn--secondary">
-                    <i class="fas fa-th-list"></i> Try Another Quiz
-                </a>
+                <button class="quiz-btn quiz-btn--secondary" data-quiz-action="new-quiz">
+                    <i class="fas fa-th-list"></i> New Quiz
+                </button>
+                <button class="quiz-btn quiz-btn--secondary" data-quiz-action="back-to-guide">
+                    <i class="fas fa-book"></i> Back to Guide
+                </button>
             </div>
         </div>`;
 

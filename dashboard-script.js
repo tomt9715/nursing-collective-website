@@ -530,18 +530,19 @@ function continueStudying(productId) {
 
 // ==================== Study Activity Calendar ====================
 
-function loadStudyActivityCalendar() {
+function loadStudyActivityCalendar(weekOffset) {
     var container = document.getElementById('activity-bars');
     if (!container) return;
 
+    var offset = weekOffset || 0; // 0 = this week, -1 = last week
     var activeDates = getActivityDates();
     var today = new Date();
     today.setHours(0, 0, 0, 0);
     var dayOfWeek = today.getDay(); // 0=Sun
 
-    // Build 7 days: Sunday through Saturday of current week
+    // Build 7 days for the target week
     var weekStart = new Date(today);
-    weekStart.setDate(weekStart.getDate() - dayOfWeek);
+    weekStart.setDate(weekStart.getDate() - dayOfWeek + (offset * 7));
 
     var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
@@ -589,22 +590,23 @@ function loadStudyActivityCalendar() {
 
     // Streak: count consecutive days back from today with activity
     var streak = 0;
-    for (var i = dayOfWeek; i >= 0; i--) {
-        if (counts[i] > 0) streak++;
+    for (var si = dayOfWeek; si >= 0; si--) {
+        var thisWeekCounts = [];
+        for (var j = 0; j < 7; j++) {
+            var sd = new Date(today);
+            sd.setDate(sd.getDate() - dayOfWeek + j);
+            var sk = sd.toISOString().split('T')[0];
+            thisWeekCounts.push(activeDates[sk] || 0);
+        }
+        if (thisWeekCounts[si] > 0) streak++;
         else break;
     }
-    // Continue counting into previous weeks if streak started from Sunday
-    if (streak > 0 && dayOfWeek >= 0) {
-        var prev = new Date(weekStart);
-        prev.setDate(prev.getDate() - 1);
-        while (true) {
-            var key = prev.toISOString().split('T')[0];
-            if (activeDates[key] && activeDates[key] > 0) {
-                streak++;
-                prev.setDate(prev.getDate() - 1);
-            } else {
-                break;
-            }
+    if (streak > 0) {
+        var prev = new Date(today);
+        prev.setDate(prev.getDate() - dayOfWeek - 1);
+        while (activeDates[prev.toISOString().split('T')[0]] > 0) {
+            streak++;
+            prev.setDate(prev.getDate() - 1);
         }
     }
 
@@ -614,6 +616,24 @@ function loadStudyActivityCalendar() {
     if (weekTotalEl) weekTotalEl.textContent = weekTotal;
     if (daysActiveEl) daysActiveEl.textContent = daysActive;
     if (streakEl) streakEl.textContent = streak;
+
+    // Summary label updates based on which week
+    var summaryLabel = weekTotalEl ? weekTotalEl.nextElementSibling : null;
+    if (summaryLabel) summaryLabel.textContent = offset === 0 ? 'This Week' : 'Last Week';
+
+    // Wire up toggle buttons (only once)
+    if (!container._toggleWired) {
+        container._toggleWired = true;
+        var btns = document.querySelectorAll('.activity-week-btn');
+        btns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                btns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                var w = btn.getAttribute('data-week') === 'last' ? -1 : 0;
+                loadStudyActivityCalendar(w);
+            });
+        });
+    }
 }
 
 function getActivityDates() {

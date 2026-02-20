@@ -134,6 +134,12 @@
 
         /* Study Activity widget — weekly bar chart */
         .study-activity-widget{background:var(--card-bg,#fff);border-radius:16px;padding:24px;border:1px solid rgba(0,0,0,.06);box-shadow:0 2px 12px rgba(0,0,0,.06)}
+        .activity-week-toggle{display:flex;gap:4px;background:#f1f5f9;border-radius:6px;padding:2px}
+        .activity-week-btn{font-size:.7rem;font-weight:500;padding:4px 10px;border-radius:4px;border:none;background:transparent;color:#64748b;cursor:pointer;transition:all .15s ease}
+        .activity-week-btn.active{background:white;color:#0f172a;box-shadow:0 1px 3px rgba(0,0,0,.08)}
+        [data-theme="dark"] .activity-week-toggle{background:rgba(255,255,255,.06)}
+        [data-theme="dark"] .activity-week-btn{color:#94a3b8}
+        [data-theme="dark"] .activity-week-btn.active{background:rgba(255,255,255,.1);color:#f1f5f9;box-shadow:none}
         .activity-bars{display:flex;flex-direction:column;gap:8px}
         .activity-bar-row{display:flex;align-items:center;gap:10px}
         .activity-bar-label{min-width:72px;font-size:.78rem;color:#64748b;font-weight:500;flex-shrink:0}
@@ -541,8 +547,12 @@
 
                     <!-- Study Activity Widget -->
                     <div class="study-activity-widget" id="study-activity-widget">
-                        <div class="widget-header">
-                            <h3><i class="fas fa-calendar-check"></i> This Week</h3>
+                        <div class="widget-header" style="display:flex;align-items:center;justify-content:space-between">
+                            <h3><i class="fas fa-calendar-check"></i> Study Activity</h3>
+                            <div class="activity-week-toggle">
+                                <button class="activity-week-btn active" data-week="this">This Week</button>
+                                <button class="activity-week-btn" data-week="last">Last Week</button>
+                            </div>
                         </div>
                         <div class="activity-bars" id="activity-bars">
                             <!-- JS fills 7 bar rows -->

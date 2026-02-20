@@ -1805,8 +1805,8 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    min-height: 340px !important;
-    padding: 80px 0 60px !important;
+    min-height: 380px !important;
+    padding: 70px 0 0 !important;
 }
 
 .pricing-hero .container {
@@ -1817,8 +1817,8 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 /* Responsive pricing hero */
 @media (max-width: 768px) {
     .pricing-hero {
-        min-height: 280px !important;
-        padding: 80px 0 50px !important;
+        min-height: 320px !important;
+        padding: 64px 0 0 !important;
     }
 
     .pricing-hero h1 {
@@ -1828,8 +1828,8 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 
 @media (max-width: 480px) {
     .pricing-hero {
-        min-height: 240px !important;
-        padding: 80px 0 40px !important;
+        min-height: 280px !important;
+        padding: 60px 0 0 !important;
     }
 
     .pricing-hero h1 {

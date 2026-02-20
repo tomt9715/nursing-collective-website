@@ -1646,18 +1646,18 @@ pre code {
 }
 
 .footer-attribution {
-    font-size: 0.85rem;
-    margin-top: 8px;
-    opacity: 0.5;
+    font-size: 0.65rem;
+    margin-top: 6px;
+    opacity: 0.35;
 }
 
 .footer-attribution a {
     color: inherit;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
-.footer-attribution a:last-of-type {
-    text-decoration: none;
+.footer-attribution a:hover {
+    text-decoration: underline;
 }
 
 /* Pricing Page Button Utilities */

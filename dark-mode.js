@@ -31,8 +31,14 @@ class DarkModeManager {
         if (savedMode && ['light', 'dark', 'system'].includes(savedMode)) {
             this.mode = savedMode;
         } else {
-            // Default to system
-            this.mode = 'system';
+            // Check shared cookie (syncs across subdomains)
+            const cookieMode = this._readCookie('themeMode');
+            if (cookieMode && ['light', 'dark', 'system'].includes(cookieMode)) {
+                this.mode = cookieMode;
+                localStorage.setItem('themeMode', cookieMode);
+            } else {
+                this.mode = 'system';
+            }
         }
     }
 
@@ -64,6 +70,7 @@ class DarkModeManager {
         if (['light', 'dark', 'system'].includes(newMode)) {
             this.mode = newMode;
             localStorage.setItem('themeMode', newMode);
+            this._writeCookie('themeMode', newMode);
             this.applyTheme();
         }
     }
@@ -141,6 +148,31 @@ class DarkModeManager {
                 }
             }
         }, 60000);
+
+        // Sync when another tab on this origin changes themeMode
+        window.addEventListener('storage', (e) => {
+            if (e.key === 'themeMode' && e.newValue && e.newValue !== this.mode) {
+                this.mode = e.newValue;
+                this._writeCookie('themeMode', e.newValue);
+                this.applyTheme();
+            }
+        });
+    }
+
+    // ── Shared cookie helpers (syncs across subdomains) ──
+
+    _writeCookie(name, value) {
+        const domain = location.hostname.includes('thenursingcollective.pro')
+            ? '.thenursingcollective.pro'
+            : '';
+        const domainStr = domain ? ';domain=' + domain : '';
+        document.cookie = name + '=' + encodeURIComponent(value)
+            + domainStr + ';path=/;max-age=31536000;SameSite=Lax;Secure';
+    }
+
+    _readCookie(name) {
+        const match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+        return match ? decodeURIComponent(match[1]) : null;
     }
 }
 

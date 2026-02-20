@@ -297,25 +297,10 @@ async function loadUserProfile() {
         loadAnnouncementBanner();
         loadContinueHero();
         loadRecentGuides();
-
-        // Show Quiz Progress for premium users (always visible, even empty state)
-        if (user.is_premium) {
-            loadQuizBankDashboard();
-        } else {
-            // Show Quiz Progress with a CTA for non-premium too
-            var qbSection = document.getElementById('quiz-bank-dashboard-section');
-            if (qbSection) {
-                qbSection.style.display = '';
-                qbSection.classList.remove('hidden');
-                var emptyState = document.getElementById('qb-empty-state');
-                if (emptyState) {
-                    emptyState.classList.remove('hidden');
-                    emptyState.innerHTML = '<div class="qb-empty-state-icon"><i class="fas fa-brain"></i></div><h4>Practice Questions</h4><p>Subscribe to access the Quiz Bank and track your progress.</p><a href="pricing.html" class="btn btn-primary btn-sm"><i class="fas fa-rocket"></i> View Plans</a>';
-                }
-            }
-        }
+        loadStudyActivityCalendar();
 
         updateStatsRow();
+        initStatFlyouts();
         loadSubscriptionManagement();
 
         if (user.email === 'admin@thenursingcollective.pro') {
@@ -356,7 +341,7 @@ async function loadRecentGuides() {
                 .map(([id, date]) => ({ id, date: new Date(date) }))
                 .filter(e => !isNaN(e.date.getTime()))
                 .sort((a, b) => b.date - a.date)
-                .slice(0, 5);
+                .slice(0, 3);
 
             if (recentEntries.length > 0) {
                 container.innerHTML = recentEntries.map(entry => {
@@ -455,61 +440,303 @@ function continueStudying(productId) {
     window.location.href = `guides/${productId}.html`;
 }
 
-// ==================== Quiz Bank Dashboard (Stats Only) ====================
+// ==================== Study Activity Calendar ====================
 
-function loadQuizBankDashboard() {
-    var section = document.getElementById('quiz-bank-dashboard-section');
-    if (!section) return;
+function loadStudyActivityCalendar() {
+    var calendar = document.getElementById('activity-calendar');
+    if (!calendar) return;
 
-    section.style.display = '';
-    section.classList.remove('hidden');
+    // Collect all activity dates from localStorage
+    var activeDates = getActivityDates();
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Build 28-day grid (4 weeks) ending on Saturday of this week
+    var dayOfWeek = today.getDay(); // 0=Sun
+    var endDate = new Date(today);
+    endDate.setDate(endDate.getDate() + (6 - dayOfWeek)); // Saturday of this week
+    var startDate = new Date(endDate);
+    startDate.setDate(startDate.getDate() - 27); // 28 days total
+
+    var html = '';
+    var daysActive = 0;
+    var thisWeekCount = 0;
+    var longestStreak = 0;
+    var currentStreak = 0;
+
+    // Sunday of this week for "this week" counting
+    var thisWeekStart = new Date(today);
+    thisWeekStart.setDate(thisWeekStart.getDate() - dayOfWeek);
+
+    for (var i = 0; i < 28; i++) {
+        var d = new Date(startDate);
+        d.setDate(d.getDate() + i);
+        var dateKey = d.toISOString().split('T')[0];
+        var count = activeDates[dateKey] || 0;
+        var isFuture = d > today;
+        var isToday = d.getTime() === today.getTime();
+
+        var levelClass = '';
+        if (isFuture) { levelClass = 'future'; }
+        else if (count >= 3) { levelClass = 'level-3'; }
+        else if (count >= 2) { levelClass = 'level-2'; }
+        else if (count >= 1) { levelClass = 'level-1'; }
+
+        if (count > 0 && !isFuture) {
+            daysActive++;
+            currentStreak++;
+            if (currentStreak > longestStreak) longestStreak = currentStreak;
+        } else if (!isFuture) {
+            currentStreak = 0;
+        }
+
+        if (d >= thisWeekStart && d <= today && count > 0) thisWeekCount++;
+
+        html += '<div class="activity-day ' + levelClass + (isToday ? ' today' : '') + '" title="' + formatDate(dateKey) + (count > 0 ? ' — ' + count + ' guide' + (count > 1 ? 's' : '') : '') + '"></div>';
+    }
+
+    calendar.innerHTML = html;
+
+    var daysActiveEl = document.getElementById('activity-days-active');
+    var longestEl = document.getElementById('activity-longest-streak');
+    var thisWeekEl = document.getElementById('activity-this-week');
+    if (daysActiveEl) daysActiveEl.textContent = daysActive;
+    if (longestEl) longestEl.textContent = longestStreak;
+    if (thisWeekEl) thisWeekEl.textContent = thisWeekCount;
+}
+
+function getActivityDates() {
+    var dates = {};
+
+    // From guideLastStudied (each guide's last access date)
+    try {
+        var lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}');
+        Object.values(lastStudied).forEach(function(dateStr) {
+            var d = new Date(dateStr);
+            if (!isNaN(d.getTime())) {
+                var key = d.toISOString().split('T')[0];
+                dates[key] = (dates[key] || 0) + 1;
+            }
+        });
+    } catch (e) { /* ignore */ }
+
+    // From MasteryTracker session history if available
+    if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getSessionHistory === 'function') {
+        try {
+            var sessions = MasteryTracker.getSessionHistory();
+            sessions.forEach(function(s) {
+                var d = new Date(s.date || s.timestamp);
+                if (!isNaN(d.getTime())) {
+                    var key = d.toISOString().split('T')[0];
+                    dates[key] = (dates[key] || 0) + 1;
+                }
+            });
+        } catch (e) { /* ignore */ }
+    }
+
+    return dates;
+}
+
+// ==================== Stat Card Flyouts ====================
+
+function initStatFlyouts() {
+    var statCards = document.querySelectorAll('.dash-stat');
+
+    statCards.forEach(function(card) {
+        card.addEventListener('click', function(e) {
+            e.stopPropagation();
+            var flyout = card.querySelector('.dash-stat-flyout');
+            if (!flyout) return;
+
+            var wasOpen = flyout.classList.contains('open');
+
+            // Close all flyouts first
+            closeAllFlyouts();
+
+            if (!wasOpen) {
+                flyout.classList.add('open');
+                card.classList.add('active');
+                populateFlyout(card.id);
+            }
+        });
+    });
+
+    // Close flyouts when clicking outside
+    document.addEventListener('click', function() {
+        closeAllFlyouts();
+    });
+
+    // Prevent flyout clicks from closing
+    document.querySelectorAll('.dash-stat-flyout').forEach(function(f) {
+        f.addEventListener('click', function(e) { e.stopPropagation(); });
+    });
+}
+
+function closeAllFlyouts() {
+    document.querySelectorAll('.dash-stat-flyout.open').forEach(function(f) {
+        f.classList.remove('open');
+    });
+    document.querySelectorAll('.dash-stat.active').forEach(function(c) {
+        c.classList.remove('active');
+    });
+}
+
+function populateFlyout(cardId) {
+    switch (cardId) {
+        case 'stat-card-guides': populateGuidesFlyout(); break;
+        case 'stat-card-questions': populateQuestionsFlyout(); break;
+        case 'stat-card-accuracy': populateAccuracyFlyout(); break;
+        case 'stat-card-streak': populateStreakFlyout(); break;
+    }
+}
+
+function populateGuidesFlyout() {
+    var container = document.getElementById('flyout-guides-content');
+    if (!container) return;
+
+    var lastStudied = {};
+    try { lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch(e) {}
+
+    var ids = Object.keys(lastStudied);
+    if (ids.length === 0) {
+        container.innerHTML = '<div class="flyout-empty">No guides studied yet</div>';
+        return;
+    }
+
+    // Group by category
+    var categories = {};
+    var categoryMap = {
+        'heart-failure': 'Cardiovascular', 'myocardial-infarction': 'Cardiovascular', 'arrhythmias': 'Cardiovascular', 'hypertension': 'Cardiovascular', 'coronary-artery-disease': 'Cardiovascular', 'peripheral-vascular-disease': 'Cardiovascular',
+        'copd': 'Respiratory', 'asthma': 'Respiratory', 'pneumonia': 'Respiratory', 'tuberculosis': 'Respiratory', 'oxygen-therapy': 'Respiratory', 'chest-tubes': 'Respiratory',
+        'stroke': 'Neurological', 'seizures': 'Neurological', 'traumatic-brain-injury': 'Neurological', 'spinal-cord-injury': 'Neurological', 'meningitis': 'Neurological', 'parkinsons-ms': 'Neurological',
+        'diabetes-type1': 'Endocrine', 'diabetes-type2': 'Endocrine', 'thyroid-disorders': 'Endocrine', 'adrenal-disorders': 'Endocrine', 'pituitary-disorders': 'Endocrine',
+        'acute-kidney-injury': 'Renal', 'chronic-kidney-disease': 'Renal', 'dialysis': 'Renal', 'kidney-stones': 'Renal', 'urinary-tract-infections': 'Renal', 'fluid-electrolytes': 'Renal',
+        'gi-bleeding': 'GI', 'bowel-obstruction': 'GI', 'liver-disease': 'GI', 'pancreatitis': 'GI', 'inflammatory-bowel-disease': 'GI', 'gerd-peptic-ulcer': 'GI',
+        'fractures': 'Musculoskeletal', 'arthritis': 'Musculoskeletal', 'hip-knee-replacement': 'Musculoskeletal', 'osteoporosis': 'Musculoskeletal', 'amputation-care': 'Musculoskeletal',
+        'cardiac-medications': 'Pharmacology', 'antibiotics-antivirals': 'Pharmacology', 'pain-management': 'Pharmacology', 'iv-medications': 'Pharmacology', 'psychotropic-medications': 'Pharmacology', 'emergency-medications': 'Pharmacology',
+        'assessment-skills': 'Fundamentals', 'infection-control': 'Fundamentals', 'documentation-charting': 'Fundamentals', 'patient-safety': 'Fundamentals', 'mobility-transfers': 'Fundamentals'
+    };
+
+    ids.forEach(function(id) {
+        var cat = categoryMap[id] || 'Other';
+        if (!categories[cat]) categories[cat] = 0;
+        categories[cat]++;
+    });
+
+    var html = '';
+    var sorted = Object.entries(categories).sort(function(a, b) { return b[1] - a[1]; });
+    sorted.forEach(function(pair) {
+        html += '<div class="flyout-row"><span class="flyout-row-label">' + escapeHtml(pair[0]) + '</span><span class="flyout-row-value">' + pair[1] + '</span></div>';
+    });
+    html += '<div class="flyout-divider"></div>';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Total</span><span class="flyout-row-value">' + ids.length + ' guides</span></div>';
+    container.innerHTML = html;
+}
+
+function populateQuestionsFlyout() {
+    var container = document.getElementById('flyout-questions-content');
+    if (!container) return;
 
     if (typeof MasteryTracker === 'undefined') {
-        console.warn('[Dashboard] MasteryTracker not loaded');
-        // Show empty state even without tracker
-        var emptyState = document.getElementById('qb-empty-state');
-        if (emptyState) emptyState.classList.remove('hidden');
+        container.innerHTML = '<div class="flyout-empty">No quiz data yet</div>';
         return;
     }
 
     var stats = MasteryTracker.getOverallStats();
-    var emptyState = document.getElementById('qb-empty-state');
-    var overview = document.getElementById('qb-mastery-overview');
-
     if (stats.totalQuestionsAnswered === 0) {
-        if (emptyState) emptyState.classList.remove('hidden');
-        if (overview) overview.classList.add('hidden');
-        var continueBtn = document.getElementById('qb-continue-btn');
-        if (continueBtn) continueBtn.style.display = 'none';
+        container.innerHTML = '<div class="flyout-empty">No quiz data yet</div>';
         return;
     }
 
-    if (emptyState) emptyState.classList.add('hidden');
-    if (overview) overview.classList.remove('hidden');
+    var html = '';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Total Answered</span><span class="flyout-row-value">' + stats.totalQuestionsAnswered.toLocaleString() + '</span></div>';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Topics Practiced</span><span class="flyout-row-value">' + stats.topicsPracticed + '</span></div>';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Topics Mastered</span><span class="flyout-row-value">' + stats.topicsMastered + '</span></div>';
+    html += '<div class="flyout-divider"></div>';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Avg Mastery Level</span><span class="flyout-row-value">' + stats.averageLevel.toFixed(1) + '</span></div>';
+    container.innerHTML = html;
+}
 
-    var avgLevelEl = document.getElementById('qb-avg-level');
-    var practicedEl = document.getElementById('qb-topics-practiced');
-    var masteredEl = document.getElementById('qb-topics-mastered');
-    var answeredEl = document.getElementById('qb-total-answered');
-    var accuracyEl = document.getElementById('qb-accuracy');
-    var streakEl = document.getElementById('qb-streak');
+function populateAccuracyFlyout() {
+    var container = document.getElementById('flyout-accuracy-content');
+    if (!container) return;
 
-    if (avgLevelEl) {
-        avgLevelEl.textContent = stats.averageLevel.toFixed(1);
-        var avgColor = MasteryTracker.getMasteryColor(Math.floor(stats.averageLevel));
-        avgLevelEl.style.color = avgColor;
+    if (typeof MasteryTracker === 'undefined') {
+        container.innerHTML = '<div class="flyout-empty">No quiz data yet</div>';
+        return;
     }
-    if (practicedEl) practicedEl.textContent = stats.topicsPracticed;
-    if (masteredEl) masteredEl.textContent = stats.topicsMastered;
-    if (answeredEl) answeredEl.textContent = stats.totalQuestionsAnswered.toLocaleString();
-    if (accuracyEl) accuracyEl.textContent = stats.accuracy + '%';
-    if (streakEl) {
-        var streakFlameClass = 'qb-streak-flame--dim';
-        if (stats.streak >= 14) streakFlameClass = 'qb-streak-flame--blazing';
-        else if (stats.streak >= 7) streakFlameClass = 'qb-streak-flame--hot';
-        else if (stats.streak >= 1) streakFlameClass = 'qb-streak-flame--active';
-        streakEl.innerHTML = '<i class="fas fa-fire qb-streak-flame ' + streakFlameClass + '"></i> ' + stats.streak;
+
+    var stats = MasteryTracker.getOverallStats();
+    if (stats.totalQuestionsAnswered === 0) {
+        container.innerHTML = '<div class="flyout-empty">No quiz data yet</div>';
+        return;
     }
+
+    var html = '';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Overall Accuracy</span><span class="flyout-row-value">' + stats.accuracy + '%</span></div>';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Correct Answers</span><span class="flyout-row-value">' + Math.round(stats.totalQuestionsAnswered * stats.accuracy / 100) + '</span></div>';
+    html += '<div class="flyout-row"><span class="flyout-row-label">Incorrect</span><span class="flyout-row-value">' + (stats.totalQuestionsAnswered - Math.round(stats.totalQuestionsAnswered * stats.accuracy / 100)) + '</span></div>';
+
+    // Show best/worst topics if MasteryTracker exposes them
+    if (typeof MasteryTracker.getTopicStats === 'function') {
+        try {
+            var topics = MasteryTracker.getTopicStats();
+            if (topics && topics.length > 0) {
+                var sorted = topics.filter(function(t) { return t.totalAnswered > 0; }).sort(function(a, b) { return b.accuracy - a.accuracy; });
+                if (sorted.length > 0) {
+                    html += '<div class="flyout-divider"></div>';
+                    html += '<div class="flyout-row"><span class="flyout-row-label">Best Topic</span><span class="flyout-row-value">' + escapeHtml(sorted[0].name) + '</span></div>';
+                    if (sorted.length > 1) {
+                        html += '<div class="flyout-row"><span class="flyout-row-label">Needs Work</span><span class="flyout-row-value">' + escapeHtml(sorted[sorted.length - 1].name) + '</span></div>';
+                    }
+                }
+            }
+        } catch (e) { /* ignore */ }
+    }
+
+    container.innerHTML = html;
+}
+
+function populateStreakFlyout() {
+    var container = document.getElementById('flyout-streak-content');
+    if (!container) return;
+
+    var activeDates = getActivityDates();
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    // Build 14-day mini calendar
+    var labels = '<div class="flyout-streak-labels"><span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span></div>';
+    var grid = '<div class="flyout-streak-grid">';
+
+    // Start from 13 days ago, fill 14 cells
+    var start = new Date(today);
+    start.setDate(start.getDate() - 13);
+
+    for (var i = 0; i < 14; i++) {
+        var d = new Date(start);
+        d.setDate(d.getDate() + i);
+        var key = d.toISOString().split('T')[0];
+        var isActive = (activeDates[key] || 0) > 0;
+        var isToday = d.getTime() === today.getTime();
+        grid += '<div class="flyout-streak-day' + (isActive ? ' active' : '') + (isToday ? ' today' : '') + '"></div>';
+    }
+    grid += '</div>';
+
+    // Current streak calculation
+    var currentStreak = 0;
+    var checkDate = new Date(today);
+    while (true) {
+        var key = checkDate.toISOString().split('T')[0];
+        if ((activeDates[key] || 0) > 0) {
+            currentStreak++;
+            checkDate.setDate(checkDate.getDate() - 1);
+        } else {
+            break;
+        }
+    }
+
+    container.innerHTML = labels + grid + '<div class="flyout-divider"></div><div class="flyout-row"><span class="flyout-row-label">Current Streak</span><span class="flyout-row-value">' + currentStreak + ' day' + (currentStreak !== 1 ? 's' : '') + '</span></div>';
 }
 
 // ==================== Stats Row (hero mockup style) ====================

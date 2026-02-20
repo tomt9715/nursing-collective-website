@@ -106,6 +106,61 @@
         [data-theme="dark"] .dash-stat-num{color:#f1f5f9}
         [data-theme="dark"] .dash-stat-label{color:#6b7280}
 
+        /* Stat card flyout */
+        .dash-stat{cursor:pointer;position:relative}
+        .dash-stat-flyout{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:white;border:1px solid rgba(0,0,0,.08);border-radius:10px;padding:14px 16px;box-shadow:0 8px 24px rgba(0,0,0,.1);z-index:100;min-width:220px;max-width:280px;text-align:left}
+        .dash-stat-flyout::before{content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%) rotate(45deg);width:10px;height:10px;background:white;border-left:1px solid rgba(0,0,0,.08);border-top:1px solid rgba(0,0,0,.08)}
+        .dash-stat-flyout.open{display:block}
+        .dash-stat.active{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.08);border-color:rgba(46,134,171,.2)}
+        .flyout-title{font-family:'Source Sans 3',sans-serif;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;margin-bottom:8px}
+        .flyout-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:.8rem}
+        .flyout-row-label{color:#64748b}
+        .flyout-row-value{font-weight:600;color:#0f172a}
+        .flyout-divider{height:1px;background:rgba(0,0,0,.06);margin:8px 0}
+        .flyout-empty{font-size:.78rem;color:#94a3b8;text-align:center;padding:8px 0}
+        .flyout-streak-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-top:4px}
+        .flyout-streak-day{width:100%;aspect-ratio:1;border-radius:3px;background:#f1f5f9}
+        .flyout-streak-day.active{background:#2E86AB}
+        .flyout-streak-day.today{outline:2px solid #2E86AB;outline-offset:-1px}
+        .flyout-streak-labels{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;margin-bottom:4px}
+        .flyout-streak-labels span{font-size:.6rem;color:#94a3b8;text-align:center}
+        [data-theme="dark"] .dash-stat-flyout{background:#1e293b;border-color:rgba(255,255,255,.08);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+        [data-theme="dark"] .dash-stat-flyout::before{background:#1e293b;border-color:rgba(255,255,255,.08)}
+        [data-theme="dark"] .flyout-row-label{color:#94a3b8}
+        [data-theme="dark"] .flyout-row-value{color:#f1f5f9}
+        [data-theme="dark"] .flyout-divider{background:rgba(255,255,255,.06)}
+        [data-theme="dark"] .flyout-streak-day{background:rgba(255,255,255,.06)}
+        [data-theme="dark"] .flyout-streak-day.active{background:#38bdf8}
+
+        /* Study Activity widget */
+        .study-activity-widget{background:var(--card-bg,#fff);border-radius:16px;padding:24px;border:1px solid rgba(0,0,0,.06);box-shadow:0 2px 12px rgba(0,0,0,.06)}
+        .activity-calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+        .activity-day{aspect-ratio:1;border-radius:4px;background:#f1f5f9;position:relative;transition:transform .1s ease}
+        .activity-day:hover{transform:scale(1.15)}
+        .activity-day.level-1{background:#bae6fd}
+        .activity-day.level-2{background:#38bdf8}
+        .activity-day.level-3{background:#2E86AB}
+        .activity-day.today{outline:2px solid #0f172a;outline-offset:-1px;border-radius:4px}
+        .activity-day.future{background:transparent;border:1px dashed rgba(0,0,0,.06)}
+        .activity-legend{display:flex;align-items:center;gap:6px;margin-top:10px;justify-content:flex-end}
+        .activity-legend span{font-size:.65rem;color:#94a3b8}
+        .activity-legend-box{width:10px;height:10px;border-radius:2px}
+        .activity-day-labels{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px}
+        .activity-day-labels span{font-size:.65rem;color:#94a3b8;text-align:center;font-weight:500}
+        .activity-week-label{font-size:.68rem;color:#94a3b8;margin-bottom:8px;font-weight:500}
+        .activity-summary{display:flex;gap:16px;margin-top:12px;padding-top:12px;border-top:1px solid rgba(0,0,0,.06)}
+        .activity-summary-item{text-align:center;flex:1}
+        .activity-summary-num{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:700;color:#0f172a}
+        .activity-summary-label{font-size:.68rem;color:#94a3b8;text-transform:uppercase;letter-spacing:.04em}
+        [data-theme="dark"] .study-activity-widget{background:var(--card-bg,rgba(255,255,255,.03));border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .activity-day{background:rgba(255,255,255,.04)}
+        [data-theme="dark"] .activity-day.level-1{background:rgba(56,189,248,.2)}
+        [data-theme="dark"] .activity-day.level-2{background:rgba(56,189,248,.4)}
+        [data-theme="dark"] .activity-day.level-3{background:#38bdf8}
+        [data-theme="dark"] .activity-day.today{outline-color:#f1f5f9}
+        [data-theme="dark"] .activity-day.future{border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .activity-summary-num{color:#f1f5f9}
+
         /* Dashboard section padding reset */
         .dashboard{background:var(--dash-bg,#f8fafc)!important;padding:95px 0 0!important;overflow:visible!important}
         [data-theme="dark"] .dashboard{background:var(--dash-bg,#0f172a)!important}
@@ -352,25 +407,41 @@
 
             <!-- Stats Row -->
             <div class="dash-stats-row">
-                <div class="dash-stat">
+                <div class="dash-stat" id="stat-card-guides">
                     <div class="dash-stat-icon"><i class="fas fa-book-open" style="color:#2E86AB"></i></div>
                     <div class="dash-stat-num" id="stat-guides-count">--</div>
                     <div class="dash-stat-label">Guides Studied</div>
+                    <div class="dash-stat-flyout" id="flyout-guides">
+                        <div class="flyout-title">Guides by Category</div>
+                        <div id="flyout-guides-content"><div class="flyout-empty">No guides studied yet</div></div>
+                    </div>
                 </div>
-                <div class="dash-stat">
+                <div class="dash-stat" id="stat-card-questions">
                     <div class="dash-stat-icon"><i class="fas fa-pen-to-square" style="color:#8b5cf6"></i></div>
                     <div class="dash-stat-num" id="stat-questions-answered">--</div>
                     <div class="dash-stat-label">Qs Answered</div>
+                    <div class="dash-stat-flyout" id="flyout-questions">
+                        <div class="flyout-title">Recent Activity</div>
+                        <div id="flyout-questions-content"><div class="flyout-empty">No quiz data yet</div></div>
+                    </div>
                 </div>
-                <div class="dash-stat">
+                <div class="dash-stat" id="stat-card-accuracy">
                     <div class="dash-stat-icon"><i class="fas fa-bullseye" style="color:#10b981"></i></div>
                     <div class="dash-stat-num" id="stat-avg-score">--</div>
                     <div class="dash-stat-label">Accuracy</div>
+                    <div class="dash-stat-flyout" id="flyout-accuracy">
+                        <div class="flyout-title">Performance Breakdown</div>
+                        <div id="flyout-accuracy-content"><div class="flyout-empty">No quiz data yet</div></div>
+                    </div>
                 </div>
-                <div class="dash-stat">
+                <div class="dash-stat" id="stat-card-streak">
                     <div class="dash-stat-icon"><i class="fas fa-fire" style="color:#f59e0b"></i></div>
                     <div class="dash-stat-num" id="stat-streak">0</div>
                     <div class="dash-stat-label">Day Streak</div>
+                    <div class="dash-stat-flyout" id="flyout-streak">
+                        <div class="flyout-title">Last 14 Days</div>
+                        <div id="flyout-streak-content"></div>
+                    </div>
                 </div>
             </div>
 
@@ -472,50 +543,37 @@
                         </div>
                     </div>
 
-                    <!-- Quiz Bank Progress Widget -->
-                    <div class="qb-summary-widget hidden" id="quiz-bank-dashboard-section">
+                    <!-- Study Activity Widget -->
+                    <div class="study-activity-widget" id="study-activity-widget">
                         <div class="widget-header">
-                            <h3><i class="fas fa-brain"></i> Quiz Progress</h3>
-                            <a href="https://learn.thenursingcollective.pro" class="widget-header-link" id="qb-continue-btn">Continue →</a>
+                            <h3><i class="fas fa-calendar-check"></i> Study Activity</h3>
                         </div>
-
-                        <!-- Empty State -->
-                        <div id="qb-empty-state" class="qb-empty-state hidden">
-                            <div class="qb-empty-state-icon"><i class="fas fa-brain"></i></div>
-                            <h4>Track Your Progress</h4>
-                            <p>Start a quiz to see your stats here.</p>
-                            <button class="btn btn-primary btn-sm" data-navigate="https://learn.thenursingcollective.pro">
-                                <i class="fas fa-rocket"></i> Start Practicing
-                            </button>
+                        <div class="activity-day-labels">
+                            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
                         </div>
-
-                        <!-- Stats (when data exists) -->
-                        <div id="qb-mastery-overview" class="hidden">
-                            <div class="qb-stats-row">
-                                <div class="qb-stat-card">
-                                    <div class="qb-stat-number" id="qb-avg-level">0</div>
-                                    <div class="qb-stat-label">Avg Level</div>
-                                </div>
-                                <div class="qb-stat-card">
-                                    <div class="qb-stat-number" id="qb-topics-practiced">0</div>
-                                    <div class="qb-stat-label">Topics</div>
-                                </div>
-                                <div class="qb-stat-card">
-                                    <div class="qb-stat-number" id="qb-topics-mastered">0</div>
-                                    <div class="qb-stat-label">Mastered</div>
-                                </div>
-                                <div class="qb-stat-card">
-                                    <div class="qb-stat-number" id="qb-total-answered">0</div>
-                                    <div class="qb-stat-label">Answered</div>
-                                </div>
-                                <div class="qb-stat-card">
-                                    <div class="qb-stat-number" id="qb-accuracy">0%</div>
-                                    <div class="qb-stat-label">Accuracy</div>
-                                </div>
-                                <div class="qb-stat-card">
-                                    <div class="qb-stat-number" id="qb-streak">0</div>
-                                    <div class="qb-stat-label">Streak</div>
-                                </div>
+                        <div class="activity-calendar" id="activity-calendar">
+                            <!-- JS fills 28 day cells -->
+                        </div>
+                        <div class="activity-legend">
+                            <span>Less</span>
+                            <div class="activity-legend-box" style="background:#f1f5f9"></div>
+                            <div class="activity-legend-box" style="background:#bae6fd"></div>
+                            <div class="activity-legend-box" style="background:#38bdf8"></div>
+                            <div class="activity-legend-box" style="background:#2E86AB"></div>
+                            <span>More</span>
+                        </div>
+                        <div class="activity-summary">
+                            <div class="activity-summary-item">
+                                <div class="activity-summary-num" id="activity-days-active">0</div>
+                                <div class="activity-summary-label">Days Active</div>
+                            </div>
+                            <div class="activity-summary-item">
+                                <div class="activity-summary-num" id="activity-longest-streak">0</div>
+                                <div class="activity-summary-label">Best Streak</div>
+                            </div>
+                            <div class="activity-summary-item">
+                                <div class="activity-summary-num" id="activity-this-week">0</div>
+                                <div class="activity-summary-label">This Week</div>
                             </div>
                         </div>
                     </div>

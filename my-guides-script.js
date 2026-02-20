@@ -154,9 +154,10 @@
                     categoryIcon: 'maternal-newborn-icon',
                     icon: 'fa-baby',
                     colorClass: 'icon-maternal',
-                    guides: [],
+                    guides: [
+                        { name: 'Antepartum Care', file: 'antepartum-care' }
+                    ],
                     comingSoon: [
-                        { name: 'Antepartum Care', icon: 'antepartum-care' },
                         { name: 'Labor & Delivery', icon: 'labor-delivery' },
                         { name: 'Postpartum Care', icon: 'postpartum-care' },
                         { name: 'High-Risk Pregnancy', icon: 'high-risk-pregnancy' },

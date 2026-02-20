@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antepartum Care Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Antepartum Care. Learn prenatal assessment, maternal adaptations, fetal monitoring, danger signs of pregnancy, and essential nursing interventions for the antepartum period.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ============================================
+           PDF-STYLE STUDY GUIDE STYLES
+           ============================================ */
+
+        :root {
+            --primary-color: #EC4899;
+            --primary-dark: #be185d;
+            --secondary-color: #A855F7;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f3f4f6;
+        }
+
+        /* Download Bar - Fixed at top */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-brand img {
+            height: 32px;
+            width: auto;
+        }
+
+        .download-bar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f0f9ff;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Document Container */
+        .document-container {
+            max-width: 850px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        /* Cover Page */
+        .cover-page {
+            background: linear-gradient(135deg, #EC4899 0%, #A855F7 40%, #7C3AED 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            padding: 12px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-category {
+            display: inline-block;
+            padding: 8px 24px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-meta-item {
+            text-align: center;
+        }
+
+        .cover-meta-item .label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .cover-meta-item .value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content {
+            padding: 60px;
+        }
+
+        /* Learning Objectives */
+        .learning-objectives {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 2px solid #10b981;
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .learning-objectives li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 8px 0;
+            color: var(--text-primary);
+            font-size: 1rem;
+        }
+
+        .learning-objectives li i {
+            color: #10b981;
+            margin-top: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Table of Contents */
+        .table-of-contents {
+            background: #f9fafb;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 28px;
+            margin-bottom: 40px;
+        }
+
+        .table-of-contents h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+        }
+
+        .table-of-contents ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            columns: 2;
+            column-gap: 30px;
+        }
+
+        .table-of-contents li {
+            break-inside: avoid;
+            margin-bottom: 8px;
+        }
+
+        .table-of-contents a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 8px 12px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+        }
+
+        .table-of-contents a:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .toc-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 22px;
+            height: 22px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .table-of-contents a:hover .toc-number {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Content Sections */
+        .guide-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 80px;
+        }
+
+        .guide-section h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 28px 0 14px;
+        }
+
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin: 20px 0 10px;
+        }
+
+        .guide-section p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            margin-bottom: 14px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+        }
+
+        .guide-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .info-box.clinical-pearl {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border-color: #f59e0b;
+        }
+
+        .info-box.warning {
+            background: #fef2f2;
+            border-color: #ef4444;
+        }
+
+        .info-box.tip {
+            background: #ecfdf5;
+            border-color: #10b981;
+        }
+
+        .info-box.nclex-tip {
+            background: #f5f3ff;
+            border-color: #8b5cf6;
+        }
+
+        .info-box.mnemonic {
+            background: #fffbeb;
+            border-color: #f59e0b;
+        }
+
+        .info-box.pediatric {
+            background: linear-gradient(135deg, #fdf2f8 0%, #fce7f3 100%);
+            border-color: #ec4899;
+        }
+
+        .info-box-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .info-box.clinical-pearl .info-box-header { color: #d97706; }
+        .info-box.warning .info-box-header { color: #ef4444; }
+        .info-box.tip .info-box-header { color: #059669; }
+        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
+        .info-box.mnemonic .info-box-header { color: #d97706; }
+        .info-box.pediatric .info-box-header { color: #db2777; }
+
+        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
+        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
+        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
+
+        /* Tables */
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .guide-table thead {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .guide-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .guide-table td {
+            padding: 12px 14px;
+            color: var(--text-secondary);
+        }
+
+        .guide-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Comparison Cards */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .comparison-grid.three-col {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .comparison-card {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .comparison-card-header {
+            padding: 16px;
+            text-align: center;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: white;
+        }
+
+        .comparison-card.trimester-1 .comparison-card-header {
+            background: linear-gradient(135deg, #f472b6, #ec4899);
+        }
+
+        .comparison-card.trimester-2 .comparison-card-header {
+            background: linear-gradient(135deg, #c084fc, #a855f7);
+        }
+
+        .comparison-card.trimester-3 .comparison-card-header {
+            background: linear-gradient(135deg, #818cf8, #7c3aed);
+        }
+
+        .comparison-card.presumptive .comparison-card-header {
+            background: linear-gradient(135deg, #f472b6, #ec4899);
+        }
+
+        .comparison-card.probable .comparison-card-header {
+            background: linear-gradient(135deg, #c084fc, #a855f7);
+        }
+
+        .comparison-card.positive .comparison-card-header {
+            background: linear-gradient(135deg, #818cf8, #7c3aed);
+        }
+
+        .comparison-card-body {
+            padding: 18px;
+        }
+
+        .comparison-card-body h4 {
+            font-size: 0.95rem;
+            margin: 0 0 10px;
+        }
+
+        .comparison-card-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 14px;
+        }
+
+        .comparison-card-body li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            padding: 6px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-card-body li:last-child { border-bottom: none; }
+        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
+
+        /* Interventions List */
+        .interventions-list {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 22px;
+            margin: 20px 0;
+        }
+
+        .interventions-list h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .interventions-list h4 i { color: var(--primary-color); }
+
+        .intervention-item {
+            display: flex;
+            gap: 14px;
+            padding: 14px;
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+        }
+
+        .intervention-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .intervention-content h5 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 4px;
+        }
+
+        .intervention-content p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin: 0;
+        }
+
+        /* Quick Reference */
+        .quick-reference {
+            background: white;
+            border: 2px solid var(--primary-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+        }
+
+        .quick-reference h3 {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .quick-reference-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .quick-ref-item {
+            background: #f9fafb;
+            padding: 12px;
+            border-radius: 8px;
+        }
+
+        .quick-ref-item .label {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            margin-bottom: 2px;
+        }
+
+        .quick-ref-item .value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Key Points Summary */
+        .key-points-summary {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 12px;
+            padding: 28px;
+            margin: 40px 0 0;
+            color: white;
+        }
+
+        .key-points-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            margin: 0 0 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .key-points-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+        }
+
+        .key-point {
+            background: rgba(255,255,255,0.15);
+            padding: 14px;
+            border-radius: 10px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .key-point i { font-size: 1.1rem; margin-top: 2px; }
+        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
+
+        /* Footer */
+        .document-footer {
+            text-align: center;
+            padding: 32px 48px;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        }
+
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            margin-bottom: 12px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Print Styles - Optimized for browser Save as PDF */
+        @page {
+            margin: 0.6in 0.4in;
+        }
+
+        @media print {
+            /* Hide non-content elements */
+            .download-bar { display: none !important; }
+
+            /* Reset page layout */
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            /* Preserve colors in print */
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            /* Cover page styling */
+            .cover-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            /* Prevent awkward page breaks */
+            .info-box { page-break-inside: avoid; break-inside: avoid; }
+            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+            .comparison-card { page-break-inside: avoid; break-inside: avoid; }
+            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
+            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
+            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
+            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
+
+            /* Keep headings with their following content */
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            /* Keep heading + table together */
+            .guide-section h3 + .guide-table-wrapper,
+            .guide-section h3 + .info-box,
+            .guide-section h3 + .comparison-grid,
+            .guide-section h3 + .interventions-list {
+                page-break-before: avoid;
+                break-before: avoid;
+            }
+
+            /* Allow breaks within larger sections if needed */
+            .comparison-grid { page-break-inside: auto; }
+            .interventions-list { page-break-inside: auto; }
+
+            /* Ensure links are visible in print */
+            a { text-decoration: underline; }
+
+            /* Footer on each page */
+            .document-footer {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .download-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .document-container { margin: 120px 10px 20px; }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.2rem; }
+            .cover-meta { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .table-of-contents ul { columns: 1; }
+            .comparison-grid { grid-template-columns: 1fr; }
+            .comparison-grid.three-col { grid-template-columns: 1fr; }
+            .quick-reference-grid { grid-template-columns: 1fr; }
+            .key-points-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+    <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="guide-sidebar.css">
+    <script src="../lockscreen.js"></script>
+</head>
+<body data-product-id="antepartum-care" data-guide-name="Antepartum Care">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../my-resources.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Resources
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/antepartum-care.webp" alt="Antepartum Care">
+                </div>
+                <div class="cover-category">Maternal-Newborn Nursing</div>
+                <h1 class="cover-title">Antepartum Care</h1>
+                <p class="cover-subtitle">Comprehensive nursing study guide covering prenatal assessment, maternal physiological adaptations, fetal monitoring techniques, danger signs of pregnancy, and evidence-based nursing interventions throughout the antepartum period.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">20-25 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">February 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Describe the schedule and components of routine prenatal care visits</li>
+                    <li><i class="fas fa-check-circle"></i> Differentiate presumptive, probable, and positive signs of pregnancy</li>
+                    <li><i class="fas fa-check-circle"></i> Explain the major maternal physiological adaptations to pregnancy by body system</li>
+                    <li><i class="fas fa-check-circle"></i> Interpret fetal assessment findings including non-stress test, biophysical profile, and contraction stress test</li>
+                    <li><i class="fas fa-check-circle"></i> Identify danger signs in pregnancy that require immediate medical evaluation</li>
+                    <li><i class="fas fa-check-circle"></i> Apply evidence-based nursing interventions for common discomforts and complications of the antepartum period</li>
+                </ul>
+            </section>
+
+            <!-- High-Yield Summary -->
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary — Review This in 60 Seconds</h2>
+                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
+                <ul>
+                    <li><strong>Prenatal visit schedule:</strong> Every 4 weeks (weeks 4-28), every 2 weeks (weeks 28-36), then weekly (weeks 36-40). First visit is the most comprehensive.</li>
+                    <li><strong>Only positive signs confirm pregnancy:</strong> Fetal heartbeat on Doppler/ultrasound, fetal movement felt by examiner, and visualization of fetus on ultrasound. Everything else is presumptive or probable.</li>
+                    <li><strong>Naegele's Rule:</strong> First day of LMP - 3 months + 7 days + 1 year = Estimated Due Date. Assumes a 28-day cycle.</li>
+                    <li><strong>Key cardiovascular change:</strong> Blood volume increases 40-50% by 32 weeks. Physiologic anemia of pregnancy occurs because plasma increases more than RBCs (hemodilution).</li>
+                    <li><strong>Never position a pregnant patient supine after 20 weeks</strong> — the gravid uterus compresses the vena cava, causing supine hypotensive syndrome. Left lateral position is preferred.</li>
+                    <li><strong>Fundal height in cm approximates gestational age in weeks</strong> between 16-36 weeks (McDonald's rule). Discrepancies of more than 2 cm warrant further evaluation.</li>
+                    <li><strong>Reactive NST = reassuring:</strong> 2 or more accelerations of 15 bpm lasting 15 seconds within a 20-minute window. For preterm fetuses less than 32 weeks: 10 bpm x 10 seconds.</li>
+                    <li><strong>Folic acid (400-800 mcg daily)</strong> prevents neural tube defects and should be started ideally before conception. Women with history of NTD need 4 mg daily.</li>
+                    <li><strong>Danger signs requiring immediate evaluation:</strong> Vaginal bleeding, severe headache with visual changes, epigastric pain, sudden facial/hand edema, decreased fetal movement, gush of fluid from vagina.</li>
+                    <li><strong>RhoGAM timing:</strong> Give at 28 weeks gestation AND within 72 hours after delivery (if newborn is Rh-positive). Also give after any sensitizing event (amniocentesis, miscarriage, abdominal trauma).</li>
+                </ul>
+                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="table-of-contents">
+                <h2><i class="fas fa-list"></i> Table of Contents</h2>
+                <ul>
+                    <li><a href="#overview"><span class="toc-number">1</span> Overview of Antepartum Care</a></li>
+                    <li><a href="#pregnancy-confirmation"><span class="toc-number">2</span> Confirmation of Pregnancy</a></li>
+                    <li><a href="#maternal-adaptations"><span class="toc-number">3</span> Maternal Physiological Adaptations</a></li>
+                    <li><a href="#prenatal-assessment"><span class="toc-number">4</span> Prenatal Assessment & Screening</a></li>
+                    <li><a href="#fetal-assessment"><span class="toc-number">5</span> Fetal Assessment & Monitoring</a></li>
+                    <li><a href="#nutrition-lifestyle"><span class="toc-number">6</span> Nutrition & Lifestyle in Pregnancy</a></li>
+                    <li><a href="#common-discomforts"><span class="toc-number">7</span> Common Discomforts of Pregnancy</a></li>
+                    <li><a href="#danger-signs"><span class="toc-number">8</span> Danger Signs in Pregnancy</a></li>
+                    <li><a href="#patient-education"><span class="toc-number">9</span> Prenatal Education & Nursing Interventions</a></li>
+                    <li><a href="#rh-incompatibility"><span class="toc-number">10</span> Rh Incompatibility & RhoGAM</a></li>
+                    <li><a href="#practice-questions"><span class="toc-number">11</span> NCLEX Challenge</a></li>
+                    <li><a href="#cross-references"><span class="toc-number">12</span> Related Guides</a></li>
+                </ul>
+            </nav>
+
+            <!-- Section 1: Overview of Antepartum Care -->
+            <section class="guide-section" id="overview">
+                <h2><span class="section-icon"><i class="fas fa-baby"></i></span> Overview of Antepartum Care</h2>
+
+                <p>Antepartum care (also called prenatal care) refers to the health care provided to a pregnant woman and her developing fetus from conception through the onset of labor. The goal is to promote the health of both the mother and the fetus, identify risk factors early, prevent complications, and prepare the family for birth and parenthood.</p>
+
+                <h3>Goals of Prenatal Care</h3>
+                <ul>
+                    <li><strong>Monitor maternal and fetal well-being</strong> through regular assessments and screening tests</li>
+                    <li><strong>Identify and manage risk factors</strong> such as pre-existing medical conditions, genetic risks, and psychosocial concerns</li>
+                    <li><strong>Prevent complications</strong> through early detection of conditions like preeclampsia, gestational diabetes, and preterm labor</li>
+                    <li><strong>Educate and support</strong> the pregnant patient about nutrition, activity, warning signs, and preparation for labor, delivery, and newborn care</li>
+                    <li><strong>Provide emotional support</strong> and address anxiety, depression, and relationship changes during pregnancy</li>
+                </ul>
+
+                <h3>Schedule of Prenatal Visits</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Gestational Age</th>
+                                <th>Visit Frequency</th>
+                                <th>Key Activities</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>4-28 weeks</td>
+                                <td>Every 4 weeks</td>
+                                <td>Routine assessments, lab work, first-trimester screening, anatomy scan (18-22 wk)</td>
+                            </tr>
+                            <tr>
+                                <td>28-36 weeks</td>
+                                <td>Every 2 weeks</td>
+                                <td>Glucose screening (24-28 wk), RhoGAM if indicated (28 wk), GBS screening (36-37 wk)</td>
+                            </tr>
+                            <tr>
+                                <td>36-40 weeks</td>
+                                <td>Every week</td>
+                                <td>Cervical checks, fetal position assessment, labor signs education, NST if indicated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>First Prenatal Visit vs. Return Visits</h3>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card trimester-1">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-clipboard-list"></i> First Prenatal Visit
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Most Comprehensive</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Complete health history (medical, surgical, OB, family, psychosocial)</li>
+                                <li><i class="fas fa-check"></i> Full physical exam including pelvic exam</li>
+                                <li><i class="fas fa-check"></i> Baseline vital signs and weight</li>
+                                <li><i class="fas fa-check"></i> Confirm pregnancy and establish EDD</li>
+                                <li><i class="fas fa-check"></i> Comprehensive lab panel (CBC, blood type, Rh, antibody screen, rubella, hepatitis B, HIV, STI screening, UA, Pap)</li>
+                                <li><i class="fas fa-check"></i> Risk assessment and care plan development</li>
+                                <li><i class="fas fa-check"></i> Initiate prenatal vitamins with folic acid</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card trimester-2">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-redo"></i> Return Visits
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Focused Assessments</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Weight, blood pressure, urine dipstick (protein, glucose)</li>
+                                <li><i class="fas fa-check"></i> Fundal height measurement</li>
+                                <li><i class="fas fa-check"></i> Fetal heart rate auscultation</li>
+                                <li><i class="fas fa-check"></i> Fetal movement assessment (after quickening)</li>
+                                <li><i class="fas fa-check"></i> Review of current symptoms and concerns</li>
+                                <li><i class="fas fa-check"></i> Edema assessment</li>
+                                <li><i class="fas fa-check"></i> Age-appropriate screening tests as scheduled</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Gravida & Para
+                    </div>
+                    <p><strong>Gravida</strong> = total number of pregnancies (including current). <strong>Para</strong> = number of deliveries reaching viability (20 weeks or more). Use <strong>GTPAL</strong> for a detailed OB history:</p>
+                    <ul>
+                        <li><strong>G</strong> = Gravida (total pregnancies)</li>
+                        <li><strong>T</strong> = Term births (37+ weeks)</li>
+                        <li><strong>P</strong> = Preterm births (20-36 weeks)</li>
+                        <li><strong>A</strong> = Abortions/miscarriages (before 20 weeks)</li>
+                        <li><strong>L</strong> = Living children</li>
+                    </ul>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Prenatal visits follow a predictable schedule: monthly through 28 weeks, biweekly through 36 weeks, then weekly until delivery. The first visit is the most comprehensive and sets the baseline for the entire pregnancy.</div>
+            </section>
+
+            <!-- Section 2: Confirmation of Pregnancy -->
+            <section class="guide-section" id="pregnancy-confirmation">
+                <h2><span class="section-icon"><i class="fas fa-vial"></i></span> Confirmation of Pregnancy</h2>
+
+                <p>Signs of pregnancy are categorized into three groups based on their reliability. Only <strong>positive signs</strong> definitively confirm pregnancy. Understanding this classification is frequently tested on the NCLEX.</p>
+
+                <div class="comparison-grid three-col">
+                    <div class="comparison-card presumptive">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-question-circle"></i> Presumptive Signs
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Subjective (woman reports)</h4>
+                            <ul>
+                                <li><i class="fas fa-circle"></i> <strong>Amenorrhea</strong> (missed period)</li>
+                                <li><i class="fas fa-circle"></i> <strong>Nausea/vomiting</strong> (morning sickness)</li>
+                                <li><i class="fas fa-circle"></i> <strong>Breast tenderness</strong> and enlargement</li>
+                                <li><i class="fas fa-circle"></i> <strong>Urinary frequency</strong></li>
+                                <li><i class="fas fa-circle"></i> <strong>Fatigue</strong></li>
+                                <li><i class="fas fa-circle"></i> <strong>Quickening</strong> (maternal perception of fetal movement, 16-20 wk)</li>
+                                <li><i class="fas fa-circle"></i> <strong>Skin changes</strong> (linea nigra, chloasma)</li>
+                            </ul>
+                            <p><em>Could be caused by other conditions</em></p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card probable">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-search"></i> Probable Signs
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Objective (examiner detects)</h4>
+                            <ul>
+                                <li><i class="fas fa-circle"></i> <strong>Positive pregnancy test</strong> (serum/urine hCG)</li>
+                                <li><i class="fas fa-circle"></i> <strong>Hegar sign</strong> (softening of lower uterus)</li>
+                                <li><i class="fas fa-circle"></i> <strong>Goodell sign</strong> (softening of cervix)</li>
+                                <li><i class="fas fa-circle"></i> <strong>Chadwick sign</strong> (bluish vaginal mucosa)</li>
+                                <li><i class="fas fa-circle"></i> <strong>Ballottement</strong> (rebound of fetus when tapped)</li>
+                                <li><i class="fas fa-circle"></i> <strong>Braxton Hicks</strong> contractions</li>
+                                <li><i class="fas fa-circle"></i> <strong>Abdominal enlargement</strong></li>
+                            </ul>
+                            <p><em>Strongly suggest but do not confirm pregnancy</em></p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card positive">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-check-double"></i> Positive Signs
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Diagnostic (only pregnancy)</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Fetal heartbeat</strong> detected by Doppler (10-12 wk) or fetoscope (18-20 wk)</li>
+                                <li><i class="fas fa-check"></i> <strong>Fetal movement</strong> felt by examiner (not the mother)</li>
+                                <li><i class="fas fa-check"></i> <strong>Visualization of fetus</strong> on ultrasound</li>
+                            </ul>
+                            <p><strong>These CANNOT be attributed to any other condition</strong></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Tip: Positive Pregnancy Test
+                    </div>
+                    <p>A positive pregnancy test (hCG) is only a <strong>probable</strong> sign, NOT a positive sign! hCG can be elevated in conditions like hydatidiform mole (molar pregnancy) or certain cancers. Only the three positive signs listed above definitively confirm pregnancy.</p>
+                </div>
+
+                <h3>Human Chorionic Gonadotropin (hCG)</h3>
+                <ul>
+                    <li><strong>Produced by:</strong> Trophoblast cells after implantation</li>
+                    <li><strong>Detected in urine:</strong> As early as 7-10 days after conception (home pregnancy tests)</li>
+                    <li><strong>Detected in serum:</strong> As early as 6-8 days after conception (more sensitive)</li>
+                    <li><strong>Peaks:</strong> Around 8-11 weeks gestation, then gradually declines</li>
+                    <li><strong>Doubles every 48-72 hours</strong> in early normal pregnancy (used to assess viability)</li>
+                    <li><strong>Abnormal patterns:</strong> Slow rise may indicate ectopic pregnancy; very high levels may suggest molar pregnancy or multiple gestation</li>
+                </ul>
+
+                <h3>Establishing the Estimated Due Date (EDD)</h3>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Naegele's Rule
+                    </div>
+                    <p><strong>First day of Last Menstrual Period (LMP) - 3 months + 7 days + 1 year = EDD</strong></p>
+                    <p>Example: LMP = March 15, 2026</p>
+                    <ul>
+                        <li>March - 3 months = December</li>
+                        <li>15 + 7 days = 22</li>
+                        <li>2026 + 1 year = 2026 (same year because we went back to December)</li>
+                        <li><strong>EDD = December 22, 2026</strong></li>
+                    </ul>
+                    <p><em>Assumes a regular 28-day menstrual cycle. Ultrasound in the first trimester is the most accurate dating method.</em></p>
+                </div>
+
+                <div class="florencebot-tip" id="tip-naegeles-rule">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Naegele's Rule Made Easy</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Struggling with Naegele's Rule on exams?</strong> Think of it as "go back 3, go forward 7." Take the first day of the last menstrual period, subtract 3 months (go back 3), then add 7 days (go forward 7). This assumes a 28-day cycle. If the cycle is longer or shorter than 28 days, adjust accordingly. For NCLEX purposes, first-trimester ultrasound is the most accurate method for determining gestational age if there is a discrepancy.
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Only three signs positively confirm pregnancy: fetal heartbeat on Doppler/ultrasound, fetal movement felt by the examiner, and visualization of the fetus on ultrasound. A positive hCG is only a probable sign. Use Naegele's Rule (LMP - 3 months + 7 days) to calculate the EDD.</div>
+            </section>
+
+            <!-- Section 3: Maternal Physiological Adaptations -->
+            <section class="guide-section" id="maternal-adaptations">
+                <h2><span class="section-icon"><i class="fas fa-female"></i></span> Maternal Physiological Adaptations</h2>
+
+                <p>Pregnancy triggers profound physiological changes in virtually every organ system to support the growing fetus. Understanding these adaptations is essential for distinguishing normal pregnancy findings from pathological conditions.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Body System</th>
+                                <th>Key Changes</th>
+                                <th>Clinical Significance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cardiovascular</td>
+                                <td>Blood volume increases 40-50%; cardiac output increases 30-50%; heart rate increases 10-15 bpm; BP decreases in 2nd trimester then normalizes</td>
+                                <td>Physiologic anemia (hemodilution), systolic murmur common, supine hypotensive syndrome after 20 weeks</td>
+                            </tr>
+                            <tr>
+                                <td>Respiratory</td>
+                                <td>Tidal volume increases 30-40%; oxygen consumption increases 15-20%; diaphragm elevates 4 cm; respiratory rate unchanged</td>
+                                <td>Dyspnea of pregnancy is common (especially in 3rd trimester); mild respiratory alkalosis is normal</td>
+                            </tr>
+                            <tr>
+                                <td>Gastrointestinal</td>
+                                <td>Decreased GI motility (progesterone effect); relaxed cardiac sphincter; delayed gastric emptying; displaced appendix</td>
+                                <td>Nausea/vomiting (1st trimester), heartburn/GERD, constipation, increased risk of aspiration, atypical appendicitis presentation</td>
+                            </tr>
+                            <tr>
+                                <td>Renal/Urinary</td>
+                                <td>GFR increases 40-50%; renal plasma flow increases; ureters dilate (progesterone); bladder capacity decreases</td>
+                                <td>Urinary frequency, physiologic glycosuria possible, increased UTI risk, decreased creatinine/BUN is normal</td>
+                            </tr>
+                            <tr>
+                                <td>Musculoskeletal</td>
+                                <td>Progressive lordosis; relaxin softens ligaments and joints; diastasis recti possible; center of gravity shifts</td>
+                                <td>Low back pain, waddling gait, increased fall risk, pelvic girdle pain, carpal tunnel syndrome</td>
+                            </tr>
+                            <tr>
+                                <td>Hematologic</td>
+                                <td>Plasma volume increases more than RBC mass; WBC increases (up to 15,000); hypercoagulable state (increased clotting factors)</td>
+                                <td>Physiologic anemia of pregnancy (Hgb may drop to 10.5-11 g/dL), elevated WBC is normal, increased DVT/PE risk</td>
+                            </tr>
+                            <tr>
+                                <td>Endocrine</td>
+                                <td>hCG peaks at 8-11 wk; progesterone maintains uterine lining and relaxes smooth muscle; estrogen stimulates uterine growth; hPL promotes fetal growth and has anti-insulin effect</td>
+                                <td>hCG causes morning sickness; progesterone causes constipation/heartburn; hPL causes insulin resistance (diabetogenic effect, peaks in 3rd trimester)</td>
+                            </tr>
+                            <tr>
+                                <td>Integumentary</td>
+                                <td>Hyperpigmentation (linea nigra, chloasma/melasma, darkened areolae); striae gravidarum (stretch marks); spider angiomas; palmar erythema</td>
+                                <td>Skin changes are estrogen-related, usually fade postpartum; chloasma worsened by sun exposure</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Critical Alert: Supine Hypotensive Syndrome
+                    </div>
+                    <p><strong>Never position a pregnant patient flat on her back after 20 weeks gestation!</strong></p>
+                    <p>The weight of the gravid uterus compresses the inferior vena cava and aorta when the patient is supine, reducing venous return and cardiac output. Symptoms include dizziness, lightheadedness, pallor, tachycardia, and hypotension.</p>
+                    <ul>
+                        <li><strong>Prevention:</strong> Left lateral position (displaces uterus off the vena cava)</li>
+                        <li><strong>If supine is necessary</strong> (e.g., for a procedure): Place a wedge or rolled towel under the right hip to tilt the uterus to the left</li>
+                        <li><strong>Treatment:</strong> Immediately turn the patient to her left side</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-supine-hypotension">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Supine Hypotensive Syndrome</div>
+                    <div class="florencebot-tip-content">
+                        <strong>After 20 weeks, never lay a pregnant patient flat on her back!</strong> The heavy uterus compresses the inferior vena cava, reducing blood return to the heart. This causes dizziness, hypotension, and can reduce uteroplacental blood flow to the fetus. Always position pregnant patients in the <strong>left lateral position</strong> or with a wedge under the right hip. If a patient suddenly becomes dizzy or pale while supine, turn her immediately to her left side. This is a heavily tested concept on NCLEX.
+                    </div>
+                </div>
+
+                <h3>Understanding Physiologic Anemia of Pregnancy</h3>
+                <p>During pregnancy, plasma volume increases by about 40-50%, but red blood cell mass only increases by about 20-30%. This disproportionate increase leads to <strong>hemodilution</strong>, causing hemoglobin and hematocrit to decrease. This is called <strong>physiologic anemia of pregnancy</strong> and is a normal finding.</p>
+
+                <div class="quick-reference">
+                    <h3><i class="fas fa-bookmark"></i> Normal Lab Values in Pregnancy</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Hemoglobin</div>
+                            <div class="value">10.5-14 g/dL (lower normal)</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Hematocrit</div>
+                            <div class="value">32-42% (lower normal)</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">WBC Count</div>
+                            <div class="value">5,000-15,000 (elevated normal)</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Fasting Glucose</div>
+                            <div class="value">&lt; 92 mg/dL</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Pregnancy affects every body system. Key adaptations include a 40-50% increase in blood volume (causing physiologic anemia), increased cardiac output, decreased GI motility, and a hypercoagulable state. Never lay a patient supine after 20 weeks — left lateral position is preferred.</div>
+            </section>
+
+            <!-- Section 4: Prenatal Assessment & Screening -->
+            <section class="guide-section" id="prenatal-assessment">
+                <h2><span class="section-icon"><i class="fas fa-clipboard-check"></i></span> Prenatal Assessment & Screening</h2>
+
+                <p>Prenatal screening involves a combination of laboratory tests, physical assessments, and imaging studies performed at specific intervals to monitor maternal and fetal health and detect potential complications early.</p>
+
+                <h3>Routine Prenatal Laboratory Tests</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Timing</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CBC with differential</td>
+                                <td>First visit, 28 weeks</td>
+                                <td>Screen for anemia, infection, thrombocytopenia</td>
+                            </tr>
+                            <tr>
+                                <td>Blood type, Rh, antibody screen</td>
+                                <td>First visit</td>
+                                <td>Identify Rh-negative mothers; screen for irregular antibodies</td>
+                            </tr>
+                            <tr>
+                                <td>Rubella titer</td>
+                                <td>First visit</td>
+                                <td>Determine immunity (if non-immune, vaccinate postpartum — live vaccine, contraindicated in pregnancy)</td>
+                            </tr>
+                            <tr>
+                                <td>Hepatitis B surface antigen (HBsAg)</td>
+                                <td>First visit</td>
+                                <td>Screen for active hepatitis B (newborn needs HBIG + vaccine at birth if positive)</td>
+                            </tr>
+                            <tr>
+                                <td>HIV screening</td>
+                                <td>First visit (repeat in 3rd trimester if high risk)</td>
+                                <td>Early detection allows antiretroviral therapy to reduce vertical transmission</td>
+                            </tr>
+                            <tr>
+                                <td>STI screening (syphilis, gonorrhea, chlamydia)</td>
+                                <td>First visit</td>
+                                <td>Treat infections to prevent perinatal transmission and complications</td>
+                            </tr>
+                            <tr>
+                                <td>Urinalysis and urine culture</td>
+                                <td>First visit; dipstick each visit</td>
+                                <td>Screen for UTI, bacteriuria, proteinuria (preeclampsia), glycosuria</td>
+                            </tr>
+                            <tr>
+                                <td>Pap smear</td>
+                                <td>First visit (if due)</td>
+                                <td>Cervical cancer screening per guidelines</td>
+                            </tr>
+                            <tr>
+                                <td>1-hour glucose challenge test (GCT)</td>
+                                <td>24-28 weeks</td>
+                                <td>Screen for gestational diabetes (abnormal if &ge; 140 mg/dL; some use 130 mg/dL)</td>
+                            </tr>
+                            <tr>
+                                <td>3-hour glucose tolerance test (GTT)</td>
+                                <td>If GCT abnormal</td>
+                                <td>Diagnostic for GDM (2+ abnormal values: fasting &ge; 95, 1hr &ge; 180, 2hr &ge; 155, 3hr &ge; 140)</td>
+                            </tr>
+                            <tr>
+                                <td>Group B Streptococcus (GBS) culture</td>
+                                <td>36-37 weeks</td>
+                                <td>Vaginal/rectal swab; positive patients receive IV antibiotics during labor (penicillin G)</td>
+                            </tr>
+                            <tr>
+                                <td>Indirect Coombs test</td>
+                                <td>First visit, 28 weeks (if Rh-negative)</td>
+                                <td>Detect maternal antibodies against fetal RBCs; negative result required before giving RhoGAM</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Physical Assessment Techniques</h3>
+
+                <h4>Fundal Height Assessment (McDonald's Rule)</h4>
+                <p>Measure from the symphysis pubis to the top of the uterine fundus with a tape measure. Between <strong>16 and 36 weeks</strong>, the fundal height in centimeters should approximately equal the gestational age in weeks (within 2 cm).</p>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Fundal Height Discrepancies
+                    </div>
+                    <p>A discrepancy of more than 2 cm from the expected measurement warrants further investigation:</p>
+                    <ul>
+                        <li><strong>Larger than expected:</strong> Multiple gestation, polyhydramnios, macrosomia, inaccurate dates, fibroids</li>
+                        <li><strong>Smaller than expected:</strong> Intrauterine growth restriction (IUGR), oligohydramnios, inaccurate dates, transverse lie</li>
+                    </ul>
+                </div>
+
+                <div class="florencebot-tip" id="tip-fundal-height">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Fundal Height = Gestational Age</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Between 16 and 36 weeks, fundal height in cm approximately equals gestational age in weeks.</strong> For example, at 24 weeks the fundal height should measure about 24 cm. A discrepancy greater than 2 cm in either direction requires further evaluation with ultrasound. After 36 weeks this measurement becomes less reliable because of fetal descent into the pelvis (lightening). Also remember key landmarks: at 12 weeks the fundus is at the symphysis pubis, at 20 weeks it is at the umbilicus, and at 36 weeks it is at the xiphoid process.
+                    </div>
+                </div>
+
+                <h4>Leopold Maneuvers</h4>
+                <p>Leopold maneuvers are a systematic method of abdominal palpation performed in the third trimester to determine fetal lie, presentation, position, and engagement. There are four maneuvers:</p>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-hands"></i> Four Leopold Maneuvers</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>First Maneuver (Fundal Grip)</h5>
+                            <p>Palpate the fundus to determine which fetal part occupies the upper uterus. The head feels round, hard, and ballottable. The breech (buttocks) feels irregular, soft, and less mobile.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Second Maneuver (Umbilical Grip)</h5>
+                            <p>Palpate the sides of the abdomen to locate the fetal back and extremities. The back feels smooth, firm, and continuous. The extremity side feels irregular with small knobs (knees, elbows).</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Third Maneuver (Pawlik Grip)</h5>
+                            <p>Grasp the lower uterine segment just above the symphysis pubis to determine the presenting part. Confirms whether the presenting part is the head or breech and whether it is engaged.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Fourth Maneuver (Pelvic Grip)</h5>
+                            <p>Face the patient's feet and palpate downward toward the pelvis with fingertips. Determines the degree of flexion and descent of the presenting part into the pelvis.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Prenatal labs follow a specific schedule — blood type/Rh at the first visit, glucose screening at 24-28 weeks, GBS at 36-37 weeks. Fundal height in cm equals gestational age in weeks (16-36 weeks). Leopold maneuvers identify fetal position in the third trimester.</div>
+            </section>
+
+            <!-- Section 5: Fetal Assessment & Monitoring -->
+            <section class="guide-section" id="fetal-assessment">
+                <h2><span class="section-icon"><i class="fas fa-heartbeat"></i></span> Fetal Assessment & Monitoring</h2>
+
+                <p>Fetal assessment techniques are used to evaluate fetal well-being throughout pregnancy. The nurse must understand each method, when it is indicated, how to interpret results, and what follow-up is needed for abnormal findings.</p>
+
+                <h3>Fetal Heart Tones</h3>
+                <ul>
+                    <li><strong>Doppler ultrasound:</strong> Detects FHR as early as <strong>10-12 weeks</strong> gestation</li>
+                    <li><strong>Fetoscope (Pinard):</strong> Detects FHR at <strong>18-20 weeks</strong> gestation</li>
+                    <li><strong>Normal FHR range:</strong> 110-160 bpm (baseline)</li>
+                    <li><strong>Fetal bradycardia:</strong> Baseline FHR &lt; 110 bpm</li>
+                    <li><strong>Fetal tachycardia:</strong> Baseline FHR &gt; 160 bpm</li>
+                </ul>
+
+                <h3>Fetal Movement Counting (Kick Counts)</h3>
+                <p>Fetal movement counting is a simple, non-invasive method of fetal surveillance that the mother can perform at home beginning at <strong>28 weeks</strong>. The most common method is the <strong>Cardiff Count-to-Ten</strong> method.</p>
+
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> Cardiff Count-to-Ten Method
+                    </div>
+                    <p><strong>Starting at 28 weeks:</strong> Have the patient count fetal movements at approximately the same time each day (ideally after a meal when the fetus is active).</p>
+                    <ul>
+                        <li>The fetus should make at least <strong>10 movements within 2 hours</strong></li>
+                        <li>If fewer than 10 movements in 2 hours, the patient should <strong>contact her provider immediately</strong></li>
+                        <li>Decreased fetal movement may indicate fetal distress, hypoxia, or placental insufficiency</li>
+                    </ul>
+                </div>
+
+                <h3>Non-Stress Test (NST)</h3>
+                <p>The NST evaluates fetal well-being by assessing the fetal heart rate response to fetal movement. It is the <strong>most commonly used</strong> antepartum surveillance test and is <strong>non-invasive</strong>.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card trimester-1">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-check-circle"></i> Reactive NST (Reassuring)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Normal Finding</h4>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>2+ accelerations</strong> of fetal heart rate</li>
+                                <li><i class="fas fa-check"></i> Each acceleration rises <strong>15 bpm above baseline</strong></li>
+                                <li><i class="fas fa-check"></i> Each acceleration lasts at least <strong>15 seconds</strong></li>
+                                <li><i class="fas fa-check"></i> Occurs within a <strong>20-minute window</strong></li>
+                                <li><i class="fas fa-check"></i> Indicates intact autonomic nervous system</li>
+                                <li><i class="fas fa-check"></i> No further immediate testing needed</li>
+                            </ul>
+                            <p><em>For preterm &lt; 32 weeks: 10 bpm x 10 seconds</em></p>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card trimester-3">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-exclamation-circle"></i> Non-Reactive NST (Non-Reassuring)
+                        </div>
+                        <div class="comparison-card-body">
+                            <h4>Requires Follow-Up</h4>
+                            <ul>
+                                <li><i class="fas fa-times"></i> <strong>Fewer than 2 accelerations</strong> in 20 minutes</li>
+                                <li><i class="fas fa-times"></i> Accelerations do not meet criteria</li>
+                                <li><i class="fas fa-times"></i> Extended to 40 minutes before calling non-reactive</li>
+                                <li><i class="fas fa-times"></i> May indicate fetal sleep cycle (try vibroacoustic stimulation)</li>
+                                <li><i class="fas fa-times"></i> Follow up with BPP, CST, or extended monitoring</li>
+                                <li><i class="fas fa-times"></i> Does NOT always mean fetal distress</li>
+                            </ul>
+                            <p><em>Consider maternal medications (sedatives, beta-blockers) as cause</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-nst-reactive">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Reactive NST = 15 x 15 x 2 in 20</div>
+                    <div class="florencebot-tip-content">
+                        <strong>A reactive NST requires 2 or more accelerations of 15 bpm above baseline, each lasting at least 15 seconds, within a 20-minute window.</strong> Remember: <strong>15-15-2-20</strong>. Reactive = reassuring = good. Non-reactive = may need further testing (BPP or CST). The fetus may simply be sleeping, so try vibroacoustic stimulation (VAS) or extend the monitoring period to 40 minutes before concluding non-reactive. For preterm fetuses less than 32 weeks, the criteria are lower: 10 bpm x 10 seconds.
+                    </div>
+                </div>
+
+                <h3>Biophysical Profile (BPP)</h3>
+                <p>The BPP combines the NST with four ultrasound assessments to provide a comprehensive evaluation of fetal well-being. Each component scores 0 (abnormal) or 2 (normal), for a maximum score of 10.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Component</th>
+                                <th>Normal (Score = 2)</th>
+                                <th>Abnormal (Score = 0)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Non-Stress Test (NST)</td>
+                                <td>Reactive (2+ accelerations meeting criteria)</td>
+                                <td>Non-reactive</td>
+                            </tr>
+                            <tr>
+                                <td>Fetal Breathing Movements</td>
+                                <td>1+ episodes of rhythmic breathing lasting 30+ seconds in 30 minutes</td>
+                                <td>Absent or &lt; 30 seconds</td>
+                            </tr>
+                            <tr>
+                                <td>Fetal Movement</td>
+                                <td>3+ discrete body or limb movements in 30 minutes</td>
+                                <td>Fewer than 3 movements</td>
+                            </tr>
+                            <tr>
+                                <td>Fetal Tone</td>
+                                <td>1+ episodes of active extension and flexion of limbs or trunk; opening/closing of hand</td>
+                                <td>Slow extension/flexion or absent movement</td>
+                            </tr>
+                            <tr>
+                                <td>Amniotic Fluid Volume (AFI)</td>
+                                <td>At least 1 pocket measuring 2+ cm in two perpendicular planes (or AFI &ge; 5 cm)</td>
+                                <td>Largest pocket &lt; 2 cm (or AFI &lt; 5 cm)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Tip: BPP Scoring
+                    </div>
+                    <ul>
+                        <li><strong>8-10:</strong> Normal — reassuring (repeat testing as indicated)</li>
+                        <li><strong>6:</strong> Equivocal — repeat within 24 hours or consider delivery if near term</li>
+                        <li><strong>4 or below:</strong> Abnormal — strongly consider delivery; indicates possible fetal compromise</li>
+                        <li><strong>Amniotic fluid</strong> is the most important single component — it reflects long-term fetal status</li>
+                    </ul>
+                </div>
+
+                <h3>Contraction Stress Test (CST)</h3>
+                <p>The CST evaluates fetal response to uterine contractions (simulating the stress of labor). Contractions are induced with nipple stimulation or IV oxytocin (Pitocin) until 3 contractions occur in a 10-minute window.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Result</th>
+                                <th>Definition</th>
+                                <th>Interpretation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Negative CST</td>
+                                <td>No late decelerations with any contraction</td>
+                                <td><strong>Reassuring</strong> — fetus tolerates contractions well; good uteroplacental function</td>
+                            </tr>
+                            <tr>
+                                <td>Positive CST</td>
+                                <td>Late decelerations with 50% or more of contractions</td>
+                                <td><strong>Non-reassuring</strong> — suggests uteroplacental insufficiency; fetus may not tolerate labor</td>
+                            </tr>
+                            <tr>
+                                <td>Equivocal-Suspicious</td>
+                                <td>Intermittent late decelerations or significant variable decelerations</td>
+                                <td>Requires repeat testing or further evaluation</td>
+                            </tr>
+                            <tr>
+                                <td>Equivocal-Hyperstimulatory</td>
+                                <td>Decelerations occurring with contractions more frequent than every 2 minutes or lasting &gt; 90 seconds</td>
+                                <td>Inadequate test — hyperstimulation, not fetal intolerance</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> CST Contraindications
+                    </div>
+                    <p>The CST is <strong>contraindicated</strong> in patients with:</p>
+                    <ul>
+                        <li>Preterm labor or preterm premature rupture of membranes</li>
+                        <li>Placenta previa</li>
+                        <li>Previous classical (vertical) cesarean scar</li>
+                        <li>Multiple gestation</li>
+                        <li>Cervical incompetence/cerclage</li>
+                    </ul>
+                </div>
+
+                <h3>Comparison of Fetal Surveillance Tests</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>NST</th>
+                                <th>BPP</th>
+                                <th>CST</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Method</td>
+                                <td>External FHR monitoring</td>
+                                <td>NST + ultrasound (5 components)</td>
+                                <td>FHR monitoring during contractions</td>
+                            </tr>
+                            <tr>
+                                <td>Invasiveness</td>
+                                <td>Non-invasive</td>
+                                <td>Non-invasive</td>
+                                <td>Semi-invasive (may require IV oxytocin)</td>
+                            </tr>
+                            <tr>
+                                <td>Duration</td>
+                                <td>20-40 minutes</td>
+                                <td>30-60 minutes</td>
+                                <td>1-2 hours</td>
+                            </tr>
+                            <tr>
+                                <td>Normal Result</td>
+                                <td>Reactive</td>
+                                <td>Score 8-10</td>
+                                <td>Negative (no late decels)</td>
+                            </tr>
+                            <tr>
+                                <td>Abnormal Result</td>
+                                <td>Non-reactive</td>
+                                <td>Score &le; 4</td>
+                                <td>Positive (late decels)</td>
+                            </tr>
+                            <tr>
+                                <td>Best For</td>
+                                <td>Initial screening, routine surveillance</td>
+                                <td>Comprehensive assessment after non-reactive NST</td>
+                                <td>Evaluating fetal tolerance of labor stress</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> NST is the most common antepartum test — reactive (2 accels of 15 bpm x 15 sec in 20 min) is reassuring. BPP scores 10 possible points; amniotic fluid is the most important component. CST: negative = good (no late decels), positive = concerning. Remember the confusing naming: a "negative" CST and a "reactive" NST are both normal/good.</div>
+            </section>
+
+            <!-- Section 6: Nutrition & Lifestyle in Pregnancy -->
+            <section class="guide-section" id="nutrition-lifestyle">
+                <h2><span class="section-icon"><i class="fas fa-apple-alt"></i></span> Nutrition & Lifestyle in Pregnancy</h2>
+
+                <p>Proper nutrition during pregnancy is critical for maternal health and optimal fetal development. The nurse plays a key role in educating pregnant patients about dietary needs, supplementation, and lifestyle modifications.</p>
+
+                <h3>Weight Gain Recommendations</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Pre-Pregnancy BMI</th>
+                                <th>Category</th>
+                                <th>Recommended Total Weight Gain</th>
+                                <th>Rate (2nd/3rd Trimester)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>&lt; 18.5</td>
+                                <td>Underweight</td>
+                                <td>28-40 lbs (12.5-18 kg)</td>
+                                <td>~1 lb/week</td>
+                            </tr>
+                            <tr>
+                                <td>18.5-24.9</td>
+                                <td>Normal weight</td>
+                                <td>25-35 lbs (11.5-16 kg)</td>
+                                <td>~1 lb/week</td>
+                            </tr>
+                            <tr>
+                                <td>25-29.9</td>
+                                <td>Overweight</td>
+                                <td>15-25 lbs (7-11.5 kg)</td>
+                                <td>~0.6 lb/week</td>
+                            </tr>
+                            <tr>
+                                <td>&ge; 30</td>
+                                <td>Obese</td>
+                                <td>11-20 lbs (5-9 kg)</td>
+                                <td>~0.5 lb/week</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>First trimester: approximately 1-4 lbs total weight gain. Most weight gain occurs in the second and third trimesters. For twin pregnancies, add approximately 10-15 lbs to the recommended range.</p>
+
+                <h3>Key Nutrient Requirements</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Nutrient</th>
+                                <th>Daily Requirement</th>
+                                <th>Purpose</th>
+                                <th>Food Sources</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Folic Acid</td>
+                                <td>400-800 mcg (4 mg if history of NTD)</td>
+                                <td>Prevents neural tube defects (spina bifida, anencephaly)</td>
+                                <td>Leafy greens, fortified cereals, legumes, oranges</td>
+                            </tr>
+                            <tr>
+                                <td>Iron</td>
+                                <td>27 mg</td>
+                                <td>Supports expanded blood volume and prevents anemia</td>
+                                <td>Red meat, spinach, beans, fortified cereals (take with vitamin C for absorption)</td>
+                            </tr>
+                            <tr>
+                                <td>Calcium</td>
+                                <td>1,000 mg (1,300 mg if &lt; 18 years old)</td>
+                                <td>Fetal bone and teeth development; prevents maternal bone loss</td>
+                                <td>Dairy products, fortified juice, broccoli, almonds</td>
+                            </tr>
+                            <tr>
+                                <td>DHA (Omega-3)</td>
+                                <td>200-300 mg</td>
+                                <td>Fetal brain and eye development</td>
+                                <td>Fatty fish (salmon, sardines), DHA supplements, walnuts</td>
+                            </tr>
+                            <tr>
+                                <td>Protein</td>
+                                <td>71 g/day (additional 25 g over non-pregnant)</td>
+                                <td>Fetal tissue growth and maternal tissue repair</td>
+                                <td>Meat, poultry, fish, eggs, dairy, legumes, nuts</td>
+                            </tr>
+                            <tr>
+                                <td>Vitamin D</td>
+                                <td>600 IU</td>
+                                <td>Calcium absorption and fetal bone mineralization</td>
+                                <td>Fortified milk, fatty fish, sunlight exposure</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-folic-acid">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Folic Acid Prevents Neural Tube Defects</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Folic acid supplementation should ideally start BEFORE conception!</strong> The neural tube closes by day 28 of embryonic development — often before a woman even knows she is pregnant. That is why the recommendation is for all women of childbearing age to take 400-800 mcg of folic acid daily. Women who have had a previous pregnancy affected by a neural tube defect need the higher dose of <strong>4 mg (4,000 mcg) daily</strong>, starting at least 1 month before conception. This is one of the most commonly tested nutrition topics on the NCLEX.
+                    </div>
+                </div>
+
+                <h3>Foods to Avoid During Pregnancy</h3>
+                <ul>
+                    <li><strong>Raw or undercooked meat, eggs, and seafood</strong> — risk of Salmonella, E. coli, Toxoplasma</li>
+                    <li><strong>High-mercury fish</strong> (shark, swordfish, king mackerel, tilefish) — neurotoxic to the developing fetus</li>
+                    <li><strong>Deli meats and hot dogs</strong> (unless heated steaming hot) — risk of Listeria monocytogenes</li>
+                    <li><strong>Unpasteurized milk, cheese, and juices</strong> — risk of Listeria and other bacteria</li>
+                    <li><strong>Raw sprouts</strong> — risk of Salmonella and E. coli</li>
+                    <li><strong>Excess caffeine</strong> — limit to 200 mg/day (about one 12-oz cup of coffee); excessive intake linked to miscarriage</li>
+                    <li><strong>Alcohol</strong> — no safe amount during pregnancy; causes fetal alcohol spectrum disorders (FASD)</li>
+                </ul>
+
+                <h3>Exercise Guidelines</h3>
+                <div class="info-box tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-check-circle"></i> ACOG Exercise Recommendations
+                    </div>
+                    <ul>
+                        <li>30 minutes of moderate exercise most days of the week (150 minutes/week total)</li>
+                        <li>Safe activities: walking, swimming, stationary cycling, prenatal yoga, low-impact aerobics</li>
+                        <li>Avoid: contact sports, activities with fall risk (skiing, horseback riding), scuba diving, hot yoga/hot tubs</li>
+                        <li>Stop exercise and notify provider if: vaginal bleeding, fluid leaking, dizziness, chest pain, calf pain/swelling, contractions, decreased fetal movement</li>
+                        <li>Avoid exercising in the supine position after the first trimester</li>
+                    </ul>
+                </div>
+
+                <h3>Substance Avoidance</h3>
+                <ul>
+                    <li><strong>Tobacco/Nicotine:</strong> Associated with preterm birth, low birth weight, placental abruption, and SIDS. Offer smoking cessation counseling at every visit.</li>
+                    <li><strong>Alcohol:</strong> No safe amount. Causes fetal alcohol spectrum disorders (FASD), the leading preventable cause of intellectual disability.</li>
+                    <li><strong>Marijuana:</strong> Associated with low birth weight and neurodevelopmental effects. Not considered safe during pregnancy.</li>
+                    <li><strong>Illicit drugs:</strong> Cocaine causes placental abruption and vasoconstriction. Opioids cause neonatal abstinence syndrome (NAS). Refer for substance abuse treatment.</li>
+                </ul>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Folic acid (400-800 mcg daily) before conception prevents neural tube defects. Iron (27 mg daily) supports expanded blood volume. Avoid raw/undercooked foods, high-mercury fish, alcohol, and tobacco. Weight gain recommendations are based on pre-pregnancy BMI.</div>
+            </section>
+
+            <!-- Section 7: Common Discomforts of Pregnancy -->
+            <section class="guide-section" id="common-discomforts">
+                <h2><span class="section-icon"><i class="fas fa-band-aid"></i></span> Common Discomforts of Pregnancy</h2>
+
+                <p>Most pregnant women experience discomforts throughout their pregnancy that are considered normal but can significantly affect quality of life. Nurses play a vital role in educating patients about self-care measures to manage these discomforts and recognizing when a "normal" discomfort may indicate a serious complication.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Discomfort</th>
+                                <th>Trimester</th>
+                                <th>Cause</th>
+                                <th>Nursing Interventions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nausea/Vomiting (morning sickness)</td>
+                                <td>1st (peaks 8-12 wk)</td>
+                                <td>Rising hCG and estrogen levels</td>
+                                <td>Eat small, frequent meals; avoid empty stomach; eat dry crackers before rising; ginger tea; vitamin B6 (10-25 mg TID); avoid fatty/spicy foods</td>
+                            </tr>
+                            <tr>
+                                <td>Fatigue</td>
+                                <td>1st and 3rd</td>
+                                <td>Hormonal changes, increased metabolic demands</td>
+                                <td>Rest when able; prioritize sleep; moderate exercise; assess for anemia if severe</td>
+                            </tr>
+                            <tr>
+                                <td>Urinary frequency</td>
+                                <td>1st and 3rd</td>
+                                <td>Uterine pressure on bladder; increased GFR</td>
+                                <td>Maintain fluid intake (do not restrict); limit fluids before bedtime; Kegel exercises; report dysuria (may indicate UTI)</td>
+                            </tr>
+                            <tr>
+                                <td>Breast tenderness</td>
+                                <td>1st, continues</td>
+                                <td>Estrogen and progesterone stimulation</td>
+                                <td>Supportive bra; avoid underwire; wear bra at night if needed</td>
+                            </tr>
+                            <tr>
+                                <td>Heartburn (GERD)</td>
+                                <td>2nd and 3rd</td>
+                                <td>Progesterone relaxes cardiac sphincter; uterine pressure on stomach</td>
+                                <td>Small frequent meals; avoid lying down after eating; elevate HOB; avoid spicy/fatty foods; antacids (calcium-based) as needed; avoid sodium bicarbonate</td>
+                            </tr>
+                            <tr>
+                                <td>Constipation</td>
+                                <td>2nd and 3rd</td>
+                                <td>Progesterone slows GI motility; iron supplements; pressure on intestines</td>
+                                <td>Increase fiber and fluids; moderate exercise; stool softeners (docusate); avoid laxatives/enemas</td>
+                            </tr>
+                            <tr>
+                                <td>Hemorrhoids</td>
+                                <td>2nd and 3rd</td>
+                                <td>Increased venous pressure; constipation/straining</td>
+                                <td>Avoid straining; sitz baths; witch hazel pads; increase fiber; topical anesthetics; side-lying position</td>
+                            </tr>
+                            <tr>
+                                <td>Varicose veins</td>
+                                <td>2nd and 3rd</td>
+                                <td>Increased venous pressure; progesterone relaxation of vein walls</td>
+                                <td>Elevate legs; avoid prolonged standing/sitting; support stockings; avoid crossing legs; exercise regularly</td>
+                            </tr>
+                            <tr>
+                                <td>Low back pain</td>
+                                <td>2nd and 3rd</td>
+                                <td>Progressive lordosis; relaxin loosening ligaments; center of gravity shift</td>
+                                <td>Pelvic tilt exercises; supportive shoes (low heel); body mechanics education; pregnancy support belt; sleep with pillow between knees</td>
+                            </tr>
+                            <tr>
+                                <td>Round ligament pain</td>
+                                <td>2nd</td>
+                                <td>Stretching of the round ligament as uterus grows</td>
+                                <td>Change positions slowly; flex knees to abdomen; warm compresses; rest; reassure this is normal (sharp, brief pain in lower abdomen/groin)</td>
+                            </tr>
+                            <tr>
+                                <td>Leg cramps</td>
+                                <td>2nd and 3rd</td>
+                                <td>Altered calcium/phosphorus ratio; pressure on nerves; fatigue</td>
+                                <td>Dorsiflex the foot (do NOT point toes); stretch calf muscles; adequate calcium/magnesium intake; avoid standing for long periods</td>
+                            </tr>
+                            <tr>
+                                <td>Braxton Hicks contractions</td>
+                                <td>3rd (can start 2nd)</td>
+                                <td>Irregular uterine contractions (practice contractions)</td>
+                                <td>Change position; rest; hydrate; differentiate from true labor (irregular, do not increase in frequency/intensity, relieved by rest/position change)</td>
+                            </tr>
+                            <tr>
+                                <td>Dyspnea</td>
+                                <td>3rd</td>
+                                <td>Elevated diaphragm; increased oxygen demand</td>
+                                <td>Sleep propped up; good posture; reassure this is normal; report if accompanied by chest pain or severe SOB</td>
+                            </tr>
+                            <tr>
+                                <td>Ankle edema</td>
+                                <td>3rd</td>
+                                <td>Increased venous pressure; sodium and water retention</td>
+                                <td>Elevate feet; avoid prolonged standing; left lateral position; increase water intake; avoid tight clothing; report sudden facial/hand edema (preeclampsia sign)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> When Normal Becomes Dangerous
+                    </div>
+                    <p><strong>Nausea/vomiting</strong> that leads to weight loss &gt; 5%, dehydration, or ketonuria may indicate <strong>hyperemesis gravidarum</strong> — requires IV fluids, electrolyte replacement, and antiemetics.</p>
+                    <p><strong>Ankle edema</strong> that is bilateral and dependent is normal; <strong>sudden swelling of the face and hands</strong> is a warning sign of preeclampsia and requires immediate evaluation.</p>
+                    <p><strong>Headache</strong> that is persistent and severe, especially with visual changes, may indicate preeclampsia — not just a normal pregnancy discomfort.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Most pregnancy discomforts are managed with non-pharmacologic measures. Key nursing interventions: dry crackers and ginger for nausea, fiber and fluids for constipation, pelvic tilts for back pain, and dorsiflexion (not pointing toes) for leg cramps. Always distinguish normal discomforts from danger signs.</div>
+            </section>
+
+            <!-- Section 8: Danger Signs in Pregnancy -->
+            <section class="guide-section" id="danger-signs">
+                <h2><span class="section-icon"><i class="fas fa-exclamation-triangle"></i></span> Danger Signs in Pregnancy</h2>
+
+                <p>Recognizing danger signs during pregnancy is one of the most critical competencies for nurses. These signs may indicate life-threatening conditions for the mother and fetus. This section is <strong>HIGH-YIELD for NCLEX</strong> and clinical practice.</p>
+
+                <div class="info-box warning">
+                    <div class="info-box-header">
+                        <i class="fas fa-exclamation-triangle"></i> Danger Signs Requiring IMMEDIATE Medical Evaluation
+                    </div>
+                    <ul>
+                        <li><strong>Vaginal bleeding</strong> — any amount, any trimester (placenta previa, abruption, miscarriage)</li>
+                        <li><strong>Severe, persistent headache</strong> — unrelieved by rest or acetaminophen (preeclampsia)</li>
+                        <li><strong>Visual disturbances</strong> — blurred vision, scotomata (spots), diplopia (preeclampsia, eclampsia)</li>
+                        <li><strong>Epigastric or right upper quadrant pain</strong> — liver capsule distension (HELLP syndrome, severe preeclampsia)</li>
+                        <li><strong>Sudden edema of face and hands</strong> — especially rapid onset (preeclampsia)</li>
+                        <li><strong>Decreased or absent fetal movement</strong> — fewer than 10 movements in 2 hours (fetal compromise)</li>
+                        <li><strong>Gush or continuous leaking of fluid from vagina</strong> — premature rupture of membranes (PROM)</li>
+                        <li><strong>Regular contractions before 37 weeks</strong> — preterm labor</li>
+                        <li><strong>Fever &gt; 100.4F (38C)</strong> — infection (chorioamnionitis, UTI, pyelonephritis)</li>
+                        <li><strong>Dysuria with fever/chills</strong> — pyelonephritis risk (can trigger preterm labor)</li>
+                        <li><strong>Persistent vomiting beyond first trimester</strong> — hyperemesis gravidarum or other pathology</li>
+                    </ul>
+                </div>
+
+                <h3>Preeclampsia Warning Signs</h3>
+                <p>Preeclampsia is one of the most dangerous pregnancy complications, affecting 2-8% of all pregnancies. It can progress rapidly to eclampsia (seizures) or HELLP syndrome.</p>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Tip: Preeclampsia Triad
+                    </div>
+                    <p>The classic triad of preeclampsia (diagnosed after 20 weeks gestation):</p>
+                    <ul>
+                        <li><strong>Hypertension:</strong> Systolic BP &ge; 140 mmHg or Diastolic BP &ge; 90 mmHg (on two occasions at least 4 hours apart)</li>
+                        <li><strong>Proteinuria:</strong> &ge; 300 mg in 24-hour urine collection or protein/creatinine ratio &ge; 0.3</li>
+                        <li><strong>End-organ damage:</strong> May include elevated liver enzymes, thrombocytopenia, renal insufficiency, cerebral or visual symptoms</li>
+                    </ul>
+                    <p><strong>Severe features:</strong> SBP &ge; 160 or DBP &ge; 110, platelet count &lt; 100,000, liver transaminases 2x normal, persistent RUQ pain, pulmonary edema, new-onset cerebral or visual disturbances, creatinine &gt; 1.1 mg/dL</p>
+                </div>
+
+                <div class="info-box mnemonic">
+                    <div class="info-box-header">
+                        <i class="fas fa-brain"></i> Memory Aid: Danger Signs — "ABCDEFGH"
+                    </div>
+                    <ul>
+                        <li><strong>A</strong> — Abdominal pain (epigastric/RUQ)</li>
+                        <li><strong>B</strong> — Bleeding (vaginal, any amount)</li>
+                        <li><strong>C</strong> — Contractions (regular, before 37 weeks)</li>
+                        <li><strong>D</strong> — Decreased fetal movement</li>
+                        <li><strong>E</strong> — Edema (sudden, face/hands)</li>
+                        <li><strong>F</strong> — Fever (&gt; 100.4F)</li>
+                        <li><strong>G</strong> — Gush of fluid from vagina</li>
+                        <li><strong>H</strong> — Headache (severe) and visual changes</li>
+                    </ul>
+                </div>
+
+                <h3>When to Call the Provider vs. Go to the ER</h3>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card trimester-2">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-phone"></i> Call the Provider
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-phone"></i> Mild headache that resolves with rest</li>
+                                <li><i class="fas fa-phone"></i> Mild ankle edema at end of day</li>
+                                <li><i class="fas fa-phone"></i> Persistent nausea/vomiting not responding to home remedies</li>
+                                <li><i class="fas fa-phone"></i> Dysuria without fever</li>
+                                <li><i class="fas fa-phone"></i> Unusual vaginal discharge (color, odor change)</li>
+                                <li><i class="fas fa-phone"></i> Braxton Hicks that increase in frequency</li>
+                                <li><i class="fas fa-phone"></i> Mild abdominal cramping without bleeding</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="comparison-card trimester-3">
+                        <div class="comparison-card-header">
+                            <i class="fas fa-ambulance"></i> Go to the ER Immediately
+                        </div>
+                        <div class="comparison-card-body">
+                            <ul>
+                                <li><i class="fas fa-exclamation"></i> Any vaginal bleeding (especially bright red)</li>
+                                <li><i class="fas fa-exclamation"></i> Severe headache with visual changes</li>
+                                <li><i class="fas fa-exclamation"></i> Sudden severe abdominal pain</li>
+                                <li><i class="fas fa-exclamation"></i> Gush of fluid from vagina</li>
+                                <li><i class="fas fa-exclamation"></i> No fetal movement for 2+ hours</li>
+                                <li><i class="fas fa-exclamation"></i> Signs of severe preeclampsia</li>
+                                <li><i class="fas fa-exclamation"></i> Regular contractions before 37 weeks</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Danger signs are HIGH-YIELD for NCLEX. Use the mnemonic ABCDEFGH: Abdominal pain, Bleeding, Contractions (preterm), Decreased fetal movement, Edema (face/hands), Fever, Gush of fluid, Headache with visual changes. Any of these require immediate evaluation. Preeclampsia develops after 20 weeks and is characterized by hypertension, proteinuria, and end-organ damage.</div>
+            </section>
+
+            <!-- Section 9: Prenatal Education & Nursing Interventions -->
+            <section class="guide-section" id="patient-education">
+                <h2><span class="section-icon"><i class="fas fa-chalkboard-teacher"></i></span> Prenatal Education & Nursing Interventions</h2>
+
+                <p>Patient education is one of the most important nursing interventions during the antepartum period. Teaching should be developmentally appropriate, culturally sensitive, and timed to the stage of pregnancy so information is relevant and actionable.</p>
+
+                <h3>Teaching by Trimester</h3>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-calendar-alt"></i> First Trimester Education (Weeks 1-13)</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Nutrition and Supplementation</h5>
+                            <p>Begin prenatal vitamins with folic acid. Discuss balanced diet, foods to avoid, caffeine limitations. Address nausea management strategies.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Danger Signs and When to Call</h5>
+                            <p>Teach danger signs (vaginal bleeding, severe cramping). Provide provider contact information. Discuss ectopic pregnancy warning signs.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Lifestyle Modifications</h5>
+                            <p>Substance avoidance (alcohol, tobacco, drugs). Environmental hazards (cat litter/toxoplasmosis, hot tubs, certain chemicals). Exercise guidelines. Emotional changes and support resources.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Screening and Testing</h5>
+                            <p>Explain upcoming lab work and screening tests. Discuss genetic screening options (NIPT, first-trimester screening). Provide information for informed decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-calendar-alt"></i> Second Trimester Education (Weeks 14-27)</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Fetal Development and Bonding</h5>
+                            <p>Discuss fetal growth milestones. Encourage awareness of quickening (first fetal movement felt, usually 16-20 weeks). Begin discussing birth preferences.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Common Discomforts Management</h5>
+                            <p>Address heartburn, constipation, round ligament pain, back pain. Teach safe self-care measures. Discuss when discomforts become concerning.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Dental Care and Safety</h5>
+                            <p>Dental care is safe and recommended during pregnancy. Good oral health reduces preterm birth risk. Seat belts should be worn with lap belt below the belly and shoulder belt between the breasts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="interventions-list">
+                    <h4><i class="fas fa-calendar-alt"></i> Third Trimester Education (Weeks 28-40)</h4>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">1</div>
+                        <div class="intervention-content">
+                            <h5>Fetal Movement Counting (Kick Counts)</h5>
+                            <p>Teach Cardiff method beginning at 28 weeks. Emphasize importance of reporting decreased movement immediately. Have the patient count at the same time daily after a meal.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">2</div>
+                        <div class="intervention-content">
+                            <h5>Signs of Labor</h5>
+                            <p>Differentiate true labor from false labor (Braxton Hicks). Discuss lightening, bloody show, rupture of membranes. When to go to the hospital (5-1-1 rule: contractions every 5 minutes, lasting 1 minute, for 1 hour).</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">3</div>
+                        <div class="intervention-content">
+                            <h5>Birth Plan and Preparation</h5>
+                            <p>Discuss pain management options (natural, epidural, systemic). Tour birthing facility. Review postpartum expectations. Pack hospital bag checklist.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">4</div>
+                        <div class="intervention-content">
+                            <h5>Breastfeeding Education</h5>
+                            <p>Discuss benefits of breastfeeding (immunity, bonding, uterine involution). Colostrum production begins in late pregnancy. Provide resources (lactation consultant referral). Discuss breast pump options if returning to work.</p>
+                        </div>
+                    </div>
+
+                    <div class="intervention-item">
+                        <div class="intervention-number">5</div>
+                        <div class="intervention-content">
+                            <h5>Newborn Care Preparation</h5>
+                            <p>Car seat safety (rear-facing until age 2). Safe sleep (ABCs: Alone, Back, Crib with firm mattress). Cord care, circumcision decisions, pediatrician selection. Infant CPR class recommended.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: Tdap Vaccination
+                    </div>
+                    <p>The Tdap vaccine should be given during <strong>each pregnancy between 27 and 36 weeks</strong> gestation, regardless of previous vaccination history. This allows maternal antibodies to transfer to the fetus, providing passive immunity against pertussis (whooping cough) in the first months of life before the infant can be vaccinated.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> Prenatal education should be timed to each trimester's needs: nutrition and danger signs early, discomfort management in mid-pregnancy, and labor preparation, kick counts, and breastfeeding education in the third trimester. Tdap vaccination is given between 27-36 weeks in every pregnancy.</div>
+            </section>
+
+            <!-- Section 10: Rh Incompatibility & RhoGAM -->
+            <section class="guide-section" id="rh-incompatibility">
+                <h2><span class="section-icon"><i class="fas fa-tint"></i></span> Rh Incompatibility & RhoGAM</h2>
+
+                <p>Rh incompatibility occurs when an <strong>Rh-negative mother</strong> is carrying an <strong>Rh-positive fetus</strong>. If fetal Rh-positive blood cells enter the maternal circulation, the mother's immune system can produce anti-Rh antibodies (isoimmunization/sensitization) that attack the fetal red blood cells in subsequent pregnancies, causing hemolytic disease of the newborn (erythroblastosis fetalis).</p>
+
+                <h3>How Sensitization Occurs</h3>
+                <ul>
+                    <li>During delivery (most common time of exposure)</li>
+                    <li>After miscarriage, abortion, or ectopic pregnancy</li>
+                    <li>After amniocentesis, chorionic villus sampling, or cordocentesis</li>
+                    <li>After abdominal trauma during pregnancy</li>
+                    <li>Placental abruption</li>
+                </ul>
+
+                <div class="info-box clinical-pearl">
+                    <div class="info-box-header">
+                        <i class="fas fa-lightbulb"></i> Clinical Pearl: First Pregnancy Is Usually Safe
+                    </div>
+                    <p>Isoimmunization typically does NOT affect the <strong>first pregnancy</strong>. It takes time for the mother to produce enough antibodies after the first exposure. The risk increases with each <strong>subsequent Rh-positive pregnancy</strong> if the mother was not given RhoGAM. The maternal antibodies (IgG) cross the placenta and attack fetal RBCs, causing anemia, jaundice, hydrops fetalis, and potentially fetal death.</p>
+                </div>
+
+                <h3>RhoGAM (Rho(D) Immune Globulin)</h3>
+                <p>RhoGAM prevents the Rh-negative mother from producing anti-Rh antibodies by destroying any fetal Rh-positive cells in the maternal circulation before her immune system can respond.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Timing</th>
+                                <th>Dose</th>
+                                <th>Indication</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>28 weeks gestation</td>
+                                <td>300 mcg IM</td>
+                                <td>Routine prophylaxis for all Rh-negative unsensitized mothers</td>
+                            </tr>
+                            <tr>
+                                <td>Within 72 hours postpartum</td>
+                                <td>300 mcg IM</td>
+                                <td>If newborn is confirmed Rh-positive (cord blood test)</td>
+                            </tr>
+                            <tr>
+                                <td>After miscarriage/abortion (&lt; 13 weeks)</td>
+                                <td>50 mcg (MICRhoGAM) or 300 mcg</td>
+                                <td>Prevent sensitization from fetal-maternal hemorrhage</td>
+                            </tr>
+                            <tr>
+                                <td>After amniocentesis, CVS, or abdominal trauma</td>
+                                <td>300 mcg IM</td>
+                                <td>Any time fetal-maternal blood mixing may occur</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-rhogam">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">RhoGAM Timing Is Critical</div>
+                    <div class="florencebot-tip-content">
+                        <strong>RhoGAM must be given at 28 weeks AND within 72 hours postpartum if the newborn is Rh-positive.</strong> The key points to remember: (1) Must be given to <strong>unsensitized</strong> Rh-negative mothers only — check the indirect Coombs test first (must be negative). (2) The 72-hour postpartum window is critical — if missed, the mother may become sensitized. (3) RhoGAM is also given after any <strong>sensitizing event</strong> (miscarriage, ectopic pregnancy, amniocentesis, abdominal trauma). (4) If the newborn is Rh-negative, postpartum RhoGAM is NOT needed. (5) If the mother is already sensitized (positive indirect Coombs), RhoGAM is ineffective and will not be given.
+                    </div>
+                </div>
+
+                <h3>Key Lab Tests</h3>
+                <div class="quick-reference">
+                    <h3><i class="fas fa-bookmark"></i> Rh Testing Quick Reference</h3>
+                    <div class="quick-reference-grid">
+                        <div class="quick-ref-item">
+                            <div class="label">Indirect Coombs (Mother)</div>
+                            <div class="value">Detects maternal antibodies against Rh+ cells. Negative = give RhoGAM</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Direct Coombs (Newborn)</div>
+                            <div class="value">Detects antibodies attached to newborn's RBCs. Positive = hemolysis occurring</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Kleihauer-Betke Test</div>
+                            <div class="value">Quantifies fetal-maternal hemorrhage volume. Used to determine if additional RhoGAM doses are needed</div>
+                        </div>
+                        <div class="quick-ref-item">
+                            <div class="label">Cord Blood Type</div>
+                            <div class="value">Determines newborn's blood type and Rh status at delivery. Guides postpartum RhoGAM decision</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex-tip">
+                    <div class="info-box-header">
+                        <i class="fas fa-graduation-cap"></i> NCLEX Tip: Coombs Test Direction
+                    </div>
+                    <p>Remember: <strong>Indirect = In mom</strong> (screens maternal blood for antibodies). <strong>Direct = on Da baby</strong> (tests newborn's RBCs for attached antibodies). Indirect Coombs must be negative before giving RhoGAM.</p>
+                </div>
+
+                <div class="bottom-line"><strong>Bottom Line:</strong> RhoGAM is given at 28 weeks and within 72 hours postpartum to Rh-negative, unsensitized mothers carrying Rh-positive babies. Check the indirect Coombs test first (must be negative). Also give RhoGAM after any sensitizing event. Indirect Coombs = In mom, Direct Coombs = on Da baby.</div>
+            </section>
+
+            <!-- Practice Questions — Interactive Quiz CTA -->
+            <section class="practice-questions" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> NCLEX Challenge — Test Your Knowledge</h2>
+                <div class="quiz-cta-box">
+                    <div class="quiz-cta-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="quiz-cta-content">
+                        <h3>Ready to Test Your Knowledge?</h3>
+                        <p>10 NCLEX-style questions with detailed rationales covering prenatal assessment, maternal adaptations, fetal monitoring, danger signs, and RhoGAM administration. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
+                        <div class="quiz-cta-stats">
+                            <span><i class="fas fa-question-circle"></i> 10 Questions</span>
+                            <span><i class="fas fa-clock"></i> ~15 min</span>
+                            <span><i class="fas fa-layer-group"></i> 3 Question Types</span>
+                        </div>
+                    </div>
+                    <a href="quiz/antepartum-care-quiz.html" class="quiz-cta-button">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </a>
+                </div>
+            </section>
+
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-calendar-check"></i>
+                        <p><strong>Prenatal visit schedule:</strong> Monthly to 28 wk, biweekly to 36 wk, then weekly. First visit is the most comprehensive.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-check-double"></i>
+                        <p><strong>Positive pregnancy signs:</strong> Fetal heartbeat, fetal movement felt by examiner, ultrasound visualization. hCG is only probable.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-bed"></i>
+                        <p><strong>After 20 weeks:</strong> Left lateral position only — supine causes vena cava compression and hypotension.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-heart"></i>
+                        <p><strong>Reactive NST = reassuring:</strong> 2 accels of 15 bpm x 15 sec in 20 min. Negative CST = no late decels = good.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Danger signs:</strong> Vaginal bleeding, severe headache with vision changes, sudden face/hand edema, decreased fetal movement.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-syringe"></i>
+                        <p><strong>RhoGAM:</strong> Give at 28 weeks + within 72 hours postpartum to Rh-negative unsensitized mothers. Check indirect Coombs first.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cross-References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Guides in the Library</h2>
+                <div class="cross-ref-group">
+                    <h3>Continue your Maternal-Newborn journey:</h3>
+                    <ul>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Labor & Delivery — Coming Soon</span></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Postpartum Care — Coming Soon</span></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> High-Risk Pregnancy — Coming Soon</span></li>
+                    </ul>
+                </div>
+                <div class="cross-ref-group">
+                    <h3>Also relevant:</h3>
+                    <ul>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Newborn Care — Coming Soon</span></li>
+                        <li><a href="assessment-skills.html"><i class="fas fa-arrow-right"></i> Assessment Skills</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div>
+
+    <!-- Guide page scripts (external for CSP compliance) -->
+    <script src="configs/antepartum-care-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="guide-questions.js"></script>
+    <script src="../content-gate.js"></script>
+</body>
+</html>

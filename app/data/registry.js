@@ -148,7 +148,7 @@ var QUIZ_BANK_REGISTRY = {
             label: "Maternal-Newborn",
             emoji: "\ud83d\udc76",
             topics: [
-                { id: "antepartum", label: "Antepartum Care", file: null, hasGuide: false },
+                { id: "antepartum", label: "Antepartum Care", file: null, hasGuide: true, guideUrl: "antepartum-care.html" },
                 { id: "labor-delivery", label: "Labor & Delivery", file: null, hasGuide: false },
                 { id: "postpartum", label: "Postpartum Care", file: null, hasGuide: false },
                 { id: "high-risk-pregnancy", label: "High-Risk Pregnancy", file: null, hasGuide: false },

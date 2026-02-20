@@ -1991,6 +1991,103 @@ body:has(.pricing-hero-clean) .navbar.scrolled .mobile-menu-btn {
 }
 
 /* ============================================
+   PRICING PAGE — Trust Bar
+   Replaces the old pricing-note + free-resources-note
+   ============================================ */
+.pricing-trust-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 48px;
+    padding: 20px 32px;
+    background: var(--background-light, #f8fafc);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 16px;
+}
+
+.trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-secondary, #6b7280);
+}
+
+.trust-item > i {
+    color: var(--primary-color, #2E86AB);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.trust-item a {
+    color: var(--primary-color, #2E86AB);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.trust-item a:hover {
+    text-decoration: underline;
+}
+
+.trust-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: rgba(46, 134, 171, 0.08);
+    color: var(--primary-color, #2E86AB) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem;
+    border-radius: 100px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.trust-btn:hover {
+    background: rgba(46, 134, 171, 0.15);
+    transform: translateY(-1px);
+    text-decoration: none !important;
+}
+
+.trust-divider {
+    width: 1px;
+    height: 28px;
+    background: var(--border-color, #e5e7eb);
+    flex-shrink: 0;
+}
+
+/* Dark mode — trust bar */
+[data-theme="dark"] .pricing-trust-bar {
+    background: var(--card-bg, #1f2937);
+    border-color: var(--border-color, #374151);
+}
+
+[data-theme="dark"] .trust-btn {
+    background: rgba(46, 134, 171, 0.12);
+}
+
+[data-theme="dark"] .trust-btn:hover {
+    background: rgba(46, 134, 171, 0.22);
+}
+
+/* Responsive — trust bar */
+@media (max-width: 768px) {
+    .pricing-trust-bar {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 20px;
+    }
+
+    .trust-divider {
+        width: 40px;
+        height: 1px;
+    }
+}
+
+/* ============================================
    PRICING PAGE — FAQ Header Gradient Text
    ============================================ */
 .pricing-faq-header .section-title {

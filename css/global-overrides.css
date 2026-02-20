@@ -1808,7 +1808,7 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     color: var(--hero-heading, #0f172a) !important;
     position: relative !important;
     overflow: hidden !important;
-    padding: 140px 0 80px !important;
+    padding: 160px 0 100px !important;
 }
 
 .pricing-hero.pricing-hero-clean::before {
@@ -1931,7 +1931,7 @@ body:has(.pricing-hero-clean) .navbar.scrolled .mobile-menu-btn {
 /* Responsive pricing hero */
 @media (max-width: 768px) {
     .pricing-hero.pricing-hero-clean {
-        padding: 120px 0 60px !important;
+        padding: 140px 0 80px !important;
     }
 
     .pricing-hero.pricing-hero-clean h1 {
@@ -1951,7 +1951,7 @@ body:has(.pricing-hero-clean) .navbar.scrolled .mobile-menu-btn {
 
 @media (max-width: 480px) {
     .pricing-hero.pricing-hero-clean {
-        padding: 100px 0 48px !important;
+        padding: 120px 0 64px !important;
     }
 
     .pricing-hero.pricing-hero-clean h1 {

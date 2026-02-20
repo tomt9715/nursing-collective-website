@@ -1059,10 +1059,10 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 .dashboard-header-compact {
     text-align: left !important;
     margin-bottom: 28px !important;
-    max-width: 1000px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    padding: 0 16px !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding: 0 !important;
 }
 
 .dashboard-header-compact h1 {
@@ -1205,8 +1205,8 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 
 /* -- Dashboard grid -- */
 .dashboard-grid {
-    max-width: 1000px !important;
-    gap: 20px !important;
+    max-width: 100% !important;
+    gap: 24px !important;
 }
 
 /* -- Widget cards (Recent Guides + Quiz Bank) -- */
@@ -1420,64 +1420,6 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     color: var(--dash-heading) !important;
 }
 
-/* -- Account & Subscription widget -- */
-.widget-account-enhanced {
-    background: var(--dash-card-bg) !important;
-    border: 1px solid var(--dash-card-border) !important;
-    border-radius: var(--dash-card-radius) !important;
-    box-shadow: var(--dash-card-shadow) !important;
-    padding: 20px !important;
-}
-
-.account-info-section h3 {
-    font-family: 'Source Sans 3', sans-serif !important;
-    font-size: 0.8rem !important;
-    font-weight: 600 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.06em !important;
-    color: var(--dash-section-title) !important;
-}
-
-.account-info-section h3 i {
-    color: var(--dash-section-title) !important;
-    font-size: 0.85rem !important;
-}
-
-.info-row .label {
-    color: var(--dash-label) !important;
-    font-size: 0.82rem !important;
-}
-
-.info-row .value {
-    color: var(--dash-heading) !important;
-    font-size: 0.9rem !important;
-}
-
-.subscription-status-card {
-    background: var(--dash-stat-bg) !important;
-    border: 1px solid var(--dash-card-border) !important;
-    border-radius: var(--dash-card-radius) !important;
-}
-
-.sub-plan-info h3 {
-    font-size: 1.1rem !important;
-    color: var(--dash-heading) !important;
-}
-
-.sub-label {
-    color: var(--dash-label) !important;
-    font-size: 0.82rem !important;
-}
-
-.sub-value {
-    color: var(--dash-heading) !important;
-    font-size: 0.9rem !important;
-}
-
-.sub-info-row {
-    border-color: var(--dash-divider) !important;
-}
-
 /* Getting started & verification — keep emphasis but refine radius */
 .getting-started-card {
     border-radius: var(--dash-card-radius) !important;
@@ -1485,6 +1427,88 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 
 .verification-banner {
     border-radius: var(--dash-card-radius) !important;
+}
+
+/* -- Continue Studying Hero -- */
+.continue-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, #1e6b8d 100%) !important;
+    border-radius: var(--dash-card-radius) !important;
+    padding: 20px 28px !important;
+    margin-bottom: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    max-width: 560px !important;
+}
+
+.continue-hero-left {
+    gap: 14px !important;
+}
+
+.continue-hero-icon {
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 10px !important;
+}
+
+.continue-hero-icon img {
+    width: 32px !important;
+    height: 32px !important;
+}
+
+.continue-hero-text .continue-label {
+    font-family: 'Source Sans 3', sans-serif !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.06em !important;
+}
+
+.continue-hero-text h3 {
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 1rem !important;
+}
+
+.continue-hero-text p {
+    font-size: 0.78rem !important;
+}
+
+.continue-hero-btn {
+    padding: 8px 20px !important;
+    font-size: 0.82rem !important;
+    border-radius: 8px !important;
+    font-family: 'Source Sans 3', sans-serif !important;
+}
+
+/* -- Announcement Banner -- */
+.dash-announcement {
+    background: var(--dash-card-bg) !important;
+    border: 1px solid var(--dash-card-border) !important;
+    border-radius: var(--dash-card-radius) !important;
+    padding: 12px 16px !important;
+    margin-bottom: 20px !important;
+    border-left: 3px solid var(--accent-color, #f59e0b) !important;
+}
+
+.dash-announcement-icon {
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 8px !important;
+    font-size: 0.8rem !important;
+}
+
+.dash-announcement-content strong {
+    font-family: 'Source Sans 3', sans-serif !important;
+    font-size: 0.82rem !important;
+    color: var(--dash-heading) !important;
+}
+
+.dash-announcement-content p {
+    font-size: 0.78rem !important;
+    color: var(--dash-label) !important;
+}
+
+.dash-announcement-dismiss {
+    color: var(--dash-label) !important;
+    font-size: 0.85rem !important;
 }
 
 /* -- Dashboard responsive: Tablet -- */
@@ -1540,6 +1564,7 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 
     .dashboard-header-compact {
         text-align: center !important;
+        padding: 0 12px !important;
     }
 
     .user-stats-compact {
@@ -1548,6 +1573,17 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
 
     .quick-actions-grid-hero {
         grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+    }
+
+    .continue-hero {
+        max-width: 100% !important;
+        flex-direction: column !important;
+        text-align: center !important;
+        padding: 20px 16px !important;
+    }
+
+    .continue-hero-left {
+        flex-direction: column !important;
     }
 }
 

@@ -4,25 +4,25 @@
     // ── Resource catalog ───────────────────────────────────────────
     var RESOURCES = [
         // Survival Guides (free)
-        { id: 'how-to-study', title: 'How to Study for Nursing Exams', icon: 'fa-graduation-cap', category: 'survival', free: true },
-        { id: 'not-overwhelmed', title: 'How to Not Be Overwhelmed', icon: 'fa-mountain', category: 'survival', free: true },
-        { id: 'time-management', title: 'Time Management', icon: 'fa-clock', category: 'survival', free: true },
-        { id: 'care-plans', title: 'How to Write a Care Plan', icon: 'fa-clipboard-list', category: 'survival', free: true },
-        { id: 'feeling-like-failing', title: "When You Feel Like You're Failing", icon: 'fa-heart', category: 'survival', free: true },
+        { id: 'how-to-study', title: 'How to Study for Nursing Exams', desc: 'Why re-reading notes doesn\'t work for nursing exams and what to do instead.', icon: 'fa-graduation-cap', category: 'survival', free: true },
+        { id: 'not-overwhelmed', title: 'How to Not Be Overwhelmed', desc: 'Practical strategies for managing the fire hose of information in nursing school.', icon: 'fa-mountain', category: 'survival', free: true },
+        { id: 'time-management', title: 'Time Management', desc: 'How to prioritize what matters and protect your time when you can\'t do everything.', icon: 'fa-clock', category: 'survival', free: true },
+        { id: 'care-plans', title: 'How to Write a Care Plan', desc: 'A step-by-step approach to care plans that actually makes sense.', icon: 'fa-clipboard-list', category: 'survival', free: true },
+        { id: 'feeling-like-failing', title: "When You Feel Like You're Failing", desc: 'For those moments when you wonder if you\'re cut out for this.', icon: 'fa-heart', category: 'survival', free: true },
         // Clinical Confidence (premium)
-        { id: 'first-semester-clinicals', title: 'First Semester Clinicals', icon: 'fa-hospital', category: 'clinical', free: false },
-        { id: 'head-to-toe-assessment', title: 'Head-to-Toe Assessment', icon: 'fa-user-md', category: 'clinical', free: false },
-        { id: 'clinical-skills', title: 'Clinical Skills', icon: 'fa-hand-holding-medical', category: 'clinical', free: false },
-        { id: 'clinical-safety', title: 'Clinical Safety', icon: 'fa-shield-alt', category: 'clinical', free: false },
-        { id: 'clinical-bag', title: 'Clinical Bag Essentials', icon: 'fa-briefcase-medical', category: 'clinical', free: false },
-        { id: 'night-before-clinicals', title: 'Night Before Clinicals', icon: 'fa-moon', category: 'clinical', free: false },
-        { id: 'when-you-dont-know', title: "When You Don't Know", icon: 'fa-question-circle', category: 'clinical', free: false },
+        { id: 'first-semester-clinicals', title: 'First Semester Clinicals', desc: 'What to expect, how to prepare, and how to survive your first clinical rotation.', icon: 'fa-hospital', category: 'clinical', free: false },
+        { id: 'head-to-toe-assessment', title: 'Head-to-Toe Assessment', desc: 'A systematic approach to physical assessment you can actually remember.', icon: 'fa-user-md', category: 'clinical', free: false },
+        { id: 'clinical-skills', title: 'Clinical Skills', desc: 'Essential nursing skills broken down into clear, confident steps.', icon: 'fa-hand-holding-medical', category: 'clinical', free: false },
+        { id: 'clinical-safety', title: 'Clinical Safety', desc: 'Patient safety priorities, error prevention, and what to do when things go wrong.', icon: 'fa-shield-alt', category: 'clinical', free: false },
+        { id: 'clinical-bag', title: 'Clinical Bag Essentials', desc: 'Everything you need in your bag for clinical days, organized by priority.', icon: 'fa-briefcase-medical', category: 'clinical', free: false },
+        { id: 'night-before-clinicals', title: 'Night Before Clinicals', desc: 'Your prep checklist and what to review the night before clinical rotations.', icon: 'fa-moon', category: 'clinical', free: false },
+        { id: 'when-you-dont-know', title: "When You Don't Know", desc: 'How to handle clinical situations when you\'re unsure what to do next.', icon: 'fa-question-circle', category: 'clinical', free: false },
         // Quick Reference (premium)
-        { id: 'lab-values', title: 'Lab Values', icon: 'fa-vial', category: 'reference', free: false },
-        { id: 'vital-signs', title: 'Vital Signs', icon: 'fa-heartbeat', category: 'reference', free: false },
-        { id: 'medications', title: 'Medications', icon: 'fa-pills', category: 'reference', free: false },
-        { id: 'documentation-phrases', title: 'Documentation Phrases', icon: 'fa-file-medical', category: 'reference', free: false },
-        { id: 'abbreviations', title: 'Abbreviations', icon: 'fa-spell-check', category: 'reference', free: false }
+        { id: 'lab-values', title: 'Lab Values', desc: 'Normal ranges, critical values, and what abnormal results mean by system.', icon: 'fa-vial', category: 'reference', free: false },
+        { id: 'vital-signs', title: 'Vital Signs', desc: 'Normal ranges by age, assessment tips, and when to escalate concerns.', icon: 'fa-heartbeat', category: 'reference', free: false },
+        { id: 'medications', title: 'Medications', desc: 'Common drug classes, key side effects, and nursing considerations at a glance.', icon: 'fa-pills', category: 'reference', free: false },
+        { id: 'documentation-phrases', title: 'Documentation Phrases', desc: 'Copy-ready charting phrases organized by assessment area and situation.', icon: 'fa-file-medical', category: 'reference', free: false },
+        { id: 'abbreviations', title: 'Abbreviations', desc: 'Common medical abbreviations and acronyms you\'ll see in clinical and on exams.', icon: 'fa-spell-check', category: 'reference', free: false }
     ];
 
     var CATEGORIES = [
@@ -76,6 +76,7 @@
                 html += '</div>';
                 html += '<div class="res-page-card-info">';
                 html += '<div class="res-page-card-title">' + item.title + '</div>';
+                html += '<div class="res-page-card-desc">' + item.desc + '</div>';
                 html += '</div>';
 
                 if (item.free) {

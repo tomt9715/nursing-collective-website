@@ -339,75 +339,91 @@
         .clinical-icon { background: linear-gradient(135deg, #10b981, #34d399); }
         .reference-icon { background: linear-gradient(135deg, #3b82f6, #60a5fa); }
 
-        /* CTA Section */
-        .resources-cta {
-            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
-            padding: 60px 0;
-            text-align: center;
-            color: white;
-            position: relative;
+        /* Premium Section */
+        .premium-icon {
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
         }
 
-        .cta-content {
-            max-width: 650px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
+        .study-icon {
+            background: linear-gradient(135deg, #8b5cf6, #a855f7);
         }
 
-        .resources-cta h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 12px;
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
         }
 
-        .resources-cta p {
-            font-size: 1.05rem;
-            opacity: 0.95;
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-
-        .cta-buttons {
+        .premium-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            padding: 24px;
             display: flex;
-            gap: 14px;
-            justify-content: center;
-            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
         }
 
-        .cta-btn {
+        .premium-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .premium-card-info h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0 0 6px;
+        }
+
+        .premium-card-info p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .premium-card-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #94a3b8;
+            margin-top: auto;
+        }
+
+        /* Unlock CTA button */
+        .cta-btn-unlock {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 14px 28px;
+            padding: 14px 32px;
             border-radius: 10px;
             font-family: 'Outfit', sans-serif;
             font-weight: 600;
             font-size: 1rem;
             text-decoration: none;
-            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            color: #fff;
+            transition: all 0.25s ease;
         }
 
-        .cta-btn-primary {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        .cta-btn-primary:hover {
+        .cta-btn-unlock:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-        }
-
-        .cta-btn-secondary {
-            background: rgba(255, 255, 255, 0.15);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .cta-btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
-            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 134, 171, 0.3);
+            text-decoration: none;
+            color: #fff;
         }
 
         /* Responsive */
@@ -436,18 +452,13 @@
                 grid-template-columns: 1fr;
             }
 
-            .resources-cta {
-                padding: 48px 0;
+            .premium-grid {
+                grid-template-columns: 1fr;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .cta-btn {
+            .cta-btn-unlock {
                 width: 100%;
-                max-width: 300px;
+                max-width: 340px;
                 justify-content: center;
             }
         }
@@ -464,17 +475,15 @@
             .resource-card {
                 padding: 20px 18px;
             }
+
+            .premium-card {
+                padding: 20px 18px;
+            }
         }
 
         /* ============================================
            DARK MODE OVERRIDES
            ============================================ */
-
-        /* Premium cards need contrast against bg-light section */
-        [data-theme="dark"] .resources-card {
-            background: #111827;
-            border-color: #374151;
-        }
 
         /* Section header text */
         [data-theme="dark"] .section-header h2 {
@@ -499,17 +508,22 @@
             background: linear-gradient(135deg, rgba(245,158,11,0.08) 0%, #1f2937 60%);
         }
 
-        /* Premium card text */
-        [data-theme="dark"] .resources-card-title {
+        /* Premium cards dark mode */
+        [data-theme="dark"] .premium-card {
+            background: #1e293b;
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+
+        [data-theme="dark"] .premium-card-info h3 {
             color: #f9fafb;
         }
 
-        [data-theme="dark"] .resources-card-desc {
+        [data-theme="dark"] .premium-card-info p {
             color: #d1d5db;
         }
 
-        [data-theme="dark"] .resources-card-meta {
-            color: #9ca3af;
+        [data-theme="dark"] .premium-card-badge {
+            color: #6b7280;
         }
     </style>
     <script src="lockscreen.js"></script>
@@ -694,69 +708,53 @@
         <section class="resources-section bg-light" id="premium-content">
             <div class="container">
                 <div class="section-header">
-                    <div class="section-icon resources-section-icon-gradient">
+                    <div class="section-icon premium-icon">
                         <i class="fas fa-crown"></i>
                     </div>
                     <h2>Go Deeper with Premium</h2>
                     <p>Clinical guides, quick reference tools, and comprehensive study guides for when you're ready to level up.</p>
                 </div>
 
-                <div class="resources-cards-grid">
-                    <!-- Clinical Confidence Preview -->
-                    <div class="resources-card">
-                        <div class="resource-card-icon clinical-icon resources-card-icon-wrap">
+                <div class="premium-grid">
+                    <div class="premium-card">
+                        <div class="premium-card-icon clinical-icon">
                             <i class="fas fa-stethoscope"></i>
                         </div>
-                        <h3 class="resources-card-title">Clinical Confidence</h3>
-                        <p class="resources-card-desc">7 guides covering first semester clinicals, head-to-toe assessments, clinical skills, and more.</p>
-                        <span class="resources-card-meta"><i class="fas fa-lock"></i> Premium</span>
+                        <div class="premium-card-info">
+                            <h3>Clinical Confidence</h3>
+                            <p>7 guides covering first semester clinicals, head-to-toe assessments, clinical skills, and more.</p>
+                        </div>
+                        <span class="premium-card-badge"><i class="fas fa-lock"></i> Premium</span>
                     </div>
 
-                    <!-- Quick Reference Preview -->
-                    <div class="resources-card">
-                        <div class="resource-card-icon reference-icon resources-card-icon-wrap">
+                    <div class="premium-card">
+                        <div class="premium-card-icon reference-icon">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 class="resources-card-title">Quick Reference Tools</h3>
-                        <p class="resources-card-desc">5 essential references: lab values, vital signs, medications, documentation phrases, and abbreviations.</p>
-                        <span class="resources-card-meta"><i class="fas fa-lock"></i> Premium</span>
+                        <div class="premium-card-info">
+                            <h3>Quick Reference Tools</h3>
+                            <p>5 essential references: lab values, vital signs, medications, documentation phrases, and abbreviations.</p>
+                        </div>
+                        <span class="premium-card-badge"><i class="fas fa-lock"></i> Premium</span>
                     </div>
 
-                    <!-- Study Guides Preview -->
-                    <div class="resources-card">
-                        <div class="resource-card-icon resources-icon-purple">
+                    <div class="premium-card">
+                        <div class="premium-card-icon study-icon">
                             <i class="fas fa-book-medical"></i>
                         </div>
-                        <h3 class="resources-card-title">Comprehensive Study Guides</h3>
-                        <p class="resources-card-desc">17+ in-depth guides covering cardiovascular, respiratory, neurological, and more with NCLEX-focused content.</p>
-                        <span class="resources-card-meta"><i class="fas fa-lock"></i> Premium</span>
+                        <div class="premium-card-info">
+                            <h3>Comprehensive Study Guides</h3>
+                            <p>17+ in-depth guides covering cardiovascular, respiratory, neurological, and more with NCLEX-focused content.</p>
+                        </div>
+                        <span class="premium-card-badge"><i class="fas fa-lock"></i> Premium</span>
                     </div>
                 </div>
 
-                <div class="resources-cta-center">
-                    <a href="pricing.html" class="btn btn-primary btn-lg resources-premium-cta-btn">
-                        <i class="fas fa-unlock"></i> Unlock All Resources - Starting at $14.99/mo
+                <div style="text-align:center; margin-top:28px;">
+                    <a href="pricing.html" class="cta-btn cta-btn-unlock">
+                        <i class="fas fa-unlock"></i>
+                        Unlock All Resources — Starting at $14.99/mo
                     </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="resources-cta">
-            <div class="container">
-                <div class="cta-content">
-                    <h2>Ready to Unlock Everything?</h2>
-                    <p>Love these free guides? Get unlimited access to all 29 premium resources including clinical confidence guides, quick reference tools, and comprehensive study guides.</p>
-                    <div class="cta-buttons">
-                        <a href="pricing.html" class="cta-btn cta-btn-primary">
-                            <i class="fas fa-unlock"></i>
-                            View Subscription Plans
-                        </a>
-                        <a href="https://discord.gg/y2Mh77wAV2" class="cta-btn cta-btn-secondary">
-                            <i class="fab fa-discord"></i>
-                            Join Our Community
-                        </a>
-                    </div>
                 </div>
             </div>
         </section>

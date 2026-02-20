@@ -1652,7 +1652,7 @@
 .dashboard-two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 28px;
     grid-column: 1 / -1;
     margin-bottom: 0;
 }
@@ -2846,9 +2846,9 @@
 .dashboard-grid {
     display: flex !important;
     flex-direction: column !important;
-    gap: 24px !important;
-    max-width: 1000px;
-    margin: 0 auto;
+    gap: 28px !important;
+    max-width: 100%;
+    margin: 0;
 }
 
 /* Auth Mobile Responsive */

@@ -97,26 +97,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 // ==================== Widget Update Functions ====================
 
 function updateAccountWidget(user) {
-    const fullName = `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Not set';
-    const email = user.email || 'Not set';
-    const hasDiscord = user.has_discord || false;
-
-    const nameElement = document.getElementById('widget-user-name');
-    const emailElement = document.getElementById('widget-user-email');
-    const discordElement = document.getElementById('widget-discord-status');
-
-    if (nameElement) nameElement.textContent = fullName;
-    if (emailElement) emailElement.textContent = email;
-
-    if (discordElement) {
-        if (hasDiscord) {
-            discordElement.className = 'status-badge connected';
-            discordElement.innerHTML = '<i class="fas fa-check-circle"></i> Connected';
-        } else {
-            discordElement.className = 'status-badge disconnected';
-            discordElement.innerHTML = '<i class="fas fa-times-circle"></i> Not connected';
-        }
-    }
+    // Legacy — account widget removed; sidebar subscription handles display
 }
 
 // ==================== Subscription Status Cache ====================
@@ -313,10 +294,25 @@ async function loadUserProfile() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user) return;
 
+        loadAnnouncementBanner();
+        loadContinueHero();
         loadRecentGuides();
 
+        // Show Quiz Progress for premium users (always visible, even empty state)
         if (user.is_premium) {
             loadQuizBankDashboard();
+        } else {
+            // Show Quiz Progress with a CTA for non-premium too
+            var qbSection = document.getElementById('quiz-bank-dashboard-section');
+            if (qbSection) {
+                qbSection.style.display = '';
+                qbSection.classList.remove('hidden');
+                var emptyState = document.getElementById('qb-empty-state');
+                if (emptyState) {
+                    emptyState.classList.remove('hidden');
+                    emptyState.innerHTML = '<div class="qb-empty-state-icon"><i class="fas fa-brain"></i></div><h4>Practice Questions</h4><p>Subscribe to access the Quiz Bank and track your progress.</p><a href="pricing.html" class="btn btn-primary btn-sm"><i class="fas fa-rocket"></i> View Plans</a>';
+                }
+            }
         }
 
         updateStatsRow();
@@ -466,9 +462,13 @@ function loadQuizBankDashboard() {
     if (!section) return;
 
     section.style.display = '';
+    section.classList.remove('hidden');
 
     if (typeof MasteryTracker === 'undefined') {
         console.warn('[Dashboard] MasteryTracker not loaded');
+        // Show empty state even without tracker
+        var emptyState = document.getElementById('qb-empty-state');
+        if (emptyState) emptyState.classList.remove('hidden');
         return;
     }
 
@@ -515,22 +515,27 @@ function loadQuizBankDashboard() {
 // ==================== Stats Row (hero mockup style) ====================
 
 function updateStatsRow() {
-    // Guides count
+    // Guides studied count (real data from localStorage)
     var guidesEl = document.getElementById('stat-guides-count');
     if (guidesEl) {
         var lastStudied = {};
         try { lastStudied = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch(e) {}
         var count = Object.keys(lastStudied).length;
-        guidesEl.textContent = count > 0 ? count : '54';
+        guidesEl.textContent = count > 0 ? count : '0';
     }
 
-    // Quiz bank stats
+    // Quiz bank stats (real data only)
     if (typeof MasteryTracker !== 'undefined') {
         var stats = MasteryTracker.getOverallStats();
+        var answeredEl = document.getElementById('stat-questions-answered');
         var scoreEl = document.getElementById('stat-avg-score');
         var streakEl = document.getElementById('stat-streak');
+        if (answeredEl) answeredEl.textContent = stats.totalQuestionsAnswered > 0 ? stats.totalQuestionsAnswered.toLocaleString() : '0';
         if (scoreEl) scoreEl.textContent = stats.totalQuestionsAnswered > 0 ? stats.accuracy + '%' : '--';
-        if (streakEl) streakEl.textContent = stats.totalQuestionsAnswered > 0 ? stats.streak : '0';
+        if (streakEl) streakEl.textContent = stats.streak || '0';
+    } else {
+        var answeredEl = document.getElementById('stat-questions-answered');
+        if (answeredEl) answeredEl.textContent = '0';
     }
 }
 
@@ -615,74 +620,51 @@ function showGettingStartedCard(user) {
     }
 }
 
-// ==================== Subscription Management ====================
+// ==================== Sidebar Subscription Widget ====================
 
-async function loadSubscriptionManagement() {
-    const container = document.getElementById('subscription-management-container');
-    if (!container) return;
+async function loadSidebarSubscription() {
+    const widget = document.getElementById('sidebar-sub-widget');
+    if (!widget) return;
 
     try {
         const { hasAccess, subscription } = await getSubscriptionStatusCached();
 
-        const skeleton = container.querySelector('.skeleton-loader');
-        if (skeleton) skeleton.remove();
-
         if (subscription) {
-            const planName = planDisplayNamesFull[subscription.plan_id] || subscription.plan_name;
+            const planName = planDisplayNames[subscription.plan_id] || subscription.plan_name || 'Plan';
             const isActive = subscription.is_active;
             const isLifetime = subscription.plan_id === 'lifetime-access';
             const isCancelling = subscription.cancel_at_period_end;
 
-            let statusBadge;
-            if (isActive && isCancelling) {
-                statusBadge = '<span class="sub-status-badge cancelling"><i class="fas fa-clock"></i> Cancelling</span>';
-            } else if (isActive) {
-                statusBadge = '<span class="sub-status-badge active"><i class="fas fa-check-circle"></i> Active</span>';
-            } else {
-                statusBadge = '<span class="sub-status-badge expired"><i class="fas fa-times-circle"></i> Expired</span>';
-            }
+            let statusClass = 'active';
+            let statusText = 'Active';
+            let statusIcon = 'fa-check-circle';
+            if (isActive && isCancelling) { statusClass = 'cancelling'; statusText = 'Cancelling'; statusIcon = 'fa-clock'; }
+            else if (!isActive) { statusClass = 'expired'; statusText = 'Expired'; statusIcon = 'fa-times-circle'; }
 
-            let datesHtml = '';
-            if (subscription.starts_at) {
-                datesHtml += `<div class="sub-info-row"><span class="sub-label">Started</span><span class="sub-value">${formatDate(subscription.starts_at)}</span></div>`;
-            }
+            let detailText = '';
             if (isLifetime) {
-                datesHtml += `<div class="sub-info-row"><span class="sub-label">Expires</span><span class="sub-value"><i class="fas fa-infinity"></i> Never</span></div>`;
+                detailText = '<strong>Lifetime</strong> — never expires';
             } else if (subscription.expires_at) {
-                const label = isCancelling ? 'Access Until' : (subscription.plan_id === 'monthly-access' ? 'Next Billing' : 'Expires');
-                datesHtml += `<div class="sub-info-row"><span class="sub-label">${label}</span><span class="sub-value">${formatDate(subscription.expires_at)}</span></div>`;
-            }
-            if (subscription.cancelled_at) {
-                datesHtml += `<div class="sub-info-row"><span class="sub-label">Cancelled On</span><span class="sub-value">${formatDate(subscription.cancelled_at)}</span></div>`;
+                const label = isCancelling ? 'Access until' : (subscription.plan_id === 'monthly-access' ? 'Renews' : 'Expires');
+                detailText = label + ' <strong>' + formatDate(subscription.expires_at) + '</strong>';
             }
 
-            let actionsHtml = '';
+            let actionHtml = '';
             if (isActive && !isLifetime) {
-                actionsHtml = `<button class="btn btn-primary btn-sm" id="manage-subscription-btn"><i class="fas fa-cog"></i> Manage</button>`;
+                actionHtml = '<button class="sidebar-sub-manage" id="sidebar-manage-sub-btn"><i class="fas fa-cog"></i> Manage</button>';
             } else if (!isActive) {
-                actionsHtml = `<button class="btn btn-primary btn-sm" data-navigate="pricing.html"><i class="fas fa-rocket"></i> Resubscribe</button>`;
-            } else if (isLifetime) {
-                actionsHtml = `<span class="lifetime-badge"><i class="fas fa-gem"></i> Lifetime</span>`;
+                actionHtml = '<a href="pricing.html" class="sidebar-sub-manage"><i class="fas fa-rocket"></i> Resubscribe</a>';
             }
 
-            container.innerHTML = `
-                <div class="subscription-status-card">
-                    <div class="sub-card-header">
-                        <div class="sub-plan-info">
-                            <h3>${escapeHtml(planName)}</h3>
-                            ${statusBadge}
-                        </div>
-                    </div>
-                    <div class="sub-card-details">
-                        ${datesHtml}
-                    </div>
-                    <div class="sub-card-actions">
-                        ${actionsHtml}
-                    </div>
-                </div>
+            widget.className = 'sidebar-sub-widget';
+            widget.innerHTML = `
+                <div class="sidebar-sub-plan"><i class="fas fa-crown"></i> ${escapeHtml(planName)}</div>
+                <span class="sidebar-sub-status ${statusClass}"><i class="fas ${statusIcon}"></i> ${statusText}</span>
+                <div class="sidebar-sub-detail">${detailText}</div>
+                ${actionHtml}
             `;
 
-            const manageBtn = document.getElementById('manage-subscription-btn');
+            const manageBtn = document.getElementById('sidebar-manage-sub-btn');
             if (manageBtn) {
                 manageBtn.addEventListener('click', async function() {
                     this.disabled = true;
@@ -696,50 +678,104 @@ async function loadSubscriptionManagement() {
                         if (response.url) window.location.href = response.url;
                     } catch (error) {
                         console.error('Error opening subscription management:', error);
-                        showAlert('Error', 'Unable to open subscription management. Please try again.', 'error');
                         this.disabled = false;
                         this.innerHTML = '<i class="fas fa-cog"></i> Manage';
                     }
                 });
             }
-
-            container.querySelectorAll('[data-navigate]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    window.location.href = this.dataset.navigate;
-                });
-            });
-
         } else {
-            container.innerHTML = `
-                <div class="subscription-status-card no-subscription">
-                    <div class="sub-empty-state">
-                        <i class="fas fa-crown" style="font-size: 28px; color: var(--accent-color); margin-bottom: 12px;"></i>
-                        <h4>No Active Subscription</h4>
-                        <p style="font-size: 0.85rem;">Subscribe to unlock all study guides and resources.</p>
-                        <button class="btn btn-primary btn-sm" data-navigate="pricing.html">
-                            <i class="fas fa-rocket"></i> View Plans
-                        </button>
-                    </div>
+            widget.className = 'sidebar-sub-widget no-sub';
+            widget.innerHTML = `
+                <div class="sidebar-sub-cta">
+                    <i class="fas fa-crown"></i>
+                    <p>Unlock all study guides and resources</p>
+                    <a href="pricing.html" class="btn btn-primary btn-sm"><i class="fas fa-rocket"></i> View Plans</a>
                 </div>
             `;
-            container.querySelectorAll('[data-navigate]').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    window.location.href = this.dataset.navigate;
-                });
-            });
         }
-
     } catch (error) {
-        console.error('Error loading subscription management:', error);
-        const skeleton = container.querySelector('.skeleton-loader');
-        if (skeleton) skeleton.remove();
-        container.innerHTML = `
-            <div class="subscription-status-card error-state">
-                <p>Unable to load subscription info.</p>
-                <button class="btn btn-secondary btn-sm" data-action="reload"><i class="fas fa-redo"></i> Retry</button>
-            </div>
-        `;
-        container.querySelector('[data-action="reload"]')?.addEventListener('click', () => window.location.reload());
+        console.error('Error loading sidebar subscription:', error);
+        widget.innerHTML = '';
+    }
+}
+
+// Keep loadSubscriptionManagement as a thin wrapper (hidden container still used for data)
+async function loadSubscriptionManagement() {
+    await loadSidebarSubscription();
+}
+
+// ==================== Continue Studying Hero ====================
+
+function loadContinueHero() {
+    const hero = document.getElementById('continue-hero');
+    if (!hero) return;
+
+    let lastStudiedMap = {};
+    try {
+        lastStudiedMap = JSON.parse(localStorage.getItem('guideLastStudied') || '{}');
+    } catch (e) { return; }
+
+    const entries = Object.entries(lastStudiedMap)
+        .map(function(pair) { return { id: pair[0], date: new Date(pair[1]) }; })
+        .filter(function(e) { return !isNaN(e.date.getTime()); })
+        .sort(function(a, b) { return b.date - a.date; });
+
+    if (entries.length === 0) return;
+
+    const latest = entries[0];
+    const name = formatGuideName(latest.id);
+    const timeAgo = formatRelativeTime(latest.date.toISOString());
+    const iconSrc = 'assets/images/guide-icons/' + latest.id + '.webp';
+
+    var iconEl = document.getElementById('continue-hero-icon');
+    if (iconEl) {
+        iconEl.innerHTML = '<img src="' + iconSrc + '" alt="" onerror="this.parentElement.innerHTML=\'<i class=\\\'fas fa-book-open\\\'></i>\'">';
+    }
+    var nameEl = document.getElementById('continue-hero-name');
+    if (nameEl) nameEl.textContent = name;
+    var timeEl = document.getElementById('continue-hero-time');
+    if (timeEl) timeEl.textContent = 'Last studied ' + (timeAgo || 'recently');
+
+    var btn = document.getElementById('continue-hero-btn');
+    if (btn) {
+        btn.addEventListener('click', function() {
+            continueStudying(latest.id);
+        });
+    }
+
+    hero.classList.remove('hidden');
+}
+
+// ==================== Announcement Banner ====================
+
+function loadAnnouncementBanner() {
+    const banner = document.getElementById('dash-announcement');
+    if (!banner) return;
+
+    // Announcement content — update this when you have news
+    const announcement = {
+        id: 'feb-2026-new-guides',
+        title: 'New guides added!',
+        text: 'Explore our latest NCLEX study materials — freshly updated for 2026.'
+    };
+
+    // Check if user dismissed this announcement
+    const dismissed = localStorage.getItem('announcementDismissed_' + announcement.id);
+    if (dismissed) return;
+
+    var titleEl = document.getElementById('announcement-title');
+    var textEl = document.getElementById('announcement-text');
+    if (titleEl) titleEl.textContent = announcement.title;
+    if (textEl) textEl.textContent = announcement.text;
+
+    banner.classList.remove('hidden');
+
+    var dismissBtn = document.getElementById('dismiss-announcement-btn');
+    if (dismissBtn) {
+        dismissBtn.addEventListener('click', function() {
+            banner.classList.add('hidden');
+            localStorage.setItem('announcementDismissed_' + announcement.id, 'true');
+        });
     }
 }
 

@@ -44,41 +44,112 @@
     <style>
         /* Sidebar layout */
         .dash-layout{display:flex!important;min-height:calc(100vh - 95px)}
-        .dash-sidebar{width:220px;flex-shrink:0;border-right:1px solid rgba(0,0,0,.06);padding-top:24px;position:sticky;top:95px;height:calc(100vh - 95px);overflow-y:auto;background:#fff}
-        .dash-sidebar-inner{padding:0 12px;display:flex;flex-direction:column;gap:8px}
+        .dash-sidebar{width:240px;flex-shrink:0;border-right:1px solid rgba(0,0,0,.06);padding-top:24px;position:sticky;top:95px;height:calc(100vh - 95px);overflow-y:auto;background:#fff;display:flex;flex-direction:column}
+        .dash-sidebar-inner{padding:0 12px;display:flex;flex-direction:column;gap:8px;flex:1}
         .dash-sidebar-section{display:flex;flex-direction:column;gap:2px;padding-bottom:12px;border-bottom:1px solid rgba(0,0,0,.06);margin-bottom:4px}
         .dash-sidebar-section:last-child{border-bottom:none;margin-bottom:0}
         .dash-sidebar-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:8px;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:500;color:#94a3b8;text-decoration:none;transition:all .15s ease;cursor:pointer}
         .dash-sidebar-item:hover{background:rgba(46,134,171,.04);color:#0f172a;text-decoration:none}
         .dash-sidebar-item.active{background:rgba(46,134,171,.1);color:#2E86AB;font-weight:600}
         .dash-sidebar-item i{font-size:.95rem;width:20px;text-align:center;flex-shrink:0}
-        .dash-main{flex:1;min-width:0;padding:32px 24px 40px}
-        .dash-main .container{max-width:1000px}
+
+        /* Sidebar subscription widget */
+        .sidebar-sub-widget{margin:auto 12px 16px;padding:16px;border-radius:12px;background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:1px solid #bae6fd;position:relative;overflow:hidden}
+        .sidebar-sub-widget::before{content:'';position:absolute;top:-20px;right:-20px;width:80px;height:80px;background:radial-gradient(circle,rgba(46,134,171,.08) 0%,transparent 70%);border-radius:50%}
+        .sidebar-sub-plan{font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:#0c4a6e;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+        .sidebar-sub-plan i{color:#2E86AB;font-size:.75rem}
+        .sidebar-sub-status{display:inline-flex;align-items:center;gap:4px;font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:10px;margin-bottom:8px}
+        .sidebar-sub-status.active{background:rgba(16,185,129,.12);color:#059669}
+        .sidebar-sub-status.cancelling{background:rgba(245,158,11,.12);color:#d97706}
+        .sidebar-sub-status.expired{background:rgba(239,68,68,.12);color:#dc2626}
+        .sidebar-sub-detail{font-size:.72rem;color:#64748b;line-height:1.5}
+        .sidebar-sub-detail strong{color:#334155;font-weight:600}
+        .sidebar-sub-manage{display:block;margin-top:10px;padding:6px 12px;font-size:.75rem;font-weight:600;color:#2E86AB;background:white;border:1px solid #bae6fd;border-radius:8px;text-align:center;cursor:pointer;transition:all .15s ease;text-decoration:none}
+        .sidebar-sub-manage:hover{background:#2E86AB;color:white;text-decoration:none}
+        .sidebar-sub-cta{text-align:center;padding:12px}
+        .sidebar-sub-cta i{font-size:1.5rem;color:#f59e0b;margin-bottom:8px;display:block}
+        .sidebar-sub-cta p{font-size:.75rem;color:#64748b;margin:0 0 10px}
+        .sidebar-sub-cta .btn{font-size:.75rem;padding:6px 16px}
+        /* No-sub sidebar state */
+        .sidebar-sub-widget.no-sub{background:linear-gradient(135deg,#fffbeb 0%,#fef3c7 100%);border-color:#fcd34d}
+        [data-theme="dark"] .sidebar-sub-widget{background:linear-gradient(135deg,rgba(46,134,171,.08) 0%,rgba(46,134,171,.04) 100%);border-color:rgba(46,134,171,.2)}
+        [data-theme="dark"] .sidebar-sub-plan{color:#7dd3fc}
+        [data-theme="dark"] .sidebar-sub-plan i{color:#38bdf8}
+        [data-theme="dark"] .sidebar-sub-detail{color:#94a3b8}
+        [data-theme="dark"] .sidebar-sub-detail strong{color:#e2e8f0}
+        [data-theme="dark"] .sidebar-sub-manage{background:rgba(255,255,255,.06);border-color:rgba(46,134,171,.3);color:#38bdf8}
+        [data-theme="dark"] .sidebar-sub-manage:hover{background:#2E86AB;color:white}
+        [data-theme="dark"] .sidebar-sub-widget.no-sub{background:linear-gradient(135deg,rgba(245,158,11,.08) 0%,rgba(245,158,11,.04) 100%);border-color:rgba(245,158,11,.2)}
+        [data-theme="dark"] .sidebar-sub-cta i{color:#fbbf24}
+        [data-theme="dark"] .sidebar-sub-cta p{color:#94a3b8}
+
+        /* Main content — full width */
+        .dash-main{flex:1;min-width:0;padding:32px 40px 40px}
+        .dash-main .container{max-width:100%}
+
         /* Dark mode sidebar */
         [data-theme="dark"] .dash-sidebar{background:#1e293b;border-color:rgba(255,255,255,.06)}
         [data-theme="dark"] .dash-sidebar-section{border-color:rgba(255,255,255,.06)}
         [data-theme="dark"] .dash-sidebar-item{color:#6b7280}
         [data-theme="dark"] .dash-sidebar-item:hover{background:rgba(255,255,255,.04);color:#f1f5f9}
         [data-theme="dark"] .dash-sidebar-item.active{background:rgba(46,134,171,.15);color:#3bb8e0}
+
         /* Stats row */
-        .dash-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:24px;max-width:1000px}
-        .dash-stat{background:#f8fafc;border-radius:10px;padding:16px 12px;text-align:center}
-        .dash-stat-num{font-family:'Outfit',sans-serif;font-size:1.5rem;font-weight:700;color:#0f172a;line-height:1.2}
+        .dash-stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+        .dash-stat{background:#f8fafc;border-radius:12px;padding:20px 16px;text-align:center;border:1px solid rgba(0,0,0,.04);transition:transform .15s ease,box-shadow .15s ease}
+        .dash-stat:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.06)}
+        .dash-stat-num{font-family:'Outfit',sans-serif;font-size:1.6rem;font-weight:700;color:#0f172a;line-height:1.2}
         .dash-stat-label{font-family:'Source Sans 3',sans-serif;font-size:.75rem;font-weight:500;color:#94a3b8;margin-top:4px;text-transform:uppercase;letter-spacing:.05em}
-        [data-theme="dark"] .dash-stat{background:rgba(255,255,255,.04)}
+        .dash-stat-icon{font-size:1rem;margin-bottom:6px;opacity:.6}
+        [data-theme="dark"] .dash-stat{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .dash-stat:hover{box-shadow:0 4px 12px rgba(0,0,0,.2)}
         [data-theme="dark"] .dash-stat-num{color:#f1f5f9}
         [data-theme="dark"] .dash-stat-label{color:#6b7280}
+
         /* Dashboard section padding reset */
         .dashboard{background:var(--dash-bg,#f8fafc)!important;padding:95px 0 0!important;overflow:visible!important}
         [data-theme="dark"] .dashboard{background:var(--dash-bg,#0f172a)!important}
+
         /* Left-align header with sidebar layout */
         .dashboard .dashboard-header-compact{text-align:left!important;margin-bottom:20px!important}
         .dashboard .dashboard-header-compact h1{font-size:1.6rem!important;font-weight:600!important}
         .dashboard .user-stats-compact{justify-content:flex-start!important}
         .dash-stats-row .dash-stat{text-align:center!important}
+
         /* Hide breadcrumbs & quick actions on desktop */
         .breadcrumbs-dashboard{display:none!important}
         .quick-actions-hero{display:none!important}
+
+        /* Continue Studying Hero Card */
+        .continue-hero{background:linear-gradient(135deg,#2E86AB 0%,#1e6b8d 100%);border-radius:16px;padding:28px 32px;margin-bottom:28px;display:flex;align-items:center;justify-content:space-between;gap:24px;color:white;position:relative;overflow:hidden}
+        .continue-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}
+        .continue-hero::after{content:'';position:absolute;bottom:-60px;left:30%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);border-radius:50%}
+        .continue-hero-left{display:flex;align-items:center;gap:20px;min-width:0;position:relative;z-index:1}
+        .continue-hero-icon{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,.15);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .continue-hero-icon img{width:36px;height:36px;border-radius:6px}
+        .continue-hero-icon i{font-size:1.4rem;color:white}
+        .continue-hero-text h3{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 4px;color:white}
+        .continue-hero-text p{font-size:.85rem;margin:0;opacity:.8}
+        .continue-hero-text .continue-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.65;margin-bottom:2px;display:block}
+        .continue-hero-btn{padding:10px 24px;font-size:.88rem;font-weight:600;color:#2E86AB;background:white;border:none;border-radius:10px;cursor:pointer;transition:all .15s ease;white-space:nowrap;flex-shrink:0;position:relative;z-index:1}
+        .continue-hero-btn:hover{background:#f0f9ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
+        [data-theme="dark"] .continue-hero{background:linear-gradient(135deg,#1e3a5f 0%,#0f2942 100%)}
+        [data-theme="dark"] .continue-hero-btn{color:#38bdf8;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
+        [data-theme="dark"] .continue-hero-btn:hover{background:rgba(255,255,255,.15)}
+
+        /* What's New banner */
+        .dash-announcement{background:linear-gradient(135deg,#fefce8 0%,#fef9c3 100%);border:1px solid #fde68a;border-radius:12px;padding:14px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;position:relative}
+        .dash-announcement-icon{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#f59e0b,#d97706);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:white;font-size:.9rem}
+        .dash-announcement-content{flex:1;min-width:0}
+        .dash-announcement-content strong{font-family:'Outfit',sans-serif;font-size:.85rem;color:#92400e}
+        .dash-announcement-content p{font-size:.8rem;color:#a16207;margin:2px 0 0}
+        .dash-announcement-dismiss{background:none;border:none;color:#d97706;font-size:1rem;cursor:pointer;padding:4px;border-radius:6px;transition:background .15s ease;flex-shrink:0}
+        .dash-announcement-dismiss:hover{background:rgba(217,119,6,.1)}
+        [data-theme="dark"] .dash-announcement{background:linear-gradient(135deg,rgba(245,158,11,.08) 0%,rgba(245,158,11,.04) 100%);border-color:rgba(245,158,11,.2)}
+        [data-theme="dark"] .dash-announcement-content strong{color:#fbbf24}
+        [data-theme="dark"] .dash-announcement-content p{color:#d97706}
+        [data-theme="dark"] .dash-announcement-dismiss{color:#fbbf24}
+
         /* Mobile: off-canvas sidebar */
         @media(max-width:768px){
             .dash-sidebar{
@@ -96,9 +167,13 @@
             .dash-sidebar-overlay--visible{display:block;opacity:1}
             .dash-layout{display:block!important}
             .quick-actions-hero{display:block!important}
+            .dash-main{padding:24px 16px 40px}
             .dash-stats-row{grid-template-columns:repeat(2,1fr)}
             .dashboard .dashboard-header-compact{text-align:center!important}
             .dashboard .user-stats-compact{justify-content:center!important}
+            .continue-hero{flex-direction:column;text-align:center;padding:24px 20px}
+            .continue-hero-left{flex-direction:column}
+            .continue-hero-text .continue-label{text-align:center}
         }
     </style>
 
@@ -219,6 +294,14 @@
                         </a>
                     </div>
                 </div>
+                <!-- Sidebar Subscription Widget -->
+                <div class="sidebar-sub-widget" id="sidebar-sub-widget">
+                    <div class="sidebar-sub-cta">
+                        <div class="skeleton-loader">
+                            <div class="skeleton skeleton-card" style="height:60px;border-radius:8px"></div>
+                        </div>
+                    </div>
+                </div>
             </aside>
 
             <!-- Main Content -->
@@ -242,22 +325,51 @@
                 </div>
             </div>
 
-            <!-- Stats Row (matches hero mockup) -->
+            <!-- What's New Banner -->
+            <div class="dash-announcement hidden" id="dash-announcement">
+                <div class="dash-announcement-icon"><i class="fas fa-sparkles"></i></div>
+                <div class="dash-announcement-content">
+                    <strong id="announcement-title">New guides added!</strong>
+                    <p id="announcement-text">Check out the latest study materials in your library.</p>
+                </div>
+                <button class="dash-announcement-dismiss" id="dismiss-announcement-btn" title="Dismiss"><i class="fas fa-times"></i></button>
+            </div>
+
+            <!-- Continue Studying Hero -->
+            <div class="continue-hero hidden" id="continue-hero">
+                <div class="continue-hero-left">
+                    <div class="continue-hero-icon" id="continue-hero-icon">
+                        <i class="fas fa-book-open"></i>
+                    </div>
+                    <div class="continue-hero-text">
+                        <span class="continue-label">Pick up where you left off</span>
+                        <h3 id="continue-hero-name">Loading...</h3>
+                        <p id="continue-hero-time">Last studied recently</p>
+                    </div>
+                </div>
+                <button class="continue-hero-btn" id="continue-hero-btn">Continue Studying</button>
+            </div>
+
+            <!-- Stats Row -->
             <div class="dash-stats-row">
                 <div class="dash-stat">
+                    <div class="dash-stat-icon"><i class="fas fa-book-open" style="color:#2E86AB"></i></div>
                     <div class="dash-stat-num" id="stat-guides-count">--</div>
-                    <div class="dash-stat-label">Study Guides</div>
+                    <div class="dash-stat-label">Guides Studied</div>
                 </div>
                 <div class="dash-stat">
-                    <div class="dash-stat-num" id="stat-practice-qs">2,400+</div>
-                    <div class="dash-stat-label">Practice Qs</div>
+                    <div class="dash-stat-icon"><i class="fas fa-pen-to-square" style="color:#8b5cf6"></i></div>
+                    <div class="dash-stat-num" id="stat-questions-answered">--</div>
+                    <div class="dash-stat-label">Qs Answered</div>
                 </div>
                 <div class="dash-stat">
+                    <div class="dash-stat-icon"><i class="fas fa-bullseye" style="color:#10b981"></i></div>
                     <div class="dash-stat-num" id="stat-avg-score">--</div>
-                    <div class="dash-stat-label">Avg. Score</div>
+                    <div class="dash-stat-label">Accuracy</div>
                 </div>
                 <div class="dash-stat">
-                    <div class="dash-stat-num" id="stat-streak">--</div>
+                    <div class="dash-stat-icon"><i class="fas fa-fire" style="color:#f59e0b"></i></div>
+                    <div class="dash-stat-num" id="stat-streak">0</div>
                     <div class="dash-stat-label">Day Streak</div>
                 </div>
             </div>
@@ -409,40 +521,8 @@
                     </div>
                 </div>
 
-                <!-- Account & Subscription (combined) -->
-                <div class="widget widget-account-enhanced">
-                    <div class="widget-account-grid">
-                        <!-- Left: Account Info -->
-                        <div class="account-info-section">
-                            <h3><i class="fas fa-user"></i> Account</h3>
-                            <div class="widget-content">
-                                <div class="info-row">
-                                    <span class="label">Name</span>
-                                    <span class="value" id="widget-user-name">Loading...</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="label">Email</span>
-                                    <span class="value" id="widget-user-email">Loading...</span>
-                                </div>
-                                <div class="info-row">
-                                    <span class="label">Discord</span>
-                                    <span class="status-badge disconnected" id="widget-discord-status">
-                                        <i class="fas fa-times-circle"></i> Not connected
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Right: Subscription -->
-                        <div class="account-stats-section">
-                            <div class="subscription-management-container" id="subscription-management-container">
-                                <!-- Loading skeleton -->
-                                <div class="skeleton-loader">
-                                    <div class="skeleton skeleton-card skeleton-row-lg"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <!-- Subscription container (hidden, used by JS for data loading) -->
+                <div id="subscription-management-container" style="display:none"></div>
 
             </div>
         </div>

@@ -40,6 +40,58 @@ document.addEventListener('DOMContentLoaded', async function() {
             });
         });
     }
+
+    // ── Mobile sidebar toggle ──────────────────────────────
+    const sidebar = document.getElementById('dash-sidebar');
+    const sidebarOverlay = document.getElementById('dash-sidebar-overlay');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+
+    if (sidebar && mobileMenuBtn) {
+        // Clone and replace the button to remove any existing listeners from script.js
+        const freshBtn = mobileMenuBtn.cloneNode(true);
+        mobileMenuBtn.parentNode.replaceChild(freshBtn, mobileMenuBtn);
+
+        function openSidebar() {
+            sidebar.classList.add('dash-sidebar--open');
+            if (sidebarOverlay) sidebarOverlay.classList.add('dash-sidebar-overlay--visible');
+            freshBtn.setAttribute('aria-expanded', 'true');
+            const icon = freshBtn.querySelector('i');
+            if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('dash-sidebar--open');
+            if (sidebarOverlay) sidebarOverlay.classList.remove('dash-sidebar-overlay--visible');
+            freshBtn.setAttribute('aria-expanded', 'false');
+            const icon = freshBtn.querySelector('i');
+            if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+            document.body.style.overflow = '';
+        }
+
+        freshBtn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const isOpen = sidebar.classList.contains('dash-sidebar--open');
+            if (isOpen) closeSidebar(); else openSidebar();
+        });
+
+        // Close on overlay click
+        if (sidebarOverlay) {
+            sidebarOverlay.addEventListener('click', closeSidebar);
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('dash-sidebar--open')) {
+                closeSidebar();
+            }
+        });
+
+        // Close sidebar when a nav link is clicked
+        sidebar.querySelectorAll('.dash-sidebar-item').forEach(function(link) {
+            link.addEventListener('click', closeSidebar);
+        });
+    }
 });
 
 // ==================== Widget Update Functions ====================

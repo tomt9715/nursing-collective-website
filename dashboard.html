@@ -79,9 +79,21 @@
         /* Hide breadcrumbs & quick actions on desktop */
         .breadcrumbs-dashboard{display:none!important}
         .quick-actions-hero{display:none!important}
-        /* Mobile: hide sidebar, show quick actions */
+        /* Mobile: off-canvas sidebar */
         @media(max-width:768px){
-            .dash-sidebar{display:none}
+            .dash-sidebar{
+                position:fixed;top:0;left:0;width:270px;height:100vh;height:100dvh;
+                z-index:9999;padding-top:70px;
+                transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);
+                box-shadow:none
+            }
+            .dash-sidebar.dash-sidebar--open{transform:translateX(0);box-shadow:4px 0 24px rgba(0,0,0,.15)}
+            .dash-sidebar-overlay{
+                display:none;position:fixed;inset:0;z-index:9998;
+                background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+                opacity:0;transition:opacity .3s ease
+            }
+            .dash-sidebar-overlay--visible{display:block;opacity:1}
             .dash-layout{display:block!important}
             .quick-actions-hero{display:block!important}
             .dash-stats-row{grid-template-columns:repeat(2,1fr)}
@@ -174,8 +186,10 @@
     <main id="main-content">
     <section class="dashboard">
         <div class="dash-layout">
+            <!-- Mobile sidebar overlay -->
+            <div class="dash-sidebar-overlay" id="dash-sidebar-overlay"></div>
             <!-- Sidebar Navigation -->
-            <aside class="dash-sidebar">
+            <aside class="dash-sidebar" id="dash-sidebar">
                 <div class="dash-sidebar-inner">
                     <div class="dash-sidebar-section">
                         <a href="dashboard.html" class="dash-sidebar-item active">

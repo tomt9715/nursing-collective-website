@@ -6,8 +6,6 @@ User-agent: *
 # Allow public pages
 Allow: /
 Allow: /index.html
-Allow: /study-guides.html
-Allow: /guides.html
 Allow: /pricing.html
 Allow: /about.html
 Allow: /about-florencebot.html

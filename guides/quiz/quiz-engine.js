@@ -273,7 +273,7 @@ class QuizEngine {
                 case 'next': this.nextQuestion(); break;
                 case 'retake': this.retakeQuiz(); break;
                 case 'review-missed': this.reviewMissed(); break;
-                case 'new-quiz': window.location.href = '../../study-guides.html'; break;
+                case 'new-quiz': window.location.href = '../../dashboard.html'; break;
                 case 'back-to-guide': window.location.href = '../' + this.guideSlug + '.html'; break;
                 case 'back-to-start':
                     this._stopTimer();

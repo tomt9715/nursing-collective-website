@@ -159,9 +159,9 @@ function showSubscriptionSuccess(subscription) {
                 <i class="fas fa-book-open"></i>
                 Start Studying
             </a>
-            <a href="study-guides.html" class="btn btn-light">
+            <a href="dashboard.html" class="btn btn-light">
                 <i class="fas fa-list"></i>
-                Browse All Guides
+                Go to Dashboard
             </a>
         </div>
 

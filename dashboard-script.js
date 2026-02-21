@@ -306,6 +306,7 @@ async function loadUserProfile() {
         loadRecentGuides();
         await fetchAndCacheQuizSessions();
         loadStudyActivityCalendar();
+        updateDailyGoalWidget();
 
         updateStatsRow();
         initStatFlyouts();
@@ -595,6 +596,17 @@ function loadStudyActivityCalendar(weekOffset) {
     }
 
     container.innerHTML = html;
+
+    // Empty state nudge (only for current week)
+    if (weekTotal === 0 && offset === 0) {
+        var nudgeHtml = '<div class="activity-empty-nudge">';
+        nudgeHtml += '<i class="fas fa-seedling nudge-icon"></i>';
+        nudgeHtml += '<strong>No activity yet this week</strong>';
+        nudgeHtml += '<p>Complete a quiz set to start building your streak!</p>';
+        nudgeHtml += '<a href="https://learn.thenursingcollective.pro" class="activity-nudge-btn"><i class="fas fa-play"></i> Start a Quiz Set</a>';
+        nudgeHtml += '</div>';
+        container.innerHTML += nudgeHtml;
+    }
 
     // Streak: count consecutive days back from today with activity
     var streak = 0;
@@ -980,6 +992,39 @@ function showGettingStartedCard(user) {
                 localStorage.setItem('gettingStartedDismissed', 'true');
             };
         }
+    }
+}
+
+// ==================== Daily Study Goal Widget ====================
+
+function updateDailyGoalWidget() {
+    var widget = document.getElementById('sidebar-goal-widget');
+    var ringFill = document.getElementById('goal-ring-fill');
+    var countText = document.getElementById('goal-count-text');
+    var labelText = document.getElementById('goal-label-text');
+    if (!widget || !ringFill || !countText) return;
+
+    var DAILY_GOAL = 5;
+    var activeDates = getActivityDates();
+    var today = new Date();
+    today.setHours(0, 0, 0, 0);
+    var todayKey = today.toISOString().split('T')[0];
+    var todayCount = activeDates[todayKey] || 0;
+
+    var circumference = 2 * Math.PI * 20; // r=20 => ~125.66
+    var completed = Math.min(todayCount, DAILY_GOAL);
+    var offset = circumference - (completed / DAILY_GOAL) * circumference;
+
+    ringFill.setAttribute('stroke-dasharray', circumference.toFixed(2));
+    ringFill.setAttribute('stroke-dashoffset', offset.toFixed(2));
+    countText.textContent = todayCount + '/' + DAILY_GOAL;
+
+    if (todayCount >= DAILY_GOAL) {
+        widget.classList.add('goal-complete');
+        labelText.textContent = 'Goal reached!';
+    } else {
+        widget.classList.remove('goal-complete');
+        labelText.textContent = todayCount === 0 ? 'Start a quiz set!' : 'sets completed';
     }
 }
 

@@ -53,8 +53,34 @@
         .dash-sidebar-item.active{background:rgba(46,134,171,.1);color:#2E86AB;font-weight:600}
         .dash-sidebar-item i{font-size:.95rem;width:20px;text-align:center;flex-shrink:0}
 
+        /* Sidebar daily study goal widget */
+        .sidebar-goal-widget{margin:auto 12px 12px;padding:14px 16px;border-radius:12px;background:#f8fafc;border:1px solid rgba(0,0,0,.06);text-align:center}
+        .sidebar-goal-header{margin-bottom:10px}
+        .sidebar-goal-title{font-family:'Source Sans 3',sans-serif;font-size:.73rem;font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:#64748b}
+        .sidebar-goal-title i{color:#2E86AB;margin-right:4px;font-size:.7rem}
+        .sidebar-goal-ring-container{position:relative;display:inline-flex;align-items:center;justify-content:center;margin-bottom:6px}
+        .sidebar-goal-ring{display:block}
+        .sidebar-goal-track{stroke:#e2e8f0}
+        .sidebar-goal-fill{stroke:#2E86AB;transition:stroke-dashoffset .6s ease}
+        .sidebar-goal-count{position:absolute;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;color:#0f172a}
+        .sidebar-goal-label{font-size:.68rem;color:#94a3b8}
+        .sidebar-goal-widget.goal-complete{background:linear-gradient(135deg,#ecfdf5 0%,#d1fae5 100%);border-color:#6ee7b7}
+        .sidebar-goal-widget.goal-complete .sidebar-goal-fill{stroke:#10b981}
+        .sidebar-goal-widget.goal-complete .sidebar-goal-title i{color:#10b981}
+        .sidebar-goal-widget.goal-complete .sidebar-goal-count{color:#059669}
+        [data-theme="dark"] .sidebar-goal-widget{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .sidebar-goal-title{color:#94a3b8}
+        [data-theme="dark"] .sidebar-goal-title i{color:#38bdf8}
+        [data-theme="dark"] .sidebar-goal-track{stroke:rgba(255,255,255,.08)}
+        [data-theme="dark"] .sidebar-goal-fill{stroke:#38bdf8}
+        [data-theme="dark"] .sidebar-goal-count{color:#f1f5f9}
+        [data-theme="dark"] .sidebar-goal-label{color:#6b7280}
+        [data-theme="dark"] .sidebar-goal-widget.goal-complete{background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.2)}
+        [data-theme="dark"] .sidebar-goal-widget.goal-complete .sidebar-goal-fill{stroke:#10b981}
+        [data-theme="dark"] .sidebar-goal-widget.goal-complete .sidebar-goal-count{color:#34d399}
+
         /* Sidebar subscription widget */
-        .sidebar-sub-widget{margin:auto 12px 16px;padding:14px 16px;border-radius:12px;background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:1px solid #bae6fd;position:relative;overflow:hidden}
+        .sidebar-sub-widget{margin:0 12px 16px;padding:14px 16px;border-radius:12px;background:linear-gradient(135deg,#f0f9ff 0%,#e0f2fe 100%);border:1px solid #bae6fd;position:relative;overflow:hidden}
         .sidebar-sub-widget::before{content:'';position:absolute;top:-30px;right:-30px;width:90px;height:90px;background:radial-gradient(circle,rgba(46,134,171,.06) 0%,transparent 70%);border-radius:50%;pointer-events:none}
         .sidebar-sub-widget::after{content:'';position:absolute;bottom:-20px;left:-20px;width:60px;height:60px;background:radial-gradient(circle,rgba(46,134,171,.04) 0%,transparent 70%);border-radius:50%;pointer-events:none}
         .sidebar-sub-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
@@ -109,6 +135,23 @@
         [data-theme="dark"] .dash-stat:hover{box-shadow:0 4px 12px rgba(0,0,0,.2)}
         [data-theme="dark"] .dash-stat-num{color:#f1f5f9}
         [data-theme="dark"] .dash-stat-label{color:#6b7280}
+        /* Stat card colored accents */
+        #stat-card-guides{border-top:3px solid #2E86AB}
+        #stat-card-questions{border-top:3px solid #8b5cf6}
+        #stat-card-accuracy{border-top:3px solid #10b981}
+        #stat-card-streak{border-top:3px solid #f59e0b}
+        #stat-card-guides:hover{background:linear-gradient(180deg,rgba(46,134,171,.05) 0%,#f8fafc 50%)}
+        #stat-card-questions:hover{background:linear-gradient(180deg,rgba(139,92,246,.05) 0%,#f8fafc 50%)}
+        #stat-card-accuracy:hover{background:linear-gradient(180deg,rgba(16,185,129,.05) 0%,#f8fafc 50%)}
+        #stat-card-streak:hover{background:linear-gradient(180deg,rgba(245,158,11,.05) 0%,#f8fafc 50%)}
+        [data-theme="dark"] #stat-card-guides{border-top-color:rgba(46,134,171,.7)}
+        [data-theme="dark"] #stat-card-questions{border-top-color:rgba(139,92,246,.7)}
+        [data-theme="dark"] #stat-card-accuracy{border-top-color:rgba(16,185,129,.7)}
+        [data-theme="dark"] #stat-card-streak{border-top-color:rgba(245,158,11,.7)}
+        [data-theme="dark"] #stat-card-guides:hover{background:linear-gradient(180deg,rgba(46,134,171,.08) 0%,rgba(255,255,255,.04) 50%)}
+        [data-theme="dark"] #stat-card-questions:hover{background:linear-gradient(180deg,rgba(139,92,246,.08) 0%,rgba(255,255,255,.04) 50%)}
+        [data-theme="dark"] #stat-card-accuracy:hover{background:linear-gradient(180deg,rgba(16,185,129,.08) 0%,rgba(255,255,255,.04) 50%)}
+        [data-theme="dark"] #stat-card-streak:hover{background:linear-gradient(180deg,rgba(245,158,11,.08) 0%,rgba(255,255,255,.04) 50%)}
 
         /* Stat card flyout */
         .dash-stat{cursor:pointer;position:relative}
@@ -172,6 +215,18 @@
         [data-theme="dark"] .activity-bar-row.fire .activity-bar-count{color:#fbbf24}
         [data-theme="dark"] .activity-bar-row.inactive .activity-bar-count{color:#4b5563}
         [data-theme="dark"] .activity-summary-num{color:#f1f5f9}
+        /* Activity empty state nudge */
+        .activity-empty-nudge{text-align:center;padding:16px 12px 4px}
+        .activity-empty-nudge i.nudge-icon{font-size:1.4rem;color:#2E86AB;margin-bottom:6px;display:block;opacity:.5}
+        .activity-empty-nudge strong{color:#0f172a;display:block;font-size:.85rem;margin-bottom:4px}
+        .activity-empty-nudge p{font-family:'Source Sans 3',sans-serif;font-size:.78rem;color:#64748b;margin:0 0 10px;line-height:1.4}
+        .activity-nudge-btn{display:inline-block;padding:6px 14px;font-size:.75rem;font-weight:600;color:white;background:#2E86AB;border:none;border-radius:8px;cursor:pointer;transition:all .15s ease;text-decoration:none}
+        .activity-nudge-btn:hover{background:#1e6b8d;transform:translateY(-1px);text-decoration:none;color:white}
+        [data-theme="dark"] .activity-empty-nudge i.nudge-icon{color:#38bdf8}
+        [data-theme="dark"] .activity-empty-nudge strong{color:#f1f5f9}
+        [data-theme="dark"] .activity-empty-nudge p{color:#94a3b8}
+        [data-theme="dark"] .activity-nudge-btn{background:#38bdf8;color:#0f172a}
+        [data-theme="dark"] .activity-nudge-btn:hover{background:#2E86AB;color:white}
 
         /* Dashboard section padding reset */
         .dashboard{background:var(--dash-bg,#f8fafc)!important;padding:95px 0 0!important;overflow:visible!important}
@@ -187,18 +242,18 @@
         .breadcrumbs-dashboard{display:none!important}
         .quick-actions-hero{display:none!important}
 
-        /* Continue Studying Hero Card */
-        .continue-hero{background:linear-gradient(135deg,#2E86AB 0%,#1e6b8d 100%);border-radius:16px;padding:20px 28px;margin-bottom:24px;display:flex;align-items:center;gap:16px;color:white;position:relative;overflow:hidden}
-        .continue-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}
-        .continue-hero::after{content:'';position:absolute;bottom:-60px;left:30%;width:200px;height:200px;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);border-radius:50%}
-        .continue-hero-left{display:flex;align-items:center;gap:20px;min-width:0;position:relative;z-index:1}
-        .continue-hero-icon{width:56px;height:56px;border-radius:14px;background:rgba(255,255,255,.15);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-        .continue-hero-icon img{width:36px;height:36px;border-radius:6px}
-        .continue-hero-icon i{font-size:1.4rem;color:white}
-        .continue-hero-text h3{font-family:'Outfit',sans-serif;font-size:1.1rem;font-weight:600;margin:0 0 4px;color:white}
-        .continue-hero-text p{font-size:.85rem;margin:0;opacity:.8}
-        .continue-hero-text .continue-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.65;margin-bottom:2px;display:block}
-        .continue-hero-btn{padding:10px 24px;font-size:.88rem;font-weight:600;color:#2E86AB;background:white;border:none;border-radius:10px;cursor:pointer;transition:all .15s ease;white-space:nowrap;flex-shrink:0;position:relative;z-index:1}
+        /* Continue Studying Hero Card — compact */
+        .continue-hero{background:linear-gradient(135deg,#2E86AB 0%,#1e6b8d 100%);border-radius:12px;padding:12px 20px;margin-bottom:24px;display:flex;align-items:center;gap:12px;color:white;position:relative;overflow:hidden}
+        .continue-hero::before{content:'';position:absolute;top:-40px;right:-40px;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,.08) 0%,transparent 70%);border-radius:50%}
+        .continue-hero::after{content:'';position:absolute;bottom:-50px;left:30%;width:150px;height:150px;background:radial-gradient(circle,rgba(255,255,255,.04) 0%,transparent 70%);border-radius:50%}
+        .continue-hero-left{display:flex;align-items:center;gap:14px;flex:1;min-width:0;position:relative;z-index:1}
+        .continue-hero-icon{width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.15);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+        .continue-hero-icon img{width:26px;height:26px;border-radius:4px}
+        .continue-hero-icon i{font-size:1.1rem;color:white}
+        .continue-hero-text h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:600;margin:0 0 2px;color:white}
+        .continue-hero-text p{font-size:.78rem;margin:0;opacity:.8}
+        .continue-hero-text .continue-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;opacity:.65;margin-bottom:1px;display:block}
+        .continue-hero-btn{padding:8px 18px;font-size:.82rem;font-weight:600;color:#2E86AB;background:white;border:none;border-radius:8px;cursor:pointer;transition:all .15s ease;white-space:nowrap;flex-shrink:0;position:relative;z-index:1}
         .continue-hero-btn:hover{background:#f0f9ff;transform:translateY(-1px);box-shadow:0 4px 12px rgba(0,0,0,.15)}
         [data-theme="dark"] .continue-hero{background:linear-gradient(135deg,#1e3a5f 0%,#0f2942 100%)}
         [data-theme="dark"] .continue-hero-btn{color:#38bdf8;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
@@ -237,7 +292,7 @@
             .dash-stats-row{grid-template-columns:repeat(2,1fr)}
             .dashboard .dashboard-header-compact{text-align:center!important}
             .dashboard .user-stats-compact{justify-content:center!important}
-            .continue-hero{flex-direction:column;text-align:center;padding:24px 20px}
+            .continue-hero{flex-direction:column;text-align:center;padding:16px 14px}
             .continue-hero-left{flex-direction:column}
             .continue-hero-text .continue-label{text-align:center}
         }
@@ -359,6 +414,22 @@
                             <i class="fas fa-user-shield"></i> Admin Panel
                         </a>
                     </div>
+                </div>
+                <!-- Daily Study Goal Widget -->
+                <div class="sidebar-goal-widget" id="sidebar-goal-widget">
+                    <div class="sidebar-goal-header">
+                        <span class="sidebar-goal-title"><i class="fas fa-bullseye"></i> Today's Goal</span>
+                    </div>
+                    <div class="sidebar-goal-ring-container">
+                        <svg class="sidebar-goal-ring" viewBox="0 0 48 48" width="48" height="48">
+                            <circle class="sidebar-goal-track" cx="24" cy="24" r="20" fill="none" stroke-width="4"/>
+                            <circle class="sidebar-goal-fill" id="goal-ring-fill" cx="24" cy="24" r="20" fill="none" stroke-width="4"
+                                stroke-dasharray="125.66" stroke-dashoffset="125.66" stroke-linecap="round"
+                                transform="rotate(-90 24 24)"/>
+                        </svg>
+                        <span class="sidebar-goal-count" id="goal-count-text">0/5</span>
+                    </div>
+                    <div class="sidebar-goal-label" id="goal-label-text">sets completed</div>
                 </div>
                 <!-- Sidebar Subscription Widget -->
                 <div class="sidebar-sub-widget" id="sidebar-sub-widget">

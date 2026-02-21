@@ -131,13 +131,16 @@
     }
 
     .admin-subnav-tab {
-        padding: 8px 12px;
+        padding: 12px 14px;
         font-size: 0.85rem;
         gap: 4px;
+        min-width: 44px;
+        min-height: 44px;
+        justify-content: center;
     }
 
     .admin-subnav-tab i {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
 
     .admin-subnav-tab span {

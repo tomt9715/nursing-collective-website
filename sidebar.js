@@ -1,9 +1,11 @@
 /**
  * Shared sidebar component — app shell for logged-in pages
  * Injects sidebar, hides hero banners, adds clean page headers.
+ * Mobile: off-canvas drawer triggered by hamburger button.
  *
- * Include on: my-guides, settings, admin (dashboard has its own inline sidebar)
+ * Include on: my-guides, my-resources, settings, admin
  * Do NOT include on: index, login, pricing, study-guides, resources, guide, success
+ * dashboard.html has its own inline sidebar — this script skips it via double-inject guard.
  */
 
 (function () {
@@ -29,7 +31,7 @@
 
     // ── Sidebar HTML ──────────────────────────────────────────────
     var sidebarHTML =
-        '<aside class="dash-sidebar">' +
+        '<aside class="dash-sidebar" id="dash-sidebar">' +
             '<div class="dash-sidebar-inner">' +
                 '<div class="dash-sidebar-section">' +
                     '<a href="dashboard.html" class="dash-sidebar-item" data-sidebar-page="dashboard">' +
@@ -90,8 +92,21 @@
         /* Hide heroes & breadcrumbs */
         '.dash-layout .breadcrumbs{display:none!important}' +
         '.sidebar-hidden{display:none!important}' +
-        /* Responsive */
-        '@media(max-width:768px){.dash-sidebar{display:none}.dash-layout{display:block!important}.dash-main{padding:20px 16px 40px}}';
+        /* Mobile sidebar overlay */
+        '.dash-sidebar-overlay{display:none;position:fixed;inset:0;z-index:9998;background:rgba(0,0,0,.4);-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);opacity:0;transition:opacity .3s ease}' +
+        '.dash-sidebar-overlay--visible{display:block;opacity:1}' +
+        /* Responsive — mobile off-canvas drawer */
+        '@media(max-width:768px){' +
+            '.dash-sidebar{' +
+                'position:fixed;top:0;left:0;width:270px;height:100vh;height:100dvh;' +
+                'z-index:9999;padding-top:70px;' +
+                'transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);' +
+                'box-shadow:none' +
+            '}' +
+            '.dash-sidebar.dash-sidebar--open{transform:translateX(0);box-shadow:4px 0 24px rgba(0,0,0,.15)}' +
+            '.dash-layout{display:block!important}' +
+            '.dash-main{padding:20px 16px 40px}' +
+        '}';
 
     // ── Detect current page ──────────────────────────────────────
     function detectCurrentPage() {
@@ -138,6 +153,12 @@
         var layout = document.createElement('div');
         layout.className = 'dash-layout';
 
+        // Add mobile overlay
+        var overlay = document.createElement('div');
+        overlay.className = 'dash-sidebar-overlay';
+        overlay.id = 'dash-sidebar-overlay';
+        layout.appendChild(overlay);
+
         var sidebarContainer = document.createElement('div');
         sidebarContainer.innerHTML = sidebarHTML;
         var sidebar = sidebarContainer.firstChild;
@@ -181,6 +202,60 @@
 
         // Sync permissions
         syncSidebarPermissions(sidebar);
+
+        // Wire up mobile sidebar drawer
+        initMobileSidebar(sidebar, overlay);
+    }
+
+    // ── Mobile sidebar drawer toggle ─────────────────────────────
+    function initMobileSidebar(sidebar, overlay) {
+        var mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        if (!sidebar || !mobileMenuBtn) return;
+
+        // Clone the hamburger button to strip script.js nav-links listener
+        var freshBtn = mobileMenuBtn.cloneNode(true);
+        mobileMenuBtn.parentNode.replaceChild(freshBtn, mobileMenuBtn);
+
+        function openSidebar() {
+            sidebar.classList.add('dash-sidebar--open');
+            if (overlay) overlay.classList.add('dash-sidebar-overlay--visible');
+            freshBtn.setAttribute('aria-expanded', 'true');
+            var icon = freshBtn.querySelector('i');
+            if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSidebar() {
+            sidebar.classList.remove('dash-sidebar--open');
+            if (overlay) overlay.classList.remove('dash-sidebar-overlay--visible');
+            freshBtn.setAttribute('aria-expanded', 'false');
+            var icon = freshBtn.querySelector('i');
+            if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+            document.body.style.overflow = '';
+        }
+
+        freshBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var isOpen = sidebar.classList.contains('dash-sidebar--open');
+            if (isOpen) closeSidebar(); else openSidebar();
+        });
+
+        // Close on overlay click
+        if (overlay) {
+            overlay.addEventListener('click', closeSidebar);
+        }
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('dash-sidebar--open')) {
+                closeSidebar();
+            }
+        });
+
+        // Close sidebar when a nav link is clicked
+        sidebar.querySelectorAll('.dash-sidebar-item').forEach(function (link) {
+            link.addEventListener('click', closeSidebar);
+        });
     }
 
     // ── Sync admin & quiz visibility ─────────────────────────────

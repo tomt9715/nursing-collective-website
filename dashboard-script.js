@@ -1001,7 +1001,7 @@ async function loadSidebarSubscription() {
             let statusClass = 'active';
             let statusText = 'Active';
             let statusIcon = 'fa-check-circle';
-            if (isActive && isCancelling) { statusClass = 'cancelling'; statusText = 'Cancelling'; statusIcon = 'fa-clock'; }
+            if (isActive && isCancelling) { statusClass = 'cancelling'; statusText = 'Ending Soon'; statusIcon = 'fa-clock'; }
             else if (!isActive) { statusClass = 'expired'; statusText = 'Expired'; statusIcon = 'fa-times-circle'; }
 
             let detailText = '';
@@ -1013,39 +1013,20 @@ async function loadSidebarSubscription() {
             }
 
             let actionHtml = '';
-            if (isActive && !isLifetime) {
-                actionHtml = '<button class="sidebar-sub-manage" id="sidebar-manage-sub-btn"><i class="fas fa-cog"></i> Manage</button>';
-            } else if (!isActive) {
-                actionHtml = '<a href="pricing.html" class="sidebar-sub-manage"><i class="fas fa-rocket"></i> Resubscribe</a>';
+            if (!isActive) {
+                actionHtml = '<a href="pricing.html" class="sidebar-sub-resubscribe"><i class="fas fa-rocket"></i> Resubscribe</a>';
             }
 
             widget.className = 'sidebar-sub-widget';
             widget.innerHTML = `
-                <div class="sidebar-sub-plan"><i class="fas fa-crown"></i> ${escapeHtml(planName)}</div>
-                <span class="sidebar-sub-status ${statusClass}"><i class="fas ${statusIcon}"></i> ${statusText}</span>
+                <div class="sidebar-sub-header">
+                    <div class="sidebar-sub-plan"><i class="fas fa-crown"></i> ${escapeHtml(planName)}</div>
+                    <span class="sidebar-sub-status ${statusClass}"><i class="fas ${statusIcon}"></i> ${statusText}</span>
+                </div>
+                <div class="sidebar-sub-divider"></div>
                 <div class="sidebar-sub-detail">${detailText}</div>
                 ${actionHtml}
             `;
-
-            const manageBtn = document.getElementById('sidebar-manage-sub-btn');
-            if (manageBtn) {
-                manageBtn.addEventListener('click', async function() {
-                    this.disabled = true;
-                    this.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-                    try {
-                        const response = await apiCall('/api/subscription/manage', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({ return_url: window.location.href })
-                        });
-                        if (response.url) window.location.href = response.url;
-                    } catch (error) {
-                        console.error('Error opening subscription management:', error);
-                        this.disabled = false;
-                        this.innerHTML = '<i class="fas fa-cog"></i> Manage';
-                    }
-                });
-            }
         } else {
             widget.className = 'sidebar-sub-widget no-sub';
             widget.innerHTML = `

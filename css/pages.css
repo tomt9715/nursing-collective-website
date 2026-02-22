@@ -4146,11 +4146,19 @@
     align-items: start;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .pricing-plans-grid {
         grid-template-columns: 1fr;
+        max-width: 480px;
+        margin: 0 auto;
     }
 
+    .included-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
     .included-grid {
         grid-template-columns: 1fr;
     }
@@ -4185,7 +4193,7 @@
     overflow: visible;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .pricing-card.featured {
         transform: none;
     }

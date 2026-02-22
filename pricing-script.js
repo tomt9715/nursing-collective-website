@@ -420,13 +420,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (aiToggle && !aiToggle.classList.contains('active')) {
                 aiToggle.click();
             }
-            // Scroll down to pricing cards after a brief delay
+            // Scroll down so the tier toggle + pricing cards are front and center
             setTimeout(function() {
-                var cards = document.querySelector('.pricing-plans-grid');
-                if (cards) {
-                    cards.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                var toggle = document.querySelector('.tier-toggle-container');
+                if (toggle) {
+                    var headerOffset = 80; // account for fixed nav
+                    var top = toggle.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
                 }
-            }, 300);
+            }, 500);
         }
     })();
 

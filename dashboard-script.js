@@ -1101,47 +1101,6 @@ async function loadSidebarSubscription() {
 // Keep loadSubscriptionManagement as a thin wrapper (hidden container still used for data)
 async function loadSubscriptionManagement() {
     await loadSidebarSubscription();
-    await loadAiPromoCard();
-}
-
-// ==================== AI Upgrade Promo Card ====================
-
-async function loadAiPromoCard() {
-    var promoCard = document.getElementById('ai-promo-card');
-    if (!promoCard) return;
-
-    // Check if user dismissed the promo
-    if (localStorage.getItem('aiPromoDismissed') === 'true') return;
-
-    try {
-        var result = await getSubscriptionStatusCached();
-        var subscription = result.subscription;
-
-        // Only show for active Standard plan subscribers (not AI, not expired, not no-sub)
-        if (!subscription || !subscription.is_active) return;
-        if (subscription.plan_id && subscription.plan_id.startsWith('ai-')) return;
-
-        // Show the card
-        promoCard.classList.remove('hidden');
-
-        // Dismiss handler
-        var dismissBtn = document.getElementById('dismiss-ai-promo-btn');
-        if (dismissBtn) {
-            dismissBtn.addEventListener('click', function() {
-                promoCard.style.opacity = '0';
-                promoCard.style.transform = 'translateY(-10px)';
-                promoCard.style.transition = 'opacity .3s ease, transform .3s ease';
-                setTimeout(function() {
-                    promoCard.classList.add('hidden');
-                    promoCard.style.opacity = '';
-                    promoCard.style.transform = '';
-                }, 300);
-                localStorage.setItem('aiPromoDismissed', 'true');
-            });
-        }
-    } catch (error) {
-        console.error('Error loading AI promo card:', error);
-    }
 }
 
 // ==================== Continue Studying Hero ====================

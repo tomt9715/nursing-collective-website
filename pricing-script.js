@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const tierDescriptions = {
         'standard': 'Full access to 50+ study guides, clinical resources, and quick reference tools.',
-        'ai-powered': 'Everything in Study Guides plus AI tools: upload your notes, get AI summaries, NCLEX questions, and gap analysis.'
+        'ai-powered': 'Everything in Study Guides plus AI tools: note summaries, NCLEX question generator, gap analysis, care plans, clinical simulations, and weak spot training.'
     };
 
     const tierButtonLabels = {

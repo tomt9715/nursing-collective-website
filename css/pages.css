@@ -4140,8 +4140,8 @@
 .pricing-plans-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1000px;
+    gap: 32px;
+    max-width: 1280px;
     margin: 0 auto;
     align-items: start;
 }

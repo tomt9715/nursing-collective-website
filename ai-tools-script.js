@@ -9,7 +9,6 @@
     // ── DOM elements ────────────────────────────────────────────
     const aiSection = document.getElementById('ai-tools-section');
     const upgradePrompt = document.getElementById('ai-upgrade-prompt');
-    const sidebarLink = document.getElementById('sidebar-ai-tools');
     const dropzone = document.getElementById('ai-upload-dropzone');
     const fileInput = document.getElementById('ai-file-input');
     const progressContainer = document.getElementById('ai-upload-progress');
@@ -87,16 +86,14 @@
     }
 
     function showAiTools() {
-        if (aiSection) aiSection.classList.remove('hidden');
+        if (aiSection) aiSection.style.display = '';
         if (upgradePrompt) upgradePrompt.classList.add('hidden');
-        if (sidebarLink) sidebarLink.style.display = '';
         setupEventListeners();
     }
 
     function showUpgradePrompt() {
-        if (aiSection) aiSection.classList.add('hidden');
+        if (aiSection) aiSection.style.display = 'none';
         if (upgradePrompt) upgradePrompt.classList.remove('hidden');
-        if (sidebarLink) sidebarLink.style.display = 'none';
     }
 
     // ── Event listeners ─────────────────────────────────────────

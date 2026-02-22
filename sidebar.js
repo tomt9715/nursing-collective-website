@@ -14,11 +14,12 @@
     // ── Page config: which pages get the sidebar + their titles ───
     // NOTE: study-guides & resources are public pages — no sidebar
     var PAGE_CONFIG = {
-        'dashboard':      { title: 'Dashboard',    highlight: 'dashboard' },
-        'my-guides':      { title: 'Study Guides', highlight: 'study-guides' },
-        'my-resources':   { title: 'Resources',    highlight: 'resources' },
-        'settings':       { title: 'Settings',     highlight: 'settings' },
-        'admin':          { title: 'Admin Panel',  highlight: 'admin' }
+        'dashboard':      { title: 'Dashboard',       highlight: 'dashboard' },
+        'my-guides':      { title: 'Study Guides',    highlight: 'study-guides' },
+        'my-resources':   { title: 'Resources',       highlight: 'resources' },
+        'ai-tools':       { title: 'AI Study Tools',  highlight: 'ai-tools' },
+        'settings':       { title: 'Settings',        highlight: 'settings' },
+        'admin':          { title: 'Admin Panel',     highlight: 'admin' }
     };
 
     // ── Hero selectors to hide on each page ──────────────────────
@@ -45,6 +46,9 @@
                     '</a>' +
                     '<a href="my-resources.html" class="dash-sidebar-item" data-sidebar-page="resources">' +
                         '<i class="fas fa-book-reader"></i> Resources' +
+                    '</a>' +
+                    '<a href="ai-tools.html" class="dash-sidebar-item" id="sidebar-ai-tools" data-sidebar-page="ai-tools">' +
+                        '<i class="fas fa-wand-magic-sparkles"></i> AI Tools' +
                     '</a>' +
                 '</div>' +
                 '<div class="dash-sidebar-section">' +

@@ -258,9 +258,11 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         } catch (error) {
             console.error('Checkout error:', error);
+            showPricingToast('Unable to start checkout. Please try again.');
+        } finally {
+            // Always re-enable the button so it's never stuck disabled
             button.innerHTML = originalText;
             button.disabled = false;
-            showPricingToast('Unable to start checkout. Please try again.');
         }
     }
 

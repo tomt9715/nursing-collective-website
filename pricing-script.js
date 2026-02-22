@@ -13,6 +13,28 @@ document.addEventListener('DOMContentLoaded', function() {
     const creditAddonSection = document.getElementById('credit-addon-section');
     const upgradeBanner = document.getElementById('upgrade-banner');
 
+    // ==========================================================================
+    // TOAST NOTIFICATION HELPER
+    // ==========================================================================
+    function showPricingToast(message, type = 'error') {
+        let container = document.querySelector('.pricing-toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'pricing-toast-container';
+            document.body.appendChild(container);
+        }
+        const toast = document.createElement('div');
+        toast.className = `pricing-toast ${type}`;
+        const icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+        toast.innerHTML = `<i class="fas ${icon}"></i> <span>${message}</span>`;
+        container.appendChild(toast);
+
+        setTimeout(() => {
+            toast.style.animation = 'pricingToastOut 0.3s ease forwards';
+            toast.addEventListener('animationend', () => toast.remove());
+        }, 4000);
+    }
+
     const tierDescriptions = {
         'standard': 'Full access to 50+ study guides, clinical resources, and quick reference tools.',
         'ai-powered': 'Everything in Standard plus AI-powered study tools and personalized learning.'
@@ -223,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = user.email || user.user_email || '';
 
         if (!email) {
-            alert('Unable to determine your email. Please log out and log back in.');
+            showPricingToast('Unable to determine your email. Please log out and log back in.');
             return;
         }
 
@@ -243,7 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Checkout error:', error);
             button.innerHTML = originalText;
             button.disabled = false;
-            alert('Unable to start checkout. Please try again.');
+            showPricingToast('Unable to start checkout. Please try again.');
         }
     }
 
@@ -318,7 +340,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     this.innerHTML = originalText;
                     this.disabled = false;
                 }, 2000);
-                alert('Unable to download PDF. Please try again or contact support.');
+                showPricingToast('Unable to download PDF. Please try again or contact support.');
             }
         });
     });
@@ -343,6 +365,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Close all items
                 faqItems.forEach(otherItem => {
                     otherItem.classList.remove('active');
+                    const otherQuestion = otherItem.querySelector('.faq-question');
+                    if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
                     const otherAnswer = otherItem.querySelector('.faq-answer');
                     if (otherAnswer) otherAnswer.style.display = 'none';
                     const otherIcon = otherItem.querySelector('.faq-question i');
@@ -352,6 +376,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Open this item if it wasn't active
                 if (!isActive) {
                     item.classList.add('active');
+                    question.setAttribute('aria-expanded', 'true');
                     answer.style.display = 'block';
                     const icon = question.querySelector('i');
                     if (icon) icon.style.transform = 'rotate(180deg)';
@@ -360,11 +385,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Set initial aria-expanded="false" on all FAQ buttons
+    faqItems.forEach(item => {
+        const q = item.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
+    });
+
     // Open first FAQ by default
     if (faqItems.length > 0) {
+        const firstQuestion = faqItems[0].querySelector('.faq-question');
         const firstAnswer = faqItems[0].querySelector('.faq-answer');
         const firstIcon = faqItems[0].querySelector('.faq-question i');
         faqItems[0].classList.add('active');
+        if (firstQuestion) firstQuestion.setAttribute('aria-expanded', 'true');
         if (firstAnswer) firstAnswer.style.display = 'block';
         if (firstIcon) firstIcon.style.transform = 'rotate(180deg)';
     }
@@ -373,45 +406,58 @@ document.addEventListener('DOMContentLoaded', function() {
     // ANIMATIONS
     // ==========================================================================
 
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
+    // Only apply scroll-reveal if IntersectionObserver is supported and
+    // the element is NOT already in view (prevents invisible-on-load bug).
+    if ('IntersectionObserver' in window) {
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target); // Only animate once
+                }
+            });
+        }, observerOptions);
+
+        const animateTargets = [
+            ...document.querySelectorAll('.pricing-card'),
+            ...document.querySelectorAll('.stat-item')
+        ];
+
+        animateTargets.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            // If element is already visible in the viewport, don't hide it
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                return; // Already in view — skip animation setup
             }
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
         });
-    }, observerOptions);
-
-    document.querySelectorAll('.pricing-card').forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-
-    document.querySelectorAll('.stat-item').forEach(stat => {
-        stat.style.opacity = '0';
-        stat.style.transform = 'translateY(30px)';
-        stat.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(stat);
-    });
+    }
 
     // ==========================================================================
     // SMOOTH SCROLL
     // ==========================================================================
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+        // Skip non-scroll anchors (logout, empty hash, etc.)
+        if (!href || href === '#' || href === '#logout' || href.startsWith('#signup')) return;
+
         anchor.addEventListener('click', function(e) {
-            e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
+                e.preventDefault();
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
+            // If no matching target, let the browser handle normally
         });
     });
 

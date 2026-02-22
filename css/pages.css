@@ -4445,7 +4445,7 @@
 /* Unified pricing container */
 .pricing-unified-container {
     position: relative;
-    overflow: hidden;
+    overflow: clip;
     background: var(--card-background, #ffffff);
     border: 1px solid var(--border-color, #e5e7eb);
     border-radius: 20px;
@@ -4883,6 +4883,54 @@
 
 .faq-answer a {
     color: var(--primary-color);
+}
+
+/* Pricing Toast Notifications */
+.pricing-toast-container {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pricing-toast {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 20px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    animation: pricingToastIn 0.3s ease;
+    max-width: 380px;
+}
+
+.pricing-toast.error {
+    background: #ef4444;
+}
+
+.pricing-toast.info {
+    background: #3b82f6;
+}
+
+.pricing-toast i {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+@keyframes pricingToastIn {
+    from { opacity: 0; transform: translateX(30px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pricingToastOut {
+    from { opacity: 1; transform: translateX(0); }
+    to { opacity: 0; transform: translateX(30px); }
 }
 
 /* Pricing CTA Section */

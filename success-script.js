@@ -55,6 +55,13 @@ async function verifySubscription(sessionId) {
             }
         }
 
+        // If still not authenticated after refresh attempt, show account creation prompt
+        // instead of polling uselessly for 30 seconds
+        if (!localStorage.getItem('accessToken')) {
+            showGuestSubscriptionSuccess();
+            return;
+        }
+
         pollStartTime = Date.now();
 
         const checkStatus = async () => {
@@ -192,9 +199,57 @@ function showSubscriptionSuccess(subscription) {
 }
 
 /**
+ * Show success state for unauthenticated users (guest subscription purchase)
+ * Prompts them to create an account to activate their subscription.
+ */
+function showGuestSubscriptionSuccess() {
+    const container = document.getElementById('success-content');
+
+    container.innerHTML = `
+        <div class="success-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <i class="fas fa-check"></i>
+        </div>
+        <h1 class="success-title">Payment Successful!</h1>
+        <p class="success-message">
+            Your payment was received! To activate your subscription and start studying, create an account or sign in using the same email you used at checkout.
+        </p>
+
+        <div class="guest-warning">
+            <div class="guest-warning-header">
+                <i class="fas fa-info-circle" style="color: var(--primary-color);"></i>
+                <h4>One more step</h4>
+            </div>
+            <p>Create a free account to access your study guides, track your progress, and manage your subscription. Use the same email you entered during checkout so we can link your payment.</p>
+        </div>
+
+        <div class="success-actions" style="margin-top: 24px;">
+            <a href="login.html?redirect=dashboard&signup=true" class="btn btn-primary btn-large">
+                <i class="fas fa-user-plus"></i>
+                Create Account
+            </a>
+            <a href="login.html?redirect=dashboard" class="btn btn-light">
+                <i class="fas fa-sign-in-alt"></i>
+                Already have an account? Sign in
+            </a>
+        </div>
+
+        <div class="email-note">
+            <i class="fas fa-envelope"></i>
+            <p>A confirmation email with your receipt has been sent to your email address. If you need help, contact <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>.</p>
+        </div>
+    `;
+}
+
+/**
  * Show subscription timeout state
  */
 function showSubscriptionTimeoutState() {
+    // Safety net: if user is not logged in, show guest prompt instead
+    if (!isUserLoggedIn()) {
+        showGuestSubscriptionSuccess();
+        return;
+    }
+
     const container = document.getElementById('success-content');
 
     container.innerHTML = `

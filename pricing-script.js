@@ -233,12 +233,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function handleSubscriptionClick(planId, button) {
-        // Get user email if logged in (pre-fills Stripe checkout)
-        let email = '';
-        if (typeof isAuthenticated === 'function' && isAuthenticated()) {
-            const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
-            email = user.email || user.user_email || '';
+        // Require authentication before checkout
+        if (typeof isAuthenticated === 'function' && !isAuthenticated()) {
+            showAuthModal(planId);
+            return;
         }
+
+        // Get user email (pre-fills Stripe checkout)
+        let email = '';
+        const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
+        email = user.email || user.user_email || '';
 
         // Show loading state on button
         const originalText = button.innerHTML;
@@ -262,6 +266,178 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Legacy cleanup: remove any stale intendedPlan from before direct-checkout flow
     sessionStorage.removeItem('intendedPlan');
+
+    // ==========================================================================
+    // PRE-CHECKOUT AUTH MODAL
+    // ==========================================================================
+
+    function showAuthModal(planId) {
+        // Remove existing modal if any
+        const existing = document.getElementById('pricing-auth-overlay');
+        if (existing) existing.remove();
+
+        const overlay = document.createElement('div');
+        overlay.id = 'pricing-auth-overlay';
+        overlay.className = 'pricing-auth-overlay';
+
+        const modal = document.createElement('div');
+        modal.className = 'pricing-auth-modal';
+        modal.setAttribute('role', 'dialog');
+        modal.setAttribute('aria-label', 'Sign in to subscribe');
+
+        modal.innerHTML = `
+            <button class="pricing-auth-close" aria-label="Close">&times;</button>
+            <div class="pricing-auth-header">
+                <div class="pricing-auth-icon">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <h2 class="pricing-auth-title">Sign in to subscribe</h2>
+                <p class="pricing-auth-subtitle">Create a free account to access your study guides, track progress, and manage your subscription.</p>
+            </div>
+            <div class="pricing-auth-body">
+                <button class="auth-btn google" data-modal-auth="google">
+                    <svg class="auth-icon" width="20" height="20" viewBox="0 0 48 48">
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+                        <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+                        <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+                    </svg>
+                    <span class="auth-btn-text">Continue with Google</span>
+                </button>
+                <button class="auth-btn discord" data-modal-auth="discord">
+                    <i class="fab fa-discord auth-icon"></i>
+                    <span class="auth-btn-text">Continue with Discord</span>
+                </button>
+                <div class="auth-divider"><span>or</span></div>
+                <button class="auth-btn email" data-modal-auth="email">
+                    <i class="fas fa-envelope auth-icon"></i>
+                    <span class="auth-btn-text">Continue with Email</span>
+                </button>
+            </div>
+            <div class="pricing-auth-footer">
+                <p>Already have an account? <a href="#" data-modal-auth="signin">Sign in</a></p>
+            </div>
+        `;
+
+        overlay.appendChild(modal);
+        document.body.appendChild(overlay);
+        document.body.style.overflow = 'hidden';
+
+        // Force reflow then add active class for animation
+        void overlay.offsetWidth;
+        overlay.classList.add('active');
+
+        // --- Event listeners (no inline onclick) ---
+
+        // Close button
+        modal.querySelector('.pricing-auth-close').addEventListener('click', closeAuthModal);
+
+        // Overlay click (outside modal)
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) closeAuthModal();
+        });
+
+        // Escape key
+        function handleEscape(e) {
+            if (e.key === 'Escape') closeAuthModal();
+        }
+        document.addEventListener('keydown', handleEscape);
+
+        function closeAuthModal() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            document.removeEventListener('keydown', handleEscape);
+            // Wait for fade-out animation
+            setTimeout(() => overlay.remove(), 200);
+        }
+
+        // Google button
+        modal.querySelector('[data-modal-auth="google"]').addEventListener('click', function() {
+            startOAuthFromModal(planId, 'google', this);
+        });
+
+        // Discord button
+        modal.querySelector('[data-modal-auth="discord"]').addEventListener('click', function() {
+            startOAuthFromModal(planId, 'discord', this);
+        });
+
+        // Email button → redirect to login page
+        modal.querySelector('[data-modal-auth="email"]').addEventListener('click', function() {
+            sessionStorage.setItem('pendingCheckoutPlan', planId);
+            window.location.href = 'login.html?redirect=pricing&signup=true';
+        });
+
+        // Sign in link
+        modal.querySelector('[data-modal-auth="signin"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            sessionStorage.setItem('pendingCheckoutPlan', planId);
+            window.location.href = 'login.html?redirect=pricing';
+        });
+    }
+
+    async function startOAuthFromModal(planId, provider, button) {
+        // Store pending plan and redirect target
+        sessionStorage.setItem('pendingCheckoutPlan', planId);
+        sessionStorage.setItem('authRedirect', 'pricing');
+
+        // Show loading state
+        const originalHTML = button.innerHTML;
+        button.innerHTML = '<i class="fas fa-spinner fa-spin auth-icon"></i> <span class="auth-btn-text">Connecting...</span>';
+        button.disabled = true;
+
+        try {
+            // Fetch OAuth URL from backend (same endpoint as auth-script.js)
+            const response = await fetch(`${API_URL}/auth/oauth/${provider}`, {
+                method: 'GET',
+                headers: { 'Content-Type': 'application/json' },
+                mode: 'cors'
+            });
+
+            const data = await response.json();
+
+            if (data.authorization_url) {
+                window.location.href = data.authorization_url;
+            } else {
+                throw new Error('No authorization URL returned');
+            }
+        } catch (error) {
+            console.error('OAuth error:', error);
+            button.innerHTML = originalHTML;
+            button.disabled = false;
+            showPricingToast('Unable to connect. Please try again.');
+        }
+    }
+
+    // ==========================================================================
+    // AUTO-CHECKOUT ON RETURN FROM AUTH
+    // ==========================================================================
+
+    (async function checkPendingCheckout() {
+        const pendingPlan = sessionStorage.getItem('pendingCheckoutPlan');
+        if (!pendingPlan) return;
+
+        // Only proceed if user is now authenticated
+        if (typeof isAuthenticated !== 'function' || !isAuthenticated()) return;
+
+        // Clear immediately to prevent re-triggering
+        sessionStorage.removeItem('pendingCheckoutPlan');
+
+        // If AI plan, ensure AI toggle is active
+        if (pendingPlan.startsWith('ai-')) {
+            const aiToggle = document.querySelector('.tier-toggle-btn[data-tier="ai-powered"]');
+            if (aiToggle && !aiToggle.classList.contains('active')) {
+                aiToggle.click();
+                // Small delay to let tier toggle update data-plan attributes
+                await new Promise(r => setTimeout(r, 100));
+            }
+        }
+
+        // Find matching button (may need updated data-plan from tier toggle)
+        const matchingBtn = document.querySelector(`.btn-pricing[data-plan="${pendingPlan}"]`);
+
+        // Auto-trigger checkout
+        await handleSubscriptionClick(pendingPlan, matchingBtn || document.createElement('button'));
+    })();
 
     // ==========================================================================
     // FREE GUIDE PDF DOWNLOAD

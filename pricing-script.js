@@ -47,6 +47,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 tierDescription.textContent = tierDescriptions[selectedTier];
             }
 
+            // Fire energy ripple when switching to AI
+            if (selectedTier === 'ai-powered') {
+                fireEnergyRipple(this);
+            }
+
             // Update pricing cards
             updatePricingCards(selectedTier);
 
@@ -88,9 +93,14 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Add/remove AI styling on cards
+        // Add/remove AI styling on cards (force re-trigger animation)
         document.querySelectorAll('.pricing-card').forEach(card => {
-            card.classList.toggle('ai-tier', isAI);
+            card.classList.remove('ai-tier');
+            if (isAI) {
+                // Force reflow to re-trigger CSS animation
+                void card.offsetWidth;
+                card.classList.add('ai-tier');
+            }
         });
 
         // Toggle AI items in "What's Included" section
@@ -105,6 +115,28 @@ document.addEventListener('DOMContentLoaded', function() {
                 ? 'What You Get With AI-Powered Access'
                 : 'What You Get With Full Access';
         }
+    }
+
+    // ==========================================================================
+    // AI ENERGY RIPPLE EFFECT
+    // ==========================================================================
+    function fireEnergyRipple(toggleBtn) {
+        const container = document.querySelector('.pricing-unified-container');
+        if (!container) return;
+
+        const ripple = document.createElement('div');
+        ripple.className = 'ai-energy-ripple';
+
+        // Position ripple at the toggle button center
+        const btnRect = toggleBtn.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        ripple.style.left = (btnRect.left + btnRect.width / 2 - containerRect.left) + 'px';
+        ripple.style.top = (btnRect.top + btnRect.height / 2 - containerRect.top) + 'px';
+
+        container.appendChild(ripple);
+
+        // Remove after animation completes
+        ripple.addEventListener('animationend', () => ripple.remove());
     }
 
     // ==========================================================================

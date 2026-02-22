@@ -1046,7 +1046,7 @@ async function loadSidebarSubscription() {
         if (subscription) {
             const planName = planDisplayNames[subscription.plan_id] || subscription.plan_name || 'Plan';
             const isActive = subscription.is_active;
-            const isLifetime = subscription.plan_id === 'lifetime-access';
+            const isLifetime = subscription.plan_id === 'lifetime-access' || subscription.plan_id === 'ai-lifetime-access';
             const isCancelling = subscription.cancel_at_period_end;
 
             let statusClass = 'active';
@@ -1059,7 +1059,8 @@ async function loadSidebarSubscription() {
             if (isLifetime) {
                 detailText = '<strong>Lifetime</strong> — never expires';
             } else if (subscription.expires_at) {
-                const label = isCancelling ? 'Access until' : (subscription.plan_id === 'monthly-access' ? 'Renews' : 'Expires');
+                const isMonthly = subscription.plan_id === 'monthly-access' || subscription.plan_id === 'ai-monthly-access';
+                const label = isCancelling ? 'Access until' : (isMonthly ? 'Renews' : 'Expires');
                 detailText = label + ' <strong>' + formatDate(subscription.expires_at) + '</strong>';
             }
 

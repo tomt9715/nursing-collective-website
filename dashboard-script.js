@@ -115,13 +115,19 @@ async function getSubscriptionStatusCached() {
 const planDisplayNames = {
     'monthly-access': 'Monthly',
     'semester-access': 'Semester',
-    'lifetime-access': 'Lifetime'
+    'lifetime-access': 'Lifetime',
+    'ai-monthly-access': 'AI Monthly',
+    'ai-semester-access': 'AI Semester',
+    'ai-lifetime-access': 'AI Lifetime'
 };
 
 const planDisplayNamesFull = {
     'monthly-access': 'Monthly Access',
     'semester-access': 'Semester Access',
-    'lifetime-access': 'Lifetime Access'
+    'lifetime-access': 'Lifetime Access',
+    'ai-monthly-access': 'AI-Powered Monthly',
+    'ai-semester-access': 'AI-Powered Semester',
+    'ai-lifetime-access': 'AI-Powered Lifetime'
 };
 
 function updateCompactStats(user) {
@@ -1058,8 +1064,12 @@ async function loadSidebarSubscription() {
             }
 
             let actionHtml = '';
+            const isAiPlan = subscription.plan_id && subscription.plan_id.startsWith('ai-');
             if (!isActive) {
                 actionHtml = '<a href="pricing.html" class="sidebar-sub-resubscribe"><i class="fas fa-rocket"></i> Resubscribe</a>';
+            } else if (!isAiPlan) {
+                // Standard plan user — show upgrade CTA
+                actionHtml = '<a href="pricing.html?tier=ai" class="sidebar-sub-upgrade"><i class="fas fa-bolt"></i> Upgrade to AI</a>';
             }
 
             widget.className = 'sidebar-sub-widget';
@@ -1091,6 +1101,47 @@ async function loadSidebarSubscription() {
 // Keep loadSubscriptionManagement as a thin wrapper (hidden container still used for data)
 async function loadSubscriptionManagement() {
     await loadSidebarSubscription();
+    await loadAiPromoCard();
+}
+
+// ==================== AI Upgrade Promo Card ====================
+
+async function loadAiPromoCard() {
+    var promoCard = document.getElementById('ai-promo-card');
+    if (!promoCard) return;
+
+    // Check if user dismissed the promo
+    if (localStorage.getItem('aiPromoDismissed') === 'true') return;
+
+    try {
+        var result = await getSubscriptionStatusCached();
+        var subscription = result.subscription;
+
+        // Only show for active Standard plan subscribers (not AI, not expired, not no-sub)
+        if (!subscription || !subscription.is_active) return;
+        if (subscription.plan_id && subscription.plan_id.startsWith('ai-')) return;
+
+        // Show the card
+        promoCard.classList.remove('hidden');
+
+        // Dismiss handler
+        var dismissBtn = document.getElementById('dismiss-ai-promo-btn');
+        if (dismissBtn) {
+            dismissBtn.addEventListener('click', function() {
+                promoCard.style.opacity = '0';
+                promoCard.style.transform = 'translateY(-10px)';
+                promoCard.style.transition = 'opacity .3s ease, transform .3s ease';
+                setTimeout(function() {
+                    promoCard.classList.add('hidden');
+                    promoCard.style.opacity = '';
+                    promoCard.style.transform = '';
+                }, 300);
+                localStorage.setItem('aiPromoDismissed', 'true');
+            });
+        }
+    } catch (error) {
+        console.error('Error loading AI promo card:', error);
+    }
 }
 
 // ==================== Continue Studying Hero ====================

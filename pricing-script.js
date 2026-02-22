@@ -409,6 +409,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // ==========================================================================
+    // AUTO-SELECT AI TIER FROM URL PARAM (e.g. ?tier=ai from dashboard)
+    // ==========================================================================
+
+    (function checkTierParam() {
+        var params = new URLSearchParams(window.location.search);
+        var tier = params.get('tier');
+        if (tier === 'ai') {
+            var aiToggle = document.querySelector('.tier-toggle-btn[data-tier="ai-powered"]');
+            if (aiToggle && !aiToggle.classList.contains('active')) {
+                aiToggle.click();
+            }
+            // Scroll down to pricing cards after a brief delay
+            setTimeout(function() {
+                var cards = document.querySelector('.pricing-plans-grid');
+                if (cards) {
+                    cards.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }, 300);
+        }
+    })();
+
+    // ==========================================================================
     // AUTO-CHECKOUT ON RETURN FROM AUTH
     // ==========================================================================
 

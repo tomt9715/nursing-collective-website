@@ -4277,6 +4277,19 @@
     color: #e11d48;
 }
 
+/* AI "Everything in Standard" line */
+.pricing-card-features li.ai-includes-standard {
+    font-weight: 600;
+    color: var(--primary-color);
+    padding-bottom: 12px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.pricing-card-features li.ai-includes-standard i {
+    color: var(--primary-color);
+}
+
 /* AI Feature List Items */
 .pricing-card-features li.ai-feature {
     color: var(--text-primary);

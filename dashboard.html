@@ -302,6 +302,135 @@
             .continue-hero-left{flex-direction:column}
             .continue-hero-text .continue-label{text-align:center}
         }
+
+        /* ═══ AI Study Tools (Phase 1) ═══ */
+        .ai-tools-section{margin-top:28px;padding:24px;background:#fff;border-radius:16px;border:1px solid rgba(0,0,0,.06);box-shadow:0 1px 3px rgba(0,0,0,.04)}
+        .ai-tools-section .section-header-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+        .ai-tools-section .section-title{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#0f172a;display:flex;align-items:center;gap:8px;margin:0}
+        .ai-tools-section .section-title i{color:#7c3aed;font-size:1rem}
+
+        /* Upload dropzone */
+        .ai-upload-dropzone{border:2px dashed #cbd5e1;border-radius:12px;padding:32px 24px;text-align:center;cursor:pointer;transition:all .2s ease;background:#fafbfc}
+        .ai-upload-dropzone:hover,.ai-upload-dropzone.drag-over{border-color:#7c3aed;background:rgba(124,58,237,.04)}
+        .ai-upload-dropzone.drag-over{box-shadow:0 0 0 3px rgba(124,58,237,.12)}
+        .ai-upload-icon{font-size:2rem;color:#94a3b8;margin-bottom:8px;transition:color .2s}
+        .ai-upload-dropzone:hover .ai-upload-icon,.ai-upload-dropzone.drag-over .ai-upload-icon{color:#7c3aed}
+        .ai-upload-text{font-family:'Source Sans 3',sans-serif;font-size:.95rem;color:#475569;margin-bottom:4px}
+        .ai-upload-text strong{display:block;font-size:1rem;color:#1e293b;margin-bottom:2px}
+        .ai-upload-text span{font-size:.85rem;color:#94a3b8}
+        .ai-upload-formats{font-size:.75rem;color:#94a3b8;margin-top:8px}
+
+        /* Upload progress */
+        .ai-upload-progress{margin-top:12px;padding:12px 16px;background:#f8fafc;border-radius:10px;border:1px solid rgba(0,0,0,.06)}
+        .ai-progress-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;font-size:.82rem;color:#475569}
+        .ai-progress-filename{font-weight:600;max-width:70%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+        .ai-progress-bar{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden}
+        .ai-progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a78bfa);border-radius:3px;transition:width .3s ease}
+
+        /* Documents list */
+        .ai-documents{margin-top:20px}
+        .ai-documents-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+        .ai-documents-header h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:600;color:#334155;margin:0}
+        .ai-refresh-btn{background:none;border:none;color:#94a3b8;cursor:pointer;padding:4px 8px;border-radius:6px;transition:all .15s}
+        .ai-refresh-btn:hover{color:#7c3aed;background:rgba(124,58,237,.06)}
+
+        .ai-documents-list{display:flex;flex-direction:column;gap:8px}
+        .ai-empty-state{text-align:center;padding:24px;color:#94a3b8}
+        .ai-empty-state i{font-size:2rem;margin-bottom:8px;display:block}
+        .ai-empty-state p{font-size:.88rem;margin:0}
+
+        /* Document card */
+        .ai-doc-card{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#f8fafc;border-radius:10px;border:1px solid rgba(0,0,0,.05);transition:border-color .15s}
+        .ai-doc-card:hover{border-color:rgba(124,58,237,.2)}
+        .ai-doc-icon{font-size:1.3rem;color:#7c3aed;flex-shrink:0;width:32px;text-align:center}
+        .ai-doc-info{flex:1;min-width:0}
+        .ai-doc-name{font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:600;color:#1e293b;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+        .ai-doc-meta{font-size:.72rem;color:#94a3b8;margin-top:2px}
+        .ai-doc-status{flex-shrink:0;display:flex;align-items:center;gap:6px;font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:8px}
+        .ai-doc-status.status-ready{background:rgba(16,185,129,.1);color:#059669}
+        .ai-doc-status.status-processing{background:rgba(245,158,11,.1);color:#d97706}
+        .ai-doc-status.status-failed{background:rgba(239,68,68,.1);color:#dc2626}
+        .ai-doc-status.status-uploaded{background:rgba(59,130,246,.1);color:#3b82f6}
+        .ai-doc-actions{display:flex;gap:6px;flex-shrink:0;margin-left:8px}
+        .ai-doc-btn{padding:6px 14px;font-size:.78rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:all .15s;font-family:'Source Sans 3',sans-serif}
+        .ai-doc-btn.btn-summarize{background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff}
+        .ai-doc-btn.btn-summarize:hover{box-shadow:0 2px 8px rgba(124,58,237,.3);transform:translateY(-1px)}
+        .ai-doc-btn.btn-summarize:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+        .ai-doc-btn.btn-delete{background:none;color:#94a3b8;padding:6px 8px}
+        .ai-doc-btn.btn-delete:hover{color:#ef4444;background:rgba(239,68,68,.06)}
+        .ai-doc-btn.btn-quiz{background:rgba(59,130,246,.1);color:#3b82f6;opacity:.5;cursor:not-allowed}
+
+        /* Processing spinner */
+        .ai-spinner{display:inline-block;width:14px;height:14px;border:2px solid rgba(217,119,6,.3);border-top-color:#d97706;border-radius:50%;animation:ai-spin .8s linear infinite}
+        @keyframes ai-spin{to{transform:rotate(360deg)}}
+
+        /* Summary overlay/modal */
+        .ai-summary-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:24px}
+        .ai-summary-modal{background:#fff;border-radius:16px;width:100%;max-width:720px;max-height:85vh;display:flex;flex-direction:column;box-shadow:0 8px 32px rgba(0,0,0,.15)}
+        .ai-summary-header{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-bottom:1px solid rgba(0,0,0,.06)}
+        .ai-summary-header h3{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:700;color:#1e293b;margin:0}
+        .ai-summary-close{background:none;border:none;color:#94a3b8;font-size:1.1rem;cursor:pointer;padding:4px 8px;border-radius:6px;transition:all .15s}
+        .ai-summary-close:hover{color:#ef4444;background:rgba(239,68,68,.06)}
+        .ai-summary-content{flex:1;overflow-y:auto;padding:24px;font-family:'Source Sans 3',sans-serif;font-size:.92rem;line-height:1.7;color:#334155}
+        .ai-summary-content h1,.ai-summary-content h2,.ai-summary-content h3{font-family:'Outfit',sans-serif;color:#1e293b;margin:20px 0 8px}
+        .ai-summary-content h2{font-size:1.1rem;font-weight:700;padding-bottom:6px;border-bottom:2px solid rgba(124,58,237,.15)}
+        .ai-summary-content h3{font-size:.98rem;font-weight:600}
+        .ai-summary-content ul,.ai-summary-content ol{padding-left:20px;margin:8px 0}
+        .ai-summary-content li{margin-bottom:4px}
+        .ai-summary-content strong{color:#7c3aed}
+        .ai-summary-content code{background:rgba(124,58,237,.06);padding:1px 5px;border-radius:4px;font-size:.85rem}
+        .ai-summary-footer{padding:12px 24px;border-top:1px solid rgba(0,0,0,.06);text-align:center}
+        .ai-disclaimer{font-size:.73rem;color:#94a3b8;display:flex;align-items:center;justify-content:center;gap:6px}
+        .ai-disclaimer i{color:#f59e0b;font-size:.8rem}
+
+        /* Upgrade prompt */
+        .ai-upgrade-prompt{margin-top:28px}
+        .ai-upgrade-card{text-align:center;padding:40px 24px;background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%);border:1px solid #c4b5fd;border-radius:16px}
+        .ai-upgrade-icon{font-size:2.5rem;color:#7c3aed;margin-bottom:12px}
+        .ai-upgrade-card h3{font-family:'Outfit',sans-serif;font-size:1.15rem;font-weight:700;color:#1e293b;margin:0 0 8px}
+        .ai-upgrade-card p{font-size:.9rem;color:#64748b;max-width:420px;margin:0 auto 16px;line-height:1.5}
+        .ai-upgrade-btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;background:linear-gradient(135deg,#7c3aed,#6d28d9);color:#fff;border-radius:10px;font-size:.9rem;font-weight:700;text-decoration:none;transition:all .2s}
+        .ai-upgrade-btn:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(124,58,237,.3);color:#fff;text-decoration:none}
+
+        /* Dark mode overrides */
+        [data-theme="dark"] .ai-tools-section{background:rgba(255,255,255,.03);border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .ai-tools-section .section-title{color:#f1f5f9}
+        [data-theme="dark"] .ai-tools-section .section-title i{color:#a78bfa}
+        [data-theme="dark"] .ai-upload-dropzone{border-color:rgba(255,255,255,.1);background:rgba(255,255,255,.02)}
+        [data-theme="dark"] .ai-upload-dropzone:hover,[data-theme="dark"] .ai-upload-dropzone.drag-over{border-color:#a78bfa;background:rgba(124,58,237,.08)}
+        [data-theme="dark"] .ai-upload-icon{color:#6b7280}
+        [data-theme="dark"] .ai-upload-dropzone:hover .ai-upload-icon{color:#a78bfa}
+        [data-theme="dark"] .ai-upload-text{color:#cbd5e1}
+        [data-theme="dark"] .ai-upload-text strong{color:#f1f5f9}
+        [data-theme="dark"] .ai-upload-formats,[data-theme="dark"] .ai-upload-text span{color:#6b7280}
+        [data-theme="dark"] .ai-upload-progress{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .ai-progress-info{color:#cbd5e1}
+        [data-theme="dark"] .ai-progress-bar{background:rgba(255,255,255,.08)}
+        [data-theme="dark"] .ai-documents-header h3{color:#e2e8f0}
+        [data-theme="dark"] .ai-doc-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .ai-doc-card:hover{border-color:rgba(167,139,250,.3)}
+        [data-theme="dark"] .ai-doc-name{color:#f1f5f9}
+        [data-theme="dark"] .ai-doc-meta{color:#6b7280}
+        [data-theme="dark"] .ai-empty-state{color:#6b7280}
+        [data-theme="dark"] .ai-summary-modal{background:#1e1e2e;border:1px solid rgba(255,255,255,.08)}
+        [data-theme="dark"] .ai-summary-header{border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .ai-summary-header h3{color:#f1f5f9}
+        [data-theme="dark"] .ai-summary-content{color:#cbd5e1}
+        [data-theme="dark"] .ai-summary-content h2,.ai-summary-content h3{color:#f1f5f9}
+        [data-theme="dark"] .ai-summary-content strong{color:#a78bfa}
+        [data-theme="dark"] .ai-summary-content h2{border-color:rgba(167,139,250,.2)}
+        [data-theme="dark"] .ai-summary-footer{border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .ai-upgrade-card{background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.2)}
+        [data-theme="dark"] .ai-upgrade-card h3{color:#f1f5f9}
+        [data-theme="dark"] .ai-upgrade-card p{color:#94a3b8}
+
+        @media(max-width:768px){
+            .ai-upload-dropzone{padding:24px 16px}
+            .ai-doc-card{flex-wrap:wrap;gap:8px}
+            .ai-doc-actions{width:100%;justify-content:flex-end}
+            .ai-summary-overlay{padding:12px}
+            .ai-summary-modal{max-height:90vh}
+        }
     </style>
 
     <!-- Sentry Error Tracking (load first) -->
@@ -405,6 +534,9 @@
                         </a>
                         <a href="my-resources.html" class="dash-sidebar-item">
                             <i class="fas fa-book-reader"></i> Resources
+                        </a>
+                        <a href="#ai-tools-section" class="dash-sidebar-item" id="sidebar-ai-tools" style="display:none;">
+                            <i class="fas fa-wand-magic-sparkles"></i> AI Tools
                         </a>
                     </div>
                     <div class="dash-sidebar-section">
@@ -660,6 +792,88 @@
                     </div>
                 </div>
 
+                <!-- ═══ AI Study Tools Section (Phase 1) ═══ -->
+                <div class="ai-tools-section hidden" id="ai-tools-section">
+                    <div class="section-header-row">
+                        <h2 class="section-title"><i class="fas fa-wand-magic-sparkles"></i> AI Study Tools</h2>
+                    </div>
+
+                    <!-- Upload Area -->
+                    <div class="ai-upload-dropzone" id="ai-upload-dropzone">
+                        <input type="file" id="ai-file-input" accept=".pdf,.docx,.pptx" hidden>
+                        <div class="ai-upload-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+                        <div class="ai-upload-text">
+                            <strong>Drag &amp; drop your lecture notes</strong>
+                            <span>or click to browse</span>
+                        </div>
+                        <div class="ai-upload-formats">PDF, DOCX, PPTX &bull; Max 25 MB</div>
+                    </div>
+
+                    <!-- Upload Progress (hidden by default) -->
+                    <div class="ai-upload-progress hidden" id="ai-upload-progress">
+                        <div class="ai-progress-info">
+                            <span class="ai-progress-filename" id="ai-progress-filename">filename.pdf</span>
+                            <span class="ai-progress-pct" id="ai-progress-pct">0%</span>
+                        </div>
+                        <div class="ai-progress-bar">
+                            <div class="ai-progress-fill" id="ai-progress-fill" style="width:0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Document List -->
+                    <div class="ai-documents" id="ai-documents">
+                        <div class="ai-documents-header">
+                            <h3>Your Documents</h3>
+                            <button class="ai-refresh-btn" id="ai-refresh-btn" title="Refresh">
+                                <i class="fas fa-arrows-rotate"></i>
+                            </button>
+                        </div>
+                        <div class="ai-documents-list" id="ai-documents-list">
+                            <!-- Populated by ai-tools-script.js -->
+                            <div class="ai-empty-state" id="ai-empty-state">
+                                <i class="fas fa-file-circle-plus"></i>
+                                <p>No documents yet. Upload your first set of notes above!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Summary Viewer Modal -->
+                    <div class="ai-summary-overlay hidden" id="ai-summary-overlay">
+                        <div class="ai-summary-modal">
+                            <div class="ai-summary-header">
+                                <h3 id="ai-summary-title">Review Sheet</h3>
+                                <button class="ai-summary-close" id="ai-summary-close">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                            <div class="ai-summary-content" id="ai-summary-content">
+                                <!-- Markdown-rendered summary goes here -->
+                            </div>
+                            <div class="ai-summary-footer">
+                                <span class="ai-disclaimer">
+                                    <i class="fas fa-triangle-exclamation"></i>
+                                    AI-generated content &mdash; verify with your instructor
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upgrade prompt for non-AI users (shown instead of AI tools) -->
+                <div class="ai-upgrade-prompt hidden" id="ai-upgrade-prompt">
+                    <div class="section-header-row">
+                        <h2 class="section-title"><i class="fas fa-wand-magic-sparkles"></i> AI Study Tools</h2>
+                    </div>
+                    <div class="ai-upgrade-card">
+                        <div class="ai-upgrade-icon"><i class="fas fa-sparkles"></i></div>
+                        <h3>Supercharge Your Studying</h3>
+                        <p>Upload your lecture notes and get AI-generated review sheets, NCLEX practice questions, and gap analysis.</p>
+                        <a href="pricing.html?tier=ai" class="ai-upgrade-btn" data-navigate="pricing.html?tier=ai">
+                            <i class="fas fa-bolt"></i> Upgrade to AI-Powered
+                        </a>
+                    </div>
+                </div>
+
                 <!-- Subscription container (hidden, used by JS for data loading) -->
                 <div id="subscription-management-container" style="display:none"></div>
 
@@ -783,5 +997,8 @@
     <script src="app/mastery.js"></script>
 
     <script src="dashboard-script.js?v=5.6.resources"></script>
+
+    <!-- AI Study Tools (Phase 1) -->
+    <script src="ai-tools-script.js?v=1.0.0"></script>
 </body>
 </html>

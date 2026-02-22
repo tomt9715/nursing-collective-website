@@ -106,9 +106,16 @@ function showSubscriptionSuccess(subscription) {
     const planNames = {
         'monthly-access': 'Monthly Access',
         'semester-access': 'Semester Access',
-        'lifetime-access': 'Lifetime Access'
+        'lifetime-access': 'Lifetime Access',
+        'ai-monthly-access': 'AI-Powered Monthly',
+        'ai-semester-access': 'AI-Powered Semester',
+        'ai-lifetime-access': 'AI-Powered Lifetime',
+        'ai-credits-small': 'AI Credits - Small Pack',
+        'ai-credits-large': 'AI Credits - Large Pack'
     };
     const planName = planNames[subscription.plan_id] || subscription.plan_name || 'Subscription';
+    const isAIPlan = subscription.plan_id && subscription.plan_id.startsWith('ai-') && !subscription.plan_id.startsWith('ai-credits');
+    const isCreditAddon = subscription.plan_id && subscription.plan_id.startsWith('ai-credits');
 
     // Format expiration date if exists
     let accessInfo = '';
@@ -119,17 +126,28 @@ function showSubscriptionSuccess(subscription) {
         accessInfo = 'You have lifetime access to all premium content.';
     }
 
+    // AI features callout
+    const aiIncluded = isAIPlan ? `
+                <li><i class="fas fa-robot" style="color: #8b5cf6; margin-right: 4px;"></i> AI-powered note uploads</li>
+                <li><i class="fas fa-robot" style="color: #8b5cf6; margin-right: 4px;"></i> AI-generated NCLEX questions</li>
+                <li><i class="fas fa-robot" style="color: #8b5cf6; margin-right: 4px;"></i> AI summaries &amp; gap analysis</li>` : '';
+
+    const successTitle = isCreditAddon ? 'Credits Added!' : (isAIPlan ? 'Welcome to AI-Powered!' : 'Welcome to Premium!');
+    const successMessage = isCreditAddon
+        ? `Your ${escapeHtml(planName)} has been added to your account. Your additional credits are available immediately.`
+        : `Your ${escapeHtml(planName)} subscription is now active. You have unlimited access to all study guides, clinical resources, and quick reference tools.${isAIPlan ? ' Plus AI-powered study tools!' : ''}`;
+    const successIconGradient = isAIPlan ? 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)' : 'linear-gradient(135deg, #10b981 0%, #059669 100%)';
+    const successIcon = isCreditAddon ? 'fa-plus-circle' : (isAIPlan ? 'fa-robot' : 'fa-crown');
+
     container.innerHTML = `
-        <div class="success-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
-            <i class="fas fa-crown"></i>
+        <div class="success-icon" style="background: ${successIconGradient};">
+            <i class="fas ${successIcon}"></i>
         </div>
-        <h1 class="success-title">Welcome to Premium!</h1>
-        <p class="success-message">
-            Your ${escapeHtml(planName)} subscription is now active. You have unlimited access to all study guides, clinical resources, and quick reference tools.
-        </p>
+        <h1 class="success-title">${successTitle}</h1>
+        <p class="success-message">${successMessage}</p>
 
         <div class="order-details">
-            <h3>Subscription Details</h3>
+            <h3>${isCreditAddon ? 'Purchase Details' : 'Subscription Details'}</h3>
             <div class="order-item">
                 <span class="order-item-label">Plan</span>
                 <span class="order-item-value">${escapeHtml(planName)}</span>
@@ -138,19 +156,20 @@ function showSubscriptionSuccess(subscription) {
                 <span class="order-item-label">Status</span>
                 <span class="order-item-value" style="color: #10b981;"><i class="fas fa-check-circle"></i> Active</span>
             </div>
-            <div class="order-item">
+            ${!isCreditAddon ? `<div class="order-item">
                 <span class="order-item-label">Access</span>
                 <span class="order-item-value">${accessInfo}</span>
-            </div>
+            </div>` : ''}
         </div>
 
         <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: left;">
             <h4 style="margin: 0 0 12px 0; font-size: 1rem; color: var(--text-primary);"><i class="fas fa-lightbulb" style="color: #10b981; margin-right: 8px;"></i>What's included:</h4>
             <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
-                <li>17+ comprehensive study guides</li>
-                <li>7 clinical confidence resources</li>
-                <li>5 quick reference tools</li>
+                <li>50+ comprehensive study guides</li>
+                <li>Clinical confidence resources</li>
+                <li>Quick reference tools</li>
                 <li>New guides added regularly</li>
+                ${aiIncluded}
             </ul>
         </div>
 

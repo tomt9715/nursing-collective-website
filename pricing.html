@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing - Simple, Transparent Options | The Nursing Collective</title>
-    <meta name="description" content="Simple subscription plans for nursing students. Monthly ($14.99/mo), Semester ($44.99), or Lifetime ($119). Access all study guides, clinical resources, and quick reference tools.">
+    <meta name="description" content="Study guide plans starting at $14.99/mo. AI-powered study tools starting at $24.99/mo. Upload your notes, get AI summaries, NCLEX practice questions, and gap analysis.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/pricing.html">
     <meta property="og:title" content="Pricing Plans - The Nursing Collective">
-    <meta property="og:description" content="Simple subscription plans for nursing students. Monthly ($14.99/mo), Semester ($44.99), or Lifetime ($119). Access all study guides, clinical resources, and quick reference tools.">
+    <meta property="og:description" content="Study guide plans starting at $14.99/mo. AI-powered study tools starting at $24.99/mo. Upload your notes, get AI summaries, NCLEX practice questions, and gap analysis.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
     <!-- Favicon -->
@@ -53,7 +53,7 @@
         "@context": "https://schema.org",
         "@type": "WebPage",
         "name": "Pricing - The Nursing Collective",
-        "description": "Subscription plans for nursing students. Monthly ($14.99/mo), Semester ($44.99), or Lifetime ($119). Access all study guides, clinical resources, and quick reference tools.",
+        "description": "Study guide plans and AI-powered study tools for nursing students.",
         "url": "https://thenursingcollective.pro/pricing.html",
         "mainEntity": {
             "@type": "ItemList",
@@ -70,7 +70,7 @@
                 {
                     "@type": "Offer",
                     "name": "Semester Access",
-                    "description": "4 months of full access to all content. Best value at 25% off.",
+                    "description": "4 months of full access to all content.",
                     "price": "44.99",
                     "priceCurrency": "USD",
                     "priceValidUntil": "2027-12-31"
@@ -79,7 +79,31 @@
                     "@type": "Offer",
                     "name": "Lifetime Access",
                     "description": "One-time payment for permanent access to all current and future content.",
-                    "price": "119.00",
+                    "price": "149.00",
+                    "priceCurrency": "USD",
+                    "priceValidUntil": "2027-12-31"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "AI-Powered Monthly",
+                    "description": "All study guides plus AI tools: upload notes, AI summaries, NCLEX question generation, and gap analysis.",
+                    "price": "24.99",
+                    "priceCurrency": "USD",
+                    "priceValidUntil": "2027-12-31"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "AI-Powered Semester",
+                    "description": "4 months of all content plus AI study tools with enhanced limits.",
+                    "price": "74.99",
+                    "priceCurrency": "USD",
+                    "priceValidUntil": "2027-12-31"
+                },
+                {
+                    "@type": "Offer",
+                    "name": "AI-Powered Lifetime",
+                    "description": "Lifetime access to all content plus AI study tools with highest limits.",
+                    "price": "199.00",
                     "priceCurrency": "USD",
                     "priceValidUntil": "2027-12-31"
                 }
@@ -191,7 +215,7 @@
         <div class="container">
             <h1>Choose the plan that<br>works for you</h1>
             <p class="pricing-subtitle">
-                All plans include full access to every study guide, clinical resource, and quick reference tool we offer. No hidden fees, no surprises.
+                Study guides for every nursing topic, or supercharge your studying with AI-powered tools.
             </p>
         </div>
     </section>
@@ -199,11 +223,39 @@
     <!-- Subscription Plans -->
     <section id="plans" class="pricing-plans-section">
         <div class="container">
+
+            <!-- Tier Toggle -->
+            <div class="tier-toggle-container">
+                <div class="tier-toggle-wrapper">
+                    <button class="tier-toggle-btn active" data-tier="standard">
+                        <i class="fas fa-book-open"></i> Study Guides
+                    </button>
+                    <button class="tier-toggle-btn" data-tier="ai-powered">
+                        <i class="fas fa-robot"></i> AI-Powered
+                        <span class="tier-badge-new">NEW</span>
+                    </button>
+                </div>
+                <p class="tier-toggle-description" id="tier-toggle-description">
+                    Full access to 50+ study guides, clinical resources, and quick reference tools.
+                </p>
+            </div>
+
+            <!-- Upgrade Banner (hidden by default, shown via JS for existing Standard subscribers) -->
+            <div class="upgrade-banner hidden" id="upgrade-banner">
+                <div class="upgrade-banner-content">
+                    <div class="upgrade-banner-text">
+                        <i class="fas fa-arrow-up"></i>
+                        <span>Already a subscriber? <strong>Upgrade to AI-Powered</strong> for as little as +$10/month</span>
+                    </div>
+                    <button class="upgrade-banner-btn" id="upgrade-banner-btn">See Upgrade Options</button>
+                </div>
+            </div>
+
             <div class="pricing-plans-grid">
 
                 <!-- Monthly Access -->
                 <div class="pricing-plan-wrapper">
-                    <div class="pricing-card">
+                    <div class="pricing-card" data-card="monthly">
                         <div class="pricing-card-header">
                             <div class="pricing-card-icon">
                                 <i class="fas fa-calendar-alt"></i>
@@ -213,21 +265,31 @@
                         </div>
 
                         <div class="pricing-card-price">
-                            <div class="pricing-card-amount">$14.99</div>
-                            <p>per month • Cancel anytime</p>
+                            <div class="pricing-card-amount" data-standard-price="$14.99" data-ai-price="$24.99">$14.99</div>
+                            <p class="pricing-card-interval" data-standard-interval="per month &bull; Cancel anytime" data-ai-interval="per month &bull; Cancel anytime">per month &bull; Cancel anytime</p>
                         </div>
 
                         <div class="pricing-card-features">
-                            <ul>
+                            <ul class="standard-features">
                                 <li><i class="fas fa-check"></i> All study guides</li>
                                 <li><i class="fas fa-check"></i> Clinical confidence resources</li>
                                 <li><i class="fas fa-check"></i> Quick reference tools</li>
                                 <li><i class="fas fa-check"></i> New content as released</li>
                                 <li><i class="fas fa-check"></i> Cancel anytime</li>
                             </ul>
+                            <ul class="ai-features" style="display: none;">
+                                <li><i class="fas fa-check"></i> All study guides</li>
+                                <li><i class="fas fa-check"></i> Clinical confidence resources</li>
+                                <li><i class="fas fa-check"></i> Quick reference tools</li>
+                                <li><i class="fas fa-check"></i> New content as released</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> 5 note uploads/month</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> 50 AI questions/month</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> AI summaries &amp; gap analysis</li>
+                                <li><i class="fas fa-check"></i> Cancel anytime</li>
+                            </ul>
                         </div>
 
-                        <button class="btn btn-outline-primary btn-pricing" data-plan="monthly-access">
+                        <button class="btn btn-outline-primary btn-pricing" data-plan="monthly-access" data-standard-plan="monthly-access" data-ai-plan="ai-monthly-access">
                             Get Started
                         </button>
                     </div>
@@ -235,7 +297,7 @@
 
                 <!-- Semester Access - BEST VALUE -->
                 <div class="pricing-plan-wrapper featured">
-                    <div class="pricing-card featured">
+                    <div class="pricing-card featured" data-card="semester">
                         <div class="pricing-badge">
                             <i class="fas fa-star"></i> BEST VALUE
                         </div>
@@ -249,21 +311,31 @@
                         </div>
 
                         <div class="pricing-card-price">
-                            <div class="pricing-card-amount">$44.99</div>
-                            <p>one-time • Save 25%</p>
+                            <div class="pricing-card-amount" data-standard-price="$44.99" data-ai-price="$74.99">$44.99</div>
+                            <p class="pricing-card-interval" data-standard-interval="one-time &bull; Save 25%" data-ai-interval="one-time &bull; Save 25%">one-time &bull; Save 25%</p>
                         </div>
 
                         <div class="pricing-card-features">
-                            <ul>
+                            <ul class="standard-features">
                                 <li><i class="fas fa-check"></i> All study guides</li>
                                 <li><i class="fas fa-check"></i> Clinical confidence resources</li>
                                 <li><i class="fas fa-check"></i> Quick reference tools</li>
                                 <li><i class="fas fa-check"></i> New content as released</li>
                                 <li class="highlight"><i class="fas fa-tag"></i> 25% savings vs monthly</li>
                             </ul>
+                            <ul class="ai-features" style="display: none;">
+                                <li><i class="fas fa-check"></i> All study guides</li>
+                                <li><i class="fas fa-check"></i> Clinical confidence resources</li>
+                                <li><i class="fas fa-check"></i> Quick reference tools</li>
+                                <li><i class="fas fa-check"></i> New content as released</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> 10 note uploads/month</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> 100 AI questions/month</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> AI summaries &amp; gap analysis</li>
+                                <li class="highlight"><i class="fas fa-tag"></i> 25% savings vs monthly</li>
+                            </ul>
                         </div>
 
-                        <button class="btn btn-primary btn-pricing" data-plan="semester-access">
+                        <button class="btn btn-primary btn-pricing" data-plan="semester-access" data-standard-plan="semester-access" data-ai-plan="ai-semester-access">
                             Get Semester Access
                         </button>
                     </div>
@@ -271,7 +343,7 @@
 
                 <!-- Lifetime Access -->
                 <div class="pricing-plan-wrapper">
-                    <div class="pricing-card">
+                    <div class="pricing-card" data-card="lifetime">
                         <div class="pricing-card-header">
                             <div class="pricing-card-icon">
                                 <i class="fas fa-infinity"></i>
@@ -281,22 +353,62 @@
                         </div>
 
                         <div class="pricing-card-price">
-                            <div class="pricing-card-amount">$119</div>
-                            <p>one-time • Never expires</p>
+                            <div class="pricing-card-amount" data-standard-price="$149" data-ai-price="$199">$149</div>
+                            <p class="pricing-card-interval" data-standard-interval="one-time &bull; Never expires" data-ai-interval="one-time &bull; Never expires">one-time &bull; Never expires</p>
                         </div>
 
                         <div class="pricing-card-features">
-                            <ul>
+                            <ul class="standard-features">
                                 <li><i class="fas fa-check"></i> All study guides</li>
                                 <li><i class="fas fa-check"></i> Clinical confidence resources</li>
                                 <li><i class="fas fa-check"></i> Quick reference tools</li>
                                 <li><i class="fas fa-check"></i> All future content</li>
                                 <li class="highlight highlight-heart"><i class="fas fa-heart"></i> Support our mission</li>
                             </ul>
+                            <ul class="ai-features" style="display: none;">
+                                <li><i class="fas fa-check"></i> All study guides</li>
+                                <li><i class="fas fa-check"></i> Clinical confidence resources</li>
+                                <li><i class="fas fa-check"></i> Quick reference tools</li>
+                                <li><i class="fas fa-check"></i> All future content</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> 15 note uploads/month</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> 150 AI questions/month</li>
+                                <li class="ai-feature"><i class="fas fa-robot"></i> AI summaries &amp; gap analysis</li>
+                                <li class="highlight highlight-heart"><i class="fas fa-heart"></i> Support our mission</li>
+                            </ul>
                         </div>
 
-                        <button class="btn btn-outline-primary btn-pricing" data-plan="lifetime-access">
+                        <button class="btn btn-outline-primary btn-pricing" data-plan="lifetime-access" data-standard-plan="lifetime-access" data-ai-plan="ai-lifetime-access">
                             Get Lifetime Access
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Credit Add-On Section (visible only when AI-Powered tier is selected) -->
+            <div class="credit-addon-section hidden" id="credit-addon-section">
+                <h3><i class="fas fa-plus-circle"></i> Need More AI Credits?</h3>
+                <p class="credit-addon-subtitle">Available to any AI-Powered plan subscriber</p>
+                <div class="credit-addon-grid">
+                    <div class="credit-addon-card">
+                        <div class="credit-addon-name">Small Pack</div>
+                        <div class="credit-addon-price">$4.99</div>
+                        <ul>
+                            <li><i class="fas fa-upload"></i> 5 additional uploads</li>
+                            <li><i class="fas fa-question-circle"></i> 50 additional questions</li>
+                        </ul>
+                        <button class="btn btn-outline-primary btn-pricing btn-addon" data-plan="ai-credits-small">
+                            Buy Credits
+                        </button>
+                    </div>
+                    <div class="credit-addon-card">
+                        <div class="credit-addon-name">Large Pack</div>
+                        <div class="credit-addon-price">$9.99</div>
+                        <ul>
+                            <li><i class="fas fa-upload"></i> 15 additional uploads</li>
+                            <li><i class="fas fa-question-circle"></i> 150 additional questions</li>
+                        </ul>
+                        <button class="btn btn-outline-primary btn-pricing btn-addon" data-plan="ai-credits-large">
+                            Buy Credits
                         </button>
                     </div>
                 </div>
@@ -304,8 +416,8 @@
 
             <!-- What's Included -->
             <div class="whats-included">
-                <h3>What You Get With Full Access</h3>
-                <div class="included-grid">
+                <h3 id="whats-included-title">What You Get With Full Access</h3>
+                <div class="included-grid" id="whats-included-grid">
                     <div class="included-item">
                         <div class="included-item-icon-styled">
                             <i class="fas fa-book-open"></i>
@@ -374,14 +486,28 @@
 
                 <div class="faq-item">
                     <button class="faq-question">
+                        <span>What are AI-Powered plans?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>
+                            AI-Powered plans include everything in our Study Guides plans, <strong>plus AI study tools</strong>. Upload your own lecture notes and slides, and our AI will generate condensed review sheets, NCLEX-style practice questions tailored to your material, and a gap analysis showing what your notes might be missing. It's like having a personal study assistant.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
                         <span>Which plan should I choose?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            <strong>Monthly ($14.99/mo):</strong> Great if you want to try it out or only need access for a short time.<br><br>
-                            <strong>Semester ($44.99):</strong> 4 months of full access to everything at a 25% discount compared to monthly. Great for focused study periods.<br><br>
-                            <strong>Lifetime ($119):</strong> One payment, access forever. Perfect if you're early in your program and want resources for multiple semesters.
+                            <strong>Study Guides plans</strong> give you full access to all our content:<br><br>
+                            <strong>Monthly ($14.99/mo):</strong> Great if you want to try it out or only need access for a short time.<br>
+                            <strong>Semester ($44.99):</strong> 4 months of full access at a 25% discount. Great for focused study periods.<br>
+                            <strong>Lifetime ($149):</strong> One payment, access forever. Perfect if you're early in your program.<br><br>
+                            <strong>AI-Powered plans</strong> include everything above plus AI study tools that analyze your own notes, generate NCLEX-style practice questions, and identify gaps in your knowledge.
                         </p>
                     </div>
                 </div>
@@ -412,12 +538,12 @@
 
                 <div class="faq-item">
                     <button class="faq-question">
-                        <span>Can I upgrade from monthly to lifetime?</span>
+                        <span>Can I upgrade my plan?</span>
                         <i class="fas fa-chevron-down"></i>
                     </button>
                     <div class="faq-answer">
                         <p>
-                            Yes! You can upgrade at any time. If you decide lifetime makes more sense for you, just switch to that plan and your monthly subscription will be automatically cancelled.
+                            Yes! You can upgrade at any time. Switch from monthly to lifetime, or upgrade from a Study Guides plan to AI-Powered for access to AI study tools. Your existing subscription will be adjusted automatically.
                         </p>
                     </div>
                 </div>

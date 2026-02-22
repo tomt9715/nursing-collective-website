@@ -4277,6 +4277,245 @@
     color: #e11d48;
 }
 
+/* AI Feature List Items */
+.pricing-card-features li.ai-feature {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.pricing-card-features li.ai-feature i {
+    color: #8b5cf6;
+}
+
+/* AI Tier Card Accent */
+.pricing-card.ai-tier {
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.pricing-card.ai-tier.featured {
+    border-color: #8b5cf6;
+}
+
+/* Tier Toggle */
+.tier-toggle-container {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tier-toggle-wrapper {
+    display: inline-flex;
+    background: var(--card-background, #f8f9fa);
+    border-radius: 12px;
+    padding: 4px;
+    gap: 4px;
+    border: 1px solid var(--border-color, #e5e7eb);
+}
+
+.tier-toggle-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    background: transparent;
+    color: var(--text-secondary, #6b7280);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.tier-toggle-btn:hover {
+    color: var(--text-primary);
+}
+
+.tier-toggle-btn.active {
+    background: var(--primary-color, #2E86AB);
+    color: white;
+    box-shadow: 0 2px 8px rgba(46, 134, 171, 0.3);
+}
+
+.tier-toggle-btn[data-tier="ai-powered"].active {
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.3);
+}
+
+.tier-badge-new {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    background: #f59e0b;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+}
+
+.tier-toggle-btn.active .tier-badge-new {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.tier-toggle-description {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 12px;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Upgrade Banner */
+.upgrade-banner {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(109, 40, 217, 0.05));
+    border: 1px solid rgba(139, 92, 246, 0.2);
+    border-radius: 12px;
+    padding: 16px 24px;
+    margin-bottom: 32px;
+}
+
+.upgrade-banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.upgrade-banner-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.upgrade-banner-text i {
+    color: #8b5cf6;
+}
+
+.upgrade-banner-btn {
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+}
+
+.upgrade-banner-btn:hover {
+    opacity: 0.9;
+}
+
+/* Credit Add-On Section */
+.credit-addon-section {
+    text-align: center;
+    margin-top: 48px;
+    padding: 32px;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(109, 40, 217, 0.02));
+    border: 1px solid rgba(139, 92, 246, 0.15);
+    border-radius: 16px;
+}
+
+.credit-addon-section h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.credit-addon-section h3 i {
+    color: #8b5cf6;
+    margin-right: 4px;
+}
+
+.credit-addon-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 24px;
+}
+
+.credit-addon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.credit-addon-card {
+    background: var(--card-background, white);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    padding: 24px;
+    text-align: center;
+}
+
+.credit-addon-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.credit-addon-price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #8b5cf6;
+    margin-bottom: 12px;
+}
+
+.credit-addon-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+    text-align: left;
+}
+
+.credit-addon-card ul li {
+    padding: 4px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.credit-addon-card ul li i {
+    color: #8b5cf6;
+    width: 20px;
+    margin-right: 6px;
+}
+
+.credit-addon-card .btn-addon {
+    border-color: #8b5cf6;
+    color: #8b5cf6;
+}
+
+.credit-addon-card .btn-addon:hover {
+    background: #8b5cf6;
+    color: white;
+}
+
+/* Responsive: tier toggle */
+@media (max-width: 480px) {
+    .tier-toggle-btn {
+        padding: 10px 16px;
+        font-size: 0.85rem;
+    }
+
+    .upgrade-banner-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .credit-addon-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* What's Included Section */
 .whats-included {
     text-align: center;

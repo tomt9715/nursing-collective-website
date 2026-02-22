@@ -1,35 +1,173 @@
 // Pricing Page JavaScript
-// Subscription-based Access System
+// Subscription-based Access System with Standard / AI-Powered tier toggle
 
 document.addEventListener('DOMContentLoaded', function() {
+
+    // ==========================================================================
+    // TIER TOGGLE (Standard vs AI-Powered)
+    // ==========================================================================
+
+    let currentTier = 'standard'; // Default tier
+    const tierToggleBtns = document.querySelectorAll('.tier-toggle-btn');
+    const tierDescription = document.getElementById('tier-toggle-description');
+    const creditAddonSection = document.getElementById('credit-addon-section');
+    const upgradeBanner = document.getElementById('upgrade-banner');
+
+    const tierDescriptions = {
+        'standard': 'Full access to 50+ study guides, clinical resources, and quick reference tools.',
+        'ai-powered': 'Everything in Study Guides plus AI tools: upload your notes, get AI summaries, NCLEX questions, and gap analysis.'
+    };
+
+    const tierButtonLabels = {
+        'standard': {
+            'monthly': 'Get Started',
+            'semester': 'Get Semester Access',
+            'lifetime': 'Get Lifetime Access'
+        },
+        'ai-powered': {
+            'monthly': 'Unlock AI Tools',
+            'semester': 'Get AI Semester',
+            'lifetime': 'Get AI Lifetime'
+        }
+    };
+
+    tierToggleBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const selectedTier = this.getAttribute('data-tier');
+            if (selectedTier === currentTier) return;
+
+            currentTier = selectedTier;
+
+            // Update toggle button active state
+            tierToggleBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            // Update description text
+            if (tierDescription) {
+                tierDescription.textContent = tierDescriptions[selectedTier];
+            }
+
+            // Update pricing cards
+            updatePricingCards(selectedTier);
+
+            // Show/hide credit add-on section
+            if (creditAddonSection) {
+                creditAddonSection.classList.toggle('hidden', selectedTier !== 'ai-powered');
+            }
+        });
+    });
+
+    function updatePricingCards(tier) {
+        const isAI = tier === 'ai-powered';
+
+        // Update prices
+        document.querySelectorAll('.pricing-card-amount').forEach(el => {
+            el.textContent = isAI ? el.dataset.aiPrice : el.dataset.standardPrice;
+        });
+
+        // Update interval text
+        document.querySelectorAll('.pricing-card-interval').forEach(el => {
+            el.innerHTML = isAI ? el.dataset.aiInterval : el.dataset.standardInterval;
+        });
+
+        // Toggle feature lists
+        document.querySelectorAll('.standard-features').forEach(el => {
+            el.style.display = isAI ? 'none' : 'block';
+        });
+        document.querySelectorAll('.ai-features').forEach(el => {
+            el.style.display = isAI ? 'block' : 'none';
+        });
+
+        // Update button data-plan attributes and labels
+        document.querySelectorAll('.btn-pricing[data-standard-plan]').forEach(btn => {
+            const card = btn.closest('.pricing-card');
+            const cardType = card ? card.dataset.card : '';
+            btn.setAttribute('data-plan', isAI ? btn.dataset.aiPlan : btn.dataset.standardPlan);
+            if (tierButtonLabels[tier] && tierButtonLabels[tier][cardType]) {
+                btn.textContent = tierButtonLabels[tier][cardType];
+            }
+        });
+
+        // Add/remove AI styling on cards
+        document.querySelectorAll('.pricing-card').forEach(card => {
+            card.classList.toggle('ai-tier', isAI);
+        });
+    }
+
+    // ==========================================================================
+    // UPGRADE BANNER (for existing Standard subscribers)
+    // ==========================================================================
+
+    // Check if user has an active Standard subscription to show upgrade banner
+    function checkUpgradeBanner() {
+        if (!isAuthenticated || !isAuthenticated()) return;
+
+        // Fetch subscription status to determine if user has Standard plan
+        const apiUrl = (typeof apiService !== 'undefined' && apiService.baseUrl)
+            ? apiService.baseUrl
+            : (window.location.hostname === 'thenursingcollective.pro'
+                ? 'https://api.thenursingcollective.pro'
+                : 'https://staging-backend-production-365a.up.railway.app');
+
+        const token = localStorage.getItem('access_token');
+        if (!token) return;
+
+        fetch(`${apiUrl}/api/subscription-status`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        })
+        .then(r => r.json())
+        .then(data => {
+            if (data.has_access && data.subscription && !data.subscription.is_ai_plan) {
+                // User has Standard plan — show upgrade banner
+                if (upgradeBanner) {
+                    upgradeBanner.classList.remove('hidden');
+                }
+            }
+        })
+        .catch(() => {}); // Silently fail
+    }
+
+    checkUpgradeBanner();
+
+    // Upgrade banner button switches to AI-Powered tier
+    const upgradeBannerBtn = document.getElementById('upgrade-banner-btn');
+    if (upgradeBannerBtn) {
+        upgradeBannerBtn.addEventListener('click', function() {
+            const aiToggle = document.querySelector('.tier-toggle-btn[data-tier="ai-powered"]');
+            if (aiToggle) aiToggle.click();
+            // Scroll to plans
+            const plansSection = document.getElementById('plans');
+            if (plansSection) {
+                plansSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
+    }
 
     // ==========================================================================
     // SUBSCRIPTION PLAN BUTTONS
     // ==========================================================================
 
-    const planButtons = document.querySelectorAll('[data-plan]');
-    const ctaSubscribeBtn = document.getElementById('cta-subscribe-btn');
+    // Use event delegation for plan buttons (since data-plan changes dynamically)
+    document.addEventListener('click', async function(e) {
+        const button = e.target.closest('[data-plan]');
+        if (!button || !button.classList.contains('btn-pricing')) return;
 
-    // Handle subscription plan button clicks
-    planButtons.forEach(button => {
-        button.addEventListener('click', async function() {
-            const planId = this.getAttribute('data-plan');
-            await handleSubscriptionClick(planId, this);
-        });
+        const planId = button.getAttribute('data-plan');
+        await handleSubscriptionClick(planId, button);
     });
 
-    // Handle CTA button click (defaults to monthly)
+    const ctaSubscribeBtn = document.getElementById('cta-subscribe-btn');
     if (ctaSubscribeBtn) {
         ctaSubscribeBtn.addEventListener('click', async function(e) {
             e.preventDefault();
-            await handleSubscriptionClick('monthly-access', this);
+            const planId = currentTier === 'ai-powered' ? 'ai-monthly-access' : 'monthly-access';
+            await handleSubscriptionClick(planId, this);
         });
     }
 
     async function handleSubscriptionClick(planId, button) {
         // Check if user is logged in
         if (!isAuthenticated()) {
-            // Store intended plan and redirect to login
             sessionStorage.setItem('intendedPlan', planId);
             window.location.href = '/login.html?redirect=pricing';
             return;
@@ -50,7 +188,6 @@ document.addEventListener('DOMContentLoaded', function() {
         button.disabled = true;
 
         try {
-            // Create Stripe Checkout Session and redirect
             const data = await createSubscriptionCheckout(planId, email);
             if (data.url) {
                 window.location.href = data.url;
@@ -69,21 +206,26 @@ document.addEventListener('DOMContentLoaded', function() {
     const intendedPlan = sessionStorage.getItem('intendedPlan');
     if (intendedPlan && isAuthenticated()) {
         sessionStorage.removeItem('intendedPlan');
-        // Find and click the button for the intended plan
-        const planButton = document.querySelector(`[data-plan="${intendedPlan}"]`);
-        if (planButton) {
-            // Small delay to ensure page is fully loaded
-            setTimeout(() => {
-                planButton.click();
-            }, 500);
+
+        // If it's an AI plan, switch to AI-Powered tier first
+        if (intendedPlan.startsWith('ai-')) {
+            const aiToggle = document.querySelector('.tier-toggle-btn[data-tier="ai-powered"]');
+            if (aiToggle) aiToggle.click();
         }
+
+        // Find and click the button for the intended plan
+        setTimeout(() => {
+            const planButton = document.querySelector(`[data-plan="${intendedPlan}"]`);
+            if (planButton) {
+                planButton.click();
+            }
+        }, 500);
     }
 
     // ==========================================================================
     // FREE GUIDE PDF DOWNLOAD
     // ==========================================================================
 
-    // Free Guide PDF Download functionality
     const freeGuideButtons = document.querySelectorAll('[data-free-guide]');
 
     freeGuideButtons.forEach(button => {
@@ -91,12 +233,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const guideId = this.getAttribute('data-free-guide');
             const originalText = this.innerHTML;
 
-            // Show loading state
             this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
             this.disabled = true;
 
             try {
-                // Get API URL from apiService if available, otherwise use default
                 const apiUrl = (typeof apiService !== 'undefined' && apiService.baseUrl)
                     ? apiService.baseUrl
                     : 'https://api.thenursingcollective.pro';
@@ -110,11 +250,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error(errorData.message || 'Failed to generate PDF');
                 }
 
-                // Get the PDF blob and download it
                 const blob = await response.blob();
                 const url = window.URL.createObjectURL(blob);
-
-                // Create a temporary link to trigger download
                 const a = document.createElement('a');
                 a.href = url;
                 a.download = `TNC-${guideId}.pdf`;
@@ -123,7 +260,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.removeChild(a);
                 window.URL.revokeObjectURL(url);
 
-                // Show success state
                 this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
                 setTimeout(() => {
                     this.innerHTML = originalText;
@@ -142,65 +278,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Tier Toggle functionality
-    const tierToggles = document.querySelectorAll('.tier-toggle');
-    const tierDescription = document.getElementById('tier-description');
-    let currentTier = 'full'; // Default to Full tier
+    // ==========================================================================
+    // FAQ ACCORDION
+    // ==========================================================================
 
-    tierToggles.forEach(toggle => {
-        toggle.addEventListener('click', function() {
-            const selectedTier = this.getAttribute('data-tier');
-
-            // Update active state on toggle buttons
-            tierToggles.forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-
-            // Update current tier
-            currentTier = selectedTier;
-
-            // Switch tier description content
-            if (tierDescription) {
-                const fullContent = tierDescription.querySelector('.full-tier-content');
-                const liteContent = tierDescription.querySelector('.lite-tier-content');
-
-                if (selectedTier === 'full') {
-                    fullContent.style.display = 'block';
-                    liteContent.style.display = 'none';
-                } else {
-                    fullContent.style.display = 'none';
-                    liteContent.style.display = 'block';
-                }
-            }
-
-            // Update all price displays
-            const fullPrices = document.querySelectorAll('.full-price');
-            const litePrices = document.querySelectorAll('.lite-price');
-
-            fullPrices.forEach(price => {
-                price.style.display = selectedTier === 'full' ? 'block' : 'none';
-            });
-
-            litePrices.forEach(price => {
-                price.style.display = selectedTier === 'lite' ? 'block' : 'none';
-            });
-
-            // Update button text
-            const buttonTexts = document.querySelectorAll('.btn-text');
-            buttonTexts.forEach(btnText => {
-                if (selectedTier === 'full') {
-                    btnText.textContent = 'Get Full Package';
-                } else {
-                    btnText.textContent = 'Get Lite Package';
-                }
-            });
-
-        });
-    });
-
-    // FAQ Accordion
     const faqItems = document.querySelectorAll('.faq-item');
 
-    faqItems.forEach((item, index) => {
+    faqItems.forEach((item) => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
 
@@ -211,32 +295,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 const isActive = item.classList.contains('active');
 
-                // First, close all items (including this one)
+                // Close all items
                 faqItems.forEach(otherItem => {
                     otherItem.classList.remove('active');
                     const otherAnswer = otherItem.querySelector('.faq-answer');
-                    if (otherAnswer) {
-                        otherAnswer.style.display = 'none';
-                    }
+                    if (otherAnswer) otherAnswer.style.display = 'none';
                     const otherIcon = otherItem.querySelector('.faq-question i');
-                    if (otherIcon) {
-                        otherIcon.style.transform = 'rotate(0deg)';
-                    }
+                    if (otherIcon) otherIcon.style.transform = 'rotate(0deg)';
                 });
 
-                // Then, if this item wasn't active before, open it
+                // Open this item if it wasn't active
                 if (!isActive) {
                     item.classList.add('active');
                     answer.style.display = 'block';
                     const icon = question.querySelector('i');
                     if (icon) icon.style.transform = 'rotate(180deg)';
                 }
-
             });
         }
     });
 
-    // Optional: Open first FAQ by default
+    // Open first FAQ by default
     if (faqItems.length > 0) {
         const firstAnswer = faqItems[0].querySelector('.faq-answer');
         const firstIcon = faqItems[0].querySelector('.faq-question i');
@@ -245,45 +324,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (firstIcon) firstIcon.style.transform = 'rotate(180deg)';
     }
 
-    // Add ripple effect to pricing CTAs
-    const ctaButtons = document.querySelectorAll('.pricing-cta');
+    // ==========================================================================
+    // ANIMATIONS
+    // ==========================================================================
 
-    ctaButtons.forEach(button => {
-        button.addEventListener('click', function(e) {
-            const ripple = document.createElement('span');
-            const rect = this.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = e.clientX - rect.left - size / 2;
-            const y = e.clientY - rect.top - size / 2;
-
-            ripple.style.width = ripple.style.height = size + 'px';
-            ripple.style.left = x + 'px';
-            ripple.style.top = y + 'px';
-            ripple.classList.add('ripple');
-
-            this.appendChild(ripple);
-
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-        });
-    });
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Add animation when pricing cards come into view
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -298,7 +342,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observe pricing cards
     document.querySelectorAll('.pricing-card').forEach(card => {
         card.style.opacity = '0';
         card.style.transform = 'translateY(30px)';
@@ -306,7 +349,6 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(card);
     });
 
-    // Observe stat items
     document.querySelectorAll('.stat-item').forEach(stat => {
         stat.style.opacity = '0';
         stat.style.transform = 'translateY(30px)';
@@ -314,25 +356,24 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(stat);
     });
 
-    // Pricing CTA click handlers (placeholder - replace with actual payment integration)
-    document.querySelectorAll('.pricing-cta.primary, .pricing-cta.secondary').forEach(button => {
-        if (!button.hasAttribute('onclick')) {
-            button.addEventListener('click', function() {
-                const planName = this.closest('.pricing-card').querySelector('.plan-name').textContent;
+    // ==========================================================================
+    // SMOOTH SCROLL
+    // ==========================================================================
 
-                // For now, just show an alert
-                // Replace this with your actual payment integration (Stripe, PayPal, etc.)
-                if (planName.includes('Free')) {
-                    window.location.href = 'https://discord.gg/y2Mh77wAV2';
-                } else {
-                    showAlert('Coming Soon', `Checkout for ${planName} plan will be available soon!\n\nThis will integrate with your payment provider (Stripe, PayPal, etc.)`, 'info');
-                    // window.location.href = '/checkout?plan=' + encodeURIComponent(planName);
-                }
-            });
-        }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        });
     });
 
-    // Individual Guides Filter functionality
+    // ==========================================================================
+    // INDIVIDUAL GUIDES FILTER (kept for backwards compatibility)
+    // ==========================================================================
+
     const filterButtons = document.querySelectorAll('.guide-filter-btn');
     const guideItems = document.querySelectorAll('.guide-item');
 
@@ -340,7 +381,6 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function() {
             const filter = this.getAttribute('data-filter');
 
-            // Update active state on filter buttons
             filterButtons.forEach(btn => {
                 btn.style.background = 'transparent';
                 btn.style.color = 'var(--text-primary)';
@@ -353,13 +393,10 @@ document.addEventListener('DOMContentLoaded', function() {
             this.style.borderColor = 'var(--primary-color)';
             this.classList.add('active');
 
-            // Filter guide items
             guideItems.forEach(item => {
                 const category = item.getAttribute('data-category');
-
                 if (filter === 'all' || category === filter) {
                     item.style.display = 'block';
-                    // Add fade-in animation
                     item.style.opacity = '0';
                     item.style.transform = 'translateY(20px)';
                     setTimeout(() => {
@@ -374,33 +411,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
-// Add ripple animation CSS
-const style = document.createElement('style');
-style.textContent = `
-    .ripple {
-        position: absolute;
-        border-radius: 50%;
-        background: rgba(255, 255, 255, 0.5);
-        transform: scale(0);
-        animation: ripple-animation 0.6s ease-out;
-        pointer-events: none;
-    }
-
-    @keyframes ripple-animation {
-        to {
-            transform: scale(4);
-            opacity: 0;
-        }
-    }
-
-    .guide-filter-btn:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-    }
-
-    .guide-item {
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-`;
-document.head.appendChild(style);

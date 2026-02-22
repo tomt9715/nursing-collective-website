@@ -233,20 +233,11 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     async function handleSubscriptionClick(planId, button) {
-        // Check if user is logged in
-        if (!isAuthenticated()) {
-            sessionStorage.setItem('intendedPlan', planId);
-            window.location.href = '/login.html?redirect=pricing';
-            return;
-        }
-
-        // Get user email for Stripe checkout
-        const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
-        const email = user.email || user.user_email || '';
-
-        if (!email) {
-            showPricingToast('Unable to determine your email. Please log out and log back in.');
-            return;
+        // Get user email if logged in (pre-fills Stripe checkout)
+        let email = '';
+        if (typeof isAuthenticated === 'function' && isAuthenticated()) {
+            const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
+            email = user.email || user.user_email || '';
         }
 
         // Show loading state on button
@@ -269,25 +260,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Check if user came back after login with an intended plan
-    const intendedPlan = sessionStorage.getItem('intendedPlan');
-    if (intendedPlan && isAuthenticated()) {
-        sessionStorage.removeItem('intendedPlan');
-
-        // If it's an AI plan, switch to AI-Powered tier first
-        if (intendedPlan.startsWith('ai-')) {
-            const aiToggle = document.querySelector('.tier-toggle-btn[data-tier="ai-powered"]');
-            if (aiToggle) aiToggle.click();
-        }
-
-        // Find and click the button for the intended plan
-        setTimeout(() => {
-            const planButton = document.querySelector(`[data-plan="${intendedPlan}"]`);
-            if (planButton) {
-                planButton.click();
-            }
-        }, 500);
-    }
+    // Legacy cleanup: remove any stale intendedPlan from before direct-checkout flow
+    sessionStorage.removeItem('intendedPlan');
 
     // ==========================================================================
     // FREE GUIDE PDF DOWNLOAD

@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const modal = document.createElement('div');
         modal.className = 'pricing-auth-modal';
         modal.setAttribute('role', 'dialog');
-        modal.setAttribute('aria-label', 'Sign in to subscribe');
+        modal.setAttribute('aria-label', 'Create an account');
 
         modal.innerHTML = `
             <button class="pricing-auth-close" aria-label="Close">&times;</button>
@@ -291,8 +291,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="pricing-auth-icon">
                     <i class="fas fa-user-graduate"></i>
                 </div>
-                <h2 class="pricing-auth-title">Sign in to subscribe</h2>
-                <p class="pricing-auth-subtitle">Create a free account to access your study guides, track progress, and manage your subscription.</p>
+                <h2 class="pricing-auth-title">Create an account</h2>
+                <p class="pricing-auth-subtitle">Sign up for free to access your study guides, track progress, and manage your subscription.</p>
             </div>
             <div class="pricing-auth-body">
                 <button class="auth-btn google" data-modal-auth="google">

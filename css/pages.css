@@ -4150,6 +4150,10 @@
     .pricing-plans-grid {
         grid-template-columns: 1fr;
     }
+
+    .included-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 .pricing-plan-wrapper {
@@ -4310,6 +4314,28 @@
 }
 
 /* Tier Toggle */
+/* Unified pricing container */
+.pricing-unified-container {
+    background: var(--card-background, #ffffff);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 20px;
+    padding: 48px 40px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="dark"] .pricing-unified-container {
+    background: rgba(31, 41, 55, 0.5);
+    border-color: #374151;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .pricing-unified-container {
+        padding: 32px 16px;
+        border-radius: 16px;
+    }
+}
+
 .tier-toggle-container {
     text-align: center;
     margin-bottom: 40px;
@@ -4532,10 +4558,11 @@
 /* What's Included Section */
 .whats-included {
     text-align: center;
-    margin-top: 64px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-top: 48px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border-color, #e5e7eb);
+    max-width: none;
+    width: 100%;
 }
 
 .whats-included h3 {
@@ -4547,14 +4574,15 @@
 
 .included-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
 }
 
 .included-item {
-    padding: 20px;
+    padding: 24px 20px;
     background: var(--background-light);
     border-radius: 12px;
+    text-align: center;
 }
 
 .included-item-icon {
@@ -4570,6 +4598,49 @@
     font-size: 0.9rem;
     color: var(--text-secondary);
     margin: 8px 0 0 0;
+}
+
+.included-item-icon-styled {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin: 0 auto 12px;
+    background: rgba(46, 134, 171, 0.1);
+    color: var(--primary-color);
+}
+
+.included-item-icon-styled.ai-icon {
+    background: rgba(139, 92, 246, 0.1);
+    color: #8b5cf6;
+}
+
+/* AI included items hidden by default */
+.ai-included-item {
+    display: none;
+}
+
+/* "See what's included" link below pricing buttons */
+.see-included-link {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.see-included-link:hover {
+    color: var(--primary-color);
+}
+
+.see-included-link i {
+    font-size: 0.75rem;
+    margin-left: 4px;
 }
 
 /* Pricing Note */
@@ -6493,14 +6564,35 @@
     color: #9ca3af;
 }
 
+/* Dark mode: tier toggle wrapper */
+[data-theme="dark"] .tier-toggle-wrapper {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .tier-toggle-btn {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .tier-toggle-btn:hover {
+    color: #e5e7eb;
+}
+
+/* Dark mode: credit add-on buttons - override btn-outline-primary gradient */
 [data-theme="dark"] .credit-addon-card .btn-addon {
-    border-color: #a78bfa;
-    color: #a78bfa;
+    background: transparent !important;
+    border: 2px solid #a78bfa !important;
+    color: #a78bfa !important;
+}
+
+[data-theme="dark"] .credit-addon-card .btn-addon::before {
+    display: none !important;
 }
 
 [data-theme="dark"] .credit-addon-card .btn-addon:hover {
-    background: #a78bfa;
-    color: #1f2937;
+    background: #a78bfa !important;
+    color: #1f2937 !important;
+    border-color: #a78bfa !important;
 }
 
 [data-theme="dark"] .faq {

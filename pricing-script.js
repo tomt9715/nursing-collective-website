@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const tierDescriptions = {
         'standard': 'Full access to 50+ study guides, clinical resources, and quick reference tools.',
-        'ai-powered': 'Everything in Study Guides plus AI tools: note summaries, NCLEX question generator, gap analysis, care plans, clinical simulations, and weak spot training.'
+        'ai-powered': 'Everything in Standard plus AI tools: note summaries, NCLEX question generator, gap analysis, care plans, clinical simulations, and weak spot training.'
     };
 
     const tierButtonLabels = {
@@ -92,6 +92,19 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.pricing-card').forEach(card => {
             card.classList.toggle('ai-tier', isAI);
         });
+
+        // Toggle AI items in "What's Included" section
+        document.querySelectorAll('.ai-included-item').forEach(el => {
+            el.style.display = isAI ? 'block' : 'none';
+        });
+
+        // Update "What's Included" title
+        const whatsIncludedTitle = document.getElementById('whats-included-title');
+        if (whatsIncludedTitle) {
+            whatsIncludedTitle.textContent = isAI
+                ? 'What You Get With AI-Powered Access'
+                : 'What You Get With Full Access';
+        }
     }
 
     // ==========================================================================

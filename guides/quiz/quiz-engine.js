@@ -551,11 +551,11 @@ class QuizEngine {
         const selectedSize = this.selectedSessionSize || total;
         const estTime = Math.max(5, Math.round(selectedSize * 1.5));
 
-        let sizeButtonsHtml = sizeOptions
-            .filter(s => s <= total)
+        const filteredSizes = sizeOptions.filter(s => s <= total);
+        let sizeButtonsHtml = filteredSizes
             .map(s => `<button class="quiz-size-btn ${s === selectedSize ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${s}">${s}</button>`)
             .join('');
-        if (showAll) {
+        if (showAll || filteredSizes.length === 0) {
             sizeButtonsHtml += `<button class="quiz-size-btn ${selectedSize === total ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${total}">All (${total})</button>`;
         }
 
@@ -598,7 +598,7 @@ class QuizEngine {
                 </div>
 
                 <div class="quiz-start-stats">
-                    <span class="quiz-stat"><i class="fas fa-question-circle"></i> ${total} Questions</span>
+                    <span class="quiz-stat"><i class="fas fa-question-circle"></i> ${total} Question${total !== 1 ? 's' : ''}</span>
                     <span class="quiz-stat quiz-est-time"><i class="fas fa-clock"></i> ~${estTime} min</span>
                     <span class="quiz-stat"><i class="fas fa-layer-group"></i> ${this._getTypeCount()} Types</span>
                 </div>
@@ -1414,7 +1414,7 @@ class QuizEngine {
                     <i class="fas fa-th-list"></i> New Quiz
                 </button>
                 <button class="quiz-btn quiz-btn--secondary" data-quiz-action="back-to-guide">
-                    <i class="fas fa-book"></i> Back to Guide
+                    <i class="fas ${this.isAIGenerated ? 'fa-robot' : 'fa-book'}"></i> ${this._escapeHtml(this.backLabel)}
                 </button>
             </div>
         </div>`;
@@ -1771,6 +1771,10 @@ class QuizEngine {
     _getPerformanceMessage(pct) {
         if (pct === 100) return 'Perfect score! You nailed every single question.';
         if (pct >= 90) return 'Excellent! You\'ve mastered this topic. Keep up the great work!';
+        if (this.isAIGenerated) {
+            if (pct >= 70) return 'Good work! Review the rationales below to strengthen your understanding.';
+            return 'Keep studying! Review the rationales below, then generate a new set to try again.';
+        }
         if (pct >= 70) return 'Good work! Review the topics below to strengthen your understanding.';
         return 'Keep studying! Use the review links below to revisit key concepts, then try again.';
     }

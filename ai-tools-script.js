@@ -93,6 +93,7 @@
     var panelCopyBtn = document.getElementById('ai-summary-copy');
     var panelPrintBtn = document.getElementById('ai-summary-print');
     var panelRegenerateBtn = document.getElementById('ai-summary-regenerate');
+    var panelQuizBtn = document.getElementById('ai-summary-quiz');
 
     // ── State ───────────────────────────────────────────────────
     var documents = [];
@@ -225,6 +226,7 @@
         if (panelCopyBtn) panelCopyBtn.addEventListener('click', copyToClipboard);
         if (panelPrintBtn) panelPrintBtn.addEventListener('click', function () { window.print(); });
         if (panelRegenerateBtn) panelRegenerateBtn.addEventListener('click', regenerateGeneration);
+        if (panelQuizBtn) panelQuizBtn.addEventListener('click', takeAsQuiz);
 
         // ESC key
         document.addEventListener('keydown', function (e) {
@@ -552,6 +554,7 @@
         if (panelCopyBtn) panelCopyBtn.disabled = true;
         if (panelPrintBtn) panelPrintBtn.disabled = true;
         if (panelRegenerateBtn) panelRegenerateBtn.disabled = true;
+        if (panelQuizBtn) { panelQuizBtn.disabled = true; panelQuizBtn.classList.add('hidden'); }
 
         // Show backdrop + panel
         if (backdropEl) {
@@ -591,6 +594,10 @@
         if (panelCopyBtn) panelCopyBtn.disabled = false;
         if (panelPrintBtn) panelPrintBtn.disabled = false;
         if (panelRegenerateBtn) panelRegenerateBtn.disabled = false;
+        if (panelQuizBtn) {
+            panelQuizBtn.classList.toggle('hidden', genType !== 'practice_questions');
+            panelQuizBtn.disabled = false;
+        }
 
         // Show backdrop
         if (backdropEl) {
@@ -804,6 +811,144 @@
         }
 
         return html;
+    }
+
+    // ── AI Quiz Markdown Parser ────────────────────────────────
+
+    function parseAIQuizMarkdown(markdown) {
+        if (!markdown) return [];
+
+        // Split on ## Question N headers (with optional SATA marker)
+        var parts = markdown.split(/^## Question \d+\s*/gm);
+        parts.shift(); // remove content before first question
+
+        var questions = [];
+        var questionId = 0;
+
+        for (var i = 0; i < parts.length; i++) {
+            var block = parts[i];
+            if (!block || !block.trim()) continue;
+
+            // Detect SATA from header remnant
+            var isSATA = /\(Select All That Apply\)/i.test(block);
+            block = block.replace(/\(Select All That Apply\)/gi, '').trim();
+
+            var lines = block.split('\n');
+
+            // Extract stem (lines before first option letter)
+            var stemLines = [];
+            var optionStart = -1;
+            for (var j = 0; j < lines.length; j++) {
+                if (/^[A-E]\.\s/.test(lines[j].trim())) {
+                    optionStart = j;
+                    break;
+                }
+                stemLines.push(lines[j]);
+            }
+            var stem = stemLines.join('\n').trim();
+            if (!stem || optionStart === -1) continue;
+
+            // Extract options A-E
+            var options = [];
+            for (var k = optionStart; k < lines.length; k++) {
+                var optMatch = lines[k].trim().match(/^([A-E])\.\s+(.+)$/);
+                if (optMatch) {
+                    options.push({ id: optMatch[1].toLowerCase(), text: optMatch[2].trim() });
+                }
+            }
+
+            // Extract answer, rationale, concept from blockquote lines
+            var correctAnswer = null;
+            var rationale = null;
+            var concept = null;
+
+            var answerMatch = block.match(/>\s*\*{0,2}Answer:?\*{0,2}:?\s*(.+)/i);
+            if (answerMatch) {
+                var raw = answerMatch[1].trim();
+                if (isSATA) {
+                    correctAnswer = raw.split(/\s*,\s*/).map(function (l) {
+                        return l.trim().replace(/[^a-eA-E]/g, '').toLowerCase();
+                    }).filter(function (l) { return /^[a-e]$/.test(l); }).sort();
+                    if (correctAnswer.length === 0) correctAnswer = null;
+                } else {
+                    var singleMatch = raw.match(/^([A-E])/i);
+                    correctAnswer = singleMatch ? singleMatch[1].toLowerCase() : null;
+                }
+            }
+
+            var rationaleMatch = block.match(/>\s*\*{0,2}Rationale:?\*{0,2}:?\s*(.+)/i);
+            if (rationaleMatch) {
+                rationale = rationaleMatch[1].trim();
+            }
+
+            var conceptMatch = block.match(/>\s*\*{0,2}Concept:?\*{0,2}:?\s*(.+)/i);
+            if (conceptMatch) {
+                concept = conceptMatch[1].trim();
+            }
+
+            // Validate: need >= 2 options and a correct answer
+            if (options.length < 2 || !correctAnswer) continue;
+
+            // For SATA, verify all answer letters exist in options
+            if (isSATA && Array.isArray(correctAnswer)) {
+                var validLetters = options.map(function (o) { return o.id; });
+                var allValid = correctAnswer.every(function (l) {
+                    return validLetters.indexOf(l) !== -1;
+                });
+                if (!allValid) continue;
+            }
+
+            questionId++;
+            questions.push({
+                id: 'ai-q-' + questionId,
+                type: isSATA ? 'sata' : 'single',
+                subtype: null,
+                difficulty: 'application',
+                stem: stem,
+                options: options,
+                correct: correctAnswer,
+                rationale: {
+                    correct: rationale || 'See your lecture notes for detailed rationale.'
+                },
+                testTakingTip: null,
+                guideSection: concept || null,
+                guideSectionId: null
+            });
+        }
+
+        return questions;
+    }
+
+    // ── Take as Quiz ────────────────────────────────────────────
+
+    function takeAsQuiz() {
+        if (!currentMarkdown || currentGenerationType !== 'practice_questions') return;
+
+        var questions = parseAIQuizMarkdown(currentMarkdown);
+        if (!questions || questions.length === 0) {
+            showToast('Could not parse questions from this content. Try regenerating.', 'error');
+            return;
+        }
+
+        var quizPayload = {
+            questions: questions,
+            guideName: currentFilename || 'AI Practice Questions',
+            guideSlug: 'ai-' + (currentDocId || 'generated'),
+            category: 'AI Generated',
+            categoryColor: '#3b82f6',
+            estimatedMinutes: Math.max(5, Math.round(questions.length * 1.5)),
+            isAIGenerated: true,
+            sourceDocId: currentDocId
+        };
+
+        try {
+            sessionStorage.setItem('aiQuizData', JSON.stringify(quizPayload));
+        } catch (e) {
+            showToast('Failed to prepare quiz data. Please try again.', 'error');
+            return;
+        }
+
+        window.location.href = 'guides/quiz/quiz.html?source=ai&doc=' + encodeURIComponent(currentDocId || '');
     }
 
     // ── Utility functions ───────────────────────────────────────

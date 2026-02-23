@@ -145,6 +145,29 @@
     // ── Initialize ──────────────────────────────────────────
 
     function init() {
+        // ── AI Quiz Mode (skip access verification) ──────────
+        if (window._aiQuizData) {
+            var aiData = window._aiQuizData;
+            if (!aiData.questions || !aiData.questions.length) {
+                showError('No valid questions found in AI quiz data.');
+                return;
+            }
+            var quiz = new QuizEngine({
+                containerId: 'quiz-root',
+                questions: aiData.questions,
+                guideName: aiData.guideName || 'AI Practice Questions',
+                guideSlug: aiData.guideSlug || 'ai-generated',
+                category: aiData.category || 'AI Generated',
+                categoryColor: aiData.categoryColor || '#3b82f6',
+                estimatedMinutes: aiData.estimatedMinutes || 10,
+                backUrl: '../../ai-tools.html',
+                backLabel: 'Back to AI Tools',
+                isAIGenerated: true
+            });
+            quiz.init();
+            return;
+        }
+
         verifyAccess(false).then(function (hasAccess) {
             if (!hasAccess) return;
 

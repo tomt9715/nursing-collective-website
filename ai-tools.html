@@ -124,6 +124,8 @@
         .ai-toolbar-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
         .ai-toolbar-btn--regenerate{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.15)}
         .ai-toolbar-btn--regenerate:hover{background:rgba(245,158,11,.3)}
+        .ai-toolbar-btn--quiz{border-color:rgba(59,130,246,.4);background:rgba(59,130,246,.15)}
+        .ai-toolbar-btn--quiz:hover{background:rgba(59,130,246,.3)}
 
         /* Body / Content */
         .ai-summary-body{flex:1;overflow-y:auto;padding:28px 32px 20px;scroll-behavior:smooth}
@@ -418,6 +420,10 @@
                             <button class="ai-toolbar-btn ai-toolbar-btn--regenerate" id="ai-summary-regenerate" title="Regenerate summary">
                                 <i class="fas fa-arrows-rotate"></i>
                                 <span class="ai-toolbar-label">Regenerate</span>
+                            </button>
+                            <button class="ai-toolbar-btn ai-toolbar-btn--quiz hidden" id="ai-summary-quiz" title="Take as interactive quiz">
+                                <i class="fas fa-play-circle"></i>
+                                <span class="ai-toolbar-label">Quiz</span>
                             </button>
                         </div>
                     </div>

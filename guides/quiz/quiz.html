@@ -42,8 +42,43 @@
     (function () {
         'use strict';
 
-        // Parse topic from URL query string
+        // Parse URL query string
         var params = new URLSearchParams(window.location.search);
+
+        // ── AI Quiz Mode ──────────────────────────────────
+        if (params.get('source') === 'ai') {
+            var raw = sessionStorage.getItem('aiQuizData');
+            if (!raw) {
+                document.getElementById('quiz-root').innerHTML =
+                    '<div style="text-align:center;padding:60px 20px;">' +
+                    '<h2 style="color:#ef4444;">Quiz Session Expired</h2>' +
+                    '<p style="color:#6b7280;margin:12px 0 24px;">This quiz session has expired or the page was refreshed. Please generate new practice questions from your AI tools.</p>' +
+                    '<a href="../../ai-tools.html" style="color:#2E86AB;font-weight:600;">Go to AI Tools</a>' +
+                    '</div>';
+                return;
+            }
+            try {
+                window._aiQuizData = JSON.parse(raw);
+                sessionStorage.removeItem('aiQuizData');
+            } catch (e) {
+                document.getElementById('quiz-root').innerHTML =
+                    '<div style="text-align:center;padding:60px 20px;">' +
+                    '<h2 style="color:#ef4444;">Failed to Load Quiz</h2>' +
+                    '<p style="color:#6b7280;margin:12px 0 24px;">Could not parse quiz data. Please try generating questions again.</p>' +
+                    '<a href="../../ai-tools.html" style="color:#2E86AB;font-weight:600;">Go to AI Tools</a>' +
+                    '</div>';
+                return;
+            }
+            document.body.setAttribute('data-product-id', 'ai-generated');
+            document.body.setAttribute('data-guide-name', window._aiQuizData.guideName || 'AI Practice Questions');
+            document.title = (window._aiQuizData.guideName || 'AI Practice Questions') + ' Quiz - The Nursing Collective';
+            var initScript = document.createElement('script');
+            initScript.src = 'quiz-init.js';
+            document.body.appendChild(initScript);
+            return;
+        }
+
+        // ── Normal Topic Flow ─────────────────────────────
         var topic = params.get('topic');
 
         if (!topic || !/^[a-z0-9-]+$/.test(topic)) {

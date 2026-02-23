@@ -19,6 +19,9 @@ class QuizEngine {
         this.category = config.category || '';
         this.categoryColor = config.categoryColor || '#2E86AB';
         this.estimatedMinutes = config.estimatedMinutes || Math.max(5, Math.round(this.questions.length * 1.5));
+        this.backUrl = config.backUrl || ('../' + this.guideSlug + '.html');
+        this.backLabel = config.backLabel || 'Back to Study Guide';
+        this.isAIGenerated = config.isAIGenerated || false;
 
         // State
         this.mode = null;           // 'practice' | 'exam'
@@ -109,7 +112,8 @@ class QuizEngine {
         const isCorrect = this._checkAnswer(q, userAnswer);
         const isPartial = !isCorrect && (
             (q.type === 'matrix' && this._hasMatrixPartialCredit(q, userAnswer)) ||
-            (q.type === 'ordering' && this._hasOrderingPartialCredit(q, userAnswer))
+            (q.type === 'ordering' && this._hasOrderingPartialCredit(q, userAnswer)) ||
+            (q.type === 'sata' && this._hasSATAPartialCredit(q, userAnswer))
         );
         // Calculate partial score fraction (e.g., 3 of 5 correct positions = 0.6)
         let partialScore = 0;
@@ -118,6 +122,8 @@ class QuizEngine {
         } else if (isPartial && q.type === 'matrix') {
             const correctRows = q.options.filter(opt => userAnswer[opt.id] === q.correct[opt.id]).length;
             partialScore = correctRows / q.options.length;
+        } else if (isPartial && q.type === 'sata') {
+            partialScore = this._getSATAPartialScore(q, userAnswer);
         }
         this.results.set(q.id, {
             correct: isCorrect,
@@ -175,8 +181,8 @@ class QuizEngine {
         // Save confidence tracker (re-ask guessing/somewhat-sure questions next time)
         this._saveConfidenceTracker();
 
-        // Record mastery points (exam mode only)
-        if (typeof MasteryTracker !== 'undefined' && !this.isReviewMode && this.mode === 'exam') {
+        // Record mastery points (exam mode only, not AI quizzes)
+        if (typeof MasteryTracker !== 'undefined' && !this.isReviewMode && this.mode === 'exam' && !this.isAIGenerated) {
             const masteryResults = [];
             this.activeQuestions.forEach(q => {
                 const r = this.results.get(q.id);
@@ -274,7 +280,7 @@ class QuizEngine {
                 case 'retake': this.retakeQuiz(); break;
                 case 'review-missed': this.reviewMissed(); break;
                 case 'new-quiz': window.location.href = '../../dashboard.html'; break;
-                case 'back-to-guide': window.location.href = '../' + this.guideSlug + '.html'; break;
+                case 'back-to-guide': window.location.href = this.backUrl; break;
                 case 'back-to-start':
                     this._stopTimer();
                     this._clearSavedState();
@@ -420,16 +426,23 @@ class QuizEngine {
             return;
         }
 
-        // Option selection (single-answer questions)
+        // Option selection
         const option = e.target.closest('.quiz-option');
         if (option && !option.classList.contains('quiz-option--disabled')) {
             const input = option.querySelector('input');
             if (!input) return;
 
-            // Deselect all, select this one
-            this.container.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('quiz-option--selected'));
-            option.classList.add('quiz-option--selected');
-            input.checked = true;
+            const currentQ = this.activeQuestions[this.currentIndex];
+            if (currentQ && currentQ.type === 'sata') {
+                // SATA: toggle checkbox
+                input.checked = !input.checked;
+                option.classList.toggle('quiz-option--selected', input.checked);
+            } else {
+                // Single-answer: deselect all, select this one
+                this.container.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('quiz-option--selected'));
+                option.classList.add('quiz-option--selected');
+                input.checked = true;
+            }
             this._updateSubmitButton();
             return;
         }
@@ -569,8 +582,8 @@ class QuizEngine {
 
         this.container.innerHTML = `
             <div class="quiz-top-bar">
-                <a href="../${this.guideSlug}.html" class="quiz-back-link">
-                    <i class="fas fa-arrow-left"></i> Back to Study Guide
+                <a href="${this._escapeAttr(this.backUrl)}" class="quiz-back-link">
+                    <i class="fas fa-arrow-left"></i> ${this._escapeHtml(this.backLabel)}
                 </a>
                 <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
                     <i class="fas ${themeIcon}"></i>
@@ -696,6 +709,12 @@ class QuizEngine {
             submitLabel = 'Submit Answers';
             instructionHtml = '<span class="quiz-matrix-instruction">Select one answer per row.</span>';
             optionsHtml = this._renderMatrixOptions(q);
+        } else if (q.type === 'sata') {
+            submitLabel = 'Submit Answer';
+            instructionHtml = '<span class="quiz-sata-instruction"><i class="fas fa-check-double"></i> Select all that apply</span>';
+            optionsHtml = `<div class="quiz-options" role="group" aria-label="Answer options (select all that apply)">
+                ${(this._getShuffledOptions(q.id) || q.options).map((opt, idx) => this._renderOption(q, opt, 'checkbox', idx)).join('')}
+            </div>`;
         } else {
             optionsHtml = `<div class="quiz-options" role="radiogroup" aria-label="Answer options">
                 ${(this._getShuffledOptions(q.id) || q.options).map((opt, idx) => this._renderOption(q, opt, 'radio', idx)).join('')}
@@ -704,8 +723,8 @@ class QuizEngine {
 
         this.container.innerHTML = `
             <div class="quiz-top-bar">
-                <a href="../${this.guideSlug}.html" class="quiz-back-link">
-                    <i class="fas fa-arrow-left"></i> Back to Study Guide
+                <a href="${this._escapeAttr(this.backUrl)}" class="quiz-back-link">
+                    <i class="fas fa-arrow-left"></i> ${this._escapeHtml(this.backLabel)}
                 </a>
                 <div class="quiz-top-bar-right">
                     ${timerHtml}
@@ -868,6 +887,10 @@ class QuizEngine {
             const totalRows = q.options.length;
             const answered = this.container.querySelectorAll('.quiz-matrix-table input[type="radio"]:checked').length;
             btn.disabled = answered !== totalRows;
+        } else if (q.type === 'sata') {
+            // At least one checkbox must be checked
+            const checkedCount = this.container.querySelectorAll(`input[name="quiz-q-${q.id}"]:checked`).length;
+            btn.disabled = checkedCount === 0;
         } else {
             const hasSelection = this._getUserAnswer(q) !== null;
             btn.disabled = !hasSelection;
@@ -890,6 +913,12 @@ class QuizEngine {
                 }
             });
             return complete ? answer : null;
+        } else if (q.type === 'sata') {
+            const checked = this.container.querySelectorAll(`input[name="quiz-q-${q.id}"]:checked`);
+            if (checked.length === 0) return null;
+            const answer = [];
+            checked.forEach(function (input) { answer.push(input.value); });
+            return answer.sort();
         } else {
             const checked = this.container.querySelector(`input[name="quiz-q-${q.id}"]:checked`);
             return checked ? checked.value : null;
@@ -996,6 +1025,23 @@ class QuizEngine {
                     });
                 }
             });
+        } else if (q.type === 'sata') {
+            const correctSet = new Set(Array.isArray(q.correct) ? q.correct : []);
+            const userSet = new Set(Array.isArray(userAnswer) ? userAnswer : []);
+            this.container.querySelectorAll('.quiz-option').forEach(opt => {
+                opt.classList.add('quiz-option--disabled');
+                const input = opt.querySelector('input');
+                const val = input ? input.value : '';
+                if (correctSet.has(val) && userSet.has(val)) {
+                    opt.classList.add('quiz-option--correct');
+                } else if (correctSet.has(val) && !userSet.has(val)) {
+                    opt.classList.add('quiz-option--correct-missed');
+                } else if (!correctSet.has(val) && userSet.has(val)) {
+                    opt.classList.add('quiz-option--incorrect');
+                }
+                opt.classList.remove('quiz-option--selected');
+                opt.setAttribute('aria-checked', input && input.checked ? 'true' : 'false');
+            });
         } else {
             this.container.querySelectorAll('.quiz-option').forEach(opt => {
                 opt.classList.add('quiz-option--disabled');
@@ -1070,6 +1116,18 @@ class QuizEngine {
             html += `<div class="quiz-ordering-correct-sequence"><strong>Correct order:</strong><ol>${correctSeqHtml}</ol></div>`;
         }
 
+        // SATA: show selection detail
+        if (q.type === 'sata' && !isCorrect) {
+            const correctSet = new Set(Array.isArray(q.correct) ? q.correct : []);
+            const userArr = Array.isArray(userAnswer) ? userAnswer : [];
+            const correctSelected = userArr.filter(v => correctSet.has(v)).length;
+            const wrongSelected = userArr.filter(v => !correctSet.has(v)).length;
+            let detail = 'You selected ' + correctSelected + ' of ' + q.correct.length + ' correct answer' + (q.correct.length !== 1 ? 's' : '') + '.';
+            if (wrongSelected > 0) detail += ' You also selected ' + wrongSelected + ' incorrect option' + (wrongSelected !== 1 ? 's' : '') + '.';
+            if (isPartial) detail += ' Partial credit awarded.';
+            html += '<div class="quiz-sata-partial"><i class="fas fa-info-circle"></i> ' + detail + '</div>';
+        }
+
         // Matrix: show per-row results
         if (q.type === 'matrix' && !isCorrect) {
             const correctRows = q.options.filter(opt => userAnswer && userAnswer[opt.id] === q.correct[opt.id]).length;
@@ -1112,8 +1170,8 @@ class QuizEngine {
             `;
         }
 
-        // Review link (wrong) or engagement link (correct)
-        if (!isCorrect && q.guideSectionId) {
+        // Review link (wrong) or engagement link (correct) — suppress for AI quizzes
+        if (!isCorrect && q.guideSectionId && !this.isAIGenerated) {
             html += `
                 <a href="../${this.guideSlug}.html#${this._escapeAttr(q.guideSectionId)}" class="quiz-feedback-review" target="_blank">
                     <i class="fas fa-book"></i> Review: ${this._escapeHtml(q.guideSection || 'Study Guide')} <i class="fas fa-external-link-alt" style="font-size:0.75rem"></i>
@@ -1170,8 +1228,8 @@ class QuizEngine {
 
         let html = `
             <div class="quiz-top-bar">
-                <a href="../${this.guideSlug}.html" class="quiz-back-link">
-                    <i class="fas fa-arrow-left"></i> Back to Study Guide
+                <a href="${this._escapeAttr(this.backUrl)}" class="quiz-back-link">
+                    <i class="fas fa-arrow-left"></i> ${this._escapeHtml(this.backLabel)}
                 </a>
                 <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
                     <i class="fas ${document.documentElement.getAttribute('data-theme') === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>
@@ -1285,8 +1343,8 @@ class QuizEngine {
             `;
         }
 
-        // Weak areas
-        if (missedCount > 0) {
+        // Weak areas (suppress for AI quizzes — no guide sections to link to)
+        if (missedCount > 0 && !this.isAIGenerated) {
             const weakSections = this._getWeakAreas();
             if (weakSections.length > 0) {
                 html += `
@@ -1505,6 +1563,10 @@ class QuizEngine {
             const correctRows = q.options.filter(opt => ua[opt.id] === q.correct[opt.id]).length;
             userAnswerDisplay = correctRows + '/' + q.options.length + ' rows correct';
             correctAnswerDisplay = q.options.map(opt => opt.text.substring(0, 25) + ': ' + q.correct[opt.id]).join(', ');
+        } else if (q.type === 'sata') {
+            const ua = Array.isArray(result.userAnswer) ? result.userAnswer : [];
+            userAnswerDisplay = ua.length > 0 ? ua.map(id => this._getDisplayLetter(q.id, id).toUpperCase()).join(', ') : 'None';
+            correctAnswerDisplay = Array.isArray(q.correct) ? q.correct.map(id => this._getDisplayLetter(q.id, id).toUpperCase()).join(', ') : '';
         } else {
             userAnswerDisplay = result.userAnswer ? this._getDisplayLetter(q.id, result.userAnswer).toUpperCase() : 'None';
             correctAnswerDisplay = q.correct ? this._getDisplayLetter(q.id, q.correct).toUpperCase() : '';
@@ -1523,8 +1585,8 @@ class QuizEngine {
             detailHtml += `<div class="quiz-result-rationale">${this._escapeHtml(q.rationale.correct)}</div>`;
         }
 
-        // Review link for wrong answers
-        if (!isCorrect && q.guideSectionId) {
+        // Review link for wrong answers (suppress for AI quizzes)
+        if (!isCorrect && q.guideSectionId && !this.isAIGenerated) {
             detailHtml += `
                 <a href="../${this.guideSlug}.html#${this._escapeAttr(q.guideSectionId)}" class="quiz-result-review-link" target="_blank">
                     <i class="fas fa-book"></i> Review: ${this._escapeHtml(q.guideSection || 'Study Guide')}
@@ -1637,6 +1699,13 @@ class QuizEngine {
             if (!userAnswer || typeof userAnswer !== 'object' || !q.correct) return false;
             return q.options.every(opt => userAnswer[opt.id] === q.correct[opt.id]);
         }
+        if (q.type === 'sata') {
+            if (!Array.isArray(userAnswer) || !Array.isArray(q.correct)) return false;
+            if (userAnswer.length !== q.correct.length) return false;
+            const sortedUser = [...userAnswer].sort();
+            const sortedCorrect = [...q.correct].sort();
+            return sortedUser.every((v, i) => v === sortedCorrect[i]);
+        }
         return userAnswer === q.correct;
     }
 
@@ -1659,6 +1728,22 @@ class QuizEngine {
         return correctPositions / q.correct.length;
     }
 
+    _hasSATAPartialCredit(q, userAnswer) {
+        if (!Array.isArray(userAnswer) || !Array.isArray(q.correct)) return false;
+        const correctSet = new Set(q.correct);
+        const correctSelected = userAnswer.filter(v => correctSet.has(v)).length;
+        return correctSelected > 0 && (correctSelected < q.correct.length || userAnswer.length > q.correct.length);
+    }
+
+    _getSATAPartialScore(q, userAnswer) {
+        if (!Array.isArray(userAnswer) || !Array.isArray(q.correct)) return 0;
+        const correctSet = new Set(q.correct);
+        const correctSelected = userAnswer.filter(v => correctSet.has(v)).length;
+        const wrongSelected = userAnswer.filter(v => !correctSet.has(v)).length;
+        const score = Math.max(0, correctSelected - wrongSelected) / q.correct.length;
+        return Math.round(score * 100) / 100;
+    }
+
     _getWrongRationales(q, userAnswer) {
         if (!q.rationale) return [];
         const rationales = [];
@@ -1667,8 +1752,8 @@ class QuizEngine {
             const key = opt.id;
             if (key === 'correct') return;
 
-            if (q.type === 'ordering' || q.type === 'matrix') {
-                // For ordering/matrix, show all option rationales
+            if (q.type === 'ordering' || q.type === 'matrix' || q.type === 'sata') {
+                // For ordering/matrix/sata, show all option rationales
                 if (q.rationale[key]) {
                     rationales.push({ id: key, text: q.rationale[key] });
                 }
@@ -1718,6 +1803,7 @@ class QuizEngine {
         this.questions.forEach(q => {
             if (q.type === 'ordering') types.add('ordering');
             else if (q.type === 'matrix') types.add('matrix');
+            else if (q.type === 'sata') types.add('sata');
             else if (q.subtype === 'priority') types.add('priority');
             else types.add(q.type);
         });
@@ -1727,6 +1813,7 @@ class QuizEngine {
     _getTypeName(q) {
         if (q.type === 'ordering') return 'Ordering';
         if (q.type === 'matrix') return 'Matrix';
+        if (q.type === 'sata') return 'Select All That Apply';
         if (q.subtype === 'priority') return 'Priority';
         return 'Single Best Answer';
     }
@@ -1734,6 +1821,7 @@ class QuizEngine {
     _getTypeClass(q) {
         if (q.type === 'ordering') return 'quiz-question-type--ordering';
         if (q.type === 'matrix') return 'quiz-question-type--matrix';
+        if (q.type === 'sata') return 'quiz-question-type--sata';
         if (q.subtype === 'priority') return 'quiz-question-type--priority';
         return 'quiz-question-type--single';
     }
@@ -1884,7 +1972,7 @@ class QuizEngine {
     // ── Resume / Save State ──────────────────────────────────
 
     _saveState() {
-        if (this.phase !== 'quiz') return;
+        if (this.phase !== 'quiz' || this.isAIGenerated) return;
         try {
             const state = {
                 mode: this.mode,
@@ -2059,7 +2147,7 @@ class QuizEngine {
      * Questions rated "very confident" are removed from the tracker.
      */
     _saveConfidenceTracker() {
-        if (this.isReviewMode) return;
+        if (this.isReviewMode || this.isAIGenerated) return;
         const key = 'nursingCollective_confidenceReask';
         let tracker = {};
         try {

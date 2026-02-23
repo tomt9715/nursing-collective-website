@@ -160,6 +160,15 @@
         .ai-quick-review{background:linear-gradient(135deg,#f0fdf4,#dcfce7);border:1px solid rgba(16,185,129,.2);border-radius:12px;padding:20px 24px;margin-top:24px}
         .ai-quick-review h2,.ai-quick-review h3{color:#059669!important;border-bottom:none!important;margin-top:0!important}
 
+        /* Table of Contents (auto-generated navigation) */
+        .ai-toc{background:linear-gradient(135deg,#faf5ff,#f3e8ff);border:1px solid rgba(124,58,237,.15);border-radius:12px;padding:16px 20px;margin-bottom:24px}
+        .ai-toc-header{display:flex;align-items:center;gap:8px;font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:700;color:#7c3aed;margin-bottom:10px}
+        .ai-toc-header i{font-size:.82rem}
+        .ai-toc-links{display:flex;flex-wrap:wrap;gap:6px 8px}
+        .ai-toc-link{display:inline-flex;align-items:center;padding:5px 14px;background:rgba(124,58,237,.08);color:#6d28d9;font-size:.8rem;font-weight:500;border-radius:20px;text-decoration:none;transition:all .15s;border:1px solid transparent;cursor:pointer}
+        .ai-toc-link:hover{background:rgba(124,58,237,.16);border-color:rgba(124,58,237,.25);transform:translateY(-1px);color:#6d28d9;text-decoration:none}
+        .ai-toc-link:active{transform:translateY(0)}
+
         /* Markdown tables */
         .ai-table-wrapper{overflow-x:auto;margin:16px 0;border-radius:8px;border:1px solid rgba(0,0,0,.08)}
         .ai-md-table{width:100%;border-collapse:collapse;font-size:.85rem}
@@ -240,6 +249,10 @@
         [data-theme="dark"] .ai-summary-content h3{border-color:rgba(167,139,250,.25)}
         [data-theme="dark"] .ai-summary-content ul > li::before{background:#a78bfa}
         [data-theme="dark"] .ai-summary-content ul > li.ai-sub::before{background:#8b5cf6}
+        [data-theme="dark"] .ai-toc{background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.2)}
+        [data-theme="dark"] .ai-toc-header{color:#a78bfa}
+        [data-theme="dark"] .ai-toc-link{background:rgba(167,139,250,.1);color:#c4b5fd}
+        [data-theme="dark"] .ai-toc-link:hover{background:rgba(167,139,250,.2);border-color:rgba(167,139,250,.3);color:#c4b5fd}
         [data-theme="dark"] .ai-summary-content strong{color:#a78bfa}
         [data-theme="dark"] .ai-summary-content code{background:rgba(167,139,250,.1)}
         [data-theme="dark"] .ai-callout--key{background:rgba(124,58,237,.1)}
@@ -306,6 +319,8 @@
             .ai-callout{break-inside:avoid;border-left-width:3px!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
             .ai-quick-review{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
             .ai-table-wrapper{break-inside:avoid}
+            .ai-toc{break-inside:avoid;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+            .ai-toc-link{border:1px solid #ccc!important;color:#333!important;background:#f5f3ff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
             .ai-answer-reveal{break-inside:avoid}
             .ai-answer-reveal[open] .ai-answer-content{display:block}
             h2,h3{break-after:avoid}
@@ -549,6 +564,6 @@
     <!-- Remaining scripts: defer lets browser pre-fetch in parallel -->
     <script defer src="script.js?v=4.8.dashboard"></script>
     <script defer src="sidebar.js?v=1.3.ai-tools"></script>
-    <script defer src="ai-tools-script.js?v=1.3.2"></script>
+    <script defer src="ai-tools-script.js?v=1.4.0"></script>
 </body>
 </html>

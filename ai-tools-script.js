@@ -228,6 +228,23 @@
         if (panelRegenerateBtn) panelRegenerateBtn.addEventListener('click', regenerateGeneration);
         if (panelQuizBtn) panelQuizBtn.addEventListener('click', takeAsQuiz);
 
+        // TOC link clicks → smooth scroll within panel
+        if (panelBody) {
+            panelBody.addEventListener('click', function (e) {
+                var link = e.target.closest('.ai-toc-link');
+                if (!link) return;
+                e.preventDefault();
+                var targetId = link.getAttribute('href').substring(1);
+                var target = document.getElementById(targetId);
+                if (target && panelBody) {
+                    panelBody.scrollTo({
+                        top: panelBody.scrollTop + target.getBoundingClientRect().top - panelBody.getBoundingClientRect().top - 12,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        }
+
         // ESC key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && panelEl && panelEl.classList.contains('open')) {
@@ -947,6 +964,28 @@
         });
         if (html.indexOf('ai-quick-review') !== -1) {
             html = html + '</div>';
+        }
+
+        // ── Table of Contents (auto-generated from H2 headings) ────
+        // Only show when there are 3+ sections for meaningful navigation
+        var tocEntries = [];
+        html = html.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, function (match, attrs, inner) {
+            var plainText = inner.replace(/<[^>]+>/g, '').trim();
+            var slug = 'section-' + plainText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+            tocEntries.push({ slug: slug, text: plainText });
+            return '<h2 id="' + slug + '"' + attrs + '>' + inner + '</h2>';
+        });
+
+        if (tocEntries.length >= 3) {
+            var tocHtml = '<nav class="ai-toc" aria-label="Table of Contents">' +
+                '<div class="ai-toc-header"><i class="fas fa-list"></i> Quick Navigation</div>' +
+                '<div class="ai-toc-links">';
+            for (var t = 0; t < tocEntries.length; t++) {
+                tocHtml += '<a href="#' + tocEntries[t].slug + '" class="ai-toc-link">' +
+                    tocEntries[t].text + '</a>';
+            }
+            tocHtml += '</div></nav>';
+            html = tocHtml + html;
         }
 
         return html;

@@ -1005,12 +1005,17 @@
         }
 
         // ── Table of Contents (auto-generated from H2 headings) ────
-        // Only show when there are 3+ sections for meaningful navigation
+        // Only show when there are 3+ meaningful sections to navigate.
+        // Skip question numbers, score guides, and other non-navigable headings.
+        var tocSkipPattern = /^(question\s*\d|score\s*guide|no\s*medications?\s*found)/i;
         var tocEntries = [];
         html = html.replace(/<h2([^>]*)>([\s\S]*?)<\/h2>/g, function (match, attrs, inner) {
             var plainText = inner.replace(/<[^>]+>/g, '').trim();
             var slug = 'section-' + plainText.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
-            tocEntries.push({ slug: slug, text: plainText });
+            // Always add the id for deep-linking, but only add to TOC if meaningful
+            if (!tocSkipPattern.test(plainText)) {
+                tocEntries.push({ slug: slug, text: plainText });
+            }
             return '<h2 id="' + slug + '"' + attrs + '>' + inner + '</h2>';
         });
 

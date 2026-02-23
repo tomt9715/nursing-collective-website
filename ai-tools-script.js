@@ -7,35 +7,42 @@
     'use strict';
 
     // ── DOM elements ────────────────────────────────────────────
-    const aiSection = document.getElementById('ai-tools-section');
-    const upgradePrompt = document.getElementById('ai-upgrade-prompt');
-    const dropzone = document.getElementById('ai-upload-dropzone');
-    const fileInput = document.getElementById('ai-file-input');
-    const progressContainer = document.getElementById('ai-upload-progress');
-    const progressFilename = document.getElementById('ai-progress-filename');
-    const progressPct = document.getElementById('ai-progress-pct');
-    const progressFill = document.getElementById('ai-progress-fill');
-    const documentsList = document.getElementById('ai-documents-list');
-    const emptyState = document.getElementById('ai-empty-state');
-    const refreshBtn = document.getElementById('ai-refresh-btn');
-    const summaryOverlay = document.getElementById('ai-summary-overlay');
-    const summaryTitle = document.getElementById('ai-summary-title');
-    const summaryContent = document.getElementById('ai-summary-content');
-    const summaryClose = document.getElementById('ai-summary-close');
+    var aiSection = document.getElementById('ai-tools-section');
+    var upgradePrompt = document.getElementById('ai-upgrade-prompt');
+    var dropzone = document.getElementById('ai-upload-dropzone');
+    var fileInput = document.getElementById('ai-file-input');
+    var progressContainer = document.getElementById('ai-upload-progress');
+    var progressFilename = document.getElementById('ai-progress-filename');
+    var progressPct = document.getElementById('ai-progress-pct');
+    var progressFill = document.getElementById('ai-progress-fill');
+    var documentsList = document.getElementById('ai-documents-list');
+    var emptyState = document.getElementById('ai-empty-state');
+    var refreshBtn = document.getElementById('ai-refresh-btn');
+
+    // Summary panel elements
+    var summaryPanel = document.getElementById('ai-summary-panel');
+    var summaryBackdrop = document.getElementById('ai-summary-backdrop');
+    var summaryDocName = document.getElementById('ai-summary-doc-name');
+    var summaryContent = document.getElementById('ai-summary-content');
+    var summaryBody = document.getElementById('ai-summary-body');
+    var summaryBackBtn = document.getElementById('ai-summary-back');
+    var summaryCopyBtn = document.getElementById('ai-summary-copy');
+    var summaryPrintBtn = document.getElementById('ai-summary-print');
+    var summaryRegenerateBtn = document.getElementById('ai-summary-regenerate');
 
     // ── State ───────────────────────────────────────────────────
-    let documents = [];
-    let pollingTimers = {};    // upload_id -> setInterval id
-    let hasAiAccess = false;
+    var documents = [];
+    var pollingTimers = {};
+    var hasAiAccess = false;
+    var currentSummaryDocId = null;
+    var currentSummaryFilename = null;
+    var currentSummaryMarkdown = null;
 
     // ── Initialization ──────────────────────────────────────────
 
     function init() {
-        // Wait for auth token to be available, then check AI access.
-        // The token is set by auth-script.js or login flow into localStorage.
         var token = localStorage.getItem('accessToken');
         if (!token) {
-            // No token yet — wait briefly in case page just loaded
             setTimeout(function () {
                 token = localStorage.getItem('accessToken');
                 if (token) {
@@ -45,14 +52,12 @@
                 }
             }, 1500);
         } else {
-            // Token exists — small delay to let other dashboard calls settle
             setTimeout(checkAiAccess, 300);
         }
     }
 
     async function checkAiAccess() {
         try {
-            // Check subscription status — look for ai-* plan
             var data = await apiCall('/api/subscription-status');
             if (data && data.has_access && data.subscription) {
                 var planId = data.subscription.plan_id || '';
@@ -61,7 +66,6 @@
                 }
             }
 
-            // Also allow admin access via profile check
             if (!hasAiAccess) {
                 try {
                     var profileData = await apiCall('/user/profile');
@@ -110,7 +114,7 @@
             fileInput.addEventListener('change', function () {
                 if (fileInput.files.length > 0) {
                     uploadFile(fileInput.files[0]);
-                    fileInput.value = ''; // Reset for same file re-upload
+                    fileInput.value = '';
                 }
             });
         }
@@ -138,20 +142,29 @@
             refreshBtn.addEventListener('click', loadDocuments);
         }
 
-        // Close summary modal
-        if (summaryClose) {
-            summaryClose.addEventListener('click', closeSummaryModal);
+        // Summary panel — close
+        if (summaryBackBtn) {
+            summaryBackBtn.addEventListener('click', closeSummaryPanel);
         }
-        if (summaryOverlay) {
-            summaryOverlay.addEventListener('click', function (e) {
-                if (e.target === summaryOverlay) closeSummaryModal();
-            });
+        if (summaryBackdrop) {
+            summaryBackdrop.addEventListener('click', closeSummaryPanel);
         }
 
-        // ESC key to close modal
+        // Summary panel — actions
+        if (summaryCopyBtn) {
+            summaryCopyBtn.addEventListener('click', copySummaryToClipboard);
+        }
+        if (summaryPrintBtn) {
+            summaryPrintBtn.addEventListener('click', printSummary);
+        }
+        if (summaryRegenerateBtn) {
+            summaryRegenerateBtn.addEventListener('click', regenerateSummary);
+        }
+
+        // ESC key to close panel
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && summaryOverlay && !summaryOverlay.classList.contains('hidden')) {
-                closeSummaryModal();
+            if (e.key === 'Escape' && summaryPanel && summaryPanel.classList.contains('open')) {
+                closeSummaryPanel();
             }
         });
     }
@@ -159,7 +172,6 @@
     // ── File upload ─────────────────────────────────────────────
 
     async function uploadFile(file) {
-        // Client-side validation
         var allowed = ['application/pdf',
             'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
             'application/vnd.openxmlformats-officedocument.presentationml.presentation'];
@@ -176,7 +188,6 @@
             return;
         }
 
-        // Show progress
         if (progressContainer) progressContainer.classList.remove('hidden');
         if (progressFilename) progressFilename.textContent = file.name;
         setProgress(10);
@@ -206,19 +217,16 @@
             setProgress(100);
             showToast('File uploaded! Processing your document...', 'success');
 
-            // Start polling for status
             if (data.upload_id) {
                 startPolling(data.upload_id);
             }
 
-            // Refresh document list
             setTimeout(loadDocuments, 500);
 
         } catch (err) {
             console.error('[AI Tools] Upload failed:', err);
             showToast(err.message || 'Upload failed. Please try again.', 'error');
         } finally {
-            // Hide progress after a moment
             setTimeout(function () {
                 if (progressContainer) progressContainer.classList.add('hidden');
                 setProgress(0);
@@ -239,7 +247,6 @@
             documents = (data && data.documents) || [];
             renderDocuments();
 
-            // Start polling for any documents still processing
             documents.forEach(function (doc) {
                 if (doc.status === 'uploaded' || doc.status === 'processing') {
                     startPolling(doc.id);
@@ -253,7 +260,6 @@
     function renderDocuments() {
         if (!documentsList) return;
 
-        // Clear existing cards (keep empty state)
         var cards = documentsList.querySelectorAll('.ai-doc-card');
         cards.forEach(function (c) { c.remove(); });
 
@@ -275,12 +281,10 @@
         card.className = 'ai-doc-card';
         card.dataset.uploadId = doc.id;
 
-        // File icon based on type
         var iconClass = 'fa-file-pdf';
         if (doc.file_type === 'docx') iconClass = 'fa-file-word';
         if (doc.file_type === 'pptx') iconClass = 'fa-file-powerpoint';
 
-        // Status badge
         var statusHtml = '';
         if (doc.status === 'ready') {
             statusHtml = '<span class="ai-doc-status status-ready"><i class="fas fa-check-circle"></i> Ready</span>';
@@ -292,15 +296,11 @@
             statusHtml = '<span class="ai-doc-status status-uploaded"><i class="fas fa-cloud-arrow-up"></i> Uploaded</span>';
         }
 
-        // File size display
         var sizeStr = formatFileSize(doc.file_size_bytes);
-
-        // Meta info
         var metaParts = [sizeStr];
         if (doc.page_count) metaParts.push(doc.page_count + ' pages');
         if (doc.chunk_count) metaParts.push(doc.chunk_count + ' chunks');
 
-        // Action buttons
         var actionsHtml = '';
         if (doc.status === 'ready') {
             actionsHtml += '<button class="ai-doc-btn btn-summarize" data-action="summarize" data-doc-id="' + doc.id + '">Summarize</button>';
@@ -317,7 +317,6 @@
             statusHtml +
             '<div class="ai-doc-actions">' + actionsHtml + '</div>';
 
-        // Attach event listeners
         var summarizeBtn = card.querySelector('[data-action="summarize"]');
         if (summarizeBtn) {
             summarizeBtn.addEventListener('click', function () {
@@ -338,14 +337,14 @@
     // ── Status polling ──────────────────────────────────────────
 
     function startPolling(uploadId) {
-        if (pollingTimers[uploadId]) return; // Already polling
+        if (pollingTimers[uploadId]) return;
 
         pollingTimers[uploadId] = setInterval(async function () {
             try {
                 var data = await apiCall('/api/ai/documents/' + uploadId + '/status');
                 if (data && (data.status === 'ready' || data.status === 'failed')) {
                     stopPolling(uploadId);
-                    loadDocuments(); // Refresh the list
+                    loadDocuments();
 
                     if (data.status === 'ready') {
                         showToast('Document processed and ready!', 'success');
@@ -357,7 +356,7 @@
                 console.warn('[AI Tools] Polling error for', uploadId, err);
                 stopPolling(uploadId);
             }
-        }, 3000); // Poll every 3 seconds
+        }, 3000);
     }
 
     function stopPolling(uploadId) {
@@ -370,7 +369,6 @@
     // ── Summarize ───────────────────────────────────────────────
 
     async function requestSummary(docId, filename) {
-        // Disable the button while generating
         var btn = document.querySelector('[data-action="summarize"][data-doc-id="' + docId + '"]');
         if (btn) {
             btn.disabled = true;
@@ -383,7 +381,7 @@
             });
 
             if (data && data.content) {
-                openSummaryModal(filename, data.content);
+                openSummaryPanel(docId, filename, data.content);
             } else if (data && data.status === 'generating') {
                 showToast('Summary is being generated. Please wait a moment and try again.', 'info');
             } else {
@@ -394,7 +392,6 @@
             console.error('[AI Tools] Summarize failed:', err);
             showToast(err.message || 'Summary generation failed. Please try again.', 'error');
         } finally {
-            // Re-enable button
             if (btn) {
                 btn.disabled = false;
                 btn.innerHTML = 'Summarize';
@@ -420,23 +417,118 @@
         }
     }
 
-    // ── Summary modal ───────────────────────────────────────────
+    // ── Summary panel ───────────────────────────────────────────
 
-    function openSummaryModal(filename, markdownContent) {
-        if (summaryTitle) summaryTitle.textContent = 'Review Sheet: ' + filename;
+    function openSummaryPanel(docId, filename, markdownContent) {
+        currentSummaryDocId = docId;
+        currentSummaryFilename = filename;
+        currentSummaryMarkdown = markdownContent;
+
+        if (summaryDocName) summaryDocName.textContent = filename;
         if (summaryContent) summaryContent.innerHTML = renderMarkdown(markdownContent);
-        if (summaryOverlay) summaryOverlay.classList.remove('hidden');
+
+        // Show backdrop with fade
+        if (summaryBackdrop) {
+            summaryBackdrop.classList.remove('hidden');
+            summaryBackdrop.offsetHeight; // force reflow
+            summaryBackdrop.classList.add('visible');
+        }
+
+        // Show panel with slide
+        if (summaryPanel) {
+            summaryPanel.classList.remove('hidden');
+            summaryPanel.offsetHeight; // force reflow
+            summaryPanel.classList.add('open');
+        }
+
         document.body.style.overflow = 'hidden';
     }
 
-    function closeSummaryModal() {
-        if (summaryOverlay) summaryOverlay.classList.add('hidden');
+    function closeSummaryPanel() {
+        if (summaryPanel) summaryPanel.classList.remove('open');
+        if (summaryBackdrop) summaryBackdrop.classList.remove('visible');
         document.body.style.overflow = '';
+
+        setTimeout(function () {
+            if (summaryPanel) summaryPanel.classList.add('hidden');
+            if (summaryBackdrop) summaryBackdrop.classList.add('hidden');
+        }, 350);
+
+        currentSummaryDocId = null;
+        currentSummaryFilename = null;
+        currentSummaryMarkdown = null;
     }
 
-    // ── Simple markdown renderer ────────────────────────────────
-    // Converts basic markdown to HTML. Not a full parser, but handles
-    // headings, bold, bullets, numbered lists, and code.
+    // ── Summary actions ─────────────────────────────────────────
+
+    function copySummaryToClipboard() {
+        if (!currentSummaryMarkdown) return;
+
+        navigator.clipboard.writeText(currentSummaryMarkdown).then(function () {
+            if (summaryCopyBtn) {
+                var originalHTML = summaryCopyBtn.innerHTML;
+                summaryCopyBtn.innerHTML = '<i class="fas fa-check"></i><span class="ai-toolbar-label">Copied!</span>';
+                setTimeout(function () {
+                    summaryCopyBtn.innerHTML = originalHTML;
+                }, 2000);
+            }
+            showToast('Summary copied to clipboard!', 'success');
+        }).catch(function () {
+            // Fallback for older browsers
+            var textarea = document.createElement('textarea');
+            textarea.value = currentSummaryMarkdown;
+            textarea.style.position = 'fixed';
+            textarea.style.left = '-9999px';
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            showToast('Summary copied to clipboard!', 'success');
+        });
+    }
+
+    function printSummary() {
+        window.print();
+    }
+
+    async function regenerateSummary() {
+        if (!currentSummaryDocId) return;
+
+        var docId = currentSummaryDocId;
+
+        if (summaryRegenerateBtn) {
+            summaryRegenerateBtn.disabled = true;
+            summaryRegenerateBtn.innerHTML = '<span class="ai-spinner" style="border-color:rgba(255,255,255,.3);border-top-color:#fff;width:12px;height:12px"></span><span class="ai-toolbar-label">Regenerating...</span>';
+        }
+
+        try {
+            var data = await apiCall('/api/ai/summarize/' + docId, {
+                method: 'POST',
+                body: JSON.stringify({ regenerate: true }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (data && data.content) {
+                currentSummaryMarkdown = data.content;
+                if (summaryContent) summaryContent.innerHTML = renderMarkdown(data.content);
+                if (summaryBody) summaryBody.scrollTop = 0;
+                showToast('Summary regenerated!', 'success');
+            } else {
+                throw new Error(data.error || 'No content returned');
+            }
+        } catch (err) {
+            console.error('[AI Tools] Regenerate failed:', err);
+            showToast(err.message || 'Regeneration failed. Please try again.', 'error');
+        } finally {
+            if (summaryRegenerateBtn) {
+                summaryRegenerateBtn.disabled = false;
+                summaryRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';
+            }
+        }
+    }
+
+    // ── Markdown renderer ───────────────────────────────────────
+    // Converts markdown to HTML with callout boxes for nursing content.
 
     function renderMarkdown(md) {
         if (!md) return '';
@@ -460,6 +552,19 @@
         // Horizontal rules
         html = html.replace(/^---$/gm, '<hr>');
 
+        // Blockquote callout boxes — detect labeled patterns
+        html = html.replace(/^&gt; <strong>(?:Key (?:Concept|Point|Takeaway)s?):?<\/strong> ?(.+)$/gm,
+            '<div class="ai-callout ai-callout--key"><div class="ai-callout-header"><i class="fas fa-star"></i> Key Concept</div>$1</div>');
+        html = html.replace(/^&gt; <strong>(?:Warning|Caution|Alert|Safety):?<\/strong> ?(.+)$/gm,
+            '<div class="ai-callout ai-callout--warning"><div class="ai-callout-header"><i class="fas fa-exclamation-triangle"></i> Warning</div>$1</div>');
+        html = html.replace(/^&gt; <strong>(?:Tip|Clinical (?:Tip|Pearl)|Nursing Tip):?<\/strong> ?(.+)$/gm,
+            '<div class="ai-callout ai-callout--tip"><div class="ai-callout-header"><i class="fas fa-lightbulb"></i> Clinical Tip</div>$1</div>');
+        html = html.replace(/^&gt; <strong>NCLEX[- ]?(?:Tip|Alert|Focus):?<\/strong> ?(.+)$/gm,
+            '<div class="ai-callout ai-callout--nclex"><div class="ai-callout-header"><i class="fas fa-graduation-cap"></i> NCLEX Focus</div>$1</div>');
+        // Generic blockquotes
+        html = html.replace(/^&gt; (.+)$/gm,
+            '<div class="ai-callout ai-callout--key">$1</div>');
+
         // Unordered lists (lines starting with - )
         html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
 
@@ -467,7 +572,7 @@
         html = html.replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>');
 
         // Wrap consecutive <li> items in <ul>
-        html = html.replace(/(<li>.*<\/li>\n?)+/g, function (match) {
+        html = html.replace(/(<li>[\s\S]*?<\/li>\n?)+/g, function (match) {
             return '<ul>' + match + '</ul>';
         });
 
@@ -475,16 +580,27 @@
         html = html.replace(/\n\n+/g, '</p><p>');
         html = '<p>' + html + '</p>';
 
-        // Clean up empty paragraphs
+        // Clean up empty paragraphs and misplaced <p> tags
         html = html.replace(/<p>\s*<\/p>/g, '');
         html = html.replace(/<p>(<h[1-3]>)/g, '$1');
         html = html.replace(/(<\/h[1-3]>)<\/p>/g, '$1');
         html = html.replace(/<p>(<ul>)/g, '$1');
         html = html.replace(/(<\/ul>)<\/p>/g, '$1');
         html = html.replace(/<p>(<hr>)<\/p>/g, '$1');
+        html = html.replace(/<p>(<div class="ai-callout)/g, '$1');
+        html = html.replace(/(<\/div>)<\/p>/g, '$1');
 
         // Single newlines -> <br> inside paragraphs
         html = html.replace(/\n/g, '<br>');
+
+        // Detect Quick Review / Key Takeaways section and wrap it
+        html = html.replace(/<h2>(Quick Review|Key Takeaways|Top 10 Things to Remember)<\/h2>/gi, function (match, title) {
+            return '<div class="ai-quick-review"><h2><i class="fas fa-clipboard-check"></i> ' + escapeHtml(title) + '</h2>';
+        });
+        // Close the quick-review div if opened (append at end)
+        if (html.indexOf('ai-quick-review') !== -1) {
+            html = html + '</div>';
+        }
 
         return html;
     }
@@ -505,13 +621,11 @@
     }
 
     function showToast(message, type) {
-        // Use the existing toast system if available, otherwise alert
         if (typeof window.showNotification === 'function') {
             window.showNotification(message, type);
         } else if (typeof window.showToast === 'function') {
             window.showToast(message, type);
         } else {
-            // Fallback: create a simple toast
             var toast = document.createElement('div');
             toast.style.cssText = 'position:fixed;bottom:24px;right:24px;z-index:99999;padding:12px 20px;border-radius:10px;font-family:"Source Sans 3",sans-serif;font-size:.88rem;font-weight:500;color:#fff;box-shadow:0 4px 12px rgba(0,0,0,.15);transform:translateY(10px);opacity:0;transition:all .3s ease;max-width:360px;';
             if (type === 'error') toast.style.background = '#ef4444';

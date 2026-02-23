@@ -43,8 +43,7 @@
             icon: 'fa-vial',
             color: '#f59e0b',
             bgColor: 'rgba(245,158,11,.08)',
-            panelTitle: 'Lab Values Reference',
-            disabled: true
+            panelTitle: 'Lab Values Reference'
         },
         compare_contrast: {
             key: 'compare_contrast',
@@ -53,8 +52,7 @@
             icon: 'fa-code-compare',
             color: '#ec4899',
             bgColor: 'rgba(236,72,153,.08)',
-            panelTitle: 'Compare & Contrast',
-            disabled: true
+            panelTitle: 'Compare & Contrast'
         },
         care_plan: {
             key: 'care_plan',
@@ -63,8 +61,7 @@
             icon: 'fa-clipboard-list',
             color: '#06b6d4',
             bgColor: 'rgba(6,182,212,.08)',
-            panelTitle: 'Care Plan Outline',
-            disabled: true
+            panelTitle: 'Care Plan Outline'
         }
     };
 
@@ -342,6 +339,8 @@
         }
     }
 
+    var preGenPollTimer = null;
+
     function renderDocuments() {
         if (!documentsList) return;
 
@@ -350,15 +349,41 @@
 
         if (documents.length === 0) {
             if (emptyState) emptyState.style.display = '';
+            stopPreGenPolling();
             return;
         }
 
         if (emptyState) emptyState.style.display = 'none';
 
+        var hasGenerating = false;
         documents.forEach(function (doc) {
             var card = createDocumentCard(doc);
             documentsList.appendChild(card);
+            if (doc.generating_types && doc.generating_types.length > 0) {
+                hasGenerating = true;
+            }
         });
+
+        // If any document has types currently generating, poll to update button states
+        if (hasGenerating) {
+            startPreGenPolling();
+        } else {
+            stopPreGenPolling();
+        }
+    }
+
+    function startPreGenPolling() {
+        if (preGenPollTimer) return; // already polling
+        preGenPollTimer = setInterval(function () {
+            loadDocuments();
+        }, 5000);
+    }
+
+    function stopPreGenPolling() {
+        if (preGenPollTimer) {
+            clearInterval(preGenPollTimer);
+            preGenPollTimer = null;
+        }
     }
 
     function createDocumentCard(doc) {
@@ -387,6 +412,8 @@
         if (doc.chunk_count) metaParts.push(doc.chunk_count + ' chunks');
 
         var completedGens = doc.completed_generations || [];
+        var generatingTypes = doc.generating_types || [];
+        var relevance = doc.relevant_types || {};
 
         // Build action button grid (only when document is ready)
         var actionGridHtml = '';
@@ -396,17 +423,41 @@
                 var typeKey = TYPE_KEYS[i];
                 var typeInfo = GENERATION_TYPES[typeKey];
                 var isCached = completedGens.indexOf(typeKey) !== -1;
-                var cachedDot = isCached ? '<span class="ai-action-cached" title="Generated"></span>' : '';
-                var disabledClass = typeInfo.disabled ? ' ai-action-disabled' : '';
-                var disabledAttr = typeInfo.disabled ? ' disabled title="Coming Soon"' : ' title="' + escapeHtml(typeInfo.label) + '"';
+                var isGenerating = generatingTypes.indexOf(typeKey) !== -1;
 
-                actionGridHtml += '<button class="ai-action-btn' + disabledClass + '"' +
+                // Determine relevance — default to relevant if no classification yet (backward compat)
+                var typeRelevance = relevance[typeKey];
+                var isRelevant = !typeRelevance || typeRelevance.relevant !== false;
+                var irrelevantReason = (typeRelevance && typeRelevance.reason) || '';
+
+                var statusIndicator = '';
+                var extraClass = '';
+                var attrStr = '';
+                var tooltipHtml = '';
+
+                if (!isRelevant) {
+                    // Irrelevant — dimmed with hover tooltip
+                    extraClass = ' ai-action-irrelevant';
+                    attrStr = ' disabled';
+                    tooltipHtml = '<span class="ai-tooltip">' + escapeHtml(irrelevantReason) + '</span>';
+                } else if (isCached) {
+                    statusIndicator = '<span class="ai-action-cached" title="Generated"></span>';
+                    attrStr = ' title="' + escapeHtml(typeInfo.label) + '"';
+                } else if (isGenerating) {
+                    statusIndicator = '<span class="ai-action-generating" title="Generating\u2026"></span>';
+                    attrStr = ' title="Generating\u2026"';
+                } else {
+                    attrStr = ' title="' + escapeHtml(typeInfo.label) + '"';
+                }
+
+                actionGridHtml += '<button class="ai-action-btn' + extraClass + '"' +
                     ' data-action="generate"' +
                     ' data-doc-id="' + doc.id + '"' +
                     ' data-gen-type="' + typeKey + '"' +
-                    disabledAttr +
+                    attrStr +
                     ' style="--action-color:' + typeInfo.color + ';--action-bg:' + typeInfo.bgColor + '">' +
-                    cachedDot +
+                    statusIndicator +
+                    tooltipHtml +
                     '<i class="fas ' + typeInfo.icon + '"></i>' +
                     '<span>' + typeInfo.shortLabel + '</span>' +
                     '</button>';
@@ -426,11 +477,12 @@
             '</div>' +
             actionGridHtml;
 
-        // Attach event listeners
-        var genBtns = card.querySelectorAll('[data-action="generate"]');
+        // Attach event listeners (skip irrelevant/disabled buttons)
+        var genBtns = card.querySelectorAll('[data-action="generate"]:not(.ai-action-irrelevant)');
         for (var j = 0; j < genBtns.length; j++) {
             (function (btn) {
                 btn.addEventListener('click', function () {
+                    if (btn.disabled) return;
                     requestGeneration(doc.id, doc.filename, btn.dataset.genType);
                 });
             })(genBtns[j]);
@@ -482,7 +534,7 @@
 
     async function requestGeneration(docId, filename, genType) {
         var typeInfo = GENERATION_TYPES[genType];
-        if (!typeInfo || typeInfo.disabled) return;
+        if (!typeInfo) return;
 
         var btn = document.querySelector(
             '[data-action="generate"][data-doc-id="' + docId + '"][data-gen-type="' + genType + '"]'

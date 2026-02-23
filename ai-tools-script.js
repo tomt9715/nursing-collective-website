@@ -489,8 +489,9 @@
                     btn.insertAdjacentHTML('afterbegin', '<span class="ai-action-cached" title="Generated"></span>');
                 }
             } else if (data && data.status === 'generating') {
-                showToast(typeInfo.label + ' is being generated. Please wait a moment and try again.', 'info');
-                closePanel();
+                // Content is still being generated — keep panel open and poll
+                pollForGeneration(docId, filename, genType, btn);
+                return; // skip the finally block's btn cleanup — polling handles it
             } else {
                 throw new Error(data.error || 'No content returned');
             }
@@ -500,6 +501,82 @@
             closePanel();
         } finally {
             if (btn) btn.classList.remove('generating');
+        }
+    }
+
+    // ── Poll for in-progress generation ────────────────────────
+
+    var generationPollTimer = null;
+
+    function pollForGeneration(docId, filename, genType, btn) {
+        var typeInfo = GENERATION_TYPES[genType];
+        var attempts = 0;
+        var maxAttempts = 30; // 30 × 3s = 90s max wait
+
+        // Update the generating state message to show we're waiting
+        var hintEl = panelContent ? panelContent.querySelector('.ai-generating-hint') : null;
+        if (hintEl) hintEl.textContent = 'Still generating\u2026 this may take up to a minute.';
+
+        clearGenerationPoll(); // clear any prior poll
+
+        generationPollTimer = setInterval(async function () {
+            attempts++;
+
+            // Stop if panel was closed by user
+            if (!panelEl || !panelEl.classList.contains('open')) {
+                clearGenerationPoll();
+                if (btn) btn.classList.remove('generating');
+                return;
+            }
+
+            try {
+                var data = await apiCall('/api/ai/generate/' + docId, {
+                    method: 'POST',
+                    body: JSON.stringify({ type: genType }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (data && data.content) {
+                    clearGenerationPoll();
+                    openPanel(docId, filename, genType, data.content);
+                    if (btn) {
+                        btn.classList.remove('generating');
+                        if (!btn.querySelector('.ai-action-cached')) {
+                            btn.insertAdjacentHTML('afterbegin', '<span class="ai-action-cached" title="Generated"></span>');
+                        }
+                    }
+                } else if (data && data.status === 'generating') {
+                    // Still working — update the hint with a dot animation
+                    if (hintEl) {
+                        var dots = '.'.repeat((attempts % 3) + 1);
+                        hintEl.textContent = 'Still generating' + dots + ' (' + (attempts * 3) + 's)';
+                    }
+                    if (attempts >= maxAttempts) {
+                        clearGenerationPoll();
+                        showToast(typeInfo.label + ' is taking longer than expected. Please try again in a moment.', 'error');
+                        closePanel();
+                        if (btn) btn.classList.remove('generating');
+                    }
+                } else {
+                    clearGenerationPoll();
+                    showToast(data.error || typeInfo.label + ' generation failed.', 'error');
+                    closePanel();
+                    if (btn) btn.classList.remove('generating');
+                }
+            } catch (err) {
+                clearGenerationPoll();
+                console.error('[AI Tools] Generation poll failed:', err);
+                showToast(typeInfo.label + ' generation failed. Please try again.', 'error');
+                closePanel();
+                if (btn) btn.classList.remove('generating');
+            }
+        }, 3000);
+    }
+
+    function clearGenerationPoll() {
+        if (generationPollTimer) {
+            clearInterval(generationPollTimer);
+            generationPollTimer = null;
         }
     }
 
@@ -617,6 +694,8 @@
     }
 
     function closePanel() {
+        clearGenerationPoll(); // stop any active generation polling
+
         if (panelEl) panelEl.classList.remove('open');
         if (backdropEl) backdropEl.classList.remove('visible');
         document.body.style.overflow = '';

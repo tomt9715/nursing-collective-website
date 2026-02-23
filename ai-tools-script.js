@@ -683,6 +683,10 @@
         // Render content
         if (panelContent) panelContent.innerHTML = renderMarkdown(markdownContent);
 
+        // Populate print header (shown only when printing)
+        var printTitle = document.getElementById('ai-print-title');
+        if (printTitle) printTitle.textContent = typeInfo.panelTitle + ' \u2014 ' + filename;
+
         // Re-enable toolbar buttons (may have been disabled by generating state)
         if (panelCopyBtn) panelCopyBtn.disabled = false;
         if (panelPrintBtn) panelPrintBtn.disabled = false;
@@ -819,9 +823,12 @@
 
         var html = escapeHtml(md);
 
-        // Headings
+        // Headings (H2 gets auto-assigned icons based on content keywords)
         html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
-        html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
+        html = html.replace(/^## (.+)$/gm, function (m, title) {
+            var icon = getHeadingIcon(title);
+            return '<h2><i class="fas ' + icon + '"></i> ' + title + '</h2>';
+        });
         html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
 
         // Bold & italic
@@ -883,6 +890,18 @@
         // Generic blockquotes (after specific patterns)
         html = html.replace(/^&gt; (.+)$/gm,
             '<div class="ai-callout ai-callout--key">$1</div>');
+
+        // Non-blockquote callout patterns (bold prefix WITHOUT > blockquote)
+        html = html.replace(/^<strong>(?:Key (?:Concept|Point|Takeaway)s?):?<\/strong>:?\s*(.+)$/gm,
+            '<div class="ai-callout ai-callout--key"><div class="ai-callout-header"><i class="fas fa-star"></i> Key Concept</div>$1</div>');
+        html = html.replace(/^<strong>(?:Important|Note|Remember):?<\/strong>:?\s*(.+)$/gm,
+            '<div class="ai-callout ai-callout--key"><div class="ai-callout-header"><i class="fas fa-bookmark"></i> Important</div>$1</div>');
+        html = html.replace(/^<strong>(?:Warning|Caution|Alert|Safety|⚠️\s*Warning(?:s)?):?<\/strong>:?\s*(.+)$/gm,
+            '<div class="ai-callout ai-callout--warning"><div class="ai-callout-header"><i class="fas fa-exclamation-triangle"></i> Warning</div>$1</div>');
+        html = html.replace(/^<strong>(?:Tip|Clinical (?:Tip|Pearl)|Nursing (?:Tip|Implication(?:s)?)):?<\/strong>:?\s*(.+)$/gm,
+            '<div class="ai-callout ai-callout--tip"><div class="ai-callout-header"><i class="fas fa-lightbulb"></i> Clinical Tip</div>$1</div>');
+        html = html.replace(/^<strong>NCLEX[- ]?(?:Tip|Alert|Focus):?<\/strong>:?\s*(.+)$/gm,
+            '<div class="ai-callout ai-callout--nclex"><div class="ai-callout-header"><i class="fas fa-graduation-cap"></i> NCLEX Focus</div>$1</div>');
 
         // Lettered options (A. B. C. D. E.) — style as option list
         html = html.replace(/^([A-E])\. (.+)$/gm, '<div class="ai-option"><span class="ai-option-letter">$1</span> $2</div>');
@@ -1079,6 +1098,35 @@
         if (bytes < 1024) return bytes + ' B';
         if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
         return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function getHeadingIcon(title) {
+        var t = title.toLowerCase();
+        if (/overview|introduction|background|general/.test(t)) return 'fa-book-open';
+        if (/pathophys|mechanism|etiology|cause/.test(t)) return 'fa-microscope';
+        if (/sign|symptom|assessment|manifestation|presentation|clinical feature/.test(t)) return 'fa-stethoscope';
+        if (/diagnos|lab|test|evaluat|finding/.test(t)) return 'fa-vial';
+        if (/treatment|management|therap|intervention|medical manage/.test(t)) return 'fa-kit-medical';
+        if (/medicat|pharmac|drug/.test(t)) return 'fa-pills';
+        if (/nurs|care plan|implication|priority/.test(t)) return 'fa-user-nurse';
+        if (/complicat|risk|prognos|adverse/.test(t)) return 'fa-triangle-exclamation';
+        if (/education|teach|discharge|prevention|health promot/.test(t)) return 'fa-chalkboard-user';
+        if (/quick review|key takeaway|remember|recap|summary|review/.test(t)) return 'fa-clipboard-check';
+        if (/nclex|exam|test.taking|practice/.test(t)) return 'fa-graduation-cap';
+        if (/prior|triage|emergenc/.test(t)) return 'fa-bolt';
+        if (/nutrition|diet|fluid|electrolyte/.test(t)) return 'fa-utensils';
+        if (/pain|comfort|palliati/.test(t)) return 'fa-hand-holding-heart';
+        if (/safety|fall|infect|prevent/.test(t)) return 'fa-shield-heart';
+        if (/question|practice q/.test(t)) return 'fa-clipboard-question';
+        if (/classif|type|categor|comparison|compare/.test(t)) return 'fa-layer-group';
+        if (/anatomy|structure|physiology/.test(t)) return 'fa-lungs';
+        if (/monitor|vital|parameter/.test(t)) return 'fa-heart-pulse';
+        if (/surgical|procedure|pre-op|post-op|periop/.test(t)) return 'fa-syringe';
+        if (/psycho|mental|emotional|coping/.test(t)) return 'fa-brain';
+        if (/pediatr|child|infant|newborn/.test(t)) return 'fa-baby';
+        if (/mater|pregnan|prenatal|labor|delivery|postpartum/.test(t)) return 'fa-person-breastfeeding';
+        if (/reference|resource|additional/.test(t)) return 'fa-book-bookmark';
+        return 'fa-circle-dot';
     }
 
     function darkenColor(hex, amount) {

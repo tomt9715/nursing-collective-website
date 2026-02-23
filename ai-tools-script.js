@@ -103,6 +103,7 @@
     var currentFilename = null;
     var currentMarkdown = null;
     var currentGenerationType = null;
+    var currentContentTitle = null; // AI-inferred topic title (from H1)
 
     // ── Initialization ──────────────────────────────────────────
 
@@ -688,9 +689,6 @@
 
         var typeInfo = GENERATION_TYPES[genType];
 
-        // Update toolbar
-        if (panelDocName) panelDocName.textContent = typeInfo.panelTitle + ' \u2014 ' + filename;
-
         // Type-specific toolbar color
         var toolbar = panelEl ? panelEl.querySelector('.ai-summary-toolbar') : null;
         if (toolbar && typeInfo.color) {
@@ -700,9 +698,21 @@
         // Render content
         if (panelContent) panelContent.innerHTML = renderMarkdown(markdownContent);
 
-        // Populate print header (shown only when printing)
+        // Extract AI-generated title from the first H1 in rendered content
+        currentContentTitle = null;
+        if (panelContent) {
+            var firstH1 = panelContent.querySelector('h1');
+            if (firstH1) {
+                currentContentTitle = firstH1.textContent.trim();
+            }
+        }
+
+        // Use AI title for panel header and print header, fall back to filename
+        var displayTitle = currentContentTitle || filename;
+        if (panelDocName) panelDocName.textContent = typeInfo.panelTitle + ' \u2014 ' + displayTitle;
+
         var printTitle = document.getElementById('ai-print-title');
-        if (printTitle) printTitle.textContent = typeInfo.panelTitle + ' \u2014 ' + filename;
+        if (printTitle) printTitle.textContent = typeInfo.panelTitle + ' \u2014 ' + displayTitle;
 
         // Re-enable toolbar buttons (may have been disabled by generating state)
         if (panelCopyBtn) panelCopyBtn.disabled = false;
@@ -750,19 +760,21 @@
         currentFilename = null;
         currentMarkdown = null;
         currentGenerationType = null;
+        currentContentTitle = null;
     }
 
     // ── Panel actions ───────────────────────────────────────────
 
     function printPanel() {
-        // Set document title to a meaningful name so "Save as PDF" defaults
-        // to something like "NCLEX Review Sheet — Lecture Notes.pdf"
+        // Set document title so "Save as PDF" defaults to a descriptive name
+        // like "NCLEX Review Sheet — Cardiac Medications & Heart Failure.pdf"
         var origTitle = document.title;
-        if (currentGenerationType && currentFilename) {
+        if (currentGenerationType) {
             var typeInfo = GENERATION_TYPES[currentGenerationType];
-            // Strip file extension from filename for a cleaner PDF name
-            var cleanName = currentFilename.replace(/\.[^/.]+$/, '');
-            document.title = (typeInfo ? typeInfo.panelTitle : 'AI Study Tool') + ' \u2014 ' + cleanName;
+            // Prefer AI-inferred topic title, fall back to cleaned filename
+            var pdfName = currentContentTitle
+                || (currentFilename ? currentFilename.replace(/\.[^/.]+$/, '') : 'Study Materials');
+            document.title = (typeInfo ? typeInfo.panelTitle : 'AI Study Tool') + ' \u2014 ' + pdfName;
         }
         window.print();
         // Restore original title after print dialog closes

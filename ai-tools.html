@@ -138,6 +138,8 @@
         .ai-summary-content ol{padding-left:24px;margin:10px 0}
         .ai-summary-content li{margin-bottom:6px;padding-left:24px;position:relative;line-height:1.6}
         .ai-summary-content ul > li::before{content:'';position:absolute;left:6px;top:10px;width:6px;height:6px;border-radius:50%;background:#7c3aed}
+        .ai-summary-content li.ai-sub{margin-left:22px}
+        .ai-summary-content ul > li.ai-sub::before{width:5px;height:5px;background:#a78bfa;top:11px}
         .ai-summary-content strong{color:#7c3aed}
         .ai-summary-content code{background:rgba(124,58,237,.06);padding:2px 6px;border-radius:4px;font-size:.85rem}
         .ai-summary-content hr{border:none;height:2px;background:linear-gradient(90deg,rgba(124,58,237,.15),transparent);margin:20px 0}
@@ -237,6 +239,7 @@
         [data-theme="dark"] .ai-summary-content h2 i{color:#a78bfa}
         [data-theme="dark"] .ai-summary-content h3{border-color:rgba(167,139,250,.25)}
         [data-theme="dark"] .ai-summary-content ul > li::before{background:#a78bfa}
+        [data-theme="dark"] .ai-summary-content ul > li.ai-sub::before{background:#8b5cf6}
         [data-theme="dark"] .ai-summary-content strong{color:#a78bfa}
         [data-theme="dark"] .ai-summary-content code{background:rgba(167,139,250,.1)}
         [data-theme="dark"] .ai-callout--key{background:rgba(124,58,237,.1)}
@@ -546,6 +549,6 @@
     <!-- Remaining scripts: defer lets browser pre-fetch in parallel -->
     <script defer src="script.js?v=4.8.dashboard"></script>
     <script defer src="sidebar.js?v=1.3.ai-tools"></script>
-    <script defer src="ai-tools-script.js?v=1.3.1"></script>
+    <script defer src="ai-tools-script.js?v=1.3.2"></script>
 </body>
 </html>

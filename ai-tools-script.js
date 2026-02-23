@@ -907,7 +907,9 @@
         html = html.replace(/^([A-E])\. (.+)$/gm, '<div class="ai-option"><span class="ai-option-letter">$1</span> $2</div>');
 
         // Unordered lists (also match indented sub-items)
-        html = html.replace(/^ *[-•] (.+)$/gm, '<li>$1</li>');
+        html = html.replace(/^( *)[-•] (.+)$/gm, function (m, indent, text) {
+            return indent.length >= 2 ? '<li class="ai-sub">' + text + '</li>' : '<li>' + text + '</li>';
+        });
 
         // Numbered lists (also match indented)
         html = html.replace(/^ *\d+\.\s+(.+)$/gm, '<li>$1</li>');

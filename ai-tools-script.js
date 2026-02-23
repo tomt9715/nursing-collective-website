@@ -511,11 +511,11 @@
     function pollForGeneration(docId, filename, genType, btn) {
         var typeInfo = GENERATION_TYPES[genType];
         var attempts = 0;
-        var maxAttempts = 30; // 30 × 3s = 90s max wait
+        var maxAttempts = 100; // 100 × 3s = 5 min max wait
 
         // Update the generating state message to show we're waiting
         var hintEl = panelContent ? panelContent.querySelector('.ai-generating-hint') : null;
-        if (hintEl) hintEl.textContent = 'Still generating\u2026 this may take up to a minute.';
+        if (hintEl) hintEl.textContent = 'Still generating\u2026 this may take up to a minute for large documents.';
 
         clearGenerationPoll(); // clear any prior poll
 
@@ -545,18 +545,34 @@
                             btn.insertAdjacentHTML('afterbegin', '<span class="ai-action-cached" title="Generated"></span>');
                         }
                     }
+                    // Reset regenerate button if it triggered this poll
+                    if (btn === panelRegenerateBtn && panelRegenerateBtn) {
+                        panelRegenerateBtn.disabled = false;
+                        panelRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';
+                    }
                 } else if (data && data.status === 'generating') {
-                    // Still working — update the hint with a dot animation
+                    // Still working — update the hint with elapsed time
                     if (hintEl) {
+                        var elapsed = attempts * 3;
                         var dots = '.'.repeat((attempts % 3) + 1);
-                        hintEl.textContent = 'Still generating' + dots + ' (' + (attempts * 3) + 's)';
+                        var minutes = Math.floor(elapsed / 60);
+                        var timeStr = minutes > 0
+                            ? minutes + 'm ' + (elapsed % 60) + 's'
+                            : elapsed + 's';
+                        hintEl.textContent = 'Still generating' + dots + ' (' + timeStr + ')';
                     }
                     if (attempts >= maxAttempts) {
                         clearGenerationPoll();
-                        showToast(typeInfo.label + ' is taking longer than expected. Please try again in a moment.', 'error');
+                        showToast(typeInfo.label + ' generation timed out. Please try again.', 'error');
                         closePanel();
                         if (btn) btn.classList.remove('generating');
                     }
+                } else if (data && data.status === 'failed') {
+                    // Backend explicitly reported failure
+                    clearGenerationPoll();
+                    showToast(data.error_message || data.error || typeInfo.label + ' generation failed.', 'error');
+                    closePanel();
+                    if (btn) btn.classList.remove('generating');
                 } else {
                     clearGenerationPoll();
                     showToast(data.error || typeInfo.label + ' generation failed.', 'error');
@@ -762,13 +778,33 @@
                 if (panelContent) panelContent.innerHTML = renderMarkdown(data.content);
                 if (panelBody) panelBody.scrollTop = 0;
                 showToast(typeInfo.label + ' regenerated!', 'success');
+                if (panelRegenerateBtn) {
+                    panelRegenerateBtn.disabled = false;
+                    panelRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';
+                }
+            } else if (data && data.status === 'generating') {
+                // Async regeneration — show generating state and poll
+                if (panelContent) {
+                    panelContent.innerHTML =
+                        '<div class="ai-generating-state">' +
+                            '<div class="ai-generating-spinner"></div>' +
+                            '<h3>Regenerating ' + escapeHtml(typeInfo.label) + '</h3>' +
+                            '<p>Creating fresh study materials\u2026</p>' +
+                            '<p class="ai-generating-hint">This usually takes 10\u201320 seconds</p>' +
+                        '</div>';
+                }
+                // Disable panel buttons during regeneration
+                if (panelCopyBtn) panelCopyBtn.disabled = true;
+                if (panelPrintBtn) panelPrintBtn.disabled = true;
+                if (panelQuizBtn) { panelQuizBtn.disabled = true; panelQuizBtn.classList.add('hidden'); }
+                // Poll until content is ready (panelRegenerateBtn reset handled inside pollForGeneration)
+                pollForGeneration(currentDocId, currentFilename, currentGenerationType, panelRegenerateBtn);
             } else {
                 throw new Error(data.error || 'No content returned');
             }
         } catch (err) {
             console.error('[AI Tools] Regenerate failed:', err);
             showToast(err.message || 'Regeneration failed. Please try again.', 'error');
-        } finally {
             if (panelRegenerateBtn) {
                 panelRegenerateBtn.disabled = false;
                 panelRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';

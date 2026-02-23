@@ -906,11 +906,14 @@
         // Lettered options (A. B. C. D. E.) — style as option list
         html = html.replace(/^([A-E])\. (.+)$/gm, '<div class="ai-option"><span class="ai-option-letter">$1</span> $2</div>');
 
-        // Unordered lists
-        html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
+        // Unordered lists (also match indented sub-items)
+        html = html.replace(/^ *[-•] (.+)$/gm, '<li>$1</li>');
 
-        // Numbered lists
-        html = html.replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>');
+        // Numbered lists (also match indented)
+        html = html.replace(/^ *\d+\.\s+(.+)$/gm, '<li>$1</li>');
+
+        // Collapse blank lines between list items so they group into one <ul>
+        html = html.replace(/<\/li>\n\n+<li>/g, '</li>\n<li>');
 
         // Wrap consecutive <li> items in <ul>
         html = html.replace(/(<li>[\s\S]*?<\/li>\n?)+/g, function (match) {

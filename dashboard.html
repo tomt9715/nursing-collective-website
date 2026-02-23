@@ -305,10 +305,11 @@
 
     </style>
 
-    <!-- Sentry Error Tracking (load first) -->
-    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
-    <script src="sentry-init.js"></script>
+    <!-- Lockscreen (must run before body renders — instant no-op for unlocked users) -->
     <script src="lockscreen.js"></script>
+    <!-- Sentry Error Tracking (defer: ordered but non-render-blocking) -->
+    <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script defer src="sentry-init.js"></script>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -767,26 +768,19 @@
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-    <!-- Custom Modal System -->
-    <script src="modal.js"></script>
-
-    <!-- Dark Mode Manager -->
+    <!-- Dark Mode Manager (runs first to prevent flash) -->
     <script src="dark-mode.js"></script>
 
-    <!-- API Service Layer -->
-    <script src="api-service.js?v=1769142741"></script>
+    <!-- API Service Layer (loads early to pre-warm stale tokens) -->
+    <script src="api-service.js?v=1769142742"></script>
 
-
-    <script src="script.js?v=4.8.dashboard"></script>
-
-    <!-- Quiz Bank Mastery (registry + mastery tracker for dashboard section) -->
-    <script src="app/data/registry.js"></script>
-    <script src="app/mastery.js"></script>
-
-    <script src="dashboard-script.js?v=5.6.resources"></script>
+    <!-- Remaining scripts: defer lets browser pre-fetch in parallel -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer src="modal.js"></script>
+    <script defer src="script.js?v=4.8.dashboard"></script>
+    <script defer src="app/data/registry.js"></script>
+    <script defer src="app/mastery.js"></script>
+    <script defer src="dashboard-script.js?v=5.7.perf"></script>
 
 </body>
 </html>

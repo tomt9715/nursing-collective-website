@@ -636,10 +636,11 @@
             .crop-modal-footer { padding: 12px 16px; }
         }
     </style>
-    <!-- Sentry Error Tracking (load first) -->
-    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
-    <script src="sentry-init.js"></script>
+    <!-- Lockscreen (must run immediately) -->
     <script src="lockscreen.js"></script>
+    <!-- Sentry Error Tracking (deferred) -->
+    <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script defer src="sentry-init.js"></script>
 </head>
 <body>
     <!-- Page Loader -->
@@ -1043,27 +1044,16 @@
             </div>
         </div>
     </footer>
-
-    <!-- Bootstrap 5 JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-
-    <!-- Custom Modal System -->
-    <script src="modal.js"></script>
-
-    <!-- Dark Mode Manager -->
+    <!-- Dark Mode Manager (sync - prevents flash) -->
     <script src="dark-mode.js"></script>
-
-    <!-- Sidebar Navigation -->
-    <script src="sidebar.js"></script>
-
-    <!-- API Service Layer -->
-    <script src="api-service.js?v=1769142741"></script>
-
-    <script src="script.js?v=4.8.settings"></script>
-
-    <!-- Cropper.js (image crop tool) -->
-    <script src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
-
-    <script src="settings-script.js?v=4.9.crop"></script>
+    <!-- API Service Layer (sync - needed by other scripts) -->
+    <script src="api-service.js?v=1769142742"></script>
+    <!-- Deferred scripts -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer src="modal.js"></script>
+    <script defer src="sidebar.js"></script>
+    <script defer src="script.js?v=4.8.settings"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
+    <script defer src="settings-script.js?v=4.9.crop"></script>
 </body>
 </html>

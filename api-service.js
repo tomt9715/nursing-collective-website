@@ -239,17 +239,40 @@ function requireAuth() {
         return Promise.resolve(false);
     }
 
-    // If token looks stale, try refreshing before proceeding
+    // If token looks stale, try refreshing before proceeding.
+    // Reuse the pre-warm refresh if one is already in-flight.
     if (isTokenStale()) {
-        return ensureValidToken().then(function(valid) {
-            if (!valid) {
+        var refreshPromise = _tokenRefreshPromise || ensureValidToken();
+        _tokenRefreshPromise = null; // consume it
+        return (refreshPromise instanceof Promise ? refreshPromise : Promise.resolve(refreshPromise))
+            .then(function() {
+                // After refresh, re-check authentication
+                if (!isAuthenticated()) {
+                    window.location.href = 'login.html';
+                    return false;
+                }
+                return true;
+            })
+            .catch(function() {
+                // Refresh failed — session dead
+                localStorage.removeItem('accessToken');
+                localStorage.removeItem('user');
+                localStorage.removeItem('tokenTimestamp');
                 window.location.href = 'login.html';
-            }
-            return valid;
-        });
+                return false;
+            });
     }
 
     return Promise.resolve(true);
+}
+
+// ─── Pre-warm: kick off token refresh immediately if stale ────────────
+// This runs as soon as api-service.js loads (before later scripts download).
+// By the time dashboard-script.js calls requireAuth(), the refresh is
+// already in-flight or finished — saving 300-800ms on cold page loads.
+var _tokenRefreshPromise = null;
+if (isAuthenticated() && isTokenStale()) {
+    _tokenRefreshPromise = refreshToken().catch(function() { /* handled later by requireAuth */ });
 }
 
 // Listen for cross-tab logout events

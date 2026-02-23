@@ -107,23 +107,44 @@
 
     function init() {
         var token = localStorage.getItem('accessToken');
-        if (!token) {
-            setTimeout(function () {
-                token = localStorage.getItem('accessToken');
-                if (token) {
-                    checkAiAccess();
-                } else {
-                    showUpgradePrompt();
-                }
-            }, 1500);
+        if (token) {
+            // Token exists — check access immediately, no delay
+            checkAiAccess();
         } else {
-            setTimeout(checkAiAccess, 300);
+            // No token yet — another script may still be refreshing it.
+            // Listen for the storage event (token written by another tab/script)
+            // and also poll briefly in case refresh happens in this tab.
+            var resolved = false;
+            function tryOnce() {
+                if (resolved) return;
+                var t = localStorage.getItem('accessToken');
+                if (t) { resolved = true; checkAiAccess(); }
+            }
+            window.addEventListener('storage', function onStorage(e) {
+                if (e.key === 'accessToken' && e.newValue) {
+                    window.removeEventListener('storage', onStorage);
+                    tryOnce();
+                }
+            });
+            // Quick polls at 100ms, 400ms, 900ms — then give up
+            setTimeout(tryOnce, 100);
+            setTimeout(tryOnce, 400);
+            setTimeout(function () {
+                if (!resolved) { resolved = true; showUpgradePrompt(); }
+            }, 900);
         }
     }
 
     async function checkAiAccess() {
         try {
-            var data = await apiCall('/api/subscription-status');
+            // Fire subscription + profile checks in parallel
+            var subPromise = apiCall('/api/subscription-status').catch(function () { return null; });
+            var profilePromise = apiCall('/user/profile').catch(function () { return null; });
+            var results = await Promise.all([subPromise, profilePromise]);
+
+            var data = results[0];
+            var profileData = results[1];
+
             if (data && data.has_access && data.subscription) {
                 var planId = data.subscription.plan_id || '';
                 if (planId.startsWith('ai-') || data.subscription.is_ai_plan) {
@@ -131,15 +152,8 @@
                 }
             }
 
-            if (!hasAiAccess) {
-                try {
-                    var profileData = await apiCall('/user/profile');
-                    if (profileData && profileData.user && profileData.user.is_admin) {
-                        hasAiAccess = true;
-                    }
-                } catch (profileErr) {
-                    // Profile check failed — not critical
-                }
+            if (!hasAiAccess && profileData && profileData.user && profileData.user.is_admin) {
+                hasAiAccess = true;
             }
 
             if (hasAiAccess) {

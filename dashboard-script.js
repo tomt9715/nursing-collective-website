@@ -300,17 +300,26 @@ async function loadUserProfile() {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user) return;
 
-        // Sync study history and quiz mastery from server before rendering widgets
-        await syncStudyHistory();
+        // Fire all independent data-fetches in parallel instead of sequentially.
+        // syncStudyHistory, MasteryTracker.pull, and fetchQuizSessions are
+        // all independent API calls — run them at the same time.
+        var dataPromises = [
+            syncStudyHistory(),
+            fetchAndCacheQuizSessions()
+        ];
         if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.pullFromServer === 'function') {
-            await MasteryTracker.pullFromServer();
-            console.log('[Dashboard] Mastery data synced from server');
+            dataPromises.push(
+                MasteryTracker.pullFromServer().then(function () {
+                    console.log('[Dashboard] Mastery data synced from server');
+                })
+            );
         }
+        await Promise.all(dataPromises);
 
+        // All data is now in localStorage — render widgets
         loadAnnouncementBanner();
         loadContinueHero();
         loadRecentGuides();
-        await fetchAndCacheQuizSessions();
         loadStudyActivityCalendar();
         updateDailyGoalWidget();
 

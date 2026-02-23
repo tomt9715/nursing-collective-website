@@ -163,6 +163,7 @@
 
         /* Answer reveals (practice questions) */
         .ai-answer-reveal{margin:8px 0 12px;border-radius:8px;overflow:hidden}
+        .ai-answer-reveal:not([open]) .ai-answer-content{display:none}
         .ai-answer-toggle{display:flex;align-items:center;gap:6px;padding:10px 14px;background:rgba(59,130,246,.08);color:#3b82f6;font-weight:600;font-size:.85rem;cursor:pointer;border-radius:8px;list-style:none;transition:background .15s}
         .ai-answer-toggle:hover{background:rgba(59,130,246,.14)}
         .ai-answer-toggle::-webkit-details-marker{display:none}
@@ -179,6 +180,14 @@
         /* Answer option letters */
         .ai-option{display:flex;align-items:baseline;gap:8px;padding:4px 0;font-size:.9rem}
         .ai-option-letter{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(59,130,246,.08);color:#3b82f6;font-weight:700;font-size:.78rem;flex-shrink:0}
+
+        /* Generating state (shown while waiting for LLM response) */
+        .ai-generating-state{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:60px 24px;min-height:300px;color:#64748b}
+        .ai-generating-state h3{margin:20px 0 8px;color:#334155;font-size:1.1rem;font-weight:600}
+        .ai-generating-state p{margin:0 0 4px;font-size:.9rem;line-height:1.5}
+        .ai-generating-hint{font-size:.8rem !important;color:#94a3b8;margin-top:12px !important}
+        .ai-generating-spinner{width:40px;height:40px;border:3px solid rgba(124,58,237,.15);border-top-color:#7c3aed;border-radius:50%;animation:aiSpin 0.8s linear infinite}
+        @keyframes aiSpin{to{transform:rotate(360deg)}}
 
         /* Disclaimer footer */
         .ai-summary-disclaimer{flex-shrink:0;padding:10px 20px;border-top:1px solid rgba(0,0,0,.06);text-align:center;font-size:.73rem;color:#94a3b8;display:flex;align-items:center;justify-content:center;gap:6px;background:#fafbfc}
@@ -237,6 +246,9 @@
         [data-theme="dark"] .ai-concept-tag{background:rgba(167,139,250,.1);color:#a78bfa}
         [data-theme="dark"] .ai-option-letter{background:rgba(59,130,246,.12)}
         [data-theme="dark"] .ai-summary-disclaimer{background:rgba(255,255,255,.02);border-color:rgba(255,255,255,.06)}
+        [data-theme="dark"] .ai-generating-state{color:#94a3b8}
+        [data-theme="dark"] .ai-generating-state h3{color:#e2e8f0}
+        [data-theme="dark"] .ai-generating-spinner{border-color:rgba(167,139,250,.2);border-top-color:#a78bfa}
         [data-theme="dark"] .ai-upgrade-card{background:rgba(124,58,237,.08);border-color:rgba(124,58,237,.2)}
         [data-theme="dark"] .ai-upgrade-card h3{color:#f1f5f9}
         [data-theme="dark"] .ai-upgrade-card p{color:#94a3b8}

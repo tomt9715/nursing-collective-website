@@ -469,6 +469,10 @@
         );
         if (btn) btn.classList.add('generating');
 
+        // Open the panel immediately with a generating state so the user
+        // sees feedback right away instead of staring at a tiny spinner.
+        openPanelGenerating(docId, filename, genType);
+
         try {
             var data = await apiCall('/api/ai/generate/' + docId, {
                 method: 'POST',
@@ -484,12 +488,14 @@
                 }
             } else if (data && data.status === 'generating') {
                 showToast(typeInfo.label + ' is being generated. Please wait a moment and try again.', 'info');
+                closePanel();
             } else {
                 throw new Error(data.error || 'No content returned');
             }
         } catch (err) {
             console.error('[AI Tools] Generation failed:', err);
             showToast(err.message || typeInfo.label + ' generation failed. Please try again.', 'error');
+            closePanel();
         } finally {
             if (btn) btn.classList.remove('generating');
         }
@@ -515,6 +521,52 @@
 
     // ── Panel (open / close) ────────────────────────────────────
 
+    function openPanelGenerating(docId, filename, genType) {
+        var typeInfo = GENERATION_TYPES[genType];
+
+        currentDocId = docId;
+        currentFilename = filename;
+        currentMarkdown = null;
+        currentGenerationType = genType;
+
+        // Update toolbar
+        if (panelDocName) panelDocName.textContent = typeInfo.panelTitle + ' \u2014 ' + filename;
+
+        var toolbar = panelEl ? panelEl.querySelector('.ai-summary-toolbar') : null;
+        if (toolbar && typeInfo.color) {
+            toolbar.style.background = 'linear-gradient(135deg, ' + typeInfo.color + ', ' + darkenColor(typeInfo.color, 30) + ')';
+        }
+
+        // Show loading state in panel body
+        if (panelContent) {
+            panelContent.innerHTML =
+                '<div class="ai-generating-state">' +
+                    '<div class="ai-generating-spinner"></div>' +
+                    '<h3>Generating ' + escapeHtml(typeInfo.label) + '</h3>' +
+                    '<p>Analyzing your notes and creating study materials\u2026</p>' +
+                    '<p class="ai-generating-hint">This usually takes 10\u201320 seconds</p>' +
+                '</div>';
+        }
+
+        // Disable toolbar action buttons while generating
+        if (panelCopyBtn) panelCopyBtn.disabled = true;
+        if (panelPrintBtn) panelPrintBtn.disabled = true;
+        if (panelRegenerateBtn) panelRegenerateBtn.disabled = true;
+
+        // Show backdrop + panel
+        if (backdropEl) {
+            backdropEl.classList.remove('hidden');
+            backdropEl.offsetHeight;
+            backdropEl.classList.add('visible');
+        }
+        if (panelEl) {
+            panelEl.classList.remove('hidden');
+            panelEl.offsetHeight;
+            panelEl.classList.add('open');
+        }
+        document.body.style.overflow = 'hidden';
+    }
+
     function openPanel(docId, filename, genType, markdownContent) {
         currentDocId = docId;
         currentFilename = filename;
@@ -534,6 +586,11 @@
 
         // Render content
         if (panelContent) panelContent.innerHTML = renderMarkdown(markdownContent);
+
+        // Re-enable toolbar buttons (may have been disabled by generating state)
+        if (panelCopyBtn) panelCopyBtn.disabled = false;
+        if (panelPrintBtn) panelPrintBtn.disabled = false;
+        if (panelRegenerateBtn) panelRegenerateBtn.disabled = false;
 
         // Show backdrop
         if (backdropEl) {
@@ -674,6 +731,13 @@
             }
             table += '</tbody></table></div>';
             return table;
+        });
+
+        // Collapse multi-line blockquote Answer/Rationale/Concept into single lines.
+        // LLMs often wrap long rationales across multiple `> ` lines. This merges them
+        // so the reveal-toggle regex below captures the FULL text, not just line 1.
+        html = html.replace(/^(&gt; <strong>(?:Answer|Rationale|Concept):?<\/strong> .+?)(\n&gt; (?!<strong>).+)+/gm, function (match) {
+            return match.replace(/\n&gt; /g, ' ');
         });
 
         // Blockquote callout boxes

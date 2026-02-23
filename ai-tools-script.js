@@ -1,10 +1,74 @@
 /**
- * AI Study Tools — Phase 1: Upload + Summarize
- * Handles file upload, document management, and AI summary generation.
+ * AI Study Tools — Upload + AI Study Toolkit
+ * Handles file upload, document management, and AI content generation
+ * (summaries, practice questions, drug cards, and more).
  * Relies on api-service.js for API_URL and apiCall().
  */
 (function () {
     'use strict';
+
+    // ── Generation type registry ─────────────────────────────────
+    var GENERATION_TYPES = {
+        summary: {
+            key: 'summary',
+            label: 'NCLEX Summary',
+            shortLabel: 'Summary',
+            icon: 'fa-file-lines',
+            color: '#7c3aed',
+            bgColor: 'rgba(124,58,237,.08)',
+            panelTitle: 'NCLEX Review Sheet'
+        },
+        practice_questions: {
+            key: 'practice_questions',
+            label: 'Practice Questions',
+            shortLabel: 'Practice Qs',
+            icon: 'fa-clipboard-question',
+            color: '#3b82f6',
+            bgColor: 'rgba(59,130,246,.08)',
+            panelTitle: 'Practice Questions'
+        },
+        drug_cards: {
+            key: 'drug_cards',
+            label: 'Drug Cards',
+            shortLabel: 'Drug Cards',
+            icon: 'fa-pills',
+            color: '#10b981',
+            bgColor: 'rgba(16,185,129,.08)',
+            panelTitle: 'Drug Reference Cards'
+        },
+        key_labs: {
+            key: 'key_labs',
+            label: 'Key Labs',
+            shortLabel: 'Key Labs',
+            icon: 'fa-vial',
+            color: '#f59e0b',
+            bgColor: 'rgba(245,158,11,.08)',
+            panelTitle: 'Lab Values Reference',
+            disabled: true
+        },
+        compare_contrast: {
+            key: 'compare_contrast',
+            label: 'Compare & Contrast',
+            shortLabel: 'Compare',
+            icon: 'fa-code-compare',
+            color: '#ec4899',
+            bgColor: 'rgba(236,72,153,.08)',
+            panelTitle: 'Compare & Contrast',
+            disabled: true
+        },
+        care_plan: {
+            key: 'care_plan',
+            label: 'Care Plan',
+            shortLabel: 'Care Plan',
+            icon: 'fa-clipboard-list',
+            color: '#06b6d4',
+            bgColor: 'rgba(6,182,212,.08)',
+            panelTitle: 'Care Plan Outline',
+            disabled: true
+        }
+    };
+
+    var TYPE_KEYS = Object.keys(GENERATION_TYPES);
 
     // ── DOM elements ────────────────────────────────────────────
     var aiSection = document.getElementById('ai-tools-section');
@@ -19,24 +83,25 @@
     var emptyState = document.getElementById('ai-empty-state');
     var refreshBtn = document.getElementById('ai-refresh-btn');
 
-    // Summary panel elements
-    var summaryPanel = document.getElementById('ai-summary-panel');
-    var summaryBackdrop = document.getElementById('ai-summary-backdrop');
-    var summaryDocName = document.getElementById('ai-summary-doc-name');
-    var summaryContent = document.getElementById('ai-summary-content');
-    var summaryBody = document.getElementById('ai-summary-body');
-    var summaryBackBtn = document.getElementById('ai-summary-back');
-    var summaryCopyBtn = document.getElementById('ai-summary-copy');
-    var summaryPrintBtn = document.getElementById('ai-summary-print');
-    var summaryRegenerateBtn = document.getElementById('ai-summary-regenerate');
+    // Panel elements
+    var panelEl = document.getElementById('ai-summary-panel');
+    var backdropEl = document.getElementById('ai-summary-backdrop');
+    var panelDocName = document.getElementById('ai-summary-doc-name');
+    var panelContent = document.getElementById('ai-summary-content');
+    var panelBody = document.getElementById('ai-summary-body');
+    var panelBackBtn = document.getElementById('ai-summary-back');
+    var panelCopyBtn = document.getElementById('ai-summary-copy');
+    var panelPrintBtn = document.getElementById('ai-summary-print');
+    var panelRegenerateBtn = document.getElementById('ai-summary-regenerate');
 
     // ── State ───────────────────────────────────────────────────
     var documents = [];
     var pollingTimers = {};
     var hasAiAccess = false;
-    var currentSummaryDocId = null;
-    var currentSummaryFilename = null;
-    var currentSummaryMarkdown = null;
+    var currentDocId = null;
+    var currentFilename = null;
+    var currentMarkdown = null;
+    var currentGenerationType = null;
 
     // ── Initialization ──────────────────────────────────────────
 
@@ -103,13 +168,10 @@
     // ── Event listeners ─────────────────────────────────────────
 
     function setupEventListeners() {
-        // Click to browse
+        // Upload dropzone
         if (dropzone) {
-            dropzone.addEventListener('click', function () {
-                fileInput.click();
-            });
+            dropzone.addEventListener('click', function () { fileInput.click(); });
         }
-
         if (fileInput) {
             fileInput.addEventListener('change', function () {
                 if (fileInput.files.length > 0) {
@@ -118,7 +180,6 @@
                 }
             });
         }
-
         // Drag and drop
         if (dropzone) {
             dropzone.addEventListener('dragover', function (e) {
@@ -137,34 +198,24 @@
             });
         }
 
-        // Refresh button
+        // Refresh
         if (refreshBtn) {
             refreshBtn.addEventListener('click', loadDocuments);
         }
 
-        // Summary panel — close
-        if (summaryBackBtn) {
-            summaryBackBtn.addEventListener('click', closeSummaryPanel);
-        }
-        if (summaryBackdrop) {
-            summaryBackdrop.addEventListener('click', closeSummaryPanel);
-        }
+        // Panel close
+        if (panelBackBtn) panelBackBtn.addEventListener('click', closePanel);
+        if (backdropEl) backdropEl.addEventListener('click', closePanel);
 
-        // Summary panel — actions
-        if (summaryCopyBtn) {
-            summaryCopyBtn.addEventListener('click', copySummaryToClipboard);
-        }
-        if (summaryPrintBtn) {
-            summaryPrintBtn.addEventListener('click', printSummary);
-        }
-        if (summaryRegenerateBtn) {
-            summaryRegenerateBtn.addEventListener('click', regenerateSummary);
-        }
+        // Panel actions
+        if (panelCopyBtn) panelCopyBtn.addEventListener('click', copyToClipboard);
+        if (panelPrintBtn) panelPrintBtn.addEventListener('click', function () { window.print(); });
+        if (panelRegenerateBtn) panelRegenerateBtn.addEventListener('click', regenerateGeneration);
 
-        // ESC key to close panel
+        // ESC key
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && summaryPanel && summaryPanel.classList.contains('open')) {
-                closeSummaryPanel();
+            if (e.key === 'Escape' && panelEl && panelEl.classList.contains('open')) {
+                closePanel();
             }
         });
     }
@@ -301,27 +352,54 @@
         if (doc.page_count) metaParts.push(doc.page_count + ' pages');
         if (doc.chunk_count) metaParts.push(doc.chunk_count + ' chunks');
 
-        var actionsHtml = '';
+        var completedGens = doc.completed_generations || [];
+
+        // Build action button grid (only when document is ready)
+        var actionGridHtml = '';
         if (doc.status === 'ready') {
-            actionsHtml += '<button class="ai-doc-btn btn-summarize" data-action="summarize" data-doc-id="' + doc.id + '">Summarize</button>';
-            actionsHtml += '<button class="ai-doc-btn btn-quiz" title="Coming in Phase 2">Quiz Me</button>';
+            actionGridHtml = '<div class="ai-action-grid">';
+            for (var i = 0; i < TYPE_KEYS.length; i++) {
+                var typeKey = TYPE_KEYS[i];
+                var typeInfo = GENERATION_TYPES[typeKey];
+                var isCached = completedGens.indexOf(typeKey) !== -1;
+                var cachedDot = isCached ? '<span class="ai-action-cached" title="Generated"></span>' : '';
+                var disabledClass = typeInfo.disabled ? ' ai-action-disabled' : '';
+                var disabledAttr = typeInfo.disabled ? ' disabled title="Coming Soon"' : ' title="' + escapeHtml(typeInfo.label) + '"';
+
+                actionGridHtml += '<button class="ai-action-btn' + disabledClass + '"' +
+                    ' data-action="generate"' +
+                    ' data-doc-id="' + doc.id + '"' +
+                    ' data-gen-type="' + typeKey + '"' +
+                    disabledAttr +
+                    ' style="--action-color:' + typeInfo.color + ';--action-bg:' + typeInfo.bgColor + '">' +
+                    cachedDot +
+                    '<i class="fas ' + typeInfo.icon + '"></i>' +
+                    '<span>' + typeInfo.shortLabel + '</span>' +
+                    '</button>';
+            }
+            actionGridHtml += '</div>';
         }
-        actionsHtml += '<button class="ai-doc-btn btn-delete" data-action="delete" data-doc-id="' + doc.id + '" title="Delete"><i class="fas fa-trash-alt"></i></button>';
 
         card.innerHTML =
-            '<div class="ai-doc-icon"><i class="fas ' + iconClass + '"></i></div>' +
-            '<div class="ai-doc-info">' +
-            '  <div class="ai-doc-name">' + escapeHtml(doc.filename) + '</div>' +
-            '  <div class="ai-doc-meta">' + metaParts.join(' &bull; ') + '</div>' +
+            '<div class="ai-doc-header">' +
+            '  <div class="ai-doc-icon"><i class="fas ' + iconClass + '"></i></div>' +
+            '  <div class="ai-doc-info">' +
+            '    <div class="ai-doc-name">' + escapeHtml(doc.filename) + '</div>' +
+            '    <div class="ai-doc-meta">' + metaParts.join(' &bull; ') + '</div>' +
+            '  </div>' +
+            '  ' + statusHtml +
+            '  <button class="ai-doc-btn btn-delete" data-action="delete" data-doc-id="' + doc.id + '" title="Delete"><i class="fas fa-trash-alt"></i></button>' +
             '</div>' +
-            statusHtml +
-            '<div class="ai-doc-actions">' + actionsHtml + '</div>';
+            actionGridHtml;
 
-        var summarizeBtn = card.querySelector('[data-action="summarize"]');
-        if (summarizeBtn) {
-            summarizeBtn.addEventListener('click', function () {
-                requestSummary(doc.id, doc.filename);
-            });
+        // Attach event listeners
+        var genBtns = card.querySelectorAll('[data-action="generate"]');
+        for (var j = 0; j < genBtns.length; j++) {
+            (function (btn) {
+                btn.addEventListener('click', function () {
+                    requestGeneration(doc.id, doc.filename, btn.dataset.genType);
+                });
+            })(genBtns[j]);
         }
 
         var deleteBtn = card.querySelector('[data-action="delete"]');
@@ -366,43 +444,47 @@
         }
     }
 
-    // ── Summarize ───────────────────────────────────────────────
+    // ── Generate content ────────────────────────────────────────
 
-    async function requestSummary(docId, filename) {
-        var btn = document.querySelector('[data-action="summarize"][data-doc-id="' + docId + '"]');
-        if (btn) {
-            btn.disabled = true;
-            btn.innerHTML = '<span class="ai-spinner"></span> Generating...';
-        }
+    async function requestGeneration(docId, filename, genType) {
+        var typeInfo = GENERATION_TYPES[genType];
+        if (!typeInfo || typeInfo.disabled) return;
+
+        var btn = document.querySelector(
+            '[data-action="generate"][data-doc-id="' + docId + '"][data-gen-type="' + genType + '"]'
+        );
+        if (btn) btn.classList.add('generating');
 
         try {
-            var data = await apiCall('/api/ai/summarize/' + docId, {
-                method: 'POST'
+            var data = await apiCall('/api/ai/generate/' + docId, {
+                method: 'POST',
+                body: JSON.stringify({ type: genType }),
+                headers: { 'Content-Type': 'application/json' }
             });
 
             if (data && data.content) {
-                openSummaryPanel(docId, filename, data.content);
+                openPanel(docId, filename, genType, data.content);
+                // Update cache dot
+                if (btn && !btn.querySelector('.ai-action-cached')) {
+                    btn.insertAdjacentHTML('afterbegin', '<span class="ai-action-cached" title="Generated"></span>');
+                }
             } else if (data && data.status === 'generating') {
-                showToast('Summary is being generated. Please wait a moment and try again.', 'info');
+                showToast(typeInfo.label + ' is being generated. Please wait a moment and try again.', 'info');
             } else {
                 throw new Error(data.error || 'No content returned');
             }
-
         } catch (err) {
-            console.error('[AI Tools] Summarize failed:', err);
-            showToast(err.message || 'Summary generation failed. Please try again.', 'error');
+            console.error('[AI Tools] Generation failed:', err);
+            showToast(err.message || typeInfo.label + ' generation failed. Please try again.', 'error');
         } finally {
-            if (btn) {
-                btn.disabled = false;
-                btn.innerHTML = 'Summarize';
-            }
+            if (btn) btn.classList.remove('generating');
         }
     }
 
     // ── Delete document ─────────────────────────────────────────
 
     async function deleteDocument(docId, filename) {
-        if (!confirm('Delete "' + filename + '"? This will also remove any generated summaries.')) {
+        if (!confirm('Delete "' + filename + '"? This will also remove all generated content.')) {
             return;
         }
 
@@ -417,102 +499,112 @@
         }
     }
 
-    // ── Summary panel ───────────────────────────────────────────
+    // ── Panel (open / close) ────────────────────────────────────
 
-    function openSummaryPanel(docId, filename, markdownContent) {
-        currentSummaryDocId = docId;
-        currentSummaryFilename = filename;
-        currentSummaryMarkdown = markdownContent;
+    function openPanel(docId, filename, genType, markdownContent) {
+        currentDocId = docId;
+        currentFilename = filename;
+        currentMarkdown = markdownContent;
+        currentGenerationType = genType;
 
-        if (summaryDocName) summaryDocName.textContent = filename;
-        if (summaryContent) summaryContent.innerHTML = renderMarkdown(markdownContent);
+        var typeInfo = GENERATION_TYPES[genType];
 
-        // Show backdrop with fade
-        if (summaryBackdrop) {
-            summaryBackdrop.classList.remove('hidden');
-            summaryBackdrop.offsetHeight; // force reflow
-            summaryBackdrop.classList.add('visible');
+        // Update toolbar
+        if (panelDocName) panelDocName.textContent = typeInfo.panelTitle + ' \u2014 ' + filename;
+
+        // Type-specific toolbar color
+        var toolbar = panelEl ? panelEl.querySelector('.ai-summary-toolbar') : null;
+        if (toolbar && typeInfo.color) {
+            toolbar.style.background = 'linear-gradient(135deg, ' + typeInfo.color + ', ' + darkenColor(typeInfo.color, 30) + ')';
         }
 
-        // Show panel with slide
-        if (summaryPanel) {
-            summaryPanel.classList.remove('hidden');
-            summaryPanel.offsetHeight; // force reflow
-            summaryPanel.classList.add('open');
+        // Render content
+        if (panelContent) panelContent.innerHTML = renderMarkdown(markdownContent);
+
+        // Show backdrop
+        if (backdropEl) {
+            backdropEl.classList.remove('hidden');
+            backdropEl.offsetHeight; // force reflow
+            backdropEl.classList.add('visible');
+        }
+
+        // Show panel
+        if (panelEl) {
+            panelEl.classList.remove('hidden');
+            panelEl.offsetHeight; // force reflow
+            panelEl.classList.add('open');
         }
 
         document.body.style.overflow = 'hidden';
     }
 
-    function closeSummaryPanel() {
-        if (summaryPanel) summaryPanel.classList.remove('open');
-        if (summaryBackdrop) summaryBackdrop.classList.remove('visible');
+    function closePanel() {
+        if (panelEl) panelEl.classList.remove('open');
+        if (backdropEl) backdropEl.classList.remove('visible');
         document.body.style.overflow = '';
 
         setTimeout(function () {
-            if (summaryPanel) summaryPanel.classList.add('hidden');
-            if (summaryBackdrop) summaryBackdrop.classList.add('hidden');
+            if (panelEl) panelEl.classList.add('hidden');
+            if (backdropEl) backdropEl.classList.add('hidden');
+
+            // Reset toolbar to default
+            var toolbar = panelEl ? panelEl.querySelector('.ai-summary-toolbar') : null;
+            if (toolbar) toolbar.style.background = '';
         }, 350);
 
-        currentSummaryDocId = null;
-        currentSummaryFilename = null;
-        currentSummaryMarkdown = null;
+        currentDocId = null;
+        currentFilename = null;
+        currentMarkdown = null;
+        currentGenerationType = null;
     }
 
-    // ── Summary actions ─────────────────────────────────────────
+    // ── Panel actions ───────────────────────────────────────────
 
-    function copySummaryToClipboard() {
-        if (!currentSummaryMarkdown) return;
+    function copyToClipboard() {
+        if (!currentMarkdown) return;
 
-        navigator.clipboard.writeText(currentSummaryMarkdown).then(function () {
-            if (summaryCopyBtn) {
-                var originalHTML = summaryCopyBtn.innerHTML;
-                summaryCopyBtn.innerHTML = '<i class="fas fa-check"></i><span class="ai-toolbar-label">Copied!</span>';
-                setTimeout(function () {
-                    summaryCopyBtn.innerHTML = originalHTML;
-                }, 2000);
+        navigator.clipboard.writeText(currentMarkdown).then(function () {
+            if (panelCopyBtn) {
+                var originalHTML = panelCopyBtn.innerHTML;
+                panelCopyBtn.innerHTML = '<i class="fas fa-check"></i><span class="ai-toolbar-label">Copied!</span>';
+                setTimeout(function () { panelCopyBtn.innerHTML = originalHTML; }, 2000);
             }
-            showToast('Summary copied to clipboard!', 'success');
+            showToast('Copied to clipboard!', 'success');
         }).catch(function () {
-            // Fallback for older browsers
             var textarea = document.createElement('textarea');
-            textarea.value = currentSummaryMarkdown;
+            textarea.value = currentMarkdown;
             textarea.style.position = 'fixed';
             textarea.style.left = '-9999px';
             document.body.appendChild(textarea);
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-            showToast('Summary copied to clipboard!', 'success');
+            showToast('Copied to clipboard!', 'success');
         });
     }
 
-    function printSummary() {
-        window.print();
-    }
+    async function regenerateGeneration() {
+        if (!currentDocId || !currentGenerationType) return;
 
-    async function regenerateSummary() {
-        if (!currentSummaryDocId) return;
+        var typeInfo = GENERATION_TYPES[currentGenerationType];
 
-        var docId = currentSummaryDocId;
-
-        if (summaryRegenerateBtn) {
-            summaryRegenerateBtn.disabled = true;
-            summaryRegenerateBtn.innerHTML = '<span class="ai-spinner" style="border-color:rgba(255,255,255,.3);border-top-color:#fff;width:12px;height:12px"></span><span class="ai-toolbar-label">Regenerating...</span>';
+        if (panelRegenerateBtn) {
+            panelRegenerateBtn.disabled = true;
+            panelRegenerateBtn.innerHTML = '<span class="ai-spinner" style="border-color:rgba(255,255,255,.3);border-top-color:#fff;width:12px;height:12px"></span><span class="ai-toolbar-label">Regenerating...</span>';
         }
 
         try {
-            var data = await apiCall('/api/ai/summarize/' + docId, {
+            var data = await apiCall('/api/ai/generate/' + currentDocId, {
                 method: 'POST',
-                body: JSON.stringify({ regenerate: true }),
+                body: JSON.stringify({ type: currentGenerationType, regenerate: true }),
                 headers: { 'Content-Type': 'application/json' }
             });
 
             if (data && data.content) {
-                currentSummaryMarkdown = data.content;
-                if (summaryContent) summaryContent.innerHTML = renderMarkdown(data.content);
-                if (summaryBody) summaryBody.scrollTop = 0;
-                showToast('Summary regenerated!', 'success');
+                currentMarkdown = data.content;
+                if (panelContent) panelContent.innerHTML = renderMarkdown(data.content);
+                if (panelBody) panelBody.scrollTop = 0;
+                showToast(typeInfo.label + ' regenerated!', 'success');
             } else {
                 throw new Error(data.error || 'No content returned');
             }
@@ -520,30 +612,27 @@
             console.error('[AI Tools] Regenerate failed:', err);
             showToast(err.message || 'Regeneration failed. Please try again.', 'error');
         } finally {
-            if (summaryRegenerateBtn) {
-                summaryRegenerateBtn.disabled = false;
-                summaryRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';
+            if (panelRegenerateBtn) {
+                panelRegenerateBtn.disabled = false;
+                panelRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';
             }
         }
     }
 
     // ── Markdown renderer ───────────────────────────────────────
-    // Converts markdown to HTML with callout boxes for nursing content.
 
     function renderMarkdown(md) {
         if (!md) return '';
 
         var html = escapeHtml(md);
 
-        // Headings (### before ## before #)
+        // Headings
         html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
         html = html.replace(/^## (.+)$/gm, '<h2>$1</h2>');
         html = html.replace(/^# (.+)$/gm, '<h1>$1</h1>');
 
-        // Bold
+        // Bold & italic
         html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-
-        // Italic
         html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
 
         // Inline code
@@ -552,23 +641,56 @@
         // Horizontal rules
         html = html.replace(/^---$/gm, '<hr>');
 
-        // Blockquote callout boxes — detect labeled patterns
+        // Markdown tables (must run before paragraph wrapping)
+        html = html.replace(/^(\|.+\|)\n(\|[\s:|-]+\|)\n((?:\|.+\|\n?)+)/gm, function (match, headerRow, sepRow, bodyRows) {
+            var headers = headerRow.split('|').filter(function (c) { return c.trim(); });
+            var rows = bodyRows.trim().split('\n');
+            var table = '<div class="ai-table-wrapper"><table class="ai-md-table"><thead><tr>';
+            for (var h = 0; h < headers.length; h++) {
+                table += '<th>' + headers[h].trim() + '</th>';
+            }
+            table += '</tr></thead><tbody>';
+            for (var r = 0; r < rows.length; r++) {
+                var cells = rows[r].split('|').filter(function (c) { return c.trim() !== ''; });
+                table += '<tr>';
+                for (var c = 0; c < cells.length; c++) {
+                    table += '<td>' + cells[c].trim() + '</td>';
+                }
+                table += '</tr>';
+            }
+            table += '</tbody></table></div>';
+            return table;
+        });
+
+        // Blockquote callout boxes
         html = html.replace(/^&gt; <strong>(?:Key (?:Concept|Point|Takeaway)s?):?<\/strong> ?(.+)$/gm,
             '<div class="ai-callout ai-callout--key"><div class="ai-callout-header"><i class="fas fa-star"></i> Key Concept</div>$1</div>');
-        html = html.replace(/^&gt; <strong>(?:Warning|Caution|Alert|Safety):?<\/strong> ?(.+)$/gm,
+        html = html.replace(/^&gt; <strong>(?:Warning|Caution|Alert|Safety|⚠️\s*Warning(?:s)?):?<\/strong> ?(.+)$/gm,
             '<div class="ai-callout ai-callout--warning"><div class="ai-callout-header"><i class="fas fa-exclamation-triangle"></i> Warning</div>$1</div>');
-        html = html.replace(/^&gt; <strong>(?:Tip|Clinical (?:Tip|Pearl)|Nursing Tip):?<\/strong> ?(.+)$/gm,
+        html = html.replace(/^&gt; <strong>(?:Tip|Clinical (?:Tip|Pearl)|Nursing (?:Tip|Implication(?:s)?)):?<\/strong> ?(.+)$/gm,
             '<div class="ai-callout ai-callout--tip"><div class="ai-callout-header"><i class="fas fa-lightbulb"></i> Clinical Tip</div>$1</div>');
         html = html.replace(/^&gt; <strong>NCLEX[- ]?(?:Tip|Alert|Focus):?<\/strong> ?(.+)$/gm,
             '<div class="ai-callout ai-callout--nclex"><div class="ai-callout-header"><i class="fas fa-graduation-cap"></i> NCLEX Focus</div>$1</div>');
-        // Generic blockquotes
+
+        // Practice question answer/rationale reveals
+        html = html.replace(/^&gt; <strong>Answer:?<\/strong> ?(.+)$/gm,
+            '<details class="ai-answer-reveal"><summary class="ai-answer-toggle"><i class="fas fa-eye"></i> Show Answer</summary><div class="ai-answer-content"><strong>Answer:</strong> $1</div></details>');
+        html = html.replace(/^&gt; <strong>Rationale:?<\/strong> ?(.+)$/gm,
+            '<details class="ai-answer-reveal ai-rationale-reveal"><summary class="ai-answer-toggle"><i class="fas fa-brain"></i> Show Rationale</summary><div class="ai-answer-content"><strong>Rationale:</strong> $1</div></details>');
+        html = html.replace(/^&gt; <strong>Concept:?<\/strong> ?(.+)$/gm,
+            '<div class="ai-concept-tag"><i class="fas fa-tag"></i> $1</div>');
+
+        // Generic blockquotes (after specific patterns)
         html = html.replace(/^&gt; (.+)$/gm,
             '<div class="ai-callout ai-callout--key">$1</div>');
 
-        // Unordered lists (lines starting with - )
+        // Lettered options (A. B. C. D. E.) — style as option list
+        html = html.replace(/^([A-E])\. (.+)$/gm, '<div class="ai-option"><span class="ai-option-letter">$1</span> $2</div>');
+
+        // Unordered lists
         html = html.replace(/^- (.+)$/gm, '<li>$1</li>');
 
-        // Numbered lists (lines starting with digits.)
+        // Numbered lists
         html = html.replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>');
 
         // Wrap consecutive <li> items in <ul>
@@ -576,28 +698,29 @@
             return '<ul>' + match + '</ul>';
         });
 
-        // Paragraphs — double newlines
+        // Paragraphs
         html = html.replace(/\n\n+/g, '</p><p>');
         html = '<p>' + html + '</p>';
 
-        // Clean up empty paragraphs and misplaced <p> tags
+        // Clean up
         html = html.replace(/<p>\s*<\/p>/g, '');
         html = html.replace(/<p>(<h[1-3]>)/g, '$1');
         html = html.replace(/(<\/h[1-3]>)<\/p>/g, '$1');
         html = html.replace(/<p>(<ul>)/g, '$1');
         html = html.replace(/(<\/ul>)<\/p>/g, '$1');
         html = html.replace(/<p>(<hr>)<\/p>/g, '$1');
-        html = html.replace(/<p>(<div class="ai-callout)/g, '$1');
+        html = html.replace(/<p>(<div class="ai-)/g, '$1');
+        html = html.replace(/<p>(<details class="ai-)/g, '$1');
         html = html.replace(/(<\/div>)<\/p>/g, '$1');
+        html = html.replace(/(<\/details>)<\/p>/g, '$1');
 
-        // Single newlines -> <br> inside paragraphs
+        // Single newlines -> <br>
         html = html.replace(/\n/g, '<br>');
 
-        // Detect Quick Review / Key Takeaways section and wrap it
-        html = html.replace(/<h2>(Quick Review|Key Takeaways|Top 10 Things to Remember)<\/h2>/gi, function (match, title) {
+        // Quick Review / Key Takeaways / Score Guide section
+        html = html.replace(/<h2>(Quick Review|Key Takeaways|Top 10 Things to Remember|Score Guide)<\/h2>/gi, function (match, title) {
             return '<div class="ai-quick-review"><h2><i class="fas fa-clipboard-check"></i> ' + escapeHtml(title) + '</h2>';
         });
-        // Close the quick-review div if opened (append at end)
         if (html.indexOf('ai-quick-review') !== -1) {
             html = html + '</div>';
         }
@@ -618,6 +741,13 @@
         if (bytes < 1024) return bytes + ' B';
         if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(1) + ' KB';
         return (bytes / (1024 * 1024)).toFixed(1) + ' MB';
+    }
+
+    function darkenColor(hex, amount) {
+        var r = Math.max(0, parseInt(hex.slice(1, 3), 16) - amount);
+        var g = Math.max(0, parseInt(hex.slice(3, 5), 16) - amount);
+        var b = Math.max(0, parseInt(hex.slice(5, 7), 16) - amount);
+        return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
     }
 
     function showToast(message, type) {

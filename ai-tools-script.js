@@ -224,7 +224,7 @@
 
         // Panel actions
         if (panelCopyBtn) panelCopyBtn.addEventListener('click', copyToClipboard);
-        if (panelPrintBtn) panelPrintBtn.addEventListener('click', function () { window.print(); });
+        if (panelPrintBtn) panelPrintBtn.addEventListener('click', printPanel);
         if (panelRegenerateBtn) panelRegenerateBtn.addEventListener('click', regenerateGeneration);
         if (panelQuizBtn) panelQuizBtn.addEventListener('click', takeAsQuiz);
 
@@ -753,6 +753,32 @@
     }
 
     // ── Panel actions ───────────────────────────────────────────
+
+    function printPanel() {
+        // Set document title to a meaningful name so "Save as PDF" defaults
+        // to something like "NCLEX Review Sheet — Lecture Notes.pdf"
+        var origTitle = document.title;
+        if (currentGenerationType && currentFilename) {
+            var typeInfo = GENERATION_TYPES[currentGenerationType];
+            // Strip file extension from filename for a cleaner PDF name
+            var cleanName = currentFilename.replace(/\.[^/.]+$/, '');
+            document.title = (typeInfo ? typeInfo.panelTitle : 'AI Study Tool') + ' \u2014 ' + cleanName;
+        }
+        window.print();
+        // Restore original title after print dialog closes
+        // Use both afterprint and a fallback timeout for browser compat
+        var restored = false;
+        function restore() {
+            if (restored) return;
+            restored = true;
+            document.title = origTitle;
+        }
+        window.addEventListener('afterprint', function onAfter() {
+            window.removeEventListener('afterprint', onAfter);
+            restore();
+        });
+        setTimeout(restore, 5000); // fallback if afterprint doesn't fire
+    }
 
     function copyToClipboard() {
         if (!currentMarkdown) return;

@@ -80,6 +80,14 @@
     var emptyState = document.getElementById('ai-empty-state');
     var refreshBtn = document.getElementById('ai-refresh-btn');
 
+    // Text input elements
+    var inputToggle = document.getElementById('ai-input-toggle');
+    var textInputArea = document.getElementById('ai-text-input');
+    var textTitleInput = document.getElementById('ai-text-title');
+    var textAreaInput = document.getElementById('ai-text-area');
+    var textCharCount = document.getElementById('ai-text-char-count');
+    var textSubmitBtn = document.getElementById('ai-text-submit');
+
     // Panel elements
     var panelEl = document.getElementById('ai-summary-panel');
     var backdropEl = document.getElementById('ai-summary-backdrop');
@@ -211,6 +219,39 @@
             });
         }
 
+        // Input mode toggle (File vs Paste Text)
+        if (inputToggle) {
+            var tabs = inputToggle.querySelectorAll('.ai-input-tab');
+            tabs.forEach(function (tab) {
+                tab.addEventListener('click', function () {
+                    var mode = this.dataset.inputMode;
+                    tabs.forEach(function (t) { t.classList.remove('active'); });
+                    this.classList.add('active');
+                    if (mode === 'text') {
+                        if (dropzone) dropzone.classList.add('hidden');
+                        if (textInputArea) textInputArea.classList.remove('hidden');
+                    } else {
+                        if (dropzone) dropzone.classList.remove('hidden');
+                        if (textInputArea) textInputArea.classList.add('hidden');
+                    }
+                });
+            });
+        }
+
+        // Text area character counter
+        if (textAreaInput && textCharCount) {
+            textAreaInput.addEventListener('input', function () {
+                var len = textAreaInput.value.length;
+                textCharCount.textContent = len.toLocaleString() + ' / 50,000 characters';
+                textCharCount.style.color = len > 50000 ? '#ef4444' : '';
+            });
+        }
+
+        // Text submit button
+        if (textSubmitBtn) {
+            textSubmitBtn.addEventListener('click', function () { uploadText(); });
+        }
+
         // Refresh
         if (refreshBtn) {
             refreshBtn.addEventListener('click', loadDocuments);
@@ -321,6 +362,66 @@
         if (progressPct) progressPct.textContent = pct + '%';
     }
 
+    // ── Text paste upload ───────────────────────────────────────
+
+    async function uploadText() {
+        var rawText = textAreaInput ? textAreaInput.value.trim() : '';
+        var title = textTitleInput ? textTitleInput.value.trim() : '';
+
+        if (!rawText) {
+            showToast('Please enter some text to process.', 'error');
+            return;
+        }
+        if (rawText.length > 50000) {
+            showToast('Text is too long. Maximum is 50,000 characters.', 'error');
+            return;
+        }
+        if (rawText.length < 50) {
+            showToast('Please enter at least 50 characters of content.', 'error');
+            return;
+        }
+
+        // Show progress
+        if (progressContainer) progressContainer.classList.remove('hidden');
+        if (progressFilename) progressFilename.textContent = title || 'Pasted Notes';
+        setProgress(30);
+        if (textSubmitBtn) textSubmitBtn.disabled = true;
+
+        try {
+            setProgress(50);
+
+            var data = await apiCall('/api/ai/upload-text', {
+                method: 'POST',
+                body: JSON.stringify({ title: title, text: rawText }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            setProgress(100);
+            showToast('Text received! Processing your notes...', 'success');
+
+            // Clear the input
+            if (textAreaInput) textAreaInput.value = '';
+            if (textTitleInput) textTitleInput.value = '';
+            if (textCharCount) textCharCount.textContent = '0 / 50,000 characters';
+
+            if (data.upload_id) {
+                startPolling(data.upload_id);
+            }
+
+            setTimeout(loadDocuments, 500);
+
+        } catch (err) {
+            console.error('[AI Tools] Text upload failed:', err);
+            showToast(err.message || 'Failed to submit text. Please try again.', 'error');
+        } finally {
+            if (textSubmitBtn) textSubmitBtn.disabled = false;
+            setTimeout(function () {
+                if (progressContainer) progressContainer.classList.add('hidden');
+                setProgress(0);
+            }, 1500);
+        }
+    }
+
     // ── Document list ───────────────────────────────────────────
 
     async function loadDocuments() {
@@ -394,6 +495,7 @@
         var iconClass = 'fa-file-pdf';
         if (doc.file_type === 'docx') iconClass = 'fa-file-word';
         if (doc.file_type === 'pptx') iconClass = 'fa-file-powerpoint';
+        if (doc.file_type === 'text') iconClass = 'fa-file-lines';
 
         var statusHtml = '';
         if (doc.status === 'ready') {
@@ -406,8 +508,12 @@
             statusHtml = '<span class="ai-doc-status status-uploaded"><i class="fas fa-cloud-arrow-up"></i> Uploaded</span>';
         }
 
-        var sizeStr = formatFileSize(doc.file_size_bytes);
-        var metaParts = [sizeStr];
+        var metaParts = [];
+        if (doc.file_type === 'text') {
+            metaParts.push('Pasted Notes');
+        } else {
+            metaParts.push(formatFileSize(doc.file_size_bytes));
+        }
         if (doc.page_count) metaParts.push(doc.page_count + ' pages');
         if (doc.chunk_count) metaParts.push(doc.chunk_count + ' chunks');
 

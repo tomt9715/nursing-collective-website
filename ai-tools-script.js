@@ -1142,6 +1142,9 @@
     function renderMarkdown(md) {
         if (!md) return '';
 
+        // Strip Score Guide section (always at end of practice questions)
+        md = md.replace(/## Score Guide[\s\S]*$/i, '').trimEnd();
+
         var html = escapeHtml(md);
 
         // Headings (H2 gets auto-assigned icons based on content keywords)

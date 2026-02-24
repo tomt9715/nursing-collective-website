@@ -4667,3 +4667,92 @@
     display: flex;
     gap: 8px;
 }
+
+/* ==================== AI Tools Tab ==================== */
+
+.credit-adjust-form {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-color);
+}
+
+.credit-adjust-form h3 {
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+    color: var(--text-primary);
+}
+
+.credit-adjust-form .form-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.credit-adjust-form .form-group {
+    flex: 1;
+    min-width: 160px;
+}
+
+.credit-adjust-form label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+}
+
+.credit-adjust-form .form-control {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.95rem;
+    background: var(--card-background);
+    color: var(--text-primary);
+    transition: border-color 0.2s;
+}
+
+.credit-adjust-form .form-control:focus {
+    outline: none;
+    border-color: var(--indigo-primary);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.15);
+}
+
+.info-banner {
+    padding: 14px 18px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    margin-top: 12px;
+}
+
+.info-banner i {
+    margin-right: 8px;
+}
+
+.info-banner.success {
+    background: rgba(22, 163, 74, 0.08);
+    color: #16a34a;
+    border: 1px solid rgba(22, 163, 74, 0.2);
+}
+
+.info-banner.error {
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+[data-theme="dark"] .credit-adjust-form .form-control {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+    .credit-adjust-form .form-row {
+        flex-direction: column;
+    }
+    .credit-adjust-form .form-group {
+        min-width: 100%;
+    }
+}

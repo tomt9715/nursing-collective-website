@@ -129,6 +129,9 @@
                     <button class="admin-subnav-tab" data-tab="audit">
                         <i class="fas fa-history"></i> <span>Audit Log</span>
                     </button>
+                    <button class="admin-subnav-tab" data-tab="ai-tools">
+                        <i class="fas fa-robot"></i> <span>AI Tools</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -792,6 +795,161 @@
                         <!-- Pagination -->
                         <div class="pagination-controls" id="audit-pagination"></div>
                     </div>
+                </div>
+
+                <!-- AI Tools Tab -->
+                <div class="admin-tab-content" id="tab-ai-tools">
+
+                    <!-- AI Usage Stats -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-chart-bar"></i> AI Usage Overview</h2>
+                            <span class="badge badge-info" id="ai-active-users">- active users</span>
+                        </div>
+                        <div class="admin-stats-grid" id="ai-stats-grid">
+                            <div class="admin-stat-card">
+                                <div class="stat-icon"><i class="fas fa-file-upload"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="ai-total-uploads">-</span>
+                                    <span class="stat-label">Total Uploads</span>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon premium"><i class="fas fa-wand-magic-sparkles"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="ai-total-generations">-</span>
+                                    <span class="stat-label">Total Generations</span>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon info"><i class="fas fa-clock"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="ai-generations-7d">-</span>
+                                    <span class="stat-label">Last 7 Days</span>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon success"><i class="fas fa-coins"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="ai-total-tokens">-</span>
+                                    <span class="stat-label">Tokens Used</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Generations by Type -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-layer-group"></i> Generations by Type</h2>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="admin-table" id="ai-type-table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Completed</th>
+                                        <th>Failed</th>
+                                        <th>Processing</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ai-type-tbody">
+                                    <tr><td colspan="5" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- Guide Index Management -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-database"></i> Study Guide Index</h2>
+                            <button class="btn btn-primary btn-sm" id="reindex-guides-btn">
+                                <i class="fas fa-sync-alt"></i> Reindex All Guides
+                            </button>
+                        </div>
+                        <div id="guide-index-status">
+                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading index status...</div>
+                        </div>
+                        <div class="table-responsive" style="display:none" id="guide-index-table-wrap">
+                            <table class="admin-table" id="guide-index-table">
+                                <thead>
+                                    <tr>
+                                        <th>Category</th>
+                                        <th>Guides</th>
+                                        <th>Chunks</th>
+                                        <th>Guide IDs</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="guide-index-tbody"></tbody>
+                            </table>
+                        </div>
+                        <div class="info-banner" id="guide-index-empty" style="display:none">
+                            <i class="fas fa-info-circle"></i>
+                            No guides indexed yet. Click "Reindex All Guides" to build the index for gap analysis.
+                        </div>
+                    </div>
+
+                    <!-- Credit Management -->
+                    <div class="admin-card">
+                        <div class="card-header">
+                            <h2><i class="fas fa-coins"></i> Credit Management</h2>
+                        </div>
+                        <div class="admin-stats-grid" id="credit-overview">
+                            <div class="admin-stat-card">
+                                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="credit-users-count">-</span>
+                                    <span class="stat-label">Users with Credits</span>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon premium"><i class="fas fa-upload"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="credit-uploads-used">-</span>
+                                    <span class="stat-label">Uploads Used</span>
+                                </div>
+                            </div>
+                            <div class="admin-stat-card">
+                                <div class="stat-icon info"><i class="fas fa-question-circle"></i></div>
+                                <div class="stat-info">
+                                    <span class="stat-value" id="credit-questions-used">-</span>
+                                    <span class="stat-label">Questions Used</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="credit-adjust-form">
+                            <h3><i class="fas fa-sliders-h"></i> Adjust User Credits</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="credit-user-email">User Email</label>
+                                    <input type="email" id="credit-user-email" placeholder="user@example.com" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="credit-uploads-add">Uploads (+/-)</label>
+                                    <input type="number" id="credit-uploads-add" value="0" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="credit-questions-add">Questions (+/-)</label>
+                                    <input type="number" id="credit-questions-add" value="0" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group" style="flex:2">
+                                    <label for="credit-reason">Reason</label>
+                                    <input type="text" id="credit-reason" placeholder="e.g., Support resolution, promotional" class="form-control">
+                                </div>
+                                <div class="form-group" style="flex:0 0 auto; align-self:flex-end">
+                                    <button class="btn btn-primary" id="credit-adjust-btn">
+                                        <i class="fas fa-check"></i> Adjust Credits
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="credit-adjust-result" style="display:none"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

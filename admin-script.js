@@ -168,7 +168,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     // Handle URL hash for tab navigation (e.g., admin.html#users)
     const hash = window.location.hash.replace('#', '');
-    if (hash && ['overview', 'users', 'subscriptions', 'quiz-reports', 'audit'].includes(hash)) {
+    if (hash && ['overview', 'users', 'subscriptions', 'quiz-reports', 'audit', 'ai-tools'].includes(hash)) {
         switchTab(hash);
     }
 
@@ -428,6 +428,9 @@ function switchTab(tabName) {
             break;
         case 'audit':
             loadAuditLog();
+            break;
+        case 'ai-tools':
+            loadAIToolsTab();
             break;
     }
 }
@@ -2271,4 +2274,234 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // AI Tools tab: Reindex button
+    const reindexBtn = document.getElementById('reindex-guides-btn');
+    if (reindexBtn) {
+        reindexBtn.addEventListener('click', reindexGuides);
+    }
+
+    // AI Tools tab: Credit adjust button
+    const creditAdjustBtn = document.getElementById('credit-adjust-btn');
+    if (creditAdjustBtn) {
+        creditAdjustBtn.addEventListener('click', adjustUserCredits);
+    }
+
 });
+
+// ==================== AI Tools Tab ====================
+
+async function loadAIToolsTab() {
+    loadAIUsageStats();
+    loadGuideIndexStatus();
+}
+
+async function loadAIUsageStats() {
+    try {
+        const data = await apiCall('/api/ai/admin/usage-stats');
+
+        // Update stat cards
+        const el = (id) => document.getElementById(id);
+        if (el('ai-total-uploads')) el('ai-total-uploads').textContent = (data.upload_count || 0).toLocaleString();
+        if (el('ai-total-generations')) el('ai-total-generations').textContent = (data.generation_totals?.all || 0).toLocaleString();
+        if (el('ai-generations-7d')) el('ai-generations-7d').textContent = (data.generation_totals?.['7d'] || 0).toLocaleString();
+        if (el('ai-active-users')) el('ai-active-users').textContent = `${data.active_ai_users || 0} active users`;
+
+        // Token usage
+        const totalTokens = (data.token_usage?.input_tokens || 0) + (data.token_usage?.output_tokens || 0);
+        if (el('ai-total-tokens')) {
+            if (totalTokens > 1000000) {
+                el('ai-total-tokens').textContent = (totalTokens / 1000000).toFixed(1) + 'M';
+            } else if (totalTokens > 1000) {
+                el('ai-total-tokens').textContent = (totalTokens / 1000).toFixed(1) + 'K';
+            } else {
+                el('ai-total-tokens').textContent = totalTokens.toLocaleString();
+            }
+        }
+
+        // Generation type table
+        const tbody = document.getElementById('ai-type-tbody');
+        if (tbody && data.generations_by_type) {
+            const types = Object.entries(data.generations_by_type);
+            if (types.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="5" class="empty-cell">No generations yet</td></tr>';
+            } else {
+                const typeLabels = {
+                    summary: 'Summary', practice_questions: 'Practice Questions',
+                    drug_cards: 'Drug Cards', key_labs: 'Key Labs',
+                    compare_contrast: 'Compare & Contrast', care_plan: 'Care Plan',
+                    gap_analysis: 'Gap Analysis'
+                };
+                tbody.innerHTML = types.map(([type, stats]) => `
+                    <tr>
+                        <td><strong>${escapeHtml(typeLabels[type] || type)}</strong></td>
+                        <td><span class="badge badge-success">${stats.completed || 0}</span></td>
+                        <td><span class="badge badge-danger">${stats.failed || 0}</span></td>
+                        <td><span class="badge badge-warning">${stats.processing || 0}</span></td>
+                        <td><strong>${stats.total || 0}</strong></td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        // Credit overview
+        if (data.credits) {
+            if (el('credit-users-count')) el('credit-users-count').textContent = (data.credits.users_with_credits || 0).toLocaleString();
+            if (el('credit-uploads-used')) el('credit-uploads-used').textContent = (data.credits.uploads_used || 0).toLocaleString();
+            if (el('credit-questions-used')) el('credit-questions-used').textContent = (data.credits.questions_used || 0).toLocaleString();
+        }
+
+    } catch (error) {
+        console.error('Failed to load AI usage stats:', error);
+    }
+}
+
+async function loadGuideIndexStatus() {
+    const statusEl = document.getElementById('guide-index-status');
+    const tableWrap = document.getElementById('guide-index-table-wrap');
+    const emptyEl = document.getElementById('guide-index-empty');
+
+    try {
+        const data = await apiCall('/api/ai/admin/guide-index-status');
+
+        // Hide loading
+        if (statusEl) statusEl.style.display = 'none';
+
+        if (data.total_chunks === 0) {
+            if (emptyEl) emptyEl.style.display = 'block';
+            if (tableWrap) tableWrap.style.display = 'none';
+            return;
+        }
+
+        // Show summary
+        if (statusEl) {
+            statusEl.style.display = 'block';
+            statusEl.innerHTML = `
+                <div class="stats-grid" style="margin-bottom: 16px;">
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-value">${data.total_chunks.toLocaleString()}</span>
+                            <span class="stat-label">Total Chunks</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-value">${data.centroid_count}</span>
+                            <span class="stat-label">Category Centroids</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-info">
+                            <span class="stat-value">${data.categories?.length || 0}</span>
+                            <span class="stat-label">Categories Indexed</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Populate table
+        if (tableWrap && data.categories?.length > 0) {
+            tableWrap.style.display = 'block';
+            const tbody = document.getElementById('guide-index-tbody');
+            if (tbody) {
+                tbody.innerHTML = data.categories.map(cat => `
+                    <tr>
+                        <td><strong>${escapeHtml(cat.category)}</strong></td>
+                        <td>${cat.guide_count}</td>
+                        <td>${cat.chunk_count}</td>
+                        <td><small>${(cat.guides || []).map(g => escapeHtml(g)).join(', ')}</small></td>
+                    </tr>
+                `).join('');
+            }
+        }
+
+        if (emptyEl) emptyEl.style.display = 'none';
+
+    } catch (error) {
+        if (statusEl) statusEl.innerHTML = `<div class="info-banner" style="color: var(--danger-color);"><i class="fas fa-exclamation-triangle"></i> Failed to load index status: ${escapeHtml(error.message)}</div>`;
+        console.error('Failed to load guide index status:', error);
+    }
+}
+
+async function reindexGuides() {
+    const btn = document.getElementById('reindex-guides-btn');
+    if (!btn) return;
+
+    if (!confirm('This will re-parse all study guides, generate new embeddings, and rebuild category centroids. Continue?')) {
+        return;
+    }
+
+    const originalHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Reindexing...';
+
+    try {
+        const data = await apiCall('/api/ai/admin/reindex-guides', {
+            method: 'POST',
+            body: JSON.stringify({ source: 'http' })
+        });
+        showToast(data.message || 'Reindexing started! This may take a minute.', 'success');
+
+        // Refresh status after a delay
+        setTimeout(() => {
+            loadGuideIndexStatus();
+            btn.disabled = false;
+            btn.innerHTML = originalHtml;
+        }, 15000);
+
+    } catch (error) {
+        showToast('Failed to start reindex: ' + (error.message || 'Unknown error'), 'error');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
+}
+
+async function adjustUserCredits() {
+    const emailInput = document.getElementById('credit-user-email');
+    const uploadsInput = document.getElementById('credit-uploads-add');
+    const questionsInput = document.getElementById('credit-questions-add');
+    const reasonInput = document.getElementById('credit-reason');
+    const resultEl = document.getElementById('credit-adjust-result');
+
+    const email = emailInput?.value?.trim();
+    const uploads = parseInt(uploadsInput?.value) || 0;
+    const questions = parseInt(questionsInput?.value) || 0;
+    const reason = reasonInput?.value?.trim() || 'Admin adjustment';
+
+    if (!email) {
+        showToast('Please enter a user email', 'error');
+        return;
+    }
+
+    if (uploads === 0 && questions === 0) {
+        showToast('Please enter a non-zero credit adjustment', 'error');
+        return;
+    }
+
+    try {
+        const data = await apiCall(`/api/ai/admin/user-credits/${encodeURIComponent(email)}`, {
+            method: 'POST',
+            body: JSON.stringify({ uploads_add: uploads, questions_add: questions, reason })
+        });
+
+        if (resultEl) {
+            resultEl.style.display = 'block';
+            resultEl.className = 'info-banner success';
+            resultEl.innerHTML = `<i class="fas fa-check-circle"></i> ${escapeHtml(data.message)}`;
+        }
+        showToast(`Credits adjusted for ${email}`, 'success');
+
+        // Clear form
+        if (uploadsInput) uploadsInput.value = '0';
+        if (questionsInput) questionsInput.value = '0';
+        if (reasonInput) reasonInput.value = '';
+
+    } catch (error) {
+        if (resultEl) {
+            resultEl.style.display = 'block';
+            resultEl.className = 'info-banner error';
+            resultEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${escapeHtml(error.message || 'Failed to adjust credits')}`;
+        }
+        showToast('Failed to adjust credits: ' + (error.message || 'Unknown error'), 'error');
+    }
+}

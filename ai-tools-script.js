@@ -99,6 +99,7 @@
     var panelPrintBtn = document.getElementById('ai-summary-print');
     var panelRegenerateBtn = document.getElementById('ai-summary-regenerate');
     var panelQuizBtn = document.getElementById('ai-summary-quiz');
+    var panelQuizBar = document.getElementById('ai-panel-quiz-bar');
 
     // Credit bar elements
     var creditBar = document.getElementById('ai-credit-bar');
@@ -931,7 +932,7 @@
         if (panelCopyBtn) panelCopyBtn.disabled = true;
         if (panelPrintBtn) panelPrintBtn.disabled = true;
         if (panelRegenerateBtn) panelRegenerateBtn.disabled = true;
-        if (panelQuizBtn) { panelQuizBtn.disabled = true; panelQuizBtn.classList.add('hidden'); }
+        if (panelQuizBar) panelQuizBar.classList.add('hidden');
 
         // Show backdrop + panel
         if (backdropEl) {
@@ -984,9 +985,8 @@
         if (panelCopyBtn) panelCopyBtn.disabled = false;
         if (panelPrintBtn) panelPrintBtn.disabled = false;
         if (panelRegenerateBtn) panelRegenerateBtn.disabled = false;
-        if (panelQuizBtn) {
-            panelQuizBtn.classList.toggle('hidden', genType !== 'practice_questions');
-            panelQuizBtn.disabled = false;
+        if (panelQuizBar) {
+            panelQuizBar.classList.toggle('hidden', genType !== 'practice_questions');
         }
 
         // Show backdrop
@@ -1121,7 +1121,7 @@
                 // Disable panel buttons during regeneration
                 if (panelCopyBtn) panelCopyBtn.disabled = true;
                 if (panelPrintBtn) panelPrintBtn.disabled = true;
-                if (panelQuizBtn) { panelQuizBtn.disabled = true; panelQuizBtn.classList.add('hidden'); }
+                if (panelQuizBar) panelQuizBar.classList.add('hidden');
                 // Poll until content is ready (panelRegenerateBtn reset handled inside pollForGeneration)
                 pollForGeneration(currentDocId, currentFilename, currentGenerationType, panelRegenerateBtn);
             } else {

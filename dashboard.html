@@ -459,7 +459,6 @@
             <div class="dashboard-header-compact">
                 <h1>Welcome back, <span id="user-first-name">User</span>!
                     <span id="premium-badge"></span>
-                    <span id="admin-badge"></span>
                 </h1>
                 <div class="user-stats-compact">
                     <span class="stat-inline" id="subscription-status-inline">
@@ -673,44 +672,6 @@
             </div> <!-- end .dash-main -->
         </div> <!-- end .dash-layout -->
     </section>
-
-    <!-- Admin User Management Modal -->
-    <div class="modal-overlay hidden" id="admin-user-modal">
-        <div class="modal-content admin-user-modal-content">
-            <div class="modal-header">
-                <h2 id="modal-title">Users</h2>
-                <button class="modal-close" id="close-admin-modal-btn">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="user-filters admin-filter-bar">
-                    <button class="filter-btn active" data-filter="all">All Users</button>
-                    <button class="filter-btn" data-filter="today">Joined Today</button>
-                    <button class="filter-btn" data-filter="yesterday">Joined Yesterday</button>
-                    <button class="filter-btn" data-filter="week">This Week</button>
-                    <button class="filter-btn" data-filter="premium">Premium</button>
-                    <button class="filter-btn" data-filter="free">Free</button>
-                </div>
-                <div id="users-table-container">
-                    <table class="users-table">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Status</th>
-                                <th>Joined</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody id="users-table-body">
-                            <!-- Users will be loaded here -->
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     </main>

@@ -163,15 +163,7 @@ async function loadUserProfile() {
 
         // Badges
         const premiumBadgeEl = document.getElementById('premium-badge');
-        const adminBadgeEl = document.getElementById('admin-badge');
         const isAdmin = user.is_admin === true;
-
-        if (adminBadgeEl && isAdmin) {
-            adminBadgeEl.style.cssText = 'display: block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; font-size: 14px; margin: 12px auto 0 auto; width: fit-content;';
-            adminBadgeEl.innerHTML = '<i class="fas fa-crown"></i> Admin';
-            const statsCompact = document.querySelector('.user-stats-compact');
-            if (statsCompact) statsCompact.style.display = 'none';
-        }
 
         const adminPanelBtn = document.getElementById('admin-panel-btn');
         if (adminPanelBtn && isAdmin) adminPanelBtn.classList.remove('hidden');
@@ -326,9 +318,6 @@ async function loadUserProfile() {
         initStatFlyouts();
         loadSubscriptionManagement();
 
-        if (user.is_admin) {
-            await loadAdminDashboard();
-        }
     } catch (error) {
         console.error('Error loading dashboard sections:', error);
     }
@@ -1187,233 +1176,6 @@ function loadAnnouncementBanner() {
     }
 }
 
-// ==================== Admin Dashboard ====================
-
-async function loadAdminDashboard() {
-    try {
-        const data = await apiCall('/admin/dashboard', { method: 'GET' });
-        const stats = data.statistics;
-
-        const dashboardGrid = document.querySelector('.dashboard-grid');
-        if (dashboardGrid) {
-            const adminCard = document.createElement('div');
-            adminCard.className = 'dashboard-card';
-            adminCard.style.cssText = 'background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; grid-column: 1 / -1; margin-bottom: 24px;';
-
-            adminCard.innerHTML = `
-                <h3 style="color: white;"><i class="fas fa-crown"></i> Admin Overview</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">
-                    <div class="admin-stat-box" onclick="openAdminModal('all')" style="text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px; cursor: pointer;">
-                        <div style="font-size: 36px; font-weight: 700;">${stats.total_users}</div>
-                        <div style="opacity: 0.9; margin-top: 8px;">Total Users</div>
-                    </div>
-                    <div class="admin-stat-box" onclick="openAdminModal('premium')" style="text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px; cursor: pointer;">
-                        <div style="font-size: 36px; font-weight: 700;">${stats.premium_users}</div>
-                        <div style="opacity: 0.9; margin-top: 8px;">Premium Users</div>
-                    </div>
-                    <div class="admin-stat-box" onclick="openAdminModal('today')" style="text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px; cursor: pointer;">
-                        <div style="font-size: 36px; font-weight: 700;">${stats.new_users_today}</div>
-                        <div style="opacity: 0.9; margin-top: 8px;">New Today</div>
-                    </div>
-                    <div style="text-align: center; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px;">
-                        <div style="font-size: 36px; font-weight: 700;">${stats.active_sessions}</div>
-                        <div style="opacity: 0.9; margin-top: 8px;">Active Sessions</div>
-                    </div>
-                </div>
-                <div style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 12px;">
-                    <h4 style="color: white; margin-bottom: 12px;"><i class="fas fa-chart-line"></i> Statistics</h4>
-                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                        <div>Verification Rate: <strong>${stats.verification_rate}</strong></div>
-                        <div>Premium Rate: <strong>${stats.premium_rate}</strong></div>
-                    </div>
-                </div>
-            `;
-
-            dashboardGrid.insertBefore(adminCard, dashboardGrid.firstChild);
-        }
-
-    } catch (error) {
-        console.error('Error loading admin dashboard:', error);
-    }
-}
-
-// ==================== Admin User Management ====================
-
-let allUsersData = [];
-let currentFilter = 'all';
-
-async function openAdminModal(filter = 'all') {
-    currentFilter = filter;
-    const modal = document.getElementById('admin-user-modal');
-    const modalTitle = document.getElementById('modal-title');
-
-    const titles = {
-        'all': 'All Users',
-        'today': 'Users Joined Today',
-        'yesterday': 'Users Joined Yesterday',
-        'week': 'Users Joined This Week',
-        'premium': 'Premium Users',
-        'free': 'Free Users'
-    };
-    modalTitle.textContent = titles[filter] || 'Users';
-    modal.style.display = 'flex';
-    await loadAdminUsers(filter);
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.filter === filter) btn.classList.add('active');
-    });
-
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.onclick = () => filterUsers(btn.dataset.filter);
-    });
-}
-
-function closeAdminModal() {
-    document.getElementById('admin-user-modal').style.display = 'none';
-}
-
-document.addEventListener('click', function(e) {
-    const modal = document.getElementById('admin-user-modal');
-    if (e.target === modal) closeAdminModal();
-});
-
-async function loadAdminUsers(filter = 'all') {
-    try {
-        const data = await apiCall(`/admin/users?filter=${filter}`, { method: 'GET' });
-        allUsersData = data.users;
-        renderUsersTable(allUsersData);
-    } catch (error) {
-        console.error('Error loading users:', error);
-        document.getElementById('users-table-body').innerHTML = `
-            <tr><td colspan="5" style="text-align: center; padding: 40px; color: var(--text-secondary);">
-                <i class="fas fa-exclamation-circle" style="font-size: 48px; margin-bottom: 12px; display: block;"></i>
-                Failed to load users
-            </td></tr>
-        `;
-    }
-}
-
-function filterUsers(filter) {
-    currentFilter = filter;
-    const modalTitle = document.getElementById('modal-title');
-    const titles = {
-        'all': 'All Users', 'today': 'Users Joined Today', 'yesterday': 'Users Joined Yesterday',
-        'week': 'Users Joined This Week', 'premium': 'Premium Users', 'free': 'Free Users'
-    };
-    modalTitle.textContent = titles[filter] || 'Users';
-
-    let filteredUsers = [...allUsersData];
-    const now = new Date();
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-    const yesterday = new Date(today); yesterday.setDate(yesterday.getDate() - 1);
-    const weekAgo = new Date(today); weekAgo.setDate(weekAgo.getDate() - 7);
-
-    switch(filter) {
-        case 'today': filteredUsers = allUsersData.filter(u => new Date(u.created_at) >= today); break;
-        case 'yesterday': filteredUsers = allUsersData.filter(u => { const d = new Date(u.created_at); return d >= yesterday && d < today; }); break;
-        case 'week': filteredUsers = allUsersData.filter(u => new Date(u.created_at) >= weekAgo); break;
-        case 'premium': filteredUsers = allUsersData.filter(u => u.is_premium); break;
-        case 'free': filteredUsers = allUsersData.filter(u => !u.is_premium); break;
-    }
-
-    renderUsersTable(filteredUsers);
-    document.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.classList.remove('active');
-        if (btn.dataset.filter === filter) btn.classList.add('active');
-    });
-}
-
-function renderUsersTable(users) {
-    const tbody = document.getElementById('users-table-body');
-    if (users.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="5" style="text-align: center; padding: 40px; color: var(--text-secondary);">
-            <i class="fas fa-users" style="font-size: 48px; margin-bottom: 12px; display: block; opacity: 0.3;"></i>No users found
-        </td></tr>`;
-        return;
-    }
-
-    tbody.innerHTML = users.map(user => {
-        const badges = [];
-        if (user.is_admin) badges.push('<span class="user-badge admin"><i class="fas fa-crown"></i> Admin</span>');
-        if (user.is_premium) badges.push('<span class="user-badge premium"><i class="fas fa-star"></i> Premium</span>');
-        if (!user.is_premium && !user.is_admin) badges.push('<span class="user-badge free">Free</span>');
-
-        const joinedDate = new Date(user.created_at).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-
-        return `
-            <tr>
-                <td><strong>${user.first_name} ${user.last_name}</strong></td>
-                <td>${user.email}</td>
-                <td>${badges.join(' ')}</td>
-                <td>${joinedDate}</td>
-                <td>
-                    <div class="user-actions">
-                        <button class="action-btn" onclick="viewUserDetails('${user.id}')"><i class="fas fa-eye"></i> View</button>
-                        ${!user.is_verified ? `<button class="action-btn" onclick="verifyUser('${user.id}')"><i class="fas fa-check-circle"></i> Verify</button>` : ''}
-                        ${!user.is_premium ? `<button class="action-btn" onclick="togglePremium('${user.id}', true)"><i class="fas fa-crown"></i> Grant Premium</button>` : `<button class="action-btn danger" onclick="togglePremium('${user.id}', false)"><i class="fas fa-times"></i> Remove Premium</button>`}
-                        ${!user.is_admin ? `<button class="action-btn danger" onclick="deleteUser('${user.id}')"><i class="fas fa-trash"></i> Delete</button>` : ''}
-                    </div>
-                </td>
-            </tr>
-        `;
-    }).join('');
-}
-
-async function togglePremium(userId, grantPremium) {
-    const confirmed = await showConfirm('Update Premium Status', `Are you sure you want to ${grantPremium ? 'grant' : 'remove'} premium status for this user?`, 'question');
-    if (!confirmed) return;
-
-    try {
-        await apiCall(`/admin/users/${userId}/premium`, { method: 'PUT', body: JSON.stringify({ is_premium: grantPremium }) });
-        await loadAdminUsers(currentFilter);
-        showSuccess(`Premium status ${grantPremium ? 'granted' : 'removed'} successfully!`);
-    } catch (error) {
-        console.error('Error updating user:', error);
-        showAlert('Update Failed', 'Failed to update user. Please try again.', 'error');
-    }
-}
-
-function viewUserDetails(userId) {
-    const user = allUsersData.find(u => u.id === userId);
-    if (!user) return;
-    const details = `Name: ${user.first_name} ${user.last_name}\nEmail: ${user.email}\nNursing Program: ${user.nursing_program || 'Not specified'}\nAccount Type: ${user.is_premium ? 'Premium' : 'Free'}\nAdmin: ${user.is_admin ? 'Yes' : 'No'}\nVerified: ${user.is_verified ? 'Yes' : 'No'}\nDiscord Connected: ${user.has_discord ? 'Yes' : 'No'}\nJoined: ${new Date(user.created_at).toLocaleString()}`;
-    showAlert('User Details', details, 'info');
-}
-
-async function verifyUser(userId) {
-    const user = allUsersData.find(u => u.id === userId);
-    if (!user) return;
-    const confirmed = await showConfirm('Verify User Email', `Manually verify email for ${user.first_name} ${user.last_name} (${user.email})?`, 'question');
-    if (!confirmed) return;
-
-    try {
-        await apiCall(`/admin/users/${userId}/verify`, { method: 'POST' });
-        await loadAdminUsers(currentFilter);
-        showSuccess('User email verified successfully!');
-    } catch (error) {
-        console.error('Error verifying user:', error);
-        showAlert('Verification Failed', 'Failed to verify user. Please try again.', 'error');
-    }
-}
-
-async function deleteUser(userId) {
-    const user = allUsersData.find(u => u.id === userId);
-    if (!user) return;
-    const confirmed = await showConfirm('Delete User', `Are you sure you want to delete ${user.first_name} ${user.last_name} (${user.email})?\n\nThis action cannot be undone.`, 'danger', 'Delete', 'Cancel');
-    if (!confirmed) return;
-
-    try {
-        await apiCall(`/admin/users/${userId}`, { method: 'DELETE' });
-        await loadAdminUsers(currentFilter);
-        await loadAdminDashboard();
-        showSuccess('User deleted successfully!');
-    } catch (error) {
-        console.error('Error deleting user:', error);
-        showAlert('Delete Failed', error.message || 'Failed to delete user. Please try again.', 'error');
-    }
-}
-
 // ==================== Event Listeners ====================
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -1440,10 +1202,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    const closeAdminModalBtn = document.getElementById('close-admin-modal-btn');
-    if (closeAdminModalBtn) {
-        closeAdminModalBtn.addEventListener('click', closeAdminModal);
-    }
 });
 
 // ==================== Utility Functions ====================

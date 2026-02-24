@@ -526,10 +526,10 @@ async function loadDashboardHome() {
         const data = await apiCall(apiUrl);
 
         // Update KPI cards
-        const totalUsers = data.statistics.total_users || 1;
-        updateStatWithAnimation('kpi-total-users', data.statistics.total_users);
-        updateStatWithAnimation('kpi-premium-users', data.statistics.premium_users);
-        updateStatWithAnimation('kpi-revenue', data.revenue.this_month, '$', '', 2);
+        const totalUsers = data.statistics?.total_users || 1;
+        updateStatWithAnimation('kpi-total-users', data.statistics?.total_users || 0);
+        updateStatWithAnimation('kpi-premium-users', data.statistics?.premium_users || 0);
+        updateStatWithAnimation('kpi-revenue', data.revenue?.this_month || 0, '$', '', 2);
 
         const activeWeekCount = data.statistics.active_this_week || data.statistics.new_users_today || 0;
         updateStatWithAnimation('kpi-active-week', activeWeekCount);
@@ -552,7 +552,7 @@ async function loadDashboardHome() {
 
         // Update recent activity
         const activityList = document.getElementById('recent-activity');
-        if (data.recent_activity.length === 0) {
+        if (!data.recent_activity || data.recent_activity.length === 0) {
             activityList.innerHTML = '<div class="empty-state"><i class="fas fa-history"></i><p>No recent admin activity</p></div>';
         } else {
             activityList.innerHTML = data.recent_activity.slice(0, 5).map(log => `

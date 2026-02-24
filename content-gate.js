@@ -100,7 +100,7 @@
                 <div class="paywall-pricing">
                     <div class="paywall-price">Starting at <strong>$14.99/month</strong></div>
                     <div class="paywall-divider">or</div>
-                    <div class="paywall-price"><strong>$119</strong> for lifetime access</div>
+                    <div class="paywall-price"><strong>$149</strong> for lifetime access</div>
                 </div>
                 <div class="paywall-actions">
                     <a href="/pricing.html" class="paywall-btn paywall-btn-primary">View Subscription Plans</a>

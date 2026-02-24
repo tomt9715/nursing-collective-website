@@ -507,7 +507,7 @@ function showPaywall() {
             <div class="paywall-pricing">
                 <div class="paywall-price">Starting at <strong>$14.99/month</strong></div>
                 <div class="paywall-or">or</div>
-                <div class="paywall-price"><strong>$119</strong> for lifetime access</div>
+                <div class="paywall-price"><strong>$149</strong> for lifetime access</div>
             </div>
             <div class="paywall-buttons">
                 <a href="/pricing.html" class="btn btn-primary btn-lg">View Plans</a>

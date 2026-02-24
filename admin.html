@@ -950,6 +950,41 @@
                         </div>
                     </div>
 
+                    <!-- Admin Role Management -->
+                    <div class="admin-card">
+                        <div class="admin-card-header">
+                            <h2><i class="fas fa-user-shield"></i> Admin Role Management</h2>
+                        </div>
+                        <p style="color: var(--text-muted); margin-bottom: 16px;">Grant or revoke admin access for users. Requires your admin secret to confirm.</p>
+                        <div class="credit-adjust-form" style="border-top: none; padding-top: 0">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="admin-role-email">User Email</label>
+                                    <input type="email" id="admin-role-email" placeholder="user@example.com" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label for="admin-role-action">Action</label>
+                                    <select id="admin-role-action" class="form-control">
+                                        <option value="grant">Grant Admin</option>
+                                        <option value="revoke">Revoke Admin</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="admin-role-secret">Admin Secret</label>
+                                    <input type="password" id="admin-role-secret" placeholder="Enter admin secret" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group" style="flex:0 0 auto">
+                                    <button class="btn btn-primary" id="admin-role-btn">
+                                        <i class="fas fa-user-shield"></i> Confirm
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="admin-role-result" style="display:none"></div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>

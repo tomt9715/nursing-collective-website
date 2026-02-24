@@ -326,7 +326,7 @@ async function loadUserProfile() {
         initStatFlyouts();
         loadSubscriptionManagement();
 
-        if (user.email === 'admin@thenursingcollective.pro') {
+        if (user.is_admin) {
             await loadAdminDashboard();
         }
     } catch (error) {

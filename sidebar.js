@@ -273,7 +273,7 @@
                 if (quizLink) quizLink.style.display = '';
             }
 
-            if (user.email === 'admin@thenursingcollective.pro') {
+            if (user.is_admin) {
                 var adminSection = sidebar.querySelector('#sidebar-admin-section');
                 if (adminSection) adminSection.classList.remove('hidden');
             }

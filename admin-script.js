@@ -2286,6 +2286,11 @@ document.addEventListener('DOMContentLoaded', function() {
         creditAdjustBtn.addEventListener('click', adjustUserCredits);
     }
 
+    const adminRoleBtn = document.getElementById('admin-role-btn');
+    if (adminRoleBtn) {
+        adminRoleBtn.addEventListener('click', manageAdminRole);
+    }
+
 });
 
 // ==================== AI Tools Tab ====================
@@ -2503,5 +2508,48 @@ async function adjustUserCredits() {
             resultEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${escapeHtml(error.message || 'Failed to adjust credits')}`;
         }
         showToast('Failed to adjust credits: ' + (error.message || 'Unknown error'), 'error');
+    }
+}
+
+async function manageAdminRole() {
+    const emailInput = document.getElementById('admin-role-email');
+    const actionSelect = document.getElementById('admin-role-action');
+    const secretInput = document.getElementById('admin-role-secret');
+    const resultEl = document.getElementById('admin-role-result');
+
+    const email = (emailInput ? emailInput.value.trim() : '');
+    const action = actionSelect ? actionSelect.value : '';
+    const secret = secretInput ? secretInput.value : '';
+
+    if (!email) { showToast('Please enter a user email', 'error'); return; }
+    if (!secret) { showToast('Please enter the admin secret', 'error'); return; }
+
+    const verb = action === 'grant' ? 'grant admin access to' : 'revoke admin access from';
+    if (!confirm(`Are you sure you want to ${verb} ${email}?`)) return;
+
+    try {
+        const data = await apiCall('/admin/manage-admin', {
+            method: 'POST',
+            body: JSON.stringify({ email, action, secret })
+        });
+
+        if (resultEl) {
+            resultEl.style.display = 'block';
+            resultEl.className = 'info-banner success';
+            resultEl.innerHTML = `<i class="fas fa-check-circle"></i> ${escapeHtml(data.message)}`;
+        }
+        showToast(data.message, 'success');
+
+        // Clear form
+        if (emailInput) emailInput.value = '';
+        if (secretInput) secretInput.value = '';
+
+    } catch (error) {
+        if (resultEl) {
+            resultEl.style.display = 'block';
+            resultEl.className = 'info-banner error';
+            resultEl.innerHTML = `<i class="fas fa-exclamation-triangle"></i> ${escapeHtml(error.message || 'Failed to manage admin role')}`;
+        }
+        showToast('Failed: ' + (error.message || 'Unknown error'), 'error');
     }
 }

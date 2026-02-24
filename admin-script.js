@@ -12,6 +12,22 @@ let subscriptionsPage = 1;
 let auditCache = []; // Cache audit data for sorting
 let currentAuditSort = 'newest'; // Current audit sort option
 
+// Section configuration
+const ADMIN_SECTIONS = {
+    'dashboard':        { title: 'Dashboard',          icon: 'fa-tachometer-alt', loader: 'loadDashboardHome' },
+    'users':            { title: 'Users',              icon: 'fa-users',          loader: 'loadUsers' },
+    'subscriptions':    { title: 'Subscriptions',      icon: 'fa-id-badge',       loader: 'loadSubscriptions' },
+    'deleted-accounts': { title: 'Deleted Accounts',   icon: 'fa-user-slash',     loader: 'loadDeletedAccounts' },
+    'quiz-reports':     { title: 'Quiz Reports',       icon: 'fa-flag',           loader: 'loadQuizReports' },
+    'guide-index':      { title: 'Guide Index',        icon: 'fa-book-medical',   loader: 'loadGuideIndex' },
+    'ai-usage':         { title: 'AI Usage',           icon: 'fa-robot',          loader: 'loadAIUsage' },
+    'credits':          { title: 'Credit Management',  icon: 'fa-coins',          loader: null },
+    'audit':            { title: 'Audit Log',          icon: 'fa-history',        loader: 'loadAuditLog' },
+    'system-health':    { title: 'System Health',      icon: 'fa-server',         loader: 'loadSystemHealth' },
+    'test-emails':      { title: 'Test Emails',        icon: 'fa-paper-plane',    loader: null },
+    'admin-roles':      { title: 'Admin Roles',        icon: 'fa-user-shield',    loader: null }
+};
+
 // Animated count-up function for stats
 function animateValue(element, start, end, duration, prefix = '', suffix = '', decimals = 0) {
     if (!element) return;
@@ -139,10 +155,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     const adminDisplayName = `${user.first_name || ''} ${user.last_name || ''}`.trim() || 'Admin';
     document.getElementById('dropdown-user-name').textContent = adminDisplayName;
 
-    // Update hero admin name
-    const adminNameEl = document.getElementById('admin-name');
-    if (adminNameEl) {
-        adminNameEl.textContent = user.first_name || 'Admin';
+    // Update sidebar admin name
+    const sidebarAdminName = document.getElementById('sidebar-admin-name');
+    if (sidebarAdminName) {
+        sidebarAdminName.textContent = user.first_name || 'Admin';
+    }
+
+    // Update sidebar avatar with initial letter
+    const sidebarAvatar = document.querySelector('.admin-sidebar-avatar');
+    if (sidebarAvatar && user.first_name) {
+        sidebarAvatar.innerHTML = `<span style="font-weight: 600; font-size: 18px;">${user.first_name.charAt(0)}</span>`;
     }
 
     // Update user avatar with initial (same as dashboard)
@@ -160,32 +182,40 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Setup event listeners
     setupEventListeners();
 
+    // Initialize mobile sidebar
+    initAdminMobileSidebar();
+
     // Load initial data
-    await loadDashboardOverview();
+    await loadDashboardHome();
 
     // Hide page loader
     document.getElementById('page-loader').style.display = 'none';
 
-    // Handle URL hash for tab navigation (e.g., admin.html#users)
+    // Handle URL hash for section navigation (e.g., admin.html#users)
     const hash = window.location.hash.replace('#', '');
-    if (hash && ['overview', 'users', 'subscriptions', 'quiz-reports', 'audit', 'ai-tools'].includes(hash)) {
-        switchTab(hash);
+    if (hash && Object.keys(ADMIN_SECTIONS).includes(hash)) {
+        switchSection(hash);
     }
 
     // Also listen for hash changes
     window.addEventListener('hashchange', function() {
         const newHash = window.location.hash.replace('#', '');
-        if (newHash && ['overview', 'users', 'subscriptions', 'quiz-reports', 'audit'].includes(newHash)) {
-            switchTab(newHash);
+        if (newHash && Object.keys(ADMIN_SECTIONS).includes(newHash)) {
+            switchSection(newHash);
         }
     });
 });
 
 // Setup event listeners
 function setupEventListeners() {
-    // Tab navigation (sub-nav tabs)
-    document.querySelectorAll('.admin-subnav-tab').forEach(tab => {
-        tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+    // Section navigation (sidebar items)
+    document.querySelectorAll('[data-admin-section]').forEach(item => {
+        item.addEventListener('click', () => switchSection(item.dataset.adminSection));
+    });
+
+    // Quick nav buttons (e.g., dashboard cards that link to sections)
+    document.querySelectorAll('[data-quick-nav]').forEach(btn => {
+        btn.addEventListener('click', () => switchSection(btn.dataset.quickNav));
     });
 
     // User search (in Users tab) - with autocomplete
@@ -293,7 +323,7 @@ function setupEventListeners() {
     if (timePeriodSelect) {
         timePeriodSelect.addEventListener('change', () => {
             // For now, just reload - can be enhanced later to filter by period
-            loadDashboardOverview();
+            loadDashboardHome();
         });
     }
 
@@ -400,44 +430,81 @@ function setupEventListeners() {
     });
 }
 
-// Switch between tabs
-function switchTab(tabName) {
-    // Update tab buttons (sub-nav tabs)
-    document.querySelectorAll('.admin-subnav-tab').forEach(tab => {
-        tab.classList.toggle('active', tab.dataset.tab === tabName);
+// Switch between sections (sidebar navigation)
+function switchSection(sectionName) {
+    if (!ADMIN_SECTIONS[sectionName]) return;
+    const config = ADMIN_SECTIONS[sectionName];
+
+    // Update sidebar active state
+    document.querySelectorAll('.admin-sidebar-item').forEach(item => {
+        item.classList.toggle('active', item.dataset.adminSection === sectionName);
     });
 
-    // Update tab content
-    document.querySelectorAll('.admin-tab-content').forEach(content => {
-        content.classList.toggle('active', content.id === `tab-${tabName}`);
+    // Update section content visibility
+    document.querySelectorAll('.admin-section-content').forEach(content => {
+        content.classList.toggle('active', content.id === `section-${sectionName}`);
     });
 
-    // Load data for the tab
-    switch (tabName) {
-        case 'overview':
-            loadDashboardOverview();
-            break;
-        case 'users':
-            loadUsers();
-            break;
-        case 'subscriptions':
-            loadSubscriptions();
-            break;
-        case 'quiz-reports':
-            loadQuizReports();
-            break;
-        case 'audit':
-            loadAuditLog();
-            break;
-        case 'ai-tools':
-            loadAIToolsTab();
-            break;
+    // Update page header
+    const titleEl = document.getElementById('admin-page-title');
+    if (titleEl) {
+        titleEl.innerHTML = `<i class="fas ${config.icon}"></i> ${config.title}`;
     }
+
+    // Update URL hash
+    window.location.hash = sectionName;
+
+    // Call loader function if exists
+    if (config.loader && typeof window[config.loader] === 'function') {
+        window[config.loader]();
+    }
+
+    // Close mobile sidebar
+    closeMobileAdminSidebar();
 }
 
-// ==================== Overview Tab ====================
+// Switch to a specific section (used by quick action buttons)
+function switchToTab(sectionName) {
+    switchSection(sectionName);
+    document.querySelector('.admin-main')?.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-async function loadDashboardOverview() {
+// Mobile sidebar functions
+function initAdminMobileSidebar() {
+    const sidebar = document.getElementById('admin-sidebar');
+    const overlay = document.getElementById('admin-sidebar-overlay');
+    const menuBtn = document.getElementById('admin-mobile-menu-btn');
+
+    if (menuBtn) {
+        menuBtn.addEventListener('click', () => {
+            sidebar?.classList.add('open');
+            overlay?.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
+    if (overlay) {
+        overlay.addEventListener('click', closeMobileAdminSidebar);
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && sidebar?.classList.contains('open')) {
+            closeMobileAdminSidebar();
+        }
+    });
+}
+
+function closeMobileAdminSidebar() {
+    const sidebar = document.getElementById('admin-sidebar');
+    const overlay = document.getElementById('admin-sidebar-overlay');
+    sidebar?.classList.remove('open');
+    overlay?.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+// ==================== Dashboard Home Section ====================
+
+async function loadDashboardHome() {
     try {
         // Get selected time period
         const timePeriodSelect = document.getElementById('stats-time-period');
@@ -455,57 +522,25 @@ async function loadDashboardOverview() {
         const apiUrl = days === 'all' ? '/admin/dashboard/enhanced' : `/admin/dashboard/enhanced?days=${days}`;
         const data = await apiCall(apiUrl);
 
-        // Update hero stats
-        const heroTotalUsers = document.getElementById('hero-total-users');
-        const heroRevenue = document.getElementById('hero-revenue');
-        const heroNewToday = document.getElementById('hero-new-today');
-        if (heroTotalUsers) heroTotalUsers.textContent = data.statistics.total_users;
-        if (heroRevenue) heroRevenue.textContent = `$${data.revenue.this_month.toFixed(2)}`;
-        if (heroNewToday) heroNewToday.textContent = data.statistics.new_users_today;
-
-        // Update main stats (User Statistics section) with animations
-        updateStatWithAnimation('stat-premium-users', data.statistics.premium_users);
-
-        // Update verified users if available
-        const verifiedCount = data.statistics.verified_users || data.statistics.total_users;
-        updateStatWithAnimation('stat-verified-users', verifiedCount);
-
-        // Update active this week (use premium or a calculated value)
-        const activeWeekCount = data.statistics.active_this_week || data.statistics.new_users_today || 0;
-        updateStatWithAnimation('stat-active-week', activeWeekCount);
-
-        // Update conversion rate (premium users / total users)
+        // Update KPI cards
         const totalUsers = data.statistics.total_users || 1;
-        const conversionRate = (data.statistics.premium_users / totalUsers) * 100;
-        updateStatWithAnimation('stat-conversion-rate', conversionRate, '', '%', 1);
+        updateStatWithAnimation('kpi-total-users', data.statistics.total_users);
+        updateStatWithAnimation('kpi-premium-users', data.statistics.premium_users);
+        updateStatWithAnimation('kpi-revenue', data.revenue.this_month, '$', '', 2);
 
-        // Update Revenue & Subscription stats with animations
-        updateStatWithAnimation('stat-revenue-month', data.revenue.this_month, '$', '', 2);
+        const activeWeekCount = data.statistics.active_this_week || data.statistics.new_users_today || 0;
+        updateStatWithAnimation('kpi-active-week', activeWeekCount);
+
+        const premiumRateValue = (data.statistics.premium_users / totalUsers) * 100;
+        updateStatWithAnimation('kpi-premium-rate', premiumRateValue, '', '%', 1);
 
         // Update revenue label based on time period
-        const revenueLabel = document.getElementById('revenue-label');
+        const revenueLabel = document.getElementById('kpi-revenue-label');
         if (revenueLabel) {
-            const timePeriodSelect = document.getElementById('stats-time-period');
-            const selectedOption = timePeriodSelect?.options[timePeriodSelect.selectedIndex]?.text || 'This Month';
+            const timePeriodEl = document.getElementById('stats-time-period');
+            const selectedOption = timePeriodEl?.options[timePeriodEl.selectedIndex]?.text || 'This Month';
             revenueLabel.textContent = `Revenue (${selectedOption})`;
         }
-
-        // Update orders count with animation
-        updateStatWithAnimation('orders-count', data.subscription_stats?.total_active || 0);
-
-        // Update subscription tier counts
-        if (data.subscription_stats) {
-            updateStatWithAnimation('stat-monthly-subs', data.subscription_stats.monthly_active || 0);
-            updateStatWithAnimation('stat-semester-subs', data.subscription_stats.semester_active || 0);
-            updateStatWithAnimation('stat-lifetime-subs', data.subscription_stats.lifetime_active || 0);
-        }
-
-        // Calculate and update rate badges with animation
-        const premiumRateValue = (data.statistics.premium_users / totalUsers) * 100;
-        const verified = data.statistics.verified_users || data.statistics.total_users;
-        const verifiedRateValue = (verified / totalUsers) * 100;
-        updateStatWithAnimation('premium-rate', premiumRateValue, '', '%', 1);
-        updateStatWithAnimation('verified-rate', verifiedRateValue, '', '%', 1);
 
         // Update auth provider stats if available
         if (data.auth_providers) {
@@ -536,12 +571,6 @@ async function loadDashboardOverview() {
 
         // Load subscription overview
         await loadSubscriptionOverview();
-
-        // Load recently deleted accounts
-        await loadRecentlyDeletedAccounts();
-
-        // Load system health metrics
-        await loadSystemHealth();
 
     } catch (error) {
         console.error('Error loading dashboard:', error);
@@ -742,8 +771,8 @@ async function loadSubscriptionOverview() {
     }
 }
 
-// Load recently deleted accounts
-async function loadRecentlyDeletedAccounts() {
+// Load deleted accounts (standalone section loader, renamed from loadRecentlyDeletedAccounts)
+async function loadDeletedAccounts() {
     const tbody = document.getElementById('deleted-accounts-body');
     const emptyState = document.getElementById('no-deleted-accounts');
     const tableContainer = document.querySelector('.deleted-accounts-table-container');
@@ -784,6 +813,11 @@ async function loadRecentlyDeletedAccounts() {
         console.error('Error loading deleted accounts:', error);
         tbody.innerHTML = '<tr><td colspan="5" class="loading-cell">Failed to load deleted accounts</td></tr>';
     }
+}
+
+// Keep backward-compatible alias
+async function loadRecentlyDeletedAccounts() {
+    return loadDeletedAccounts();
 }
 
 // ==================== Deleted Accounts Modal ====================
@@ -2104,13 +2138,6 @@ function closeConfirmModal() {
 
 // ==================== Quick Actions ====================
 
-// Switch to a specific tab (used by quick action buttons)
-function switchToTab(tabName) {
-    switchTab(tabName);
-    // Scroll to the admin content section
-    document.querySelector('.admin-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
-
 // Export all data
 async function exportAllData() {
     try {
@@ -2178,10 +2205,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Tab switching buttons with data-switch-tab attribute
-    document.querySelectorAll('[data-switch-tab]').forEach(btn => {
+    // Quick nav buttons with data-quick-nav attribute
+    document.querySelectorAll('[data-quick-nav]').forEach(btn => {
         btn.addEventListener('click', function() {
-            switchToTab(this.dataset.switchTab);
+            switchSection(this.dataset.quickNav);
         });
     });
 
@@ -2274,13 +2301,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // AI Tools tab: Reindex button
+    // AI Tools: Reindex button
     const reindexBtn = document.getElementById('reindex-guides-btn');
     if (reindexBtn) {
         reindexBtn.addEventListener('click', reindexGuides);
     }
 
-    // AI Tools tab: Credit adjust button
+    // AI Tools: Credit adjust button
     const creditAdjustBtn = document.getElementById('credit-adjust-btn');
     if (creditAdjustBtn) {
         creditAdjustBtn.addEventListener('click', adjustUserCredits);
@@ -2293,10 +2320,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
-// ==================== AI Tools Tab ====================
+// ==================== AI Usage & Guide Index Section Loaders ====================
 
-async function loadAIToolsTab() {
+async function loadAIUsage() {
     loadAIUsageStats();
+}
+
+async function loadGuideIndex() {
     loadGuideIndexStatus();
 }
 

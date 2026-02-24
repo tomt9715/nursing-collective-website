@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/global-overrides.css?v=5.6.navfix">
 
     <!-- Admin-specific styles (loaded after bundle to override) -->
-    <link rel="stylesheet" href="css/admin.css?v=5">
+    <link rel="stylesheet" href="css/admin.css?v=6.0">
 
     <!-- Bootstrap 5 CSS -->
 
@@ -105,890 +105,918 @@
         </div>
     </nav>
 
-    <!-- Admin Sub-Navigation -->
-    <nav class="admin-subnav">
-        <div class="container">
-            <div class="admin-subnav-content">
-                <div class="admin-subnav-brand">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Admin Panel</span>
+    <!-- Admin Dashboard Layout -->
+    <div class="dash-layout admin-layout">
+        <!-- Mobile Sidebar Overlay -->
+        <div class="dash-sidebar-overlay" id="admin-sidebar-overlay"></div>
+
+        <!-- Admin Sidebar -->
+        <aside class="dash-sidebar admin-sidebar" id="admin-sidebar">
+            <div class="admin-sidebar-header">
+                <div class="admin-sidebar-avatar" id="sidebar-avatar">
+                    <i class="fas fa-user-shield"></i>
                 </div>
-                <div class="admin-subnav-tabs">
-                    <button class="admin-subnav-tab active" data-tab="overview">
-                        <i class="fas fa-chart-pie"></i> <span>Overview</span>
-                    </button>
-                    <button class="admin-subnav-tab" data-tab="users">
-                        <i class="fas fa-user-cog"></i> <span>Manage Users</span>
-                    </button>
-                    <button class="admin-subnav-tab" data-tab="subscriptions">
-                        <i class="fas fa-id-badge"></i> <span>Subscriptions</span>
-                    </button>
-                    <button class="admin-subnav-tab" data-tab="quiz-reports">
-                        <i class="fas fa-flag"></i> <span>Quiz Reports</span>
-                    </button>
-                    <button class="admin-subnav-tab" data-tab="audit">
-                        <i class="fas fa-history"></i> <span>Audit Log</span>
-                    </button>
-                    <button class="admin-subnav-tab" data-tab="ai-tools">
-                        <i class="fas fa-robot"></i> <span>AI Tools</span>
-                    </button>
+                <div class="admin-sidebar-info">
+                    <span class="admin-sidebar-name" id="sidebar-admin-name">Admin</span>
+                    <span class="admin-sidebar-role">Administrator</span>
                 </div>
             </div>
-        </div>
-    </nav>
 
-    <!-- Admin Hero Header -->
-    <section class="admin-hero">
-        <div class="admin-hero-bg"></div>
-        <div class="container">
-            <div class="admin-hero-content">
-                <div class="admin-hero-text">
-                    <div class="admin-hero-badge">
-                        <i class="fas fa-shield-alt"></i> Administrator Panel
-                    </div>
-                    <h1>Welcome back, <span id="admin-name">Admin</span></h1>
-                    <p class="admin-hero-subtitle">Manage users, subscriptions, and monitor system activity</p>
-                </div>
-                <div class="admin-hero-stats">
-                    <div class="hero-stat">
-                        <span class="hero-stat-value" id="hero-total-users">-</span>
-                        <span class="hero-stat-label">Total Users</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-value" id="hero-revenue">$0</span>
-                        <span class="hero-stat-label">This Month</span>
-                    </div>
-                    <div class="hero-stat">
-                        <span class="hero-stat-value" id="hero-new-today">-</span>
-                        <span class="hero-stat-label">New Today</span>
-                    </div>
+            <nav class="admin-sidebar-nav">
+                <button class="admin-sidebar-item active" data-admin-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i> <span>Dashboard</span>
+                </button>
+
+                <div class="admin-sidebar-label">People</div>
+                <button class="admin-sidebar-item" data-admin-section="users">
+                    <i class="fas fa-users"></i> <span>Users</span>
+                </button>
+                <button class="admin-sidebar-item" data-admin-section="subscriptions">
+                    <i class="fas fa-id-badge"></i> <span>Subscriptions</span>
+                </button>
+                <button class="admin-sidebar-item" data-admin-section="deleted-accounts">
+                    <i class="fas fa-user-slash"></i> <span>Deleted Accounts</span>
+                </button>
+
+                <div class="admin-sidebar-label">Content</div>
+                <button class="admin-sidebar-item" data-admin-section="quiz-reports">
+                    <i class="fas fa-flag"></i> <span>Quiz Reports</span>
+                </button>
+                <button class="admin-sidebar-item" data-admin-section="guide-index">
+                    <i class="fas fa-book-medical"></i> <span>Guide Index</span>
+                </button>
+
+                <div class="admin-sidebar-label">AI &amp; Credits</div>
+                <button class="admin-sidebar-item" data-admin-section="ai-usage">
+                    <i class="fas fa-robot"></i> <span>AI Usage</span>
+                </button>
+                <button class="admin-sidebar-item" data-admin-section="credits">
+                    <i class="fas fa-coins"></i> <span>Credit Management</span>
+                </button>
+
+                <div class="admin-sidebar-label">System</div>
+                <button class="admin-sidebar-item" data-admin-section="audit">
+                    <i class="fas fa-history"></i> <span>Audit Log</span>
+                </button>
+                <button class="admin-sidebar-item" data-admin-section="system-health">
+                    <i class="fas fa-server"></i> <span>System Health</span>
+                </button>
+                <button class="admin-sidebar-item" data-admin-section="test-emails">
+                    <i class="fas fa-paper-plane"></i> <span>Test Emails</span>
+                </button>
+                <button class="admin-sidebar-item" data-admin-section="admin-roles">
+                    <i class="fas fa-user-shield"></i> <span>Admin Roles</span>
+                </button>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+                <a href="dashboard.html" class="admin-sidebar-item admin-sidebar-back">
+                    <i class="fas fa-arrow-left"></i> <span>Back to Dashboard</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="dash-main admin-main">
+            <!-- Page Header -->
+            <div class="admin-page-header">
+                <div class="admin-page-header-left">
+                    <button class="admin-mobile-menu-btn" id="admin-mobile-menu-btn">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1 id="admin-page-title"><i class="fas fa-tachometer-alt"></i> Dashboard</h1>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Admin Dashboard -->
-    <section class="admin-dashboard">
-        <div class="container">
-            <!-- Tab Content -->
-            <div class="admin-content">
-                <!-- Overview Tab -->
-                <div class="admin-tab-content active" id="tab-overview">
-
-                    <!-- Admin Toolbar -->
-                    <div class="admin-toolbar">
-                        <div class="toolbar-search">
-                            <i class="fas fa-search"></i>
-                            <input type="text" id="quick-user-search" placeholder="Search users by email or name..." autocomplete="off">
-                            <div class="search-autocomplete" id="search-autocomplete"></div>
-                        </div>
-                        <div class="toolbar-actions">
-                            <div class="time-filter-dropdown">
-                                <select id="stats-time-period">
-                                    <option value="1">Today</option>
-                                    <option value="7">Last 7 Days</option>
-                                    <option value="30" selected>Last 30 Days</option>
-                                    <option value="90">Last Quarter</option>
-                                    <option value="ytd">Year to Date</option>
-                                    <option value="365">Last 12 Months</option>
-                                    <option value="all">All Time</option>
-                                </select>
-                                <i class="fas fa-chevron-down"></i>
-                            </div>
-                            <button class="btn btn-secondary btn-sm" id="export-data-btn">
-                                <i class="fas fa-download"></i> Export
-                            </button>
-                        </div>
+            <!-- ===================== -->
+            <!-- SECTION: Dashboard    -->
+            <!-- ===================== -->
+            <div class="admin-section-content active" id="section-dashboard">
+                <!-- Admin Toolbar -->
+                <div class="admin-toolbar">
+                    <div class="toolbar-search">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="quick-user-search" placeholder="Search users by email or name..." autocomplete="off">
+                        <div class="search-autocomplete" id="search-autocomplete"></div>
                     </div>
-
-                    <!-- Stats Grid - Row 1: User Stats -->
-                    <div class="stats-section">
-                        <h3 class="stats-section-title"><i class="fas fa-users"></i> User Statistics</h3>
-                        <div class="admin-stats-grid">
-                            <div class="admin-stat-card">
-                                <div class="stat-icon premium"><i class="fas fa-crown"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="stat-premium-users">-</span>
-                                    <span class="stat-label">Premium Users</span>
-                                </div>
-                                <div class="stat-badge" id="premium-rate">0%</div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon success"><i class="fas fa-check-circle"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="stat-verified-users">-</span>
-                                    <span class="stat-label">Verified Users</span>
-                                </div>
-                                <div class="stat-badge" id="verified-rate">0%</div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon info"><i class="fas fa-calendar-week"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="stat-active-week">-</span>
-                                    <span class="stat-label">Active This Week</span>
-                                </div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon"><i class="fas fa-percentage"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="stat-conversion-rate">-</span>
-                                    <span class="stat-label">Conversion Rate</span>
-                                </div>
-                            </div>
+                    <div class="toolbar-actions">
+                        <div class="time-filter-dropdown">
+                            <select id="stats-time-period">
+                                <option value="1">Today</option>
+                                <option value="7">Last 7 Days</option>
+                                <option value="30" selected>Last 30 Days</option>
+                                <option value="90">Last Quarter</option>
+                                <option value="ytd">Year to Date</option>
+                                <option value="365">Last 12 Months</option>
+                                <option value="all">All Time</option>
+                            </select>
+                            <i class="fas fa-chevron-down"></i>
                         </div>
+                        <button class="btn btn-secondary btn-sm" id="export-data-btn">
+                            <i class="fas fa-download"></i> Export
+                        </button>
                     </div>
+                </div>
 
-                    <!-- Stats Grid - Row 2: Subscriptions -->
-                    <div class="stats-section">
-                        <h3 class="stats-section-title"><i class="fas fa-chart-line"></i> Subscriptions & Revenue</h3>
-                        <div class="admin-stats-grid">
-                            <div class="admin-stat-card highlight">
-                                <div class="stat-icon success"><i class="fas fa-dollar-sign"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="stat-revenue-month">$0</span>
-                                    <span class="stat-label" id="revenue-label">Revenue This Month</span>
-                                </div>
-                                <div class="stat-subtext"><span id="orders-count">0</span> orders</div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon success"><i class="fas fa-sync-alt"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="stat-monthly-subs">-</span>
-                                    <span class="stat-label">Monthly</span>
-                                </div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon info"><i class="fas fa-calendar-alt"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="stat-semester-subs">-</span>
-                                    <span class="stat-label">Semester</span>
-                                </div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon premium"><i class="fas fa-infinity"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="stat-lifetime-subs">-</span>
-                                    <span class="stat-label">Lifetime</span>
-                                </div>
-                            </div>
-                        </div>
+                <!-- KPI Cards -->
+                <div class="admin-kpi-grid">
+                    <div class="admin-kpi-card">
+                        <div class="kpi-icon"><i class="fas fa-users"></i></div>
+                        <div class="kpi-value" id="kpi-total-users">-</div>
+                        <div class="kpi-label">Total Users</div>
                     </div>
-
-                    <!-- Two Column Layout -->
-                    <div class="admin-two-col">
-                        <!-- Recent Activity -->
-                        <div class="admin-section">
-                            <div class="section-header">
-                                <h3><i class="fas fa-clock"></i> Recent Admin Activity</h3>
-                                <button class="btn-link" data-switch-tab="audit">View All</button>
-                            </div>
-                            <div class="activity-list" id="recent-activity">
-                                <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
-                            </div>
-                        </div>
-
-                        <!-- System Status -->
-                        <div class="admin-section">
-                            <div class="section-header">
-                                <h3><i class="fas fa-server"></i> System Status</h3>
-                                <span class="status-indicator online"><i class="fas fa-circle"></i> Online</span>
-                            </div>
-                            <div class="system-status-grid">
-                                <div class="status-item expandable" data-status="database">
-                                    <div class="status-item-header">
-                                        <div class="status-icon"><i class="fas fa-database"></i></div>
-                                        <div class="status-info">
-                                            <span class="status-name">Database</span>
-                                            <span class="status-value online" id="status-database">Connected</span>
-                                        </div>
-                                        <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                    <div class="status-details">
-                                        <p>PostgreSQL database hosted on Railway. Stores all user accounts, subscriptions, guides, and audit logs.</p>
-                                        <div class="status-details-meta">
-                                            <span><i class="fas fa-server"></i> Railway PostgreSQL</span>
-                                            <span><i class="fas fa-lock"></i> SSL Encrypted</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="status-item expandable" data-status="stripe">
-                                    <div class="status-item-header">
-                                        <div class="status-icon"><i class="fab fa-stripe"></i></div>
-                                        <div class="status-info">
-                                            <span class="status-name">Stripe</span>
-                                            <span class="status-value online" id="status-stripe">Active</span>
-                                        </div>
-                                        <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                    <div class="status-details">
-                                        <p>Payment processing via Stripe Checkout. Handles all subscription payments securely.</p>
-                                        <div class="status-details-meta">
-                                            <span><i class="fas fa-credit-card"></i> Checkout Sessions</span>
-                                            <span><i class="fas fa-webhook"></i> Webhooks Active</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="status-item expandable" data-status="email">
-                                    <div class="status-item-header">
-                                        <div class="status-icon"><i class="fas fa-envelope"></i></div>
-                                        <div class="status-info">
-                                            <span class="status-name">Email Service</span>
-                                            <span class="status-value online" id="status-email">Operational</span>
-                                        </div>
-                                        <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                    <div class="status-details">
-                                        <p>Transactional emails for subscription confirmations, password resets, and account notifications.</p>
-                                        <div class="status-details-meta">
-                                            <span><i class="fas fa-paper-plane"></i> SMTP Active</span>
-                                            <span><i class="fas fa-check-circle"></i> Delivery OK</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="status-item expandable" data-status="api">
-                                    <div class="status-item-header">
-                                        <div class="status-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                        <div class="status-info">
-                                            <span class="status-name">API Response</span>
-                                            <span class="status-value" id="status-api-response">-</span>
-                                        </div>
-                                        <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                    <div class="status-details">
-                                        <p>Average response time from the Flask backend API. Lower is better. Measured from health check endpoint.</p>
-                                        <div class="status-details-meta">
-                                            <span><i class="fas fa-bolt"></i> &lt;100ms: Excellent</span>
-                                            <span><i class="fas fa-clock"></i> &lt;500ms: Good</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="status-item expandable" data-status="deploy">
-                                    <div class="status-item-header">
-                                        <div class="status-icon"><i class="fas fa-rocket"></i></div>
-                                        <div class="status-info">
-                                            <span class="status-name">Last Deploy</span>
-                                            <span class="status-value" id="status-last-deploy">-</span>
-                                        </div>
-                                        <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                    <div class="status-details">
-                                        <p>Time since the last backend deployment on Railway. Auto-deploys on push to main branch.</p>
-                                        <div class="status-details-meta">
-                                            <span><i class="fab fa-github"></i> GitHub Integration</span>
-                                            <span><i class="fas fa-sync"></i> Auto Deploy</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="status-item expandable" data-status="storage">
-                                    <div class="status-item-header">
-                                        <div class="status-icon"><i class="fas fa-hdd"></i></div>
-                                        <div class="status-info">
-                                            <span class="status-name">DB Size</span>
-                                            <span class="status-value" id="status-storage">-</span>
-                                        </div>
-                                        <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                    <div class="status-details">
-                                        <p>Total number of records across all database tables (users, subscriptions, guides, audit logs, etc.).</p>
-                                        <div class="status-details-meta">
-                                            <span><i class="fas fa-table"></i> All Tables</span>
-                                            <span><i class="fas fa-chart-bar"></i> Record Count</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="status-item expandable" data-status="security">
-                                    <div class="status-item-header">
-                                        <div class="status-icon"><i class="fas fa-shield-alt"></i></div>
-                                        <div class="status-info">
-                                            <span class="status-name">Failed Logins (24h)</span>
-                                            <span class="status-value" id="status-failed-logins">-</span>
-                                        </div>
-                                        <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                    <div class="status-details">
-                                        <p>Number of failed authentication attempts in the last 24 hours. High numbers may indicate brute force attempts.</p>
-                                        <div class="status-details-meta">
-                                            <span><i class="fas fa-user-shield"></i> Firebase Auth</span>
-                                            <span><i class="fas fa-ban"></i> Rate Limited</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="status-item expandable" data-status="errors">
-                                    <div class="status-item-header">
-                                        <div class="status-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                                        <div class="status-info">
-                                            <span class="status-name">Error Rate (1h)</span>
-                                            <span class="status-value" id="status-error-rate">-</span>
-                                        </div>
-                                        <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
-                                    </div>
-                                    <div class="status-details">
-                                        <p>Number of server errors (5xx) in the past hour. Zero is ideal. Tracked via Sentry error monitoring.</p>
-                                        <div class="status-details-meta">
-                                            <span><i class="fas fa-bug"></i> Sentry Tracking</span>
-                                            <span><i class="fas fa-bell"></i> Alerts Enabled</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Auth Provider Stats -->
-                            <div class="provider-stats">
-                                <h4>Sign-in Methods</h4>
-                                <div class="provider-bars">
-                                    <div class="provider-bar">
-                                        <div class="provider-label">
-                                            <i class="fas fa-envelope"></i> Email
-                                        </div>
-                                        <div class="provider-progress">
-                                            <div class="progress-fill email" id="email-bar" style="width: 0%"></div>
-                                        </div>
-                                        <span class="provider-count" id="email-count">0</span>
-                                    </div>
-                                    <div class="provider-bar">
-                                        <div class="provider-label">
-                                            <i class="fab fa-google"></i> Google
-                                        </div>
-                                        <div class="provider-progress">
-                                            <div class="progress-fill google" id="google-bar" style="width: 0%"></div>
-                                        </div>
-                                        <span class="provider-count" id="google-count">0</span>
-                                    </div>
-                                    <div class="provider-bar">
-                                        <div class="provider-label">
-                                            <i class="fab fa-discord"></i> Discord
-                                        </div>
-                                        <div class="provider-progress">
-                                            <div class="progress-fill discord" id="discord-bar" style="width: 0%"></div>
-                                        </div>
-                                        <span class="provider-count" id="discord-count">0</span>
-                                    </div>
-                                    <div class="provider-bar">
-                                        <div class="provider-label">
-                                            <i class="fab fa-apple"></i> Apple
-                                        </div>
-                                        <div class="provider-progress">
-                                            <div class="progress-fill apple" id="apple-bar" style="width: 0%"></div>
-                                        </div>
-                                        <span class="provider-count" id="apple-count">0</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="admin-kpi-card">
+                        <div class="kpi-icon premium"><i class="fas fa-crown"></i></div>
+                        <div class="kpi-value" id="kpi-premium-users">-</div>
+                        <div class="kpi-label">Premium Users</div>
+                        <div class="kpi-badge" id="kpi-premium-rate">0%</div>
                     </div>
+                    <div class="admin-kpi-card">
+                        <div class="kpi-icon revenue"><i class="fas fa-dollar-sign"></i></div>
+                        <div class="kpi-value" id="kpi-revenue">$0</div>
+                        <div class="kpi-label" id="kpi-revenue-label">Revenue This Month</div>
+                    </div>
+                    <div class="admin-kpi-card">
+                        <div class="kpi-icon info"><i class="fas fa-calendar-week"></i></div>
+                        <div class="kpi-value" id="kpi-active-week">-</div>
+                        <div class="kpi-label">Active This Week</div>
+                    </div>
+                </div>
 
-                    <!-- Subscription Overview Section -->
+                <!-- Two Column Layout -->
+                <div class="admin-two-col">
+                    <!-- Recent Activity -->
                     <div class="admin-section">
                         <div class="section-header">
-                            <h3><i class="fas fa-chart-bar"></i> Subscription Breakdown</h3>
-                            <button class="btn-link" data-switch-tab="subscriptions">View All</button>
+                            <h3><i class="fas fa-clock"></i> Recent Admin Activity</h3>
+                            <button class="btn-link" data-quick-nav="audit">View All</button>
                         </div>
-                        <div class="subscription-overview-grid" id="subscription-overview">
+                        <div class="activity-list" id="recent-activity">
                             <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
                         </div>
                     </div>
 
-                    <!-- Test Emails Section -->
+                    <!-- Quick Actions -->
                     <div class="admin-section">
                         <div class="section-header">
-                            <h3><i class="fas fa-paper-plane"></i> Test Emails</h3>
+                            <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
                         </div>
-                        <p class="admin-migration-desc">Send test emails to yourself to preview how they look.</p>
-                        <div class="test-email-grid">
-                            <div class="test-email-group">
-                                <h4 class="admin-migration-heading">Confirmation Emails</h4>
-                                <div class="admin-migration-actions">
-                                    <button class="btn btn-sm admin-migration-btn monthly" data-test-email="confirmation" data-plan="monthly-access">
-                                        <i class="fas fa-envelope"></i> Monthly
-                                    </button>
-                                    <button class="btn btn-sm admin-migration-btn semester" data-test-email="confirmation" data-plan="semester-access">
-                                        <i class="fas fa-envelope"></i> Semester
-                                    </button>
-                                    <button class="btn btn-sm admin-migration-btn lifetime" data-test-email="confirmation" data-plan="lifetime-access">
-                                        <i class="fas fa-envelope"></i> Lifetime
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="test-email-group">
-                                <h4 class="admin-migration-heading">Expiration Reminders</h4>
-                                <div class="admin-migration-actions">
-                                    <button class="btn btn-sm admin-migration-btn reminder-14" data-test-email="reminder" data-days="14">
-                                        <i class="fas fa-clock"></i> 14-Day Reminder
-                                    </button>
-                                    <button class="btn btn-sm admin-migration-btn reminder-3" data-test-email="reminder" data-days="3">
-                                        <i class="fas fa-exclamation-circle"></i> 3-Day Reminder
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Recently Deleted Accounts Section -->
-                    <div class="admin-section">
-                        <div class="section-header">
-                            <h3><i class="fas fa-user-slash"></i> Recently Deleted Accounts</h3>
-                            <button class="btn-link" id="view-all-deleted-btn">View All</button>
-                        </div>
-                        <div class="deleted-accounts-table-container">
-                            <table class="admin-table" id="deleted-accounts-table">
-                                <thead>
-                                    <tr>
-                                        <th>Email</th>
-                                        <th>Name</th>
-                                        <th>Guides Owned</th>
-                                        <th>Reason</th>
-                                        <th>Deleted</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="deleted-accounts-body">
-                                    <tr><td colspan="5" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="empty-state hidden" id="no-deleted-accounts">
-                            <i class="fas fa-check-circle"></i>
-                            <p>No accounts have been deleted recently.</p>
+                        <div class="admin-quick-links">
+                            <button class="admin-quick-link" data-quick-nav="users">
+                                <i class="fas fa-users"></i> <span>Manage Users</span>
+                            </button>
+                            <button class="admin-quick-link" data-quick-nav="subscriptions">
+                                <i class="fas fa-id-badge"></i> <span>Subscriptions</span>
+                            </button>
+                            <button class="admin-quick-link" data-quick-nav="audit">
+                                <i class="fas fa-history"></i> <span>Audit Log</span>
+                            </button>
+                            <button class="admin-quick-link" data-quick-nav="ai-usage">
+                                <i class="fas fa-robot"></i> <span>AI Usage</span>
+                            </button>
+                            <button class="admin-quick-link" data-quick-nav="system-health">
+                                <i class="fas fa-server"></i> <span>System Health</span>
+                            </button>
+                            <button class="admin-quick-link" data-quick-nav="quiz-reports">
+                                <i class="fas fa-flag"></i> <span>Quiz Reports</span>
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Users Tab -->
-                <div class="admin-tab-content" id="tab-users">
-                    <!-- User Search -->
+                <!-- Subscription Breakdown -->
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-chart-bar"></i> Subscription Breakdown</h3>
+                        <button class="btn-link" data-quick-nav="subscriptions">View All</button>
+                    </div>
+                    <div class="subscription-overview-grid" id="subscription-overview">
+                        <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Users        -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-users">
+                <!-- User Search -->
+                <div class="admin-search-bar">
+                    <div class="search-input-group">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="user-search" placeholder="Search users by name or email..." autocomplete="off">
+                        <div class="search-autocomplete" id="user-search-autocomplete"></div>
+                        <button class="search-btn" id="user-search-btn">Search</button>
+                    </div>
+                </div>
+
+                <!-- User List -->
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-users"></i> Users</h3>
+                        <span class="user-count" id="user-count">0 users</span>
+                    </div>
+                    <!-- Desktop Table View -->
+                    <div class="users-table-container desktop-only">
+                        <table class="admin-table" id="users-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Plan</th>
+                                    <th>Status</th>
+                                    <th>Joined</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-table-body">
+                                <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading users...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Mobile Cards View -->
+                    <div class="users-mobile-cards mobile-only" id="users-mobile-cards">
+                        <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading users...</div>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="pagination-controls" id="users-pagination"></div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Subscriptions -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-subscriptions">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-id-badge"></i> Active Subscriptions</h3>
+                        <span class="user-count" id="subscriptions-count">0 subscriptions</span>
+                    </div>
+                    <!-- Subscription Search -->
                     <div class="admin-search-bar">
                         <div class="search-input-group">
                             <i class="fas fa-search"></i>
-                            <input type="text" id="user-search" placeholder="Search users by name or email..." autocomplete="off">
-                            <div class="search-autocomplete" id="user-search-autocomplete"></div>
-                            <button class="search-btn" id="user-search-btn">Search</button>
+                            <input type="text" id="subscription-search" placeholder="Search subscribers by email..." autocomplete="off">
+                            <button class="search-btn" id="subscription-search-btn">Search</button>
                         </div>
                     </div>
-
-                    <!-- User List -->
-                    <div class="admin-section">
-                        <div class="section-header">
-                            <h3><i class="fas fa-users"></i> Users</h3>
-                            <span class="user-count" id="user-count">0 users</span>
-                        </div>
-                        <!-- Desktop Table View -->
-                        <div class="users-table-container desktop-only">
-                            <table class="admin-table" id="users-table">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Plan</th>
-                                        <th>Status</th>
-                                        <th>Joined</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="users-table-body">
-                                    <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading users...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Mobile Cards View -->
-                        <div class="users-mobile-cards mobile-only" id="users-mobile-cards">
-                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading users...</div>
-                        </div>
-                        <!-- Pagination -->
-                        <div class="pagination-controls" id="users-pagination"></div>
+                    <!-- Subscription Filter -->
+                    <div class="subscription-filter-row admin-filter-row">
+                        <select id="subscription-plan-filter" class="form-select admin-filter-select">
+                            <option value="">All Plans</option>
+                            <option value="monthly-access">Monthly</option>
+                            <option value="semester-access">Semester</option>
+                            <option value="lifetime-access">Lifetime</option>
+                        </select>
+                        <select id="subscription-status-filter" class="form-select admin-filter-select">
+                            <option value="active">Active</option>
+                            <option value="cancelled">Cancelled</option>
+                            <option value="">All Statuses</option>
+                        </select>
                     </div>
-                </div>
-
-                <!-- Subscriptions Tab -->
-                <div class="admin-tab-content" id="tab-subscriptions">
-                    <div class="admin-section">
-                        <div class="section-header">
-                            <h3><i class="fas fa-id-badge"></i> Active Subscriptions</h3>
-                            <span class="user-count" id="subscriptions-count">0 subscriptions</span>
-                        </div>
-                        <!-- Subscription Search -->
-                        <div class="admin-search-bar">
-                            <div class="search-input-group">
-                                <i class="fas fa-search"></i>
-                                <input type="text" id="subscription-search" placeholder="Search subscribers by email..." autocomplete="off">
-                                <button class="search-btn" id="subscription-search-btn">Search</button>
-                            </div>
-                        </div>
-                        <!-- Subscription Filter -->
-                        <div class="subscription-filter-row admin-filter-row">
-                            <select id="subscription-plan-filter" class="form-select admin-filter-select">
-                                <option value="">All Plans</option>
-                                <option value="monthly-access">Monthly</option>
-                                <option value="semester-access">Semester</option>
-                                <option value="lifetime-access">Lifetime</option>
-                            </select>
-                            <select id="subscription-status-filter" class="form-select admin-filter-select">
-                                <option value="active">Active</option>
-                                <option value="cancelled">Cancelled</option>
-                                <option value="">All Statuses</option>
-                            </select>
-                        </div>
-                        <!-- Desktop Table View -->
-                        <div class="subscriptions-table-container desktop-only">
-                            <table class="admin-table" id="subscriptions-table">
-                                <thead>
-                                    <tr>
-                                        <th>User</th>
-                                        <th>Plan</th>
-                                        <th>Status</th>
-                                        <th>Started</th>
-                                        <th>Expires</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="subscriptions-table-body">
-                                    <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading subscriptions...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Mobile Cards View -->
-                        <div class="subscriptions-mobile-cards mobile-only" id="subscriptions-mobile-cards">
-                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading subscriptions...</div>
-                        </div>
-                        <!-- Pagination -->
-                        <div class="pagination-controls" id="subscriptions-pagination"></div>
+                    <!-- Desktop Table View -->
+                    <div class="subscriptions-table-container desktop-only">
+                        <table class="admin-table" id="subscriptions-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th>Plan</th>
+                                    <th>Status</th>
+                                    <th>Started</th>
+                                    <th>Expires</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="subscriptions-table-body">
+                                <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading subscriptions...</td></tr>
+                            </tbody>
+                        </table>
                     </div>
-                </div>
-
-                <!-- Quiz Reports Tab -->
-                <div class="admin-tab-content" id="tab-quiz-reports">
-                    <div class="admin-section">
-                        <div class="section-header">
-                            <h3><i class="fas fa-flag"></i> Quiz Question Reports</h3>
-                            <span class="user-count" id="quiz-reports-count">0 reports</span>
-                        </div>
-                        <!-- Status Filter -->
-                        <div class="admin-filter-row">
-                            <select id="quiz-reports-status-filter" class="form-select admin-filter-select">
-                                <option value="open">Open</option>
-                                <option value="resolved">Resolved</option>
-                                <option value="dismissed">Dismissed</option>
-                                <option value="all">All</option>
-                            </select>
-                            <button class="btn btn-primary btn-sm" id="quiz-reports-filter-btn">
-                                <i class="fas fa-filter"></i> Filter
-                            </button>
-                        </div>
-                        <!-- Desktop Table -->
-                        <div class="quiz-reports-table-container desktop-only">
-                            <table class="admin-table" id="quiz-reports-table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Question</th>
-                                        <th>Reason</th>
-                                        <th>Reporter</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="quiz-reports-table-body">
-                                    <tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading reports...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Mobile Cards -->
-                        <div class="quiz-reports-mobile-cards mobile-only" id="quiz-reports-mobile-cards">
-                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading reports...</div>
-                        </div>
-                        <!-- Pagination -->
-                        <div class="pagination-controls" id="quiz-reports-pagination"></div>
+                    <!-- Mobile Cards View -->
+                    <div class="subscriptions-mobile-cards mobile-only" id="subscriptions-mobile-cards">
+                        <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading subscriptions...</div>
                     </div>
-                </div>
-
-                <!-- Quiz Report Detail Modal -->
-                <div class="modal-overlay" id="quiz-report-detail-modal">
-                    <div class="modal-content admin-modal-narrow">
-                        <div class="modal-header">
-                            <h2><i class="fas fa-flag"></i> Report Details</h2>
-                            <button class="modal-close" id="close-quiz-report-modal-btn">
-                                <i class="fas fa-times"></i>
-                            </button>
-                        </div>
-                        <div class="modal-body" id="quiz-report-modal-body">
-                            <!-- Populated by JS -->
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Audit Log Tab -->
-                <div class="admin-tab-content" id="tab-audit">
-                    <!-- Audit Filters -->
-                    <div class="audit-filters">
-                        <div class="filter-group">
-                            <label>Action Type</label>
-                            <select id="audit-action-filter">
-                                <option value="">All Actions</option>
-                                <option value="grant_subscription">Grant Subscription</option>
-                                <option value="revoke_subscription">Revoke Subscription</option>
-                                <option value="change_subscription">Change Subscription</option>
-                                <option value="extend_subscription">Extend Subscription</option>
-                                <option value="grant_guide">Grant Guide</option>
-                                <option value="revoke_guide">Revoke Guide</option>
-                                <option value="restore_guide">Restore Guide</option>
-                                <option value="add_note">Add Note</option>
-                            </select>
-                        </div>
-                        <div class="filter-group">
-                            <label>Target User</label>
-                            <input type="text" id="audit-user-filter" placeholder="User email...">
-                        </div>
-                        <div class="audit-date-row">
-                            <div class="filter-group">
-                                <label>Date From</label>
-                                <input type="date" id="audit-date-from">
-                            </div>
-                            <div class="filter-group">
-                                <label>Date To</label>
-                                <input type="date" id="audit-date-to">
-                            </div>
-                        </div>
-                        <div class="filter-group">
-                            <label>Sort By</label>
-                            <select id="audit-sort" class="audit-sort-select">
-                                <option value="newest">Newest First</option>
-                                <option value="oldest">Oldest First</option>
-                                <option value="action-asc">Action A-Z</option>
-                                <option value="action-desc">Action Z-A</option>
-                            </select>
-                        </div>
-                        <div class="audit-btn-row">
-                            <button class="btn btn-primary" id="audit-filter-btn">
-                                <i class="fas fa-filter"></i> Apply Filters
-                            </button>
-                            <button class="btn btn-secondary" id="audit-export-btn">
-                                <i class="fas fa-download"></i> Export CSV
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="admin-section">
-                        <div class="section-header">
-                            <h3><i class="fas fa-history"></i> Admin Actions</h3>
-                        </div>
-                        <!-- Desktop Table View -->
-                        <div class="audit-table-container desktop-only">
-                            <table class="admin-table" id="audit-table">
-                                <thead>
-                                    <tr>
-                                        <th>Timestamp</th>
-                                        <th>Admin</th>
-                                        <th>Action</th>
-                                        <th>Target User</th>
-                                        <th>Details</th>
-                                        <th>Reason</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="audit-table-body">
-                                    <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading audit log...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- Mobile Cards View -->
-                        <div class="audit-mobile-cards mobile-only" id="audit-mobile-cards">
-                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading audit log...</div>
-                        </div>
-                        <!-- Pagination -->
-                        <div class="pagination-controls" id="audit-pagination"></div>
-                    </div>
-                </div>
-
-                <!-- AI Tools Tab -->
-                <div class="admin-tab-content" id="tab-ai-tools">
-
-                    <!-- AI Usage Stats -->
-                    <div class="admin-card">
-                        <div class="card-header">
-                            <h2><i class="fas fa-chart-bar"></i> AI Usage Overview</h2>
-                            <span class="badge badge-info" id="ai-active-users">- active users</span>
-                        </div>
-                        <div class="admin-stats-grid" id="ai-stats-grid">
-                            <div class="admin-stat-card">
-                                <div class="stat-icon"><i class="fas fa-file-upload"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="ai-total-uploads">-</span>
-                                    <span class="stat-label">Total Uploads</span>
-                                </div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon premium"><i class="fas fa-wand-magic-sparkles"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="ai-total-generations">-</span>
-                                    <span class="stat-label">Total Generations</span>
-                                </div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon info"><i class="fas fa-clock"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="ai-generations-7d">-</span>
-                                    <span class="stat-label">Last 7 Days</span>
-                                </div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon success"><i class="fas fa-coins"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="ai-total-tokens">-</span>
-                                    <span class="stat-label">Tokens Used</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Generations by Type -->
-                    <div class="admin-card">
-                        <div class="card-header">
-                            <h2><i class="fas fa-layer-group"></i> Generations by Type</h2>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="admin-table" id="ai-type-table">
-                                <thead>
-                                    <tr>
-                                        <th>Type</th>
-                                        <th>Completed</th>
-                                        <th>Failed</th>
-                                        <th>Processing</th>
-                                        <th>Total</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="ai-type-tbody">
-                                    <tr><td colspan="5" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Guide Index Management -->
-                    <div class="admin-card">
-                        <div class="card-header">
-                            <h2><i class="fas fa-database"></i> Study Guide Index</h2>
-                            <button class="btn btn-primary btn-sm" id="reindex-guides-btn">
-                                <i class="fas fa-sync-alt"></i> Reindex All Guides
-                            </button>
-                        </div>
-                        <div id="guide-index-status">
-                            <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading index status...</div>
-                        </div>
-                        <div class="table-responsive" style="display:none" id="guide-index-table-wrap">
-                            <table class="admin-table" id="guide-index-table">
-                                <thead>
-                                    <tr>
-                                        <th>Category</th>
-                                        <th>Guides</th>
-                                        <th>Chunks</th>
-                                        <th>Guide IDs</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="guide-index-tbody"></tbody>
-                            </table>
-                        </div>
-                        <div class="info-banner" id="guide-index-empty" style="display:none">
-                            <i class="fas fa-info-circle"></i>
-                            No guides indexed yet. Click "Reindex All Guides" to build the index for gap analysis.
-                        </div>
-                    </div>
-
-                    <!-- Credit Management -->
-                    <div class="admin-card">
-                        <div class="card-header">
-                            <h2><i class="fas fa-coins"></i> Credit Management</h2>
-                        </div>
-                        <div class="admin-stats-grid" id="credit-overview">
-                            <div class="admin-stat-card">
-                                <div class="stat-icon"><i class="fas fa-users"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="credit-users-count">-</span>
-                                    <span class="stat-label">Users with Credits</span>
-                                </div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon premium"><i class="fas fa-upload"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="credit-uploads-used">-</span>
-                                    <span class="stat-label">Uploads Used</span>
-                                </div>
-                            </div>
-                            <div class="admin-stat-card">
-                                <div class="stat-icon info"><i class="fas fa-question-circle"></i></div>
-                                <div class="stat-info">
-                                    <span class="stat-value" id="credit-questions-used">-</span>
-                                    <span class="stat-label">Questions Used</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="credit-adjust-form">
-                            <h3><i class="fas fa-sliders-h"></i> Adjust User Credits</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="credit-user-email">User Email</label>
-                                    <input type="email" id="credit-user-email" placeholder="user@example.com" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="credit-uploads-add">Uploads (+/-)</label>
-                                    <input type="number" id="credit-uploads-add" value="0" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="credit-questions-add">Questions (+/-)</label>
-                                    <input type="number" id="credit-questions-add" value="0" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group" style="flex:2">
-                                    <label for="credit-reason">Reason</label>
-                                    <input type="text" id="credit-reason" placeholder="e.g., Support resolution, promotional" class="form-control">
-                                </div>
-                                <div class="form-group" style="flex:0 0 auto; align-self:flex-end">
-                                    <button class="btn btn-primary" id="credit-adjust-btn">
-                                        <i class="fas fa-check"></i> Adjust Credits
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="credit-adjust-result" style="display:none"></div>
-                        </div>
-                    </div>
-
-                    <!-- Admin Role Management -->
-                    <div class="admin-card">
-                        <div class="admin-card-header">
-                            <h2><i class="fas fa-user-shield"></i> Admin Role Management</h2>
-                        </div>
-                        <p style="color: var(--text-muted); margin-bottom: 16px;">Grant or revoke admin access for users. Requires your admin secret to confirm.</p>
-                        <div class="credit-adjust-form" style="border-top: none; padding-top: 0">
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="admin-role-email">User Email</label>
-                                    <input type="email" id="admin-role-email" placeholder="user@example.com" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="admin-role-action">Action</label>
-                                    <select id="admin-role-action" class="form-control">
-                                        <option value="grant">Grant Admin</option>
-                                        <option value="revoke">Revoke Admin</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="admin-role-secret">Admin Secret</label>
-                                    <input type="password" id="admin-role-secret" placeholder="Enter admin secret" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group" style="flex:0 0 auto">
-                                    <button class="btn btn-primary" id="admin-role-btn">
-                                        <i class="fas fa-user-shield"></i> Confirm
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="admin-role-result" style="display:none"></div>
-                        </div>
-                    </div>
-
+                    <!-- Pagination -->
+                    <div class="pagination-controls" id="subscriptions-pagination"></div>
                 </div>
             </div>
+
+            <!-- ========================== -->
+            <!-- SECTION: Deleted Accounts   -->
+            <!-- ========================== -->
+            <div class="admin-section-content" id="section-deleted-accounts">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-user-slash"></i> Deleted Accounts</h3>
+                        <button class="btn-link" id="view-all-deleted-btn">View All</button>
+                    </div>
+                    <div class="deleted-accounts-table-container">
+                        <table class="admin-table" id="deleted-accounts-table">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Name</th>
+                                    <th>Guides Owned</th>
+                                    <th>Reason</th>
+                                    <th>Deleted</th>
+                                </tr>
+                            </thead>
+                            <tbody id="deleted-accounts-body">
+                                <tr><td colspan="5" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state hidden" id="no-deleted-accounts">
+                        <i class="fas fa-check-circle"></i>
+                        <p>No accounts have been deleted recently.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Quiz Reports -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-quiz-reports">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-flag"></i> Quiz Question Reports</h3>
+                        <span class="user-count" id="quiz-reports-count">0 reports</span>
+                    </div>
+                    <!-- Status Filter -->
+                    <div class="admin-filter-row">
+                        <select id="quiz-reports-status-filter" class="form-select admin-filter-select">
+                            <option value="open">Open</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="dismissed">Dismissed</option>
+                            <option value="all">All</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm" id="quiz-reports-filter-btn">
+                            <i class="fas fa-filter"></i> Filter
+                        </button>
+                    </div>
+                    <!-- Desktop Table -->
+                    <div class="quiz-reports-table-container desktop-only">
+                        <table class="admin-table" id="quiz-reports-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Question</th>
+                                    <th>Reason</th>
+                                    <th>Reporter</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="quiz-reports-table-body">
+                                <tr><td colspan="7" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading reports...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Mobile Cards -->
+                    <div class="quiz-reports-mobile-cards mobile-only" id="quiz-reports-mobile-cards">
+                        <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading reports...</div>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="pagination-controls" id="quiz-reports-pagination"></div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Guide Index  -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-guide-index">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-database"></i> Study Guide Index</h2>
+                        <button class="btn btn-primary btn-sm" id="reindex-guides-btn">
+                            <i class="fas fa-sync-alt"></i> Reindex All Guides
+                        </button>
+                    </div>
+                    <div id="guide-index-status">
+                        <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading index status...</div>
+                    </div>
+                    <div class="table-responsive" style="display:none" id="guide-index-table-wrap">
+                        <table class="admin-table" id="guide-index-table">
+                            <thead>
+                                <tr>
+                                    <th>Category</th>
+                                    <th>Guides</th>
+                                    <th>Chunks</th>
+                                    <th>Guide IDs</th>
+                                </tr>
+                            </thead>
+                            <tbody id="guide-index-tbody"></tbody>
+                        </table>
+                    </div>
+                    <div class="info-banner" id="guide-index-empty" style="display:none">
+                        <i class="fas fa-info-circle"></i>
+                        No guides indexed yet. Click "Reindex All Guides" to build the index for gap analysis.
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: AI Usage     -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-ai-usage">
+                <!-- AI Usage Stats -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-chart-bar"></i> AI Usage Overview</h2>
+                        <span class="badge badge-info" id="ai-active-users">- active users</span>
+                    </div>
+                    <div class="admin-stats-grid" id="ai-stats-grid">
+                        <div class="admin-stat-card">
+                            <div class="stat-icon"><i class="fas fa-file-upload"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="ai-total-uploads">-</span>
+                                <span class="stat-label">Total Uploads</span>
+                            </div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="stat-icon premium"><i class="fas fa-wand-magic-sparkles"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="ai-total-generations">-</span>
+                                <span class="stat-label">Total Generations</span>
+                            </div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="stat-icon info"><i class="fas fa-clock"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="ai-generations-7d">-</span>
+                                <span class="stat-label">Last 7 Days</span>
+                            </div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="stat-icon success"><i class="fas fa-coins"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="ai-total-tokens">-</span>
+                                <span class="stat-label">Tokens Used</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Generations by Type -->
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-layer-group"></i> Generations by Type</h2>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="admin-table" id="ai-type-table">
+                            <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Completed</th>
+                                    <th>Failed</th>
+                                    <th>Processing</th>
+                                    <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ai-type-tbody">
+                                <tr><td colspan="5" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Credits      -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-credits">
+                <div class="admin-card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-coins"></i> Credit Management</h2>
+                    </div>
+                    <div class="admin-stats-grid" id="credit-overview">
+                        <div class="admin-stat-card">
+                            <div class="stat-icon"><i class="fas fa-users"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="credit-users-count">-</span>
+                                <span class="stat-label">Users with Credits</span>
+                            </div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="stat-icon premium"><i class="fas fa-upload"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="credit-uploads-used">-</span>
+                                <span class="stat-label">Uploads Used</span>
+                            </div>
+                        </div>
+                        <div class="admin-stat-card">
+                            <div class="stat-icon info"><i class="fas fa-question-circle"></i></div>
+                            <div class="stat-info">
+                                <span class="stat-value" id="credit-questions-used">-</span>
+                                <span class="stat-label">Questions Used</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="credit-adjust-form">
+                        <h3><i class="fas fa-sliders-h"></i> Adjust User Credits</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="credit-user-email">User Email</label>
+                                <input type="email" id="credit-user-email" placeholder="user@example.com" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="credit-uploads-add">Uploads (+/-)</label>
+                                <input type="number" id="credit-uploads-add" value="0" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="credit-questions-add">Questions (+/-)</label>
+                                <input type="number" id="credit-questions-add" value="0" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="flex:2">
+                                <label for="credit-reason">Reason</label>
+                                <input type="text" id="credit-reason" placeholder="e.g., Support resolution, promotional" class="form-control">
+                            </div>
+                            <div class="form-group" style="flex:0 0 auto; align-self:flex-end">
+                                <button class="btn btn-primary" id="credit-adjust-btn">
+                                    <i class="fas fa-check"></i> Adjust Credits
+                                </button>
+                            </div>
+                        </div>
+                        <div id="credit-adjust-result" style="display:none"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Audit Log    -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-audit">
+                <!-- Audit Filters -->
+                <div class="audit-filters">
+                    <div class="filter-group">
+                        <label>Action Type</label>
+                        <select id="audit-action-filter">
+                            <option value="">All Actions</option>
+                            <option value="grant_subscription">Grant Subscription</option>
+                            <option value="revoke_subscription">Revoke Subscription</option>
+                            <option value="change_subscription">Change Subscription</option>
+                            <option value="extend_subscription">Extend Subscription</option>
+                            <option value="grant_guide">Grant Guide</option>
+                            <option value="revoke_guide">Revoke Guide</option>
+                            <option value="restore_guide">Restore Guide</option>
+                            <option value="add_note">Add Note</option>
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label>Target User</label>
+                        <input type="text" id="audit-user-filter" placeholder="User email...">
+                    </div>
+                    <div class="audit-date-row">
+                        <div class="filter-group">
+                            <label>Date From</label>
+                            <input type="date" id="audit-date-from">
+                        </div>
+                        <div class="filter-group">
+                            <label>Date To</label>
+                            <input type="date" id="audit-date-to">
+                        </div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Sort By</label>
+                        <select id="audit-sort" class="audit-sort-select">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                            <option value="action-asc">Action A-Z</option>
+                            <option value="action-desc">Action Z-A</option>
+                        </select>
+                    </div>
+                    <div class="audit-btn-row">
+                        <button class="btn btn-primary" id="audit-filter-btn">
+                            <i class="fas fa-filter"></i> Apply Filters
+                        </button>
+                        <button class="btn btn-secondary" id="audit-export-btn">
+                            <i class="fas fa-download"></i> Export CSV
+                        </button>
+                    </div>
+                </div>
+
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-history"></i> Admin Actions</h3>
+                    </div>
+                    <!-- Desktop Table View -->
+                    <div class="audit-table-container desktop-only">
+                        <table class="admin-table" id="audit-table">
+                            <thead>
+                                <tr>
+                                    <th>Timestamp</th>
+                                    <th>Admin</th>
+                                    <th>Action</th>
+                                    <th>Target User</th>
+                                    <th>Details</th>
+                                    <th>Reason</th>
+                                </tr>
+                            </thead>
+                            <tbody id="audit-table-body">
+                                <tr><td colspan="6" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading audit log...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Mobile Cards View -->
+                    <div class="audit-mobile-cards mobile-only" id="audit-mobile-cards">
+                        <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading audit log...</div>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="pagination-controls" id="audit-pagination"></div>
+                </div>
+            </div>
+
+            <!-- ======================== -->
+            <!-- SECTION: System Health   -->
+            <!-- ======================== -->
+            <div class="admin-section-content" id="section-system-health">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-server"></i> System Status</h3>
+                        <span class="status-indicator online"><i class="fas fa-circle"></i> Online</span>
+                    </div>
+                    <div class="system-status-grid">
+                        <div class="status-item expandable" data-status="database">
+                            <div class="status-item-header">
+                                <div class="status-icon"><i class="fas fa-database"></i></div>
+                                <div class="status-info">
+                                    <span class="status-name">Database</span>
+                                    <span class="status-value online" id="status-database">Connected</span>
+                                </div>
+                                <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="status-details">
+                                <p>PostgreSQL database hosted on Railway. Stores all user accounts, subscriptions, guides, and audit logs.</p>
+                                <div class="status-details-meta">
+                                    <span><i class="fas fa-server"></i> Railway PostgreSQL</span>
+                                    <span><i class="fas fa-lock"></i> SSL Encrypted</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-item expandable" data-status="stripe">
+                            <div class="status-item-header">
+                                <div class="status-icon"><i class="fab fa-stripe"></i></div>
+                                <div class="status-info">
+                                    <span class="status-name">Stripe</span>
+                                    <span class="status-value online" id="status-stripe">Active</span>
+                                </div>
+                                <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="status-details">
+                                <p>Payment processing via Stripe Checkout. Handles all subscription payments securely.</p>
+                                <div class="status-details-meta">
+                                    <span><i class="fas fa-credit-card"></i> Checkout Sessions</span>
+                                    <span><i class="fas fa-webhook"></i> Webhooks Active</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-item expandable" data-status="email">
+                            <div class="status-item-header">
+                                <div class="status-icon"><i class="fas fa-envelope"></i></div>
+                                <div class="status-info">
+                                    <span class="status-name">Email Service</span>
+                                    <span class="status-value online" id="status-email">Operational</span>
+                                </div>
+                                <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="status-details">
+                                <p>Transactional emails for subscription confirmations, password resets, and account notifications.</p>
+                                <div class="status-details-meta">
+                                    <span><i class="fas fa-paper-plane"></i> SMTP Active</span>
+                                    <span><i class="fas fa-check-circle"></i> Delivery OK</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-item expandable" data-status="api">
+                            <div class="status-item-header">
+                                <div class="status-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                <div class="status-info">
+                                    <span class="status-name">API Response</span>
+                                    <span class="status-value" id="status-api-response">-</span>
+                                </div>
+                                <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="status-details">
+                                <p>Average response time from the Flask backend API. Lower is better. Measured from health check endpoint.</p>
+                                <div class="status-details-meta">
+                                    <span><i class="fas fa-bolt"></i> &lt;100ms: Excellent</span>
+                                    <span><i class="fas fa-clock"></i> &lt;500ms: Good</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-item expandable" data-status="deploy">
+                            <div class="status-item-header">
+                                <div class="status-icon"><i class="fas fa-rocket"></i></div>
+                                <div class="status-info">
+                                    <span class="status-name">Last Deploy</span>
+                                    <span class="status-value" id="status-last-deploy">-</span>
+                                </div>
+                                <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="status-details">
+                                <p>Time since the last backend deployment on Railway. Auto-deploys on push to main branch.</p>
+                                <div class="status-details-meta">
+                                    <span><i class="fab fa-github"></i> GitHub Integration</span>
+                                    <span><i class="fas fa-sync"></i> Auto Deploy</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-item expandable" data-status="storage">
+                            <div class="status-item-header">
+                                <div class="status-icon"><i class="fas fa-hdd"></i></div>
+                                <div class="status-info">
+                                    <span class="status-name">DB Size</span>
+                                    <span class="status-value" id="status-storage">-</span>
+                                </div>
+                                <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="status-details">
+                                <p>Total number of records across all database tables (users, subscriptions, guides, audit logs, etc.).</p>
+                                <div class="status-details-meta">
+                                    <span><i class="fas fa-table"></i> All Tables</span>
+                                    <span><i class="fas fa-chart-bar"></i> Record Count</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-item expandable" data-status="security">
+                            <div class="status-item-header">
+                                <div class="status-icon"><i class="fas fa-shield-alt"></i></div>
+                                <div class="status-info">
+                                    <span class="status-name">Failed Logins (24h)</span>
+                                    <span class="status-value" id="status-failed-logins">-</span>
+                                </div>
+                                <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="status-details">
+                                <p>Number of failed authentication attempts in the last 24 hours. High numbers may indicate brute force attempts.</p>
+                                <div class="status-details-meta">
+                                    <span><i class="fas fa-user-shield"></i> Firebase Auth</span>
+                                    <span><i class="fas fa-ban"></i> Rate Limited</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="status-item expandable" data-status="errors">
+                            <div class="status-item-header">
+                                <div class="status-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                                <div class="status-info">
+                                    <span class="status-name">Error Rate (1h)</span>
+                                    <span class="status-value" id="status-error-rate">-</span>
+                                </div>
+                                <div class="status-expand-icon"><i class="fas fa-chevron-down"></i></div>
+                            </div>
+                            <div class="status-details">
+                                <p>Number of server errors (5xx) in the past hour. Zero is ideal. Tracked via Sentry error monitoring.</p>
+                                <div class="status-details-meta">
+                                    <span><i class="fas fa-bug"></i> Sentry Tracking</span>
+                                    <span><i class="fas fa-bell"></i> Alerts Enabled</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Auth Provider Stats -->
+                    <div class="provider-stats">
+                        <h4>Sign-in Methods</h4>
+                        <div class="provider-bars">
+                            <div class="provider-bar">
+                                <div class="provider-label">
+                                    <i class="fas fa-envelope"></i> Email
+                                </div>
+                                <div class="provider-progress">
+                                    <div class="progress-fill email" id="email-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="provider-count" id="email-count">0</span>
+                            </div>
+                            <div class="provider-bar">
+                                <div class="provider-label">
+                                    <i class="fab fa-google"></i> Google
+                                </div>
+                                <div class="provider-progress">
+                                    <div class="progress-fill google" id="google-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="provider-count" id="google-count">0</span>
+                            </div>
+                            <div class="provider-bar">
+                                <div class="provider-label">
+                                    <i class="fab fa-discord"></i> Discord
+                                </div>
+                                <div class="provider-progress">
+                                    <div class="progress-fill discord" id="discord-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="provider-count" id="discord-count">0</span>
+                            </div>
+                            <div class="provider-bar">
+                                <div class="provider-label">
+                                    <i class="fab fa-apple"></i> Apple
+                                </div>
+                                <div class="provider-progress">
+                                    <div class="progress-fill apple" id="apple-bar" style="width: 0%"></div>
+                                </div>
+                                <span class="provider-count" id="apple-count">0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Test Emails  -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-test-emails">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-paper-plane"></i> Test Emails</h3>
+                    </div>
+                    <p class="admin-migration-desc">Send test emails to yourself to preview how they look.</p>
+                    <div class="test-email-grid">
+                        <div class="test-email-group">
+                            <h4 class="admin-migration-heading">Confirmation Emails</h4>
+                            <div class="admin-migration-actions">
+                                <button class="btn btn-sm admin-migration-btn monthly" data-test-email="confirmation" data-plan="monthly-access">
+                                    <i class="fas fa-envelope"></i> Monthly
+                                </button>
+                                <button class="btn btn-sm admin-migration-btn semester" data-test-email="confirmation" data-plan="semester-access">
+                                    <i class="fas fa-envelope"></i> Semester
+                                </button>
+                                <button class="btn btn-sm admin-migration-btn lifetime" data-test-email="confirmation" data-plan="lifetime-access">
+                                    <i class="fas fa-envelope"></i> Lifetime
+                                </button>
+                            </div>
+                        </div>
+                        <div class="test-email-group">
+                            <h4 class="admin-migration-heading">Expiration Reminders</h4>
+                            <div class="admin-migration-actions">
+                                <button class="btn btn-sm admin-migration-btn reminder-14" data-test-email="reminder" data-days="14">
+                                    <i class="fas fa-clock"></i> 14-Day Reminder
+                                </button>
+                                <button class="btn btn-sm admin-migration-btn reminder-3" data-test-email="reminder" data-days="3">
+                                    <i class="fas fa-exclamation-circle"></i> 3-Day Reminder
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Admin Roles  -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-admin-roles">
+                <div class="admin-card">
+                    <div class="admin-card-header">
+                        <h2><i class="fas fa-user-shield"></i> Admin Role Management</h2>
+                    </div>
+                    <p style="color: var(--text-muted); margin-bottom: 16px;">Grant or revoke admin access for users. Requires your admin secret to confirm.</p>
+                    <div class="credit-adjust-form" style="border-top: none; padding-top: 0">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="admin-role-email">User Email</label>
+                                <input type="email" id="admin-role-email" placeholder="user@example.com" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-role-action">Action</label>
+                                <select id="admin-role-action" class="form-control">
+                                    <option value="grant">Grant Admin</option>
+                                    <option value="revoke">Revoke Admin</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="admin-role-secret">Admin Secret</label>
+                                <input type="password" id="admin-role-secret" placeholder="Enter admin secret" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group" style="flex:0 0 auto">
+                                <button class="btn btn-primary" id="admin-role-btn">
+                                    <i class="fas fa-user-shield"></i> Confirm
+                                </button>
+                            </div>
+                        </div>
+                        <div id="admin-role-result" style="display:none"></div>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- Quiz Report Detail Modal -->
+    <div class="modal-overlay" id="quiz-report-detail-modal">
+        <div class="modal-content admin-modal-narrow">
+            <div class="modal-header">
+                <h2><i class="fas fa-flag"></i> Report Details</h2>
+                <button class="modal-close" id="close-quiz-report-modal-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="quiz-report-modal-body">
+                <!-- Populated by JS -->
+            </div>
         </div>
-    </section>
+    </div>
 
     <!-- User Detail Modal -->
     <div class="modal-overlay" id="user-detail-modal">
@@ -1168,6 +1196,6 @@
     <script src="api-service.js?v=1769142741"></script>
 
     <!-- Admin Dashboard Script -->
-    <script src="admin-script.js?v=1.1.1"></script>
+    <script src="admin-script.js?v=2.0"></script>
 </body>
 </html>

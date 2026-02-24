@@ -930,7 +930,7 @@
 }
 
 .status-item.expandable.expanded {
-    background: var(--card-background);
+    background: var(--card-bg);
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
 }
 
@@ -1014,7 +1014,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--card-background);
+    background: var(--card-bg);
     border-radius: 10px;
     color: var(--text-secondary);
     font-size: 1rem;
@@ -1189,7 +1189,7 @@
 }
 
 .top-guide-card:hover {
-    background: var(--background-hover);
+    background: var(--background-light, #e5e7eb);
 }
 
 .top-guide-rank {
@@ -1385,7 +1385,7 @@
     display: flex;
     gap: 8px;
     margin-bottom: 24px;
-    background: var(--card-background);
+    background: var(--card-bg);
     padding: 8px;
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
@@ -1448,7 +1448,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
-    background: var(--card-background);
+    background: var(--card-bg);
     padding: 24px;
     border-radius: 16px;
     box-shadow: var(--shadow-sm);
@@ -1503,9 +1503,61 @@
     margin-top: 4px;
 }
 
+/* Admin Cards (used by Guide Index, AI Usage, Credits, Admin Roles) */
+.admin-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 24px;
+}
+
+.admin-card .card-header,
+.admin-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid var(--border-color, #e5e7eb);
+    padding-bottom: 16px;
+}
+
+.admin-card .card-header h2,
+.admin-card-header h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-card .card-header h2 i,
+.admin-card-header h2 i {
+    color: #667eea;
+}
+
+[data-theme="dark"] .admin-card {
+    background: #1e1e2e;
+}
+
+[data-theme="dark"] .admin-card .card-header,
+[data-theme="dark"] .admin-card-header {
+    border-bottom-color: #374151;
+}
+
+[data-theme="dark"] .admin-card .card-header h2,
+[data-theme="dark"] .admin-card-header h2 {
+    color: #f9fafb;
+}
+
 /* Admin Sections */
 .admin-section {
-    background: var(--card-background);
+    background: var(--card-bg);
     border-radius: 16px;
     padding: 24px;
     box-shadow: var(--shadow-sm);
@@ -1550,7 +1602,7 @@
 .search-input-group {
     display: flex;
     align-items: center;
-    background: var(--card-background);
+    background: var(--card-bg);
     border-radius: 12px;
     padding: 8px 16px;
     box-shadow: var(--shadow-sm);
@@ -1750,7 +1802,7 @@
 .pagination-btn {
     padding: 8px 16px;
     border: 1px solid var(--border-color);
-    background: var(--card-background);
+    background: var(--card-bg);
     color: var(--text-primary);
     border-radius: 8px;
     cursor: pointer;
@@ -1780,7 +1832,7 @@
     flex-wrap: wrap;
     margin-bottom: 24px;
     padding: 24px;
-    background: var(--card-background);
+    background: var(--card-bg);
     border-radius: 12px;
     box-shadow: var(--shadow-sm);
     align-items: flex-end;
@@ -1807,7 +1859,7 @@
     border-radius: 8px;
     font-size: 0.9rem;
     color: var(--text-primary);
-    background: var(--card-background);
+    background: var(--card-bg);
     min-width: 160px;
 }
 
@@ -2003,7 +2055,7 @@
 }
 
 .activity-item:hover {
-    background: var(--background-hover);
+    background: var(--background-light, #e5e7eb);
 }
 
 .activity-icon {
@@ -2728,7 +2780,7 @@
     border-radius: 8px;
     font-size: 0.95rem;
     color: var(--text-primary);
-    background: var(--card-background);
+    background: var(--card-bg);
     resize: vertical;
     margin-bottom: 12px;
 }
@@ -2754,7 +2806,7 @@
     border-radius: 8px;
     font-size: 0.95rem;
     color: var(--text-primary);
-    background: var(--card-background);
+    background: var(--card-bg);
 }
 
 .form-actions {
@@ -2795,7 +2847,7 @@
 }
 
 .btn-secondary:hover {
-    background: var(--background-hover);
+    background: var(--background-light, #e5e7eb);
 }
 
 .btn-danger {
@@ -2879,7 +2931,7 @@
     align-items: center;
     gap: 12px;
     padding: 16px 24px;
-    background: var(--card-background);
+    background: var(--card-bg);
     border-radius: 12px;
     box-shadow: var(--shadow-lg);
     animation: toastSlideIn 0.3s ease;
@@ -2933,7 +2985,7 @@
 
 /* Admin Footer */
 .admin-footer {
-    background: var(--card-background);
+    background: var(--card-bg);
     padding: 24px 0;
     text-align: center;
     margin-left: 260px;
@@ -4094,7 +4146,7 @@
     padding: 8px 12px;
     border: 1px solid var(--border-color);
     border-radius: 6px;
-    background: var(--background-secondary);
+    background: var(--card-bg);
     color: var(--text-primary);
     font-size: 0.9rem;
 }
@@ -4829,7 +4881,7 @@
     border: 1px solid var(--border-color);
     border-radius: 10px;
     font-size: 0.95rem;
-    background: var(--card-background);
+    background: var(--card-bg);
     color: var(--text-primary);
     transition: border-color 0.2s;
 }

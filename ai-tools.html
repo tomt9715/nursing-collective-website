@@ -345,9 +345,17 @@
 
         @media(max-width:768px){
             .ai-upload-dropzone{padding:24px 16px}
-            .ai-action-grid{gap:3px;padding:3px 10px 10px}
+            .ai-credit-bar{gap:10px;padding:8px 12px;font-size:.75rem}
+            .ai-credit-count{font-size:.8rem}
+            .ai-credit-sep{height:14px}
+            .ai-credit-reset{font-size:.68rem}
+            .ai-action-grid{gap:3px;padding:3px 10px 10px;position:relative}
             .ai-action-btn{padding:8px 3px 6px;font-size:.63rem}
             .ai-action-btn i{font-size:.8rem}
+            /* Tooltip: anchor to grid (not button) so it doesn't overflow viewport edges */
+            .ai-action-irrelevant{position:static!important}
+            .ai-action-irrelevant .ai-tooltip{bottom:calc(100% + 4px);left:0;right:0;width:auto;transform:none;font-size:.75rem;padding:8px 12px}
+            .ai-action-irrelevant .ai-tooltip::after{display:none}
             .ai-summary-panel{width:100vw}
             .ai-summary-toolbar{flex-wrap:wrap;gap:8px;padding:10px 14px}
             .ai-toolbar-label{display:none}

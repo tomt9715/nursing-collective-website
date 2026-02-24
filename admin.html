@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/global-overrides.css?v=5.6.navfix">
 
     <!-- Admin-specific styles (loaded after bundle to override) -->
-    <link rel="stylesheet" href="css/admin.css?v=6.1">
+    <link rel="stylesheet" href="css/admin.css?v=6.2">
 
     <!-- Bootstrap 5 CSS -->
 
@@ -933,7 +933,7 @@
                     <p class="admin-migration-desc">Send test emails to yourself to preview how they look.</p>
                     <div class="test-email-grid">
                         <div class="test-email-group">
-                            <h4 class="admin-migration-heading">Confirmation Emails</h4>
+                            <h4 class="admin-migration-heading">Standard Plan Confirmations</h4>
                             <div class="admin-migration-actions">
                                 <button class="btn btn-sm admin-migration-btn monthly" data-test-email="confirmation" data-plan="monthly-access">
                                     <i class="fas fa-envelope"></i> Monthly
@@ -943,6 +943,20 @@
                                 </button>
                                 <button class="btn btn-sm admin-migration-btn lifetime" data-test-email="confirmation" data-plan="lifetime-access">
                                     <i class="fas fa-envelope"></i> Lifetime
+                                </button>
+                            </div>
+                        </div>
+                        <div class="test-email-group">
+                            <h4 class="admin-migration-heading">AI-Powered Plan Confirmations</h4>
+                            <div class="admin-migration-actions">
+                                <button class="btn btn-sm admin-migration-btn ai-monthly" data-test-email="confirmation" data-plan="ai-monthly-access">
+                                    <i class="fas fa-robot"></i> AI Monthly
+                                </button>
+                                <button class="btn btn-sm admin-migration-btn ai-semester" data-test-email="confirmation" data-plan="ai-semester-access">
+                                    <i class="fas fa-robot"></i> AI Semester
+                                </button>
+                                <button class="btn btn-sm admin-migration-btn ai-lifetime" data-test-email="confirmation" data-plan="ai-lifetime-access">
+                                    <i class="fas fa-robot"></i> AI Lifetime
                                 </button>
                             </div>
                         </div>

@@ -1,6 +1,25 @@
 /* Admin Dashboard Styles */
 
 /* ===========================
+   CSS VARIABLE DEFINITIONS
+   (Variables missing from bundle.min.css)
+   =========================== */
+:root {
+    --indigo-primary: #4f5fd9;
+    --indigo-dark: #5a3996;
+    --pink-primary: #f093fb;
+    --pink-dark: #f5576c;
+    --danger-color: #dc2626;
+    --danger-dark: #b91c1c;
+    --cat-pharmacology: #8b5cf6;
+}
+
+[data-theme="dark"] {
+    --danger-color: #ef4444;
+    --danger-dark: #dc2626;
+}
+
+/* ===========================
    ADMIN LAYOUT & SIDEBAR
    =========================== */
 .admin-layout {
@@ -4738,6 +4757,18 @@
 
 .admin-migration-btn.reminder-3 {
     background: linear-gradient(135deg, var(--danger-color), var(--danger-dark));
+}
+
+.admin-migration-btn.ai-monthly {
+    background: linear-gradient(135deg, #667eea, var(--indigo-dark));
+}
+
+.admin-migration-btn.ai-semester {
+    background: linear-gradient(135deg, #8b5cf6, #4f46e5);
+}
+
+.admin-migration-btn.ai-lifetime {
+    background: linear-gradient(135deg, #f59e0b, #ec4899);
 }
 
 .test-email-group + .test-email-group {

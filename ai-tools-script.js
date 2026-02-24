@@ -1334,7 +1334,7 @@
             }
             var stem = stemLines.join('\n').trim();
             // Strip "Question Type:" lines (bold or plain) from stem
-            stem = stem.replace(/\*{0,2}Question Type:.*?\*{0,2}/gi, '').trim();
+            stem = stem.replace(/^\**\s*Question Type:[^\n]*$/gim, '').trim();
             if (!stem || optionStart === -1) continue;
 
             // Extract options A-E

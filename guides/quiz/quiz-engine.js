@@ -551,12 +551,20 @@ class QuizEngine {
         const selectedSize = this.selectedSessionSize || total;
         const estTime = Math.max(5, Math.round(selectedSize * 1.5));
 
-        const filteredSizes = sizeOptions.filter(s => s <= total);
-        let sizeButtonsHtml = filteredSizes
-            .map(s => `<button class="quiz-size-btn ${s === selectedSize ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${s}">${s}</button>`)
-            .join('');
-        if (showAll || filteredSizes.length === 0) {
+        // AI quizzes: ≤10 = use all (no picker), >10 = offer "10" vs "All"
+        const hideSessionSize = this.isAIGenerated && total <= 10;
+        let sizeButtonsHtml = '';
+        if (this.isAIGenerated && total > 10) {
+            sizeButtonsHtml = `<button class="quiz-size-btn ${selectedSize === 10 ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="10">10 Random</button>`;
             sizeButtonsHtml += `<button class="quiz-size-btn ${selectedSize === total ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${total}">All (${total})</button>`;
+        } else if (!hideSessionSize) {
+            const filteredSizes = sizeOptions.filter(s => s <= total);
+            sizeButtonsHtml = filteredSizes
+                .map(s => `<button class="quiz-size-btn ${s === selectedSize ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${s}">${s}</button>`)
+                .join('');
+            if (showAll || filteredSizes.length === 0) {
+                sizeButtonsHtml += `<button class="quiz-size-btn ${selectedSize === total ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${total}">All (${total})</button>`;
+            }
         }
 
         // Resume banner
@@ -603,19 +611,19 @@ class QuizEngine {
                     <span class="quiz-stat"><i class="fas fa-layer-group"></i> ${this._getTypeCount()} Types</span>
                 </div>
 
-                <div class="quiz-session-size">
+                ${hideSessionSize ? '' : `<div class="quiz-session-size">
                     <div class="quiz-session-size-label">Questions per session</div>
                     <div class="quiz-size-options">${sizeButtonsHtml}</div>
-                </div>
+                </div>`}
 
-                <div class="quiz-difficulty-breakdown">
+                ${this.isAIGenerated ? '' : `<div class="quiz-difficulty-breakdown">
                     <div class="quiz-difficulty-title">Question Complexity</div>
                     <div class="quiz-difficulty-bars">
                         ${this._renderDifficultyRow('Knowledge', difficultyCount.knowledge, total, 'knowledge')}
                         ${this._renderDifficultyRow('Application', difficultyCount.application, total, 'application')}
                         ${this._renderDifficultyRow('Analysis', difficultyCount.analysis, total, 'analysis')}
                     </div>
-                </div>
+                </div>`}
 
                 ${(() => {
                     const reaskIds = this._loadConfidenceReaskIds();

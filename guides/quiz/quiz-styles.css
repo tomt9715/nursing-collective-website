@@ -348,7 +348,7 @@ body {
 }
 
 .quiz-mode-btn--exam .quiz-mode-icon {
-    background: linear-gradient(135deg, var(--quiz-primary), var(--quiz-secondary));
+    background: #6366f1;
 }
 
 .quiz-mode-info {

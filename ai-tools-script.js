@@ -1316,8 +1316,8 @@
             var block = parts[i];
             if (!block || !block.trim()) continue;
 
-            // Detect SATA from header remnant
-            var isSATA = /\(Select All That Apply\)/i.test(block);
+            // Detect SATA from header remnant or "Question Type" line
+            var isSATA = /\(Select All That Apply\)|Select All That Apply/i.test(block);
             block = block.replace(/\(Select All That Apply\)/gi, '').trim();
 
             var lines = block.split('\n');
@@ -1333,6 +1333,8 @@
                 stemLines.push(lines[j]);
             }
             var stem = stemLines.join('\n').trim();
+            // Strip "Question Type:" lines (bold or plain) from stem
+            stem = stem.replace(/\*{0,2}Question Type:.*?\*{0,2}/gi, '').trim();
             if (!stem || optionStart === -1) continue;
 
             // Extract options A-E

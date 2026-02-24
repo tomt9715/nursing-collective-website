@@ -100,10 +100,19 @@
     var panelRegenerateBtn = document.getElementById('ai-summary-regenerate');
     var panelQuizBtn = document.getElementById('ai-summary-quiz');
 
+    // Credit bar elements
+    var creditBar = document.getElementById('ai-credit-bar');
+    var creditUploadsCount = document.getElementById('ai-credit-uploads-count');
+    var creditQuestionsCount = document.getElementById('ai-credit-questions-count');
+    var creditUploadsItem = document.getElementById('ai-credit-uploads');
+    var creditQuestionsItem = document.getElementById('ai-credit-questions');
+    var creditResetEl = document.getElementById('ai-credit-reset');
+
     // ── State ───────────────────────────────────────────────────
     var documents = [];
     var pollingTimers = {};
     var hasAiAccess = false;
+    var isAdmin = false;
     var currentDocId = null;
     var currentFilename = null;
     var currentMarkdown = null;
@@ -161,11 +170,13 @@
 
             if (!hasAiAccess && profileData && profileData.user && profileData.user.is_admin) {
                 hasAiAccess = true;
+                isAdmin = true;
             }
 
             if (hasAiAccess) {
                 showAiTools();
                 loadDocuments();
+                if (!isAdmin) fetchCredits();
             } else {
                 showUpgradePrompt();
             }
@@ -184,6 +195,76 @@
     function showUpgradePrompt() {
         if (aiSection) aiSection.style.display = 'none';
         if (upgradePrompt) upgradePrompt.classList.remove('hidden');
+    }
+
+    // ── Credit tracking ────────────────────────────────────────
+
+    async function fetchCredits() {
+        try {
+            var data = await apiCall('/api/ai/credits');
+            if (data) renderCredits(data);
+        } catch (err) {
+            console.warn('[AI Tools] Failed to fetch credits:', err);
+        }
+    }
+
+    function renderCredits(credits) {
+        if (!creditBar || credits.is_admin) return;
+
+        var uRemain = credits.uploads_remaining;
+        var uLimit = credits.uploads_limit + credits.addon_uploads;
+        var qRemain = credits.questions_remaining;
+        var qLimit = credits.questions_limit + credits.addon_questions;
+
+        // Show the bar
+        creditBar.classList.remove('hidden');
+
+        // Update counts
+        if (creditUploadsCount) creditUploadsCount.textContent = uRemain;
+        if (creditQuestionsCount) creditQuestionsCount.textContent = qRemain;
+
+        // Warning / exhausted classes for uploads
+        if (creditUploadsItem) {
+            creditUploadsItem.classList.remove('credit-warning', 'credit-exhausted');
+            if (uRemain === 0) {
+                creditUploadsItem.classList.add('credit-exhausted');
+            } else if (uLimit > 0 && uRemain / uLimit <= 0.2) {
+                creditUploadsItem.classList.add('credit-warning');
+            }
+        }
+
+        // Warning / exhausted classes for questions
+        if (creditQuestionsItem) {
+            creditQuestionsItem.classList.remove('credit-warning', 'credit-exhausted');
+            if (qRemain === 0) {
+                creditQuestionsItem.classList.add('credit-exhausted');
+            } else if (qLimit > 0 && qRemain / qLimit <= 0.2) {
+                creditQuestionsItem.classList.add('credit-warning');
+            }
+        }
+
+        // Reset timer
+        if (creditResetEl && credits.next_reset) {
+            var resetDate = new Date(credits.next_reset);
+            var now = new Date();
+            var daysLeft = Math.max(0, Math.ceil((resetDate - now) / (1000 * 60 * 60 * 24)));
+            creditResetEl.textContent = 'Resets in ' + daysLeft + 'd';
+        } else if (creditResetEl) {
+            creditResetEl.textContent = '';
+        }
+    }
+
+    function isCreditError(msg) {
+        return msg && (msg.indexOf('credit limit') !== -1 || msg.indexOf('credit') !== -1 && msg.indexOf('reached') !== -1);
+    }
+
+    function showCreditExhaustedToast(type) {
+        var label = type === 'upload' ? 'upload' : 'question';
+        showToast(
+            'You\u2019ve used all your ' + label + ' credits for this period. ' +
+            '<a href="/pricing.html?addon=credits" style="color:#fff;text-decoration:underline;font-weight:700">Buy more credits</a>',
+            'error'
+        );
     }
 
     // ── Event listeners ─────────────────────────────────────────
@@ -334,11 +415,17 @@
             var data = await response.json();
 
             if (!response.ok) {
+                if (data.credits_exhausted) {
+                    showCreditExhaustedToast('upload');
+                    fetchCredits();
+                    return;
+                }
                 throw new Error(data.error || 'Upload failed');
             }
 
             setProgress(100);
             showToast('File uploaded! Processing your document...', 'success');
+            fetchCredits(); // Refresh credit bar
 
             if (data.upload_id) {
                 startPolling(data.upload_id);
@@ -348,7 +435,12 @@
 
         } catch (err) {
             console.error('[AI Tools] Upload failed:', err);
-            showToast(err.message || 'Upload failed. Please try again.', 'error');
+            if (isCreditError(err.message)) {
+                showCreditExhaustedToast('upload');
+                fetchCredits();
+            } else {
+                showToast(err.message || 'Upload failed. Please try again.', 'error');
+            }
         } finally {
             setTimeout(function () {
                 if (progressContainer) progressContainer.classList.add('hidden');
@@ -398,6 +490,7 @@
 
             setProgress(100);
             showToast('Text received! Processing your notes...', 'success');
+            fetchCredits(); // Refresh credit bar
 
             // Clear the input
             if (textAreaInput) textAreaInput.value = '';
@@ -412,7 +505,12 @@
 
         } catch (err) {
             console.error('[AI Tools] Text upload failed:', err);
-            showToast(err.message || 'Failed to submit text. Please try again.', 'error');
+            if (isCreditError(err.message)) {
+                showCreditExhaustedToast('upload');
+                fetchCredits();
+            } else {
+                showToast(err.message || 'Failed to submit text. Please try again.', 'error');
+            }
         } finally {
             if (textSubmitBtn) textSubmitBtn.disabled = false;
             setTimeout(function () {
@@ -664,6 +762,8 @@
                 if (btn && !btn.querySelector('.ai-action-cached')) {
                     btn.insertAdjacentHTML('afterbegin', '<span class="ai-action-cached" title="Generated"></span>');
                 }
+                // Refresh credits if this was a practice_questions generation
+                if (genType === 'practice_questions') fetchCredits();
             } else if (data && data.status === 'generating') {
                 // Content is still being generated — keep panel open and poll
                 pollForGeneration(docId, filename, genType, btn);
@@ -673,8 +773,14 @@
             }
         } catch (err) {
             console.error('[AI Tools] Generation failed:', err);
-            showToast(err.message || typeInfo.label + ' generation failed. Please try again.', 'error');
-            closePanel();
+            if (isCreditError(err.message)) {
+                showCreditExhaustedToast('question');
+                fetchCredits();
+                closePanel();
+            } else {
+                showToast(err.message || typeInfo.label + ' generation failed. Please try again.', 'error');
+                closePanel();
+            }
         } finally {
             if (btn) btn.classList.remove('generating');
         }
@@ -726,6 +832,8 @@
                         panelRegenerateBtn.disabled = false;
                         panelRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';
                     }
+                    // Refresh credits if practice_questions completed
+                    if (genType === 'practice_questions') fetchCredits();
                 } else if (data && data.status === 'generating') {
                     // Still working — update the hint with elapsed time
                     if (hintEl) {
@@ -1392,7 +1500,11 @@
             if (type === 'error') toast.style.background = '#ef4444';
             else if (type === 'success') toast.style.background = '#10b981';
             else toast.style.background = '#3b82f6';
-            toast.textContent = message;
+            if (message.indexOf('<a ') !== -1) {
+                toast.innerHTML = message;
+            } else {
+                toast.textContent = message;
+            }
             document.body.appendChild(toast);
 
             requestAnimationFrame(function () {

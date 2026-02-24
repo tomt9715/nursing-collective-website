@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="css/global-overrides.css?v=5.6.navfix">
 
     <!-- Admin-specific styles (loaded after bundle to override) -->
-    <link rel="stylesheet" href="css/admin.css?v=6.2">
+    <link rel="stylesheet" href="css/admin.css?v=6.3">
 
     <!-- Bootstrap 5 CSS -->
 
@@ -961,6 +961,17 @@
                             </div>
                         </div>
                         <div class="test-email-group">
+                            <h4 class="admin-migration-heading">Credit Add-On Confirmations</h4>
+                            <div class="admin-migration-actions">
+                                <button class="btn btn-sm admin-migration-btn credit-small" data-test-email="credit-addon" data-pack="small">
+                                    <i class="fas fa-coins"></i> Small Pack ($4.99)
+                                </button>
+                                <button class="btn btn-sm admin-migration-btn credit-large" data-test-email="credit-addon" data-pack="large">
+                                    <i class="fas fa-coins"></i> Large Pack ($9.99)
+                                </button>
+                            </div>
+                        </div>
+                        <div class="test-email-group">
                             <h4 class="admin-migration-heading">Expiration Reminders</h4>
                             <div class="admin-migration-actions">
                                 <button class="btn btn-sm admin-migration-btn reminder-14" data-test-email="reminder" data-days="14">
@@ -1210,6 +1221,6 @@
     <script src="api-service.js?v=1769142741"></script>
 
     <!-- Admin Dashboard Script -->
-    <script src="admin-script.js?v=2.0"></script>
+    <script src="admin-script.js?v=2.1"></script>
 </body>
 </html>

@@ -4771,6 +4771,14 @@
     background: linear-gradient(135deg, #f59e0b, #ec4899);
 }
 
+.admin-migration-btn.credit-small {
+    background: linear-gradient(135deg, #10b981, #059669);
+}
+
+.admin-migration-btn.credit-large {
+    background: linear-gradient(135deg, #059669, #047857);
+}
+
 .test-email-group + .test-email-group {
     margin-top: 12px;
 }

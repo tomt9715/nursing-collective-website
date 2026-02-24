@@ -410,6 +410,9 @@ function setupEventListeners() {
                 if (type === 'confirmation') {
                     endpoint = '/admin/test-email/confirmation';
                     body = { plan_id: btn.dataset.plan };
+                } else if (type === 'credit-addon') {
+                    endpoint = '/admin/test-email/credit-addon';
+                    body = { pack: btn.dataset.pack };
                 } else {
                     endpoint = '/admin/test-email/reminder';
                     body = { days_remaining: parseInt(btn.dataset.days) };

@@ -62,6 +62,15 @@
             color: '#06b6d4',
             bgColor: 'rgba(6,182,212,.08)',
             panelTitle: 'Care Plan Outline'
+        },
+        gap_analysis: {
+            key: 'gap_analysis',
+            label: 'Gap Analysis',
+            shortLabel: 'Gap Analysis',
+            icon: 'fa-magnifying-glass-chart',
+            color: '#ea580c',
+            bgColor: 'rgba(234,88,12,.08)',
+            panelTitle: 'Study Gap Analysis'
         }
     };
 
@@ -1227,6 +1236,14 @@
         html = html.replace(/^<strong>NCLEX[- ]?(?:Tip|Alert|Focus):?<\/strong>:?\s*(.+)$/gm,
             '<div class="ai-callout ai-callout--nclex"><div class="ai-callout-header"><i class="fas fa-graduation-cap"></i> NCLEX Focus</div>$1</div>');
 
+        // Gap analysis coverage callouts
+        html = html.replace(/^&gt; <strong>(?:Covered|Well Covered):?<\/strong>:?\s*(.+)$/gm,
+            '<div class="ai-callout ai-callout--covered"><div class="ai-callout-header"><i class="fas fa-circle-check"></i> Well Covered</div>$1</div>');
+        html = html.replace(/^&gt; <strong>(?:Gap|Missing|Not Covered):?<\/strong>:?\s*(.+)$/gm,
+            '<div class="ai-callout ai-callout--gap"><div class="ai-callout-header"><i class="fas fa-circle-xmark"></i> Gap Identified</div>$1</div>');
+        html = html.replace(/^&gt; <strong>(?:Partial|Partially Covered|Needs More Depth):?<\/strong>:?\s*(.+)$/gm,
+            '<div class="ai-callout ai-callout--partial"><div class="ai-callout-header"><i class="fas fa-circle-half-stroke"></i> Partially Covered</div>$1</div>');
+
         // Lettered options (A. B. C. D. E.) — style as option list
         html = html.replace(/^([A-E])\. (.+)$/gm, '<div class="ai-option"><span class="ai-option-letter">$1</span> $2</div>');
 
@@ -1470,6 +1487,10 @@
         if (/complicat|risk|prognos|adverse/.test(t)) return 'fa-triangle-exclamation';
         if (/education|teach|discharge|prevention|health promot/.test(t)) return 'fa-chalkboard-user';
         if (/quick review|key takeaway|remember|recap|summary|review/.test(t)) return 'fa-clipboard-check';
+        if (/gap|missing|not.+(?:covered|your notes)|knowledge gap/.test(t)) return 'fa-magnifying-glass-chart';
+        if (/coverage|well covered|what you/.test(t)) return 'fa-circle-check';
+        if (/study plan|action|next step|recommend|priority study/.test(t)) return 'fa-list-check';
+        if (/partial/.test(t)) return 'fa-circle-half-stroke';
         if (/nclex|exam|test.taking|practice/.test(t)) return 'fa-graduation-cap';
         if (/prior|triage|emergenc/.test(t)) return 'fa-bolt';
         if (/nutrition|diet|fluid|electrolyte/.test(t)) return 'fa-utensils';

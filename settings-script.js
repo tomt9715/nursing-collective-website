@@ -997,6 +997,18 @@ function renderSubscriptionCard(data) {
         manageBtn.addEventListener('click', handleManageBilling);
     }
 
+    // Cancel Subscription button
+    var cancelBtn = document.getElementById('membership-cancel-btn');
+    if (cancelBtn) {
+        // Hide cancel button if already cancelling, or if lifetime plan
+        var isLifetime = sub.plan_id && sub.plan_id.includes('lifetime');
+        if (sub.cancel_at_period_end || isLifetime) {
+            cancelBtn.classList.add('hidden');
+        } else {
+            cancelBtn.addEventListener('click', function() { openCancelSubModal(sub); });
+        }
+    }
+
     // AI Credits
     if (isAiPlan) {
         loadAiCredits(creditsCard);
@@ -1177,6 +1189,92 @@ async function handleMembershipUpgrade() {
         showAlert('Upgrade Failed', error.message || 'Unable to process the upgrade. Please try again.', 'error');
         btn.disabled = false;
         btn.innerHTML = originalHtml;
+    }
+}
+
+// ─── Cancel Subscription Modal ───
+function openCancelSubModal(sub) {
+    var modal = document.getElementById('cancel-sub-modal');
+    if (!modal) return;
+
+    // Set the access-until date in the modal
+    var dateEl = document.getElementById('cancel-sub-access-date');
+    if (dateEl && sub.expires_at) {
+        dateEl.textContent = membershipFormatDate(sub.expires_at);
+    }
+
+    // Clear any previous error
+    var errorEl = document.getElementById('cancel-sub-error');
+    if (errorEl) { errorEl.classList.add('hidden'); errorEl.textContent = ''; }
+
+    // Reset confirm button state
+    var confirmBtn = document.getElementById('cancel-sub-confirm-btn');
+    if (confirmBtn) {
+        confirmBtn.disabled = false;
+        confirmBtn.innerHTML = '<i class="fas fa-times-circle"></i> Yes, Cancel';
+    }
+
+    // Show modal
+    modal.classList.remove('hidden');
+
+    // Keep button — close modal
+    var keepBtn = document.getElementById('cancel-sub-keep-btn');
+    if (keepBtn) {
+        keepBtn.onclick = function() { modal.classList.add('hidden'); };
+    }
+
+    // Confirm cancel
+    if (confirmBtn) {
+        confirmBtn.onclick = function() { handleCancelSubscription(modal); };
+    }
+
+    // Close on overlay click
+    modal.onclick = function(e) {
+        if (e.target === modal) modal.classList.add('hidden');
+    };
+}
+
+async function handleCancelSubscription(modal) {
+    var confirmBtn = document.getElementById('cancel-sub-confirm-btn');
+    var errorEl = document.getElementById('cancel-sub-error');
+
+    if (confirmBtn) {
+        confirmBtn.disabled = true;
+        confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Cancelling...';
+    }
+
+    try {
+        var response = await apiCall('/api/subscription/cancel', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        if (response.success) {
+            // Close modal
+            if (modal) modal.classList.add('hidden');
+
+            // Show success message
+            showAlert(
+                'Subscription Cancelled',
+                response.message || 'Your subscription has been cancelled.',
+                'success'
+            );
+
+            // Reload membership card to reflect new status
+            setTimeout(function() { loadMembership(); }, 1000);
+        } else {
+            throw new Error(response.error || 'Failed to cancel subscription');
+        }
+    } catch (error) {
+        console.error('Error cancelling subscription:', error);
+        if (errorEl) {
+            errorEl.textContent = error.message || 'Unable to cancel subscription. Please try again.';
+            errorEl.classList.remove('hidden');
+        }
+        if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.innerHTML = '<i class="fas fa-times-circle"></i> Yes, Cancel';
+        }
     }
 }
 

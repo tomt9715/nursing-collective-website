@@ -582,6 +582,21 @@
         [data-theme="dark"] .btn-small.danger-outline { color: #f87171; border-color: rgba(248,113,113,0.3); }
         [data-theme="dark"] .btn-small.danger-outline:hover { background: rgba(248,113,113,0.1); border-color: #f87171; }
 
+        /* Change Plan Modal */
+        .plan-option { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px; border: 2px solid var(--border-color); background: var(--background-light); cursor: pointer; transition: all 0.2s; }
+        .plan-option:hover { border-color: var(--primary-color); background: rgba(46,134,171,0.04); }
+        .plan-option.selected { border-color: var(--primary-color); background: rgba(46,134,171,0.08); }
+        .plan-option.current-plan { opacity: 0.5; cursor: default; border-style: dashed; }
+        .plan-option-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-color); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
+        .plan-option.selected .plan-option-radio { border-color: var(--primary-color); background: var(--primary-color); }
+        .plan-option.selected .plan-option-radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: white; }
+        .plan-option-info { flex: 1; min-width: 0; }
+        .plan-option-name { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; }
+        .plan-option-desc { font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px; }
+        .plan-option-price { font-weight: 700; color: var(--primary-color); font-size: 1rem; white-space: nowrap; }
+        .plan-option-badge { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: rgba(46,134,171,0.1); color: var(--primary-color); margin-left: 8px; }
+        .plan-option.current-plan .plan-option-badge { background: rgba(107,114,128,0.1); color: var(--text-secondary); }
+
         /* AI Credits */
         .membership-credit-group { display: flex; flex-direction: column; gap: 16px; }
         .membership-credit-item { background: var(--background-light); border-radius: 12px; padding: 14px 16px; }
@@ -977,9 +992,9 @@
                         <button class="btn-primary settings-save-btn" id="membership-manage-btn">
                             <i class="fas fa-external-link-alt"></i> Manage Billing
                         </button>
-                        <a href="pricing.html" class="btn-small secondary">
+                        <button class="btn-small secondary" id="membership-change-plan-btn">
                             <i class="fas fa-exchange-alt"></i> Change Plan
-                        </a>
+                        </button>
                         <button class="btn-small danger-outline" id="membership-cancel-btn">
                             <i class="fas fa-times-circle"></i> Cancel Subscription
                         </button>
@@ -1216,7 +1231,7 @@
             </div>
 
             <!-- Cancel Subscription Confirmation Modal -->
-            <div id="cancel-sub-modal" class="delete-modal-overlay hidden">
+            <div id="cancel-sub-modal" class="delete-modal-overlay" style="display:none;">
                 <div class="delete-modal-content" style="max-width: 440px;">
                     <div class="delete-modal-header">
                         <div class="delete-modal-icon" style="background: rgba(245,158,11,0.1);">
@@ -1242,6 +1257,33 @@
                         </button>
                         <button id="cancel-sub-confirm-btn" class="delete-modal-btn-confirm" style="background: #dc2626;">
                             <i class="fas fa-times-circle"></i> Yes, Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Change Plan Modal -->
+            <div id="change-plan-modal" class="delete-modal-overlay" style="display:none;">
+                <div class="delete-modal-content" style="max-width: 520px;">
+                    <div class="delete-modal-header" style="margin-bottom: 4px;">
+                        <h3 style="margin-top: 8px;"><i class="fas fa-exchange-alt" style="color: var(--primary-color); margin-right: 8px;"></i>Change Plan</h3>
+                        <p id="change-plan-current" style="font-size: 0.9rem; color: var(--text-secondary);">Select a new plan below.</p>
+                    </div>
+
+                    <div id="change-plan-loading" style="text-align:center; padding: 24px; color: var(--text-secondary);">
+                        <i class="fas fa-spinner fa-spin"></i> Loading plans...
+                    </div>
+
+                    <div id="change-plan-options" style="display:none; flex-direction: column; gap: 10px; margin-bottom: 20px;"></div>
+
+                    <div id="change-plan-error" class="delete-modal-error" style="display:none;"></div>
+
+                    <div class="delete-modal-actions">
+                        <button id="change-plan-close-btn" class="delete-modal-btn-cancel">
+                            Close
+                        </button>
+                        <button id="change-plan-confirm-btn" class="delete-modal-btn-confirm" style="background: var(--primary-color); display:none;">
+                            <i class="fas fa-check"></i> Switch Plan
                         </button>
                     </div>
                 </div>

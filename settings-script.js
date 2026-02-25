@@ -997,13 +997,17 @@ function renderSubscriptionCard(data) {
         manageBtn.addEventListener('click', handleManageBilling);
     }
 
+    // Change Plan button
+    var changePlanBtn = document.getElementById('membership-change-plan-btn');
+    if (changePlanBtn) {
+        changePlanBtn.addEventListener('click', function() { openChangePlanModal(sub); });
+    }
+
     // Cancel Subscription button
     var cancelBtn = document.getElementById('membership-cancel-btn');
     if (cancelBtn) {
-        // Hide cancel button if already cancelling, or if lifetime plan
-        var isLifetime = sub.plan_id && sub.plan_id.includes('lifetime');
-        if (sub.cancel_at_period_end || isLifetime) {
-            cancelBtn.classList.add('hidden');
+        if (sub.cancel_at_period_end || sub.status === 'cancelled') {
+            cancelBtn.style.display = 'none';
         } else {
             cancelBtn.addEventListener('click', function() { openCancelSubModal(sub); });
         }
@@ -1152,7 +1156,13 @@ async function handleManageBilling() {
         }
     } catch (error) {
         console.error('Error opening billing portal:', error);
-        showAlert('Billing Portal Error', 'Unable to open the billing portal. Please try again.', 'error');
+        var msg = 'Unable to open the billing portal. ';
+        if (error.message && error.message.includes('No subscription')) {
+            msg += 'No subscription record found. Please contact support.';
+        } else {
+            msg += 'Please try again or contact support@thenursingcollective.pro for help.';
+        }
+        showAlert('Billing Portal Error', msg, 'error');
         btn.disabled = false;
         btn.innerHTML = originalHtml;
     }
@@ -1205,7 +1215,7 @@ function openCancelSubModal(sub) {
 
     // Clear any previous error
     var errorEl = document.getElementById('cancel-sub-error');
-    if (errorEl) { errorEl.classList.add('hidden'); errorEl.textContent = ''; }
+    if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
 
     // Reset confirm button state
     var confirmBtn = document.getElementById('cancel-sub-confirm-btn');
@@ -1214,13 +1224,13 @@ function openCancelSubModal(sub) {
         confirmBtn.innerHTML = '<i class="fas fa-times-circle"></i> Yes, Cancel';
     }
 
-    // Show modal
-    modal.classList.remove('hidden');
+    // Show modal (use style.display like delete modal)
+    modal.style.display = 'flex';
 
     // Keep button — close modal
     var keepBtn = document.getElementById('cancel-sub-keep-btn');
     if (keepBtn) {
-        keepBtn.onclick = function() { modal.classList.add('hidden'); };
+        keepBtn.onclick = function() { modal.style.display = 'none'; };
     }
 
     // Confirm cancel
@@ -1230,7 +1240,7 @@ function openCancelSubModal(sub) {
 
     // Close on overlay click
     modal.onclick = function(e) {
-        if (e.target === modal) modal.classList.add('hidden');
+        if (e.target === modal) modal.style.display = 'none';
     };
 }
 
@@ -1251,7 +1261,7 @@ async function handleCancelSubscription(modal) {
 
         if (response.success) {
             // Close modal
-            if (modal) modal.classList.add('hidden');
+            if (modal) modal.style.display = 'none';
 
             // Show success message
             showAlert(
@@ -1269,11 +1279,174 @@ async function handleCancelSubscription(modal) {
         console.error('Error cancelling subscription:', error);
         if (errorEl) {
             errorEl.textContent = error.message || 'Unable to cancel subscription. Please try again.';
-            errorEl.classList.remove('hidden');
+            errorEl.style.display = 'block';
         }
         if (confirmBtn) {
             confirmBtn.disabled = false;
             confirmBtn.innerHTML = '<i class="fas fa-times-circle"></i> Yes, Cancel';
+        }
+    }
+}
+
+// ─── Change Plan Modal ───
+var _changePlanSelected = null;
+
+function openChangePlanModal(currentSub) {
+    var modal = document.getElementById('change-plan-modal');
+    if (!modal) return;
+
+    var loadingEl = document.getElementById('change-plan-loading');
+    var optionsEl = document.getElementById('change-plan-options');
+    var confirmBtn = document.getElementById('change-plan-confirm-btn');
+    var errorEl = document.getElementById('change-plan-error');
+    var currentLabel = document.getElementById('change-plan-current');
+
+    // Reset state
+    _changePlanSelected = null;
+    if (loadingEl) loadingEl.style.display = 'block';
+    if (optionsEl) optionsEl.style.display = 'none';
+    if (confirmBtn) { confirmBtn.style.display = 'none'; confirmBtn.disabled = false; confirmBtn.innerHTML = '<i class="fas fa-check"></i> Switch Plan'; }
+    if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
+
+    var planNames = {
+        'monthly-access': 'Monthly Access',
+        'semester-access': 'Semester Access',
+        'lifetime-access': 'Lifetime Access',
+        'ai-monthly-access': 'AI-Powered Monthly',
+        'ai-semester-access': 'AI-Powered Semester',
+        'ai-lifetime-access': 'AI-Powered Lifetime'
+    };
+    if (currentLabel) {
+        currentLabel.textContent = 'Current plan: ' + (planNames[currentSub.plan_id] || currentSub.plan_name || currentSub.plan_id);
+    }
+
+    // Show modal
+    modal.style.display = 'flex';
+
+    // Close button
+    var closeBtn = document.getElementById('change-plan-close-btn');
+    if (closeBtn) {
+        closeBtn.onclick = function() { modal.style.display = 'none'; };
+    }
+    modal.onclick = function(e) {
+        if (e.target === modal) modal.style.display = 'none';
+    };
+
+    // Load plans
+    loadChangePlanOptions(currentSub, optionsEl, loadingEl, confirmBtn);
+
+    // Confirm button
+    if (confirmBtn) {
+        confirmBtn.onclick = function() { handleChangePlan(currentSub, modal); };
+    }
+}
+
+async function loadChangePlanOptions(currentSub, optionsEl, loadingEl, confirmBtn) {
+    try {
+        var data = await apiCall('/api/subscription-plans');
+        if (!data || !data.plans) throw new Error('Failed to load plans');
+
+        var isAi = currentSub.is_ai_plan || (currentSub.plan_id && currentSub.plan_id.startsWith('ai-'));
+
+        // Build plan cards — only show same tier (standard or AI)
+        var html = '';
+        var planOrder = isAi
+            ? ['ai-monthly-access', 'ai-semester-access', 'ai-lifetime-access']
+            : ['monthly-access', 'semester-access', 'lifetime-access'];
+
+        planOrder.forEach(function(planId) {
+            var plan = data.plans[planId];
+            if (!plan) return;
+
+            var isCurrent = planId === currentSub.plan_id;
+            var priceLabel = plan.interval === 'month' ? '$' + plan.price.toFixed(2) + '/mo' :
+                             plan.access_days ? '$' + plan.price.toFixed(2) + '/semester' :
+                             '$' + plan.price.toFixed(2) + ' once';
+
+            html += '<div class="plan-option' + (isCurrent ? ' current-plan' : '') + '" data-plan-id="' + planId + '">';
+            html += '  <div class="plan-option-radio"></div>';
+            html += '  <div class="plan-option-info">';
+            html += '    <div class="plan-option-name">' + plan.name;
+            if (isCurrent) html += ' <span class="plan-option-badge">Current</span>';
+            html += '    </div>';
+            html += '    <div class="plan-option-desc">' + (plan.description || '').substring(0, 80) + '</div>';
+            html += '  </div>';
+            html += '  <div class="plan-option-price">' + priceLabel + '</div>';
+            html += '</div>';
+        });
+
+        // Show "switch tier" hint
+        if (isAi) {
+            html += '<p style="text-align:center; font-size:0.82rem; color:var(--text-secondary); margin-top:4px;">Looking for Standard plans? <a href="pricing.html" style="color:var(--primary-color);">View all plans</a></p>';
+        } else {
+            html += '<p style="text-align:center; font-size:0.82rem; color:var(--text-secondary); margin-top:4px;">Want AI study tools? <a href="pricing.html" style="color:#7c3aed;">View AI-Powered plans</a></p>';
+        }
+
+        if (optionsEl) { optionsEl.innerHTML = html; optionsEl.style.display = 'flex'; }
+        if (loadingEl) loadingEl.style.display = 'none';
+
+        // Add click handlers to plan options
+        var options = optionsEl.querySelectorAll('.plan-option:not(.current-plan)');
+        options.forEach(function(opt) {
+            opt.addEventListener('click', function() {
+                // Deselect all
+                optionsEl.querySelectorAll('.plan-option').forEach(function(o) { o.classList.remove('selected'); });
+                // Select this one
+                opt.classList.add('selected');
+                _changePlanSelected = opt.getAttribute('data-plan-id');
+                if (confirmBtn) confirmBtn.style.display = 'inline-flex';
+            });
+        });
+
+    } catch (error) {
+        console.error('Error loading plans:', error);
+        if (loadingEl) loadingEl.style.display = 'none';
+        if (optionsEl) {
+            optionsEl.innerHTML = '<p style="text-align:center; color:var(--text-secondary); padding: 16px;">Unable to load plans. Please try again.</p>';
+            optionsEl.style.display = 'flex';
+        }
+    }
+}
+
+async function handleChangePlan(currentSub, modal) {
+    if (!_changePlanSelected) return;
+
+    var confirmBtn = document.getElementById('change-plan-confirm-btn');
+    var errorEl = document.getElementById('change-plan-error');
+
+    if (confirmBtn) {
+        confirmBtn.disabled = true;
+        confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+    }
+
+    try {
+        // Create a new checkout session for the selected plan
+        var response = await apiCall('/api/create-subscription', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                plan_id: _changePlanSelected,
+                success_url: window.location.origin + '/success.html?session_id={CHECKOUT_SESSION_ID}&type=plan_change',
+                cancel_url: window.location.href
+            })
+        });
+
+        if (response.url) {
+            window.location.href = response.url;
+        } else if (response.error) {
+            throw new Error(response.error);
+        } else {
+            throw new Error('Unexpected response');
+        }
+    } catch (error) {
+        console.error('Error changing plan:', error);
+        if (errorEl) {
+            errorEl.textContent = error.message || 'Unable to change plan. Please try again.';
+            errorEl.style.display = 'block';
+        }
+        if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.innerHTML = '<i class="fas fa-check"></i> Switch Plan';
         }
     }
 }

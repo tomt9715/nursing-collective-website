@@ -95,8 +95,10 @@
         .sidebar-sub-detail strong{color:#334155;font-weight:600}
         .sidebar-sub-resubscribe{display:block;margin-top:10px;padding:6px 12px;font-size:.75rem;font-weight:600;color:#2E86AB;background:white;border:1px solid #bae6fd;border-radius:8px;text-align:center;cursor:pointer;transition:all .15s ease;text-decoration:none}
         .sidebar-sub-resubscribe:hover{background:#2E86AB;color:white;text-decoration:none}
-        .sidebar-sub-upgrade{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;padding:7px 12px;font-size:.72rem;font-weight:700;color:#7c3aed;background:linear-gradient(135deg,#f5f3ff 0%,#ede9fe 100%);border:1px solid #c4b5fd;border-radius:8px;text-align:center;cursor:pointer;transition:all .2s ease;text-decoration:none;letter-spacing:.01em}
-        .sidebar-sub-upgrade:hover{background:linear-gradient(135deg,#7c3aed 0%,#6d28d9 100%);color:white;border-color:#7c3aed;text-decoration:none;transform:translateY(-1px);box-shadow:0 2px 8px rgba(124,58,237,.25)}
+        .sidebar-sub-upgrade{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:10px;padding:9px 12px;font-size:.78rem;font-weight:700;color:white;background:linear-gradient(135deg,#7c3aed 0%,#6d28d9 100%);border:1px solid #7c3aed;border-radius:8px;text-align:center;cursor:pointer;transition:all .2s ease;text-decoration:none;letter-spacing:.01em;position:relative;overflow:hidden}
+        .sidebar-sub-upgrade::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent);animation:sidebar-shimmer 3s ease-in-out infinite}
+        @keyframes sidebar-shimmer{0%{left:-100%}50%{left:100%}100%{left:100%}}
+        .sidebar-sub-upgrade:hover{background:linear-gradient(135deg,#6d28d9 0%,#5b21b6 100%);color:white;border-color:#6d28d9;text-decoration:none;transform:translateY(-1px);box-shadow:0 2px 8px rgba(124,58,237,.35)}
         .sidebar-sub-upgrade i{font-size:.7rem}
         .sidebar-sub-cta{text-align:center;padding:12px}
         .sidebar-sub-cta i{font-size:1.5rem;color:#f59e0b;margin-bottom:8px;display:block}
@@ -112,8 +114,8 @@
         [data-theme="dark"] .sidebar-sub-detail strong{color:#e2e8f0}
         [data-theme="dark"] .sidebar-sub-resubscribe{background:rgba(255,255,255,.06);border-color:rgba(46,134,171,.3);color:#38bdf8}
         [data-theme="dark"] .sidebar-sub-resubscribe:hover{background:#2E86AB;color:white}
-        [data-theme="dark"] .sidebar-sub-upgrade{background:linear-gradient(135deg,rgba(124,58,237,.15) 0%,rgba(124,58,237,.08) 100%);border-color:rgba(139,92,246,.3);color:#a78bfa}
-        [data-theme="dark"] .sidebar-sub-upgrade:hover{background:linear-gradient(135deg,#7c3aed 0%,#6d28d9 100%);color:white;border-color:#7c3aed}
+        [data-theme="dark"] .sidebar-sub-upgrade{background:linear-gradient(135deg,#7c3aed 0%,#6d28d9 100%);border-color:rgba(139,92,246,.5);color:white}
+        [data-theme="dark"] .sidebar-sub-upgrade:hover{background:linear-gradient(135deg,#6d28d9 0%,#5b21b6 100%);color:white;border-color:#7c3aed}
         [data-theme="dark"] .sidebar-sub-widget.no-sub{background:linear-gradient(135deg,rgba(245,158,11,.08) 0%,rgba(245,158,11,.04) 100%);border-color:rgba(245,158,11,.2)}
         [data-theme="dark"] .sidebar-sub-cta i{color:#fbbf24}
         [data-theme="dark"] .sidebar-sub-cta p{color:#94a3b8}
@@ -615,28 +617,6 @@
                     <button class="getting-started-dismiss-btn" id="dismiss-getting-started-btn">
                         <i class="fas fa-check"></i> Got it!
                     </button>
-                </div>
-
-                <!-- AI Upgrade Card (shown for Standard plan users only) -->
-                <div class="dashboard-card ai-upgrade-card hidden" id="ai-upgrade-card">
-                    <div class="ai-upgrade-content">
-                        <div class="ai-upgrade-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="ai-upgrade-text">
-                            <h3>Unlock AI-Powered Study Tools</h3>
-                            <p>Upload your notes, generate NCLEX questions, get gap analysis, and more with AI-powered features.</p>
-                            <div class="ai-upgrade-features">
-                                <span><i class="fas fa-check"></i> AI Note Summaries</span>
-                                <span><i class="fas fa-check"></i> NCLEX Question Generator</span>
-                                <span><i class="fas fa-check"></i> Gap Analysis</span>
-                            </div>
-                        </div>
-                        <div class="ai-upgrade-action">
-                            <span class="ai-upgrade-price" id="ai-upgrade-price">+$10/mo</span>
-                            <button class="btn btn-ai-upgrade" id="ai-upgrade-btn" data-navigate="pricing.html?tier=ai">Upgrade Now</button>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Two-Column Hub: Recent Guides + Quiz Progress -->

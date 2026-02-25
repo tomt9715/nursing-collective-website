@@ -1066,8 +1066,11 @@ async function loadSidebarSubscription() {
             if (!isActive) {
                 actionHtml = '<a href="pricing.html" class="sidebar-sub-resubscribe"><i class="fas fa-rocket"></i> Resubscribe</a>';
             } else if (!isAiPlan) {
-                // Standard plan user — show upgrade CTA
-                actionHtml = '<a href="pricing.html?tier=ai" class="sidebar-sub-upgrade"><i class="fas fa-bolt"></i> Upgrade to AI</a>';
+                // Standard plan user — show upgrade CTA with price
+                var upgradePrice = '+$10/mo';
+                if (subscription.plan_id === 'semester-access') upgradePrice = '+$30';
+                else if (subscription.plan_id === 'lifetime-access') upgradePrice = '+$50';
+                actionHtml = '<a href="pricing.html?tier=ai" class="sidebar-sub-upgrade"><i class="fas fa-bolt"></i> Upgrade to AI · ' + upgradePrice + '</a>';
             }
 
             widget.className = 'sidebar-sub-widget';
@@ -1090,35 +1093,6 @@ async function loadSidebarSubscription() {
                 </div>
             `;
         }
-        // Show/hide the prominent AI upgrade card in main content
-        const upgradeCard = document.getElementById('ai-upgrade-card');
-        if (upgradeCard) {
-            if (subscription && subscription.is_active) {
-                const isAiPlan = subscription.plan_id && subscription.plan_id.startsWith('ai-');
-                if (!isAiPlan) {
-                    // Standard plan — show upgrade card with correct price
-                    upgradeCard.classList.remove('hidden');
-
-                    const priceEl = document.getElementById('ai-upgrade-price');
-                    const upgradeBtn = document.getElementById('ai-upgrade-btn');
-                    if (priceEl) {
-                        if (subscription.plan_id === 'semester-access') priceEl.textContent = '+$30';
-                        else if (subscription.plan_id === 'lifetime-access') priceEl.textContent = '+$50';
-                        else priceEl.textContent = '+$10/mo';
-                    }
-                    if (upgradeBtn) {
-                        upgradeBtn.addEventListener('click', function() {
-                            window.location.href = 'pricing.html?tier=ai';
-                        });
-                    }
-                } else {
-                    upgradeCard.classList.add('hidden');
-                }
-            } else {
-                upgradeCard.classList.add('hidden');
-            }
-        }
-
     } catch (error) {
         console.error('Error loading sidebar subscription:', error);
         widget.innerHTML = '';

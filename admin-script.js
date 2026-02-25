@@ -1310,9 +1310,25 @@ function closeUserDetailModal() {
 
 // Helper to get plan display badge
 function getPlanBadge(user) {
-    if (!user.is_premium) {
+    if (!user.is_premium || !user.plan_id) {
         return '<span class="badge-status">Free</span>';
     }
+
+    const planDisplay = {
+        'monthly-access':       { label: 'Monthly',          icon: 'fa-sync-alt',     color: '#2E86AB' },
+        'semester-access':      { label: 'Semester',          icon: 'fa-calendar-alt', color: '#A23B72' },
+        'lifetime-access':      { label: 'Lifetime',          icon: 'fa-infinity',     color: '#F18F01' },
+        'ai-monthly-access':    { label: 'AI Monthly',        icon: 'fa-robot',        color: '#7C3AED' },
+        'ai-semester-access':   { label: 'AI Semester',       icon: 'fa-robot',        color: '#7C3AED' },
+        'ai-lifetime-access':   { label: 'AI Lifetime',       icon: 'fa-robot',        color: '#7C3AED' },
+    };
+
+    const plan = planDisplay[user.plan_id];
+    if (plan) {
+        return `<span class="badge-status" style="background: ${plan.color}; color: white;"><i class="fas ${plan.icon}"></i> ${plan.label}</span>`;
+    }
+
+    // Fallback for unknown plan_id
     return '<span class="badge-status premium"><i class="fas fa-crown"></i> Premium</span>';
 }
 
@@ -1320,7 +1336,10 @@ function getPlanColor(planId) {
     const colors = {
         'monthly-access': '#2E86AB',
         'semester-access': '#A23B72',
-        'lifetime-access': '#F18F01'
+        'lifetime-access': '#F18F01',
+        'ai-monthly-access': '#7C3AED',
+        'ai-semester-access': '#7C3AED',
+        'ai-lifetime-access': '#7C3AED',
     };
     return colors[planId] || '#666';
 }

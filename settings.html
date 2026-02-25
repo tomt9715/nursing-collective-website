@@ -531,10 +531,87 @@
             border-color: var(--primary-color, #2E86AB);
         }
 
+        /* ══════════════════════════════════════════════
+           MEMBERSHIP SECTION
+           ══════════════════════════════════════════════ */
+        .membership-loading { text-align: center; padding: 32px; color: var(--text-secondary); font-size: 0.95rem; }
+        .membership-loading i { margin-right: 6px; }
+
+        .membership-empty { text-align: center; padding: 32px 16px; }
+        .membership-empty-icon { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%; background: var(--background-light); display: flex; align-items: center; justify-content: center; }
+        .membership-empty-icon i { font-size: 24px; color: var(--text-secondary); }
+        .membership-empty h4 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0 0 8px; }
+        .membership-empty p { font-size: 0.9rem; color: var(--text-secondary); max-width: 360px; margin: 0 auto 20px; line-height: 1.5; }
+
+        .membership-plan-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+        .membership-plan-name { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+        .membership-plan-name span:first-child { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
+
+        .sub-status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
+        .sub-status-badge.active { background: rgba(34,197,94,0.1); color: #16a34a; }
+        .sub-status-badge.cancelling { background: rgba(245,158,11,0.1); color: #d97706; }
+        .sub-status-badge.expired { background: rgba(239,68,68,0.1); color: #dc2626; }
+        [data-theme="dark"] .sub-status-badge.active { background: rgba(34,197,94,0.15); color: #4ade80; }
+        [data-theme="dark"] .sub-status-badge.cancelling { background: rgba(245,158,11,0.15); color: #fbbf24; }
+        [data-theme="dark"] .sub-status-badge.expired { background: rgba(239,68,68,0.15); color: #f87171; }
+
+        .membership-plan-tier { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+        .membership-plan-tier.standard { background: linear-gradient(135deg, rgba(46,134,171,0.1), rgba(46,134,171,0.05)); color: #2E86AB; }
+        .membership-plan-tier.ai-powered { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(124,58,237,0.05)); color: #7c3aed; }
+        [data-theme="dark"] .membership-plan-tier.standard { background: rgba(46,134,171,0.15); color: #38bdf8; }
+        [data-theme="dark"] .membership-plan-tier.ai-powered { background: rgba(124,58,237,0.15); color: #a78bfa; }
+
+        .membership-details { background: var(--background-light); border-radius: 12px; padding: 4px 16px; margin-bottom: 16px; }
+        .membership-detail-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-color); }
+        .membership-detail-row:last-child { border-bottom: none; }
+        .membership-detail-label { color: var(--text-secondary); font-size: 0.9rem; }
+        .membership-detail-value { font-weight: 600; color: var(--text-primary); font-size: 0.9rem; }
+
+        .membership-upgrade-box { background: linear-gradient(135deg, rgba(124,58,237,0.06) 0%, rgba(124,58,237,0.02) 100%); border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; padding: 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+        [data-theme="dark"] .membership-upgrade-box { background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(124,58,237,0.05) 100%); border-color: rgba(124,58,237,0.3); }
+        .membership-upgrade-text { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+        .membership-upgrade-text > i { font-size: 1.3rem; color: #7c3aed; flex-shrink: 0; }
+        .membership-upgrade-text strong { display: block; color: var(--text-primary); font-size: 0.95rem; }
+        .membership-upgrade-text span { font-size: 0.85rem; color: var(--text-secondary); }
+
+        .membership-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-small.secondary { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); background: var(--background-light); border: 1px solid var(--border-color); border-radius: 8px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
+        .btn-small.secondary:hover { background: var(--border-color); color: var(--text-primary); text-decoration: none; }
+
+        /* AI Credits */
+        .membership-credit-group { display: flex; flex-direction: column; gap: 16px; }
+        .membership-credit-item { background: var(--background-light); border-radius: 12px; padding: 14px 16px; }
+        .membership-credit-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+        .membership-credit-label { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 6px; }
+        .membership-credit-label i { color: var(--primary-color); font-size: 0.85rem; }
+        .membership-credit-count { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
+
+        .membership-progress-bar { height: 8px; background: var(--border-color); border-radius: 4px; overflow: hidden; }
+        .membership-progress-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #2E86AB, #A23B72); transition: width 0.5s ease; }
+        .membership-progress-fill.low { background: linear-gradient(90deg, #f59e0b, #ef4444); }
+        .membership-progress-fill.exhausted { background: #ef4444; }
+
+        .membership-credit-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 0.82rem; color: var(--text-secondary); flex-wrap: wrap; gap: 8px; }
+        .membership-credit-footer i { margin-right: 4px; font-size: 0.75rem; }
+        .membership-credit-actions { margin-top: 16px; }
+
+        /* Billing History */
+        .billing-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: var(--background-light); border-radius: 12px; margin-bottom: 8px; }
+        .billing-row:last-child { margin-bottom: 0; }
+        .billing-row-left { display: flex; flex-direction: column; gap: 2px; }
+        .billing-row-desc { font-weight: 600; font-size: 0.92rem; color: var(--text-primary); }
+        .billing-row-date { font-size: 0.82rem; color: var(--text-secondary); }
+        .billing-row-right { display: flex; align-items: center; gap: 12px; }
+        .billing-row-amount { font-weight: 700; font-size: 0.95rem; color: var(--text-primary); }
+        .billing-receipt-link { font-size: 0.82rem; color: var(--primary-color); text-decoration: none; font-weight: 500; }
+        .billing-receipt-link:hover { text-decoration: underline; }
+        .billing-row-refunded { font-size: 0.75rem; color: #ef4444; font-weight: 600; }
+
         /* ── Responsive ───────────────────────────────── */
         @media (max-width: 768px) {
             .settings-hero { padding: 32px 20px 24px; }
             .settings-card { padding: 24px 20px; }
+            .membership-upgrade-box { flex-direction: column; align-items: flex-start; }
         }
 
         @media (max-width: 480px) {
@@ -544,6 +621,11 @@
             .settings-card { padding: 20px 16px; }
             .setting-row { flex-direction: column; align-items: flex-start; gap: 12px; }
             .icon-picker-grid { grid-template-columns: repeat(3, 1fr); }
+            .membership-plan-row { flex-direction: column; align-items: flex-start; }
+            .billing-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+            .billing-row-right { width: 100%; justify-content: space-between; }
+            .membership-actions { flex-direction: column; }
+            .membership-actions .btn-primary, .membership-actions .btn-small { width: 100%; justify-content: center; text-align: center; }
         }
 
         /* ══════════════════════════════════════════════
@@ -824,6 +906,143 @@
                         <i class="fas fa-key"></i> Update Password
                     </button>
                 </form>
+            </div>
+
+            <!-- ═══ Membership Section ═══ -->
+            <div class="settings-section-label settings-section-gap">Membership</div>
+
+            <!-- Current Plan Card -->
+            <div class="settings-card" id="membership-plan-card">
+                <div class="settings-card-header">
+                    <i class="fas fa-crown"></i>
+                    <h3>Current Plan</h3>
+                </div>
+                <div class="settings-card-desc">Your subscription plan and access details.</div>
+
+                <div id="membership-loading" class="membership-loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading subscription...
+                </div>
+
+                <div id="membership-none" class="membership-empty hidden">
+                    <div class="membership-empty-icon"><i class="fas fa-lock"></i></div>
+                    <h4>No Active Plan</h4>
+                    <p>Subscribe to get full access to all 50+ study guides, clinical resources, and AI tools.</p>
+                    <a href="pricing.html" class="btn-primary settings-save-btn" style="display:inline-flex;gap:6px;">
+                        <i class="fas fa-rocket"></i> View Plans
+                    </a>
+                </div>
+
+                <div id="membership-active" class="hidden">
+                    <div class="membership-plan-row">
+                        <div class="membership-plan-name">
+                            <span id="membership-plan-label">Loading...</span>
+                            <span class="sub-status-badge active" id="membership-status-badge">
+                                <i class="fas fa-check-circle"></i> Active
+                            </span>
+                        </div>
+                        <span class="membership-plan-tier standard" id="membership-tier-badge">
+                            <i class="fas fa-book-open"></i> Standard
+                        </span>
+                    </div>
+
+                    <div class="membership-details">
+                        <div class="membership-detail-row">
+                            <span class="membership-detail-label">Started</span>
+                            <span class="membership-detail-value" id="membership-start-date">--</span>
+                        </div>
+                        <div class="membership-detail-row" id="membership-renewal-row">
+                            <span class="membership-detail-label" id="membership-renewal-label">Renews</span>
+                            <span class="membership-detail-value" id="membership-renewal-date">--</span>
+                        </div>
+                    </div>
+
+                    <div id="membership-upgrade-prompt" class="membership-upgrade-box hidden">
+                        <div class="membership-upgrade-text">
+                            <i class="fas fa-bolt"></i>
+                            <div>
+                                <strong>Unlock AI Study Tools</strong>
+                                <span>Upload notes, generate NCLEX questions, and more.</span>
+                            </div>
+                        </div>
+                        <button class="btn-primary settings-save-btn" id="membership-upgrade-btn" style="white-space:nowrap;">
+                            <i class="fas fa-arrow-up"></i> Upgrade to AI-Powered
+                        </button>
+                    </div>
+
+                    <div class="membership-actions">
+                        <button class="btn-primary settings-save-btn" id="membership-manage-btn">
+                            <i class="fas fa-external-link-alt"></i> Manage Billing
+                        </button>
+                        <a href="pricing.html" class="btn-small secondary">
+                            <i class="fas fa-exchange-alt"></i> Change Plan
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Credits Card (hidden unless AI plan) -->
+            <div class="settings-card hidden" id="membership-credits-card">
+                <div class="settings-card-header">
+                    <i class="fas fa-coins"></i>
+                    <h3>AI Credits</h3>
+                </div>
+                <div class="settings-card-desc">Your monthly AI usage limits. Credits reset every 30 days.</div>
+
+                <div class="membership-credit-group">
+                    <div class="membership-credit-item">
+                        <div class="membership-credit-header">
+                            <span class="membership-credit-label"><i class="fas fa-upload"></i> Note Uploads</span>
+                            <span class="membership-credit-count" id="credits-uploads-count">0 / 0</span>
+                        </div>
+                        <div class="membership-progress-bar">
+                            <div class="membership-progress-fill" id="credits-uploads-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <div class="membership-credit-item">
+                        <div class="membership-credit-header">
+                            <span class="membership-credit-label"><i class="fas fa-question-circle"></i> AI Questions</span>
+                            <span class="membership-credit-count" id="credits-questions-count">0 / 0</span>
+                        </div>
+                        <div class="membership-progress-bar">
+                            <div class="membership-progress-fill" id="credits-questions-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="membership-credit-footer">
+                    <span id="credits-addon-info" class="hidden">
+                        <i class="fas fa-plus-circle"></i> <span id="credits-addon-text"></span>
+                    </span>
+                    <span id="credits-reset-date">
+                        <i class="fas fa-sync-alt"></i> Resets <span id="credits-reset-value">--</span>
+                    </span>
+                </div>
+
+                <div class="membership-credit-actions">
+                    <a href="pricing.html?addon=credits" class="btn-small secondary">
+                        <i class="fas fa-plus"></i> Buy More Credits
+                    </a>
+                </div>
+            </div>
+
+            <!-- Billing History Card -->
+            <div class="settings-card" id="membership-billing-card">
+                <div class="settings-card-header">
+                    <i class="fas fa-receipt"></i>
+                    <h3>Billing History</h3>
+                </div>
+                <div class="settings-card-desc">Your recent payments and receipts.</div>
+
+                <div id="billing-loading" class="membership-loading">
+                    <i class="fas fa-spinner fa-spin"></i> Loading billing history...
+                </div>
+
+                <div id="billing-empty" class="hidden" style="text-align:center;padding:20px;color:var(--text-secondary);">
+                    <i class="fas fa-file-invoice" style="font-size:2rem;margin-bottom:8px;opacity:0.5;display:block;"></i>
+                    <p>No billing history yet.</p>
+                </div>
+
+                <div id="billing-list" class="hidden"></div>
             </div>
 
             <!-- ═══ Preferences Section ═══ -->

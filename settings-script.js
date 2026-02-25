@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Setup notification preference toggles
     setupNotificationToggles();
 
+    // Load membership section
+    loadMembership();
+
     // Setup delete account handlers
     setupDeleteAccount();
 
@@ -865,4 +868,326 @@ function setupProfilePicListeners() {
             }
         });
     }
+}
+
+// ══════════════════════════════════════════════
+// MEMBERSHIP SECTION
+// ══════════════════════════════════════════════
+
+async function loadMembership() {
+    var subPromise = apiCall('/api/subscription-status').catch(function(err) {
+        console.warn('Failed to load subscription status:', err);
+        return null;
+    });
+    var billingPromise = apiCall('/api/billing-history').catch(function(err) {
+        console.warn('Failed to load billing history:', err);
+        return null;
+    });
+
+    var results = await Promise.all([subPromise, billingPromise]);
+    renderSubscriptionCard(results[0]);
+    renderBillingHistory(results[1]);
+}
+
+function renderSubscriptionCard(data) {
+    var loadingEl = document.getElementById('membership-loading');
+    var noneEl = document.getElementById('membership-none');
+    var activeEl = document.getElementById('membership-active');
+    var creditsCard = document.getElementById('membership-credits-card');
+
+    if (loadingEl) loadingEl.style.display = 'none';
+
+    if (!data || !data.has_access || !data.subscription) {
+        if (noneEl) noneEl.classList.remove('hidden');
+        return;
+    }
+
+    var sub = data.subscription;
+    if (activeEl) activeEl.classList.remove('hidden');
+
+    // Plan name
+    var planLabel = document.getElementById('membership-plan-label');
+    if (planLabel) {
+        var planNames = {
+            'monthly-access': 'Monthly Access',
+            'semester-access': 'Semester Access',
+            'lifetime-access': 'Lifetime Access',
+            'ai-monthly-access': 'AI-Powered Monthly',
+            'ai-semester-access': 'AI-Powered Semester',
+            'ai-lifetime-access': 'AI-Powered Lifetime'
+        };
+        planLabel.textContent = planNames[sub.plan_id] || sub.plan_name || sub.plan_id || 'Active Plan';
+    }
+
+    // Status badge
+    var badge = document.getElementById('membership-status-badge');
+    if (badge) {
+        if (sub.cancel_at_period_end) {
+            badge.className = 'sub-status-badge cancelling';
+            badge.innerHTML = '<i class="fas fa-clock"></i> Cancelling';
+        } else if (sub.status === 'expired') {
+            badge.className = 'sub-status-badge expired';
+            badge.innerHTML = '<i class="fas fa-times-circle"></i> Expired';
+        } else if (sub.status === 'past_due') {
+            badge.className = 'sub-status-badge expired';
+            badge.innerHTML = '<i class="fas fa-exclamation-circle"></i> Past Due';
+        } else {
+            badge.className = 'sub-status-badge active';
+            badge.innerHTML = '<i class="fas fa-check-circle"></i> Active';
+        }
+    }
+
+    // Tier badge
+    var tierBadge = document.getElementById('membership-tier-badge');
+    if (tierBadge) {
+        var isAi = sub.is_ai_plan || (sub.plan_id && sub.plan_id.startsWith('ai-'));
+        if (isAi) {
+            tierBadge.className = 'membership-plan-tier ai-powered';
+            tierBadge.innerHTML = '<i class="fas fa-bolt"></i> AI-Powered';
+        } else {
+            tierBadge.className = 'membership-plan-tier standard';
+            tierBadge.innerHTML = '<i class="fas fa-book-open"></i> Standard';
+        }
+    }
+
+    // Start date
+    var startEl = document.getElementById('membership-start-date');
+    if (startEl && sub.starts_at) {
+        startEl.textContent = membershipFormatDate(sub.starts_at);
+    }
+
+    // Renewal / Expiry
+    var renewalLabel = document.getElementById('membership-renewal-label');
+    var renewalDate = document.getElementById('membership-renewal-date');
+    if (renewalLabel && renewalDate) {
+        var isLifetime = sub.plan_id && sub.plan_id.includes('lifetime');
+        if (isLifetime || sub.expires_at === null) {
+            renewalLabel.textContent = 'Access';
+            renewalDate.innerHTML = '<span style="color:#16a34a;font-weight:700;">Lifetime — Never Expires</span>';
+        } else if (sub.cancel_at_period_end) {
+            renewalLabel.textContent = 'Access Until';
+            renewalDate.innerHTML = '<span style="color:#d97706;">' + membershipFormatDate(sub.expires_at) + '</span>';
+        } else {
+            var isMonthly = sub.plan_id && sub.plan_id.includes('monthly');
+            renewalLabel.textContent = isMonthly ? 'Renews' : 'Expires';
+            renewalDate.textContent = membershipFormatDate(sub.expires_at);
+        }
+    }
+
+    // Upgrade prompt
+    var upgradePrompt = document.getElementById('membership-upgrade-prompt');
+    var isAiPlan = sub.is_ai_plan || (sub.plan_id && sub.plan_id.startsWith('ai-'));
+    if (upgradePrompt) {
+        if (isAiPlan) {
+            upgradePrompt.classList.add('hidden');
+        } else {
+            upgradePrompt.classList.remove('hidden');
+        }
+    }
+
+    // Upgrade button
+    var upgradeBtn = document.getElementById('membership-upgrade-btn');
+    if (upgradeBtn) {
+        upgradeBtn.addEventListener('click', handleMembershipUpgrade);
+    }
+
+    // Manage Billing button
+    var manageBtn = document.getElementById('membership-manage-btn');
+    if (manageBtn) {
+        manageBtn.addEventListener('click', handleManageBilling);
+    }
+
+    // AI Credits
+    if (isAiPlan) {
+        loadAiCredits(creditsCard);
+    }
+}
+
+async function loadAiCredits(creditsCard) {
+    if (!creditsCard) return;
+
+    try {
+        var data = await apiCall('/api/ai/credits');
+        if (!data || data.error) return;
+
+        creditsCard.classList.remove('hidden');
+
+        // Uploads
+        var uploadsRemaining = data.uploads_remaining || 0;
+        var uploadsLimit = data.uploads_limit || 0;
+        var addonUploads = data.addon_uploads || 0;
+        var totalUploads = uploadsLimit + addonUploads;
+
+        var uploadsCount = document.getElementById('credits-uploads-count');
+        if (uploadsCount) uploadsCount.textContent = uploadsRemaining + ' / ' + totalUploads;
+
+        var uploadsBar = document.getElementById('credits-uploads-bar');
+        if (uploadsBar && totalUploads > 0) {
+            var uploadsPct = (uploadsRemaining / totalUploads) * 100;
+            uploadsBar.style.width = uploadsPct + '%';
+            uploadsBar.className = 'membership-progress-fill';
+            if (uploadsPct <= 0) uploadsBar.classList.add('exhausted');
+            else if (uploadsPct <= 20) uploadsBar.classList.add('low');
+        }
+
+        // Questions
+        var questionsRemaining = data.questions_remaining || 0;
+        var questionsLimit = data.questions_limit || 0;
+        var addonQuestions = data.addon_questions || 0;
+        var totalQuestions = questionsLimit + addonQuestions;
+
+        var questionsCount = document.getElementById('credits-questions-count');
+        if (questionsCount) questionsCount.textContent = questionsRemaining + ' / ' + totalQuestions;
+
+        var questionsBar = document.getElementById('credits-questions-bar');
+        if (questionsBar && totalQuestions > 0) {
+            var questionsPct = (questionsRemaining / totalQuestions) * 100;
+            questionsBar.style.width = questionsPct + '%';
+            questionsBar.className = 'membership-progress-fill';
+            if (questionsPct <= 0) questionsBar.classList.add('exhausted');
+            else if (questionsPct <= 20) questionsBar.classList.add('low');
+        }
+
+        // Addon info
+        var addonInfo = document.getElementById('credits-addon-info');
+        var addonText = document.getElementById('credits-addon-text');
+        if (addonInfo && addonText && (addonUploads > 0 || addonQuestions > 0)) {
+            addonInfo.classList.remove('hidden');
+            var parts = [];
+            if (addonUploads > 0) parts.push(addonUploads + ' bonus uploads');
+            if (addonQuestions > 0) parts.push(addonQuestions + ' bonus questions');
+            addonText.textContent = parts.join(', ') + ' (add-on)';
+        }
+
+        // Reset date
+        var resetValue = document.getElementById('credits-reset-value');
+        if (resetValue && data.next_reset) {
+            resetValue.textContent = membershipFormatDate(data.next_reset);
+        }
+    } catch (err) {
+        console.warn('Failed to load AI credits:', err);
+    }
+}
+
+function renderBillingHistory(data) {
+    var loadingEl = document.getElementById('billing-loading');
+    var emptyEl = document.getElementById('billing-empty');
+    var listEl = document.getElementById('billing-list');
+
+    if (loadingEl) loadingEl.style.display = 'none';
+
+    if (!data || !data.invoices || data.invoices.length === 0) {
+        if (emptyEl) emptyEl.classList.remove('hidden');
+        return;
+    }
+
+    if (listEl) listEl.classList.remove('hidden');
+
+    var html = '';
+    data.invoices.forEach(function(inv) {
+        var date = new Date(inv.created * 1000);
+        var dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+        var amount = '$' + inv.amount.toFixed(2);
+        var desc = inv.description || 'Payment';
+        if (desc.length > 50) desc = desc.substring(0, 47) + '...';
+
+        var refundedTag = '';
+        if (inv.refunded) {
+            refundedTag = '<span class="billing-row-refunded">REFUNDED</span>';
+        } else if (inv.amount_refunded > 0) {
+            refundedTag = '<span class="billing-row-refunded">Partial refund: -$' + inv.amount_refunded.toFixed(2) + '</span>';
+        }
+
+        var receiptLink = '';
+        if (inv.receipt_url) {
+            receiptLink = '<a href="' + inv.receipt_url + '" target="_blank" rel="noopener" class="billing-receipt-link"><i class="fas fa-external-link-alt"></i> Receipt</a>';
+        }
+
+        html += '<div class="billing-row">' +
+            '<div class="billing-row-left">' +
+                '<span class="billing-row-desc">' + membershipEscapeHtml(desc) + '</span>' +
+                '<span class="billing-row-date">' + dateStr + ' ' + refundedTag + '</span>' +
+            '</div>' +
+            '<div class="billing-row-right">' +
+                '<span class="billing-row-amount">' + amount + '</span>' +
+                receiptLink +
+            '</div>' +
+        '</div>';
+    });
+
+    listEl.innerHTML = html;
+}
+
+async function handleManageBilling() {
+    var btn = document.getElementById('membership-manage-btn');
+    if (!btn) return;
+
+    var originalHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
+
+    try {
+        var response = await apiCall('/api/subscription/manage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ return_url: window.location.href })
+        });
+
+        if (response.url) {
+            window.location.href = response.url;
+        } else {
+            throw new Error('No portal URL returned');
+        }
+    } catch (error) {
+        console.error('Error opening billing portal:', error);
+        showAlert('Billing Portal Error', 'Unable to open the billing portal. Please try again.', 'error');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
+}
+
+async function handleMembershipUpgrade() {
+    var btn = document.getElementById('membership-upgrade-btn');
+    if (!btn) return;
+
+    var originalHtml = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+
+    try {
+        var response = await apiCall('/api/ai/upgrade', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                success_url: window.location.origin + '/success.html?session_id={CHECKOUT_SESSION_ID}&type=upgrade',
+                cancel_url: window.location.href
+            })
+        });
+
+        if (response.upgraded) {
+            showAlert('Upgrade Complete!', response.message || 'Your plan has been upgraded to AI-Powered!', 'success');
+            setTimeout(function() { loadMembership(); }, 1000);
+        } else if (response.url) {
+            window.location.href = response.url;
+        } else {
+            throw new Error('Unexpected response');
+        }
+    } catch (error) {
+        console.error('Error upgrading plan:', error);
+        showAlert('Upgrade Failed', error.message || 'Unable to process the upgrade. Please try again.', 'error');
+        btn.disabled = false;
+        btn.innerHTML = originalHtml;
+    }
+}
+
+function membershipFormatDate(isoString) {
+    if (!isoString) return '--';
+    var date = new Date(isoString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function membershipEscapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
 }

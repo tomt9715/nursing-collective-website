@@ -1310,8 +1310,12 @@ function closeUserDetailModal() {
 
 // Helper to get plan display badge
 function getPlanBadge(user) {
-    if (!user.is_premium || !user.plan_id) {
+    if (!user.is_premium) {
         return '<span class="badge-status">Free</span>';
+    }
+    if (!user.plan_id) {
+        // Backend hasn't sent plan_id yet — fall back to generic Premium badge
+        return '<span class="badge-status premium"><i class="fas fa-crown"></i> Premium</span>';
     }
 
     const planDisplay = {

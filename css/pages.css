@@ -3197,6 +3197,120 @@
     opacity: 0.9;
 }
 
+/* ── AI Upgrade Card ───────────────────────────────────────────────── */
+.ai-upgrade-card {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #5b21b6 100%) !important;
+    color: #ffffff !important;
+    border: none !important;
+    overflow: hidden;
+    position: relative;
+}
+
+.ai-upgrade-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.ai-upgrade-content {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.ai-upgrade-icon {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+}
+
+.ai-upgrade-text {
+    flex: 1;
+}
+
+.ai-upgrade-text h3 {
+    color: #ffffff !important;
+    font-size: 1.15rem;
+    margin: 0 0 6px;
+}
+
+.ai-upgrade-text p {
+    color: rgba(255, 255, 255, 0.85) !important;
+    font-size: 0.9rem;
+    margin: 0 0 10px;
+}
+
+.ai-upgrade-features {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.ai-upgrade-features span {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.ai-upgrade-features i {
+    color: #a78bfa;
+    margin-right: 4px;
+}
+
+.ai-upgrade-action {
+    flex-shrink: 0;
+    text-align: center;
+}
+
+.ai-upgrade-price {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.btn-ai-upgrade {
+    background: #ffffff;
+    color: #7c3aed;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.btn-ai-upgrade:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .ai-upgrade-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .ai-upgrade-features {
+        justify-content: center;
+    }
+}
+
 /* Skeleton loader row spacing */
 .skeleton-row {
     margin-bottom: 8px;

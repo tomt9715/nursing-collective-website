@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         const toast = document.createElement('div');
         toast.className = `pricing-toast ${type}`;
-        const icon = type === 'error' ? 'fa-exclamation-circle' : 'fa-info-circle';
+        const icon = type === 'error' ? 'fa-exclamation-circle' : type === 'success' ? 'fa-check-circle' : 'fa-info-circle';
         toast.innerHTML = `<i class="fas ${icon}"></i> <span>${message}</span>`;
         container.appendChild(toast);
 
@@ -165,6 +165,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // UPGRADE BANNER (for existing Standard subscribers)
     // ==========================================================================
 
+    // Track user's current subscription for upgrade detection
+    let userSubscription = null;
+
     // Check if user has an active Standard subscription to show upgrade banner
     function checkUpgradeBanner() {
         if (!isAuthenticated || !isAuthenticated()) return;
@@ -184,10 +187,24 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(r => r.json())
         .then(data => {
-            if (data.has_access && data.subscription && !data.subscription.is_ai_plan) {
-                // User has Standard plan — show upgrade banner
-                if (upgradeBanner) {
-                    upgradeBanner.classList.remove('hidden');
+            if (data.has_access && data.subscription) {
+                userSubscription = data.subscription;
+
+                if (!data.subscription.is_ai_plan) {
+                    // User has Standard plan — show upgrade banner
+                    if (upgradeBanner) {
+                        upgradeBanner.classList.remove('hidden');
+
+                        // Update banner text with specific upgrade price
+                        const bannerText = upgradeBanner.querySelector('.upgrade-banner-msg');
+                        if (bannerText) {
+                            const planId = data.subscription.plan_id;
+                            let priceText = '+$10/month';
+                            if (planId === 'semester-access') priceText = '+$30 one-time';
+                            else if (planId === 'lifetime-access') priceText = '+$50 one-time';
+                            bannerText.textContent = `Already a subscriber? Upgrade to AI-Powered for just ${priceText}!`;
+                        }
+                    }
                 }
             }
         })
@@ -239,6 +256,13 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Check if this is an upgrade scenario:
+        // User has active Standard plan and is clicking an AI plan
+        const isUpgrade = userSubscription
+            && !userSubscription.is_ai_plan
+            && planId.startsWith('ai-')
+            && !planId.startsWith('ai-credits');
+
         // Get user email (pre-fills Stripe checkout)
         let email = '';
         const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
@@ -246,19 +270,38 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Show loading state on button
         const originalText = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting to checkout...';
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isUpgrade ? 'Processing upgrade...' : 'Redirecting to checkout...');
         button.disabled = true;
 
         try {
-            const data = await createSubscriptionCheckout(planId, email);
-            if (data.url) {
-                window.location.href = data.url;
+            if (isUpgrade) {
+                // Use the upgrade endpoint for reduced pricing
+                const data = await createUpgradeCheckout();
+
+                if (data.upgraded) {
+                    // Monthly upgrade completed instantly (no redirect)
+                    showPricingToast('Upgrade complete! Your AI tools are now active.', 'success');
+                    // Refresh page after a moment to update UI
+                    setTimeout(() => window.location.reload(), 2000);
+                    return;
+                } else if (data.url) {
+                    // Semester/Lifetime: redirect to Stripe checkout
+                    window.location.href = data.url;
+                } else {
+                    throw new Error('Unexpected upgrade response');
+                }
             } else {
-                throw new Error('No checkout URL returned');
+                // Normal checkout flow
+                const data = await createSubscriptionCheckout(planId, email);
+                if (data.url) {
+                    window.location.href = data.url;
+                } else {
+                    throw new Error('No checkout URL returned');
+                }
             }
         } catch (error) {
             console.error('Checkout error:', error);
-            showPricingToast('Unable to start checkout. Please try again.');
+            showPricingToast(error.message || 'Unable to start checkout. Please try again.');
         } finally {
             // Always re-enable the button so it's never stuck disabled
             button.innerHTML = originalText;
@@ -428,6 +471,30 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (toggle) {
                     var headerOffset = 80; // account for fixed nav
                     var top = toggle.getBoundingClientRect().top + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: top, behavior: 'smooth' });
+                }
+            }, 500);
+        }
+    })();
+
+    // ==========================================================================
+    // AUTO-SCROLL TO CREDIT ADD-ONS FROM URL PARAM (e.g. ?addon=credits)
+    // ==========================================================================
+
+    (function checkAddonParam() {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('addon') === 'credits') {
+            // Activate AI tier (credit add-ons only show in AI tier)
+            var aiToggle = document.querySelector('.tier-toggle-btn[data-tier="ai-powered"]');
+            if (aiToggle && !aiToggle.classList.contains('active')) {
+                aiToggle.click();
+            }
+            // Scroll to credit add-on section
+            setTimeout(function() {
+                var creditSection = document.getElementById('credit-addon-section');
+                if (creditSection) {
+                    var headerOffset = 80;
+                    var top = creditSection.getBoundingClientRect().top + window.pageYOffset - headerOffset;
                     window.scrollTo({ top: top, behavior: 'smooth' });
                 }
             }, 500);

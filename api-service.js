@@ -397,6 +397,38 @@ async function createSubscriptionCheckout(planId, email) {
     return data;
 }
 
+/**
+ * Create an AI upgrade checkout (Standard → AI-Powered at reduced price)
+ * Monthly upgrades resolve immediately (no redirect), semester/lifetime redirect to Stripe.
+ * @returns {Promise<{upgraded?: boolean, url?: string, plan_id?: string, message?: string}>}
+ */
+async function createUpgradeCheckout() {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
+        throw new Error('Not authenticated');
+    }
+
+    const response = await fetch(`${API_URL}/api/ai/upgrade`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            success_url: `${window.location.origin}/success.html?session_id={CHECKOUT_SESSION_ID}&type=upgrade`,
+            cancel_url: `${window.location.origin}/pricing.html?tier=ai`
+        })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || 'Failed to create upgrade checkout');
+    }
+
+    return data;
+}
+
 // =============================================================================
 // CONTENT ACCESS CONTROL
 // =============================================================================

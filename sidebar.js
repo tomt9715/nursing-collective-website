@@ -18,6 +18,7 @@
         'my-guides':      { title: 'Study Guides',    highlight: 'study-guides' },
         'my-resources':   { title: 'Resources',       highlight: 'resources' },
         'ai-tools':       { title: 'AI Study Tools',  highlight: 'ai-tools' },
+        'community':      { title: 'Community',       highlight: 'community' },
         'settings':       { title: 'Settings',        highlight: 'settings' },
         'admin':          { title: 'Admin Panel',     highlight: 'admin' }
     };
@@ -52,7 +53,7 @@
                     '</a>' +
                 '</div>' +
                 '<div class="dash-sidebar-section">' +
-                    '<a href="https://discord.gg/y2Mh77wAV2" class="dash-sidebar-item" target="_blank" rel="noopener" data-sidebar-page="discord">' +
+                    '<a href="community.html" class="dash-sidebar-item" data-sidebar-page="community">' +
                         '<i class="fab fa-discord"></i> Community' +
                     '</a>' +
                     '<a href="settings.html" class="dash-sidebar-item" data-sidebar-page="settings">' +

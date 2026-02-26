@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community - The Nursing Collective</title>
+    <meta name="description" content="Join The Nursing Collective Discord community. Study together, get AI-powered help from FlorenceBot, and connect with fellow nursing students.">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2E86AB">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Bundled CSS -->
+    <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/pages.css?v=5.3.navbar">
+    <link rel="stylesheet" href="css/global-overrides.css?v=6.2.resources">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Sentry Error Tracking -->
+    <script src="lockscreen.js"></script>
+    <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script defer src="sentry-init.js"></script>
+
+    <style>
+        /* ── Community Hub Styles ──────────────────────────── */
+        .community-hub {
+            width: 100%;
+            max-width: 900px;
+        }
+
+        /* ── Hero ─────────────────────────────────────────── */
+        .community-hero {
+            background: linear-gradient(135deg, #5865F2 0%, #4752C4 100%);
+            border-radius: 16px;
+            padding: 48px 40px;
+            text-align: center;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .community-hero-icon {
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 16px;
+        }
+
+        .community-hero h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 8px;
+        }
+
+        .community-hero p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            margin: 0 0 24px;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Stats pills */
+        .community-stats {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+
+        .community-stat {
+            display: none;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .88rem;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        .community-stat.visible {
+            display: flex;
+        }
+
+        .community-stat i {
+            font-size: .75rem;
+        }
+
+        .stat-dot-online {
+            color: #57F287;
+        }
+
+        .stat-dot-members {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* CTA button */
+        .community-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            color: #5865F2;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+            transition: all .2s ease;
+            text-decoration: none;
+        }
+
+        .community-cta:hover {
+            background: #f0f0ff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+            text-decoration: none;
+            color: #5865F2;
+        }
+
+        .community-cta i {
+            font-size: 1.15rem;
+        }
+
+        /* ── Feature Cards ────────────────────────────────── */
+        .community-features {
+            margin-bottom: 32px;
+        }
+
+        .community-section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0 0 16px;
+        }
+
+        .community-features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .community-feature-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all .15s ease;
+        }
+
+        .community-feature-card:hover {
+            border-color: rgba(88,101,242,0.2);
+            box-shadow: 0 2px 12px rgba(88,101,242,0.06);
+        }
+
+        .community-feature-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #fff;
+            margin-bottom: 12px;
+        }
+
+        .community-feature-icon.study    { background: linear-gradient(135deg, #5865F2, #4752C4); }
+        .community-feature-icon.bot      { background: linear-gradient(135deg, #2E86AB, #1a6b8a); }
+        .community-feature-icon.exam     { background: linear-gradient(135deg, #F18F01, #d47e01); }
+        .community-feature-icon.peer     { background: linear-gradient(135deg, #ec4899, #db2777); }
+
+        .community-feature-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: .95rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0 0 6px;
+        }
+
+        .community-feature-card p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .88rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* ── How to Join ──────────────────────────────────── */
+        .community-join {
+            margin-bottom: 32px;
+        }
+
+        .community-steps {
+            display: flex;
+            gap: 16px;
+        }
+
+        .community-step {
+            flex: 1;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 24px 20px;
+            text-align: center;
+        }
+
+        .community-step-number {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(88,101,242,0.1);
+            color: #5865F2;
+            font-family: 'Outfit', sans-serif;
+            font-size: .95rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+        }
+
+        .community-step h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: .9rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0 0 6px;
+        }
+
+        .community-step p {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .85rem;
+            color: #64748b;
+            margin: 0;
+            line-height: 1.45;
+        }
+
+        /* ── Guidelines ───────────────────────────────────── */
+        .community-guidelines {
+            margin-bottom: 32px;
+        }
+
+        .community-guidelines-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .community-guidelines-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .community-guidelines-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .9rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+
+        .community-guidelines-list li i {
+            color: #5865F2;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        /* ── FAQ Accordion ────────────────────────────────── */
+        .community-faq {
+            margin-bottom: 32px;
+        }
+
+        .community-faq-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .community-faq-item {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .community-faq-question {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 16px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .9rem;
+            font-weight: 600;
+            color: #0f172a;
+            text-align: left;
+        }
+
+        .community-faq-question i {
+            font-size: .75rem;
+            color: #94a3b8;
+            transition: transform .2s ease;
+            flex-shrink: 0;
+            margin-left: 12px;
+        }
+
+        .community-faq-item.open .community-faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .community-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .25s ease;
+        }
+
+        .community-faq-answer-inner {
+            padding: 0 20px 16px;
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .88rem;
+            color: #64748b;
+            line-height: 1.6;
+        }
+
+        /* ── Dark Mode ────────────────────────────────────── */
+        [data-theme="dark"] .community-hero {
+            background: linear-gradient(135deg, #4752C4 0%, #3b44a8 100%);
+        }
+
+        [data-theme="dark"] .community-section-title {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .community-feature-card,
+        [data-theme="dark"] .community-step,
+        [data-theme="dark"] .community-guidelines-card,
+        [data-theme="dark"] .community-faq-item {
+            background: #1e293b;
+            border-color: rgba(255,255,255,0.06);
+        }
+
+        [data-theme="dark"] .community-feature-card:hover {
+            border-color: rgba(88,101,242,0.3);
+        }
+
+        [data-theme="dark"] .community-feature-card h3,
+        [data-theme="dark"] .community-step h3,
+        [data-theme="dark"] .community-faq-question {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .community-feature-card p,
+        [data-theme="dark"] .community-step p,
+        [data-theme="dark"] .community-guidelines-list li,
+        [data-theme="dark"] .community-faq-answer-inner {
+            color: #94a3b8;
+        }
+
+        [data-theme="dark"] .community-step-number {
+            background: rgba(88,101,242,0.2);
+        }
+
+        [data-theme="dark"] .community-guidelines-list li i {
+            color: #7c8bf5;
+        }
+
+        [data-theme="dark"] .community-cta {
+            background: #fff;
+            color: #5865F2;
+        }
+
+        [data-theme="dark"] .community-cta:hover {
+            background: #e8e8ff;
+        }
+
+        /* ── Responsive ───────────────────────────────────── */
+        @media (max-width: 768px) {
+            .community-hero {
+                padding: 36px 24px;
+            }
+
+            .community-hero h2 {
+                font-size: 1.4rem;
+            }
+
+            .community-features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .community-steps {
+                flex-direction: column;
+            }
+
+            .community-step {
+                text-align: left;
+            }
+
+            .community-step-number {
+                margin: 0 0 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">Dashboard</a>
+                <a href="resources.html">Resources</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <div class="user-menu">
+                    <button class="user-avatar" id="user-menu-btn" title="Account menu">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="user-dropdown-header">
+                            <div class="user-avatar-large">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-divider"></div>
+                        <div class="theme-selector">
+                            <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                            <div class="theme-selector-options">
+                                <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                    <i class="fas fa-sun"></i>
+                                </button>
+                                <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button class="theme-option" data-theme-mode="system" title="System preference">
+                                    <i class="fas fa-desktop"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="community-hub">
+
+            <!-- Hero -->
+            <div class="community-hero">
+                <div class="community-hero-icon">
+                    <i class="fab fa-discord"></i>
+                </div>
+                <h2>Join Our Nursing Community</h2>
+                <p>Connect with fellow nursing students, get AI-powered study help from FlorenceBot, and never study alone again.</p>
+
+                <div class="community-stats" id="community-stats">
+                    <span class="community-stat" id="stat-members">
+                        <i class="fas fa-circle stat-dot-members"></i>
+                        <span id="stat-members-count">0</span> Members
+                    </span>
+                    <span class="community-stat" id="stat-online">
+                        <i class="fas fa-circle stat-dot-online"></i>
+                        <span id="stat-online-count">0</span> Online
+                    </span>
+                </div>
+
+                <a href="https://discord.gg/y2Mh77wAV2" target="_blank" rel="noopener" class="community-cta" data-discord-join>
+                    <i class="fab fa-discord"></i> Join Our Discord
+                </a>
+            </div>
+
+            <!-- Features -->
+            <div class="community-features">
+                <h3 class="community-section-title">What You'll Find</h3>
+                <div class="community-features-grid">
+                    <div class="community-feature-card">
+                        <div class="community-feature-icon study">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Study Groups</h3>
+                        <p>Team up with classmates and form study groups for any nursing topic. Share notes, quiz each other, and stay accountable.</p>
+                    </div>
+                    <div class="community-feature-card">
+                        <div class="community-feature-icon bot">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>FlorenceBot AI</h3>
+                        <p>Our AI study assistant lives in the server. Ask questions, get explanations, and practice NCLEX-style questions on demand.</p>
+                    </div>
+                    <div class="community-feature-card">
+                        <div class="community-feature-icon exam">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3>Exam Prep Support</h3>
+                        <p>Dedicated channels for NCLEX prep, ATI, HESI, and course exams. Get advice from students who've been through it.</p>
+                    </div>
+                    <div class="community-feature-card">
+                        <div class="community-feature-icon peer">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Peer Support</h3>
+                        <p>Nursing school is tough. Our community is here to encourage you, share experiences, and celebrate your wins.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How to Join -->
+            <div class="community-join">
+                <h3 class="community-section-title">How to Join</h3>
+                <div class="community-steps">
+                    <div class="community-step">
+                        <div class="community-step-number">1</div>
+                        <h3>Click Join</h3>
+                        <p>Hit the "Join Our Discord" button above to open the invite link.</p>
+                    </div>
+                    <div class="community-step">
+                        <div class="community-step-number">2</div>
+                        <h3>Create or Log In</h3>
+                        <p>Sign in to your Discord account, or create a free one in seconds.</p>
+                    </div>
+                    <div class="community-step">
+                        <div class="community-step-number">3</div>
+                        <h3>Start Chatting</h3>
+                        <p>Introduce yourself and jump into any channel. We're a friendly bunch!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community Guidelines -->
+            <div class="community-guidelines">
+                <h3 class="community-section-title">Community Guidelines</h3>
+                <div class="community-guidelines-card">
+                    <ul class="community-guidelines-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Be respectful</strong> &mdash; Treat everyone with kindness. We're all here to learn and grow together.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>No copyrighted test questions</strong> &mdash; Don't share actual exam questions from NCLEX, ATI, HESI, or course exams.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Ask freely</strong> &mdash; There are no dumb questions in nursing. If you're confused, someone else probably is too.</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <span><strong>Stay on topic</strong> &mdash; Use the right channels for your discussions to keep things organized.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="community-faq">
+                <h3 class="community-section-title">Frequently Asked Questions</h3>
+                <div class="community-faq-list" id="community-faq-list">
+                    <div class="community-faq-item">
+                        <button class="community-faq-question" aria-expanded="false">
+                            Is the Discord server free to join?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="community-faq-answer">
+                            <div class="community-faq-answer-inner">
+                                Yes! The Discord server is completely free for everyone. You don't need a paid subscription to join or participate in discussions.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="community-faq-item">
+                        <button class="community-faq-question" aria-expanded="false">
+                            Do I need a subscription to access everything?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="community-faq-answer">
+                            <div class="community-faq-answer-inner">
+                                Most channels are available to everyone. Premium members get access to exclusive channels and enhanced FlorenceBot features, but the core community is open to all nursing students.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="community-faq-item">
+                        <button class="community-faq-question" aria-expanded="false">
+                            What is FlorenceBot?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="community-faq-answer">
+                            <div class="community-faq-answer-inner">
+                                FlorenceBot is our AI-powered nursing study assistant that lives in the Discord server. You can ask it questions, request practice problems, get concept explanations, and more &mdash; all within Discord.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="community-faq-item">
+                        <button class="community-faq-question" aria-expanded="false">
+                            Can I use Discord on my phone?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="community-faq-answer">
+                            <div class="community-faq-answer-inner">
+                                Absolutely! Discord has free apps for iOS and Android, plus a desktop app and web version. You can stay connected from anywhere.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="community-faq-item">
+                        <button class="community-faq-question" aria-expanded="false">
+                            How do I get help if I have a problem?
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="community-faq-answer">
+                            <div class="community-faq-answer-inner">
+                                You can reach out to moderators directly in the server, or contact our support team at <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span>The Nursing Collective</span>
+                    </div>
+                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+                <p class="footer-attribution">
+                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="dark-mode.js"></script>
+    <script src="api-service.js?v=1769142742"></script>
+    <script defer src="script.js?v=4.8.dashboard"></script>
+    <script defer src="sidebar.js?v=1.3.community"></script>
+
+    <script defer src="community-script.js?v=1.0"></script>
+</body>
+</html>

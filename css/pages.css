@@ -7102,8 +7102,8 @@ body.is-admin-user .action-card-hero[data-navigate="pricing.html"] {
     display: none !important;
 }
 
-/* Hide Join Discord button */
-body.is-admin-user .action-card-hero[data-external="https://discord.gg/y2Mh77wAV2"] {
+/* Hide Community button for admins */
+body.is-admin-user .action-card-hero[data-navigate="community.html"] {
     display: none !important;
 }
 

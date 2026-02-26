@@ -1341,62 +1341,19 @@ function openChangePlanModal(currentSub) {
     }
 }
 
+var _changePlanData = null;
+
 async function loadChangePlanOptions(currentSub, optionsEl, loadingEl, confirmBtn) {
     try {
         var data = await apiCall('/api/subscription-plans');
         if (!data || !data.plans) throw new Error('Failed to load plans');
 
+        _changePlanData = data;
         var isAi = currentSub.is_ai_plan || (currentSub.plan_id && currentSub.plan_id.startsWith('ai-'));
 
-        // Build plan cards — only show same tier (standard or AI)
-        var html = '';
-        var planOrder = isAi
-            ? ['ai-monthly-access', 'ai-semester-access', 'ai-lifetime-access']
-            : ['monthly-access', 'semester-access', 'lifetime-access'];
+        renderPlanTier(isAi, currentSub, optionsEl, confirmBtn);
 
-        planOrder.forEach(function(planId) {
-            var plan = data.plans[planId];
-            if (!plan) return;
-
-            var isCurrent = planId === currentSub.plan_id;
-            var priceLabel = plan.interval === 'month' ? '$' + plan.price.toFixed(2) + '/mo' :
-                             plan.access_days ? '$' + plan.price.toFixed(2) + '/semester' :
-                             '$' + plan.price.toFixed(2) + ' once';
-
-            html += '<div class="plan-option' + (isCurrent ? ' current-plan' : '') + '" data-plan-id="' + planId + '">';
-            html += '  <div class="plan-option-radio"></div>';
-            html += '  <div class="plan-option-info">';
-            html += '    <div class="plan-option-name">' + plan.name;
-            if (isCurrent) html += ' <span class="plan-option-badge">Current</span>';
-            html += '    </div>';
-            html += '    <div class="plan-option-desc">' + (plan.description || '').substring(0, 80) + '</div>';
-            html += '  </div>';
-            html += '  <div class="plan-option-price">' + priceLabel + '</div>';
-            html += '</div>';
-        });
-
-        // Show "switch tier" hint
-        if (isAi) {
-            html += '<p style="text-align:center; font-size:0.82rem; color:var(--text-secondary); margin-top:4px;">Looking for Standard plans? <a href="pricing.html" style="color:var(--primary-color);">View all plans</a></p>';
-        } else {
-            html += '<p style="text-align:center; font-size:0.82rem; color:var(--text-secondary); margin-top:4px;">Want AI study tools? <a href="pricing.html" style="color:#7c3aed;">View AI-Powered plans</a></p>';
-        }
-
-        if (optionsEl) { optionsEl.innerHTML = html; optionsEl.style.display = 'flex'; }
         if (loadingEl) loadingEl.style.display = 'none';
-
-        // Add click handlers to plan options
-        var options = optionsEl.querySelectorAll('.plan-option:not(.current-plan)');
-        options.forEach(function(opt) {
-            opt.addEventListener('click', function() {
-                // Deselect all
-                optionsEl.querySelectorAll('.plan-option').forEach(function(o) { o.classList.remove('selected'); });
-                // Select this one
-                opt.classList.add('selected');
-                _changePlanSelected = opt.getAttribute('data-plan-id');
-                if (confirmBtn) confirmBtn.style.display = 'inline-flex';
-            });
-        });
 
     } catch (error) {
         console.error('Error loading plans:', error);
@@ -1405,6 +1362,71 @@ async function loadChangePlanOptions(currentSub, optionsEl, loadingEl, confirmBt
             optionsEl.innerHTML = '<p style="text-align:center; color:var(--text-secondary); padding: 16px;">Unable to load plans. Please try again.</p>';
             optionsEl.style.display = 'flex';
         }
+    }
+}
+
+function renderPlanTier(showAi, currentSub, optionsEl, confirmBtn) {
+    if (!_changePlanData || !optionsEl) return;
+
+    var plans = _changePlanData.plans;
+    var html = '';
+    var planOrder = showAi
+        ? ['ai-monthly-access', 'ai-semester-access', 'ai-lifetime-access']
+        : ['monthly-access', 'semester-access', 'lifetime-access'];
+
+    planOrder.forEach(function(planId) {
+        var plan = plans[planId];
+        if (!plan) return;
+
+        var isCurrent = planId === currentSub.plan_id;
+        var priceLabel = plan.interval === 'month' ? '$' + plan.price.toFixed(2) + '/mo' :
+                         plan.access_days ? '$' + plan.price.toFixed(2) + '/semester' :
+                         '$' + plan.price.toFixed(2) + ' once';
+
+        html += '<div class="plan-option' + (isCurrent ? ' current-plan' : '') + '" data-plan-id="' + planId + '">';
+        html += '  <div class="plan-option-radio"></div>';
+        html += '  <div class="plan-option-info">';
+        html += '    <div class="plan-option-name">' + plan.name;
+        if (isCurrent) html += ' <span class="plan-option-badge">Current</span>';
+        html += '    </div>';
+        html += '    <div class="plan-option-desc">' + (plan.description || '').substring(0, 80) + '</div>';
+        html += '  </div>';
+        html += '  <div class="plan-option-price">' + priceLabel + '</div>';
+        html += '</div>';
+    });
+
+    // Toggle link to switch between tiers
+    if (showAi) {
+        html += '<p style="text-align:center; font-size:0.82rem; color:var(--text-secondary); margin-top:4px;">Looking for Standard plans? <a href="#" class="change-plan-tier-toggle" style="color:var(--primary-color);">View Standard plans</a></p>';
+    } else {
+        html += '<p style="text-align:center; font-size:0.82rem; color:var(--text-secondary); margin-top:4px;">Want AI study tools? <a href="#" class="change-plan-tier-toggle" style="color:#7c3aed;">View AI-Powered plans</a></p>';
+    }
+
+    optionsEl.innerHTML = html;
+    optionsEl.style.display = 'flex';
+
+    // Reset selection when switching tiers
+    _changePlanSelected = null;
+    if (confirmBtn) confirmBtn.style.display = 'none';
+
+    // Add click handlers to plan options
+    var options = optionsEl.querySelectorAll('.plan-option:not(.current-plan)');
+    options.forEach(function(opt) {
+        opt.addEventListener('click', function() {
+            optionsEl.querySelectorAll('.plan-option').forEach(function(o) { o.classList.remove('selected'); });
+            opt.classList.add('selected');
+            _changePlanSelected = opt.getAttribute('data-plan-id');
+            if (confirmBtn) confirmBtn.style.display = 'inline-flex';
+        });
+    });
+
+    // Add toggle handler to switch tiers inline
+    var toggleLink = optionsEl.querySelector('.change-plan-tier-toggle');
+    if (toggleLink) {
+        toggleLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            renderPlanTier(!showAi, currentSub, optionsEl, confirmBtn);
+        });
     }
 }
 

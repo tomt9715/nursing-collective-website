@@ -386,6 +386,7 @@
                     b.classList.toggle('active', b === btn);
                 });
                 if (qcountInput) qcountInput.value = count;
+                updatePoolHint();
             });
         }
         if (qcountInput) {
@@ -397,16 +398,13 @@
                         b.classList.toggle('active', parseInt(b.dataset.count, 10) === val);
                     });
                 }
+                updatePoolHint();
             });
         }
 
-        // Show/hide pool hint when quiz mode checkbox changes
+        // Show/hide pool hint based on quiz checkbox + question count
         if (qcountQuizCheckbox) {
-            qcountQuizCheckbox.addEventListener('change', function () {
-                if (qcountPoolHint) {
-                    qcountPoolHint.classList.toggle('visible', qcountQuizCheckbox.checked);
-                }
-            });
+            qcountQuizCheckbox.addEventListener('change', updatePoolHint);
         }
 
         // TOC link clicks → smooth scroll within panel
@@ -801,6 +799,15 @@
 
     // ── Question count modal ─────────────────────────────────────
 
+    function updatePoolHint() {
+        if (!qcountPoolHint) return;
+        var quizOn = qcountQuizCheckbox ? qcountQuizCheckbox.checked : false;
+        var count = parseInt(qcountInput ? qcountInput.value : 15, 10);
+        // Pool only exists when doubling produces extra questions (count * 2 must exceed count, capped at 50)
+        var wouldHavePool = quizOn && count < 50 && Math.min(count * 2, 50) > count;
+        qcountPoolHint.classList.toggle('visible', wouldHavePool);
+    }
+
     function openQuestionCountModal(docId, filename) {
         pendingPqDocId = docId;
         pendingPqFilename = filename;
@@ -812,7 +819,7 @@
             });
         }
         if (qcountQuizCheckbox) qcountQuizCheckbox.checked = true;
-        if (qcountPoolHint) qcountPoolHint.classList.add('visible');
+        updatePoolHint();
         // Show modal
         if (qcountBackdrop) {
             qcountBackdrop.classList.add('visible');
@@ -1594,6 +1601,8 @@
 
         try {
             sessionStorage.setItem('aiQuizData', JSON.stringify(quizPayload));
+            // Reset round counter so new quiz always starts at round 0
+            sessionStorage.setItem('aiQuizRound', '0');
         } catch (e) {
             showToast('Failed to prepare quiz data. Please try again.', 'error');
             return;

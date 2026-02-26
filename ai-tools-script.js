@@ -118,6 +118,15 @@
     var creditQuestionsItem = document.getElementById('ai-credit-questions');
     var creditResetEl = document.getElementById('ai-credit-reset');
 
+    // Question count modal elements
+    var qcountBackdrop = document.getElementById('ai-qcount-backdrop');
+    var qcountModal = document.getElementById('ai-qcount-modal');
+    var qcountInput = document.getElementById('ai-qcount-input');
+    var qcountPresets = document.getElementById('ai-qcount-presets');
+    var qcountCancel = document.getElementById('ai-qcount-cancel');
+    var qcountGo = document.getElementById('ai-qcount-go');
+    var qcountQuizCheckbox = document.getElementById('ai-qcount-quiz');
+
     // ── State ───────────────────────────────────────────────────
     var documents = [];
     var pollingTimers = {};
@@ -128,6 +137,10 @@
     var currentMarkdown = null;
     var currentGenerationType = null;
     var currentContentTitle = null; // AI-inferred topic title (from H1)
+    var pendingPqDocId = null;      // doc ID waiting for question count selection
+    var pendingPqFilename = null;   // filename waiting for question count selection
+    var autoLaunchQuiz = false;     // whether to auto-launch quiz after generation
+    var lastNumQuestions = null;    // last question count used (for regeneration)
 
     // ── Initialization ──────────────────────────────────────────
 
@@ -358,6 +371,34 @@
         if (panelRegenerateBtn) panelRegenerateBtn.addEventListener('click', regenerateGeneration);
         if (panelQuizBtn) panelQuizBtn.addEventListener('click', takeAsQuiz);
 
+        // Question count modal events
+        if (qcountCancel) qcountCancel.addEventListener('click', closeQuestionCountModal);
+        if (qcountBackdrop) qcountBackdrop.addEventListener('click', closeQuestionCountModal);
+        if (qcountGo) qcountGo.addEventListener('click', confirmQuestionCount);
+        if (qcountPresets) {
+            qcountPresets.addEventListener('click', function (e) {
+                var btn = e.target.closest('.ai-qcount-preset');
+                if (!btn) return;
+                var count = parseInt(btn.dataset.count, 10);
+                // Update active state
+                qcountPresets.querySelectorAll('.ai-qcount-preset').forEach(function (b) {
+                    b.classList.toggle('active', b === btn);
+                });
+                if (qcountInput) qcountInput.value = count;
+            });
+        }
+        if (qcountInput) {
+            qcountInput.addEventListener('input', function () {
+                // Deselect presets when user types a custom value
+                var val = parseInt(qcountInput.value, 10);
+                if (qcountPresets) {
+                    qcountPresets.querySelectorAll('.ai-qcount-preset').forEach(function (b) {
+                        b.classList.toggle('active', parseInt(b.dataset.count, 10) === val);
+                    });
+                }
+            });
+        }
+
         // TOC link clicks → smooth scroll within panel
         if (panelBody) {
             panelBody.addEventListener('click', function (e) {
@@ -377,8 +418,12 @@
 
         // ESC key
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape' && panelEl && panelEl.classList.contains('open')) {
-                closePanel();
+            if (e.key === 'Escape') {
+                if (qcountModal && qcountModal.classList.contains('visible')) {
+                    closeQuestionCountModal();
+                } else if (panelEl && panelEl.classList.contains('open')) {
+                    closePanel();
+                }
             }
         });
     }
@@ -744,11 +789,66 @@
         }
     }
 
+    // ── Question count modal ─────────────────────────────────────
+
+    function openQuestionCountModal(docId, filename) {
+        pendingPqDocId = docId;
+        pendingPqFilename = filename;
+        // Reset to default
+        if (qcountInput) qcountInput.value = 15;
+        if (qcountPresets) {
+            qcountPresets.querySelectorAll('.ai-qcount-preset').forEach(function (b) {
+                b.classList.toggle('active', b.dataset.count === '15');
+            });
+        }
+        if (qcountQuizCheckbox) qcountQuizCheckbox.checked = true;
+        // Show modal
+        if (qcountBackdrop) {
+            qcountBackdrop.classList.add('visible');
+        }
+        if (qcountModal) {
+            qcountModal.classList.add('visible');
+        }
+    }
+
+    function closeQuestionCountModal() {
+        if (qcountBackdrop) qcountBackdrop.classList.remove('visible');
+        if (qcountModal) qcountModal.classList.remove('visible');
+        pendingPqDocId = null;
+        pendingPqFilename = null;
+    }
+
+    function confirmQuestionCount() {
+        var count = parseInt(qcountInput ? qcountInput.value : 15, 10);
+        if (isNaN(count) || count < 5) count = 5;
+        if (count > 50) count = 50;
+        lastNumQuestions = count;
+        autoLaunchQuiz = qcountQuizCheckbox ? qcountQuizCheckbox.checked : false;
+        var docId = pendingPqDocId;
+        var filename = pendingPqFilename;
+        closeQuestionCountModal();
+        if (docId) {
+            requestGeneration(docId, filename, 'practice_questions', count);
+        }
+    }
+
     // ── Generate content ────────────────────────────────────────
 
-    async function requestGeneration(docId, filename, genType) {
+    async function requestGeneration(docId, filename, genType, numQuestions) {
         var typeInfo = GENERATION_TYPES[genType];
         if (!typeInfo) return;
+
+        // For practice questions without a cached result, show the question count modal first
+        if (genType === 'practice_questions' && !numQuestions) {
+            var pqBtn = document.querySelector(
+                '[data-action="generate"][data-doc-id="' + docId + '"][data-gen-type="practice_questions"]'
+            );
+            var isCached = pqBtn && pqBtn.querySelector('.ai-action-cached');
+            if (!isCached) {
+                openQuestionCountModal(docId, filename);
+                return;
+            }
+        }
 
         var btn = document.querySelector(
             '[data-action="generate"][data-doc-id="' + docId + '"][data-gen-type="' + genType + '"]'
@@ -759,10 +859,16 @@
         // sees feedback right away instead of staring at a tiny spinner.
         openPanelGenerating(docId, filename, genType);
 
+        // Build request body
+        var reqBody = { type: genType };
+        if (genType === 'practice_questions' && numQuestions) {
+            reqBody.num_questions = numQuestions;
+        }
+
         try {
             var data = await apiCall('/api/ai/generate/' + docId, {
                 method: 'POST',
-                body: JSON.stringify({ type: genType }),
+                body: JSON.stringify(reqBody),
                 headers: { 'Content-Type': 'application/json' }
             });
 
@@ -773,7 +879,14 @@
                     btn.insertAdjacentHTML('afterbegin', '<span class="ai-action-cached" title="Generated"></span>');
                 }
                 // Refresh credits if this was a practice_questions generation
-                if (genType === 'practice_questions') fetchCredits();
+                if (genType === 'practice_questions') {
+                    fetchCredits();
+                    // Auto-launch quiz mode if the user checked the option
+                    if (autoLaunchQuiz) {
+                        autoLaunchQuiz = false;
+                        setTimeout(function () { takeAsQuiz(); }, 600);
+                    }
+                }
             } else if (data && data.status === 'generating') {
                 // Content is still being generated — keep panel open and poll
                 pollForGeneration(docId, filename, genType, btn);
@@ -843,7 +956,13 @@
                         panelRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';
                     }
                     // Refresh credits if practice_questions completed
-                    if (genType === 'practice_questions') fetchCredits();
+                    if (genType === 'practice_questions') {
+                        fetchCredits();
+                        if (autoLaunchQuiz) {
+                            autoLaunchQuiz = false;
+                            setTimeout(function () { takeAsQuiz(); }, 600);
+                        }
+                    }
                 } else if (data && data.status === 'generating') {
                     // Still working — update the hint with elapsed time
                     if (hintEl) {
@@ -1101,9 +1220,13 @@
         }
 
         try {
+            var regenBody = { type: currentGenerationType, regenerate: true };
+            if (currentGenerationType === 'practice_questions' && lastNumQuestions) {
+                regenBody.num_questions = lastNumQuestions;
+            }
             var data = await apiCall('/api/ai/generate/' + currentDocId, {
                 method: 'POST',
-                body: JSON.stringify({ type: currentGenerationType, regenerate: true }),
+                body: JSON.stringify(regenBody),
                 headers: { 'Content-Type': 'application/json' }
             });
 

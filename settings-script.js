@@ -1653,11 +1653,22 @@ async function proceedToCheckout(currentSub, modal) {
     }
 
     try {
+        // Get user email from the settings page (already loaded)
+        var userEmail = '';
+        var emailInput = document.getElementById('email');
+        if (emailInput && emailInput.value) {
+            userEmail = emailInput.value;
+        } else {
+            var heroEmail = document.getElementById('settings-hero-email');
+            if (heroEmail) userEmail = heroEmail.textContent.trim();
+        }
+
         var response = await apiCall('/api/create-subscription', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
                 plan_id: _changePlanSelected,
+                email: userEmail,
                 success_url: window.location.origin + '/success.html?session_id={CHECKOUT_SESSION_ID}&type=plan_change',
                 cancel_url: window.location.href
             })

@@ -1207,24 +1207,26 @@ function openCancelSubModal(sub) {
     var modal = document.getElementById('cancel-sub-modal');
     if (!modal) return;
 
-    // Set the access-until date in the modal
+    var step1 = document.getElementById('cancel-sub-step-1');
+    var step2 = document.getElementById('cancel-sub-step-2');
+    var confirmInput = document.getElementById('cancel-sub-confirm-text');
+    var confirmBtn = document.getElementById('cancel-sub-confirm-btn');
+    var errorEl = document.getElementById('cancel-sub-error');
+
+    // Set the access-until date
     var dateEl = document.getElementById('cancel-sub-access-date');
     if (dateEl && sub.expires_at) {
         dateEl.textContent = membershipFormatDate(sub.expires_at);
     }
 
-    // Clear any previous error
-    var errorEl = document.getElementById('cancel-sub-error');
+    // Reset to step 1
+    if (step1) step1.style.display = 'block';
+    if (step2) step2.style.display = 'none';
+    if (confirmInput) confirmInput.value = '';
+    if (confirmBtn) { confirmBtn.disabled = true; confirmBtn.innerHTML = '<i class="fas fa-times-circle"></i> Cancel Subscription'; }
     if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
 
-    // Reset confirm button state
-    var confirmBtn = document.getElementById('cancel-sub-confirm-btn');
-    if (confirmBtn) {
-        confirmBtn.disabled = false;
-        confirmBtn.innerHTML = '<i class="fas fa-times-circle"></i> Yes, Cancel';
-    }
-
-    // Show modal (use style.display like delete modal)
+    // Show modal
     modal.style.display = 'flex';
 
     // Keep button — close modal
@@ -1233,7 +1235,36 @@ function openCancelSubModal(sub) {
         keepBtn.onclick = function() { modal.style.display = 'none'; };
     }
 
-    // Confirm cancel
+    // "Yes, Cancel" → advance to step 2
+    var nextBtn = document.getElementById('cancel-sub-next-btn');
+    if (nextBtn) {
+        nextBtn.onclick = function() {
+            if (step1) step1.style.display = 'none';
+            if (step2) step2.style.display = 'block';
+            if (confirmInput) confirmInput.focus();
+        };
+    }
+
+    // "Go Back" → return to step 1
+    var backBtn = document.getElementById('cancel-sub-back-btn');
+    if (backBtn) {
+        backBtn.onclick = function() {
+            if (step2) step2.style.display = 'none';
+            if (step1) step1.style.display = 'block';
+            if (confirmInput) confirmInput.value = '';
+            if (confirmBtn) confirmBtn.disabled = true;
+        };
+    }
+
+    // Enable confirm button only when user types "CANCEL SUBSCRIPTION"
+    if (confirmInput) {
+        confirmInput.oninput = function() {
+            var match = confirmInput.value.trim().toUpperCase() === 'CANCEL SUBSCRIPTION';
+            if (confirmBtn) confirmBtn.disabled = !match;
+        };
+    }
+
+    // Final confirm — actually cancel
     if (confirmBtn) {
         confirmBtn.onclick = function() { handleCancelSubscription(modal); };
     }

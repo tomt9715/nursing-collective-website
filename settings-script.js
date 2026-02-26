@@ -1168,13 +1168,113 @@ async function handleManageBilling() {
     }
 }
 
-async function handleMembershipUpgrade() {
-    var btn = document.getElementById('membership-upgrade-btn');
-    if (!btn) return;
+function handleMembershipUpgrade() {
+    // Open the upgrade confirmation modal instead of directly redirecting
+    openUpgradeAiModal();
+}
 
-    var originalHtml = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+function openUpgradeAiModal() {
+    var modal = document.getElementById('upgrade-ai-modal');
+    if (!modal) return;
+
+    var summaryEl = document.getElementById('upgrade-ai-summary');
+    var confirmBtn = document.getElementById('upgrade-ai-confirm-btn');
+    var errorEl = document.getElementById('upgrade-ai-error');
+    var closeBtn = document.getElementById('upgrade-ai-close-btn');
+
+    // Reset state
+    if (confirmBtn) { confirmBtn.style.display = 'none'; confirmBtn.disabled = false; confirmBtn.innerHTML = '<i class="fas fa-credit-card"></i> Continue to Payment'; }
+    if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
+    if (summaryEl) summaryEl.innerHTML = '<div style="text-align:center; padding: 16px; color: var(--text-secondary);"><i class="fas fa-spinner fa-spin"></i> Loading upgrade details...</div>';
+
+    modal.style.display = 'flex';
+
+    // Close handlers
+    if (closeBtn) {
+        closeBtn.innerHTML = 'Close';
+        closeBtn.onclick = function() { modal.style.display = 'none'; };
+    }
+    modal.onclick = function(e) {
+        if (e.target === modal) modal.style.display = 'none';
+    };
+
+    // Load AI plan pricing to show in the summary
+    loadUpgradeDetails(summaryEl, confirmBtn, modal);
+}
+
+async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
+    try {
+        var data = await apiCall('/api/subscription-plans');
+        var subData = await apiCall('/api/subscription-status');
+        if (!data || !data.plans || !subData) throw new Error('Failed to load details');
+
+        var currentPlanId = subData.plan_id || '';
+        var currentPlanNames = {
+            'monthly-access': 'Monthly Access',
+            'semester-access': 'Semester Access',
+            'lifetime-access': 'Lifetime Access'
+        };
+        var aiEquivalent = {
+            'monthly-access': 'ai-monthly-access',
+            'semester-access': 'ai-semester-access',
+            'lifetime-access': 'ai-lifetime-access'
+        };
+
+        var currentName = currentPlanNames[currentPlanId] || subData.plan_name || currentPlanId;
+        var aiPlanId = aiEquivalent[currentPlanId] || 'ai-semester-access';
+        var aiPlan = data.plans[aiPlanId];
+
+        var aiName = aiPlan ? aiPlan.name : 'AI-Powered';
+        var aiPrice = aiPlan ? (aiPlan.interval === 'month' ? '$' + aiPlan.price.toFixed(2) + '/mo' :
+                      aiPlan.access_days ? '$' + aiPlan.price.toFixed(2) + '/semester' :
+                      '$' + aiPlan.price.toFixed(2) + ' once') : '';
+
+        if (summaryEl) {
+            summaryEl.innerHTML =
+                '<div style="background: var(--surface-color, #f8f9fa); border-radius: 12px; padding: 20px;">' +
+                '  <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">' +
+                '    <div style="flex:1; text-align:center;">' +
+                '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px;">Current Plan</div>' +
+                '      <div style="font-weight:600; color:var(--text-primary);">' + currentName + '</div>' +
+                '      <div style="font-size:0.75rem; color:var(--text-secondary); margin-top:2px;">Standard</div>' +
+                '    </div>' +
+                '    <div style="color:#7c3aed; font-size:1.2rem;"><i class="fas fa-arrow-right"></i></div>' +
+                '    <div style="flex:1; text-align:center;">' +
+                '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px;">New Plan</div>' +
+                '      <div style="font-weight:600; color:#7c3aed;">' + aiName + '</div>' +
+                (aiPrice ? '      <div style="font-size:0.9rem; color:var(--text-secondary); margin-top:2px;">' + aiPrice + '</div>' : '') +
+                '    </div>' +
+                '  </div>' +
+                '  <div style="font-size:0.82rem; color:var(--text-secondary); text-align:center; border-top:1px solid var(--border-color); padding-top:12px;">' +
+                '    <i class="fas fa-bolt" style="color:#7c3aed; margin-right:4px;"></i> Includes AI note uploads, NCLEX question generation, and more.' +
+                '  </div>' +
+                '  <div style="font-size:0.82rem; color:var(--text-secondary); text-align:center; margin-top:8px;">' +
+                '    <i class="fas fa-lock" style="margin-right:4px;"></i> You\'ll be redirected to Stripe to confirm payment.' +
+                '  </div>' +
+                '</div>';
+        }
+
+        if (confirmBtn) {
+            confirmBtn.style.display = 'inline-flex';
+            confirmBtn.onclick = function() { proceedToUpgrade(modal); };
+        }
+
+    } catch (error) {
+        console.error('Error loading upgrade details:', error);
+        if (summaryEl) {
+            summaryEl.innerHTML = '<p style="text-align:center; color:var(--text-secondary); padding: 16px;">Unable to load upgrade details. Please try again.</p>';
+        }
+    }
+}
+
+async function proceedToUpgrade(modal) {
+    var confirmBtn = document.getElementById('upgrade-ai-confirm-btn');
+    var errorEl = document.getElementById('upgrade-ai-error');
+
+    if (confirmBtn) {
+        confirmBtn.disabled = true;
+        confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
+    }
 
     try {
         var response = await apiCall('/api/ai/upgrade', {
@@ -1187,6 +1287,7 @@ async function handleMembershipUpgrade() {
         });
 
         if (response.upgraded) {
+            if (modal) modal.style.display = 'none';
             showAlert('Upgrade Complete!', response.message || 'Your plan has been upgraded to AI-Powered!', 'success');
             setTimeout(function() { loadMembership(); }, 1000);
         } else if (response.url) {
@@ -1196,9 +1297,14 @@ async function handleMembershipUpgrade() {
         }
     } catch (error) {
         console.error('Error upgrading plan:', error);
-        showAlert('Upgrade Failed', error.message || 'Unable to process the upgrade. Please try again.', 'error');
-        btn.disabled = false;
-        btn.innerHTML = originalHtml;
+        if (errorEl) {
+            errorEl.textContent = error.message || 'Unable to process the upgrade. Please try again.';
+            errorEl.style.display = 'block';
+        }
+        if (confirmBtn) {
+            confirmBtn.disabled = false;
+            confirmBtn.innerHTML = '<i class="fas fa-credit-card"></i> Continue to Payment';
+        }
     }
 }
 

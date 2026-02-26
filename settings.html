@@ -1553,6 +1553,36 @@
         </div>
     </div>
 
+    <!-- Upgrade to AI-Powered Confirmation Modal -->
+    <div id="upgrade-ai-modal" class="delete-modal-overlay" style="display:none;">
+        <div class="delete-modal-content" style="max-width: 480px;">
+            <div class="delete-modal-header">
+                <div class="delete-modal-icon" style="background: rgba(139, 92, 246, 0.1);">
+                    <i class="fas fa-bolt" style="color: #7c3aed;"></i>
+                </div>
+                <h3>Upgrade to AI-Powered</h3>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Unlock AI study tools with your current billing cycle.</p>
+            </div>
+
+            <div id="upgrade-ai-summary" style="margin-bottom: 20px;">
+                <div style="text-align:center; padding: 16px; color: var(--text-secondary);">
+                    <i class="fas fa-spinner fa-spin"></i> Loading upgrade details...
+                </div>
+            </div>
+
+            <div id="upgrade-ai-error" class="delete-modal-error" style="display:none;"></div>
+
+            <div class="delete-modal-actions">
+                <button id="upgrade-ai-close-btn" class="delete-modal-btn-cancel">
+                    Close
+                </button>
+                <button id="upgrade-ai-confirm-btn" class="delete-modal-btn-confirm" style="background: linear-gradient(135deg, #7c3aed, #a855f7); display:none;">
+                    <i class="fas fa-credit-card"></i> Continue to Payment
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Change Plan Modal -->
     <div id="change-plan-modal" class="delete-modal-overlay" style="display:none;">
         <div class="delete-modal-content" style="max-width: 520px;">

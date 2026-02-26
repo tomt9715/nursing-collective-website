@@ -400,6 +400,10 @@
         [data-theme="dark"] .ai-qcount-cancel:hover{background:#334155;color:#f1f5f9}
         [data-theme="dark"] .ai-qcount-quiz-toggle{background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.2)}
         [data-theme="dark"] .ai-qcount-quiz-toggle label{color:#4ade80}
+        .ai-qcount-pool-hint{display:none;font-size:.78rem;color:#3b82f6;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:8px 12px;margin-bottom:16px;line-height:1.5}
+        .ai-qcount-pool-hint.visible{display:block}
+        .ai-qcount-pool-hint i{margin-right:6px;font-size:.8rem}
+        [data-theme="dark"] .ai-qcount-pool-hint{background:rgba(59,130,246,.1);border-color:rgba(59,130,246,.25);color:#93c5fd}
 
         @media(max-width:768px){
             .ai-upload-dropzone{padding:24px 16px}
@@ -701,6 +705,9 @@
                         <label for="ai-qcount-quiz">Launch in Quiz Mode after generating</label>
                         <div class="ai-qcount-quiz-hint">Take the questions as an interactive timed quiz</div>
                     </div>
+                </div>
+                <div class="ai-qcount-pool-hint" id="ai-qcount-pool-hint">
+                    <i class="fas fa-layer-group"></i> We'll generate extra questions behind the scenes so you can hit <strong>"Go Again"</strong> for a fresh round — no waiting!
                 </div>
                 <div class="ai-qcount-actions">
                     <button class="ai-qcount-cancel" id="ai-qcount-cancel">Cancel</button>

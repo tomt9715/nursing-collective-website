@@ -126,6 +126,7 @@
     var qcountCancel = document.getElementById('ai-qcount-cancel');
     var qcountGo = document.getElementById('ai-qcount-go');
     var qcountQuizCheckbox = document.getElementById('ai-qcount-quiz');
+    var qcountPoolHint = document.getElementById('ai-qcount-pool-hint');
 
     // ── State ───────────────────────────────────────────────────
     var documents = [];
@@ -395,6 +396,15 @@
                     qcountPresets.querySelectorAll('.ai-qcount-preset').forEach(function (b) {
                         b.classList.toggle('active', parseInt(b.dataset.count, 10) === val);
                     });
+                }
+            });
+        }
+
+        // Show/hide pool hint when quiz mode checkbox changes
+        if (qcountQuizCheckbox) {
+            qcountQuizCheckbox.addEventListener('change', function () {
+                if (qcountPoolHint) {
+                    qcountPoolHint.classList.toggle('visible', qcountQuizCheckbox.checked);
                 }
             });
         }
@@ -802,6 +812,7 @@
             });
         }
         if (qcountQuizCheckbox) qcountQuizCheckbox.checked = true;
+        if (qcountPoolHint) qcountPoolHint.classList.add('visible');
         // Show modal
         if (qcountBackdrop) {
             qcountBackdrop.classList.add('visible');

@@ -736,6 +736,200 @@
             .crop-container { height: 280px; }
             .crop-modal-footer { padding: 12px 16px; }
         }
+
+        /* ══════════════════════════════════════════════
+           DELETE / CANCEL / CHANGE-PLAN MODAL OVERLAY
+           ══════════════════════════════════════════════ */
+        .delete-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .delete-modal-content {
+            background: var(--card-bg, white);
+            border-radius: 16px;
+            max-width: 480px;
+            width: 90%;
+            padding: 32px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="dark"] .delete-modal-content {
+            background: var(--card-bg);
+        }
+
+        .delete-modal-header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .delete-modal-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--danger-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+
+        .delete-modal-icon i {
+            font-size: 28px;
+            color: var(--danger-color);
+        }
+
+        .delete-modal-header h3 {
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .delete-modal-header p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .delete-modal-warning {
+            color: #7f1d1d;
+            font-size: 0.9rem;
+            background: var(--danger-bg);
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        [data-theme="dark"] .delete-modal-warning {
+            color: #fecaca;
+        }
+
+        .delete-modal-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .delete-modal-btn-cancel {
+            flex: 1;
+            padding: 12px;
+            background: #f3f4f6;
+            color: #374151;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        [data-theme="dark"] .delete-modal-btn-cancel {
+            background: var(--background-light);
+            color: var(--text-primary);
+        }
+
+        .delete-modal-btn-confirm {
+            flex: 1;
+            padding: 12px;
+            background: var(--danger-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .delete-modal-btn-confirm:disabled {
+            background: #fca5a5;
+            cursor: not-allowed;
+        }
+
+        [data-theme="dark"] .delete-modal-btn-confirm:disabled {
+            background: rgba(220, 38, 38, 0.4);
+        }
+
+        .delete-modal-step-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .delete-modal-step-text-sm {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .delete-modal-step-text-sm strong {
+            color: var(--danger-color);
+        }
+
+        .delete-modal-form-group {
+            margin-bottom: 16px;
+        }
+
+        .delete-modal-form-group-last {
+            margin-bottom: 20px;
+        }
+
+        .delete-modal-input-full {
+            width: 100%;
+        }
+
+        .delete-modal-error {
+            color: var(--danger-color);
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+            padding: 8px;
+            background: var(--danger-bg);
+            border-radius: 6px;
+        }
+
+        /* ── Plan option cards (Change Plan modal) ─── */
+        .plan-option {
+            border: 2px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: var(--surface-color, #f8f9fa);
+        }
+
+        .plan-option:hover {
+            border-color: var(--primary-color);
+            background: rgba(46, 134, 171, 0.04);
+        }
+
+        .plan-option.selected {
+            border-color: var(--primary-color);
+            background: rgba(46, 134, 171, 0.08);
+            box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
+        }
+
+        .plan-option.current-plan {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .plan-option-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+
+        .plan-option-price {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .plan-option-current {
+            font-size: 0.8rem;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
     </style>
     <!-- Lockscreen (must run immediately) -->
     <script src="lockscreen.js"></script>
@@ -1177,117 +1371,6 @@
                 </div>
             </div>
 
-            <!-- Delete Account Confirmation Modal -->
-            <div id="delete-account-modal" class="delete-modal-overlay hidden">
-                <div class="delete-modal-content">
-                    <div class="delete-modal-header">
-                        <div class="delete-modal-icon">
-                            <i class="fas fa-exclamation-triangle"></i>
-                        </div>
-                        <h3>Are you sure?</h3>
-                        <p>This will permanently delete your account and all associated data.</p>
-                    </div>
-
-                    <!-- Step 1: First confirmation -->
-                    <div id="delete-step-1">
-                        <p class="delete-modal-warning">
-                            <strong>You will lose access to all study guides.</strong> This cannot be reversed.
-                        </p>
-                        <div class="delete-modal-actions">
-                            <button id="cancel-delete-btn" class="delete-modal-btn-cancel">
-                                Cancel
-                            </button>
-                            <button id="continue-delete-btn" class="delete-modal-btn-confirm">
-                                Yes, Continue
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Step 2: Final confirmation with password -->
-                    <div id="delete-step-2" class="hidden">
-                        <p class="delete-modal-step-text">
-                            To confirm deletion, please enter your password:
-                        </p>
-                        <div class="form-group delete-modal-form-group">
-                            <input type="password" id="delete-confirm-password" class="form-control delete-modal-input-full" placeholder="Enter your password">
-                        </div>
-                        <p class="delete-modal-step-text-sm">
-                            Type <strong>DELETE</strong> to confirm:
-                        </p>
-                        <div class="form-group delete-modal-form-group-last">
-                            <input type="text" id="delete-confirm-text" class="form-control delete-modal-input-full" placeholder="Type DELETE">
-                        </div>
-                        <div id="delete-error" class="delete-modal-error hidden"></div>
-                        <div class="delete-modal-actions">
-                            <button id="back-delete-btn" class="delete-modal-btn-cancel">
-                                Go Back
-                            </button>
-                            <button id="confirm-delete-btn" class="delete-modal-btn-confirm" disabled>
-                                Delete Forever
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cancel Subscription Confirmation Modal -->
-            <div id="cancel-sub-modal" class="delete-modal-overlay" style="display:none;">
-                <div class="delete-modal-content" style="max-width: 440px;">
-                    <div class="delete-modal-header">
-                        <div class="delete-modal-icon" style="background: rgba(245,158,11,0.1);">
-                            <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
-                        </div>
-                        <h3>Cancel Subscription?</h3>
-                        <p id="cancel-sub-desc">Are you sure you want to cancel your subscription?</p>
-                    </div>
-
-                    <div class="cancel-sub-details">
-                        <ul class="danger-zone-list" style="margin: 0 0 16px;">
-                            <li>You'll keep access until <strong id="cancel-sub-access-date">your current period ends</strong></li>
-                            <li>After that, you'll lose access to all premium study guides</li>
-                            <li>You can resubscribe anytime to regain access</li>
-                        </ul>
-                    </div>
-
-                    <div id="cancel-sub-error" class="delete-modal-error hidden"></div>
-
-                    <div class="delete-modal-actions">
-                        <button id="cancel-sub-keep-btn" class="delete-modal-btn-cancel">
-                            <i class="fas fa-shield-alt"></i> Keep My Plan
-                        </button>
-                        <button id="cancel-sub-confirm-btn" class="delete-modal-btn-confirm" style="background: #dc2626;">
-                            <i class="fas fa-times-circle"></i> Yes, Cancel
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Change Plan Modal -->
-            <div id="change-plan-modal" class="delete-modal-overlay" style="display:none;">
-                <div class="delete-modal-content" style="max-width: 520px;">
-                    <div class="delete-modal-header" style="margin-bottom: 4px;">
-                        <h3 style="margin-top: 8px;"><i class="fas fa-exchange-alt" style="color: var(--primary-color); margin-right: 8px;"></i>Change Plan</h3>
-                        <p id="change-plan-current" style="font-size: 0.9rem; color: var(--text-secondary);">Select a new plan below.</p>
-                    </div>
-
-                    <div id="change-plan-loading" style="text-align:center; padding: 24px; color: var(--text-secondary);">
-                        <i class="fas fa-spinner fa-spin"></i> Loading plans...
-                    </div>
-
-                    <div id="change-plan-options" style="display:none; flex-direction: column; gap: 10px; margin-bottom: 20px;"></div>
-
-                    <div id="change-plan-error" class="delete-modal-error" style="display:none;"></div>
-
-                    <div class="delete-modal-actions">
-                        <button id="change-plan-close-btn" class="delete-modal-btn-cancel">
-                            Close
-                        </button>
-                        <button id="change-plan-confirm-btn" class="delete-modal-btn-confirm" style="background: var(--primary-color); display:none;">
-                            <i class="fas fa-check"></i> Switch Plan
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -1354,6 +1437,119 @@
     <script defer src="sidebar.js"></script>
     <script defer src="script.js?v=4.8.settings"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
-    <script defer src="settings-script.js?v=4.9.crop"></script>
+    <script defer src="settings-script.js?v=5.0.modals"></script>
+    <!-- ═══ Full-screen Modals (body-level for reliable fixed positioning) ═══ -->
+
+    <!-- Delete Account Confirmation Modal -->
+    <div id="delete-account-modal" class="delete-modal-overlay" style="display:none;">
+        <div class="delete-modal-content">
+            <div class="delete-modal-header">
+                <div class="delete-modal-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Are you sure?</h3>
+                <p>This will permanently delete your account and all associated data.</p>
+            </div>
+
+            <!-- Step 1: First confirmation -->
+            <div id="delete-step-1">
+                <p class="delete-modal-warning">
+                    <strong>You will lose access to all study guides.</strong> This cannot be reversed.
+                </p>
+                <div class="delete-modal-actions">
+                    <button id="cancel-delete-btn" class="delete-modal-btn-cancel">
+                        Cancel
+                    </button>
+                    <button id="continue-delete-btn" class="delete-modal-btn-confirm">
+                        Yes, Continue
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Final confirmation with password -->
+            <div id="delete-step-2" class="hidden">
+                <p class="delete-modal-step-text">
+                    To confirm deletion, please enter your password:
+                </p>
+                <div class="form-group delete-modal-form-group">
+                    <input type="password" id="delete-confirm-password" class="form-control delete-modal-input-full" placeholder="Enter your password">
+                </div>
+                <p class="delete-modal-step-text-sm">
+                    Type <strong>DELETE</strong> to confirm:
+                </p>
+                <div class="form-group delete-modal-form-group-last">
+                    <input type="text" id="delete-confirm-text" class="form-control delete-modal-input-full" placeholder="Type DELETE">
+                </div>
+                <div id="delete-error" class="delete-modal-error hidden"></div>
+                <div class="delete-modal-actions">
+                    <button id="back-delete-btn" class="delete-modal-btn-cancel">
+                        Go Back
+                    </button>
+                    <button id="confirm-delete-btn" class="delete-modal-btn-confirm" disabled>
+                        Delete Forever
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cancel Subscription Confirmation Modal -->
+    <div id="cancel-sub-modal" class="delete-modal-overlay" style="display:none;">
+        <div class="delete-modal-content" style="max-width: 440px;">
+            <div class="delete-modal-header">
+                <div class="delete-modal-icon" style="background: rgba(245,158,11,0.1);">
+                    <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
+                </div>
+                <h3>Cancel Subscription?</h3>
+                <p id="cancel-sub-desc">Are you sure you want to cancel your subscription?</p>
+            </div>
+
+            <div class="cancel-sub-details">
+                <ul class="danger-zone-list" style="margin: 0 0 16px;">
+                    <li>You'll keep access until <strong id="cancel-sub-access-date">your current period ends</strong></li>
+                    <li>After that, you'll lose access to all premium study guides</li>
+                    <li>You can resubscribe anytime to regain access</li>
+                </ul>
+            </div>
+
+            <div id="cancel-sub-error" class="delete-modal-error hidden"></div>
+
+            <div class="delete-modal-actions">
+                <button id="cancel-sub-keep-btn" class="delete-modal-btn-cancel">
+                    <i class="fas fa-shield-alt"></i> Keep My Plan
+                </button>
+                <button id="cancel-sub-confirm-btn" class="delete-modal-btn-confirm" style="background: #dc2626;">
+                    <i class="fas fa-times-circle"></i> Yes, Cancel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Plan Modal -->
+    <div id="change-plan-modal" class="delete-modal-overlay" style="display:none;">
+        <div class="delete-modal-content" style="max-width: 520px;">
+            <div class="delete-modal-header" style="margin-bottom: 4px;">
+                <h3 style="margin-top: 8px;"><i class="fas fa-exchange-alt" style="color: var(--primary-color); margin-right: 8px;"></i>Change Plan</h3>
+                <p id="change-plan-current" style="font-size: 0.9rem; color: var(--text-secondary);">Select a new plan below.</p>
+            </div>
+
+            <div id="change-plan-loading" style="text-align:center; padding: 24px; color: var(--text-secondary);">
+                <i class="fas fa-spinner fa-spin"></i> Loading plans...
+            </div>
+
+            <div id="change-plan-options" style="display:none; flex-direction: column; gap: 10px; margin-bottom: 20px;"></div>
+
+            <div id="change-plan-error" class="delete-modal-error" style="display:none;"></div>
+
+            <div class="delete-modal-actions">
+                <button id="change-plan-close-btn" class="delete-modal-btn-cancel">
+                    Close
+                </button>
+                <button id="change-plan-confirm-btn" class="delete-modal-btn-confirm" style="background: var(--primary-color); display:none;">
+                    <i class="fas fa-check"></i> Switch Plan
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

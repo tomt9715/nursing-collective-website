@@ -1507,6 +1507,14 @@ function renderPlanTier(showAi, currentSub, optionsEl, confirmBtn) {
 
     var plans = _changePlanData.plans;
     var html = '';
+
+    // Tier badge
+    if (showAi) {
+        html += '<div style="text-align:center; margin-bottom:10px;"><span style="display:inline-flex; align-items:center; gap:5px; background:linear-gradient(135deg, rgba(139,92,246,0.1), rgba(168,85,247,0.1)); color:#7c3aed; font-size:0.75rem; font-weight:700; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:1px solid rgba(139,92,246,0.2); letter-spacing:0.5px;"><i class="fas fa-bolt" style="font-size:0.65rem;"></i> AI-Powered Plans</span></div>';
+    } else {
+        html += '<div style="text-align:center; margin-bottom:10px;"><span style="display:inline-flex; align-items:center; gap:5px; background:rgba(46,134,171,0.08); color:var(--primary-color); font-size:0.75rem; font-weight:700; text-transform:uppercase; padding:4px 12px; border-radius:20px; border:1px solid rgba(46,134,171,0.15); letter-spacing:0.5px;"><i class="fas fa-book-open" style="font-size:0.65rem;"></i> Standard Plans</span></div>';
+    }
+
     var planOrder = showAi
         ? ['ai-monthly-access', 'ai-semester-access', 'ai-lifetime-access']
         : ['monthly-access', 'semester-access', 'lifetime-access'];

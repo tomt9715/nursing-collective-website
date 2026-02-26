@@ -1189,14 +1189,11 @@
                     </div>
 
                     <div class="membership-actions">
-                        <button class="btn-primary settings-save-btn" id="membership-manage-btn">
-                            <i class="fas fa-external-link-alt"></i> Manage Billing
-                        </button>
                         <button class="btn-small secondary" id="membership-change-plan-btn">
                             <i class="fas fa-exchange-alt"></i> Change Plan
                         </button>
                         <button class="btn-small danger-outline" id="membership-cancel-btn">
-                            <i class="fas fa-times-circle"></i> Cancel Subscription
+                            <i class="fas fa-times-circle"></i> Cancel Plan
                         </button>
                     </div>
                 </div>
@@ -1443,7 +1440,7 @@
     <script defer src="sidebar.js"></script>
     <script defer src="script.js?v=4.8.settings"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.js"></script>
-    <script defer src="settings-script.js?v=5.0.modals"></script>
+    <script defer src="settings-script.js?v=5.1.cancel-plan"></script>
     <!-- ═══ Full-screen Modals (body-level for reliable fixed positioning) ═══ -->
 
     <!-- Delete Account Confirmation Modal -->
@@ -1499,15 +1496,15 @@
         </div>
     </div>
 
-    <!-- Cancel Subscription Confirmation Modal -->
+    <!-- Cancel Plan Confirmation Modal -->
     <div id="cancel-sub-modal" class="delete-modal-overlay" style="display:none;">
         <div class="delete-modal-content" style="max-width: 440px;">
             <div class="delete-modal-header">
                 <div class="delete-modal-icon" style="background: rgba(245,158,11,0.1);">
                     <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
                 </div>
-                <h3>Cancel Subscription?</h3>
-                <p id="cancel-sub-desc">Are you sure you want to cancel your subscription?</p>
+                <h3>Cancel Plan?</h3>
+                <p id="cancel-sub-desc">Are you sure you want to cancel your plan?</p>
             </div>
 
             <!-- Step 1: Initial warning -->
@@ -1533,10 +1530,10 @@
             <!-- Step 2: Type to confirm -->
             <div id="cancel-sub-step-2" style="display:none;">
                 <p class="delete-modal-step-text-sm" style="margin-bottom:12px;">
-                    Type <strong style="color:#dc2626;">CANCEL SUBSCRIPTION</strong> to confirm:
+                    Type <strong style="color:#dc2626;">CANCEL PLAN</strong> to confirm:
                 </p>
                 <div class="form-group" style="margin-bottom:16px;">
-                    <input type="text" id="cancel-sub-confirm-text" class="form-control delete-modal-input-full" placeholder="Type CANCEL SUBSCRIPTION" autocomplete="off">
+                    <input type="text" id="cancel-sub-confirm-text" class="form-control delete-modal-input-full" placeholder="Type CANCEL PLAN" autocomplete="off">
                 </div>
 
                 <div id="cancel-sub-error" class="delete-modal-error" style="display:none;"></div>
@@ -1546,7 +1543,7 @@
                         <i class="fas fa-arrow-left"></i> Go Back
                     </button>
                     <button id="cancel-sub-confirm-btn" class="delete-modal-btn-confirm" style="background: #dc2626; white-space:nowrap;" disabled>
-                        <i class="fas fa-times-circle"></i> Cancel Subscription
+                        <i class="fas fa-times-circle"></i> Cancel Plan
                     </button>
                 </div>
             </div>

@@ -991,12 +991,6 @@ function renderSubscriptionCard(data) {
         upgradeBtn.addEventListener('click', handleMembershipUpgrade);
     }
 
-    // Manage Billing button
-    var manageBtn = document.getElementById('membership-manage-btn');
-    if (manageBtn) {
-        manageBtn.addEventListener('click', handleManageBilling);
-    }
-
     // Change Plan button
     var changePlanBtn = document.getElementById('membership-change-plan-btn');
     if (changePlanBtn) {
@@ -1132,40 +1126,6 @@ function renderBillingHistory(data) {
     });
 
     listEl.innerHTML = html;
-}
-
-async function handleManageBilling() {
-    var btn = document.getElementById('membership-manage-btn');
-    if (!btn) return;
-
-    var originalHtml = btn.innerHTML;
-    btn.disabled = true;
-    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Opening...';
-
-    try {
-        var response = await apiCall('/api/subscription/manage', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ return_url: window.location.href })
-        });
-
-        if (response.url) {
-            window.location.href = response.url;
-        } else {
-            throw new Error('No portal URL returned');
-        }
-    } catch (error) {
-        console.error('Error opening billing portal:', error);
-        var msg = 'Unable to open the billing portal. ';
-        if (error.message && error.message.includes('No subscription')) {
-            msg += 'No subscription record found. Please contact support.';
-        } else {
-            msg += 'Please try again or contact support@thenursingcollective.pro for help.';
-        }
-        showAlert('Billing Portal Error', msg, 'error');
-        btn.disabled = false;
-        btn.innerHTML = originalHtml;
-    }
 }
 
 function handleMembershipUpgrade() {
@@ -1362,10 +1322,10 @@ function openCancelSubModal(sub) {
         };
     }
 
-    // Enable confirm button only when user types "CANCEL SUBSCRIPTION"
+    // Enable confirm button only when user types "CANCEL PLAN"
     if (confirmInput) {
         confirmInput.oninput = function() {
-            var match = confirmInput.value.trim().toUpperCase() === 'CANCEL SUBSCRIPTION';
+            var match = confirmInput.value.trim().toUpperCase() === 'CANCEL PLAN';
             if (confirmBtn) confirmBtn.disabled = !match;
         };
     }

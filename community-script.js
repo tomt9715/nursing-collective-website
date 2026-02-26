@@ -1,16 +1,17 @@
 /**
- * Community Hub — fetch live Discord stats + FAQ accordion
+ * Community Hub — fetch live Discord stats, featured channels + FAQ accordion
  */
 (function () {
     'use strict';
 
+    var API_URL = window.API_URL || '';
+
     // ── Fetch Discord stats ───────────────────────────────────────
     function fetchStats() {
-        var API_URL = window.API_URL || '';
-
         fetch(API_URL + '/api/community/stats')
             .then(function (res) { return res.json(); })
             .then(function (data) {
+                // Hero pills
                 if (data.member_count != null) {
                     var el = document.getElementById('stat-members-count');
                     if (el) el.textContent = data.member_count.toLocaleString();
@@ -24,10 +25,91 @@
                     var pill = document.getElementById('stat-online');
                     if (pill) pill.classList.add('visible');
                 }
+
+                // Stat cards
+                if (data.member_count != null) {
+                    var card = document.getElementById('stat-card-members');
+                    var val = document.getElementById('stat-card-members-val');
+                    if (card && val) {
+                        val.textContent = data.member_count.toLocaleString();
+                        card.classList.add('visible');
+                    }
+                }
+
+                if (data.online_count != null) {
+                    var card = document.getElementById('stat-card-online');
+                    var val = document.getElementById('stat-card-online-val');
+                    if (card && val) {
+                        val.textContent = data.online_count.toLocaleString();
+                        card.classList.add('visible');
+                    }
+                }
+
+                if (data.channel_count != null) {
+                    var card = document.getElementById('stat-card-channels');
+                    var val = document.getElementById('stat-card-channels-val');
+                    if (card && val) {
+                        val.textContent = data.channel_count.toLocaleString();
+                        card.classList.add('visible');
+                    }
+                }
             })
             .catch(function () {
                 // Stats stay hidden on failure — graceful degradation
             });
+    }
+
+    // ── Fetch featured channels ───────────────────────────────────
+    function fetchChannels() {
+        fetch(API_URL + '/api/community/channels')
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                var channels = data.channels || [];
+                if (channels.length === 0) return;
+
+                // Only show channels that have a topic (curated feel)
+                var featured = channels.filter(function (ch) { return ch.topic; });
+
+                // Limit to 6 max
+                featured = featured.slice(0, 6);
+                if (featured.length === 0) return;
+
+                var grid = document.getElementById('community-discussions-grid');
+                var wrapper = document.getElementById('community-discussions');
+                if (!grid || !wrapper) return;
+
+                var html = '';
+                for (var i = 0; i < featured.length; i++) {
+                    var ch = featured[i];
+                    var displayName = '#' + ch.name.replace(/-/g, '-');
+                    var categoryBadge = ch.category
+                        ? '<span class="community-channel-badge">' + escapeHTML(ch.category) + '</span>'
+                        : '';
+
+                    html +=
+                        '<div class="community-channel-card">' +
+                            '<div class="community-channel-icon"><i class="fas fa-hashtag"></i></div>' +
+                            '<div class="community-channel-info">' +
+                                '<div class="community-channel-name">' + escapeHTML(displayName) + '</div>' +
+                                '<div class="community-channel-topic">' + escapeHTML(ch.topic) + '</div>' +
+                                categoryBadge +
+                            '</div>' +
+                        '</div>';
+                }
+
+                grid.innerHTML = html;
+                wrapper.classList.add('visible');
+            })
+            .catch(function () {
+                // Featured channels stay hidden on failure
+            });
+    }
+
+    // ── Helpers ───────────────────────────────────────────────────
+    function escapeHTML(str) {
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode(str));
+        return div.innerHTML;
     }
 
     // ── FAQ accordion ─────────────────────────────────────────────
@@ -63,6 +145,7 @@
     // ── Init ──────────────────────────────────────────────────────
     function init() {
         fetchStats();
+        fetchChannels();
         initFAQ();
     }
 

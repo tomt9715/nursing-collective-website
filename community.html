@@ -159,6 +159,129 @@
             font-size: 1.15rem;
         }
 
+        /* ── Stats Bar ────────────────────────────────────── */
+        .community-stats-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+
+        .community-stat-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 20px 24px;
+            text-align: center;
+            display: none;
+        }
+
+        .community-stat-card.visible {
+            display: block;
+        }
+
+        .community-stat-card-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #5865F2;
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .community-stat-card-label {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .82rem;
+            font-weight: 500;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+        }
+
+        /* ── Featured Discussions ─────────────────────────── */
+        .community-discussions {
+            margin-bottom: 32px;
+            display: none;
+        }
+
+        .community-discussions.visible {
+            display: block;
+        }
+
+        .community-discussions-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .community-channel-card {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 10px;
+            padding: 16px;
+            text-decoration: none;
+            transition: all .15s ease;
+        }
+
+        .community-channel-card:hover {
+            border-color: rgba(88,101,242,0.2);
+            box-shadow: 0 2px 12px rgba(88,101,242,0.06);
+            text-decoration: none;
+        }
+
+        .community-channel-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: rgba(88,101,242,0.1);
+            color: #5865F2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .85rem;
+            flex-shrink: 0;
+        }
+
+        .community-channel-info {
+            min-width: 0;
+        }
+
+        .community-channel-name {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .9rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 2px;
+        }
+
+        .community-channel-topic {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .82rem;
+            color: #94a3b8;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .community-channel-badge {
+            font-family: 'Source Sans 3', sans-serif;
+            font-size: .7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: .5px;
+            color: #94a3b8;
+            background: rgba(0,0,0,0.04);
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-top: 6px;
+            display: inline-block;
+        }
+
         /* ── Feature Cards ────────────────────────────────── */
         .community-features {
             margin-bottom: 32px;
@@ -380,12 +503,39 @@
             color: #f1f5f9;
         }
 
+        [data-theme="dark"] .community-stat-card,
+        [data-theme="dark"] .community-channel-card,
         [data-theme="dark"] .community-feature-card,
         [data-theme="dark"] .community-step,
         [data-theme="dark"] .community-guidelines-card,
         [data-theme="dark"] .community-faq-item {
             background: #1e293b;
             border-color: rgba(255,255,255,0.06);
+        }
+
+        [data-theme="dark"] .community-stat-card-value {
+            color: #7c8bf5;
+        }
+
+        [data-theme="dark"] .community-channel-name {
+            color: #f1f5f9;
+        }
+
+        [data-theme="dark"] .community-channel-topic {
+            color: #94a3b8;
+        }
+
+        [data-theme="dark"] .community-channel-icon {
+            background: rgba(88,101,242,0.2);
+        }
+
+        [data-theme="dark"] .community-channel-card:hover {
+            border-color: rgba(88,101,242,0.3);
+        }
+
+        [data-theme="dark"] .community-channel-badge {
+            background: rgba(255,255,255,0.06);
+            color: #64748b;
         }
 
         [data-theme="dark"] .community-feature-card:hover {
@@ -430,6 +580,14 @@
 
             .community-hero h2 {
                 font-size: 1.4rem;
+            }
+
+            .community-stats-bar {
+                grid-template-columns: 1fr;
+            }
+
+            .community-discussions-grid {
+                grid-template-columns: 1fr;
             }
 
             .community-features-grid {
@@ -544,6 +702,22 @@
                 </a>
             </div>
 
+            <!-- Community Stats -->
+            <div class="community-stats-bar" id="community-stats-bar">
+                <div class="community-stat-card" id="stat-card-members">
+                    <div class="community-stat-card-value" id="stat-card-members-val">—</div>
+                    <div class="community-stat-card-label">Members</div>
+                </div>
+                <div class="community-stat-card" id="stat-card-online">
+                    <div class="community-stat-card-value" id="stat-card-online-val">—</div>
+                    <div class="community-stat-card-label">Online Now</div>
+                </div>
+                <div class="community-stat-card" id="stat-card-channels">
+                    <div class="community-stat-card-value" id="stat-card-channels-val">—</div>
+                    <div class="community-stat-card-label">Channels</div>
+                </div>
+            </div>
+
             <!-- Features -->
             <div class="community-features">
                 <h3 class="community-section-title">What You'll Find</h3>
@@ -576,6 +750,14 @@
                         <h3>Peer Support</h3>
                         <p>Nursing school is tough. Our community is here to encourage you, share experiences, and celebrate your wins.</p>
                     </div>
+                </div>
+            </div>
+
+            <!-- Featured Discussions -->
+            <div class="community-discussions" id="community-discussions">
+                <h3 class="community-section-title">Featured Channels</h3>
+                <div class="community-discussions-grid" id="community-discussions-grid">
+                    <!-- Populated by JS from /api/community/channels -->
                 </div>
             </div>
 

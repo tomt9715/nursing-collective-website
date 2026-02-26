@@ -60,6 +60,32 @@
     }
 
     // ── Fetch featured channels ───────────────────────────────────
+
+    // Curated list of channels to feature (by name, in priority order)
+    var FEATURED_CHANNELS = [
+        'general-chat', 'nclex-prep', 'study-buddy-finder',
+        'clinical-tips', 'help-desk', 'patho-pharm',
+        'med-surge', 'wins-and-progress', 'break-room'
+    ];
+
+    // Friendly descriptions for channels without topics
+    var CHANNEL_DESCRIPTIONS = {
+        'general-chat': 'Chat about anything nursing-related with your peers',
+        'nclex-prep': 'Share tips, questions, and strategies for NCLEX success',
+        'study-buddy-finder': 'Find study partners and form study groups',
+        'clinical-tips': 'Share and learn clinical skills from fellow students',
+        'help-desk': 'Get help with nursing questions or server support',
+        'patho-pharm': 'Discuss pathophysiology and pharmacology topics',
+        'med-surge': 'Medical-surgical nursing discussions and resources',
+        'wins-and-progress': 'Celebrate your achievements and milestones',
+        'break-room': 'Take a break and hang out with the community',
+        'fundamentals': 'Nursing fundamentals questions and discussions',
+        'ob-maternity': 'OB and maternity nursing topics',
+        'pediatrics': 'Pediatric nursing discussions',
+        'mental-health': 'Mental health nursing topics and support',
+        'suggestions-box': 'Share your ideas to make the community better'
+    };
+
     function fetchChannels() {
         fetch(API_URL + '/api/community/channels')
             .then(function (res) { return res.json(); })
@@ -67,11 +93,28 @@
                 var channels = data.channels || [];
                 if (channels.length === 0) return;
 
-                // Only show channels that have a topic (curated feel)
-                var featured = channels.filter(function (ch) { return ch.topic; });
+                // Build lookup by name
+                var byName = {};
+                for (var i = 0; i < channels.length; i++) {
+                    byName[channels[i].name] = channels[i];
+                }
 
-                // Limit to 6 max
-                featured = featured.slice(0, 6);
+                // Pick featured channels in priority order
+                var featured = [];
+                for (var j = 0; j < FEATURED_CHANNELS.length; j++) {
+                    var ch = byName[FEATURED_CHANNELS[j]];
+                    if (ch && featured.length < 6) {
+                        featured.push(ch);
+                    }
+                }
+
+                // Fallback: if curated list didn't match, take first 6 non-system channels
+                if (featured.length === 0) {
+                    featured = channels.filter(function (c) {
+                        return c.name !== 'rules' && c.name !== 'start-here' && c.name !== 'faq';
+                    }).slice(0, 6);
+                }
+
                 if (featured.length === 0) return;
 
                 var grid = document.getElementById('community-discussions-grid');
@@ -79,11 +122,12 @@
                 if (!grid || !wrapper) return;
 
                 var html = '';
-                for (var i = 0; i < featured.length; i++) {
-                    var ch = featured[i];
-                    var displayName = '#' + ch.name.replace(/-/g, '-');
-                    var categoryBadge = ch.category
-                        ? '<span class="community-channel-badge">' + escapeHTML(ch.category) + '</span>'
+                for (var k = 0; k < featured.length; k++) {
+                    var fc = featured[k];
+                    var displayName = '#' + fc.name;
+                    var description = fc.topic || CHANNEL_DESCRIPTIONS[fc.name] || fc.category || 'Join the conversation';
+                    var categoryBadge = fc.category
+                        ? '<span class="community-channel-badge">' + escapeHTML(fc.category) + '</span>'
                         : '';
 
                     html +=
@@ -91,7 +135,7 @@
                             '<div class="community-channel-icon"><i class="fas fa-hashtag"></i></div>' +
                             '<div class="community-channel-info">' +
                                 '<div class="community-channel-name">' + escapeHTML(displayName) + '</div>' +
-                                '<div class="community-channel-topic">' + escapeHTML(ch.topic) + '</div>' +
+                                '<div class="community-channel-topic">' + escapeHTML(description) + '</div>' +
                                 categoryBadge +
                             '</div>' +
                         '</div>';

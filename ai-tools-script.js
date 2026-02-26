@@ -828,7 +828,9 @@
         var filename = pendingPqFilename;
         closeQuestionCountModal();
         if (docId) {
-            requestGeneration(docId, filename, 'practice_questions', count);
+            // When quiz mode is on, request 2x questions so we have a fresh pool for "Go Again"
+            var requestCount = autoLaunchQuiz ? Math.min(count * 2, 50) : count;
+            requestGeneration(docId, filename, 'practice_questions', requestCount);
         }
     }
 
@@ -1562,13 +1564,19 @@
             return;
         }
 
+        // If we generated extra questions for pool rotation, use lastNumQuestions as round size
+        var perRound = (lastNumQuestions && questions.length > lastNumQuestions)
+            ? lastNumQuestions
+            : questions.length;
+
         var quizPayload = {
             questions: questions,
+            questionsPerRound: perRound,
             guideName: currentFilename || 'AI Practice Questions',
             guideSlug: 'ai-' + (currentDocId || 'generated'),
             category: 'AI Generated',
             categoryColor: '#3b82f6',
-            estimatedMinutes: Math.max(5, Math.round(questions.length * 1.5)),
+            estimatedMinutes: Math.max(5, Math.round(perRound * 1.5)),
             isAIGenerated: true,
             sourceDocId: currentDocId
         };

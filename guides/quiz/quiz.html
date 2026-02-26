@@ -59,7 +59,7 @@
             }
             try {
                 window._aiQuizData = JSON.parse(raw);
-                sessionStorage.removeItem('aiQuizData');
+                // Keep sessionStorage for "Go Again" pool rotation — quiz engine cleans up when pools are exhausted
             } catch (e) {
                 document.getElementById('quiz-root').innerHTML =
                     '<div style="text-align:center;padding:60px 20px;">' +

@@ -152,17 +152,40 @@
                 showError('No valid questions found in AI quiz data.');
                 return;
             }
+            // Pool rotation: split questions into rounds
+            var perRound = aiData.questionsPerRound || aiData.questions.length;
+            var currentRound = parseInt(sessionStorage.getItem('aiQuizRound') || '0', 10);
+            var allQuestions = aiData.questions;
+            var roundStart = currentRound * perRound;
+            var roundQuestions = allQuestions.slice(roundStart, roundStart + perRound);
+            // If we've run out of pools, wrap back to the start
+            if (roundQuestions.length === 0) {
+                currentRound = 0;
+                roundStart = 0;
+                roundQuestions = allQuestions.slice(0, perRound);
+                sessionStorage.setItem('aiQuizRound', '0');
+            }
+            var totalRounds = Math.ceil(allQuestions.length / perRound);
+            var hasNextRound = (currentRound + 1) < totalRounds;
+
             var quiz = new QuizEngine({
                 containerId: 'quiz-root',
-                questions: aiData.questions,
+                questions: roundQuestions,
                 guideName: aiData.guideName || 'AI Practice Questions',
                 guideSlug: aiData.guideSlug || 'ai-generated',
                 category: aiData.category || 'AI Generated',
                 categoryColor: aiData.categoryColor || '#3b82f6',
-                estimatedMinutes: aiData.estimatedMinutes || 10,
+                estimatedMinutes: aiData.estimatedMinutes || Math.max(5, Math.round(perRound * 1.5)),
                 backUrl: '../../ai-tools.html',
                 backLabel: 'Back to AI Tools',
-                isAIGenerated: true
+                isAIGenerated: true,
+                aiPoolInfo: {
+                    currentRound: currentRound,
+                    totalRounds: totalRounds,
+                    hasNextRound: hasNextRound,
+                    questionsPerRound: perRound,
+                    totalQuestions: allQuestions.length
+                }
             });
             quiz.init();
             return;

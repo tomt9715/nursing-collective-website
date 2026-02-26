@@ -1377,6 +1377,89 @@ body {
 }
 
 /* Results Actions */
+/* Go Again CTA (AI quiz pool rotation) */
+.quiz-go-again-cta {
+    text-align: center;
+    padding: 20px;
+    margin: 24px 0;
+    background: linear-gradient(135deg, #eff6ff, #dbeafe);
+    border: 2px solid rgba(59, 130, 246, .2);
+    border-radius: 16px;
+}
+
+.quiz-go-again-cta--done {
+    background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+    border-color: rgba(34, 197, 94, .2);
+}
+
+.quiz-btn--go-again {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 36px;
+    border-radius: 12px;
+    border: none;
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .2s;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, .3);
+}
+
+.quiz-btn--go-again:hover {
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 99, 235, .4);
+}
+
+.quiz-btn--go-again i {
+    font-size: 1rem;
+}
+
+.quiz-go-again-hint {
+    display: block;
+    margin-top: 10px;
+    font-size: .82rem;
+    color: #64748b;
+    font-style: italic;
+}
+
+.quiz-go-again-done-msg {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #16a34a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.quiz-go-again-done-msg i {
+    font-size: 1.1rem;
+}
+
+[data-theme="dark"] .quiz-go-again-cta {
+    background: linear-gradient(135deg, rgba(59, 130, 246, .1), rgba(37, 99, 235, .08));
+    border-color: rgba(59, 130, 246, .15);
+}
+
+[data-theme="dark"] .quiz-go-again-cta--done {
+    background: linear-gradient(135deg, rgba(34, 197, 94, .08), rgba(22, 163, 74, .06));
+    border-color: rgba(34, 197, 94, .12);
+}
+
+[data-theme="dark"] .quiz-go-again-hint {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .quiz-go-again-done-msg {
+    color: #4ade80;
+}
+
 .quiz-results-actions {
     display: flex;
     flex-direction: column;

@@ -22,6 +22,7 @@ class QuizEngine {
         this.backUrl = config.backUrl || ('../' + this.guideSlug + '.html');
         this.backLabel = config.backLabel || 'Back to Study Guide';
         this.isAIGenerated = config.isAIGenerated || false;
+        this.aiPoolInfo = config.aiPoolInfo || null; // { currentRound, totalRounds, hasNextRound, questionsPerRound, totalQuestions }
 
         // State
         this.mode = null;           // 'practice' | 'exam'
@@ -257,6 +258,22 @@ class QuizEngine {
         this._renderQuestion();
     }
 
+    goAgain() {
+        if (!this.aiPoolInfo) return;
+        // Advance to the next round and reload the quiz page
+        const nextRound = this.aiPoolInfo.currentRound + 1;
+        sessionStorage.setItem('aiQuizRound', String(nextRound));
+        // Reload the page — quiz.html will re-read sessionStorage and quiz-init.js will slice the next pool
+        window.location.reload();
+    }
+
+    _cleanupAiPool() {
+        if (this.isAIGenerated) {
+            sessionStorage.removeItem('aiQuizData');
+            sessionStorage.removeItem('aiQuizRound');
+        }
+    }
+
     destroy() {
         this._stopTimer();
         window.removeEventListener('beforeunload', this._boundBeforeUnload);
@@ -279,8 +296,9 @@ class QuizEngine {
                 case 'next': this.nextQuestion(); break;
                 case 'retake': this.retakeQuiz(); break;
                 case 'review-missed': this.reviewMissed(); break;
-                case 'new-quiz': window.location.href = '../../dashboard.html'; break;
-                case 'back-to-guide': window.location.href = this.backUrl; break;
+                case 'go-again': this.goAgain(); break;
+                case 'new-quiz': this._cleanupAiPool(); window.location.href = '../../dashboard.html'; break;
+                case 'back-to-guide': this._cleanupAiPool(); window.location.href = this.backUrl; break;
                 case 'back-to-start':
                     this._stopTimer();
                     this._clearSavedState();
@@ -1406,6 +1424,29 @@ class QuizEngine {
                 ${this.activeQuestions.map((q, i) => this._renderResultItem(q, i)).join('')}
             </div>
         `;
+
+        // "Go Again" CTA for AI quizzes with fresh question pools
+        if (this.isAIGenerated && this.aiPoolInfo && this.aiPoolInfo.hasNextRound) {
+            html += `
+            <div class="quiz-go-again-cta">
+                <button class="quiz-btn quiz-btn--go-again" data-quiz-action="go-again">
+                    <i class="fas fa-bolt"></i> Go Again — Fresh Questions
+                </button>
+                <span class="quiz-go-again-hint">
+                    Round ${this.aiPoolInfo.currentRound + 1} of ${this.aiPoolInfo.totalRounds} — new questions from the same material, no waiting
+                </span>
+            </div>`;
+        } else if (this.isAIGenerated && this.aiPoolInfo && !this.aiPoolInfo.hasNextRound && this.aiPoolInfo.totalRounds > 1) {
+            html += `
+            <div class="quiz-go-again-cta quiz-go-again-cta--done">
+                <div class="quiz-go-again-done-msg">
+                    <i class="fas fa-check-circle"></i> You've completed all ${this.aiPoolInfo.totalRounds} rounds!
+                </div>
+                <span class="quiz-go-again-hint">
+                    Generate new practice questions from your AI tools to keep studying
+                </span>
+            </div>`;
+        }
 
         // Action buttons
         html += `<div class="quiz-results-actions">`;

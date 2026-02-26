@@ -4,11 +4,12 @@
 (function () {
     'use strict';
 
-    var API_URL = window.API_URL || '';
+    // Use the global API_URL const set by api-service.js (loaded before this script)
+    var apiBase = (typeof API_URL !== 'undefined') ? API_URL : '';
 
     // ── Fetch Discord stats ───────────────────────────────────────
     function fetchStats() {
-        fetch(API_URL + '/api/community/stats')
+        fetch(apiBase + '/api/community/stats')
             .then(function (res) { return res.json(); })
             .then(function (data) {
                 // Hero pills
@@ -87,7 +88,7 @@
     };
 
     function fetchChannels() {
-        fetch(API_URL + '/api/community/channels')
+        fetch(apiBase + '/api/community/channels')
             .then(function (res) { return res.json(); })
             .then(function (data) {
                 var channels = data.channels || [];

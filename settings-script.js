@@ -1430,19 +1430,84 @@ function renderPlanTier(showAi, currentSub, optionsEl, confirmBtn) {
     }
 }
 
-async function handleChangePlan(currentSub, modal) {
-    if (!_changePlanSelected) return;
+function handleChangePlan(currentSub, modal) {
+    if (!_changePlanSelected || !_changePlanData) return;
 
+    var selectedPlan = _changePlanData.plans[_changePlanSelected];
+    if (!selectedPlan) return;
+
+    var currentPlanNames = {
+        'monthly-access': 'Monthly Access',
+        'semester-access': 'Semester Access',
+        'lifetime-access': 'Lifetime Access',
+        'ai-monthly-access': 'AI-Powered Monthly',
+        'ai-semester-access': 'AI-Powered Semester',
+        'ai-lifetime-access': 'AI-Powered Lifetime'
+    };
+
+    var currentName = currentPlanNames[currentSub.plan_id] || currentSub.plan_name || currentSub.plan_id;
+    var newName = selectedPlan.name;
+    var newPrice = selectedPlan.interval === 'month' ? '$' + selectedPlan.price.toFixed(2) + '/mo' :
+                   selectedPlan.access_days ? '$' + selectedPlan.price.toFixed(2) + '/semester' :
+                   '$' + selectedPlan.price.toFixed(2) + ' once';
+
+    // Build confirmation view inside the modal
+    var optionsEl = document.getElementById('change-plan-options');
+    var confirmBtn = document.getElementById('change-plan-confirm-btn');
+    var closeBtn = document.getElementById('change-plan-close-btn');
+    var currentLabel = document.getElementById('change-plan-current');
+
+    if (currentLabel) currentLabel.textContent = 'Confirm your plan change';
+
+    if (optionsEl) {
+        optionsEl.innerHTML =
+            '<div style="background: var(--surface-color, #f8f9fa); border-radius: 12px; padding: 20px; width: 100%;">' +
+            '  <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">' +
+            '    <div style="flex:1; text-align:center;">' +
+            '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px;">Current Plan</div>' +
+            '      <div style="font-weight:600; color:var(--text-primary);">' + currentName + '</div>' +
+            '    </div>' +
+            '    <div style="color:var(--primary-color); font-size:1.2rem;"><i class="fas fa-arrow-right"></i></div>' +
+            '    <div style="flex:1; text-align:center;">' +
+            '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px;">New Plan</div>' +
+            '      <div style="font-weight:600; color:var(--primary-color);">' + newName + '</div>' +
+            '      <div style="font-size:0.9rem; color:var(--text-secondary); margin-top:2px;">' + newPrice + '</div>' +
+            '    </div>' +
+            '  </div>' +
+            '  <div style="font-size:0.82rem; color:var(--text-secondary); text-align:center; border-top:1px solid var(--border-color); padding-top:12px;">' +
+            '    <i class="fas fa-lock" style="margin-right:4px;"></i> You\'ll be redirected to Stripe to confirm payment.' +
+            '  </div>' +
+            '</div>';
+    }
+
+    // Change buttons to Go Back / Continue to Payment
+    if (closeBtn) {
+        closeBtn.innerHTML = '<i class="fas fa-arrow-left"></i> Go Back';
+        closeBtn.onclick = function() {
+            // Re-open the plan selection view
+            closeBtn.innerHTML = 'Close';
+            openChangePlanModal(currentSub);
+        };
+    }
+
+    if (confirmBtn) {
+        confirmBtn.innerHTML = '<i class="fas fa-credit-card"></i> Continue to Payment';
+        confirmBtn.style.display = 'inline-flex';
+        confirmBtn.disabled = false;
+        confirmBtn.onclick = function() { proceedToCheckout(currentSub, modal); };
+    }
+}
+
+async function proceedToCheckout(currentSub, modal) {
     var confirmBtn = document.getElementById('change-plan-confirm-btn');
     var errorEl = document.getElementById('change-plan-error');
 
     if (confirmBtn) {
         confirmBtn.disabled = true;
-        confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+        confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
     }
 
     try {
-        // Create a new checkout session for the selected plan
         var response = await apiCall('/api/create-subscription', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -1468,7 +1533,7 @@ async function handleChangePlan(currentSub, modal) {
         }
         if (confirmBtn) {
             confirmBtn.disabled = false;
-            confirmBtn.innerHTML = '<i class="fas fa-check"></i> Switch Plan';
+            confirmBtn.innerHTML = '<i class="fas fa-credit-card"></i> Continue to Payment';
         }
     }
 }

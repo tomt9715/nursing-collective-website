@@ -273,14 +273,24 @@ class QuizEngine {
                   this.activeQuestions.find(q => q.id === questionId);
         if (!q) return;
 
-        // Get the container
+        // Get the container (now a sibling panel of .quiz-question-main)
         const container = document.getElementById('explain-' + questionId);
         if (!container) return;
 
+        const questionCard = container.closest('.quiz-question');
+
         // If already loaded, just toggle visibility
         if (container.dataset.loaded === 'true') {
-            container.style.display = container.style.display === 'none' ? 'block' : 'none';
+            const isHiding = container.style.display !== 'none';
+            container.style.display = isHiding ? 'none' : 'block';
             btn.classList.toggle('quiz-explain-btn--active');
+            btn.innerHTML = isHiding
+                ? '<i class="fas fa-graduation-cap"></i> Explain This Question'
+                : '<i class="fas fa-graduation-cap"></i> Hide Explanation';
+            if (questionCard) {
+                if (isHiding) questionCard.classList.remove('quiz-question--has-explain');
+                else questionCard.classList.add('quiz-question--has-explain');
+            }
             return;
         }
 
@@ -291,6 +301,9 @@ class QuizEngine {
         container.innerHTML = '<div class="quiz-explain-content">' +
             '<div class="quiz-explain-header"><i class="fas fa-graduation-cap"></i> AI Explanation</div>' +
             '<div class="quiz-explain-body quiz-explain-body--streaming"></div></div>';
+
+        // Trigger side-by-side layout
+        if (questionCard) questionCard.classList.add('quiz-question--has-explain');
 
         const bodyEl = container.querySelector('.quiz-explain-body');
 
@@ -367,12 +380,14 @@ class QuizEngine {
                 btn.classList.add('quiz-explain-btn--active');
             } else {
                 container.innerHTML = '<div class="quiz-explain-error"><i class="fas fa-exclamation-circle"></i> Could not generate explanation. Please try again.</div>';
+                if (questionCard) questionCard.classList.remove('quiz-question--has-explain');
             }
         } catch (err) {
             console.error('Explain question error:', err);
             container.innerHTML = '<div class="quiz-explain-error"><i class="fas fa-exclamation-circle"></i> ' +
                 (err.message === 'AI subscription required' ? 'AI subscription required to use this feature.' : 'Could not generate explanation. Please try again.') +
                 '</div>';
+            if (questionCard) questionCard.classList.remove('quiz-question--has-explain');
         }
 
         btn.disabled = false;
@@ -1139,6 +1154,20 @@ class QuizEngine {
 
         feedbackArea.innerHTML = feedbackHtml;
 
+        // Create explain panel as sibling of .quiz-question-main (for side-by-side layout)
+        if (this.mode === 'practice') {
+            const questionCard = this.container.querySelector('.quiz-question');
+            if (questionCard) {
+                const oldPanel = questionCard.querySelector('.quiz-explain-panel');
+                if (oldPanel) oldPanel.remove();
+                const panel = document.createElement('div');
+                panel.className = 'quiz-explain-panel';
+                panel.id = 'explain-' + q.id;
+                panel.style.display = 'none';
+                questionCard.appendChild(panel);
+            }
+        }
+
         // Add sticky bottom bar
         const existingSticky = this.container.querySelector('.quiz-sticky-next');
         if (existingSticky) existingSticky.remove();
@@ -1240,6 +1269,18 @@ class QuizEngine {
 
         const feedbackHtml = this._buildPracticeFeedback(q, userAnswer, isCorrect, isPartial);
         feedbackArea.innerHTML = feedbackHtml;
+
+        // Create explain panel as sibling of .quiz-question-main (for side-by-side layout)
+        const questionCard = this.container.querySelector('.quiz-question');
+        if (questionCard) {
+            const oldPanel = questionCard.querySelector('.quiz-explain-panel');
+            if (oldPanel) oldPanel.remove();
+            const panel = document.createElement('div');
+            panel.className = 'quiz-explain-panel';
+            panel.id = 'explain-' + q.id;
+            panel.style.display = 'none';
+            questionCard.appendChild(panel);
+        }
 
         // Add sticky bottom bar
         const existingSticky = this.container.querySelector('.quiz-sticky-next');
@@ -1348,12 +1389,11 @@ class QuizEngine {
             `;
         }
 
-        // Explain This Question button (practice mode only)
+        // Explain This Question button (practice mode only — panel created separately as sibling of .quiz-question-main)
         html += `
             <button class="quiz-explain-btn" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
                 <i class="fas fa-graduation-cap"></i> Explain This Question
             </button>
-            <div class="quiz-explain-container" id="explain-${this._escapeAttr(q.id)}" style="display:none;"></div>
         `;
 
         html += `</div>`;

@@ -1122,9 +1122,11 @@ function renderSubscriptionCard(data) {
     }
 
     // Cancel Subscription button
+    // Hidden for: lifetime plans (no recurring billing), already cancelling, or already cancelled
     var cancelBtn = document.getElementById('membership-cancel-btn');
+    var isLifetime = sub.plan_id && sub.plan_id.indexOf('lifetime') !== -1;
     if (cancelBtn) {
-        if (sub.cancel_at_period_end || sub.status === 'cancelled') {
+        if (isLifetime || sub.cancel_at_period_end || sub.status === 'cancelled') {
             cancelBtn.style.display = 'none';
         } else {
             cancelBtn.addEventListener('click', function() { openCancelSubModal(sub); });

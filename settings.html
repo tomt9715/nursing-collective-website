@@ -630,6 +630,11 @@
         .membership-credit-footer i { margin-right: 4px; font-size: 0.75rem; }
         .membership-credit-actions { margin-top: 16px; }
 
+        /* Admin credits toggle */
+        .admin-credits-toggle { margin-left: auto; padding: 4px 10px; font-size: 0.72rem; font-weight: 600; border: 1px solid var(--border-color); border-radius: 8px; background: var(--background-light); color: var(--text-secondary); cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.15s ease; }
+        .admin-credits-toggle:hover { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+        .admin-credits-toggle i { font-size: 0.68rem; }
+
         /* Billing History */
         .billing-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: var(--background-light); border-radius: 12px; margin-bottom: 8px; }
         .billing-row:last-child { margin-bottom: 0; }
@@ -1274,6 +1279,9 @@
                 <div class="settings-card-header">
                     <i class="fas fa-coins"></i>
                     <h3>AI Credits</h3>
+                    <button class="admin-credits-toggle hidden" id="admin-credits-toggle" title="Toggle between admin and user view">
+                        <i class="fas fa-eye"></i> <span>View as User</span>
+                    </button>
                 </div>
                 <div class="settings-card-desc">Your monthly AI usage limits. Credits reset every 30 days.</div>
 

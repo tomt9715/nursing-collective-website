@@ -1139,6 +1139,8 @@ function renderSubscriptionCard(data) {
     }
 }
 
+var _adminCreditsViewMode = 'admin';
+
 async function loadAiCredits(creditsCard) {
     if (!creditsCard) return;
 
@@ -1147,61 +1149,106 @@ async function loadAiCredits(creditsCard) {
         if (!data || data.error) return;
 
         creditsCard.classList.remove('hidden');
+        renderCreditValues(data);
 
-        // Uploads
-        var uploadsRemaining = data.uploads_remaining || 0;
-        var uploadsLimit = data.uploads_limit || 0;
-        var addonUploads = data.addon_uploads || 0;
-        var totalUploads = uploadsLimit + addonUploads;
+        // Admin toggle setup
+        var toggleBtn = document.getElementById('admin-credits-toggle');
+        if (toggleBtn && data.is_admin) {
+            toggleBtn.classList.remove('hidden');
+            _adminCreditsViewMode = data.view_mode || 'admin';
+            updateCreditsToggleLabel(toggleBtn);
 
-        var uploadsCount = document.getElementById('credits-uploads-count');
-        if (uploadsCount) uploadsCount.textContent = uploadsRemaining + ' / ' + totalUploads;
-
-        var uploadsBar = document.getElementById('credits-uploads-bar');
-        if (uploadsBar && totalUploads > 0) {
-            var uploadsPct = (uploadsRemaining / totalUploads) * 100;
-            uploadsBar.style.width = uploadsPct + '%';
-            uploadsBar.className = 'membership-progress-fill';
-            if (uploadsPct <= 0) uploadsBar.classList.add('exhausted');
-            else if (uploadsPct <= 20) uploadsBar.classList.add('low');
+            toggleBtn.onclick = async function() {
+                _adminCreditsViewMode = _adminCreditsViewMode === 'admin' ? 'user' : 'admin';
+                var param = _adminCreditsViewMode === 'user' ? '?view=user' : '';
+                try {
+                    var newData = await apiCall('/api/ai/credits' + param);
+                    if (newData && !newData.error) {
+                        renderCreditValues(newData);
+                    }
+                } catch (e) {
+                    console.warn('Failed to toggle credits view:', e);
+                }
+                updateCreditsToggleLabel(toggleBtn);
+            };
         }
+    } catch (err) {
+        console.warn('Failed to load AI credits:', err);
+    }
+}
 
-        // Questions
-        var questionsRemaining = data.questions_remaining || 0;
-        var questionsLimit = data.questions_limit || 0;
-        var addonQuestions = data.addon_questions || 0;
-        var totalQuestions = questionsLimit + addonQuestions;
+function updateCreditsToggleLabel(btn) {
+    var icon = btn.querySelector('i');
+    var label = btn.querySelector('span');
+    if (_adminCreditsViewMode === 'admin') {
+        if (icon) icon.className = 'fas fa-eye';
+        if (label) label.textContent = 'View as User';
+    } else {
+        if (icon) icon.className = 'fas fa-shield-alt';
+        if (label) label.textContent = 'View as Admin';
+    }
+}
 
-        var questionsCount = document.getElementById('credits-questions-count');
-        if (questionsCount) questionsCount.textContent = questionsRemaining + ' / ' + totalQuestions;
+function renderCreditValues(data) {
+    // Uploads
+    var uploadsRemaining = data.uploads_remaining || 0;
+    var uploadsLimit = data.uploads_limit || 0;
+    var addonUploads = data.addon_uploads || 0;
+    var totalUploads = uploadsLimit + addonUploads;
 
-        var questionsBar = document.getElementById('credits-questions-bar');
-        if (questionsBar && totalQuestions > 0) {
-            var questionsPct = (questionsRemaining / totalQuestions) * 100;
-            questionsBar.style.width = questionsPct + '%';
-            questionsBar.className = 'membership-progress-fill';
-            if (questionsPct <= 0) questionsBar.classList.add('exhausted');
-            else if (questionsPct <= 20) questionsBar.classList.add('low');
-        }
+    var uploadsCount = document.getElementById('credits-uploads-count');
+    if (uploadsCount) uploadsCount.textContent = uploadsRemaining + ' / ' + totalUploads;
 
-        // Addon info
-        var addonInfo = document.getElementById('credits-addon-info');
-        var addonText = document.getElementById('credits-addon-text');
-        if (addonInfo && addonText && (addonUploads > 0 || addonQuestions > 0)) {
+    var uploadsBar = document.getElementById('credits-uploads-bar');
+    if (uploadsBar) {
+        var uploadsPct = totalUploads > 0 ? (uploadsRemaining / totalUploads) * 100 : 0;
+        uploadsBar.style.width = uploadsPct + '%';
+        uploadsBar.className = 'membership-progress-fill';
+        if (uploadsPct <= 0) uploadsBar.classList.add('exhausted');
+        else if (uploadsPct <= 20) uploadsBar.classList.add('low');
+    }
+
+    // Questions
+    var questionsRemaining = data.questions_remaining || 0;
+    var questionsLimit = data.questions_limit || 0;
+    var addonQuestions = data.addon_questions || 0;
+    var totalQuestions = questionsLimit + addonQuestions;
+
+    var questionsCount = document.getElementById('credits-questions-count');
+    if (questionsCount) questionsCount.textContent = questionsRemaining + ' / ' + totalQuestions;
+
+    var questionsBar = document.getElementById('credits-questions-bar');
+    if (questionsBar) {
+        var questionsPct = totalQuestions > 0 ? (questionsRemaining / totalQuestions) * 100 : 0;
+        questionsBar.style.width = questionsPct + '%';
+        questionsBar.className = 'membership-progress-fill';
+        if (questionsPct <= 0) questionsBar.classList.add('exhausted');
+        else if (questionsPct <= 20) questionsBar.classList.add('low');
+    }
+
+    // Addon info
+    var addonInfo = document.getElementById('credits-addon-info');
+    var addonText = document.getElementById('credits-addon-text');
+    if (addonInfo && addonText) {
+        if (addonUploads > 0 || addonQuestions > 0) {
             addonInfo.classList.remove('hidden');
             var parts = [];
             if (addonUploads > 0) parts.push(addonUploads + ' bonus uploads');
             if (addonQuestions > 0) parts.push(addonQuestions + ' bonus questions');
             addonText.textContent = parts.join(', ') + ' (add-on)';
+        } else {
+            addonInfo.classList.add('hidden');
         }
+    }
 
-        // Reset date
-        var resetValue = document.getElementById('credits-reset-value');
-        if (resetValue && data.next_reset) {
+    // Reset date
+    var resetValue = document.getElementById('credits-reset-value');
+    if (resetValue) {
+        if (data.next_reset) {
             resetValue.textContent = membershipFormatDate(data.next_reset);
+        } else {
+            resetValue.textContent = '--';
         }
-    } catch (err) {
-        console.warn('Failed to load AI credits:', err);
     }
 }
 

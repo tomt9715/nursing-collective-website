@@ -349,8 +349,10 @@ class QuizEngine {
                             bodyEl.innerHTML = this._renderMarkdown(fullText);
                         }
                     } catch (parseErr) {
-                        if (parseErr.message && parseErr.message !== 'Request failed') {
-                            // Ignore JSON parse errors from partial chunks
+                        // Re-throw SSE error events; ignore JSON parse errors
+                        if (parseErr.message && parseErr.message !== 'Request failed'
+                            && !parseErr.message.startsWith('Unexpected')) {
+                            throw parseErr;
                         }
                     }
                 }

@@ -1134,7 +1134,7 @@ body {
 @media (min-width: 1024px) {
     .quiz-question--has-explain {
         display: grid;
-        grid-template-columns: 1fr 420px;
+        grid-template-columns: minmax(0, 780px) 1fr;
         gap: 24px;
         align-items: start;
     }
@@ -1145,19 +1145,20 @@ body {
         max-height: calc(100vh - 48px);
         overflow-y: auto;
         margin-top: 0;
+        min-width: 0;
         animation: quiz-explain-slideIn 0.3s ease;
     }
 
     /* Labs + Explain both open: 3-column on wide screens */
     .quiz-question--has-labs.quiz-question--has-explain {
-        grid-template-columns: 1fr 280px 420px;
+        grid-template-columns: minmax(0, 780px) 280px 1fr;
     }
 }
 
 /* Narrow desktop: labs + explain — drop labs side panel */
 @media (min-width: 1024px) and (max-width: 1200px) {
     .quiz-question--has-labs.quiz-question--has-explain {
-        grid-template-columns: 1fr 380px;
+        grid-template-columns: minmax(0, 780px) 1fr;
     }
     .quiz-question--has-labs.quiz-question--has-explain .quiz-lab-side {
         display: none;

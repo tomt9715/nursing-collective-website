@@ -88,12 +88,12 @@ class QuizEngine {
         this.isReviewMode = false;
         this._shuffleAllOptions();
 
-        // Timer
+        // Timer (exam mode only — practice mode has no timer)
         this.sessionStartTime = Date.now();
         this.sessionElapsed = 0;
-        this.timerMode = (mode === 'exam') ? 'countdown' : 'elapsed';
+        this.timerMode = (mode === 'exam') ? 'countdown' : 'none';
         this.countdownSeconds = (mode === 'exam') ? this.activeQuestions.length * 90 : 0;
-        this._startTimer();
+        if (mode === 'exam') this._startTimer();
 
         this._clearSavedState();
         window.addEventListener('beforeunload', this._boundBeforeUnload);
@@ -251,8 +251,7 @@ class QuizEngine {
         this.sessionStartTime = Date.now();
         this.sessionElapsed = 0;
         this.countdownSeconds = 0;
-        this.timerMode = 'elapsed';
-        this._startTimer();
+        this.timerMode = 'none';
 
         window.addEventListener('beforeunload', this._boundBeforeUnload);
         this._renderQuestion();
@@ -2121,6 +2120,8 @@ class QuizEngine {
                 <span class="quiz-timer-value">${this._formatTime(remaining)}</span>
             </div>`;
         }
+        // No timer in practice mode
+        if (this.timerMode === 'none') return '';
         return `<div class="quiz-timer">
             <i class="fas fa-clock"></i>
             <span class="quiz-timer-value">${this._formatTime(this.sessionElapsed)}</span>
@@ -2274,10 +2275,10 @@ class QuizEngine {
 
             // Restore timer (adjust for time passed since save)
             this.sessionStartTime = state.sessionStartTime;
-            this.timerMode = state.timerMode || 'elapsed';
+            this.timerMode = state.timerMode || 'none';
             this.countdownSeconds = state.countdownSeconds || 0;
             this.sessionElapsed = Math.round((Date.now() - this.sessionStartTime) / 1000);
-            this._startTimer();
+            if (this.timerMode !== 'none') this._startTimer();
 
             this._reviewedFlags = false;
             this._pendingFeedback = null;

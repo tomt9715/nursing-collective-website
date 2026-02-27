@@ -267,6 +267,89 @@ class QuizEngine {
         window.location.reload();
     }
 
+    async _explainQuestion(questionId, btn) {
+        // Find the question
+        const q = this.questions.find(q => q.id === questionId) ||
+                  this.activeQuestions.find(q => q.id === questionId);
+        if (!q) return;
+
+        // Get the container
+        const container = document.getElementById('explain-' + questionId);
+        if (!container) return;
+
+        // If already loaded, just toggle visibility
+        if (container.dataset.loaded === 'true') {
+            container.style.display = container.style.display === 'none' ? 'block' : 'none';
+            btn.classList.toggle('quiz-explain-btn--active');
+            return;
+        }
+
+        // Show loading state
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating explanation...';
+        container.style.display = 'block';
+        container.innerHTML = '<div class="quiz-explain-loading"><div class="quiz-explain-loading-dots"><span></span><span></span><span></span></div><p>AI is breaking down this question for you...</p></div>';
+
+        // Build request payload
+        const result = this.results.get(q.id);
+        const payload = {
+            stem: q.stem,
+            options: q.options,
+            correct: q.correct,
+            userAnswer: result ? result.userAnswer : null,
+            isCorrect: result ? result.correct : false,
+            rationale: q.rationale ? q.rationale.correct : '',
+        };
+
+        try {
+            const data = await apiCall('/ai/explain-question', {
+                method: 'POST',
+                body: JSON.stringify(payload),
+            });
+
+            if (data.explanation) {
+                container.innerHTML = '<div class="quiz-explain-content">' +
+                    '<div class="quiz-explain-header"><i class="fas fa-graduation-cap"></i> AI Explanation</div>' +
+                    '<div class="quiz-explain-body">' + this._renderMarkdown(data.explanation) + '</div>' +
+                    '</div>';
+                container.dataset.loaded = 'true';
+                btn.innerHTML = '<i class="fas fa-graduation-cap"></i> Hide Explanation';
+                btn.classList.add('quiz-explain-btn--active');
+            } else {
+                container.innerHTML = '<div class="quiz-explain-error"><i class="fas fa-exclamation-circle"></i> Could not generate explanation. Please try again.</div>';
+            }
+        } catch (err) {
+            console.error('Explain question error:', err);
+            container.innerHTML = '<div class="quiz-explain-error"><i class="fas fa-exclamation-circle"></i> ' +
+                (err.message === 'AI subscription required' ? 'AI subscription required to use this feature.' : 'Could not generate explanation. Please try again.') +
+                '</div>';
+        }
+
+        btn.disabled = false;
+        if (!btn.classList.contains('quiz-explain-btn--active')) {
+            btn.innerHTML = '<i class="fas fa-graduation-cap"></i> Explain This Question';
+        }
+    }
+
+    _renderMarkdown(text) {
+        // Lightweight markdown to HTML (bold, italic, headers, lists, line breaks)
+        return text
+            .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            .replace(/^### (.+)$/gm, '<h4>$1</h4>')
+            .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+            .replace(/^# (.+)$/gm, '<h3>$1</h3>')
+            .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+            .replace(/\*(.+?)\*/g, '<em>$1</em>')
+            .replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>')
+            .replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>')
+            .replace(/(<li>.*<\/li>\n?)+/g, function(match) {
+                return '<ul>' + match + '</ul>';
+            })
+            .replace(/\n\n/g, '</p><p>')
+            .replace(/\n/g, '<br>')
+            .replace(/^/, '<p>').replace(/$/, '</p>');
+    }
+
     _cleanupAiPool() {
         if (this.isAIGenerated) {
             sessionStorage.removeItem('aiQuizData');
@@ -394,6 +477,11 @@ class QuizEngine {
                 case 'discard-saved': {
                     this._clearSavedState();
                     this.container.querySelector('.quiz-resume-banner')?.remove();
+                    break;
+                }
+                case 'explain-question': {
+                    const qId = actionBtn.dataset.questionId;
+                    if (qId) this._explainQuestion(qId, actionBtn);
                     break;
                 }
             }
@@ -1204,6 +1292,14 @@ class QuizEngine {
                 </a>
             `;
         }
+
+        // Explain This Question button (practice mode only)
+        html += `
+            <button class="quiz-explain-btn" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
+                <i class="fas fa-graduation-cap"></i> Explain This Question
+            </button>
+            <div class="quiz-explain-container" id="explain-${this._escapeAttr(q.id)}" style="display:none;"></div>
+        `;
 
         html += `</div>`;
         return html;

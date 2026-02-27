@@ -115,6 +115,24 @@ const CookieConsent = {
                 'analytics_storage': 'granted'
             });
         }
+
+        // Microsoft Clarity — only loads after analytics consent
+        this.initClarity();
+    },
+
+    /**
+     * Initialize Microsoft Clarity session recording
+     * Replace CLARITY_PROJECT_ID with your actual project ID from clarity.ms
+     */
+    initClarity() {
+        var clarityId = 'CLARITY_PROJECT_ID'; // TODO: Replace with real ID
+        if (clarityId === 'CLARITY_PROJECT_ID') return; // Skip if placeholder
+
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window,document,"clarity","script",clarityId);
     },
 
     /**

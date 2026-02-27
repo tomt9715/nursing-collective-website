@@ -178,6 +178,13 @@ async function loadUserProfile() {
             premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';
         }
 
+        // Beta tester badge — shown for ALL users during beta
+        const betaBadgeEl = document.getElementById('beta-badge');
+        if (betaBadgeEl) {
+            betaBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-left: 8px; font-size: 13px; vertical-align: middle;';
+            betaBadgeEl.innerHTML = '<i class="fas fa-flask"></i> Beta Tester';
+        }
+
         updateCompactStats(user);
         updateAccountWidget(user);
         updateEmailVerificationBanner(user);
@@ -530,6 +537,7 @@ function continueStudying(productId) {
             body: JSON.stringify({ guide_id: productId })
         }).catch(function() {});
     } catch (e) { /* ignore */ }
+    if (typeof trackBetaEvent === 'function') trackBetaEvent('guide_opened', { guide_id: productId });
     window.location.href = `guides/${productId}.html`;
 }
 

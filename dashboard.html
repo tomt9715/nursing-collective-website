@@ -24,6 +24,7 @@
 
     <!-- Bundled CSS (Bootstrap + custom styles, purged and minified) -->
     <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/feedback-widget.css">
 
     <!-- Pages CSS (dashboard-specific styles) -->
     <link rel="stylesheet" href="css/pages.css?v=5.3.navbar">
@@ -461,6 +462,7 @@
             <div class="dashboard-header-compact">
                 <h1>Welcome back, <span id="user-first-name">User</span>!
                     <span id="premium-badge"></span>
+                    <span id="beta-badge"></span>
                 </h1>
                 <div class="user-stats-compact">
                     <span class="stat-inline" id="subscription-status-inline">
@@ -744,6 +746,7 @@
     <script defer src="app/data/registry.js"></script>
     <script defer src="app/mastery.js"></script>
     <script defer src="dashboard-script.js?v=5.7.perf"></script>
+    <script src="feedback-widget.js"></script>
 
 </body>
 </html>

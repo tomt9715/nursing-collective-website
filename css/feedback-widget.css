@@ -1,0 +1,304 @@
+/* ============================================
+   FEEDBACK WIDGET - Floating button + slide-up panel
+   ============================================ */
+
+/* Floating trigger button */
+.feedback-fab {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(46, 134, 171, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, bottom 0.3s ease;
+}
+
+.feedback-fab:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 24px rgba(46, 134, 171, 0.45);
+}
+
+.feedback-fab:active {
+    transform: scale(0.95);
+}
+
+/* Shift up when cookie banner is visible */
+.feedback-fab.cookie-banner-visible {
+    bottom: 130px;
+}
+
+/* Panel */
+.feedback-panel {
+    position: fixed;
+    bottom: 92px;
+    right: 24px;
+    z-index: 9998;
+    width: 380px;
+    max-height: 520px;
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(20px) scale(0.95);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease, bottom 0.3s ease;
+    overflow: hidden;
+    font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.feedback-panel.open {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    visibility: visible;
+}
+
+.feedback-panel.cookie-banner-visible {
+    bottom: 200px;
+}
+
+/* Panel header */
+.feedback-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 12px;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+
+.feedback-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-color, #1a1a1a);
+}
+
+.feedback-close {
+    background: none;
+    border: none;
+    color: var(--text-muted, #888);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: background 0.15s;
+}
+
+.feedback-close:hover {
+    background: var(--hover-bg, rgba(0,0,0,0.05));
+}
+
+/* Tabs */
+.feedback-tabs {
+    display: flex;
+    padding: 0 20px;
+    gap: 0;
+    border-bottom: 1px solid var(--border-color, #e0e0e0);
+}
+
+.feedback-tab {
+    flex: 1;
+    padding: 10px 0;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-muted, #888);
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+}
+
+.feedback-tab.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+.feedback-tab:hover:not(.active) {
+    color: var(--text-color, #1a1a1a);
+}
+
+/* Body content */
+.feedback-body {
+    padding: 16px 20px 20px;
+    overflow-y: auto;
+    max-height: 360px;
+}
+
+.feedback-form {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+/* Star rating */
+.feedback-stars {
+    display: flex;
+    gap: 6px;
+}
+
+.feedback-star {
+    font-size: 28px;
+    color: var(--border-color, #ddd);
+    cursor: pointer;
+    transition: color 0.15s, transform 0.15s;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.feedback-star:hover,
+.feedback-star.active {
+    color: #f59e0b;
+    transform: scale(1.15);
+}
+
+/* Textarea */
+.feedback-textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 10px;
+    background: var(--input-bg, #fafafa);
+    color: var(--text-color, #1a1a1a);
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    transition: border-color 0.2s;
+}
+
+.feedback-textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Category dropdown */
+.feedback-select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 10px;
+    background: var(--input-bg, #fafafa);
+    color: var(--text-color, #1a1a1a);
+    font-family: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.feedback-select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+/* Submit button */
+.feedback-submit {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s, transform 0.15s;
+}
+
+.feedback-submit:hover {
+    opacity: 0.9;
+}
+
+.feedback-submit:active {
+    transform: scale(0.98);
+}
+
+.feedback-submit:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Success / error states */
+.feedback-result {
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.feedback-result-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.feedback-result-icon.success {
+    color: #10b981;
+}
+
+.feedback-result-icon.error {
+    color: #ef4444;
+}
+
+.feedback-result h4 {
+    margin: 0 0 8px;
+    font-size: 18px;
+    color: var(--text-color, #1a1a1a);
+}
+
+.feedback-result p {
+    margin: 0;
+    font-size: 14px;
+    color: var(--text-muted, #888);
+}
+
+/* Label */
+.feedback-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted, #888);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Dark mode */
+[data-theme="dark"] .feedback-panel {
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .feedback-fab {
+    box-shadow: 0 4px 16px rgba(46, 134, 171, 0.25);
+}
+
+/* Mobile responsive */
+@media (max-width: 480px) {
+    .feedback-panel {
+        right: 12px;
+        left: 12px;
+        width: auto;
+        bottom: 84px;
+        max-height: 70vh;
+    }
+
+    .feedback-fab {
+        bottom: 16px;
+        right: 16px;
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+
+    .feedback-fab.cookie-banner-visible {
+        bottom: 120px;
+    }
+
+    .feedback-panel.cookie-banner-visible {
+        bottom: 180px;
+    }
+}

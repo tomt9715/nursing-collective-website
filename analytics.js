@@ -272,3 +272,42 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Export for use in other scripts
 window.Analytics = Analytics;
+
+/**
+ * Track a beta-specific event to both GA4 and our own backend.
+ * @param {string} eventName - Allowlisted event name (e.g. 'guide_opened')
+ * @param {object} eventData - Optional extra data
+ */
+function trackBetaEvent(eventName, eventData = {}) {
+    // Send to GA4
+    if (Analytics.initialized) {
+        Analytics.trackEvent('beta_' + eventName, eventData);
+    }
+
+    // Send to our backend
+    const payload = {
+        event_name: eventName,
+        event_data: eventData,
+        page_url: window.location.href,
+        session_id: sessionStorage.getItem('tnc_session_id') || generateSessionId()
+    };
+
+    const apiUrl = typeof API_URL !== 'undefined' ? API_URL : 'https://staging-backend-production-365a.up.railway.app';
+    const token = localStorage.getItem('accessToken');
+    const headers = { 'Content-Type': 'application/json' };
+    if (token) headers['Authorization'] = 'Bearer ' + token;
+
+    fetch(apiUrl + '/api/analytics/event', {
+        method: 'POST',
+        headers: headers,
+        body: JSON.stringify(payload)
+    }).catch(function() { /* silently fail — analytics should never block UX */ });
+}
+
+function generateSessionId() {
+    const id = 'sess_' + Date.now() + '_' + Math.random().toString(36).substring(2, 9);
+    sessionStorage.setItem('tnc_session_id', id);
+    return id;
+}
+
+window.trackBetaEvent = trackBetaEvent;

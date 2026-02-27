@@ -307,7 +307,7 @@ class QuizEngine {
 
         try {
             const token = localStorage.getItem('accessToken');
-            const response = await fetch(API_URL + '/ai/explain-question', {
+            const response = await fetch(API_URL + '/api/ai/explain-question', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

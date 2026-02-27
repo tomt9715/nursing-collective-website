@@ -1120,6 +1120,12 @@ body {
     margin-top: 14px;
 }
 
+/* Widen the outer container when explain panel is open */
+.quiz-container:has(.quiz-question--has-explain) {
+    max-width: 1400px;
+    transition: max-width 0.3s ease;
+}
+
 .quiz-question--has-explain {
     max-width: none;
     transition: max-width 0.3s ease;
@@ -1128,7 +1134,7 @@ body {
 @media (min-width: 1024px) {
     .quiz-question--has-explain {
         display: grid;
-        grid-template-columns: 1fr 380px;
+        grid-template-columns: 1fr 420px;
         gap: 24px;
         align-items: start;
     }
@@ -1144,7 +1150,7 @@ body {
 
     /* Labs + Explain both open: 3-column on wide screens */
     .quiz-question--has-labs.quiz-question--has-explain {
-        grid-template-columns: 1fr 280px 380px;
+        grid-template-columns: 1fr 280px 420px;
     }
 }
 

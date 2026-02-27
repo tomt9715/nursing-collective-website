@@ -29,9 +29,13 @@ async function initSuccessPage() {
     // Handle subscription purchases differently
     // Detect subscription by type param OR presence of plan param
     const planId = urlParams.get('plan');
-    const isSubscription = purchaseType === 'subscription' || planId;
+    const isSubscription = purchaseType === 'subscription' || purchaseType === 'plan_change' || planId;
 
-    if (isSubscription) {
+    if (purchaseType === 'plan_change') {
+        // Plan changes: user already has an active subscription, so polling would
+        // immediately find the OLD plan.  Show a dedicated success state instead.
+        await handlePlanChangeSuccess();
+    } else if (isSubscription) {
         await verifySubscription(sessionId);
     } else {
         await verifyPayment(paymentIntent, sessionId);
@@ -98,6 +102,48 @@ async function verifySubscription(sessionId) {
         console.error('Subscription verification error:', error);
         showErrorState('Unable to verify subscription. Please check your dashboard or contact support.');
     }
+}
+
+/**
+ * Handle plan change success — user already has an active subscription,
+ * so we skip polling (it would find the old plan) and show a tailored message.
+ */
+async function handlePlanChangeSuccess() {
+    // Quick auth check
+    if (!localStorage.getItem('accessToken')) {
+        try { await refreshToken(); } catch (e) { /* ignore */ }
+    }
+
+    const container = document.getElementById('success-content');
+    container.innerHTML = `
+        <div class="success-icon" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+            <i class="fas fa-check"></i>
+        </div>
+        <h1 class="success-title">Plan Changed Successfully!</h1>
+        <p class="success-message">
+            Your subscription plan has been updated. The change may take a moment to appear in your settings.
+        </p>
+        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: left;">
+            <h4 style="margin: 0 0 8px 0; font-size: 1rem; color: var(--text-primary);"><i class="fas fa-info-circle" style="color: #10b981; margin-right: 8px;"></i>What to expect</h4>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+                Your new plan is active immediately. A confirmation email has been sent to your inbox. If you don't see the update in your settings within a few minutes, try refreshing the page.
+            </p>
+        </div>
+        <div class="success-actions" style="margin-top: 24px;">
+            <a href="settings.html" class="btn btn-primary btn-large">
+                <i class="fas fa-cog"></i>
+                Go to Settings
+            </a>
+            <a href="dashboard.html" class="btn btn-light">
+                <i class="fas fa-book-open"></i>
+                Go to Dashboard
+            </a>
+        </div>
+        <div class="email-note">
+            <i class="fas fa-envelope"></i>
+            <p>A confirmation email with your updated plan details has been sent to your email address.</p>
+        </div>
+    `;
 }
 
 /**

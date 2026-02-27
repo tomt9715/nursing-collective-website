@@ -392,12 +392,17 @@ class QuizEngine {
             .replace(/\*(.+?)\*/g, '<em>$1</em>')
             .replace(/^\d+\.\s+(.+)$/gm, '<li>$1</li>')
             .replace(/^[-•]\s+(.+)$/gm, '<li>$1</li>')
-            .replace(/(<li>.*<\/li>\n?)+/g, function(match) {
-                return '<ul>' + match + '</ul>';
+            .replace(/(<li>[\s\S]*?<\/li>(\s*<li>[\s\S]*?<\/li>)*)/g, function(match) {
+                return '<ul>' + match.replace(/\n/g, '') + '</ul>';
             })
             .replace(/\n\n/g, '</p><p>')
             .replace(/\n/g, '<br>')
-            .replace(/^/, '<p>').replace(/$/, '</p>');
+            .replace(/^/, '<p>').replace(/$/, '</p>')
+            .replace(/<p>\s*(<h[34]>)/g, '$1')
+            .replace(/(<\/h[34]>)\s*<\/p>/g, '$1')
+            .replace(/<p>\s*(<ul>)/g, '$1')
+            .replace(/(<\/ul>)\s*<\/p>/g, '$1')
+            .replace(/<p>\s*<\/p>/g, '');
     }
 
     _cleanupAiPool() {

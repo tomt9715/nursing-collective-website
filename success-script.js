@@ -227,6 +227,16 @@ function showSubscriptionSuccess(subscription) {
         </div>
 
         <div class="success-actions">
+            ${!localStorage.getItem('onboarding_tour_seen') ? `
+            <button class="btn btn-primary btn-large" id="start-tour-btn">
+                <i class="fas fa-map-signs"></i>
+                Take a Quick Tour
+            </button>
+            <a href="dashboard.html" class="btn btn-light">
+                <i class="fas fa-arrow-right"></i>
+                Skip to Dashboard
+            </a>
+            ` : `
             <a href="dashboard.html" class="btn btn-primary btn-large">
                 <i class="fas fa-book-open"></i>
                 Start Studying
@@ -235,6 +245,7 @@ function showSubscriptionSuccess(subscription) {
                 <i class="fas fa-list"></i>
                 Go to Dashboard
             </a>
+            `}
         </div>
 
         <div class="email-note">
@@ -242,6 +253,192 @@ function showSubscriptionSuccess(subscription) {
             <p>A confirmation email with your subscription details has been sent to your email address.</p>
         </div>
     `;
+
+    // Attach tour button listener
+    const tourBtn = container.querySelector('#start-tour-btn');
+    if (tourBtn) {
+        tourBtn.addEventListener('click', function() {
+            showOnboardingTour(isAIPlan);
+        });
+    }
+}
+
+/**
+ * Show onboarding tour carousel
+ * @param {boolean} isAIPlan - Whether the user purchased an AI-powered plan
+ */
+function showOnboardingTour(isAIPlan) {
+    const container = document.getElementById('success-content');
+
+    // Define tour steps
+    const steps = [
+        {
+            icon: 'fa-th-large',
+            gradient: 'linear-gradient(135deg, #2E86AB 0%, #1a6b8a 100%)',
+            title: 'Your Dashboard',
+            description: 'Your dashboard is your home base. Everything you need is organized right there.',
+            highlights: [
+                { icon: 'fa-book-open', text: 'Access all your study guides in one place' },
+                { icon: 'fa-crown', text: 'View your subscription status and plan details' },
+                { icon: 'fa-cog', text: 'Manage your account settings anytime' }
+            ]
+        },
+        {
+            icon: 'fa-book-medical',
+            gradient: 'linear-gradient(135deg, #A23B72 0%, #7d2d58 100%)',
+            title: 'Study Guides',
+            description: 'Browse 50+ guides organized by nursing category — from Cardiac to Pharmacology.',
+            highlights: [
+                { icon: 'fa-search', text: 'Search and filter by topic or category' },
+                { icon: 'fa-lightbulb', text: 'Each guide has clinical pearls and FlorenceBot tips' },
+                { icon: 'fa-bookmark', text: 'Sidebar navigation to jump between sections' }
+            ]
+        },
+        {
+            icon: 'fa-download',
+            gradient: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+            title: 'Download & Study Anywhere',
+            description: 'Take your guides with you — download PDFs for offline studying during clinicals.',
+            highlights: [
+                { icon: 'fa-file-pdf', text: 'Download any guide as a print-friendly PDF' },
+                { icon: 'fa-mobile-alt', text: 'Guides are mobile-friendly for studying on the go' },
+                { icon: 'fa-sync-alt', text: 'New guides added regularly — check back often' }
+            ]
+        }
+    ];
+
+    // Add AI step if applicable
+    if (isAIPlan) {
+        steps.push({
+            icon: 'fa-robot',
+            gradient: 'linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%)',
+            title: 'AI-Powered Tools',
+            description: 'Your AI plan unlocks smart study tools that adapt to how you learn.',
+            highlights: [
+                { icon: 'fa-upload', text: 'Upload your notes for AI-powered analysis' },
+                { icon: 'fa-question-circle', text: 'Generate custom NCLEX practice questions' },
+                { icon: 'fa-chart-line', text: 'Get personalized study recommendations' }
+            ]
+        });
+    }
+
+    // Final "You're all set" step
+    steps.push({
+        icon: 'fa-rocket',
+        gradient: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+        title: "You're All Set!",
+        description: "That's the quick tour. Head to your dashboard to start exploring your study guides.",
+        highlights: [
+            { icon: 'fa-discord', text: 'Join our Discord community for study tips and support' },
+            { icon: 'fa-envelope', text: 'Check your email for your welcome message' },
+            { icon: 'fa-star', text: 'Bookmark your dashboard for easy access' }
+        ],
+        isFinal: true
+    });
+
+    let currentStep = 0;
+
+    function renderTour() {
+        // Build progress dots
+        const dotsHtml = steps.map((_, i) => {
+            let cls = 'tour-dot';
+            if (i === currentStep) cls += ' active';
+            else if (i < currentStep) cls += ' completed';
+            return `<div class="${cls}"></div>`;
+        }).join('');
+
+        // Build all step content (only active one visible)
+        const stepsHtml = steps.map((step, i) => {
+            const highlightsHtml = step.highlights.map(h =>
+                `<div class="tour-highlight">
+                    <i class="fas ${h.icon}"></i>
+                    <span>${h.text}</span>
+                </div>`
+            ).join('');
+
+            return `
+                <div class="tour-step ${i === currentStep ? 'active' : ''}" data-step="${i}">
+                    <div class="tour-icon" style="background: ${step.gradient};">
+                        <i class="fas ${step.icon}"></i>
+                    </div>
+                    <h2 class="tour-title">${step.title}</h2>
+                    <p class="tour-description">${step.description}</p>
+                    <div class="tour-highlights">
+                        ${highlightsHtml}
+                    </div>
+                </div>
+            `;
+        }).join('');
+
+        // Build navigation
+        const step = steps[currentStep];
+        let navHtml = '';
+        if (step.isFinal) {
+            navHtml = `
+                <div class="tour-nav" style="justify-content: center;">
+                    <a href="dashboard.html" class="btn btn-primary btn-large" style="min-width: 200px;">
+                        <i class="fas fa-book-open"></i>
+                        Go to Dashboard
+                    </a>
+                </div>
+            `;
+        } else {
+            navHtml = `
+                <div class="tour-nav">
+                    ${currentStep > 0
+                        ? `<button class="btn btn-light" id="tour-back"><i class="fas fa-arrow-left"></i> Back</button>`
+                        : `<button class="tour-skip" id="tour-skip">Skip tour</button>`
+                    }
+                    <span class="tour-step-count">${currentStep + 1} of ${steps.length}</span>
+                    <button class="btn btn-primary" id="tour-next">Next <i class="fas fa-arrow-right"></i></button>
+                </div>
+            `;
+        }
+
+        container.innerHTML = `
+            <div class="onboarding-tour">
+                <div class="tour-progress">${dotsHtml}</div>
+                ${stepsHtml}
+                ${navHtml}
+            </div>
+        `;
+
+        // Attach event listeners
+        const nextBtn = container.querySelector('#tour-next');
+        const backBtn = container.querySelector('#tour-back');
+        const skipBtn = container.querySelector('#tour-skip');
+
+        if (nextBtn) {
+            nextBtn.addEventListener('click', function() {
+                if (currentStep < steps.length - 1) {
+                    currentStep++;
+                    renderTour();
+                }
+            });
+        }
+
+        if (backBtn) {
+            backBtn.addEventListener('click', function() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    renderTour();
+                }
+            });
+        }
+
+        if (skipBtn) {
+            skipBtn.addEventListener('click', function() {
+                localStorage.setItem('onboarding_tour_seen', 'true');
+                window.location.href = 'dashboard.html';
+            });
+        }
+    }
+
+    // Mark tour as seen
+    localStorage.setItem('onboarding_tour_seen', 'true');
+
+    // Render the first step
+    renderTour();
 }
 
 /**

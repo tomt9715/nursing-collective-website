@@ -338,6 +338,174 @@
             }
         }
 
+        /* Onboarding Tour */
+        .onboarding-tour {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tour-progress {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .tour-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .tour-dot.active {
+            background: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        .tour-dot.completed {
+            background: var(--primary-color);
+            opacity: 0.5;
+        }
+
+        .tour-step {
+            display: none;
+            animation: tourFadeIn 0.4s ease-out;
+        }
+
+        .tour-step.active {
+            display: block;
+        }
+
+        @keyframes tourFadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .tour-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tour-icon i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        .tour-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 12px;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .tour-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.7;
+            margin-bottom: 24px;
+            max-width: 440px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .tour-highlights {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            text-align: left;
+            margin-bottom: 28px;
+            padding: 0 8px;
+        }
+
+        .tour-highlight {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 16px;
+            background: var(--background-light);
+            border-radius: 10px;
+        }
+
+        .tour-highlight i {
+            color: var(--primary-color);
+            font-size: 1.1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .tour-highlight span {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            line-height: 1.5;
+        }
+
+        .tour-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            margin-top: 8px;
+        }
+
+        .tour-nav .btn {
+            min-width: 120px;
+        }
+
+        .tour-skip {
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            cursor: pointer;
+            padding: 8px 12px;
+            transition: color 0.2s ease;
+        }
+
+        .tour-skip:hover {
+            color: var(--text-primary);
+        }
+
+        .tour-step-count {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        @media (max-width: 640px) {
+            .tour-icon {
+                width: 64px;
+                height: 64px;
+            }
+
+            .tour-icon i {
+                font-size: 1.6rem;
+            }
+
+            .tour-title {
+                font-size: 1.2rem;
+            }
+
+            .tour-description {
+                font-size: 0.95rem;
+            }
+
+            .tour-highlight {
+                padding: 10px 12px;
+            }
+
+            .tour-nav .btn {
+                min-width: 100px;
+            }
+        }
+
         /* Dark mode adjustments */
         [data-theme="dark"] .success-section {
             background: var(--background-white);
@@ -349,6 +517,10 @@
 
         [data-theme="dark"] .order-number-display {
             background: var(--background-light);
+        }
+
+        [data-theme="dark"] .tour-highlight {
+            background: var(--background-white);
         }
     </style>
     <!-- Sentry Error Tracking (load first) -->

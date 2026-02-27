@@ -125,8 +125,8 @@ const CookieConsent = {
      * Replace CLARITY_PROJECT_ID with your actual project ID from clarity.ms
      */
     initClarity() {
-        var clarityId = 'CLARITY_PROJECT_ID'; // TODO: Replace with real ID
-        if (clarityId === 'CLARITY_PROJECT_ID') return; // Skip if placeholder
+        var clarityId = 'vo4ri9cj8q';
+        if (!clarityId) return;
 
         (function(c,l,a,r,i,t,y){
             c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

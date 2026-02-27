@@ -103,6 +103,14 @@ function createLeftSidebar(sections) {
                     <div class="toc-progress-fill"></div>
                 </div>
             </div>
+            <div class="toc-nav-links">
+                <a href="../ai-tools.html" class="toc-nav-link toc-nav-link--ai">
+                    <i class="fas fa-wand-magic-sparkles"></i> AI Study Tools
+                </a>
+                <a href="../dashboard.html" class="toc-nav-link">
+                    <i class="fas fa-th-large"></i> Dashboard
+                </a>
+            </div>
         </div>
     `;
 
@@ -245,6 +253,14 @@ function createMobileNav(config) {
             '<span class="mobile-toc-progress-percent">0%</span>' +
         '</div>' +
         '<ul class="mobile-toc-list">' + tocItems + '</ul>' +
+        '<div class="mobile-nav-shortcuts">' +
+            '<a href="../ai-tools.html" class="mobile-nav-shortcut mobile-nav-shortcut--ai">' +
+                '<i class="fas fa-wand-magic-sparkles"></i> AI Study Tools' +
+            '</a>' +
+            '<a href="../dashboard.html" class="mobile-nav-shortcut">' +
+                '<i class="fas fa-th-large"></i> Dashboard' +
+            '</a>' +
+        '</div>' +
     '</div>';
 
     // Study Tools panel

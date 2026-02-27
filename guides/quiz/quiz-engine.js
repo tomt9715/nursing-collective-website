@@ -911,6 +911,9 @@ class QuizEngine {
                 </a>
                 <div class="quiz-top-bar-right">
                     ${timerHtml}
+                    <a href="${this.isAIGenerated ? '../../ai-tools.html' : '../ai-tools.html'}" class="quiz-ai-tools-link" title="AI Study Tools">
+                        <i class="fas fa-wand-magic-sparkles"></i> <span>AI Tools</span>
+                    </a>
                     <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
                         <i class="fas ${document.documentElement.getAttribute('data-theme') === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>
                     </button>

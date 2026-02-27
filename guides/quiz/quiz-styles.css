@@ -2705,6 +2705,48 @@ body {
     border-color: var(--quiz-primary);
 }
 
+/* AI Tools shortcut link in quiz top bar */
+.quiz-ai-tools-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #7c3aed;
+    text-decoration: none;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    background: rgba(124, 58, 237, 0.04);
+    transition: all 0.15s ease;
+}
+
+.quiz-ai-tools-link:hover {
+    background: rgba(124, 58, 237, 0.1);
+    border-color: rgba(124, 58, 237, 0.35);
+    color: #6d28d9;
+    text-decoration: none;
+}
+
+.quiz-ai-tools-link i { font-size: 0.85rem; }
+
+[data-theme="dark"] .quiz-ai-tools-link {
+    color: #a78bfa;
+    border-color: rgba(167, 139, 250, 0.2);
+    background: rgba(167, 139, 250, 0.06);
+}
+
+[data-theme="dark"] .quiz-ai-tools-link:hover {
+    background: rgba(167, 139, 250, 0.12);
+    border-color: rgba(167, 139, 250, 0.35);
+    color: #c4b5fd;
+}
+
+@media (max-width: 480px) {
+    .quiz-ai-tools-link span { display: none; }
+    .quiz-ai-tools-link { padding: 6px 10px; }
+}
+
 /* ============================================
    TIMER DISPLAY
    ============================================ */

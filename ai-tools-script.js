@@ -1250,6 +1250,11 @@
         // Render content
         if (panelContent) panelContent.innerHTML = renderMarkdown(markdownContent);
 
+        // Drug cards: transform into visual card layout
+        if (genType === 'drug_cards' && panelContent) {
+            postProcessDrugCards(panelContent);
+        }
+
         // Extract AI-generated title from the first H1 in rendered content
         currentContentTitle = null;
         if (panelContent) {
@@ -1598,6 +1603,94 @@
         }
 
         return html;
+    }
+
+    // ── Drug Card post-processor ─────────────────────────────────
+    // Wraps each H2 section into a visual card container
+
+    function postProcessDrugCards(containerEl) {
+        if (!containerEl) return;
+
+        // Remove the TOC — not useful for cards
+        var toc = containerEl.querySelector('.ai-toc');
+        if (toc) toc.remove();
+
+        // Gather all direct children into an array
+        var nodes = Array.prototype.slice.call(containerEl.childNodes);
+        var cards = [];
+        var currentCard = null;
+        var beforeCards = []; // content before first H2 (title, intro)
+
+        for (var i = 0; i < nodes.length; i++) {
+            var node = nodes[i];
+            var isH2 = node.nodeType === 1 && node.tagName === 'H2';
+            var isHR = node.nodeType === 1 && node.tagName === 'HR';
+
+            if (isH2) {
+                // Start a new card
+                currentCard = document.createElement('div');
+                currentCard.className = 'drug-card';
+
+                // Build card header from H2 content
+                var header = document.createElement('div');
+                header.className = 'drug-card-header';
+                header.innerHTML = node.innerHTML;
+                currentCard.appendChild(header);
+
+                // Create body container
+                var body = document.createElement('div');
+                body.className = 'drug-card-body';
+                currentCard._body = body;
+                currentCard.appendChild(body);
+
+                cards.push(currentCard);
+            } else if (isHR) {
+                // Skip horizontal rules (used as card separators in markdown)
+                continue;
+            } else if (currentCard) {
+                // Add to current card body
+                currentCard._body.appendChild(node);
+            } else {
+                // Before any H2 — keep as intro content
+                beforeCards.push(node);
+            }
+        }
+
+        // Only transform if we found cards
+        if (cards.length === 0) return;
+
+        // Clear container and rebuild
+        containerEl.innerHTML = '';
+
+        // Re-add intro content (H1 title, etc.)
+        for (var b = 0; b < beforeCards.length; b++) {
+            containerEl.appendChild(beforeCards[b]);
+        }
+
+        // Add cards grid wrapper
+        var grid = document.createElement('div');
+        grid.className = 'drug-cards-grid';
+
+        for (var c = 0; c < cards.length; c++) {
+            delete cards[c]._body; // clean up temp reference
+            // Tag H3 sub-sections inside card body with labels
+            var h3s = cards[c].querySelectorAll('.drug-card-body h3');
+            for (var s = 0; s < h3s.length; s++) {
+                var text = h3s[s].textContent.toLowerCase();
+                if (text.indexOf('side effect') !== -1 || text.indexOf('adverse') !== -1) {
+                    h3s[s].classList.add('drug-card-section--warning');
+                } else if (text.indexOf('nursing') !== -1 || text.indexOf('implication') !== -1) {
+                    h3s[s].classList.add('drug-card-section--nursing');
+                } else if (text.indexOf('patient') !== -1 || text.indexOf('teaching') !== -1) {
+                    h3s[s].classList.add('drug-card-section--teaching');
+                } else if (text.indexOf('warning') !== -1 || text.indexOf('black box') !== -1 || text.indexOf('contraindic') !== -1) {
+                    h3s[s].classList.add('drug-card-section--danger');
+                }
+            }
+            grid.appendChild(cards[c]);
+        }
+
+        containerEl.appendChild(grid);
     }
 
     // ── AI Quiz Markdown Parser ────────────────────────────────

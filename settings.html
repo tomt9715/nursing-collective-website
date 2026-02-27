@@ -132,16 +132,32 @@
            SETTINGS PROFILE HERO
            ══════════════════════════════════════════════ */
         .settings-hero {
-            background: linear-gradient(135deg, rgba(46, 134, 171, 0.06) 0%, rgba(162, 59, 114, 0.06) 100%);
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 40px 32px 32px;
-            text-align: center;
-            margin-bottom: 32px;
+            display: none; /* replaced by unified profile card */
         }
 
-        [data-theme="dark"] .settings-hero {
+        /* ── Unified Profile Card ─────────────────────── */
+        .settings-profile-card {
+            padding-bottom: 24px;
+            margin-bottom: 32px;
+        }
+        .settings-profile-avatar-area {
+            background: linear-gradient(135deg, rgba(46, 134, 171, 0.06) 0%, rgba(162, 59, 114, 0.06) 100%);
+            border-radius: 16px 16px 0 0;
+            margin: -24px -24px 0;
+            padding: 32px 24px 24px;
+            text-align: center;
+        }
+        [data-theme="dark"] .settings-profile-avatar-area {
             background: linear-gradient(135deg, rgba(46, 134, 171, 0.1) 0%, rgba(162, 59, 114, 0.1) 100%);
+        }
+        .settings-profile-section {
+            padding-top: 8px;
+        }
+        .settings-profile-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 16px;
+            flex-wrap: wrap;
         }
 
         /* Avatar wrapper — clickable, with hover overlay */
@@ -628,16 +644,18 @@
 
         /* ── Responsive ───────────────────────────────── */
         @media (max-width: 768px) {
-            .settings-hero { padding: 32px 20px 24px; }
             .settings-card { padding: 24px 20px; }
+            .settings-profile-avatar-area { margin: -24px -20px 0; padding: 28px 20px 20px; }
             .membership-upgrade-box { flex-direction: column; align-items: flex-start; }
         }
 
         @media (max-width: 480px) {
-            .settings-hero { padding: 28px 16px 20px; }
             .settings-avatar-wrapper { width: 100px; height: 100px; }
             .settings-hero-name { font-size: 1.25rem; }
             .settings-card { padding: 20px 16px; }
+            .settings-profile-avatar-area { margin: -20px -16px 0; padding: 24px 16px 18px; border-radius: 14px 14px 0 0; }
+            .settings-profile-actions { flex-direction: column; }
+            .settings-profile-actions .settings-edit-btn { width: 100%; justify-content: center; }
             .setting-row { flex-direction: column; align-items: flex-start; gap: 12px; }
             .icon-picker-grid { grid-template-columns: repeat(3, 1fr); }
             .membership-plan-row { flex-direction: column; align-items: flex-start; }
@@ -1088,18 +1106,53 @@
     <section class="dashboard settings-section">
         <div class="container settings-container">
 
-            <!-- ═══ Profile Hero ═══ -->
-            <div class="settings-hero">
-                <div class="settings-avatar-wrapper" id="settings-avatar-wrapper" tabindex="0" role="button" aria-label="Change profile picture">
-                    <img src="assets/images/default-profile/robot.png" alt="Your profile picture" id="current-profile-img">
-                    <div class="settings-avatar-overlay">
-                        <i class="fas fa-camera"></i>
-                        <span>Change</span>
+            <!-- ═══ Profile & Account Card (unified) ═══ -->
+            <div class="settings-card settings-profile-card">
+                <!-- Avatar area -->
+                <div class="settings-profile-avatar-area">
+                    <div class="settings-avatar-wrapper" id="settings-avatar-wrapper" tabindex="0" role="button" aria-label="Change profile picture">
+                        <img src="assets/images/default-profile/robot.png" alt="Your profile picture" id="current-profile-img">
+                        <div class="settings-avatar-overlay">
+                            <i class="fas fa-camera"></i>
+                            <span>Change</span>
+                        </div>
+                    </div>
+                    <div class="settings-hero-name" id="settings-hero-name">Loading...</div>
+                    <div class="settings-hero-email" id="settings-hero-email">Loading...</div>
+                    <input type="file" id="profile-pic-upload" accept="image/png,image/jpeg,image/webp" class="hidden">
+                </div>
+
+                <!-- Profile info rows -->
+                <div class="settings-profile-section">
+                    <div class="settings-summary-rows">
+                        <div class="settings-summary-row">
+                            <span class="settings-summary-label">Name</span>
+                            <span class="settings-summary-value" id="summary-name">—</span>
+                        </div>
+                        <div class="settings-summary-row">
+                            <span class="settings-summary-label">Email</span>
+                            <span class="settings-summary-value" id="summary-email">—</span>
+                        </div>
+                        <div class="settings-summary-row">
+                            <span class="settings-summary-label">Program</span>
+                            <span class="settings-summary-value" id="summary-program">—</span>
+                        </div>
+                        <div class="settings-summary-row">
+                            <span class="settings-summary-label">Password</span>
+                            <span class="settings-summary-value">••••••••</span>
+                        </div>
                     </div>
                 </div>
-                <div class="settings-hero-name" id="settings-hero-name">Loading...</div>
-                <div class="settings-hero-email" id="settings-hero-email">Loading...</div>
-                <input type="file" id="profile-pic-upload" accept="image/png,image/jpeg,image/webp" class="hidden">
+
+                <!-- Action buttons -->
+                <div class="settings-profile-actions">
+                    <button type="button" class="settings-edit-btn" id="edit-profile-btn">
+                        <i class="fas fa-pen"></i> Edit Profile
+                    </button>
+                    <button type="button" class="settings-edit-btn" id="change-password-btn">
+                        <i class="fas fa-key"></i> Change Password
+                    </button>
+                </div>
             </div>
 
             <!-- Profile Picture Picker Modal (hidden by default) -->
@@ -1142,51 +1195,6 @@
                         </button>
                     </div>
                 </div>
-            </div>
-
-            <!-- ═══ Account Section ═══ -->
-            <div class="settings-section-label">Account</div>
-
-            <!-- Profile Information Card (compact summary) -->
-            <div class="settings-card settings-compact-card">
-                <div class="settings-card-header">
-                    <i class="fas fa-user"></i>
-                    <h3>Profile Information</h3>
-                </div>
-                <div class="settings-summary-rows">
-                    <div class="settings-summary-row">
-                        <span class="settings-summary-label">Name</span>
-                        <span class="settings-summary-value" id="summary-name">—</span>
-                    </div>
-                    <div class="settings-summary-row">
-                        <span class="settings-summary-label">Email</span>
-                        <span class="settings-summary-value" id="summary-email">—</span>
-                    </div>
-                    <div class="settings-summary-row">
-                        <span class="settings-summary-label">Program</span>
-                        <span class="settings-summary-value" id="summary-program">—</span>
-                    </div>
-                </div>
-                <button type="button" class="settings-edit-btn" id="edit-profile-btn">
-                    <i class="fas fa-pen"></i> Edit Profile
-                </button>
-            </div>
-
-            <!-- Change Password Card (compact summary) -->
-            <div class="settings-card settings-compact-card">
-                <div class="settings-card-header">
-                    <i class="fas fa-lock"></i>
-                    <h3>Change Password</h3>
-                </div>
-                <div class="settings-summary-rows">
-                    <div class="settings-summary-row">
-                        <span class="settings-summary-label">Password</span>
-                        <span class="settings-summary-value">••••••••</span>
-                    </div>
-                </div>
-                <button type="button" class="settings-edit-btn" id="change-password-btn">
-                    <i class="fas fa-key"></i> Change Password
-                </button>
             </div>
 
             <!-- ═══ Membership Section ═══ -->

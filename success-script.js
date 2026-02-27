@@ -375,8 +375,9 @@ function showOnboardingTour(isAIPlan) {
         let navHtml = '';
         if (step.isFinal) {
             navHtml = `
-                <div class="tour-nav" style="justify-content: center;">
-                    <a href="dashboard.html" class="btn btn-primary btn-large" style="min-width: 200px;">
+                <div class="tour-nav">
+                    <button class="btn btn-light" id="tour-back"><i class="fas fa-arrow-left"></i> Back</button>
+                    <a href="dashboard.html" class="btn btn-primary btn-large" style="min-width: 180px;">
                         <i class="fas fa-book-open"></i>
                         Go to Dashboard
                     </a>

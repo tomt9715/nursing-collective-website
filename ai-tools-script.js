@@ -376,19 +376,7 @@
         if (qcountCancel) qcountCancel.addEventListener('click', closeQuestionCountModal);
         if (qcountBackdrop) qcountBackdrop.addEventListener('click', closeQuestionCountModal);
         if (qcountGo) qcountGo.addEventListener('click', confirmQuestionCount);
-        if (qcountPresets) {
-            qcountPresets.addEventListener('click', function (e) {
-                var btn = e.target.closest('.ai-qcount-preset');
-                if (!btn) return;
-                var count = parseInt(btn.dataset.count, 10);
-                // Update active state
-                qcountPresets.querySelectorAll('.ai-qcount-preset').forEach(function (b) {
-                    b.classList.toggle('active', b === btn);
-                });
-                if (qcountInput) qcountInput.value = count;
-                updatePoolHint();
-            });
-        }
+        // Note: preset click listeners are attached dynamically in openQuestionCountModal()
         if (qcountInput) {
             qcountInput.addEventListener('input', function () {
                 // Deselect presets when user types a custom value
@@ -398,13 +386,8 @@
                         b.classList.toggle('active', parseInt(b.dataset.count, 10) === val);
                     });
                 }
-                updatePoolHint();
+                updateCreditCost();
             });
-        }
-
-        // Show/hide pool hint based on quiz checkbox + question count
-        if (qcountQuizCheckbox) {
-            qcountQuizCheckbox.addEventListener('change', updatePoolHint);
         }
 
         // TOC link clicks → smooth scroll within panel
@@ -596,8 +579,51 @@
                     startPolling(doc.id);
                 }
             });
+
+            // Auto-generate practice questions for docs that don't have them
+            checkAutoGenerate();
         } catch (err) {
             console.warn('[AI Tools] Failed to load documents:', err);
+        }
+    }
+
+    // ── Auto-generation queue ──────────────────────────────────
+    var autoGenDocId = null; // the doc currently being auto-generated
+
+    function checkAutoGenerate() {
+        if (autoGenDocId) return; // already running one
+
+        var pending = documents.filter(function (doc) {
+            return doc.status === 'ready'
+                && (!doc.completed_generations || doc.completed_generations.indexOf('practice_questions') === -1)
+                && (!doc.generating_types || doc.generating_types.indexOf('practice_questions') === -1);
+        });
+
+        if (pending.length === 0) {
+            // Check if the doc we were generating for just finished
+            autoGenDocId = null;
+            return;
+        }
+
+        var doc = pending[0];
+        autoGenDocId = doc.id;
+
+        triggerAutoGeneration(doc.id, doc.filename);
+    }
+
+    async function triggerAutoGeneration(docId, filename) {
+        try {
+            await apiCall('/api/ai/generate/' + docId, {
+                method: 'POST',
+                body: JSON.stringify({ type: 'practice_questions' }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            // The generation is now in-progress — polling will detect completion
+            // and re-render the indicator from generating → cached
+            startPreGenPolling();
+        } catch (err) {
+            console.warn('[AI Tools] Auto-generation failed for doc', docId, err);
+            autoGenDocId = null; // allow retry on next poll
         }
     }
 
@@ -625,6 +651,14 @@
                 hasGenerating = true;
             }
         });
+
+        // Check if the auto-gen doc just finished
+        if (autoGenDocId) {
+            var autoDoc = documents.find(function (d) { return d.id === autoGenDocId; });
+            if (autoDoc && autoDoc.completed_generations && autoDoc.completed_generations.indexOf('practice_questions') !== -1) {
+                autoGenDocId = null; // done — allow next doc to queue
+            }
+        }
 
         // If any document has types currently generating, poll to update button states
         if (hasGenerating) {
@@ -708,8 +742,12 @@
                     attrStr = ' disabled';
                     tooltipHtml = '<span class="ai-tooltip">' + escapeHtml(irrelevantReason) + '</span>';
                 } else if (isCached) {
-                    statusIndicator = '<span class="ai-action-cached" title="Generated"></span>';
+                    statusIndicator = '<span class="ai-action-cached" title="Ready — click to start quiz"></span>';
                     attrStr = ' title="' + escapeHtml(typeInfo.label) + '"';
+                } else if (isGenerating && typeKey === 'practice_questions') {
+                    // Auto-generating practice questions — flashing blue dot
+                    statusIndicator = '<span class="ai-action-autogen" title="Generating practice questions\u2026"></span>';
+                    attrStr = ' title="Generating\u2026"';
                 } else if (isGenerating) {
                     statusIndicator = '<span class="ai-action-generating" title="Generating\u2026"></span>';
                     attrStr = ' title="Generating\u2026"';
@@ -750,7 +788,34 @@
             (function (btn) {
                 btn.addEventListener('click', function () {
                     if (btn.disabled) return;
-                    requestGeneration(doc.id, doc.filename, btn.dataset.genType);
+                    var genType = btn.dataset.genType;
+
+                    // Practice questions: new flow based on indicator state
+                    if (genType === 'practice_questions') {
+                        var isReady = btn.querySelector('.ai-action-cached');
+                        var isAutoGen = btn.querySelector('.ai-action-autogen') || btn.querySelector('.ai-action-generating');
+
+                        if (isReady) {
+                            // Questions are ready — open modal to pick count
+                            var docInfo = documents.find(function (d) { return d.id == doc.id; });
+                            var maxCount = (docInfo && docInfo.pq_question_count) || 30;
+                            openQuestionCountModal(doc.id, doc.filename, maxCount);
+                            return;
+                        }
+
+                        if (isAutoGen) {
+                            showToast('Practice questions are being generated. They\u2019ll be ready in a moment!', 'info');
+                            return;
+                        }
+
+                        // No indicator — trigger generation manually (fallback)
+                        triggerAutoGeneration(doc.id, doc.filename);
+                        showToast('Generating practice questions\u2026', 'info');
+                        return;
+                    }
+
+                    // Other generation types — existing flow
+                    requestGeneration(doc.id, doc.filename, genType);
                 });
             })(genBtns[j]);
         }
@@ -799,34 +864,63 @@
 
     // ── Question count modal ─────────────────────────────────────
 
-    function updatePoolHint() {
-        if (!qcountPoolHint) return;
-        var quizOn = qcountQuizCheckbox ? qcountQuizCheckbox.checked : false;
+    var pendingPqMaxCount = 30;
+
+    function updateCreditCost() {
+        var costEl = document.getElementById('ai-qcount-credit-text');
+        if (!costEl) return;
         var count = parseInt(qcountInput ? qcountInput.value : 15, 10);
-        // Pool only exists when doubling produces extra questions (count * 2 must exceed count, capped at 50)
-        var wouldHavePool = quizOn && count < 50 && Math.min(count * 2, 50) > count;
-        qcountPoolHint.classList.toggle('visible', wouldHavePool);
+        if (isNaN(count) || count < 1) count = 1;
+        costEl.textContent = 'This will use ' + count + ' question credit' + (count === 1 ? '' : 's');
     }
 
-    function openQuestionCountModal(docId, filename) {
+    function openQuestionCountModal(docId, filename, maxCount) {
         pendingPqDocId = docId;
         pendingPqFilename = filename;
-        // Reset to default
-        if (qcountInput) qcountInput.value = 15;
+        pendingPqMaxCount = maxCount || 30;
+
+        // Update subtitle
+        var sub = document.getElementById('ai-qcount-sub');
+        if (sub) sub.textContent = pendingPqMaxCount + ' questions available. Choose how many for your quiz.';
+
+        // Update max on input
+        if (qcountInput) {
+            qcountInput.max = pendingPqMaxCount;
+            qcountInput.value = Math.min(15, pendingPqMaxCount);
+        }
+
+        // Build dynamic presets
         if (qcountPresets) {
-            qcountPresets.querySelectorAll('.ai-qcount-preset').forEach(function (b) {
-                b.classList.toggle('active', b.dataset.count === '15');
+            qcountPresets.innerHTML = '';
+            var options = [5, 10, 15, 20, 30].filter(function (n) { return n <= pendingPqMaxCount; });
+            if (options.indexOf(pendingPqMaxCount) === -1 && pendingPqMaxCount > 5) options.push(pendingPqMaxCount);
+            options.sort(function (a, b) { return a - b; });
+
+            var defaultVal = Math.min(15, pendingPqMaxCount);
+            options.forEach(function (n) {
+                var btn = document.createElement('button');
+                btn.className = 'ai-qcount-preset';
+                btn.dataset.count = n;
+                btn.textContent = n === pendingPqMaxCount ? 'All (' + n + ')' : String(n);
+                if (n === defaultVal) btn.classList.add('active');
+                qcountPresets.appendChild(btn);
+
+                btn.addEventListener('click', function () {
+                    qcountPresets.querySelectorAll('.ai-qcount-preset').forEach(function (b) {
+                        b.classList.remove('active');
+                    });
+                    btn.classList.add('active');
+                    if (qcountInput) qcountInput.value = n;
+                    updateCreditCost();
+                });
             });
         }
-        if (qcountQuizCheckbox) qcountQuizCheckbox.checked = true;
-        updatePoolHint();
+
+        updateCreditCost();
+
         // Show modal
-        if (qcountBackdrop) {
-            qcountBackdrop.classList.add('visible');
-        }
-        if (qcountModal) {
-            qcountModal.classList.add('visible');
-        }
+        if (qcountBackdrop) qcountBackdrop.classList.add('visible');
+        if (qcountModal) qcountModal.classList.add('visible');
     }
 
     function closeQuestionCountModal() {
@@ -836,19 +930,70 @@
         pendingPqFilename = null;
     }
 
-    function confirmQuestionCount() {
+    async function confirmQuestionCount() {
         var count = parseInt(qcountInput ? qcountInput.value : 15, 10);
-        if (isNaN(count) || count < 5) count = 5;
-        if (count > 50) count = 50;
-        lastNumQuestions = count;
-        autoLaunchQuiz = qcountQuizCheckbox ? qcountQuizCheckbox.checked : false;
+        if (isNaN(count) || count < 1) count = 1;
+        if (count > pendingPqMaxCount) count = pendingPqMaxCount;
+
         var docId = pendingPqDocId;
         var filename = pendingPqFilename;
         closeQuestionCountModal();
-        if (docId) {
-            // When quiz mode is on, request 2x questions so we have a fresh pool for "Go Again"
-            var requestCount = autoLaunchQuiz ? Math.min(count * 2, 50) : count;
-            requestGeneration(docId, filename, 'practice_questions', requestCount);
+
+        if (!docId) return;
+
+        // Show a brief loading toast
+        showToast('Starting quiz\u2026', 'info');
+
+        try {
+            // Call quiz/start to deduct credits and get content
+            var data = await apiCall('/api/ai/quiz/start', {
+                method: 'POST',
+                body: JSON.stringify({ doc_id: docId, question_count: count }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (data && data.content) {
+                var questions = parseAIQuizMarkdown(data.content);
+                if (!questions || questions.length === 0) {
+                    showToast('Could not parse questions. Try regenerating.', 'error');
+                    return;
+                }
+
+                // Slice to the requested count
+                var quizQuestions = questions.slice(0, count);
+                var perRound = count;
+
+                var quizPayload = {
+                    questions: questions,         // store ALL for pool rotation
+                    questionsPerRound: perRound,
+                    guideName: filename || 'AI Practice Questions',
+                    guideSlug: 'ai-' + (docId || 'generated'),
+                    category: 'AI Generated',
+                    categoryColor: '#3b82f6',
+                    estimatedMinutes: Math.max(5, Math.round(perRound * 1.5)),
+                    isAIGenerated: true,
+                    sourceDocId: docId
+                };
+
+                sessionStorage.setItem('aiQuizData', JSON.stringify(quizPayload));
+                sessionStorage.setItem('aiQuizRound', '0');
+
+                // Refresh credit display
+                fetchCredits();
+
+                // Navigate to quiz immediately
+                window.location.href = 'guides/quiz/quiz.html?source=ai&doc=' + encodeURIComponent(docId || '');
+            } else {
+                throw new Error(data.error || 'Failed to start quiz');
+            }
+        } catch (err) {
+            console.error('[AI Tools] Quiz start failed:', err);
+            if (isCreditError(err.message)) {
+                showCreditExhaustedToast('question');
+                fetchCredits();
+            } else {
+                showToast(err.message || 'Failed to start quiz.', 'error');
+            }
         }
     }
 
@@ -858,17 +1003,9 @@
         var typeInfo = GENERATION_TYPES[genType];
         if (!typeInfo) return;
 
-        // For practice questions without a cached result, show the question count modal first
-        if (genType === 'practice_questions' && !numQuestions) {
-            var pqBtn = document.querySelector(
-                '[data-action="generate"][data-doc-id="' + docId + '"][data-gen-type="practice_questions"]'
-            );
-            var isCached = pqBtn && pqBtn.querySelector('.ai-action-cached');
-            if (!isCached) {
-                openQuestionCountModal(docId, filename);
-                return;
-            }
-        }
+        // Practice questions are now handled via auto-generation + quiz/start.
+        // This function is only used for other generation types (summary, drug cards, etc.)
+        // and for explicit regeneration of practice questions from the panel.
 
         var btn = document.querySelector(
             '[data-action="generate"][data-doc-id="' + docId + '"][data-gen-type="' + genType + '"]'

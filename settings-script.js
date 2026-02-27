@@ -27,6 +27,10 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Setup delete account handlers
     setupDeleteAccount();
 
+    // Setup profile & password modals
+    setupProfileModal();
+    setupPasswordModal();
+
     // User menu dropdown toggle
     const userMenuBtn = document.getElementById('user-menu-btn');
     const userDropdown = document.getElementById('user-dropdown');
@@ -109,6 +113,9 @@ async function loadUserProfile() {
         document.getElementById('email').value = user.email || '';
         document.getElementById('nursing-program').value = user.nursing_program || '';
 
+        // Update compact summary card
+        updateProfileSummary(user);
+
         // Initialize profile picture picker
         initProfilePicture(user);
 
@@ -122,6 +129,32 @@ async function loadUserProfile() {
         console.error('Error loading profile:', error);
         showAlert('Profile Load Failed', 'Failed to load your profile. Please try logging in again.', 'error');
     }
+}
+
+// Program code → human-readable label
+const PROGRAM_LABELS = {
+    'ASN': 'ASN - Associate Degree',
+    'BSN': 'BSN - Bachelor of Science',
+    'ABSN': 'ABSN - Accelerated BSN',
+    'LPN-to-RN': 'LPN to RN Bridge',
+    'RN-to-BSN': 'RN to BSN Bridge',
+    'MSN': 'MSN - Master of Science',
+    'DNP': 'DNP - Doctor of Nursing Practice',
+    'Other': 'Other'
+};
+
+// Update compact profile summary card
+function updateProfileSummary(user) {
+    const nameEl = document.getElementById('summary-name');
+    const emailEl = document.getElementById('summary-email');
+    const programEl = document.getElementById('summary-program');
+
+    if (nameEl) {
+        const name = [user.first_name, user.last_name].filter(Boolean).join(' ');
+        nameEl.textContent = name || '—';
+    }
+    if (emailEl) emailEl.textContent = user.email || '—';
+    if (programEl) programEl.textContent = PROGRAM_LABELS[user.nursing_program] || user.nursing_program || '—';
 }
 
 // Update OAuth connection status
@@ -211,6 +244,12 @@ async function handleProfileUpdate(e) {
             heroName.textContent = displayName.trim() || 'Your Name';
         }
 
+        // Update compact summary card
+        updateProfileSummary(data.user);
+
+        // Close modal
+        closeSettingsModal('edit-profile-modal');
+
         // Show success message
         showSuccess('Profile updated successfully!');
 
@@ -256,6 +295,9 @@ async function handlePasswordChange(e) {
                 new_password: newPassword
             })
         });
+
+        // Close modal
+        closeSettingsModal('change-password-modal');
 
         // Show success message
         showSuccess('Password updated successfully!');
@@ -340,6 +382,88 @@ function checkPasswordMatch(password1, password2, containerId) {
         container.style.color = '#ef4444';
     }
 }
+
+// ── Settings Modal Helpers ────────────────────────────────────────
+function openSettingsModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = 'flex';
+}
+
+function closeSettingsModal(id) {
+    const modal = document.getElementById(id);
+    if (!modal) return;
+    modal.style.display = 'none';
+}
+
+function setupProfileModal() {
+    const btn = document.getElementById('edit-profile-btn');
+    const modalId = 'edit-profile-modal';
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+        openSettingsModal(modalId);
+    });
+
+    // Close buttons
+    const closeX = document.getElementById('edit-profile-close-x');
+    const cancelBtn = document.getElementById('edit-profile-cancel');
+    if (closeX) closeX.addEventListener('click', function () { closeSettingsModal(modalId); });
+    if (cancelBtn) cancelBtn.addEventListener('click', function () { closeSettingsModal(modalId); });
+
+    // Close on overlay click
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) closeSettingsModal(modalId);
+        });
+    }
+}
+
+function setupPasswordModal() {
+    const btn = document.getElementById('change-password-btn');
+    const modalId = 'change-password-modal';
+    if (!btn) return;
+
+    btn.addEventListener('click', function () {
+        // Reset form + indicators each time modal opens
+        const form = document.getElementById('password-form');
+        if (form) form.reset();
+        const strength = document.getElementById('settings-password-strength');
+        if (strength) {
+            var bar = strength.querySelector('.strength-bar');
+            var text = strength.querySelector('.strength-text');
+            if (bar) { bar.style.width = '0%'; }
+            if (text) { text.textContent = ''; }
+        }
+        const match = document.getElementById('settings-password-match');
+        if (match) { match.textContent = ''; }
+
+        openSettingsModal(modalId);
+    });
+
+    // Close buttons
+    const closeX = document.getElementById('change-password-close-x');
+    const cancelBtn = document.getElementById('change-password-cancel');
+    if (closeX) closeX.addEventListener('click', function () { closeSettingsModal(modalId); });
+    if (cancelBtn) cancelBtn.addEventListener('click', function () { closeSettingsModal(modalId); });
+
+    // Close on overlay click
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) closeSettingsModal(modalId);
+        });
+    }
+}
+
+// Close modals on Escape key
+document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+        closeSettingsModal('edit-profile-modal');
+        closeSettingsModal('change-password-modal');
+    }
+});
 
 // Load notification preferences from server
 async function loadNotificationPreferences() {

@@ -1059,6 +1059,18 @@ body {
     margin-bottom: 8px;
 }
 
+.quiz-explain-body--streaming::after {
+    content: '\25CA';
+    display: inline;
+    color: #7c3aed;
+    animation: quiz-explain-cursor 0.8s steps(2) infinite;
+    font-weight: 400;
+}
+@keyframes quiz-explain-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
 .quiz-explain-error {
     padding: 14px 18px;
     background: rgba(239, 68, 68, 0.06);
@@ -1092,6 +1104,9 @@ body {
 }
 [data-theme="dark"] .quiz-explain-body h3,
 [data-theme="dark"] .quiz-explain-body h4 {
+    color: #a78bfa;
+}
+[data-theme="dark"] .quiz-explain-body--streaming::after {
     color: #a78bfa;
 }
 [data-theme="dark"] .quiz-explain-error {

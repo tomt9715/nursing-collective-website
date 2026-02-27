@@ -288,7 +288,11 @@ class QuizEngine {
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating explanation...';
         container.style.display = 'block';
-        container.innerHTML = '<div class="quiz-explain-loading"><div class="quiz-explain-loading-dots"><span></span><span></span><span></span></div><p>AI is breaking down this question for you...</p></div>';
+        container.innerHTML = '<div class="quiz-explain-content">' +
+            '<div class="quiz-explain-header"><i class="fas fa-graduation-cap"></i> AI Explanation</div>' +
+            '<div class="quiz-explain-body quiz-explain-body--streaming"></div></div>';
+
+        const bodyEl = container.querySelector('.quiz-explain-body');
 
         // Build request payload
         const result = this.results.get(q.id);
@@ -302,16 +306,60 @@ class QuizEngine {
         };
 
         try {
-            const data = await apiCall('/ai/explain-question', {
+            const token = localStorage.getItem('accessToken');
+            const response = await fetch(API_URL + '/ai/explain-question', {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    ...(token ? {'Authorization': 'Bearer ' + token} : {}),
+                },
+                credentials: 'include',
                 body: JSON.stringify(payload),
             });
 
-            if (data.explanation) {
-                container.innerHTML = '<div class="quiz-explain-content">' +
-                    '<div class="quiz-explain-header"><i class="fas fa-graduation-cap"></i> AI Explanation</div>' +
-                    '<div class="quiz-explain-body">' + this._renderMarkdown(data.explanation) + '</div>' +
-                    '</div>';
+            if (!response.ok) {
+                const err = await response.json().catch(() => ({}));
+                throw new Error(err.error || 'Request failed');
+            }
+
+            // Read SSE stream
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let fullText = '';
+            let buffer = '';
+
+            while (true) {
+                const { done, value } = await reader.read();
+                if (done) break;
+
+                buffer += decoder.decode(value, { stream: true });
+
+                // Parse SSE events from buffer
+                const lines = buffer.split('\n');
+                buffer = lines.pop(); // keep incomplete line in buffer
+
+                for (const line of lines) {
+                    if (!line.startsWith('data: ')) continue;
+                    try {
+                        const data = JSON.parse(line.slice(6));
+                        if (data.error) throw new Error(data.error);
+                        if (data.done) break;
+                        if (data.text) {
+                            fullText += data.text;
+                            bodyEl.innerHTML = this._renderMarkdown(fullText);
+                        }
+                    } catch (parseErr) {
+                        if (parseErr.message && parseErr.message !== 'Request failed') {
+                            // Ignore JSON parse errors from partial chunks
+                        }
+                    }
+                }
+            }
+
+            // Final render with complete text
+            if (fullText) {
+                bodyEl.classList.remove('quiz-explain-body--streaming');
+                bodyEl.innerHTML = this._renderMarkdown(fullText);
                 container.dataset.loaded = 'true';
                 btn.innerHTML = '<i class="fas fa-graduation-cap"></i> Hide Explanation';
                 btn.classList.add('quiz-explain-btn--active');

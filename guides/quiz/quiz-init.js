@@ -142,9 +142,50 @@
             '</div>';
     }
 
+    // ── Server Sync ──────────────────────────────────────────
+
+    /**
+     * Pull cross-device progress from the server before quiz starts.
+     * Ensures mastery + quiz history reflect data from all devices.
+     */
+    function pullServerProgress(topicId) {
+        var promises = [];
+
+        // Pull mastery data (mastery, streak, bookmarks, retry queue, confidence)
+        if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.pullFromServer === 'function') {
+            promises.push(
+                MasteryTracker.pullFromServer().catch(function () { return false; })
+            );
+        }
+
+        // Pull quiz session history for this topic
+        if (typeof QuizHistory !== 'undefined' && typeof QuizHistory.pullFromServer === 'function') {
+            try {
+                QuizHistory.pullFromServer(topicId);
+            } catch (e) { /* non-blocking */ }
+        }
+
+        return Promise.all(promises).catch(function () { return []; });
+    }
+
+    /**
+     * Sync progress to server on page unload (best-effort).
+     * Uses sendBeacon for reliability when the page is closing.
+     */
+    function setupUnloadSync() {
+        window.addEventListener('beforeunload', function () {
+            if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.syncToServer === 'function') {
+                MasteryTracker.syncToServer();
+            }
+        });
+    }
+
     // ── Initialize ──────────────────────────────────────────
 
     function init() {
+        // Set up unload sync for all quiz modes
+        setupUnloadSync();
+
         // ── AI Quiz Mode (skip access verification) ──────────
         if (window._aiQuizData) {
             var aiData = window._aiQuizData;
@@ -209,17 +250,20 @@
                 return;
             }
 
-            var quiz = new QuizEngine({
-                containerId: 'quiz-root',
-                questions: quizData.questions,
-                guideName: quizData.guideName,
-                guideSlug: quizData.guideSlug,
-                category: quizData.category,
-                categoryColor: quizData.categoryColor,
-                estimatedMinutes: quizData.estimatedMinutes
-            });
+            // Pull server progress before starting quiz (non-blocking — quiz starts even if pull fails)
+            pullServerProgress(quizData.guideSlug).then(function () {
+                var quiz = new QuizEngine({
+                    containerId: 'quiz-root',
+                    questions: quizData.questions,
+                    guideName: quizData.guideName,
+                    guideSlug: quizData.guideSlug,
+                    category: quizData.category,
+                    categoryColor: quizData.categoryColor,
+                    estimatedMinutes: quizData.estimatedMinutes
+                });
 
-            quiz.init();
+                quiz.init();
+            });
         });
     }
 

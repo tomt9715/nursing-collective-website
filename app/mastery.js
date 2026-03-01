@@ -795,12 +795,9 @@ var MasteryTracker = (function () {
     }
 
     /**
-     * Push current localStorage progress to the server (fire-and-forget).
+     * Build the progress payload from current localStorage state.
      */
-    function syncToServer() {
-        if (!_isLoggedIn()) return;
-        if (typeof apiCall !== 'function') return;
-
+    function _buildPayload() {
         var retryQueue;
         try {
             retryQueue = JSON.parse(localStorage.getItem(RETRY_QUEUE_KEY) || '{}');
@@ -822,22 +819,58 @@ var MasteryTracker = (function () {
             confidenceReask = {};
         }
 
-        var payload = {
+        return {
             mastery_data: _loadAll(),
             streak_data: _loadStreak(),
             retry_queue: retryQueue,
             bookmarks: bookmarks,
             confidence_reask: confidenceReask
         };
+    }
 
-        apiCall('/api/quiz/progress', {
-            method: 'PUT',
-            body: JSON.stringify(payload)
-        }).then(function (resp) {
-            console.log('[Mastery] Synced to server at', resp.updated_at);
-        }).catch(function (err) {
-            console.warn('[Mastery] Server sync failed (non-blocking):', err.message);
-        });
+    /**
+     * Push current localStorage progress to the server (fire-and-forget).
+     * Uses keepalive:true with fetch so the request completes even during page unload.
+     */
+    function syncToServer() {
+        if (!_isLoggedIn()) return;
+
+        var payload = _buildPayload();
+        var jsonBody = JSON.stringify(payload);
+        var token = localStorage.getItem('accessToken');
+
+        // Determine API URL
+        var apiUrl;
+        if (typeof API_URL !== 'undefined') {
+            apiUrl = API_URL;
+        } else {
+            var hostname = window.location.hostname;
+            if (hostname === 'thenursingcollective.pro' || hostname === 'www.thenursingcollective.pro') {
+                apiUrl = 'https://api.thenursingcollective.pro';
+            } else {
+                apiUrl = 'https://staging-backend-production-365a.up.railway.app';
+            }
+        }
+
+        // Use fetch with keepalive so it completes even during page unload
+        try {
+            fetch(apiUrl + '/api/quiz/progress', {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + (token || '')
+                },
+                body: jsonBody,
+                keepalive: true,
+                credentials: 'include'
+            }).then(function () {
+                console.log('[Mastery] Synced to server');
+            }).catch(function (err) {
+                console.warn('[Mastery] Server sync failed (non-blocking):', err.message);
+            });
+        } catch (e) {
+            console.warn('[Mastery] Server sync error:', e);
+        }
     }
 
     /**

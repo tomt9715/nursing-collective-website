@@ -1189,6 +1189,13 @@ function loadAnnouncementBanner() {
 
 // ==================== Event Listeners ====================
 
+// Sync mastery progress to server on page unload (best-effort)
+window.addEventListener('beforeunload', function () {
+    if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.syncToServer === 'function') {
+        MasteryTracker.syncToServer();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('[data-navigate]').forEach(btn => {
         btn.addEventListener('click', function() {

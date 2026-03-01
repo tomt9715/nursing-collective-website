@@ -170,7 +170,7 @@
 
     /**
      * Sync progress to server on page unload (best-effort).
-     * Uses sendBeacon for reliability when the page is closing.
+     * Uses keepalive fetch for reliability when the page is closing.
      */
     function setupUnloadSync() {
         window.addEventListener('beforeunload', function () {

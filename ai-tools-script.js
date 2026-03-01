@@ -1928,7 +1928,7 @@
     function escapeHtml(text) {
         var div = document.createElement('div');
         div.textContent = text;
-        return div.innerHTML;
+        return div.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
     }
 
     function formatFileSize(bytes) {

@@ -51,10 +51,6 @@ class QuizEngine {
         this.flaggedQuestions = new Set();
         this._reviewedFlags = false;
 
-        // Confidence tracking
-        this.confidenceRatings = new Map(); // questionId -> 'low' | 'medium' | 'high'
-        this._pendingFeedback = null;       // stores feedback data while confidence prompt is shown
-
         // Resume state
         this._saveKey = 'nursingCollective_quizState_' + (config.guideSlug || '');
 
@@ -69,6 +65,8 @@ class QuizEngine {
         this.container.innerHTML = '';
         this.container.addEventListener('click', this._boundClickHandler);
         this.container.addEventListener('keydown', this._boundKeyHandler);
+        // Clean up legacy confidence tracker key
+        try { localStorage.removeItem('nursingCollective_confidenceReask'); } catch (e) { /* ignore */ }
         this._renderStartScreen();
     }
 
@@ -81,8 +79,6 @@ class QuizEngine {
         this.submitted.clear();
         this.flaggedQuestions.clear();
         this._reviewedFlags = false;
-        this.confidenceRatings.clear();
-        this._pendingFeedback = null;
         const sessionSize = this.selectedSessionSize || this.questions.length;
         this.activeQuestions = this._selectQuestionsWithReask(sessionSize);
         this.isReviewMode = false;
@@ -134,6 +130,11 @@ class QuizEngine {
             correctAnswer: q.correct
         });
 
+        // Clear "don't know" tracker if user answered correctly
+        if (isCorrect && !this.isReviewMode && !this.isAIGenerated) {
+            this._clearDontKnowForQuestion(q.id);
+        }
+
         this._showSubmitFeedback(q, userAnswer, isCorrect, isPartial);
         this._saveState();
     }
@@ -174,13 +175,9 @@ class QuizEngine {
                 score: total > 0 ? Math.round((correctCount / total) * 100) : 0,
                 correct: correctCount,
                 total: total,
-                timeSeconds: this.totalTimeSeconds,
-                confidence: this._getConfidenceBreakdown()
+                timeSeconds: this.totalTimeSeconds
             });
         }
-
-        // Save confidence tracker (re-ask guessing/somewhat-sure questions next time)
-        this._saveConfidenceTracker();
 
         // Record mastery points (exam mode only, not AI quizzes)
         if (typeof MasteryTracker !== 'undefined' && !this.isReviewMode && this.mode === 'exam' && !this.isAIGenerated) {
@@ -214,8 +211,6 @@ class QuizEngine {
         this.submitted.clear();
         this.flaggedQuestions.clear();
         this._reviewedFlags = false;
-        this.confidenceRatings.clear();
-        this._pendingFeedback = null;
         this._shuffleAllOptions();
 
         this.sessionStartTime = Date.now();
@@ -244,8 +239,6 @@ class QuizEngine {
         this.submitted.clear();
         this.flaggedQuestions.clear();
         this._reviewedFlags = false;
-        this.confidenceRatings.clear();
-        this._pendingFeedback = null;
         this._shuffleAllOptions();
 
         this.sessionStartTime = Date.now();
@@ -377,6 +370,22 @@ class QuizEngine {
                 container.dataset.loaded = 'true';
                 btn.innerHTML = '<i class="fas fa-graduation-cap"></i> Hide Explanation';
                 btn.classList.add('quiz-explain-btn--active');
+
+                // Add "Enhanced with AI" disclaimer
+                const contentEl = container.querySelector('.quiz-explain-content');
+                if (contentEl) {
+                    const disclaimer = document.createElement('div');
+                    disclaimer.className = 'quiz-ai-disclaimer';
+                    disclaimer.innerHTML = `
+                        <span class="quiz-ai-disclaimer-trigger" data-quiz-action="toggle-ai-disclaimer">
+                            <i class="fas fa-sparkles"></i> Enhanced with AI
+                        </span>
+                        <div class="quiz-ai-disclaimer-tooltip" style="display:none;">
+                            AI-generated explanations may contain errors. Always verify with your textbook or instructor.
+                        </div>
+                    `;
+                    contentEl.appendChild(disclaimer);
+                }
             } else {
                 container.innerHTML = '<div class="quiz-explain-error"><i class="fas fa-exclamation-circle"></i> Could not generate explanation. Please try again.</div>';
                 if (questionCard) questionCard.classList.remove('quiz-question--has-explain');
@@ -428,6 +437,10 @@ class QuizEngine {
 
     destroy() {
         this._stopTimer();
+        if (this._autoAdvanceTimer) {
+            clearTimeout(this._autoAdvanceTimer);
+            this._autoAdvanceTimer = null;
+        }
         window.removeEventListener('beforeunload', this._boundBeforeUnload);
         this.container.removeEventListener('click', this._boundClickHandler);
         this.container.removeEventListener('keydown', this._boundKeyHandler);
@@ -507,18 +520,6 @@ class QuizEngine {
                     }
                     break;
                 }
-                case 'confidence': {
-                    const level = actionBtn.dataset.confidence;
-                    const q = this.activeQuestions[this.currentIndex];
-                    if (q && level && this._pendingFeedback) {
-                        this.confidenceRatings.set(q.id, level);
-                        const pf = this._pendingFeedback;
-                        this._pendingFeedback = null;
-                        this._showFullFeedback(pf.q, pf.userAnswer, pf.isCorrect, pf.isPartial);
-                        this._saveState();
-                    }
-                    break;
-                }
                 case 'review-flagged': {
                     this._reviewedFlags = true;
                     const flaggedQs = this.activeQuestions.filter(q => this.flaggedQuestions.has(q.id) && !this.submitted.has(q.id));
@@ -551,6 +552,17 @@ class QuizEngine {
                 case 'explain-question': {
                     const qId = actionBtn.dataset.questionId;
                     if (qId) this._explainQuestion(qId, actionBtn);
+                    break;
+                }
+                case 'dont-know': {
+                    this._handleDontKnow();
+                    break;
+                }
+                case 'toggle-ai-disclaimer': {
+                    const tooltip = actionBtn.closest('.quiz-ai-disclaimer')?.querySelector('.quiz-ai-disclaimer-tooltip');
+                    if (tooltip) {
+                        tooltip.style.display = tooltip.style.display === 'none' ? 'block' : 'none';
+                    }
                     break;
                 }
             }
@@ -619,6 +631,11 @@ class QuizEngine {
                 input.checked = true;
             }
             this._updateSubmitButton();
+
+            // Auto-submit for single/priority questions
+            if (currentQ && this._isSingleAnswer(currentQ) && !this.submitted.has(currentQ.id)) {
+                this.submitAnswer();
+            }
             return;
         }
 
@@ -671,6 +688,8 @@ class QuizEngine {
 
         // Enter / Space: Submit answer or go to next question
         if (e.key === 'Enter' || e.key === ' ') {
+            // Ignore while auto-advancing
+            if (this._autoAdvanceTimer) return;
             // If not submitted, try submit
             if (!this.submitted.has(q.id)) {
                 const submitBtn = this.container.querySelector('[data-quiz-action="submit"]');
@@ -801,9 +820,9 @@ class QuizEngine {
                 </div>`}
 
                 ${(() => {
-                    const reaskIds = this._loadConfidenceReaskIds();
+                    const reaskIds = this._loadDontKnowReaskIds();
                     if (reaskIds.length > 0) {
-                        return '<div class="quiz-reask-notice"><i class="fas fa-redo-alt"></i> <strong>' + reaskIds.length + ' question' + (reaskIds.length !== 1 ? 's' : '') + '</strong> will be prioritized from your last session — you marked ' + (reaskIds.length !== 1 ? 'them' : 'it') + ' as unsure.</div>';
+                        return '<div class="quiz-reask-notice"><i class="fas fa-redo-alt"></i> <strong>' + reaskIds.length + ' question' + (reaskIds.length !== 1 ? 's' : '') + '</strong> will be prioritized — you marked ' + (reaskIds.length !== 1 ? 'them' : 'it') + ' as "don\'t know."</div>';
                     }
                     return '';
                 })()}
@@ -855,6 +874,12 @@ class QuizEngine {
     // ── Rendering: Question ─────────────────────────────────
 
     _renderQuestion() {
+        // Cancel any pending auto-advance timer
+        if (this._autoAdvanceTimer) {
+            clearTimeout(this._autoAdvanceTimer);
+            this._autoAdvanceTimer = null;
+        }
+
         // Clean up sticky bar from previous question
         const existingSticky = this.container.querySelector('.quiz-sticky-next');
         if (existingSticky) existingSticky.remove();
@@ -947,20 +972,25 @@ class QuizEngine {
                     </div>
                     ${hasLabs ? `<div class="quiz-lab-inline">${labHtml}</div>` : ''}
                     ${optionsHtml}
-                    <div class="quiz-actions">
+                    ${this._isSingleAnswer(q) ? '' : `<div class="quiz-actions">
                         <button class="quiz-btn quiz-btn--primary" data-quiz-action="submit" disabled>
                             ${submitLabel}
                         </button>
-                    </div>
+                    </div>`}
+                    ${this.mode === 'practice' ? `<div class="quiz-dont-know-wrap">
+                        <button class="quiz-dont-know-link" data-quiz-action="dont-know">
+                            <i class="fas fa-share"></i> Don't know?
+                        </button>
+                    </div>` : ''}
                     <div id="quiz-feedback-area"></div>
                 </div>
                 ${hasLabs ? `<div class="quiz-lab-side">${labHtml}</div>` : ''}
             </div>
             ${!('ontouchstart' in window || navigator.maxTouchPoints > 0) ? `
             <div class="quiz-shortcut-bar">
-                <span class="quiz-kbd">1</span>–<span class="quiz-kbd">4</span> Select
-                <span class="quiz-kbd">Enter</span> / <span class="quiz-kbd">Space</span> Submit / Next
-                <span class="quiz-kbd">F</span> Flag
+                ${this._isSingleAnswer(q)
+                    ? '<span class="quiz-kbd">1</span>\u2013<span class="quiz-kbd">4</span> Answer <span class="quiz-kbd">Enter</span> Next <span class="quiz-kbd">F</span> Flag'
+                    : '<span class="quiz-kbd">Enter</span> / <span class="quiz-kbd">Space</span> Submit / Next <span class="quiz-kbd">F</span> Flag'}
             </div>
             ` : ''}
         `;
@@ -1114,30 +1144,20 @@ class QuizEngine {
     // ── Submit Feedback ─────────────────────────────────────
 
     _showSubmitFeedback(q, userAnswer, isCorrect, isPartial) {
-        // In practice mode with confidence tracking: only disable options, don't reveal correct/incorrect yet
-        if (this.mode === 'practice' && !this.confidenceRatings.has(q.id)) {
-            this._disableOptions();
-
-            // Hide submit button
-            const actions = this.container.querySelector('.quiz-actions');
-            if (actions) actions.innerHTML = '';
-
-            // Show confidence prompt (no correct/incorrect status)
-            this._pendingFeedback = { q, userAnswer, isCorrect, isPartial };
-            const feedbackArea = document.getElementById('quiz-feedback-area');
-            if (!feedbackArea) return;
-            feedbackArea.innerHTML = this._buildConfidencePrompt();
-            const prompt = feedbackArea.firstElementChild;
-            if (prompt) { prompt.setAttribute('tabindex', '-1'); prompt.focus({ preventScroll: false }); }
-            return;
-        }
-
         // Full option highlighting (correct/incorrect colors)
         this._highlightOptions(q, userAnswer);
 
-        // Hide submit button
+        // Hide submit button and don't-know link
         const actions = this.container.querySelector('.quiz-actions');
         if (actions) actions.innerHTML = '';
+        const dontKnowWrap = this.container.querySelector('.quiz-dont-know-wrap');
+        if (dontKnowWrap) dontKnowWrap.style.display = 'none';
+
+        // Auto-advance for correct single/priority answers (both modes)
+        if (this._isSingleAnswer(q) && isCorrect) {
+            this._showCorrectOverlayAndAdvance(q);
+            return;
+        }
 
         const isLast = this.currentIndex >= this.activeQuestions.length - 1;
         const nextBtnLabel = isLast ? '<i class="fas fa-chart-bar"></i> See Results' : 'Next Question <i class="fas fa-arrow-right"></i>';
@@ -1156,8 +1176,8 @@ class QuizEngine {
 
         feedbackArea.innerHTML = feedbackHtml;
 
-        // Create explain panel as sibling of .quiz-question-main (for side-by-side layout)
-        if (this.mode === 'practice') {
+        // Create explain panel only for wrong/partial answers (practice mode)
+        if (this.mode === 'practice' && !isCorrect) {
             const questionCard = this.container.querySelector('.quiz-question');
             if (questionCard) {
                 const oldPanel = questionCard.querySelector('.quiz-explain-panel');
@@ -1183,6 +1203,136 @@ class QuizEngine {
         if (feedback) {
             feedback.setAttribute('tabindex', '-1');
             feedback.focus({ preventScroll: false });
+        }
+    }
+
+    _showCorrectOverlayAndAdvance(q) {
+        const feedbackArea = document.getElementById('quiz-feedback-area');
+        if (feedbackArea) {
+            feedbackArea.innerHTML = `
+                <div class="quiz-correct-overlay" aria-live="polite">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Correct!</span>
+                </div>
+            `;
+        }
+
+        this._autoAdvanceTimer = setTimeout(() => {
+            this._autoAdvanceTimer = null;
+            this.nextQuestion();
+        }, 1500);
+    }
+
+    _handleDontKnow() {
+        const q = this.activeQuestions[this.currentIndex];
+        if (!q || this.submitted.has(q.id)) return;
+
+        // Mark as submitted with no user answer
+        this.submitted.add(q.id);
+        this.results.set(q.id, {
+            correct: false,
+            partial: false,
+            partialScore: 0,
+            userAnswer: null,
+            correctAnswer: q.correct,
+            dontKnow: true
+        });
+
+        // Save to re-ask tracker for future sessions
+        this._saveDontKnowTracker(q.id);
+
+        // Highlight correct answer only (green)
+        this._highlightCorrectOnly(q);
+
+        // Hide submit button and don't-know link
+        const actions = this.container.querySelector('.quiz-actions');
+        if (actions) actions.innerHTML = '';
+        const dontKnowWrap = this.container.querySelector('.quiz-dont-know-wrap');
+        if (dontKnowWrap) dontKnowWrap.style.display = 'none';
+
+        // Show feedback with rationale
+        const feedbackArea = document.getElementById('quiz-feedback-area');
+        if (!feedbackArea) return;
+
+        const feedbackHtml = this._buildPracticeFeedback(q, null, false, false);
+        feedbackArea.innerHTML = feedbackHtml;
+
+        // Create explain panel
+        const questionCard = this.container.querySelector('.quiz-question');
+        if (questionCard) {
+            const oldPanel = questionCard.querySelector('.quiz-explain-panel');
+            if (oldPanel) oldPanel.remove();
+            const panel = document.createElement('div');
+            panel.className = 'quiz-explain-panel';
+            panel.id = 'explain-' + q.id;
+            panel.style.display = 'none';
+            questionCard.appendChild(panel);
+        }
+
+        // Add sticky next bar (no auto-advance for don't-know)
+        const existingSticky = this.container.querySelector('.quiz-sticky-next');
+        if (existingSticky) existingSticky.remove();
+        const isLast = this.currentIndex >= this.activeQuestions.length - 1;
+        const nextBtnLabel = isLast ? '<i class="fas fa-chart-bar"></i> See Results' : 'Next Question <i class="fas fa-arrow-right"></i>';
+        const nextBtnClass = isLast ? 'quiz-btn--success' : 'quiz-btn--primary';
+        const sticky = document.createElement('div');
+        sticky.className = 'quiz-sticky-next';
+        sticky.innerHTML = `<button class="quiz-btn ${nextBtnClass}" data-quiz-action="next">${nextBtnLabel}</button>`;
+        this.container.appendChild(sticky);
+
+        // Focus feedback
+        const feedback = feedbackArea.firstElementChild;
+        if (feedback) {
+            feedback.setAttribute('tabindex', '-1');
+            feedback.focus({ preventScroll: false });
+        }
+
+        this._saveState();
+    }
+
+    _highlightCorrectOnly(q) {
+        this._disableOptions();
+
+        if (q.type === 'ordering') {
+            this.container.querySelectorAll('.quiz-ordering-item').forEach(item => {
+                const optId = item.dataset.orderingId;
+                const correctIdx = q.correct.indexOf(optId);
+                if (correctIdx !== -1) {
+                    item.classList.add('quiz-ordering-item--correct');
+                    const badge = item.querySelector('.quiz-ordering-badge');
+                    if (badge) badge.textContent = correctIdx + 1;
+                }
+            });
+        } else if (q.type === 'matrix') {
+            q.options.forEach(opt => {
+                const row = this.container.querySelector(`tr[data-matrix-row="${opt.id}"]`) ||
+                    this.container.querySelector(`tr`); // fallback
+                if (!row) return;
+                row.querySelectorAll('.quiz-matrix-cell').forEach(cell => {
+                    const radio = cell.querySelector('input');
+                    if (radio && radio.value === q.correct[opt.id]) {
+                        cell.classList.add('quiz-matrix-cell--correct-answer');
+                    }
+                });
+            });
+        } else if (q.type === 'sata') {
+            const correctSet = new Set(q.correct);
+            this.container.querySelectorAll('.quiz-option').forEach(opt => {
+                const input = opt.querySelector('input');
+                const val = input ? input.value : '';
+                if (correctSet.has(val)) {
+                    opt.classList.add('quiz-option--correct');
+                }
+            });
+        } else {
+            // single/priority
+            this.container.querySelectorAll('.quiz-option').forEach(opt => {
+                const input = opt.querySelector('input');
+                const val = input ? input.value : '';
+                if (val === q.correct) {
+                    opt.classList.add('quiz-option--correct');
+                }
+            });
         }
     }
 
@@ -1256,44 +1406,6 @@ class QuizEngine {
                 opt.setAttribute('aria-checked', input && input.checked ? 'true' : 'false');
             });
         }
-    }
-
-    _showFullFeedback(q, userAnswer, isCorrect, isPartial) {
-        // Now reveal correct/incorrect on the options
-        this._highlightOptions(q, userAnswer);
-
-        const feedbackArea = document.getElementById('quiz-feedback-area');
-        if (!feedbackArea) return;
-
-        const isLast = this.currentIndex >= this.activeQuestions.length - 1;
-        const nextBtnLabel = isLast ? '<i class="fas fa-chart-bar"></i> See Results' : 'Next Question <i class="fas fa-arrow-right"></i>';
-        const nextBtnClass = isLast ? 'quiz-btn--success' : 'quiz-btn--primary';
-
-        const feedbackHtml = this._buildPracticeFeedback(q, userAnswer, isCorrect, isPartial);
-        feedbackArea.innerHTML = feedbackHtml;
-
-        // Create explain panel as sibling of .quiz-question-main (for side-by-side layout)
-        const questionCard = this.container.querySelector('.quiz-question');
-        if (questionCard) {
-            const oldPanel = questionCard.querySelector('.quiz-explain-panel');
-            if (oldPanel) oldPanel.remove();
-            const panel = document.createElement('div');
-            panel.className = 'quiz-explain-panel';
-            panel.id = 'explain-' + q.id;
-            panel.style.display = 'none';
-            questionCard.appendChild(panel);
-        }
-
-        // Add sticky bottom bar
-        const existingSticky = this.container.querySelector('.quiz-sticky-next');
-        if (existingSticky) existingSticky.remove();
-        const sticky = document.createElement('div');
-        sticky.className = 'quiz-sticky-next';
-        sticky.innerHTML = `<button class="quiz-btn ${nextBtnClass}" data-quiz-action="next">${nextBtnLabel}</button>`;
-        this.container.appendChild(sticky);
-
-        const feedback = feedbackArea.firstElementChild;
-        if (feedback) { feedback.setAttribute('tabindex', '-1'); feedback.focus({ preventScroll: false }); }
     }
 
     _buildPracticeFeedback(q, userAnswer, isCorrect, isPartial) {
@@ -1391,12 +1503,14 @@ class QuizEngine {
             `;
         }
 
-        // Explain This Question button (practice mode only — panel created separately as sibling of .quiz-question-main)
-        html += `
-            <button class="quiz-explain-btn" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
-                <i class="fas fa-graduation-cap"></i> Explain This Question
-            </button>
-        `;
+        // Explain This Question button — only on wrong/partial/don't-know answers
+        if (!isCorrect) {
+            html += `
+                <button class="quiz-explain-btn" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
+                    <i class="fas fa-graduation-cap"></i> Explain This Question
+                </button>
+            `;
+        }
 
         html += `</div>`;
         return html;
@@ -1441,7 +1555,6 @@ class QuizEngine {
         const perfMsg = this._getPerformanceMessage(pct);
         const missedCount = total - Math.floor(correctCount); // only fully correct don't count as missed
         const timeStr = this._formatTime(this.totalTimeSeconds);
-        const confBreakdown = this._getConfidenceBreakdown();
 
         const isPerfect = pct === 100;
 
@@ -1582,32 +1695,6 @@ class QuizEngine {
                     </div>
                 `;
             }
-        }
-
-        // Confidence breakdown (only if we have ratings)
-        if (confBreakdown.total > 0) {
-            html += `
-                <div class="quiz-confidence-summary">
-                    <div class="quiz-confidence-summary-title"><i class="fas fa-brain"></i> Confidence Breakdown</div>
-                    <div class="quiz-confidence-bars">
-                        <div class="quiz-confidence-bar-row">
-                            <span class="quiz-confidence-bar-label">Guessing</span>
-                            <div class="quiz-confidence-bar-track"><div class="quiz-confidence-bar-fill quiz-confidence-bar-fill--low" style="width: ${confBreakdown.total > 0 ? (confBreakdown.low / confBreakdown.total) * 100 : 0}%"></div></div>
-                            <span class="quiz-confidence-bar-count">${confBreakdown.low}</span>
-                        </div>
-                        <div class="quiz-confidence-bar-row">
-                            <span class="quiz-confidence-bar-label">Somewhat Sure</span>
-                            <div class="quiz-confidence-bar-track"><div class="quiz-confidence-bar-fill quiz-confidence-bar-fill--medium" style="width: ${confBreakdown.total > 0 ? (confBreakdown.medium / confBreakdown.total) * 100 : 0}%"></div></div>
-                            <span class="quiz-confidence-bar-count">${confBreakdown.medium}</span>
-                        </div>
-                        <div class="quiz-confidence-bar-row">
-                            <span class="quiz-confidence-bar-label">Very Confident</span>
-                            <div class="quiz-confidence-bar-track"><div class="quiz-confidence-bar-fill quiz-confidence-bar-fill--high" style="width: ${confBreakdown.total > 0 ? (confBreakdown.high / confBreakdown.total) * 100 : 0}%"></div></div>
-                            <span class="quiz-confidence-bar-count">${confBreakdown.high}</span>
-                        </div>
-                    </div>
-                </div>
-            `;
         }
 
         // Per-question breakdown
@@ -1838,12 +1925,6 @@ class QuizEngine {
 
         detailHtml += `</div>`;
 
-        // Confidence icon for this question
-        const conf = this.confidenceRatings.get(q.id);
-        const confIconMap = { low: 'fa-dice', medium: 'fa-balance-scale', high: 'fa-bullseye' };
-        const confLabelMap = { low: 'Guessing', medium: 'Somewhat Sure', high: 'Very Confident' };
-        const confHtml = conf ? `<span class="quiz-result-confidence quiz-result-confidence--${conf}" title="${confLabelMap[conf] || ''}"><i class="fas ${confIconMap[conf] || 'fa-question'}"></i></span>` : '';
-
         // Flagged icon
         const wasFlagged = this.flaggedQuestions.has(q.id);
         const flagHtml = wasFlagged ? '<span class="quiz-result-flag" title="Flagged for review"><i class="fas fa-flag"></i></span>' : '';
@@ -1853,7 +1934,7 @@ class QuizEngine {
                 <button class="quiz-result-summary" aria-expanded="false">
                     <span class="quiz-result-icon ${iconClass}"><i class="fas ${icon}"></i></span>
                     <span class="quiz-result-stem">${this._escapeHtml(truncatedStem)}</span>
-                    ${confHtml}${flagHtml}
+                    ${flagHtml}
                     <i class="fas fa-chevron-down quiz-result-expand-icon"></i>
                 </button>
                 <div class="quiz-result-detail">${detailHtml}</div>
@@ -2153,39 +2234,6 @@ class QuizEngine {
         this.showResults();
     }
 
-    // ── Confidence Prompt ────────────────────────────────────
-
-    _buildConfidencePrompt() {
-        return `
-            <div class="quiz-confidence-prompt">
-                <div class="quiz-confidence-question">How confident were you?</div>
-                <div class="quiz-confidence-options">
-                    <button class="quiz-confidence-btn quiz-confidence-btn--low" data-quiz-action="confidence" data-confidence="low">
-                        <i class="fas fa-dice"></i>
-                        <span>Guessing</span>
-                    </button>
-                    <button class="quiz-confidence-btn quiz-confidence-btn--medium" data-quiz-action="confidence" data-confidence="medium">
-                        <i class="fas fa-balance-scale"></i>
-                        <span>Somewhat Sure</span>
-                    </button>
-                    <button class="quiz-confidence-btn quiz-confidence-btn--high" data-quiz-action="confidence" data-confidence="high">
-                        <i class="fas fa-bullseye"></i>
-                        <span>Very Confident</span>
-                    </button>
-                </div>
-            </div>
-        `;
-    }
-
-    _getConfidenceBreakdown() {
-        const breakdown = { low: 0, medium: 0, high: 0, total: 0 };
-        this.confidenceRatings.forEach(level => {
-            if (breakdown.hasOwnProperty(level)) breakdown[level]++;
-            breakdown.total++;
-        });
-        return breakdown;
-    }
-
     // ── Flag Review Prompt ───────────────────────────────────
 
     _showFlagReviewPrompt() {
@@ -2230,7 +2278,6 @@ class QuizEngine {
                 results: Array.from(this.results.entries()),
                 submitted: Array.from(this.submitted),
                 flaggedQuestions: Array.from(this.flaggedQuestions),
-                confidenceRatings: Array.from(this.confidenceRatings.entries()),
                 activeQuestionIds: this.activeQuestions.map(q => q.id),
                 shuffledOptions: Array.from(this._shuffledOptions.entries()),
                 isReviewMode: this.isReviewMode,
@@ -2271,7 +2318,6 @@ class QuizEngine {
             this.results = new Map(state.results || []);
             this.submitted = new Set(state.submitted || []);
             this.flaggedQuestions = new Set(state.flaggedQuestions || []);
-            this.confidenceRatings = new Map(state.confidenceRatings || []);
             this._shuffledOptions = new Map(state.shuffledOptions || []);
             this.isReviewMode = state.isReviewMode || false;
             this.selectedSessionSize = state.selectedSessionSize || this.questions.length;
@@ -2284,7 +2330,6 @@ class QuizEngine {
             if (this.timerMode !== 'none') this._startTimer();
 
             this._reviewedFlags = false;
-            this._pendingFeedback = null;
 
             window.addEventListener('beforeunload', this._boundBeforeUnload);
             this._renderQuestion();
@@ -2324,6 +2369,10 @@ class QuizEngine {
     }
 
     // ── Utility ─────────────────────────────────────────────
+
+    _isSingleAnswer(q) {
+        return q.type === 'single' || q.subtype === 'priority';
+    }
 
     _capitalize(str) {
         if (!str) return '';
@@ -2389,14 +2438,15 @@ class QuizEngine {
 
     // ── Confidence Re-Ask Tracker ─────────────────────────────
 
+    // ── "Don't Know" Re-Ask Tracker ─────────────────────────
+
     /**
-     * Save questions rated "guessing" or "somewhat sure" to localStorage
-     * so they are re-asked in future quiz sessions on the same topic.
-     * Questions rated "very confident" are removed from the tracker.
+     * Save a question ID to the "don't know" tracker so it is
+     * prioritized in future quiz sessions on the same topic.
      */
-    _saveConfidenceTracker() {
+    _saveDontKnowTracker(questionId) {
         if (this.isReviewMode || this.isAIGenerated) return;
-        const key = 'nursingCollective_confidenceReask';
+        const key = 'nursingCollective_dontKnow';
         let tracker = {};
         try {
             tracker = JSON.parse(localStorage.getItem(key) || '{}');
@@ -2405,24 +2455,7 @@ class QuizEngine {
         if (!tracker[this.guideSlug]) {
             tracker[this.guideSlug] = {};
         }
-        const topicTracker = tracker[this.guideSlug];
-
-        this.confidenceRatings.forEach((level, questionId) => {
-            if (level === 'low' || level === 'medium') {
-                // Add/keep in re-ask pool
-                topicTracker[questionId] = level;
-            } else if (level === 'high') {
-                // Confident — remove from re-ask pool
-                delete topicTracker[questionId];
-            }
-        });
-
-        // Clean up empty topic entries
-        if (Object.keys(topicTracker).length === 0) {
-            delete tracker[this.guideSlug];
-        } else {
-            tracker[this.guideSlug] = topicTracker;
-        }
+        tracker[this.guideSlug][questionId] = Date.now();
 
         try {
             localStorage.setItem(key, JSON.stringify(tracker));
@@ -2430,11 +2463,28 @@ class QuizEngine {
     }
 
     /**
-     * Load questions that need re-asking for this topic.
+     * Remove a question from the "don't know" tracker (user answered it correctly).
+     */
+    _clearDontKnowForQuestion(questionId) {
+        const key = 'nursingCollective_dontKnow';
+        try {
+            const tracker = JSON.parse(localStorage.getItem(key) || '{}');
+            if (tracker[this.guideSlug] && tracker[this.guideSlug][questionId]) {
+                delete tracker[this.guideSlug][questionId];
+                if (Object.keys(tracker[this.guideSlug]).length === 0) {
+                    delete tracker[this.guideSlug];
+                }
+                localStorage.setItem(key, JSON.stringify(tracker));
+            }
+        } catch (e) { /* ignore */ }
+    }
+
+    /**
+     * Load question IDs marked "don't know" for this topic.
      * Returns array of question IDs that should be prioritized.
      */
-    _loadConfidenceReaskIds() {
-        const key = 'nursingCollective_confidenceReask';
+    _loadDontKnowReaskIds() {
+        const key = 'nursingCollective_dontKnow';
         try {
             const tracker = JSON.parse(localStorage.getItem(key) || '{}');
             const topicData = tracker[this.guideSlug];
@@ -2446,11 +2496,11 @@ class QuizEngine {
     }
 
     /**
-     * Select questions for a new quiz, prioritizing confidence re-ask questions.
+     * Select questions for a new quiz, prioritizing "don't know" questions.
      * Re-ask questions go first, then random questions fill the remaining slots.
      */
     _selectQuestionsWithReask(size) {
-        const reaskIds = new Set(this._loadConfidenceReaskIds());
+        const reaskIds = new Set(this._loadDontKnowReaskIds());
         const allQuestions = [...this.questions];
 
         // Split into re-ask questions and normal pool

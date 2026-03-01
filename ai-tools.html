@@ -85,21 +85,26 @@
         .ai-progress-bar{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden}
         .ai-progress-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a78bfa);border-radius:3px;transition:width .3s ease}
 
-        /* Credit indicator bar */
+        /* Credit & storage indicator bar */
         .ai-credit-bar{display:flex;align-items:center;gap:16px;padding:10px 16px;margin-bottom:12px;background:#f8fafc;border-radius:10px;border:1px solid rgba(0,0,0,.06);font-family:'Source Sans 3',sans-serif;font-size:.8rem;color:#475569}
         .ai-credit-bar.hidden{display:none}
+        .ai-storage-section{display:flex;flex-direction:column;gap:4px;flex:1;min-width:0}
+        .ai-storage-label{display:flex;align-items:center;gap:5px;font-size:.78rem;white-space:nowrap}
+        .ai-storage-label i{font-size:.72rem;color:#7c3aed}
+        .ai-storage-label span:last-child{margin-left:auto;font-weight:700;font-size:.78rem}
+        .ai-storage-track{height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden}
+        .ai-storage-fill{height:100%;background:linear-gradient(90deg,#7c3aed,#a78bfa);border-radius:3px;transition:width .4s ease;width:0}
+        .ai-storage-fill.storage-warning{background:linear-gradient(90deg,#d97706,#f59e0b)}
+        .ai-storage-fill.storage-exhausted{background:linear-gradient(90deg,#dc2626,#ef4444)}
         .ai-credit-item{display:flex;align-items:center;gap:5px;white-space:nowrap}
         .ai-credit-item i{font-size:.75rem}
         .ai-credit-count{font-weight:700;font-size:.85rem}
         .ai-credit-label{color:#94a3b8}
         .ai-credit-sep{width:1px;height:18px;background:#e2e8f0;flex-shrink:0}
         .ai-credit-reset{margin-left:auto;font-size:.72rem;color:#94a3b8}
-        .ai-credit-addon{margin-left:auto;font-size:.72rem;color:#7c3aed;text-decoration:none;font-weight:600;transition:color .15s}
-        .ai-credit-addon:hover{color:#6d28d9;text-decoration:underline}
-        /* Warning: ≤20% remaining */
+        /* Warning / exhausted for question credits */
         .ai-credit-item.credit-warning .ai-credit-count{color:#d97706}
         .ai-credit-item.credit-warning i{color:#f59e0b}
-        /* Exhausted: 0 remaining */
         .ai-credit-item.credit-exhausted .ai-credit-count{color:#dc2626}
         .ai-credit-item.credit-exhausted i{color:#ef4444}
 
@@ -129,6 +134,8 @@
         .ai-doc-status.status-failed{background:rgba(239,68,68,.1);color:#dc2626}
         .ai-doc-status.status-uploaded{background:rgba(59,130,246,.1);color:#3b82f6}
         .ai-doc-btn{padding:6px 14px;font-size:.78rem;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:all .15s;font-family:'Source Sans 3',sans-serif}
+        .ai-doc-btn.btn-rename{background:none;color:#94a3b8;padding:6px 8px;flex-shrink:0}
+        .ai-doc-btn.btn-rename:hover{color:#7c3aed;background:rgba(124,58,237,.06)}
         .ai-doc-btn.btn-delete{background:none;color:#94a3b8;padding:6px 8px;flex-shrink:0}
         .ai-doc-btn.btn-delete:hover{color:#ef4444;background:rgba(239,68,68,.06)}
 
@@ -320,11 +327,10 @@
         [data-theme="dark"] .ai-text-title:focus,[data-theme="dark"] .ai-text-area:focus{border-color:#a78bfa}
         [data-theme="dark"] .ai-text-char-count{color:#6b7280}
         [data-theme="dark"] .ai-credit-bar{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06);color:#cbd5e1}
+        [data-theme="dark"] .ai-storage-track{background:rgba(255,255,255,.08)}
         [data-theme="dark"] .ai-credit-label{color:#6b7280}
         [data-theme="dark"] .ai-credit-sep{background:rgba(255,255,255,.1)}
         [data-theme="dark"] .ai-credit-reset{color:#6b7280}
-        [data-theme="dark"] .ai-credit-addon{color:#a78bfa}
-        [data-theme="dark"] .ai-credit-addon:hover{color:#c4b5fd}
         [data-theme="dark"] .ai-upload-progress{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.06)}
         [data-theme="dark"] .ai-progress-info{color:#cbd5e1}
         [data-theme="dark"] .ai-progress-bar{background:rgba(255,255,255,.08)}
@@ -575,12 +581,17 @@
             <!-- AI Tools (shown for AI-plan users) -->
             <div class="ai-tools-section" id="ai-tools-section">
 
-                <!-- Credit Indicator Bar -->
+                <!-- Storage & Credit Bar -->
                 <div class="ai-credit-bar hidden" id="ai-credit-bar">
-                    <div class="ai-credit-item" id="ai-credit-uploads">
-                        <i class="fas fa-cloud-arrow-up"></i>
-                        <span class="ai-credit-count" id="ai-credit-uploads-count">–</span>
-                        <span class="ai-credit-label">uploads left</span>
+                    <div class="ai-storage-section">
+                        <div class="ai-storage-label">
+                            <i class="fas fa-hard-drive"></i>
+                            <span>Storage</span>
+                            <span id="ai-storage-text">– / – MB</span>
+                        </div>
+                        <div class="ai-storage-track">
+                            <div class="ai-storage-fill" id="ai-storage-fill"></div>
+                        </div>
                     </div>
                     <div class="ai-credit-sep"></div>
                     <div class="ai-credit-item" id="ai-credit-questions">

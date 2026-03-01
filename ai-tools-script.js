@@ -110,13 +110,16 @@
     var panelQuizBtn = document.getElementById('ai-summary-quiz');
     var panelQuizBar = document.getElementById('ai-panel-quiz-bar');
 
-    // Credit bar elements
+    // Credit & storage bar elements
     var creditBar = document.getElementById('ai-credit-bar');
-    var creditUploadsCount = document.getElementById('ai-credit-uploads-count');
+    var storageText = document.getElementById('ai-storage-text');
+    var storageFill = document.getElementById('ai-storage-fill');
     var creditQuestionsCount = document.getElementById('ai-credit-questions-count');
-    var creditUploadsItem = document.getElementById('ai-credit-uploads');
     var creditQuestionsItem = document.getElementById('ai-credit-questions');
     var creditResetEl = document.getElementById('ai-credit-reset');
+
+    // Storage state (updated from API responses)
+    var currentStorage = null;
 
     // Question count modal elements
     var qcountBackdrop = document.getElementById('ai-qcount-backdrop');
@@ -226,7 +229,10 @@
     async function fetchCredits() {
         try {
             var data = await apiCall('/api/ai/credits');
-            if (data) renderCredits(data);
+            if (data) {
+                renderCredits(data);
+                if (data.storage) renderStorageBar(data.storage);
+            }
         } catch (err) {
             console.warn('[AI Tools] Failed to fetch credits:', err);
         }
@@ -235,27 +241,14 @@
     function renderCredits(credits) {
         if (!creditBar || credits.is_admin) return;
 
-        var uRemain = credits.uploads_remaining;
-        var uLimit = credits.uploads_limit + credits.addon_uploads;
         var qRemain = credits.questions_remaining;
         var qLimit = credits.questions_limit + credits.addon_questions;
 
         // Show the bar
         creditBar.classList.remove('hidden');
 
-        // Update counts
-        if (creditUploadsCount) creditUploadsCount.textContent = uRemain;
+        // Update question count
         if (creditQuestionsCount) creditQuestionsCount.textContent = qRemain;
-
-        // Warning / exhausted classes for uploads
-        if (creditUploadsItem) {
-            creditUploadsItem.classList.remove('credit-warning', 'credit-exhausted');
-            if (uRemain === 0) {
-                creditUploadsItem.classList.add('credit-exhausted');
-            } else if (uLimit > 0 && uRemain / uLimit <= 0.2) {
-                creditUploadsItem.classList.add('credit-warning');
-            }
-        }
 
         // Warning / exhausted classes for questions
         if (creditQuestionsItem) {
@@ -267,7 +260,7 @@
             }
         }
 
-        // Reset timer
+        // Reset timer (for question credits)
         if (creditResetEl && credits.next_reset) {
             var resetDate = new Date(credits.next_reset);
             var now = new Date();
@@ -278,14 +271,56 @@
         }
     }
 
-    function isCreditError(msg) {
-        return msg && (msg.indexOf('credit limit') !== -1 || msg.indexOf('credit') !== -1 && msg.indexOf('reached') !== -1);
+    function renderStorageBar(storage) {
+        if (!storage) return;
+        currentStorage = storage;
+
+        // Admin — unlimited, show bar but don't fill
+        if (storage.unlimited) {
+            if (creditBar) creditBar.classList.remove('hidden');
+            if (storageText) storageText.textContent = storage.used_mb + ' MB used (unlimited)';
+            if (storageFill) {
+                storageFill.style.width = '0%';
+                storageFill.classList.remove('storage-warning', 'storage-exhausted');
+            }
+            return;
+        }
+
+        if (creditBar) creditBar.classList.remove('hidden');
+        if (storageText) storageText.textContent = storage.used_mb + ' / ' + storage.limit_mb + ' MB';
+
+        if (storageFill) {
+            storageFill.style.width = Math.min(storage.percentage, 100) + '%';
+            storageFill.classList.remove('storage-warning', 'storage-exhausted');
+            if (storage.percentage >= 100) {
+                storageFill.classList.add('storage-exhausted');
+            } else if (storage.percentage >= 80) {
+                storageFill.classList.add('storage-warning');
+            }
+        }
     }
 
-    function showCreditExhaustedToast(type) {
-        var label = type === 'upload' ? 'upload' : 'question';
+    function isStorageError(msg) {
+        return msg && (msg.indexOf('storage') !== -1 || msg.indexOf('Storage') !== -1);
+    }
+
+    function isQuestionCreditError(msg) {
+        return msg && (msg.indexOf('credit') !== -1 || msg.indexOf('Credit') !== -1);
+    }
+
+    function showStorageExhaustedToast(info) {
+        var usedMb = info ? info.used_mb : '?';
+        var limitMb = info ? info.limit_mb : '?';
         showToast(
-            'You\u2019ve used all your ' + label + ' credits for this period. ' +
+            'Storage limit reached (' + usedMb + ' / ' + limitMb + ' MB). ' +
+            'Delete documents or <a href="/pricing.html" style="color:#fff;text-decoration:underline;font-weight:700">upgrade your plan</a>.',
+            'error'
+        );
+    }
+
+    function showQuestionExhaustedToast() {
+        showToast(
+            'You\u2019ve used all your question credits for this period. ' +
             '<a href="/pricing.html?addon=credits" style="color:#fff;text-decoration:underline;font-weight:700">Buy more credits</a>',
             'error'
         );
@@ -438,6 +473,21 @@
             return;
         }
 
+        // Pre-upload storage check (client-side)
+        if (currentStorage && !currentStorage.unlimited && currentStorage.limit_bytes > 0) {
+            var remaining = currentStorage.limit_bytes - currentStorage.used_bytes;
+            if (file.size > remaining) {
+                var needMb = (file.size / (1024 * 1024)).toFixed(1);
+                var availMb = Math.max(0, remaining / (1024 * 1024)).toFixed(1);
+                showToast(
+                    'Not enough storage (file is ' + needMb + ' MB, ' + availMb + ' MB available). ' +
+                    'Delete documents or <a href="/pricing.html" style="color:#fff;text-decoration:underline;font-weight:700">upgrade your plan</a>.',
+                    'error'
+                );
+                return;
+            }
+        }
+
         if (progressContainer) progressContainer.classList.remove('hidden');
         if (progressFilename) progressFilename.textContent = file.name;
         setProgress(10);
@@ -461,9 +511,9 @@
             var data = await response.json();
 
             if (!response.ok) {
-                if (data.credits_exhausted) {
-                    showCreditExhaustedToast('upload');
-                    fetchCredits();
+                if (data.storage_exhausted) {
+                    showStorageExhaustedToast(data.storage || currentStorage);
+                    if (data.storage) renderStorageBar(data.storage);
                     return;
                 }
                 throw new Error(data.error || 'Upload failed');
@@ -471,7 +521,9 @@
 
             setProgress(100);
             showToast('File uploaded! Processing your document...', 'success');
-            fetchCredits(); // Refresh credit bar
+
+            // Update storage bar from response
+            if (data.storage) renderStorageBar(data.storage);
 
             if (data.upload_id) {
                 startPolling(data.upload_id);
@@ -481,8 +533,8 @@
 
         } catch (err) {
             console.error('[AI Tools] Upload failed:', err);
-            if (isCreditError(err.message)) {
-                showCreditExhaustedToast('upload');
+            if (isStorageError(err.message)) {
+                showStorageExhaustedToast(currentStorage);
                 fetchCredits();
             } else {
                 showToast(err.message || 'Upload failed. Please try again.', 'error');
@@ -536,7 +588,9 @@
 
             setProgress(100);
             showToast('Text received! Processing your notes...', 'success');
-            fetchCredits(); // Refresh credit bar
+
+            // Update storage bar from response
+            if (data.storage) renderStorageBar(data.storage);
 
             // Clear the input
             if (textAreaInput) textAreaInput.value = '';
@@ -551,8 +605,8 @@
 
         } catch (err) {
             console.error('[AI Tools] Text upload failed:', err);
-            if (isCreditError(err.message)) {
-                showCreditExhaustedToast('upload');
+            if (isStorageError(err.message)) {
+                showStorageExhaustedToast(currentStorage);
                 fetchCredits();
             } else {
                 showToast(err.message || 'Failed to submit text. Please try again.', 'error');
@@ -572,6 +626,7 @@
         try {
             var data = await apiCall('/api/ai/documents');
             documents = (data && data.documents) || [];
+            if (data && data.storage) renderStorageBar(data.storage);
             renderDocuments();
 
             documents.forEach(function (doc) {
@@ -778,6 +833,7 @@
             '    <div class="ai-doc-meta">' + metaParts.join(' &bull; ') + '</div>' +
             '  </div>' +
             '  ' + statusHtml +
+            '  <button class="ai-doc-btn btn-rename" data-action="rename" data-doc-id="' + doc.id + '" data-doc-name="' + escapeHtml(doc.filename) + '" title="Rename"><i class="fas fa-pen"></i></button>' +
             '  <button class="ai-doc-btn btn-delete" data-action="delete" data-doc-id="' + doc.id + '" title="Delete"><i class="fas fa-trash-alt"></i></button>' +
             '</div>' +
             actionGridHtml;
@@ -818,6 +874,13 @@
                     requestGeneration(doc.id, doc.filename, genType);
                 });
             })(genBtns[j]);
+        }
+
+        var renameBtn = card.querySelector('[data-action="rename"]');
+        if (renameBtn) {
+            renameBtn.addEventListener('click', function () {
+                renameDocument(doc.id, doc.filename);
+            });
         }
 
         var deleteBtn = card.querySelector('[data-action="delete"]');
@@ -988,8 +1051,8 @@
             }
         } catch (err) {
             console.error('[AI Tools] Quiz start failed:', err);
-            if (isCreditError(err.message)) {
-                showCreditExhaustedToast('question');
+            if (isQuestionCreditError(err.message)) {
+                showQuestionExhaustedToast();
                 fetchCredits();
             } else {
                 showToast(err.message || 'Failed to start quiz.', 'error');
@@ -1053,8 +1116,8 @@
             }
         } catch (err) {
             console.error('[AI Tools] Generation failed:', err);
-            if (isCreditError(err.message)) {
-                showCreditExhaustedToast('question');
+            if (isQuestionCreditError(err.message)) {
+                showQuestionExhaustedToast();
                 fetchCredits();
                 closePanel();
             } else {
@@ -1168,14 +1231,33 @@
 
     // ── Delete document ─────────────────────────────────────────
 
+    async function renameDocument(docId, currentName) {
+        var newName = prompt('Rename document:', currentName);
+        if (!newName || newName.trim() === '' || newName.trim() === currentName) return;
+
+        try {
+            await apiCall('/api/ai/documents/' + docId + '/rename', {
+                method: 'PUT',
+                body: JSON.stringify({ title: newName.trim() }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+            showToast('Document renamed.', 'success');
+            loadDocuments();
+        } catch (err) {
+            console.error('[AI Tools] Rename failed:', err);
+            showToast('Failed to rename document.', 'error');
+        }
+    }
+
     async function deleteDocument(docId, filename) {
         if (!confirm('Delete "' + filename + '"? This will also remove all generated content.')) {
             return;
         }
 
         try {
-            await apiCall('/api/ai/documents/' + docId, { method: 'DELETE' });
+            var data = await apiCall('/api/ai/documents/' + docId, { method: 'DELETE' });
             showToast('Document deleted.', 'success');
+            if (data && data.storage) renderStorageBar(data.storage);
             stopPolling(docId);
             loadDocuments();
         } catch (err) {

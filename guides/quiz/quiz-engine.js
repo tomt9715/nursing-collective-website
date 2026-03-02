@@ -1961,8 +1961,8 @@ class QuizEngine {
         const flagHtml = wasFlagged ? '<span class="quiz-result-flag" title="Flagged for review"><i class="fas fa-flag"></i></span>' : '';
 
         return `
-            <div class="quiz-result-item quiz-result-item--expanded">
-                <button class="quiz-result-summary" aria-expanded="true">
+            <div class="quiz-result-item">
+                <button class="quiz-result-summary" aria-expanded="false">
                     <span class="quiz-result-icon ${iconClass}"><i class="fas ${icon}"></i></span>
                     <span class="quiz-result-stem">${this._escapeHtml(truncatedStem)}</span>
                     ${flagHtml}

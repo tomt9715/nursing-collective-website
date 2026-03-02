@@ -65,8 +65,6 @@ class QuizEngine {
         this.container.innerHTML = '';
         this.container.addEventListener('click', this._boundClickHandler);
         document.addEventListener('keydown', this._boundKeyHandler);
-        // Clean up legacy confidence tracker key
-        try { localStorage.removeItem('nursingCollective_confidenceReask'); } catch (e) { /* ignore */ }
         this._renderStartScreen();
     }
 
@@ -130,9 +128,12 @@ class QuizEngine {
             correctAnswer: q.correct
         });
 
-        // Clear "don't know" tracker if user answered correctly
+        // Clear "don't know" tracker and retry queue if user answered correctly
         if (isCorrect && !this.isReviewMode && !this.isAIGenerated) {
             this._clearDontKnowForQuestion(q.id);
+            if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.removeFromRetryQueue === 'function') {
+                MasteryTracker.removeFromRetryQueue(this.guideSlug, q.id);
+            }
         }
 
         this._showSubmitFeedback(q, userAnswer, isCorrect, isPartial);
@@ -190,10 +191,24 @@ class QuizEngine {
             });
             if (masteryResults.length > 0) {
                 MasteryTracker.recordSetResult(this.guideSlug, masteryResults);
-                // Sync to server if logged in
-                if (typeof MasteryTracker.syncToServer === 'function') {
-                    MasteryTracker.syncToServer();
+            }
+        }
+
+        // Add wrong answers to retry queue (study guide quizzes only, not review mode)
+        if (typeof MasteryTracker !== 'undefined' && !this.isReviewMode && !this.isAIGenerated) {
+            const wrongIds = [];
+            this.activeQuestions.forEach(q => {
+                const r = this.results.get(q.id);
+                if (r && !r.correct) {
+                    wrongIds.push(q.id);
                 }
+            });
+            if (wrongIds.length > 0 && typeof MasteryTracker.addToRetryQueue === 'function') {
+                MasteryTracker.addToRetryQueue(this.guideSlug, wrongIds);
+            }
+            // Sync mastery + retry queue to server
+            if (typeof MasteryTracker.syncToServer === 'function') {
+                MasteryTracker.syncToServer();
             }
         }
 
@@ -820,9 +835,23 @@ class QuizEngine {
                 </div>`}
 
                 ${(() => {
+                    if (this.isAIGenerated) return '';
                     const reaskIds = this._loadDontKnowReaskIds();
-                    if (reaskIds.length > 0) {
-                        return '<div class="quiz-reask-notice"><i class="fas fa-redo-alt"></i> <strong>' + reaskIds.length + ' question' + (reaskIds.length !== 1 ? 's' : '') + '</strong> will be prioritized — you marked ' + (reaskIds.length !== 1 ? 'them' : 'it') + ' as "don\'t know."</div>';
+                    let retryCount = 0;
+                    if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getRetryQueueIds === 'function') {
+                        retryCount = MasteryTracker.getRetryQueueIds(this.guideSlug).length;
+                    }
+                    const totalReask = reaskIds.length + retryCount;
+                    if (totalReask > 0) {
+                        let detail = '';
+                        if (reaskIds.length > 0 && retryCount > 0) {
+                            detail = reaskIds.length + ' marked "don\'t know" and ' + retryCount + ' previously missed.';
+                        } else if (reaskIds.length > 0) {
+                            detail = 'you marked ' + (reaskIds.length !== 1 ? 'them' : 'it') + ' as "don\'t know."';
+                        } else {
+                            detail = 'you missed ' + (retryCount !== 1 ? 'them' : 'it') + ' in a previous session.';
+                        }
+                        return '<div class="quiz-reask-notice"><i class="fas fa-redo-alt"></i> <strong>' + totalReask + ' question' + (totalReask !== 1 ? 's' : '') + '</strong> will be prioritized &mdash; ' + detail + '</div>';
                     }
                     return '';
                 })()}
@@ -2496,35 +2525,54 @@ class QuizEngine {
     }
 
     /**
-     * Select questions for a new quiz, prioritizing "don't know" questions.
-     * Re-ask questions go first, then random questions fill the remaining slots.
+     * Select questions for a new quiz, prioritizing learning reinforcement.
+     * Priority: don't-know > retry-queue (previously wrong) > normal pool.
      */
     _selectQuestionsWithReask(size) {
+        // Skip all re-ask logic for AI quizzes
+        if (this.isAIGenerated) {
+            const shuffled = this._shuffleArray([...this.questions]);
+            return shuffled.slice(0, size);
+        }
+
         const reaskIds = new Set(this._loadDontKnowReaskIds());
+
+        // Load retry queue IDs
+        let retryIds = new Set();
+        if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getRetryQueueIds === 'function') {
+            MasteryTracker.getRetryQueueIds(this.guideSlug).forEach(id => retryIds.add(id));
+        }
+
         const allQuestions = [...this.questions];
 
-        // Split into re-ask questions and normal pool
-        const reaskQuestions = [];
+        // Split into three pools: don't-know, retry-queue, normal
+        const dontKnowQuestions = [];
+        const retryQuestions = [];
         const normalPool = [];
+
         allQuestions.forEach(q => {
             if (reaskIds.has(q.id)) {
-                reaskQuestions.push(q);
+                dontKnowQuestions.push(q);
+            } else if (retryIds.has(q.id)) {
+                retryQuestions.push(q);
             } else {
                 normalPool.push(q);
             }
         });
 
-        // Shuffle both pools
-        const shuffledReask = this._shuffleArray(reaskQuestions);
-        const shuffledNormal = this._shuffleArray(normalPool);
+        // Shuffle each pool
+        this._shuffleArray(dontKnowQuestions);
+        this._shuffleArray(retryQuestions);
+        this._shuffleArray(normalPool);
 
-        // Take re-ask questions first (up to session size), then fill with normal
+        // Take don't-know first, then retry, then normal
         const selected = [];
-        for (let i = 0; i < shuffledReask.length && selected.length < size; i++) {
-            selected.push(shuffledReask[i]);
-        }
-        for (let i = 0; i < shuffledNormal.length && selected.length < size; i++) {
-            selected.push(shuffledNormal[i]);
+        const pools = [dontKnowQuestions, retryQuestions, normalPool];
+        for (const pool of pools) {
+            for (const q of pool) {
+                if (selected.length >= size) break;
+                selected.push(q);
+            }
         }
 
         return selected;

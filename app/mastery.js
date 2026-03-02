@@ -215,30 +215,66 @@ var MasteryTracker = (function () {
         var topicData = _getTopicData(topicId) || { questionHistory: {} };
         var history = topicData.questionHistory || {};
 
-        // Categorize questions
+        // Get retry queue IDs for this topic
+        var retryIds = {};
+        try {
+            var rq = JSON.parse(localStorage.getItem(RETRY_QUEUE_KEY) || '{}');
+            if (rq[topicId] && rq[topicId].queue) {
+                for (var ri = 0; ri < rq[topicId].queue.length; ri++) {
+                    retryIds[rq[topicId].queue[ri].questionId] = true;
+                }
+            }
+        } catch (e) { /* ignore */ }
+
+        // Stale threshold: questions correct 7+ days ago should be reviewed
+        var STALE_DAYS = 7;
+        var staleThreshold = new Date();
+        staleThreshold.setDate(staleThreshold.getDate() - STALE_DAYS);
+        var staleISO = staleThreshold.toISOString();
+
+        // Categorize into 5 pools (priority order)
+        var retryQueue = [];
         var unseen = [];
         var seenWrong = [];
-        var seenCorrect = [];
+        var staleCorrect = [];
+        var recentCorrect = [];
 
         allQuestions.forEach(function (q) {
             var h = history[q.id];
+
+            // Pool 1: In retry queue (highest priority)
+            if (retryIds[q.id]) {
+                retryQueue.push(q);
+                return;
+            }
+
             if (!h || !h.seen) {
+                // Pool 2: Never seen
                 unseen.push(q);
             } else if (h.lastResult !== 'correct') {
+                // Pool 3: Seen but last answer was wrong
                 seenWrong.push(q);
             } else {
-                seenCorrect.push(q);
+                // Pool 4 or 5: Correct — check staleness
+                var lastAnswered = h.lastAnsweredAt || '';
+                if (!lastAnswered || lastAnswered < staleISO) {
+                    staleCorrect.push(q);
+                } else {
+                    recentCorrect.push(q);
+                }
             }
         });
 
         // Shuffle each pool
+        _shuffleArray(retryQueue);
         _shuffleArray(unseen);
         _shuffleArray(seenWrong);
-        _shuffleArray(seenCorrect);
+        _shuffleArray(staleCorrect);
+        _shuffleArray(recentCorrect);
 
-        // Build set: unseen first, then wrong, then correct
+        // Build set: retry first, then unseen, wrong, stale-correct, recent-correct
         var selected = [];
-        var pools = [unseen, seenWrong, seenCorrect];
+        var pools = [retryQueue, unseen, seenWrong, staleCorrect, recentCorrect];
 
         for (var p = 0; p < pools.length && selected.length < setSize; p++) {
             for (var i = 0; i < pools[p].length && selected.length < setSize; i++) {
@@ -290,7 +326,8 @@ var MasteryTracker = (function () {
                     seen: true,
                     lastResult: r.correct ? 'correct' : 'incorrect',
                     timesSeen: 1,
-                    timesCorrect: r.correct ? 1 : 0
+                    timesCorrect: r.correct ? 1 : 0,
+                    lastAnsweredAt: new Date().toISOString()
                 };
             } else {
                 var qh = topic.questionHistory[r.questionId];
@@ -298,6 +335,7 @@ var MasteryTracker = (function () {
                 qh.lastResult = r.correct ? 'correct' : 'incorrect';
                 qh.timesSeen++;
                 if (r.correct) qh.timesCorrect++;
+                qh.lastAnsweredAt = new Date().toISOString();
             }
         });
 
@@ -633,7 +671,8 @@ var MasteryTracker = (function () {
                 seen: l.seen || r.seen,
                 lastResult: (l.timesSeen || 0) >= (r.timesSeen || 0) ? l.lastResult : r.lastResult,
                 timesSeen: Math.max(l.timesSeen || 0, r.timesSeen || 0),
-                timesCorrect: Math.max(l.timesCorrect || 0, r.timesCorrect || 0)
+                timesCorrect: Math.max(l.timesCorrect || 0, r.timesCorrect || 0),
+                lastAnsweredAt: _laterDate(l.lastAnsweredAt, r.lastAnsweredAt)
             };
         }
         return merged;
@@ -899,6 +938,77 @@ var MasteryTracker = (function () {
             });
     }
 
+    // ── Retry Queue ─────────────────────────────────────────
+
+    /**
+     * Add wrong questions to the retry queue for a given topic.
+     * Called at quiz completion with the list of wrong question IDs.
+     */
+    function addToRetryQueue(topicId, wrongQuestionIds) {
+        if (!wrongQuestionIds || wrongQuestionIds.length === 0) return;
+        try {
+            var rq = JSON.parse(localStorage.getItem(RETRY_QUEUE_KEY) || '{}');
+            if (!rq[topicId]) {
+                rq[topicId] = { sessionCounter: 0, queue: [] };
+            }
+            rq[topicId].sessionCounter++;
+
+            var queueMap = {};
+            var i;
+            for (i = 0; i < rq[topicId].queue.length; i++) {
+                queueMap[rq[topicId].queue[i].questionId] = rq[topicId].queue[i];
+            }
+
+            for (i = 0; i < wrongQuestionIds.length; i++) {
+                var qId = wrongQuestionIds[i];
+                if (queueMap[qId]) {
+                    queueMap[qId].attempts = (queueMap[qId].attempts || 0) + 1;
+                } else {
+                    queueMap[qId] = { questionId: qId, attempts: 1 };
+                }
+            }
+
+            rq[topicId].queue = [];
+            for (var k in queueMap) {
+                if (queueMap.hasOwnProperty(k)) rq[topicId].queue.push(queueMap[k]);
+            }
+
+            localStorage.setItem(RETRY_QUEUE_KEY, JSON.stringify(rq));
+        } catch (e) {
+            console.warn('[Mastery] Failed to update retry queue:', e);
+        }
+    }
+
+    /**
+     * Remove a question from the retry queue (user answered it correctly).
+     */
+    function removeFromRetryQueue(topicId, questionId) {
+        try {
+            var rq = JSON.parse(localStorage.getItem(RETRY_QUEUE_KEY) || '{}');
+            if (!rq[topicId] || !rq[topicId].queue) return;
+            rq[topicId].queue = rq[topicId].queue.filter(function (item) {
+                return item.questionId !== questionId;
+            });
+            if (rq[topicId].queue.length === 0) {
+                delete rq[topicId];
+            }
+            localStorage.setItem(RETRY_QUEUE_KEY, JSON.stringify(rq));
+        } catch (e) { /* ignore */ }
+    }
+
+    /**
+     * Get retry queue question IDs for a given topic.
+     */
+    function getRetryQueueIds(topicId) {
+        try {
+            var rq = JSON.parse(localStorage.getItem(RETRY_QUEUE_KEY) || '{}');
+            if (!rq[topicId] || !rq[topicId].queue) return [];
+            return rq[topicId].queue.map(function (item) { return item.questionId; });
+        } catch (e) {
+            return [];
+        }
+    }
+
     // ── Public API ─────────────────────────────────────────
 
     return {
@@ -927,6 +1037,11 @@ var MasteryTracker = (function () {
         // Server sync
         syncToServer: syncToServer,
         pullFromServer: pullFromServer,
+
+        // Retry queue
+        addToRetryQueue: addToRetryQueue,
+        removeFromRetryQueue: removeFromRetryQueue,
+        getRetryQueueIds: getRetryQueueIds,
 
         // Utility
         resetAll: resetAll

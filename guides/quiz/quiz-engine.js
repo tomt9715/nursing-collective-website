@@ -51,6 +51,11 @@ class QuizEngine {
         this.flaggedQuestions = new Set();
         this._reviewedFlags = false;
 
+        // Per-question timing
+        this.questionTimes = new Map();          // questionId → seconds
+        this._questionStartTime = null;          // Date.now() when question rendered
+        this._questionElapsedSoFar = new Map();  // accumulated partial time (for skip/return)
+
         // Resume state
         this._saveKey = 'nursingCollective_quizState_' + (config.guideSlug || '');
 
@@ -82,6 +87,11 @@ class QuizEngine {
         this.isReviewMode = false;
         this._shuffleAllOptions();
 
+        // Per-question timing reset
+        this.questionTimes.clear();
+        this._questionStartTime = null;
+        this._questionElapsedSoFar.clear();
+
         // Timer (exam mode only — practice mode has no timer)
         this.sessionStartTime = Date.now();
         this.sessionElapsed = 0;
@@ -103,6 +113,13 @@ class QuizEngine {
 
         this.answers.set(q.id, userAnswer);
         this.submitted.add(q.id);
+
+        // Record per-question time
+        if (this._questionStartTime) {
+            const elapsed = (Date.now() - this._questionStartTime) / 1000;
+            const prior = this._questionElapsedSoFar.get(q.id) || 0;
+            this.questionTimes.set(q.id, Math.round((prior + elapsed) * 10) / 10);
+        }
 
         const isCorrect = this._checkAnswer(q, userAnswer);
         const isPartial = !isCorrect && (
@@ -194,6 +211,25 @@ class QuizEngine {
             }
         }
 
+        // Record section stats for weak area trends (study guide quizzes only, not review mode or AI)
+        if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.recordSectionStats === 'function' && !this.isReviewMode && !this.isAIGenerated) {
+            const sectionMap = new Map();
+            this.activeQuestions.forEach(q => {
+                if (!q.guideSectionId) return;
+                const r = this.results.get(q.id);
+                if (!r) return;
+                if (!sectionMap.has(q.guideSectionId)) {
+                    sectionMap.set(q.guideSectionId, { sectionId: q.guideSectionId, sectionName: q.guideSection || q.guideSectionId, wrong: 0, total: 0 });
+                }
+                const sec = sectionMap.get(q.guideSectionId);
+                sec.total++;
+                if (!r.correct) sec.wrong++;
+            });
+            if (sectionMap.size > 0) {
+                MasteryTracker.recordSectionStats(this.guideSlug, Array.from(sectionMap.values()));
+            }
+        }
+
         // Add wrong answers to retry queue (study guide quizzes only, not review mode)
         if (typeof MasteryTracker !== 'undefined' && !this.isReviewMode && !this.isAIGenerated) {
             const wrongIds = [];
@@ -228,6 +264,11 @@ class QuizEngine {
         this._reviewedFlags = false;
         this._shuffleAllOptions();
 
+        // Per-question timing reset
+        this.questionTimes.clear();
+        this._questionStartTime = null;
+        this._questionElapsedSoFar.clear();
+
         this.sessionStartTime = Date.now();
         this.sessionElapsed = 0;
         this.countdownSeconds = (this.mode === 'exam') ? this.activeQuestions.length * 90 : 0;
@@ -255,6 +296,11 @@ class QuizEngine {
         this.flaggedQuestions.clear();
         this._reviewedFlags = false;
         this._shuffleAllOptions();
+
+        // Per-question timing reset
+        this.questionTimes.clear();
+        this._questionStartTime = null;
+        this._questionElapsedSoFar.clear();
 
         this.sessionStartTime = Date.now();
         this.sessionElapsed = 0;
@@ -574,6 +620,15 @@ class QuizEngine {
                     this._handleDontKnow();
                     break;
                 }
+                case 'skip-question': {
+                    this.skipQuestion();
+                    break;
+                }
+                case 'jump-to': {
+                    const idx = parseInt(actionBtn.dataset.jumpIndex, 10);
+                    if (!isNaN(idx)) this.jumpToQuestion(idx);
+                    break;
+                }
                 case 'toggle-ai-disclaimer': {
                     const tooltip = actionBtn.closest('.quiz-ai-disclaimer')?.querySelector('.quiz-ai-disclaimer-tooltip');
                     if (tooltip) {
@@ -648,8 +703,8 @@ class QuizEngine {
             }
             this._updateSubmitButton();
 
-            // Auto-submit for single/priority questions
-            if (currentQ && this._isSingleAnswer(currentQ) && !this.submitted.has(currentQ.id)) {
+            // Auto-submit for single/priority questions (not in exam mode — exam allows skip/return)
+            if (currentQ && this._isSingleAnswer(currentQ) && !this.submitted.has(currentQ.id) && this.mode !== 'exam') {
                 this.submitAnswer();
             }
             return;
@@ -731,6 +786,13 @@ class QuizEngine {
                 e.preventDefault();
                 flagBtn.click();
             }
+            return;
+        }
+
+        // S: Skip question (exam mode only)
+        if (key === 's' && this.mode === 'exam' && !this.submitted.has(q.id)) {
+            e.preventDefault();
+            this.skipQuestion();
             return;
         }
     }
@@ -986,6 +1048,7 @@ class QuizEngine {
                     <div class="quiz-progress-fill" style="width: ${pct}%"></div>
                 </div>
             </div>
+            ${this.mode === 'exam' ? this._renderQuestionNavigator() : ''}
             <div class="quiz-question ${hasLabs ? 'quiz-question--has-labs' : ''}">
                 <div class="quiz-question-main">
                     <div class="quiz-question-header">
@@ -1002,7 +1065,7 @@ class QuizEngine {
                     </div>
                     ${hasLabs ? `<div class="quiz-lab-inline">${labHtml}</div>` : ''}
                     ${optionsHtml}
-                    ${this._isSingleAnswer(q) ? '' : `<div class="quiz-actions">
+                    ${this._isSingleAnswer(q) && this.mode !== 'exam' ? '' : `<div class="quiz-actions">
                         <button class="quiz-btn quiz-btn--primary" data-quiz-action="submit" disabled>
                             ${submitLabel}
                         </button>
@@ -1012,6 +1075,11 @@ class QuizEngine {
                             <i class="fas fa-share"></i> Don't know?
                         </button>
                     </div>` : ''}
+                    ${this.mode === 'exam' && !this.submitted.has(q.id) ? `<div class="quiz-skip-wrap">
+                        <button class="quiz-skip-btn" data-quiz-action="skip-question">
+                            <i class="fas fa-forward"></i> Skip for now
+                        </button>
+                    </div>` : ''}
                     <div id="quiz-feedback-area"></div>
                 </div>
                 ${hasLabs ? `<div class="quiz-lab-side">${labHtml}</div>` : ''}
@@ -1019,8 +1087,8 @@ class QuizEngine {
             ${!('ontouchstart' in window || navigator.maxTouchPoints > 0) ? `
             <div class="quiz-shortcut-bar">
                 ${this._isSingleAnswer(q)
-                    ? '<span class="quiz-kbd">1</span>\u2013<span class="quiz-kbd">4</span> Answer <span class="quiz-kbd">Enter</span> Next <span class="quiz-kbd">F</span> Flag'
-                    : '<span class="quiz-kbd">Enter</span> / <span class="quiz-kbd">Space</span> Submit / Next <span class="quiz-kbd">F</span> Flag'}
+                    ? `<span class="quiz-kbd">1</span>\u2013<span class="quiz-kbd">4</span> Answer <span class="quiz-kbd">Enter</span> ${this.mode === 'exam' ? 'Submit' : 'Next'} <span class="quiz-kbd">F</span> Flag${this.mode === 'exam' ? ' <span class="quiz-kbd">S</span> Skip' : ''}`
+                    : `<span class="quiz-kbd">Enter</span> / <span class="quiz-kbd">Space</span> Submit / Next <span class="quiz-kbd">F</span> Flag${this.mode === 'exam' ? ' <span class="quiz-kbd">S</span> Skip' : ''}`}
             </div>
             ` : ''}
         `;
@@ -1029,6 +1097,14 @@ class QuizEngine {
         const stem = this.container.querySelector('.quiz-question-stem');
         if (stem) stem.setAttribute('tabindex', '-1');
         if (stem) stem.focus({ preventScroll: true });
+
+        // Restore saved selection when returning to a skipped question (exam mode)
+        if (this.mode === 'exam' && !this.submitted.has(q.id) && this.answers.has(q.id)) {
+            this._restoreSavedSelection(q);
+        }
+
+        // Start per-question timer
+        this._questionStartTime = Date.now();
     }
 
     _renderOption(q, opt, inputType, positionIndex) {
@@ -1257,6 +1333,14 @@ class QuizEngine {
 
         // Mark as submitted with no user answer
         this.submitted.add(q.id);
+
+        // Record per-question time
+        if (this._questionStartTime) {
+            const elapsed = (Date.now() - this._questionStartTime) / 1000;
+            const prior = this._questionElapsedSoFar.get(q.id) || 0;
+            this.questionTimes.set(q.id, Math.round((prior + elapsed) * 10) / 10);
+        }
+
         this.results.set(q.id, {
             correct: false,
             partial: false,
@@ -1316,6 +1400,121 @@ class QuizEngine {
         }
 
         this._saveState();
+    }
+
+    // ── Skip & Return (Exam Mode) ────────────────────────────
+
+    skipQuestion() {
+        if (this.mode !== 'exam') return;
+        const q = this.activeQuestions[this.currentIndex];
+        if (!q || this.submitted.has(q.id)) return;
+
+        // Auto-flag the skipped question
+        this.flaggedQuestions.add(q.id);
+
+        // Accumulate partial time before leaving
+        if (this._questionStartTime) {
+            const elapsed = (Date.now() - this._questionStartTime) / 1000;
+            const prior = this._questionElapsedSoFar.get(q.id) || 0;
+            this._questionElapsedSoFar.set(q.id, prior + elapsed);
+        }
+
+        // Save any current selection so we can restore it on return
+        const userAnswer = this._getUserAnswer(q);
+        if (userAnswer !== null) {
+            this.answers.set(q.id, userAnswer);
+        }
+
+        // Advance to next unanswered question (wrap around)
+        const total = this.activeQuestions.length;
+        let next = (this.currentIndex + 1) % total;
+        let attempts = 0;
+        while (this.submitted.has(this.activeQuestions[next].id) && attempts < total) {
+            next = (next + 1) % total;
+            attempts++;
+        }
+        if (attempts >= total) {
+            // All questions submitted — show results
+            this.showResults();
+            return;
+        }
+        this.currentIndex = next;
+        this._saveState();
+        this._renderQuestion();
+    }
+
+    jumpToQuestion(index) {
+        if (index < 0 || index >= this.activeQuestions.length || index === this.currentIndex) return;
+
+        // Accumulate partial time before leaving current question
+        const currentQ = this.activeQuestions[this.currentIndex];
+        if (currentQ && !this.submitted.has(currentQ.id) && this._questionStartTime) {
+            const elapsed = (Date.now() - this._questionStartTime) / 1000;
+            const prior = this._questionElapsedSoFar.get(currentQ.id) || 0;
+            this._questionElapsedSoFar.set(currentQ.id, prior + elapsed);
+        }
+
+        // Save any current selection before leaving
+        if (currentQ && !this.submitted.has(currentQ.id)) {
+            const userAnswer = this._getUserAnswer(currentQ);
+            if (userAnswer !== null) {
+                this.answers.set(currentQ.id, userAnswer);
+            }
+        }
+
+        this.currentIndex = index;
+        this._saveState();
+        this._renderQuestion();
+    }
+
+    _restoreSavedSelection(q) {
+        const savedAnswer = this.answers.get(q.id);
+        if (savedAnswer === null || savedAnswer === undefined) return;
+
+        if (this._isSingleAnswer(q)) {
+            // Single-answer: select the saved option
+            const options = this.container.querySelectorAll('.quiz-option');
+            options.forEach(opt => {
+                const input = opt.querySelector('input');
+                if (input && input.value === savedAnswer) {
+                    opt.classList.add('quiz-option--selected');
+                    input.checked = true;
+                }
+            });
+        } else if (q.type === 'sata' && Array.isArray(savedAnswer)) {
+            // SATA: check saved options
+            const options = this.container.querySelectorAll('.quiz-option');
+            options.forEach(opt => {
+                const input = opt.querySelector('input');
+                if (input && savedAnswer.includes(input.value)) {
+                    opt.classList.add('quiz-option--selected');
+                    input.checked = true;
+                }
+            });
+        }
+        this._updateSubmitButton();
+    }
+
+    _renderQuestionNavigator() {
+        if (this.mode !== 'exam') return '';
+        const dots = this.activeQuestions.map((q, i) => {
+            const result = this.results.get(q.id);
+            const isSubmitted = this.submitted.has(q.id);
+            const isFlagged = this.flaggedQuestions.has(q.id);
+            const hasAnswer = this.answers.has(q.id);
+            const isCurrent = i === this.currentIndex;
+
+            let cls = 'quiz-nav-dot';
+            if (isCurrent) cls += ' quiz-nav-dot--current';
+            else if (isSubmitted && result && result.correct) cls += ' quiz-nav-dot--correct';
+            else if (isSubmitted && result && !result.correct) cls += ' quiz-nav-dot--incorrect';
+            else if (isFlagged) cls += ' quiz-nav-dot--flagged';
+            else if (hasAnswer) cls += ' quiz-nav-dot--visited';
+
+            return `<button class="${cls}" data-quiz-action="jump-to" data-jump-index="${i}" title="Question ${i + 1}">${i + 1}</button>`;
+        }).join('');
+
+        return `<div class="quiz-question-navigator">${dots}</div>`;
     }
 
     _highlightCorrectOnly(q) {
@@ -1724,6 +1923,33 @@ class QuizEngine {
             }
         }
 
+        // Weak area trends across sessions (study guide quizzes only)
+        if (!this.isAIGenerated && typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getSectionTrends === 'function') {
+            const trends = MasteryTracker.getSectionTrends(this.guideSlug, 7);
+            if (trends.length > 0) {
+                const topTrends = trends.slice(0, 5);
+                html += `
+                    <div class="quiz-weak-trends">
+                        <div class="quiz-weak-trends-title"><i class="fas fa-chart-line"></i> Weak Areas This Week</div>
+                        <ul class="quiz-weak-trends-list">
+                            ${topTrends.map(t => `
+                                <li class="quiz-weak-trends-item">
+                                    <span class="quiz-weak-trends-name">${this._escapeHtml(t.name)}</span>
+                                    <span class="quiz-weak-trends-stats">
+                                        <span class="quiz-weak-trends-missed">${t.wrong} missed</span>
+                                        <span class="quiz-weak-trends-rate">${t.errorRate}% error rate</span>
+                                    </span>
+                                    <a href="../${this.guideSlug}.html#${this._escapeAttr(t.sectionId)}" class="quiz-weak-area-link" target="_blank">
+                                        Review <i class="fas fa-arrow-right"></i>
+                                    </a>
+                                </li>
+                            `).join('')}
+                        </ul>
+                    </div>
+                `;
+            }
+        }
+
         // Per-question breakdown
         html += `
             <div class="quiz-results-breakdown">
@@ -1964,11 +2190,23 @@ class QuizEngine {
         const wasFlagged = this.flaggedQuestions.has(q.id);
         const flagHtml = wasFlagged ? '<span class="quiz-result-flag" title="Flagged for review"><i class="fas fa-flag"></i></span>' : '';
 
+        // Per-question time badge
+        const qTime = this.questionTimes.get(q.id);
+        let timeBadgeHtml = '';
+        if (qTime != null && qTime > 0) {
+            const mins = Math.floor(qTime / 60);
+            const secs = Math.round(qTime % 60);
+            const timeStr = mins >= 1 ? `${mins}m ${secs}s` : `${secs}s`;
+            const slowClass = qTime > 120 ? ' quiz-result-time--slow' : '';
+            timeBadgeHtml = `<span class="quiz-result-time${slowClass}" title="Time spent on this question"><i class="fas fa-clock"></i> ${timeStr}</span>`;
+        }
+
         return `
             <div class="quiz-result-item">
                 <button class="quiz-result-summary" aria-expanded="false">
                     <span class="quiz-result-icon ${iconClass}"><i class="fas ${icon}"></i></span>
                     <span class="quiz-result-stem">${this._escapeHtml(truncatedStem)}</span>
+                    ${timeBadgeHtml}
                     ${flagHtml}
                     <i class="fas fa-chevron-down quiz-result-expand-icon"></i>
                 </button>
@@ -2265,6 +2503,7 @@ class QuizEngine {
         this.activeQuestions.forEach(q => {
             if (!this.submitted.has(q.id)) {
                 this.submitted.add(q.id);
+                this.questionTimes.set(q.id, 0); // no time spent — auto-submitted
                 this.results.set(q.id, {
                     correct: false,
                     partial: false,
@@ -2327,6 +2566,9 @@ class QuizEngine {
                 timerMode: this.timerMode,
                 countdownSeconds: this.countdownSeconds,
                 selectedSessionSize: this.selectedSessionSize,
+                questionTimes: Array.from(this.questionTimes.entries()),
+                questionElapsedSoFar: Array.from(this._questionElapsedSoFar.entries()),
+                questionStartTime: this._questionStartTime,
                 savedAt: Date.now()
             };
             localStorage.setItem(this._saveKey, JSON.stringify(state));
@@ -2363,6 +2605,11 @@ class QuizEngine {
             this._shuffledOptions = new Map(state.shuffledOptions || []);
             this.isReviewMode = state.isReviewMode || false;
             this.selectedSessionSize = state.selectedSessionSize || this.questions.length;
+
+            // Restore per-question timing
+            this.questionTimes = new Map(state.questionTimes || []);
+            this._questionElapsedSoFar = new Map(state.questionElapsedSoFar || []);
+            this._questionStartTime = state.questionStartTime || null;
 
             // Restore timer (adjust for time passed since save)
             this.sessionStartTime = state.sessionStartTime;

@@ -643,6 +643,7 @@ var MasteryTracker = (function () {
     var RETRY_QUEUE_KEY = 'nursingCollective_retryQueue';
     var BOOKMARKS_KEY = 'nursingCollective_bookmarks';
     var CONFIDENCE_REASK_KEY = 'nursingCollective_confidenceReask';
+    var SECTION_STATS_KEY = 'nursingCollective_sectionStats';
 
     function _isLoggedIn() {
         return !!localStorage.getItem('accessToken');
@@ -831,6 +832,156 @@ var MasteryTracker = (function () {
         } catch (e) {
             console.warn('[Mastery] Failed to merge confidence reask:', e);
         }
+
+        // Merge section stats (union topics/sections, concat+dedupe recentAttempts by timestamp, cap at 30)
+        try {
+            var localSS = JSON.parse(localStorage.getItem(SECTION_STATS_KEY) || '{}');
+            var remoteSS = serverData.section_stats || {};
+            var mergedSS = {};
+            var allSSTopics = {};
+            var ssTopic;
+            for (ssTopic in localSS) { if (localSS.hasOwnProperty(ssTopic)) allSSTopics[ssTopic] = true; }
+            for (ssTopic in remoteSS) { if (remoteSS.hasOwnProperty(ssTopic)) allSSTopics[ssTopic] = true; }
+
+            for (ssTopic in allSSTopics) {
+                if (!allSSTopics.hasOwnProperty(ssTopic)) continue;
+                var localT = localSS[ssTopic] || {};
+                var remoteT = remoteSS[ssTopic] || {};
+                var mergedT = {};
+                var allSections = {};
+                var secId;
+                for (secId in localT) { if (localT.hasOwnProperty(secId)) allSections[secId] = true; }
+                for (secId in remoteT) { if (remoteT.hasOwnProperty(secId)) allSections[secId] = true; }
+
+                for (secId in allSections) {
+                    if (!allSections.hasOwnProperty(secId)) continue;
+                    var ls = localT[secId];
+                    var rs = remoteT[secId];
+                    if (!ls) { mergedT[secId] = rs; continue; }
+                    if (!rs) { mergedT[secId] = ls; continue; }
+
+                    // Both exist: merge totals and concat+dedupe recentAttempts
+                    var mergedAttempts = (ls.recentAttempts || []).concat(rs.recentAttempts || []);
+                    // Dedupe by timestamp
+                    var seen = {};
+                    mergedAttempts = mergedAttempts.filter(function (a) {
+                        if (seen[a.timestamp]) return false;
+                        seen[a.timestamp] = true;
+                        return true;
+                    });
+                    mergedAttempts.sort(function (a, b) { return a.timestamp - b.timestamp; });
+                    if (mergedAttempts.length > 30) mergedAttempts = mergedAttempts.slice(-30);
+
+                    mergedT[secId] = {
+                        name: ls.name || rs.name,
+                        wrong: Math.max(ls.wrong || 0, rs.wrong || 0),
+                        total: Math.max(ls.total || 0, rs.total || 0),
+                        recentAttempts: mergedAttempts
+                    };
+                }
+                if (Object.keys(mergedT).length > 0) {
+                    mergedSS[ssTopic] = mergedT;
+                }
+            }
+            localStorage.setItem(SECTION_STATS_KEY, JSON.stringify(mergedSS));
+        } catch (e) {
+            console.warn('[Mastery] Failed to merge section stats:', e);
+        }
+    }
+
+    // ── Section Stats (Weak Area Trends) ───────────────────
+
+    /**
+     * Record per-section results after a quiz session.
+     * @param {string} topicId - e.g. 'heart-failure'
+     * @param {Array} sectionResults - [{ sectionId, sectionName, wrong, total }]
+     */
+    function recordSectionStats(topicId, sectionResults) {
+        if (!topicId || !sectionResults || sectionResults.length === 0) return;
+        try {
+            var stats = JSON.parse(localStorage.getItem(SECTION_STATS_KEY) || '{}');
+            if (!stats[topicId]) stats[topicId] = {};
+            var now = Date.now();
+
+            for (var i = 0; i < sectionResults.length; i++) {
+                var sr = sectionResults[i];
+                if (!sr.sectionId || sr.total === 0) continue;
+
+                if (!stats[topicId][sr.sectionId]) {
+                    stats[topicId][sr.sectionId] = {
+                        name: sr.sectionName || sr.sectionId,
+                        wrong: 0,
+                        total: 0,
+                        recentAttempts: []
+                    };
+                }
+                var sec = stats[topicId][sr.sectionId];
+                sec.name = sr.sectionName || sec.name;
+                sec.wrong += sr.wrong;
+                sec.total += sr.total;
+                sec.recentAttempts.push({
+                    timestamp: now,
+                    wrong: sr.wrong,
+                    total: sr.total
+                });
+                // Cap at 30 entries
+                if (sec.recentAttempts.length > 30) {
+                    sec.recentAttempts = sec.recentAttempts.slice(-30);
+                }
+            }
+            localStorage.setItem(SECTION_STATS_KEY, JSON.stringify(stats));
+        } catch (e) {
+            console.warn('[Mastery] Failed to record section stats:', e);
+        }
+    }
+
+    /**
+     * Get weak section trends for a topic within a time window.
+     * @param {string} topicId
+     * @param {number} days - number of days to look back (default 7)
+     * @returns {Array} sorted by error count desc: [{ sectionId, name, wrong, total, errorRate }]
+     */
+    function getSectionTrends(topicId, days) {
+        if (!topicId) return [];
+        days = days || 7;
+        try {
+            var stats = JSON.parse(localStorage.getItem(SECTION_STATS_KEY) || '{}');
+            var topicStats = stats[topicId];
+            if (!topicStats) return [];
+
+            var cutoff = Date.now() - (days * 86400000);
+            var results = [];
+
+            for (var secId in topicStats) {
+                if (!topicStats.hasOwnProperty(secId)) continue;
+                var sec = topicStats[secId];
+                var recentWrong = 0;
+                var recentTotal = 0;
+                var attempts = sec.recentAttempts || [];
+                for (var i = 0; i < attempts.length; i++) {
+                    if (attempts[i].timestamp >= cutoff) {
+                        recentWrong += attempts[i].wrong;
+                        recentTotal += attempts[i].total;
+                    }
+                }
+                if (recentTotal > 0 && recentWrong > 0) {
+                    results.push({
+                        sectionId: secId,
+                        name: sec.name,
+                        wrong: recentWrong,
+                        total: recentTotal,
+                        errorRate: Math.round((recentWrong / recentTotal) * 100)
+                    });
+                }
+            }
+
+            // Sort by wrong count descending
+            results.sort(function (a, b) { return b.wrong - a.wrong; });
+            return results;
+        } catch (e) {
+            console.warn('[Mastery] Failed to get section trends:', e);
+            return [];
+        }
     }
 
     /**
@@ -858,12 +1009,20 @@ var MasteryTracker = (function () {
             confidenceReask = {};
         }
 
+        var sectionStats;
+        try {
+            sectionStats = JSON.parse(localStorage.getItem(SECTION_STATS_KEY) || '{}');
+        } catch (e) {
+            sectionStats = {};
+        }
+
         return {
             mastery_data: _loadAll(),
             streak_data: _loadStreak(),
             retry_queue: retryQueue,
             bookmarks: bookmarks,
-            confidence_reask: confidenceReask
+            confidence_reask: confidenceReask,
+            section_stats: sectionStats
         };
     }
 
@@ -1042,6 +1201,10 @@ var MasteryTracker = (function () {
         addToRetryQueue: addToRetryQueue,
         removeFromRetryQueue: removeFromRetryQueue,
         getRetryQueueIds: getRetryQueueIds,
+
+        // Section stats (weak area trends)
+        recordSectionStats: recordSectionStats,
+        getSectionTrends: getSectionTrends,
 
         // Utility
         resetAll: resetAll

@@ -1762,6 +1762,8 @@ async function exportAuditLog() {
         if (dateFrom) params.append('date_from', dateFrom);
         if (dateTo) params.append('date_to', dateTo);
 
+        // Ensure token is fresh before fetching (raw fetch needed for blob response)
+        await ensureValidToken();
         const token = localStorage.getItem('accessToken');
         const response = await fetch(`${API_URL}/admin/audit-log/export?${params}`, {
             headers: { 'Authorization': `Bearer ${token}` }
@@ -2169,7 +2171,8 @@ async function exportAllData() {
     try {
         showToast('Preparing data export...', 'info');
 
-        // Export audit log
+        // Ensure token is fresh before fetching (raw fetch needed for blob response)
+        await ensureValidToken();
         const token = localStorage.getItem('accessToken');
         const response = await fetch(`${API_URL}/admin/audit-log/export`, {
             headers: { 'Authorization': `Bearer ${token}` }

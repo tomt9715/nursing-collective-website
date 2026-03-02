@@ -731,7 +731,7 @@
     display: none;
     align-items: center;
     justify-content: center;
-    z-index: 10000;
+    z-index: var(--z-modal);
     opacity: 0;
     transition: opacity 0.3s ease;
     padding: 20px;
@@ -929,7 +929,7 @@
     right: 0;
     bottom: 0;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 9999;
+    z-index: var(--z-modal-backdrop);
     display: none;
     align-items: center;
     justify-content: center;
@@ -1124,7 +1124,7 @@
     visibility: hidden;
     transform: translateY(-10px);
     transition: all 0.3s ease;
-    z-index: 10001;
+    z-index: var(--z-dropdown);
 }
 
 .user-dropdown.active {

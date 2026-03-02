@@ -187,11 +187,19 @@ function updateOAuthStatus(user) {
 // Connect OAuth provider
 async function connectOAuthProvider(provider) {
     try {
+        // Ensure token is fresh before making the request
+        const tokenValid = await ensureValidToken();
+        if (!tokenValid) {
+            window.location.href = 'login.html';
+            return;
+        }
+
+        const token = localStorage.getItem('accessToken');
         const response = await fetch(`${API_URL}/auth/oauth/${provider}`, {
             method: 'GET',
-            
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         });
 
@@ -863,6 +871,12 @@ async function saveCroppedImage() {
         var formData = new FormData();
         formData.append('profile_picture', blob, 'profile.webp');
 
+        // Ensure token is fresh before uploading (raw fetch needed for FormData body)
+        var tokenValid = await ensureValidToken();
+        if (!tokenValid) {
+            window.location.href = 'login.html';
+            return;
+        }
         var token = localStorage.getItem('accessToken');
         var response = await fetch(API_URL + '/user/profile-picture/upload', {
             method: 'POST',

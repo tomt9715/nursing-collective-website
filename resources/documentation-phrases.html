@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clinical Documentation Phrases | The Nursing Collective</title>
     <meta name="description" content="Copy-paste charting phrases for nursing documentation. EMR-friendly language for assessments, interventions, patient responses, and teaching.">
+    <link rel="canonical" href="https://thenursingcollective.pro/resources/documentation-phrases.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/resources/documentation-phrases.html">
+    <meta property="og:title" content="Clinical Documentation Phrases | The Nursing Collective">
+    <meta property="og:description" content="Copy-paste charting phrases for nursing documentation. EMR-friendly language for assessments, interventions, patient responses, and teaching.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -877,29 +883,7 @@
     </main>
 
     <!-- Copy to clipboard functionality -->
-    <script>
-        document.querySelectorAll('.phrase-item').forEach(item => {
-            item.addEventListener('click', function() {
-                // Get the text content, replacing placeholder spans with bracket notation
-                let text = this.innerHTML;
-                // Convert placeholder spans to bracketed text
-                text = text.replace(/<span class="placeholder">\[([^\]]+)\]<\/span>/g, '[$1]');
-                // Remove any remaining HTML tags
-                text = text.replace(/<[^>]*>/g, '');
-                // Trim whitespace
-                text = text.trim();
-
-                // Copy to clipboard
-                navigator.clipboard.writeText(text).then(() => {
-                    // Visual feedback
-                    this.classList.add('copied');
-                    setTimeout(() => {
-                        this.classList.remove('copied');
-                    }, 1500);
-                });
-            });
-        });
-    </script>
+    <script src="documentation-phrases-script.js"></script>
 
     <!-- Dark mode script -->
     <script src="../dark-mode.js"></script>

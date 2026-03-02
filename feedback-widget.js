@@ -290,8 +290,8 @@
             observer.observe(target, { attributes: true, attributeFilter: ['class'] });
         }
 
-        // Also re-check periodically for dynamic banners
-        setInterval(checkBanner, 2000);
+        // One-time fallback check for dynamically injected banners
+        setTimeout(checkBanner, 5000);
     }
 
     // Initialize when DOM is ready

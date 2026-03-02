@@ -13,7 +13,7 @@
     background: var(--primary-color);
     color: white;
     padding: 8px 16px;
-    z-index: 10000;
+    z-index: var(--z-skip-link);
     text-decoration: none;
     font-weight: 600;
     border-radius: 0 0 4px 0;
@@ -125,8 +125,29 @@
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
+    /* Aliases used by feedback widget and other components */
+    --text-color: #1a1a1a;              /* General text color (alias) */
+    --text-muted: #6b7280;              /* Muted/hint text */
+    --input-bg: #fafafa;                /* Input field background */
+    --hover-bg: rgba(0, 0, 0, 0.05);   /* Subtle hover highlight */
+
     /* Focus Ring */
     --focus-ring: 0 0 0 3px rgba(46, 134, 171, 0.4);
+
+    /* Z-index scale */
+    --z-content: 1;
+    --z-sticky: 10;
+    --z-navbar: 1000;
+    --z-dropdown: 1100;
+    --z-toast: 2000;
+    --z-mobile-nav: 9000;
+    --z-feedback: 9100;
+    --z-modal-backdrop: 9500;
+    --z-modal: 9600;
+    --z-skip-link: 9700;
+    --z-cookie-banner: 9800;
+    --z-content-gate: 9900;
+    --z-lockscreen: 9999;
 }
 
 /* Dark Mode Colors */
@@ -146,6 +167,12 @@
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4), 0 4px 6px -4px rgb(0 0 0 / 0.4);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.5);
+
+    /* Aliases used by feedback widget and other components */
+    --text-color: #f5f5f5;
+    --text-muted: #9ca3af;
+    --input-bg: #374151;
+    --hover-bg: rgba(255, 255, 255, 0.08);
 
     /* Semantic Status Colors - Dark Mode */
     --danger-color: #ef4444;
@@ -562,7 +589,7 @@ h1, h2, h3, h4, h5, h6 {
         position: fixed;
         right: 20px;
         top: 30px;
-        z-index: 10000;
+        z-index: var(--z-mobile-nav);
         color: var(--text-primary) !important;
     }
 

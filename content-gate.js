@@ -50,26 +50,14 @@
         return normalized.startsWith('/guides/') && normalized.endsWith('.html');
     }
 
-    // Check subscription status
+    // Check subscription status (uses apiService for automatic token refresh)
     async function checkSubscription() {
         if (!isAuthenticated()) {
             return { hasAccess: false, subscription: null };
         }
 
         try {
-            const response = await fetch(`${API_URL}/api/subscription-status`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-                }
-            });
-
-            if (!response.ok) {
-                return { hasAccess: false, subscription: null };
-            }
-
-            const data = await response.json();
+            const data = await apiService.get('/api/subscription-status');
             return {
                 hasAccess: data.has_access,
                 subscription: data.subscription

@@ -10,7 +10,10 @@
     // ── Fetch Discord stats ───────────────────────────────────────
     function fetchStats() {
         fetch(apiBase + '/api/community/stats')
-            .then(function (res) { return res.json(); })
+            .then(function (res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            })
             .then(function (data) {
                 // Hero pills
                 if (data.member_count != null) {
@@ -55,8 +58,8 @@
                     }
                 }
             })
-            .catch(function () {
-                // Stats stay hidden on failure — graceful degradation
+            .catch(function (err) {
+                console.warn('[Community] Stats fetch failed:', err && err.message);
             });
     }
 
@@ -89,7 +92,10 @@
 
     function fetchChannels() {
         fetch(apiBase + '/api/community/channels')
-            .then(function (res) { return res.json(); })
+            .then(function (res) {
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                return res.json();
+            })
             .then(function (data) {
                 var channels = data.channels || [];
                 if (channels.length === 0) return;
@@ -145,8 +151,8 @@
                 grid.innerHTML = html;
                 wrapper.classList.add('visible');
             })
-            .catch(function () {
-                // Featured channels stay hidden on failure
+            .catch(function (err) {
+                console.warn('[Community] Channels fetch failed:', err && err.message);
             });
     }
 

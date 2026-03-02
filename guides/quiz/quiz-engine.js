@@ -291,8 +291,9 @@ class QuizEngine {
             const isHiding = container.style.display !== 'none';
             container.style.display = isHiding ? 'none' : 'block';
             btn.classList.toggle('quiz-explain-btn--active');
+            const label = btn.classList.contains('quiz-explain-btn--result') ? 'Explain with AI' : 'Explain This Question';
             btn.innerHTML = isHiding
-                ? '<i class="fas fa-graduation-cap"></i> Explain This Question'
+                ? '<i class="fas fa-graduation-cap"></i> ' + label
                 : '<i class="fas fa-graduation-cap"></i> Hide Explanation';
             if (questionCard) {
                 if (isHiding) questionCard.classList.remove('quiz-question--has-explain');
@@ -1205,8 +1206,8 @@ class QuizEngine {
 
         feedbackArea.innerHTML = feedbackHtml;
 
-        // Create explain panel only for wrong/partial answers (practice mode)
-        if (this.mode === 'practice' && !isCorrect) {
+        // Create explain panel for all answers (practice mode)
+        if (this.mode === 'practice') {
             const questionCard = this.container.querySelector('.quiz-question');
             if (questionCard) {
                 const oldPanel = questionCard.querySelector('.quiz-explain-panel');
@@ -1530,14 +1531,12 @@ class QuizEngine {
             `;
         }
 
-        // Explain This Question button — only on wrong/partial/don't-know answers
-        if (!isCorrect) {
-            html += `
-                <button class="quiz-explain-btn" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
-                    <i class="fas fa-graduation-cap"></i> Explain This Question
-                </button>
-            `;
-        }
+        // Explain This Question button — available for all answers
+        html += `
+            <button class="quiz-explain-btn" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
+                <i class="fas fa-graduation-cap"></i> Explain This Question
+            </button>
+        `;
 
         html += `</div>`;
         return html;
@@ -1952,6 +1951,13 @@ class QuizEngine {
             `;
         }
 
+        // Explain button on results screen
+        detailHtml += `
+            <button class="quiz-explain-btn quiz-explain-btn--result" data-quiz-action="explain-question" data-question-id="${this._escapeAttr(q.id)}">
+                <i class="fas fa-graduation-cap"></i> Explain with AI
+            </button>
+        `;
+
         detailHtml += `</div>`;
 
         // Flagged icon
@@ -1967,6 +1973,7 @@ class QuizEngine {
                     <i class="fas fa-chevron-down quiz-result-expand-icon"></i>
                 </button>
                 <div class="quiz-result-detail">${detailHtml}</div>
+                <div class="quiz-explain-panel" id="explain-${this._escapeAttr(q.id)}" style="display:none;"></div>
             </div>
         `;
     }

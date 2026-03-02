@@ -980,6 +980,11 @@ body {
     background: linear-gradient(135deg, rgba(124, 58, 237, 0.12), rgba(99, 102, 241, 0.12));
     border-color: rgba(124, 58, 237, 0.3);
 }
+.quiz-explain-btn--result {
+    margin-top: 10px;
+    font-size: 0.82rem;
+    padding: 6px 14px;
+}
 
 .quiz-explain-container {
     margin-top: 14px;

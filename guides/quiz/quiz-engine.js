@@ -1617,6 +1617,7 @@ class QuizEngine {
                     <div class="quiz-results-meta">
                         <span class="quiz-results-meta-item"><i class="fas fa-clock"></i> ${timeStr}</span>
                         <span class="quiz-results-meta-item"><i class="fas fa-${this.mode === 'exam' ? 'clipboard-check' : 'book-open'}"></i> ${this._capitalize(this.mode)} Mode</span>
+                        ${this.isReviewMode ? '<span class="quiz-results-meta-item quiz-results-meta-item--review"><i class="fas fa-redo"></i> Review Pass</span>' : ''}
                     </div>
                 </div>
         `;
@@ -2122,6 +2123,12 @@ class QuizEngine {
     }
 
     _getPerformanceMessage(pct) {
+        // Review-mode-specific messages
+        if (this.isReviewMode) {
+            if (pct === 100) return 'You got every missed question right! Great job reinforcing those concepts.';
+            if (pct >= 70) return 'Nice improvement! A few still need work — review the rationales below.';
+            return 'These questions are tricky. Study the rationales below and try reviewing again.';
+        }
         if (pct === 100) return 'Perfect score! You nailed every single question.';
         if (pct >= 90) return 'Excellent! You\'ve mastered this topic. Keep up the great work!';
         if (this.isAIGenerated) {

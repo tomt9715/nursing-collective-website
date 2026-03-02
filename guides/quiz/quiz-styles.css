@@ -3225,6 +3225,14 @@ body {
     color: var(--quiz-text-light);
 }
 
+.quiz-results-meta-item--review {
+    color: var(--quiz-primary);
+    font-weight: 600;
+}
+.quiz-results-meta-item--review i {
+    color: var(--quiz-primary);
+}
+
 /* ============================================
    SCORE HISTORY SECTION
    ============================================ */

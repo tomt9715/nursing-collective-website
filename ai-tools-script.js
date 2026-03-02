@@ -1646,7 +1646,10 @@
         html = html.replace(/(<\/div>)<\/p>/g, '$1');
         html = html.replace(/(<\/details>)<\/p>/g, '$1');
 
-        // Single newlines -> <br>
+        // Single newlines -> <br> (only inside paragraphs, not between block elements)
+        html = html.replace(/<\/p>\n<p>/g, '</p><p>');
+        html = html.replace(/\n(?=<(?:h[1-3]|ul|ol|div|details|hr|nav|table)[\s>])/g, '');
+        html = html.replace(/(?<=<\/(?:h[1-3]|ul|ol|div|details|hr|nav|table)>)\n/g, '');
         html = html.replace(/\n/g, '<br>');
 
         // Quick Review / Key Takeaways / Score Guide section

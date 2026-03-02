@@ -614,7 +614,7 @@ async function handleRegister(email, password, firstName, lastName) {
                 password,
                 first_name: firstName,
                 last_name: lastName,
-                nursing_program: 'BSN'
+                nursing_program: document.getElementById('nursing-program')?.value || ''
             })
         });
 

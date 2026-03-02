@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 ? 'https://api.thenursingcollective.pro'
                 : 'https://staging-backend-production-365a.up.railway.app');
 
-        const token = localStorage.getItem('access_token');
+        const token = localStorage.getItem('accessToken');
         if (!token) return;
 
         fetch(`${apiUrl}/api/subscription-status`, {

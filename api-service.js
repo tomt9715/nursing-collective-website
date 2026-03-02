@@ -403,7 +403,7 @@ async function createSubscriptionCheckout(planId, email) {
  * @returns {Promise<{upgraded?: boolean, url?: string, plan_id?: string, message?: string}>}
  */
 async function createUpgradeCheckout() {
-    const token = localStorage.getItem('access_token');
+    const token = localStorage.getItem('accessToken');
     if (!token) {
         throw new Error('Not authenticated');
     }

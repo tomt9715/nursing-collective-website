@@ -1849,8 +1849,9 @@ class QuizEngine {
             ringEl.setAttribute('stroke-dashoffset', offset);
 
             // Update color based on current animated percentage
+            // Use style.stroke (inline style) to override CSS class rule
             const currentColor = getColorForPct(Math.round(currentPct));
-            ringEl.setAttribute('stroke', currentColor);
+            ringEl.style.stroke = currentColor;
 
             // Update counter text
             if (valueEl) {
@@ -1867,7 +1868,7 @@ class QuizEngine {
                 // Ensure final values are exact
                 const finalOffset = circumference - (targetPct / 100) * circumference;
                 ringEl.setAttribute('stroke-dashoffset', finalOffset);
-                ringEl.setAttribute('stroke', getColorForPct(targetPct));
+                ringEl.style.stroke = getColorForPct(targetPct);
                 if (valueEl) valueEl.textContent = correctCount + '/' + total;
                 if (pctEl) pctEl.textContent = targetPct + '%';
 

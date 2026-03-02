@@ -1236,15 +1236,13 @@ class QuizEngine {
     }
 
     _showCorrectOverlayAndAdvance(q) {
-        const feedbackArea = document.getElementById('quiz-feedback-area');
-        if (feedbackArea) {
-            feedbackArea.innerHTML = `
-                <div class="quiz-correct-overlay" aria-live="polite">
-                    <i class="fas fa-check-circle"></i>
-                    <span>Correct!</span>
-                </div>
-            `;
+        // Highlight the selected option green with checkmark inline
+        const selectedOpt = this.container.querySelector('.quiz-option--selected');
+        if (selectedOpt) {
+            selectedOpt.classList.remove('quiz-option--selected');
+            selectedOpt.classList.add('quiz-option--correct');
         }
+        this._disableOptions();
 
         this._autoAdvanceTimer = setTimeout(() => {
             this._autoAdvanceTimer = null;

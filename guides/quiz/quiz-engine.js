@@ -64,7 +64,7 @@ class QuizEngine {
     init() {
         this.container.innerHTML = '';
         this.container.addEventListener('click', this._boundClickHandler);
-        this.container.addEventListener('keydown', this._boundKeyHandler);
+        document.addEventListener('keydown', this._boundKeyHandler);
         // Clean up legacy confidence tracker key
         try { localStorage.removeItem('nursingCollective_confidenceReask'); } catch (e) { /* ignore */ }
         this._renderStartScreen();
@@ -443,7 +443,7 @@ class QuizEngine {
         }
         window.removeEventListener('beforeunload', this._boundBeforeUnload);
         this.container.removeEventListener('click', this._boundClickHandler);
-        this.container.removeEventListener('keydown', this._boundKeyHandler);
+        document.removeEventListener('keydown', this._boundKeyHandler);
     }
 
     // ── Event Handling ──────────────────────────────────────
@@ -1220,7 +1220,7 @@ class QuizEngine {
         this._autoAdvanceTimer = setTimeout(() => {
             this._autoAdvanceTimer = null;
             this.nextQuestion();
-        }, 1500);
+        }, 1250);
     }
 
     _handleDontKnow() {

@@ -1061,8 +1061,6 @@ var MasteryTracker = (function () {
                 body: jsonBody,
                 keepalive: true,
                 credentials: 'include'
-            }).then(function () {
-                console.log('[Mastery] Synced to server');
             }).catch(function (err) {
                 console.warn('[Mastery] Server sync failed (non-blocking):', err.message);
             });

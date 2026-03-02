@@ -209,12 +209,10 @@ async function verifyAccess() {
     if (PRINT_TOKEN) {
         const isValidPrintToken = await validatePrintToken(PRINT_TOKEN);
         if (isValidPrintToken) {
-            console.log('Valid print token - allowing access for PDF generation');
             hideLoading();
             return true;
         }
         // Invalid token - fall through to normal auth check
-        console.log('Invalid print token - falling back to normal auth');
     }
 
     // Check if user is logged in
@@ -313,7 +311,6 @@ async function trackDownload(source) {
     try {
         const token = getAuthToken();
         if (!token) {
-            console.log('No auth token - user not logged in, skipping tracking');
             return;
         }
 
@@ -331,9 +328,7 @@ async function trackDownload(source) {
             })
         });
 
-        if (response.ok) {
-            console.log(`Download tracked: ${PRODUCT_ID} from ${source}`);
-        }
+        // Download tracked successfully
     } catch (error) {
         console.error('Failed to track download:', error);
     }

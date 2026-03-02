@@ -251,28 +251,21 @@
 
         // Skip if free content
         if (isFreePath(path)) {
-            console.log('[ContentGate] Free content - no gating required');
             return;
         }
 
         // Only gate guides for now (can expand later)
         if (!isPaidGuide(path)) {
-            console.log('[ContentGate] Not a gated path');
             return;
         }
-
-        console.log('[ContentGate] Checking subscription for:', path);
 
         // Check subscription status
         const { hasAccess } = await checkSubscription();
 
         if (!hasAccess) {
-            console.log('[ContentGate] No access - showing paywall');
             // Store intended destination for redirect after subscription
             sessionStorage.setItem('redirectAfterSubscribe', path);
             showPaywall();
-        } else {
-            console.log('[ContentGate] Access granted');
         }
     }
 

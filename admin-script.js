@@ -2036,20 +2036,7 @@ function renderPagination(containerId, pagination, loadFn) {
     });
 }
 
-function formatDate(dateString) {
-    if (!dateString) return '-';
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-}
-
-function formatDateTime(dateString) {
-    if (!dateString) return '-';
-    const date = new Date(dateString);
-    return date.toLocaleString('en-US', {
-        month: 'short', day: 'numeric', year: 'numeric',
-        hour: 'numeric', minute: '2-digit', hour12: true
-    });
-}
+// formatDate() and formatDateTime() are provided by script.js
 
 function formatActionType(action) {
     const types = {
@@ -2107,12 +2094,7 @@ function getActionBadgeClass(action) {
     return classes[action] || '';
 }
 
-function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
+// escapeHtml() is provided by script.js
 
 // ==================== Toast & Confirm ====================
 

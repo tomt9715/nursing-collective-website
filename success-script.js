@@ -19,8 +19,6 @@ async function initSuccessPage() {
     const orderNumber = urlParams.get('order_number');
     const purchaseType = urlParams.get('type'); // 'subscription' for subscription purchases
 
-    console.log('Success page params:', { sessionId, paymentIntent, orderNumber, purchaseType });
-
     if (!sessionId && !paymentIntent) {
         showErrorState('No payment information found. Please check your email for order confirmation.');
         return;
@@ -80,7 +78,6 @@ async function verifySubscription(sessionId) {
                 // Check if the user now has an active subscription
                 // Use apiCall() for automatic token refresh on 401
                 const data = await apiCall('/api/subscription-status');
-                console.log('Subscription status check:', data);
 
                 if (data.has_access && data.subscription) {
                     showSubscriptionSuccess(data.subscription);
@@ -346,7 +343,6 @@ async function verifyPayment(paymentIntent, sessionId) {
         });
 
         const data = await response.json();
-        console.log('Verify response:', data);
 
         if (data.success && data.order) {
             // Payment verified successfully
@@ -403,7 +399,6 @@ function clearGuestCart() {
     try {
         localStorage.removeItem('florencebot_guest_cart');
         sessionStorage.removeItem('newlyAddedCartItems');
-        console.log('Legacy guest cart and newlyAddedCartItems cleared');
     } catch (e) {
         console.error('Failed to clear guest cart:', e);
     }
@@ -422,35 +417,18 @@ function isUserLoggedIn() {
 }
 
 /**
- * Copy text to clipboard
+ * Copy text to clipboard with button feedback.
+ * Uses the shared copyToClipboard() from script.js for the actual copy.
  */
-async function copyToClipboard(text, buttonElement) {
-    try {
-        await navigator.clipboard.writeText(text);
-        const originalText = buttonElement.innerHTML;
-        buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        buttonElement.classList.add('copied');
-        setTimeout(() => {
-            buttonElement.innerHTML = originalText;
-            buttonElement.classList.remove('copied');
-        }, 2000);
-    } catch (err) {
-        // Fallback for older browsers
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        document.body.appendChild(textArea);
-        textArea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textArea);
-
-        const originalText = buttonElement.innerHTML;
-        buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
-        buttonElement.classList.add('copied');
-        setTimeout(() => {
-            buttonElement.innerHTML = originalText;
-            buttonElement.classList.remove('copied');
-        }, 2000);
-    }
+async function copyWithFeedback(text, buttonElement) {
+    await copyToClipboard(text);
+    const originalText = buttonElement.innerHTML;
+    buttonElement.innerHTML = '<i class="fas fa-check"></i> Copied!';
+    buttonElement.classList.add('copied');
+    setTimeout(() => {
+        buttonElement.innerHTML = originalText;
+        buttonElement.classList.remove('copied');
+    }, 2000);
 }
 
 /**
@@ -685,7 +663,7 @@ function showSuccessState(order) {
     const copyBtn = container.querySelector('#copy-order-btn');
     if (copyBtn && window._orderNumberToCopy) {
         copyBtn.addEventListener('click', function() {
-            copyToClipboard(window._orderNumberToCopy, this);
+            copyWithFeedback(window._orderNumberToCopy, this);
         });
     }
 }
@@ -718,15 +696,7 @@ function showErrorState(message) {
     `;
 }
 
-/**
- * Escape HTML to prevent XSS
- */
-function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
+// escapeHtml() is provided by script.js
 
 // Initialize on DOM ready
 document.addEventListener('DOMContentLoaded', initSuccessPage);

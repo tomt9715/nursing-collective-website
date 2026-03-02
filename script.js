@@ -417,3 +417,65 @@ function updateNavAuthState() {
     }
 }
 
+// ============================================
+// SHARED UTILITIES
+// ============================================
+
+/**
+ * Safely escape HTML to prevent XSS.
+ * Available globally — do NOT duplicate in page scripts.
+ */
+function escapeHtml(text) {
+    if (!text) return '';
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+/**
+ * Format an ISO date string as "Jan 1, 2025".
+ */
+function formatDate(dateString) {
+    if (!dateString) return '';
+    var d = new Date(dateString);
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+/**
+ * Format an ISO date string as "Jan 1, 2025, 3:45 PM".
+ */
+function formatDateTime(dateString) {
+    if (!dateString) return '';
+    var d = new Date(dateString);
+    return d.toLocaleString('en-US', {
+        month: 'short', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: '2-digit', hour12: true
+    });
+}
+
+/**
+ * Copy text to clipboard using modern API with silent fallback.
+ */
+function copyToClipboard(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        return navigator.clipboard.writeText(text);
+    }
+    // Fallback for insecure contexts / older browsers
+    return new Promise(function (resolve, reject) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+            document.execCommand('copy');
+            resolve();
+        } catch (e) {
+            reject(e);
+        } finally {
+            document.body.removeChild(ta);
+        }
+    });
+}
+

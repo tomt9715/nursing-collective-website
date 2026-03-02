@@ -307,9 +307,7 @@ async function loadUserProfile() {
         ];
         if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.pullFromServer === 'function') {
             dataPromises.push(
-                MasteryTracker.pullFromServer().then(function () {
-                    console.log('[Dashboard] Mastery data synced from server');
-                })
+                MasteryTracker.pullFromServer()
             );
         }
         await Promise.all(dataPromises);
@@ -337,10 +335,8 @@ async function syncStudyHistory() {
         // Load server-side study history
         var serverData = {};
         try {
-            console.log('[StudySync] Fetching server study history...');
-            var response = await apiCall('/api/study/history', { method: 'GET' });
+                var response = await apiCall('/api/study/history', { method: 'GET' });
             serverData = response.guide_last_studied || {};
-            console.log('[StudySync] Server has ' + Object.keys(serverData).length + ' guides');
         } catch (e) {
             console.warn('[StudySync] Server fetch failed:', e.message || e);
             return;
@@ -349,7 +345,6 @@ async function syncStudyHistory() {
         // Load localStorage data
         var localData = {};
         try { localData = JSON.parse(localStorage.getItem('guideLastStudied') || '{}'); } catch (e) {}
-        console.log('[StudySync] Local has ' + Object.keys(localData).length + ' guides');
 
         // Merge: for each guide, keep the most recent timestamp
         var merged = Object.assign({}, serverData);
@@ -386,19 +381,16 @@ async function syncStudyHistory() {
 
         // Push merged data back to server if there were differences
         if (hasNewData) {
-            console.log('[StudySync] Pushing ' + Object.keys(merged).length + ' merged guides to server...');
             try {
                 await apiCall('/api/study/history', {
                     method: 'PUT',
                     body: JSON.stringify({ guide_last_studied: merged })
                 });
-                console.log('[StudySync] Push succeeded');
             } catch (e) {
                 console.warn('[StudySync] Push failed:', e.message || e);
             }
         }
 
-        console.log('[StudySync] Synced ' + Object.keys(merged).length + ' guides (hasNewData=' + hasNewData + ')');
     } catch (e) {
         console.warn('[StudySync] Sync failed:', e);
     }
@@ -671,7 +663,6 @@ async function fetchAndCacheQuizSessions() {
     try {
         var resp = await apiCall('/api/quiz/sessions?limit=100', { method: 'GET' });
         _cachedQuizSessions = resp.sessions || [];
-        console.log('[Dashboard] Fetched ' + _cachedQuizSessions.length + ' quiz sessions');
     } catch (e) {
         console.warn('[Dashboard] Failed to fetch quiz sessions:', e.message || e);
         _cachedQuizSessions = [];
@@ -1238,15 +1229,4 @@ function formatRelativeTime(dateString) {
     return formatDate(dateString);
 }
 
-function formatDate(dateString) {
-    if (!dateString) return '';
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-}
-
-function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
+// escapeHtml() and formatDate() are provided by script.js

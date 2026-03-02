@@ -402,7 +402,7 @@
         if (backdropEl) backdropEl.addEventListener('click', closePanel);
 
         // Panel actions
-        if (panelCopyBtn) panelCopyBtn.addEventListener('click', copyToClipboard);
+        if (panelCopyBtn) panelCopyBtn.addEventListener('click', copyToClipboardLocal);
         if (panelPrintBtn) panelPrintBtn.addEventListener('click', printPanel);
         if (panelRegenerateBtn) panelRegenerateBtn.addEventListener('click', regenerateGeneration);
         if (panelQuizBtn) panelQuizBtn.addEventListener('click', takeAsQuiz);
@@ -1430,10 +1430,10 @@
         setTimeout(restore, 5000); // fallback if afterprint doesn't fire
     }
 
-    function copyToClipboard() {
+    function copyToClipboardLocal() {
         if (!currentMarkdown) return;
 
-        navigator.clipboard.writeText(currentMarkdown).then(function () {
+        window.copyToClipboard(currentMarkdown).then(function () {
             if (panelCopyBtn) {
                 var originalHTML = panelCopyBtn.innerHTML;
                 panelCopyBtn.innerHTML = '<i class="fas fa-check"></i><span class="ai-toolbar-label">Copied!</span>';
@@ -1441,15 +1441,7 @@
             }
             showToast('Copied to clipboard!', 'success');
         }).catch(function () {
-            var textarea = document.createElement('textarea');
-            textarea.value = currentMarkdown;
-            textarea.style.position = 'fixed';
-            textarea.style.left = '-9999px';
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            showToast('Copied to clipboard!', 'success');
+            showToast('Failed to copy', 'error');
         });
     }
 

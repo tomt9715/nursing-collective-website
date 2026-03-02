@@ -1,10 +1,6 @@
 // Auth Callback Script
 // Handles OAuth callback processing for Google/Discord sign in
 
-// DEBUG: Log that auth-callback.js is running
-console.log('=== AUTH CALLBACK SCRIPT LOADED ===');
-console.log('Auth callback: Current URL:', window.location.href);
-
 // Parse URL parameters
 // Note: refresh_token is now set as an httpOnly cookie by the backend, not in URL
 const urlParams = new URLSearchParams(window.location.search);
@@ -70,8 +66,6 @@ function initAuthCallback() {
     }
     // Success - store access token and redirect (refresh token is in httpOnly cookie)
     else {
-        console.log('OAuth callback successful, storing access token');
-
         try {
             // Store access token (refresh token is set as httpOnly cookie by backend)
             localStorage.setItem('accessToken', accessToken);
@@ -90,7 +84,6 @@ function initAuthCallback() {
                 if (data.user) {
                     // Store user data
                     localStorage.setItem('user', JSON.stringify(data.user));
-                    console.log('User data stored:', data.user.email);
 
                     // Determine redirect URL based on priority:
                     // 1. Stored redirect from before OAuth (e.g., checkout)
@@ -105,8 +98,6 @@ function initAuthCallback() {
                     } else if (orderToClaim) {
                         redirectUrl = `dashboard.html?order=${encodeURIComponent(orderToClaim)}`;
                     }
-
-                    console.log('Redirecting to:', redirectUrl);
 
                     // Redirect with minimum loading time
                     redirectWithMinTime(() => {

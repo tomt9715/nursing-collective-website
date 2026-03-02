@@ -41,7 +41,7 @@ function showAccessDenied(message, showLoginButton = true) {
                 <i class="fas fa-lock"></i>
             </div>
             <h2>Access Restricted</h2>
-            <p>${message}</p>
+            <p class="access-denied-message"></p>
             <div class="access-denied-actions">
                 ${showLoginButton ? `
                     <a href="../login.html?redirect=guides/${PRODUCT_ID}" class="btn-primary">
@@ -57,6 +57,9 @@ function showAccessDenied(message, showLoginButton = true) {
             </div>
         </div>
     `;
+
+    // Set message text safely (avoid XSS)
+    overlay.querySelector('.access-denied-message').textContent = message;
 
     // Add styles for the overlay
     const style = document.createElement('style');

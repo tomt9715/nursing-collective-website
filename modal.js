@@ -50,6 +50,8 @@ function showAlert(title, message, type = 'info') {
     };
 
     const icon = icons[type] || icons.info;
+    const safeTitle = escapeModalHtml(title);
+    const safeMessage = escapeModalHtml(message);
 
     const overlay = document.getElementById('custom-modal-overlay');
     overlay.innerHTML = `
@@ -58,10 +60,10 @@ function showAlert(title, message, type = 'info') {
                 <div class="custom-modal-icon ${type}">
                     <i class="fas ${icon}"></i>
                 </div>
-                <h2 class="custom-modal-title">${title}</h2>
+                <h2 class="custom-modal-title">${safeTitle}</h2>
             </div>
             <div class="custom-modal-body">
-                <p class="custom-modal-message">${message}</p>
+                <p class="custom-modal-message">${safeMessage}</p>
             </div>
             <div class="custom-modal-footer">
                 <button class="custom-modal-btn primary" id="modal-ok-btn">
@@ -105,6 +107,10 @@ function showConfirm(title, message, type = 'question', confirmText = 'Confirm',
     };
 
     const icon = icons[type] || icons.question;
+    const safeTitle = escapeModalHtml(title);
+    const safeMessage = escapeModalHtml(message);
+    const safeConfirmText = escapeModalHtml(confirmText);
+    const safeCancelText = escapeModalHtml(cancelText);
 
     const overlay = document.getElementById('custom-modal-overlay');
     overlay.innerHTML = `
@@ -113,19 +119,19 @@ function showConfirm(title, message, type = 'question', confirmText = 'Confirm',
                 <div class="custom-modal-icon ${type}">
                     <i class="fas ${icon}"></i>
                 </div>
-                <h2 class="custom-modal-title">${title}</h2>
+                <h2 class="custom-modal-title">${safeTitle}</h2>
             </div>
             <div class="custom-modal-body">
-                <p class="custom-modal-message">${message}</p>
+                <p class="custom-modal-message">${safeMessage}</p>
             </div>
             <div class="custom-modal-footer">
                 <button class="custom-modal-btn secondary" id="modal-cancel-btn">
                     <i class="fas fa-times"></i>
-                    ${cancelText}
+                    ${safeCancelText}
                 </button>
                 <button class="custom-modal-btn ${type === 'danger' ? 'danger' : 'primary'}" id="modal-confirm-btn">
                     <i class="fas fa-check"></i>
-                    ${confirmText}
+                    ${safeConfirmText}
                 </button>
             </div>
         </div>
@@ -163,6 +169,8 @@ function showConfirm(title, message, type = 'question', confirmText = 'Confirm',
 function showSuccess(message, duration = 3000) {
     initializeModalSystem();
 
+    const safeMessage = escapeModalHtml(message);
+
     const overlay = document.getElementById('custom-modal-overlay');
     overlay.innerHTML = `
         <div class="custom-modal">
@@ -173,7 +181,7 @@ function showSuccess(message, duration = 3000) {
                 <h2 class="custom-modal-title">Success</h2>
             </div>
             <div class="custom-modal-body">
-                <p class="custom-modal-message">${message}</p>
+                <p class="custom-modal-message">${safeMessage}</p>
             </div>
         </div>
     `;
@@ -188,6 +196,14 @@ function showSuccess(message, duration = 3000) {
 // Error notification (manual dismiss)
 function showError(message, title = 'Error') {
     return showAlert(title, message, 'error');
+}
+
+// Escape HTML to prevent XSS in modal content
+function escapeModalHtml(str) {
+    if (typeof str !== 'string') return '';
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
 }
 
 // Initialize modal system when DOM is ready

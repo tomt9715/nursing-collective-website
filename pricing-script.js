@@ -26,7 +26,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const toast = document.createElement('div');
         toast.className = `pricing-toast ${type}`;
         const icon = type === 'error' ? 'fa-exclamation-circle' : type === 'success' ? 'fa-check-circle' : 'fa-info-circle';
-        toast.innerHTML = `<i class="fas ${icon}"></i> <span>${message}</span>`;
+        toast.innerHTML = `<i class="fas ${icon}"></i> <span></span>`;
+        toast.querySelector('span').textContent = message;
         container.appendChild(toast);
 
         setTimeout(() => {

@@ -45,13 +45,16 @@
             '<div class="quiz-access-denied-content">' +
                 '<div class="quiz-access-denied-icon"><i class="fas fa-lock"></i></div>' +
                 '<h2>Access Restricted</h2>' +
-                '<p>' + message + '</p>' +
+                '<p class="quiz-access-denied-msg"></p>' +
                 '<div class="quiz-access-denied-actions">' +
                     (showLogin ? '<a href="../../login.html?redirect=guides/' + PRODUCT_ID + '" class="quiz-btn quiz-btn--primary"><i class="fas fa-sign-in-alt"></i> Sign In</a>' : '') +
                     '<a href="../../dashboard.html" class="quiz-btn quiz-btn--secondary"><i class="fas fa-arrow-left"></i> Go to Dashboard</a>' +
                     '<a href="../../pricing.html" class="quiz-btn quiz-btn--secondary"><i class="fas fa-rocket"></i> View Plans</a>' +
                 '</div>' +
             '</div>';
+
+        // Set message text safely (avoid XSS)
+        overlay.querySelector('.quiz-access-denied-msg').textContent = message;
 
         // Inline the overlay styles (style element, not inline attribute — CSP allows 'unsafe-inline' for styles)
         var style = document.createElement('style');

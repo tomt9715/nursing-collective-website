@@ -504,15 +504,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Forgot password error:', error);
                 messageDiv.style.display = 'block';
                 messageDiv.className = 'error-message error';
+                const safeErrMsg = document.createElement('span');
+                safeErrMsg.textContent = error.message || 'Failed to send reset email. Please try again.';
                 messageDiv.innerHTML = `
                     <i class="fas fa-exclamation-circle"></i>
                     <div>
-                        <span>${error.message || 'Failed to send reset email. Please try again.'}</span>
+                        <span></span>
                         <button class="retry-button" id="forgot-retry-btn">
                             <i class="fas fa-redo"></i> Try Again
                         </button>
                     </div>
                 `;
+                messageDiv.querySelector('span').textContent = safeErrMsg.textContent;
                 // Attach event listener to retry button
                 const retryBtn = document.getElementById('forgot-retry-btn');
                 if (retryBtn) {

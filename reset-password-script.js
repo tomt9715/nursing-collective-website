@@ -149,9 +149,11 @@ function showMessage(message, type) {
     if (messageDiv) {
         messageDiv.style.display = 'block';
         messageDiv.className = type === 'success' ? 'success-message' : 'error-message';
+        const iconClass = type === 'success' ? 'check-circle' : 'exclamation-circle';
         messageDiv.innerHTML = `
-            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
-            <span>${message}</span>
+            <i class="fas fa-${iconClass}"></i>
+            <span></span>
         `;
+        messageDiv.querySelector('span').textContent = message;
     }
 }

@@ -1249,7 +1249,7 @@ class QuizEngine {
         this._autoAdvanceTimer = setTimeout(() => {
             this._autoAdvanceTimer = null;
             this.nextQuestion();
-        }, 1250);
+        }, 1000);
     }
 
     _handleDontKnow() {

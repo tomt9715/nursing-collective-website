@@ -1960,12 +1960,9 @@ class QuizEngine {
         const wasFlagged = this.flaggedQuestions.has(q.id);
         const flagHtml = wasFlagged ? '<span class="quiz-result-flag" title="Flagged for review"><i class="fas fa-flag"></i></span>' : '';
 
-        // Auto-expand wrong/partial answers so rationale is visible
-        const autoExpand = !isCorrect || isPartial;
-
         return `
-            <div class="quiz-result-item ${autoExpand ? 'quiz-result-item--expanded' : ''}">
-                <button class="quiz-result-summary" aria-expanded="${autoExpand}">
+            <div class="quiz-result-item quiz-result-item--expanded">
+                <button class="quiz-result-summary" aria-expanded="true">
                     <span class="quiz-result-icon ${iconClass}"><i class="fas ${icon}"></i></span>
                     <span class="quiz-result-stem">${this._escapeHtml(truncatedStem)}</span>
                     ${flagHtml}

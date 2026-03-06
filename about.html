@@ -140,7 +140,7 @@
             flex: 1;
         }
 
-        /* What We Offer grid — 5 items, 3+2 layout */
+        /* What We Offer grid — 7 items, 3+3+1 layout */
         .offer-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -164,7 +164,9 @@
         .offer-item:nth-child(2) { border-left-color: var(--secondary-color); }
         .offer-item:nth-child(3) { border-left-color: #6366f1; }
         .offer-item:nth-child(4) { border-left-color: var(--accent-color); }
-        .offer-item:nth-child(5) { border-left-color: #10b981; }
+        .offer-item:nth-child(5) { border-left-color: #8b5cf6; }
+        .offer-item:nth-child(6) { border-left-color: #10b981; }
+        .offer-item:nth-child(7) { border-left-color: #06b6d4; }
 
         .offer-item h3 {
             color: var(--text-primary);
@@ -532,18 +534,28 @@
                     <div class="offer-grid">
                         <div class="offer-item">
                             <h3><i class="fas fa-file-alt"></i> Study Guides</h3>
-                            <p>17+ comprehensive, clinically-focused guides covering cardiovascular, respiratory, neurological, and more.</p>
-                            <a href="resources.html" class="offer-link">Browse guides <i class="fas fa-arrow-right"></i></a>
+                            <p>20+ comprehensive, clinically-focused guides covering cardiovascular, respiratory, neurological, and more.</p>
+                            <a href="guides.html" class="offer-link">Browse study guides <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <div class="offer-item">
                             <h3><i class="fas fa-brain"></i> Quiz Bank</h3>
                             <p>NCLEX-style practice questions with adaptive difficulty, mastery tracking, and multiple question types.</p>
-                            <a href="https://learn.thenursingcollective.pro" class="offer-link">Try the quiz bank <i class="fas fa-arrow-right"></i></a>
+                            <a href="pricing.html" class="offer-link">Included with all plans <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="offer-item">
+                            <h3><i class="fas fa-graduation-cap"></i> Free Resources</h3>
+                            <p>17 free survival guides and quick reference tools — lab values, vital signs, medications, clinical checklists, and study strategies.</p>
+                            <a href="resources.html" class="offer-link">Explore free resources <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <div class="offer-item">
                             <h3><i class="fas fa-robot"></i> FlorenceBot</h3>
                             <p>An AI-powered study assistant on Discord for instant lab values, medication info, and clinical references.</p>
                             <a href="about-florencebot.html" class="offer-link">Learn about FlorenceBot <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                        <div class="offer-item">
+                            <h3><i class="fas fa-wand-magic-sparkles"></i> AI Study Tools</h3>
+                            <p>Upload your lecture notes and get AI-generated summaries, NCLEX-style practice questions tailored to your material, and personalized gap analysis.</p>
+                            <a href="pricing.html" class="offer-link">See AI-Powered plans <i class="fas fa-arrow-right"></i></a>
                         </div>
                         <div class="offer-item">
                             <h3><i class="fas fa-users"></i> Community</h3>
@@ -562,6 +574,9 @@
             <div class="about-cta">
                 <a href="pricing.html" class="btn btn-primary">
                     <i class="fas fa-crown"></i> View Plans
+                </a>
+                <a href="resources.html" class="btn btn-secondary">
+                    <i class="fas fa-graduation-cap"></i> Explore Free Resources
                 </a>
                 <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-secondary" target="_blank" rel="noopener">
                     <i class="fab fa-discord"></i> Join Our Community

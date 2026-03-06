@@ -143,6 +143,9 @@
                 <button class="admin-sidebar-item" data-admin-section="quiz-reports">
                     <i class="fas fa-flag"></i> <span>Quiz Reports</span>
                 </button>
+                <button class="admin-sidebar-item" data-admin-section="feedback">
+                    <i class="fas fa-comment-dots"></i> <span>Feedback</span>
+                </button>
                 <button class="admin-sidebar-item" data-admin-section="guide-index">
                     <i class="fas fa-book-medical"></i> <span>Guide Index</span>
                 </button>
@@ -480,6 +483,61 @@
                     </div>
                     <!-- Pagination -->
                     <div class="pagination-controls" id="quiz-reports-pagination"></div>
+                </div>
+            </div>
+
+            <!-- ===================== -->
+            <!-- SECTION: Feedback     -->
+            <!-- ===================== -->
+            <div class="admin-section-content" id="section-feedback">
+                <div class="admin-section">
+                    <div class="section-header">
+                        <h3><i class="fas fa-comment-dots"></i> Feedback &amp; Bug Reports</h3>
+                        <span class="user-count" id="feedback-count">0 items</span>
+                    </div>
+                    <!-- Filters -->
+                    <div class="admin-filter-row">
+                        <select id="feedback-type-filter" class="form-select admin-filter-select">
+                            <option value="all">All Types</option>
+                            <option value="bug">Bug Reports</option>
+                            <option value="feedback">Feedback</option>
+                        </select>
+                        <select id="feedback-status-filter" class="form-select admin-filter-select">
+                            <option value="new">New</option>
+                            <option value="reviewed">Reviewed</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="all">All</option>
+                        </select>
+                        <button class="btn btn-primary btn-sm" id="feedback-filter-btn">
+                            <i class="fas fa-filter"></i> Filter
+                        </button>
+                    </div>
+                    <!-- Desktop Table -->
+                    <div class="feedback-table-container desktop-only">
+                        <table class="admin-table" id="feedback-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Type</th>
+                                    <th>Message</th>
+                                    <th>Category</th>
+                                    <th>User</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="feedback-table-body">
+                                <tr><td colspan="8" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading feedback...</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Mobile Cards -->
+                    <div class="feedback-mobile-cards mobile-only" id="feedback-mobile-cards">
+                        <div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading feedback...</div>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="pagination-controls" id="feedback-pagination"></div>
                 </div>
             </div>
 
@@ -1027,6 +1085,21 @@
             </div>
 
         </main>
+    </div>
+
+    <!-- Feedback Detail Modal -->
+    <div class="modal-overlay" id="feedback-detail-modal">
+        <div class="modal-content admin-modal-narrow">
+            <div class="modal-header">
+                <h2><i class="fas fa-comment-dots"></i> Feedback Details</h2>
+                <button class="modal-close" id="close-feedback-modal-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="feedback-modal-body">
+                <!-- Populated by JS -->
+            </div>
+        </div>
     </div>
 
     <!-- Quiz Report Detail Modal -->

@@ -19,6 +19,7 @@ const ADMIN_SECTIONS = {
     'subscriptions':    { title: 'Subscriptions',      icon: 'fa-id-badge',       loader: 'loadSubscriptions' },
     'deleted-accounts': { title: 'Deleted Accounts',   icon: 'fa-user-slash',     loader: 'loadDeletedAccounts' },
     'quiz-reports':     { title: 'Quiz Reports',       icon: 'fa-flag',           loader: 'loadQuizReports' },
+    'feedback':         { title: 'Feedback',           icon: 'fa-comment-dots',   loader: 'loadFeedback' },
     'guide-index':      { title: 'Guide Index',        icon: 'fa-book-medical',   loader: 'loadGuideIndex' },
     'ai-usage':         { title: 'AI Usage',           icon: 'fa-robot',          loader: 'loadAIUsage' },
     'credits':          { title: 'Credit Management',  icon: 'fa-coins',          loader: null },
@@ -395,6 +396,11 @@ function setupEventListeners() {
     const quizReportsFilterBtn = document.getElementById('quiz-reports-filter-btn');
     if (quizReportsFilterBtn) {
         quizReportsFilterBtn.addEventListener('click', () => loadQuizReports(1));
+    }
+
+    const feedbackFilterBtn = document.getElementById('feedback-filter-btn');
+    if (feedbackFilterBtn) {
+        feedbackFilterBtn.addEventListener('click', () => loadFeedback(1));
     }
 
     // Test email buttons
@@ -1791,6 +1797,7 @@ async function exportAuditLog() {
 // ==================== Quiz Reports Tab ====================
 
 let quizReportsPage = 1;
+let feedbackPage = 1;
 
 async function loadQuizReports(page = 1) {
     quizReportsPage = page;
@@ -2009,6 +2016,215 @@ async function resolveQuizReport(reportId, status) {
     } catch (error) {
         console.error('Error resolving quiz report:', error);
         showToast(error.message || 'Failed to update report', 'error');
+    }
+}
+
+// ==================== Feedback Management ====================
+
+async function loadFeedback(page = 1) {
+    feedbackPage = page;
+    const tbody = document.getElementById('feedback-table-body');
+    const mobileContainer = document.getElementById('feedback-mobile-cards');
+
+    tbody.innerHTML = '<tr><td colspan="8" class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading feedback...</td></tr>';
+    if (mobileContainer) {
+        mobileContainer.innerHTML = '<div class="loading-cell"><i class="fas fa-spinner fa-spin"></i> Loading feedback...</div>';
+    }
+
+    try {
+        const typeFilter = document.getElementById('feedback-type-filter')?.value || 'all';
+        const statusFilter = document.getElementById('feedback-status-filter')?.value || 'new';
+        const params = new URLSearchParams({
+            page: page,
+            per_page: 25,
+            type: typeFilter,
+            status: statusFilter
+        });
+
+        const data = await apiCall(`/admin/feedback?${params}`);
+
+        const items = data.feedback || [];
+        const total = data.total || 0;
+
+        document.getElementById('feedback-count').textContent = `${total} item${total !== 1 ? 's' : ''}`;
+
+        if (items.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="8" class="loading-cell">No feedback found</td></tr>';
+            if (mobileContainer) {
+                mobileContainer.innerHTML = '<div class="loading-cell">No feedback found</div>';
+            }
+            document.getElementById('feedback-pagination').innerHTML = '';
+            return;
+        }
+
+        const typeBadge = (type) => {
+            if (type === 'bug') return '<span class="badge-status" style="background: #fef2f2; color: #dc2626;"><i class="fas fa-bug"></i> Bug</span>';
+            return '<span class="badge-status" style="background: #fffbeb; color: #d97706;"><i class="fas fa-star"></i> Feedback</span>';
+        };
+
+        const statusBadge = (status) => {
+            switch (status) {
+                case 'new': return '<span class="badge-status" style="background: #f59e0b; color: #fff;"><i class="fas fa-circle"></i> New</span>';
+                case 'reviewed': return '<span class="badge-status" style="background: #3b82f6; color: #fff;"><i class="fas fa-eye"></i> Reviewed</span>';
+                case 'resolved': return '<span class="badge-status active"><i class="fas fa-check"></i> Resolved</span>';
+                default: return `<span class="badge-status">${escapeHtml(status)}</span>`;
+            }
+        };
+
+        const truncate = (str, len) => str && str.length > len ? str.substring(0, len) + '...' : (str || '');
+
+        // Desktop table
+        tbody.innerHTML = items.map(item => `
+            <tr>
+                <td>#${item.id}</td>
+                <td>${typeBadge(item.type)}</td>
+                <td style="max-width: 250px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${escapeHtml(truncate(item.message, 80))}</td>
+                <td>${escapeHtml(item.category || '—')}</td>
+                <td>${escapeHtml(item.user_email)}</td>
+                <td>${statusBadge(item.status)}</td>
+                <td>${formatDate(item.created_at)}</td>
+                <td>
+                    <div class="table-actions">
+                        <button class="action-btn primary" data-view-feedback="${item.id}">
+                            <i class="fas fa-eye"></i> View
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `).join('');
+
+        // Mobile cards
+        if (mobileContainer) {
+            mobileContainer.innerHTML = items.map(item => `
+                <div class="audit-card" style="cursor: pointer;" data-view-feedback-card="${item.id}">
+                    <div class="audit-card-header">
+                        <span class="audit-card-action">${typeBadge(item.type)}</span>
+                        <span class="audit-card-time">${formatDate(item.created_at)}</span>
+                    </div>
+                    <div class="audit-card-body">
+                        ${escapeHtml(truncate(item.message, 100))}
+                        <br><small>${escapeHtml(item.user_email)}${item.category ? ' &middot; ' + escapeHtml(item.category) : ''}</small>
+                    </div>
+                    <div style="margin-top: 8px;">${statusBadge(item.status)}</div>
+                </div>
+            `).join('');
+
+            mobileContainer.querySelectorAll('[data-view-feedback-card]').forEach(card => {
+                card.addEventListener('click', function() {
+                    openFeedbackDetail(parseInt(this.dataset.viewFeedbackCard), items);
+                });
+            });
+        }
+
+        // Desktop view handlers
+        tbody.querySelectorAll('[data-view-feedback]').forEach(btn => {
+            btn.addEventListener('click', function() {
+                openFeedbackDetail(parseInt(this.dataset.viewFeedback), items);
+            });
+        });
+
+        // Pagination
+        const totalPages = data.pages || Math.ceil(total / 25);
+        if (totalPages > 1) {
+            renderPagination('feedback-pagination', {
+                page: page,
+                pages: totalPages,
+                has_prev: page > 1,
+                has_next: page < totalPages
+            }, loadFeedback);
+        } else {
+            document.getElementById('feedback-pagination').innerHTML = '';
+        }
+    } catch (error) {
+        console.error('Error loading feedback:', error);
+        tbody.innerHTML = '<tr><td colspan="8" class="loading-cell">Error loading feedback</td></tr>';
+        if (mobileContainer) {
+            mobileContainer.innerHTML = '<div class="loading-cell">Error loading feedback</div>';
+        }
+    }
+}
+
+function openFeedbackDetail(feedbackId, items) {
+    const item = items.find(f => f.id === feedbackId);
+    if (!item) return;
+
+    const modal = document.getElementById('feedback-detail-modal');
+    const body = document.getElementById('feedback-modal-body');
+
+    const ratingStars = (rating) => {
+        if (!rating) return 'N/A';
+        return Array.from({ length: 5 }, (_, i) =>
+            `<i class="fas fa-star" style="color: ${i < rating ? '#f59e0b' : '#e5e7eb'}; font-size: 14px;"></i>`
+        ).join('');
+    };
+
+    body.innerHTML = `
+        <div style="margin-bottom: 16px;">
+            <table style="width: 100%; font-size: 14px;">
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666); width: 120px;">ID</td><td style="padding: 6px 0;"><strong>#${item.id}</strong></td></tr>
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Type</td><td style="padding: 6px 0; font-weight: 600;">${item.type === 'bug' ? '<i class="fas fa-bug" style="color:#dc2626"></i> Bug Report' : '<i class="fas fa-star" style="color:#d97706"></i> Feedback'}</td></tr>
+                ${item.category ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Category</td><td style="padding: 6px 0;">${escapeHtml(item.category)}</td></tr>` : ''}
+                ${item.type === 'feedback' ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Rating</td><td style="padding: 6px 0;">${ratingStars(item.rating)}</td></tr>` : ''}
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">User</td><td style="padding: 6px 0;">${escapeHtml(item.user_email)}</td></tr>
+                ${item.page_url ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Page</td><td style="padding: 6px 0; word-break: break-all; font-size: 13px;">${escapeHtml(item.page_url)}</td></tr>` : ''}
+                ${item.screen_size ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Screen</td><td style="padding: 6px 0;">${escapeHtml(item.screen_size)}</td></tr>` : ''}
+                ${item.browser_info ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Browser</td><td style="padding: 6px 0; font-size: 12px; word-break: break-all;">${escapeHtml(item.browser_info)}</td></tr>` : ''}
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Submitted</td><td style="padding: 6px 0;">${formatDateTime(item.created_at)}</td></tr>
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Status</td><td style="padding: 6px 0;">${escapeHtml(item.status)}</td></tr>
+            </table>
+        </div>
+
+        <div style="background: var(--background-color-alt, #f8f9fa); border-left: 3px solid var(--primary-color, #2E86AB); padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 14px;">
+            <strong style="font-size: 12px; color: var(--text-color-muted, #666); display: block; margin-bottom: 4px;">Message</strong>
+            <div style="white-space: pre-wrap;">${escapeHtml(item.message)}</div>
+        </div>
+
+        ${item.steps_to_reproduce ? `
+        <div style="background: var(--background-color-alt, #f8f9fa); border-left: 3px solid #f59e0b; padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 14px;">
+            <strong style="font-size: 12px; color: var(--text-color-muted, #666); display: block; margin-bottom: 4px;">Steps to Reproduce</strong>
+            <div style="white-space: pre-wrap;">${escapeHtml(item.steps_to_reproduce)}</div>
+        </div>` : ''}
+
+        ${item.status !== 'resolved' ? `
+        <div style="border-top: 1px solid var(--border-color, #e5e7eb); padding-top: 16px; margin-top: 16px;">
+            <div style="display: flex; gap: 8px;">
+                ${item.status === 'new' ? `
+                <button class="btn btn-secondary btn-sm" id="feedback-mark-reviewed-btn" data-feedback-id="${item.id}">
+                    <i class="fas fa-eye"></i> Mark Reviewed
+                </button>` : ''}
+                <button class="btn btn-primary btn-sm" id="feedback-resolve-btn" data-feedback-id="${item.id}">
+                    <i class="fas fa-check"></i> Resolve
+                </button>
+            </div>
+        </div>` : ''}
+    `;
+
+    modal.classList.add('active');
+
+    // Attach status handlers
+    const reviewedBtn = document.getElementById('feedback-mark-reviewed-btn');
+    if (reviewedBtn) {
+        reviewedBtn.addEventListener('click', () => updateFeedbackStatus(item.id, 'reviewed'));
+    }
+    const resolveBtn = document.getElementById('feedback-resolve-btn');
+    if (resolveBtn) {
+        resolveBtn.addEventListener('click', () => updateFeedbackStatus(item.id, 'resolved'));
+    }
+}
+
+async function updateFeedbackStatus(feedbackId, status) {
+    try {
+        await apiCall(`/admin/feedback/${feedbackId}/status`, {
+            method: 'PUT',
+            body: JSON.stringify({ status })
+        });
+
+        showToast(`Feedback ${status}`, 'success');
+        document.getElementById('feedback-detail-modal').classList.remove('active');
+        loadFeedback(feedbackPage);
+    } catch (error) {
+        console.error('Error updating feedback status:', error);
+        showToast(error.message || 'Failed to update feedback', 'error');
     }
 }
 
@@ -2309,6 +2525,13 @@ document.addEventListener('DOMContentLoaded', function() {
     if (closeQuizReportModalBtn) {
         closeQuizReportModalBtn.addEventListener('click', () => {
             document.getElementById('quiz-report-detail-modal').classList.remove('active');
+        });
+    }
+
+    const closeFeedbackModalBtn = document.getElementById('close-feedback-modal-btn');
+    if (closeFeedbackModalBtn) {
+        closeFeedbackModalBtn.addEventListener('click', () => {
+            document.getElementById('feedback-detail-modal').classList.remove('active');
         });
     }
 

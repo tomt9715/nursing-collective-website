@@ -7,7 +7,7 @@
     'use strict';
 
     let panelOpen = false;
-    let currentTab = 'feedback'; // 'feedback' or 'bug'
+    let currentTab = 'bug'; // 'bug' or 'feedback'
     let selectedRating = 0;
 
     // Build the widget DOM
@@ -46,15 +46,15 @@
                 <button class="feedback-close" aria-label="Close feedback panel">&times;</button>
             </div>
             <div class="feedback-tabs">
-                <button class="feedback-tab active" data-tab="feedback">
+                <button class="feedback-tab" data-tab="feedback">
                     <i class="fas fa-star"></i> Feedback
                 </button>
-                <button class="feedback-tab" data-tab="bug">
+                <button class="feedback-tab active" data-tab="bug">
                     <i class="fas fa-bug"></i> Bug Report
                 </button>
             </div>
             <div class="feedback-body">
-                ${buildFeedbackForm()}
+                ${buildBugForm()}
             </div>
         `;
     }
@@ -93,8 +93,10 @@
                     <option value="performance">Slow / Performance</option>
                     <option value="other">Other</option>
                 </select>
-                <label class="feedback-label">Describe the bug</label>
-                <textarea class="feedback-textarea" placeholder="What happened? What did you expect to happen?" maxlength="5000" required></textarea>
+                <label class="feedback-label">What happened?</label>
+                <textarea class="feedback-textarea" placeholder="Describe the bug — what did you expect to happen?" maxlength="5000" required></textarea>
+                <label class="feedback-label">Steps to reproduce <span style="font-weight:400;color:var(--text-light,#9ca3af)">(optional)</span></label>
+                <textarea class="feedback-textarea feedback-textarea-sm" id="bug-steps" placeholder="What were you doing when this happened?" maxlength="2000"></textarea>
                 <button type="submit" class="feedback-submit">
                     <i class="fas fa-bug"></i> Report Bug
                 </button>
@@ -203,7 +205,8 @@
             type: currentTab,
             message: message,
             page_url: window.location.href,
-            browser_info: navigator.userAgent.substring(0, 500)
+            browser_info: navigator.userAgent.substring(0, 500),
+            screen_size: window.innerWidth + 'x' + window.innerHeight
         };
 
         if (currentTab === 'feedback') {
@@ -211,6 +214,8 @@
         } else {
             const catEl = document.getElementById('bug-category');
             payload.category = catEl ? catEl.value : null;
+            const stepsEl = document.getElementById('bug-steps');
+            payload.steps_to_reproduce = stepsEl ? stepsEl.value.trim() : null;
         }
 
         try {
@@ -259,13 +264,13 @@
         setTimeout(() => {
             if (success) closePanel();
             // Reset form
-            currentTab = 'feedback';
+            currentTab = 'bug';
             selectedRating = 0;
             const body = document.querySelector('.feedback-body');
-            if (body) body.innerHTML = buildFeedbackForm();
+            if (body) body.innerHTML = buildBugForm();
             // Reset tabs
             document.querySelectorAll('.feedback-tab').forEach(btn => {
-                btn.classList.toggle('active', btn.dataset.tab === 'feedback');
+                btn.classList.toggle('active', btn.dataset.tab === 'bug');
             });
             bindFormEvents();
         }, success ? 2000 : 4000);
@@ -293,6 +298,12 @@
         // One-time fallback check for dynamically injected banners
         setTimeout(checkBanner, 5000);
     }
+
+    // Expose global function so beta banner (or anything) can open to a specific tab
+    window.openFeedbackWidget = function (tab) {
+        if (tab && tab !== currentTab) switchTab(tab);
+        if (!panelOpen) togglePanel();
+    };
 
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {

@@ -12,6 +12,9 @@
     var STORAGE_KEY = 'tnc_beta_banner_dismissed';
     if (localStorage.getItem(STORAGE_KEY) === 'true') return;
 
+    // Don't show on the lockscreen / splash page
+    if (localStorage.getItem('tnc_site_unlocked') !== 'true') return;
+
     // Build banner
     var banner = document.createElement('div');
     banner.className = 'beta-banner';

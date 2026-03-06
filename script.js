@@ -36,6 +36,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Update nav based on auth state
     updateNavAuthState();
 
+    // For logged-in users, rewrite index.html links to include ?home=true
+    // so clicking the logo or "Home" links shows the homepage instead of
+    // redirecting back to dashboard via home-redirect.js
+    if (localStorage.getItem('user')) {
+        document.querySelectorAll('a[href="index.html"], a[href="./index.html"], a[href="/"]').forEach(function (a) {
+            var href = a.getAttribute('href');
+            a.setAttribute('href', (href === '/' ? '/' : href) + '?home=true');
+        });
+    }
+
     // Smooth scrolling for navigation links (only when clicked)
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
 

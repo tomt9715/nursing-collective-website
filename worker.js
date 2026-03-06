@@ -1,10 +1,26 @@
+const ALLOWED_ORIGINS = [
+  'https://thenursingcollective.pro',
+  'https://www.thenursingcollective.pro',
+  'https://learn.thenursingcollective.pro',
+];
+
+function getAllowedOrigin(request) {
+  const origin = request.headers.get('Origin') || '';
+  if (ALLOWED_ORIGINS.includes(origin) || origin.endsWith('.pages.dev')) {
+    return origin;
+  }
+  return ALLOWED_ORIGINS[0];
+}
+
 export default {
   async fetch(request, env) {
+    const corsOrigin = getAllowedOrigin(request);
+
     // Handle CORS preflight
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': corsOrigin,
           'Access-Control-Allow-Methods': 'POST, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type',
         }
@@ -51,7 +67,7 @@ export default {
             status: 200,
             headers: {
               'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Origin': corsOrigin,
             }
           });
         }
@@ -67,7 +83,7 @@ export default {
         status: 200,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': corsOrigin,
         }
       });
 
@@ -77,7 +93,7 @@ export default {
         status: 500,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': corsOrigin,
         }
       });
     }

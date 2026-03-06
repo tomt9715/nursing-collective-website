@@ -89,15 +89,11 @@
                     return null;
                 }
 
-                // Add user context if available
+                // Add anonymous user context (no PII sent to Sentry)
                 try {
                     const user = JSON.parse(localStorage.getItem('user') || '{}');
-                    if (user.id || user.email) {
-                        event.user = {
-                            id: user.id,
-                            email: user.email,
-                            username: user.name || user.display_name
-                        };
+                    if (user.id) {
+                        event.user = { id: String(user.id) };
                     }
                 } catch (e) {
                     // Ignore errors reading user data

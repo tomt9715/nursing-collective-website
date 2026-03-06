@@ -1,0 +1,370 @@
+/* ============================================
+   PAGE-RESOURCES.CSS — Resources & Store Styles
+   Free resources, resources page, store page
+   Split from pages.css for maintainability
+   ============================================ */
+
+/* ============================================
+   FREE RESOURCES SECTION
+   ============================================ */
+
+.free-resources-section {
+    padding: 64px 0;
+    background: var(--background-default);
+}
+
+.free-resources-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.free-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    background: linear-gradient(135deg, var(--success-light), var(--success-color));
+    color: white;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.free-resources-header h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.free-resources-header p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.resource-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 2px solid var(--border-color);
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    border-color: var(--primary-color);
+}
+
+.resource-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    box-shadow: 0 6px 16px rgba(46, 134, 171, 0.3);
+}
+
+.resource-icon i {
+    font-size: 1.8rem;
+    color: white;
+}
+
+.resource-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.resource-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.resource-card > p {
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+}
+
+.resource-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+    flex-grow: 1;
+}
+
+.resource-features li {
+    padding: 8px 0;
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resource-features i {
+    color: var(--success-color);
+    font-size: 0.85rem;
+}
+
+.btn-download {
+    width: 100%;
+    padding: 16px 24px;
+    border-radius: 10px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-download i {
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .resources-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .free-resources-header h2 {
+        font-size: 2rem;
+    }
+
+    .resource-card {
+        padding: 24px;
+    }
+}
+
+/* ============================================
+   RESOURCES PAGE — Inline Style Extractions
+   ============================================ */
+
+/* CTA section spacing wrapper */
+.resources-cta-spacing {
+    margin-top: 32px;
+}
+
+/* CTA button padding overrides */
+.resources-hero-cta-btn {
+    padding: 16px 24px;
+    font-weight: 600;
+}
+
+.resources-premium-cta-btn {
+    padding: 16px 32px;
+}
+
+/* Icon spacing inside CTA buttons */
+.resources-btn-icon {
+    margin-right: 8px;
+}
+
+/* Wave divider background variants */
+.wave-bg-light {
+    background: var(--background-light);
+}
+
+.wave-bg-white {
+    background: var(--background-white);
+}
+
+/* Section icon with primary-to-secondary gradient */
+.resources-section-icon-gradient {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Small icon override (e.g., gift icon in badge) */
+.resources-icon-sm {
+    font-size: 0.75rem;
+}
+
+/* Premium content cards grid */
+.resources-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 40px;
+}
+
+/* Individual premium preview card */
+.resources-card {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border-color);
+}
+
+/* Icon wrapper spacing inside cards */
+.resources-card-icon-wrap {
+    margin-bottom: 16px;
+}
+
+/* Purple gradient icon background */
+.resources-icon-purple {
+    background: linear-gradient(135deg, var(--cat-pharmacology), #a855f7);
+    margin-bottom: 16px;
+}
+
+/* Card title */
+.resources-card-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+}
+
+/* Card description */
+.resources-card-desc {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 16px;
+}
+
+/* Card meta (e.g., "Premium" badge) */
+.resources-card-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Centered CTA wrapper */
+.resources-cta-center {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .resources-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ============================================
+   STORE PAGE
+   ============================================ */
+
+.store-hero {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--gradient-blue) 25%, var(--gradient-purple) 50%, var(--secondary-color) 75%, var(--primary-color) 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    color: white;
+    padding: 120px 0 72px;
+    text-align: center;
+}
+
+.store-hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    line-height: 1.2;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+}
+
+.store-hero p {
+    font-size: 1.25rem;
+    max-width: 700px;
+    margin: 0 auto;
+    opacity: 0.95;
+    line-height: 1.6;
+}
+
+.store-section {
+    padding: 64px 0 96px;
+    background: var(--background-light);
+}
+
+.store-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.store-sidebar {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 24px;
+    height: fit-content;
+    position: sticky;
+    top: 100px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.filter-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: var(--background-light);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    color: var(--text-primary);
+    text-align: left;
+}
+
+.filter-item:hover {
+    background: var(--background-white);
+    border-color: var(--primary-color);
+}
+
+.filter-item.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* Store Mobile Responsive */
+@media (max-width: 768px) {
+    .store-hero h1 {
+        font-size: 2.2rem;
+    }
+
+    .store-hero p {
+        font-size: 1.1rem;
+    }
+
+    .store-layout {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+
+    .store-sidebar {
+        position: relative;
+        top: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .store-hero h1 {
+        font-size: 1.8rem;
+    }
+}
+
+

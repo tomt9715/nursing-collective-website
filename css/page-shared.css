@@ -1,0 +1,35 @@
+/* ============================================
+   PAGE-SHARED.CSS — Shared Utility Styles
+   Legal footer, alternating section backgrounds,
+   and other cross-page extracted inline styles
+   Split from pages.css for maintainability
+   ============================================ */
+
+/* ===========================
+   INLINE STYLE EXTRACTIONS
+   =========================== */
+
+/* Legal page footer divider (privacy.html, terms.html) */
+.legal-footer-divider {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Legal page footer links */
+.legal-footer-links {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.legal-footer-links a {
+    margin: 0 12px;
+}
+
+/* Alternating section background (index.html) */
+.section-alt-bg {
+    background: var(--background-light);
+    padding: 80px 0;
+}
+

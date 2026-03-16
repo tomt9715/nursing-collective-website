@@ -131,6 +131,14 @@
     var qcountQuizCheckbox = document.getElementById('ai-qcount-quiz');
     var qcountPoolHint = document.getElementById('ai-qcount-pool-hint');
 
+    // Section picker elements
+    var spBackdrop = document.getElementById('ai-sp-backdrop');
+    var spModal = document.getElementById('ai-section-picker');
+    var spList = document.getElementById('ai-section-list');
+    var spCancel = document.getElementById('ai-sp-cancel');
+    var spGo = document.getElementById('ai-sp-go');
+    var spCreditText = document.getElementById('ai-sp-credit-text');
+
     // ── State ───────────────────────────────────────────────────
     var documents = [];
     var pollingTimers = {};
@@ -145,6 +153,10 @@
     var pendingPqFilename = null;   // filename waiting for question count selection
     var autoLaunchQuiz = false;     // whether to auto-launch quiz after generation
     var lastNumQuestions = null;    // last question count used (for regeneration)
+    var pendingSpDocId = null;      // doc ID waiting for section selection
+    var pendingSpFilename = null;   // filename waiting for section selection
+    var pendingSpMaxCount = 30;     // max question count for full-doc quiz
+    var selectedSectionIndex = null; // currently selected section in picker
 
     // ── Initialization ──────────────────────────────────────────
 
@@ -442,10 +454,17 @@
             });
         }
 
+        // Section picker events
+        if (spCancel) spCancel.addEventListener('click', closeSectionPicker);
+        if (spBackdrop) spBackdrop.addEventListener('click', closeSectionPicker);
+        if (spGo) spGo.addEventListener('click', confirmSectionPicker);
+
         // ESC key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
-                if (qcountModal && qcountModal.classList.contains('visible')) {
+                if (spModal && spModal.classList.contains('visible')) {
+                    closeSectionPicker();
+                } else if (qcountModal && qcountModal.classList.contains('visible')) {
                     closeQuestionCountModal();
                 } else if (panelEl && panelEl.classList.contains('open')) {
                     closePanel();
@@ -846,16 +865,16 @@
                     if (btn.disabled) return;
                     var genType = btn.dataset.genType;
 
-                    // Practice questions: new flow based on indicator state
+                    // Practice questions: new flow — section picker first
                     if (genType === 'practice_questions') {
                         var isReady = btn.querySelector('.ai-action-cached');
                         var isAutoGen = btn.querySelector('.ai-action-autogen') || btn.querySelector('.ai-action-generating');
 
                         if (isReady) {
-                            // Questions are ready — open modal to pick count
+                            // Questions are ready — show section picker
                             var docInfo = documents.find(function (d) { return d.id == doc.id; });
                             var maxCount = (docInfo && docInfo.pq_question_count) || 30;
-                            openQuestionCountModal(doc.id, doc.filename, maxCount);
+                            openSectionPicker(doc.id, doc.filename, maxCount);
                             return;
                         }
 
@@ -992,6 +1011,184 @@
         pendingPqDocId = null;
         pendingPqFilename = null;
     }
+
+    // ── Section picker ──────────────────────────────────────────
+
+    async function openSectionPicker(docId, filename, maxCount) {
+        pendingSpDocId = docId;
+        pendingSpFilename = filename;
+        pendingSpMaxCount = maxCount || 30;
+        selectedSectionIndex = null;
+
+        // Reset UI
+        if (spList) spList.innerHTML = '<div class="ai-sp-loading"><i class="fas fa-spinner"></i> Loading sections\u2026</div>';
+        if (spGo) spGo.classList.remove('enabled');
+        if (spCreditText) spCreditText.textContent = 'Select a section to see credit cost';
+
+        // Show modal
+        if (spBackdrop) spBackdrop.classList.add('visible');
+        if (spModal) spModal.classList.add('visible');
+
+        // Fetch sections
+        try {
+            var data = await apiCall('/api/ai/documents/' + docId + '/sections');
+            if (!data || !data.sections || data.sections.length === 0) {
+                // No sections detected — fall back to full-document quiz
+                closeSectionPicker();
+                openQuestionCountModal(docId, filename, maxCount);
+                return;
+            }
+
+            renderSectionList(data.sections, maxCount);
+        } catch (err) {
+            console.warn('[AI Tools] Failed to load sections:', err);
+            // Fall back to full-document quiz
+            closeSectionPicker();
+            openQuestionCountModal(docId, filename, maxCount);
+        }
+    }
+
+    function renderSectionList(sections, maxCount) {
+        if (!spList) return;
+
+        var html = '';
+
+        // "All Sections" option at the top
+        html += '<div class="ai-section-item ai-section-all" data-section-index="all">' +
+            '<div class="ai-si-num"><i class="fas fa-layer-group" style="font-size:.7rem"></i></div>' +
+            '<div class="ai-si-title">All Sections (Full Review)</div>' +
+            '<div class="ai-si-meta">' + maxCount + ' Qs</div>' +
+            '</div>';
+
+        // Individual sections
+        for (var i = 0; i < sections.length; i++) {
+            var s = sections[i];
+            var title = s.title || ('Section ' + (i + 1));
+            // Estimate ~5-10 questions per section
+            var estQs = Math.min(10, Math.max(3, Math.round(s.token_count / 200)));
+            html += '<div class="ai-section-item" data-section-index="' + i + '">' +
+                '<div class="ai-si-num">' + (i + 1) + '</div>' +
+                '<div class="ai-si-title">' + escapeHtml(title) + '</div>' +
+                '<div class="ai-si-meta">~' + estQs + ' Qs</div>' +
+                '</div>';
+        }
+
+        spList.innerHTML = html;
+
+        // Attach click handlers
+        var items = spList.querySelectorAll('.ai-section-item');
+        items.forEach(function (item) {
+            item.addEventListener('click', function () {
+                // Deselect all
+                items.forEach(function (el) { el.classList.remove('selected'); });
+                // Select this one
+                item.classList.add('selected');
+
+                var idx = item.dataset.sectionIndex;
+                selectedSectionIndex = idx;
+
+                // Update credit cost and enable button
+                if (spGo) spGo.classList.add('enabled');
+                if (spCreditText) {
+                    if (idx === 'all') {
+                        spCreditText.textContent = 'Uses question credits from your pre-generated questions';
+                    } else {
+                        var estQ = parseInt(item.querySelector('.ai-si-meta').textContent.replace(/[^0-9]/g, ''), 10) || 10;
+                        spCreditText.textContent = 'This will use ~' + estQ + ' question credit' + (estQ === 1 ? '' : 's');
+                    }
+                }
+            });
+        });
+    }
+
+    function closeSectionPicker() {
+        if (spBackdrop) spBackdrop.classList.remove('visible');
+        if (spModal) spModal.classList.remove('visible');
+        pendingSpDocId = null;
+        pendingSpFilename = null;
+        selectedSectionIndex = null;
+    }
+
+    async function confirmSectionPicker() {
+        if (selectedSectionIndex === null) return;
+
+        var docId = pendingSpDocId;
+        var filename = pendingSpFilename;
+        var maxCount = pendingSpMaxCount;
+
+        if (selectedSectionIndex === 'all') {
+            // Close section picker, open question count modal for full quiz
+            closeSectionPicker();
+            openQuestionCountModal(docId, filename, maxCount);
+            return;
+        }
+
+        // Section-specific quiz
+        var sectionIdx = parseInt(selectedSectionIndex, 10);
+        var sectionTitle = '';
+        var selectedItem = spList ? spList.querySelector('.ai-section-item.selected') : null;
+        if (selectedItem) {
+            var titleEl = selectedItem.querySelector('.ai-si-title');
+            sectionTitle = titleEl ? titleEl.textContent : ('Section ' + (sectionIdx + 1));
+        }
+
+        closeSectionPicker();
+        showToast('Generating ' + sectionTitle + ' quiz\u2026', 'info');
+
+        try {
+            var data = await apiCall('/api/ai/documents/' + docId + '/section-quiz', {
+                method: 'POST',
+                body: JSON.stringify({
+                    section_index: sectionIdx,
+                    question_count: 10
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            });
+
+            if (data && data.content) {
+                var questions = parseAIQuizMarkdown(data.content);
+                if (!questions || questions.length === 0) {
+                    showToast('Could not parse section questions. Try again.', 'error');
+                    return;
+                }
+
+                var quizPayload = {
+                    questions: questions,
+                    questionsPerRound: questions.length,
+                    guideName: (sectionTitle || 'Section Quiz') + ' — ' + (filename || 'AI Quiz'),
+                    guideSlug: 'ai-section-' + docId + '-' + sectionIdx,
+                    category: 'AI Generated',
+                    categoryColor: '#8b5cf6',
+                    estimatedMinutes: Math.max(3, Math.round(questions.length * 1.5)),
+                    isAIGenerated: true,
+                    sourceDocId: docId,
+                    sectionIndex: sectionIdx,
+                    sectionTitle: sectionTitle
+                };
+
+                sessionStorage.setItem('aiQuizData', JSON.stringify(quizPayload));
+                sessionStorage.setItem('aiQuizRound', '0');
+
+                // Refresh credit display
+                fetchCredits();
+
+                // Navigate to quiz
+                window.location.href = 'guides/quiz/quiz.html?source=ai&doc=' + encodeURIComponent(docId) + '&section=' + sectionIdx;
+            } else {
+                throw new Error(data.error || 'Failed to generate section quiz');
+            }
+        } catch (err) {
+            console.error('[AI Tools] Section quiz failed:', err);
+            if (isQuestionCreditError(err.message)) {
+                showQuestionExhaustedToast();
+                fetchCredits();
+            } else {
+                showToast(err.message || 'Failed to generate section quiz.', 'error');
+            }
+        }
+    }
+
+    // ── Question count (full document quiz) ─────────────────────
 
     async function confirmQuestionCount() {
         var count = parseInt(qcountInput ? qcountInput.value : 15, 10);

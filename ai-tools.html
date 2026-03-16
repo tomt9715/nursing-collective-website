@@ -451,6 +451,53 @@
         [data-theme="dark"] .ai-qcount-credit-cost{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2);color:#fbbf24}
         [data-theme="dark"] .ai-qcount-credit-cost i{color:#fbbf24}
 
+        /* Section picker modal */
+        .ai-section-picker{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.92);z-index:10101;background:#fff;border-radius:16px;padding:28px 24px 20px;width:min(480px,92vw);max-height:80vh;display:flex;flex-direction:column;box-shadow:0 20px 60px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.4,0,.2,1)}
+        .ai-section-picker.visible{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+        .ai-section-picker h3{font-family:'Outfit',sans-serif;font-size:1.12rem;font-weight:700;color:#0f172a;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+        .ai-section-picker h3 i{color:#8b5cf6;font-size:1.05rem}
+        .ai-section-picker .ai-sp-sub{font-size:.82rem;color:#64748b;margin:0 0 16px;line-height:1.4}
+        .ai-section-list{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:6px;margin-bottom:16px;min-height:0;max-height:calc(80vh - 200px);padding-right:4px}
+        .ai-section-list::-webkit-scrollbar{width:5px}
+        .ai-section-list::-webkit-scrollbar-thumb{background:#cbd5e1;border-radius:3px}
+        .ai-section-item{display:flex;align-items:center;gap:12px;padding:12px 14px;border:2px solid #e2e8f0;border-radius:10px;cursor:pointer;transition:all .15s;background:#fff}
+        .ai-section-item:hover{border-color:#a78bfa;background:#f5f3ff}
+        .ai-section-item.selected{border-color:#7c3aed;background:#f5f3ff}
+        .ai-section-item .ai-si-num{width:28px;height:28px;border-radius:50%;background:#f1f5f9;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;color:#64748b;flex-shrink:0;transition:all .15s}
+        .ai-section-item.selected .ai-si-num{background:#7c3aed;color:#fff}
+        .ai-section-item .ai-si-title{flex:1;font-size:.88rem;font-weight:600;color:#1e293b;line-height:1.3}
+        .ai-section-item .ai-si-meta{font-size:.72rem;color:#94a3b8;white-space:nowrap}
+        .ai-section-item.ai-section-all{border-style:dashed;background:#faf5ff}
+        .ai-section-item.ai-section-all .ai-si-num{background:#7c3aed;color:#fff}
+        .ai-section-item.ai-section-all:hover{border-color:#7c3aed;background:#f3e8ff}
+        .ai-sp-loading{text-align:center;padding:24px;color:#94a3b8;font-size:.88rem}
+        .ai-sp-loading i{margin-right:8px;animation:spin 1s linear infinite}
+        @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        .ai-sp-actions{display:flex;gap:10px;justify-content:flex-end;padding-top:4px;border-top:1px solid #f1f5f9}
+        .ai-sp-cancel{padding:10px 20px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;color:#64748b;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .15s}
+        .ai-sp-cancel:hover{background:#f1f5f9;color:#334155}
+        .ai-sp-go{padding:10px 24px;border-radius:10px;border:none;background:linear-gradient(135deg,#8b5cf6,#7c3aed);color:#fff;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(124,58,237,.3);display:flex;align-items:center;gap:8px;opacity:.5;pointer-events:none}
+        .ai-sp-go.enabled{opacity:1;pointer-events:auto}
+        .ai-sp-go.enabled:hover{background:linear-gradient(135deg,#7c3aed,#6d28d9);transform:translateY(-1px);box-shadow:0 4px 12px rgba(124,58,237,.4)}
+        .ai-sp-go i{font-size:.85rem}
+        .ai-sp-credit-note{font-size:.78rem;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:8px 12px;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+        .ai-sp-credit-note i{color:#f59e0b;font-size:.8rem}
+        [data-theme="dark"] .ai-section-picker{background:#1e293b}
+        [data-theme="dark"] .ai-section-picker h3{color:#f1f5f9}
+        [data-theme="dark"] .ai-section-picker .ai-sp-sub{color:#94a3b8}
+        [data-theme="dark"] .ai-section-item{border-color:#334155;background:#0f172a}
+        [data-theme="dark"] .ai-section-item:hover{border-color:#a78bfa;background:rgba(124,58,237,.1)}
+        [data-theme="dark"] .ai-section-item.selected{border-color:#7c3aed;background:rgba(124,58,237,.12)}
+        [data-theme="dark"] .ai-section-item .ai-si-num{background:#334155;color:#94a3b8}
+        [data-theme="dark"] .ai-section-item.selected .ai-si-num{background:#7c3aed;color:#fff}
+        [data-theme="dark"] .ai-section-item .ai-si-title{color:#e2e8f0}
+        [data-theme="dark"] .ai-section-item.ai-section-all{background:rgba(124,58,237,.06)}
+        [data-theme="dark"] .ai-section-list::-webkit-scrollbar-thumb{background:#475569}
+        [data-theme="dark"] .ai-sp-cancel{background:#0f172a;border-color:#334155;color:#94a3b8}
+        [data-theme="dark"] .ai-sp-cancel:hover{background:#334155;color:#f1f5f9}
+        [data-theme="dark"] .ai-sp-actions{border-top-color:#334155}
+        [data-theme="dark"] .ai-sp-credit-note{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2);color:#fbbf24}
+
         @media(max-width:768px){
             .ai-upload-dropzone{padding:24px 16px}
             .ai-credit-bar{gap:10px;padding:8px 12px;font-size:.75rem}
@@ -738,6 +785,23 @@
                     <a href="pricing.html?tier=ai" class="ai-upgrade-btn" data-navigate="pricing.html?tier=ai">
                         <i class="fas fa-bolt"></i> Upgrade to AI-Powered
                     </a>
+                </div>
+            </div>
+
+            <!-- Section picker modal (shown before question count) -->
+            <div class="ai-qcount-backdrop" id="ai-sp-backdrop"></div>
+            <div class="ai-section-picker" id="ai-section-picker">
+                <h3><i class="fas fa-layer-group"></i> Choose a Section to Quiz</h3>
+                <p class="ai-sp-sub" id="ai-sp-sub">Pick a section to focus on, or quiz the whole document.</p>
+                <div class="ai-section-list" id="ai-section-list">
+                    <div class="ai-sp-loading"><i class="fas fa-spinner"></i> Loading sections...</div>
+                </div>
+                <div class="ai-sp-credit-note" id="ai-sp-credit-note">
+                    <i class="fas fa-coins"></i> <span id="ai-sp-credit-text">Section quiz uses ~10 question credits</span>
+                </div>
+                <div class="ai-sp-actions">
+                    <button class="ai-sp-cancel" id="ai-sp-cancel">Cancel</button>
+                    <button class="ai-sp-go" id="ai-sp-go"><i class="fas fa-play"></i> Start Section Quiz</button>
                 </div>
             </div>
 

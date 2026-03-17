@@ -2696,9 +2696,14 @@ async function reindexGuides() {
     const btn = document.getElementById('reindex-guides-btn');
     if (!btn) return;
 
-    if (!confirm('This will re-parse all study guides, generate new embeddings, and rebuild category centroids. Continue?')) {
-        return;
-    }
+    const confirmed = await showConfirm(
+        'Reindex Study Guides?',
+        'This will re-parse all study guides, generate new embeddings, and rebuild category centroids.',
+        'warning',
+        'Reindex',
+        'Cancel'
+    );
+    if (!confirmed) return;
 
     const originalHtml = btn.innerHTML;
     btn.disabled = true;
@@ -2789,7 +2794,14 @@ async function manageAdminRole() {
     if (!secret) { showToast('Please enter the admin secret', 'error'); return; }
 
     const verb = action === 'grant' ? 'grant admin access to' : 'revoke admin access from';
-    if (!confirm(`Are you sure you want to ${verb} ${email}?`)) return;
+    const confirmed = await showConfirm(
+        'Confirm Admin Change',
+        `Are you sure you want to ${verb} ${email}?`,
+        'warning',
+        action === 'grant' ? 'Grant Access' : 'Revoke Access',
+        'Cancel'
+    );
+    if (!confirmed) return;
 
     try {
         const data = await apiCall('/admin/manage-admin', {

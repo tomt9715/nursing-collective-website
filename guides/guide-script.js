@@ -414,7 +414,9 @@ async function downloadPDF(btn) {
             }, 2000);
         }
         // Show error message to user
-        alert(error.message || 'Unable to download PDF. Please try again or contact support.');
+        if (typeof showAlert === 'function') {
+            showAlert('Download Failed', error.message || 'Unable to download PDF. Please try again or contact support.', 'error');
+        }
     }
 }
 

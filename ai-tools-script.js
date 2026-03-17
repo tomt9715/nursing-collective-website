@@ -88,6 +88,7 @@
     var documentsList = document.getElementById('ai-documents-list');
     var emptyState = document.getElementById('ai-empty-state');
     var refreshBtn = document.getElementById('ai-refresh-btn');
+    var deleteAllBtn = document.getElementById('ai-delete-all-btn');
 
     // Text input elements
     var inputToggle = document.getElementById('ai-input-toggle');
@@ -409,6 +410,11 @@
             refreshBtn.addEventListener('click', loadDocuments);
         }
 
+        // Delete all
+        if (deleteAllBtn) {
+            deleteAllBtn.addEventListener('click', deleteAllDocuments);
+        }
+
         // Panel close
         if (panelBackBtn) panelBackBtn.addEventListener('click', closePanel);
         if (backdropEl) backdropEl.addEventListener('click', closePanel);
@@ -711,11 +717,13 @@
 
         if (documents.length === 0) {
             if (emptyState) emptyState.style.display = '';
+            if (deleteAllBtn) deleteAllBtn.classList.remove('visible');
             stopPreGenPolling();
             return;
         }
 
         if (emptyState) emptyState.style.display = 'none';
+        if (deleteAllBtn) deleteAllBtn.classList.add('visible');
 
         var hasGenerating = false;
         documents.forEach(function (doc) {
@@ -1460,6 +1468,43 @@
         } catch (err) {
             console.error('[AI Tools] Delete failed:', err);
             showToast('Failed to delete document.', 'error');
+        }
+    }
+
+    async function deleteAllDocuments() {
+        if (!documents || documents.length === 0) {
+            showToast('No documents to delete.', 'info');
+            return;
+        }
+
+        var count = documents.length;
+        if (!confirm('Delete all ' + count + ' document' + (count === 1 ? '' : 's') + '? This will remove all uploaded files and generated content. This cannot be undone.')) {
+            return;
+        }
+
+        showToast('Deleting all documents\u2026', 'info');
+
+        var failed = 0;
+        var lastStorage = null;
+
+        for (var i = 0; i < documents.length; i++) {
+            try {
+                var data = await apiCall('/api/ai/documents/' + documents[i].id, { method: 'DELETE' });
+                if (data && data.storage) lastStorage = data.storage;
+                stopPolling(documents[i].id);
+            } catch (err) {
+                console.warn('[AI Tools] Failed to delete doc', documents[i].id, err);
+                failed++;
+            }
+        }
+
+        if (lastStorage) renderStorageBar(lastStorage);
+        loadDocuments();
+
+        if (failed === 0) {
+            showToast('All documents deleted.', 'success');
+        } else {
+            showToast(failed + ' document' + (failed === 1 ? '' : 's') + ' failed to delete.', 'error');
         }
     }
 

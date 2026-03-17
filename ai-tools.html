@@ -124,6 +124,9 @@
         .ai-documents-header h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:600;color:#334155;margin:0}
         .ai-refresh-btn{background:none;border:none;color:#94a3b8;cursor:pointer;padding:4px 8px;border-radius:6px;transition:all .15s}
         .ai-refresh-btn:hover{color:#7c3aed;background:rgba(124,58,237,.06)}
+        .ai-delete-all-btn{background:none;border:none;color:#94a3b8;cursor:pointer;padding:4px 8px;border-radius:6px;transition:all .15s;font-size:.78rem;font-family:'Source Sans 3',sans-serif;display:none;align-items:center;gap:5px}
+        .ai-delete-all-btn:hover{color:#ef4444;background:rgba(239,68,68,.06)}
+        .ai-delete-all-btn.visible{display:flex}
 
         .ai-documents-list{display:flex;flex-direction:column;gap:8px}
         .ai-empty-state{text-align:center;padding:24px;color:#94a3b8}
@@ -713,9 +716,14 @@
                 <div class="ai-documents" id="ai-documents">
                     <div class="ai-documents-header">
                         <h3>Your Documents</h3>
-                        <button class="ai-refresh-btn" id="ai-refresh-btn" title="Refresh">
-                            <i class="fas fa-arrows-rotate"></i>
-                        </button>
+                        <div style="display:flex;align-items:center;gap:4px">
+                            <button class="ai-delete-all-btn" id="ai-delete-all-btn" title="Delete all documents">
+                                <i class="fas fa-trash-alt"></i> Delete All
+                            </button>
+                            <button class="ai-refresh-btn" id="ai-refresh-btn" title="Refresh">
+                                <i class="fas fa-arrows-rotate"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="ai-documents-list" id="ai-documents-list">
                         <!-- Populated by ai-tools-script.js -->

@@ -501,6 +501,24 @@
         [data-theme="dark"] .ai-sp-actions{border-top-color:#334155}
         [data-theme="dark"] .ai-sp-credit-note{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.2);color:#fbbf24}
 
+        /* Confirm dialog */
+        .ai-confirm-modal{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.92);z-index:10101;background:#fff;border-radius:16px;padding:28px 24px 20px;width:min(380px,88vw);box-shadow:0 20px 60px rgba(0,0,0,.2);opacity:0;pointer-events:none;transition:all .3s cubic-bezier(.4,0,.2,1);text-align:center}
+        .ai-confirm-modal.visible{opacity:1;pointer-events:auto;transform:translate(-50%,-50%) scale(1)}
+        .ai-confirm-icon{width:52px;height:52px;border-radius:50%;background:rgba(239,68,68,.08);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:#ef4444;font-size:1.3rem}
+        .ai-confirm-modal h3{font-family:'Outfit',sans-serif;font-size:1.08rem;font-weight:700;color:#0f172a;margin:0 0 8px}
+        .ai-confirm-modal p{font-size:.85rem;color:#64748b;margin:0 0 20px;line-height:1.45}
+        .ai-confirm-actions{display:flex;gap:10px;justify-content:center}
+        .ai-confirm-cancel{padding:10px 22px;border-radius:10px;border:1px solid #e2e8f0;background:#fff;color:#64748b;font-family:'Source Sans 3',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .15s;flex:1}
+        .ai-confirm-cancel:hover{background:#f1f5f9;color:#334155}
+        .ai-confirm-delete{padding:10px 22px;border-radius:10px;border:none;background:linear-gradient(135deg,#ef4444,#dc2626);color:#fff;font-family:'Outfit',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s;box-shadow:0 2px 8px rgba(239,68,68,.3);flex:1;display:flex;align-items:center;justify-content:center;gap:8px}
+        .ai-confirm-delete:hover{background:linear-gradient(135deg,#dc2626,#b91c1c);transform:translateY(-1px);box-shadow:0 4px 12px rgba(239,68,68,.4)}
+        [data-theme="dark"] .ai-confirm-modal{background:#1e293b}
+        [data-theme="dark"] .ai-confirm-modal h3{color:#f1f5f9}
+        [data-theme="dark"] .ai-confirm-modal p{color:#94a3b8}
+        [data-theme="dark"] .ai-confirm-icon{background:rgba(239,68,68,.12)}
+        [data-theme="dark"] .ai-confirm-cancel{background:#0f172a;border-color:#334155;color:#94a3b8}
+        [data-theme="dark"] .ai-confirm-cancel:hover{background:#334155;color:#f1f5f9}
+
         @media(max-width:768px){
             .ai-upload-dropzone{padding:24px 16px}
             .ai-credit-bar{gap:10px;padding:8px 12px;font-size:.75rem}
@@ -793,6 +811,18 @@
                     <a href="pricing.html?tier=ai" class="ai-upgrade-btn" data-navigate="pricing.html?tier=ai">
                         <i class="fas fa-bolt"></i> Upgrade to AI-Powered
                     </a>
+                </div>
+            </div>
+
+            <!-- Confirm delete modal -->
+            <div class="ai-qcount-backdrop" id="ai-confirm-backdrop"></div>
+            <div class="ai-confirm-modal" id="ai-confirm-modal">
+                <div class="ai-confirm-icon"><i class="fas fa-trash-alt"></i></div>
+                <h3 id="ai-confirm-title">Delete Document?</h3>
+                <p id="ai-confirm-msg">This will remove the document and all generated content. This cannot be undone.</p>
+                <div class="ai-confirm-actions">
+                    <button class="ai-confirm-cancel" id="ai-confirm-cancel">Cancel</button>
+                    <button class="ai-confirm-delete" id="ai-confirm-delete"><i class="fas fa-trash-alt"></i> Delete</button>
                 </div>
             </div>
 

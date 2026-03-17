@@ -132,6 +132,15 @@
     var qcountQuizCheckbox = document.getElementById('ai-qcount-quiz');
     var qcountPoolHint = document.getElementById('ai-qcount-pool-hint');
 
+    // Confirm modal elements
+    var confirmBackdrop = document.getElementById('ai-confirm-backdrop');
+    var confirmModal = document.getElementById('ai-confirm-modal');
+    var confirmTitle = document.getElementById('ai-confirm-title');
+    var confirmMsg = document.getElementById('ai-confirm-msg');
+    var confirmCancelBtn = document.getElementById('ai-confirm-cancel');
+    var confirmDeleteBtn = document.getElementById('ai-confirm-delete');
+    var confirmCallback = null; // function to call on confirm
+
     // Section picker elements
     var spBackdrop = document.getElementById('ai-sp-backdrop');
     var spModal = document.getElementById('ai-section-picker');
@@ -465,10 +474,21 @@
         if (spBackdrop) spBackdrop.addEventListener('click', closeSectionPicker);
         if (spGo) spGo.addEventListener('click', confirmSectionPicker);
 
+        // Confirm modal events
+        if (confirmCancelBtn) confirmCancelBtn.addEventListener('click', closeConfirmModal);
+        if (confirmBackdrop) confirmBackdrop.addEventListener('click', closeConfirmModal);
+        if (confirmDeleteBtn) confirmDeleteBtn.addEventListener('click', function () {
+            var cb = confirmCallback;
+            closeConfirmModal();
+            if (cb) cb();
+        });
+
         // ESC key
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
-                if (spModal && spModal.classList.contains('visible')) {
+                if (confirmModal && confirmModal.classList.contains('visible')) {
+                    closeConfirmModal();
+                } else if (spModal && spModal.classList.contains('visible')) {
                     closeSectionPicker();
                 } else if (qcountModal && qcountModal.classList.contains('visible')) {
                     closeQuestionCountModal();
@@ -1454,58 +1474,85 @@
         }
     }
 
-    async function deleteDocument(docId, filename) {
-        if (!confirm('Delete "' + filename + '"? This will also remove all generated content.')) {
-            return;
-        }
+    // ── Confirm modal ────────────────────────────────────────────
 
-        try {
-            var data = await apiCall('/api/ai/documents/' + docId, { method: 'DELETE' });
-            showToast('Document deleted.', 'success');
-            if (data && data.storage) renderStorageBar(data.storage);
-            stopPolling(docId);
-            loadDocuments();
-        } catch (err) {
-            console.error('[AI Tools] Delete failed:', err);
-            showToast('Failed to delete document.', 'error');
+    function showConfirmModal(title, message, buttonText, callback) {
+        if (confirmTitle) confirmTitle.textContent = title;
+        if (confirmMsg) confirmMsg.textContent = message;
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i> ' + (buttonText || 'Delete');
         }
+        confirmCallback = callback;
+        if (confirmBackdrop) confirmBackdrop.classList.add('visible');
+        if (confirmModal) confirmModal.classList.add('visible');
     }
 
-    async function deleteAllDocuments() {
+    function closeConfirmModal() {
+        if (confirmBackdrop) confirmBackdrop.classList.remove('visible');
+        if (confirmModal) confirmModal.classList.remove('visible');
+        confirmCallback = null;
+    }
+
+    // ── Delete document ─────────────────────────────────────────
+
+    function deleteDocument(docId, filename) {
+        showConfirmModal(
+            'Delete Document?',
+            'Delete "' + filename + '"? This will remove the document and all generated content.',
+            'Delete',
+            async function () {
+                try {
+                    var data = await apiCall('/api/ai/documents/' + docId, { method: 'DELETE' });
+                    showToast('Document deleted.', 'success');
+                    if (data && data.storage) renderStorageBar(data.storage);
+                    stopPolling(docId);
+                    loadDocuments();
+                } catch (err) {
+                    console.error('[AI Tools] Delete failed:', err);
+                    showToast('Failed to delete document.', 'error');
+                }
+            }
+        );
+    }
+
+    function deleteAllDocuments() {
         if (!documents || documents.length === 0) {
             showToast('No documents to delete.', 'info');
             return;
         }
 
         var count = documents.length;
-        if (!confirm('Delete all ' + count + ' document' + (count === 1 ? '' : 's') + '? This will remove all uploaded files and generated content. This cannot be undone.')) {
-            return;
-        }
+        showConfirmModal(
+            'Delete All Documents?',
+            'This will delete all ' + count + ' document' + (count === 1 ? '' : 's') + ' and their generated content. This cannot be undone.',
+            'Delete All',
+            async function () {
+                showToast('Deleting all documents\u2026', 'info');
 
-        showToast('Deleting all documents\u2026', 'info');
+                var failed = 0;
+                var lastStorage = null;
 
-        var failed = 0;
-        var lastStorage = null;
+                for (var i = 0; i < documents.length; i++) {
+                    try {
+                        var data = await apiCall('/api/ai/documents/' + documents[i].id, { method: 'DELETE' });
+                        if (data && data.storage) lastStorage = data.storage;
+                        stopPolling(documents[i].id);
+                    } catch (err) {
+                        console.warn('[AI Tools] Failed to delete doc', documents[i].id, err);
+                        failed++;
+                    }
+                }
 
-        for (var i = 0; i < documents.length; i++) {
-            try {
-                var data = await apiCall('/api/ai/documents/' + documents[i].id, { method: 'DELETE' });
-                if (data && data.storage) lastStorage = data.storage;
-                stopPolling(documents[i].id);
-            } catch (err) {
-                console.warn('[AI Tools] Failed to delete doc', documents[i].id, err);
-                failed++;
+                if (lastStorage) renderStorageBar(lastStorage);
+                loadDocuments();
+
+                if (failed === 0) {
+                    showToast('All documents deleted.', 'success');
+                } else {
+                    showToast(failed + ' document' + (failed === 1 ? '' : 's') + ' failed to delete.', 'error');
+                }
             }
-        }
-
-        if (lastStorage) renderStorageBar(lastStorage);
-        loadDocuments();
-
-        if (failed === 0) {
-            showToast('All documents deleted.', 'success');
-        } else {
-            showToast(failed + ' document' + (failed === 1 ? '' : 's') + ' failed to delete.', 'error');
-        }
+        );
     }
 
     // ── Panel (open / close) ────────────────────────────────────

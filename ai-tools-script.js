@@ -76,6 +76,51 @@
 
     var TYPE_KEYS = Object.keys(GENERATION_TYPES);
 
+    // ── Progress ring helper ─────────────────────────────────────
+
+    var RING_CIRCUMFERENCE = 2 * Math.PI * 11; // r=11, ≈ 69.115
+
+    function buildProgressRing(completedGens, generatingTypes, relevance) {
+        var totalRelevant = 0;
+        var completedCount = 0;
+        for (var i = 0; i < TYPE_KEYS.length; i++) {
+            var k = TYPE_KEYS[i];
+            var rel = relevance[k];
+            if (rel && rel.relevant === false) continue;
+            totalRelevant++;
+            if (completedGens.indexOf(k) !== -1) completedCount++;
+        }
+
+        // Nothing to generate
+        if (totalRelevant === 0) {
+            return { html: '<span class="ai-doc-status status-ready"><i class="fas fa-check-circle"></i> Ready</span>', done: true };
+        }
+
+        // All done
+        if (completedCount >= totalRelevant) {
+            return {
+                html: '<span class="ai-doc-status status-all-ready"><i class="fas fa-circle-check"></i> All Ready</span>',
+                done: true
+            };
+        }
+
+        // In progress — build SVG ring
+        var pct = (completedCount / totalRelevant) * 100;
+        var offset = RING_CIRCUMFERENCE * (1 - pct / 100);
+
+        var svg = '<span class="ai-doc-progress">' +
+            '<svg class="ai-progress-ring" width="28" height="28" viewBox="0 0 28 28">' +
+            '<circle class="ai-progress-ring-bg" cx="14" cy="14" r="11"/>' +
+            '<circle class="ai-progress-ring-fill" cx="14" cy="14" r="11" ' +
+            'stroke-dasharray="' + RING_CIRCUMFERENCE.toFixed(2) + '" ' +
+            'stroke-dashoffset="' + offset.toFixed(2) + '"/>' +
+            '</svg>' +
+            '<span class="ai-progress-label">' + completedCount + '/' + totalRelevant + '</span>' +
+            '</span>';
+
+        return { html: svg, done: false };
+    }
+
     // ── DOM elements ────────────────────────────────────────────
     var aiSection = document.getElementById('ai-tools-section');
     var upgradePrompt = document.getElementById('ai-upgrade-prompt');
@@ -794,9 +839,14 @@
         if (doc.file_type === 'pptx') iconClass = 'fa-file-powerpoint';
         if (doc.file_type === 'text') iconClass = 'fa-file-lines';
 
+        var completedGens = doc.completed_generations || [];
+        var generatingTypes = doc.generating_types || [];
+        var relevance = doc.relevant_types || {};
+
         var statusHtml = '';
         if (doc.status === 'ready') {
-            statusHtml = '<span class="ai-doc-status status-ready"><i class="fas fa-check-circle"></i> Ready</span>';
+            var progress = buildProgressRing(completedGens, generatingTypes, relevance);
+            statusHtml = progress.html;
         } else if (doc.status === 'processing') {
             statusHtml = '<span class="ai-doc-status status-processing"><span class="ai-spinner"></span> Processing</span>';
         } else if (doc.status === 'failed') {
@@ -813,10 +863,6 @@
         }
         if (doc.page_count) metaParts.push(doc.page_count + ' pages');
         if (doc.chunk_count) metaParts.push(doc.chunk_count + ' chunks');
-
-        var completedGens = doc.completed_generations || [];
-        var generatingTypes = doc.generating_types || [];
-        var relevance = doc.relevant_types || {};
 
         // Build action button grid (only when document is ready)
         var actionGridHtml = '';
@@ -844,14 +890,10 @@
                     attrStr = ' disabled';
                     tooltipHtml = '<span class="ai-tooltip">' + escapeHtml(irrelevantReason) + '</span>';
                 } else if (isCached) {
-                    statusIndicator = '<span class="ai-action-cached" title="Ready — click to start quiz"></span>';
-                    attrStr = ' title="' + escapeHtml(typeInfo.label) + '"';
-                } else if (isGenerating && typeKey === 'practice_questions') {
-                    // Auto-generating practice questions — flashing blue dot
-                    statusIndicator = '<span class="ai-action-autogen" title="Generating practice questions\u2026"></span>';
-                    attrStr = ' title="Generating\u2026"';
+                    statusIndicator = '<i class="fas fa-check ai-action-check"></i>';
+                    attrStr = ' title="' + escapeHtml(typeInfo.label) + ' \u2014 Ready"';
                 } else if (isGenerating) {
-                    statusIndicator = '<span class="ai-action-generating" title="Generating\u2026"></span>';
+                    statusIndicator = '<span class="ai-action-spinner"></span>';
                     attrStr = ' title="Generating\u2026"';
                 } else {
                     attrStr = ' title="' + escapeHtml(typeInfo.label) + '"';
@@ -895,8 +937,8 @@
 
                     // Practice questions: new flow — section picker first
                     if (genType === 'practice_questions') {
-                        var isReady = btn.querySelector('.ai-action-cached');
-                        var isAutoGen = btn.querySelector('.ai-action-autogen') || btn.querySelector('.ai-action-generating');
+                        var isReady = btn.querySelector('.ai-action-check');
+                        var isAutoGen = btn.querySelector('.ai-action-spinner');
 
                         if (isReady) {
                             // Questions are ready — show section picker
@@ -1320,8 +1362,8 @@
             if (data && data.content) {
                 openPanel(docId, filename, genType, data.content);
                 // Update cache dot
-                if (btn && !btn.querySelector('.ai-action-cached')) {
-                    btn.insertAdjacentHTML('afterbegin', '<span class="ai-action-cached" title="Generated"></span>');
+                if (btn && !btn.querySelector('.ai-action-check')) {
+                    btn.insertAdjacentHTML('afterbegin', '<i class="fas fa-check ai-action-check"></i>');
                 }
                 // Refresh credits if this was a practice_questions generation
                 if (genType === 'practice_questions') {
@@ -1391,8 +1433,8 @@
                     openPanel(docId, filename, genType, data.content);
                     if (btn) {
                         btn.classList.remove('generating');
-                        if (!btn.querySelector('.ai-action-cached')) {
-                            btn.insertAdjacentHTML('afterbegin', '<span class="ai-action-cached" title="Generated"></span>');
+                        if (!btn.querySelector('.ai-action-check')) {
+                            btn.insertAdjacentHTML('afterbegin', '<i class="fas fa-check ai-action-check"></i>');
                         }
                     }
                     // Reset regenerate button if it triggered this poll

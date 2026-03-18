@@ -165,8 +165,7 @@
         .ai-action-irrelevant .ai-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#111827}
         .ai-action-irrelevant:hover .ai-tooltip{display:block}
         /* Per-button: checkmark (done) */
-        .ai-action-check{position:absolute;top:3px;right:3px;width:10px;height:10px;border-radius:50%;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.35rem;line-height:1;animation:ai-check-in .3s ease;box-shadow:0 0 0 1.5px #f8fafc}
-        @keyframes ai-check-in{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+        .ai-action-check{position:absolute;top:3px;right:3px;width:10px;height:10px;border-radius:50%;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.35rem;line-height:1;box-shadow:0 0 0 1.5px #f8fafc}
         /* Per-button: spinner (generating) */
         .ai-action-spinner{position:absolute;top:3px;right:3px;width:12px;height:12px;border:1.5px solid rgba(0,0,0,.1);border-top-color:var(--action-color);border-radius:50%;animation:ai-spin .8s linear infinite}
         /* Document-level: progress ring */
@@ -175,8 +174,7 @@
         .ai-progress-ring-bg{fill:none;stroke:rgba(0,0,0,.08);stroke-width:2.5}
         .ai-progress-ring-fill{fill:none;stroke:#7c3aed;stroke-width:2.5;stroke-linecap:round;transition:stroke-dashoffset .6s ease}
         .ai-progress-label{font-size:.72rem;font-weight:600;color:#7c3aed;white-space:nowrap}
-        .ai-doc-status.status-all-ready{background:rgba(16,185,129,.1);color:#059669;animation:ai-pop-in .4s cubic-bezier(.34,1.56,.64,1)}
-        @keyframes ai-pop-in{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+        .ai-doc-status.status-all-ready{background:rgba(16,185,129,.1);color:#059669}
         .ai-action-btn.generating{pointer-events:none;opacity:.65}
         .ai-action-btn.generating i{display:none}
         .ai-action-btn.generating::before{content:'';display:inline-block;width:14px;height:14px;border:2px solid rgba(0,0,0,.12);border-top-color:var(--action-color);border-radius:50%;animation:ai-spin .8s linear infinite}

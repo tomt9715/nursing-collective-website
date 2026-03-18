@@ -165,7 +165,7 @@
         .ai-action-irrelevant .ai-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);border:6px solid transparent;border-top-color:#111827}
         .ai-action-irrelevant:hover .ai-tooltip{display:block}
         /* Per-button: checkmark (done) */
-        .ai-action-check{position:absolute;top:3px;right:3px;width:12px;height:12px;border-radius:50%;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.45rem;line-height:1;animation:ai-check-in .3s ease}
+        .ai-action-check{position:absolute;top:3px;right:3px;width:10px;height:10px;border-radius:50%;background:#10b981;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.35rem;line-height:1;animation:ai-check-in .3s ease;box-shadow:0 0 0 1.5px #f8fafc}
         @keyframes ai-check-in{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
         /* Per-button: spinner (generating) */
         .ai-action-spinner{position:absolute;top:3px;right:3px;width:12px;height:12px;border:1.5px solid rgba(0,0,0,.1);border-top-color:var(--action-color);border-radius:50%;animation:ai-spin .8s linear infinite}
@@ -365,6 +365,7 @@
         [data-theme="dark"] .ai-empty-state{color:#6b7280}
         [data-theme="dark"] .ai-action-btn{border-color:rgba(255,255,255,.06)}
         [data-theme="dark"] .ai-action-btn:hover:not(:disabled){border-color:var(--action-color);box-shadow:0 3px 10px rgba(0,0,0,.2)}
+        [data-theme="dark"] .ai-action-check{box-shadow:0 0 0 1.5px #1e1e2e}
         [data-theme="dark"] .ai-action-spinner{border-color:rgba(255,255,255,.1);border-top-color:var(--action-color)}
         [data-theme="dark"] .ai-progress-ring-bg{stroke:rgba(255,255,255,.1)}
         [data-theme="dark"] .ai-progress-ring-fill{stroke:#a78bfa}

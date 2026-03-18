@@ -1134,9 +1134,9 @@
         for (var i = 0; i < sections.length; i++) {
             var s = sections[i];
             var title = s.title || ('Section ' + (i + 1));
-            // Estimate ~5-10 questions per section
-            var estQs = Math.min(10, Math.max(3, Math.round(s.token_count / 200)));
-            html += '<div class="ai-section-item" data-section-index="' + i + '">' +
+            // Estimate questions: min 5, max 10, scale by content size
+            var estQs = Math.min(10, Math.max(5, Math.round(s.token_count / 100)));
+            html += '<div class="ai-section-item" data-section-index="' + i + '" data-est-qs="' + estQs + '">' +
                 '<div class="ai-si-num">' + (i + 1) + '</div>' +
                 '<div class="ai-si-title">' + escapeHtml(title) + '</div>' +
                 '<div class="ai-si-meta">~' + estQs + ' Qs</div>' +
@@ -1202,15 +1202,18 @@
             sectionTitle = titleEl ? titleEl.textContent : ('Section ' + (sectionIdx + 1));
         }
 
+        // Get estimated question count from the selected item
+        var estQs = selectedItem ? parseInt(selectedItem.dataset.estQs, 10) || 10 : 10;
+
         closeSectionPicker();
-        showToast('Generating ' + sectionTitle + ' quiz\u2026', 'info');
+        showToast('Generating ' + sectionTitle + ' quiz (' + estQs + ' questions)\u2026', 'info');
 
         try {
             var data = await apiCall('/api/ai/documents/' + docId + '/section-quiz', {
                 method: 'POST',
                 body: JSON.stringify({
                     section_index: sectionIdx,
-                    question_count: 10
+                    question_count: estQs
                 }),
                 headers: { 'Content-Type': 'application/json' }
             });

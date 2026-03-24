@@ -113,24 +113,34 @@
 
     document.head.appendChild(style);
 
-    // Insert banner as first child of body (above everything)
-    document.body.insertBefore(banner, document.body.firstChild);
+    function insertBanner() {
+        if (!document.body) return;
 
-    // Dismiss button
-    banner.querySelector('.beta-banner-close').addEventListener('click', function () {
-        banner.remove();
-        localStorage.setItem(STORAGE_KEY, 'true');
-    });
+        // Insert banner as first child of body (above everything)
+        document.body.insertBefore(banner, document.body.firstChild);
 
-    // "Let us know" link opens feedback widget on Bug Report tab
-    var bugLink = document.getElementById('beta-report-bug');
-    if (bugLink) {
-        bugLink.addEventListener('click', function (e) {
-            e.preventDefault();
-            // Open feedback widget to bug tab if available
-            if (typeof window.openFeedbackWidget === 'function') {
-                window.openFeedbackWidget('bug');
-            }
+        // Dismiss button
+        banner.querySelector('.beta-banner-close').addEventListener('click', function () {
+            banner.remove();
+            localStorage.setItem(STORAGE_KEY, 'true');
         });
+
+        // "Let us know" link opens feedback widget on Bug Report tab
+        var bugLink = document.getElementById('beta-report-bug');
+        if (bugLink) {
+            bugLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (typeof window.openFeedbackWidget === 'function') {
+                    window.openFeedbackWidget('bug');
+                }
+            });
+        }
+    }
+
+    // Body may not exist yet if script is in <head>
+    if (document.body) {
+        insertBanner();
+    } else {
+        document.addEventListener('DOMContentLoaded', insertBanner);
     }
 })();

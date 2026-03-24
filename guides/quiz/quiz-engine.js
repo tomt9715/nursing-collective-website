@@ -1045,9 +1045,6 @@ class QuizEngine {
                         <span class="quiz-progress-mode quiz-progress-mode--${this.mode}">${this.mode === 'practice' ? 'Practice' : 'Exam'}</span>
                     </div>
                 </div>
-                <div class="quiz-progress-track">
-                    <div class="quiz-progress-fill" style="width: ${pct}%"></div>
-                </div>
                 ${this._renderProgressDots()}
             </div>
             ${this.mode === 'exam' ? this._renderQuestionNavigator() : ''}
@@ -1056,8 +1053,8 @@ class QuizEngine {
                     <div class="quiz-question-header">
                         <span class="quiz-question-badge">${num}</span>
                         <span class="quiz-question-type ${typeClass}">${typeName}</span>
+                        ${q.difficulty ? `<span class="quiz-question-difficulty">${this._capitalize(q.difficulty)}</span>` : ''}
                         ${this.sectionTitle ? `<span class="quiz-section-label"><i class="fas fa-layer-group"></i> ${this._escapeHtml(this.sectionTitle)}</span>` : ''}
-                        <span class="quiz-question-difficulty">${this._capitalize(q.difficulty)}</span>
                         <button class="quiz-flag-btn ${isFlagged ? 'quiz-flag-btn--active' : ''}" data-quiz-action="toggle-flag" aria-label="Flag for review" title="Flag for review (F)">
                             <i class="fas fa-flag"></i>
                         </button>

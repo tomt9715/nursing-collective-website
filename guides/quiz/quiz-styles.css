@@ -527,10 +527,14 @@ body {
 }
 
 .quiz-question-difficulty {
-    font-size: 0.8rem;
-    font-weight: 500;
+    font-size: 0.72rem;
+    font-weight: 600;
     color: var(--quiz-text-light);
-    margin-left: auto;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: var(--quiz-border-light);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
 }
 
 .quiz-question-stem {

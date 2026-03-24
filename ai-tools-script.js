@@ -1123,11 +1123,12 @@
 
         var html = '';
 
-        // "All Sections" option at the top
+        // "All Sections" option at the top — auto-picks up to 20
+        var allCount = Math.min(maxCount, 20);
         html += '<div class="ai-section-item ai-section-all" data-section-index="all">' +
             '<div class="ai-si-num"><i class="fas fa-layer-group" style="font-size:.7rem"></i></div>' +
             '<div class="ai-si-title">All Sections (Full Review)</div>' +
-            '<div class="ai-si-meta">' + maxCount + ' Qs</div>' +
+            '<div class="ai-si-meta">~' + allCount + ' Qs</div>' +
             '</div>';
 
         // Individual sections
@@ -1160,12 +1161,8 @@
                 // Update credit cost and enable button
                 if (spGo) spGo.classList.add('enabled');
                 if (spCreditText) {
-                    if (idx === 'all') {
-                        spCreditText.textContent = 'Uses question credits from your pre-generated questions';
-                    } else {
-                        var estQ = parseInt(item.querySelector('.ai-si-meta').textContent.replace(/[^0-9]/g, ''), 10) || 10;
-                        spCreditText.textContent = 'This will use ~' + estQ + ' question credit' + (estQ === 1 ? '' : 's');
-                    }
+                    var estQ = parseInt(item.querySelector('.ai-si-meta').textContent.replace(/[^0-9]/g, ''), 10) || 10;
+                    spCreditText.textContent = 'This will use ~' + estQ + ' question credit' + (estQ === 1 ? '' : 's');
                 }
             });
         });
@@ -1186,27 +1183,70 @@
         var filename = pendingSpFilename;
         var maxCount = pendingSpMaxCount;
 
+        closeSectionPicker();
+
         if (selectedSectionIndex === 'all') {
-            // Close section picker, open question count modal for full quiz
-            closeSectionPicker();
-            openQuestionCountModal(docId, filename, maxCount);
+            // All Sections — use pre-generated questions, auto-pick ~15-20
+            var count = Math.min(maxCount, 20);
+            showToast('Starting full review quiz\u2026', 'info');
+
+            try {
+                var data = await apiCall('/api/ai/quiz/start', {
+                    method: 'POST',
+                    body: JSON.stringify({ doc_id: docId, question_count: count }),
+                    headers: { 'Content-Type': 'application/json' }
+                });
+
+                if (data && data.content) {
+                    var questions = parseAIQuizMarkdown(data.content);
+                    if (!questions || questions.length === 0) {
+                        showToast('Could not parse questions. Try regenerating.', 'error');
+                        return;
+                    }
+
+                    var quizPayload = {
+                        questions: questions,
+                        questionsPerRound: Math.min(questions.length, count),
+                        guideName: filename || 'AI Practice Questions',
+                        guideSlug: 'ai-' + (docId || 'generated'),
+                        category: 'AI Generated',
+                        categoryColor: '#3b82f6',
+                        estimatedMinutes: Math.max(5, Math.round(count * 1.5)),
+                        isAIGenerated: true,
+                        sourceDocId: docId
+                    };
+
+                    sessionStorage.setItem('aiQuizData', JSON.stringify(quizPayload));
+                    sessionStorage.setItem('aiQuizRound', '0');
+                    fetchCredits();
+                    window.location.href = 'guides/quiz/quiz.html?source=ai&doc=' + encodeURIComponent(docId || '');
+                } else {
+                    throw new Error(data.error || 'Failed to start quiz');
+                }
+            } catch (err) {
+                console.error('[AI Tools] Full quiz start failed:', err);
+                if (isQuestionCreditError(err.message)) {
+                    showQuestionExhaustedToast();
+                    fetchCredits();
+                } else {
+                    showToast(err.message || 'Failed to start quiz.', 'error');
+                }
+            }
             return;
         }
 
         // Section-specific quiz
         var sectionIdx = parseInt(selectedSectionIndex, 10);
         var sectionTitle = '';
-        var selectedItem = spList ? spList.querySelector('.ai-section-item.selected') : null;
+        var selectedItem = spList ? spList.querySelector('.ai-section-item[data-section-index="' + sectionIdx + '"]') : null;
         if (selectedItem) {
             var titleEl = selectedItem.querySelector('.ai-si-title');
             sectionTitle = titleEl ? titleEl.textContent : ('Section ' + (sectionIdx + 1));
         }
 
-        // Get estimated question count from the selected item
         var estQs = selectedItem ? parseInt(selectedItem.dataset.estQs, 10) || 10 : 10;
 
-        closeSectionPicker();
-        showToast('Generating ' + sectionTitle + ' quiz (' + estQs + ' questions)\u2026', 'info');
+        showToast('Generating ' + sectionTitle + ' quiz\u2026', 'info');
 
         try {
             var data = await apiCall('/api/ai/documents/' + docId + '/section-quiz', {
@@ -1228,7 +1268,7 @@
                 var quizPayload = {
                     questions: questions,
                     questionsPerRound: questions.length,
-                    guideName: (sectionTitle || 'Section Quiz') + ' — ' + (filename || 'AI Quiz'),
+                    guideName: (sectionTitle || 'Section Quiz') + ' \u2014 ' + (filename || 'AI Quiz'),
                     guideSlug: 'ai-section-' + docId + '-' + sectionIdx,
                     category: 'AI Generated',
                     categoryColor: '#8b5cf6',
@@ -1241,11 +1281,7 @@
 
                 sessionStorage.setItem('aiQuizData', JSON.stringify(quizPayload));
                 sessionStorage.setItem('aiQuizRound', '0');
-
-                // Refresh credit display
                 fetchCredits();
-
-                // Navigate to quiz
                 window.location.href = 'guides/quiz/quiz.html?source=ai&doc=' + encodeURIComponent(docId) + '&section=' + sectionIdx;
             } else {
                 throw new Error(data.error || 'Failed to generate section quiz');

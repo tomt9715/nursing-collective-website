@@ -1182,10 +1182,11 @@
         var docId = pendingSpDocId;
         var filename = pendingSpFilename;
         var maxCount = pendingSpMaxCount;
+        var pickedSection = selectedSectionIndex; // save before close nulls it
 
         closeSectionPicker();
 
-        if (selectedSectionIndex === 'all') {
+        if (pickedSection === 'all') {
             // All Sections — use pre-generated questions, auto-pick ~15-20
             var count = Math.min(maxCount, 20);
             showToast('Starting full review quiz\u2026', 'info');
@@ -1236,7 +1237,7 @@
         }
 
         // Section-specific quiz
-        var sectionIdx = parseInt(selectedSectionIndex, 10);
+        var sectionIdx = parseInt(pickedSection, 10);
         var sectionTitle = '';
         var selectedItem = spList ? spList.querySelector('.ai-section-item[data-section-index="' + sectionIdx + '"]') : null;
         if (selectedItem) {

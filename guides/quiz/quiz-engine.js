@@ -23,6 +23,7 @@ class QuizEngine {
         this.backLabel = config.backLabel || 'Back to Study Guide';
         this.isAIGenerated = config.isAIGenerated || false;
         this.aiPoolInfo = config.aiPoolInfo || null; // { currentRound, totalRounds, hasNextRound, questionsPerRound, totalQuestions }
+        this.sectionTitle = config.sectionTitle || null; // for section-specific quizzes
 
         // State
         this.mode = null;           // 'practice' | 'exam'
@@ -92,12 +93,12 @@ class QuizEngine {
         this._questionStartTime = null;
         this._questionElapsedSoFar.clear();
 
-        // Timer (exam mode only — practice mode has no timer)
+        // Timer — countdown for exam, elapsed for practice
         this.sessionStartTime = Date.now();
         this.sessionElapsed = 0;
-        this.timerMode = (mode === 'exam') ? 'countdown' : 'none';
+        this.timerMode = (mode === 'exam') ? 'countdown' : 'elapsed';
         this.countdownSeconds = (mode === 'exam') ? this.activeQuestions.length * 90 : 0;
-        if (mode === 'exam') this._startTimer();
+        this._startTimer();
 
         this._clearSavedState();
         window.addEventListener('beforeunload', this._boundBeforeUnload);
@@ -1047,6 +1048,7 @@ class QuizEngine {
                 <div class="quiz-progress-track">
                     <div class="quiz-progress-fill" style="width: ${pct}%"></div>
                 </div>
+                ${this._renderProgressDots()}
             </div>
             ${this.mode === 'exam' ? this._renderQuestionNavigator() : ''}
             <div class="quiz-question ${hasLabs ? 'quiz-question--has-labs' : ''}">
@@ -1054,11 +1056,13 @@ class QuizEngine {
                     <div class="quiz-question-header">
                         <span class="quiz-question-badge">${num}</span>
                         <span class="quiz-question-type ${typeClass}">${typeName}</span>
+                        ${this.sectionTitle ? `<span class="quiz-section-label"><i class="fas fa-layer-group"></i> ${this._escapeHtml(this.sectionTitle)}</span>` : ''}
                         <span class="quiz-question-difficulty">${this._capitalize(q.difficulty)}</span>
                         <button class="quiz-flag-btn ${isFlagged ? 'quiz-flag-btn--active' : ''}" data-quiz-action="toggle-flag" aria-label="Flag for review" title="Flag for review (F)">
                             <i class="fas fa-flag"></i>
                         </button>
                     </div>
+                    ${q.guideSection ? `<div class="quiz-concept-tag"><i class="fas fa-tag"></i> ${this._escapeHtml(q.guideSection)}</div>` : ''}
                     <div class="quiz-question-stem">
                         ${this._escapeHtml(q.stem)}
                         ${instructionHtml}
@@ -2496,6 +2500,30 @@ class QuizEngine {
         const mins = Math.floor(totalSeconds / 60);
         const secs = totalSeconds % 60;
         return mins + ':' + (secs < 10 ? '0' : '') + secs;
+    }
+
+    _renderProgressDots() {
+        const total = this.activeQuestions.length;
+        if (total > 50) return ''; // Too many — skip dots for very long quizzes
+        let dots = '';
+        for (let i = 0; i < total; i++) {
+            const q = this.activeQuestions[i];
+            let cls = 'quiz-progress-dot';
+            if (i === this.currentIndex) {
+                cls += ' quiz-progress-dot--current';
+            } else if (this.submitted.has(q.id)) {
+                const result = this.results.get(q.id);
+                if (result && result.correct) {
+                    cls += ' quiz-progress-dot--answered';
+                } else if (result && !result.correct) {
+                    cls += ' quiz-progress-dot--incorrect';
+                } else {
+                    cls += ' quiz-progress-dot--answered';
+                }
+            }
+            dots += `<div class="${cls}"></div>`;
+        }
+        return `<div class="quiz-progress-dots">${dots}</div>`;
     }
 
     _autoSubmitRemaining() {

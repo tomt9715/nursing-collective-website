@@ -223,6 +223,7 @@
                 backUrl: '../../ai-tools.html',
                 backLabel: 'Back to AI Tools',
                 isAIGenerated: true,
+                sectionTitle: aiData.sectionTitle || null,
                 aiPoolInfo: {
                     currentRound: currentRound,
                     totalRounds: totalRounds,

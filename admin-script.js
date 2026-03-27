@@ -1414,9 +1414,12 @@ function getPlanColor(planId) {
 function getSubscriptionPlanBadge(planId, planName) {
     const color = getPlanColor(planId);
     const icons = {
-        'monthly-access': 'fa-sync-alt',
-        'semester-access': 'fa-calendar-alt',
-        'lifetime-access': 'fa-infinity'
+        'monthly-access':    'fa-sync-alt',
+        'semester-access':   'fa-calendar-alt',
+        'lifetime-access':   'fa-infinity',
+        'ai-monthly-access': 'fa-robot',
+        'ai-semester-access':'fa-robot',
+        'ai-lifetime-access':'fa-robot',
     };
     const icon = icons[planId] || 'fa-id-badge';
     return `<span class="badge-status" style="background: ${color}; color: white;"><i class="fas ${icon}"></i> ${escapeHtml(planName || planId)}</span>`;

@@ -363,14 +363,14 @@ function setupEventListeners() {
     if (toggleNoteFormBtn) {
         toggleNoteFormBtn.addEventListener('click', function() {
             const form = document.getElementById('add-note-form');
-            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+            form.classList.toggle('hidden');
         });
     }
 
     const cancelNoteBtn = document.getElementById('cancel-note-btn');
     if (cancelNoteBtn) {
         cancelNoteBtn.addEventListener('click', function() {
-            document.getElementById('add-note-form').style.display = 'none';
+            document.getElementById('add-note-form').classList.add('hidden');
             document.getElementById('note-text').value = '';
         });
     }
@@ -391,7 +391,7 @@ function setupEventListeners() {
                     body: JSON.stringify({ note_text: noteText })
                 });
                 showToast('Note added successfully', 'success');
-                document.getElementById('add-note-form').style.display = 'none';
+                document.getElementById('add-note-form').classList.add('hidden');
                 document.getElementById('note-text').value = '';
                 loadUserProfile();
             } catch (error) {
@@ -399,16 +399,6 @@ function setupEventListeners() {
             }
         });
     }
-
-    const addGuideBtn = document.getElementById('add-guide-btn');
-    if (addGuideBtn) {
-        addGuideBtn.addEventListener('click', function() {
-            openAddGuideModal();
-        });
-    }
-
-    // Initialize Add Guide modal listeners
-    initAddGuideModal();
 
     // Add Note button in header (same as toggle)
     const addNoteBtnHeader = document.getElementById('add-note-btn');

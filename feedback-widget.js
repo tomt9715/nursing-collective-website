@@ -277,26 +277,37 @@
     }
 
     function observeCookieBanner(fab, panel) {
+        let bannerObserver = null;
+
         // Check if cookie banner exists and is visible
         function checkBanner() {
             const banner = document.querySelector('.cookie-consent-banner');
             const visible = banner && banner.classList.contains('visible');
             fab.classList.toggle('cookie-banner-visible', visible);
             panel.classList.toggle('cookie-banner-visible', visible);
+
+            // If we found the banner but aren't observing it yet, start watching
+            if (banner && !bannerObserver) {
+                bannerObserver = new MutationObserver(checkBanner);
+                bannerObserver.observe(banner, { attributes: true, attributeFilter: ['class'] });
+            }
         }
 
         // Initial check
         checkBanner();
 
-        // Watch for changes
-        const observer = new MutationObserver(checkBanner);
-        const target = document.querySelector('.cookie-consent-banner');
-        if (target) {
-            observer.observe(target, { attributes: true, attributeFilter: ['class'] });
-        }
-
-        // One-time fallback check for dynamically injected banners
-        setTimeout(checkBanner, 5000);
+        // Watch body for the cookie banner being dynamically added or removed
+        const bodyObserver = new MutationObserver(function () {
+            checkBanner();
+            // If banner was removed from DOM, reset observer so we can re-attach
+            if (!document.querySelector('.cookie-consent-banner')) {
+                if (bannerObserver) {
+                    bannerObserver.disconnect();
+                    bannerObserver = null;
+                }
+            }
+        });
+        bodyObserver.observe(document.body, { childList: true });
     }
 
     // Expose global function so beta banner (or anything) can open to a specific tab

@@ -26,7 +26,7 @@
             '<button class="beta-banner-close" aria-label="Dismiss beta banner">&times;</button>' +
         '</div>';
 
-    // Inject styles
+    // Inject styles — uses CSS custom property for reliable navbar offset
     var style = document.createElement('style');
     style.textContent =
         '.beta-banner {' +
@@ -76,6 +76,8 @@
             'font-weight: 600;' +
             'text-decoration: underline;' +
             'cursor: pointer;' +
+            'position: relative;' +
+            'z-index: 1;' +
         '}' +
         '[data-theme="dark"] .beta-banner-link {' +
             'color: #fbbf24;' +
@@ -103,6 +105,10 @@
         '.beta-banner-close:hover {' +
             'opacity: 1;' +
         '}' +
+        /* Push fixed navbar down when banner is visible */
+        'body.has-beta-banner .navbar {' +
+            'top: var(--beta-banner-h, 0px) !important;' +
+        '}' +
         '@media (max-width: 480px) {' +
             '.beta-banner { padding: 6px 12px; font-size: 0.82rem; }' +
             '.beta-banner-badge { font-size: 0.65rem; padding: 1px 6px; }' +
@@ -115,13 +121,12 @@
     function applyOffset() {
         if (!inserted) return;
         var h = banner.offsetHeight;
-        var navbar = document.querySelector('.navbar');
-        if (navbar) navbar.style.top = h + 'px';
+        document.documentElement.style.setProperty('--beta-banner-h', h + 'px');
     }
 
     function removeOffset() {
-        var navbar = document.querySelector('.navbar');
-        if (navbar) navbar.style.top = '';
+        document.body.classList.remove('has-beta-banner');
+        document.documentElement.style.removeProperty('--beta-banner-h');
     }
 
     function insertBanner() {
@@ -130,8 +135,9 @@
 
         // Insert as first child of body
         document.body.insertBefore(banner, document.body.firstChild);
+        document.body.classList.add('has-beta-banner');
 
-        // Push the fixed navbar down by banner height
+        // Set the CSS custom property for navbar offset
         requestAnimationFrame(applyOffset);
         window.addEventListener('resize', applyOffset);
 
@@ -157,10 +163,23 @@
     }
 
     function tryInsert() {
-        // If lockscreen is active, wait until it's dismissed
+        // If lockscreen is active (not yet unlocked), wait until dismissed
+        var hasLockscriptTag = document.querySelector('script[src*="lockscreen.js"]');
+        if (hasLockscriptTag && localStorage.getItem('tnc_site_unlocked') !== 'true') {
+            // Poll localStorage — lockscreen sets the key when user unlocks
+            var poll = setInterval(function () {
+                if (localStorage.getItem('tnc_site_unlocked') === 'true') {
+                    clearInterval(poll);
+                    // Small delay to let lockscreen fade out
+                    setTimeout(insertBanner, 400);
+                }
+            }, 300);
+            return;
+        }
+
+        // If the lockscreen element is still in DOM (edge case), wait for removal
         var lockscreen = document.getElementById('site-lockscreen');
         if (lockscreen) {
-            // Watch for the lockscreen overlay to be removed from the DOM
             var observer = new MutationObserver(function () {
                 if (!document.getElementById('site-lockscreen')) {
                     observer.disconnect();
@@ -170,6 +189,7 @@
             observer.observe(document.body, { childList: true });
             return;
         }
+
         insertBanner();
     }
 

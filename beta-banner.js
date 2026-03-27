@@ -25,7 +25,7 @@
             '<span class="beta-banner-badge">BETA</span>' +
             '<span class="beta-banner-text">' +
                 "You're using an early version of The Nursing Collective. " +
-                'Found a bug? <a href="#" class="beta-banner-link" id="beta-report-bug">Let us know</a>' +
+                'Found a bug? <a href="contact.html" class="beta-banner-link" id="beta-report-bug">Let us know</a>' +
             '</span>' +
             '<button class="beta-banner-close" aria-label="Dismiss beta banner">&times;</button>' +
         '</div>';
@@ -40,10 +40,7 @@
             'font-family: "Source Sans 3", "Segoe UI", sans-serif;' +
             'font-size: 0.88rem;' +
             'line-height: 1.4;' +
-            'position: fixed;' +
-            'top: 0;' +
-            'left: 0;' +
-            'right: 0;' +
+            'position: relative;' +
             'z-index: 1100;' +
         '}' +
         '[data-theme="dark"] .beta-banner {' +
@@ -82,6 +79,7 @@
             'color: #92400e;' +
             'font-weight: 600;' +
             'text-decoration: underline;' +
+            'cursor: pointer;' +
         '}' +
         '[data-theme="dark"] .beta-banner-link {' +
             'color: #fbbf24;' +
@@ -116,53 +114,48 @@
 
     document.head.appendChild(style);
 
-    function adjustNavbar() {
-        var bannerHeight = banner.offsetHeight;
+    function applyOffset() {
+        var h = banner.offsetHeight;
+        // The navbar is position:fixed top:0 — push it down by the banner height
         var navbar = document.querySelector('.navbar');
-        if (navbar) {
-            navbar.style.top = bannerHeight + 'px';
-        }
-        // Push body content down to account for both banner + navbar
-        document.body.style.paddingTop = bannerHeight + 'px';
+        if (navbar) navbar.style.top = h + 'px';
+        // Also add top margin to body so the banner itself isn't hidden under the navbar
+        document.body.style.marginTop = h + 'px';
     }
 
-    function removeBannerOffset() {
+    function removeOffset() {
         var navbar = document.querySelector('.navbar');
-        if (navbar) {
-            navbar.style.top = '';
-        }
-        document.body.style.paddingTop = '';
+        if (navbar) navbar.style.top = '';
+        document.body.style.marginTop = '';
     }
 
     function insertBanner() {
         if (!document.body) return;
 
-        // Insert banner as first child of body (above everything)
+        // Insert banner as very first child — it sits in normal flow above everything
         document.body.insertBefore(banner, document.body.firstChild);
 
-        // Push navbar down after a frame so banner height is computed
-        requestAnimationFrame(adjustNavbar);
-        window.addEventListener('resize', adjustNavbar);
+        // After render, push the fixed navbar down so it doesn't overlap
+        requestAnimationFrame(applyOffset);
+        window.addEventListener('resize', applyOffset);
 
         // Dismiss button
         banner.querySelector('.beta-banner-close').addEventListener('click', function () {
             banner.remove();
-            removeBannerOffset();
-            window.removeEventListener('resize', adjustNavbar);
+            removeOffset();
+            window.removeEventListener('resize', applyOffset);
             localStorage.setItem(STORAGE_KEY, 'true');
         });
 
-        // "Let us know" link opens feedback widget on Bug Report tab
+        // "Let us know" link — try feedback widget first, fall back to contact page
         var bugLink = document.getElementById('beta-report-bug');
         if (bugLink) {
             bugLink.addEventListener('click', function (e) {
-                e.preventDefault();
                 if (typeof window.openFeedbackWidget === 'function') {
+                    e.preventDefault();
                     window.openFeedbackWidget('bug');
-                } else {
-                    // Fallback: navigate to contact page
-                    window.location.href = 'contact.html';
                 }
+                // Otherwise the normal href="contact.html" navigates
             });
         }
     }

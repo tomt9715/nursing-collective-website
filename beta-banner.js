@@ -12,10 +12,6 @@
     var STORAGE_KEY = 'tnc_beta_banner_dismissed';
     if (localStorage.getItem(STORAGE_KEY) === 'true') return;
 
-    // Don't show on the lockscreen / splash page (only skip if lockscreen.js is present and site not unlocked)
-    var hasLockscreen = document.querySelector('script[src*="lockscreen.js"]');
-    if (hasLockscreen && localStorage.getItem('tnc_site_unlocked') !== 'true') return;
-
     // Build banner
     var banner = document.createElement('div');
     banner.className = 'beta-banner';
@@ -114,28 +110,28 @@
 
     document.head.appendChild(style);
 
+    var inserted = false;
+
     function applyOffset() {
+        if (!inserted) return;
         var h = banner.offsetHeight;
-        // The navbar is position:fixed top:0 — push it down by the banner height
         var navbar = document.querySelector('.navbar');
         if (navbar) navbar.style.top = h + 'px';
-        // Also add top margin to body so the banner itself isn't hidden under the navbar
-        document.body.style.marginTop = h + 'px';
     }
 
     function removeOffset() {
         var navbar = document.querySelector('.navbar');
         if (navbar) navbar.style.top = '';
-        document.body.style.marginTop = '';
     }
 
     function insertBanner() {
-        if (!document.body) return;
+        if (!document.body || inserted) return;
+        inserted = true;
 
-        // Insert banner as very first child — it sits in normal flow above everything
+        // Insert as first child of body
         document.body.insertBefore(banner, document.body.firstChild);
 
-        // After render, push the fixed navbar down so it doesn't overlap
+        // Push the fixed navbar down by banner height
         requestAnimationFrame(applyOffset);
         window.addEventListener('resize', applyOffset);
 
@@ -160,10 +156,27 @@
         }
     }
 
+    function tryInsert() {
+        // If lockscreen is active, wait until it's dismissed
+        var lockscreen = document.getElementById('site-lockscreen');
+        if (lockscreen) {
+            // Watch for the lockscreen overlay to be removed from the DOM
+            var observer = new MutationObserver(function () {
+                if (!document.getElementById('site-lockscreen')) {
+                    observer.disconnect();
+                    insertBanner();
+                }
+            });
+            observer.observe(document.body, { childList: true });
+            return;
+        }
+        insertBanner();
+    }
+
     // Body may not exist yet if script is in <head>
     if (document.body) {
-        insertBanner();
+        tryInsert();
     } else {
-        document.addEventListener('DOMContentLoaded', insertBanner);
+        document.addEventListener('DOMContentLoaded', tryInsert);
     }
 })();

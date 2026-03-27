@@ -66,20 +66,9 @@
         `;
     }
 
-    function buildContextField() {
-        var path = window.location.pathname || '/';
-        return `
-            <div class="feedback-context-row">
-                <label class="feedback-label">Reporting from</label>
-                <input type="text" class="feedback-context-url" value="${path}" readonly tabindex="-1" />
-            </div>
-        `;
-    }
-
     function buildFeedbackForm() {
         return `
             <form class="feedback-form" id="feedback-form">
-                ${buildContextField()}
                 <label class="feedback-label">How's your experience?</label>
                 <div class="feedback-emoji-group" role="radiogroup" aria-label="Rating">
                     <button type="button" class="feedback-emoji" data-rating="5"
@@ -120,7 +109,6 @@
     function buildBugForm() {
         return `
             <form class="feedback-form" id="feedback-form">
-                ${buildContextField()}
                 <label class="feedback-label">Bug category</label>
                 <select class="feedback-select" id="bug-category">
                     <option value="">Select a category...</option>

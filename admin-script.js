@@ -219,6 +219,69 @@ function setupEventListeners() {
         btn.addEventListener('click', () => switchSection(btn.dataset.quickNav));
     });
 
+    // Mobile menu toggle (hamburger)
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    if (mobileMenuBtn && navLinks) {
+        mobileMenuBtn.addEventListener('click', function() {
+            const isOpen = navLinks.classList.contains('mobile-open');
+            navLinks.classList.toggle('mobile-open');
+            mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
+            const icon = mobileMenuBtn.querySelector('i');
+            if (icon) { icon.classList.toggle('fa-bars'); icon.classList.toggle('fa-times'); }
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                mobileMenuBtn.setAttribute('aria-expanded', 'false');
+                const icon = mobileMenuBtn.querySelector('i');
+                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+            });
+        });
+    }
+
+    // User detail modal
+    document.getElementById('close-user-detail-modal-btn')?.addEventListener('click', closeUserDetailModal);
+    document.getElementById('open-full-profile-btn')?.addEventListener('click', () => {
+        if (currentUserEmail) window.open(`admin-user.html?email=${encodeURIComponent(currentUserEmail)}`, '_blank');
+    });
+
+    // Subscription modal
+    document.getElementById('close-subscription-modal-btn')?.addEventListener('click', closeSubscriptionModal);
+    document.getElementById('cancel-subscription-btn')?.addEventListener('click', closeSubscriptionModal);
+    document.getElementById('submit-subscription-btn')?.addEventListener('click', submitSubscription);
+
+    // Subscriptions tab search and filter
+    document.getElementById('subscription-search-btn')?.addEventListener('click', () => loadSubscriptions(1));
+    document.getElementById('subscription-search')?.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') loadSubscriptions(1);
+    });
+    document.getElementById('subscription-plan-filter')?.addEventListener('change', () => loadSubscriptions(1));
+    document.getElementById('subscription-status-filter')?.addEventListener('change', () => loadSubscriptions(1));
+
+    // Confirm modal
+    document.getElementById('confirm-cancel-btn')?.addEventListener('click', closeConfirmModal);
+
+    // Deleted accounts
+    document.getElementById('view-all-deleted-btn')?.addEventListener('click', openDeletedAccountsModal);
+    document.getElementById('close-deleted-accounts-modal-btn')?.addEventListener('click', closeDeletedAccountsModal);
+    document.getElementById('deleted-filter-apply-btn')?.addEventListener('click', () => loadDeletedAccountsFull(1));
+
+    // Quiz report modal
+    document.getElementById('close-quiz-report-modal-btn')?.addEventListener('click', () => {
+        document.getElementById('quiz-report-detail-modal').classList.remove('active');
+    });
+
+    // Feedback modal
+    document.getElementById('close-feedback-modal-btn')?.addEventListener('click', () => {
+        document.getElementById('feedback-detail-modal').classList.remove('active');
+    });
+
+    // AI Tools
+    document.getElementById('reindex-guides-btn')?.addEventListener('click', reindexGuides);
+    document.getElementById('credit-adjust-btn')?.addEventListener('click', adjustUserCredits);
+    document.getElementById('admin-role-btn')?.addEventListener('click', manageAdminRole);
+
     // User search (in Users tab) - with autocomplete
     const userSearchInput = document.getElementById('user-search');
     const userSearchAutocomplete = document.getElementById('user-search-autocomplete');
@@ -821,11 +884,6 @@ async function loadDeletedAccounts() {
         console.error('Error loading deleted accounts:', error);
         tbody.innerHTML = '<tr><td colspan="5" class="loading-cell">Failed to load deleted accounts</td></tr>';
     }
-}
-
-// Keep backward-compatible alias
-async function loadRecentlyDeletedAccounts() {
-    return loadDeletedAccounts();
 }
 
 // ==================== Deleted Accounts Modal ====================
@@ -1476,49 +1534,33 @@ async function loadSubscriptions(page = 1) {
         const planFilter = document.getElementById('subscription-plan-filter')?.value || '';
         const statusFilter = document.getElementById('subscription-status-filter')?.value || 'active';
 
-        const params = new URLSearchParams({
-            page: page,
-            per_page: 25,
-            search: search
-        });
+        const params = new URLSearchParams({ page, per_page: 25 });
+        if (search) params.append('search', search);
+        if (planFilter) params.append('plan_id', planFilter);
+        if (statusFilter) params.append('status', statusFilter);
 
-        const data = await apiCall(`/admin/users?${params}`);
+        const data = await apiCall(`/admin/subscriptions?${params}`);
+        const subs = data.subscriptions || [];
 
-        // Fetch subscription data for users
-        const usersWithSubs = [];
-        for (const user of data.users) {
-            try {
-                const userData = await apiCall(`/admin/users/by-email/${encodeURIComponent(user.email)}`);
-                if (userData.subscription) {
-                    if (planFilter && userData.subscription.plan_id !== planFilter) continue;
-                    if (statusFilter && userData.subscription.status !== statusFilter) continue;
-                    usersWithSubs.push({ user, subscription: userData.subscription });
-                }
-            } catch {
-                continue;
-            }
-        }
-
-        if (usersWithSubs.length === 0) {
+        if (subs.length === 0) {
             tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">No subscriptions found</td></tr>';
-            if (mobileContainer) {
-                mobileContainer.innerHTML = '<div class="loading-cell">No subscriptions found</div>';
-            }
+            if (mobileContainer) mobileContainer.innerHTML = '<div class="loading-cell">No subscriptions found</div>';
             document.getElementById('subscriptions-count').textContent = '0 subscriptions';
             document.getElementById('subscriptions-pagination').innerHTML = '';
             return;
         }
 
-        document.getElementById('subscriptions-count').textContent = `${usersWithSubs.length} subscription${usersWithSubs.length !== 1 ? 's' : ''}`;
+        const total = data.pagination?.total || subs.length;
+        document.getElementById('subscriptions-count').textContent = `${total} subscription${total !== 1 ? 's' : ''}`;
 
         const displayName = user => escapeHtml(`${user.first_name || ''} ${user.last_name || ''}`.trim() || user.email);
 
         // Desktop table
-        tbody.innerHTML = usersWithSubs.map(({ user, subscription: sub }) => `
+        tbody.innerHTML = subs.map(sub => `
             <tr>
                 <td>
-                    <strong>${displayName(user)}</strong>
-                    <div style="font-size: 12px; color: var(--text-color-muted, #666);">${escapeHtml(user.email)}</div>
+                    <strong>${displayName(sub.user)}</strong>
+                    <div style="font-size: 12px; color: var(--text-color-muted, #666);">${escapeHtml(sub.user.email)}</div>
                 </td>
                 <td>${getSubscriptionPlanBadge(sub.plan_id, sub.plan_name)}</td>
                 <td>
@@ -1531,7 +1573,7 @@ async function loadSubscriptions(page = 1) {
                 <td>${sub.expires_at ? formatDate(sub.expires_at) : '<em>Never</em>'}</td>
                 <td>
                     <div class="table-actions">
-                        <button class="action-btn primary" data-view-user="${escapeHtml(user.email)}">
+                        <button class="action-btn primary" data-view-user="${escapeHtml(sub.user.email)}">
                             <i class="fas fa-eye"></i> View
                         </button>
                     </div>
@@ -1541,13 +1583,13 @@ async function loadSubscriptions(page = 1) {
 
         // Mobile cards
         if (mobileContainer) {
-            mobileContainer.innerHTML = usersWithSubs.map(({ user, subscription: sub }) => `
-                <a href="admin-user.html?email=${encodeURIComponent(user.email)}" class="user-card">
+            mobileContainer.innerHTML = subs.map(sub => `
+                <a href="admin-user.html?email=${encodeURIComponent(sub.user.email)}" class="user-card">
                     <div class="user-card-header">
-                        <div class="user-card-name">${displayName(user)}</div>
+                        <div class="user-card-name">${displayName(sub.user)}</div>
                         <i class="fas fa-chevron-right user-card-arrow"></i>
                     </div>
-                    <div class="user-card-email">${escapeHtml(user.email)}</div>
+                    <div class="user-card-email">${escapeHtml(sub.user.email)}</div>
                     <div class="user-card-footer">
                         ${getSubscriptionPlanBadge(sub.plan_id, sub.plan_name)}
                         <span style="font-size: 12px; color: var(--text-color-muted, #666);">
@@ -1574,9 +1616,7 @@ async function loadSubscriptions(page = 1) {
     } catch (error) {
         console.error('Error loading subscriptions:', error);
         tbody.innerHTML = '<tr><td colspan="6" class="loading-cell">Error loading subscriptions</td></tr>';
-        if (mobileContainer) {
-            mobileContainer.innerHTML = '<div class="loading-cell">Error loading subscriptions</div>';
-        }
+        if (mobileContainer) mobileContainer.innerHTML = '<div class="loading-cell">Error loading subscriptions</div>';
         showToast('Failed to load subscriptions', 'error');
     }
 }
@@ -1599,10 +1639,10 @@ async function loadAuditLog(page = 1) {
             per_page: 50
         });
 
-        const actionType = document.getElementById('audit-action-filter').value;
-        const targetUser = document.getElementById('audit-user-filter').value;
-        const dateFrom = document.getElementById('audit-date-from').value;
-        const dateTo = document.getElementById('audit-date-to').value;
+        const actionType = document.getElementById('audit-action-filter')?.value || '';
+        const targetUser = document.getElementById('audit-user-filter')?.value || '';
+        const dateFrom = document.getElementById('audit-date-from')?.value || '';
+        const dateTo = document.getElementById('audit-date-to')?.value || '';
 
         if (actionType) params.append('action_type', actionType);
         if (targetUser) params.append('target_user', targetUser);
@@ -1757,10 +1797,10 @@ function getAuditCardClass(actionType) {
 async function exportAuditLog() {
     try {
         const params = new URLSearchParams();
-        const actionType = document.getElementById('audit-action-filter').value;
-        const targetUser = document.getElementById('audit-user-filter').value;
-        const dateFrom = document.getElementById('audit-date-from').value;
-        const dateTo = document.getElementById('audit-date-to').value;
+        const actionType = document.getElementById('audit-action-filter')?.value || '';
+        const targetUser = document.getElementById('audit-user-filter')?.value || '';
+        const dateFrom = document.getElementById('audit-date-from')?.value || '';
+        const dateTo = document.getElementById('audit-date-to')?.value || '';
 
         if (actionType) params.append('action_type', actionType);
         if (targetUser) params.append('target_user', targetUser);
@@ -2440,162 +2480,6 @@ async function exportAllData() {
 
 // API_URL is defined in api-service.js which is loaded before this script
 
-// ==================== Event Listeners (replaces inline onclick handlers) ====================
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle (hamburger menu)
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const navLinks = document.querySelector('.nav-links');
-
-    if (mobileMenuBtn && navLinks) {
-        mobileMenuBtn.addEventListener('click', function() {
-            const isOpen = navLinks.classList.contains('mobile-open');
-            navLinks.classList.toggle('mobile-open');
-            mobileMenuBtn.setAttribute('aria-expanded', !isOpen);
-
-            // Toggle icon between bars and times
-            const icon = mobileMenuBtn.querySelector('i');
-            if (icon) {
-                icon.classList.toggle('fa-bars');
-                icon.classList.toggle('fa-times');
-            }
-        });
-
-        // Close mobile menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('mobile-open');
-                mobileMenuBtn.setAttribute('aria-expanded', 'false');
-                const icon = mobileMenuBtn.querySelector('i');
-                if (icon) {
-                    icon.classList.remove('fa-times');
-                    icon.classList.add('fa-bars');
-                }
-            });
-        });
-    }
-
-    // Quick nav buttons with data-quick-nav attribute
-    document.querySelectorAll('[data-quick-nav]').forEach(btn => {
-        btn.addEventListener('click', function() {
-            switchSection(this.dataset.quickNav);
-        });
-    });
-
-    // Note: Export button listener is set up in setupEventListeners() to show dropdown options
-
-    // User detail modal close button
-    const closeUserDetailModalBtn = document.getElementById('close-user-detail-modal-btn');
-    if (closeUserDetailModalBtn) {
-        closeUserDetailModalBtn.addEventListener('click', closeUserDetailModal);
-    }
-
-    // Open full profile button
-    const openFullProfileBtn = document.getElementById('open-full-profile-btn');
-    if (openFullProfileBtn) {
-        openFullProfileBtn.addEventListener('click', () => {
-            if (currentUserEmail) {
-                window.open(`admin-user.html?email=${encodeURIComponent(currentUserEmail)}`, '_blank');
-            }
-        });
-    }
-
-    // Subscription modal buttons
-    const closeSubscriptionModalBtn = document.getElementById('close-subscription-modal-btn');
-    if (closeSubscriptionModalBtn) {
-        closeSubscriptionModalBtn.addEventListener('click', closeSubscriptionModal);
-    }
-
-    const cancelSubscriptionBtn = document.getElementById('cancel-subscription-btn');
-    if (cancelSubscriptionBtn) {
-        cancelSubscriptionBtn.addEventListener('click', closeSubscriptionModal);
-    }
-
-    const submitSubscriptionBtn = document.getElementById('submit-subscription-btn');
-    if (submitSubscriptionBtn) {
-        submitSubscriptionBtn.addEventListener('click', submitSubscription);
-    }
-
-    // Subscriptions tab search and filter
-    const subscriptionSearchBtn = document.getElementById('subscription-search-btn');
-    if (subscriptionSearchBtn) {
-        subscriptionSearchBtn.addEventListener('click', () => loadSubscriptions(1));
-    }
-
-    const subscriptionSearchInput = document.getElementById('subscription-search');
-    if (subscriptionSearchInput) {
-        subscriptionSearchInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') loadSubscriptions(1);
-        });
-    }
-
-    const subscriptionPlanFilter = document.getElementById('subscription-plan-filter');
-    if (subscriptionPlanFilter) {
-        subscriptionPlanFilter.addEventListener('change', () => loadSubscriptions(1));
-    }
-
-    const subscriptionStatusFilter = document.getElementById('subscription-status-filter');
-    if (subscriptionStatusFilter) {
-        subscriptionStatusFilter.addEventListener('change', () => loadSubscriptions(1));
-    }
-
-    // Confirm modal cancel button
-    const confirmCancelBtn = document.getElementById('confirm-cancel-btn');
-    if (confirmCancelBtn) {
-        confirmCancelBtn.addEventListener('click', closeConfirmModal);
-    }
-
-    // View All Deleted Accounts button
-    const viewAllDeletedBtn = document.getElementById('view-all-deleted-btn');
-    if (viewAllDeletedBtn) {
-        viewAllDeletedBtn.addEventListener('click', openDeletedAccountsModal);
-    }
-
-    // Deleted accounts modal close button
-    const closeDeletedAccountsModalBtn = document.getElementById('close-deleted-accounts-modal-btn');
-    if (closeDeletedAccountsModalBtn) {
-        closeDeletedAccountsModalBtn.addEventListener('click', closeDeletedAccountsModal);
-    }
-
-    // Deleted accounts filter apply button
-    const deletedFilterApplyBtn = document.getElementById('deleted-filter-apply-btn');
-    if (deletedFilterApplyBtn) {
-        deletedFilterApplyBtn.addEventListener('click', () => loadDeletedAccountsFull(1));
-    }
-
-    // Quiz report detail modal close button
-    const closeQuizReportModalBtn = document.getElementById('close-quiz-report-modal-btn');
-    if (closeQuizReportModalBtn) {
-        closeQuizReportModalBtn.addEventListener('click', () => {
-            document.getElementById('quiz-report-detail-modal').classList.remove('active');
-        });
-    }
-
-    const closeFeedbackModalBtn = document.getElementById('close-feedback-modal-btn');
-    if (closeFeedbackModalBtn) {
-        closeFeedbackModalBtn.addEventListener('click', () => {
-            document.getElementById('feedback-detail-modal').classList.remove('active');
-        });
-    }
-
-    // AI Tools: Reindex button
-    const reindexBtn = document.getElementById('reindex-guides-btn');
-    if (reindexBtn) {
-        reindexBtn.addEventListener('click', reindexGuides);
-    }
-
-    // AI Tools: Credit adjust button
-    const creditAdjustBtn = document.getElementById('credit-adjust-btn');
-    if (creditAdjustBtn) {
-        creditAdjustBtn.addEventListener('click', adjustUserCredits);
-    }
-
-    const adminRoleBtn = document.getElementById('admin-role-btn');
-    if (adminRoleBtn) {
-        adminRoleBtn.addEventListener('click', manageAdminRole);
-    }
-
-});
 
 // ==================== AI Usage & Guide Index Section Loaders ====================
 

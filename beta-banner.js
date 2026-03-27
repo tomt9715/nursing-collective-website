@@ -162,6 +162,7 @@
             bugLink.addEventListener('click', function (e) {
                 if (typeof window.openFeedbackWidget === 'function') {
                     e.preventDefault();
+                    e.stopPropagation();
                     window.openFeedbackWidget('bug');
                 }
                 // Otherwise the normal href="contact.html" navigates

@@ -578,8 +578,8 @@ async function loadDashboardHome() {
             `).join('');
         }
 
-        // Load subscription overview
-        await loadSubscriptionOverview();
+        // Load subscription overview (pass data to avoid duplicate API call)
+        await loadSubscriptionOverview(data);
 
     } catch (error) {
         console.error('Error loading dashboard:', error);
@@ -705,14 +705,13 @@ function updateProviderBars(providers, totalUsers) {
 }
 
 // Load subscription overview for dashboard
-async function loadSubscriptionOverview() {
+async function loadSubscriptionOverview(dashboardData) {
     const container = document.getElementById('subscription-overview');
     if (!container) return;
 
     try {
-        // Use the subscription_stats already loaded in the dashboard data
-        // Re-fetch to get the latest
-        const data = await apiCall('/admin/dashboard/enhanced');
+        // Use dashboard data passed from loadDashboardHome to avoid duplicate API call
+        const data = dashboardData || await apiCall('/admin/dashboard/enhanced');
         const stats = data.subscription_stats || {};
 
         const totalActive = stats.total_active || 0;
@@ -2158,15 +2157,22 @@ function openFeedbackDetail(feedbackId, items) {
         ).join('');
     };
 
+    const ratingEmojis = { 5: '\u{1F60D}', 4: '\u{1F642}', 3: '\u{1F610}', 2: '\u{1F615}', 1: '\u{1F621}' };
+    const ratingDisplay = (rating) => {
+        if (!rating) return 'N/A';
+        return (ratingEmojis[rating] || '') + ' ' + ratingStars(rating);
+    };
+
     body.innerHTML = `
         <div style="margin-bottom: 16px;">
             <table style="width: 100%; font-size: 14px;">
                 <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666); width: 120px;">ID</td><td style="padding: 6px 0;"><strong>#${item.id}</strong></td></tr>
                 <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Type</td><td style="padding: 6px 0; font-weight: 600;">${item.type === 'bug' ? '<i class="fas fa-bug" style="color:#dc2626"></i> Bug Report' : '<i class="fas fa-star" style="color:#d97706"></i> Feedback'}</td></tr>
                 ${item.category ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Category</td><td style="padding: 6px 0;">${escapeHtml(item.category)}</td></tr>` : ''}
-                ${item.type === 'feedback' ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Rating</td><td style="padding: 6px 0;">${ratingStars(item.rating)}</td></tr>` : ''}
-                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">User</td><td style="padding: 6px 0;">${escapeHtml(item.user_email)}</td></tr>
-                ${item.page_url ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Page</td><td style="padding: 6px 0; word-break: break-all; font-size: 13px;">${escapeHtml(item.page_url)}</td></tr>` : ''}
+                ${item.type === 'feedback' ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Rating</td><td style="padding: 6px 0;">${ratingDisplay(item.rating)}</td></tr>` : ''}
+                <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">User</td><td style="padding: 6px 0;">${escapeHtml(item.user_email)}${item.is_authenticated ? ' <span style="color:#059669;font-size:12px;"><i class="fas fa-check-circle"></i> Logged in</span>' : ' <span style="color:var(--text-color-muted,#999);font-size:12px;">Guest</span>'}</td></tr>
+                ${item.page_title ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Page Title</td><td style="padding: 6px 0;">${escapeHtml(item.page_title)}</td></tr>` : ''}
+                ${item.page_url ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Page URL</td><td style="padding: 6px 0; word-break: break-all; font-size: 13px;">${escapeHtml(item.page_url)}</td></tr>` : ''}
                 ${item.screen_size ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Screen</td><td style="padding: 6px 0;">${escapeHtml(item.screen_size)}</td></tr>` : ''}
                 ${item.browser_info ? `<tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Browser</td><td style="padding: 6px 0; font-size: 12px; word-break: break-all;">${escapeHtml(item.browser_info)}</td></tr>` : ''}
                 <tr><td style="padding: 6px 0; color: var(--text-color-muted, #666);">Submitted</td><td style="padding: 6px 0;">${formatDateTime(item.created_at)}</td></tr>
@@ -2183,6 +2189,14 @@ function openFeedbackDetail(feedbackId, items) {
         <div style="background: var(--background-color-alt, #f8f9fa); border-left: 3px solid #f59e0b; padding: 12px 16px; border-radius: 6px; margin-bottom: 16px; font-size: 14px;">
             <strong style="font-size: 12px; color: var(--text-color-muted, #666); display: block; margin-bottom: 4px;">Steps to Reproduce</strong>
             <div style="white-space: pre-wrap;">${escapeHtml(item.steps_to_reproduce)}</div>
+        </div>` : ''}
+
+        ${item.has_screenshot ? `
+        <div style="margin-bottom: 16px;">
+            <strong style="font-size: 12px; color: var(--text-color-muted, #666); display: block; margin-bottom: 8px;">Screenshot</strong>
+            <div id="feedback-screenshot-container" style="text-align: center; color: var(--text-color-muted, #999); font-size: 13px;">
+                <i class="fas fa-spinner fa-spin"></i> Loading screenshot...
+            </div>
         </div>` : ''}
 
         ${item.status !== 'resolved' ? `
@@ -2209,6 +2223,35 @@ function openFeedbackDetail(feedbackId, items) {
     const resolveBtn = document.getElementById('feedback-resolve-btn');
     if (resolveBtn) {
         resolveBtn.addEventListener('click', () => updateFeedbackStatus(item.id, 'resolved'));
+    }
+
+    // Load screenshot if present
+    if (item.has_screenshot) {
+        loadFeedbackScreenshot(item.id);
+    }
+}
+
+async function loadFeedbackScreenshot(feedbackId) {
+    const container = document.getElementById('feedback-screenshot-container');
+    if (!container) return;
+
+    try {
+        const data = await apiCall(`/admin/feedback/${feedbackId}/screenshot`);
+        if (data.screenshot) {
+            container.innerHTML = `
+                <img src="${data.screenshot}" alt="Bug report screenshot"
+                     style="max-width: 100%; max-height: 300px; border-radius: 8px; border: 1px solid var(--border-color, #e5e7eb); cursor: pointer;"
+                     title="Click to open full size" />
+            `;
+            container.querySelector('img').addEventListener('click', function () {
+                window.open(this.src, '_blank');
+            });
+        } else {
+            container.innerHTML = '<span style="color: var(--text-color-muted, #999);">Screenshot unavailable</span>';
+        }
+    } catch (err) {
+        console.error('Failed to load screenshot:', err);
+        container.innerHTML = '<span style="color: #ef4444;">Failed to load screenshot</span>';
     }
 }
 

@@ -40,8 +40,11 @@
             'font-family: "Source Sans 3", "Segoe UI", sans-serif;' +
             'font-size: 0.88rem;' +
             'line-height: 1.4;' +
-            'position: relative;' +
-            'z-index: 1001;' +
+            'position: fixed;' +
+            'top: 0;' +
+            'left: 0;' +
+            'right: 0;' +
+            'z-index: 1100;' +
         '}' +
         '[data-theme="dark"] .beta-banner {' +
             'background: #78350f;' +
@@ -113,15 +116,39 @@
 
     document.head.appendChild(style);
 
+    function adjustNavbar() {
+        var bannerHeight = banner.offsetHeight;
+        var navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.style.top = bannerHeight + 'px';
+        }
+        // Push body content down to account for both banner + navbar
+        document.body.style.paddingTop = bannerHeight + 'px';
+    }
+
+    function removeBannerOffset() {
+        var navbar = document.querySelector('.navbar');
+        if (navbar) {
+            navbar.style.top = '';
+        }
+        document.body.style.paddingTop = '';
+    }
+
     function insertBanner() {
         if (!document.body) return;
 
         // Insert banner as first child of body (above everything)
         document.body.insertBefore(banner, document.body.firstChild);
 
+        // Push navbar down after a frame so banner height is computed
+        requestAnimationFrame(adjustNavbar);
+        window.addEventListener('resize', adjustNavbar);
+
         // Dismiss button
         banner.querySelector('.beta-banner-close').addEventListener('click', function () {
             banner.remove();
+            removeBannerOffset();
+            window.removeEventListener('resize', adjustNavbar);
             localStorage.setItem(STORAGE_KEY, 'true');
         });
 
@@ -132,6 +159,9 @@
                 e.preventDefault();
                 if (typeof window.openFeedbackWidget === 'function') {
                     window.openFeedbackWidget('bug');
+                } else {
+                    // Fallback: navigate to contact page
+                    window.location.href = 'contact.html';
                 }
             });
         }

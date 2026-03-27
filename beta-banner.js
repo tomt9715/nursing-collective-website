@@ -36,8 +36,12 @@
             'font-family: "Source Sans 3", "Segoe UI", sans-serif;' +
             'font-size: 0.88rem;' +
             'line-height: 1.4;' +
-            'position: relative;' +
-            'z-index: 1100;' +
+            'position: fixed;' +
+            'top: 0;' +
+            'left: 0;' +
+            'right: 0;' +
+            'z-index: 1050;' +
+            'pointer-events: auto;' +
         '}' +
         '[data-theme="dark"] .beta-banner {' +
             'background: #78350f;' +
@@ -105,7 +109,10 @@
         '.beta-banner-close:hover {' +
             'opacity: 1;' +
         '}' +
-        /* Push fixed navbar down when banner is visible */
+        /* Push fixed navbar and body content down when banner is visible */
+        'body.has-beta-banner {' +
+            'padding-top: var(--beta-banner-h, 0px);' +
+        '}' +
         'body.has-beta-banner .navbar {' +
             'top: var(--beta-banner-h, 0px) !important;' +
         '}' +

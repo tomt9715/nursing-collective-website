@@ -55,6 +55,8 @@
     transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease, bottom 0.3s ease;
     overflow: hidden;
     font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .feedback-panel.open {
@@ -74,6 +76,7 @@
     justify-content: space-between;
     padding: 16px 20px 12px;
     border-bottom: 1px solid var(--border-color, #e0e0e0);
+    flex-shrink: 0;
 }
 
 .feedback-header h3 {
@@ -104,6 +107,7 @@
     padding: 0 20px;
     gap: 0;
     border-bottom: 1px solid var(--border-color, #e0e0e0);
+    flex-shrink: 0;
 }
 
 .feedback-tab {
@@ -132,7 +136,8 @@
 .feedback-body {
     padding: 16px 20px 20px;
     overflow-y: auto;
-    max-height: 420px;
+    flex: 1;
+    min-height: 0;
 }
 
 .feedback-form {

@@ -2,6 +2,14 @@
  * Feedback Widget
  * Floating button with slide-up panel for feedback and bug reports
  * Supports both authenticated and guest users
+ *
+ * Features:
+ * - Emoji reactions for feedback rating
+ * - Screenshot attachment for bug reports (base64)
+ * - Character counters on textareas
+ * - Category validation on bug reports
+ * - Auto-captures page title and auth status
+ * - Keyboard accessible (arrow keys for emoji, Enter/Space for screenshot)
  */
 (function () {
     'use strict';
@@ -9,17 +17,17 @@
     let panelOpen = false;
     let currentTab = 'bug'; // 'bug' or 'feedback'
     let selectedRating = 0;
+    let screenshotBase64 = null;
 
-    // Build the widget DOM
+    // ─── Widget creation ───────────────────────────────────────
+
     function createWidget() {
-        // Floating button
         const fab = document.createElement('button');
         fab.className = 'feedback-fab';
         fab.setAttribute('aria-label', 'Send feedback');
         fab.setAttribute('title', 'Send feedback');
         fab.innerHTML = '<i class="fas fa-comment-dots"></i>';
 
-        // Panel
         const panel = document.createElement('div');
         panel.className = 'feedback-panel';
         panel.setAttribute('role', 'dialog');
@@ -29,15 +37,14 @@
         document.body.appendChild(fab);
         document.body.appendChild(panel);
 
-        // Bind events
         fab.addEventListener('click', togglePanel);
         bindPanelEvents(panel);
-
-        // Watch for cookie banner
         observeCookieBanner(fab, panel);
 
         return { fab, panel };
     }
+
+    // ─── HTML builders ─────────────────────────────────────────
 
     function buildPanelHTML() {
         return `
@@ -59,16 +66,47 @@
         `;
     }
 
+    function buildContextField() {
+        var path = window.location.pathname || '/';
+        return `
+            <div class="feedback-context-row">
+                <label class="feedback-label">Reporting from</label>
+                <input type="text" class="feedback-context-url" value="${path}" readonly tabindex="-1" />
+            </div>
+        `;
+    }
+
     function buildFeedbackForm() {
         return `
             <form class="feedback-form" id="feedback-form">
+                ${buildContextField()}
                 <label class="feedback-label">How's your experience?</label>
-                <div class="feedback-stars" role="radiogroup" aria-label="Rating">
-                    ${[1,2,3,4,5].map(n => `
-                        <button type="button" class="feedback-star" data-rating="${n}" aria-label="${n} star${n > 1 ? 's' : ''}">
-                            <i class="fas fa-star"></i>
-                        </button>
-                    `).join('')}
+                <div class="feedback-emoji-group" role="radiogroup" aria-label="Rating">
+                    <button type="button" class="feedback-emoji" data-rating="5"
+                        role="radio" aria-checked="false" aria-label="Love it" tabindex="0">
+                        <span class="feedback-emoji-icon">\u{1F60D}</span>
+                        <span class="feedback-emoji-label">Love it</span>
+                    </button>
+                    <button type="button" class="feedback-emoji" data-rating="4"
+                        role="radio" aria-checked="false" aria-label="Good" tabindex="-1">
+                        <span class="feedback-emoji-icon">\u{1F642}</span>
+                        <span class="feedback-emoji-label">Good</span>
+                    </button>
+                    <button type="button" class="feedback-emoji" data-rating="3"
+                        role="radio" aria-checked="false" aria-label="Okay" tabindex="-1">
+                        <span class="feedback-emoji-icon">\u{1F610}</span>
+                        <span class="feedback-emoji-label">Okay</span>
+                    </button>
+                    <button type="button" class="feedback-emoji" data-rating="2"
+                        role="radio" aria-checked="false" aria-label="Confused" tabindex="-1">
+                        <span class="feedback-emoji-icon">\u{1F615}</span>
+                        <span class="feedback-emoji-label">Confused</span>
+                    </button>
+                    <button type="button" class="feedback-emoji" data-rating="1"
+                        role="radio" aria-checked="false" aria-label="Frustrated" tabindex="-1">
+                        <span class="feedback-emoji-icon">\u{1F621}</span>
+                        <span class="feedback-emoji-label">Frustrated</span>
+                    </button>
                 </div>
                 <label class="feedback-label">Tell us more</label>
                 <textarea class="feedback-textarea" placeholder="What do you like? What could be better?" maxlength="5000" required></textarea>
@@ -82,6 +120,7 @@
     function buildBugForm() {
         return `
             <form class="feedback-form" id="feedback-form">
+                ${buildContextField()}
                 <label class="feedback-label">Bug category</label>
                 <select class="feedback-select" id="bug-category">
                     <option value="">Select a category...</option>
@@ -94,9 +133,22 @@
                     <option value="other">Other</option>
                 </select>
                 <label class="feedback-label">What happened?</label>
-                <textarea class="feedback-textarea" placeholder="Describe the bug — what did you expect to happen?" maxlength="5000" required></textarea>
+                <textarea class="feedback-textarea" placeholder="Describe the bug \u2014 what did you expect to happen?" maxlength="5000" required></textarea>
                 <label class="feedback-label">Steps to reproduce <span style="font-weight:400;color:var(--text-light,#9ca3af)">(optional)</span></label>
                 <textarea class="feedback-textarea feedback-textarea-sm" id="bug-steps" placeholder="What were you doing when this happened?" maxlength="2000"></textarea>
+                <div class="feedback-screenshot-row">
+                    <label class="feedback-label">Screenshot <span style="font-weight:400;color:var(--text-light,#9ca3af)">(optional)</span></label>
+                    <label class="feedback-screenshot-trigger" tabindex="0" role="button" aria-label="Choose screenshot file">
+                        <i class="fas fa-camera"></i>
+                        <span class="feedback-screenshot-text">Click to add screenshot</span>
+                        <input type="file" accept="image/*" class="feedback-screenshot-input" />
+                    </label>
+                    <div class="feedback-screenshot-preview" style="display:none">
+                        <img class="feedback-screenshot-img" alt="Screenshot preview" />
+                        <button type="button" class="feedback-screenshot-remove" aria-label="Remove screenshot">&times;</button>
+                    </div>
+                    <div class="feedback-screenshot-error" style="display:none"></div>
+                </div>
                 <button type="submit" class="feedback-submit">
                     <i class="fas fa-bug"></i> Report Bug
                 </button>
@@ -104,13 +156,14 @@
         `;
     }
 
+    // ─── Panel open/close ──────────────────────────────────────
+
     function togglePanel() {
         const panel = document.querySelector('.feedback-panel');
         panelOpen = !panelOpen;
         panel.classList.toggle('open', panelOpen);
 
         if (panelOpen) {
-            // Focus the textarea when opened
             setTimeout(() => {
                 const ta = panel.querySelector('.feedback-textarea');
                 if (ta) ta.focus();
@@ -128,37 +181,33 @@
         if (tab === currentTab) return;
         currentTab = tab;
         selectedRating = 0;
+        screenshotBase64 = null;
 
-        // Update tab buttons
         document.querySelectorAll('.feedback-tab').forEach(btn => {
             btn.classList.toggle('active', btn.dataset.tab === tab);
         });
 
-        // Swap form
         const body = document.querySelector('.feedback-body');
         body.innerHTML = tab === 'feedback' ? buildFeedbackForm() : buildBugForm();
 
-        // Re-bind form events
         bindFormEvents();
     }
 
+    // ─── Event binding ─────────────────────────────────────────
+
     function bindPanelEvents(panel) {
-        // Close button
         panel.querySelector('.feedback-close').addEventListener('click', closePanel);
 
-        // Tab switching
         panel.querySelectorAll('.feedback-tab').forEach(tab => {
             tab.addEventListener('click', function () {
                 switchTab(this.dataset.tab);
             });
         });
 
-        // Close on Escape
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && panelOpen) closePanel();
         });
 
-        // Close on click outside
         document.addEventListener('click', function (e) {
             if (!panelOpen) return;
             const panel = document.querySelector('.feedback-panel');
@@ -168,20 +217,77 @@
             }
         });
 
-        // Bind form-specific events
         bindFormEvents();
     }
 
     function bindFormEvents() {
-        // Star rating
-        document.querySelectorAll('.feedback-star').forEach(star => {
-            star.addEventListener('click', function () {
+        // Emoji rating
+        document.querySelectorAll('.feedback-emoji').forEach(emoji => {
+            emoji.addEventListener('click', function () {
                 selectedRating = parseInt(this.dataset.rating);
-                document.querySelectorAll('.feedback-star').forEach((s, i) => {
-                    s.classList.toggle('active', i < selectedRating);
+                document.querySelectorAll('.feedback-emoji').forEach(e => {
+                    const isSelected = e === this;
+                    e.classList.toggle('active', isSelected);
+                    e.setAttribute('aria-checked', isSelected ? 'true' : 'false');
+                    e.setAttribute('tabindex', isSelected ? '0' : '-1');
                 });
             });
         });
+
+        // Emoji keyboard navigation (arrow keys)
+        const emojiGroup = document.querySelector('.feedback-emoji-group');
+        if (emojiGroup) {
+            emojiGroup.addEventListener('keydown', function (e) {
+                const emojis = Array.from(this.querySelectorAll('.feedback-emoji'));
+                const current = emojis.indexOf(document.activeElement);
+                if (current === -1) return;
+
+                let next = -1;
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+                    next = (current + 1) % emojis.length;
+                } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+                    next = (current - 1 + emojis.length) % emojis.length;
+                }
+
+                if (next !== -1) {
+                    e.preventDefault();
+                    emojis[current].setAttribute('tabindex', '-1');
+                    emojis[next].setAttribute('tabindex', '0');
+                    emojis[next].focus();
+                }
+            });
+        }
+
+        // Category validation — remove error on change
+        const catEl = document.getElementById('bug-category');
+        if (catEl) {
+            catEl.addEventListener('change', function () {
+                this.classList.remove('feedback-select--error');
+            });
+        }
+
+        // Screenshot handlers
+        const screenshotInput = document.querySelector('.feedback-screenshot-input');
+        if (screenshotInput) {
+            screenshotInput.addEventListener('change', handleScreenshotSelect);
+        }
+        const removeBtn = document.querySelector('.feedback-screenshot-remove');
+        if (removeBtn) {
+            removeBtn.addEventListener('click', removeScreenshot);
+        }
+        // Keyboard support for screenshot trigger
+        const trigger = document.querySelector('.feedback-screenshot-trigger');
+        if (trigger) {
+            trigger.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.querySelector('.feedback-screenshot-input').click();
+                }
+            });
+        }
+
+        // Character counters
+        document.querySelectorAll('.feedback-textarea').forEach(createCharCounter);
 
         // Form submission
         const form = document.getElementById('feedback-form');
@@ -190,12 +296,99 @@
         }
     }
 
+    // ─── Character counter ─────────────────────────────────────
+
+    function createCharCounter(textarea) {
+        const counter = document.createElement('div');
+        counter.className = 'feedback-char-counter';
+        const max = parseInt(textarea.getAttribute('maxlength')) || 5000;
+
+        function update() {
+            const len = textarea.value.length;
+            counter.textContent = len + ' / ' + max;
+            counter.classList.toggle('feedback-char-counter--warn', len >= max * 0.9);
+        }
+
+        update();
+        textarea.addEventListener('input', update);
+        textarea.parentNode.insertBefore(counter, textarea.nextSibling);
+    }
+
+    // ─── Screenshot handling ───────────────────────────────────
+
+    function handleScreenshotSelect(e) {
+        const file = e.target.files && e.target.files[0];
+        if (!file) return;
+
+        const errorEl = document.querySelector('.feedback-screenshot-error');
+
+        // Validate type
+        if (!file.type.startsWith('image/')) {
+            showScreenshotError('Please select an image file.');
+            e.target.value = '';
+            return;
+        }
+
+        // Validate size (2MB)
+        if (file.size > 2 * 1024 * 1024) {
+            showScreenshotError('Image must be under 2MB.');
+            e.target.value = '';
+            return;
+        }
+
+        if (errorEl) errorEl.style.display = 'none';
+
+        const reader = new FileReader();
+        reader.onload = function (evt) {
+            screenshotBase64 = evt.target.result;
+            const preview = document.querySelector('.feedback-screenshot-preview');
+            const img = document.querySelector('.feedback-screenshot-img');
+            const trigger = document.querySelector('.feedback-screenshot-trigger');
+
+            if (img) img.src = screenshotBase64;
+            if (preview) preview.style.display = '';
+            if (trigger) trigger.style.display = 'none';
+        };
+        reader.readAsDataURL(file);
+    }
+
+    function showScreenshotError(msg) {
+        const errorEl = document.querySelector('.feedback-screenshot-error');
+        if (errorEl) {
+            errorEl.textContent = msg;
+            errorEl.style.display = '';
+        }
+    }
+
+    function removeScreenshot() {
+        screenshotBase64 = null;
+        const preview = document.querySelector('.feedback-screenshot-preview');
+        const trigger = document.querySelector('.feedback-screenshot-trigger');
+        const input = document.querySelector('.feedback-screenshot-input');
+
+        if (preview) preview.style.display = 'none';
+        if (trigger) trigger.style.display = '';
+        if (input) input.value = '';
+    }
+
+    // ─── Form submission ───────────────────────────────────────
+
     async function handleSubmit(e) {
         e.preventDefault();
 
         const textarea = document.querySelector('.feedback-textarea');
         const message = textarea.value.trim();
         if (!message) return;
+
+        // Category validation for bug reports
+        if (currentTab === 'bug') {
+            const catEl = document.getElementById('bug-category');
+            if (catEl && !catEl.value) {
+                catEl.classList.add('feedback-select--error');
+                catEl.focus();
+                return;
+            }
+        }
 
         const submitBtn = document.querySelector('.feedback-submit');
         submitBtn.disabled = true;
@@ -205,6 +398,8 @@
             type: currentTab,
             message: message,
             page_url: window.location.href,
+            page_title: document.title.substring(0, 200),
+            is_authenticated: !!(localStorage.getItem('accessToken')),
             browser_info: navigator.userAgent.substring(0, 500),
             screen_size: window.innerWidth + 'x' + window.innerHeight
         };
@@ -216,10 +411,13 @@
             payload.category = catEl ? catEl.value : null;
             const stepsEl = document.getElementById('bug-steps');
             payload.steps_to_reproduce = stepsEl ? stepsEl.value.trim() : null;
+
+            if (screenshotBase64) {
+                payload.screenshot = screenshotBase64;
+            }
         }
 
         try {
-            // Use apiCall if available (has token handling), otherwise raw fetch
             let response;
             if (typeof apiCall === 'function') {
                 response = await apiCall('/api/feedback/', {
@@ -238,7 +436,6 @@
 
             showResult(true);
 
-            // Track event if available
             if (typeof trackBetaEvent === 'function') {
                 trackBetaEvent('feedback_submitted', { type: currentTab });
             }
@@ -247,6 +444,8 @@
             showResult(false);
         }
     }
+
+    // ─── Result display ────────────────────────────────────────
 
     function showResult(success) {
         const body = document.querySelector('.feedback-body');
@@ -260,46 +459,42 @@
             </div>
         `;
 
-        // Reset after delay
         setTimeout(() => {
             if (success) closePanel();
-            // Reset form
+            // Reset state
             currentTab = 'bug';
             selectedRating = 0;
+            screenshotBase64 = null;
             const body = document.querySelector('.feedback-body');
             if (body) body.innerHTML = buildBugForm();
-            // Reset tabs
             document.querySelectorAll('.feedback-tab').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.tab === 'bug');
             });
             bindFormEvents();
-        }, success ? 2000 : 4000);
+        }, success ? 3000 : 4000);
     }
+
+    // ─── Cookie banner observer ────────────────────────────────
 
     function observeCookieBanner(fab, panel) {
         let bannerObserver = null;
 
-        // Check if cookie banner exists and is visible
         function checkBanner() {
             const banner = document.querySelector('.cookie-consent-banner');
             const visible = banner && banner.classList.contains('visible');
             fab.classList.toggle('cookie-banner-visible', visible);
             panel.classList.toggle('cookie-banner-visible', visible);
 
-            // If we found the banner but aren't observing it yet, start watching
             if (banner && !bannerObserver) {
                 bannerObserver = new MutationObserver(checkBanner);
                 bannerObserver.observe(banner, { attributes: true, attributeFilter: ['class'] });
             }
         }
 
-        // Initial check
         checkBanner();
 
-        // Watch body for the cookie banner being dynamically added or removed
         const bodyObserver = new MutationObserver(function () {
             checkBanner();
-            // If banner was removed from DOM, reset observer so we can re-attach
             if (!document.querySelector('.cookie-consent-banner')) {
                 if (bannerObserver) {
                     bannerObserver.disconnect();
@@ -310,13 +505,15 @@
         bodyObserver.observe(document.body, { childList: true });
     }
 
-    // Expose global function so beta banner (or anything) can open to a specific tab
+    // ─── Public API ────────────────────────────────────────────
+
     window.openFeedbackWidget = function (tab) {
         if (tab && tab !== currentTab) switchTab(tab);
         if (!panelOpen) togglePanel();
     };
 
-    // Initialize when DOM is ready
+    // ─── Init ──────────────────────────────────────────────────
+
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', createWidget);
     } else {

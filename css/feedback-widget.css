@@ -44,7 +44,7 @@
     right: 24px;
     z-index: 9998;
     width: 380px;
-    max-height: 520px;
+    max-height: 580px;
     background: var(--card-bg, #fff);
     border: 1px solid var(--border-color, #e0e0e0);
     border-radius: 16px;
@@ -132,7 +132,7 @@
 .feedback-body {
     padding: 16px 20px 20px;
     overflow-y: auto;
-    max-height: 360px;
+    max-height: 420px;
 }
 
 .feedback-form {
@@ -141,26 +141,170 @@
     gap: 14px;
 }
 
-/* Star rating */
-.feedback-stars {
+/* ─── Emoji rating ─────────────────────────────── */
+
+.feedback-emoji-group {
     display: flex;
+    justify-content: space-between;
+    gap: 4px;
+}
+
+.feedback-emoji {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 6px;
+    border: 2px solid transparent;
+    border-radius: 12px;
+    background: var(--input-bg, #fafafa);
+    cursor: pointer;
+    transition: border-color 0.15s, transform 0.15s, background 0.15s;
+    flex: 1;
+}
+
+.feedback-emoji:hover {
+    background: var(--hover-bg, rgba(0,0,0,0.03));
+    transform: scale(1.08);
+}
+
+.feedback-emoji.active {
+    border-color: var(--primary-color);
+    background: rgba(46, 134, 171, 0.08);
+}
+
+.feedback-emoji:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.feedback-emoji-icon {
+    font-size: 28px;
+    line-height: 1;
+}
+
+.feedback-emoji-label {
+    font-size: 11px;
+    color: var(--text-muted, #888);
+    font-weight: 500;
+}
+
+/* ─── Context URL field ────────────────────────── */
+
+.feedback-context-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.feedback-context-url {
+    width: 100%;
+    padding: 8px 10px;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 8px;
+    background: var(--hover-bg, rgba(0,0,0,0.02));
+    color: var(--text-muted, #888);
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 12px;
+    cursor: default;
+    box-sizing: border-box;
+}
+
+/* ─── Character counter ────────────────────────── */
+
+.feedback-char-counter {
+    font-size: 12px;
+    text-align: right;
+    color: var(--text-muted, #9ca3af);
+    margin-top: -8px;
+}
+
+.feedback-char-counter--warn {
+    color: #ef4444;
+}
+
+/* ─── Category validation ──────────────────────── */
+
+.feedback-select--error {
+    border-color: #ef4444 !important;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
+/* ─── Screenshot attachment ────────────────────── */
+
+.feedback-screenshot-row {
+    display: flex;
+    flex-direction: column;
     gap: 6px;
 }
 
-.feedback-star {
-    font-size: 28px;
-    color: var(--border-color, #ddd);
+.feedback-screenshot-trigger {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    border: 2px dashed var(--border-color, #e0e0e0);
+    border-radius: 10px;
     cursor: pointer;
-    transition: color 0.15s, transform 0.15s;
-    background: none;
-    border: none;
-    padding: 0;
+    color: var(--text-muted, #888);
+    font-size: 13px;
+    transition: border-color 0.2s, background 0.15s;
 }
 
-.feedback-star:hover,
-.feedback-star.active {
-    color: #f59e0b;
-    transform: scale(1.15);
+.feedback-screenshot-trigger:hover,
+.feedback-screenshot-trigger:focus-visible {
+    border-color: var(--primary-color);
+    background: rgba(46, 134, 171, 0.04);
+}
+
+.feedback-screenshot-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+}
+
+.feedback-screenshot-preview {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    max-height: 120px;
+}
+
+.feedback-screenshot-img {
+    width: 100%;
+    max-height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--border-color, #e0e0e0);
+}
+
+.feedback-screenshot-remove {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+.feedback-screenshot-remove:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.feedback-screenshot-error {
+    color: #ef4444;
+    font-size: 12px;
 }
 
 /* Textarea */
@@ -176,6 +320,7 @@
     font-size: 14px;
     resize: vertical;
     transition: border-color 0.2s;
+    box-sizing: border-box;
 }
 
 .feedback-textarea:focus {
@@ -198,6 +343,7 @@
     font-family: inherit;
     font-size: 14px;
     cursor: pointer;
+    box-sizing: border-box;
 }
 
 .feedback-select:focus {
@@ -271,7 +417,10 @@
     letter-spacing: 0.5px;
 }
 
-/* Dark mode */
+/* ============================================
+   DARK MODE
+   ============================================ */
+
 [data-theme="dark"] .feedback-panel {
     background: var(--card-bg, #1f2937);
     border-color: var(--border-color, #374151);
@@ -330,11 +479,50 @@
     color: var(--text-muted, #9ca3af);
 }
 
-[data-theme="dark"] .feedback-star {
-    color: #4b5563;
+/* Emoji - dark mode */
+[data-theme="dark"] .feedback-emoji {
+    background: var(--input-bg, #374151);
 }
 
-/* Mobile responsive */
+[data-theme="dark"] .feedback-emoji.active {
+    border-color: var(--primary-color);
+    background: rgba(46, 134, 171, 0.15);
+}
+
+[data-theme="dark"] .feedback-emoji:hover {
+    background: var(--hover-bg, rgba(255,255,255,0.08));
+}
+
+[data-theme="dark"] .feedback-emoji-label {
+    color: var(--text-muted, #9ca3af);
+}
+
+/* Context URL - dark mode */
+[data-theme="dark"] .feedback-context-url {
+    background: rgba(255,255,255,0.04);
+    border-color: var(--border-color, #4b5563);
+    color: var(--text-muted, #9ca3af);
+}
+
+/* Screenshot - dark mode */
+[data-theme="dark"] .feedback-screenshot-trigger {
+    border-color: var(--border-color, #4b5563);
+    color: var(--text-muted, #9ca3af);
+}
+
+[data-theme="dark"] .feedback-screenshot-trigger:hover,
+[data-theme="dark"] .feedback-screenshot-trigger:focus-visible {
+    background: rgba(46, 134, 171, 0.1);
+}
+
+[data-theme="dark"] .feedback-screenshot-img {
+    border-color: var(--border-color, #4b5563);
+}
+
+/* ============================================
+   MOBILE RESPONSIVE
+   ============================================ */
+
 @media (max-width: 480px) {
     .feedback-panel {
         right: 12px;
@@ -358,5 +546,17 @@
 
     .feedback-panel.cookie-banner-visible {
         bottom: 180px;
+    }
+
+    .feedback-emoji-icon {
+        font-size: 24px;
+    }
+
+    .feedback-emoji-label {
+        font-size: 10px;
+    }
+
+    .feedback-emoji {
+        padding: 6px 4px;
     }
 }

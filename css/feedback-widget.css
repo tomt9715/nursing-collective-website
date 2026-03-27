@@ -286,6 +286,14 @@
     border-bottom-color: var(--border-color, #374151);
 }
 
+[data-theme="dark"] .feedback-header h3 {
+    color: #f1f5f9;
+}
+
+[data-theme="dark"] .feedback-close {
+    color: #9ca3af;
+}
+
 [data-theme="dark"] .feedback-tabs {
     border-bottom-color: var(--border-color, #374151);
 }

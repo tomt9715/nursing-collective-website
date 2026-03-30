@@ -1165,11 +1165,11 @@ body {
 }
 
 .quiz-explain-body--streaming::after {
-    content: '\25CA';
+    content: '\2588';
     display: inline;
     color: #7c3aed;
     animation: quiz-explain-cursor 0.8s steps(2) infinite;
-    font-weight: 400;
+    font-size: 0.9em;
 }
 @keyframes quiz-explain-cursor {
     0%, 100% { opacity: 1; }

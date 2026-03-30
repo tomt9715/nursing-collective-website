@@ -468,7 +468,7 @@ body {
         display: grid;
         grid-template-columns: 1fr 280px;
         gap: 24px;
-        align-items: start;
+        align-items: center;
     }
 
     .quiz-lab-side .quiz-lab-reference {

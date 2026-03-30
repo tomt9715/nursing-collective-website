@@ -1061,8 +1061,15 @@ function renderSubscriptionCard(data) {
     var badge = document.getElementById('membership-status-badge');
     if (badge) {
         if (sub.cancel_at_period_end) {
-            badge.className = 'sub-status-badge cancelling';
-            badge.innerHTML = '<i class="fas fa-clock"></i> Cancelling';
+            // Only show "Ending Soon" if within 30 days of expiry, otherwise show "Active"
+            var daysLeft = sub.expires_at ? Math.ceil((new Date(sub.expires_at) - new Date()) / 86400000) : 999;
+            if (daysLeft <= 30) {
+                badge.className = 'sub-status-badge cancelling';
+                badge.innerHTML = '<i class="fas fa-clock"></i> Ending Soon';
+            } else {
+                badge.className = 'sub-status-badge active';
+                badge.innerHTML = '<i class="fas fa-check-circle"></i> Active';
+            }
         } else if (sub.status === 'expired') {
             badge.className = 'sub-status-badge expired';
             badge.innerHTML = '<i class="fas fa-times-circle"></i> Expired';

@@ -1275,34 +1275,7 @@ class QuizEngine {
         const nextBtnLabel = isLast ? '<i class="fas fa-chart-bar"></i> See Results' : 'Next Question <i class="fas fa-arrow-right"></i>';
         const nextBtnClass = isLast ? 'quiz-btn--success' : 'quiz-btn--primary';
 
-        // Show feedback
-        const feedbackArea = document.getElementById('quiz-feedback-area');
-        if (!feedbackArea) return;
-
-        let feedbackHtml = '';
-        if (this.mode === 'practice') {
-            feedbackHtml = this._buildPracticeFeedback(q, userAnswer, isCorrect, isPartial);
-        } else {
-            feedbackHtml = this._buildExamIndicator(isCorrect, isPartial);
-        }
-
-        feedbackArea.innerHTML = feedbackHtml;
-
-        // Create explain panel for all answers (practice mode)
-        if (this.mode === 'practice') {
-            const questionCard = this.container.querySelector('.quiz-question');
-            if (questionCard) {
-                const oldPanel = questionCard.querySelector('.quiz-explain-panel');
-                if (oldPanel) oldPanel.remove();
-                const panel = document.createElement('div');
-                panel.className = 'quiz-explain-panel';
-                panel.id = 'explain-' + q.id;
-                panel.style.display = 'none';
-                questionCard.appendChild(panel);
-            }
-        }
-
-        // Add sticky bottom bar
+        // ALWAYS create sticky bottom bar first (so it shows even if feedback rendering fails)
         const existingSticky = this.container.querySelector('.quiz-sticky-next');
         if (existingSticky) existingSticky.remove();
         const sticky = document.createElement('div');
@@ -1310,11 +1283,45 @@ class QuizEngine {
         sticky.innerHTML = `<button class="quiz-btn ${nextBtnClass}" data-quiz-action="next">${nextBtnLabel}</button>`;
         this.container.appendChild(sticky);
 
-        // Focus feedback for accessibility
-        const feedback = feedbackArea.firstElementChild;
-        if (feedback) {
-            feedback.setAttribute('tabindex', '-1');
-            feedback.focus({ preventScroll: false });
+        // Show feedback
+        try {
+            const feedbackArea = document.getElementById('quiz-feedback-area');
+            if (feedbackArea) {
+                let feedbackHtml = '';
+                if (this.mode === 'practice') {
+                    feedbackHtml = this._buildPracticeFeedback(q, userAnswer, isCorrect, isPartial);
+                } else {
+                    feedbackHtml = this._buildExamIndicator(isCorrect, isPartial);
+                }
+
+                feedbackArea.innerHTML = feedbackHtml;
+
+                // Create explain panel for all answers (practice mode)
+                if (this.mode === 'practice') {
+                    const questionCard = this.container.querySelector('.quiz-question');
+                    if (questionCard) {
+                        const oldPanel = questionCard.querySelector('.quiz-explain-panel');
+                        if (oldPanel) oldPanel.remove();
+                        const panel = document.createElement('div');
+                        panel.className = 'quiz-explain-panel';
+                        panel.id = 'explain-' + q.id;
+                        panel.style.display = 'none';
+                        questionCard.appendChild(panel);
+                    }
+                }
+
+                // Scroll feedback into view so user sees results + sticky bar
+                feedbackArea.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Focus feedback for accessibility
+                const feedback = feedbackArea.firstElementChild;
+                if (feedback) {
+                    feedback.setAttribute('tabindex', '-1');
+                    feedback.focus({ preventScroll: false });
+                }
+            }
+        } catch (err) {
+            console.error('Error rendering feedback:', err);
         }
     }
 

@@ -1048,7 +1048,11 @@ async function loadSidebarSubscription() {
             let statusClass = 'active';
             let statusText = 'Active';
             let statusIcon = 'fa-check-circle';
-            if (isActive && isCancelling) { statusClass = 'cancelling'; statusText = 'Ending Soon'; statusIcon = 'fa-clock'; }
+            if (isActive && isCancelling) {
+                var daysLeft = subscription.expires_at ? Math.ceil((new Date(subscription.expires_at) - new Date()) / 86400000) : 999;
+                if (daysLeft <= 30) { statusClass = 'cancelling'; statusText = 'Ending Soon'; statusIcon = 'fa-clock'; }
+                else { statusClass = 'cancelling'; statusText = 'Cancelled'; statusIcon = 'fa-clock'; }
+            }
             else if (!isActive) { statusClass = 'expired'; statusText = 'Expired'; statusIcon = 'fa-times-circle'; }
 
             let detailText = '';

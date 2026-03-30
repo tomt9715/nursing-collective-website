@@ -362,15 +362,43 @@ class QuizEngine {
 
         const bodyEl = container.querySelector('.quiz-explain-body');
 
-        // Build request payload
+        // Build request payload with display letters (options are shuffled)
         const result = this.results.get(q.id);
+
+        // For single/priority/sata: remap option IDs to shuffled display letters
+        let payloadOptions = q.options;
+        let payloadCorrect = q.correct;
+        let payloadUserAnswer = result ? result.userAnswer : null;
+
+        if (q.type === 'single' || q.subtype === 'priority' || q.type === 'sata') {
+            // Remap options to use display letters
+            payloadOptions = q.options.map(opt => ({
+                id: this._getDisplayLetter(q.id, opt.id),
+                text: opt.text
+            }));
+            // Remap correct answer
+            if (Array.isArray(q.correct)) {
+                payloadCorrect = q.correct.map(id => this._getDisplayLetter(q.id, id));
+            } else {
+                payloadCorrect = this._getDisplayLetter(q.id, q.correct);
+            }
+            // Remap user answer
+            if (payloadUserAnswer) {
+                if (Array.isArray(payloadUserAnswer)) {
+                    payloadUserAnswer = payloadUserAnswer.map(id => this._getDisplayLetter(q.id, id));
+                } else {
+                    payloadUserAnswer = this._getDisplayLetter(q.id, payloadUserAnswer);
+                }
+            }
+        }
+
         const payload = {
             stem: q.stem,
             type: q.type,
             subtype: q.subtype || null,
-            options: q.options,
-            correct: q.correct,
-            userAnswer: result ? result.userAnswer : null,
+            options: payloadOptions,
+            correct: payloadCorrect,
+            userAnswer: payloadUserAnswer,
             isCorrect: result ? result.correct : false,
             rationale: q.rationale ? q.rationale.correct : '',
             matrixColumns: q.matrixColumns || null,

@@ -1667,17 +1667,38 @@ class QuizEngine {
         let html = `<div class="quiz-feedback ${statusClass}">`;
         html += `<div class="quiz-feedback-header"><i class="fas ${statusIcon}"></i> ${statusText}</div>`;
 
-        // Ordering: show partial credit count + correct sequence
+        // Ordering: show side-by-side comparison of user's order vs correct order
         if (q.type === 'ordering' && !isCorrect) {
             const correctPositions = Array.isArray(userAnswer) ? userAnswer.filter((v, i) => v === q.correct[i]).length : 0;
             if (correctPositions > 0) {
                 html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> You placed ${correctPositions} of ${q.correct.length} items in the correct position — partial credit awarded.</div>`;
             }
-            const correctSeqHtml = q.correct.map((id, i) => {
+            html += `<div class="quiz-ordering-comparison">`;
+            html += `<div class="quiz-ordering-col">`;
+            html += `<div class="quiz-ordering-col-header quiz-ordering-col-header--yours"><i class="fas fa-user"></i> Your Order</div>`;
+            if (Array.isArray(userAnswer)) {
+                userAnswer.forEach((id, i) => {
+                    const opt = q.options.find(o => o.id === id);
+                    const isRight = id === q.correct[i];
+                    html += `<div class="quiz-ordering-compare-item ${isRight ? 'quiz-ordering-compare-item--correct' : 'quiz-ordering-compare-item--incorrect'}">`;
+                    html += `<span class="quiz-ordering-compare-num">${i + 1}</span>`;
+                    html += `<span>${this._escapeHtml(opt ? opt.text : id)}</span>`;
+                    html += `<i class="fas ${isRight ? 'fa-check' : 'fa-times'}"></i>`;
+                    html += `</div>`;
+                });
+            }
+            html += `</div>`;
+            html += `<div class="quiz-ordering-col">`;
+            html += `<div class="quiz-ordering-col-header quiz-ordering-col-header--correct"><i class="fas fa-check-circle"></i> Correct Order</div>`;
+            q.correct.forEach((id, i) => {
                 const opt = q.options.find(o => o.id === id);
-                return `<li>${this._escapeHtml(opt ? opt.text : id)}</li>`;
-            }).join('');
-            html += `<div class="quiz-ordering-correct-sequence"><strong>Correct order:</strong><ol>${correctSeqHtml}</ol></div>`;
+                html += `<div class="quiz-ordering-compare-item quiz-ordering-compare-item--correct">`;
+                html += `<span class="quiz-ordering-compare-num">${i + 1}</span>`;
+                html += `<span>${this._escapeHtml(opt ? opt.text : id)}</span>`;
+                html += `</div>`;
+            });
+            html += `</div>`;
+            html += `</div>`;
         }
 
         // SATA: show selection detail

@@ -681,6 +681,16 @@ class QuizEngine {
                     matrixCell.classList.add('quiz-matrix-cell--selected');
                 }
                 this._updateSubmitButton();
+
+                // Auto-submit matrix when all rows are filled (practice mode only)
+                const currentQ = this.activeQuestions[this.currentIndex];
+                if (currentQ && currentQ.type === 'matrix' && this.mode !== 'exam' && !this.submitted.has(currentQ.id)) {
+                    const totalRows = currentQ.options.length;
+                    const answered = this.container.querySelectorAll('.quiz-matrix-table input[type="radio"]:checked').length;
+                    if (answered === totalRows) {
+                        this.submitAnswer();
+                    }
+                }
             }
             return;
         }

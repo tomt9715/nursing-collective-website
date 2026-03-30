@@ -1822,7 +1822,7 @@ class QuizEngine {
             const total = q.correct.length;
             let msg = `You placed <strong>${correctPositions} of ${total}</strong> items in the correct position.`;
             if (correctPositions > 0 && isPartial) msg += ' Partial credit awarded.';
-            msg += ' Check the highlighted items above — <span style="color:#16a34a">green = correct position</span>, <span style="color:#dc2626">red = wrong position</span>.';
+            msg += ' See the highlighted items above for details.';
             html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> ${msg}</div>`;
         }
 
@@ -1844,7 +1844,7 @@ class QuizEngine {
             const total = q.options.length;
             let msg = `You got <strong>${correctRows} of ${total}</strong> rows correct.`;
             if (correctRows > 0 && isPartial) msg += ' Partial credit awarded.';
-            msg += ' Check the table above — <span style="color:#16a34a">green rows = correct</span>, <span style="color:#dc2626">red rows = wrong</span> (correct answer highlighted).';
+            msg += ' See the highlighted rows above for details.';
             html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> ${msg}</div>`;
         }
 

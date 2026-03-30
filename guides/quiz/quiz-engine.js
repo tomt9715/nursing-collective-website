@@ -681,16 +681,6 @@ class QuizEngine {
                     matrixCell.classList.add('quiz-matrix-cell--selected');
                 }
                 this._updateSubmitButton();
-
-                // Auto-submit matrix when all rows are filled (practice mode only)
-                const currentQ = this.activeQuestions[this.currentIndex];
-                if (currentQ && currentQ.type === 'matrix' && this.mode !== 'exam' && !this.submitted.has(currentQ.id)) {
-                    const totalRows = currentQ.options.length;
-                    const answered = this.container.querySelectorAll('.quiz-matrix-table input[type="radio"]:checked').length;
-                    if (answered === totalRows) {
-                        this.submitAnswer();
-                    }
-                }
             }
             return;
         }
@@ -1219,7 +1209,12 @@ class QuizEngine {
             // All rows must have a selection
             const totalRows = q.options.length;
             const answered = this.container.querySelectorAll('.quiz-matrix-table input[type="radio"]:checked').length;
+            const wasDisabled = btn.disabled;
             btn.disabled = answered !== totalRows;
+            // Scroll submit button into view when it becomes enabled
+            if (wasDisabled && !btn.disabled) {
+                btn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         } else if (q.type === 'sata') {
             // At least one checkbox must be checked
             const checkedCount = this.container.querySelectorAll(`input[name="quiz-q-${q.id}"]:checked`).length;

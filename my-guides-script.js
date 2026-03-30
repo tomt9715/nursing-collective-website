@@ -100,10 +100,10 @@
                     icon: 'fa-brain',
                     colorClass: 'icon-neurological',
                     guides: [
-                        { name: 'Stroke', file: 'stroke' }
+                        { name: 'Stroke', file: 'stroke' },
+                        { name: 'Seizures / Epilepsy', file: 'seizures' }
                     ],
                     comingSoon: [
-                        { name: 'Seizures / Epilepsy', icon: 'seizures' },
                         { name: 'TBI / Increased ICP', icon: 'traumatic-brain-injury' },
                         { name: 'Spinal Cord Injury', icon: 'spinal-cord-injury' },
                         { name: 'Meningitis', icon: 'meningitis' },

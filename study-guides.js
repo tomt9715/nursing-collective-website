@@ -137,6 +137,48 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Clinical pearls and memory aids*
 - *Printable study materials*
         `
+    },
+    'seizures': {
+        title: 'Seizures & Epilepsy',
+        storeUrl: 'pricing.html#seizures',
+        content: `
+# Seizures & Epilepsy Study Guide
+
+## Overview
+Master seizure classification, recognize status epilepticus as a medical emergency, and understand antiepileptic medications with this comprehensive nursing study guide.
+
+## What You'll Learn
+
+### Seizure Classification (ILAE)
+- **Focal seizures** — start in one brain area, may or may not impair awareness
+- **Generalized seizures** — both hemispheres from onset (tonic-clonic, absence, myoclonic, atonic)
+- Focal to bilateral tonic-clonic (secondary generalization)
+
+### Status Epilepticus Emergency Protocol
+1. ABCs and patient safety
+2. **Lorazepam 4 mg IV** (first-line benzodiazepine)
+3. Fosphenytoin loading if seizure persists
+4. Continuous infusion for refractory cases
+
+### Key AED Facts
+- **Phenytoin (Dilantin):** Level 10-20 mcg/mL, gingival hyperplasia, slow IV only
+- **Valproic acid:** Monitor LFTs, Category X in pregnancy
+- **Ethosuximide:** First-line for absence seizures ONLY
+- **Never stop AEDs abruptly** — can trigger status epilepticus
+
+### Nursing Priorities
+- Protect from injury, maintain airway, turn to side, **time the seizure**
+- NEVER restrain or put anything in the mouth
+- Seizure precautions: padded rails, low bed, suction, O2, IV access
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth content and detailed explanations*
+- *Key nursing interventions and priorities*
+- *Clinical pearls and memory aids*
+- *Printable study materials*
+        `
     }
 };
 

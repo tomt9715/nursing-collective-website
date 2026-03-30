@@ -1,0 +1,2176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seizures &amp; Epilepsy Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Comprehensive nursing study guide for Seizures and Epilepsy. Learn seizure classification, status epilepticus management, antiepileptic medications, and priority nursing interventions.">
+    <link rel="canonical" href="https://thenursingcollective.pro/guides/seizures.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/guides/seizures.html">
+    <meta property="og:title" content="Seizures &amp; Epilepsy Study Guide - The Nursing Collective">
+    <meta property="og:description" content="Comprehensive nursing study guide for Seizures and Epilepsy. Learn seizure classification, status epilepticus management, antiepileptic medications, and priority nursing interventions.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/cookie-consent.css">
+
+    <style>
+        /* ============================================
+           SEIZURES & EPILEPSY GUIDE - MAGAZINE STYLE
+           Neurological category with unique gradient
+           ============================================ */
+
+        :root {
+            --primary-color: #2E86AB;
+            --primary-dark: #236b8a;
+            --secondary-color: #A23B72;
+            --accent-color: #f59e0b;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --background: #ffffff;
+            --border-color: #e5e7eb;
+            /* Seizure-specific colors */
+            --seizure-purple: #7c3aed;
+            --seizure-indigo: #4f46e5;
+            --focal-color: #0ea5e9;
+            --generalized-color: #8b5cf6;
+            --status-red: #dc2626;
+            --safety-green: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-primary);
+            background: #f8fafc;
+        }
+
+        /* Download Bar - Fixed at top */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--seizure-indigo), var(--seizure-purple));
+            color: white;
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 600;
+        }
+
+        .download-bar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: white;
+            color: var(--seizure-indigo);
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background: #f0f0ff;
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: rgba(255,255,255,0.25);
+        }
+
+        /* Document Container */
+        .document-container {
+            max-width: 900px;
+            margin: 80px auto 40px;
+            background: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Cover Page - Seizure/Brain themed gradient */
+        .cover-page {
+            background: linear-gradient(135deg, #312e81 0%, #4f46e5 35%, #7c3aed 65%, #a855f7 100%);
+            color: white;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M40 40c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20-20-8.954-20-20zM0 40c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20S0 51.046 0 40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cover-logo {
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            padding: 15px;
+        }
+
+        .cover-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: rgba(168, 85, 247, 0.3);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+
+        .cover-badge i {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .cover-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .cover-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cover-stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cover-stat {
+            text-align: center;
+        }
+
+        .cover-stat .number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .cover-stat .label {
+            font-size: 0.85rem;
+            opacity: 0.85;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 4px;
+        }
+
+        .cover-brand {
+            margin-top: 50px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Document Content */
+        .document-content {
+            padding: 60px;
+        }
+
+        /* Learning Objectives - Horizontal Card Style */
+        .learning-objectives {
+            background: linear-gradient(135deg, #ede9fe, #ddd6fe);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .learning-objectives::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #5b21b6;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            position: relative;
+        }
+
+        .learning-objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            position: relative;
+        }
+
+        .objective-card {
+            background: white;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .objective-card i {
+            color: var(--seizure-purple);
+            font-size: 1.1rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .objective-card span {
+            font-size: 0.98rem;
+            color: var(--text-primary);
+        }
+
+        /* High-Yield Summary */
+        .high-yield-summary {
+            background: linear-gradient(135deg, #faf5ff, #f3e8ff);
+            border: 2px solid #ddd6fe;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 40px;
+        }
+
+        .high-yield-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--seizure-purple);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .high-yield-subtitle {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-style: italic;
+        }
+
+        .high-yield-summary ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .high-yield-summary li {
+            padding: 10px 0;
+            border-bottom: 1px solid #e9d5ff;
+            color: var(--text-secondary);
+            font-size: 0.98rem;
+            line-height: 1.6;
+        }
+
+        .high-yield-summary li:last-child {
+            border-bottom: none;
+        }
+
+        .high-yield-cta {
+            margin-top: 16px;
+            font-weight: 600;
+            color: var(--seizure-purple);
+        }
+
+        /* Bottom Line */
+        .bottom-line {
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+            border-left: 4px solid var(--seizure-purple);
+            padding: 16px 20px;
+            margin: 24px 0;
+            border-radius: 0 12px 12px 0;
+            font-weight: 500;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        /* Sticky Navigation */
+        .sticky-nav {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 40px;
+            position: sticky;
+            top: 70px;
+            z-index: 100;
+        }
+
+        .sticky-nav h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .nav-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .nav-pills a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .nav-pills a:hover {
+            background: var(--seizure-purple);
+            color: white;
+            border-color: var(--seizure-purple);
+        }
+
+        .nav-pills a i {
+            font-size: 0.85rem;
+        }
+
+        /* Content Sections */
+        .guide-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 140px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: linear-gradient(135deg, var(--seizure-indigo), var(--seizure-purple));
+            color: white;
+            border-radius: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title-group h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .section-title-group .subtitle {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 28px 0 14px;
+        }
+
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--seizure-purple);
+            margin: 20px 0 10px;
+        }
+
+        .guide-section p {
+            color: var(--text-secondary);
+            font-size: 1.02rem;
+            margin-bottom: 14px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            padding-left: 24px;
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+        }
+
+        .guide-section strong {
+            color: var(--text-primary);
+        }
+
+        /* Seizure Classification - Side by Side (like stroke comparison) */
+        .seizure-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            margin: 24px 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 2px solid var(--border-color);
+        }
+
+        .seizure-type {
+            padding: 0;
+        }
+
+        .seizure-type-header {
+            padding: 24px;
+            text-align: center;
+            color: white;
+        }
+
+        .seizure-type.focal .seizure-type-header {
+            background: linear-gradient(135deg, #0369a1, #0ea5e9);
+        }
+
+        .seizure-type.generalized .seizure-type-header {
+            background: linear-gradient(135deg, #5b21b6, #8b5cf6);
+        }
+
+        .seizure-type-header i {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .seizure-type-header h4 {
+            color: white;
+            font-size: 1.3rem;
+            margin: 0 0 4px;
+        }
+
+        .seizure-type-header .percentage {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .seizure-type-body {
+            padding: 24px;
+            background: white;
+        }
+
+        .seizure-type-body h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 0 0 12px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .seizure-type-body h5:not(:first-child) {
+            margin-top: 20px;
+        }
+
+        .seizure-type-body ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .seizure-type-body li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .seizure-type-body li i {
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .seizure-type.focal .seizure-type-body li i { color: var(--focal-color); }
+        .seizure-type.generalized .seizure-type-body li i { color: var(--generalized-color); }
+
+        /* Status Epilepticus Hero */
+        .status-hero {
+            background: linear-gradient(135deg, #7f1d1d, #dc2626);
+            border-radius: 16px;
+            padding: 40px;
+            color: white;
+            margin: 24px 0;
+        }
+
+        .status-hero h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 0 12px;
+            text-align: center;
+        }
+
+        .status-hero .status-definition {
+            text-align: center;
+            font-size: 1.05rem;
+            opacity: 0.95;
+            margin-bottom: 28px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .status-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .status-step {
+            background: rgba(255,255,255,0.12);
+            border-radius: 12px;
+            padding: 20px 16px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .status-step-number {
+            width: 44px;
+            height: 44px;
+            background: white;
+            color: var(--status-red);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 auto 12px;
+        }
+
+        .status-step h4 {
+            color: white;
+            font-size: 1rem;
+            margin: 0 0 6px;
+        }
+
+        .status-step p {
+            color: rgba(255,255,255,0.9);
+            font-size: 0.88rem;
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Seizure Phases Timeline */
+        .phases-timeline {
+            background: linear-gradient(to right, #ede9fe, #f3e8ff);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .phases-timeline h3 {
+            color: var(--seizure-purple);
+            margin: 0 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .timeline {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, var(--seizure-indigo), var(--seizure-purple), var(--safety-green));
+            border-radius: 2px;
+            transform: translateY(-50%);
+        }
+
+        .timeline-point {
+            position: relative;
+            text-align: center;
+            flex: 1;
+        }
+
+        .timeline-marker {
+            width: 48px;
+            height: 48px;
+            background: white;
+            border: 4px solid;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 12px;
+            position: relative;
+            z-index: 1;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+
+        .timeline-point:nth-child(1) .timeline-marker { border-color: var(--seizure-indigo); color: var(--seizure-indigo); }
+        .timeline-point:nth-child(2) .timeline-marker { border-color: var(--seizure-purple); color: var(--seizure-purple); }
+        .timeline-point:nth-child(3) .timeline-marker { border-color: var(--safety-green); color: var(--safety-green); }
+
+        .timeline-label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .timeline-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        /* Info Boxes */
+        .info-box {
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin: 20px 0;
+            display: flex;
+            gap: 16px;
+        }
+
+        .info-box-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .info-box-icon i {
+            font-size: 1.2rem;
+            color: white;
+        }
+
+        .info-box-content {
+            flex: 1;
+        }
+
+        .info-box-content h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 8px;
+        }
+
+        .info-box-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .info-box-content ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+        }
+
+        .info-box-content li {
+            margin-bottom: 4px;
+            font-size: 0.95rem;
+        }
+
+        .info-box.warning {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            border: 1px solid #fecaca;
+        }
+
+        .info-box.warning .info-box-icon { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .info-box.warning .info-box-content h5 { color: #991b1b; }
+
+        .info-box.clinical {
+            background: linear-gradient(135deg, #fffbeb, #fef3c7);
+            border: 1px solid #fde68a;
+        }
+
+        .info-box.clinical .info-box-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .info-box.clinical .info-box-content h5 { color: #92400e; }
+
+        .info-box.nclex {
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+            border: 1px solid #ddd6fe;
+        }
+
+        .info-box.nclex .info-box-icon { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
+        .info-box.nclex .info-box-content h5 { color: #5b21b6; }
+
+        .info-box.tip {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            border: 1px solid #a7f3d0;
+        }
+
+        .info-box.tip .info-box-icon { background: linear-gradient(135deg, #10b981, #059669); }
+        .info-box.tip .info-box-content h5 { color: #065f46; }
+
+        .info-box.time {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border: 1px solid #fcd34d;
+        }
+
+        .info-box.time .info-box-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .info-box.time .info-box-content h5 { color: #92400e; }
+
+        /* Pediatric Info Box */
+        .info-box.pediatric {
+            background: linear-gradient(135deg, #fdf2f8, #fce7f3);
+            border: 1px solid #fbcfe8;
+        }
+
+        .info-box.pediatric .info-box-icon { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .info-box.pediatric .info-box-content h5 { color: #db2777; }
+
+        /* Tables */
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .guide-table thead {
+            background: linear-gradient(135deg, var(--seizure-indigo), var(--seizure-purple));
+            color: white;
+        }
+
+        .guide-table th {
+            padding: 14px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .guide-table tbody tr {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .guide-table tbody tr:hover {
+            background: #f9fafb;
+        }
+
+        .guide-table td {
+            padding: 14px 16px;
+            color: var(--text-secondary);
+        }
+
+        .guide-table td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Nursing Interventions - Card Grid */
+        .intervention-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .intervention-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.2s ease;
+        }
+
+        .intervention-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transform: translateY(-2px);
+        }
+
+        .intervention-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .intervention-icon {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--seizure-indigo), var(--seizure-purple));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .intervention-card h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 0;
+        }
+
+        .intervention-card p {
+            font-size: 0.92rem;
+            color: var(--text-secondary);
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* Key Points Summary */
+        .key-points-summary {
+            background: linear-gradient(135deg, #312e81, #7c3aed);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0 0;
+            color: white;
+        }
+
+        .key-points-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            margin: 0 0 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+        }
+
+        .key-points-list {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .key-point-item {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .key-point-item i {
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .key-point-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.95);
+        }
+
+        .key-point-item strong {
+            color: white;
+        }
+
+        /* Practice Questions CTA */
+        .practice-cta {
+            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
+            border: 2px solid #ddd6fe;
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .practice-cta h2 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--seizure-purple);
+            margin-bottom: 12px;
+        }
+
+        .practice-cta p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .practice-cta .btn-quiz {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 28px;
+            background: linear-gradient(135deg, var(--seizure-indigo), var(--seizure-purple));
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .practice-cta .btn-quiz:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Cross References */
+        .cross-references {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            margin: 40px 0;
+        }
+
+        .cross-references h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cross-ref-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .cross-ref-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 16px;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+        }
+
+        .cross-ref-link:hover {
+            border-color: var(--seizure-purple);
+            color: var(--seizure-purple);
+            background: #faf5ff;
+        }
+
+        .cross-ref-link i {
+            color: var(--seizure-purple);
+        }
+
+        /* Footer */
+        .document-footer {
+            text-align: center;
+            padding: 32px 48px;
+            border-top: 1px solid var(--border-color);
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+        }
+
+        .footer-logo {
+            height: 48px;
+            width: auto;
+            margin-bottom: 12px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .footer-copyright {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        /* Print Styles */
+        @page {
+            margin: 0.6in 0.4in;
+        }
+
+        @media print {
+            .download-bar { display: none !important; }
+            .sticky-nav { position: static; }
+
+            body {
+                background: white !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            .document-container {
+                margin: 0 !important;
+                box-shadow: none !important;
+                max-width: 100% !important;
+                width: 100% !important;
+            }
+
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            .cover-page {
+                page-break-after: always;
+                break-after: page;
+            }
+
+            .info-box, .status-hero, .phases-timeline, .key-points-summary {
+                page-break-inside: avoid;
+                break-inside: avoid;
+            }
+
+            .seizure-comparison { page-break-inside: avoid; break-inside: avoid; }
+            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
+
+            h2, h3, h4 {
+                page-break-after: avoid;
+                break-after: avoid;
+            }
+
+            a { text-decoration: underline; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .download-bar {
+                flex-direction: column;
+                gap: 12px;
+                padding: 12px 16px;
+            }
+            .download-bar-actions {
+                width: 100%;
+                justify-content: center;
+            }
+            .cover-page { padding: 50px 30px; }
+            .cover-title { font-size: 2.5rem; }
+            .cover-stats { flex-direction: column; gap: 20px; }
+            .document-content { padding: 30px 24px; }
+            .learning-objectives-grid { grid-template-columns: 1fr; }
+            .nav-pills { flex-direction: column; }
+            .nav-pills a { justify-content: center; }
+            .seizure-comparison { grid-template-columns: 1fr; }
+            .status-steps { grid-template-columns: repeat(2, 1fr); }
+            .timeline { flex-direction: column; gap: 24px; }
+            .timeline::before { display: none; }
+            .intervention-cards { grid-template-columns: 1fr; }
+            .key-points-list { grid-template-columns: 1fr; }
+            .cross-ref-grid { grid-template-columns: 1fr; }
+            .sticky-nav { position: static; }
+        }
+    </style>
+
+    <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="guide-sidebar.css">
+    <script src="../lockscreen.js"></script>
+    <script src="../beta-banner.js"></script>
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../sentry-init.js"></script>
+</head>
+<body data-product-id="seizures" data-guide-name="Seizures &amp; Epilepsy">
+    <!-- Download Bar -->
+    <div class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-book-medical"></i>
+            <span>The Nursing Collective Study Guide</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../my-resources.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Resources
+            </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
+        </div>
+    </div>
+
+    <!-- Document -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/seizures.webp" alt="Seizures &amp; Epilepsy">
+                </div>
+                <div class="cover-badge">
+                    <i class="fas fa-bolt"></i>
+                    Neurological Emergency
+                </div>
+                <h1 class="cover-title">Seizures &amp; Epilepsy</h1>
+                <p class="cover-subtitle">Master seizure classification, recognize status epilepticus as a medical emergency, understand antiepileptic medications, and prioritize safety-focused nursing interventions.</p>
+                <div class="cover-stats">
+                    <div class="cover-stat">
+                        <div class="number">3.4M</div>
+                        <div class="label">Americans with Epilepsy</div>
+                    </div>
+                    <div class="cover-stat">
+                        <div class="number">5 min</div>
+                        <div class="label">Status Epilepticus Threshold</div>
+                    </div>
+                    <div class="cover-stat">
+                        <div class="number">~60%</div>
+                        <div class="label">Respond to First AED</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective | March 2026
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <div class="learning-objectives-grid">
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Classify seizures as focal (partial) or generalized using ILAE terminology</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Differentiate between epilepsy and provoked seizures</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Recognize status epilepticus and implement emergency interventions</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Describe first-line antiepileptic drugs and critical nursing considerations</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Prioritize safety interventions during and after a seizure</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Identify seizure triggers and develop patient education plans</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- High-Yield Summary -->
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary &mdash; Review This in 60 Seconds</h2>
+                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
+                <ul>
+                    <li><strong>Seizure vs. Epilepsy:</strong> A seizure is a single event of abnormal electrical brain activity. Epilepsy is a chronic disorder defined as 2+ unprovoked seizures &gt;24 hours apart, or 1 seizure with high recurrence risk.</li>
+                    <li><strong>Two main categories:</strong> Focal (partial) seizures start in one brain area and may or may not impair awareness. Generalized seizures involve both hemispheres from the onset.</li>
+                    <li><strong>Tonic-clonic (grand mal):</strong> Stiffening (tonic) then rhythmic jerking (clonic). Most dramatic, but absence seizures are the most commonly missed on exams.</li>
+                    <li><strong>Absence (petit mal):</strong> Brief staring spells (5-30 sec), common in children. No postictal period. First-line treatment: ethosuximide or valproic acid.</li>
+                    <li><strong>Status epilepticus:</strong> Seizure lasting &gt;5 minutes OR repeated seizures without regaining consciousness. MEDICAL EMERGENCY. First-line: IV benzodiazepine (lorazepam 4 mg or diazepam 10 mg).</li>
+                    <li><strong>During a seizure:</strong> Protect from injury, turn to side if possible, do NOT restrain, do NOT put anything in the mouth, time the seizure, maintain airway.</li>
+                    <li><strong>Key AEDs:</strong> Phenytoin (Dilantin) &mdash; monitor therapeutic level 10-20 mcg/mL, watch for gingival hyperplasia. Valproic acid &mdash; monitor LFTs, teratogenic. Levetiracetam (Keppra) &mdash; fewer drug interactions.</li>
+                    <li><strong>Seizure precautions:</strong> Padded side rails, bed in lowest position, suction at bedside, O2 available, IV access, seizure pads.</li>
+                    <li><strong>Common triggers:</strong> Sleep deprivation, alcohol, medication non-compliance, flashing lights, fever, electrolyte imbalances, stress.</li>
+                    <li><strong>Postictal phase:</strong> Confusion, drowsiness, headache, muscle soreness after a seizure. May last minutes to hours. Position on side, maintain airway, reorient gently.</li>
+                </ul>
+                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
+            </section>
+
+            <!-- Navigation -->
+            <nav class="sticky-nav">
+                <h3>Quick Navigation</h3>
+                <div class="nav-pills">
+                    <a href="#pathophysiology"><i class="fas fa-brain"></i> Pathophysiology</a>
+                    <a href="#classification"><i class="fas fa-sitemap"></i> Classification</a>
+                    <a href="#assessment"><i class="fas fa-stethoscope"></i> Assessment</a>
+                    <a href="#status-epilepticus"><i class="fas fa-exclamation-triangle"></i> Status Epilepticus</a>
+                    <a href="#interventions"><i class="fas fa-user-nurse"></i> Interventions</a>
+                    <a href="#medications"><i class="fas fa-pills"></i> Medications</a>
+                    <a href="#pediatric"><i class="fas fa-baby"></i> Pediatric</a>
+                </div>
+            </nav>
+
+            <!-- Section 1: Pathophysiology & Etiology -->
+            <section class="guide-section" id="pathophysiology">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <div class="section-title-group">
+                        <h2>Pathophysiology &amp; Etiology</h2>
+                        <div class="subtitle">What happens in the brain during a seizure</div>
+                    </div>
+                </div>
+
+                <p>A seizure occurs when there is a sudden, uncontrolled surge of electrical activity in the brain. Normally, neurons communicate through carefully regulated electrical impulses. During a seizure, a group of neurons fires excessively and synchronously, disrupting normal brain function.</p>
+
+                <h3>Seizure Mechanism</h3>
+
+                <ul>
+                    <li><strong>Excitation-inhibition imbalance:</strong> Excess excitatory neurotransmitter (glutamate) or deficient inhibitory neurotransmitter (GABA) shifts the balance toward hyperexcitability.</li>
+                    <li><strong>Epileptogenic focus:</strong> A group of abnormal neurons with a lower firing threshold that can trigger surrounding neurons to fire synchronously.</li>
+                    <li><strong>Kindling phenomenon:</strong> Repeated seizure activity lowers the threshold for future seizures &mdash; "seizures beget seizures."</li>
+                    <li><strong>Spread of activity:</strong> Focal seizures begin in one area and may propagate to involve the whole brain (focal to bilateral tonic-clonic).</li>
+                </ul>
+
+                <h3>Seizure vs. Epilepsy</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Seizure</th>
+                                <th>Epilepsy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Definition</td>
+                                <td>Single event of abnormal electrical activity</td>
+                                <td>Chronic disorder: 2+ unprovoked seizures &gt;24 hrs apart</td>
+                            </tr>
+                            <tr>
+                                <td>Causes</td>
+                                <td>Can be provoked (fever, drugs, metabolic) or unprovoked</td>
+                                <td>Underlying neurological predisposition</td>
+                            </tr>
+                            <tr>
+                                <td>Treatment</td>
+                                <td>Treat the cause; may not need long-term AEDs</td>
+                                <td>Long-term AED therapy; lifestyle modifications</td>
+                            </tr>
+                            <tr>
+                                <td>Recurrence</td>
+                                <td>Low if provoked cause is corrected</td>
+                                <td>High recurrence risk without treatment</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Common Causes &amp; Triggers</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Provoked (Acute Symptomatic)</th>
+                                <th>Unprovoked / Epilepsy Triggers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fever (febrile seizures in children)</td>
+                                <td>Medication non-compliance (#1 trigger)</td>
+                            </tr>
+                            <tr>
+                                <td>Electrolyte imbalances (Na+, Ca2+, Mg2+, glucose)</td>
+                                <td>Sleep deprivation</td>
+                            </tr>
+                            <tr>
+                                <td>Drug/alcohol withdrawal</td>
+                                <td>Stress / emotional exhaustion</td>
+                            </tr>
+                            <tr>
+                                <td>Head trauma / TBI</td>
+                                <td>Flashing or flickering lights (photosensitivity)</td>
+                            </tr>
+                            <tr>
+                                <td>CNS infection (meningitis, encephalitis)</td>
+                                <td>Alcohol use</td>
+                            </tr>
+                            <tr>
+                                <td>Stroke, brain tumor, hemorrhage</td>
+                                <td>Hormonal changes (catamenial epilepsy)</td>
+                            </tr>
+                            <tr>
+                                <td>Eclampsia in pregnancy</td>
+                                <td>Missed meals / hypoglycemia</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- FlorenceBot Tip -->
+                <div class="florencebot-tip" id="tip-med-compliance">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Medication Non-Compliance = #1 Seizure Trigger</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Always ask about medication adherence when a patient with known epilepsy presents with a breakthrough seizure!</strong> The most common reason for seizure recurrence is stopping or missing antiepileptic medications. Patients may stop AEDs because they feel "cured," can't afford them, or don't like side effects. Education is key: "Seizure-free does NOT mean epilepsy-free."
+                    </div>
+                </div>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>Clinical Pearl: Alcohol Withdrawal Seizures</h5>
+                        <p>Alcohol withdrawal seizures typically occur <strong>12-48 hours</strong> after the last drink and are usually generalized tonic-clonic. They are a medical emergency because they can progress to status epilepticus or delirium tremens. Treatment: benzodiazepines (lorazepam or diazepam).</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">&#127919; Bottom Line: Seizures result from abnormal, excessive neuronal firing. Epilepsy = 2+ unprovoked seizures. Always look for reversible causes (electrolytes, meds, infection) before assuming epilepsy. Medication non-compliance is the #1 trigger for breakthrough seizures.</div>
+            </section>
+
+            <!-- Section 2: Seizure Classification -->
+            <section class="guide-section" id="classification">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <div class="section-title-group">
+                        <h2>Seizure Classification (ILAE)</h2>
+                        <div class="subtitle">Focal vs. Generalized seizure types</div>
+                    </div>
+                </div>
+
+                <p>The International League Against Epilepsy (ILAE) classifies seizures by where they start in the brain and whether awareness is maintained. This classification guides treatment decisions.</p>
+
+                <div class="seizure-comparison">
+                    <div class="seizure-type focal">
+                        <div class="seizure-type-header">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h4>Focal (Partial) Seizures</h4>
+                            <div class="percentage">Start in ONE brain area</div>
+                        </div>
+                        <div class="seizure-type-body">
+                            <h5>Focal Aware (Simple Partial)</h5>
+                            <ul>
+                                <li><i class="fas fa-circle"></i> Consciousness PRESERVED throughout</li>
+                                <li><i class="fas fa-circle"></i> Motor, sensory, or autonomic symptoms</li>
+                                <li><i class="fas fa-circle"></i> Patient can describe the event afterward</li>
+                                <li><i class="fas fa-circle"></i> May have aura (warning sign)</li>
+                            </ul>
+
+                            <h5>Focal Impaired Awareness (Complex Partial)</h5>
+                            <ul>
+                                <li><i class="fas fa-circle"></i> Consciousness IMPAIRED or lost</li>
+                                <li><i class="fas fa-circle"></i> Automatisms: lip smacking, fumbling, picking</li>
+                                <li><i class="fas fa-circle"></i> Post-event confusion / amnesia for event</li>
+                                <li><i class="fas fa-circle"></i> Most common adult focal seizure type</li>
+                            </ul>
+
+                            <h5>Focal to Bilateral Tonic-Clonic</h5>
+                            <ul>
+                                <li><i class="fas fa-arrow-right"></i> Starts focal, then spreads to both hemispheres</li>
+                                <li><i class="fas fa-arrow-right"></i> Previously called "secondarily generalized"</li>
+                                <li><i class="fas fa-arrow-right"></i> Aura may precede the convulsion</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="seizure-type generalized">
+                        <div class="seizure-type-header">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            <h4>Generalized Seizures</h4>
+                            <div class="percentage">Both hemispheres from onset</div>
+                        </div>
+                        <div class="seizure-type-body">
+                            <h5>Tonic-Clonic (Grand Mal)</h5>
+                            <ul>
+                                <li><i class="fas fa-circle"></i> Tonic phase: stiffening, LOC, may cry out</li>
+                                <li><i class="fas fa-circle"></i> Clonic phase: rhythmic jerking</li>
+                                <li><i class="fas fa-circle"></i> Lasts 1-3 minutes, postictal confusion</li>
+                                <li><i class="fas fa-circle"></i> Risk: tongue biting, incontinence, injury</li>
+                            </ul>
+
+                            <h5>Absence (Petit Mal)</h5>
+                            <ul>
+                                <li><i class="fas fa-circle"></i> Brief staring spells (5-30 seconds)</li>
+                                <li><i class="fas fa-circle"></i> Abrupt onset and offset</li>
+                                <li><i class="fas fa-circle"></i> NO postictal period</li>
+                                <li><i class="fas fa-circle"></i> Common in children ages 4-12</li>
+                            </ul>
+
+                            <h5>Other Generalized Types</h5>
+                            <ul>
+                                <li><i class="fas fa-arrow-right"></i> <strong>Myoclonic:</strong> Brief, shock-like jerks</li>
+                                <li><i class="fas fa-arrow-right"></i> <strong>Atonic:</strong> "Drop attacks" &mdash; sudden loss of tone</li>
+                                <li><i class="fas fa-arrow-right"></i> <strong>Tonic:</strong> Sustained stiffening without clonic</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex">
+                    <div class="info-box-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>NCLEX Alert: Absence Seizures</h5>
+                        <p><strong>Absence seizures are a favorite NCLEX topic!</strong> Key features: brief staring (looks like daydreaming), no postictal period, can occur dozens of times per day, common in school-age children. Teachers often notice before parents. First-line treatment: <strong>ethosuximide</strong> (if absence only) or <strong>valproic acid</strong> (if absence + other seizure types). Carbamazepine and phenytoin can WORSEN absence seizures.</p>
+                    </div>
+                </div>
+
+                <!-- FlorenceBot Tip -->
+                <div class="florencebot-tip" id="tip-aura-warning">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Auras Are Actually Focal Seizures!</div>
+                    <div class="florencebot-tip-content">
+                        <strong>An aura is NOT just a "warning sign" &mdash; it IS a focal aware seizure.</strong> When a patient reports a strange smell, deja vu, or tingling before a big seizure, that's the seizure starting in one area before spreading. Document what the aura feels like &mdash; it helps the neurologist localize the seizure focus. Common auras: unusual taste/smell, visual disturbances, rising sensation in the stomach, deja vu.
+                    </div>
+                </div>
+
+                <div class="bottom-line">&#127919; Bottom Line: Focal seizures start in one area (may or may not impair awareness). Generalized seizures involve both hemispheres from the start. Tonic-clonic = stiffening + jerking. Absence = brief staring, no postictal phase, common in kids. An "aura" is actually a focal aware seizure.</div>
+            </section>
+
+            <!-- Section 3: Assessment & Diagnosis -->
+            <section class="guide-section" id="assessment">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <div class="section-title-group">
+                        <h2>Assessment &amp; Diagnosis</h2>
+                        <div class="subtitle">What to observe, document, and expect</div>
+                    </div>
+                </div>
+
+                <h3>Seizure Phases</h3>
+
+                <div class="phases-timeline">
+                    <h3><i class="fas fa-clock"></i> The Three Phases of a Seizure</h3>
+                    <div class="timeline">
+                        <div class="timeline-point">
+                            <div class="timeline-marker"><i class="fas fa-bolt" style="font-size:0.7rem"></i></div>
+                            <div class="timeline-label">Pre-Ictal (Aura)</div>
+                            <div class="timeline-desc">Warning signs: deja vu, unusual smell/taste, anxiety, visual changes</div>
+                        </div>
+                        <div class="timeline-point">
+                            <div class="timeline-marker"><i class="fas fa-exclamation" style="font-size:0.7rem"></i></div>
+                            <div class="timeline-label">Ictal (Active Seizure)</div>
+                            <div class="timeline-desc">Abnormal electrical activity: motor, sensory, or behavioral changes</div>
+                        </div>
+                        <div class="timeline-point">
+                            <div class="timeline-marker"><i class="fas fa-bed" style="font-size:0.7rem"></i></div>
+                            <div class="timeline-label">Post-Ictal (Recovery)</div>
+                            <div class="timeline-desc">Confusion, drowsiness, headache, muscle soreness. Minutes to hours.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>What to Observe &amp; Document During a Seizure</h3>
+
+                <div class="intervention-cards">
+                    <div class="intervention-card">
+                        <div class="intervention-card-header">
+                            <div class="intervention-icon"><i class="fas fa-clock"></i></div>
+                            <h5>Timing</h5>
+                        </div>
+                        <p>Time of onset, duration, time to full recovery. Call for help if &gt;5 minutes.</p>
+                    </div>
+                    <div class="intervention-card">
+                        <div class="intervention-card-header">
+                            <div class="intervention-icon"><i class="fas fa-running"></i></div>
+                            <h5>Motor Activity</h5>
+                        </div>
+                        <p>Type of movement (tonic, clonic, myoclonic), body parts involved, symmetry vs. one side.</p>
+                    </div>
+                    <div class="intervention-card">
+                        <div class="intervention-card-header">
+                            <div class="intervention-icon"><i class="fas fa-eye"></i></div>
+                            <h5>Level of Consciousness</h5>
+                        </div>
+                        <p>Aware or unaware? Responsive to voice? Eye position and deviation. Automatisms?</p>
+                    </div>
+                    <div class="intervention-card">
+                        <div class="intervention-card-header">
+                            <div class="intervention-icon"><i class="fas fa-lungs"></i></div>
+                            <h5>Airway &amp; Breathing</h5>
+                        </div>
+                        <p>Cyanosis, apnea, secretions, breathing pattern. Tongue biting, incontinence, vomiting.</p>
+                    </div>
+                </div>
+
+                <h3>Diagnostic Workup</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Test</th>
+                                <th>Purpose</th>
+                                <th>Key Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>EEG (Electroencephalogram)</td>
+                                <td>Gold standard for seizure diagnosis</td>
+                                <td>Records brain electrical activity; may be normal between seizures. Video-EEG is most useful.</td>
+                            </tr>
+                            <tr>
+                                <td>MRI Brain</td>
+                                <td>Identify structural causes</td>
+                                <td>Tumors, sclerosis, malformations, stroke. Preferred over CT for epilepsy workup.</td>
+                            </tr>
+                            <tr>
+                                <td>CT Head</td>
+                                <td>Emergent evaluation</td>
+                                <td>Rule out hemorrhage, mass effect. Used first in ED for new-onset seizure.</td>
+                            </tr>
+                            <tr>
+                                <td>Labs</td>
+                                <td>Rule out metabolic causes</td>
+                                <td>BMP (Na+, Ca2+, glucose, Mg2+), CBC, LFTs, toxicology screen, AED levels.</td>
+                            </tr>
+                            <tr>
+                                <td>Lumbar Puncture</td>
+                                <td>Rule out CNS infection</td>
+                                <td>If meningitis/encephalitis suspected. Perform after CT to rule out mass/herniation risk.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- FlorenceBot Tip -->
+                <div class="florencebot-tip" id="tip-document-everything">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Document Everything You See!</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Your seizure observation is the single most important diagnostic tool!</strong> The neurologist wasn't there &mdash; they depend on YOUR description. Note: What body part moved first? Did it start on one side? Did it spread? Was the patient aware? How long did it last? What happened after? This information determines the seizure type and treatment plan.
+                    </div>
+                </div>
+
+                <div class="bottom-line">&#127919; Bottom Line: EEG is the gold standard for seizure diagnosis. MRI identifies structural causes. Your bedside observation and documentation of the seizure is critical &mdash; the neurologist relies on it for classification and treatment decisions.</div>
+            </section>
+
+            <!-- Section 4: Status Epilepticus -->
+            <section class="guide-section" id="status-epilepticus">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <div class="section-title-group">
+                        <h2>Status Epilepticus</h2>
+                        <div class="subtitle">A life-threatening neurological emergency</div>
+                    </div>
+                </div>
+
+                <p><strong>Status epilepticus (SE)</strong> is defined as a seizure lasting longer than 5 minutes, or two or more seizures without the patient regaining full consciousness between them. It is a <strong>medical emergency</strong> with significant morbidity and mortality if not treated rapidly.</p>
+
+                <div class="status-hero">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Status Epilepticus Emergency Protocol</h3>
+                    <p class="status-definition"><strong>Definition:</strong> Seizure &gt;5 minutes OR 2+ seizures without return to baseline consciousness. Mortality: 20% if untreated.</p>
+                    <div class="status-steps">
+                        <div class="status-step">
+                            <div class="status-step-number">1</div>
+                            <h4>ABCs &amp; Safety</h4>
+                            <p>Maintain airway, suction, O2. Position on side. Establish IV access.</p>
+                        </div>
+                        <div class="status-step">
+                            <div class="status-step-number">2</div>
+                            <h4>Benzodiazepine</h4>
+                            <p><strong>Lorazepam 4 mg IV</strong> (first-line) or diazepam 10 mg IV. May repeat once in 5-10 min.</p>
+                        </div>
+                        <div class="status-step">
+                            <div class="status-step-number">3</div>
+                            <h4>AED Loading</h4>
+                            <p>If seizure persists: <strong>Fosphenytoin 20 mg PE/kg IV</strong> or valproic acid or levetiracetam.</p>
+                        </div>
+                        <div class="status-step">
+                            <div class="status-step-number">4</div>
+                            <h4>Refractory SE</h4>
+                            <p>If still seizing: intubation + continuous infusion (midazolam, propofol, or pentobarbital).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>Critical: Why Status Epilepticus Is Dangerous</h5>
+                        <p>Prolonged seizure activity causes: <strong>hypoxia</strong> (respiratory muscle fatigue), <strong>hyperthermia</strong> (massive muscle activity), <strong>rhabdomyolysis</strong> (muscle breakdown), <strong>metabolic acidosis</strong>, <strong>cerebral edema</strong>, and <strong>permanent neuronal death</strong>. The longer the seizure, the harder it is to stop and the worse the outcome.</p>
+                    </div>
+                </div>
+
+                <div class="info-box nclex">
+                    <div class="info-box-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>NCLEX Alert: Benzodiazepines First!</h5>
+                        <p><strong>The first medication given for status epilepticus is ALWAYS a benzodiazepine.</strong> Lorazepam (Ativan) IV is preferred because it has a longer duration of action in the brain than diazepam. Monitor for respiratory depression &mdash; have bag-valve-mask and intubation equipment at bedside. If no IV access, give midazolam IM or diazepam rectally.</p>
+                    </div>
+                </div>
+
+                <!-- FlorenceBot Tip -->
+                <div class="florencebot-tip" id="tip-time-seizure">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">5 Minutes = Call for Help!</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Start timing the seizure immediately!</strong> Most seizures stop on their own within 1-2 minutes. If a seizure lasts longer than 5 minutes, it's status epilepticus and requires emergency medication. Don't wait &mdash; activate the rapid response team. Memory trick: "5 minutes to call, 30 minutes for damage that's permanent."
+                    </div>
+                </div>
+
+                <div class="bottom-line">&#127919; Bottom Line: Status epilepticus = seizure &gt;5 minutes. Treatment: lorazepam IV first, then fosphenytoin or valproic acid if it continues. Monitor for respiratory depression from benzodiazepines. The longer the seizure, the harder to stop and worse the outcome.</div>
+            </section>
+
+            <!-- Section 5: Nursing Interventions -->
+            <section class="guide-section" id="interventions">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <div class="section-title-group">
+                        <h2>Priority Nursing Interventions</h2>
+                        <div class="subtitle">Safety first: during, after, and prevention</div>
+                    </div>
+                </div>
+
+                <h3>During a Seizure (Ictal Phase)</h3>
+
+                <div class="intervention-cards">
+                    <div class="intervention-card">
+                        <div class="intervention-card-header">
+                            <div class="intervention-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h5>Protect from Injury</h5>
+                        </div>
+                        <p>Move sharp objects away. Ease the patient to the floor if standing. Place padding under head. Do NOT restrain &mdash; guide gently.</p>
+                    </div>
+                    <div class="intervention-card">
+                        <div class="intervention-card-header">
+                            <div class="intervention-icon"><i class="fas fa-lungs"></i></div>
+                            <h5>Maintain Airway</h5>
+                        </div>
+                        <p>Turn to side (recovery position) when safe to do so. Suction secretions as needed. Apply supplemental O2. Do NOT insert anything into the mouth.</p>
+                    </div>
+                    <div class="intervention-card">
+                        <div class="intervention-card-header">
+                            <div class="intervention-icon"><i class="fas fa-stopwatch"></i></div>
+                            <h5>Time the Seizure</h5>
+                        </div>
+                        <p>Note onset time and duration. If &gt;5 minutes, activate rapid response for status epilepticus. Document all observations.</p>
+                    </div>
+                    <div class="intervention-card">
+                        <div class="intervention-card-header">
+                            <div class="intervention-icon"><i class="fas fa-phone"></i></div>
+                            <h5>Stay &amp; Call for Help</h5>
+                        </div>
+                        <p>Never leave the patient alone. Call for additional help. Prepare IV access and emergency medications if not already established.</p>
+                    </div>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-icon">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>NEVER Do These During a Seizure!</h5>
+                        <ul>
+                            <li><strong>Do NOT put anything in the patient's mouth</strong> &mdash; they cannot swallow their tongue. Objects cause broken teeth, lacerations, or aspiration.</li>
+                            <li><strong>Do NOT restrain the patient</strong> &mdash; this can cause musculoskeletal injuries, fractures, or dislocations.</li>
+                            <li><strong>Do NOT give oral medications</strong> &mdash; aspiration risk is too high during active seizure.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>After a Seizure (Postictal Phase)</h3>
+
+                <ul>
+                    <li><strong>Position on side</strong> (recovery position) to maintain airway and drain secretions</li>
+                    <li><strong>Assess neurological status:</strong> LOC, orientation, pupil response, motor function</li>
+                    <li><strong>Assess for injuries:</strong> Tongue biting, head injury, shoulder dislocation, skin breakdown</li>
+                    <li><strong>Provide a quiet environment</strong> &mdash; dim lights, reduce stimulation</li>
+                    <li><strong>Reorient gently</strong> &mdash; patients may be confused, combative, or drowsy. Do not restrain.</li>
+                    <li><strong>Document:</strong> Total seizure duration, type of movements, postictal duration, vital signs, any injuries</li>
+                    <li><strong>Check blood glucose</strong> &mdash; rule out hypoglycemia as a cause or result of prolonged seizure</li>
+                </ul>
+
+                <h3>Seizure Precautions (Inpatient)</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Precaution</th>
+                                <th>Rationale</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Pad side rails</td>
+                                <td>Prevent head/limb injury during seizure</td>
+                            </tr>
+                            <tr>
+                                <td>Bed in lowest position</td>
+                                <td>Minimize fall height</td>
+                            </tr>
+                            <tr>
+                                <td>Suction at bedside</td>
+                                <td>Clear airway secretions immediately</td>
+                            </tr>
+                            <tr>
+                                <td>O2 and bag-valve-mask at bedside</td>
+                                <td>Provide ventilation if needed</td>
+                            </tr>
+                            <tr>
+                                <td>IV access maintained</td>
+                                <td>Rapid medication administration</td>
+                            </tr>
+                            <tr>
+                                <td>Seizure pad / oral airway at bedside</td>
+                                <td>Ready for emergency use post-seizure</td>
+                            </tr>
+                            <tr>
+                                <td>Call light within reach</td>
+                                <td>Patient can alert staff to aura</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- FlorenceBot Tip -->
+                <div class="florencebot-tip" id="tip-nothing-in-mouth">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Nothing in the Mouth &mdash; Ever!</div>
+                    <div class="florencebot-tip-content">
+                        <strong>This is one of the most common myths about seizures!</strong> You might hear families say "put a spoon in their mouth so they don't swallow their tongue." The truth: it is physically impossible to swallow your tongue. Putting anything in the mouth during a seizure risks broken teeth, lacerations, and aspiration. Educate patients and families about this at every opportunity.
+                    </div>
+                </div>
+
+                <div class="bottom-line">&#127919; Bottom Line: During a seizure: protect from injury, maintain airway, turn to side, time it, do NOT restrain, do NOT insert anything in the mouth. After: assess, reorient, document everything. Seizure precautions = padded rails, low bed, suction, O2, IV access.</div>
+            </section>
+
+            <!-- Section 6: Medications -->
+            <section class="guide-section" id="medications">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <div class="section-title-group">
+                        <h2>Antiepileptic Drug (AED) Management</h2>
+                        <div class="subtitle">Key medications, levels, and nursing considerations</div>
+                    </div>
+                </div>
+
+                <p>Antiepileptic drugs (AEDs) are the mainstay of epilepsy treatment. The goal is seizure freedom with minimal side effects. Most patients require long-term (often lifelong) therapy.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Drug</th>
+                                <th>Seizure Type</th>
+                                <th>Therapeutic Level</th>
+                                <th>Key Nursing Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Phenytoin (Dilantin)</td>
+                                <td>Focal, tonic-clonic</td>
+                                <td>10-20 mcg/mL</td>
+                                <td>Gingival hyperplasia, cardiac arrhythmias (slow IV push), many drug interactions, check free level if low albumin</td>
+                            </tr>
+                            <tr>
+                                <td>Valproic Acid (Depakote)</td>
+                                <td>Most seizure types</td>
+                                <td>50-100 mcg/mL</td>
+                                <td>Hepatotoxicity (monitor LFTs), pancreatitis, TERATOGENIC (Category X), weight gain, thrombocytopenia</td>
+                            </tr>
+                            <tr>
+                                <td>Carbamazepine (Tegretol)</td>
+                                <td>Focal, tonic-clonic</td>
+                                <td>4-12 mcg/mL</td>
+                                <td>Aplastic anemia, agranulocytosis (monitor CBC), hyponatremia (SIADH), autoinduction, rash (Stevens-Johnson risk)</td>
+                            </tr>
+                            <tr>
+                                <td>Levetiracetam (Keppra)</td>
+                                <td>Focal, generalized</td>
+                                <td>Not routinely monitored</td>
+                                <td>Behavioral changes (irritability, aggression), fewer drug interactions, renal elimination, no hepatotoxicity</td>
+                            </tr>
+                            <tr>
+                                <td>Ethosuximide (Zarontin)</td>
+                                <td>Absence ONLY</td>
+                                <td>40-100 mcg/mL</td>
+                                <td>First-line for absence seizures only. GI distress, blood dyscrasias. Does NOT treat tonic-clonic.</td>
+                            </tr>
+                            <tr>
+                                <td>Lamotrigine (Lamictal)</td>
+                                <td>Focal, generalized</td>
+                                <td>3-14 mcg/mL</td>
+                                <td>Rash (Stevens-Johnson syndrome &mdash; STOP drug immediately if rash appears). Must titrate slowly.</td>
+                            </tr>
+                            <tr>
+                                <td>Lorazepam (Ativan)</td>
+                                <td>Status epilepticus</td>
+                                <td>N/A (acute use)</td>
+                                <td>First-line for status epilepticus. Respiratory depression &mdash; monitor closely. Short duration (hours).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box warning">
+                    <div class="info-box-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>Critical: Phenytoin IV Administration</h5>
+                        <p><strong>Phenytoin must be given SLOWLY IV (no faster than 50 mg/min in adults).</strong> Rapid infusion can cause fatal cardiac arrhythmias and hypotension. Always mix in normal saline only (precipitates in dextrose). Use a filter. Monitor cardiac rhythm during infusion. Fosphenytoin (Cerebyx) is a safer IV prodrug alternative that can be given faster.</p>
+                    </div>
+                </div>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>Clinical Pearl: Dilantin &amp; Gingival Hyperplasia</h5>
+                        <p>Up to 50% of patients on long-term phenytoin develop <strong>gingival (gum) hyperplasia</strong> &mdash; overgrowth of gum tissue. Teach patients: excellent oral hygiene, regular dental visits, use a soft-bristle toothbrush, and floss daily. Also watch for: hirsutism, acne, coarsened facial features, and nystagmus (sign of toxicity).</p>
+                    </div>
+                </div>
+
+                <h3>General AED Nursing Principles</h3>
+
+                <ul>
+                    <li><strong>Never stop AEDs abruptly</strong> &mdash; abrupt withdrawal can trigger status epilepticus. Always taper gradually.</li>
+                    <li><strong>Monitor therapeutic drug levels</strong> &mdash; especially phenytoin, valproic acid, and carbamazepine. Draw trough levels (before next dose).</li>
+                    <li><strong>Assess for toxicity signs:</strong> Nystagmus, ataxia, drowsiness, slurred speech, confusion.</li>
+                    <li><strong>Check drug interactions:</strong> Many AEDs are metabolized by CYP450 enzymes and interact with other medications (warfarin, OCPs, etc.).</li>
+                    <li><strong>Pregnancy considerations:</strong> Valproic acid and phenytoin are teratogenic. Women of childbearing age need folate supplementation and contraception counseling.</li>
+                </ul>
+
+                <!-- FlorenceBot Tip -->
+                <div class="florencebot-tip" id="tip-never-stop-abruptly">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Never Stop Seizure Meds Cold Turkey!</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Stopping antiepileptic drugs suddenly is DANGEROUS!</strong> Abrupt withdrawal is one of the most common causes of status epilepticus. Always taper gradually under provider guidance. If a patient says "I stopped taking my Dilantin because I felt fine," this is a red flag &mdash; educate them that seizure-free doesn't mean epilepsy-free, and stopping abruptly can cause a life-threatening seizure.
+                    </div>
+                </div>
+
+                <div class="bottom-line">&#127919; Bottom Line: Phenytoin (Dilantin) = 10-20 mcg/mL, watch for gingival hyperplasia, slow IV push only. Valproic acid = monitor LFTs, teratogenic. Never stop AEDs abruptly. Lorazepam is first-line for status epilepticus. Stevens-Johnson risk with lamotrigine and carbamazepine.</div>
+            </section>
+
+            <!-- Section 7: Pediatric Considerations -->
+            <section class="guide-section" id="pediatric">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <div class="section-title-group">
+                        <h2>Pediatric Considerations</h2>
+                        <div class="subtitle">Seizures in infants and children</div>
+                    </div>
+                </div>
+
+                <p>Seizures are one of the most common neurological emergencies in pediatrics. Children have unique seizure types, causes, and management considerations that differ significantly from adults.</p>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>Febrile Seizures &mdash; The Most Common Pediatric Seizure</h5>
+                        <p><strong>Febrile seizures occur in 2-5% of children ages 6 months to 5 years</strong> during rapid temperature elevation (typically &gt;102.2&deg;F / 39&deg;C). Simple febrile seizures are generalized, last &lt;15 minutes, and do not recur within 24 hours. They do NOT require long-term AED treatment and have an excellent prognosis. Educate parents: febrile seizures do not cause brain damage or epilepsy in the vast majority of cases.</p>
+                    </div>
+                </div>
+
+                <h3>Febrile Seizures: Simple vs. Complex</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Simple Febrile</th>
+                                <th>Complex Febrile</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Duration</td>
+                                <td>&lt;15 minutes</td>
+                                <td>&gt;15 minutes</td>
+                            </tr>
+                            <tr>
+                                <td>Type</td>
+                                <td>Generalized (whole body)</td>
+                                <td>Focal (one side) or generalized</td>
+                            </tr>
+                            <tr>
+                                <td>Recurrence in 24 hrs</td>
+                                <td>Does not recur</td>
+                                <td>May recur within 24 hours</td>
+                            </tr>
+                            <tr>
+                                <td>Risk of Epilepsy</td>
+                                <td>~1% (same as general population)</td>
+                                <td>Increased risk (~4-6%)</td>
+                            </tr>
+                            <tr>
+                                <td>Treatment</td>
+                                <td>Treat fever, reassurance</td>
+                                <td>May need further evaluation (EEG, MRI)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Pediatric-Specific Seizure Types</h3>
+
+                <ul>
+                    <li><strong>Infantile spasms (West syndrome):</strong> Onset 3-12 months. Clusters of brief flexion or extension spasms, often upon waking. EEG shows hypsarrhythmia. Treatment: ACTH or vigabatrin. URGENT referral needed.</li>
+                    <li><strong>Lennox-Gastaut syndrome:</strong> Multiple seizure types beginning ages 2-6. Intellectual disability common. Difficult to treat, often drug-resistant.</li>
+                    <li><strong>Childhood absence epilepsy:</strong> Ages 4-12. Multiple daily staring spells. Excellent prognosis &mdash; most outgrow it by adolescence. First-line: ethosuximide.</li>
+                    <li><strong>Juvenile myoclonic epilepsy:</strong> Onset in adolescence. Morning myoclonic jerks + absence + tonic-clonic. Lifelong treatment usually needed. First-line: valproic acid (but use levetiracetam in females of childbearing age).</li>
+                </ul>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <div class="info-box-content">
+                        <h5>Pediatric Medication Differences</h5>
+                        <ul>
+                            <li><strong>Dose by weight:</strong> All pediatric AED doses are calculated per kg body weight</li>
+                            <li><strong>Rectal diazepam:</strong> Used for home management of prolonged seizures in children (Diastat)</li>
+                            <li><strong>Intranasal midazolam:</strong> Newer option for out-of-hospital seizure rescue</li>
+                            <li><strong>Phenobarbital:</strong> Still used in neonates for seizures (rarely used in adults)</li>
+                            <li><strong>Valproic acid caution:</strong> Risk of fatal hepatotoxicity is highest in children &lt;2 years on multiple AEDs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Parent &amp; Caregiver Education</h3>
+
+                <ul>
+                    <li><strong>Seizure first aid:</strong> Stay calm, protect from injury, turn to side, time the seizure, do NOT put anything in the mouth</li>
+                    <li><strong>When to call 911:</strong> Seizure &gt;5 minutes, first-ever seizure, difficulty breathing, injury during seizure, seizure in water</li>
+                    <li><strong>Fever management:</strong> For febrile seizure history &mdash; treat fever early with acetaminophen or ibuprofen, but prophylactic antipyretics do NOT prevent febrile seizures</li>
+                    <li><strong>School action plans:</strong> Ensure school has seizure action plan, trained staff, and rescue medication if prescribed</li>
+                    <li><strong>Activity safety:</strong> Swimming only with supervision, avoid heights, helmet for bike riding. Most activities can continue with appropriate precautions.</li>
+                </ul>
+
+                <div class="bottom-line">&#127919; Bottom Line: Febrile seizures (ages 6mo-5yr) are common and usually benign &mdash; simple febrile seizures do NOT need AED treatment. Absence seizures are common in school-age kids. Always calculate pediatric AED doses by weight. Rectal diazepam (Diastat) is the home rescue medication for children with prolonged seizures.</div>
+            </section>
+
+            <!-- Practice Questions CTA -->
+            <section class="practice-cta" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> Test Your Knowledge</h2>
+                <p>Ready to challenge yourself? Take the NCLEX-style quiz on Seizures &amp; Epilepsy.</p>
+                <a href="quiz/quiz.html?guide=seizures" class="btn-quiz">
+                    <i class="fas fa-play-circle"></i> Start Practice Questions
+                </a>
+            </section>
+
+            <!-- Key Takeaways -->
+            <div class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-list">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Focal vs. Generalized:</strong> Focal starts in one area (may spread). Generalized involves both hemispheres from onset. Classification determines treatment.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Status Epilepticus:</strong> Seizure &gt;5 min is an emergency. First-line: lorazepam IV. Then fosphenytoin. Monitor for respiratory depression.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Safety Priority:</strong> Protect from injury, maintain airway, turn to side, time seizure. NEVER restrain or put anything in the mouth.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Phenytoin (Dilantin):</strong> Therapeutic level 10-20 mcg/mL. Slow IV push only. Gingival hyperplasia. Many drug interactions.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Never Stop AEDs Abruptly:</strong> Sudden withdrawal can cause status epilepticus. Always taper gradually.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Absence Seizures:</strong> Brief staring, no postictal phase, common in children. Treat with ethosuximide. Carbamazepine worsens them.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cross References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
+                <div class="cross-ref-grid">
+                    <a href="stroke.html" class="cross-ref-link">
+                        <i class="fas fa-brain"></i> Stroke
+                    </a>
+                    <a href="traumatic-brain-injury.html" class="cross-ref-link">
+                        <i class="fas fa-head-side-virus"></i> Traumatic Brain Injury
+                    </a>
+                    <a href="meningitis.html" class="cross-ref-link">
+                        <i class="fas fa-disease"></i> Meningitis
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- end document-content -->
+
+        <!-- Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Evidence-based study resources for nursing students</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div><!-- end document-container -->
+
+    <!-- Scripts -->
+    <script src="guide-sidebar.js"></script>
+    <script src="configs/seizures-config.js"></script>
+    <script src="guide-init.js"></script>
+    <script src="../cookie-consent.js"></script>
+</body>
+</html>

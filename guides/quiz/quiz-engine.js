@@ -1713,10 +1713,29 @@ class QuizEngine {
             html += '<div class="quiz-sata-partial"><i class="fas fa-info-circle"></i> ' + detail + '</div>';
         }
 
-        // Matrix: show per-row results
+        // Matrix: show per-row breakdown
         if (q.type === 'matrix' && !isCorrect) {
             const correctRows = q.options.filter(opt => userAnswer && userAnswer[opt.id] === q.correct[opt.id]).length;
-            html += `<div class="quiz-matrix-partial"><i class="fas fa-info-circle"></i> You got ${correctRows} of ${q.options.length} rows correct.</div>`;
+            html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> You got ${correctRows} of ${q.options.length} rows correct.</div>`;
+            html += `<div class="quiz-matrix-breakdown">`;
+            html += `<div class="quiz-matrix-breakdown-header">`;
+            html += `<span class="quiz-matrix-breakdown-col-finding">Finding</span>`;
+            html += `<span class="quiz-matrix-breakdown-col">Your Answer</span>`;
+            html += `<span class="quiz-matrix-breakdown-col">Correct Answer</span>`;
+            html += `<span class="quiz-matrix-breakdown-col-icon"></span>`;
+            html += `</div>`;
+            q.options.forEach(opt => {
+                const userVal = userAnswer ? userAnswer[opt.id] : null;
+                const correctVal = q.correct[opt.id];
+                const isRight = userVal === correctVal;
+                html += `<div class="quiz-matrix-breakdown-row ${isRight ? 'quiz-matrix-breakdown-row--correct' : 'quiz-matrix-breakdown-row--incorrect'}">`;
+                html += `<span class="quiz-matrix-breakdown-col-finding">${this._escapeHtml(opt.text)}</span>`;
+                html += `<span class="quiz-matrix-breakdown-col ${!isRight ? 'quiz-matrix-breakdown-wrong' : ''}">${this._escapeHtml(userVal || '—')}</span>`;
+                html += `<span class="quiz-matrix-breakdown-col ${!isRight ? 'quiz-matrix-breakdown-right' : ''}">${this._escapeHtml(correctVal || '—')}</span>`;
+                html += `<span class="quiz-matrix-breakdown-col-icon"><i class="fas ${isRight ? 'fa-check' : 'fa-times'}"></i></span>`;
+                html += `</div>`;
+            });
+            html += `</div>`;
         }
 
         // Correct answer rationale

@@ -50,6 +50,17 @@
         return normalized.startsWith('/guides/') && normalized.endsWith('.html');
     }
 
+    // Check if user is an admin (admins always have access)
+    async function checkAdmin() {
+        if (!isAuthenticated()) return false;
+        try {
+            const data = await apiService.get('/api/user/profile');
+            return data && data.user && data.user.is_admin === true;
+        } catch (e) {
+            return false;
+        }
+    }
+
     // Check subscription status (uses apiService for automatic token refresh)
     async function checkSubscription() {
         if (!isAuthenticated()) {
@@ -57,10 +68,15 @@
         }
 
         try {
-            const data = await apiService.get('/api/subscription-status');
+            // Admin users always have access
+            const [subData, isAdmin] = await Promise.all([
+                apiService.get('/api/subscription-status'),
+                checkAdmin()
+            ]);
+
             return {
-                hasAccess: data.has_access,
-                subscription: data.subscription
+                hasAccess: subData.has_access || isAdmin,
+                subscription: subData.subscription
             };
         } catch (error) {
             console.error('Subscription check error:', error);

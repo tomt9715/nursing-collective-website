@@ -424,6 +424,24 @@
         [data-theme="dark"] .ai-upgrade-card h3{color:#f1f5f9}
         [data-theme="dark"] .ai-upgrade-card p{color:#94a3b8}
 
+        /* Quiz loading overlay (injected by JS) */
+        .ai-quiz-loading-overlay{position:fixed;inset:0;z-index:10200;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+        .ai-quiz-loading-overlay.visible{opacity:1}
+        .ai-quiz-loading-card{background:#fff;border-radius:20px;padding:40px 36px;width:min(380px,88vw);text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.2);transform:scale(.92);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+        .ai-quiz-loading-overlay.visible .ai-quiz-loading-card{transform:scale(1)}
+        .ai-quiz-loading-spinner{width:48px;height:48px;border:4px solid rgba(124,58,237,.15);border-top-color:#7c3aed;border-radius:50%;animation:aiSpin .8s linear infinite;margin:0 auto 20px}
+        .ai-quiz-loading-card h3{font-family:'Outfit',sans-serif;font-size:1.2rem;font-weight:700;color:#0f172a;margin:0 0 8px}
+        .ai-quiz-loading-section{font-size:.95rem;font-weight:600;color:#7c3aed;margin:0 0 4px}
+        .ai-quiz-loading-sub{font-size:.82rem;color:#64748b;margin:0 0 20px}
+        .ai-quiz-loading-bar{width:100%;height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden}
+        .ai-quiz-loading-bar-fill{width:0;height:100%;background:linear-gradient(90deg,#7c3aed,#3b82f6);border-radius:3px;animation:aiLoadBar 18s ease-out forwards}
+        @keyframes aiLoadBar{0%{width:0}30%{width:45%}60%{width:70%}80%{width:85%}100%{width:95%}}
+        [data-theme="dark"] .ai-quiz-loading-card{background:#1e293b;box-shadow:0 24px 80px rgba(0,0,0,.5)}
+        [data-theme="dark"] .ai-quiz-loading-card h3{color:#f1f5f9}
+        [data-theme="dark"] .ai-quiz-loading-section{color:#a78bfa}
+        [data-theme="dark"] .ai-quiz-loading-sub{color:#94a3b8}
+        [data-theme="dark"] .ai-quiz-loading-bar{background:#334155}
+
         /* Question count modal */
         .ai-qcount-backdrop{position:fixed;inset:0;z-index:10100;background:rgba(0,0,0,.45);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .25s}
         .ai-qcount-backdrop.visible{opacity:1;pointer-events:auto}

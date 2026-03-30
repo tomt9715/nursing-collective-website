@@ -1247,7 +1247,7 @@
 
         var estQs = selectedItem ? parseInt(selectedItem.dataset.estQs, 10) || 10 : 10;
 
-        showToast('Generating ' + sectionTitle + ' quiz\u2026', 'info');
+        showQuizLoadingOverlay(sectionTitle);
 
         try {
             var data = await apiCall('/api/ai/documents/' + docId + '/section-quiz', {
@@ -1262,6 +1262,7 @@
             if (data && data.content) {
                 var questions = parseAIQuizMarkdown(data.content);
                 if (!questions || questions.length === 0) {
+                    hideQuizLoadingOverlay();
                     showToast('Could not parse section questions. Try again.', 'error');
                     return;
                 }
@@ -1288,6 +1289,7 @@
                 throw new Error(data.error || 'Failed to generate section quiz');
             }
         } catch (err) {
+            hideQuizLoadingOverlay();
             console.error('[AI Tools] Section quiz failed:', err);
             if (isQuestionCreditError(err.message)) {
                 showQuestionExhaustedToast();
@@ -2342,6 +2344,38 @@
         var g = Math.max(0, parseInt(hex.slice(3, 5), 16) - amount);
         var b = Math.max(0, parseInt(hex.slice(5, 7), 16) - amount);
         return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+    }
+
+    // ── Quiz loading overlay ──────────────────────────────────────
+    var quizLoadingOverlay = null;
+
+    function showQuizLoadingOverlay(sectionTitle) {
+        hideQuizLoadingOverlay(); // Remove any existing
+        var overlay = document.createElement('div');
+        overlay.className = 'ai-quiz-loading-overlay';
+        overlay.innerHTML =
+            '<div class="ai-quiz-loading-card">' +
+                '<div class="ai-quiz-loading-spinner"></div>' +
+                '<h3>Preparing Your Quiz</h3>' +
+                '<p class="ai-quiz-loading-section">' + escapeHtml(sectionTitle || 'Section Quiz') + '</p>' +
+                '<p class="ai-quiz-loading-sub">Generating questions from your notes\u2026</p>' +
+                '<div class="ai-quiz-loading-bar"><div class="ai-quiz-loading-bar-fill"></div></div>' +
+            '</div>';
+        document.body.appendChild(overlay);
+        quizLoadingOverlay = overlay;
+        // Trigger animation
+        requestAnimationFrame(function () {
+            overlay.classList.add('visible');
+        });
+    }
+
+    function hideQuizLoadingOverlay() {
+        if (quizLoadingOverlay) {
+            quizLoadingOverlay.classList.remove('visible');
+            var el = quizLoadingOverlay;
+            setTimeout(function () { if (el.parentNode) el.parentNode.removeChild(el); }, 300);
+            quizLoadingOverlay = null;
+        }
     }
 
     function showToast(message, type) {

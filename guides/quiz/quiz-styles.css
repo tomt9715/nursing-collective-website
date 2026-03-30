@@ -3583,7 +3583,7 @@ body {
     margin-top: 12px;
     padding-top: 10px;
     border-top: 1px solid var(--quiz-border-light);
-    text-align: right;
+    text-align: center;
 }
 
 .quiz-ai-disclaimer-trigger {

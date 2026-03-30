@@ -81,7 +81,7 @@ body {
 
 /* --- Layout --- */
 .quiz-container {
-    max-width: 1100px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 24px 16px 80px;
     padding-top: calc(40px + env(safe-area-inset-top, 0px));
@@ -431,7 +431,7 @@ body {
     padding: 32px 28px;
     box-shadow: var(--quiz-shadow-sm);
     animation: quiz-fadeIn 0.3s ease;
-    max-width: 880px;
+    max-width: 1100px;
     margin-left: auto;
     margin-right: auto;
     outline: none !important;

@@ -2567,20 +2567,24 @@ body {
 
 .quiz-ordering-correct-label {
     margin-left: auto;
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #16a34a;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+    background: #16a34a;
+    padding: 4px 12px;
+    border-radius: 6px;
     white-space: nowrap;
     flex-shrink: 0;
 }
 
 .quiz-ordering-correct-label i {
-    margin-right: 4px;
-    font-size: 0.7rem;
+    margin-right: 5px;
+    font-size: 0.8rem;
 }
 
 [data-theme="dark"] .quiz-ordering-correct-label {
-    color: #86efac;
+    background: #15803d;
+    color: #fff;
 }
 
 /* Ordering correct sequence in feedback */

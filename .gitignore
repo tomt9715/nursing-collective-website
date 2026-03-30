@@ -43,3 +43,4 @@ css-backup/
 
 # Local files
 *.local
+.claude/

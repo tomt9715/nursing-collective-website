@@ -322,9 +322,9 @@ class QuizEngine {
     }
 
     async _explainQuestion(questionId, btn) {
-        // Find the question
-        const q = this.questions.find(q => q.id === questionId) ||
-                  this.activeQuestions.find(q => q.id === questionId);
+        // Find the question (questionId from data attribute is always a string, q.id may be a number)
+        const q = this.questions.find(q => String(q.id) === String(questionId)) ||
+                  this.activeQuestions.find(q => String(q.id) === String(questionId));
         if (!q) return;
 
         // Get the container (now a sibling panel of .quiz-question-main)

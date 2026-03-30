@@ -2565,6 +2565,24 @@ body {
     color: #fff;
 }
 
+.quiz-ordering-correct-label {
+    margin-left: auto;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #16a34a;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.quiz-ordering-correct-label i {
+    margin-right: 4px;
+    font-size: 0.7rem;
+}
+
+[data-theme="dark"] .quiz-ordering-correct-label {
+    color: #86efac;
+}
+
 /* Ordering correct sequence in feedback */
 .quiz-ordering-partial {
     display: flex;

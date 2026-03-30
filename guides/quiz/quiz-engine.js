@@ -366,11 +366,14 @@ class QuizEngine {
         const result = this.results.get(q.id);
         const payload = {
             stem: q.stem,
+            type: q.type,
+            subtype: q.subtype || null,
             options: q.options,
             correct: q.correct,
             userAnswer: result ? result.userAnswer : null,
             isCorrect: result ? result.correct : false,
             rationale: q.rationale ? q.rationale.correct : '',
+            matrixColumns: q.matrixColumns || null,
         };
 
         try {
@@ -1706,6 +1709,11 @@ class QuizEngine {
                     item.classList.add('quiz-ordering-item--correct');
                 } else if (userIdx !== -1) {
                     item.classList.add('quiz-ordering-item--incorrect');
+                    // Show what the correct position should be
+                    const correctLabel = document.createElement('span');
+                    correctLabel.className = 'quiz-ordering-correct-label';
+                    correctLabel.innerHTML = '<i class="fas fa-arrow-right"></i> Should be #' + (correctIdx + 1);
+                    item.appendChild(correctLabel);
                 }
             });
         } else if (q.type === 'matrix') {

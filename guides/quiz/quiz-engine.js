@@ -512,6 +512,14 @@ class QuizEngine {
     // ── Event Handling ──────────────────────────────────────
 
     _handleClick(e) {
+        // Intercept back link click during active quiz
+        const backLink = e.target.closest('.quiz-back-link');
+        if (backLink && this.phase === 'quiz' && this.answers.size > 0) {
+            e.preventDefault();
+            this._showLeaveModal(backLink.href);
+            return;
+        }
+
         // Action buttons
         const actionBtn = e.target.closest('[data-quiz-action]');
         if (actionBtn) {
@@ -796,6 +804,111 @@ class QuizEngine {
             this.skipQuestion();
             return;
         }
+    }
+
+    _showLeaveModal(targetUrl) {
+        // Remove existing modal if any
+        const existing = document.getElementById('quiz-leave-modal');
+        if (existing) existing.remove();
+
+        const answered = this.submitted.size;
+        const total = this.activeQuestions.length;
+        const remaining = total - answered;
+
+        const overlay = document.createElement('div');
+        overlay.id = 'quiz-leave-modal';
+        overlay.className = 'quiz-leave-overlay';
+        overlay.innerHTML = `
+            <div class="quiz-leave-card">
+                <div class="quiz-leave-icon">
+                    <i class="fas fa-door-open"></i>
+                </div>
+                <h2>Leave Quiz?</h2>
+                <p>You've answered <strong>${answered} of ${total}</strong> questions.${remaining > 0 ? ` You still have <strong>${remaining}</strong> remaining.` : ''}</p>
+                <p class="quiz-leave-note">Your progress will be saved and you can resume later.</p>
+                <div class="quiz-leave-actions">
+                    <button class="quiz-btn quiz-btn--primary quiz-leave-stay">
+                        <i class="fas fa-pencil-alt"></i> Keep Going
+                    </button>
+                    <button class="quiz-btn quiz-btn--secondary quiz-leave-go">
+                        <i class="fas fa-arrow-left"></i> Leave Quiz
+                    </button>
+                </div>
+            </div>
+        `;
+
+        // Add styles
+        if (!document.getElementById('quiz-leave-modal-styles')) {
+            const style = document.createElement('style');
+            style.id = 'quiz-leave-modal-styles';
+            style.textContent = `
+                .quiz-leave-overlay {
+                    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                    background: rgba(0,0,0,0.6); z-index: 10000;
+                    display: flex; align-items: center; justify-content: center;
+                    padding: 20px; animation: quiz-fadeIn 0.2s ease;
+                    -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px);
+                }
+                .quiz-leave-card {
+                    background: var(--quiz-card-bg, #fff); border-radius: 20px;
+                    padding: 40px; max-width: 420px; width: 100%;
+                    text-align: center; box-shadow: 0 25px 60px rgba(0,0,0,0.3);
+                    animation: quiz-slideUp 0.25s ease;
+                }
+                @keyframes quiz-slideUp {
+                    from { transform: translateY(20px); opacity: 0; }
+                    to { transform: translateY(0); opacity: 1; }
+                }
+                .quiz-leave-icon {
+                    width: 64px; height: 64px;
+                    background: linear-gradient(135deg, #f59e0b, #d97706);
+                    border-radius: 50%; display: flex; align-items: center;
+                    justify-content: center; margin: 0 auto 20px;
+                }
+                .quiz-leave-icon i { font-size: 28px; color: white; }
+                .quiz-leave-card h2 {
+                    font-family: 'Outfit', sans-serif; font-size: 1.5rem;
+                    color: var(--quiz-text-primary, #1f2937); margin-bottom: 12px;
+                }
+                .quiz-leave-card p {
+                    color: var(--quiz-text-secondary, #6b7280);
+                    font-size: 1rem; line-height: 1.6; margin-bottom: 8px;
+                }
+                .quiz-leave-note {
+                    font-size: 0.88rem !important; color: #9ca3af !important;
+                    margin-bottom: 24px !important;
+                }
+                .quiz-leave-actions {
+                    display: flex; flex-direction: column; gap: 10px;
+                }
+                .quiz-leave-stay {
+                    padding: 14px 24px; font-size: 1rem;
+                }
+                .quiz-leave-go {
+                    padding: 12px 24px; font-size: 0.95rem;
+                }
+                [data-theme="dark"] .quiz-leave-card {
+                    background: var(--quiz-card-bg, #1f2937);
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        document.body.appendChild(overlay);
+
+        // Event handlers
+        overlay.querySelector('.quiz-leave-stay').addEventListener('click', () => {
+            overlay.remove();
+        });
+        overlay.querySelector('.quiz-leave-go').addEventListener('click', () => {
+            this._saveState();
+            window.removeEventListener('beforeunload', this._boundBeforeUnload);
+            window.location.href = targetUrl;
+        });
+        // Click outside card to dismiss
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) overlay.remove();
+        });
     }
 
     _handleBeforeUnload(e) {

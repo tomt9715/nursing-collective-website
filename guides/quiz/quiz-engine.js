@@ -1780,41 +1780,17 @@ class QuizEngine {
         let html = `<div class="quiz-feedback ${statusClass}">`;
         html += `<div class="quiz-feedback-header"><i class="fas ${statusIcon}"></i> ${statusText}</div>`;
 
-        // Ordering: show side-by-side comparison of user's order vs correct order
+        // Ordering: concise summary (the question items above are already highlighted green/red)
         if (q.type === 'ordering' && !isCorrect) {
             const correctPositions = Array.isArray(userAnswer) ? userAnswer.filter((v, i) => v === q.correct[i]).length : 0;
-            if (correctPositions > 0) {
-                html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> You placed ${correctPositions} of ${q.correct.length} items in the correct position — partial credit awarded.</div>`;
-            }
-            html += `<div class="quiz-ordering-comparison">`;
-            html += `<div class="quiz-ordering-col">`;
-            html += `<div class="quiz-ordering-col-header quiz-ordering-col-header--yours"><i class="fas fa-user"></i> Your Order</div>`;
-            if (Array.isArray(userAnswer)) {
-                userAnswer.forEach((id, i) => {
-                    const opt = q.options.find(o => o.id === id);
-                    const isRight = id === q.correct[i];
-                    html += `<div class="quiz-ordering-compare-item ${isRight ? 'quiz-ordering-compare-item--correct' : 'quiz-ordering-compare-item--incorrect'}">`;
-                    html += `<span class="quiz-ordering-compare-num">${i + 1}</span>`;
-                    html += `<span>${this._escapeHtml(opt ? opt.text : id)}</span>`;
-                    html += `<i class="fas ${isRight ? 'fa-check' : 'fa-times'}"></i>`;
-                    html += `</div>`;
-                });
-            }
-            html += `</div>`;
-            html += `<div class="quiz-ordering-col">`;
-            html += `<div class="quiz-ordering-col-header quiz-ordering-col-header--correct"><i class="fas fa-check-circle"></i> Correct Order</div>`;
-            q.correct.forEach((id, i) => {
-                const opt = q.options.find(o => o.id === id);
-                html += `<div class="quiz-ordering-compare-item quiz-ordering-compare-item--correct">`;
-                html += `<span class="quiz-ordering-compare-num">${i + 1}</span>`;
-                html += `<span>${this._escapeHtml(opt ? opt.text : id)}</span>`;
-                html += `</div>`;
-            });
-            html += `</div>`;
-            html += `</div>`;
+            const total = q.correct.length;
+            let msg = `You placed <strong>${correctPositions} of ${total}</strong> items in the correct position.`;
+            if (correctPositions > 0 && isPartial) msg += ' Partial credit awarded.';
+            msg += ' Check the highlighted items above — <span style="color:#16a34a">green = correct position</span>, <span style="color:#dc2626">red = wrong position</span>.';
+            html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> ${msg}</div>`;
         }
 
-        // SATA: show selection detail
+        // SATA: concise summary
         if (q.type === 'sata' && !isCorrect) {
             const correctSet = new Set(Array.isArray(q.correct) ? q.correct : []);
             const userArr = Array.isArray(userAnswer) ? userAnswer : [];
@@ -1826,29 +1802,14 @@ class QuizEngine {
             html += '<div class="quiz-sata-partial"><i class="fas fa-info-circle"></i> ' + detail + '</div>';
         }
 
-        // Matrix: show per-row breakdown
+        // Matrix: concise summary (the rows above are already highlighted green/red with correct answers marked)
         if (q.type === 'matrix' && !isCorrect) {
             const correctRows = q.options.filter(opt => userAnswer && userAnswer[opt.id] === q.correct[opt.id]).length;
-            html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> You got ${correctRows} of ${q.options.length} rows correct.</div>`;
-            html += `<div class="quiz-matrix-breakdown">`;
-            html += `<div class="quiz-matrix-breakdown-header">`;
-            html += `<span class="quiz-matrix-breakdown-col-finding">Finding</span>`;
-            html += `<span class="quiz-matrix-breakdown-col">Your Answer</span>`;
-            html += `<span class="quiz-matrix-breakdown-col">Correct Answer</span>`;
-            html += `<span class="quiz-matrix-breakdown-col-icon"></span>`;
-            html += `</div>`;
-            q.options.forEach(opt => {
-                const userVal = userAnswer ? userAnswer[opt.id] : null;
-                const correctVal = q.correct[opt.id];
-                const isRight = userVal === correctVal;
-                html += `<div class="quiz-matrix-breakdown-row ${isRight ? 'quiz-matrix-breakdown-row--correct' : 'quiz-matrix-breakdown-row--incorrect'}">`;
-                html += `<span class="quiz-matrix-breakdown-col-finding">${this._escapeHtml(opt.text)}</span>`;
-                html += `<span class="quiz-matrix-breakdown-col ${!isRight ? 'quiz-matrix-breakdown-wrong' : ''}">${this._escapeHtml(userVal || '—')}</span>`;
-                html += `<span class="quiz-matrix-breakdown-col ${!isRight ? 'quiz-matrix-breakdown-right' : ''}">${this._escapeHtml(correctVal || '—')}</span>`;
-                html += `<span class="quiz-matrix-breakdown-col-icon"><i class="fas ${isRight ? 'fa-check' : 'fa-times'}"></i></span>`;
-                html += `</div>`;
-            });
-            html += `</div>`;
+            const total = q.options.length;
+            let msg = `You got <strong>${correctRows} of ${total}</strong> rows correct.`;
+            if (correctRows > 0 && isPartial) msg += ' Partial credit awarded.';
+            msg += ' Check the table above — <span style="color:#16a34a">green rows = correct</span>, <span style="color:#dc2626">red rows = wrong</span> (correct answer highlighted).';
+            html += `<div class="quiz-ordering-partial"><i class="fas fa-info-circle"></i> ${msg}</div>`;
         }
 
         // Correct answer rationale

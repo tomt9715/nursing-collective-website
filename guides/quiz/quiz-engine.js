@@ -2753,7 +2753,8 @@ class QuizEngine {
     }
 
     _escapeAttr(str) {
-        if (!str) return '';
+        if (str === null || str === undefined) return '';
+        if (typeof str !== 'string') str = String(str);
         return str.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/'/g, '&#39;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
     }
 

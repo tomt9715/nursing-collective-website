@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semester Setup - The Nursing Collective</title>
+    <meta name="description" content="Set up your semester classes and exam schedule for personalized study recommendations.">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <meta name="theme-color" content="#2E86AB">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/page-auth.css?v=6.0.split">
+    <link rel="stylesheet" href="css/page-dashboard.css?v=6.0.split">
+    <link rel="stylesheet" href="css/page-dark.css?v=6.0.split">
+    <link rel="stylesheet" href="css/page-shared.css?v=6.0.split">
+    <link rel="stylesheet" href="css/global-overrides.css?v=6.2.icons">
+    <link rel="stylesheet" href="css/page-semester.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+<body>
+
+    <!-- Navigation (simplified) -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" width="36" height="36">
+                <span>The Nursing Collective</span>
+            </a>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <div class="semester-setup-page">
+            <!-- Progress Steps -->
+            <div class="wizard-progress">
+                <div class="wizard-step active" data-step="1">
+                    <div class="step-circle">1</div>
+                    <span>Upload or Enter</span>
+                </div>
+                <div class="wizard-connector"></div>
+                <div class="wizard-step" data-step="2">
+                    <div class="step-circle">2</div>
+                    <span>Review & Edit</span>
+                </div>
+                <div class="wizard-connector"></div>
+                <div class="wizard-step" data-step="3">
+                    <div class="step-circle">3</div>
+                    <span>Confirm Guides</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Upload or Manual Entry -->
+            <div class="wizard-panel" id="step-1">
+                <h2>Set Up Your Semester</h2>
+                <p class="wizard-subtitle">Upload your syllabus and we'll extract your classes, exams, and topics automatically.</p>
+
+                <div class="upload-zone" id="syllabus-upload-zone">
+                    <div class="upload-zone-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                    <p class="upload-zone-text">Drag & drop your syllabus PDF here</p>
+                    <p class="upload-zone-hint">or click to browse (PDF or DOCX, max 10MB)</p>
+                    <input type="file" id="syllabus-file-input" accept=".pdf,.docx" style="display:none">
+                </div>
+
+                <div class="upload-status hidden" id="upload-status">
+                    <div class="upload-spinner"><i class="fas fa-spinner fa-spin"></i></div>
+                    <p id="upload-status-text">Analyzing your syllabus...</p>
+                </div>
+
+                <div class="upload-divider">
+                    <span>or</span>
+                </div>
+
+                <button class="btn-manual-entry" id="btn-manual-entry">
+                    <i class="fas fa-keyboard"></i> I'll type it in manually
+                </button>
+
+                <!-- Extracted classes list (populated after upload) -->
+                <div class="extracted-classes hidden" id="extracted-classes">
+                    <h3 id="extracted-count">Classes found</h3>
+                    <div id="extracted-list"></div>
+                    <button class="btn-add-another" id="btn-add-another-upload">
+                        <i class="fas fa-plus"></i> Upload another syllabus
+                    </button>
+                </div>
+
+                <div class="wizard-actions" id="step-1-actions" style="display:none">
+                    <button class="btn-wizard-next" id="btn-to-step-2">
+                        Review & Edit <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 2: Review & Edit -->
+            <div class="wizard-panel hidden" id="step-2">
+                <h2>Review Your Classes & Exams</h2>
+                <p class="wizard-subtitle">Make sure everything looks right. You can edit, add, or remove anything.</p>
+
+                <div id="classes-editor"></div>
+
+                <button class="btn-add-class" id="btn-add-class">
+                    <i class="fas fa-plus-circle"></i> Add Another Class
+                </button>
+
+                <div class="wizard-actions">
+                    <button class="btn-wizard-back" id="btn-back-to-1">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button class="btn-wizard-next" id="btn-to-step-3">
+                        Match Guides <i class="fas fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 3: Confirm Guide Mappings -->
+            <div class="wizard-panel hidden" id="step-3">
+                <h2>Match Topics to Study Guides</h2>
+                <p class="wizard-subtitle">We matched your exam topics to our study guides. Confirm or adjust below.</p>
+
+                <div id="mappings-editor"></div>
+
+                <div class="wizard-actions">
+                    <button class="btn-wizard-back" id="btn-back-to-2">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <button class="btn-wizard-finish" id="btn-finish">
+                        <i class="fas fa-check"></i> Save & Get My Study Plan
+                    </button>
+                </div>
+            </div>
+
+            <!-- Success State -->
+            <div class="wizard-panel hidden" id="step-success">
+                <div class="success-icon"><i class="fas fa-check-circle"></i></div>
+                <h2>You're all set!</h2>
+                <p class="wizard-subtitle">Your personalized study plan is ready. Head to your dashboard to see today's recommendations.</p>
+                <button class="btn-wizard-finish" data-navigate="dashboard.html">
+                    <i class="fas fa-home"></i> Go to Dashboard
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="dark-mode.js"></script>
+    <script src="api-service.js"></script>
+    <script src="script.js"></script>
+    <script src="semester-setup-script.js"></script>
+    <script src="cookie-consent.js"></script>
+</body>
+</html>

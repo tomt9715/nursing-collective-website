@@ -314,6 +314,7 @@ async function loadUserProfile() {
 
         // All data is now in localStorage — render widgets
         loadAnnouncementBanner();
+        if (typeof loadStudyPlan === 'function') loadStudyPlan();
         loadContinueHero();
         loadRecentGuides();
         loadStudyActivityCalendar();

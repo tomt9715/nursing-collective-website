@@ -496,6 +496,27 @@
                 <button class="dash-announcement-dismiss" id="dismiss-announcement-btn" title="Dismiss"><i class="fas fa-times"></i></button>
             </div>
 
+            <!-- Semester Setup Prompt (shows when no semester data) -->
+            <div class="semester-setup-prompt hidden" id="semester-setup-prompt">
+                <div class="semester-prompt-icon"><i class="fas fa-calendar-alt"></i></div>
+                <div class="semester-prompt-content">
+                    <h3>Set up your semester</h3>
+                    <p>Upload your syllabus or add your classes to get a personalized daily study plan.</p>
+                </div>
+                <button class="semester-prompt-btn" data-navigate="semester-setup.html">Get Started</button>
+            </div>
+
+            <!-- Today's Study Plan Widget -->
+            <div class="study-plan-widget hidden" id="study-plan-widget">
+                <div class="widget-header">
+                    <h3><i class="fas fa-calendar-day"></i> Today's Study Plan</h3>
+                    <a href="semester-setup.html" class="widget-header-link">Edit Semester <i class="fas fa-pencil-alt"></i></a>
+                </div>
+                <div id="study-plan-content" class="study-plan-content">
+                    <!-- Populated by study-plan-widget.js -->
+                </div>
+            </div>
+
             <!-- Continue Studying Hero -->
             <div class="continue-hero hidden" id="continue-hero">
                 <div class="continue-hero-left">
@@ -754,6 +775,7 @@
     <script defer src="script.js?v=4.8.dashboard"></script>
     <script defer src="app/data/registry.js"></script>
     <script defer src="app/mastery.js"></script>
+    <script defer src="study-plan-widget.js"></script>
     <script defer src="dashboard-script.js?v=5.7.perf"></script>
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>

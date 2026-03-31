@@ -2023,3 +2023,441 @@ a.trust-btn:hover {
         transform: none !important;
     }
 }
+
+/* ============================================================
+   STUDY PLAN WIDGET & SEMESTER SETUP PROMPT
+   ============================================================ */
+
+/* -- Semester Setup Prompt -- */
+.semester-setup-prompt {
+    background: linear-gradient(135deg, #4f5fd9 0%, #5a3996 100%);
+    border-radius: var(--dash-card-radius, 14px);
+    padding: 24px 28px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: #fff;
+}
+
+.semester-prompt-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+}
+
+.semester-prompt-content h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0 0 4px;
+    color: #fff;
+}
+
+.semester-prompt-content p {
+    font-size: 0.85rem;
+    margin: 0;
+    opacity: 0.9;
+    color: rgba(255,255,255,0.9);
+}
+
+.semester-prompt-btn {
+    margin-left: auto;
+    padding: 10px 24px;
+    background: rgba(255,255,255,0.2);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+}
+
+.semester-prompt-btn:hover {
+    background: rgba(255,255,255,0.32);
+}
+
+/* -- Study Plan Widget -- */
+.study-plan-widget {
+    background: var(--dash-card-bg, #fff);
+    border: 1px solid var(--dash-card-border, #e5e7eb);
+    border-radius: var(--dash-card-radius, 14px);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+}
+
+.study-plan-widget .widget-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.study-plan-widget .widget-header h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-color, #1a1a1a);
+}
+
+.study-plan-widget .widget-header h3 i {
+    color: var(--primary-color, #2E86AB);
+}
+
+.study-plan-widget .widget-header-link {
+    font-size: 0.78rem;
+    color: var(--primary-color, #2E86AB);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.study-plan-widget .widget-header-link:hover {
+    text-decoration: underline;
+}
+
+/* Exam Countdown Banner */
+.exam-countdown {
+    padding: 10px 16px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.exam-countdown.upcoming {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+}
+
+.exam-countdown.soon {
+    background: #fef3c7;
+    color: #92400e;
+    border: 1px solid #fcd34d;
+}
+
+.exam-countdown.urgent {
+    background: #fef2f2;
+    color: #991b1b;
+    border: 1px solid #fca5a5;
+}
+
+/* Task List */
+.study-plan-tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.study-plan-task {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--dash-card-bg, #f9fafb);
+    border: 1px solid var(--dash-card-border, #e5e7eb);
+    border-radius: 10px;
+    transition: background 0.15s, border-color 0.15s;
+}
+
+.study-plan-task.clickable {
+    cursor: pointer;
+}
+
+.study-plan-task.clickable:hover {
+    background: #f0f7ff;
+    border-color: var(--primary-color, #2E86AB);
+}
+
+.task-number {
+    width: 26px;
+    height: 26px;
+    min-width: 26px;
+    border-radius: 50%;
+    background: var(--primary-color, #2E86AB);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+}
+
+.task-icon.practice_quiz {
+    background: #ede9fe;
+    color: #7c3aed;
+}
+
+.task-icon.start_guide {
+    background: #dbeafe;
+    color: #2563eb;
+}
+
+.task-icon.review_guide {
+    background: #d1fae5;
+    color: #059669;
+}
+
+.task-icon.uncovered_topic {
+    background: #fef3c7;
+    color: #d97706;
+}
+
+.task-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.task-description {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-color, #1a1a1a);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 3px;
+}
+
+.task-class {
+    font-size: 0.75rem;
+    color: var(--text-muted, #6b7280);
+}
+
+.task-reason-badge {
+    font-size: 0.7rem;
+    padding: 1px 8px;
+    border-radius: 20px;
+    background: #fef3c7;
+    color: #92400e;
+    font-weight: 500;
+}
+
+.task-arrow {
+    color: var(--text-muted, #9ca3af);
+    font-size: 0.8rem;
+}
+
+/* Time Budget Selector */
+.time-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--dash-card-border, #e5e7eb);
+}
+
+.time-label {
+    font-size: 0.78rem;
+    color: var(--text-muted, #6b7280);
+    margin-right: 4px;
+}
+
+.time-btn {
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--dash-card-border, #e5e7eb);
+    background: transparent;
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-color, #374151);
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.time-btn:hover {
+    border-color: var(--primary-color, #2E86AB);
+    color: var(--primary-color, #2E86AB);
+}
+
+.time-btn.active {
+    background: var(--primary-color, #2E86AB);
+    color: #fff;
+    border-color: var(--primary-color, #2E86AB);
+}
+
+.refresh-btn {
+    margin-left: auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--dash-card-border, #e5e7eb);
+    background: transparent;
+    color: var(--text-muted, #6b7280);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+    border-color: var(--primary-color, #2E86AB);
+    color: var(--primary-color, #2E86AB);
+}
+
+.refresh-btn.spinning i {
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Empty / Error State */
+.study-plan-empty {
+    padding: 24px;
+    text-align: center;
+    color: var(--text-muted, #6b7280);
+    font-size: 0.88rem;
+}
+
+/* Skeleton Loading */
+.study-plan-task.skeleton {
+    border-color: transparent;
+}
+
+.skeleton-box {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* -- Dark Mode -- */
+[data-theme="dark"] .study-plan-widget {
+    background: var(--dash-card-bg);
+    border-color: var(--dash-card-border);
+}
+
+[data-theme="dark"] .study-plan-task {
+    background: rgba(255,255,255,0.04);
+    border-color: var(--dash-card-border);
+}
+
+[data-theme="dark"] .study-plan-task.clickable:hover {
+    background: rgba(46,134,171,0.12);
+    border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .exam-countdown.upcoming {
+    background: rgba(59,130,246,0.12);
+    color: #93c5fd;
+    border-color: rgba(59,130,246,0.3);
+}
+
+[data-theme="dark"] .exam-countdown.soon {
+    background: rgba(245,158,11,0.12);
+    color: #fcd34d;
+    border-color: rgba(245,158,11,0.3);
+}
+
+[data-theme="dark"] .exam-countdown.urgent {
+    background: rgba(239,68,68,0.12);
+    color: #fca5a5;
+    border-color: rgba(239,68,68,0.3);
+}
+
+[data-theme="dark"] .task-reason-badge {
+    background: rgba(245,158,11,0.15);
+    color: #fbbf24;
+}
+
+[data-theme="dark"] .skeleton-box {
+    background: linear-gradient(90deg, #2a2a2a 25%, #333 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+}
+
+/* -- Responsive: Tablet -- */
+@media (max-width: 768px) {
+    .semester-setup-prompt {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .semester-prompt-btn {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .task-description {
+        white-space: normal;
+    }
+}
+
+/* -- Responsive: Mobile -- */
+@media (max-width: 480px) {
+    .study-plan-widget {
+        padding: 16px;
+    }
+
+    .study-plan-task {
+        padding: 10px 12px;
+        gap: 10px;
+    }
+
+    .task-number {
+        width: 22px;
+        height: 22px;
+        min-width: 22px;
+        font-size: 0.7rem;
+    }
+
+    .task-icon {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        font-size: 0.85rem;
+    }
+
+    .time-selector {
+        flex-wrap: wrap;
+    }
+
+    .time-label {
+        width: 100%;
+        margin-bottom: 4px;
+    }
+}

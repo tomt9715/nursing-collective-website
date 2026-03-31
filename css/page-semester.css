@@ -1,0 +1,712 @@
+/* ============================================================
+   SEMESTER SETUP WIZARD
+   ============================================================ */
+
+.semester-setup-page {
+    max-width: 720px;
+    margin: 100px auto 60px;
+    padding: 0 20px;
+}
+
+/* -- Progress Steps -- */
+.wizard-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    margin-bottom: 40px;
+}
+
+.wizard-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    position: relative;
+}
+
+.wizard-step span {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.step-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    color: #9ca3af;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.wizard-step.active .step-circle {
+    background: var(--primary-color, #2E86AB);
+    color: #fff;
+}
+
+.wizard-step.active span {
+    color: var(--primary-color, #2E86AB);
+    font-weight: 600;
+}
+
+.wizard-step.completed .step-circle {
+    background: #10b981;
+    color: #fff;
+}
+
+.wizard-step.completed span {
+    color: #10b981;
+}
+
+.wizard-connector {
+    width: 60px;
+    height: 2px;
+    background: #e5e7eb;
+    margin: 0 12px;
+    margin-bottom: 20px;
+}
+
+/* -- Wizard Panel -- */
+.wizard-panel {
+    background: var(--dash-card-bg, #fff);
+    border: 1px solid var(--dash-card-border, #e5e7eb);
+    border-radius: 16px;
+    padding: 36px 32px;
+}
+
+.wizard-panel h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--text-color, #1a1a1a);
+}
+
+.wizard-subtitle {
+    font-size: 0.9rem;
+    color: var(--text-muted, #6b7280);
+    margin: 0 0 28px;
+}
+
+/* -- Upload Zone -- */
+.upload-zone {
+    border: 2px dashed #d1d5db;
+    border-radius: 14px;
+    padding: 48px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fafbfc;
+}
+
+.upload-zone:hover,
+.upload-zone.dragover {
+    border-color: var(--primary-color, #2E86AB);
+    background: #f0f7ff;
+}
+
+.upload-zone-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color, #2E86AB);
+    margin-bottom: 12px;
+}
+
+.upload-zone-text {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color, #1a1a1a);
+    margin: 0 0 6px;
+}
+
+.upload-zone-hint {
+    font-size: 0.82rem;
+    color: var(--text-muted, #9ca3af);
+    margin: 0;
+}
+
+/* -- Upload Status -- */
+.upload-status {
+    text-align: center;
+    padding: 48px 24px;
+}
+
+.upload-spinner {
+    font-size: 2rem;
+    color: var(--primary-color, #2E86AB);
+    margin-bottom: 12px;
+}
+
+.upload-status p {
+    font-size: 0.9rem;
+    color: var(--text-muted, #6b7280);
+}
+
+/* -- Divider -- */
+.upload-divider {
+    text-align: center;
+    margin: 24px 0;
+    position: relative;
+}
+
+.upload-divider::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: #e5e7eb;
+}
+
+.upload-divider span {
+    background: var(--dash-card-bg, #fff);
+    padding: 0 16px;
+    position: relative;
+    color: var(--text-muted, #9ca3af);
+    font-size: 0.82rem;
+}
+
+/* -- Manual Entry Button -- */
+.btn-manual-entry {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--text-color, #374151);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.15s;
+}
+
+.btn-manual-entry:hover {
+    border-color: var(--primary-color, #2E86AB);
+    color: var(--primary-color, #2E86AB);
+}
+
+.btn-manual-entry i {
+    margin-right: 8px;
+}
+
+/* -- Extracted Classes Summary -- */
+.extracted-class-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.ecc-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: #dcfce7;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #16a34a;
+    font-size: 0.95rem;
+}
+
+.ecc-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ecc-info strong {
+    font-size: 0.9rem;
+    color: var(--text-color, #1a1a1a);
+}
+
+.ecc-info span {
+    font-size: 0.78rem;
+    color: var(--text-muted, #6b7280);
+}
+
+.ecc-source {
+    color: #9ca3af !important;
+    font-size: 0.72rem !important;
+}
+
+.ecc-remove {
+    background: none;
+    border: none;
+    color: #d1d5db;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 4px;
+}
+
+.ecc-remove:hover {
+    color: #ef4444;
+}
+
+.btn-add-another {
+    display: block;
+    margin-top: 12px;
+    padding: 10px;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--primary-color, #2E86AB);
+    font-size: 0.85rem;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-add-another:hover {
+    border-color: var(--primary-color, #2E86AB);
+    background: #f0f7ff;
+}
+
+/* -- Step 2: Class Editor Cards -- */
+.class-edit-card {
+    border: 1px solid var(--dash-card-border, #e5e7eb);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    background: var(--dash-card-bg, #fafbfc);
+}
+
+.cec-header {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+    align-items: center;
+}
+
+.cec-name-input {
+    flex: 2;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-color);
+    background: var(--dash-card-bg, #fff);
+}
+
+.cec-instructor-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    background: var(--dash-card-bg, #fff);
+}
+
+.cec-delete {
+    background: none;
+    border: none;
+    color: #d1d5db;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 8px;
+}
+
+.cec-delete:hover {
+    color: #ef4444;
+}
+
+.cec-exams h4 {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-muted, #6b7280);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 10px;
+}
+
+/* -- Exam Editor Row -- */
+.exam-edit-row {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+    background: var(--dash-card-bg, #fff);
+}
+
+.eer-top {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.eer-name {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    background: var(--dash-card-bg, #fff);
+}
+
+.eer-date {
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    color: var(--text-color);
+    background: var(--dash-card-bg, #fff);
+}
+
+.eer-delete {
+    background: none;
+    border: none;
+    color: #d1d5db;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.eer-delete:hover {
+    color: #ef4444;
+}
+
+.eer-topics label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--text-muted, #6b7280);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.topic-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+}
+
+.topic-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: #eff6ff;
+    color: #1e40af;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 500;
+}
+
+.topic-remove {
+    background: none;
+    border: none;
+    color: #93c5fd;
+    cursor: pointer;
+    font-size: 1rem;
+    padding: 0 2px;
+    line-height: 1;
+}
+
+.topic-remove:hover {
+    color: #ef4444;
+}
+
+.topic-input {
+    border: none;
+    outline: none;
+    font-size: 0.82rem;
+    padding: 4px 8px;
+    min-width: 120px;
+    flex: 1;
+    background: transparent;
+    color: var(--text-color);
+}
+
+.topic-input::placeholder {
+    color: #9ca3af;
+}
+
+.btn-add-exam,
+.btn-add-class {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 1px dashed #d1d5db;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--primary-color, #2E86AB);
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.btn-add-exam:hover,
+.btn-add-class:hover {
+    border-color: var(--primary-color, #2E86AB);
+    background: #f0f7ff;
+}
+
+.btn-add-class {
+    margin-top: 16px;
+}
+
+/* -- Step 3: Mappings -- */
+.mappings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.mapping-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--dash-card-border, #e5e7eb);
+    border-radius: 10px;
+    background: var(--dash-card-bg, #fafbfc);
+}
+
+.mapping-topic {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.mapping-status {
+    font-size: 0.9rem;
+}
+
+.mapping-status.high { color: #10b981; }
+.mapping-status.medium { color: #f59e0b; }
+.mapping-status.low { color: #d1d5db; }
+
+.mapping-guide {
+    min-width: 200px;
+}
+
+.mapping-select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    color: var(--text-color);
+    background: var(--dash-card-bg, #fff);
+}
+
+.mapping-loading,
+.mapping-empty {
+    text-align: center;
+    padding: 32px;
+    color: var(--text-muted, #6b7280);
+    font-size: 0.9rem;
+}
+
+.mapping-loading i {
+    margin-right: 8px;
+    color: var(--primary-color, #2E86AB);
+}
+
+/* -- Wizard Actions -- */
+.wizard-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+    gap: 12px;
+}
+
+.btn-wizard-next,
+.btn-wizard-finish {
+    padding: 12px 28px;
+    background: var(--primary-color, #2E86AB);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: opacity 0.15s;
+    margin-left: auto;
+}
+
+.btn-wizard-next:hover,
+.btn-wizard-finish:hover {
+    opacity: 0.9;
+}
+
+.btn-wizard-next:disabled,
+.btn-wizard-finish:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-wizard-back {
+    padding: 12px 20px;
+    background: transparent;
+    color: var(--text-muted, #6b7280);
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.btn-wizard-back:hover {
+    border-color: #9ca3af;
+    color: var(--text-color);
+}
+
+/* -- Success State -- */
+#step-success {
+    text-align: center;
+}
+
+.success-icon {
+    font-size: 3.5rem;
+    color: #10b981;
+    margin-bottom: 16px;
+}
+
+#step-success .btn-wizard-finish {
+    margin: 24px auto 0;
+}
+
+/* -- Dark Mode -- */
+[data-theme="dark"] .wizard-panel {
+    background: var(--dash-card-bg);
+    border-color: var(--dash-card-border);
+}
+
+[data-theme="dark"] .upload-zone {
+    background: rgba(255,255,255,0.03);
+    border-color: var(--dash-card-border);
+}
+
+[data-theme="dark"] .upload-zone:hover,
+[data-theme="dark"] .upload-zone.dragover {
+    background: rgba(46,134,171,0.08);
+    border-color: var(--primary-color);
+}
+
+[data-theme="dark"] .upload-divider span {
+    background: var(--dash-card-bg);
+}
+
+[data-theme="dark"] .extracted-class-card {
+    background: rgba(16,185,129,0.08);
+    border-color: rgba(16,185,129,0.3);
+}
+
+[data-theme="dark"] .ecc-icon {
+    background: rgba(16,185,129,0.15);
+}
+
+[data-theme="dark"] .class-edit-card,
+[data-theme="dark"] .exam-edit-row,
+[data-theme="dark"] .mapping-row {
+    background: rgba(255,255,255,0.03);
+    border-color: var(--dash-card-border);
+}
+
+[data-theme="dark"] .cec-name-input,
+[data-theme="dark"] .cec-instructor-input,
+[data-theme="dark"] .eer-name,
+[data-theme="dark"] .eer-date,
+[data-theme="dark"] .mapping-select {
+    background: var(--dash-card-bg);
+    border-color: var(--dash-card-border);
+    color: var(--text-color);
+}
+
+[data-theme="dark"] .topic-tag {
+    background: rgba(59,130,246,0.15);
+    color: #93c5fd;
+}
+
+[data-theme="dark"] .step-circle {
+    background: #374151;
+    color: #6b7280;
+}
+
+[data-theme="dark"] .wizard-connector {
+    background: #374151;
+}
+
+/* -- Responsive -- */
+@media (max-width: 768px) {
+    .semester-setup-page {
+        margin-top: 80px;
+    }
+
+    .wizard-panel {
+        padding: 24px 20px;
+    }
+
+    .cec-header {
+        flex-direction: column;
+    }
+
+    .eer-top {
+        flex-wrap: wrap;
+    }
+
+    .eer-date {
+        width: 100%;
+    }
+
+    .mapping-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .mapping-guide {
+        min-width: 0;
+    }
+
+    .wizard-step span {
+        font-size: 0.65rem;
+    }
+
+    .wizard-connector {
+        width: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .wizard-progress {
+        gap: 0;
+    }
+
+    .wizard-connector {
+        width: 20px;
+        margin: 0 6px;
+    }
+
+    .step-circle {
+        width: 30px;
+        height: 30px;
+        font-size: 0.75rem;
+    }
+}

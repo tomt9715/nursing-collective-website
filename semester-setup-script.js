@@ -9,6 +9,7 @@
 
     var classes = [];
     var guideMappings = {};
+    var isEditMode = false;
 
     var availableGuides = {
         'heart-failure': 'Heart Failure',
@@ -37,20 +38,60 @@
 
     // ── Modal open/close ────────────────────────────────────
 
-    window.openSemesterModal = function () {
+    window.openSemesterModal = async function () {
         var overlay = document.getElementById('semester-modal-overlay');
         if (!overlay) return;
 
-        // Always ensure at least one class exists
-        if (classes.length === 0) {
-            classes.push(createEmptyClass());
-        }
-
-        // Reset to step 1
-        goToStep(1);
-
         overlay.classList.add('active');
         document.body.style.overflow = 'hidden';
+
+        // Try to load existing data
+        try {
+            var setupRes = await apiCall('/api/semester/setup');
+            if (setupRes && setupRes.has_setup && setupRes.classes && setupRes.classes.length > 0) {
+                // Edit mode — populate from existing data
+                isEditMode = true;
+                classes = setupRes.classes.map(function (cls) {
+                    return {
+                        id: cls.id,
+                        class_name: cls.class_name || '',
+                        instructor: cls.instructor || '',
+                        semester: cls.semester || '',
+                        exams: (cls.exams || []).map(function (e) {
+                            return {
+                                id: e.id,
+                                exam_name: e.exam_name || '',
+                                exam_date: e.exam_date || '',
+                                topics: e.topics || [],
+                                is_completed: e.is_completed || false
+                            };
+                        }),
+                        source: 'existing'
+                    };
+                });
+
+                // Set semester dropdown
+                var semSelect = document.getElementById('sm-semester-select');
+                if (semSelect && classes[0].semester) {
+                    semSelect.value = classes[0].semester;
+                }
+
+                var title = document.getElementById('sm-step-1-title');
+                if (title) title.textContent = 'Edit Your Classes';
+            } else {
+                // New setup
+                isEditMode = false;
+                classes = [createEmptyClass()];
+                var title = document.getElementById('sm-step-1-title');
+                if (title) title.textContent = 'Add Your Classes';
+            }
+        } catch (err) {
+            console.error('[Semester] Failed to load existing data:', err);
+            isEditMode = false;
+            if (classes.length === 0) classes = [createEmptyClass()];
+        }
+
+        goToStep(1);
     };
 
     window.closeSemesterModal = function () {
@@ -341,11 +382,14 @@
     }
 
     async function doSave(btn) {
+        var semSelect = document.getElementById('sm-semester-select');
+        var semester = semSelect ? semSelect.value : '';
+
         var payload = classes.map(function (cls) {
             return {
                 class_name: cls.class_name,
                 instructor: cls.instructor,
-                semester: cls.semester,
+                semester: semester,
                 exams: (cls.exams || []).map(function (exam) {
                     var em = {};
                     (exam.topics || []).forEach(function (t) {

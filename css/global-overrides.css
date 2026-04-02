@@ -2167,6 +2167,44 @@ a.trust-btn:hover {
     line-height: 1.5;
 }
 
+/* -- Semester selector -- */
+.sm-semester-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-color, #E5E7EB);
+}
+
+.sm-semester-selector label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-secondary, #6B7280);
+}
+
+.sm-semester-select {
+    padding: 8px 14px;
+    border: 1px solid var(--border-color, #D1D5DB);
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-primary, #1F2937);
+    background: var(--card-bg, #fff);
+}
+
+.sm-semester-select:focus {
+    outline: none;
+    border-color: var(--accent-color, #F59E0B);
+}
+
+[data-theme="dark"] .sm-semester-select {
+    background: var(--background-light);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
 /* -- Class editor cards -- */
 .sm-class-card {
     border: 1px solid var(--border-color, #E5E7EB); border-radius: 12px;

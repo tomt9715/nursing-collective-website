@@ -2066,10 +2066,36 @@ a.trust-btn:hover {
     transform: scale(1) translateY(0);
 }
 
+.sm-modal-top {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+
+.sm-start-over {
+    background: none;
+    border: none;
+    color: var(--text-secondary, #6B7280);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sm-start-over:hover {
+    color: var(--primary-color, #2E86AB);
+    background: rgba(46,134,171,0.06);
+}
+
 .semester-modal-close {
-    position: absolute;
-    top: 16px;
-    right: 16px;
     width: 36px;
     height: 36px;
     border-radius: 50%;

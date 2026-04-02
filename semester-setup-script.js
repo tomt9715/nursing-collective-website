@@ -87,7 +87,9 @@
         on('sm-done', 'click', function () {
             closeSemesterModal();
             if (typeof loadStudyPlan === 'function') loadStudyPlan();
+            if (typeof loadExamCountdown === 'function') loadExamCountdown();
         });
+        on('sm-start-over', 'click', resetWizard);
     }
 
     function goToStep(step) {
@@ -104,10 +106,39 @@
             el.classList.toggle('completed', s < step);
         });
 
+        // Show "Start Over" once there's data to reset
+        var startOver = document.getElementById('sm-start-over');
+        if (startOver) {
+            startOver.classList.toggle('hidden', classes.length === 0 && step === 1);
+        }
+
         if (step === 2) renderClassesEditor();
 
         var modal = document.querySelector('.semester-modal');
         if (modal) modal.scrollTop = 0;
+    }
+
+    function resetWizard() {
+        classes = [];
+        guideMappings = {};
+
+        // Reset step 1 UI
+        var zone = document.getElementById('sm-upload-zone');
+        var status = document.getElementById('sm-upload-status');
+        var extracted = document.getElementById('sm-extracted');
+        var actions = document.getElementById('sm-step-1-actions');
+        var input = document.getElementById('sm-file-input');
+
+        if (zone) zone.classList.remove('hidden');
+        if (status) status.classList.add('hidden');
+        if (extracted) extracted.classList.add('hidden');
+        if (actions) actions.style.display = 'none';
+        if (input) input.value = '';
+
+        var startOver = document.getElementById('sm-start-over');
+        if (startOver) startOver.classList.add('hidden');
+
+        goToStep(1);
     }
 
     // ── Step 1: Upload or Manual ────────────────────────────

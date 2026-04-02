@@ -66,6 +66,45 @@
     line-height: 1.6;
 }
 
+/* -- Hero Benefits -- */
+.semester-hero-benefits {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 28px;
+}
+
+.shb-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.92);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 500;
+}
+
+.shb-item i {
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    background: rgba(255,255,255,0.18);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .semester-hero-benefits {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+}
+
 /* -- Nav Back Link -- */
 .semester-nav-back {
     font-family: 'Source Sans 3', sans-serif;

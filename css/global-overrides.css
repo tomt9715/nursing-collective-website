@@ -2428,6 +2428,177 @@ a.trust-btn:hover {
    STUDY PLAN WIDGET & SEMESTER SETUP PROMPT
    ============================================================ */
 
+/* -- Exam Countdown Widget -- */
+.exam-countdown-widget {
+    background: var(--card-bg, #fff);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.ec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.ec-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.ec-item-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.ec-item-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.ec-item-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--text-primary, #1F2937);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ec-item-class {
+    font-size: 0.75rem;
+    color: var(--text-secondary, #6B7280);
+}
+
+.ec-item-days {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+
+.ec-item-days.normal { background: #EFF6FF; color: #1E40AF; }
+.ec-item-days.near { background: #FEF3C7; color: #92400E; }
+.ec-item-days.soon { background: #FFEDD5; color: #9A3412; }
+.ec-item-days.urgent { background: #FEE2E2; color: #991B1B; }
+
+.ec-bar-track {
+    width: 100%;
+    height: 5px;
+    background: var(--background-light, #F3F4F6);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.ec-bar-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.6s ease;
+}
+
+.ec-bar-fill.normal { background: #93C5FD; }
+.ec-bar-fill.near { background: #FCD34D; }
+.ec-bar-fill.soon { background: #FB923C; }
+.ec-bar-fill.urgent { background: #F87171; }
+
+.ec-item-date {
+    font-size: 0.7rem;
+    color: var(--text-light, #9CA3AF);
+    text-align: right;
+}
+
+.ec-more {
+    font-size: 0.78rem;
+    color: var(--text-secondary, #6B7280);
+    text-align: center;
+    margin-top: 8px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border-color, #E5E7EB);
+}
+
+/* Exam Countdown Empty State */
+.ec-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 16px 8px;
+    gap: 10px;
+}
+
+.ec-empty-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, rgba(245,158,11,0.1), rgba(251,191,36,0.1));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #D97706;
+}
+
+.ec-empty-text {
+    font-size: 0.82rem;
+    color: var(--text-secondary, #6B7280);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.ec-empty-btn {
+    padding: 7px 16px;
+    background: var(--primary-color, #2E86AB);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.15s;
+}
+
+.ec-empty-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.ec-empty {
+    font-size: 0.82rem;
+    color: var(--text-secondary, #6B7280);
+    text-align: center;
+    padding: 16px 8px;
+}
+
+/* Exam Countdown Dark Mode */
+[data-theme="dark"] .exam-countdown-widget {
+    background: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .ec-item-days.normal { background: rgba(59,130,246,0.15); color: #93C5FD; }
+[data-theme="dark"] .ec-item-days.near { background: rgba(245,158,11,0.15); color: #FCD34D; }
+[data-theme="dark"] .ec-item-days.soon { background: rgba(249,115,22,0.15); color: #FB923C; }
+[data-theme="dark"] .ec-item-days.urgent { background: rgba(239,68,68,0.15); color: #FCA5A5; }
+
+[data-theme="dark"] .ec-bar-track { background: var(--background-light); }
+
+[data-theme="dark"] .ec-empty-icon {
+    background: rgba(245,158,11,0.12);
+}
+
 /* -- Study Plan Widget (sits inside dashboard-two-col grid) -- */
 .study-plan-widget {
     background: var(--card-bg, #fff);

@@ -169,11 +169,17 @@
             var formData = new FormData();
             formData.append('file', file);
 
-            var data = await apiCall('/api/semester/extract-syllabus', {
+            // Raw fetch needed for FormData — apiCall forces Content-Type: application/json
+            var token = localStorage.getItem('accessToken');
+            var res = await fetch(API_URL + '/api/semester/extract-syllabus', {
                 method: 'POST',
-                body: formData
+                headers: token ? { 'Authorization': 'Bearer ' + token } : {},
+                body: formData,
+                credentials: 'include'
             });
 
+            var data = await res.json();
+            if (!res.ok) throw new Error(data.error || 'Upload failed');
             if (!data || !data.extraction) throw new Error('No extraction data');
 
             var ex = data.extraction;

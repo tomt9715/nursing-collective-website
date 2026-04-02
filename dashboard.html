@@ -496,21 +496,11 @@
                 <button class="dash-announcement-dismiss" id="dismiss-announcement-btn" title="Dismiss"><i class="fas fa-times"></i></button>
             </div>
 
-            <!-- Semester Setup Prompt (shows when no semester data) -->
-            <div class="semester-setup-prompt hidden" id="semester-setup-prompt">
-                <div class="semester-prompt-icon"><i class="fas fa-calendar-alt"></i></div>
-                <div class="semester-prompt-content">
-                    <h3>Get a personalized daily study plan</h3>
-                    <p>Add your classes and exam dates, and we'll tell you exactly what to study each day — prioritized by what's coming up and where you need the most practice.</p>
-                </div>
-                <button class="semester-prompt-btn" id="open-semester-modal-btn">Set Up My Semester</button>
-            </div>
-
-            <!-- Today's Study Plan Widget -->
-            <div class="study-plan-widget hidden" id="study-plan-widget">
+            <!-- Today's Study Plan Widget (shows empty state if no semester setup) -->
+            <div class="study-plan-widget" id="study-plan-widget">
                 <div class="widget-header">
                     <h3><i class="fas fa-calendar-day"></i> Today's Study Plan</h3>
-                    <a href="#" class="widget-header-link" id="edit-semester-link">Edit Semester <i class="fas fa-pencil-alt"></i></a>
+                    <a href="#" class="widget-header-link hidden" id="edit-semester-link">Edit Semester <i class="fas fa-pencil-alt"></i></a>
                 </div>
                 <div id="study-plan-content" class="study-plan-content">
                     <!-- Populated by study-plan-widget.js -->

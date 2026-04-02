@@ -2428,64 +2428,6 @@ a.trust-btn:hover {
    STUDY PLAN WIDGET & SEMESTER SETUP PROMPT
    ============================================================ */
 
-/* -- Semester Setup Prompt -- */
-.semester-setup-prompt {
-    background: linear-gradient(135deg, #4f5fd9 0%, #5a3996 100%);
-    border-radius: var(--dash-card-radius, 14px);
-    padding: 24px 28px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    color: #fff;
-}
-
-.semester-prompt-icon {
-    width: 52px;
-    height: 52px;
-    min-width: 52px;
-    background: rgba(255,255,255,0.18);
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.3rem;
-}
-
-.semester-prompt-content h3 {
-    font-family: 'Outfit', sans-serif;
-    font-size: 1.05rem;
-    font-weight: 600;
-    margin: 0 0 4px;
-    color: #fff;
-}
-
-.semester-prompt-content p {
-    font-size: 0.85rem;
-    margin: 0;
-    opacity: 0.9;
-    color: rgba(255,255,255,0.9);
-}
-
-.semester-prompt-btn {
-    margin-left: auto;
-    padding: 10px 24px;
-    background: rgba(255,255,255,0.2);
-    color: #fff;
-    border: 1px solid rgba(255,255,255,0.3);
-    border-radius: 10px;
-    font-family: 'Source Sans 3', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 600;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background 0.2s;
-}
-
-.semester-prompt-btn:hover {
-    background: rgba(255,255,255,0.32);
-}
-
 /* -- Study Plan Widget -- */
 .study-plan-widget {
     background: var(--dash-card-bg, #fff);
@@ -2742,11 +2684,91 @@ a.trust-btn:hover {
 }
 
 /* Empty / Error State */
-.study-plan-empty {
-    padding: 24px;
-    text-align: center;
+/* Empty State (no semester setup) */
+.sp-empty-state {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 16px;
+    border: 1px dashed var(--dash-card-border, #e5e7eb);
+    border-radius: 10px;
+    background: var(--background-light, #f9fafb);
+}
+
+.sp-empty-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    background: linear-gradient(135deg, rgba(46,134,171,0.1), rgba(74,144,226,0.1));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: var(--primary-color, #2E86AB);
+}
+
+.sp-empty-text {
+    flex: 1;
+}
+
+.sp-empty-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-color, #1a1a1a);
+    margin: 0 0 2px;
+}
+
+.sp-empty-desc {
+    font-size: 0.8rem;
     color: var(--text-muted, #6b7280);
-    font-size: 0.88rem;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.sp-empty-btn {
+    padding: 8px 18px;
+    background: var(--primary-color, #2E86AB);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+}
+
+.sp-empty-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+[data-theme="dark"] .sp-empty-state {
+    background: rgba(255,255,255,0.03);
+    border-color: var(--dash-card-border);
+}
+
+[data-theme="dark"] .sp-empty-icon {
+    background: rgba(46,134,171,0.12);
+}
+
+@media (max-width: 480px) {
+    .sp-empty-state {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .sp-empty-btn {
+        width: 100%;
+        justify-content: center;
+    }
 }
 
 /* Skeleton Loading */
@@ -2811,17 +2833,6 @@ a.trust-btn:hover {
 
 /* -- Responsive: Tablet -- */
 @media (max-width: 768px) {
-    .semester-setup-prompt {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-
-    .semester-prompt-btn {
-        margin-left: 0;
-        width: 100%;
-    }
-
     .task-description {
         white-space: normal;
     }

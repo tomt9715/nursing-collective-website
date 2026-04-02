@@ -39,15 +39,18 @@
 
     window.openSemesterModal = function () {
         var overlay = document.getElementById('semester-modal-overlay');
-        if (overlay) {
-            // Start with one empty class if none exist
-            if (classes.length === 0) {
-                classes.push(createEmptyClass());
-            }
-            renderClassesEditor();
-            overlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        if (!overlay) return;
+
+        // Always ensure at least one class exists
+        if (classes.length === 0) {
+            classes.push(createEmptyClass());
         }
+
+        // Reset to step 1
+        goToStep(1);
+
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
     };
 
     window.closeSemesterModal = function () {

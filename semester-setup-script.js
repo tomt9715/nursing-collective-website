@@ -1,5 +1,5 @@
 /**
- * Semester Setup Wizard — 3-step process:
+ * Semester Setup Modal — 3-step wizard inside the dashboard.
  * 1. Upload syllabus or manual entry
  * 2. Review & edit classes/exams
  * 3. Confirm topic-to-guide mappings
@@ -8,11 +8,9 @@
 (function () {
     'use strict';
 
-    // State: array of class objects collected across steps
     var classes = [];
-    var guideMappings = {}; // { topicName: { guide_id, confidence, source } }
+    var guideMappings = {};
 
-    // Available guides for dropdown (populated from mapping response)
     var availableGuides = {
         'heart-failure': 'Heart Failure',
         'myocardial-infarction': 'Myocardial Infarction',
@@ -38,111 +36,131 @@
         'gi-bleeding': 'GI Bleeding'
     };
 
+    // ── Modal open/close ────────────────────────────────────
+
+    window.openSemesterModal = function () {
+        var overlay = document.getElementById('semester-modal-overlay');
+        if (overlay) {
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+    };
+
+    window.closeSemesterModal = function () {
+        var overlay = document.getElementById('semester-modal-overlay');
+        if (overlay) {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    };
+
     document.addEventListener('DOMContentLoaded', function () {
+        // Open modal triggers
+        on('open-semester-modal-btn', 'click', openSemesterModal);
+        on('edit-semester-link', 'click', function (e) {
+            e.preventDefault();
+            openSemesterModal();
+        });
+
+        // Close modal
+        on('semester-modal-close', 'click', closeSemesterModal);
+        var overlay = document.getElementById('semester-modal-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', function (e) {
+                if (e.target === overlay) closeSemesterModal();
+            });
+        }
+
         initStep1();
         initNavigation();
-        initDataNavigate();
     });
 
-    // ── Navigation between steps ────────────────────────────
+    // ── Navigation ──────────────────────────────────────────
 
     function initNavigation() {
-        on('btn-to-step-2', 'click', function () { goToStep(2); });
-        on('btn-to-step-3', 'click', function () { handleStep2Submit(); });
-        on('btn-back-to-1', 'click', function () { goToStep(1); });
-        on('btn-back-to-2', 'click', function () { goToStep(2); });
-        on('btn-finish', 'click', handleFinish);
-        on('btn-add-class', 'click', addEmptyClass);
-    }
-
-    function initDataNavigate() {
-        document.querySelectorAll('[data-navigate]').forEach(function (el) {
-            el.addEventListener('click', function () {
-                window.location.href = this.dataset.navigate;
-            });
+        on('sm-to-step-2', 'click', function () { goToStep(2); });
+        on('sm-to-step-3', 'click', handleStep2Submit);
+        on('sm-back-to-1', 'click', function () { goToStep(1); });
+        on('sm-back-to-2', 'click', function () { goToStep(2); });
+        on('sm-finish', 'click', handleFinish);
+        on('sm-add-class', 'click', addEmptyClass);
+        on('sm-done', 'click', function () {
+            closeSemesterModal();
+            if (typeof loadStudyPlan === 'function') loadStudyPlan();
         });
     }
 
     function goToStep(step) {
-        for (var i = 1; i <= 3; i++) {
-            var panel = document.getElementById('step-' + i);
-            if (panel) panel.classList.toggle('hidden', i !== step);
-        }
-        document.getElementById('step-success').classList.add('hidden');
+        ['sm-step-1', 'sm-step-2', 'sm-step-3', 'sm-step-success'].forEach(function (id) {
+            var el = document.getElementById(id);
+            if (el) el.classList.add('hidden');
+        });
+        var panel = document.getElementById('sm-step-' + step);
+        if (panel) panel.classList.remove('hidden');
 
-        // Update progress indicators
-        document.querySelectorAll('.wizard-step').forEach(function (el) {
+        document.querySelectorAll('.sm-step').forEach(function (el) {
             var s = parseInt(el.dataset.step, 10);
             el.classList.toggle('active', s === step);
             el.classList.toggle('completed', s < step);
         });
 
         if (step === 2) renderClassesEditor();
-        window.scrollTo(0, 0);
+
+        var modal = document.querySelector('.semester-modal');
+        if (modal) modal.scrollTop = 0;
     }
 
-    // ── Step 1: Upload or Manual Entry ──────────────────────
+    // ── Step 1: Upload or Manual ────────────────────────────
 
     function initStep1() {
-        var zone = document.getElementById('syllabus-upload-zone');
-        var input = document.getElementById('syllabus-file-input');
+        var zone = document.getElementById('sm-upload-zone');
+        var input = document.getElementById('sm-file-input');
+        var browse = zone ? zone.querySelector('.sm-upload-browse') : null;
 
         if (zone) {
-            zone.addEventListener('click', function () { input.click(); });
-
-            zone.addEventListener('dragover', function (e) {
-                e.preventDefault();
-                zone.classList.add('dragover');
+            zone.addEventListener('click', function (e) {
+                if (e.target.closest('.sm-upload-browse')) return;
+                input.click();
             });
-
-            zone.addEventListener('dragleave', function () {
-                zone.classList.remove('dragover');
-            });
-
+            zone.addEventListener('dragover', function (e) { e.preventDefault(); zone.classList.add('dragover'); });
+            zone.addEventListener('dragleave', function () { zone.classList.remove('dragover'); });
             zone.addEventListener('drop', function (e) {
                 e.preventDefault();
                 zone.classList.remove('dragover');
-                if (e.dataTransfer.files.length > 0) {
-                    handleFileUpload(e.dataTransfer.files[0]);
-                }
+                if (e.dataTransfer.files.length) handleFileUpload(e.dataTransfer.files[0]);
             });
+        }
+
+        if (browse) {
+            browse.addEventListener('click', function (e) { e.stopPropagation(); input.click(); });
         }
 
         if (input) {
             input.addEventListener('change', function () {
-                if (this.files.length > 0) handleFileUpload(this.files[0]);
+                if (this.files.length) handleFileUpload(this.files[0]);
             });
         }
 
-        on('btn-manual-entry', 'click', function () {
+        on('sm-manual-btn', 'click', function () {
             classes.push(createEmptyClass());
-            showStep1Actions();
             goToStep(2);
         });
 
-        on('btn-add-another-upload', 'click', function () {
+        on('sm-add-another', 'click', function () {
             input.value = '';
             input.click();
         });
     }
 
     async function handleFileUpload(file) {
-        var status = document.getElementById('upload-status');
-        var statusText = document.getElementById('upload-status-text');
-        var zone = document.getElementById('syllabus-upload-zone');
-
-        // Validate
         var ext = file.name.toLowerCase().split('.').pop();
-        if (ext !== 'pdf' && ext !== 'docx') {
-            alert('Please upload a PDF or DOCX file.');
-            return;
-        }
-        if (file.size > 10 * 1024 * 1024) {
-            alert('File is too large. Maximum size is 10MB.');
-            return;
-        }
+        if (ext !== 'pdf' && ext !== 'docx') { alert('Please upload a PDF or DOCX file.'); return; }
+        if (file.size > 10 * 1024 * 1024) { alert('File too large (max 10MB).'); return; }
 
-        // Show spinner
+        var zone = document.getElementById('sm-upload-zone');
+        var status = document.getElementById('sm-upload-status');
+        var statusText = document.getElementById('sm-upload-status-text');
+
         zone.classList.add('hidden');
         status.classList.remove('hidden');
         statusText.textContent = 'Analyzing ' + file.name + '...';
@@ -156,44 +174,36 @@
                 body: formData
             });
 
-            if (!data || !data.extraction) {
-                throw new Error('No extraction data returned');
-            }
+            if (!data || !data.extraction) throw new Error('No extraction data');
 
-            // Add extracted class to our state
-            var extracted = data.extraction;
+            var ex = data.extraction;
             classes.push({
-                class_name: extracted.class_name || 'Unnamed Class',
-                instructor: extracted.instructor || '',
-                semester: extracted.semester || '',
-                exams: (extracted.exams || []).map(function (exam) {
-                    return {
-                        exam_name: exam.exam_name || '',
-                        exam_date: exam.exam_date || '',
-                        topics: exam.topics || []
-                    };
+                class_name: ex.class_name || 'Unnamed Class',
+                instructor: ex.instructor || '',
+                semester: ex.semester || '',
+                exams: (ex.exams || []).map(function (e) {
+                    return { exam_name: e.exam_name || '', exam_date: e.exam_date || '', topics: e.topics || [] };
                 }),
                 source: 'syllabus',
                 filename: file.name
             });
 
-            // Show extracted summary
             status.classList.add('hidden');
             renderExtractedSummary();
-            showStep1Actions();
+            document.getElementById('sm-step-1-actions').style.display = '';
 
         } catch (err) {
-            console.error('[Semester] Syllabus extraction failed:', err);
+            console.error('[Semester] Extraction failed:', err);
             status.classList.add('hidden');
             zone.classList.remove('hidden');
-            alert('Failed to extract syllabus. Please try again or enter your classes manually.');
+            alert('Failed to extract syllabus. Try again or enter manually.');
         }
     }
 
     function renderExtractedSummary() {
-        var container = document.getElementById('extracted-classes');
-        var list = document.getElementById('extracted-list');
-        var count = document.getElementById('extracted-count');
+        var container = document.getElementById('sm-extracted');
+        var list = document.getElementById('sm-extracted-list');
+        var count = document.getElementById('sm-extracted-count');
 
         container.classList.remove('hidden');
         count.textContent = classes.length + ' class' + (classes.length !== 1 ? 'es' : '') + ' found';
@@ -204,160 +214,111 @@
             var topicCount = 0;
             if (cls.exams) cls.exams.forEach(function (e) { topicCount += (e.topics || []).length; });
 
-            html += '<div class="extracted-class-card">';
-            html += '<div class="ecc-icon"><i class="fas fa-book"></i></div>';
-            html += '<div class="ecc-info">';
-            html += '<strong>' + escHtml(cls.class_name) + '</strong>';
-            html += '<span>' + examCount + ' exam' + (examCount !== 1 ? 's' : '') + ', ' + topicCount + ' topics</span>';
-            if (cls.filename) html += '<span class="ecc-source"><i class="fas fa-file-pdf"></i> ' + escHtml(cls.filename) + '</span>';
-            html += '</div>';
-            html += '<button class="ecc-remove" data-remove-class="' + i + '" title="Remove"><i class="fas fa-times"></i></button>';
+            html += '<div class="sm-extracted-card">';
+            html += '<div class="sm-ec-icon"><i class="fas fa-book"></i></div>';
+            html += '<div class="sm-ec-info"><strong>' + esc(cls.class_name) + '</strong>';
+            html += '<span>' + examCount + ' exam' + (examCount !== 1 ? 's' : '') + ', ' + topicCount + ' topics</span></div>';
+            html += '<button class="sm-ec-remove" data-idx="' + i + '"><i class="fas fa-times"></i></button>';
             html += '</div>';
         });
-
         list.innerHTML = html;
 
-        // Remove buttons
-        list.querySelectorAll('[data-remove-class]').forEach(function (btn) {
+        list.querySelectorAll('.sm-ec-remove').forEach(function (btn) {
             btn.addEventListener('click', function () {
-                var idx = parseInt(this.dataset.removeClass, 10);
-                classes.splice(idx, 1);
-                renderExtractedSummary();
+                classes.splice(parseInt(this.dataset.idx, 10), 1);
                 if (classes.length === 0) {
                     container.classList.add('hidden');
-                    document.getElementById('syllabus-upload-zone').classList.remove('hidden');
-                    document.getElementById('step-1-actions').style.display = 'none';
+                    document.getElementById('sm-upload-zone').classList.remove('hidden');
+                    document.getElementById('sm-step-1-actions').style.display = 'none';
+                } else {
+                    renderExtractedSummary();
                 }
             });
         });
     }
 
-    function showStep1Actions() {
-        document.getElementById('step-1-actions').style.display = '';
-    }
-
-    // ── Step 2: Review & Edit Classes ───────────────────────
+    // ── Step 2: Review & Edit ───────────────────────────────
 
     function renderClassesEditor() {
-        var container = document.getElementById('classes-editor');
+        var container = document.getElementById('sm-classes-editor');
         var html = '';
 
         classes.forEach(function (cls, ci) {
-            html += '<div class="class-edit-card" data-class-index="' + ci + '">';
-            html += '<div class="cec-header">';
-            html += '<input type="text" class="cec-name-input" value="' + escAttr(cls.class_name) + '" placeholder="Class name" data-field="class_name" data-ci="' + ci + '">';
-            html += '<input type="text" class="cec-instructor-input" value="' + escAttr(cls.instructor || '') + '" placeholder="Instructor (optional)" data-field="instructor" data-ci="' + ci + '">';
-            html += '<button class="cec-delete" data-delete-class="' + ci + '" title="Delete class"><i class="fas fa-trash-alt"></i></button>';
+            html += '<div class="sm-class-card">';
+            html += '<div class="sm-cc-header">';
+            html += '<input type="text" class="sm-cc-name" value="' + attr(cls.class_name) + '" placeholder="Class name" data-field="class_name" data-ci="' + ci + '">';
+            html += '<input type="text" class="sm-cc-instructor" value="' + attr(cls.instructor || '') + '" placeholder="Instructor (optional)" data-field="instructor" data-ci="' + ci + '">';
+            html += '<button class="sm-cc-delete" data-del-class="' + ci + '"><i class="fas fa-trash-alt"></i></button>';
             html += '</div>';
-
-            html += '<div class="cec-exams">';
-            html += '<h4>Exams</h4>';
+            html += '<div class="sm-cc-exams"><h4>Exams</h4>';
 
             (cls.exams || []).forEach(function (exam, ei) {
-                html += renderExamEditor(ci, ei, exam);
+                html += '<div class="sm-exam-row" data-ci="' + ci + '" data-ei="' + ei + '">';
+                html += '<div class="sm-exam-top">';
+                html += '<input type="text" class="sm-exam-name" value="' + attr(exam.exam_name) + '" placeholder="Exam name" data-field="exam_name">';
+                html += '<input type="date" class="sm-exam-date" value="' + attr(exam.exam_date || '') + '" data-field="exam_date">';
+                html += '<button class="sm-exam-delete" data-del-exam="' + ci + '-' + ei + '"><i class="fas fa-times"></i></button>';
+                html += '</div>';
+                html += '<div class="sm-exam-topics"><label>Topics:</label>';
+                html += '<div class="sm-topic-tags">';
+                (exam.topics || []).forEach(function (t, ti) {
+                    html += '<span class="sm-topic-tag">' + esc(t) + '<button class="sm-topic-rm" data-rm="' + ci + '-' + ei + '-' + ti + '">&times;</button></span>';
+                });
+                html += '<input type="text" class="sm-topic-input" placeholder="Add topic + Enter" data-ci="' + ci + '" data-ei="' + ei + '">';
+                html += '</div></div></div>';
             });
 
-            html += '<button class="btn-add-exam" data-add-exam="' + ci + '"><i class="fas fa-plus"></i> Add Exam</button>';
-            html += '</div>';
-            html += '</div>';
+            html += '<button class="sm-add-exam" data-add-exam="' + ci + '"><i class="fas fa-plus"></i> Add Exam</button>';
+            html += '</div></div>';
         });
 
         container.innerHTML = html;
         attachEditorListeners(container);
     }
 
-    function renderExamEditor(ci, ei, exam) {
-        var html = '<div class="exam-edit-row" data-ci="' + ci + '" data-ei="' + ei + '">';
-        html += '<div class="eer-top">';
-        html += '<input type="text" class="eer-name" value="' + escAttr(exam.exam_name) + '" placeholder="Exam name" data-field="exam_name">';
-        html += '<input type="date" class="eer-date" value="' + escAttr(exam.exam_date || '') + '" data-field="exam_date">';
-        html += '<button class="eer-delete" data-delete-exam="' + ci + '-' + ei + '" title="Delete exam"><i class="fas fa-times"></i></button>';
-        html += '</div>';
-
-        html += '<div class="eer-topics">';
-        html += '<label>Topics:</label>';
-        html += '<div class="topic-tags" data-ci="' + ci + '" data-ei="' + ei + '">';
-        (exam.topics || []).forEach(function (topic, ti) {
-            html += '<span class="topic-tag">' + escHtml(topic) + '<button class="topic-remove" data-remove-topic="' + ci + '-' + ei + '-' + ti + '">&times;</button></span>';
-        });
-        html += '<input type="text" class="topic-input" placeholder="Add topic..." data-ci="' + ci + '" data-ei="' + ei + '">';
-        html += '</div>';
-        html += '</div>';
-
-        html += '</div>';
-        return html;
-    }
-
-    function attachEditorListeners(container) {
-        // Class field changes
-        container.querySelectorAll('.cec-name-input, .cec-instructor-input').forEach(function (input) {
-            input.addEventListener('change', function () {
-                var ci = parseInt(this.dataset.ci, 10);
-                var field = this.dataset.field;
-                classes[ci][field] = this.value.trim();
+    function attachEditorListeners(c) {
+        c.querySelectorAll('.sm-cc-name, .sm-cc-instructor').forEach(function (el) {
+            el.addEventListener('change', function () {
+                classes[parseInt(this.dataset.ci, 10)][this.dataset.field] = this.value.trim();
             });
         });
-
-        // Exam field changes
-        container.querySelectorAll('.eer-name, .eer-date').forEach(function (input) {
-            input.addEventListener('change', function () {
-                var row = this.closest('.exam-edit-row');
-                var ci = parseInt(row.dataset.ci, 10);
-                var ei = parseInt(row.dataset.ei, 10);
-                var field = this.dataset.field;
-                classes[ci].exams[ei][field] = this.value.trim();
+        c.querySelectorAll('.sm-exam-name, .sm-exam-date').forEach(function (el) {
+            el.addEventListener('change', function () {
+                var row = this.closest('.sm-exam-row');
+                classes[parseInt(row.dataset.ci, 10)].exams[parseInt(row.dataset.ei, 10)][this.dataset.field] = this.value.trim();
             });
         });
-
-        // Delete class
-        container.querySelectorAll('[data-delete-class]').forEach(function (btn) {
+        c.querySelectorAll('[data-del-class]').forEach(function (btn) {
             btn.addEventListener('click', function () {
-                var ci = parseInt(this.dataset.deleteClass, 10);
-                classes.splice(ci, 1);
+                classes.splice(parseInt(this.dataset.delClass, 10), 1);
                 renderClassesEditor();
             });
         });
-
-        // Delete exam
-        container.querySelectorAll('[data-delete-exam]').forEach(function (btn) {
+        c.querySelectorAll('[data-del-exam]').forEach(function (btn) {
             btn.addEventListener('click', function () {
-                var parts = this.dataset.deleteExam.split('-');
-                var ci = parseInt(parts[0], 10);
-                var ei = parseInt(parts[1], 10);
-                classes[ci].exams.splice(ei, 1);
+                var p = this.dataset.delExam.split('-');
+                classes[parseInt(p[0], 10)].exams.splice(parseInt(p[1], 10), 1);
                 renderClassesEditor();
             });
         });
-
-        // Add exam
-        container.querySelectorAll('[data-add-exam]').forEach(function (btn) {
+        c.querySelectorAll('[data-add-exam]').forEach(function (btn) {
             btn.addEventListener('click', function () {
-                var ci = parseInt(this.dataset.addExam, 10);
-                classes[ci].exams.push({ exam_name: '', exam_date: '', topics: [] });
+                classes[parseInt(this.dataset.addExam, 10)].exams.push({ exam_name: '', exam_date: '', topics: [] });
                 renderClassesEditor();
             });
         });
-
-        // Remove topic
-        container.querySelectorAll('[data-remove-topic]').forEach(function (btn) {
+        c.querySelectorAll('.sm-topic-rm').forEach(function (btn) {
             btn.addEventListener('click', function () {
-                var parts = this.dataset.removeTopic.split('-');
-                var ci = parseInt(parts[0], 10);
-                var ei = parseInt(parts[1], 10);
-                var ti = parseInt(parts[2], 10);
-                classes[ci].exams[ei].topics.splice(ti, 1);
+                var p = this.dataset.rm.split('-');
+                classes[parseInt(p[0], 10)].exams[parseInt(p[1], 10)].topics.splice(parseInt(p[2], 10), 1);
                 renderClassesEditor();
             });
         });
-
-        // Add topic on Enter
-        container.querySelectorAll('.topic-input').forEach(function (input) {
-            input.addEventListener('keydown', function (e) {
+        c.querySelectorAll('.sm-topic-input').forEach(function (el) {
+            el.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' && this.value.trim()) {
                     e.preventDefault();
-                    var ci = parseInt(this.dataset.ci, 10);
-                    var ei = parseInt(this.dataset.ei, 10);
-                    classes[ci].exams[ei].topics.push(this.value.trim());
+                    classes[parseInt(this.dataset.ci, 10)].exams[parseInt(this.dataset.ei, 10)].topics.push(this.value.trim());
                     renderClassesEditor();
                 }
             });
@@ -370,60 +331,43 @@
     }
 
     function createEmptyClass() {
-        return {
-            class_name: '',
-            instructor: '',
-            semester: '',
-            exams: [{ exam_name: 'Exam 1', exam_date: '', topics: [] }],
-            source: 'manual'
-        };
+        return { class_name: '', instructor: '', semester: '', exams: [{ exam_name: 'Exam 1', exam_date: '', topics: [] }], source: 'manual' };
     }
 
-    // ── Step 2 → Step 3: Get topic mappings ─────────────────
+    // ── Step 2 → 3: Map topics ──────────────────────────────
 
     async function handleStep2Submit() {
-        // Sync any unsaved input values
-        document.querySelectorAll('.cec-name-input, .cec-instructor-input').forEach(function (el) {
-            var ci = parseInt(el.dataset.ci, 10);
-            classes[ci][el.dataset.field] = el.value.trim();
+        // Sync inputs
+        document.querySelectorAll('.sm-cc-name, .sm-cc-instructor').forEach(function (el) {
+            classes[parseInt(el.dataset.ci, 10)][el.dataset.field] = el.value.trim();
         });
-        document.querySelectorAll('.eer-name, .eer-date').forEach(function (el) {
-            var row = el.closest('.exam-edit-row');
-            var ci = parseInt(row.dataset.ci, 10);
-            var ei = parseInt(row.dataset.ei, 10);
-            classes[ci].exams[ei][el.dataset.field] = el.value.trim();
+        document.querySelectorAll('.sm-exam-name, .sm-exam-date').forEach(function (el) {
+            var row = el.closest('.sm-exam-row');
+            classes[parseInt(row.dataset.ci, 10)].exams[parseInt(row.dataset.ei, 10)][el.dataset.field] = el.value.trim();
         });
 
-        // Validate: at least one class with a name
-        var validClasses = classes.filter(function (c) { return c.class_name.trim(); });
-        if (validClasses.length === 0) {
-            alert('Please add at least one class name.');
-            return;
-        }
-        classes = validClasses;
+        classes = classes.filter(function (c) { return c.class_name.trim(); });
+        if (!classes.length) { alert('Please add at least one class name.'); return; }
 
-        // Collect all unique topics
         var allTopics = [];
         classes.forEach(function (cls) {
             (cls.exams || []).forEach(function (exam) {
-                (exam.topics || []).forEach(function (topic) {
-                    if (allTopics.indexOf(topic) === -1) allTopics.push(topic);
+                (exam.topics || []).forEach(function (t) {
+                    if (allTopics.indexOf(t) === -1) allTopics.push(t);
                 });
             });
         });
 
-        if (allTopics.length === 0) {
-            // No topics to map — skip to finish
+        goToStep(3);
+
+        if (!allTopics.length) {
             guideMappings = {};
-            goToStep(3);
-            renderMappingsEmpty();
+            document.getElementById('sm-mappings-editor').innerHTML = '<div class="sm-mapping-empty">No topics to match. You can still save your class schedule.</div>';
             return;
         }
 
-        // Call mapping API
-        goToStep(3);
-        var editor = document.getElementById('mappings-editor');
-        editor.innerHTML = '<div class="mapping-loading"><i class="fas fa-spinner fa-spin"></i> Matching topics to study guides...</div>';
+        var editor = document.getElementById('sm-mappings-editor');
+        editor.innerHTML = '<div class="sm-mapping-loading"><i class="fas fa-spinner fa-spin"></i> Matching topics...</div>';
 
         try {
             var data = await apiCall('/api/semester/map-topics', {
@@ -431,104 +375,71 @@
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ topics: allTopics })
             });
-
             guideMappings = data.mappings || {};
-            renderMappingsEditor();
-
         } catch (err) {
-            console.error('[Semester] Topic mapping failed:', err);
-            // Fall back to empty mappings
-            allTopics.forEach(function (t) {
-                guideMappings[t] = { guide_id: null, confidence: 0, source: 'none' };
-            });
-            renderMappingsEditor();
+            console.error('[Semester] Mapping failed:', err);
+            allTopics.forEach(function (t) { guideMappings[t] = { guide_id: null, confidence: 0, source: 'none' }; });
         }
+
+        renderMappingsEditor();
     }
 
-    // ── Step 3: Confirm Guide Mappings ──────────────────────
-
     function renderMappingsEditor() {
-        var editor = document.getElementById('mappings-editor');
+        var editor = document.getElementById('sm-mappings-editor');
         var topics = Object.keys(guideMappings);
-
-        if (topics.length === 0) {
-            renderMappingsEmpty();
+        if (!topics.length) {
+            editor.innerHTML = '<div class="sm-mapping-empty">No topics to match.</div>';
             return;
         }
 
-        var html = '<div class="mappings-list">';
+        var html = '<div class="sm-mappings-list">';
         topics.forEach(function (topic) {
-            var mapping = guideMappings[topic];
-            var guideId = mapping.guide_id;
-            var confidence = mapping.confidence || 0;
-            var statusClass = confidence >= 0.8 ? 'high' : confidence >= 0.5 ? 'medium' : 'low';
-            var statusIcon = confidence >= 0.8 ? 'fa-check-circle' : confidence >= 0.5 ? 'fa-question-circle' : 'fa-times-circle';
+            var m = guideMappings[topic];
+            var conf = m.confidence || 0;
+            var cls = conf >= 0.8 ? 'high' : conf >= 0.5 ? 'med' : 'low';
+            var icon = conf >= 0.8 ? 'fa-check-circle' : conf >= 0.5 ? 'fa-question-circle' : 'fa-times-circle';
 
-            html += '<div class="mapping-row">';
-            html += '<div class="mapping-topic">';
-            html += '<span class="mapping-status ' + statusClass + '"><i class="fas ' + statusIcon + '"></i></span>';
-            html += '<span>' + escHtml(topic) + '</span>';
-            html += '</div>';
-            html += '<div class="mapping-guide">';
-            html += '<select class="mapping-select" data-topic="' + escAttr(topic) + '">';
+            html += '<div class="sm-map-row">';
+            html += '<span class="sm-map-status ' + cls + '"><i class="fas ' + icon + '"></i></span>';
+            html += '<span class="sm-map-topic">' + esc(topic) + '</span>';
+            html += '<select class="sm-map-select" data-topic="' + attr(topic) + '">';
             html += '<option value="">No guide match</option>';
-
             Object.keys(availableGuides).forEach(function (gid) {
-                var selected = gid === guideId ? ' selected' : '';
-                html += '<option value="' + gid + '"' + selected + '>' + escHtml(availableGuides[gid]) + '</option>';
+                html += '<option value="' + gid + '"' + (gid === m.guide_id ? ' selected' : '') + '>' + esc(availableGuides[gid]) + '</option>';
             });
-
-            html += '</select>';
-            html += '</div>';
-            html += '</div>';
+            html += '</select></div>';
         });
         html += '</div>';
-
         editor.innerHTML = html;
 
-        // Listen for dropdown changes
-        editor.querySelectorAll('.mapping-select').forEach(function (sel) {
+        editor.querySelectorAll('.sm-map-select').forEach(function (sel) {
             sel.addEventListener('change', function () {
-                var topic = this.dataset.topic;
-                guideMappings[topic].guide_id = this.value || null;
-                guideMappings[topic].source = this.value ? 'user_confirmed' : 'none';
-                guideMappings[topic].confidence = this.value ? 1.0 : 0;
+                guideMappings[this.dataset.topic].guide_id = this.value || null;
+                guideMappings[this.dataset.topic].confidence = this.value ? 1.0 : 0;
+                guideMappings[this.dataset.topic].source = this.value ? 'user_confirmed' : 'none';
             });
         });
     }
 
-    function renderMappingsEmpty() {
-        var editor = document.getElementById('mappings-editor');
-        editor.innerHTML = '<div class="mapping-empty"><p>No exam topics found to match. You can add topics in Step 2, or continue to save your class schedule.</p></div>';
-    }
-
-    // ── Finish: Save everything ─────────────────────────────
+    // ── Finish ──────────────────────────────────────────────
 
     async function handleFinish() {
-        var btn = document.getElementById('btn-finish');
+        var btn = document.getElementById('sm-finish');
         btn.disabled = true;
         btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
 
-        // Build guide_mappings per exam from the global guideMappings
         var payload = classes.map(function (cls) {
             return {
                 class_name: cls.class_name,
                 instructor: cls.instructor,
                 semester: cls.semester,
                 exams: (cls.exams || []).map(function (exam) {
-                    var examMappings = {};
-                    (exam.topics || []).forEach(function (topic) {
-                        var m = guideMappings[topic];
-                        if (m && m.guide_id) {
-                            examMappings[topic] = m.guide_id;
-                        }
+                    var em = {};
+                    (exam.topics || []).forEach(function (t) {
+                        var m = guideMappings[t];
+                        if (m && m.guide_id) em[t] = m.guide_id;
                     });
-                    return {
-                        exam_name: exam.exam_name,
-                        exam_date: exam.exam_date || null,
-                        topics: exam.topics || [],
-                        guide_mappings: examMappings
-                    };
+                    return { exam_name: exam.exam_name, exam_date: exam.exam_date || null, topics: exam.topics || [], guide_mappings: em };
                 })
             };
         });
@@ -540,21 +451,20 @@
                 body: JSON.stringify({ classes: payload })
             });
 
-            // Show success
-            for (var i = 1; i <= 3; i++) {
-                document.getElementById('step-' + i).classList.add('hidden');
-            }
-            document.getElementById('step-success').classList.remove('hidden');
-            document.querySelectorAll('.wizard-step').forEach(function (el) {
+            ['sm-step-1', 'sm-step-2', 'sm-step-3'].forEach(function (id) {
+                var el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+            document.getElementById('sm-step-success').classList.remove('hidden');
+            document.querySelectorAll('.sm-step').forEach(function (el) {
                 el.classList.add('completed');
                 el.classList.remove('active');
             });
-
         } catch (err) {
             console.error('[Semester] Save failed:', err);
             alert('Failed to save. Please try again.');
             btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-check"></i> Save & Get My Study Plan';
+            btn.innerHTML = '<i class="fas fa-check"></i> Save & Get My Plan';
         }
     }
 
@@ -565,14 +475,14 @@
         if (el) el.addEventListener(event, handler);
     }
 
-    function escHtml(str) {
-        var div = document.createElement('div');
-        div.textContent = str || '';
-        return div.innerHTML;
+    function esc(s) {
+        var d = document.createElement('div');
+        d.textContent = s || '';
+        return d.innerHTML;
     }
 
-    function escAttr(str) {
-        return (str || '').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+    function attr(s) {
+        return (s || '').replace(/"/g, '&quot;');
     }
 
 })();

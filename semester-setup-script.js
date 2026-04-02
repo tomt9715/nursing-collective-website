@@ -233,7 +233,7 @@
             console.error('[Semester] Extraction failed:', err);
             status.classList.add('hidden');
             zone.classList.remove('hidden');
-            alert('Failed to extract syllabus. Try again or enter manually.');
+            alert('Failed to extract document. Try again or enter manually.');
         }
     }
 

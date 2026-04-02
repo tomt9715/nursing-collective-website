@@ -2608,6 +2608,11 @@ a.trust-btn:hover {
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
+/* Study plan spans full width when exam countdown is hidden */
+.dashboard-two-col:has(.exam-countdown-widget.hidden) .study-plan-widget {
+    grid-column: 1 / -1;
+}
+
 .study-plan-widget .widget-header {
     display: flex;
     align-items: center;

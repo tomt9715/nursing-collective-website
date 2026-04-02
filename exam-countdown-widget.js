@@ -7,18 +7,21 @@
     'use strict';
 
     window.loadExamCountdown = async function () {
+        var widget = document.getElementById('exam-countdown-widget');
         var content = document.getElementById('exam-countdown-content');
         var editLink = document.getElementById('edit-exams-link');
-        if (!content) return;
+        if (!content || !widget) return;
 
         try {
             var setupRes = await apiCall('/api/semester/setup');
 
             if (!setupRes || !setupRes.has_setup) {
-                content.innerHTML = buildEmptyState();
-                attachEmptyListeners();
+                // Hide entire widget — study plan widget handles the setup CTA
+                widget.classList.add('hidden');
                 return;
             }
+
+            widget.classList.remove('hidden');
 
             if (editLink) editLink.classList.remove('hidden');
             if (editLink) {

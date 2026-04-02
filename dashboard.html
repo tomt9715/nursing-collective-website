@@ -761,73 +761,33 @@
             <!-- Progress Steps -->
             <div class="sm-progress">
                 <div class="sm-step active" data-step="1"><span class="sm-dot"></span> Add Classes</div>
-                <div class="sm-step" data-step="2"><span class="sm-dot"></span> Review</div>
-                <div class="sm-step" data-step="3"><span class="sm-dot"></span> Match Guides</div>
+                <div class="sm-step" data-step="2"><span class="sm-dot"></span> Match Guides</div>
             </div>
 
-            <!-- Step 1 -->
+            <!-- Step 1: Add Classes & Exams -->
             <div class="sm-panel" id="sm-step-1">
                 <h2>Add Your Classes</h2>
-                <p class="sm-subtitle">Upload your syllabus, test schedule, or any course document and our AI will extract your classes and exam dates.</p>
-
-                <div class="sm-upload-zone" id="sm-upload-zone">
-                    <div class="sm-upload-icon"><i class="fas fa-cloud-upload-alt"></i></div>
-                    <p class="sm-upload-text">Drop your course document here</p>
-                    <p class="sm-upload-hint">PDF or DOCX, max 10MB</p>
-                    <button class="sm-upload-browse">Browse Files</button>
-                    <input type="file" id="sm-file-input" accept=".pdf,.docx" style="display:none">
-                </div>
-
-                <div class="sm-upload-status hidden" id="sm-upload-status">
-                    <div class="sm-spinner"><i class="fas fa-spinner fa-spin"></i></div>
-                    <p id="sm-upload-status-text">Analyzing your document...</p>
-                    <p class="sm-upload-hint">Usually takes 10-20 seconds</p>
-                </div>
-
-                <div class="sm-divider"><span>or</span></div>
-
-                <button class="sm-manual-btn" id="sm-manual-btn">
-                    <i class="fas fa-keyboard"></i>
-                    <div><strong>Type it in manually</strong><br><span>Enter classes and exam dates by hand</span></div>
-                    <i class="fas fa-chevron-right sm-arrow"></i>
-                </button>
-
-                <div class="sm-extracted hidden" id="sm-extracted">
-                    <h3 id="sm-extracted-count"></h3>
-                    <div id="sm-extracted-list"></div>
-                    <button class="sm-add-another" id="sm-add-another"><i class="fas fa-plus"></i> Upload another document</button>
-                </div>
-
-                <div class="sm-actions" id="sm-step-1-actions" style="display:none">
-                    <span></span>
-                    <button class="sm-btn-next" id="sm-to-step-2">Review & Edit <i class="fas fa-arrow-right"></i></button>
-                </div>
-            </div>
-
-            <!-- Step 2 -->
-            <div class="sm-panel hidden" id="sm-step-2">
-                <h2>Review Your Classes</h2>
-                <p class="sm-subtitle">Edit, add, or remove anything below.</p>
+                <p class="sm-subtitle">List the classes you're taking this semester and their exam dates.</p>
 
                 <div id="sm-classes-editor"></div>
 
                 <button class="sm-add-class-btn" id="sm-add-class"><i class="fas fa-plus-circle"></i> Add Another Class</button>
 
                 <div class="sm-actions">
-                    <button class="sm-btn-back" id="sm-back-to-1"><i class="fas fa-arrow-left"></i> Back</button>
-                    <button class="sm-btn-next" id="sm-to-step-3">Match Guides <i class="fas fa-arrow-right"></i></button>
+                    <span></span>
+                    <button class="sm-btn-next" id="sm-to-step-2">Match Guides <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
 
-            <!-- Step 3 -->
-            <div class="sm-panel hidden" id="sm-step-3">
+            <!-- Step 2: Match Topics to Guides -->
+            <div class="sm-panel hidden" id="sm-step-2">
                 <h2>Match Topics to Guides</h2>
                 <p class="sm-subtitle">We matched your exam topics to our study guides. Adjust if needed.</p>
 
                 <div id="sm-mappings-editor"></div>
 
                 <div class="sm-actions">
-                    <button class="sm-btn-back" id="sm-back-to-2"><i class="fas fa-arrow-left"></i> Back</button>
+                    <button class="sm-btn-back" id="sm-back-to-1"><i class="fas fa-arrow-left"></i> Back</button>
                     <button class="sm-btn-finish" id="sm-finish"><i class="fas fa-check"></i> Save & Get My Plan</button>
                 </div>
             </div>

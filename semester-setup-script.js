@@ -1,8 +1,7 @@
 /**
- * Semester Setup Modal — 3-step wizard inside the dashboard.
- * 1. Upload syllabus or manual entry
- * 2. Review & edit classes/exams
- * 3. Confirm topic-to-guide mappings
+ * Semester Setup Modal — 2-step manual entry wizard.
+ * Step 1: Add classes with exams (name, date, topics)
+ * Step 2: Confirm topic-to-guide mappings
  */
 
 (function () {
@@ -41,6 +40,11 @@
     window.openSemesterModal = function () {
         var overlay = document.getElementById('semester-modal-overlay');
         if (overlay) {
+            // Start with one empty class if none exist
+            if (classes.length === 0) {
+                classes.push(createEmptyClass());
+            }
+            renderClassesEditor();
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -55,15 +59,13 @@
     };
 
     document.addEventListener('DOMContentLoaded', function () {
-        // Open modal triggers
         on('open-semester-modal-btn', 'click', openSemesterModal);
         on('edit-semester-link', 'click', function (e) {
             e.preventDefault();
             openSemesterModal();
         });
-
-        // Close modal
         on('semester-modal-close', 'click', closeSemesterModal);
+
         var overlay = document.getElementById('semester-modal-overlay');
         if (overlay) {
             overlay.addEventListener('click', function (e) {
@@ -71,29 +73,22 @@
             });
         }
 
-        initStep1();
-        initNavigation();
-    });
-
-    // ── Navigation ──────────────────────────────────────────
-
-    function initNavigation() {
-        on('sm-to-step-2', 'click', function () { goToStep(2); });
-        on('sm-to-step-3', 'click', handleStep2Submit);
+        on('sm-to-step-2', 'click', handleStep1Submit);
         on('sm-back-to-1', 'click', function () { goToStep(1); });
-        on('sm-back-to-2', 'click', function () { goToStep(2); });
         on('sm-finish', 'click', handleFinish);
         on('sm-add-class', 'click', addEmptyClass);
+        on('sm-start-over', 'click', resetWizard);
         on('sm-done', 'click', function () {
             closeSemesterModal();
             if (typeof loadStudyPlan === 'function') loadStudyPlan();
             if (typeof loadExamCountdown === 'function') loadExamCountdown();
         });
-        on('sm-start-over', 'click', resetWizard);
-    }
+    });
+
+    // ── Navigation ──────────────────────────────────────────
 
     function goToStep(step) {
-        ['sm-step-1', 'sm-step-2', 'sm-step-3', 'sm-step-success'].forEach(function (id) {
+        ['sm-step-1', 'sm-step-2', 'sm-step-success'].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) el.classList.add('hidden');
         });
@@ -106,202 +101,54 @@
             el.classList.toggle('completed', s < step);
         });
 
-        // Show "Start Over" once there's data to reset
         var startOver = document.getElementById('sm-start-over');
         if (startOver) {
-            startOver.classList.toggle('hidden', classes.length === 0 && step === 1);
+            startOver.classList.toggle('hidden', classes.length <= 1 && step === 1);
         }
 
-        if (step === 2) renderClassesEditor();
+        if (step === 1) renderClassesEditor();
 
         var modal = document.querySelector('.semester-modal');
         if (modal) modal.scrollTop = 0;
     }
 
     function resetWizard() {
-        classes = [];
+        classes = [createEmptyClass()];
         guideMappings = {};
-
-        // Reset step 1 UI
-        var zone = document.getElementById('sm-upload-zone');
-        var status = document.getElementById('sm-upload-status');
-        var extracted = document.getElementById('sm-extracted');
-        var actions = document.getElementById('sm-step-1-actions');
-        var input = document.getElementById('sm-file-input');
-
-        if (zone) zone.classList.remove('hidden');
-        if (status) status.classList.add('hidden');
-        if (extracted) extracted.classList.add('hidden');
-        if (actions) actions.style.display = 'none';
-        if (input) input.value = '';
-
-        var startOver = document.getElementById('sm-start-over');
-        if (startOver) startOver.classList.add('hidden');
-
         goToStep(1);
     }
 
-    // ── Step 1: Upload or Manual ────────────────────────────
-
-    function initStep1() {
-        var zone = document.getElementById('sm-upload-zone');
-        var input = document.getElementById('sm-file-input');
-        var browse = zone ? zone.querySelector('.sm-upload-browse') : null;
-
-        if (zone) {
-            zone.addEventListener('click', function (e) {
-                if (e.target.closest('.sm-upload-browse')) return;
-                input.click();
-            });
-            zone.addEventListener('dragover', function (e) { e.preventDefault(); zone.classList.add('dragover'); });
-            zone.addEventListener('dragleave', function () { zone.classList.remove('dragover'); });
-            zone.addEventListener('drop', function (e) {
-                e.preventDefault();
-                zone.classList.remove('dragover');
-                if (e.dataTransfer.files.length) handleFileUpload(e.dataTransfer.files[0]);
-            });
-        }
-
-        if (browse) {
-            browse.addEventListener('click', function (e) { e.stopPropagation(); input.click(); });
-        }
-
-        if (input) {
-            input.addEventListener('change', function () {
-                if (this.files.length) handleFileUpload(this.files[0]);
-            });
-        }
-
-        on('sm-manual-btn', 'click', function () {
-            classes.push(createEmptyClass());
-            goToStep(2);
-        });
-
-        on('sm-add-another', 'click', function () {
-            input.value = '';
-            input.click();
-        });
-    }
-
-    async function handleFileUpload(file) {
-        var ext = file.name.toLowerCase().split('.').pop();
-        if (ext !== 'pdf' && ext !== 'docx') { alert('Please upload a PDF or DOCX file.'); return; }
-        if (file.size > 10 * 1024 * 1024) { alert('File too large (max 10MB).'); return; }
-
-        var zone = document.getElementById('sm-upload-zone');
-        var status = document.getElementById('sm-upload-status');
-        var statusText = document.getElementById('sm-upload-status-text');
-
-        zone.classList.add('hidden');
-        status.classList.remove('hidden');
-        statusText.textContent = 'Analyzing ' + file.name + '...';
-
-        try {
-            var formData = new FormData();
-            formData.append('file', file);
-
-            // Raw fetch needed for FormData — apiCall forces Content-Type: application/json
-            var token = localStorage.getItem('accessToken');
-            var res = await fetch(API_URL + '/api/semester/extract-syllabus', {
-                method: 'POST',
-                headers: token ? { 'Authorization': 'Bearer ' + token } : {},
-                body: formData,
-                credentials: 'include'
-            });
-
-            var data = await res.json();
-            if (!res.ok) throw new Error(data.error || 'Upload failed');
-            if (!data || !data.extraction) throw new Error('No extraction data');
-
-            var ex = data.extraction;
-            classes.push({
-                class_name: ex.class_name || 'Unnamed Class',
-                instructor: ex.instructor || '',
-                semester: ex.semester || '',
-                exams: (ex.exams || []).map(function (e) {
-                    return { exam_name: e.exam_name || '', exam_date: e.exam_date || '', topics: e.topics || [] };
-                }),
-                source: 'syllabus',
-                filename: file.name
-            });
-
-            status.classList.add('hidden');
-            renderExtractedSummary();
-            document.getElementById('sm-step-1-actions').style.display = '';
-
-        } catch (err) {
-            console.error('[Semester] Extraction failed:', err);
-            status.classList.add('hidden');
-            zone.classList.remove('hidden');
-            alert('Failed to extract document. Try again or enter manually.');
-        }
-    }
-
-    function renderExtractedSummary() {
-        var container = document.getElementById('sm-extracted');
-        var list = document.getElementById('sm-extracted-list');
-        var count = document.getElementById('sm-extracted-count');
-
-        container.classList.remove('hidden');
-        count.textContent = classes.length + ' class' + (classes.length !== 1 ? 'es' : '') + ' found';
-
-        var html = '';
-        classes.forEach(function (cls, i) {
-            var examCount = cls.exams ? cls.exams.length : 0;
-            var topicCount = 0;
-            if (cls.exams) cls.exams.forEach(function (e) { topicCount += (e.topics || []).length; });
-
-            html += '<div class="sm-extracted-card">';
-            html += '<div class="sm-ec-icon"><i class="fas fa-book"></i></div>';
-            html += '<div class="sm-ec-info"><strong>' + esc(cls.class_name) + '</strong>';
-            html += '<span>' + examCount + ' exam' + (examCount !== 1 ? 's' : '') + ', ' + topicCount + ' topics</span></div>';
-            html += '<button class="sm-ec-remove" data-idx="' + i + '"><i class="fas fa-times"></i></button>';
-            html += '</div>';
-        });
-        list.innerHTML = html;
-
-        list.querySelectorAll('.sm-ec-remove').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                classes.splice(parseInt(this.dataset.idx, 10), 1);
-                if (classes.length === 0) {
-                    container.classList.add('hidden');
-                    document.getElementById('sm-upload-zone').classList.remove('hidden');
-                    document.getElementById('sm-step-1-actions').style.display = 'none';
-                } else {
-                    renderExtractedSummary();
-                }
-            });
-        });
-    }
-
-    // ── Step 2: Review & Edit ───────────────────────────────
+    // ── Step 1: Add Classes & Exams ─────────────────────────
 
     function renderClassesEditor() {
         var container = document.getElementById('sm-classes-editor');
+        if (!container) return;
         var html = '';
 
         classes.forEach(function (cls, ci) {
             html += '<div class="sm-class-card">';
             html += '<div class="sm-cc-header">';
-            html += '<input type="text" class="sm-cc-name" value="' + attr(cls.class_name) + '" placeholder="Class name" data-field="class_name" data-ci="' + ci + '">';
-            html += '<input type="text" class="sm-cc-instructor" value="' + attr(cls.instructor || '') + '" placeholder="Instructor (optional)" data-field="instructor" data-ci="' + ci + '">';
-            html += '<button class="sm-cc-delete" data-del-class="' + ci + '"><i class="fas fa-trash-alt"></i></button>';
+            html += '<input type="text" class="sm-cc-name" value="' + attr(cls.class_name) + '" placeholder="Class name (e.g. Med-Surg I)" data-field="class_name" data-ci="' + ci + '">';
+            if (classes.length > 1) {
+                html += '<button class="sm-cc-delete" data-del-class="' + ci + '" title="Remove class"><i class="fas fa-trash-alt"></i></button>';
+            }
             html += '</div>';
+
             html += '<div class="sm-cc-exams"><h4>Exams</h4>';
 
             (cls.exams || []).forEach(function (exam, ei) {
                 html += '<div class="sm-exam-row" data-ci="' + ci + '" data-ei="' + ei + '">';
                 html += '<div class="sm-exam-top">';
-                html += '<input type="text" class="sm-exam-name" value="' + attr(exam.exam_name) + '" placeholder="Exam name" data-field="exam_name">';
+                html += '<input type="text" class="sm-exam-name" value="' + attr(exam.exam_name) + '" placeholder="Exam name (e.g. Exam 1)" data-field="exam_name">';
                 html += '<input type="date" class="sm-exam-date" value="' + attr(exam.exam_date || '') + '" data-field="exam_date">';
-                html += '<button class="sm-exam-delete" data-del-exam="' + ci + '-' + ei + '"><i class="fas fa-times"></i></button>';
+                html += '<button class="sm-exam-delete" data-del-exam="' + ci + '-' + ei + '" title="Remove exam"><i class="fas fa-times"></i></button>';
                 html += '</div>';
-                html += '<div class="sm-exam-topics"><label>Topics:</label>';
+                html += '<div class="sm-exam-topics"><label>Topics on this exam:</label>';
                 html += '<div class="sm-topic-tags">';
                 (exam.topics || []).forEach(function (t, ti) {
                     html += '<span class="sm-topic-tag">' + esc(t) + '<button class="sm-topic-rm" data-rm="' + ci + '-' + ei + '-' + ti + '">&times;</button></span>';
                 });
-                html += '<input type="text" class="sm-topic-input" placeholder="Add topic + Enter" data-ci="' + ci + '" data-ei="' + ei + '">';
+                html += '<input type="text" class="sm-topic-input" placeholder="Type a topic + Enter" data-ci="' + ci + '" data-ei="' + ei + '">';
                 html += '</div></div></div>';
             });
 
@@ -314,7 +161,7 @@
     }
 
     function attachEditorListeners(c) {
-        c.querySelectorAll('.sm-cc-name, .sm-cc-instructor').forEach(function (el) {
+        c.querySelectorAll('.sm-cc-name').forEach(function (el) {
             el.addEventListener('change', function () {
                 classes[parseInt(this.dataset.ci, 10)][this.dataset.field] = this.value.trim();
             });
@@ -363,29 +210,47 @@
     }
 
     function addEmptyClass() {
+        syncInputs();
         classes.push(createEmptyClass());
         renderClassesEditor();
+        // Scroll to the new class
+        var container = document.getElementById('sm-classes-editor');
+        if (container) container.lastElementChild.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     function createEmptyClass() {
-        return { class_name: '', instructor: '', semester: '', exams: [{ exam_name: 'Exam 1', exam_date: '', topics: [] }], source: 'manual' };
+        return { class_name: '', instructor: '', semester: '', exams: [{ exam_name: '', exam_date: '', topics: [] }], source: 'manual' };
     }
 
-    // ── Step 2 → 3: Map topics ──────────────────────────────
-
-    async function handleStep2Submit() {
-        // Sync inputs
-        document.querySelectorAll('.sm-cc-name, .sm-cc-instructor').forEach(function (el) {
-            classes[parseInt(el.dataset.ci, 10)][el.dataset.field] = el.value.trim();
+    function syncInputs() {
+        document.querySelectorAll('.sm-cc-name').forEach(function (el) {
+            classes[parseInt(el.dataset.ci, 10)].class_name = el.value.trim();
         });
         document.querySelectorAll('.sm-exam-name, .sm-exam-date').forEach(function (el) {
             var row = el.closest('.sm-exam-row');
-            classes[parseInt(row.dataset.ci, 10)].exams[parseInt(row.dataset.ei, 10)][el.dataset.field] = el.value.trim();
+            if (row) {
+                classes[parseInt(row.dataset.ci, 10)].exams[parseInt(row.dataset.ei, 10)][el.dataset.field] = el.value.trim();
+            }
         });
+    }
 
+    // ── Step 1 → Step 2: Map topics ─────────────────────────
+
+    async function handleStep1Submit() {
+        syncInputs();
+
+        // Filter out classes with no name
         classes = classes.filter(function (c) { return c.class_name.trim(); });
-        if (!classes.length) { alert('Please add at least one class name.'); return; }
+        if (!classes.length) {
+            if (typeof showAlert === 'function') {
+                showAlert('Missing Info', 'Please enter at least one class name.', 'warning');
+            } else {
+                alert('Please enter at least one class name.');
+            }
+            return;
+        }
 
+        // Collect all unique topics
         var allTopics = [];
         classes.forEach(function (cls) {
             (cls.exams || []).forEach(function (exam) {
@@ -395,16 +260,16 @@
             });
         });
 
-        goToStep(3);
+        goToStep(2);
 
         if (!allTopics.length) {
             guideMappings = {};
-            document.getElementById('sm-mappings-editor').innerHTML = '<div class="sm-mapping-empty">No topics to match. You can still save your class schedule.</div>';
+            document.getElementById('sm-mappings-editor').innerHTML = '<div class="sm-mapping-empty">No topics added yet. You can still save your class schedule and add topics later.</div>';
             return;
         }
 
         var editor = document.getElementById('sm-mappings-editor');
-        editor.innerHTML = '<div class="sm-mapping-loading"><i class="fas fa-spinner fa-spin"></i> Matching topics...</div>';
+        editor.innerHTML = '<div class="sm-mapping-loading"><i class="fas fa-spinner fa-spin"></i> Matching topics to guides...</div>';
 
         try {
             var data = await apiCall('/api/semester/map-topics', {
@@ -420,6 +285,8 @@
 
         renderMappingsEditor();
     }
+
+    // ── Step 2: Confirm Guide Mappings ──────────────────────
 
     function renderMappingsEditor() {
         var editor = document.getElementById('sm-mappings-editor');
@@ -458,7 +325,7 @@
         });
     }
 
-    // ── Finish ──────────────────────────────────────────────
+    // ── Finish: Save ────────────────────────────────────────
 
     async function handleFinish() {
         var btn = document.getElementById('sm-finish');
@@ -488,7 +355,7 @@
                 body: JSON.stringify({ classes: payload })
             });
 
-            ['sm-step-1', 'sm-step-2', 'sm-step-3'].forEach(function (id) {
+            ['sm-step-1', 'sm-step-2'].forEach(function (id) {
                 var el = document.getElementById(id);
                 if (el) el.classList.add('hidden');
             });
@@ -497,9 +364,16 @@
                 el.classList.add('completed');
                 el.classList.remove('active');
             });
+            var startOver = document.getElementById('sm-start-over');
+            if (startOver) startOver.classList.add('hidden');
+
         } catch (err) {
             console.error('[Semester] Save failed:', err);
-            alert('Failed to save. Please try again.');
+            if (typeof showAlert === 'function') {
+                showAlert('Save Failed', 'Something went wrong. Please try again.', 'error');
+            } else {
+                alert('Failed to save. Please try again.');
+            }
             btn.disabled = false;
             btn.innerHTML = '<i class="fas fa-check"></i> Save & Get My Plan';
         }

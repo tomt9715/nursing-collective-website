@@ -119,17 +119,33 @@
             html += '<div class="study-plan-tasks">';
             plan.tasks.forEach(function (task, i) {
                 var icon = getTaskIcon(task.task_type);
-                var badge = task.reasons && task.reasons.length > 0
-                    ? '<span class="task-reason-badge">' + task.reasons[0] + '</span>'
-                    : '';
                 var hasNotes = task.matched_documents && task.matched_documents.length > 0;
                 var hasGuide = !!task.guide_id;
+
+                // Build useful badge — show exam proximity, skip "no matching guide"
+                var badge = '';
+                if (task.reasons) {
+                    var useful = task.reasons.filter(function (r) {
+                        return r.indexOf('no matching') === -1 && r.indexOf('not yet studied') === -1;
+                    });
+                    if (useful.length > 0) {
+                        badge = '<span class="task-reason-badge">' + useful[0] + '</span>';
+                    }
+                }
+
+                // Build description with exam context
+                var desc = task.topic_name;
+                if (task.exam_name && task.exam_date) {
+                    var daysUntil = Math.ceil((new Date(task.exam_date + 'T00:00:00') - new Date().setHours(0,0,0,0)) / 86400000);
+                    if (daysUntil <= 1) desc += ' — exam tomorrow';
+                    else if (daysUntil <= 7) desc += ' — exam in ' + daysUntil + 'd';
+                }
 
                 html += '<div class="study-plan-task">' +
                     '<div class="task-number">' + (i + 1) + '</div>' +
                     '<div class="task-icon ' + task.task_type + '"><i class="' + icon + '"></i></div>' +
                     '<div class="task-info">' +
-                        '<div class="task-description">' + task.topic_name + '</div>' +
+                        '<div class="task-description">' + desc + '</div>' +
                         '<div class="task-meta">' +
                             '<span class="task-class">' + task.class_name + '</span>' +
                             badge +

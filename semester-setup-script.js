@@ -122,6 +122,7 @@
         on('sm-finish', 'click', handleFinish);
         on('sm-add-class', 'click', addEmptyClass);
         on('sm-start-over', 'click', resetWizard);
+        on('sm-clear-all', 'click', handleClearAll);
         on('sm-done', 'click', function () {
             closeSemesterModal();
             if (typeof loadStudyPlan === 'function') loadStudyPlan();
@@ -150,6 +151,12 @@
             startOver.classList.toggle('hidden', classes.length <= 1 && step === 1);
         }
 
+        // Show "Clear All" only in edit mode on step 1
+        var clearAll = document.getElementById('sm-clear-all');
+        if (clearAll) {
+            clearAll.classList.toggle('hidden', !isEditMode || step !== 1);
+        }
+
         if (step === 1) renderClassesEditor();
 
         var modal = document.querySelector('.semester-modal');
@@ -159,7 +166,33 @@
     function resetWizard() {
         classes = [createEmptyClass()];
         guideMappings = {};
+        isEditMode = false;
+        var title = document.getElementById('sm-step-1-title');
+        if (title) title.textContent = 'Add Your Classes';
         goToStep(1);
+    }
+
+    async function handleClearAll() {
+        var confirmed = typeof showConfirm === 'function'
+            ? await showConfirm('Clear All Classes', 'This will remove all your classes, exams, and study plan. Are you sure?', 'warning')
+            : confirm('This will remove all your classes, exams, and study plan. Are you sure?');
+
+        if (!confirmed) return;
+
+        try {
+            await apiCall('/api/semester/clear', { method: 'DELETE' });
+            closeSemesterModal();
+            if (typeof loadStudyPlan === 'function') loadStudyPlan();
+            if (typeof loadExamCountdown === 'function') loadExamCountdown();
+            classes = [];
+            guideMappings = {};
+            isEditMode = false;
+        } catch (err) {
+            console.error('[Semester] Clear failed:', err);
+            if (typeof showAlert === 'function') {
+                showAlert('Error', 'Failed to clear semester data.', 'error');
+            }
+        }
     }
 
     // ── Step 1: Add Classes & Exams ─────────────────────────

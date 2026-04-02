@@ -2320,6 +2320,35 @@ a.trust-btn:hover {
 
 .sm-btn-back:hover { border-color: var(--text-secondary); color: var(--text-primary); }
 
+.sm-btn-danger {
+    padding: 10px 18px;
+    background: transparent;
+    color: #DC2626;
+    border: 1px solid #FECACA;
+    border-radius: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+}
+
+.sm-btn-danger:hover {
+    background: #FEF2F2;
+    border-color: #DC2626;
+}
+
+[data-theme="dark"] .sm-btn-danger {
+    border-color: rgba(220,38,38,0.3);
+}
+
+[data-theme="dark"] .sm-btn-danger:hover {
+    background: rgba(220,38,38,0.1);
+}
+
 /* -- Success -- */
 .sm-success { text-align: center; padding: 20px 0; }
 

@@ -263,13 +263,14 @@
             });
         });
 
-        goToStep(2);
-
+        // If no topics, skip matching and save directly
         if (!allTopics.length) {
             guideMappings = {};
-            document.getElementById('sm-mappings-editor').innerHTML = '<div class="sm-mapping-empty">No topics added yet. You can still save your class schedule and add topics later.</div>';
+            await doSave();
             return;
         }
+
+        goToStep(2);
 
         var editor = document.getElementById('sm-mappings-editor');
         editor.innerHTML = '<div class="sm-mapping-loading"><i class="fas fa-spinner fa-spin"></i> Matching topics to guides...</div>';
@@ -332,9 +333,14 @@
 
     async function handleFinish() {
         var btn = document.getElementById('sm-finish');
-        btn.disabled = true;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        }
+        await doSave(btn);
+    }
 
+    async function doSave(btn) {
         var payload = classes.map(function (cls) {
             return {
                 class_name: cls.class_name,
@@ -377,8 +383,10 @@
             } else {
                 alert('Failed to save. Please try again.');
             }
-            btn.disabled = false;
-            btn.innerHTML = '<i class="fas fa-check"></i> Save & Get My Plan';
+            if (btn) {
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-check"></i> Save & Get My Plan';
+            }
         }
     }
 

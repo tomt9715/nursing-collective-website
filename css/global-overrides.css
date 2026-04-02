@@ -2717,6 +2717,85 @@ a.trust-btn:hover {
     font-size: 0.8rem;
 }
 
+/* Task Action Buttons */
+.task-actions {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.task-action-btn {
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+    transition: all 0.15s;
+}
+
+.task-action-btn.primary {
+    background: var(--primary-color, #2E86AB);
+    color: #fff;
+    border: none;
+}
+
+.task-action-btn.primary:hover {
+    opacity: 0.9;
+}
+
+.task-action-btn.secondary {
+    background: transparent;
+    color: var(--primary-color, #2E86AB);
+    border: 1px solid var(--primary-color, #2E86AB);
+}
+
+.task-action-btn.secondary:hover {
+    background: rgba(46,134,171,0.06);
+}
+
+.task-action-btn.tertiary {
+    background: transparent;
+    color: var(--text-secondary, #6B7280);
+    border: 1px dashed var(--border-color, #D1D5DB);
+}
+
+.task-action-btn.tertiary:hover {
+    border-color: var(--primary-color, #2E86AB);
+    color: var(--primary-color, #2E86AB);
+}
+
+[data-theme="dark"] .task-action-btn.secondary {
+    border-color: rgba(46,134,171,0.5);
+}
+
+[data-theme="dark"] .task-action-btn.tertiary {
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+    .task-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .study-plan-task {
+        flex-wrap: wrap;
+    }
+
+    .task-actions {
+        margin-top: 8px;
+        flex-direction: row;
+        width: auto;
+    }
+}
+
 /* Time Budget Selector */
 .time-selector {
     display: flex;

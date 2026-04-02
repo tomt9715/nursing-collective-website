@@ -122,20 +122,22 @@
                 var badge = task.reasons && task.reasons.length > 0
                     ? '<span class="task-reason-badge">' + task.reasons[0] + '</span>'
                     : '';
-                var linkAttr = task.link ? 'data-navigate="' + task.link + '"' : '';
-                var clickable = task.link ? 'clickable' : '';
+                var hasNotes = task.matched_documents && task.matched_documents.length > 0;
+                var hasGuide = !!task.guide_id;
 
-                html += '<div class="study-plan-task ' + clickable + '" ' + linkAttr + '>' +
+                html += '<div class="study-plan-task">' +
                     '<div class="task-number">' + (i + 1) + '</div>' +
                     '<div class="task-icon ' + task.task_type + '"><i class="' + icon + '"></i></div>' +
                     '<div class="task-info">' +
-                        '<div class="task-description">' + task.description + '</div>' +
+                        '<div class="task-description">' + task.topic_name + '</div>' +
                         '<div class="task-meta">' +
                             '<span class="task-class">' + task.class_name + '</span>' +
                             badge +
                         '</div>' +
                     '</div>' +
-                    (task.link ? '<div class="task-arrow"><i class="fas fa-chevron-right"></i></div>' : '') +
+                    '<div class="task-actions">' +
+                        buildTaskActions(task, hasNotes, hasGuide) +
+                    '</div>' +
                     '</div>';
             });
             html += '</div>';
@@ -156,10 +158,11 @@
 
         content.innerHTML = html;
 
-        // Event listeners
-        content.querySelectorAll('.study-plan-task.clickable').forEach(function (el) {
-            el.addEventListener('click', function () {
-                if (this.dataset.navigate) window.location.href = this.dataset.navigate;
+        // Event listeners for action buttons
+        content.querySelectorAll('.task-action-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var href = this.dataset.href;
+                if (href) window.location.href = href;
             });
         });
 
@@ -183,6 +186,31 @@
                 fetchAndRenderPlan(true).then(function () { self.classList.remove('spinning'); });
             });
         }
+    }
+
+    function buildTaskActions(task, hasNotes, hasGuide) {
+        var html = '';
+
+        if (hasNotes) {
+            var docId = task.matched_documents[0].id;
+            html += '<button class="task-action-btn primary" data-href="ai-tools.html?doc=' + docId + '">' +
+                '<i class="fas fa-file-alt"></i> Your Notes</button>';
+        }
+
+        if (hasGuide) {
+            var guideLink = task.link || ('guides/' + task.guide_id + '.html');
+            var btnClass = hasNotes ? 'secondary' : 'primary';
+            html += '<button class="task-action-btn ' + btnClass + '" data-href="' + guideLink + '">' +
+                '<i class="fas fa-book-open"></i> Our Guide</button>';
+        }
+
+        if (!hasNotes) {
+            var uploadClass = hasGuide ? 'tertiary' : 'primary';
+            html += '<button class="task-action-btn ' + uploadClass + '" data-href="ai-tools.html">' +
+                '<i class="fas fa-upload"></i> Upload Notes</button>';
+        }
+
+        return html;
     }
 
     function getTaskIcon(taskType) {

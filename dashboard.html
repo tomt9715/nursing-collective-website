@@ -496,17 +496,6 @@
                 <button class="dash-announcement-dismiss" id="dismiss-announcement-btn" title="Dismiss"><i class="fas fa-times"></i></button>
             </div>
 
-            <!-- Today's Study Plan Widget (shows empty state if no semester setup) -->
-            <div class="study-plan-widget" id="study-plan-widget">
-                <div class="widget-header">
-                    <h3><i class="fas fa-calendar-day"></i> Today's Study Plan</h3>
-                    <a href="#" class="widget-header-link hidden" id="edit-semester-link">Edit Semester <i class="fas fa-pencil-alt"></i></a>
-                </div>
-                <div id="study-plan-content" class="study-plan-content">
-                    <!-- Populated by study-plan-widget.js -->
-                </div>
-            </div>
-
             <!-- Continue Studying Hero -->
             <div class="continue-hero hidden" id="continue-hero">
                 <div class="continue-hero-left">
@@ -642,8 +631,19 @@
                     </button>
                 </div>
 
-                <!-- Two-Column Hub: Recent Guides + Quiz Progress -->
+                <!-- Two-Column Hub: Study Plan + Recent Guides + Activity -->
                 <div class="dashboard-two-col">
+                    <!-- Today's Study Plan Widget -->
+                    <div class="study-plan-widget" id="study-plan-widget">
+                        <div class="widget-header">
+                            <h3><i class="fas fa-calendar-day"></i> Today's Study Plan</h3>
+                            <a href="#" class="widget-header-link hidden" id="edit-semester-link">Edit Semester <i class="fas fa-pencil-alt"></i></a>
+                        </div>
+                        <div id="study-plan-content" class="study-plan-content">
+                            <!-- Populated by study-plan-widget.js -->
+                        </div>
+                    </div>
+
                     <!-- Recent Guides Widget -->
                     <div class="recent-guides-widget">
                         <div class="widget-header">

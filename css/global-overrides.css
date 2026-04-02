@@ -2428,13 +2428,13 @@ a.trust-btn:hover {
    STUDY PLAN WIDGET & SEMESTER SETUP PROMPT
    ============================================================ */
 
-/* -- Study Plan Widget -- */
+/* -- Study Plan Widget (sits inside dashboard-two-col grid) -- */
 .study-plan-widget {
-    background: var(--dash-card-bg, #fff);
-    border: 1px solid var(--dash-card-border, #e5e7eb);
-    border-radius: var(--dash-card-radius, 14px);
-    padding: 20px 24px;
-    margin-bottom: 24px;
+    background: var(--card-bg, #fff);
+    border-radius: 16px;
+    padding: 24px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .study-plan-widget .widget-header {

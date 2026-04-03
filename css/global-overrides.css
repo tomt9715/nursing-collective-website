@@ -2298,6 +2298,90 @@ a.trust-btn:hover {
 [data-theme="dark"] .sm-topic-upload.done { border-color: #34d399; color: #34d399; }
 [data-theme="dark"] .sm-topic-upload.error { border-color: #f87171; color: #f87171; }
 
+/* ============================================================
+   EXAM MODAL
+   ============================================================ */
+.exam-modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 9999;
+    background: rgba(0,0,0,0.55); backdrop-filter: blur(4px);
+    justify-content: center; align-items: center; padding: 20px;
+}
+.exam-modal-overlay.active { display: flex; }
+
+.exam-modal {
+    background: var(--card-bg, #fff); border-radius: 20px; width: 100%; max-width: 520px;
+    padding: 24px 28px 20px; box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    max-height: 85vh; overflow-y: auto;
+    animation: emSlideUp 0.2s ease;
+}
+@keyframes emSlideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+
+.em-modal-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.em-modal-top h2 { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+.em-close {
+    width: 32px; height: 32px; border-radius: 50%; border: none;
+    background: var(--background-light, #f3f4f6); color: var(--text-secondary);
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: all 0.15s ease;
+}
+.em-close:hover { background: #ef4444; color: white; }
+
+.em-form { display: flex; flex-direction: column; gap: 16px; }
+.em-field { display: flex; flex-direction: column; gap: 6px; }
+.em-field label { font-family: 'Source Sans 3', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--text-secondary, #6B7280); }
+.em-field-grow { flex: 1; }
+.em-row { display: flex; gap: 12px; }
+
+.em-input, .em-select {
+    padding: 10px 12px; border: 1px solid var(--border-color, #D1D5DB); border-radius: 8px;
+    font-family: 'Source Sans 3', sans-serif; font-size: 0.88rem;
+    color: var(--text-primary); background: var(--card-bg, #fff);
+}
+.em-input:focus, .em-select:focus { outline: none; border-color: var(--primary-color, #2E86AB); }
+
+.em-date-wrap { position: relative; }
+.em-past-date-warn { position: absolute; right: 0; top: -18px; font-size: 0.68rem; color: #f59e0b; font-weight: 600; }
+.em-past-date-warn i { margin-right: 2px; }
+
+.em-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--border-color, #E5E7EB); }
+.em-btn-save {
+    padding: 10px 22px; font-size: 0.88rem; font-weight: 600; border: none; border-radius: 8px;
+    background: var(--primary-color, #2E86AB); color: white; cursor: pointer;
+    transition: all 0.15s ease; margin-left: auto;
+}
+.em-btn-save:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(46,134,171,0.3); }
+.em-btn-delete {
+    padding: 8px 16px; font-size: 0.82rem; font-weight: 600; border: none; border-radius: 8px;
+    background: rgba(239,68,68,0.08); color: #ef4444; cursor: pointer; transition: all 0.15s ease;
+}
+.em-btn-delete:hover { background: rgba(239,68,68,0.15); }
+
+/* Exam countdown Add Exam button */
+.ec-add-exam-btn {
+    display: block; width: 100%; padding: 9px; margin-top: 10px;
+    border: 1.5px dashed var(--border-color); border-radius: 8px;
+    background: transparent; color: var(--primary-color); font-size: 0.82rem; font-weight: 600;
+    cursor: pointer; transition: all 0.15s ease;
+}
+.ec-add-exam-btn:hover { background: rgba(46,134,171,0.06); border-color: var(--primary-color); }
+.ec-item-clickable { cursor: pointer; transition: background 0.15s ease; border-radius: 8px; padding: 2px 4px; margin: -2px -4px; }
+.ec-item-clickable:hover { background: rgba(46,134,171,0.04); }
+
+/* Dark mode */
+[data-theme="dark"] .exam-modal { background: var(--card-bg, #1e293b); }
+[data-theme="dark"] .em-close { background: rgba(255,255,255,0.06); color: #94a3b8; }
+[data-theme="dark"] .em-close:hover { background: #ef4444; color: white; }
+[data-theme="dark"] .em-input, [data-theme="dark"] .em-select { background: var(--background-light); border-color: var(--border-color); color: var(--text-primary); }
+[data-theme="dark"] .em-btn-delete { background: rgba(239,68,68,0.1); }
+[data-theme="dark"] .ec-add-exam-btn { border-color: var(--border-color); color: #38bdf8; }
+[data-theme="dark"] .ec-add-exam-btn:hover { background: rgba(56,189,248,0.06); border-color: #38bdf8; }
+[data-theme="dark"] .ec-item-clickable:hover { background: rgba(56,189,248,0.04); }
+
+@media (max-width: 640px) {
+    .exam-modal { padding: 20px 18px 16px; max-height: 90vh; border-radius: 16px; }
+    .em-row { flex-direction: column; gap: 12px; }
+}
+
 .sm-add-exam, .sm-add-class-btn {
     display: block; width: 100%; padding: 9px; margin-top: 6px;
     border: 1.5px dashed var(--border-color); border-radius: 8px;

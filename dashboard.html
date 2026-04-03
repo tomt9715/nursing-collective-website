@@ -819,6 +819,56 @@
         </div>
     </div>
 
+    <!-- Exam Modal -->
+    <div class="exam-modal-overlay" id="exam-modal-overlay">
+        <div class="exam-modal">
+            <div class="em-modal-top">
+                <h2 id="em-title">Add Exam</h2>
+                <button class="em-close" id="em-close"><i class="fas fa-times"></i></button>
+            </div>
+
+            <div class="em-form">
+                <div class="em-field">
+                    <label>Class</label>
+                    <select id="em-class-select" class="em-select"></select>
+                </div>
+
+                <div class="em-row">
+                    <div class="em-field em-field-grow">
+                        <label>Exam Name</label>
+                        <input type="text" id="em-exam-name" class="em-input" placeholder="e.g. Exam 1, Midterm, Final">
+                    </div>
+                    <div class="em-field">
+                        <label>Date</label>
+                        <div class="em-date-wrap">
+                            <input type="date" id="em-exam-date" class="em-input">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="em-field">
+                    <label>Topics on this exam</label>
+                    <div class="sm-topic-tags" id="em-topic-tags">
+                        <input type="text" class="sm-topic-input" id="em-topic-input" placeholder="Type a topic + Enter">
+                    </div>
+                </div>
+
+                <div class="em-field">
+                    <label>Have a review sheet?</label>
+                    <div class="sm-topic-upload" id="em-upload-zone">
+                        <input type="file" id="em-upload-file" accept=".pdf,.docx" hidden>
+                        <span class="em-upload-text"><i class="fas fa-cloud-arrow-up"></i> Drop review sheet or <u>browse</u></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="em-actions">
+                <button class="em-btn-delete hidden" id="em-delete"><i class="fas fa-trash-alt"></i> Delete</button>
+                <button class="em-btn-save" id="em-save"><i class="fas fa-check"></i> Save Exam</button>
+            </div>
+        </div>
+    </div>
+
     <!-- Dark Mode Manager (runs first to prevent flash) -->
     <script src="dark-mode.js"></script>
 
@@ -833,6 +883,7 @@
     <script defer src="study-plan-widget.js"></script>
     <script defer src="exam-countdown-widget.js"></script>
     <script defer src="semester-setup-script.js"></script>
+    <script defer src="exam-modal-script.js"></script>
     <script defer src="dashboard-script.js?v=5.7.perf"></script>
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>

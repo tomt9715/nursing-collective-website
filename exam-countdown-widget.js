@@ -23,11 +23,12 @@
 
             widget.classList.remove('hidden');
 
-            if (editLink) editLink.classList.remove('hidden');
             if (editLink) {
+                editLink.classList.remove('hidden');
+                editLink.textContent = 'Add Exam';
                 editLink.addEventListener('click', function (e) {
                     e.preventDefault();
-                    if (typeof openSemesterModal === 'function') openSemesterModal();
+                    if (typeof openExamModal === 'function') openExamModal();
                 });
             }
 
@@ -56,10 +57,14 @@
                 var diff = Math.ceil((examDate - today) / (1000 * 60 * 60 * 24));
                 if (diff < 0) return; // past exams
                 exams.push({
+                    id: exam.id,
                     name: exam.exam_name,
                     className: cls.class_name,
+                    classId: cls.id,
                     date: examDate,
-                    days: diff
+                    days: diff,
+                    exam_date: exam.exam_date,
+                    topics: exam.topics || []
                 });
             });
         });
@@ -71,7 +76,9 @@
         var visible = exams.slice(0, 4);
 
         if (visible.length === 0) {
-            content.innerHTML = '<div class="ec-empty">No upcoming exams. Add exam dates to see countdowns here.</div>';
+            content.innerHTML = '<div class="ec-empty">No upcoming exams yet.</div>' +
+                '<button class="ec-add-exam-btn" id="ec-add-exam-btn"><i class="fas fa-plus"></i> Add Exam</button>';
+            attachAddExamBtn();
             return;
         }
 
@@ -84,7 +91,9 @@
             // Progress bar: 30 days = 0%, 0 days = 100%
             var pct = Math.min(100, Math.max(0, ((30 - exam.days) / 30) * 100));
 
-            html += '<div class="ec-item">' +
+            html += '<div class="ec-item ec-item-clickable" data-exam-id="' + exam.id + '" data-class-id="' + exam.classId + '"' +
+                ' data-exam-name="' + attr(exam.name) + '" data-exam-date="' + attr(exam.exam_date) + '"' +
+                ' data-topics="' + attr(JSON.stringify(exam.topics)) + '">' +
                 '<div class="ec-item-top">' +
                     '<div class="ec-item-info">' +
                         '<span class="ec-item-name">' + esc(exam.name) + '</span>' +
@@ -104,7 +113,39 @@
             html += '<div class="ec-more">+' + (exams.length - 4) + ' more exam' + (exams.length - 4 !== 1 ? 's' : '') + '</div>';
         }
 
+        html += '<button class="ec-add-exam-btn" id="ec-add-exam-btn"><i class="fas fa-plus"></i> Add Exam</button>';
+
         content.innerHTML = html;
+
+        // Click exam to edit
+        content.querySelectorAll('.ec-item-clickable').forEach(function (el) {
+            el.addEventListener('click', function () {
+                if (typeof openExamModal !== 'function') return;
+                var topics = [];
+                try { topics = JSON.parse(this.dataset.topics); } catch (e) {}
+                openExamModal(parseInt(this.dataset.classId, 10), {
+                    exam_id: parseInt(this.dataset.examId, 10),
+                    exam_name: this.dataset.examName,
+                    exam_date: this.dataset.examDate,
+                    topics: topics
+                });
+            });
+        });
+
+        attachAddExamBtn();
+    }
+
+    function attachAddExamBtn() {
+        var btn = document.getElementById('ec-add-exam-btn');
+        if (btn) {
+            btn.addEventListener('click', function () {
+                if (typeof openExamModal === 'function') openExamModal();
+            });
+        }
+    }
+
+    function attr(s) {
+        return (s || '').replace(/"/g, '&quot;');
     }
 
     function buildEmptyState() {

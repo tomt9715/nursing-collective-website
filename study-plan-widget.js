@@ -103,60 +103,79 @@
 
         var html = '';
 
-        // Exam countdown
-        if (plan.next_exam && plan.next_exam.days_until <= 7) {
-            var days = plan.next_exam.days_until;
-            var urgency = days <= 1 ? 'urgent' : days <= 3 ? 'soon' : 'upcoming';
-            html += '<div class="exam-countdown ' + urgency + '">' +
-                '<i class="fas fa-clock"></i> ' +
-                '<span><strong>' + plan.next_exam.exam_name + '</strong> (' + plan.next_exam.class_name + ') — ' +
-                (days === 0 ? 'Today!' : days === 1 ? 'Tomorrow!' : 'in ' + days + ' days') +
-                '</span></div>';
-        }
-
-        // Task list
         if (plan.tasks && plan.tasks.length > 0) {
-            html += '<div class="study-plan-tasks">';
-            plan.tasks.forEach(function (task, i) {
-                var icon = getTaskIcon(task.task_type);
-                var hasNotes = task.matched_documents && task.matched_documents.length > 0;
-                var hasGuide = !!task.guide_id;
-
-                // Build useful badge — show exam proximity, skip "no matching guide"
-                var badge = '';
-                if (task.reasons) {
-                    var useful = task.reasons.filter(function (r) {
-                        return r.indexOf('no matching') === -1 && r.indexOf('not yet studied') === -1;
-                    });
-                    if (useful.length > 0) {
-                        badge = '<span class="task-reason-badge">' + useful[0] + '</span>';
-                    }
+            // Group tasks by exam
+            var examGroups = [];
+            var examMap = {};
+            plan.tasks.forEach(function (task) {
+                var key = (task.exam_name || 'General') + '|' + (task.class_name || '') + '|' + (task.exam_date || '');
+                if (!examMap[key]) {
+                    examMap[key] = {
+                        exam_name: task.exam_name || 'General Study',
+                        class_name: task.class_name || '',
+                        exam_date: task.exam_date || null,
+                        tasks: []
+                    };
+                    examGroups.push(examMap[key]);
                 }
-
-                // Build description with exam context
-                var desc = task.topic_name;
-                if (task.exam_name && task.exam_date) {
-                    var daysUntil = Math.ceil((new Date(task.exam_date + 'T00:00:00') - new Date().setHours(0,0,0,0)) / 86400000);
-                    if (daysUntil <= 1) desc += ' — exam tomorrow';
-                    else if (daysUntil <= 7) desc += ' — exam in ' + daysUntil + 'd';
-                }
-
-                html += '<div class="study-plan-task">' +
-                    '<div class="task-number">' + (i + 1) + '</div>' +
-                    '<div class="task-icon ' + task.task_type + '"><i class="' + icon + '"></i></div>' +
-                    '<div class="task-info">' +
-                        '<div class="task-description">' + desc + '</div>' +
-                        '<div class="task-meta">' +
-                            '<span class="task-class">' + task.class_name + '</span>' +
-                            badge +
-                        '</div>' +
-                    '</div>' +
-                    '<div class="task-actions">' +
-                        buildTaskActions(task, hasNotes, hasGuide) +
-                    '</div>' +
-                    '</div>';
+                examMap[key].tasks.push(task);
             });
-            html += '</div>';
+
+            // Sort groups: soonest exam first
+            examGroups.sort(function (a, b) {
+                if (!a.exam_date && !b.exam_date) return 0;
+                if (!a.exam_date) return 1;
+                if (!b.exam_date) return -1;
+                return a.exam_date.localeCompare(b.exam_date);
+            });
+
+            examGroups.forEach(function (group, gi) {
+                var daysUntil = null;
+                var urgency = 'normal';
+                var dayText = '';
+                if (group.exam_date) {
+                    daysUntil = Math.ceil((new Date(group.exam_date + 'T00:00:00') - new Date().setHours(0,0,0,0)) / 86400000);
+                    urgency = daysUntil <= 0 ? 'urgent' : daysUntil <= 1 ? 'urgent' : daysUntil <= 3 ? 'soon' : daysUntil <= 7 ? 'near' : 'normal';
+                    dayText = daysUntil <= 0 ? 'Today!' : daysUntil === 1 ? 'Tomorrow' : 'in ' + daysUntil + ' days';
+                }
+
+                // First group expanded, rest collapsed
+                var isExpanded = gi === 0;
+                var taskCount = group.tasks.length;
+
+                // Exam group header
+                html += '<div class="sp-exam-group ' + urgency + '">';
+                html += '<div class="sp-exam-header" data-group="' + gi + '">';
+                html += '<div class="sp-exam-header-left">';
+                html += '<i class="fas fa-chevron-right sp-expand-icon' + (isExpanded ? ' expanded' : '') + '"></i>';
+                html += '<div class="sp-exam-info">';
+                html += '<span class="sp-exam-name">' + group.exam_name + '</span>';
+                html += '<span class="sp-exam-class">' + group.class_name + (dayText ? ' — ' + dayText : '') + '</span>';
+                html += '</div>';
+                html += '</div>';
+                html += '<span class="sp-exam-count">' + taskCount + ' topic' + (taskCount !== 1 ? 's' : '') + '</span>';
+                html += '</div>';
+
+                // Task list (collapsible)
+                html += '<div class="sp-exam-tasks' + (isExpanded ? '' : ' collapsed') + '" data-tasks="' + gi + '">';
+                group.tasks.forEach(function (task) {
+                    var icon = getTaskIcon(task.task_type);
+                    var hasNotes = task.matched_documents && task.matched_documents.length > 0;
+                    var hasGuide = !!task.guide_id;
+
+                    html += '<div class="study-plan-task">' +
+                        '<div class="task-icon ' + task.task_type + '"><i class="' + icon + '"></i></div>' +
+                        '<div class="task-info">' +
+                            '<div class="task-description">' + task.topic_name + '</div>' +
+                        '</div>' +
+                        '<div class="task-actions">' +
+                            buildTaskActions(task, hasNotes, hasGuide) +
+                        '</div>' +
+                        '</div>';
+                });
+                html += '</div></div>';
+            });
+
         } else if (plan.message) {
             html += '<div class="sp-empty-state"><p class="sp-empty-desc">' + plan.message + '</p></div>';
         } else {
@@ -173,6 +192,17 @@
         html += '<button class="refresh-btn" title="Refresh plan"><i class="fas fa-sync-alt"></i></button></div>';
 
         content.innerHTML = html;
+
+        // Expand/collapse exam groups
+        content.querySelectorAll('.sp-exam-header').forEach(function (header) {
+            header.addEventListener('click', function () {
+                var gi = this.dataset.group;
+                var tasks = content.querySelector('[data-tasks="' + gi + '"]');
+                var icon = this.querySelector('.sp-expand-icon');
+                if (tasks) tasks.classList.toggle('collapsed');
+                if (icon) icon.classList.toggle('expanded');
+            });
+        });
 
         // Event listeners for action buttons
         content.querySelectorAll('.task-action-btn').forEach(function (btn) {

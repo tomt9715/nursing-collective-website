@@ -2817,6 +2817,48 @@ a.trust-btn:hover {
 }
 
 /* Task List */
+/* Exam group sections */
+.sp-exam-group { margin-bottom: 12px; }
+.sp-exam-group:last-of-type { margin-bottom: 0; }
+
+.sp-exam-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 14px; cursor: pointer; border-radius: 10px;
+    transition: background 0.15s; user-select: none;
+}
+.sp-exam-header:hover { background: rgba(46,134,171,0.04); }
+.sp-exam-header-left { display: flex; align-items: center; gap: 10px; }
+.sp-expand-icon {
+    font-size: 0.7rem; color: var(--text-light, #9CA3AF);
+    transition: transform 0.2s ease; flex-shrink: 0;
+}
+.sp-expand-icon.expanded { transform: rotate(90deg); }
+.sp-exam-info { display: flex; flex-direction: column; gap: 2px; }
+.sp-exam-name { font-family: 'Outfit', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--text-primary); }
+.sp-exam-class { font-size: 0.75rem; color: var(--text-secondary, #6B7280); }
+.sp-exam-count {
+    font-size: 0.72rem; font-weight: 600; color: var(--text-light, #9CA3AF);
+    background: var(--background-light, #f1f5f9); padding: 3px 10px; border-radius: 12px;
+    white-space: nowrap;
+}
+
+/* Urgency colors on exam header */
+.sp-exam-group.urgent .sp-exam-header { background: rgba(239,68,68,0.06); border-radius: 10px; }
+.sp-exam-group.urgent .sp-exam-class { color: #dc2626; font-weight: 600; }
+.sp-exam-group.soon .sp-exam-header { background: rgba(245,158,11,0.06); }
+.sp-exam-group.soon .sp-exam-class { color: #d97706; font-weight: 600; }
+
+/* Collapsible task list */
+.sp-exam-tasks { display: flex; flex-direction: column; gap: 6px; padding: 6px 0 0 24px; }
+.sp-exam-tasks.collapsed { display: none; }
+
+[data-theme="dark"] .sp-exam-header:hover { background: rgba(56,189,248,0.04); }
+[data-theme="dark"] .sp-exam-count { background: rgba(255,255,255,0.06); color: #94a3b8; }
+[data-theme="dark"] .sp-exam-group.urgent .sp-exam-header { background: rgba(239,68,68,0.08); }
+[data-theme="dark"] .sp-exam-group.urgent .sp-exam-class { color: #f87171; }
+[data-theme="dark"] .sp-exam-group.soon .sp-exam-header { background: rgba(245,158,11,0.08); }
+[data-theme="dark"] .sp-exam-group.soon .sp-exam-class { color: #fbbf24; }
+
 .study-plan-tasks {
     display: flex;
     flex-direction: column;

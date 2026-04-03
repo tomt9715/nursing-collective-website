@@ -222,8 +222,12 @@
                 body: formData
             });
 
+            if (!response.ok) {
+                var errText = '';
+                try { var errData = await response.json(); errText = errData.error; } catch (e) {}
+                throw new Error(errText || 'Server error (' + response.status + ')');
+            }
             var data = await response.json();
-            if (!response.ok) throw new Error(data.error || 'Extraction failed');
 
             var topics = data.topics || [];
             if (topics.length === 0) {

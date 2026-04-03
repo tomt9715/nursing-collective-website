@@ -245,7 +245,12 @@
             });
 
             renderTopics();
-            showUploadMsg(zone, 'done', added + ' topic' + (added === 1 ? '' : 's') + ' extracted from ' + esc(file.name));
+
+            var msg = added + ' topic' + (added === 1 ? '' : 's') + ' extracted';
+            if (data.ai_processing) {
+                msg += ' — generating study materials in the background';
+            }
+            showUploadMsg(zone, 'done', msg);
 
         } catch (err) {
             console.error('[ExamModal] Upload failed:', err);

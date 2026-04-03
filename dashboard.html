@@ -772,16 +772,10 @@
                 <button class="semester-modal-close" id="semester-modal-close"><i class="fas fa-times"></i></button>
             </div>
 
-            <!-- Progress Steps -->
-            <div class="sm-progress">
-                <div class="sm-step active" data-step="1"><span class="sm-dot"></span> Add Classes</div>
-                <div class="sm-step" data-step="2"><span class="sm-dot"></span> Match Guides</div>
-            </div>
-
             <!-- Step 1: Add Classes & Exams -->
             <div class="sm-panel" id="sm-step-1">
                 <h2 id="sm-step-1-title">Add Your Classes</h2>
-                <p class="sm-subtitle">List the classes you're taking this semester and their exam dates.</p>
+                <p class="sm-subtitle">List the classes you're taking this semester and their exam dates. We'll automatically match your topics to our study guides.</p>
 
                 <div class="sm-semester-selector">
                     <label>Semester</label>
@@ -801,30 +795,25 @@
 
                 <div class="sm-actions">
                     <button class="sm-btn-danger hidden" id="sm-clear-all"><i class="fas fa-trash-alt"></i> Clear All</button>
-                    <button class="sm-btn-next" id="sm-to-step-2">Match Guides <i class="fas fa-arrow-right"></i></button>
+                    <button class="sm-btn-next" id="sm-to-step-2"><i class="fas fa-check"></i> Save & Get My Plan</button>
                 </div>
             </div>
 
-            <!-- Step 2: Match Topics to Guides -->
-            <div class="sm-panel hidden" id="sm-step-2">
-                <h2>Match Topics to Guides</h2>
-                <p class="sm-subtitle">We matched your exam topics to our study guides. Adjust if needed.</p>
-
-                <div id="sm-mappings-editor"></div>
-
-                <div class="sm-actions">
-                    <button class="sm-btn-back" id="sm-back-to-1"><i class="fas fa-arrow-left"></i> Back</button>
-                    <button class="sm-btn-finish" id="sm-finish"><i class="fas fa-check"></i> Save & Get My Plan</button>
-                </div>
-            </div>
-
-            <!-- Success -->
+            <!-- Success with AI Tools Nudge -->
             <div class="sm-panel hidden" id="sm-step-success">
                 <div class="sm-success">
                     <div class="sm-success-icon"><i class="fas fa-check-circle"></i></div>
                     <h2>You're all set!</h2>
-                    <p class="sm-subtitle">Your daily study plan is now on your dashboard.</p>
-                    <button class="sm-btn-finish" id="sm-done">Done</button>
+                    <p class="sm-subtitle">Your personalized study plan is now on your dashboard. We matched your topics to our guides automatically.</p>
+
+                    <div class="sm-ai-nudge">
+                        <div class="sm-ai-nudge-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                        <h3>Supercharge your study plan</h3>
+                        <p>Upload your lecture notes and slides — we'll generate condensed review sheets and practice questions tailored to your exams.</p>
+                        <a href="ai-tools.html" class="sm-ai-nudge-btn" data-navigate="ai-tools.html"><i class="fas fa-cloud-arrow-up"></i> Upload Your Notes</a>
+                    </div>
+
+                    <button class="sm-btn-done" id="sm-done"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
                 </div>
             </div>
         </div>

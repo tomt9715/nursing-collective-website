@@ -12,31 +12,6 @@
     var guideMappings = {};
     var isEditMode = false;
 
-    var availableGuides = {
-        'heart-failure': 'Heart Failure',
-        'myocardial-infarction': 'Myocardial Infarction',
-        'arrhythmias': 'Arrhythmias',
-        'hypertension': 'Hypertension',
-        'coronary-artery-disease': 'Coronary Artery Disease',
-        'peripheral-vascular-disease': 'Peripheral Vascular Disease',
-        'copd': 'COPD',
-        'asthma': 'Asthma',
-        'pneumonia': 'Pneumonia',
-        'tuberculosis': 'Tuberculosis',
-        'oxygen-therapy': 'Oxygen Therapy',
-        'chest-tubes': 'Chest Tubes',
-        'stroke': 'Stroke',
-        'seizures': 'Seizures',
-        'diabetes-mellitus': 'Diabetes Mellitus',
-        'thyroid-disorders': 'Thyroid Disorders',
-        'hip-knee-replacement': 'Hip & Knee Replacement',
-        'fractures': 'Fractures',
-        'assessment-skills': 'Assessment Skills',
-        'antepartum-care': 'Antepartum Care',
-        'sepsis': 'Sepsis',
-        'gi-bleeding': 'GI Bleeding'
-    };
-
     // ── Modal open/close ────────────────────────────────────
 
     window.openSemesterModal = async function () {
@@ -99,7 +74,7 @@
             if (classes.length === 0) classes = [createEmptyClass()];
         }
 
-        goToStep(1);
+        showPanel('sm-step-1');
     };
 
     window.closeSemesterModal = function () {
@@ -125,9 +100,7 @@
             });
         }
 
-        on('sm-to-step-2', 'click', handleStep1Submit);
-        on('sm-back-to-1', 'click', function () { goToStep(1); });
-        on('sm-finish', 'click', handleFinish);
+        on('sm-to-step-2', 'click', handleSave);
         on('sm-add-class', 'click', addEmptyClass);
         on('sm-start-over', 'click', resetWizard);
         on('sm-clear-all', 'click', handleClearAll);
@@ -138,34 +111,28 @@
         });
     });
 
-    // ── Navigation ──────────────────────────────────────────
+    // ── Navigation ─────────────────────────────────���────────
 
-    function goToStep(step) {
-        ['sm-step-1', 'sm-step-2', 'sm-step-success'].forEach(function (id) {
+    function showPanel(panelId) {
+        ['sm-step-1', 'sm-step-success'].forEach(function (id) {
             var el = document.getElementById(id);
             if (el) el.classList.add('hidden');
         });
-        var panel = document.getElementById('sm-step-' + step);
+        var panel = document.getElementById(panelId);
         if (panel) panel.classList.remove('hidden');
-
-        document.querySelectorAll('.sm-step').forEach(function (el) {
-            var s = parseInt(el.dataset.step, 10);
-            el.classList.toggle('active', s === step);
-            el.classList.toggle('completed', s < step);
-        });
 
         var startOver = document.getElementById('sm-start-over');
         if (startOver) {
-            startOver.classList.toggle('hidden', classes.length <= 1 && step === 1);
+            startOver.classList.toggle('hidden', classes.length <= 1 && panelId === 'sm-step-1');
         }
 
         // Show "Clear All" only in edit mode on step 1
         var clearAll = document.getElementById('sm-clear-all');
         if (clearAll) {
-            clearAll.classList.toggle('hidden', !isEditMode || step !== 1);
+            clearAll.classList.toggle('hidden', !isEditMode || panelId !== 'sm-step-1');
         }
 
-        if (step === 1) renderClassesEditor();
+        if (panelId === 'sm-step-1') renderClassesEditor();
 
         var modal = document.querySelector('.semester-modal');
         if (modal) modal.scrollTop = 0;
@@ -177,7 +144,7 @@
         isEditMode = false;
         var title = document.getElementById('sm-step-1-title');
         if (title) title.textContent = 'Add Your Classes';
-        goToStep(1);
+        showPanel('sm-step-1');
     }
 
     async function handleClearAll() {
@@ -329,9 +296,9 @@
         });
     }
 
-    // ── Step 1 → Step 2: Map topics ─────────────────────────
+    // ── Save: Validate → Auto-match → Save ────────────────
 
-    async function handleStep1Submit() {
+    async function handleSave() {
         syncInputs();
 
         // Filter out classes with no name
@@ -345,7 +312,14 @@
             return;
         }
 
-        // Collect all unique topics
+        // Show saving state on button
+        var btn = document.getElementById('sm-to-step-2');
+        if (btn) {
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
+        }
+
+        // Collect all unique topics for auto-matching
         var allTopics = [];
         classes.forEach(function (cls) {
             (cls.exams || []).forEach(function (exam) {
@@ -355,80 +329,21 @@
             });
         });
 
-        // If no topics, skip matching and save directly
-        if (!allTopics.length) {
-            guideMappings = {};
-            await doSave();
-            return;
+        // Auto-match topics to guides (silent, no user review)
+        guideMappings = {};
+        if (allTopics.length) {
+            try {
+                var data = await apiCall('/api/semester/map-topics', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ topics: allTopics })
+                });
+                guideMappings = data.mappings || {};
+            } catch (err) {
+                console.error('[Semester] Auto-matching failed (saving without mappings):', err);
+            }
         }
 
-        goToStep(2);
-
-        var editor = document.getElementById('sm-mappings-editor');
-        editor.innerHTML = '<div class="sm-mapping-loading"><i class="fas fa-spinner fa-spin"></i> Matching topics to guides...</div>';
-
-        try {
-            var data = await apiCall('/api/semester/map-topics', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ topics: allTopics })
-            });
-            guideMappings = data.mappings || {};
-        } catch (err) {
-            console.error('[Semester] Mapping failed:', err);
-            allTopics.forEach(function (t) { guideMappings[t] = { guide_id: null, confidence: 0, source: 'none' }; });
-        }
-
-        renderMappingsEditor();
-    }
-
-    // ── Step 2: Confirm Guide Mappings ──────────────────────
-
-    function renderMappingsEditor() {
-        var editor = document.getElementById('sm-mappings-editor');
-        var topics = Object.keys(guideMappings);
-        if (!topics.length) {
-            editor.innerHTML = '<div class="sm-mapping-empty">No topics to match.</div>';
-            return;
-        }
-
-        var html = '<div class="sm-mappings-list">';
-        topics.forEach(function (topic) {
-            var m = guideMappings[topic];
-            var conf = m.confidence || 0;
-            var cls = conf >= 0.8 ? 'high' : conf >= 0.5 ? 'med' : 'low';
-            var icon = conf >= 0.8 ? 'fa-check-circle' : conf >= 0.5 ? 'fa-question-circle' : 'fa-times-circle';
-
-            html += '<div class="sm-map-row">';
-            html += '<span class="sm-map-status ' + cls + '"><i class="fas ' + icon + '"></i></span>';
-            html += '<span class="sm-map-topic">' + esc(topic) + '</span>';
-            html += '<select class="sm-map-select" data-topic="' + attr(topic) + '">';
-            html += '<option value="">No guide match</option>';
-            Object.keys(availableGuides).forEach(function (gid) {
-                html += '<option value="' + gid + '"' + (gid === m.guide_id ? ' selected' : '') + '>' + esc(availableGuides[gid]) + '</option>';
-            });
-            html += '</select></div>';
-        });
-        html += '</div>';
-        editor.innerHTML = html;
-
-        editor.querySelectorAll('.sm-map-select').forEach(function (sel) {
-            sel.addEventListener('change', function () {
-                guideMappings[this.dataset.topic].guide_id = this.value || null;
-                guideMappings[this.dataset.topic].confidence = this.value ? 1.0 : 0;
-                guideMappings[this.dataset.topic].source = this.value ? 'user_confirmed' : 'none';
-            });
-        });
-    }
-
-    // ── Finish: Save ────────────────────────────────────────
-
-    async function handleFinish() {
-        var btn = document.getElementById('sm-finish');
-        if (btn) {
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Saving...';
-        }
         await doSave(btn);
     }
 
@@ -460,18 +375,7 @@
             });
 
             clearDraft();
-
-            ['sm-step-1', 'sm-step-2'].forEach(function (id) {
-                var el = document.getElementById(id);
-                if (el) el.classList.add('hidden');
-            });
-            document.getElementById('sm-step-success').classList.remove('hidden');
-            document.querySelectorAll('.sm-step').forEach(function (el) {
-                el.classList.add('completed');
-                el.classList.remove('active');
-            });
-            var startOver = document.getElementById('sm-start-over');
-            if (startOver) startOver.classList.add('hidden');
+            showPanel('sm-step-success');
 
         } catch (err) {
             console.error('[Semester] Save failed:', err);

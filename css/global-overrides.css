@@ -2362,6 +2362,52 @@ a.trust-btn:hover {
 
 .sm-success .sm-btn-finish { margin: 20px auto 0; }
 
+/* AI tools nudge on success screen */
+.sm-ai-nudge {
+    background: linear-gradient(135deg, #f0f9ff 0%, #ede9fe 100%);
+    border: 1px solid #c7d2fe;
+    border-radius: 12px;
+    padding: 20px;
+    margin: 24px 0 16px;
+    text-align: center;
+}
+.sm-ai-nudge-icon { font-size: 1.6rem; color: #7c3aed; margin-bottom: 8px; }
+.sm-ai-nudge h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem; font-weight: 700; color: #1e1b4b; margin: 0 0 6px;
+}
+.sm-ai-nudge p {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem; color: #4b5563; margin: 0 0 14px; line-height: 1.5;
+}
+.sm-ai-nudge-btn {
+    display: inline-block; padding: 10px 20px; font-size: 0.85rem; font-weight: 600;
+    color: white; background: linear-gradient(135deg, #7c3aed, #6366f1);
+    border: none; border-radius: 8px; cursor: pointer; text-decoration: none;
+    transition: all 0.15s ease;
+}
+.sm-ai-nudge-btn:hover {
+    transform: translateY(-1px); box-shadow: 0 4px 12px rgba(124,58,237,0.3);
+    color: white; text-decoration: none;
+}
+.sm-btn-done {
+    display: inline-block; padding: 10px 20px; font-size: 0.85rem; font-weight: 600;
+    color: var(--text-secondary, #6B7280); background: none;
+    border: 1px solid var(--border-color, #D1D5DB); border-radius: 8px;
+    cursor: pointer; transition: all 0.15s ease; margin-top: 8px;
+}
+.sm-btn-done:hover { background: var(--background-light, #f3f4f6); color: var(--text-primary, #1F2937); }
+
+[data-theme="dark"] .sm-ai-nudge {
+    background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(99,102,241,0.08) 100%);
+    border-color: rgba(124,58,237,0.2);
+}
+[data-theme="dark"] .sm-ai-nudge-icon { color: #a78bfa; }
+[data-theme="dark"] .sm-ai-nudge h3 { color: #e0e7ff; }
+[data-theme="dark"] .sm-ai-nudge p { color: #94a3b8; }
+[data-theme="dark"] .sm-btn-done { color: #94a3b8; border-color: var(--border-color); }
+[data-theme="dark"] .sm-btn-done:hover { background: rgba(255,255,255,0.05); color: #f1f5f9; }
+
 /* -- Dark Mode -- */
 [data-theme="dark"] .semester-modal { background: var(--card-bg); }
 [data-theme="dark"] .semester-modal-close { background: var(--background-light); }

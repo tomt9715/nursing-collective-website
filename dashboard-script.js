@@ -303,7 +303,8 @@ async function loadUserProfile() {
         // all independent API calls — run them at the same time.
         var dataPromises = [
             syncStudyHistory(),
-            fetchAndCacheQuizSessions()
+            fetchAndCacheQuizSessions(),
+            fetchActivityData()
         ];
         if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.pullFromServer === 'function') {
             dataPromises.push(
@@ -541,7 +542,7 @@ function loadStudyActivityCalendar(weekOffset) {
     if (!container) return;
 
     var offset = weekOffset || 0; // 0 = this week, -1 = last week
-    var activeDates = getActivityDates();
+    var activityDays = (_cachedActivityData && _cachedActivityData.days) || {};
     var today = new Date();
     today.setHours(0, 0, 0, 0);
     var dayOfWeek = today.getDay(); // 0=Sun
@@ -553,15 +554,7 @@ function loadStudyActivityCalendar(weekOffset) {
     var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    // Find max count for scaling bars
-    var counts = [];
-    for (var i = 0; i < 7; i++) {
-        var d = new Date(weekStart);
-        d.setDate(d.getDate() + i);
-        var key = d.toISOString().split('T')[0];
-        counts.push(activeDates[key] || 0);
-    }
-    var FULL_BAR = 5; // 5 sets = 100% full bar
+    var FULL_BAR = 8; // 8 activities = 100% full bar
 
     var html = '';
     var weekTotal = 0;
@@ -572,7 +565,9 @@ function loadStudyActivityCalendar(weekOffset) {
         d.setDate(d.getDate() + i);
         var isToday = d.getTime() === today.getTime();
         var isFuture = d > today;
-        var count = counts[i];
+        var key = d.toISOString().split('T')[0];
+        var dayData = activityDays[key] || { quiz: 0, guide: 0, ai_gen: 0, upload: 0, study_plan: 0, total: 0 };
+        var count = dayData.total;
         var pct = isFuture ? 0 : Math.min(100, Math.round((count / FULL_BAR) * 100));
         var dateLabel = monthNames[d.getMonth()] + ' ' + d.getDate();
 
@@ -582,20 +577,34 @@ function loadStudyActivityCalendar(weekOffset) {
         }
 
         var rowClass = 'activity-bar-row';
-        var isFireDay = count > 5 && !isFuture;
+        var isFireDay = count > 7 && !isFuture;
         if (isToday) rowClass += ' today';
         if (isFireDay) rowClass += ' fire';
         if (count === 0 && !isFuture) rowClass += ' inactive';
 
         var countLabel = '';
         if (!isFuture) {
-            countLabel = isFireDay ? '<i class="fas fa-fire"></i> ' + count + ' sets' : count + (count === 1 ? ' set' : ' sets');
+            countLabel = isFireDay
+                ? '<i class="fas fa-fire"></i> ' + count
+                : String(count);
+        }
+
+        // Activity type dots
+        var dots = '';
+        if (!isFuture && count > 0) {
+            dots = '<div class="activity-bar-dots">';
+            if (dayData.quiz > 0) dots += '<span class="activity-dot dot-quiz" title="Quizzes"></span>';
+            if (dayData.guide > 0) dots += '<span class="activity-dot dot-guide" title="Guides"></span>';
+            if (dayData.ai_gen > 0 || dayData.upload > 0) dots += '<span class="activity-dot dot-ai" title="AI Tools"></span>';
+            if (dayData.study_plan > 0) dots += '<span class="activity-dot dot-plan" title="Study Plan"></span>';
+            dots += '</div>';
         }
 
         html += '<div class="' + rowClass + '">';
         html += '<div class="activity-bar-label">' + dayNames[i] + '<span class="activity-date">' + dateLabel + '</span></div>';
         html += '<div class="activity-bar-track"><div class="activity-bar-fill" style="width:' + (isFuture ? 0 : pct) + '%"></div></div>';
         html += '<div class="activity-bar-count">' + countLabel + '</div>';
+        html += dots;
         html += '</div>';
     }
 
@@ -606,33 +615,17 @@ function loadStudyActivityCalendar(weekOffset) {
         var nudgeHtml = '<div class="activity-empty-nudge">';
         nudgeHtml += '<i class="fas fa-seedling nudge-icon"></i>';
         nudgeHtml += '<strong>No activity yet this week</strong>';
-        nudgeHtml += '<p>Complete a quiz set to start building your streak!</p>';
-        nudgeHtml += '<a href="https://learn.thenursingcollective.pro" class="activity-nudge-btn"><i class="fas fa-play"></i> Start a Quiz Set</a>';
+        nudgeHtml += '<p>Read a guide, take a quiz, or try an AI tool to start your streak!</p>';
+        nudgeHtml += '<div class="activity-nudge-links">';
+        nudgeHtml += '<a href="my-guides.html" class="activity-nudge-btn"><i class="fas fa-book-open"></i> Guides</a>';
+        nudgeHtml += '<a href="https://learn.thenursingcollective.pro" class="activity-nudge-btn"><i class="fas fa-play"></i> Quiz</a>';
+        nudgeHtml += '</div>';
         nudgeHtml += '</div>';
         container.innerHTML += nudgeHtml;
     }
 
-    // Streak: count consecutive days back from today with activity
-    var streak = 0;
-    for (var si = dayOfWeek; si >= 0; si--) {
-        var thisWeekCounts = [];
-        for (var j = 0; j < 7; j++) {
-            var sd = new Date(today);
-            sd.setDate(sd.getDate() - dayOfWeek + j);
-            var sk = sd.toISOString().split('T')[0];
-            thisWeekCounts.push(activeDates[sk] || 0);
-        }
-        if (thisWeekCounts[si] > 0) streak++;
-        else break;
-    }
-    if (streak > 0) {
-        var prev = new Date(today);
-        prev.setDate(prev.getDate() - dayOfWeek - 1);
-        while (activeDates[prev.toISOString().split('T')[0]] > 0) {
-            streak++;
-            prev.setDate(prev.getDate() - 1);
-        }
-    }
+    // Streak from server (more accurate than client-side calculation)
+    var streak = (_cachedActivityData && _cachedActivityData.streak) || 0;
 
     var weekTotalEl = document.getElementById('activity-week-total');
     var daysActiveEl = document.getElementById('activity-days-active');
@@ -640,7 +633,6 @@ function loadStudyActivityCalendar(weekOffset) {
     if (weekTotalEl) weekTotalEl.textContent = weekTotal;
     if (daysActiveEl) daysActiveEl.textContent = daysActive;
     if (streakEl) streakEl.textContent = streak;
-
 
     // Wire up toggle buttons (only once)
     if (!container._toggleWired) {
@@ -654,6 +646,19 @@ function loadStudyActivityCalendar(weekOffset) {
                 loadStudyActivityCalendar(w);
             });
         });
+    }
+}
+
+// Cached activity data fetched from /api/activity/weekly
+var _cachedActivityData = null;
+
+async function fetchActivityData() {
+    try {
+        var resp = await apiCall('/api/activity/weekly', { method: 'GET' });
+        _cachedActivityData = resp;
+    } catch (e) {
+        console.warn('[Dashboard] Failed to fetch activity data:', e.message || e);
+        _cachedActivityData = { days: {}, streak: 0 };
     }
 }
 

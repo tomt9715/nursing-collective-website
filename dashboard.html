@@ -245,6 +245,20 @@
         [data-theme="dark"] .activity-empty-nudge p{color:#94a3b8}
         [data-theme="dark"] .activity-nudge-btn{background:#38bdf8;color:#0f172a}
         [data-theme="dark"] .activity-nudge-btn:hover{background:#2E86AB;color:white}
+        /* Activity type indicator dots */
+        .activity-bar-dots{display:flex;gap:3px;min-width:28px;justify-content:flex-end;margin-left:4px;align-items:center}
+        .activity-dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}
+        .dot-quiz{background:#2E86AB}
+        .dot-guide{background:#10b981}
+        .dot-ai{background:#a855f7}
+        .dot-plan{background:#f59e0b}
+        [data-theme="dark"] .dot-quiz{background:#38bdf8}
+        [data-theme="dark"] .dot-guide{background:#34d399}
+        [data-theme="dark"] .dot-ai{background:#c084fc}
+        [data-theme="dark"] .dot-plan{background:#fbbf24}
+        /* Multi-link empty state */
+        .activity-nudge-links{display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap}
+        .activity-nudge-links .activity-nudge-btn{font-size:.75rem;padding:6px 12px}
 
         /* Dashboard section padding reset */
         .dashboard{background:var(--dash-bg,#f8fafc)!important;padding:95px 0 0!important;overflow:visible!important}
@@ -671,7 +685,7 @@
                         <div class="activity-summary">
                             <div class="activity-summary-item">
                                 <div class="activity-summary-num" id="activity-week-total">0</div>
-                                <div class="activity-summary-label">Sets Done</div>
+                                <div class="activity-summary-label">Activities</div>
                             </div>
                             <div class="activity-summary-item">
                                 <div class="activity-summary-num" id="activity-days-active">0</div>

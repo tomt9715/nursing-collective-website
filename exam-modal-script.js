@@ -134,7 +134,7 @@
             html += '<span class="sm-topic-tag">' + esc(t) +
                 '<button class="sm-topic-rm" data-rm="' + i + '">&times;</button></span>';
         });
-        html += '<input type="text" class="sm-topic-input" id="em-topic-input" placeholder="Type a topic + Enter">';
+        html += '<input type="text" class="sm-topic-input" id="em-topic-input" placeholder="Type a topic + Enter, or upload a review sheet below">';
 
         container.innerHTML = html;
 

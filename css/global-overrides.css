@@ -2345,6 +2345,7 @@ a.trust-btn:hover {
 .em-form { display: flex; flex-direction: column; gap: 16px; }
 .em-field { display: flex; flex-direction: column; gap: 6px; }
 .em-field label { font-family: 'Source Sans 3', sans-serif; font-size: 0.78rem; font-weight: 600; color: var(--text-secondary, #6B7280); }
+.em-optional { font-weight: 400; color: var(--text-light, #9CA3AF); }
 .em-field-grow { flex: 1; }
 .em-row { display: flex; gap: 12px; }
 

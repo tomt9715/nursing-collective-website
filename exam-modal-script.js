@@ -210,14 +210,12 @@
         zone.querySelector('.em-upload-text').innerHTML = '<i class="fas fa-spinner fa-spin"></i> Extracting topics from ' + esc(file.name) + '...';
 
         try {
-            var token = localStorage.getItem('auth_token');
+            var token = localStorage.getItem('accessToken');
             var formData = new FormData();
             formData.append('file', file);
 
-            var API_URL = (typeof apiService !== 'undefined' && apiService.baseUrl)
-                ? apiService.baseUrl
-                : (typeof window.API_BASE_URL === 'string' ? window.API_BASE_URL : '');
-
+            // Use global API_URL from api-service.js; don't use apiCall() since
+            // it sets Content-Type: application/json which breaks FormData uploads
             var response = await fetch(API_URL + '/api/semester/extract-topics', {
                 method: 'POST',
                 headers: { 'Authorization': 'Bearer ' + token },

@@ -2269,6 +2269,35 @@ a.trust-btn:hover {
 .sm-topic-input { border: none; outline: none; font-size: 0.8rem; padding: 3px 6px; min-width: 120px; flex: 1; background: transparent; color: var(--text-primary); }
 .sm-topic-input::placeholder { color: var(--text-light); }
 
+/* Review sheet upload zone */
+.sm-topic-upload {
+    display: flex; align-items: center; gap: 6px; justify-content: center;
+    padding: 10px 12px; margin-top: 8px;
+    border: 1.5px dashed var(--border-color, #D1D5DB); border-radius: 8px;
+    background: var(--background-light, #f8fafc);
+    color: var(--text-light, #9CA3AF); font-size: 0.78rem;
+    cursor: pointer; transition: all 0.15s ease;
+}
+.sm-topic-upload:hover { border-color: var(--primary-color); color: var(--primary-color); }
+.sm-topic-upload u { color: var(--primary-color); }
+.sm-topic-upload.drag-over {
+    border-color: var(--primary-color); background: rgba(46,134,171,0.06);
+    color: var(--primary-color);
+}
+.sm-topic-upload.extracting {
+    border-color: var(--accent-color, #f59e0b); color: var(--accent-color, #f59e0b);
+    border-style: solid; pointer-events: none;
+}
+.sm-topic-upload.done { border-color: #059669; color: #059669; border-style: solid; }
+.sm-topic-upload.error { border-color: #ef4444; color: #ef4444; border-style: solid; }
+[data-theme="dark"] .sm-topic-upload { background: rgba(255,255,255,0.03); border-color: var(--border-color); color: #6b7280; }
+[data-theme="dark"] .sm-topic-upload:hover { border-color: #38bdf8; color: #38bdf8; }
+[data-theme="dark"] .sm-topic-upload u { color: #38bdf8; }
+[data-theme="dark"] .sm-topic-upload.drag-over { border-color: #38bdf8; background: rgba(56,189,248,0.06); color: #38bdf8; }
+[data-theme="dark"] .sm-topic-upload.extracting { border-color: #fbbf24; color: #fbbf24; }
+[data-theme="dark"] .sm-topic-upload.done { border-color: #34d399; color: #34d399; }
+[data-theme="dark"] .sm-topic-upload.error { border-color: #f87171; color: #f87171; }
+
 .sm-add-exam, .sm-add-class-btn {
     display: block; width: 100%; padding: 9px; margin-top: 6px;
     border: 1.5px dashed var(--border-color); border-radius: 8px;

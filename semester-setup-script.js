@@ -202,7 +202,13 @@
                     html += '<span class="sm-topic-tag">' + esc(t) + '<button class="sm-topic-rm" data-rm="' + ci + '-' + ei + '-' + ti + '">&times;</button></span>';
                 });
                 html += '<input type="text" class="sm-topic-input" placeholder="Type a topic + Enter" data-ci="' + ci + '" data-ei="' + ei + '">';
-                html += '</div></div></div>';
+                html += '</div>';
+                html += '<div class="sm-topic-upload" data-ci="' + ci + '" data-ei="' + ei + '">';
+                html += '<input type="file" class="sm-topic-file" accept=".pdf,.docx" hidden>';
+                html += '<i class="fas fa-cloud-arrow-up"></i> ';
+                html += '<span>Drop review sheet or <u>browse</u></span>';
+                html += '</div>';
+                html += '</div></div>';
             });
 
             html += '<button class="sm-add-exam" data-add-exam="' + ci + '"><i class="fas fa-plus"></i> Add Exam</button>';
@@ -266,6 +272,34 @@
                     classes[parseInt(this.dataset.ci, 10)].exams[parseInt(this.dataset.ei, 10)].topics.push(this.value.trim());
                     saveDraft();
                     renderClassesEditor();
+                }
+            });
+        });
+
+        // Review sheet upload zones
+        c.querySelectorAll('.sm-topic-upload').forEach(function (zone) {
+            var fileInput = zone.querySelector('.sm-topic-file');
+            var ci = parseInt(zone.dataset.ci, 10);
+            var ei = parseInt(zone.dataset.ei, 10);
+
+            zone.addEventListener('click', function () { fileInput.click(); });
+
+            fileInput.addEventListener('change', function () {
+                if (this.files.length > 0) handleReviewSheetUpload(this.files[0], ci, ei, zone);
+            });
+
+            zone.addEventListener('dragover', function (e) {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+            zone.addEventListener('dragleave', function () {
+                zone.classList.remove('drag-over');
+            });
+            zone.addEventListener('drop', function (e) {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                if (e.dataTransfer.files.length > 0) {
+                    handleReviewSheetUpload(e.dataTransfer.files[0], ci, ei, zone);
                 }
             });
         });
@@ -389,6 +423,84 @@
                 btn.innerHTML = '<i class="fas fa-check"></i> Save & Get My Plan';
             }
         }
+    }
+
+    // ── Review sheet topic extraction ────────────────────────
+
+    async function handleReviewSheetUpload(file, ci, ei, zone) {
+        // Validate file type
+        var ext = file.name.split('.').pop().toLowerCase();
+        if (ext !== 'pdf' && ext !== 'docx') {
+            showUploadError(zone, 'Only PDF and DOCX files');
+            return;
+        }
+        if (file.size > 10 * 1024 * 1024) {
+            showUploadError(zone, 'File too large (max 10MB)');
+            return;
+        }
+
+        // Show extracting state
+        zone.classList.add('extracting');
+        zone.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Extracting topics...</span>';
+
+        try {
+            var token = localStorage.getItem('auth_token');
+            var formData = new FormData();
+            formData.append('file', file);
+
+            var API_URL = (typeof apiService !== 'undefined' && apiService.baseUrl)
+                ? apiService.baseUrl
+                : (typeof window.API_BASE_URL === 'string' ? window.API_BASE_URL : '');
+
+            var response = await fetch(API_URL + '/api/semester/extract-topics', {
+                method: 'POST',
+                headers: { 'Authorization': 'Bearer ' + token },
+                body: formData
+            });
+
+            var data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.error || 'Extraction failed');
+            }
+
+            var topics = data.topics || [];
+            if (topics.length === 0) {
+                showUploadError(zone, 'No topics found in file');
+                return;
+            }
+
+            // Add extracted topics (skip duplicates)
+            var existing = classes[ci].exams[ei].topics || [];
+            var existingLower = existing.map(function (t) { return t.toLowerCase(); });
+            var added = 0;
+            topics.forEach(function (t) {
+                if (existingLower.indexOf(t.toLowerCase()) === -1) {
+                    existing.push(t);
+                    existingLower.push(t.toLowerCase());
+                    added++;
+                }
+            });
+            classes[ci].exams[ei].topics = existing;
+            saveDraft();
+
+            // Brief success state, then re-render
+            zone.classList.remove('extracting');
+            zone.classList.add('done');
+            zone.innerHTML = '<i class="fas fa-check"></i> <span>' + added + ' topic' + (added === 1 ? '' : 's') + ' added</span>';
+            setTimeout(function () { renderClassesEditor(); }, 1200);
+
+        } catch (err) {
+            console.error('[Semester] Topic extraction failed:', err);
+            showUploadError(zone, err.message || 'Could not read file');
+        }
+    }
+
+    function showUploadError(zone, msg) {
+        zone.classList.remove('extracting');
+        zone.classList.add('error');
+        zone.innerHTML = '<i class="fas fa-exclamation-circle"></i> <span>' + esc(msg) + '</span>';
+        setTimeout(function () { renderClassesEditor(); }, 2500);
     }
 
     // ── Helpers ──────────────────────────────────────────────

@@ -10,6 +10,54 @@
     var classes = [];
     var isEditMode = false;
 
+    // Common nursing class names for autocomplete suggestions
+    var COMMON_CLASSES = [
+        // Fundamentals & Foundations
+        'Fundamentals of Nursing',
+        'Health Assessment',
+        'Nursing Skills Lab',
+        // Med-Surg
+        'Med-Surg I',
+        'Med-Surg II',
+        'Med-Surg III',
+        'Adult Health I',
+        'Adult Health II',
+        // Pharm & Patho
+        'Pharmacology',
+        'Pathophysiology',
+        'Pharmacology & Pathophysiology',
+        // Maternal & Peds
+        'Maternity Nursing',
+        'Pediatric Nursing',
+        'Maternity & Pediatrics',
+        'OB Nursing',
+        'Women\'s Health Nursing',
+        // Mental Health
+        'Mental Health Nursing',
+        'Psychiatric Nursing',
+        'Psych Nursing',
+        // Community & Leadership
+        'Community Health Nursing',
+        'Public Health Nursing',
+        'Nursing Leadership',
+        'Nursing Management',
+        'Nursing Leadership & Management',
+        // Critical Care & Emergency
+        'Critical Care Nursing',
+        'ICU Nursing',
+        'Emergency Nursing',
+        // Other common
+        'Nutrition',
+        'Ethics in Nursing',
+        'Evidence-Based Practice',
+        'Nursing Research',
+        'Gerontology',
+        'Anatomy & Physiology I',
+        'Anatomy & Physiology II',
+        'Microbiology',
+        'NCLEX Review'
+    ];
+
     // ── Modal open/close ────────────────────────────────────
 
     window.openSemesterModal = async function () {
@@ -177,13 +225,20 @@
         classes.forEach(function (cls, ci) {
             html += '<div class="sm-class-card">';
             html += '<div class="sm-cc-header">';
-            html += '<input type="text" class="sm-cc-name" value="' + attr(cls.class_name) + '" placeholder="Class name (e.g. Med-Surg I)" data-field="class_name" data-ci="' + ci + '">';
+            html += '<input type="text" class="sm-cc-name" value="' + attr(cls.class_name) + '" placeholder="Search or type a class name" data-field="class_name" data-ci="' + ci + '" list="sm-class-options" autocomplete="off">';
             if (classes.length > 1) {
                 html += '<button class="sm-cc-delete" data-del-class="' + ci + '" title="Remove class"><i class="fas fa-trash-alt"></i></button>';
             }
             html += '</div>';
             html += '</div>';
         });
+
+        // Add datalist for class name suggestions (once)
+        html += '<datalist id="sm-class-options">';
+        COMMON_CLASSES.forEach(function (name) {
+            html += '<option value="' + attr(name) + '">';
+        });
+        html += '</datalist>';
 
         container.innerHTML = html;
         attachEditorListeners(container);
@@ -252,7 +307,7 @@
         // Save classes only (no exams — those are added via the exam modal)
         var payload = classes.map(function (cls) {
             return {
-                class_name: cls.class_name,
+                class_name: cleanClassName(cls.class_name),
                 instructor: cls.instructor || '',
                 semester: semester,
                 exams: []
@@ -281,6 +336,31 @@
                 btn.innerHTML = '<i class="fas fa-check"></i> Save Classes';
             }
         }
+    }
+
+    // ── Text cleanup ────────────────────────────────────────
+
+    function cleanClassName(name) {
+        // Trim extra spaces
+        name = name.replace(/\s+/g, ' ').trim();
+        if (!name) return '';
+
+        // If it matches a known class (case-insensitive), use the canonical version
+        var lower = name.toLowerCase();
+        for (var i = 0; i < COMMON_CLASSES.length; i++) {
+            if (COMMON_CLASSES[i].toLowerCase() === lower) return COMMON_CLASSES[i];
+        }
+
+        // Title case: capitalize first letter of each word, preserve Roman numerals & acronyms
+        return name.replace(/\b\w+/g, function (word) {
+            // Preserve all-caps words (II, III, IV, ICU, OB, NCLEX, etc.)
+            if (word === word.toUpperCase() && word.length <= 5) return word;
+            // Lowercase connectors
+            if (['and', 'of', 'in', 'the', 'for'].indexOf(word.toLowerCase()) !== -1) return word.toLowerCase();
+            // Capitalize first letter
+            return word.charAt(0).toUpperCase() + word.slice(1);
+        // Ensure first word is always capitalized
+        }).replace(/^(\w)/, function (c) { return c.toUpperCase(); });
     }
 
     // ── Helpers ──────────────────────────────────────────────

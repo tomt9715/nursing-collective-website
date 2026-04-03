@@ -225,7 +225,10 @@
         classes.forEach(function (cls, ci) {
             html += '<div class="sm-class-card">';
             html += '<div class="sm-cc-header">';
-            html += '<input type="text" class="sm-cc-name" value="' + attr(cls.class_name) + '" placeholder="Search or type a class name" data-field="class_name" data-ci="' + ci + '" list="sm-class-options" autocomplete="off">';
+            html += '<div class="sm-cc-name-wrap">';
+            html += '<input type="text" class="sm-cc-name" value="' + attr(cls.class_name) + '" placeholder="Start typing a class name..." data-field="class_name" data-ci="' + ci + '" autocomplete="off">';
+            html += '<div class="sm-cc-suggest" id="sm-suggest-' + ci + '"></div>';
+            html += '</div>';
             if (classes.length > 1) {
                 html += '<button class="sm-cc-delete" data-del-class="' + ci + '" title="Remove class"><i class="fas fa-trash-alt"></i></button>';
             }
@@ -233,22 +236,52 @@
             html += '</div>';
         });
 
-        // Add datalist for class name suggestions (once)
-        html += '<datalist id="sm-class-options">';
-        COMMON_CLASSES.forEach(function (name) {
-            html += '<option value="' + attr(name) + '">';
-        });
-        html += '</datalist>';
-
         container.innerHTML = html;
         attachEditorListeners(container);
     }
 
     function attachEditorListeners(c) {
         c.querySelectorAll('.sm-cc-name').forEach(function (el) {
-            el.addEventListener('change', function () {
-                classes[parseInt(this.dataset.ci, 10)][this.dataset.field] = this.value.trim();
+            var ci = parseInt(el.dataset.ci, 10);
+            var suggestBox = document.getElementById('sm-suggest-' + ci);
+
+            el.addEventListener('input', function () {
+                var val = this.value.trim().toLowerCase();
+                if (val.length < 2) {
+                    if (suggestBox) suggestBox.innerHTML = '';
+                    return;
+                }
+
+                var matches = COMMON_CLASSES.filter(function (name) {
+                    return name.toLowerCase().indexOf(val) !== -1;
+                }).slice(0, 6);
+
+                if (matches.length === 0 || (matches.length === 1 && matches[0].toLowerCase() === val)) {
+                    if (suggestBox) suggestBox.innerHTML = '';
+                    return;
+                }
+
+                var html = '';
+                matches.forEach(function (name) {
+                    html += '<div class="sm-cc-suggest-item" data-value="' + attr(name) + '">' + esc(name) + '</div>';
+                });
+                if (suggestBox) suggestBox.innerHTML = html;
+
+                suggestBox.querySelectorAll('.sm-cc-suggest-item').forEach(function (item) {
+                    item.addEventListener('mousedown', function (e) {
+                        e.preventDefault();
+                        el.value = this.dataset.value;
+                        classes[ci].class_name = this.dataset.value;
+                        suggestBox.innerHTML = '';
+                        saveDraft();
+                    });
+                });
+            });
+
+            el.addEventListener('blur', function () {
+                classes[ci].class_name = this.value.trim();
                 saveDraft();
+                setTimeout(function () { if (suggestBox) suggestBox.innerHTML = ''; }, 150);
             });
         });
         c.querySelectorAll('[data-del-class]').forEach(function (btn) {

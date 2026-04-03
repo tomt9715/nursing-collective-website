@@ -2184,7 +2184,8 @@ a.trust-btn:hover {
     color: var(--text-secondary, #6B7280);
 }
 
-.sm-semester-select {
+.sm-semester-select,
+.sm-semester-input {
     padding: 8px 14px;
     border: 1px solid var(--border-color, #D1D5DB);
     border-radius: 8px;
@@ -2192,14 +2193,17 @@ a.trust-btn:hover {
     font-size: 0.85rem;
     color: var(--text-primary, #1F2937);
     background: var(--card-bg, #fff);
+    min-width: 200px;
 }
 
-.sm-semester-select:focus {
+.sm-semester-select:focus,
+.sm-semester-input:focus {
     outline: none;
     border-color: var(--accent-color, #F59E0B);
 }
 
-[data-theme="dark"] .sm-semester-select {
+[data-theme="dark"] .sm-semester-select,
+[data-theme="dark"] .sm-semester-input {
     background: var(--background-light);
     border-color: var(--border-color);
     color: var(--text-primary);
@@ -2240,6 +2244,8 @@ a.trust-btn:hover {
 
 .sm-exam-name { flex: 1; }
 .sm-exam-name:focus, .sm-exam-date:focus { outline: none; border-color: var(--accent-color); }
+.sm-past-date-warn { font-size: 0.7rem; color: #f59e0b; font-weight: 600; margin-left: 6px; white-space: nowrap; }
+.sm-past-date-warn i { margin-right: 3px; }
 .sm-exam-delete { background: none; border: none; color: var(--text-light); cursor: pointer; padding: 4px; }
 .sm-exam-delete:hover { color: #EF4444; }
 

@@ -7,6 +7,7 @@
 (function () {
     'use strict';
 
+    var DRAFT_KEY = 'semesterSetupDraft';
     var classes = [];
     var guideMappings = {};
     var isEditMode = false;
@@ -79,9 +80,16 @@
                 var title = document.getElementById('sm-step-1-title');
                 if (title) title.textContent = 'Edit Your Classes';
             } else {
-                // New setup
+                // New setup — check for saved draft first
                 isEditMode = false;
-                classes = [createEmptyClass()];
+                var draft = loadDraft();
+                if (draft && draft.classes && draft.classes.length > 0) {
+                    classes = draft.classes;
+                    var semSelect = document.getElementById('sm-semester-select');
+                    if (semSelect && draft.semester) semSelect.value = draft.semester;
+                } else {
+                    classes = [createEmptyClass()];
+                }
                 var title = document.getElementById('sm-step-1-title');
                 if (title) title.textContent = 'Add Your Classes';
             }
@@ -181,6 +189,7 @@
 
         try {
             await apiCall('/api/semester/clear', { method: 'DELETE' });
+            clearDraft();
             closeSemesterModal();
             if (typeof loadStudyPlan === 'function') loadStudyPlan();
             if (typeof loadExamCountdown === 'function') loadExamCountdown();
@@ -241,12 +250,14 @@
         c.querySelectorAll('.sm-cc-name').forEach(function (el) {
             el.addEventListener('change', function () {
                 classes[parseInt(this.dataset.ci, 10)][this.dataset.field] = this.value.trim();
+                saveDraft();
             });
         });
         c.querySelectorAll('.sm-exam-name, .sm-exam-date').forEach(function (el) {
             el.addEventListener('change', function () {
                 var row = this.closest('.sm-exam-row');
                 classes[parseInt(row.dataset.ci, 10)].exams[parseInt(row.dataset.ei, 10)][this.dataset.field] = this.value.trim();
+                saveDraft();
             });
         });
         c.querySelectorAll('[data-del-class]').forEach(function (btn) {
@@ -275,11 +286,18 @@
                 renderClassesEditor();
             });
         });
+        c.querySelectorAll('.sm-exam-date').forEach(function (el) {
+            checkPastDate(el);
+            el.addEventListener('change', function () {
+                checkPastDate(this);
+            });
+        });
         c.querySelectorAll('.sm-topic-input').forEach(function (el) {
             el.addEventListener('keydown', function (e) {
                 if (e.key === 'Enter' && this.value.trim()) {
                     e.preventDefault();
                     classes[parseInt(this.dataset.ci, 10)].exams[parseInt(this.dataset.ei, 10)].topics.push(this.value.trim());
+                    saveDraft();
                     renderClassesEditor();
                 }
             });
@@ -441,6 +459,8 @@
                 body: JSON.stringify({ classes: payload })
             });
 
+            clearDraft();
+
             ['sm-step-1', 'sm-step-2'].forEach(function (id) {
                 var el = document.getElementById(id);
                 if (el) el.classList.add('hidden');
@@ -482,6 +502,52 @@
 
     function attr(s) {
         return (s || '').replace(/"/g, '&quot;');
+    }
+
+    function saveDraft() {
+        try {
+            syncInputs();
+            var semEl = document.getElementById('sm-semester-select');
+            localStorage.setItem(DRAFT_KEY, JSON.stringify({
+                classes: classes,
+                semester: semEl ? semEl.value : '',
+                ts: Date.now()
+            }));
+        } catch (e) { /* quota exceeded, ignore */ }
+    }
+
+    function loadDraft() {
+        try {
+            var raw = localStorage.getItem(DRAFT_KEY);
+            if (!raw) return null;
+            var draft = JSON.parse(raw);
+            // Expire drafts older than 7 days
+            if (Date.now() - (draft.ts || 0) > 7 * 86400000) {
+                localStorage.removeItem(DRAFT_KEY);
+                return null;
+            }
+            return draft;
+        } catch (e) { return null; }
+    }
+
+    function clearDraft() {
+        localStorage.removeItem(DRAFT_KEY);
+    }
+
+    function checkPastDate(el) {
+        var existing = el.parentElement.querySelector('.sm-past-date-warn');
+        if (existing) existing.remove();
+
+        if (!el.value) return;
+        var today = new Date();
+        today.setHours(0, 0, 0, 0);
+        var picked = new Date(el.value + 'T00:00:00');
+        if (picked < today) {
+            var warn = document.createElement('span');
+            warn.className = 'sm-past-date-warn';
+            warn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Past date';
+            el.parentElement.appendChild(warn);
+        }
     }
 
 })();

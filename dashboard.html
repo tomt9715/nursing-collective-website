@@ -785,13 +785,14 @@
 
                 <div class="sm-semester-selector">
                     <label>Semester</label>
-                    <select id="sm-semester-select" class="sm-semester-select">
-                        <option value="Spring 2026">Spring 2026</option>
-                        <option value="Summer 2026">Summer 2026</option>
-                        <option value="Fall 2026">Fall 2026</option>
-                        <option value="Winter 2027">Winter 2027</option>
-                        <option value="Spring 2027">Spring 2027</option>
-                    </select>
+                    <input type="text" id="sm-semester-select" class="sm-semester-input" list="sm-semester-options" placeholder="e.g. Spring 2026, Accelerated Block 1" autocomplete="off">
+                    <datalist id="sm-semester-options">
+                        <option value="Spring 2026">
+                        <option value="Summer 2026">
+                        <option value="Fall 2026">
+                        <option value="Winter 2027">
+                        <option value="Spring 2027">
+                    </datalist>
                 </div>
 
                 <div id="sm-classes-editor"></div>

@@ -170,8 +170,16 @@
             html += '<a href="study-session.html" class="sp-start-all">' +
                 '<i class="fas fa-calendar-check"></i> View Full Study Plan</a>';
 
+        } else if (plan.message) {
+            // API returned a specific message (error or status)
+            html += '<div class="sp-empty-state">' +
+                '<div class="sp-empty-icon"><i class="fas fa-info-circle"></i></div>' +
+                '<div class="sp-empty-text">' +
+                    '<p class="sp-empty-desc">' + plan.message + '</p>' +
+                '</div>' +
+            '</div>';
         } else {
-            // No tasks — guide user to add exams
+            // No tasks and no message — guide user to add exams
             html += '<div class="sp-empty-state">' +
                 '<div class="sp-empty-icon"><i class="fas fa-clipboard-list"></i></div>' +
                 '<div class="sp-empty-text">' +

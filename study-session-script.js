@@ -1,6 +1,6 @@
 /**
  * Study Session Page — Focused study experience
- * Loads the daily study plan and renders topic cards with action buttons,
+ * Loads the daily study plan and renders compact topic rows with action buttons,
  * progress tracking, and time budget controls.
  *
  * URL params:
@@ -13,15 +13,15 @@
 
     // ── State ────────────────────────────────────────
     var BUDGET_OPTIONS = [
-        { mins: 30,  label: '30m' },
-        { mins: 60,  label: '1hr' },
-        { mins: 120, label: '2hr' },
-        { mins: 180, label: '3hr' }
+        { mins: 30,  label: '30m',  desc: 'nearest exam only' },
+        { mins: 60,  label: '1hr',  desc: 'nearest exam + 1 more' },
+        { mins: 120, label: '2hr',  desc: '2 nearest exams' },
+        { mins: 180, label: '3hr',  desc: 'all upcoming exams' }
     ];
     var timeBudget = parseInt(localStorage.getItem('studyPlanTimeBudget') || '60', 10);
-    var completedTopics = [];   // indices of marked-done cards (session-only)
-    var allTasks = [];          // current filtered task list
-    var planData = null;        // raw API response
+    var completedTopics = [];
+    var allTasks = [];
+    var planData = null;
 
     // ── DOM refs ─────────────────────────────────────
     var headerEl, controlsEl, progressEl, topicsEl;
@@ -70,7 +70,6 @@
             planData = data;
             var tasks = (data.plan && data.plan.tasks) ? data.plan.tasks : [];
 
-            // Filter to specific exam if params present
             if (params) {
                 tasks = tasks.filter(function (t) {
                     return (t.exam_name || '') === params.exam &&
@@ -100,7 +99,6 @@
         var html = '';
 
         if (params) {
-            // Specific exam
             var urgency = getUrgency(params.date);
             var dayText = getDayText(params.date);
 
@@ -116,7 +114,6 @@
             }
             html += '</div>';
         } else {
-            // Full daily plan
             html += '<h1 class="ss-header-title">' +
                 '<i class="fas fa-calendar-day" style="color:var(--primary-color)"></i> ' +
                 'Today\'s Study Plan</h1>';
@@ -135,16 +132,35 @@
         headerEl.innerHTML = html;
     }
 
-    // ── Controls (time budget) ───────────────────────
+    // ── Controls (time budget + context) ─────────────
 
     function renderControls() {
         if (!controlsEl) return;
-        var html = '<span class="time-label">I have</span>';
+        var html = '<div class="ss-controls-row">';
+        html += '<span class="time-label">I have</span>';
         BUDGET_OPTIONS.forEach(function (opt) {
             var active = opt.mins === timeBudget ? ' active' : '';
             html += '<button class="time-btn' + active + '" data-time="' + opt.mins + '">' + opt.label + '</button>';
         });
         html += '<button class="refresh-btn" title="Refresh plan"><i class="fas fa-sync-alt"></i></button>';
+        html += '</div>';
+
+        // Context message explaining the current selection
+        var currentOpt = BUDGET_OPTIONS.find(function (o) { return o.mins === timeBudget; });
+        var examGroups = groupByExam(allTasks);
+        var examCount = examGroups.length;
+        var topicCount = allTasks.length;
+
+        html += '<div class="ss-budget-context">';
+        html += '<i class="fas fa-info-circle"></i> ';
+        html += 'Showing <strong>' + topicCount + ' topic' + (topicCount !== 1 ? 's' : '') + '</strong>';
+        if (examCount > 0) {
+            html += ' across <strong>' + examCount + ' exam' + (examCount !== 1 ? 's' : '') + '</strong>';
+        }
+        if (currentOpt) {
+            html += ' &middot; ' + currentOpt.label + ' focuses on ' + currentOpt.desc;
+        }
+        html += '</div>';
 
         controlsEl.innerHTML = html;
 
@@ -161,7 +177,6 @@
             });
         });
 
-        // Refresh listener
         var refreshBtn = controlsEl.querySelector('.refresh-btn');
         if (refreshBtn) {
             refreshBtn.addEventListener('click', function () {
@@ -193,7 +208,7 @@
             '<div class="ss-progress-label">' + done + ' of ' + total + ' topic' + (total !== 1 ? 's' : '') + ' reviewed</div>';
     }
 
-    // ── Topic cards ──────────────────────────────────
+    // ── Topic list ───────────────────────────────────
 
     function renderTopics() {
         if (!topicsEl) return;
@@ -210,109 +225,98 @@
         }
 
         var html = '';
+        var examGroups = groupByExam(allTasks);
 
-        // If showing full plan (no exam filter), group by exam with dividers
-        if (!params) {
-            var examGroups = groupByExam(allTasks);
-            examGroups.forEach(function (group, gi) {
-                if (examGroups.length > 1) {
-                    var dayText = getDayText(group.exam_date);
-                    html += '<div class="ss-exam-divider">' +
-                        '<span class="ss-exam-divider-name">' + escapeHtml(group.exam_name) +
-                        ' — ' + escapeHtml(group.class_name) +
-                        (dayText ? ' (' + dayText + ')' : '') + '</span>' +
-                        '<div class="ss-exam-divider-line"></div></div>';
-                }
-                group.tasks.forEach(function (task) {
-                    html += buildTopicCard(task);
-                });
+        examGroups.forEach(function (group) {
+            var dayText = getDayText(group.exam_date);
+            var urgency = getUrgency(group.exam_date);
+            var topicCount = group.tasks.length;
+
+            // Exam group header
+            html += '<div class="ss-exam-section">';
+            html += '<div class="ss-exam-header ' + urgency.cls + '">';
+            html += '<div class="ss-exam-header-info">';
+            html += '<span class="ss-exam-header-name">' + escapeHtml(group.exam_name) + '</span>';
+            html += '<span class="ss-exam-header-class">' + escapeHtml(group.class_name) + '</span>';
+            html += '</div>';
+            html += '<div class="ss-exam-header-right">';
+            if (dayText) {
+                html += '<span class="ss-countdown-pill ' + urgency.cls + '">' + dayText + '</span>';
+            }
+            html += '<span class="ss-exam-topic-count">' + topicCount + ' topic' + (topicCount !== 1 ? 's' : '') + '</span>';
+            html += '</div></div>';
+
+            // Compact topic rows
+            html += '<div class="ss-topic-list">';
+            group.tasks.forEach(function (task) {
+                html += buildTopicRow(task, group);
             });
-        } else {
-            allTasks.forEach(function (task) {
-                html += buildTopicCard(task);
-            });
-        }
+            html += '</div></div>';
+        });
 
         topicsEl.innerHTML = html;
         attachTopicListeners();
     }
 
-    function buildTopicCard(task) {
+    function buildTopicRow(task, group) {
         var idx = allTasks.indexOf(task);
         var isDone = completedTopics.indexOf(idx) !== -1;
-        var icon = getTaskIcon(task.task_type);
         var hasNotes = task.matched_documents && task.matched_documents.length > 0;
         var hasGuide = !!task.guide_id;
 
-        var html = '<div class="ss-topic-card' + (isDone ? ' ss-topic-done' : '') + '" data-idx="' + idx + '">';
+        // Filter out redundant reasons (exam countdown is in the header)
+        var uniqueReasons = (task.reasons || []).filter(function (r) {
+            return r.indexOf('exam in') === -1 &&
+                   r.indexOf('exam tomorrow') === -1 &&
+                   r.indexOf('no matching guide') === -1;
+        });
 
-        // Icon
-        html += '<div class="task-icon ' + (task.task_type || '') + '"><i class="' + icon + '"></i></div>';
+        var html = '<div class="ss-topic-row' + (isDone ? ' ss-topic-done' : '') + '" data-idx="' + idx + '">';
 
-        // Body
-        html += '<div class="ss-topic-body">';
-        html += '<div class="ss-topic-name">' + escapeHtml(task.topic_name || 'Study Topic') + '</div>';
+        // Checkbox
+        html += '<button class="ss-check-btn" title="Mark as reviewed">' +
+            '<i class="fas fa-' + (isDone ? 'check-circle' : 'circle') + '"></i></button>';
 
-        // Reason badges
-        if (task.reasons && task.reasons.length > 0) {
-            html += '<div class="ss-task-reasons">';
-            task.reasons.forEach(function (r) {
-                html += '<span class="ss-reason-badge">' + escapeHtml(r) + '</span>';
-            });
-            html += '</div>';
+        // Topic name + optional reason tag
+        html += '<div class="ss-topic-info">';
+        html += '<span class="ss-topic-name">' + escapeHtml(task.topic_name || 'Study Topic') + '</span>';
+        if (uniqueReasons.length > 0) {
+            html += '<span class="ss-reason-tag">' + escapeHtml(uniqueReasons[0]) + '</span>';
         }
-
-        // Action buttons
-        html += '<div class="ss-topic-actions">';
-        html += buildActions(task, hasNotes, hasGuide);
         html += '</div>';
 
-        html += '</div>'; // .ss-topic-body
-
-        // Done button
-        html += '<button class="ss-done-btn" title="Mark as reviewed"><i class="fas fa-check"></i></button>';
-
-        html += '</div>'; // .ss-topic-card
-        return html;
-    }
-
-    function buildActions(task, hasNotes, hasGuide) {
-        var html = '';
-
+        // Action buttons (compact inline)
+        html += '<div class="ss-topic-actions">';
         if (hasNotes) {
             var docId = task.matched_documents[0].id;
-            html += '<button class="task-action-btn primary" data-href="ai-tools.html?doc=' + docId + '">' +
-                '<i class="fas fa-file-alt"></i> Your Notes</button>';
+            html += '<button class="ss-action-link" data-href="ai-tools.html?doc=' + docId + '" title="View your uploaded notes">' +
+                '<i class="fas fa-file-alt"></i> Notes</button>';
         }
-
         if (hasGuide) {
             var guideLink = task.link || ('guides/' + task.guide_id + '.html');
-            var btnClass = hasNotes ? 'secondary' : 'primary';
-            html += '<button class="task-action-btn ' + btnClass + '" data-href="' + escapeHtml(guideLink) + '">' +
-                '<i class="fas fa-book-open"></i> Our Guide</button>';
+            html += '<button class="ss-action-link primary" data-href="' + escapeHtml(guideLink) + '" title="Open study guide">' +
+                '<i class="fas fa-book-open"></i> Guide</button>';
         }
-
         if (!hasNotes) {
-            var uploadClass = hasGuide ? 'tertiary' : (task.related_guides && task.related_guides.length > 0 ? 'secondary' : 'primary');
-            html += '<button class="task-action-btn ' + uploadClass + '" data-href="ai-tools.html">' +
-                '<i class="fas fa-upload"></i> Upload Notes</button>';
+            html += '<button class="ss-action-link muted" data-href="ai-tools.html" title="Upload your notes for AI study tools">' +
+                '<i class="fas fa-upload"></i> Upload</button>';
         }
-
-        // Related guides for unmatched topics
+        // Related guides inline
         if (!hasGuide && task.related_guides && task.related_guides.length > 0) {
-            html += '<span class="ss-related-label">Related:</span>';
             task.related_guides.forEach(function (rg) {
-                html += '<button class="task-action-btn tertiary" data-href="guides/' + escapeHtml(rg.id) + '.html">' +
+                html += '<button class="ss-action-link" data-href="guides/' + escapeHtml(rg.id) + '.html" title="Related guide: ' + escapeHtml(rg.name) + '">' +
                     '<i class="fas fa-book-open"></i> ' + escapeHtml(rg.name) + '</button>';
             });
         }
+        html += '</div>';
 
+        html += '</div>';
         return html;
     }
 
     function attachTopicListeners() {
-        // Action buttons → open in new tab (preserves session progress)
-        topicsEl.querySelectorAll('.task-action-btn').forEach(function (btn) {
+        // Action links → open in new tab
+        topicsEl.querySelectorAll('.ss-action-link').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 var href = this.dataset.href;
@@ -320,23 +324,34 @@
             });
         });
 
-        // Done buttons → toggle completion
-        topicsEl.querySelectorAll('.ss-done-btn').forEach(function (btn) {
+        // Check buttons → toggle completion
+        topicsEl.querySelectorAll('.ss-check-btn').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.stopPropagation();
-                var card = this.closest('.ss-topic-card');
-                if (!card) return;
-                var idx = parseInt(card.dataset.idx, 10);
+                var row = this.closest('.ss-topic-row');
+                if (!row) return;
+                var idx = parseInt(row.dataset.idx, 10);
+                var icon = this.querySelector('i');
 
                 var pos = completedTopics.indexOf(idx);
                 if (pos === -1) {
                     completedTopics.push(idx);
-                    card.classList.add('ss-topic-done');
+                    row.classList.add('ss-topic-done');
+                    if (icon) { icon.classList.remove('fa-circle'); icon.classList.add('fa-check-circle'); }
                 } else {
                     completedTopics.splice(pos, 1);
-                    card.classList.remove('ss-topic-done');
+                    row.classList.remove('ss-topic-done');
+                    if (icon) { icon.classList.remove('fa-check-circle'); icon.classList.add('fa-circle'); }
                 }
                 renderProgress();
+            });
+        });
+
+        // Clicking the row itself toggles too
+        topicsEl.querySelectorAll('.ss-topic-row').forEach(function (row) {
+            row.addEventListener('click', function () {
+                var btn = this.querySelector('.ss-check-btn');
+                if (btn) btn.click();
             });
         });
     }
@@ -416,16 +431,6 @@
         if (!dateStr) return '';
         var d = new Date(dateStr + 'T00:00:00');
         return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    }
-
-    function getTaskIcon(taskType) {
-        switch (taskType) {
-            case 'practice_quiz': return 'fas fa-brain';
-            case 'start_guide': return 'fas fa-book-open';
-            case 'review_guide': return 'fas fa-book-reader';
-            case 'uncovered_topic': return 'fas fa-flag';
-            default: return 'fas fa-tasks';
-        }
     }
 
     function escapeHtml(str) {

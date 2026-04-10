@@ -155,6 +155,14 @@
             if (typeof loadStudyPlan === 'function') loadStudyPlan();
             if (typeof loadExamCountdown === 'function') loadExamCountdown();
         });
+        on('sm-add-exam-btn', 'click', function () {
+            closeSemesterModal();
+            if (typeof loadExamCountdown === 'function') loadExamCountdown();
+            // Small delay to let modal close animation finish
+            setTimeout(function () {
+                if (typeof openExamModal === 'function') openExamModal();
+            }, 300);
+        });
     });
 
     // ── Navigation ─────────────────────────────────���────────

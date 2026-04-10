@@ -12,7 +12,13 @@
     'use strict';
 
     // ── State ────────────────────────────────────────
-    var timeBudget = parseInt(localStorage.getItem('studyPlanTimeBudget') || '30', 10);
+    var BUDGET_OPTIONS = [
+        { mins: 30,  label: '30m' },
+        { mins: 60,  label: '1hr' },
+        { mins: 120, label: '2hr' },
+        { mins: 180, label: '3hr' }
+    ];
+    var timeBudget = parseInt(localStorage.getItem('studyPlanTimeBudget') || '60', 10);
     var completedTopics = [];   // indices of marked-done cards (session-only)
     var allTasks = [];          // current filtered task list
     var planData = null;        // raw API response
@@ -134,9 +140,9 @@
     function renderControls() {
         if (!controlsEl) return;
         var html = '<span class="time-label">I have</span>';
-        [15, 30, 45, 60].forEach(function (mins) {
-            var active = mins === timeBudget ? ' active' : '';
-            html += '<button class="time-btn' + active + '" data-time="' + mins + '">' + mins + 'm</button>';
+        BUDGET_OPTIONS.forEach(function (opt) {
+            var active = opt.mins === timeBudget ? ' active' : '';
+            html += '<button class="time-btn' + active + '" data-time="' + opt.mins + '">' + opt.label + '</button>';
         });
         html += '<button class="refresh-btn" title="Refresh plan"><i class="fas fa-sync-alt"></i></button>';
 

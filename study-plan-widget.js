@@ -8,7 +8,7 @@
     'use strict';
 
     var WIDGET_ID = 'study-plan-widget';
-    var currentTimeBudget = parseInt(localStorage.getItem('studyPlanTimeBudget') || '30', 10);
+    var currentTimeBudget = parseInt(localStorage.getItem('studyPlanTimeBudget') || '60', 10);
 
     /**
      * Load the study plan widget on the dashboard.

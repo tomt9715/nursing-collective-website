@@ -97,7 +97,7 @@
         }
     }
 
-    function renderPlan(plan, timeBudget) {
+    function renderPlan(plan) {
         var content = document.getElementById('study-plan-content');
         if (!content) return;
 
@@ -129,7 +129,8 @@
                 return a.exam_date.localeCompare(b.exam_date);
             });
 
-            examGroups.forEach(function (group, gi) {
+            // Render compact launchpad cards (one per exam)
+            examGroups.forEach(function (group) {
                 var daysUntil = null;
                 var urgency = 'normal';
                 var dayText = '';
@@ -139,42 +140,28 @@
                     dayText = daysUntil <= 0 ? 'Today!' : daysUntil === 1 ? 'Tomorrow' : 'in ' + daysUntil + ' days';
                 }
 
-                // First group expanded, rest collapsed
-                var isExpanded = gi === 0;
                 var taskCount = group.tasks.length;
+                var sessionUrl = 'study-session.html?exam=' + encodeURIComponent(group.exam_name) +
+                    '&class=' + encodeURIComponent(group.class_name) +
+                    (group.exam_date ? '&date=' + encodeURIComponent(group.exam_date) : '');
 
-                // Exam group header
-                html += '<div class="sp-exam-group ' + urgency + '">';
-                html += '<div class="sp-exam-header" data-group="' + gi + '">';
-                html += '<div class="sp-exam-header-left">';
-                html += '<i class="fas fa-chevron-right sp-expand-icon' + (isExpanded ? ' expanded' : '') + '"></i>';
-                html += '<div class="sp-exam-info">';
-                html += '<span class="sp-exam-name">' + group.exam_name + '</span>';
-                html += '<span class="sp-exam-class">' + group.class_name + (dayText ? ' — ' + dayText : '') + '</span>';
-                html += '</div>';
-                html += '</div>';
-                html += '<span class="sp-exam-count">' + taskCount + ' topic' + (taskCount !== 1 ? 's' : '') + '</span>';
-                html += '</div>';
-
-                // Task list (collapsible)
-                html += '<div class="sp-exam-tasks' + (isExpanded ? '' : ' collapsed') + '" data-tasks="' + gi + '">';
-                group.tasks.forEach(function (task) {
-                    var icon = getTaskIcon(task.task_type);
-                    var hasNotes = task.matched_documents && task.matched_documents.length > 0;
-                    var hasGuide = !!task.guide_id;
-
-                    html += '<div class="study-plan-task">' +
-                        '<div class="task-icon ' + task.task_type + '"><i class="' + icon + '"></i></div>' +
-                        '<div class="task-info">' +
-                            '<div class="task-description">' + task.topic_name + '</div>' +
-                        '</div>' +
-                        '<div class="task-actions">' +
-                            buildTaskActions(task, hasNotes, hasGuide) +
-                        '</div>' +
-                        '</div>';
-                });
+                html += '<div class="sp-launchpad-card ' + urgency + '">';
+                html += '<div class="sp-launchpad-info">';
+                html += '<div class="sp-launchpad-name">' + group.exam_name + '</div>';
+                html += '<div class="sp-launchpad-meta">';
+                html += '<span>' + group.class_name + '</span>';
+                if (dayText) {
+                    html += '<span>&middot;</span><span class="sp-day-pill ' + urgency + '">' + dayText + '</span>';
+                }
+                html += '<span>&middot;</span><span>' + taskCount + ' topic' + (taskCount !== 1 ? 's' : '') + '</span>';
                 html += '</div></div>';
+                html += '<a href="' + sessionUrl + '" class="sp-start-btn">Start Studying <i class="fas fa-arrow-right"></i></a>';
+                html += '</div>';
             });
+
+            // General "View Full Plan" link
+            html += '<a href="study-session.html" class="sp-start-all">' +
+                '<i class="fas fa-calendar-check"></i> View Full Study Plan</a>';
 
         } else if (plan.message) {
             html += '<div class="sp-empty-state"><p class="sp-empty-desc">' + plan.message + '</p></div>';
@@ -182,81 +169,7 @@
             html += '<div class="sp-empty-state"><p class="sp-empty-desc">No study tasks for today. You\'re all caught up!</p></div>';
         }
 
-        // Time budget selector
-        html += '<div class="time-selector">' +
-            '<span class="time-label">I have</span>';
-        [15, 30, 45, 60].forEach(function (mins) {
-            var active = mins === currentTimeBudget ? 'active' : '';
-            html += '<button class="time-btn ' + active + '" data-time="' + mins + '">' + mins + 'm</button>';
-        });
-        html += '<button class="refresh-btn" title="Refresh plan"><i class="fas fa-sync-alt"></i></button></div>';
-
         content.innerHTML = html;
-
-        // Expand/collapse exam groups
-        content.querySelectorAll('.sp-exam-header').forEach(function (header) {
-            header.addEventListener('click', function () {
-                var gi = this.dataset.group;
-                var tasks = content.querySelector('[data-tasks="' + gi + '"]');
-                var icon = this.querySelector('.sp-expand-icon');
-                if (tasks) tasks.classList.toggle('collapsed');
-                if (icon) icon.classList.toggle('expanded');
-            });
-        });
-
-        // Event listeners for action buttons
-        content.querySelectorAll('.task-action-btn').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var href = this.dataset.href;
-                if (href) window.location.href = href;
-            });
-        });
-
-        content.querySelectorAll('.time-btn').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-                var newTime = parseInt(this.dataset.time, 10);
-                if (newTime === currentTimeBudget) return;
-                currentTimeBudget = newTime;
-                localStorage.setItem('studyPlanTimeBudget', newTime.toString());
-                content.querySelectorAll('.time-btn').forEach(function (b) { b.classList.remove('active'); });
-                btn.classList.add('active');
-                fetchAndRenderPlan(true);
-            });
-        });
-
-        var refreshBtn = content.querySelector('.refresh-btn');
-        if (refreshBtn) {
-            refreshBtn.addEventListener('click', function () {
-                var self = this;
-                self.classList.add('spinning');
-                fetchAndRenderPlan(true).then(function () { self.classList.remove('spinning'); });
-            });
-        }
-    }
-
-    function buildTaskActions(task, hasNotes, hasGuide) {
-        var html = '';
-
-        if (hasNotes) {
-            var docId = task.matched_documents[0].id;
-            html += '<button class="task-action-btn primary" data-href="ai-tools.html?doc=' + docId + '">' +
-                '<i class="fas fa-file-alt"></i> Your Notes</button>';
-        }
-
-        if (hasGuide) {
-            var guideLink = task.link || ('guides/' + task.guide_id + '.html');
-            var btnClass = hasNotes ? 'secondary' : 'primary';
-            html += '<button class="task-action-btn ' + btnClass + '" data-href="' + guideLink + '">' +
-                '<i class="fas fa-book-open"></i> Our Guide</button>';
-        }
-
-        if (!hasNotes) {
-            var uploadClass = hasGuide ? 'tertiary' : 'primary';
-            html += '<button class="task-action-btn ' + uploadClass + '" data-href="ai-tools.html">' +
-                '<i class="fas fa-upload"></i> Upload Notes</button>';
-        }
-
-        return html;
     }
 
     function getTaskIcon(taskType) {

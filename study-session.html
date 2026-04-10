@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Session - The Nursing Collective</title>
+    <meta name="description" content="Focused study session — review topics, practice questions, and track your progress.">
+    <link rel="canonical" href="https://thenursingcollective.pro/study-session.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/study-session.html">
+    <meta property="og:title" content="Study Session - The Nursing Collective">
+    <meta property="og:description" content="Focused study session — review topics, practice questions, and track your progress.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#2E86AB">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+    <!-- Bundled CSS -->
+    <link rel="stylesheet" href="css/bundle.min.css">
+    <link rel="stylesheet" href="css/feedback-widget.css">
+    <link rel="stylesheet" href="css/page-dashboard.css?v=6.0.split">
+    <link rel="stylesheet" href="css/page-dark.css?v=6.0.split">
+    <link rel="stylesheet" href="css/page-shared.css?v=6.0.split">
+    <link rel="stylesheet" href="css/global-overrides.css?v=6.3.session">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="lockscreen.js"></script>
+    <script src="beta-banner.js"></script>
+    <!-- Sentry Error Tracking -->
+    <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script defer src="sentry-init.js"></script>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html">Dashboard</a>
+                <a href="resources.html">Resources</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <div class="user-menu">
+                    <button class="user-avatar" id="user-menu-btn" title="Account menu">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="user-dropdown-header">
+                            <div class="user-avatar-large">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <div class="user-info">
+                                <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                <span class="user-email" id="dropdown-user-email">Loading...</span>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-divider"></div>
+                        <div class="theme-selector">
+                            <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
+                            <div class="theme-selector-options">
+                                <button class="theme-option" data-theme-mode="light" title="Light mode">
+                                    <i class="fas fa-sun"></i>
+                                </button>
+                                <button class="theme-option" data-theme-mode="dark" title="Dark mode">
+                                    <i class="fas fa-moon"></i>
+                                </button>
+                                <button class="theme-option" data-theme-mode="system" title="System preference">
+                                    <i class="fas fa-desktop"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
+                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                        <div class="user-dropdown-divider"></div>
+                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-content">
+        <section class="study-session-page">
+            <a href="dashboard.html" class="ss-back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+
+            <!-- Header: exam info or "Today's Study Plan" -->
+            <div class="ss-header" id="ss-header"></div>
+
+            <!-- Time budget controls -->
+            <div class="ss-controls" id="ss-controls"></div>
+
+            <!-- Progress bar -->
+            <div class="ss-progress" id="ss-progress" style="display:none"></div>
+
+            <!-- Topic cards -->
+            <div class="ss-topics" id="ss-topics">
+                <!-- Loading skeleton -->
+                <div class="ss-skeleton-card">
+                    <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
+                    <div style="flex:1">
+                        <div class="skeleton-box" style="width:60%;height:16px;margin-bottom:8px"></div>
+                        <div class="skeleton-box" style="width:40%;height:12px;margin-bottom:12px"></div>
+                        <div class="skeleton-box" style="width:50%;height:28px;border-radius:7px"></div>
+                    </div>
+                </div>
+                <div class="ss-skeleton-card">
+                    <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
+                    <div style="flex:1">
+                        <div class="skeleton-box" style="width:55%;height:16px;margin-bottom:8px"></div>
+                        <div class="skeleton-box" style="width:35%;height:12px;margin-bottom:12px"></div>
+                        <div class="skeleton-box" style="width:45%;height:28px;border-radius:7px"></div>
+                    </div>
+                </div>
+                <div class="ss-skeleton-card">
+                    <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
+                    <div style="flex:1">
+                        <div class="skeleton-box" style="width:50%;height:16px;margin-bottom:8px"></div>
+                        <div class="skeleton-box" style="width:30%;height:12px;margin-bottom:12px"></div>
+                        <div class="skeleton-box" style="width:55%;height:28px;border-radius:7px"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <span>The Nursing Collective</span>
+                    </div>
+                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
+                    </p>
+                    <div class="social-links">
+                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+                <p class="footer-attribution">
+                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="dark-mode.js"></script>
+    <script src="api-service.js?v=1769142742"></script>
+    <script defer src="script.js?v=4.8.dashboard"></script>
+    <script defer src="study-session-script.js?v=1.0"></script>
+    <!-- Cookie Consent & Analytics (GDPR compliant) -->
+    <script src="analytics.js"></script>
+    <script src="cookie-consent.js"></script>
+    <script src="feedback-widget.js"></script>
+</body>
+</html>

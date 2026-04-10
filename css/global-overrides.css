@@ -3307,3 +3307,448 @@ a.trust-btn:hover {
         margin-bottom: 4px;
     }
 }
+
+/* ── Study Plan Widget — Launchpad Mode ────────────── */
+
+.sp-launchpad-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.sp-launchpad-card:last-of-type { margin-bottom: 0; }
+.sp-launchpad-card:hover { border-color: rgba(46,134,171,0.25); box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
+
+.sp-launchpad-card.urgent { border-left: 3px solid #ef4444; }
+.sp-launchpad-card.soon   { border-left: 3px solid #f59e0b; }
+.sp-launchpad-card.near   { border-left: 3px solid #3b82f6; }
+.sp-launchpad-card.normal { border-left: 3px solid var(--border-color, #e5e7eb); }
+
+.sp-launchpad-info { flex: 1; min-width: 0; }
+.sp-launchpad-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 2px;
+}
+.sp-launchpad-meta {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-secondary, #6b7280);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+.sp-launchpad-meta .sp-day-pill {
+    font-weight: 600;
+}
+.sp-launchpad-meta .sp-day-pill.urgent { color: #dc2626; }
+.sp-launchpad-meta .sp-day-pill.soon   { color: #d97706; }
+
+.sp-start-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--primary-color, #2E86AB);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s ease, transform 0.1s ease;
+    text-decoration: none;
+}
+.sp-start-btn:hover { background: var(--primary-dark, #236b8a); transform: translateY(-1px); }
+.sp-start-btn i { font-size: 0.7rem; }
+
+.sp-start-all {
+    display: block;
+    text-align: center;
+    margin-top: 14px;
+    padding: 10px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary-color, #2E86AB);
+    text-decoration: none;
+    border: 1px dashed var(--border-color, #e5e7eb);
+    border-radius: 10px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+}
+.sp-start-all:hover { background: rgba(46,134,171,0.04); border-color: rgba(46,134,171,0.3); }
+
+/* Launchpad dark mode */
+[data-theme="dark"] .sp-launchpad-card { background: var(--card-bg, #1f2937); border-color: var(--border-color, #374151); }
+[data-theme="dark"] .sp-launchpad-card:hover { border-color: rgba(56,189,248,0.3); }
+[data-theme="dark"] .sp-launchpad-card.urgent { border-left-color: #f87171; }
+[data-theme="dark"] .sp-launchpad-card.soon   { border-left-color: #fbbf24; }
+[data-theme="dark"] .sp-launchpad-card.near   { border-left-color: #60a5fa; }
+[data-theme="dark"] .sp-launchpad-meta .sp-day-pill.urgent { color: #f87171; }
+[data-theme="dark"] .sp-launchpad-meta .sp-day-pill.soon   { color: #fbbf24; }
+[data-theme="dark"] .sp-start-all { color: #38bdf8; border-color: var(--border-color, #374151); }
+[data-theme="dark"] .sp-start-all:hover { background: rgba(56,189,248,0.06); border-color: rgba(56,189,248,0.3); }
+
+/* ── Study Session Page ────────────────────────────── */
+
+.study-session-page {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px 24px 80px;
+    min-height: 60vh;
+}
+
+.ss-back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary, #6b7280);
+    text-decoration: none;
+    margin-bottom: 20px;
+    transition: color 0.15s ease;
+}
+.ss-back-link:hover { color: var(--primary-color, #2E86AB); text-decoration: none; }
+
+/* Header */
+.ss-header {
+    margin-bottom: 24px;
+}
+.ss-header-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.ss-header-meta {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    color: var(--text-secondary, #6b7280);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+.ss-countdown-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 20px;
+    white-space: nowrap;
+}
+.ss-countdown-pill.urgent { background: rgba(239,68,68,0.1); color: #dc2626; }
+.ss-countdown-pill.soon   { background: rgba(245,158,11,0.1); color: #d97706; }
+.ss-countdown-pill.near   { background: rgba(59,130,246,0.1); color: #2563eb; }
+.ss-countdown-pill.normal { background: rgba(107,114,128,0.1); color: #6b7280; }
+
+/* Controls (time budget) */
+.ss-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.ss-controls .time-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-secondary, #6b7280);
+}
+.ss-controls .time-btn {
+    padding: 6px 14px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 8px;
+    background: var(--card-bg, #fff);
+    color: var(--text-secondary, #6b7280);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+.ss-controls .time-btn:hover { border-color: var(--primary-color, #2E86AB); color: var(--primary-color, #2E86AB); }
+.ss-controls .time-btn.active {
+    background: var(--primary-color, #2E86AB);
+    color: #fff;
+    border-color: var(--primary-color, #2E86AB);
+}
+.ss-controls .refresh-btn {
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 8px;
+    background: var(--card-bg, #fff);
+    color: var(--text-secondary, #6b7280);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.15s ease;
+}
+.ss-controls .refresh-btn:hover { border-color: var(--primary-color, #2E86AB); color: var(--primary-color, #2E86AB); }
+.ss-controls .refresh-btn.spinning i { animation: spin 0.6s linear infinite; }
+
+/* Progress bar */
+.ss-progress {
+    margin-bottom: 24px;
+}
+.ss-progress-bar-wrap {
+    height: 6px;
+    background: rgba(0,0,0,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 6px;
+}
+.ss-progress-bar {
+    height: 100%;
+    background: var(--primary-color, #2E86AB);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+    width: 0%;
+}
+.ss-progress-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.78rem;
+    color: var(--text-secondary, #6b7280);
+}
+
+/* Topic cards */
+.ss-topics {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ss-topic-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 20px;
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 14px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+.ss-topic-card:hover { border-color: rgba(46,134,171,0.2); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+
+.ss-topic-card .task-icon {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: #fff;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.ss-topic-body { flex: 1; min-width: 0; }
+.ss-topic-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 6px;
+}
+.ss-task-reasons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 12px;
+}
+.ss-reason-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 2px 8px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-secondary, #6b7280);
+    background: rgba(0,0,0,0.04);
+    border-radius: 4px;
+}
+.ss-topic-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.ss-topic-actions .task-action-btn {
+    font-size: 0.78rem;
+    padding: 6px 12px;
+    border-radius: 7px;
+}
+
+/* Done button */
+.ss-done-btn {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid var(--border-color, #e5e7eb);
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-light, #9ca3af);
+    cursor: pointer;
+    font-size: 0.75rem;
+    transition: all 0.2s ease;
+}
+.ss-done-btn:hover {
+    border-color: #059669;
+    color: #059669;
+    background: rgba(5,150,105,0.06);
+}
+
+/* Completed topic */
+.ss-topic-card.ss-topic-done {
+    opacity: 0.5;
+    border-color: rgba(5,150,105,0.3);
+}
+.ss-topic-card.ss-topic-done .ss-done-btn {
+    border-color: #059669;
+    background: #059669;
+    color: #fff;
+}
+.ss-topic-card.ss-topic-done .ss-topic-name {
+    text-decoration: line-through;
+    color: var(--text-secondary, #6b7280);
+}
+
+/* Exam group headers on session page */
+.ss-exam-divider {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 4px;
+    padding-bottom: 4px;
+}
+.ss-exam-divider-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary, #6b7280);
+}
+.ss-exam-divider-line {
+    flex: 1;
+    height: 1px;
+    background: var(--border-color, #e5e7eb);
+}
+
+/* Empty / error states */
+.ss-empty {
+    text-align: center;
+    padding: 60px 24px;
+    color: var(--text-secondary, #6b7280);
+}
+.ss-empty-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+    opacity: 0.4;
+}
+.ss-empty-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 8px;
+}
+.ss-empty-text {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    margin: 0 0 20px;
+}
+
+/* Skeleton loading */
+.ss-skeleton-card {
+    display: flex;
+    gap: 14px;
+    padding: 18px 20px;
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border-color, #e5e7eb);
+    border-radius: 14px;
+}
+.ss-skeleton-card .skeleton-box {
+    background: rgba(0,0,0,0.06);
+    border-radius: 6px;
+    animation: skeleton-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}
+
+/* Study Session dark mode */
+[data-theme="dark"] .ss-back-link:hover { color: #38bdf8; }
+[data-theme="dark"] .ss-countdown-pill.urgent { background: rgba(248,113,113,0.12); color: #f87171; }
+[data-theme="dark"] .ss-countdown-pill.soon   { background: rgba(251,191,36,0.12); color: #fbbf24; }
+[data-theme="dark"] .ss-countdown-pill.near   { background: rgba(96,165,250,0.12); color: #60a5fa; }
+[data-theme="dark"] .ss-countdown-pill.normal { background: rgba(255,255,255,0.06); color: #9ca3af; }
+[data-theme="dark"] .ss-controls .time-btn { background: var(--card-bg, #1f2937); border-color: var(--border-color, #374151); color: #9ca3af; }
+[data-theme="dark"] .ss-controls .time-btn:hover { border-color: #38bdf8; color: #38bdf8; }
+[data-theme="dark"] .ss-controls .time-btn.active { background: #38bdf8; color: #0f172a; border-color: #38bdf8; }
+[data-theme="dark"] .ss-controls .refresh-btn { background: var(--card-bg, #1f2937); border-color: var(--border-color, #374151); color: #9ca3af; }
+[data-theme="dark"] .ss-controls .refresh-btn:hover { border-color: #38bdf8; color: #38bdf8; }
+[data-theme="dark"] .ss-progress-bar-wrap { background: rgba(255,255,255,0.06); }
+[data-theme="dark"] .ss-progress-bar { background: #38bdf8; }
+[data-theme="dark"] .ss-topic-card { background: var(--card-bg, #1f2937); border-color: var(--border-color, #374151); }
+[data-theme="dark"] .ss-topic-card:hover { border-color: rgba(56,189,248,0.25); }
+[data-theme="dark"] .ss-reason-badge { background: rgba(255,255,255,0.06); color: #9ca3af; }
+[data-theme="dark"] .ss-done-btn { border-color: var(--border-color, #374151); color: #6b7280; }
+[data-theme="dark"] .ss-done-btn:hover { border-color: #34d399; color: #34d399; background: rgba(52,211,153,0.08); }
+[data-theme="dark"] .ss-topic-card.ss-topic-done .ss-done-btn { background: #059669; border-color: #059669; }
+[data-theme="dark"] .ss-exam-divider-line { background: var(--border-color, #374151); }
+[data-theme="dark"] .ss-skeleton-card { background: var(--card-bg, #1f2937); border-color: var(--border-color, #374151); }
+[data-theme="dark"] .ss-skeleton-card .skeleton-box { background: rgba(255,255,255,0.06); }
+
+/* Study Session responsive */
+@media (max-width: 768px) {
+    .study-session-page { padding: 20px 16px 60px; }
+    .ss-header-title { font-size: 1.3rem; }
+    .ss-topic-card { padding: 14px 16px; gap: 12px; }
+    .ss-topic-card .task-icon { width: 36px; height: 36px; min-width: 36px; }
+    .ss-topic-actions { gap: 6px; }
+    .ss-topic-actions .task-action-btn { font-size: 0.72rem; padding: 5px 10px; }
+}
+
+@media (max-width: 480px) {
+    .study-session-page { padding: 16px 12px 60px; }
+    .ss-header-title { font-size: 1.15rem; gap: 8px; }
+    .ss-topic-card { flex-direction: column; gap: 10px; padding: 14px; }
+    .ss-topic-card .task-icon { width: 32px; height: 32px; min-width: 32px; font-size: 0.85rem; }
+    .ss-done-btn { top: 10px; right: 10px; width: 28px; height: 28px; font-size: 0.65rem; }
+    .ss-topic-actions { width: 100%; }
+    .ss-topic-actions .task-action-btn { flex: 1; justify-content: center; text-align: center; }
+    .ss-controls { gap: 6px; }
+}

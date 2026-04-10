@@ -774,7 +774,7 @@
         </div>
     </footer>
 
-    <!-- Semester Setup Modal -->
+    <!-- Semester Setup Wizard -->
     <div class="semester-modal-overlay" id="semester-modal-overlay">
         <div class="semester-modal">
             <div class="sm-modal-top">
@@ -782,10 +782,19 @@
                 <button class="semester-modal-close" id="semester-modal-close"><i class="fas fa-times"></i></button>
             </div>
 
-            <!-- Add Classes -->
+            <!-- Step Indicator -->
+            <div class="sm-steps-bar" id="sm-steps-bar">
+                <div class="sm-step-dot active" data-step="1"><span>1</span></div>
+                <div class="sm-step-line"></div>
+                <div class="sm-step-dot" data-step="2"><span>2</span></div>
+                <div class="sm-step-line"></div>
+                <div class="sm-step-dot" data-step="3"><span>3</span></div>
+            </div>
+
+            <!-- Step 1: Add Classes -->
             <div class="sm-panel" id="sm-step-1">
                 <h2 id="sm-step-1-title">Add Your Classes</h2>
-                <p class="sm-subtitle">What classes are you taking this semester? You can add exams and topics later as they come up.</p>
+                <p class="sm-subtitle">What classes are you taking this semester?</p>
 
                 <div class="sm-semester-selector">
                     <label>Semester</label>
@@ -805,24 +814,35 @@
 
                 <div class="sm-actions">
                     <button class="sm-btn-danger hidden" id="sm-clear-all"><i class="fas fa-trash-alt"></i> Clear All</button>
-                    <button class="sm-btn-next" id="sm-to-step-2"><i class="fas fa-check"></i> Save Classes</button>
+                    <button class="sm-btn-next" id="sm-to-step-2">Next: Add Exams <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
 
-            <!-- Success → Next Step: Add Exams -->
+            <!-- Step 2: Add Exams Per Class -->
+            <div class="sm-panel hidden" id="sm-step-2">
+                <h2>Add Your Exams</h2>
+                <p class="sm-subtitle">Add upcoming exams for each class. Upload a blueprint or syllabus to auto-extract topics.</p>
+
+                <div id="sm-exams-editor">
+                    <!-- Dynamically rendered per-class exam forms -->
+                </div>
+
+                <div class="sm-actions">
+                    <button class="sm-btn-back" id="sm-back-to-step-1"><i class="fas fa-arrow-left"></i> Back</button>
+                    <div class="sm-actions-right">
+                        <button class="sm-btn-skip" id="sm-skip-exams">Skip for now</button>
+                        <button class="sm-btn-next" id="sm-to-step-3">Finish Setup <i class="fas fa-check"></i></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Done -->
             <div class="sm-panel hidden" id="sm-step-success">
                 <div class="sm-success">
                     <div class="sm-success-icon"><i class="fas fa-check-circle"></i></div>
-                    <h2>Classes saved!</h2>
-                    <p class="sm-subtitle">Now add your upcoming exams so we can build your personalized study plan.</p>
-
-                    <div class="sm-ai-nudge">
-                        <div class="sm-ai-nudge-icon"><i class="fas fa-clipboard-list"></i></div>
-                        <h3>Add your first exam</h3>
-                        <p>Upload your exam blueprint or syllabus and we'll extract the topics automatically. You can also add topics manually.</p>
-                        <button class="sm-ai-nudge-btn" id="sm-add-exam-btn"><i class="fas fa-plus"></i> Add Exam</button>
-                    </div>
-
+                    <h2>You're all set!</h2>
+                    <p class="sm-subtitle" id="sm-success-summary"></p>
+                    <a href="study-session.html" class="sm-btn-next" style="display:inline-flex;text-decoration:none;justify-content:center">Start Studying <i class="fas fa-arrow-right"></i></a>
                     <button class="sm-btn-done" id="sm-done"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
                 </div>
             </div>

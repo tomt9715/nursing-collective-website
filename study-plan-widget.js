@@ -153,7 +153,7 @@
                 if (dayText) {
                     html += '<span>&middot;</span><span class="sp-day-pill ' + urgency + '">' + dayText + '</span>';
                 }
-                html += '<span>&middot;</span><span>' + taskCount + ' topic' + (taskCount !== 1 ? 's' : '') + '</span>';
+                html += '<span>&middot;</span><span>' + taskCount + ' topic' + (taskCount !== 1 ? 's' : '') + ' today</span>';
                 html += '</div></div>';
                 html += '<a href="' + sessionUrl + '" class="sp-start-btn">Start Studying <i class="fas fa-arrow-right"></i></a>';
                 html += '</div>';

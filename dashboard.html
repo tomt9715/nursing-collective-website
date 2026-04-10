@@ -256,6 +256,10 @@
         [data-theme="dark"] .dot-guide{background:#34d399}
         [data-theme="dark"] .dot-ai{background:#c084fc}
         [data-theme="dark"] .dot-plan{background:#fbbf24}
+        .activity-legend{display:flex;justify-content:center;gap:16px;padding:10px 0 0;border-top:1px solid var(--border-color,#e5e7eb);margin-top:12px}
+        .activity-legend-item{display:inline-flex;align-items:center;gap:5px;font-family:'Source Sans 3',sans-serif;font-size:.7rem;color:var(--text-secondary,#6b7280)}
+        .activity-legend .activity-dot{width:8px;height:8px}
+        @media(max-width:480px){.activity-legend{gap:10px;flex-wrap:wrap}}
         /* Multi-link empty state */
         .activity-nudge-links{display:flex;gap:8px;justify-content:center;margin-top:8px;flex-wrap:wrap}
         .activity-nudge-links .activity-nudge-btn{font-size:.75rem;padding:6px 12px}
@@ -695,6 +699,12 @@
                                 <div class="activity-summary-num" id="activity-streak">0</div>
                                 <div class="activity-summary-label">Streak</div>
                             </div>
+                        </div>
+                        <div class="activity-legend">
+                            <span class="activity-legend-item"><span class="activity-dot dot-quiz"></span> Quizzes</span>
+                            <span class="activity-legend-item"><span class="activity-dot dot-guide"></span> Guides</span>
+                            <span class="activity-legend-item"><span class="activity-dot dot-ai"></span> AI Tools</span>
+                            <span class="activity-legend-item"><span class="activity-dot dot-plan"></span> Study Plan</span>
                         </div>
                     </div>
                 </div>

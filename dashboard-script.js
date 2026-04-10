@@ -554,7 +554,7 @@ function loadStudyActivityCalendar(weekOffset) {
     var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     var monthNames = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    var FULL_BAR = 8; // 8 activities = 100% full bar
+    var FULL_BAR = 5; // 5 activities = 100% full bar
 
     var html = '';
     var weekTotal = 0;
@@ -566,7 +566,7 @@ function loadStudyActivityCalendar(weekOffset) {
         var isToday = d.getTime() === today.getTime();
         var isFuture = d > today;
         var key = d.toISOString().split('T')[0];
-        var dayData = activityDays[key] || { quiz: 0, guide: 0, ai_gen: 0, upload: 0, study_plan: 0, total: 0 };
+        var dayData = activityDays[key] || { quiz: 0, guide: 0, ai: 0, study_plan: 0, total: 0 };
         var count = dayData.total;
         var pct = isFuture ? 0 : Math.min(100, Math.round((count / FULL_BAR) * 100));
         var dateLabel = monthNames[d.getMonth()] + ' ' + d.getDate();
@@ -577,7 +577,7 @@ function loadStudyActivityCalendar(weekOffset) {
         }
 
         var rowClass = 'activity-bar-row';
-        var isFireDay = count > 7 && !isFuture;
+        var isFireDay = count >= 5 && !isFuture;
         if (isToday) rowClass += ' today';
         if (isFireDay) rowClass += ' fire';
         if (count === 0 && !isFuture) rowClass += ' inactive';
@@ -593,10 +593,10 @@ function loadStudyActivityCalendar(weekOffset) {
         var dots = '';
         if (!isFuture && count > 0) {
             dots = '<div class="activity-bar-dots">';
-            if (dayData.quiz > 0) dots += '<span class="activity-dot dot-quiz" title="Quizzes"></span>';
-            if (dayData.guide > 0) dots += '<span class="activity-dot dot-guide" title="Guides"></span>';
-            if (dayData.ai_gen > 0 || dayData.upload > 0) dots += '<span class="activity-dot dot-ai" title="AI Tools"></span>';
-            if (dayData.study_plan > 0) dots += '<span class="activity-dot dot-plan" title="Study Plan"></span>';
+            if (dayData.quiz > 0) dots += '<span class="activity-dot dot-quiz" title="' + dayData.quiz + ' quiz session' + (dayData.quiz !== 1 ? 's' : '') + '"></span>';
+            if (dayData.guide > 0) dots += '<span class="activity-dot dot-guide" title="' + dayData.guide + ' guide' + (dayData.guide !== 1 ? 's' : '') + ' opened"></span>';
+            if (dayData.ai > 0) dots += '<span class="activity-dot dot-ai" title="' + dayData.ai + ' document' + (dayData.ai !== 1 ? 's' : '') + ' uploaded"></span>';
+            if (dayData.study_plan > 0) dots += '<span class="activity-dot dot-plan" title="Study plan generated"></span>';
             dots += '</div>';
         }
 

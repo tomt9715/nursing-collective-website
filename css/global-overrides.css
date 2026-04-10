@@ -3352,6 +3352,18 @@ a.trust-btn:hover {
 .sp-launchpad-meta .sp-day-pill.urgent { color: #dc2626; }
 .sp-launchpad-meta .sp-day-pill.soon   { color: #d97706; }
 
+.sp-launchpad-topics {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.75rem;
+    color: var(--text-light, #9ca3af);
+    margin-top: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+}
+[data-theme="dark"] .sp-launchpad-topics { color: #6b7280; }
+
 .sp-start-btn {
     display: inline-flex;
     align-items: center;
@@ -3604,6 +3616,26 @@ a.trust-btn:hover {
     font-size: 0.78rem;
     padding: 6px 12px;
     border-radius: 7px;
+}
+
+/* External link indicator on action buttons */
+.ss-topic-actions .task-action-btn::after {
+    content: '\f35d';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 0.55rem;
+    margin-left: 4px;
+    opacity: 0.5;
+}
+
+/* Related guide label */
+.ss-related-label {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.7rem;
+    color: var(--text-light, #9ca3af);
+    font-weight: 500;
+    margin-right: 2px;
+    align-self: center;
 }
 
 /* Done button */

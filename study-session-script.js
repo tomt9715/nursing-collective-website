@@ -293,21 +293,30 @@
         }
 
         if (!hasNotes) {
-            var uploadClass = hasGuide ? 'tertiary' : 'primary';
+            var uploadClass = hasGuide ? 'tertiary' : (task.related_guides && task.related_guides.length > 0 ? 'secondary' : 'primary');
             html += '<button class="task-action-btn ' + uploadClass + '" data-href="ai-tools.html">' +
                 '<i class="fas fa-upload"></i> Upload Notes</button>';
+        }
+
+        // Related guides for unmatched topics
+        if (!hasGuide && task.related_guides && task.related_guides.length > 0) {
+            html += '<span class="ss-related-label">Related:</span>';
+            task.related_guides.forEach(function (rg) {
+                html += '<button class="task-action-btn tertiary" data-href="guides/' + escapeHtml(rg.id) + '.html">' +
+                    '<i class="fas fa-book-open"></i> ' + escapeHtml(rg.name) + '</button>';
+            });
         }
 
         return html;
     }
 
     function attachTopicListeners() {
-        // Action buttons → navigate
+        // Action buttons → open in new tab (preserves session progress)
         topicsEl.querySelectorAll('.task-action-btn').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 var href = this.dataset.href;
-                if (href) window.location.href = href;
+                if (href) window.open(href, '_blank');
             });
         });
 

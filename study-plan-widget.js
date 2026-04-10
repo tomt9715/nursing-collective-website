@@ -154,7 +154,14 @@
                     html += '<span>&middot;</span><span class="sp-day-pill ' + urgency + '">' + dayText + '</span>';
                 }
                 html += '<span>&middot;</span><span>' + taskCount + ' topic' + (taskCount !== 1 ? 's' : '') + ' today</span>';
-                html += '</div></div>';
+                html += '</div>';
+
+                // Topic name previews (first 2)
+                var previewNames = group.tasks.slice(0, 2).map(function (t) { return t.topic_name; });
+                var previewText = previewNames.join(', ') + (taskCount > 2 ? '...' : '');
+                html += '<div class="sp-launchpad-topics">' + previewText + '</div>';
+
+                html += '</div>';
                 html += '<a href="' + sessionUrl + '" class="sp-start-btn">Start Studying <i class="fas fa-arrow-right"></i></a>';
                 html += '</div>';
             });

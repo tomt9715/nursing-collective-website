@@ -195,9 +195,9 @@
         if (allTasks.length === 0) {
             topicsEl.innerHTML =
                 '<div class="ss-empty">' +
-                    '<div class="ss-empty-icon"><i class="fas fa-check-circle"></i></div>' +
-                    '<div class="ss-empty-title">You\'re all caught up!</div>' +
-                    '<div class="ss-empty-text">No study tasks for today. Enjoy the break or add more exams from your dashboard.</div>' +
+                    '<div class="ss-empty-icon"><i class="fas fa-clipboard-list"></i></div>' +
+                    '<div class="ss-empty-title">No study tasks yet</div>' +
+                    '<div class="ss-empty-text">Add upcoming exams with topics from your dashboard, and we\'ll build your personalized study plan.</div>' +
                     '<a href="dashboard.html" class="sp-start-btn"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>' +
                 '</div>';
             return;

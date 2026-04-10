@@ -163,10 +163,15 @@
             html += '<a href="study-session.html" class="sp-start-all">' +
                 '<i class="fas fa-calendar-check"></i> View Full Study Plan</a>';
 
-        } else if (plan.message) {
-            html += '<div class="sp-empty-state"><p class="sp-empty-desc">' + plan.message + '</p></div>';
         } else {
-            html += '<div class="sp-empty-state"><p class="sp-empty-desc">No study tasks for today. You\'re all caught up!</p></div>';
+            // No tasks — guide user to add exams
+            html += '<div class="sp-empty-state">' +
+                '<div class="sp-empty-icon"><i class="fas fa-clipboard-list"></i></div>' +
+                '<div class="sp-empty-text">' +
+                    '<p class="sp-empty-title">Add your exams to get started</p>' +
+                    '<p class="sp-empty-desc">Add upcoming exams with topics from the Exam Countdown widget, and we\'ll build your personalized daily study plan.</p>' +
+                '</div>' +
+            '</div>';
         }
 
         content.innerHTML = html;

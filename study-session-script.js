@@ -116,12 +116,20 @@
         });
     }
 
-    function openUploadModal(topicName, rowIdx) {
-        uploadModalState.topicName = topicName;
+    function openUploadModal(topicNames, rowIdx, examName) {
+        uploadModalState.topicName = topicNames; // may be "||" separated for exam-level
         uploadModalState.rowIdx = rowIdx;
+        uploadModalState.examName = examName || '';
 
         var label = document.getElementById('ss-upload-topic-label');
-        if (label) label.textContent = 'for: ' + topicName;
+        if (label) {
+            if (examName) {
+                label.textContent = 'for: ' + examName;
+            } else {
+                // Single topic
+                label.textContent = 'for: ' + topicNames;
+            }
+        }
 
         // Reset to dropzone state
         var body = document.getElementById('ss-upload-body');
@@ -161,8 +169,9 @@
         try {
             var formData = new FormData();
             formData.append('file', file);
+            // Send topic names (may be "||" separated for exam-level upload)
             if (uploadModalState.topicName) {
-                formData.append('topic_name', uploadModalState.topicName);
+                formData.append('topic_names', uploadModalState.topicName);
             }
 
             var token = localStorage.getItem('accessToken');
@@ -260,22 +269,33 @@
 
         body.insertAdjacentHTML('beforeend', html);
 
-        // Update the topic row to show "Notes" link
-        if (uploadId && uploadModalState.rowIdx >= 0) {
-            var row = topicsEl.querySelector('[data-idx="' + uploadModalState.rowIdx + '"]');
-            if (row) {
-                var actions = row.querySelector('.ss-topic-actions');
-                if (actions) {
-                    // Replace Upload button with Notes button
-                    var uploadBtn = actions.querySelector('.ss-action-link.muted');
-                    if (uploadBtn) {
-                        uploadBtn.className = 'ss-action-link';
-                        uploadBtn.dataset.href = 'ai-tools.html?doc=' + uploadId;
-                        uploadBtn.innerHTML = '<i class="fas fa-file-alt"></i> Notes';
-                        uploadBtn.title = 'View your uploaded notes';
+        // Update topic rows to show "Notes" links
+        if (uploadId) {
+            // For exam-level uploads, update all rows that had "no resources yet"
+            topicsEl.querySelectorAll('.ss-no-resources').forEach(function (label) {
+                var row = label.closest('.ss-topic-row');
+                if (row) {
+                    var actions = row.querySelector('.ss-topic-actions');
+                    if (actions) {
+                        label.remove();
+                        var noteBtn = document.createElement('button');
+                        noteBtn.className = 'ss-action-link';
+                        noteBtn.dataset.href = 'ai-tools.html?doc=' + uploadId;
+                        noteBtn.innerHTML = '<i class="fas fa-file-alt"></i> Notes';
+                        noteBtn.title = 'View your uploaded notes';
+                        noteBtn.addEventListener('click', function (e) {
+                            e.stopPropagation();
+                            window.open(this.dataset.href, '_blank');
+                        });
+                        actions.insertBefore(noteBtn, actions.firstChild);
                     }
                 }
-            }
+            });
+
+            // Hide the exam-level upload button since notes are now uploaded
+            topicsEl.querySelectorAll('.ss-exam-upload-btn').forEach(function (btn) {
+                btn.style.display = 'none';
+            });
         }
 
         var doneBtn = document.getElementById('ss-upload-done-btn');
@@ -482,6 +502,14 @@
             var urgency = getUrgency(group.exam_date);
             var topicCount = group.tasks.length;
 
+            // Check if any topic in this group still needs notes
+            var groupNeedsUpload = group.tasks.some(function (t) {
+                return !(t.matched_documents && t.matched_documents.length > 0);
+            });
+
+            // Collect all topic names for this exam (for tagging the upload)
+            var groupTopicNames = group.tasks.map(function (t) { return t.topic_name || ''; }).filter(Boolean);
+
             // Exam group header
             html += '<div class="ss-exam-section">';
             html += '<div class="ss-exam-header ' + urgency.cls + '">';
@@ -490,6 +518,13 @@
             html += '<span class="ss-exam-header-class">' + escapeHtml(group.class_name) + '</span>';
             html += '</div>';
             html += '<div class="ss-exam-header-right">';
+            if (groupNeedsUpload) {
+                html += '<button class="ss-exam-upload-btn ss-upload-trigger" ' +
+                    'data-topic="' + escapeHtml(groupTopicNames.join('||')) + '" ' +
+                    'data-exam-name="' + escapeHtml(group.exam_name) + '" ' +
+                    'data-row-idx="-1" title="Upload study notes for this exam">' +
+                    '<i class="fas fa-upload"></i> Upload Notes</button>';
+            }
             if (dayText) {
                 html += '<span class="ss-countdown-pill ' + urgency.cls + '">' + dayText + '</span>';
             }
@@ -547,9 +582,9 @@
             html += '<button class="ss-action-link primary" data-href="' + escapeHtml(guideLink) + '" title="Open study guide">' +
                 '<i class="fas fa-book-open"></i> Guide</button>';
         }
-        if (!hasNotes) {
-            html += '<button class="ss-action-link muted ss-upload-trigger" data-topic="' + escapeHtml(task.topic_name || '') + '" data-row-idx="' + idx + '" title="Upload your notes for this topic">' +
-                '<i class="fas fa-upload"></i> Upload</button>';
+        if (!hasNotes && !hasGuide && !(task.related_guides && task.related_guides.length > 0)) {
+            // No resources at all — show subtle label
+            html += '<span class="ss-no-resources">no resources yet</span>';
         }
         // Related guides inline
         if (!hasGuide && task.related_guides && task.related_guides.length > 0) {
@@ -565,13 +600,14 @@
     }
 
     function attachTopicListeners() {
-        // Upload triggers → open modal instead of navigating
+        // Upload triggers → open modal
         topicsEl.querySelectorAll('.ss-upload-trigger').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 var topicName = this.dataset.topic || '';
                 var rowIdx = parseInt(this.dataset.rowIdx, 10);
-                openUploadModal(topicName, rowIdx);
+                var examName = this.dataset.examName || '';
+                openUploadModal(topicName, rowIdx, examName);
             });
         });
 

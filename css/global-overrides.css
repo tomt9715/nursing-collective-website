@@ -3596,6 +3596,35 @@ a.trust-btn:hover {
     align-items: center;
     gap: 10px;
 }
+/* Exam-level upload button in header */
+.ss-exam-upload-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--primary-color, #2E86AB);
+    background: none;
+    border: 1px solid var(--primary-color, #2E86AB);
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.15s ease;
+}
+.ss-exam-upload-btn:hover { background: rgba(46,134,171,0.08); }
+[data-theme="dark"] .ss-exam-upload-btn { color: #38bdf8; border-color: #38bdf8; }
+[data-theme="dark"] .ss-exam-upload-btn:hover { background: rgba(56,189,248,0.1); }
+
+/* No resources label on topic rows */
+.ss-no-resources {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.68rem;
+    color: var(--text-light, #9ca3af);
+    font-style: italic;
+}
+
 .ss-exam-topic-count {
     font-family: 'Source Sans 3', sans-serif;
     font-size: 0.72rem;

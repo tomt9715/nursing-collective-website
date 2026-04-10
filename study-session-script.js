@@ -46,8 +46,258 @@
         var hasAuth = await requireAuth();
         if (!hasAuth) return;
 
+        initUploadModal();
         await fetchAndRender();
     });
+
+    // ── Upload Modal ─────────────────────────────────
+
+    var uploadModalState = { topicName: '', rowIdx: -1 };
+
+    function initUploadModal() {
+        var modalHtml =
+            '<div class="ss-upload-overlay" id="ss-upload-overlay">' +
+                '<div class="ss-upload-modal">' +
+                    '<div class="ss-upload-modal-header">' +
+                        '<div>' +
+                            '<h3>Upload Notes</h3>' +
+                            '<div class="ss-upload-topic-label" id="ss-upload-topic-label"></div>' +
+                        '</div>' +
+                        '<button class="ss-upload-close" id="ss-upload-close">&times;</button>' +
+                    '</div>' +
+                    '<div class="ss-upload-body" id="ss-upload-body">' +
+                        '<div class="ss-upload-dropzone" id="ss-upload-dropzone">' +
+                            '<input type="file" id="ss-upload-input" accept=".pdf,.docx,.pptx" hidden>' +
+                            '<i class="fas fa-cloud-arrow-up"></i>' +
+                            '<strong>Drag & drop your notes</strong>' +
+                            '<span>or click to browse</span>' +
+                            '<span class="ss-upload-formats">PDF, DOCX, PPTX &middot; Max 25 MB</span>' +
+                        '</div>' +
+                    '</div>' +
+                '</div>' +
+            '</div>';
+
+        document.body.insertAdjacentHTML('beforeend', modalHtml);
+
+        var overlay = document.getElementById('ss-upload-overlay');
+        var closeBtn = document.getElementById('ss-upload-close');
+        var dropzone = document.getElementById('ss-upload-dropzone');
+        var fileInput = document.getElementById('ss-upload-input');
+
+        // Close modal
+        closeBtn.addEventListener('click', closeUploadModal);
+        overlay.addEventListener('click', function (e) {
+            if (e.target === overlay) closeUploadModal();
+        });
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && overlay.classList.contains('active')) closeUploadModal();
+        });
+
+        // Click to browse
+        dropzone.addEventListener('click', function () { fileInput.click(); });
+        fileInput.addEventListener('change', function () {
+            if (this.files && this.files[0]) handleFile(this.files[0]);
+        });
+
+        // Drag and drop
+        dropzone.addEventListener('dragover', function (e) {
+            e.preventDefault();
+            this.classList.add('drag-over');
+        });
+        dropzone.addEventListener('dragleave', function () {
+            this.classList.remove('drag-over');
+        });
+        dropzone.addEventListener('drop', function (e) {
+            e.preventDefault();
+            this.classList.remove('drag-over');
+            if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+                handleFile(e.dataTransfer.files[0]);
+            }
+        });
+    }
+
+    function openUploadModal(topicName, rowIdx) {
+        uploadModalState.topicName = topicName;
+        uploadModalState.rowIdx = rowIdx;
+
+        var label = document.getElementById('ss-upload-topic-label');
+        if (label) label.textContent = 'for: ' + topicName;
+
+        // Reset to dropzone state
+        var body = document.getElementById('ss-upload-body');
+        var dropzone = document.getElementById('ss-upload-dropzone');
+        var fileInput = document.getElementById('ss-upload-input');
+        if (dropzone) dropzone.style.display = '';
+        if (fileInput) fileInput.value = '';
+        // Remove any previous state elements
+        var prevState = body.querySelector('.ss-upload-state');
+        if (prevState) prevState.remove();
+
+        document.getElementById('ss-upload-overlay').classList.add('active');
+    }
+
+    function closeUploadModal() {
+        document.getElementById('ss-upload-overlay').classList.remove('active');
+    }
+
+    async function handleFile(file) {
+        // Validate
+        var validTypes = ['application/pdf',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'application/vnd.openxmlformats-officedocument.presentationml.presentation'];
+        var ext = file.name.split('.').pop().toLowerCase();
+        if (['pdf', 'docx', 'pptx'].indexOf(ext) === -1) {
+            showUploadError('Please upload a PDF, DOCX, or PPTX file.');
+            return;
+        }
+        if (file.size > 25 * 1024 * 1024) {
+            showUploadError('File is too large. Maximum 25 MB.');
+            return;
+        }
+
+        // Show uploading state
+        showUploadState('uploading', 'Uploading ' + file.name + '...', 'This may take a moment');
+
+        try {
+            var formData = new FormData();
+            formData.append('file', file);
+            if (uploadModalState.topicName) {
+                formData.append('topic_name', uploadModalState.topicName);
+            }
+
+            var token = localStorage.getItem('accessToken');
+            var headers = {};
+            if (token) headers['Authorization'] = 'Bearer ' + token;
+
+            var response = await fetch(
+                (typeof API_URL !== 'undefined' ? API_URL : '') + '/api/ai/upload',
+                { method: 'POST', headers: headers, body: formData, credentials: 'include' }
+            );
+
+            var data = await response.json();
+
+            if (!response.ok) {
+                showUploadError(data.error || data.message || 'Upload failed. Please try again.');
+                return;
+            }
+
+            // Show processing state
+            showUploadState('processing', 'Processing your notes...', 'Generating study materials');
+
+            // Poll for completion
+            if (data.upload_id) {
+                pollUploadStatus(data.upload_id);
+            } else {
+                showUploadSuccess(null);
+            }
+
+        } catch (err) {
+            console.error('[StudySession] Upload failed:', err);
+            showUploadError('Upload failed. Please check your connection and try again.');
+        }
+    }
+
+    function pollUploadStatus(uploadId) {
+        var attempts = 0;
+        var maxAttempts = 60; // 2 minutes at 2s intervals
+
+        var interval = setInterval(async function () {
+            attempts++;
+            try {
+                var data = await apiCall('/api/ai/documents/' + uploadId + '/status');
+                if (data.status === 'ready') {
+                    clearInterval(interval);
+                    showUploadSuccess(uploadId);
+                } else if (attempts >= maxAttempts) {
+                    clearInterval(interval);
+                    // Still show success — processing continues in background
+                    showUploadSuccess(uploadId);
+                }
+            } catch (err) {
+                // Keep polling on transient errors
+                if (attempts >= maxAttempts) {
+                    clearInterval(interval);
+                    showUploadSuccess(uploadId);
+                }
+            }
+        }, 2000);
+    }
+
+    function showUploadState(type, text, subtext) {
+        var body = document.getElementById('ss-upload-body');
+        var dropzone = document.getElementById('ss-upload-dropzone');
+        if (dropzone) dropzone.style.display = 'none';
+
+        var prevState = body.querySelector('.ss-upload-state');
+        if (prevState) prevState.remove();
+
+        var iconClass = type === 'uploading' ? 'fas fa-spinner fa-spin uploading' :
+                        type === 'processing' ? 'fas fa-cog fa-spin processing' :
+                        'fas fa-check-circle success';
+
+        var html = '<div class="ss-upload-state">' +
+            '<i class="' + iconClass + '"></i>' +
+            '<div class="ss-upload-state-text">' + escapeHtml(text) + '</div>' +
+            '<div class="ss-upload-state-sub">' + escapeHtml(subtext) + '</div>' +
+            '<div class="ss-upload-progress-bar"><div class="ss-upload-progress-fill"></div></div>' +
+            '</div>';
+
+        body.insertAdjacentHTML('beforeend', html);
+    }
+
+    function showUploadSuccess(uploadId) {
+        var body = document.getElementById('ss-upload-body');
+        var prevState = body.querySelector('.ss-upload-state');
+        if (prevState) prevState.remove();
+
+        var html = '<div class="ss-upload-state">' +
+            '<i class="fas fa-check-circle success"></i>' +
+            '<div class="ss-upload-state-text">Notes uploaded!</div>' +
+            '<div class="ss-upload-state-sub">Your study materials are being generated.</div>' +
+            '<button class="ss-upload-done-btn" id="ss-upload-done-btn">' +
+            '<i class="fas fa-check"></i> Done</button>' +
+            '</div>';
+
+        body.insertAdjacentHTML('beforeend', html);
+
+        // Update the topic row to show "Notes" link
+        if (uploadId && uploadModalState.rowIdx >= 0) {
+            var row = topicsEl.querySelector('[data-idx="' + uploadModalState.rowIdx + '"]');
+            if (row) {
+                var actions = row.querySelector('.ss-topic-actions');
+                if (actions) {
+                    // Replace Upload button with Notes button
+                    var uploadBtn = actions.querySelector('.ss-action-link.muted');
+                    if (uploadBtn) {
+                        uploadBtn.className = 'ss-action-link';
+                        uploadBtn.dataset.href = 'ai-tools.html?doc=' + uploadId;
+                        uploadBtn.innerHTML = '<i class="fas fa-file-alt"></i> Notes';
+                        uploadBtn.title = 'View your uploaded notes';
+                    }
+                }
+            }
+        }
+
+        var doneBtn = document.getElementById('ss-upload-done-btn');
+        if (doneBtn) {
+            doneBtn.addEventListener('click', closeUploadModal);
+        }
+    }
+
+    function showUploadError(message) {
+        var body = document.getElementById('ss-upload-body');
+        var prevState = body.querySelector('.ss-upload-state');
+        if (prevState) prevState.remove();
+        var prevError = body.querySelector('.ss-upload-error');
+        if (prevError) prevError.remove();
+
+        // Show dropzone again
+        var dropzone = document.getElementById('ss-upload-dropzone');
+        if (dropzone) dropzone.style.display = '';
+
+        body.insertAdjacentHTML('beforeend',
+            '<div class="ss-upload-error"><i class="fas fa-exclamation-circle"></i> ' + escapeHtml(message) + '</div>');
+    }
 
     // ── Data fetching ────────────────────────────────
 
@@ -298,7 +548,7 @@
                 '<i class="fas fa-book-open"></i> Guide</button>';
         }
         if (!hasNotes) {
-            html += '<button class="ss-action-link muted" data-href="ai-tools.html" title="Upload your notes for AI study tools">' +
+            html += '<button class="ss-action-link muted ss-upload-trigger" data-topic="' + escapeHtml(task.topic_name || '') + '" data-row-idx="' + idx + '" title="Upload your notes for this topic">' +
                 '<i class="fas fa-upload"></i> Upload</button>';
         }
         // Related guides inline
@@ -315,8 +565,18 @@
     }
 
     function attachTopicListeners() {
-        // Action links → open in new tab
-        topicsEl.querySelectorAll('.ss-action-link').forEach(function (btn) {
+        // Upload triggers → open modal instead of navigating
+        topicsEl.querySelectorAll('.ss-upload-trigger').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var topicName = this.dataset.topic || '';
+                var rowIdx = parseInt(this.dataset.rowIdx, 10);
+                openUploadModal(topicName, rowIdx);
+            });
+        });
+
+        // Other action links → open in new tab
+        topicsEl.querySelectorAll('.ss-action-link:not(.ss-upload-trigger)').forEach(function (btn) {
             btn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 var href = this.dataset.href;

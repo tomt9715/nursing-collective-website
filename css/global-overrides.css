@@ -3405,7 +3405,7 @@ a.trust-btn:hover {
 .study-session-page {
     max-width: 800px;
     margin: 0 auto;
-    padding: 32px 24px 80px;
+    padding: 120px 24px 80px;
     min-height: 60vh;
 }
 
@@ -3734,7 +3734,7 @@ a.trust-btn:hover {
 
 /* Study Session responsive */
 @media (max-width: 768px) {
-    .study-session-page { padding: 20px 16px 60px; }
+    .study-session-page { padding: 100px 16px 60px; }
     .ss-header-title { font-size: 1.3rem; }
     .ss-topic-card { padding: 14px 16px; gap: 12px; }
     .ss-topic-card .task-icon { width: 36px; height: 36px; min-width: 36px; }
@@ -3743,7 +3743,7 @@ a.trust-btn:hover {
 }
 
 @media (max-width: 480px) {
-    .study-session-page { padding: 16px 12px 60px; }
+    .study-session-page { padding: 90px 12px 60px; }
     .ss-header-title { font-size: 1.15rem; gap: 8px; }
     .ss-topic-card { flex-direction: column; gap: 10px; padding: 14px; }
     .ss-topic-card .task-icon { width: 32px; height: 32px; min-width: 32px; font-size: 0.85rem; }

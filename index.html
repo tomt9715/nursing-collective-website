@@ -32,23 +32,23 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color for Mobile Browsers -->
-    <meta name="theme-color" content="#2E86AB">
+    <meta name="theme-color" content="#0d1b2a">
 
     <!-- Preconnect to external resources for faster loading -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- Bundled CSS (Bootstrap + custom styles, purged and minified) -->
-    <link rel="stylesheet" href="css/bundle.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
-    <link rel="stylesheet" href="css/global-overrides.css?v=5.6.navfix">
+    <link rel="stylesheet" href="css/home-redesign.css">
 
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Sentry Error Tracking (load first) -->
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
@@ -106,7 +106,6 @@
     </script>
     <script src="lockscreen.js"></script>
     <script src="beta-banner.js"></script>
-    <script src="home-redirect.js"></script>
 </head>
 <body>
     <!-- Skip to main content link for accessibility -->
@@ -193,7 +192,7 @@
                             <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
                             <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
                             <div class="user-dropdown-divider"></div>
-                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help &amp; Support</a>
                             <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
                         </div>
                     </div>
@@ -205,96 +204,48 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <main id="main-content">
-    <section class="hero">
-        <div class="hero-grid" aria-hidden="true"></div>
+
+    <!-- Hero Section -->
+    <section class="home-hero">
         <div class="hero-inner">
             <div class="hero-content">
-                <h1>Your Nursing School <span class="hero-accent">Success</span> Hub</h1>
-                <p class="hero-subtitle">
-                    50+ study guides, practice questions, and resources built by nursing students, for nursing students.
-                </p>
-                <div class="hero-buttons">
-                    <a href="pricing.html" class="btn btn-primary btn-large">Get Started</a>
-                    <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-outline-light btn-large">Join Free Community</a>
+                <div class="eyebrow">The Nursing Collective</div>
+                <h1>Your study partner through<br>nursing <em>school</em></h1>
+                <p class="hero-sub">Study guides, practice questions, and clinical tools — built by nursing students who get it. Open the app, know what to study, walk into your exam confident.</p>
+                <div class="hero-actions">
+                    <a href="pricing.html" class="btn btn-primary">Start studying</a>
+                    <a href="resources.html" class="btn btn-ghost">Explore free resources</a>
                 </div>
             </div>
-
-            <!-- Product mockup -->
             <div class="hero-mockup" aria-hidden="true">
-                <div class="mockup-window">
-                    <div class="mockup-titlebar">
-                        <span class="mockup-dot red"></span>
-                        <span class="mockup-dot yellow"></span>
-                        <span class="mockup-dot green"></span>
-                        <span class="mockup-titlebar-text">The Nursing Collective — Dashboard</span>
+                <div class="mockup-card">
+                    <div class="mockup-header">
+                        <span class="mockup-dot"></span>
+                        <span class="mockup-dot"></span>
+                        <span class="mockup-dot"></span>
                     </div>
                     <div class="mockup-body">
-                        <!-- Sidebar -->
-                        <div class="mockup-sidebar">
-                            <div class="mockup-sidebar-item active"><i class="fas fa-th-large"></i> Dashboard</div>
-                            <div class="mockup-sidebar-item"><i class="fas fa-book-open"></i> Study Guides</div>
-                            <div class="mockup-sidebar-item"><i class="fas fa-brain"></i> Quiz Bank</div>
-                            <div class="mockup-sidebar-item"><i class="fab fa-discord"></i> Community</div>
-                            <div class="mockup-sidebar-item"><i class="fas fa-cog"></i> Settings</div>
+                        <div class="mockup-nav">
+                            <div class="mockup-nav-item active">Study Guides</div>
+                            <div class="mockup-nav-item">Quizzes</div>
+                            <div class="mockup-nav-item">Resources</div>
                         </div>
-                        <!-- Main content area -->
-                        <div class="mockup-main">
-                            <!-- Stats row -->
-                            <div class="mockup-stats">
-                                <div class="mockup-stat">
-                                    <div class="mockup-stat-num">54</div>
-                                    <div class="mockup-stat-label">Study Guides</div>
-                                </div>
-                                <div class="mockup-stat">
-                                    <div class="mockup-stat-num">2,400+</div>
-                                    <div class="mockup-stat-label">Practice Qs</div>
-                                </div>
-                                <div class="mockup-stat">
-                                    <div class="mockup-stat-num">92%</div>
-                                    <div class="mockup-stat-label">Avg. Score</div>
-                                </div>
-                                <div class="mockup-stat">
-                                    <div class="mockup-stat-num">12</div>
-                                    <div class="mockup-stat-label">Day Streak</div>
-                                </div>
+                        <div class="mockup-cards">
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">Heart Failure</div>
+                                <div class="mockup-guide-cat">Cardiovascular</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:78%"></div></div>
                             </div>
-                            <!-- Guide cards -->
-                            <div class="mockup-section-title">Recent Study Guides</div>
-                            <div class="mockup-cards">
-                                <div class="mockup-card">
-                                    <div class="mockup-card-icon" style="background: linear-gradient(135deg, #ef4444, #dc2626)"><i class="fas fa-heartbeat"></i></div>
-                                    <div class="mockup-card-info">
-                                        <div class="mockup-card-title">Heart Failure</div>
-                                        <div class="mockup-card-cat">Cardiovascular</div>
-                                    </div>
-                                    <div class="mockup-card-progress"><div class="mockup-progress-fill" style="width: 78%"></div></div>
-                                </div>
-                                <div class="mockup-card">
-                                    <div class="mockup-card-icon" style="background: linear-gradient(135deg, #3b82f6, #2563eb)"><i class="fas fa-lungs"></i></div>
-                                    <div class="mockup-card-info">
-                                        <div class="mockup-card-title">COPD Management</div>
-                                        <div class="mockup-card-cat">Respiratory</div>
-                                    </div>
-                                    <div class="mockup-card-progress"><div class="mockup-progress-fill" style="width: 65%"></div></div>
-                                </div>
-                                <div class="mockup-card">
-                                    <div class="mockup-card-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed)"><i class="fas fa-brain"></i></div>
-                                    <div class="mockup-card-info">
-                                        <div class="mockup-card-title">Stroke Assessment</div>
-                                        <div class="mockup-card-cat">Neurological</div>
-                                    </div>
-                                    <div class="mockup-card-progress"><div class="mockup-progress-fill" style="width: 42%"></div></div>
-                                </div>
-                                <div class="mockup-card">
-                                    <div class="mockup-card-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706)"><i class="fas fa-pills"></i></div>
-                                    <div class="mockup-card-info">
-                                        <div class="mockup-card-title">Cardiac Meds</div>
-                                        <div class="mockup-card-cat">Pharmacology</div>
-                                    </div>
-                                    <div class="mockup-card-progress"><div class="mockup-progress-fill" style="width: 91%"></div></div>
-                                </div>
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">COPD Management</div>
+                                <div class="mockup-guide-cat">Respiratory</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:65%"></div></div>
+                            </div>
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">Stroke Assessment</div>
+                                <div class="mockup-guide-cat">Neurological</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:42%"></div></div>
                             </div>
                         </div>
                     </div>
@@ -303,183 +254,164 @@
         </div>
     </section>
 
+    <!-- Stats Bar -->
+    <section class="stats-bar">
+        <div class="stats-inner">
+            <div class="stat-item">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">Study Guides</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">2,400+</div>
+                <div class="stat-label">Practice Questions</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Clinical Topics</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+                <div class="stat-number">Free</div>
+                <div class="stat-label">Student Community</div>
+            </div>
+        </div>
+    </section>
 
-
-    <!-- What's Inside Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2 class="section-title">What's Inside</h2>
-            <p class="section-subtitle">Three pillars to help you study smarter, not harder</p>
-
+    <!-- What You Get -->
+    <section class="features-section">
+        <div class="features-wrap">
+            <div class="section-label">What's inside</div>
+            <h2 class="section-heading">Everything you need to get through nursing school</h2>
+            <p class="section-desc">Three pillars to help you study smarter, not harder.</p>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-book-open"></i>
-                    </div>
-                    <h3>50+ Study Guides</h3>
-                    <p>Comprehensive clinical guides across Cardiovascular, Respiratory, Neuro, Pharmacology, and more. Designed for visual learners with interactive layouts.</p>
-                    <a href="pricing.html" class="feature-link">View Plans <i class="fas fa-arrow-right"></i></a>
+                    <div class="feature-card-icon"><i class="fas fa-book-open"></i></div>
+                    <h4>Study Guides</h4>
+                    <p>50+ comprehensive guides across cardiovascular, respiratory, neuro, pharmacology, and more. Designed for how nursing students actually learn.</p>
                 </div>
-
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-clipboard-check"></i>
-                    </div>
-                    <h3>NCLEX-Style Quiz Bank</h3>
-                    <p>Practice with thousands of questions that mirror the real exam. Track your progress and identify weak areas before test day.</p>
-                    <a href="https://learn.thenursingcollective.pro" class="feature-link">Start Practicing <i class="fas fa-arrow-right"></i></a>
+                    <div class="feature-card-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h4>Practice Questions</h4>
+                    <p>Thousands of clinical scenario questions that test real understanding — not just memorization. Track progress and find your weak spots.</p>
                 </div>
-
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>Free Student Community</h3>
-                    <p>Join hundreds of nursing students on Discord. Get instant clinical references from FlorenceBot and study together.</p>
-                    <a href="https://discord.gg/y2Mh77wAV2" class="feature-link">Join Free <i class="fas fa-arrow-right"></i></a>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="how-it-works">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">Get started in minutes and study smarter from day one</p>
-
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-icon">
-                        <i class="fas fa-credit-card"></i>
-                    </div>
-                    <h3>Pick a Plan</h3>
-                    <p>Choose monthly, semester, or lifetime access. Plans start at just $14.99/mo.</p>
-                </div>
-
-                <div class="step-connector" aria-hidden="true"></div>
-
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-icon">
-                        <i class="fas fa-book-reader"></i>
-                    </div>
-                    <h3>Browse & Study</h3>
-                    <p>Access all study guides, clinical references, and quick-reference tools instantly.</p>
-                </div>
-
-                <div class="step-connector" aria-hidden="true"></div>
-
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <h3>Ace Your Exams</h3>
-                    <p>Practice with quizzes, review key concepts, and go into exams feeling confident.</p>
-                </div>
-            </div>
-
-            <div class="how-it-works-cta">
-                <a href="pricing.html" class="btn btn-primary btn-large">Get Started</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta section-alt-bg">
-        <div class="container">
-            <div class="cta-card-enhanced">
-                <div class="cta-decorative-blur cta-decorative-blur-1"></div>
-                <div class="cta-decorative-blur cta-decorative-blur-2"></div>
-
-                <div class="cta-card-content">
-                    <h2 class="cta-title">Ready to Ace Nursing School?</h2>
-                    <p class="cta-description">
-                        Join our free Discord community or get unlimited access to all study guides and resources.
-                    </p>
-
-                    <div class="cta-buttons">
-                        <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-large btn-primary">
-                            <i class="fab fa-discord"></i>
-                            Join Free Discord
-                        </a>
-                        <a href="pricing.html" class="btn btn-large btn-light">
-                            <i class="fas fa-rocket"></i>
-                            View Plans
-                        </a>
-                    </div>
+                    <div class="feature-card-icon"><i class="fas fa-stethoscope"></i></div>
+                    <h4>Clinical Resources</h4>
+                    <p>Lab values, vital signs, medications, and quick reference tools you'll actually use in clinicals and on the floor.</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- How It Works -->
+    <section class="steps-section">
+        <div class="steps-wrap">
+            <div class="section-label">How it works</div>
+            <h2 class="section-heading">Start studying in minutes</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">01</div>
+                    <h4>Pick a plan</h4>
+                    <p>Choose monthly, semester, or lifetime access. Plans start at $14.99/mo. Cancel anytime.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">02</div>
+                    <h4>Study what matters</h4>
+                    <p>Access all guides, quizzes, and clinical references instantly. Study by topic or follow your class schedule.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">03</div>
+                    <h4>Walk in confident</h4>
+                    <p>Review key concepts, practice with questions, and go into your exams knowing you're prepared.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- AI Preview -->
+    <section class="ai-section">
+        <div class="ai-wrap">
+            <div class="section-label">AI-Powered</div>
+            <h2 class="section-heading">AI tools that learn how <em>you</em> study</h2>
+            <p class="section-desc">Upload your lecture notes. Get AI-generated summaries, practice questions from your own material, and a gap analysis showing what you might be missing.</p>
+            <div class="ai-features">
+                <div class="ai-pill"><i class="fas fa-file-alt"></i> Note Summaries</div>
+                <div class="ai-pill"><i class="fas fa-brain"></i> Question Generation</div>
+                <div class="ai-pill"><i class="fas fa-chart-line"></i> Gap Analysis</div>
+            </div>
+            <a href="pricing.html?tier=ai" class="btn btn-ghost">See AI-Powered plans</a>
+        </div>
+    </section>
+
+    <!-- Community -->
+    <section class="community-section">
+        <div class="community-wrap">
+            <div class="section-label">Community</div>
+            <h2 class="section-heading">You're not studying alone</h2>
+            <p class="section-desc">Join hundreds of nursing students on Discord. Share tips, ask questions, and get instant clinical references from FlorenceBot — our AI study assistant.</p>
+            <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-ghost" target="_blank" rel="noopener">Join our Discord</a>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="final-cta-inner">
+            <h2>Ready to start?</h2>
+            <p>Plans starting at $14.99/mo. Cancel anytime.</p>
+            <a href="pricing.html" class="btn btn-primary">Get started</a>
+        </div>
+    </section>
+
     </main>
 
-    <footer id="contact" class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <span>The Nursing Collective</span>
-                    </div>
-                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">The Nursing Collective</div>
+                <p class="footer-brand-desc">Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <div class="footer-contact-email">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
                 </div>
-                
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
-                    </p>
-                    <div class="social-links">
-                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="https://thenursingcollective.pro/privacy">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+                <div class="social-links">
+                    <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
-                <p class="footer-attribution">
-                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
-                </p>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+            <p>Icons by <a href="https://www.flaticon.com/authors/freepik" target="_blank" rel="noopener">Freepik</a> &amp; <a href="https://www.flaticon.com/authors/slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" target="_blank" rel="noopener">Flaticon</a></p>
         </div>
     </footer>
 
-    <!-- Dark Mode Manager (load before main script) -->
+    <!-- Scripts -->
+    <script src="home-redirect.js"></script>
     <script src="dark-mode.js"></script>
     <script src="api-service.js?v=1769142742"></script>
-
     <script src="script.js"></script>
-
-    <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>
     <script src="cookie-consent.js"></script>
     <script src="feedback-widget.js"></script>

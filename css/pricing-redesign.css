@@ -594,6 +594,19 @@ img { max-width: 100%; display: block; }
   margin-bottom: 20px;
 }
 
+.pricing-card-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 14px;
+}
+
+.pricing-icon-img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
 .pricing-card-header h3 {
   font-family: 'DM Serif Display', serif;
   font-size: 20px;
@@ -700,6 +713,19 @@ img { max-width: 100%; display: block; }
 .btn-pricing:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.see-included-link {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-size: 12px;
+  color: var(--text-dimmer);
+  transition: color 0.15s;
+}
+
+.see-included-link:hover {
+  color: var(--teal);
 }
 
 /* ══════════════════════════════════════════════════════════════
@@ -1289,6 +1315,96 @@ img { max-width: 100%; display: block; }
     height: 800px;
     opacity: 0;
   }
+}
+
+
+/* ══════════════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════════════ */
+.faq-section {
+  position: relative;
+  z-index: 1;
+  padding: 0 28px 80px;
+}
+
+.faq-wrap {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.faq-item {
+  background: var(--navy-2);
+  border: 0.5px solid var(--border-mid);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.faq-item:hover {
+  border-color: rgba(255,255,255,0.18);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 20px;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: left;
+  transition: color 0.15s;
+}
+
+.faq-question:hover {
+  color: var(--teal);
+}
+
+.faq-chevron {
+  flex-shrink: 0;
+  color: var(--text-dimmer);
+  transition: transform 0.25s ease;
+}
+
+.faq-item.active .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 20px 18px;
+}
+
+.faq-answer p {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+
+.faq-answer p:last-child {
+  margin-bottom: 0;
+}
+
+.faq-answer strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.faq-answer a {
+  color: var(--teal);
 }
 
 

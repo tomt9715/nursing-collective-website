@@ -71,30 +71,30 @@
             <form class="feedback-form" id="feedback-form">
                 <label class="feedback-label">How's your experience?</label>
                 <div class="feedback-emoji-group" role="radiogroup" aria-label="Rating">
-                    <button type="button" class="feedback-emoji" data-rating="5"
-                        role="radio" aria-checked="false" aria-label="Love it" tabindex="0">
-                        <span class="feedback-emoji-icon">\u{1F60D}</span>
-                        <span class="feedback-emoji-label">Love it</span>
+                    <button type="button" class="feedback-emoji" data-rating="1"
+                        role="radio" aria-checked="false" aria-label="Frustrated" tabindex="0">
+                        <span class="feedback-emoji-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 15s1.5-2 4-2 4 2 4 2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+                        <span class="feedback-emoji-label">Poor</span>
                     </button>
-                    <button type="button" class="feedback-emoji" data-rating="4"
-                        role="radio" aria-checked="false" aria-label="Good" tabindex="-1">
-                        <span class="feedback-emoji-icon">\u{1F642}</span>
-                        <span class="feedback-emoji-label">Good</span>
+                    <button type="button" class="feedback-emoji" data-rating="2"
+                        role="radio" aria-checked="false" aria-label="Below average" tabindex="-1">
+                        <span class="feedback-emoji-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+                        <span class="feedback-emoji-label">Fair</span>
                     </button>
                     <button type="button" class="feedback-emoji" data-rating="3"
                         role="radio" aria-checked="false" aria-label="Okay" tabindex="-1">
-                        <span class="feedback-emoji-icon">\u{1F610}</span>
+                        <span class="feedback-emoji-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><line x1="8" y1="15" x2="16" y2="15"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="2.5" stroke-linecap="round"/></svg></span>
                         <span class="feedback-emoji-label">Okay</span>
                     </button>
-                    <button type="button" class="feedback-emoji" data-rating="2"
-                        role="radio" aria-checked="false" aria-label="Confused" tabindex="-1">
-                        <span class="feedback-emoji-icon">\u{1F615}</span>
-                        <span class="feedback-emoji-label">Confused</span>
+                    <button type="button" class="feedback-emoji" data-rating="4"
+                        role="radio" aria-checked="false" aria-label="Good" tabindex="-1">
+                        <span class="feedback-emoji-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+                        <span class="feedback-emoji-label">Good</span>
                     </button>
-                    <button type="button" class="feedback-emoji" data-rating="1"
-                        role="radio" aria-checked="false" aria-label="Frustrated" tabindex="-1">
-                        <span class="feedback-emoji-icon">\u{1F621}</span>
-                        <span class="feedback-emoji-label">Frustrated</span>
+                    <button type="button" class="feedback-emoji" data-rating="5"
+                        role="radio" aria-checked="false" aria-label="Great" tabindex="-1">
+                        <span class="feedback-emoji-icon"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9" stroke-width="2.5" stroke-linecap="round"/><line x1="15" y1="9" x2="15.01" y2="9" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+                        <span class="feedback-emoji-label">Great</span>
                     </button>
                 </div>
                 <label class="feedback-label">Tell us more</label>

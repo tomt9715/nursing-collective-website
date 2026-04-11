@@ -1506,10 +1506,21 @@ img { max-width: 100%; display: block; }
 .feedback-emoji {
   background: var(--navy-3);
   border-color: transparent;
+  border-radius: 8px;
 }
 
 .feedback-emoji:hover {
   background: rgba(255,255,255,0.06);
+}
+
+.feedback-emoji .feedback-emoji-icon {
+  line-height: 1;
+  color: var(--text-dimmer);
+  transition: color 0.15s;
+}
+
+.feedback-emoji:hover .feedback-emoji-icon {
+  color: var(--text-dim);
 }
 
 .feedback-emoji.active {
@@ -1517,8 +1528,17 @@ img { max-width: 100%; display: block; }
   background: rgba(15,188,173,0.1);
 }
 
+.feedback-emoji.active .feedback-emoji-icon {
+  color: var(--teal);
+}
+
 .feedback-emoji-label {
-  color: var(--text-dim);
+  color: var(--text-dimmer);
+  font-size: 10px;
+}
+
+.feedback-emoji.active .feedback-emoji-label {
+  color: var(--teal);
 }
 
 .feedback-screenshot-trigger {

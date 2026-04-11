@@ -971,3 +971,16 @@ img { max-width: 100%; display: block; }
 .cookie-btn-save { background: var(--teal); color: var(--navy); font-weight: 600; }
 .cookie-btn-save:hover { background: var(--teal-dim); }
 
+
+.btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transform: scale(0);
+  animation: ripple-effect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  to { transform: scale(4); opacity: 0; }
+}

@@ -306,6 +306,21 @@ img { max-width: 100%; display: block; }
   transition: background 0.15s, color 0.15s, border-color 0.15s;
   text-decoration: none;
   line-height: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn .ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  transform: scale(0);
+  animation: ripple-effect 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes ripple-effect {
+  to { transform: scale(4); opacity: 0; }
 }
 
 .btn:hover {

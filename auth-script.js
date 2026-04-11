@@ -62,21 +62,21 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateModeUI() {
         if (currentMode === 'signin') {
             // Update title
-            authTitle.textContent = 'Welcome Back';
+            authTitle.textContent = 'Welcome';
 
             // Update toggle buttons
             signinModeBtn.classList.add('active');
             signupModeBtn.classList.remove('active');
 
-            // Update social auth button text
+            // Update social auth button text (always "Continue with" — neutral)
             document.querySelectorAll('.auth-btn-text').forEach(span => {
                 const btn = span.closest('.auth-btn');
                 if (btn.classList.contains('google')) {
-                    span.textContent = 'Sign in with Google';
+                    span.textContent = 'Continue with Google';
                 } else if (btn.classList.contains('discord')) {
-                    span.textContent = 'Sign in with Discord';
+                    span.textContent = 'Continue with Discord';
                 } else if (btn.classList.contains('apple')) {
-                    span.textContent = 'Sign in with Apple';
+                    span.textContent = 'Continue with Apple';
                 }
             });
 
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         } else {
             // Update title
-            authTitle.textContent = 'Access Your Study Dashboard';
+            authTitle.textContent = 'Create Account';
 
             // Update toggle buttons
             signinModeBtn.classList.remove('active');
@@ -160,6 +160,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize UI with default/URL-specified mode
     updateModeUI();
+    updateModeSwitchText();
 
     // Pre-fill email if provided in URL (from guest checkout email)
     if (prefillEmail) {
@@ -188,6 +189,49 @@ document.addEventListener('DOMContentLoaded', function() {
             currentMode = 'signup';
             updateModeUI();
         });
+    }
+
+    // Mode switch text link (e.g., "New here? Create an account")
+    var modeSwitchLink = document.getElementById('mode-switch-link');
+    var modeSwitchContainer = document.getElementById('auth-mode-switch');
+    if (modeSwitchLink) {
+        modeSwitchLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            if (currentMode === 'signin') {
+                currentMode = 'signup';
+                if (signupModeBtn) signupModeBtn.click(); // trigger existing handler
+            } else {
+                currentMode = 'signin';
+                if (signinModeBtn) signinModeBtn.click();
+            }
+            updateModeSwitchText();
+        });
+    }
+
+    function updateModeSwitchText() {
+        if (!modeSwitchContainer) return;
+        var p = modeSwitchContainer.querySelector('p');
+        if (!p) return;
+        if (currentMode === 'signin') {
+            p.innerHTML = 'New here? <a href="#" id="mode-switch-link">Create an account</a>';
+        } else {
+            p.innerHTML = 'Already have an account? <a href="#" id="mode-switch-link">Sign in</a>';
+        }
+        // Re-bind the new link
+        var newLink = document.getElementById('mode-switch-link');
+        if (newLink) {
+            newLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                if (currentMode === 'signin') {
+                    currentMode = 'signup';
+                    if (signupModeBtn) signupModeBtn.click();
+                } else {
+                    currentMode = 'signin';
+                    if (signinModeBtn) signinModeBtn.click();
+                }
+                updateModeSwitchText();
+            });
+        }
     }
 
     // Helper: show password step (step 2)

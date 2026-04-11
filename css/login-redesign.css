@@ -802,8 +802,30 @@ img { max-width: 100%; display: block; }
 /* ══════════════════════════════════════════════════════════════
    AUTH FOOTER (privacy / terms)
    ══════════════════════════════════════════════════════════════ */
-.auth-footer {
+.auth-mode-switch {
+  text-align: center;
   margin-top: 20px;
+  padding-top: 20px;
+  border-top: 0.5px solid var(--border);
+}
+
+.auth-mode-switch p {
+  font-size: 14px;
+  color: var(--text-dim);
+}
+
+.auth-mode-switch a {
+  color: var(--teal);
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.auth-mode-switch a:hover {
+  color: var(--text);
+}
+
+.auth-footer {
+  margin-top: 16px;
   text-align: center;
 }
 

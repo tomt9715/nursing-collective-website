@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&amp;display=swap');
+    .line1 { font-family: 'DM Serif Display', serif; font-size: 28px; fill: #e8edf2; }
+    .line2 { font-family: 'DM Serif Display', serif; font-size: 28px; fill: #0fbcad; }
+  </style>
+  <text x="0" y="28" class="line1">THE NURSING</text>
+  <text x="0" y="62" class="line2">COLLECTIVE</text>
+</svg>

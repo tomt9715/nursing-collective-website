@@ -36,7 +36,7 @@
         document.documentElement.style.visibility = 'visible';
 
         var base = getBasePath();
-        var logoSrc = base + 'assets/images/the-nursing-collective-logo.webp';
+        var logoSrc = base + 'assets/images/the-nursing-collective-logo.svg';
 
         var overlay = document.createElement('div');
         overlay.id = 'site-lockscreen';

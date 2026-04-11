@@ -303,7 +303,7 @@ img { max-width: 100%; display: block; }
   background: transparent;
   color: var(--text-dim);
   cursor: pointer;
-  transition: all 0.15s;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
   text-decoration: none;
   line-height: 1;
 }

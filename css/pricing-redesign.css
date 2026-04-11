@@ -1515,12 +1515,12 @@ img { max-width: 100%; display: block; }
 
 .feedback-emoji .feedback-emoji-icon {
   line-height: 1;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   transition: color 0.15s;
 }
 
 .feedback-emoji:hover .feedback-emoji-icon {
-  color: var(--text-dim);
+  color: var(--text);
 }
 
 .feedback-emoji.active {

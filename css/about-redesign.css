@@ -924,6 +924,15 @@ img { max-width: 100%; display: block; }
 }
 
 @media (max-width: 640px) {
+  .about-hero {
+    padding: 100px 20px 32px;
+  }
+
+  .about-content {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
   .footer-inner {
     grid-template-columns: 1fr;
     gap: 28px;

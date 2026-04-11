@@ -1596,6 +1596,7 @@ img { max-width: 100%; display: block; }
    COOKIE CONSENT OVERRIDE (match design system)
    ══════════════════════════════════════════════════════════════ */
 .cookie-consent-banner {
+  z-index: 9000;
   background: var(--navy-2);
   border-top: 0.5px solid var(--border-mid);
   box-shadow: 0 -4px 20px rgba(0,0,0,0.4);

@@ -617,7 +617,7 @@ img { max-width: 100%; display: block; }
 .features-section {
   position: relative;
   z-index: 1;
-  padding: 64px 28px;
+  padding: 40px 28px;
 }
 
 .features-wrap {
@@ -677,7 +677,7 @@ img { max-width: 100%; display: block; }
 .steps-section {
   position: relative;
   z-index: 1;
-  padding: 64px 28px;
+  padding: 40px 28px;
 }
 
 .steps-wrap {
@@ -727,7 +727,7 @@ img { max-width: 100%; display: block; }
 .ai-section {
   position: relative;
   z-index: 1;
-  padding: 64px 28px;
+  padding: 40px 28px;
 }
 
 .ai-wrap {
@@ -769,7 +769,7 @@ img { max-width: 100%; display: block; }
 .community-section {
   position: relative;
   z-index: 1;
-  padding: 64px 28px;
+  padding: 40px 28px;
 }
 
 .community-wrap {
@@ -785,7 +785,7 @@ img { max-width: 100%; display: block; }
 .final-cta {
   position: relative;
   z-index: 1;
-  padding: 64px 28px;
+  padding: 40px 28px;
 }
 
 .final-cta-inner {

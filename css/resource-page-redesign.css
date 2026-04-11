@@ -1,0 +1,1410 @@
+/* ============================================
+   RESOURCE PAGE REDESIGN
+   Navy design system — no gradients, no shadows
+   ============================================ */
+
+/* --- Variables --- */
+:root {
+  --navy: #0d1b2a;
+  --navy-2: #162032;
+  --navy-3: #1e2d3e;
+  --teal: #0fbcad;
+  --teal-dim: #0a9086;
+  --amber: #f4a535;
+  --red: #e05252;
+  --green: #3dbd7a;
+  --text: #e8edf2;
+  --text-dim: #8a9bb0;
+  --text-dimmer: #4a5a6a;
+  --border: rgba(255,255,255,0.07);
+  --border-mid: rgba(255,255,255,0.12);
+}
+
+/* --- Reset --- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+img { max-width: 100%; display: block; }
+a { color: var(--teal); text-decoration: none; }
+a:hover { color: var(--teal-dim); }
+
+/* --- Body with grid texture --- */
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--navy);
+  color: var(--text);
+  min-height: 100vh;
+  position: relative;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* --- Skip link --- */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  background: var(--teal);
+  color: var(--navy);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 500;
+  z-index: 1000;
+}
+.skip-link:focus { top: 16px; }
+
+/* --- Page header --- */
+.guide-header,
+.tool-header {
+  background: var(--navy-2);
+  width: 100%;
+  padding: 40px 28px 36px;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid var(--border);
+}
+
+.header-content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* --- Back link --- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--teal);
+  font-size: 14px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+.back-link:hover { color: var(--teal-dim); }
+
+/* --- Category badge --- */
+.guide-category,
+.tool-category {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: var(--teal);
+  background: rgba(15,188,173,0.1);
+  border: 1px solid rgba(15,188,173,0.25);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+/* --- Guide title --- */
+.guide-title,
+.tool-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+/* --- Guide subtitle --- */
+.guide-subtitle,
+.tool-subtitle {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* --- Main content --- */
+.guide-content,
+.tool-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 28px;
+  position: relative;
+  z-index: 1;
+}
+
+/* --- Content sections --- */
+.content-section {
+  margin-bottom: 40px;
+}
+
+.content-section h2,
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--text);
+  padding-top: 20px;
+  margin-bottom: 16px;
+  border-top: 1px solid var(--border);
+  line-height: 1.3;
+}
+
+/* Section number label */
+.section-number {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--teal);
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+/* Section header (number + title combo) */
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 16px;
+}
+.section-header .section-number {
+  width: auto;
+  height: auto;
+  background: none;
+  border-radius: 0;
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--teal);
+  letter-spacing: 0.5px;
+}
+.section-header .section-number::before {
+  content: 'SECTION ';
+}
+.section-header .section-title {
+  border-top: 1px solid var(--border);
+  padding-top: 12px;
+  margin-bottom: 0;
+}
+
+/* --- Paragraphs --- */
+.content-section p,
+.guide-content p,
+.tool-content p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+.content-section p:last-child { margin-bottom: 0; }
+
+/* --- Strong text --- */
+strong { color: var(--text); font-weight: 500; }
+
+/* --- Lists --- */
+.content-section ul,
+.content-section ol,
+.guide-content ul,
+.tool-content ul {
+  padding-left: 20px;
+  margin: 12px 0 16px;
+}
+.content-section ul li,
+.content-section ol li,
+.guide-content ul li,
+.tool-content ul li {
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
+  margin-bottom: 8px;
+}
+.content-section ul li::marker,
+.guide-content ul li::marker,
+.tool-content ul li::marker {
+  color: var(--teal);
+}
+.content-section ul { list-style: disc; }
+.content-section ol { list-style: decimal; }
+
+/* --- Quick wins box --- */
+.quick-wins {
+  background: var(--navy-2);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 14px 14px 0;
+  padding: 24px 28px;
+  margin-bottom: 40px;
+}
+
+.quick-wins-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.quick-wins-icon {
+  color: var(--teal);
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.quick-wins-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+}
+
+.quick-wins-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-wins-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+.quick-wins-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+.quick-wins-list li::before {
+  content: '\f00c';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 900;
+  color: var(--green);
+  font-size: 12px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* --- Callout boxes --- */
+.callout {
+  background: var(--navy-2);
+  border-radius: 0 14px 14px 0;
+  padding: 20px 24px;
+  margin: 20px 0;
+  border-left: 3px solid var(--teal);
+}
+.callout-tip { border-left-color: var(--teal); }
+.callout-reality { border-left-color: var(--amber); }
+.callout-mentor { border-left-color: var(--green); }
+.callout-warning { border-left-color: var(--red); }
+.callout-critical { border-left-color: var(--red); }
+.callout-support { border-left-color: var(--green); }
+
+.callout-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.callout-tip .callout-header { color: var(--teal); }
+.callout-reality .callout-header { color: var(--amber); }
+.callout-mentor .callout-header { color: var(--green); }
+.callout-warning .callout-header { color: var(--red); }
+.callout-critical .callout-header { color: var(--red); }
+.callout-support .callout-header { color: var(--green); }
+
+.callout p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+/* --- Steps list --- */
+.steps-list {
+  counter-reset: step-counter;
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+.steps-list li {
+  counter-increment: step-counter;
+  position: relative;
+  padding-left: 44px;
+  margin-bottom: 18px;
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+.steps-list li::before {
+  content: counter(step-counter);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--navy-3);
+  color: var(--teal);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+}
+.steps-list li strong { color: var(--text); }
+
+/* --- Comparison box --- */
+.comparison-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+.comparison-side {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 20px;
+  border: 1px solid var(--border);
+}
+.comparison-side.wrong { border-color: var(--red); }
+.comparison-side.right { border-color: var(--green); }
+.comparison-side.textbook { border-color: var(--amber); }
+.comparison-side.reality { border-color: var(--teal); }
+.comparison-side.minimal { border-color: var(--red); }
+.comparison-side.intensive { border-color: var(--green); }
+
+.comparison-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.comparison-side.wrong .comparison-label { color: var(--red); }
+.comparison-side.right .comparison-label { color: var(--green); }
+.comparison-side.textbook .comparison-label { color: var(--amber); }
+.comparison-side.reality .comparison-label { color: var(--teal); }
+.comparison-side.minimal .comparison-label { color: var(--red); }
+.comparison-side.intensive .comparison-label { color: var(--green); }
+
+.comparison-side ul { margin: 0; padding-left: 16px; }
+.comparison-side ul li { font-size: 13px; margin-bottom: 6px; }
+.comparison-side ul li:last-child { margin-bottom: 0; }
+
+/* --- Example box --- */
+.example-box {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  border: 1px solid var(--border);
+}
+.example-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.example-box p { margin: 0; font-size: 14px; color: var(--text-dim); }
+.example-box p + p { margin-top: 10px; }
+
+/* --- Diagnosis format box --- */
+.diagnosis-format {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 16px 24px;
+  margin: 16px 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  text-align: center;
+  border: 1px solid var(--border-mid);
+  color: var(--text-dim);
+}
+.diagnosis-format strong { color: var(--teal); }
+
+/* --- CTA at bottom --- */
+.guide-cta,
+.tool-cta {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 36px 28px;
+  text-align: center;
+  margin-top: 40px;
+  border: 1px solid var(--border);
+}
+.guide-cta h3,
+.tool-cta h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.guide-cta p,
+.tool-cta p {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.cta-btn:hover { opacity: 0.85; }
+
+.cta-btn-primary {
+  background: var(--teal);
+  color: var(--navy);
+}
+.cta-btn-secondary {
+  background: transparent;
+  color: var(--teal);
+  border: 1px solid var(--teal);
+}
+
+/* --- Key concepts / important note boxes --- */
+.key-concepts,
+.important-note {
+  background: var(--navy-2);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 14px 14px 0;
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+.key-concepts-header,
+.important-note-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+.key-concepts-icon { color: var(--amber); font-size: 16px; }
+.key-concepts-title,
+.important-note-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text);
+}
+.important-note-content { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+/* --- Tip box --- */
+.tip-box {
+  background: var(--navy-2);
+  border-left: 3px solid var(--teal);
+  border-radius: 0 14px 14px 0;
+  padding: 20px 24px;
+  margin: 16px 0;
+}
+.tip-box-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 6px;
+}
+.tip-box-content { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+/* --- Clinical note --- */
+.clinical-note {
+  background: var(--navy-2);
+  border-left: 3px solid var(--amber);
+  border-radius: 0 14px 14px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* --- Scenario / script boxes --- */
+.scenario-box,
+.script-box {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  border: 1px solid var(--border);
+}
+.scenario-header {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--teal);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 10px;
+}
+.situation { font-size: 14px; color: var(--text-dim); margin-bottom: 10px; line-height: 1.6; }
+.response { font-size: 14px; color: var(--text); font-style: italic; line-height: 1.6; }
+.script-item { margin-bottom: 12px; }
+.script-item:last-child { margin-bottom: 0; }
+
+/* --- Skill box --- */
+.skill-box {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  border: 1px solid var(--border);
+}
+
+/* --- Resource box --- */
+.resource-box {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  border: 1px solid var(--border);
+}
+
+/* --- Checklist box --- */
+.checklist-box {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin: 20px 0;
+  border: 1px solid var(--border);
+}
+.checklist-box ul { list-style: none; padding: 0; }
+.checklist-box ul li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+  color: var(--text-dim);
+}
+.checklist-box ul li:last-child { border-bottom: none; }
+.checklist-box ul li::before {
+  content: '\f0c8';
+  font-family: 'Font Awesome 6 Free';
+  font-weight: 400;
+  color: var(--text-dimmer);
+  font-size: 11px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+
+/* ============================================
+   REFERENCE TOOL SPECIFIC STYLES
+   (abbreviations, lab-values, vital-signs, medications,
+    documentation-phrases, clinical-skills)
+   ============================================ */
+
+/* --- Search box --- */
+.search-box {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.search-box i { color: var(--text-dimmer); font-size: 14px; }
+.search-box input {
+  flex: 1;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  outline: none;
+}
+.search-box input::placeholder { color: var(--text-dimmer); }
+.search-clear {
+  background: none;
+  border: none;
+  color: var(--text-dimmer);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 4px;
+}
+.search-clear:hover { color: var(--text-dim); }
+
+/* --- Alpha jump (abbreviations) --- */
+.alpha-jump {
+  margin-bottom: 28px;
+}
+.alpha-jump-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.alpha-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.alpha-links a {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text-dim);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: border-color 0.2s, color 0.2s;
+}
+.alpha-links a:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+
+/* --- Quick jump --- */
+.quick-jump {
+  margin-bottom: 28px;
+}
+.quick-jump-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+.quick-jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.quick-jump-links a {
+  font-size: 13px;
+  color: var(--teal);
+  padding: 4px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  transition: border-color 0.2s;
+}
+.quick-jump-links a:hover { border-color: var(--teal); }
+
+/* --- Most popular abbreviations --- */
+.most-popular {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 28px;
+  border: 1px solid var(--border);
+}
+.most-popular-header {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+.most-popular-intro {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+.popular-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+.popular-item {
+  background: var(--navy-3);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+}
+.popular-abbrev {
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  color: var(--teal);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.popular-meaning {
+  font-size: 11px;
+  color: var(--text-dim);
+  line-height: 1.3;
+}
+
+/* --- Abbreviation sections --- */
+.abbrev-section {
+  margin-bottom: 32px;
+}
+.abbrev-section-header {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  color: var(--text);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+.letter {
+  font-family: 'DM Mono', monospace;
+  color: var(--teal);
+}
+.abbrev-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.abbrev-item {
+  display: flex;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+.abbrev-term {
+  font-family: 'DM Mono', monospace;
+  color: var(--teal);
+  font-weight: 500;
+  white-space: nowrap;
+  min-width: 60px;
+}
+.abbrev-def { color: var(--text-dim); }
+
+/* --- Do-not-use / danger abbreviations --- */
+.do-not-use {
+  background: var(--navy-2);
+  border-left: 3px solid var(--red);
+  border-radius: 0 14px 14px 0;
+  padding: 24px 28px;
+  margin-bottom: 32px;
+}
+.do-not-use-header {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.do-not-use-intro {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.do-not-use-content { font-size: 14px; color: var(--text-dim); }
+
+.danger-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.danger-table th {
+  text-align: left;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-mid);
+}
+.danger-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.danger-table tr:last-child td { border-bottom: none; }
+.danger-abbrev {
+  font-family: 'DM Mono', monospace;
+  color: var(--red);
+  font-weight: 500;
+}
+.use-instead { color: var(--green); }
+
+.no-results {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-dimmer);
+  font-size: 14px;
+}
+
+/* ============================================
+   LAB VALUES
+   ============================================ */
+
+.lab-section {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.lab-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.lab-section-header i { color: var(--teal); font-size: 16px; }
+.lab-section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text);
+}
+
+/* Lab section color accents */
+.lab-section.electrolytes { border-left: 3px solid #3b82f6; }
+.lab-section.cbc { border-left: 3px solid var(--red); }
+.lab-section.metabolic { border-left: 3px solid var(--amber); }
+.lab-section.coagulation { border-left: 3px solid #a855f7; }
+.lab-section.renal { border-left: 3px solid var(--teal); }
+.lab-section.liver { border-left: 3px solid var(--green); }
+.lab-section.thyroid { border-left: 3px solid #ec4899; }
+.lab-section.cardiac { border-left: 3px solid var(--red); }
+
+.lab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.lab-table th {
+  text-align: left;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-mid);
+}
+.lab-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.lab-table tr:last-child td { border-bottom: none; }
+.lab-name { color: var(--text); font-weight: 500; }
+.lab-abbrev {
+  font-family: 'DM Mono', monospace;
+  color: var(--teal);
+  font-size: 12px;
+}
+.normal-range {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--text);
+}
+.critical-value { color: var(--red); font-weight: 500; }
+.critical-high { color: var(--red); }
+.critical-low { color: var(--amber); }
+.significance { font-size: 12px; }
+.sig-high { color: var(--red); }
+.sig-low { color: var(--amber); }
+.sig-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ============================================
+   VITAL SIGNS
+   ============================================ */
+
+.vital-section {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.vital-section.heart-rate { border-left: 3px solid var(--red); }
+.vital-section.respiratory { border-left: 3px solid #3b82f6; }
+.vital-section.blood-pressure { border-left: 3px solid #a855f7; }
+.vital-section.temperature { border-left: 3px solid var(--amber); }
+.vital-section.oxygen { border-left: 3px solid var(--teal); }
+
+.vital-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.vital-icon { color: var(--teal); font-size: 16px; }
+.vital-section-left {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text);
+}
+.vital-section-right { font-size: 13px; color: var(--text-dim); }
+.vital-info { font-size: 13px; color: var(--text-dim); margin-top: 8px; line-height: 1.6; }
+.vital-content { margin-top: 12px; }
+
+.age-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
+}
+.age-card {
+  background: var(--navy-3);
+  border-radius: 10px;
+  padding: 14px;
+  text-align: center;
+  border: 1px solid var(--border);
+}
+.age-card-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-bottom: 4px;
+}
+.age-card-range {
+  font-size: 11px;
+  color: var(--text-dimmer);
+  margin-bottom: 6px;
+}
+.age-card-value {
+  font-family: 'DM Mono', monospace;
+  font-size: 16px;
+  color: var(--teal);
+  font-weight: 500;
+}
+.concern-tag {
+  display: inline-block;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-top: 6px;
+}
+.concern-tag.concern-high {
+  background: rgba(224,82,82,0.15);
+  color: var(--red);
+}
+.concern-tag.concern-low {
+  background: rgba(244,165,53,0.15);
+  color: var(--amber);
+}
+
+/* ============================================
+   MEDICATIONS
+   ============================================ */
+
+.drug-class {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.drug-class.cardiac { border-left: 3px solid var(--red); }
+.drug-class.antibiotics { border-left: 3px solid var(--green); }
+.drug-class.pain { border-left: 3px solid #a855f7; }
+.drug-class.diabetes { border-left: 3px solid var(--amber); }
+.drug-class.respiratory { border-left: 3px solid #3b82f6; }
+.drug-class.anticoag { border-left: 3px solid var(--red); }
+.drug-class.diuretics { border-left: 3px solid var(--teal); }
+.drug-class.gi { border-left: 3px solid #ec4899; }
+
+.drug-class-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.drug-class-icon { color: var(--teal); font-size: 16px; }
+.drug-class-info {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.drug-grid {
+  display: grid;
+  gap: 10px;
+}
+.drug-card {
+  background: var(--navy-3);
+  border-radius: 10px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+}
+.drug-name {
+  font-family: 'DM Mono', monospace;
+  font-size: 14px;
+  color: var(--teal);
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+.drug-generic {
+  font-size: 12px;
+  color: var(--text-dimmer);
+  margin-bottom: 6px;
+}
+.drug-use {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+.drug-considerations {
+  font-size: 12px;
+  color: var(--amber);
+  line-height: 1.5;
+}
+
+/* ============================================
+   DOCUMENTATION PHRASES
+   ============================================ */
+
+.phrase-section {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.phrase-section.assessment { border-left: 3px solid var(--teal); }
+.phrase-section.interventions { border-left: 3px solid var(--green); }
+.phrase-section.response { border-left: 3px solid #3b82f6; }
+.phrase-section.pain { border-left: 3px solid #a855f7; }
+.phrase-section.safety { border-left: 3px solid var(--red); }
+.phrase-section.teaching { border-left: 3px solid var(--amber); }
+
+.phrase-section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+.phrase-section-header i { color: var(--teal); font-size: 16px; }
+.phrase-category-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text);
+}
+
+.phrase-grid,
+.phrase-list {
+  display: grid;
+  gap: 8px;
+}
+.phrase-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--navy-3);
+  border-radius: 8px;
+}
+.phrase-icon { color: var(--teal); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+.phrase-info { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+.phrase-content { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+.phrase-category {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  margin-top: 4px;
+}
+
+/* --- Doc tips grid --- */
+.doc-tips {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.doc-tips-header {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.doc-tips-grid {
+  display: grid;
+  gap: 10px;
+}
+.doc-tip-item {
+  background: var(--navy-3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* ============================================
+   CLINICAL SKILLS
+   ============================================ */
+
+.reference-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+  margin: 16px 0;
+}
+.reference-table th {
+  text-align: left;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-mid);
+}
+.reference-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-dim);
+}
+.reference-table tr:last-child td { border-bottom: none; }
+
+/* ============================================
+   HEAD-TO-TOE ASSESSMENT
+   ============================================ */
+
+.assessment-area {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--teal);
+}
+
+/* ============================================
+   CLINICAL BAG
+   ============================================ */
+
+.category-box {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.category-box.must-have { border-left: 3px solid var(--teal); }
+.category-box.school-provides { border-left: 3px solid #3b82f6; }
+.category-box.nice-to-have { border-left: 3px solid var(--amber); }
+
+.category-header {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.item-desc {
+  font-size: 12px;
+  color: var(--text-dimmer);
+  margin-top: 2px;
+}
+
+/* ============================================
+   TIME MANAGEMENT
+   ============================================ */
+
+.schedule-day {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.schedule-block {
+  display: flex;
+  gap: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.schedule-block:last-child { border-bottom: none; }
+.time-block {
+  display: flex;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+.time-block:last-child { border-bottom: none; }
+.time-block-icon {
+  color: var(--teal);
+  font-size: 14px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.time-block-content { font-size: 14px; color: var(--text-dim); line-height: 1.6; }
+
+/* ============================================
+   PRIORITY TIERS (clinical-bag, etc.)
+   ============================================ */
+
+.priority-tier {
+  background: var(--navy-2);
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
+}
+.priority-tier.high { border-left: 3px solid var(--red); }
+.priority-tier.medium { border-left: 3px solid var(--amber); }
+.priority-tier.low { border-left: 3px solid var(--teal); }
+
+.priority-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.priority-tier.high .priority-label { color: var(--red); }
+.priority-tier.medium .priority-label { color: var(--amber); }
+.priority-tier.low .priority-label { color: var(--teal); }
+
+/* ============================================
+   CONCEPT GRID
+   ============================================ */
+
+.concept-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 16px 0;
+}
+.concept-item {
+  background: var(--navy-2);
+  border-radius: 10px;
+  padding: 16px 20px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* --- Warning/danger/tip inline labels --- */
+.warning { color: var(--amber); }
+.danger { color: var(--red); }
+.tip { color: var(--teal); }
+.placeholder { color: var(--text-dimmer); font-style: italic; }
+
+/* ============================================
+   COOKIE CONSENT OVERRIDES
+   ============================================ */
+
+.cookie-consent-banner {
+  background: var(--navy-2) !important;
+  border-top: 1px solid var(--border-mid) !important;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 640px) {
+  .guide-header,
+  .tool-header {
+    padding: 28px 20px 28px;
+  }
+
+  .guide-content,
+  .tool-content {
+    padding: 28px 20px;
+  }
+
+  .quick-wins,
+  .callout,
+  .do-not-use,
+  .key-concepts,
+  .important-note,
+  .lab-section,
+  .vital-section,
+  .drug-class,
+  .phrase-section,
+  .category-box,
+  .schedule-day,
+  .priority-tier,
+  .doc-tips,
+  .most-popular,
+  .checklist-box {
+    padding: 20px;
+  }
+
+  .comparison-box,
+  .concept-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .popular-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .abbrev-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .cta-btn {
+    width: 100%;
+    max-width: 260px;
+    justify-content: center;
+  }
+
+  .age-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .alpha-links a {
+    width: 26px;
+    height: 26px;
+    font-size: 11px;
+  }
+}
+
+/* Single-column modifier for category boxes */
+.category-box.single-col ul {
+  columns: 1;
+}

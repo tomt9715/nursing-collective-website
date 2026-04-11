@@ -42,31 +42,22 @@
         overlay.id = 'site-lockscreen';
 
         overlay.innerHTML =
-            /* Animated background orbs */
-            '<div class="ls-orb ls-orb-1"></div>' +
-            '<div class="ls-orb ls-orb-2"></div>' +
-            '<div class="ls-orb ls-orb-3"></div>' +
-
             '<div class="ls-card">' +
-                /* Logo */
-                '<div class="ls-logo-wrap">' +
-                    '<img src="' + logoSrc + '" alt="The Nursing Collective" class="ls-logo" />' +
-                '</div>' +
+                /* Eyebrow */
+                '<div class="ls-eyebrow">The Nursing Collective</div>' +
 
                 /* Badge */
-                '<div class="ls-badge">' +
-                    '<i class="fas fa-tools"></i> Coming Soon' +
-                '</div>' +
+                '<div class="ls-badge">Coming Soon</div>' +
 
                 /* Main message */
-                '<h1 class="ls-title">Something Great is<br>on the Way</h1>' +
+                '<h1 class="ls-title">Something Great is<br>on the <em>Way</em></h1>' +
                 '<p class="ls-message">We\'re putting the finishing touches on The Nursing Collective \u2014 a comprehensive hub of study guides, practice questions, and resources built by nursing students, for nursing students.</p>' +
 
                 /* Feature pills */
                 '<div class="ls-features">' +
-                    '<span class="ls-pill"><i class="fas fa-book-medical"></i> Study Guides</span>' +
-                    '<span class="ls-pill"><i class="fas fa-clipboard-check"></i> Practice Questions</span>' +
-                    '<span class="ls-pill"><i class="fas fa-users"></i> Community</span>' +
+                    '<span class="ls-pill">Study Guides</span>' +
+                    '<span class="ls-pill">Practice Questions</span>' +
+                    '<span class="ls-pill">Community</span>' +
                 '</div>' +
 
                 /* Notify / contact section */
@@ -74,10 +65,12 @@
                     '<p class="ls-contact-label">Want to know when we launch?</p>' +
                     '<div class="ls-contact-links">' +
                         '<a href="mailto:support@thenursingcollective.pro" class="ls-link">' +
-                            '<i class="fas fa-envelope"></i> support@thenursingcollective.pro' +
+                            '<svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" fill="none" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>' +
+                            'support@thenursingcollective.pro' +
                         '</a>' +
                         '<a href="https://discord.gg/y2Mh77wAV2" target="_blank" rel="noopener noreferrer" class="ls-link">' +
-                            '<i class="fab fa-discord"></i> Join our Discord' +
+                            '<svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/></svg>' +
+                            'Join our Discord' +
                         '</a>' +
                     '</div>' +
                 '</div>' +
@@ -87,10 +80,15 @@
 
                 /* Password area — subtle, at the bottom */
                 '<details class="ls-admin">' +
-                    '<summary class="ls-admin-toggle"><i class="fas fa-lock"></i> Site Owner Access</summary>' +
+                    '<summary class="ls-admin-toggle">' +
+                        '<svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>' +
+                        ' Site Owner Access' +
+                    '</summary>' +
                     '<div class="ls-form">' +
                         '<input type="password" id="ls-password" class="ls-input" placeholder="Enter password" autocomplete="off" />' +
-                        '<button type="button" id="ls-submit" class="ls-btn"><i class="fas fa-arrow-right"></i></button>' +
+                        '<button type="button" id="ls-submit" class="ls-btn">' +
+                            '<svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" fill="none" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>' +
+                        '</button>' +
                     '</div>' +
                     '<p id="ls-error" class="ls-error" style="display:none;">Incorrect password. Try again.</p>' +
                 '</details>' +
@@ -106,197 +104,174 @@
             /* ===== LAYOUT ===== */
             '#site-lockscreen {' +
                 'position: fixed; top: 0; left: 0; right: 0; bottom: 0;' +
-                'background: #0f172a;' +
+                'background: #0d1b2a;' +
                 'z-index: 999999;' +
                 'display: flex; flex-direction: column;' +
                 'align-items: center; justify-content: center;' +
                 'padding: 24px;' +
-                'font-family: "Outfit", "Source Sans 3", "Segoe UI", sans-serif;' +
+                'font-family: "Outfit", sans-serif;' +
                 'overflow-y: auto;' +
             '}' +
 
-            /* ===== ANIMATED BACKGROUND ORBS ===== */
-            '.ls-orb {' +
-                'position: fixed; border-radius: 50%;' +
-                'filter: blur(100px); opacity: 0.15;' +
+            /* Grid texture */
+            '#site-lockscreen::before {' +
+                'content: "";' +
+                'position: fixed; inset: 0;' +
+                'background-image:' +
+                    'linear-gradient(rgba(15,188,173,0.03) 1px, transparent 1px),' +
+                    'linear-gradient(90deg, rgba(15,188,173,0.03) 1px, transparent 1px);' +
+                'background-size: 40px 40px;' +
                 'pointer-events: none;' +
-                'animation: lsFloat 20s ease-in-out infinite;' +
-            '}' +
-            '.ls-orb-1 {' +
-                'width: 500px; height: 500px;' +
-                'background: #2E86AB;' +
-                'top: -10%; left: -10%;' +
-                'animation-delay: 0s;' +
-            '}' +
-            '.ls-orb-2 {' +
-                'width: 400px; height: 400px;' +
-                'background: #A23B72;' +
-                'bottom: -10%; right: -10%;' +
-                'animation-delay: -7s;' +
-            '}' +
-            '.ls-orb-3 {' +
-                'width: 300px; height: 300px;' +
-                'background: #f59e0b;' +
-                'top: 50%; left: 50%;' +
-                'transform: translate(-50%, -50%);' +
-                'animation-delay: -14s;' +
-            '}' +
-            '@keyframes lsFloat {' +
-                '0%, 100% { transform: translate(0, 0); }' +
-                '25% { transform: translate(40px, -30px); }' +
-                '50% { transform: translate(-20px, 40px); }' +
-                '75% { transform: translate(30px, 20px); }' +
             '}' +
 
             /* ===== CARD ===== */
             '.ls-card {' +
                 'position: relative; z-index: 1;' +
-                'background: rgba(255,255,255,0.04);' +
-                'backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);' +
-                'border: 1px solid rgba(255,255,255,0.08);' +
-                'border-radius: 28px;' +
+                'background: #162032;' +
+                'border: 0.5px solid rgba(255,255,255,0.12);' +
+                'border-radius: 14px;' +
                 'padding: 48px 44px 40px;' +
-                'max-width: 520px; width: 100%;' +
+                'max-width: 480px; width: 100%;' +
                 'text-align: center;' +
                 'animation: lsSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);' +
-                'box-shadow: 0 30px 80px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);' +
             '}' +
             '@keyframes lsSlideUp {' +
                 'from { transform: translateY(40px); opacity: 0; }' +
                 'to { transform: translateY(0); opacity: 1; }' +
             '}' +
 
-            /* ===== LOGO ===== */
-            '.ls-logo-wrap {' +
-                'margin-bottom: 24px;' +
-            '}' +
-            '.ls-logo {' +
-                'height: 52px; width: auto;' +
-                'filter: brightness(1.1);' +
+            /* ===== EYEBROW ===== */
+            '.ls-eyebrow {' +
+                'font-family: "DM Mono", monospace;' +
+                'font-size: 11px;' +
+                'letter-spacing: 0.18em;' +
+                'color: #0fbcad;' +
+                'text-transform: uppercase;' +
+                'margin-bottom: 16px;' +
             '}' +
 
             /* ===== BADGE ===== */
             '.ls-badge {' +
-                'display: inline-flex; align-items: center; gap: 8px;' +
-                'background: linear-gradient(135deg, rgba(46,134,171,0.15), rgba(162,59,114,0.15));' +
-                'border: 1px solid rgba(46,134,171,0.25);' +
-                'color: #7dd3fc;' +
-                'font-size: 0.8rem; font-weight: 600;' +
-                'text-transform: uppercase; letter-spacing: 1.5px;' +
-                'padding: 8px 18px; border-radius: 50px;' +
+                'display: inline-block;' +
+                'font-family: "DM Mono", monospace;' +
+                'font-size: 11px; font-weight: 500;' +
+                'letter-spacing: 0.04em;' +
+                'text-transform: uppercase;' +
+                'background: rgba(15,188,173,0.12);' +
+                'color: #0fbcad;' +
+                'border: 0.5px solid rgba(15,188,173,0.25);' +
+                'padding: 4px 14px; border-radius: 20px;' +
                 'margin-bottom: 24px;' +
             '}' +
-            '.ls-badge i { font-size: 0.75rem; }' +
 
             /* ===== TYPOGRAPHY ===== */
             '.ls-title {' +
-                'font-family: "Outfit", sans-serif;' +
-                'font-size: 32px; font-weight: 700;' +
-                'color: #f1f5f9; line-height: 1.25;' +
-                'margin: 0 0 16px;' +
-                'letter-spacing: -0.025em;' +
+                'font-family: "DM Serif Display", serif;' +
+                'font-size: clamp(26px, 4vw, 34px); font-weight: 400;' +
+                'color: #e8edf2; line-height: 1.15;' +
+                'margin: 0 0 14px;' +
+            '}' +
+            '.ls-title em {' +
+                'font-style: italic; color: #0fbcad;' +
             '}' +
             '.ls-message {' +
-                'color: #94a3b8; font-size: 1rem; line-height: 1.7;' +
-                'margin: 0 0 24px;' +
-                'font-family: "Source Sans 3", "Segoe UI", sans-serif;' +
+                'color: #8a9bb0; font-size: 14px; line-height: 1.7;' +
+                'margin: 0 0 28px; font-weight: 300;' +
             '}' +
 
             /* ===== FEATURE PILLS ===== */
             '.ls-features {' +
                 'display: flex; flex-wrap: wrap;' +
-                'justify-content: center; gap: 10px;' +
+                'justify-content: center; gap: 8px;' +
                 'margin-bottom: 28px;' +
             '}' +
             '.ls-pill {' +
                 'display: inline-flex; align-items: center; gap: 6px;' +
-                'background: rgba(255,255,255,0.06);' +
-                'border: 1px solid rgba(255,255,255,0.08);' +
-                'color: #cbd5e1; font-size: 0.82rem; font-weight: 500;' +
-                'padding: 8px 16px; border-radius: 50px;' +
+                'background: #1e2d3e;' +
+                'border: 0.5px solid rgba(255,255,255,0.07);' +
+                'color: #8a9bb0; font-size: 12px; font-weight: 400;' +
+                'padding: 7px 14px; border-radius: 6px;' +
             '}' +
-            '.ls-pill i { color: #2E86AB; font-size: 0.75rem; }' +
 
             /* ===== CONTACT BOX ===== */
             '.ls-contact-box {' +
-                'background: rgba(255,255,255,0.03);' +
-                'border: 1px solid rgba(255,255,255,0.06);' +
-                'border-radius: 16px; padding: 20px;' +
+                'background: #1e2d3e;' +
+                'border: 0.5px solid rgba(255,255,255,0.07);' +
+                'border-radius: 10px; padding: 20px;' +
                 'margin-bottom: 24px;' +
             '}' +
             '.ls-contact-label {' +
-                'color: #64748b; font-size: 0.8rem;' +
-                'text-transform: uppercase; letter-spacing: 1px;' +
-                'font-weight: 600; margin: 0 0 14px;' +
+                'font-family: "DM Mono", monospace;' +
+                'color: #4a5a6a; font-size: 10px;' +
+                'text-transform: uppercase; letter-spacing: 0.15em;' +
+                'font-weight: 500; margin: 0 0 14px;' +
             '}' +
             '.ls-contact-links {' +
                 'display: flex; flex-direction: column; gap: 10px;' +
             '}' +
             '.ls-link {' +
-                'display: inline-flex; align-items: center; gap: 10px;' +
-                'color: #94a3b8; text-decoration: none;' +
-                'font-size: 0.9rem; transition: color 0.2s;' +
+                'display: inline-flex; align-items: center; gap: 8px;' +
+                'color: #8a9bb0; text-decoration: none;' +
+                'font-size: 13px; transition: color 0.15s;' +
                 'justify-content: center;' +
             '}' +
-            '.ls-link:hover { color: #e2e8f0; }' +
-            '.ls-link i { width: 18px; text-align: center; color: #2E86AB; }' +
-            '.ls-link .fa-discord { color: #5865F2; }' +
+            '.ls-link:hover { color: #e8edf2; }' +
+            '.ls-link svg { color: #0fbcad; flex-shrink: 0; }' +
 
             /* ===== DIVIDER ===== */
             '.ls-divider {' +
-                'height: 1px;' +
-                'background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);' +
+                'height: 0.5px;' +
+                'background: rgba(255,255,255,0.07);' +
                 'margin-bottom: 20px;' +
             '}' +
 
             /* ===== ADMIN / PASSWORD ===== */
             '.ls-admin { margin: 0; }' +
             '.ls-admin-toggle {' +
-                'display: inline-flex; align-items: center; gap: 8px;' +
-                'color: #475569; font-size: 0.78rem;' +
-                'text-transform: uppercase; letter-spacing: 1.2px;' +
-                'font-weight: 600; cursor: pointer;' +
+                'display: inline-flex; align-items: center; gap: 6px;' +
+                'font-family: "DM Mono", monospace;' +
+                'color: #4a5a6a; font-size: 10px;' +
+                'text-transform: uppercase; letter-spacing: 0.15em;' +
+                'font-weight: 500; cursor: pointer;' +
                 'list-style: none; user-select: none;' +
-                'transition: color 0.2s; padding: 4px 0;' +
+                'transition: color 0.15s; padding: 4px 0;' +
             '}' +
             '.ls-admin-toggle::-webkit-details-marker { display: none; }' +
             '.ls-admin-toggle::marker { display: none; content: ""; }' +
-            '.ls-admin-toggle:hover { color: #64748b; }' +
-            '.ls-admin-toggle i { font-size: 0.7rem; }' +
-            '.ls-admin[open] .ls-admin-toggle { color: #64748b; margin-bottom: 14px; }' +
+            '.ls-admin-toggle:hover { color: #8a9bb0; }' +
+            '.ls-admin-toggle svg { flex-shrink: 0; }' +
+            '.ls-admin[open] .ls-admin-toggle { color: #8a9bb0; margin-bottom: 14px; }' +
 
             '.ls-form {' +
-                'display: flex; gap: 10px;' +
-                'max-width: 320px; margin: 0 auto 10px;' +
+                'display: flex; gap: 8px;' +
+                'max-width: 300px; margin: 0 auto 10px;' +
             '}' +
             '.ls-input {' +
-                'flex: 1; padding: 12px 16px;' +
-                'background: rgba(255,255,255,0.06);' +
-                'border: 1px solid rgba(255,255,255,0.1);' +
-                'border-radius: 12px; color: #f1f5f9;' +
-                'font-size: 0.9rem; outline: none;' +
-                'font-family: "Source Sans 3", sans-serif;' +
-                'transition: border-color 0.2s, box-shadow 0.2s;' +
+                'flex: 1; padding: 10px 14px;' +
+                'background: #1e2d3e;' +
+                'border: 0.5px solid rgba(255,255,255,0.12);' +
+                'border-radius: 8px; color: #e8edf2;' +
+                'font-size: 13px; outline: none;' +
+                'font-family: "Outfit", sans-serif;' +
+                'transition: border-color 0.15s;' +
             '}' +
             '.ls-input:focus {' +
-                'border-color: #2E86AB;' +
-                'box-shadow: 0 0 0 3px rgba(46,134,171,0.15);' +
+                'border-color: #0fbcad;' +
             '}' +
-            '.ls-input::placeholder { color: #475569; }' +
+            '.ls-input::placeholder { color: #4a5a6a; }' +
             '.ls-btn {' +
-                'width: 48px; min-width: 48px; height: 48px;' +
+                'width: 42px; min-width: 42px; height: 42px;' +
                 'display: flex; align-items: center; justify-content: center;' +
-                'background: linear-gradient(135deg, #2E86AB, #236b8a);' +
-                'color: #fff; border: none; border-radius: 12px;' +
-                'font-size: 1rem; cursor: pointer;' +
-                'transition: transform 0.15s, box-shadow 0.15s;' +
+                'background: #0fbcad;' +
+                'color: #0d1b2a; border: none; border-radius: 8px;' +
+                'cursor: pointer;' +
+                'transition: background 0.15s;' +
             '}' +
             '.ls-btn:hover {' +
-                'transform: translateY(-2px);' +
-                'box-shadow: 0 4px 14px rgba(46,134,171,0.4);' +
+                'background: #0a9086;' +
             '}' +
             '.ls-error {' +
-                'color: #f87171; font-size: 0.82rem; margin: 0;' +
+                'color: #e05252; font-size: 12px; margin: 0;' +
                 'text-align: center;' +
             '}' +
 
@@ -306,19 +281,15 @@
                 'margin-top: 32px; text-align: center;' +
             '}' +
             '.ls-footer p {' +
-                'color: #334155; font-size: 0.78rem;' +
-                'margin: 0; letter-spacing: 0.5px;' +
+                'color: #4a5a6a; font-size: 12px;' +
+                'margin: 0;' +
             '}' +
 
             /* ===== MOBILE ===== */
             '@media (max-width: 560px) {' +
-                '.ls-card { padding: 36px 24px 32px; border-radius: 22px; }' +
-                '.ls-title { font-size: 26px; }' +
-                '.ls-logo { height: 42px; }' +
-                '.ls-message { font-size: 0.92rem; }' +
+                '.ls-card { padding: 36px 24px 32px; }' +
+                '.ls-pill { font-size: 11px; padding: 6px 12px; }' +
                 '.ls-form { max-width: none; }' +
-                '.ls-pill { font-size: 0.78rem; padding: 6px 12px; }' +
-                '.ls-orb { display: none; }' +
             '}' +
 
             /* ===== FADE OUT ===== */

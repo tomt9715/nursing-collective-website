@@ -246,7 +246,8 @@ img { max-width: 100%; display: block; }
     padding: 16px 28px;
     gap: 16px;
   }
-  .nav-links.active { display: flex; }
+  .nav-links.active,
+  .nav-links.mobile-open { display: flex; }
 
   .pricing-plans-grid {
     grid-template-columns: 1fr;

@@ -247,7 +247,8 @@ img { max-width: 100%; display: block; }
     padding: 16px 28px;
     gap: 16px;
   }
-  .nav-links.active { display: flex; }
+  .nav-links.active,
+  .nav-links.mobile-open { display: flex; }
 }
 
 /* ── Skip link ── */
@@ -531,12 +532,12 @@ img { max-width: 100%; display: block; }
 }
 
 .stats-inner {
-  max-width: 560px;
+  max-width: 900px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
 }
 
 .stat-item {
@@ -560,7 +561,9 @@ img { max-width: 100%; display: block; }
 }
 
 .stat-divider {
-  display: none;
+  width: 0.5px;
+  height: 36px;
+  background: var(--border-mid);
 }
 
 
@@ -1268,7 +1271,14 @@ img { max-width: 100%; display: block; }
   }
 
   .stats-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 24px;
+    text-align: center;
+  }
+
+  .stat-divider {
+    display: none;
   }
 
   .features-section,

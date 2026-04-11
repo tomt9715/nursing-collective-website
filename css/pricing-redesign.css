@@ -291,7 +291,7 @@ img { max-width: 100%; display: block; }
 .pricing-hero {
   position: relative;
   z-index: 1;
-  padding: 140px 28px 72px;
+  padding: 120px 28px 40px;
   text-align: center;
 }
 

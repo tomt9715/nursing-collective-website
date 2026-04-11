@@ -94,7 +94,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-links a {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-dim);
   transition: color 0.15s;
@@ -157,7 +157,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   transition: background 0.15s;
 }
@@ -208,7 +208,7 @@ img { max-width: 100%; display: block; }
 }
 
 .theme-selector-label {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   display: flex;
   align-items: center;
@@ -577,7 +577,7 @@ img { max-width: 100%; display: block; }
   top: 50%;
   transform: translateY(-50%);
   color: var(--text-dimmer);
-  font-size: 13px;
+  font-size: 14px;
   pointer-events: none;
 }
 
@@ -613,7 +613,7 @@ img { max-width: 100%; display: block; }
 }
 
 .auth-divider-text span {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   font-weight: 300;
 }
@@ -649,12 +649,12 @@ img { max-width: 100%; display: block; }
 
 .email-display-icon {
   color: var(--text-dimmer);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .email-display-text {
   flex: 1;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -783,7 +783,7 @@ img { max-width: 100%; display: block; }
   width: 100%;
   padding: 10px 16px;
   font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-dim);
   background: transparent;
@@ -929,7 +929,7 @@ img { max-width: 100%; display: block; }
 }
 
 .modal-description {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   margin-bottom: 20px;
   line-height: 1.6;
@@ -944,7 +944,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 16px;
   padding: 10px 14px;
   border-radius: 8px;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -974,7 +974,7 @@ img { max-width: 100%; display: block; }
   border-radius: 10px;
   padding: 14px 20px;
   font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text);
   box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   transform: translateX(120%);
@@ -1263,7 +1263,7 @@ img { max-width: 100%; display: block; }
   font-weight: 400; font-size: 18px; color: var(--text);
 }
 .cookie-consent-text h3 i { color: var(--teal); }
-.cookie-consent-text p { color: var(--text-dim); font-size: 13px; }
+.cookie-consent-text p { color: var(--text-dim); font-size: 14px; }
 .cookie-link { color: var(--teal); font-weight: 500; }
 .cookie-link:hover { color: var(--teal-dim); text-decoration: none; }
 .cookie-consent-options { background: var(--navy-3); border-radius: 10px; }
@@ -1271,9 +1271,9 @@ img { max-width: 100%; display: block; }
 .cookie-checkbox .checkmark { border: 0.5px solid var(--border-mid); border-radius: 4px; }
 .cookie-checkbox input:checked + .checkmark { background: var(--teal); border-color: var(--teal); }
 .cookie-checkbox input:disabled + .checkmark { background: var(--text-dimmer); border-color: var(--text-dimmer); }
-.cookie-checkbox .cookie-label strong { color: var(--text); font-size: 13px; }
+.cookie-checkbox .cookie-label strong { color: var(--text); font-size: 14px; }
 .cookie-checkbox .cookie-label small { color: var(--text-dim); font-size: 12px; }
-.cookie-btn { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 500; padding: 10px 20px; border-radius: 8px; }
+.cookie-btn { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; padding: 10px 20px; border-radius: 8px; }
 .cookie-btn-settings { background: transparent; color: var(--text-dim); border: 0.5px solid var(--border-mid); }
 .cookie-btn-settings:hover { background: var(--navy-3); color: var(--text); }
 .cookie-btn-reject { background: transparent; color: var(--text-dim); border: 0.5px solid var(--border-mid); }

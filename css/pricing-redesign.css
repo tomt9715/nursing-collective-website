@@ -93,7 +93,7 @@ img { max-width: 100%; display: block; }
 }
 
 .nav-links a {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   color: var(--text-dim);
   transition: color 0.15s;
@@ -156,7 +156,7 @@ img { max-width: 100%; display: block; }
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   transition: background 0.15s;
 }
@@ -207,7 +207,7 @@ img { max-width: 100%; display: block; }
 }
 
 .theme-selector-label {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   display: flex;
   align-items: center;
@@ -383,7 +383,7 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   gap: 8px;
   font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   padding: 10px 22px;
   border-radius: 8px;
@@ -573,7 +573,7 @@ img { max-width: 100%; display: block; }
 }
 
 .tier-toggle-description {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   font-weight: 300;
   line-height: 1.6;
@@ -698,7 +698,7 @@ img { max-width: 100%; display: block; }
 }
 
 .pricing-card-features li {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.5;
   padding: 6px 0;
@@ -726,7 +726,7 @@ img { max-width: 100%; display: block; }
 .btn-pricing {
   width: 100%;
   padding: 12px 20px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
@@ -842,7 +842,7 @@ img { max-width: 100%; display: block; }
 }
 
 .feature-card p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.65;
 }
@@ -908,7 +908,7 @@ img { max-width: 100%; display: block; }
 }
 
 .credit-addon-card li {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   padding: 4px 0;
   display: flex;
@@ -1005,7 +1005,7 @@ img { max-width: 100%; display: block; }
 }
 
 .upgrade-banner-msg {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
 }
 
@@ -1054,7 +1054,7 @@ img { max-width: 100%; display: block; }
 }
 
 .footer-brand-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.65;
   max-width: 280px;
@@ -1079,7 +1079,7 @@ img { max-width: 100%; display: block; }
 }
 
 .footer li a {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   transition: color 0.15s;
 }
@@ -1089,7 +1089,7 @@ img { max-width: 100%; display: block; }
 }
 
 .footer-contact-email {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   display: flex;
   align-items: center;
@@ -1168,7 +1168,7 @@ img { max-width: 100%; display: block; }
   border: 0.5px solid var(--border-mid);
   border-radius: 10px;
   padding: 12px 18px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   display: flex;
   align-items: center;
@@ -1258,7 +1258,7 @@ img { max-width: 100%; display: block; }
 }
 
 .pricing-auth-subtitle {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.6;
 }
@@ -1281,7 +1281,7 @@ img { max-width: 100%; display: block; }
   background: var(--navy-3);
   color: var(--text);
   font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.15s;
@@ -1330,7 +1330,7 @@ img { max-width: 100%; display: block; }
 }
 
 .pricing-auth-footer p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
 }
 
@@ -1433,7 +1433,7 @@ img { max-width: 100%; display: block; }
 }
 
 .faq-answer p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.7;
   margin-bottom: 8px;
@@ -1655,7 +1655,7 @@ img { max-width: 100%; display: block; }
 
 .cookie-consent-text p {
   color: var(--text-dim);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .cookie-link { color: var(--teal); font-weight: 500; }
@@ -1683,12 +1683,12 @@ img { max-width: 100%; display: block; }
   border-color: var(--text-dimmer);
 }
 
-.cookie-checkbox .cookie-label strong { color: var(--text); font-size: 13px; }
+.cookie-checkbox .cookie-label strong { color: var(--text); font-size: 14px; }
 .cookie-checkbox .cookie-label small { color: var(--text-dim); font-size: 12px; }
 
 .cookie-btn {
   font-family: 'Outfit', sans-serif;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
   padding: 10px 20px;
   border-radius: 8px;

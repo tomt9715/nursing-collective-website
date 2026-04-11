@@ -249,6 +249,17 @@ img { max-width: 100%; display: block; }
   }
   .nav-links.active,
   .nav-links.mobile-open { display: flex; }
+
+  .nav-links .user-menu { width: 100%; }
+  .nav-links .user-avatar { display: none; }
+  .nav-links .user-dropdown {
+    display: block; position: static; background: none;
+    border: none; box-shadow: none; padding: 0; min-width: 0;
+  }
+  .nav-links .guest-dropdown-header,
+  .nav-links .user-dropdown-header { display: none; }
+  .nav-links .user-dropdown-divider { display: none; }
+  .nav-links .user-dropdown a { padding: 10px 0; justify-content: center; }
 }
 
 /* ── Skip link ── */

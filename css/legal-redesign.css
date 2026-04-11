@@ -523,8 +523,8 @@ img { max-width: 100%; display: block; }
 }
 
 .policy-card.highlight {
-  border-color: var(--amber);
-  border-left-width: 3px;
+  border-color: var(--border-mid);
+  border-left: 3px solid var(--teal);
 }
 
 .policy-card h3 {

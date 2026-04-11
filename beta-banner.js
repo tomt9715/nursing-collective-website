@@ -30,11 +30,11 @@
     var style = document.createElement('style');
     style.textContent =
         '.beta-banner {' +
-            'background: #fef3c7;' +
-            'border-bottom: 1px solid #f59e0b;' +
+            'background: #162032;' +
+            'border-bottom: 0.5px solid rgba(255,255,255,0.12);' +
             'padding: 8px 16px;' +
-            'font-family: "Source Sans 3", "Segoe UI", sans-serif;' +
-            'font-size: 0.88rem;' +
+            'font-family: "Outfit", sans-serif;' +
+            'font-size: 13px;' +
             'line-height: 1.4;' +
             'position: fixed;' +
             'top: 0;' +
@@ -42,11 +42,6 @@
             'right: 0;' +
             'z-index: 1050;' +
             'pointer-events: auto;' +
-        '}' +
-        '[data-theme="dark"] .beta-banner {' +
-            'background: #78350f;' +
-            'border-bottom-color: #b45309;' +
-            'color: #fef3c7;' +
         '}' +
         '.beta-banner-content {' +
             'max-width: 1200px;' +
@@ -57,57 +52,45 @@
             'gap: 10px;' +
         '}' +
         '.beta-banner-badge {' +
-            'background: #f59e0b;' +
-            'color: #fff;' +
-            'font-weight: 700;' +
-            'font-size: 0.7rem;' +
+            'font-family: "DM Mono", monospace;' +
+            'background: rgba(15,188,173,0.12);' +
+            'color: #0fbcad;' +
+            'border: 0.5px solid rgba(15,188,173,0.25);' +
+            'font-weight: 500;' +
+            'font-size: 10px;' +
             'padding: 2px 8px;' +
-            'border-radius: 4px;' +
-            'letter-spacing: 0.5px;' +
+            'border-radius: 10px;' +
+            'letter-spacing: 0.08em;' +
             'flex-shrink: 0;' +
         '}' +
-        '[data-theme="dark"] .beta-banner-badge {' +
-            'background: #d97706;' +
-        '}' +
         '.beta-banner-text {' +
-            'color: #92400e;' +
-        '}' +
-        '[data-theme="dark"] .beta-banner-text {' +
-            'color: #fde68a;' +
+            'color: #8a9bb0;' +
         '}' +
         '.beta-banner-link {' +
-            'color: #92400e;' +
-            'font-weight: 600;' +
-            'text-decoration: underline;' +
+            'color: #0fbcad;' +
+            'font-weight: 500;' +
+            'text-decoration: none;' +
             'cursor: pointer;' +
             'position: relative;' +
             'z-index: 1;' +
-        '}' +
-        '[data-theme="dark"] .beta-banner-link {' +
-            'color: #fbbf24;' +
+            'transition: color 0.15s;' +
         '}' +
         '.beta-banner-link:hover {' +
-            'color: #78350f;' +
-        '}' +
-        '[data-theme="dark"] .beta-banner-link:hover {' +
-            'color: #fde68a;' +
+            'color: #e8edf2;' +
         '}' +
         '.beta-banner-close {' +
             'background: none;' +
             'border: none;' +
-            'font-size: 1.2rem;' +
-            'color: #92400e;' +
+            'font-size: 16px;' +
+            'color: #4a5a6a;' +
             'cursor: pointer;' +
             'padding: 0 4px;' +
             'line-height: 1;' +
             'flex-shrink: 0;' +
-            'opacity: 0.6;' +
-        '}' +
-        '[data-theme="dark"] .beta-banner-close {' +
-            'color: #fde68a;' +
+            'transition: color 0.15s;' +
         '}' +
         '.beta-banner-close:hover {' +
-            'opacity: 1;' +
+            'color: #e8edf2;' +
         '}' +
         /* Push fixed navbar and body content down when banner is visible */
         'body.has-beta-banner {' +
@@ -117,8 +100,8 @@
             'top: var(--beta-banner-h, 0px) !important;' +
         '}' +
         '@media (max-width: 480px) {' +
-            '.beta-banner { padding: 6px 12px; font-size: 0.82rem; }' +
-            '.beta-banner-badge { font-size: 0.65rem; padding: 1px 6px; }' +
+            '.beta-banner { padding: 6px 12px; font-size: 12px; }' +
+            '.beta-banner-badge { font-size: 9px; padding: 1px 6px; }' +
         '}';
 
     document.head.appendChild(style);

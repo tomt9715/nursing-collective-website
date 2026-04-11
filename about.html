@@ -20,357 +20,32 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#2E86AB">
+    <meta name="theme-color" content="#0d1b2a">
 
-    <!-- Preconnect to external resources for faster loading -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- Bundled CSS (Bootstrap + custom styles, purged and minified) -->
-    <link rel="stylesheet" href="css/bundle.min.css">
-    <link rel="stylesheet" href="css/global-overrides.css?v=5.6.navfix">
+    <!-- Design System Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="css/feedback-widget.css">
+    <link rel="stylesheet" href="css/about-redesign.css">
 
-    <style>
-        /* Hero section */
-        .about-hero {
-            background: linear-gradient(135deg, #2E86AB 0%, #4A90E2 30%, #7B68EE 60%, #A23B72 100%);
-            background-size: 200% 200%;
-            animation: aboutGradient 15s ease infinite;
-            padding: 140px 0 70px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        @keyframes aboutGradient {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-
-        .about-hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(162,59,114,0.15) 0%, transparent 50%);
-            opacity: 0.6;
-        }
-
-        .about-hero .container {
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-hero h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3rem;
-            font-weight: 700;
-            color: #fff;
-            margin: 0 0 16px;
-            line-height: 1.2;
-        }
-
-        .about-hero-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            max-width: 550px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Main content area */
-        .about-content {
-            padding: 60px 0 80px;
-        }
-
-        .about-section {
-            max-width: 800px;
-            margin: 0 auto 48px;
-        }
-
-        .about-card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            border: 1px solid var(--border-color);
-        }
-
-        .about-card h2 {
-            color: var(--text-primary);
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .about-card h2 i {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-        }
-
-        .about-card p {
-            color: var(--text-secondary);
-            line-height: 1.8;
-            margin-bottom: 16px;
-            font-size: 1.05rem;
-        }
-
-        .about-card p:last-child {
-            margin-bottom: 0;
-        }
-
-        /* Founder section */
-        .founder-section {
-            display: flex;
-            align-items: flex-start;
-            gap: 32px;
-        }
-
-        .founder-text {
-            flex: 1;
-        }
-
-        /* What We Offer grid — 7 items, 3+3+1 layout */
-        .offer-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .offer-item {
-            padding: 24px;
-            background: var(--background-light);
-            border-radius: 12px;
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .offer-item:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-        }
-
-        .offer-item:nth-child(2) { border-left-color: var(--secondary-color); }
-        .offer-item:nth-child(3) { border-left-color: #6366f1; }
-        .offer-item:nth-child(4) { border-left-color: var(--accent-color); }
-        .offer-item:nth-child(5) { border-left-color: #8b5cf6; }
-        .offer-item:nth-child(6) { border-left-color: #10b981; }
-        .offer-item:nth-child(7) { border-left-color: #06b6d4; }
-
-        .offer-item h3 {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .offer-item p {
-            color: var(--text-secondary);
-            line-height: 1.6;
-            margin: 0;
-            font-size: 0.95rem;
-        }
-
-        .offer-item .offer-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 4px;
-            color: var(--primary-color);
-            font-size: 0.88rem;
-            font-weight: 500;
-            text-decoration: none;
-            margin-top: 8px;
-        }
-
-        .offer-item .offer-link:hover {
-            text-decoration: underline;
-        }
-
-        /* CTA section */
-        .about-cta {
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .about-cta .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 14px 32px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            margin: 0 8px;
-        }
-
-        .about-cta .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .about-cta .btn-primary {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .about-cta .btn-secondary {
-            background: var(--card-bg);
-            color: var(--text-primary);
-            border: 1px solid var(--border-color);
-        }
-
-        /* Approach flow visual */
-        .approach-flow {
-            max-width: 800px;
-            margin: 0 auto 48px;
-        }
-
-        .approach-flow-header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
-
-        .approach-flow-header h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .approach-flow-header h2 i {
-            color: var(--primary-color);
-        }
-
-        .flow-steps {
-            display: flex;
-            align-items: stretch;
-            gap: 0;
-            position: relative;
-        }
-
-        .flow-step {
-            flex: 1;
-            text-align: center;
-            padding: 28px 20px;
-            border-radius: 14px;
-            position: relative;
-            border: 1px solid var(--border-color);
-            background: var(--card-bg);
-        }
-
-        .flow-step-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 14px;
-            font-size: 1.3rem;
-            color: #fff;
-        }
-
-        .flow-step:nth-child(1) .flow-step-icon {
-            background: linear-gradient(135deg, #ef4444, #f97316);
-        }
-        .flow-step:nth-child(3) .flow-step-icon {
-            background: linear-gradient(135deg, var(--primary-color), #4A90E2);
-        }
-        .flow-step:nth-child(5) .flow-step-icon {
-            background: linear-gradient(135deg, #10b981, #059669);
-        }
-
-        .flow-step h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .flow-step p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            line-height: 1.55;
-            margin: 0;
-        }
-
-        .flow-arrow {
-            display: flex;
-            align-items: center;
-            padding: 0 6px;
-            color: var(--text-light, #9ca3af);
-            font-size: 1.4rem;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 768px) {
-            .about-hero {
-                padding: 120px 0 60px;
-            }
-            .about-hero h1 {
-                font-size: 2.2rem;
-            }
-            .about-card {
-                padding: 28px 20px;
-            }
-            .founder-section {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-            .offer-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-cta .btn {
-                display: flex;
-                justify-content: center;
-                margin: 8px auto;
-                max-width: 280px;
-            }
-            .flow-steps {
-                flex-direction: column;
-                gap: 0;
-            }
-            .flow-arrow {
-                justify-content: center;
-                padding: 8px 0;
-                transform: rotate(90deg);
-            }
-        }
-
-        @media (min-width: 769px) and (max-width: 968px) {
-            .offer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
-    <!-- Sentry Error Tracking (load first) -->
+    <!-- Sentry Error Tracking -->
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="sentry-init.js"></script>
     <script src="lockscreen.js"></script>
     <script src="beta-banner.js"></script>
 </head>
 <body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Page Loader -->
     <div class="page-loader" id="page-loader">
         <div class="loader-spinner"></div>
@@ -385,18 +60,15 @@
                 </a>
             </div>
             <div class="nav-links">
-                <!-- Authenticated nav item (shown when logged in) -->
                 <a href="dashboard.html" id="nav-dashboard-link" class="hidden">Dashboard</a>
                 <a href="resources.html">Resources</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about.html" class="active">About</a>
-                <!-- User menu (always visible, content changes based on login state) -->
                 <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <i class="fas fa-user-circle"></i>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <!-- Guest content (shown when not logged in) -->
                         <div class="dropdown-guest-content" id="dropdown-guest-content">
                             <div class="guest-dropdown-header">
                                 <i class="fas fa-user-circle"></i>
@@ -409,24 +81,15 @@
                             <div class="theme-selector">
                                 <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
                                 <div class="theme-selector-options">
-                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
-                                        <i class="fas fa-sun"></i>
-                                    </button>
-                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
-                                        <i class="fas fa-moon"></i>
-                                    </button>
-                                    <button class="theme-option" data-theme-mode="system" title="System preference">
-                                        <i class="fas fa-desktop"></i>
-                                    </button>
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode"><i class="fas fa-sun"></i></button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode"><i class="fas fa-moon"></i></button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference"><i class="fas fa-desktop"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <!-- Logged-in content (shown when logged in) -->
                         <div class="dropdown-user-content hidden" id="dropdown-user-content">
                             <div class="user-dropdown-header">
-                                <div class="user-avatar-large">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
+                                <div class="user-avatar-large"><i class="fas fa-user-circle"></i></div>
                                 <div class="user-info">
                                     <span class="user-name" id="dropdown-user-name">Loading...</span>
                                     <span class="user-email" id="dropdown-user-email">Loading...</span>
@@ -436,15 +99,9 @@
                             <div class="theme-selector">
                                 <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
                                 <div class="theme-selector-options">
-                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
-                                        <i class="fas fa-sun"></i>
-                                    </button>
-                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
-                                        <i class="fas fa-moon"></i>
-                                    </button>
-                                    <button class="theme-option" data-theme-mode="system" title="System preference">
-                                        <i class="fas fa-desktop"></i>
-                                    </button>
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode"><i class="fas fa-sun"></i></button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode"><i class="fas fa-moon"></i></button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference"><i class="fas fa-desktop"></i></button>
                                 </div>
                             </div>
                             <div class="user-dropdown-divider"></div>
@@ -467,189 +124,177 @@
 
     <!-- Hero Section -->
     <section class="about-hero">
-        <div class="container">
-            <h1>About The Nursing Collective</h1>
-            <p class="about-hero-subtitle">
-                Built by nursing students who understand the grind — because we've been there too.
-            </p>
-        </div>
+        <div class="eyebrow">The Nursing Collective</div>
+        <h1>About <em>Us</em></h1>
+        <p class="hero-sub">Built by nursing students who understand the grind — because we've been there too.</p>
     </section>
 
     <!-- Main Content -->
-    <section class="about-content">
-        <div class="container">
+    <div class="about-content">
 
-            <!-- Our Story -->
-            <div class="about-section">
-                <div class="about-card">
-                    <h2><i class="fas fa-heart"></i> Our Story</h2>
-                    <div class="founder-section">
-                        <div class="founder-text">
-                            <p>The Nursing Collective started out of frustration. Nursing school is overwhelming — between clinical rotations, hundreds of pages of reading, and exams that feel designed to trick you, the last thing you need is scattered, hard-to-find study materials.</p>
-                            <p>Here's the problem we kept seeing: most resources online are focused entirely on NCLEX prep. But nobody talks about actually getting <em>through</em> nursing school. The critical thinking, the prioritization, learning how to approach questions you've never seen before — that's the hard part, and that's what gets tested every single semester before you even sit for the NCLEX.</p>
-                            <p>So we built what we wished we had: a platform that helps you develop those skills <em>now</em>, while you're still in school. Our study guides teach you to think like a nurse, and our quiz bank uses NCLEX-style questions from day one — so by the time you actually take the NCLEX, you've already been practicing that style of thinking for semesters. The goal isn't just to pass an exam. It's to walk in confident enough to pass on your first try.</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- Our Story -->
+        <div class="about-section">
+            <div class="section-label">Our story</div>
+            <h2 class="section-heading">How We Got Here</h2>
+            <div class="about-card">
+                <p>The Nursing Collective started out of frustration. Nursing school is overwhelming — between clinical rotations, hundreds of pages of reading, and exams that feel designed to trick you, the last thing you need is scattered, hard-to-find study materials.</p>
+                <p>Here's the problem we kept seeing: most resources online are focused entirely on NCLEX prep. But nobody talks about actually getting <em>through</em> nursing school. The critical thinking, the prioritization, learning how to approach questions you've never seen before — that's the hard part, and that's what gets tested every single semester before you even sit for the NCLEX.</p>
+                <p>So we built what we wished we had: a platform that helps you develop those skills <em>now</em>, while you're still in school. Our study guides teach you to think like a nurse, and our quiz bank uses NCLEX-style questions from day one — so by the time you actually take the NCLEX, you've already been practicing that style of thinking for semesters. The goal isn't just to pass an exam. It's to walk in confident enough to pass on your first try.</p>
             </div>
-
-            <!-- Our Approach Flow -->
-            <div class="approach-flow">
-                <div class="approach-flow-header">
-                    <h2><i class="fas fa-route"></i> Our Approach</h2>
-                </div>
-                <div class="flow-steps">
-                    <div class="flow-step">
-                        <div class="flow-step-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                        <h3>The Problem</h3>
-                        <p>Most resources only prep you for the NCLEX — but don't help you survive the semesters leading up to it.</p>
-                    </div>
-                    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
-                    <div class="flow-step">
-                        <div class="flow-step-icon"><i class="fas fa-lightbulb"></i></div>
-                        <h3>Our Solution</h3>
-                        <p>Learn critical thinking and clinical reasoning <em>now</em> with NCLEX-style questions built into your everyday studying.</p>
-                    </div>
-                    <div class="flow-arrow"><i class="fas fa-chevron-right"></i></div>
-                    <div class="flow-step">
-                        <div class="flow-step-icon"><i class="fas fa-trophy"></i></div>
-                        <h3>The Result</h3>
-                        <p>By the time you sit for the NCLEX, you've already been thinking this way for semesters. First-try confidence.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Mission -->
-            <div class="about-section">
-                <div class="about-card">
-                    <h2><i class="fas fa-bullseye"></i> Our Mission</h2>
-                    <p>We believe every nursing student deserves access to study materials that make complex topics click. Our mission is simple: bridge the gap between classroom theory and clinical reality with resources that are clear, comprehensive, and built around how nurses actually practice.</p>
-                    <p>We're not trying to replace your textbooks. We're here to make them make sense.</p>
-                </div>
-            </div>
-
-            <!-- What We Offer -->
-            <div class="about-section">
-                <div class="about-card">
-                    <h2><i class="fas fa-book-medical"></i> What We Offer</h2>
-                    <div class="offer-grid">
-                        <div class="offer-item">
-                            <h3><i class="fas fa-file-alt"></i> Study Guides</h3>
-                            <p>20+ comprehensive, clinically-focused guides covering cardiovascular, respiratory, neurological, and more.</p>
-                            <a href="guides.html" class="offer-link">Browse study guides <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="offer-item">
-                            <h3><i class="fas fa-brain"></i> Quiz Bank</h3>
-                            <p>NCLEX-style practice questions with adaptive difficulty, mastery tracking, and multiple question types.</p>
-                            <a href="pricing.html" class="offer-link">Included with all plans <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="offer-item">
-                            <h3><i class="fas fa-graduation-cap"></i> Free Resources</h3>
-                            <p>17 free survival guides and quick reference tools — lab values, vital signs, medications, clinical checklists, and study strategies.</p>
-                            <a href="resources.html" class="offer-link">Explore free resources <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="offer-item">
-                            <h3><i class="fas fa-robot"></i> FlorenceBot</h3>
-                            <p>An AI-powered study assistant on Discord for instant lab values, medication info, and clinical references.</p>
-                            <a href="about-florencebot.html" class="offer-link">Learn about FlorenceBot <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="offer-item">
-                            <h3><i class="fas fa-wand-magic-sparkles"></i> AI Study Tools</h3>
-                            <p>Upload your lecture notes and get AI-generated summaries, NCLEX-style practice questions tailored to your material, and personalized gap analysis.</p>
-                            <a href="pricing.html" class="offer-link">See AI-Powered plans <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="offer-item">
-                            <h3><i class="fas fa-users"></i> Community</h3>
-                            <p>A supportive Discord community where nursing students help each other, share tips, and stay motivated.</p>
-                            <a href="https://discord.gg/y2Mh77wAV2" class="offer-link" target="_blank" rel="noopener">Join Discord <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                        <div class="offer-item">
-                            <h3><i class="fas fa-sync-alt"></i> Always Growing</h3>
-                            <p>New guides, quiz questions, and features are added regularly based on student feedback and the latest evidence-based practice.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="about-cta">
-                <a href="pricing.html" class="btn btn-primary">
-                    <i class="fas fa-crown"></i> View Plans
-                </a>
-                <a href="resources.html" class="btn btn-secondary">
-                    <i class="fas fa-graduation-cap"></i> Explore Free Resources
-                </a>
-                <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-secondary" target="_blank" rel="noopener">
-                    <i class="fab fa-discord"></i> Join Our Community
-                </a>
-            </div>
-
         </div>
-    </section>
+
+        <!-- Our Approach Flow -->
+        <div class="approach-flow">
+            <div class="section-label">Our approach</div>
+            <h2 class="section-heading">From Problem to Confidence</h2>
+            <div class="approach-grid">
+                <div class="approach-card">
+                    <div class="approach-step-label">The Problem</div>
+                    <h3>The Gap in Resources</h3>
+                    <p>Most resources only prep you for the NCLEX — but don't help you survive the semesters leading up to it.</p>
+                </div>
+                <div class="approach-arrow">
+                    <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-step-label">Our Solution</div>
+                    <h3>Think Like a Nurse Now</h3>
+                    <p>Learn critical thinking and clinical reasoning <em>now</em> with NCLEX-style questions built into your everyday studying.</p>
+                </div>
+                <div class="approach-arrow">
+                    <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+                </div>
+                <div class="approach-card">
+                    <div class="approach-step-label">The Result</div>
+                    <h3>First-Try Confidence</h3>
+                    <p>By the time you sit for the NCLEX, you've already been thinking this way for semesters. First-try confidence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission -->
+        <div class="about-section">
+            <div class="section-label">Our mission</div>
+            <h2 class="section-heading">What Drives Us</h2>
+            <div class="about-card">
+                <p>We believe every nursing student deserves access to study materials that make complex topics click. Our mission is simple: bridge the gap between classroom theory and clinical reality with resources that are clear, comprehensive, and built around how nurses actually practice.</p>
+                <p>We're not trying to replace your textbooks. We're here to make them make sense.</p>
+            </div>
+        </div>
+
+        <!-- What We Offer -->
+        <div class="about-section">
+            <div class="section-label">What we offer</div>
+            <h2 class="section-heading">Everything You Need</h2>
+            <div class="offer-grid">
+                <div class="offer-card">
+                    <div class="offer-icon-box"><i class="fas fa-file-alt"></i></div>
+                    <h3>Study Guides</h3>
+                    <p>20+ comprehensive, clinically-focused guides covering cardiovascular, respiratory, neurological, and more.</p>
+                    <a href="guides.html" class="offer-link">Browse study guides <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon-box"><i class="fas fa-brain"></i></div>
+                    <h3>Quiz Bank</h3>
+                    <p>NCLEX-style practice questions with adaptive difficulty, mastery tracking, and multiple question types.</p>
+                    <a href="pricing.html" class="offer-link">Included with all plans <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon-box"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Free Resources</h3>
+                    <p>17 free survival guides and quick reference tools — lab values, vital signs, medications, clinical checklists, and study strategies.</p>
+                    <a href="resources.html" class="offer-link">Explore free resources <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon-box"><i class="fas fa-robot"></i></div>
+                    <h3>FlorenceBot</h3>
+                    <p>An AI-powered study assistant on Discord for instant lab values, medication info, and clinical references.</p>
+                    <a href="about-florencebot.html" class="offer-link">Learn about FlorenceBot <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon-box"><i class="fas fa-wand-magic-sparkles"></i></div>
+                    <h3>AI Study Tools</h3>
+                    <p>Upload your lecture notes and get AI-generated summaries, NCLEX-style practice questions tailored to your material, and personalized gap analysis.</p>
+                    <a href="pricing.html" class="offer-link">See AI-Powered plans <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon-box"><i class="fas fa-users"></i></div>
+                    <h3>Community</h3>
+                    <p>A supportive Discord community where nursing students help each other, share tips, and stay motivated.</p>
+                    <a href="https://discord.gg/y2Mh77wAV2" class="offer-link" target="_blank" rel="noopener">Join Discord <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="offer-card">
+                    <div class="offer-icon-box"><i class="fas fa-sync-alt"></i></div>
+                    <h3>Always Growing</h3>
+                    <p>New guides, quiz questions, and features are added regularly based on student feedback and the latest evidence-based practice.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="about-cta">
+            <a href="pricing.html" class="btn btn-primary">
+                <i class="fas fa-crown"></i> View Plans
+            </a>
+            <a href="resources.html" class="btn btn-ghost">
+                <i class="fas fa-graduation-cap"></i> Explore Free Resources
+            </a>
+            <a href="https://discord.gg/y2Mh77wAV2" class="btn btn-ghost" target="_blank" rel="noopener">
+                <i class="fab fa-discord"></i> Join Our Community
+            </a>
+        </div>
+
+    </div>
 
     </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <span>The Nursing Collective</span>
-                    </div>
-                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">The Nursing Collective</div>
+                <p class="footer-brand-desc">Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <div class="footer-contact-email">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
-                    </p>
-                    <div class="social-links">
-                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+                <div class="social-links">
+                    <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
-                <p class="footer-attribution">
-                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
-                </p>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+            <p>Icons by <a href="https://www.flaticon.com/authors/freepik" target="_blank" rel="noopener">Freepik</a> &amp; <a href="https://www.flaticon.com/authors/slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" target="_blank" rel="noopener">Flaticon</a></p>
         </div>
     </footer>
 
-    <!-- Dark Mode Manager -->
+    <!-- Scripts -->
     <script src="dark-mode.js"></script>
-    <script src="api-service.js"></script>
-
+    <script src="api-service.js?v=1769142742"></script>
     <script src="script.js"></script>
-    <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>
     <script src="cookie-consent.js"></script>
+    <script src="feedback-widget.js"></script>
 </body>
 </html>

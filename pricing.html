@@ -20,34 +20,22 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#2E86AB">
+    <meta name="theme-color" content="#0d1b2a">
 
-    <!-- Preconnect to external resources for faster loading -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- Bundled CSS (Bootstrap + custom styles, purged and minified) -->
-    <link rel="stylesheet" href="css/bundle.min.css">
-    <link rel="stylesheet" href="css/feedback-widget.css">
+    <!-- Design System Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Page-specific styles (split from pages.css for maintainability) -->
-    <link rel="stylesheet" href="css/page-pricing.css?v=6.0.split">
-    <link rel="stylesheet" href="css/page-dark.css?v=6.0.split">
-    <link rel="stylesheet" href="css/page-shared.css?v=6.0.split">
-
-    <!-- Global overrides (must load AFTER pages.css to win cascade) -->
-    <link rel="stylesheet" href="css/global-overrides.css?v=6.1.pricing-fix">
-
-    <!-- Bootstrap 5 CSS -->
-
-
-    <!-- Font Awesome -->
+    <!-- Font Awesome (for nav icons and auth modal) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Sentry Error Tracking (load first) -->
+    <!-- Page Styles -->
+    <link rel="stylesheet" href="css/pricing-redesign.css">
+
+    <!-- Sentry Error Tracking -->
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="sentry-init.js"></script>
 
@@ -122,7 +110,7 @@
     <!-- Toast Notifications -->
     <div class="pricing-toast-container" aria-live="polite"></div>
 
-    <!-- Skip to main content link for accessibility -->
+    <!-- Skip to main content -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Page Loader -->
@@ -139,18 +127,15 @@
                 </a>
             </div>
             <div class="nav-links">
-                <!-- Authenticated nav item (shown when logged in) -->
                 <a href="dashboard.html" id="nav-dashboard-link" class="hidden">Dashboard</a>
                 <a href="resources.html">Resources</a>
                 <a href="pricing.html" class="active">Pricing</a>
                 <a href="about.html">About</a>
-                <!-- User menu (always visible, content changes based on login state) -->
                 <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
                         <i class="fas fa-user-circle"></i>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <!-- Guest content (shown when not logged in) -->
                         <div class="dropdown-guest-content" id="dropdown-guest-content">
                             <div class="guest-dropdown-header">
                                 <i class="fas fa-user-circle"></i>
@@ -163,24 +148,15 @@
                             <div class="theme-selector">
                                 <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
                                 <div class="theme-selector-options">
-                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
-                                        <i class="fas fa-sun"></i>
-                                    </button>
-                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
-                                        <i class="fas fa-moon"></i>
-                                    </button>
-                                    <button class="theme-option" data-theme-mode="system" title="System preference">
-                                        <i class="fas fa-desktop"></i>
-                                    </button>
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode"><i class="fas fa-sun"></i></button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode"><i class="fas fa-moon"></i></button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference"><i class="fas fa-desktop"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <!-- Logged-in content (shown when logged in) -->
                         <div class="dropdown-user-content hidden" id="dropdown-user-content">
                             <div class="user-dropdown-header">
-                                <div class="user-avatar-large">
-                                    <i class="fas fa-user-circle"></i>
-                                </div>
+                                <div class="user-avatar-large"><i class="fas fa-user-circle"></i></div>
                                 <div class="user-info">
                                     <span class="user-name" id="dropdown-user-name">Loading...</span>
                                     <span class="user-email" id="dropdown-user-email">Loading...</span>
@@ -190,15 +166,9 @@
                             <div class="theme-selector">
                                 <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
                                 <div class="theme-selector-options">
-                                    <button class="theme-option" data-theme-mode="light" title="Light mode">
-                                        <i class="fas fa-sun"></i>
-                                    </button>
-                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode">
-                                        <i class="fas fa-moon"></i>
-                                    </button>
-                                    <button class="theme-option" data-theme-mode="system" title="System preference">
-                                        <i class="fas fa-desktop"></i>
-                                    </button>
+                                    <button class="theme-option" data-theme-mode="light" title="Light mode"><i class="fas fa-sun"></i></button>
+                                    <button class="theme-option" data-theme-mode="dark" title="Dark mode"><i class="fas fa-moon"></i></button>
+                                    <button class="theme-option" data-theme-mode="system" title="System preference"><i class="fas fa-desktop"></i></button>
                                 </div>
                             </div>
                             <div class="user-dropdown-divider"></div>
@@ -218,384 +188,250 @@
     </nav>
 
     <main id="main-content">
-    <!-- Pricing Hero -->
+
+    <!-- ════════════════════════════════════════════════
+         SECTION 1 — HERO
+         ════════════════════════════════════════════════ -->
     <section class="pricing-hero">
-        <div class="container">
-            <h1>Choose the plan that<br>works for you</h1>
-            <p class="pricing-subtitle">
-                Study guides for every nursing topic, or supercharge your studying with AI-powered tools.
-            </p>
+        <div class="eyebrow">The Nursing Collective</div>
+        <h1>Everything you need to<br><em>master</em> nursing school</h1>
+        <p class="hero-sub">Study guides, practice questions, and clinical tools built for the way nursing students actually learn.</p>
+        <div class="hero-actions">
+            <a href="#plans" class="btn btn-primary">Get started</a>
+            <a href="#features" class="btn btn-ghost">See what's included</a>
         </div>
     </section>
 
-    <!-- Subscription Plans -->
-    <section id="plans" class="pricing-plans-section">
-        <div class="container">
-
-            <!-- Unified Pricing Container -->
-            <div class="pricing-unified-container">
+    <!-- ════════════════════════════════════════════════
+         SECTION 2 — PRICING TOGGLE + CARDS
+         ════════════════════════════════════════════════ -->
+    <section id="plans" class="pricing-section">
+        <div class="pricing-unified-container">
 
             <!-- Tier Toggle -->
             <div class="tier-toggle-container">
                 <div class="tier-toggle-wrapper">
-                    <button class="tier-toggle-btn active" data-tier="standard">
-                        <i class="fas fa-book-open"></i> Standard
-                    </button>
-                    <button class="tier-toggle-btn" data-tier="ai-powered">
-                        <i class="fas fa-robot"></i> AI-Powered
-                        <span class="tier-badge-new">NEW</span>
-                    </button>
+                    <button class="tier-toggle-btn active" data-tier="standard">Standard</button>
+                    <button class="tier-toggle-btn" data-tier="ai-powered">AI-Powered <span class="tier-badge-new">NEW</span></button>
                 </div>
                 <p class="tier-toggle-description" id="tier-toggle-description">
                     Full access to 50+ study guides, clinical resources, and quick reference tools.
                 </p>
             </div>
 
-            <!-- Upgrade Banner (hidden by default, shown via JS for existing Standard subscribers) -->
+            <!-- Upgrade Banner (hidden, shown via JS for existing Standard subscribers) -->
             <div class="upgrade-banner hidden" id="upgrade-banner">
-                <div class="upgrade-banner-content">
-                    <div class="upgrade-banner-text">
-                        <i class="fas fa-arrow-up"></i>
-                        <span class="upgrade-banner-msg">Already a subscriber? Upgrade to AI-Powered for as little as +$10/month!</span>
-                    </div>
-                    <button class="upgrade-banner-btn" id="upgrade-banner-btn">See Upgrade Options</button>
+                <div class="upgrade-banner-text">
+                    <svg viewBox="0 0 24 24"><polyline points="17 11 12 6 7 11"/><line x1="12" y1="18" x2="12" y2="6"/></svg>
+                    <span class="upgrade-banner-msg">Already a subscriber? Upgrade to AI-Powered for as little as +$10/month!</span>
                 </div>
+                <button class="upgrade-banner-btn" id="upgrade-banner-btn">See Upgrade Options</button>
             </div>
 
+            <!-- Pricing Cards -->
             <div class="pricing-plans-grid">
 
-                <!-- Monthly Access -->
+                <!-- Monthly -->
                 <div class="pricing-plan-wrapper">
                     <div class="pricing-card" data-card="monthly">
                         <div class="pricing-card-header">
-                            <div class="pricing-card-icon">
-                                <img src="assets/images/monthly.webp" alt="Monthly plan" class="pricing-icon-img">
-                            </div>
                             <h3>Monthly</h3>
                             <p>Flexible monthly access</p>
                         </div>
-
                         <div class="pricing-card-price">
                             <div class="pricing-card-amount" data-standard-price="$14.99" data-ai-price="$24.99">$14.99</div>
-                            <p class="pricing-card-interval" data-standard-interval="per month &bull; Cancel anytime" data-ai-interval="per month &bull; Cancel anytime">per month &bull; Cancel anytime</p>
+                            <p class="pricing-card-interval" data-standard-interval="per month &middot; Cancel anytime" data-ai-interval="per month &middot; Cancel anytime">per month &middot; Cancel anytime</p>
                         </div>
-
                         <div class="pricing-card-features">
                             <ul class="standard-features">
-                                <li><i class="fas fa-check"></i> Full access to all content</li>
-                                <li><i class="fas fa-check"></i> New guides as they're released</li>
-                                <li><i class="fas fa-check"></i> Cancel anytime</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Full access to all content</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> New guides as they're released</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Cancel anytime</li>
                             </ul>
-                            <ul class="ai-features" style="display: none;">
-                                <li><i class="fas fa-check"></i> Full access to all content</li>
-                                <li><i class="fas fa-check"></i> New guides as they're released</li>
-                                <li class="ai-feature"><i class="fas fa-robot"></i> 5 note uploads/month</li>
-                                <li class="ai-feature"><i class="fas fa-robot"></i> 50 AI questions/month</li>
-                                <li class="ai-feature"><i class="fas fa-robot"></i> Personalized gap analysis</li>
-                                <li><i class="fas fa-check"></i> Cancel anytime</li>
+                            <ul class="ai-features" style="display:none;">
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Full access to all content</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> New guides as they're released</li>
+                                <li class="ai-feature"><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 5 note uploads/month</li>
+                                <li class="ai-feature"><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 50 AI questions/month</li>
+                                <li class="ai-feature"><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Personalized gap analysis</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Cancel anytime</li>
                             </ul>
                         </div>
-
-                        <button class="btn btn-outline-primary btn-pricing" data-plan="monthly-access" data-standard-plan="monthly-access" data-ai-plan="ai-monthly-access">
-                            Get Started
-                        </button>
-                        <a href="#whats-included" class="see-included-link">See what's included <i class="fas fa-arrow-down"></i></a>
+                        <button class="btn-pricing" data-plan="monthly-access" data-standard-plan="monthly-access" data-ai-plan="ai-monthly-access">Get Started</button>
                     </div>
                 </div>
 
-                <!-- Semester Access - BEST VALUE -->
+                <!-- Semester — BEST VALUE -->
                 <div class="pricing-plan-wrapper featured">
                     <div class="pricing-card featured" data-card="semester">
-                        <div class="pricing-badge">
-                            <i class="fas fa-star"></i> BEST VALUE
-                        </div>
-
                         <div class="pricing-card-header">
-                            <div class="pricing-card-icon">
-                                <img src="assets/images/semester.webp" alt="Semester plan" class="pricing-icon-img">
-                            </div>
                             <h3>Semester</h3>
                             <p>4 months of access</p>
                         </div>
-
                         <div class="pricing-card-price">
                             <div class="pricing-card-amount" data-standard-price="$44.99" data-ai-price="$74.99">$44.99</div>
-                            <p class="pricing-card-interval" data-standard-interval="one-time &bull; Save 25%" data-ai-interval="one-time &bull; Save 25%">one-time &bull; Save 25%</p>
+                            <p class="pricing-card-interval" data-standard-interval="one-time &middot; Save 25%" data-ai-interval="one-time &middot; Save 25%">one-time &middot; Save 25%</p>
                         </div>
-
                         <div class="pricing-card-features">
                             <ul class="standard-features">
-                                <li><i class="fas fa-check"></i> Full access to all content</li>
-                                <li><i class="fas fa-check"></i> New guides as they're released</li>
-                                <li class="highlight"><i class="fas fa-tag"></i> 25% savings vs monthly</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Full access to all content</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> New guides as they're released</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 25% savings vs monthly</li>
                             </ul>
-                            <ul class="ai-features" style="display: none;">
-                                <li><i class="fas fa-check"></i> Full access to all content</li>
-                                <li><i class="fas fa-check"></i> New guides as they're released</li>
-                                <li class="ai-feature"><i class="fas fa-robot"></i> 10 note uploads/month</li>
-                                <li class="ai-feature"><i class="fas fa-robot"></i> 100 AI questions/month</li>
-                                <li><i class="fas fa-check"></i> 2x monthly AI credits</li>
-                                <li class="highlight"><i class="fas fa-tag"></i> 25% savings vs monthly</li>
+                            <ul class="ai-features" style="display:none;">
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Full access to all content</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> New guides as they're released</li>
+                                <li class="ai-feature"><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 10 note uploads/month</li>
+                                <li class="ai-feature"><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 100 AI questions/month</li>
+                                <li class="ai-feature"><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 2x monthly AI credits</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 25% savings</li>
                             </ul>
                         </div>
-
-                        <button class="btn btn-primary btn-pricing" data-plan="semester-access" data-standard-plan="semester-access" data-ai-plan="ai-semester-access">
-                            Get Semester Access
-                        </button>
-                        <a href="#whats-included" class="see-included-link">See what's included <i class="fas fa-arrow-down"></i></a>
+                        <button class="btn-pricing" data-plan="semester-access" data-standard-plan="semester-access" data-ai-plan="ai-semester-access">Get Semester Access</button>
                     </div>
                 </div>
 
-                <!-- Lifetime Access -->
+                <!-- Lifetime -->
                 <div class="pricing-plan-wrapper">
                     <div class="pricing-card" data-card="lifetime">
                         <div class="pricing-card-header">
-                            <div class="pricing-card-icon">
-                                <img src="assets/images/lifetime.webp" alt="Lifetime plan" class="pricing-icon-img">
-                            </div>
                             <h3>Lifetime</h3>
                             <p>Access forever</p>
                         </div>
-
                         <div class="pricing-card-price">
                             <div class="pricing-card-amount" data-standard-price="$149" data-ai-price="$199">$149</div>
-                            <p class="pricing-card-interval" data-standard-interval="one-time &bull; Never expires" data-ai-interval="one-time &bull; Never expires">one-time &bull; Never expires</p>
+                            <p class="pricing-card-interval" data-standard-interval="one-time &middot; Never expires" data-ai-interval="one-time &middot; Never expires">one-time &middot; Never expires</p>
                         </div>
-
                         <div class="pricing-card-features">
                             <ul class="standard-features">
-                                <li><i class="fas fa-check"></i> Full access to all content</li>
-                                <li><i class="fas fa-check"></i> All future updates included</li>
-                                <li class="highlight highlight-heart"><i class="fas fa-heart"></i> Support our mission</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Full access to all content</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> All future updates included</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Support our mission</li>
                             </ul>
-                            <ul class="ai-features" style="display: none;">
-                                <li><i class="fas fa-check"></i> Full access to all content</li>
-                                <li><i class="fas fa-check"></i> New guides as they're released</li>
-                                <li class="ai-feature"><i class="fas fa-robot"></i> 15 note uploads/month</li>
-                                <li class="ai-feature"><i class="fas fa-robot"></i> 150 AI questions/month</li>
-                                <li><i class="fas fa-check"></i> All future updates included</li>
-                                <li class="highlight highlight-heart"><i class="fas fa-heart"></i> Support our mission</li>
+                            <ul class="ai-features" style="display:none;">
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Full access to all content</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> New guides as they're released</li>
+                                <li class="ai-feature"><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 15 note uploads/month</li>
+                                <li class="ai-feature"><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 150 AI questions/month</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> All future updates</li>
+                                <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> Support our mission</li>
                             </ul>
                         </div>
-
-                        <button class="btn btn-outline-primary btn-pricing" data-plan="lifetime-access" data-standard-plan="lifetime-access" data-ai-plan="ai-lifetime-access">
-                            Get Lifetime Access
-                        </button>
-                        <a href="#whats-included" class="see-included-link">See what's included <i class="fas fa-arrow-down"></i></a>
+                        <button class="btn-pricing" data-plan="lifetime-access" data-standard-plan="lifetime-access" data-ai-plan="ai-lifetime-access">Get Lifetime Access</button>
                     </div>
                 </div>
-            </div>
 
-            <!-- What's Included -->
-            <div class="whats-included" id="whats-included">
-                <h3 id="whats-included-title">What You Get With Full Access</h3>
-                <div class="included-grid" id="whats-included-grid">
-                    <div class="included-item">
-                        <div class="included-item-icon-styled">
-                            <i class="fas fa-book-open"></i>
-                        </div>
-                        <strong>Study Guides</strong>
-                        <p>50+ comprehensive guides across cardiovascular, respiratory, neuro, and more</p>
-                    </div>
-                    <div class="included-item">
-                        <div class="included-item-icon-styled">
-                            <i class="fas fa-clipboard-check"></i>
-                        </div>
-                        <strong>Quiz Bank</strong>
-                        <p>NCLEX-style practice questions to test your knowledge and track progress</p>
-                    </div>
-                    <div class="included-item">
-                        <div class="included-item-icon-styled">
-                            <i class="fas fa-stethoscope"></i>
-                        </div>
-                        <strong>Clinical Resources</strong>
-                        <p>Lab values, vital signs, medications, and quick reference tools</p>
-                    </div>
-                    <div class="included-item ai-included-item">
-                        <div class="included-item-icon-styled ai-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <strong>AI Note Tools</strong>
-                        <p>Upload your notes and get instant AI-generated summaries and study material</p>
-                    </div>
-                    <div class="included-item ai-included-item">
-                        <div class="included-item-icon-styled ai-icon">
-                            <i class="fas fa-brain"></i>
-                        </div>
-                        <strong>NCLEX AI Generator</strong>
-                        <p>AI-powered practice questions from your notes plus personalized gap analysis</p>
-                    </div>
-                    <div class="included-item ai-included-item">
-                        <div class="included-item-icon-styled ai-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <strong>Clinical AI Tools</strong>
-                        <p>Care plan generator, clinical scenario simulator, and adaptive weak spot trainer</p>
-                    </div>
-                </div>
-            </div>
+            </div><!-- /.pricing-plans-grid -->
+        </div><!-- /.pricing-unified-container -->
+    </section>
 
-            <!-- Credit Add-On Section (visible only when AI-Powered tier is selected) -->
-            <div class="credit-addon-section hidden" id="credit-addon-section">
-                <h3><i class="fas fa-plus-circle"></i> Need More AI Credits?</h3>
-                <p class="credit-addon-subtitle">Available to any AI-Powered plan subscriber</p>
-                <div class="credit-addon-grid">
-                    <div class="credit-addon-card">
-                        <div class="credit-addon-name">Small Pack</div>
-                        <div class="credit-addon-price">$4.99</div>
-                        <ul>
-                            <li><i class="fas fa-upload"></i> 5 additional uploads</li>
-                            <li><i class="fas fa-question-circle"></i> 50 additional questions</li>
-                        </ul>
-                        <button class="btn btn-outline-primary btn-pricing btn-addon" data-plan="ai-credits-small">
-                            Buy Credits
-                        </button>
-                    </div>
-                    <div class="credit-addon-card">
-                        <div class="credit-addon-name">Large Pack</div>
-                        <div class="credit-addon-price">$9.99</div>
-                        <ul>
-                            <li><i class="fas fa-upload"></i> 15 additional uploads</li>
-                            <li><i class="fas fa-question-circle"></i> 150 additional questions</li>
-                        </ul>
-                        <button class="btn btn-outline-primary btn-pricing btn-addon" data-plan="ai-credits-large">
-                            Buy Credits
-                        </button>
-                    </div>
-                </div>
-            </div>
+    <!-- ════════════════════════════════════════════════
+         SECTION 3 — FEATURES GRID
+         ════════════════════════════════════════════════ -->
+    <section id="features" class="features-section">
+        <div class="features-wrap">
+            <div class="section-label">What's included</div>
+            <h2 class="section-heading" id="whats-included-title">What you get with full access</h2>
+            <p class="section-desc">Comprehensive resources designed by nursing students, for nursing students.</p>
 
-            </div><!-- /.pricing-unified-container -->
+            <div class="features-grid" id="features-grid">
+                <!-- Standard features (always visible) -->
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                    </div>
+                    <h4>Study Guides</h4>
+                    <p>50+ comprehensive guides across cardiovascular, respiratory, neuro, and more</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+                    </div>
+                    <h4>Quiz Bank</h4>
+                    <p>NCLEX-style practice questions to test your knowledge and track progress</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <h4>Clinical Resources</h4>
+                    <p>Lab values, vital signs, medications, and quick reference tools</p>
+                </div>
 
-            <!-- Trust Bar -->
-            <div class="pricing-trust-bar">
-                <div class="trust-item">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Secure payment via Stripe</span>
+                <!-- AI features (shown when AI-Powered tab active) -->
+                <div class="feature-card ai-feature-card ai-included-item" style="display:none;">
+                    <div class="feature-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    </div>
+                    <h4>AI Note Tools</h4>
+                    <p>Upload your notes and get instant AI-generated summaries and study material</p>
                 </div>
-                <div class="trust-divider" aria-hidden="true"></div>
-                <div class="trust-item">
-                    <a href="contact.html#refund-policy" class="trust-btn">
-                        <i class="fas fa-rotate-left"></i> 7-Day Refund Policy
-                    </a>
+                <div class="feature-card ai-feature-card ai-included-item" style="display:none;">
+                    <div class="feature-card-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M20 12a8 8 0 0 0-8-8v8h8z" opacity="0.5"/></svg>
+                    </div>
+                    <h4>NCLEX AI Generator</h4>
+                    <p>AI-powered practice questions from your notes plus personalized gap analysis</p>
                 </div>
-                <div class="trust-divider" aria-hidden="true"></div>
-                <div class="trust-item">
-                    <i class="fas fa-gift"></i>
-                    <span>Free content available — <a href="resources.html">see resources</a></span>
+                <div class="feature-card ai-feature-card ai-included-item" style="display:none;">
+                    <div class="feature-card-icon">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <h4>Clinical AI Tools</h4>
+                    <p>Care plan generator, clinical scenario simulator, and adaptive weak spot trainer</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section class="pricing-faq">
-        <div class="container">
-            <div class="pricing-faq-header">
-                <h2 class="section-title">Frequently Asked Questions</h2>
-                <p class="section-subtitle">Everything you need to know about our subscription plans</p>
+    <!-- ════════════════════════════════════════════════
+         SECTION 4 — AI CREDIT ADD-ONS
+         ════════════════════════════════════════════════ -->
+    <section class="credit-addon-section hidden" id="credit-addon-section">
+        <div class="section-label">Add-ons</div>
+        <h2 class="section-heading">Need more AI credits?</h2>
+        <p class="section-desc" style="text-align:center;max-width:none;">Available to any AI-Powered plan subscriber</p>
+
+        <div class="credit-addon-grid">
+            <div class="credit-addon-card">
+                <div class="credit-addon-name">Small Pack</div>
+                <div class="credit-addon-price">$4.99</div>
+                <ul>
+                    <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 5 additional uploads</li>
+                    <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 50 additional questions</li>
+                </ul>
+                <button class="btn-pricing" data-plan="ai-credits-small">Buy Credits</button>
             </div>
+            <div class="credit-addon-card">
+                <div class="credit-addon-name">Large Pack</div>
+                <div class="credit-addon-price">$9.99</div>
+                <ul>
+                    <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 15 additional uploads</li>
+                    <li><span class="check-icon"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg></span> 150 additional questions</li>
+                </ul>
+                <button class="btn-pricing" data-plan="ai-credits-large">Buy Credits</button>
+            </div>
+        </div>
+    </section>
 
-            <div class="pricing-faq-list">
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>What do I get with a subscription?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            Every subscription gives you <strong>unlimited access</strong> to all our content: 50+ detailed study guides across 10 clinical topics, NCLEX-style quiz bank, clinical confidence resources, quick reference tools, and nursing school survival guides. You also get access to any new content we release during your subscription.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>What are AI-Powered plans?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            AI-Powered plans include everything in our Standard plans, <strong>plus AI study tools</strong>. Upload your own lecture notes and slides, and our AI will generate condensed review sheets, NCLEX-style practice questions tailored to your material, and a gap analysis showing what your notes might be missing. It's like having a personal study assistant.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Which plan should I choose?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            <strong>Standard plans</strong> give you full access to all our content:<br><br>
-                            <strong>Monthly ($14.99/mo):</strong> Great if you want to try it out or only need access for a short time.<br>
-                            <strong>Semester ($44.99):</strong> 4 months of full access at a 25% discount. Great for focused study periods.<br>
-                            <strong>Lifetime ($149):</strong> One payment, access forever. Perfect if you're early in your program.<br><br>
-                            <strong>AI-Powered plans</strong> include everything above plus AI study tools that analyze your own notes, generate NCLEX-style practice questions, and identify gaps in your knowledge.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Can I cancel my monthly subscription?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            Yes, absolutely! You can cancel your monthly subscription anytime from your account settings. You'll keep access until the end of your current billing period. No hidden fees or cancellation penalties.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Will I get access to new content?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            Yes! All subscribers get access to new study guides and resources as we release them. We're constantly adding new content, and you'll benefit from all updates during your subscription period (or forever, if you have lifetime access).
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Can I upgrade my plan?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            Yes! You can upgrade at any time. Switch from monthly to lifetime, or upgrade from a Standard plan to AI-Powered for access to AI study tools. Your existing subscription will be adjusted automatically.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>Is there any free content?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            Yes! We offer 5 free "Nursing School Survival" guides that are available to everyone without a subscription. Check out our <a href="resources.html">Resources page</a> to see them. They cover study tips, time management, care plans, and more.
-                        </p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question" aria-expanded="false">
-                        <span>What is your refund policy?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div class="faq-answer">
-                        <p>
-                            We offer a 7-day refund window from the date of purchase. If you're not satisfied, contact us within 7 days for a full refund. After 7 days, all sales are final. See our full <a href="contact.html#refund-policy">refund policy</a> for details.
-                        </p>
-                    </div>
-                </div>
+    <!-- ════════════════════════════════════════════════
+         SECTION 5 — TRUST BAR
+         ════════════════════════════════════════════════ -->
+    <section class="trust-bar">
+        <div class="trust-bar-inner">
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <span>Secure payment via Stripe</span>
+            </div>
+            <div class="trust-divider" aria-hidden="true"></div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+                <span>7-Day Refund Policy</span>
+            </div>
+            <div class="trust-divider" aria-hidden="true"></div>
+            <div class="trust-item">
+                <svg viewBox="0 0 24 24"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                <span>Free content available</span>
             </div>
         </div>
     </section>
@@ -604,72 +440,53 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <span>The Nursing Collective</span>
-                    </div>
-                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">The Nursing Collective</div>
+                <p class="footer-brand-desc">Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <div class="footer-contact-email">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
-                    </p>
-                    <div class="social-links">
-                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+                <div class="social-links">
+                    <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
-                <p class="footer-attribution">
-                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
-                </p>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+            <p>Icons by <a href="https://www.flaticon.com/authors/freepik" target="_blank" rel="noopener">Freepik</a> &amp; <a href="https://www.flaticon.com/authors/slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" target="_blank" rel="noopener">Flaticon</a></p>
         </div>
     </footer>
 
-    <!-- Custom Modal System -->
+    <!-- Scripts -->
     <script src="modal.js"></script>
-
-    <!-- Dark Mode Manager -->
     <script src="dark-mode.js"></script>
     <script src="api-service.js?v=1769142742"></script>
-
     <script src="script.js"></script>
     <script src="pricing-script.js"></script>
-    <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>
     <script src="cookie-consent.js"></script>
     <script src="feedback-widget.js"></script>
-
-    <!-- Responsive handled in global-overrides.css -->
 </body>
 </html>

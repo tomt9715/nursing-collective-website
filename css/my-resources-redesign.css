@@ -411,13 +411,13 @@ img { max-width: 100%; display: block; }
   text-decoration: none;
 }
 
-.res-page-card.locked {
-  opacity: 0.45;
+/* Locked cards — full opacity, not clickable */
+.res-page-card-locked {
+  cursor: default;
 }
 
-.res-page-card.locked:hover {
+.res-page-card-locked:hover {
   border-color: var(--border);
-  cursor: default;
 }
 
 /* Card icon */
@@ -475,12 +475,28 @@ img { max-width: 100%; display: block; }
   color: var(--green);
 }
 
-.res-page-lock {
-  color: var(--text-dimmer);
-  font-size: 13px;
-  flex-shrink: 0;
-  margin-top: 4px;
+.res-page-badge.premium {
+  background: rgba(244,165,53,0.12);
+  color: var(--amber);
 }
+
+/* Upgrade nudge per category */
+.res-section-nudge {
+  margin-top: 14px;
+  text-align: right;
+}
+
+.res-section-nudge a {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
+
+.res-section-nudge a:hover { color: var(--teal); }
+.res-section-nudge a i { margin-left: 4px; }
 
 /* Loading state */
 .res-library-loading {

@@ -46,16 +46,10 @@
 
         var html = '';
 
-        // Stats bar
-        html += '<div class="res-library-stats">';
-        html += '<div class="res-library-stat"><i class="fas fa-book-reader"></i> <strong>' + RESOURCES.length + '</strong> resources</div>';
-        html += '<div class="res-library-stat"><i class="fas fa-unlock"></i> <strong>' + totalFree + '</strong> free</div>';
-        html += '<div class="res-library-stat"><i class="fas fa-crown"></i> <strong>' + totalPremium + '</strong> premium</div>';
-        html += '</div>';
-
         // Category sections
         CATEGORIES.forEach(function(cat) {
             var items = RESOURCES.filter(function(r) { return r.category === cat.key; });
+            var hasPremiumItems = items.some(function(r) { return !r.free; });
 
             html += '<div class="res-section">';
             html += '<div class="res-section-header">';
@@ -67,10 +61,13 @@
             html += '<div class="res-section-grid">';
             items.forEach(function(item) {
                 var canAccess = item.free || hasAccess;
-                var href = canAccess ? 'resources/' + item.id + '.html' : 'pricing.html';
-                var lockedClass = canAccess ? '' : ' locked';
 
-                html += '<a href="' + href + '" class="res-page-card' + lockedClass + '">';
+                if (canAccess) {
+                    html += '<a href="resources/' + item.id + '.html" class="res-page-card">';
+                } else {
+                    html += '<div class="res-page-card res-page-card-locked">';
+                }
+
                 html += '<div class="res-page-card-icon ' + item.category + '">';
                 html += '<i class="fas ' + item.icon + '"></i>';
                 html += '</div>';
@@ -82,12 +79,20 @@
                 if (item.free) {
                     html += '<span class="res-page-badge free">Free</span>';
                 } else if (!canAccess) {
-                    html += '<i class="fas fa-lock res-page-lock"></i>';
+                    html += '<span class="res-page-badge premium">Premium</span>';
                 }
 
-                html += '</a>';
+                html += canAccess ? '</a>' : '</div>';
             });
             html += '</div>'; // .res-section-grid
+
+            // Upgrade nudge for categories with premium items user can't access
+            if (hasPremiumItems && !hasAccess) {
+                html += '<div class="res-section-nudge">';
+                html += '<a href="pricing.html">Unlock all ' + cat.title.toLowerCase() + ' with a plan <i class="fas fa-arrow-right"></i></a>';
+                html += '</div>';
+            }
+
             html += '</div>'; // .res-section
         });
 

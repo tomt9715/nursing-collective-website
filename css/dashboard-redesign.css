@@ -1090,8 +1090,6 @@ img { max-width: 100%; display: block; }
   padding: 22px;
 }
 
-/* Activity widget spans full width of the two-col grid */
-.study-activity-widget { grid-column: 1 / -1; }
 
 .widget-header {
   display: flex;

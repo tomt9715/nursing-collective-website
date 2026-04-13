@@ -735,16 +735,14 @@ function loadStudyActivityCalendar(weekOffset) {
 
     // Empty state nudge (only for current week)
     if (weekTotal === 0 && offset === 0) {
-        var nudgeHtml = '<div class="activity-empty-nudge">';
-        nudgeHtml += '<i class="fas fa-seedling nudge-icon"></i>';
-        nudgeHtml += '<strong>No activity yet this week</strong>';
-        nudgeHtml += '<p>Read a guide, take a quiz, or try an AI tool to start your streak!</p>';
-        nudgeHtml += '<div class="activity-nudge-links">';
-        nudgeHtml += '<a href="my-guides.html" class="activity-nudge-btn"><i class="fas fa-book-open"></i> Guides</a>';
-        nudgeHtml += '<a href="https://learn.thenursingcollective.pro" class="activity-nudge-btn"><i class="fas fa-play"></i> Quiz</a>';
-        nudgeHtml += '</div>';
-        nudgeHtml += '</div>';
-        container.innerHTML += nudgeHtml;
+        // Replace the empty bar rows with just the nudge message
+        var widget = document.getElementById('study-activity-widget');
+        if (widget) widget.classList.add('activity-empty');
+        container.innerHTML = '<div class="activity-empty-nudge">' +
+            '<i class="fas fa-seedling nudge-icon"></i>' +
+            '<strong>No activity yet this week</strong>' +
+            '<p>As you study guides, take quizzes, and use AI tools, your activity will show up here.</p>' +
+            '</div>';
     }
 
     // Streak from server (more accurate than client-side calculation)

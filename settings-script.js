@@ -1869,6 +1869,103 @@ function membershipEscapeHtml(text) {
     return div.innerHTML;
 }
 
+// ==================== Profile Stats Summary ====================
+
+(function initProfileStats() {
+    // Wait for DOM + user data
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+            try {
+                var user = JSON.parse(localStorage.getItem('user'));
+
+                // Member since
+                var memberEl = document.getElementById('profile-stat-member-since');
+                if (memberEl && user && user.created_at) {
+                    var d = new Date(user.created_at);
+                    var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                    memberEl.textContent = months[d.getMonth()] + ' ' + d.getFullYear();
+                }
+
+                // Guides studied
+                var guidesEl = document.getElementById('profile-stat-guides');
+                if (guidesEl) {
+                    var history = {};
+                    try { history = JSON.parse(localStorage.getItem('guideLastStudied')) || {}; } catch(e) {}
+                    guidesEl.textContent = Object.keys(history).length;
+                }
+
+                // Questions answered + streak
+                var questionsEl = document.getElementById('profile-stat-questions');
+                var streakEl = document.getElementById('profile-stat-streak');
+                if (typeof MasteryTracker !== 'undefined') {
+                    var stats = MasteryTracker.getOverallStats();
+                    if (questionsEl) questionsEl.textContent = (stats && stats.totalQuestionsAnswered) || 0;
+                    if (streakEl) streakEl.textContent = (stats && stats.streak) || 0;
+                }
+            } catch(e) {
+                console.warn('Profile stats init error:', e);
+            }
+        }, 1500); // Delay to let other data load first
+    });
+})();
+
+// ==================== Plan Comparison Card ====================
+
+(function initPlanComparison() {
+    document.addEventListener('DOMContentLoaded', function() {
+        setTimeout(async function() {
+            try {
+                var card = document.getElementById('plan-comparison-card');
+                if (!card) return;
+                if (typeof checkSubscriptionStatus === 'function') {
+                    var status = await checkSubscriptionStatus();
+                    if (!status.hasAccess) {
+                        card.classList.remove('hidden');
+                    }
+                }
+            } catch(e) {}
+        }, 1000);
+    });
+})();
+
+// ==================== Study Preferences (localStorage) ====================
+
+(function initStudyPreferences() {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Daily goal picker
+        var goalPicker = document.getElementById('goal-picker');
+        if (goalPicker) {
+            var savedGoal = localStorage.getItem('dailyStudyGoal') || '5';
+            goalPicker.querySelectorAll('.goal-picker-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-goal') === savedGoal);
+                btn.addEventListener('click', function() {
+                    var val = this.getAttribute('data-goal');
+                    localStorage.setItem('dailyStudyGoal', val);
+                    goalPicker.querySelectorAll('.goal-picker-btn').forEach(function(b) {
+                        b.classList.toggle('active', b.getAttribute('data-goal') === val);
+                    });
+                });
+            });
+        }
+
+        // Session length picker
+        var sessionPicker = document.getElementById('session-length-picker');
+        if (sessionPicker) {
+            var savedSession = localStorage.getItem('preferredSessionLength') || '30';
+            sessionPicker.querySelectorAll('.goal-picker-btn').forEach(function(btn) {
+                btn.classList.toggle('active', btn.getAttribute('data-session') === savedSession);
+                btn.addEventListener('click', function() {
+                    var val = this.getAttribute('data-session');
+                    localStorage.setItem('preferredSessionLength', val);
+                    sessionPicker.querySelectorAll('.goal-picker-btn').forEach(function(b) {
+                        b.classList.toggle('active', b.getAttribute('data-session') === val);
+                    });
+                });
+            });
+        }
+    });
+})();
+
 // ==================== Custom Select Dropdown ====================
 
 (function initCustomSelect() {

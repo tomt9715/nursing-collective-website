@@ -198,6 +198,32 @@
                 </div>
             </div>
 
+            <!-- Study Stats Summary -->
+            <div class="settings-card settings-stats-card">
+                <div class="settings-card-header">
+                    <i class="fas fa-chart-bar"></i>
+                    <h3>Your Activity</h3>
+                </div>
+                <div class="settings-stats-grid">
+                    <div class="settings-stat-item">
+                        <div class="settings-stat-num" id="profile-stat-member-since">—</div>
+                        <div class="settings-stat-label">Member since</div>
+                    </div>
+                    <div class="settings-stat-item">
+                        <div class="settings-stat-num" id="profile-stat-guides">0</div>
+                        <div class="settings-stat-label">Guides studied</div>
+                    </div>
+                    <div class="settings-stat-item">
+                        <div class="settings-stat-num" id="profile-stat-questions">0</div>
+                        <div class="settings-stat-label">Questions answered</div>
+                    </div>
+                    <div class="settings-stat-item">
+                        <div class="settings-stat-num" id="profile-stat-streak">0</div>
+                        <div class="settings-stat-label">Day streak</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Profile Picture Picker Modal (hidden by default) -->
             <div class="icon-picker-overlay hidden" id="icon-picker-overlay">
                 <div class="icon-picker-modal">
@@ -314,6 +340,45 @@
                 </div>
             </div>
 
+            <!-- What's Included (shown when no plan) -->
+            <div class="settings-card hidden" id="plan-comparison-card">
+                <div class="settings-card-header">
+                    <i class="fas fa-gift"></i>
+                    <h3>What You'd Unlock</h3>
+                </div>
+                <div class="plan-compare-grid">
+                    <div class="plan-compare-item">
+                        <i class="fas fa-book-open"></i>
+                        <div>
+                            <strong>50+ Study Guides</strong>
+                            <p>Comprehensive guides across all nursing categories</p>
+                        </div>
+                    </div>
+                    <div class="plan-compare-item">
+                        <i class="fas fa-brain"></i>
+                        <div>
+                            <strong>Practice Quizzes</strong>
+                            <p>NCLEX-style questions with detailed rationales</p>
+                        </div>
+                    </div>
+                    <div class="plan-compare-item">
+                        <i class="fas fa-robot"></i>
+                        <div>
+                            <strong>Florence AI</strong>
+                            <p>AI study assistant for explanations and practice</p>
+                        </div>
+                    </div>
+                    <div class="plan-compare-item">
+                        <i class="fas fa-calendar-day"></i>
+                        <div>
+                            <strong>Personalized Study Plans</strong>
+                            <p>Daily recommendations based on your exams</p>
+                        </div>
+                    </div>
+                </div>
+                <a href="pricing.html" class="plan-compare-cta">See all plans <i class="fas fa-arrow-right"></i></a>
+            </div>
+
             <!-- AI Credits Card (hidden unless AI plan) -->
             <div class="settings-card hidden" id="membership-credits-card">
                 <div class="settings-card-header">
@@ -386,6 +451,39 @@
 
             <!-- ═══ Tab: Preferences ═══ -->
             <div class="settings-tab-panel" data-tab-panel="preferences">
+
+            <!-- Study Preferences Card -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <i class="fas fa-bullseye"></i>
+                    <h3>Study Preferences</h3>
+                </div>
+                <div class="settings-card-desc">Customize your study experience.</div>
+                <div class="setting-row">
+                    <div class="setting-row-info">
+                        <div class="setting-row-title">Daily Study Goal</div>
+                        <div class="setting-row-desc">How many study sets to complete each day</div>
+                    </div>
+                    <div class="goal-picker" id="goal-picker">
+                        <button type="button" class="goal-picker-btn" data-goal="3">3</button>
+                        <button type="button" class="goal-picker-btn active" data-goal="5">5</button>
+                        <button type="button" class="goal-picker-btn" data-goal="7">7</button>
+                        <button type="button" class="goal-picker-btn" data-goal="10">10</button>
+                    </div>
+                </div>
+                <div class="setting-row">
+                    <div class="setting-row-info">
+                        <div class="setting-row-title">Preferred Session Length</div>
+                        <div class="setting-row-desc">Default time for study sessions</div>
+                    </div>
+                    <div class="goal-picker" id="session-length-picker">
+                        <button type="button" class="goal-picker-btn" data-session="15">15m</button>
+                        <button type="button" class="goal-picker-btn active" data-session="30">30m</button>
+                        <button type="button" class="goal-picker-btn" data-session="60">1hr</button>
+                        <button type="button" class="goal-picker-btn" data-session="120">2hr</button>
+                    </div>
+                </div>
+            </div>
 
             <!-- Notification Preferences Card -->
             <div class="settings-card">

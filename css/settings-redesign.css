@@ -223,6 +223,135 @@ img { max-width: 100%; display: block; }
   .settings-grid { grid-template-columns: 1fr; }
 }
 
+/* ── Profile Stats Summary ────────────────────── */
+.settings-stats-card { margin-top: 16px; }
+
+.settings-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.settings-stat-item {
+  text-align: center;
+  padding: 16px 8px;
+  background: var(--navy-3);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+}
+
+.settings-stat-num {
+  font-family: 'Outfit', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.settings-stat-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 640px) {
+  .settings-stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ── Plan Feature Comparison ─────────────────── */
+.plan-compare-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.plan-compare-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 16px;
+  background: var(--navy-3);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+}
+
+.plan-compare-item i {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(15,188,173,0.1);
+  color: var(--teal);
+  font-size: 13px;
+  flex-shrink: 0;
+}
+
+.plan-compare-item strong {
+  font-size: 14px;
+  color: var(--text);
+  display: block;
+  margin-bottom: 2px;
+}
+
+.plan-compare-item p {
+  font-size: 13px;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.plan-compare-cta {
+  display: block;
+  text-align: center;
+  margin-top: 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--teal);
+  letter-spacing: 0.04em;
+}
+.plan-compare-cta:hover { color: var(--teal-dim); }
+.plan-compare-cta i { margin-left: 4px; }
+
+/* ── Goal Picker (study preferences) ─────────── */
+.goal-picker {
+  display: flex;
+  gap: 6px;
+}
+
+.goal-picker-btn {
+  width: 40px;
+  height: 36px;
+  border-radius: 8px;
+  border: 0.5px solid var(--border-mid);
+  background: var(--navy-3);
+  color: var(--text-dim);
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.15s;
+  padding: 0;
+}
+
+.goal-picker-btn:hover {
+  border-color: var(--teal);
+  color: var(--text);
+}
+
+.goal-picker-btn.active {
+  background: var(--teal);
+  color: var(--navy);
+  border-color: var(--teal);
+  font-weight: 600;
+}
+
 /* ── Custom Select Dropdown ───────────────────── */
 .custom-select {
   position: relative;

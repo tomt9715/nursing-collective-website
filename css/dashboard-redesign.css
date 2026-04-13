@@ -419,13 +419,13 @@ img { max-width: 100%; display: block; }
 
 .sidebar-goal-title {
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
 }
-.sidebar-goal-title i { color: var(--teal); margin-right: 4px; font-size: 10px; }
+.sidebar-goal-title i { color: var(--teal); margin-right: 4px; font-size: 11px; }
 
 .sidebar-goal-ring-container {
   position: relative;
@@ -449,8 +449,8 @@ img { max-width: 100%; display: block; }
 
 .sidebar-goal-label {
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
-  color: var(--text-dimmer);
+  font-size: 11px;
+  color: var(--text-dim);
   letter-spacing: 0.04em;
 }
 

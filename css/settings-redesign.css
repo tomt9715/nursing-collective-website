@@ -39,7 +39,7 @@ body {
 a { color: var(--teal); text-decoration: none; }
 a:hover { color: var(--teal-dim); }
 img { max-width: 100%; display: block; }
-.hidden { display: none; }
+.hidden { display: none !important; }
 
 
 /* ══════════════════════════════════════════════════════════════

@@ -1869,6 +1869,75 @@ function membershipEscapeHtml(text) {
     return div.innerHTML;
 }
 
+// ==================== Custom Select Dropdown ====================
+
+(function initCustomSelect() {
+    var trigger = document.getElementById('program-select-trigger');
+    var optionsContainer = document.getElementById('program-select-options');
+    var textEl = document.getElementById('program-select-text');
+    var wrapper = document.getElementById('program-custom-select');
+    var realSelect = document.getElementById('nursing-program');
+    if (!trigger || !optionsContainer || !wrapper || !realSelect) return;
+
+    // Toggle open/close
+    trigger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        wrapper.classList.toggle('open');
+    });
+
+    // Click an option
+    optionsContainer.addEventListener('click', function(e) {
+        var option = e.target.closest('.custom-select-option');
+        if (!option) return;
+
+        var value = option.getAttribute('data-value');
+        var text = option.textContent;
+
+        // Update display
+        textEl.textContent = text;
+
+        // Update real select
+        realSelect.value = value;
+
+        // Update selected state
+        optionsContainer.querySelectorAll('.custom-select-option').forEach(function(o) {
+            o.classList.toggle('selected', o === option);
+        });
+
+        wrapper.classList.remove('open');
+    });
+
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+        if (!wrapper.contains(e.target)) {
+            wrapper.classList.remove('open');
+        }
+    });
+
+    // Sync custom dropdown when real select changes (e.g. JS populates it)
+    var observer = new MutationObserver(function() {
+        syncCustomSelect();
+    });
+    observer.observe(realSelect, { attributes: true, childList: true });
+
+    // Also sync on value change
+    realSelect.addEventListener('change', syncCustomSelect);
+
+    function syncCustomSelect() {
+        var val = realSelect.value;
+        var matchingOption = optionsContainer.querySelector('[data-value="' + val + '"]');
+        if (matchingOption) {
+            textEl.textContent = matchingOption.textContent;
+            optionsContainer.querySelectorAll('.custom-select-option').forEach(function(o) {
+                o.classList.toggle('selected', o === matchingOption);
+            });
+        }
+    }
+
+    // Initial sync
+    syncCustomSelect();
+})();
+
 // ==================== Tab Navigation ====================
 
 (function initSettingsTabs() {

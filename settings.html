@@ -708,8 +708,9 @@
                     <small class="settings-help-text">Email cannot be changed</small>
                 </div>
                 <div class="form-group settings-form-gap">
-                    <label for="nursing-program" class="settings-label">Nursing Program</label>
-                    <select id="nursing-program" class="form-control">
+                    <label class="settings-label">Nursing Program</label>
+                    <!-- Hidden real select for form submission + JS compatibility -->
+                    <select id="nursing-program" class="hidden">
                         <option value="">Select your program</option>
                         <option value="ASN">ASN - Associate Degree in Nursing</option>
                         <option value="BSN">BSN - Bachelor of Science in Nursing</option>
@@ -720,6 +721,24 @@
                         <option value="DNP">DNP - Doctor of Nursing Practice</option>
                         <option value="Other">Other</option>
                     </select>
+                    <!-- Custom dropdown -->
+                    <div class="custom-select" id="program-custom-select">
+                        <button type="button" class="custom-select-trigger" id="program-select-trigger">
+                            <span id="program-select-text">Select your program</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="custom-select-options" id="program-select-options">
+                            <div class="custom-select-option" data-value="">Select your program</div>
+                            <div class="custom-select-option" data-value="ASN">ASN - Associate Degree in Nursing</div>
+                            <div class="custom-select-option" data-value="BSN">BSN - Bachelor of Science in Nursing</div>
+                            <div class="custom-select-option" data-value="ABSN">ABSN - Accelerated BSN</div>
+                            <div class="custom-select-option" data-value="LPN-to-RN">LPN to RN Bridge</div>
+                            <div class="custom-select-option" data-value="RN-to-BSN">RN to BSN Bridge</div>
+                            <div class="custom-select-option" data-value="MSN">MSN - Master of Science in Nursing</div>
+                            <div class="custom-select-option" data-value="DNP">DNP - Doctor of Nursing Practice</div>
+                            <div class="custom-select-option" data-value="Other">Other</div>
+                        </div>
+                    </div>
                 </div>
                 <div class="delete-modal-actions" style="margin-top: 20px;">
                     <button type="button" class="delete-modal-btn-cancel" id="edit-profile-cancel">Cancel</button>

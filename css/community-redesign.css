@@ -106,7 +106,7 @@ img { max-width: 100%; display: block; }
 /* ══════════════════════════════════════════════════════════════
    COMMUNITY CONTENT
    ══════════════════════════════════════════════════════════════ */
-.community-content { max-width: 800px; }
+.community-content { width: 100%; }
 
 /* ── Hero ── */
 .community-hero {

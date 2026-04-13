@@ -359,7 +359,7 @@ async function loadUserProfile() {
 
     // Load full dashboard sections
     loadFullDashboard(JSON.parse(localStorage.getItem('user')));
-});
+}
 
 async function loadFullDashboard(user) {
     if (!user) return;

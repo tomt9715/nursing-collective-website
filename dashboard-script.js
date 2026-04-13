@@ -293,11 +293,77 @@ async function loadUserProfile() {
         return;
     }
 
-    // Load dashboard sections
+    // ── New user onboarding check ──
+    // Show simplified onboarding view for new empty users
     try {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user) return;
 
+        var guideHistory = {};
+        try { guideHistory = JSON.parse(localStorage.getItem('guideLastStudied')) || {}; } catch(e) {}
+        var hasStudiedGuides = Object.keys(guideHistory).length > 0;
+        var onboardingDismissed = localStorage.getItem('gettingStartedDismissed') === 'true';
+
+        // Check subscription
+        var subStatus = { hasAccess: false };
+        try {
+            if (typeof getSubscriptionStatusCached === 'function') {
+                subStatus = await getSubscriptionStatusCached();
+            }
+        } catch(e) {}
+
+        var isNewEmptyUser = !subStatus.hasAccess && !hasStudiedGuides && !onboardingDismissed;
+
+        var onboardingEl = document.getElementById('dashboard-onboarding');
+        var fullDashEl = document.getElementById('dashboard-full-content');
+
+        if (isNewEmptyUser && onboardingEl && fullDashEl) {
+            // Show onboarding, hide full dashboard
+            onboardingEl.classList.remove('hidden');
+            fullDashEl.classList.add('hidden');
+
+            // Populate name
+            var onboardingName = document.getElementById('onboarding-name');
+            if (onboardingName && user.first_name) {
+                onboardingName.textContent = user.first_name;
+            }
+
+            // Show email verification nudge if needed
+            var authMethod = localStorage.getItem('lastAuthMethod');
+            var isOAuth = authMethod === 'google' || authMethod === 'discord';
+            if (!user.is_verified && !isOAuth) {
+                var verifyNudge = document.getElementById('onboarding-verify-nudge');
+                if (verifyNudge) verifyNudge.classList.remove('hidden');
+            }
+
+            // Wire up skip button
+            var skipBtn = document.getElementById('skip-to-dashboard-btn');
+            if (skipBtn) {
+                skipBtn.addEventListener('click', function() {
+                    localStorage.setItem('gettingStartedDismissed', 'true');
+                    onboardingEl.classList.add('hidden');
+                    fullDashEl.classList.remove('hidden');
+                    // Now load the full dashboard
+                    loadFullDashboard(user);
+                });
+            }
+
+            // Still load sidebar widgets
+            updateDailyGoalWidget();
+            loadSubscriptionManagement();
+            return; // Skip full dashboard loading
+        }
+    } catch(e) {
+        console.error('Onboarding check failed:', e);
+    }
+
+    // Load full dashboard sections
+    loadFullDashboard(JSON.parse(localStorage.getItem('user')));
+});
+
+async function loadFullDashboard(user) {
+    if (!user) return;
+    try {
         // Fire all independent data-fetches in parallel instead of sequentially.
         // syncStudyHistory, MasteryTracker.pull, and fetchQuizSessions are
         // all independent API calls — run them at the same time.

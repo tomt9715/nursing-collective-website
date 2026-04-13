@@ -178,6 +178,47 @@
 
             <!-- Main Content -->
             <div class="dash-main">
+
+        <!-- Onboarding View (shown for new empty users) -->
+        <div id="dashboard-onboarding" class="hidden">
+            <div class="onboarding-wrap">
+                <div class="onboarding-header">
+                    <h1>Welcome, <span id="onboarding-name">there</span>!</h1>
+                    <p>Here's how to get started with The Nursing Collective.</p>
+                </div>
+
+                <div class="onboarding-cards">
+                    <a href="resources.html" class="onboarding-card">
+                        <div class="onboarding-card-icon"><i class="fas fa-book-open"></i></div>
+                        <h3>Browse Free Resources</h3>
+                        <p>Study tips, clinical guides, and nursing fundamentals — free for everyone.</p>
+                    </a>
+                    <a href="https://discord.gg/y2Mh77wAV2" target="_blank" rel="noopener" class="onboarding-card">
+                        <div class="onboarding-card-icon"><i class="fab fa-discord"></i></div>
+                        <h3>Join the Community</h3>
+                        <p>Connect with fellow nursing students, ask questions, and share notes.</p>
+                    </a>
+                    <a href="pricing.html" class="onboarding-card">
+                        <div class="onboarding-card-icon"><i class="fas fa-crown"></i></div>
+                        <h3>Explore Study Plans</h3>
+                        <p>Unlock all study guides, quizzes, and AI-powered tools with a subscription.</p>
+                    </a>
+                </div>
+
+                <div id="onboarding-verify-nudge" class="onboarding-verify hidden">
+                    <i class="fas fa-envelope"></i>
+                    <span>Check your inbox to verify your email address.</span>
+                    <button id="onboarding-resend-btn" class="onboarding-verify-btn">Resend</button>
+                </div>
+
+                <button id="skip-to-dashboard-btn" class="onboarding-skip">
+                    Skip to full dashboard <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Full Dashboard (hidden when onboarding is shown) -->
+        <div id="dashboard-full-content">
         <div class="container">
             <!-- Dashboard Header -->
             <div class="dashboard-header-compact">
@@ -407,6 +448,7 @@
 
             </div>
         </div>
+        </div> <!-- end #dashboard-full-content -->
             </div> <!-- end .dash-main -->
         </div> <!-- end .dash-layout -->
     </section>

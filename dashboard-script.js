@@ -443,6 +443,10 @@ function enhanceEmptyStates() {
                         window.location.href = this.getAttribute('data-navigate');
                     });
                 });
+
+                // Hide Getting Started card — the CTA cards replace it
+                var gettingStarted = document.getElementById('getting-started-card');
+                if (gettingStarted) gettingStarted.classList.add('hidden');
             }
         }
     } catch(e) {

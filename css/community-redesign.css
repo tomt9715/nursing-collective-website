@@ -175,8 +175,8 @@ img { max-width: 100%; display: block; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: var(--discord);
-  color: #fff;
+  background: var(--teal);
+  color: var(--navy);
   font-family: 'Outfit', sans-serif;
   font-size: 14px;
   font-weight: 600;
@@ -189,8 +189,8 @@ img { max-width: 100%; display: block; }
 }
 
 .community-cta:hover {
-  background: #4752C4;
-  color: #fff;
+  background: var(--teal-dim);
+  color: var(--navy);
   text-decoration: none;
 }
 

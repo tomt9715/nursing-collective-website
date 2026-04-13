@@ -1310,6 +1310,48 @@ img { max-width: 100%; display: block; }
 
 
 /* ══════════════════════════════════════════════════════════════
+   EMPTY STATE CTAs (replace zero-state widgets)
+   ══════════════════════════════════════════════════════════════ */
+.empty-stat-cta {
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 14px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.empty-stat-cta:hover {
+  border-color: var(--teal);
+  background: rgba(15,188,173,0.06);
+}
+
+.empty-stat-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(15,188,173,0.1);
+  color: var(--teal);
+  font-size: 16px;
+  margin: 0 auto 10px;
+}
+
+.empty-stat-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-dim);
+}
+
+.empty-stat-cta:hover .empty-stat-text {
+  color: var(--text);
+}
+
+
+/* ══════════════════════════════════════════════════════════════
    ONBOARDING VIEW (new empty users)
    ══════════════════════════════════════════════════════════════ */
 #dashboard-onboarding {

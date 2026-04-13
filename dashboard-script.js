@@ -391,8 +391,62 @@ async function loadFullDashboard(user) {
         initStatFlyouts();
         loadSubscriptionManagement();
 
+        // ── Post-render: upgrade empty widgets into contextual CTAs ──
+        enhanceEmptyStates();
+
     } catch (error) {
         console.error('Error loading dashboard sections:', error);
+    }
+}
+
+// ==================== Empty State Enhancement ====================
+// Replaces zero-state widgets with actionable CTAs for new/free users
+
+function enhanceEmptyStates() {
+    try {
+        var guideHistory = {};
+        try { guideHistory = JSON.parse(localStorage.getItem('guideLastStudied')) || {}; } catch(e) {}
+        var guidesStudied = Object.keys(guideHistory).length;
+        var hasQuizData = false;
+        try {
+            if (typeof MasteryTracker !== 'undefined') {
+                var stats = MasteryTracker.getOverallStats();
+                hasQuizData = stats && stats.totalQuestionsAnswered > 0;
+            }
+        } catch(e) {}
+
+        // Replace stats row with action prompts if everything is zero
+        if (guidesStudied === 0 && !hasQuizData) {
+            var statsRow = document.querySelector('.dash-stats-row');
+            if (statsRow) {
+                statsRow.innerHTML =
+                    '<div class="empty-stat-cta" data-navigate="my-guides.html">' +
+                        '<div class="empty-stat-icon"><i class="fas fa-book-open"></i></div>' +
+                        '<div class="empty-stat-text">Study your first guide</div>' +
+                    '</div>' +
+                    '<div class="empty-stat-cta" data-navigate="resources.html">' +
+                        '<div class="empty-stat-icon"><i class="fas fa-lightbulb"></i></div>' +
+                        '<div class="empty-stat-text">Browse free resources</div>' +
+                    '</div>' +
+                    '<div class="empty-stat-cta" data-navigate="community.html">' +
+                        '<div class="empty-stat-icon"><i class="fab fa-discord"></i></div>' +
+                        '<div class="empty-stat-text">Join the community</div>' +
+                    '</div>' +
+                    '<div class="empty-stat-cta" data-navigate="pricing.html">' +
+                        '<div class="empty-stat-icon"><i class="fas fa-crown"></i></div>' +
+                        '<div class="empty-stat-text">Explore study plans</div>' +
+                    '</div>';
+
+                // Wire up navigation on the new cards
+                statsRow.querySelectorAll('[data-navigate]').forEach(function(el) {
+                    el.addEventListener('click', function() {
+                        window.location.href = this.getAttribute('data-navigate');
+                    });
+                });
+            }
+        }
+    } catch(e) {
+        console.error('Empty state enhancement failed:', e);
     }
 }
 

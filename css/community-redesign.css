@@ -90,7 +90,7 @@ img { max-width: 100%; display: block; }
 /* ══════════════════════════════════════════════════════════════
    SIDEBAR LAYOUT
    ══════════════════════════════════════════════════════════════ */
-.dash-layout { display: flex; min-height: calc(100vh - 60px); padding-top: 60px; }
+.dash-layout { display: flex; min-height: calc(100vh - 60px); padding-top: calc(60px + var(--beta-banner-h, 0px)); }
 .dash-sidebar { width: 240px; flex-shrink: 0; border-right: 0.5px solid var(--border); padding-top: 20px; position: sticky; top: calc(60px + var(--beta-banner-h, 0px)); height: calc(100vh - 60px - var(--beta-banner-h, 0px)); overflow-y: auto; background: var(--navy-2); display: flex; flex-direction: column; }
 .dash-sidebar-inner { padding: 0 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .dash-sidebar-section { display: flex; flex-direction: column; gap: 2px; padding-bottom: 12px; border-bottom: 0.5px solid var(--border); margin-bottom: 4px; }

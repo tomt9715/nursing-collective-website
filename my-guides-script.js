@@ -4,6 +4,9 @@
     var ICON_BASE = 'assets/images/guide-icons/';
     var CATEGORY_ICON_BASE = 'assets/images/study-guide-page/';
 
+    // ── Access state (set on init) ──────────────────────────────
+    var _hasAccess = false;
+
     // ── Class-based guide catalog ────────────────────────────────
     var CLASS_CATALOG = [
         {
@@ -351,7 +354,14 @@
 
             // Available guides
             topic.guides.forEach(function(guide) {
-                html += '<a href="guides/' + guide.file + '.html" class="guide-card">';
+                if (_hasAccess) {
+                    // Subscriber — clickable link
+                    html += '<a href="guides/' + guide.file + '.html" class="guide-card">';
+                } else {
+                    // Non-subscriber — locked card
+                    html += '<div class="guide-card guide-card-locked">';
+                }
+
                 html += '<div class="guide-card-icon ' + topic.colorClass + '">';
                 html += '<img src="' + ICON_BASE + guide.file + '.webp" alt="" class="guide-card-img" loading="lazy">';
                 html += '</div>';
@@ -359,8 +369,14 @@
                 html += '<div class="guide-card-name">' + guide.name + '</div>';
                 html += '<div class="guide-card-meta">Study Guide</div>';
                 html += '</div>';
-                html += '<i class="fas fa-chevron-right guide-card-arrow"></i>';
-                html += '</a>';
+
+                if (_hasAccess) {
+                    html += '<i class="fas fa-chevron-right guide-card-arrow"></i>';
+                    html += '</a>';
+                } else {
+                    html += '<span class="guide-locked-badge"><i class="fas fa-lock"></i> Premium</span>';
+                    html += '</div>';
+                }
             });
 
             // Coming soon
@@ -382,6 +398,14 @@
             });
 
             html += '</div>'; // .guide-grid
+
+            // Upgrade nudge when guides exist but user has no access
+            if (topic.guides.length > 0 && !_hasAccess) {
+                html += '<div class="guide-upgrade-nudge">';
+                html += '<a href="pricing.html">Unlock all study guides with a plan <i class="fas fa-arrow-right"></i></a>';
+                html += '</div>';
+            }
+
             html += '</div>'; // .guide-category
         });
 
@@ -440,9 +464,23 @@
 
     window.addEventListener('hashchange', route);
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', route);
-    } else {
+    // ── Init: check subscription then render ─────────────────────
+    async function init() {
+        try {
+            if (typeof checkSubscriptionStatus === 'function') {
+                var subStatus = await checkSubscriptionStatus();
+                _hasAccess = subStatus.hasAccess;
+            }
+        } catch (e) {
+            console.error('Error checking subscription:', e);
+            _hasAccess = false;
+        }
         route();
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
     }
 })();

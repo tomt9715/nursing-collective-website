@@ -650,6 +650,54 @@ img { max-width: 100%; display: block; }
   color: var(--teal);
 }
 
+/* ── Locked cards (no subscription) ── */
+.guide-card.guide-card-locked {
+  cursor: default;
+}
+
+.guide-card.guide-card-locked:hover {
+  border-color: var(--border);
+}
+
+.guide-locked-badge {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--amber);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: rgba(244,165,53,0.12);
+  border: 0.5px solid rgba(244,165,53,0.25);
+  padding: 3px 10px;
+  border-radius: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.guide-locked-badge i {
+  font-size: 9px;
+}
+
+/* ── Upgrade nudge ── */
+.guide-upgrade-nudge {
+  margin-top: 14px;
+  text-align: right;
+}
+
+.guide-upgrade-nudge a {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.15s;
+}
+
+.guide-upgrade-nudge a:hover { color: var(--teal); }
+.guide-upgrade-nudge a i { margin-left: 4px; }
+
 /* ── Coming soon cards ── */
 .guide-card.coming-soon {
   opacity: 0.45;

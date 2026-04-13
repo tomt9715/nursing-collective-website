@@ -1608,6 +1608,20 @@ img { max-width: 100%; display: block; }
   margin: 0;
 }
 
+/* Discord link (subtle, below cards) */
+.onboarding-discord {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--text-dimmer);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.15s;
+}
+.onboarding-discord:hover { color: var(--teal); }
+.onboarding-discord i { font-size: 15px; }
+
 /* Email verification nudge (inline, not a banner) */
 .onboarding-verify {
   display: flex;

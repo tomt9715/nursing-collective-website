@@ -87,8 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Update form elements
             if (formModeText) formModeText.querySelector('span').textContent = 'Sign in to your account';
-            if (nameFields) nameFields.style.display = 'none';
-            if (confirmPasswordGroup) confirmPasswordGroup.style.display = 'none';
+            if (nameFields) { nameFields.style.display = 'none'; nameFields.classList.add('hidden'); }
+            if (confirmPasswordGroup) { confirmPasswordGroup.style.display = 'none'; confirmPasswordGroup.classList.add('hidden'); }
             if (forgotPasswordLink) forgotPasswordLink.style.display = 'block';
             if (submitBtn) {
                 submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>';
@@ -127,8 +127,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Update form elements
             if (formModeText) formModeText.querySelector('span').textContent = 'Create your account';
-            if (nameFields) nameFields.style.display = 'grid';
-            if (confirmPasswordGroup) confirmPasswordGroup.style.display = 'block';
+            if (nameFields) { nameFields.classList.remove('hidden'); nameFields.style.display = 'grid'; }
+            if (confirmPasswordGroup) { confirmPasswordGroup.classList.remove('hidden'); confirmPasswordGroup.style.display = 'block'; }
             if (forgotPasswordLink) forgotPasswordLink.style.display = 'none';
             if (submitBtn) {
                 submitBtn.innerHTML = '<i class="fas fa-user-plus"></i><span>Create Account</span>';

@@ -632,6 +632,9 @@ img { max-width: 100%; display: block; }
 
 .dash-main .container { max-width: 100%; }
 
+/* Hide full dashboard by default — JS reveals the correct view to prevent flash */
+#dashboard-full-content { display: none; }
+
 /* Breadcrumbs hidden */
 .breadcrumbs-dashboard { display: none !important; }
 

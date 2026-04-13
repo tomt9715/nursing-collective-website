@@ -363,6 +363,9 @@ async function loadUserProfile() {
 
 async function loadFullDashboard(user) {
     if (!user) return;
+    // Reveal the full dashboard content (hidden by default in CSS to prevent flash)
+    var fullDash = document.getElementById('dashboard-full-content');
+    if (fullDash) fullDash.style.display = '';
     try {
         // Fire all independent data-fetches in parallel instead of sequentially.
         // syncStudyHistory, MasteryTracker.pull, and fetchQuizSessions are

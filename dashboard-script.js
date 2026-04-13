@@ -607,12 +607,11 @@ async function loadRecentGuides() {
             if (guidesCountStat) guidesCountStat.textContent = 'No Subscription';
 
             container.innerHTML = `
-                <div class="recent-guides-empty locked">
-                    <i class="fas fa-lock"></i>
-                    <h4>Subscribe to Access Study Guides</h4>
-                    <p>Get unlimited access to all study guides with a subscription.</p>
-                    <button class="btn btn-primary btn-sm" data-navigate="pricing.html">
-                        <i class="fas fa-rocket"></i> View Plans
+                <div class="recent-guides-empty">
+                    <i class="fas fa-book-open"></i>
+                    <p>As you study, your recent guides will appear here for quick access.</p>
+                    <button class="btn btn-primary btn-sm" data-navigate="my-guides.html">
+                        Browse Guides
                     </button>
                 </div>
             `;

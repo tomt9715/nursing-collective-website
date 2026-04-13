@@ -70,7 +70,9 @@ function showAccessDenied(message, showLoginButton = true) {
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: rgba(13,27,42,0.85);
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -78,85 +80,89 @@ function showAccessDenied(message, showLoginButton = true) {
             padding: 20px;
         }
         .access-denied-content {
-            background: white;
-            border-radius: 16px;
-            padding: 48px;
+            background: #162032;
+            border: 0.5px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            padding: 40px 36px;
             text-align: center;
-            max-width: 480px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 440px;
         }
         .access-denied-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #ef4444, #dc2626);
+            width: 52px;
+            height: 52px;
+            background: rgba(224,82,82,0.12);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
+            margin: 0 auto 20px;
         }
         .access-denied-icon i {
-            font-size: 36px;
-            color: white;
+            font-size: 22px;
+            color: #e05252;
         }
         .access-denied-content h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            color: #1f2937;
-            margin-bottom: 12px;
+            font-family: 'DM Serif Display', serif;
+            font-size: 22px;
+            font-weight: 400;
+            color: #e8edf2;
+            margin-bottom: 8px;
         }
         .access-denied-content p {
-            color: #6b7280;
-            font-size: 1.05rem;
+            color: #8a9bb0;
+            font-size: 14px;
             line-height: 1.6;
-            margin-bottom: 32px;
+            margin-bottom: 24px;
         }
         .access-denied-actions {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
         .access-denied-actions a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 14px 24px;
-            border-radius: 10px;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
             font-weight: 600;
+            font-size: 13px;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.15s;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #2E86AB, #A23B72);
-            color: white;
+            background: #0fbcad;
+            color: #0d1b2a;
         }
         .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(46, 134, 171, 0.4);
+            background: #0a9086;
         }
         .btn-secondary {
-            background: #f3f4f6;
-            color: #374151;
+            background: transparent;
+            color: #8a9bb0;
+            border: 0.5px solid rgba(255,255,255,0.12);
         }
         .btn-secondary:hover {
-            background: #e5e7eb;
+            border-color: rgba(255,255,255,0.2);
+            color: #e8edf2;
         }
         .btn-tertiary {
             background: transparent;
-            color: #2E86AB;
-            border: 2px solid #2E86AB;
+            color: #0fbcad;
+            border: 0.5px solid rgba(15,188,173,0.3);
         }
         .btn-tertiary:hover {
-            background: #2E86AB;
-            color: white;
+            border-color: #0fbcad;
+            background: rgba(15,188,173,0.08);
         }
         @media (max-width: 480px) {
             .access-denied-content {
                 padding: 32px 24px;
             }
             .access-denied-content h2 {
-                font-size: 1.5rem;
+                font-size: 20px;
             }
         }
     `;

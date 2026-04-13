@@ -1123,6 +1123,87 @@ img { max-width: 100%; display: block; }
 .widget-header-link:hover { color: var(--teal-dim); }
 
 
+/* ── Study plan widget ── */
+
+/* Launchpad cards (when semester is set up) */
+.sp-launchpad-card {
+  background: var(--navy-3);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 10px;
+  transition: border-color 0.15s;
+}
+.sp-launchpad-card:hover { border-color: var(--border-mid); }
+.sp-launchpad-card.urgent { border-left: 2px solid var(--red); }
+.sp-launchpad-card.soon { border-left: 2px solid var(--amber); }
+.sp-launchpad-card.near { border-left: 2px solid var(--teal); }
+
+.sp-launchpad-info { margin-bottom: 8px; }
+
+.sp-launchpad-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+
+.sp-launchpad-meta {
+  font-size: 12px;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sp-day-pill {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.sp-day-pill.urgent { background: rgba(224,82,82,0.12); color: var(--red); }
+.sp-day-pill.soon { background: rgba(244,165,53,0.12); color: var(--amber); }
+.sp-day-pill.near { background: rgba(15,188,173,0.12); color: var(--teal); }
+.sp-day-pill.normal { background: var(--navy-2); color: var(--text-dim); }
+
+.sp-launchpad-topics {
+  font-size: 13px;
+  color: var(--text-dimmer);
+  line-height: 1.4;
+  margin-bottom: 10px;
+}
+
+.sp-start-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--teal);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.sp-start-btn:hover { color: var(--teal-dim); }
+
+.sp-start-all {
+  display: block;
+  text-align: center;
+  margin-top: 12px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.sp-start-all:hover { color: var(--teal); }
+
 /* ── Study plan widget empty state ── */
 .study-plan-content { color: var(--text-dim); font-size: 14px; }
 
@@ -1164,6 +1245,86 @@ img { max-width: 100%; display: block; }
   transition: background 0.15s;
 }
 .sp-empty-btn:hover { background: var(--teal-dim); }
+
+/* ── Exam countdown widget content ── */
+.ec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ec-item {
+  background: var(--navy-3);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: border-color 0.15s;
+}
+.ec-item-clickable { cursor: pointer; }
+.ec-item-clickable:hover { border-color: var(--border-mid); }
+
+.ec-item-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.ec-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ec-item-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.ec-item-class {
+  font-size: 12px;
+  color: var(--text-dim);
+}
+
+.ec-item-days {
+  font-family: 'DM Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+.ec-item-days.urgent { background: rgba(224,82,82,0.12); color: var(--red); }
+.ec-item-days.soon { background: rgba(244,165,53,0.12); color: var(--amber); }
+.ec-item-days.near { background: rgba(15,188,173,0.12); color: var(--teal); }
+.ec-item-days.normal { background: var(--navy-2); color: var(--text-dim); }
+
+.ec-bar-track {
+  height: 4px;
+  background: var(--navy-2);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.ec-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+.ec-bar-fill.urgent { background: var(--red); }
+.ec-bar-fill.soon { background: var(--amber); }
+.ec-bar-fill.near { background: var(--teal); }
+.ec-bar-fill.normal { background: var(--text-dimmer); }
+
+.ec-item-date {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  letter-spacing: 0.04em;
+}
 
 /* ── Exam countdown widget empty state ── */
 .ec-empty-state {
@@ -2260,8 +2421,10 @@ img { max-width: 100%; display: block; }
     transition: left 0.25s ease;
     width: 240px;
   }
-  .dash-sidebar.open { left: 0; }
-  .dash-sidebar-overlay.open { display: block; }
+  .dash-sidebar.open,
+  .dash-sidebar.dash-sidebar--open { left: 0; }
+  .dash-sidebar-overlay.open,
+  .dash-sidebar-overlay.dash-sidebar-overlay--visible { display: block; }
 
   .dash-main { padding: 20px 16px 32px; }
 

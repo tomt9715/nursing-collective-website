@@ -20,7 +20,7 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#2E86AB">
+    <meta name="theme-color" content="#0d1b2a">
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,381 +28,20 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/bundle.min.css">
-    <link rel="stylesheet" href="css/global-overrides.css?v=5.6.navfix">
+    <link rel="stylesheet" href="css/cookie-consent.css">
+    <link rel="stylesheet" href="css/feedback-widget.css">
+    <link rel="stylesheet" href="css/status-redesign.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Sentry -->
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="sentry-init.js"></script>
 
-    <style>
-        .status-page {
-            padding-top: 120px;
-            padding-bottom: 60px;
-            min-height: 100vh;
-            background: var(--background-light);
-        }
-
-        .status-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .status-header h1 {
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .status-header p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
-        /* Overall Status Banner */
-        .overall-status {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 24px 32px;
-            margin-bottom: 32px;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: var(--shadow-md);
-            border: 1px solid var(--border-color);
-        }
-
-        .overall-status.operational {
-            border-left: 4px solid #10b981;
-        }
-
-        .overall-status.degraded {
-            border-left: 4px solid #f59e0b;
-        }
-
-        .overall-status.outage {
-            border-left: 4px solid #ef4444;
-        }
-
-        .status-indicator {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .status-indicator.operational {
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-        }
-
-        .status-indicator.degraded {
-            background: rgba(245, 158, 11, 0.1);
-            color: #f59e0b;
-        }
-
-        .status-indicator.outage {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-        }
-
-        .overall-status-text h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .overall-status-text p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin: 0;
-        }
-
-        .last-updated {
-            margin-left: auto;
-            text-align: right;
-            color: var(--text-light);
-            font-size: 0.85rem;
-        }
-
-        /* Service Cards */
-        .services-grid {
-            display: grid;
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-
-        .service-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 20px 24px;
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-            transition: box-shadow 0.2s;
-        }
-
-        .service-card:hover {
-            box-shadow: var(--shadow-md);
-        }
-
-        .service-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            background: var(--background-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            color: var(--primary-color);
-            flex-shrink: 0;
-        }
-
-        .service-info {
-            flex: 1;
-        }
-
-        .service-info h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 2px;
-        }
-
-        .service-info p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        .service-status {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 6px 14px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .service-status.operational {
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-        }
-
-        .service-status.degraded {
-            background: rgba(245, 158, 11, 0.1);
-            color: #f59e0b;
-        }
-
-        .service-status.outage {
-            background: rgba(239, 68, 68, 0.1);
-            color: #ef4444;
-        }
-
-        .service-status.checking {
-            background: var(--background-light);
-            color: var(--text-secondary);
-        }
-
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: currentColor;
-        }
-
-        .status-dot.pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        /* Incidents Section */
-        .incidents-section {
-            background: var(--card-bg);
-            border-radius: 12px;
-            padding: 24px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-        }
-
-        .incidents-section h2 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .incidents-section h2 i {
-            color: var(--primary-color);
-        }
-
-        .no-incidents {
-            text-align: center;
-            padding: 40px 20px;
-            color: var(--text-secondary);
-        }
-
-        .no-incidents i {
-            font-size: 3rem;
-            color: #10b981;
-            margin-bottom: 16px;
-            display: block;
-        }
-
-        .incident-item {
-            padding: 16px;
-            border-radius: 8px;
-            background: var(--background-light);
-            margin-bottom: 12px;
-        }
-
-        .incident-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .incident-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 8px;
-        }
-
-        .incident-title {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .incident-date {
-            font-size: 0.85rem;
-            color: var(--text-light);
-        }
-
-        .incident-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        /* Subscribe Section */
-        .subscribe-section {
-            margin-top: 40px;
-            text-align: center;
-            padding: 32px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border-color);
-        }
-
-        .subscribe-section h3 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .subscribe-section p {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .subscribe-links {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .subscribe-links a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .subscribe-links .discord-link {
-            background: #5865F2;
-            color: white;
-        }
-
-        .subscribe-links .discord-link:hover {
-            background: #4752c4;
-        }
-
-        .subscribe-links .email-link {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .subscribe-links .email-link:hover {
-            background: var(--primary-dark);
-        }
-
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .status-page {
-                padding-top: 100px;
-            }
-
-            .overall-status {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px;
-            }
-
-            .last-updated {
-                margin-left: 0;
-                margin-top: 12px;
-                text-align: center;
-            }
-
-            .service-card {
-                flex-wrap: wrap;
-            }
-
-            .service-status {
-                width: 100%;
-                justify-content: center;
-                margin-top: 8px;
-            }
-
-            .subscribe-links {
-                flex-direction: column;
-            }
-
-            .subscribe-links a {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
     <script src="lockscreen.js"></script>
     <script src="beta-banner.js"></script>
 </head>
@@ -410,40 +49,50 @@
     <!-- Skip Link -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="index.html">
-                    <img src="assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective Logo" class="nav-logo">
+                    <img src="assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective Logo" class="nav-logo">
                 </a>
             </div>
             <div class="nav-links">
-                <!-- Authenticated nav item (shown when logged in) -->
                 <a href="dashboard.html" id="nav-dashboard-link" class="hidden">Dashboard</a>
                 <a href="resources.html">Resources</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about.html">About</a>
-                <div class="user-menu hidden" id="user-menu">
+                <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
-                        <i class="fas fa-user-circle"></i>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <div class="user-dropdown-header">
-                            <div class="user-avatar-large">
-                                <i class="fas fa-user-circle"></i>
-                            </div>
-                            <div class="user-info">
-                                <span class="user-name" id="dropdown-user-name">Loading...</span>
-                                <span class="user-email" id="dropdown-user-email">Loading...</span>
-                            </div>
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg><span>Welcome!</span></div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
                         </div>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
-                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
-                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <div class="dropdown-user-content hidden" id="dropdown-user-content">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg></div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -563,56 +212,43 @@
     </main>
 
     <!-- Footer -->
-    <footer id="contact" class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <span>The Nursing Collective</span>
-                    </div>
-                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">The Nursing Collective</div>
+                <p class="footer-brand-desc">Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <div class="footer-contact-email">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
                 </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
-                    </p>
-                    <div class="social-links">
-                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
+                <div class="social-links">
+                    <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
                 </div>
             </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
-                <p class="footer-attribution">
-                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
-                </p>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+            <p>Icons by <a href="https://www.flaticon.com/authors/freepik" target="_blank" rel="noopener">Freepik</a> &amp; <a href="https://www.flaticon.com/authors/slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" target="_blank" rel="noopener">Flaticon</a></p>
         </div>
     </footer>
 
@@ -620,8 +256,8 @@
     <script src="dark-mode.js"></script>
     <script src="api-service.js"></script>
     <script src="script.js"></script>
-
     <script src="status-script.js"></script>
     <script src="cookie-consent.js"></script>
+    <script src="feedback-widget.js"></script>
 </body>
 </html>

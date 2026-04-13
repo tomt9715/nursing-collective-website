@@ -323,25 +323,6 @@ img { max-width: 100%; display: block; }
   color: var(--text-dim);
 }
 
-/* ── Stats bar ── */
-.res-library-stats {
-  display: flex;
-  gap: 20px;
-  margin-bottom: 32px;
-  flex-wrap: wrap;
-}
-
-.res-library-stat {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 13px;
-  color: var(--text-dim);
-}
-
-.res-library-stat i { color: var(--teal); font-size: 13px; }
-.res-library-stat strong { color: var(--text); font-weight: 600; }
-
 /* ── Category section ── */
 .res-section { margin-bottom: 36px; }
 

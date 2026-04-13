@@ -796,7 +796,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* Stat card accent borders (match inline icon colors in HTML) */
-#stat-card-guides    { border-top: 2px solid #2E86AB; }
+#stat-card-guides    { border-top: 2px solid var(--teal); }
 #stat-card-questions { border-top: 2px solid #8b5cf6; }
 #stat-card-accuracy  { border-top: 2px solid #10b981; }
 #stat-card-streak    { border-top: 2px solid #f59e0b; }
@@ -1091,9 +1091,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* Activity widget spans full width of the two-col grid */
-.study-activity-widget {
-  grid-column: 1 / -1;
-}
+.study-activity-widget { grid-column: 1 / -1; }
 
 .widget-header {
   display: flex;

@@ -149,6 +149,12 @@
                             <i class="fas fa-user-shield"></i> Admin Panel
                         </a>
                     </div>
+                    <!-- Email verification nudge (shown by JS if needed) -->
+                    <div class="sidebar-verify-nudge hidden" id="sidebar-verify-nudge">
+                        <i class="fas fa-envelope"></i>
+                        <span>Verify your email</span>
+                        <button id="sidebar-resend-btn" class="sidebar-verify-btn">Resend</button>
+                    </div>
                 </div>
                 <!-- Daily Study Goal Widget -->
                 <div class="sidebar-goal-widget" id="sidebar-goal-widget">
@@ -173,12 +179,6 @@
                             <div class="skeleton skeleton-card" style="height:60px;border-radius:8px"></div>
                         </div>
                     </div>
-                </div>
-                <!-- Email verification nudge (shown by JS if needed) -->
-                <div class="sidebar-verify-nudge hidden" id="sidebar-verify-nudge">
-                    <i class="fas fa-envelope"></i>
-                    <span>Verify your email</span>
-                    <button id="sidebar-resend-btn" class="sidebar-verify-btn">Resend</button>
                 </div>
             </aside>
 

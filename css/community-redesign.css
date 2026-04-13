@@ -112,7 +112,7 @@ img { max-width: 100%; display: block; }
 .community-hero {
   background: var(--navy-2);
   border: 0.5px solid var(--border-mid);
-  border-left: 3px solid var(--discord);
+  border-left: 3px solid var(--teal);
   border-radius: 14px;
   padding: 40px 36px;
   text-align: center;

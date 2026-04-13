@@ -673,18 +673,33 @@ img { max-width: 100%; display: block; }
 
 .stat-inline i { color: var(--teal); font-size: 11px; }
 
-/* Badge styles */
-#premium-badge .badge,
-#beta-badge .badge {
+/* Dashboard badges */
+.dash-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
   font-family: 'DM Mono', monospace;
   font-size: 10px;
-  padding: 3px 8px;
+  padding: 4px 10px;
   border-radius: 6px;
   border: 0.5px solid var(--border-mid);
   background: var(--navy-3);
-  color: var(--teal);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   font-weight: 500;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+.dash-badge i { font-size: 9px; }
+
+.dash-badge-beta {
+  color: var(--purple);
+  border-color: rgba(139,92,246,0.25);
+}
+
+.dash-badge-premium {
+  color: var(--amber);
+  border-color: rgba(244,165,53,0.25);
 }
 
 

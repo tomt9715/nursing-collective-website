@@ -174,15 +174,15 @@ async function loadUserProfile() {
         if (sidebarAdmin && isAdmin) sidebarAdmin.classList.remove('hidden');
 
         if (premiumBadgeEl && user.is_premium && !isAdmin) {
-            premiumBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
+            premiumBadgeEl.className = 'dash-badge dash-badge-premium';
             premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';
         }
 
         // Beta tester badge — shown for ALL users during beta
         const betaBadgeEl = document.getElementById('beta-badge');
         if (betaBadgeEl) {
-            betaBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-left: 8px; font-size: 13px; vertical-align: middle;';
-            betaBadgeEl.innerHTML = '<i class="fas fa-flask"></i> Beta Tester';
+            betaBadgeEl.className = 'dash-badge dash-badge-beta';
+            betaBadgeEl.innerHTML = '<i class="fas fa-flask"></i> Beta';
         }
 
         updateCompactStats(user);

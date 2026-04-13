@@ -20,1047 +20,27 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#2E86AB">
+    <meta name="theme-color" content="#0d1b2a">
 
-    <!-- Preconnect to external resources for faster loading -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- Bundled CSS (Bootstrap + custom styles, purged and minified) -->
-    <link rel="stylesheet" href="css/bundle.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
-    <link rel="stylesheet" href="css/global-overrides.css?v=5.6.navfix">
-
-
-    <!-- Bootstrap 5 CSS -->
-
+    <link rel="stylesheet" href="css/settings-redesign.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <!-- Cropper.js (image crop tool for profile picture upload) -->
+    <!-- Cropper.js -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css">
 
-    <style>
-        /* ── Form Inputs ──────────────────────────────── */
-        .form-control,
-        input[type="text"],
-        input[type="email"],
-        input[type="password"],
-        select {
-            background: var(--surface-color) !important;
-            color: var(--text-primary) !important;
-            border: 1px solid var(--border-color) !important;
-            padding: 12px 16px !important;
-            border-radius: 8px !important;
-            font-size: 15px !important;
-            transition: all 0.2s ease !important;
-        }
-
-        .form-control:focus,
-        input[type="text"]:focus,
-        input[type="email"]:focus,
-        input[type="password"]:focus,
-        select:focus {
-            outline: none !important;
-            border-color: var(--accent-color) !important;
-            box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.1) !important;
-        }
-
-        .form-control:disabled {
-            background: var(--background-light) !important;
-            color: var(--text-secondary) !important;
-            cursor: not-allowed !important;
-            opacity: 0.7 !important;
-        }
-
-        /* ── Buttons ──────────────────────────────────── */
-        .btn-primary {
-            background: linear-gradient(135deg, #2E86AB, #A23B72) !important;
-            color: white !important;
-            border: none !important;
-            padding: 14px 28px !important;
-            border-radius: 10px !important;
-            font-weight: 600 !important;
-            cursor: pointer !important;
-            transition: all 0.2s ease !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            gap: 8px !important;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 8px 20px rgba(46, 134, 171, 0.3) !important;
-        }
-
-        /* ── Toggle Switch ────────────────────────────── */
-        .toggle-switch {
-            position: relative;
-            display: inline-block;
-            width: 52px;
-            height: 28px;
-            flex-shrink: 0;
-        }
-
-        .toggle-switch input { opacity: 0; width: 0; height: 0; }
-
-        .toggle-slider {
-            position: absolute; cursor: pointer;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: var(--border-color, #ccc);
-            transition: 0.3s; border-radius: 28px;
-        }
-
-        .toggle-slider:before {
-            position: absolute; content: "";
-            height: 22px; width: 22px; left: 3px; bottom: 3px;
-            background-color: white; transition: 0.3s;
-            border-radius: 50%; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .toggle-switch input:checked + .toggle-slider {
-            background: linear-gradient(135deg, #2E86AB, #A23B72);
-        }
-
-        .toggle-switch input:checked + .toggle-slider:before {
-            transform: translateX(24px);
-        }
-
-        .toggle-switch input:focus + .toggle-slider {
-            box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.2);
-        }
-
-        /* ══════════════════════════════════════════════
-           SETTINGS PROFILE HERO
-           ══════════════════════════════════════════════ */
-        .settings-hero {
-            display: none; /* replaced by unified profile card */
-        }
-
-        /* ── Unified Profile Card ─────────────────────── */
-        .settings-profile-card {
-            padding-bottom: 24px;
-            margin-bottom: 32px;
-        }
-        .settings-profile-avatar-area {
-            background: linear-gradient(135deg, rgba(46, 134, 171, 0.06) 0%, rgba(162, 59, 114, 0.06) 100%);
-            border-radius: 16px 16px 0 0;
-            margin: -24px -24px 0;
-            padding: 32px 24px 24px;
-            text-align: center;
-        }
-        [data-theme="dark"] .settings-profile-avatar-area {
-            background: linear-gradient(135deg, rgba(46, 134, 171, 0.1) 0%, rgba(162, 59, 114, 0.1) 100%);
-        }
-        .settings-profile-section {
-            padding-top: 8px;
-        }
-        .settings-profile-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 16px;
-            flex-wrap: wrap;
-        }
-
-        /* Avatar wrapper — clickable, with hover overlay */
-        .settings-avatar-wrapper {
-            position: relative;
-            width: 128px;
-            height: 128px;
-            margin: 0 auto 16px;
-            border-radius: 50%;
-            cursor: pointer;
-            overflow: hidden;
-            border: 4px solid var(--primary-color, #2E86AB);
-            background: var(--background-light, #f0f0f0);
-            transition: border-color 0.3s ease;
-        }
-
-        .settings-avatar-wrapper:hover {
-            border-color: var(--secondary-color, #A23B72);
-        }
-
-        .settings-avatar-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .settings-avatar-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 4px;
-            opacity: 0;
-            transition: opacity 0.25s ease;
-        }
-
-        .settings-avatar-wrapper:hover .settings-avatar-overlay,
-        .settings-avatar-wrapper:focus .settings-avatar-overlay {
-            opacity: 1;
-        }
-
-        .settings-avatar-overlay i {
-            font-size: 22px;
-            color: white;
-        }
-
-        .settings-avatar-overlay span {
-            font-size: 12px;
-            font-weight: 600;
-            color: white;
-            letter-spacing: 0.5px;
-        }
-
-        .settings-hero-name {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .settings-hero-email {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 0;
-        }
-
-        /* ── Section Group Labels ─────────────────────── */
-        .settings-section-label {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: var(--text-light, #9ca3af);
-            margin-bottom: 12px;
-            padding-left: 4px;
-        }
-
-        /* ── Card Enhancements ────────────────────────── */
-        .settings-card {
-            background: var(--card-bg, #fff);
-            border: 1px solid var(--border-color);
-            border-radius: 16px;
-            padding: 28px 32px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
-            transition: box-shadow 0.3s ease;
-        }
-
-        .settings-card:hover {
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .settings-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 6px;
-        }
-
-        .settings-card-header i {
-            font-size: 1.1rem;
-            color: var(--primary-color, #2E86AB);
-            width: 20px;
-            text-align: center;
-        }
-
-        .settings-card-header h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .settings-card-desc {
-            font-size: 0.88rem;
-            color: var(--text-secondary);
-            margin-bottom: 24px;
-            padding-left: 32px;
-        }
-
-        /* ── Setting Rows (notifications, connections) ── */
-        .setting-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 16px;
-            background: var(--background-light);
-            border-radius: 12px;
-            margin-bottom: 10px;
-            transition: background 0.2s ease;
-        }
-
-        .setting-row:last-child { margin-bottom: 0; }
-
-        .setting-row:hover { background: var(--background-light); }
-
-        .setting-row-info { flex: 1; min-width: 0; }
-
-        .setting-row-title {
-            font-weight: 600;
-            color: var(--text-primary);
-            font-size: 0.95rem;
-        }
-
-        .setting-row-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 2px;
-        }
-
-        .setting-row-left {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            flex: 1;
-            min-width: 0;
-        }
-
-        .setting-row-icon {
-            font-size: 22px;
-            flex-shrink: 0;
-        }
-
-        /* ── Danger Zone ──────────────────────────────── */
-        .settings-card--danger {
-            border: 2px solid #fecaca;
-        }
-
-        .settings-card--danger .settings-card-header i {
-            color: #dc2626;
-        }
-
-        .settings-card--danger .settings-card-header h3 {
-            color: #dc2626;
-        }
-
-        .danger-zone-content {
-            padding: 20px;
-            background: #fef2f2;
-            border-radius: 12px;
-            border: 1px solid #fecaca;
-        }
-
-        [data-theme="dark"] .danger-zone-content {
-            background: rgba(220, 38, 38, 0.1);
-            border-color: rgba(220, 38, 38, 0.3);
-        }
-
-        .danger-zone-content p,
-        .danger-zone-content li {
-            color: #7f1d1d;
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        [data-theme="dark"] .danger-zone-content p,
-        [data-theme="dark"] .danger-zone-content li {
-            color: #fecaca;
-        }
-
-        .danger-zone-warning {
-            padding: 12px;
-            background: #fee2e2;
-            border-radius: 8px;
-            margin-bottom: 16px;
-        }
-
-        [data-theme="dark"] .danger-zone-warning {
-            background: rgba(220, 38, 38, 0.15);
-        }
-
-        .danger-zone-warning p {
-            font-size: 0.85rem;
-            color: #991b1b;
-            margin: 0;
-        }
-
-        [data-theme="dark"] .danger-zone-warning p {
-            color: #fca5a5;
-        }
-
-        .btn-danger {
-            background: #dc2626;
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .btn-danger:hover {
-            background: #b91c1c;
-            transform: translateY(-1px);
-        }
-
-        .btn-danger:disabled {
-            background: #fca5a5;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* ── Icon Picker Modal ───────────────────────── */
-        .icon-picker-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .icon-picker-modal {
-            background: var(--surface-color, #fff);
-            border-radius: 16px;
-            padding: 24px;
-            max-width: 480px;
-            width: 90%;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
-        }
-
-        [data-theme="dark"] .icon-picker-modal {
-            background: var(--card-bg, #1f2937);
-        }
-
-        .icon-picker-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 16px;
-        }
-
-        .icon-picker-header h4 {
-            margin: 0;
-            font-family: 'Outfit', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .icon-picker-close {
-            background: none; border: none;
-            font-size: 20px; cursor: pointer;
-            color: var(--text-secondary); padding: 4px 8px;
-        }
-
-        .icon-picker-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 12px;
-        }
-
-        .icon-picker-option {
-            aspect-ratio: 1;
-            border-radius: 12px;
-            border: 3px solid transparent;
-            background: var(--background-light, #f5f5f5);
-            cursor: pointer;
-            padding: 8px;
-            transition: all 0.2s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .icon-picker-option:hover {
-            border-color: var(--primary-color, #2E86AB);
-            transform: scale(1.05);
-        }
-
-        .icon-picker-option.selected {
-            border-color: var(--accent-color, #F18F01);
-            background: rgba(241, 143, 1, 0.1);
-        }
-
-        .icon-picker-option img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 50%;
-        }
-
-        .icon-picker-divider {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin: 20px 0 16px;
-        }
-
-        .icon-picker-divider::before,
-        .icon-picker-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: var(--border-color, #e5e7eb);
-        }
-
-        .icon-picker-divider span {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 500;
-        }
-
-        .icon-picker-upload-btn {
-            width: 100%;
-            padding: 14px;
-            border: 2px dashed var(--border-color, #d1d5db);
-            border-radius: 12px;
-            background: var(--background-light, #f9fafb);
-            color: var(--text-primary);
-            font-size: 0.95rem;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: all 0.2s ease;
-        }
-
-        .icon-picker-upload-btn:hover {
-            border-color: var(--primary-color, #2E86AB);
-            background: rgba(46, 134, 171, 0.06);
-            color: var(--primary-color, #2E86AB);
-        }
-
-        [data-theme="dark"] .icon-picker-upload-btn {
-            background: rgba(255, 255, 255, 0.04);
-            border-color: var(--border-color, #374151);
-        }
-
-        [data-theme="dark"] .icon-picker-upload-btn:hover {
-            background: rgba(46, 134, 171, 0.12);
-            border-color: var(--primary-color, #2E86AB);
-        }
-
-        /* ══════════════════════════════════════════════
-           MEMBERSHIP SECTION
-           ══════════════════════════════════════════════ */
-        .membership-loading { text-align: center; padding: 32px; color: var(--text-secondary); font-size: 0.95rem; }
-        .membership-loading i { margin-right: 6px; }
-
-        .membership-empty { text-align: center; padding: 32px 16px; }
-        .membership-empty-icon { width: 64px; height: 64px; margin: 0 auto 16px; border-radius: 50%; background: var(--background-light); display: flex; align-items: center; justify-content: center; }
-        .membership-empty-icon i { font-size: 24px; color: var(--text-secondary); }
-        .membership-empty h4 { font-family: 'Outfit', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text-primary); margin: 0 0 8px; }
-        .membership-empty p { font-size: 0.9rem; color: var(--text-secondary); max-width: 360px; margin: 0 auto 20px; line-height: 1.5; }
-
-        .membership-plan-row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
-        .membership-plan-name { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
-        .membership-plan-name span:first-child { font-family: 'Outfit', sans-serif; font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
-
-        .sub-status-badge { display: inline-flex; align-items: center; gap: 4px; padding: 3px 10px; border-radius: 10px; font-size: 0.72rem; font-weight: 600; }
-        .sub-status-badge.active { background: rgba(34,197,94,0.1); color: #16a34a; }
-        .sub-status-badge.cancelling { background: rgba(245,158,11,0.1); color: #d97706; }
-        .sub-status-badge.expired { background: rgba(239,68,68,0.1); color: #dc2626; }
-        [data-theme="dark"] .sub-status-badge.active { background: rgba(34,197,94,0.15); color: #4ade80; }
-        [data-theme="dark"] .sub-status-badge.cancelling { background: rgba(245,158,11,0.15); color: #fbbf24; }
-        [data-theme="dark"] .sub-status-badge.expired { background: rgba(239,68,68,0.15); color: #f87171; }
-
-        .membership-plan-tier { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-        .membership-plan-tier.standard { background: linear-gradient(135deg, rgba(46,134,171,0.1), rgba(46,134,171,0.05)); color: #2E86AB; }
-        .membership-plan-tier.ai-powered { background: linear-gradient(135deg, rgba(124,58,237,0.1), rgba(124,58,237,0.05)); color: #7c3aed; }
-        [data-theme="dark"] .membership-plan-tier.standard { background: rgba(46,134,171,0.15); color: #38bdf8; }
-        [data-theme="dark"] .membership-plan-tier.ai-powered { background: rgba(124,58,237,0.15); color: #a78bfa; }
-
-        .membership-details { background: var(--background-light); border-radius: 12px; padding: 4px 16px; margin-bottom: 16px; }
-        .membership-detail-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-color); }
-        .membership-detail-row:last-child { border-bottom: none; }
-        .membership-detail-label { color: var(--text-secondary); font-size: 0.9rem; }
-        .membership-detail-value { font-weight: 600; color: var(--text-primary); font-size: 0.9rem; }
-
-        .membership-upgrade-box { background: linear-gradient(135deg, rgba(124,58,237,0.06) 0%, rgba(124,58,237,0.02) 100%); border: 1px solid rgba(124,58,237,0.2); border-radius: 12px; padding: 16px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-        [data-theme="dark"] .membership-upgrade-box { background: linear-gradient(135deg, rgba(124,58,237,0.1) 0%, rgba(124,58,237,0.05) 100%); border-color: rgba(124,58,237,0.3); }
-        .membership-upgrade-text { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
-        .membership-upgrade-text > i { font-size: 1.3rem; color: #7c3aed; flex-shrink: 0; }
-        .membership-upgrade-text strong { display: block; color: var(--text-primary); font-size: 0.95rem; }
-        .membership-upgrade-text span { font-size: 0.85rem; color: var(--text-secondary); }
-
-        .membership-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-        .btn-small.secondary { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); background: var(--background-light); border: 1px solid var(--border-color); border-radius: 8px; text-decoration: none; cursor: pointer; transition: all 0.2s; }
-        .btn-small.secondary:hover { background: var(--border-color); color: var(--text-primary); text-decoration: none; }
-        .btn-small.danger-outline { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600; color: #dc2626; background: transparent; border: 1px solid rgba(220,38,38,0.3); border-radius: 8px; cursor: pointer; transition: all 0.2s; }
-        .btn-small.danger-outline:hover { background: rgba(220,38,38,0.08); border-color: #dc2626; }
-        [data-theme="dark"] .btn-small.danger-outline { color: #f87171; border-color: rgba(248,113,113,0.3); }
-        [data-theme="dark"] .btn-small.danger-outline:hover { background: rgba(248,113,113,0.1); border-color: #f87171; }
-
-        /* Change Plan Modal */
-        .plan-option { display: flex; align-items: center; gap: 14px; padding: 14px 16px; border-radius: 12px; border: 2px solid var(--border-color); background: var(--background-light); cursor: pointer; transition: all 0.2s; }
-        .plan-option:hover { border-color: var(--primary-color); background: rgba(46,134,171,0.04); }
-        .plan-option.selected { border-color: var(--primary-color); background: rgba(46,134,171,0.08); }
-        .plan-option.current-plan { opacity: 0.5; cursor: default; border-style: dashed; }
-        .plan-option-radio { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border-color); flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: all 0.2s; }
-        .plan-option.selected .plan-option-radio { border-color: var(--primary-color); background: var(--primary-color); }
-        .plan-option.selected .plan-option-radio::after { content: ''; width: 8px; height: 8px; border-radius: 50%; background: white; }
-        .plan-option-info { flex: 1; min-width: 0; }
-        .plan-option-name { font-weight: 700; color: var(--text-primary); font-size: 0.95rem; }
-        .plan-option-desc { font-size: 0.82rem; color: var(--text-secondary); margin-top: 2px; }
-        .plan-option-price { font-weight: 700; color: var(--primary-color); font-size: 1rem; white-space: nowrap; }
-        .plan-option-badge { font-size: 0.7rem; font-weight: 600; padding: 2px 8px; border-radius: 10px; background: rgba(46,134,171,0.1); color: var(--primary-color); margin-left: 8px; }
-        .plan-option.current-plan .plan-option-badge { background: rgba(107,114,128,0.1); color: var(--text-secondary); }
-
-        /* AI Credits */
-        .membership-credit-group { display: flex; flex-direction: column; gap: 16px; }
-        .membership-credit-item { background: var(--background-light); border-radius: 12px; padding: 14px 16px; }
-        .membership-credit-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
-        .membership-credit-label { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); display: flex; align-items: center; gap: 6px; }
-        .membership-credit-label i { color: var(--primary-color); font-size: 0.85rem; }
-        .membership-credit-count { font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); }
-
-        .membership-progress-bar { height: 8px; background: var(--border-color); border-radius: 4px; overflow: hidden; }
-        .membership-progress-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #2E86AB, #A23B72); transition: width 0.5s ease; }
-        .membership-progress-fill.low { background: linear-gradient(90deg, #f59e0b, #ef4444); }
-        .membership-progress-fill.exhausted { background: #ef4444; }
-
-        .membership-credit-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; font-size: 0.82rem; color: var(--text-secondary); flex-wrap: wrap; gap: 8px; }
-        .membership-credit-footer i { margin-right: 4px; font-size: 0.75rem; }
-        .membership-credit-actions { margin-top: 16px; }
-
-        /* Admin credits toggle */
-        .admin-credits-toggle { margin-left: auto; padding: 4px 10px; font-size: 0.72rem; font-weight: 600; border: 1px solid var(--border-color); border-radius: 8px; background: var(--background-light); color: var(--text-secondary); cursor: pointer; display: inline-flex; align-items: center; gap: 5px; transition: all 0.15s ease; }
-        .admin-credits-toggle:hover { background: var(--primary-color); color: white; border-color: var(--primary-color); }
-        .admin-credits-toggle i { font-size: 0.68rem; }
-
-        /* Billing History */
-        .billing-row { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: var(--background-light); border-radius: 12px; margin-bottom: 8px; }
-        .billing-row:last-child { margin-bottom: 0; }
-        .billing-row-left { display: flex; flex-direction: column; gap: 2px; }
-        .billing-row-desc { font-weight: 600; font-size: 0.92rem; color: var(--text-primary); }
-        .billing-row-date { font-size: 0.82rem; color: var(--text-secondary); }
-        .billing-row-right { display: flex; align-items: center; gap: 12px; }
-        .billing-row-amount { font-weight: 700; font-size: 0.95rem; color: var(--text-primary); }
-        .billing-receipt-link { font-size: 0.82rem; color: var(--primary-color); text-decoration: none; font-weight: 500; }
-        .billing-receipt-link:hover { text-decoration: underline; }
-        .billing-row-refunded { font-size: 0.75rem; color: #ef4444; font-weight: 600; }
-
-        /* ── Responsive ───────────────────────────────── */
-        @media (max-width: 768px) {
-            .settings-card { padding: 24px 20px; }
-            .settings-profile-avatar-area { margin: -24px -20px 0; padding: 28px 20px 20px; }
-            .membership-upgrade-box { flex-direction: column; align-items: flex-start; }
-        }
-
-        @media (max-width: 480px) {
-            .settings-avatar-wrapper { width: 100px; height: 100px; }
-            .settings-hero-name { font-size: 1.25rem; }
-            .settings-card { padding: 20px 16px; }
-            .settings-profile-avatar-area { margin: -20px -16px 0; padding: 24px 16px 18px; border-radius: 14px 14px 0 0; }
-            .settings-profile-actions { flex-direction: column; }
-            .settings-profile-actions .settings-edit-btn { width: 100%; justify-content: center; }
-            .setting-row { flex-direction: column; align-items: flex-start; gap: 12px; }
-            .icon-picker-grid { grid-template-columns: repeat(3, 1fr); }
-            .membership-plan-row { flex-direction: column; align-items: flex-start; }
-            .billing-row { flex-direction: column; align-items: flex-start; gap: 8px; }
-            .billing-row-right { width: 100%; justify-content: space-between; }
-            .membership-actions { flex-direction: column; }
-            .membership-actions .btn-primary, .membership-actions .btn-small { width: 100%; justify-content: center; text-align: center; }
-        }
-
-        /* ══════════════════════════════════════════════
-           CROP MODAL (Cropper.js)
-           ══════════════════════════════════════════════ */
-        .crop-modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .crop-modal {
-            background: var(--surface-color, #fff);
-            border-radius: 16px;
-            max-width: 520px;
-            width: 92%;
-            max-height: 90vh;
-            overflow: hidden;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
-            display: flex;
-            flex-direction: column;
-        }
-
-        [data-theme="dark"] .crop-modal {
-            background: var(--card-bg, #1f2937);
-        }
-
-        .crop-modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 24px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .crop-modal-header h4 {
-            margin: 0;
-            font-family: 'Outfit', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        .crop-container {
-            position: relative;
-            width: 100%;
-            height: 360px;
-            background: #1a1a1a;
-            overflow: hidden;
-        }
-
-        .crop-container img {
-            display: block;
-            max-width: 100%;
-        }
-
-        .crop-modal-footer {
-            display: flex;
-            justify-content: flex-end;
-            gap: 10px;
-            padding: 16px 24px;
-            border-top: 1px solid var(--border-color);
-        }
-
-        /* Circular crop mask — override Cropper.js defaults */
-        .cropper-view-box,
-        .cropper-face {
-            border-radius: 50%;
-        }
-
-        .cropper-view-box {
-            outline: 2px solid rgba(255, 255, 255, 0.8);
-            outline-offset: -1px;
-        }
-
-        .cropper-face {
-            background: transparent;
-        }
-
-        .cropper-dashed {
-            display: none;
-        }
-
-        @media (max-width: 480px) {
-            .crop-container { height: 280px; }
-            .crop-modal-footer { padding: 12px 16px; }
-        }
-
-        /* ══════════════════════════════════════════════
-           DELETE / CANCEL / CHANGE-PLAN MODAL OVERLAY
-           ══════════════════════════════════════════════ */
-        .delete-modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 9999;
-            display: none;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .delete-modal-content {
-            background: var(--card-bg, white);
-            border-radius: 16px;
-            max-width: 480px;
-            width: 90%;
-            padding: 32px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        [data-theme="dark"] .delete-modal-content {
-            background: var(--card-bg);
-        }
-
-        .delete-modal-header {
-            text-align: center;
-            margin-bottom: 24px;
-        }
-
-        .delete-modal-icon {
-            width: 64px;
-            height: 64px;
-            background: var(--danger-bg);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-        }
-
-        .delete-modal-icon i {
-            font-size: 28px;
-            color: var(--danger-color);
-        }
-
-        .delete-modal-header h3 {
-            color: var(--text-primary);
-            margin-bottom: 8px;
-        }
-
-        .delete-modal-header p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-        }
-
-        .delete-modal-warning {
-            color: #7f1d1d;
-            font-size: 0.9rem;
-            background: var(--danger-bg);
-            padding: 12px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-
-        [data-theme="dark"] .delete-modal-warning {
-            color: #fecaca;
-        }
-
-        .delete-modal-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .delete-modal-btn-cancel {
-            flex: 1;
-            padding: 12px;
-            background: #f3f4f6;
-            color: #374151;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-        }
-
-        [data-theme="dark"] .delete-modal-btn-cancel {
-            background: var(--background-light);
-            color: var(--text-primary);
-        }
-
-        .delete-modal-btn-confirm {
-            flex: 1;
-            padding: 12px;
-            background: var(--danger-color);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            text-align: center;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-        }
-
-        .delete-modal-btn-confirm:disabled {
-            background: #fca5a5;
-            cursor: not-allowed;
-        }
-
-        [data-theme="dark"] .delete-modal-btn-confirm:disabled {
-            background: rgba(220, 38, 38, 0.4);
-        }
-
-        .delete-modal-step-text {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-        }
-
-        .delete-modal-step-text-sm {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin-bottom: 20px;
-        }
-
-        .delete-modal-step-text-sm strong {
-            color: var(--danger-color);
-        }
-
-        .delete-modal-form-group {
-            margin-bottom: 16px;
-        }
-
-        .delete-modal-form-group-last {
-            margin-bottom: 20px;
-        }
-
-        .delete-modal-input-full {
-            width: 100%;
-        }
-
-        .delete-modal-error {
-            color: var(--danger-color);
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-            padding: 8px;
-            background: var(--danger-bg);
-            border-radius: 6px;
-        }
-
-        /* ── Plan option cards (Change Plan modal) ─── */
-        .plan-option {
-            border: 2px solid var(--border-color);
-            border-radius: 12px;
-            padding: 16px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            background: var(--surface-color, #f8f9fa);
-        }
-
-        .plan-option:hover {
-            border-color: var(--primary-color);
-            background: rgba(46, 134, 171, 0.04);
-        }
-
-        .plan-option.selected {
-            border-color: var(--primary-color);
-            background: rgba(46, 134, 171, 0.08);
-            box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
-        }
-
-        .plan-option.current-plan {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        .plan-option-name {
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 4px;
-        }
-
-        .plan-option-price {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        .plan-option-current {
-            font-size: 0.8rem;
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-
-        /* ══════════════════════════════════════════════
-           COMPACT SUMMARY CARDS (Profile & Password)
-           ══════════════════════════════════════════════ */
-        .settings-compact-card {
-            padding-bottom: 20px;
-        }
-        .settings-summary-rows {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            margin-top: 12px;
-        }
-        .settings-summary-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color, rgba(0,0,0,.06));
-        }
-        .settings-summary-row:last-child {
-            border-bottom: none;
-        }
-        .settings-summary-label {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: var(--text-secondary, #64748b);
-            flex-shrink: 0;
-            min-width: 80px;
-        }
-        .settings-summary-value {
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: var(--text-primary, #0f172a);
-            text-align: right;
-        }
-        .settings-edit-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            margin-top: 16px;
-            padding: 8px 20px;
-            border-radius: 8px;
-            font-family: 'Source Sans 3', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--primary-color, #2E86AB);
-            background: transparent;
-            border: 1.5px solid var(--primary-color, #2E86AB);
-            cursor: pointer;
-            transition: all 0.15s ease;
-        }
-        .settings-edit-btn:hover {
-            background: var(--primary-color, #2E86AB);
-            color: #fff;
-        }
-        .settings-modal-close {
-            position: absolute;
-            top: 12px;
-            right: 16px;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-secondary, #64748b);
-            cursor: pointer;
-            padding: 4px 8px;
-            line-height: 1;
-            border-radius: 6px;
-            transition: all 0.15s ease;
-        }
-        .settings-modal-close:hover {
-            background: var(--hover-bg, rgba(0,0,0,.05));
-            color: var(--text-primary, #0f172a);
-        }
-        .delete-modal-content {
-            position: relative;
-        }
-
-        @media (max-width: 480px) {
-            .settings-summary-row {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 2px;
-            }
-            .settings-summary-value {
-                text-align: left;
-            }
-            .settings-edit-btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
-    </style>
     <!-- Lockscreen (must run immediately) -->
     <script src="lockscreen.js"></script>
     <script src="beta-banner.js"></script>
@@ -1069,7 +49,9 @@
     <script defer src="sentry-init.js"></script>
 </head>
 <body>
-    <!-- Page Loader -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <noscript><style>.page-loader{display:none!important}</style></noscript>
     <div class="page-loader" id="page-loader">
         <div class="loader-spinner"></div>
     </div>
@@ -1079,7 +61,7 @@
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="index.html">
-                    <img src="assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective Logo" class="nav-logo">
+                    <img src="assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective Logo" class="nav-logo">
                 </a>
             </div>
             <div class="nav-links">
@@ -1087,14 +69,37 @@
                 <a href="resources.html">Resources</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about.html">About</a>
-                <div class="user-menu">
-                    <button class="user-avatar" id="user-menu-btn">
-                        <i class="fas fa-user-circle"></i>
+                <div class="user-menu" id="user-menu">
+                    <button class="user-avatar" id="user-menu-btn" title="Account menu">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-                        <a href="settings.html" class="active"><i class="fas fa-cog"></i> Settings</a>
-                        <a href="#logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                <span>Welcome!</span>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
+                        </div>
+                        <div class="dropdown-user-content hidden" id="dropdown-user-content">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help &amp; Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1104,20 +109,39 @@
         </div>
     </nav>
 
-    <!-- Breadcrumbs -->
-    <div class="breadcrumbs settings-breadcrumbs">
-        <div class="container">
-            <a href="index.html">Home</a>
-            <span class="separator">/</span>
-            <a href="dashboard.html">Dashboard</a>
-            <span class="separator">/</span>
-            <span class="current">Settings</span>
-        </div>
-    </div>
+    <main id="main-content">
+    <div class="dash-layout">
+        <div class="dash-sidebar-overlay" id="dash-sidebar-overlay"></div>
+        <aside class="dash-sidebar" id="dash-sidebar">
+            <div class="dash-sidebar-inner">
+                <div class="dash-sidebar-section">
+                    <a href="dashboard.html" class="dash-sidebar-item">
+                        <i class="fas fa-th-large"></i> Dashboard
+                    </a>
+                    <a href="my-guides.html" class="dash-sidebar-item">
+                        <i class="fas fa-book-open"></i> Study Guides
+                    </a>
+                    <a href="my-resources.html" class="dash-sidebar-item">
+                        <i class="fas fa-book-reader"></i> Resources
+                    </a>
+                    <a href="ai-tools.html" class="dash-sidebar-item">
+                        <i class="fas fa-wand-magic-sparkles"></i> AI Tools
+                    </a>
+                </div>
+                <div class="dash-sidebar-section">
+                    <a href="community.html" class="dash-sidebar-item">
+                        <i class="fab fa-discord"></i> Community
+                    </a>
+                    <a href="settings.html" class="dash-sidebar-item active">
+                        <i class="fas fa-cog"></i> Settings
+                    </a>
+                </div>
+            </div>
+        </aside>
 
-    <!-- Settings Section -->
-    <section class="dashboard settings-section">
-        <div class="container settings-container">
+        <div class="dash-main">
+        <section class="settings-section">
+        <div class="settings-container">
 
             <!-- ═══ Profile & Account Card (unified) ═══ -->
             <div class="settings-card settings-profile-card">
@@ -1464,60 +488,11 @@
 
         </div>
     </section>
+        </div> <!-- end .dash-main -->
+    </div> <!-- end .dash-layout -->
+    </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <span>The Nursing Collective</span>
-                    </div>
-                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
-                    </p>
-                    <div class="social-links">
-                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
-                            <i class="fab fa-discord"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
-                <p class="footer-attribution">
-                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
-                </p>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer removed — workspace page -->
     <!-- Dark Mode Manager (sync - prevents flash) -->
     <script src="dark-mode.js"></script>
     <!-- API Service Layer (sync - needed by other scripts) -->

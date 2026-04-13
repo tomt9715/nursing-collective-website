@@ -380,7 +380,7 @@ async function loadFullDashboard(user) {
         await Promise.all(dataPromises);
 
         // All data is now in localStorage — render widgets
-        loadAnnouncementBanner();
+        // loadAnnouncementBanner(); // Disabled — banner was not useful
         if (typeof loadStudyPlan === 'function') loadStudyPlan();
         if (typeof loadExamCountdown === 'function') loadExamCountdown();
         loadRecentGuides();

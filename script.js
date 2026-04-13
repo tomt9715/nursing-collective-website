@@ -36,6 +36,15 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Update nav based on auth state
     updateNavAuthState();
 
+    // Show Quiz Bank sidebar link for premium users (works on all pages with the sidebar)
+    try {
+        var storedUser = JSON.parse(localStorage.getItem('user'));
+        if (storedUser && storedUser.is_premium) {
+            var quizLink = document.getElementById('sidebar-quiz-link');
+            if (quizLink) quizLink.style.display = '';
+        }
+    } catch (e) { /* ignore */ }
+
     // For logged-in users, rewrite index.html links to include ?home=true
     // so clicking the logo or "Home" links shows the homepage instead of
     // redirecting back to dashboard via home-redirect.js

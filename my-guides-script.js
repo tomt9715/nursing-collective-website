@@ -309,7 +309,7 @@
         // Upgrade CTA for non-subscribers
         if (!_hasAccess) {
             html += '<div class="guide-upgrade-cta">';
-            html += '<p>Get access to all ' + totalAvailable + ' study guides with a subscription.</p>';
+            html += '<p>Get access to all study guides with a subscription.</p>';
             html += '<a href="pricing.html" class="guide-upgrade-btn"><i class="fas fa-unlock"></i> View Plans</a>';
             html += '</div>';
         }

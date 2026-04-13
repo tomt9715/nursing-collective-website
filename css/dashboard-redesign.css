@@ -1077,6 +1077,7 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 18px;
+  align-items: start;
 }
 
 /* Shared widget card style */

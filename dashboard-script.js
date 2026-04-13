@@ -610,9 +610,6 @@ async function loadRecentGuides() {
                 <div class="recent-guides-empty">
                     <i class="fas fa-book-open"></i>
                     <p>As you study, your recent guides will appear here for quick access.</p>
-                    <button class="btn btn-primary btn-sm" data-navigate="my-guides.html">
-                        Browse Guides
-                    </button>
                 </div>
             `;
             container.querySelectorAll('[data-navigate]').forEach(btn => {

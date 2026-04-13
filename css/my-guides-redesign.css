@@ -445,6 +445,53 @@ img { max-width: 100%; display: block; }
   color: var(--teal);
 }
 
+/* ── Locked class cards (no subscription) ── */
+.class-card.class-card-locked {
+  cursor: default;
+  opacity: 0.7;
+}
+
+.class-card.class-card-locked:hover {
+  border-color: var(--border);
+}
+
+/* ── Upgrade CTA below locked grid ── */
+.guide-upgrade-cta {
+  margin-top: 28px;
+  padding: 24px 28px;
+  background: var(--card);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  text-align: center;
+}
+
+.guide-upgrade-cta p {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin-bottom: 16px;
+}
+
+.guide-upgrade-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  background: var(--teal);
+  color: var(--navy);
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.guide-upgrade-btn:hover {
+  background: var(--teal-dim);
+  color: var(--navy);
+  text-decoration: none;
+}
+
 
 /* ══════════════════════════════════════════════════════════════
    GUIDE LIBRARY — Breadcrumb nav

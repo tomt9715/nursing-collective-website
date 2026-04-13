@@ -276,7 +276,10 @@
         html += '<div class="class-card-grid">';
         CLASS_CATALOG.forEach(function(cls) {
             var counts = cls.guideCounts;
-            html += '<div class="class-card" data-class-id="' + cls.id + '" role="button" tabindex="0">';
+            var isLocked = !_hasAccess;
+
+            html += '<div class="class-card' + (isLocked ? ' class-card-locked' : '') + '"' +
+                     (_hasAccess ? ' data-class-id="' + cls.id + '" role="button" tabindex="0"' : '') + '>';
             html += '<div class="class-card-icon">';
             html += '<img src="' + CATEGORY_ICON_BASE + cls.classIcon + '.webp" alt="" class="class-card-img" loading="lazy">';
             html += '</div>';
@@ -292,10 +295,24 @@
             }
             html += '</div>';
             html += '</div>';
-            html += '<i class="fas fa-chevron-right class-card-arrow"></i>';
+
+            if (isLocked) {
+                html += '<span class="guide-locked-badge"><i class="fas fa-lock"></i> Premium</span>';
+            } else {
+                html += '<i class="fas fa-chevron-right class-card-arrow"></i>';
+            }
+
             html += '</div>';
         });
         html += '</div>';
+
+        // Upgrade CTA for non-subscribers
+        if (!_hasAccess) {
+            html += '<div class="guide-upgrade-cta">';
+            html += '<p>Get access to all ' + totalAvailable + ' study guides with a subscription.</p>';
+            html += '<a href="pricing.html" class="guide-upgrade-btn"><i class="fas fa-unlock"></i> View Plans</a>';
+            html += '</div>';
+        }
 
         container.innerHTML = html;
         animateIn(container);
@@ -454,9 +471,13 @@
 
     function route() {
         var hash = window.location.hash.replace('#', '');
-        if (hash && validIds.indexOf(hash) !== -1) {
+        if (hash && validIds.indexOf(hash) !== -1 && _hasAccess) {
             renderDetail(hash);
         } else {
+            if (hash && !_hasAccess) {
+                // Non-subscriber tried to navigate via hash — clear it
+                history.replaceState(null, '', window.location.pathname);
+            }
             renderLanding();
         }
         window.scrollTo(0, 0);

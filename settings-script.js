@@ -1859,3 +1859,34 @@ function membershipEscapeHtml(text) {
     div.textContent = text;
     return div.innerHTML;
 }
+
+// ==================== Tab Navigation ====================
+
+(function initSettingsTabs() {
+    var tabs = document.querySelectorAll('.settings-tab');
+    var panels = document.querySelectorAll('.settings-tab-panel');
+    if (!tabs.length || !panels.length) return;
+
+    function switchTab(tabName) {
+        tabs.forEach(function(t) {
+            t.classList.toggle('active', t.getAttribute('data-tab') === tabName);
+        });
+        panels.forEach(function(p) {
+            p.classList.toggle('active', p.getAttribute('data-tab-panel') === tabName);
+        });
+        // Update URL hash without scrolling
+        history.replaceState(null, '', '#' + tabName);
+    }
+
+    tabs.forEach(function(tab) {
+        tab.addEventListener('click', function() {
+            switchTab(this.getAttribute('data-tab'));
+        });
+    });
+
+    // Check URL hash on load
+    var hash = window.location.hash.replace('#', '');
+    if (hash && document.querySelector('[data-tab-panel="' + hash + '"]')) {
+        switchTab(hash);
+    }
+})();

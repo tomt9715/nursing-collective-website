@@ -130,6 +130,49 @@ img { max-width: 100%; display: block; }
   padding-top: 0;
 }
 
+/* ── Settings Tabs ── */
+.settings-tabs {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 28px;
+  border-bottom: 0.5px solid var(--border);
+  padding-bottom: 0;
+}
+
+.settings-tab {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: var(--text-dimmer);
+  background: none;
+  border: none;
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.settings-tab:hover { color: var(--text-dim); }
+
+.settings-tab.active {
+  color: var(--teal);
+  border-bottom-color: var(--teal);
+}
+
+.settings-tab i { font-size: 12px; }
+
+/* Tab panels — hidden by default, shown when active */
+.settings-tab-panel { display: none; }
+.settings-tab-panel.active { display: block; }
+
+/* Hide old section labels (replaced by tabs) */
+.settings-section-label { display: none; }
+.settings-danger-label { display: none; }
+
 
 /* ── Form Inputs ──────────────────────────────── */
 .form-control,
@@ -454,9 +497,42 @@ input::placeholder {
 
 .danger-zone-content p,
 .danger-zone-content li {
-  color: #fecaca;
-  font-size: 0.9rem;
+  color: var(--text-dim);
+  font-size: 13px;
   line-height: 1.6;
+}
+
+.danger-zone-title {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.danger-zone-desc {
+  margin-bottom: 12px;
+}
+
+.danger-zone-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.danger-zone-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding-left: 4px;
+}
+
+.danger-zone-list li::before {
+  content: '\2022';
+  color: var(--red);
+  font-weight: bold;
+  flex-shrink: 0;
 }
 
 .danger-zone-warning {
@@ -639,33 +715,33 @@ input::placeholder {
 
 .membership-empty {
   text-align: center;
-  padding: 32px 16px;
+  padding: 20px 16px;
 }
 .membership-empty-icon {
-  width: 64px; height: 64px;
-  margin: 0 auto 16px;
-  border-radius: 50%;
+  width: 40px; height: 40px;
+  margin: 0 auto 12px;
+  border-radius: 10px;
   background: var(--navy-3);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .membership-empty-icon i {
-  font-size: 24px;
-  color: var(--text-dim);
+  font-size: 16px;
+  color: var(--text-dimmer);
 }
 .membership-empty h4 {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 600;
   color: var(--text);
-  margin: 0 0 8px;
+  margin: 0 0 6px;
 }
 .membership-empty p {
-  font-size: 0.9rem;
+  font-size: 13px;
   color: var(--text-dim);
   max-width: 360px;
-  margin: 0 auto 20px;
+  margin: 0 auto 14px;
   line-height: 1.5;
 }
 

@@ -140,7 +140,16 @@
         <section class="settings-section">
         <div class="settings-container">
 
-            <!-- ═══ Profile & Account Card (unified) ═══ -->
+            <!-- Tab Navigation -->
+            <div class="settings-tabs">
+                <button class="settings-tab active" data-tab="profile"><i class="fas fa-user"></i> Profile</button>
+                <button class="settings-tab" data-tab="billing"><i class="fas fa-crown"></i> Plan & Billing</button>
+                <button class="settings-tab" data-tab="preferences"><i class="fas fa-sliders-h"></i> Preferences</button>
+                <button class="settings-tab" data-tab="account"><i class="fas fa-shield-alt"></i> Account</button>
+            </div>
+
+            <!-- ═══ Tab: Profile ═══ -->
+            <div class="settings-tab-panel active" data-tab-panel="profile">
             <div class="settings-card settings-profile-card">
                 <!-- Avatar area -->
                 <div class="settings-profile-avatar-area">
@@ -231,8 +240,10 @@
                 </div>
             </div>
 
-            <!-- ═══ Membership Section ═══ -->
-            <div class="settings-section-label settings-section-gap">Membership</div>
+            </div> <!-- end tab: profile -->
+
+            <!-- ═══ Tab: Plan & Billing ═══ -->
+            <div class="settings-tab-panel" data-tab-panel="billing">
 
             <!-- Current Plan Card -->
             <div class="settings-card" id="membership-plan-card">
@@ -371,8 +382,10 @@
                 <div id="billing-list" class="hidden"></div>
             </div>
 
-            <!-- ═══ Preferences Section ═══ -->
-            <div class="settings-section-label settings-section-gap">Preferences</div>
+            </div> <!-- end tab: billing -->
+
+            <!-- ═══ Tab: Preferences ═══ -->
+            <div class="settings-tab-panel" data-tab-panel="preferences">
 
             <!-- Notification Preferences Card -->
             <div class="settings-card">
@@ -449,8 +462,10 @@
                 </div>
             </div>
 
-            <!-- ═══ Danger Zone ═══ -->
-            <div class="settings-section-label settings-danger-label">Danger Zone</div>
+            </div> <!-- end tab: preferences -->
+
+            <!-- ═══ Tab: Account ═══ -->
+            <div class="settings-tab-panel" data-tab-panel="account">
 
             <!-- Delete Account Card -->
             <div class="settings-card settings-card--danger">
@@ -482,6 +497,8 @@
                     </button>
                 </div>
             </div>
+
+            </div> <!-- end tab: account -->
 
         </div>
     </section>

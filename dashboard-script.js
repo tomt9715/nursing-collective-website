@@ -1045,54 +1045,59 @@ function updateStatsRow() {
 // ==================== Email Verification Banner ====================
 
 function updateEmailVerificationBanner(user) {
-    const banner = document.getElementById('email-verification-banner');
-    const resendBtn = document.getElementById('resend-verification-btn');
-    if (!banner) return;
+    // Hide the old main-content banner permanently
+    var oldBanner = document.getElementById('email-verification-banner');
+    if (oldBanner) oldBanner.classList.add('hidden');
+
+    // Show subtle sidebar nudge instead
+    var nudge = document.getElementById('sidebar-verify-nudge');
+    var resendBtn = document.getElementById('sidebar-resend-btn');
+    if (!nudge) return;
 
     // Check multiple signals: backend verified flag, OAuth via localStorage, or Discord-connected
-    const authMethod = localStorage.getItem('lastAuthMethod');
-    const isOAuthUser = authMethod === 'google' || authMethod === 'discord';
-    const hasDiscord = user.has_discord === true;
+    var authMethod = localStorage.getItem('lastAuthMethod');
+    var isOAuthUser = authMethod === 'google' || authMethod === 'discord';
+    var hasDiscord = user.has_discord === true;
 
-    // If verified, OAuth user, or Discord-connected — hide the banner
+    // If verified, OAuth user, or Discord-connected — hide
     if (user.is_verified || isOAuthUser || hasDiscord) {
-        banner.classList.add('hidden');
+        nudge.classList.add('hidden');
         return;
     }
 
-    // Only show for genuinely unverified email-only users
+    // Show for genuinely unverified email-only users
     if (!user.is_verified) {
-        banner.classList.remove('hidden');
+        nudge.classList.remove('hidden');
 
         if (resendBtn) {
             resendBtn.onclick = async function() {
                 resendBtn.disabled = true;
-                resendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                resendBtn.textContent = 'Sending...';
 
                 try {
                     await apiCall('/auth/resend-verification', {
                         method: 'POST',
                         body: JSON.stringify({ email: user.email })
                     });
-                    resendBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verification Sent!';
-                    resendBtn.style.background = '#10b981';
-                    resendBtn.style.color = 'white';
-                    setTimeout(() => {
+                    resendBtn.textContent = 'Sent!';
+                    resendBtn.style.borderColor = 'var(--green)';
+                    resendBtn.style.color = 'var(--green)';
+                    setTimeout(function() {
                         resendBtn.disabled = false;
-                        resendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Resend Email';
-                        resendBtn.style.background = 'white';
-                        resendBtn.style.color = '#d97706';
+                        resendBtn.textContent = 'Resend';
+                        resendBtn.style.borderColor = '';
+                        resendBtn.style.color = '';
                     }, 3000);
                 } catch (error) {
                     console.error('Error resending verification:', error);
-                    resendBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to Send';
-                    resendBtn.style.background = '#ef4444';
-                    resendBtn.style.color = 'white';
-                    setTimeout(() => {
+                    resendBtn.textContent = 'Failed';
+                    resendBtn.style.borderColor = 'var(--red)';
+                    resendBtn.style.color = 'var(--red)';
+                    setTimeout(function() {
                         resendBtn.disabled = false;
-                        resendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Resend Email';
-                        resendBtn.style.background = 'white';
-                        resendBtn.style.color = '#d97706';
+                        resendBtn.textContent = 'Resend';
+                        resendBtn.style.borderColor = '';
+                        resendBtn.style.color = '';
                     }, 3000);
                 }
             };

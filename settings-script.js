@@ -433,6 +433,15 @@ function setupPasswordModal() {
     const modalId = 'change-password-modal';
     if (!btn) return;
 
+    // Hide password button for OAuth users (they never set a password)
+    var authMethod = localStorage.getItem('lastAuthMethod');
+    if (authMethod === 'google' || authMethod === 'discord') {
+        btn.style.display = 'none';
+        // Also hide the password row in profile summary
+        var passwordRow = document.getElementById('password-summary-row');
+        if (passwordRow) passwordRow.style.display = 'none';
+    }
+
     btn.addEventListener('click', function () {
         // Reset form + indicators each time modal opens
         const form = document.getElementById('password-form');

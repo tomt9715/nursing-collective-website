@@ -55,6 +55,13 @@
     <div class="page-loader" id="page-loader">
         <div class="loader-spinner"></div>
     </div>
+    <script>
+    // Safety: always hide loader after 4s max
+    setTimeout(function() {
+        var l = document.getElementById('page-loader');
+        if (l) l.classList.add('hidden');
+    }, 4000);
+    </script>
 
     <!-- Navigation -->
     <nav class="navbar">

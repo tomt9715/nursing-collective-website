@@ -174,15 +174,15 @@ async function loadUserProfile() {
         if (sidebarAdmin && isAdmin) sidebarAdmin.classList.remove('hidden');
 
         if (premiumBadgeEl && user.is_premium && !isAdmin) {
-            premiumBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; padding: 8px 16px; border-radius: 20px; font-weight: 600; margin-left: 12px; font-size: 14px;';
+            premiumBadgeEl.className = 'dash-badge dash-badge-premium';
             premiumBadgeEl.innerHTML = '<i class="fas fa-star"></i> Premium';
         }
 
         // Beta tester badge — shown for ALL users during beta
         const betaBadgeEl = document.getElementById('beta-badge');
         if (betaBadgeEl) {
-            betaBadgeEl.style.cssText = 'display: inline-block; background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%); color: white; padding: 6px 14px; border-radius: 20px; font-weight: 600; margin-left: 8px; font-size: 13px; vertical-align: middle;';
-            betaBadgeEl.innerHTML = '<i class="fas fa-flask"></i> Beta Tester';
+            betaBadgeEl.className = 'dash-badge dash-badge-beta';
+            betaBadgeEl.innerHTML = '<i class="fas fa-flask"></i> Beta';
         }
 
         updateCompactStats(user);
@@ -293,11 +293,80 @@ async function loadUserProfile() {
         return;
     }
 
-    // Load dashboard sections
+    // ── New user onboarding check ──
+    // Show simplified onboarding view for new empty users
     try {
         const user = JSON.parse(localStorage.getItem('user'));
         if (!user) return;
 
+        var guideHistory = {};
+        try { guideHistory = JSON.parse(localStorage.getItem('guideLastStudied')) || {}; } catch(e) {}
+        var hasStudiedGuides = Object.keys(guideHistory).length > 0;
+        var onboardingDismissed = localStorage.getItem('gettingStartedDismissed') === 'true';
+
+        // Check subscription
+        var subStatus = { hasAccess: false };
+        try {
+            if (typeof getSubscriptionStatusCached === 'function') {
+                subStatus = await getSubscriptionStatusCached();
+            }
+        } catch(e) {}
+
+        var isNewEmptyUser = !subStatus.hasAccess && !hasStudiedGuides && !onboardingDismissed;
+
+        var onboardingEl = document.getElementById('dashboard-onboarding');
+        var fullDashEl = document.getElementById('dashboard-full-content');
+
+        if (isNewEmptyUser && onboardingEl && fullDashEl) {
+            // Show onboarding, hide full dashboard
+            onboardingEl.classList.remove('hidden');
+            fullDashEl.classList.add('hidden');
+
+            // Populate name
+            var onboardingName = document.getElementById('onboarding-name');
+            if (onboardingName && user.first_name) {
+                onboardingName.textContent = user.first_name;
+            }
+
+            // Show email verification nudge if needed
+            var authMethod = localStorage.getItem('lastAuthMethod');
+            var isOAuth = authMethod === 'google' || authMethod === 'discord';
+            if (!user.is_verified && !isOAuth) {
+                var verifyNudge = document.getElementById('onboarding-verify-nudge');
+                if (verifyNudge) verifyNudge.classList.remove('hidden');
+            }
+
+            // Wire up skip button
+            var skipBtn = document.getElementById('skip-to-dashboard-btn');
+            if (skipBtn) {
+                skipBtn.addEventListener('click', function() {
+                    localStorage.setItem('gettingStartedDismissed', 'true');
+                    onboardingEl.classList.add('hidden');
+                    fullDashEl.classList.remove('hidden');
+                    // Now load the full dashboard
+                    loadFullDashboard(user);
+                });
+            }
+
+            // Still load sidebar widgets
+            updateDailyGoalWidget();
+            loadSubscriptionManagement();
+            return; // Skip full dashboard loading
+        }
+    } catch(e) {
+        console.error('Onboarding check failed:', e);
+    }
+
+    // Load full dashboard sections
+    loadFullDashboard(JSON.parse(localStorage.getItem('user')));
+}
+
+async function loadFullDashboard(user) {
+    if (!user) return;
+    // Reveal the full dashboard content (hidden by default in CSS to prevent flash)
+    var fullDash = document.getElementById('dashboard-full-content');
+    if (fullDash) fullDash.style.display = 'block';
+    try {
         // Fire all independent data-fetches in parallel instead of sequentially.
         // syncStudyHistory, MasteryTracker.pull, and fetchQuizSessions are
         // all independent API calls — run them at the same time.
@@ -314,7 +383,7 @@ async function loadUserProfile() {
         await Promise.all(dataPromises);
 
         // All data is now in localStorage — render widgets
-        loadAnnouncementBanner();
+        // loadAnnouncementBanner(); // Disabled — banner was not useful
         if (typeof loadStudyPlan === 'function') loadStudyPlan();
         if (typeof loadExamCountdown === 'function') loadExamCountdown();
         loadRecentGuides();
@@ -325,8 +394,66 @@ async function loadUserProfile() {
         initStatFlyouts();
         loadSubscriptionManagement();
 
+        // ── Post-render: upgrade empty widgets into contextual CTAs ──
+        enhanceEmptyStates();
+
     } catch (error) {
         console.error('Error loading dashboard sections:', error);
+    }
+}
+
+// ==================== Empty State Enhancement ====================
+// Replaces zero-state widgets with actionable CTAs for new/free users
+
+function enhanceEmptyStates() {
+    try {
+        var guideHistory = {};
+        try { guideHistory = JSON.parse(localStorage.getItem('guideLastStudied')) || {}; } catch(e) {}
+        var guidesStudied = Object.keys(guideHistory).length;
+        var hasQuizData = false;
+        try {
+            if (typeof MasteryTracker !== 'undefined') {
+                var stats = MasteryTracker.getOverallStats();
+                hasQuizData = stats && stats.totalQuestionsAnswered > 0;
+            }
+        } catch(e) {}
+
+        // Replace stats row with action prompts if everything is zero
+        if (guidesStudied === 0 && !hasQuizData) {
+            var statsRow = document.querySelector('.dash-stats-row');
+            if (statsRow) {
+                statsRow.innerHTML =
+                    '<div class="empty-stat-cta" data-navigate="my-guides.html">' +
+                        '<div class="empty-stat-icon"><i class="fas fa-book-open"></i></div>' +
+                        '<div class="empty-stat-text">Study your first guide</div>' +
+                    '</div>' +
+                    '<div class="empty-stat-cta" data-navigate="resources.html">' +
+                        '<div class="empty-stat-icon"><i class="fas fa-lightbulb"></i></div>' +
+                        '<div class="empty-stat-text">Browse free resources</div>' +
+                    '</div>' +
+                    '<div class="empty-stat-cta" data-navigate="community.html">' +
+                        '<div class="empty-stat-icon"><i class="fab fa-discord"></i></div>' +
+                        '<div class="empty-stat-text">Join the community</div>' +
+                    '</div>' +
+                    '<div class="empty-stat-cta" data-navigate="pricing.html">' +
+                        '<div class="empty-stat-icon"><i class="fas fa-crown"></i></div>' +
+                        '<div class="empty-stat-text">Explore study plans</div>' +
+                    '</div>';
+
+                // Wire up navigation on the new cards
+                statsRow.querySelectorAll('[data-navigate]').forEach(function(el) {
+                    el.addEventListener('click', function() {
+                        window.location.href = this.getAttribute('data-navigate');
+                    });
+                });
+
+                // Hide Getting Started card — the CTA cards replace it
+                var gettingStarted = document.getElementById('getting-started-card');
+                if (gettingStarted) gettingStarted.classList.add('hidden');
+            }
+        }
+    } catch(e) {
+        console.error('Empty state enhancement failed:', e);
     }
 }
 
@@ -480,13 +607,9 @@ async function loadRecentGuides() {
             if (guidesCountStat) guidesCountStat.textContent = 'No Subscription';
 
             container.innerHTML = `
-                <div class="recent-guides-empty locked">
-                    <i class="fas fa-lock"></i>
-                    <h4>Subscribe to Access Study Guides</h4>
-                    <p>Get unlimited access to all study guides with a subscription.</p>
-                    <button class="btn btn-primary btn-sm" data-navigate="pricing.html">
-                        <i class="fas fa-rocket"></i> View Plans
-                    </button>
+                <div class="recent-guides-empty">
+                    <i class="fas fa-book-open"></i>
+                    <p>As you study, your recent guides will appear here for quick access.</p>
                 </div>
             `;
             container.querySelectorAll('[data-navigate]').forEach(btn => {
@@ -612,16 +735,14 @@ function loadStudyActivityCalendar(weekOffset) {
 
     // Empty state nudge (only for current week)
     if (weekTotal === 0 && offset === 0) {
-        var nudgeHtml = '<div class="activity-empty-nudge">';
-        nudgeHtml += '<i class="fas fa-seedling nudge-icon"></i>';
-        nudgeHtml += '<strong>No activity yet this week</strong>';
-        nudgeHtml += '<p>Read a guide, take a quiz, or try an AI tool to start your streak!</p>';
-        nudgeHtml += '<div class="activity-nudge-links">';
-        nudgeHtml += '<a href="my-guides.html" class="activity-nudge-btn"><i class="fas fa-book-open"></i> Guides</a>';
-        nudgeHtml += '<a href="https://learn.thenursingcollective.pro" class="activity-nudge-btn"><i class="fas fa-play"></i> Quiz</a>';
-        nudgeHtml += '</div>';
-        nudgeHtml += '</div>';
-        container.innerHTML += nudgeHtml;
+        // Replace the empty bar rows with just the nudge message
+        var widget = document.getElementById('study-activity-widget');
+        if (widget) widget.classList.add('activity-empty');
+        container.innerHTML = '<div class="activity-empty-nudge">' +
+            '<i class="fas fa-seedling nudge-icon"></i>' +
+            '<strong>No activity yet this week</strong>' +
+            '<p>As you study guides, take quizzes, and use AI tools, your activity will show up here.</p>' +
+            '</div>';
     }
 
     // Streak from server (more accurate than client-side calculation)
@@ -925,54 +1046,59 @@ function updateStatsRow() {
 // ==================== Email Verification Banner ====================
 
 function updateEmailVerificationBanner(user) {
-    const banner = document.getElementById('email-verification-banner');
-    const resendBtn = document.getElementById('resend-verification-btn');
-    if (!banner) return;
+    // Hide the old main-content banner permanently
+    var oldBanner = document.getElementById('email-verification-banner');
+    if (oldBanner) oldBanner.classList.add('hidden');
+
+    // Show subtle sidebar nudge instead
+    var nudge = document.getElementById('sidebar-verify-nudge');
+    var resendBtn = document.getElementById('sidebar-resend-btn');
+    if (!nudge) return;
 
     // Check multiple signals: backend verified flag, OAuth via localStorage, or Discord-connected
-    const authMethod = localStorage.getItem('lastAuthMethod');
-    const isOAuthUser = authMethod === 'google' || authMethod === 'discord';
-    const hasDiscord = user.has_discord === true;
+    var authMethod = localStorage.getItem('lastAuthMethod');
+    var isOAuthUser = authMethod === 'google' || authMethod === 'discord';
+    var hasDiscord = user.has_discord === true;
 
-    // If verified, OAuth user, or Discord-connected — hide the banner
+    // If verified, OAuth user, or Discord-connected — hide
     if (user.is_verified || isOAuthUser || hasDiscord) {
-        banner.classList.add('hidden');
+        nudge.classList.add('hidden');
         return;
     }
 
-    // Only show for genuinely unverified email-only users
+    // Show for genuinely unverified email-only users
     if (!user.is_verified) {
-        banner.classList.remove('hidden');
+        nudge.classList.remove('hidden');
 
         if (resendBtn) {
             resendBtn.onclick = async function() {
                 resendBtn.disabled = true;
-                resendBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                resendBtn.textContent = 'Sending...';
 
                 try {
                     await apiCall('/auth/resend-verification', {
                         method: 'POST',
                         body: JSON.stringify({ email: user.email })
                     });
-                    resendBtn.innerHTML = '<i class="fas fa-check-circle"></i> Verification Sent!';
-                    resendBtn.style.background = '#10b981';
-                    resendBtn.style.color = 'white';
-                    setTimeout(() => {
+                    resendBtn.textContent = 'Sent!';
+                    resendBtn.style.borderColor = 'var(--green)';
+                    resendBtn.style.color = 'var(--green)';
+                    setTimeout(function() {
                         resendBtn.disabled = false;
-                        resendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Resend Email';
-                        resendBtn.style.background = 'white';
-                        resendBtn.style.color = '#d97706';
+                        resendBtn.textContent = 'Resend';
+                        resendBtn.style.borderColor = '';
+                        resendBtn.style.color = '';
                     }, 3000);
                 } catch (error) {
                     console.error('Error resending verification:', error);
-                    resendBtn.innerHTML = '<i class="fas fa-exclamation-circle"></i> Failed to Send';
-                    resendBtn.style.background = '#ef4444';
-                    resendBtn.style.color = 'white';
-                    setTimeout(() => {
+                    resendBtn.textContent = 'Failed';
+                    resendBtn.style.borderColor = 'var(--red)';
+                    resendBtn.style.color = 'var(--red)';
+                    setTimeout(function() {
                         resendBtn.disabled = false;
-                        resendBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Resend Email';
-                        resendBtn.style.background = 'white';
-                        resendBtn.style.color = '#d97706';
+                        resendBtn.textContent = 'Resend';
+                        resendBtn.style.borderColor = '';
+                        resendBtn.style.color = '';
                     }, 3000);
                 }
             };

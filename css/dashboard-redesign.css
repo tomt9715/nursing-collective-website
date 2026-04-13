@@ -1426,6 +1426,72 @@ img { max-width: 100%; display: block; }
 .recent-guide-row:hover,
 .recent-guide-item:hover { border-color: var(--border-mid); }
 
+.recent-guide-icon-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy-2);
+}
+
+.recent-guide-icon-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.recent-guide-icon-img i {
+  font-size: 16px;
+  color: var(--teal);
+}
+
+.recent-guide-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.recent-guide-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recent-guide-time {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  letter-spacing: 0.04em;
+}
+
+.btn-row-open {
+  background: transparent;
+  border: 0.5px solid var(--border-mid);
+  color: var(--teal);
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+.btn-row-open:hover {
+  background: var(--teal);
+  color: var(--navy);
+  border-color: var(--teal);
+}
+
 /* Exam countdown widget specifics */
 #exam-countdown-content { color: var(--text-dim); font-size: 14px; }
 

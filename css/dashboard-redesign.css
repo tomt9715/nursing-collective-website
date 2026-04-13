@@ -16,7 +16,7 @@
   --purple:      #8b5cf6;
   --text:        #e8edf2;
   --text-dim:    #8a9bb0;
-  --text-dimmer: #4a5a6a;
+  --text-dimmer: #5f7085;
   --border:      rgba(255,255,255,0.07);
   --border-mid:  rgba(255,255,255,0.12);
 }
@@ -667,7 +667,7 @@ img { max-width: 100%; display: block; }
 .stat-inline {
   font-family: 'DM Mono', monospace;
   font-size: 11px;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   letter-spacing: 0.04em;
   display: flex;
   align-items: center;
@@ -790,7 +790,7 @@ img { max-width: 100%; display: block; }
   font-size: 11px;
   font-weight: 500;
   color: var(--text-dim);
-  margin-top: 4px;
+  margin-top: 6px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -840,7 +840,7 @@ img { max-width: 100%; display: block; }
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   margin-bottom: 8px;
 }
 
@@ -1620,7 +1620,7 @@ img { max-width: 100%; display: block; }
 .activity-summary-label {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 0.06em;
 }
@@ -1663,7 +1663,7 @@ img { max-width: 100%; display: block; }
   gap: 5px;
   font-family: 'DM Mono', monospace;
   font-size: 10px;
-  color: var(--text-dimmer);
+  color: var(--text-dim);
   letter-spacing: 0.04em;
 }
 

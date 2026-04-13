@@ -303,7 +303,10 @@ img { max-width: 100%; display: block; }
    ══════════════════════════════════════════════════════════════ */
 .ai-page-header { margin-bottom: 24px; }
 .ai-page-header h1 { font-family: 'DM Serif Display', serif; font-size: 28px; font-weight: 400; color: var(--text); margin-bottom: 6px; }
-.ai-page-header p { font-size: 14px; color: var(--text-dim); }
+.ai-page-header p { font-size: 14px; color: var(--text-dim); margin-bottom: 0; }
+
+/* Credit bar inside header — always visible without scrolling past upload */
+.ai-page-header .ai-credit-bar { margin-top: 16px; margin-bottom: 0; }
 
 
 /* ══════════════════════════════════════════════════════════════
@@ -335,7 +338,7 @@ img { max-width: 100%; display: block; }
    INPUT MODE TOGGLE (File vs Text)
    ══════════════════════════════════════════════════════════════ */
 .ai-input-toggle { display: flex; gap: 4px; margin-bottom: 12px; background: rgba(255,255,255,0.04); padding: 4px; border-radius: 10px; }
-.ai-input-tab { flex: 1; padding: 8px 16px; font-family: 'Outfit', sans-serif; font-size: .85rem; font-weight: 600; color: var(--text-dimmer); background: none; border: none; border-radius: 8px; cursor: pointer; transition: all .15s; display: flex; align-items: center; justify-content: center; gap: 6px; }
+.ai-input-tab { flex: 1; padding: 8px 16px; font-family: 'DM Mono', monospace; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: var(--text-dimmer); background: none; border: none; border-radius: 8px; cursor: pointer; transition: all .15s; display: flex; align-items: center; justify-content: center; gap: 6px; }
 .ai-input-tab.active { background: rgba(255,255,255,0.08); color: var(--purple); }
 .ai-input-tab:hover:not(.active) { color: var(--text-dim); }
 
@@ -405,9 +408,52 @@ img { max-width: 100%; display: block; }
 .ai-delete-all-btn.visible { display: flex; }
 
 .ai-documents-list { display: flex; flex-direction: column; gap: 8px; }
-.ai-empty-state { text-align: center; padding: 24px; color: var(--text-dimmer); }
-.ai-empty-state i { font-size: 2rem; margin-bottom: 8px; display: block; }
-.ai-empty-state p { font-size: .88rem; margin: 0; }
+.ai-empty-state { text-align: center; padding: 32px 24px; color: var(--text-dimmer); }
+
+.ai-empty-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--text-dim);
+  margin-bottom: 20px;
+}
+
+.ai-empty-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 380px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.ai-empty-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.ai-empty-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(139,92,246,0.12);
+  color: var(--purple);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.ai-empty-step-text {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
 
 
 /* ══════════════════════════════════════════════════════════════
@@ -435,9 +481,9 @@ img { max-width: 100%; display: block; }
 /* ══════════════════════════════════════════════════════════════
    ACTION BUTTON GRID
    ══════════════════════════════════════════════════════════════ */
-.ai-action-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px 12px 12px; }
-.ai-action-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; padding: 10px 4px 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--action-bg); color: var(--action-color); font-family: 'Outfit', sans-serif; font-size: .7rem; font-weight: 600; cursor: pointer; transition: all .15s; position: relative; line-height: 1.2; text-align: center; }
-.ai-action-btn i { font-size: .9rem; }
+.ai-action-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 6px; padding: 6px 14px 14px; }
+.ai-action-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 14px 6px 10px; border: 0.5px solid var(--border); border-radius: 10px; background: var(--action-bg); color: var(--action-color); font-family: 'DM Mono', monospace; font-size: 10px; font-weight: 500; letter-spacing: 0.02em; cursor: pointer; transition: all .15s; position: relative; line-height: 1.2; text-align: center; }
+.ai-action-btn i { font-size: 1rem; }
 .ai-action-btn:hover:not(:disabled) { border-color: var(--action-color); }
 .ai-action-btn:disabled,
 .ai-action-btn.ai-action-disabled { opacity: .3; cursor: not-allowed; }
@@ -635,13 +681,92 @@ img { max-width: 100%; display: block; }
 /* ══════════════════════════════════════════════════════════════
    UPGRADE PROMPT
    ══════════════════════════════════════════════════════════════ */
-.ai-upgrade-prompt { margin-top: 28px; }
-.ai-upgrade-card { text-align: center; padding: 40px 24px; background: rgba(124,58,237,.08); border: 1px solid rgba(124,58,237,.2); border-radius: 16px; }
-.ai-upgrade-icon { font-size: 2.5rem; color: var(--purple); margin-bottom: 12px; }
-.ai-upgrade-card h3 { font-family: 'Outfit', sans-serif; font-size: 1.15rem; font-weight: 700; color: var(--text); margin: 0 0 8px; }
-.ai-upgrade-card p { font-size: .9rem; color: var(--text-dimmer); max-width: 420px; margin: 0 auto 16px; line-height: 1.5; }
-.ai-upgrade-btn { display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px; background: var(--purple); color: #fff; border-radius: 10px; font-size: .9rem; font-weight: 700; text-decoration: none; transition: all .2s; }
-.ai-upgrade-btn:hover { opacity: 0.9; color: #fff; text-decoration: none; }
+/* ── Upgrade hero (non-AI users) ── */
+.ai-upgrade-prompt { margin-top: 0; }
+
+.ai-upgrade-hero {
+  text-align: center;
+  padding: 48px 28px 40px;
+  background: var(--card);
+  border: 0.5px solid var(--border-mid);
+  border-radius: 14px;
+}
+
+.ai-upgrade-hero-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: rgba(139,92,246,0.12);
+  color: var(--purple);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  margin: 0 auto 20px;
+}
+
+.ai-upgrade-hero h2 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text);
+  margin: 0 0 6px;
+}
+
+.ai-upgrade-hero > p {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin: 0 0 28px;
+}
+
+.ai-upgrade-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.ai-upgrade-feature {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255,255,255,0.04);
+  border: 0.5px solid var(--border);
+  border-radius: 20px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: 0.02em;
+}
+
+.ai-upgrade-feature i {
+  font-size: 11px;
+  color: var(--purple);
+}
+
+.ai-upgrade-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 24px;
+  background: var(--purple);
+  color: #fff;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .15s;
+}
+
+.ai-upgrade-btn:hover {
+  background: var(--purple-dim);
+  color: #fff;
+  text-decoration: none;
+}
 
 
 /* ══════════════════════════════════════════════════════════════
@@ -912,9 +1037,9 @@ img { max-width: 100%; display: block; }
   .ai-credit-count { font-size: .8rem; }
   .ai-credit-sep { height: 14px; }
   .ai-credit-reset { font-size: .68rem; }
-  .ai-action-grid { gap: 3px; padding: 3px 10px 10px; position: relative; }
-  .ai-action-btn { padding: 8px 3px 6px; font-size: .63rem; }
-  .ai-action-btn i { font-size: .8rem; }
+  .ai-action-grid { grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 4px; padding: 4px 10px 10px; position: relative; }
+  .ai-action-btn { padding: 10px 3px 7px; font-size: 9px; }
+  .ai-action-btn i { font-size: .85rem; }
   .ai-action-check, .ai-action-spinner { width: 10px; height: 10px; top: 2px; right: 2px; }
   .ai-action-check { font-size: .38rem; }
   .ai-doc-progress { gap: 4px; }
@@ -932,9 +1057,10 @@ img { max-width: 100%; display: block; }
   .ai-md-table th, .ai-md-table td { padding: 6px 8px; }
   .ai-panel-quiz-bar { flex-direction: column; gap: 8px; padding: 12px 16px; text-align: center; }
   .ai-panel-quiz-btn { width: 100%; justify-content: center; }
-}
 
-@media (max-width: 480px) {
-  .footer-inner { grid-template-columns: 1fr; gap: 28px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
+  .ai-upgrade-hero { padding: 36px 20px 32px; }
+  .ai-upgrade-hero h2 { font-size: 20px; }
+  .ai-upgrade-features { gap: 8px; }
+
+  .ai-page-header h1 { font-size: 22px; }
 }

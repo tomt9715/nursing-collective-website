@@ -149,34 +149,33 @@
             <div class="dash-main">
                 <div class="ai-page-header">
                     <h1>AI Study Tools</h1>
-                    <p>Upload your lecture notes and get AI-generated review sheets, practice questions, and more.</p>
+                    <p>Turn your lecture notes into study tools.</p>
+                    <!-- Credit bar lives in header area for persistent visibility -->
+                    <div class="ai-credit-bar hidden" id="ai-credit-bar">
+                        <div class="ai-storage-section">
+                            <div class="ai-storage-label">
+                                <i class="fas fa-hard-drive"></i>
+                                <span>Storage</span>
+                                <span id="ai-storage-text">-- / -- MB</span>
+                            </div>
+                            <div class="ai-storage-track">
+                                <div class="ai-storage-fill" id="ai-storage-fill"></div>
+                            </div>
+                        </div>
+                        <div class="ai-credit-sep"></div>
+                        <div class="ai-credit-item" id="ai-credit-questions">
+                            <i class="fas fa-circle-question"></i>
+                            <span class="ai-credit-count" id="ai-credit-questions-count">--</span>
+                            <span class="ai-credit-label">questions left</span>
+                        </div>
+                        <span class="ai-credit-reset" id="ai-credit-reset"></span>
+                    </div>
                 </div>
 
                 <section class="ai-tools-page" id="ai-tools-page">
 
                     <!-- AI Tools (shown for AI-plan users) -->
                     <div class="ai-tools-section" id="ai-tools-section">
-
-                        <!-- Storage & Credit Bar -->
-                        <div class="ai-credit-bar hidden" id="ai-credit-bar">
-                            <div class="ai-storage-section">
-                                <div class="ai-storage-label">
-                                    <i class="fas fa-hard-drive"></i>
-                                    <span>Storage</span>
-                                    <span id="ai-storage-text">-- / -- MB</span>
-                                </div>
-                                <div class="ai-storage-track">
-                                    <div class="ai-storage-fill" id="ai-storage-fill"></div>
-                                </div>
-                            </div>
-                            <div class="ai-credit-sep"></div>
-                            <div class="ai-credit-item" id="ai-credit-questions">
-                                <i class="fas fa-circle-question"></i>
-                                <span class="ai-credit-count" id="ai-credit-questions-count">--</span>
-                                <span class="ai-credit-label">questions left</span>
-                            </div>
-                            <span class="ai-credit-reset" id="ai-credit-reset"></span>
-                        </div>
 
                         <!-- Input Mode Toggle -->
                         <div class="ai-input-toggle" id="ai-input-toggle">
@@ -241,8 +240,21 @@
                             </div>
                             <div class="ai-documents-list" id="ai-documents-list">
                                 <div class="ai-empty-state" id="ai-empty-state">
-                                    <i class="fas fa-file-circle-plus"></i>
-                                    <p>No documents yet. Upload your first set of notes above!</p>
+                                    <div class="ai-empty-title">No documents yet</div>
+                                    <div class="ai-empty-steps">
+                                        <div class="ai-empty-step">
+                                            <div class="ai-empty-step-num">1</div>
+                                            <div class="ai-empty-step-text">Upload lecture notes or paste text</div>
+                                        </div>
+                                        <div class="ai-empty-step">
+                                            <div class="ai-empty-step-num">2</div>
+                                            <div class="ai-empty-step-text">AI generates review sheets, practice questions, and more</div>
+                                        </div>
+                                        <div class="ai-empty-step">
+                                            <div class="ai-empty-step-num">3</div>
+                                            <div class="ai-empty-step-text">Study smarter with targeted content from your own material</div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -296,13 +308,38 @@
 
                     <!-- Upgrade prompt for non-AI users -->
                     <div class="ai-upgrade-prompt hidden" id="ai-upgrade-prompt">
-                        <div class="section-header-row">
-                            <h2 class="section-title"><i class="fas fa-wand-magic-sparkles"></i> AI Study Tools</h2>
-                        </div>
-                        <div class="ai-upgrade-card">
-                            <div class="ai-upgrade-icon"><i class="fas fa-sparkles"></i></div>
-                            <h3>Supercharge Your Studying</h3>
-                            <p>Upload your lecture notes and get AI-generated review sheets, NCLEX practice questions, and gap analysis.</p>
+                        <div class="ai-upgrade-hero">
+                            <div class="ai-upgrade-hero-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+                            <h2>Turn your notes into study tools</h2>
+                            <p>Upload a lecture and let AI do the heavy lifting.</p>
+
+                            <div class="ai-upgrade-features">
+                                <div class="ai-upgrade-feature">
+                                    <i class="fas fa-file-lines"></i>
+                                    <span>Review Sheets</span>
+                                </div>
+                                <div class="ai-upgrade-feature">
+                                    <i class="fas fa-clipboard-question"></i>
+                                    <span>Practice Questions</span>
+                                </div>
+                                <div class="ai-upgrade-feature">
+                                    <i class="fas fa-pills"></i>
+                                    <span>Drug Cards</span>
+                                </div>
+                                <div class="ai-upgrade-feature">
+                                    <i class="fas fa-vial"></i>
+                                    <span>Key Labs</span>
+                                </div>
+                                <div class="ai-upgrade-feature">
+                                    <i class="fas fa-code-compare"></i>
+                                    <span>Compare &amp; Contrast</span>
+                                </div>
+                                <div class="ai-upgrade-feature">
+                                    <i class="fas fa-magnifying-glass-chart"></i>
+                                    <span>Gap Analysis</span>
+                                </div>
+                            </div>
+
                             <a href="pricing.html?tier=ai" class="ai-upgrade-btn" data-navigate="pricing.html?tier=ai">
                                 <i class="fas fa-bolt"></i> Upgrade to AI-Powered
                             </a>

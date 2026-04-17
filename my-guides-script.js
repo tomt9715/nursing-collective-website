@@ -250,10 +250,10 @@
                     guides: [
                         { name: 'Pediatric Leukemias (ALL/AML)', file: 'pediatric-leukemias' },
                         { name: 'Sickle Cell Crisis', file: 'sickle-cell-crisis' },
-                        { name: 'Pediatric Solid Tumors', file: 'pediatric-solid-tumors' }
+                        { name: 'Pediatric Solid Tumors', file: 'pediatric-solid-tumors' },
+                        { name: 'Bleeding Disorders (Hemophilia & ITP)', file: 'bleeding-disorders' }
                     ],
                     comingSoon: [
-                        { name: 'Bleeding Disorders (Hemophilia & ITP)' },
                         { name: 'Iron-Deficiency Anemia' }
                     ]
                 },

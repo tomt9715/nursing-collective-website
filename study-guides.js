@@ -3,6 +3,53 @@
 
 // Guide preview content (realistic placeholder - preview of full guide)
 const guidePreviewContent = {
+    'bleeding-disorders': {
+        title: 'Bleeding Disorders (Hemophilia & ITP)',
+        storeUrl: 'pricing.html#bleeding-disorders',
+        content: `
+# Bleeding Disorders Study Guide
+
+## Overview
+Hemophilia (factor deficiency → joint bleeds) and immune thrombocytopenic purpura (ITP, platelet destruction → petechiae and purpura). Labs, factor replacement, bleeding precautions, and distinguishing from abuse.
+
+## What You'll Learn
+
+### Hemophilia
+- **Hemophilia A** = factor VIII deficiency (~80%)
+- **Hemophilia B** (Christmas disease) = factor IX deficiency (~20%)
+- **X-linked recessive** — affects boys
+- Classic finding: **hemarthrosis** (joint bleeding)
+- Labs: **prolonged PTT**, normal PT and platelets
+- Treatment: factor replacement (IV or SubQ emicizumab), DDAVP for mild A / vWD
+- **Head injury = factor FIRST**, then imaging
+
+### ITP (Immune Thrombocytopenic Purpura)
+- **Autoimmune** — antiplatelet antibodies, post-viral 1–4 weeks
+- Presentation: **petechiae (pinpoint, non-blanching) + purpura + mucosal bleeding** in a well child
+- Labs: **isolated thrombocytopenia**, often <20,000; PT/PTT normal
+- Treatment: observation, IVIG, anti-D, or steroids; platelets only for life-threatening bleeds
+- Most childhood ITP resolves in <6 months
+
+### Bleeding Precautions
+- Soft toothbrush, electric razor, no aspirin/NSAIDs
+- **No IM injections** (SubQ with pressure)
+- 10-minute pressure after venipuncture
+- Avoid contact sports; helmets + pads
+
+### Abuse vs Bleeding Disorder
+- Patterned bruises, non-ambulatory infants, staged healing = abuse concern
+- Coag labs help differentiate
+- **Report suspected abuse per mandatory reporting laws**
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Condition-by-condition breakdown*
+- *NCLEX-style practice questions*
+- *Factor replacement and ITP treatment pearls*
+- *Family education handouts*
+        `
+    },
     'pediatric-solid-tumors': {
         title: 'Pediatric Solid Tumors',
         storeUrl: 'pricing.html#pediatric-solid-tumors',

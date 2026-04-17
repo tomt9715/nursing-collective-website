@@ -908,7 +908,8 @@ function populateGuidesFlyout() {
         'pediatric-burns': 'Pediatric Nursing',
         'pediatric-leukemias': 'Pediatric Nursing',
         'sickle-cell-crisis': 'Pediatric Nursing',
-        'pediatric-solid-tumors': 'Pediatric Nursing'
+        'pediatric-solid-tumors': 'Pediatric Nursing',
+        'bleeding-disorders': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

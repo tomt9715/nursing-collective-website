@@ -3,6 +3,52 @@
 
 // Guide preview content (realistic placeholder - preview of full guide)
 const guidePreviewContent = {
+    'jia-lupus': {
+        title: 'JIA & Pediatric Lupus',
+        storeUrl: 'pricing.html#jia-lupus',
+        content: `
+# JIA & Pediatric Lupus Study Guide
+
+## Overview
+Juvenile idiopathic arthritis types (oligoarticular, polyarticular, systemic) and pediatric systemic lupus erythematosus. Presentation, labs, medication risks, and family education.
+
+## What You'll Learn
+
+### JIA Types
+- **Oligoarticular (pauciarticular)** — most common; ≤4 joints; often knee; watch for **asymptomatic uveitis** (slit-lamp every 3–6 mo)
+- **Polyarticular** — ≥5 joints; symmetric small joints; rapidly progressing
+- **Systemic (Still disease)** — daily spiking fevers, salmon-colored evanescent rash, hepatosplenomegaly, pericarditis/pleuritis; MAS risk
+
+### Pediatric SLE
+- Adolescent girls; multi-organ autoimmune
+- **Malar (butterfly) rash** spares nasolabial folds
+- Photosensitivity, oral ulcers, arthritis, serositis
+- **Lupus nephritis** = leading cause of mortality
+- Labs: **ANA (sensitive), anti-dsDNA (specific), low C3/C4** in flare
+
+### Medication Risks
+- **NSAIDs** — GI, renal
+- **Methotrexate** — hepatotoxic, teratogenic; give **folic acid**
+- **Corticosteroids** — **increased infection risk**, hyperglycemia, HTN, AVN, growth suppression; never stop abruptly
+- **Biologics (TNF inhibitors)** — **TB screen before starting**
+- **IVIG** — anaphylaxis risk
+- **Hydroxychloroquine** — retinal toxicity, yearly eye exam
+
+### Key Teaching
+- **Fever from inflammation persists even with antibiotics** — that's expected
+- Sun protection for SLE (SPF 50+, hats, UV clothing)
+- Avoid live vaccines on immunosuppression
+- Slit-lamp eye exams for oligoarticular JIA
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Condition-by-condition breakdown*
+- *NCLEX-style practice questions*
+- *Medication safety and administration*
+- *Family education handouts*
+        `
+    },
     'iron-deficiency-anemia': {
         title: 'Iron-Deficiency Anemia',
         storeUrl: 'pricing.html#iron-deficiency-anemia',

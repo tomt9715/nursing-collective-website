@@ -261,9 +261,10 @@
                     categoryIcon: 'pediatric-icon',
                     icon: 'fa-shield-virus',
                     colorClass: 'icon-pediatrics',
-                    guides: [],
+                    guides: [
+                        { name: 'JIA & Pediatric Lupus', file: 'jia-lupus' }
+                    ],
                     comingSoon: [
-                        { name: 'JIA & Pediatric Lupus' },
                         { name: 'Immune Deficiency, HIV & Anaphylaxis' }
                     ]
                 },

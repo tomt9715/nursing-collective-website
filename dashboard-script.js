@@ -897,7 +897,8 @@ function populateGuidesFlyout() {
         'rheumatic-fever-endocarditis': 'Pediatric Nursing',
         'pediatric-gi-obstructions': 'Pediatric Nursing',
         'cleft-lip-palate': 'Pediatric Nursing',
-        'pediatric-gerd': 'Pediatric Nursing'
+        'pediatric-gerd': 'Pediatric Nursing',
+        'pediatric-renal-disorders': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

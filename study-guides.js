@@ -138,6 +138,53 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'pediatric-renal-disorders': {
+        title: 'Pediatric Renal Disorders',
+        storeUrl: 'pricing.html#pediatric-renal-disorders',
+        content: `
+# Pediatric Renal Disorders Study Guide
+
+## Overview
+Five main pediatric renal conditions — nephrotic syndrome, acute glomerulonephritis, hemolytic uremic syndrome, AKI, and CKD. Telling them apart is half the battle.
+
+## What You'll Learn
+
+### Nephrotic Syndrome
+- 4-part picture: massive proteinuria, hypoalbuminemia, edema, hyperlipidemia
+- Age 2-6, Minimal Change Disease (steroid-responsive)
+- Periorbital AM edema, foamy urine, normal BP
+- Treatment: prednisone, diuretics + albumin, low-sodium diet
+
+### Acute Glomerulonephritis
+- Post-strep (1-3 weeks after infection), age 5-15
+- Tea-colored urine, hypertension, edema
+- Low C3, elevated ASO titer
+- Mostly supportive; antihypertensives, fluid/sodium restriction
+
+### Hemolytic Uremic Syndrome (HUS)
+- Triad: hemolytic anemia + thrombocytopenia + AKI
+- E. coli O157:H7 from bloody diarrhea
+- **NO antibiotics, NO antidiarrheals** (worsens)
+- Supportive care, may need dialysis
+
+### Acute Kidney Injury
+- 3 categories: pre-renal (most common), intrinsic, post-renal
+- AEIOU dialysis indications: Acidosis, Electrolytes, Ingestion, Overload, Uremia
+- Hyperkalemia = cardiac emergency
+
+### Chronic Kidney Disease
+- Mostly congenital causes in kids (CAKUT, reflux)
+- Manage: growth, anemia (EPO), bone disease (phosphate binders with meals), BP
+- Transplant is gold standard for ESRD
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth disorder-by-disorder breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'pediatric-gerd': {
         title: 'Pediatric GERD',
         storeUrl: 'pricing.html#pediatric-gerd',

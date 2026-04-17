@@ -138,6 +138,57 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'pediatric-congenital-heart-defects': {
+        title: 'Pediatric Congenital Heart Defects',
+        storeUrl: 'pricing.html#pediatric-congenital-heart-defects',
+        content: `
+# Pediatric Congenital Heart Defects Study Guide
+
+## Overview
+Master the classification and priority nursing care for congenital heart defects — from Tetralogy of Fallot and hypercyanotic "tet" spells to right-sided heart failure in infants.
+
+## What You'll Learn
+
+### Classification (4 categories)
+- **Increased pulmonary flow (acyanotic):** VSD, ASD, PDA, AVSD
+- **Decreased pulmonary flow (cyanotic):** TOF, tricuspid atresia, pulmonary atresia
+- **Obstructive:** Coarctation, aortic stenosis, pulmonary stenosis
+- **Mixed:** Transposition, truncus arteriosus, HLHS, TAPVR
+
+### Tetralogy of Fallot — PROV
+1. **P**ulmonary stenosis
+2. **R**ight ventricular hypertrophy
+3. **O**verriding aorta
+4. **V**SD
+
+### Hypercyanotic "Tet" Spell Management
+1. **Knee-to-chest position FIRST**
+2. 100% oxygen
+3. Calm the child
+4. Morphine 0.1-0.2 mg/kg
+5. IV fluid bolus
+6. Phenylephrine if refractory
+
+### Key Medications
+- **Digoxin:** apical HR × 1 min before dose; hold if infant HR <90-110
+- **Prostaglandin E1:** keeps ductus open; watch for APNEA
+- **Indomethacin/ibuprofen:** closes a PDA in preemies only
+- **Furosemide + spironolactone:** CHF management; monitor K+
+
+### Infant Heart Failure — Classic Triad
+- Poor feeding & prolonged feed times
+- Diaphoresis with feeds
+- Failure to thrive + tachypnea at rest
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth content with defect-by-defect breakdowns*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+- *Printable study materials*
+        `
+    },
     'seizures': {
         title: 'Seizures & Epilepsy',
         storeUrl: 'pricing.html#seizures',

@@ -176,11 +176,96 @@
             id: 'pediatrics',
             name: 'Pediatric Nursing',
             classIcon: 'pediatric-nursing-class-icon',
-            description: 'Growth & development, pediatric emergencies, and age-specific care.',
-            gradient: 'linear-gradient(135deg, #f59e0b, #d97706)',
+            description: 'Congenital conditions, pediatric emergencies, and age-specific care across body systems.',
+            gradient: 'linear-gradient(135deg, #e05252, #b91c3c)',
             topics: [
                 {
-                    category: 'Pediatric Nursing',
+                    category: 'Pediatric Cardiac',
+                    categoryIcon: 'cardiovascular-icon',
+                    icon: 'fa-heart-pulse',
+                    colorClass: 'icon-pediatrics',
+                    guides: [
+                        { name: 'Congenital Heart Defects', file: 'pediatric-congenital-heart-defects' }
+                    ],
+                    comingSoon: [
+                        { name: 'Kawasaki Disease' },
+                        { name: 'Rheumatic Fever & Endocarditis' }
+                    ]
+                },
+                {
+                    category: 'Pediatric GI',
+                    categoryIcon: 'gastrointestinal-icon',
+                    icon: 'fa-stomach',
+                    colorClass: 'icon-pediatrics',
+                    guides: [],
+                    comingSoon: [
+                        { name: 'Pediatric GI Obstructions' },
+                        { name: 'Cleft Lip & Palate' },
+                        { name: 'Pediatric GERD' }
+                    ]
+                },
+                {
+                    category: 'Pediatric GU',
+                    categoryIcon: 'renal-icon',
+                    icon: 'fa-droplet',
+                    colorClass: 'icon-pediatrics',
+                    guides: [],
+                    comingSoon: [
+                        { name: 'Pediatric Renal Disorders' },
+                        { name: 'UTI, VUR & Enuresis' },
+                        { name: 'Male GU Disorders' }
+                    ]
+                },
+                {
+                    category: 'Pediatric Musculoskeletal',
+                    categoryIcon: 'musculoskeletal-icon',
+                    icon: 'fa-bone',
+                    colorClass: 'icon-pediatrics',
+                    guides: [],
+                    comingSoon: [
+                        { name: 'Neural Tube Defects' },
+                        { name: 'Pediatric Fractures & Immobility' }
+                    ]
+                },
+                {
+                    category: 'Pediatric Skin',
+                    categoryIcon: 'integumentary-icon',
+                    icon: 'fa-hand-dots',
+                    colorClass: 'icon-pediatrics',
+                    guides: [],
+                    comingSoon: [
+                        { name: 'Pediatric Skin Infections' },
+                        { name: 'Hypersensitivity & Inflammatory Skin' },
+                        { name: 'Pediatric Burns' }
+                    ]
+                },
+                {
+                    category: 'Pediatric Hematology & Oncology',
+                    categoryIcon: 'hematology-icon',
+                    icon: 'fa-dna',
+                    colorClass: 'icon-pediatrics',
+                    guides: [],
+                    comingSoon: [
+                        { name: 'Pediatric Leukemias (ALL/AML)' },
+                        { name: 'Pediatric Solid Tumors' },
+                        { name: 'Sickle Cell Crisis' },
+                        { name: 'Bleeding Disorders (Hemophilia & ITP)' },
+                        { name: 'Iron-Deficiency Anemia' }
+                    ]
+                },
+                {
+                    category: 'Pediatric Immune & Rheumatology',
+                    categoryIcon: 'immune-icon',
+                    icon: 'fa-shield-virus',
+                    colorClass: 'icon-pediatrics',
+                    guides: [],
+                    comingSoon: [
+                        { name: 'JIA & Pediatric Lupus' },
+                        { name: 'Immune Deficiency, HIV & Anaphylaxis' }
+                    ]
+                },
+                {
+                    category: 'Pediatric Foundations',
                     categoryIcon: 'pediatric-icon',
                     icon: 'fa-child',
                     colorClass: 'icon-pediatrics',

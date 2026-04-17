@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Congenital Heart Defects Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Pediatric nursing study guide for congenital heart defects. Covers acyanotic vs cyanotic lesions, Tetralogy of Fallot, hypercyanotic 'tet' spells, right-sided heart failure, and priority nursing interventions.">
+    <link rel="canonical" href="https://thenursingcollective.pro/guides/pediatric-congenital-heart-defects.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/guides/pediatric-congenital-heart-defects.html">
+    <meta property="og:title" content="Pediatric Congenital Heart Defects Study Guide - The Nursing Collective">
+    <meta property="og:description" content="Pediatric nursing study guide for congenital heart defects. Covers acyanotic vs cyanotic lesions, Tetralogy of Fallot, hypercyanotic 'tet' spells, right-sided heart failure, and priority nursing interventions.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/cookie-consent.css">
+    <link rel="stylesheet" href="guide-sidebar.css">
+
+    <style>
+        /* ============================================
+           PEDIATRIC CONGENITAL HEART DEFECTS
+           NEW DESIGN SYSTEM — Dark chrome, light paper
+           Navy shell · Teal site accent · Coral category
+           ============================================ */
+
+        :root {
+            /* Site design system (chrome) */
+            --navy:        #0d1b2a;
+            --navy-2:      #162032;
+            --navy-3:      #1e2d3e;
+            --card-dark:   #1a2940;
+            --teal:        #0fbcad;
+            --teal-dim:    #0a9086;
+            --amber:       #f4a535;
+            --green:       #3dbd7a;
+            --red:         #e05252;
+            --purple:      #8b5cf6;
+            --text-inv:    #e8edf2;
+            --text-inv-dim:#8a9bb0;
+            --border-inv:  rgba(255,255,255,0.07);
+            --border-inv-mid: rgba(255,255,255,0.12);
+
+            /* Document (paper) surface */
+            --paper:       #ffffff;
+            --paper-warm:  #fafaf7;
+            --ink:         #1f2937;
+            --ink-soft:    #4b5563;
+            --ink-dimmer:  #6b7280;
+            --rule:        #e5e7eb;
+            --rule-soft:   #f1f5f9;
+
+            /* Pediatric cardiac category palette */
+            --peds-coral:  #e05252;
+            --peds-coral-deep: #b91c3c;
+            --peds-rose:   #f97373;
+            --peds-blush:  #fff1f2;
+            --peds-blush-2:#ffe4e6;
+            --peds-plum:   #7f1d1d;
+
+            /* Status */
+            --critical:    #dc2626;
+            --safe:        #10b981;
+            --warning:     #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--ink);
+            background: var(--navy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           DOWNLOAD BAR — Dark navy chrome (matches site redesign)
+           ══════════════════════════════════════════════════════ */
+        .download-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(13, 27, 42, 0.92);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            color: var(--text-inv);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--border-inv);
+        }
+
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.01em;
+            color: var(--text-inv);
+        }
+
+        .download-bar-brand i {
+            color: var(--teal);
+            font-size: 16px;
+        }
+
+        .download-bar-actions { display: flex; gap: 10px; }
+
+        .btn-download,
+        .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            border: 0.5px solid var(--border-inv-mid);
+        }
+
+        .btn-download {
+            background: var(--teal);
+            color: var(--navy);
+            border-color: var(--teal);
+        }
+
+        .btn-download:hover {
+            background: var(--teal-dim);
+            border-color: var(--teal-dim);
+            transform: translateY(-1px);
+        }
+
+        .btn-back {
+            background: transparent;
+            color: var(--text-inv-dim);
+        }
+
+        .btn-back:hover {
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--text-inv);
+        }
+
+        /* ══════════════════════════════════════════════════════
+           DOCUMENT CONTAINER — Light paper inside dark frame
+           ══════════════════════════════════════════════════════ */
+        .document-container {
+            max-width: 900px;
+            margin: 80px auto 40px;
+            background: var(--paper);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            border: 0.5px solid var(--border-inv);
+        }
+
+        /* Cover Page — Pediatric cardiac gradient (coral + navy) */
+        .cover-page {
+            background: linear-gradient(135deg, #0d1b2a 0%, #7f1d1d 45%, #e05252 100%);
+            color: white;
+            padding: 80px 60px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15-15zM0 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15S0 38.284 0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        .cover-content { position: relative; z-index: 1; }
+
+        .cover-logo {
+            width: 72px;
+            height: 72px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 28px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+            padding: 12px;
+        }
+
+        .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 50px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+
+        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
+
+        .cover-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.4rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+            line-height: 1.05;
+            letter-spacing: -0.01em;
+        }
+
+        .cover-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 300;
+            opacity: 0.92;
+            max-width: 580px;
+            margin: 0 auto 40px;
+            line-height: 1.55;
+        }
+
+        .cover-stats {
+            display: flex;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            padding-top: 28px;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+        }
+
+        .cover-stat { text-align: center; }
+
+        .cover-stat .number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            line-height: 1;
+        }
+
+        .cover-stat .label {
+            font-family: 'DM Mono', monospace;
+            font-size: 10px;
+            opacity: 0.82;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-top: 8px;
+        }
+
+        .cover-brand {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            opacity: 0.8;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           DOCUMENT CONTENT
+           ══════════════════════════════════════════════════════ */
+        .document-content {
+            padding: 56px 56px 48px;
+            background: var(--paper);
+        }
+
+        /* Learning objectives */
+        .learning-objectives {
+            background: var(--peds-blush);
+            border: 1px solid var(--peds-blush-2);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--peds-plum);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .learning-objectives h2 i { color: var(--peds-coral); }
+
+        .learning-objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .objective-card {
+            background: white;
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .objective-card i {
+            color: var(--peds-coral);
+            font-size: 1rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .objective-card span {
+            font-size: 0.95rem;
+            color: var(--ink);
+            line-height: 1.5;
+        }
+
+        /* High-yield summary */
+        .high-yield-summary {
+            background: linear-gradient(135deg, #fff7ed, #ffedd5);
+            border: 1px solid #fed7aa;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+
+        .high-yield-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #9a3412;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .high-yield-summary h2 i { color: var(--warning); }
+
+        .high-yield-subtitle {
+            color: var(--ink-soft);
+            margin-bottom: 14px;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .high-yield-summary ul { list-style: none; padding: 0; }
+
+        .high-yield-summary li {
+            padding: 10px 0;
+            border-bottom: 1px solid #fed7aa;
+            color: var(--ink-soft);
+            font-size: 0.97rem;
+            line-height: 1.6;
+        }
+
+        .high-yield-summary li:last-child { border-bottom: none; }
+
+        .high-yield-summary strong { color: #9a3412; }
+
+        .high-yield-cta {
+            margin-top: 14px;
+            font-weight: 600;
+            color: #9a3412;
+            font-size: 0.95rem;
+        }
+
+        /* Sticky nav pills */
+        .sticky-nav {
+            background: var(--rule-soft);
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 36px;
+        }
+
+        .sticky-nav h3 {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--ink-dimmer);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+        .nav-pills a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: white;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.87rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+
+        .nav-pills a:hover {
+            background: var(--peds-coral);
+            color: white;
+            border-color: var(--peds-coral);
+        }
+
+        .nav-pills a i { font-size: 0.82rem; }
+
+        /* Content sections */
+        .guide-section {
+            margin-bottom: 48px;
+            scroll-margin-top: 100px;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .section-number {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(224, 82, 82, 0.25);
+        }
+
+        .section-title-group { flex: 1; min-width: 0; }
+
+        .section-title-group h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+
+        .section-title-group .subtitle {
+            font-size: 0.95rem;
+            color: var(--ink-dimmer);
+            font-weight: 400;
+        }
+
+        .guide-section p {
+            color: var(--ink-soft);
+            margin-bottom: 16px;
+            font-size: 1.02rem;
+        }
+
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.22rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 24px 0 12px;
+        }
+
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 18px 0 8px;
+        }
+
+        .guide-section ul, .guide-section ol {
+            padding-left: 22px;
+            margin-bottom: 16px;
+            color: var(--ink-soft);
+        }
+
+        .guide-section li {
+            margin-bottom: 8px;
+            font-size: 1rem;
+            line-height: 1.65;
+        }
+
+        .guide-section strong { color: var(--ink); font-weight: 600; }
+
+        /* Tables */
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: 10px;
+            border: 1px solid var(--rule);
+        }
+
+        .guide-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.93rem;
+        }
+
+        .guide-table thead {
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+        }
+
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+        }
+
+        .guide-table td {
+            padding: 11px 14px;
+            border-bottom: 1px solid var(--rule);
+            color: var(--ink-soft);
+            vertical-align: top;
+        }
+
+        .guide-table tbody tr:last-child td { border-bottom: none; }
+
+        .guide-table tbody tr:nth-child(even) { background: var(--paper-warm); }
+
+        .guide-table tbody tr:hover { background: var(--peds-blush); }
+
+        /* Info boxes */
+        .info-box {
+            display: flex;
+            gap: 14px;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--rule);
+            border-left-width: 4px;
+        }
+
+        .info-box-icon {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        .info-box-content { flex: 1; min-width: 0; }
+
+        .info-box-content h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .info-box-content p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .info-box.clinical {
+            background: #fffbeb;
+            border-color: #fde68a;
+            border-left-color: #f59e0b;
+        }
+        .info-box.clinical .info-box-icon { background: #fde68a; color: #78350f; }
+        .info-box.clinical h5 { color: #78350f; }
+
+        .info-box.critical {
+            background: #fef2f2;
+            border-color: #fecaca;
+            border-left-color: #dc2626;
+        }
+        .info-box.critical .info-box-icon { background: #fecaca; color: #7f1d1d; }
+        .info-box.critical h5 { color: #7f1d1d; }
+
+        .info-box.nclex {
+            background: #eff6ff;
+            border-color: #bfdbfe;
+            border-left-color: #2563eb;
+        }
+        .info-box.nclex .info-box-icon { background: #bfdbfe; color: #1e3a8a; }
+        .info-box.nclex h5 { color: #1e3a8a; }
+
+        .info-box.pediatric {
+            background: var(--peds-blush);
+            border-color: var(--peds-blush-2);
+            border-left-color: var(--peds-coral);
+        }
+        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-plum); }
+        .info-box.pediatric h5 { color: var(--peds-plum); }
+
+        .info-box.safe {
+            background: #f0fdf4;
+            border-color: #bbf7d0;
+            border-left-color: var(--safe);
+        }
+        .info-box.safe .info-box-icon { background: #bbf7d0; color: #14532d; }
+        .info-box.safe h5 { color: #14532d; }
+
+        /* FlorenceBot tips */
+        .florencebot-tip {
+            background: linear-gradient(135deg, #f0fdfa, #ccfbf1);
+            border: 1px solid #99f6e4;
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .florencebot-tip::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--teal);
+        }
+
+        .florencebot-tip-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .florencebot-tip-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--teal);
+            border-radius: 8px;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+        .florencebot-tip-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--teal-dim);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .florencebot-tip-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #134e4a;
+            margin-bottom: 8px;
+        }
+
+        .florencebot-tip-content {
+            font-size: 0.96rem;
+            color: var(--ink-soft);
+            line-height: 1.65;
+        }
+
+        .florencebot-tip-content strong { color: #134e4a; }
+
+        /* Bottom line strip */
+        .bottom-line {
+            background: linear-gradient(135deg, var(--peds-blush), var(--peds-blush-2));
+            border-left: 4px solid var(--peds-coral);
+            padding: 14px 18px;
+            margin: 22px 0 0;
+            border-radius: 0 10px 10px 0;
+            font-weight: 500;
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+
+        /* Defect comparison cards (used for cyanotic vs acyanotic) */
+        .defect-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .defect-card {
+            background: white;
+            border-radius: 14px;
+            border: 1px solid var(--rule);
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+        }
+
+        .defect-card-header {
+            padding: 16px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .defect-card-header.acyanotic { background: linear-gradient(135deg, #ec4899, #be185d); }
+        .defect-card-header.cyanotic { background: linear-gradient(135deg, #3b82f6, #1d4ed8); }
+        .defect-card-header.obstructive { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+        .defect-card-header.mixed { background: linear-gradient(135deg, #f59e0b, #b45309); }
+
+        .defect-card-header i { font-size: 1.3rem; }
+
+        .defect-card-header h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+
+        .defect-card-header .tag {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            opacity: 0.88;
+            text-transform: uppercase;
+        }
+
+        .defect-card-body { padding: 18px 20px; }
+
+        .defect-card-body ul { padding-left: 20px; }
+
+        .defect-card-body li {
+            margin-bottom: 6px;
+            font-size: 0.93rem;
+            color: var(--ink-soft);
+            line-height: 1.55;
+        }
+
+        /* Individual defect profile */
+        .defect-profile {
+            background: var(--paper-warm);
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 20px 22px;
+            margin: 16px 0;
+        }
+
+        .defect-profile-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--rule);
+        }
+
+        .defect-profile-header .icon-pill {
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .defect-profile-header .icon-pill.acyanotic { background: #fce7f3; color: #9d174d; }
+        .defect-profile-header .icon-pill.cyanotic { background: #dbeafe; color: #1e3a8a; }
+        .defect-profile-header .icon-pill.obstructive { background: #ede9fe; color: #5b21b6; }
+        .defect-profile-header .icon-pill.mixed { background: #fef3c7; color: #92400e; }
+
+        .defect-profile-header h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0;
+        }
+
+        .defect-profile-body p { margin-bottom: 10px; }
+
+        .defect-profile-body ul { margin: 8px 0; padding-left: 20px; }
+
+        /* TOF "4 defects" card */
+        .tof-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .tof-card {
+            background: white;
+            border-radius: 12px;
+            padding: 18px 20px;
+            border: 1px solid var(--rule);
+            position: relative;
+            padding-left: 56px;
+        }
+
+        .tof-card::before {
+            content: attr(data-num);
+            position: absolute;
+            top: 18px;
+            left: 14px;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1rem;
+        }
+
+        .tof-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .tof-card p {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            margin: 0;
+            line-height: 1.55;
+        }
+
+        /* Key point grid */
+        .key-point-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .key-point-item {
+            background: white;
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .key-point-item i {
+            color: var(--peds-coral);
+            font-size: 1rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .key-point-item p {
+            margin: 0;
+            font-size: 0.93rem;
+            line-height: 1.55;
+            color: var(--ink-soft);
+        }
+
+        .key-point-item strong { color: var(--ink); }
+
+        /* Timeline / Step list (for tet-spell management) */
+        .step-list {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 20px 0;
+            counter-reset: step;
+        }
+
+        .step-list li {
+            counter-increment: step;
+            position: relative;
+            padding: 14px 16px 14px 56px;
+            background: white;
+            border: 1px solid var(--rule);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 0.97rem;
+            line-height: 1.6;
+        }
+
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.9rem;
+        }
+
+        .step-list strong { color: var(--ink); }
+
+        /* Medication cards */
+        .med-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+
+        .med-card {
+            background: white;
+            border: 1px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            border-top: 3px solid var(--peds-coral);
+        }
+
+        .med-card h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+
+        .med-card .med-class {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--peds-coral);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .med-card p {
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            margin-bottom: 8px;
+            line-height: 1.55;
+        }
+
+        .med-card p strong { color: var(--ink); }
+
+        /* Cross references */
+        .cross-references {
+            margin: 36px 0 8px;
+            padding: 24px;
+            background: var(--rule-soft);
+            border-radius: 12px;
+        }
+
+        .cross-references h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .cross-references h2 i { color: var(--peds-coral); }
+
+        .cross-ref-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .cross-ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: white;
+            border: 1px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+
+        .cross-ref-link:hover {
+            background: var(--peds-coral);
+            color: white;
+            border-color: var(--peds-coral);
+        }
+
+        .cross-ref-link i { font-size: 0.85rem; }
+
+        /* Quiz CTA */
+        .quiz-cta {
+            background: linear-gradient(135deg, var(--navy), var(--navy-2));
+            color: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin: 36px 0;
+            text-align: center;
+        }
+
+        .quiz-cta h3 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .quiz-cta p {
+            color: var(--text-inv-dim);
+            margin-bottom: 20px;
+            font-size: 0.98rem;
+        }
+
+        .quiz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--teal);
+            color: var(--navy);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .quiz-btn:hover {
+            background: var(--teal-dim);
+            transform: translateY(-1px);
+        }
+
+        /* Document footer */
+        .document-footer {
+            padding: 32px 56px;
+            background: var(--paper-warm);
+            border-top: 1px solid var(--rule);
+            text-align: center;
+        }
+
+        .footer-logo {
+            height: 32px;
+            margin: 0 auto 12px;
+            opacity: 0.85;
+        }
+
+        .footer-tagline {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            color: var(--ink-soft);
+            margin-bottom: 4px;
+        }
+
+        .footer-copyright {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--ink-dimmer);
+            letter-spacing: 0.02em;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           SIDEBAR OVERRIDES — Dark navy chrome for TOC + Quick Ref
+           ══════════════════════════════════════════════════════ */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            max-width: 1600px;
+        }
+
+        .sidebar-left, .sidebar-right {
+            width: 260px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .toc-panel,
+        .quick-ref-panel,
+        .clinical-pearls-panel {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+            color: var(--text-inv) !important;
+            margin-bottom: 16px !important;
+        }
+
+        .toc-header,
+        .quick-ref-header,
+        .clinical-pearls-header {
+            padding-bottom: 14px !important;
+            margin-bottom: 14px !important;
+            border-bottom: 0.5px solid var(--border-inv-mid) !important;
+        }
+
+        .toc-header h3,
+        .quick-ref-header h3,
+        .clinical-pearls-header h3 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase;
+            letter-spacing: 1.5px !important;
+            margin: 0;
+        }
+
+        .toc-header i,
+        .quick-ref-header i,
+        .clinical-pearls-header i {
+            color: var(--teal) !important;
+        }
+
+        .toc-link {
+            color: var(--text-inv-dim) !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.88rem !important;
+            border-left: 2px solid transparent !important;
+            padding: 9px 12px !important;
+        }
+
+        .toc-link:hover {
+            background: rgba(15, 188, 173, 0.08) !important;
+            color: var(--text-inv) !important;
+        }
+
+        .toc-link.active {
+            background: rgba(15, 188, 173, 0.12) !important;
+            color: var(--teal) !important;
+            border-left-color: var(--teal) !important;
+            font-weight: 600 !important;
+        }
+
+        .toc-link i { color: inherit !important; }
+
+        .quick-ref-item {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 8px !important;
+            padding: 10px 12px !important;
+            margin-bottom: 8px !important;
+        }
+
+        .quick-ref-item .label,
+        .quick-ref-item .quick-ref-label {
+            color: var(--text-inv-dim) !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            letter-spacing: 0.8px !important;
+        }
+
+        .quick-ref-item .value,
+        .quick-ref-item .quick-ref-value {
+            color: var(--text-inv) !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 600 !important;
+        }
+
+        .quick-ref-item.critical .value,
+        .quick-ref-item.critical .quick-ref-value { color: #fca5a5 !important; }
+        .quick-ref-item.target .value,
+        .quick-ref-item.target .quick-ref-value { color: var(--teal) !important; }
+        .quick-ref-item.success .value,
+        .quick-ref-item.success .quick-ref-value { color: #86efac !important; }
+        .quick-ref-item.time .value,
+        .quick-ref-item.time .quick-ref-value { color: #fde047 !important; }
+
+        .pearl-item {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-left: 3px solid var(--teal) !important;
+            border-radius: 6px !important;
+            padding: 10px 12px !important;
+            margin-bottom: 8px !important;
+            cursor: pointer;
+            transition: all 0.15s !important;
+        }
+
+        .pearl-item:hover {
+            background: rgba(15, 188, 173, 0.08) !important;
+            border-left-color: var(--teal-dim) !important;
+        }
+
+        .pearl-item .pearl-title {
+            color: var(--text-inv) !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.88rem !important;
+        }
+
+        .pearl-item .pearl-text {
+            color: var(--text-inv-dim) !important;
+            font-size: 0.82rem !important;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.06) !important;
+        }
+
+        .progress-bar-fill {
+            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
+        }
+
+        .mobile-nav-fab {
+            background: var(--teal) !important;
+            color: var(--navy) !important;
+        }
+
+        .mobile-nav-drawer {
+            background: var(--card-dark) !important;
+            color: var(--text-inv) !important;
+        }
+
+        /* ══════════════════════════════════════════════════════
+           RESPONSIVE
+           ══════════════════════════════════════════════════════ */
+        @media (max-width: 1200px) {
+            .page-wrapper { padding: 0 12px; gap: 16px; }
+            .sidebar-left, .sidebar-right { width: 220px; }
+        }
+
+        @media (max-width: 900px) {
+            .page-wrapper { flex-direction: column; padding: 0 12px; }
+            .sidebar-left, .sidebar-right {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                position: static;
+                max-height: none;
+            }
+            .document-container { margin: 80px 12px 40px; }
+            .document-content { padding: 36px 28px; }
+            .cover-page { padding: 56px 28px 40px; }
+            .cover-title { font-size: 2.3rem; }
+            .cover-stats { gap: 28px; }
+            .learning-objectives-grid,
+            .defect-comparison,
+            .tof-grid,
+            .key-point-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .download-bar { padding: 10px 14px; }
+            .download-bar-brand span:not(.brand-text-long) { display: none; }
+            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
+            .section-header { gap: 12px; }
+            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
+            .section-title-group h2 { font-size: 1.4rem; }
+            .document-content { padding: 28px 20px; }
+            .document-footer { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body data-product-id="pediatric-congenital-heart-defects" data-guide-name="Pediatric Congenital Heart Defects">
+
+    <!-- Download Bar -->
+    <header class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-heart-pulse"></i>
+            <span>Pediatric Congenital Heart Defects</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../my-guides.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Guides
+            </a>
+        </div>
+    </header>
+
+    <!-- Document Container -->
+    <div class="document-container">
+
+        <!-- Cover Page -->
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/pediatric-congenital-heart-defects.webp" alt="Pediatric Heart" onerror="this.onerror=null;this.src='../assets/images/the-nursing-collective-logo.webp';">
+                </div>
+                <div class="cover-badge">
+                    <i class="fas fa-baby"></i> Pediatric Nursing · Chapter 41
+                </div>
+                <h1 class="cover-title">Congenital Heart Defects</h1>
+                <p class="cover-subtitle">Acyanotic vs. cyanotic lesions, Tetralogy of Fallot, hypercyanotic "tet" spells, and priority nursing care for the infant with a CHD.</p>
+                <div class="cover-stats">
+                    <div class="cover-stat">
+                        <div class="number">8/1000</div>
+                        <div class="label">Live Births</div>
+                    </div>
+                    <div class="cover-stat">
+                        <div class="number">4</div>
+                        <div class="label">Defects in TOF</div>
+                    </div>
+                    <div class="cover-stat">
+                        <div class="number">#1</div>
+                        <div class="label">Congenital Anomaly</div>
+                    </div>
+                </div>
+                <div class="cover-brand">The Nursing Collective · Study Guide</div>
+            </div>
+        </div>
+
+        <!-- Document Content -->
+        <div class="document-content">
+
+            <!-- Learning Objectives -->
+            <div class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <div class="learning-objectives-grid">
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Differentiate acyanotic (increased pulmonary flow) from cyanotic (decreased pulmonary flow) defects.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Identify the 4 anatomical defects of Tetralogy of Fallot and their hemodynamic effects.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Recognize and manage a hypercyanotic "tet" spell at the bedside.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Identify early signs of right-sided heart failure in the pediatric patient.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Administer digoxin, diuretics, and prostaglandin E1 safely in infants.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Educate families on feeding, activity, and surgical preparation for a child with CHD.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- High-Yield Summary -->
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
+                <p class="high-yield-subtitle">The 10 things you cannot miss from Chapter 41.</p>
+                <ul>
+                    <li><strong>8 per 1,000 live births</strong> &mdash; CHD is the most common congenital anomaly. Many are identified on fetal ultrasound or at the newborn pulse oximetry screen.</li>
+                    <li><strong>Two big categories:</strong> <strong>Acyanotic</strong> = increased pulmonary blood flow (VSD, ASD, PDA, AVSD) &mdash; left-to-right shunt. <strong>Cyanotic</strong> = decreased pulmonary blood flow (TOF, tricuspid atresia, pulmonary atresia) &mdash; right-to-left shunt.</li>
+                    <li><strong>Tetralogy of Fallot (TOF):</strong> 4 defects &mdash; <strong>P</strong>ulmonary stenosis, <strong>R</strong>ight ventricular hypertrophy, <strong>O</strong>verriding aorta, <strong>V</strong>SD. Think "PROV" or "4 Hs": hypertrophy, hole, hole misplaced, hardened pulmonary valve.</li>
+                    <li><strong>Hypercyanotic "Tet" Spell = EMERGENCY:</strong> Sudden cyanosis, irritability, tachypnea. <strong>First action &mdash; knee-to-chest position.</strong> Then 100% O2, calm infant, morphine IV/IM, IV fluids, phenylephrine if refractory.</li>
+                    <li><strong>Right-sided heart failure in kids</strong> presents differently than adults: <strong>poor feeding, diaphoresis with feeds, failure to thrive, tachypnea at rest, hepatomegaly</strong>. Weight gain = fluid retention, not growth.</li>
+                    <li><strong>Digoxin (Lanoxin):</strong> Check apical HR for 1 full minute before dose. <strong>Hold if infant HR &lt;90-110 bpm</strong> (child &lt;70, adolescent &lt;60). Toxic signs: vomiting, bradycardia, visual changes, arrhythmia.</li>
+                    <li><strong>Prostaglandin E1 (alprostadil)</strong> keeps the ductus arteriosus OPEN in ductal-dependent lesions (e.g., transposition, severe TOF) until surgical repair. Watch for <strong>apnea</strong> &mdash; keep intubation supplies ready.</li>
+                    <li><strong>Feeding pearl:</strong> Infants with CHD tire during feeds &mdash; use soft/preemie nipple, small frequent feeds, limit to 20-30 min, add calorie-dense formula (24-27 kcal/oz) to promote weight gain without extra fluid.</li>
+                    <li><strong>Pulse oximetry screening</strong> on every newborn between 24-48 hours of life. Failed screen = oxygen saturation below 90%, or a 3%+ difference between right-hand and foot readings. Prompts echocardiogram.</li>
+                    <li><strong>SBE (subacute bacterial endocarditis) prophylaxis</strong> with dental procedures is required for unrepaired cyanotic CHD, prosthetic valves, and the first 6 months after repair.</li>
+                </ul>
+                <p class="high-yield-cta">Full clinical breakdown below &darr;</p>
+            </section>
+
+            <!-- Quick Navigation -->
+            <nav class="sticky-nav">
+                <h3>Jump to section</h3>
+                <div class="nav-pills">
+                    <a href="#fetal-circulation"><i class="fas fa-heart"></i> Fetal Circulation</a>
+                    <a href="#classification"><i class="fas fa-sitemap"></i> Classification</a>
+                    <a href="#increased-flow"><i class="fas fa-arrow-up"></i> Increased Flow</a>
+                    <a href="#decreased-flow"><i class="fas fa-arrow-down"></i> Decreased Flow</a>
+                    <a href="#tof"><i class="fas fa-heart-broken"></i> Tetralogy of Fallot</a>
+                    <a href="#tet-spells"><i class="fas fa-exclamation-triangle"></i> Tet Spells</a>
+                    <a href="#obstructive"><i class="fas fa-compress-arrows-alt"></i> Obstructive</a>
+                    <a href="#right-heart-failure"><i class="fas fa-weight"></i> Right HF</a>
+                    <a href="#nursing-care"><i class="fas fa-user-nurse"></i> Nursing Care</a>
+                    <a href="#medications"><i class="fas fa-pills"></i> Medications</a>
+                    <a href="#family-education"><i class="fas fa-users"></i> Family Ed</a>
+                </div>
+            </nav>
+
+            <!-- Section 1: Fetal Circulation -->
+            <section class="guide-section" id="fetal-circulation">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <div class="section-title-group">
+                        <h2>Fetal Circulation &amp; Transition</h2>
+                        <div class="subtitle">Why CHD becomes obvious after birth</div>
+                    </div>
+                </div>
+
+                <p>In fetal life, the placenta does the work of the lungs. Three shunts route blood AROUND the non-functioning lungs. At birth, these shunts must close for normal circulation &mdash; when they stay open or when structural defects exist, problems emerge.</p>
+
+                <h3>The 3 Fetal Shunts</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Shunt</th>
+                                <th>Location</th>
+                                <th>Purpose in Utero</th>
+                                <th>Closes Around</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Ductus venosus</strong></td>
+                                <td>Umbilical vein &rarr; IVC</td>
+                                <td>Bypasses the liver</td>
+                                <td>1-2 weeks after birth</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Foramen ovale</strong></td>
+                                <td>Right atrium &rarr; Left atrium</td>
+                                <td>Bypasses the lungs</td>
+                                <td>Functionally within hours; anatomically by ~1 year</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Ductus arteriosus</strong></td>
+                                <td>Pulmonary artery &rarr; Aorta</td>
+                                <td>Bypasses the lungs</td>
+                                <td>Functionally 10-15 hours; anatomically 2-3 weeks</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-transition">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">"Honeymoon Period" in the First 24-48 Hours</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Many infants with CHD look completely normal at birth.</strong> Their PDA is still open, pulmonary pressures are still high, and blood is mixing "just enough." Symptoms appear over the first few days as the ductus closes and pulmonary pressure drops &mdash; this is why every newborn gets pulse oximetry screening at 24-48 hours of life.
+                    </div>
+                </div>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="info-box-content">
+                        <h5>When the Ductus Should Stay OPEN</h5>
+                        <p>In <strong>ductal-dependent lesions</strong> (severe TOF, transposition of the great arteries, hypoplastic left heart, pulmonary atresia), the open ductus is the <em>only</em> way blood can reach the lungs or body. These infants crash when the ductus closes. Treatment: <strong>IV prostaglandin E1</strong> to keep it open until surgery.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: The transition from fetal to neonatal circulation unmasks most CHDs. Pulse ox screening between 24-48 hours catches many of them before discharge.</div>
+            </section>
+
+            <!-- Section 2: Classification -->
+            <section class="guide-section" id="classification">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <div class="section-title-group">
+                        <h2>Classification of Congenital Heart Defects</h2>
+                        <div class="subtitle">Acyanotic vs. cyanotic &mdash; and why it matters</div>
+                    </div>
+                </div>
+
+                <p>The classic teaching splits CHDs by whether they cause cyanosis. A more useful clinical framework groups them by <strong>hemodynamics</strong> &mdash; what direction blood is shunting and how pulmonary blood flow is affected. The 4-category system below is what most peds textbooks now use.</p>
+
+                <div class="defect-comparison">
+                    <div class="defect-card">
+                        <div class="defect-card-header acyanotic">
+                            <i class="fas fa-arrow-up"></i>
+                            <h4>Increased Pulmonary Flow</h4>
+                            <span class="tag">Acyanotic</span>
+                        </div>
+                        <div class="defect-card-body">
+                            <p><strong>Left-to-right shunt</strong> &mdash; oxygenated blood leaks from the high-pressure left side to the low-pressure right side, flooding the lungs.</p>
+                            <ul>
+                                <li><strong>VSD</strong> (ventricular septal defect)</li>
+                                <li><strong>ASD</strong> (atrial septal defect)</li>
+                                <li><strong>PDA</strong> (patent ductus arteriosus)</li>
+                                <li><strong>AVSD</strong> (atrioventricular septal defect)</li>
+                            </ul>
+                            <p><strong>Key s/s:</strong> CHF signs, FTT, recurrent respiratory infections, murmur.</p>
+                        </div>
+                    </div>
+
+                    <div class="defect-card">
+                        <div class="defect-card-header cyanotic">
+                            <i class="fas fa-arrow-down"></i>
+                            <h4>Decreased Pulmonary Flow</h4>
+                            <span class="tag">Cyanotic</span>
+                        </div>
+                        <div class="defect-card-body">
+                            <p><strong>Right-to-left shunt</strong> &mdash; deoxygenated blood bypasses the lungs and enters systemic circulation. Results in cyanosis.</p>
+                            <ul>
+                                <li><strong>Tetralogy of Fallot (TOF)</strong></li>
+                                <li><strong>Tricuspid atresia</strong></li>
+                                <li><strong>Pulmonary atresia</strong></li>
+                            </ul>
+                            <p><strong>Key s/s:</strong> cyanosis, clubbing, polycythemia, hypercyanotic "tet" spells.</p>
+                        </div>
+                    </div>
+
+                    <div class="defect-card">
+                        <div class="defect-card-header obstructive">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <h4>Obstructive Defects</h4>
+                            <span class="tag">Acyanotic</span>
+                        </div>
+                        <div class="defect-card-body">
+                            <p><strong>Narrowed flow</strong> downstream of a ventricle &mdash; creates back-pressure and decreased cardiac output.</p>
+                            <ul>
+                                <li><strong>Coarctation of the aorta</strong></li>
+                                <li><strong>Aortic stenosis</strong></li>
+                                <li><strong>Pulmonary stenosis</strong></li>
+                            </ul>
+                            <p><strong>Key s/s:</strong> diminished pulses or BP differences (coarctation), murmur, CHF.</p>
+                        </div>
+                    </div>
+
+                    <div class="defect-card">
+                        <div class="defect-card-header mixed">
+                            <i class="fas fa-random"></i>
+                            <h4>Mixed Defects</h4>
+                            <span class="tag">Cyanotic</span>
+                        </div>
+                        <div class="defect-card-body">
+                            <p>Survival depends on mixing of oxygenated and deoxygenated blood at atrial, ventricular, or great-vessel level.</p>
+                            <ul>
+                                <li><strong>Transposition of Great Arteries</strong></li>
+                                <li><strong>Truncus arteriosus</strong></li>
+                                <li><strong>Hypoplastic left heart syndrome</strong></li>
+                                <li><strong>Total Anomalous Pulmonary Venous Return</strong></li>
+                            </ul>
+                            <p><strong>Key s/s:</strong> cyanosis + CHF. Usually ductal-dependent.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box nclex">
+                    <div class="info-box-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="info-box-content">
+                        <h5>NCLEX Memory Trick</h5>
+                        <p><strong>"The 5 T's" of cyanotic CHD:</strong> <strong>T</strong>etralogy of Fallot · <strong>T</strong>ransposition of the great arteries · <strong>T</strong>runcus arteriosus · <strong>T</strong>ricuspid atresia · <strong>T</strong>otal anomalous pulmonary venous return. If a newborn is cyanotic and you see a "T" word in the answer, think CHD.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Left-to-right shunt = CHF signs + murmur. Right-to-left shunt = cyanosis + tet spells. Obstructive = pressure back-up. Mixed = both.</div>
+            </section>
+
+            <!-- Section 3: Increased Pulmonary Flow Defects -->
+            <section class="guide-section" id="increased-flow">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <div class="section-title-group">
+                        <h2>Defects with Increased Pulmonary Blood Flow</h2>
+                        <div class="subtitle">Left-to-right shunts &mdash; VSD, ASD, PDA, AVSD</div>
+                    </div>
+                </div>
+
+                <p>In these acyanotic defects, an abnormal opening lets oxygenated blood from the high-pressure left side leak into the low-pressure right side. The lungs are flooded, the right heart works harder, and over time the child develops signs of heart failure. Cyanosis is <em>not</em> typical unless the shunt reverses (Eisenmenger syndrome &mdash; late finding).</p>
+
+                <div class="defect-profile" id="vsd">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill acyanotic">VSD</span>
+                        <h4>Ventricular Septal Defect</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> Opening in the septum between the ventricles. The <strong>most common CHD</strong>. Blood flows from LV &rarr; RV &rarr; lungs.</p>
+                        <p><strong>Signs &amp; symptoms:</strong></p>
+                        <ul>
+                            <li><strong>Loud, harsh, holosystolic murmur</strong> at the left lower sternal border &mdash; often how it's first found</li>
+                            <li>CHF signs if defect is large: tachypnea, poor feeding, diaphoresis with feeds, FTT</li>
+                            <li>Small VSDs often close on their own by age 2</li>
+                        </ul>
+                        <p><strong>Treatment:</strong> Small VSDs &mdash; watch and wait. Moderate/large &mdash; diuretics + ACE inhibitor + digoxin, then surgical closure (patch) between 3-12 months if not closing.</p>
+                    </div>
+                </div>
+
+                <div class="defect-profile" id="asd">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill acyanotic">ASD</span>
+                        <h4>Atrial Septal Defect</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> Opening in the atrial septum. Blood flows LA &rarr; RA &rarr; RV &rarr; lungs. Many children are asymptomatic for years.</p>
+                        <p><strong>Signs &amp; symptoms:</strong></p>
+                        <ul>
+                            <li><strong>Soft systolic ejection murmur</strong> at the left upper sternal border with a <strong>fixed, split S2</strong></li>
+                            <li>Often detected incidentally; mild CHF symptoms if large</li>
+                            <li>Adult-onset complications: atrial arrhythmias, pulmonary hypertension, stroke (paradoxical embolism)</li>
+                        </ul>
+                        <p><strong>Treatment:</strong> Small ASDs may close spontaneously. Larger defects are closed with a <strong>cardiac catheterization device (Amplatzer occluder)</strong> or surgical patch around age 4-5.</p>
+                    </div>
+                </div>
+
+                <div class="defect-profile" id="pda">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill acyanotic">PDA</span>
+                        <h4>Patent Ductus Arteriosus</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> The fetal ductus arteriosus fails to close after birth. Blood shunts from aorta &rarr; pulmonary artery (left-to-right). Most common in premature infants.</p>
+                        <p><strong>Signs &amp; symptoms:</strong></p>
+                        <ul>
+                            <li><strong>Continuous "machinery-like" murmur</strong> at the left upper sternal border &mdash; pathognomonic</li>
+                            <li>Wide pulse pressure, bounding pulses</li>
+                            <li>CHF signs in premature infants</li>
+                        </ul>
+                        <p><strong>Treatment:</strong></p>
+                        <ul>
+                            <li><strong>Indomethacin</strong> or <strong>ibuprofen</strong> (prostaglandin inhibitors) to close a PDA in a premature infant</li>
+                            <li>Catheter-based closure or surgical ligation if medical therapy fails</li>
+                            <li><strong>Do NOT give prostaglandin inhibitors if the infant has a ductal-dependent lesion</strong> (the PDA is keeping them alive)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="defect-profile" id="avsd">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill acyanotic">AVSD</span>
+                        <h4>Atrioventricular Septal Defect</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> Large hole in the center of the heart involving both atrial and ventricular septums, plus a single common AV valve. <strong>Strongly associated with Trisomy 21 (Down syndrome).</strong></p>
+                        <p><strong>Signs &amp; symptoms:</strong> Severe CHF in early infancy, loud murmur, FTT, frequent pulmonary infections.</p>
+                        <p><strong>Treatment:</strong> Surgical repair by age 3-6 months &mdash; patch closure of the septal defects and reconstruction of the AV valves.</p>
+                    </div>
+                </div>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon"><i class="fas fa-baby"></i></div>
+                    <div class="info-box-content">
+                        <h5>Pediatric Assessment Pearl</h5>
+                        <p>Infants with large left-to-right shunts often <strong>feed poorly and sweat during feeds</strong>. Diaphoresis with feeding is an early and specific sign of infant CHF &mdash; the "cardiac sign" parents rarely know to report. Always ask: "How long does feeding take? Does your baby sweat while feeding?"</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: VSD = harsh holosystolic murmur. ASD = fixed split S2. PDA = machinery murmur. AVSD = think Down syndrome. All four can cause CHF from over-circulation.</div>
+            </section>
+
+            <!-- Section 4: Decreased Pulmonary Flow Defects -->
+            <section class="guide-section" id="decreased-flow">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <div class="section-title-group">
+                        <h2>Defects with Decreased Pulmonary Blood Flow</h2>
+                        <div class="subtitle">Right-to-left shunts &mdash; cyanotic CHDs</div>
+                    </div>
+                </div>
+
+                <p>In these defects, an obstruction to pulmonary flow is combined with a septal defect &mdash; so deoxygenated blood takes the path of least resistance and crosses into the left heart (right-to-left shunt). The result is systemic cyanosis. <strong>Tetralogy of Fallot is the most common cyanotic CHD beyond infancy.</strong></p>
+
+                <div class="defect-profile" id="tof-intro">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill cyanotic">TOF</span>
+                        <h4>Tetralogy of Fallot (most common cyanotic CHD)</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> 4 defects together (detailed in Section 5 below). Result: decreased pulmonary flow + right-to-left shunt at the VSD = cyanosis.</p>
+                    </div>
+                </div>
+
+                <div class="defect-profile" id="tricuspid-atresia">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill cyanotic">TA</span>
+                        <h4>Tricuspid Atresia</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> No tricuspid valve &mdash; no direct path from RA to RV. Blood must shunt right-to-left through an ASD (or PFO) to reach the left heart, then some goes to the lungs via a VSD or PDA.</p>
+                        <p><strong>Signs &amp; symptoms:</strong> <strong>Profound cyanosis at birth</strong>, tachypnea, clubbing, poor growth. Ductal-dependent.</p>
+                        <p><strong>Treatment:</strong> Prostaglandin E1 at birth; staged surgical repair (Blalock-Taussig shunt &rarr; Glenn &rarr; Fontan by age 2-4).</p>
+                    </div>
+                </div>
+
+                <div class="defect-profile" id="pulmonary-atresia">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill cyanotic">PA</span>
+                        <h4>Pulmonary Atresia</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> No pulmonary valve &mdash; no flow from RV to pulmonary artery. Survival requires a PDA and usually an ASD for blood to reach the lungs.</p>
+                        <p><strong>Signs &amp; symptoms:</strong> Severe cyanosis within hours of birth as the ductus closes.</p>
+                        <p><strong>Treatment:</strong> Emergent prostaglandin E1, surgical or catheter intervention to establish pulmonary flow.</p>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="info-box-content">
+                        <h5>Cyanosis That Does Not Improve With O2</h5>
+                        <p>If a cyanotic newborn's SpO2 does NOT improve after 100% oxygen (the "hyperoxia test"), suspect <strong>cyanotic CHD</strong> &mdash; not a pulmonary cause. In lung disease, oxygen improves saturation. In cyanotic CHD, blood is bypassing the lungs entirely, so extra oxygen has nowhere to go. Call cardiology and start prostaglandin E1.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Right-to-left shunts = blue baby. Many are ductal-dependent &mdash; prostaglandin E1 is the life-saver until surgery.</div>
+            </section>
+
+            <!-- Section 5: Tetralogy of Fallot Deep Dive -->
+            <section class="guide-section" id="tof">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <div class="section-title-group">
+                        <h2>Tetralogy of Fallot (TOF)</h2>
+                        <div class="subtitle">The classic cyanotic CHD &mdash; 4 defects, one picture</div>
+                    </div>
+                </div>
+
+                <p>TOF is the most common cyanotic CHD in children. It's actually <strong>four</strong> defects that occur together. The mnemonic <strong>"PROV"</strong> (or "4 Hs") captures all four:</p>
+
+                <div class="tof-grid">
+                    <div class="tof-card" data-num="P">
+                        <h4>Pulmonary Stenosis</h4>
+                        <p>Narrowed pulmonary outflow tract. <strong>The severity of stenosis determines severity of cyanosis.</strong></p>
+                    </div>
+                    <div class="tof-card" data-num="R">
+                        <h4>Right Ventricular Hypertrophy</h4>
+                        <p>The RV thickens from pumping against pulmonary stenosis. Creates a <strong>"boot-shaped heart"</strong> on chest X-ray.</p>
+                    </div>
+                    <div class="tof-card" data-num="O">
+                        <h4>Overriding Aorta</h4>
+                        <p>The aorta sits over the VSD, receiving blood from BOTH ventricles (oxygenated + deoxygenated mixed).</p>
+                    </div>
+                    <div class="tof-card" data-num="V">
+                        <h4>Ventricular Septal Defect</h4>
+                        <p>Large hole between the ventricles. Because pulmonary stenosis raises RV pressure, blood shunts <strong>right-to-left</strong> (unlike an isolated VSD).</p>
+                    </div>
+                </div>
+
+                <h3>Signs &amp; Symptoms</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Cyanosis:</strong> At birth if severe stenosis; otherwise develops over weeks to months.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Loud systolic murmur</strong> at the left upper sternal border (from the pulmonary stenosis).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Clubbing</strong> of fingers and toes from chronic hypoxia (older infants/children).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Polycythemia</strong> as the body compensates for hypoxia &mdash; thick blood, stroke risk.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Squatting</strong> in toddlers &mdash; increases systemic vascular resistance, forces more blood to lungs.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Hypercyanotic "tet" spells</strong> &mdash; episodes of sudden profound cyanosis (see Section 6).</p>
+                    </div>
+                </div>
+
+                <h3>Diagnostic Findings</h3>
+
+                <ul>
+                    <li><strong>Chest X-ray:</strong> "Boot-shaped" heart (coeur en sabot) from RV hypertrophy</li>
+                    <li><strong>Echocardiogram:</strong> Confirms all 4 defects and assesses severity</li>
+                    <li><strong>ABG:</strong> Decreased PaO2 that doesn't improve with 100% O2</li>
+                    <li><strong>CBC:</strong> Elevated hemoglobin/hematocrit from compensatory polycythemia</li>
+                </ul>
+
+                <h3>Surgical Management</h3>
+
+                <ul>
+                    <li><strong>Complete intracardiac repair</strong> is standard &mdash; usually between 3 and 6 months of age. Surgeon closes the VSD with a patch, relieves the pulmonary stenosis, and aligns the aorta.</li>
+                    <li><strong>Palliative Blalock-Taussig-Thomas (BT) shunt</strong> may be placed first in very small or very cyanotic infants &mdash; a Gore-Tex tube connects the subclavian (or innominate) artery to the pulmonary artery to increase pulmonary blood flow until definitive repair.</li>
+                    <li>Post-repair, children generally do well with normal life expectancy, though some need re-operation for pulmonary valve regurgitation in adolescence/adulthood.</li>
+                </ul>
+
+                <div class="florencebot-tip" id="tip-squatting">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Why Toddlers with TOF Squat</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Squatting is a compensatory move &mdash; not a behavior problem.</strong> When the child squats, the knees kink the femoral arteries, sharply raising systemic vascular resistance (SVR). Higher SVR forces more blood across the VSD <em>forward</em> to the lungs instead of right-to-left. More lung blood = better oxygenation. This is the same physiology behind the knee-chest position during a tet spell.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: TOF = <strong>P</strong>ulmonary stenosis + <strong>R</strong>V hypertrophy + <strong>O</strong>verriding aorta + <strong>V</strong>SD. Boot-shaped heart, squatting, tet spells. Repaired by 6 months of age.</div>
+            </section>
+
+            <!-- Section 6: Hypercyanotic "Tet" Spells -->
+            <section class="guide-section" id="tet-spells">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <div class="section-title-group">
+                        <h2>Hypercyanotic "Tet" Spells</h2>
+                        <div class="subtitle">Recognize and treat &mdash; a pediatric cardiac emergency</div>
+                    </div>
+                </div>
+
+                <p>A <strong>tet spell</strong> (hypercyanotic episode) is a sudden, dramatic worsening of right-to-left shunting in a child with TOF (or another cyanotic CHD). The pulmonary outflow tract spasms, blocking blood from reaching the lungs, so even more deoxygenated blood is pushed across the VSD to the body. <strong>This is a life-threatening emergency</strong> &mdash; recognize and treat immediately.</p>
+
+                <h3>Triggers</h3>
+
+                <ul>
+                    <li>Crying, feeding, straining (Valsalva)</li>
+                    <li>Waking up in the morning &mdash; decreased SVR after sleep</li>
+                    <li>Fever or dehydration</li>
+                    <li>Bowel movement</li>
+                    <li>Painful procedures (blood draws, IV starts)</li>
+                </ul>
+
+                <h3>Signs &amp; Symptoms</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p><strong>Sudden, profound cyanosis</strong> &mdash; lips, nail beds, skin turn dusky/blue.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p><strong>Tachypnea &amp; deep labored breathing</strong> (hyperpnea).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p><strong>Irritability, restlessness, inconsolable crying</strong> &mdash; OR limpness if severe.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p><strong>Murmur may diminish or disappear</strong> (less flow through the pulmonary stenosis).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p><strong>Loss of consciousness, seizures</strong> if prolonged and untreated.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>Can last minutes to an hour; rarely fatal but risk of stroke, brain injury.</p>
+                    </div>
+                </div>
+
+                <h3>Emergency Management &mdash; In Order</h3>
+
+                <ol class="step-list">
+                    <li><strong>Knee-to-chest position.</strong> This is the <em>first action</em>. Flex the infant's knees up to the chest (or have an older child squat). It raises SVR and forces blood to the lungs. <strong>Do this even before calling for help.</strong></li>
+                    <li><strong>Administer 100% oxygen</strong> by blow-by or mask. Dilates pulmonary vasculature.</li>
+                    <li><strong>Calm the child.</strong> Soft voice, dim lights, limit stimulation. Agitation worsens the spell.</li>
+                    <li><strong>Morphine 0.1-0.2 mg/kg IV, IM, or SubQ.</strong> Reduces infundibular spasm, decreases respiratory drive, calms the child.</li>
+                    <li><strong>IV fluid bolus</strong> (normal saline 10-20 mL/kg) &mdash; increases preload and pulmonary flow.</li>
+                    <li><strong>If refractory:</strong> IV phenylephrine (vasoconstrictor that raises SVR) or propranolol (relieves infundibular spasm).</li>
+                    <li><strong>Notify the cardiology team</strong> &mdash; severe or recurrent spells often push up the timing of surgical repair.</li>
+                </ol>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-ban"></i></div>
+                    <div class="info-box-content">
+                        <h5>Do NOT Do These During a Tet Spell</h5>
+                        <p><strong>Do NOT place the child flat or prone</strong> &mdash; lowers SVR and worsens the shunt. <strong>Do NOT restrain or force procedures</strong> &mdash; agitation escalates the spell. <strong>Do NOT delay the knee-chest position</strong> to get vitals or call the doctor &mdash; knee-chest comes first.</p>
+                    </div>
+                </div>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon"><i class="fas fa-baby"></i></div>
+                    <div class="info-box-content">
+                        <h5>Teach the Family the Knee-Chest Maneuver</h5>
+                        <p>Every parent of a child with TOF needs to know the knee-chest position BEFORE discharge. Have them demonstrate it back to you. This single maneuver can stop a spell before it becomes life-threatening. Then call 911 and head to the ED.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Tet spell = emergency. <strong>Knee-chest first</strong>, then O2, calm, morphine, fluids. Teach parents to do the position at home.</div>
+            </section>
+
+            <!-- Section 7: Obstructive Defects -->
+            <section class="guide-section" id="obstructive">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <div class="section-title-group">
+                        <h2>Obstructive Defects</h2>
+                        <div class="subtitle">Coarctation, aortic stenosis, pulmonary stenosis</div>
+                    </div>
+                </div>
+
+                <p>These defects create a narrowing that obstructs outflow from a ventricle or through the aorta. The pressure builds up behind the obstruction, straining the heart. These are typically acyanotic (unless severe) but can cause dangerous pressure differences.</p>
+
+                <div class="defect-profile">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill obstructive">COA</span>
+                        <h4>Coarctation of the Aorta</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> Narrowing of the aorta, usually just distal to the left subclavian artery. Blood can't easily get to the lower body.</p>
+                        <p><strong>Hallmark signs (NCLEX favorite):</strong></p>
+                        <ul>
+                            <li><strong>Higher BP in the arms than the legs</strong> (&gt;20 mmHg difference)</li>
+                            <li><strong>Bounding brachial pulses, weak or absent femoral pulses</strong></li>
+                            <li>Cool lower extremities, leg pain with exercise</li>
+                            <li>Headaches, nosebleeds in older kids (from upper-body hypertension)</li>
+                            <li>Signs of CHF in infants if severe</li>
+                        </ul>
+                        <p><strong>Treatment:</strong> Balloon angioplasty, stent placement, or surgical resection. Infants with severe coarctation need prostaglandin E1 to keep the PDA open until repair.</p>
+                    </div>
+                </div>
+
+                <div class="defect-profile">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill obstructive">AS</span>
+                        <h4>Aortic Stenosis</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> Narrowed aortic valve obstructs LV outflow. Decreases cardiac output.</p>
+                        <p><strong>Signs &amp; symptoms:</strong> Systolic ejection murmur at the right upper sternal border radiating to the neck, chest pain or syncope on exertion, fatigue. Severe cases: poor feeding, signs of CHF in infancy.</p>
+                        <p><strong>Treatment:</strong> Balloon valvuloplasty or valve replacement. <strong>Activity restriction</strong> (no competitive sports) for moderate-to-severe stenosis.</p>
+                    </div>
+                </div>
+
+                <div class="defect-profile">
+                    <div class="defect-profile-header">
+                        <span class="icon-pill obstructive">PS</span>
+                        <h4>Pulmonary Stenosis</h4>
+                    </div>
+                    <div class="defect-profile-body">
+                        <p><strong>What it is:</strong> Narrowed pulmonary valve obstructs RV outflow. Often mild and asymptomatic.</p>
+                        <p><strong>Signs &amp; symptoms:</strong> Systolic ejection murmur at the left upper sternal border. Severe cases: cyanosis, RV hypertrophy, fatigue.</p>
+                        <p><strong>Treatment:</strong> Balloon valvuloplasty is the go-to for significant stenosis.</p>
+                    </div>
+                </div>
+
+                <div class="info-box nclex">
+                    <div class="info-box-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="info-box-content">
+                        <h5>NCLEX Alert: The 4-Extremity BP</h5>
+                        <p>If the question describes a child with <strong>hypertension in the arms and weak femoral pulses</strong>, or asks which assessment to prioritize in suspected coarctation, the answer is <strong>blood pressures in all four extremities</strong>. A gradient &gt;20 mmHg between upper and lower extremities is diagnostic until proven otherwise.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Coarctation = BP mismatch between arms and legs. AS &amp; PS = ejection murmurs; balloon valvuloplasty is the workhorse.</div>
+            </section>
+
+            <!-- Section 8: Right-Sided Heart Failure -->
+            <section class="guide-section" id="right-heart-failure">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <div class="section-title-group">
+                        <h2>Right-Sided Heart Failure in Children</h2>
+                        <div class="subtitle">Different presentation than adult CHF</div>
+                    </div>
+                </div>
+
+                <p>Right-sided HF in kids with CHD looks nothing like the adult "wet cough and ankle edema" picture. Infants with CHF are <strong>poor feeders</strong> first &mdash; feeding is exercise, and a failing heart cannot meet the oxygen demand of a 20-minute feed.</p>
+
+                <h3>Classic Signs of CHF in Infants</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>What You'll See</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Feeding</strong></td>
+                                <td>Tires quickly, stops after 1-2 oz, diaphoresis with feeds, prolonged feeding time (&gt;30 min)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Respiratory</strong></td>
+                                <td>Tachypnea at rest (&gt;60/min infant), retractions, grunting, nasal flaring, frequent URIs</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Cardiac</strong></td>
+                                <td>Tachycardia at rest, gallop rhythm, cool extremities, weak pulses, prolonged cap refill</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Systemic/Right-sided</strong></td>
+                                <td>Hepatomegaly (liver edge &gt;2 cm below costal margin), periorbital edema, jugular venous distension (older child), weight gain from fluid, decreased urine output</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Growth</strong></td>
+                                <td>Failure to thrive &mdash; weight gain drops off the growth curve while height is preserved initially</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Priority Nursing Assessment</h3>
+
+                <ul>
+                    <li><strong>Daily weights</strong> at the same time, same scale, same clothing &mdash; earliest and most sensitive indicator of fluid status. Sudden weight gain = fluid retention, not growth.</li>
+                    <li><strong>I&amp;O with every diaper weighed</strong> (1 g = 1 mL).</li>
+                    <li><strong>Respiratory assessment</strong> q2-4 hours: rate, work of breathing, retractions, nasal flaring, grunting.</li>
+                    <li><strong>Cardiac assessment:</strong> apical heart rate for 1 full minute, peripheral pulses, cap refill, skin temperature.</li>
+                    <li><strong>Liver edge palpation</strong> at the mid-clavicular line &mdash; document distance below costal margin.</li>
+                    <li><strong>Feeding tolerance:</strong> time to complete feed, volume taken, diaphoresis, fatigue, cyanosis during feed.</li>
+                </ul>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="info-box-content">
+                        <h5>The Infant CHF Red Flags</h5>
+                        <p>If parents report their baby "takes forever to eat," "falls asleep before finishing the bottle," or "sweats while eating," those are classic early CHF signs. Combined with poor weight gain and fast breathing at rest, think cardiac &mdash; not GI or respiratory.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Infant CHF = poor feeding + tachypnea + diaphoresis + FTT + hepatomegaly. Daily weights are the #1 nursing indicator.</div>
+            </section>
+
+            <!-- Section 9: Nursing Care -->
+            <section class="guide-section" id="nursing-care">
+                <div class="section-header">
+                    <div class="section-number">9</div>
+                    <div class="section-title-group">
+                        <h2>Priority Nursing Care</h2>
+                        <div class="subtitle">Conserving energy, supporting growth, preventing complications</div>
+                    </div>
+                </div>
+
+                <h3>Energy Conservation</h3>
+
+                <ul>
+                    <li><strong>Cluster care</strong> to allow long periods of undisturbed rest.</li>
+                    <li><strong>Limit feeding time to 20-30 minutes</strong> &mdash; if not finished, give the remainder by NG tube rather than push the baby to exhaustion.</li>
+                    <li><strong>Soft/preemie nipple</strong> with a larger hole requires less work.</li>
+                    <li>Hold the infant in a <strong>semi-upright position</strong> during and after feeds to decrease reflux and reduce cardiac demand.</li>
+                    <li>Organize cares around scheduled feeds; minimize crying episodes.</li>
+                </ul>
+
+                <h3>Nutrition &amp; Growth Support</h3>
+
+                <ul>
+                    <li><strong>Small, frequent feeds</strong> (every 2-3 hours) rather than large volumes.</li>
+                    <li><strong>Calorie-dense formula</strong> (24-27 kcal/oz) &mdash; more calories in less volume = less fluid + more growth.</li>
+                    <li>Add rice cereal as age-appropriate for calorie density.</li>
+                    <li>Daily weights; weight gain of <strong>15-30 g/day</strong> is target for infants.</li>
+                    <li>Consider gavage (NG/OG) feeds to supplement if oral intake is poor.</li>
+                </ul>
+
+                <h3>Oxygenation &amp; Respiratory Support</h3>
+
+                <ul>
+                    <li>Continuous pulse oximetry; know the baseline SpO2 (may be 75-85% in unrepaired cyanotic lesions &mdash; do NOT chase 100%).</li>
+                    <li>Supplemental O2 per order; avoid unnecessary O2 in ductal-dependent lesions (can promote ductal closure).</li>
+                    <li>HOB elevated 30-45 degrees.</li>
+                    <li>Suction prn; pulmonary toileting.</li>
+                </ul>
+
+                <h3>Preventing Infection</h3>
+
+                <ul>
+                    <li>Strict hand hygiene for all caregivers and visitors.</li>
+                    <li>Limit visitors, especially young children during RSV/flu season.</li>
+                    <li>Ensure routine childhood vaccinations are up to date &mdash; including RSV prophylaxis (<strong>palivizumab / nirsevimab</strong>) for high-risk infants.</li>
+                    <li><strong>SBE prophylaxis</strong> with amoxicillin before dental and invasive procedures for unrepaired cyanotic CHD, prosthetic valves, or the first 6 months after repair.</li>
+                </ul>
+
+                <h3>Post-Operative Priorities (Cardiac Surgery)</h3>
+
+                <ul>
+                    <li><strong>Airway &amp; hemodynamics first:</strong> ventilator settings, chest tube output, pacing wires, arterial line, CVP.</li>
+                    <li>Monitor for <strong>low cardiac output syndrome</strong> &mdash; hypotension, tachycardia, oliguria, mottling, decreased cap refill.</li>
+                    <li>Pain &amp; sedation management; scheduled around care.</li>
+                    <li>Chest tube assessment: amount, character, air leaks. Report sudden increase (&gt;3 mL/kg/hr) &mdash; bleeding.</li>
+                    <li>Watch for arrhythmias (especially junctional ectopic tachycardia, heart block after VSD closure).</li>
+                    <li>Sternal precautions: no pulling infants up by their arms &mdash; lift under the bottom/back. Typically for 6 weeks.</li>
+                </ul>
+
+                <div class="bottom-line">🎯 Bottom Line: Conserve energy, pack in calories, prevent infection, and protect the repaired heart. Daily weights, clustered care, SBE prophylaxis.</div>
+            </section>
+
+            <!-- Section 10: Medications -->
+            <section class="guide-section" id="medications">
+                <div class="section-header">
+                    <div class="section-number">10</div>
+                    <div class="section-title-group">
+                        <h2>Medications</h2>
+                        <div class="subtitle">Digoxin, diuretics, ACE inhibitors, prostaglandin E1</div>
+                    </div>
+                </div>
+
+                <div class="med-grid">
+                    <div class="med-card">
+                        <h5>Digoxin (Lanoxin)</h5>
+                        <div class="med-class">Cardiac Glycoside · Positive Inotrope</div>
+                        <p><strong>Why:</strong> Improves contractility, slows heart rate.</p>
+                        <p><strong>Check apical HR for 1 full minute before every dose.</strong></p>
+                        <p><strong>Hold if HR &lt;:</strong> Infant 90-110 · Child 70 · Adolescent 60.</p>
+                        <p><strong>Toxicity:</strong> N/V, bradycardia, visual "yellow-green halo," arrhythmia. Therapeutic level 0.8-2.0 ng/mL.</p>
+                        <p><strong>Hypokalemia potentiates toxicity</strong> &mdash; monitor potassium closely when on digoxin + diuretics.</p>
+                        <p><strong>If a dose is missed &gt;4 hrs:</strong> skip it, resume next scheduled dose &mdash; do NOT double up.</p>
+                        <p><strong>If infant vomits:</strong> do NOT re-dose; give next scheduled dose.</p>
+                    </div>
+
+                    <div class="med-card">
+                        <h5>Furosemide (Lasix)</h5>
+                        <div class="med-class">Loop Diuretic</div>
+                        <p><strong>Why:</strong> Removes extra fluid; reduces preload in CHF.</p>
+                        <p><strong>Monitor:</strong> Daily weights, I&amp;O, electrolytes (especially <strong>potassium</strong>), BUN/creatinine.</p>
+                        <p><strong>Adverse:</strong> Hypokalemia, dehydration, ototoxicity (rare with peds doses).</p>
+                        <p>Give in the morning to avoid night-time diuresis.</p>
+                    </div>
+
+                    <div class="med-card">
+                        <h5>Spironolactone (Aldactone)</h5>
+                        <div class="med-class">Potassium-Sparing Diuretic</div>
+                        <p><strong>Why:</strong> Often added with furosemide to preserve potassium.</p>
+                        <p><strong>Monitor:</strong> Potassium (risk of hyperkalemia), BUN, creatinine.</p>
+                        <p>Avoid salt substitutes (contain KCl).</p>
+                    </div>
+
+                    <div class="med-card">
+                        <h5>Captopril / Enalapril</h5>
+                        <div class="med-class">ACE Inhibitor</div>
+                        <p><strong>Why:</strong> Reduces afterload; decreases workload on the heart in large left-to-right shunts.</p>
+                        <p><strong>Monitor:</strong> BP (first-dose hypotension), serum potassium, renal function.</p>
+                        <p><strong>Adverse:</strong> Dry cough, hyperkalemia, angioedema.</p>
+                    </div>
+
+                    <div class="med-card" style="border-top-color: var(--critical);">
+                        <h5>Prostaglandin E1 (Alprostadil)</h5>
+                        <div class="med-class">Ductal Patency · Critical Med</div>
+                        <p><strong>Why:</strong> Keeps the ductus arteriosus OPEN in ductal-dependent lesions until surgery.</p>
+                        <p><strong>Major adverse:</strong> <strong>Apnea</strong> &mdash; have intubation supplies at bedside. Also hypotension, fever, flushing.</p>
+                        <p>Continuous IV infusion; never stop abruptly unless surgical repair is complete.</p>
+                    </div>
+
+                    <div class="med-card">
+                        <h5>Indomethacin / Ibuprofen</h5>
+                        <div class="med-class">Prostaglandin Inhibitor</div>
+                        <p><strong>Why:</strong> CLOSES a persistent PDA in a premature infant.</p>
+                        <p><strong>Do NOT use in ductal-dependent lesions</strong> &mdash; you'll kill the patient.</p>
+                        <p><strong>Monitor:</strong> Renal function, platelets, GI bleeding, urine output.</p>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-digoxin">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">The Digoxin + Lasix Trap</div>
+                    <div class="florencebot-tip-content">
+                        <strong>Lasix can lower potassium. Low potassium makes digoxin toxic.</strong> Watch K+ labs like a hawk whenever an infant is on both. Signs of digoxin toxicity &mdash; vomiting, bradycardia, new arrhythmia &mdash; in a baby on Lasix are a red flag. The fix is usually potassium replacement, not discontinuing the digoxin.
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="info-box-content">
+                        <h5>Prostaglandin E1 Apnea Risk</h5>
+                        <p>Apnea occurs in 10-12% of infants on PGE1, usually within the first hour. <strong>Always have bag-valve-mask and intubation equipment at the bedside.</strong> Never transport an infant on PGE1 without anesthesia/respiratory support available.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Digoxin (check apical HR × 1 min, hold for low HR). Lasix (watch K+). PGE1 (keep ductus open, apnea risk). Indomethacin (close PDA in preemies only).</div>
+            </section>
+
+            <!-- Section 11: Family Education -->
+            <section class="guide-section" id="family-education">
+                <div class="section-header">
+                    <div class="section-number">11</div>
+                    <div class="section-title-group">
+                        <h2>Family Education &amp; Discharge Planning</h2>
+                        <div class="subtitle">Empowering parents to manage at home</div>
+                    </div>
+                </div>
+
+                <p>Parents of a child with CHD carry enormous responsibility. Every teaching session should be short, repeated, and confirmed by return demonstration. The family also needs support for the emotional weight of their child's diagnosis.</p>
+
+                <h3>Priority Teaching Topics</h3>
+
+                <ul>
+                    <li><strong>Knee-to-chest position</strong> for a tet spell &mdash; have parent demonstrate.</li>
+                    <li><strong>Medication administration:</strong> digoxin via syringe in the side of the mouth, exact dose, what to do if missed or vomited.</li>
+                    <li><strong>Signs to call the cardiologist immediately:</strong> increased cyanosis, poor feeding, lethargy, respiratory distress, weight gain, decreased wet diapers.</li>
+                    <li><strong>Feeding plan:</strong> small frequent feeds, calorie-dense formula, 20-30 min limit.</li>
+                    <li><strong>Infection prevention:</strong> hand hygiene, RSV prophylaxis schedule, avoiding crowds, SBE prophylaxis card for dental visits.</li>
+                    <li><strong>Activity:</strong> infants self-limit; older kids may need activity restrictions (discussed with cardiology). School/daycare notification.</li>
+                    <li><strong>Growth &amp; development:</strong> follow-up with peds and cardiology, anticipate mild developmental delay which usually resolves after repair.</li>
+                </ul>
+
+                <h3>Emotional &amp; Psychosocial Support</h3>
+
+                <ul>
+                    <li>Acknowledge grief &mdash; families often describe the diagnosis as "losing the healthy baby they expected."</li>
+                    <li>Encourage parents to hold and bond with the infant despite medical equipment.</li>
+                    <li>Refer to support groups (e.g., Mended Little Hearts) and social work.</li>
+                    <li>Sibling support: prepare siblings with developmentally appropriate information and hospital visits if safe.</li>
+                    <li>Financial counseling &mdash; CHD care is expensive; connect with hospital financial services.</li>
+                </ul>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon"><i class="fas fa-users"></i></div>
+                    <div class="info-box-content">
+                        <h5>Incorporating the Child into Their Own Care</h5>
+                        <p>For older children, give age-appropriate choices: "Would you like to take your medicine with apple juice or water?" Let them be part of assessments (push the button on the BP cuff, listen to their own heartbeat). This reduces fear, builds trust, and develops health self-advocacy.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Teach, demonstrate, confirm. Knee-chest, meds, feeding, infection prevention, when to call. Support the emotional load on the family.</div>
+            </section>
+
+            <!-- Practice Questions CTA -->
+            <div class="quiz-cta">
+                <h3>Test your knowledge</h3>
+                <p>20+ NCLEX-style questions covering every section of this guide.</p>
+                <a href="quiz/quiz.html?topic=pediatric-congenital-heart-defects" class="quiz-btn">
+                    <i class="fas fa-flask"></i> Start Quiz
+                </a>
+            </div>
+
+            <!-- Cross References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
+                <div class="cross-ref-grid">
+                    <a href="heart-failure.html" class="cross-ref-link">
+                        <i class="fas fa-heart"></i> Heart Failure (Adult)
+                    </a>
+                    <a href="arrhythmias.html" class="cross-ref-link">
+                        <i class="fas fa-wave-square"></i> Arrhythmias
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- end document-content -->
+
+        <!-- Footer -->
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div><!-- end document-container -->
+
+    <!-- Scripts -->
+    <script src="configs/pediatric-congenital-heart-defects-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="../content-gate.js"></script>
+    <script src="../cookie-consent.js"></script>
+</body>
+</html>

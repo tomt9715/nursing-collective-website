@@ -206,7 +206,7 @@
                 },
                 {
                     category: 'Pediatric GU',
-                    categoryIcon: 'renal-icon',
+                    categoryIcon: 'pediatric-icon',
                     icon: 'fa-droplet',
                     colorClass: 'icon-pediatrics',
                     guides: [],
@@ -229,7 +229,7 @@
                 },
                 {
                     category: 'Pediatric Skin',
-                    categoryIcon: 'integumentary-icon',
+                    categoryIcon: 'pediatric-icon',
                     icon: 'fa-hand-dots',
                     colorClass: 'icon-pediatrics',
                     guides: [],
@@ -241,7 +241,7 @@
                 },
                 {
                     category: 'Pediatric Hematology & Oncology',
-                    categoryIcon: 'hematology-icon',
+                    categoryIcon: 'pediatric-icon',
                     icon: 'fa-dna',
                     colorClass: 'icon-pediatrics',
                     guides: [],
@@ -255,7 +255,7 @@
                 },
                 {
                     category: 'Pediatric Immune & Rheumatology',
-                    categoryIcon: 'immune-icon',
+                    categoryIcon: 'pediatric-icon',
                     icon: 'fa-shield-virus',
                     colorClass: 'icon-pediatrics',
                     guides: [],

@@ -138,6 +138,52 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'male-gu-disorders': {
+        title: 'Male GU Disorders',
+        storeUrl: 'pricing.html#male-gu-disorders',
+        content: `
+# Male GU Disorders Study Guide
+
+## Overview
+Phimosis, cryptorchidism, and testicular torsion — three distinct conditions where one is a six-hour surgical emergency.
+
+## What You'll Learn
+
+### Phimosis
+- **Physiologic** (normal before age 3-5, never force retract)
+- **Pathologic** (scarring, BXO)
+- Treatment: topical betamethasone 4-8 weeks
+- **Paraphimosis** = urologic emergency (retracted foreskin won't return)
+
+### Cryptorchidism (Undescended Testes)
+- ~3% term males, most descend by 3-6 months
+- **Orchiopexy by 18 months** to preserve fertility and reduce cancer risk
+- Untreated: **4-8× testicular cancer risk**
+- Retractile testis vs truly cryptorchid
+
+### Testicular Torsion (the big one)
+- **6-HOUR EMERGENCY**
+- Peak ages: neonates and 12-18 years
+- **Sudden severe unilateral pain**, high-riding horizontal testis
+- **Absent cremasteric reflex** = hallmark
+- Bell clapper deformity (bilateral)
+- Treatment: emergent detorsion + bilateral orchiopexy
+- **Don't delay OR for imaging** in classic cases
+
+### Key Teaching
+- Never force retraction in infants
+- Monthly testicular self-exam starting adolescence
+- Dignity and privacy in GU exams
+- Post-orchiopexy: no straddle toys/bikes 2-4 weeks
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Disorder-by-disorder breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'uti-vur-enuresis': {
         title: 'UTI, VUR & Enuresis',
         storeUrl: 'pricing.html#uti-vur-enuresis',

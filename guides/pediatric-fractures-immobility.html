@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Fractures &amp; Immobility Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Pediatric nursing study guide for fractures and immobility. Pediatric-specific fracture types, Salter-Harris classification, neurovascular assessment, compartment syndrome, casts, traction, and immobility complications.">
+    <link rel="canonical" href="https://thenursingcollective.pro/guides/pediatric-fractures-immobility.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/guides/pediatric-fractures-immobility.html">
+    <meta property="og:title" content="Pediatric Fractures &amp; Immobility Study Guide - The Nursing Collective">
+    <meta property="og:description" content="Pediatric nursing study guide for fractures and immobility.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/cookie-consent.css">
+    <link rel="stylesheet" href="guide-sidebar.css">
+
+    <style>
+        /* PEDIATRIC FRACTURES & IMMOBILITY — Pediatric Musculoskeletal */
+        :root {
+            --navy: #0d1b2a;
+            --navy-2: #162032;
+            --navy-3: #1e2d3e;
+            --card-dark: #1a2940;
+            --teal: #0fbcad;
+            --teal-dim: #0a9086;
+            --amber: #f4a535;
+            --green: #3dbd7a;
+            --red: #e05252;
+            --purple: #8b5cf6;
+            --text-inv: #e8edf2;
+            --text-inv-dim: #8a9bb0;
+            --border-inv: rgba(255, 255, 255, 0.07);
+            --border-inv-mid: rgba(255, 255, 255, 0.12);
+
+            --paper: #162032;
+            --paper-warm: #1a2940;
+            --paper-deep: #1e2d3e;
+            --ink: #f1f5f9;
+            --ink-soft: #c4ccd8;
+            --ink-dimmer: #8a9bb0;
+            --rule: rgba(255, 255, 255, 0.08);
+            --rule-mid: rgba(255, 255, 255, 0.14);
+            --rule-soft: rgba(255, 255, 255, 0.04);
+
+            --peds-coral: #ef5a5a;
+            --peds-coral-deep: #dc2f4f;
+            --peds-rose: #fb8989;
+            --peds-blush: rgba(239, 90, 90, 0.12);
+            --peds-blush-2: rgba(239, 90, 90, 0.22);
+            --peds-plum: #fb8989;
+
+            --critical: #dc2626;
+            --safe: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            background: var(--navy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .download-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(13, 27, 42, 0.92);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            color: var(--text-inv);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--border-inv);
+        }
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.01em;
+            color: var(--text-inv);
+        }
+        .download-bar-brand i { color: var(--teal); font-size: 16px; }
+        .download-bar-actions { display: flex; gap: 10px; }
+
+        .btn-download, .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            border: 0.5px solid var(--border-inv-mid);
+        }
+        .btn-download { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+        .btn-download:hover { background: var(--teal-dim); border-color: var(--teal-dim); transform: translateY(-1px); }
+        .btn-back { background: transparent; color: var(--text-inv-dim); }
+        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
+
+        .document-container {
+            max-width: 900px;
+            margin: 80px auto 40px;
+            background: var(--paper);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 0.5px solid var(--rule-mid);
+        }
+
+        .cover-page {
+            background:
+                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
+                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
+            color: white;
+            padding: 72px 60px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--peds-coral);
+        }
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .cover-content { position: relative; z-index: 1; }
+
+        .cover-logo {
+            width: 68px; height: 68px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(239, 90, 90, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            padding: 10px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 50px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
+
+        .cover-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 14px;
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+        }
+        .cover-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            line-height: 1.55;
+        }
+
+        .cover-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+        .cover-meta-item i { color: var(--peds-coral); font-size: 11px; }
+        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
+
+        .document-content { padding: 56px 56px 48px; background: var(--paper); }
+
+        .learning-objectives {
+            background: var(--peds-blush);
+            border: 1px solid var(--peds-blush-2);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--peds-rose);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .learning-objectives h2 i { color: var(--peds-coral); }
+        .learning-objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .objective-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .objective-card i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+
+        .high-yield-summary {
+            background: linear-gradient(135deg, rgba(244, 165, 53, 0.08), rgba(244, 165, 53, 0.02));
+            border: 1px solid rgba(244, 165, 53, 0.25);
+            border-left: 4px solid var(--amber);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .high-yield-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--amber);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .high-yield-summary h2 i { color: var(--amber); }
+        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
+        .high-yield-summary ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .high-yield-summary li {
+            background: rgba(0, 0, 0, 0.18);
+            border-radius: 8px;
+            padding: 12px 14px 12px 38px !important;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            border-bottom: none !important;
+        }
+        .high-yield-summary li::before {
+            left: 14px !important;
+            top: 14px !important;
+            color: var(--amber) !important;
+            font-size: 0.82rem !important;
+        }
+        .high-yield-summary strong { color: var(--amber); font-weight: 600; }
+        .high-yield-summary li strong { color: var(--amber) !important; }
+        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--amber); font-size: 0.95rem; }
+
+        .sticky-nav {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 36px;
+        }
+        .sticky-nav h3 {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--ink-dimmer);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-pills a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.87rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        .nav-pills a:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
+        .nav-pills a i { font-size: 0.82rem; }
+
+        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-number {
+            flex-shrink: 0;
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(239, 90, 90, 0.25);
+        }
+        .section-title-group { flex: 1; min-width: 0; }
+        .section-title-group h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
+
+        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.22rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 24px 0 12px;
+        }
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 18px 0 8px;
+        }
+        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
+        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
+        .guide-section strong { color: var(--ink); font-weight: 600; }
+
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: 10px;
+            border: 1px solid var(--rule);
+        }
+        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+        .guide-table thead { background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep)); color: white; }
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+        }
+        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
+        .guide-table tbody { background: var(--paper-warm); }
+        .guide-table tbody tr:last-child td { border-bottom: none; }
+        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
+        .guide-table tbody tr:hover { background: var(--peds-blush); }
+        .guide-table td strong { color: var(--ink); }
+
+        .info-box {
+            display: flex;
+            gap: 14px;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--rule);
+            border-left-width: 4px;
+        }
+        .info-box-icon {
+            flex-shrink: 0;
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .info-box-content { flex: 1; min-width: 0; }
+        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+
+        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
+        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .info-box.clinical h5 { color: #fbbf24; }
+        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
+        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
+        .info-box.critical h5 { color: #fca5a5; }
+        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
+        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .info-box.nclex h5 { color: #93c5fd; }
+        .info-box.pediatric { background: var(--peds-blush); border-color: var(--peds-blush-2); border-left-color: var(--peds-coral); }
+        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-rose); }
+        .info-box.pediatric h5 { color: var(--peds-rose); }
+        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
+        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
+        .info-box.safe h5 { color: #86efac; }
+        .info-box p { color: var(--ink-soft); }
+        .info-box strong { color: var(--ink); }
+
+        .florencebot-tip {
+            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
+            border: 1px solid rgba(15, 188, 173, 0.22);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .florencebot-tip::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--teal);
+        }
+        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .florencebot-tip-icon {
+            width: 32px; height: 32px;
+            background: var(--teal);
+            border-radius: 8px;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .florencebot-tip-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .florencebot-tip-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #5eead4;
+            margin-bottom: 8px;
+        }
+        .florencebot-tip-content { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; }
+        .florencebot-tip-content strong { color: var(--ink); }
+
+        .bottom-line {
+            background: linear-gradient(135deg, var(--peds-blush), rgba(239, 90, 90, 0.04));
+            border: 0.5px solid var(--peds-blush-2);
+            border-left: 4px solid var(--peds-coral);
+            padding: 14px 18px;
+            margin: 22px 0 0;
+            border-radius: 0 10px 10px 0;
+            font-weight: 500;
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+        .bottom-line strong { color: var(--peds-rose); }
+
+        /* Key point grid */
+        .key-point-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .key-point-item {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .key-point-item i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .key-point-item p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); }
+        .key-point-item strong { color: var(--ink); }
+
+        /* 6 Ps cards (letter-based) */
+        .ps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .ps-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            padding: 14px 16px;
+            position: relative;
+            padding-left: 62px;
+        }
+        .ps-card::before {
+            content: attr(data-letter);
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            width: 34px;
+            height: 34px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+        }
+        .ps-card h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 2px;
+        }
+        .ps-card p {
+            font-size: 0.82rem;
+            color: var(--ink-soft);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Type profile */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .type-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .type-card-header {
+            padding: 16px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .type-card-header.greenstick { background: linear-gradient(135deg, #10b981, #065f46); }
+        .type-card-header.torus { background: linear-gradient(135deg, #f59e0b, #b45309); }
+        .type-card-header.complete { background: linear-gradient(135deg, #dc2626, #7f1d1d); }
+        .type-card-header.salter { background: linear-gradient(135deg, #7c3aed, #4c1d95); }
+        .type-card-header i { font-size: 1.3rem; }
+        .type-card-header h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+        .type-card-header .tag {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            opacity: 0.88;
+            text-transform: uppercase;
+        }
+        .type-card-body { padding: 18px 20px; }
+        .type-card-body ul { padding-left: 20px; margin: 0 !important; }
+        .type-card-body li {
+            margin-bottom: 8px !important;
+            font-size: 0.93rem !important;
+            color: var(--ink-soft) !important;
+            line-height: 1.55 !important;
+        }
+
+        /* Red flag cards */
+        .redflag-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .redflag-card {
+            background: rgba(220, 38, 38, 0.08);
+            border: 0.5px solid rgba(220, 38, 38, 0.25);
+            border-left: 3px solid #f87171;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .redflag-card i {
+            color: #fca5a5;
+            font-size: 0.95rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+        .redflag-card p {
+            margin: 0;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            color: var(--ink-soft);
+        }
+        .redflag-card strong { color: #fca5a5; }
+
+        /* Step list */
+        .step-list {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 20px 0;
+            counter-reset: step;
+        }
+        .step-list li {
+            counter-increment: step;
+            position: relative;
+            padding: 14px 16px 14px 56px;
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 0.97rem;
+            line-height: 1.6;
+            color: var(--ink-soft);
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 30px; height: 30px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.9rem;
+        }
+        .step-list strong { color: var(--ink); }
+
+        /* Cross refs */
+        .cross-references {
+            margin: 36px 0 8px;
+            padding: 24px;
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+        }
+        .cross-references h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cross-references h2 i { color: var(--peds-coral); }
+        .cross-ref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .cross-ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+        .cross-ref-link:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
+        .cross-ref-link i { font-size: 0.85rem; }
+
+        .quiz-cta {
+            background:
+                radial-gradient(ellipse 60% 80% at 90% 10%, rgba(15, 188, 173, 0.12) 0%, transparent 65%),
+                linear-gradient(135deg, var(--card-dark), var(--navy-3));
+            border: 0.5px solid var(--border-inv-mid);
+            color: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin: 36px 0;
+            text-align: center;
+        }
+        .quiz-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
+        .quiz-cta p { color: rgba(255, 255, 255, 0.88); margin-bottom: 20px; font-size: 0.98rem; }
+        .quiz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--teal);
+            color: var(--navy);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
+
+        .document-footer {
+            padding: 32px 56px;
+            background: var(--paper-deep);
+            border-top: 0.5px solid var(--rule);
+            text-align: center;
+        }
+        .footer-logo { height: 28px; margin: 0 auto 14px; opacity: 0.9; }
+        .footer-tagline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 4px; }
+        .footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-dimmer); letter-spacing: 0.02em; }
+
+        /* Sidebar overrides */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            max-width: 1600px;
+        }
+        .sidebar-left, .sidebar-right {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .toc-panel {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            color: var(--text-inv) !important;
+            margin-bottom: 16px !important;
+        }
+        .toc-header {
+            padding-bottom: 14px !important;
+            margin-bottom: 14px !important;
+            border-bottom: 0.5px solid var(--border-inv-mid) !important;
+        }
+        .toc-header h3 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+        }
+        .toc-header i { color: var(--teal) !important; }
+        .toc-link {
+            color: var(--text-inv-dim) !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.88rem !important;
+            border-left: 2px solid transparent !important;
+            padding: 9px 12px !important;
+            background: transparent !important;
+        }
+        .toc-link:hover { background: rgba(15, 188, 173, 0.08) !important; color: var(--text-inv) !important; }
+        .toc-link.active {
+            background: rgba(15, 188, 173, 0.12) !important;
+            color: var(--teal) !important;
+            border-left-color: var(--teal) !important;
+            font-weight: 600 !important;
+        }
+        .toc-link i { color: inherit !important; }
+
+        .toc-progress {
+            margin-top: 14px !important;
+            padding-top: 14px !important;
+            border-top: 0.5px solid var(--border-inv) !important;
+        }
+        .toc-progress-label {
+            display: flex !important;
+            justify-content: space-between !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            letter-spacing: 1px !important;
+            color: var(--text-inv-dim) !important;
+            margin-bottom: 8px !important;
+        }
+        .toc-progress-percent { color: var(--teal) !important; }
+        .toc-progress-bar {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-radius: 999px !important;
+            height: 4px !important;
+            overflow: hidden !important;
+        }
+        .toc-progress-fill {
+            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
+            height: 100% !important;
+        }
+
+        .toc-nav-links {
+            margin-top: 14px !important;
+            padding-top: 14px !important;
+            border-top: 0.5px solid var(--border-inv) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+        }
+        .toc-nav-link {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            color: var(--text-inv-dim) !important;
+            background: transparent !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.84rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            transition: all 0.15s !important;
+        }
+        .toc-nav-link:hover { background: rgba(255, 255, 255, 0.04) !important; color: var(--text-inv) !important; }
+        .toc-nav-link--ai { background: rgba(15, 188, 173, 0.08) !important; color: var(--teal) !important; }
+        .toc-nav-link--ai:hover { background: rgba(15, 188, 173, 0.15) !important; color: var(--teal) !important; }
+
+        .florence-card {
+            background: linear-gradient(135deg, var(--card-dark), var(--navy-3)) !important;
+            border: 0.5px solid var(--border-inv-mid) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            margin-bottom: 16px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .florence-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -40% !important; right: -40% !important;
+            width: 120% !important; height: 120% !important;
+            background: radial-gradient(circle, rgba(15, 188, 173, 0.12) 0%, transparent 60%) !important;
+            pointer-events: none !important;
+        }
+        .florence-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            margin-bottom: 14px !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .florence-avatar {
+            width: 44px !important; height: 44px !important;
+            border-radius: 50% !important;
+            background: rgba(15, 188, 173, 0.15) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
+            padding: 2px !important;
+            box-shadow: none !important;
+        }
+        .florence-info h3 {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.98rem !important;
+            font-weight: 600 !important;
+            color: var(--text-inv) !important;
+            margin: 0 !important;
+        }
+        .florence-info span {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            color: var(--teal) !important;
+            letter-spacing: 1px !important;
+            text-transform: uppercase !important;
+        }
+        .florence-speech {
+            background: rgba(15, 188, 173, 0.06) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            border-radius: 10px !important;
+            padding: 12px 14px !important;
+            box-shadow: none !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .florence-speech::before {
+            background: var(--card-dark) !important;
+            border-top: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            border-left: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            box-shadow: none !important;
+        }
+        .florence-speech p {
+            color: var(--text-inv) !important;
+            font-size: 0.88rem !important;
+            line-height: 1.55 !important;
+            margin: 0 !important;
+        }
+        .florence-speech p strong { color: var(--teal) !important; }
+
+        .key-numbers-card {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+            margin-bottom: 16px !important;
+        }
+        .key-numbers-title {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin-bottom: 14px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .key-numbers-title i { color: var(--teal) !important; }
+        .key-numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+        .key-number {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 10px !important;
+            padding: 12px 10px !important;
+        }
+        .key-number:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important; }
+        .key-number.critical { background: rgba(220, 38, 38, 0.1) !important; border-color: rgba(220, 38, 38, 0.25) !important; }
+        .key-number.critical .key-number-value { color: #fca5a5 !important; }
+        .key-number.time { background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.25) !important; }
+        .key-number.time .key-number-value { color: #fcd34d !important; }
+        .key-number.target { background: rgba(15, 188, 173, 0.1) !important; border-color: rgba(15, 188, 173, 0.25) !important; }
+        .key-number.target .key-number-value { color: #5eead4 !important; }
+        .key-number.success { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
+        .key-number.success .key-number-value { color: #86efac !important; }
+        .key-number.warning { background: rgba(251, 146, 60, 0.1) !important; border-color: rgba(251, 146, 60, 0.25) !important; }
+        .key-number.warning .key-number-value { color: #fdba74 !important; }
+        .key-number.info { background: rgba(139, 92, 246, 0.1) !important; border-color: rgba(139, 92, 246, 0.25) !important; }
+        .key-number.info .key-number-value { color: #c4b5fd !important; }
+        .key-number-value {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 1.05rem !important;
+            font-weight: 700 !important;
+            color: var(--text-inv) !important;
+            line-height: 1.2 !important;
+        }
+        .key-number-label {
+            font-size: 0.68rem !important;
+            color: var(--text-inv-dim) !important;
+            margin-top: 4px !important;
+            line-height: 1.35 !important;
+        }
+
+        .florence-tips-card {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+        }
+        .florence-tips-header { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 14px !important; }
+        .florence-tips-avatar {
+            width: 28px !important; height: 28px !important;
+            border-radius: 50% !important;
+            background: rgba(15, 188, 173, 0.15) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
+            padding: 2px !important;
+            box-shadow: none !important;
+        }
+        .florence-tips-header h4 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+        }
+
+        .tip-item {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-left: 3px solid var(--teal) !important;
+            border-radius: 8px !important;
+            padding: 10px 12px !important;
+            margin-bottom: 8px !important;
+            box-shadow: none !important;
+            transition: all 0.15s !important;
+        }
+        .tip-item:hover { background: rgba(15, 188, 173, 0.08) !important; transform: translateX(2px) !important; }
+        .tip-item:last-child { margin-bottom: 0 !important; }
+        .tip-item-title {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv) !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .tip-item-title::before { color: var(--teal) !important; font-size: 0.72rem !important; }
+        .tip-item-text {
+            font-size: 0.78rem !important;
+            color: var(--text-inv-dim) !important;
+            line-height: 1.5 !important;
+            margin-top: 4px !important;
+        }
+
+        .mobile-nav-fab { background: var(--teal) !important; color: var(--navy) !important; }
+        .mobile-nav-drawer { background: var(--card-dark) !important; color: var(--text-inv) !important; }
+        .mobile-nav-tab { color: var(--text-inv-dim) !important; background: transparent !important; }
+        .mobile-nav-tab.active { color: var(--teal) !important; border-bottom-color: var(--teal) !important; }
+        .mobile-toc-link { color: var(--text-inv-dim) !important; }
+        .mobile-toc-link.active { color: var(--teal) !important; background: rgba(15, 188, 173, 0.1) !important; }
+
+        @media (max-width: 1200px) {
+            .page-wrapper { padding: 0 12px; gap: 16px; }
+            .sidebar-left, .sidebar-right { width: 220px; }
+        }
+
+        @media (max-width: 900px) {
+            .page-wrapper { flex-direction: column; padding: 0 12px; }
+            .sidebar-left, .sidebar-right {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                position: static;
+                max-height: none;
+            }
+            .document-container { margin: 80px 12px 40px; }
+            .document-content { padding: 36px 28px; }
+            .cover-page { padding: 56px 28px 40px; }
+            .cover-title { font-size: 2rem; }
+            .cover-meta { gap: 10px; padding: 10px 16px; }
+            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
+            .learning-objectives-grid,
+            .type-grid,
+            .key-point-grid,
+            .redflag-grid,
+            .high-yield-summary ul {
+                grid-template-columns: 1fr;
+            }
+            .ps-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (max-width: 600px) {
+            .download-bar { padding: 10px 14px; }
+            .download-bar-brand span:not(.brand-text-long) { display: none; }
+            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
+            .section-header { gap: 12px; }
+            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
+            .section-title-group h2 { font-size: 1.4rem; }
+            .document-content { padding: 28px 20px; }
+            .document-footer { padding: 24px 20px; }
+            .ps-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body data-product-id="pediatric-fractures-immobility" data-guide-name="Pediatric Fractures &amp; Immobility">
+
+    <header class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-bone"></i>
+            <span>Pediatric Fractures &amp; Immobility</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../my-guides.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Guides
+            </a>
+        </div>
+    </header>
+
+    <div class="document-container">
+
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-logo">
+                    <img src="../assets/images/study-guide-page/pediatric-nursing-class-icon.webp" alt="Pediatric Nursing">
+                </div>
+                <div class="cover-badge">
+                    <i class="fas fa-baby"></i> Pediatric Nursing · Musculoskeletal
+                </div>
+                <h1 class="cover-title">Pediatric Fractures &amp; Immobility</h1>
+                <p class="cover-subtitle">What makes kids' fractures unique, the 6 Ps of neurovascular assessment, cast and traction principles, and the complications of being immobilized at any age.</p>
+                <div class="cover-meta">
+                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 6 Sections</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 14 Quiz Questions</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~12 Min Read</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="document-content">
+
+            <div class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <div class="learning-objectives-grid">
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Describe pediatric-specific fracture types (greenstick, torus) and the Salter-Harris classification.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Perform a systematic neurovascular assessment using the 6 Ps.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Recognize compartment syndrome early \u2014 pain out of proportion is the red flag.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Apply safe care principles for casts, splints, traction (Bryant's, Buck's), and external fixators.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Anticipate and prevent complications of immobility across body systems.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Identify fracture patterns that raise concern for non-accidental trauma.</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
+                <p class="high-yield-subtitle">Eight facts that cover almost every pediatric MSK question.</p>
+                <ul>
+                    <li><strong>Pediatric bones differ from adults:</strong> more flexible, thicker periosteum, open growth plates. Kids get unique fractures (greenstick, torus/buckle) and heal faster, but <strong>growth plate (physis) injuries risk future deformity</strong>.</li>
+                    <li><strong>Salter-Harris classification</strong> grades growth plate fractures I&ndash;V; type II (through physis + metaphysis) is most common. Higher types = higher risk of growth arrest.</li>
+                    <li><strong>Neurovascular assessment: the 6 Ps</strong> &mdash; Pain, Pallor, Pulselessness, Paresthesia, Paralysis, Poikilothermia (cold). Check q1&ndash;2h after injury or new cast.</li>
+                    <li><strong>Compartment syndrome = emergency.</strong> <strong>Pain out of proportion to injury</strong>, unrelieved by opioids, worsened by passive stretch. Without fasciotomy, permanent nerve/muscle damage within 6&ndash;8 hours.</li>
+                    <li><strong>Cast care:</strong> elevate above heart, ice for first 24&ndash;48 hr, handle with PALMS (not fingers) until dry, petal edges, <strong>nothing inside the cast</strong> (no scratching tools), neurovascular checks q1&ndash;2h first day.</li>
+                    <li><strong>Bryant's traction</strong> (infants &lt;2 years or &lt;30 lb): BOTH legs elevated 90&deg; perpendicular to bed, buttocks slightly off mattress. <strong>Used for femoral fractures and developmental hip dysplasia.</strong></li>
+                    <li><strong>Traction principles:</strong> weights <strong>hang freely</strong> (never lift or remove), counter-traction is essential, body alignment maintained, pin care for skeletal traction.</li>
+                    <li><strong>Abuse-concerning fractures:</strong> femur in a non-ambulatory child, spiral fractures in very young, multiple fractures at different healing stages, metaphyseal corner fractures, posterior rib fractures in infants. <strong>Document thoroughly; mandatory reporting.</strong></li>
+                </ul>
+                <p class="high-yield-cta">Clinical breakdown below &darr;</p>
+            </section>
+
+            <nav class="sticky-nav">
+                <h3>Jump to section</h3>
+                <div class="nav-pills">
+                    <a href="#basics"><i class="fas fa-bone"></i> Pediatric Basics</a>
+                    <a href="#neurovascular"><i class="fas fa-heart-pulse"></i> Neurovascular</a>
+                    <a href="#treatment"><i class="fas fa-shield-halved"></i> Treatment</a>
+                    <a href="#immobility"><i class="fas fa-bed-pulse"></i> Immobility</a>
+                    <a href="#abuse"><i class="fas fa-triangle-exclamation"></i> Abuse Concerns</a>
+                    <a href="#family"><i class="fas fa-users"></i> Family Education</a>
+                </div>
+            </nav>
+
+            <!-- Section 1: Pediatric Basics -->
+            <section class="guide-section" id="basics">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <div class="section-title-group">
+                        <h2>Pediatric Fractures: What's Different</h2>
+                        <div class="subtitle">Kid bones bend, buckle, and break differently than adult bones</div>
+                    </div>
+                </div>
+
+                <p>Children's bones are still growing, which means they behave differently under stress than adult bones. They're more flexible, have a thicker periosteum, and contain open growth plates (physes) that are the weakest part of the bone. This biology explains the unique fracture patterns you'll see in pediatric patients.</p>
+
+                <h3>Why Kid Bones Heal Faster &mdash; and Sometimes Worse</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>More collagen, less calcium</strong> &mdash; bones bend before they break.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Thicker periosteum</strong> &mdash; stabilizes fractures and speeds healing.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Open growth plates (physes)</strong> are the weakest point &mdash; injury here can arrest growth.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Remodeling</strong> is greater in children, so some imperfect alignment resolves with growth.</p>
+                    </div>
+                </div>
+
+                <h3>Common Pediatric Fracture Types</h3>
+
+                <div class="type-grid">
+                    <div class="type-card">
+                        <div class="type-card-header greenstick">
+                            <i class="fas fa-tree"></i>
+                            <h4>Greenstick</h4>
+                            <span class="tag">Incomplete</span>
+                        </div>
+                        <div class="type-card-body">
+                            <ul>
+                                <li>Incomplete fracture &mdash; one side breaks, the other bends (like a green stick)</li>
+                                <li>Most common pediatric fracture</li>
+                                <li>Seen in forearm, wrist</li>
+                                <li>Reduction + casting usually sufficient</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header torus">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <h4>Torus (Buckle)</h4>
+                            <span class="tag">Compression</span>
+                        </div>
+                        <div class="type-card-body">
+                            <ul>
+                                <li>Bone buckles/compresses without breaking through</li>
+                                <li>Common in distal radius from fall on outstretched hand</li>
+                                <li>Stable; short-arm cast or splint x 3&ndash;4 weeks</li>
+                                <li>Excellent prognosis</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header complete">
+                            <i class="fas fa-unlink"></i>
+                            <h4>Complete / Displaced</h4>
+                            <span class="tag">Full Break</span>
+                        </div>
+                        <div class="type-card-body">
+                            <ul>
+                                <li>Complete break through both cortices</li>
+                                <li>May be transverse, oblique, spiral, or comminuted</li>
+                                <li><strong>Spiral</strong> fractures in young kids warrant abuse screening</li>
+                                <li>Often requires reduction; may need surgery</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header salter">
+                            <i class="fas fa-layer-group"></i>
+                            <h4>Salter-Harris (Growth Plate)</h4>
+                            <span class="tag">Physeal</span>
+                        </div>
+                        <div class="type-card-body">
+                            <ul>
+                                <li>Five types (I&ndash;V); classified by involvement of physis, epiphysis, metaphysis</li>
+                                <li><strong>Type II is most common</strong> (through physis + metaphysis)</li>
+                                <li>Higher types = higher risk of growth arrest and deformity</li>
+                                <li>Needs orthopedic follow-up &mdash; growth arrest is the big concern</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Salter-Harris Grading at a Glance</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Fracture Path</th>
+                                <th>Growth Arrest Risk</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>I</strong></td><td>Straight through physis only</td><td>Low</td></tr>
+                            <tr><td><strong>II</strong></td><td>Through physis + metaphysis (most common)</td><td>Low-moderate</td></tr>
+                            <tr><td><strong>III</strong></td><td>Through physis + epiphysis (into joint)</td><td>Moderate-high</td></tr>
+                            <tr><td><strong>IV</strong></td><td>Through epiphysis + physis + metaphysis</td><td>High</td></tr>
+                            <tr><td><strong>V</strong></td><td>Crush injury of the physis</td><td>Very high</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Common Fracture Locations</h3>
+
+                <ul>
+                    <li><strong>Distal radius (wrist)</strong> &mdash; the most common pediatric fracture. Classic "FOOSH" injury (fall on outstretched hand).</li>
+                    <li><strong>Forearm (radius &amp; ulna)</strong> &mdash; common in falls and sports.</li>
+                    <li><strong>Clavicle</strong> &mdash; birth trauma or shoulder-impact falls. Usually heals without surgery.</li>
+                    <li><strong>Supracondylar humerus</strong> &mdash; playground falls. <strong>High neurovascular risk</strong> (brachial artery, median/radial nerves).</li>
+                    <li><strong>Tibia &amp; fibula</strong> &mdash; toddler's fracture (spiral tibia from twisting while walking); also from sports.</li>
+                    <li><strong>Femur</strong> &mdash; high-energy trauma (MVA, sports). In a non-ambulatory infant, raises abuse concern.</li>
+                </ul>
+
+                <div class="florencebot-tip" id="tip-growth-plate">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Why Growth Plates Are the Weak Link</div>
+                    <div class="florencebot-tip-content">
+                        The physis (growth plate) is cartilaginous and mechanically weaker than the surrounding bone. Forces that would cause ligament injury in an adult (e.g., ankle sprain) can fracture the growth plate in a child. That's why <strong>any joint injury in a child with pain over the physis should be imaged &mdash; even with a "normal" looking X-ray, a Salter-Harris I is easy to miss</strong>. Follow-up in 7&ndash;10 days often reveals callus formation confirming the fracture.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Greenstick and torus are classic pediatric. Salter-Harris grades growth-plate injury; higher type = higher risk of growth arrest. Kids heal fast but the physis is the vulnerability.</div>
+            </section>
+
+            <!-- Section 2: Neurovascular Assessment -->
+            <section class="guide-section" id="neurovascular">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <div class="section-title-group">
+                        <h2>Neurovascular Assessment &amp; Compartment Syndrome</h2>
+                        <div class="subtitle">The 6 Ps &mdash; and the one that matters most</div>
+                    </div>
+                </div>
+
+                <p>After any fracture &mdash; and especially after cast or splint application &mdash; swelling or pressure can compress nerves and vessels. Missing early compromise leads to permanent nerve damage, muscle necrosis, and compartment syndrome. Systematic assessment using the 6 Ps is the universal framework.</p>
+
+                <h3>The 6 Ps of Neurovascular Assessment</h3>
+
+                <div class="ps-grid">
+                    <div class="ps-card" data-letter="P">
+                        <h5>Pain</h5>
+                        <p>Location, severity, character. <strong>Pain out of proportion</strong> is a red flag.</p>
+                    </div>
+                    <div class="ps-card" data-letter="P">
+                        <h5>Pallor</h5>
+                        <p>Color below injury: pale, dusky, or cyanotic = compromised circulation.</p>
+                    </div>
+                    <div class="ps-card" data-letter="P">
+                        <h5>Pulselessness</h5>
+                        <p>Diminished or absent distal pulses = vascular compromise. Late sign.</p>
+                    </div>
+                    <div class="ps-card" data-letter="P">
+                        <h5>Paresthesia</h5>
+                        <p>Numbness, tingling, "pins and needles" = nerve compression.</p>
+                    </div>
+                    <div class="ps-card" data-letter="P">
+                        <h5>Paralysis</h5>
+                        <p>Inability to move fingers/toes distal to the injury = severe nerve damage.</p>
+                    </div>
+                    <div class="ps-card" data-letter="P">
+                        <h5>Poikilothermia</h5>
+                        <p>Cold extremity &mdash; loss of thermoregulation from vascular compromise.</p>
+                    </div>
+                </div>
+
+                <h3>When to Check</h3>
+
+                <ul>
+                    <li><strong>Every 1&ndash;2 hours</strong> for the first 24 hours after injury or new cast.</li>
+                    <li>Then every 4 hours while hospitalized, and at every outpatient follow-up.</li>
+                    <li>Always compare the affected side to the unaffected side.</li>
+                    <li>For young non-verbal children, observe behavior, color, swelling, capillary refill, and movement of exposed fingers/toes.</li>
+                </ul>
+
+                <h3>Compartment Syndrome</h3>
+
+                <p>Compartment syndrome occurs when pressure within a fascial compartment exceeds capillary perfusion pressure, cutting off blood flow to muscles and nerves. It's a <strong>time-sensitive surgical emergency</strong> &mdash; irreversible muscle necrosis and nerve damage begin within 4&ndash;8 hours.</p>
+
+                <div class="redflag-grid">
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Pain out of proportion to injury</strong> &mdash; the EARLIEST and most sensitive sign.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Pain unrelieved by opioids</strong> &mdash; another red flag of increasing compartment pressure.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Severe pain with passive stretch</strong> &mdash; classic compartment syndrome finding.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Tense, firm, shiny swelling</strong> of the compartment.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Paresthesia</strong> &mdash; early sign of nerve compression within the compartment.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Pulselessness is LATE</strong> &mdash; by the time pulses are gone, irreversible damage has likely occurred.</p>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="info-box-content">
+                        <h5>Loose the Cast, Don't Wait</h5>
+                        <p>If you suspect compartment syndrome in a casted extremity, <strong>the cast must be bivalved (split on both sides) or removed</strong> immediately &mdash; this alone can relieve enough pressure to restore circulation. Notify the surgeon emergently; if conservative measures don't relieve the pressure, <strong>fasciotomy</strong> (surgical opening of the fascia) is required to save the limb.</p>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-pain-priority">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Pain Out of Proportion Is the One Finding</div>
+                    <div class="florencebot-tip-content">
+                        When a child reports <strong>severe pain that doesn't make sense for the injury</strong> &mdash; pain that's worsening after a few hours in a cast, pain that opioids barely touch, pain with passive stretching of the digits &mdash; treat it as compartment syndrome until proven otherwise. <strong>By the time pulses are absent, the damage is done.</strong> Early nursing recognition saves limbs.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: 6 Ps q1&ndash;2h after injury/cast. Pain out of proportion = compartment syndrome. Bivalve the cast immediately; prepare for fasciotomy.</div>
+            </section>
+
+            <!-- Section 3: Treatment -->
+            <section class="guide-section" id="treatment">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <div class="section-title-group">
+                        <h2>Treatment: Casts, Splints, Traction, Fixators</h2>
+                        <div class="subtitle">Picking the right immobilization and caring for it safely</div>
+                    </div>
+                </div>
+
+                <h3>Casts</h3>
+
+                <ul>
+                    <li><strong>Plaster</strong> &mdash; takes 24&ndash;48 hr to fully dry; cheaper, heavier.</li>
+                    <li><strong>Fiberglass</strong> &mdash; dries in 15&ndash;30 min; lighter and more durable; standard for most pediatric casts.</li>
+                    <li>Cast duration depends on location and fracture; typically 3&ndash;6 weeks for most upper extremity, 4&ndash;8 weeks for lower.</li>
+                </ul>
+
+                <h4>Cast Care Priorities</h4>
+
+                <ol class="step-list">
+                    <li><strong>Elevate extremity above heart</strong> for the first 24&ndash;48 hours to minimize swelling.</li>
+                    <li><strong>Ice packs</strong> over the cast for the first 24 hours (not directly on skin).</li>
+                    <li><strong>Neurovascular checks q1&ndash;2h</strong> first 24 hours, then q4h.</li>
+                    <li><strong>Handle a wet plaster cast with PALMS, not fingers</strong> &mdash; fingertips leave indentations that cause pressure points.</li>
+                    <li><strong>Petal rough edges</strong> of the cast with adhesive tape to protect skin.</li>
+                    <li><strong>Do NOT get the cast wet</strong> &mdash; cover with plastic for bathing.</li>
+                    <li><strong>Nothing inside the cast</strong> &mdash; no coat hangers, pencils, or scratching tools. They cause skin breakdown and trapped objects.</li>
+                    <li>If itching is severe: blow cool air with a hairdryer into the cast.</li>
+                    <li>Teach signs to return: increasing pain, tingling, fingers/toes blue or cold, foul odor, fever, drainage.</li>
+                </ol>
+
+                <h3>Splints</h3>
+
+                <ul>
+                    <li>Used when swelling is expected (immediately after injury, before casting).</li>
+                    <li>Allows for expansion if swelling worsens &mdash; safer than a circumferential cast in the first 24&ndash;48 hr.</li>
+                    <li>Often converted to cast at a follow-up visit once swelling subsides.</li>
+                </ul>
+
+                <h3>Traction</h3>
+
+                <p>Traction uses a pulling force to realign bones or reduce muscle spasm. Types used in pediatrics include:</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Description</th>
+                                <th>Typical Use</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Bryant's</strong></td>
+                                <td><strong>Infants &lt;2 years or &lt;30 lb.</strong> BOTH legs elevated 90&deg; perpendicular to bed; buttocks slightly off the mattress. Skin traction.</td>
+                                <td>Femoral fractures, developmental hip dysplasia</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Buck's</strong></td>
+                                <td>Straight leg horizontal traction with boot or skin adhesive; typical weight 5&ndash;8 lb.</td>
+                                <td>Hip fracture pre-op, LE muscle spasm</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Russell's</strong></td>
+                                <td>Skin traction with knee flexion and dual pulley system; realigns the femur.</td>
+                                <td>Femur fractures in older children</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Skeletal (e.g., 90/90, balanced suspension)</strong></td>
+                                <td>Pins or wires surgically placed through bone; heavier weights possible.</td>
+                                <td>Complex, unstable fractures, especially in older children</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h4>Traction Principles (NCLEX gold)</h4>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Weights hang freely</strong> &mdash; never lift, remove, or rest on the bed/floor.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Maintain counter-traction</strong> &mdash; usually the child's body weight. Don't let them slide down the bed.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Ropes in the pulleys, knots away from pulleys.</strong></p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Pin care for skeletal traction</strong> &mdash; watch for signs of infection (redness, drainage, fever).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Neurovascular checks q1&ndash;2h</strong>, skin assessment q shift.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>For Bryant's traction:</strong> confirm buttocks are slightly OFF the mattress &mdash; this is how you know counter-traction is appropriate.</p>
+                    </div>
+                </div>
+
+                <h3>External Fixators</h3>
+
+                <ul>
+                    <li>Metal frame outside the body stabilizing bone with pins through skin into bone.</li>
+                    <li>Used for complex, open, or comminuted fractures where cast or traction is insufficient.</li>
+                    <li>Pin site care is critical: cleanse per protocol (often with sterile saline or chlorhexidine), monitor for infection.</li>
+                </ul>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon"><i class="fas fa-baby"></i></div>
+                    <div class="info-box-content">
+                        <h5>Bryant's Traction Specifics</h5>
+                        <p>Remember: Bryant's is for very young children (&lt;2 years or &lt;30 lb). <strong>Both legs go up at 90 degrees</strong> &mdash; even if only one leg is fractured &mdash; because the child's own body weight provides counter-traction. <strong>The buttocks should be slightly off the mattress.</strong> If the child's weight is too high, the pull becomes dangerous. This is a favorite NCLEX detail.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Casts = elevate, ice, NV checks, no scratching tools. Bryant's = both legs 90&deg; in infants. Weights hang freely. Skeletal pins need care.</div>
+            </section>
+
+            <!-- Section 4: Immobility Complications -->
+            <section class="guide-section" id="immobility">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <div class="section-title-group">
+                        <h2>Complications of Immobility</h2>
+                        <div class="subtitle">Every body system loses when a child can't move</div>
+                    </div>
+                </div>
+
+                <p>Immobility &mdash; from casts, traction, or any prolonged bed rest &mdash; affects every body system. Nursing priorities focus on <strong>preventing</strong> the predictable complications, because once they develop they prolong recovery and hospital stay.</p>
+
+                <h3>System-by-System Complications</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>Complications</th>
+                                <th>Prevention</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cardiovascular</strong></td>
+                                <td>Orthostatic hypotension, decreased cardiac output, DVT (uncommon in kids but possible)</td>
+                                <td>Gradual position changes, isometric exercises, ROM, anti-embolic measures as ordered</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Respiratory</strong></td>
+                                <td>Atelectasis, pneumonia, decreased lung expansion</td>
+                                <td>Incentive spirometry, cough and deep breathing q2h, reposition frequently</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Musculoskeletal</strong></td>
+                                <td>Muscle atrophy, contractures, <strong>disuse osteoporosis</strong> (can fracture without trauma), joint stiffness</td>
+                                <td>Passive and active ROM, PT consult, isometric exercises, weight bearing when permitted</td>
+                            </tr>
+                            <tr>
+                                <td><strong>GI</strong></td>
+                                <td>Constipation, decreased appetite, weight loss, fecal impaction</td>
+                                <td>High-fiber diet, adequate fluids, stool softeners, scheduled toileting</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Genitourinary</strong></td>
+                                <td>Urinary stasis, UTI, kidney stones, incontinence</td>
+                                <td>Encourage fluids, void q2&ndash;4h, perineal hygiene</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Skin</strong></td>
+                                <td>Pressure injuries (heels, sacrum, elbows, scalp in infants)</td>
+                                <td>Turn q2h, pressure-relief surfaces, keep skin clean and dry, Braden Q assessment</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Psychosocial</strong></td>
+                                <td>Depression, boredom, developmental regression, sleep disturbance</td>
+                                <td>Age-appropriate activities, child life services, family presence, school services</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="info-box-content">
+                        <h5>Disuse Osteoporosis in Kids</h5>
+                        <p>Prolonged immobility (weeks to months) causes bone demineralization, making the child prone to <strong>fractures without obvious trauma</strong> &mdash; turning in bed or transfer from bed to chair can break an osteopenic bone. Nursing implications: handle extremities with support, use slow position changes, and be alert for new pain reports that could represent a fracture.</p>
+                    </div>
+                </div>
+
+                <h3>Psychosocial Support for the Immobilized Child</h3>
+
+                <ul>
+                    <li><strong>Child life services</strong> for play therapy, procedural prep, normalization.</li>
+                    <li><strong>School continuity</strong> &mdash; hospital-based schooling or tutoring for longer stays.</li>
+                    <li><strong>Encourage family presence</strong> and sibling visits when possible.</li>
+                    <li>Provide age-appropriate activities: screen time limits balanced with drawing, music, age-appropriate games, crafts.</li>
+                    <li>Acknowledge developmental regression (thumb sucking, baby talk) as normal coping; don't shame.</li>
+                </ul>
+
+                <div class="bottom-line">🎯 Bottom Line: Immobility hits every system &mdash; cardiac, respiratory, MSK, GI, GU, skin, psychosocial. Prevent by moving what you can, turning, repositioning, and supporting the child emotionally.</div>
+            </section>
+
+            <!-- Section 5: Abuse Concerns -->
+            <section class="guide-section" id="abuse">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <div class="section-title-group">
+                        <h2>Abuse-Concerning Fracture Patterns</h2>
+                        <div class="subtitle">What to recognize and report</div>
+                    </div>
+                </div>
+
+                <p>Some fracture patterns raise concern for non-accidental trauma (NAT). Nurses are <strong>mandatory reporters</strong> and must document objectively and report suspicions to child protective services &mdash; even when the parents are present and seemingly cooperative. Reporting is about <strong>safety, not accusation</strong>.</p>
+
+                <h3>Patterns That Warrant a Full Workup</h3>
+
+                <div class="redflag-grid">
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Femur fracture in a non-ambulatory child</strong> (&lt;1 year) &mdash; it takes enormous force to break a baby's femur.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Spiral fractures of long bones</strong> in young children, from a twisting mechanism.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Multiple fractures at different healing stages</strong> &mdash; old fractures the parent did not report.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Metaphyseal corner (bucket-handle) fractures</strong> &mdash; highly specific for abuse.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Posterior rib fractures in infants</strong> &mdash; occur from forceful squeezing; uncommon from routine falls.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Injuries inconsistent with the reported mechanism</strong> or developmental stage (e.g., 6-month-old "rolled off couch" with skull fracture).</p>
+                    </div>
+                </div>
+
+                <h3>What the Team Typically Orders</h3>
+
+                <ul>
+                    <li><strong>Skeletal survey</strong> &mdash; full-body X-ray series in children under 2 with suspicious injury.</li>
+                    <li>Head CT/MRI if head trauma suspected.</li>
+                    <li>Ophthalmology exam for retinal hemorrhages (shaken baby syndrome).</li>
+                    <li>Coagulation studies to rule out bleeding disorders.</li>
+                    <li>Social work and child protection team consultation.</li>
+                </ul>
+
+                <h3>Nursing Role</h3>
+
+                <ul>
+                    <li><strong>Document objectively</strong> &mdash; exact words the parent uses, time elapsed between injury and presentation, observable bruise patterns and colors, X-ray findings. Avoid accusatory language in the chart.</li>
+                    <li><strong>Photograph injuries</strong> per institutional protocol.</li>
+                    <li><strong>Report to child protective services</strong> &mdash; you are a mandatory reporter and reporting in good faith is legally protected.</li>
+                    <li><strong>Treat the family with respect</strong> while reporting; do not accuse or interrogate. Let the trained team handle the investigation.</li>
+                    <li><strong>Focus on the child's safety</strong> &mdash; that's the priority. If the hospital admits for workup, the child is safe for now.</li>
+                </ul>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-shield"></i></div>
+                    <div class="info-box-content">
+                        <h5>Mandatory Reporting Is Legally Protected</h5>
+                        <p>Nurses are mandatory reporters in all 50 states. Reporting a <strong>reasonable suspicion</strong> of child abuse in good faith is legally protected &mdash; you cannot be sued for making a report even if the investigation ultimately finds no abuse. <strong>Not reporting a suspicion, however, can result in legal action and loss of licensure.</strong> If you're unsure, consult the hospital social worker or child protection team. Better to report and be wrong than to miss abuse.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Suspicious patterns = skeletal survey, social work, mandatory report. Document objectively, photograph injuries, treat family respectfully, child safety first.</div>
+            </section>
+
+            <!-- Section 6: Family Education -->
+            <section class="guide-section" id="family">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <div class="section-title-group">
+                        <h2>Family Education &amp; Discharge</h2>
+                        <div class="subtitle">What parents need to know before leaving</div>
+                    </div>
+                </div>
+
+                <h3>Cast Care at Home</h3>
+
+                <ul>
+                    <li><strong>Keep cast clean and dry</strong> &mdash; cover with a plastic bag sealed with tape for bathing. Never submerge in water.</li>
+                    <li><strong>Elevate the extremity</strong> above heart level when sitting or sleeping for the first 48 hours.</li>
+                    <li><strong>Ice over the cast</strong> for the first 24 hours (30 min on, 30 min off) to reduce swelling.</li>
+                    <li><strong>Do not put anything inside the cast.</strong> No coat hangers, pencils, spoons, or pens for itching.</li>
+                    <li>For itching, use a <strong>cool hair dryer</strong> directed into the cast opening &mdash; never heat.</li>
+                    <li><strong>Check fingers/toes</strong> every few hours in the first 24&ndash;48 hours: color, warmth, sensation, movement.</li>
+                    <li><strong>Return to the ED if:</strong> fingers/toes turn blue/pale/cold, severe unrelenting pain, foul smell, fever, cast breakdown, drainage, or any cast-related concern.</li>
+                </ul>
+
+                <h3>Traction &amp; Immobility Teaching</h3>
+
+                <ul>
+                    <li>Explain the purpose of the traction in age-appropriate terms.</li>
+                    <li>Involve the child in care &mdash; reposition the pillow, brush their own hair, feed themselves.</li>
+                    <li>Pain management schedule: acetaminophen &plusmn; opioids as ordered. Don't let pain get ahead of the medication.</li>
+                    <li>Skin checks daily &mdash; look at heels, sacrum, elbows, back of head.</li>
+                    <li>Constipation prevention: high-fiber diet, fluids, stool softeners.</li>
+                    <li>Connect with child life, school-based services, social work as needed.</li>
+                </ul>
+
+                <h3>Activity &amp; Return to School/Sports</h3>
+
+                <ul>
+                    <li>Follow-up with orthopedics as scheduled. X-rays often repeated to confirm healing.</li>
+                    <li>No full weight-bearing until cleared. Use crutches or assistive devices as prescribed.</li>
+                    <li>School usually resumes within days to a week for upper extremity fractures; longer for LE.</li>
+                    <li>Sports and PE restrictions until healing is confirmed &mdash; usually 6&ndash;12 weeks.</li>
+                    <li>After cast removal: skin may look dry, pale, and weak &mdash; gentle washing and gradual return to activity.</li>
+                </ul>
+
+                <div class="info-box safe">
+                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
+                    <div class="info-box-content">
+                        <h5>Children Heal Remarkably Well</h5>
+                        <p>Most pediatric fractures heal without long-term complications &mdash; faster than adults and with more remodeling. Even fractures that are imperfectly aligned often correct themselves with growth. Emphasize hope and full recovery to anxious families while you teach the practical care steps.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Teach cast care, neurovascular checks, when to return to ED. Prevent immobility complications. Reassure families that pediatric bones heal well.</div>
+            </section>
+
+            <!-- Quiz CTA -->
+            <div class="quiz-cta">
+                <h3>Test your knowledge</h3>
+                <p>14 NCLEX-style questions covering every section of this guide.</p>
+                <a href="quiz/quiz.html?topic=pediatric-fractures-immobility" class="quiz-btn">
+                    <i class="fas fa-flask"></i> Start Quiz
+                </a>
+            </div>
+
+            <!-- Cross References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
+                <div class="cross-ref-grid">
+                    <a href="neural-tube-defects.html" class="cross-ref-link">
+                        <i class="fas fa-dna"></i> Neural Tube Defects
+                    </a>
+                    <a href="fractures.html" class="cross-ref-link">
+                        <i class="fas fa-bone"></i> Fractures (Adult)
+                    </a>
+                    <a href="hip-knee-replacement.html" class="cross-ref-link">
+                        <i class="fas fa-walking"></i> Hip &amp; Knee Replacement
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- end document-content -->
+
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div><!-- end document-container -->
+
+    <script src="configs/pediatric-fractures-immobility-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="../content-gate.js"></script>
+    <script src="../cookie-consent.js"></script>
+</body>
+</html>

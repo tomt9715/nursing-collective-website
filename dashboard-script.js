@@ -901,7 +901,8 @@ function populateGuidesFlyout() {
         'pediatric-renal-disorders': 'Pediatric Nursing',
         'uti-vur-enuresis': 'Pediatric Nursing',
         'male-gu-disorders': 'Pediatric Nursing',
-        'neural-tube-defects': 'Pediatric Nursing'
+        'neural-tube-defects': 'Pediatric Nursing',
+        'pediatric-fractures-immobility': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

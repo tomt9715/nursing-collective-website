@@ -221,11 +221,10 @@
                     icon: 'fa-bone',
                     colorClass: 'icon-pediatrics',
                     guides: [
-                        { name: 'Neural Tube Defects', file: 'neural-tube-defects' }
+                        { name: 'Neural Tube Defects', file: 'neural-tube-defects' },
+                        { name: 'Pediatric Fractures & Immobility', file: 'pediatric-fractures-immobility' }
                     ],
-                    comingSoon: [
-                        { name: 'Pediatric Fractures & Immobility' }
-                    ]
+                    comingSoon: []
                 },
                 {
                     category: 'Pediatric Skin',

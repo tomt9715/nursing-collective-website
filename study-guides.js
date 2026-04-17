@@ -138,6 +138,58 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'pediatric-fractures-immobility': {
+        title: 'Pediatric Fractures & Immobility',
+        storeUrl: 'pricing.html#pediatric-fractures-immobility',
+        content: `
+# Pediatric Fractures & Immobility Study Guide
+
+## Overview
+What makes kids' fractures unique, neurovascular assessment, casts, traction, and the complications of being immobilized at any age.
+
+## What You'll Learn
+
+### Pediatric Fracture Types
+- **Greenstick** — one side breaks, other bends (classic pediatric)
+- **Torus (buckle)** — compression without break
+- **Salter-Harris** classification I-V (growth plate injuries)
+- **Spiral** fractures in young kids — abuse concern
+
+### Neurovascular Assessment (6 Ps)
+- Pain, Pallor, Pulselessness, Paresthesia, Paralysis, Poikilothermia
+- Check q1-2h first 24 hours
+- **Pain out of proportion = compartment syndrome**
+
+### Compartment Syndrome
+- Pain unrelieved by opioids, worse with passive stretch
+- Tense, firm, shiny swelling
+- **Bivalve the cast immediately**; fasciotomy if not resolved
+
+### Traction
+- **Bryant's** (<2 years / <30 lb): BOTH legs 90° perpendicular, buttocks slightly off bed
+- **Buck's** (skin traction, straight leg)
+- **Skeletal** (pins through bone, complex fractures)
+- Weights hang freely — NEVER lift or remove
+
+### Immobility Complications
+- Cardiovascular, respiratory, MSK (disuse osteoporosis), GI, GU, skin, psychosocial
+- Prevent with ROM, repositioning, hydration, fluids, child life
+
+### Abuse-Concerning Patterns
+- Femur fracture in non-ambulatory child
+- Spiral fractures in young children
+- Multiple fractures at different healing stages
+- Metaphyseal corner, posterior rib fractures
+- Mandatory report — legally protected
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Disorder-by-disorder breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'neural-tube-defects': {
         title: 'Neural Tube Defects',
         storeUrl: 'pricing.html#neural-tube-defects',

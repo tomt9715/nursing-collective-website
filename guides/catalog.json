@@ -1,0 +1,778 @@
+{
+  "version": 1,
+  "generated_at": "2026-04-17T20:51:00.264588+00:00",
+  "guides": {
+    "assessment-skills": {
+      "title": "Assessment Skills",
+      "class": "fundamentals",
+      "class_name": "Fundamentals of Nursing",
+      "category": "assessment-clinical-skills",
+      "category_name": "Assessment & Clinical Skills",
+      "population": "mixed",
+      "keywords": [
+        "assessment",
+        "clinical",
+        "fundamentals",
+        "skills"
+      ]
+    },
+    "heart-failure": {
+      "title": "Heart Failure",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "cardiovascular",
+      "category_name": "Cardiovascular",
+      "population": "adult",
+      "keywords": [
+        "cardiac",
+        "cardiology",
+        "cardiovascular",
+        "cv",
+        "failure",
+        "heart",
+        "medical",
+        "surgical"
+      ]
+    },
+    "myocardial-infarction": {
+      "title": "Myocardial Infarction",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "cardiovascular",
+      "category_name": "Cardiovascular",
+      "population": "adult",
+      "keywords": [
+        "cardiac",
+        "cardiology",
+        "cardiovascular",
+        "cv",
+        "heart",
+        "infarction",
+        "medical",
+        "myocardial",
+        "surgical"
+      ]
+    },
+    "arrhythmias": {
+      "title": "Arrhythmias",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "cardiovascular",
+      "category_name": "Cardiovascular",
+      "population": "adult",
+      "keywords": [
+        "arrhythmias",
+        "cardiac",
+        "cardiology",
+        "cardiovascular",
+        "cv",
+        "heart",
+        "medical",
+        "surgical"
+      ]
+    },
+    "hypertension": {
+      "title": "Hypertension",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "cardiovascular",
+      "category_name": "Cardiovascular",
+      "population": "adult",
+      "keywords": [
+        "cardiac",
+        "cardiology",
+        "cardiovascular",
+        "cv",
+        "heart",
+        "hypertension",
+        "medical",
+        "surgical"
+      ]
+    },
+    "coronary-artery-disease": {
+      "title": "Coronary Artery Disease",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "cardiovascular",
+      "category_name": "Cardiovascular",
+      "population": "adult",
+      "keywords": [
+        "artery",
+        "cardiac",
+        "cardiology",
+        "cardiovascular",
+        "coronary",
+        "cv",
+        "disease",
+        "heart",
+        "medical",
+        "surgical"
+      ]
+    },
+    "peripheral-vascular-disease": {
+      "title": "Peripheral Vascular Disease",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "cardiovascular",
+      "category_name": "Cardiovascular",
+      "population": "adult",
+      "keywords": [
+        "cardiac",
+        "cardiology",
+        "cardiovascular",
+        "cv",
+        "disease",
+        "heart",
+        "medical",
+        "peripheral",
+        "surgical",
+        "vascular"
+      ]
+    },
+    "copd": {
+      "title": "COPD",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "respiratory",
+      "category_name": "Respiratory",
+      "population": "adult",
+      "keywords": [
+        "breathing",
+        "copd",
+        "lung",
+        "medical",
+        "pulmonary",
+        "respiratory",
+        "surgical"
+      ]
+    },
+    "asthma": {
+      "title": "Asthma",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "respiratory",
+      "category_name": "Respiratory",
+      "population": "adult",
+      "keywords": [
+        "asthma",
+        "breathing",
+        "lung",
+        "medical",
+        "pulmonary",
+        "respiratory",
+        "surgical"
+      ]
+    },
+    "pneumonia": {
+      "title": "Pneumonia",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "respiratory",
+      "category_name": "Respiratory",
+      "population": "adult",
+      "keywords": [
+        "breathing",
+        "lung",
+        "medical",
+        "pneumonia",
+        "pulmonary",
+        "respiratory",
+        "surgical"
+      ]
+    },
+    "tuberculosis": {
+      "title": "Tuberculosis",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "respiratory",
+      "category_name": "Respiratory",
+      "population": "adult",
+      "keywords": [
+        "breathing",
+        "lung",
+        "medical",
+        "pulmonary",
+        "respiratory",
+        "surgical",
+        "tuberculosis"
+      ]
+    },
+    "oxygen-therapy": {
+      "title": "Oxygen Therapy",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "respiratory",
+      "category_name": "Respiratory",
+      "population": "adult",
+      "keywords": [
+        "breathing",
+        "lung",
+        "medical",
+        "oxygen",
+        "pulmonary",
+        "respiratory",
+        "surgical",
+        "therapy"
+      ]
+    },
+    "chest-tubes": {
+      "title": "Chest Tubes",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "respiratory",
+      "category_name": "Respiratory",
+      "population": "adult",
+      "keywords": [
+        "breathing",
+        "chest",
+        "lung",
+        "medical",
+        "pulmonary",
+        "respiratory",
+        "surgical",
+        "tubes"
+      ]
+    },
+    "diabetes-mellitus": {
+      "title": "Diabetes Mellitus",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "endocrine",
+      "category_name": "Endocrine",
+      "population": "adult",
+      "keywords": [
+        "diabetes",
+        "endocrine",
+        "hormone",
+        "medical",
+        "mellitus",
+        "metabolic",
+        "surgical"
+      ]
+    },
+    "thyroid-disorders": {
+      "title": "Thyroid Disorders",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "endocrine",
+      "category_name": "Endocrine",
+      "population": "adult",
+      "keywords": [
+        "endocrine",
+        "hormone",
+        "medical",
+        "metabolic",
+        "surgical",
+        "thyroid"
+      ]
+    },
+    "adrenal-disorders": {
+      "title": "Adrenal Disorders",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "endocrine",
+      "category_name": "Endocrine",
+      "population": "adult",
+      "keywords": [
+        "adrenal",
+        "endocrine",
+        "hormone",
+        "medical",
+        "metabolic",
+        "surgical"
+      ]
+    },
+    "pituitary-disorders": {
+      "title": "Pituitary Disorders",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "endocrine",
+      "category_name": "Endocrine",
+      "population": "adult",
+      "keywords": [
+        "endocrine",
+        "hormone",
+        "medical",
+        "metabolic",
+        "pituitary",
+        "surgical"
+      ]
+    },
+    "stroke": {
+      "title": "Stroke",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "neurological",
+      "category_name": "Neurological",
+      "population": "adult",
+      "keywords": [
+        "brain",
+        "medical",
+        "neuro",
+        "neurological",
+        "neurology",
+        "stroke",
+        "surgical"
+      ]
+    },
+    "seizures": {
+      "title": "Seizures / Epilepsy",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "neurological",
+      "category_name": "Neurological",
+      "population": "adult",
+      "keywords": [
+        "brain",
+        "epilepsy",
+        "medical",
+        "neuro",
+        "neurological",
+        "neurology",
+        "seizures",
+        "surgical"
+      ]
+    },
+    "gi-bleeding": {
+      "title": "GI Bleeding",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "gastrointestinal",
+      "category_name": "Gastrointestinal",
+      "population": "adult",
+      "keywords": [
+        "bleeding",
+        "bowel",
+        "digestive",
+        "gastrointestinal",
+        "gi",
+        "medical",
+        "surgical"
+      ]
+    },
+    "fractures": {
+      "title": "Fractures",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "musculoskeletal",
+      "category_name": "Musculoskeletal",
+      "population": "adult",
+      "keywords": [
+        "bone",
+        "fractures",
+        "joint",
+        "medical",
+        "musculoskeletal",
+        "ortho",
+        "orthopedic",
+        "surgical"
+      ]
+    },
+    "hip-knee-replacement": {
+      "title": "Hip & Knee Replacement",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "musculoskeletal",
+      "category_name": "Musculoskeletal",
+      "population": "adult",
+      "keywords": [
+        "bone",
+        "hip",
+        "joint",
+        "knee",
+        "medical",
+        "musculoskeletal",
+        "ortho",
+        "orthopedic",
+        "replacement",
+        "surgical"
+      ]
+    },
+    "antepartum-care": {
+      "title": "Antepartum Care",
+      "class": "maternal-newborn",
+      "class_name": "Maternal-Newborn Nursing",
+      "category": "maternal-newborn",
+      "category_name": "Maternal-Newborn",
+      "population": "maternal",
+      "keywords": [
+        "antepartum",
+        "maternal",
+        "maternity",
+        "newborn",
+        "ob",
+        "obstetric"
+      ]
+    },
+    "pediatric-congenital-heart-defects": {
+      "title": "Congenital Heart Defects",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-cardiac",
+      "category_name": "Pediatric Cardiac",
+      "population": "pediatric",
+      "keywords": [
+        "cardiac",
+        "cardiovascular",
+        "congenital",
+        "defects",
+        "heart",
+        "pediatric"
+      ]
+    },
+    "kawasaki-disease": {
+      "title": "Kawasaki Disease",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-cardiac",
+      "category_name": "Pediatric Cardiac",
+      "population": "pediatric",
+      "keywords": [
+        "cardiac",
+        "cardiovascular",
+        "congenital",
+        "disease",
+        "heart",
+        "kawasaki",
+        "pediatric"
+      ]
+    },
+    "rheumatic-fever-endocarditis": {
+      "title": "Rheumatic Fever & Endocarditis",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-cardiac",
+      "category_name": "Pediatric Cardiac",
+      "population": "pediatric",
+      "keywords": [
+        "cardiac",
+        "cardiovascular",
+        "congenital",
+        "endocarditis",
+        "fever",
+        "heart",
+        "pediatric",
+        "rheumatic"
+      ]
+    },
+    "pediatric-gi-obstructions": {
+      "title": "Pediatric GI Obstructions",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-gi",
+      "category_name": "Pediatric GI",
+      "population": "pediatric",
+      "keywords": [
+        "digestive",
+        "gastrointestinal",
+        "gi",
+        "obstructions",
+        "pediatric"
+      ]
+    },
+    "cleft-lip-palate": {
+      "title": "Cleft Lip & Palate",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-gi",
+      "category_name": "Pediatric GI",
+      "population": "pediatric",
+      "keywords": [
+        "cleft",
+        "digestive",
+        "gastrointestinal",
+        "gi",
+        "lip",
+        "palate",
+        "pediatric"
+      ]
+    },
+    "pediatric-gerd": {
+      "title": "Pediatric GERD",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-gi",
+      "category_name": "Pediatric GI",
+      "population": "pediatric",
+      "keywords": [
+        "digestive",
+        "gastrointestinal",
+        "gerd",
+        "gi",
+        "pediatric"
+      ]
+    },
+    "pediatric-renal-disorders": {
+      "title": "Pediatric Renal Disorders",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-gu",
+      "category_name": "Pediatric GU",
+      "population": "pediatric",
+      "keywords": [
+        "genitourinary",
+        "gu",
+        "kidney",
+        "pediatric",
+        "renal",
+        "urinary"
+      ]
+    },
+    "uti-vur-enuresis": {
+      "title": "UTI, VUR & Enuresis",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-gu",
+      "category_name": "Pediatric GU",
+      "population": "pediatric",
+      "keywords": [
+        "enuresis",
+        "genitourinary",
+        "gu",
+        "kidney",
+        "pediatric",
+        "renal",
+        "urinary",
+        "uti",
+        "vur"
+      ]
+    },
+    "male-gu-disorders": {
+      "title": "Male GU Disorders",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-gu",
+      "category_name": "Pediatric GU",
+      "population": "pediatric",
+      "keywords": [
+        "genitourinary",
+        "gu",
+        "kidney",
+        "male",
+        "pediatric",
+        "renal",
+        "urinary"
+      ]
+    },
+    "neural-tube-defects": {
+      "title": "Neural Tube Defects",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-musculoskeletal",
+      "category_name": "Pediatric Musculoskeletal",
+      "population": "pediatric",
+      "keywords": [
+        "bone",
+        "defects",
+        "musculoskeletal",
+        "neural",
+        "ortho",
+        "orthopedic",
+        "pediatric",
+        "tube"
+      ]
+    },
+    "pediatric-fractures-immobility": {
+      "title": "Pediatric Fractures & Immobility",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-musculoskeletal",
+      "category_name": "Pediatric Musculoskeletal",
+      "population": "pediatric",
+      "keywords": [
+        "bone",
+        "fractures",
+        "immobility",
+        "musculoskeletal",
+        "ortho",
+        "orthopedic",
+        "pediatric"
+      ]
+    },
+    "pediatric-skin-infections": {
+      "title": "Pediatric Skin Infections",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-skin",
+      "category_name": "Pediatric Skin",
+      "population": "pediatric",
+      "keywords": [
+        "dermatologic",
+        "dermatology",
+        "infections",
+        "integumentary",
+        "pediatric",
+        "skin"
+      ]
+    },
+    "hypersensitivity-inflammatory-skin": {
+      "title": "Hypersensitivity & Inflammatory Skin",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-skin",
+      "category_name": "Pediatric Skin",
+      "population": "pediatric",
+      "keywords": [
+        "dermatologic",
+        "dermatology",
+        "hypersensitivity",
+        "inflammatory",
+        "integumentary",
+        "pediatric",
+        "skin"
+      ]
+    },
+    "pediatric-burns": {
+      "title": "Pediatric Burns",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-skin",
+      "category_name": "Pediatric Skin",
+      "population": "pediatric",
+      "keywords": [
+        "burns",
+        "dermatologic",
+        "dermatology",
+        "integumentary",
+        "pediatric",
+        "skin"
+      ]
+    },
+    "pediatric-leukemias": {
+      "title": "Pediatric Leukemias (ALL/AML)",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-hematology-oncology",
+      "category_name": "Pediatric Hematology & Oncology",
+      "population": "pediatric",
+      "keywords": [
+        "all",
+        "aml",
+        "blood",
+        "cancer",
+        "hematologic",
+        "hematology",
+        "leukemias",
+        "oncologic",
+        "oncology",
+        "pediatric"
+      ]
+    },
+    "sickle-cell-crisis": {
+      "title": "Sickle Cell Crisis",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-hematology-oncology",
+      "category_name": "Pediatric Hematology & Oncology",
+      "population": "pediatric",
+      "keywords": [
+        "blood",
+        "cancer",
+        "cell",
+        "crisis",
+        "hematologic",
+        "hematology",
+        "oncologic",
+        "oncology",
+        "pediatric",
+        "sickle"
+      ]
+    },
+    "pediatric-solid-tumors": {
+      "title": "Pediatric Solid Tumors",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-hematology-oncology",
+      "category_name": "Pediatric Hematology & Oncology",
+      "population": "pediatric",
+      "keywords": [
+        "blood",
+        "cancer",
+        "hematologic",
+        "hematology",
+        "oncologic",
+        "oncology",
+        "pediatric",
+        "solid",
+        "tumors"
+      ]
+    },
+    "bleeding-disorders": {
+      "title": "Bleeding Disorders (Hemophilia & ITP)",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-hematology-oncology",
+      "category_name": "Pediatric Hematology & Oncology",
+      "population": "pediatric",
+      "keywords": [
+        "bleeding",
+        "blood",
+        "cancer",
+        "hematologic",
+        "hematology",
+        "hemophilia",
+        "itp",
+        "oncologic",
+        "oncology",
+        "pediatric"
+      ]
+    },
+    "iron-deficiency-anemia": {
+      "title": "Iron-Deficiency Anemia",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-hematology-oncology",
+      "category_name": "Pediatric Hematology & Oncology",
+      "population": "pediatric",
+      "keywords": [
+        "anemia",
+        "blood",
+        "cancer",
+        "deficiency",
+        "hematologic",
+        "hematology",
+        "iron",
+        "oncologic",
+        "oncology",
+        "pediatric"
+      ]
+    },
+    "jia-lupus": {
+      "title": "JIA & Pediatric Lupus",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-immune-rheumatology",
+      "category_name": "Pediatric Immune & Rheumatology",
+      "population": "pediatric",
+      "keywords": [
+        "autoimmune",
+        "immune",
+        "immunologic",
+        "immunology",
+        "jia",
+        "lupus",
+        "pediatric",
+        "rheumatology"
+      ]
+    },
+    "immune-deficiency-hiv": {
+      "title": "Immune Deficiency, HIV & Anaphylaxis",
+      "class": "pediatrics",
+      "class_name": "Pediatric Nursing",
+      "category": "pediatric-immune-rheumatology",
+      "category_name": "Pediatric Immune & Rheumatology",
+      "population": "pediatric",
+      "keywords": [
+        "anaphylaxis",
+        "autoimmune",
+        "deficiency",
+        "hiv",
+        "immune",
+        "immunologic",
+        "immunology",
+        "pediatric",
+        "rheumatology"
+      ]
+    }
+  }
+}

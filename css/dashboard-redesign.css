@@ -2211,6 +2211,7 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   padding: 20px;
 }
+.exam-modal-overlay.active,
 .exam-modal-overlay.open { display: flex; }
 
 .exam-modal {

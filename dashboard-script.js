@@ -911,7 +911,8 @@ function populateGuidesFlyout() {
         'pediatric-solid-tumors': 'Pediatric Nursing',
         'bleeding-disorders': 'Pediatric Nursing',
         'iron-deficiency-anemia': 'Pediatric Nursing',
-        'jia-lupus': 'Pediatric Nursing'
+        'jia-lupus': 'Pediatric Nursing',
+        'immune-deficiency-hiv': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

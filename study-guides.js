@@ -3,6 +3,67 @@
 
 // Guide preview content (realistic placeholder - preview of full guide)
 const guidePreviewContent = {
+    'immune-deficiency-hiv': {
+        title: 'Immune Deficiency, HIV & Anaphylaxis',
+        storeUrl: 'pricing.html#immune-deficiency-hiv',
+        content: `
+# Immune Deficiency, HIV & Anaphylaxis Study Guide
+
+## Overview
+Primary immune deficiency warning signs, pediatric HIV, and life-saving anaphylaxis care. Vaccines in the immunocompromised, IM epinephrine, and home care.
+
+## What You'll Learn
+
+### Primary Immune Deficiency Warning Signs
+- **Persistent thrush** (oral candidiasis)
+- **≥ 2 serious infections** in a year (sepsis, meningitis)
+- **≥ 2 episodes of pneumonia** in a year
+- Failure to thrive
+- Family history of PID
+- Poor response to standard antibiotics
+
+### Common PIDs
+- **SCID** — "bubble boy"; BMT curative
+- **Bruton's XLA** — B-cell defect; monthly IVIG
+- **DiGeorge** — CATCH-22 (cardiac, hypocalcemia, thymic hypoplasia)
+- **Wiskott-Aldrich** — thrombocytopenia + eczema + infection
+
+### Pediatric HIV
+- **Perinatal transmission** is #1 route
+- Prevent with maternal ART, IV zidovudine, C-section, infant prophylaxis
+- **NO breastfeeding in the US**
+- Infant testing: **HIV DNA/RNA PCR** (not antibody)
+- Treatment: **combination ART** daily; adherence is critical
+- Monitor CD4 count and viral load
+
+### Anaphylaxis
+- Two or more systems: skin, respiratory, GI, CV, CNS
+- **Airway FIRST, then IM epinephrine** 0.01 mg/kg in vastus lateralis
+- Max 0.3 mg (child), 0.5 mg (adolescent)
+- Repeat every 5–15 min if needed
+- Adjuncts: antihistamines, steroids, albuterol, IV fluids
+- **Observe 4–8 hours for biphasic reaction**; discharge with 2 epi pens
+
+### Vaccines in Immunocompromised
+- **NO live vaccines**: MMR, varicella, rotavirus, intranasal flu, BCG
+- Inactivated vaccines (injectable flu, Tdap, pneumococcal) are SAFE
+- Household contacts: injectable flu, not nasal spray
+
+### HIV Home Care (Parental Teaching)
+- **Nutrition** — high-calorie, high-protein
+- **Medication compliance** — daily ART, no missed doses
+- **Pain management** — acetaminophen, avoid aspirin
+- **Signs of severe infection** — fever, cough, rash, thrush → call clinic
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Condition-by-condition breakdown*
+- *NCLEX-style practice questions*
+- *Anaphylaxis action plan and epi pen teaching*
+- *Family education handouts*
+        `
+    },
     'jia-lupus': {
         title: 'JIA & Pediatric Lupus',
         storeUrl: 'pricing.html#jia-lupus',

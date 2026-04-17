@@ -3,6 +3,60 @@
 
 // Guide preview content (realistic placeholder - preview of full guide)
 const guidePreviewContent = {
+    'sickle-cell-crisis': {
+        title: 'Sickle Cell Crisis',
+        storeUrl: 'pricing.html#sickle-cell-crisis',
+        content: `
+# Sickle Cell Crisis Study Guide
+
+## Overview
+HbS polymerization, vaso-occlusion, and the five faces of a crisis. Priority interventions, transfusion therapy, long-term management, and family education.
+
+## What You'll Learn
+
+### Pathophysiology
+- **Autosomal recessive** HbSS mutation in beta-globin
+- HbS polymerizes under stress → sickled cells → vaso-occlusion + chronic hemolysis
+- Symptoms begin ~6 months as fetal hemoglobin (HbF) is replaced
+
+### The Five Crises
+- **Vaso-occlusive (pain)** — most common; dactylitis in infants
+- **Acute chest syndrome** — #1 cause of mortality
+- **Splenic sequestration** — rapid splenomegaly + shock
+- **Aplastic crisis** — often parvovirus B19
+- **Hyperhemolytic** — accelerated hemolysis
+
+### Triggers (HHIDS)
+- **H**ypoxia, **H**ydration loss, **I**nfection, **D**ecreased temp (cold), **S**tress
+
+### Priority Interventions (HOPR)
+- **H**ydration — IV 1.5–2× maintenance
+- **O**xygen — only if hypoxic
+- **P**ain — scheduled opioids (morphine/hydromorphone); **avoid meperidine**
+- **R**est — decrease O2 consumption
+- Keep warm, NOT cold. Heat helps; ice worsens sickling
+
+### Transfusion Reaction — FIRST Action
+1. **STOP the transfusion immediately**
+2. Keep line patent with saline via **NEW tubing**
+3. Notify provider + blood bank; send bag back
+
+### Long-Term Management
+- **Hydroxyurea** — induces HbF, reduces crises
+- **Daily penicillin** through age 5 (functional asplenia risk)
+- Pneumococcal, meningococcal, Hib, annual flu vaccines
+- **Transcranial Doppler** annually ages 2–16 (stroke screening)
+- Folic acid daily
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth clinical breakdown*
+- *NCLEX-style practice questions*
+- *Pain management and transfusion pearls*
+- *Family education handouts*
+        `
+    },
     'pediatric-leukemias': {
         title: 'Pediatric Leukemias (ALL/AML)',
         storeUrl: 'pricing.html#pediatric-leukemias',

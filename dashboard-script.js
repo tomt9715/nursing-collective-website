@@ -906,7 +906,8 @@ function populateGuidesFlyout() {
         'pediatric-skin-infections': 'Pediatric Nursing',
         'hypersensitivity-inflammatory-skin': 'Pediatric Nursing',
         'pediatric-burns': 'Pediatric Nursing',
-        'pediatric-leukemias': 'Pediatric Nursing'
+        'pediatric-leukemias': 'Pediatric Nursing',
+        'sickle-cell-crisis': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

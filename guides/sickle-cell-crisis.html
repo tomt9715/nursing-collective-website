@@ -1,0 +1,2148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sickle Cell Crisis Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Pediatric nursing study guide for sickle cell crisis. Vaso-occlusive pain crisis, acute chest syndrome, splenic sequestration, priority interventions (hydration, oxygen, pain), transfusion therapy, and long-term management.">
+    <link rel="canonical" href="https://thenursingcollective.pro/guides/sickle-cell-crisis.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/guides/sickle-cell-crisis.html">
+    <meta property="og:title" content="Sickle Cell Crisis Study Guide - The Nursing Collective">
+    <meta property="og:description" content="Pediatric nursing study guide for sickle cell crisis.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/cookie-consent.css">
+    <link rel="stylesheet" href="guide-sidebar.css">
+
+    <style>
+        /* SICKLE CELL CRISIS — Pediatric Heme/Onc */
+        :root {
+            --navy: #0d1b2a;
+            --navy-2: #162032;
+            --navy-3: #1e2d3e;
+            --card-dark: #1a2940;
+            --teal: #0fbcad;
+            --teal-dim: #0a9086;
+            --amber: #f4a535;
+            --green: #3dbd7a;
+            --red: #e05252;
+            --purple: #8b5cf6;
+            --text-inv: #e8edf2;
+            --text-inv-dim: #8a9bb0;
+            --border-inv: rgba(255, 255, 255, 0.07);
+            --border-inv-mid: rgba(255, 255, 255, 0.12);
+
+            --paper: #162032;
+            --paper-warm: #1a2940;
+            --paper-deep: #1e2d3e;
+            --ink: #f1f5f9;
+            --ink-soft: #c4ccd8;
+            --ink-dimmer: #8a9bb0;
+            --rule: rgba(255, 255, 255, 0.08);
+            --rule-mid: rgba(255, 255, 255, 0.14);
+            --rule-soft: rgba(255, 255, 255, 0.04);
+
+            --peds-coral: #ef5a5a;
+            --peds-coral-deep: #dc2f4f;
+            --peds-rose: #fb8989;
+            --peds-blush: rgba(239, 90, 90, 0.12);
+            --peds-blush-2: rgba(239, 90, 90, 0.22);
+            --peds-plum: #fb8989;
+
+            --critical: #dc2626;
+            --safe: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            background: var(--navy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .download-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(13, 27, 42, 0.92);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            color: var(--text-inv);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--border-inv);
+        }
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.01em;
+            color: var(--text-inv);
+        }
+        .download-bar-brand i { color: var(--teal); font-size: 16px; }
+        .download-bar-actions { display: flex; gap: 10px; }
+
+        .btn-download, .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            border: 0.5px solid var(--border-inv-mid);
+        }
+        .btn-download { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+        .btn-download:hover { background: var(--teal-dim); border-color: var(--teal-dim); transform: translateY(-1px); }
+        .btn-back { background: transparent; color: var(--text-inv-dim); }
+        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
+
+        .document-container {
+            max-width: 900px;
+            margin: 80px auto 40px;
+            background: var(--paper);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 0.5px solid var(--rule-mid);
+        }
+
+        .cover-page {
+            background:
+                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
+                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
+            color: white;
+            padding: 72px 60px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--peds-coral);
+        }
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .cover-content { position: relative; z-index: 1; }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 50px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
+
+        .cover-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 14px;
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+        }
+        .cover-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            line-height: 1.55;
+        }
+
+        .cover-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+        .cover-meta-item i { color: var(--peds-coral); font-size: 11px; }
+        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
+
+        .document-content { padding: 56px 56px 48px; background: var(--paper); }
+
+        .learning-objectives {
+            background: var(--peds-blush);
+            border: 1px solid var(--peds-blush-2);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--peds-rose);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .learning-objectives h2 i { color: var(--peds-coral); }
+        .learning-objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .objective-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .objective-card i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+
+        .high-yield-summary {
+            background: linear-gradient(135deg, rgba(244, 165, 53, 0.08), rgba(244, 165, 53, 0.02));
+            border: 1px solid rgba(244, 165, 53, 0.25);
+            border-left: 4px solid var(--amber);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .high-yield-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--amber);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .high-yield-summary h2 i { color: var(--amber); }
+        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
+        .high-yield-summary ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .high-yield-summary li {
+            background: rgba(0, 0, 0, 0.18);
+            border-radius: 8px;
+            padding: 12px 14px 12px 38px !important;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            border-bottom: none !important;
+        }
+        .high-yield-summary li::before {
+            left: 14px !important;
+            top: 14px !important;
+            color: var(--amber) !important;
+            font-size: 0.82rem !important;
+        }
+        .high-yield-summary strong { color: var(--amber); font-weight: 600; }
+        .high-yield-summary li strong { color: var(--amber) !important; }
+        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--amber); font-size: 0.95rem; }
+
+        .sticky-nav {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 36px;
+        }
+        .sticky-nav h3 {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--ink-dimmer);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-pills a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.87rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        .nav-pills a:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
+        .nav-pills a i { font-size: 0.82rem; }
+
+        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-number {
+            flex-shrink: 0;
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(239, 90, 90, 0.25);
+        }
+        .section-title-group { flex: 1; min-width: 0; }
+        .section-title-group h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
+
+        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.22rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 24px 0 12px;
+        }
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 18px 0 8px;
+        }
+        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
+        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
+        .guide-section strong { color: var(--ink); font-weight: 600; }
+
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: 10px;
+            border: 1px solid var(--rule);
+        }
+        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+        .guide-table thead { background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep)); color: white; }
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+        }
+        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
+        .guide-table tbody { background: var(--paper-warm); }
+        .guide-table tbody tr:last-child td { border-bottom: none; }
+        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
+        .guide-table tbody tr:hover { background: var(--peds-blush); }
+        .guide-table td strong { color: var(--ink); }
+
+        .info-box {
+            display: flex;
+            gap: 14px;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--rule);
+            border-left-width: 4px;
+        }
+        .info-box-icon {
+            flex-shrink: 0;
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .info-box-content { flex: 1; min-width: 0; }
+        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+
+        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
+        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .info-box.clinical h5 { color: #fbbf24; }
+        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
+        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
+        .info-box.critical h5 { color: #fca5a5; }
+        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
+        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .info-box.nclex h5 { color: #93c5fd; }
+        .info-box.pediatric { background: var(--peds-blush); border-color: var(--peds-blush-2); border-left-color: var(--peds-coral); }
+        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-rose); }
+        .info-box.pediatric h5 { color: var(--peds-rose); }
+        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
+        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
+        .info-box.safe h5 { color: #86efac; }
+        .info-box p { color: var(--ink-soft); }
+        .info-box strong { color: var(--ink); }
+
+        .florencebot-tip {
+            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
+            border: 1px solid rgba(15, 188, 173, 0.22);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .florencebot-tip::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--teal);
+        }
+        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .florencebot-tip-icon {
+            width: 32px; height: 32px;
+            background: var(--teal);
+            border-radius: 8px;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .florencebot-tip-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .florencebot-tip-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #5eead4;
+            margin-bottom: 8px;
+        }
+        .florencebot-tip-content { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; }
+        .florencebot-tip-content strong { color: var(--ink); }
+
+        .bottom-line {
+            background: linear-gradient(135deg, var(--peds-blush), rgba(239, 90, 90, 0.04));
+            border: 0.5px solid var(--peds-blush-2);
+            border-left: 4px solid var(--peds-coral);
+            padding: 14px 18px;
+            margin: 22px 0 0;
+            border-radius: 0 10px 10px 0;
+            font-weight: 500;
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+        .bottom-line strong { color: var(--peds-rose); }
+
+        /* Crisis-type cards */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .type-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .type-card-header {
+            padding: 14px 18px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .type-card-header.vaso { background: linear-gradient(135deg, #dc2626, #991b1b); }
+        .type-card-header.chest { background: linear-gradient(135deg, #ef5a5a, #b91c1c); }
+        .type-card-header.splenic { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+        .type-card-header.aplastic { background: linear-gradient(135deg, #0891b2, #155e75); }
+        .type-card-header.hyperhemolytic { background: linear-gradient(135deg, #f59e0b, #b45309); }
+        .type-card-header.priapism { background: linear-gradient(135deg, #6366f1, #3730a3); }
+        .type-card-header i { font-size: 1.2rem; }
+        .type-card-header h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+        .type-card-header .tag {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            opacity: 0.88;
+            text-transform: uppercase;
+        }
+        .type-card-body { padding: 16px 18px; }
+        .type-card-body h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--peds-rose);
+            margin: 10px 0 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .type-card-body h5:first-child { margin-top: 0; }
+        .type-card-body p, .type-card-body ul { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; margin: 0 0 6px; }
+        .type-card-body ul { padding-left: 18px; }
+        .type-card-body li { margin-bottom: 4px; }
+        .type-card-body strong { color: var(--ink); }
+
+        /* Key point grid */
+        .key-point-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .key-point-item {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .key-point-item i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .key-point-item p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); }
+        .key-point-item strong { color: var(--ink); }
+
+        /* Red flag cards */
+        .redflag-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .redflag-card {
+            background: rgba(220, 38, 38, 0.08);
+            border: 0.5px solid rgba(220, 38, 38, 0.25);
+            border-left: 3px solid #f87171;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .redflag-card i { color: #fca5a5; font-size: 0.95rem; margin-top: 3px; flex-shrink: 0; }
+        .redflag-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); }
+        .redflag-card strong { color: #fca5a5; }
+
+        /* Step list */
+        .step-list {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 20px 0;
+            counter-reset: step;
+        }
+        .step-list li {
+            counter-increment: step;
+            position: relative;
+            padding: 14px 16px 14px 56px;
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 0.97rem;
+            line-height: 1.6;
+            color: var(--ink-soft);
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 30px; height: 30px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.9rem;
+        }
+        .step-list strong { color: var(--ink); }
+
+        /* Med cards */
+        .med-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .med-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            border-top: 3px solid var(--peds-coral);
+        }
+        .med-card h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+        .med-card .med-class {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--peds-coral);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .med-card p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.55; }
+        .med-card p strong { color: var(--ink); }
+
+        /* Cross refs */
+        .cross-references {
+            margin: 36px 0 8px;
+            padding: 24px;
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+        }
+        .cross-references h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cross-references h2 i { color: var(--peds-coral); }
+        .cross-ref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .cross-ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+        .cross-ref-link:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
+        .cross-ref-link i { font-size: 0.85rem; }
+
+        .quiz-cta {
+            background:
+                radial-gradient(ellipse 60% 80% at 90% 10%, rgba(15, 188, 173, 0.12) 0%, transparent 65%),
+                linear-gradient(135deg, var(--card-dark), var(--navy-3));
+            border: 0.5px solid var(--border-inv-mid);
+            color: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin: 36px 0;
+            text-align: center;
+        }
+        .quiz-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
+        .quiz-cta p { color: rgba(255, 255, 255, 0.88); margin-bottom: 20px; font-size: 0.98rem; }
+        .quiz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--teal);
+            color: var(--navy);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
+
+        .document-footer {
+            padding: 32px 56px;
+            background: var(--paper-deep);
+            border-top: 0.5px solid var(--rule);
+            text-align: center;
+        }
+        .footer-logo { height: 28px; margin: 0 auto 14px; opacity: 0.9; }
+        .footer-tagline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 4px; }
+        .footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-dimmer); letter-spacing: 0.02em; }
+
+        /* Sidebar overrides */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            max-width: 1600px;
+        }
+        .sidebar-left, .sidebar-right {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .toc-panel {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            color: var(--text-inv) !important;
+            margin-bottom: 16px !important;
+        }
+        .toc-header {
+            padding-bottom: 14px !important;
+            margin-bottom: 14px !important;
+            border-bottom: 0.5px solid var(--border-inv-mid) !important;
+        }
+        .toc-header h3 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+        }
+        .toc-header i { color: var(--teal) !important; }
+        .toc-link {
+            color: var(--text-inv-dim) !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.88rem !important;
+            border-left: 2px solid transparent !important;
+            padding: 9px 12px !important;
+            background: transparent !important;
+        }
+        .toc-link:hover { background: rgba(15, 188, 173, 0.08) !important; color: var(--text-inv) !important; }
+        .toc-link.active {
+            background: rgba(15, 188, 173, 0.12) !important;
+            color: var(--teal) !important;
+            border-left-color: var(--teal) !important;
+            font-weight: 600 !important;
+        }
+        .toc-link i { color: inherit !important; }
+
+        .toc-progress {
+            margin-top: 14px !important;
+            padding-top: 14px !important;
+            border-top: 0.5px solid var(--border-inv) !important;
+        }
+        .toc-progress-label {
+            display: flex !important;
+            justify-content: space-between !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            letter-spacing: 1px !important;
+            color: var(--text-inv-dim) !important;
+            margin-bottom: 8px !important;
+        }
+        .toc-progress-percent { color: var(--teal) !important; }
+        .toc-progress-bar {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-radius: 999px !important;
+            height: 4px !important;
+            overflow: hidden !important;
+        }
+        .toc-progress-fill {
+            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
+            height: 100% !important;
+        }
+
+        .toc-nav-links {
+            margin-top: 14px !important;
+            padding-top: 14px !important;
+            border-top: 0.5px solid var(--border-inv) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+        }
+        .toc-nav-link {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            color: var(--text-inv-dim) !important;
+            background: transparent !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.84rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            transition: all 0.15s !important;
+        }
+        .toc-nav-link:hover { background: rgba(255, 255, 255, 0.04) !important; color: var(--text-inv) !important; }
+        .toc-nav-link--ai { background: rgba(15, 188, 173, 0.08) !important; color: var(--teal) !important; }
+        .toc-nav-link--ai:hover { background: rgba(15, 188, 173, 0.15) !important; color: var(--teal) !important; }
+
+        .florence-card {
+            background: linear-gradient(135deg, var(--card-dark), var(--navy-3)) !important;
+            border: 0.5px solid var(--border-inv-mid) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            margin-bottom: 16px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .florence-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -40% !important; right: -40% !important;
+            width: 120% !important; height: 120% !important;
+            background: radial-gradient(circle, rgba(15, 188, 173, 0.12) 0%, transparent 60%) !important;
+            pointer-events: none !important;
+        }
+        .florence-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            margin-bottom: 14px !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .florence-avatar {
+            width: 44px !important; height: 44px !important;
+            border-radius: 50% !important;
+            background: rgba(15, 188, 173, 0.15) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
+            padding: 2px !important;
+            box-shadow: none !important;
+        }
+        .florence-info h3 {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.98rem !important;
+            font-weight: 600 !important;
+            color: var(--text-inv) !important;
+            margin: 0 !important;
+        }
+        .florence-info span {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            color: var(--teal) !important;
+            letter-spacing: 1px !important;
+            text-transform: uppercase !important;
+        }
+        .florence-speech {
+            background: rgba(15, 188, 173, 0.06) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            border-radius: 10px !important;
+            padding: 12px 14px !important;
+            box-shadow: none !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .florence-speech::before {
+            background: var(--card-dark) !important;
+            border-top: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            border-left: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            box-shadow: none !important;
+        }
+        .florence-speech p {
+            color: var(--text-inv) !important;
+            font-size: 0.88rem !important;
+            line-height: 1.55 !important;
+            margin: 0 !important;
+        }
+        .florence-speech p strong { color: var(--teal) !important; }
+
+        .key-numbers-card {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+            margin-bottom: 16px !important;
+        }
+        .key-numbers-title {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin-bottom: 14px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .key-numbers-title i { color: var(--teal) !important; }
+        .key-numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+        .key-number {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 10px !important;
+            padding: 12px 10px !important;
+        }
+        .key-number:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important; }
+        .key-number.critical { background: rgba(220, 38, 38, 0.1) !important; border-color: rgba(220, 38, 38, 0.25) !important; }
+        .key-number.critical .key-number-value { color: #fca5a5 !important; }
+        .key-number.time { background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.25) !important; }
+        .key-number.time .key-number-value { color: #fcd34d !important; }
+        .key-number.target { background: rgba(15, 188, 173, 0.1) !important; border-color: rgba(15, 188, 173, 0.25) !important; }
+        .key-number.target .key-number-value { color: #5eead4 !important; }
+        .key-number.success { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
+        .key-number.success .key-number-value { color: #86efac !important; }
+        .key-number.warning { background: rgba(251, 146, 60, 0.1) !important; border-color: rgba(251, 146, 60, 0.25) !important; }
+        .key-number.warning .key-number-value { color: #fdba74 !important; }
+        .key-number.info { background: rgba(139, 92, 246, 0.1) !important; border-color: rgba(139, 92, 246, 0.25) !important; }
+        .key-number.info .key-number-value { color: #c4b5fd !important; }
+        .key-number-value {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 1.05rem !important;
+            font-weight: 700 !important;
+            color: var(--text-inv) !important;
+            line-height: 1.2 !important;
+        }
+        .key-number-label {
+            font-size: 0.68rem !important;
+            color: var(--text-inv-dim) !important;
+            margin-top: 4px !important;
+            line-height: 1.35 !important;
+        }
+
+        .florence-tips-card {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+        }
+        .florence-tips-header { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 14px !important; }
+        .florence-tips-avatar {
+            width: 28px !important; height: 28px !important;
+            border-radius: 50% !important;
+            background: rgba(15, 188, 173, 0.15) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
+            padding: 2px !important;
+            box-shadow: none !important;
+        }
+        .florence-tips-header h4 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+        }
+
+        .tip-item {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-left: 3px solid var(--teal) !important;
+            border-radius: 8px !important;
+            padding: 10px 12px !important;
+            margin-bottom: 8px !important;
+            box-shadow: none !important;
+            transition: all 0.15s !important;
+        }
+        .tip-item:hover { background: rgba(15, 188, 173, 0.08) !important; transform: translateX(2px) !important; }
+        .tip-item:last-child { margin-bottom: 0 !important; }
+        .tip-item-title {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv) !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .tip-item-title::before { color: var(--teal) !important; font-size: 0.72rem !important; }
+        .tip-item-text {
+            font-size: 0.78rem !important;
+            color: var(--text-inv-dim) !important;
+            line-height: 1.5 !important;
+            margin-top: 4px !important;
+        }
+
+        .mobile-nav-fab { background: var(--teal) !important; color: var(--navy) !important; }
+        .mobile-nav-drawer { background: var(--card-dark) !important; color: var(--text-inv) !important; }
+        .mobile-nav-tab { color: var(--text-inv-dim) !important; background: transparent !important; }
+        .mobile-nav-tab.active { color: var(--teal) !important; border-bottom-color: var(--teal) !important; }
+        .mobile-toc-link { color: var(--text-inv-dim) !important; }
+        .mobile-toc-link.active { color: var(--teal) !important; background: rgba(15, 188, 173, 0.1) !important; }
+
+        @media (max-width: 1200px) {
+            .page-wrapper { padding: 0 12px; gap: 16px; }
+            .sidebar-left, .sidebar-right { width: 220px; }
+        }
+
+        @media (max-width: 900px) {
+            .page-wrapper { flex-direction: column; padding: 0 12px; }
+            .sidebar-left, .sidebar-right {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                position: static;
+                max-height: none;
+            }
+            .document-container { margin: 80px 12px 40px; }
+            .document-content { padding: 36px 28px; }
+            .cover-page { padding: 56px 28px 40px; }
+            .cover-title { font-size: 2.1rem; }
+            .cover-meta { gap: 10px; padding: 10px 16px; }
+            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
+            .learning-objectives-grid,
+            .type-grid,
+            .key-point-grid,
+            .redflag-grid,
+            .high-yield-summary ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .download-bar { padding: 10px 14px; }
+            .download-bar-brand span:not(.brand-text-long) { display: none; }
+            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
+            .section-header { gap: 12px; }
+            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
+            .section-title-group h2 { font-size: 1.4rem; }
+            .document-content { padding: 28px 20px; }
+            .document-footer { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body data-product-id="sickle-cell-crisis" data-guide-name="Sickle Cell Crisis">
+
+    <header class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-circle"></i>
+            <span>Sickle Cell Crisis</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../my-guides.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Guides
+            </a>
+        </div>
+    </header>
+
+    <div class="document-container">
+
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-badge">
+                    <i class="fas fa-baby"></i> Pediatric Nursing &middot; Hematology / Oncology
+                </div>
+                <h1 class="cover-title">Sickle Cell Crisis</h1>
+                <p class="cover-subtitle">HbS, the vaso-occlusive storm, and the five faces of a crisis. Priority interventions (hydration, oxygen, pain), transfusion therapy, and the life-long management of a disease that starts at birth.</p>
+                <div class="cover-meta">
+                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 9 Sections</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 17 Quiz Questions</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~20 Min Read</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="document-content">
+
+            <div class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <div class="learning-objectives-grid">
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Explain the pathophysiology of sickling and vaso-occlusion.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Differentiate the major types of sickle cell crises and their presentations.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Identify common crisis triggers and how to prevent them.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Apply priority crisis interventions: rest, oxygen, hydration, and pain control.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Administer blood products safely and respond to transfusion reactions.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Teach families the long-term management plan and when to seek care.</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
+                <p class="high-yield-subtitle">Ten facts that will carry you through any sickle cell question.</p>
+                <ul>
+                    <li><strong>Sickle cell disease = autosomal recessive</strong> mutation in the beta-globin chain producing <strong>HbS</strong>. Under stress, HbS polymerizes, RBCs sickle, clump, and occlude vessels &rarr; pain, hypoxia, organ damage.</li>
+                    <li><strong>Most common in African, Mediterranean, Middle Eastern, and Indian ancestry</strong> populations. Diagnosed in newborn screening in the US.</li>
+                    <li><strong>Symptoms begin around 6 months of age</strong> as fetal hemoglobin (HbF) is replaced by HbS. Prior to that, HbF protects the infant.</li>
+                    <li><strong>The five faces of crisis:</strong> <strong>vaso-occlusive (pain)</strong> &mdash; most common; <strong>acute chest syndrome</strong> &mdash; leading cause of mortality; <strong>splenic sequestration</strong> &mdash; rapid spleen enlargement + pooling of blood; <strong>aplastic</strong> &mdash; marrow shutdown (often parvovirus B19); <strong>hyperhemolytic</strong> &mdash; accelerated hemolysis.</li>
+                    <li><strong>Classic triggers:</strong> <strong>dehydration, hypoxia, infection, cold exposure, acidosis, stress, high altitude, strenuous exercise</strong>. Teach avoidance.</li>
+                    <li><strong>Priority interventions: HOP &mdash; Hydration, Oxygen (if hypoxic), Pain control.</strong> Plus <strong>REST</strong> to decrease oxygen consumption. Keep warm, monitor I&amp;O, blood products as needed.</li>
+                    <li><strong>Pain is real.</strong> Don\u2019t under-treat. Scheduled + PRN opioids (morphine, hydromorphone); PCA for older kids. <strong>Avoid meperidine</strong> (neurotoxic metabolite). Adjuncts: acetaminophen, NSAIDs (if kidneys OK), heat packs, massage.</li>
+                    <li><strong>Fever &ge; 101\u00b0F (38.5\u00b0C) is an EMERGENCY</strong> in a child with sickle cell &mdash; functional asplenia = encapsulated-organism sepsis risk (S. pneumo, H. influenzae, N. meningitidis). Blood cultures + IV ceftriaxone immediately.</li>
+                    <li><strong>Blood transfusion reaction &mdash; FIRST action is STOP the transfusion,</strong> keep the line open with normal saline via NEW tubing, notify the provider, and send the bag back to the blood bank.</li>
+                    <li><strong>Long-term care:</strong> <strong>hydroxyurea</strong> (increases HbF), <strong>daily penicillin prophylaxis through age 5</strong>, pneumococcal/meningococcal/Hib vaccines, <strong>transcranial Doppler</strong> annually ages 2&ndash;16 to screen for stroke risk, folic acid, and hematopoietic stem cell transplant for severe disease.</li>
+                </ul>
+                <p class="high-yield-cta">Clinical breakdown below &darr;</p>
+            </section>
+
+            <nav class="sticky-nav">
+                <h3>Jump to section</h3>
+                <div class="nav-pills">
+                    <a href="#fundamentals"><i class="fas fa-dna"></i> Fundamentals</a>
+                    <a href="#crisis-types"><i class="fas fa-bolt"></i> Crisis Types</a>
+                    <a href="#triggers"><i class="fas fa-fire"></i> Triggers</a>
+                    <a href="#clinical"><i class="fas fa-notes-medical"></i> Clinical Findings</a>
+                    <a href="#diagnosis"><i class="fas fa-microscope"></i> Diagnosis</a>
+                    <a href="#priority"><i class="fas fa-truck-medical"></i> Priority Care</a>
+                    <a href="#transfusion"><i class="fas fa-droplet"></i> Transfusion</a>
+                    <a href="#longterm"><i class="fas fa-calendar-check"></i> Long-Term Mgmt</a>
+                    <a href="#family"><i class="fas fa-users"></i> Family Education</a>
+                </div>
+            </nav>
+
+            <!-- Section 1: Fundamentals -->
+            <section class="guide-section" id="fundamentals">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <div class="section-title-group">
+                        <h2>Sickle Cell Fundamentals</h2>
+                        <div class="subtitle">The genetics, the protein, the sickle shape</div>
+                    </div>
+                </div>
+
+                <p>Sickle cell disease (SCD) is an <strong>inherited hemoglobinopathy</strong>. A single DNA mutation changes one amino acid in the beta-globin chain, producing <strong>hemoglobin S (HbS)</strong>. When HbS releases oxygen, it polymerizes into rigid fibers that distort the red blood cell into a <strong>sickle (crescent) shape</strong>. Sickled cells are fragile, sticky, and poor at flowing through small vessels.</p>
+
+                <h3>Inheritance</h3>
+
+                <ul>
+                    <li><strong>Autosomal recessive</strong> &mdash; child needs <strong>two copies</strong> of the sickle gene (one from each parent) to have the disease (HbSS).</li>
+                    <li><strong>Sickle cell trait (HbAS)</strong> = one copy, usually asymptomatic, but carriers can pass the gene to children. Two trait parents &rarr; 25% chance of affected child each pregnancy.</li>
+                    <li>Most common in <strong>African, Mediterranean, Middle Eastern, Caribbean, and Indian ancestry</strong> populations.</li>
+                    <li>Other variants: <strong>HbSC</strong> (milder), <strong>HbS/beta-thalassemia</strong>, and rarer forms.</li>
+                </ul>
+
+                <h3>Pathophysiology of Sickling</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Step</th>
+                                <th>What Happens</th>
+                                <th>Clinical Effect</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1. Deoxygenation / stressor</strong></td>
+                                <td>HbS loses oxygen in the tissues</td>
+                                <td>Cells begin to sickle</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2. Polymerization</strong></td>
+                                <td>HbS strands clump together and distort the RBC</td>
+                                <td>Rigid, crescent-shaped cells</td>
+                            </tr>
+                            <tr>
+                                <td><strong>3. Adhesion &amp; vaso-occlusion</strong></td>
+                                <td>Sticky sickled cells occlude small vessels</td>
+                                <td><strong>Ischemia, severe pain, organ damage</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>4. Hemolysis</strong></td>
+                                <td>Sickled cells have a short lifespan (~10&ndash;20 days vs 120)</td>
+                                <td><strong>Chronic hemolytic anemia</strong>, jaundice, gallstones</td>
+                            </tr>
+                            <tr>
+                                <td><strong>5. Reperfusion &amp; inflammation</strong></td>
+                                <td>Once blood flow returns, oxidative stress and cytokines amplify injury</td>
+                                <td>Endothelial damage, repeated cycles, progressive organ failure</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Why Symptoms Start Around 6 Months</h3>
+
+                <p>Infants are born with <strong>fetal hemoglobin (HbF)</strong>, which does NOT sickle. As HbF is replaced by adult hemoglobin (and in SCD, HbS) during the first 6 months of life, symptoms begin. This is why hydroxyurea therapy &mdash; which re-induces HbF production &mdash; is so effective at reducing crises.</p>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon"><i class="fas fa-baby"></i></div>
+                    <div class="info-box-content">
+                        <h5>First Sign Is Often Dactylitis</h5>
+                        <p>The <strong>first sickle cell crisis for many infants is dactylitis</strong> &mdash; painful swelling of the hands and feet from vaso-occlusion in the small bones. An infant around 6&ndash;18 months old who refuses to bear weight, has swollen hands/feet, and is irritable should trigger a CBC and hemoglobin electrophoresis if the family history or newborn screen didn\u2019t already identify SCD.</p>
+                    </div>
+                </div>
+
+                <h3>Epidemiology</h3>
+
+                <ul>
+                    <li>Affects ~100,000 Americans, predominantly African American (1 in 365 Black births).</li>
+                    <li><strong>Universal newborn screening</strong> in all 50 US states catches SCD at birth.</li>
+                    <li>Historically high childhood mortality; modern care has increased life expectancy into the 50s&ndash;60s+.</li>
+                </ul>
+
+                <div class="bottom-line">🎯 Bottom Line: Autosomal recessive HbSS. HbS polymerizes under stress &rarr; sickled cells &rarr; vaso-occlusion + chronic hemolysis. Symptoms start ~6 months as HbF drops.</div>
+            </section>
+
+            <!-- Section 2: Crisis Types -->
+            <section class="guide-section" id="crisis-types">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <div class="section-title-group">
+                        <h2>Types of Sickle Cell Crisis</h2>
+                        <div class="subtitle">Five faces of the same disease</div>
+                    </div>
+                </div>
+
+                <p>The term "crisis" covers several distinct emergencies, all with different presentations and priorities. Knowing which type is happening drives the intervention.</p>
+
+                <div class="type-grid">
+                    <div class="type-card">
+                        <div class="type-card-header vaso">
+                            <i class="fas fa-bolt"></i>
+                            <h4>Vaso-Occlusive (Pain) Crisis</h4>
+                            <span class="tag">Most Common</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>What Happens</h5>
+                            <p>Sickled cells occlude microvasculature &rarr; ischemia + severe pain.</p>
+                            <h5>Presentation</h5>
+                            <p>Severe pain (often bones, abdomen, chest, back). May have fever, swelling, tenderness. <strong>Dactylitis</strong> (hands/feet) in infants.</p>
+                            <h5>Priority</h5>
+                            <p><strong>Hydration + oxygen (if hypoxic) + aggressive pain control + rest + warmth.</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header chest">
+                            <i class="fas fa-lungs"></i>
+                            <h4>Acute Chest Syndrome (ACS)</h4>
+                            <span class="tag">#1 mortality</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>What Happens</h5>
+                            <p>Vaso-occlusion in pulmonary vessels &rarr; chest pain, hypoxia, and a new infiltrate on chest X-ray. Triggered by infection, surgery, fat embolism from bone infarcts.</p>
+                            <h5>Presentation</h5>
+                            <p>Fever, cough, chest pain, dyspnea, hypoxia, new CXR infiltrate.</p>
+                            <h5>Priority</h5>
+                            <p><strong>Oxygen, antibiotics (broad-spectrum), IV fluids (cautiously, to avoid pulm edema), pain control, incentive spirometry, exchange transfusion if severe.</strong></p>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header splenic">
+                            <i class="fas fa-spa"></i>
+                            <h4>Splenic Sequestration</h4>
+                            <span class="tag">Under 5 yrs</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>What Happens</h5>
+                            <p>Sickled cells trap large volumes of blood in the spleen &rarr; rapid splenomegaly + severe anemia + hypovolemic shock.</p>
+                            <h5>Presentation</h5>
+                            <p>Rapidly enlarging spleen (left upper quadrant mass), pallor, tachycardia, hypotension, lethargy. Drops in Hgb can be dramatic.</p>
+                            <h5>Priority</h5>
+                            <p><strong>Emergent IV fluids and PRBC transfusion.</strong> Some children need splenectomy after repeat episodes.</p>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header aplastic">
+                            <i class="fas fa-ban"></i>
+                            <h4>Aplastic Crisis</h4>
+                            <span class="tag">Parvovirus</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>What Happens</h5>
+                            <p>Temporary marrow shutdown &mdash; classically triggered by <strong>parvovirus B19</strong> ("fifth disease"). Reticulocyte count drops; Hgb plummets.</p>
+                            <h5>Presentation</h5>
+                            <p>Fatigue, pallor, worsening anemia; low reticulocyte count.</p>
+                            <h5>Priority</h5>
+                            <p><strong>PRBC transfusion</strong> to support until marrow recovers (usually 7&ndash;10 days). Contact isolation for parvovirus.</p>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header hyperhemolytic">
+                            <i class="fas fa-fire"></i>
+                            <h4>Hyperhemolytic Crisis</h4>
+                            <span class="tag">Accelerated</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>What Happens</h5>
+                            <p>Sudden accelerated hemolysis (often with infection or hypersplenism).</p>
+                            <h5>Presentation</h5>
+                            <p>Rapid Hgb drop, jaundice, fatigue, <strong>elevated reticulocyte count</strong> (marrow trying to keep up).</p>
+                            <h5>Priority</h5>
+                            <p>Supportive care, transfusion, manage underlying trigger.</p>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header priapism">
+                            <i class="fas fa-mars"></i>
+                            <h4>Priapism</h4>
+                            <span class="tag">Urologic Emergency</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>What Happens</h5>
+                            <p>Sickling in the penile vessels &rarr; painful sustained erection.</p>
+                            <h5>Presentation</h5>
+                            <p>Painful erection lasting &gt;4 hours.</p>
+                            <h5>Priority</h5>
+                            <p><strong>Hydration, pain control, warm compresses, urology consult.</strong> Long-term risk: impotence. Episodes &gt;4 hours need emergency care.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Other Serious Complications</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-brain"></i>
+                        <p><strong>Stroke (CVA)</strong> &mdash; from vaso-occlusion in cerebral arteries. Major pediatric complication; annual <strong>transcranial Doppler</strong> screening ages 2&ndash;16.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-kidney"></i>
+                        <p><strong>Renal complications</strong> &mdash; concentrating defect (isosthenuria), enuresis, hematuria, eventual CKD.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-eye"></i>
+                        <p><strong>Retinopathy</strong> &mdash; proliferative retinal vessels; risk of vision loss; annual eye exams.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-bone"></i>
+                        <p><strong>Avascular necrosis</strong> &mdash; especially femoral head; chronic hip pain.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-heart"></i>
+                        <p><strong>Cholelithiasis</strong> &mdash; pigment gallstones from chronic hemolysis; elective cholecystectomy common.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-virus"></i>
+                        <p><strong>Functional asplenia</strong> by age 5 &rarr; severe risk of encapsulated-organism sepsis.</p>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-lungs"></i></div>
+                    <div class="info-box-content">
+                        <h5>Acute Chest Syndrome is the #1 Cause of Death</h5>
+                        <p>Any child with sickle cell disease admitted for any reason who develops <strong>cough, chest pain, hypoxia, or a new infiltrate</strong> is presumed to have acute chest syndrome until proven otherwise. Treat aggressively: oxygen, antibiotics, pain control, incentive spirometry, and prepare for possible exchange transfusion. The condition can worsen rapidly &mdash; don\u2019t wait to act.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Five crises &mdash; vaso-occlusive (pain), ACS (#1 mortality), splenic sequestration, aplastic (parvovirus), hyperhemolytic. Plus priapism. Stroke risk is huge.</div>
+            </section>
+
+            <!-- Section 3: Triggers -->
+            <section class="guide-section" id="triggers">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <div class="section-title-group">
+                        <h2>Crisis Triggers &amp; Prevention</h2>
+                        <div class="subtitle">What sets off the sickling storm</div>
+                    </div>
+                </div>
+
+                <p>Almost anything that stresses the cell \u2014 reduced oxygen, concentrated blood, acid, or cold \u2014 can trigger sickling. Teaching the family to recognize and avoid triggers is a major part of chronic management.</p>
+
+                <h3>The Common Triggers</h3>
+
+                <div class="redflag-grid">
+                    <div class="redflag-card">
+                        <i class="fas fa-droplet"></i>
+                        <p><strong>Dehydration</strong> &mdash; concentrated blood sickles more. Push fluids constantly.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-wind"></i>
+                        <p><strong>Hypoxia</strong> &mdash; altitude, air travel (unpressurized), respiratory illness, sleep apnea, general anesthesia.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-virus"></i>
+                        <p><strong>Infection</strong> &mdash; most common trigger in kids; fever increases metabolic demand.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-snowflake"></i>
+                        <p><strong>Cold exposure</strong> &mdash; vasoconstriction promotes sickling. Dress in layers; avoid ice plunges.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-vial"></i>
+                        <p><strong>Acidosis</strong> &mdash; from shock, DKA, or severe exercise; shifts oxygen release and sickling.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-heart-pulse"></i>
+                        <p><strong>Strenuous exercise</strong> and dehydration combined &mdash; moderate activity OK with hydration.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-mountain"></i>
+                        <p><strong>High altitude</strong> (&gt;8,000 ft, unpressurized flight) &mdash; plan oxygen if traveling.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-heart-broken"></i>
+                        <p><strong>Emotional / physical stress</strong>, lack of sleep, and surgery.</p>
+                    </div>
+                </div>
+
+                <h3>Prevention Pearls</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Hydrate all day, every day</strong> &mdash; water is the most important intervention a family can do.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Stay warm</strong> &mdash; layers, avoid cold pools, gloves/scarf in winter.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Prompt treatment of any fever or illness</strong> &mdash; don\u2019t wait; call the sickle cell clinic.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Stay up to date on all vaccines</strong>, especially pneumococcal and meningococcal.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Avoid unpressurized flight or high altitude</strong> without planning.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Adequate rest</strong>, avoid smoking and second-hand smoke.</p>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-triggers">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Memorize HHIDS</div>
+                    <div class="florencebot-tip-content">
+                        The five classic triggers: <strong>H</strong>ypoxia, <strong>H</strong>ydration loss (dehydration), <strong>I</strong>nfection, <strong>D</strong>ecrease in temperature (cold), <strong>S</strong>tress/exertion. If you see "HHIDS" behind a triggered crisis on an NCLEX question, you\u2019ve named the trigger. Most family teaching boils down to prevent HHIDS.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Triggers = hypoxia, dehydration, infection, cold, acidosis, stress, altitude. Prevent with hydration, warmth, vaccines, early fever care.</div>
+            </section>
+
+            <!-- Section 4: Clinical Findings -->
+            <section class="guide-section" id="clinical">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <div class="section-title-group">
+                        <h2>Clinical Manifestations</h2>
+                        <div class="subtitle">What you see at the bedside</div>
+                    </div>
+                </div>
+
+                <h3>Baseline Findings (Between Crises)</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-heart-pulse"></i>
+                        <p><strong>Chronic anemia</strong> &mdash; Hgb typically 6&ndash;9 g/dL; pallor, fatigue, systolic flow murmur.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-eye"></i>
+                        <p><strong>Jaundice / scleral icterus</strong> from chronic hemolysis.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-child"></i>
+                        <p><strong>Delayed growth and puberty</strong> &mdash; lifelong energy demand of chronic anemia.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-flask"></i>
+                        <p><strong>Gallstones</strong> &mdash; pigment stones from hemolysis; may present as RUQ pain.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-bone"></i>
+                        <p><strong>Avascular necrosis</strong> (hip, shoulder) &mdash; later childhood/adolescence.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-leaf"></i>
+                        <p><strong>Functional asplenia</strong> by age 5 &mdash; high risk for encapsulated bacterial infections.</p>
+                    </div>
+                </div>
+
+                <h3>Findings During a Vaso-Occlusive Crisis</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>System</th>
+                                <th>What You Find</th>
+                                <th>Why</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Pain</strong></td><td>Severe, often bones (legs, back), abdomen, chest</td><td>Ischemia from vaso-occlusion</td></tr>
+                            <tr><td><strong>Vital signs</strong></td><td>Tachycardia, sometimes low-grade fever</td><td>Stress + metabolic response</td></tr>
+                            <tr><td><strong>Infant dactylitis</strong></td><td>Swollen, painful hands and feet</td><td>Occlusion of small bones</td></tr>
+                            <tr><td><strong>Respiratory</strong></td><td>Cough, chest pain, hypoxia &rarr; ACS</td><td>Pulmonary vaso-occlusion</td></tr>
+                            <tr><td><strong>Abdominal</strong></td><td>Tender RUQ/LUQ; splenomegaly (if not yet auto-infarcted)</td><td>Splenic / hepatic sequestration</td></tr>
+                            <tr><td><strong>Neuro</strong></td><td>Altered mental status, focal deficits, seizures</td><td>CVA from cerebral occlusion</td></tr>
+                            <tr><td><strong>GU</strong></td><td>Priapism, hematuria, enuresis</td><td>Urogenital vaso-occlusion</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Lab Findings in Crisis</h3>
+
+                <ul>
+                    <li><strong>CBC:</strong> Hgb dropped below baseline; reticulocyte count <strong>elevated</strong> (marrow trying to compensate) &mdash; unless aplastic crisis, where retic count is low.</li>
+                    <li><strong>Peripheral smear:</strong> sickled cells, target cells, Howell-Jolly bodies (asplenia marker).</li>
+                    <li><strong>Chemistries:</strong> elevated bilirubin, LDH (hemolysis markers).</li>
+                    <li><strong>Type and crossmatch</strong> for transfusion; <strong>blood cultures</strong> if fever.</li>
+                    <li><strong>Chest X-ray</strong> for respiratory symptoms (rule out ACS).</li>
+                </ul>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-temperature-high"></i></div>
+                    <div class="info-box-content">
+                        <h5>Fever in Sickle Cell = Emergency</h5>
+                        <p>Because of <strong>functional asplenia</strong>, children with sickle cell disease are at extreme risk for overwhelming sepsis from <strong>encapsulated organisms</strong> (Streptococcus pneumoniae, H. influenzae, Neisseria meningitidis, Salmonella). A single temperature <strong>&ge; 101\u00b0F (38.5\u00b0C)</strong> requires immediate evaluation: <strong>blood cultures, CBC, CXR, and IV ceftriaxone within 60 minutes</strong>. Do NOT send home for "watchful waiting."</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Chronic anemia + jaundice + delayed growth + gallstones baseline. Crisis = pain (bones/abdomen), fever, ACS signs, stroke, priapism, dactylitis in infants.</div>
+            </section>
+
+            <!-- Section 5: Diagnosis -->
+            <section class="guide-section" id="diagnosis">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <div class="section-title-group">
+                        <h2>Diagnostic Workup</h2>
+                        <div class="subtitle">Newborn screen &rarr; electrophoresis &rarr; crisis labs</div>
+                    </div>
+                </div>
+
+                <h3>Diagnosis at Birth</h3>
+
+                <ul>
+                    <li><strong>Universal newborn screening</strong> in all 50 US states detects sickle cell disease in the first days of life.</li>
+                    <li><strong>Hemoglobin electrophoresis</strong> or HPLC confirms the diagnosis and the specific genotype (HbSS, HbSC, HbS/beta-thal, HbAS trait).</li>
+                    <li>Prenatal diagnosis possible via CVS or amniocentesis when indicated.</li>
+                </ul>
+
+                <h3>Classic Electrophoresis Patterns</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Genotype</th>
+                                <th>HbA</th>
+                                <th>HbS</th>
+                                <th>HbF</th>
+                                <th>Implication</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Normal (HbAA)</strong></td><td>95&ndash;98%</td><td>0</td><td>&lt;2%</td><td>No disease</td></tr>
+                            <tr><td><strong>Sickle trait (HbAS)</strong></td><td>55&ndash;60%</td><td>40&ndash;45%</td><td>&lt;2%</td><td>Asymptomatic carrier</td></tr>
+                            <tr><td><strong>Sickle cell disease (HbSS)</strong></td><td>0</td><td>&gt;80%</td><td>&lt;20%</td><td>Full disease</td></tr>
+                            <tr><td><strong>HbSC</strong></td><td>0</td><td>~50%</td><td>&lt;2% (+ HbC)</td><td>Milder disease</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Crisis Workup</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-vial"></i>
+                        <p><strong>CBC with reticulocyte count</strong> &mdash; drop in Hgb; elevated retics except in aplastic crisis.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-droplet"></i>
+                        <p><strong>Type and crossmatch</strong> &mdash; match extended phenotype to reduce alloimmunization risk.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-flask"></i>
+                        <p><strong>Blood cultures, urine culture, CBC</strong> for any fever.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-x-ray"></i>
+                        <p><strong>CXR</strong> for chest pain, cough, hypoxia, or tachypnea (rule out ACS).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-brain"></i>
+                        <p><strong>Head CT / MRI</strong> for neuro changes to rule out stroke.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-wave-square"></i>
+                        <p><strong>Transcranial Doppler (TCD)</strong> annually ages 2&ndash;16 for stroke risk screening.</p>
+                    </div>
+                </div>
+
+                <div class="info-box nclex">
+                    <div class="info-box-icon"><i class="fas fa-book-medical"></i></div>
+                    <div class="info-box-content">
+                        <h5>NCLEX Point &mdash; Sickle Solubility vs Electrophoresis</h5>
+                        <p>The <strong>sickle solubility (Sickledex) test</strong> detects the presence of HbS but CANNOT differentiate trait from disease. It is a screening tool. <strong>Hemoglobin electrophoresis</strong> is the confirmatory test and identifies the specific hemoglobin variants and percentages. Electrophoresis = definitive diagnosis.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Newborn screen &rarr; electrophoresis confirms. Crisis workup = CBC + retics, type/cross, cultures, CXR/CT as needed. TCD yearly age 2&ndash;16.</div>
+            </section>
+
+            <!-- Section 6: Priority Care -->
+            <section class="guide-section" id="priority">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <div class="section-title-group">
+                        <h2>Priority Interventions During Crisis</h2>
+                        <div class="subtitle">Rest, Oxygen (if hypoxic), Intense Hydration, Pain Control</div>
+                    </div>
+                </div>
+
+                <p>The mainstay of acute crisis management is built on four pillars: <strong>decrease oxygen consumption (rest), correct hypoxia (oxygen if needed), reverse sickling with hydration, and treat pain aggressively</strong>. Everything else supports these.</p>
+
+                <h3>The Priority Pillars</h3>
+
+                <ol class="step-list">
+                    <li><strong>REST to decrease oxygen consumption.</strong> Limit activity during crisis. Cluster care to allow rest periods. Bedrest with bathroom privileges is common. Minimizing O2 demand reduces sickling.</li>
+                    <li><strong>OXYGEN if hypoxic</strong> (SpO2 &lt;92% or symptomatic). Do NOT give supplemental O2 routinely if SpO2 is normal &mdash; it can suppress erythropoiesis and doesn\u2019t improve outcomes. Continuous pulse oximetry during crisis.</li>
+                    <li><strong>INTENSE HYDRATION</strong> &mdash; IV fluids at <strong>1.5&ndash;2&times; maintenance</strong> using <strong>D5 1/2NS or D5NS</strong>. Dilutes blood, reduces sickling, flushes through occluded vessels. Monitor for fluid overload, especially if ACS risk.</li>
+                    <li><strong>PAIN CONTROL &mdash; aggressive, scheduled.</strong> Use opioids (morphine, hydromorphone) scheduled + PRN; PCA for older kids who can self-administer. Adjuncts: acetaminophen, NSAIDs (if kidneys OK). Reassess q15&ndash;30 min until controlled.</li>
+                    <li><strong>Keep the child WARM</strong> &mdash; warm blankets, warm room. Cold causes vasoconstriction and more sickling.</li>
+                    <li><strong>Monitor I&amp;O, daily weights, vital signs.</strong> Urine output &gt;1&ndash;2 mL/kg/hr signals adequate hydration.</li>
+                    <li><strong>Blood products (PRBCs) as ordered</strong> &mdash; for severe anemia, acute chest, stroke, or splenic sequestration. Exchange transfusion for severe ACS or stroke.</li>
+                    <li><strong>Treat any underlying infection</strong> &mdash; blood cultures and empiric antibiotics for fever.</li>
+                </ol>
+
+                <h3>Pain Management Deep-Dive</h3>
+
+                <p>Sickle cell pain is <strong>severe</strong> and historically has been under-treated, often because of racial bias and opioid stigma. <strong>Believe the child. Treat the pain.</strong></p>
+
+                <div class="med-grid">
+                    <div class="med-card">
+                        <h5>Morphine</h5>
+                        <div class="med-class">Opioid &mdash; First-Line</div>
+                        <p>IV bolus + continuous or PCA; standard first-line opioid.</p>
+                        <p><strong>Monitor</strong>: respiratory rate, sedation, pruritus, nausea.</p>
+                    </div>
+                    <div class="med-card">
+                        <h5>Hydromorphone (Dilaudid)</h5>
+                        <div class="med-class">Opioid &mdash; Alternative</div>
+                        <p>Often used when morphine inadequate or with side effects.</p>
+                        <p>More potent; careful dosing.</p>
+                    </div>
+                    <div class="med-card">
+                        <h5>Acetaminophen &amp; NSAIDs</h5>
+                        <div class="med-class">Non-Opioid Adjunct</div>
+                        <p>Scheduled around the clock; opioid-sparing.</p>
+                        <p><strong>Caution with NSAIDs</strong> if renal involvement; avoid with bleeding risk.</p>
+                    </div>
+                    <div class="med-card">
+                        <h5>Patient-Controlled Analgesia (PCA)</h5>
+                        <div class="med-class">Delivery Method</div>
+                        <p>Older kids (usually 7+ years) can self-administer bolus doses of morphine or hydromorphone with safety lockouts.</p>
+                        <p>Empowers child; improves pain scores.</p>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-ban"></i></div>
+                    <div class="info-box-content">
+                        <h5>AVOID Meperidine (Demerol)</h5>
+                        <p>Meperidine\u2019s metabolite <strong>normeperidine</strong> is neurotoxic and lowers seizure threshold. It is <strong>not recommended</strong> for sickle cell pain. Use morphine or hydromorphone instead.</p>
+                    </div>
+                </div>
+
+                <h3>Non-Pharmacologic Pain Relief</h3>
+
+                <ul>
+                    <li><strong>Heat packs</strong> over painful areas (NOT cold &mdash; cold causes vasoconstriction and worsens sickling).</li>
+                    <li>Distraction (video games, movies, music), guided imagery, child life specialists.</li>
+                    <li>Gentle massage, relaxation, warm bath.</li>
+                    <li>Support and believe the pain &mdash; validation reduces anxiety-driven pain amplification.</li>
+                </ul>
+
+                <div class="florencebot-tip" id="tip-hop-rest">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Think HOPR: Hydration, Oxygen, Pain, Rest</div>
+                    <div class="florencebot-tip-content">
+                        Every sickle cell crisis is managed with the same four pillars: <strong>H</strong>ydration (IV at 1.5&ndash;2&times; maintenance), <strong>O</strong>xygen (only if hypoxic, not routinely), <strong>P</strong>ain control (scheduled opioids, believe the pain), <strong>R</strong>est (decrease O2 consumption). If a question asks for priority, one of these is almost always the answer. Add warmth (never cold) and check for infection.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: HOPR &mdash; Hydration (1.5&ndash;2&times; maintenance IV), Oxygen (if hypoxic), Pain (scheduled opioids, NO meperidine), Rest. Warm (not cold). I&O + labs + infection workup.</div>
+            </section>
+
+            <!-- Section 7: Transfusion -->
+            <section class="guide-section" id="transfusion">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <div class="section-title-group">
+                        <h2>Transfusion Therapy &amp; Reactions</h2>
+                        <div class="subtitle">Blood products save lives &mdash; and can also cause reactions</div>
+                    </div>
+                </div>
+
+                <p>Children with sickle cell disease receive frequent blood product transfusions: during crises, for chronic stroke prevention, or as exchange transfusions in severe ACS. Nurses must know indications, administration, and &mdash; critically &mdash; <strong>what to do the moment a reaction starts</strong>.</p>
+
+                <h3>Types of Transfusion</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>When Used</th>
+                                <th>Goal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Simple PRBC transfusion</strong></td>
+                                <td>Acute anemia, aplastic/splenic sequestration crisis</td>
+                                <td>Raise Hgb, replace volume</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chronic transfusion program</strong></td>
+                                <td>Stroke prevention (after TCD-high or stroke), severe disease</td>
+                                <td>Keep HbS &lt;30% to prevent new vaso-occlusion</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Exchange transfusion</strong></td>
+                                <td>Severe ACS, stroke, multi-organ failure crisis, pre-op for major surgery</td>
+                                <td>Rapidly lower HbS concentration</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Transfusion Safety Checks</h3>
+
+                <ol class="step-list">
+                    <li><strong>Verify order, patient identity, and blood product compatibility</strong> with TWO licensed nurses at the bedside (two-person check is mandatory).</li>
+                    <li><strong>Obtain baseline vitals</strong> &mdash; temperature, HR, RR, BP, SpO2 &mdash; before starting the transfusion.</li>
+                    <li><strong>Use appropriate blood tubing</strong> with in-line filter. Prime with normal saline (NOT LR, NOT D5W &mdash; they cause hemolysis or clumping).</li>
+                    <li><strong>Start SLOWLY for the first 15 minutes</strong> (2&ndash;5 mL/min) and stay with the child. Most acute reactions happen in this window.</li>
+                    <li><strong>Reassess vitals at 15 min, then q15&ndash;30 min during the transfusion.</strong></li>
+                    <li><strong>Complete transfusion within 4 hours</strong> to reduce bacterial growth risk.</li>
+                    <li><strong>Document thoroughly</strong>: start time, vitals, rate, end time, unit ID, reaction if any.</li>
+                </ol>
+
+                <h3>Recognizing a Transfusion Reaction</h3>
+
+                <div class="redflag-grid">
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Fever &amp; chills</strong> (most common reaction sign)</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Back pain, flank pain, or chest pain</strong></p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Hypotension, tachycardia</strong> or new shock</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Dyspnea, wheezing, stridor</strong> (TRALI or anaphylaxis)</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Hives, itching, flushing</strong> (allergic)</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Hemoglobinuria (dark urine)</strong> &mdash; acute hemolysis</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Altered mental status, anxiety, or "sense of doom"</strong></p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Nausea / vomiting</strong> that is new</p>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-hand-paper"></i></div>
+                    <div class="info-box-content">
+                        <h5>Transfusion Reaction &mdash; STOP FIRST</h5>
+                        <p>At the first sign of any reaction: <strong>1) STOP the transfusion immediately. 2) Keep the IV line patent with normal saline via NEW tubing</strong> &mdash; do NOT flush the existing tubing, which still contains the reacting blood. <strong>3) Notify the provider and the blood bank. 4) Send the blood bag, tubing, and a post-reaction blood sample and urine sample back to the blood bank.</strong> 5) Support vitals, treat symptoms (antihistamines, antipyretics, epinephrine if anaphylaxis), document everything. "Stop, Save Line, Call, Send" &mdash; four steps in that order.</p>
+                    </div>
+                </div>
+
+                <h3>Types of Transfusion Reactions</h3>
+
+                <ul>
+                    <li><strong>Acute hemolytic (ABO mismatch):</strong> fever, chills, back pain, hypotension, hemoglobinuria within minutes. Life-threatening.</li>
+                    <li><strong>Febrile non-hemolytic:</strong> most common; mild fever/chills; treat with acetaminophen. Use leukoreduced products in future.</li>
+                    <li><strong>Allergic / anaphylactic:</strong> hives, wheezing, hypotension. Treat with diphenhydramine; anaphylaxis &rarr; epinephrine, washed products.</li>
+                    <li><strong>TRALI</strong> (transfusion-related acute lung injury): acute dyspnea within 6 hours; bilateral pulmonary edema without fluid overload.</li>
+                    <li><strong>TACO</strong> (transfusion-associated circulatory overload): fluid overload / CHF-like; slow infusion, diuresis.</li>
+                    <li><strong>Delayed hemolytic reaction:</strong> days later; alloantibodies develop &mdash; a risk with chronic transfusion.</li>
+                </ul>
+
+                <h3>Long-Term Transfusion Concerns</h3>
+
+                <ul>
+                    <li><strong>Iron overload</strong> &mdash; chronic transfusion leads to iron deposition in heart, liver, endocrine glands. Monitor ferritin, require <strong>chelation therapy</strong> (deferasirox, deferoxamine) once ferritin &gt;1,000.</li>
+                    <li><strong>Alloimmunization</strong> &mdash; antibodies to minor red cell antigens; use extended phenotype-matched blood to reduce risk.</li>
+                    <li><strong>Infection transmission</strong> &mdash; rare with modern screening but still possible.</li>
+                </ul>
+
+                <div class="bottom-line">🎯 Bottom Line: Transfuse for severe anemia, ACS, stroke. Two-nurse check. First 15 min critical. Reaction &rarr; STOP, saline NEW tubing, call, send bag back. Iron overload &rarr; chelation.</div>
+            </section>
+
+            <!-- Section 8: Long-Term Management -->
+            <section class="guide-section" id="longterm">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <div class="section-title-group">
+                        <h2>Long-Term Management</h2>
+                        <div class="subtitle">Hydroxyurea, prophylaxis, screening, and transplant</div>
+                    </div>
+                </div>
+
+                <p>Sickle cell disease is a lifelong condition. Daily medications, routine screening, and timely care prevent crises and complications. The nurse\u2019s role in outpatient and inpatient teaching is massive.</p>
+
+                <h3>Disease-Modifying Therapy</h3>
+
+                <div class="med-grid">
+                    <div class="med-card">
+                        <h5>Hydroxyurea</h5>
+                        <div class="med-class">HbF Inducer &mdash; First-Line</div>
+                        <p>Daily oral. <strong>Increases fetal hemoglobin</strong>, which does NOT sickle &rarr; fewer crises, less ACS, less stroke, longer survival.</p>
+                        <p><strong>Monitor CBC</strong> for myelosuppression; check for mouth sores, skin/nail changes. Teratogenic.</p>
+                    </div>
+                    <div class="med-card">
+                        <h5>L-Glutamine</h5>
+                        <div class="med-class">Oxidative Stress Reducer</div>
+                        <p>Oral powder; reduces pain crises in some patients.</p>
+                        <p>Approved in children &ge;5 years.</p>
+                    </div>
+                    <div class="med-card">
+                        <h5>Crizanlizumab</h5>
+                        <div class="med-class">P-Selectin Inhibitor</div>
+                        <p>Monthly IV infusion; reduces vaso-occlusive crises.</p>
+                        <p>For patients &ge;16 with frequent crises.</p>
+                    </div>
+                    <div class="med-card">
+                        <h5>Voxelotor</h5>
+                        <div class="med-class">HbS Polymerization Inhibitor</div>
+                        <p>Oral daily; raises hemoglobin and reduces hemolysis.</p>
+                        <p>Newer option for chronic anemia.</p>
+                    </div>
+                </div>
+
+                <h3>Infection Prophylaxis &amp; Vaccines</h3>
+
+                <ul>
+                    <li><strong>Daily penicillin V</strong> starting at 2 months old, continuing <strong>through at least age 5</strong> (sometimes longer). Reduces pneumococcal sepsis dramatically.</li>
+                    <li><strong>Pneumococcal vaccines</strong> &mdash; PCV13 (conjugate) per schedule + PPSV23 (polysaccharide) at 2 years and booster at 7 years.</li>
+                    <li><strong>Meningococcal vaccine</strong> &mdash; starting at 9&ndash;12 months (earlier than general population).</li>
+                    <li><strong>Haemophilus influenzae type b (Hib)</strong> and annual influenza vaccine.</li>
+                    <li>All routine childhood vaccines on schedule.</li>
+                </ul>
+
+                <h3>Stroke Prevention &amp; Screening</h3>
+
+                <ul>
+                    <li><strong>Transcranial Doppler (TCD) ultrasound</strong> annually from age 2&ndash;16; detects abnormal cerebral blood flow velocities.</li>
+                    <li><strong>TCD velocity &gt;200 cm/sec</strong> = high stroke risk &rarr; chronic transfusion program (keep HbS &lt;30%) to prevent first stroke.</li>
+                    <li>After a stroke, chronic transfusion indefinitely.</li>
+                    <li>Emerging role for hydroxyurea in stroke prevention.</li>
+                </ul>
+
+                <h3>Routine Health Maintenance</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Folic acid supplementation</strong> daily for marrow support.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Annual eye exam</strong> (retinopathy screening).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Dental care</strong>; prophylactic antibiotics for procedures at higher risk of bacteremia (individualized).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Regular hematology clinic</strong> visits for growth, development, labs.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Screen for depression/anxiety</strong> and academic impact.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Transition planning</strong> from pediatric to adult care starting in adolescence.</p>
+                    </div>
+                </div>
+
+                <h3>Curative Therapy &mdash; HSCT</h3>
+
+                <ul>
+                    <li><strong>Hematopoietic stem cell transplant (HSCT)</strong> is the only established cure. Best outcomes from matched sibling donor.</li>
+                    <li>Reserved for severe phenotype (frequent crises, stroke, ACS, pulmonary hypertension) due to treatment-related mortality and GVHD risk.</li>
+                    <li><strong>Gene therapy</strong> (emerging) &mdash; autologous stem cell editing to re-express HbF or correct HbS; approved for severe disease in specialized centers.</li>
+                </ul>
+
+                <div class="info-box safe">
+                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
+                    <div class="info-box-content">
+                        <h5>Outcomes Have Transformed</h5>
+                        <p>In the 1970s, half of children with sickle cell disease died before age 20. Today, with newborn screening, hydroxyurea, penicillin prophylaxis, vaccines, and TCD stroke screening, <strong>most children survive to adulthood</strong>. Many go to college, work, raise families. The disease is still serious, but the trajectory is radically better. Emphasize that hope when families feel overwhelmed at diagnosis.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Hydroxyurea + folic acid + penicillin to age 5 + pneumo/meningo vaccines + annual TCD 2&ndash;16 + eye exams. HSCT / gene therapy curative for severe disease.</div>
+            </section>
+
+            <!-- Section 9: Family Education -->
+            <section class="guide-section" id="family">
+                <div class="section-header">
+                    <div class="section-number">9</div>
+                    <div class="section-title-group">
+                        <h2>Family Education</h2>
+                        <div class="subtitle">The family is the healthcare team</div>
+                    </div>
+                </div>
+
+                <p>Families become lifelong experts in their child\u2019s disease. Nurses set the foundation at every admission and clinic visit. Teaching should be developmentally appropriate, culturally sensitive, and repeated in multiple formats.</p>
+
+                <h3>Top Home-Care Priorities</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Hydrate every day</strong> &mdash; water bottle always present; extra in hot weather or illness.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Avoid triggers</strong> &mdash; cold, altitude, hypoxia, infection, acidosis, strenuous activity without hydration.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Daily medications</strong> &mdash; hydroxyurea, folic acid, penicillin; don\u2019t miss doses.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Home pain plan</strong> &mdash; mild crises can be managed at home with fluids, heat, PO pain meds; know when to call.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Temperature monitoring</strong> &mdash; have a thermometer; any fever &ge;101&deg;F = ED immediately.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Vaccines on time</strong> &mdash; full pneumo/meningo/Hib/flu schedule.</p>
+                    </div>
+                </div>
+
+                <h3>When to Call / Come to the ED</h3>
+
+                <div class="redflag-grid">
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Fever &ge; 101&deg;F (38.5&deg;C)</strong> &mdash; ALWAYS. Never wait.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Severe pain</strong> unresponsive to home meds</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Chest pain, cough, trouble breathing</strong> (ACS)</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Sudden weakness, slurred speech, facial droop, vision changes</strong> (stroke)</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Rapid abdominal enlargement</strong> (splenic sequestration)</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Extreme fatigue, pallor</strong> (aplastic / hyperhemolytic)</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Priapism &gt;4 hours</strong></p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Dehydration, persistent vomiting, won\u2019t drink</strong></p>
+                    </div>
+                </div>
+
+                <h3>School &amp; Activity</h3>
+
+                <ul>
+                    <li>Child should attend school; develop a <strong>504 plan / Individualized Health Plan</strong> with the school nurse.</li>
+                    <li>Allow water bottles at all times, extra bathroom breaks, and warm clothing access.</li>
+                    <li>Moderate activity is encouraged; <strong>avoid competitive high-intensity sports</strong> without careful hydration plans; cold pools/ice baths discouraged.</li>
+                    <li>Extra sleep; avoid over-scheduling.</li>
+                </ul>
+
+                <h3>Psychosocial &amp; Genetic Counseling</h3>
+
+                <ul>
+                    <li>Children with SCD experience <strong>chronic pain, missed school, stigma, and mental health challenges.</strong> Screen regularly for depression and anxiety.</li>
+                    <li>Support groups (Sickle Cell Disease Association of America, local hospital groups) help with isolation.</li>
+                    <li><strong>Genetic counseling</strong> &mdash; offer to parents and siblings; later to adolescents considering future parenthood. Discuss reproductive options when age-appropriate.</li>
+                    <li>Address systemic issues: pain management discrimination, insurance coverage, access to specialty care.</li>
+                </ul>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon"><i class="fas fa-ear-listen"></i></div>
+                    <div class="info-box-content">
+                        <h5>Believe the Pain &mdash; Advocate for Your Patient</h5>
+                        <p>Children with sickle cell disease have historically been <strong>under-treated</strong> for pain, especially in emergency departments. Studies show implicit racial bias contributes to inadequate pain control. As the nurse: believe the pain score, advocate for timely opioid dosing, push back against "drug-seeking" labels, and document the plan. Sickle cell pain is <strong>real, severe, and under-recognized</strong>. Your advocacy saves comfort and saves lives.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Daily hydration, meds, fever plan (101&deg;F = ED). Avoid triggers. 504 plan at school. Genetic counseling. BELIEVE THE PAIN.</div>
+            </section>
+
+            <!-- Quiz CTA -->
+            <div class="quiz-cta">
+                <h3>Test your knowledge</h3>
+                <p>17 NCLEX-style questions covering every section of this guide.</p>
+                <a href="quiz/quiz.html?topic=sickle-cell-crisis" class="quiz-btn">
+                    <i class="fas fa-flask"></i> Start Quiz
+                </a>
+            </div>
+
+            <!-- Cross References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
+                <div class="cross-ref-grid">
+                    <a href="pediatric-leukemias.html" class="cross-ref-link">
+                        <i class="fas fa-dna"></i> Pediatric Leukemias
+                    </a>
+                    <a href="bleeding-disorders.html" class="cross-ref-link">
+                        <i class="fas fa-droplet"></i> Bleeding Disorders
+                    </a>
+                    <a href="iron-deficiency-anemia.html" class="cross-ref-link">
+                        <i class="fas fa-apple-whole"></i> Iron-Deficiency Anemia
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- end document-content -->
+
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div><!-- end document-container -->
+
+    <script src="configs/sickle-cell-crisis-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="../content-gate.js"></script>
+    <script src="../cookie-consent.js"></script>
+</body>
+</html>

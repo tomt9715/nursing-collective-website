@@ -902,7 +902,8 @@ function populateGuidesFlyout() {
         'uti-vur-enuresis': 'Pediatric Nursing',
         'male-gu-disorders': 'Pediatric Nursing',
         'neural-tube-defects': 'Pediatric Nursing',
-        'pediatric-fractures-immobility': 'Pediatric Nursing'
+        'pediatric-fractures-immobility': 'Pediatric Nursing',
+        'pediatric-skin-infections': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

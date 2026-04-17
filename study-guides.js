@@ -138,6 +138,49 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'pediatric-skin-infections': {
+        title: 'Pediatric Skin Infections',
+        storeUrl: 'pricing.html#pediatric-skin-infections',
+        content: `
+# Pediatric Skin Infections Study Guide
+
+## Overview
+Bacterial, viral, and fungal skin infections in children. From honey-crusted impetigo to tinea capitis to neonatal HSV — recognize, treat, and contain the spread.
+
+## What You'll Learn
+
+### Bacterial
+- **Impetigo** — honey-colored crusts; mupirocin or cephalexin
+- **Cellulitis** — warm, red, tender; mark borders; cephalexin
+- **MRSA** — abscess "spider bite" → I&D + clindamycin/TMP-SMX
+- **Folliculitis** — pustules at hair follicles
+
+### Viral
+- **HSV-1** — cold sores / gingivostomatitis; acyclovir
+- **Neonatal HSV** — IV acyclovir immediately, don't wait
+- **Warts** — HPV, salicylic acid or cryotherapy
+- **Molluscum** — dome + central umbilication, self-resolves
+
+### Fungal
+- **Tinea capitis** — requires ORAL antifungal (griseofulvin/terbinafine 6-8 wks)
+- **Tinea corporis/pedis** — topical clotrimazole/terbinafine
+- **Oral thrush** — nystatin swish/swallow
+- **Diaper candidiasis** — satellite lesions + skin folds → nystatin cream
+
+### Family Education
+- Return to school: 24 hr on antibiotics for impetigo
+- Hand hygiene is the #1 prevention
+- Don't share towels, razors, combs, hats
+- Neonatal fever + vesicles = ER immediately
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Infection-by-infection breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'pediatric-fractures-immobility': {
         title: 'Pediatric Fractures & Immobility',
         storeUrl: 'pricing.html#pediatric-fractures-immobility',

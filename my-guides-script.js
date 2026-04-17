@@ -116,7 +116,7 @@
                 {
                     category: 'Gastrointestinal',
                     categoryIcon: 'gastrointestinal-icon',
-                    icon: 'fa-stomach',
+                    icon: 'fa-utensils',
                     colorClass: 'icon-gi',
                     guides: [
                         { name: 'GI Bleeding', file: 'gi-bleeding' }
@@ -194,7 +194,7 @@
                 {
                     category: 'Pediatric GI',
                     categoryIcon: 'gastrointestinal-icon',
-                    icon: 'fa-stomach',
+                    icon: 'fa-utensils',
                     colorClass: 'icon-pediatrics',
                     guides: [
                         { name: 'Pediatric GI Obstructions', file: 'pediatric-gi-obstructions' },
@@ -446,7 +446,7 @@
 
             html += '<div class="guide-category">';
             html += '<div class="guide-category-header">';
-            html += '<img src="' + CATEGORY_ICON_BASE + topic.categoryIcon + '.webp" alt="" class="guide-category-icon" loading="lazy">';
+            html += '<i class="fas ' + (topic.icon || 'fa-book') + ' guide-category-icon"></i>';
             html += '<h2 class="guide-category-title">' + topic.category + '</h2>';
             html += '<span class="guide-category-count">' + topic.guides.length + ' of ' + totalInTopic + ' guides</span>';
             html += '</div>';

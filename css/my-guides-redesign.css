@@ -596,9 +596,10 @@ img { max-width: 100%; display: block; }
 }
 
 .guide-category-icon {
+  font-size: 22px;
+  color: var(--teal);
   width: 28px;
-  height: 28px;
-  object-fit: contain;
+  text-align: center;
   flex-shrink: 0;
 }
 
@@ -950,5 +951,5 @@ img { max-width: 100%; display: block; }
   .class-card { padding: 14px; gap: 10px; }
   .class-card-icon { width: 36px; height: 36px; }
   .class-card-meta { flex-direction: column; gap: 4px; }
-  .guide-category-icon { width: 24px; height: 24px; }
+  .guide-category-icon { font-size: 18px; width: 24px; }
 }

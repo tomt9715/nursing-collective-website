@@ -463,9 +463,6 @@
                     html += '<div class="guide-card guide-card-locked">';
                 }
 
-                html += '<div class="guide-card-icon ' + topic.colorClass + '">';
-                html += '<img src="' + ICON_BASE + guide.file + '.webp" alt="" class="guide-card-img" loading="lazy">';
-                html += '</div>';
                 html += '<div class="guide-card-info">';
                 html += '<div class="guide-card-name">' + guide.name + '</div>';
                 html += '<div class="guide-card-meta">Study Guide</div>';
@@ -483,13 +480,6 @@
             // Coming soon
             (topic.comingSoon || []).forEach(function(item) {
                 html += '<div class="guide-card coming-soon">';
-                html += '<div class="guide-card-icon ' + topic.colorClass + '">';
-                if (item.icon) {
-                    html += '<img src="' + ICON_BASE + item.icon + '.webp" alt="" class="guide-card-img" loading="lazy">';
-                } else {
-                    html += '<i class="fas ' + topic.icon + '"></i>';
-                }
-                html += '</div>';
                 html += '<div class="guide-card-info">';
                 html += '<div class="guide-card-name">' + item.name + '</div>';
                 html += '<div class="guide-card-meta">Study Guide</div>';

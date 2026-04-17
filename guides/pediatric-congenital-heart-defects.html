@@ -173,37 +173,45 @@
             border: 0.5px solid var(--rule-mid);
         }
 
-        /* Cover Page — Pediatric cardiac gradient (coral + navy) */
+        /* Cover Page — Restrained navy with coral accent */
         .cover-page {
-            background: linear-gradient(135deg, #0d1b2a 0%, #7f1d1d 45%, #e05252 100%);
+            background:
+                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
+                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
             color: white;
-            padding: 80px 60px 60px;
+            padding: 72px 60px 56px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            border-top: 3px solid var(--peds-coral);
         }
 
         .cover-page::before {
             content: '';
             position: absolute;
-            inset: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M30 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15-15-6.716-15-15zM0 30c0-8.284 6.716-15 15-15s15 6.716 15 15-6.716 15-15 15S0 38.284 0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
+            pointer-events: none;
         }
 
         .cover-content { position: relative; z-index: 1; }
 
         .cover-logo {
-            width: 72px;
-            height: 72px;
-            background: rgba(255, 255, 255, 0.95);
+            width: 68px;
+            height: 68px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(239, 90, 90, 0.3);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 28px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-            padding: 12px;
+            margin: 0 auto 24px;
+            padding: 10px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
         }
 
         .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
@@ -230,58 +238,58 @@
 
         .cover-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 3.4rem;
+            font-size: 3rem;
             font-weight: 400;
-            margin-bottom: 16px;
-            line-height: 1.05;
+            margin-bottom: 14px;
+            line-height: 1.08;
             letter-spacing: -0.01em;
         }
 
         .cover-subtitle {
             font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 300;
-            opacity: 0.92;
-            max-width: 580px;
-            margin: 0 auto 40px;
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 560px;
+            margin: 0 auto 32px;
             line-height: 1.55;
         }
 
-        .cover-stats {
-            display: flex;
-            justify-content: center;
-            gap: 48px;
+        .cover-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
             flex-wrap: wrap;
-            padding-top: 28px;
-            border-top: 1px solid rgba(255, 255, 255, 0.18);
+            justify-content: center;
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
         }
 
-        .cover-stat { text-align: center; }
-
-        .cover-stat .number {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.2rem;
-            font-weight: 400;
-            line-height: 1;
-        }
-
-        .cover-stat .label {
+        .cover-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
             font-family: 'DM Mono', monospace;
-            font-size: 10px;
-            opacity: 0.82;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 0.8);
             text-transform: uppercase;
-            letter-spacing: 1.2px;
-            margin-top: 8px;
         }
 
-        .cover-brand {
-            margin-top: 40px;
-            padding-top: 24px;
-            border-top: 1px solid rgba(255, 255, 255, 0.18);
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
-            opacity: 0.8;
+        .cover-meta-item i {
+            color: var(--peds-coral);
+            font-size: 11px;
+        }
+
+        .cover-meta-sep {
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
         }
 
         /* ══════════════════════════════════════════════════════
@@ -373,17 +381,25 @@
             font-size: 0.95rem;
         }
 
-        .high-yield-summary ul { list-style: none; padding: 0; }
-
-        .high-yield-summary li {
-            padding: 10px 0;
-            border-bottom: 0.5px solid rgba(244, 165, 53, 0.15);
-            color: var(--ink-soft);
-            font-size: 0.97rem;
-            line-height: 1.6;
+        .high-yield-summary ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 4px;
         }
 
-        .high-yield-summary li:last-child { border-bottom: none; }
+        .high-yield-summary li {
+            background: rgba(0, 0, 0, 0.15);
+            border: 0.5px solid rgba(244, 165, 53, 0.2);
+            border-left: 3px solid var(--amber);
+            border-radius: 8px;
+            padding: 12px 14px;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+            line-height: 1.55;
+        }
 
         .high-yield-summary strong { color: var(--amber); font-weight: 600; }
 
@@ -1572,12 +1588,14 @@
             .document-container { margin: 80px 12px 40px; }
             .document-content { padding: 36px 28px; }
             .cover-page { padding: 56px 28px 40px; }
-            .cover-title { font-size: 2.3rem; }
-            .cover-stats { gap: 28px; }
+            .cover-title { font-size: 2.1rem; }
+            .cover-meta { gap: 10px; padding: 10px 16px; }
+            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
             .learning-objectives-grid,
             .defect-comparison,
             .tof-grid,
-            .key-point-grid {
+            .key-point-grid,
+            .high-yield-summary ul {
                 grid-template-columns: 1fr;
             }
         }
@@ -1623,21 +1641,13 @@
                 </div>
                 <h1 class="cover-title">Congenital Heart Defects</h1>
                 <p class="cover-subtitle">Acyanotic vs. cyanotic lesions, Tetralogy of Fallot, hypercyanotic "tet" spells, and priority nursing care for the infant with a CHD.</p>
-                <div class="cover-stats">
-                    <div class="cover-stat">
-                        <div class="number">8/1000</div>
-                        <div class="label">Live Births</div>
-                    </div>
-                    <div class="cover-stat">
-                        <div class="number">4</div>
-                        <div class="label">Defects in TOF</div>
-                    </div>
-                    <div class="cover-stat">
-                        <div class="number">#1</div>
-                        <div class="label">Congenital Anomaly</div>
-                    </div>
+                <div class="cover-meta">
+                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 11 Sections</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 17 Quiz Questions</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~20 Min Read</span>
                 </div>
-                <div class="cover-brand">The Nursing Collective · Study Guide</div>
             </div>
         </div>
 

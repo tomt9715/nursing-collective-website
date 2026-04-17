@@ -905,7 +905,8 @@ function populateGuidesFlyout() {
         'pediatric-fractures-immobility': 'Pediatric Nursing',
         'pediatric-skin-infections': 'Pediatric Nursing',
         'hypersensitivity-inflammatory-skin': 'Pediatric Nursing',
-        'pediatric-burns': 'Pediatric Nursing'
+        'pediatric-burns': 'Pediatric Nursing',
+        'pediatric-leukemias': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

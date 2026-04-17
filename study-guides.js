@@ -3,6 +3,58 @@
 
 // Guide preview content (realistic placeholder - preview of full guide)
 const guidePreviewContent = {
+    'pediatric-leukemias': {
+        title: 'Pediatric Leukemias (ALL/AML)',
+        storeUrl: 'pricing.html#pediatric-leukemias',
+        content: `
+# Pediatric Leukemias (ALL/AML) Study Guide
+
+## Overview
+The #1 childhood cancer. ALL vs AML, bone marrow failure triad, induction-consolidation-maintenance chemotherapy, neutropenic precautions, tumor lysis syndrome, and family support.
+
+## What You'll Learn
+
+### ALL vs AML
+- **ALL** — lymphoid, peaks ages 2–10, ~75% of pediatric leukemias, >90% 5-year survival
+- **AML** — myeloid, more common in adolescents and infants, 8 subtypes (M0–M7)
+- **Auer rods** = pathognomonic for AML
+- AML M3 (APL) classically causes DIC
+
+### Clinical Presentation (Bone Marrow Failure Triad)
+- **Anemia** — pallor, fatigue
+- **Thrombocytopenia** — petechiae, bruising, bleeding
+- **Neutropenia** — fever, infections
+- Plus bone pain, lymphadenopathy, hepatosplenomegaly
+
+### Diagnostic Workup
+- CBC with peripheral smear (blasts)
+- **Bone marrow biopsy** — >20% blasts = acute leukemia
+- LP for CNS involvement + intrathecal methotrexate prophylaxis
+
+### Neutropenic Precautions (High-Yield!)
+- **NO rectal temps, NO fresh flowers/plants, NO live vaccines, NO raw foods**
+- Private room, strict handwashing, limit visitors
+- Fever ≥100.4°F = oncologic emergency (cultures + antibiotics within 1 hour)
+- ANC <500 = severe neutropenia
+
+### Tumor Lysis Syndrome
+- **K+ UP, phosphorus UP, uric acid UP, calcium DOWN**
+- Prevent with aggressive hydration + allopurinol or rasburicase
+
+### Transfusion Reaction Priority
+1. **STOP the transfusion immediately**
+2. Keep line patent with saline via **NEW tubing**
+3. Notify provider, send bag back to blood bank
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth clinical breakdown*
+- *NCLEX-style practice questions*
+- *Chemo drug cards and safety pearls*
+- *Clinical pearls and memory aids*
+        `
+    },
     'heart-failure': {
         title: 'Heart Failure',
         storeUrl: 'pricing.html#heart-failure',

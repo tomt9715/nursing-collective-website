@@ -893,7 +893,8 @@ function populateGuidesFlyout() {
         'cardiac-medications': 'Pharmacology', 'antibiotics-antivirals': 'Pharmacology', 'pain-management': 'Pharmacology', 'iv-medications': 'Pharmacology', 'psychotropic-medications': 'Pharmacology', 'emergency-medications': 'Pharmacology',
         'assessment-skills': 'Fundamentals', 'infection-control': 'Fundamentals', 'documentation-charting': 'Fundamentals', 'patient-safety': 'Fundamentals', 'mobility-transfers': 'Fundamentals',
         'pediatric-congenital-heart-defects': 'Pediatric Nursing',
-        'kawasaki-disease': 'Pediatric Nursing'
+        'kawasaki-disease': 'Pediatric Nursing',
+        'rheumatic-fever-endocarditis': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

@@ -138,6 +138,52 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'rheumatic-fever-endocarditis': {
+        title: 'Rheumatic Fever & Endocarditis',
+        storeUrl: 'pricing.html#rheumatic-fever-endocarditis',
+        content: `
+# Rheumatic Fever & Infective Endocarditis Study Guide
+
+## Overview
+Two post-infection heart syndromes — one autoimmune, one direct. Jones criteria, classic peripheral signs, long antibiotic courses, and SBE prophylaxis.
+
+## What You'll Learn
+
+### Rheumatic Fever (autoimmune, post-strep)
+- Trigger: untreated Group A Strep pharyngitis
+- Timing: 2-3 weeks after strep throat
+- Molecular mimicry — antibodies cross-react with heart, joints, skin, brain
+
+### Jones Criteria (CASES)
+- **C**arditis
+- **A**rthritis (migratory polyarthritis)
+- **S**ubcutaneous nodules
+- **E**rythema marginatum
+- **S**ydenham chorea
+- Diagnosis: 2 major OR 1 major + 2 minor + evidence of recent strep
+
+### Infective Endocarditis (direct infection)
+- Strep viridans (subacute) or Staph aureus (acute)
+- Vegetations on heart valves
+- Classic peripheral signs: Osler nodes (painful fingertips), Janeway lesions (painless palms/soles), Roth spots, splinter hemorrhages
+
+### Treatment
+- **RF:** Penicillin to eradicate strep + anti-inflammatories (aspirin/NSAIDs)
+- **IE:** 4-6 weeks IV antibiotics (PCN + gentamicin, nafcillin, or vancomycin). Blood cultures BEFORE antibiotics
+- **Surgery** for severe valve damage, persistent infection, or embolization
+
+### Prophylaxis
+- **Secondary RF prophylaxis:** monthly IM benzathine PCN for years (5 yr/age 21 min; lifetime if RHD)
+- **SBE prophylaxis:** amoxicillin 50 mg/kg PO 30-60 min before dental/respiratory procedures in high-risk patients
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth clinical breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'kawasaki-disease': {
         title: 'Kawasaki Disease',
         storeUrl: 'pricing.html#kawasaki-disease',

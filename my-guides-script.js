@@ -186,11 +186,10 @@
                     colorClass: 'icon-pediatrics',
                     guides: [
                         { name: 'Congenital Heart Defects', file: 'pediatric-congenital-heart-defects' },
-                        { name: 'Kawasaki Disease', file: 'kawasaki-disease' }
+                        { name: 'Kawasaki Disease', file: 'kawasaki-disease' },
+                        { name: 'Rheumatic Fever & Endocarditis', file: 'rheumatic-fever-endocarditis' }
                     ],
-                    comingSoon: [
-                        { name: 'Rheumatic Fever & Endocarditis' }
-                    ]
+                    comingSoon: []
                 },
                 {
                     category: 'Pediatric GI',

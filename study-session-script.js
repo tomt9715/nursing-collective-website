@@ -43,12 +43,55 @@
         progressEl = document.getElementById('ss-progress');
         topicsEl = document.getElementById('ss-topics');
 
+        initMobileSidebar();
+
         var hasAuth = await requireAuth();
         if (!hasAuth) return;
 
         initUploadModal();
         await fetchAndRender();
     });
+
+    // ── Mobile sidebar toggle ────────────────────────
+    function initMobileSidebar() {
+        var sidebar = document.getElementById('dash-sidebar');
+        var overlay = document.getElementById('dash-sidebar-overlay');
+        var btn = document.getElementById('mobile-menu-btn');
+        if (!sidebar || !btn) return;
+
+        // Clone to strip any listeners attached by script.js nav menu handler
+        var freshBtn = btn.cloneNode(true);
+        btn.parentNode.replaceChild(freshBtn, btn);
+
+        function open() {
+            sidebar.classList.add('dash-sidebar--open');
+            if (overlay) overlay.classList.add('dash-sidebar-overlay--visible');
+            freshBtn.setAttribute('aria-expanded', 'true');
+            var icon = freshBtn.querySelector('i');
+            if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+            document.body.style.overflow = 'hidden';
+        }
+        function close() {
+            sidebar.classList.remove('dash-sidebar--open');
+            if (overlay) overlay.classList.remove('dash-sidebar-overlay--visible');
+            freshBtn.setAttribute('aria-expanded', 'false');
+            var icon = freshBtn.querySelector('i');
+            if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+            document.body.style.overflow = '';
+        }
+
+        freshBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (sidebar.classList.contains('dash-sidebar--open')) close(); else open();
+        });
+        if (overlay) overlay.addEventListener('click', close);
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && sidebar.classList.contains('dash-sidebar--open')) close();
+        });
+        sidebar.querySelectorAll('.dash-sidebar-item').forEach(function (link) {
+            link.addEventListener('click', close);
+        });
+    }
 
     // ── Upload Modal ─────────────────────────────────
 
@@ -385,7 +428,7 @@
             html += '</div>';
         } else {
             html += '<h1 class="ss-header-title">' +
-                '<i class="fas fa-calendar-day" style="color:var(--primary-color)"></i> ' +
+                '<i class="fas fa-calendar-day"></i> ' +
                 'Today\'s Study Plan</h1>';
 
             if (planData && planData.plan && planData.plan.next_exam) {

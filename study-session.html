@@ -20,48 +20,46 @@
     <link rel="manifest" href="site.webmanifest">
 
     <!-- Theme Color -->
-    <meta name="theme-color" content="#2E86AB">
+    <meta name="theme-color" content="#0d1b2a">
 
     <!-- Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-    <!-- Bundled CSS -->
-    <link rel="stylesheet" href="css/bundle.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
-    <link rel="stylesheet" href="css/page-dashboard.css?v=6.0.split">
-    <link rel="stylesheet" href="css/page-dark.css?v=6.0.split">
-    <link rel="stylesheet" href="css/page-shared.css?v=6.0.split">
-    <link rel="stylesheet" href="css/global-overrides.css?v=6.3.session">
+    <link rel="stylesheet" href="css/study-session-redesign.css">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Sentry Error Tracking -->
     <script src="lockscreen.js"></script>
     <script src="beta-banner.js"></script>
-    <!-- Sentry Error Tracking -->
     <script defer src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script defer src="sentry-init.js"></script>
 </head>
 <body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
     <!-- Page Loader -->
+    <noscript><style>.page-loader{display:none!important}</style></noscript>
     <div class="page-loader" id="page-loader">
         <div class="loader-spinner"></div>
     </div>
-
-    <!-- Skip to main content -->
-    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
                 <a href="index.html">
-                    <img src="assets/images/the-nursing-collective-logo.webp" alt="The Nursing Collective Logo" class="nav-logo">
+                    <img src="assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective Logo" class="nav-logo">
                 </a>
             </div>
             <div class="nav-links">
@@ -69,41 +67,37 @@
                 <a href="resources.html">Resources</a>
                 <a href="pricing.html">Pricing</a>
                 <a href="about.html">About</a>
-                <div class="user-menu">
+                <div class="user-menu" id="user-menu">
                     <button class="user-avatar" id="user-menu-btn" title="Account menu">
-                        <i class="fas fa-user-circle"></i>
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
                     </button>
                     <div class="user-dropdown" id="user-dropdown">
-                        <div class="user-dropdown-header">
-                            <div class="user-avatar-large">
-                                <i class="fas fa-user-circle"></i>
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                <span>Welcome!</span>
                             </div>
-                            <div class="user-info">
-                                <span class="user-name" id="dropdown-user-name">Loading...</span>
-                                <span class="user-email" id="dropdown-user-email">Loading...</span>
-                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
                         </div>
-                        <div class="user-dropdown-divider"></div>
-                        <div class="theme-selector">
-                            <span class="theme-selector-label"><i class="fas fa-palette"></i> Theme</span>
-                            <div class="theme-selector-options">
-                                <button class="theme-option" data-theme-mode="light" title="Light mode">
-                                    <i class="fas fa-sun"></i>
-                                </button>
-                                <button class="theme-option" data-theme-mode="dark" title="Dark mode">
-                                    <i class="fas fa-moon"></i>
-                                </button>
-                                <button class="theme-option" data-theme-mode="system" title="System preference">
-                                    <i class="fas fa-desktop"></i>
-                                </button>
+                        <div class="dropdown-user-content hidden" id="dropdown-user-content">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
                             </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help &amp; Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
                         </div>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
-                        <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
-                        <div class="user-dropdown-divider"></div>
-                        <a href="contact.html"><i class="fas fa-question-circle"></i> Help & Support</a>
-                        <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
                     </div>
                 </div>
             </div>
@@ -115,107 +109,93 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <section class="study-session-page">
-            <a href="dashboard.html" class="ss-back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
+        <div class="dash-layout">
+            <!-- Sidebar Overlay (mobile) -->
+            <div class="dash-sidebar-overlay" id="dash-sidebar-overlay"></div>
 
-            <!-- Header: exam info or "Today's Study Plan" -->
-            <div class="ss-header" id="ss-header"></div>
-
-            <!-- Time budget controls -->
-            <div class="ss-controls" id="ss-controls"></div>
-
-            <!-- Progress bar -->
-            <div class="ss-progress" id="ss-progress" style="display:none"></div>
-
-            <!-- Topic cards -->
-            <div class="ss-topics" id="ss-topics">
-                <!-- Loading skeleton -->
-                <div class="ss-skeleton-card">
-                    <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
-                    <div style="flex:1">
-                        <div class="skeleton-box" style="width:60%;height:16px;margin-bottom:8px"></div>
-                        <div class="skeleton-box" style="width:40%;height:12px;margin-bottom:12px"></div>
-                        <div class="skeleton-box" style="width:50%;height:28px;border-radius:7px"></div>
+            <!-- Sidebar -->
+            <aside class="dash-sidebar" id="dash-sidebar">
+                <div class="dash-sidebar-inner">
+                    <div class="dash-sidebar-section">
+                        <a href="dashboard.html" class="dash-sidebar-item active">
+                            <i class="fas fa-th-large"></i> Dashboard
+                        </a>
+                        <a href="my-guides.html" class="dash-sidebar-item">
+                            <i class="fas fa-book-open"></i> Study Guides
+                        </a>
+                        <a href="https://learn.thenursingcollective.pro" class="dash-sidebar-item" id="sidebar-quiz-link" style="display:none;">
+                            <i class="fas fa-brain"></i> Quiz Bank
+                        </a>
+                        <a href="my-resources.html" class="dash-sidebar-item">
+                            <i class="fas fa-book-reader"></i> Resources
+                        </a>
+                        <a href="ai-tools.html" class="dash-sidebar-item">
+                            <i class="fas fa-wand-magic-sparkles"></i> AI Tools
+                        </a>
                     </div>
-                </div>
-                <div class="ss-skeleton-card">
-                    <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
-                    <div style="flex:1">
-                        <div class="skeleton-box" style="width:55%;height:16px;margin-bottom:8px"></div>
-                        <div class="skeleton-box" style="width:35%;height:12px;margin-bottom:12px"></div>
-                        <div class="skeleton-box" style="width:45%;height:28px;border-radius:7px"></div>
-                    </div>
-                </div>
-                <div class="ss-skeleton-card">
-                    <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
-                    <div style="flex:1">
-                        <div class="skeleton-box" style="width:50%;height:16px;margin-bottom:8px"></div>
-                        <div class="skeleton-box" style="width:30%;height:12px;margin-bottom:12px"></div>
-                        <div class="skeleton-box" style="width:55%;height:28px;border-radius:7px"></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <div class="footer-brand">
-                        <span>The Nursing Collective</span>
-                    </div>
-                    <p>Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
-                        <li><a href="https://discord.gg/y2Mh77wAV2">Discord</a></li>
-                    </ul>
-                </div>
-
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>
-                        <i class="fas fa-envelope"></i>
-                        <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
-                    </p>
-                    <div class="social-links">
-                        <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener">
-                            <i class="fab fa-discord"></i>
+                    <div class="dash-sidebar-section">
+                        <a href="community.html" class="dash-sidebar-item">
+                            <i class="fab fa-discord"></i> Community
+                        </a>
+                        <a href="settings.html" class="dash-sidebar-item">
+                            <i class="fas fa-cog"></i> Settings
                         </a>
                     </div>
                 </div>
+            </aside>
 
-                <div class="footer-section">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="terms.html">Terms of Service</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
+            <!-- Page Content -->
+            <div class="dash-main">
+                <section class="study-session-page">
+                    <a href="dashboard.html" class="ss-back-link"><i class="fas fa-arrow-left"></i> Back to Dashboard</a>
 
-            <div class="footer-bottom">
-                <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
-                <p class="footer-attribution">
-                    Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik" target="_blank" rel="noopener">Freepik</a> & <a href="https://www.flaticon.com/authors/slamlabs" title="Slamlabs" target="_blank" rel="noopener">Slamlabs</a> - <a href="https://www.flaticon.com" title="Flaticon" target="_blank" rel="noopener">Flaticon</a>
-                </p>
+                    <!-- Header: exam info or "Today's Study Plan" -->
+                    <div class="ss-header" id="ss-header"></div>
+
+                    <!-- Time budget controls -->
+                    <div class="ss-controls" id="ss-controls"></div>
+
+                    <!-- Progress bar -->
+                    <div class="ss-progress" id="ss-progress" style="display:none"></div>
+
+                    <!-- Topic cards -->
+                    <div class="ss-topics" id="ss-topics">
+                        <!-- Loading skeleton -->
+                        <div class="ss-skeleton-card">
+                            <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
+                            <div style="flex:1">
+                                <div class="skeleton-box" style="width:60%;height:16px;margin-bottom:8px"></div>
+                                <div class="skeleton-box" style="width:40%;height:12px;margin-bottom:12px"></div>
+                                <div class="skeleton-box" style="width:50%;height:28px;border-radius:7px"></div>
+                            </div>
+                        </div>
+                        <div class="ss-skeleton-card">
+                            <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
+                            <div style="flex:1">
+                                <div class="skeleton-box" style="width:55%;height:16px;margin-bottom:8px"></div>
+                                <div class="skeleton-box" style="width:35%;height:12px;margin-bottom:12px"></div>
+                                <div class="skeleton-box" style="width:45%;height:28px;border-radius:7px"></div>
+                            </div>
+                        </div>
+                        <div class="ss-skeleton-card">
+                            <div class="skeleton-box" style="width:40px;height:40px;border-radius:10px;flex-shrink:0"></div>
+                            <div style="flex:1">
+                                <div class="skeleton-box" style="width:50%;height:16px;margin-bottom:8px"></div>
+                                <div class="skeleton-box" style="width:30%;height:12px;margin-bottom:12px"></div>
+                                <div class="skeleton-box" style="width:55%;height:28px;border-radius:7px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
             </div>
         </div>
-    </footer>
+    </main>
 
     <!-- Scripts -->
     <script src="dark-mode.js"></script>
     <script src="api-service.js?v=1769142742"></script>
     <script defer src="script.js?v=4.8.dashboard"></script>
-    <script defer src="study-session-script.js?v=1.0"></script>
+    <script defer src="study-session-script.js?v=2.0.redesign"></script>
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>
     <script src="cookie-consent.js"></script>

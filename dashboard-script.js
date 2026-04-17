@@ -904,7 +904,8 @@ function populateGuidesFlyout() {
         'neural-tube-defects': 'Pediatric Nursing',
         'pediatric-fractures-immobility': 'Pediatric Nursing',
         'pediatric-skin-infections': 'Pediatric Nursing',
-        'hypersensitivity-inflammatory-skin': 'Pediatric Nursing'
+        'hypersensitivity-inflammatory-skin': 'Pediatric Nursing',
+        'pediatric-burns': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

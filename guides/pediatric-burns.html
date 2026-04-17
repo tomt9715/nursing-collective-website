@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Burns Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Pediatric nursing study guide for burn care. Burn depth classification, BSA estimation, Parkland fluid resuscitation, emergency management, wound care, and rehabilitation.">
+    <link rel="canonical" href="https://thenursingcollective.pro/guides/pediatric-burns.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/guides/pediatric-burns.html">
+    <meta property="og:title" content="Pediatric Burns Study Guide - The Nursing Collective">
+    <meta property="og:description" content="Pediatric nursing study guide for burn care.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/cookie-consent.css">
+    <link rel="stylesheet" href="guide-sidebar.css">
+
+    <style>
+        /* PEDIATRIC BURNS — Pediatric Integumentary */
+        :root {
+            --navy: #0d1b2a;
+            --navy-2: #162032;
+            --navy-3: #1e2d3e;
+            --card-dark: #1a2940;
+            --teal: #0fbcad;
+            --teal-dim: #0a9086;
+            --amber: #f4a535;
+            --green: #3dbd7a;
+            --red: #e05252;
+            --purple: #8b5cf6;
+            --text-inv: #e8edf2;
+            --text-inv-dim: #8a9bb0;
+            --border-inv: rgba(255, 255, 255, 0.07);
+            --border-inv-mid: rgba(255, 255, 255, 0.12);
+
+            --paper: #162032;
+            --paper-warm: #1a2940;
+            --paper-deep: #1e2d3e;
+            --ink: #f1f5f9;
+            --ink-soft: #c4ccd8;
+            --ink-dimmer: #8a9bb0;
+            --rule: rgba(255, 255, 255, 0.08);
+            --rule-mid: rgba(255, 255, 255, 0.14);
+            --rule-soft: rgba(255, 255, 255, 0.04);
+
+            --peds-coral: #ef5a5a;
+            --peds-coral-deep: #dc2f4f;
+            --peds-rose: #fb8989;
+            --peds-blush: rgba(239, 90, 90, 0.12);
+            --peds-blush-2: rgba(239, 90, 90, 0.22);
+            --peds-plum: #fb8989;
+
+            --critical: #dc2626;
+            --safe: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            background: var(--navy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .download-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(13, 27, 42, 0.92);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            color: var(--text-inv);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--border-inv);
+        }
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.01em;
+            color: var(--text-inv);
+        }
+        .download-bar-brand i { color: var(--teal); font-size: 16px; }
+        .download-bar-actions { display: flex; gap: 10px; }
+
+        .btn-download, .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            border: 0.5px solid var(--border-inv-mid);
+        }
+        .btn-download { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+        .btn-download:hover { background: var(--teal-dim); border-color: var(--teal-dim); transform: translateY(-1px); }
+        .btn-back { background: transparent; color: var(--text-inv-dim); }
+        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
+
+        .document-container {
+            max-width: 900px;
+            margin: 80px auto 40px;
+            background: var(--paper);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 0.5px solid var(--rule-mid);
+        }
+
+        .cover-page {
+            background:
+                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
+                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
+            color: white;
+            padding: 72px 60px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--peds-coral);
+        }
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .cover-content { position: relative; z-index: 1; }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 50px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
+
+        .cover-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 14px;
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+        }
+        .cover-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            line-height: 1.55;
+        }
+
+        .cover-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+        .cover-meta-item i { color: var(--peds-coral); font-size: 11px; }
+        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
+
+        .document-content { padding: 56px 56px 48px; background: var(--paper); }
+
+        .learning-objectives {
+            background: var(--peds-blush);
+            border: 1px solid var(--peds-blush-2);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--peds-rose);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .learning-objectives h2 i { color: var(--peds-coral); }
+        .learning-objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .objective-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .objective-card i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+
+        .high-yield-summary {
+            background: linear-gradient(135deg, rgba(244, 165, 53, 0.08), rgba(244, 165, 53, 0.02));
+            border: 1px solid rgba(244, 165, 53, 0.25);
+            border-left: 4px solid var(--amber);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .high-yield-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--amber);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .high-yield-summary h2 i { color: var(--amber); }
+        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
+        .high-yield-summary ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .high-yield-summary li {
+            background: rgba(0, 0, 0, 0.18);
+            border-radius: 8px;
+            padding: 12px 14px 12px 38px !important;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            border-bottom: none !important;
+        }
+        .high-yield-summary li::before {
+            left: 14px !important;
+            top: 14px !important;
+            color: var(--amber) !important;
+            font-size: 0.82rem !important;
+        }
+        .high-yield-summary strong { color: var(--amber); font-weight: 600; }
+        .high-yield-summary li strong { color: var(--amber) !important; }
+        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--amber); font-size: 0.95rem; }
+
+        .sticky-nav {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 36px;
+        }
+        .sticky-nav h3 {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--ink-dimmer);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-pills a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.87rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        .nav-pills a:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
+        .nav-pills a i { font-size: 0.82rem; }
+
+        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-number {
+            flex-shrink: 0;
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(239, 90, 90, 0.25);
+        }
+        .section-title-group { flex: 1; min-width: 0; }
+        .section-title-group h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
+
+        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.22rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 24px 0 12px;
+        }
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 18px 0 8px;
+        }
+        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
+        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
+        .guide-section strong { color: var(--ink); font-weight: 600; }
+
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: 10px;
+            border: 1px solid var(--rule);
+        }
+        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+        .guide-table thead { background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep)); color: white; }
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+        }
+        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
+        .guide-table tbody { background: var(--paper-warm); }
+        .guide-table tbody tr:last-child td { border-bottom: none; }
+        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
+        .guide-table tbody tr:hover { background: var(--peds-blush); }
+        .guide-table td strong { color: var(--ink); }
+
+        .info-box {
+            display: flex;
+            gap: 14px;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--rule);
+            border-left-width: 4px;
+        }
+        .info-box-icon {
+            flex-shrink: 0;
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .info-box-content { flex: 1; min-width: 0; }
+        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+
+        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
+        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .info-box.clinical h5 { color: #fbbf24; }
+        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
+        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
+        .info-box.critical h5 { color: #fca5a5; }
+        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
+        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .info-box.nclex h5 { color: #93c5fd; }
+        .info-box.pediatric { background: var(--peds-blush); border-color: var(--peds-blush-2); border-left-color: var(--peds-coral); }
+        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-rose); }
+        .info-box.pediatric h5 { color: var(--peds-rose); }
+        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
+        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
+        .info-box.safe h5 { color: #86efac; }
+        .info-box p { color: var(--ink-soft); }
+        .info-box strong { color: var(--ink); }
+
+        .florencebot-tip {
+            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
+            border: 1px solid rgba(15, 188, 173, 0.22);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .florencebot-tip::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--teal);
+        }
+        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .florencebot-tip-icon {
+            width: 32px; height: 32px;
+            background: var(--teal);
+            border-radius: 8px;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .florencebot-tip-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .florencebot-tip-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #5eead4;
+            margin-bottom: 8px;
+        }
+        .florencebot-tip-content { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; }
+        .florencebot-tip-content strong { color: var(--ink); }
+
+        .bottom-line {
+            background: linear-gradient(135deg, var(--peds-blush), rgba(239, 90, 90, 0.04));
+            border: 0.5px solid var(--peds-blush-2);
+            border-left: 4px solid var(--peds-coral);
+            padding: 14px 18px;
+            margin: 22px 0 0;
+            border-radius: 0 10px 10px 0;
+            font-weight: 500;
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+        .bottom-line strong { color: var(--peds-rose); }
+
+        /* Degree cards */
+        .degree-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .degree-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .degree-card-header {
+            padding: 14px 18px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .degree-card-header.first { background: linear-gradient(135deg, #fbbf24, #b45309); }
+        .degree-card-header.second-superficial { background: linear-gradient(135deg, #f97316, #c2410c); }
+        .degree-card-header.second-deep { background: linear-gradient(135deg, #ea580c, #9a3412); }
+        .degree-card-header.third { background: linear-gradient(135deg, #dc2626, #7f1d1d); }
+        .degree-card-header.fourth { background: linear-gradient(135deg, #7f1d1d, #450a0a); }
+        .degree-card-header i { font-size: 1.2rem; }
+        .degree-card-header h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+        .degree-card-header .tag {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            opacity: 0.88;
+            text-transform: uppercase;
+        }
+        .degree-card-body { padding: 16px 18px; }
+        .degree-card-body h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--peds-rose);
+            margin: 10px 0 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .degree-card-body h5:first-child { margin-top: 0; }
+        .degree-card-body p, .degree-card-body ul { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; margin: 0 0 6px; }
+        .degree-card-body ul { padding-left: 18px; }
+        .degree-card-body li { margin-bottom: 4px; }
+        .degree-card-body strong { color: var(--ink); }
+
+        /* Key point grid */
+        .key-point-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .key-point-item {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .key-point-item i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .key-point-item p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); }
+        .key-point-item strong { color: var(--ink); }
+
+        /* Red flag cards */
+        .redflag-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .redflag-card {
+            background: rgba(220, 38, 38, 0.08);
+            border: 0.5px solid rgba(220, 38, 38, 0.25);
+            border-left: 3px solid #f87171;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .redflag-card i { color: #fca5a5; font-size: 0.95rem; margin-top: 3px; flex-shrink: 0; }
+        .redflag-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); }
+        .redflag-card strong { color: #fca5a5; }
+
+        /* Step list */
+        .step-list {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 20px 0;
+            counter-reset: step;
+        }
+        .step-list li {
+            counter-increment: step;
+            position: relative;
+            padding: 14px 16px 14px 56px;
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 0.97rem;
+            line-height: 1.6;
+            color: var(--ink-soft);
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 30px; height: 30px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.9rem;
+        }
+        .step-list strong { color: var(--ink); }
+
+        /* Formula highlight */
+        .formula-box {
+            background: linear-gradient(135deg, rgba(15, 188, 173, 0.15), rgba(15, 188, 173, 0.05));
+            border: 1px solid rgba(15, 188, 173, 0.3);
+            border-left: 4px solid var(--teal);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .formula-box .formula-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+        .formula-box .formula {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: var(--ink);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .formula-box .formula strong { color: #5eead4; }
+        .formula-box .formula-explanation {
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+
+        /* Med cards */
+        .med-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 14px;
+            margin: 18px 0;
+        }
+        .med-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            border-top: 3px solid var(--peds-coral);
+        }
+        .med-card h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+        }
+        .med-card .med-class {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            color: var(--peds-coral);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .med-card p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.55; }
+        .med-card p strong { color: var(--ink); }
+
+        /* Cross refs */
+        .cross-references {
+            margin: 36px 0 8px;
+            padding: 24px;
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+        }
+        .cross-references h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cross-references h2 i { color: var(--peds-coral); }
+        .cross-ref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .cross-ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+        .cross-ref-link:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
+        .cross-ref-link i { font-size: 0.85rem; }
+
+        .quiz-cta {
+            background:
+                radial-gradient(ellipse 60% 80% at 90% 10%, rgba(15, 188, 173, 0.12) 0%, transparent 65%),
+                linear-gradient(135deg, var(--card-dark), var(--navy-3));
+            border: 0.5px solid var(--border-inv-mid);
+            color: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin: 36px 0;
+            text-align: center;
+        }
+        .quiz-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
+        .quiz-cta p { color: rgba(255, 255, 255, 0.88); margin-bottom: 20px; font-size: 0.98rem; }
+        .quiz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--teal);
+            color: var(--navy);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
+
+        .document-footer {
+            padding: 32px 56px;
+            background: var(--paper-deep);
+            border-top: 0.5px solid var(--rule);
+            text-align: center;
+        }
+        .footer-logo { height: 28px; margin: 0 auto 14px; opacity: 0.9; }
+        .footer-tagline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 4px; }
+        .footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-dimmer); letter-spacing: 0.02em; }
+
+        /* Sidebar overrides */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            max-width: 1600px;
+        }
+        .sidebar-left, .sidebar-right {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .toc-panel {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            color: var(--text-inv) !important;
+            margin-bottom: 16px !important;
+        }
+        .toc-header {
+            padding-bottom: 14px !important;
+            margin-bottom: 14px !important;
+            border-bottom: 0.5px solid var(--border-inv-mid) !important;
+        }
+        .toc-header h3 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+        }
+        .toc-header i { color: var(--teal) !important; }
+        .toc-link {
+            color: var(--text-inv-dim) !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.88rem !important;
+            border-left: 2px solid transparent !important;
+            padding: 9px 12px !important;
+            background: transparent !important;
+        }
+        .toc-link:hover { background: rgba(15, 188, 173, 0.08) !important; color: var(--text-inv) !important; }
+        .toc-link.active {
+            background: rgba(15, 188, 173, 0.12) !important;
+            color: var(--teal) !important;
+            border-left-color: var(--teal) !important;
+            font-weight: 600 !important;
+        }
+        .toc-link i { color: inherit !important; }
+
+        .toc-progress {
+            margin-top: 14px !important;
+            padding-top: 14px !important;
+            border-top: 0.5px solid var(--border-inv) !important;
+        }
+        .toc-progress-label {
+            display: flex !important;
+            justify-content: space-between !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            letter-spacing: 1px !important;
+            color: var(--text-inv-dim) !important;
+            margin-bottom: 8px !important;
+        }
+        .toc-progress-percent { color: var(--teal) !important; }
+        .toc-progress-bar {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-radius: 999px !important;
+            height: 4px !important;
+            overflow: hidden !important;
+        }
+        .toc-progress-fill {
+            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
+            height: 100% !important;
+        }
+
+        .toc-nav-links {
+            margin-top: 14px !important;
+            padding-top: 14px !important;
+            border-top: 0.5px solid var(--border-inv) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+        }
+        .toc-nav-link {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            color: var(--text-inv-dim) !important;
+            background: transparent !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.84rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            transition: all 0.15s !important;
+        }
+        .toc-nav-link:hover { background: rgba(255, 255, 255, 0.04) !important; color: var(--text-inv) !important; }
+        .toc-nav-link--ai { background: rgba(15, 188, 173, 0.08) !important; color: var(--teal) !important; }
+        .toc-nav-link--ai:hover { background: rgba(15, 188, 173, 0.15) !important; color: var(--teal) !important; }
+
+        .florence-card {
+            background: linear-gradient(135deg, var(--card-dark), var(--navy-3)) !important;
+            border: 0.5px solid var(--border-inv-mid) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            margin-bottom: 16px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .florence-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -40% !important; right: -40% !important;
+            width: 120% !important; height: 120% !important;
+            background: radial-gradient(circle, rgba(15, 188, 173, 0.12) 0%, transparent 60%) !important;
+            pointer-events: none !important;
+        }
+        .florence-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            margin-bottom: 14px !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .florence-avatar {
+            width: 44px !important; height: 44px !important;
+            border-radius: 50% !important;
+            background: rgba(15, 188, 173, 0.15) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
+            padding: 2px !important;
+            box-shadow: none !important;
+        }
+        .florence-info h3 {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.98rem !important;
+            font-weight: 600 !important;
+            color: var(--text-inv) !important;
+            margin: 0 !important;
+        }
+        .florence-info span {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            color: var(--teal) !important;
+            letter-spacing: 1px !important;
+            text-transform: uppercase !important;
+        }
+        .florence-speech {
+            background: rgba(15, 188, 173, 0.06) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            border-radius: 10px !important;
+            padding: 12px 14px !important;
+            box-shadow: none !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .florence-speech::before {
+            background: var(--card-dark) !important;
+            border-top: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            border-left: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            box-shadow: none !important;
+        }
+        .florence-speech p {
+            color: var(--text-inv) !important;
+            font-size: 0.88rem !important;
+            line-height: 1.55 !important;
+            margin: 0 !important;
+        }
+        .florence-speech p strong { color: var(--teal) !important; }
+
+        .key-numbers-card {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+            margin-bottom: 16px !important;
+        }
+        .key-numbers-title {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin-bottom: 14px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .key-numbers-title i { color: var(--teal) !important; }
+        .key-numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+        .key-number {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 10px !important;
+            padding: 12px 10px !important;
+        }
+        .key-number:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important; }
+        .key-number.critical { background: rgba(220, 38, 38, 0.1) !important; border-color: rgba(220, 38, 38, 0.25) !important; }
+        .key-number.critical .key-number-value { color: #fca5a5 !important; }
+        .key-number.time { background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.25) !important; }
+        .key-number.time .key-number-value { color: #fcd34d !important; }
+        .key-number.target { background: rgba(15, 188, 173, 0.1) !important; border-color: rgba(15, 188, 173, 0.25) !important; }
+        .key-number.target .key-number-value { color: #5eead4 !important; }
+        .key-number.success { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
+        .key-number.success .key-number-value { color: #86efac !important; }
+        .key-number.warning { background: rgba(251, 146, 60, 0.1) !important; border-color: rgba(251, 146, 60, 0.25) !important; }
+        .key-number.warning .key-number-value { color: #fdba74 !important; }
+        .key-number.info { background: rgba(139, 92, 246, 0.1) !important; border-color: rgba(139, 92, 246, 0.25) !important; }
+        .key-number.info .key-number-value { color: #c4b5fd !important; }
+        .key-number-value {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 1.05rem !important;
+            font-weight: 700 !important;
+            color: var(--text-inv) !important;
+            line-height: 1.2 !important;
+        }
+        .key-number-label {
+            font-size: 0.68rem !important;
+            color: var(--text-inv-dim) !important;
+            margin-top: 4px !important;
+            line-height: 1.35 !important;
+        }
+
+        .florence-tips-card {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+        }
+        .florence-tips-header { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 14px !important; }
+        .florence-tips-avatar {
+            width: 28px !important; height: 28px !important;
+            border-radius: 50% !important;
+            background: rgba(15, 188, 173, 0.15) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
+            padding: 2px !important;
+            box-shadow: none !important;
+        }
+        .florence-tips-header h4 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+        }
+
+        .tip-item {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-left: 3px solid var(--teal) !important;
+            border-radius: 8px !important;
+            padding: 10px 12px !important;
+            margin-bottom: 8px !important;
+            box-shadow: none !important;
+            transition: all 0.15s !important;
+        }
+        .tip-item:hover { background: rgba(15, 188, 173, 0.08) !important; transform: translateX(2px) !important; }
+        .tip-item:last-child { margin-bottom: 0 !important; }
+        .tip-item-title {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv) !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .tip-item-title::before { color: var(--teal) !important; font-size: 0.72rem !important; }
+        .tip-item-text {
+            font-size: 0.78rem !important;
+            color: var(--text-inv-dim) !important;
+            line-height: 1.5 !important;
+            margin-top: 4px !important;
+        }
+
+        .mobile-nav-fab { background: var(--teal) !important; color: var(--navy) !important; }
+        .mobile-nav-drawer { background: var(--card-dark) !important; color: var(--text-inv) !important; }
+        .mobile-nav-tab { color: var(--text-inv-dim) !important; background: transparent !important; }
+        .mobile-nav-tab.active { color: var(--teal) !important; border-bottom-color: var(--teal) !important; }
+        .mobile-toc-link { color: var(--text-inv-dim) !important; }
+        .mobile-toc-link.active { color: var(--teal) !important; background: rgba(15, 188, 173, 0.1) !important; }
+
+        @media (max-width: 1200px) {
+            .page-wrapper { padding: 0 12px; gap: 16px; }
+            .sidebar-left, .sidebar-right { width: 220px; }
+        }
+
+        @media (max-width: 900px) {
+            .page-wrapper { flex-direction: column; padding: 0 12px; }
+            .sidebar-left, .sidebar-right {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                position: static;
+                max-height: none;
+            }
+            .document-container { margin: 80px 12px 40px; }
+            .document-content { padding: 36px 28px; }
+            .cover-page { padding: 56px 28px 40px; }
+            .cover-title { font-size: 2.1rem; }
+            .cover-meta { gap: 10px; padding: 10px 16px; }
+            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
+            .learning-objectives-grid,
+            .degree-grid,
+            .key-point-grid,
+            .redflag-grid,
+            .high-yield-summary ul {
+                grid-template-columns: 1fr;
+            }
+            .formula-box .formula { font-size: 1.4rem; }
+        }
+
+        @media (max-width: 600px) {
+            .download-bar { padding: 10px 14px; }
+            .download-bar-brand span:not(.brand-text-long) { display: none; }
+            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
+            .section-header { gap: 12px; }
+            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
+            .section-title-group h2 { font-size: 1.4rem; }
+            .document-content { padding: 28px 20px; }
+            .document-footer { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body data-product-id="pediatric-burns" data-guide-name="Pediatric Burns">
+
+    <header class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-fire"></i>
+            <span>Pediatric Burns</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../my-guides.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Guides
+            </a>
+        </div>
+    </header>
+
+    <div class="document-container">
+
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-badge">
+                    <i class="fas fa-baby"></i> Pediatric Nursing · Integumentary
+                </div>
+                <h1 class="cover-title">Pediatric Burns</h1>
+                <p class="cover-subtitle">Burn depth, BSA estimation, Parkland fluid resuscitation, emergency ABCDE, wound care, and the long road of rehabilitation. Everything a pediatric nurse needs on the first day in a burn case.</p>
+                <div class="cover-meta">
+                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 9 Sections</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 18 Quiz Questions</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~20 Min Read</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="document-content">
+
+            <div class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <div class="learning-objectives-grid">
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Explain why pediatric burns differ from adult burns in depth, BSA, and fluid loss.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Classify burn depth (superficial through full-thickness) by appearance, pain, and tissue involvement.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Estimate BSA using the pediatric Rule of Nines, Lund-Browder chart, and palm method.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Apply ABCDE assessment, stop the burning process, and recognize inhalation injury.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Calculate and administer Parkland fluid resuscitation with pediatric modifications.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Provide wound care, pain control, nutrition, and rehabilitation support throughout recovery.</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
+                <p class="high-yield-subtitle">Ten facts that will carry you through any pediatric burn scenario.</p>
+                <ul>
+                    <li><strong>Scalds are the #1 cause</strong> of pediatric burns in children under 5 (bath water, pulled-down pots). Thermal, chemical, electrical, radiation, and inhalation are the major categories.</li>
+                    <li><strong>Kids' skin is thinner &amp; their BSA-to-weight ratio is bigger</strong> &mdash; same exposure makes a deeper burn, larger fluid loss, and faster hypothermia than in adults.</li>
+                    <li><strong>Burn depth ladder:</strong> superficial (1st, epidermis only) &rarr; superficial partial (blisters, painful) &rarr; deep partial (pale, less pain) &rarr; full-thickness (3rd, <strong>painless</strong>, leathery, needs grafting) &rarr; 4th (muscle/bone).</li>
+                    <li><strong>Full-thickness burns are painless</strong> in the burned area because nerve endings are destroyed. Pain from surrounding partial-thickness burn.</li>
+                    <li><strong>Pediatric BSA:</strong> Rule of Nines is modified &mdash; infants' heads are ~18% and legs ~14% (versus adult's 9% and 18%). <strong>Lund-Browder chart is most accurate in children.</strong></li>
+                    <li><strong>Palm method:</strong> the child's own palm (including fingers) = ~1% BSA &mdash; useful for scattered or irregular burns.</li>
+                    <li><strong>Parkland Formula:</strong> <strong>4 mL &times; kg &times; %TBSA</strong> of Lactated Ringer's over 24 hours. <strong>Half in the first 8 hours from the time of burn</strong> (not ED arrival), half over next 16 hours. Add maintenance fluids in children.</li>
+                    <li><strong>Urine output is the best fluid status indicator</strong> in burns: <strong>1&ndash;2 mL/kg/hr in young children</strong>, 0.5&ndash;1 mL/kg/hr in older children. Titrate fluids to UOP.</li>
+                    <li><strong>Inhalation injury red flags:</strong> facial burns, singed nasal hair, carbonaceous sputum, hoarseness, stridor. <strong>Early intubation</strong> &mdash; the airway will swell.</li>
+                    <li><strong>Infection is the #1 cause of death</strong> beyond the first 48 hours. Silver sulfadiazine is standard topical; early excision and grafting of deep burns reduces infection risk.</li>
+                </ul>
+                <p class="high-yield-cta">Clinical breakdown below &darr;</p>
+            </section>
+
+            <nav class="sticky-nav">
+                <h3>Jump to section</h3>
+                <div class="nav-pills">
+                    <a href="#fundamentals"><i class="fas fa-fire"></i> Fundamentals</a>
+                    <a href="#depth"><i class="fas fa-layer-group"></i> Burn Depth</a>
+                    <a href="#bsa"><i class="fas fa-ruler-combined"></i> BSA</a>
+                    <a href="#severity"><i class="fas fa-triangle-exclamation"></i> Severity</a>
+                    <a href="#emergency"><i class="fas fa-truck-medical"></i> Emergency Mgmt</a>
+                    <a href="#fluids"><i class="fas fa-droplet"></i> Parkland / Fluids</a>
+                    <a href="#ongoing"><i class="fas fa-bandage"></i> Ongoing Care</a>
+                    <a href="#rehab"><i class="fas fa-dumbbell"></i> Rehab</a>
+                    <a href="#family"><i class="fas fa-users"></i> Family Education</a>
+                </div>
+            </nav>
+
+            <!-- Section 1: Fundamentals -->
+            <section class="guide-section" id="fundamentals">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <div class="section-title-group">
+                        <h2>Pediatric Burn Fundamentals</h2>
+                        <div class="subtitle">Why kids' burns are a different problem than adults'</div>
+                    </div>
+                </div>
+
+                <p>Pediatric burns are among the leading causes of pediatric injury and death in the US. They account for thousands of hospital admissions and ED visits each year, with <strong>children under 5</strong> at highest risk &mdash; usually from preventable household exposures.</p>
+
+                <h3>Causes of Pediatric Burns</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>Typical Scenario</th>
+                                <th>Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Scalds</strong></td>
+                                <td>Hot bath water, pulled-down pots/pans, hot beverages spilled</td>
+                                <td>Most common in &lt;5 years. Suspect abuse if injury pattern doesn't match history (e.g., glove/sock distribution, symmetric bilateral, clear demarcation lines).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Flames / house fires</strong></td>
+                                <td>Structural fires, matches, campfires</td>
+                                <td>Often large BSA plus inhalation injury. Account for carbon monoxide exposure.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Contact</strong></td>
+                                <td>Hot irons, stoves, curling irons, hot food</td>
+                                <td>Localized; often hands and face.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Chemical</strong></td>
+                                <td>Household cleaners, batteries, acids, alkalis</td>
+                                <td>Continues burning until chemical is fully removed. Copious irrigation is key.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Electrical</strong></td>
+                                <td>Outlets, cords (oral burns when chewing), lightning</td>
+                                <td>Deep tissue damage beyond visible skin injury. Cardiac arrhythmias possible. Oral commissure cord burns are classic.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Radiation</strong></td>
+                                <td>Severe sunburn, radiation therapy</td>
+                                <td>Usually superficial; occasional partial-thickness.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Inhalation</strong></td>
+                                <td>Smoke inhalation in closed fires</td>
+                                <td>ARDS risk; low threshold for intubation. Airway can swell rapidly.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Why Kids Burn Differently</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Thinner skin</strong> &mdash; same temperature and duration produce a <strong>deeper burn</strong> than in adults.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Higher BSA-to-weight ratio</strong> &mdash; larger surface means more <strong>fluid loss</strong> and faster <strong>hypothermia</strong>.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Different body proportions</strong> &mdash; infants have a proportionally larger head (18%) and smaller legs (14%) than adults.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Less subcutaneous fat</strong> in infants &rarr; less thermal insulation, greater heat loss.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Growth plate vulnerability</strong> &mdash; burns over joints can cause scarring and contractures affecting growth.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Developing immune system</strong> &mdash; higher infection risk, slower healing, need for close monitoring.</p>
+                    </div>
+                </div>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon"><i class="fas fa-magnifying-glass"></i></div>
+                    <div class="info-box-content">
+                        <h5>Screen Every Pediatric Burn for Abuse</h5>
+                        <p>Patterns that raise concern include <strong>glove/stocking distribution</strong> (forced immersion), <strong>symmetric bilateral</strong> injuries, <strong>sharp line of demarcation</strong>, <strong>cigarette burns</strong> (round punched-out), burns sparing the buttock folds (child held in flexion during immersion), or a history inconsistent with injury pattern or developmental stage. Document objectively and involve child protective services &mdash; mandatory reporting.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Scalds lead pediatric burns. Kids burn deeper and lose fluid/heat faster. Check every burn for abuse patterns.</div>
+            </section>
+
+            <!-- Section 2: Burn Depth -->
+            <section class="guide-section" id="depth">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <div class="section-title-group">
+                        <h2>Burn Depth Classification</h2>
+                        <div class="subtitle">Skin layers and how to read what you're seeing</div>
+                    </div>
+                </div>
+
+                <p>Accurate burn depth classification drives treatment: superficial burns heal without intervention; deep partial and full-thickness burns often require grafting. Depth is determined by appearance, pain, capillary refill, and sensation.</p>
+
+                <h3>Skin Layers (Quick Anatomy)</h3>
+
+                <ul>
+                    <li><strong>Epidermis</strong> &mdash; outermost layer; barrier function.</li>
+                    <li><strong>Dermis</strong> &mdash; contains sweat glands, hair follicles, nerves, blood vessels; superficial (papillary) and deep (reticular) layers.</li>
+                    <li><strong>Subcutaneous tissue (hypodermis)</strong> &mdash; fat, deeper vessels.</li>
+                    <li><strong>Deeper structures</strong> &mdash; fascia, muscle, bone.</li>
+                </ul>
+
+                <h3>The Degrees at a Glance</h3>
+
+                <div class="degree-grid">
+                    <div class="degree-card">
+                        <div class="degree-card-header first">
+                            <i class="fas fa-sun"></i>
+                            <h4>Superficial (1st Degree)</h4>
+                            <span class="tag">Epidermis</span>
+                        </div>
+                        <div class="degree-card-body">
+                            <h5>Appearance</h5>
+                            <p>Red, dry, <strong>no blisters</strong>, blanches with pressure.</p>
+                            <h5>Pain</h5>
+                            <p>Painful.</p>
+                            <h5>Classic Example</h5>
+                            <p>Sunburn.</p>
+                            <h5>Healing</h5>
+                            <p>3&ndash;7 days, NO scarring.</p>
+                            <h5>Treatment</h5>
+                            <p>Moisturizer, cool compresses, acetaminophen.</p>
+                        </div>
+                    </div>
+
+                    <div class="degree-card">
+                        <div class="degree-card-header second-superficial">
+                            <i class="fas fa-droplet"></i>
+                            <h4>Superficial Partial (2nd)</h4>
+                            <span class="tag">Upper Dermis</span>
+                        </div>
+                        <div class="degree-card-body">
+                            <h5>Appearance</h5>
+                            <p>Red, moist, <strong>blistered</strong>, blanches with pressure.</p>
+                            <h5>Pain</h5>
+                            <p>Very painful, sensitive to air/touch.</p>
+                            <h5>Cap Refill</h5>
+                            <p>Brisk.</p>
+                            <h5>Healing</h5>
+                            <p>1&ndash;3 weeks, minimal scarring.</p>
+                            <h5>Treatment</h5>
+                            <p>Wound cleansing, topical antibiotic, nonadherent dressing.</p>
+                        </div>
+                    </div>
+
+                    <div class="degree-card">
+                        <div class="degree-card-header second-deep">
+                            <i class="fas fa-fire-flame-simple"></i>
+                            <h4>Deep Partial (2nd)</h4>
+                            <span class="tag">Deep Dermis</span>
+                        </div>
+                        <div class="degree-card-body">
+                            <h5>Appearance</h5>
+                            <p>Pale, waxy, may blister, dry or slightly moist.</p>
+                            <h5>Pain</h5>
+                            <p>Less painful (nerve damage), but pressure still felt.</p>
+                            <h5>Cap Refill</h5>
+                            <p>Sluggish or absent.</p>
+                            <h5>Healing</h5>
+                            <p>3&ndash;6 weeks, significant scarring. Often needs grafting.</p>
+                            <h5>Treatment</h5>
+                            <p>Surgical evaluation, possible excision + grafting.</p>
+                        </div>
+                    </div>
+
+                    <div class="degree-card">
+                        <div class="degree-card-header third">
+                            <i class="fas fa-fire"></i>
+                            <h4>Full-Thickness (3rd)</h4>
+                            <span class="tag">Through Dermis</span>
+                        </div>
+                        <div class="degree-card-body">
+                            <h5>Appearance</h5>
+                            <p>Dry, <strong>leathery</strong>, white / brown / black, may see <strong>thrombosed vessels</strong>.</p>
+                            <h5>Pain</h5>
+                            <p><strong>PAINLESS</strong> in the burned area (nerves destroyed).</p>
+                            <h5>Cap Refill</h5>
+                            <p>Absent.</p>
+                            <h5>Healing</h5>
+                            <p>Will NOT heal without grafting. Permanent scarring.</p>
+                            <h5>Treatment</h5>
+                            <p>Excision + skin grafting. Monitor for circumferential burns (escharotomy).</p>
+                        </div>
+                    </div>
+
+                    <div class="degree-card">
+                        <div class="degree-card-header fourth">
+                            <i class="fas fa-skull-crossbones"></i>
+                            <h4>4th Degree</h4>
+                            <span class="tag">Muscle / Bone</span>
+                        </div>
+                        <div class="degree-card-body">
+                            <h5>Appearance</h5>
+                            <p>Charred, exposed tissue, muscle, tendon, bone.</p>
+                            <h5>Pain</h5>
+                            <p>Painless at the burn; severe systemic illness.</p>
+                            <h5>Treatment</h5>
+                            <p>Extensive debridement, reconstruction, often <strong>amputation</strong>.</p>
+                            <h5>Outcomes</h5>
+                            <p>High mortality; prolonged recovery; permanent disability.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="info-box-content">
+                        <h5>Painless Burn = Full-Thickness</h5>
+                        <p>In partial-thickness burns, <strong>pain is out of proportion to visible injury</strong>. In full-thickness burns, <strong>the burned area itself is painless</strong> because nerve endings are destroyed &mdash; but surrounding partial-thickness skin still hurts. A child with a "painless" burn isn't doing well; they have a deep burn that likely needs grafting.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: 1st = red/dry/painful. 2nd sup = blistered/very painful. 2nd deep = pale/less pain. 3rd = leathery/painless. Painless = deep.</div>
+            </section>
+
+            <!-- Section 3: BSA -->
+            <section class="guide-section" id="bsa">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <div class="section-title-group">
+                        <h2>BSA Estimation Methods</h2>
+                        <div class="subtitle">Why "percent burned" is different in kids</div>
+                    </div>
+                </div>
+
+                <p>Accurate BSA estimation drives fluid resuscitation and determines severity. In adults, we use the Rule of Nines. In children, body proportions differ significantly &mdash; infants have proportionally larger heads and smaller legs. Always use an age-appropriate method.</p>
+
+                <h3>Pediatric Rule of Nines</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Body Region</th>
+                                <th>Adult</th>
+                                <th>Infant / Young Child</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Head &amp; neck</strong></td><td>9%</td><td><strong>18%</strong></td></tr>
+                            <tr><td>Each arm</td><td>9%</td><td>9%</td></tr>
+                            <tr><td>Chest (anterior torso)</td><td>18%</td><td>18%</td></tr>
+                            <tr><td>Back (posterior torso)</td><td>18%</td><td>18%</td></tr>
+                            <tr><td><strong>Each leg</strong></td><td>18%</td><td><strong>14%</strong></td></tr>
+                            <tr><td>Perineum</td><td>1%</td><td>1%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <p>As children grow, the head BSA decreases and the legs increase, gradually matching adult proportions by about age 10.</p>
+
+                <h3>Lund-Browder Chart</h3>
+
+                <p>The <strong>Lund-Browder chart</strong> is the most accurate BSA estimation tool for children. It breaks body regions into smaller areas with age-adjusted percentages. Used in burn centers; essential for severe burns. Don't try to memorize the table &mdash; learn that it exists and how to read one.</p>
+
+                <h3>Palm Method (Quick Scattered-Burn Estimation)</h3>
+
+                <div class="formula-box">
+                    <div class="formula-label">Palm Method</div>
+                    <div class="formula"><strong>1 palm (incl. fingers)</strong> = 1% BSA</div>
+                    <div class="formula-explanation">Use the child's OWN palm (including fingers) to estimate scattered or irregular burn areas.</div>
+                </div>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="info-box-content">
+                        <h5>Exclude Superficial Burns from BSA for Fluid Calculation</h5>
+                        <p>Only <strong>partial-thickness and full-thickness</strong> burns count toward %TBSA for the Parkland formula. <strong>Superficial (1st degree) burns do NOT count</strong> because they don't cause the same fluid loss. A child with 90% sunburn and 10% second-degree burn = 10%TBSA for fluid calculation purposes.</p>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-kids-head">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Kids Have Big Heads and Small Legs</div>
+                    <div class="florencebot-tip-content">
+                        Think of a newborn: head takes up almost a fifth of the body. The classic "Rule of Nines" is WRONG for infants because it assigns only 9% to the head &mdash; reality is <strong>18% for a newborn head</strong> and just 14% each leg. As children grow, these shift toward adult proportions. Under-estimating head burn BSA in an infant can dangerously under-resuscitate.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Use pediatric Rule of Nines (head 18%, legs 14%). Lund-Browder chart is most accurate. Palm = 1%. Count only 2nd and 3rd degree.</div>
+            </section>
+
+            <!-- Section 4: Severity & Transfer -->
+            <section class="guide-section" id="severity">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <div class="section-title-group">
+                        <h2>Severity &amp; Burn Center Transfer</h2>
+                        <div class="subtitle">Knowing when to transfer to a burn center</div>
+                    </div>
+                </div>
+
+                <h3>Burn Severity Classification</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Severity</th>
+                                <th>Criteria</th>
+                                <th>Management</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Minor</strong></td>
+                                <td>&lt;10% BSA partial-thickness, no other complications</td>
+                                <td>Outpatient with close follow-up</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Moderate</strong></td>
+                                <td>10&ndash;20% BSA partial-thickness; small full-thickness (&lt;2%)</td>
+                                <td>Hospitalization; consider burn center</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Major / Severe</strong></td>
+                                <td>&gt;20% BSA; &gt;10% full-thickness; critical locations; inhalation; electrical/chemical</td>
+                                <td>Burn center; ICU; multidisciplinary team</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3>Burn Center Transfer Criteria (American Burn Association)</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Partial-thickness &gt;10% BSA</strong> in children under 10 or &gt;20% in older children.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Any full-thickness burn</strong> &mdash; regardless of size.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Burns of face, hands, feet, perineum, genitalia, or major joints.</strong></p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Electrical or chemical burns</strong> (any size).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Inhalation injury</strong> (singed nose hair, carbonaceous sputum, stridor).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Circumferential burn</strong> of trunk or limb &mdash; risk of compartment syndrome / escharotomy.</p>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-hospital"></i></div>
+                    <div class="info-box-content">
+                        <h5>The Lower Threshold in Kids</h5>
+                        <p>In pediatric patients, the transfer threshold is lower than adults. <strong>Even 5&ndash;10% partial-thickness burns in young children often warrant a burn center transfer</strong> because of the higher fluid losses, infection risk, and specialized wound/rehab needs. When in doubt, call the nearest burn center for consultation.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: &gt;10% BSA, any full-thickness, critical locations, inhalation, electrical/chemical = burn center. Kids transfer earlier.</div>
+            </section>
+
+            <!-- Section 5: Emergency Management -->
+            <section class="guide-section" id="emergency">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <div class="section-title-group">
+                        <h2>Emergency Management (First Hours)</h2>
+                        <div class="subtitle">Stop the burning, secure the ABCs, prepare for resuscitation</div>
+                    </div>
+                </div>
+
+                <h3>Initial Actions</h3>
+
+                <ol class="step-list">
+                    <li><strong>Stop the burning process.</strong> Remove from heat source. For thermal burns, <strong>cool the burn with running tap water for 15&ndash;20 min</strong> (NOT ice &mdash; causes vasoconstriction and worse tissue damage). For chemical burns, <strong>irrigate copiously with water for at least 20 minutes</strong> (except dry chemicals &mdash; brush off first). For electrical burns, <strong>ensure source is disconnected before touching the victim</strong>.</li>
+                    <li><strong>Remove clothing and jewelry</strong> from the burned area BEFORE swelling develops; cut around adherent clothing rather than pulling.</li>
+                    <li><strong>Airway first (ABCDE).</strong> Assess for inhalation injury signs; <strong>intubate early</strong> if any doubt &mdash; airway edema can develop rapidly and close the airway.</li>
+                    <li><strong>Breathing:</strong> 100% oxygen (especially if carbon monoxide concern), SpO2 monitoring, chest auscultation for wheezing/crackles.</li>
+                    <li><strong>Circulation:</strong> establish <strong>2 large-bore IVs</strong> (intraosseous if needed), begin fluid resuscitation. Check pulses distal to any circumferential burns.</li>
+                    <li><strong>Disability:</strong> assess neuro status, GCS. Consider hypoxia, CO poisoning.</li>
+                    <li><strong>Exposure:</strong> fully expose to assess extent, then <strong>cover with warm clean dry sheets</strong> to prevent hypothermia (major risk in kids).</li>
+                    <li><strong>Tetanus prophylaxis</strong>, pain management, NG tube if intubated or ileus, Foley for accurate UOP, labs (CBC, BMP, lactate, ABG if inhalation).</li>
+                </ol>
+
+                <h3>Recognizing Inhalation Injury</h3>
+
+                <div class="redflag-grid">
+                    <div class="redflag-card">
+                        <i class="fas fa-fire"></i>
+                        <p><strong>Facial burns</strong> or burns around mouth/nose</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-fire"></i>
+                        <p><strong>Singed nose hair or eyebrows</strong></p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-fire"></i>
+                        <p><strong>Carbonaceous sputum</strong> (black/sooty)</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-fire"></i>
+                        <p><strong>Hoarseness, stridor, drooling</strong></p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-fire"></i>
+                        <p><strong>Closed space fire exposure</strong></p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-fire"></i>
+                        <p><strong>Altered mental status</strong> (CO / hypoxia)</p>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-lungs"></i></div>
+                    <div class="info-box-content">
+                        <h5>Intubate Before the Airway Closes</h5>
+                        <p>Airway swelling from inhalation injury can progress rapidly. A child who sounds mildly hoarse now may be unable to be intubated in 30 minutes. <strong>When in doubt, intubate early</strong> &mdash; ideally in a controlled setting rather than as an emergency later. Call anesthesia and/or ENT for difficult airway backup.</p>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-hypothermia">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Warm Water, Not Ice &mdash; and Cover Up</div>
+                    <div class="florencebot-tip-content">
+                        A common mistake is applying <strong>ice or very cold water</strong> to a burn &mdash; this actually worsens injury by causing vasoconstriction and additional tissue loss. Use <strong>cool running tap water</strong> (not cold) for about 15&ndash;20 min. And once assessment is done, <strong>cover the child with warm dry sheets and blankets</strong>. Kids lose heat fast through burn wounds; hypothermia can kill them faster than the burn itself.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Stop burning (cool water, NOT ice). ABCDE. Intubate early for inhalation. 2 IVs. Keep warm. Foley for UOP.</div>
+            </section>
+
+            <!-- Section 6: Parkland / Fluids -->
+            <section class="guide-section" id="fluids">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <div class="section-title-group">
+                        <h2>Parkland Formula &amp; Fluid Resuscitation</h2>
+                        <div class="subtitle">The math that saves the patient</div>
+                    </div>
+                </div>
+
+                <p>Burns cause massive fluid shifts due to vascular permeability. Without aggressive resuscitation in the first 24 hours, the child develops hypovolemic shock. The <strong>Parkland formula</strong> provides a starting estimate, titrated to urine output.</p>
+
+                <div class="formula-box">
+                    <div class="formula-label">Parkland Formula</div>
+                    <div class="formula"><strong>4 mL &times; kg &times; %TBSA</strong></div>
+                    <div class="formula-explanation">Total Lactated Ringer's over 24 hours. <strong>Half in the first 8 hours</strong> from the time of burn. <strong>Half over the next 16 hours.</strong></div>
+                </div>
+
+                <h3>Pediatric Modifications</h3>
+
+                <ul>
+                    <li><strong>Add maintenance fluids</strong> in children &mdash; they have higher baseline fluid requirements relative to weight. Use the <strong>Holliday-Segar formula</strong>:
+                        <ul>
+                            <li>100 mL/kg for first 10 kg</li>
+                            <li>50 mL/kg for next 10 kg (11&ndash;20 kg)</li>
+                            <li>20 mL/kg for each kg above 20</li>
+                        </ul>
+                    </li>
+                    <li>For children &lt;30 kg: maintenance may include <strong>D5 LR</strong> or add dextrose to prevent hypoglycemia.</li>
+                    <li>Use <strong>Lactated Ringer's</strong> (LR) preferentially over Normal Saline for large-volume resuscitation &mdash; NS can cause hyperchloremic acidosis.</li>
+                </ul>
+
+                <h3>Example Calculation</h3>
+
+                <p>A 20 kg child with a 30% TBSA partial-thickness burn:</p>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-calculator"></i>
+                        <p><strong>Parkland:</strong> 4 &times; 20 &times; 30 = <strong>2,400 mL</strong> LR over 24 hours</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-calculator"></i>
+                        <p><strong>First 8 hours (from time of burn):</strong> 1,200 mL = 150 mL/hr</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-calculator"></i>
+                        <p><strong>Next 16 hours:</strong> 1,200 mL = 75 mL/hr</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-calculator"></i>
+                        <p><strong>Plus maintenance:</strong> 100 &times; 10 + 50 &times; 10 = 1,500 mL/day = <strong>62.5 mL/hr</strong> added</p>
+                    </div>
+                </div>
+
+                <h3>Titrating to Urine Output</h3>
+
+                <p>The Parkland formula is a <strong>starting point</strong>, not a fixed prescription. Urine output is the gold-standard endpoint for fluid resuscitation.</p>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Age Group</th>
+                                <th>Target Urine Output</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Infants / young children (&lt;30 kg)</strong></td><td><strong>1&ndash;2 mL/kg/hr</strong></td></tr>
+                            <tr><td>Older children (&ge;30 kg) / adults</td><td>0.5&ndash;1 mL/kg/hr</td></tr>
+                            <tr><td>Electrical burns (any age)</td><td>1&ndash;2 mL/kg/hr (myoglobin flush)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <ul>
+                    <li>If UOP is <strong>below target</strong>, increase fluid rate.</li>
+                    <li>If UOP is <strong>above target</strong> (over-resuscitation), decrease rate &mdash; excess fluid worsens edema and pulmonary complications.</li>
+                    <li>Continuously monitor: vitals, mental status, lactate, hemoglobin, electrolytes.</li>
+                </ul>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon"><i class="fas fa-clock"></i></div>
+                    <div class="info-box-content">
+                        <h5>"First 8 Hours" = From the Time of Burn</h5>
+                        <p>The clock starts when the burn occurred, NOT when the child arrived at the ED. If a 20-kg child with a 30% burn arrives 3 hours post-burn, they already "owe" the fluid for those 3 hours (approximately 450 mL). Catch them up &mdash; they need 1,200 mL minus what's already been given, administered over the remaining 5 hours of the first window.</p>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-urine-output">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Urine Output &gt; Formulas</div>
+                    <div class="florencebot-tip-content">
+                        The Parkland formula is a <strong>starting estimate</strong>. What actually matters: <strong>the child is making 1&ndash;2 mL/kg/hr of urine</strong>. Under that, you're under-resuscitating &mdash; increase fluid. Far over, you're over-resuscitating &mdash; decrease fluid, protect the lungs from pulmonary edema. Check UOP hourly in the first 24 hours. Titrate, titrate, titrate.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Parkland = 4 &times; kg &times; %TBSA. LR. Half in first 8 hr (from burn time). Add maintenance. Titrate to UOP 1&ndash;2 mL/kg/hr.</div>
+            </section>
+
+            <!-- Section 7: Ongoing Care -->
+            <section class="guide-section" id="ongoing">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <div class="section-title-group">
+                        <h2>Ongoing Care: Wound, Pain, Nutrition, Infection</h2>
+                        <div class="subtitle">The priorities after the first 24 hours</div>
+                    </div>
+                </div>
+
+                <h3>Wound Care</h3>
+
+                <ul>
+                    <li><strong>Cleanse gently</strong> with sterile saline or mild antiseptic; debride loose tissue and ruptured blisters.</li>
+                    <li><strong>Topical antimicrobials</strong> &mdash; see med cards below.</li>
+                    <li><strong>Non-adherent dressings</strong> with outer wrap; change 1&ndash;2 times daily.</li>
+                    <li><strong>Hydrotherapy</strong> daily in burn units for cleaning and range of motion.</li>
+                    <li>For <strong>circumferential burns</strong> (especially torso, limbs): monitor for compartment syndrome; <strong>escharotomy</strong> may be needed to relieve pressure.</li>
+                    <li><strong>Surgical excision and grafting</strong> for deep partial and full-thickness burns &mdash; early excision reduces infection and improves outcome.</li>
+                </ul>
+
+                <h3>Wound-Care Medications</h3>
+
+                <div class="med-grid">
+                    <div class="med-card">
+                        <h5>Silver Sulfadiazine (Silvadene)</h5>
+                        <div class="med-class">Topical Antimicrobial</div>
+                        <p>Broad-spectrum coverage; apply 1&ndash;2 mm thick 1&ndash;2&times;/day.</p>
+                        <p><strong>Avoid in:</strong> infants &lt;2 months, G6PD deficiency, sulfa allergy, face (discoloration concern).</p>
+                        <p>Can cause transient leukopenia.</p>
+                    </div>
+
+                    <div class="med-card">
+                        <h5>Bacitracin / Mupirocin</h5>
+                        <div class="med-class">Topical Antibiotic</div>
+                        <p>For face and smaller burns; less cosmetic concern than silver sulfadiazine.</p>
+                        <p>Use in infants where silver sulfadiazine contraindicated.</p>
+                    </div>
+
+                    <div class="med-card">
+                        <h5>Silver-Impregnated Dressings</h5>
+                        <div class="med-class">Modern Dressings</div>
+                        <p>Acticoat, Aquacel Ag &mdash; slow-release silver for antimicrobial coverage.</p>
+                        <p>Less frequent dressing changes; less pain.</p>
+                    </div>
+
+                    <div class="med-card">
+                        <h5>Mafenide (Sulfamylon)</h5>
+                        <div class="med-class">Deep / Eschar Penetration</div>
+                        <p>Penetrates eschar &mdash; for deep burns, cartilage (ears).</p>
+                        <p>Painful on application; can cause metabolic acidosis (carbonic anhydrase inhibition).</p>
+                    </div>
+                </div>
+
+                <h3>Pain Management</h3>
+
+                <ul>
+                    <li><strong>IV opioids</strong> (morphine, fentanyl, hydromorphone) in acute phase; scheduled + PRN.</li>
+                    <li>Procedural sedation (ketamine) for dressing changes.</li>
+                    <li>Transition to oral opioids, then <strong>non-opioid analgesics</strong> (acetaminophen, ibuprofen if safe) as pain improves.</li>
+                    <li><strong>Non-pharmacologic:</strong> distraction, music, child life services, virtual reality (innovative and effective).</li>
+                    <li>Treat anxiety separately &mdash; benzodiazepines (lorazepam) for procedural anxiety.</li>
+                </ul>
+
+                <h3>Nutrition</h3>
+
+                <ul>
+                    <li>Burns cause a <strong>hypermetabolic state</strong> &mdash; caloric needs may be 1.5&ndash;2&times; baseline for weeks.</li>
+                    <li><strong>Early enteral feeding</strong> (within 24&ndash;48 hours if possible) preserves gut function, reduces bacterial translocation, and supports immune function.</li>
+                    <li><strong>High-protein diet</strong> for wound healing; supplementation common.</li>
+                    <li>Monitor nitrogen balance, prealbumin, daily weights.</li>
+                    <li>TPN if enteral not tolerated.</li>
+                </ul>
+
+                <h3>Infection Surveillance</h3>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-bacterium"></i></div>
+                    <div class="info-box-content">
+                        <h5>Infection Is the Leading Cause of Mortality After 48 Hours</h5>
+                        <p>Burn wounds lose their skin barrier and are hypermetabolic &mdash; a perfect storm for infection. Watch for: <strong>fever &gt;38.5&deg;C, tachycardia disproportionate to vitals, wound changes (green/purple discoloration, increased drainage, foul odor), hypothermia in severe sepsis, changes in mental status, rising lactate</strong>. <strong>Surveillance cultures</strong> are routine in burn centers. Common organisms: Staph (including MRSA), Pseudomonas, Klebsiella.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Clean, apply topical antimicrobial, dress. Early excision/grafting for deep. IV opioids + distraction. Feed early, high protein. Watch for infection.</div>
+            </section>
+
+            <!-- Section 8: Rehabilitation -->
+            <section class="guide-section" id="rehab">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <div class="section-title-group">
+                        <h2>Rehabilitation &amp; Long-Term Care</h2>
+                        <div class="subtitle">Burns heal &mdash; but recovery is years, not weeks</div>
+                    </div>
+                </div>
+
+                <p>A child with a major burn enters a recovery that spans surgeries, rehabilitation, scar management, and psychological support over years. The goal is not just survival but restored function, appearance, and emotional health.</p>
+
+                <h3>Physical &amp; Occupational Therapy</h3>
+
+                <ul>
+                    <li>Begins <strong>early</strong> &mdash; often before the child is stable enough for active PT; passive ROM.</li>
+                    <li>Prevent <strong>contractures</strong> (a joint stuck in the wrong position from scarring) &mdash; particularly neck, axilla, elbow, hand, hip, knee.</li>
+                    <li>Splinting the affected areas in functional position.</li>
+                    <li>Graduated ADL training &mdash; eating, dressing, self-care.</li>
+                </ul>
+
+                <h3>Scar Management</h3>
+
+                <ul>
+                    <li><strong>Pressure garments</strong> worn 23 hours/day for 12&ndash;24 months to prevent hypertrophic scarring.</li>
+                    <li>Massage, silicone sheets, moisturizers.</li>
+                    <li>Protect scars from sun (hyperpigmentation risk) &mdash; SPF 30+, hats, long sleeves for a year or more.</li>
+                    <li>Multiple reconstructive surgeries may be needed over childhood, especially as the child grows.</li>
+                </ul>
+
+                <h3>Psychological Care</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>PTSD, anxiety, depression</strong> are common; start support early.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Body image</strong> concerns intensify at school age and adolescence.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Peer interactions</strong> &mdash; teasing, staring, exclusion can affect development.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Burn camps</strong> (for kids) provide community and normalize the experience.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Child life specialists, social workers, psychologists</strong> are essential team members.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Family support</strong> &mdash; parents also experience trauma, guilt, financial stress.</p>
+                    </div>
+                </div>
+
+                <div class="info-box safe">
+                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
+                    <div class="info-box-content">
+                        <h5>The Child Is More Than the Burn</h5>
+                        <p>Burn children can and do live full lives &mdash; go to school, play sports, build friendships, grow into resilient adults. The medical journey is long but outcomes are often excellent with good team-based care. Your role as the nurse: medical excellence on the floor PLUS emotional presence and advocacy. Often you spend more time with the family than any other clinician, and your reassurance carries tremendous weight.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Rehab = years. Prevent contractures with PT/OT. Pressure garments for scars. Sun protection. Emotional support and burn camps. Family needs care too.</div>
+            </section>
+
+            <!-- Section 9: Family Education -->
+            <section class="guide-section" id="family">
+                <div class="section-header">
+                    <div class="section-number">9</div>
+                    <div class="section-title-group">
+                        <h2>Family Education &amp; Prevention</h2>
+                        <div class="subtitle">Prevention + home care + when to return</div>
+                    </div>
+                </div>
+
+                <h3>Home Fire &amp; Burn Prevention</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Water heater &lt;120&deg;F (49&deg;C)</strong> &mdash; prevents scalding.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Test bath water</strong> with a thermometer or back of the wrist before child gets in.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Turn pot handles inward</strong> on the stove; use back burners when possible.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Working smoke detectors</strong> on every floor; test monthly, change batteries yearly.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Family escape plan</strong> &mdash; two ways out of every room; designated meeting place.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Outlet covers</strong>; secure cords; keep lighters/matches locked away.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Sunscreen SPF 30+</strong>, hats, and sun-protective clothing.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Chemical safety</strong> &mdash; lock up cleaners; avoid transferring to unlabeled bottles.</p>
+                    </div>
+                </div>
+
+                <h3>Home Wound Care (Minor Burns)</h3>
+
+                <ol class="step-list">
+                    <li>Keep the wound clean &mdash; daily gentle wash with mild soap and water.</li>
+                    <li>Apply the prescribed topical antibiotic or cream.</li>
+                    <li>Cover with non-adherent dressing; change per instructions.</li>
+                    <li>Keep the child hydrated; small frequent meals with protein.</li>
+                    <li>Give scheduled pain medication; don't wait for severe pain.</li>
+                    <li>Avoid sun exposure on healing skin for at least 1 year.</li>
+                </ol>
+
+                <h3>When to Return to the ED</h3>
+
+                <div class="redflag-grid">
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Fever &gt;38.5&deg;C</strong> or worsening appearance of the wound.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Increased pain, redness, warmth, foul odor, or drainage.</strong></p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Decreased urine output</strong> or signs of dehydration.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Trouble breathing, lethargy, confusion.</strong></p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Cold, pale, or blue extremity</strong> beyond a circumferential burn.</p>
+                    </div>
+                    <div class="redflag-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Separation or loss of graft</strong>; new bleeding.</p>
+                    </div>
+                </div>
+
+                <h3>Psychological Support</h3>
+
+                <ul>
+                    <li>Validate the family's emotions &mdash; fear, guilt, grief.</li>
+                    <li>Connect with hospital social work, child life, counseling resources.</li>
+                    <li>Refer to support organizations (Phoenix Society for Burn Survivors, local burn camps).</li>
+                    <li>Include siblings in age-appropriate conversations and planning.</li>
+                    <li>School re-entry planning &mdash; many hospitals offer re-entry programs.</li>
+                </ul>
+
+                <div class="bottom-line">🎯 Bottom Line: Prevent with water temp, smoke detectors, outlet covers, sunscreen. Teach home wound care and red flags. Connect with burn camps and support.</div>
+            </section>
+
+            <!-- Quiz CTA -->
+            <div class="quiz-cta">
+                <h3>Test your knowledge</h3>
+                <p>18 NCLEX-style questions covering every section of this guide.</p>
+                <a href="quiz/quiz.html?topic=pediatric-burns" class="quiz-btn">
+                    <i class="fas fa-flask"></i> Start Quiz
+                </a>
+            </div>
+
+            <!-- Cross References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
+                <div class="cross-ref-grid">
+                    <a href="pediatric-skin-infections.html" class="cross-ref-link">
+                        <i class="fas fa-viruses"></i> Pediatric Skin Infections
+                    </a>
+                    <a href="hypersensitivity-inflammatory-skin.html" class="cross-ref-link">
+                        <i class="fas fa-hand-dots"></i> Hypersensitivity Skin
+                    </a>
+                    <a href="pediatric-fractures-immobility.html" class="cross-ref-link">
+                        <i class="fas fa-bone"></i> Pediatric Fractures
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- end document-content -->
+
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div><!-- end document-container -->
+
+    <script src="configs/pediatric-burns-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="../content-gate.js"></script>
+    <script src="../cookie-consent.js"></script>
+</body>
+</html>

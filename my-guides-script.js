@@ -237,11 +237,10 @@
                     colorClass: 'icon-pediatrics',
                     guides: [
                         { name: 'Pediatric Skin Infections', file: 'pediatric-skin-infections' },
-                        { name: 'Hypersensitivity & Inflammatory Skin', file: 'hypersensitivity-inflammatory-skin' }
+                        { name: 'Hypersensitivity & Inflammatory Skin', file: 'hypersensitivity-inflammatory-skin' },
+                        { name: 'Pediatric Burns', file: 'pediatric-burns' }
                     ],
-                    comingSoon: [
-                        { name: 'Pediatric Burns' }
-                    ]
+                    comingSoon: []
                 },
                 {
                     category: 'Pediatric Hematology & Oncology',

@@ -138,6 +138,55 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'pediatric-burns': {
+        title: 'Pediatric Burns',
+        storeUrl: 'pricing.html#pediatric-burns',
+        content: `
+# Pediatric Burns Study Guide
+
+## Overview
+Burn depth, BSA estimation, Parkland fluid resuscitation, emergency ABCDE, wound care, and rehabilitation.
+
+## What You'll Learn
+
+### Burn Depth
+- **Superficial (1st)** — red, painful, no blisters
+- **Superficial partial (2nd)** — blistered, very painful
+- **Deep partial (2nd deep)** — pale, less painful
+- **Full-thickness (3rd)** — leathery, **PAINLESS**, needs grafting
+- **4th degree** — into muscle/bone
+
+### BSA Estimation
+- **Pediatric Rule of Nines**: head 18%, legs 14% (not adult 9/18)
+- **Lund-Browder** chart most accurate
+- **Palm method**: 1 palm = 1% BSA
+
+### Parkland Formula
+- **4 mL × kg × %TBSA** of Lactated Ringer's
+- Half in first 8 hours (from time of burn, not ED)
+- Half over next 16 hours
+- **Titrate to UOP**: 1-2 mL/kg/hr in young children
+
+### Emergency Management
+- ABCDE first; stop burning with COOL water (not ice)
+- Intubate early for inhalation injury signs
+- 2 large-bore IVs
+- Keep child warm
+
+### Red Flags
+- Facial burns, singed nose hair, hoarseness = airway risk
+- Sharp demarcation / stocking-glove pattern = possible abuse
+- Infection is #1 cause of death after 48 hours
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth clinical breakdown*
+- *NCLEX-style practice questions*
+- *Parkland formula examples*
+- *Clinical pearls and memory aids*
+        `
+    },
     'hypersensitivity-inflammatory-skin': {
         title: 'Hypersensitivity & Inflammatory Skin',
         storeUrl: 'pricing.html#hypersensitivity-inflammatory-skin',

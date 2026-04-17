@@ -209,10 +209,10 @@
                     icon: 'fa-droplet',
                     colorClass: 'icon-pediatrics',
                     guides: [
-                        { name: 'Pediatric Renal Disorders', file: 'pediatric-renal-disorders' }
+                        { name: 'Pediatric Renal Disorders', file: 'pediatric-renal-disorders' },
+                        { name: 'UTI, VUR & Enuresis', file: 'uti-vur-enuresis' }
                     ],
                     comingSoon: [
-                        { name: 'UTI, VUR & Enuresis' },
                         { name: 'Male GU Disorders' }
                     ]
                 },

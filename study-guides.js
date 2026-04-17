@@ -138,6 +138,48 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'uti-vur-enuresis': {
+        title: 'UTI, VUR & Enuresis',
+        storeUrl: 'pricing.html#uti-vur-enuresis',
+        content: `
+# UTI, VUR & Enuresis Study Guide
+
+## Overview
+Three of the most common pediatric GU presentations — from the infant with unexplained fever to the bedwetting school-ager.
+
+## What You'll Learn
+
+### Pediatric UTI
+- **E. coli causes ~80%**
+- **Infants present with fever only** — always UA + culture for unexplained febrile infant
+- First year of life: boys at higher risk. After 1: girls dominate
+- **Never use bag specimen for culture** — catheterize or clean catch
+- Pyelonephritis = fever + flank pain + systemic illness
+- Treatment: age-appropriate antibiotics; IV for infants and pyelonephritis
+
+### Vesicoureteral Reflux (VUR)
+- Abnormal retrograde flow of urine from bladder to ureters/kidneys
+- Leads to pyelonephritis → renal scarring → CKD
+- **VCUG is gold standard** for diagnosis and grading (I-V)
+- Grades I-III often resolve spontaneously
+- Grades IV-V usually need surgery (ureteral reimplantation, Deflux)
+
+### Enuresis
+- Involuntary voiding after age 5
+- **Primary** = never dry; **Secondary** = dry ≥6 months then relapsed
+- Secondary enuresis = ALWAYS workup (UTI, diabetes, constipation, stress)
+- **Bedwetting alarm** = first-line behavioral, best long-term
+- **Desmopressin (DDAVP)** = short-term (sleepovers); limit fluids 1 hr before, 8 hr after
+- **Never shame or punish** — delays resolution
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Disorder-by-disorder breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'pediatric-renal-disorders': {
         title: 'Pediatric Renal Disorders',
         storeUrl: 'pricing.html#pediatric-renal-disorders',

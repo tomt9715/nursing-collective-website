@@ -138,6 +138,53 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'cleft-lip-palate': {
+        title: 'Cleft Lip & Palate',
+        storeUrl: 'pricing.html#cleft-lip-palate',
+        content: `
+# Cleft Lip & Palate Study Guide
+
+## Overview
+Congenital craniofacial differences that turn feeding into the first nursing priority. Surgical staging, post-op positioning, and the long multi-disciplinary journey.
+
+## What You'll Learn
+
+### Overview
+- Cleft lip forms 5-6 weeks gestation; cleft palate 7-12 weeks
+- ~1 in 600-700 births
+- CL more common in boys; isolated CP more common in girls
+- Multifactorial: genetics + environment
+
+### Feeding (the nursing priority)
+- CP cannot create suction — needs specialty bottles (Haberman, Pigeon, Mead Johnson)
+- **Upright 45-60 degrees**, small frequent feeds, burp often
+- **ESSR technique:** Enlarge, Stimulate, Swallow, Rest
+
+### Surgery
+- **Cleft lip:** Rule of 10s (10 weeks, 10 lb, Hgb 10) → cheiloplasty at 2-3 months
+- **Cleft palate:** 9-18 months, before speech development → palatoplasty
+- Alveolar bone graft around age 7-10
+
+### Post-Op Positioning (NCLEX classic)
+- **Cleft lip:** SUPINE or side-lying (never prone)
+- **Cleft palate:** PRONE or side-lying (airway drainage)
+- Elbow restraints (no-no's) both procedures
+- No hard objects in the mouth after palate repair
+
+### Long-Term
+- Chronic otitis media → tympanostomy tubes
+- Speech therapy
+- Dental/orthodontic care
+- Multi-disciplinary cleft team
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth clinical breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'pediatric-gi-obstructions': {
         title: 'Pediatric GI Obstructions',
         storeUrl: 'pricing.html#pediatric-gi-obstructions',

@@ -895,7 +895,8 @@ function populateGuidesFlyout() {
         'pediatric-congenital-heart-defects': 'Pediatric Nursing',
         'kawasaki-disease': 'Pediatric Nursing',
         'rheumatic-fever-endocarditis': 'Pediatric Nursing',
-        'pediatric-gi-obstructions': 'Pediatric Nursing'
+        'pediatric-gi-obstructions': 'Pediatric Nursing',
+        'cleft-lip-palate': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

@@ -384,11 +384,18 @@ img { max-width: 100%; display: block; }
   width: 48px;
   height: 48px;
   border-radius: 12px;
+  background: rgba(15, 188, 173, 0.08);
+  border: 0.5px solid var(--border-mid);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   overflow: hidden;
+}
+
+.class-card-icon i {
+  font-size: 22px;
+  color: var(--teal);
 }
 
 .class-card-img {
@@ -549,6 +556,8 @@ img { max-width: 100%; display: block; }
   width: 44px;
   height: 44px;
   border-radius: 12px;
+  background: rgba(15, 188, 173, 0.08);
+  border: 0.5px solid var(--border-mid);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -560,6 +569,11 @@ img { max-width: 100%; display: block; }
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+.class-detail-icon i {
+  font-size: 20px;
+  color: var(--teal);
 }
 
 .class-detail-title {

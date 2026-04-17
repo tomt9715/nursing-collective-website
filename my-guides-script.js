@@ -13,6 +13,7 @@
             id: 'fundamentals',
             name: 'Fundamentals of Nursing',
             classIcon: 'fundamentals-of-nursing-class-icon',
+            classFaIcon: 'fa-user-nurse',
             description: 'Core nursing skills, assessment techniques, and clinical foundations.',
             gradient: 'linear-gradient(135deg, #6366f1, #4f46e5)',
             topics: [
@@ -38,6 +39,7 @@
             id: 'med-surg',
             name: 'Medical-Surgical Nursing',
             classIcon: 'medical-surgical-nursing-class-icon',
+            classFaIcon: 'fa-stethoscope',
             description: 'Cardiovascular, respiratory, neurological, GI, endocrine, and musculoskeletal conditions.',
             gradient: 'linear-gradient(135deg, #2E86AB, #1e6b8a)',
             topics: [
@@ -149,6 +151,7 @@
             id: 'maternal-newborn',
             name: 'Maternal-Newborn Nursing',
             classIcon: 'maternal-newborn-nursing-class-icon',
+            classFaIcon: 'fa-baby-carriage',
             description: 'Antepartum, labor & delivery, postpartum, newborn care, high-risk pregnancy, and women\'s health.',
             gradient: 'linear-gradient(135deg, #ec4899, #db2777)',
             topics: [
@@ -176,6 +179,7 @@
             id: 'pediatrics',
             name: 'Pediatric Nursing',
             classIcon: 'pediatric-nursing-class-icon',
+            classFaIcon: 'fa-child',
             description: 'Congenital conditions, pediatric emergencies, and age-specific care across body systems.',
             gradient: 'linear-gradient(135deg, #e05252, #b91c3c)',
             topics: [
@@ -282,6 +286,7 @@
             id: 'mental-health',
             name: 'Mental Health Nursing',
             classIcon: 'mental-health-nursing-class-icon',
+            classFaIcon: 'fa-brain',
             description: 'Therapeutic communication, crisis intervention, and psychiatric disorders.',
             gradient: 'linear-gradient(135deg, #a78bfa, #8b5cf6)',
             topics: [
@@ -305,6 +310,7 @@
             id: 'pharmacology',
             name: 'Pharmacology',
             classIcon: 'pharmacology-class-icon',
+            classFaIcon: 'fa-pills',
             description: 'Drug classes, medication administration, and pharmacological principles.',
             gradient: 'linear-gradient(135deg, #14b8a6, #0d9488)',
             topics: [
@@ -365,7 +371,7 @@
             html += '<div class="class-card' + (isLocked ? ' class-card-locked' : '') + '"' +
                      (_hasAccess ? ' data-class-id="' + cls.id + '" role="button" tabindex="0"' : '') + '>';
             html += '<div class="class-card-icon">';
-            html += '<img src="' + CATEGORY_ICON_BASE + cls.classIcon + '.webp" alt="" class="class-card-img" loading="lazy">';
+            html += '<i class="fas ' + (cls.classFaIcon || 'fa-book') + '"></i>';
             html += '</div>';
             html += '<div class="class-card-body">';
             html += '<h2 class="class-card-title">' + cls.name + '</h2>';
@@ -428,7 +434,7 @@
         // Class header
         html += '<div class="class-detail-header">';
         html += '<div class="class-detail-icon">';
-        html += '<img src="' + CATEGORY_ICON_BASE + cls.classIcon + '.webp" alt="" class="class-detail-img" loading="lazy">';
+        html += '<i class="fas ' + (cls.classFaIcon || 'fa-book') + '"></i>';
         html += '</div>';
         html += '<div>';
         html += '<h1 class="class-detail-title">' + cls.name + '</h1>';

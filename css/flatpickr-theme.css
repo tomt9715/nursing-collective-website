@@ -1,0 +1,197 @@
+/* ══════════════════════════════════════════════════════════════
+   flatpickr-theme.css — TNC Design System override for flatpickr
+   Loaded AFTER flatpickr's base stylesheet.
+   ══════════════════════════════════════════════════════════════ */
+
+/* ── Popup container ─────────────────────────────────────────── */
+.flatpickr-calendar {
+  background: #162032;
+  border: 0.5px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  font-family: 'Outfit', sans-serif;
+  color: #e8edf2;
+  padding: 6px;
+}
+
+.flatpickr-calendar::before,
+.flatpickr-calendar::after { display: none !important; }
+
+/* ── Months header ──────────────────────────────────────────── */
+.flatpickr-months {
+  padding: 6px 6px 10px;
+  align-items: center;
+}
+
+.flatpickr-months .flatpickr-month {
+  background: transparent;
+  color: #e8edf2;
+  height: 36px;
+  line-height: 36px;
+  overflow: visible;
+}
+
+.flatpickr-current-month {
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px !important;
+  font-weight: 400 !important;
+  color: #e8edf2;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 36px;
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months,
+.flatpickr-current-month input.cur-year {
+  background: transparent;
+  color: #e8edf2;
+  font-family: 'DM Serif Display', serif;
+  font-weight: 400;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.flatpickr-current-month .flatpickr-monthDropdown-months:hover,
+.flatpickr-current-month input.cur-year:hover {
+  background: rgba(255,255,255,0.06);
+}
+
+.flatpickr-current-month .flatpickr-monthDropdown-months option {
+  background: #162032;
+  color: #e8edf2;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+}
+
+.flatpickr-current-month .numInputWrapper { width: auto; }
+.flatpickr-current-month .numInputWrapper span {
+  border-color: rgba(255,255,255,0.12);
+}
+.flatpickr-current-month .numInputWrapper span.arrowUp::after { border-bottom-color: #e8edf2; }
+.flatpickr-current-month .numInputWrapper span.arrowDown::after { border-top-color: #e8edf2; }
+.flatpickr-current-month .numInputWrapper:hover { background: rgba(255,255,255,0.04); }
+
+/* Prev / next month arrows */
+.flatpickr-prev-month,
+.flatpickr-next-month {
+  color: #8a9bb0 !important;
+  fill: #8a9bb0 !important;
+  padding: 8px !important;
+  border-radius: 6px;
+  transition: all 0.15s ease;
+}
+.flatpickr-prev-month:hover,
+.flatpickr-next-month:hover {
+  color: #0fbcad !important;
+  fill: #0fbcad !important;
+  background: rgba(15,188,173,0.08);
+}
+.flatpickr-prev-month svg,
+.flatpickr-next-month svg {
+  width: 12px;
+  height: 12px;
+}
+.flatpickr-prev-month svg path,
+.flatpickr-next-month svg path { fill: inherit; }
+
+/* ── Weekday row ─────────────────────────────────────────────── */
+.flatpickr-weekdays {
+  background: transparent;
+  height: 30px;
+}
+
+span.flatpickr-weekday {
+  background: transparent;
+  color: #5f7085;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ── Day cells ───────────────────────────────────────────────── */
+.dayContainer { padding: 2px 0; }
+
+.flatpickr-day {
+  color: #e8edf2;
+  border: 0.5px solid transparent;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  max-width: 40px;
+  height: 36px;
+  line-height: 36px;
+  margin: 1px;
+  transition: all 0.15s ease;
+}
+
+.flatpickr-day:hover,
+.flatpickr-day:focus {
+  background: rgba(15,188,173,0.1);
+  border-color: rgba(15,188,173,0.3);
+  color: #e8edf2;
+}
+
+.flatpickr-day.today {
+  border-color: rgba(15,188,173,0.5);
+  color: #0fbcad;
+  font-weight: 600;
+}
+.flatpickr-day.today:hover,
+.flatpickr-day.today:focus {
+  background: rgba(15,188,173,0.15);
+  border-color: #0fbcad;
+  color: #0fbcad;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.selected:hover,
+.flatpickr-day.selected:focus,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+  background: #0fbcad;
+  border-color: #0fbcad;
+  color: #0d1b2a;
+  font-weight: 600;
+}
+
+.flatpickr-day.prevMonthDay,
+.flatpickr-day.nextMonthDay {
+  color: #5f7085;
+}
+.flatpickr-day.prevMonthDay:hover,
+.flatpickr-day.nextMonthDay:hover {
+  color: #8a9bb0;
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover {
+  color: #3a4656;
+  background: transparent;
+  border-color: transparent;
+  cursor: not-allowed;
+}
+
+/* ── Hide the week number column if present ─────────────────── */
+.flatpickr-weeks { background: transparent; }
+.flatpickr-weeks .flatpickr-day { color: #5f7085; }
+
+/* ── The themed altInput (visible text field) ───────────────── */
+input.flatpickr-alt {
+  cursor: pointer;
+}
+input.flatpickr-alt[readonly] {
+  /* keep full .em-input styling (navy background, teal focus) */
+  background-clip: padding-box;
+}
+
+/* The original hidden input should stay hidden */
+input.flatpickr-input[type="hidden"] { display: none; }

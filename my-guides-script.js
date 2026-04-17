@@ -236,10 +236,10 @@
                     icon: 'fa-hand-dots',
                     colorClass: 'icon-pediatrics',
                     guides: [
-                        { name: 'Pediatric Skin Infections', file: 'pediatric-skin-infections' }
+                        { name: 'Pediatric Skin Infections', file: 'pediatric-skin-infections' },
+                        { name: 'Hypersensitivity & Inflammatory Skin', file: 'hypersensitivity-inflammatory-skin' }
                     ],
                     comingSoon: [
-                        { name: 'Hypersensitivity & Inflammatory Skin' },
                         { name: 'Pediatric Burns' }
                     ]
                 },

@@ -138,6 +138,49 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'hypersensitivity-inflammatory-skin': {
+        title: 'Hypersensitivity & Inflammatory Skin',
+        storeUrl: 'pricing.html#hypersensitivity-inflammatory-skin',
+        content: `
+# Hypersensitivity & Inflammatory Skin Study Guide
+
+## Overview
+Atopic dermatitis, contact dermatitis, diaper dermatitis, urticaria, and the Stevens-Johnson spectrum.
+
+## What You'll Learn
+
+### Atopic Dermatitis (Eczema)
+- Part of atopic triad (eczema + asthma + allergic rhinitis)
+- Infants: cheeks/extensor; older kids: flexural
+- **"Soak and seal"**: short bath + moisturize within 3 minutes
+- Topical steroids for flares; calcineurin inhibitors for steroid-sparing
+- Watch for: Staph impetigo, eczema herpeticum
+
+### Contact & Diaper Dermatitis
+- **Contact** — Type IV reaction (poison ivy, nickel, latex); linear streaks; topical steroids
+- **Irritant diaper rash** — spares skin folds; barrier cream + air time
+- **Candida diaper rash** — involves folds + satellite lesions; nystatin
+
+### Urticaria & Anaphylaxis
+- Hives (wheals) — migratory, appear/disappear <24hr
+- H1 antihistamines first-line
+- **Anaphylaxis = IM epinephrine IMMEDIATELY** (not antihistamines)
+- Observe 4-6 hours for biphasic reaction
+
+### SJS / TEN
+- Severe medication-induced reaction
+- **Positive Nikolsky sign** + painful mucosal erosions
+- Common triggers: anticonvulsants, sulfonamides, allopurinol, NSAIDs
+- **Stop the drug immediately + ICU/burn unit care**
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Condition-by-condition breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'pediatric-skin-infections': {
         title: 'Pediatric Skin Infections',
         storeUrl: 'pricing.html#pediatric-skin-infections',

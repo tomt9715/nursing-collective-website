@@ -903,7 +903,8 @@ function populateGuidesFlyout() {
         'male-gu-disorders': 'Pediatric Nursing',
         'neural-tube-defects': 'Pediatric Nursing',
         'pediatric-fractures-immobility': 'Pediatric Nursing',
-        'pediatric-skin-infections': 'Pediatric Nursing'
+        'pediatric-skin-infections': 'Pediatric Nursing',
+        'hypersensitivity-inflammatory-skin': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

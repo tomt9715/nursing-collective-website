@@ -196,9 +196,10 @@
                     categoryIcon: 'gastrointestinal-icon',
                     icon: 'fa-stomach',
                     colorClass: 'icon-pediatrics',
-                    guides: [],
+                    guides: [
+                        { name: 'Pediatric GI Obstructions', file: 'pediatric-gi-obstructions' }
+                    ],
                     comingSoon: [
-                        { name: 'Pediatric GI Obstructions' },
                         { name: 'Cleft Lip & Palate' },
                         { name: 'Pediatric GERD' }
                     ]

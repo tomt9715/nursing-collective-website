@@ -894,7 +894,8 @@ function populateGuidesFlyout() {
         'assessment-skills': 'Fundamentals', 'infection-control': 'Fundamentals', 'documentation-charting': 'Fundamentals', 'patient-safety': 'Fundamentals', 'mobility-transfers': 'Fundamentals',
         'pediatric-congenital-heart-defects': 'Pediatric Nursing',
         'kawasaki-disease': 'Pediatric Nursing',
-        'rheumatic-fever-endocarditis': 'Pediatric Nursing'
+        'rheumatic-fever-endocarditis': 'Pediatric Nursing',
+        'pediatric-gi-obstructions': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

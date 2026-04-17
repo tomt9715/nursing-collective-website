@@ -138,6 +138,51 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'pediatric-gi-obstructions': {
+        title: 'Pediatric GI Obstructions',
+        storeUrl: 'pricing.html#pediatric-gi-obstructions',
+        content: `
+# Pediatric GI Obstructions Study Guide
+
+## Overview
+Four pediatric GI emergencies that all present with vomiting and abdominal pain. Telling them apart is the learning point.
+
+## What You'll Learn
+
+### Pyloric Stenosis (2–8 weeks, first-born boys)
+- **Projectile non-bilious vomiting**, hungry after
+- Olive-shaped RUQ mass, visible peristaltic waves
+- **Hypochloremic, hypokalemic metabolic alkalosis**
+- Treatment: fluid/electrolyte correction FIRST, then pyloromyotomy
+
+### Intussusception (3 months–3 years, peak 5–9 months)
+- **Sudden severe intermittent pain** (knees to chest)
+- **Currant jelly stool** (late sign — ischemia)
+- Sausage-shaped RUQ mass
+- Treatment: air or hydrostatic contrast enema (diagnostic AND therapeutic)
+
+### Hirschsprung's Disease
+- Absent ganglion cells in distal colon — functional obstruction
+- **Failure to pass meconium within 48 hours** (newborn red flag)
+- Chronic constipation + ribbon-like stools (older child)
+- Rectal biopsy = gold standard
+- **Enterocolitis** = deadly complication (fever + explosive diarrhea + shock)
+
+### Appendicitis (school-age to adolescent)
+- **Periumbilical pain migrating to RLQ** (McBurney's point)
+- Rebound tenderness, anorexia, low-grade fever
+- Rovsing's, psoas, obturator signs
+- **Sudden pain relief = perforation** (not recovery!)
+- Pre-op: NO heat, NO enemas, NO laxatives
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Disorder-by-disorder clinical breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'rheumatic-fever-endocarditis': {
         title: 'Rheumatic Fever & Endocarditis',
         storeUrl: 'pricing.html#rheumatic-fever-endocarditis',

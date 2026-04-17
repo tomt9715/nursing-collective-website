@@ -249,10 +249,10 @@
                     colorClass: 'icon-pediatrics',
                     guides: [
                         { name: 'Pediatric Leukemias (ALL/AML)', file: 'pediatric-leukemias' },
-                        { name: 'Sickle Cell Crisis', file: 'sickle-cell-crisis' }
+                        { name: 'Sickle Cell Crisis', file: 'sickle-cell-crisis' },
+                        { name: 'Pediatric Solid Tumors', file: 'pediatric-solid-tumors' }
                     ],
                     comingSoon: [
-                        { name: 'Pediatric Solid Tumors' },
                         { name: 'Bleeding Disorders (Hemophilia & ITP)' },
                         { name: 'Iron-Deficiency Anemia' }
                     ]

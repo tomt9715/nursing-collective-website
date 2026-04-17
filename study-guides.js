@@ -3,6 +3,53 @@
 
 // Guide preview content (realistic placeholder - preview of full guide)
 const guidePreviewContent = {
+    'pediatric-solid-tumors': {
+        title: 'Pediatric Solid Tumors',
+        storeUrl: 'pricing.html#pediatric-solid-tumors',
+        content: `
+# Pediatric Solid Tumors Study Guide
+
+## Overview
+The two most important pediatric solid tumors: medulloblastoma (the brain tumor of childhood) and neuroblastoma (the abdominal tumor of infancy).
+
+## What You'll Learn
+
+### Medulloblastoma
+- **Most common malignant CNS tumor** in children <14
+- Located in **cerebellum / posterior fossa**
+- Classic presentation: morning headache, **projectile vomiting on arising (no nausea)**, ataxia, increased ICP
+- Treatment: maximal resection + craniospinal radiation + chemo (± BMT)
+- Post-op posterior fossa care: **side-lying or prone, NOT Trendelenburg**
+- Watch for **cerebellar mutism syndrome** day 1–4 post-op
+
+### Neuroblastoma
+- **Most common extracranial solid tumor** of childhood
+- Most common cancer of infancy (median age ~18 months)
+- Arises from neural crest cells → anywhere along sympathetic chain
+- Most common location: **adrenal gland / retroperitoneum** (~65%)
+- **NEVER palpate the abdomen** — can rupture tumor capsule
+- Diagnostic: urine **VMA and HVA** elevated; **MYCN amplification** = high risk
+- Classic findings: raccoon eyes (orbital mets), Horner's syndrome, abdominal mass crossing midline
+
+### Signs of Increased ICP
+- Morning headache relieved by vomiting
+- Projectile vomiting without nausea
+- Ataxia, personality changes, papilledema
+- **Cushing's triad** (late): HTN + bradycardia + irregular respirations
+
+### The Three "Do Not Palpate" Tumors
+- Neuroblastoma, Wilms tumor, hepatoblastoma
+- Inspection + auscultation only
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Condition-by-condition breakdown*
+- *NCLEX-style practice questions*
+- *Post-op posterior fossa care*
+- *Clinical pearls and memory aids*
+        `
+    },
     'sickle-cell-crisis': {
         title: 'Sickle Cell Crisis',
         storeUrl: 'pricing.html#sickle-cell-crisis',

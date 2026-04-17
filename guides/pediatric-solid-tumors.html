@@ -1,0 +1,1817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatric Solid Tumors Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Pediatric nursing study guide for medulloblastoma and neuroblastoma. Presentation, diagnostic workup, treatment, nursing priorities (including why not to palpate a neuroblastoma), and family support.">
+    <link rel="canonical" href="https://thenursingcollective.pro/guides/pediatric-solid-tumors.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/guides/pediatric-solid-tumors.html">
+    <meta property="og:title" content="Pediatric Solid Tumors Study Guide - The Nursing Collective">
+    <meta property="og:description" content="Pediatric nursing study guide for medulloblastoma and neuroblastoma.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/cookie-consent.css">
+    <link rel="stylesheet" href="guide-sidebar.css">
+
+    <style>
+        /* PEDIATRIC SOLID TUMORS — Pediatric Heme/Onc */
+        :root {
+            --navy: #0d1b2a;
+            --navy-2: #162032;
+            --navy-3: #1e2d3e;
+            --card-dark: #1a2940;
+            --teal: #0fbcad;
+            --teal-dim: #0a9086;
+            --amber: #f4a535;
+            --green: #3dbd7a;
+            --red: #e05252;
+            --purple: #8b5cf6;
+            --text-inv: #e8edf2;
+            --text-inv-dim: #8a9bb0;
+            --border-inv: rgba(255, 255, 255, 0.07);
+            --border-inv-mid: rgba(255, 255, 255, 0.12);
+
+            --paper: #162032;
+            --paper-warm: #1a2940;
+            --paper-deep: #1e2d3e;
+            --ink: #f1f5f9;
+            --ink-soft: #c4ccd8;
+            --ink-dimmer: #8a9bb0;
+            --rule: rgba(255, 255, 255, 0.08);
+            --rule-mid: rgba(255, 255, 255, 0.14);
+            --rule-soft: rgba(255, 255, 255, 0.04);
+
+            --peds-coral: #ef5a5a;
+            --peds-coral-deep: #dc2f4f;
+            --peds-rose: #fb8989;
+            --peds-blush: rgba(239, 90, 90, 0.12);
+            --peds-blush-2: rgba(239, 90, 90, 0.22);
+            --peds-plum: #fb8989;
+
+            --critical: #dc2626;
+            --safe: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            background: var(--navy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .download-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(13, 27, 42, 0.92);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            color: var(--text-inv);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--border-inv);
+        }
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.01em;
+            color: var(--text-inv);
+        }
+        .download-bar-brand i { color: var(--teal); font-size: 16px; }
+        .download-bar-actions { display: flex; gap: 10px; }
+
+        .btn-download, .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            border: 0.5px solid var(--border-inv-mid);
+        }
+        .btn-download { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+        .btn-download:hover { background: var(--teal-dim); border-color: var(--teal-dim); transform: translateY(-1px); }
+        .btn-back { background: transparent; color: var(--text-inv-dim); }
+        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
+
+        .document-container {
+            max-width: 900px;
+            margin: 80px auto 40px;
+            background: var(--paper);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 0.5px solid var(--rule-mid);
+        }
+
+        .cover-page {
+            background:
+                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
+                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
+            color: white;
+            padding: 72px 60px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--peds-coral);
+        }
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .cover-content { position: relative; z-index: 1; }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 50px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
+
+        .cover-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 14px;
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+        }
+        .cover-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            line-height: 1.55;
+        }
+
+        .cover-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+        .cover-meta-item i { color: var(--peds-coral); font-size: 11px; }
+        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
+
+        .document-content { padding: 56px 56px 48px; background: var(--paper); }
+
+        .learning-objectives {
+            background: var(--peds-blush);
+            border: 1px solid var(--peds-blush-2);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--peds-rose);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .learning-objectives h2 i { color: var(--peds-coral); }
+        .learning-objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .objective-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .objective-card i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+
+        .high-yield-summary {
+            background: linear-gradient(135deg, rgba(244, 165, 53, 0.08), rgba(244, 165, 53, 0.02));
+            border: 1px solid rgba(244, 165, 53, 0.25);
+            border-left: 4px solid var(--amber);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .high-yield-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--amber);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .high-yield-summary h2 i { color: var(--amber); }
+        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
+        .high-yield-summary ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .high-yield-summary li {
+            background: rgba(0, 0, 0, 0.18);
+            border-radius: 8px;
+            padding: 12px 14px 12px 38px !important;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            border-bottom: none !important;
+        }
+        .high-yield-summary li::before {
+            left: 14px !important;
+            top: 14px !important;
+            color: var(--amber) !important;
+            font-size: 0.82rem !important;
+        }
+        .high-yield-summary strong { color: var(--amber); font-weight: 600; }
+        .high-yield-summary li strong { color: var(--amber) !important; }
+        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--amber); font-size: 0.95rem; }
+
+        .sticky-nav {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 36px;
+        }
+        .sticky-nav h3 {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--ink-dimmer);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-pills a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.87rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        .nav-pills a:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
+        .nav-pills a i { font-size: 0.82rem; }
+
+        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-number {
+            flex-shrink: 0;
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(239, 90, 90, 0.25);
+        }
+        .section-title-group { flex: 1; min-width: 0; }
+        .section-title-group h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
+
+        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.22rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 24px 0 12px;
+        }
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 18px 0 8px;
+        }
+        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
+        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
+        .guide-section strong { color: var(--ink); font-weight: 600; }
+
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: 10px;
+            border: 1px solid var(--rule);
+        }
+        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+        .guide-table thead { background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep)); color: white; }
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+        }
+        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
+        .guide-table tbody { background: var(--paper-warm); }
+        .guide-table tbody tr:last-child td { border-bottom: none; }
+        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
+        .guide-table tbody tr:hover { background: var(--peds-blush); }
+        .guide-table td strong { color: var(--ink); }
+
+        .info-box {
+            display: flex;
+            gap: 14px;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--rule);
+            border-left-width: 4px;
+        }
+        .info-box-icon {
+            flex-shrink: 0;
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .info-box-content { flex: 1; min-width: 0; }
+        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+
+        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
+        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .info-box.clinical h5 { color: #fbbf24; }
+        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
+        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
+        .info-box.critical h5 { color: #fca5a5; }
+        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
+        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .info-box.nclex h5 { color: #93c5fd; }
+        .info-box.pediatric { background: var(--peds-blush); border-color: var(--peds-blush-2); border-left-color: var(--peds-coral); }
+        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-rose); }
+        .info-box.pediatric h5 { color: var(--peds-rose); }
+        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
+        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
+        .info-box.safe h5 { color: #86efac; }
+        .info-box p { color: var(--ink-soft); }
+        .info-box strong { color: var(--ink); }
+
+        .florencebot-tip {
+            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
+            border: 1px solid rgba(15, 188, 173, 0.22);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .florencebot-tip::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--teal);
+        }
+        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .florencebot-tip-icon {
+            width: 32px; height: 32px;
+            background: var(--teal);
+            border-radius: 8px;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .florencebot-tip-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .florencebot-tip-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.08rem;
+            font-weight: 600;
+            color: #5eead4;
+            margin-bottom: 8px;
+        }
+        .florencebot-tip-content { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; }
+        .florencebot-tip-content strong { color: var(--ink); }
+
+        .bottom-line {
+            background: linear-gradient(135deg, var(--peds-blush), rgba(239, 90, 90, 0.04));
+            border: 0.5px solid var(--peds-blush-2);
+            border-left: 4px solid var(--peds-coral);
+            padding: 14px 18px;
+            margin: 22px 0 0;
+            border-radius: 0 10px 10px 0;
+            font-weight: 500;
+            color: var(--ink);
+            font-size: 0.95rem;
+        }
+        .bottom-line strong { color: var(--peds-rose); }
+
+        /* Type cards */
+        .type-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 14px;
+            margin: 20px 0;
+        }
+        .type-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        .type-card-header {
+            padding: 14px 18px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .type-card-header.medulloblastoma { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
+        .type-card-header.neuroblastoma { background: linear-gradient(135deg, #ef5a5a, #b91c1c); }
+        .type-card-header.workup { background: linear-gradient(135deg, #0891b2, #155e75); }
+        .type-card-header.surgery { background: linear-gradient(135deg, #f59e0b, #b45309); }
+        .type-card-header.chemo { background: linear-gradient(135deg, #10b981, #047857); }
+        .type-card-header.radiation { background: linear-gradient(135deg, #6366f1, #3730a3); }
+        .type-card-header i { font-size: 1.2rem; }
+        .type-card-header h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: white;
+            margin: 0;
+        }
+        .type-card-header .tag {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 1px;
+            opacity: 0.88;
+            text-transform: uppercase;
+        }
+        .type-card-body { padding: 16px 18px; }
+        .type-card-body h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--peds-rose);
+            margin: 10px 0 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .type-card-body h5:first-child { margin-top: 0; }
+        .type-card-body p, .type-card-body ul { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; margin: 0 0 6px; }
+        .type-card-body ul { padding-left: 18px; }
+        .type-card-body li { margin-bottom: 4px; }
+        .type-card-body strong { color: var(--ink); }
+
+        /* Key point grid */
+        .key-point-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .key-point-item {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .key-point-item i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .key-point-item p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); }
+        .key-point-item strong { color: var(--ink); }
+
+        /* Red flag cards */
+        .redflag-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .redflag-card {
+            background: rgba(220, 38, 38, 0.08);
+            border: 0.5px solid rgba(220, 38, 38, 0.25);
+            border-left: 3px solid #f87171;
+            border-radius: 10px;
+            padding: 12px 14px;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+        .redflag-card i { color: #fca5a5; font-size: 0.95rem; margin-top: 3px; flex-shrink: 0; }
+        .redflag-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); }
+        .redflag-card strong { color: #fca5a5; }
+
+        /* Step list */
+        .step-list {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 20px 0;
+            counter-reset: step;
+        }
+        .step-list li {
+            counter-increment: step;
+            position: relative;
+            padding: 14px 16px 14px 56px;
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 0.97rem;
+            line-height: 1.6;
+            color: var(--ink-soft);
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            top: 14px; left: 14px;
+            width: 30px; height: 30px;
+            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.9rem;
+        }
+        .step-list strong { color: var(--ink); }
+
+        /* Cross refs */
+        .cross-references {
+            margin: 36px 0 8px;
+            padding: 24px;
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+        }
+        .cross-references h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cross-references h2 i { color: var(--peds-coral); }
+        .cross-ref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
+        .cross-ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.15s;
+        }
+        .cross-ref-link:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
+        .cross-ref-link i { font-size: 0.85rem; }
+
+        .quiz-cta {
+            background:
+                radial-gradient(ellipse 60% 80% at 90% 10%, rgba(15, 188, 173, 0.12) 0%, transparent 65%),
+                linear-gradient(135deg, var(--card-dark), var(--navy-3));
+            border: 0.5px solid var(--border-inv-mid);
+            color: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin: 36px 0;
+            text-align: center;
+        }
+        .quiz-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
+        .quiz-cta p { color: rgba(255, 255, 255, 0.88); margin-bottom: 20px; font-size: 0.98rem; }
+        .quiz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: var(--teal);
+            color: var(--navy);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
+
+        .document-footer {
+            padding: 32px 56px;
+            background: var(--paper-deep);
+            border-top: 0.5px solid var(--rule);
+            text-align: center;
+        }
+        .footer-logo { height: 28px; margin: 0 auto 14px; opacity: 0.9; }
+        .footer-tagline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 4px; }
+        .footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-dimmer); letter-spacing: 0.02em; }
+
+        /* Sidebar overrides */
+        .page-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+            max-width: 1600px;
+        }
+        .sidebar-left, .sidebar-right {
+            width: 280px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            max-height: calc(100vh - 100px);
+            overflow-y: auto;
+        }
+
+        .toc-panel {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            color: var(--text-inv) !important;
+            margin-bottom: 16px !important;
+        }
+        .toc-header {
+            padding-bottom: 14px !important;
+            margin-bottom: 14px !important;
+            border-bottom: 0.5px solid var(--border-inv-mid) !important;
+        }
+        .toc-header h3 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+        }
+        .toc-header i { color: var(--teal) !important; }
+        .toc-link {
+            color: var(--text-inv-dim) !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-weight: 500 !important;
+            font-size: 0.88rem !important;
+            border-left: 2px solid transparent !important;
+            padding: 9px 12px !important;
+            background: transparent !important;
+        }
+        .toc-link:hover { background: rgba(15, 188, 173, 0.08) !important; color: var(--text-inv) !important; }
+        .toc-link.active {
+            background: rgba(15, 188, 173, 0.12) !important;
+            color: var(--teal) !important;
+            border-left-color: var(--teal) !important;
+            font-weight: 600 !important;
+        }
+        .toc-link i { color: inherit !important; }
+
+        .toc-progress {
+            margin-top: 14px !important;
+            padding-top: 14px !important;
+            border-top: 0.5px solid var(--border-inv) !important;
+        }
+        .toc-progress-label {
+            display: flex !important;
+            justify-content: space-between !important;
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            letter-spacing: 1px !important;
+            color: var(--text-inv-dim) !important;
+            margin-bottom: 8px !important;
+        }
+        .toc-progress-percent { color: var(--teal) !important; }
+        .toc-progress-bar {
+            background: rgba(255, 255, 255, 0.06) !important;
+            border-radius: 999px !important;
+            height: 4px !important;
+            overflow: hidden !important;
+        }
+        .toc-progress-fill {
+            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
+            height: 100% !important;
+        }
+
+        .toc-nav-links {
+            margin-top: 14px !important;
+            padding-top: 14px !important;
+            border-top: 0.5px solid var(--border-inv) !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+        }
+        .toc-nav-link {
+            display: flex !important;
+            align-items: center !important;
+            gap: 10px !important;
+            padding: 8px 12px !important;
+            border-radius: 8px !important;
+            color: var(--text-inv-dim) !important;
+            background: transparent !important;
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.84rem !important;
+            font-weight: 500 !important;
+            text-decoration: none !important;
+            transition: all 0.15s !important;
+        }
+        .toc-nav-link:hover { background: rgba(255, 255, 255, 0.04) !important; color: var(--text-inv) !important; }
+        .toc-nav-link--ai { background: rgba(15, 188, 173, 0.08) !important; color: var(--teal) !important; }
+        .toc-nav-link--ai:hover { background: rgba(15, 188, 173, 0.15) !important; color: var(--teal) !important; }
+
+        .florence-card {
+            background: linear-gradient(135deg, var(--card-dark), var(--navy-3)) !important;
+            border: 0.5px solid var(--border-inv-mid) !important;
+            border-radius: 14px !important;
+            padding: 20px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
+            margin-bottom: 16px !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        .florence-card::before {
+            content: '' !important;
+            position: absolute !important;
+            top: -40% !important; right: -40% !important;
+            width: 120% !important; height: 120% !important;
+            background: radial-gradient(circle, rgba(15, 188, 173, 0.12) 0%, transparent 60%) !important;
+            pointer-events: none !important;
+        }
+        .florence-header {
+            display: flex !important;
+            align-items: center !important;
+            gap: 12px !important;
+            margin-bottom: 14px !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .florence-avatar {
+            width: 44px !important; height: 44px !important;
+            border-radius: 50% !important;
+            background: rgba(15, 188, 173, 0.15) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
+            padding: 2px !important;
+            box-shadow: none !important;
+        }
+        .florence-info h3 {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.98rem !important;
+            font-weight: 600 !important;
+            color: var(--text-inv) !important;
+            margin: 0 !important;
+        }
+        .florence-info span {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.68rem !important;
+            color: var(--teal) !important;
+            letter-spacing: 1px !important;
+            text-transform: uppercase !important;
+        }
+        .florence-speech {
+            background: rgba(15, 188, 173, 0.06) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            border-radius: 10px !important;
+            padding: 12px 14px !important;
+            box-shadow: none !important;
+            position: relative !important;
+            z-index: 1 !important;
+        }
+        .florence-speech::before {
+            background: var(--card-dark) !important;
+            border-top: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            border-left: 0.5px solid rgba(15, 188, 173, 0.18) !important;
+            box-shadow: none !important;
+        }
+        .florence-speech p {
+            color: var(--text-inv) !important;
+            font-size: 0.88rem !important;
+            line-height: 1.55 !important;
+            margin: 0 !important;
+        }
+        .florence-speech p strong { color: var(--teal) !important; }
+
+        .key-numbers-card {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+            margin-bottom: 16px !important;
+        }
+        .key-numbers-title {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin-bottom: 14px !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .key-numbers-title i { color: var(--teal) !important; }
+        .key-numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+        .key-number {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 10px !important;
+            padding: 12px 10px !important;
+        }
+        .key-number:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important; }
+        .key-number.critical { background: rgba(220, 38, 38, 0.1) !important; border-color: rgba(220, 38, 38, 0.25) !important; }
+        .key-number.critical .key-number-value { color: #fca5a5 !important; }
+        .key-number.time { background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.25) !important; }
+        .key-number.time .key-number-value { color: #fcd34d !important; }
+        .key-number.target { background: rgba(15, 188, 173, 0.1) !important; border-color: rgba(15, 188, 173, 0.25) !important; }
+        .key-number.target .key-number-value { color: #5eead4 !important; }
+        .key-number.success { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
+        .key-number.success .key-number-value { color: #86efac !important; }
+        .key-number.warning { background: rgba(251, 146, 60, 0.1) !important; border-color: rgba(251, 146, 60, 0.25) !important; }
+        .key-number.warning .key-number-value { color: #fdba74 !important; }
+        .key-number.info { background: rgba(139, 92, 246, 0.1) !important; border-color: rgba(139, 92, 246, 0.25) !important; }
+        .key-number.info .key-number-value { color: #c4b5fd !important; }
+        .key-number-value {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 1.05rem !important;
+            font-weight: 700 !important;
+            color: var(--text-inv) !important;
+            line-height: 1.2 !important;
+        }
+        .key-number-label {
+            font-size: 0.68rem !important;
+            color: var(--text-inv-dim) !important;
+            margin-top: 4px !important;
+            line-height: 1.35 !important;
+        }
+
+        .florence-tips-card {
+            background: var(--card-dark) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-radius: 14px !important;
+            padding: 18px !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
+        }
+        .florence-tips-header { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 14px !important; }
+        .florence-tips-avatar {
+            width: 28px !important; height: 28px !important;
+            border-radius: 50% !important;
+            background: rgba(15, 188, 173, 0.15) !important;
+            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
+            padding: 2px !important;
+            box-shadow: none !important;
+        }
+        .florence-tips-header h4 {
+            font-family: 'DM Mono', monospace !important;
+            font-size: 0.7rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv-dim) !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1.5px !important;
+            margin: 0 !important;
+        }
+
+        .tip-item {
+            background: rgba(255, 255, 255, 0.03) !important;
+            border: 0.5px solid var(--border-inv) !important;
+            border-left: 3px solid var(--teal) !important;
+            border-radius: 8px !important;
+            padding: 10px 12px !important;
+            margin-bottom: 8px !important;
+            box-shadow: none !important;
+            transition: all 0.15s !important;
+        }
+        .tip-item:hover { background: rgba(15, 188, 173, 0.08) !important; transform: translateX(2px) !important; }
+        .tip-item:last-child { margin-bottom: 0 !important; }
+        .tip-item-title {
+            font-family: 'Outfit', sans-serif !important;
+            font-size: 0.85rem !important;
+            font-weight: 500 !important;
+            color: var(--text-inv) !important;
+            margin: 0 !important;
+            display: flex !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }
+        .tip-item-title::before { color: var(--teal) !important; font-size: 0.72rem !important; }
+        .tip-item-text {
+            font-size: 0.78rem !important;
+            color: var(--text-inv-dim) !important;
+            line-height: 1.5 !important;
+            margin-top: 4px !important;
+        }
+
+        .mobile-nav-fab { background: var(--teal) !important; color: var(--navy) !important; }
+        .mobile-nav-drawer { background: var(--card-dark) !important; color: var(--text-inv) !important; }
+        .mobile-nav-tab { color: var(--text-inv-dim) !important; background: transparent !important; }
+        .mobile-nav-tab.active { color: var(--teal) !important; border-bottom-color: var(--teal) !important; }
+        .mobile-toc-link { color: var(--text-inv-dim) !important; }
+        .mobile-toc-link.active { color: var(--teal) !important; background: rgba(15, 188, 173, 0.1) !important; }
+
+        @media (max-width: 1200px) {
+            .page-wrapper { padding: 0 12px; gap: 16px; }
+            .sidebar-left, .sidebar-right { width: 220px; }
+        }
+
+        @media (max-width: 900px) {
+            .page-wrapper { flex-direction: column; padding: 0 12px; }
+            .sidebar-left, .sidebar-right {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                position: static;
+                max-height: none;
+            }
+            .document-container { margin: 80px 12px 40px; }
+            .document-content { padding: 36px 28px; }
+            .cover-page { padding: 56px 28px 40px; }
+            .cover-title { font-size: 2.1rem; }
+            .cover-meta { gap: 10px; padding: 10px 16px; }
+            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
+            .learning-objectives-grid,
+            .type-grid,
+            .key-point-grid,
+            .redflag-grid,
+            .high-yield-summary ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .download-bar { padding: 10px 14px; }
+            .download-bar-brand span:not(.brand-text-long) { display: none; }
+            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
+            .section-header { gap: 12px; }
+            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
+            .section-title-group h2 { font-size: 1.4rem; }
+            .document-content { padding: 28px 20px; }
+            .document-footer { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body data-product-id="pediatric-solid-tumors" data-guide-name="Pediatric Solid Tumors">
+
+    <header class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-disease"></i>
+            <span>Pediatric Solid Tumors</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../my-guides.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Guides
+            </a>
+        </div>
+    </header>
+
+    <div class="document-container">
+
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-badge">
+                    <i class="fas fa-baby"></i> Pediatric Nursing &middot; Hematology / Oncology
+                </div>
+                <h1 class="cover-title">Pediatric Solid Tumors</h1>
+                <p class="cover-subtitle">The two most important pediatric solid tumors: medulloblastoma (the brain tumor of childhood) and neuroblastoma (the abdominal tumor of infancy). Presentation, workup, treatment, and nursing priorities.</p>
+                <div class="cover-meta">
+                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 7 Sections</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 14 Quiz Questions</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~12 Min Read</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="document-content">
+
+            <div class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <div class="learning-objectives-grid">
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Recognize the classic presentation of medulloblastoma and increased ICP.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Identify neuroblastoma findings, including the "do not palpate" rule.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Compare age distribution, location, and prognosis of each tumor.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Describe diagnostic workup including imaging, LP, biopsy, and tumor markers.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Explain treatment components: surgery, chemo, radiation, and BMT.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Apply post-op nursing priorities and support families through treatment.</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
+                <p class="high-yield-subtitle">Eight facts to remember about pediatric solid tumors.</p>
+                <ul>
+                    <li><strong>Medulloblastoma = most common CNS (brain) tumor in children &lt;14</strong> and the prototype for pediatric brain cancers. Arises in the <strong>cerebellum / posterior fossa</strong>.</li>
+                    <li><strong>Classic presentation of medulloblastoma:</strong> morning headache, <strong>vomiting on arising</strong> (projectile, improves after), ataxia/clumsiness, head tilt, signs of increased ICP, hydrocephalus.</li>
+                    <li><strong>Neuroblastoma = most common EXTRACRANIAL solid tumor of childhood</strong> and the <strong>most common cancer of infancy</strong>. Arises from neural crest cells of the sympathetic nervous system.</li>
+                    <li><strong>Neuroblastoma most common location = abdomen / adrenal gland</strong> (~65%). Can also occur anywhere along the sympathetic chain &mdash; chest, neck, pelvis, retroperitoneum.</li>
+                    <li><strong>Never palpate a suspected neuroblastoma abdomen!</strong> Palpation can rupture the tumor capsule and spread cancer cells. Post a sign at the bedside.</li>
+                    <li><strong>Diagnostic workup:</strong> MRI is gold standard for CNS tumors; neuroblastoma diagnosed by CT/MRI + <strong>elevated urine catecholamines (VMA and HVA)</strong> + biopsy. MYCN gene amplification = high risk.</li>
+                    <li><strong>Treatment:</strong> <strong>Surgical resection</strong> + chemotherapy + radiation (craniospinal for medulloblastoma) &plusmn; <strong>autologous BMT</strong>. Radiation of the developing brain has significant late effects &mdash; used cautiously in kids &lt;3.</li>
+                    <li><strong>Post-op posterior fossa care:</strong> position <strong>flat side-lying or prone</strong> (NOT trendelenburg &mdash; increases ICP); monitor for <strong>cerebellar mutism syndrome</strong> (transient muteness + emotional lability 1&ndash;2 days post-op).</li>
+                </ul>
+                <p class="high-yield-cta">Clinical breakdown below &darr;</p>
+            </section>
+
+            <nav class="sticky-nav">
+                <h3>Jump to section</h3>
+                <div class="nav-pills">
+                    <a href="#fundamentals"><i class="fas fa-disease"></i> Fundamentals</a>
+                    <a href="#medulloblastoma"><i class="fas fa-brain"></i> Medulloblastoma</a>
+                    <a href="#neuroblastoma"><i class="fas fa-disease"></i> Neuroblastoma</a>
+                    <a href="#diagnosis"><i class="fas fa-microscope"></i> Diagnosis</a>
+                    <a href="#treatment"><i class="fas fa-syringe"></i> Treatment</a>
+                    <a href="#nursing"><i class="fas fa-user-nurse"></i> Nursing Priorities</a>
+                    <a href="#family"><i class="fas fa-users"></i> Family Coping</a>
+                </div>
+            </nav>
+
+            <!-- Section 1: Fundamentals -->
+            <section class="guide-section" id="fundamentals">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <div class="section-title-group">
+                        <h2>Pediatric Solid Tumor Fundamentals</h2>
+                        <div class="subtitle">The two tumors every peds nursing student needs to know</div>
+                    </div>
+                </div>
+
+                <p>After leukemia, the next most common pediatric cancers are <strong>brain tumors</strong> (#1 solid tumor overall in kids) and <strong>neuroblastoma</strong> (the most common extracranial solid tumor in children and the most common cancer in infants). This guide focuses on the two prototypes tested in pediatric nursing: <strong>medulloblastoma</strong> and <strong>neuroblastoma</strong>.</p>
+
+                <h3>Why These Two?</h3>
+
+                <ul>
+                    <li><strong>Medulloblastoma</strong> is the classic childhood brain tumor, located in the cerebellum. Nurses must recognize increased ICP and manage post-op posterior fossa care.</li>
+                    <li><strong>Neuroblastoma</strong> presents with an abdominal mass in a baby or toddler &mdash; and a huge NCLEX pearl: <strong>do NOT palpate</strong> the abdomen.</li>
+                </ul>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Medulloblastoma</th>
+                                <th>Neuroblastoma</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Origin</strong></td>
+                                <td>Cerebellum / posterior fossa; primitive neuroectodermal cells</td>
+                                <td>Neural crest cells of the sympathetic nervous system (adrenal medulla most often)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Typical age</strong></td>
+                                <td>Young school-age, <strong>&lt;14 years</strong> (peak 5&ndash;9)</td>
+                                <td><strong>&lt;5 years; most common cancer of infancy</strong>; median age ~18 months</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Most common location</strong></td>
+                                <td>Cerebellum</td>
+                                <td><strong>Abdomen / adrenal gland (~65%)</strong>, also chest, neck, pelvis</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Classic presentation</strong></td>
+                                <td>Morning HA, vomiting on arising, ataxia, increased ICP</td>
+                                <td>Firm, irregular <strong>abdominal mass</strong>, crosses midline; may have systemic symptoms</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tumor markers</strong></td>
+                                <td>None specific; MRI + biopsy</td>
+                                <td><strong>Urine catecholamines: VMA &amp; HVA elevated</strong></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Key nursing rule</strong></td>
+                                <td>Post-op posterior fossa positioning; monitor for ICP</td>
+                                <td><strong>DO NOT PALPATE abdomen</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
+                    <div class="info-box-content">
+                        <h5>Most Solid Tumors Are Highly Curable</h5>
+                        <p>Even though the diagnoses are frightening, <strong>long-term survival for most pediatric solid tumors has improved dramatically</strong>. Medulloblastoma 5-year survival is ~70&ndash;80% with current therapy; low/intermediate-risk neuroblastoma has &gt;90% survival. Your reassurance grounded in evidence supports family coping.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Medulloblastoma = brain (cerebellum), school-age. Neuroblastoma = abdomen (adrenal), infants/toddlers. Both are serious but often curable.</div>
+            </section>
+
+            <!-- Section 2: Medulloblastoma -->
+            <section class="guide-section" id="medulloblastoma">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <div class="section-title-group">
+                        <h2>Medulloblastoma</h2>
+                        <div class="subtitle">The brain tumor of childhood</div>
+                    </div>
+                </div>
+
+                <p>Medulloblastoma is the <strong>most common malignant CNS tumor in children under 14</strong>. It grows in the cerebellum within the posterior fossa and frequently obstructs CSF flow, causing hydrocephalus. Early recognition dramatically improves outcomes.</p>
+
+                <h3>Classic Presentation</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-sun"></i>
+                        <p><strong>Morning headache</strong> &mdash; worse on awakening; improves after vomiting or upright posture.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-arrow-up-from-bracket"></i>
+                        <p><strong>Vomiting on arising</strong> &mdash; classically projectile, NOT preceded by nausea. Relieves headache.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-person-walking"></i>
+                        <p><strong>Ataxia / clumsiness</strong> &mdash; bumping into things, wide-based gait, truncal sway.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-eye"></i>
+                        <p><strong>Nystagmus, head tilt, diplopia</strong> &mdash; from cranial nerve involvement.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-brain"></i>
+                        <p><strong>Increased ICP</strong> &mdash; lethargy, irritability, personality change, papilledema.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-baby"></i>
+                        <p>In infants: <strong>bulging fontanel, macrocephaly, setting-sun eyes</strong>, sunsetting sign.</p>
+                    </div>
+                </div>
+
+                <h3>Signs of Increased ICP by Age</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Infant (&lt;1 yr)</th>
+                                <th>Child (&gt;1 yr)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Bulging fontanel</td>
+                                <td>Morning headache, worsens with coughing/straining</td>
+                            </tr>
+                            <tr>
+                                <td>Widened sutures / rapid head circumference growth</td>
+                                <td>Projectile vomiting on arising (no nausea)</td>
+                            </tr>
+                            <tr>
+                                <td>High-pitched cry</td>
+                                <td>Irritability, personality/school performance change</td>
+                            </tr>
+                            <tr>
+                                <td>Poor feeding, lethargy</td>
+                                <td>Ataxia, diplopia, papilledema</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Late:</strong> setting-sun eyes</td>
+                                <td><strong>Late:</strong> Cushing's triad (HTN, bradycardia, irregular respirations)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-triangle-exclamation"></i></div>
+                    <div class="info-box-content">
+                        <h5>Cushing's Triad = Late Herniation Warning</h5>
+                        <p><strong>Hypertension + bradycardia + irregular (Cheyne-Stokes) respirations</strong> is the classic late triad of increased ICP with impending herniation. This is an emergency &mdash; notify provider immediately, elevate HOB 30\u00b0, ensure airway, prepare mannitol or hypertonic saline. Also watch for <strong>widening pulse pressure</strong>.</p>
+                    </div>
+                </div>
+
+                <h3>Why Vomiting "Relieves" the Headache</h3>
+
+                <p>Vomiting temporarily reduces intracranial pressure by stimulating the vagus nerve and reducing gastric volume. This is distinct from GI vomiting (which follows nausea). In medulloblastoma, <strong>vomiting happens suddenly, often in the morning, with no nausea, and relieves the headache</strong> &mdash; a very specific history clue.</p>
+
+                <h3>Treatment Overview</h3>
+
+                <ol class="step-list">
+                    <li><strong>Maximal safe surgical resection</strong> &mdash; neurosurgery removes as much tumor as possible; often requires VP shunt or external ventricular drain if hydrocephalus.</li>
+                    <li><strong>Craniospinal radiation</strong> &mdash; reduces CSF-disseminated tumor; typically given to children &gt;3 years (risk of cognitive late effects makes it cautious in younger children).</li>
+                    <li><strong>Adjuvant chemotherapy</strong> &mdash; cisplatin, vincristine, cyclophosphamide, lomustine, others; for 6&ndash;12 months.</li>
+                    <li><strong>Autologous stem cell rescue (BMT)</strong> &mdash; sometimes used in high-risk disease to allow high-dose chemo.</li>
+                    <li><strong>Surveillance imaging</strong> every few months for the first 2 years, then less frequently.</li>
+                </ol>
+
+                <h3>Long-Term Concerns</h3>
+
+                <ul>
+                    <li><strong>Neurocognitive late effects</strong> from surgery and radiation &mdash; especially in younger children.</li>
+                    <li><strong>Growth hormone deficiency, hypothyroidism</strong> from CNS radiation.</li>
+                    <li><strong>Hearing loss</strong> from cisplatin.</li>
+                    <li><strong>Secondary cancers</strong> at the radiation site.</li>
+                    <li>Need for <strong>school accommodations, IEP, neuropsychology services</strong>.</li>
+                </ul>
+
+                <div class="bottom-line">🎯 Bottom Line: Medulloblastoma = cerebellum = morning HA + projectile AM vomiting + ataxia + &uarr;ICP. MRI then surgery + radiation + chemo. Watch Cushing's triad.</div>
+            </section>
+
+            <!-- Section 3: Neuroblastoma -->
+            <section class="guide-section" id="neuroblastoma">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <div class="section-title-group">
+                        <h2>Neuroblastoma</h2>
+                        <div class="subtitle">The abdominal tumor of infancy</div>
+                    </div>
+                </div>
+
+                <p>Neuroblastoma is the <strong>most common extracranial solid tumor</strong> in children and the <strong>most common cancer in infants</strong>. It arises from neural crest cells of the sympathetic nervous system &mdash; so it can develop <strong>anywhere along the sympathetic chain</strong>. Most cases (~65%) start in the adrenal medulla / retroperitoneum, but chest, neck, and pelvic tumors also occur.</p>
+
+                <h3>Classic Presentation</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-person-breastfeeding"></i>
+                        <p><strong>Firm, irregular, non-tender abdominal mass</strong> &mdash; often <strong>crosses the midline</strong>. Parent may find it at bath time.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-weight-scale"></i>
+                        <p>Weight loss, anorexia, fatigue, fever, irritability, pallor (anemia from marrow infiltration).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-heart-pulse"></i>
+                        <p><strong>Catecholamine release</strong> can cause hypertension, tachycardia, flushing, diarrhea.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-eye-slash"></i>
+                        <p><strong>Raccoon eyes / periorbital ecchymosis</strong> &mdash; from metastasis to the orbit (classic late sign).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-user"></i>
+                        <p><strong>Horner's syndrome</strong> (unilateral ptosis, miosis, anhidrosis) &mdash; from a cervical/thoracic tumor.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-child"></i>
+                        <p><strong>Opsoclonus-myoclonus syndrome ("dancing eyes, dancing feet")</strong> &mdash; rare, paraneoplastic.</p>
+                    </div>
+                </div>
+
+                <h3>Why "Do NOT Palpate"</h3>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-hand-dots"></i></div>
+                    <div class="info-box-content">
+                        <h5>Never Palpate a Suspected Neuroblastoma Abdomen</h5>
+                        <p>The neuroblastoma tumor capsule is <strong>fragile</strong>. Palpation can rupture the capsule and <strong>spread malignant cells</strong> to other sites. Post a bedside sign (\u201cDo Not Palpate Abdomen\u201d), educate all staff and parents, and document clearly on the plan of care. If abdominal assessment is essential, inspection and auscultation only &mdash; NO palpation until the oncology team directs otherwise.</p>
+                    </div>
+                </div>
+
+                <h3>Sites of Metastasis</h3>
+
+                <ul>
+                    <li><strong>Bone &amp; bone marrow</strong> &mdash; most common metastasis site.</li>
+                    <li><strong>Liver</strong> &mdash; especially in infants (may cause massive hepatomegaly).</li>
+                    <li><strong>Orbital bones</strong> &mdash; causing raccoon eyes.</li>
+                    <li><strong>Skin</strong> &mdash; blue-purple nodules ("blueberry muffin" in infants).</li>
+                    <li><strong>Distant lymph nodes.</strong></li>
+                </ul>
+
+                <h3>Diagnosis &amp; Tumor Markers</h3>
+
+                <ul>
+                    <li><strong>Urinary catecholamines</strong> &mdash; elevated <strong>VMA (vanillylmandelic acid)</strong> and <strong>HVA (homovanillic acid)</strong> in &gt;90% of patients. 24-hour urine collection.</li>
+                    <li><strong>Imaging</strong> &mdash; abdominal CT or MRI to identify mass; MIBG scan for metastases.</li>
+                    <li><strong>Bone marrow biopsy</strong> &mdash; rule out marrow involvement.</li>
+                    <li><strong>Tissue biopsy</strong> &mdash; confirmatory; sent for cytogenetics including <strong>MYCN gene amplification</strong> (present = high risk).</li>
+                </ul>
+
+                <h3>Risk Stratification Drives Treatment</h3>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Risk Group</th>
+                                <th>Typical Patient</th>
+                                <th>Prognosis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Low risk</strong></td>
+                                <td>Infants, localized tumor, favorable biology; no MYCN amplification</td>
+                                <td>&gt;90% survival; sometimes just surgery or observation</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Intermediate</strong></td>
+                                <td>Localized or locally advanced; unfavorable biology</td>
+                                <td>Good; surgery + modest chemo</td>
+                            </tr>
+                            <tr>
+                                <td><strong>High risk</strong></td>
+                                <td>Metastatic, &gt;18 months old, <strong>MYCN amplified</strong></td>
+                                <td>~50% survival; intensive multi-modal therapy (chemo + surgery + HSCT + radiation + immunotherapy)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="florencebot-tip" id="tip-sympathetic-chain">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">Follow the Sympathetic Chain</div>
+                    <div class="florencebot-tip-content">
+                        Neuroblastoma arises from <strong>sympathetic nervous system tissue</strong>, so it can grow <strong>anywhere the chain travels</strong>: adrenal medulla (most common), retroperitoneum, thorax, neck, or pelvis. That\u2019s why presentations vary &mdash; Horner\u2019s for cervical/thoracic tumors, abdominal mass for adrenal, and hypertension/tachycardia from catecholamine release anywhere. If NCLEX says "tumor arising from neural crest cells in the adrenal medulla" &rarr; neuroblastoma.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Neuroblastoma = infant/toddler, adrenal abdominal mass crossing midline. NEVER palpate. Urine VMA/HVA + MYCN testing. Look for raccoon eyes, Horner\u2019s.</div>
+            </section>
+
+            <!-- Section 4: Diagnosis -->
+            <section class="guide-section" id="diagnosis">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <div class="section-title-group">
+                        <h2>Diagnostic Workup</h2>
+                        <div class="subtitle">Imaging, tumor markers, staging</div>
+                    </div>
+                </div>
+
+                <h3>Medulloblastoma Workup</h3>
+
+                <ol class="step-list">
+                    <li><strong>MRI brain with contrast</strong> &mdash; gold standard imaging; identifies posterior fossa mass and hydrocephalus.</li>
+                    <li><strong>MRI spine</strong> &mdash; rules out CSF drop metastases (essential before treatment plan).</li>
+                    <li><strong>Lumbar puncture</strong> (after imaging confirms no mass that would cause herniation) &mdash; cytology for malignant cells in CSF.</li>
+                    <li><strong>Histopathologic diagnosis</strong> made at the time of surgical resection; molecular subtyping guides treatment.</li>
+                    <li>Baseline labs: CBC, chemistries, hearing (pre-cisplatin), endocrine evaluation.</li>
+                </ol>
+
+                <div class="info-box nclex">
+                    <div class="info-box-icon"><i class="fas fa-book-medical"></i></div>
+                    <div class="info-box-content">
+                        <h5>NCLEX Point &mdash; Why Image Before LP?</h5>
+                        <p>Never perform a lumbar puncture on a child with signs of increased ICP until imaging rules out a posterior fossa mass. Removing CSF from below a mass can cause <strong>cerebral herniation</strong>. In a child with morning vomiting and headache, <strong>MRI FIRST, LP later</strong> (if safe).</p>
+                    </div>
+                </div>
+
+                <h3>Neuroblastoma Workup</h3>
+
+                <ol class="step-list">
+                    <li><strong>Abdominal ultrasound</strong> &mdash; often first-line imaging when abdominal mass is suspected.</li>
+                    <li><strong>CT or MRI</strong> of the primary site (abdomen, chest, neck, or pelvis depending on findings).</li>
+                    <li><strong>24-hour urine for catecholamines (VMA and HVA)</strong> &mdash; elevated in &gt;90%.</li>
+                    <li><strong>MIBG scan</strong> &mdash; identifies primary tumor and metastatic deposits.</li>
+                    <li><strong>Bone marrow biopsy</strong> (bilateral iliac crest) &mdash; assess marrow involvement.</li>
+                    <li><strong>Tumor biopsy</strong> &mdash; tissue for histology, cytogenetics, and critically <strong>MYCN amplification</strong> status.</li>
+                    <li>Labs: CBC (anemia from marrow involvement), LDH, ferritin, chemistries.</li>
+                </ol>
+
+                <div class="bottom-line">🎯 Bottom Line: Medulloblastoma &rarr; MRI brain &amp; spine + LP. Neuroblastoma &rarr; imaging + urine VMA/HVA + MIBG + biopsy + MYCN. Image BEFORE LP.</div>
+            </section>
+
+            <!-- Section 5: Treatment -->
+            <section class="guide-section" id="treatment">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <div class="section-title-group">
+                        <h2>Treatment Overview</h2>
+                        <div class="subtitle">Surgery, chemotherapy, radiation, and BMT</div>
+                    </div>
+                </div>
+
+                <p>Pediatric solid tumor therapy is multi-modal and risk-stratified. Treatment is long (months to a year or more), and families will meet many specialists along the way.</p>
+
+                <div class="type-grid">
+                    <div class="type-card">
+                        <div class="type-card-header surgery">
+                            <i class="fas fa-scalpel"></i>
+                            <h4>Surgery</h4>
+                            <span class="tag">First Step</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>Medulloblastoma</h5>
+                            <p>Maximal safe resection via posterior fossa craniotomy. May need <strong>VP shunt or EVD</strong> for hydrocephalus.</p>
+                            <h5>Neuroblastoma</h5>
+                            <p>Complete resection for localized disease; debulking for widespread disease followed by chemo.</p>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header chemo">
+                            <i class="fas fa-prescription-bottle-medical"></i>
+                            <h4>Chemotherapy</h4>
+                            <span class="tag">Multi-Agent</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>Medulloblastoma</h5>
+                            <p>Cisplatin, vincristine, cyclophosphamide, lomustine; 6&ndash;12 months.</p>
+                            <h5>Neuroblastoma</h5>
+                            <p>Combinations of cyclophosphamide, doxorubicin, cisplatin, etoposide, topotecan; intensive in high-risk disease.</p>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header radiation">
+                            <i class="fas fa-radiation"></i>
+                            <h4>Radiation</h4>
+                            <span class="tag">Age-Dependent</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>Medulloblastoma</h5>
+                            <p><strong>Craniospinal radiation</strong> after surgery (for children &gt;3 years). Causes cognitive late effects &mdash; minimized in young children.</p>
+                            <h5>Neuroblastoma</h5>
+                            <p>Radiation to primary site or metastases in high-risk disease.</p>
+                        </div>
+                    </div>
+
+                    <div class="type-card">
+                        <div class="type-card-header workup">
+                            <i class="fas fa-hospital-user"></i>
+                            <h4>Autologous BMT</h4>
+                            <span class="tag">High Risk</span>
+                        </div>
+                        <div class="type-card-body">
+                            <h5>Medulloblastoma</h5>
+                            <p>Stem cell rescue for high-risk or young children to enable high-dose chemo and spare radiation.</p>
+                            <h5>Neuroblastoma</h5>
+                            <p><strong>Autologous stem cell transplant is standard for high-risk disease</strong>; followed by immunotherapy (anti-GD2 antibody dinutuximab).</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Common Chemo Toxicities to Watch</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-ear-listen"></i>
+                        <p><strong>Cisplatin</strong> &rarr; ototoxicity (hearing loss). Baseline + serial audiology.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-heart"></i>
+                        <p><strong>Doxorubicin</strong> &rarr; cardiotoxicity. Baseline + serial echocardiograms.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-toilet"></i>
+                        <p><strong>Cyclophosphamide</strong> &rarr; hemorrhagic cystitis. Aggressive hydration + <strong>Mesna</strong>.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-hand-fist"></i>
+                        <p><strong>Vincristine</strong> &rarr; peripheral neuropathy, constipation, jaw pain. <strong>IV ONLY</strong> &mdash; fatal intrathecal.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-bacterium"></i>
+                        <p>All chemo &rarr; <strong>neutropenia</strong>. Fever &ge;100.4\u00b0F = emergency (cultures + abx within 1 hr).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-utensils"></i>
+                        <p>All chemo &rarr; <strong>mucositis, nausea</strong>, anorexia. Oral care + scheduled antiemetics.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Surgery first, then chemo &plusmn; radiation &plusmn; autologous BMT. Neuroblastoma high-risk adds immunotherapy. Watch cisplatin ears, doxorubicin heart, cyclophosphamide bladder.</div>
+            </section>
+
+            <!-- Section 6: Nursing Priorities -->
+            <section class="guide-section" id="nursing">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <div class="section-title-group">
+                        <h2>Nursing Priorities &amp; Safety</h2>
+                        <div class="subtitle">Pre-op, post-op, and beyond</div>
+                    </div>
+                </div>
+
+                <h3>Medulloblastoma: Pre-Op Priorities</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-gauge-high"></i>
+                        <p><strong>Neuro checks q1&ndash;2 hours</strong> &mdash; LOC, pupils, cranial nerves, motor, reflexes. Detect rising ICP early.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-bed"></i>
+                        <p><strong>HOB elevated 30&deg;</strong>, head midline; avoid Trendelenburg; minimize activities that raise ICP (coughing, straining, suctioning).</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-droplet"></i>
+                        <p><strong>Fluid balance</strong> &mdash; avoid fluid overload; strict I&amp;O. Avoid hypotonic fluids.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-comments"></i>
+                        <p><strong>Prep child &amp; family</strong> for surgery &mdash; age-appropriate explanations, child life involvement, tour of PICU.</p>
+                    </div>
+                </div>
+
+                <h3>Medulloblastoma: Post-Op Priorities (Posterior Fossa Craniotomy)</h3>
+
+                <ol class="step-list">
+                    <li><strong>Positioning:</strong> <strong>flat side-lying or prone</strong> on the UN-operated side to prevent pressure on the surgical site. <strong>NOT Trendelenburg</strong> (raises ICP). HOB is usually flat or slightly elevated per surgeon orders &mdash; verify.</li>
+                    <li><strong>Neuro checks q15 minutes initially</strong>, spacing out as stable. Watch for return of increased ICP, new focal deficits, seizure, or Cushing's triad.</li>
+                    <li><strong>Monitor VP shunt or EVD</strong> if present; keep level of drip chamber per order; document output, color, clarity of CSF.</li>
+                    <li><strong>Pain management</strong> &mdash; opioids cautiously (opioid-induced sedation may mask neuro changes); scheduled acetaminophen.</li>
+                    <li><strong>Watch for cerebellar mutism syndrome</strong> &mdash; transient muteness, dysphagia, emotional lability, irritability 1&ndash;2 days post-op. Usually resolves over weeks to months; provide reassurance and communication supports.</li>
+                    <li><strong>Skin &amp; wound care</strong> &mdash; suture/staple line care; monitor for CSF leak, infection, dehiscence.</li>
+                    <li>Begin <strong>PT/OT early</strong>; anticipate balance/coordination deficits; involve child life and rehab.</li>
+                </ol>
+
+                <div class="info-box pediatric">
+                    <div class="info-box-icon"><i class="fas fa-comment-slash"></i></div>
+                    <div class="info-box-content">
+                        <h5>Cerebellar Mutism Syndrome</h5>
+                        <p>A post-operative complication seen in up to 25% of posterior fossa surgeries. The child is initially alert after surgery, then develops <strong>decreased speech or complete muteness, dysphagia, and emotional lability</strong> 24&ndash;96 hours later. Often resolves in weeks to months. Prepare families &mdash; it\u2019s frightening but not permanent. Speech therapy, reassurance, and alternative communication strategies help.</p>
+                    </div>
+                </div>
+
+                <h3>Neuroblastoma: Priorities</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-hand-dots"></i>
+                        <p><strong>DO NOT PALPATE</strong> the abdominal mass. Post sign at bedside; educate all staff and parents.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-heart-pulse"></i>
+                        <p><strong>Monitor blood pressure</strong> &mdash; catecholamine release can cause HTN; watch for tachycardia, flushing, sweating.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-weight-scale"></i>
+                        <p><strong>Weight and nutrition</strong> &mdash; kids may be underweight; consult dietitian, NG feeds, or TPN as needed.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-shield-virus"></i>
+                        <p><strong>Neutropenic precautions</strong> during chemo &mdash; no rectal temps, fresh flowers, live vaccines, raw food; prompt fever response.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-droplet"></i>
+                        <p><strong>Tumor lysis monitoring</strong> &mdash; high tumor burden at induction; hydrate + allopurinol/rasburicase.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-bone"></i>
+                        <p><strong>Pain control</strong> for bone metastases; scheduled opioids, PCA for older children, heat, distraction.</p>
+                    </div>
+                </div>
+
+                <h3>Post-Op Abdominal Surgery (Neuroblastoma)</h3>
+
+                <ul>
+                    <li>Vital signs q15&ndash;30 min initially, cardiac monitoring.</li>
+                    <li>Pain control, wound assessment, bowel sounds, I&amp;O.</li>
+                    <li>Early mobilization when stable; prevent ileus, atelectasis, VTE.</li>
+                    <li>Monitor for BP swings from catecholamine changes post-resection.</li>
+                </ul>
+
+                <div class="florencebot-tip" id="tip-do-not-palpate">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                    </div>
+                    <div class="florencebot-tip-title">The Three "Do Not Palpate" Tumors</div>
+                    <div class="florencebot-tip-content">
+                        Three pediatric tumors where palpation can spread cancer cells: <strong>neuroblastoma, Wilms tumor, and hepatoblastoma</strong>. If the NCLEX stem mentions any pediatric abdominal mass, the first intervention is almost always <strong>do not palpate + notify the provider</strong>. Inspection and auscultation only.
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Medulloblastoma post-op = side-lying/prone, NOT Trendelenburg. Watch for cerebellar mutism. Neuroblastoma: NEVER palpate. BP swings from catecholamines.</div>
+            </section>
+
+            <!-- Section 7: Family Coping -->
+            <section class="guide-section" id="family">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <div class="section-title-group">
+                        <h2>Family Coping &amp; Education</h2>
+                        <div class="subtitle">A long journey for the whole family</div>
+                    </div>
+                </div>
+
+                <p>A brain tumor or metastatic neuroblastoma diagnosis upends family life for years. Extended hospitalizations, rehab, developmental delays, and financial stress are common. Nursing presence through the journey is significant.</p>
+
+                <h3>Key Education Points</h3>
+
+                <div class="key-point-grid">
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Recognize signs of ICP or recurrence</strong> &mdash; morning headaches, vomiting, personality changes, balance issues.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Fever &ge; 100.4&deg;F in a neutropenic child = ED immediately</strong> &mdash; never delay.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Chemotherapy adherence and follow-up schedules</strong> &mdash; missing doses reduces cure rates.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Feeding &amp; hydration plan</strong> &mdash; weight loss is dangerous; NG or TPN may be needed.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Avoid sick contacts, live vaccines in household</strong> during active therapy.</p>
+                    </div>
+                    <div class="key-point-item">
+                        <i class="fas fa-check-circle"></i>
+                        <p><strong>Long-term follow-up</strong> &mdash; late effects clinic; growth, hearing, cognition, endocrine, cardiac.</p>
+                    </div>
+                </div>
+
+                <h3>Psychosocial Supports</h3>
+
+                <ul>
+                    <li><strong>Child life specialists</strong> &mdash; procedure preparation, play therapy, developmental support.</li>
+                    <li><strong>Social work</strong> &mdash; insurance, financial assistance, lodging (Ronald McDonald House), transportation, meal support.</li>
+                    <li><strong>Siblings</strong> &mdash; often overlooked; include in age-appropriate conversations, plan for their own mental health.</li>
+                    <li><strong>School re-entry programs</strong> &mdash; help with absences, missed content, peer preparation, 504 plan / IEP.</li>
+                    <li><strong>Neuropsychology services</strong> for children with CNS treatment; cognitive rehabilitation.</li>
+                    <li><strong>Support organizations</strong> &mdash; Children\u2019s Oncology Group family resources, American Childhood Cancer Organization, disease-specific foundations.</li>
+                </ul>
+
+                <h3>End-of-Therapy Milestones</h3>
+
+                <ul>
+                    <li>End-of-chemo "bell ringing" ceremonies at many centers &mdash; celebrate!</li>
+                    <li>Transition to survivorship clinic visits; yearly follow-up for at least 10 years or lifelong for high-risk disease.</li>
+                    <li>Address fear of recurrence &mdash; normalize ongoing anxiety; refer for mental health support.</li>
+                </ul>
+
+                <div class="info-box safe">
+                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
+                    <div class="info-box-content">
+                        <h5>Survivorship Is the Goal</h5>
+                        <p>Childhood cancer survival rates have tripled in the past 50 years. Most children with low/intermediate-risk neuroblastoma and medulloblastoma become long-term survivors. Your role as the nurse is to protect the whole child &mdash; not just through treatment, but through the transition back to school, sports, friendships, and eventually independent adulthood.</p>
+                    </div>
+                </div>
+
+                <div class="bottom-line">🎯 Bottom Line: Long journey. Recognize recurrence/ICP signs. Fever = ED. Siblings need support too. Survivorship clinic for late effects.</div>
+            </section>
+
+            <!-- Quiz CTA -->
+            <div class="quiz-cta">
+                <h3>Test your knowledge</h3>
+                <p>14 NCLEX-style questions covering every section of this guide.</p>
+                <a href="quiz/quiz.html?topic=pediatric-solid-tumors" class="quiz-btn">
+                    <i class="fas fa-flask"></i> Start Quiz
+                </a>
+            </div>
+
+            <!-- Cross References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
+                <div class="cross-ref-grid">
+                    <a href="pediatric-leukemias.html" class="cross-ref-link">
+                        <i class="fas fa-dna"></i> Pediatric Leukemias
+                    </a>
+                    <a href="sickle-cell-crisis.html" class="cross-ref-link">
+                        <i class="fas fa-circle"></i> Sickle Cell Crisis
+                    </a>
+                    <a href="seizures.html" class="cross-ref-link">
+                        <i class="fas fa-brain"></i> Seizures
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- end document-content -->
+
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div><!-- end document-container -->
+
+    <script src="configs/pediatric-solid-tumors-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="../content-gate.js"></script>
+    <script src="../cookie-consent.js"></script>
+</body>
+</html>

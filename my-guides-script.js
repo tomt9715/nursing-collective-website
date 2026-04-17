@@ -251,11 +251,10 @@
                         { name: 'Pediatric Leukemias (ALL/AML)', file: 'pediatric-leukemias' },
                         { name: 'Sickle Cell Crisis', file: 'sickle-cell-crisis' },
                         { name: 'Pediatric Solid Tumors', file: 'pediatric-solid-tumors' },
-                        { name: 'Bleeding Disorders (Hemophilia & ITP)', file: 'bleeding-disorders' }
+                        { name: 'Bleeding Disorders (Hemophilia & ITP)', file: 'bleeding-disorders' },
+                        { name: 'Iron-Deficiency Anemia', file: 'iron-deficiency-anemia' }
                     ],
-                    comingSoon: [
-                        { name: 'Iron-Deficiency Anemia' }
-                    ]
+                    comingSoon: []
                 },
                 {
                     category: 'Pediatric Immune & Rheumatology',

@@ -3,6 +3,64 @@
 
 // Guide preview content (realistic placeholder - preview of full guide)
 const guidePreviewContent = {
+    'iron-deficiency-anemia': {
+        title: 'Iron-Deficiency Anemia',
+        storeUrl: 'pricing.html#iron-deficiency-anemia',
+        content: `
+# Iron-Deficiency Anemia Study Guide
+
+## Overview
+The most common childhood anemia. Risk factors, classic signs, iron supplementation with vitamin C, administration pearls, and family teaching.
+
+## What You'll Learn
+
+### Who Is at Risk
+- **Infants 6–24 months** (stores depleted after 6 mo)
+- **Adolescent girls** (menses + growth)
+- **Excess cow's milk** (>24 oz/day)
+- Preterm/low birth weight
+
+### Classic Signs
+- **Pallor** (conjunctiva, palms, nail beds)
+- Fatigue, irritability, tachycardia, flow murmur
+- **Pica** — eating dirt, ice, paint chips (check lead level)
+- Spoon nails (koilonychia), glossitis
+
+### Lab Pattern
+- **Microcytic, hypochromic** anemia (low MCV, low MCH)
+- **Ferritin drops FIRST**
+- Low serum iron, **HIGH TIBC**
+- Peripheral smear: small, pale RBCs
+
+### Iron Administration Pearls
+- **Give through a straw or syringe** to prevent tooth staining
+- **Rinse mouth or brush teeth** after
+- **Take with vitamin C** (orange juice) — enhances absorption
+- **Avoid milk/dairy/antacids** (block absorption)
+- **Dark green/black stools are NORMAL**
+- Give between meals on empty stomach if tolerated
+
+### Iron Poisoning
+- **Leading cause of pediatric poisoning death**
+- Store in child-proof containers, out of reach
+- Overdose → vomiting, bloody diarrhea, shock, liver failure
+- **Antidote: deferoxamine** (turns urine reddish)
+
+### Prevention
+- Iron-fortified infant cereal from 4–6 months
+- NO cow's milk before age 1
+- Limit milk to 16–24 oz/day after age 1
+- Iron-rich foods: meat, beans, spinach, fortified grains
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth content*
+- *NCLEX-style practice questions*
+- *Iron administration and poisoning pearls*
+- *Family education handouts*
+        `
+    },
     'bleeding-disorders': {
         title: 'Bleeding Disorders (Hemophilia & ITP)',
         storeUrl: 'pricing.html#bleeding-disorders',

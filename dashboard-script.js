@@ -909,7 +909,8 @@ function populateGuidesFlyout() {
         'pediatric-leukemias': 'Pediatric Nursing',
         'sickle-cell-crisis': 'Pediatric Nursing',
         'pediatric-solid-tumors': 'Pediatric Nursing',
-        'bleeding-disorders': 'Pediatric Nursing'
+        'bleeding-disorders': 'Pediatric Nursing',
+        'iron-deficiency-anemia': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

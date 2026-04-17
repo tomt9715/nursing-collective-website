@@ -185,10 +185,10 @@
                     icon: 'fa-heart-pulse',
                     colorClass: 'icon-pediatrics',
                     guides: [
-                        { name: 'Congenital Heart Defects', file: 'pediatric-congenital-heart-defects' }
+                        { name: 'Congenital Heart Defects', file: 'pediatric-congenital-heart-defects' },
+                        { name: 'Kawasaki Disease', file: 'kawasaki-disease' }
                     ],
                     comingSoon: [
-                        { name: 'Kawasaki Disease' },
                         { name: 'Rheumatic Fever & Endocarditis' }
                     ]
                 },

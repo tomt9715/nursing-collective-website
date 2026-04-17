@@ -138,6 +138,51 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'kawasaki-disease': {
+        title: 'Kawasaki Disease',
+        storeUrl: 'pricing.html#kawasaki-disease',
+        content: `
+# Kawasaki Disease Study Guide
+
+## Overview
+Master the recognition and treatment of Kawasaki disease — an acute vasculitis that's now the #1 cause of acquired pediatric heart disease.
+
+## What You'll Learn
+
+### CRASH and BURN Criteria
+- **C**onjunctivitis (bilateral, non-purulent)
+- **R**ash (polymorphous)
+- **A**denopathy (unilateral cervical)
+- **S**trawberry tongue / oral changes
+- **H**ands & feet: swollen → peeling
+- **BURN** = fever ≥5 days
+- Diagnosis: fever + 4 of 5 principal features
+
+### Three Phases
+1. **Acute (weeks 1–2):** fever, criteria appear, intense irritability
+2. **Subacute (weeks 2–4):** peeling, platelets >1 million, coronary aneurysms
+3. **Convalescent (weeks 4–8):** labs normalize, echo follow-up continues
+
+### Treatment
+- **IVIG 2 g/kg** single infusion within first 10 days — drops aneurysm risk from 25% to <5%
+- **High-dose aspirin (80-100 mg/kg/day)** while febrile, then low-dose (3-5 mg/kg/day) for 6-8 weeks
+- The one pediatric exception to the "no aspirin" rule — but STOP if exposed to flu or varicella
+- Delay live vaccines (MMR, varicella) for 11 months after IVIG
+
+### Complications
+- **Coronary artery aneurysms** — the main concern
+- Myocarditis, pericarditis, arrhythmias
+- Lifelong cardiology follow-up if aneurysms persist
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth clinical breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+- *Printable study materials*
+        `
+    },
     'pediatric-congenital-heart-defects': {
         title: 'Pediatric Congenital Heart Defects',
         storeUrl: 'pricing.html#pediatric-congenital-heart-defects',

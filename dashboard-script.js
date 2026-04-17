@@ -892,7 +892,8 @@ function populateGuidesFlyout() {
         'fractures': 'Musculoskeletal', 'arthritis': 'Musculoskeletal', 'hip-knee-replacement': 'Musculoskeletal', 'osteoporosis': 'Musculoskeletal', 'amputation-care': 'Musculoskeletal',
         'cardiac-medications': 'Pharmacology', 'antibiotics-antivirals': 'Pharmacology', 'pain-management': 'Pharmacology', 'iv-medications': 'Pharmacology', 'psychotropic-medications': 'Pharmacology', 'emergency-medications': 'Pharmacology',
         'assessment-skills': 'Fundamentals', 'infection-control': 'Fundamentals', 'documentation-charting': 'Fundamentals', 'patient-safety': 'Fundamentals', 'mobility-transfers': 'Fundamentals',
-        'pediatric-congenital-heart-defects': 'Pediatric Nursing'
+        'pediatric-congenital-heart-defects': 'Pediatric Nursing',
+        'kawasaki-disease': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

@@ -138,6 +138,53 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'neural-tube-defects': {
+        title: 'Neural Tube Defects',
+        storeUrl: 'pricing.html#neural-tube-defects',
+        content: `
+# Neural Tube Defects Study Guide
+
+## Overview
+From folic acid prevention to pre-op sac care, latex-free environments, and a lifetime of interdisciplinary support.
+
+## What You'll Learn
+
+### The Three Types of Spina Bifida
+- **Occulta** — hidden vertebral defect, often asymptomatic (hair tuft, dimple, port-wine mark)
+- **Meningocele** — sac with meninges only, no neural tissue, good prognosis
+- **Myelomeningocele** — most severe, includes spinal cord, causes paralysis + neurogenic bowel/bladder + hydrocephalus
+
+### Prevention
+- **Folic acid 400 mcg/day** for all women of childbearing age
+- **4 mg/day** for women with prior NTD pregnancy
+- Start BEFORE conception — tube closes by day 28
+
+### Pre-Op Priorities
+- **Prone or side-lying** (never supine)
+- **Sterile saline-moistened dressing** on the sac
+- **Latex-free environment** from day 1
+- Monitor head circumference (hydrocephalus)
+- Surgery within 24-72 hours
+
+### Long-Term Management
+- **80-90% need VP shunt** for hydrocephalus (Chiari II malformation)
+- **Clean intermittent catheterization** for neurogenic bladder
+- Bowel program, orthopedic monitoring, PT/OT
+- **Lifelong latex avoidance** — foods: banana, avocado, kiwi
+
+### Key Teaching
+- Shunt malfunction signs: headache, vomiting, lethargy — urgent
+- Skin checks in insensate areas
+- Medical alert bracelet for latex allergy
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *Disorder-by-disorder breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'male-gu-disorders': {
         title: 'Male GU Disorders',
         storeUrl: 'pricing.html#male-gu-disorders',

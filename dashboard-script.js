@@ -900,7 +900,8 @@ function populateGuidesFlyout() {
         'pediatric-gerd': 'Pediatric Nursing',
         'pediatric-renal-disorders': 'Pediatric Nursing',
         'uti-vur-enuresis': 'Pediatric Nursing',
-        'male-gu-disorders': 'Pediatric Nursing'
+        'male-gu-disorders': 'Pediatric Nursing',
+        'neural-tube-defects': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

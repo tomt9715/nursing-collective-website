@@ -220,9 +220,10 @@
                     categoryIcon: 'musculoskeletal-icon',
                     icon: 'fa-bone',
                     colorClass: 'icon-pediatrics',
-                    guides: [],
+                    guides: [
+                        { name: 'Neural Tube Defects', file: 'neural-tube-defects' }
+                    ],
                     comingSoon: [
-                        { name: 'Neural Tube Defects' },
                         { name: 'Pediatric Fractures & Immobility' }
                     ]
                 },

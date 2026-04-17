@@ -896,7 +896,8 @@ function populateGuidesFlyout() {
         'kawasaki-disease': 'Pediatric Nursing',
         'rheumatic-fever-endocarditis': 'Pediatric Nursing',
         'pediatric-gi-obstructions': 'Pediatric Nursing',
-        'cleft-lip-palate': 'Pediatric Nursing'
+        'cleft-lip-palate': 'Pediatric Nursing',
+        'pediatric-gerd': 'Pediatric Nursing'
     };
 
     ids.forEach(function(id) {

@@ -198,11 +198,10 @@
                     colorClass: 'icon-pediatrics',
                     guides: [
                         { name: 'Pediatric GI Obstructions', file: 'pediatric-gi-obstructions' },
-                        { name: 'Cleft Lip & Palate', file: 'cleft-lip-palate' }
+                        { name: 'Cleft Lip & Palate', file: 'cleft-lip-palate' },
+                        { name: 'Pediatric GERD', file: 'pediatric-gerd' }
                     ],
-                    comingSoon: [
-                        { name: 'Pediatric GERD' }
-                    ]
+                    comingSoon: []
                 },
                 {
                     category: 'Pediatric GU',

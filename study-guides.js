@@ -138,6 +138,51 @@ Characterized by recurrent episodes of binge eating followed by compensatory beh
 - *Printable study materials*
         `
     },
+    'pediatric-gerd': {
+        title: 'Pediatric GERD',
+        storeUrl: 'pricing.html#pediatric-gerd',
+        content: `
+# Pediatric GERD Study Guide
+
+## Overview
+Telling physiologic reflux ("happy spitter") from pathologic GERD, recognizing red flags, and knowing when conservative care gives way to meds and surgery.
+
+## What You'll Learn
+
+### GER vs GERD
+- **GER** = physiologic reflux, normal in infants, peaks 2-4 months, resolves 12-18 months
+- **GERD** = reflux + complications (FTT, feeding refusal, respiratory symptoms, esophagitis)
+- **"Happy spitter"** = spit-up with normal weight gain → GER, not GERD
+- Sandifer syndrome — back-arching during reflux (mimics seizure)
+
+### Red Flags (Not GERD)
+- Bilious (green) vomiting → obstruction
+- Projectile vomiting 2-8 wk → pyloric stenosis
+- Blood in vomit/stool
+- Fever, neuro signs, FTT
+- Onset >6 months, persistence past 18 months
+
+### Conservative Management (first-line)
+- **Upright positioning** during + 30 min after feeds
+- Small frequent feeds, burp every ½-1 oz
+- **Thickened feeds** (1 tsp rice cereal per oz formula)
+- Sleep SUPINE (flat firm surface) — SIDS risk overrules reflux
+- Older children: weight management, avoid trigger foods
+
+### Medications
+- **H2 blockers** (famotidine) first-line pharmacologic
+- **PPIs** (omeprazole, lansoprazole) — give 30-60 min BEFORE meals
+- **No metoclopramide** in young children (EPS/tardive dyskinesia)
+- **Nissen fundoplication** for severe refractory GERD
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth clinical breakdown*
+- *NCLEX-style practice questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'cleft-lip-palate': {
         title: 'Cleft Lip & Palate',
         storeUrl: 'pricing.html#cleft-lip-palate',

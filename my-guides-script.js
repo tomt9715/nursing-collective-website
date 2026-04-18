@@ -144,6 +144,23 @@
                         { name: 'RA vs Osteoarthritis', icon: 'arthritis' },
                         { name: 'Amputation', icon: 'amputation-care' }
                     ]
+                },
+                {
+                    category: 'Renal & Urinary',
+                    categoryIcon: 'renal-icon',
+                    icon: 'fa-droplet',
+                    colorClass: 'icon-renal',
+                    guides: [
+                        { name: 'UTI & Pyelonephritis', file: 'urinary-tract-infections' }
+                    ],
+                    comingSoon: [
+                        { name: 'Acute Kidney Injury', icon: 'acute-kidney-injury' },
+                        { name: 'Chronic Kidney Disease', icon: 'chronic-kidney-disease' },
+                        { name: 'Dialysis', icon: 'dialysis' },
+                        { name: 'Kidney Stones', icon: 'kidney-stones' },
+                        { name: 'Urinary Incontinence & Retention', icon: 'urinary-incontinence' },
+                        { name: 'Fluid & Electrolytes', icon: 'fluid-electrolytes' }
+                    ]
                 }
             ]
         },

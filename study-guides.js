@@ -433,6 +433,83 @@ Often results from left-sided failure. The right ventricle cannot effectively pu
 - *Printable study materials*
         `
     },
+    'urinary-tract-infections': {
+        title: 'UTI & Pyelonephritis',
+        storeUrl: 'pricing.html#urinary-tract-infections',
+        content: `
+# UTI & Pyelonephritis Study Guide
+
+## Overview
+Urinary tract infections are the most common hospital-acquired infection and a staple of every Med-Surg exam. This guide covers lower UTI (cystitis), upper UTI (pyelonephritis), catheter-associated UTIs, and escalation to urosepsis.
+
+---
+
+## Lower UTI (Cystitis)
+Bacteria colonize the bladder after ascending from the urethra.
+
+**Classic symptoms:**
+- Burning on urination (dysuria)
+- Urinary frequency (>q3h)
+- Urgency, nocturia, incontinence
+- Suprapubic or pelvic pain
+- Hematuria may be present
+
+**Treatment:** Oral antibiotics × 5–7 days + 8–10 glasses water/day.
+
+---
+
+## Upper UTI (Pyelonephritis)
+Bacterial infection of the renal pelvis, tubules, and interstitium.
+
+**Classic symptoms:**
+- Fever & chills
+- Flank pain / low back pain
+- **Costovertebral angle (CVA) tenderness**
+- Nausea, vomiting, malaise
+- Leukocytosis, bacteriuria, pyuria, WBC casts
+
+**Treatment:** IV antibiotics × 2–3 weeks (total ~2 weeks course), usually hospitalized. Follow-up culture 2 weeks after completion.
+
+---
+
+## The One-Line Differentiator
+Burning + frequency + NO fever = **lower UTI**.
+Add fever, flank pain, and CVA tenderness = **upper UTI (pyelonephritis)**.
+
+---
+
+## Risk Factors
+Female sex, diabetes, pregnancy, neurogenic bladder, incomplete emptying (BPH, prolapse), obstruction (stones), instrumentation (catheters), immunosuppression.
+
+---
+
+## Atypical Presentation in Older Adults
+New confusion, falls, new incontinence, or lethargy in an elder → rule out UTI first.
+
+---
+
+## CAUTI Prevention (the #1 Hospital-Acquired Infection)
+- Avoid catheters when possible
+- Aseptic insertion, closed drainage system
+- Bag below bladder, no dependent loops
+- **Remove as soon as no longer needed**
+
+---
+
+## Patient Education
+- Finish the full antibiotic course
+- 8–10 glasses of water/day
+- Void every 2–3 hours, after intercourse
+- Wipe front to back, avoid bubble baths
+
+---
+
+*This is a free preview. Subscribe for full access including:*
+- *In-depth content on urosepsis and sepsis bundles*
+- *Lab value flashcards and NCLEX-style questions*
+- *Clinical pearls and memory aids*
+        `
+    },
     'eating-disorders': {
         title: 'Eating Disorders',
         storeUrl: 'pricing.html#eating-disorders',

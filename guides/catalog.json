@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-04-17T20:51:00.264588+00:00",
+  "generated_at": "2026-04-18T01:27:42.207816+00:00",
   "guides": {
     "assessment-skills": {
       "title": "Assessment Skills",
@@ -386,6 +386,27 @@
         "orthopedic",
         "replacement",
         "surgical"
+      ]
+    },
+    "urinary-tract-infections": {
+      "title": "UTI & Pyelonephritis",
+      "class": "med-surg",
+      "class_name": "Medical-Surgical Nursing",
+      "category": "renal-urinary",
+      "category_name": "Renal & Urinary",
+      "population": "adult",
+      "keywords": [
+        "bladder",
+        "cystitis",
+        "genitourinary",
+        "gu",
+        "kidney",
+        "medical",
+        "pyelonephritis",
+        "renal",
+        "surgical",
+        "urinary",
+        "uti"
       ]
     },
     "antepartum-care": {

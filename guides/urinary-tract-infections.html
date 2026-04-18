@@ -1,0 +1,1512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UTI &amp; Pyelonephritis Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Adult Med-Surg study guide for urinary tract infections and pyelonephritis. Lower vs upper UTI, risk factors, clinical manifestations, medical management, CAUTI prevention, and patient education.">
+    <link rel="canonical" href="https://thenursingcollective.pro/guides/urinary-tract-infections.html">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://thenursingcollective.pro/guides/urinary-tract-infections.html">
+    <meta property="og:title" content="UTI &amp; Pyelonephritis Study Guide - The Nursing Collective">
+    <meta property="og:description" content="Adult Med-Surg study guide for urinary tract infections and pyelonephritis. Lower vs upper UTI, risk factors, management, CAUTI prevention.">
+    <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
+
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="../css/cookie-consent.css">
+    <link rel="stylesheet" href="guide-sidebar.css">
+
+    <style>
+        /* ============================================
+           UTI & PYELONEPHRITIS
+           Med-Surg · Renal & Urinary
+           Flowchart-style layout, amber/gold scheme
+           ============================================ */
+
+        :root {
+            --navy: #0d1b2a;
+            --navy-2: #162032;
+            --navy-3: #1e2d3e;
+            --card-dark: #1a2940;
+            --teal: #0fbcad;
+            --teal-dim: #0a9086;
+            --amber: #f4a535;
+            --green: #3dbd7a;
+            --red: #e05252;
+            --purple: #8b5cf6;
+            --text-inv: #e8edf2;
+            --text-inv-dim: #8a9bb0;
+            --border-inv: rgba(255, 255, 255, 0.07);
+            --border-inv-mid: rgba(255, 255, 255, 0.12);
+
+            --paper: #162032;
+            --paper-warm: #1a2940;
+            --paper-deep: #1e2d3e;
+            --ink: #f1f5f9;
+            --ink-soft: #c4ccd8;
+            --ink-dimmer: #8a9bb0;
+            --rule: rgba(255, 255, 255, 0.08);
+            --rule-mid: rgba(255, 255, 255, 0.14);
+
+            --renal-gold: #f4a535;
+            --renal-gold-deep: #d97706;
+            --renal-amber: #fbbf24;
+            --renal-blush: rgba(244, 165, 53, 0.12);
+            --renal-blush-2: rgba(244, 165, 53, 0.22);
+
+            --critical: #dc2626;
+            --safe: #10b981;
+            --warning: #f59e0b;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--ink-soft);
+            background: var(--navy);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .download-bar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(13, 27, 42, 0.92);
+            -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+            color: var(--text-inv);
+            padding: 12px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-bottom: 0.5px solid var(--border-inv);
+        }
+        .download-bar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.01em;
+            color: var(--text-inv);
+        }
+        .download-bar-brand i { color: var(--renal-gold); font-size: 16px; }
+        .download-bar-actions { display: flex; gap: 10px; }
+
+        .btn-download, .btn-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+            border: 0.5px solid var(--border-inv-mid);
+        }
+        .btn-download { background: var(--renal-gold); color: var(--navy); border-color: var(--renal-gold); }
+        .btn-download:hover { background: var(--renal-gold-deep); border-color: var(--renal-gold-deep); transform: translateY(-1px); }
+        .btn-back { background: transparent; color: var(--text-inv-dim); }
+        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
+
+        .document-container {
+            max-width: 900px;
+            margin: 80px auto 40px;
+            background: var(--paper);
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 0.5px solid var(--rule-mid);
+        }
+
+        .cover-page {
+            background:
+                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(244, 165, 53, 0.22) 0%, transparent 70%),
+                linear-gradient(180deg, #1a1410 0%, #0d1b2a 100%);
+            color: white;
+            padding: 72px 60px 56px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-top: 3px solid var(--renal-gold);
+        }
+        .cover-page::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 120px;
+            background: linear-gradient(180deg, rgba(244, 165, 53, 0.08) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        .cover-content { position: relative; z-index: 1; }
+
+        .cover-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.28);
+            border-radius: 50px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 1.8px;
+            text-transform: uppercase;
+            margin-bottom: 24px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-badge i { color: var(--renal-amber); font-size: 10px; }
+
+        .cover-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            margin-bottom: 14px;
+            line-height: 1.08;
+            letter-spacing: -0.01em;
+        }
+        .cover-subtitle {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.72);
+            max-width: 580px;
+            margin: 0 auto 32px;
+            line-height: 1.55;
+        }
+
+        .cover-meta {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 10px 22px;
+            background: rgba(255, 255, 255, 0.04);
+            border: 0.5px solid rgba(255, 255, 255, 0.12);
+            border-radius: 999px;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        .cover-meta-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            font-family: 'DM Mono', monospace;
+            font-size: 11px;
+            letter-spacing: 0.8px;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+        }
+        .cover-meta-item i { color: var(--renal-gold); font-size: 11px; }
+        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
+
+        .document-content { padding: 56px 56px 48px; background: var(--paper); }
+
+        .learning-objectives {
+            background: var(--renal-blush);
+            border: 1px solid var(--renal-blush-2);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .learning-objectives h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--renal-amber);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .learning-objectives h2 i { color: var(--renal-gold); }
+        .learning-objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        .objective-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        .objective-card i { color: var(--renal-gold); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
+        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
+
+        .high-yield-summary {
+            background: linear-gradient(135deg, rgba(244, 165, 53, 0.1), rgba(244, 165, 53, 0.02));
+            border: 1px solid rgba(244, 165, 53, 0.25);
+            border-left: 4px solid var(--renal-gold);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 36px;
+        }
+        .high-yield-summary h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--renal-amber);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .high-yield-summary h2 i { color: var(--renal-amber); }
+        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
+        .high-yield-summary ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 4px;
+        }
+        .high-yield-summary li {
+            background: rgba(0, 0, 0, 0.18);
+            border-radius: 8px;
+            padding: 12px 14px 12px 38px;
+            color: var(--ink-soft);
+            font-size: 0.88rem;
+            line-height: 1.55;
+            position: relative;
+        }
+        .high-yield-summary li::before {
+            content: '\f0eb';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 14px;
+            top: 14px;
+            color: var(--renal-amber);
+            font-size: 0.82rem;
+        }
+        .high-yield-summary strong { color: var(--renal-amber); font-weight: 600; }
+        .high-yield-summary li strong { color: var(--renal-amber); }
+        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--renal-amber); font-size: 0.95rem; }
+
+        .sticky-nav {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 12px;
+            padding: 18px 20px;
+            margin-bottom: 36px;
+        }
+        .sticky-nav h3 {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            font-weight: 500;
+            color: var(--ink-dimmer);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+        .nav-pills a {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 8px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.87rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        .nav-pills a:hover { background: var(--renal-gold); color: var(--navy); border-color: var(--renal-gold); }
+        .nav-pills a i { font-size: 0.82rem; }
+
+        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
+        .section-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--rule);
+        }
+        .section-number {
+            flex-shrink: 0;
+            width: 44px; height: 44px;
+            border-radius: 10px;
+            background: linear-gradient(135deg, var(--renal-gold), var(--renal-gold-deep));
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(244, 165, 53, 0.3);
+        }
+        .section-title-group { flex: 1; min-width: 0; }
+        .section-title-group h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--ink);
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
+
+        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
+        .guide-section h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.22rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 24px 0 12px;
+        }
+        .guide-section h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 18px 0 8px;
+        }
+        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
+        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
+        .guide-section strong { color: var(--ink); font-weight: 600; }
+
+        .guide-table-wrapper {
+            overflow-x: auto;
+            margin: 18px 0;
+            border-radius: 10px;
+            border: 1px solid var(--rule);
+        }
+        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
+        .guide-table thead { background: linear-gradient(135deg, var(--renal-gold), var(--renal-gold-deep)); color: var(--navy); }
+        .guide-table th {
+            padding: 12px 14px;
+            text-align: left;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+        }
+        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
+        .guide-table tbody { background: var(--paper-warm); }
+        .guide-table tbody tr:last-child td { border-bottom: none; }
+        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
+        .guide-table tbody tr:hover { background: var(--renal-blush); }
+        .guide-table td strong { color: var(--ink); }
+
+        /* Process-flow (bacteria-ascending path) */
+        .process-flow {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+            margin: 20px 0 28px;
+            position: relative;
+        }
+        .process-step {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            padding: 14px 12px;
+            text-align: center;
+            position: relative;
+        }
+        .process-step::after {
+            content: '\f054';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: -10px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--renal-gold);
+            font-size: 0.8rem;
+            z-index: 1;
+        }
+        .process-step:last-child::after { display: none; }
+        .process-step-icon {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            background: var(--renal-blush);
+            color: var(--renal-amber);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-size: 1rem;
+        }
+        .process-step.escalate .process-step-icon { background: rgba(220, 38, 38, 0.18); color: #f87171; }
+        .process-step h5 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 4px;
+            letter-spacing: 0.02em;
+        }
+        .process-step p {
+            font-size: 0.78rem;
+            color: var(--ink-dimmer);
+            margin: 0;
+            line-height: 1.4;
+        }
+
+        /* Disorder / condition profile card */
+        .disorder-profile {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 14px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .disorder-profile-header {
+            padding: 18px 24px;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .disorder-profile-header.lower { background: linear-gradient(135deg, #f4a535, #d97706); color: var(--navy); }
+        .disorder-profile-header.upper { background: linear-gradient(135deg, #dc2626, #7f1d1d); }
+        .disorder-profile-header.cauti { background: linear-gradient(135deg, #7c3aed, #4c1d95); }
+        .disorder-profile-header i { font-size: 1.3rem; }
+        .disorder-profile-header h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .disorder-profile-header.lower h3 { color: var(--navy); }
+        .disorder-profile-header.upper h3, .disorder-profile-header.cauti h3 { color: white; }
+        .disorder-profile-header .tag {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            opacity: 0.88;
+            text-transform: uppercase;
+        }
+        .disorder-profile-body { padding: 22px 24px; }
+        .disorder-profile-body h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--renal-amber);
+            margin: 18px 0 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .disorder-profile-body h4:first-child { margin-top: 0; }
+        .disorder-profile-body ul { margin: 0 0 8px 0; padding-left: 22px; }
+        .disorder-profile-body li {
+            margin-bottom: 6px;
+            font-size: 0.95rem;
+            color: var(--ink-soft);
+            line-height: 1.55;
+        }
+        .disorder-profile-body strong { color: var(--ink); }
+
+        /* Compare grid (Lower vs Upper) */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .compare-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .compare-card-header {
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .compare-card-header.lower { background: linear-gradient(135deg, #f4a535, #d97706); color: var(--navy); }
+        .compare-card-header.upper { background: linear-gradient(135deg, #dc2626, #7f1d1d); color: white; }
+        .compare-card-header i { font-size: 1.3rem; }
+        .compare-card-header h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin: 0;
+        }
+        .compare-card-header .tag {
+            margin-left: auto;
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+            opacity: 0.88;
+            text-transform: uppercase;
+        }
+        .compare-card-body { padding: 18px 20px; }
+        .compare-card-body ul { padding-left: 20px; margin: 0; }
+        .compare-card-body li {
+            margin-bottom: 8px;
+            font-size: 0.93rem;
+            color: var(--ink-soft);
+            line-height: 1.55;
+        }
+
+        /* Lab value / quick fact card grid */
+        .lab-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin: 18px 0;
+        }
+        .lab-card {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-left: 3px solid var(--renal-gold);
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .lab-card.critical { border-left-color: var(--red); }
+        .lab-card.normal { border-left-color: var(--green); }
+        .lab-card h5 {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--ink-dimmer);
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            margin-bottom: 6px;
+        }
+        .lab-card .value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--renal-amber);
+            margin-bottom: 4px;
+        }
+        .lab-card.critical .value { color: #f87171; }
+        .lab-card.normal .value { color: var(--green); }
+        .lab-card p {
+            font-size: 0.82rem !important;
+            color: var(--ink-dimmer);
+            line-height: 1.45;
+            margin: 0 !important;
+        }
+
+        /* Info boxes */
+        .info-box {
+            display: flex;
+            gap: 14px;
+            padding: 18px 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 1px solid var(--rule);
+            border-left-width: 4px;
+        }
+        .info-box-icon {
+            flex-shrink: 0;
+            width: 34px; height: 34px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .info-box-content { flex: 1; min-width: 0; }
+        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
+        .info-box-content ul { margin: 6px 0 0; padding-left: 18px; }
+        .info-box-content li { font-size: 0.92rem; line-height: 1.55; margin-bottom: 4px; }
+
+        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
+        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .info-box.clinical h5 { color: #fbbf24; }
+        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
+        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
+        .info-box.critical h5 { color: #fca5a5; }
+        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
+        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
+        .info-box.nclex h5 { color: #93c5fd; }
+        .info-box.geriatric { background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.2); border-left-color: #c4b5fd; }
+        .info-box.geriatric .info-box-icon { background: rgba(139, 92, 246, 0.2); color: #c4b5fd; }
+        .info-box.geriatric h5 { color: #c4b5fd; }
+        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
+        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
+        .info-box.safe h5 { color: #86efac; }
+        .info-box p { color: var(--ink-soft); }
+        .info-box strong { color: var(--ink); }
+
+        /* FlorenceBot tips */
+        .florencebot-tip {
+            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
+            border: 1px solid rgba(15, 188, 173, 0.22);
+            border-radius: 14px;
+            padding: 22px 24px;
+            margin: 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .florencebot-tip::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 4px; height: 100%;
+            background: var(--teal);
+        }
+        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+        .florencebot-tip-icon {
+            width: 32px; height: 32px;
+            background: var(--teal);
+            border-radius: 8px;
+            color: var(--navy);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .florencebot-tip-label {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--teal);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .florencebot-tip h4 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin: 0 0 10px;
+        }
+        .florencebot-tip p {
+            color: var(--ink-soft);
+            margin: 0 0 8px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .florencebot-tip p:last-child { margin-bottom: 0; }
+        .florencebot-tip strong { color: var(--teal); }
+
+        /* Quiz CTA */
+        .quiz-cta {
+            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.02));
+            border: 1px solid rgba(15, 188, 173, 0.22);
+            border-radius: 14px;
+            padding: 28px 32px;
+            margin: 40px 0 32px;
+            text-align: center;
+        }
+        .quiz-cta h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 8px;
+        }
+        .quiz-cta p {
+            color: var(--ink-dimmer);
+            margin-bottom: 20px;
+            font-size: 0.98rem;
+        }
+        .quiz-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 26px;
+            background: var(--teal);
+            color: var(--navy);
+            border-radius: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 0.98rem;
+            text-decoration: none;
+            transition: all 0.15s ease;
+        }
+        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
+
+        /* Cross references */
+        .cross-references {
+            background: var(--paper-warm);
+            border: 0.5px solid var(--rule);
+            border-radius: 14px;
+            padding: 24px 28px;
+            margin: 32px 0;
+        }
+        .cross-references h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .cross-references h2 i { color: var(--renal-gold); }
+        .cross-ref-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px;
+        }
+        .cross-ref-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            background: var(--paper-deep);
+            border: 0.5px solid var(--rule);
+            border-radius: 10px;
+            color: var(--ink-soft);
+            text-decoration: none;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        .cross-ref-link:hover { background: var(--renal-blush); border-color: var(--renal-gold); color: var(--ink); }
+        .cross-ref-link i { color: var(--renal-gold); font-size: 0.92rem; }
+
+        .document-footer {
+            background: var(--navy-2);
+            padding: 28px 56px;
+            text-align: center;
+            border-top: 0.5px solid var(--rule);
+        }
+        .footer-logo { height: 28px; margin-bottom: 10px; opacity: 0.85; }
+        .footer-tagline {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.88rem;
+            color: var(--ink-dimmer);
+            margin-bottom: 6px;
+        }
+        .footer-copyright {
+            font-family: 'DM Mono', monospace;
+            font-size: 0.72rem;
+            color: var(--ink-dimmer);
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .document-container { margin: 72px 12px 24px; border-radius: 12px; }
+            .cover-page { padding: 48px 28px 40px; }
+            .cover-title { font-size: 2.1rem; }
+            .document-content { padding: 32px 24px 32px; }
+            .learning-objectives-grid { grid-template-columns: 1fr; }
+            .high-yield-summary ul { grid-template-columns: 1fr; }
+            .process-flow { grid-template-columns: repeat(2, 1fr); }
+            .process-step::after { display: none; }
+            .compare-grid { grid-template-columns: 1fr; }
+            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
+            .section-title-group h2 { font-size: 1.4rem; }
+            .document-footer { padding: 24px 24px; }
+        }
+    </style>
+</head>
+<body data-product-id="urinary-tract-infections" data-guide-name="UTI &amp; Pyelonephritis">
+
+    <header class="download-bar">
+        <div class="download-bar-brand">
+            <i class="fas fa-droplet"></i>
+            <span>UTI &amp; Pyelonephritis</span>
+        </div>
+        <div class="download-bar-actions">
+            <a href="../my-guides.html" class="btn-back">
+                <i class="fas fa-arrow-left"></i> Back to Guides
+            </a>
+        </div>
+    </header>
+
+    <div class="document-container">
+
+        <div class="cover-page">
+            <div class="cover-content">
+                <div class="cover-badge">
+                    <i class="fas fa-flask"></i> Med-Surg · Renal &amp; Urinary
+                </div>
+                <h1 class="cover-title">UTI &amp; Pyelonephritis</h1>
+                <p class="cover-subtitle">Lower UTI, upper UTI (pyelonephritis), and catheter-associated infections — the most common site of hospital-acquired infection. Know the ladder: bladder first, kidneys next.</p>
+                <div class="cover-meta">
+                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 8 Sections</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 18 Quiz Questions</span>
+                    <span class="cover-meta-sep"></span>
+                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~18 Min Read</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="document-content">
+
+            <div class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <div class="learning-objectives-grid">
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Differentiate lower UTI (bladder) from upper UTI (pyelonephritis) by symptoms, severity, and treatment course.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Identify risk factors that tip a normal urinary tract toward infection and how to modify them.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Recognize costovertebral angle (CVA) tenderness and why it signals pyelonephritis, not cystitis.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Interpret urinalysis and urine culture results (bacteriuria, pyuria, WBC casts) and escalate urosepsis.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Prevent catheter-associated UTIs (CAUTIs) — the most common hospital-acquired infection.</span>
+                    </div>
+                    <div class="objective-card">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Teach patients hydration, voiding habits, and antibiotic adherence to prevent recurrence.</span>
+                    </div>
+                </div>
+            </div>
+
+            <section class="high-yield-summary" id="high-yield-summary">
+                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
+                <p class="high-yield-subtitle">Ten facts that decide the UTI questions on your exam.</p>
+                <ul>
+                    <li><strong>Normal urinary tract is sterile above the urethra.</strong> UTI = pathogenic microorganisms colonizing the tract. <strong>E. coli</strong> causes 80%+ of uncomplicated UTIs.</li>
+                    <li><strong>Lower UTI (cystitis) classic 5:</strong> burning/dysuria, <strong>frequency</strong> (&gt;q3h), <strong>urgency</strong>, nocturia, <strong>suprapubic pain</strong>. Hematuria may be present. Treat: <strong>5&ndash;7 days oral antibiotics</strong>.</li>
+                    <li><strong>Upper UTI (pyelonephritis) classic 5:</strong> <strong>fever &amp; chills</strong>, <strong>flank / low back pain</strong>, <strong>CVA tenderness</strong>, N/V, malaise. Treat: <strong>2 weeks antibiotics, often IV</strong>, usually hospitalized.</li>
+                    <li><strong>Can't tell them apart?</strong> <strong>Fever + flank pain + CVA tenderness = upper tract.</strong> Without those = lower tract. This is the exam distinction.</li>
+                    <li><strong>UTIs are the #1 hospital-acquired infection.</strong> Most are <strong>catheter-associated (CAUTI)</strong>. Key prevention: aseptic insertion, <strong>earliest possible removal</strong>, closed drainage, bag below bladder.</li>
+                    <li><strong>Risk factors:</strong> female, diabetes, pregnancy, neurogenic bladder, immunosuppression, <strong>incomplete bladder emptying</strong>, catheter/instrumentation, obstruction (stones, BPH).</li>
+                    <li><strong>Older adults:</strong> often <strong>atypical presentation</strong> &mdash; confusion, falls, incontinence instead of burning/fever. <strong>Any new confusion in an elder, think UTI.</strong></li>
+                    <li><strong>Urosepsis:</strong> any UTI with systemic s/s (hypotension, tachycardia, altered mental status, low UOP). Can progress to septic shock &mdash; <strong>evaluate every patient with SIRS findings for urosepsis</strong>.</li>
+                    <li><strong>Urinalysis vs urine culture:</strong> UA detects WBCs, RBCs, nitrites, leukocyte esterase (quick screen). <strong>Culture confirms organism + sensitivities</strong> (guides antibiotic choice). Collect <strong>before</strong> starting antibiotics.</li>
+                    <li><strong>Patient teaching:</strong> complete the <strong>full antibiotic course</strong>, <strong>8&ndash;10 glasses water/day</strong>, void <strong>every 2&ndash;3 hours</strong>, wipe front to back, void after intercourse, avoid irritants (bubble baths, douches).</li>
+                </ul>
+                <p class="high-yield-cta">Full clinical breakdown below &darr;</p>
+            </section>
+
+            <nav class="sticky-nav">
+                <h3>Jump to section</h3>
+                <div class="nav-pills">
+                    <a href="#assessment"><i class="fas fa-stethoscope"></i> Kidney &amp; Urinary Assessment</a>
+                    <a href="#pathway"><i class="fas fa-route"></i> How Infection Ascends</a>
+                    <a href="#lower-uti"><i class="fas fa-droplet"></i> Lower UTI</a>
+                    <a href="#pyelonephritis"><i class="fas fa-fire"></i> Pyelonephritis</a>
+                    <a href="#compare"><i class="fas fa-not-equal"></i> Lower vs Upper</a>
+                    <a href="#cauti"><i class="fas fa-syringe"></i> CAUTI</a>
+                    <a href="#urosepsis"><i class="fas fa-triangle-exclamation"></i> Urosepsis</a>
+                    <a href="#education"><i class="fas fa-users"></i> Prevention &amp; Education</a>
+                </div>
+            </nav>
+
+            <!-- Section 1: Kidney & Urinary Assessment -->
+            <section class="guide-section" id="assessment">
+                <div class="section-header">
+                    <div class="section-number">1</div>
+                    <div class="section-title-group">
+                        <h2>Kidney &amp; Urinary Assessment</h2>
+                        <p class="subtitle">Functions, history clues, and the diagnostic workup you'll see on every UTI case.</p>
+                    </div>
+                </div>
+
+                <h3>What the kidneys do (why it matters)</h3>
+                <p>The kidneys are multitaskers. When they're not working, <strong>BUN and creatinine rise, fluid and electrolytes go sideways, BP and RBC counts drop</strong>. A UTI that climbs to the kidneys threatens all of this.</p>
+                <ul>
+                    <li><strong>Urine formation &amp; waste excretion</strong> &mdash; urea, creatinine, drugs</li>
+                    <li><strong>Electrolyte &amp; acid-base regulation</strong> &mdash; Na, K, bicarbonate</li>
+                    <li><strong>Fluid &amp; BP control</strong> &mdash; via the renin-angiotensin system</li>
+                    <li><strong>RBC production</strong> &mdash; kidneys release erythropoietin</li>
+                    <li><strong>Vitamin D activation</strong> &mdash; to support calcium balance</li>
+                </ul>
+
+                <div class="info-box geriatric">
+                    <div class="info-box-icon"><i class="fas fa-user-clock"></i></div>
+                    <div class="info-box-content">
+                        <h5>Gerontologic considerations</h5>
+                        <p>GFR declines about <strong>1 mL/min per year starting age 35&ndash;40</strong>. Older adults are more prone to acute &amp; chronic kidney injury, <strong>hypernatremia and fluid volume deficit</strong> (diminished thirst response), incomplete bladder emptying, and incontinence. Mobility and cognition affect whether they can even get to the toilet. Ask about fluid intake &mdash; many limit fluids on purpose to avoid voiding.</p>
+                    </div>
+                </div>
+
+                <h3>History questions that matter</h3>
+                <ul>
+                    <li><strong>Chief concern &amp; onset</strong> &mdash; when did symptoms start? acute or gradual?</li>
+                    <li><strong>Pain</strong> &mdash; character, duration, location, what triggers it, what relieves it, relationship to voiding</li>
+                    <li><strong>Voiding</strong> &mdash; frequency, urgency, burning, nocturia, hesitancy, incontinence</li>
+                    <li><strong>Urine</strong> &mdash; color, odor, blood (hematuria), volume</li>
+                    <li><strong>Red-flag definitions:</strong>
+                        <ul>
+                            <li><strong>Dysuria</strong> &mdash; painful or difficult urination</li>
+                            <li><strong>Hematuria</strong> &mdash; RBCs in urine (visible or microscopic)</li>
+                            <li><strong>Anuria</strong> &mdash; &lt;50 mL urine in 24 h (kidney emergency)</li>
+                            <li><strong>Oliguria</strong> &mdash; decreased output (&lt;0.5 mL/kg/hr)</li>
+                        </ul>
+                    </li>
+                    <li><strong>Risk factors</strong> &mdash; multiparous vaginal delivery, diabetes, neurologic disorders (MS, Parkinson's, diabetic neuropathy &mdash; all cause incomplete emptying and stasis), recent catheterization</li>
+                </ul>
+
+                <h3>Physical exam &amp; diagnostics</h3>
+                <p><strong>Kidneys are not normally palpable.</strong> A palpable enlargement could be an emergency. Obese patients make palpation difficult. Check the <strong>costovertebral angle (CVA)</strong> &mdash; tenderness there points to pyelonephritis (section 3).</p>
+
+                <h4>Core diagnostic tests</h4>
+                <div class="lab-grid">
+                    <div class="lab-card">
+                        <h5>Urinalysis (UA)</h5>
+                        <div class="value">Screen</div>
+                        <p>WBCs, RBCs, nitrites, leukocyte esterase, protein, glucose. Fast, cheap.</p>
+                    </div>
+                    <div class="lab-card">
+                        <h5>Urine Culture</h5>
+                        <div class="value">Confirms</div>
+                        <p>Organism ID + sensitivities. <strong>Collect BEFORE antibiotics.</strong> UA and culture go in separate containers.</p>
+                    </div>
+                    <div class="lab-card">
+                        <h5>Specific Gravity</h5>
+                        <div class="value">1.005&ndash;1.030</div>
+                        <p>Concentration. Altered by blood, protein, casts.</p>
+                    </div>
+                    <div class="lab-card">
+                        <h5>Osmolality</h5>
+                        <div class="value">300&ndash;900</div>
+                        <p>Most accurate measure of kidney's ability to dilute/concentrate.</p>
+                    </div>
+                    <div class="lab-card critical">
+                        <h5>BUN</h5>
+                        <div class="value">10&ndash;20 mg/dL</div>
+                        <p>Elevated = kidney stress. Also rises with dehydration, high-protein intake, GI bleed.</p>
+                    </div>
+                    <div class="lab-card critical">
+                        <h5>Creatinine</h5>
+                        <div class="value">0.6&ndash;1.2 mg/dL</div>
+                        <p><strong>Elevated = kidney injury.</strong> More specific than BUN &mdash; reflects GFR directly.</p>
+                    </div>
+                </div>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="info-box-content">
+                        <h5>Clean catch vs straight cath</h5>
+                        <p>Clean-catch midstream is first-line. If the patient can't reliably collect (older, immobile, altered) you'll <strong>straight cath</strong> to get a sterile sample. Put the UA in one container and the culture in another.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: How infection ascends -->
+            <section class="guide-section" id="pathway">
+                <div class="section-header">
+                    <div class="section-number">2</div>
+                    <div class="section-title-group">
+                        <h2>How Infection Ascends</h2>
+                        <p class="subtitle">Bladder first, kidneys next, bloodstream last. Treating early stops the climb.</p>
+                    </div>
+                </div>
+
+                <p>Most UTIs are <strong>ascending infections</strong>: bacteria (usually gut flora, most commonly <em>E. coli</em>) enter the urethra, climb into the bladder, and in some cases continue up the ureters to the kidneys. Untreated pyelonephritis can enter the bloodstream and cause <strong>urosepsis</strong>.</p>
+
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="process-step-icon"><i class="fas fa-bacterium"></i></div>
+                        <h5>1. Perineal flora</h5>
+                        <p>Gut bacteria colonize the periurethral skin</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-icon"><i class="fas fa-arrow-up"></i></div>
+                        <h5>2. Urethra</h5>
+                        <p>Bacteria ascend &mdash; shorter in females</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="process-step-icon"><i class="fas fa-circle-dot"></i></div>
+                        <h5>3. Bladder (cystitis)</h5>
+                        <p>Lower UTI: dysuria, frequency, urgency</p>
+                    </div>
+                    <div class="process-step escalate">
+                        <div class="process-step-icon"><i class="fas fa-fire"></i></div>
+                        <h5>4. Ureters &rarr; Kidneys</h5>
+                        <p>Pyelonephritis: fever, flank pain, CVA tenderness</p>
+                    </div>
+                    <div class="process-step escalate">
+                        <div class="process-step-icon"><i class="fas fa-triangle-exclamation"></i></div>
+                        <h5>5. Bloodstream</h5>
+                        <p>Urosepsis &rarr; septic shock. Emergency.</p>
+                    </div>
+                </div>
+
+                <div class="info-box nclex">
+                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="info-box-content">
+                        <h5>Why females get more UTIs</h5>
+                        <p>The female urethra is short (~3&ndash;4 cm vs 15&ndash;20 cm in males) and sits close to the anal opening. Less distance for bacteria to climb, more opportunity for contamination. Pregnancy, menopause (loss of estrogen-driven vaginal flora), and sexual activity all add risk.</p>
+                    </div>
+                </div>
+
+                <h3>Risk factors that tip the balance</h3>
+                <ul>
+                    <li><strong>Female sex, pregnancy, menopause</strong></li>
+                    <li><strong>Diabetes</strong> &mdash; high glucose in urine feeds bacteria + neuropathy = incomplete emptying</li>
+                    <li><strong>Neurologic disorders</strong> (MS, Parkinson's, diabetic neuropathy, stroke, SCI) &mdash; neurogenic bladder = stasis</li>
+                    <li><strong>Incomplete bladder emptying</strong> (BPH, prolapse, retention)</li>
+                    <li><strong>Obstruction</strong> &mdash; kidney stones, tumor, stricture</li>
+                    <li><strong>Instrumentation</strong> &mdash; indwelling catheter, cystoscopy, recent urologic procedure</li>
+                    <li><strong>Immunosuppression</strong> &mdash; chemo, steroids, HIV</li>
+                    <li><strong>Gout</strong> &mdash; mentioned in textbook risk lists</li>
+                    <li><strong>Inflammation/abrasion</strong> of urethral mucosa</li>
+                </ul>
+            </section>
+
+            <!-- Section 3: Lower UTI -->
+            <section class="guide-section" id="lower-uti">
+                <div class="section-header">
+                    <div class="section-number">3</div>
+                    <div class="section-title-group">
+                        <h2>Lower UTI (Cystitis)</h2>
+                        <p class="subtitle">Bladder infection. Classically dysuria + frequency + urgency. 5&ndash;7 days of oral antibiotics.</p>
+                    </div>
+                </div>
+
+                <div class="disorder-profile">
+                    <div class="disorder-profile-header lower">
+                        <i class="fas fa-droplet"></i>
+                        <h3>Lower Urinary Tract Infection</h3>
+                        <span class="tag">Bladder</span>
+                    </div>
+                    <div class="disorder-profile-body">
+                        <h4>Pathophysiology</h4>
+                        <p>Bacteria gain access to the bladder through the urethra, then <strong>attach to the bladder wall and colonize</strong>. Normal defenses include the flushing action of voiding, urine acidity, and mucosal antibacterial peptides &mdash; anything that impairs these (stasis, obstruction, instrumentation, immunosuppression) enables infection.</p>
+
+                        <h4>Classic clinical manifestations</h4>
+                        <ul>
+                            <li><strong>Burning on urination</strong> (dysuria)</li>
+                            <li><strong>Urinary frequency</strong> &mdash; voiding more than every 3 hours</li>
+                            <li><strong>Urgency</strong></li>
+                            <li><strong>Nocturia</strong></li>
+                            <li><strong>Suprapubic or pelvic pain</strong></li>
+                            <li>Incontinence</li>
+                            <li>Hematuria and back pain may be present</li>
+                            <li>Urine may be cloudy or foul-smelling</li>
+                        </ul>
+
+                        <h4>Diagnostic findings</h4>
+                        <ul>
+                            <li><strong>Urinalysis:</strong> positive leukocyte esterase, positive nitrites, WBCs, bacteria, possible RBCs</li>
+                            <li><strong>Urine culture:</strong> &gt;10<sup>5</sup> CFU/mL of a single organism (most often <em>E. coli</em>)</li>
+                            <li>No systemic signs in uncomplicated cases (no fever, no flank pain)</li>
+                        </ul>
+
+                        <h4>Medical management</h4>
+                        <ul>
+                            <li><strong>Oral antibiotics &times; 5&ndash;7 days</strong> (uncomplicated) &mdash; nitrofurantoin, TMP-SMX, fosfomycin, cephalosporins</li>
+                            <li><strong>Hydration</strong> &mdash; 8&ndash;10 glasses of water/day unless contraindicated</li>
+                            <li>Phenazopyridine (Pyridium) &mdash; urinary analgesic; <strong>turns urine orange/red</strong>; short-term symptom relief only</li>
+                            <li>Complete the full antibiotic course even when symptoms resolve early</li>
+                        </ul>
+
+                        <h4>Expected outcomes</h4>
+                        <ul>
+                            <li>Reports absence of pain, urgency, frequency, nocturia</li>
+                            <li>Produces urine that is clear and odorless</li>
+                            <li>Adequate urine output &gt;0.5 mL/kg/hr</li>
+                            <li>Normal VS; no s/s urosepsis</li>
+                            <li>Drinks 8&ndash;10 glasses of fluid daily, voids every 2&ndash;3 hours</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box geriatric">
+                    <div class="info-box-icon"><i class="fas fa-user-clock"></i></div>
+                    <div class="info-box-content">
+                        <h5>Atypical presentation in older adults</h5>
+                        <p>Older adults may not report classic dysuria or fever. The first (or only) sign may be <strong>new-onset confusion, falls, lethargy, new urinary incontinence, or reduced appetite</strong>. Any acute mental status change in an older adult warrants a UA &mdash; UTI is high on the differential.</p>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-burning-vs-flank">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-robot"></i></div>
+                        <span class="florencebot-tip-label">Florence Tip</span>
+                    </div>
+                    <h4>The one-line differentiator</h4>
+                    <p><strong>Burning + frequency + no fever = lower UTI.</strong> <strong>Add fever, flank pain, and CVA tenderness = upper UTI (pyelonephritis).</strong> Memorize that. It's the NCLEX-style distinction that shows up repeatedly.</p>
+                </div>
+            </section>
+
+            <!-- Section 4: Pyelonephritis -->
+            <section class="guide-section" id="pyelonephritis">
+                <div class="section-header">
+                    <div class="section-number">4</div>
+                    <div class="section-title-group">
+                        <h2>Pyelonephritis (Upper UTI)</h2>
+                        <p class="subtitle">Bacterial infection of the kidney. Systemic, painful, and treated much more aggressively than cystitis.</p>
+                    </div>
+                </div>
+
+                <div class="disorder-profile">
+                    <div class="disorder-profile-header upper">
+                        <i class="fas fa-fire"></i>
+                        <h3>Pyelonephritis</h3>
+                        <span class="tag">Kidney</span>
+                    </div>
+                    <div class="disorder-profile-body">
+                        <h4>Pathophysiology</h4>
+                        <p>A bacterial infection of the <strong>renal pelvis, tubules, and interstitial tissue</strong> of one or both kidneys. Usually ascends from an untreated lower UTI, but can also seed hematogenously. Vesicoureteral reflux, obstruction (stones, BPH), and pregnancy are major risk boosters.</p>
+
+                        <h4>Classic clinical manifestations</h4>
+                        <ul>
+                            <li><strong>Chills and fever</strong></li>
+                            <li><strong>Flank pain or low back pain</strong></li>
+                            <li><strong>Costovertebral angle (CVA) tenderness</strong> on percussion</li>
+                            <li>Nausea and vomiting</li>
+                            <li>Headache, malaise</li>
+                            <li>Painful urination (may still have lower UTI features)</li>
+                            <li><strong>Leukocytosis</strong> &mdash; elevated WBC</li>
+                            <li><strong>Bacteriuria and pyuria</strong> on UA; <strong>WBC casts</strong> suggest upper-tract origin</li>
+                        </ul>
+
+                        <h4>Medical management</h4>
+                        <ul>
+                            <li><strong>Antibiotics &times; ~2 weeks</strong> &mdash; renal parenchymal disease is harder to eradicate than bladder mucosal infection</li>
+                            <li><strong>Usually IV antibiotics for 2&ndash;3 weeks with hospitalization</strong> for close monitoring (fluids, labs, sepsis surveillance)</li>
+                            <li><strong>Hydration</strong> &mdash; oral or IV, depending on intake tolerance and kidney function</li>
+                            <li><strong>Follow-up urine culture 2 weeks after completing antibiotics</strong> to confirm clearance</li>
+                            <li>Identify &amp; treat any underlying cause (stone, obstruction, reflux)</li>
+                        </ul>
+
+                        <h4>Expected outcomes</h4>
+                        <ul>
+                            <li>Afebrile, CVA tenderness resolved</li>
+                            <li>Negative follow-up culture</li>
+                            <li>Adequate urine output, stable BUN/creatinine</li>
+                            <li>No progression to urosepsis</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-triangle-exclamation"></i></div>
+                    <div class="info-box-content">
+                        <h5>Pyelonephritis can turn septic fast</h5>
+                        <p>Pay attention to vital signs every shift. <strong>Hypotension, tachycardia, tachypnea, altered mental status, low urine output, lactate &gt;2</strong> = evaluate for urosepsis. Early fluids + IV antibiotics per sepsis bundle. See section 7.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Compare -->
+            <section class="guide-section" id="compare">
+                <div class="section-header">
+                    <div class="section-number">5</div>
+                    <div class="section-title-group">
+                        <h2>Lower vs Upper UTI &mdash; Side by Side</h2>
+                        <p class="subtitle">If you can't tell them apart cold, you're going to miss the exam question asking you to.</p>
+                    </div>
+                </div>
+
+                <div class="compare-grid">
+                    <div class="compare-card">
+                        <div class="compare-card-header lower">
+                            <i class="fas fa-droplet"></i>
+                            <h4>Lower UTI (Cystitis)</h4>
+                            <span class="tag">Bladder</span>
+                        </div>
+                        <div class="compare-card-body">
+                            <ul>
+                                <li><strong>Location:</strong> bladder (and urethra)</li>
+                                <li><strong>Fever:</strong> usually none</li>
+                                <li><strong>Pain:</strong> suprapubic / pelvic</li>
+                                <li><strong>Flank pain / CVA tenderness:</strong> absent</li>
+                                <li><strong>Hallmarks:</strong> dysuria, frequency, urgency, nocturia</li>
+                                <li><strong>Systemic symptoms:</strong> minimal</li>
+                                <li><strong>Antibiotics:</strong> oral &times; 5&ndash;7 days</li>
+                                <li><strong>Setting:</strong> outpatient</li>
+                                <li><strong>Urinalysis:</strong> WBCs, bacteria, nitrites</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="compare-card">
+                        <div class="compare-card-header upper">
+                            <i class="fas fa-fire"></i>
+                            <h4>Upper UTI (Pyelonephritis)</h4>
+                            <span class="tag">Kidney</span>
+                        </div>
+                        <div class="compare-card-body">
+                            <ul>
+                                <li><strong>Location:</strong> renal pelvis, tubules, interstitium</li>
+                                <li><strong>Fever:</strong> high, with chills</li>
+                                <li><strong>Pain:</strong> flank / low back</li>
+                                <li><strong>Flank pain / CVA tenderness:</strong> <strong>hallmark</strong></li>
+                                <li><strong>Hallmarks:</strong> fever, N/V, malaise, leukocytosis</li>
+                                <li><strong>Systemic symptoms:</strong> prominent</li>
+                                <li><strong>Antibiotics:</strong> IV &times; ~2&ndash;3 weeks, total ~2 weeks</li>
+                                <li><strong>Setting:</strong> usually inpatient</li>
+                                <li><strong>Urinalysis:</strong> above + <strong>WBC casts</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="guide-table-wrapper">
+                    <table class="guide-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Lower UTI</th>
+                                <th>Pyelonephritis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Fever &amp; chills</strong></td><td>Usually absent</td><td>Present</td></tr>
+                            <tr><td><strong>Flank / back pain</strong></td><td>Absent</td><td>Prominent</td></tr>
+                            <tr><td><strong>CVA tenderness</strong></td><td>Negative</td><td>Positive</td></tr>
+                            <tr><td><strong>Dysuria / frequency</strong></td><td>Prominent</td><td>May be present</td></tr>
+                            <tr><td><strong>N/V, headache, malaise</strong></td><td>Uncommon</td><td>Common</td></tr>
+                            <tr><td><strong>Leukocytosis</strong></td><td>Usually no</td><td>Yes</td></tr>
+                            <tr><td><strong>WBC casts</strong></td><td>Absent</td><td>Suggestive</td></tr>
+                            <tr><td><strong>Route &amp; duration</strong></td><td>Oral, 5&ndash;7 days</td><td>IV &times; 2&ndash;3 weeks, total ~2 wks</td></tr>
+                            <tr><td><strong>Level of care</strong></td><td>Outpatient</td><td>Usually admitted</td></tr>
+                            <tr><td><strong>Follow-up culture</strong></td><td>Usually not needed</td><td>2 weeks after antibiotics</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Section 6: CAUTI -->
+            <section class="guide-section" id="cauti">
+                <div class="section-header">
+                    <div class="section-number">6</div>
+                    <div class="section-title-group">
+                        <h2>Catheter-Associated UTI (CAUTI)</h2>
+                        <p class="subtitle">UTIs are the most common hospital-acquired infection &mdash; and most of them are catheter-related.</p>
+                    </div>
+                </div>
+
+                <div class="disorder-profile">
+                    <div class="disorder-profile-header cauti">
+                        <i class="fas fa-syringe"></i>
+                        <h3>Catheter-Associated UTI</h3>
+                        <span class="tag">Nosocomial</span>
+                    </div>
+                    <div class="disorder-profile-body">
+                        <h4>Why catheters cause UTIs</h4>
+                        <p>An indwelling catheter <strong>bypasses the urethral defense</strong>, creates a biofilm where bacteria attach, and keeps the bladder from fully emptying. Every day a catheter is in, the risk of infection climbs. That's why the single most effective CAUTI prevention is <strong>early removal</strong>.</p>
+
+                        <h4>Prevention priorities</h4>
+                        <ul>
+                            <li><strong>Avoid catheters when possible</strong> &mdash; use bladder scans, intermittent cath, or condom cath instead</li>
+                            <li><strong>Remove the catheter as early as possible</strong> &mdash; daily necessity review</li>
+                            <li><strong>Aseptic insertion technique</strong> &mdash; sterile gloves, sterile field, perineal cleansing</li>
+                            <li><strong>Closed drainage system</strong> &mdash; do not disconnect unnecessarily</li>
+                            <li><strong>Drainage bag below bladder level at all times</strong> &mdash; prevents retrograde flow</li>
+                            <li><strong>No dependent loops</strong> in the tubing</li>
+                            <li><strong>Peri-care daily</strong> with soap and water &mdash; no special antiseptics needed</li>
+                            <li><strong>Secure the catheter</strong> to prevent urethral trauma</li>
+                            <li>Obtain cultures from the sampling port, not the bag</li>
+                        </ul>
+
+                        <h4>When to suspect CAUTI</h4>
+                        <ul>
+                            <li>New or worsening fever, chills, flank pain</li>
+                            <li>New confusion or behavioral change</li>
+                            <li>Hematuria, cloudy or foul-smelling urine</li>
+                            <li>Leukocytosis, hypotension, tachycardia (evaluate for urosepsis)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-box clinical">
+                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
+                    <div class="info-box-content">
+                        <h5>Post-urologic procedure awareness</h5>
+                        <p>Patients who had cystoscopy, urodynamics, or any instrumentation are at high CAUTI risk. Some burning, blood-tinged urine, and frequency for 24 hours is expected. <strong>Persistent fever, flank pain, worsening pain, or retention</strong> needs escalation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 7: Urosepsis -->
+            <section class="guide-section" id="urosepsis">
+                <div class="section-header">
+                    <div class="section-number">7</div>
+                    <div class="section-title-group">
+                        <h2>Urosepsis &mdash; The Escalation</h2>
+                        <p class="subtitle">Any UTI patient with systemic SIRS findings gets evaluated for urosepsis. Hours matter.</p>
+                    </div>
+                </div>
+
+                <p>When a UTI spills bacteria or toxins into the bloodstream, the patient can progress from infection to <strong>sepsis</strong> to <strong>septic shock</strong>. Pyelonephritis and CAUTI are the most common sources. <strong>Any UTI with systemic signs is presumed urosepsis until proven otherwise.</strong></p>
+
+                <h3>Red flags (call the provider)</h3>
+                <div class="lab-grid">
+                    <div class="lab-card critical">
+                        <h5>Temperature</h5>
+                        <div class="value">&gt;38&deg;C or &lt;36&deg;C</div>
+                        <p>Hyperthermia or hypothermia</p>
+                    </div>
+                    <div class="lab-card critical">
+                        <h5>Heart rate</h5>
+                        <div class="value">&gt;90 bpm</div>
+                        <p>Tachycardia</p>
+                    </div>
+                    <div class="lab-card critical">
+                        <h5>Respiratory rate</h5>
+                        <div class="value">&gt;20 / min</div>
+                        <p>Tachypnea</p>
+                    </div>
+                    <div class="lab-card critical">
+                        <h5>Systolic BP</h5>
+                        <div class="value">&lt;90 mmHg</div>
+                        <p>Or &ge;40 mmHg drop from baseline</p>
+                    </div>
+                    <div class="lab-card critical">
+                        <h5>Urine output</h5>
+                        <div class="value">&lt;0.5 mL/kg/hr</div>
+                        <p>Over &ge;2 hours</p>
+                    </div>
+                    <div class="lab-card critical">
+                        <h5>Mental status</h5>
+                        <div class="value">Altered</div>
+                        <p>New confusion, lethargy, unusual behavior</p>
+                    </div>
+                </div>
+
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="info-box-content">
+                        <h5>Sepsis bundle priorities</h5>
+                        <ul>
+                            <li><strong>Blood cultures x2 + urine culture BEFORE antibiotics</strong> (if it doesn't delay them)</li>
+                            <li><strong>Broad-spectrum IV antibiotics within 1 hour</strong> &mdash; narrow once culture results return</li>
+                            <li><strong>IV fluid resuscitation</strong> &mdash; crystalloid 30 mL/kg if hypotensive or lactate &ge;4</li>
+                            <li><strong>Lactate</strong> &mdash; draw, repeat in 2&ndash;4 h</li>
+                            <li><strong>Vasopressors</strong> (norepinephrine first-line) if MAP &lt;65 despite fluids</li>
+                            <li>Source control &mdash; remove the catheter if CAUTI, drain obstruction if present</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 8: Education -->
+            <section class="guide-section" id="education">
+                <div class="section-header">
+                    <div class="section-number">8</div>
+                    <div class="section-title-group">
+                        <h2>Prevention &amp; Patient Education</h2>
+                        <p class="subtitle">Everything you'll teach a post-UTI patient before discharge.</p>
+                    </div>
+                </div>
+
+                <h3>Hydration &amp; voiding habits</h3>
+                <ul>
+                    <li><strong>Drink 8&ndash;10 glasses of water per day</strong> (unless contraindicated by heart or kidney disease)</li>
+                    <li><strong>Void every 2&ndash;3 hours</strong> during the day &mdash; don't hold it</li>
+                    <li>Empty the bladder completely each time</li>
+                    <li><strong>Void after sexual intercourse</strong> &mdash; flushes out bacteria introduced during sex</li>
+                </ul>
+
+                <h3>Hygiene</h3>
+                <ul>
+                    <li><strong>Wipe front to back</strong> after urinating and defecating</li>
+                    <li>Shower rather than bath; if bathing, avoid bubble baths and scented bath products</li>
+                    <li>Wear cotton underwear; avoid tight-fitting synthetic fabrics</li>
+                    <li>Change out of wet swimsuits / workout clothes promptly</li>
+                </ul>
+
+                <h3>Medication adherence</h3>
+                <ul>
+                    <li><strong>Complete the full antibiotic course</strong> even if symptoms resolve &mdash; stopping early breeds resistance and recurrence</li>
+                    <li>Take antibiotics with water; report rash, difficulty breathing, severe diarrhea (possible C. diff)</li>
+                    <li>Phenazopyridine (Pyridium) turns urine <strong>orange/red</strong> &mdash; this is expected; short-term use only</li>
+                </ul>
+
+                <h3>Things to avoid</h3>
+                <ul>
+                    <li>Bubble baths, douches, powders, scented feminine products (irritate urethra)</li>
+                    <li>Holding urine for long periods</li>
+                    <li>Unnecessary catheterization</li>
+                </ul>
+
+                <h3>When to call the provider</h3>
+                <div class="info-box critical">
+                    <div class="info-box-icon"><i class="fas fa-phone"></i></div>
+                    <div class="info-box-content">
+                        <h5>Warning signs after starting treatment</h5>
+                        <ul>
+                            <li>Fever &gt;38&deg;C (101&deg;F), chills</li>
+                            <li>Flank or back pain, N/V</li>
+                            <li>Blood in urine that's new or worsening</li>
+                            <li>Symptoms not improving after 48&ndash;72 hours on antibiotics</li>
+                            <li>New confusion (especially in older adults) &mdash; <strong>family should report</strong></li>
+                            <li>Reduced urine output, inability to urinate</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="florencebot-tip" id="tip-full-course">
+                    <div class="florencebot-tip-header">
+                        <div class="florencebot-tip-icon"><i class="fas fa-robot"></i></div>
+                        <span class="florencebot-tip-label">Florence Tip</span>
+                    </div>
+                    <h4>Why &quot;finish your antibiotics&quot; matters</h4>
+                    <p>Stopping antibiotics when symptoms resolve is how <strong>recurrent and resistant UTIs</strong> happen. The surviving bacteria are the hardier ones, and next round they won't respond to the same antibiotic. Teach this every time &mdash; it's a high-yield NCLEX education point.</p>
+                </div>
+            </section>
+
+            <div class="quiz-cta">
+                <h3>Test your knowledge</h3>
+                <p>18 NCLEX-style questions covering every section of this guide.</p>
+                <a href="quiz/quiz.html?topic=urinary-tract-infections" class="quiz-btn">
+                    <i class="fas fa-flask"></i> Start Quiz
+                </a>
+            </div>
+
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
+                <div class="cross-ref-grid">
+                    <a href="diabetes-mellitus.html" class="cross-ref-link">
+                        <i class="fas fa-vial"></i> Diabetes Mellitus
+                    </a>
+                    <a href="male-gu-disorders.html" class="cross-ref-link">
+                        <i class="fas fa-mars"></i> Male GU Disorders
+                    </a>
+                    <a href="uti-vur-enuresis.html" class="cross-ref-link">
+                        <i class="fas fa-baby"></i> Pediatric UTI, VUR &amp; Enuresis
+                    </a>
+                    <a href="pediatric-renal-disorders.html" class="cross-ref-link">
+                        <i class="fas fa-child"></i> Pediatric Renal Disorders
+                    </a>
+                </div>
+            </section>
+
+        </div><!-- end document-content -->
+
+        <div class="document-footer">
+            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
+        </div>
+
+    </div><!-- end document-container -->
+
+    <script src="configs/urinary-tract-infections-config.js"></script>
+    <script src="guide-sidebar.js"></script>
+    <script src="guide-script.js"></script>
+    <script src="../content-gate.js"></script>
+    <script src="../cookie-consent.js"></script>
+</body>
+</html>

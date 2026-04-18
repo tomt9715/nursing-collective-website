@@ -36,6 +36,7 @@ CATEGORY_SYNONYMS = {
     'neurological': ['neuro', 'neurology', 'brain'],
     'gastrointestinal': ['gi', 'digestive', 'bowel'],
     'musculoskeletal': ['ortho', 'orthopedic', 'bone', 'joint'],
+    'renal-urinary': ['renal', 'kidney', 'urinary', 'uti', 'pyelonephritis', 'cystitis', 'bladder', 'genitourinary', 'gu'],
     'maternal-newborn': ['maternity', 'maternal', 'newborn', 'ob', 'obstetric', 'antepartum'],
     'pediatric-cardiac': ['pediatric', 'cardiac', 'cardiovascular', 'congenital', 'heart'],
     'pediatric-gi': ['pediatric', 'gi', 'gastrointestinal', 'digestive'],

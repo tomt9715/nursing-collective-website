@@ -567,6 +567,46 @@ img { max-width: 100%; display: block; }
   transition: border-color 0.15s;
 }
 
+/* Extra right padding when the field has a show/hide toggle so the
+   icon button doesn't overlap typed text. */
+.form-group input.has-toggle {
+  padding-right: 44px;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 0;
+  color: var(--text-dimmer);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.15s, background 0.15s;
+}
+
+.password-toggle:hover {
+  color: var(--text-dim);
+  background: rgba(255,255,255,0.04);
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: -2px;
+}
+
+/* Shift the toggle down when the field has a label above it, matching
+   the .field-icon offset used elsewhere in this form. */
+.form-group:has(label) .password-toggle {
+  top: calc(50% + 10px);
+}
+
 .form-group input:focus,
 .auth-input:focus {
   border-color: var(--teal);

@@ -31,7 +31,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
-    <link rel="stylesheet" href="css/login-redesign.css?v=6">
+    <link rel="stylesheet" href="css/login-redesign.css?v=7">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -181,8 +181,11 @@
 
                         <div class="form-group">
                             <label for="password">Password</label>
-                            <input type="password" id="password" placeholder="Enter your password" required minlength="8">
+                            <input type="password" id="password" placeholder="Enter your password" required minlength="8" class="has-toggle">
                             <span class="field-icon"><i class="fas fa-lock"></i></span>
+                            <button type="button" class="password-toggle" data-target="password" aria-label="Show password">
+                                <i class="fas fa-eye" aria-hidden="true"></i>
+                            </button>
                             <div class="password-strength" id="password-strength">
                                 <div class="strength-bar"></div>
                                 <span class="strength-text"></span>
@@ -190,8 +193,11 @@
                         </div>
                         <div class="form-group hidden" id="confirm-password-group">
                             <label for="confirm-password">Confirm Password</label>
-                            <input type="password" id="confirm-password" placeholder="Confirm your password">
+                            <input type="password" id="confirm-password" placeholder="Confirm your password" class="has-toggle">
                             <span class="field-icon"><i class="fas fa-lock"></i></span>
+                            <button type="button" class="password-toggle" data-target="confirm-password" aria-label="Show password">
+                                <i class="fas fa-eye" aria-hidden="true"></i>
+                            </button>
                             <div id="password-match" class="password-match-indicator"></div>
                         </div>
 
@@ -287,7 +293,7 @@
     <script src="api-service.js?v=1769142742"></script>
 
     <script src="script.js?v=4.0.1768966858"></script>
-    <script src="auth-script.js?v=13"></script>
+    <script src="auth-script.js?v=14"></script>
 
     <!-- Cookie Consent & Analytics (GDPR compliant) -->
     <script src="analytics.js"></script>

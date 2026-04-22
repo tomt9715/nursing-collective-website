@@ -459,6 +459,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Show/hide password toggles (on the password + confirm-password inputs)
+    document.querySelectorAll('.password-toggle').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+            var target = document.getElementById(btn.dataset.target);
+            if (!target) return;
+            var showing = target.type === 'text';
+            target.type = showing ? 'password' : 'text';
+            btn.setAttribute('aria-label', showing ? 'Show password' : 'Hide password');
+            var icon = btn.querySelector('i');
+            if (icon) icon.className = showing ? 'fas fa-eye' : 'fas fa-eye-slash';
+        });
+    });
+
     // Password strength indicator
     if (passwordInput) {
         passwordInput.addEventListener('input', function() {

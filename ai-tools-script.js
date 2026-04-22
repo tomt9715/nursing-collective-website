@@ -71,6 +71,15 @@
             color: '#ea580c',
             bgColor: 'rgba(234,88,12,.08)',
             panelTitle: 'Study Gap Analysis'
+        },
+        study_sheet: {
+            key: 'study_sheet',
+            label: 'Study Sheet',
+            shortLabel: 'Study Sheet',
+            icon: 'fa-book-open-reader',
+            color: '#0d9488',
+            bgColor: 'rgba(13,148,136,.08)',
+            panelTitle: 'Study Sheet'
         }
     };
 
@@ -1712,8 +1721,12 @@
             toolbar.style.background = 'linear-gradient(135deg, ' + typeInfo.color + ', ' + darkenColor(typeInfo.color, 30) + ')';
         }
 
-        // Render content
-        if (panelContent) panelContent.innerHTML = renderMarkdown(markdownContent);
+        // Render content — study_sheet uses a JSON-driven visual renderer
+        if (genType === 'study_sheet' && panelContent) {
+            renderStudySheet(panelContent, markdownContent);
+        } else if (panelContent) {
+            panelContent.innerHTML = renderMarkdown(markdownContent);
+        }
 
         // Drug cards: transform into visual card layout
         if (genType === 'drug_cards' && panelContent) {
@@ -1886,6 +1899,158 @@
                 panelRegenerateBtn.innerHTML = '<i class="fas fa-arrows-rotate"></i><span class="ai-toolbar-label">Regenerate</span>';
             }
         }
+    }
+
+    // ── Study Sheet renderer (JSON-driven) ───────────────────────
+
+    function renderInline(text) {
+        if (!text) return '';
+        var html = escapeHtml(String(text));
+        html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        html = html.replace(/(^|[^*])\*([^*\n]+?)\*(?!\*)/g, '$1<em>$2</em>');
+        return html;
+    }
+
+    function renderBullets(items) {
+        if (!items || !items.length) return '';
+        var html = '<ul>';
+        for (var i = 0; i < items.length; i++) {
+            var item = items[i] || {};
+            html += '<li>' + renderInline(item.text || '');
+            if (item.children && item.children.length) {
+                html += renderBullets(item.children);
+            }
+            html += '</li>';
+        }
+        html += '</ul>';
+        return html;
+    }
+
+    function renderBlock(block) {
+        if (!block || typeof block !== 'object') return '';
+        switch (block.type) {
+            case 'prose':
+                return '<p>' + renderInline(block.text || '') + '</p>';
+            case 'sub_heading':
+                return '<h4>' + escapeHtml(block.text || '') + '</h4>';
+            case 'bullets':
+                return renderBullets(block.items || []);
+            case 'key_fact':
+                return '<div class="key-fact">' + renderInline(block.content || '') + '</div>';
+            case 'callout': {
+                var variant = (block.variant === 'warning' || block.variant === 'note') ? block.variant : 'critical';
+                var label = block.label ? '<span class="label">' + escapeHtml(block.label) + '</span>' : '';
+                return '<div class="callout ' + variant + '">' + label + renderInline(block.content || '') + '</div>';
+            }
+            case 'split_2': {
+                var cols = block.columns || [];
+                var inner = '';
+                for (var i = 0; i < cols.length; i++) {
+                    var col = cols[i] || {};
+                    var style = col.full_width ? ' style="grid-column: span 2;"' : '';
+                    inner += '<div class="col"' + style + '>';
+                    if (col.title) inner += '<h5>' + escapeHtml(col.title) + '</h5>';
+                    if (col.body) inner += '<p>' + renderInline(col.body) + '</p>';
+                    inner += '</div>';
+                }
+                return '<div class="split-2">' + inner + '</div>';
+            }
+            case 'compare_table': {
+                var headers = block.headers || [];
+                var rows = block.rows || [];
+                var t = '<div class="table-wrap"><table class="compare"><tr>';
+                for (var h = 0; h < headers.length; h++) {
+                    t += '<th>' + escapeHtml(headers[h]) + '</th>';
+                }
+                t += '</tr>';
+                for (var r = 0; r < rows.length; r++) {
+                    t += '<tr>';
+                    var cells = rows[r] || [];
+                    for (var c = 0; c < cells.length; c++) {
+                        t += '<td>' + renderInline(cells[c]) + '</td>';
+                    }
+                    t += '</tr>';
+                }
+                t += '</table></div>';
+                return t;
+            }
+            case 'definition':
+                return '<div class="key-fact"><strong>' + escapeHtml(block.term || '') + ':</strong> ' + renderInline(block.definition || '') + '</div>';
+            default:
+                return '';
+        }
+    }
+
+    function renderStudySheet(container, rawContent) {
+        if (!container) return;
+
+        var jsonStr = String(rawContent || '').trim();
+        // Strip markdown code fences if the LLM wrapped anyway
+        if (jsonStr.indexOf('```') === 0) {
+            jsonStr = jsonStr.replace(/^```(?:json)?\s*\n?/, '').replace(/\n?```\s*$/, '');
+        }
+
+        var data;
+        try {
+            data = JSON.parse(jsonStr);
+        } catch (err) {
+            console.error('[Study Sheet] Invalid JSON from LLM:', err);
+            container.innerHTML = '<div class="callout critical"><span class="label">Rendering error</span>The study sheet output was not valid JSON. Try regenerating.</div>';
+            return;
+        }
+
+        var title = data.title || 'Study Sheet';
+        var subtitle = data.subtitle || '';
+        var chapters = data.chapters || [];
+
+        var html = '<div class="study-sheet">';
+        // Masthead (AI title becomes the panel/print title via firstH1 extractor)
+        html += '<header class="ss-masthead">';
+        if (subtitle) html += '<div class="eyebrow">' + escapeHtml(subtitle) + '</div>';
+        html += '<h1>' + escapeHtml(title) + '</h1>';
+        html += '</header>';
+
+        // TOC
+        if (chapters.length > 1) {
+            html += '<nav class="ss-toc"><h2>Contents</h2><ul>';
+            for (var i = 0; i < chapters.length; i++) {
+                var ch = chapters[i];
+                var chId = ch.id || ('ch-' + i);
+                html += '<li><a href="#' + escapeHtml(chId) + '">' + escapeHtml(ch.title || '') + '</a></li>';
+            }
+            html += '</ul></nav>';
+        }
+
+        // Chapters
+        for (var ci = 0; ci < chapters.length; ci++) {
+            var chap = chapters[ci];
+            var cid = chap.id || ('ch-' + ci);
+            html += '<section class="chapter" id="' + escapeHtml(cid) + '">';
+            html += '<div class="chapter-header">';
+            if (chap.number) html += '<div class="chapter-num">' + escapeHtml(chap.number) + '</div>';
+            html += '<div class="chapter-title-block"><h2>' + escapeHtml(chap.title || '') + '</h2></div>';
+            html += '</div>';
+
+            var topics = chap.topics || [];
+            for (var ti = 0; ti < topics.length; ti++) {
+                var topic = topics[ti];
+                html += '<div class="topic">';
+                var topicTitle = '<h3>' + escapeHtml(topic.title || '');
+                if (topic.def) topicTitle += ' <span class="def">' + escapeHtml(topic.def) + '</span>';
+                topicTitle += '</h3>';
+                html += topicTitle;
+
+                var blocks = topic.blocks || [];
+                for (var bi = 0; bi < blocks.length; bi++) {
+                    html += renderBlock(blocks[bi]);
+                }
+                html += '</div>';
+            }
+            html += '</section>';
+        }
+
+        html += '</div>';
+        container.innerHTML = html;
     }
 
     // ── Markdown renderer ───────────────────────────────────────

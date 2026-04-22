@@ -611,40 +611,19 @@ img { max-width: 100%; display: block; }
   display: flex;
 }
 
-/* Step 2 entry: each field fades in from slightly below, staggered.
-   auth-script.js re-applies the animation each time the step is shown
-   by toggling the .step-enter class so revisiting via the pencil edit
-   still animates. */
-.email-auth-section.step-enter .email-display,
-.email-auth-section.step-enter .name-fields-grid,
-.email-auth-section.step-enter .form-group,
-.email-auth-section.step-enter .forgot-password-link,
-.email-auth-section.step-enter #submit-btn,
-.email-auth-section.step-enter .back-btn {
-  animation: authFieldIn 260ms ease-out both;
-}
-
-.email-auth-section.step-enter .email-display       { animation-delay:   0ms; }
-.email-auth-section.step-enter .name-fields-grid    { animation-delay:  60ms; }
-.email-auth-section.step-enter .form-group:not(#confirm-password-group) { animation-delay: 120ms; }
-.email-auth-section.step-enter #confirm-password-group { animation-delay: 160ms; }
-.email-auth-section.step-enter .forgot-password-link { animation-delay: 160ms; }
-.email-auth-section.step-enter #submit-btn          { animation-delay: 200ms; }
-.email-auth-section.step-enter .back-btn            { animation-delay: 240ms; }
-
+/* Step 2 entry: auth-script.js walks the visible fields in order and
+   applies `animation: authFieldIn ... Nms ease-out both` inline, so the
+   stagger adapts to whichever fields are actually shown for the current
+   mode (sign-in hides the name + confirm-password slots, sign-up shows
+   them). CSS here just defines the keyframes. */
 @keyframes authFieldIn {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .email-auth-section.step-enter .email-display,
-  .email-auth-section.step-enter .name-fields-grid,
-  .email-auth-section.step-enter .form-group,
-  .email-auth-section.step-enter .forgot-password-link,
-  .email-auth-section.step-enter #submit-btn,
-  .email-auth-section.step-enter .back-btn {
-    animation: none;
+  .email-auth-section * {
+    animation: none !important;
   }
 }
 

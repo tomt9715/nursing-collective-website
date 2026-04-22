@@ -234,9 +234,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Helper: show password step (step 2). Instantly swaps away step 1
-    // so the card doesn't "bleed out" first; step 2's fields cascade in
-    // via .step-enter (see login-redesign.css).
+    // Helper: show password step (step 2). Instantly swaps away step 1,
+    // then cascades the currently-visible fields in. Because sign-in
+    // mode hides name + confirm-password, we only stagger the ones
+    // actually on screen — otherwise returning users see a noticeable
+    // gap where the hidden name fields would have been.
     function showPasswordStep(email) {
         enteredEmail = email;
         if (emailDisplayText) emailDisplayText.textContent = email;
@@ -245,23 +247,43 @@ document.addEventListener('DOMContentLoaded', function() {
         authOptions.style.display = 'none';
         emailForm.classList.add('active');
 
-        // Retrigger the stagger animation on each entry (even when the
-        // user went back via the pencil and came forward again).
-        emailForm.classList.remove('step-enter');
-        // force reflow so the browser re-applies the animations
-        void emailForm.offsetWidth;
-        emailForm.classList.add('step-enter');
+        staggerFadeIn([
+            document.getElementById('email-display'),
+            document.getElementById('name-fields'),
+            passwordInput ? passwordInput.closest('.form-group') : null,
+            document.getElementById('confirm-password-group'),
+            document.getElementById('forgot-password-link'),
+            document.getElementById('submit-btn'),
+            document.getElementById('back-to-options'),
+        ]);
 
         setTimeout(function() {
             if (passwordInput) passwordInput.focus();
         }, 120);
     }
 
+    // Apply a staggered fade-in to each element that's currently visible.
+    // Resets any prior animation first so re-entering the step (via the
+    // pencil → different email → continue path) re-triggers the effect.
+    function staggerFadeIn(elements) {
+        var i = 0;
+        elements.forEach(function(el) {
+            if (!el) return;
+            var computed = window.getComputedStyle(el);
+            if (computed.display === 'none' || el.classList.contains('hidden')) return;
+
+            el.style.animation = 'none';
+            // force reflow so the browser picks up the reset
+            void el.offsetWidth;
+            el.style.animation = 'authFieldIn 260ms ' + (i * 55) + 'ms ease-out both';
+            i++;
+        });
+    }
+
     // Helper: go back to email entry (step 1). Instant swap — the forward
     // direction is the animated one; reversing quickly feels snappier.
     function showEmailStep() {
         emailForm.classList.remove('active');
-        emailForm.classList.remove('step-enter');
 
         authOptions.style.display = 'flex';
 

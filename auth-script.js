@@ -234,69 +234,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Respect reduced-motion preference: skip the fade/slide on users
-    // who've opted into it via OS settings.
-    var prefersReducedMotion = window.matchMedia &&
-        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var STEP_OUT_MS = prefersReducedMotion ? 0 : 160;
-
-    // Helper: show password step (step 2) with a fade/slide transition
+    // Helper: show password step (step 2). Instantly swaps away step 1
+    // so the card doesn't "bleed out" first; step 2's fields cascade in
+    // via .step-enter (see login-redesign.css).
     function showPasswordStep(email) {
         enteredEmail = email;
         if (emailDisplayText) emailDisplayText.textContent = email;
         localStorage.setItem('lastAuthMethod', 'email');
 
-        // Phase 1 — fade the options out
-        authOptions.classList.add('step-leaving');
+        authOptions.style.display = 'none';
+        emailForm.classList.add('active');
+
+        // Retrigger the stagger animation on each entry (even when the
+        // user went back via the pencil and came forward again).
+        emailForm.classList.remove('step-enter');
+        // force reflow so the browser re-applies the animations
+        void emailForm.offsetWidth;
+        emailForm.classList.add('step-enter');
 
         setTimeout(function() {
-            authOptions.style.display = 'none';
-            authOptions.classList.remove('step-leaving');
-
-            // Phase 2 — reveal the form in its starting state, then on
-            // the next frame add the .step-entered class so it animates
-            // to rest.
-            emailForm.classList.add('active');
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                    emailForm.classList.add('step-entered');
-                });
-            });
-
-            setTimeout(function() {
-                if (passwordInput) passwordInput.focus();
-            }, 120);
-        }, STEP_OUT_MS);
+            if (passwordInput) passwordInput.focus();
+        }, 120);
     }
 
-    // Helper: go back to email entry (step 1) — reverse the transition
+    // Helper: go back to email entry (step 1). Instant swap — the forward
+    // direction is the animated one; reversing quickly feels snappier.
     function showEmailStep() {
-        // Phase 1 — fade the form out
-        emailForm.classList.remove('step-entered');
+        emailForm.classList.remove('active');
+        emailForm.classList.remove('step-enter');
+
+        authOptions.style.display = 'flex';
+
+        // Reset password-form inputs but keep the email itself.
+        if (passwordInput) passwordInput.value = '';
+        if (confirmPasswordInput) confirmPasswordInput.value = '';
+        if (firstNameInput) firstNameInput.value = '';
+        if (lastNameInput) lastNameInput.value = '';
+        if (passwordStrength) passwordStrength.classList.remove('visible');
 
         setTimeout(function() {
-            emailForm.classList.remove('active');
-
-            // Reset password form fields but keep the email value
-            if (passwordInput) passwordInput.value = '';
-            if (confirmPasswordInput) confirmPasswordInput.value = '';
-            if (firstNameInput) firstNameInput.value = '';
-            if (lastNameInput) lastNameInput.value = '';
-            if (passwordStrength) passwordStrength.classList.remove('visible');
-
-            // Phase 2 — reveal options in leaving state, then animate in
-            authOptions.style.display = 'flex';
-            authOptions.classList.add('step-leaving');
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                    authOptions.classList.remove('step-leaving');
-                });
-            });
-
-            setTimeout(function() {
-                if (emailInput) emailInput.focus();
-            }, 120);
-        }, STEP_OUT_MS);
+            if (emailInput) emailInput.focus();
+        }, 80);
     }
 
     // Continue button: validate email, ask the backend whether the email

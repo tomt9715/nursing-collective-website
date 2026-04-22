@@ -187,7 +187,7 @@
                     <a href="resources.html" class="btn btn-ghost">Explore free resources</a>
                 </div>
             </div>
-            <div class="hero-mockup" aria-hidden="true">
+            <div class="hero-mockup">
                 <div class="mockup-card">
                     <div class="mockup-header">
                         <span class="mockup-dot"></span>
@@ -195,12 +195,12 @@
                         <span class="mockup-dot"></span>
                     </div>
                     <div class="mockup-body">
-                        <div class="mockup-nav">
-                            <div class="mockup-nav-item active">Study Guides</div>
-                            <div class="mockup-nav-item">Quizzes</div>
-                            <div class="mockup-nav-item">Resources</div>
+                        <div class="mockup-nav" role="tablist" aria-label="Preview content">
+                            <button type="button" class="mockup-nav-item active" role="tab" data-tab="guides" aria-selected="true" aria-controls="mockup-panel-guides" id="mockup-tab-guides" tabindex="0">Study Guides</button>
+                            <button type="button" class="mockup-nav-item" role="tab" data-tab="quizzes" aria-selected="false" aria-controls="mockup-panel-quizzes" id="mockup-tab-quizzes" tabindex="-1">Quizzes</button>
+                            <button type="button" class="mockup-nav-item" role="tab" data-tab="resources" aria-selected="false" aria-controls="mockup-panel-resources" id="mockup-tab-resources" tabindex="-1">Resources</button>
                         </div>
-                        <div class="mockup-cards">
+                        <div class="mockup-cards" role="tabpanel" id="mockup-panel-guides" aria-labelledby="mockup-tab-guides" data-panel="guides">
                             <div class="mockup-guide-card">
                                 <div class="mockup-guide-title">Heart Failure</div>
                                 <div class="mockup-guide-cat">Cardiovascular</div>
@@ -215,6 +215,40 @@
                                 <div class="mockup-guide-title">Stroke Assessment</div>
                                 <div class="mockup-guide-cat">Neurological</div>
                                 <div class="mockup-progress"><div class="mockup-progress-fill" style="width:42%"></div></div>
+                            </div>
+                        </div>
+                        <div class="mockup-cards" role="tabpanel" id="mockup-panel-quizzes" aria-labelledby="mockup-tab-quizzes" data-panel="quizzes" hidden>
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">Heart Failure Quiz</div>
+                                <div class="mockup-guide-cat">Cardiovascular · 20 questions</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:85%"></div></div>
+                            </div>
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">Diabetes Mellitus Quiz</div>
+                                <div class="mockup-guide-cat">Endocrine · 18 questions</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:72%"></div></div>
+                            </div>
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">Arrhythmias Quiz</div>
+                                <div class="mockup-guide-cat">Cardiovascular · 22 questions</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:60%"></div></div>
+                            </div>
+                        </div>
+                        <div class="mockup-cards" role="tabpanel" id="mockup-panel-resources" aria-labelledby="mockup-tab-resources" data-panel="resources" hidden>
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">Lab Values Cheat Sheet</div>
+                                <div class="mockup-guide-cat">Quick Reference</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:100%"></div></div>
+                            </div>
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">Medications Guide</div>
+                                <div class="mockup-guide-cat">Quick Reference</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:100%"></div></div>
+                            </div>
+                            <div class="mockup-guide-card">
+                                <div class="mockup-guide-title">Head-to-Toe Assessment</div>
+                                <div class="mockup-guide-cat">Quick Reference</div>
+                                <div class="mockup-progress"><div class="mockup-progress-fill" style="width:100%"></div></div>
                             </div>
                         </div>
                     </div>
@@ -378,6 +412,7 @@
 
     <!-- Scripts -->
     <script src="home-redirect.js"></script>
+    <script src="home-mockup-tabs.js"></script>
     <script src="dark-mode.js"></script>
     <script src="api-service.js?v=1769142742"></script>
     <script src="script.js"></script>

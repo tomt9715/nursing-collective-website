@@ -512,8 +512,20 @@ img { max-width: 100%; display: block; }
   font-family: 'DM Mono', monospace;
   color: var(--text-dimmer);
   letter-spacing: 0.02em;
+  border: 0;
   border-bottom: 1.5px solid transparent;
-  transition: color 0.15s;
+  background: transparent;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.mockup-nav-item:hover {
+  color: var(--text-dim);
+}
+
+.mockup-nav-item:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: -2px;
 }
 
 .mockup-nav-item.active {
@@ -526,6 +538,10 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.mockup-cards[hidden] {
+  display: none;
 }
 
 .mockup-guide-card {

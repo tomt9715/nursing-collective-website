@@ -1464,11 +1464,16 @@
     function pollForGeneration(docId, filename, genType, btn) {
         var typeInfo = GENERATION_TYPES[genType];
         var attempts = 0;
-        var maxAttempts = 100; // 100 × 3s = 5 min max wait
+        // study_sheet produces large JSON and can run up to 5 min server-side
+        var maxAttempts = genType === 'study_sheet' ? 160 : 100; // ×3s
 
         // Update the generating state message to show we're waiting
         var hintEl = panelContent ? panelContent.querySelector('.ai-generating-hint') : null;
-        if (hintEl) hintEl.textContent = 'Still generating\u2026 this may take up to a minute for large documents.';
+        if (hintEl) {
+            hintEl.textContent = genType === 'study_sheet'
+                ? 'Study sheets take 2\u20135 minutes — this one preserves every detail.'
+                : 'Still generating\u2026 this may take up to a minute for large documents.';
+        }
 
         clearGenerationPoll(); // clear any prior poll
 

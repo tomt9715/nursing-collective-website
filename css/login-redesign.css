@@ -447,6 +447,11 @@ img { max-width: 100%; display: block; }
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.15s;
+  /* Containment for the click ripple injected by auth-script.js —
+     without these, its position:absolute escapes to the viewport
+     and the ripple renders in the top-left corner of the screen. */
+  position: relative;
+  overflow: hidden;
 }
 
 .auth-btn:hover {

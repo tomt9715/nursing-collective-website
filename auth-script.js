@@ -240,15 +240,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // from below. Sign-in mode hides name + confirm-password, so we
     // only stagger whatever's actually visible for the current mode —
     // no gaps where hidden fields would have sat.
-    var FADE_OUT_MS = 160;
+    var FADE_OUT_MS = 220;
 
     function showPasswordStep(email) {
         enteredEmail = email;
         if (emailDisplayText) emailDisplayText.textContent = email;
         localStorage.setItem('lastAuthMethod', 'email');
 
-        // Phase 1 — fade step 1 away in place (opacity only, no move)
+        // Phase 1 — fade step 1 away. Pin the starting opacity first and
+        // force a reflow so the browser has an explicit "from 1" state;
+        // without this, setting transition + opacity in the same tick
+        // lets the browser batch the change and skip the animation.
+        authOptions.style.opacity = '1';
         authOptions.style.transition = 'opacity ' + FADE_OUT_MS + 'ms ease';
+        void authOptions.offsetWidth;
         authOptions.style.opacity = '0';
         authOptions.style.pointerEvents = 'none';
 

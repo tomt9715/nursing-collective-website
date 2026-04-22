@@ -265,19 +265,50 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 100);
     }
 
-    // Continue button: validate email and go to password step
+    // Continue button: validate email, ask the backend whether the email
+    // is already registered, then reveal the correct step 2 (sign in vs.
+    // create account). Rate-limited on the backend so we degrade to
+    // sign-in mode on failure — users can still manually switch if needed.
     if (emailContinueBtn) {
-        emailContinueBtn.addEventListener('click', function() {
+        emailContinueBtn.addEventListener('click', async function() {
             var email = emailInput ? emailInput.value.trim() : '';
             if (!email) {
                 emailInput.focus();
                 return;
             }
-            // Basic email format check
             if (!emailInput.checkValidity()) {
                 emailInput.reportValidity();
                 return;
             }
+
+            // Loading state
+            var btnLabel = emailContinueBtn.querySelector('span');
+            var originalLabel = btnLabel ? btnLabel.textContent : 'Continue';
+            emailContinueBtn.disabled = true;
+            if (btnLabel) btnLabel.textContent = 'Checking…';
+
+            try {
+                var resp = await fetch(`${API_URL}/auth/check-email`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: email })
+                });
+                if (resp.ok) {
+                    var data = await resp.json();
+                    currentMode = data.exists ? 'signin' : 'signup';
+                    updateModeUI();
+                    updateModeSwitchText();
+                }
+                // Non-OK (rate-limit, server error): fall through in the
+                // mode we're already in — user can switch manually.
+            } catch (e) {
+                // Network error: same fallback behavior.
+                console.error('Email check failed:', e);
+            } finally {
+                emailContinueBtn.disabled = false;
+                if (btnLabel) btnLabel.textContent = originalLabel;
+            }
+
             showPasswordStep(email);
         });
     }

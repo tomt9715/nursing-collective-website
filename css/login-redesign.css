@@ -427,6 +427,17 @@ img { max-width: 100%; display: block; }
   display: flex;
   flex-direction: column;
   gap: 10px;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+/* Applied briefly during the step 1 → step 2 transition so the options
+   fade + lift out before the password form fades in. */
+.auth-options.step-leaving {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
 }
 
 
@@ -600,10 +611,27 @@ img { max-width: 100%; display: block; }
   display: none;
   flex-direction: column;
   gap: 16px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 180ms ease, transform 180ms ease;
 }
 
 .email-auth-section.active {
   display: flex;
+}
+
+/* Added one frame after .active so the browser paints the starting
+   state (opacity 0, translateY 6px) before animating to rest. */
+.email-auth-section.active.step-entered {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-options,
+  .email-auth-section {
+    transition: none;
+  }
 }
 
 /* Mode text */

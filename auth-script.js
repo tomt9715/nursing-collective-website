@@ -234,35 +234,69 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Helper: show password step (step 2)
+    // Respect reduced-motion preference: skip the fade/slide on users
+    // who've opted into it via OS settings.
+    var prefersReducedMotion = window.matchMedia &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var STEP_OUT_MS = prefersReducedMotion ? 0 : 160;
+
+    // Helper: show password step (step 2) with a fade/slide transition
     function showPasswordStep(email) {
         enteredEmail = email;
-        // Display email in read-only bar
         if (emailDisplayText) emailDisplayText.textContent = email;
-        // Hide auth options, show email form
-        authOptions.style.display = 'none';
-        emailForm.classList.add('active');
         localStorage.setItem('lastAuthMethod', 'email');
-        // Focus the password field
+
+        // Phase 1 — fade the options out
+        authOptions.classList.add('step-leaving');
+
         setTimeout(function() {
-            if (passwordInput) passwordInput.focus();
-        }, 100);
+            authOptions.style.display = 'none';
+            authOptions.classList.remove('step-leaving');
+
+            // Phase 2 — reveal the form in its starting state, then on
+            // the next frame add the .step-entered class so it animates
+            // to rest.
+            emailForm.classList.add('active');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    emailForm.classList.add('step-entered');
+                });
+            });
+
+            setTimeout(function() {
+                if (passwordInput) passwordInput.focus();
+            }, 120);
+        }, STEP_OUT_MS);
     }
 
-    // Helper: go back to email entry (step 1)
+    // Helper: go back to email entry (step 1) — reverse the transition
     function showEmailStep() {
-        emailForm.classList.remove('active');
-        authOptions.style.display = 'flex';
-        // Reset password form but keep email
-        if (passwordInput) passwordInput.value = '';
-        if (confirmPasswordInput) confirmPasswordInput.value = '';
-        if (firstNameInput) firstNameInput.value = '';
-        if (lastNameInput) lastNameInput.value = '';
-        if (passwordStrength) passwordStrength.classList.remove('visible');
-        // Focus the email input
+        // Phase 1 — fade the form out
+        emailForm.classList.remove('step-entered');
+
         setTimeout(function() {
-            if (emailInput) emailInput.focus();
-        }, 100);
+            emailForm.classList.remove('active');
+
+            // Reset password form fields but keep the email value
+            if (passwordInput) passwordInput.value = '';
+            if (confirmPasswordInput) confirmPasswordInput.value = '';
+            if (firstNameInput) firstNameInput.value = '';
+            if (lastNameInput) lastNameInput.value = '';
+            if (passwordStrength) passwordStrength.classList.remove('visible');
+
+            // Phase 2 — reveal options in leaving state, then animate in
+            authOptions.style.display = 'flex';
+            authOptions.classList.add('step-leaving');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    authOptions.classList.remove('step-leaving');
+                });
+            });
+
+            setTimeout(function() {
+                if (emailInput) emailInput.focus();
+            }, 120);
+        }, STEP_OUT_MS);
     }
 
     // Continue button: validate email, ask the backend whether the email

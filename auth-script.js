@@ -234,57 +234,99 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Helper: show password step (step 2). Fades step 1 away (OAuth
-    // buttons, divider, email input, Continue) so the user sees the
-    // "other options" recede, then cascades step 2's visible fields in
-    // from below. Sign-in mode hides name + confirm-password, so we
-    // only stagger whatever's actually visible for the current mode —
-    // no gaps where hidden fields would have sat.
+    // Helper: show password step (step 2).
+    //
+    // Continuity on the email bar — the email input stays visible while
+    // Google / Discord / divider / Continue fade away around it, then
+    // the email-display slides up into the vacated OAuth slot and the
+    // rest of step 2 cascades in beneath it.
+    //
+    // Small FLIP under the hood: measure the email input's viewport
+    // position before step 1 hides, then position the email-display at
+    // that same spot and animate it up to its natural position in step 2.
     var FADE_OUT_MS = 220;
+
+    function getFadingStep1Elements() {
+        return [
+            document.querySelector('.auth-btn.google'),
+            document.querySelector('.auth-btn.discord'),
+            document.querySelector('.auth-divider'),
+            emailContinueBtn,
+        ].filter(Boolean);
+    }
 
     function showPasswordStep(email) {
         enteredEmail = email;
         if (emailDisplayText) emailDisplayText.textContent = email;
         localStorage.setItem('lastAuthMethod', 'email');
 
-        // Phase 1 — fade step 1 away. Pin the starting opacity first and
-        // force a reflow so the browser has an explicit "from 1" state;
-        // without this, setting transition + opacity in the same tick
-        // lets the browser batch the change and skip the animation.
-        authOptions.style.opacity = '1';
-        authOptions.style.transition = 'opacity ' + FADE_OUT_MS + 'ms ease';
+        // FIRST — record email input's viewport rect before any fade.
+        var emailInputRect = emailInput.getBoundingClientRect();
+
+        // Phase 1 — fade the non-email pieces of step 1. Email input
+        // itself stays visible so there's no flicker before the display
+        // takes its place.
+        var fading = getFadingStep1Elements();
+        fading.forEach(function(el) {
+            el.style.opacity = '1';
+            el.style.transition = 'opacity ' + FADE_OUT_MS + 'ms ease';
+        });
         void authOptions.offsetWidth;
-        authOptions.style.opacity = '0';
-        authOptions.style.pointerEvents = 'none';
+        fading.forEach(function(el) {
+            el.style.opacity = '0';
+            el.style.pointerEvents = 'none';
+        });
 
         setTimeout(function() {
-            // Phase 2 — remove step 1 from layout, reveal step 2, cascade fields up
+            // Hide step 1 entirely, reset the fade-out inline styles so
+            // a later back-button returns step 1 to a clean state.
             authOptions.style.display = 'none';
-            authOptions.style.transition = '';
-            authOptions.style.opacity = '';
-            authOptions.style.pointerEvents = '';
+            fading.forEach(function(el) {
+                el.style.opacity = '';
+                el.style.transition = '';
+                el.style.pointerEvents = '';
+            });
 
             emailForm.classList.add('active');
+
+            // LAST / INVERT / PLAY — position email-display at the old
+            // input spot, then slide it up to its step-2 natural spot.
+            var emailDisplay = document.getElementById('email-display');
+            var emailDisplayRect = emailDisplay.getBoundingClientRect();
+            var yDelta = emailInputRect.top - emailDisplayRect.top;
+
+            emailDisplay.style.transform = 'translateY(' + yDelta + 'px)';
+            emailDisplay.style.transition = 'transform 320ms ease-out';
+            void emailDisplay.offsetWidth;
+            emailDisplay.style.transform = 'translateY(0)';
+
+            setTimeout(function() {
+                emailDisplay.style.transform = '';
+                emailDisplay.style.transition = '';
+            }, 340);
+
+            // Password / submit / back cascade in below, starting after
+            // the slide-up has a small head start so the email leads.
             staggerFadeIn([
-                document.getElementById('email-display'),
                 document.getElementById('name-fields'),
                 passwordInput ? passwordInput.closest('.form-group') : null,
                 document.getElementById('confirm-password-group'),
                 document.getElementById('forgot-password-link'),
                 document.getElementById('submit-btn'),
                 document.getElementById('back-to-options'),
-            ]);
+            ], 100);
 
             setTimeout(function() {
                 if (passwordInput) passwordInput.focus();
-            }, 120);
+            }, 280);
         }, FADE_OUT_MS);
     }
 
     // Apply a staggered fade-in to each element that's currently visible.
-    // Resets any prior animation first so re-entering the step (via the
-    // pencil → different email → continue path) re-triggers the effect.
-    function staggerFadeIn(elements) {
+    // startOffset adds a fixed delay to every item — useful when an
+    // earlier animation should lead before the stagger begins.
+    function staggerFadeIn(elements, startOffset) {
+        startOffset = startOffset || 0;
         var i = 0;
         elements.forEach(function(el) {
             if (!el) return;
@@ -292,15 +334,15 @@ document.addEventListener('DOMContentLoaded', function() {
             if (computed.display === 'none' || el.classList.contains('hidden')) return;
 
             el.style.animation = 'none';
-            // force reflow so the browser picks up the reset
             void el.offsetWidth;
-            el.style.animation = 'authFieldIn 260ms ' + (i * 55) + 'ms ease-out both';
+            el.style.animation = 'authFieldIn 260ms ' + (startOffset + i * 55) + 'ms ease-out both';
             i++;
         });
     }
 
-    // Helper: go back to email entry (step 1). Mirror of the forward
-    // direction — step 2 fades away, step 1 fades back in.
+    // Helper: go back to email entry (step 1). The forward direction is
+    // the animated one; going back is a quick swap — users hit the pencil
+    // mostly to correct a typo, so snappy is better than cinematic.
     function showEmailStep() {
         emailForm.classList.remove('active');
 
@@ -311,11 +353,26 @@ document.addEventListener('DOMContentLoaded', function() {
         if (lastNameInput) lastNameInput.value = '';
         if (passwordStrength) passwordStrength.classList.remove('visible');
 
-        // Show step 1, fading up from 0 so the return feels symmetric.
+        // Clear any FLIP inline styles the email-display may still carry
+        // (e.g. if the user hit back mid-animation).
+        var emailDisplay = document.getElementById('email-display');
+        if (emailDisplay) {
+            emailDisplay.style.transform = '';
+            emailDisplay.style.transition = '';
+        }
+
+        // Make sure the step-1 elements we faded on the way out are
+        // fully visible again in case any inline styles lingered.
+        getFadingStep1Elements().forEach(function(el) {
+            el.style.opacity = '';
+            el.style.transition = '';
+            el.style.pointerEvents = '';
+        });
+
         authOptions.style.display = 'flex';
         authOptions.style.opacity = '0';
         authOptions.style.transition = 'opacity ' + FADE_OUT_MS + 'ms ease';
-        void authOptions.offsetWidth;  // reflow so transition picks up start state
+        void authOptions.offsetWidth;
         authOptions.style.opacity = '1';
 
         setTimeout(function() {

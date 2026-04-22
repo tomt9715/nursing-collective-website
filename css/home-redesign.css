@@ -836,7 +836,8 @@ img { max-width: 100%; display: block; }
   text-align: center;
 }
 
-.ai-features {
+.ai-features,
+.community-features {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -844,7 +845,8 @@ img { max-width: 100%; display: block; }
   margin-bottom: 28px;
 }
 
-.ai-pill {
+.ai-pill,
+.community-pill {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -857,7 +859,8 @@ img { max-width: 100%; display: block; }
   background: var(--navy-2);
 }
 
-.ai-pill i {
+.ai-pill i,
+.community-pill i {
   color: var(--teal);
   font-size: 14px;
 }
@@ -1404,7 +1407,8 @@ img { max-width: 100%; display: block; }
     align-items: center;
   }
 
-  .ai-features {
+  .ai-features,
+  .community-features {
     flex-direction: column;
     align-items: center;
   }

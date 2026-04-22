@@ -154,33 +154,6 @@
     }
 
     function tryInsert() {
-        // If lockscreen is active (not yet unlocked), wait until dismissed
-        var hasLockscriptTag = document.querySelector('script[src*="lockscreen.js"]');
-        if (hasLockscriptTag && localStorage.getItem('tnc_site_unlocked') !== 'true') {
-            // Poll localStorage — lockscreen sets the key when user unlocks
-            var poll = setInterval(function () {
-                if (localStorage.getItem('tnc_site_unlocked') === 'true') {
-                    clearInterval(poll);
-                    // Small delay to let lockscreen fade out
-                    setTimeout(insertBanner, 400);
-                }
-            }, 300);
-            return;
-        }
-
-        // If the lockscreen element is still in DOM (edge case), wait for removal
-        var lockscreen = document.getElementById('site-lockscreen');
-        if (lockscreen) {
-            var observer = new MutationObserver(function () {
-                if (!document.getElementById('site-lockscreen')) {
-                    observer.disconnect();
-                    insertBanner();
-                }
-            });
-            observer.observe(document.body, { childList: true });
-            return;
-        }
-
         insertBanner();
     }
 

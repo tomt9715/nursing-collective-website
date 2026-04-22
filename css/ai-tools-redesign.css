@@ -496,6 +496,7 @@ img { max-width: 100%; display: block; }
 .ai-action-irrelevant:hover .ai-tooltip { display: block; }
 .ai-action-check { position: absolute; top: 4px; right: 4px; width: 14px; height: 14px; border-radius: 50%; background: rgba(61,189,122,0.15); border: 0.5px solid rgba(61,189,122,0.4); color: #3dbd7a; display: flex; align-items: center; justify-content: center; font-size: 7px; line-height: 1; }
 .ai-action-spinner { position: absolute; top: 3px; right: 3px; width: 12px; height: 12px; border: 1.5px solid rgba(255,255,255,0.1); border-top-color: var(--action-color); border-radius: 50%; animation: ai-spin .8s linear infinite; }
+.ai-action-cost { position: absolute; top: 4px; right: 4px; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 8px; background: rgba(244,165,53,0.18); color: var(--amber); letter-spacing: 0.02em; line-height: 1.2; }
 .ai-doc-progress { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
 .ai-progress-ring { transform: rotate(-90deg); }
 .ai-progress-ring-bg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 2.5; }
@@ -1044,6 +1045,7 @@ img { max-width: 100%; display: block; }
   .ai-action-check, .ai-action-spinner { top: 2px; right: 2px; }
   .ai-action-check { width: 12px; height: 12px; font-size: 6px; }
   .ai-action-spinner { width: 10px; height: 10px; }
+  .ai-action-cost { top: 2px; right: 2px; font-size: 8px; padding: 0 4px; }
   .ai-doc-progress { gap: 4px; }
   .ai-progress-ring { width: 22px !important; height: 22px !important; }
   .ai-progress-label { font-size: .65rem; }

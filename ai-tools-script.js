@@ -8,15 +8,21 @@
     'use strict';
 
     // ── Generation type registry ─────────────────────────────────
+    // Note: the `summary` type still exists server-side (it's used internally
+    // for classification) but is not listed here — users see study_sheet instead.
+    // cost: 'free' | 'credit' (per-generation) — shown in tooltip.
+    // eta: rough wall-clock expectation — shown in tooltip.
     var GENERATION_TYPES = {
-        summary: {
-            key: 'summary',
-            label: 'NCLEX Summary',
-            shortLabel: 'Summary',
-            icon: 'fa-file-lines',
-            color: '#7c3aed',
-            bgColor: 'rgba(124,58,237,.08)',
-            panelTitle: 'NCLEX Review Sheet'
+        study_sheet: {
+            key: 'study_sheet',
+            label: 'Study Sheet',
+            shortLabel: 'Study Sheet',
+            icon: 'fa-book-open-reader',
+            color: '#0d9488',
+            bgColor: 'rgba(13,148,136,.08)',
+            panelTitle: 'Study Sheet',
+            cost: 'free',
+            eta: '30–60s'
         },
         practice_questions: {
             key: 'practice_questions',
@@ -25,7 +31,9 @@
             icon: 'fa-clipboard-question',
             color: '#3b82f6',
             bgColor: 'rgba(59,130,246,.08)',
-            panelTitle: 'Practice Questions'
+            panelTitle: 'Practice Questions',
+            cost: 'credit',
+            eta: '20–40s'
         },
         drug_cards: {
             key: 'drug_cards',
@@ -34,7 +42,9 @@
             icon: 'fa-pills',
             color: '#10b981',
             bgColor: 'rgba(16,185,129,.08)',
-            panelTitle: 'Drug Reference Cards'
+            panelTitle: 'Drug Reference Cards',
+            cost: 'free',
+            eta: '~30s'
         },
         key_labs: {
             key: 'key_labs',
@@ -43,7 +53,9 @@
             icon: 'fa-vial',
             color: '#f59e0b',
             bgColor: 'rgba(245,158,11,.08)',
-            panelTitle: 'Lab Values Reference'
+            panelTitle: 'Lab Values Reference',
+            cost: 'free',
+            eta: '~30s'
         },
         compare_contrast: {
             key: 'compare_contrast',
@@ -52,7 +64,9 @@
             icon: 'fa-code-compare',
             color: '#ec4899',
             bgColor: 'rgba(236,72,153,.08)',
-            panelTitle: 'Compare & Contrast'
+            panelTitle: 'Compare & Contrast',
+            cost: 'free',
+            eta: '~30s'
         },
         care_plan: {
             key: 'care_plan',
@@ -61,7 +75,9 @@
             icon: 'fa-clipboard-list',
             color: '#06b6d4',
             bgColor: 'rgba(6,182,212,.08)',
-            panelTitle: 'Care Plan Outline'
+            panelTitle: 'Care Plan Outline',
+            cost: 'free',
+            eta: '~30s'
         },
         gap_analysis: {
             key: 'gap_analysis',
@@ -70,16 +86,9 @@
             icon: 'fa-magnifying-glass-chart',
             color: '#ea580c',
             bgColor: 'rgba(234,88,12,.08)',
-            panelTitle: 'Study Gap Analysis'
-        },
-        study_sheet: {
-            key: 'study_sheet',
-            label: 'Study Sheet',
-            shortLabel: 'Study Sheet',
-            icon: 'fa-book-open-reader',
-            color: '#0d9488',
-            bgColor: 'rgba(13,148,136,.08)',
-            panelTitle: 'Study Sheet'
+            panelTitle: 'Study Gap Analysis',
+            cost: 'free',
+            eta: '~20s'
         }
     };
 
@@ -903,6 +912,11 @@
                 var attrStr = '';
                 var tooltipHtml = '';
 
+                // Build a cost/eta suffix for the hover title, e.g. "— free · 30–60s"
+                // or "— 1 credit · 20–40s". Shown so users know before clicking.
+                var costLabel = typeInfo.cost === 'credit' ? '1 credit' : 'free';
+                var costSuffix = ' \u2014 ' + costLabel + (typeInfo.eta ? ' \u00b7 ' + typeInfo.eta : '');
+
                 if (!isRelevant) {
                     // Irrelevant — dimmed with hover tooltip
                     extraClass = ' ai-action-irrelevant';
@@ -915,8 +929,13 @@
                     statusIndicator = '<span class="ai-action-spinner"></span>';
                     attrStr = ' title="Generating\u2026"';
                 } else {
-                    attrStr = ' title="' + escapeHtml(typeInfo.label) + '"';
+                    attrStr = ' title="' + escapeHtml(typeInfo.label + costSuffix) + '"';
                 }
+
+                // Small corner badge for paid types only, so free types stay uncluttered
+                var costBadge = typeInfo.cost === 'credit' && !isCached && !isGenerating
+                    ? '<span class="ai-action-cost" aria-hidden="true">1\u00a2</span>'
+                    : '';
 
                 actionGridHtml += '<button class="ai-action-btn' + extraClass + '"' +
                     ' data-action="generate"' +
@@ -925,6 +944,7 @@
                     attrStr +
                     ' style="--action-color:' + typeInfo.color + ';--action-bg:' + typeInfo.bgColor + '">' +
                     statusIndicator +
+                    costBadge +
                     tooltipHtml +
                     '<i class="fas ' + typeInfo.icon + '"></i>' +
                     '<span>' + typeInfo.shortLabel + '</span>' +

@@ -234,32 +234,46 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Helper: show password step (step 2). Instantly swaps away step 1,
-    // then cascades the currently-visible fields in. Because sign-in
-    // mode hides name + confirm-password, we only stagger the ones
-    // actually on screen — otherwise returning users see a noticeable
-    // gap where the hidden name fields would have been.
+    // Helper: show password step (step 2). Fades step 1 away (OAuth
+    // buttons, divider, email input, Continue) so the user sees the
+    // "other options" recede, then cascades step 2's visible fields in
+    // from below. Sign-in mode hides name + confirm-password, so we
+    // only stagger whatever's actually visible for the current mode —
+    // no gaps where hidden fields would have sat.
+    var FADE_OUT_MS = 160;
+
     function showPasswordStep(email) {
         enteredEmail = email;
         if (emailDisplayText) emailDisplayText.textContent = email;
         localStorage.setItem('lastAuthMethod', 'email');
 
-        authOptions.style.display = 'none';
-        emailForm.classList.add('active');
-
-        staggerFadeIn([
-            document.getElementById('email-display'),
-            document.getElementById('name-fields'),
-            passwordInput ? passwordInput.closest('.form-group') : null,
-            document.getElementById('confirm-password-group'),
-            document.getElementById('forgot-password-link'),
-            document.getElementById('submit-btn'),
-            document.getElementById('back-to-options'),
-        ]);
+        // Phase 1 — fade step 1 away in place (opacity only, no move)
+        authOptions.style.transition = 'opacity ' + FADE_OUT_MS + 'ms ease';
+        authOptions.style.opacity = '0';
+        authOptions.style.pointerEvents = 'none';
 
         setTimeout(function() {
-            if (passwordInput) passwordInput.focus();
-        }, 120);
+            // Phase 2 — remove step 1 from layout, reveal step 2, cascade fields up
+            authOptions.style.display = 'none';
+            authOptions.style.transition = '';
+            authOptions.style.opacity = '';
+            authOptions.style.pointerEvents = '';
+
+            emailForm.classList.add('active');
+            staggerFadeIn([
+                document.getElementById('email-display'),
+                document.getElementById('name-fields'),
+                passwordInput ? passwordInput.closest('.form-group') : null,
+                document.getElementById('confirm-password-group'),
+                document.getElementById('forgot-password-link'),
+                document.getElementById('submit-btn'),
+                document.getElementById('back-to-options'),
+            ]);
+
+            setTimeout(function() {
+                if (passwordInput) passwordInput.focus();
+            }, 120);
+        }, FADE_OUT_MS);
     }
 
     // Apply a staggered fade-in to each element that's currently visible.
@@ -280,12 +294,10 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Helper: go back to email entry (step 1). Instant swap — the forward
-    // direction is the animated one; reversing quickly feels snappier.
+    // Helper: go back to email entry (step 1). Mirror of the forward
+    // direction — step 2 fades away, step 1 fades back in.
     function showEmailStep() {
         emailForm.classList.remove('active');
-
-        authOptions.style.display = 'flex';
 
         // Reset password-form inputs but keep the email itself.
         if (passwordInput) passwordInput.value = '';
@@ -294,9 +306,18 @@ document.addEventListener('DOMContentLoaded', function() {
         if (lastNameInput) lastNameInput.value = '';
         if (passwordStrength) passwordStrength.classList.remove('visible');
 
+        // Show step 1, fading up from 0 so the return feels symmetric.
+        authOptions.style.display = 'flex';
+        authOptions.style.opacity = '0';
+        authOptions.style.transition = 'opacity ' + FADE_OUT_MS + 'ms ease';
+        void authOptions.offsetWidth;  // reflow so transition picks up start state
+        authOptions.style.opacity = '1';
+
         setTimeout(function() {
+            authOptions.style.transition = '';
+            authOptions.style.opacity = '';
             if (emailInput) emailInput.focus();
-        }, 80);
+        }, FADE_OUT_MS);
     }
 
     // Continue button: validate email, ask the backend whether the email

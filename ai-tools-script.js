@@ -773,6 +773,8 @@
     }
 
     var preGenPollTimer = null;
+    var preGenPollAttempts = 0;
+    var PRE_GEN_POLL_MAX_ATTEMPTS = 120; // 10 min at 5s intervals — safety cap so a stuck generation doesn't poll forever
 
     function renderDocuments() {
         if (!documentsList) return;
@@ -817,7 +819,14 @@
 
     function startPreGenPolling() {
         if (preGenPollTimer) return; // already polling
+        preGenPollAttempts = 0;
         preGenPollTimer = setInterval(function () {
+            preGenPollAttempts++;
+            if (preGenPollAttempts > PRE_GEN_POLL_MAX_ATTEMPTS) {
+                console.warn('[AI Tools] Pre-gen polling timed out after 10 minutes — stopping');
+                stopPreGenPolling();
+                return;
+            }
             loadDocuments();
         }, 5000);
     }
@@ -826,6 +835,7 @@
         if (preGenPollTimer) {
             clearInterval(preGenPollTimer);
             preGenPollTimer = null;
+            preGenPollAttempts = 0;
         }
     }
 

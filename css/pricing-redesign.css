@@ -643,6 +643,21 @@ img { max-width: 100%; display: block; }
   width: 48px;
   height: 48px;
   margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pricing-card-icon i {
+  font-size: 40px;
+  color: var(--primary-color, #2E86AB);
+  line-height: 1;
+}
+
+.pricing-card.ai-tier .pricing-card-icon i {
+  color: #8b5cf6;
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.6))
+          drop-shadow(0 0 20px rgba(139, 92, 246, 0.3));
 }
 
 .pricing-icon-img {

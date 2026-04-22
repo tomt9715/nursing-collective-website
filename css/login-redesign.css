@@ -658,13 +658,17 @@ img { max-width: 100%; display: block; }
 }
 
 /* Email display (read-only) */
+/* Matched to .form-group input styling so when step 2 takes over from
+   step 1 at the same viewport position, the email bar looks identical
+   at the moment of handoff — no visual jolt from the <input> on step 1
+   to the <div> on step 2. */
 .email-display {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 14px;
-  background: var(--navy);
-  border: 0.5px solid var(--border);
+  padding: 11px 14px;
+  background: var(--navy-3);
+  border: 0.5px solid var(--border-mid);
   border-radius: 8px;
 }
 
@@ -676,10 +680,20 @@ img { max-width: 100%; display: block; }
 .email-display-text {
   flex: 1;
   font-size: 14px;
-  color: var(--text-dim);
+  color: var(--text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+/* Pencil button fades in only after the email-display has finished
+   sliding, so the step 1 → step 2 handoff reads as a continuous bar
+   with the edit affordance arriving as a small additional beat. */
+.email-change-btn {
+  transition: opacity 180ms ease;
+}
+.email-display.sliding .email-change-btn {
+  opacity: 0;
 }
 
 .email-change-btn {

@@ -291,7 +291,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // LAST / INVERT / PLAY — position email-display at the old
             // input spot, then slide it up to its step-2 natural spot.
+            // .sliding hides the pencil for the duration so the handoff
+            // reads as one continuous bar.
             var emailDisplay = document.getElementById('email-display');
+            emailDisplay.classList.add('sliding');
             var emailDisplayRect = emailDisplay.getBoundingClientRect();
             var yDelta = emailInputRect.top - emailDisplayRect.top;
 
@@ -303,6 +306,7 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(function() {
                 emailDisplay.style.transform = '';
                 emailDisplay.style.transition = '';
+                emailDisplay.classList.remove('sliding');
             }, 340);
 
             // Password / submit / back cascade in below, starting after
@@ -359,6 +363,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (emailDisplay) {
             emailDisplay.style.transform = '';
             emailDisplay.style.transition = '';
+            emailDisplay.classList.remove('sliding');
         }
 
         // Make sure the step-1 elements we faded on the way out are

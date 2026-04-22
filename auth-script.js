@@ -259,6 +259,7 @@ document.addEventListener('DOMContentLoaded', function() {
         enteredEmail = email;
         if (emailDisplayText) emailDisplayText.textContent = email;
         localStorage.setItem('lastAuthMethod', 'email');
+        clearAuthError();
 
         // FIRST — record email input's viewport rect before any fade.
         var emailInputRect = emailInput.getBoundingClientRect();
@@ -567,10 +568,37 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    // Inline error helpers — shown just above the Sign In / Create
+    // Account button. We use these instead of showAlert() here because
+    // login.html doesn't load components.css, so the modal wouldn't
+    // render (and the user would see silent 401s — which is the bug
+    // this replaces). Helpers look up the element each call so they
+    // can't fire before the element is in the DOM.
+    function setAuthError(msg) {
+        var el = document.getElementById('auth-error');
+        if (!el) return;
+        el.textContent = msg;
+        el.classList.remove('visible');
+        void el.offsetWidth;
+        el.classList.add('visible');
+    }
+    function clearAuthError() {
+        var el = document.getElementById('auth-error');
+        if (!el) return;
+        el.textContent = '';
+        el.classList.remove('visible');
+    }
+
+    // Any typing in the auth fields clears a stale error
+    [passwordInput, confirmPasswordInput, firstNameInput, lastNameInput].forEach(function(el) {
+        if (el) el.addEventListener('input', clearAuthError);
+    });
+
     // Form validation
     if (signupForm) {
         signupForm.addEventListener('submit', async function(e) {
             e.preventDefault();
+            clearAuthError();
 
             const email = enteredEmail;
             const password = document.getElementById('password').value;
@@ -588,21 +616,21 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 // Validate names for signup
                 if (!firstName || !lastName) {
-                    showAlert('Missing Information', 'Please enter your first and last name.', 'warning');
+                    setAuthError('Please enter your first and last name.');
                     return;
                 }
             }
 
             // Validate password match for signup
             if (currentMode === 'signup' && password !== confirmPassword) {
-                showAlert('Password Mismatch', 'Passwords do not match. Please try again.', 'warning');
+                setAuthError('Passwords do not match.');
                 confirmPasswordInput.focus();
                 return;
             }
 
             // Validate password strength (minimum 8 characters)
             if (password.length < 8) {
-                showAlert('Weak Password', 'Password must be at least 8 characters long.', 'warning');
+                setAuthError('Password must be at least 8 characters long.');
                 passwordInput.focus();
                 return;
             }
@@ -625,7 +653,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             } catch (error) {
                 console.error('Auth error:', error);
-                showAlert('Authentication Failed', error.message || 'Authentication failed. Please try again.', 'error');
+                setAuthError(error.message || 'Something went wrong. Please try again.');
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = currentMode === 'signin'
                     ? '<i class="fas fa-sign-in-alt"></i><span>Sign In</span>'

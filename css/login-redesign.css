@@ -736,6 +736,26 @@ img { max-width: 100%; display: block; }
   opacity: 0;
 }
 
+/* Inline auth error bubble — shown above the Sign In / Create Account
+   button when the backend rejects credentials or form validation fails.
+   Replaces showAlert() for this page because login.html doesn't load
+   the components.css that owns the modal styles. */
+.auth-error {
+  display: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: rgba(224, 82, 82, 0.08);
+  border: 0.5px solid rgba(224, 82, 82, 0.35);
+  color: #ffb1b1;
+  font-size: 13px;
+  line-height: 1.45;
+  text-align: center;
+}
+.auth-error.visible {
+  display: block;
+  animation: authFieldIn 220ms ease-out;
+}
+
 .email-change-btn {
   background: none;
   border: none;

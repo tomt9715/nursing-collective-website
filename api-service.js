@@ -369,7 +369,7 @@ async function getSubscriptionPlans() {
 }
 
 /**
- * Create a subscription checkout session
+ * Create a subscription checkout session (hosted Stripe Checkout — redirect mode)
  * @param {string} planId - Plan ID (monthly-access, semester-access, lifetime-access)
  * @param {string} email - Customer email
  * @returns {Promise<{url: string}>} - Checkout URL
@@ -385,6 +385,35 @@ async function createSubscriptionCheckout(planId, email) {
             email: email,
             success_url: `${window.location.origin}/success.html?session_id={CHECKOUT_SESSION_ID}&type=subscription`,
             cancel_url: `${window.location.origin}/pricing.html`
+        })
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+        throw new Error(data.error || 'Failed to create checkout session');
+    }
+
+    return data;
+}
+
+/**
+ * Create a subscription checkout session for Stripe Embedded Checkout (in-page).
+ * @param {string} planId - Plan ID
+ * @param {string} email - Customer email
+ * @returns {Promise<{clientSecret: string, sessionId: string, planName: string, planId: string}>}
+ */
+async function createEmbeddedSubscriptionCheckout(planId, email) {
+    const response = await fetch(`${API_URL}/api/create-subscription`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            plan_id: planId,
+            email: email,
+            ui_mode: 'embedded',
+            return_url: `${window.location.origin}/success.html?session_id={CHECKOUT_SESSION_ID}&type=subscription`
         })
     });
 

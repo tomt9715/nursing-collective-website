@@ -264,25 +264,19 @@ document.addEventListener('DOMContentLoaded', function() {
             && planId.startsWith('ai-')
             && !planId.startsWith('ai-credits');
 
-        // Get user email (pre-fills Stripe checkout)
-        let email = '';
-        const user = typeof getCurrentUser === 'function' ? getCurrentUser() : JSON.parse(localStorage.getItem('user') || '{}');
-        email = user.email || user.user_email || '';
-
         // Show loading state on button
         const originalText = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isUpgrade ? 'Processing upgrade...' : 'Redirecting to checkout...');
+        button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ' + (isUpgrade ? 'Processing upgrade...' : 'Opening checkout...');
         button.disabled = true;
 
         try {
             if (isUpgrade) {
-                // Use the upgrade endpoint for reduced pricing
+                // Upgrade flow still uses Stripe-hosted redirect — handled server-side.
                 const data = await createUpgradeCheckout();
 
                 if (data.upgraded) {
                     // Monthly upgrade completed instantly (no redirect)
                     showPricingToast('Upgrade complete! Your AI tools are now active.', 'success');
-                    // Refresh page after a moment to update UI
                     setTimeout(() => window.location.reload(), 2000);
                     return;
                 } else if (data.url) {
@@ -292,22 +286,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     throw new Error('Unexpected upgrade response');
                 }
             } else {
-                // Normal checkout flow
-                const data = await createSubscriptionCheckout(planId, email);
-                if (data.url) {
-                    window.location.href = data.url;
-                } else {
-                    throw new Error('No checkout URL returned');
-                }
+                // Normal checkout flow → embedded checkout page on our site.
+                // The session is created on checkout.html so we keep one source of truth.
+                window.location.href = `checkout.html?plan=${encodeURIComponent(planId)}`;
             }
         } catch (error) {
             console.error('Checkout error:', error);
             showPricingToast(error.message || 'Unable to start checkout. Please try again.');
-        } finally {
-            // Always re-enable the button so it's never stuck disabled
             button.innerHTML = originalText;
             button.disabled = false;
         }
+        // Note: on the success path we navigate away, so there's no need to reset the button.
     }
 
     // Legacy cleanup: remove any stale intendedPlan from before direct-checkout flow

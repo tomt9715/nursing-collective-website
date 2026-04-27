@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Checkout - The Nursing Collective</title>
+    <meta name="description" content="Complete your purchase to unlock The Nursing Collective.">
+    <link rel="canonical" href="https://thenursingcollective.pro/checkout.html">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="96x96" href="assets/images/favicon-96x96.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+
+    <meta name="theme-color" content="#0d1b2a">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://js.stripe.com" crossorigin>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/cookie-consent.css">
+    <link rel="stylesheet" href="css/feedback-widget.css">
+    <link rel="stylesheet" href="css/checkout-redesign.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Stripe.js (required for Embedded Checkout) -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Sentry Error Tracking -->
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="sentry-init.js"></script>
+    <script src="beta-banner.js"></script>
+</head>
+<body>
+    <!-- Skip to main content -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <!-- Page Loader -->
+    <noscript><style>.page-loader{display:none!important}</style></noscript>
+    <div class="page-loader" id="page-loader">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <a href="index.html">
+                    <img src="assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective Logo" class="nav-logo">
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="dashboard.html" id="nav-dashboard-link" class="hidden">Dashboard</a>
+                <a href="resources.html">Resources</a>
+                <a href="pricing.html">Pricing</a>
+                <a href="about.html">About</a>
+                <div class="user-menu" id="user-menu">
+                    <button class="user-avatar" id="user-menu-btn" title="Account menu">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                    </button>
+                    <div class="user-dropdown" id="user-dropdown">
+                        <div class="dropdown-guest-content" id="dropdown-guest-content">
+                            <div class="guest-dropdown-header">
+                                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                <span>Welcome!</span>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="login.html"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+                            <a href="login.html#signup"><i class="fas fa-user-plus"></i> Create Account</a>
+                        </div>
+                        <div class="dropdown-user-content hidden" id="dropdown-user-content">
+                            <div class="user-dropdown-header">
+                                <div class="user-avatar-large">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+                                </div>
+                                <div class="user-info">
+                                    <span class="user-name" id="dropdown-user-name">Loading...</span>
+                                    <span class="user-email" id="dropdown-user-email">Loading...</span>
+                                </div>
+                            </div>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="dashboard.html#subscription"><i class="fas fa-crown"></i> My Subscription</a>
+                            <a href="settings.html"><i class="fas fa-cog"></i> Account Settings</a>
+                            <div class="user-dropdown-divider"></div>
+                            <a href="contact.html"><i class="fas fa-question-circle"></i> Help &amp; Support</a>
+                            <a href="#logout" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle navigation menu" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="checkout-section">
+            <div class="checkout-container">
+                <a href="pricing.html" class="checkout-back">
+                    <i class="fas fa-arrow-left"></i> Back to plans
+                </a>
+
+                <div class="checkout-header">
+                    <div class="checkout-eyebrow">Secure Checkout</div>
+                    <h1 class="checkout-title">Complete your purchase</h1>
+                </div>
+
+                <div class="checkout-grid">
+                    <!-- Order Summary -->
+                    <aside class="order-summary" aria-label="Order summary">
+                        <div class="summary-label">Order Summary</div>
+                        <div class="summary-plan-name" id="summary-plan-name">Loading…</div>
+                        <p class="summary-plan-desc" id="summary-plan-desc">&nbsp;</p>
+
+                        <div class="summary-divider"></div>
+
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span class="summary-row-value" id="summary-subtotal">—</span>
+                        </div>
+                        <div class="summary-row" id="summary-billing-row">
+                            <span>Billing</span>
+                            <span class="summary-row-value" id="summary-billing">—</span>
+                        </div>
+
+                        <div class="summary-total">
+                            <span class="summary-total-label">Total</span>
+                            <span class="summary-total-value" id="summary-total">—</span>
+                        </div>
+
+                        <ul class="summary-features" id="summary-features"></ul>
+
+                        <div class="summary-trust">
+                            <i class="fas fa-lock"></i>
+                            <p>Payments are securely processed by Stripe. Your card details never touch our servers.</p>
+                        </div>
+                    </aside>
+
+                    <!-- Stripe Embedded Checkout -->
+                    <div class="payment-panel">
+                        <div id="checkout-mount">
+                            <div class="payment-loading" id="payment-loading">
+                                <div class="loader-spinner"></div>
+                                <p>Preparing secure checkout…</p>
+                            </div>
+                        </div>
+                        <div class="payment-error hidden" id="payment-error">
+                            <i class="fas fa-exclamation-circle"></i>
+                            <h3>Unable to start checkout</h3>
+                            <p id="payment-error-msg">Something went wrong while preparing your payment. Please try again.</p>
+                            <a href="pricing.html" class="btn btn-primary">Back to plans</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div>
+                <div class="footer-brand-name">The Nursing Collective</div>
+                <p class="footer-brand-desc">Empowering nursing students with comprehensive study guides, practice questions, and resources for academic success.</p>
+            </div>
+            <div>
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4>Contact</h4>
+                <div class="footer-contact-email">
+                    <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    <a href="mailto:support@thenursingcollective.pro">support@thenursingcollective.pro</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://discord.gg/y2Mh77wAV2" aria-label="Discord" target="_blank" rel="noopener"><i class="fab fa-discord"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 The Nursing Collective. Built with care for nursing students.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="dark-mode.js"></script>
+    <script src="api-service.js"></script>
+    <script src="script.js"></script>
+    <script src="checkout-script.js"></script>
+    <script src="analytics.js"></script>
+    <script src="cookie-consent.js"></script>
+    <script src="feedback-widget.js"></script>
+</body>
+</html>

@@ -463,18 +463,16 @@ img { max-width: 100%; display: block; }
 
 /* ── Stripe Embedded Checkout container (right column) ── */
 .payment-panel {
-  background: #ffffff;
+  background: var(--navy-2);
+  border: 0.5px solid var(--border-mid);
   border-radius: 14px;
-  padding: 0;
+  padding: 24px;
   min-height: 600px;
-  overflow: hidden;
 }
 
 #checkout-mount {
-  /* Stripe Embedded Checkout mounts here — white form, no extra padding */
+  /* Stripe Embedded Checkout mounts here */
   min-height: 560px;
-  border-radius: 14px;
-  overflow: hidden;
 }
 
 .payment-loading {
@@ -484,25 +482,22 @@ img { max-width: 100%; display: block; }
   justify-content: center;
   padding: 80px 20px;
   gap: 16px;
-  color: #64748b;
+  color: var(--text-dim);
 }
 
 .payment-loading .loader-spinner {
   width: 28px;
   height: 28px;
-  border-color: #e2e8f0;
-  border-top-color: var(--teal);
 }
 
 .payment-loading p {
   font-size: 14px;
-  color: #64748b;
 }
 
 .payment-error {
   padding: 60px 20px;
   text-align: center;
-  color: #64748b;
+  color: var(--text-dim);
 }
 
 .payment-error i {
@@ -510,15 +505,6 @@ img { max-width: 100%; display: block; }
   color: var(--red);
   margin-bottom: 16px;
   display: block;
-}
-
-.payment-error h3 {
-  color: #1e293b;
-}
-
-.payment-error .btn-primary {
-  background: var(--teal);
-  color: var(--navy);
 }
 
 .payment-error h3 {

@@ -398,29 +398,27 @@ async function createSubscriptionCheckout(planId, email) {
 }
 
 /**
- * Create a subscription checkout session for Stripe Embedded Checkout (in-page).
+ * Create a Stripe PaymentIntent (one-time) or Subscription (recurring) for use
+ * with Stripe Elements / PaymentElement on our own checkout page.
  * @param {string} planId - Plan ID
- * @param {string} email - Customer email
- * @returns {Promise<{clientSecret: string, sessionId: string, planName: string, planId: string}>}
+ * @param {string} email  - Customer email
+ * @param {string} [promoCode] - Optional Stripe promotion code
+ * @returns {Promise<{clientSecret: string, type: 'payment'|'subscription', amount: number, originalAmount: number, planName: string, planId: string, discount?: {type:string, value:number}, promoCode?: string}>}
  */
-async function createEmbeddedSubscriptionCheckout(planId, email) {
-    const response = await fetch(`${API_URL}/api/create-subscription`, {
+async function createCheckoutIntent(planId, email, promoCode) {
+    const body = { plan_id: planId, email };
+    if (promoCode) body.promo_code = promoCode;
+
+    const response = await fetch(`${API_URL}/api/create-checkout-intent`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            plan_id: planId,
-            email: email,
-            ui_mode: 'embedded',
-            return_url: `${window.location.origin}/success.html?session_id={CHECKOUT_SESSION_ID}&type=subscription`
-        })
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
     });
 
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.error || 'Failed to create checkout session');
+        throw new Error(data.error || 'Failed to create checkout intent');
     }
 
     return data;

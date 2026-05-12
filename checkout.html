@@ -133,6 +133,10 @@
                             <span>Billing</span>
                             <span class="summary-row-value" id="summary-billing">—</span>
                         </div>
+                        <div class="summary-row hidden" id="summary-discount-row">
+                            <span>Discount</span>
+                            <span class="summary-row-value summary-discount-value" id="summary-discount">—</span>
+                        </div>
 
                         <div class="summary-total">
                             <span class="summary-total-label">Total</span>
@@ -147,14 +151,62 @@
                         </div>
                     </aside>
 
-                    <!-- Stripe Embedded Checkout -->
+                    <!-- Stripe Elements (PaymentElement) checkout -->
                     <div class="payment-panel">
-                        <div id="checkout-mount">
-                            <div class="payment-loading" id="payment-loading">
-                                <div class="loader-spinner"></div>
-                                <p>Preparing secure checkout…</p>
-                            </div>
+                        <div class="payment-loading" id="payment-loading">
+                            <div class="loader-spinner"></div>
+                            <p>Preparing secure checkout…</p>
                         </div>
+
+                        <form id="payment-form" class="payment-form hidden" novalidate>
+                            <div class="payment-section">
+                                <div class="payment-section-label">Payment details</div>
+                                <div id="payment-element"></div>
+                            </div>
+
+                            <div class="payment-section">
+                                <div class="payment-section-label">Promo code</div>
+                                <div class="promo-row">
+                                    <input
+                                        type="text"
+                                        id="promo-input"
+                                        class="promo-input"
+                                        placeholder="Enter code"
+                                        autocomplete="off"
+                                        spellcheck="false"
+                                        aria-label="Promo code"
+                                    >
+                                    <button type="button" id="promo-apply" class="promo-apply-btn">Apply</button>
+                                </div>
+                                <div id="promo-status" class="promo-status"></div>
+                            </div>
+
+                            <label class="terms-row" for="terms-checkbox">
+                                <input type="checkbox" id="terms-checkbox" required>
+                                <span class="terms-text">
+                                    I agree to The Nursing Collective's
+                                    <a href="terms.html" target="_blank" rel="noopener">Terms of Service</a>
+                                    and
+                                    <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.
+                                </span>
+                            </label>
+
+                            <p class="submit-message" id="submit-message">
+                                Your purchase gives you instant access to all study guides.
+                            </p>
+
+                            <div id="form-error" class="form-error hidden" role="alert"></div>
+
+                            <button type="submit" id="submit-btn" class="submit-btn">
+                                <span id="submit-spinner" class="submit-spinner hidden"></span>
+                                <span id="submit-btn-label">Pay</span>
+                            </button>
+
+                            <p class="submit-aftermsg">
+                                You'll receive a confirmation email with your access details shortly.
+                            </p>
+                        </form>
+
                         <div class="payment-error hidden" id="payment-error">
                             <i class="fas fa-exclamation-circle"></i>
                             <h3>Unable to start checkout</h3>

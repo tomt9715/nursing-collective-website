@@ -33,11 +33,158 @@ async function initSuccessPage() {
         // Plan changes: user already has an active subscription, so polling would
         // immediately find the OLD plan.  Show a dedicated success state instead.
         await handlePlanChangeSuccess();
+    } else if (purchaseType === 'credits' || (planId && planId.startsWith('ai-credits'))) {
+        // Credit add-ons don't create a Subscription record — poll the credit
+        // balance endpoint instead.
+        await verifyCreditAddon(planId);
     } else if (isSubscription) {
         await verifySubscription(sessionId);
     } else {
         await verifyPayment(paymentIntent, sessionId);
     }
+}
+
+/**
+ * Verify a credit add-on purchase by polling the user's credit balance.
+ * Webhook adds the credits in the background — we poll until the balance
+ * reflects the purchase, then show a dedicated "Credits Added" success state.
+ */
+async function verifyCreditAddon(planId) {
+    // Credits we expect to be added, based on the plan
+    const PACK_CREDITS = {
+        'ai-credits-small': { uploads: 5, questions: 50, name: 'AI Credits - Small Pack' },
+        'ai-credits-large': { uploads: 15, questions: 150, name: 'AI Credits - Large Pack' },
+    };
+    const pack = PACK_CREDITS[planId] || { uploads: 0, questions: 0, name: 'AI Credits' };
+
+    try {
+        showPendingState();
+
+        // Refresh auth if needed
+        if (!localStorage.getItem('accessToken')) {
+            try { await refreshToken(); } catch (e) { /* ignore */ }
+        }
+        if (!localStorage.getItem('accessToken')) {
+            // Without auth we can't read /api/ai/credits — show the static
+            // confirmation and let them log in.
+            showCreditAddonSuccess(pack, null);
+            return;
+        }
+
+        // Snapshot the starting balance so we can detect the increment.
+        let startingAddonUploads = null;
+        let startingAddonQuestions = null;
+        try {
+            const initial = await apiCall('/api/ai/credits');
+            startingAddonUploads = initial.addon_uploads || 0;
+            startingAddonQuestions = initial.addon_questions || 0;
+        } catch (e) {
+            // If we can't read credits at all (e.g., user has no AI sub yet),
+            // skip polling and just show the static confirmation.
+            showCreditAddonSuccess(pack, null);
+            return;
+        }
+
+        pollStartTime = Date.now();
+
+        const checkBalance = async () => {
+            const elapsed = Date.now() - pollStartTime;
+            if (elapsed >= MAX_POLL_TIME) {
+                // Timed out — show success anyway, credits will appear shortly.
+                showCreditAddonSuccess(pack, null);
+                return;
+            }
+            try {
+                const credits = await apiCall('/api/ai/credits');
+                const addonUploads = credits.addon_uploads || 0;
+                const addonQuestions = credits.addon_questions || 0;
+                if (addonUploads > startingAddonUploads || addonQuestions > startingAddonQuestions) {
+                    showCreditAddonSuccess(pack, credits);
+                    return;
+                }
+                setTimeout(checkBalance, POLL_INTERVAL);
+            } catch (err) {
+                setTimeout(checkBalance, POLL_INTERVAL);
+            }
+        };
+        checkBalance();
+    } catch (err) {
+        console.error('Credit add-on verification error:', err);
+        showCreditAddonSuccess(pack, null);
+    }
+}
+
+/**
+ * Render the credit add-on success state.
+ * @param {{uploads:number, questions:number, name:string}} pack - Credits in the pack
+ * @param {object|null} balance - Current balance from /api/ai/credits, or null if unavailable
+ */
+function showCreditAddonSuccess(pack, balance) {
+    clearGuestCart();
+
+    const container = document.getElementById('success-content');
+    if (!container) return;
+
+    const totalAddonUploads = balance ? (balance.addon_uploads || 0) : null;
+    const totalAddonQuestions = balance ? (balance.addon_questions || 0) : null;
+
+    container.innerHTML = `
+        <div class="success-icon" style="background: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);">
+            <i class="fas fa-plus-circle"></i>
+        </div>
+        <h1 class="success-title">Credits Added!</h1>
+        <p class="success-message">
+            Your ${escapeHtml(pack.name)} has been applied to your account. Your additional credits are ready to use right now.
+        </p>
+
+        <div class="order-details">
+            <h3>Purchase Details</h3>
+            <div class="order-item">
+                <span class="order-item-label">Pack</span>
+                <span class="order-item-value">${escapeHtml(pack.name)}</span>
+            </div>
+            <div class="order-item">
+                <span class="order-item-label">Uploads added</span>
+                <span class="order-item-value">+${pack.uploads}</span>
+            </div>
+            <div class="order-item">
+                <span class="order-item-label">AI questions added</span>
+                <span class="order-item-value">+${pack.questions}</span>
+            </div>
+            ${totalAddonUploads !== null ? `
+            <div class="order-item">
+                <span class="order-item-label">Add-on uploads remaining</span>
+                <span class="order-item-value" style="color: #10b981;">${totalAddonUploads}</span>
+            </div>
+            <div class="order-item">
+                <span class="order-item-label">Add-on questions remaining</span>
+                <span class="order-item-value" style="color: #10b981;">${totalAddonQuestions}</span>
+            </div>` : ''}
+        </div>
+
+        <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(139, 92, 246, 0.05)); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: left;">
+            <h4 style="margin: 0 0 8px 0; font-size: 1rem; color: var(--text-primary);"><i class="fas fa-bolt" style="color: #8b5cf6; margin-right: 8px;"></i>Ready when you are</h4>
+            <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6;">
+                Add-on credits stack with your monthly allowance and roll over until they're used. Head back to the AI tools whenever you're ready.
+            </p>
+        </div>
+
+        <div class="success-actions">
+            <a href="ai-tools.html" class="btn btn-primary btn-large">
+                <i class="fas fa-robot"></i>
+                Open AI Tools
+            </a>
+            <a href="dashboard.html" class="btn btn-light">
+                <i class="fas fa-list"></i>
+                Go to Dashboard
+            </a>
+        </div>
+
+        <div class="email-note">
+            <i class="fas fa-envelope"></i>
+            <p>A confirmation email with your purchase details has been sent to your email address.</p>
+        </div>
+    `;
 }
 
 /**

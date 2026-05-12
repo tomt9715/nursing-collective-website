@@ -488,7 +488,12 @@
 
             try {
                 const returnUrl = new URL(`${window.location.origin}/success.html`);
-                returnUrl.searchParams.set('type', 'subscription');
+                // Credit add-ons don't create a Subscription record, so the
+                // success page should poll the credit balance instead of
+                // /api/subscription-status. Tag the redirect so success.html
+                // can route correctly.
+                const isCreditAddon = planId.startsWith('ai-credits');
+                returnUrl.searchParams.set('type', isCreditAddon ? 'credits' : 'subscription');
                 returnUrl.searchParams.set('plan', planId);
 
                 const { error } = await stripe.confirmPayment({

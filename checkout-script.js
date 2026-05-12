@@ -270,6 +270,25 @@
         }
     }
 
+    function renderFulfilledState() {
+        // The order was fulfilled server-side (100%-off coupon) — there's no
+        // payment to confirm. Hide the unused PaymentElement and Stripe-only
+        // bits, and switch the submit button into a "Redirecting…" state so
+        // the page doesn't look broken in the brief window before navigation.
+        const paymentSections = document.querySelectorAll('.payment-section');
+        paymentSections.forEach(s => {
+            if (s.querySelector('#payment-element')) s.classList.add('hidden');
+        });
+        const termsRow = document.querySelector('.terms-row');
+        if (termsRow) termsRow.classList.add('hidden');
+        const submitBtn = document.getElementById('submit-btn');
+        const submitLabel = document.getElementById('submit-btn-label');
+        const submitMsg = document.getElementById('submit-message');
+        if (submitBtn) submitBtn.disabled = true;
+        if (submitLabel) submitLabel.textContent = 'Redirecting to confirmation…';
+        if (submitMsg) submitMsg.textContent = 'Your purchase is complete. Taking you to confirmation now…';
+    }
+
     function redirectToFreeSuccess(planId) {
         // Mirror the success URL structure Stripe would have produced.
         // For credit add-ons, success.html polls /api/ai/credits; for everything
@@ -279,6 +298,7 @@
         target.searchParams.set('type', isCreditAddon ? 'credits' : 'subscription');
         target.searchParams.set('plan', planId);
         target.searchParams.set('free', '1');
+        renderFulfilledState();
         // Small delay so the user sees the success state in the promo field.
         setTimeout(() => { window.location.href = target.toString(); }, 600);
     }
@@ -342,6 +362,10 @@
         let stripe, elements, paymentElement, currentIntent, product, publishableKey;
 
         function mountPaymentElement(clientSecret) {
+            // No clientSecret = nothing to mount. This happens when the
+            // intent was fulfilled server-side (100%-off coupons), in which
+            // case we're about to redirect anyway. Bail before Stripe throws.
+            if (!clientSecret) return;
             // Stripe Elements doesn't allow updating clientSecret on an
             // existing instance — destroy and recreate when the intent
             // changes (e.g., after applying a promo code).

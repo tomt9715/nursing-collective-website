@@ -318,21 +318,19 @@
 
     function renderFulfilledState() {
         // The order was fulfilled server-side (100%-off coupon) — there's no
-        // payment to confirm. Hide the unused PaymentElement and Stripe-only
-        // bits, and switch the submit button into a "Redirecting…" state so
-        // the page doesn't look broken in the brief window before navigation.
+        // Stripe payment to take. Hide the unused PaymentElement but keep
+        // the terms checkbox + submit button so the user still clicks
+        // through deliberately.
         const paymentSections = document.querySelectorAll('.payment-section');
         paymentSections.forEach(s => {
             if (s.querySelector('#payment-element')) s.classList.add('hidden');
         });
-        const termsRow = document.querySelector('.terms-row');
-        if (termsRow) termsRow.classList.add('hidden');
-        const submitBtn = document.getElementById('submit-btn');
         const submitLabel = document.getElementById('submit-btn-label');
         const submitMsg = document.getElementById('submit-message');
-        if (submitBtn) submitBtn.disabled = true;
-        if (submitLabel) submitLabel.textContent = 'Redirecting to confirmation…';
-        if (submitMsg) submitMsg.textContent = 'Your purchase is complete. Taking you to confirmation now…';
+        if (submitLabel) submitLabel.textContent = 'Complete purchase · $0';
+        if (submitMsg) {
+            submitMsg.textContent = 'Your coupon covers the full cost — agree to the terms and click below to activate your access.';
+        }
     }
 
     function redirectToFreeSuccess(planId) {
@@ -344,9 +342,7 @@
         target.searchParams.set('type', isCreditAddon ? 'credits' : 'subscription');
         target.searchParams.set('plan', planId);
         target.searchParams.set('free', '1');
-        renderFulfilledState();
-        // Small delay so the user sees the success state in the promo field.
-        setTimeout(() => { window.location.href = target.toString(); }, 600);
+        window.location.href = target.toString();
     }
 
     function renderDiscount(intent) {
@@ -513,10 +509,11 @@
                 renderDiscount(currentIntent);
 
                 // 100%-off path: backend fulfilled the order without Stripe.
-                // Redirect straight to the success page.
+                // Swap the form into a "ready to confirm" state instead of
+                // auto-navigating — user still clicks Complete purchase.
                 if (newIntent.fulfilled) {
                     if (promoStatus) {
-                        promoStatus.textContent = 'Code applied — your purchase is complete!';
+                        promoStatus.textContent = 'Code applied — your coupon covers 100% of the cost.';
                         promoStatus.className = 'promo-status success';
                     }
                     if (promoApplyBtn) {
@@ -524,7 +521,7 @@
                         promoApplyBtn.disabled = true;
                     }
                     if (promoInput) promoInput.disabled = true;
-                    redirectToFreeSuccess(planId);
+                    renderFulfilledState();
                     return;
                 }
 

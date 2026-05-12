@@ -18,15 +18,18 @@ async function initSuccessPage() {
     const paymentIntent = urlParams.get('payment_intent');
     const orderNumber = urlParams.get('order_number');
     const purchaseType = urlParams.get('type'); // 'subscription' for subscription purchases
+    const isFreePurchase = urlParams.get('free') === '1';
+    const planId = urlParams.get('plan');
 
-    if (!sessionId && !paymentIntent) {
+    // Free purchases (100%-off coupon) bypass Stripe entirely, so there's no
+    // session_id or payment_intent in the URL. The plan param is enough.
+    if (!sessionId && !paymentIntent && !(isFreePurchase && planId)) {
         showErrorState('No payment information found. Please check your email for order confirmation.');
         return;
     }
 
     // Handle subscription purchases differently
     // Detect subscription by type param OR presence of plan param
-    const planId = urlParams.get('plan');
     const isSubscription = purchaseType === 'subscription' || purchaseType === 'plan_change' || planId;
 
     if (purchaseType === 'plan_change') {

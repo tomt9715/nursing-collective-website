@@ -192,6 +192,21 @@
             const stripe = Stripe(publishableKey);
             const checkout = await stripe.initEmbeddedCheckout({
                 clientSecret: session.clientSecret,
+                appearance: {
+                    theme: 'night',
+                    variables: {
+                        colorPrimary: '#0fbcad',
+                        colorBackground: '#162032',
+                        colorText: '#e8edf2',
+                        colorDanger: '#e05252',
+                        fontFamily: 'Outfit, sans-serif',
+                        borderRadius: '8px',
+                        colorComponentBackground: '#1e2d3e',
+                        colorComponentBorder: 'rgba(255,255,255,0.12)',
+                        colorComponentText: '#e8edf2',
+                        colorComponentDivider: 'rgba(255,255,255,0.07)',
+                    },
+                },
             });
 
             const loadingEl = $('payment-loading');

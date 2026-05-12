@@ -270,6 +270,19 @@
         }
     }
 
+    function redirectToFreeSuccess(planId) {
+        // Mirror the success URL structure Stripe would have produced.
+        // For credit add-ons, success.html polls /api/ai/credits; for everything
+        // else it polls /api/subscription-status.
+        const isCreditAddon = planId.startsWith('ai-credits');
+        const target = new URL(`${window.location.origin}/success.html`);
+        target.searchParams.set('type', isCreditAddon ? 'credits' : 'subscription');
+        target.searchParams.set('plan', planId);
+        target.searchParams.set('free', '1');
+        // Small delay so the user sees the success state in the promo field.
+        setTimeout(() => { window.location.href = target.toString(); }, 600);
+    }
+
     function renderDiscount(intent) {
         const row = $('summary-discount-row');
         const valueEl = $('summary-discount');
@@ -421,6 +434,22 @@
                 renderOrderSummary(product, planId, currentIntent);
                 renderDiscount(currentIntent);
 
+                // 100%-off path: backend fulfilled the order without Stripe.
+                // Redirect straight to the success page.
+                if (newIntent.fulfilled) {
+                    if (promoStatus) {
+                        promoStatus.textContent = 'Code applied — your purchase is complete!';
+                        promoStatus.className = 'promo-status success';
+                    }
+                    if (promoApplyBtn) {
+                        promoApplyBtn.textContent = 'Applied';
+                        promoApplyBtn.disabled = true;
+                    }
+                    if (promoInput) promoInput.disabled = true;
+                    redirectToFreeSuccess(planId);
+                    return;
+                }
+
                 // Re-mount Elements with the new clientSecret.
                 mountPaymentElement(currentIntent.clientSecret);
 
@@ -474,6 +503,13 @@
         form.addEventListener('submit', async (event) => {
             event.preventDefault();
             showFormError('');
+
+            // If the order was already fulfilled (100%-off coupon), don't try
+            // to confirm a non-existent PaymentIntent — just redirect.
+            if (currentIntent && currentIntent.fulfilled) {
+                redirectToFreeSuccess(planId);
+                return;
+            }
 
             if (termsCheckbox && !termsCheckbox.checked) {
                 showFormError('Please agree to the Terms of Service and Privacy Policy to continue.');

@@ -1152,11 +1152,14 @@ function renderSubscriptionCard(data) {
     }
 
     // Cancel Subscription button
-    // Hidden for: lifetime plans (no recurring billing), already cancelling, or already cancelled
+    // Only shown for recurring (monthly) plans — semester/lifetime are one-time
+    // purchases with no auto-renewal, so there's nothing to cancel.
     var cancelBtn = document.getElementById('membership-cancel-btn');
     var isLifetime = sub.plan_id && sub.plan_id.indexOf('lifetime') !== -1;
+    var isSemester = sub.plan_id && sub.plan_id.indexOf('semester') !== -1;
+    var isRecurring = sub.plan_id && sub.plan_id.indexOf('monthly') !== -1;
     if (cancelBtn) {
-        if (isLifetime || sub.cancel_at_period_end || sub.status === 'cancelled') {
+        if (!isRecurring || isLifetime || isSemester || sub.cancel_at_period_end || sub.status === 'cancelled') {
             cancelBtn.style.display = 'none';
         } else {
             cancelBtn.addEventListener('click', function() { openCancelSubModal(sub); });

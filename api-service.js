@@ -418,7 +418,12 @@ async function createCheckoutIntent(planId, email, promoCode) {
     const data = await response.json();
 
     if (!response.ok) {
-        throw new Error(data.error || 'Failed to create checkout intent');
+        // Surface structured error codes (already_owned, use_upgrade_flow,
+        // ai_subscription_required) so the caller can render tailored UI.
+        const err = new Error(data.message || data.error || 'Failed to create checkout intent');
+        err.code = data.error;
+        err.currentPlan = data.current_plan;
+        throw err;
     }
 
     return data;

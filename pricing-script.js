@@ -257,6 +257,29 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // Already-owned checks — don't let users start a purchase for something
+        // they already have. (The backend rejects these too, but bailing here
+        // gives a friendlier message than a checkout-page error.)
+        const isCreditAddon = planId.startsWith('ai-credits');
+        if (userSubscription) {
+            const currentPlan = userSubscription.plan_id || '';
+
+            if (isCreditAddon && !currentPlan.startsWith('ai-')) {
+                showPricingToast('Credit packs require an AI-Powered plan. Subscribe to AI-Powered first.');
+                return;
+            }
+            if (!isCreditAddon) {
+                if (currentPlan === planId) {
+                    showPricingToast('You already have this plan active.', 'success');
+                    return;
+                }
+                if (currentPlan.indexOf('lifetime') !== -1) {
+                    showPricingToast('You already have lifetime access — there\'s nothing more to purchase!', 'success');
+                    return;
+                }
+            }
+        }
+
         // Check if this is an upgrade scenario:
         // User has active Standard plan and is clicking an AI plan
         const isUpgrade = userSubscription

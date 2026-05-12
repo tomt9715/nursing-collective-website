@@ -184,15 +184,61 @@
         }
     }
 
-    function showError(message) {
+    function showError(message, options) {
         const loadingEl = $('payment-loading');
         const formEl = $('payment-form');
         const errorEl = $('payment-error');
         const msgEl = $('payment-error-msg');
+        const titleEl = errorEl ? errorEl.querySelector('h3') : null;
+        const ctaEl = errorEl ? errorEl.querySelector('a.btn') : null;
+        const iconEl = errorEl ? errorEl.querySelector('i') : null;
+
         if (loadingEl) loadingEl.classList.add('hidden');
         if (formEl) formEl.classList.add('hidden');
         if (msgEl && message) msgEl.textContent = message;
+
+        const opts = options || {};
+        if (titleEl && opts.title) titleEl.textContent = opts.title;
+        if (iconEl && opts.icon) {
+            iconEl.className = opts.icon;
+            iconEl.style.color = opts.iconColor || '';
+        }
+        if (ctaEl) {
+            if (opts.ctaText) ctaEl.textContent = opts.ctaText;
+            if (opts.ctaHref) ctaEl.setAttribute('href', opts.ctaHref);
+        }
+
         if (errorEl) errorEl.classList.remove('hidden');
+    }
+
+    function showAlreadyOwned(message) {
+        showError(message, {
+            title: 'You\'re already covered',
+            icon: 'fas fa-check-circle',
+            iconColor: '#0fbcad',
+            ctaText: 'Go to Dashboard',
+            ctaHref: 'dashboard.html',
+        });
+    }
+
+    function showUseUpgrade(message) {
+        showError(message, {
+            title: 'Use the upgrade option',
+            icon: 'fas fa-arrow-up-right-from-square',
+            iconColor: '#0fbcad',
+            ctaText: 'Open Settings',
+            ctaHref: 'settings.html#subscription',
+        });
+    }
+
+    function showNeedsAiSub(message) {
+        showError(message, {
+            title: 'AI plan required',
+            icon: 'fas fa-robot',
+            iconColor: '#8b5cf6',
+            ctaText: 'See AI plans',
+            ctaHref: 'pricing.html?tier=ai',
+        });
     }
 
     function showFormError(message) {
@@ -418,7 +464,15 @@
             mountPaymentElement(currentIntent.clientSecret);
         } catch (err) {
             console.error('Checkout init failed:', err);
-            showError(err.message || 'Something went wrong while preparing your payment.');
+            if (err.code === 'already_owned') {
+                showAlreadyOwned(err.message);
+            } else if (err.code === 'use_upgrade_flow') {
+                showUseUpgrade(err.message);
+            } else if (err.code === 'ai_subscription_required') {
+                showNeedsAiSub(err.message);
+            } else {
+                showError(err.message || 'Something went wrong while preparing your payment.');
+            }
             return;
         }
 

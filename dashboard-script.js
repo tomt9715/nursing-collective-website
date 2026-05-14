@@ -397,8 +397,54 @@ async function loadFullDashboard(user) {
         // ── Post-render: upgrade empty widgets into contextual CTAs ──
         enhanceEmptyStates();
 
+        // ── Onboarding: auto-open the semester setup wizard if a brand-new
+        //    subscriber just landed here from success.html with ?onboard=semester.
+        maybeAutoTriggerSemesterOnboarding();
+
     } catch (error) {
         console.error('Error loading dashboard sections:', error);
+    }
+}
+
+// ==================== Onboarding auto-trigger ====================
+// When a new subscriber clicks "Set Up Your Semester" on success.html,
+// they land here at dashboard.html?onboard=semester. We open the wizard
+// once so they don't have to hunt for it. Guards against re-triggering:
+//   - URL is cleaned immediately, so refresh won't re-open
+//   - skipped entirely if the user already completed setup (has_setup=true)
+async function maybeAutoTriggerSemesterOnboarding() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('onboard') !== 'semester') return;
+
+        // Strip the query param so a page refresh won't re-trigger.
+        const url = new URL(window.location.href);
+        url.searchParams.delete('onboard');
+        window.history.replaceState({}, '', url.toString());
+
+        // Don't re-trigger for users who've already set up their semester.
+        let setupData;
+        try {
+            setupData = await apiCall('/api/semester/setup');
+        } catch (e) {
+            // If we can't read setup state, skip auto-trigger silently.
+            return;
+        }
+        if (setupData && setupData.has_setup) return;
+
+        // The wizard is defined in semester-setup-script.js (defer-loaded).
+        // It should be ready by now since the dashboard's async data loads
+        // take longer than defer-script parsing, but poll briefly just in
+        // case to avoid a race.
+        const start = Date.now();
+        while (typeof window.openSemesterModal !== 'function' && Date.now() - start < 2000) {
+            await new Promise(r => setTimeout(r, 100));
+        }
+        if (typeof window.openSemesterModal === 'function') {
+            window.openSemesterModal();
+        }
+    } catch (err) {
+        console.warn('Onboarding auto-trigger failed:', err);
     }
 }
 

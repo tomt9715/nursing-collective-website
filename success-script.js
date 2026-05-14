@@ -374,23 +374,20 @@ function showSubscriptionSuccess(subscription) {
         </div>
 
         <div class="success-actions">
+            <a href="dashboard.html?onboard=semester" class="btn btn-primary btn-large">
+                <i class="fas fa-calendar-check"></i>
+                Set Up Your Semester
+                <span style="display: block; font-size: 12px; font-weight: 400; opacity: 0.85; margin-top: 4px;">Takes about 2 minutes &mdash; we'll personalize your study plan</span>
+            </a>
             ${isAIPlan ? `
-                <a href="ai-tools.html" class="btn btn-primary btn-large">
+                <a href="ai-tools.html" class="btn btn-light">
                     <i class="fas fa-robot"></i>
-                    Try Your AI Tools
-                </a>
-                <a href="my-guides.html" class="btn btn-light">
-                    <i class="fas fa-book-open"></i>
-                    Browse Study Guides
+                    Skip &mdash; jump to AI tools
                 </a>
             ` : `
-                <a href="my-guides.html" class="btn btn-primary btn-large">
+                <a href="my-guides.html" class="btn btn-light">
                     <i class="fas fa-book-open"></i>
-                    Browse Study Guides
-                </a>
-                <a href="dashboard.html" class="btn btn-light">
-                    <i class="fas fa-gauge-high"></i>
-                    Go to Dashboard
+                    Skip &mdash; browse study guides
                 </a>
             `}
         </div>

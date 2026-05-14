@@ -1296,16 +1296,37 @@ async function openUserDetail(email) {
         const subInfoEl = document.getElementById('user-subscription-info');
         const subActionsEl = document.getElementById('user-subscription-actions');
 
-        if (sub && sub.status === 'active') {
+        // A user "has effective access" if either:
+        //   - the sub is actively active, OR
+        //   - the sub was cancelled but expires_at is still in the future
+        //     (grace period from a user-initiated cancellation).
+        // Both cases need to be revocable from the admin panel.
+        const nowMs = Date.now();
+        const expiresMs = sub && sub.expires_at ? new Date(sub.expires_at).getTime() : null;
+        const isActiveStatus = sub && sub.status === 'active';
+        const isGracePeriod = sub
+            && sub.status === 'cancelled'
+            && expiresMs !== null
+            && expiresMs > nowMs;
+        const hasEffectiveAccess = isActiveStatus || isGracePeriod;
+
+        if (hasEffectiveAccess) {
             const expiresText = sub.expires_at
                 ? `Expires ${formatDate(sub.expires_at)}`
                 : 'Never expires';
+
+            // Distinct badge for grace-period subs so admins can tell at a
+            // glance that the user has effective access but their sub is
+            // already cancelled and counting down.
+            const statusBadge = isGracePeriod
+                ? '<span class="badge-status revoked"><i class="fas fa-hourglass-half"></i> Grace period</span>'
+                : '<span class="badge-status active"><i class="fas fa-check"></i> Active</span>';
 
             subInfoEl.innerHTML = `
                 <div style="padding: 12px; background: var(--background-color-alt, #f8f9fa); border-radius: 8px; border-left: 4px solid ${getPlanColor(sub.plan_id)};">
                     <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
                         ${getSubscriptionPlanBadge(sub.plan_id, sub.plan_name)}
-                        <span class="badge-status active"><i class="fas fa-check"></i> Active</span>
+                        ${statusBadge}
                     </div>
                     <div style="font-size: 13px; color: var(--text-color-muted, #666);">
                         <p style="margin: 4px 0;"><i class="fas fa-calendar-alt"></i> Started: ${formatDate(sub.starts_at || sub.created_at)}</p>
@@ -1316,7 +1337,10 @@ async function openUserDetail(email) {
                 </div>
             `;
 
-            subActionsEl.innerHTML = `
+            // For grace-period subs, only the Revoke button makes sense —
+            // Change Plan / Extend are no-ops on something already cancelled.
+            subActionsEl.innerHTML = isActiveStatus
+                ? `
                 <button class="btn btn-secondary btn-sm" id="modal-change-subscription-btn">
                     <i class="fas fa-exchange-alt"></i> Change Plan
                 </button>
@@ -1326,15 +1350,22 @@ async function openUserDetail(email) {
                 <button class="btn btn-danger btn-sm" id="modal-revoke-subscription-btn">
                     <i class="fas fa-times"></i> Revoke
                 </button>
-            `;
+                `
+                : `
+                <button class="btn btn-danger btn-sm" id="modal-revoke-subscription-btn">
+                    <i class="fas fa-times"></i> Revoke remaining access
+                </button>
+                `;
 
-            // Attach event listeners
-            document.getElementById('modal-change-subscription-btn').addEventListener('click', () => {
-                openSubscriptionModal(email, 'change');
-            });
-            document.getElementById('modal-extend-subscription-btn').addEventListener('click', () => {
-                openSubscriptionModal(email, 'extend');
-            });
+            // Attach event listeners (only those whose buttons we rendered)
+            const changeBtn = document.getElementById('modal-change-subscription-btn');
+            if (changeBtn) {
+                changeBtn.addEventListener('click', () => openSubscriptionModal(email, 'change'));
+            }
+            const extendBtn = document.getElementById('modal-extend-subscription-btn');
+            if (extendBtn) {
+                extendBtn.addEventListener('click', () => openSubscriptionModal(email, 'extend'));
+            }
             document.getElementById('modal-revoke-subscription-btn').addEventListener('click', () => {
                 revokeSubscription(email);
             });

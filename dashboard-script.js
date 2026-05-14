@@ -1248,12 +1248,24 @@ async function showGettingStartedCard(user) {
 
 // ==================== Daily Study Goal Widget ====================
 
-function updateDailyGoalWidget() {
+async function updateDailyGoalWidget() {
     var widget = document.getElementById('sidebar-goal-widget');
     var ringFill = document.getElementById('goal-ring-fill');
     var countText = document.getElementById('goal-count-text');
     var labelText = document.getElementById('goal-label-text');
     if (!widget || !ringFill || !countText) return;
+
+    // Quizzes are paywalled — hide the goal widget for users who can't actually use it.
+    try {
+        if (typeof getSubscriptionStatusCached === 'function') {
+            var status = await getSubscriptionStatusCached();
+            if (!status || !status.hasAccess) {
+                widget.style.display = 'none';
+                return;
+            }
+        }
+    } catch (e) { /* fall through and show the widget */ }
+    widget.style.display = '';
 
     var DAILY_GOAL = 5;
     var activeDates = getActivityDates();

@@ -575,7 +575,10 @@ img { max-width: 100%; display: block; }
 .sidebar-sub-upgrade i { font-size: 11px; }
 
 .sidebar-sub-cta { text-align: center; padding: 12px; }
-.sidebar-sub-cta i { font-size: 1.5rem; color: var(--amber); margin-bottom: 8px; display: block; }
+/* Direct-child selector only: the crown icon at top of the no-sub CTA.
+   Without `>`, the rule was bleeding into the arrow icon inside the
+   "View Plans" button and tinting it amber. */
+.sidebar-sub-cta > i { font-size: 1.5rem; color: var(--amber); margin-bottom: 8px; display: block; }
 .sidebar-sub-cta p { font-size: 12px; color: var(--text-dim); margin: 0 0 10px; }
 .sidebar-sub-cta .btn { font-size: 12px; padding: 6px 16px; }
 

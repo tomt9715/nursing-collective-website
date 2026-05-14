@@ -377,8 +377,8 @@ function showSubscriptionSuccess(subscription) {
             <a href="dashboard.html?onboard=semester" class="btn btn-primary btn-large">
                 <i class="fas fa-calendar-check"></i>
                 Set Up Your Semester
-                <span style="display: block; font-size: 12px; font-weight: 400; opacity: 0.85; margin-top: 4px;">Takes about 2 minutes &mdash; we'll personalize your study plan</span>
             </a>
+            <p class="success-action-note">Takes about 2 minutes &mdash; we'll personalize your study plan.</p>
             ${isAIPlan ? `
                 <a href="ai-tools.html" class="btn btn-light">
                     <i class="fas fa-robot"></i>

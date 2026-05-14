@@ -294,7 +294,9 @@ img { max-width: 100%; display: block; }
   padding-bottom: 60px;
   min-height: calc(100vh - 200px);
   display: flex;
-  align-items: center;
+  /* Top-align so the card stays visible when its content is taller than
+     the viewport; flex column keeps the natural margins. */
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -418,6 +420,14 @@ img { max-width: 100%; display: block; }
 }
 
 .success-actions .btn { width: 100%; }
+
+.success-action-note {
+  margin: -4px 0 4px;
+  font-size: 12px;
+  color: var(--text-dim);
+  text-align: center;
+  line-height: 1.5;
+}
 
 /* ── Email note ── */
 .email-note {

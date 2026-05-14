@@ -326,12 +326,6 @@ function showSubscriptionSuccess(subscription) {
         accessInfo = 'You have lifetime access to all premium content.';
     }
 
-    // AI features callout
-    const aiIncluded = isAIPlan ? `
-                <li><i class="fas fa-robot" style="color: #8b5cf6; margin-right: 4px;"></i> AI-powered note uploads</li>
-                <li><i class="fas fa-robot" style="color: #8b5cf6; margin-right: 4px;"></i> AI-generated NCLEX questions</li>
-                <li><i class="fas fa-robot" style="color: #8b5cf6; margin-right: 4px;"></i> AI summaries &amp; gap analysis</li>` : '';
-
     const successTitle = isCreditAddon ? 'Credits Added!' : (isAIPlan ? 'Welcome to AI-Powered!' : 'Welcome to Premium!');
     const successMessage = isCreditAddon
         ? `Your ${escapeHtml(planName)} has been added to your account. Your additional credits are available immediately.`
@@ -346,7 +340,7 @@ function showSubscriptionSuccess(subscription) {
         <h1 class="success-title">${successTitle}</h1>
         <p class="success-message">${successMessage}</p>
 
-        <div class="order-details">
+        <div class="order-details" style="text-align: left;">
             <h3>${isCreditAddon ? 'Purchase Details' : 'Subscription Details'}</h3>
             <div class="order-item">
                 <span class="order-item-label">Plan</span>
@@ -360,17 +354,6 @@ function showSubscriptionSuccess(subscription) {
                 <span class="order-item-label">Access</span>
                 <span class="order-item-value">${accessInfo}</span>
             </div>` : ''}
-        </div>
-
-        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 24px; text-align: left;">
-            <h4 style="margin: 0 0 12px 0; font-size: 1rem; color: var(--text-primary);"><i class="fas fa-lightbulb" style="color: #10b981; margin-right: 8px;"></i>What's included:</h4>
-            <ul style="margin: 0; padding-left: 20px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.8;">
-                <li>50+ comprehensive study guides</li>
-                <li>Clinical confidence resources</li>
-                <li>Quick reference tools</li>
-                <li>New guides added regularly</li>
-                ${aiIncluded}
-            </ul>
         </div>
 
         <div class="success-actions">

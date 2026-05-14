@@ -281,9 +281,13 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Check if this is an upgrade scenario:
-        // User has active Standard plan and is clicking an AI plan
+        // User has active Standard plan and is clicking an AI plan.
+        // Cancelled subs (still in their grace period) shouldn't route
+        // through the upgrade endpoint — that endpoint requires a truly
+        // active subscription. Let them buy a fresh AI plan instead.
         const isUpgrade = userSubscription
             && !userSubscription.is_ai_plan
+            && userSubscription.status === 'active'
             && planId.startsWith('ai-')
             && !planId.startsWith('ai-credits');
 

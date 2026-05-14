@@ -1352,7 +1352,7 @@ async function loadSidebarSubscription() {
                 <div class="sidebar-sub-cta">
                     <i class="fas fa-crown"></i>
                     <p>Unlock all study guides and resources</p>
-                    <a href="pricing.html" class="btn btn-primary btn-sm"><i class="fas fa-arrow-right"></i> View Plans</a>
+                    <a href="pricing.html" class="btn btn-primary btn-sm">View Plans <i class="fas fa-arrow-right"></i></a>
                 </div>
             `;
         }

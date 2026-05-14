@@ -17,7 +17,10 @@
         altInput: true,
         altFormat: 'M j, Y',
         allowInput: false,
-        disableMobile: true,
+        // Use the native date picker on phones (iOS/Android). The desktop
+        // flatpickr overlay (~310px wide) overflows the wizard modal's
+        // ~295px content area on iPhone SE-sized viewports.
+        disableMobile: false,
         monthSelectorType: 'static'
     };
 

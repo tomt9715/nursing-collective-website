@@ -2289,7 +2289,25 @@ a.trust-btn:hover {
     .sm-exam-entry-row { flex-wrap: wrap; }
     .sm-exam-date-input { width: 100%; }
     .sm-steps-bar { padding: 0 20px; }
-    .sm-actions-right { flex-wrap: wrap; }
+    /* Stack the wizard footer buttons on phones — Back / Skip / Finish
+       are too cramped side-by-side at 375px. Order: primary on top
+       (Finish/Next), then Skip, then Back at the bottom. */
+    .sm-actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+        gap: 10px;
+    }
+    .sm-actions-right {
+        width: 100%;
+        flex-direction: column;
+        margin-left: 0;
+    }
+    .sm-btn-back, .sm-btn-next, .sm-btn-finish, .sm-btn-skip {
+        width: 100%;
+        justify-content: center;
+    }
+    /* Long class names need to wrap above the +Add Exam button */
+    .sm-exam-card-header { flex-wrap: wrap; }
 }
 
 .semester-modal-close {

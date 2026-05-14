@@ -170,25 +170,18 @@ document.addEventListener('DOMContentLoaded', function() {
     let userSubscription = null;
 
     // Check if user has an active Standard subscription to show upgrade banner
-    function checkUpgradeBanner() {
+    async function checkUpgradeBanner() {
         if (!isAuthenticated || !isAuthenticated()) return;
+        if (typeof apiCall !== 'function') return;
 
-        // Fetch subscription status to determine if user has Standard plan
-        const apiUrl = (typeof apiService !== 'undefined' && apiService.baseUrl)
-            ? apiService.baseUrl
-            : (window.location.hostname === 'thenursingcollective.pro'
-                ? 'https://api.thenursingcollective.pro'
-                : 'https://staging-backend-production-365a.up.railway.app');
+        try {
+            // apiCall() handles 401 → auto token refresh → retry transparently,
+            // which avoids the stale-token race condition we used to hit on
+            // first page load. Falling back to raw fetch leaves the user
+            // without an upgrade banner until they reload.
+            const data = await apiCall('/api/subscription-status');
 
-        const token = localStorage.getItem('accessToken');
-        if (!token) return;
-
-        fetch(`${apiUrl}/api/subscription-status`, {
-            headers: { 'Authorization': `Bearer ${token}` }
-        })
-        .then(r => r.json())
-        .then(data => {
-            if (data.has_access && data.subscription) {
+            if (data && data.has_access && data.subscription) {
                 userSubscription = data.subscription;
 
                 if (!data.subscription.is_ai_plan) {
@@ -208,8 +201,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 }
             }
-        })
-        .catch(() => {}); // Silently fail
+        } catch (e) {
+            // Silently fail — the upgrade banner is best-effort UX.
+        }
     }
 
     checkUpgradeBanner();

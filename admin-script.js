@@ -1260,8 +1260,24 @@ async function openUserDetail(email) {
     document.getElementById('user-subscription-info').innerHTML = '<div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
     document.getElementById('user-subscription-actions').innerHTML = '';
 
+    // Wire delete-user button each time the modal is opened.
+    const deleteBtn = document.getElementById('modal-delete-user-btn');
+    if (deleteBtn) {
+        const fresh = deleteBtn.cloneNode(true);
+        deleteBtn.parentNode.replaceChild(fresh, deleteBtn);
+        fresh.addEventListener('click', () => deleteUserFromAdmin(email));
+        fresh.disabled = true; // re-enable once we know the user id
+    }
+
     try {
         const data = await apiCall(`/admin/users/by-email/${encodeURIComponent(email)}`);
+        if (deleteBtn && data.user && data.user.id) {
+            const liveBtn = document.getElementById('modal-delete-user-btn');
+            if (liveBtn) {
+                liveBtn.disabled = false;
+                liveBtn.dataset.userId = String(data.user.id);
+            }
+        }
 
         // User info
         document.getElementById('user-info-grid').innerHTML = `
@@ -1531,6 +1547,33 @@ async function submitSubscription() {
     } finally {
         submitBtn.disabled = false;
         submitBtn.innerHTML = '<i class="fas fa-check"></i> <span id="subscription-submit-text">Submit</span>';
+    }
+}
+
+async function deleteUserFromAdmin(email) {
+    const btn = document.getElementById('modal-delete-user-btn');
+    const userId = btn && btn.dataset ? btn.dataset.userId : null;
+    if (!userId) {
+        showToast('User id not loaded yet — try again in a moment.', 'error');
+        return;
+    }
+
+    if (!await showConfirm(
+        'Delete User',
+        `Permanently delete ${email}? This removes the account and all associated data. This cannot be undone.`
+    )) {
+        return;
+    }
+
+    try {
+        await apiCall(`/admin/users/${encodeURIComponent(userId)}`, { method: 'DELETE' });
+        showToast(`Deleted ${email}`, 'success');
+        closeUserDetailModal();
+        // Refresh whichever list view the admin is currently looking at.
+        if (typeof loadUsers === 'function') loadUsers();
+    } catch (error) {
+        console.error('Error deleting user:', error);
+        showToast(error.message || 'Failed to delete user', 'error');
     }
 }
 

@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.css">
-    <link rel="stylesheet" href="css/dashboard-redesign.css">
+    <link rel="stylesheet" href="css/dashboard-redesign.css?v=tier-cta">
     <link rel="stylesheet" href="css/flatpickr-theme.css">
 
     <!-- Font Awesome -->
@@ -534,7 +534,9 @@
                     <div class="sm-success-icon"><i class="fas fa-check-circle"></i></div>
                     <h2>You're all set!</h2>
                     <p class="sm-subtitle" id="sm-success-summary"></p>
-                    <a href="study-session.html" class="sm-btn-next" style="display:inline-flex;text-decoration:none;justify-content:center">Start Studying <i class="fas fa-arrow-right"></i></a>
+                    <a href="study-session.html" class="sm-btn-next" style="display:inline-flex;text-decoration:none;justify-content:center">Start Today's Plan <i class="fas fa-arrow-right"></i></a>
+                    <a href="ai-tools.html" class="sm-btn-secondary hidden" id="sm-success-cta-ai">Or upload your first lecture <i class="fas fa-arrow-right"></i></a>
+                    <a href="my-guides.html" class="sm-btn-secondary hidden" id="sm-success-cta-standard">Or browse study guides <i class="fas fa-arrow-right"></i></a>
                     <button class="sm-btn-done" id="sm-done"><i class="fas fa-arrow-left"></i> Back to Dashboard</button>
                 </div>
             </div>
@@ -604,7 +606,7 @@
     <script defer src="app/mastery.js"></script>
     <script defer src="study-plan-widget.js"></script>
     <script defer src="exam-countdown-widget.js"></script>
-    <script defer src="semester-setup-script.js"></script>
+    <script defer src="semester-setup-script.js?v=tier-cta">
     <script defer src="exam-modal-script.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/flatpickr@4.6.13/dist/flatpickr.min.js"></script>
     <script defer src="flatpickr-init.js"></script>

@@ -2118,6 +2118,28 @@ img { max-width: 100%; display: block; }
 .sm-btn-skip:hover,
 .sm-btn-done:hover { background: var(--navy-3); color: var(--text); }
 
+/* Tier-aware secondary CTA on success step — sits between the primary
+   "Start Today's Plan" and "Back to Dashboard". Link-style, soft, doesn't
+   compete with the primary CTA. */
+.sm-btn-secondary {
+  display: inline-block;
+  margin: 10px auto 0;
+  padding: 8px 14px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--teal);
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.sm-btn-secondary:hover {
+  background: rgba(13, 148, 136, 0.08);
+  color: var(--teal);
+  text-decoration: none;
+}
+.sm-btn-secondary i { margin-left: 4px; font-size: 12px; }
+
 .sm-btn-danger {
   background: transparent;
   color: var(--red);

@@ -601,6 +601,23 @@
             summary.textContent = text;
         }
 
+        // Show a tier-appropriate secondary CTA — AI users get a nudge toward
+        // ai-tools, Standard users toward my-guides. Credit-pack add-ons don't
+        // grant the AI plan, so we only flip the AI flag for real ai-* plans.
+        var aiCta = document.getElementById('sm-success-cta-ai');
+        var stdCta = document.getElementById('sm-success-cta-standard');
+        if (aiCta) aiCta.classList.add('hidden');
+        if (stdCta) stdCta.classList.add('hidden');
+        if (typeof getSubscriptionStatusCached === 'function') {
+            getSubscriptionStatusCached().then(function (status) {
+                if (!status || !status.hasAccess) return;
+                var planId = status.subscription && status.subscription.plan_id;
+                var isAi = planId && planId.indexOf('ai-') === 0 && planId.indexOf('ai-credits') !== 0;
+                if (isAi && aiCta) aiCta.classList.remove('hidden');
+                else if (stdCta) stdCta.classList.remove('hidden');
+            }).catch(function () { /* leave both hidden on failure */ });
+        }
+
         // Refresh widgets
         if (typeof loadStudyPlan === 'function') loadStudyPlan();
         if (typeof loadExamCountdown === 'function') loadExamCountdown();

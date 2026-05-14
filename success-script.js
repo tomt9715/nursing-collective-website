@@ -374,14 +374,25 @@ function showSubscriptionSuccess(subscription) {
         </div>
 
         <div class="success-actions">
-            <a href="dashboard.html" class="btn btn-primary btn-large">
-                <i class="fas fa-book-open"></i>
-                Start Studying
-            </a>
-            <a href="dashboard.html" class="btn btn-light">
-                <i class="fas fa-list"></i>
-                Go to Dashboard
-            </a>
+            ${isAIPlan ? `
+                <a href="ai-tools.html" class="btn btn-primary btn-large">
+                    <i class="fas fa-robot"></i>
+                    Try Your AI Tools
+                </a>
+                <a href="my-guides.html" class="btn btn-light">
+                    <i class="fas fa-book-open"></i>
+                    Browse Study Guides
+                </a>
+            ` : `
+                <a href="my-guides.html" class="btn btn-primary btn-large">
+                    <i class="fas fa-book-open"></i>
+                    Browse Study Guides
+                </a>
+                <a href="dashboard.html" class="btn btn-light">
+                    <i class="fas fa-gauge-high"></i>
+                    Go to Dashboard
+                </a>
+            `}
         </div>
 
         <div class="email-note">

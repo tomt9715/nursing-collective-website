@@ -229,6 +229,51 @@ function setCurrentUser(userData) {
 }
 
 /**
+ * Per-user progress keys. These hold data that belongs to whoever was logged
+ * in when they were written. They must be wiped before the next user's data
+ * touches a sync function — otherwise pull/merge/push will splice one user's
+ * progress into another user's server record.
+ */
+const USER_SCOPED_STORAGE_KEYS = [
+    'guideLastStudied',
+    'nursingCollective_mastery',
+    'nursingCollective_streak',
+    'nursingCollective_retryQueue',
+    'nursingCollective_bookmarks',
+    'nursingCollective_confidenceReask',
+    'nursingCollective_sectionStats',
+    'semesterSetupDraft',
+    'gettingStartedDismissed',
+    'myGuidesSetupBannerDismissed'
+];
+
+function clearUserScopedStorage() {
+    USER_SCOPED_STORAGE_KEYS.forEach(function (k) { localStorage.removeItem(k); });
+    // Pattern-matched: dismissed-announcement flags
+    for (let i = localStorage.length - 1; i >= 0; i--) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith('announcementDismissed_')) {
+            localStorage.removeItem(k);
+        }
+    }
+}
+
+/**
+ * Stamp localStorage with the current user's id. If the previous stamp belongs
+ * to a different user, wipe per-user progress data first so the next sync runs
+ * with a clean slate. Call after storing `user` on every successful login.
+ */
+function applyUserStamp(userId) {
+    if (userId === undefined || userId === null || userId === '') return;
+    const incoming = String(userId);
+    const previous = localStorage.getItem('lastUserId');
+    if (previous && previous !== incoming) {
+        clearUserScopedStorage();
+    }
+    localStorage.setItem('lastUserId', incoming);
+}
+
+/**
  * Require authentication - redirect to login if not authenticated.
  * Tries a silent token refresh for returning users with stale tokens.
  * Returns a promise so callers can await it before rendering.

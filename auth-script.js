@@ -794,6 +794,11 @@ async function handleLogin(email, password) {
         localStorage.setItem('accessToken', data.access_token);
         localStorage.setItem('user', JSON.stringify(data.user));
 
+        // If a different user was last logged in on this browser, wipe their
+        // progress data before any sync runs — otherwise it merges into the
+        // new user's server record.
+        if (typeof applyUserStamp === 'function') applyUserStamp(data.user && data.user.id);
+
         // Store login timestamp for token expiry tracking
         localStorage.setItem('tokenTimestamp', Date.now().toString());
 

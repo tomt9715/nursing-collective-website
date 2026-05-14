@@ -85,6 +85,10 @@ function initAuthCallback() {
                     // Store user data
                     localStorage.setItem('user', JSON.stringify(data.user));
 
+                    // If a different user was last logged in on this browser, wipe their
+                    // progress data before any sync runs on the destination page.
+                    if (typeof applyUserStamp === 'function') applyUserStamp(data.user.id);
+
                     // Determine redirect URL based on priority:
                     // 1. Stored redirect from before OAuth (e.g., checkout)
                     // 2. Order to claim

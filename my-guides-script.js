@@ -6,6 +6,7 @@
 
     // ── Access state (set on init) ──────────────────────────────
     var _hasAccess = false;
+    var _hasSemesterSetup = false;
 
     // ── Class-based guide catalog ────────────────────────────────
     var CLASS_CATALOG = [
@@ -372,6 +373,30 @@
 
         var html = '';
 
+        // Setup banner — paid users without a configured semester
+        var bannerDismissed = false;
+        try { bannerDismissed = localStorage.getItem('myGuidesSetupBannerDismissed') === 'true'; } catch (e) {}
+        if (_hasAccess && !_hasSemesterSetup && !bannerDismissed) {
+            html +=
+                '<div class="my-guides-setup-banner" id="setup-banner">' +
+                    '<div class="my-guides-setup-banner-icon"><i class="fas fa-calendar-check"></i></div>' +
+                    '<div class="my-guides-setup-banner-text">' +
+                        '<strong class="my-guides-setup-banner-title">' +
+                            'Tell us your classes &mdash; we\'ll show you the right guides first.' +
+                        '</strong>' +
+                        '<span class="my-guides-setup-banner-sub">' +
+                            'Two-minute setup. We\'ll match your exam dates to the guides that prep you for them.' +
+                        '</span>' +
+                    '</div>' +
+                    '<a href="dashboard.html?onboard=semester" class="my-guides-setup-banner-cta">' +
+                        'Set up my semester →' +
+                    '</a>' +
+                    '<button class="my-guides-setup-banner-dismiss" id="setup-banner-dismiss" aria-label="Dismiss">' +
+                        '<i class="fas fa-times"></i>' +
+                    '</button>' +
+                '</div>';
+        }
+
         // Stats bar
         html += '<div class="guide-library-stats">';
         html += '<div class="guide-library-stat"><i class="fas fa-book-open"></i> <strong>' + totalAvailable + '</strong> guides available</div>';
@@ -424,6 +449,15 @@
         container.innerHTML = html;
         animateIn(container);
         bindClassCards();
+
+        var dismissBtn = document.getElementById('setup-banner-dismiss');
+        if (dismissBtn) {
+            dismissBtn.addEventListener('click', function () {
+                var banner = document.getElementById('setup-banner');
+                if (banner) banner.style.display = 'none';
+                try { localStorage.setItem('myGuidesSetupBannerDismissed', 'true'); } catch (e) {}
+            });
+        }
     }
 
     // ── Render: Class Detail (Level 2) ───────────────────────────
@@ -592,6 +626,15 @@
         } catch (e) {
             console.error('Error checking subscription:', e);
             _hasAccess = false;
+        }
+        // Paid users without a configured semester see a setup-nudge banner.
+        if (_hasAccess) {
+            try {
+                var setupRes = await apiCall('/api/semester/setup');
+                _hasSemesterSetup = !!(setupRes && setupRes.has_setup);
+            } catch (e) {
+                _hasSemesterSetup = false;
+            }
         }
         route();
     }

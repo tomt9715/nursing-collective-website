@@ -451,7 +451,7 @@ async function maybeAutoTriggerSemesterOnboarding() {
 // ==================== Empty State Enhancement ====================
 // Replaces zero-state widgets with actionable CTAs for new/free users
 
-function enhanceEmptyStates() {
+async function enhanceEmptyStates() {
     try {
         var guideHistory = {};
         try { guideHistory = JSON.parse(localStorage.getItem('guideLastStudied')) || {}; } catch(e) {}
@@ -467,36 +467,60 @@ function enhanceEmptyStates() {
         // Replace stats row with action prompts if everything is zero
         if (guidesStudied === 0 && !hasQuizData) {
             var statsRow = document.querySelector('.dash-stats-row');
-            if (statsRow) {
-                statsRow.innerHTML =
-                    '<div class="empty-stat-cta" data-navigate="my-guides.html">' +
-                        '<div class="empty-stat-icon"><i class="fas fa-book-open"></i></div>' +
-                        '<div class="empty-stat-text">Study your first guide</div>' +
-                    '</div>' +
-                    '<div class="empty-stat-cta" data-navigate="resources.html">' +
-                        '<div class="empty-stat-icon"><i class="fas fa-lightbulb"></i></div>' +
-                        '<div class="empty-stat-text">Browse free resources</div>' +
-                    '</div>' +
-                    '<div class="empty-stat-cta" data-navigate="community.html">' +
-                        '<div class="empty-stat-icon"><i class="fab fa-discord"></i></div>' +
-                        '<div class="empty-stat-text">Join the community</div>' +
-                    '</div>' +
-                    '<div class="empty-stat-cta" data-navigate="pricing.html">' +
-                        '<div class="empty-stat-icon"><i class="fas fa-crown"></i></div>' +
-                        '<div class="empty-stat-text">Explore study plans</div>' +
-                    '</div>';
+            if (!statsRow) return;
 
-                // Wire up navigation on the new cards
-                statsRow.querySelectorAll('[data-navigate]').forEach(function(el) {
-                    el.addEventListener('click', function() {
-                        window.location.href = this.getAttribute('data-navigate');
-                    });
+            // For paid users, swap the "Explore plans" CTA for semester setup.
+            var hasAccess = false;
+            try {
+                if (typeof getSubscriptionStatusCached === 'function') {
+                    var status = await getSubscriptionStatusCached();
+                    hasAccess = !!(status && status.hasAccess);
+                }
+            } catch(e) {}
+
+            var fourthCta = hasAccess
+                ? '<div class="empty-stat-cta" data-action="open-semester">' +
+                    '<div class="empty-stat-icon"><i class="fas fa-calendar-check"></i></div>' +
+                    '<div class="empty-stat-text">Set up your semester</div>' +
+                  '</div>'
+                : '<div class="empty-stat-cta" data-navigate="pricing.html">' +
+                    '<div class="empty-stat-icon"><i class="fas fa-crown"></i></div>' +
+                    '<div class="empty-stat-text">Explore study plans</div>' +
+                  '</div>';
+
+            statsRow.innerHTML =
+                '<div class="empty-stat-cta" data-navigate="my-guides.html">' +
+                    '<div class="empty-stat-icon"><i class="fas fa-book-open"></i></div>' +
+                    '<div class="empty-stat-text">Study your first guide</div>' +
+                '</div>' +
+                '<div class="empty-stat-cta" data-navigate="resources.html">' +
+                    '<div class="empty-stat-icon"><i class="fas fa-lightbulb"></i></div>' +
+                    '<div class="empty-stat-text">Browse free resources</div>' +
+                '</div>' +
+                '<div class="empty-stat-cta" data-navigate="community.html">' +
+                    '<div class="empty-stat-icon"><i class="fab fa-discord"></i></div>' +
+                    '<div class="empty-stat-text">Join the community</div>' +
+                '</div>' +
+                fourthCta;
+
+            // Wire up navigation on the new cards
+            statsRow.querySelectorAll('[data-navigate]').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    window.location.href = this.getAttribute('data-navigate');
                 });
+            });
+            // Wire up the semester-wizard action for paid users
+            statsRow.querySelectorAll('[data-action="open-semester"]').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    if (typeof window.openSemesterModal === 'function') {
+                        window.openSemesterModal();
+                    }
+                });
+            });
 
-                // Hide Getting Started card — the CTA cards replace it
-                var gettingStarted = document.getElementById('getting-started-card');
-                if (gettingStarted) gettingStarted.classList.add('hidden');
-            }
+            // Hide Getting Started card — the CTA cards replace it
+            var gettingStarted = document.getElementById('getting-started-card');
+            if (gettingStarted) gettingStarted.classList.add('hidden');
         }
     } catch(e) {
         console.error('Empty state enhancement failed:', e);
@@ -1175,7 +1199,7 @@ function updateEmailVerificationBanner(user) {
 
 // ==================== Getting Started Card ====================
 
-function showGettingStartedCard(user) {
+async function showGettingStartedCard(user) {
     const gettingStartedCard = document.getElementById('getting-started-card');
     if (!gettingStartedCard) return;
 
@@ -1184,15 +1208,41 @@ function showGettingStartedCard(user) {
     const daysOld = Math.floor((today - createdDate) / (1000 * 60 * 60 * 24));
     const dismissed = localStorage.getItem('gettingStartedDismissed');
 
-    if (daysOld < 2 && !dismissed) {
-        gettingStartedCard.classList.remove('hidden');
-        const dismissBtn = gettingStartedCard.querySelector('button');
-        if (dismissBtn) {
-            dismissBtn.onclick = function() {
-                gettingStartedCard.classList.add('hidden');
-                localStorage.setItem('gettingStartedDismissed', 'true');
-            };
+    if (daysOld >= 2 || dismissed) return;
+
+    // For paid users, "Choose a Plan" is stale — point them to semester setup instead.
+    let hasAccess = false;
+    try {
+        if (typeof getSubscriptionStatusCached === 'function') {
+            const status = await getSubscriptionStatusCached();
+            hasAccess = !!(status && status.hasAccess);
         }
+    } catch (e) {}
+
+    if (hasAccess) {
+        const steps = gettingStartedCard.querySelectorAll('.getting-started-step');
+        const step3 = steps[2];
+        if (step3) {
+            step3.innerHTML =
+                '<i class="fas fa-calendar-check"></i>' +
+                '<h4>Set Up Your Semester</h4>' +
+                '<p>Tell us your classes &amp; exam dates for a personalized study plan</p>';
+            step3.style.cursor = 'pointer';
+            step3.addEventListener('click', function () {
+                if (typeof window.openSemesterModal === 'function') {
+                    window.openSemesterModal();
+                }
+            });
+        }
+    }
+
+    gettingStartedCard.classList.remove('hidden');
+    const dismissBtn = gettingStartedCard.querySelector('button');
+    if (dismissBtn) {
+        dismissBtn.onclick = function() {
+            gettingStartedCard.classList.add('hidden');
+            localStorage.setItem('gettingStartedDismissed', 'true');
+        };
     }
 }
 

@@ -30,7 +30,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
-    <link rel="stylesheet" href="css/ai-tools-redesign.css">
+    <link rel="stylesheet" href="css/ai-tools-redesign.css?v=2.1">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -239,19 +239,42 @@
                             </div>
                             <div class="ai-documents-list" id="ai-documents-list">
                                 <div class="ai-empty-state" id="ai-empty-state">
-                                    <div class="ai-empty-title">No documents yet</div>
-                                    <div class="ai-empty-steps">
-                                        <div class="ai-empty-step">
-                                            <div class="ai-empty-step-num">1</div>
-                                            <div class="ai-empty-step-text">Upload lecture notes or paste text</div>
+                                    <h3 class="ai-preview-heading">What you'll get from every upload</h3>
+                                    <div class="ai-preview-grid">
+                                        <div class="ai-preview-card">
+                                            <div class="ai-preview-icon" style="color:#0d9488;background:rgba(13,148,136,.10);"><i class="fas fa-book-open-reader"></i></div>
+                                            <div class="ai-preview-name">Study Sheet <span class="ai-preview-cost ai-preview-cost-free">Free</span></div>
+                                            <div class="ai-preview-desc">Distilled key facts, pathophys, and nursing care for fast review.</div>
                                         </div>
-                                        <div class="ai-empty-step">
-                                            <div class="ai-empty-step-num">2</div>
-                                            <div class="ai-empty-step-text">AI generates review sheets, practice questions, and more</div>
+                                        <div class="ai-preview-card">
+                                            <div class="ai-preview-icon" style="color:#3b82f6;background:rgba(59,130,246,.10);"><i class="fas fa-clipboard-question"></i></div>
+                                            <div class="ai-preview-name">Practice Questions <span class="ai-preview-cost ai-preview-cost-credit">1 credit</span></div>
+                                            <div class="ai-preview-desc">NCLEX-style questions tuned to your uploaded material.</div>
                                         </div>
-                                        <div class="ai-empty-step">
-                                            <div class="ai-empty-step-num">3</div>
-                                            <div class="ai-empty-step-text">Study smarter with targeted content from your own material</div>
+                                        <div class="ai-preview-card">
+                                            <div class="ai-preview-icon" style="color:#10b981;background:rgba(16,185,129,.10);"><i class="fas fa-pills"></i></div>
+                                            <div class="ai-preview-name">Drug Cards <span class="ai-preview-cost ai-preview-cost-free">Free</span></div>
+                                            <div class="ai-preview-desc">Every medication in your notes with mechanism + nursing considerations.</div>
+                                        </div>
+                                        <div class="ai-preview-card">
+                                            <div class="ai-preview-icon" style="color:#f59e0b;background:rgba(245,158,11,.10);"><i class="fas fa-vial"></i></div>
+                                            <div class="ai-preview-name">Key Labs <span class="ai-preview-cost ai-preview-cost-free">Free</span></div>
+                                            <div class="ai-preview-desc">Lab values referenced in your notes with normal ranges and meaning.</div>
+                                        </div>
+                                        <div class="ai-preview-card">
+                                            <div class="ai-preview-icon" style="color:#ec4899;background:rgba(236,72,153,.10);"><i class="fas fa-code-compare"></i></div>
+                                            <div class="ai-preview-name">Compare &amp; Contrast <span class="ai-preview-cost ai-preview-cost-free">Free</span></div>
+                                            <div class="ai-preview-desc">Side-by-side tables for concepts that get confused.</div>
+                                        </div>
+                                        <div class="ai-preview-card">
+                                            <div class="ai-preview-icon" style="color:#06b6d4;background:rgba(6,182,212,.10);"><i class="fas fa-clipboard-list"></i></div>
+                                            <div class="ai-preview-name">Care Plan <span class="ai-preview-cost ai-preview-cost-free">Free</span></div>
+                                            <div class="ai-preview-desc">Nursing-process outline with diagnoses, interventions, rationales.</div>
+                                        </div>
+                                        <div class="ai-preview-card">
+                                            <div class="ai-preview-icon" style="color:#ea580c;background:rgba(234,88,12,.10);"><i class="fas fa-magnifying-glass-chart"></i></div>
+                                            <div class="ai-preview-name">Gap Analysis <span class="ai-preview-cost ai-preview-cost-free">Free</span></div>
+                                            <div class="ai-preview-desc">What your notes miss that the textbook would cover.</div>
                                         </div>
                                     </div>
                                 </div>

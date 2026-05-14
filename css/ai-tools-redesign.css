@@ -409,51 +409,87 @@ img { max-width: 100%; display: block; }
 .ai-delete-all-btn.visible { display: flex; }
 
 .ai-documents-list { display: flex; flex-direction: column; gap: 8px; }
-.ai-empty-state { text-align: center; padding: 32px 24px; color: var(--text-dimmer); }
+.ai-empty-state { padding: 24px 16px 8px; color: var(--text-dim); }
 
-.ai-empty-title {
+.ai-preview-heading {
   font-family: 'DM Serif Display', serif;
   font-size: 18px;
   font-weight: 400;
   color: var(--text-dim);
-  margin-bottom: 20px;
+  margin: 0 0 16px;
+  text-align: center;
 }
 
-.ai-empty-steps {
+.ai-preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.ai-preview-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  max-width: 380px;
-  margin: 0 auto;
-  text-align: left;
+  gap: 8px;
 }
 
-.ai-empty-step {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-}
-
-.ai-empty-step-num {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: rgba(139,92,246,0.12);
-  color: var(--purple);
-  font-family: 'DM Mono', monospace;
-  font-size: 11px;
-  font-weight: 500;
+.ai-preview-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.1rem;
   flex-shrink: 0;
-  margin-top: 1px;
 }
 
-.ai-empty-step-text {
-  font-size: 13px;
+.ai-preview-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  line-height: 1.3;
+}
+
+.ai-preview-cost {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem;
+  padding: 2px 7px;
+  border-radius: 10px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.ai-preview-cost-free {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.ai-preview-cost-credit {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.12);
+}
+
+.ai-preview-desc {
+  font-size: 12px;
   color: var(--text-dim);
-  line-height: 1.5;
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .ai-preview-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .ai-preview-grid { grid-template-columns: 1fr; }
 }
 
 

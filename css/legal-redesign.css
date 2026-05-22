@@ -459,6 +459,12 @@ img { max-width: 100%; display: block; }
   stroke-width: 1.5;
 }
 
+.contact-method-icon i {
+  font-size: 16px;
+  color: var(--teal);
+  line-height: 1;
+}
+
 .contact-method h3 {
   font-size: 14px;
   font-weight: 500;

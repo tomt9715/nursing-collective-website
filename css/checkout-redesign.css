@@ -365,7 +365,7 @@ img { max-width: 100%; display: block; }
 }
 
 .summary-plan-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.5;
   margin-bottom: 22px;
@@ -401,7 +401,7 @@ img { max-width: 100%; display: block; }
 }
 
 .summary-total-label {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
 }
 
@@ -422,7 +422,7 @@ img { max-width: 100%; display: block; }
   display: flex;
   align-items: flex-start;
   gap: 10px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   padding: 6px 0;
   line-height: 1.5;
@@ -635,7 +635,7 @@ img { max-width: 100%; display: block; }
 }
 
 .terms-text {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.5;
 }
@@ -650,7 +650,7 @@ img { max-width: 100%; display: block; }
 
 /* ── Submit messaging + button ── */
 .submit-message {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.6;
   margin: 0;
@@ -742,7 +742,7 @@ img { max-width: 100%; display: block; }
 }
 
 .payment-error p {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 24px;
   line-height: 1.6;
 }

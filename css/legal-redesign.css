@@ -317,10 +317,10 @@ img { max-width: 100%; display: block; }
 }
 
 .legal-header .subtitle {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   font-weight: 300;
-  max-width: 480px;
+  max-width: 500px;
   margin: 0 auto;
   line-height: 1.65;
 }
@@ -361,14 +361,14 @@ img { max-width: 100%; display: block; }
 }
 
 .legal-content h3 {
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   color: var(--text);
   margin: 24px 0 8px;
 }
 
 .legal-content p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.75;
   margin-bottom: 14px;
@@ -381,7 +381,7 @@ img { max-width: 100%; display: block; }
 }
 
 .legal-content li {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.75;
   margin-bottom: 6px;
@@ -467,7 +467,7 @@ img { max-width: 100%; display: block; }
 }
 
 .contact-method p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-dim);
   line-height: 1.6;
 }
@@ -496,7 +496,7 @@ img { max-width: 100%; display: block; }
 }
 
 .help-topic p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-dim);
   line-height: 1.6;
 }
@@ -555,14 +555,14 @@ img { max-width: 100%; display: block; }
 }
 
 .policy-card h3 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text);
   margin-bottom: 8px;
 }
 
 .policy-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.65;
 }
@@ -573,7 +573,7 @@ img { max-width: 100%; display: block; }
 }
 
 .policy-card li {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   padding: 4px 0;
   display: flex;
@@ -654,7 +654,7 @@ img { max-width: 100%; display: block; }
 }
 
 .faq-answer p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.7;
   margin-bottom: 8px;

@@ -346,10 +346,10 @@ img { max-width: 100%; display: block; }
 }
 
 .about-hero .hero-sub {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-dim);
   font-weight: 300;
-  max-width: 550px;
+  max-width: 580px;
   margin: 0 auto;
   line-height: 1.7;
 }
@@ -383,7 +383,7 @@ img { max-width: 100%; display: block; }
    ══════════════════════════════════════════════════════════════ */
 .section-heading {
   font-family: 'DM Serif Display', serif;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 400;
   color: var(--text);
   margin-bottom: 20px;
@@ -417,7 +417,7 @@ img { max-width: 100%; display: block; }
 }
 
 .about-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.75;
   margin-bottom: 14px;
@@ -473,7 +473,7 @@ img { max-width: 100%; display: block; }
 }
 
 .approach-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.65;
 }
@@ -530,14 +530,14 @@ img { max-width: 100%; display: block; }
 }
 
 .offer-card h3 {
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 500;
   color: var(--text);
   margin-bottom: 6px;
 }
 
 .offer-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.6;
   margin: 0;

@@ -314,7 +314,7 @@ img { max-width: 100%; display: block; }
 }
 
 .guide-page-header p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
 }
 
@@ -411,14 +411,14 @@ img { max-width: 100%; display: block; }
 
 .class-card-title {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--text);
   margin: 0 0 4px;
 }
 
 .class-card-desc {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   margin: 0 0 10px;
   line-height: 1.5;
@@ -473,7 +473,7 @@ img { max-width: 100%; display: block; }
 }
 
 .guide-upgrade-cta p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   margin-bottom: 16px;
 }
@@ -687,7 +687,7 @@ img { max-width: 100%; display: block; }
 }
 
 .guide-card-name {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text);
   line-height: 1.3;

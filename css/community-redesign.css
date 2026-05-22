@@ -133,9 +133,9 @@ img { max-width: 100%; display: block; }
 }
 
 .community-hero p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
-  max-width: 520px;
+  max-width: 540px;
   margin: 0 auto 20px;
   line-height: 1.65;
 }
@@ -239,14 +239,14 @@ img { max-width: 100%; display: block; }
 }
 
 .community-feature-card h3 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 4px;
 }
 
 .community-feature-card p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.5;
 }
@@ -285,14 +285,14 @@ img { max-width: 100%; display: block; }
 }
 
 .community-step h3 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 4px;
 }
 
 .community-step p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.5;
 }
@@ -348,7 +348,7 @@ img { max-width: 100%; display: block; }
 
 .community-faq-answer-inner {
   padding: 0 18px 14px;
-  font-size: 13px;
+  font-size: 15px;
   color: var(--text-dim);
   line-height: 1.6;
 }

@@ -358,10 +358,10 @@ img { max-width: 100%; display: block; }
 }
 
 .pricing-hero .hero-sub {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-dim);
   font-weight: 300;
-  max-width: 500px;
+  max-width: 520px;
   margin: 0 auto 32px;
   line-height: 1.7;
 }
@@ -487,18 +487,18 @@ img { max-width: 100%; display: block; }
 
 .section-heading {
   font-family: 'DM Serif Display', serif;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 400;
   margin-bottom: 6px;
   color: var(--text);
 }
 
 .section-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   margin-bottom: 28px;
   line-height: 1.65;
-  max-width: 600px;
+  max-width: 620px;
 }
 
 
@@ -676,7 +676,7 @@ img { max-width: 100%; display: block; }
 }
 
 .pricing-card-header p {
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-dimmer);
   font-weight: 400;
 }
@@ -713,7 +713,7 @@ img { max-width: 100%; display: block; }
 }
 
 .pricing-card-features li {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-dim);
   line-height: 1.5;
   padding: 6px 0;
@@ -850,14 +850,14 @@ img { max-width: 100%; display: block; }
 }
 
 .feature-card h4 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text);
   margin-bottom: 6px;
 }
 
 .feature-card p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-dim);
   line-height: 1.65;
 }
@@ -923,7 +923,7 @@ img { max-width: 100%; display: block; }
 }
 
 .credit-addon-card li {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-dim);
   padding: 4px 0;
   display: flex;
@@ -1266,14 +1266,14 @@ img { max-width: 100%; display: block; }
 
 .pricing-auth-title {
   font-family: 'DM Serif Display', serif;
-  font-size: 22px;
+  font-size: 24px;
   font-weight: 400;
   color: var(--text);
   margin-bottom: 8px;
 }
 
 .pricing-auth-subtitle {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.6;
 }
@@ -1448,7 +1448,7 @@ img { max-width: 100%; display: block; }
 }
 
 .faq-answer p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.7;
   margin-bottom: 8px;

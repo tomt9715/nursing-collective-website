@@ -367,7 +367,7 @@ img { max-width: 100%; display: block; }
 }
 
 .auth-header .auth-subtitle {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   font-weight: 300;
 }
@@ -905,7 +905,7 @@ img { max-width: 100%; display: block; }
 }
 
 .auth-mode-switch p {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-dim);
 }
 
@@ -1046,7 +1046,7 @@ img { max-width: 100%; display: block; }
 }
 
 .modal-description {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   margin-bottom: 20px;
   line-height: 1.6;

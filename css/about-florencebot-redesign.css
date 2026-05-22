@@ -400,7 +400,7 @@ img { max-width: 100%; display: block; }
 }
 
 .content-column p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.7;
   margin-bottom: 12px;
@@ -431,14 +431,14 @@ img { max-width: 100%; display: block; }
 }
 
 .highlight-item h4 {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text);
   margin-bottom: 4px;
 }
 
 .highlight-item p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.6;
   margin-bottom: 0;
@@ -659,7 +659,7 @@ img { max-width: 100%; display: block; }
 
 .section-subtitle {
   text-align: center;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   margin-bottom: 32px;
 }
@@ -691,7 +691,7 @@ img { max-width: 100%; display: block; }
 }
 
 .command-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.6;
   margin: 0;
@@ -717,7 +717,7 @@ img { max-width: 100%; display: block; }
 }
 
 .cta-content p {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-dim);
   margin-bottom: 24px;
 }

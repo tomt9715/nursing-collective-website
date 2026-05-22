@@ -346,10 +346,10 @@ img { max-width: 100%; display: block; }
 }
 
 .resources-hero .hero-sub {
-  font-size: 15px;
+  font-size: 17px;
   color: var(--text-dim);
   font-weight: 300;
-  max-width: 520px;
+  max-width: 540px;
   margin: 0 auto;
   line-height: 1.7;
 }
@@ -446,17 +446,17 @@ img { max-width: 100%; display: block; }
 
 .section-heading {
   font-family: 'DM Serif Display', serif;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 400;
   color: var(--text);
   margin-bottom: 8px;
 }
 
 .section-desc {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.65;
-  max-width: 520px;
+  max-width: 540px;
   margin-bottom: 32px;
 }
 
@@ -542,7 +542,7 @@ img { max-width: 100%; display: block; }
 /* ── Card text ── */
 .resource-card h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 8px;
@@ -550,7 +550,7 @@ img { max-width: 100%; display: block; }
 }
 
 .resource-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.6;
   flex-grow: 1;
@@ -623,14 +623,14 @@ img { max-width: 100%; display: block; }
 
 .premium-card h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 8px;
 }
 
 .premium-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text-dim);
   line-height: 1.6;
 }

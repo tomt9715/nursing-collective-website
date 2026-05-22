@@ -738,8 +738,8 @@ img { max-width: 100%; display: block; }
   font-size: 13px;
 }
 
-.dash-announcement-content strong { color: var(--text); font-size: 14px; }
-.dash-announcement-content p { color: var(--text-dim); font-size: 13px; margin: 2px 0 0; }
+.dash-announcement-content strong { color: var(--text); font-size: 16px; }
+.dash-announcement-content p { color: var(--text-dim); font-size: 14px; margin: 2px 0 0; }
 
 .dash-announcement-dismiss {
   background: none;
@@ -949,7 +949,7 @@ img { max-width: 100%; display: block; }
 
 .getting-started-card > p {
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 20px;
 }
 
@@ -983,8 +983,8 @@ img { max-width: 100%; display: block; }
   margin-left: auto;
   margin-right: auto;
 }
-.getting-started-step h4 { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-.getting-started-step p { font-size: 13px; color: var(--text-dim); margin: 0; line-height: 1.5; }
+.getting-started-step h4 { font-size: 16px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.getting-started-step p { font-size: 14px; color: var(--text-dim); margin: 0; line-height: 1.5; }
 
 .getting-started-dismiss-btn {
   background: var(--teal);
@@ -1039,12 +1039,12 @@ img { max-width: 100%; display: block; }
 
 .continue-hero-text h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   margin: 0 0 2px;
   color: var(--text);
 }
-.continue-hero-text p { font-size: 13px; margin: 0; color: var(--text-dim); }
+.continue-hero-text p { font-size: 14px; margin: 0; color: var(--text-dim); }
 .continue-hero-text .continue-label {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
@@ -1141,7 +1141,7 @@ img { max-width: 100%; display: block; }
 .sp-launchpad-info { margin-bottom: 8px; }
 
 .sp-launchpad-name {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 2px;
@@ -1169,7 +1169,7 @@ img { max-width: 100%; display: block; }
 .sp-day-pill.normal { background: var(--navy-2); color: var(--text-dim); }
 
 .sp-launchpad-topics {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dimmer);
   line-height: 1.4;
   margin-bottom: 10px;
@@ -1204,7 +1204,7 @@ img { max-width: 100%; display: block; }
 .sp-start-all:hover { color: var(--teal); }
 
 /* ── Study plan widget empty state ── */
-.study-plan-content { color: var(--text-dim); font-size: 14px; }
+.study-plan-content { color: var(--text-dim); font-size: 15px; }
 
 .sp-empty-state {
   display: flex;
@@ -1229,8 +1229,8 @@ img { max-width: 100%; display: block; }
 }
 
 .sp-empty-text { flex: 1; }
-.sp-empty-title { font-size: 14px; font-weight: 600; color: var(--text); margin: 0 0 4px; }
-.sp-empty-desc { font-size: 13px; color: var(--text-dim); margin: 0; line-height: 1.5; }
+.sp-empty-title { font-size: 16px; font-weight: 600; color: var(--text); margin: 0 0 4px; }
+.sp-empty-desc { font-size: 14px; color: var(--text-dim); margin: 0; line-height: 1.5; }
 
 .sp-empty-btn {
   margin-top: 12px;
@@ -1278,7 +1278,7 @@ img { max-width: 100%; display: block; }
 }
 
 .ec-item-name {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
   color: var(--text);
 }
@@ -1350,7 +1350,7 @@ img { max-width: 100%; display: block; }
   flex-shrink: 0;
 }
 
-.ec-empty-text { font-size: 13px; color: var(--text-dim); line-height: 1.5; }
+.ec-empty-text { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
 
 .ec-empty-btn,
 .ec-add-exam-btn {
@@ -1459,7 +1459,7 @@ img { max-width: 100%; display: block; }
 }
 
 .recent-guide-name {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
   color: var(--text);
   white-space: nowrap;
@@ -1494,7 +1494,7 @@ img { max-width: 100%; display: block; }
 }
 
 /* Exam countdown widget specifics */
-#exam-countdown-content { color: var(--text-dim); font-size: 14px; }
+#exam-countdown-content { color: var(--text-dim); font-size: 15px; }
 
 
 /* ══════════════════════════════════════════════════════════════
@@ -1541,7 +1541,7 @@ img { max-width: 100%; display: block; }
 
 .activity-bar-label {
   min-width: 72px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   font-weight: 500;
   flex-shrink: 0;
@@ -1689,8 +1689,8 @@ img { max-width: 100%; display: block; }
   background: rgba(15,188,173,0.1);
   margin: 0 auto 10px;
 }
-.activity-empty-nudge strong { color: var(--text); display: block; font-size: 14px; margin-bottom: 4px; }
-.activity-empty-nudge p { font-size: 13px; color: var(--text-dim); margin: 0 0 10px; line-height: 1.4; }
+.activity-empty-nudge strong { color: var(--text); display: block; font-size: 15px; margin-bottom: 4px; }
+.activity-empty-nudge p { font-size: 14px; color: var(--text-dim); margin: 0 0 10px; line-height: 1.4; }
 
 /* When activity widget is empty, hide summary and legend via JS-applied class */
 .study-activity-widget.activity-empty .activity-summary,
@@ -1838,14 +1838,14 @@ img { max-width: 100%; display: block; }
 }
 
 .onboarding-card h3 {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 6px;
 }
 
 .onboarding-card p {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   line-height: 1.5;
   margin: 0;
@@ -2043,7 +2043,7 @@ img { max-width: 100%; display: block; }
 }
 
 .sm-subtitle {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-dim);
   margin-bottom: 20px;
 }
@@ -2342,7 +2342,7 @@ img { max-width: 100%; display: block; }
 }
 .em-btn-delete:hover { background: rgba(224,82,82,0.1); }
 
-.em-upload-text { color: var(--text-dim); font-size: 14px; }
+.em-upload-text { color: var(--text-dim); font-size: 15px; }
 .em-upload-text u { color: var(--teal); }
 
 

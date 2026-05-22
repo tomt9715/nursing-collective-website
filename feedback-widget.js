@@ -116,7 +116,11 @@
                     <option value="login">Login / Account</option>
                     <option value="payment">Payment / Billing</option>
                     <option value="guides">Study Guides</option>
+                    <option value="quizzes">Quizzes / Questions</option>
+                    <option value="study_plan">Dashboard / Study Plan</option>
+                    <option value="ai_tools">AI Tools</option>
                     <option value="download">Downloads</option>
+                    <option value="notifications">Notifications / Emails</option>
                     <option value="performance">Slow / Performance</option>
                     <option value="other">Other</option>
                 </select>

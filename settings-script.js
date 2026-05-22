@@ -1374,7 +1374,10 @@ async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
         var subData = await apiCall('/api/subscription-status');
         if (!data || !data.plans || !subData) throw new Error('Failed to load details');
 
-        var currentPlanId = subData.plan_id || '';
+        // /api/subscription-status returns { has_access, subscription: {...} },
+        // so plan fields live one level deeper.
+        var sub = subData.subscription || {};
+        var currentPlanId = sub.plan_id || '';
         var currentPlanNames = {
             'monthly-access': 'Monthly Access',
             'semester-access': 'Semester Access',
@@ -1386,7 +1389,7 @@ async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
             'lifetime-access': 'ai-lifetime-access'
         };
 
-        var currentName = currentPlanNames[currentPlanId] || subData.plan_name || currentPlanId;
+        var currentName = currentPlanNames[currentPlanId] || sub.plan_name || currentPlanId;
         var aiPlanId = aiEquivalent[currentPlanId] || 'ai-semester-access';
         var aiPlan = data.plans[aiPlanId];
 

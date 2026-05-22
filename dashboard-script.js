@@ -804,13 +804,17 @@ function loadQuizBankWidget() {
         html += '<div class="qb-section-label">Needs work</div>';
         weakPracticed.forEach(function (ch) {
             var levelLabel = 'Lvl ' + (ch.level || 0);
+            // Deep-link directly into that chapter on the Quiz Bank hub
+            var drillHref = ch.id
+                ? QUIZ_BANK_HUB_URL + '/?chapter=' + encodeURIComponent(ch.id)
+                : QUIZ_BANK_HUB_URL;
             html += '<div class="qb-row">';
             html +=   '<div class="qb-row-badge qb-score-weak"><i class="fas fa-bullseye"></i></div>';
             html +=   '<div class="qb-row-info">';
             html +=     '<span class="qb-row-name">' + escapeHtml(ch.label || ch.id) + '</span>';
             html +=     '<span class="qb-row-meta">' + escapeHtml(levelLabel) + ' · ' + (ch.points || 0) + ' pts</span>';
             html +=   '</div>';
-            html +=   '<a class="btn-row-open" href="' + QUIZ_BANK_HUB_URL + '" target="_blank" rel="noopener">Drill</a>';
+            html +=   '<a class="btn-row-open" href="' + drillHref + '" target="_blank" rel="noopener">Drill</a>';
             html += '</div>';
         });
     }

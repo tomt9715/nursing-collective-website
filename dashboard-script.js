@@ -741,14 +741,21 @@ function loadQuizBankWidget() {
     // ── Recent section ──
     if (lastSession) {
         var topicId = lastSession.topic_id || '';
-        var topicLabel = topicId;
-        try {
-            if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getTopicLabel === 'function') {
-                topicLabel = MasteryTracker.getTopicLabel(topicId) || formatGuideName(topicId);
-            } else {
-                topicLabel = formatGuideName(topicId);
-            }
-        } catch (e) { topicLabel = formatGuideName(topicId); }
+        var isAiSession = lastSession.category === 'AI Generated' ||
+                          (typeof topicId === 'string' && topicId.indexOf('ai-') === 0);
+
+        var topicLabel;
+        if (isAiSession) {
+            topicLabel = 'AI Practice Quiz';
+        } else {
+            try {
+                if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getTopicLabel === 'function') {
+                    topicLabel = MasteryTracker.getTopicLabel(topicId) || formatGuideName(topicId);
+                } else {
+                    topicLabel = formatGuideName(topicId);
+                }
+            } catch (e) { topicLabel = formatGuideName(topicId); }
+        }
 
         var score = typeof lastSession.score === 'number' ? Math.round(lastSession.score) : null;
         var correct = lastSession.correct_count;
@@ -767,8 +774,19 @@ function loadQuizBankWidget() {
             else scoreColorClass = 'qb-score-weak';
         }
 
-        // Per-guide quiz route (works when topic_id matches a guide id; falls back to bank hub otherwise — handled by quiz page)
-        var retakeHref = topicId ? ('guides/quiz/quiz.html?topic=' + encodeURIComponent(topicId)) : QUIZ_BANK_HUB_URL;
+        // AI sessions can't be retaken from a topic_id alone (questions live in sessionStorage),
+        // so send the user back to AI Tools where they can re-generate.
+        var retakeHref, retakeLabel;
+        if (isAiSession) {
+            retakeHref = 'ai-tools.html';
+            retakeLabel = 'AI Tools';
+        } else if (topicId) {
+            retakeHref = 'guides/quiz/quiz.html?topic=' + encodeURIComponent(topicId);
+            retakeLabel = 'Retake';
+        } else {
+            retakeHref = QUIZ_BANK_HUB_URL;
+            retakeLabel = 'Open';
+        }
 
         html += '<div class="qb-section-label">Last quiz</div>';
         html += '<div class="qb-row">';
@@ -777,7 +795,7 @@ function loadQuizBankWidget() {
         html +=     '<span class="qb-row-name">' + escapeHtml(topicLabel) + '</span>';
         html +=     '<span class="qb-row-meta">' + escapeHtml(metaParts.join(' · ')) + '</span>';
         html +=   '</div>';
-        html +=   '<a class="btn-row-open" href="' + retakeHref + '">Retake</a>';
+        html +=   '<a class="btn-row-open" href="' + retakeHref + '">' + retakeLabel + '</a>';
         html += '</div>';
     }
 

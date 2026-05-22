@@ -1397,24 +1397,24 @@ async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
 
         if (summaryEl) {
             summaryEl.innerHTML =
-                '<div style="background: var(--surface-color, #f8f9fa); border-radius: 12px; padding: 20px;">' +
+                '<div style="background: var(--navy-3); border: 0.5px solid var(--border); border-radius: 12px; padding: 20px;">' +
                 '  <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">' +
                 '    <div style="flex:1; text-align:center;">' +
-                '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px;">Current Plan</div>' +
-                '      <div style="font-weight:600; color:var(--text-primary);">' + currentName + '</div>' +
-                '      <div style="font-size:0.75rem; color:var(--text-secondary); margin-top:2px;">Standard</div>' +
+                '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-dimmer); font-weight:600; letter-spacing:0.06em; margin-bottom:4px;">Current Plan</div>' +
+                '      <div style="font-weight:600; color:var(--text);">' + currentName + '</div>' +
+                '      <div style="font-size:0.75rem; color:var(--text-dim); margin-top:2px;">Standard</div>' +
                 '    </div>' +
-                '    <div style="color:#7c3aed; font-size:1.2rem;"><i class="fas fa-arrow-right"></i></div>' +
+                '    <div style="color:#a78bfa; font-size:1.2rem;"><i class="fas fa-arrow-right"></i></div>' +
                 '    <div style="flex:1; text-align:center;">' +
-                '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px;">New Plan</div>' +
-                '      <div style="font-weight:600; color:#7c3aed;">' + aiName + '</div>' +
-                (aiPrice ? '      <div style="font-size:0.9rem; color:var(--text-secondary); margin-top:2px;">' + aiPrice + '</div>' : '') +
+                '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-dimmer); font-weight:600; letter-spacing:0.06em; margin-bottom:4px;">New Plan</div>' +
+                '      <div style="font-weight:600; color:#a78bfa;">' + aiName + '</div>' +
+                (aiPrice ? '      <div style="font-size:0.9rem; color:var(--text-dim); margin-top:2px;">' + aiPrice + '</div>' : '') +
                 '    </div>' +
                 '  </div>' +
-                '  <div style="font-size:0.82rem; color:var(--text-secondary); text-align:center; border-top:1px solid var(--border-color); padding-top:12px;">' +
-                '    <i class="fas fa-bolt" style="color:#7c3aed; margin-right:4px;"></i> Includes AI note uploads, NCLEX question generation, and more.' +
+                '  <div style="font-size:0.82rem; color:var(--text-dim); text-align:center; border-top:1px solid var(--border); padding-top:12px;">' +
+                '    <i class="fas fa-bolt" style="color:#a78bfa; margin-right:4px;"></i> Includes AI note uploads, NCLEX question generation, and more.' +
                 '  </div>' +
-                '  <div style="font-size:0.82rem; color:var(--text-secondary); text-align:center; margin-top:8px;">' +
+                '  <div style="font-size:0.82rem; color:var(--text-dim); text-align:center; margin-top:8px;">' +
                 '    <i class="fas fa-lock" style="margin-right:4px;"></i> You\'ll be redirected to Stripe to confirm payment.' +
                 '  </div>' +
                 '</div>';
@@ -1772,20 +1772,20 @@ function handleChangePlan(currentSub, modal) {
 
     if (optionsEl) {
         optionsEl.innerHTML =
-            '<div style="background: var(--surface-color, #f8f9fa); border-radius: 12px; padding: 20px; width: 100%;">' +
+            '<div style="background: var(--navy-3); border: 0.5px solid var(--border); border-radius: 12px; padding: 20px; width: 100%;">' +
             '  <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">' +
             '    <div style="flex:1; text-align:center;">' +
-            '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px;">Current Plan</div>' +
-            '      <div style="font-weight:600; color:var(--text-primary);">' + currentName + '</div>' +
+            '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-dimmer); font-weight:600; letter-spacing:0.06em; margin-bottom:4px;">Current Plan</div>' +
+            '      <div style="font-weight:600; color:var(--text);">' + currentName + '</div>' +
             '    </div>' +
-            '    <div style="color:var(--primary-color); font-size:1.2rem;"><i class="fas fa-arrow-right"></i></div>' +
+            '    <div style="color:var(--teal); font-size:1.2rem;"><i class="fas fa-arrow-right"></i></div>' +
             '    <div style="flex:1; text-align:center;">' +
-            '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-secondary); font-weight:600; margin-bottom:4px;">New Plan</div>' +
-            '      <div style="font-weight:600; color:var(--primary-color);">' + newName + '</div>' +
-            '      <div style="font-size:0.9rem; color:var(--text-secondary); margin-top:2px;">' + newPrice + '</div>' +
+            '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-dimmer); font-weight:600; letter-spacing:0.06em; margin-bottom:4px;">New Plan</div>' +
+            '      <div style="font-weight:600; color:var(--teal);">' + newName + '</div>' +
+            '      <div style="font-size:0.9rem; color:var(--text-dim); margin-top:2px;">' + newPrice + '</div>' +
             '    </div>' +
             '  </div>' +
-            '  <div style="font-size:0.82rem; color:var(--text-secondary); text-align:center; border-top:1px solid var(--border-color); padding-top:12px;">' +
+            '  <div style="font-size:0.82rem; color:var(--text-dim); text-align:center; border-top:1px solid var(--border); padding-top:12px;">' +
             '    <i class="fas fa-lock" style="margin-right:4px;"></i> You\'ll be redirected to Stripe to confirm payment.' +
             '  </div>' +
             '</div>';

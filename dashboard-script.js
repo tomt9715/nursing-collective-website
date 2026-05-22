@@ -383,7 +383,6 @@ async function loadFullDashboard(user) {
         await Promise.all(dataPromises);
 
         // All data is now in localStorage — render widgets
-        // loadAnnouncementBanner(); // Disabled — banner was not useful
         if (typeof loadStudyPlan === 'function') loadStudyPlan();
         if (typeof loadExamCountdown === 'function') loadExamCountdown();
         loadRecentGuides();
@@ -1407,39 +1406,6 @@ function loadContinueHero() {
     }
 
     hero.classList.remove('hidden');
-}
-
-// ==================== Announcement Banner ====================
-
-function loadAnnouncementBanner() {
-    const banner = document.getElementById('dash-announcement');
-    if (!banner) return;
-
-    // Announcement content — update this when you have news
-    const announcement = {
-        id: 'feb-2026-new-guides',
-        title: 'New guides added!',
-        text: 'Explore our latest NCLEX study materials — freshly updated for 2026.'
-    };
-
-    // Check if user dismissed this announcement
-    const dismissed = localStorage.getItem('announcementDismissed_' + announcement.id);
-    if (dismissed) return;
-
-    var titleEl = document.getElementById('announcement-title');
-    var textEl = document.getElementById('announcement-text');
-    if (titleEl) titleEl.textContent = announcement.title;
-    if (textEl) textEl.textContent = announcement.text;
-
-    banner.classList.remove('hidden');
-
-    var dismissBtn = document.getElementById('dismiss-announcement-btn');
-    if (dismissBtn) {
-        dismissBtn.addEventListener('click', function() {
-            banner.classList.add('hidden');
-            localStorage.setItem('announcementDismissed_' + announcement.id, 'true');
-        });
-    }
 }
 
 // ==================== Event Listeners ====================

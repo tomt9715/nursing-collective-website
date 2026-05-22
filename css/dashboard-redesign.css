@@ -710,50 +710,6 @@ img { max-width: 100%; display: block; }
 
 
 /* ══════════════════════════════════════════════════════════════
-   ANNOUNCEMENT BANNER
-   ══════════════════════════════════════════════════════════════ */
-.dash-announcement {
-  background: var(--navy-3);
-  border: 0.5px solid var(--border);
-  border-left: 3px solid var(--amber);
-  border-radius: 10px;
-  padding: 12px 16px;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  position: relative;
-}
-
-.dash-announcement-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: rgba(244,165,53,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--amber);
-  font-size: 13px;
-}
-
-.dash-announcement-content strong { color: var(--text); font-size: 16px; }
-.dash-announcement-content p { color: var(--text-dim); font-size: 14px; margin: 2px 0 0; }
-
-.dash-announcement-dismiss {
-  background: none;
-  border: none;
-  color: var(--text-dimmer);
-  cursor: pointer;
-  padding: 4px;
-  margin-left: auto;
-  transition: color 0.15s;
-}
-.dash-announcement-dismiss:hover { color: var(--text); }
-
-
-/* ══════════════════════════════════════════════════════════════
    STATS ROW
    ══════════════════════════════════════════════════════════════ */
 .dash-stats-row {

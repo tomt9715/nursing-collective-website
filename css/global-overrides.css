@@ -1639,39 +1639,6 @@ body:has(.hero) .navbar.scrolled .mobile-menu-btn {
     font-family: 'Source Sans 3', sans-serif !important;
 }
 
-/* -- Announcement Banner -- */
-.dash-announcement {
-    background: var(--dash-card-bg) !important;
-    border: 1px solid var(--dash-card-border) !important;
-    border-radius: var(--dash-card-radius) !important;
-    padding: 12px 16px !important;
-    margin-bottom: 20px !important;
-    border-left: 3px solid var(--accent-color, #f59e0b) !important;
-}
-
-.dash-announcement-icon {
-    width: 32px !important;
-    height: 32px !important;
-    border-radius: 8px !important;
-    font-size: 0.8rem !important;
-}
-
-.dash-announcement-content strong {
-    font-family: 'Source Sans 3', sans-serif !important;
-    font-size: 0.82rem !important;
-    color: var(--dash-heading) !important;
-}
-
-.dash-announcement-content p {
-    font-size: 0.78rem !important;
-    color: var(--dash-label) !important;
-}
-
-.dash-announcement-dismiss {
-    color: var(--dash-label) !important;
-    font-size: 0.85rem !important;
-}
-
 /* -- Dashboard responsive: Tablet -- */
 @media (max-width: 768px) {
     .dash-sidebar {

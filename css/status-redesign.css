@@ -322,7 +322,7 @@ img { max-width: 100%; display: block; }
 
 .status-header p {
   color: var(--text-dim);
-  font-size: 15px;
+  font-size: 17px;
 }
 
 
@@ -386,7 +386,7 @@ img { max-width: 100%; display: block; }
 
 .overall-status-text p {
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 16px;
   margin: 0;
 }
 
@@ -446,7 +446,7 @@ img { max-width: 100%; display: block; }
 
 .service-info h3 {
   font-family: 'Outfit', sans-serif;
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 600;
   color: var(--text);
   margin-bottom: 2px;
@@ -454,7 +454,7 @@ img { max-width: 100%; display: block; }
 
 .service-info p {
   color: var(--text-dim);
-  font-size: 13px;
+  font-size: 14px;
   margin: 0;
 }
 
@@ -544,7 +544,7 @@ img { max-width: 100%; display: block; }
 }
 
 .no-incidents p {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .incident-item {
@@ -567,7 +567,7 @@ img { max-width: 100%; display: block; }
 
 .incident-title {
   font-weight: 600;
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text);
 }
 
@@ -579,7 +579,7 @@ img { max-width: 100%; display: block; }
 
 .incident-description {
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.6;
 }
 
@@ -604,7 +604,7 @@ img { max-width: 100%; display: block; }
 
 .subscribe-section p {
   color: var(--text-dim);
-  font-size: 14px;
+  font-size: 15px;
   margin-bottom: 20px;
 }
 

@@ -468,7 +468,18 @@
 
     // ─── Cookie banner observer ────────────────────────────────
 
+    function hasCookieConsent() {
+        return document.cookie.split('; ').some(function (row) {
+            return row.indexOf('tnc_cookie_consent=') === 0;
+        });
+    }
+
     function observeCookieBanner(fab, panel) {
+        // If the user has already consented, the cookie banner won't be shown
+        // — skip the observer entirely so a phantom .visible flash can't bump
+        // the FAB up to bottom: 130px.
+        if (hasCookieConsent()) return;
+
         let bannerObserver = null;
 
         function checkBanner() {

@@ -1370,14 +1370,13 @@ function openUpgradeAiModal() {
 
 async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
     try {
-        var data = await apiCall('/api/subscription-plans');
-        var subData = await apiCall('/api/subscription-status');
-        if (!data || !data.plans || !subData) throw new Error('Failed to load details');
+        // /api/upgrade-options returns the live UPGRADE_PLANS data for the
+        // current user's plan, so the modal price matches what Stripe charges
+        // (e.g. $50 for lifetime upgrade, not $199 retail).
+        var optsResp = await apiCall('/api/upgrade-options');
+        if (!optsResp) throw new Error('Failed to load upgrade options');
 
-        // /api/subscription-status returns { has_access, subscription: {...} },
-        // so plan fields live one level deeper.
-        var sub = subData.subscription || {};
-        var currentPlanId = sub.plan_id || '';
+        var currentPlanId = optsResp.current_plan_id || '';
 
         // "Standard X" labels make the tier contrast with "AI-Powered X" on the right.
         var currentPlanNames = {
@@ -1385,36 +1384,32 @@ async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
             'semester-access': 'Standard Semester',
             'lifetime-access': 'Standard Lifetime'
         };
-        var aiEquivalent = {
-            'monthly-access': 'ai-monthly-access',
-            'semester-access': 'ai-semester-access',
-            'lifetime-access': 'ai-lifetime-access'
-        };
-        // Actual upgrade prices from backend UPGRADE_PLANS (products.py).
-        // Monthly is handled as a Stripe subscription-modify (prorated automatically),
-        // so we show a label instead of an explicit price.
-        var upgradePrices = {
-            'monthly-access': null,    // prorated by Stripe
-            'semester-access': 30.00,
-            'lifetime-access': 50.00
-        };
+        var currentName = currentPlanNames[currentPlanId] || currentPlanId || 'Current Plan';
 
-        var currentName = currentPlanNames[currentPlanId] || sub.plan_name || currentPlanId;
-        var aiPlanId = aiEquivalent[currentPlanId] || 'ai-semester-access';
-        var aiPlan = data.plans[aiPlanId];
+        // No upgrade available — surface a helpful state instead of a price.
+        if (!optsResp.upgrade_available || !optsResp.upgrade) {
+            var reason = optsResp.reason;
+            var noUpgradeMsg = 'No upgrade available for your current plan.';
+            if (reason === 'already_ai') noUpgradeMsg = 'You\'re already on an AI-Powered plan.';
+            else if (reason === 'no_active_subscription') noUpgradeMsg = 'Subscribe to a Standard plan first to upgrade to AI-Powered.';
 
-        var aiName = aiPlan ? aiPlan.name : 'AI-Powered';
-        var upgradePrice = upgradePrices[currentPlanId];
+            if (summaryEl) {
+                summaryEl.innerHTML =
+                    '<div style="background: var(--navy-3); border: 0.5px solid var(--border); border-radius: 12px; padding: 20px; text-align:center; color: var(--text-dim);">' +
+                        '<i class="fas fa-info-circle" style="color:#a78bfa; margin-right:6px;"></i>' + escapeHtml(noUpgradeMsg) +
+                    '</div>';
+            }
+            return; // confirm button stays hidden (was already set in openUpgradeAiModal)
+        }
+
+        var upgrade = optsResp.upgrade;
+        var aiName = upgrade.target_plan_name || 'AI-Powered';
         var upgradePriceText;
-        if (currentPlanId === 'monthly-access') {
+        if (upgrade.type === 'subscription-modify') {
+            // Monthly: Stripe prorates the difference at the next billing cycle.
             upgradePriceText = 'Prorated upgrade · billed by Stripe';
-        } else if (typeof upgradePrice === 'number') {
-            upgradePriceText = '$' + upgradePrice.toFixed(2) + ' one-time upgrade';
-        } else if (aiPlan) {
-            // Unknown current plan — fall back to showing the full new-plan price
-            upgradePriceText = aiPlan.interval === 'month' ? '$' + aiPlan.price.toFixed(2) + '/mo' :
-                               aiPlan.access_days ? '$' + aiPlan.price.toFixed(2) + '/semester' :
-                               '$' + aiPlan.price.toFixed(2) + ' once';
+        } else if (typeof upgrade.price === 'number') {
+            upgradePriceText = '$' + upgrade.price.toFixed(2) + ' one-time upgrade';
         } else {
             upgradePriceText = '';
         }

@@ -18,7 +18,7 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
@@ -51,6 +51,56 @@
     (function () {
         'use strict';
 
+        // ── Themed empty/error state renderer ─────────────
+        // Replaces the body content with a navy/teal themed page that matches
+        // the rest of the app (navbar + centered message card + footer).
+        function escapeHtml(s) {
+            return String(s == null ? '' : s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+        function renderError(opts) {
+            var icon = opts.icon || 'fa-circle-question';
+            var eyebrow = opts.eyebrow || '';
+            var title = opts.title || 'Quiz Not Found';
+            var message = opts.message || '';
+            var ctas = (opts.ctas || []).map(function (cta) {
+                var cls = 'qep-btn' + (cta.primary ? ' qep-btn-primary' : '');
+                var iconHtml = cta.icon ? '<i class="fas ' + escapeHtml(cta.icon) + '"></i> ' : '';
+                return '<a class="' + cls + '" href="' + escapeHtml(cta.href) + '">' + iconHtml + escapeHtml(cta.label) + '</a>';
+            }).join('');
+
+            document.body.classList.add('quiz-error-active');
+            document.body.innerHTML =
+                '<nav class="qep-navbar"><div class="qep-nav-inner">' +
+                    '<a href="../../index.html" class="qep-nav-brand" aria-label="The Nursing Collective home">' +
+                        '<img src="../../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective">' +
+                    '</a>' +
+                    '<div class="qep-nav-links">' +
+                        '<a href="../../dashboard.html">Dashboard</a>' +
+                        '<a href="../../my-guides.html">My Guides</a>' +
+                        '<a href="../../resources.html">Resources</a>' +
+                    '</div>' +
+                '</div></nav>' +
+                '<main class="qep-main"><div class="qep-card">' +
+                    '<div class="qep-icon"><i class="fas ' + escapeHtml(icon) + '"></i></div>' +
+                    (eyebrow ? '<div class="qep-eyebrow">' + escapeHtml(eyebrow) + '</div>' : '') +
+                    '<h1 class="qep-title">' + escapeHtml(title) + '</h1>' +
+                    '<p class="qep-message">' + message + '</p>' +
+                    '<div class="qep-cta-row">' + ctas + '</div>' +
+                '</div></main>' +
+                '<footer class="qep-footer"><div class="qep-footer-inner">' +
+                    '<p>&copy; 2026 The Nursing Collective &middot; ' +
+                        '<a href="../../privacy.html">Privacy</a>' +
+                        '<a href="../../terms.html">Terms</a>' +
+                        '<a href="../../contact.html">Contact</a>' +
+                    '</p>' +
+                '</div></footer>';
+        }
+
         // Parse URL query string
         var params = new URLSearchParams(window.location.search);
 
@@ -58,24 +108,32 @@
         if (params.get('source') === 'ai') {
             var raw = sessionStorage.getItem('aiQuizData');
             if (!raw) {
-                document.getElementById('quiz-root').innerHTML =
-                    '<div style="text-align:center;padding:60px 20px;">' +
-                    '<h2 style="color:#ef4444;">Quiz Session Expired</h2>' +
-                    '<p style="color:#6b7280;margin:12px 0 24px;">This quiz session has expired or the page was refreshed. Please generate new practice questions from your AI tools.</p>' +
-                    '<a href="../../ai-tools.html" style="color:#2E86AB;font-weight:600;">Go to AI Tools</a>' +
-                    '</div>';
+                renderError({
+                    icon: 'fa-clock-rotate-left',
+                    eyebrow: 'Session expired',
+                    title: 'Quiz Session Expired',
+                    message: 'This quiz session has expired or the page was refreshed. Generate a fresh set of practice questions from your AI tools to keep going.',
+                    ctas: [
+                        { label: 'Generate New Questions', href: '../../ai-tools.html', icon: 'fa-wand-magic-sparkles', primary: true },
+                        { label: 'Go to Dashboard', href: '../../dashboard.html' }
+                    ]
+                });
                 return;
             }
             try {
                 window._aiQuizData = JSON.parse(raw);
                 // Keep sessionStorage for "Go Again" pool rotation — quiz engine cleans up when pools are exhausted
             } catch (e) {
-                document.getElementById('quiz-root').innerHTML =
-                    '<div style="text-align:center;padding:60px 20px;">' +
-                    '<h2 style="color:#ef4444;">Failed to Load Quiz</h2>' +
-                    '<p style="color:#6b7280;margin:12px 0 24px;">Could not parse quiz data. Please try generating questions again.</p>' +
-                    '<a href="../../ai-tools.html" style="color:#2E86AB;font-weight:600;">Go to AI Tools</a>' +
-                    '</div>';
+                renderError({
+                    icon: 'fa-triangle-exclamation',
+                    eyebrow: 'Something went wrong',
+                    title: 'Failed to Load Quiz',
+                    message: 'We couldn&rsquo;t read the quiz data for this session. Try generating new practice questions from your AI tools.',
+                    ctas: [
+                        { label: 'Generate New Questions', href: '../../ai-tools.html', icon: 'fa-wand-magic-sparkles', primary: true },
+                        { label: 'Go to Dashboard', href: '../../dashboard.html' }
+                    ]
+                });
                 return;
             }
             document.body.setAttribute('data-product-id', 'ai-generated');
@@ -91,12 +149,16 @@
         var topic = params.get('topic');
 
         if (!topic || !/^[a-z0-9-]+$/.test(topic)) {
-            document.getElementById('quiz-root').innerHTML =
-                '<div style="text-align:center;padding:60px 20px;">' +
-                '<h2 style="color:#ef4444;">Quiz Not Found</h2>' +
-                '<p style="color:#6b7280;margin:12px 0 24px;">No topic specified. Please access quizzes from a study guide.</p>' +
-                '<a href="../../dashboard.html" style="color:#2E86AB;font-weight:600;">Go to Dashboard</a>' +
-                '</div>';
+            renderError({
+                icon: 'fa-circle-question',
+                eyebrow: '404 &middot; Quiz not found',
+                title: 'Quiz Not Found',
+                message: 'No topic was specified for this quiz. Open a quiz from one of your study guides, or browse the full library to find one.',
+                ctas: [
+                    { label: 'Browse Study Guides', href: '../../my-guides.html', icon: 'fa-book-open', primary: true },
+                    { label: 'Go to Dashboard', href: '../../dashboard.html' }
+                ]
+            });
             return;
         }
 
@@ -118,12 +180,16 @@
             }
 
             if (!quizData) {
-                document.getElementById('quiz-root').innerHTML =
-                    '<div style="text-align:center;padding:60px 20px;">' +
-                    '<h2 style="color:#ef4444;">Failed to Load Quiz</h2>' +
-                    '<p style="color:#6b7280;margin:12px 0 24px;">Could not find question data for this topic.</p>' +
-                    '<a href="../../dashboard.html" style="color:#2E86AB;font-weight:600;">Go to Dashboard</a>' +
-                    '</div>';
+                renderError({
+                    icon: 'fa-triangle-exclamation',
+                    eyebrow: 'Something went wrong',
+                    title: 'Failed to Load Quiz',
+                    message: 'We loaded the question file but couldn&rsquo;t find any questions inside it. Try a different guide, or contact support if this keeps happening.',
+                    ctas: [
+                        { label: 'Browse Study Guides', href: '../../my-guides.html', icon: 'fa-book-open', primary: true },
+                        { label: 'Go to Dashboard', href: '../../dashboard.html' }
+                    ]
+                });
                 return;
             }
 
@@ -145,12 +211,16 @@
         };
 
         script.onerror = function () {
-            document.getElementById('quiz-root').innerHTML =
-                '<div style="text-align:center;padding:60px 20px;">' +
-                '<h2 style="color:#ef4444;">Quiz Not Found</h2>' +
-                '<p style="color:#6b7280;margin:12px 0 24px;">No quiz exists for "' + topic.replace(/[<>"'&]/g, '') + '". Please check the URL.</p>' +
-                '<a href="../../dashboard.html" style="color:#2E86AB;font-weight:600;">Go to Dashboard</a>' +
-                '</div>';
+            renderError({
+                icon: 'fa-circle-question',
+                eyebrow: '404 &middot; Quiz not found',
+                title: 'Quiz Not Found',
+                message: 'No quiz exists for &ldquo;<strong>' + escapeHtml(topic) + '</strong>.&rdquo; Double-check the URL, or browse our full study guide library to find what you&rsquo;re looking for.',
+                ctas: [
+                    { label: 'Browse Study Guides', href: '../../my-guides.html', icon: 'fa-book-open', primary: true },
+                    { label: 'Go to Dashboard', href: '../../dashboard.html' }
+                ]
+            });
         };
 
         document.body.appendChild(script);

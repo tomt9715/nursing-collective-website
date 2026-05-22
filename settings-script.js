@@ -1378,15 +1378,25 @@ async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
         // so plan fields live one level deeper.
         var sub = subData.subscription || {};
         var currentPlanId = sub.plan_id || '';
+
+        // "Standard X" labels make the tier contrast with "AI-Powered X" on the right.
         var currentPlanNames = {
-            'monthly-access': 'Monthly Access',
-            'semester-access': 'Semester Access',
-            'lifetime-access': 'Lifetime Access'
+            'monthly-access': 'Standard Monthly',
+            'semester-access': 'Standard Semester',
+            'lifetime-access': 'Standard Lifetime'
         };
         var aiEquivalent = {
             'monthly-access': 'ai-monthly-access',
             'semester-access': 'ai-semester-access',
             'lifetime-access': 'ai-lifetime-access'
+        };
+        // Actual upgrade prices from backend UPGRADE_PLANS (products.py).
+        // Monthly is handled as a Stripe subscription-modify (prorated automatically),
+        // so we show a label instead of an explicit price.
+        var upgradePrices = {
+            'monthly-access': null,    // prorated by Stripe
+            'semester-access': 30.00,
+            'lifetime-access': 50.00
         };
 
         var currentName = currentPlanNames[currentPlanId] || sub.plan_name || currentPlanId;
@@ -1394,9 +1404,20 @@ async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
         var aiPlan = data.plans[aiPlanId];
 
         var aiName = aiPlan ? aiPlan.name : 'AI-Powered';
-        var aiPrice = aiPlan ? (aiPlan.interval === 'month' ? '$' + aiPlan.price.toFixed(2) + '/mo' :
-                      aiPlan.access_days ? '$' + aiPlan.price.toFixed(2) + '/semester' :
-                      '$' + aiPlan.price.toFixed(2) + ' once') : '';
+        var upgradePrice = upgradePrices[currentPlanId];
+        var upgradePriceText;
+        if (currentPlanId === 'monthly-access') {
+            upgradePriceText = 'Prorated upgrade · billed by Stripe';
+        } else if (typeof upgradePrice === 'number') {
+            upgradePriceText = '$' + upgradePrice.toFixed(2) + ' one-time upgrade';
+        } else if (aiPlan) {
+            // Unknown current plan — fall back to showing the full new-plan price
+            upgradePriceText = aiPlan.interval === 'month' ? '$' + aiPlan.price.toFixed(2) + '/mo' :
+                               aiPlan.access_days ? '$' + aiPlan.price.toFixed(2) + '/semester' :
+                               '$' + aiPlan.price.toFixed(2) + ' once';
+        } else {
+            upgradePriceText = '';
+        }
 
         if (summaryEl) {
             summaryEl.innerHTML =
@@ -1405,13 +1426,12 @@ async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
                 '    <div style="flex:1; text-align:center;">' +
                 '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-dimmer); font-weight:600; letter-spacing:0.06em; margin-bottom:4px;">Current Plan</div>' +
                 '      <div style="font-weight:600; color:var(--text);">' + currentName + '</div>' +
-                '      <div style="font-size:0.75rem; color:var(--text-dim); margin-top:2px;">Standard</div>' +
                 '    </div>' +
                 '    <div style="color:#a78bfa; font-size:1.2rem;"><i class="fas fa-arrow-right"></i></div>' +
                 '    <div style="flex:1; text-align:center;">' +
                 '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-dimmer); font-weight:600; letter-spacing:0.06em; margin-bottom:4px;">New Plan</div>' +
                 '      <div style="font-weight:600; color:#a78bfa;">' + aiName + '</div>' +
-                (aiPrice ? '      <div style="font-size:0.9rem; color:var(--text-dim); margin-top:2px;">' + aiPrice + '</div>' : '') +
+                (upgradePriceText ? '      <div style="font-size:0.9rem; color:var(--text-dim); margin-top:2px;">' + upgradePriceText + '</div>' : '') +
                 '    </div>' +
                 '  </div>' +
                 '  <div style="font-size:0.82rem; color:var(--text-dim); text-align:center; border-top:1px solid var(--border); padding-top:12px;">' +

@@ -317,7 +317,7 @@
     min-height: 60px;
 }
 
-/* Category dropdown */
+/* Category dropdown (legacy native — kept for fallback if any other instance exists) */
 .feedback-select {
     width: 100%;
     padding: 10px 12px;
@@ -334,6 +334,136 @@
 .feedback-select:focus {
     outline: none;
     border-color: var(--primary-color);
+}
+
+/* ─── Custom category dropdown ──────────────────────────── */
+
+.feedback-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+.feedback-dropdown-trigger {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 10px;
+    background: var(--input-bg, #fafafa);
+    color: var(--text-color, #1a1a1a);
+    font-family: inherit;
+    font-size: 14px;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    box-sizing: border-box;
+}
+
+.feedback-dropdown-trigger:hover {
+    border-color: var(--primary-color, #2E86AB);
+}
+
+.feedback-dropdown-trigger:focus-visible {
+    outline: none;
+    border-color: var(--primary-color, #2E86AB);
+    box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
+}
+
+.feedback-dropdown-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.feedback-dropdown-label.placeholder {
+    color: var(--text-muted, #9ca3af);
+}
+
+.feedback-dropdown-chevron {
+    font-size: 11px;
+    color: var(--text-muted, #9ca3af);
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.feedback-dropdown.open .feedback-dropdown-chevron {
+    transform: rotate(180deg);
+}
+
+.feedback-dropdown.open .feedback-dropdown-trigger {
+    border-color: var(--primary-color, #2E86AB);
+    box-shadow: 0 0 0 3px rgba(46, 134, 171, 0.15);
+}
+
+.feedback-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    margin: 0;
+    padding: 6px;
+    list-style: none;
+    background: var(--card-bg, #fff);
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    max-height: 260px;
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-6px);
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s ease;
+}
+
+.feedback-dropdown.open .feedback-dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.feedback-dropdown-option {
+    padding: 9px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: var(--text-color, #1a1a1a);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    transition: background 0.12s ease, color 0.12s ease;
+    user-select: none;
+    outline: none;
+}
+
+.feedback-dropdown-option:hover,
+.feedback-dropdown-option:focus {
+    background: rgba(46, 134, 171, 0.08);
+    color: var(--primary-color, #2E86AB);
+}
+
+.feedback-dropdown-option.selected {
+    color: var(--primary-color, #2E86AB);
+    font-weight: 600;
+}
+
+.feedback-dropdown-option.selected::after {
+    content: '\f00c'; /* Font Awesome check */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    font-size: 11px;
+    color: var(--primary-color, #2E86AB);
+}
+
+/* Error state — applied to the wrapper, styles the trigger */
+.feedback-dropdown.feedback-select--error .feedback-dropdown-trigger {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
 }
 
 /* Submit button */
@@ -454,6 +584,28 @@
 [data-theme="dark"] .feedback-select option {
     background: var(--card-bg, #1f2937);
     color: var(--text-color, #f5f5f5);
+}
+
+/* Custom dropdown — dark mode */
+[data-theme="dark"] .feedback-dropdown-trigger {
+    background: var(--input-bg, #374151);
+    border-color: var(--border-color, #4b5563);
+    color: var(--text-color, #f5f5f5);
+}
+
+[data-theme="dark"] .feedback-dropdown-menu {
+    background: var(--card-bg, #1f2937);
+    border-color: var(--border-color, #4b5563);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .feedback-dropdown-option {
+    color: var(--text-color, #f5f5f5);
+}
+
+[data-theme="dark"] .feedback-dropdown-option:hover,
+[data-theme="dark"] .feedback-dropdown-option:focus {
+    background: rgba(46, 134, 171, 0.18);
 }
 
 [data-theme="dark"] .feedback-close:hover {

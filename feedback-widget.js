@@ -40,6 +40,7 @@
         fab.addEventListener('click', togglePanel);
         bindPanelEvents(panel);
         observeCookieBanner(fab, panel);
+        document.addEventListener('click', closeDropdownOnOutsideClick);
 
         return { fab, panel };
     }
@@ -109,21 +110,27 @@
     function buildBugForm() {
         return `
             <form class="feedback-form" id="feedback-form">
-                <label class="feedback-label">Bug category</label>
-                <select class="feedback-select" id="bug-category">
-                    <option value="">Select a category...</option>
-                    <option value="display">Display / Visual Issue</option>
-                    <option value="login">Login / Account</option>
-                    <option value="payment">Payment / Billing</option>
-                    <option value="guides">Study Guides</option>
-                    <option value="quizzes">Quizzes / Questions</option>
-                    <option value="study_plan">Dashboard / Study Plan</option>
-                    <option value="ai_tools">AI Tools</option>
-                    <option value="download">Downloads</option>
-                    <option value="notifications">Notifications / Emails</option>
-                    <option value="performance">Slow / Performance</option>
-                    <option value="other">Other</option>
-                </select>
+                <label class="feedback-label" id="bug-category-label">Bug category</label>
+                <div class="feedback-dropdown" data-dropdown>
+                    <input type="hidden" id="bug-category" value="">
+                    <button type="button" class="feedback-dropdown-trigger" aria-haspopup="listbox" aria-expanded="false" aria-labelledby="bug-category-label">
+                        <span class="feedback-dropdown-label" data-dropdown-label>Select a category...</span>
+                        <i class="fas fa-chevron-down feedback-dropdown-chevron" aria-hidden="true"></i>
+                    </button>
+                    <ul class="feedback-dropdown-menu" role="listbox" aria-label="Bug category" tabindex="-1">
+                        <li class="feedback-dropdown-option" role="option" data-value="display" tabindex="-1">Display / Visual Issue</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="login" tabindex="-1">Login / Account</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="payment" tabindex="-1">Payment / Billing</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="guides" tabindex="-1">Study Guides</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="quizzes" tabindex="-1">Quizzes / Questions</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="study_plan" tabindex="-1">Dashboard / Study Plan</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="ai_tools" tabindex="-1">AI Tools</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="download" tabindex="-1">Downloads</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="notifications" tabindex="-1">Notifications / Emails</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="performance" tabindex="-1">Slow / Performance</li>
+                        <li class="feedback-dropdown-option" role="option" data-value="other" tabindex="-1">Other</li>
+                    </ul>
+                </div>
                 <label class="feedback-label">What happened?</label>
                 <textarea class="feedback-textarea" placeholder="Describe the bug \u2014 what did you expect to happen?" maxlength="5000" required></textarea>
                 <label class="feedback-label">Steps to reproduce <span style="font-weight:400;color:var(--text-light,#9ca3af)">(optional)</span></label>
@@ -212,6 +219,111 @@
         bindFormEvents();
     }
 
+    // ─── Custom category dropdown ──────────────────────────────
+
+    function bindCategoryDropdown() {
+        const wrapper = document.querySelector('.feedback-dropdown');
+        if (!wrapper) return;
+
+        const trigger = wrapper.querySelector('.feedback-dropdown-trigger');
+        const menu = wrapper.querySelector('.feedback-dropdown-menu');
+        const labelEl = wrapper.querySelector('[data-dropdown-label]');
+        const hiddenInput = wrapper.querySelector('#bug-category');
+        const options = Array.prototype.slice.call(wrapper.querySelectorAll('.feedback-dropdown-option'));
+
+        function openDropdown() {
+            wrapper.classList.add('open');
+            trigger.setAttribute('aria-expanded', 'true');
+            // Focus the currently-selected option, or the first one
+            const current = options.find(function (o) { return o.classList.contains('selected'); }) || options[0];
+            if (current) current.focus();
+        }
+
+        function closeDropdown() {
+            wrapper.classList.remove('open');
+            trigger.setAttribute('aria-expanded', 'false');
+        }
+
+        function selectOption(option) {
+            const value = option.dataset.value;
+            const label = option.textContent;
+            hiddenInput.value = value;
+            labelEl.textContent = label;
+            labelEl.classList.remove('placeholder');
+            options.forEach(function (o) {
+                o.classList.toggle('selected', o === option);
+                o.setAttribute('aria-selected', o === option ? 'true' : 'false');
+            });
+            wrapper.classList.remove('feedback-select--error');
+            closeDropdown();
+            trigger.focus();
+        }
+
+        // Mark placeholder state
+        if (!hiddenInput.value) labelEl.classList.add('placeholder');
+
+        // Trigger click
+        trigger.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (wrapper.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        });
+
+        // Trigger keyboard
+        trigger.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openDropdown();
+            }
+        });
+
+        // Option click + hover
+        options.forEach(function (option, idx) {
+            option.addEventListener('click', function (e) {
+                e.stopPropagation();
+                selectOption(option);
+            });
+            option.addEventListener('keydown', function (e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    selectOption(option);
+                } else if (e.key === 'ArrowDown') {
+                    e.preventDefault();
+                    const next = options[(idx + 1) % options.length];
+                    next.focus();
+                } else if (e.key === 'ArrowUp') {
+                    e.preventDefault();
+                    const prev = options[(idx - 1 + options.length) % options.length];
+                    prev.focus();
+                } else if (e.key === 'Escape') {
+                    e.preventDefault();
+                    closeDropdown();
+                    trigger.focus();
+                } else if (e.key === 'Tab') {
+                    closeDropdown();
+                }
+            });
+        });
+
+        // Outside-click closing is handled by a single module-level listener
+        // bound once in createWidget — see closeDropdownOnOutsideClick below.
+    }
+
+    // Single document listener for closing any open dropdown on outside click.
+    // Bound once per page so re-rendering the form (tab switch, submit reset)
+    // doesn't accumulate listeners.
+    function closeDropdownOnOutsideClick(e) {
+        const open = document.querySelector('.feedback-dropdown.open');
+        if (open && !open.contains(e.target)) {
+            open.classList.remove('open');
+            const trigger = open.querySelector('.feedback-dropdown-trigger');
+            if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+    }
+
     function bindFormEvents() {
         // Emoji rating
         document.querySelectorAll('.feedback-emoji').forEach(emoji => {
@@ -250,13 +362,8 @@
             });
         }
 
-        // Category validation — remove error on change
-        const catEl = document.getElementById('bug-category');
-        if (catEl) {
-            catEl.addEventListener('change', function () {
-                this.classList.remove('feedback-select--error');
-            });
-        }
+        // Custom category dropdown (wires open/close, selection, keyboard)
+        bindCategoryDropdown();
 
         // Screenshot handlers
         const screenshotInput = document.querySelector('.feedback-screenshot-input');
@@ -376,8 +483,10 @@
         if (currentTab === 'bug') {
             const catEl = document.getElementById('bug-category');
             if (catEl && !catEl.value) {
-                catEl.classList.add('feedback-select--error');
-                catEl.focus();
+                const wrapper = catEl.closest('.feedback-dropdown');
+                if (wrapper) wrapper.classList.add('feedback-select--error');
+                const trigger = wrapper && wrapper.querySelector('.feedback-dropdown-trigger');
+                if (trigger) trigger.focus();
                 return;
             }
         }

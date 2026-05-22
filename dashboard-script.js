@@ -386,6 +386,7 @@ async function loadFullDashboard(user) {
         if (typeof loadStudyPlan === 'function') loadStudyPlan();
         if (typeof loadExamCountdown === 'function') loadExamCountdown();
         loadRecentGuides();
+        loadQuizBankWidget();
         loadStudyActivityCalendar();
         updateDailyGoalWidget();
 
@@ -698,6 +699,105 @@ async function loadRecentGuides() {
             </div>
         `;
     }
+}
+
+// ==================== Quiz Bank Widget ====================
+
+var QUIZ_BANK_HUB_URL = 'https://learn.thenursingcollective.pro';
+
+function loadQuizBankWidget() {
+    var container = document.getElementById('quiz-bank-content');
+    if (!container) return;
+
+    // Pull recent sessions + mastery in one shot
+    var sessions = (typeof _cachedQuizSessions !== 'undefined' && Array.isArray(_cachedQuizSessions)) ? _cachedQuizSessions : [];
+    var stats = null;
+    try {
+        if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getOverallStats === 'function') {
+            stats = MasteryTracker.getOverallStats();
+        }
+    } catch (e) { /* ignore */ }
+
+    var weak = (stats && stats.weakestChapters) ? stats.weakestChapters : [];
+    // Filter to chapters that have actually been practiced (level > 0)
+    var weakPracticed = weak.filter(function (c) { return c && c.level > 0; }).slice(0, 2);
+    var lastSession = sessions.length > 0 ? sessions[0] : null;
+
+    // Empty state — no quiz activity at all
+    if (!lastSession && weakPracticed.length === 0) {
+        container.innerHTML =
+            '<div class="qb-widget-empty">' +
+                '<i class="fas fa-brain"></i>' +
+                '<p>No quiz attempts yet.</p>' +
+                '<a href="' + QUIZ_BANK_HUB_URL + '" class="btn btn-primary btn-sm" target="_blank" rel="noopener">' +
+                    '<i class="fas fa-rocket"></i> Take a Quiz' +
+                '</a>' +
+            '</div>';
+        return;
+    }
+
+    var html = '';
+
+    // ── Recent section ──
+    if (lastSession) {
+        var topicId = lastSession.topic_id || '';
+        var topicLabel = topicId;
+        try {
+            if (typeof MasteryTracker !== 'undefined' && typeof MasteryTracker.getTopicLabel === 'function') {
+                topicLabel = MasteryTracker.getTopicLabel(topicId) || formatGuideName(topicId);
+            } else {
+                topicLabel = formatGuideName(topicId);
+            }
+        } catch (e) { topicLabel = formatGuideName(topicId); }
+
+        var score = typeof lastSession.score === 'number' ? Math.round(lastSession.score) : null;
+        var correct = lastSession.correct_count;
+        var total = lastSession.total_count;
+        var timeAgo = formatRelativeTime(lastSession.created_at) || 'Recently';
+
+        var metaParts = [];
+        if (score !== null) metaParts.push(score + '%');
+        if (typeof correct === 'number' && typeof total === 'number') metaParts.push(correct + ' of ' + total);
+        metaParts.push(timeAgo);
+
+        var scoreColorClass = '';
+        if (score !== null) {
+            if (score >= 90) scoreColorClass = 'qb-score-strong';
+            else if (score >= 70) scoreColorClass = 'qb-score-mid';
+            else scoreColorClass = 'qb-score-weak';
+        }
+
+        // Per-guide quiz route (works when topic_id matches a guide id; falls back to bank hub otherwise — handled by quiz page)
+        var retakeHref = topicId ? ('guides/quiz/quiz.html?topic=' + encodeURIComponent(topicId)) : QUIZ_BANK_HUB_URL;
+
+        html += '<div class="qb-section-label">Last quiz</div>';
+        html += '<div class="qb-row">';
+        html +=   '<div class="qb-row-badge ' + scoreColorClass + '">' + (score !== null ? score + '%' : '—') + '</div>';
+        html +=   '<div class="qb-row-info">';
+        html +=     '<span class="qb-row-name">' + escapeHtml(topicLabel) + '</span>';
+        html +=     '<span class="qb-row-meta">' + escapeHtml(metaParts.join(' · ')) + '</span>';
+        html +=   '</div>';
+        html +=   '<a class="btn-row-open" href="' + retakeHref + '">Retake</a>';
+        html += '</div>';
+    }
+
+    // ── Weak Spots section ──
+    if (weakPracticed.length > 0) {
+        html += '<div class="qb-section-label">Needs work</div>';
+        weakPracticed.forEach(function (ch) {
+            var levelLabel = 'Lvl ' + (ch.level || 0);
+            html += '<div class="qb-row">';
+            html +=   '<div class="qb-row-badge qb-score-weak"><i class="fas fa-bullseye"></i></div>';
+            html +=   '<div class="qb-row-info">';
+            html +=     '<span class="qb-row-name">' + escapeHtml(ch.label || ch.id) + '</span>';
+            html +=     '<span class="qb-row-meta">' + escapeHtml(levelLabel) + ' · ' + (ch.points || 0) + ' pts</span>';
+            html +=   '</div>';
+            html +=   '<a class="btn-row-open" href="' + QUIZ_BANK_HUB_URL + '" target="_blank" rel="noopener">Drill</a>';
+            html += '</div>';
+        });
+    }
+
+    container.innerHTML = html;
 }
 
 // Convert product ID to display name (e.g., 'heart-failure' -> 'Heart Failure')

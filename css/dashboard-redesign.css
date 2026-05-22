@@ -1041,6 +1041,7 @@ img { max-width: 100%; display: block; }
 /* Shared widget card style */
 .study-plan-widget,
 .recent-guides-widget,
+.quiz-bank-widget,
 .exam-countdown-widget,
 .study-activity-widget {
   background: var(--card);
@@ -1447,6 +1448,98 @@ img { max-width: 100%; display: block; }
   background: var(--teal);
   color: var(--navy);
   border-color: var(--teal);
+}
+
+/* ── Quiz Bank widget ── */
+.qb-section-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--text-dimmer);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 14px 0 8px;
+}
+.qb-section-label:first-child { margin-top: 0; }
+
+.qb-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  background: var(--navy-3);
+  border: 0.5px solid var(--border);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  transition: border-color 0.15s;
+}
+.qb-row:hover { border-color: var(--border-mid); }
+.qb-row:last-child { margin-bottom: 0; }
+
+.qb-row-badge {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.qb-row-badge i { font-size: 14px; }
+
+.qb-score-strong { background: rgba(61,189,122,0.15); color: #3dbd7a; }
+.qb-score-mid    { background: rgba(244,165,53,0.15); color: var(--amber); }
+.qb-score-weak   { background: rgba(239,68,68,0.15);  color: #ef6a6a; }
+
+.qb-row-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.qb-row-name {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.qb-row-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dimmer);
+  letter-spacing: 0.04em;
+}
+
+.qb-row .btn-row-open {
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.qb-widget-empty {
+  text-align: center;
+  padding: 24px 12px;
+  color: var(--text-dim);
+}
+.qb-widget-empty i {
+  display: block;
+  font-size: 26px;
+  color: var(--teal);
+  margin-bottom: 10px;
+}
+.qb-widget-empty p {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin: 0 0 14px;
 }
 
 /* Exam countdown widget specifics */

@@ -513,22 +513,26 @@
             // Available guides
             topic.guides.forEach(function(guide) {
                 if (_hasAccess) {
-                    // Subscriber — clickable link
-                    html += '<a href="guides/' + guide.file + '.html" class="guide-card">';
+                    // Subscriber — main link to guide + Practice pill to quiz
+                    html += '<div class="guide-card guide-card-with-practice">';
+                    html += '<a href="guides/' + guide.file + '.html" class="guide-card-link">';
+                    html += '<div class="guide-card-info">';
+                    html += '<div class="guide-card-name">' + guide.name + '</div>';
+                    html += '<div class="guide-card-meta">Study Guide</div>';
+                    html += '</div>';
+                    html += '<i class="fas fa-chevron-right guide-card-arrow"></i>';
+                    html += '</a>';
+                    html += '<a href="guides/quiz/quiz.html?topic=' + guide.file + '" class="guide-card-practice" title="Practice ' + guide.name + '" aria-label="Practice ' + guide.name + '">';
+                    html += '<i class="fas fa-brain"></i><span>Practice</span>';
+                    html += '</a>';
+                    html += '</div>';
                 } else {
                     // Non-subscriber — locked card
                     html += '<div class="guide-card guide-card-locked">';
-                }
-
-                html += '<div class="guide-card-info">';
-                html += '<div class="guide-card-name">' + guide.name + '</div>';
-                html += '<div class="guide-card-meta">Study Guide</div>';
-                html += '</div>';
-
-                if (_hasAccess) {
-                    html += '<i class="fas fa-chevron-right guide-card-arrow"></i>';
-                    html += '</a>';
-                } else {
+                    html += '<div class="guide-card-info">';
+                    html += '<div class="guide-card-name">' + guide.name + '</div>';
+                    html += '<div class="guide-card-meta">Study Guide</div>';
+                    html += '</div>';
                     html += '<span class="guide-locked-badge"><i class="fas fa-lock"></i> Premium</span>';
                     html += '</div>';
                 }

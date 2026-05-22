@@ -712,6 +712,64 @@ img { max-width: 100%; display: block; }
   color: var(--teal);
 }
 
+/* ── Card with Practice CTA (subscriber view) ── */
+.guide-card.guide-card-with-practice {
+  padding: 0;
+  gap: 0;
+  cursor: default; /* the children handle clicks */
+}
+
+.guide-card-link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+  border-radius: 12px 0 0 12px;
+}
+
+.guide-card-link:hover { text-decoration: none; }
+
+.guide-card-practice {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 11px;
+  margin-right: 10px;
+  background: rgba(15,188,173,0.10);
+  border: 0.5px solid rgba(15,188,173,0.30);
+  border-radius: 8px;
+  color: var(--teal);
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.guide-card-practice:hover {
+  background: var(--teal);
+  border-color: var(--teal);
+  color: #fff;
+  text-decoration: none;
+}
+
+.guide-card-practice i {
+  font-size: 11px;
+}
+
+/* Cards with Practice CTA: shrink to icon-only on narrow screens */
+@media (max-width: 480px) {
+  .guide-card-practice span { display: none; }
+  .guide-card-practice { padding: 7px 9px; }
+}
+
 /* ── Locked cards (no subscription) ── */
 .guide-card.guide-card-locked {
   cursor: default;

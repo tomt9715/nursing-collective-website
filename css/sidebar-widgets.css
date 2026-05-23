@@ -1,0 +1,196 @@
+/* ──────────────────────────────────────────────────────────────
+   Sidebar Widgets — Daily Goal + Subscription
+   Shared across pages with the .dash-sidebar shell. Mirrors the
+   dashboard widgets defined in dashboard-redesign.css so they look
+   identical regardless of page. Loaded alongside sidebar-widgets.js.
+   ────────────────────────────────────────────────────────────── */
+
+/* ── Daily Goal widget ── */
+.sidebar-goal-widget {
+  margin: auto 12px 12px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--navy-3);
+  border: 0.5px solid var(--border);
+  text-align: center;
+}
+.sidebar-goal-header { margin-bottom: 10px; }
+.sidebar-goal-title {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-dim);
+}
+.sidebar-goal-title i { color: var(--teal); margin-right: 4px; font-size: 11px; }
+.sidebar-goal-ring-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+}
+.sidebar-goal-ring { display: block; }
+.sidebar-goal-track { stroke: var(--border-mid); }
+.sidebar-goal-fill { stroke: var(--teal); transition: stroke-dashoffset 0.6s ease; }
+.sidebar-goal-count {
+  position: absolute;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+}
+.sidebar-goal-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+}
+.sidebar-goal-widget.goal-complete {
+  background: rgba(61,189,122,0.1);
+  border-color: rgba(61,189,122,0.25);
+}
+.sidebar-goal-widget.goal-complete .sidebar-goal-fill { stroke: var(--green); }
+.sidebar-goal-widget.goal-complete .sidebar-goal-title i { color: var(--green); }
+.sidebar-goal-widget.goal-complete .sidebar-goal-count { color: var(--green); }
+
+/* Locked variant — shown for free users, see #14 audit item. */
+.sidebar-goal-widget--locked .sidebar-goal-track { stroke: var(--border); }
+.sidebar-goal-widget--locked .sidebar-goal-count { color: var(--text-dimmer); }
+.sidebar-goal-widget--locked .sidebar-goal-title i { color: var(--text-dim); }
+.sidebar-goal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.sidebar-goal-link:hover { color: var(--teal-dim); }
+.sidebar-goal-link i { font-size: 10px; }
+
+/* ── Subscription widget ── */
+.sidebar-sub-widget {
+  margin: 0 12px 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: var(--navy-3);
+  border: 0.5px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.sidebar-sub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.sidebar-sub-plan {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  white-space: nowrap;
+}
+.sidebar-sub-plan i { color: var(--amber); font-size: 13px; }
+.sidebar-sub-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.sidebar-sub-status.active { background: rgba(61,189,122,0.12); color: var(--green); }
+.sidebar-sub-status.cancelling { background: rgba(244,165,53,0.12); color: var(--amber); }
+.sidebar-sub-status.expired { background: rgba(224,82,82,0.12); color: var(--red); }
+.sidebar-sub-divider {
+  height: 0.5px;
+  background: var(--border);
+  margin: 0 0 10px;
+}
+.sidebar-sub-detail {
+  font-size: 12px;
+  color: var(--text-dim);
+  line-height: 1.5;
+  position: relative;
+  z-index: 1;
+}
+.sidebar-sub-detail strong { color: var(--text); font-weight: 600; }
+.sidebar-sub-resubscribe {
+  display: block;
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--teal);
+  background: transparent;
+  border: 0.5px solid var(--border-mid);
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+}
+.sidebar-sub-resubscribe:hover {
+  background: var(--teal);
+  color: var(--navy);
+  border-color: var(--teal);
+  text-decoration: none;
+}
+.sidebar-sub-upgrade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 10px;
+  padding: 9px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--teal);
+  border: none;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.sidebar-sub-upgrade:hover {
+  background: var(--teal-dim);
+  color: var(--navy);
+  text-decoration: none;
+}
+.sidebar-sub-upgrade i { font-size: 11px; }
+.sidebar-sub-cta { text-align: center; padding: 12px; }
+.sidebar-sub-cta > i { font-size: 1.5rem; color: var(--amber); margin-bottom: 8px; display: block; }
+.sidebar-sub-cta p { font-size: 12px; color: var(--text-dim); margin: 0 0 10px; }
+.sidebar-sub-cta .btn { font-size: 12px; padding: 6px 16px; }
+.sidebar-sub-widget.no-sub {
+  background: rgba(244,165,53,0.06);
+  border-color: rgba(244,165,53,0.2);
+}
+
+/* Skeleton loader (used while widget loads) */
+.sidebar-sub-widget .skeleton-loader { padding: 0; }
+.sidebar-sub-widget .skeleton {
+  background: linear-gradient(90deg, var(--navy-2) 0%, var(--border-mid) 50%, var(--navy-2) 100%);
+  background-size: 200% 100%;
+  animation: sidebarSkeletonPulse 1.5s ease-in-out infinite;
+}
+@keyframes sidebarSkeletonPulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}

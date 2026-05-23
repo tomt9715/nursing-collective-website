@@ -69,6 +69,11 @@ class QuizEngine {
 
     init() {
         this.container.innerHTML = '';
+        // Expose the guide's category color as a CSS custom property so the
+        // stylesheet can use it as a per-guide accent (top bar on start, etc.).
+        if (this.categoryColor) {
+            this.container.style.setProperty('--quiz-category', this.categoryColor);
+        }
         this.container.addEventListener('click', this._boundClickHandler);
         document.addEventListener('keydown', this._boundKeyHandler);
         this._renderStartScreen();
@@ -617,15 +622,6 @@ class QuizEngine {
                     }
                     break;
                 }
-                case 'toggle-theme': {
-                    const current = document.documentElement.getAttribute('data-theme');
-                    const next = current === 'dark' ? 'light' : 'dark';
-                    document.documentElement.setAttribute('data-theme', next);
-                    localStorage.setItem('themeMode', next);
-                    const icon = this.container.querySelector('.quiz-theme-toggle i');
-                    if (icon) icon.className = 'fas ' + (next === 'dark' ? 'fa-sun' : 'fa-moon');
-                    break;
-                }
                 case 'set-size': {
                     const size = parseInt(actionBtn.dataset.quizSize, 10);
                     if (!isNaN(size)) {
@@ -994,8 +990,6 @@ class QuizEngine {
 
         const difficultyCount = this._getDifficultyBreakdown();
         const total = this.questions.length;
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const themeIcon = isDark ? 'fa-sun' : 'fa-moon';
         const hasSaved = this._hasSavedState();
         const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
@@ -1047,9 +1041,6 @@ class QuizEngine {
                 <a href="${this._escapeAttr(this.backUrl)}" class="quiz-back-link">
                     <i class="fas fa-arrow-left"></i> ${this._escapeHtml(this.backLabel)}
                 </a>
-                <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
-                    <i class="fas ${themeIcon}"></i>
-                </button>
             </div>
             <div class="quiz-start">
                 ${resumeHtml}
@@ -1213,9 +1204,6 @@ class QuizEngine {
                     <a href="${this.isAIGenerated ? '../../ai-tools.html' : '../ai-tools.html'}" class="quiz-ai-tools-link" title="AI Study Tools">
                         <i class="fas fa-wand-magic-sparkles"></i> <span>AI Tools</span>
                     </a>
-                    <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
-                        <i class="fas ${document.documentElement.getAttribute('data-theme') === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>
-                    </button>
                 </div>
             </div>
             <div class="quiz-progress">
@@ -1988,9 +1976,6 @@ class QuizEngine {
                 <a href="${this._escapeAttr(this.backUrl)}" class="quiz-back-link">
                     <i class="fas fa-arrow-left"></i> ${this._escapeHtml(this.backLabel)}
                 </a>
-                <button class="quiz-theme-toggle" data-quiz-action="toggle-theme" aria-label="Toggle dark mode">
-                    <i class="fas ${document.documentElement.getAttribute('data-theme') === 'dark' ? 'fa-sun' : 'fa-moon'}"></i>
-                </button>
             </div>
             <div class="quiz-results ${isPerfect ? 'quiz-celebration' : ''}">
                 ${isPerfect ? '<canvas class="quiz-confetti-canvas" id="quiz-confetti"></canvas>' : ''}
@@ -2228,11 +2213,11 @@ class QuizEngine {
     /**
      * Animates the SVG score ring from 0% to the target percentage,
      * transitioning through color milestones:
-     *   0–69%  → red (#ef4444)
+     *   0–69%  → red    (#e05252)
      *   70–79% → orange (#f97316)
-     *   80–89% → yellow (#eab308)
-     *   90–99% → green (#22c55e)
-     *   100%   → gold (#fbbf24) + continuous glow
+     *   80–89% → amber  (#fbbf24)
+     *   90–99% → green  (#3dbd7a)
+     *   100%   → gold   (#facc15) + continuous glow
      */
     _animateScoreRing(targetPct, correctCount, total) {
         const ringEl = this.container.querySelector('.quiz-score-ring-fill');
@@ -2248,11 +2233,11 @@ class QuizEngine {
 
         // Color milestones — the ring adopts a color once a threshold is reached
         const milestones = [
-            { pct: 0,   color: '#ef4444' }, // red
+            { pct: 0,   color: '#e05252' }, // red
             { pct: 70,  color: '#f97316' }, // orange
-            { pct: 80,  color: '#eab308' }, // yellow
-            { pct: 90,  color: '#22c55e' }, // green
-            { pct: 100, color: '#fbbf24' }  // gold (exact 100 only)
+            { pct: 80,  color: '#fbbf24' }, // amber
+            { pct: 90,  color: '#3dbd7a' }, // green
+            { pct: 100, color: '#facc15' }  // gold (exact 100 only)
         ];
 
         function getColorForPct(p) {
@@ -2434,7 +2419,7 @@ class QuizEngine {
         canvas.width = parent.offsetWidth;
         canvas.height = parent.offsetHeight;
 
-        const colors = ['#059669', '#10b981', '#2E86AB', '#f59e0b', '#ec4899', '#8b5cf6', '#ef4444'];
+        const colors = ['#0fbcad', '#3dbd7a', '#facc15', '#f4a535', '#ec5fa3', '#a78bfa', '#e05252'];
         const pieces = [];
         const count = 80;
 

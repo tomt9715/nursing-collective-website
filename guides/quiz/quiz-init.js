@@ -18,16 +18,10 @@
         return 'https://staging-backend-production-365a.up.railway.app';
     })();
 
-    // Apply saved theme preference (or default to light)
-    var savedMode = localStorage.getItem('themeMode');
-    if (savedMode === 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    } else if (savedMode === 'system') {
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-    } else {
-        document.documentElement.setAttribute('data-theme', 'light');
-    }
+    // Quiz UI is always-dark to match the rest of the authenticated workspace
+    // (dashboard, my-guides, Quiz Bank). The data-theme attribute is kept so
+    // any legacy [data-theme="dark"] element overrides still apply.
+    document.documentElement.setAttribute('data-theme', 'dark');
 
     function getAuthToken() {
         return localStorage.getItem('accessToken');

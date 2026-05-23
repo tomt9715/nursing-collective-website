@@ -1376,17 +1376,32 @@ async function updateDailyGoalWidget() {
     var labelText = document.getElementById('goal-label-text');
     if (!widget || !ringFill || !countText) return;
 
-    // Quizzes are paywalled — hide the goal widget for users who can't actually use it.
+    var hasAccess = true;
     try {
         if (typeof getSubscriptionStatusCached === 'function') {
             var status = await getSubscriptionStatusCached();
-            if (!status || !status.hasAccess) {
-                widget.style.display = 'none';
-                return;
-            }
+            hasAccess = !!(status && status.hasAccess);
         }
-    } catch (e) { /* fall through and show the widget */ }
+    } catch (e) { /* network glitch — fall through and show the widget normally */ }
     widget.style.display = '';
+
+    // Free user — keep the widget visible with a paywall CTA so they at least
+    // know the daily-streak feature exists. Quizzes are paywalled, so the ring
+    // would never move for them; previously we hid the whole widget, which made
+    // the feature invisible to anyone who hadn't subscribed yet.
+    if (!hasAccess) {
+        widget.classList.add('sidebar-goal-widget--locked');
+        widget.classList.remove('goal-complete');
+        var lockedCircumference = 2 * Math.PI * 20;
+        ringFill.setAttribute('stroke-dasharray', lockedCircumference.toFixed(2));
+        ringFill.setAttribute('stroke-dashoffset', lockedCircumference.toFixed(2));
+        countText.textContent = '0/5';
+        if (labelText) {
+            labelText.innerHTML = '<a href="pricing.html" class="sidebar-goal-link">Subscribe to start your streak <i class="fas fa-arrow-right"></i></a>';
+        }
+        return;
+    }
+    widget.classList.remove('sidebar-goal-widget--locked');
 
     var DAILY_GOAL = 5;
     var activeDates = getActivityDates();

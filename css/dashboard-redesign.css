@@ -462,6 +462,23 @@ img { max-width: 100%; display: block; }
 .sidebar-goal-widget.goal-complete .sidebar-goal-title i { color: var(--green); }
 .sidebar-goal-widget.goal-complete .sidebar-goal-count { color: var(--green); }
 
+/* Locked variant: shown for free users so the daily-streak feature is at
+   least visible. Faded ring + count, label becomes a CTA link to pricing. */
+.sidebar-goal-widget--locked .sidebar-goal-track { stroke: var(--border); }
+.sidebar-goal-widget--locked .sidebar-goal-count { color: var(--text-dimmer); }
+.sidebar-goal-widget--locked .sidebar-goal-title i { color: var(--text-dim); }
+.sidebar-goal-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--teal);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+.sidebar-goal-link:hover { color: var(--teal-dim); }
+.sidebar-goal-link i { font-size: 10px; }
+
 
 /* ── Sidebar subscription widget ── */
 .sidebar-sub-widget {

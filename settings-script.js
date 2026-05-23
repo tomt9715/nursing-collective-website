@@ -24,6 +24,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Load membership section
     loadMembership();
 
+    // Fallback hook: if sidebar widget on a page without upgrade-modal.js
+    // sent the user here with ?upgrade=ai, auto-open the upgrade modal.
+    try {
+        var params = new URLSearchParams(window.location.search);
+        if (params.get('upgrade') === 'ai' && typeof window.openUpgradeAiModal === 'function') {
+            // Give loadMembership() a moment so the modal opens over a populated UI.
+            setTimeout(function () { window.openUpgradeAiModal(); }, 400);
+        }
+    } catch (e) { /* no URLSearchParams or no modal — ignore */ }
+
     // Setup delete account handlers
     setupDeleteAccount();
 
@@ -1335,162 +1345,20 @@ function renderBillingHistory(data) {
 }
 
 function handleMembershipUpgrade() {
-    // Open the upgrade confirmation modal instead of directly redirecting
-    openUpgradeAiModal();
-}
-
-function openUpgradeAiModal() {
-    var modal = document.getElementById('upgrade-ai-modal');
-    if (!modal) return;
-
-    var summaryEl = document.getElementById('upgrade-ai-summary');
-    var confirmBtn = document.getElementById('upgrade-ai-confirm-btn');
-    var errorEl = document.getElementById('upgrade-ai-error');
-    var closeBtn = document.getElementById('upgrade-ai-close-btn');
-
-    // Reset state
-    if (confirmBtn) { confirmBtn.style.display = 'none'; confirmBtn.disabled = false; confirmBtn.innerHTML = '<i class="fas fa-credit-card"></i> Continue to Payment'; }
-    if (errorEl) { errorEl.style.display = 'none'; errorEl.textContent = ''; }
-    if (summaryEl) summaryEl.innerHTML = '<div style="text-align:center; padding: 16px; color: var(--text-secondary);"><i class="fas fa-spinner fa-spin"></i> Loading upgrade details...</div>';
-
-    modal.style.display = 'flex';
-
-    // Close handlers
-    if (closeBtn) {
-        closeBtn.innerHTML = 'Close';
-        closeBtn.onclick = function() { modal.style.display = 'none'; };
-    }
-    modal.onclick = function(e) {
-        if (e.target === modal) modal.style.display = 'none';
-    };
-
-    // Load AI plan pricing to show in the summary
-    loadUpgradeDetails(summaryEl, confirmBtn, modal);
-}
-
-async function loadUpgradeDetails(summaryEl, confirmBtn, modal) {
-    try {
-        // /api/upgrade-options returns the live UPGRADE_PLANS data for the
-        // current user's plan, so the modal price matches what Stripe charges
-        // (e.g. $50 for lifetime upgrade, not $199 retail).
-        var optsResp = await apiCall('/api/upgrade-options');
-        if (!optsResp) throw new Error('Failed to load upgrade options');
-
-        var currentPlanId = optsResp.current_plan_id || '';
-
-        // "Standard X" labels make the tier contrast with "AI-Powered X" on the right.
-        var currentPlanNames = {
-            'monthly-access': 'Standard Monthly',
-            'semester-access': 'Standard Semester',
-            'lifetime-access': 'Standard Lifetime'
-        };
-        var currentName = currentPlanNames[currentPlanId] || currentPlanId || 'Current Plan';
-
-        // No upgrade available — surface a helpful state instead of a price.
-        if (!optsResp.upgrade_available || !optsResp.upgrade) {
-            var reason = optsResp.reason;
-            var noUpgradeMsg = 'No upgrade available for your current plan.';
-            if (reason === 'already_ai') noUpgradeMsg = 'You\'re already on an AI-Powered plan.';
-            else if (reason === 'no_active_subscription') noUpgradeMsg = 'Subscribe to a Standard plan first to upgrade to AI-Powered.';
-
-            if (summaryEl) {
-                summaryEl.innerHTML =
-                    '<div style="background: var(--navy-3); border: 0.5px solid var(--border); border-radius: 12px; padding: 20px; text-align:center; color: var(--text-dim);">' +
-                        '<i class="fas fa-info-circle" style="color:#a78bfa; margin-right:6px;"></i>' + escapeHtml(noUpgradeMsg) +
-                    '</div>';
-            }
-            return; // confirm button stays hidden (was already set in openUpgradeAiModal)
-        }
-
-        var upgrade = optsResp.upgrade;
-        var aiName = upgrade.target_plan_name || 'AI-Powered';
-        var upgradePriceText;
-        if (upgrade.type === 'subscription-modify') {
-            // Monthly: Stripe prorates the difference at the next billing cycle.
-            upgradePriceText = 'Prorated upgrade · billed by Stripe';
-        } else if (typeof upgrade.price === 'number') {
-            upgradePriceText = '$' + upgrade.price.toFixed(2) + ' one-time upgrade';
-        } else {
-            upgradePriceText = '';
-        }
-
-        if (summaryEl) {
-            summaryEl.innerHTML =
-                '<div style="background: var(--navy-3); border: 0.5px solid var(--border); border-radius: 12px; padding: 20px;">' +
-                '  <div style="display:flex; align-items:center; gap:12px; margin-bottom:16px;">' +
-                '    <div style="flex:1; text-align:center;">' +
-                '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-dimmer); font-weight:600; letter-spacing:0.06em; margin-bottom:4px;">Current Plan</div>' +
-                '      <div style="font-weight:600; color:var(--text);">' + currentName + '</div>' +
-                '    </div>' +
-                '    <div style="color:#a78bfa; font-size:1.2rem;"><i class="fas fa-arrow-right"></i></div>' +
-                '    <div style="flex:1; text-align:center;">' +
-                '      <div style="font-size:0.75rem; text-transform:uppercase; color:var(--text-dimmer); font-weight:600; letter-spacing:0.06em; margin-bottom:4px;">New Plan</div>' +
-                '      <div style="font-weight:600; color:#a78bfa;">' + aiName + '</div>' +
-                (upgradePriceText ? '      <div style="font-size:0.9rem; color:var(--text-dim); margin-top:2px;">' + upgradePriceText + '</div>' : '') +
-                '    </div>' +
-                '  </div>' +
-                '  <div style="font-size:0.82rem; color:var(--text-dim); text-align:center; border-top:1px solid var(--border); padding-top:12px;">' +
-                '    <i class="fas fa-bolt" style="color:#a78bfa; margin-right:4px;"></i> Includes AI note uploads, NCLEX question generation, and more.' +
-                '  </div>' +
-                '  <div style="font-size:0.82rem; color:var(--text-dim); text-align:center; margin-top:8px;">' +
-                '    <i class="fas fa-lock" style="margin-right:4px;"></i> You\'ll be redirected to Stripe to confirm payment.' +
-                '  </div>' +
-                '</div>';
-        }
-
-        if (confirmBtn) {
-            confirmBtn.style.display = 'inline-flex';
-            confirmBtn.onclick = function() { proceedToUpgrade(modal); };
-        }
-
-    } catch (error) {
-        console.error('Error loading upgrade details:', error);
-        if (summaryEl) {
-            summaryEl.innerHTML = '<p style="text-align:center; color:var(--text-secondary); padding: 16px;">Unable to load upgrade details. Please try again.</p>';
-        }
+    // Delegated to the shared upgrade-modal.js module so the same modal
+    // can open from anywhere with a sidebar widget (dashboard, my-guides,
+    // etc.) instead of forcing a navigation to /settings or /pricing.
+    if (typeof window.openUpgradeAiModal === 'function') {
+        window.openUpgradeAiModal();
+    } else {
+        console.warn('[Settings] upgrade-modal.js not loaded; falling back to /pricing.');
+        window.location.href = 'pricing.html?tier=ai';
     }
 }
 
-async function proceedToUpgrade(modal) {
-    var confirmBtn = document.getElementById('upgrade-ai-confirm-btn');
-    var errorEl = document.getElementById('upgrade-ai-error');
-
-    if (confirmBtn) {
-        confirmBtn.disabled = true;
-        confirmBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Redirecting...';
-    }
-
-    try {
-        var response = await apiCall('/api/ai/upgrade', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                success_url: window.location.origin + '/success.html?session_id={CHECKOUT_SESSION_ID}&type=upgrade',
-                cancel_url: window.location.href
-            })
-        });
-
-        if (response.upgraded) {
-            if (modal) modal.style.display = 'none';
-            showAlert('Upgrade Complete!', response.message || 'Your plan has been upgraded to AI-Powered!', 'success');
-            setTimeout(function() { loadMembership(); }, 1000);
-        } else if (response.url) {
-            window.location.href = response.url;
-        } else {
-            throw new Error('Unexpected response');
-        }
-    } catch (error) {
-        console.error('Error upgrading plan:', error);
-        if (errorEl) {
-            errorEl.textContent = error.message || 'Unable to process the upgrade. Please try again.';
-            errorEl.style.display = 'block';
-        }
-        if (confirmBtn) {
-            confirmBtn.disabled = false;
-            confirmBtn.innerHTML = '<i class="fas fa-credit-card"></i> Continue to Payment';
-        }
-    }
-}
+// loadUpgradeDetails + proceedToUpgrade moved to upgrade-modal.js so the
+// same modal can open from any page with a sidebar widget (not just
+// /settings). See window.openUpgradeAiModal().
 
 // ─── Cancel Subscription Modal ───
 function openCancelSubModal(sub) {

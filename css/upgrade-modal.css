@@ -1,0 +1,111 @@
+/* ──────────────────────────────────────────────────────────────
+   Upgrade modal styles (shared)
+   The upgrade-modal.js module injects a .delete-modal-overlay
+   element (reusing the existing modal styling vocabulary from
+   settings-redesign.css). On non-settings pages those styles
+   weren't available — this small file carries just what the
+   upgrade modal needs so it renders correctly anywhere.
+   ────────────────────────────────────────────────────────────── */
+
+.delete-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 9999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-modal-content {
+  background: var(--card, #1a2940);
+  border: 0.5px solid var(--border-mid, rgba(255,255,255,0.12));
+  border-radius: 14px;
+  max-width: 480px;
+  width: 90%;
+  padding: 32px;
+  position: relative;
+}
+
+.delete-modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.delete-modal-icon {
+  width: 64px;
+  height: 64px;
+  background: rgba(224, 82, 82, 0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.delete-modal-icon i {
+  font-size: 28px;
+  color: var(--red, #e05252);
+}
+
+.delete-modal-header h3 {
+  color: var(--text, #e8edf2);
+  margin-bottom: 8px;
+}
+.delete-modal-header p {
+  color: var(--text-dim, #8a9bb0);
+  font-size: 1rem;
+}
+
+.delete-modal-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.delete-modal-btn-cancel {
+  flex: 1;
+  padding: 12px;
+  background: var(--navy-3, #1e2d3e);
+  color: var(--text, #e8edf2);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+}
+.delete-modal-btn-cancel:hover {
+  background: var(--border-mid, rgba(255,255,255,0.12));
+}
+
+.delete-modal-btn-confirm {
+  flex: 1;
+  padding: 12px;
+  background: var(--red, #e05252);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+.delete-modal-btn-confirm:disabled {
+  background: rgba(224, 82, 82, 0.4);
+  cursor: not-allowed;
+}
+
+.delete-modal-error {
+  color: var(--red, #e05252);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  padding: 8px;
+  background: rgba(224, 82, 82, 0.12);
+  border-radius: 6px;
+}

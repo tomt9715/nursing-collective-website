@@ -215,7 +215,7 @@
                 pillEl.innerHTML = originalHTML;
                 return;
             }
-            window.location.href = 'quiz/quiz.html?source=ai-guide&guide=' +
+            window.location.href = 'quiz/quiz.html?source=ai&guide=' +
                 encodeURIComponent(guideId) + '&section=' + encodeURIComponent(sectionId);
         }).catch(function (err) {
             console.error('[AI Section Quiz] error:', err);

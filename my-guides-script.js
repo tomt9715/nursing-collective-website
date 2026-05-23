@@ -397,6 +397,12 @@
                 '</div>';
         }
 
+        // Today's recommended guides — async-filled from /api/semester/daily-plan
+        // for paid users with a configured semester. Stays empty otherwise.
+        if (_hasAccess && _hasSemesterSetup) {
+            html += '<div id="my-guides-daily-plan-slot"></div>';
+        }
+
         // Stats bar
         html += '<div class="guide-library-stats">';
         html += '<div class="guide-library-stat"><i class="fas fa-book-open"></i> <strong>' + totalAvailable + '</strong> guides available</div>';
@@ -458,6 +464,114 @@
                 try { localStorage.setItem('myGuidesSetupBannerDismissed', 'true'); } catch (e) {}
             });
         }
+
+        if (_hasAccess && _hasSemesterSetup) {
+            loadDailyPlanGuides();
+        }
+    }
+
+    /**
+     * Fetch today's study plan and surface any tasks that point at an
+     * existing guide. Silent no-op on failure (no plan, network glitch).
+     */
+    async function loadDailyPlanGuides() {
+        var slot = document.getElementById('my-guides-daily-plan-slot');
+        if (!slot) return;
+        if (typeof apiCall !== 'function') return;
+
+        try {
+            var data = await apiCall('/api/semester/daily-plan');
+            var tasks = (data && data.plan && data.plan.tasks) || [];
+            if (tasks.length === 0) return;
+
+            // Index of valid guide slugs from the catalog (only built guides
+            // are clickable — uncovered topics shouldn't appear as cards).
+            var validGuides = {};
+            CLASS_CATALOG.forEach(function (cls) {
+                (cls.topics || []).forEach(function (topic) {
+                    (topic.guides || []).forEach(function (g) {
+                        if (g.file) {
+                            validGuides[g.file] = {
+                                name: g.name,
+                                className: cls.name
+                            };
+                        }
+                    });
+                });
+            });
+
+            // Dedupe by guide_id — a plan may have multiple tasks per guide.
+            var seen = {};
+            var matches = [];
+            tasks.forEach(function (task) {
+                if (!task.guide_id) return;
+                if (seen[task.guide_id]) return;
+                var meta = validGuides[task.guide_id];
+                if (!meta) return; // guide not in catalog yet
+                seen[task.guide_id] = true;
+                matches.push({
+                    guideId: task.guide_id,
+                    guideName: meta.name,
+                    className: task.class_name || meta.className,
+                    examName: task.exam_name || '',
+                    examDate: task.exam_date || null,
+                    link: task.link || ('guides/' + task.guide_id + '.html')
+                });
+            });
+
+            if (matches.length === 0) return;
+
+            // Cap at 4 — keeps the section compact above the class grid.
+            matches = matches.slice(0, 4);
+
+            var html = '<section class="my-guides-today">';
+            html += '<div class="my-guides-today-header">';
+            html += '<h2 class="my-guides-today-title"><i class="fas fa-calendar-day"></i> Today\'s recommended guides</h2>';
+            html += '<p class="my-guides-today-desc">From your study plan — the guides that match what you\'re studying for soonest.</p>';
+            html += '</div>';
+            html += '<div class="my-guides-today-cards">';
+            matches.forEach(function (m) {
+                var contextBits = [];
+                if (m.examName) contextBits.push(escapeHtml(m.examName));
+                if (m.examDate) {
+                    var d = new Date(m.examDate + 'T00:00:00');
+                    var days = Math.ceil((d - new Date().setHours(0, 0, 0, 0)) / 86400000);
+                    if (!isNaN(days)) {
+                        if (days <= 0) contextBits.push('Today!');
+                        else if (days === 1) contextBits.push('Tomorrow');
+                        else contextBits.push('in ' + days + ' days');
+                    }
+                }
+                html += '<a class="my-guides-today-card" href="' + escapeHtml(m.link) + '">';
+                html += '<div class="my-guides-today-card-main">';
+                if (m.className) {
+                    html += '<div class="my-guides-today-card-class">' + escapeHtml(m.className) + '</div>';
+                }
+                html += '<div class="my-guides-today-card-name">' + escapeHtml(m.guideName) + '</div>';
+                if (contextBits.length > 0) {
+                    html += '<div class="my-guides-today-card-context">' + contextBits.join(' &middot; ') + '</div>';
+                }
+                html += '</div>';
+                html += '<div class="my-guides-today-card-cta"><i class="fas fa-arrow-right"></i></div>';
+                html += '</a>';
+            });
+            html += '</div>';
+            html += '</section>';
+
+            slot.innerHTML = html;
+        } catch (e) {
+            // Silent — leave slot empty
+        }
+    }
+
+    function escapeHtml(s) {
+        if (s == null) return '';
+        return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
     }
 
     // ── Render: Class Detail (Level 2) ───────────────────────────

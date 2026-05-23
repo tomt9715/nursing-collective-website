@@ -1088,3 +1088,91 @@ img { max-width: 100%; display: block; }
   .my-guides-setup-banner-cta { flex: 1 1 100%; text-align: center; order: 3; }
   .my-guides-setup-banner-dismiss { order: 2; }
 }
+
+/* ──────────────────────────────────────────────────────────────
+   TODAY'S RECOMMENDED GUIDES (Daily Plan)
+   Async-injected for paid users with a configured semester. Shows
+   guide cards matched from /api/semester/daily-plan. Slot stays
+   empty for everyone else — zero visual cost.
+   ────────────────────────────────────────────────────────────── */
+.my-guides-today { margin-bottom: 28px; }
+.my-guides-today-header { margin-bottom: 14px; }
+.my-guides-today-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  color: var(--text);
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.my-guides-today-title i { color: var(--teal); font-size: 1.1rem; }
+.my-guides-today-desc {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin: 0;
+}
+.my-guides-today-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+.my-guides-today-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  background: var(--navy-3);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--teal);
+  border-radius: 12px;
+  padding: 14px 16px;
+  color: inherit;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.my-guides-today-card:hover {
+  background: var(--navy-2);
+  border-color: var(--border-mid);
+  border-left-color: var(--teal);
+  transform: translateY(-1px);
+}
+.my-guides-today-card-main { flex: 1 1 auto; min-width: 0; }
+.my-guides-today-card-class {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--teal);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.my-guides-today-card-name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.my-guides-today-card-context {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.my-guides-today-card-cta {
+  flex: 0 0 auto;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+.my-guides-today-card:hover .my-guides-today-card-cta {
+  color: var(--teal);
+  transform: translateX(2px);
+}

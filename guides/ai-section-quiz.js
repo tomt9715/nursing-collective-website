@@ -138,12 +138,24 @@
 
     // ── API call + navigation ───────────────────────────────
 
-    function launchQuiz(guideId, sectionId, sectionTitle, pillEl) {
+    function extractSectionText(sectionEl) {
+        // Clone so we can strip non-content children without mutating the page.
+        var clone = sectionEl.cloneNode(true);
+        var strippable = clone.querySelectorAll('script, style, button, nav, .ai-sq-pill');
+        for (var i = 0; i < strippable.length; i++) {
+            strippable[i].parentNode.removeChild(strippable[i]);
+        }
+        return (clone.textContent || '').replace(/\s+/g, ' ').trim();
+    }
+
+    function launchQuiz(guideId, sectionId, sectionTitle, sectionEl, pillEl) {
         var token = getAuthToken();
         if (!token) {
             showToast('Please sign in to use AI quiz.', 'error');
             return;
         }
+
+        var sectionText = extractSectionText(sectionEl);
 
         var originalHTML = pillEl.innerHTML;
         pillEl.disabled = true;
@@ -157,6 +169,8 @@
             },
             body: JSON.stringify({
                 section_id: sectionId,
+                section_title: sectionTitle,
+                section_text: sectionText,
                 question_count: QUESTION_COUNT
             })
         }).then(function (resp) {
@@ -213,14 +227,14 @@
 
     // ── Pill injection ──────────────────────────────────────
 
-    function makePill(guideId, sectionId, sectionTitle) {
+    function makePill(guideId, sectionId, sectionTitle, sectionEl) {
         var pill = document.createElement('button');
         pill.className = 'ai-sq-pill';
         pill.type = 'button';
         pill.setAttribute('aria-label', 'Generate AI practice questions for ' + sectionTitle);
         pill.innerHTML = '<span class="ai-sq-pill-icon" aria-hidden="true">✨</span> AI Quiz';
         pill.addEventListener('click', function () {
-            launchQuiz(guideId, sectionId, sectionTitle, pill);
+            launchQuiz(guideId, sectionId, sectionTitle, sectionEl, pill);
         });
         return pill;
     }
@@ -245,7 +259,7 @@
             var title = (configById[id] && configById[id].title) ||
                 (heading ? heading.textContent.trim() : id);
 
-            var pill = makePill(guideId, id, title);
+            var pill = makePill(guideId, id, title, section);
             if (heading && heading.parentNode === section) {
                 heading.insertAdjacentElement('afterend', pill);
             } else {

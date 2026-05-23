@@ -1180,6 +1180,9 @@ img { max-width: 100%; display: block; }
 /* ── Study plan widget empty state ── */
 .study-plan-content { color: var(--text-dim); font-size: 15px; }
 
+/* DEPRECATED — .sp-empty-* and .ec-empty-state/icon/text/btn below are
+   replaced by the shared .empty-card family in css/empty-state.css.
+   Kept temporarily as dead code; safe to remove in a future cleanup. */
 .sp-empty-state {
   display: flex;
   flex-direction: column;
@@ -1739,6 +1742,7 @@ img { max-width: 100%; display: block; }
 .activity-legend .activity-dot { width: 8px; height: 8px; }
 
 /* Activity empty state nudge — hide the empty bars and stats when nudge is showing */
+/* DEPRECATED — replaced by .empty-card in css/empty-state.css (see #2 audit). */
 .activity-empty-nudge {
   text-align: center;
   padding: 24px 12px;

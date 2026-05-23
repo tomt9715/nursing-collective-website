@@ -45,13 +45,13 @@
 
     function buildEmptyState() {
         return '' +
-            '<div class="sp-empty-state">' +
-                '<div class="sp-empty-icon"><i class="fas fa-calendar-plus"></i></div>' +
-                '<div class="sp-empty-text">' +
-                    '<p class="sp-empty-title">No study plan yet</p>' +
-                    '<p class="sp-empty-desc">Add your classes and exam dates to get personalized daily recommendations.</p>' +
+            '<div class="empty-card">' +
+                '<div class="empty-card-icon"><i class="fas fa-calendar-plus"></i></div>' +
+                '<div class="empty-card-text">' +
+                    '<p class="empty-card-title">No study plan yet</p>' +
+                    '<p class="empty-card-desc">Add your classes and exam dates to get personalized daily recommendations.</p>' +
                 '</div>' +
-                '<button class="sp-empty-btn" id="sp-setup-btn">' +
+                '<button class="empty-card-btn" id="sp-setup-btn">' +
                     '<i class="fas fa-plus"></i> Set Up Semester' +
                 '</button>' +
             '</div>';
@@ -85,7 +85,7 @@
             }
 
             if (!data || !data.plan) {
-                content.innerHTML = '<div class="sp-empty-state"><p class="sp-empty-desc">Unable to load study plan.</p></div>';
+                content.innerHTML = '<div class="empty-card"><p class="empty-card-desc">Unable to load study plan.</p></div>';
                 return;
             }
 
@@ -93,7 +93,7 @@
 
         } catch (err) {
             console.error('[StudyPlan] Fetch failed:', err);
-            content.innerHTML = '<div class="sp-empty-state"><p class="sp-empty-desc">Failed to load study plan. Try refreshing.</p></div>';
+            content.innerHTML = '<div class="empty-card"><p class="empty-card-desc">Failed to load study plan. Try refreshing.</p></div>';
         }
     }
 
@@ -172,19 +172,19 @@
 
         } else if (plan.message) {
             // API returned a specific message (error or status)
-            html += '<div class="sp-empty-state">' +
-                '<div class="sp-empty-icon"><i class="fas fa-info-circle"></i></div>' +
-                '<div class="sp-empty-text">' +
-                    '<p class="sp-empty-desc">' + plan.message + '</p>' +
+            html += '<div class="empty-card">' +
+                '<div class="empty-card-icon"><i class="fas fa-info-circle"></i></div>' +
+                '<div class="empty-card-text">' +
+                    '<p class="empty-card-desc">' + plan.message + '</p>' +
                 '</div>' +
             '</div>';
         } else {
             // No tasks and no message — guide user to add exams
-            html += '<div class="sp-empty-state">' +
-                '<div class="sp-empty-icon"><i class="fas fa-clipboard-list"></i></div>' +
-                '<div class="sp-empty-text">' +
-                    '<p class="sp-empty-title">Add your exams to get started</p>' +
-                    '<p class="sp-empty-desc">Add upcoming exams with topics from the Exam Countdown widget, and we\'ll build your personalized daily study plan.</p>' +
+            html += '<div class="empty-card">' +
+                '<div class="empty-card-icon"><i class="fas fa-clipboard-list"></i></div>' +
+                '<div class="empty-card-text">' +
+                    '<p class="empty-card-title">Add your exams to get started</p>' +
+                    '<p class="empty-card-desc">Add upcoming exams with topics from the Exam Countdown widget, and we\'ll build your personalized daily study plan.</p>' +
                 '</div>' +
             '</div>';
         }

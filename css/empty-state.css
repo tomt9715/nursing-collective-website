@@ -1,0 +1,72 @@
+/* ──────────────────────────────────────────────────────────────
+   Shared compact empty-state pattern (.empty-card family)
+   Used inside dashboard widgets, sidebar widgets, and small cards
+   that need a centered icon + title + description + optional CTA.
+
+   For full-page empty states (much larger padding, bigger icon),
+   see .empty-state-enhanced in components.css — that's a separate
+   intentional pattern.
+   ────────────────────────────────────────────────────────────── */
+
+.empty-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+  padding: 20px 12px;
+}
+
+.empty-card-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(15, 188, 173, 0.1);
+  color: var(--teal);
+  font-size: 14px;
+  flex-shrink: 0;
+}
+/* Color variants for the icon chip */
+.empty-card-icon--amber  { background: rgba(244, 165, 53, 0.1);  color: var(--amber); }
+.empty-card-icon--green  { background: rgba(61, 189, 122, 0.1);  color: var(--green); }
+.empty-card-icon--purple { background: rgba(139, 92, 246, 0.1);  color: var(--purple, #8b5cf6); }
+
+.empty-card-text { flex: 1; }
+.empty-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 0 0 4px;
+}
+.empty-card-desc {
+  font-size: 14px;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.empty-card-btn {
+  margin-top: 12px;
+  background: var(--teal);
+  color: var(--navy);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+}
+.empty-card-btn:hover {
+  background: var(--teal-dim);
+  color: var(--navy);
+  text-decoration: none;
+}

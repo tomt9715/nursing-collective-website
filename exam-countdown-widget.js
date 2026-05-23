@@ -149,10 +149,10 @@
     }
 
     function buildEmptyState() {
-        return '<div class="ec-empty-state">' +
-            '<div class="ec-empty-icon"><i class="fas fa-calendar-plus"></i></div>' +
-            '<p class="ec-empty-text">Add your exam dates to see countdowns here.</p>' +
-            '<button class="ec-empty-btn" id="ec-setup-btn"><i class="fas fa-plus"></i> Set Up Semester</button>' +
+        return '<div class="empty-card">' +
+            '<div class="empty-card-icon empty-card-icon--amber"><i class="fas fa-calendar-plus"></i></div>' +
+            '<p class="empty-card-desc">Add your exam dates to see countdowns here.</p>' +
+            '<button class="empty-card-btn" id="ec-setup-btn"><i class="fas fa-plus"></i> Set Up Semester</button>' +
         '</div>';
     }
 

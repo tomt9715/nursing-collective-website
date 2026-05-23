@@ -929,10 +929,12 @@ function loadStudyActivityCalendar(weekOffset) {
         // Replace the empty bar rows with just the nudge message
         var widget = document.getElementById('study-activity-widget');
         if (widget) widget.classList.add('activity-empty');
-        container.innerHTML = '<div class="activity-empty-nudge">' +
-            '<i class="fas fa-seedling nudge-icon"></i>' +
-            '<strong>No activity yet this week</strong>' +
-            '<p>As you study guides, take quizzes, and use AI tools, your activity will show up here.</p>' +
+        container.innerHTML = '<div class="empty-card">' +
+            '<div class="empty-card-icon empty-card-icon--green"><i class="fas fa-seedling"></i></div>' +
+            '<div class="empty-card-text">' +
+                '<p class="empty-card-title">No activity yet this week</p>' +
+                '<p class="empty-card-desc">As you study guides, take quizzes, and use AI tools, your activity will show up here.</p>' +
+            '</div>' +
             '</div>';
     }
 

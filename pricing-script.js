@@ -82,8 +82,24 @@ document.addEventListener('DOMContentLoaded', function() {
             if (creditAddonSection) {
                 creditAddonSection.classList.toggle('hidden', selectedTier !== 'ai-powered');
             }
+
+            // Hide the Standard→AI upgrade banner when AI tier is active —
+            // its purpose is to nudge from Standard view, redundant once
+            // the user is already looking at AI plans.
+            updateUpgradeBannerVisibility();
         });
     });
+
+    // Tracks whether the current user is on a Standard (non-AI) subscription.
+    // Used together with currentTier to decide whether the upgrade banner
+    // should be shown.
+    let isStandardSubscriber = false;
+
+    function updateUpgradeBannerVisibility() {
+        if (!upgradeBanner) return;
+        var shouldShow = isStandardSubscriber && currentTier !== 'ai-powered';
+        upgradeBanner.classList.toggle('hidden', !shouldShow);
+    }
 
     function updatePricingCards(tier) {
         const isAI = tier === 'ai-powered';
@@ -185,10 +201,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 userSubscription = data.subscription;
 
                 if (!data.subscription.is_ai_plan) {
-                    // User has Standard plan — show upgrade banner
+                    // User has Standard plan — mark them so the banner shows
+                    // on Standard tier view (and stays hidden on AI tier).
+                    isStandardSubscriber = true;
                     if (upgradeBanner) {
-                        upgradeBanner.classList.remove('hidden');
-
                         // Update banner text with specific upgrade price
                         const bannerText = upgradeBanner.querySelector('.upgrade-banner-msg');
                         if (bannerText) {
@@ -199,6 +215,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             bannerText.textContent = `Already a subscriber? Upgrade to AI-Powered for just ${priceText}!`;
                         }
                     }
+                    updateUpgradeBannerVisibility();
                 }
             }
         } catch (e) {
@@ -267,8 +284,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     showPricingToast('You already have this plan active.', 'success');
                     return;
                 }
-                if (currentPlan.indexOf('lifetime') !== -1) {
+                // Only block if user is already on the top tier (AI Lifetime).
+                // Standard Lifetime → AI Lifetime is a legitimate upgrade and
+                // should fall through to the isUpgrade flow below.
+                if (currentPlan === 'ai-lifetime-access') {
                     showPricingToast('You already have lifetime access — there\'s nothing more to purchase!', 'success');
+                    return;
+                }
+                // Standard Lifetime users can ONLY upgrade to AI Lifetime
+                // (AI Monthly/Semester would be a downgrade). Block those.
+                if (currentPlan === 'lifetime-access' && planId.startsWith('ai-') && planId !== 'ai-lifetime-access') {
+                    showPricingToast('You already have lifetime access. AI Lifetime is the only valid upgrade — try that plan instead.', 'success');
                     return;
                 }
             }

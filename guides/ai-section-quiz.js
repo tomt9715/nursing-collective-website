@@ -1,3 +1,4 @@
+/* v2 — force Cloudflare Pages redeploy after stale single-file glitch */
 /**
  * AI Section Quiz — inline AI-generated practice questions on guide pages.
  *

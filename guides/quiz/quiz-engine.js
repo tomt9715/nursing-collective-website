@@ -1006,13 +1006,14 @@ class QuizEngine {
             sizeButtonsHtml = `<button class="quiz-size-btn ${selectedSize === 10 ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="10">10 Random</button>`;
             sizeButtonsHtml += `<button class="quiz-size-btn ${selectedSize === total ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${total}">All (${total})</button>`;
         } else if (!hideSessionSize) {
-            const filteredSizes = sizeOptions.filter(s => s <= total);
+            const filteredSizes = sizeOptions.filter(s => s < total);
             sizeButtonsHtml = filteredSizes
                 .map(s => `<button class="quiz-size-btn ${s === selectedSize ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${s}">${s}</button>`)
                 .join('');
-            if (showAll || filteredSizes.length === 0) {
-                sizeButtonsHtml += `<button class="quiz-size-btn ${selectedSize === total ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${total}">All (${total})</button>`;
-            }
+            // Always offer an "All (N)" option so users can take the full bank;
+            // covers edge cases like 8-question quizzes where filtered sizes
+            // would otherwise be only [5] with no way to take all 8.
+            sizeButtonsHtml += `<button class="quiz-size-btn ${selectedSize === total ? 'quiz-size-btn--active' : ''}" data-quiz-action="set-size" data-quiz-size="${total}">All (${total})</button>`;
         }
 
         // Resume banner
@@ -1047,27 +1048,23 @@ class QuizEngine {
                 <div class="quiz-start-header">
                     <span class="quiz-start-badge" style="background: ${this._escapeAttr(this.categoryColor)}">${this._escapeHtml(this.category)}</span>
                     <h1 class="quiz-start-title">${this._escapeHtml(this.guideName)} Quiz</h1>
-                    <p class="quiz-start-subtitle">NCLEX-Style Practice Questions</p>
+                    <p class="quiz-start-subtitle">Test your understanding before class or clinical</p>
                 </div>
 
                 <div class="quiz-start-stats">
                     <span class="quiz-stat"><i class="fas fa-question-circle"></i> ${total} Question${total !== 1 ? 's' : ''}</span>
                     <span class="quiz-stat quiz-est-time"><i class="fas fa-clock"></i> ~${estTime} min</span>
-                    <span class="quiz-stat"><i class="fas fa-layer-group"></i> ${this._getTypeCount()} Types</span>
                 </div>
+
+                ${this.isAIGenerated ? '' : `<div class="quiz-mix-row">
+                    <span class="quiz-mix-pill quiz-mix-pill--knowledge"><span class="quiz-mix-dot"></span>${difficultyCount.knowledge} Knowledge</span>
+                    <span class="quiz-mix-pill quiz-mix-pill--application"><span class="quiz-mix-dot"></span>${difficultyCount.application} Application</span>
+                    <span class="quiz-mix-pill quiz-mix-pill--analysis"><span class="quiz-mix-dot"></span>${difficultyCount.analysis} Analysis</span>
+                </div>`}
 
                 ${hideSessionSize ? '' : `<div class="quiz-session-size">
                     <div class="quiz-session-size-label">Questions per session</div>
                     <div class="quiz-size-options">${sizeButtonsHtml}</div>
-                </div>`}
-
-                ${this.isAIGenerated ? '' : `<div class="quiz-difficulty-breakdown">
-                    <div class="quiz-difficulty-title">Question Complexity</div>
-                    <div class="quiz-difficulty-bars">
-                        ${this._renderDifficultyRow('Knowledge', difficultyCount.knowledge, total, 'knowledge')}
-                        ${this._renderDifficultyRow('Application', difficultyCount.application, total, 'application')}
-                        ${this._renderDifficultyRow('Analysis', difficultyCount.analysis, total, 'analysis')}
-                    </div>
                 </div>`}
 
                 ${(() => {
@@ -1093,30 +1090,28 @@ class QuizEngine {
                 })()}
 
                 <div class="quiz-start-modes">
-                    <button class="quiz-mode-btn quiz-mode-btn--practice" data-quiz-action="start-practice">
-                        <div class="quiz-mode-icon"><i class="fas fa-book-open"></i></div>
+                    <button class="quiz-mode-btn quiz-mode-btn--practice quiz-mode-btn--primary" data-quiz-action="start-practice">
+                        <div class="quiz-mode-icon"><i class="fas fa-play"></i></div>
                         <div class="quiz-mode-info">
-                            <div class="quiz-mode-name">Practice Mode</div>
-                            <div class="quiz-mode-desc">See rationale after each question</div>
+                            <div class="quiz-mode-name">Start Practicing</div>
+                            <div class="quiz-mode-desc">Rationale after each question &middot; Best for learning</div>
                         </div>
+                        <div class="quiz-mode-arrow"><i class="fas fa-arrow-right"></i></div>
                     </button>
-                    <button class="quiz-mode-btn quiz-mode-btn--exam" data-quiz-action="start-exam">
+                    <button class="quiz-mode-btn quiz-mode-btn--exam quiz-mode-btn--secondary" data-quiz-action="start-exam">
                         <div class="quiz-mode-icon"><i class="fas fa-clipboard-check"></i></div>
                         <div class="quiz-mode-info">
-                            <div class="quiz-mode-name">Exam Mode</div>
-                            <div class="quiz-mode-desc">Timed &middot; All rationales shown at the end &middot; Counts toward mastery</div>
+                            <div class="quiz-mode-name">Or take it as an Exam</div>
+                            <div class="quiz-mode-desc">Timed &middot; Rationales at the end &middot; Counts toward mastery</div>
                         </div>
+                        <div class="quiz-mode-arrow"><i class="fas fa-arrow-right"></i></div>
                     </button>
                 </div>
 
                 ${!isTouch ? `
-                <div class="quiz-keyboard-hints">
-                    <div class="quiz-keyboard-hints-title"><i class="fas fa-keyboard"></i> Keyboard Shortcuts</div>
-                    <div class="quiz-keyboard-hints-grid">
-                        <span class="quiz-kbd">1</span>–<span class="quiz-kbd">4</span> Select answer
-                        <span class="quiz-kbd">Enter</span> / <span class="quiz-kbd">Space</span> Submit / Next
-                        <span class="quiz-kbd">F</span> Flag
-                    </div>
+                <div class="quiz-keyboard-footer">
+                    <i class="fas fa-keyboard"></i>
+                    Press <span class="quiz-kbd">1</span>&ndash;<span class="quiz-kbd">4</span> to answer, <span class="quiz-kbd">Enter</span> to submit, <span class="quiz-kbd">F</span> to flag
                 </div>
                 ` : ''}
             </div>

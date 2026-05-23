@@ -243,6 +243,37 @@ body {
     font-size: 1rem;
 }
 
+/* Compact difficulty mix — horizontal pill row, replaces the bulkier
+   .quiz-difficulty-breakdown card on the start screen. */
+.quiz-mix-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 14px 22px;
+    margin-bottom: 24px;
+    font-size: 0.85rem;
+    color: var(--quiz-text-secondary);
+}
+
+.quiz-mix-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.quiz-mix-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.quiz-mix-pill--knowledge .quiz-mix-dot { background: #5f9eff; }
+.quiz-mix-pill--application .quiz-mix-dot { background: #f4a535; }
+.quiz-mix-pill--analysis .quiz-mix-dot { background: #e05252; }
+
 /* Difficulty Breakdown */
 .quiz-difficulty-breakdown {
     background: var(--quiz-card-bg);
@@ -320,7 +351,8 @@ body {
 .quiz-start-modes {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    margin-top: 4px;
 }
 
 .quiz-mode-btn {
@@ -352,6 +384,48 @@ body {
     outline-offset: 2px;
 }
 
+/* Primary mode card — Practice is the daily-use default, so it reads
+   as the main CTA: teal-tinted surface, brighter border, faint glow. */
+.quiz-mode-btn--primary {
+    border-color: rgba(15, 188, 173, 0.35);
+    background: linear-gradient(135deg, rgba(15, 188, 173, 0.10), rgba(15, 188, 173, 0.04));
+    padding: 22px 22px;
+}
+
+.quiz-mode-btn--primary:hover {
+    border-color: var(--quiz-primary);
+    background: linear-gradient(135deg, rgba(15, 188, 173, 0.16), rgba(15, 188, 173, 0.07));
+    box-shadow: 0 4px 16px rgba(15, 188, 173, 0.15);
+}
+
+/* Secondary mode card — Exam mode is the alternative path, intentionally
+   quieter so it doesn't compete with the primary CTA. */
+.quiz-mode-btn--secondary {
+    background: transparent;
+    border-color: var(--quiz-border-mid);
+}
+
+.quiz-mode-btn--secondary:hover {
+    background: var(--quiz-card-elev);
+    border-color: var(--quiz-primary);
+}
+
+.quiz-mode-arrow {
+    color: var(--quiz-text-light);
+    font-size: 0.95rem;
+    flex-shrink: 0;
+    transition: transform var(--quiz-transition), color var(--quiz-transition);
+}
+
+.quiz-mode-btn:hover .quiz-mode-arrow {
+    transform: translateX(4px);
+    color: var(--quiz-primary);
+}
+
+.quiz-mode-btn--primary .quiz-mode-arrow {
+    color: var(--quiz-primary);
+}
+
 .quiz-mode-icon {
     width: 48px;
     height: 48px;
@@ -360,16 +434,19 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
-    color: #fff;
+    color: var(--quiz-bg);
     flex-shrink: 0;
 }
 
 .quiz-mode-btn--practice .quiz-mode-icon {
-    background: linear-gradient(135deg, #059669, #10b981);
+    background: var(--quiz-primary);
+    color: var(--quiz-bg);
 }
 
 .quiz-mode-btn--exam .quiz-mode-icon {
-    background: #6366f1;
+    background: var(--quiz-card-elev);
+    border: 1px solid var(--quiz-border-mid);
+    color: var(--quiz-text-secondary);
 }
 
 .quiz-mode-info {
@@ -3506,8 +3583,30 @@ body {
 }
 
 /* ============================================
-   KEYBOARD SHORTCUTS HINTS
+   KEYBOARD SHORTCUTS — slim footer (start screen)
    ============================================ */
+.quiz-keyboard-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 28px;
+    padding: 10px 16px;
+    font-size: 0.78rem;
+    color: var(--quiz-text-light);
+    text-align: center;
+    line-height: 1.6;
+}
+
+.quiz-keyboard-footer i {
+    color: var(--quiz-text-dimmer, var(--quiz-text-light));
+    margin-right: 4px;
+}
+
+/* Legacy boxed shortcuts card — kept for any other contexts that still
+   reference the .quiz-keyboard-hints classes. The start screen now uses
+   the slimmer .quiz-keyboard-footer above. */
 .quiz-keyboard-hints {
     background: var(--quiz-card-bg);
     border: 1px solid var(--quiz-border);

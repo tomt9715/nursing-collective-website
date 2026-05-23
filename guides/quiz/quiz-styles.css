@@ -1550,6 +1550,15 @@ body {
     color: var(--quiz-accent);
 }
 
+.quiz-weak-drill-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 4px 0 16px;
+    width: 100%;
+}
+
 .quiz-weak-area-list {
     list-style: none;
     display: flex;

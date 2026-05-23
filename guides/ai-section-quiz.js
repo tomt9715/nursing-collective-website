@@ -31,7 +31,12 @@
     var SKIP_SECTION_IDS = ['practice-questions', 'cross-references', 'references'];
 
     function getGuideId() {
-        var m = window.location.pathname.match(/\/guides\/([a-z0-9_-]+)\.html/i);
+        // Prefer the body data attribute every guide page already sets —
+        // works for both /guides/<id>.html and Cloudflare's clean
+        // /guides/<id> URLs.
+        var fromBody = document.body && document.body.dataset && document.body.dataset.productId;
+        if (fromBody) return fromBody;
+        var m = window.location.pathname.match(/\/guides\/([a-z0-9_-]+?)(?:\.html)?\/?$/i);
         return m ? m[1] : null;
     }
 

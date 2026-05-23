@@ -462,6 +462,23 @@ document.addEventListener('DOMContentLoaded', async function() {
             initializeGuideSidebars(sidebarConfig);
         }
 
+        // Restore scroll position if returning from an AI section quiz on
+        // this same guide. Defer to next frame so layout settles first.
+        try {
+            var savedScrollRaw = sessionStorage.getItem('guideScrollRestore');
+            if (savedScrollRaw) {
+                var savedScroll = JSON.parse(savedScrollRaw);
+                var currentGuideId = document.body.dataset.productId;
+                var fresh = (Date.now() - (savedScroll.ts || 0)) < 30 * 60 * 1000;
+                if (savedScroll.guideId === currentGuideId && fresh && typeof savedScroll.scrollY === 'number') {
+                    requestAnimationFrame(function () {
+                        window.scrollTo(0, savedScroll.scrollY);
+                    });
+                }
+                sessionStorage.removeItem('guideScrollRestore');
+            }
+        } catch (e) { /* ignore storage errors */ }
+
         // Lazy-load AI section quiz enhancement (only after access verified)
         if (!window.initializeAISectionQuiz) {
             var aiScript = document.createElement('script');

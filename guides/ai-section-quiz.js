@@ -204,11 +204,19 @@
                 categoryColor: '#8b5cf6',
                 estimatedMinutes: Math.max(3, Math.round(questions.length * 1.5)),
                 isAIGenerated: true,
-                sectionTitle: sectionTitle
+                sectionTitle: sectionTitle,
+                backUrl: '../' + encodeURIComponent(guideId),
+                backLabel: 'Back to Guide'
             };
             try {
                 sessionStorage.setItem('aiQuizData', JSON.stringify(payload));
                 sessionStorage.setItem('aiQuizRound', '0');
+                sessionStorage.setItem('guideScrollRestore', JSON.stringify({
+                    guideId: guideId,
+                    scrollY: window.scrollY || window.pageYOffset || 0,
+                    sectionId: sectionId,
+                    ts: Date.now()
+                }));
             } catch (e) {
                 showToast('Could not start quiz (storage full).', 'error');
                 pillEl.disabled = false;

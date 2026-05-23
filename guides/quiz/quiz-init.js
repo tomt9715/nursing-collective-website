@@ -214,8 +214,8 @@
                 category: aiData.category || 'AI Generated',
                 categoryColor: aiData.categoryColor || '#3b82f6',
                 estimatedMinutes: aiData.estimatedMinutes || Math.max(5, Math.round(perRound * 1.5)),
-                backUrl: '../../ai-tools.html',
-                backLabel: 'Back to AI Tools',
+                backUrl: aiData.backUrl || '../../ai-tools.html',
+                backLabel: aiData.backLabel || 'Back to AI Tools',
                 isAIGenerated: true,
                 sectionTitle: aiData.sectionTitle || null,
                 aiPoolInfo: {

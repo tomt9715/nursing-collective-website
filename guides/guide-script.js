@@ -462,6 +462,20 @@ document.addEventListener('DOMContentLoaded', async function() {
             initializeGuideSidebars(sidebarConfig);
         }
 
+        // Lazy-load AI section quiz enhancement (only after access verified)
+        if (!window.initializeAISectionQuiz) {
+            var aiScript = document.createElement('script');
+            aiScript.src = 'ai-section-quiz.js';
+            aiScript.onload = function () {
+                if (typeof window.initializeAISectionQuiz === 'function') {
+                    window.initializeAISectionQuiz(typeof sidebarConfig !== 'undefined' ? sidebarConfig : null);
+                }
+            };
+            document.body.appendChild(aiScript);
+        } else {
+            window.initializeAISectionQuiz(typeof sidebarConfig !== 'undefined' ? sidebarConfig : null);
+        }
+
         // Check for auto-download parameter (from dashboard PDF button)
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.get('print') === 'true' || urlParams.get('download') === 'true') {

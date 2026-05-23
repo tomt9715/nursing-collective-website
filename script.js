@@ -421,6 +421,16 @@ function updateNavAuthState() {
                 }
             });
         }
+
+        // Route "Resources" nav/footer links to the signed-in catalog so
+        // logged-in users don't bounce through the marketing page.
+        // Matches both relative and absolute hrefs to resources.html.
+        document.querySelectorAll('a[href="resources.html"], a[href="/resources.html"]').forEach(function (link) {
+            // Skip explicit "view marketing version" links
+            if (link.dataset.keepMarketing === 'true') return;
+            var href = link.getAttribute('href');
+            link.setAttribute('href', href.replace('resources.html', 'my-resources.html'));
+        });
     } else {
         // Ensure dashboard link hidden, show guest content in dropdown
         if (navDashboardLink) navDashboardLink.classList.add('hidden');

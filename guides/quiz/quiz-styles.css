@@ -3,66 +3,67 @@
    The Nursing Collective — Interactive Quiz Engine
    ============================================ */
 
-/* --- CSS Variables (mirrors main.css design system) --- */
+/* --- CSS Variables — TNC navy/teal workspace (aligned with dashboard) --- */
 :root {
-    --quiz-primary: #2E86AB;
-    --quiz-primary-dark: #236b8a;
-    --quiz-secondary: #A23B72;
-    --quiz-accent: #f59e0b;
-    --quiz-text-primary: #1f2937;
-    --quiz-text-secondary: #4b5563;
-    --quiz-text-light: #9ca3af;
-    --quiz-bg: #f3f4f6;
-    --quiz-bg-white: #ffffff;
-    --quiz-card-bg: #ffffff;
-    --quiz-border: #e5e7eb;
-    --quiz-border-light: #f3f4f6;
-    --quiz-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --quiz-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-    --quiz-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-    --quiz-correct: #059669;
-    --quiz-correct-bg: #ecfdf5;
-    --quiz-correct-border: #a7f3d0;
-    --quiz-incorrect: #ef4444;
-    --quiz-incorrect-bg: #fef2f2;
-    --quiz-incorrect-border: #fecaca;
-    --quiz-missed-bg: #fffbeb;
-    --quiz-missed-border: #fde68a;
-    --quiz-partial: #f59e0b;
-    --quiz-partial-bg: #fffbeb;
-    --quiz-partial-border: #fde68a;
-    --quiz-type-single: #3b82f6;
-    --quiz-type-priority: #ec4899;
-    --quiz-type-ordering: #6366f1;
-    --quiz-type-matrix: #14b8a6;
-    --quiz-radius: 12px;
+    /* Brand */
+    --quiz-primary: #0fbcad;          /* teal */
+    --quiz-primary-dark: #0a9086;     /* teal-dim */
+    --quiz-secondary: #a78bfa;        /* purple — used sparingly */
+    --quiz-accent: #f4a535;           /* amber */
+
+    /* Surfaces */
+    --quiz-bg: #0d1b2a;               /* navy — page background */
+    --quiz-bg-white: #162032;         /* navy-2 — secondary surface */
+    --quiz-card-bg: #1a2940;          /* card */
+    --quiz-card-elev: #1e2d3e;        /* navy-3 — elevated/hovered */
+
+    /* Text */
+    --quiz-text-primary: #e8edf2;
+    --quiz-text-secondary: #b6c2d1;
+    --quiz-text-light: #8a9bb0;
+    --quiz-text-dimmer: #5f7085;
+
+    /* Borders */
+    --quiz-border: rgba(255, 255, 255, 0.07);
+    --quiz-border-mid: rgba(255, 255, 255, 0.12);
+    --quiz-border-light: rgba(255, 255, 255, 0.04);
+
+    /* Shadows — tuned for dark surfaces */
+    --quiz-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+    --quiz-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --quiz-shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.45);
+
+    /* Semantic */
+    --quiz-correct: #3dbd7a;
+    --quiz-correct-bg: rgba(61, 189, 122, 0.10);
+    --quiz-correct-border: rgba(61, 189, 122, 0.35);
+    --quiz-incorrect: #e05252;
+    --quiz-incorrect-bg: rgba(224, 82, 82, 0.10);
+    --quiz-incorrect-border: rgba(224, 82, 82, 0.35);
+    --quiz-missed-bg: rgba(244, 165, 53, 0.10);
+    --quiz-missed-border: rgba(244, 165, 53, 0.35);
+    --quiz-partial: #f4a535;
+    --quiz-partial-bg: rgba(244, 165, 53, 0.10);
+    --quiz-partial-border: rgba(244, 165, 53, 0.35);
+
+    /* Question type accents — tuned for dark surfaces */
+    --quiz-type-single: #5f9eff;
+    --quiz-type-priority: #ec5fa3;
+    --quiz-type-ordering: #a78bfa;
+    --quiz-type-matrix: #0fbcad;
+
+    /* Geometry */
+    --quiz-radius: 14px;
     --quiz-radius-sm: 8px;
-    --quiz-radius-lg: 16px;
-    --quiz-transition: 0.25s ease;
+    --quiz-radius-lg: 18px;
+    --quiz-transition: 0.2s ease;
+
+    /* Category-color accent — overridden inline per-guide by the engine */
+    --quiz-category: var(--quiz-primary);
 }
 
-/* Dark mode (dormant — guide pages force light mode) */
-[data-theme="dark"] {
-    --quiz-text-primary: #f9fafb;
-    --quiz-text-secondary: #d1d5db;
-    --quiz-text-light: #6b7280;
-    --quiz-bg: #111827;
-    --quiz-bg-white: #1f2937;
-    --quiz-card-bg: #1f2937;
-    --quiz-border: #374151;
-    --quiz-border-light: #1f2937;
-    --quiz-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-    --quiz-shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.3);
-    --quiz-shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
-    --quiz-correct-bg: #064e3b;
-    --quiz-correct-border: #065f46;
-    --quiz-incorrect-bg: #7f1d1d;
-    --quiz-incorrect-border: #991b1b;
-    --quiz-missed-bg: #78350f;
-    --quiz-missed-border: #92400e;
-    --quiz-partial-bg: #78350f;
-    --quiz-partial-border: #92400e;
-}
+/* Legacy theme attribute kept as a no-op so any stray toggles don't break layout. */
+[data-theme="dark"] { /* tokens are already dark — nothing to override */ }
 
 /* --- Reset & Base --- */
 *, *::before, *::after {
@@ -86,6 +87,26 @@ body {
     padding: 24px 16px 80px;
     padding-top: calc(40px + env(safe-area-inset-top, 0px));
     min-height: 100vh;
+    position: relative;
+}
+
+/* Per-guide identity accent — thin gradient bar across the top of the
+   container that adopts the guide's category color. Subtle, but enough
+   to keep heart-failure quizzes visually distinct from COPD or diabetes. */
+.quiz-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        var(--quiz-category, var(--quiz-primary)) 18%,
+        var(--quiz-category, var(--quiz-primary)) 82%,
+        transparent 100%);
+    opacity: 0.85;
+    pointer-events: none;
 }
 
 /* --- Loading State --- */
@@ -307,7 +328,7 @@ body {
     align-items: center;
     gap: 16px;
     padding: 20px;
-    border: 2px solid var(--quiz-border);
+    border: 1px solid var(--quiz-border);
     border-radius: var(--quiz-radius);
     background: var(--quiz-card-bg);
     cursor: pointer;
@@ -322,7 +343,7 @@ body {
 
 .quiz-mode-btn:hover {
     border-color: var(--quiz-primary);
-    box-shadow: var(--quiz-shadow-md);
+    background: var(--quiz-card-elev);
     transform: translateY(-1px);
 }
 
@@ -563,8 +584,8 @@ body {
     font-size: 0.75rem;
     font-weight: 600;
     color: var(--quiz-primary);
-    background: rgba(46, 134, 171, 0.08);
-    border: 1px solid rgba(46, 134, 171, 0.15);
+    background: rgba(15, 188, 173, 0.08);
+    border: 1px solid rgba(15, 188, 173, 0.15);
     margin-bottom: 14px;
     letter-spacing: 0.01em;
 }
@@ -617,7 +638,7 @@ body {
 }
 .quiz-progress-dot--current {
     background: var(--quiz-primary);
-    box-shadow: 0 0 6px rgba(46, 134, 171, 0.5);
+    box-shadow: 0 0 6px rgba(15, 188, 173, 0.5);
 }
 .quiz-progress-dot--answered {
     background: var(--quiz-correct);
@@ -673,7 +694,7 @@ body {
 
 .quiz-option:hover {
     border-color: var(--quiz-primary);
-    background: rgba(46, 134, 171, 0.04);
+    background: rgba(15, 188, 173, 0.04);
     transform: translateX(3px);
     box-shadow: var(--quiz-shadow-sm);
 }
@@ -685,7 +706,7 @@ body {
 
 .quiz-option--selected {
     border-color: var(--quiz-primary);
-    background: rgba(46, 134, 171, 0.07);
+    background: rgba(15, 188, 173, 0.07);
     box-shadow: 0 0 0 1px var(--quiz-primary), var(--quiz-shadow-sm);
     transform: translateX(3px);
 }
@@ -878,42 +899,45 @@ body {
 }
 
 .quiz-btn--primary {
-    background: linear-gradient(135deg, var(--quiz-primary), var(--quiz-primary-dark));
-    color: #fff;
-    box-shadow: 0 2px 8px rgba(46, 134, 171, 0.3);
+    background: var(--quiz-primary);
+    color: var(--quiz-bg);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .quiz-btn--primary:hover {
+    background: var(--quiz-primary-dark);
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(46, 134, 171, 0.4);
+    box-shadow: 0 4px 12px rgba(15, 188, 173, 0.25);
 }
 
 .quiz-btn--primary:disabled {
-    opacity: 0.4;
+    opacity: 0.35;
     cursor: not-allowed;
     transform: none;
     box-shadow: none;
 }
 
 .quiz-btn--secondary {
-    background: var(--quiz-bg-white);
-    color: var(--quiz-text-primary);
-    border: 2px solid var(--quiz-border);
+    background: transparent;
+    color: var(--quiz-text-secondary);
+    border: 1px solid var(--quiz-border-mid);
 }
 
 .quiz-btn--secondary:hover {
+    background: var(--quiz-card-elev);
     border-color: var(--quiz-primary);
     color: var(--quiz-primary);
 }
 
 .quiz-btn--success {
-    background: linear-gradient(135deg, #059669, #10b981);
+    background: var(--quiz-correct);
     color: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .quiz-btn--success:hover {
     transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+    box-shadow: 0 4px 12px rgba(61, 189, 122, 0.3);
 }
 
 /* ============================================
@@ -1035,17 +1059,17 @@ body {
     padding: 10px 18px;
     margin-top: 14px;
     border-radius: var(--quiz-radius-sm);
-    background: rgba(46, 134, 171, 0.08);
+    background: rgba(15, 188, 173, 0.08);
     color: var(--quiz-primary);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
     transition: all var(--quiz-transition);
-    border: 1px solid rgba(46, 134, 171, 0.2);
+    border: 1px solid rgba(15, 188, 173, 0.2);
 }
 
 .quiz-feedback-review:hover {
-    background: rgba(46, 134, 171, 0.14);
+    background: rgba(15, 188, 173, 0.14);
 }
 
 /* ============================================
@@ -2306,12 +2330,12 @@ body {
     width: 48px;
     height: 48px;
     min-width: 48px;
-    background: linear-gradient(135deg, var(--quiz-primary), #1d6d96);
+    background: linear-gradient(135deg, var(--quiz-primary), var(--quiz-primary-dark));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #fff;
+    color: var(--quiz-bg);
     font-size: 1.2rem;
 }
 
@@ -2821,7 +2845,7 @@ body {
 }
 
 .quiz-matrix-cell:hover {
-    background: rgba(46, 134, 171, 0.06);
+    background: rgba(15, 188, 173, 0.06);
 }
 
 .quiz-matrix-cell input[type="radio"] {
@@ -3442,7 +3466,7 @@ body {
 .quiz-nav-dot--visited {
     border-color: var(--quiz-primary);
     color: var(--quiz-primary);
-    background: rgba(46, 134, 171, 0.08);
+    background: rgba(15, 188, 173, 0.08);
 }
 
 /* Skip button (Exam Mode) */
@@ -3466,7 +3490,7 @@ body {
 .quiz-skip-btn:hover {
     border-color: var(--quiz-primary);
     color: var(--quiz-primary);
-    background: rgba(46, 134, 171, 0.05);
+    background: rgba(15, 188, 173, 0.05);
 }
 
 @media (max-width: 480px) {

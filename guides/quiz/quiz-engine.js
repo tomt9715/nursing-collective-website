@@ -312,6 +312,42 @@ class QuizEngine {
         this._renderQuestion();
     }
 
+    // Launches a focused practice round pulling ALL questions from the user's
+    // weak sections (including ones not seen this session) — broader than
+    // reviewMissed(), which only re-shows the specific questions just missed.
+    drillWeakSections() {
+        if (this.isAIGenerated) return;
+        const weakSections = this._getWeakAreas();
+        if (!weakSections.length) return;
+        const weakIds = new Set(weakSections.map(s => s.id));
+        const drillQs = this.questions.filter(q => q.guideSectionId && weakIds.has(q.guideSectionId));
+        if (!drillQs.length) return;
+
+        this.activeQuestions = drillQs;
+        this.isReviewMode = false;
+        this.phase = 'quiz';
+        this.currentIndex = 0;
+        this.answers.clear();
+        this.results.clear();
+        this.submitted.clear();
+        this.flaggedQuestions.clear();
+        this._reviewedFlags = false;
+        this._shuffleAllOptions();
+
+        this.questionTimes.clear();
+        this._questionStartTime = null;
+        this._questionElapsedSoFar.clear();
+
+        this.sessionStartTime = Date.now();
+        this.sessionElapsed = 0;
+        this.countdownSeconds = (this.mode === 'exam') ? this.activeQuestions.length * 90 : 0;
+        this._startTimer();
+        this._clearSavedState();
+
+        window.addEventListener('beforeunload', this._boundBeforeUnload);
+        this._renderQuestion();
+    }
+
     goAgain() {
         if (!this.aiPoolInfo) return;
         // Advance to the next round and reload the quiz page
@@ -563,6 +599,7 @@ class QuizEngine {
                 case 'next': this.nextQuestion(); break;
                 case 'retake': this.retakeQuiz(); break;
                 case 'review-missed': this.reviewMissed(); break;
+                case 'drill-weak': this.drillWeakSections(); break;
                 case 'go-again': this.goAgain(); break;
                 case 'new-quiz': this._cleanupAiPool(); window.location.href = '../../dashboard.html'; break;
                 case 'back-to-guide': this._cleanupAiPool(); window.location.href = this.backUrl; break;
@@ -2068,9 +2105,17 @@ class QuizEngine {
         if (missedCount > 0 && !this.isAIGenerated) {
             const weakSections = this._getWeakAreas();
             if (weakSections.length > 0) {
+                const weakIds = new Set(weakSections.map(s => s.id));
+                const drillCount = this.questions.filter(q => q.guideSectionId && weakIds.has(q.guideSectionId)).length;
+                const drillBtn = drillCount > 0 ? `
+                    <button class="quiz-btn quiz-btn--primary quiz-weak-drill-btn" data-quiz-action="drill-weak">
+                        <i class="fas fa-bullseye"></i> Drill these sections (${drillCount} ${drillCount === 1 ? 'question' : 'questions'})
+                    </button>
+                ` : '';
                 html += `
                     <div class="quiz-weak-areas">
                         <div class="quiz-weak-areas-title"><i class="fas fa-exclamation-triangle"></i> Areas to Review</div>
+                        ${drillBtn}
                         <ul class="quiz-weak-area-list">
                             ${weakSections.map(s => `
                                 <li class="quiz-weak-area-item">

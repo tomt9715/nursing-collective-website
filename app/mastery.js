@@ -1,12 +1,29 @@
 /**
  * Mastery Tracking System
- * The Nursing Collective — Quiz Bank
+ * The Nursing Collective — shared by per-guide quizzes AND Quiz Bank
  *
- * Tracks per-topic mastery via localStorage.
- * Points are earned by completing question SETS (10 or 20).
- * Points only go UP — never lose previously earned points.
+ * ┌──────────────────────────────────────────────────────────────────┐
+ * │  CANONICAL COPY. KEEP IN SYNC.                                   │
+ * │                                                                  │
+ * │  This exact file ships in two repos:                             │
+ * │    - nursing-collective-website/app/mastery.js  (per-guide quiz) │
+ * │    - nursing-collective-learn/mastery.js        (Quiz Bank)      │
+ * │                                                                  │
+ * │  Any change must be applied in both places in the same PR or     │
+ * │  the two products will silently diverge. They share localStorage │
+ * │  key `nursingCollective_mastery` and the same backend table      │
+ * │  (POST /api/quiz/progress), so drift causes data corruption,     │
+ * │  not just feature drift.                                         │
+ * └──────────────────────────────────────────────────────────────────┘
  *
- * Structured for future migration to backend storage.
+ * Tracks per-topic mastery via localStorage. Points are earned by
+ * completing question SETS (10 or 20). Points only go UP — never
+ * lose previously earned points.
+ *
+ * recordSetResult(topicId, results, mode) — mode='practice' awards
+ * fewer points at a stricter threshold (80% vs 70%), reflecting that
+ * practice mode shows rationales between questions. Omitting mode
+ * defaults to exam scoring.
  */
 
 var MasteryTracker = (function () {
@@ -170,6 +187,19 @@ var MasteryTracker = (function () {
         return 0;
     }
 
+    // Practice-mode scoring — roughly half the exam-mode rate, with a
+    // stricter threshold (80% vs 70%). Practice surfaces the rationale
+    // after each question so users have more help available; the higher
+    // floor for earning points reflects that. A determined practice-only
+    // user can still cap any topic, it just takes ~2x as many sessions.
+    function _calculatePracticeSetPoints(correctCount, totalCount) {
+        if (totalCount === 0) return 0;
+        var pct = (correctCount / totalCount) * 100;
+        if (pct >= 90) return 2;
+        if (pct >= 80) return 1;
+        return 0;
+    }
+
     // ── Streak ─────────────────────────────────────────────
 
     function _todayString() {
@@ -293,7 +323,7 @@ var MasteryTracker = (function () {
      * Record a completed set. Returns result object:
      * { pointsEarned, newPoints, oldLevel, newLevel, leveledUp, levelName, streak }
      */
-    function recordSetResult(topicId, results) {
+    function recordSetResult(topicId, results, mode) {
         var all = _loadAll();
         if (!all[topicId]) {
             all[topicId] = {
@@ -339,8 +369,11 @@ var MasteryTracker = (function () {
             }
         });
 
-        // Calculate points earned from this set
-        var pointsEarned = _calculateSetPoints(correctCount, totalCount);
+        // Calculate points earned from this set. Practice mode uses a
+        // reduced scale; exam mode (or unspecified) uses the full one.
+        var pointsEarned = (mode === 'practice')
+            ? _calculatePracticeSetPoints(correctCount, totalCount)
+            : _calculateSetPoints(correctCount, totalCount);
 
         // Compute chapter state BEFORE earning points
         var chapter = _getChapterForTopic(topicId);
@@ -528,6 +561,14 @@ var MasteryTracker = (function () {
         weakestChapters.sort(function (a, b) { return a.points - b.points; });
         strongestChapters.sort(function (a, b) { return b.points - a.points; });
 
+        // Filtered weak list — exclude untouched chapters (points = 0)
+        // and already-strong chapters (level >= 5). The Quiz Bank's
+        // "Recommended focus" card needs this; untouched chapters
+        // appearing as "weakest" was misleading.
+        var filteredWeak = weakestChapters.filter(function (c) {
+            return c.points > 0 && c.level < 5;
+        });
+
         var streakData = _loadStreak();
 
         return {
@@ -541,8 +582,30 @@ var MasteryTracker = (function () {
             streak: streakData.currentStreak,
             lastPracticedDate: streakData.lastPracticedDate,
             weakestChapters: weakestChapters.slice(0, 3),
+            allWeakChapters: filteredWeak,
             strongestChapters: strongestChapters.slice(0, 3)
         };
+    }
+
+    // Return {id, label} of the chapter whose topic was practiced most
+    // recently (by lastPracticed date). Returns null if no practice yet.
+    // Used by quiz-bank.js to seed the "Resume where you left off" UI.
+    function getLastPracticedChapter() {
+        if (!QUIZ_BANK_REGISTRY || !QUIZ_BANK_REGISTRY.chapters) return null;
+        var all = _loadAll();
+        var bestDate = null;
+        var bestChapter = null;
+        QUIZ_BANK_REGISTRY.chapters.forEach(function (ch) {
+            ch.topics.forEach(function (t) {
+                var topic = all[t.id];
+                if (!topic || !topic.lastPracticed) return;
+                if (!bestDate || topic.lastPracticed > bestDate) {
+                    bestDate = topic.lastPracticed;
+                    bestChapter = { id: ch.id, label: ch.label };
+                }
+            });
+        });
+        return bestChapter;
     }
 
     function getChaptersInProgress() {
@@ -562,10 +625,11 @@ var MasteryTracker = (function () {
     // ── Mastery Color ──────────────────────────────────────
 
     function getMasteryColor(level) {
-        if (level >= 9) return '#a855f7';  // Purple/gold
-        if (level >= 6) return '#059669';  // Green
-        if (level >= 3) return '#f59e0b';  // Yellow/amber
-        return '#ef4444';                   // Red/orange
+        // TNC brand palette (matches navy/teal design system).
+        if (level >= 9) return '#8b5cf6';  // Purple — mastery / elite
+        if (level >= 6) return '#3dbd7a';  // Green — proficient
+        if (level >= 3) return '#f4a535';  // Amber — developing
+        return '#e05252';                   // Red — needs work
     }
 
     function getMasteryColorClass(level) {
@@ -642,7 +706,6 @@ var MasteryTracker = (function () {
 
     var RETRY_QUEUE_KEY = 'nursingCollective_retryQueue';
     var BOOKMARKS_KEY = 'nursingCollective_bookmarks';
-    var CONFIDENCE_REASK_KEY = 'nursingCollective_confidenceReask';
     var SECTION_STATS_KEY = 'nursingCollective_sectionStats';
 
     function _isLoggedIn() {
@@ -803,34 +866,6 @@ var MasteryTracker = (function () {
             localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(mergedBM));
         } catch (e) {
             console.warn('[Mastery] Failed to merge bookmarks:', e);
-        }
-
-        // Merge confidence re-ask tracker (union of topics, union of question IDs)
-        try {
-            var localConf = JSON.parse(localStorage.getItem(CONFIDENCE_REASK_KEY) || '{}');
-            var remoteConf = serverData.confidence_reask || {};
-            var mergedConf = {};
-            var topic;
-            // Collect all topics from both
-            var allConfTopics = {};
-            for (topic in localConf) { if (localConf.hasOwnProperty(topic)) allConfTopics[topic] = true; }
-            for (topic in remoteConf) { if (remoteConf.hasOwnProperty(topic)) allConfTopics[topic] = true; }
-            for (topic in allConfTopics) {
-                if (!allConfTopics.hasOwnProperty(topic)) continue;
-                var localQ = localConf[topic] || {};
-                var remoteQ = remoteConf[topic] || {};
-                var mergedQ = {};
-                var qKey;
-                // Union: if either side has it, keep it (local wins on conflict)
-                for (qKey in remoteQ) { if (remoteQ.hasOwnProperty(qKey)) mergedQ[qKey] = remoteQ[qKey]; }
-                for (qKey in localQ) { if (localQ.hasOwnProperty(qKey)) mergedQ[qKey] = localQ[qKey]; }
-                if (Object.keys(mergedQ).length > 0) {
-                    mergedConf[topic] = mergedQ;
-                }
-            }
-            localStorage.setItem(CONFIDENCE_REASK_KEY, JSON.stringify(mergedConf));
-        } catch (e) {
-            console.warn('[Mastery] Failed to merge confidence reask:', e);
         }
 
         // Merge section stats (union topics/sections, concat+dedupe recentAttempts by timestamp, cap at 30)
@@ -1002,13 +1037,6 @@ var MasteryTracker = (function () {
             bookmarks = [];
         }
 
-        var confidenceReask;
-        try {
-            confidenceReask = JSON.parse(localStorage.getItem(CONFIDENCE_REASK_KEY) || '{}');
-        } catch (e) {
-            confidenceReask = {};
-        }
-
         var sectionStats;
         try {
             sectionStats = JSON.parse(localStorage.getItem(SECTION_STATS_KEY) || '{}');
@@ -1021,7 +1049,6 @@ var MasteryTracker = (function () {
             streak_data: _loadStreak(),
             retry_queue: retryQueue,
             bookmarks: bookmarks,
-            confidence_reask: confidenceReask,
             section_stats: sectionStats
         };
     }
@@ -1182,6 +1209,7 @@ var MasteryTracker = (function () {
         getChapterMastery: getChapterMastery,
         getOverallStats: getOverallStats,
         getChaptersInProgress: getChaptersInProgress,
+        getLastPracticedChapter: getLastPracticedChapter,
         getMasteryColor: getMasteryColor,
         getMasteryColorClass: getMasteryColorClass,
         getTopicLabel: getTopicLabel,

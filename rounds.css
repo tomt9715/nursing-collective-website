@@ -542,12 +542,13 @@ img { max-width: 100%; display: block; }
 
 .play-patient-rail {
     background: var(--card);
-    border: 1px solid var(--border);
+    border: 1px solid var(--border-mid);
     border-radius: var(--radius);
     padding: 18px 18px 20px;
+    box-shadow: 0 4px 18px rgba(0,0,0,0.22);
     position: sticky;
-    top: 70px;  /* header height + a little gap */
-    max-height: calc(100vh - 90px);
+    top: 80px;  /* navbar (60px) + gap */
+    max-height: calc(100vh - 100px);
     overflow-y: auto;
     scrollbar-width: thin;
     scrollbar-color: var(--navy-3) transparent;
@@ -693,10 +694,47 @@ img { max-width: 100%; display: block; }
     font-family: 'DM Mono', monospace;
 }
 
-/* ── Mobile-only collapsible toggle ────────────────────── */
-/* Default (desktop): toggle hidden, expandable section always visible */
-.rail-toggle { display: none; }
-.rail-expandable { display: block; }
+/* ── Collapsible "Show full chart" toggle (now default everywhere) ── */
+/* Header + CC + vitals stay visible; PMHx / meds / OB / family /
+   social are tucked behind the toggle so the rail isn't a wall of
+   info on first glance. */
+.rail-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 14px;
+    background: var(--navy-3);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text-dim);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.rail-toggle:hover { background: var(--card-hi); color: var(--text); border-color: var(--teal); }
+.rail-toggle:hover .rail-toggle-chevron { color: var(--teal); }
+.rail-toggle-chevron {
+    color: var(--text-dimmer);
+    font-size: 0.78rem;
+    transition: transform 0.2s;
+}
+.rail-toggle[aria-expanded="true"] .rail-toggle-chevron { transform: rotate(180deg); }
+
+.rail-expandable {
+    display: none;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+.rail-expandable.is-expanded {
+    display: block;
+    animation: fadeInUp 0.25s ease;
+}
 
 
 /* ── Chat workspace ────────────────────────────────────────── */

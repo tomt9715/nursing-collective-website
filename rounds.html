@@ -25,7 +25,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
-    <link rel="stylesheet" href="rounds.css?v=intro3">
+    <link rel="stylesheet" href="rounds.css?v=cleanup">
     <link rel="stylesheet" href="css/sidebar-widgets.css?v=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -200,20 +200,6 @@
                                 </button>
                             </header>
 
-                            <!-- First-time play tip — toggled by JS on initial scenario -->
-                            <div class="play-tip-banner" id="play-tip-banner" hidden>
-                                <div class="play-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                                <div class="play-tip-body">
-                                    <strong>First scenario? Here's the gist:</strong>
-                                    Pick questions from the tabs below. You have a limited budget — choose what would
-                                    actually narrow the diagnosis. After 2+ questions, hit
-                                    <em>Commit your assessment</em> to lock in your call.
-                                </div>
-                                <button type="button" class="play-tip-close" id="play-tip-close" aria-label="Dismiss tip">
-                                    <i class="fas fa-xmark"></i>
-                                </button>
-                            </div>
-
                             <div class="chat-bubbles" id="play-log">
                                 <p class="chat-empty">
                                     <i class="fas fa-arrow-down"></i>
@@ -231,6 +217,22 @@
                                 <div class="chat-input-top">
                                     <h3><i class="fas fa-question-circle"></i> <span class="dock-title-full">What do you ask next?</span><span class="dock-title-min">Tap to ask</span></h3>
                                     <span class="play-q-counter" id="play-q-counter">—</span>
+                                </div>
+
+                                <!-- First-time play tip — toggled by JS on initial scenario.
+                                     Lives right above the question picker so it sits next to
+                                     the action it's explaining. -->
+                                <div class="play-tip-banner" id="play-tip-banner" hidden>
+                                    <div class="play-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                                    <div class="play-tip-body">
+                                        <strong>First scenario? Here's the gist:</strong>
+                                        Pick questions from the tabs. You have a limited budget — choose what would
+                                        actually narrow the diagnosis. After 2+ questions, hit
+                                        <em>Commit your assessment</em> to lock in your call.
+                                    </div>
+                                    <button type="button" class="play-tip-close" id="play-tip-close" aria-label="Dismiss tip">
+                                        <i class="fas fa-xmark"></i>
+                                    </button>
                                 </div>
 
                                 <div class="play-q-tabs" id="play-q-tabs">

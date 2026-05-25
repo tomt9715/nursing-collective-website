@@ -835,22 +835,27 @@ img { max-width: 100%; display: block; }
 .bubble-row.from-patient { align-items: flex-start; }
 
 .bubble-author {
-    font-size: 0.7rem;
-    color: var(--text-dimmer);
+    font-size: 0.72rem;
+    color: var(--text-dim);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-weight: 600;
     padding: 0 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }
+.bubble-author i { color: var(--text-dimmer); font-size: 0.78rem; }
+.bubble-row.from-nurse .bubble-author i { color: var(--teal); }
 
 .bubble {
-    max-width: 78%;
-    padding: 10px 14px;
+    max-width: 70%;
+    padding: 11px 15px;
     border-radius: 14px;
     font-size: 0.95rem;
     line-height: 1.5;
     word-wrap: break-word;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.18);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.22);
 }
 
 .bubble-nurse {
@@ -863,18 +868,40 @@ img { max-width: 100%; display: block; }
 .bubble-patient {
     background: var(--navy-3);
     color: var(--text);
+    border: 1px solid var(--border-mid);
+    border-left: 3px solid rgba(15,188,173,0.4);
     border-bottom-left-radius: 5px;
 }
+
+/* Empty-state nudge after the patient's CC when no questions
+   asked yet — makes it clear the conversation continues below. */
+.chat-nudge {
+    margin: 4px auto 0;
+    padding: 10px 14px;
+    color: var(--text-dim);
+    font-size: 0.86rem;
+    text-align: center;
+    border: 1px dashed var(--border-mid);
+    border-radius: 10px;
+    background: rgba(15,188,173,0.04);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    align-self: center;
+}
+.chat-nudge i { color: var(--teal); }
 
 
 /* ── Input dock (under chat) ──────────────────────────────── */
 
 .chat-input-area {
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--border-mid);
     background: var(--navy-2);
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
+    box-shadow: 0 -6px 14px rgba(0,0,0,0.18);
 }
 
 /* The minimize chevron lives at the top of the dock. Hidden by default

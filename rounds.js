@@ -744,7 +744,7 @@
         var ccHtml =
             '<div class="chat-pair">' +
                 '<div class="bubble-row from-patient">' +
-                    '<div class="bubble-author">Patient</div>' +
+                    '<div class="bubble-author"><i class="fas fa-user"></i> Patient</div>' +
                     '<div class="bubble bubble-patient">' + _escape(p.cc) + '</div>' +
                 '</div>' +
             '</div>';
@@ -761,15 +761,26 @@
             pair.className = 'chat-pair';
             pair.innerHTML =
                 '<div class="bubble-row from-nurse">' +
-                    '<div class="bubble-author">' + _escape(nurseLabel) + '</div>' +
+                    '<div class="bubble-author"><i class="fas fa-user-nurse"></i> ' + _escape(nurseLabel) + '</div>' +
                     '<div class="bubble bubble-nurse">' + _escape(q.text) + '</div>' +
                 '</div>' +
                 '<div class="bubble-row from-patient">' +
-                    '<div class="bubble-author">Patient</div>' +
+                    '<div class="bubble-author"><i class="fas fa-user"></i> Patient</div>' +
                     '<div class="bubble bubble-patient">' + _escape(q.response) + '</div>' +
                 '</div>';
             log.appendChild(pair);
         });
+
+        // Empty-state nudge while no questions have been asked yet — makes
+        // it clear the conversation continues below, not that the patient
+        // is done talking.
+        if (!state.asked.length) {
+            var nudge = document.createElement('div');
+            nudge.className = 'chat-nudge';
+            nudge.innerHTML = '<i class="fas fa-comment-dots"></i> ' +
+                'Pick a question below — replies appear here.';
+            log.appendChild(nudge);
+        }
 
         log.scrollTop = log.scrollHeight;
     }

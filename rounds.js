@@ -1175,6 +1175,51 @@
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') closeAllSheets();
         });
+
+        // Mobile sidebar drawer toggle — mirrors dashboard-script.js.
+        // Clone the navbar's mobile-menu-btn to detach script.js's nav-links
+        // toggle listener; rebind it here to open/close the dash-sidebar
+        // drawer instead. Hidden behind a media query so desktop is unaffected.
+        var sidebar = $('dash-sidebar');
+        var sidebarOverlay = $('dash-sidebar-overlay');
+        var menuBtn = $('mobile-menu-btn');
+        if (sidebar && menuBtn) {
+            var freshBtn = menuBtn.cloneNode(true);
+            menuBtn.parentNode.replaceChild(freshBtn, menuBtn);
+
+            function openDrawer() {
+                sidebar.classList.add('dash-sidebar--open');
+                if (sidebarOverlay) sidebarOverlay.classList.add('dash-sidebar-overlay--visible');
+                freshBtn.setAttribute('aria-expanded', 'true');
+                var icon = freshBtn.querySelector('i');
+                if (icon) { icon.classList.remove('fa-bars'); icon.classList.add('fa-times'); }
+                document.body.style.overflow = 'hidden';
+            }
+            function closeDrawer() {
+                sidebar.classList.remove('dash-sidebar--open');
+                if (sidebarOverlay) sidebarOverlay.classList.remove('dash-sidebar-overlay--visible');
+                freshBtn.setAttribute('aria-expanded', 'false');
+                var icon = freshBtn.querySelector('i');
+                if (icon) { icon.classList.remove('fa-times'); icon.classList.add('fa-bars'); }
+                document.body.style.overflow = '';
+            }
+            freshBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                if (sidebar.classList.contains('dash-sidebar--open')) closeDrawer();
+                else openDrawer();
+            });
+            if (sidebarOverlay) sidebarOverlay.addEventListener('click', closeDrawer);
+            sidebar.querySelectorAll('.dash-sidebar-item').forEach(function (link) {
+                link.addEventListener('click', closeDrawer);
+            });
+            document.addEventListener('keydown', function (e) {
+                if (e.key === 'Escape' && sidebar.classList.contains('dash-sidebar--open')) closeDrawer();
+            });
+        }
+
+        // Reveal the Rounds sidebar link on other pages — script.js already
+        // does this, but on this page we ALSO want the Quiz Bank link visible
+        // (script.js handles that too, just confirming it fires).
     }
 
     if (document.readyState === 'loading') {

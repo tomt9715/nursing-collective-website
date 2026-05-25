@@ -1056,38 +1056,102 @@ img { max-width: 100%; display: block; }
 
 .play-q-tabs {
     display: flex;
-    gap: 4px;
-    padding: 0 20px;
-    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 12px 20px 10px;
+    border-bottom: 1px solid var(--border-mid);
     overflow-x: auto;
     scrollbar-width: none;
 }
 .play-q-tabs::-webkit-scrollbar { display: none; }
 
+/* Pill-style tab — icon + label + count. Active state picks up the
+   category's color (amber / red / teal / purple / slate). */
 .play-q-tab {
-    padding: 6px 12px;
-    border-radius: 6px 6px 0 0;
-    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 7px 11px 7px 10px;
+    border-radius: 999px;
+    background: var(--navy-3);
     color: var(--text-dim);
+    font-family: 'Outfit', sans-serif;
     font-size: 0.82rem;
-    font-weight: 500;
-    border-bottom: 2px solid transparent;
-    transition: color 0.15s, border-color 0.15s, background 0.15s;
+    font-weight: 600;
+    border: 1px solid var(--border);
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
     white-space: nowrap;
-    text-transform: capitalize;
 }
-.play-q-tab:hover { color: var(--text); background: var(--navy-3); }
-.play-q-tab.active { color: var(--teal); border-bottom-color: var(--teal); }
-.play-q-tab .count { color: var(--text-dimmer); font-size: 0.76rem; margin-left: 4px; }
-.play-q-tab.active .count { color: var(--teal); }
+.play-q-tab i { font-size: 0.78rem; opacity: 0.7; }
+.play-q-tab .count {
+    font-size: 0.7rem;
+    color: var(--text-dimmer);
+    background: rgba(0,0,0,0.32);
+    padding: 1px 7px;
+    border-radius: 999px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+.play-q-tab:hover { color: var(--text); background: var(--card-hi); }
+.play-q-tab:hover i { opacity: 1; }
+.play-q-tab.active i { opacity: 1; }
+.play-q-tab.active .count { background: rgba(0,0,0,0.45); }
+
+/* Per-category active tints */
+.play-q-tab.hue-amber.active  { background: rgba(244,165,53,0.16); border-color: rgba(244,165,53,0.45); color: var(--amber); }
+.play-q-tab.hue-amber.active i, .play-q-tab.hue-amber.active .count { color: var(--amber); }
+.play-q-tab.hue-red.active    { background: rgba(224,82,82,0.16);  border-color: rgba(224,82,82,0.45);  color: var(--red); }
+.play-q-tab.hue-red.active i, .play-q-tab.hue-red.active .count    { color: var(--red); }
+.play-q-tab.hue-teal.active   { background: rgba(15,188,173,0.16); border-color: rgba(15,188,173,0.45); color: var(--teal); }
+.play-q-tab.hue-teal.active i, .play-q-tab.hue-teal.active .count  { color: var(--teal); }
+.play-q-tab.hue-purple.active { background: rgba(139,92,246,0.16); border-color: rgba(139,92,246,0.45); color: var(--purple); }
+.play-q-tab.hue-purple.active i, .play-q-tab.hue-purple.active .count { color: var(--purple); }
+.play-q-tab.hue-slate.active  { background: var(--navy-2); border-color: var(--border-mid); color: var(--text); }
+.play-q-tab.hue-slate.active i, .play-q-tab.hue-slate.active .count   { color: var(--text); }
+
+/* One-line context for the active category. Sits between the tabs
+   and the question grid. Color-tinted to match the tab. */
+.category-hint {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 9px 12px;
+    margin-bottom: 12px;
+    background: rgba(255,255,255,0.03);
+    border-left: 3px solid var(--border-mid);
+    border-radius: 6px;
+    color: var(--text-dim);
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+.category-hint i  { font-size: 0.85rem; margin-top: 2px; flex-shrink: 0; }
+.category-hint span { flex: 1; min-width: 0; }
+.category-hint.hue-amber  { border-left-color: var(--amber);  background: rgba(244,165,53,0.06); }
+.category-hint.hue-amber i  { color: var(--amber); }
+.category-hint.hue-red    { border-left-color: var(--red);    background: rgba(224,82,82,0.06); }
+.category-hint.hue-red i    { color: var(--red); }
+.category-hint.hue-teal   { border-left-color: var(--teal);   background: rgba(15,188,173,0.06); }
+.category-hint.hue-teal i   { color: var(--teal); }
+.category-hint.hue-purple { border-left-color: var(--purple); background: rgba(139,92,246,0.06); }
+.category-hint.hue-purple i { color: var(--purple); }
+.category-hint.hue-slate  { border-left-color: var(--text-dim); background: rgba(138,155,176,0.06); }
+.category-hint.hue-slate i  { color: var(--text-dim); }
+
+/* Question grid — 1 column by default, 2 columns on desktop where
+   we have horizontal room to spare. Cuts the scroll roughly in half. */
+.q-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 6px;
+}
+@media (min-width: 1080px) {
+    .q-grid { grid-template-columns: 1fr 1fr; }
+}
 
 .play-q-pool {
     padding: 12px 20px;
-    max-height: 220px;
+    max-height: 260px;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
     scrollbar-width: thin;
     scrollbar-color: var(--navy-3) transparent;
 }

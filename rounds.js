@@ -21,6 +21,26 @@
     var PLAY_TIPS_DISMISSED_KEY = 'roundsPlayTipsDismissed';
     var CATEGORY_ORDER = ['history', 'symptoms', 'exam', 'obstetric', 'peds', 'associated'];
 
+    // Per-category visual metadata for the pill-style tabs + the
+    // one-line hint that surfaces above the question pool.
+    var CATEGORY_META = {
+        history:    { icon: 'fa-clock-rotate-left', hue: 'amber',  label: 'History',
+                      hint: 'Onset, prior episodes, baseline state.' },
+        symptoms:   { icon: 'fa-heart-pulse',       hue: 'red',    label: 'Symptoms',
+                      hint: 'What the patient is feeling right now.' },
+        exam:       { icon: 'fa-stethoscope',       hue: 'teal',   label: 'Exam',
+                      hint: 'What you\'d find at the bedside on physical exam.' },
+        obstetric:  { icon: 'fa-baby',              hue: 'purple', label: 'Obstetric',
+                      hint: 'Pregnancy-specific — fetal movement, contractions, bleeding.' },
+        peds:       { icon: 'fa-child',             hue: 'purple', label: 'Peds',
+                      hint: 'Child-specific assessment, milestones, family report.' },
+        associated: { icon: 'fa-link',              hue: 'slate',  label: 'Associated',
+                      hint: 'Family history, medications, related systems.' }
+    };
+    function _catMeta(cat) {
+        return CATEGORY_META[cat] || { icon: 'fa-circle', hue: 'slate', label: cat, hint: '' };
+    }
+
     // ── State ──────────────────────────────────────────────
     var state = {
         scenario: null,            // full scenario object (with scenario_data merged in for game use)
@@ -614,10 +634,15 @@
             cats.forEach(function (cat) {
                 var qs = questionsByCategory(s, cat);
                 var remaining = qs.filter(function (q) { return state.asked.indexOf(q.id) === -1; }).length;
+                var meta = _catMeta(cat);
                 var btn = document.createElement('button');
                 btn.type = 'button';
-                btn.className = 'play-q-tab' + (cat === state.activeTab ? ' active' : '');
-                btn.innerHTML = _escape(cat) + ' <span class="count">' + remaining + '/' + qs.length + '</span>';
+                btn.className = 'play-q-tab hue-' + meta.hue +
+                    (cat === state.activeTab ? ' active' : '');
+                btn.innerHTML =
+                    '<i class="fas ' + meta.icon + '"></i>' +
+                    '<span class="tab-label">' + _escape(meta.label) + '</span>' +
+                    '<span class="count">' + remaining + '/' + qs.length + '</span>';
                 btn.addEventListener('click', function () {
                     state.activeTab = cat;
                     renderTabs();
@@ -632,6 +657,7 @@
         var budget = state.scenario.questionBudget || 999;
         var budgetSpent = state.asked.length >= budget;
         var qs = state.activeTab ? questionsByCategory(state.scenario, state.activeTab) : [];
+        var meta = state.activeTab ? _catMeta(state.activeTab) : null;
 
         POOL_CONTAINERS.forEach(function (id) {
             var container = $(id);
@@ -645,6 +671,19 @@
                 container.innerHTML = '<p class="play-q-empty">No questions in this category.</p>';
                 return;
             }
+
+            // One-line category hint above the questions
+            if (meta && meta.hint) {
+                var hint = document.createElement('div');
+                hint.className = 'category-hint hue-' + meta.hue;
+                hint.innerHTML = '<i class="fas ' + meta.icon + '"></i> ' +
+                    '<span>' + _escape(meta.hint) + '</span>';
+                container.appendChild(hint);
+            }
+
+            // Questions in a grid (CSS turns it 2-col on desktop, 1-col mobile)
+            var grid = document.createElement('div');
+            grid.className = 'q-grid';
             qs.forEach(function (q) {
                 var asked = state.asked.indexOf(q.id) !== -1;
                 var locked = !asked && budgetSpent;
@@ -656,8 +695,9 @@
                 if (!asked && !locked) {
                     btn.addEventListener('click', function () { askQuestion(q.id); });
                 }
-                container.appendChild(btn);
+                grid.appendChild(btn);
             });
+            container.appendChild(grid);
         });
     }
 

@@ -123,7 +123,7 @@
 
         if (!window.isAuthenticated || !window.isAuthenticated()) return Promise.resolve(null);
 
-        return window.apiCall('/api/user/profile').then(function (data) {
+        return window.apiCall('/user/profile').then(function (data) {
             var first = data && data.user && data.user.first_name;
             if (first && typeof first === 'string' && first.trim()) {
                 saveName(first.trim());

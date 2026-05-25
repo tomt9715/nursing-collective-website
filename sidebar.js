@@ -51,6 +51,9 @@
                     '<a href="ai-tools.html" class="dash-sidebar-item" id="sidebar-ai-tools" data-sidebar-page="ai-tools">' +
                         '<i class="fas fa-wand-magic-sparkles"></i> AI Tools' +
                     '</a>' +
+                    '<a href="rounds.html" class="dash-sidebar-item" id="sidebar-rounds" style="display:none;" data-sidebar-page="rounds">' +
+                        '<i class="fas fa-stethoscope"></i> Rounds' +
+                    '</a>' +
                 '</div>' +
                 '<div class="dash-sidebar-section">' +
                     '<a href="community.html" class="dash-sidebar-item" data-sidebar-page="community">' +
@@ -272,6 +275,8 @@
             if (user.is_premium) {
                 var quizLink = sidebar.querySelector('#sidebar-quiz-link');
                 if (quizLink) quizLink.style.display = '';
+                var roundsLink = sidebar.querySelector('#sidebar-rounds');
+                if (roundsLink) roundsLink.style.display = '';
             }
 
             if (user.is_admin) {

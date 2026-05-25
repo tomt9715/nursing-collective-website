@@ -228,6 +228,9 @@ async function loadUserProfile() {
             // Sync sidebar quiz link visibility
             const sidebarQuiz = document.getElementById('sidebar-quiz-link');
             if (sidebarQuiz) sidebarQuiz.style.display = '';
+            // Sync sidebar Rounds link visibility
+            const sidebarRounds = document.getElementById('sidebar-rounds');
+            if (sidebarRounds) sidebarRounds.style.display = '';
         }
 
         // Update subscription quick action for premium users

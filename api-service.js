@@ -244,7 +244,9 @@ const USER_SCOPED_STORAGE_KEYS = [
     'nursingCollective_sectionStats',
     'semesterSetupDraft',
     'gettingStartedDismissed',
-    'myGuidesSetupBannerDismissed'
+    'myGuidesSetupBannerDismissed',
+    'roundsIntroDismissed',
+    'roundsPlayTipsDismissed'
 ];
 
 function clearUserScopedStorage() {

@@ -17,6 +17,8 @@
     'use strict';
 
     var NAME_STORAGE_KEY = 'roundsNurseName';
+    var INTRO_DISMISSED_KEY = 'roundsIntroDismissed';
+    var PLAY_TIPS_DISMISSED_KEY = 'roundsPlayTipsDismissed';
     var CATEGORY_ORDER = ['history', 'symptoms', 'exam', 'obstetric', 'peds', 'associated'];
 
     // ── State ──────────────────────────────────────────────
@@ -408,6 +410,7 @@
             updateCommitButton();
             updateBudgetCounter();
             show('screen-play');
+            maybeShowPlayTip();
         }).catch(function (err) {
             console.error('startScenario failed:', err);
             // Re-enable the card and surface the reason
@@ -1138,10 +1141,40 @@
     }
 
 
+    // ── First-time onboarding ──────────────────────────────
+    function lsGet(k)      { try { return localStorage.getItem(k); } catch (e) { return null; } }
+    function lsSet(k, v)   { try { localStorage.setItem(k, v); } catch (e) {} }
+
+    function maybeShowIntroModal() {
+        if (lsGet(INTRO_DISMISSED_KEY) === '1') return;
+        var modal = $('rounds-intro-modal');
+        if (!modal) return;
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+    }
+    function dismissIntroModal() {
+        var modal = $('rounds-intro-modal');
+        if (modal) modal.hidden = true;
+        document.body.style.overflow = '';
+        lsSet(INTRO_DISMISSED_KEY, '1');
+    }
+    function maybeShowPlayTip() {
+        if (lsGet(PLAY_TIPS_DISMISSED_KEY) === '1') return;
+        var tip = $('play-tip-banner');
+        if (tip) tip.hidden = false;
+    }
+    function dismissPlayTip() {
+        var tip = $('play-tip-banner');
+        if (tip) tip.hidden = true;
+        lsSet(PLAY_TIPS_DISMISSED_KEY, '1');
+    }
+
+
     // ── Wire up ─────────────────────────────────────────────
     function init() {
         bootstrap();
         show('screen-select');
+        maybeShowIntroModal();
 
         $('btn-commit').addEventListener('click', openCommit);
         $('btn-back-to-select').addEventListener('click', function () { show('screen-select'); });
@@ -1173,8 +1206,21 @@
             });
         });
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') closeAllSheets();
+            if (e.key === 'Escape') {
+                if (!$('rounds-intro-modal').hidden) dismissIntroModal();
+                closeAllSheets();
+            }
         });
+
+        // Welcome modal dismiss — any element with data-intro-dismiss
+        // (backdrop, close button, "Got it" CTA) closes and sets the flag.
+        document.querySelectorAll('[data-intro-dismiss]').forEach(function (el) {
+            el.addEventListener('click', dismissIntroModal);
+        });
+
+        // Play tip banner dismiss
+        var tipClose = $('play-tip-close');
+        if (tipClose) tipClose.addEventListener('click', dismissPlayTip);
 
         // Mobile sidebar drawer toggle — mirrors dashboard-script.js.
         // Clone the navbar's mobile-menu-btn to detach script.js's nav-links

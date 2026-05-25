@@ -25,7 +25,7 @@
     <!-- CSS -->
     <link rel="stylesheet" href="css/cookie-consent.css">
     <link rel="stylesheet" href="css/feedback-widget.css">
-    <link rel="stylesheet" href="rounds.css?v=shell">
+    <link rel="stylesheet" href="rounds.css?v=intro">
     <link rel="stylesheet" href="css/sidebar-widgets.css?v=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -200,6 +200,20 @@
                                 </button>
                             </header>
 
+                            <!-- First-time play tip — toggled by JS on initial scenario -->
+                            <div class="play-tip-banner" id="play-tip-banner" hidden>
+                                <div class="play-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                                <div class="play-tip-body">
+                                    <strong>First scenario? Here's the gist:</strong>
+                                    Pick questions from the tabs below. You have a limited budget — choose what would
+                                    actually narrow the diagnosis. After 2+ questions, hit
+                                    <em>Commit your assessment</em> to lock in your call.
+                                </div>
+                                <button type="button" class="play-tip-close" id="play-tip-close" aria-label="Dismiss tip">
+                                    <i class="fas fa-xmark"></i>
+                                </button>
+                            </div>
+
                             <div class="chat-bubbles" id="play-log">
                                 <p class="chat-empty">
                                     <i class="fas fa-arrow-down"></i>
@@ -361,6 +375,38 @@
 
 
     <!-- ══════════════════════════════════════════════════════════
+         Welcome modal — first-time intro to Rounds.
+         Shown on first visit (gated by localStorage roundsIntroDismissed).
+         ══════════════════════════════════════════════════════════ -->
+    <div class="rounds-intro-modal" id="rounds-intro-modal" hidden>
+        <div class="rounds-intro-backdrop" data-intro-dismiss></div>
+        <div class="rounds-intro-card">
+            <button type="button" class="rounds-intro-close" id="rounds-intro-close" data-intro-dismiss aria-label="Close">
+                <i class="fas fa-xmark"></i>
+            </button>
+            <div class="rounds-intro-icon"><i class="fas fa-stethoscope"></i></div>
+            <h2>Welcome to Rounds</h2>
+            <p class="rounds-intro-sub">Clinical reasoning, gamified.</p>
+            <p class="rounds-intro-lead">Each scenario plays out like a bedside shift handoff:</p>
+            <ol class="rounds-intro-steps">
+                <li><strong>Pick a patient scenario.</strong> Specialty and difficulty are shown up front.</li>
+                <li><strong>Read their chart and chief complaint.</strong> Vitals, allergies, code status, PMHx, meds — everything you'd have at the bedside.</li>
+                <li><strong>Ask questions from a limited budget.</strong> Every question gets a real answer — but not every question helps. Pick what would actually narrow the diagnosis.</li>
+                <li><strong>Commit to your diagnosis and priority nursing action.</strong></li>
+                <li><strong>See the debrief.</strong> What was actually going on, which questions were high-yield, and why this action over the others.</li>
+            </ol>
+            <p class="rounds-intro-scoring">
+                <i class="fas fa-star"></i>
+                <span>Stars come from getting the diagnosis right, the action right, and asking efficient questions.</span>
+            </p>
+            <button type="button" class="rounds-intro-cta" id="rounds-intro-start" data-intro-dismiss>
+                Got it — let's start <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════
          Name modal — captures first name on first play (fallback;
          normally first_name is auto-filled from the user profile)
          ══════════════════════════════════════════════════════════ -->
@@ -385,7 +431,7 @@
     <link rel="stylesheet" href="css/upgrade-modal.css?v=1">
     <script src="sidebar-widgets.js?v=1"></script>
     <script defer src="script.js?v=4.8.dashboard"></script>
-    <script defer src="rounds.js?v=shell"></script>
+    <script defer src="rounds.js?v=intro"></script>
     <script src="analytics.js"></script>
     <script src="cookie-consent.js"></script>
     <script src="feedback-widget.js"></script>

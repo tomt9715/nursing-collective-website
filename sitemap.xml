@@ -17,6 +17,14 @@
         <priority>0.9</priority>
     </url>
 
+    <!-- Rounds (clinical-reasoning trainer) -->
+    <url>
+        <loc>https://thenursingcollective.pro/rounds.html</loc>
+        <lastmod>2026-05-24</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+
     <!-- About FlorenceBot -->
     <url>
         <loc>https://thenursingcollective.pro/about-florencebot.html</loc>

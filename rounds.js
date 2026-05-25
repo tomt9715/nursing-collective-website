@@ -811,18 +811,30 @@
             log.appendChild(pair);
         });
 
-        // Empty-state nudge while no questions have been asked yet — makes
-        // it clear the conversation continues below, not that the patient
-        // is done talking.
-        if (!state.asked.length) {
-            var nudge = document.createElement('div');
-            nudge.className = 'chat-nudge';
-            nudge.innerHTML = '<i class="fas fa-comment-dots"></i> ' +
-                'Pick a question below — replies appear here.';
-            log.appendChild(nudge);
-        }
-
         log.scrollTop = log.scrollHeight;
+
+        // Update the permanent chat/picker divider. Lives OUTSIDE the
+        // chat-bubbles container so it's never hidden by overflow and
+        // always acts as a clear visual break between the conversation
+        // above and the question picker below.
+        var divider = $('chat-divider');
+        if (divider) {
+            if (!state.asked.length) {
+                divider.className = 'chat-divider is-prompt';
+                divider.innerHTML =
+                    '<span class="chat-divider-label">' +
+                        '<i class="fas fa-arrow-down"></i> ' +
+                        'Pick a question to continue' +
+                    '</span>';
+            } else {
+                divider.className = 'chat-divider';
+                divider.innerHTML =
+                    '<span class="chat-divider-label">' +
+                        '<i class="fas fa-question-circle"></i> ' +
+                        'Next question' +
+                    '</span>';
+            }
+        }
     }
 
     function updateCommitButton() {

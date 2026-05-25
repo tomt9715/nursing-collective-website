@@ -873,32 +873,61 @@ img { max-width: 100%; display: block; }
     border-bottom-left-radius: 5px;
 }
 
-/* Empty-state nudge after the patient's CC when no questions
-   asked yet — makes it clear the conversation continues below.
-   Deliberately loud: dashed teal border + tinted background + a
-   gentle pulse so it actually catches the eye against the dark
-   panel. Disappears the moment a question is asked. */
-.chat-nudge {
-    margin: 18px auto 8px;
-    padding: 14px 20px;
-    color: var(--text);
-    font-size: 0.92rem;
-    font-weight: 500;
-    text-align: center;
-    border: 1.5px dashed rgba(15,188,173,0.55);
-    border-radius: 12px;
-    background: rgba(15,188,173,0.10);
+/* Permanent divider between chat-bubbles and chat-input-area.
+   Doubles as the empty-state nudge when no questions have been
+   asked. Lives OUTSIDE the chat overflow so it's always visible. */
+.chat-divider {
+    flex-shrink: 0;
+    background: var(--navy);
+    padding: 12px 20px;
+    border-top: 1px solid var(--border-mid);
+    border-bottom: 1px solid var(--border-mid);
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.chat-divider::before,
+.chat-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border-mid);
+}
+.chat-divider-label {
+    color: var(--text-dim);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    align-self: center;
-    animation: nudgePulse 2.4s ease-in-out infinite;
+    gap: 7px;
+    white-space: nowrap;
 }
-.chat-nudge i { color: var(--teal); font-size: 1rem; }
-@keyframes nudgePulse {
-    0%, 100% { transform: translateY(0); box-shadow: 0 0 0 0 rgba(15,188,173,0); }
-    50%      { transform: translateY(-2px); box-shadow: 0 4px 18px 0 rgba(15,188,173,0.15); }
+.chat-divider-label i { font-size: 0.78rem; }
+
+/* "is-prompt" — shown when no questions asked. Loud teal styling +
+   gentle pulse so the eye lands here, telling the student the
+   conversation pauses until they ask something. */
+.chat-divider.is-prompt {
+    background: rgba(15,188,173,0.08);
+    border-top-color: rgba(15,188,173,0.35);
+    border-bottom-color: rgba(15,188,173,0.35);
+    animation: dividerPulse 2.4s ease-in-out infinite;
+}
+.chat-divider.is-prompt::before,
+.chat-divider.is-prompt::after {
+    background: rgba(15,188,173,0.35);
+}
+.chat-divider.is-prompt .chat-divider-label {
+    color: var(--teal);
+    font-size: 0.82rem;
+}
+.chat-divider.is-prompt .chat-divider-label i { color: var(--teal); font-size: 0.85rem; }
+
+@keyframes dividerPulse {
+    0%, 100% { background-color: rgba(15,188,173,0.08); }
+    50%      { background-color: rgba(15,188,173,0.14); }
 }
 
 

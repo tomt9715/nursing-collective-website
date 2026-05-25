@@ -385,6 +385,7 @@ async function loadFullDashboard(user) {
         // All data is now in localStorage — render widgets
         if (typeof loadStudyPlan === 'function') loadStudyPlan();
         if (typeof loadExamCountdown === 'function') loadExamCountdown();
+        if (typeof loadTodaysRounds === 'function') loadTodaysRounds();
         loadRecentGuides();
         loadQuizBankWidget();
         loadStudyActivityCalendar();

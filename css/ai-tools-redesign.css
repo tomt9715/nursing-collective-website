@@ -1372,3 +1372,100 @@ img { max-width: 100%; display: block; }
 /* Strong / em inside study sheet */
 .study-sheet strong { font-weight: 700; color: var(--text); }
 .study-sheet em { font-style: italic; color: var(--text-dim); }
+
+/* ══════════════════════════════════════════════════════════════
+   Rounds promo card (compact banner above the upload UI)
+   ══════════════════════════════════════════════════════════════ */
+
+.ai-rounds-promo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+    margin: 0 0 20px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(15,188,173,0.10) 0%, rgba(139,92,246,0.08) 100%);
+    border: 1px solid rgba(15,188,173,0.25);
+    color: var(--text);
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.ai-rounds-promo:hover {
+    transform: translateY(-1px);
+    border-color: rgba(15,188,173,0.45);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    text-decoration: none;
+    color: var(--text);
+}
+
+.ai-rounds-promo-icon {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, #0fbcad 0%, #0a9086 100%);
+    color: #0d1b2a;
+    font-size: 1.2rem;
+}
+
+.ai-rounds-promo-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.ai-rounds-promo-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 1.02rem;
+    color: var(--text);
+    margin-bottom: 4px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.ai-rounds-promo-badge {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 999px;
+    background: rgba(15,188,173,0.18);
+    color: #0fbcad;
+}
+
+.ai-rounds-promo-desc {
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    line-height: 1.45;
+}
+
+.ai-rounds-promo-cta {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #0fbcad;
+    color: #0d1b2a;
+    font-weight: 600;
+    font-size: 0.88rem;
+    white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+    .ai-rounds-promo {
+        flex-wrap: wrap;
+        gap: 12px;
+        padding: 14px 16px;
+    }
+    .ai-rounds-promo-cta {
+        width: 100%;
+        justify-content: center;
+    }
+}

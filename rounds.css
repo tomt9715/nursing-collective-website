@@ -1956,10 +1956,14 @@ img { max-width: 100%; display: block; }
     }
     .sheet-body--picker .play-q-tabs {
         padding: 8px 14px 0;
-        gap: 4px;
+        gap: 6px;
         overflow-x: auto;
         scrollbar-width: none;
         flex-shrink: 0;
+        /* Pills can be wider than old text tabs — keep them on a
+           single horizontally-scrolling row so the picker drawer's
+           height stays predictable. */
+        flex-wrap: nowrap;
     }
     .sheet-body--picker .play-q-pool {
         max-height: none;

@@ -2200,6 +2200,7 @@ img { max-width: 100%; display: block; }
     justify-content: center;
     padding: 24px;
 }
+.rounds-intro-modal[hidden] { display: none; }
 .rounds-intro-backdrop {
     position: absolute;
     inset: 0;
@@ -2357,6 +2358,7 @@ img { max-width: 100%; display: block; }
     border: 1px solid rgba(15,188,173,0.3);
     border-radius: 10px;
 }
+.play-tip-banner[hidden] { display: none; }
 .play-tip-icon {
     flex-shrink: 0;
     width: 28px;

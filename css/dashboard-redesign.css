@@ -1060,7 +1060,8 @@ img { max-width: 100%; display: block; }
 .recent-guides-widget,
 .quiz-bank-widget,
 .exam-countdown-widget,
-.study-activity-widget {
+.study-activity-widget,
+.rounds-today-widget {
   background: var(--card);
   border: 0.5px solid var(--border);
   border-radius: 14px;
@@ -2684,4 +2685,161 @@ img { max-width: 100%; display: block; }
 
   .footer-inner { grid-template-columns: 1fr; gap: 28px; }
   .footer-bottom { flex-direction: column; text-align: center; }
+}
+
+/* ── Today's Rounds widget — inner content ───────────────────── */
+
+.rounds-today-content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Available state */
+.rounds-widget-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rounds-widget-meta {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.rounds-widget-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.3;
+}
+.rounds-widget-blurb {
+  color: var(--text-dim);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Difficulty pill */
+.rw-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--navy-3);
+  color: var(--text-dim);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.rw-pill.diff-easy   { color: var(--green); background: rgba(61,189,122,0.10); }
+.rw-pill.diff-medium { color: var(--amber); background: rgba(244,165,53,0.10); }
+.rw-pill.diff-hard   { color: var(--red);   background: rgba(224,82,82,0.12); }
+
+/* Played-today state */
+.rounds-widget-played {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.rounds-widget-stars {
+  display: inline-flex;
+  gap: 3px;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+.rounds-widget-stars .fa-star.on  { color: var(--teal); }
+.rounds-widget-stars .fa-star.off { color: var(--border-mid); }
+
+.rounds-widget-played-meta { flex: 1; min-width: 0; }
+.rounds-widget-played-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.rounds-widget-played-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.rw-chip {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--navy-3);
+  color: var(--text-dim);
+}
+.rw-chip.ok   { color: var(--green); background: rgba(61,189,122,0.14); }
+.rw-chip.miss { color: var(--red);   background: rgba(224,82,82,0.14); }
+
+/* Footer row */
+.rounds-widget-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 4px;
+}
+.rounds-widget-note {
+  font-size: 12px;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.rounds-widget-note i { color: var(--teal); }
+
+.rounds-widget-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--teal);
+  color: var(--navy) !important;
+  font-weight: 600;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+.rounds-widget-cta:hover {
+  background: var(--teal-dim);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+.rounds-widget-cta.secondary {
+  background: transparent;
+  color: var(--teal) !important;
+  border: 1px solid var(--teal);
+}
+.rounds-widget-cta.secondary:hover {
+  background: rgba(15,188,173,0.08);
+}
+
+/* Empty */
+.rounds-widget-empty {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  color: var(--text-dim);
+  font-size: 13px;
+  background: var(--navy-3);
+  border-radius: 10px;
+}
+.rounds-widget-empty i { color: var(--text-dimmer); }
+
+@media (max-width: 480px) {
+  .rounds-widget-footer { align-items: stretch; }
+  .rounds-widget-cta { justify-content: center; }
 }

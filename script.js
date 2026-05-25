@@ -36,12 +36,14 @@ document.addEventListener('DOMContentLoaded', async function() {
     // Update nav based on auth state
     updateNavAuthState();
 
-    // Show Quiz Bank sidebar link for premium users (works on all pages with the sidebar)
+    // Show paid-only sidebar links for premium users (works on all pages with the sidebar)
     try {
         var storedUser = JSON.parse(localStorage.getItem('user'));
         if (storedUser && storedUser.is_premium) {
             var quizLink = document.getElementById('sidebar-quiz-link');
             if (quizLink) quizLink.style.display = '';
+            var roundsLink = document.getElementById('sidebar-rounds');
+            if (roundsLink) roundsLink.style.display = '';
         }
     } catch (e) { /* ignore */ }
 

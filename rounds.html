@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Rounds — Clinical-Reasoning Trainer · The Nursing Collective</title>
+    <meta name="description" content="Quick clinical-reasoning scenarios for nursing students. Pick a patient, ask the right questions, commit to your call, learn from the debrief. New scenario every day.">
+    <link rel="icon" href="assets/images/the-nursing-collective-logo.webp" type="image/webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="rounds.css">
+</head>
+<body>
+
+    <!-- ── Header ─────────────────────────────────────────────── -->
+    <header class="rounds-header">
+        <div class="rounds-header-inner">
+            <a href="dashboard.html" class="rounds-brand">
+                <span class="rounds-brand-mark"></span>
+                <span class="rounds-brand-text">The Nursing Collective</span>
+            </a>
+            <div class="rounds-header-right">
+                <button type="button" class="nurse-badge" id="nurse-badge" hidden>
+                    <i class="fas fa-user-nurse"></i>
+                    <span class="nurse-badge-label">Nurse</span>
+                    <span class="nurse-badge-name" id="nurse-badge-name">—</span>
+                    <i class="fas fa-pen-to-square nurse-badge-edit"></i>
+                </button>
+                <span class="rounds-badge" id="tier-badge" hidden>Rounds</span>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         SCREEN 1 — Scenario selection
+         ══════════════════════════════════════════════════════════ -->
+    <main id="screen-select" class="rounds-screen active">
+        <section class="rounds-hero">
+            <p class="rounds-eyebrow">Clinical-reasoning training</p>
+            <h1 class="rounds-h1">Pick a patient. Make the call.</h1>
+            <p class="rounds-sub">
+                You'll see a chart-style patient profile, then choose which questions to ask
+                from a limited budget. Every question gets you a real answer — but not every
+                question helps. Figure out what's going on, decide what to do, learn from the debrief.
+            </p>
+        </section>
+
+        <!-- Played-today / locked-from-replay notice (Standard tier only) -->
+        <div id="played-today-slot"></div>
+
+        <!-- Gate card (signed out / no subscription) — populated by JS -->
+        <div id="gate-slot"></div>
+
+        <!-- Scenario cards (loading → populated by JS) -->
+        <section class="rounds-scenarios" id="scenario-cards">
+            <div class="rounds-loading">
+                <i class="fas fa-circle-notch"></i>
+                <span>Loading today's scenarios…</span>
+            </div>
+        </section>
+
+        <!-- Inline error display -->
+        <div id="error-slot"></div>
+    </main>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         SCREEN 2 — Play (patient sidebar + chat workspace)
+         ══════════════════════════════════════════════════════════ -->
+    <main id="screen-play" class="rounds-screen">
+
+        <div class="play-layout">
+
+            <!-- LEFT: sticky patient sidebar (desktop only) -->
+            <aside class="play-patient-rail" id="play-patient">
+                <!-- populated by JS -->
+            </aside>
+
+            <!-- RIGHT: chat workspace -->
+            <section class="play-chat">
+
+                <header class="chat-header">
+                    <h2><i class="fas fa-comment-medical"></i> Conversation</h2>
+                    <button type="button" class="play-back" id="btn-back-to-select">
+                        <i class="fas fa-arrow-left"></i> Back to scenarios
+                    </button>
+                </header>
+
+                <div class="chat-bubbles" id="play-log">
+                    <p class="chat-empty">
+                        <i class="fas fa-arrow-down"></i>
+                        Pick a question below to start gathering data.
+                    </p>
+                </div>
+
+                <div class="chat-input-area" id="chat-input-area">
+
+                    <button type="button" class="dock-toggle" id="dock-toggle" aria-label="Minimize question picker" aria-expanded="true">
+                        <span class="dock-toggle-handle"></span>
+                        <i class="fas fa-chevron-down dock-toggle-chevron"></i>
+                    </button>
+
+                    <div class="chat-input-top">
+                        <h3><i class="fas fa-question-circle"></i> <span class="dock-title-full">What do you ask next?</span><span class="dock-title-min">Tap to ask</span></h3>
+                        <span class="play-q-counter" id="play-q-counter">—</span>
+                    </div>
+
+                    <div class="play-q-tabs" id="play-q-tabs">
+                        <!-- populated by JS -->
+                    </div>
+
+                    <div class="play-q-pool" id="play-q-pool">
+                        <!-- populated by JS -->
+                    </div>
+
+                    <button type="button" class="play-commit" id="btn-commit" disabled>
+                        <i class="fas fa-check-circle"></i>
+                        <span>Commit your assessment</span>
+                        <small id="play-commit-hint">Ask at least 2 questions first</small>
+                    </button>
+                </div>
+
+            </section>
+
+        </div>
+    </main>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         SCREEN 3 — Commit
+         ══════════════════════════════════════════════════════════ -->
+    <main id="screen-commit" class="rounds-screen">
+        <section class="commit-wrap">
+            <header class="commit-header">
+                <h2><i class="fas fa-pen-to-square"></i> Make your call</h2>
+                <p>Based on what you've gathered, what's most likely and what do you do?</p>
+            </header>
+
+            <div class="commit-block">
+                <h3>What's most likely going on?</h3>
+                <div class="commit-options" id="commit-conditions"></div>
+            </div>
+
+            <div class="commit-block">
+                <h3>What's the priority nursing action?</h3>
+                <div class="commit-options" id="commit-actions"></div>
+            </div>
+
+            <div class="commit-footer">
+                <button type="button" class="commit-back" id="btn-commit-back">
+                    <i class="fas fa-arrow-left"></i> Back to the chart
+                </button>
+                <button type="button" class="commit-submit" id="btn-commit-submit" disabled>
+                    See the debrief <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         SCREEN 4 — Debrief
+         ══════════════════════════════════════════════════════════ -->
+    <main id="screen-debrief" class="rounds-screen">
+        <section class="debrief-wrap" id="debrief-wrap">
+            <!-- populated by JS -->
+        </section>
+    </main>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         MOBILE CHROME — body-level so nothing in a parent stacking
+         context can break position:fixed. Shown via body.is-playing
+         AND mobile media query.
+         ══════════════════════════════════════════════════════════ -->
+
+    <!-- Sticky top bar — slim patient summary + chart button -->
+    <div class="mobile-topbar" id="mobile-topbar">
+        <button type="button" class="topbar-back" id="topbar-back" aria-label="Back to scenarios">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="topbar-summary" id="topbar-summary">—</div>
+        <button type="button" class="topbar-chart" id="topbar-chart">
+            <i class="fas fa-clipboard-list"></i>
+            <span>Chart</span>
+        </button>
+    </div>
+
+    <!-- Slim sticky bottom ask bar — opens picker sheet on tap -->
+    <div class="mobile-askbar" id="mobile-askbar">
+        <button type="button" class="askbar-trigger" id="askbar-trigger">
+            <span class="askbar-counter" id="askbar-counter">—</span>
+            <span class="askbar-cta">
+                <i class="fas fa-chevron-up"></i>
+                Tap to ask
+            </span>
+        </button>
+        <button type="button" class="askbar-commit" id="askbar-commit" disabled>
+            <i class="fas fa-check"></i>
+            <span>Commit</span>
+        </button>
+    </div>
+
+    <!-- Bottom sheet: full chart -->
+    <div class="bottom-sheet" id="chart-sheet" hidden>
+        <div class="sheet-backdrop" data-sheet-close></div>
+        <div class="sheet-panel sheet-panel--tall">
+            <div class="sheet-handle" data-sheet-close></div>
+            <header class="sheet-header">
+                <h3><i class="fas fa-clipboard-list"></i> Full chart</h3>
+                <button type="button" class="sheet-close" data-sheet-close aria-label="Close">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </header>
+            <div class="sheet-body" id="chart-sheet-body">
+                <!-- populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom sheet: question picker -->
+    <div class="bottom-sheet" id="picker-sheet" hidden>
+        <div class="sheet-backdrop" data-sheet-close></div>
+        <div class="sheet-panel sheet-panel--picker">
+            <div class="sheet-handle" data-sheet-close></div>
+            <header class="sheet-header">
+                <h3><i class="fas fa-question-circle"></i> Pick a question</h3>
+                <span class="sheet-counter" id="sheet-counter">—</span>
+                <button type="button" class="sheet-close" data-sheet-close aria-label="Close">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </header>
+            <div class="sheet-body sheet-body--picker">
+                <div class="play-q-tabs" id="picker-tabs"></div>
+                <div class="play-q-pool" id="picker-pool"></div>
+            </div>
+            <button type="button" class="picker-commit" id="picker-commit" disabled>
+                <i class="fas fa-check-circle"></i>
+                <span>Commit your assessment</span>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ══════════════════════════════════════════════════════════
+         Name modal — captures first name on first play (fallback;
+         normally first_name is auto-filled from the user profile)
+         ══════════════════════════════════════════════════════════ -->
+    <div class="name-modal" id="name-modal" hidden>
+        <div class="name-modal-card">
+            <div class="name-modal-icon"><i class="fas fa-user-nurse"></i></div>
+            <h2>What's your first name?</h2>
+            <p>So the patient knows who's at the bedside.</p>
+            <form id="name-form" autocomplete="off">
+                <input type="text" id="name-input" placeholder="Your first name" maxlength="24" required>
+                <button type="submit">Start <i class="fas fa-arrow-right"></i></button>
+            </form>
+            <small class="name-modal-hint">Saved on this device only · you can change it any time.</small>
+        </div>
+    </div>
+
+
+    <script src="api-service.js"></script>
+    <script src="rounds.js"></script>
+</body>
+</html>

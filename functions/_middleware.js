@@ -14,7 +14,9 @@
  * Environment variables (Cloudflare Pages -> Settings -> Environment variables):
  *   SITE_PASSWORD       required — the password that unlocks the site
  *   RESEND_API_KEY      optional — enables the waitlist (same key the backend uses)
- *   RESEND_AUDIENCE_ID  optional — the Resend audience to add contacts to
+ *   RESEND_AUDIENCE_ID  optional — ONLY for older Resend accounts that scope
+ *                       contacts to a named audience. Newer accounts have a
+ *                       single default audience and don't need this.
  *
  * To take the gate down at launch: delete this file and push. Nothing else
  * references it.
@@ -58,17 +60,27 @@ function looksLikeEmail(email) {
     return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) && email.length <= 254;
 }
 
-/** Add the address to the Resend audience (same Resend account the backend uses). */
+/**
+ * Add the address as a Resend contact (same Resend account the backend uses).
+ *
+ * Newer Resend accounts have a single default audience and take contacts at
+ * POST /contacts with no audience in the path. Older accounts scope contacts
+ * to an audience. Set RESEND_AUDIENCE_ID only if you're on the older model.
+ */
 async function joinWaitlist(email, env) {
     const key = env.RESEND_API_KEY;
-    const audience = env.RESEND_AUDIENCE_ID;
-    if (!key || !audience) {
+    if (!key) {
         return { ok: false, message: "The waitlist isn't set up yet. Try again soon." };
     }
 
+    const audience = env.RESEND_AUDIENCE_ID;
+    const endpoint = audience
+        ? `https://api.resend.com/audiences/${audience}/contacts`
+        : 'https://api.resend.com/contacts';
+
     let res;
     try {
-        res = await fetch(`https://api.resend.com/audiences/${audience}/contacts`, {
+        res = await fetch(endpoint, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

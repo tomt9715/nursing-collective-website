@@ -98,9 +98,9 @@ img { max-width: 100%; display: block; }
 .dash-sidebar-inner { padding: 0 12px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 .dash-sidebar-section { display: flex; flex-direction: column; gap: 2px; padding-bottom: 12px; border-bottom: 0.5px solid var(--border); margin-bottom: 4px; }
 .dash-sidebar-section:last-child { border-bottom: none; margin-bottom: 0; }
-.dash-sidebar-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; transition: all 0.15s ease; cursor: pointer; border-left: 2px solid transparent; }
-.dash-sidebar-item:hover { background: rgba(15,188,173,0.06); color: var(--text); text-decoration: none; }
-.dash-sidebar-item.active { background: rgba(15,188,173,0.1); color: var(--teal); font-weight: 600; border-left-color: var(--teal); }
+.dash-sidebar-item { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 8px; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500; color: var(--text-dim); text-decoration: none; transition: all 0.15s ease; cursor: pointer; }
+.dash-sidebar-item:hover { background: rgba(14,154,143,0.07); color: var(--text); text-decoration: none; }
+.dash-sidebar-item.active { background: rgba(14,154,143,0.12); color: var(--teal); font-weight: 600; }
 .dash-sidebar-item i { font-size: 15px; width: 20px; text-align: center; flex-shrink: 0; }
 .dash-sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(58,44,26,0.35); z-index: 49; }
 .dash-main { flex: 1; min-width: 0; padding: 28px 32px 40px; }

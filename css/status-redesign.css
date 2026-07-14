@@ -343,15 +343,18 @@ img { max-width: 100%; display: block; }
 }
 
 .overall-status.operational {
-  border-left: 3px solid var(--green);
+  border-color: rgba(47,168,102,0.35);
+  background: rgba(47,168,102,0.06);
 }
 
 .overall-status.degraded {
-  border-left: 3px solid var(--amber);
+  border-color: rgba(201,121,26,0.35);
+  background: rgba(201,121,26,0.06);
 }
 
 .overall-status.outage {
-  border-left: 3px solid var(--red);
+  border-color: rgba(214,69,69,0.35);
+  background: rgba(214,69,69,0.06);
 }
 
 .status-indicator {

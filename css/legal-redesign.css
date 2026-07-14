@@ -561,8 +561,8 @@ img { max-width: 100%; display: block; }
 }
 
 .policy-card.highlight {
-  border-color: var(--border-mid);
-  border-left: 3px solid var(--teal);
+  border-color: rgba(14,154,143,0.35);
+  background: rgba(14,154,143,0.05);
 }
 
 .policy-card h3 {

@@ -1,6 +1,0 @@
-name = "florencebot-newsletter"
-main = "worker.js"
-compatibility_date = "2025-01-13"
-
-[vars]
-MAILCHIMP_AUDIENCE_ID = "32d9dab1cd"

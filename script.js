@@ -157,60 +157,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         });
     });
 
-    // Newsletter form submission
-    const newsletterForm = document.getElementById('newsletter-form');
-
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', async function(e) {
-            e.preventDefault();
-
-            const emailInput = document.getElementById('newsletter-email');
-            const submitBtn = newsletterForm.querySelector('button[type="submit"]');
-            const email = emailInput.value;
-
-            // Disable button and show loading state
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Subscribing...';
-
-            // ConvertKit via Cloudflare Worker
-            const WORKER_URL = 'https://florencebot-newsletter.tomt9715.workers.dev';
-
-            try {
-                const response = await fetch(WORKER_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: email
-                    })
-                });
-
-                if (response.ok) {
-                    // Success message
-                    const formGroup = newsletterForm.querySelector('.form-group');
-                    formGroup.innerHTML = '<p style="color: var(--secondary-color); font-weight: 600; font-size: 1.1rem;"><i class="fas fa-check-circle"></i> Thanks for subscribing! You\'re all set.</p>';
-                } else {
-                    throw new Error('Subscription failed');
-                }
-            } catch (error) {
-                console.error('Newsletter error:', error);
-
-                // Show error message
-                const formGroup = newsletterForm.querySelector('.form-group');
-                formGroup.innerHTML = '<p style="color: #ef4444; font-weight: 600; font-size: 1.1rem;"><i class="fas fa-exclamation-circle"></i> Something went wrong. Please try again.</p>';
-
-                // Reset form after 3 seconds
-                setTimeout(() => {
-                    formGroup.innerHTML = `
-                        <input type="email" placeholder="Enter your email address" required class="newsletter-input" id="newsletter-email" value="${email}">
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    `;
-                }, 3000);
-            }
-        });
-    }
-
     // User menu dropdown toggle
     // Note: dashboard.html and settings.html use their own scripts for this
     const hasOwnScript = window.location.pathname.includes('dashboard') || window.location.pathname.includes('settings');

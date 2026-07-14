@@ -150,7 +150,7 @@ async function joinWaitlist(email, env) {
         // Best-effort: a failed confirmation must not fail the signup — they're
         // already on the list, and telling them otherwise would be a lie.
         await sendConfirmation(email, env).catch(() => {});
-        return { ok: true, message: "You're on the list. Check your inbox — we just sent a confirmation." };
+        return { ok: true, duplicate: false };
     }
 
     let detail = {};
@@ -162,7 +162,7 @@ async function joinWaitlist(email, env) {
 
     // Signing up twice is a success from the visitor's point of view.
     if (/already exists|already registered/i.test(reason)) {
-        return { ok: true, message: "You're already on the list. We'll be in touch." };
+        return { ok: true, duplicate: true };
     }
     if (/invalid/i.test(reason)) {
         return { ok: false, message: 'That email address was rejected. Try another one.' };
@@ -295,12 +295,27 @@ export async function onRequest(context) {
             if (!looksLikeEmail(email)) {
                 return gatePage(400, { error: 'That doesn\'t look like a valid email address.', email });
             }
+
             const result = await joinWaitlist(email, env);
-            // Always 200: Cloudflare replaces any 5xx from a Function with its
-            // own "Bad gateway" page, which would swallow the message below.
-            return gatePage(200, result.ok
-                ? { success: result.message }
-                : { error: result.message, email });
+
+            // POST/redirect/GET on success, so refreshing the confirmation
+            // reloads a clean page instead of re-submitting the form.
+            if (result.ok) {
+                const url = new URL(request.url);
+                url.searchParams.set('joined', result.duplicate ? 'already' : '1');
+                return new Response(null, {
+                    status: 303,
+                    headers: {
+                        Location: url.pathname + url.search,
+                        'Cache-Control': 'no-store',
+                    },
+                });
+            }
+
+            // Errors render in place so the typed address isn't lost. Always
+            // 200: Cloudflare replaces a 5xx from a Function with its own
+            // "Bad gateway" page, which would swallow the message below.
+            return gatePage(200, { error: result.message, email });
         }
 
         // Password unlock.
@@ -316,6 +331,17 @@ export async function onRequest(context) {
             });
         }
         return gatePage(401, { error: 'Incorrect password. Try again.' });
+    }
+
+    // Landing back here after a successful signup (see the 303 above).
+    const joined = new URL(request.url).searchParams.get('joined');
+    if (joined === '1') {
+        return gatePage(200, {
+            success: "You're on the list. Check your inbox — we just sent a confirmation.",
+        });
+    }
+    if (joined === 'already') {
+        return gatePage(200, { success: "You're already on the list. We'll be in touch." });
     }
 
     return gatePage(401);

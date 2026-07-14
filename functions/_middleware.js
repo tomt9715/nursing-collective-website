@@ -6,14 +6,15 @@
  * CSS and JS are never sent, so the site can't be read by typing a URL
  * directly or by viewing source.
  *
- * The coming-soon page also captures waitlist emails into the same Mailchimp
- * audience the newsletter worker uses. Signup is handled server-side here, so
- * there's no CORS hop and no client-side JS.
+ * The coming-soon page also captures waitlist emails into a Resend audience —
+ * the same Resend account that already sends the app's transactional mail, so
+ * the launch broadcast goes out from a domain that's already verified. Signup
+ * is handled server-side here, so there's no CORS hop and no client-side JS.
  *
  * Environment variables (Cloudflare Pages -> Settings -> Environment variables):
- *   SITE_PASSWORD          required — the password that unlocks the site
- *   MAILCHIMP_API_KEY      optional — enables the waitlist (same key the worker uses)
- *   MAILCHIMP_AUDIENCE_ID  optional — defaults to the existing audience
+ *   SITE_PASSWORD       required — the password that unlocks the site
+ *   RESEND_API_KEY      optional — enables the waitlist (same key the backend uses)
+ *   RESEND_AUDIENCE_ID  optional — the Resend audience to add contacts to
  *
  * To take the gate down at launch: delete this file and push. Nothing else
  * references it.
@@ -21,7 +22,6 @@
 
 const COOKIE = 'tnc_gate';
 const MAX_AGE = 60 * 60 * 24 * 30; // 30 days
-const DEFAULT_AUDIENCE = '32d9dab1cd';
 
 /** Compare without leaking content via early exit. */
 function safeEqual(a, b) {
@@ -58,40 +58,41 @@ function looksLikeEmail(email) {
     return typeof email === 'string' && /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email) && email.length <= 254;
 }
 
-/** Subscribe to the same Mailchimp audience the newsletter worker uses. */
+/** Add the address to the Resend audience (same Resend account the backend uses). */
 async function joinWaitlist(email, env) {
-    const key = env.MAILCHIMP_API_KEY;
-    if (!key) return { ok: false, message: "The waitlist isn't set up yet. Try again soon." };
-
-    const dc = key.split('-')[1];
-    if (!dc) return { ok: false, message: "The waitlist isn't set up correctly. Try again soon." };
-
-    const audience = env.MAILCHIMP_AUDIENCE_ID || DEFAULT_AUDIENCE;
+    const key = env.RESEND_API_KEY;
+    const audience = env.RESEND_AUDIENCE_ID;
+    if (!key || !audience) {
+        return { ok: false, message: "The waitlist isn't set up yet. Try again soon." };
+    }
 
     let res;
     try {
-        res = await fetch(`https://${dc}.api.mailchimp.com/3.0/lists/${audience}/members`, {
+        res = await fetch(`https://api.resend.com/audiences/${audience}/contacts`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Basic ${btoa(`anystring:${key}`)}`,
+                Authorization: `Bearer ${key}`,
             },
-            body: JSON.stringify({ email_address: email, status: 'subscribed' }),
+            body: JSON.stringify({ email, unsubscribed: false }),
         });
     } catch {
         return { ok: false, message: "Couldn't reach the waitlist just now. Try again in a moment." };
     }
 
-    if (res.ok) return { ok: true, message: "You're on the list. We'll email you when we open up." };
+    if (res.ok) {
+        return { ok: true, message: "You're on the list. We'll email you when we open up." };
+    }
 
     let detail = {};
     try { detail = await res.json(); } catch { /* non-JSON error body */ }
+    const reason = String(detail.message || detail.name || '');
 
-    // Already subscribed is a success from the visitor's point of view.
-    if (detail.title === 'Member Exists') {
+    // Signing up twice is a success from the visitor's point of view.
+    if (/already exists|already registered/i.test(reason)) {
         return { ok: true, message: "You're already on the list. We'll be in touch." };
     }
-    if (detail.title === 'Invalid Resource') {
+    if (/invalid/i.test(reason)) {
         return { ok: false, message: 'That email address was rejected. Try another one.' };
     }
     return { ok: false, message: "Couldn't add you just now. Try again in a moment." };

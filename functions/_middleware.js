@@ -157,6 +157,9 @@ async function joinWaitlist(email, env) {
     try { detail = await res.json(); } catch { /* non-JSON error body */ }
     const reason = String(detail.message || detail.name || '');
 
+    // Surfaces in Cloudflare's Function logs. No secrets, just the rejection.
+    console.error(`Resend contact create failed: ${res.status} ${reason}`);
+
     // Signing up twice is a success from the visitor's point of view.
     if (/already exists|already registered/i.test(reason)) {
         return { ok: true, message: "You're already on the list. We'll be in touch." };
@@ -164,7 +167,10 @@ async function joinWaitlist(email, env) {
     if (/invalid/i.test(reason)) {
         return { ok: false, message: 'That email address was rejected. Try another one.' };
     }
-    return { ok: false, message: "Couldn't add you just now. Try again in a moment." };
+    if (res.status === 401 || res.status === 403) {
+        return { ok: false, message: "The waitlist key was rejected. (Check RESEND_API_KEY.)" };
+    }
+    return { ok: false, message: `Couldn't add you just now (${res.status}). Try again in a moment.` };
 }
 
 function gatePage(status, { error = '', notice = '', success = '', email = '' } = {}) {
@@ -262,7 +268,8 @@ export async function onRequest(context) {
     // Fail CLOSED: if the password isn't configured, nobody gets in.
     // (Safer than accidentally leaving the whole site open.)
     if (!password) {
-        return gatePage(503, {
+        // 200, not 5xx — Cloudflare would replace a 5xx with its own error page.
+        return gatePage(200, {
             notice: 'Gate is not configured yet — set SITE_PASSWORD in the Cloudflare Pages environment variables.',
         });
     }
@@ -289,7 +296,9 @@ export async function onRequest(context) {
                 return gatePage(400, { error: 'That doesn\'t look like a valid email address.', email });
             }
             const result = await joinWaitlist(email, env);
-            return gatePage(result.ok ? 200 : 502, result.ok
+            // Always 200: Cloudflare replaces any 5xx from a Function with its
+            // own "Bad gateway" page, which would swallow the message below.
+            return gatePage(200, result.ok
                 ? { success: result.message }
                 : { error: result.message, email });
         }

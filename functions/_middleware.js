@@ -61,6 +61,60 @@ function looksLikeEmail(email) {
 }
 
 /**
+ * Confirm the signup right away. Without this, someone joins and then hears
+ * nothing until launch — by which point the launch email reads as cold spam.
+ * Sent from the same verified sender the backend already uses.
+ */
+async function sendConfirmation(email, env) {
+    const key = env.RESEND_API_KEY;
+    if (!key) return;
+
+    const name = env.MAIL_FROM_NAME || 'The Nursing Collective';
+    const address = env.MAIL_FROM_ADDRESS || 'support@thenursingcollective.pro';
+
+    const text = [
+        "You're on the list.",
+        '',
+        "Thanks for signing up for The Nursing Collective — a study partner built to get you",
+        'through nursing school, not another NCLEX cram tool.',
+        '',
+        "We're still building. We'll email you once, when we open up. That's it — no drip",
+        "campaign, no spam, nothing you didn't ask for.",
+        '',
+        '— Tom, founder (and nursing student)',
+    ].join('\n');
+
+    const html = `<div style="font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+  font-size:16px;line-height:1.6;color:#2b2621;max-width:520px;margin:0 auto;padding:24px">
+  <h1 style="font-size:22px;font-weight:600;margin:0 0 16px">You're on the list.</h1>
+  <p style="margin:0 0 16px">Thanks for signing up for <strong>The Nursing Collective</strong> — a study
+  partner built to get you <em>through</em> nursing school, not another NCLEX cram tool.</p>
+  <p style="margin:0 0 16px">We're still building. We'll email you <strong>once</strong>, when we open up.
+  That's it — no drip campaign, no spam, nothing you didn't ask for.</p>
+  <p style="margin:0 0 4px">— Tom</p>
+  <p style="margin:0;color:#6a6157;font-size:14px">Founder (and nursing student)</p>
+  <hr style="border:none;border-top:1px solid #e8e2d8;margin:24px 0">
+  <p style="margin:0;color:#8a8073;font-size:12px">You're getting this because you joined the waitlist at
+  thenursingcollective.pro. Not you? Ignore this email and you'll hear nothing more.</p>
+</div>`;
+
+    await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${key}`,
+        },
+        body: JSON.stringify({
+            from: `${name} <${address}>`,
+            to: [email],
+            subject: "You're on the list — The Nursing Collective",
+            text,
+            html,
+        }),
+    });
+}
+
+/**
  * Add the address as a Resend contact (same Resend account the backend uses).
  *
  * Newer Resend accounts have a single default audience and take contacts at
@@ -93,7 +147,10 @@ async function joinWaitlist(email, env) {
     }
 
     if (res.ok) {
-        return { ok: true, message: "You're on the list. We'll email you when we open up." };
+        // Best-effort: a failed confirmation must not fail the signup — they're
+        // already on the list, and telling them otherwise would be a lie.
+        await sendConfirmation(email, env).catch(() => {});
+        return { ok: true, message: "You're on the list. Check your inbox — we just sent a confirmation." };
     }
 
     let detail = {};

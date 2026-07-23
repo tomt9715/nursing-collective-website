@@ -1,32 +1,35 @@
 // Chest Tubes Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
-        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
-        { id: 'pleural-space', icon: 'fa-lungs', title: 'Pleural Space' },
-        { id: 'indications', icon: 'fa-clipboard-list', title: 'Indications' },
-        { id: 'drainage-systems', icon: 'fa-box', title: 'Drainage Systems' },
-        { id: 'tidaling-air-leaks', icon: 'fa-wave-square', title: 'Tidaling vs Air Leaks' },
-        { id: 'assessment', icon: 'fa-stethoscope', title: 'Assessment' },
-        { id: 'clamping', icon: 'fa-compress-alt', title: 'When to Clamp' },
-        { id: 'complications', icon: 'fa-exclamation-triangle', title: 'Complications' },
-        { id: 'removal', icon: 'fa-check-double', title: 'Removal' },
-        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'start-here', icon: 'fa-crosshairs', title: 'What actually gets you' },
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'The four things' },
+        { id: 'pleural-space', icon: 'fa-lungs', title: 'Why the lung stays up' },
+        { id: 'indications', icon: 'fa-clipboard-list', title: 'Air or fluid, high or low' },
+        { id: 'drainage-systems', icon: 'fa-box', title: 'Three chambers, one that matters' },
+        { id: 'tidaling-air-leaks', icon: 'fa-wave-square', title: 'Movement or bubbles' },
+        { id: 'assessment', icon: 'fa-stethoscope', title: 'Assessing it, in order' },
+        { id: 'clamping', icon: 'fa-compress-alt', title: 'Almost never clamp' },
+        { id: 'complications', icon: 'fa-exclamation-triangle', title: 'What goes wrong' },
+        { id: 'removal', icon: 'fa-check-double', title: 'Taking it out' },
+        { id: 'numbers-cold', icon: 'fa-hashtag', title: 'Numbers to have cold' },
+        { id: 'rebuild', icon: 'fa-pencil-alt', title: 'Now close the guide' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'Test yourself' },
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-water', value: '2 cm', label: 'Water Seal Level' },
-        { type: 'info', icon: 'fa-tachometer-alt', value: '-20 cm H2O', label: 'Typical Suction' },
-        { type: 'critical', icon: 'fa-tint', value: '>100 mL/hr', label: 'Report Drainage' },
-        { type: 'warning', icon: 'fa-ban', value: 'NEVER', label: 'Clamp with Air Leak' },
-        { type: 'success', icon: 'fa-wave-square', value: 'Tidaling', label: 'Normal Finding' },
-        { type: 'critical', icon: 'fa-arrow-down', value: 'Below Chest', label: 'System Position' }
+        { type: 'target', icon: 'fa-water', value: '2 cm', label: 'Water seal level' },
+        { type: 'info', icon: 'fa-tachometer-alt', value: '-20 cm H2O', label: 'Usual suction' },
+        { type: 'critical', icon: 'fa-tint', value: '>100 mL/hr', label: 'Report drainage' },
+        { type: 'warning', icon: 'fa-ban', value: 'NEVER', label: 'Clamp with an air leak' },
+        { type: 'success', icon: 'fa-wave-square', value: 'Tidaling', label: 'Normal finding' },
+        { type: 'critical', icon: 'fa-arrow-down', value: 'Below chest', label: 'System position' }
     ],
     clinicalPearls: [
-        { id: 'tip-negative-pressure', title: 'Negative Pressure', text: 'The pleural space normally has negative pressure that keeps lungs inflated. Chest tubes restore this by removing air/fluid.' },
-        { id: 'tip-water-seal', title: 'Water Seal Chamber', text: 'Acts as one-way valve - air exits but can\'t return. Always maintain 2 cm water level!' },
-        { id: 'tip-tidaling-vs-leak', title: 'Tidaling vs Air Leak', text: 'Tidaling = gentle rise/fall with breathing (normal). Air leak = bubbles in water seal (assess source!).' },
-        { id: 'tip-never-clamp', title: 'Never Clamp Air Leaks', text: 'Clamping with an air leak traps air in pleural space → tension pneumothorax. When in doubt, don\'t clamp!' },
-        { id: 'tip-tension-pneumo', title: 'Tension Pneumothorax', text: 'Emergency! Signs: tracheal deviation, absent breath sounds, JVD, hypotension. Unclamp tube immediately if clamped!' },
-        { id: 'tip-valsalva', title: 'Valsalva for Removal', text: 'Patient holds breath and bears down during removal to prevent air entry. Apply occlusive dressing immediately.' }
+        { id: 'tip-negative-pressure', title: 'The Seal Is the Whole Thing', text: 'The lung is held open by a vacuum between two membranes. Anything entering that space breaks it.' },
+        { id: 'tip-water-seal', title: 'Water Seal Is the Safety Net', text: 'Suction is optional; the water seal is not. Two centimetres lets air out and never lets it back.' },
+        { id: 'tip-tidaling-vs-leak', title: 'Waves, Not Bubbles', text: 'Tidaling is the level moving. An air leak is air passing through the water. Only one needs a source hunt.' },
+        { id: 'tip-never-clamp', title: 'Air Leak Plus Clamp Equals Tension', text: 'Clamping closes the only exit the trapped air has. The pressure then shifts the mediastinum.' },
+        { id: 'tip-tension-pneumo', title: 'This Is Obstructive Shock', text: 'Tracheal deviation, absent breath sounds, JVD, hypotension. Unclamp now and treat before the x-ray.' },
+        { id: 'tip-valsalva', title: 'Never Let Them Inhale', text: 'Bear down or breathe out during the pull. An inhale draws air straight into the pleural space.' }
     ]
 };

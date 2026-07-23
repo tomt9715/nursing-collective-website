@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chest Tubes Study Guide - The Nursing Collective</title>
-    <meta name="description" content="Comprehensive nursing study guide for Chest Tube Management. Learn to manage chest drainage systems safely, recognize air leaks vs tidaling, and know when to clamp chest tubes.">
+    <meta name="description" content="Nursing study guide for Chest Tubes. Tell tidaling from an air leak, know the three times clamping is allowed, and know what to do when the tube comes out.">
     <link rel="canonical" href="https://thenursingcollective.pro/guides/chest-tubes.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/guides/chest-tubes.html">
     <meta property="og:title" content="Chest Tubes Study Guide - The Nursing Collective">
-    <meta property="og:description" content="Comprehensive nursing study guide for Chest Tube Management. Learn to manage chest drainage systems safely, recognize air leaks vs tidaling, and know when to clamp chest tubes.">
+    <meta property="og:description" content="Nursing study guide for Chest Tubes. Tell tidaling from an air leak, know the three times clamping is allowed, and know what to do when the tube comes out.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
     <!-- Favicon -->
@@ -18,958 +18,25 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/cookie-consent.css">
 
-    <style>
-        /* ============================================
-           PDF-STYLE STUDY GUIDE STYLES
-           ============================================ */
-
-        :root {
-            --primary-color: #F87171;
-            --primary-dark: #EF4444;
-            --secondary-color: #FB923C;
-            --accent-color: #DC2626;
-            --text-primary: #1f2937;
-            --text-secondary: #4b5563;
-            --background: #ffffff;
-            --border-color: #e5e7eb;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: #f3f4f6;
-        }
-
-        /* Download Bar - Fixed at top */
-        .download-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .download-bar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-        }
-
-        .download-bar-brand img {
-            height: 32px;
-            width: auto;
-        }
-
-        .download-bar-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: white;
-            color: var(--primary-color);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-download:hover {
-            background: #fff5f5;
-            transform: translateY(-1px);
-        }
-
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-back:hover {
-            background: rgba(255,255,255,0.25);
-        }
-
-        /* Document Container */
-        .document-container {
-            max-width: 850px;
-            margin: 80px auto 40px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-
-        /* Cover Page - Colors inspired by chest icon (coral/salmon/peach) */
-        .cover-page {
-            background: linear-gradient(135deg, #F87171 0%, #FB923C 50%, #FDBA74 100%);
-            color: white;
-            padding: 80px 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .cover-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cover-logo {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            padding: 12px;
-        }
-
-        .cover-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .cover-category {
-            display: inline-block;
-            padding: 8px 24px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .cover-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-
-        .cover-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .cover-meta {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .cover-meta-item {
-            text-align: center;
-        }
-
-        .cover-meta-item .label {
-            font-size: 0.8rem;
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .cover-meta-item .value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .cover-brand {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        /* Document Content */
-        .document-content {
-            padding: 60px;
-        }
-
-        /* Learning Objectives */
-        .learning-objectives {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            border: 2px solid #10b981;
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 40px;
-        }
-
-        .learning-objectives h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #059669;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .learning-objectives ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .learning-objectives li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 8px 0;
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-
-        .learning-objectives li i {
-            color: #10b981;
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-
-        /* Table of Contents */
-        .table-of-contents {
-            background: #f9fafb;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 40px;
-        }
-
-        .table-of-contents h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-        }
-
-        .table-of-contents ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            columns: 2;
-            column-gap: 30px;
-        }
-
-        .table-of-contents li {
-            break-inside: avoid;
-            margin-bottom: 8px;
-        }
-
-        .table-of-contents a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        .table-of-contents a:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .toc-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 5px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        .table-of-contents a:hover .toc-number {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        /* Content Sections */
-        .guide-section {
-            margin-bottom: 50px;
-            scroll-margin-top: 80px;
-        }
-
-        .guide-section h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 3px solid var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .guide-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 28px 0 14px;
-        }
-
-        .guide-section h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin: 20px 0 10px;
-        }
-
-        .guide-section p {
-            color: var(--text-secondary);
-            font-size: 1.02rem;
-            margin-bottom: 14px;
-        }
-
-        .guide-section ul, .guide-section ol {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            padding-left: 24px;
-        }
-
-        .guide-section li {
-            margin-bottom: 8px;
-        }
-
-        .guide-section strong {
-            color: var(--text-primary);
-        }
-
-        /* Info Boxes */
-        .info-box {
-            border-radius: 10px;
-            padding: 18px 22px;
-            margin: 20px 0;
-            border-left: 4px solid;
-        }
-
-        .info-box.warning {
-            background: #fef2f2;
-            border-color: #ef4444;
-        }
-
-        .info-box.tip {
-            background: #ecfdf5;
-            border-color: #10b981;
-        }
-
-        .info-box.nclex-tip {
-            background: #f5f3ff;
-            border-color: #8b5cf6;
-        }
-
-        .info-box.mnemonic {
-            background: #fffbeb;
-            border-color: #f59e0b;
-        }
-
-        .info-box-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .info-box.warning .info-box-header { color: #ef4444; }
-        .info-box.tip .info-box-header { color: #059669; }
-        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
-        .info-box.mnemonic .info-box-header { color: #d97706; }
-
-        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
-        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
-        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
-
-        /* FlorenceBot Pro Tips */
-        .florencebot-tip {
-            background: linear-gradient(135deg, #fffbeb, #fef3c7);
-            border: 2px solid #f59e0b;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-
-        .florencebot-tip-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .florencebot-tip-icon {
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 0.9rem;
-        }
-
-        .florencebot-tip-label {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #d97706;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .florencebot-tip-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #92400e;
-            margin-bottom: 8px;
-        }
-
-        .florencebot-tip-content {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Tables */
-        .guide-table-wrapper {
-            overflow-x: auto;
-            margin: 20px 0;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-        }
-
-        .guide-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.92rem;
-        }
-
-        .guide-table thead {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .guide-table th {
-            padding: 12px 14px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .guide-table tbody tr {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .guide-table tbody tr:hover {
-            background: #f9fafb;
-        }
-
-        .guide-table td {
-            padding: 12px 14px;
-            color: var(--text-secondary);
-        }
-
-        .guide-table td:first-child {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* Comparison Cards */
-        .comparison-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .comparison-card {
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            overflow: hidden;
-        }
-
-        .comparison-card-header {
-            padding: 16px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: white;
-        }
-
-        .comparison-card.pneumothorax .comparison-card-header {
-            background: linear-gradient(135deg, #3b82f6, #2563eb);
-        }
-
-        .comparison-card.hemothorax .comparison-card-header {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-        }
-
-        .comparison-card.wet-suction .comparison-card-header {
-            background: linear-gradient(135deg, #06b6d4, #0891b2);
-        }
-
-        .comparison-card.dry-suction .comparison-card-header {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-        }
-
-        .comparison-card.normal .comparison-card-header {
-            background: linear-gradient(135deg, #10b981, #059669);
-        }
-
-        .comparison-card.abnormal .comparison-card-header {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-        }
-
-        .comparison-card-body {
-            padding: 18px;
-        }
-
-        .comparison-card-body h4 {
-            font-size: 0.95rem;
-            margin: 0 0 10px;
-        }
-
-        .comparison-card-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 14px;
-        }
-
-        .comparison-card-body li {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            padding: 6px 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .comparison-card-body li:last-child { border-bottom: none; }
-        .comparison-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
-
-        /* Interventions List */
-        .interventions-list {
-            background: #f9fafb;
-            border-radius: 12px;
-            padding: 22px;
-            margin: 20px 0;
-        }
-
-        .interventions-list h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            margin: 0 0 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .interventions-list h4 i { color: var(--primary-color); }
-
-        .intervention-item {
-            display: flex;
-            gap: 14px;
-            padding: 14px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--border-color);
-        }
-
-        .intervention-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .intervention-content h5 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0 0 4px;
-        }
-
-        .intervention-content p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        /* Quick Reference */
-        .quick-reference {
-            background: white;
-            border: 2px solid var(--primary-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-
-        .quick-reference h3 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin: 0 0 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .quick-reference-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .quick-ref-item {
-            background: #f9fafb;
-            padding: 12px;
-            border-radius: 8px;
-        }
-
-        .quick-ref-item .label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 2px;
-        }
-
-        .quick-ref-item .value {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* Procedure Box */
-        .procedure-box {
-            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-            border: 2px solid #0ea5e9;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 20px 0;
-        }
-
-        .procedure-box h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            color: #0369a1;
-            margin: 0 0 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .procedure-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .procedure-step {
-            display: flex;
-            gap: 14px;
-            align-items: flex-start;
-            background: white;
-            padding: 14px;
-            border-radius: 8px;
-        }
-
-        .step-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 28px;
-            height: 28px;
-            background: #0ea5e9;
-            color: white;
-            border-radius: 50%;
-            font-weight: 700;
-            font-size: 0.85rem;
-            flex-shrink: 0;
-        }
-
-        .step-content {
-            flex: 1;
-        }
-
-        .step-content strong {
-            color: #0369a1;
-        }
-
-        /* Decision Box */
-        .decision-box {
-            background: linear-gradient(135deg, #fef2f2, #fee2e2);
-            border: 2px solid #ef4444;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 20px 0;
-        }
-
-        .decision-box h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            color: #dc2626;
-            margin: 0 0 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .decision-box-content {
-            background: white;
-            padding: 16px;
-            border-radius: 8px;
-        }
-
-        /* Key Points Summary */
-        .key-points-summary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 12px;
-            padding: 28px;
-            margin: 40px 0 0;
-            color: white;
-        }
-
-        .key-points-summary h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            margin: 0 0 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .key-points-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
-
-        .key-point {
-            background: rgba(255,255,255,0.15);
-            padding: 14px;
-            border-radius: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .key-point i { font-size: 1.1rem; margin-top: 2px; }
-        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
-
-        /* Footer */
-        .document-footer {
-            text-align: center;
-            padding: 32px 48px;
-            border-top: 1px solid var(--border-color);
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-        }
-
-        .footer-logo {
-            height: 48px;
-            width: auto;
-            margin-bottom: 12px;
-        }
-
-        .footer-tagline {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .footer-copyright {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Print Styles */
-        @page {
-            margin: 0.6in 0.4in;
-        }
-
-        @media print {
-            .download-bar { display: none !important; }
-
-            body {
-                background: white !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .document-container {
-                margin: 0 !important;
-                box-shadow: none !important;
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            .cover-page {
-                page-break-after: always;
-                break-after: page;
-            }
-
-            .info-box { page-break-inside: avoid; break-inside: avoid; }
-            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
-            .comparison-card { page-break-inside: avoid; break-inside: avoid; }
-            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
-            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
-            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
-            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
-            .procedure-box { page-break-inside: avoid; break-inside: avoid; }
-            .decision-box { page-break-inside: avoid; break-inside: avoid; }
-            .florencebot-tip { page-break-inside: avoid; break-inside: avoid; }
-
-            h2, h3, h4 {
-                page-break-after: avoid;
-                break-after: avoid;
-            }
-
-            .comparison-grid { page-break-inside: auto; }
-            .interventions-list { page-break-inside: auto; }
-
-            a { text-decoration: underline; }
-
-            .document-footer {
-                page-break-inside: avoid;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .download-bar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 12px 16px;
-            }
-            .download-bar-actions {
-                width: 100%;
-                justify-content: center;
-            }
-            .document-container { margin: 120px 10px 20px; }
-            .cover-page { padding: 50px 30px; }
-            .cover-title { font-size: 2.2rem; }
-            .cover-meta { flex-direction: column; gap: 20px; }
-            .document-content { padding: 30px 24px; }
-            .table-of-contents ul { columns: 1; }
-            .comparison-grid { grid-template-columns: 1fr; }
-            .quick-reference-grid { grid-template-columns: 1fr; }
-            .key-points-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-
     <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="guide.css">
     <link rel="stylesheet" href="guide-sidebar.css">
     <script src="../beta-banner.js"></script>
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="../sentry-init.js"></script>
 </head>
-<body data-product-id="chest-tubes" data-guide-name="Chest Tubes">
+<body data-category="respiratory" data-product-id="chest-tubes" data-guide-name="Chest-Tubes">
     <!-- Download Bar -->
     <div class="download-bar">
         <div class="download-bar-brand">
-            <i class="fas fa-book-medical"></i>
-            <span>The Nursing Collective Study Guide</span>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective">
         </div>
         <div class="download-bar-actions">
             <a href="../my-guides.html" class="btn-back">
@@ -992,11 +59,11 @@
                 </div>
                 <div class="cover-category">Medical-Surgical Nursing</div>
                 <h1 class="cover-title">Chest Tubes</h1>
-                <p class="cover-subtitle">Comprehensive nursing study guide covering chest drainage system management, recognizing air leaks vs tidaling, proper assessment techniques, and when (and when NOT) to clamp chest tubes.</p>
+                <p class="cover-subtitle">One chamber you actually watch, one movement that is normal and one that is not, and the single instruction that turns a chest tube into a tension pneumothorax.</p>
                 <div class="cover-meta">
                     <div class="cover-meta-item">
                         <div class="label">Reading Time</div>
-                        <div class="value">20-25 minutes</div>
+                        <div class="value">18-22 minutes</div>
                     </div>
                     <div class="cover-meta-item">
                         <div class="label">Difficulty Level</div>
@@ -1004,7 +71,7 @@
                     </div>
                     <div class="cover-meta-item">
                         <div class="label">Last Updated</div>
-                        <div class="value">February 2026</div>
+                        <div class="value">July 2026</div>
                     </div>
                 </div>
                 <div class="cover-brand">
@@ -1016,930 +83,852 @@
         <!-- Document Content -->
         <div class="document-content">
 
-            <!-- Learning Objectives -->
+            <!-- What you should be able to do without notes -->
             <section class="learning-objectives">
-                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <h2><i class="fas fa-bullseye"></i> By the end, without notes</h2>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> Manage chest drainage systems safely and effectively</li>
-                    <li><i class="fas fa-check-circle"></i> Recognize the difference between air leaks and normal tidaling</li>
-                    <li><i class="fas fa-check-circle"></i> Know when to clamp chest tubes - and when clamping is dangerous</li>
-                    <li><i class="fas fa-check-circle"></i> Understand the pleural space and indications for chest tube insertion</li>
-                    <li><i class="fas fa-check-circle"></i> Perform systematic chest tube assessments</li>
-                    <li><i class="fas fa-check-circle"></i> Recognize and respond to chest tube emergencies</li>
+                    <li><i class="fas fa-check-circle"></i> Tell tidaling from an air leak by what you see in the water seal</li>
+                    <li><i class="fas fa-check-circle"></i> Say the three situations where clamping is allowed, and why every other one is dangerous</li>
+                    <li><i class="fas fa-check-circle"></i> Say what tidaling stopping might mean, and which possibility you rule out first</li>
+                    <li><i class="fas fa-check-circle"></i> State the immediate action for a disconnection and for a tube that has come out</li>
+                    <li><i class="fas fa-check-circle"></i> Recognise a tension pneumothorax from four findings and act before the x-ray</li>
                 </ul>
             </section>
 
-            <!-- High-Yield Summary -->
-            <section class="high-yield-summary" id="high-yield-summary">
-                <h2><i class="fas fa-bolt"></i> High-Yield Summary — Review This in 60 Seconds</h2>
-                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
-                <ul>
-                    <li><strong>Chest tubes drain air, blood, or fluid</strong> from the pleural space to restore negative intrapleural pressure and re-expand the lung.</li>
-                    <li><strong>Placement:</strong> Pneumothorax = 2nd intercostal space, midclavicular line (air rises). Hemothorax/effusion = 5th–6th ICS, midaxillary line (fluid collects low).</li>
-                    <li><strong>Water-seal chamber:</strong> Must have 2 cm of sterile water. Tidaling (water rises with inspiration, falls with expiration) is NORMAL and confirms patency.</li>
-                    <li><strong>Continuous bubbling in the water-seal</strong> = air leak. Intermittent bubbling = normal with pneumothorax. CONTINUOUS bubbling = locate and fix the leak!</li>
-                    <li><strong>NEVER clamp a chest tube</strong> unless momentarily for system changes or as ordered. Clamping risks tension pneumothorax — a life-threatening emergency.</li>
-                    <li><strong>Keep the drainage system BELOW chest level</strong> at all times to prevent backflow. Never raise above the insertion site.</li>
-                    <li><strong>Normal drainage:</strong> &lt; 100 mL/hour. Report &gt; 200 mL/hour (hemorrhage alert). Initially bloody (sanguineous), should gradually become serosanguineous then serous.</li>
-                    <li><strong>If the tube disconnects:</strong> Place the end in sterile water (creates temporary water seal). If pulled out: cover with occlusive dressing taped on 3 sides (flutter valve effect).</li>
-                    <li><strong>Removal criteria:</strong> Air leak resolved, drainage &lt; 150 mL/24h, lung re-expanded on CXR, tidaling stopped. Patient performs Valsalva during removal.</li>
-                    <li><strong>Common mistake:</strong> Milking/stripping chest tubes routinely — this creates excessive negative pressure and can damage lung tissue. Only do it if specifically ordered.</li>
-                </ul>
-                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
-            </section>
+        <!-- ══════════ START HERE ══════════ -->
+        <section class="guide-section" id="start-here">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>What actually gets you</h2>
+            </div>
 
-            <!-- Table of Contents -->
-            <nav class="table-of-contents">
-                <h2><i class="fas fa-list"></i> Table of Contents</h2>
-                <ul>
-                    <li><a href="#pleural-space"><span class="toc-number">1</span> The Pleural Space</a></li>
-                    <li><a href="#indications"><span class="toc-number">2</span> Indications for Chest Tubes</a></li>
-                    <li><a href="#drainage-systems"><span class="toc-number">3</span> Drainage Systems</a></li>
-                    <li><a href="#tidaling-air-leaks"><span class="toc-number">4</span> Tidaling vs Air Leaks</a></li>
-                    <li><a href="#assessment"><span class="toc-number">5</span> Systematic Assessment</a></li>
-                    <li><a href="#clamping"><span class="toc-number">6</span> When to Clamp</a></li>
-                    <li><a href="#complications"><span class="toc-number">7</span> Complications & Emergencies</a></li>
-                    <li><a href="#removal"><span class="toc-number">8</span> Chest Tube Removal</a></li>
-                </ul>
-            </nav>
+            <p>Chest tubes look mechanical. Three chambers, some water, a suction dial. Students learn the apparatus and then miss the questions anyway.</p>
 
-            <!-- Section 1: The Pleural Space -->
-            <section class="guide-section" id="pleural-space">
-                <h2><span class="section-icon"><i class="fas fa-lungs"></i></span> Understanding the Pleural Space</h2>
+            <p>The questions are not about the apparatus. They are about what you do when something changes. Points get lost here in three predictable ways.</p>
 
-                <p>Before managing chest tubes, you must understand the pleural space and why maintaining negative pressure is essential for breathing. This foundation explains everything about how chest tubes work.</p>
-
-                <h3>Normal Pleural Anatomy</h3>
-
-                <ul>
-                    <li><strong>Visceral Pleura:</strong> Thin membrane covering the lung surface</li>
-                    <li><strong>Parietal Pleura:</strong> Thin membrane lining the chest wall</li>
-                    <li><strong>Pleural Space:</strong> Potential space between the two layers containing a thin layer of serous fluid (~10-20 mL)</li>
-                    <li><strong>Pleural Fluid:</strong> Lubricates the pleural surfaces, allowing lungs to glide during breathing</li>
-                </ul>
-
-                <div class="info-box tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-check-circle"></i> Key Concept: Negative Pressure
-                    </div>
-                    <p>The pleural space normally has <strong>negative pressure</strong> (about -4 to -8 cm H2O). This negative pressure:</p>
-                    <ul>
-                        <li>Keeps the lungs inflated against the chest wall</li>
-                        <li>Creates the suction that allows lungs to expand during inspiration</li>
-                        <li>Is maintained by the balance between elastic recoil of the lungs and chest wall</li>
-                    </ul>
-                    <p style="margin-top: 10px;"><strong>When this negative pressure is lost (air or fluid enters), the lung collapses!</strong></p>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You reached for the clamp</div>
+                <div class="info-box-content">
+                    <p>Clamping feels like control. On a patient with an air leak it can kill them.</p>
+                    <p>Air leaving the lung now has nowhere to go. It accumulates. Pressure builds. You have manufactured a tension pneumothorax.</p>
                 </div>
+            </div>
 
-                <h3>What Disrupts Normal Pleural Pressure?</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Condition</th>
-                                <th>What Enters Pleural Space</th>
-                                <th>Result</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Pneumothorax</td>
-                                <td>Air</td>
-                                <td>Lung collapse; loss of negative pressure</td>
-                            </tr>
-                            <tr>
-                                <td>Hemothorax</td>
-                                <td>Blood</td>
-                                <td>Lung compression; hypovolemia</td>
-                            </tr>
-                            <tr>
-                                <td>Pleural Effusion</td>
-                                <td>Fluid (serous, purulent, chylous)</td>
-                                <td>Lung compression; respiratory distress</td>
-                            </tr>
-                            <tr>
-                                <td>Empyema</td>
-                                <td>Pus (infected fluid)</td>
-                                <td>Lung compression; sepsis risk</td>
-                            </tr>
-                            <tr>
-                                <td>Tension Pneumothorax</td>
-                                <td>Air (one-way valve effect)</td>
-                                <td>Mediastinal shift; cardiovascular collapse</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You saw movement in the water seal and could not name it</div>
+                <div class="info-box-content">
+                    <p>Two different things happen in that chamber. The water level rising and falling is tidaling, and it is normal. Bubbles rising through the water are an air leak, and they need a source.</p>
+                    <p>One means the system is working. The other means air is getting in somewhere. Confusing them means the wrong action every time.</p>
                 </div>
+            </div>
 
-                <div class="florencebot-tip" id="tip-negative-pressure">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Why Negative Pressure Matters</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Think of the pleural space like a vacuum seal!</strong> Imagine two pieces of glass with a thin layer of water between them - they're nearly impossible to pull apart. That's how the visceral and parietal pleura work together. The negative pressure and thin fluid layer keep the lung "stuck" to the chest wall. When you breathe in and your chest expands, the lung HAS to expand with it because of this seal. But if air or fluid gets into that space, the seal breaks, the lung can fall away from the chest wall, and it collapses. <strong>The chest tube's job is to remove whatever broke the seal and restore that negative pressure.</strong>
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You treated "no tidaling" as good news</div>
+                <div class="info-box-content">
+                    <p>Tidaling stopping means one of two opposite things. The lung has fully re-expanded, which is excellent. Or the system is obstructed, which is not.</p>
+                    <p>You cannot tell from the chamber alone. Rule out the obstruction first, because that is the one that hurts the patient.</p>
                 </div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: The pleural space normally has negative pressure (–4 to –6 cmH2O) that keeps lungs expanded. When air or fluid enters this space, the lung collapses. Chest tubes restore the negative pressure.</div>
-            </section>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Learn this as a set of decisions, not a diagram. What is moving in the water seal, what changed, and what do you do about it.
+            </div>
+        </section>
 
-            <!-- Section 2: Indications -->
-            <section class="guide-section" id="indications">
-                <h2><span class="section-icon"><i class="fas fa-clipboard-list"></i></span> Indications for Chest Tubes</h2>
+        <!-- ══════════ THE FOUR THINGS ══════════ -->
+        <section class="guide-section" id="high-yield-summary">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The four things</h2>
+            </div>
 
-                <p>Chest tubes are inserted to drain air, blood, or fluid from the pleural space and restore negative pressure. Understanding the indication helps you anticipate what you'll see in the drainage system.</p>
+            <p>For every situation below, you should be able to say four things with the book closed: what you are looking at, what it means, the priority nursing action, and the mistake that makes it worse.</p>
 
-                <div class="comparison-grid">
-                    <div class="comparison-card pneumothorax">
-                        <div class="comparison-card-header">
-                            <i class="fas fa-wind"></i> Pneumothorax
-                        </div>
-                        <div class="comparison-card-body">
-                            <h4>Types</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> <strong>Spontaneous:</strong> No trauma; often tall, thin males; ruptured bleb</li>
-                                <li><i class="fas fa-check"></i> <strong>Traumatic:</strong> Penetrating or blunt chest injury</li>
-                                <li><i class="fas fa-check"></i> <strong>Iatrogenic:</strong> Post-procedure (central line, thoracentesis, biopsy)</li>
-                                <li><i class="fas fa-check"></i> <strong>Tension:</strong> EMERGENCY - one-way valve, mediastinal shift</li>
-                            </ul>
-                            <h4>Chest Tube Expectations</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Air leak initially (bubbling in water seal)</li>
-                                <li><i class="fas fa-check"></i> Minimal fluid drainage</li>
-                                <li><i class="fas fa-check"></i> Placed anteriorly (2nd-3rd ICS)</li>
-                            </ul>
-                        </div>
-                    </div>
+            <p>If you cannot say all four out loud, you do not know it yet. Familiarity is not recall.</p>
 
-                    <div class="comparison-card hemothorax">
-                        <div class="comparison-card-header">
-                            <i class="fas fa-tint"></i> Hemothorax
-                        </div>
-                        <div class="comparison-card-body">
-                            <h4>Causes</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> <strong>Trauma:</strong> Rib fractures, penetrating injury</li>
-                                <li><i class="fas fa-check"></i> <strong>Post-surgical:</strong> After thoracic surgery</li>
-                                <li><i class="fas fa-check"></i> <strong>Vascular:</strong> Aortic rupture, vessel injury</li>
-                                <li><i class="fas fa-check"></i> <strong>Malignancy:</strong> Tumor erosion</li>
-                            </ul>
-                            <h4>Chest Tube Expectations</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Bloody drainage (may be large volume)</li>
-                                <li><i class="fas fa-check"></i> No air leak typically</li>
-                                <li><i class="fas fa-check"></i> Placed posteriorly/laterally (5th-6th ICS)</li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>What you see</th>
+                            <th>What it means</th>
+                            <th>Priority action</th>
+                            <th>The mistake</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Tidaling</strong></td>
+                            <td>Water rises and falls with breathing. The system is patent and in the pleural space.</td>
+                            <td>Document it and carry on.</td>
+                            <td>Calling it an air leak and chasing a problem that is not there.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Continuous bubbling</strong></td>
+                            <td>Air is entering the system. From the patient, or from a leak in the equipment.</td>
+                            <td>Find the source. Work from the patient outward.</td>
+                            <td>Clamping the tube to make it stop.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tidaling stops</strong></td>
+                            <td>Either the lung re-expanded, or the tube is obstructed.</td>
+                            <td>Trace the tubing for kinks, clots and dependent loops first.</td>
+                            <td>Assuming the good version and documenting improvement.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tube pulled out</strong></td>
+                            <td>The pleural space is open to the air.</td>
+                            <td>Occlusive dressing taped on three sides, then call.</td>
+                            <td>Sealing all four sides, which turns it into a tension pneumothorax.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these four rows on one index card, by hand. Movement without bubbles is good. Bubbles need a source. No movement needs investigating. An open chest gets three sides of tape. That card is most of the exam.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PLEURAL SPACE ══════════ -->
+        <section class="guide-section" id="pleural-space">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>Why the lung stays up</h2>
+            </div>
+
+            <p>The pleural space is a potential space between two membranes. The visceral pleura covers the lung. The parietal pleura lines the chest wall. Between them sits 10 to 20 mL of serous fluid.</p>
+
+            <p>That space holds a negative pressure of about minus 4 to minus 8 cm H2O. The negative pressure is what keeps the lung expanded against the chest wall.</p>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The one idea the whole topic rests on</div>
+                <div class="info-box-content">
+                    <p>Two sheets of glass with water between them will not pull apart. The pleura works the same way.</p>
+                    <p>The seal is why the lung follows the chest wall outward on every breath. Let air or fluid in and the seal breaks. The lung falls away and collapses.</p>
+                    <p>A chest tube removes whatever broke the seal. That is its entire job.</p>
                 </div>
+            </div>
 
-                <h3>Other Indications</h3>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Condition</th><th>What got in</th><th>What happens</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Pneumothorax</td><td>Air</td><td>The lung collapses as the negative pressure is lost</td></tr>
+                        <tr><td>Hemothorax</td><td>Blood</td><td>The lung is compressed, and the patient loses volume</td></tr>
+                        <tr><td>Pleural effusion</td><td>Serous, purulent or chylous fluid</td><td>The lung is compressed and breathing becomes difficult</td></tr>
+                        <tr><td>Empyema</td><td>Pus</td><td>Compression plus a source of sepsis</td></tr>
+                        <tr><td>Tension pneumothorax</td><td>Air, with a one-way valve</td><td>The mediastinum shifts and circulation fails</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Indication</th>
-                                <th>Description</th>
-                                <th>What to Expect</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Pleural Effusion</td>
-                                <td>Fluid accumulation (heart failure, cancer, infection)</td>
-                                <td>Serous or serosanguinous fluid; variable volume</td>
-                            </tr>
-                            <tr>
-                                <td>Empyema</td>
-                                <td>Infected pleural fluid (pneumonia complication)</td>
-                                <td>Purulent, thick drainage; may need fibrinolytics</td>
-                            </tr>
-                            <tr>
-                                <td>Chylothorax</td>
-                                <td>Lymphatic fluid leak (thoracic duct injury)</td>
-                                <td>Milky white drainage; high triglycerides</td>
-                            </tr>
-                            <tr>
-                                <td>Post-Thoracic Surgery</td>
-                                <td>Prophylactic after lung resection, cardiac surgery</td>
-                                <td>Serosanguinous; air leak if lung resection</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="florencebot-tip" id="tip-negative-pressure">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">The Seal Is the Whole Thing</div>
+                <div class="florencebot-tip-content">The lung does not inflate itself. It is held open by the vacuum between two membranes. Anything that gets into that space breaks the vacuum. Every chest tube question comes back to restoring it.</div>
+            </div>
 
-                <div class="info-box nclex-tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-graduation-cap"></i> NCLEX Alert: Chest Tube Placement
-                    </div>
-                    <p><strong>Location matters!</strong></p>
-                    <ul>
-                        <li><strong>Air rises:</strong> Pneumothorax tubes placed HIGH (2nd-3rd intercostal space, midclavicular)</li>
-                        <li><strong>Fluid sinks:</strong> Hemothorax/effusion tubes placed LOW (5th-6th intercostal space, midaxillary)</li>
-                    </ul>
-                    <p style="margin-top: 8px;">If the question asks about tube position, think about what's being drained!</p>
-                </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> The pleural space holds a negative pressure that keeps the lung expanded. Air or fluid in that space collapses the lung. The tube takes it back out.
+            </div>
+        </section>
 
-                <div class="bottom-line">Bottom Line: Pneumothorax (air), hemothorax (blood), pleural effusion (fluid), empyema (pus), post-thoracic surgery. Tension pneumothorax requires immediate needle decompression BEFORE chest tube.</div>
-            </section>
+        <!-- ══════════ INDICATIONS ══════════ -->
+        <section class="guide-section" id="indications">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>Air or fluid, high or low</h2>
+            </div>
 
-            <!-- Section 3: Drainage Systems -->
-            <section class="guide-section" id="drainage-systems">
-                <h2><span class="section-icon"><i class="fas fa-box"></i></span> Chest Drainage Systems</h2>
+            <p class="subtitle">Discrimination axis: air rises and fluid sinks, so the tube goes where the problem collects.</p>
 
-                <p>Modern chest drainage systems combine three chambers into one unit. Understanding each chamber's function is essential for troubleshooting and safe management.</p>
+            <p>What is being drained tells you where the tube sits. It also tells you what to expect in the chamber.</p>
 
-                <h3>The Three-Chamber System</h3>
-
-                <div class="interventions-list">
-                    <h4><i class="fas fa-cubes"></i> Chamber Functions</h4>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">1</div>
-                        <div class="intervention-content">
-                            <h5>Collection Chamber</h5>
-                            <p>Receives drainage from the pleural space. Calibrated to measure output. Monitor amount, color, and consistency of drainage. Located closest to the patient tubing.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">2</div>
-                        <div class="intervention-content">
-                            <h5>Water Seal Chamber</h5>
-                            <p>Acts as a ONE-WAY VALVE. Allows air to exit pleural space but prevents air from entering. Contains 2 cm of water. This is where you assess for air leaks and tidaling!</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">3</div>
-                        <div class="intervention-content">
-                            <h5>Suction Control Chamber</h5>
-                            <p>Controls amount of negative pressure applied. Can be wet (water level) or dry (dial/regulator). Typically set at -20 cm H2O. Not always used - may be water seal only.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Wet vs Dry Suction Systems</h3>
-
-                <div class="comparison-grid">
-                    <div class="comparison-card wet-suction">
-                        <div class="comparison-card-header">
-                            <i class="fas fa-water"></i> Wet Suction
-                        </div>
-                        <div class="comparison-card-body">
-                            <h4>How It Works</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Water level determines suction amount</li>
-                                <li><i class="fas fa-check"></i> Gentle bubbling when suction working</li>
-                                <li><i class="fas fa-check"></i> Fill to prescribed level (usually 20 cm)</li>
-                            </ul>
-                            <h4>Characteristics</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Continuous gentle bubbling is NORMAL</li>
-                                <li><i class="fas fa-check"></i> Vigorous bubbling = suction too high</li>
-                                <li><i class="fas fa-check"></i> Water evaporates - check levels regularly</li>
-                                <li><i class="fas fa-check"></i> Quieter than you'd expect</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="comparison-card dry-suction">
-                        <div class="comparison-card-header">
-                            <i class="fas fa-sliders-h"></i> Dry Suction
-                        </div>
-                        <div class="comparison-card-body">
-                            <h4>How It Works</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Dial or regulator sets suction level</li>
-                                <li><i class="fas fa-check"></i> Bellows or indicator shows suction active</li>
-                                <li><i class="fas fa-check"></i> No water in suction chamber</li>
-                            </ul>
-                            <h4>Characteristics</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Quieter operation</li>
-                                <li><i class="fas fa-check"></i> No evaporation concerns</li>
-                                <li><i class="fas fa-check"></i> Easier to set precise suction</li>
-                                <li><i class="fas fa-check"></i> Check bellows/indicator for function</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-water-seal">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">The Water Seal is Your Safety Net</div>
-                    <div class="florencebot-tip-content">
-                        <strong>The water seal chamber is the most critical part of the system!</strong> It acts like a one-way valve: air can bubble OUT through the water, but air can't get back IN because the tube is submerged. This protects the patient even if suction fails or is disconnected. Key points: The water seal should ALWAYS have water (typically 2 cm). If the water seal chamber goes dry, air can enter the pleural space and collapse the lung! Never add water to the water seal beyond the fill line. The water seal is where you look for <strong>tidaling</strong> (normal) and <strong>air leaks</strong> (bubbling).
-                    </div>
-                </div>
-
-                <div class="quick-reference">
-                    <h3><i class="fas fa-bookmark"></i> System Setup Quick Reference</h3>
-                    <div class="quick-reference-grid">
-                        <div class="quick-ref-item">
-                            <div class="label">Water Seal Level</div>
-                            <div class="value">2 cm H2O</div>
-                        </div>
-                        <div class="quick-ref-item">
-                            <div class="label">Typical Suction</div>
-                            <div class="value">-20 cm H2O</div>
-                        </div>
-                        <div class="quick-ref-item">
-                            <div class="label">System Position</div>
-                            <div class="value">Below chest level</div>
-                        </div>
-                        <div class="quick-ref-item">
-                            <div class="label">Tubing</div>
-                            <div class="value">No kinks, loops, or dependent coils</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Three-chamber system: collection (drainage), water-seal (one-way valve), suction control. Water-seal chamber must have 2 cm water. Suction control maintains –20 cmH2O. Keep system upright and below chest.</div>
-            </section>
-
-            <!-- Section 4: Tidaling vs Air Leaks -->
-            <section class="guide-section" id="tidaling-air-leaks">
-                <h2><span class="section-icon"><i class="fas fa-wave-square"></i></span> Tidaling vs Air Leaks</h2>
-
-                <p>Understanding what you're seeing in the water seal chamber is one of the most important chest tube skills. The difference between tidaling and an air leak determines your nursing actions.</p>
-
-                <div class="comparison-grid">
-                    <div class="comparison-card normal">
-                        <div class="comparison-card-header">
-                            <i class="fas fa-check-circle"></i> Tidaling (NORMAL)
-                        </div>
-                        <div class="comparison-card-body">
-                            <h4>What You See</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Water level rises and falls with breathing</li>
-                                <li><i class="fas fa-check"></i> Rises with inspiration (spontaneous breathing)</li>
-                                <li><i class="fas fa-check"></i> Falls with expiration</li>
-                                <li><i class="fas fa-check"></i> <strong>NO continuous bubbling</strong></li>
-                            </ul>
-                            <h4>What It Means</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> System is patent and functioning</li>
-                                <li><i class="fas fa-check"></i> Chest tube is in pleural space</li>
-                                <li><i class="fas fa-check"></i> Normal pressure changes transmitted</li>
-                                <li><i class="fas fa-check"></i> This is GOOD - document and continue monitoring</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="comparison-card abnormal">
-                        <div class="comparison-card-header">
-                            <i class="fas fa-exclamation-circle"></i> Air Leak (ASSESS!)
-                        </div>
-                        <div class="comparison-card-body">
-                            <h4>What You See</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> <strong>Continuous bubbling</strong> in water seal</li>
-                                <li><i class="fas fa-check"></i> Bubbling with each breath (intermittent)</li>
-                                <li><i class="fas fa-check"></i> May be constant or only with coughing</li>
-                                <li><i class="fas fa-check"></i> Bubbling intensity may vary</li>
-                            </ul>
-                            <h4>What It Means</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Air is entering the system somewhere</li>
-                                <li><i class="fas fa-check"></i> Could be from patient OR from system leak</li>
-                                <li><i class="fas fa-check"></i> Must determine source!</li>
-                                <li><i class="fas fa-check"></i> Expected post-op but should decrease over time</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-tidaling-vs-leak">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Tidaling vs Air Leak - The Key Distinction</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Tidaling = gentle rise and fall. Air leak = bubbles!</strong> Think of it this way: Tidaling is like watching a gentle wave in the water - the fluid level moves up and down with breathing but there are no bubbles. This shows the system is connected to the pleural space and working. An air leak produces <strong>actual bubbles</strong> in the water seal - you'll see them rising through the water. Intermittent bubbling with breathing can be normal after pneumothorax or lung surgery (air escaping from the lung). But <strong>continuous bubbling</strong> that doesn't change with breathing often means there's a leak in the system itself that needs to be found and fixed!
-                    </div>
-                </div>
-
-                <h3>Troubleshooting Air Leaks</h3>
-
-                <div class="procedure-box">
-                    <h4><i class="fas fa-search"></i> Finding the Source of an Air Leak</h4>
-                    <div class="procedure-steps">
-                        <div class="procedure-step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <strong>Check all connections</strong> - Ensure all tubing connections are tight and secure. This is the most common source of system leaks.
-                            </div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <strong>Inspect tubing</strong> - Look for cracks, holes, or damage in the tubing from the patient to the collection system.
-                            </div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <strong>Check insertion site</strong> - Examine the dressing and occlusive seal. Air can enter around the tube at the chest wall.
-                            </div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <strong>Momentarily occlude tubing</strong> - Briefly pinch the tubing close to the patient. If bubbling stops, leak is at patient (expected with pneumothorax). If it continues, leak is in the system.
-                            </div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="step-number">5</div>
-                            <div class="step-content">
-                                <strong>Document and report</strong> - Note the size of the air leak (small, moderate, large), when it occurs (continuous vs with breathing/coughing), and any changes from baseline.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box warning">
-                    <div class="info-box-header">
-                        <i class="fas fa-exclamation-triangle"></i> When to Be Concerned About Air Leaks
-                    </div>
-                    <ul>
-                        <li><strong>New air leak</strong> that wasn't present before</li>
-                        <li><strong>Increasing air leak</strong> that's getting larger over time</li>
-                        <li><strong>Air leak persisting >5-7 days</strong> post-operatively</li>
-                        <li><strong>Large continuous leak</strong> with respiratory distress</li>
-                        <li><strong>Air leak with subcutaneous emphysema</strong> (crepitus around site)</li>
-                    </ul>
-                </div>
-
-                <h3>When Tidaling STOPS</h3>
-
-                <div class="info-box nclex-tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-graduation-cap"></i> NCLEX Priority: No Tidaling = Problem!
-                    </div>
-                    <p>If tidaling stops, it means one of two things:</p>
-                    <ul>
-                        <li><strong>GOOD:</strong> The lung has fully re-expanded and the tube can potentially be removed</li>
-                        <li><strong>BAD:</strong> The system is obstructed (kinked tubing, clot, dependent loop)</li>
-                    </ul>
-                    <p style="margin-top: 10px;"><strong>Action:</strong> Check the system for obstruction first! Trace tubing from patient to collection system. If no obstruction found, notify provider - may need chest X-ray to confirm lung expansion before removal.</p>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Tidaling = water fluctuates with breathing = patent tube (NORMAL). Absence of tidaling = obstruction, kink, or full lung re-expansion. Continuous bubbling in water-seal = air leak — trace it from patient to system.</div>
-            </section>
-
-            <!-- Section 5: Assessment -->
-            <section class="guide-section" id="assessment">
-                <h2><span class="section-icon"><i class="fas fa-stethoscope"></i></span> Systematic Assessment</h2>
-
-                <p>Chest tube assessment should be performed at least every 4 hours (more frequently for unstable patients). A systematic approach ensures nothing is missed.</p>
-
-                <h3>The DOPE Assessment</h3>
-
-                <div class="info-box mnemonic">
-                    <div class="info-box-header">
-                        <i class="fas fa-brain"></i> Memory Aid: DOPE
-                    </div>
-                    <p>Use <strong>DOPE</strong> to remember your chest tube assessment:</p>
-                    <ul>
-                        <li><strong>D</strong>rainage - Amount, color, consistency</li>
-                        <li><strong>O</strong>cclusive dressing - Intact, dry, no air leak at site</li>
-                        <li><strong>P</strong>atency - No kinks, clots, or dependent loops; tidaling present</li>
-                        <li><strong>E</strong>quipment - Water seal level, suction setting, system upright and below chest</li>
-                    </ul>
-                </div>
-
-                <h3>Complete Assessment Checklist</h3>
-
-                <div class="interventions-list">
-                    <h4><i class="fas fa-clipboard-check"></i> Assessment Components</h4>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">1</div>
-                        <div class="intervention-content">
-                            <h5>Patient Assessment</h5>
-                            <p>Respiratory rate, oxygen saturation, breath sounds bilaterally, work of breathing, pain level, subcutaneous emphysema (crepitus)</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">2</div>
-                        <div class="intervention-content">
-                            <h5>Insertion Site</h5>
-                            <p>Dressing intact and occlusive, no drainage around tube, sutures intact, no signs of infection (redness, swelling, purulent drainage)</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">3</div>
-                        <div class="intervention-content">
-                            <h5>Tubing</h5>
-                            <p>No kinks or dependent loops, connections secure, tube secured to patient (taped), no clots visible in tubing</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">4</div>
-                        <div class="intervention-content">
-                            <h5>Drainage System</h5>
-                            <p>Upright and below chest level, water seal at 2 cm, suction at prescribed level, tidaling present (or document absence), note air leak if present</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">5</div>
-                        <div class="intervention-content">
-                            <h5>Drainage Output</h5>
-                            <p>Mark time and level on collection chamber, calculate hourly output for acute situations, note color and consistency changes</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Drainage Characteristics</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Drainage Type</th>
-                                <th>Appearance</th>
-                                <th>Common Causes</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Serous</td>
-                                <td>Clear, straw-colored</td>
-                                <td>Pleural effusion, post-operative</td>
-                                <td>Monitor amount; expected finding</td>
-                            </tr>
-                            <tr>
-                                <td>Serosanguinous</td>
-                                <td>Pink to light red</td>
-                                <td>Post-operative, trauma healing</td>
-                                <td>Normal post-op; monitor trends</td>
-                            </tr>
-                            <tr>
-                                <td>Sanguinous (Bloody)</td>
-                                <td>Bright red</td>
-                                <td>Active bleeding, hemothorax</td>
-                                <td>Monitor closely; report if >100 mL/hr</td>
-                            </tr>
-                            <tr>
-                                <td>Purulent</td>
-                                <td>Thick, yellow-green, cloudy</td>
-                                <td>Empyema, infection</td>
-                                <td>Notify provider; may need cultures</td>
-                            </tr>
-                            <tr>
-                                <td>Chylous</td>
-                                <td>Milky white</td>
-                                <td>Thoracic duct injury</td>
-                                <td>Notify provider; dietary modification</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box warning">
-                    <div class="info-box-header">
-                        <i class="fas fa-exclamation-triangle"></i> Critical Drainage Amounts - Notify Provider!
-                    </div>
-                    <ul>
-                        <li><strong>>100 mL/hour</strong> of bloody drainage for 3+ consecutive hours</li>
-                        <li><strong>>200 mL</strong> immediately after insertion (massive hemothorax)</li>
-                        <li><strong>Sudden increase</strong> in drainage rate</li>
-                        <li><strong>Change in character</strong> (clear to bloody, serous to purulent)</li>
-                        <li><strong>No drainage</strong> when expected (may indicate obstruction)</li>
-                    </ul>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Assess every 1–2 hours: insertion site (subcutaneous emphysema, drainage), tubing (kinks, dependent loops), water-seal (tidaling, bubbling), drainage (amount, color, rate), respiratory status (bilateral breath sounds, SpO2).</div>
-            </section>
-
-            <!-- Section 6: When to Clamp -->
-            <section class="guide-section" id="clamping">
-                <h2><span class="section-icon"><i class="fas fa-compress-alt"></i></span> When to Clamp Chest Tubes</h2>
-
-                <p>This is one of the most commonly tested concepts and most frequently misunderstood aspects of chest tube care. The short answer: <strong>Almost never clamp a chest tube!</strong></p>
-
-                <div class="decision-box">
-                    <h4><i class="fas fa-ban"></i> NEVER Clamp a Chest Tube If...</h4>
-                    <div class="decision-box-content">
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Pneumothorax: air, so the tube goes high</div>
+                    <div class="comparison-card-body">
+                        <p><strong>Placed at the 2nd or 3rd intercostal space, midclavicular line.</strong></p>
+                        <p><strong>Types:</strong></p>
                         <ul>
-                            <li><strong>There is an active air leak</strong> - Clamping traps air in the pleural space, causing tension pneumothorax!</li>
-                            <li><strong>The patient has a pneumothorax</strong> - Same reason - risk of tension pneumothorax</li>
-                            <li><strong>During routine transport</strong> - Keep the system open; just keep it below chest level</li>
-                            <li><strong>To check for lung re-expansion</strong> - This is done by water seal trial, NOT clamping</li>
-                            <li><strong>When you're unsure</strong> - When in doubt, DON'T clamp!</li>
+                            <li><strong>Spontaneous.</strong> No trauma. Classically a tall thin young man with a ruptured bleb.</li>
+                            <li><strong>Traumatic.</strong> Penetrating or blunt chest injury.</li>
+                            <li><strong>Iatrogenic.</strong> After a central line, thoracentesis or biopsy.</li>
+                            <li><strong>Tension.</strong> An emergency. A one-way valve shifts the mediastinum.</li>
                         </ul>
+                        <p><strong>Expect:</strong> an air leak at first, and very little fluid.</p>
                     </div>
                 </div>
-
-                <div class="florencebot-tip" id="tip-never-clamp">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">The Golden Rule: Don't Clamp Air Leaks!</div>
-                    <div class="florencebot-tip-content">
-                        <strong>If there's an air leak, NEVER clamp the chest tube!</strong> Here's why this is so dangerous: If air is leaking from the lung into the pleural space and you clamp the tube, that air has nowhere to go. It keeps accumulating, pressure builds up, and you create a <strong>tension pneumothorax</strong> - a life-threatening emergency where the pressure shifts the mediastinum and compresses the heart. The whole point of the chest tube is to let that air ESCAPE. Remember: <strong>air leak + clamp = potential tension pneumothorax</strong>. This is a critical NCLEX concept!
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Hemothorax: blood, so the tube goes low</div>
+                    <div class="comparison-card-body">
+                        <p><strong>Placed at the 5th or 6th intercostal space, midaxillary line.</strong></p>
+                        <p><strong>Causes:</strong></p>
+                        <ul>
+                            <li><strong>Trauma.</strong> Rib fractures, penetrating injury.</li>
+                            <li><strong>Surgical.</strong> After thoracic surgery.</li>
+                            <li><strong>Vascular.</strong> Aortic rupture or vessel injury.</li>
+                            <li><strong>Malignancy.</strong> Tumour eroding into a vessel.</li>
+                        </ul>
+                        <p><strong>Expect:</strong> bloody drainage, sometimes a lot of it, and usually no air leak.</p>
                     </div>
                 </div>
+            </div>
 
-                <h3>The ONLY Times to Clamp</h3>
+            <h3>The rest of the list</h3>
 
-                <div class="info-box tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-check-circle"></i> Acceptable Reasons to Clamp
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Indication</th><th>What it is</th><th>What the drainage looks like</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pleural effusion</td>
+                            <td>Fluid from heart failure, cancer or infection</td>
+                            <td>Serous or serosanguineous, variable volume</td>
+                        </tr>
+                        <tr>
+                            <td>Empyema</td>
+                            <td>Infected pleural fluid, usually after pneumonia</td>
+                            <td>Thick and purulent. May need fibrinolytics</td>
+                        </tr>
+                        <tr>
+                            <td>Chylothorax</td>
+                            <td>Lymph leaking from an injured thoracic duct</td>
+                            <td>Milky white, high in triglycerides</td>
+                        </tr>
+                        <tr>
+                            <td>After thoracic surgery</td>
+                            <td>Placed prophylactically after resection or cardiac surgery</td>
+                            <td>Serosanguineous, with an air leak after a lung resection</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> Tension pneumothorax comes before the tube</div>
+                <div class="info-box-content">
+                    <p>A tension pneumothorax is decompressed with a needle. Second intercostal space, midclavicular line. It happens immediately.</p>
+                    <p>The chest tube comes afterwards. Waiting for a tube in a patient whose mediastinum has already shifted is waiting too long.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Air rises, so pneumothorax tubes go high. Fluid sinks, so hemothorax and effusion tubes go low. Tension pneumothorax gets a needle first.
+            </div>
+        </section>
+
+        <!-- ══════════ DRAINAGE SYSTEMS ══════════ -->
+        <section class="guide-section" id="drainage-systems">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>Three chambers, one that matters</h2>
+            </div>
+
+            <p>The unit at the bedside is three chambers in one box. You will be asked about the middle one. Far more than the other two.</p>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Collection chamber.</strong> Closest to the patient. It receives and measures the drainage. You watch amount, colour and consistency here.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Water seal chamber.</strong> A one-way valve made of water. Air can bubble out through it; nothing can get back in, because the tube is submerged. It holds 2 cm of water. Tidaling and air leaks are both assessed here.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Suction control chamber.</strong> Sets how much negative pressure is applied, usually minus 20 cm H2O. Wet systems use a water column; dry systems use a dial. Not every patient is on suction.</div>
+                </li>
+            </ol>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-tint"></i> The water seal must never run dry</div>
+                <div class="info-box-content">
+                    <p>Two centimetres of water is what stands between the pleural space and the room. If that chamber dries out, air can travel back up the tube and collapse the lung.</p>
+                    <p>It protects the patient even when suction fails or is disconnected. That is why water seal alone is safe. Do not fill above the line either.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-water-seal">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Water Seal Is the Safety Net</div>
+                <div class="florencebot-tip-content">Suction is optional. The water seal is not. Two centimetres of water lets air out and never lets it back. Check the level every shift, because water evaporates.</div>
+            </div>
+
+            <h3>Wet and dry suction</h3>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Wet suction</div>
+                    <div class="comparison-card-body">
+                        <p>The height of the water column sets the suction, usually 20 cm.</p>
+                        <ul>
+                            <li>Gentle continuous bubbling here is normal and expected.</li>
+                            <li>Vigorous bubbling means the wall suction is set too high.</li>
+                            <li>The water evaporates, so the level needs checking.</li>
+                        </ul>
+                        <p>Bubbling in the <strong>suction chamber</strong> is normal. Bubbling in the <strong>water seal</strong> is not the same thing.</p>
                     </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Dry suction</div>
+                    <div class="comparison-card-body">
+                        <p>A dial sets the level and a bellows or indicator confirms it is running.</p>
+                        <ul>
+                            <li>No water in this chamber, so nothing evaporates.</li>
+                            <li>Quieter, and easier to set precisely.</li>
+                            <li>Check the indicator rather than listening for bubbles.</li>
+                        </ul>
+                        <p>The absence of bubbling here tells you nothing is wrong.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-bookmark"></i> The setup, as numbers</div>
+                <div class="info-box-content">
                     <ul>
-                        <li><strong>Changing the drainage system</strong> - Brief clamping (seconds to minutes) while switching to new system. Have new system ready FIRST!</li>
-                        <li><strong>Locating source of air leak</strong> - Momentary clamping to determine if leak is from patient or system</li>
-                        <li><strong>Assessing for removal readiness</strong> - ONLY if ordered by provider, ONLY if no air leak present, and with close monitoring</li>
-                        <li><strong>Accidental disconnection</strong> - Clamp briefly while reconnecting or placing tube in sterile water</li>
+                        <li><strong>Water seal:</strong> 2 cm H2O.</li>
+                        <li><strong>Suction:</strong> minus 20 cm H2O in most orders.</li>
+                        <li><strong>Position:</strong> upright, and always below chest level.</li>
+                        <li><strong>Tubing:</strong> no kinks, no loops, no dependent coils.</li>
                     </ul>
-                    <p style="margin-top: 12px;"><strong>Key principle:</strong> Any clamping should be BRIEF and the patient should be monitored closely!</p>
+                    <p>Below chest level is not a preference. Raise the unit above the insertion site and drainage runs backward into the pleural space.</p>
                 </div>
+            </div>
 
-                <h3>What to Do If the System Breaks or Disconnects</h3>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Collection measures, water seal protects, suction controls. Two centimetres in the water seal, minus 20 on the suction, and the whole unit stays upright and below the chest.
+            </div>
+        </section>
 
-                <div class="procedure-box">
-                    <h4><i class="fas fa-first-aid"></i> Emergency: System Disconnection</h4>
-                    <div class="procedure-steps">
-                        <div class="procedure-step">
-                            <div class="step-number">1</div>
-                            <div class="step-content">
-                                <strong>Don't panic!</strong> The water seal provides some protection even if suction is lost.
-                            </div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="step-number">2</div>
-                            <div class="step-content">
-                                <strong>If tube disconnects from system:</strong> Submerge the end of the chest tube in a container of sterile water or saline (about 2 cm deep) to create a temporary water seal.
-                            </div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="step-number">3</div>
-                            <div class="step-content">
-                                <strong>If no sterile water available:</strong> Brief clamping (use padded clamps) while obtaining new system - but only for moments!
-                            </div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="step-number">4</div>
-                            <div class="step-content">
-                                <strong>Reconnect or replace system</strong> as quickly as possible. Never leave a chest tube clamped for extended periods.
-                            </div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="step-number">5</div>
-                            <div class="step-content">
-                                <strong>Assess the patient</strong> immediately. Check respiratory status, breath sounds, oxygen saturation.
-                            </div>
-                        </div>
+        <!-- ══════════ TIDALING ══════════ -->
+        <section class="guide-section" id="tidaling-air-leaks">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>Movement or bubbles</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: the water level moving, versus air passing through the water.</p>
+
+            <p>This is the most tested pair in the topic. Both happen in the same chamber and they mean opposite things.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Tidaling: normal</div>
+                    <div class="comparison-card-body">
+                        <p><strong>What you see:</strong> the water level rises and falls with each breath. Up on inspiration in a spontaneously breathing patient, down on expiration. No bubbles.</p>
+                        <p><strong>What it means:</strong> the tube is patent and sitting in the pleural space. Pressure changes are getting through.</p>
+                        <p><strong>What you do:</strong> document it and keep monitoring. This is the finding you want.</p>
                     </div>
                 </div>
-
-                <div class="info-box nclex-tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-graduation-cap"></i> NCLEX Priority: Tube Comes Out!
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Air leak: assess it</div>
+                    <div class="comparison-card-body">
+                        <p><strong>What you see:</strong> actual bubbles rising through the water seal. It may be constant, or only on coughing.</p>
+                        <p><strong>What it means:</strong> air is entering the system. Either from the patient's lung, or from a break in the equipment.</p>
+                        <p><strong>What you do:</strong> find out which. That is the whole task.</p>
                     </div>
-                    <p><strong>If the chest tube is accidentally pulled out:</strong></p>
+                </div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The axis that separates them</div>
+                <div class="info-box-content">
+                    <p>Movement of water versus air through water.</p>
+                    <p>Intermittent bubbling that comes and goes with the breath is often expected. It follows a pneumothorax or a lung resection. That is the patient's own air leaving, which is the point of the tube.</p>
+                    <p>Continuous bubbling that does not change with the breath is different. That leak is usually in the equipment, not the patient.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-tidaling-vs-leak">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Waves, Not Bubbles</div>
+                <div class="florencebot-tip-content">Tidaling is a wave. An air leak is bubbles. If the level moves and nothing rises through it, the system is doing its job. If you can see bubbles, something is letting air in and you need to find out where.</div>
+            </div>
+
+            <h3>Finding the leak</h3>
+
+            <p>Work outward from the patient. The most common source is the least dramatic one.</p>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Check the connections.</strong> Every junction from patient to unit. Loose connections are the most common system leak.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Inspect the tubing.</strong> Look for cracks, holes and damage along its whole length.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Check the insertion site.</strong> Air can be drawn in around the tube if the dressing has lifted.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Occlude briefly, close to the patient.</strong> If the bubbling stops, the leak is coming from the patient, which is expected with a pneumothorax. If it continues, the leak is downstream in the system. Momentary only.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Document and report.</strong> Note the size, when it happens, and whether it has changed from the last shift. The trend is what the team acts on.</div>
+                </li>
+            </ol>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> Air leaks that need reporting</div>
+                <div class="info-box-content">
                     <ul>
-                        <li>Immediately cover the site with a sterile occlusive dressing (petroleum gauze)</li>
-                        <li>Tape on THREE sides only - this creates a flutter valve</li>
-                        <li>The open side allows air to escape during expiration but seals during inspiration</li>
-                        <li>Call for help, monitor patient closely, prepare for possible reinsertion</li>
+                        <li>A new leak that was not there before</li>
+                        <li>A leak that is getting bigger</li>
+                        <li>A leak still present 5 to 7 days after surgery</li>
+                        <li>A large continuous leak with respiratory distress</li>
+                        <li>A leak with subcutaneous emphysema, meaning crepitus around the site</li>
                     </ul>
                 </div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: NEVER routinely clamp a chest tube — risk of tension pneumothorax. Only clamp briefly to locate an air leak, change the system, or as specifically ordered. If in doubt, DON'T clamp.</div>
-            </section>
+            <h3>When the tidaling stops</h3>
 
-            <!-- Section 7: Complications -->
-            <section class="guide-section" id="complications">
-                <h2><span class="section-icon"><i class="fas fa-exclamation-triangle"></i></span> Complications & Emergencies</h2>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-ban"></i> Two opposite meanings</div>
+                <div class="info-box-content">
+                    <p><strong>The good one:</strong> the lung has fully re-expanded, and the tube may be ready to come out.</p>
+                    <p><strong>The bad one:</strong> the system is obstructed by a kink, a clot, or a dependent loop.</p>
+                    <p>You cannot tell them apart by looking at the chamber. Trace the tubing from patient to unit first. If nothing is obstructed, notify the provider. Expect a chest x-ray to confirm the lung is up.</p>
+                    <p>Rule out the dangerous one before you document the reassuring one.</p>
+                </div>
+            </div>
 
-                <p>Recognizing and responding quickly to chest tube complications can be life-saving. Know the signs and immediate interventions.</p>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Tidaling is movement and it is normal. Bubbles are an air leak and need a source. No tidaling means obstruction until you have traced the tubing and proved otherwise.
+            </div>
+        </section>
 
-                <h3>Tension Pneumothorax</h3>
+        <!-- ══════════ ASSESSMENT ══════════ -->
+        <section class="guide-section" id="assessment">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2>Assessing it, in order</h2>
+            </div>
 
-                <div class="info-box warning">
-                    <div class="info-box-header">
-                        <i class="fas fa-exclamation-triangle"></i> EMERGENCY: Tension Pneumothorax
-                    </div>
-                    <p><strong>This is a life-threatening emergency requiring immediate intervention!</strong></p>
-                    <p><strong>Signs:</strong></p>
+            <p>Assess at least every 4 hours, and more often if the patient is unstable. Work the same way every time so nothing is skipped.</p>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-brain"></i> DOPE</div>
+                <div class="info-box-content">
                     <ul>
-                        <li>Severe respiratory distress, tachypnea</li>
-                        <li>Tracheal deviation AWAY from affected side</li>
-                        <li>Absent breath sounds on affected side</li>
-                        <li>Hypotension, tachycardia</li>
-                        <li>Jugular venous distension (JVD)</li>
-                        <li>Cyanosis</li>
+                        <li><strong>D</strong>rainage. Amount, colour, consistency.</li>
+                        <li><strong>O</strong>cclusive dressing. Intact, dry, sealed at the site.</li>
+                        <li><strong>P</strong>atency. No kinks, clots or dependent loops. Tidaling present.</li>
+                        <li><strong>E</strong>quipment. Water seal level, suction setting, unit upright and below the chest.</li>
                     </ul>
-                    <p style="margin-top: 10px;"><strong>Immediate Action:</strong> If chest tube is clamped - UNCLAMP IMMEDIATELY! Call for help. Prepare for needle decompression or chest tube insertion. This is a clinical diagnosis - don't wait for X-ray!</p>
                 </div>
+            </div>
 
-                <div class="florencebot-tip" id="tip-tension-pneumo">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Tension Pneumothorax - Act Fast!</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Tension pneumothorax = obstructive shock from trapped air!</strong> Here's what's happening: Air enters the pleural space but can't escape (one-way valve effect). Pressure builds up, collapses the lung completely, then pushes the mediastinum to the opposite side. This compresses the heart and great vessels, causing cardiovascular collapse. Classic signs to remember: <strong>tracheal deviation</strong> (away from the affected side), <strong>absent breath sounds</strong> (affected side), <strong>JVD</strong> (blood can't return to heart), and <strong>hypotension</strong>. Treatment is IMMEDIATE decompression - this is the one time you might see a needle stuck in someone's chest (2nd intercostal space, midclavicular line).
-                    </div>
-                </div>
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>The patient first.</strong> Respiratory rate, saturation, breath sounds on both sides, work of breathing, pain, and crepitus around the site.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>The insertion site.</strong> Dressing intact and occlusive, no drainage tracking around the tube, sutures intact, no redness or purulence.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>The tubing.</strong> No kinks, no dependent loops, connections secure, tube taped to the patient, no visible clots.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>The unit.</strong> Upright and below chest level, water seal at 2 cm, suction at the ordered level, tidaling present or its absence documented.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>The output.</strong> Mark the time and level on the chamber. Work out the hourly rate when the situation is acute. Note any change in colour.</div>
+                </li>
+            </ol>
 
-                <h3>Other Complications</h3>
+            <h3>Reading the drainage</h3>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Complication</th>
-                                <th>Signs</th>
-                                <th>Nursing Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Subcutaneous Emphysema</strong></td>
-                                <td>Crepitus (crackling under skin), swelling around insertion site, may extend to neck/face</td>
-                                <td>Mark borders with pen; monitor for spread; notify provider; check tube patency</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Tube Obstruction</strong></td>
-                                <td>Loss of tidaling, no drainage when expected, respiratory distress</td>
-                                <td>Check for kinks/clots; may need to milk tubing (if ordered); never irrigate without order</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Tube Dislodgement</strong></td>
-                                <td>Tube visibly out of chest, air leak at site, respiratory distress</td>
-                                <td>Cover site with occlusive dressing (3 sides); call for help; monitor vitals</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Infection</strong></td>
-                                <td>Fever, redness/swelling at site, purulent drainage, elevated WBC</td>
-                                <td>Maintain sterile technique; notify provider; may need antibiotics</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Re-expansion Pulmonary Edema</strong></td>
-                                <td>Cough, dyspnea, pink frothy sputum after lung re-expands (rare)</td>
-                                <td>Occurs with rapid drainage of large effusion; supportive care; O2, possible intubation</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Type</th><th>What it looks like</th><th>Where it comes from</th><th>What you do</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Serous</td><td>Clear, straw coloured</td><td>Pleural effusion, or routine post-op</td><td>Monitor the volume. Expected.</td></tr>
+                        <tr><td>Serosanguineous</td><td>Pink to light red</td><td>Post-operative, healing trauma</td><td>Normal after surgery. Watch the trend.</td></tr>
+                        <tr><td>Sanguineous</td><td>Bright red</td><td>Active bleeding, hemothorax</td><td>Monitor closely. Report above 100 mL per hour.</td></tr>
+                        <tr><td>Purulent</td><td>Thick, yellow-green, cloudy</td><td>Empyema or infection</td><td>Notify the provider. Cultures likely.</td></tr>
+                        <tr><td>Chylous</td><td>Milky white</td><td>Thoracic duct injury</td><td>Notify the provider. Diet is usually modified.</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <h3>Milking vs Stripping Tubing</h3>
+            <p>The expected progression after surgery is bloody, then pink, then straw coloured. Drainage that goes the other way is a finding.</p>
 
-                <div class="info-box tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-check-circle"></i> Current Evidence on Tube Manipulation
-                    </div>
-                    <p><strong>Traditional practice:</strong> "Strip" or "milk" chest tubes to prevent clots</p>
-                    <p><strong>Current evidence:</strong> Routine stripping is NOT recommended!</p>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> Drainage that gets the provider called</div>
+                <div class="info-box-content">
                     <ul>
-                        <li><strong>Stripping</strong> creates very high negative pressures (-400 cm H2O) that can damage lung tissue</li>
-                        <li><strong>Milking</strong> (gentle squeezing) creates less pressure but still controversial</li>
-                        <li>Only perform if specifically ordered and clot obstruction is suspected</li>
-                        <li>Better approach: Keep tubing free of dependent loops; may gently lift tubing to facilitate drainage</li>
+                        <li>More than 100 mL per hour of bloody drainage for 3 hours running</li>
+                        <li>More than 200 mL immediately after insertion, which suggests a massive hemothorax</li>
+                        <li>A sudden increase in the rate</li>
+                        <li>A change in character, clear to bloody or serous to purulent</li>
+                        <li>No drainage at all when you were expecting some, which points at obstruction</li>
                     </ul>
                 </div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: Watch for tension pneumothorax (tracheal deviation, absent breath sounds, hypotension), infection at site, subcutaneous emphysema (crepitus), and re-expansion pulmonary edema (rapid drainage).</div>
-            </section>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Patient, site, tubing, unit, output. Every 4 hours, more if unstable. Over 100 mL per hour of blood for 3 hours gets reported, and so does no drainage at all.
+            </div>
+        </section>
 
-            <!-- Section 8: Removal -->
-            <section class="guide-section" id="removal">
-                <h2><span class="section-icon"><i class="fas fa-check-double"></i></span> Chest Tube Removal</h2>
+        <!-- ══════════ CLAMPING ══════════ -->
+        <section class="guide-section" id="clamping">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2>Almost never clamp</h2>
+            </div>
 
-                <p>Chest tube removal is a provider procedure, but nurses play a key role in preparation, assistance, and post-removal monitoring.</p>
+            <p>This is the most tested decision in the topic. The answer is nearly always the same. Do not clamp.</p>
 
-                <h3>Criteria for Removal</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Criterion</th>
-                                <th>Typical Threshold</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Drainage Amount</td>
-                                <td>&lt;150-200 mL in 24 hours (varies by institution)</td>
-                            </tr>
-                            <tr>
-                                <td>Air Leak</td>
-                                <td>No air leak for 24+ hours</td>
-                            </tr>
-                            <tr>
-                                <td>Chest X-Ray</td>
-                                <td>Lung fully expanded; no residual pneumothorax or significant effusion</td>
-                            </tr>
-                            <tr>
-                                <td>Clinical Status</td>
-                                <td>Stable respiratory status; no respiratory distress</td>
-                            </tr>
-                            <tr>
-                                <td>Water Seal Trial</td>
-                                <td>May be placed on water seal (no suction) for several hours to assess tolerance before removal</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-ban"></i> Never clamp when</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li><strong>There is an active air leak.</strong> The trapped air becomes a tension pneumothorax.</li>
+                        <li><strong>The patient has a pneumothorax.</strong> Same mechanism, same result.</li>
+                        <li><strong>You are moving the patient.</strong> Leave the system open and keep it below chest level.</li>
+                        <li><strong>You want to test whether the lung stayed up.</strong> That is a water seal trial, not a clamp.</li>
+                        <li><strong>You are not certain.</strong> When in doubt, do not clamp.</li>
+                    </ul>
                 </div>
+            </div>
 
-                <h3>Nursing Role in Removal</h3>
-
-                <div class="interventions-list">
-                    <h4><i class="fas fa-user-nurse"></i> Before, During & After Removal</h4>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">1</div>
-                        <div class="intervention-content">
-                            <h5>Pre-Procedure</h5>
-                            <p>Explain procedure to patient. Pre-medicate for pain as ordered (30 min before). Gather supplies: suture removal kit, occlusive dressing (petroleum gauze), tape. Position patient (usually sitting at edge of bed or supine).</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">2</div>
-                        <div class="intervention-content">
-                            <h5>During Procedure</h5>
-                            <p>Instruct patient to take deep breath, hold it, and bear down (Valsalva maneuver) OR exhale during removal - prevents air entry. Provider removes tube in one quick motion. Immediately apply occlusive dressing.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">3</div>
-                        <div class="intervention-content">
-                            <h5>Post-Procedure</h5>
-                            <p>Monitor respiratory status closely for first several hours. Check dressing for drainage or air leak. Auscultate breath sounds. Watch for signs of recurrent pneumothorax. Chest X-ray usually obtained 1-2 hours post-removal.</p>
-                        </div>
-                    </div>
+            <div class="florencebot-tip" id="tip-never-clamp">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Air Leak Plus Clamp Equals Tension</div>
+                <div class="florencebot-tip-content">If air is leaking from the lung and you clamp the tube, the air has nowhere to go. It accumulates, the pressure shifts the mediastinum, and the heart is compressed. The tube exists to let that air out. Clamping closes the exit.</div>
+            </div>
 
-                <div class="florencebot-tip" id="tip-valsalva">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Why Valsalva During Removal?</div>
-                    <div class="florencebot-tip-content">
-                        <strong>The Valsalva maneuver (or exhaling) during chest tube removal prevents air from entering the pleural space!</strong> When the tube is pulled out, there's a brief moment where the hole in the chest wall is open. If the patient inhales at that moment, negative pressure could suck air into the pleural space, causing a pneumothorax. By having the patient hold their breath and bear down (or exhale), intrathoracic pressure increases, pushing air OUT rather than allowing it in. The occlusive dressing is applied immediately after to seal the site. The dressing should be left in place for 48-72 hours.
-                    </div>
+            <h3>The three times you may</h3>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Acceptable, and briefly</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li><strong>Changing the drainage unit.</strong> Seconds, with the new system already open and ready.</li>
+                        <li><strong>Locating an air leak.</strong> A momentary occlusion to tell patient from system.</li>
+                        <li><strong>An accidental disconnection.</strong> Briefly, while you reconnect or set up sterile water.</li>
+                    </ul>
+                    <p>A provider may also order a clamping trial before removal. Only when there is no air leak. Any clamp is brief, and the patient is watched throughout.</p>
                 </div>
+            </div>
 
-                <div class="info-box warning">
-                    <div class="info-box-header">
-                        <i class="fas fa-exclamation-triangle"></i> Post-Removal Warning Signs - Notify Provider!
-                    </div>
+            <h3>When the system comes apart</h3>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Do not panic.</strong> The water seal is a physical valve. Losing suction is not the same as losing protection.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>If the tube disconnects from the unit,</strong> put the end into sterile water or saline, about 2 cm deep. You have just rebuilt the water seal.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>If there is no sterile water to hand,</strong> clamp briefly with padded clamps while you get a new system. Moments, not minutes.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Reconnect or replace</strong> as fast as you can. Never leave a chest tube clamped and walk away.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Assess the patient.</strong> Respiratory status, breath sounds, saturation. The equipment is fixed; now check the person.</div>
+                </li>
+            </ol>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-first-aid"></i> If the tube comes out of the chest</div>
+                <div class="info-box-content">
+                    <p>Cover the site immediately with a sterile occlusive dressing, usually petroleum gauze.</p>
+                    <p><strong>Tape it on three sides only.</strong> That makes a flutter valve. Air can escape on expiration through the open side, and the dressing seals against inspiration.</p>
+                    <p>Tape all four sides and you have built the one-way valve that causes a tension pneumothorax. Then call for help and prepare for reinsertion.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Do not clamp. The exceptions are a system change, a momentary leak hunt, and a disconnection. Tube out means occlusive dressing taped on three sides.
+            </div>
+        </section>
+
+        <!-- ══════════ COMPLICATIONS ══════════ -->
+        <section class="guide-section" id="complications">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2>What goes wrong</h2>
+            </div>
+
+            <h3>Tension pneumothorax</h3>
+
+            <p class="subtitle">Discrimination axis: air trapped with no way out, so the pressure pushes the mediastinum across.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> Four findings and an action</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li><strong>Tracheal deviation</strong> away from the affected side</li>
+                        <li><strong>Absent breath sounds</strong> on the affected side</li>
+                        <li><strong>Jugular venous distension,</strong> because blood cannot return to the heart</li>
+                        <li><strong>Hypotension</strong> with tachycardia</li>
+                    </ul>
+                    <p>Add severe distress, tachypnea and cyanosis. This is a clinical diagnosis, so do not wait for an x-ray.</p>
+                    <p>If the tube is clamped, unclamp it now. Call for help. Prepare for needle decompression at the 2nd intercostal space, midclavicular line.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-tension-pneumo">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">This Is Obstructive Shock</div>
+                <div class="florencebot-tip-content">Trapped air collapses the lung, then pushes the mediastinum across and compresses the heart and great vessels. That is why the blood pressure falls and the neck veins fill. Treating it means letting the air out, immediately.</div>
+            </div>
+
+            <h3>The rest</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Complication</th><th>What you find</th><th>What you do</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Subcutaneous emphysema</strong></td>
+                            <td>Crepitus under the skin, swelling at the site, sometimes spreading to neck and face</td>
+                            <td>Mark the borders with a pen so spread can be measured. Check tube patency. Notify the provider.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Obstruction</strong></td>
+                            <td>Tidaling stops, no drainage when you expected some, respiratory distress</td>
+                            <td>Look for kinks and clots. Milk the tubing only if ordered. Never irrigate without an order.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dislodgement</strong></td>
+                            <td>Tube visibly out, air leaking at the site, distress</td>
+                            <td>Occlusive dressing taped on three sides. Call for help. Monitor.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infection</strong></td>
+                            <td>Fever, redness and swelling at the site, purulent drainage, rising white count</td>
+                            <td>Sterile technique on every dressing change. Notify the provider.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Re-expansion pulmonary edema</strong></td>
+                            <td>Cough, dyspnea and pink frothy sputum just after the lung comes back up. Rare.</td>
+                            <td>Happens when a large effusion is drained too fast. Supportive care, oxygen, sometimes intubation.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-hand-paper"></i> Do not strip the tubing</div>
+                <div class="info-box-content">
+                    <p>Stripping a chest tube was standard practice for decades. It is no longer recommended.</p>
+                    <p>Stripping generates negative pressures around minus 400 cm H2O, which is enough to injure lung tissue. Milking, meaning gentle squeezing, generates less but is still debated.</p>
+                    <p>Do it only if it is specifically ordered and a clot is suspected. The better routine is keeping the tubing free of dependent loops in the first place.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Tension pneumothorax is tracheal deviation, absent breath sounds, JVD and hypotension, treated before the x-ray. Mark subcutaneous emphysema so you can measure it. Do not strip the tubing.
+            </div>
+        </section>
+
+        <!-- ══════════ REMOVAL ══════════ -->
+        <section class="guide-section" id="removal">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>Taking it out</h2>
+            </div>
+
+            <p>The provider removes the tube. Your job is three things. The preparation, the breath at the right moment, and the hours afterwards.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Criterion</th><th>Threshold</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Drainage</td><td>Under 150 to 200 mL in 24 hours, depending on the institution</td></tr>
+                        <tr><td>Air leak</td><td>None for 24 hours or more</td></tr>
+                        <tr><td>Chest x-ray</td><td>Lung fully expanded, no residual pneumothorax or significant effusion</td></tr>
+                        <tr><td>Clinical status</td><td>Stable respiratory status, no distress</td></tr>
+                        <tr><td>Water seal trial</td><td>Often placed on water seal without suction for some hours first, to see if the lung holds</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Before.</strong> Explain what will happen. Pre-medicate for pain about 30 minutes ahead. Gather the suture removal kit, petroleum gauze and tape. Position the patient, usually sitting at the edge of the bed or supine.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>During.</strong> Have the patient take a deep breath, hold it and bear down, which is the Valsalva manoeuvre. Exhaling works too. The provider pulls the tube in one movement and the occlusive dressing goes straight on.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>After.</strong> Watch the respiratory status closely for several hours. Check the dressing for drainage or a leak. Listen to breath sounds. A chest x-ray is usually taken 1 to 2 hours later.</div>
+                </li>
+            </ol>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Why the breath matters</div>
+                <div class="info-box-content">
+                    <p>Pulling the tube leaves the chest wall briefly open. Let the patient inhale in that instant and negative pressure draws air in. You have made a pneumothorax.</p>
+                    <p>Valsalva raises intrathoracic pressure, so air is pushed out rather than sucked in. Exhaling does the same job.</p>
+                    <p>The dressing goes on immediately and stays for 48 to 72 hours.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-valsalva">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Never Let Them Inhale</div>
+                <div class="florencebot-tip-content">Bear down or breathe out. Either raises the pressure inside the chest so air leaves through the hole instead of entering it. An inhale at that moment is how a routine removal becomes a pneumothorax.</div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> After removal, report</div>
+                <div class="info-box-content">
                     <ul>
                         <li>Increasing dyspnea or respiratory distress</li>
-                        <li>Decreased oxygen saturation</li>
-                        <li>Diminished breath sounds on affected side</li>
-                        <li>Subcutaneous emphysema developing or worsening</li>
-                        <li>Significant drainage from site</li>
-                        <li>Tracheal deviation (tension pneumothorax)</li>
+                        <li>Falling oxygen saturation</li>
+                        <li>Diminished breath sounds on the affected side</li>
+                        <li>Subcutaneous emphysema appearing or spreading</li>
+                        <li>Significant drainage from the site</li>
+                        <li>Tracheal deviation, which means a tension pneumothorax</li>
                     </ul>
                 </div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: Remove when: air leak resolved, drainage minimal (&lt; 150 mL/24h), lung re-expanded on CXR. Patient performs Valsalva or exhales during removal. Apply petroleum gauze dressing immediately.</div>
-            </section>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Out when the leak has gone, drainage is under 150 mL a day and the lung is up on x-ray. Valsalva or exhale during the pull. Occlusive dressing on immediately.
+            </div>
+        </section>
+
+        <!-- ══════════ NUMBERS ══════════ -->
+        <section class="guide-section" id="numbers-cold">
+            <div class="section-header">
+                <div class="section-number">11</div>
+                <h2>Numbers to have cold</h2>
+            </div>
+
+            <p>These should be automatic. If you have to reason toward one of them, it is not learned yet.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead><tr><th>Number</th><th>Meaning</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Minus 4 to minus 8 cm H2O</strong></td><td>Normal pleural pressure</td></tr>
+                        <tr><td><strong>10 to 20 mL</strong></td><td>Normal volume of pleural fluid</td></tr>
+                        <tr><td><strong>2 cm</strong></td><td>Water level in the water seal chamber</td></tr>
+                        <tr><td><strong>Minus 20 cm H2O</strong></td><td>Usual ordered suction level</td></tr>
+                        <tr><td><strong>2nd or 3rd intercostal space, midclavicular</strong></td><td>Tube position for a pneumothorax, because air rises</td></tr>
+                        <tr><td><strong>5th or 6th intercostal space, midaxillary</strong></td><td>Tube position for blood or fluid, because they sink</td></tr>
+                        <tr><td><strong>2nd intercostal space, midclavicular</strong></td><td>Needle decompression site for tension pneumothorax</td></tr>
+                        <tr><td><strong>Over 100 mL per hour for 3 hours</strong></td><td>Bloody drainage that gets the provider called</td></tr>
+                        <tr><td><strong>Over 200 mL immediately</strong></td><td>Drainage on insertion suggesting a massive hemothorax</td></tr>
+                        <tr><td><strong>Under 150 to 200 mL in 24 hours</strong></td><td>Drainage low enough to consider removal</td></tr>
+                        <tr><td><strong>24 hours</strong></td><td>How long the air leak must be gone before removal</td></tr>
+                        <tr><td><strong>5 to 7 days</strong></td><td>Post-op air leak duration that becomes a concern</td></tr>
+                        <tr><td><strong>Every 4 hours</strong></td><td>Minimum assessment frequency, more if unstable</td></tr>
+                        <tr><td><strong>Three sides</strong></td><td>Tape on an occlusive dressing when the tube comes out</td></tr>
+                        <tr><td><strong>30 minutes</strong></td><td>How far ahead of removal to give analgesia</td></tr>
+                        <tr><td><strong>1 to 2 hours</strong></td><td>When the chest x-ray is taken after removal</td></tr>
+                        <tr><td><strong>48 to 72 hours</strong></td><td>How long the occlusive dressing stays on after removal</td></tr>
+                        <tr><td><strong>Minus 400 cm H2O</strong></td><td>Pressure generated by stripping the tubing, which is why it is not done</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these on the back of the index card from section 02. Test yourself on the meaning, not the number; the exam gives you the number and asks what it means.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PRODUCE ══════════ -->
+        <section class="guide-section" id="rebuild">
+            <div class="section-header">
+                <div class="section-number">12</div>
+                <h2>Now close the guide</h2>
+            </div>
+
+            <p>Reading this again will not move your score. Producing it will. Everything below is done with the page shut.</p>
+
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <ol>
+                    <li>Three chambers, one per line. What each does and the number attached to it.</li>
+                    <li>Two columns, tidaling and air leak. What you see, what it means, what you do.</li>
+                    <li>Write the five situations where you must not clamp, then the three where you may.</li>
+                    <li>Write the four findings of tension pneumothorax and the immediate action.</li>
+                    <li>Write what you do for a disconnection, then for a tube that has come out. They are different.</li>
+                    <li>Write the removal criteria and the instruction you give the patient at the moment of the pull.</li>
+                </ol>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Say these four out loud</div>
+                <div class="info-box-content">
+                    <p>Pick any row from section 02. Without looking, say what you are looking at, what it means, the priority action, and the mistake that makes it worse.</p>
+                    <p>If you can do that for all four, you are ready. If you cannot, you know exactly which section to reopen.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> You will not be asked to describe a drainage system. You will be given a chamber, a change, and four reasonable actions, and asked which comes first.
+            </div>
+        </section>
 
             <!-- Practice Questions -->
             <section class="practice-questions" id="practice-questions">
-                <h2><i class="fas fa-flask"></i> NCLEX Challenge — Test Your Knowledge</h2>
+                <h2><i class="fas fa-flask"></i> Test yourself</h2>
                 <div class="quiz-cta-box">
                     <div class="quiz-cta-icon"><i class="fas fa-clipboard-check"></i></div>
                     <div class="quiz-cta-content">
-                        <h3>Ready to Test Your Knowledge?</h3>
-                        <p>10 NCLEX-style questions with detailed rationales covering tidaling vs continuous bubbling, clamping rules, drainage assessment, accidental dislodgement, tube disconnection, and removal preparation. Available in Practice Mode (instant feedback) and Exam Mode (timed, no peeking).</p>
+                        <h3>Can you produce it?</h3>
+                        <p>10 questions with full rationales covering tidaling versus continuous bubbling, clamping rules, drainage assessment, accidental dislodgement, disconnection, and removal. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
                         <div class="quiz-cta-stats">
                             <span><i class="fas fa-question-circle"></i> 10 Questions</span>
                             <span><i class="fas fa-clock"></i> ~15 min</span>
@@ -1958,27 +947,35 @@
                 <div class="key-points-grid">
                     <div class="key-point">
                         <i class="fas fa-wave-square"></i>
-                        <p><strong>Tidaling = normal</strong> (gentle rise/fall with breathing); shows patent system</p>
+                        <p><strong>Tidaling</strong> is water moving with the breath, and it is normal</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-circle"></i>
-                        <p><strong>Bubbling = air leak</strong>; determine if from patient (expected) or system (fix it)</p>
+                        <p><strong>Bubbles</strong> in the water seal are an air leak that needs a source</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-ban"></i>
-                        <p><strong>NEVER clamp</strong> if there's an air leak - risk of tension pneumothorax!</p>
+                        <p><strong>Never clamp</strong> with an air leak; it makes a tension pneumothorax</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-search"></i>
+                        <p><strong>No tidaling</strong> means obstruction until you have traced the tubing</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-arrow-down"></i>
-                        <p><strong>Keep system below chest</strong> level and upright at all times</p>
+                        <p><strong>Below chest level</strong> and upright, always</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-tint"></i>
-                        <p><strong>>100 mL/hr bloody drainage</strong> for 3 hours = notify provider</p>
+                        <p><strong>Over 100 mL per hour</strong> of blood for 3 hours gets reported</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-first-aid"></i>
-                        <p><strong>Tube out?</strong> Occlusive dressing, tape 3 sides (flutter valve)</p>
+                        <p><strong>Tube out</strong> means occlusive dressing taped on three sides</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-lungs"></i>
+                        <p><strong>Tracheal deviation</strong> with hypotension is a tension pneumothorax</p>
                     </div>
                 </div>
             </section>
@@ -1996,7 +993,7 @@
                 <div class="cross-ref-group">
                     <h3>After this guide, study:</h3>
                     <ul>
-                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Patient Safety — Coming Soon</span></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Patient Safety, coming soon</span></li>
                     </ul>
                 </div>
                 <div class="cross-ref-group">

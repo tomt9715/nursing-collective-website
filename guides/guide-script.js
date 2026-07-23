@@ -70,7 +70,7 @@ function showAccessDenied(message, showLoginButton = true) {
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(13,27,42,0.85);
+            background: rgba(58,44,26,0.45);
             -webkit-backdrop-filter: blur(8px);
             backdrop-filter: blur(8px);
             display: flex;
@@ -80,8 +80,8 @@ function showAccessDenied(message, showLoginButton = true) {
             padding: 20px;
         }
         .access-denied-content {
-            background: #162032;
-            border: 0.5px solid rgba(255,255,255,0.12);
+            background: #ffffff;
+            border: 0.5px solid rgba(58,44,26,0.17);
             border-radius: 14px;
             padding: 40px 36px;
             text-align: center;
@@ -99,17 +99,17 @@ function showAccessDenied(message, showLoginButton = true) {
         }
         .access-denied-icon i {
             font-size: 22px;
-            color: #e05252;
+            color: #d64545;
         }
         .access-denied-content h2 {
             font-family: 'DM Serif Display', serif;
             font-size: 22px;
             font-weight: 400;
-            color: #e8edf2;
+            color: #2b2621;
             margin-bottom: 8px;
         }
         .access-denied-content p {
-            color: #8a9bb0;
+            color: #6a6157;
             font-size: 14px;
             line-height: 1.6;
             margin-bottom: 24px;
@@ -133,28 +133,28 @@ function showAccessDenied(message, showLoginButton = true) {
             transition: all 0.15s;
         }
         .btn-primary {
-            background: #0fbcad;
-            color: #0d1b2a;
+            background: #0e9a8f;
+            color: #fff;
         }
         .btn-primary:hover {
-            background: #0a9086;
+            background: #0b7d74;
         }
         .btn-secondary {
             background: transparent;
-            color: #8a9bb0;
-            border: 0.5px solid rgba(255,255,255,0.12);
+            color: #6a6157;
+            border: 0.5px solid rgba(58,44,26,0.17);
         }
         .btn-secondary:hover {
-            border-color: rgba(255,255,255,0.2);
-            color: #e8edf2;
+            border-color: rgba(58,44,26,0.28);
+            color: #2b2621;
         }
         .btn-tertiary {
             background: transparent;
-            color: #0fbcad;
+            color: #0e9a8f;
             border: 0.5px solid rgba(15,188,173,0.3);
         }
         .btn-tertiary:hover {
-            border-color: #0fbcad;
+            border-color: #0e9a8f;
             background: rgba(15,188,173,0.08);
         }
         @media (max-width: 480px) {

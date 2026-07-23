@@ -148,19 +148,11 @@ img { max-width: 100%; display: block; }
   margin-bottom: 14px;
 }
 
-/* .cover-logo is a DIV wrapping the guide icon <img>, so the box is sized
-   here and the image is constrained to it. Sizing the div alone lets a
-   512px icon overflow across the cover. */
-.cover-logo {
-  width: 60px;
-  height: 60px;
-  margin-bottom: 18px;
-}
-.cover-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+/* The per-guide illustrated icon was drawn for the old design and reads as
+   clip-art against this editorial cover. Category identity is carried by
+   the accent colour and the category eyebrow instead. The asset still ships
+   and is used by the guide card grids elsewhere. */
+.cover-logo { display: none; }
 
 .cover-title {
   font-family: 'DM Serif Display', serif;
@@ -523,7 +515,20 @@ img { max-width: 100%; display: block; }
 .bottom-line {
   background: var(--navy-3);
   border-color: var(--border-mid);
+  font-weight: 400;
+}
+
+/* "Bottom Line:" carried a 🎯 emoji in the markup. The label now earns its
+   emphasis typographically instead. */
+.bottom-line strong:first-child {
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
   font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cat);
+  display: block;
+  margin-bottom: 5px;
 }
 
 

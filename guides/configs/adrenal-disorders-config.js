@@ -1,35 +1,39 @@
 // Adrenal Disorders Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
-        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
-        { id: 'physiology', icon: 'fa-dna', title: 'Adrenal Physiology' },
-        { id: 'cushings', icon: 'fa-arrow-up', title: "Cushing's Syndrome" },
-        { id: 'cushings-treatment', icon: 'fa-pills', title: "Cushing's Treatment" },
-        { id: 'addisons', icon: 'fa-arrow-down', title: "Addison's Disease" },
-        { id: 'addisons-treatment', icon: 'fa-prescription-bottle-alt', title: "Addison's Treatment" },
-        { id: 'adrenal-crisis', icon: 'fa-exclamation-triangle', title: 'Adrenal Crisis' },
-        { id: 'pheochromocytoma', icon: 'fa-heartbeat', title: 'Pheochromocytoma' },
-        { id: 'adrenalectomy', icon: 'fa-procedures', title: 'Adrenalectomy Care' },
-        { id: 'comparison', icon: 'fa-columns', title: "Cushing's vs Addison's" },
-        { id: 'pediatric', icon: 'fa-baby', title: 'Pediatric Considerations' },
+        { id: 'start-here', icon: 'fa-crosshairs', title: 'What actually gets you' },
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'The four things' },
+        { id: 'physiology', icon: 'fa-dna', title: 'One hormone, four actions' },
+        { id: 'cushings', icon: 'fa-arrow-up', title: 'Too much cortisol' },
+        { id: 'cushings-treatment', icon: 'fa-pills', title: 'Treating too much' },
+        { id: 'addisons', icon: 'fa-arrow-down', title: 'Too little cortisol' },
+        { id: 'addisons-treatment', icon: 'fa-prescription-bottle-alt', title: 'Replacing what is gone' },
+        { id: 'adrenal-crisis', icon: 'fa-exclamation-triangle', title: 'Adrenal crisis' },
+        { id: 'pheochromocytoma', icon: 'fa-heartbeat', title: 'The tumour that is not cortisol' },
+        { id: 'adrenalectomy', icon: 'fa-procedures', title: 'After the gland comes out' },
+        { id: 'comparison', icon: 'fa-columns', title: 'The mirror' },
+        { id: 'pediatric', icon: 'fa-baby', title: 'Children' },
+        { id: 'numbers-cold', icon: 'fa-hashtag', title: 'Numbers to have cold' },
+        { id: 'rebuild', icon: 'fa-pencil-alt', title: 'Now close the guide' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'Test yourself' },
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-arrow-up', value: '↑ Cortisol', label: "Cushing's syndrome" },
-        { type: 'warning', icon: 'fa-arrow-down', value: '↓ Cortisol', label: "Addison's disease" },
-        { type: 'critical', icon: 'fa-bolt', value: 'Emergency', label: 'Adrenal crisis' },
-        { type: 'info', icon: 'fa-moon', value: 'AM level', label: 'Cortisol testing time' },
-        { type: 'target', icon: 'fa-pills', value: 'AM dose', label: 'Steroid timing (largest)' },
-        { type: 'critical', icon: 'fa-heartbeat', value: '5 H\'s', label: 'Pheochromocytoma' }
+        { type: 'critical', icon: 'fa-arrow-up', value: 'High cortisol', label: "Cushing's syndrome" },
+        { type: 'warning', icon: 'fa-arrow-down', value: 'Low cortisol', label: "Addison's disease" },
+        { type: 'critical', icon: 'fa-bolt', value: '100 mg IV', label: 'Hydrocortisone in crisis' },
+        { type: 'info', icon: 'fa-clock', value: '6-8 AM', label: 'When cortisol peaks' },
+        { type: 'target', icon: 'fa-pills', value: '2/3 AM', label: 'Hydrocortisone split' },
+        { type: 'critical', icon: 'fa-heartbeat', value: 'Alpha first', label: 'Pheochromocytoma order' }
     ],
     clinicalPearls: [
-        { id: 'tip-cushings-vs-addisons', title: "Cushing's vs Addison's", text: "Cushing's = too MUCH cortisol (moon face, buffalo hump, hypertension, hyperglycemia). Addison's = too LITTLE cortisol (bronze skin, hypotension, hypoglycemia, salt craving). Everything is opposite." },
-        { id: 'tip-cortisol-functions', title: 'Cortisol Does Everything', text: "Cortisol raises glucose, retains sodium/water, suppresses immunity, breaks down protein/fat. Too much = Cushing's effects. Too little = Addison's effects. Know cortisol's actions and you know both diseases." },
-        { id: 'tip-steroid-safety', title: 'Never Stop Steroids Abruptly', text: 'Long-term steroids suppress the HPA axis. Abrupt withdrawal can trigger adrenal crisis. Always taper gradually. Patients need stress-dose steroids for illness/surgery.' },
-        { id: 'tip-adrenal-crisis', title: 'Adrenal Crisis = Emergency', text: "Hypotension + hyponatremia + hyperkalemia + altered LOC = adrenal crisis. Treat with IV hydrocortisone 100mg STAT + IV NS bolus. Don't wait for labs to treat." },
-        { id: 'tip-addisons-teaching', title: "Addison's Patient Teaching", text: 'Wear medical alert ID. Never skip steroids. Double dose for illness (stress dosing). Carry injectable hydrocortisone for emergencies. High sodium diet.' },
-        { id: 'tip-pheo-bp', title: 'Pheo = Hypertensive Emergency', text: "Pheochromocytoma: 5 H's — Hypertension, Headache, Hyperhidrosis, Hypermetabolism, Hyperglycemia. Treat with alpha-blocker FIRST (phenoxybenzamine), then beta-blocker. Never give beta-blocker alone." },
-        { id: 'tip-cushings-infection', title: "Cushing's Infection Risk", text: "Elevated cortisol suppresses the immune system. Cushing's patients may NOT show typical signs of infection (no fever, no elevated WBC). A 'normal' temperature could be hiding sepsis." },
-        { id: 'tip-iatrogenic', title: 'Iatrogenic Cushing\'s', text: 'The #1 cause of Cushing\'s syndrome is long-term exogenous corticosteroid use (prednisone, dexamethasone). Always ask about steroid medications before workup.' }
+        { id: 'tip-cortisol-functions', title: 'Derive It, Do Not Memorise It', text: "Cortisol raises glucose, holds sodium, suppresses immunity, breaks down protein. Run those up for Cushing's, down for Addison's." },
+        { id: 'tip-iatrogenic', title: 'The Commonest Cause Is a Prescription', text: 'Not a tumour. Prednisone. Ask about creams, inhalers and injections; patients do not count those as medication.' },
+        { id: 'tip-cushings-infection', title: 'No Fever Does Not Mean No Infection', text: 'Cortisol suppresses the response. Watch for confusion, new tachycardia, and wounds that stop progressing.' },
+        { id: 'tip-addisons-teaching', title: 'Vomiting Is an Emergency Here', text: 'A patient who cannot keep tablets down has no cortisol at all. That is what the injectable kit is for.' },
+        { id: 'tip-steroid-safety', title: 'The Adrenals Atrophy From Disuse', text: 'Chronic steroids do the work and the gland shrinks. Stop suddenly and no organ is left to step in.' },
+        { id: 'tip-adrenal-crisis', title: 'Draw It, Then Give It', text: 'Draw the cortisol first if you like; that costs seconds. Waiting for the result is what kills people.' },
+        { id: 'tip-pheo-bp', title: 'Alpha Before Beta', text: 'Beta-blockade alone shuts the vasodilator escape route while alpha vasoconstriction runs unopposed.' },
+        { id: 'tip-cushings-vs-addisons', title: 'Know One, Invert It', text: "Everything high in Cushing's is low in Addison's. Potassium is the one row that runs the other way." }
     ]
 };

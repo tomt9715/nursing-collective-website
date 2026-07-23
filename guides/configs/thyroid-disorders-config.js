@@ -1,36 +1,40 @@
 // Thyroid Disorders Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
-        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
-        { id: 'physiology', icon: 'fa-dna', title: 'Thyroid Physiology' },
-        { id: 'lab-values', icon: 'fa-vials', title: 'Lab Interpretation' },
+        { id: 'start-here', icon: 'fa-crosshairs', title: 'What actually gets you' },
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'The four things' },
+        { id: 'physiology', icon: 'fa-dna', title: 'Why the lab reads backwards' },
+        { id: 'lab-values', icon: 'fa-vials', title: 'Reading the labs' },
         { id: 'hypothyroidism', icon: 'fa-temperature-low', title: 'Hypothyroidism' },
-        { id: 'myxedema-coma', icon: 'fa-exclamation-triangle', title: 'Myxedema Coma' },
+        { id: 'myxedema-coma', icon: 'fa-snowflake', title: 'Myxedema coma' },
         { id: 'hyperthyroidism', icon: 'fa-temperature-high', title: 'Hyperthyroidism' },
-        { id: 'thyroid-storm', icon: 'fa-bolt', title: 'Thyroid Storm' },
-        { id: 'medications', icon: 'fa-pills', title: 'Medications' },
-        { id: 'goiter-nodules', icon: 'fa-search', title: 'Goiter & Nodules' },
-        { id: 'thyroidectomy', icon: 'fa-procedures', title: 'Thyroidectomy Care' },
-        { id: 'diet', icon: 'fa-utensils', title: 'Diet Considerations' },
-        { id: 'pediatric', icon: 'fa-baby', title: 'Pediatric Considerations' },
+        { id: 'thyroid-storm', icon: 'fa-fire', title: 'Thyroid storm' },
+        { id: 'medications', icon: 'fa-pills', title: 'The drugs' },
+        { id: 'goiter-nodules', icon: 'fa-search', title: 'Goiter and nodules' },
+        { id: 'thyroidectomy', icon: 'fa-procedures', title: 'After the thyroid comes out' },
+        { id: 'diet', icon: 'fa-utensils', title: 'Iodine and food' },
+        { id: 'pediatric', icon: 'fa-baby', title: 'Children are not small adults' },
+        { id: 'numbers-cold', icon: 'fa-hashtag', title: 'Numbers to have cold' },
+        { id: 'rebuild', icon: 'fa-pencil-alt', title: 'Now close the guide' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'Test yourself' },
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
         { type: 'info', icon: 'fa-vial', value: '0.4-4.0', label: 'Normal TSH (mIU/L)' },
-        { type: 'critical', icon: 'fa-arrow-up', value: '↑ TSH', label: 'Hypothyroidism' },
-        { type: 'warning', icon: 'fa-arrow-down', value: '↓ TSH', label: 'Hyperthyroidism' },
-        { type: 'critical', icon: 'fa-thermometer-full', value: '> 104°F', label: 'Thyroid storm fever' },
-        { type: 'target', icon: 'fa-pills', value: 'AM empty', label: 'Levothyroxine timing' },
-        { type: 'critical', icon: 'fa-lungs', value: 'Airway', label: 'Post-thyroidectomy #1' }
+        { type: 'critical', icon: 'fa-arrow-up', value: 'High TSH', label: 'Hypothyroid' },
+        { type: 'warning', icon: 'fa-arrow-down', value: 'Low TSH', label: 'Hyperthyroid' },
+        { type: 'critical', icon: 'fa-thermometer-full', value: '>104 F', label: 'Thyroid storm fever' },
+        { type: 'target', icon: 'fa-pills', value: 'Empty AM', label: 'Levothyroxine timing' },
+        { type: 'critical', icon: 'fa-lungs', value: 'Airway', label: 'First after thyroidectomy' }
     ],
     clinicalPearls: [
-        { id: 'tip-tsh-inverse', title: 'TSH Inverse Rule', text: 'TSH goes OPPOSITE of thyroid function. High TSH = low thyroid (hypo). Low TSH = high thyroid (hyper). TSH is the most sensitive screening test.' },
-        { id: 'tip-hypo-vs-hyper', title: 'Hypo vs Hyper', text: 'HYPOthyroid = everything LOW and SLOW (cold, constipated, weight gain, bradycardia). HYPERthyroid = everything HIGH and FAST (hot, diarrhea, weight loss, tachycardia).' },
-        { id: 'tip-levothyroxine', title: 'Levothyroxine Safety', text: 'Take on empty stomach 30-60 min before breakfast. Separate from calcium/iron by 4 hours. Increases warfarin effect. Lifelong therapy — never stop abruptly.' },
-        { id: 'tip-thyroid-storm', title: 'Thyroid Storm Emergency', text: 'Fever >104°F + tachycardia + delirium = thyroid storm until proven otherwise. Treat with PTU, beta-blockers, corticosteroids, and cooling measures. Mortality 20-30%.' },
-        { id: 'tip-myxedema', title: 'Myxedema Coma', text: 'Hypothermia + altered mental status + precipitating event = myxedema coma. IV levothyroxine, passive rewarming only, and supportive care. Do NOT actively warm — causes vasodilation and shock.' },
-        { id: 'tip-thyroidectomy', title: 'Post-Thyroidectomy Priority', text: 'Airway first! Keep trach tray and calcium gluconate at bedside. Assess voice every 2-4 hours. Watch for Chvostek and Trousseau signs (hypocalcemia).' },
-        { id: 'tip-ptu-pregnancy', title: 'PTU in Pregnancy', text: 'PTU is preferred in first trimester (less teratogenic). Switch to methimazole for 2nd/3rd trimester. PTU has black box warning for hepatotoxicity.' },
-        { id: 'tip-rai-precautions', title: 'RAI Precautions', text: 'Radioactive iodine: pregnancy test before treatment, avoid pregnant women/children for days after, separate utensils, flush toilet twice. Will likely cause permanent hypothyroidism.' }
+        { id: 'tip-tsh-inverse', title: 'The TSH Inverse Rule', text: 'TSH measures how loudly the pituitary is asking, not how much hormone there is. Weak thyroid, loud pituitary, high TSH.' },
+        { id: 'tip-levothyroxine', title: 'Levothyroxine Teaching', text: 'Empty stomach 30 to 60 minutes before breakfast, 4 hours from calcium and iron, and it potentiates warfarin.' },
+        { id: 'tip-myxedema', title: 'Passive Rewarming Only', text: 'External heat dilates peripheral vessels and this heart cannot compensate. Warm blankets, no more than 1 F an hour.' },
+        { id: 'tip-hypo-vs-hyper', title: 'Learn One List, Get the Other Free', text: 'Every finding is an exact opposite. Cold or hot, gaining or losing, slow pulse or fast. Learn hypo and flip it.' },
+        { id: 'tip-thyroid-storm', title: 'Four Blocks, in Order', text: 'Block synthesis with PTU, release with iodine an hour later, adrenergic effects with a beta-blocker, conversion with steroids.' },
+        { id: 'tip-ptu-pregnancy', title: 'PTU in the First Trimester Only', text: 'Methimazole is teratogenic in the first trimester; PTU covers that window, then switch back for the liver risk.' },
+        { id: 'tip-rai-precautions', title: 'RAI Precautions', text: 'Pregnancy test first, none for 6 to 12 months after. Sleep alone, separate utensils, flush twice, keep 3 feet away.' },
+        { id: 'tip-thyroidectomy', title: 'Airway, Bleeding, Calcium, Communication', text: 'Airway first, always. Then bleeding, and check behind the neck. Then calcium. Then the voice, every 2 to 4 hours.' }
     ]
 };

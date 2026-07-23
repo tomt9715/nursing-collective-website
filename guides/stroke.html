@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stroke Study Guide - The Nursing Collective</title>
-    <meta name="description" content="Comprehensive nursing study guide for Stroke. Learn the FAST assessment, differentiate ischemic vs hemorrhagic stroke, and understand tPA inclusion and exclusion criteria.">
+    <meta name="description" content="Nursing study guide for Stroke. Separate clot from bleed before you treat, work the tPA criteria, and know why the blood pressure is allowed to stay high.">
     <link rel="canonical" href="https://thenursingcollective.pro/guides/stroke.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/guides/stroke.html">
     <meta property="og:title" content="Stroke Study Guide - The Nursing Collective">
-    <meta property="og:description" content="Comprehensive nursing study guide for Stroke. Learn the FAST assessment, differentiate ischemic vs hemorrhagic stroke, and understand tPA inclusion and exclusion criteria.">
+    <meta property="og:description" content="Nursing study guide for Stroke. Separate clot from bleed before you treat, work the tPA criteria, and know why the blood pressure is allowed to stay high.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
     <!-- Favicon -->
@@ -18,1104 +18,25 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/cookie-consent.css">
 
-    <style>
-        /* ============================================
-           STROKE GUIDE - MAGAZINE STYLE LAYOUT
-           Fresh design with timeline elements
-           ============================================ */
-
-        :root {
-            --primary-color: #2E86AB;
-            --primary-dark: #236b8a;
-            --secondary-color: #A23B72;
-            --accent-color: #f59e0b;
-            --text-primary: #1f2937;
-            --text-secondary: #4b5563;
-            --background: #ffffff;
-            --border-color: #e5e7eb;
-            /* Stroke-specific colors */
-            --ischemic-color: #3b82f6;
-            --hemorrhagic-color: #ef4444;
-            --tpa-green: #10b981;
-            --tpa-red: #dc2626;
-            --time-critical: #f59e0b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: #f8fafc;
-        }
-
-        /* Download Bar - Fixed at top */
-        .download-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .download-bar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-        }
-
-        .download-bar-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: white;
-            color: var(--primary-color);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-download:hover {
-            background: #f0f9ff;
-            transform: translateY(-1px);
-        }
-
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-back:hover {
-            background: rgba(255,255,255,0.25);
-        }
-
-        /* Document Container */
-        .document-container {
-            max-width: 900px;
-            margin: 80px auto 40px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        /* Cover Page - Brain/Stroke themed gradient */
-        .cover-page {
-            background: linear-gradient(135deg, #1e3a5f 0%, #3b82f6 40%, #ef4444 80%, #dc2626 100%);
-            color: white;
-            padding: 80px 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M40 40c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20-20-8.954-20-20zM0 40c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20S0 51.046 0 40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .cover-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cover-logo {
-            width: 90px;
-            height: 90px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            padding: 15px;
-        }
-
-        .cover-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .cover-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            background: rgba(239, 68, 68, 0.3);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .cover-badge i {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .cover-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .cover-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .cover-stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .cover-stat {
-            text-align: center;
-        }
-
-        .cover-stat .number {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .cover-stat .label {
-            font-size: 0.85rem;
-            opacity: 0.85;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-        }
-
-        .cover-brand {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        /* Document Content */
-        .document-content {
-            padding: 60px;
-        }
-
-        /* Learning Objectives - Horizontal Card Style */
-        .learning-objectives {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .learning-objectives::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(245, 158, 11, 0.1) 0%, transparent 60%);
-        }
-
-        .learning-objectives h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #92400e;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-        }
-
-        .learning-objectives-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            position: relative;
-        }
-
-        .objective-card {
-            background: white;
-            border-radius: 12px;
-            padding: 16px 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .objective-card i {
-            color: var(--time-critical);
-            font-size: 1.1rem;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-
-        .objective-card span {
-            font-size: 0.98rem;
-            color: var(--text-primary);
-        }
-
-        /* Sticky Navigation */
-        .sticky-nav {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 40px;
-            position: sticky;
-            top: 70px;
-            z-index: 100;
-        }
-
-        .sticky-nav h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 14px;
-        }
-
-        .nav-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .nav-pills a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .nav-pills a:hover {
-            background: var(--primary-color);
-            color: white;
-            border-color: var(--primary-color);
-        }
-
-        .nav-pills a i {
-            font-size: 0.85rem;
-        }
-
-        /* Content Sections */
-        .guide-section {
-            margin-bottom: 50px;
-            scroll-margin-top: 140px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .section-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 12px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .section-title-group h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .section-title-group .subtitle {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        .guide-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 28px 0 14px;
-        }
-
-        .guide-section h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin: 20px 0 10px;
-        }
-
-        .guide-section p {
-            color: var(--text-secondary);
-            font-size: 1.02rem;
-            margin-bottom: 14px;
-        }
-
-        .guide-section ul, .guide-section ol {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            padding-left: 24px;
-        }
-
-        .guide-section li {
-            margin-bottom: 8px;
-        }
-
-        .guide-section strong {
-            color: var(--text-primary);
-        }
-
-        /* FAST Assessment - Hero Style */
-        .fast-hero {
-            background: linear-gradient(135deg, #1e3a5f, #3b82f6);
-            border-radius: 16px;
-            padding: 40px;
-            color: white;
-            margin: 24px 0;
-        }
-
-        .fast-hero h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin: 0 0 24px;
-            text-align: center;
-        }
-
-        .fast-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .fast-item {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 24px 16px;
-            text-align: center;
-            border: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .fast-letter {
-            width: 60px;
-            height: 60px;
-            background: white;
-            color: var(--ischemic-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin: 0 auto 16px;
-        }
-
-        .fast-item h4 {
-            color: white;
-            font-size: 1.1rem;
-            margin: 0 0 8px;
-        }
-
-        .fast-item p {
-            color: rgba(255,255,255,0.9);
-            font-size: 0.9rem;
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* Stroke Type Comparison - Side by Side */
-        .stroke-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            margin: 24px 0;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 2px solid var(--border-color);
-        }
-
-        .stroke-type {
-            padding: 0;
-        }
-
-        .stroke-type-header {
-            padding: 24px;
-            text-align: center;
-            color: white;
-        }
-
-        .stroke-type.ischemic .stroke-type-header {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-        }
-
-        .stroke-type.hemorrhagic .stroke-type-header {
-            background: linear-gradient(135deg, #991b1b, #ef4444);
-        }
-
-        .stroke-type-header i {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .stroke-type-header h4 {
-            color: white;
-            font-size: 1.3rem;
-            margin: 0 0 4px;
-        }
-
-        .stroke-type-header .percentage {
-            font-size: 1rem;
-            opacity: 0.9;
-        }
-
-        .stroke-type-body {
-            padding: 24px;
-            background: white;
-        }
-
-        .stroke-type-body h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 0 0 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .stroke-type-body h5:not(:first-child) {
-            margin-top: 20px;
-        }
-
-        .stroke-type-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .stroke-type-body li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 8px 0;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .stroke-type-body li i {
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .stroke-type.ischemic .stroke-type-body li i { color: var(--ischemic-color); }
-        .stroke-type.hemorrhagic .stroke-type-body li i { color: var(--hemorrhagic-color); }
-
-        /* tPA Timeline */
-        .tpa-timeline {
-            background: linear-gradient(to right, #f0fdf4, #dcfce7);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 24px 0;
-            position: relative;
-        }
-
-        .tpa-timeline h3 {
-            color: var(--tpa-green);
-            margin: 0 0 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .timeline {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(to right, var(--tpa-green), var(--time-critical), var(--tpa-red));
-            border-radius: 2px;
-            transform: translateY(-50%);
-        }
-
-        .timeline-point {
-            position: relative;
-            text-align: center;
-            flex: 1;
-        }
-
-        .timeline-marker {
-            width: 48px;
-            height: 48px;
-            background: white;
-            border: 4px solid;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 12px;
-            position: relative;
-            z-index: 1;
-            font-weight: 700;
-            font-size: 0.85rem;
-        }
-
-        .timeline-point:nth-child(1) .timeline-marker { border-color: var(--tpa-green); color: var(--tpa-green); }
-        .timeline-point:nth-child(2) .timeline-marker { border-color: var(--tpa-green); color: var(--tpa-green); }
-        .timeline-point:nth-child(3) .timeline-marker { border-color: var(--time-critical); color: var(--time-critical); }
-        .timeline-point:nth-child(4) .timeline-marker { border-color: var(--tpa-red); color: var(--tpa-red); }
-
-        .timeline-label {
-            font-weight: 600;
-            font-size: 0.95rem;
-            color: var(--text-primary);
-        }
-
-        .timeline-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        /* Criteria Boxes - Inclusion/Exclusion */
-        .criteria-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 24px 0;
-        }
-
-        .criteria-box {
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .criteria-box.inclusion {
-            border: 2px solid var(--tpa-green);
-        }
-
-        .criteria-box.exclusion {
-            border: 2px solid var(--tpa-red);
-        }
-
-        .criteria-header {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-        }
-
-        .criteria-box.inclusion .criteria-header {
-            background: linear-gradient(135deg, #059669, #10b981);
-        }
-
-        .criteria-box.exclusion .criteria-header {
-            background: linear-gradient(135deg, #b91c1c, #ef4444);
-        }
-
-        .criteria-header i {
-            font-size: 1.5rem;
-        }
-
-        .criteria-header h4 {
-            color: white;
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .criteria-body {
-            padding: 20px;
-            background: white;
-        }
-
-        .criteria-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .criteria-body li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .criteria-body li:last-child {
-            border-bottom: none;
-        }
-
-        .criteria-body li i {
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .criteria-box.inclusion .criteria-body li i { color: var(--tpa-green); }
-        .criteria-box.exclusion .criteria-body li i { color: var(--tpa-red); }
-
-        /* Info Boxes - Redesigned */
-        .info-box {
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin: 20px 0;
-            display: flex;
-            gap: 16px;
-        }
-
-        .info-box-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .info-box-icon i {
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .info-box-content {
-            flex: 1;
-        }
-
-        .info-box-content h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0 0 8px;
-        }
-
-        .info-box-content p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .info-box-content ul {
-            margin: 8px 0 0;
-            padding-left: 18px;
-        }
-
-        .info-box-content li {
-            margin-bottom: 4px;
-            font-size: 0.95rem;
-        }
-
-        .info-box.warning {
-            background: linear-gradient(135deg, #fef2f2, #fee2e2);
-            border: 1px solid #fecaca;
-        }
-
-        .info-box.warning .info-box-icon { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .info-box.warning .info-box-content h5 { color: #991b1b; }
-
-        .info-box.clinical {
-            background: linear-gradient(135deg, #fffbeb, #fef3c7);
-            border: 1px solid #fde68a;
-        }
-
-        .info-box.clinical .info-box-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
-        .info-box.clinical .info-box-content h5 { color: #92400e; }
-
-        .info-box.nclex {
-            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
-            border: 1px solid #ddd6fe;
-        }
-
-        .info-box.nclex .info-box-icon { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-        .info-box.nclex .info-box-content h5 { color: #5b21b6; }
-
-        .info-box.time {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            border: 1px solid #fcd34d;
-        }
-
-        .info-box.time .info-box-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
-        .info-box.time .info-box-content h5 { color: #92400e; }
-
-        .info-box.tip {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            border: 1px solid #a7f3d0;
-        }
-
-        .info-box.tip .info-box-icon { background: linear-gradient(135deg, #10b981, #059669); }
-        .info-box.tip .info-box-content h5 { color: #065f46; }
-
-        /* Tables */
-        .guide-table-wrapper {
-            overflow-x: auto;
-            margin: 20px 0;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .guide-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.92rem;
-        }
-
-        .guide-table thead {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .guide-table th {
-            padding: 14px 16px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .guide-table tbody tr {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .guide-table tbody tr:hover {
-            background: #f9fafb;
-        }
-
-        .guide-table td {
-            padding: 14px 16px;
-            color: var(--text-secondary);
-        }
-
-        .guide-table td:first-child {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* Nursing Interventions - Card Grid */
-        .intervention-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        .intervention-card {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .intervention-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-
-        .intervention-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .intervention-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .intervention-card h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .intervention-card p {
-            font-size: 0.92rem;
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* Key Points Summary */
-        .key-points-summary {
-            background: linear-gradient(135deg, #1e3a5f, #3b82f6);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 40px 0 0;
-            color: white;
-        }
-
-        .key-points-summary h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
-            margin: 0 0 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-        }
-
-        .key-points-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .key-point-item {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 18px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .key-point-item i {
-            font-size: 1.2rem;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-
-        .key-point-item p {
-            margin: 0;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: rgba(255,255,255,0.95);
-        }
-
-        .key-point-item strong {
-            color: white;
-        }
-
-        /* Footer */
-        .document-footer {
-            text-align: center;
-            padding: 32px 48px;
-            border-top: 1px solid var(--border-color);
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-        }
-
-        .footer-logo {
-            height: 48px;
-            width: auto;
-            margin-bottom: 12px;
-        }
-
-        .footer-tagline {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .footer-copyright {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Print Styles */
-        @page {
-            margin: 0.6in 0.4in;
-        }
-
-        @media print {
-            .download-bar { display: none !important; }
-            .sticky-nav { position: static; }
-
-            body {
-                background: white !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .document-container {
-                margin: 0 !important;
-                box-shadow: none !important;
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            .cover-page {
-                page-break-after: always;
-                break-after: page;
-            }
-
-            .info-box, .criteria-box, .fast-hero, .tpa-timeline, .key-points-summary {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            .stroke-comparison { page-break-inside: avoid; break-inside: avoid; }
-            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
-
-            h2, h3, h4 {
-                page-break-after: avoid;
-                break-after: avoid;
-            }
-
-            a { text-decoration: underline; }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .download-bar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 12px 16px;
-            }
-            .download-bar-actions {
-                width: 100%;
-                justify-content: center;
-            }
-            .cover-page { padding: 50px 30px; }
-            .cover-title { font-size: 2.5rem; }
-            .cover-stats { flex-direction: column; gap: 20px; }
-            .document-content { padding: 30px 24px; }
-            .learning-objectives-grid { grid-template-columns: 1fr; }
-            .nav-pills { flex-direction: column; }
-            .nav-pills a { justify-content: center; }
-            .fast-grid { grid-template-columns: repeat(2, 1fr); }
-            .stroke-comparison { grid-template-columns: 1fr; }
-            .criteria-container { grid-template-columns: 1fr; }
-            .timeline { flex-direction: column; gap: 24px; }
-            .timeline::before { display: none; }
-            .intervention-cards { grid-template-columns: 1fr; }
-            .key-points-list { grid-template-columns: 1fr; }
-            .sticky-nav { position: static; }
-        }
-    </style>
-
     <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="guide.css">
     <link rel="stylesheet" href="guide-sidebar.css">
     <script src="../beta-banner.js"></script>
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="../sentry-init.js"></script>
 </head>
-<body data-product-id="stroke" data-guide-name="Stroke">
+<body data-category="neurological" data-product-id="stroke" data-guide-name="Stroke">
     <!-- Download Bar -->
     <div class="download-bar">
         <div class="download-bar-brand">
-            <i class="fas fa-book-medical"></i>
-            <span>The Nursing Collective Study Guide</span>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective">
         </div>
         <div class="download-bar-actions">
             <a href="../my-guides.html" class="btn-back">
@@ -1136,28 +57,25 @@
                 <div class="cover-logo">
                     <img src="../assets/images/guide-icons/stroke.webp" alt="Stroke">
                 </div>
-                <div class="cover-badge">
-                    <i class="fas fa-clock"></i>
-                    Time-Critical Emergency
-                </div>
+                <div class="cover-category">Neurological</div>
                 <h1 class="cover-title">Stroke</h1>
-                <p class="cover-subtitle">Master stroke recognition with FAST assessment, understand the critical differences between ischemic and hemorrhagic stroke, and learn tPA eligibility criteria for rapid intervention.</p>
-                <div class="cover-stats">
-                    <div class="cover-stat">
-                        <div class="number">87%</div>
-                        <div class="label">Ischemic Strokes</div>
+                <p class="cover-subtitle">Two diseases wearing the same face, and the treatment for one is fatal to the other. Everything here runs on telling them apart, fast.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">20-25 minutes</div>
                     </div>
-                    <div class="cover-stat">
-                        <div class="number">4.5 hrs</div>
-                        <div class="label">tPA Window</div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
                     </div>
-                    <div class="cover-stat">
-                        <div class="number">1.9M</div>
-                        <div class="label">Neurons Lost/Min</div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">January 2026</div>
                     </div>
                 </div>
                 <div class="cover-brand">
-                    <i class="fas fa-graduation-cap"></i> The Nursing Collective | January 2026
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
                 </div>
             </div>
         </div>
@@ -1165,977 +83,833 @@
         <!-- Document Content -->
         <div class="document-content">
 
-            <!-- Learning Objectives -->
+            <!-- What you should be able to do without notes -->
             <section class="learning-objectives">
-                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
-                <div class="learning-objectives-grid">
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Apply the FAST assessment tool correctly for rapid stroke identification</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Differentiate between ischemic and hemorrhagic stroke presentations</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Identify tPA inclusion and exclusion criteria for thrombolytic therapy</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Understand cerebral circulation anatomy and stroke risk factors</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Prioritize nursing interventions during the acute stroke phase</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Recognize complications and implement appropriate monitoring</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- High-Yield Summary -->
-            <section class="high-yield-summary" id="high-yield-summary">
-                <h2><i class="fas fa-bolt"></i> High-Yield Summary — Review This in 60 Seconds</h2>
-                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
+                <h2><i class="fas fa-bullseye"></i> By the end, without notes</h2>
                 <ul>
-                    <li><strong>Two types of stroke:</strong> Ischemic (87%, clot blocks vessel) and Hemorrhagic (13%, vessel ruptures). Treatment is OPPOSITE — tPA for ischemic, NEVER for hemorrhagic.</li>
-                    <li><strong>BE FAST:</strong> Balance, Eyes, Face drooping, Arm drift, Speech slurred, Time to call 911. Time is brain — every minute without treatment = 1.9 million neurons lost.</li>
-                    <li><strong>tPA (alteplase) window:</strong> Within 3–4.5 hours of symptom onset. Check: no recent surgery, no hemorrhage on CT, BP &lt; 185/110, INR &lt; 1.7, platelets &gt; 100,000.</li>
-                    <li><strong>CT scan FIRST</strong> — must rule out hemorrhagic stroke BEFORE giving tPA. Ischemic strokes may not show on CT for 6–12 hours, but hemorrhage shows immediately.</li>
-                    <li><strong>Left hemisphere stroke</strong> = right-sided weakness + aphasia (language problems). <strong>Right hemisphere stroke</strong> = left-sided weakness + neglect (unaware of affected side).</li>
-                    <li><strong>Dysphagia screening</strong> before ANY oral intake — aspiration pneumonia is a leading cause of death post-stroke.</li>
-                    <li><strong>Hemorrhagic stroke:</strong> Manage BP aggressively (SBP &lt; 140), reverse anticoagulants, possible surgical evacuation. Elevate HOB 30°, seizure precautions.</li>
-                    <li><strong>NIH Stroke Scale (NIHSS)</strong> quantifies severity. Higher score = more severe. Serial assessments detect improvement or deterioration.</li>
-                    <li><strong>Position affected side UP</strong> when lying on side. Approach patient from the affected side to encourage turning toward neglected side.</li>
-                    <li><strong>Common mistake:</strong> Giving tPA to a hemorrhagic stroke patient — this is FATAL. Always get a CT scan first to determine stroke type before treatment.</li>
+                    <li><i class="fas fa-check-circle"></i> Say what has to happen before tPA, and why nothing moves until it does</li>
+                    <li><i class="fas fa-check-circle"></i> Tell a left hemisphere stroke from a right one by what the patient cannot do</li>
+                    <li><i class="fas fa-check-circle"></i> State four blood pressure targets and which scenario each one belongs to</li>
+                    <li><i class="fas fa-check-circle"></i> Explain why you let the pressure stay high in a stroke with no tPA</li>
+                    <li><i class="fas fa-check-circle"></i> Name the question you ask the family that decides eligibility</li>
+                    <li><i class="fas fa-check-circle"></i> Say what a stroke patient gets by mouth before the swallow screen</li>
                 </ul>
-                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
             </section>
 
-            <!-- Navigation -->
-            <nav class="sticky-nav">
-                <h3>Quick Navigation</h3>
-                <div class="nav-pills">
-                    <a href="#anatomy"><i class="fas fa-brain"></i> Brain Anatomy</a>
-                    <a href="#types"><i class="fas fa-code-branch"></i> Stroke Types</a>
-                    <a href="#fast"><i class="fas fa-clock"></i> FAST Assessment</a>
-                    <a href="#tpa"><i class="fas fa-syringe"></i> tPA Criteria</a>
-                    <a href="#interventions"><i class="fas fa-user-nurse"></i> Interventions</a>
-                    <a href="#medications"><i class="fas fa-pills"></i> Medications</a>
+        <!-- ══════════ START HERE ══════════ -->
+        <section class="guide-section" id="start-here">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>What actually gets you</h2>
+            </div>
+
+            <p>Stroke is two diseases that look identical at the bedside. One vessel is blocked. The other has burst. The drug that saves the first one kills the second.</p>
+
+            <p>That single fact organises the whole topic, and it is where the mistakes cluster.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You treated before you knew which one it was</div>
+                <div class="info-box-content">
+                    <p>Facial droop, arm weakness and slurred speech look the same either way. You cannot tell from the bedside. Neither can anyone else.</p>
+                    <p>The CT is not a formality. Giving a clot-buster to someone already bleeding into their brain is fatal. It is the most tested error in this guide.</p>
                 </div>
-            </nav>
+            </div>
 
-            <!-- Section 1: Brain Anatomy & Physiology -->
-            <section class="guide-section" id="anatomy">
-                <div class="section-header">
-                    <div class="section-number">1</div>
-                    <div class="section-title-group">
-                        <h2>Cerebrovascular Anatomy & Physiology</h2>
-                        <div class="subtitle">Understanding the brain's blood supply</div>
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You treated the blood pressure like a number to fix</div>
+                <div class="info-box-content">
+                    <p>A stroke patient at 200/110 looks alarming, so the instinct is to treat it. In an ischemic stroke without tPA, that pressure is keeping the salvageable tissue alive.</p>
+                    <p>There are four different targets in this topic, and they depend entirely on which situation you are in.</p>
                 </div>
+            </div>
 
-                <p>The brain requires a constant supply of oxygen and glucose to function. It receives approximately <strong>15-20% of total cardiac output</strong> and consumes about 20% of the body's oxygen. Understanding cerebral circulation is essential for recognizing stroke patterns.</p>
-
-                <h3>Cerebral Blood Supply</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Artery</th>
-                                <th>Area Supplied</th>
-                                <th>Stroke Symptoms if Occluded</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Anterior Cerebral (ACA)</td>
-                                <td>Frontal lobe, medial surface of brain</td>
-                                <td>Leg weakness > arm, personality changes, urinary incontinence</td>
-                            </tr>
-                            <tr>
-                                <td>Middle Cerebral (MCA)</td>
-                                <td>Lateral surface, motor/sensory cortex</td>
-                                <td>Arm/face weakness > leg, aphasia (if dominant), neglect</td>
-                            </tr>
-                            <tr>
-                                <td>Posterior Cerebral (PCA)</td>
-                                <td>Occipital lobe, visual cortex</td>
-                                <td>Visual field deficits, visual agnosia, memory problems</td>
-                            </tr>
-                            <tr>
-                                <td>Basilar Artery</td>
-                                <td>Brainstem, cerebellum</td>
-                                <td>Coma, "locked-in" syndrome, cranial nerve deficits</td>
-                            </tr>
-                            <tr>
-                                <td>Vertebral Arteries</td>
-                                <td>Medulla, cerebellum</td>
-                                <td>Vertigo, ataxia, difficulty swallowing, diplopia</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You did not ask when it started</div>
+                <div class="info-box-content">
+                    <p>Everything about eligibility rests on one timestamp, and the patient often cannot give it to you.</p>
+                    <p>The question is not when they noticed. It is when they were last seen completely normal. An unwitnessed stroke on waking has a last known well of bedtime, not of this morning.</p>
                 </div>
+            </div>
 
-                <div class="info-box clinical">
-                    <div class="info-box-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Clinical Pearl: Circle of Willis</h5>
-                        <p>The Circle of Willis is a ring of arteries at the base of the brain that provides collateral circulation. It connects the anterior (carotid) and posterior (vertebrobasilar) circulation, potentially providing backup blood flow during vessel occlusion. However, anatomical variations are common, and not everyone has a complete circle.</p>
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You gave them their morning tablets with water</div>
+                <div class="info-box-content">
+                    <p>Up to three-quarters of stroke patients have some swallowing impairment, and they cannot always feel it.</p>
+                    <p>Nothing by mouth until the swallow screen is passed. That includes water, and it includes oral medications.</p>
                 </div>
+            </div>
 
-                <h3>Key Concepts in Cerebral Perfusion</h3>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Study this as three discriminations: clot or bleed, which hemisphere, and which blood pressure target applies right now.
+            </div>
+        </section>
 
-                <ul>
-                    <li><strong>Cerebral Perfusion Pressure (CPP):</strong> MAP - ICP. Normal CPP is 60-100 mmHg. CPP < 50 mmHg causes ischemia.</li>
-                    <li><strong>Autoregulation:</strong> The brain maintains constant blood flow across MAP 60-160 mmHg. Lost in acute stroke.</li>
-                    <li><strong>Ischemic Penumbra:</strong> The area of potentially salvageable tissue surrounding the infarct core. Target of reperfusion therapy.</li>
-                    <li><strong>Ischemic Cascade:</strong> Within minutes of occlusion, ATP depletion leads to cell membrane failure, calcium influx, and neuronal death.</li>
-                </ul>
+        <!-- ══════════ THE FOUR THINGS ══════════ -->
+        <section class="guide-section" id="high-yield-summary">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The four things</h2>
+            </div>
 
-                <div class="info-box time">
-                    <div class="info-box-icon">
-                        <i class="fas fa-hourglass-half"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Time is Brain!</h5>
-                        <p><strong>Every minute without blood flow, 1.9 million neurons die.</strong> This is why rapid recognition and treatment are critical. The phrase "Time is Brain" emphasizes that delays in treatment directly translate to brain damage and disability.</p>
-                    </div>
+            <p>For each entity below, you should be able to say four things with the book closed: the one-sentence definition, the clue you would see in a patient, the priority nursing action, and the first-line drug with its teaching point.</p>
+
+            <p>If you cannot say all four out loud, you do not know it yet. Familiarity is not recall.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Entity</th>
+                            <th>Definition in one sentence</th>
+                            <th>Clue in the scenario</th>
+                            <th>Priority action</th>
+                            <th>First-line drug</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Ischemic stroke</strong></td>
+                            <td>A clot blocks a cerebral vessel and the tissue behind it starves.</td>
+                            <td>87 percent of strokes. Often gradual, sometimes a TIA warning first.</td>
+                            <td>CT immediately, then work the tPA clock.</td>
+                            <td>Alteplase, 0.9 mg/kg, within 4.5 hours of last known well.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hemorrhagic stroke</strong></td>
+                            <td>A vessel ruptures and blood compresses the brain around it.</td>
+                            <td>13 percent. Sudden and severe, thunderclap headache, vomiting, falling consciousness.</td>
+                            <td>Control the pressure hard, and watch the intracranial pressure.</td>
+                            <td>No tPA, ever. Labetalol or nicardipine to get systolic under 140.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>TIA</strong></td>
+                            <td>Ischemia that resolves without leaving an infarct behind.</td>
+                            <td>Deficits that came and went, usually within an hour.</td>
+                            <td>Treat it as a warning, not an all-clear. Urgent workup.</td>
+                            <td>Antiplatelet, plus aggressive risk factor management.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hemorrhagic transformation</strong></td>
+                            <td>An ischemic stroke that starts bleeding, usually after tPA.</td>
+                            <td>Sudden headache, falling consciousness, new deficit, rising pressure.</td>
+                            <td>Stop the infusion now, then get a stat CT.</td>
+                            <td>Nothing to give. Stopping the tPA is the intervention.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Four rows on one index card, by hand. Clot gets tPA, bleed never does, and the CT is what tells you which. Last known well starts the clock. That card is most of the exam.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ ANATOMY ══════════ -->
+        <section class="guide-section" id="anatomy">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>Which artery, which deficit</h2>
+            </div>
+
+            <p>The brain takes 15 to 20 percent of cardiac output. It burns about a fifth of the body's oxygen and stores almost none. So an interruption shows in seconds, not hours.</p>
+
+            <p>Which artery closed decides which deficits appear. Learn the map and you can reason backwards, from symptom to vessel.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Artery</th><th>What it supplies</th><th>What you see when it closes</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Anterior cerebral</td><td>Frontal lobe, and the inner surface of the hemisphere</td><td>Leg weaker than arm, personality change, urinary incontinence</td></tr>
+                        <tr><td>Middle cerebral</td><td>The outer surface, including motor and sensory cortex</td><td>Arm and face weaker than leg, aphasia if it is the dominant side, neglect if it is not</td></tr>
+                        <tr><td>Posterior cerebral</td><td>Occipital lobe and visual cortex</td><td>Visual field loss, visual agnosia, memory problems</td></tr>
+                        <tr><td>Basilar</td><td>Brainstem and cerebellum</td><td>Coma, locked-in syndrome, cranial nerve deficits</td></tr>
+                        <tr><td>Vertebral</td><td>Medulla and cerebellum</td><td>Vertigo, ataxia, trouble swallowing, double vision</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Left hemisphere or right</div>
+                <div class="info-box-content">
+                    <p>This pair comes up constantly. The axis is what the patient cannot do, not which side is weak.</p>
+                    <p><strong>Left hemisphere stroke:</strong> right-sided weakness, and aphasia. Language lives on the left in almost everyone. So they cannot find words, or cannot understand them. They usually know something is wrong, which is distressing.</p>
+                    <p><strong>Right hemisphere stroke:</strong> left-sided weakness, and neglect. They do not recognise the left side of the world as theirs. They may eat half a plate and say they finished.</p>
+                    <p>Aphasia means they know and cannot say. Neglect means they do not know. That changes how you approach them.</p>
                 </div>
+            </div>
 
-                <!-- FlorenceBot Tip: Time = Brain -->
-                <div class="florencebot-tip" id="tip-time-brain">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Time = Brain</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Always document the exact time symptoms started!</strong> This determines if the patient can receive clot-busting medication. Ask family or witnesses: "What time did you last see them acting completely normal?" This "last known well" time is critical—if we don't know when symptoms started, we can't safely give treatment.
-                    </div>
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-circle-notch"></i> The Circle of Willis</div>
+                <div class="info-box-content">
+                    <p>A ring of arteries at the base of the brain. It joins the front circulation from the carotids to the back circulation from the vertebrals.</p>
+                    <p>It exists so one blocked vessel can be bypassed. In practice the anatomy varies a lot, and not everyone has a complete circle. That is part of why the same occlusion does very different damage in different patients.</p>
                 </div>
+            </div>
 
-                <h3>Risk Factors for Stroke</h3>
+            <h3>Four ideas about perfusion</h3>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Modifiable Risk Factors</th>
-                                <th>Non-Modifiable Risk Factors</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Hypertension (#1 modifiable risk factor)</td>
-                                <td>Age (risk doubles each decade after 55)</td>
-                            </tr>
-                            <tr>
-                                <td>Diabetes mellitus</td>
-                                <td>Gender (males slightly higher risk)</td>
-                            </tr>
-                            <tr>
-                                <td>Atrial fibrillation</td>
-                                <td>Race (African Americans, Hispanics at higher risk)</td>
-                            </tr>
-                            <tr>
-                                <td>Hyperlipidemia</td>
-                                <td>Family history of stroke</td>
-                            </tr>
-                            <tr>
-                                <td>Smoking</td>
-                                <td>Previous stroke or TIA</td>
-                            </tr>
-                            <tr>
-                                <td>Obesity, sedentary lifestyle</td>
-                                <td>Certain genetic disorders</td>
-                            </tr>
-                            <tr>
-                                <td>Heavy alcohol use, cocaine use</td>
-                                <td>—</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <ul>
+                <li><strong>Cerebral perfusion pressure.</strong> Mean arterial pressure minus intracranial pressure. Normal is 60 to 100 mmHg, and under 50 causes ischemia.</li>
+                <li><strong>Autoregulation.</strong> The brain normally holds flow steady across a mean pressure of 60 to 160 mmHg. Acute stroke destroys that. It is why systemic pressure suddenly matters so much.</li>
+                <li><strong>The ischemic penumbra.</strong> The ring around the dead core that is starving but not yet dead. This is what reperfusion is trying to save.</li>
+                <li><strong>The ischemic cascade.</strong> Within minutes ATP runs out, cell membranes fail, calcium floods in, and neurons die.</li>
+            </ul>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-clock"></i> Time is brain</div>
+                <div class="info-box-content">
+                    <p>Roughly 1.9 million neurons die every minute flow is not restored.</p>
+                    <p>That is why the whole system is built around speed. It is why door to needle is under 60 minutes. Delay is not administrative. It is measured in tissue.</p>
                 </div>
+            </div>
 
-                <!-- FlorenceBot Tip: Watch for A-fib -->
-                <div class="florencebot-tip" id="tip-watch-afib">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Watch for A-fib (Atrial Fibrillation)</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Keep your patient on continuous cardiac monitoring!</strong> Atrial fibrillation (an irregular heart rhythm) is a major cause of stroke—blood pools in the quivering atria, forms clots, and travels to the brain. If you catch A-fib, the patient will need blood thinners (anticoagulants) instead of just aspirin to prevent another stroke.
-                    </div>
+            <div class="florencebot-tip" id="tip-time-brain">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Time = Brain</div>
+                <div class="florencebot-tip-content">Document the exact time symptoms started, because it decides whether tPA is possible at all. Ask the family the right question: what time did you last see them completely normal. That is the last known well, and if nobody can give it to you, the patient is not eligible.</div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: The brain is perfused by the Circle of Willis. Middle cerebral artery strokes are most common. Left brain = language, right brain = spatial awareness. Know the artery-to-deficit mapping for NCLEX.</div>
-            </section>
+            <h3>Risk factors</h3>
 
-            <!-- Section 2: Types of Stroke -->
-            <section class="guide-section" id="types">
-                <div class="section-header">
-                    <div class="section-number">2</div>
-                    <div class="section-title-group">
-                        <h2>Ischemic vs Hemorrhagic Stroke</h2>
-                        <div class="subtitle">Understanding the fundamental differences</div>
-                    </div>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Modifiable</th><th>Not modifiable</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Hypertension, the leading modifiable risk factor</td><td>Age. The risk doubles every decade after 55</td></tr>
+                        <tr><td>Diabetes</td><td>Sex. Slightly higher in men</td></tr>
+                        <tr><td>Atrial fibrillation</td><td>Race. Higher in Black and Hispanic populations</td></tr>
+                        <tr><td>High cholesterol</td><td>Family history of stroke</td></tr>
+                        <tr><td>Smoking</td><td>A previous stroke or TIA</td></tr>
+                        <tr><td>Obesity and inactivity</td><td>Certain genetic disorders</td></tr>
+                        <tr><td>Heavy alcohol use, cocaine use</td><td>Nothing else</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="florencebot-tip" id="tip-watch-afib">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Watch for Atrial Fibrillation</div>
+                <div class="florencebot-tip-content">Keep every stroke patient on continuous cardiac monitoring. Blood pools in quivering atria, clots form, and the clot travels to the brain. Finding A-fib changes the prevention plan from an antiplatelet to an anticoagulant, which is a much bigger decision than it sounds.</div>
+            </div>
 
-                <p>Strokes are classified into two main categories based on the underlying mechanism. This distinction is <strong>critical</strong> because treatment differs dramatically—giving tPA to a hemorrhagic stroke patient can be fatal.</p>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> The artery predicts the deficit. Left hemisphere gives right weakness and aphasia; right gives left weakness and neglect. The penumbra is what you are racing for.
+            </div>
+        </section>
 
-                <div class="stroke-comparison">
-                    <div class="stroke-type ischemic">
-                        <div class="stroke-type-header">
-                            <i class="fas fa-ban"></i>
-                            <h4>Ischemic Stroke</h4>
-                            <div class="percentage">~87% of all strokes</div>
-                        </div>
-                        <div class="stroke-type-body">
-                            <h5>Mechanism</h5>
-                            <ul>
-                                <li><i class="fas fa-circle"></i> Blood vessel occlusion by clot or embolus</li>
-                                <li><i class="fas fa-circle"></i> Brain tissue deprived of oxygen/glucose</li>
-                                <li><i class="fas fa-circle"></i> May be thrombotic or embolic in origin</li>
-                            </ul>
+        <!-- ══════════ TYPES ══════════ -->
+        <section class="guide-section" id="types">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>Clot or bleed</h2>
+            </div>
 
-                            <h5>Common Causes</h5>
-                            <ul>
-                                <li><i class="fas fa-check"></i> <strong>Thrombotic:</strong> Atherosclerosis, plaque rupture</li>
-                                <li><i class="fas fa-check"></i> <strong>Embolic:</strong> Atrial fibrillation (A-fib), valve disease</li>
-                                <li><i class="fas fa-check"></i> <strong>Lacunar:</strong> Small vessel disease from HTN/DM</li>
-                            </ul>
+            <p class="subtitle">Discrimination axis: is the vessel blocked, or open and leaking.</p>
 
-                            <h5>Presentation</h5>
-                            <ul>
-                                <li><i class="fas fa-arrow-right"></i> Often gradual onset (thrombotic)</li>
-                                <li><i class="fas fa-arrow-right"></i> May have TIA warning signs</li>
-                                <li><i class="fas fa-arrow-right"></i> Focal neurological deficits</li>
-                            </ul>
+            <p>This is the discrimination the guide turns on. You cannot make it clinically. Both give sudden focal deficits in a patient who was fine an hour ago.</p>
 
-                            <h5>Treatment</h5>
-                            <ul>
-                                <li><i class="fas fa-syringe"></i> tPA (alteplase) if within window</li>
-                                <li><i class="fas fa-syringe"></i> Mechanical thrombectomy</li>
-                                <li><i class="fas fa-syringe"></i> Antiplatelet/anticoagulation</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="stroke-type hemorrhagic">
-                        <div class="stroke-type-header">
-                            <i class="fas fa-tint"></i>
-                            <h4>Hemorrhagic Stroke</h4>
-                            <div class="percentage">~13% of all strokes</div>
-                        </div>
-                        <div class="stroke-type-body">
-                            <h5>Mechanism</h5>
-                            <ul>
-                                <li><i class="fas fa-circle"></i> Blood vessel rupture causing bleeding</li>
-                                <li><i class="fas fa-circle"></i> Blood accumulates, compresses brain tissue</li>
-                                <li><i class="fas fa-circle"></i> Increased ICP, herniation risk</li>
-                            </ul>
-
-                            <h5>Common Causes</h5>
-                            <ul>
-                                <li><i class="fas fa-check"></i> <strong>Intracerebral:</strong> Chronic HTN, amyloid angiopathy</li>
-                                <li><i class="fas fa-check"></i> <strong>Subarachnoid:</strong> Aneurysm rupture, AVM</li>
-                                <li><i class="fas fa-check"></i> <strong>Other:</strong> Trauma, anticoagulant use, tumors</li>
-                            </ul>
-
-                            <h5>Presentation</h5>
-                            <ul>
-                                <li><i class="fas fa-arrow-right"></i> Sudden, severe onset ("thunderclap" HA)</li>
-                                <li><i class="fas fa-arrow-right"></i> Often worse than ischemic stroke</li>
-                                <li><i class="fas fa-arrow-right"></i> N/V, altered LOC, seizures common</li>
-                            </ul>
-
-                            <h5>Treatment</h5>
-                            <ul>
-                                <li><i class="fas fa-ban"></i> <strong>NO tPA!</strong> (will worsen bleeding)</li>
-                                <li><i class="fas fa-compress-arrows-alt"></i> BP management, ICP control</li>
-                                <li><i class="fas fa-cut"></i> Surgery if indicated (clipping, coiling)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box warning">
-                    <div class="info-box-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Critical: CT Before Treatment!</h5>
-                        <p>A <strong>non-contrast CT head must be obtained BEFORE administering tPA</strong> to rule out hemorrhagic stroke. The CT must show NO hemorrhage before thrombolytics can be given. CT is fast and readily available, making it the first-line imaging for acute stroke.</p>
-                    </div>
-                </div>
-
-                <!-- FlorenceBot Tip: CT Before tPA -->
-                <div class="florencebot-tip" id="tip-ct-before-tpa">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">CT Scan Before Clot-Busting Medication!</div>
-                    <div class="florencebot-tip-content">
-                        <strong>A CT scan (head imaging) MUST happen before giving tPA (alteplase, the clot-dissolving drug).</strong> Why? We need to confirm it's a clot blocking blood flow, not a bleed. If the patient is already bleeding in their brain and we give a clot-buster, we'll make the bleeding much worse—potentially fatal. Memory trick: "No bleed on the screen? Proceed. See red? Stop instead."
-                    </div>
-                </div>
-
-                <h3>Transient Ischemic Attack (TIA)</h3>
-
-                <p>A TIA is a temporary episode of neurological dysfunction caused by focal brain, spinal cord, or retinal ischemia, <strong>without acute infarction</strong>. Symptoms typically resolve within 1 hour (most within minutes).</p>
-
-                <div class="info-box nclex">
-                    <div class="info-box-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>NCLEX Alert: TIA is a Warning Sign!</h5>
-                        <p>TIA is often called a "warning stroke" or "mini-stroke." <strong>10-15% of TIA patients will have a stroke within 90 days, with the highest risk in the first 48 hours.</strong> TIA requires urgent evaluation and risk factor management—it should never be dismissed!</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Ischemic (87%) = clot → tPA/thrombectomy. Hemorrhagic (13%) = bleed → BP control, possible surgery. TIA = 'mini-stroke' with symptoms resolving in < 24 hours — treat as a warning sign of impending stroke.</div>
-            </section>
-
-            <!-- Section 3: FAST Assessment -->
-            <section class="guide-section" id="fast">
-                <div class="section-header">
-                    <div class="section-number">3</div>
-                    <div class="section-title-group">
-                        <h2>FAST Assessment Tool</h2>
-                        <div class="subtitle">Rapid stroke recognition for everyone</div>
-                    </div>
-                </div>
-
-                <p>The FAST assessment is a validated, easy-to-remember tool for rapid stroke recognition. It can be used by anyone—healthcare providers, patients, or bystanders—to quickly identify stroke symptoms and act fast.</p>
-
-                <div class="fast-hero">
-                    <h3><i class="fas fa-bolt"></i> The FAST Assessment</h3>
-                    <div class="fast-grid">
-                        <div class="fast-item">
-                            <div class="fast-letter">F</div>
-                            <h4>Face Drooping</h4>
-                            <p>Ask the person to smile. Does one side of the face droop or feel numb?</p>
-                        </div>
-                        <div class="fast-item">
-                            <div class="fast-letter">A</div>
-                            <h4>Arm Weakness</h4>
-                            <p>Ask them to raise both arms. Does one arm drift downward? Is one arm weak or numb?</p>
-                        </div>
-                        <div class="fast-item">
-                            <div class="fast-letter">S</div>
-                            <h4>Speech Difficulty</h4>
-                            <p>Ask them to repeat a simple phrase. Is speech slurred or strange?</p>
-                        </div>
-                        <div class="fast-item">
-                            <div class="fast-letter">T</div>
-                            <h4>Time to Call 911</h4>
-                            <p>If ANY of these signs are present, call 911 immediately. Note the time symptoms started.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Additional Stroke Symptoms (BE-FAST)</h3>
-
-                <p>The expanded BE-FAST adds two additional components to catch more strokes:</p>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Letter</th>
-                                <th>Component</th>
-                                <th>Assessment</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>B</td>
-                                <td>Balance</td>
-                                <td>Sudden loss of balance, coordination, or dizziness</td>
-                            </tr>
-                            <tr>
-                                <td>E</td>
-                                <td>Eyes</td>
-                                <td>Sudden vision changes, blurry vision, or vision loss in one or both eyes</td>
-                            </tr>
-                            <tr>
-                                <td>F</td>
-                                <td>Face</td>
-                                <td>Facial droop—ask to smile and observe for asymmetry</td>
-                            </tr>
-                            <tr>
-                                <td>A</td>
-                                <td>Arms</td>
-                                <td>Arm drift—hold both arms out, palms up, eyes closed for 10 seconds</td>
-                            </tr>
-                            <tr>
-                                <td>S</td>
-                                <td>Speech</td>
-                                <td>Slurred speech—ask to repeat "The sky is blue in Cincinnati"</td>
-                            </tr>
-                            <tr>
-                                <td>T</td>
-                                <td>Time</td>
-                                <td>Time is critical—call 911 and note when symptoms started</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>NIH Stroke Scale (NIHSS)</h3>
-
-                <p>The NIHSS is a standardized neurological examination used to quantify stroke severity. Scores range from 0-42, with higher scores indicating more severe deficits.</p>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>NIHSS Score</th>
-                                <th>Stroke Severity</th>
-                                <th>Clinical Significance</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>0</td>
-                                <td>No stroke symptoms</td>
-                                <td>Normal exam</td>
-                            </tr>
-                            <tr>
-                                <td>1-4</td>
-                                <td>Minor stroke</td>
-                                <td>Good prognosis, may not need intervention</td>
-                            </tr>
-                            <tr>
-                                <td>5-15</td>
-                                <td>Moderate stroke</td>
-                                <td>tPA candidate, moderate disability risk</td>
-                            </tr>
-                            <tr>
-                                <td>16-20</td>
-                                <td>Moderate-severe stroke</td>
-                                <td>Significant disability likely</td>
-                            </tr>
-                            <tr>
-                                <td>21-42</td>
-                                <td>Severe stroke</td>
-                                <td>Poor prognosis, high mortality risk</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box clinical">
-                    <div class="info-box-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Clinical Pearl: NIHSS Components</h5>
-                        <p>The NIHSS assesses 11 items: level of consciousness (LOC), horizontal eye movement, visual fields, facial palsy, motor arm, motor leg, limb ataxia, sensory, language, dysarthria, and extinction/inattention. Nurses should be certified to administer the NIHSS in stroke centers.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: BE FAST saves lives: Balance, Eyes, Face, Arm, Speech, Time. Document exact time of symptom onset (or 'last known well') — this determines tPA eligibility.</div>
-            </section>
-
-            <!-- Section 4: tPA Criteria -->
-            <section class="guide-section" id="tpa">
-                <div class="section-header">
-                    <div class="section-number">4</div>
-                    <div class="section-title-group">
-                        <h2>tPA Inclusion & Exclusion Criteria</h2>
-                        <div class="subtitle">Who qualifies for thrombolytic therapy?</div>
-                    </div>
-                </div>
-
-                <p><strong>Tissue Plasminogen Activator (tPA/alteplase)</strong> is a thrombolytic agent that dissolves blood clots. It's the standard of care for eligible acute ischemic stroke patients, but strict criteria must be met due to bleeding risks.</p>
-
-                <div class="tpa-timeline">
-                    <h3><i class="fas fa-clock"></i> The tPA Time Window</h3>
-                    <div class="timeline">
-                        <div class="timeline-point">
-                            <div class="timeline-marker">0 hr</div>
-                            <div class="timeline-label">Symptom Onset</div>
-                            <div class="timeline-desc">Note exact time!</div>
-                        </div>
-                        <div class="timeline-point">
-                            <div class="timeline-marker">3 hr</div>
-                            <div class="timeline-label">Standard Window</div>
-                            <div class="timeline-desc">Optimal benefit</div>
-                        </div>
-                        <div class="timeline-point">
-                            <div class="timeline-marker">4.5 hr</div>
-                            <div class="timeline-label">Extended Window</div>
-                            <div class="timeline-desc">Selected patients</div>
-                        </div>
-                        <div class="timeline-point">
-                            <div class="timeline-marker">> 4.5</div>
-                            <div class="timeline-label">Too Late</div>
-                            <div class="timeline-desc">tPA contraindicated</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box time">
-                    <div class="info-box-icon">
-                        <i class="fas fa-stopwatch"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Door-to-Needle Goal: < 60 Minutes</h5>
-                        <p>Stroke centers aim for a <strong>door-to-needle time of less than 60 minutes</strong>. This means from the moment the patient arrives until tPA infusion begins. Every 15-minute delay in treatment reduces the chance of a good outcome.</p>
-                    </div>
-                </div>
-
-                <div class="criteria-container">
-                    <div class="criteria-box inclusion">
-                        <div class="criteria-header">
-                            <i class="fas fa-check-circle"></i>
-                            <h4>Inclusion Criteria (Give tPA)</h4>
-                        </div>
-                        <div class="criteria-body">
-                            <ul>
-                                <li><i class="fas fa-check"></i> Clinical diagnosis of ischemic stroke with measurable neurological deficit</li>
-                                <li><i class="fas fa-check"></i> Symptom onset < 4.5 hours (or last known well time)</li>
-                                <li><i class="fas fa-check"></i> Age ≥ 18 years old</li>
-                                <li><i class="fas fa-check"></i> CT scan shows NO hemorrhage</li>
-                                <li><i class="fas fa-check"></i> Blood pressure controllable to < 185/110 mmHg</li>
-                                <li><i class="fas fa-check"></i> Patient/family consents to treatment</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="criteria-box exclusion">
-                        <div class="criteria-header">
-                            <i class="fas fa-times-circle"></i>
-                            <h4>Exclusion Criteria (Do NOT Give tPA)</h4>
-                        </div>
-                        <div class="criteria-body">
-                            <ul>
-                                <li><i class="fas fa-times"></i> Evidence of intracranial hemorrhage on CT</li>
-                                <li><i class="fas fa-times"></i> Symptom onset > 4.5 hours or unknown time</li>
-                                <li><i class="fas fa-times"></i> Prior intracranial hemorrhage</li>
-                                <li><i class="fas fa-times"></i> Major surgery or trauma within 14 days</li>
-                                <li><i class="fas fa-times"></i> GI or urinary bleeding within 21 days</li>
-                                <li><i class="fas fa-times"></i> Arterial puncture at non-compressible site within 7 days</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Additional Contraindications</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Category</th>
-                                <th>Absolute Contraindications</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Coagulation</td>
-                                <td>INR > 1.7, PT > 15 sec, platelets < 100,000, heparin within 48h with elevated PTT</td>
-                            </tr>
-                            <tr>
-                                <td>Blood Pressure</td>
-                                <td>SBP > 185 or DBP > 110 mmHg that cannot be controlled</td>
-                            </tr>
-                            <tr>
-                                <td>Blood Glucose</td>
-                                <td>< 50 mg/dL (correct hypoglycemia first—may mimic stroke!)</td>
-                            </tr>
-                            <tr>
-                                <td>CT Findings</td>
-                                <td>Multilobar infarction (> 1/3 cerebral hemisphere)</td>
-                            </tr>
-                            <tr>
-                                <td>History</td>
-                                <td>Stroke or head trauma within 3 months, intracranial neoplasm</td>
-                            </tr>
-                            <tr>
-                                <td>Medications</td>
-                                <td>Current use of direct thrombin inhibitors or factor Xa inhibitors</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Extended Window (3-4.5 hours) Additional Exclusions</h3>
-
-                <div class="info-box warning">
-                    <div class="info-box-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>For tPA Between 3-4.5 Hours, ALSO Exclude:</h5>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Ischemic, about 87 percent</div>
+                    <div class="comparison-card-body">
+                        <p><strong>Mechanism:</strong> a clot or embolus occludes the vessel. The tissue behind it loses oxygen and glucose.</p>
+                        <p><strong>Where the clot comes from:</strong></p>
                         <ul>
-                            <li>Age > 80 years</li>
-                            <li>NIHSS score > 25 (severe stroke)</li>
-                            <li>History of both stroke AND diabetes</li>
-                            <li>Taking oral anticoagulants regardless of INR</li>
+                            <li><strong>Thrombotic:</strong> atherosclerosis and plaque rupture, forming the clot in place</li>
+                            <li><strong>Embolic:</strong> travelled from elsewhere, usually the atria in A-fib, or a diseased valve</li>
+                            <li><strong>Lacunar:</strong> small vessel disease from long-standing hypertension or diabetes</li>
+                        </ul>
+                        <p><strong>How it presents:</strong> often gradual, especially thrombotic. May have had TIA warnings. Focal deficits.</p>
+                        <p><strong>Treatment:</strong> tPA if inside the window, mechanical thrombectomy, then antiplatelet or anticoagulation.</p>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Hemorrhagic, about 13 percent</div>
+                    <div class="comparison-card-body">
+                        <p><strong>Mechanism:</strong> the vessel ruptures. Blood accumulates, compresses tissue, and raises intracranial pressure.</p>
+                        <p><strong>Where the bleed comes from:</strong></p>
+                        <ul>
+                            <li><strong>Intracerebral:</strong> chronic hypertension, or amyloid angiopathy</li>
+                            <li><strong>Subarachnoid:</strong> a ruptured aneurysm, or an arteriovenous malformation</li>
+                            <li><strong>Other:</strong> trauma, anticoagulants, tumours</li>
+                        </ul>
+                        <p><strong>How it presents:</strong> sudden and severe. A thunderclap headache. Vomiting, falling consciousness and seizures are common, and it is generally worse than an ischemic stroke.</p>
+                        <p><strong>Treatment:</strong> no tPA. Blood pressure control, intracranial pressure control, and surgery if indicated.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-x-ray"></i> The CT is the axis</div>
+                <div class="info-box-content">
+                    <p>A non-contrast CT of the head comes before any decision about thrombolysis, and it must show no hemorrhage.</p>
+                    <p>There is a useful asymmetry in what CT sees. Fresh blood is bright immediately, so a bleed shows at once. An ischemic infarct may show nothing for 6 to 12 hours.</p>
+                    <p>So the CT is not proving a clot. It is ruling out a bleed. In the first hour, that is what it does well.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-ct-before-tpa">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">CT Before the Clot-Buster</div>
+                <div class="florencebot-tip-content">The scan happens before tPA, without exception. It is there to rule out a bleed, not to confirm a clot, which is why an early normal CT is still good enough to proceed. Give a clot-buster to someone already bleeding and you turn a survivable stroke into a fatal one.</div>
+            </div>
+
+            <h3>Transient ischemic attack</h3>
+
+            <p>A brief neurological deficit from ischemia, with no infarct left behind. Symptoms usually resolve within an hour, often within minutes.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> A TIA is not a near miss</div>
+                <div class="info-box-content">
+                    <p>Between 10 and 15 percent of TIA patients have a stroke within 90 days. The risk is highest in the first 48 hours.</p>
+                    <p>So the patient whose symptoms resolved in the waiting room is not the reassuring one. They are the one with a warning nobody has acted on.</p>
+                </div>
+            </div>
+
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <p>Blank paper. Two columns, ischemic and hemorrhagic. Percentage, mechanism, onset, treatment. Then one sentence on why the CT can rule out one and not the other in the first hour.</p>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Ischemic is a clot and gets tPA. Hemorrhagic is a bleed and never does. Only the CT tells you which, and a TIA is a warning with a 48 hour fuse.
+            </div>
+        </section>
+
+        <!-- ══════════ FAST ══════════ -->
+        <section class="guide-section" id="fast">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>Spotting it, and starting the clock</h2>
+            </div>
+
+            <p>FAST exists so anybody can spot a stroke, not just clinicians. It is deliberately crude. It has to work for a bystander.</p>
+
+            <div class="fast-hero">
+                <h3><i class="fas fa-bolt"></i> FAST</h3>
+                <div class="fast-grid">
+                    <div class="fast-item">
+                        <div class="fast-letter">F</div>
+                        <h4>Face</h4>
+                        <p>Ask them to smile. Does one side droop or feel numb.</p>
+                    </div>
+                    <div class="fast-item">
+                        <div class="fast-letter">A</div>
+                        <h4>Arms</h4>
+                        <p>Ask them to raise both. Does one drift down, or feel weak.</p>
+                    </div>
+                    <div class="fast-item">
+                        <div class="fast-letter">S</div>
+                        <h4>Speech</h4>
+                        <p>Ask them to repeat a phrase. Is it slurred, or does it come out wrong.</p>
+                    </div>
+                    <div class="fast-item">
+                        <div class="fast-letter">T</div>
+                        <h4>Time</h4>
+                        <p>Any one of these, call for help. Note when it started.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>BE-FAST, and why the two extra letters were added</h3>
+
+            <p>The original four miss posterior circulation strokes. That is where the balance and vision problems come from. The expanded version catches them.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Letter</th><th>What</th><th>How you assess it</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>B</td><td>Balance</td><td>Sudden loss of balance or coordination, or dizziness</td></tr>
+                        <tr><td>E</td><td>Eyes</td><td>Sudden vision change, blurring, or loss in one or both eyes</td></tr>
+                        <tr><td>F</td><td>Face</td><td>Ask them to smile and look for asymmetry</td></tr>
+                        <tr><td>A</td><td>Arms</td><td>Both arms out, palms up, eyes closed, for 10 seconds. Watch for drift</td></tr>
+                        <tr><td>S</td><td>Speech</td><td>Ask them to repeat a set phrase and listen for slurring</td></tr>
+                        <tr><td>T</td><td>Time</td><td>Call for help, and record when it started</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-question"></i> The question that decides eligibility</div>
+                <div class="info-box-content">
+                    <p>Not when did you notice. <strong>What time did you last see them completely normal.</strong></p>
+                    <p>That is the last known well, and it is where the clock starts. Take a patient found confused at 7 am who was fine at 10 pm. Their last known well is 10 pm. They are 9 hours out, even though they were found an hour ago.</p>
+                    <p>This is why wake-up strokes so often miss the window, and why the family is your most important source of information.</p>
+                </div>
+            </div>
+
+            <h3>NIHSS</h3>
+
+            <p>A standardised exam that turns the deficit into a number, 0 to 42. Higher is worse. Its real value is serial. Repeated, it tells you whether they are improving or sliding.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Score</th><th>Severity</th><th>What it means</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>0</td><td>No symptoms</td><td>Normal exam</td></tr>
+                        <tr><td>1 to 4</td><td>Minor</td><td>Good outlook. May not need intervention</td></tr>
+                        <tr><td>5 to 15</td><td>Moderate</td><td>A tPA candidate. Moderate risk of disability</td></tr>
+                        <tr><td>16 to 20</td><td>Moderate to severe</td><td>Significant disability likely</td></tr>
+                        <tr><td>21 to 42</td><td>Severe</td><td>Poor outlook, high mortality</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-list-ol"></i> What the scale actually covers</div>
+                <div class="info-box-content">
+                    <p>Eleven items. Level of consciousness, horizontal eye movement, visual fields, facial palsy. Motor arm, motor leg, limb ataxia, sensation. Language, dysarthria, and extinction or inattention.</p>
+                    <p>Nurses in stroke centres are certified to give it. A score is only useful if everyone scores the same way.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> BE-FAST catches it, and the extra two letters exist for posterior strokes. Last known well starts the clock, and NIHSS tracks the trajectory.
+            </div>
+        </section>
+
+        <!-- ══════════ tPA ══════════ -->
+        <section class="guide-section" id="tpa">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>Who gets tPA</h2>
+            </div>
+
+            <p>Alteplase dissolves the clot. It is the standard of care for eligible ischemic stroke. The criteria are strict, because it dissolves clots you wanted to keep too.</p>
+
+            <h3>The window</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Time from last known well</th><th>What it means</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>0 hours</strong></td><td>Symptom onset. This is the number everything is measured from</td></tr>
+                        <tr><td><strong>Up to 3 hours</strong></td><td>The standard window, and where the benefit is greatest</td></tr>
+                        <tr><td><strong>3 to 4.5 hours</strong></td><td>The extended window, for selected patients only</td></tr>
+                        <tr><td><strong>Beyond 4.5 hours</strong></td><td>Contraindicated</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-stopwatch"></i> Door to needle, under 60 minutes</div>
+                <div class="info-box-content">
+                    <p>From the patient arriving to the infusion starting. Stroke centres are measured on it.</p>
+                    <p>Every 15 minutes of delay costs outcome. So the CT, the labs, the weight and the consent happen in parallel, not in sequence.</p>
+                </div>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Give it when all of these are true</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Ischemic stroke with a measurable neurological deficit</li>
+                            <li>Onset, or last known well, under 4.5 hours ago</li>
+                            <li>Age 18 or over</li>
+                            <li>CT shows no hemorrhage</li>
+                            <li>Blood pressure can be brought under 185/110 mmHg</li>
+                            <li>The patient or family consents</li>
                         </ul>
                     </div>
                 </div>
-
-                <h3>tPA Administration & Monitoring</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Parameter</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Dose</td>
-                                <td><strong>0.9 mg/kg</strong> (max 90 mg): 10% as bolus over 1 min, 90% infusion over 60 min</td>
-                            </tr>
-                            <tr>
-                                <td>BP Goal During Infusion</td>
-                                <td>< 180/105 mmHg — monitor q15min during infusion, q30min x 6h, then hourly</td>
-                            </tr>
-                            <tr>
-                                <td>Neuro Checks</td>
-                                <td>q15min during infusion, q30min for 6 hours, then q1h for 24 hours</td>
-                            </tr>
-                            <tr>
-                                <td>No Anticoagulants</td>
-                                <td>No heparin, warfarin, or antiplatelet agents for 24 hours post-tPA</td>
-                            </tr>
-                            <tr>
-                                <td>No Invasive Procedures</td>
-                                <td>No arterial lines, central lines, NG tubes, or Foley for 24 hours (if possible)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box warning">
-                    <div class="info-box-icon">
-                        <i class="fas fa-skull-crossbones"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Complication Alert: Hemorrhagic Transformation</h5>
-                        <p>The most serious complication of tPA is <strong>intracranial hemorrhage</strong>, occurring in about 6% of patients. Monitor for:</p>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Withhold it if any of these are true</div>
+                    <div class="comparison-card-body">
                         <ul>
-                            <li>Acute neurological decline (↓ LOC, new deficits)</li>
-                            <li>Severe headache</li>
-                            <li>New hypertension, nausea/vomiting</li>
-                            <li><strong>STOP the infusion immediately and get STAT CT if suspected!</strong></li>
+                            <li>Hemorrhage on the CT</li>
+                            <li>Onset over 4.5 hours ago, or the time is unknown</li>
+                            <li>Any previous intracranial hemorrhage</li>
+                            <li>Major surgery or trauma within 14 days</li>
+                            <li>Gastrointestinal or urinary bleeding within 21 days</li>
+                            <li>Arterial puncture at a site you cannot compress, within 7 days</li>
                         </ul>
                     </div>
                 </div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: tPA within 3–4.5 hours of onset. CT scan first (rule out hemorrhage). BP must be < 185/110. Monitor q15min × 2h, then q30min × 6h. Stop immediately for headache, neuro changes, or signs of bleeding.</div>
-            </section>
-
-            <!-- Section 5: Nursing Interventions -->
-            <section class="guide-section" id="interventions">
-                <div class="section-header">
-                    <div class="section-number">5</div>
-                    <div class="section-title-group">
-                        <h2>Priority Nursing Interventions</h2>
-                        <div class="subtitle">Evidence-based stroke care</div>
-                    </div>
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Every exclusion is the same question</div>
+                <div class="info-box-content">
+                    <p>Read the list again and notice the pattern. Recent surgery. Recent bleeding. A puncture you cannot press on. A previous brain bleed.</p>
+                    <p>They all ask one thing. Is there somewhere in this patient that will bleed once clotting is switched off. Learn the question and you can derive most of the list.</p>
                 </div>
+            </div>
 
-                <p>Nursing care during the acute stroke phase focuses on <strong>rapid assessment, monitoring for complications, preventing secondary injury, and early rehabilitation</strong>. The first 24-72 hours are critical.</p>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Category</th><th>Absolute contraindications</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Coagulation</td><td>INR over 1.7, PT over 15 seconds, platelets under 100,000, or heparin within 48 hours with a raised PTT</td></tr>
+                        <tr><td>Blood pressure</td><td>Systolic over 185 or diastolic over 110 that cannot be brought down</td></tr>
+                        <tr><td>Blood glucose</td><td>Under 50 mg/dL. Correct the hypoglycemia first, because it can mimic a stroke entirely</td></tr>
+                        <tr><td>CT findings</td><td>Infarction across more than a third of the hemisphere</td></tr>
+                        <tr><td>History</td><td>Stroke or head trauma within 3 months, or an intracranial tumour</td></tr>
+                        <tr><td>Medications</td><td>Current direct thrombin inhibitors or factor Xa inhibitors</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <h3>Immediate Assessment & Stabilization</h3>
-
-                <div class="intervention-cards">
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-wind"></i></div>
-                            <h5>Airway & Breathing</h5>
-                        </div>
-                        <p>Assess airway patency, O2 sat (maintain > 94%), and respiratory status. Position HOB 30° unless contraindicated. Suction PRN for decreased consciousness.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-brain"></i></div>
-                            <h5>Neurological Status</h5>
-                        </div>
-                        <p>Perform NIHSS and GCS assessments. Monitor for deterioration (new deficits, decreased LOC). Check pupils PERRLA. Document baseline thoroughly.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-heartbeat"></i></div>
-                            <h5>Vital Signs & Cardiac</h5>
-                        </div>
-                        <p>Continuous cardiac monitoring (A-fib detection). Strict BP monitoring per stroke protocols. Target temperature < 38°C. Treat fever aggressively.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-vial"></i></div>
-                            <h5>Lab Monitoring</h5>
-                        </div>
-                        <p>Blood glucose q6h (target 140-180 mg/dL). Monitor coagulation studies. BMP for electrolyte imbalances. Troponin for cardiac involvement.</p>
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> The extended window has four extra exclusions</div>
+                <div class="info-box-content">
+                    <p>Between 3 and 4.5 hours, also exclude:</p>
+                    <ul>
+                        <li>Age over 80</li>
+                        <li>NIHSS over 25, meaning a very severe stroke</li>
+                        <li>A history of both stroke and diabetes</li>
+                        <li>Taking oral anticoagulants, whatever the INR</li>
+                    </ul>
+                    <p>Later means less benefit and the same bleeding risk. So the bar rises.</p>
                 </div>
+            </div>
 
-                <h3>Blood Pressure Management</h3>
+            <h3>Giving it, and watching</h3>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Scenario</th>
-                                <th>BP Target</th>
-                                <th>Rationale</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Before tPA administration</td>
-                                <td>< 185/110 mmHg</td>
-                                <td>Required for tPA eligibility; reduces bleeding risk</td>
-                            </tr>
-                            <tr>
-                                <td>During/after tPA (24 hrs)</td>
-                                <td>< 180/105 mmHg</td>
-                                <td>Strict control during thrombolytic therapy</td>
-                            </tr>
-                            <tr>
-                                <td>Ischemic stroke, no tPA</td>
-                                <td>Generally < 220/120 mmHg</td>
-                                <td>Permissive hypertension maintains cerebral perfusion</td>
-                            </tr>
-                            <tr>
-                                <td>Hemorrhagic stroke</td>
-                                <td>SBP < 140 mmHg</td>
-                                <td>Aggressive control limits hematoma expansion</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>What</th><th>Detail</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Dose</td><td>0.9 mg/kg, to a maximum of 90 mg. Ten percent as a bolus over 1 minute, the rest infused over 60 minutes</td></tr>
+                        <tr><td>Blood pressure</td><td>Under 180/105 mmHg. Every 15 minutes during the infusion, every 30 minutes for 6 hours, then hourly</td></tr>
+                        <tr><td>Neuro checks</td><td>Every 15 minutes during the infusion, every 30 minutes for 6 hours, then hourly for 24</td></tr>
+                        <tr><td>Anticoagulants</td><td>None for 24 hours. No heparin, no warfarin, no antiplatelets</td></tr>
+                        <tr><td>Invasive procedures</td><td>Avoid for 24 hours where possible. No arterial lines, central lines, NG tubes or catheters</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-skull-crossbones"></i> Hemorrhagic transformation</div>
+                <div class="info-box-content">
+                    <p>The clot dissolves. Blood returns to vessels that starved and are now fragile, and they leak. It happens to about 6 percent of patients given tPA.</p>
+                    <p>What you are watching for:</p>
+                    <ul>
+                        <li>Sudden neurological decline, a falling level of consciousness, or a new deficit</li>
+                        <li>Severe headache</li>
+                        <li>New hypertension, nausea, vomiting</li>
+                    </ul>
+                    <p><strong>Stop the infusion first, then get the stat CT.</strong> Stopping is within your scope and takes seconds. You do not need permission to stop a drug that is causing harm.</p>
                 </div>
+            </div>
 
-                <div class="info-box nclex">
-                    <div class="info-box-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>NCLEX Alert: Permissive Hypertension</h5>
-                        <p>In ischemic stroke without tPA, we allow higher BP (up to 220/120) because cerebral autoregulation is impaired, and higher BP may maintain perfusion to the penumbra. <strong>Don't aggressively lower BP unless giving tPA or it's extremely elevated!</strong></p>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> 4.5 hours from last known well, 0.9 mg/kg to a maximum of 90. Under 185/110 before, under 180/105 after. Every exclusion asks where this patient might bleed.
+            </div>
+        </section>
+
+        <!-- ══════════ INTERVENTIONS ══════════ -->
+        <section class="guide-section" id="interventions">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2>What you do first</h2>
+            </div>
+
+            <p>Priority questions give you four defensible actions and ask which comes first. All four are things a nurse would do. That is the trick. You are tested on ordering, not correctness.</p>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-list-ol"></i> The ordering rules</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li>Airway before anything. A patient with a falling level of consciousness cannot protect it.</li>
+                        <li>Time-critical beats important. The CT and the last known well come before the full history.</li>
+                        <li>Nothing by mouth until somebody has assessed the swallow. That includes water and tablets.</li>
+                        <li>A new neurological finding outranks every number on the monitor.</li>
+                        <li>Know which blood pressure target you are working to before you treat the pressure at all.</li>
+                    </ul>
                 </div>
+            </div>
 
-                <!-- FlorenceBot Tip: Permissive HTN -->
-                <div class="florencebot-tip" id="tip-permissive-htn">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Permissive Hypertension (Let the BP Stay High!)</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Don't panic if your stroke patient's blood pressure is elevated!</strong> If they're NOT getting clot-busting medication (tPA), we actually ALLOW the BP to stay high—up to 220/120 mmHg. Why? The brain needs that extra pressure to push blood around the blockage and keep brain tissue alive. Only treat aggressively if they're receiving tPA or if BP is causing other organ damage.
-                    </div>
+            <h3>The first assessment</h3>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Airway and breathing.</strong> Patency, saturation held above 94 percent, respiratory effort. Head of bed at 30 degrees unless there is a reason not to. Suction ready if consciousness is dropping.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Neurological status.</strong> NIHSS and Glasgow Coma Scale. Pupils. Document the baseline properly, because everything after this is measured against it.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Cardiac and vital signs.</strong> Continuous monitoring, looking for atrial fibrillation. Blood pressure to the protocol for this patient's situation. Keep the temperature under 38 C, and treat fever properly, because fever worsens the injury.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Labs.</strong> Glucose every 6 hours, targeting 140 to 180 mg/dL. Coagulation studies. A metabolic panel for electrolytes. Troponin, because the heart is often involved.</div>
+                </li>
+            </ol>
+
+            <h3>Blood pressure, four different answers</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Situation</th><th>Target</th><th>Why</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Before tPA</td><td>Under 185/110 mmHg</td><td>Required for eligibility, and it lowers the bleeding risk</td></tr>
+                        <tr><td>During and for 24 hours after tPA</td><td>Under 180/105 mmHg</td><td>Tight control while the clotting system is suppressed</td></tr>
+                        <tr><td>Ischemic stroke, no tPA</td><td>Generally under 220/120 mmHg</td><td>Permissive hypertension, to keep the penumbra perfused</td></tr>
+                        <tr><td>Hemorrhagic stroke</td><td>Systolic under 140 mmHg</td><td>Aggressive control, to stop the hematoma expanding</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Why the targets go in opposite directions</div>
+                <div class="info-box-content">
+                    <p>In an ischemic stroke the problem is too little flow. Autoregulation is gone. Perfusion of the penumbra now rides on systemic pressure. Drop it and you finish off the tissue you were saving.</p>
+                    <p>In a hemorrhagic stroke the problem is too much flow, in the wrong place. Higher pressure pushes more blood out and expands the hematoma.</p>
+                    <p>Same organ, same presentation, opposite instruction. So the CT comes before the antihypertensive, as well as before the tPA.</p>
                 </div>
+            </div>
 
-                <h3>Dysphagia & Aspiration Prevention</h3>
-
-                <div class="info-box warning">
-                    <div class="info-box-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>NPO Until Swallow Screen!</h5>
-                        <p>All stroke patients must be <strong>NPO until a swallowing assessment is completed</strong> by a trained professional. Dysphagia occurs in 37-78% of stroke patients and significantly increases aspiration pneumonia risk. Until cleared:</p>
-                        <ul>
-                            <li>Keep NPO—no food, fluids, or oral medications</li>
-                            <li>Maintain HOB elevated 30-45°</li>
-                            <li>Have suction equipment at bedside</li>
-                            <li>Provide meticulous oral care</li>
-                        </ul>
-                    </div>
+            <div class="florencebot-tip" id="tip-permissive-htn">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Permissive Hypertension</div>
+                <div class="florencebot-tip-content">In an ischemic stroke with no tPA, a pressure up to 220/120 is allowed and often wanted. Autoregulation has failed, so that pressure is what pushes blood around the blockage into the tissue you are trying to save. Treat it only for tPA, or if the pressure is damaging something else.</div>
+            </div>
 
-                <!-- FlorenceBot Tip: NPO First -->
-                <div class="florencebot-tip" id="tip-npo-first">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">NPO First (Nothing By Mouth!)</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Keep your stroke patient NPO (nothing by mouth) until they pass a swallow test!</strong> Stroke often damages the nerves that control swallowing—up to 78% of stroke patients have trouble swallowing (dysphagia). Even a tiny sip of water can go into their lungs instead of their stomach, causing aspiration pneumonia. Wait for the speech therapist (SLP) to clear them before giving any food, water, or oral medications.
-                    </div>
+            <h3>Swallowing</h3>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-utensils"></i> Nothing by mouth until the screen is passed</div>
+                <div class="info-box-content">
+                    <p>Between 37 and 78 percent have dysphagia. Aspiration pneumonia is a leading cause of death afterwards.</p>
+                    <p>Until somebody trained has assessed the swallow:</p>
+                    <ul>
+                        <li>Nothing by mouth. No food, no fluids, no oral medications</li>
+                        <li>Head of bed at 30 to 45 degrees</li>
+                        <li>Suction at the bedside</li>
+                        <li>Meticulous oral care, because a colonised mouth is what gets aspirated</li>
+                    </ul>
                 </div>
+            </div>
 
-                <h3>Complications to Monitor</h3>
-
-                <div class="intervention-cards">
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-compress-arrows-alt"></i></div>
-                            <h5>Increased ICP</h5>
-                        </div>
-                        <p>Monitor for headache, vomiting, decreased LOC, Cushing's triad. Keep HOB elevated 30°. Avoid neck flexion. Report changes immediately.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-bolt"></i></div>
-                            <h5>Seizures</h5>
-                        </div>
-                        <p>Occur in 2-10% of stroke patients. Ensure seizure precautions. Prophylactic anticonvulsants not routine but may be used in hemorrhagic stroke.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-lungs"></i></div>
-                            <h5>DVT/PE</h5>
-                        </div>
-                        <p>High risk due to immobility. SCDs on admission. Prophylactic anticoagulation when appropriate (usually 24-48h post-tPA or once stable).</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-bed"></i></div>
-                            <h5>Skin Breakdown</h5>
-                        </div>
-                        <p>Implement pressure injury prevention. Turn q2h. Use pressure-relieving surfaces. Assess Braden score. Keep skin dry and clean.</p>
-                    </div>
+            <div class="florencebot-tip" id="tip-npo-first">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Nothing By Mouth First</div>
+                <div class="florencebot-tip-content">Stroke damages the nerves that run swallowing, and the patient often cannot feel that it has happened. A sip of water can go into the lungs instead of the stomach. Wait for the swallow screen, and remember that oral medications count as by mouth.</div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: Priority: airway (dysphagia screen before PO), neuro checks q1-2h (NIHSS, pupils, LOC), position HOB 30°, manage BP, prevent DVT and pressure injuries, begin rehab within 24-48 hours.</div>
-            </section>
+            <h3>What else goes wrong</h3>
 
-            <!-- Section 6: Medications -->
-            <section class="guide-section" id="medications">
-                <div class="section-header">
-                    <div class="section-number">6</div>
-                    <div class="section-title-group">
-                        <h2>Pharmacological Management</h2>
-                        <div class="subtitle">Key medications in stroke care</div>
-                    </div>
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Rising intracranial pressure.</strong> Headache, vomiting, falling consciousness, and Cushing's triad. Keep the head of bed at 30 degrees and the neck straight, because flexion obstructs venous drainage. Report changes as they happen.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Seizures.</strong> In 2 to 10 percent of stroke patients. Seizure precautions for everyone. Prophylactic anticonvulsants are not routine, though they are sometimes used after a hemorrhagic stroke.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>DVT and pulmonary embolism.</strong> High risk, because they are not moving. Compression devices from admission. Prophylactic anticoagulation once it is safe, usually 24 to 48 hours after tPA.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Skin breakdown.</strong> Turn every 2 hours, use pressure-relieving surfaces, score them on Braden, keep the skin clean and dry. A patient who cannot feel one side will not shift their own weight.</div>
+                </li>
+            </ol>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-hand-point-right"></i> Positioning and neglect</div>
+                <div class="info-box-content">
+                    <p>When they are on their side, the affected side goes up rather than being lain on.</p>
+                    <p>And approach them from the affected side deliberately. A patient with neglect will not turn toward a world they do not know is there. Making them turn is therapy, not an inconvenience.</p>
                 </div>
+            </div>
 
-                <h3>Acute Treatment Medications</h3>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Airway, then neuro baseline, then the right pressure target for this patient. Nothing by mouth until the swallow screen, and rehab starts within 24 to 48 hours.
+            </div>
+        </section>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Drug</th>
-                                <th>Use</th>
-                                <th>Key Nursing Considerations</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Alteplase (tPA)</strong></td>
-                                <td>Thrombolysis for ischemic stroke</td>
-                                <td>0.9 mg/kg (max 90mg). Monitor for bleeding. Strict neuro checks.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Labetalol</strong></td>
-                                <td>IV BP control for tPA eligibility</td>
-                                <td>10-20 mg IV over 1-2 min. Monitor HR (beta-blocker).</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Nicardipine</strong></td>
-                                <td>IV BP control (infusion)</td>
-                                <td>5-15 mg/hr infusion. Titrate to BP goal. Watch for hypotension.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Mannitol</strong></td>
-                                <td>Osmotic diuretic for ICP</td>
-                                <td>Monitor serum osmolality (goal < 320). Watch for rebound ICP.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Hypertonic Saline</strong></td>
-                                <td>ICP reduction</td>
-                                <td>3% or 23.4% NaCl. Monitor sodium levels closely.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+        <!-- ══════════ MEDS ══════════ -->
+        <section class="guide-section" id="medications">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2>The drugs</h2>
+            </div>
+
+            <h3>In the acute phase</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Drug</th><th>What it is for</th><th>What you watch</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Alteplase</strong></td><td>Dissolving the clot in ischemic stroke</td><td>0.9 mg/kg to a maximum of 90 mg. Bleeding. Strict neuro checks</td></tr>
+                        <tr><td><strong>Labetalol</strong></td><td>IV pressure control to reach tPA eligibility</td><td>10 to 20 mg IV over 1 to 2 minutes. Watch the heart rate</td></tr>
+                        <tr><td><strong>Nicardipine</strong></td><td>IV pressure control by infusion</td><td>5 to 15 mg an hour, titrated. Watch for overshoot into hypotension</td></tr>
+                        <tr><td><strong>Mannitol</strong></td><td>Osmotic diuretic for raised intracranial pressure</td><td>Serum osmolality, aiming under 320. Watch for rebound</td></tr>
+                        <tr><td><strong>Hypertonic saline</strong></td><td>Reducing intracranial pressure</td><td>3 percent or 23.4 percent. Follow the sodium closely</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Preventing the next one</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Class</th><th>Examples</th><th>When and what to know</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Antiplatelets</strong></td><td>Aspirin, clopidogrel, aspirin with dipyridamole</td><td>First line for a stroke that did not come from the heart. Started 24 to 48 hours after tPA if it was given</td></tr>
+                        <tr><td><strong>Anticoagulants</strong></td><td>Warfarin, apixaban, rivaroxaban</td><td>For a clot that came from the heart, usually A-fib. INR 2 to 3 on warfarin</td></tr>
+                        <tr><td><strong>Statins</strong></td><td>Atorvastatin, rosuvastatin</td><td>High intensity. LDL target under 70 mg/dL</td></tr>
+                        <tr><td><strong>Antihypertensives</strong></td><td>Thiazides, ACE inhibitors, ARBs, calcium channel blockers</td><td>Long term control, usually targeting under 130/80 mmHg</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Antiplatelet or anticoagulant</div>
+                <div class="info-box-content">
+                    <p>The choice depends on where the clot was made. Not on how bad the stroke was.</p>
+                    <p>A clot formed on an arterial plaque is platelet-driven. An antiplatelet is the answer. A clot formed in a fibrillating atrium is fibrin in stagnant blood. An antiplatelet barely touches it. That patient needs anticoagulation.</p>
+                    <p>This is why finding A-fib on the monitor changes the discharge prescription entirely.</p>
                 </div>
+            </div>
 
-                <h3>Secondary Prevention Medications</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Drug Class</th>
-                                <th>Examples</th>
-                                <th>Indication & Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Antiplatelets</strong></td>
-                                <td>Aspirin, Clopidogrel (Plavix), Aspirin/Dipyridamole</td>
-                                <td>First-line for non-cardioembolic stroke. Start 24-48h after tPA if given.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Anticoagulants</strong></td>
-                                <td>Warfarin, Apixaban, Rivaroxaban</td>
-                                <td>For cardioembolic stroke (A-fib). INR goal 2-3 for warfarin.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Statins</strong></td>
-                                <td>Atorvastatin, Rosuvastatin</td>
-                                <td>High-intensity statin therapy. LDL goal < 70 mg/dL.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Antihypertensives</strong></td>
-                                <td>Thiazides, ACE-I, ARBs, CCBs</td>
-                                <td>Long-term BP control. Target usually < 130/80 mmHg.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="info-box tip">
+                <div class="info-box-header"><i class="fas fa-user-graduate"></i> What the patient takes home</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li><strong>A</strong>ntiplatelet or anticoagulant, exactly as prescribed</li>
+                        <li><strong>B</strong>lood pressure controlled, and they should know their own numbers</li>
+                        <li><strong>C</strong>holesterol managed, usually with a statin</li>
+                        <li><strong>D</strong>iabetes controlled, and diet changed</li>
+                    </ul>
+                    <p>Plus stopping smoking, moving more, limiting alcohol, and being able to recognise the symptoms if it happens again.</p>
                 </div>
+            </div>
 
-                <div class="info-box tip">
-                    <div class="info-box-icon">
-                        <i class="fas fa-user-graduate"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Patient Education: ABCD of Stroke Prevention</h5>
-                        <ul>
-                            <li><strong>A</strong>spirin/Antiplatelet or Anticoagulant therapy as prescribed</li>
-                            <li><strong>B</strong>lood pressure control (know your numbers!)</li>
-                            <li><strong>C</strong>holesterol management with statins</li>
-                            <li><strong>D</strong>iabetes control and Diet modification</li>
-                        </ul>
-                        <p>Also emphasize: smoking cessation, exercise, limiting alcohol, and recognizing stroke symptoms!</p>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Alteplase for the clot, labetalol or nicardipine for the pressure, mannitol for the swelling. Afterwards, antiplatelet for artery clots and anticoagulant for heart clots.
+            </div>
+        </section>
+
+        <!-- ══════════ NUMBERS ══════════ -->
+        <section class="guide-section" id="numbers-cold">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2>Numbers to have cold</h2>
+            </div>
+
+            <p>These should be automatic. If you have to reason toward one of them, it is not learned yet.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead><tr><th>Number</th><th>Meaning</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>4.5 hours</strong></td><td>Outer tPA window from last known well</td></tr>
+                        <tr><td><strong>3 hours</strong></td><td>The standard window, where benefit is greatest</td></tr>
+                        <tr><td><strong>Under 60 minutes</strong></td><td>Door to needle target</td></tr>
+                        <tr><td><strong>0.9 mg/kg, max 90 mg</strong></td><td>tPA dose. Ten percent bolus, ninety percent over an hour</td></tr>
+                        <tr><td><strong>Under 185/110</strong></td><td>Blood pressure required before tPA</td></tr>
+                        <tr><td><strong>Under 180/105</strong></td><td>Blood pressure during and 24 hours after tPA</td></tr>
+                        <tr><td><strong>Under 220/120</strong></td><td>Permissive ceiling in ischemic stroke without tPA</td></tr>
+                        <tr><td><strong>Systolic under 140</strong></td><td>Target in hemorrhagic stroke</td></tr>
+                        <tr><td><strong>1.9 million</strong></td><td>Neurons lost per minute without flow</td></tr>
+                        <tr><td><strong>87 and 13 percent</strong></td><td>Share of strokes that are ischemic and hemorrhagic</td></tr>
+                        <tr><td><strong>About 6 percent</strong></td><td>Rate of hemorrhagic transformation after tPA</td></tr>
+                        <tr><td><strong>INR over 1.7</strong></td><td>Coagulation exclusion for tPA</td></tr>
+                        <tr><td><strong>Platelets under 100,000</strong></td><td>Coagulation exclusion for tPA</td></tr>
+                        <tr><td><strong>Glucose under 50</strong></td><td>Correct it first; hypoglycemia mimics stroke</td></tr>
+                        <tr><td><strong>140 to 180 mg/dL</strong></td><td>Glucose target in acute stroke</td></tr>
+                        <tr><td><strong>Above 94 percent</strong></td><td>Oxygen saturation target</td></tr>
+                        <tr><td><strong>30 degrees</strong></td><td>Head of bed elevation</td></tr>
+                        <tr><td><strong>0 to 42</strong></td><td>NIHSS range. Over 25 excludes the extended window</td></tr>
+                        <tr><td><strong>10 to 15 percent</strong></td><td>TIA patients who stroke within 90 days</td></tr>
+                        <tr><td><strong>60 to 100 mmHg</strong></td><td>Normal cerebral perfusion pressure</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these on the back of the index card from section 02. Test yourself on the meaning, not the number; the question gives you the number and asks what it means.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PRODUCE ══════════ -->
+        <section class="guide-section" id="rebuild">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>Now close the guide</h2>
+            </div>
+
+            <p>Reading this again will not move your score. Producing it will. Everything below is done with the page shut.</p>
+
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <ol>
+                    <li>Two columns, ischemic and hemorrhagic. Percentage, mechanism, onset, treatment.</li>
+                    <li>Write the four blood pressure targets and which situation each belongs to.</li>
+                    <li>Write the tPA inclusion criteria, then one sentence on what every exclusion is really asking.</li>
+                    <li>Two columns, left hemisphere and right. Which side is weak, and what the patient cannot do.</li>
+                    <li>Write the exact question you ask the family, and why it decides everything.</li>
+                </ol>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Say these four out loud</div>
+                <div class="info-box-content">
+                    <p>Pick any entity from section 02. Without looking, say the one-sentence definition, the clue you would see in a patient, the priority action, and the first-line drug with its teaching point.</p>
+                    <p>If you can do that for all four, you are ready. If you cannot, you know exactly which section to reopen.</p>
                 </div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: Ischemic: antiplatelet (aspirin within 24-48h, NOT with tPA), statins, antihypertensives. Hemorrhagic: reversal agents (vitamin K, protamine, FFP), antiseizure meds, osmotic diuretics (mannitol) for ICP.</div>
-            </section>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> You will be given a patient with a droop, a clock and four reasonable actions. Study the discriminations and the ordering, in that order.
+            </div>
+        </section>
+
 
             <!-- Practice Questions -->
             <section class="practice-questions" id="practice-questions">
-                <h2><i class="fas fa-flask"></i> NCLEX Challenge — Test Your Knowledge</h2>
+                <h2><i class="fas fa-flask"></i> Test yourself</h2>
                 <div class="quiz-cta-box">
                     <div class="quiz-cta-icon"><i class="fas fa-clipboard-check"></i></div>
                     <div class="quiz-cta-content">
-                        <h3>Ready to Test Your Knowledge?</h3>
-                        <p>10 NCLEX-style questions with detailed rationales covering BE-FAST recognition, tPA eligibility criteria, ischemic vs hemorrhagic management, blood pressure targets by scenario, NIHSS application, and post-tPA monitoring. Available in Practice Mode (instant feedback) and Exam Mode (timed, no peeking).</p>
+                        <h3>Can you produce it?</h3>
+                        <p>10 questions with full rationales covering BE-FAST recognition, tPA eligibility, ischemic versus hemorrhagic management, blood pressure targets by scenario, NIHSS and post-tPA monitoring. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
                         <div class="quiz-cta-stats">
                             <span><i class="fas fa-question-circle"></i> 10 Questions</span>
                             <span><i class="fas fa-clock"></i> ~15 min</span>
@@ -2151,30 +925,38 @@
             <!-- Key Points Summary -->
             <section class="key-points-summary">
                 <h2><i class="fas fa-star"></i> Key Takeaways</h2>
-                <div class="key-points-list">
-                    <div class="key-point-item">
-                        <i class="fas fa-clock"></i>
-                        <p><strong>Time is Brain:</strong> 1.9 million neurons die per minute. tPA window is 4.5 hours. Door-to-needle goal < 60 min.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-brain"></i>
-                        <p><strong>FAST Assessment:</strong> Face droop, Arm weakness, Speech difficulty, Time to call 911.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-code-branch"></i>
-                        <p><strong>Ischemic (87%):</strong> Clot occlusion—may receive tPA. <strong>Hemorrhagic (13%):</strong> Bleeding—NO tPA!</p>
-                    </div>
-                    <div class="key-point-item">
+                <div class="key-points-grid">
+                    <div class="key-point">
                         <i class="fas fa-x-ray"></i>
-                        <p><strong>CT First:</strong> Non-contrast CT required BEFORE tPA to rule out hemorrhage.</p>
+                        <p><strong>CT before tPA, always.</strong> It rules out a bleed, not in a clot.</p>
                     </div>
-                    <div class="key-point-item">
+                    <div class="key-point">
+                        <i class="fas fa-code-branch"></i>
+                        <p><strong>Ischemic 87 percent</strong> gets tPA. <strong>Hemorrhagic 13 percent</strong> never does.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-clock"></i>
+                        <p><strong>Last known well</strong> starts the clock, not when they noticed.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-brain"></i>
+                        <p><strong>Left is language, right is neglect.</strong> Know and cannot say, or do not know.</p>
+                    </div>
+                    <div class="key-point">
                         <i class="fas fa-heartbeat"></i>
-                        <p><strong>BP Management:</strong> < 185/110 before tPA. < 180/105 during/after. Permissive hypertension without tPA.</p>
+                        <p><strong>Four pressure targets.</strong> The CT decides which one applies.</p>
                     </div>
-                    <div class="key-point-item">
+                    <div class="key-point">
                         <i class="fas fa-utensils"></i>
-                        <p><strong>NPO Until Swallow Screen:</strong> Dysphagia common. Aspiration risk is high. Screen before any PO intake.</p>
+                        <p><strong>Nothing by mouth</strong> until the swallow screen. Tablets count.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-hand-holding-medical"></i>
+                        <p><strong>Every tPA exclusion</strong> asks where this patient might bleed.</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p><strong>Sudden headache post-tPA?</strong> Stop the infusion, then scan.</p>
                     </div>
                 </div>
             </section>
@@ -2192,8 +974,8 @@
                 <div class="cross-ref-group">
                     <h3>After this guide, study:</h3>
                     <ul>
-                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Seizures — Coming Soon</span></li>
-                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Traumatic Brain Injury — Coming Soon</span></li>
+                        <li><a href="seizures.html"><i class="fas fa-arrow-right"></i> Seizures</a></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Traumatic Brain Injury, coming soon</span></li>
                     </ul>
                 </div>
                 <div class="cross-ref-group">
@@ -2220,6 +1002,7 @@
     <script src="configs/stroke-config.js"></script>
     <script src="guide-sidebar.js"></script>
     <script src="guide-script.js"></script>
+    <script src="guide-questions.js"></script>
     <script src="../content-gate.js"></script>
     <script src="../cookie-consent.js"></script>
 </body>

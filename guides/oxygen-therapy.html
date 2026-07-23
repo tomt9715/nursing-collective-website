@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Oxygen Therapy Study Guide - The Nursing Collective</title>
-    <meta name="description" content="Comprehensive nursing study guide for Oxygen Therapy. Learn to select appropriate delivery devices, calculate FiO2, and monitor for oxygen toxicity signs.">
+    <meta name="description" content="Nursing study guide for Oxygen Therapy. Pick the right device, estimate FiO2, target the right saturation in COPD, and know when the pulse oximeter is lying to you.">
     <link rel="canonical" href="https://thenursingcollective.pro/guides/oxygen-therapy.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/guides/oxygen-therapy.html">
     <meta property="og:title" content="Oxygen Therapy Study Guide - The Nursing Collective">
-    <meta property="og:description" content="Comprehensive nursing study guide for Oxygen Therapy. Learn to select appropriate delivery devices, calculate FiO2, and monitor for oxygen toxicity signs.">
+    <meta property="og:description" content="Nursing study guide for Oxygen Therapy. Pick the right device, estimate FiO2, target the right saturation in COPD, and know when the pulse oximeter is lying to you.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
     <!-- Favicon -->
@@ -18,856 +18,25 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/cookie-consent.css">
 
-    <style>
-        /* ============================================
-           PDF-STYLE STUDY GUIDE STYLES
-           Oxygen Therapy - Blue/Indigo Theme
-           ============================================ */
-
-        :root {
-            --primary-color: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary-color: #0ea5e9;
-            --accent-color: #f59e0b;
-            --text-primary: #1f2937;
-            --text-secondary: #4b5563;
-            --background: #ffffff;
-            --border-color: #e5e7eb;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: #f3f4f6;
-        }
-
-        /* Download Bar - Fixed at top */
-        .download-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .download-bar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-        }
-
-        .download-bar-brand img {
-            height: 32px;
-            width: auto;
-        }
-
-        .download-bar-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: white;
-            color: var(--primary-color);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-download:hover {
-            background: #f0f9ff;
-            transform: translateY(-1px);
-        }
-
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-back:hover {
-            background: rgba(255,255,255,0.25);
-        }
-
-        /* Document Container */
-        .document-container {
-            max-width: 850px;
-            margin: 80px auto 40px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        }
-
-        /* Cover Page - Oxygen/Blue theme inspired by icon */
-        .cover-page {
-            background: linear-gradient(135deg, #6366f1 0%, #818cf8 30%, #0ea5e9 70%, #22d3ee 100%);
-            color: white;
-            padding: 80px 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .cover-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cover-logo {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            padding: 12px;
-        }
-
-        .cover-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .cover-category {
-            display: inline-block;
-            padding: 8px 24px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .cover-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.1;
-        }
-
-        .cover-subtitle {
-            font-size: 1.2rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .cover-meta {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .cover-meta-item {
-            text-align: center;
-        }
-
-        .cover-meta-item .label {
-            font-size: 0.8rem;
-            opacity: 0.8;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .cover-meta-item .value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        .cover-brand {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        /* Document Content */
-        .document-content {
-            padding: 60px;
-        }
-
-        /* Learning Objectives */
-        .learning-objectives {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            border: 2px solid #10b981;
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 40px;
-        }
-
-        .learning-objectives h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #059669;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .learning-objectives ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .learning-objectives li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 8px 0;
-            color: var(--text-primary);
-            font-size: 1rem;
-        }
-
-        .learning-objectives li i {
-            color: #10b981;
-            margin-top: 4px;
-            flex-shrink: 0;
-        }
-
-        /* Table of Contents */
-        .table-of-contents {
-            background: #f9fafb;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 40px;
-        }
-
-        .table-of-contents h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 16px;
-        }
-
-        .table-of-contents ul {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-            columns: 2;
-            column-gap: 30px;
-        }
-
-        .table-of-contents li {
-            break-inside: avoid;
-            margin-bottom: 8px;
-        }
-
-        .table-of-contents a {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 8px 12px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-radius: 6px;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-        }
-
-        .table-of-contents a:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-
-        .toc-number {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 22px;
-            height: 22px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 5px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        .table-of-contents a:hover .toc-number {
-            background: white;
-            color: var(--primary-color);
-        }
-
-        /* Content Sections */
-        .guide-section {
-            margin-bottom: 50px;
-            scroll-margin-top: 80px;
-        }
-
-        .guide-section h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 3px solid var(--primary-color);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .section-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 8px;
-            font-size: 1rem;
-        }
-
-        .guide-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 28px 0 14px;
-        }
-
-        .guide-section h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin: 20px 0 10px;
-        }
-
-        .guide-section p {
-            color: var(--text-secondary);
-            font-size: 1.02rem;
-            margin-bottom: 14px;
-        }
-
-        .guide-section ul, .guide-section ol {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            padding-left: 24px;
-        }
-
-        .guide-section li {
-            margin-bottom: 8px;
-        }
-
-        .guide-section strong {
-            color: var(--text-primary);
-        }
-
-        /* Info Boxes */
-        .info-box {
-            border-radius: 10px;
-            padding: 18px 22px;
-            margin: 20px 0;
-            border-left: 4px solid;
-        }
-
-        .info-box.warning {
-            background: #fef2f2;
-            border-color: #ef4444;
-        }
-
-        .info-box.tip {
-            background: #ecfdf5;
-            border-color: #10b981;
-        }
-
-        .info-box.nclex-tip {
-            background: #f5f3ff;
-            border-color: #8b5cf6;
-        }
-
-        .info-box.mnemonic {
-            background: #fffbeb;
-            border-color: #f59e0b;
-        }
-
-        .info-box-header {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            font-size: 0.95rem;
-        }
-
-        .info-box.warning .info-box-header { color: #ef4444; }
-        .info-box.tip .info-box-header { color: #059669; }
-        .info-box.nclex-tip .info-box-header { color: #7c3aed; }
-        .info-box.mnemonic .info-box-header { color: #d97706; }
-
-        .info-box p { margin: 0; color: var(--text-secondary); font-size: 0.98rem; }
-        .info-box ul { margin: 8px 0 0; padding-left: 18px; }
-        .info-box li { margin-bottom: 4px; font-size: 0.98rem; }
-
-        /* Tables */
-        .guide-table-wrapper {
-            overflow-x: auto;
-            margin: 20px 0;
-            border-radius: 10px;
-            border: 1px solid var(--border-color);
-        }
-
-        .guide-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.92rem;
-        }
-
-        .guide-table thead {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-        }
-
-        .guide-table th {
-            padding: 12px 14px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .guide-table tbody tr {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .guide-table tbody tr:hover {
-            background: #f9fafb;
-        }
-
-        .guide-table td {
-            padding: 12px 14px;
-            color: var(--text-secondary);
-        }
-
-        .guide-table td:first-child {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* Device Cards Grid */
-        .device-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .device-card {
-            border-radius: 12px;
-            border: 2px solid var(--border-color);
-            overflow: hidden;
-        }
-
-        .device-card-header {
-            padding: 16px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: white;
-        }
-
-        .device-card.low-flow .device-card-header {
-            background: linear-gradient(135deg, #10b981, #059669);
-        }
-
-        .device-card.high-flow .device-card-header {
-            background: linear-gradient(135deg, #f59e0b, #d97706);
-        }
-
-        .device-card.reservoir .device-card-header {
-            background: linear-gradient(135deg, #ef4444, #dc2626);
-        }
-
-        .device-card.venturi .device-card-header {
-            background: linear-gradient(135deg, #6366f1, #4f46e5);
-        }
-
-        .device-card-body {
-            padding: 18px;
-        }
-
-        .device-card-body h4 {
-            font-size: 0.95rem;
-            margin: 0 0 10px;
-        }
-
-        .device-card-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 14px;
-        }
-
-        .device-card-body li {
-            display: flex;
-            align-items: flex-start;
-            gap: 8px;
-            padding: 6px 0;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .device-card-body li:last-child { border-bottom: none; }
-        .device-card-body li i { color: var(--primary-color); margin-top: 3px; flex-shrink: 0; }
-
-        /* Interventions List */
-        .interventions-list {
-            background: #f9fafb;
-            border-radius: 12px;
-            padding: 22px;
-            margin: 20px 0;
-        }
-
-        .interventions-list h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            margin: 0 0 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .interventions-list h4 i { color: var(--primary-color); }
-
-        .intervention-item {
-            display: flex;
-            gap: 14px;
-            padding: 14px;
-            background: white;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border: 1px solid var(--border-color);
-        }
-
-        .intervention-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            border-radius: 8px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            flex-shrink: 0;
-        }
-
-        .intervention-content h5 {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0 0 4px;
-        }
-
-        .intervention-content p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin: 0;
-        }
-
-        /* Quick Reference */
-        .quick-reference {
-            background: white;
-            border: 2px solid var(--primary-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin: 24px 0;
-        }
-
-        .quick-reference h3 {
-            font-size: 1.1rem;
-            color: var(--primary-color);
-            margin: 0 0 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .quick-reference-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .quick-ref-item {
-            background: #f9fafb;
-            padding: 12px;
-            border-radius: 8px;
-        }
-
-        .quick-ref-item .label {
-            font-size: 0.8rem;
-            color: var(--text-secondary);
-            margin-bottom: 2px;
-        }
-
-        .quick-ref-item .value {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* FiO2 Calculation Box */
-        .calculation-box {
-            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
-            border: 2px solid #0ea5e9;
-            border-radius: 12px;
-            padding: 24px;
-            margin: 20px 0;
-        }
-
-        .calculation-box h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            color: #0369a1;
-            margin: 0 0 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .formula {
-            background: white;
-            border-radius: 8px;
-            padding: 16px;
-            text-align: center;
-            font-family: monospace;
-            font-size: 1.1rem;
-            color: #0369a1;
-            margin-bottom: 12px;
-        }
-
-        /* Key Points Summary */
-        .key-points-summary {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            border-radius: 12px;
-            padding: 28px;
-            margin: 40px 0 0;
-            color: white;
-        }
-
-        .key-points-summary h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            margin: 0 0 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: white;
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .key-points-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-        }
-
-        .key-point {
-            background: rgba(255,255,255,0.15);
-            padding: 14px;
-            border-radius: 10px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-
-        .key-point i { font-size: 1.1rem; margin-top: 2px; }
-        .key-point p { margin: 0; font-size: 0.92rem; line-height: 1.4; }
-
-        /* Footer */
-        .document-footer {
-            text-align: center;
-            padding: 32px 48px;
-            border-top: 1px solid var(--border-color);
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-        }
-
-        .footer-logo {
-            height: 48px;
-            width: auto;
-            margin-bottom: 12px;
-        }
-
-        .footer-tagline {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .footer-copyright {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Print Styles */
-        @page {
-            margin: 0.6in 0.4in;
-        }
-
-        @media print {
-            .download-bar { display: none !important; }
-
-            body {
-                background: white !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .document-container {
-                margin: 0 !important;
-                box-shadow: none !important;
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            .cover-page {
-                page-break-after: always;
-                break-after: page;
-            }
-
-            .info-box { page-break-inside: avoid; break-inside: avoid; }
-            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
-            .device-card { page-break-inside: avoid; break-inside: avoid; }
-            .intervention-item { page-break-inside: avoid; break-inside: avoid; }
-            .quick-reference { page-break-inside: avoid; break-inside: avoid; }
-            .learning-objectives { page-break-inside: avoid; break-inside: avoid; }
-            .key-points-summary { page-break-inside: avoid; break-inside: avoid; }
-            .calculation-box { page-break-inside: avoid; break-inside: avoid; }
-
-            h2, h3, h4 {
-                page-break-after: avoid;
-                break-after: avoid;
-            }
-
-            .guide-section h3 + .guide-table-wrapper,
-            .guide-section h3 + .info-box,
-            .guide-section h3 + .device-grid,
-            .guide-section h3 + .interventions-list {
-                page-break-before: avoid;
-                break-before: avoid;
-            }
-
-            .device-grid { page-break-inside: auto; }
-            .interventions-list { page-break-inside: auto; }
-
-            a { text-decoration: underline; }
-
-            .document-footer {
-                page-break-inside: avoid;
-            }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .download-bar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 12px 16px;
-            }
-            .download-bar-actions {
-                width: 100%;
-                justify-content: center;
-            }
-            .document-container { margin: 120px 10px 20px; }
-            .cover-page { padding: 50px 30px; }
-            .cover-title { font-size: 2.2rem; }
-            .cover-meta { flex-direction: column; gap: 20px; }
-            .document-content { padding: 30px 24px; }
-            .table-of-contents ul { columns: 1; }
-            .device-grid { grid-template-columns: 1fr; }
-            .quick-reference-grid { grid-template-columns: 1fr; }
-            .key-points-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-
     <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="guide.css">
     <link rel="stylesheet" href="guide-sidebar.css">
     <script src="../beta-banner.js"></script>
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="../sentry-init.js"></script>
 </head>
-<body data-product-id="oxygen-therapy" data-guide-name="Oxygen Therapy">
+<body data-category="respiratory" data-product-id="oxygen-therapy" data-guide-name="Oxygen-Therapy">
     <!-- Download Bar -->
     <div class="download-bar">
         <div class="download-bar-brand">
-            <i class="fas fa-book-medical"></i>
-            <span>The Nursing Collective Study Guide</span>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective">
         </div>
         <div class="download-bar-actions">
             <a href="../my-guides.html" class="btn-back">
@@ -890,7 +59,7 @@
                 </div>
                 <div class="cover-category">Respiratory Nursing</div>
                 <h1 class="cover-title">Oxygen Therapy</h1>
-                <p class="cover-subtitle">Comprehensive nursing study guide covering oxygen delivery devices, FiO2 calculations, indications for oxygen therapy, and monitoring for oxygen toxicity.</p>
+                <p class="cover-subtitle">Six devices, one number that tells you which to pick, one patient group where more oxygen is the wrong answer, and the situations where the pulse oximeter lies.</p>
                 <div class="cover-meta">
                     <div class="cover-meta-item">
                         <div class="label">Reading Time</div>
@@ -902,7 +71,7 @@
                     </div>
                     <div class="cover-meta-item">
                         <div class="label">Last Updated</div>
-                        <div class="value">February 2026</div>
+                        <div class="value">July 2026</div>
                     </div>
                 </div>
                 <div class="cover-brand">
@@ -914,1259 +83,1031 @@
         <!-- Document Content -->
         <div class="document-content">
 
-            <!-- Learning Objectives -->
+            <!-- What you should be able to do without notes -->
             <section class="learning-objectives">
-                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
+                <h2><i class="fas fa-bullseye"></i> By the end, without notes</h2>
                 <ul>
-                    <li><i class="fas fa-check-circle"></i> Select appropriate oxygen delivery devices based on patient needs and required FiO2</li>
-                    <li><i class="fas fa-check-circle"></i> Calculate and understand FiO2 for different delivery devices</li>
-                    <li><i class="fas fa-check-circle"></i> Monitor for oxygen toxicity signs and symptoms</li>
-                    <li><i class="fas fa-check-circle"></i> Understand the physiology of oxygen transport and delivery</li>
-                    <li><i class="fas fa-check-circle"></i> Apply clinical reasoning to oxygen therapy scenarios</li>
-                    <li><i class="fas fa-check-circle"></i> Identify indications and contraindications for oxygen therapy</li>
+                    <li><i class="fas fa-check-circle"></i> Pick the device from the FiO2 the patient needs, and defend the choice</li>
+                    <li><i class="fas fa-check-circle"></i> Estimate FiO2 on a nasal cannula in your head</li>
+                    <li><i class="fas fa-check-circle"></i> Say why a COPD patient gets 88 to 92 percent and not 98</li>
+                    <li><i class="fas fa-check-circle"></i> Name three situations where the pulse oximeter reads normal on a hypoxic patient</li>
+                    <li><i class="fas fa-check-circle"></i> Explain what an SpO2 of 90 means in terms of PaO2, and why that pair matters</li>
                 </ul>
             </section>
 
-            <!-- High-Yield Summary -->
-            <section class="high-yield-summary" id="high-yield-summary">
-                <h2><i class="fas fa-bolt"></i> High-Yield Summary — Review This in 60 Seconds</h2>
-                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
-                <ul>
-                    <li><strong>Normal SpO2: 95–100%.</strong> Administer O2 when SpO2 &lt; 94% (or &lt; 88% for COPD patients). O2 is a medication — needs an order.</li>
-                    <li><strong>Low-flow devices</strong> (nasal cannula, simple mask) — FiO2 varies with respiratory rate. <strong>High-flow devices</strong> (Venturi mask, non-rebreather) — deliver precise/high FiO2.</li>
-                    <li><strong>Nasal cannula:</strong> 1–6 L/min, FiO2 24–44%. Most comfortable, allows eating/talking. Each liter adds ~4% FiO2.</li>
-                    <li><strong>Non-rebreather mask:</strong> 10–15 L/min, FiO2 80–95%. Has reservoir bag — bag must stay inflated. Used for emergencies (CO poisoning, trauma).</li>
-                    <li><strong>Venturi mask:</strong> Delivers precise FiO2 (24–50%). Color-coded adapters. Best for COPD patients who need exact O2 concentration.</li>
-                    <li><strong>COPD patients:</strong> Use low-flow O2 (1–2 L/min), target SpO2 88–92%. High O2 suppresses hypoxic drive → CO2 narcosis.</li>
-                    <li><strong>Humidification</strong> required at flow rates &gt; 4 L/min to prevent mucosal drying.</li>
-                    <li><strong>O2 toxicity</strong> occurs with FiO2 &gt; 50% for &gt; 24–48 hours — causes alveolar damage, ARDS. Use lowest effective FiO2.</li>
-                    <li><strong>Fire safety:</strong> O2 supports combustion. No open flames, no petroleum-based products near O2. Post "Oxygen in Use" signs.</li>
-                    <li><strong>Common mistake:</strong> Putting a nasal cannula on a mouth-breather — O2 won't be delivered effectively. Consider a mask instead.</li>
-                </ul>
-                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
-            </section>
+        <!-- ══════════ START HERE ══════════ -->
+        <section class="guide-section" id="start-here">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>What actually gets you</h2>
+            </div>
 
-            <!-- Table of Contents -->
-            <nav class="table-of-contents">
-                <h2><i class="fas fa-list"></i> Table of Contents</h2>
-                <ul>
-                    <li><a href="#physiology"><span class="toc-number">1</span> Oxygen Physiology Review</a></li>
-                    <li><a href="#indications"><span class="toc-number">2</span> Indications for O2 Therapy</a></li>
-                    <li><a href="#delivery-devices"><span class="toc-number">3</span> Oxygen Delivery Devices</a></li>
-                    <li><a href="#fio2-calculations"><span class="toc-number">4</span> FiO2 Calculations</a></li>
-                    <li><a href="#special-populations"><span class="toc-number">5</span> Special Populations</a></li>
-                    <li><a href="#oxygen-toxicity"><span class="toc-number">6</span> Oxygen Toxicity</a></li>
-                    <li><a href="#nursing-considerations"><span class="toc-number">7</span> Nursing Considerations</a></li>
-                    <li><a href="#troubleshooting"><span class="toc-number">8</span> Troubleshooting</a></li>
-                </ul>
-            </nav>
+            <p>Oxygen looks like the easiest topic in respiratory. It is not. It is a topic where the intuitive answer is wrong three separate times.</p>
 
-            <!-- Section 1: Physiology -->
-            <section class="guide-section" id="physiology">
-                <h2><span class="section-icon"><i class="fas fa-lungs"></i></span> Oxygen Physiology Review</h2>
+            <p>Points get lost here in three predictable ways.</p>
 
-                <p>Understanding oxygen transport and delivery is fundamental to safe and effective oxygen therapy. Oxygen must travel from the atmosphere to the mitochondria in cells, where it is used for cellular respiration.</p>
-
-                <h3>The Oxygen Cascade</h3>
-
-                <p>Oxygen moves through a series of decreasing partial pressures from atmosphere to tissues:</p>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Location</th>
-                                <th>PO2 (mmHg)</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Atmosphere (sea level)</td>
-                                <td>159</td>
-                                <td>21% of atmospheric pressure (760 mmHg)</td>
-                            </tr>
-                            <tr>
-                                <td>Trachea (humidified)</td>
-                                <td>149</td>
-                                <td>Water vapor displaces some oxygen</td>
-                            </tr>
-                            <tr>
-                                <td>Alveoli</td>
-                                <td>100-104</td>
-                                <td>CO2 present, mixed with residual air</td>
-                            </tr>
-                            <tr>
-                                <td>Arterial blood (PaO2)</td>
-                                <td>80-100</td>
-                                <td>Normal range for healthy adults</td>
-                            </tr>
-                            <tr>
-                                <td>Tissues</td>
-                                <td>40</td>
-                                <td>Where O2 is consumed by mitochondria</td>
-                            </tr>
-                            <tr>
-                                <td>Mitochondria</td>
-                                <td>1-10</td>
-                                <td>Final destination for cellular respiration</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You believed more oxygen is better</div>
+                <div class="info-box-content">
+                    <p>It is not. Oxygen is a drug with a dose, a target and a toxicity.</p>
+                    <p>Too much worsens outcomes after cardiac arrest. It may enlarge an infarct. In COPD it causes respiratory failure. If a question offers "increase to 100 percent", read the other options carefully first.</p>
                 </div>
+            </div>
 
-                <h3>Oxygen Transport Mechanisms</h3>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You trusted the pulse oximeter</div>
+                <div class="info-box-content">
+                    <p>SpO2 measures the percentage of hemoglobin that is saturated. It does not measure how much hemoglobin there is, or what it is saturated with.</p>
+                    <p>An anemic patient can read 99 percent and still be starving tissue. A fire victim with carbon monoxide poisoning can read 100 percent and be dying.</p>
+                </div>
+            </div>
 
-                <div class="interventions-list">
-                    <h4><i class="fas fa-truck"></i> How Oxygen Travels in Blood</h4>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You memorised the devices and not the reason</div>
+                <div class="info-box-content">
+                    <p>Six devices with overlapping flow ranges is a memorisation problem. One question turns it into a reasoning problem. Does this device supply the whole breath, or does the patient top it up with room air.</p>
+                    <p>Answer that and low-flow versus high-flow stops being a list to learn.</p>
+                </div>
+            </div>
 
-                    <div class="intervention-item">
-                        <div class="intervention-number">1</div>
-                        <div class="intervention-content">
-                            <h5>Bound to Hemoglobin (98.5%)</h5>
-                            <p>Each hemoglobin molecule carries 4 oxygen molecules. Measured by SpO2 (oxygen saturation). 1 gram of Hgb carries 1.34 mL of O2 when fully saturated.</p>
-                        </div>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Study oxygen as a drug you titrate to a target, not a comfort you turn up. The device follows from the FiO2 you need and how precise it has to be.
+            </div>
+        </section>
 
-                    <div class="intervention-item">
-                        <div class="intervention-number">2</div>
-                        <div class="intervention-content">
-                            <h5>Dissolved in Plasma (1.5%)</h5>
-                            <p>Small amount dissolved directly in plasma. Measured by PaO2 (partial pressure). Only dissolved O2 can diffuse into tissues, but hemoglobin acts as a reservoir.</p>
-                        </div>
+        <!-- ══════════ THE FOUR THINGS ══════════ -->
+        <section class="guide-section" id="high-yield-summary">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The four things</h2>
+            </div>
+
+            <p>For every device below, you should be able to say four things with the book closed: what it delivers, the clue in a scenario that points to it, the priority nursing action once it is on, and the one thing that makes it fail.</p>
+
+            <p>If you cannot say all four out loud, you do not know it yet. Familiarity is not recall.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Device</th>
+                            <th>Flow and FiO2</th>
+                            <th>Clue in the scenario</th>
+                            <th>Priority action</th>
+                            <th>What makes it fail</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Nasal cannula</strong></td>
+                            <td>1 to 6 L/min, FiO2 24 to 44 percent</td>
+                            <td>Stable patient, mild hypoxia, needs to eat and talk.</td>
+                            <td>Humidify above 4 L/min. Check the ears and nares.</td>
+                            <td>Fast deep breathing dilutes it, so the real FiO2 drops.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Simple face mask</strong></td>
+                            <td>5 to 10 L/min, FiO2 40 to 60 percent</td>
+                            <td>Moderate hypoxia, cannula is not enough.</td>
+                            <td>Keep flow at 5 L/min or above.</td>
+                            <td>Under 5 L/min the patient rebreathes their own carbon dioxide.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Non-rebreather</strong></td>
+                            <td>10 to 15 L/min, FiO2 80 to 95 percent</td>
+                            <td>Severe hypoxemia, trauma, carbon monoxide poisoning.</td>
+                            <td>Keep the reservoir bag inflated and the seal tight.</td>
+                            <td>A collapsing bag. Never run it under 10 L/min.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Venturi mask</strong></td>
+                            <td>4 to 12 L/min, FiO2 24 to 50 percent, precise</td>
+                            <td>COPD, or anywhere the exact FiO2 matters.</td>
+                            <td>Match the coloured adapter to the ordered FiO2 and flow.</td>
+                            <td>Wrong adapter, or entrainment ports blocked by bedding.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these four rows on one index card, by hand. Cannula for comfort. Simple mask for moderate. Non-rebreather for emergency. Venturi for precision. That card answers most device questions.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PHYSIOLOGY ══════════ -->
+        <section class="guide-section" id="physiology">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>What the number actually means</h2>
+            </div>
+
+            <p>Oxygen travels from the air to the mitochondria down a pressure gradient. Each step loses some.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Where</th>
+                            <th>PO2 in mmHg</th>
+                            <th>Why it dropped</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Atmosphere at sea level</td><td>159</td><td>21 percent of 760 mmHg</td></tr>
+                        <tr><td>Trachea, humidified</td><td>149</td><td>Water vapour displaces some oxygen</td></tr>
+                        <tr><td>Alveoli</td><td>100 to 104</td><td>Carbon dioxide is present and air mixes with residual gas</td></tr>
+                        <tr><td>Arterial blood, the PaO2</td><td>80 to 100</td><td>Normal for a healthy adult</td></tr>
+                        <tr><td>Tissues</td><td>40</td><td>Where oxygen is consumed</td></tr>
+                        <tr><td>Mitochondria</td><td>1 to 10</td><td>The final destination</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Two numbers, two different things</h3>
+
+            <p class="subtitle">Discrimination axis: saturation of what you have, versus how much is dissolved.</p>
+
+            <p>Almost all oxygen in blood rides on hemoglobin, about 98.5 percent. Each molecule carries four. One gram of fully saturated hemoglobin carries 1.34 mL.</p>
+
+            <p>The remaining 1.5 percent is dissolved in plasma. Only dissolved oxygen can diffuse into tissue. Hemoglobin is the reservoir that keeps refilling it.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">SpO2, from the pulse oximeter</div>
+                    <div class="comparison-card-body">
+                        <p>The percentage of hemoglobin that is carrying oxygen.</p>
+                        <p><strong>Normal 94 to 100 percent.</strong></p>
+                        <p>It says nothing about how much hemoglobin exists. A patient with a hemoglobin of 6 can read 99 percent. That patient is still hypoxic at the tissue.</p>
                     </div>
                 </div>
-
-                <div class="florencebot-tip" id="tip-spo2-vs-pao2">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">SpO2 vs PaO2: Know the Difference</div>
-                    <div class="florencebot-tip-content">
-                        <strong>SpO2</strong> (pulse oximetry) tells you what percentage of hemoglobin is carrying oxygen - it's a saturation measurement (normal: 94-100%). <strong>PaO2</strong> (arterial blood gas) tells you the partial pressure of oxygen dissolved in blood (normal: 80-100 mmHg). A patient can have "normal" SpO2 with dangerously low hemoglobin (anemia) and still be hypoxic at the tissue level! Always consider the whole picture: SpO2 + hemoglobin level + cardiac output = oxygen delivery.
+                <div class="comparison-card">
+                    <div class="comparison-card-header">PaO2, from the arterial blood gas</div>
+                    <div class="comparison-card-body">
+                        <p>The partial pressure of oxygen dissolved in arterial blood.</p>
+                        <p><strong>Normal 80 to 100 mmHg.</strong></p>
+                        <p>This is the pressure that drives oxygen into tissue. It is also what fills hemoglobin in the first place.</p>
                     </div>
                 </div>
+            </div>
 
-                <h3>Oxyhemoglobin Dissociation Curve</h3>
-
-                <p>The relationship between PaO2 and SpO2 is not linear - it follows an S-shaped curve. This has important clinical implications:</p>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>PaO2 (mmHg)</th>
-                                <th>Approximate SpO2</th>
-                                <th>Clinical Significance</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>100</td>
-                                <td>98%</td>
-                                <td>Normal - fully saturated</td>
-                            </tr>
-                            <tr>
-                                <td>80</td>
-                                <td>95%</td>
-                                <td>Still on the "flat" part of curve</td>
-                            </tr>
-                            <tr>
-                                <td>60</td>
-                                <td>90%</td>
-                                <td>Critical point - steep drop begins</td>
-                            </tr>
-                            <tr>
-                                <td>40</td>
-                                <td>75%</td>
-                                <td>Severe hypoxemia</td>
-                            </tr>
-                            <tr>
-                                <td>27</td>
-                                <td>50%</td>
-                                <td>P50 - half saturation point</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="florencebot-tip" id="tip-spo2-vs-pao2">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Saturation Is Not Delivery</div>
+                <div class="florencebot-tip-content">Oxygen delivery is saturation times hemoglobin times cardiac output. A pulse oximeter measures one of the three. That is why an anemic or shocked patient can read 98 percent and still be starved of oxygen.</div>
+            </div>
 
-                <div class="info-box nclex-tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-graduation-cap"></i> Critical Value: The 90/60 Rule
-                    </div>
-                    <p><strong>SpO2 of 90% correlates with PaO2 of approximately 60 mmHg</strong></p>
-                    <p>This is the critical threshold! Below this point, small drops in PaO2 cause dramatic drops in SpO2 because you're on the "steep" part of the curve. Above 90%, you're on the "flat" plateau where saturation stays relatively stable even with PaO2 changes.</p>
+            <h3>The curve, and the number on it that matters</h3>
+
+            <p>The relationship between PaO2 and SpO2 is not a straight line. It is an S-shape, and the shape has a clinical point.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>PaO2</th><th>Roughly SpO2</th><th>Where you are on the curve</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>100</td><td>98 percent</td><td>Fully saturated</td></tr>
+                        <tr><td>80</td><td>95 percent</td><td>Still on the flat part</td></tr>
+                        <tr><td>60</td><td>90 percent</td><td>The edge. The steep drop starts here</td></tr>
+                        <tr><td>40</td><td>75 percent</td><td>Severe hypoxemia</td></tr>
+                        <tr><td>27</td><td>50 percent</td><td>The P50, the half saturation point</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-chart-line"></i> The 90 over 60 rule</div>
+                <div class="info-box-content">
+                    <p>An SpO2 of 90 percent corresponds to a PaO2 of roughly 60 mmHg. Learn that pair as one fact.</p>
+                    <p>Above it you are on the flat plateau. PaO2 can swing a long way and the saturation barely moves. Below it you are on the cliff. A small further drop in PaO2 drops the saturation hard.</p>
+                    <p>So a patient falling from 92 to 88 is a bigger event. A fall from 100 to 96 is not.</p>
                 </div>
+            </div>
 
-                <h3>Factors Affecting the Curve</h3>
+            <h3>Shifting the curve</h3>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Shift Direction</th>
-                                <th>Causes</th>
-                                <th>Effect on O2 Release</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Right Shift</td>
-                                <td>↑ Temperature, ↑ CO2, ↓ pH (acidosis), ↑ 2,3-DPG</td>
-                                <td>Hemoglobin releases O2 more easily (good for tissues)</td>
-                            </tr>
-                            <tr>
-                                <td>Left Shift</td>
-                                <td>↓ Temperature, ↓ CO2, ↑ pH (alkalosis), ↓ 2,3-DPG, CO poisoning</td>
-                                <td>Hemoglobin holds onto O2 more tightly (bad for tissues)</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Shift</th><th>Caused by</th><th>What hemoglobin does</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Right</td>
+                            <td>Higher temperature, higher CO2, lower pH, higher 2,3-DPG</td>
+                            <td>Lets go of oxygen more easily, which helps working tissue</td>
+                        </tr>
+                        <tr>
+                            <td>Left</td>
+                            <td>Lower temperature, lower CO2, higher pH, lower 2,3-DPG, carbon monoxide</td>
+                            <td>Holds on to oxygen more tightly, which starves tissue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-brain"></i> CADET, face Right</div>
+                <div class="info-box-content">
+                    <p>The right shift causes: <strong>C</strong>O2 up, <strong>A</strong>cid meaning pH down, <strong>D</strong>PG up, <strong>E</strong>xercise, <strong>T</strong>emperature up.</p>
+                    <p>Every one of those describes hard-working tissue. The body loosens hemoglobin's grip exactly where oxygen is needed most.</p>
                 </div>
+            </div>
 
-                <div class="info-box mnemonic">
-                    <div class="info-box-header">
-                        <i class="fas fa-brain"></i> Memory Aid: Right Shift Causes
-                    </div>
-                    <p><strong>CADET, face Right!</strong></p>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> SpO2 is a percentage of what you have; PaO2 is the pressure driving it into tissue. 90 percent equals 60 mmHg, and below that the curve falls away.
+            </div>
+        </section>
+
+        <!-- ══════════ INDICATIONS ══════════ -->
+        <section class="guide-section" id="indications">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>When oxygen is the answer</h2>
+            </div>
+
+            <p>Oxygen is prescribed, documented and titrated like any other drug. It needs an order except in an emergency.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Reason</th><th>The threshold</th><th>Where you see it</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Hypoxemia</td><td>PaO2 under 60 mmHg or SpO2 under 90 percent</td><td>ARDS, pneumonia, PE, heart failure exacerbation</td></tr>
+                        <tr><td>Suspected hypoxemia</td><td>Clinical signs while the gas is pending</td><td>Trauma, acute distress, cardiac arrest</td></tr>
+                        <tr><td>Severe trauma</td><td>Regardless of the saturation</td><td>Major bleeding, shock, multiple injuries</td></tr>
+                        <tr><td>Acute MI</td><td>Only if SpO2 is under 94 percent</td><td>STEMI or NSTEMI with respiratory compromise</td></tr>
+                        <tr><td>After anesthesia</td><td>During recovery</td><td>Post-anesthesia care unit</td></tr>
+                        <tr><td>Carbon monoxide poisoning</td><td>100 percent regardless of the saturation</td><td>Fire victims, faulty heaters</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> Carbon monoxide makes the monitor lie</div>
+                <div class="info-box-content">
+                    <p>Carbon monoxide binds hemoglobin around 200 times more strongly than oxygen. The pulse oximeter cannot tell oxyhemoglobin from carboxyhemoglobin, so it counts both as saturated.</p>
+                    <p>A fire victim reading 99 percent may have almost no oxygen-carrying capacity left.</p>
+                    <p>Give 100 percent oxygen through a non-rebreather and get a co-oximetry level. Do not titrate off the pulse oximeter in this patient.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-co-poisoning">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">A Normal Pulse Ox in a Fire Victim</div>
+                <div class="florencebot-tip-content">If the scenario mentions a house fire, a car in a closed garage, or a faulty furnace, the SpO2 reading is meaningless. Non-rebreather at 15 L/min, then co-oximetry. The oximeter counts carbon monoxide as if it were oxygen.</div>
+            </div>
+
+            <h3>The targets</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Patient</th><th>Target SpO2</th><th>Why that number</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Most adults</td><td>94 to 98 percent</td><td>Enough oxygen without the harm of excess</td></tr>
+                        <tr><td>COPD with CO2 retention</td><td>88 to 92 percent</td><td>Preserves the hypoxic drive</td></tr>
+                        <tr><td>Acute MI without hypoxia</td><td>94 to 98 percent</td><td>Hyperoxia may enlarge the infarct</td></tr>
+                        <tr><td>Acute stroke</td><td>94 to 98 percent</td><td>Hyperoxia may worsen the ischemic injury</td></tr>
+                        <tr><td>Premature neonates</td><td>91 to 95 percent</td><td>Prevents retinopathy of prematurity</td></tr>
+                        <tr><td>During resuscitation</td><td>100 percent at first</td><td>Titrate down once circulation returns</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> Where hyperoxia does harm</div>
+                <div class="info-box-content">
                     <ul>
-                        <li><strong>C</strong>O2 increased</li>
-                        <li><strong>A</strong>cid (pH decreased)</li>
-                        <li><strong>D</strong>PG (2,3-DPG) increased</li>
-                        <li><strong>E</strong>xercise</li>
-                        <li><strong>T</strong>emperature increased</li>
+                        <li><strong>After cardiac arrest.</strong> Associated with worse neurological outcomes.</li>
+                        <li><strong>Acute MI.</strong> May increase infarct size.</li>
+                        <li><strong>Acute stroke.</strong> May worsen ischemic injury.</li>
+                        <li><strong>COPD.</strong> Suppresses respiratory drive and causes carbon dioxide narcosis.</li>
+                    </ul>
+                    <p>Titrate to the lowest FiO2 that reaches the target. Chasing 100 percent is not thoroughness.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Treat oxygen as a drug with a target range. Under 94 percent for most adults, under 88 percent in COPD. Then find and fix the reason they are hypoxic.
+            </div>
+        </section>
+
+        <!-- ══════════ DEVICES ══════════ -->
+        <section class="guide-section" id="delivery-devices">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>Picking the device</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: does the device supply the whole breath, or does the patient top it up with room air.</p>
+
+            <p>A normal adult pulls about 30 to 40 L/min at peak inspiration. That single number explains the entire low-flow and high-flow split.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Low-flow: the patient dilutes it</div>
+                    <div class="comparison-card-body">
+                        <p>Flow is less than the patient's inspiratory demand, so they draw in room air alongside it.</p>
+                        <p><strong>FiO2 varies with the breathing pattern.</strong> Fast and deep means more room air and a lower real FiO2.</p>
+                        <p>Comfortable and well tolerated.</p>
+                        <p><strong>Examples:</strong> nasal cannula, simple face mask, partial rebreather, non-rebreather.</p>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">High-flow: the device supplies it all</div>
+                    <div class="comparison-card-body">
+                        <p>Flow meets or exceeds inspiratory demand, so the patient breathes only what the device gives.</p>
+                        <p><strong>FiO2 is precise and consistent</strong> regardless of how they are breathing.</p>
+                        <p>Less comfortable, more reliable.</p>
+                        <p><strong>Examples:</strong> Venturi mask, high-flow nasal cannula, aerosol mask, T-piece or trach collar.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-low-vs-high-flow">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Ask One Question</div>
+                <div class="florencebot-tip-content">Does the device meet the patient's full inspiratory demand. A cannula at 2 L/min against a 35 L/min breath obviously does not, so the FiO2 is a guess. A Venturi entrains air to deliver 40 L/min or more at a set concentration, so the FiO2 is a fact.</div>
+            </div>
+
+            <h3>Nasal cannula</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Flow</th><th>Roughly FiO2</th><th>Note</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>1 L/min</td><td>24 percent</td><td>The lowest setting</td></tr>
+                        <tr><td>2 L/min</td><td>28 percent</td><td>Common starting point for mild hypoxia</td></tr>
+                        <tr><td>3 L/min</td><td>32 percent</td><td>Moderate supplementation</td></tr>
+                        <tr><td>4 L/min</td><td>36 percent</td><td>Humidify at or above this rate</td></tr>
+                        <tr><td>5 L/min</td><td>40 percent</td><td>Practical maximum for comfort</td></tr>
+                        <tr><td>6 L/min</td><td>44 percent</td><td>Above this, move to a mask</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>The cannula wins on tolerance. The patient can eat, drink and hold a conversation. Over days rather than minutes, that matters.</p>
+
+            <p>It also still works in a mouth breather. Oxygen fills the nasopharynx and gets drawn in with the next breath. Delivery is reduced, not lost.</p>
+
+            <h3>Masks</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Device</th><th>Flow</th><th>FiO2</th><th>The thing that catches people</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Simple face mask</td>
+                            <td>5 to 10 L/min</td>
+                            <td>40 to 60 percent</td>
+                            <td>Must run at 5 L/min or more, or the patient rebreathes their own carbon dioxide</td>
+                        </tr>
+                        <tr>
+                            <td>Partial rebreather</td>
+                            <td>6 to 10 L/min</td>
+                            <td>60 to 75 percent</td>
+                            <td>Keep the reservoir bag at least a third inflated</td>
+                        </tr>
+                        <tr>
+                            <td>Non-rebreather</td>
+                            <td>10 to 15 L/min</td>
+                            <td>80 to 95 percent</td>
+                            <td>One-way valves stop exhaled air re-entering. The bag must stay up</td>
+                        </tr>
+                        <tr>
+                            <td>Venturi mask</td>
+                            <td>4 to 12 L/min</td>
+                            <td>24 to 50 percent, precise</td>
+                            <td>The adapter sets the FiO2, so it must match the order</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Non-rebreather: for emergencies</div>
+                    <div class="comparison-card-body">
+                        <p><strong>Use it for:</strong> severe hypoxemia, carbon monoxide poisoning, trauma and shock, or as a bridge to intubation.</p>
+                        <ul>
+                            <li>The bag must stay at least two thirds inflated.</li>
+                            <li>Never run it below 10 L/min.</li>
+                            <li>The mask seal has to be tight.</li>
+                        </ul>
+                        <p>A deflating bag means the patient is out-breathing the flow. Turn it up.</p>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Venturi: for precision</div>
+                    <div class="comparison-card-body">
+                        <p><strong>Use it for:</strong> COPD, weaning down from higher oxygen, or anywhere the exact concentration matters.</p>
+                        <ul>
+                            <li>Blue adapter: 24 percent at 4 L/min</li>
+                            <li>Yellow adapter: 28 percent at 4 L/min</li>
+                            <li>Red adapter: 40 percent at 8 L/min</li>
+                            <li>Green adapter: 60 percent at 12 L/min</li>
+                        </ul>
+                        <p>Keep the entrainment ports clear. A blanket over them changes the delivered FiO2.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-venturi-copd">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Venturi Is the COPD Answer</div>
+                <div class="florencebot-tip-content">With a Venturi you set 24 percent and the patient gets 24 percent. With a cannula you get somewhere between 24 and 44, depending on how they are breathing. When the exact concentration is what keeps a CO2 retainer safe, that difference is the whole point.</div>
+            </div>
+
+            <h3>High-flow nasal cannula</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Setting</th><th>Range</th><th>What it buys you</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Flow</td><td>10 to 60 L/min</td><td>Meets or exceeds inspiratory demand</td></tr>
+                        <tr><td>FiO2</td><td>21 to 100 percent</td><td>Set independently of the flow</td></tr>
+                        <tr><td>Temperature</td><td>31 to 37 degrees C</td><td>Heated and humidified, so high flow is tolerable</td></tr>
+                        <tr><td>PEEP effect</td><td>About 1 cmH2O per 10 L/min</td><td>Mild positive pressure holding alveoli open</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>HFNC does four things a mask cannot. It flushes carbon dioxide out of the nasopharynx. It reduces the work of breathing by meeting demand. It adds a little PEEP. And the patient can still eat and talk.</p>
+
+            <p>In acute hypoxemic respiratory failure it can sometimes prevent intubation altogether.</p>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Cannula for mild, simple mask for moderate, non-rebreather for emergency, Venturi when the number has to be exact. Then use the lowest flow that reaches the target.
+            </div>
+        </section>
+
+        <!-- ══════════ FIO2 ══════════ -->
+        <section class="guide-section" id="fio2-calculations">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>Doing the arithmetic</h2>
+            </div>
+
+            <p>Two calculations show up. Estimating FiO2 on a cannula, and reading a P to F ratio.</p>
+
+            <h3>The 4 percent rule</h3>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-calculator"></i> Nasal cannula FiO2</div>
+                <div class="info-box-content">
+                    <div class="key-number">
+                        <div class="value">FiO2 = 20% + (4% x L/min)</div>
+                        <div class="label">Nasal cannula estimate</div>
+                    </div>
+                    <p>At 3 L/min: 20 plus 12 gives 32 percent.</p>
+                    <p>This is an estimate and only for a nasal cannula. The real FiO2 moves with respiratory rate, tidal volume and breathing pattern.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-fio2-rule">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Four Percent per Litre</div>
+                <div class="florencebot-tip-content">Start at room air and add four points per litre. So 1 L is 24, 2 L is 28, 3 L is 32, 4 L is 36, 5 L is 40, 6 L is 44. A patient breathing fast and deep dilutes it further, so the true value sits below your estimate.</div>
+            </div>
+
+            <h3>How a Venturi mask gets it exact</h3>
+
+            <p>The Venturi uses the Bernoulli principle. Oxygen shooting through a narrow port drags room air in behind it, at a fixed ratio.</p>
+
+            <p>A lower FiO2 needs more entrained air. That is why the low settings deliver the highest total flow.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>FiO2 wanted</th><th>Oxygen to air ratio</th><th>Oxygen flow</th><th>Total flow delivered</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>24 percent</td><td>1 to 25</td><td>4 L/min</td><td>About 104 L/min</td></tr>
+                        <tr><td>28 percent</td><td>1 to 10</td><td>4 L/min</td><td>About 44 L/min</td></tr>
+                        <tr><td>35 percent</td><td>1 to 5</td><td>8 L/min</td><td>About 48 L/min</td></tr>
+                        <tr><td>40 percent</td><td>1 to 3</td><td>8 L/min</td><td>About 32 L/min</td></tr>
+                        <tr><td>50 percent</td><td>1 to 1.7</td><td>12 L/min</td><td>About 32 L/min</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>The P to F ratio</h3>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-calculator"></i> PaO2 divided by FiO2</div>
+                <div class="info-box-content">
+                    <div class="key-number">
+                        <div class="value">P/F = PaO2 &divide; FiO2 as a decimal</div>
+                        <div class="label">Oxygenation efficiency</div>
+                    </div>
+                    <p>PaO2 of 80 on an FiO2 of 0.40 gives 80 divided by 0.40, which is 200.</p>
+                    <p>The ratio accounts for how much oxygen you are already giving. A PaO2 of 80 is reassuring on room air. On 100 percent it is alarming.</p>
+                </div>
+            </div>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>P to F ratio</th><th>What it means</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Over 400</td><td>Normal gas exchange</td></tr>
+                        <tr><td>300 to 400</td><td>Mild impairment</td></tr>
+                        <tr><td>200 to 300</td><td>Mild ARDS by the Berlin criteria</td></tr>
+                        <tr><td>100 to 200</td><td>Moderate ARDS</td></tr>
+                        <tr><td>100 or less</td><td>Severe ARDS. May need ECMO</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>The Berlin criteria apply these bands with a PEEP of 5 or more. Mild is 200 to 300. Moderate is 100 to 200. Severe is 100 or under.</p>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Cannula FiO2 is room air plus 4 points per litre. The P to F ratio tells you how much work the oxygen is doing, which a PaO2 alone cannot.
+            </div>
+        </section>
+
+        <!-- ══════════ SPECIAL POPULATIONS ══════════ -->
+        <section class="guide-section" id="special-populations">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2>The patients where the rule changes</h2>
+            </div>
+
+            <h3>COPD with chronic carbon dioxide retention</h3>
+
+            <p class="subtitle">Discrimination axis: this patient breathes because oxygen is low, not because carbon dioxide is high.</p>
+
+            <p>A healthy person's drive to breathe comes from rising carbon dioxide. A COPD patient who has retained carbon dioxide for years has stopped responding to it.</p>
+
+            <p>What is left is the hypoxic drive. Low oxygen is the only signal telling them to take the next breath.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> The chain of events</div>
+                <div class="info-box-content">
+                    <p>Give high-flow oxygen and you remove the stimulus. Then breathing slows. Carbon dioxide rises. The pH falls into respiratory acidosis. Carbon dioxide narcosis follows, and then respiratory failure.</p>
+                    <p>The whole sequence starts with a well-meaning increase in the flow rate.</p>
+                </div>
+            </div>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Decision</th><th>In COPD</th><th>Why</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Target SpO2</td><td>88 to 92 percent</td><td>Enough oxygen, hypoxic drive intact</td></tr>
+                        <tr><td>First device</td><td>Venturi mask at 24 to 28 percent</td><td>The FiO2 is exact, not a range</td></tr>
+                        <tr><td>Alternative</td><td>Nasal cannula at 1 to 2 L/min</td><td>Low flow and more comfortable</td></tr>
+                        <tr><td>Follow-up</td><td>ABG within 30 to 60 minutes</td><td>Catches carbon dioxide retention early</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-brain"></i> Confusion on oxygen means the opposite of what you think</div>
+                <div class="info-box-content">
+                    <p>A COPD patient who becomes confused or drowsy after oxygen is started is not under-oxygenated. They are retaining carbon dioxide.</p>
+                    <p>Look for confusion, a falling level of consciousness, flushed skin, and asterixis. Asterixis is a flapping tremor of the outstretched hands.</p>
+                    <p>The instinct is to turn the oxygen up. That is the wrong direction. Get an ABG and call the provider.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-copd-targets">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Do Not Chase 100 in COPD</div>
+                <div class="florencebot-tip-content">A COPD patient sitting at 89 percent does not need you to get them to 98. That is their normal and it is the target. Pushing higher suppresses breathing and drives carbon dioxide up.</div>
+            </div>
+
+            <h3>Premature neonates</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Risk</th><th>Target</th><th>Why</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Retinopathy of prematurity</td><td>SpO2 91 to 95 percent</td><td>Excess oxygen damages developing retinal vessels</td></tr>
+                        <tr><td>Bronchopulmonary dysplasia</td><td>Avoid prolonged high FiO2</td><td>Oxygen injures immature lung tissue</td></tr>
+                        <tr><td>Free radical injury</td><td>Lowest effective FiO2</td><td>Premature infants have very limited antioxidant defence</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>After cardiac arrest</h3>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>During the arrest.</strong> 100 percent oxygen. Maximising delivery is the whole aim while there is no circulation.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>After circulation returns.</strong> Titrate down to a saturation of 94 to 98 percent. Hyperoxia here is linked to worse neurological outcomes.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Then monitor.</strong> Use the ABG. Aim for a PaO2 of 80 to 100 mmHg and keep it under 300.</div>
+                </li>
+            </ol>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> COPD gets 88 to 92 percent through a Venturi. Premature neonates get 91 to 95. After an arrest, 100 percent during, then titrate straight back down.
+            </div>
+        </section>
+
+        <!-- ══════════ TOXICITY ══════════ -->
+        <section class="guide-section" id="oxygen-toxicity">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2>When oxygen becomes the injury</h2>
+            </div>
+
+            <p>Above 50 percent FiO2, held for 24 to 48 hours, oxygen starts damaging the lung. It was given to help that lung. Four mechanisms are at work.</p>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Free radicals.</strong> High oxygen tension generates reactive species: superoxide, hydrogen peroxide, hydroxyl radicals. They damage cell membranes and DNA.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Absorption atelectasis.</strong> Nitrogen normally splints alveoli open. High FiO2 washes it out, so once the oxygen is absorbed the alveolus has nothing holding it and collapses.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Surfactant failure.</strong> Radicals injure the type II pneumocytes that make surfactant. Without it, alveoli become unstable.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Inflammation.</strong> Oxidative stress triggers a cascade, causing capillary leak, pulmonary edema, and fibrosis over time.</div>
+                </li>
+            </ol>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Type</th><th>Threshold</th><th>Time course</th><th>What you see</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pulmonary toxicity</td>
+                            <td>Over 50 percent FiO2</td>
+                            <td>24 to 48 hours and beyond</td>
+                            <td>Tracheobronchitis, falling lung compliance, an ARDS-like picture</td>
+                        </tr>
+                        <tr>
+                            <td>CNS toxicity, the Paul Bert effect</td>
+                            <td>100 percent above 2 atmospheres</td>
+                            <td>Minutes to hours</td>
+                            <td>Seizures, tunnel vision, tinnitus. Hyperbaric settings only</td>
+                        </tr>
+                        <tr>
+                            <td>Retinopathy of prematurity</td>
+                            <td>Variable, in neonates</td>
+                            <td>Days to weeks</td>
+                            <td>Abnormal retinal vessel growth, possible blindness</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> The early signs</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li>Substernal chest pain or burning, from tracheobronchitis</li>
+                        <li>A dry cough</li>
+                        <li>Dyspnea that worsens despite the oxygen</li>
+                        <li>Falling lung compliance, so a ventilated patient becomes harder to ventilate</li>
+                    </ul>
+                    <p>Dyspnea worsening on oxygen is the one worth naming. It reads as "they need more" and it means the opposite.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-toxicity-signs">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Keep FiO2 at 50 or Below</div>
+                <div class="florencebot-tip-content">If a patient has needed more than 50 percent for more than a day, the answer is usually not more oxygen. It is PEEP, prone positioning, or escalation. Titrate to the target saturation, never to the dial.</div>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-shield-alt"></i> How you keep it from happening</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li>Use the lowest effective FiO2. Target the saturation, not the setting.</li>
+                        <li>Wean as soon as the patient tolerates it.</li>
+                        <li>Aim to keep FiO2 at 50 percent or below for prolonged therapy.</li>
+                        <li>Optimise PEEP, which allows a lower FiO2 for the same oxygenation.</li>
+                        <li>Treat the cause of the hypoxemia rather than covering it.</li>
                     </ul>
                 </div>
-                <div class="bottom-line">Bottom Line: O2 diffuses across the alveolar-capillary membrane driven by partial pressure gradient. Hemoglobin carries 97% of O2. PaO2 (dissolved O2) drives SpO2 — the oxyhemoglobin dissociation curve explains their relationship.</div>
-            </section>
+            </div>
 
-            <!-- Section 2: Indications -->
-            <section class="guide-section" id="indications">
-                <h2><span class="section-icon"><i class="fas fa-clipboard-check"></i></span> Indications for Oxygen Therapy</h2>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Over 50 percent for over 24 to 48 hours injures alveoli. Substernal pain, dry cough and worsening dyspnea are the early signs. The prevention is weaning.
+            </div>
+        </section>
 
-                <p>Oxygen therapy is indicated when tissue oxygenation is inadequate or at risk. The goal is to maintain adequate tissue oxygenation while minimizing complications.</p>
+        <!-- ══════════ NURSING ══════════ -->
+        <section class="guide-section" id="nursing-considerations">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2>What you do</h2>
+            </div>
 
-                <h3>Primary Indications</h3>
+            <p>Assess before you start. Assess again after every change. Both halves get tested.</p>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Indication</th>
-                                <th>Criteria</th>
-                                <th>Clinical Examples</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Hypoxemia</td>
-                                <td>PaO2 &lt; 60 mmHg or SpO2 &lt; 90%</td>
-                                <td>ARDS, pneumonia, PE, CHF exacerbation</td>
-                            </tr>
-                            <tr>
-                                <td>Suspected Hypoxemia</td>
-                                <td>Clinical signs pending ABG results</td>
-                                <td>Trauma, acute respiratory distress, cardiac arrest</td>
-                            </tr>
-                            <tr>
-                                <td>Severe Trauma</td>
-                                <td>Regardless of SpO2</td>
-                                <td>Major bleeding, shock, multiple injuries</td>
-                            </tr>
-                            <tr>
-                                <td>Acute MI</td>
-                                <td>If SpO2 &lt; 94% or signs of hypoxemia</td>
-                                <td>STEMI, NSTEMI with respiratory compromise</td>
-                            </tr>
-                            <tr>
-                                <td>Post-operative</td>
-                                <td>During anesthesia recovery</td>
-                                <td>PACU, post-general anesthesia</td>
-                            </tr>
-                            <tr>
-                                <td>Carbon Monoxide Poisoning</td>
-                                <td>100% O2 regardless of SpO2</td>
-                                <td>Fire victims, suicide attempts, heater malfunctions</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>What you assess</th><th>What you are looking at</th><th>Why it matters</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Respiratory status</td><td>Rate, depth, pattern, work of breathing</td><td>The baseline you will compare everything to</td></tr>
+                        <tr><td>Saturation</td><td>SpO2 at rest and on exertion</td><td>Decides whether oxygen is needed at all</td></tr>
+                        <tr><td>Lung sounds</td><td>Crackles, wheezes, diminished areas</td><td>Points at the underlying cause</td></tr>
+                        <tr><td>Level of consciousness</td><td>Alert, orientated, confused</td><td>Hypoxia and carbon dioxide retention both show up here</td></tr>
+                        <tr><td>Skin colour</td><td>Cyanosis, pallor, flushing</td><td>Central cyanosis is severe and late</td></tr>
+                        <tr><td>History</td><td>COPD, heart failure, neuromuscular disease</td><td>Sets the target and the device</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="florencebot-tip" id="tip-co-poisoning">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">CO Poisoning: Don't Trust the Pulse Ox!</div>
-                    <div class="florencebot-tip-content">
-                        In <strong>carbon monoxide poisoning</strong>, pulse oximetry can show normal or high SpO2 readings even though the patient is severely hypoxic! Why? CO binds to hemoglobin 200x more strongly than O2, and the pulse ox cannot distinguish between oxyhemoglobin (HbO2) and carboxyhemoglobin (HbCO). A fire victim with SpO2 of 99% may actually have dangerously low oxygen-carrying capacity. <strong>Always give 100% O2 via NRB for suspected CO poisoning</strong> and get a co-oximetry blood test (not regular pulse ox).
-                    </div>
-                </div>
+            <h3>Ongoing</h3>
 
-                <h3>Target Oxygen Saturation Ranges</h3>
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Saturation, continuously.</strong> Keep it in the target range. Treat it as a trend, and always correlate it with how the patient looks.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Respiratory assessment, every 1 to 4 hours.</strong> Rate, depth, effort, lung sounds. Rising work of breathing or accessory muscle use is deterioration even if the saturation still looks fine.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>The equipment.</strong> Flow rate, tubing connections, humidifier level, mask seal. Check the setting matches the order.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Skin.</strong> Ears, nose, cheeks and anywhere tubing sits. Device-related pressure injury is common and preventable.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Blood gases when ordered.</strong> PaO2, PaCO2 and pH together. In COPD this is how you catch retention.</div>
+                </li>
+            </ol>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Patient Population</th>
-                                <th>Target SpO2</th>
-                                <th>Rationale</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Most Adults</td>
-                                <td>94-98%</td>
-                                <td>Adequate oxygenation without excess</td>
-                            </tr>
-                            <tr>
-                                <td>COPD (CO2 retainers)</td>
-                                <td>88-92%</td>
-                                <td>Avoid suppressing hypoxic drive</td>
-                            </tr>
-                            <tr>
-                                <td>Acute MI (no hypoxia)</td>
-                                <td>94-98%</td>
-                                <td>Hyperoxia may be harmful</td>
-                            </tr>
-                            <tr>
-                                <td>Stroke (acute)</td>
-                                <td>94-98%</td>
-                                <td>Avoid hyperoxia; may worsen outcomes</td>
-                            </tr>
-                            <tr>
-                                <td>Premature Neonates</td>
-                                <td>91-95%</td>
-                                <td>Prevent retinopathy of prematurity</td>
-                            </tr>
-                            <tr>
-                                <td>Resuscitation</td>
-                                <td>100% initially</td>
-                                <td>Titrate down after ROSC</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <p>Humidify above 4 L/min. Dry gas at that rate strips the nasal mucosa, and a cracked mucosa bleeds and hurts.</p>
 
-                <div class="info-box warning">
-                    <div class="info-box-header">
-                        <i class="fas fa-exclamation-triangle"></i> Hyperoxia Can Be Harmful
-                    </div>
-                    <p><strong>More oxygen is not always better!</strong> Current evidence shows that targeting SpO2 of 100% can cause harm in several conditions:</p>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-fire-extinguisher"></i> Oxygen supports combustion</div>
+                <div class="info-box-content">
                     <ul>
-                        <li>Post-cardiac arrest: Hyperoxia associated with worse neurological outcomes</li>
-                        <li>Acute MI: May increase infarct size</li>
-                        <li>Acute stroke: May worsen ischemic injury</li>
-                        <li>COPD: Suppresses respiratory drive, causes CO2 narcosis</li>
+                        <li>No smoking within 10 feet of the source.</li>
+                        <li>No open flames, sparks or heat sources.</li>
+                        <li>No petroleum products such as petroleum jelly anywhere near it.</li>
+                        <li>Use water-based lubricant for dry nares.</li>
+                        <li>Electrical equipment properly grounded.</li>
+                        <li>Post an "Oxygen in Use" sign.</li>
                     </ul>
-                    <p>Titrate to the minimum FiO2 needed to achieve target SpO2.</p>
+                    <p>Oxygen does not burn. It makes everything else burn faster and hotter.</p>
                 </div>
-                <div class="bottom-line">Bottom Line: O2 is indicated when SpO2 < 94% (or < 88% for COPD). It's a treatment, not a cure — always identify and treat the underlying cause of hypoxemia.</div>
-            </section>
+            </div>
 
-            <!-- Section 3: Delivery Devices -->
-            <section class="guide-section" id="delivery-devices">
-                <h2><span class="section-icon"><i class="fas fa-mask"></i></span> Oxygen Delivery Devices</h2>
+            <h3>What the patient needs to be told</h3>
 
-                <p>Oxygen delivery devices are categorized by their ability to provide consistent FiO2 and their flow characteristics. Selecting the right device depends on the patient's oxygen needs, comfort, and clinical situation.</p>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Topic</th><th>What you teach</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Fire safety</td><td>No smoking, keep away from flames, post the sign</td></tr>
+                        <tr><td>Using the equipment</td><td>How the cannula or mask should sit, how to check the flow, when to call</td></tr>
+                        <tr><td>What to report</td><td>Worsening breathlessness, chest pain, confusion, blue lips</td></tr>
+                        <tr><td>Skin care</td><td>Keep skin clean and dry, water-based lubricant only, report soreness</td></tr>
+                        <tr><td>Activity</td><td>Use portable oxygen as prescribed, pace activities, rest between them</td></tr>
+                        <tr><td>Home oxygen</td><td>Equipment care, supplier contact, when to call emergency services</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <h3>Low-Flow vs High-Flow Systems</h3>
+            <p>Document the device, the flow rate, the saturation and how the patient responded. All four, every time you change something.</p>
 
-                <div class="device-grid">
-                    <div class="device-card low-flow">
-                        <div class="device-card-header">
-                            <i class="fas fa-wind"></i> Low-Flow Systems
-                        </div>
-                        <div class="device-card-body">
-                            <h4>Characteristics</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Flow rate &lt; patient's inspiratory demand</li>
-                                <li><i class="fas fa-check"></i> Patient inhales room air to supplement</li>
-                                <li><i class="fas fa-check"></i> <strong>FiO2 varies</strong> with breathing pattern</li>
-                                <li><i class="fas fa-check"></i> Comfortable, well-tolerated</li>
-                            </ul>
-                            <h4>Examples</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Nasal cannula</li>
-                                <li><i class="fas fa-check"></i> Simple face mask</li>
-                                <li><i class="fas fa-check"></i> Partial rebreather mask</li>
-                                <li><i class="fas fa-check"></i> Non-rebreather mask</li>
-                            </ul>
-                        </div>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Assess before and after every change. Humidify above 4 L/min. Check the skin under the straps. No flames, no petroleum products.
+            </div>
+        </section>
 
-                    <div class="device-card high-flow">
-                        <div class="device-card-header">
-                            <i class="fas fa-fan"></i> High-Flow Systems
-                        </div>
-                        <div class="device-card-body">
-                            <h4>Characteristics</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Flow rate ≥ patient's inspiratory demand</li>
-                                <li><i class="fas fa-check"></i> Provides entire inspiratory volume</li>
-                                <li><i class="fas fa-check"></i> <strong>FiO2 is precise and consistent</strong></li>
-                                <li><i class="fas fa-check"></i> Less comfortable but more reliable</li>
-                            </ul>
-                            <h4>Examples</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Venturi mask</li>
-                                <li><i class="fas fa-check"></i> High-flow nasal cannula (HFNC)</li>
-                                <li><i class="fas fa-check"></i> Aerosol mask</li>
-                                <li><i class="fas fa-check"></i> T-piece/trach collar</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
+        <!-- ══════════ TROUBLESHOOTING ══════════ -->
+        <section class="guide-section" id="troubleshooting">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>When it is not working</h2>
+            </div>
 
-                <div class="florencebot-tip" id="tip-low-vs-high-flow">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Low-Flow vs High-Flow: The Key Difference</div>
-                    <div class="florencebot-tip-content">
-                        The key question: <strong>Does the device meet ALL of the patient's inspiratory demand?</strong> A normal adult inhales about 30-40 L/min at peak. A nasal cannula at 2 L/min obviously can't supply all that, so the patient dilutes it with room air - making FiO2 unpredictable. A Venturi mask uses air entrainment to deliver 40+ L/min at a set FiO2, meeting inspiratory demand with a consistent oxygen concentration. When you need <em>precise</em> FiO2 control (like in COPD patients), use a high-flow device like a Venturi mask!
-                    </div>
-                </div>
-
-                <h3>Nasal Cannula</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Flow Rate</th>
-                                <th>Approximate FiO2</th>
-                                <th>Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1 L/min</td>
-                                <td>24%</td>
-                                <td>Lowest setting, minimal supplementation</td>
-                            </tr>
-                            <tr>
-                                <td>2 L/min</td>
-                                <td>28%</td>
-                                <td>Common starting point for mild hypoxia</td>
-                            </tr>
-                            <tr>
-                                <td>3 L/min</td>
-                                <td>32%</td>
-                                <td>Moderate supplementation</td>
-                            </tr>
-                            <tr>
-                                <td>4 L/min</td>
-                                <td>36%</td>
-                                <td>Higher flow, may dry nasal passages</td>
-                            </tr>
-                            <tr>
-                                <td>5 L/min</td>
-                                <td>40%</td>
-                                <td>Maximum recommended for standard NC</td>
-                            </tr>
-                            <tr>
-                                <td>6 L/min</td>
-                                <td>44%</td>
-                                <td>Exceeds comfort; consider mask</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-lightbulb"></i> Nasal Cannula Advantages
-                    </div>
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-list-ol"></i> The ordering rules</div>
+                <div class="info-box-content">
                     <ul>
-                        <li>Most comfortable for long-term use</li>
-                        <li>Patient can eat, drink, and talk</li>
-                        <li>Works with mouth breathers (nasopharynx still gets O2)</li>
-                        <li>Ideal for stable patients with mild-moderate hypoxia</li>
+                        <li>Patient before equipment. Airway, then breathing, then circulation, then the tubing.</li>
+                        <li>Look before you turn it up. A disconnected line and worsening pneumonia both drop the saturation, and only one is fixed by more flow.</li>
+                        <li>Confusion in a COPD patient on oxygen means turn it down, not up.</li>
+                        <li>Believe the patient over the number. Someone who looks hypoxic with a reading of 98 is telling you the probe is wrong.</li>
                     </ul>
                 </div>
+            </div>
 
-                <h3>Face Masks</h3>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Problem</th><th>Likely cause</th><th>What you do</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Saturation is not improving</td>
+                            <td>Equipment fault, poor seal, breathing pattern, or the patient is deteriorating</td>
+                            <td>Check the equipment, reposition the device, reassess the patient. Then consider a higher FiO2 or a different device, and notify the provider.</td>
+                        </tr>
+                        <tr>
+                            <td>Dry or sore nose</td>
+                            <td>Flow above 4 L/min with no humidification</td>
+                            <td>Add a bubble humidifier, use a water-based gel, consider a mask if high flow is needed.</td>
+                        </tr>
+                        <tr>
+                            <td>Skin breakdown</td>
+                            <td>Pressure from the device, moisture, poor fit</td>
+                            <td>Reposition the tubing, pad the pressure points, check the fit, alternate devices where possible.</td>
+                        </tr>
+                        <tr>
+                            <td>The patient keeps taking it off</td>
+                            <td>Discomfort, confusion, claustrophobia</td>
+                            <td>Find out which. Try a different device, explain what it is for, and treat restraint as a last resort.</td>
+                        </tr>
+                        <tr>
+                            <td>The non-rebreather bag collapses</td>
+                            <td>Flow too low, or a leak</td>
+                            <td>Increase to 10 to 15 L/min, check every connection, confirm the valves are seated.</td>
+                        </tr>
+                        <tr>
+                            <td>Confusion or drowsiness on oxygen</td>
+                            <td>Carbon dioxide retention in COPD, or worsening hypoxia</td>
+                            <td>Get an ABG. In a known retainer, reduce the FiO2. Notify the provider immediately.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Device</th>
-                                <th>Flow Rate</th>
-                                <th>FiO2 Range</th>
-                                <th>Key Features</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Simple Face Mask</td>
-                                <td>5-10 L/min</td>
-                                <td>40-60%</td>
-                                <td>Must run ≥5 L/min to prevent CO2 rebreathing</td>
-                            </tr>
-                            <tr>
-                                <td>Partial Rebreather</td>
-                                <td>6-10 L/min</td>
-                                <td>60-75%</td>
-                                <td>Reservoir bag; keep bag at least 1/3 inflated</td>
-                            </tr>
-                            <tr>
-                                <td>Non-Rebreather (NRB)</td>
-                                <td>10-15 L/min</td>
-                                <td>80-95%</td>
-                                <td>One-way valves prevent exhaled air re-entry</td>
-                            </tr>
-                            <tr>
-                                <td>Venturi Mask</td>
-                                <td>4-12 L/min</td>
-                                <td>24-50% (precise)</td>
-                                <td>Color-coded adapters for exact FiO2</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="device-grid">
-                    <div class="device-card reservoir">
-                        <div class="device-card-header">
-                            <i class="fas fa-mask"></i> Non-Rebreather Mask
-                        </div>
-                        <div class="device-card-body">
-                            <h4>When to Use</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Severe hypoxemia requiring high FiO2</li>
-                                <li><i class="fas fa-check"></i> CO poisoning (100% O2 needed)</li>
-                                <li><i class="fas fa-check"></i> Trauma, shock, acute respiratory failure</li>
-                                <li><i class="fas fa-check"></i> Bridge to intubation</li>
-                            </ul>
-                            <h4>Critical Points</h4>
-                            <ul>
-                                <li><i class="fas fa-exclamation-triangle"></i> Bag must stay inflated (≥2/3 full)</li>
-                                <li><i class="fas fa-exclamation-triangle"></i> Never use below 10 L/min</li>
-                                <li><i class="fas fa-exclamation-triangle"></i> Ensure tight mask seal</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="device-card venturi">
-                        <div class="device-card-header">
-                            <i class="fas fa-cog"></i> Venturi Mask
-                        </div>
-                        <div class="device-card-body">
-                            <h4>When to Use</h4>
-                            <ul>
-                                <li><i class="fas fa-check"></i> COPD patients (precise low FiO2)</li>
-                                <li><i class="fas fa-check"></i> When exact FiO2 is critical</li>
-                                <li><i class="fas fa-check"></i> Weaning from higher O2 levels</li>
-                                <li><i class="fas fa-check"></i> Research/monitoring protocols</li>
-                            </ul>
-                            <h4>Color-Coded Adapters</h4>
-                            <ul>
-                                <li><i class="fas fa-circle" style="color: #3b82f6;"></i> Blue: 24% at 4 L/min</li>
-                                <li><i class="fas fa-circle" style="color: #f59e0b;"></i> Yellow: 28% at 4 L/min</li>
-                                <li><i class="fas fa-circle" style="color: #ef4444;"></i> Red: 40% at 8 L/min</li>
-                                <li><i class="fas fa-circle" style="color: #10b981;"></i> Green: 60% at 12 L/min</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-venturi-copd">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Venturi Mask: The COPD Patient's Best Friend</div>
-                    <div class="florencebot-tip-content">
-                        For COPD patients who are CO2 retainers, <strong>the Venturi mask is ideal</strong> because it delivers a precise, consistent FiO2 regardless of the patient's breathing pattern. You can set it to exactly 24% or 28% and know that's what they're getting - not "somewhere between 24-44%" like with a nasal cannula. This precision helps you target SpO2 of 88-92% without accidentally over-oxygenating and suppressing their hypoxic drive. Remember: these patients breathe because of LOW oxygen, not high CO2!
-                    </div>
-                </div>
-
-                <h3>High-Flow Nasal Cannula (HFNC)</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Parameter</th>
-                                <th>Range</th>
-                                <th>Clinical Benefit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Flow Rate</td>
-                                <td>10-60 L/min</td>
-                                <td>Meets/exceeds inspiratory demand</td>
-                            </tr>
-                            <tr>
-                                <td>FiO2</td>
-                                <td>21-100%</td>
-                                <td>Precise, adjustable independently</td>
-                            </tr>
-                            <tr>
-                                <td>Temperature</td>
-                                <td>31-37°C</td>
-                                <td>Heated, humidified for comfort</td>
-                            </tr>
-                            <tr>
-                                <td>PEEP Effect</td>
-                                <td>~1 cmH2O per 10 L/min</td>
-                                <td>Provides mild positive pressure</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box nclex-tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-graduation-cap"></i> HFNC Benefits
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-ban"></i> When the pulse oximeter is wrong</div>
+                <div class="info-box-content">
                     <ul>
-                        <li><strong>Washout of dead space</strong> - Flushes CO2 from nasopharynx</li>
-                        <li><strong>Reduces work of breathing</strong> - High flow meets inspiratory demand</li>
-                        <li><strong>Mild PEEP effect</strong> - Keeps alveoli open</li>
-                        <li><strong>Better tolerated than masks</strong> - Can eat, drink, communicate</li>
-                        <li><strong>May prevent intubation</strong> - Bridge therapy for acute hypoxemic respiratory failure</li>
+                        <li><strong>Poor perfusion.</strong> Shock, hypothermia, vasoconstriction. The probe cannot find a pulse to read.</li>
+                        <li><strong>Nail polish,</strong> especially dark colours. Remove it or move to an earlobe.</li>
+                        <li><strong>Motion,</strong> including shivering and tremor.</li>
+                        <li><strong>Bright ambient light</strong> falling on the probe.</li>
+                        <li><strong>Anemia.</strong> The percentage is right and the delivery is still poor.</li>
+                        <li><strong>Carbon monoxide.</strong> Reads falsely normal or high.</li>
+                        <li><strong>Methemoglobinemia.</strong> Reads about 85 percent regardless of the truth.</li>
                     </ul>
                 </div>
-                <div class="bottom-line">Bottom Line: Match device to need: nasal cannula for mild hypoxia, simple mask for moderate, non-rebreather for severe/emergency, Venturi for precise FiO2 (COPD). Always use the lowest effective flow rate.</div>
-            </section>
+            </div>
 
-            <!-- Section 4: FiO2 Calculations -->
-            <section class="guide-section" id="fio2-calculations">
-                <h2><span class="section-icon"><i class="fas fa-calculator"></i></span> FiO2 Calculations</h2>
-
-                <p>Understanding how to calculate and estimate FiO2 is essential for titrating oxygen therapy appropriately. Different devices have different FiO2 characteristics.</p>
-
-                <h3>The 4% Rule for Nasal Cannula</h3>
-
-                <div class="calculation-box">
-                    <h4><i class="fas fa-calculator"></i> Quick FiO2 Estimation</h4>
-                    <div class="formula">
-                        FiO2 = 20% + (4% × L/min)
-                    </div>
-                    <p style="color: #0369a1; font-size: 0.95rem;">Example: 3 L/min → 20% + (4% × 3) = 20% + 12% = <strong>32% FiO2</strong></p>
-                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 8px;"><em>Note: This is an approximation. Actual FiO2 varies with patient's respiratory rate, tidal volume, and breathing pattern.</em></p>
+            <div class="florencebot-tip" id="tip-pulse-ox-false">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Believe the Patient</div>
+                <div class="florencebot-tip-content">If the patient looks hypoxic and the monitor says 98 percent, the monitor is the thing to doubt. Check the probe, check the perfusion, check for nail polish, and get a blood gas. The number is data, not a verdict.</div>
+            </div>
 
-                <div class="florencebot-tip" id="tip-fio2-rule">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">The 4% Rule: Quick Mental Math</div>
-                    <div class="florencebot-tip-content">
-                        For nasal cannula, remember: <strong>Start at 21% (room air) and add 4% for each liter per minute.</strong> So 1L = 25%, 2L = 29%, 3L = 33%, etc. Some sources round to 24%, 28%, 32%, 36%, 40%, 44% for simplicity. This rule ONLY works for nasal cannula and is just an estimate - actual FiO2 depends on the patient's breathing pattern. A patient breathing fast and deep will dilute the oxygen more with room air, getting a lower actual FiO2.
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Assess the patient before the tubing. A rising work of breathing outranks a reassuring number, and a falling level of consciousness on oxygen means the ABG, not the flow meter.
+            </div>
+        </section>
+
+        <!-- ══════════ NUMBERS ══════════ -->
+        <section class="guide-section" id="numbers-cold">
+            <div class="section-header">
+                <div class="section-number">11</div>
+                <h2>Numbers to have cold</h2>
+            </div>
+
+            <p>These should be automatic. If you have to reason toward one of them, it is not learned yet.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead><tr><th>Number</th><th>Meaning</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>94 to 98 percent</strong></td><td>Target saturation for most adults</td></tr>
+                        <tr><td><strong>88 to 92 percent</strong></td><td>Target saturation in COPD with carbon dioxide retention</td></tr>
+                        <tr><td><strong>91 to 95 percent</strong></td><td>Target saturation in premature neonates</td></tr>
+                        <tr><td><strong>80 to 100 mmHg</strong></td><td>Normal PaO2</td></tr>
+                        <tr><td><strong>90 percent equals 60 mmHg</strong></td><td>Where the dissociation curve turns steep</td></tr>
+                        <tr><td><strong>21 percent</strong></td><td>FiO2 of room air</td></tr>
+                        <tr><td><strong>4 percent per litre</strong></td><td>FiO2 added by each litre of nasal cannula flow</td></tr>
+                        <tr><td><strong>1 to 6 L/min, 24 to 44 percent</strong></td><td>Nasal cannula range</td></tr>
+                        <tr><td><strong>5 to 10 L/min, 40 to 60 percent</strong></td><td>Simple face mask range</td></tr>
+                        <tr><td><strong>10 to 15 L/min, 80 to 95 percent</strong></td><td>Non-rebreather range</td></tr>
+                        <tr><td><strong>4 to 12 L/min, 24 to 50 percent</strong></td><td>Venturi mask range, and it is precise</td></tr>
+                        <tr><td><strong>10 to 60 L/min</strong></td><td>High-flow nasal cannula range</td></tr>
+                        <tr><td><strong>Above 4 L/min</strong></td><td>Flow at which humidification is added</td></tr>
+                        <tr><td><strong>5 L/min minimum</strong></td><td>Simple mask floor, below which carbon dioxide is rebreathed</td></tr>
+                        <tr><td><strong>Over 50 percent for 24 to 48 hours</strong></td><td>Threshold for pulmonary oxygen toxicity</td></tr>
+                        <tr><td><strong>30 to 40 L/min</strong></td><td>Peak inspiratory demand of a normal adult</td></tr>
+                        <tr><td><strong>Over 400</strong></td><td>Normal P to F ratio</td></tr>
+                        <tr><td><strong>200 to 300</strong></td><td>P to F ratio of mild ARDS</td></tr>
+                        <tr><td><strong>100 or less</strong></td><td>P to F ratio of severe ARDS</td></tr>
+                        <tr><td><strong>30 to 60 minutes</strong></td><td>When to recheck the ABG after starting oxygen in COPD</td></tr>
+                        <tr><td><strong>10 feet</strong></td><td>Smoking exclusion distance from an oxygen source</td></tr>
+                        <tr><td><strong>200 times</strong></td><td>How much more strongly carbon monoxide binds hemoglobin than oxygen</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write the device ranges on the back of the index card from section 02. Test yourself on the meaning, not the number; the exam gives you the number and asks what it means.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PRODUCE ══════════ -->
+        <section class="guide-section" id="rebuild">
+            <div class="section-header">
+                <div class="section-number">12</div>
+                <h2>Now close the guide</h2>
+            </div>
+
+            <p>Reading this again will not move your score. Producing it will. Everything below is done with the page shut.</p>
+
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <ol>
+                    <li>Six devices, one per line. Flow range, FiO2 range, and the one thing that makes each fail.</li>
+                    <li>Estimate the FiO2 at 2, 4 and 6 L/min on a cannula, without the table.</li>
+                    <li>Write the three target saturation ranges and who gets each.</li>
+                    <li>Write what happens, step by step, when a CO2 retainer is given high-flow oxygen.</li>
+                    <li>List seven situations where the pulse oximeter is unreliable.</li>
+                    <li>Calculate a P to F ratio: PaO2 of 70 on an FiO2 of 0.5. Then classify it.</li>
+                </ol>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Say these four out loud</div>
+                <div class="info-box-content">
+                    <p>Pick any device from section 02. Without looking, say what it delivers, the clue that points to it, the priority action once it is on, and the one thing that makes it fail.</p>
+                    <p>If you can do that for all four, you are ready. If you cannot, you know exactly which section to reopen.</p>
                 </div>
+            </div>
 
-                <h3>Oxygen-to-Air Entrainment Ratios</h3>
-
-                <p>Venturi masks work by entraining room air through the Bernoulli principle. The entrainment ratio determines the final FiO2:</p>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Desired FiO2</th>
-                                <th>O2:Air Ratio</th>
-                                <th>O2 Flow Setting</th>
-                                <th>Total Flow Delivered</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>24%</td>
-                                <td>1:25</td>
-                                <td>4 L/min</td>
-                                <td>~104 L/min</td>
-                            </tr>
-                            <tr>
-                                <td>28%</td>
-                                <td>1:10</td>
-                                <td>4 L/min</td>
-                                <td>~44 L/min</td>
-                            </tr>
-                            <tr>
-                                <td>35%</td>
-                                <td>1:5</td>
-                                <td>8 L/min</td>
-                                <td>~48 L/min</td>
-                            </tr>
-                            <tr>
-                                <td>40%</td>
-                                <td>1:3</td>
-                                <td>8 L/min</td>
-                                <td>~32 L/min</td>
-                            </tr>
-                            <tr>
-                                <td>50%</td>
-                                <td>1:1.7</td>
-                                <td>12 L/min</td>
-                                <td>~32 L/min</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Assessing Oxygenation: P/F Ratio</h3>
-
-                <div class="calculation-box">
-                    <h4><i class="fas fa-calculator"></i> PaO2/FiO2 Ratio (P/F Ratio)</h4>
-                    <div class="formula">
-                        P/F Ratio = PaO2 ÷ FiO2 (as decimal)
-                    </div>
-                    <p style="color: #0369a1; font-size: 0.95rem;">Example: PaO2 = 80 mmHg, FiO2 = 0.40 → 80 ÷ 0.40 = <strong>P/F Ratio of 200</strong></p>
-                </div>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>P/F Ratio</th>
-                                <th>Classification</th>
-                                <th>Clinical Significance</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>&gt; 400</td>
-                                <td>Normal</td>
-                                <td>Adequate gas exchange</td>
-                            </tr>
-                            <tr>
-                                <td>300-400</td>
-                                <td>Mild impairment</td>
-                                <td>Mild acute lung injury</td>
-                            </tr>
-                            <tr>
-                                <td>200-300</td>
-                                <td>Moderate ARDS</td>
-                                <td>Significant oxygenation defect</td>
-                            </tr>
-                            <tr>
-                                <td>&lt; 200</td>
-                                <td>Severe ARDS</td>
-                                <td>Severe hypoxemic respiratory failure</td>
-                            </tr>
-                            <tr>
-                                <td>&lt; 100</td>
-                                <td>Critical</td>
-                                <td>Life-threatening; may need ECMO</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box nclex-tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-graduation-cap"></i> ARDS Berlin Criteria (Simplified)
-                    </div>
-                    <p>P/F ratio is used to classify ARDS severity:</p>
-                    <ul>
-                        <li><strong>Mild ARDS:</strong> P/F 200-300 with PEEP ≥ 5</li>
-                        <li><strong>Moderate ARDS:</strong> P/F 100-200 with PEEP ≥ 5</li>
-                        <li><strong>Severe ARDS:</strong> P/F ≤ 100 with PEEP ≥ 5</li>
-                    </ul>
-                </div>
-                <div class="bottom-line">Bottom Line: Nasal cannula: each 1 L/min adds ~4% FiO2 above room air (21%). So 2 L = ~28%, 4 L = ~36%, 6 L = ~44%. For precise delivery, use a Venturi mask with color-coded adapters.</div>
-            </section>
-
-            <!-- Section 5: Special Populations -->
-            <section class="guide-section" id="special-populations">
-                <h2><span class="section-icon"><i class="fas fa-users"></i></span> Special Populations</h2>
-
-                <p>Certain patient populations require special consideration when administering oxygen therapy due to unique physiological vulnerabilities.</p>
-
-                <h3>COPD Patients with Chronic Hypercapnia</h3>
-
-                <div class="info-box warning">
-                    <div class="info-box-header">
-                        <i class="fas fa-exclamation-triangle"></i> Hypoxic Drive in COPD
-                    </div>
-                    <p>COPD patients with chronic CO2 retention have lost their normal hypercapnic drive (response to high CO2). Their respiratory drive depends on <strong>hypoxia</strong> (low oxygen levels) instead.</p>
-                    <p><strong>Danger:</strong> High-flow oxygen removes the hypoxic stimulus, causing hypoventilation → CO2 retention → respiratory acidosis → CO2 narcosis → respiratory failure.</p>
-                </div>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Parameter</th>
-                                <th>COPD Guideline</th>
-                                <th>Rationale</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Target SpO2</td>
-                                <td>88-92%</td>
-                                <td>Maintains hypoxic drive while avoiding severe hypoxia</td>
-                            </tr>
-                            <tr>
-                                <td>Initial Device</td>
-                                <td>Venturi mask (24-28%)</td>
-                                <td>Precise FiO2 control</td>
-                            </tr>
-                            <tr>
-                                <td>Alternative</td>
-                                <td>Nasal cannula 1-2 L/min</td>
-                                <td>Low flow, comfortable</td>
-                            </tr>
-                            <tr>
-                                <td>Monitoring</td>
-                                <td>ABG within 30-60 min</td>
-                                <td>Check for CO2 retention</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="florencebot-tip" id="tip-copd-targets">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">COPD: Don't Chase 100%!</div>
-                    <div class="florencebot-tip-content">
-                        When caring for a COPD patient, resist the urge to keep increasing oxygen to achieve "normal" saturations. <strong>Target 88-92% SpO2</strong> - this is adequate! A COPD patient who normally runs SpO2 of 89% does NOT need you to get them to 98%. Doing so may suppress their breathing and cause them to retain even more CO2. Watch for signs of CO2 narcosis: confusion, decreased LOC, flushed skin, asterixis (hand flapping tremor). If these appear, notify the provider immediately.
-                    </div>
-                </div>
-
-                <h3>Premature Neonates</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Concern</th>
-                                <th>Target</th>
-                                <th>Clinical Implication</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Retinopathy of Prematurity (ROP)</td>
-                                <td>SpO2 91-95%</td>
-                                <td>Hyperoxia damages developing retinal vessels</td>
-                            </tr>
-                            <tr>
-                                <td>Bronchopulmonary Dysplasia</td>
-                                <td>Avoid prolonged high FiO2</td>
-                                <td>Oxygen toxicity damages immature lungs</td>
-                            </tr>
-                            <tr>
-                                <td>Free Radical Injury</td>
-                                <td>Lowest effective FiO2</td>
-                                <td>Premature infants have limited antioxidant defenses</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Post-Cardiac Arrest</h3>
-
-                <div class="interventions-list">
-                    <h4><i class="fas fa-heartbeat"></i> Oxygen Management After ROSC</h4>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">1</div>
-                        <div class="intervention-content">
-                            <h5>During Resuscitation</h5>
-                            <p>Use 100% oxygen - maximizing oxygen delivery is priority during CPR.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">2</div>
-                        <div class="intervention-content">
-                            <h5>After ROSC (Return of Spontaneous Circulation)</h5>
-                            <p>Titrate FiO2 to achieve SpO2 94-98%. Avoid hyperoxia - associated with worse neurological outcomes.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">3</div>
-                        <div class="intervention-content">
-                            <h5>Monitoring</h5>
-                            <p>Use ABG to guide therapy. Target PaO2 of 80-100 mmHg. Avoid PaO2 &gt; 300 mmHg.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bottom-line">Bottom Line: COPD = low flow (1–2 L/min), target 88–92% SpO2. Pediatric = use age-appropriate devices, humidify always. Post-op = incentive spirometry + O2 to prevent atelectasis.</div>
-            </section>
-
-            <!-- Section 6: Oxygen Toxicity -->
-            <section class="guide-section" id="oxygen-toxicity">
-                <h2><span class="section-icon"><i class="fas fa-radiation"></i></span> Oxygen Toxicity</h2>
-
-                <p>While oxygen is essential for life, prolonged exposure to high concentrations can cause significant damage. Understanding oxygen toxicity is crucial for safe oxygen administration.</p>
-
-                <h3>Mechanisms of Oxygen Toxicity</h3>
-
-                <div class="interventions-list">
-                    <h4><i class="fas fa-dna"></i> How High FiO2 Causes Damage</h4>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">1</div>
-                        <div class="intervention-content">
-                            <h5>Free Radical Formation</h5>
-                            <p>High PO2 increases production of reactive oxygen species (ROS) - superoxide, hydrogen peroxide, hydroxyl radicals - that damage cell membranes and DNA.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">2</div>
-                        <div class="intervention-content">
-                            <h5>Absorption Atelectasis</h5>
-                            <p>High FiO2 washes out nitrogen, which normally helps keep alveoli open. Without nitrogen, alveoli collapse more easily when oxygen is absorbed.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">3</div>
-                        <div class="intervention-content">
-                            <h5>Surfactant Dysfunction</h5>
-                            <p>Oxygen radicals damage type II pneumocytes that produce surfactant, leading to alveolar instability and collapse.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">4</div>
-                        <div class="intervention-content">
-                            <h5>Inflammatory Response</h5>
-                            <p>Oxidative stress triggers inflammatory cascade, causing capillary leak, pulmonary edema, and fibrosis over time.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Types of Oxygen Toxicity</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Type</th>
-                                <th>FiO2 Threshold</th>
-                                <th>Time Course</th>
-                                <th>Manifestations</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Pulmonary Toxicity</td>
-                                <td>&gt; 50% FiO2</td>
-                                <td>24-48+ hours</td>
-                                <td>Tracheobronchitis, decreased lung compliance, ARDS-like picture</td>
-                            </tr>
-                            <tr>
-                                <td>CNS Toxicity (Paul Bert Effect)</td>
-                                <td>&gt; 100% at &gt; 2 ATA</td>
-                                <td>Minutes to hours</td>
-                                <td>Seizures, tunnel vision, tinnitus (hyperbaric settings)</td>
-                            </tr>
-                            <tr>
-                                <td>Retinopathy of Prematurity</td>
-                                <td>Variable (neonates)</td>
-                                <td>Days to weeks</td>
-                                <td>Abnormal retinal vessel growth, potential blindness</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="florencebot-tip" id="tip-toxicity-signs">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Early Signs of Pulmonary Oxygen Toxicity</div>
-                    <div class="florencebot-tip-content">
-                        Watch for these early warning signs in patients on high FiO2 for extended periods: <strong>substernal chest pain or burning</strong> (tracheobronchitis), <strong>dry cough</strong>, <strong>dyspnea that worsens despite oxygen</strong>, and <strong>decreased lung compliance</strong> (harder to ventilate if on vent). The general rule: try to keep FiO2 ≤ 50% if possible, and always use the lowest FiO2 needed to achieve target SpO2. If a patient needs &gt; 50% FiO2 for &gt; 24-48 hours, consider other interventions (PEEP, prone positioning, ECMO).
-                    </div>
-                </div>
-
-                <h3>Prevention Strategies</h3>
-
-                <div class="info-box tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-shield-alt"></i> Minimizing Oxygen Toxicity Risk
-                    </div>
-                    <ul>
-                        <li><strong>Use the lowest effective FiO2</strong> - Target SpO2, not FiO2</li>
-                        <li><strong>Wean oxygen as tolerated</strong> - Don't leave patients on high FiO2 unnecessarily</li>
-                        <li><strong>Target FiO2 ≤ 50%</strong> if possible for prolonged therapy</li>
-                        <li><strong>Optimize PEEP</strong> - Allows lower FiO2 while maintaining oxygenation</li>
-                        <li><strong>Treat underlying cause</strong> - Address the reason for hypoxemia</li>
-                        <li><strong>Monitor closely</strong> - ABGs, lung compliance, clinical status</li>
-                    </ul>
-                </div>
-                <div class="bottom-line">Bottom Line: FiO2 > 50% for > 24–48 hours damages alveoli (absorption atelectasis, then ARDS). Early signs: substernal chest pain, dry cough, dyspnea. Prevention: use lowest effective FiO2, wean as soon as possible.</div>
-            </section>
-
-            <!-- Section 7: Nursing Considerations -->
-            <section class="guide-section" id="nursing-considerations">
-                <h2><span class="section-icon"><i class="fas fa-user-nurse"></i></span> Nursing Considerations</h2>
-
-                <p>Safe and effective oxygen therapy requires careful nursing assessment, monitoring, and intervention.</p>
-
-                <h3>Assessment Before Initiating Oxygen</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Assessment</th>
-                                <th>What to Evaluate</th>
-                                <th>Clinical Significance</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Respiratory Status</td>
-                                <td>Rate, depth, pattern, work of breathing</td>
-                                <td>Baseline for comparison; indicates severity</td>
-                            </tr>
-                            <tr>
-                                <td>Oxygen Saturation</td>
-                                <td>SpO2 at rest and with activity</td>
-                                <td>Determines need for oxygen</td>
-                            </tr>
-                            <tr>
-                                <td>Lung Sounds</td>
-                                <td>Crackles, wheezes, diminished sounds</td>
-                                <td>Identifies underlying pathology</td>
-                            </tr>
-                            <tr>
-                                <td>Level of Consciousness</td>
-                                <td>Alertness, orientation, confusion</td>
-                                <td>Hypoxia or CO2 retention signs</td>
-                            </tr>
-                            <tr>
-                                <td>Skin Color</td>
-                                <td>Cyanosis, pallor, flushing</td>
-                                <td>Central cyanosis = severe hypoxemia</td>
-                            </tr>
-                            <tr>
-                                <td>Medical History</td>
-                                <td>COPD, CHF, neuromuscular disease</td>
-                                <td>Guides target SpO2 and device selection</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Ongoing Monitoring</h3>
-
-                <div class="interventions-list">
-                    <h4><i class="fas fa-chart-line"></i> What to Monitor During Oxygen Therapy</h4>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">1</div>
-                        <div class="intervention-content">
-                            <h5>Oxygen Saturation (Continuous)</h5>
-                            <p>Maintain target range. Report values outside parameters. Remember: SpO2 is a trend, not absolute truth - correlate with clinical picture.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">2</div>
-                        <div class="intervention-content">
-                            <h5>Respiratory Assessment (Q1-4h)</h5>
-                            <p>Rate, depth, effort, lung sounds. Watch for increasing work of breathing, use of accessory muscles, or decreasing level of consciousness.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">3</div>
-                        <div class="intervention-content">
-                            <h5>Equipment Function</h5>
-                            <p>Check flow rate settings, tubing connections, humidifier levels, mask seal. Ensure equipment matches ordered prescription.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">4</div>
-                        <div class="intervention-content">
-                            <h5>Skin Integrity</h5>
-                            <p>Check ears, nose, cheeks for pressure injury from masks/tubing. Reposition prongs, use protective barriers as needed.</p>
-                        </div>
-                    </div>
-
-                    <div class="intervention-item">
-                        <div class="intervention-number">5</div>
-                        <div class="intervention-content">
-                            <h5>ABG Results (When Ordered)</h5>
-                            <p>Evaluate PaO2, PaCO2, pH. Especially important in COPD patients to detect CO2 retention.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Safety Considerations</h3>
-
-                <div class="info-box warning">
-                    <div class="info-box-header">
-                        <i class="fas fa-fire-extinguisher"></i> Oxygen Fire Safety
-                    </div>
-                    <p><strong>Oxygen supports combustion!</strong> Critical safety measures:</p>
-                    <ul>
-                        <li>No smoking within 10 feet of oxygen source</li>
-                        <li>Keep away from open flames, sparks, heat sources</li>
-                        <li>No petroleum-based products (Vaseline) near oxygen</li>
-                        <li>Use water-based lubricants for nasal cannula</li>
-                        <li>Ensure electrical equipment is properly grounded</li>
-                        <li>Post "Oxygen in Use" signs</li>
-                    </ul>
-                </div>
-
-                <h3>Patient Education</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Topic</th>
-                                <th>Key Teaching Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Fire Safety</td>
-                                <td>No smoking, keep away from flames, post warning signs</td>
-                            </tr>
-                            <tr>
-                                <td>Equipment Use</td>
-                                <td>Proper fit of cannula/mask, how to check flow rate, when to call for help</td>
-                            </tr>
-                            <tr>
-                                <td>Signs to Report</td>
-                                <td>Increased shortness of breath, chest pain, confusion, cyanosis</td>
-                            </tr>
-                            <tr>
-                                <td>Skin Care</td>
-                                <td>Keep skin clean and dry, use water-based lubricant, report soreness</td>
-                            </tr>
-                            <tr>
-                                <td>Activity Guidelines</td>
-                                <td>Use portable O2 as prescribed, pace activities, rest as needed</td>
-                            </tr>
-                            <tr>
-                                <td>Home Oxygen</td>
-                                <td>Equipment care, supplier contact, when to seek emergency care</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="bottom-line">Bottom Line: Assess respiratory status BEFORE and after O2 changes. Check device fit, skin under straps, flow rate settings. Document: device, flow rate, SpO2, patient response. No open flames!</div>
-            </section>
-
-            <!-- Section 8: Troubleshooting -->
-            <section class="guide-section" id="troubleshooting">
-                <h2><span class="section-icon"><i class="fas fa-tools"></i></span> Troubleshooting</h2>
-
-                <p>Common problems encountered during oxygen therapy and their solutions.</p>
-
-                <h3>Common Issues and Solutions</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Problem</th>
-                                <th>Possible Causes</th>
-                                <th>Nursing Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>SpO2 not improving</td>
-                                <td>Equipment malfunction, poor mask seal, patient breathing pattern, worsening condition</td>
-                                <td>Check equipment, reposition device, assess patient, consider increasing FiO2 or changing device, notify provider</td>
-                            </tr>
-                            <tr>
-                                <td>Nasal dryness/irritation</td>
-                                <td>Flow &gt; 4 L/min without humidification</td>
-                                <td>Add bubble humidifier, use water-based nasal gel, consider mask if high flow needed</td>
-                            </tr>
-                            <tr>
-                                <td>Skin breakdown</td>
-                                <td>Pressure from device, moisture, poor fit</td>
-                                <td>Reposition tubing, use protective padding, ensure proper fit, alternate devices if possible</td>
-                            </tr>
-                            <tr>
-                                <td>Patient removes device</td>
-                                <td>Discomfort, confusion, claustrophobia</td>
-                                <td>Assess reason, try different device, educate patient, consider restraint alternatives as last resort</td>
-                            </tr>
-                            <tr>
-                                <td>NRB bag deflating</td>
-                                <td>Flow rate too low, leak in system</td>
-                                <td>Increase flow to 10-15 L/min, check connections, ensure valves functioning</td>
-                            </tr>
-                            <tr>
-                                <td>Confusion/decreased LOC on O2</td>
-                                <td>CO2 retention (COPD), worsening hypoxia</td>
-                                <td>Get ABG, may need to reduce FiO2 (if COPD), notify provider immediately</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="florencebot-tip" id="tip-pulse-ox-false">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">When to Question the Pulse Ox</div>
-                    <div class="florencebot-tip-content">
-                        Pulse oximetry can be inaccurate in several situations: <strong>poor perfusion</strong> (shock, hypothermia, vasoconstriction), <strong>nail polish</strong> (especially dark colors - remove or use earlobe), <strong>motion artifact</strong>, <strong>ambient light interference</strong>, <strong>anemia</strong> (SpO2 may look "fine" but oxygen delivery is low), <strong>CO poisoning</strong> (falsely normal), <strong>methemoglobinemia</strong> (reads ~85% regardless of true saturation). Always correlate with clinical assessment - if the patient looks hypoxic but SpO2 says 98%, believe the patient!
-                    </div>
-                </div>
-
-                <div class="info-box nclex-tip">
-                    <div class="info-box-header">
-                        <i class="fas fa-graduation-cap"></i> NCLEX Priority: Airway First!
-                    </div>
-                    <p>Remember ABCs! Before troubleshooting oxygen equipment:</p>
-                    <ul>
-                        <li><strong>A</strong>irway - Is the airway patent? Suction if needed, position properly</li>
-                        <li><strong>B</strong>reathing - Is the patient breathing adequately? Assess respiratory effort</li>
-                        <li><strong>C</strong>irculation - Is perfusion adequate? Check pulse, BP, cap refill</li>
-                    </ul>
-                    <p>Then check the equipment and titrate oxygen as needed!</p>
-                </div>
-                <div class="bottom-line">Bottom Line: If SpO2 drops despite O2: check connections, device placement, patient airway, and probe position. If persistent, reassess the patient — they may need a higher-level device or escalation of care.</div>
-            </section>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> You will not be asked what oxygen does. You will be given a saturation, a history and four devices, and asked which one and why.
+            </div>
+        </section>
 
             <!-- Practice Questions -->
             <section class="practice-questions" id="practice-questions">
-                <h2><i class="fas fa-flask"></i> NCLEX Challenge — Test Your Knowledge</h2>
+                <h2><i class="fas fa-flask"></i> Test yourself</h2>
                 <div class="quiz-cta-box">
                     <div class="quiz-cta-icon"><i class="fas fa-clipboard-check"></i></div>
                     <div class="quiz-cta-content">
-                        <h3>Ready to Test Your Knowledge?</h3>
-                        <p>10 NCLEX-style questions with detailed rationales covering device selection by FiO2 need, flow rate ranges, humidification requirements, fire safety, COPD oxygen management, and ABG interpretation. Available in Practice Mode (instant feedback) and Exam Mode (timed, no peeking).</p>
+                        <h3>Can you produce it?</h3>
+                        <p>10 questions with full rationales covering device selection by FiO2 need, flow rate ranges, humidification, fire safety, COPD oxygen management, and blood gas interpretation. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
                         <div class="quiz-cta-stats">
                             <span><i class="fas fa-question-circle"></i> 10 Questions</span>
                             <span><i class="fas fa-clock"></i> ~15 min</span>
@@ -2185,27 +1126,35 @@
                 <div class="key-points-grid">
                     <div class="key-point">
                         <i class="fas fa-wind"></i>
-                        <p><strong>Nasal cannula</strong> = 4% FiO2 per liter (1L=24%, 2L=28%, etc.)</p>
+                        <p><strong>Nasal cannula</strong> adds about 4 percent FiO2 per litre</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-mask"></i>
-                        <p><strong>Venturi mask</strong> = Precise FiO2, ideal for COPD patients</p>
+                        <p><strong>Venturi mask</strong> is the precise device, and the COPD answer</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-percentage"></i>
-                        <p><strong>COPD target</strong> = SpO2 88-92%, avoid suppressing hypoxic drive</p>
+                        <p><strong>COPD target</strong> is 88 to 92 percent, to keep the hypoxic drive</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-chart-line"></i>
-                        <p><strong>90/60 Rule</strong> = SpO2 90% ≈ PaO2 60 mmHg (critical threshold)</p>
+                        <p><strong>SpO2 of 90</strong> is a PaO2 of about 60, where the curve turns steep</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-radiation"></i>
-                        <p><strong>Oxygen toxicity</strong> = FiO2 &gt;50% for &gt;24-48h risks lung damage</p>
+                        <p><strong>Over 50 percent</strong> for over 24 to 48 hours risks lung injury</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-tint"></i>
+                        <p><strong>Humidify</strong> any flow above 4 litres per minute</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-smog"></i>
+                        <p><strong>Carbon monoxide</strong> makes the pulse oximeter read falsely normal</p>
                     </div>
                     <div class="key-point">
                         <i class="fas fa-fire-alt"></i>
-                        <p><strong>Safety</strong> = No smoking/flames near O2, use water-based lubricants</p>
+                        <p><strong>No flames and no petroleum products</strong> near an oxygen source</p>
                     </div>
                 </div>
             </section>

@@ -641,6 +641,7 @@ img { max-width: 100%; display: block; }
 .comparison-card,
 .compare-card,
 .disorder-profile,
+.rhythm-card,
 .med-card,
 .type-card,
 .redflag-card,
@@ -707,6 +708,126 @@ img { max-width: 100%; display: block; }
   padding: 16px 18px;
   box-shadow: var(--shadow-sm);
 }
+
+
+/* ══ Diagrams and figures ══
+   Several guides embed anatomy diagrams and ECG strips. The images MUST be
+   constrained here; without a max-height they render at natural size and
+   blow out the column. */
+.diagram-container,
+.ecg-diagram,
+.conduction-pathway {
+  background: var(--navy-2);
+  border: 0.5px solid var(--border);
+  border-radius: 14px;
+  padding: 22px;
+  margin: 24px 0;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.diagram-title,
+.ecg-diagram-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 14px;
+}
+.diagram-title i,
+.ecg-diagram-title i { color: var(--cat); }
+
+.anatomy-diagram-img,
+.ecg-complex-img,
+.diagram-container img,
+.ecg-diagram img {
+  max-width: 100%;
+  height: auto;
+  max-height: 460px;
+  margin: 0 auto;
+  border-radius: 8px;
+}
+
+.ecg-wave-visual { margin: 0 auto; }
+
+.diagram-attribution,
+.ecg-attribution {
+  font-size: 11.5px;
+  color: var(--text-dimmer);
+  margin-top: 12px;
+}
+
+.diagram-legend,
+.ecg-labels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 18px;
+  margin-top: 14px;
+  text-align: left;
+}
+
+.diagram-legend > *,
+.ecg-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--text-dim);
+}
+
+.legend-color,
+.ecg-label-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+
+/* ══ Blood-pressure classification cards ══ */
+.bp-classification-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.bp-card {
+  background: var(--navy-2);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.bp-card-header {
+  padding: 10px 16px;
+  font-weight: 600;
+  font-size: 14px;
+  border-bottom: 0.5px solid var(--border);
+}
+
+.bp-card-value {
+  font-family: 'DM Serif Display', serif;
+  font-size: 20px;
+  padding: 14px 16px 4px;
+  color: var(--text);
+}
+
+.bp-card-body,
+.bp-card-description { padding: 0 16px 14px; font-size: 14px; color: var(--text-dim); }
+
+/* Severity is meaningful here, so it keeps its colour */
+.bp-card.normal    { border-color: rgba(47,168,102,0.32); }
+.bp-card.normal .bp-card-header    { background: rgba(47,168,102,0.07); color: var(--green); }
+.bp-card.elevated  { border-color: rgba(201,121,26,0.32); }
+.bp-card.elevated .bp-card-header  { background: rgba(201,121,26,0.07); color: var(--amber); }
+.bp-card.crisis    { border-color: rgba(214,69,69,0.32); }
+.bp-card.crisis .bp-card-header    { background: rgba(214,69,69,0.07); color: var(--red); }
 
 
 /* ══ Numbered interventions / steps ══ */

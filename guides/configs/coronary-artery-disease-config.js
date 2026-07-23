@@ -1,16 +1,19 @@
 // Coronary Artery Disease Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
-        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
-        { id: 'anatomy', icon: 'fa-heart', title: 'Coronary Anatomy' },
-        { id: 'pathophysiology', icon: 'fa-dna', title: 'Pathophysiology' },
-        { id: 'risk-factors', icon: 'fa-exclamation-triangle', title: 'Risk Factors & Targets' },
-        { id: 'angina', icon: 'fa-heartbeat', title: 'ACS Continuum & Angina' },
-        { id: 'diagnostics', icon: 'fa-stethoscope', title: 'Diagnostic Testing' },
-        { id: 'catheterization', icon: 'fa-syringe', title: 'Cardiac Catheterization' },
-        { id: 'management', icon: 'fa-pills', title: 'Medical Management & Rehab' },
-        { id: 'interventions', icon: 'fa-user-md', title: 'Surgical Interventions' },
-        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'start-here', icon: 'fa-crosshairs', title: 'What actually gets you' },
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'The four things' },
+        { id: 'anatomy', icon: 'fa-heart', title: 'Which artery, which damage' },
+        { id: 'pathophysiology', icon: 'fa-dna', title: 'How a plaque turns dangerous' },
+        { id: 'risk-factors', icon: 'fa-sliders-h', title: 'What you can change' },
+        { id: 'angina', icon: 'fa-heartbeat', title: 'Stable or unstable' },
+        { id: 'diagnostics', icon: 'fa-stethoscope', title: 'Which test, and what cancels it' },
+        { id: 'catheterization', icon: 'fa-syringe', title: 'The cath, before and after' },
+        { id: 'management', icon: 'fa-pills', title: 'The drugs and the rehab' },
+        { id: 'interventions', icon: 'fa-user-md', title: 'PCI or bypass' },
+        { id: 'numbers-cold', icon: 'fa-hashtag', title: 'Numbers to have cold' },
+        { id: 'rebuild', icon: 'fa-pencil-alt', title: 'Now close the guide' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'Test yourself' },
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
@@ -22,16 +25,16 @@ const sidebarConfig = {
         { type: 'info', icon: 'fa-calendar', value: '6-12 mo', label: 'Minimum DAPT duration' }
     ],
     clinicalPearls: [
-        { id: 'tip-plaque-stability', title: 'Plaque Stability Matters', text: 'Unstable plaques with thin fibrous caps cause acute events, not necessarily the largest plaques. Statins help stabilize plaques.' },
-        { id: 'tip-risk-factor-modification', title: 'Risk Factor Power', text: 'Smoking cessation reduces CV risk by 50% in one year. Lifestyle changes have profound impact on CAD outcomes.' },
-        { id: 'tip-acs-continuum', title: 'ACS Continuum Progression', text: 'Patients can move rapidly along the ACS spectrum. Recognize escalation signs: changing pain pattern, NTG failure, new diaphoresis, EKG changes.' },
-        { id: 'tip-angina-pattern', title: 'Angina Pattern Changes', text: 'New-onset angina, angina at rest, or worsening pattern signals unstable angina - an emergency requiring immediate evaluation.' },
-        { id: 'tip-stress-test-caffeine', title: 'Caffeine and Stress Tests', text: 'Caffeine is the #1 reason stress tests get cancelled. Check ALL sources: coffee, tea, chocolate, energy drinks, sodas, OTC meds.' },
-        { id: 'tip-stress-test-prep', title: 'Stress Test Safety', text: 'Know stop criteria: chest pain, significant ST changes, BP drop >10 mmHg, sustained VT. Have crash cart and reversal agents ready.' },
-        { id: 'tip-cath-prep', title: 'Mark Those Pulses', text: 'Document and mark pedal pulses before catheterization. Post-procedure comparison can detect arterial occlusion early.' },
-        { id: 'tip-retroperitoneal-bleed', title: 'Retroperitoneal Bleed', text: 'The hidden killer: back/flank pain + hypotension + tachycardia + falling H&H without visible bleeding = emergency. Most dangerous post-cath complication.' },
-        { id: 'tip-med-teaching', title: 'NTG Teaching', text: 'Take NTG sitting/lying down. One tablet, wait 5 min, repeat up to 3 times. Call 911 if pain persists after 3 doses.' },
-        { id: 'tip-cardiac-rehab-advocacy', title: 'Cardiac Rehab Champion', text: 'Cardiac rehab reduces mortality 20-30% but only ~20% participate. Advocate for automatic referral at discharge - your endorsement increases enrollment.' },
-        { id: 'tip-dapt-compliance', title: 'DAPT Compliance', text: 'Never stop dual antiplatelet therapy early after stent placement - stent thrombosis has 20-40% mortality.' }
+        { id: 'tip-plaque-stability', title: 'Stability Beats Size', text: 'The plaque that kills is rarely the biggest one. Statins stabilise the cap, which is why a patient at goal LDL stays on one.' },
+        { id: 'tip-risk-factor-modification', title: 'Cessation Is the Strongest', text: 'Quitting smoking halves cardiovascular risk within one year. Nothing else moves risk that far that fast.' },
+        { id: 'tip-angina-pattern', title: 'The Pattern Is the Finding', text: 'Rest pain, less exertion needed, longer episodes, nitroglycerin failing, or brand new angina. Any one means unstable.' },
+        { id: 'tip-acs-continuum', title: 'Patients Move Along the Line', text: 'Stable angina plus new rest pain is unstable angina. Add a rising troponin and it is an NSTEMI.' },
+        { id: 'tip-stress-test-caffeine', title: 'Caffeine Cancels the Test', text: 'Check tea, chocolate, energy drinks, cola, decaf and Excedrin. Inside the window means the test is rescheduled.' },
+        { id: 'tip-stress-test-prep', title: 'Have the Reversal Ready', text: 'Crash cart, defibrillator and aminophylline go to the bedside before the adenosine runs, not after.' },
+        { id: 'tip-cath-prep', title: 'Mark the Pulses', text: 'Mark dorsalis pedis and posterior tibial with a skin pen first. Afterwards you compare to a mark, not a memory.' },
+        { id: 'tip-retroperitoneal-bleed', title: 'New Back Pain After a Cath', text: 'Back pain plus falling pressure after femoral access is a retroperitoneal bleed. There will be no visible blood.' },
+        { id: 'tip-med-teaching', title: 'Sit Down First', text: 'Sit or lie down, one tablet, 5 minutes, up to three doses, call 911 at 15 minutes. Dark glass bottle, replaced every 6 months.' },
+        { id: 'tip-cardiac-rehab-advocacy', title: 'Rehab Is a Referral Problem', text: 'Cuts mortality 20 to 30 percent, taken up by about 20 percent. Check the discharge paperwork for the referral.' },
+        { id: 'tip-dapt-compliance', title: 'Never Stop DAPT Alone', text: 'The dentist who says hold the clopidogrel is the classic scenario. Call cardiology first; stent thrombosis kills 20 to 40 percent.' }
     ]
 };

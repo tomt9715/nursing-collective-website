@@ -90,20 +90,24 @@
         },
     };
 
-    // ── Stripe Elements appearance — navy/teal dark theme ──
+    // ── Stripe Elements appearance — warm light theme ──
     // https://docs.stripe.com/elements/appearance-api
+    //
+    // Stripe renders its fields inside an iframe, so CSS cannot reach them —
+    // these values ARE the styling. Keep them in step with css/tokens.css or
+    // the card input will not match the payment panel around it.
     const STRIPE_APPEARANCE = {
-        theme: 'night',
+        theme: 'stripe',
         labels: 'floating',
         variables: {
-            colorPrimary: '#0fbcad',
-            colorBackground: '#162032',
-            colorText: '#e8edf2',
-            colorTextSecondary: '#8a9bb0',
-            colorTextPlaceholder: '#5f7085',
-            colorDanger: '#e05252',
-            colorIconTab: '#8a9bb0',
-            colorIconTabSelected: '#0fbcad',
+            colorPrimary: '#0e9a8f',
+            colorBackground: '#ffffff',
+            colorText: '#2b2621',
+            colorTextSecondary: '#6a6157',
+            colorTextPlaceholder: '#8a8073',
+            colorDanger: '#d64545',
+            colorIconTab: '#6a6157',
+            colorIconTabSelected: '#0e9a8f',
             fontFamily: 'Outfit, system-ui, sans-serif',
             fontSizeBase: '15px',
             spacingUnit: '4px',
@@ -111,65 +115,65 @@
         },
         rules: {
             '.Input': {
-                backgroundColor: '#1e2d3e',
-                border: '1px solid rgba(255,255,255,0.12)',
+                backgroundColor: '#ffffff',
+                border: '1px solid rgba(58,44,26,0.17)',
                 boxShadow: 'none',
-                color: '#e8edf2',
+                color: '#2b2621',
                 padding: '12px 14px',
             },
             '.Input:hover': {
-                borderColor: 'rgba(255,255,255,0.22)',
+                borderColor: 'rgba(58,44,26,0.28)',
             },
             '.Input:focus': {
-                borderColor: '#0fbcad',
-                boxShadow: '0 0 0 2px rgba(15,188,173,0.18)',
+                borderColor: '#0e9a8f',
+                boxShadow: '0 0 0 2px rgba(14,154,143,0.18)',
             },
             '.Input--invalid': {
-                borderColor: '#e05252',
+                borderColor: '#d64545',
                 boxShadow: 'none',
             },
             '.Label': {
-                color: '#8a9bb0',
+                color: '#6a6157',
                 fontWeight: '500',
                 fontSize: '13px',
             },
             '.Tab': {
-                backgroundColor: '#1e2d3e',
-                border: '1px solid rgba(255,255,255,0.12)',
+                backgroundColor: '#ffffff',
+                border: '1px solid rgba(58,44,26,0.17)',
                 boxShadow: 'none',
-                color: '#8a9bb0',
+                color: '#6a6157',
             },
             '.Tab:hover': {
-                color: '#e8edf2',
-                borderColor: 'rgba(255,255,255,0.22)',
+                color: '#2b2621',
+                borderColor: 'rgba(58,44,26,0.28)',
             },
             '.Tab--selected': {
-                backgroundColor: '#1e2d3e',
-                borderColor: '#0fbcad',
-                color: '#e8edf2',
+                backgroundColor: '#ffffff',
+                borderColor: '#0e9a8f',
+                color: '#2b2621',
             },
             '.TabIcon--selected': {
-                fill: '#0fbcad',
+                fill: '#0e9a8f',
             },
             '.Block': {
-                backgroundColor: '#1e2d3e',
-                borderColor: 'rgba(255,255,255,0.12)',
+                backgroundColor: '#ffffff',
+                borderColor: 'rgba(58,44,26,0.17)',
             },
             '.AccordionItem': {
-                backgroundColor: '#1e2d3e',
-                border: '1px solid rgba(255,255,255,0.12)',
+                backgroundColor: '#ffffff',
+                border: '1px solid rgba(58,44,26,0.17)',
             },
             '.Error': {
-                color: '#e05252',
+                color: '#d64545',
                 fontSize: '13px',
             },
             '.PickerItem': {
-                backgroundColor: '#1e2d3e',
-                color: '#e8edf2',
-                borderColor: 'rgba(255,255,255,0.12)',
+                backgroundColor: '#ffffff',
+                color: '#2b2621',
+                borderColor: 'rgba(58,44,26,0.17)',
             },
             '.PickerItem--selected': {
-                borderColor: '#0fbcad',
+                borderColor: '#0e9a8f',
             },
         },
     };

@@ -5,10 +5,10 @@
 
 /* ── Popup container ─────────────────────────────────────────── */
 .flatpickr-calendar {
-  background: #162032;
-  border: 0.5px solid rgba(255,255,255,0.12);
+  background: #ffffff;
+  border: 0.5px solid rgba(58,44,26,0.17);
   border-radius: 12px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 12px 40px rgba(58,44,26,0.15);
   font-family: 'Outfit', sans-serif;
   color: #e8edf2;
   padding: 6px;
@@ -59,11 +59,11 @@
 }
 .flatpickr-current-month .flatpickr-monthDropdown-months:hover,
 .flatpickr-current-month input.cur-year:hover {
-  background: rgba(255,255,255,0.06);
+  background: rgba(58,44,26,0.06);
 }
 
 .flatpickr-current-month .flatpickr-monthDropdown-months option {
-  background: #162032;
+  background: #ffffff;
   color: #e8edf2;
   font-family: 'Outfit', sans-serif;
   font-size: 13px;
@@ -71,11 +71,11 @@
 
 .flatpickr-current-month .numInputWrapper { width: auto; }
 .flatpickr-current-month .numInputWrapper span {
-  border-color: rgba(255,255,255,0.12);
+  border-color: rgba(58,44,26,0.17);
 }
 .flatpickr-current-month .numInputWrapper span.arrowUp::after { border-bottom-color: #e8edf2; }
 .flatpickr-current-month .numInputWrapper span.arrowDown::after { border-top-color: #e8edf2; }
-.flatpickr-current-month .numInputWrapper:hover { background: rgba(255,255,255,0.04); }
+.flatpickr-current-month .numInputWrapper:hover { background: rgba(58,44,26,0.04); }
 
 /* Prev / next month arrows */
 .flatpickr-prev-month,
@@ -88,8 +88,8 @@
 }
 .flatpickr-prev-month:hover,
 .flatpickr-next-month:hover {
-  color: #0fbcad !important;
-  fill: #0fbcad !important;
+  color: #0e9a8f !important;
+  fill: #0e9a8f !important;
   background: rgba(15,188,173,0.08);
 }
 .flatpickr-prev-month svg,
@@ -142,14 +142,14 @@ span.flatpickr-weekday {
 
 .flatpickr-day.today {
   border-color: rgba(15,188,173,0.5);
-  color: #0fbcad;
+  color: #0e9a8f;
   font-weight: 600;
 }
 .flatpickr-day.today:hover,
 .flatpickr-day.today:focus {
   background: rgba(15,188,173,0.15);
-  border-color: #0fbcad;
-  color: #0fbcad;
+  border-color: #0e9a8f;
+  color: #0e9a8f;
 }
 
 .flatpickr-day.selected,
@@ -157,9 +157,9 @@ span.flatpickr-weekday {
 .flatpickr-day.selected:focus,
 .flatpickr-day.startRange,
 .flatpickr-day.endRange {
-  background: #0fbcad;
-  border-color: #0fbcad;
-  color: #0d1b2a;
+  background: #0e9a8f;
+  border-color: #0e9a8f;
+  color: #fff;
   font-weight: 600;
 }
 

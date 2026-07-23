@@ -21,7 +21,7 @@
 }
 
 .delete-modal-content {
-  background: var(--card, #1a2940);
+  background: var(--card, #ffffff);
   border: 0.5px solid var(--border-mid, rgba(255,255,255,0.12));
   border-radius: 14px;
   max-width: 480px;
@@ -47,15 +47,15 @@
 }
 .delete-modal-icon i {
   font-size: 28px;
-  color: var(--red, #e05252);
+  color: var(--red, #d64545);
 }
 
 .delete-modal-header h3 {
-  color: var(--text, #e8edf2);
+  color: var(--text, #2b2621);
   margin-bottom: 8px;
 }
 .delete-modal-header p {
-  color: var(--text-dim, #8a9bb0);
+  color: var(--text-dim, #6a6157);
   font-size: 1rem;
 }
 
@@ -67,8 +67,8 @@
 .delete-modal-btn-cancel {
   flex: 1;
   padding: 12px;
-  background: var(--navy-3, #1e2d3e);
-  color: var(--text, #e8edf2);
+  background: var(--navy-3, #f1ece4);
+  color: var(--text, #2b2621);
   border: none;
   border-radius: 8px;
   font-family: 'Outfit', sans-serif;
@@ -83,7 +83,7 @@
 .delete-modal-btn-confirm {
   flex: 1;
   padding: 12px;
-  background: var(--red, #e05252);
+  background: var(--red, #d64545);
   color: white;
   border: none;
   border-radius: 8px;
@@ -102,7 +102,7 @@
 }
 
 .delete-modal-error {
-  color: var(--red, #e05252);
+  color: var(--red, #d64545);
   font-size: 0.85rem;
   margin-bottom: 12px;
   padding: 8px;

@@ -24,10 +24,12 @@
   --navy-3:      #f1ece4;   /* hover / sunken surface */
   --navy-card:   #ffffff;   /* alias used by some pages */
   --card:        #ffffff;   /* alias used by some pages */
+  --card-hi:     #f4efe7;   /* raised/hover card variant (Rounds) */
 
   /* ── Brand + semantic ── */
   --teal:        #0e9a8f;   /* primary accent (readable on white) */
   --teal-dim:    #0b7d74;   /* accent hover */
+  --teal-soft:   rgba(14,154,143,0.12);  /* accent tint fill */
   --amber:       #c9791a;   /* warning / highlight */
   --red:         #d64545;   /* error / destructive */
   --green:       #2fa866;   /* success / operational */

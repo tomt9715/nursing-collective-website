@@ -1,24 +1,9 @@
 /* ============================================
    RESOURCE PAGE REDESIGN
-   Navy design system — no gradients, no shadows
+   Warm light theme — cream paper, teal accent
    ============================================ */
 
-/* --- Variables --- */
-:root {
-  --navy: #0d1b2a;
-  --navy-2: #162032;
-  --navy-3: #1e2d3e;
-  --teal: #0fbcad;
-  --teal-dim: #0a9086;
-  --amber: #f4a535;
-  --red: #e05252;
-  --green: #3dbd7a;
-  --text: #e8edf2;
-  --text-dim: #8a9bb0;
-  --text-dimmer: #5f7085;
-  --border: rgba(255,255,255,0.07);
-  --border-mid: rgba(255,255,255,0.12);
-}
+/* Palette lives in css/tokens.css (loaded before this file). */
 
 /* --- Reset --- */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -42,8 +27,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    linear-gradient(rgba(14,154,143,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,154,143,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
@@ -55,7 +40,7 @@ body::before {
   top: -100px;
   left: 16px;
   background: var(--teal);
-  color: var(--navy);
+  color: #fff;
   padding: 8px 16px;
   border-radius: 8px;
   font-weight: 500;
@@ -72,6 +57,7 @@ body::before {
   position: relative;
   z-index: 1;
   border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 .header-content {
@@ -200,7 +186,7 @@ body::before {
 .tool-content p {
   font-size: 16px;
   line-height: 1.75;
-  color: var(--text-dim);
+  color: var(--text);
   margin-bottom: 16px;
 }
 .content-section p:last-child { margin-bottom: 0; }
@@ -221,7 +207,7 @@ strong { color: var(--text); font-weight: 500; }
 .guide-content ul li,
 .tool-content ul li {
   font-size: 16px;
-  color: var(--text-dim);
+  color: var(--text);
   line-height: 1.7;
   margin-bottom: 8px;
 }
@@ -240,6 +226,7 @@ strong { color: var(--text); font-weight: 500; }
   border-radius: 0 14px 14px 0;
   padding: 24px 28px;
   margin-bottom: 40px;
+  box-shadow: var(--shadow-sm);
 }
 
 .quick-wins-header {
@@ -275,7 +262,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 10px 0;
   border-bottom: 1px solid var(--border);
   font-size: 14px;
-  color: var(--text-dim);
+  color: var(--text);
   line-height: 1.6;
 }
 .quick-wins-list li:last-child {
@@ -299,6 +286,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 20px 24px;
   margin: 20px 0;
   border-left: 3px solid var(--teal);
+  box-shadow: var(--shadow-sm);
 }
 .callout-tip { border-left-color: var(--teal); }
 .callout-reality { border-left-color: var(--amber); }
@@ -329,7 +317,7 @@ strong { color: var(--text); font-weight: 500; }
   margin: 0;
   font-size: 16px;
   line-height: 1.6;
-  color: var(--text-dim);
+  color: var(--text);
 }
 
 /* --- Steps list --- */
@@ -346,7 +334,7 @@ strong { color: var(--text); font-weight: 500; }
   margin-bottom: 18px;
   font-size: 14px;
   line-height: 1.7;
-  color: var(--text-dim);
+  color: var(--text);
 }
 .steps-list li::before {
   content: counter(step-counter);
@@ -379,6 +367,7 @@ strong { color: var(--text); font-weight: 500; }
   border-radius: 14px;
   padding: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .comparison-side.wrong { border-color: var(--red); }
 .comparison-side.right { border-color: var(--green); }
@@ -416,6 +405,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 20px 24px;
   margin: 16px 0;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .example-label {
   font-family: 'DM Mono', monospace;
@@ -426,7 +416,7 @@ strong { color: var(--text); font-weight: 500; }
   letter-spacing: 0.5px;
   margin-bottom: 8px;
 }
-.example-box p { margin: 0; font-size: 14px; color: var(--text-dim); }
+.example-box p { margin: 0; font-size: 14px; color: var(--text); }
 .example-box p + p { margin-top: 10px; }
 
 /* --- Diagnosis format box --- */
@@ -440,6 +430,7 @@ strong { color: var(--text); font-weight: 500; }
   text-align: center;
   border: 1px solid var(--border-mid);
   color: var(--text-dim);
+  box-shadow: var(--shadow-sm);
 }
 .diagnosis-format strong { color: var(--teal); }
 
@@ -452,6 +443,7 @@ strong { color: var(--text); font-weight: 500; }
   text-align: center;
   margin-top: 40px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .guide-cta h3,
 .tool-cta h3 {
@@ -494,7 +486,8 @@ strong { color: var(--text); font-weight: 500; }
 
 .cta-btn-primary {
   background: var(--teal);
-  color: var(--navy);
+  color: #fff;
+  box-shadow: var(--shadow-sm);
 }
 .cta-btn-secondary {
   background: transparent;
@@ -510,6 +503,7 @@ strong { color: var(--text); font-weight: 500; }
   border-radius: 0 14px 14px 0;
   padding: 24px 28px;
   margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
 }
 .key-concepts-header,
 .important-note-title {
@@ -526,7 +520,7 @@ strong { color: var(--text); font-weight: 500; }
   font-weight: 400;
   color: var(--text);
 }
-.important-note-content { font-size: 16px; color: var(--text-dim); line-height: 1.6; }
+.important-note-content { font-size: 16px; color: var(--text); line-height: 1.6; }
 
 /* --- Tip box --- */
 .tip-box {
@@ -535,6 +529,7 @@ strong { color: var(--text); font-weight: 500; }
   border-radius: 0 14px 14px 0;
   padding: 20px 24px;
   margin: 16px 0;
+  box-shadow: var(--shadow-sm);
 }
 .tip-box-title {
   font-family: 'DM Mono', monospace;
@@ -544,7 +539,7 @@ strong { color: var(--text); font-weight: 500; }
   letter-spacing: 0.3px;
   margin-bottom: 6px;
 }
-.tip-box-content { font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+.tip-box-content { font-size: 15px; color: var(--text); line-height: 1.6; }
 
 /* --- Clinical note --- */
 .clinical-note {
@@ -554,8 +549,9 @@ strong { color: var(--text); font-weight: 500; }
   padding: 16px 20px;
   margin: 16px 0;
   font-size: 13px;
-  color: var(--text-dim);
+  color: var(--text);
   line-height: 1.6;
+  box-shadow: var(--shadow-sm);
 }
 
 /* --- Scenario / script boxes --- */
@@ -566,6 +562,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 20px 24px;
   margin: 16px 0;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .scenario-header {
   font-family: 'DM Mono', monospace;
@@ -587,6 +584,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 20px 24px;
   margin: 16px 0;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 /* --- Resource box --- */
@@ -596,6 +594,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 20px 24px;
   margin: 16px 0;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 
 /* --- Checklist box --- */
@@ -605,6 +604,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin: 20px 0;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .checklist-box ul { list-style: none; padding: 0; }
 .checklist-box ul li {
@@ -614,7 +614,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 8px 0;
   border-bottom: 1px solid var(--border);
   font-size: 14px;
-  color: var(--text-dim);
+  color: var(--text);
 }
 .checklist-box ul li:last-child { border-bottom: none; }
 .checklist-box ul li::before {
@@ -643,6 +643,7 @@ strong { color: var(--text); font-weight: 500; }
   display: flex;
   align-items: center;
   gap: 10px;
+  box-shadow: var(--shadow-sm);
 }
 .search-box i { color: var(--text-dimmer); font-size: 14px; }
 .search-box input {
@@ -735,6 +736,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 28px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .most-popular-header {
   font-family: 'DM Serif Display', serif;
@@ -815,6 +817,7 @@ strong { color: var(--text); font-weight: 500; }
   border-radius: 0 14px 14px 0;
   padding: 24px 28px;
   margin-bottom: 32px;
+  box-shadow: var(--shadow-sm);
 }
 .do-not-use-header {
   font-family: 'DM Serif Display', serif;
@@ -828,7 +831,7 @@ strong { color: var(--text); font-weight: 500; }
   margin-bottom: 16px;
   line-height: 1.6;
 }
-.do-not-use-content { font-size: 16px; color: var(--text-dim); }
+.do-not-use-content { font-size: 16px; color: var(--text); }
 
 .danger-table {
   width: 100%;
@@ -875,6 +878,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .lab-section-header {
   display: flex;
@@ -954,6 +958,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .vital-section.heart-rate { border-left: 3px solid var(--red); }
 .vital-section.respiratory { border-left: 3px solid #3b82f6; }
@@ -974,7 +979,7 @@ strong { color: var(--text); font-weight: 500; }
   color: var(--text);
 }
 .vital-section-right { font-size: 13px; color: var(--text-dim); }
-.vital-info { font-size: 14px; color: var(--text-dim); margin-top: 8px; line-height: 1.6; }
+.vital-info { font-size: 14px; color: var(--text); margin-top: 8px; line-height: 1.6; }
 .vital-content { margin-top: 12px; }
 
 .age-cards {
@@ -1036,6 +1041,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .drug-class.cardiac { border-left: 3px solid var(--red); }
 .drug-class.antibiotics { border-left: 3px solid var(--green); }
@@ -1083,7 +1089,7 @@ strong { color: var(--text); font-weight: 500; }
 }
 .drug-use {
   font-size: 14px;
-  color: var(--text-dim);
+  color: var(--text);
   line-height: 1.5;
   margin-bottom: 6px;
 }
@@ -1103,6 +1109,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .phrase-section.assessment { border-left: 3px solid var(--teal); }
 .phrase-section.interventions { border-left: 3px solid var(--green); }
@@ -1138,8 +1145,8 @@ strong { color: var(--text); font-weight: 500; }
   border-radius: 8px;
 }
 .phrase-icon { color: var(--teal); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
-.phrase-info { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
-.phrase-content { font-size: 14px; color: var(--text-dim); line-height: 1.5; }
+.phrase-info { font-size: 14px; color: var(--text); line-height: 1.5; }
+.phrase-content { font-size: 14px; color: var(--text); line-height: 1.5; }
 .phrase-category {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
@@ -1156,6 +1163,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .doc-tips-header {
   font-family: 'DM Serif Display', serif;
@@ -1172,7 +1180,7 @@ strong { color: var(--text); font-weight: 500; }
   border-radius: 8px;
   padding: 12px 16px;
   font-size: 13px;
-  color: var(--text-dim);
+  color: var(--text);
   line-height: 1.5;
 }
 
@@ -1214,6 +1222,7 @@ strong { color: var(--text); font-weight: 500; }
   margin-bottom: 20px;
   border: 1px solid var(--border);
   border-left: 3px solid var(--teal);
+  box-shadow: var(--shadow-sm);
 }
 
 /* ============================================
@@ -1226,6 +1235,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .category-box.must-have { border-left: 3px solid var(--teal); }
 .category-box.school-provides { border-left: 3px solid #3b82f6; }
@@ -1253,6 +1263,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .schedule-block {
   display: flex;
@@ -1274,7 +1285,7 @@ strong { color: var(--text); font-weight: 500; }
   margin-top: 2px;
   flex-shrink: 0;
 }
-.time-block-content { font-size: 15px; color: var(--text-dim); line-height: 1.6; }
+.time-block-content { font-size: 15px; color: var(--text); line-height: 1.6; }
 
 /* ============================================
    PRIORITY TIERS (clinical-bag, etc.)
@@ -1286,6 +1297,7 @@ strong { color: var(--text); font-weight: 500; }
   padding: 24px 28px;
   margin-bottom: 20px;
   border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
 }
 .priority-tier.high { border-left: 3px solid var(--red); }
 .priority-tier.medium { border-left: 3px solid var(--amber); }
@@ -1318,8 +1330,9 @@ strong { color: var(--text); font-weight: 500; }
   padding: 16px 20px;
   border: 1px solid var(--border);
   font-size: 13px;
-  color: var(--text-dim);
+  color: var(--text);
   line-height: 1.5;
+  box-shadow: var(--shadow-sm);
 }
 
 /* --- Warning/danger/tip inline labels --- */
@@ -1335,6 +1348,7 @@ strong { color: var(--text); font-weight: 500; }
 .cookie-consent-banner {
   background: var(--navy-2) !important;
   border-top: 1px solid var(--border-mid) !important;
+  box-shadow: 0 -4px 24px rgba(58,44,26,0.10) !important;
 }
 
 /* ============================================

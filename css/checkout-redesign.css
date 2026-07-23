@@ -1,23 +1,9 @@
 /* ══════════════════════════════════════════════════════════════
    checkout-redesign.css — TNC Design System · Checkout Page
-   Navy layers, teal accent, two-column embedded Stripe checkout
+   Light theme, teal accent, two-column embedded Stripe checkout
    ══════════════════════════════════════════════════════════════ */
 
-:root {
-  --navy:        #0d1b2a;
-  --navy-2:      #162032;
-  --navy-3:      #1e2d3e;
-  --teal:        #0fbcad;
-  --teal-dim:    #0a9086;
-  --amber:       #f4a535;
-  --red:         #e05252;
-  --green:       #3dbd7a;
-  --text:        #e8edf2;
-  --text-dim:    #8a9bb0;
-  --text-dimmer: #5f7085;
-  --border:      rgba(255,255,255,0.07);
-  --border-mid:  rgba(255,255,255,0.12);
-}
+/* Palette lives in css/tokens.css (loaded before this file). */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -37,8 +23,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(15,188,173,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15,188,173,0.03) 1px, transparent 1px);
+    linear-gradient(rgba(14,154,143,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(14,154,143,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;
@@ -57,7 +43,7 @@ img { max-width: 100%; display: block; }
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(13,27,42,0.85);
+  background: rgba(255,255,255,0.82);
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border-bottom: 0.5px solid var(--border);
@@ -130,7 +116,7 @@ img { max-width: 100%; display: block; }
   border-radius: 12px;
   padding: 8px 0;
   min-width: 240px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  box-shadow: var(--shadow-lg);
   z-index: 101;
 }
 
@@ -195,7 +181,7 @@ img { max-width: 100%; display: block; }
   top: 0;
   padding: 8px 16px;
   background: var(--teal);
-  color: var(--navy);
+  color: #fff;
   font-weight: 600;
   z-index: 200;
 }
@@ -253,14 +239,15 @@ img { max-width: 100%; display: block; }
 
 .btn-primary {
   background: var(--teal);
-  color: var(--navy);
+  color: #fff;
   border-color: var(--teal);
   font-weight: 600;
+  box-shadow: var(--shadow-sm);
 }
 .btn-primary:hover {
   background: var(--teal-dim);
   border-color: var(--teal-dim);
-  color: var(--navy);
+  color: #fff;
 }
 
 .btn-sm { font-size: 13px; padding: 8px 16px; }
@@ -339,6 +326,7 @@ img { max-width: 100%; display: block; }
   padding: 28px;
   position: sticky;
   top: 84px;
+  box-shadow: var(--shadow-sm);
 }
 
 @media (max-width: 880px) {
@@ -462,12 +450,23 @@ img { max-width: 100%; display: block; }
 
 
 /* ── Stripe Elements (PaymentElement) container (right column) ── */
+/* NOTE: Stripe renders the card fields inside its own iframe and styles them
+   from the `appearance` object in checkout-script.js — not from this file.
+   Everything below controls the panel, labels and surrounding chrome only. */
 .payment-panel {
   background: var(--navy-2);
   border: 0.5px solid var(--border-mid);
   border-radius: 14px;
   padding: 28px;
   min-height: 600px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Stripe's injected wrapper element — kept transparent/light so it never
+   frames the Stripe iframe with a dark box. */
+.StripeElement {
+  background: transparent;
+  border-radius: 8px;
 }
 
 .payment-loading {
@@ -540,12 +539,12 @@ img { max-width: 100%; display: block; }
   letter-spacing: 0;
 }
 
-.promo-input:hover { border-color: rgba(255,255,255,0.22); }
+.promo-input:hover { border-color: rgba(58,44,26,0.28); }
 
 .promo-input:focus {
   outline: none;
   border-color: var(--teal);
-  box-shadow: 0 0 0 2px rgba(15,188,173,0.18);
+  box-shadow: 0 0 0 2px rgba(14,154,143,0.18);
 }
 
 .promo-input:disabled {
@@ -568,7 +567,7 @@ img { max-width: 100%; display: block; }
 
 .promo-apply-btn:hover:not(:disabled) {
   background: var(--navy-3);
-  border-color: rgba(255,255,255,0.22);
+  border-color: rgba(58,44,26,0.28);
 }
 
 .promo-apply-btn:disabled {
@@ -629,7 +628,7 @@ img { max-width: 100%; display: block; }
   top: 1px;
   width: 5px;
   height: 9px;
-  border: solid var(--navy);
+  border: solid #fff;
   border-width: 0 2px 2px 0;
   transform: rotate(45deg);
 }
@@ -663,7 +662,7 @@ img { max-width: 100%; display: block; }
   gap: 10px;
   width: 100%;
   background: var(--teal);
-  color: var(--navy);
+  color: #fff;
   border: none;
   border-radius: 8px;
   padding: 14px 20px;
@@ -672,6 +671,7 @@ img { max-width: 100%; display: block; }
   font-weight: 600;
   letter-spacing: 0.01em;
   cursor: pointer;
+  box-shadow: var(--shadow-sm);
   transition: background 0.15s, transform 0.15s;
 }
 
@@ -691,8 +691,8 @@ img { max-width: 100%; display: block; }
 .submit-spinner {
   width: 16px;
   height: 16px;
-  border: 2px solid rgba(13,27,42,0.35);
-  border-top-color: var(--navy);
+  border: 2px solid rgba(255,255,255,0.35);
+  border-top-color: #fff;
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
 }

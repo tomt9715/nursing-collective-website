@@ -44,3 +44,6 @@ css-backup/
 # Local files
 *.local
 .claude/
+
+# Local design previews of gated guides — must NEVER deploy (no paywall)
+guides/_design-preview*.html

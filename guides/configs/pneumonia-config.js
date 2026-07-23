@@ -1,37 +1,40 @@
 // Pneumonia Guide Sidebar Configuration
 const sidebarConfig = {
     sections: [
-        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'High-Yield Summary' },
-        { id: 'anatomy', icon: 'fa-lungs', title: 'Respiratory Anatomy' },
-        { id: 'pathophysiology', icon: 'fa-dna', title: 'Pathophysiology' },
-        { id: 'classification', icon: 'fa-sitemap', title: 'CAP vs HAP vs VAP' },
-        { id: 'high-risk', icon: 'fa-user-shield', title: 'High-Risk Populations' },
-        { id: 'assessment', icon: 'fa-stethoscope', title: 'Clinical Assessment' },
-        { id: 'diagnostics', icon: 'fa-x-ray', title: 'Diagnostics & CXR' },
-        { id: 'treatment', icon: 'fa-pills', title: 'Treatment & Antibiotics' },
-        { id: 'interventions', icon: 'fa-user-nurse', title: 'Nursing Interventions' },
-        { id: 'pediatrics', icon: 'fa-child', title: 'Pediatric Considerations' },
-        { id: 'practice-questions', icon: 'fa-flask', title: 'NCLEX Challenge' },
+        { id: 'start-here', icon: 'fa-crosshairs', title: 'What actually gets you' },
+        { id: 'high-yield-summary', icon: 'fa-bolt', title: 'The four things' },
+        { id: 'pathophysiology', icon: 'fa-dna', title: 'How the alveolus fills' },
+        { id: 'organisms', icon: 'fa-bacteria', title: 'Bacterial, viral or atypical' },
+        { id: 'classification', icon: 'fa-sitemap', title: 'Where they caught it' },
+        { id: 'high-risk', icon: 'fa-user-shield', title: 'Who gets it' },
+        { id: 'assessment', icon: 'fa-stethoscope', title: 'Assessment, in order' },
+        { id: 'diagnostics', icon: 'fa-x-ray', title: 'What the tests tell you' },
+        { id: 'treatment', icon: 'fa-pills', title: 'Antibiotics and the clock' },
+        { id: 'interventions', icon: 'fa-user-nurse', title: 'What you do first' },
+        { id: 'pediatrics', icon: 'fa-child', title: 'Children are not small adults' },
+        { id: 'numbers-cold', icon: 'fa-hashtag', title: 'Numbers to have cold' },
+        { id: 'rebuild', icon: 'fa-pencil-alt', title: 'Now close the guide' },
+        { id: 'practice-questions', icon: 'fa-flask', title: 'Test yourself' },
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-percentage', value: '≥92%', label: 'SpO2 Target' },
-        { type: 'time', icon: 'fa-clock', value: '<4 hrs', label: 'Antibiotic Timing' },
-        { type: 'critical', icon: 'fa-hospital', value: '≥48h', label: 'HAP Onset Rule' },
-        { type: 'warning', icon: 'fa-bacteria', value: 'S. pneumo', label: '#1 CAP Pathogen' },
-        { type: 'info', icon: 'fa-lungs', value: 'CURB-65', label: 'Severity Score' },
-        { type: 'success', icon: 'fa-syringe', value: 'Vaccination', label: 'Prevention Key' }
+        { type: 'target', icon: 'fa-percentage', value: '>=92%', label: 'SpO2 target' },
+        { type: 'time', icon: 'fa-clock', value: '<4 hrs', label: 'First antibiotic dose' },
+        { type: 'critical', icon: 'fa-hospital', value: '>=48h', label: 'HAP starts here' },
+        { type: 'warning', icon: 'fa-bacteria', value: 'S. pneumo', label: 'Leading CAP organism' },
+        { type: 'info', icon: 'fa-lungs', value: 'CURB-65', label: 'Admit or send home' },
+        { type: 'success', icon: 'fa-bed', value: '30-45 deg', label: 'HOB to prevent aspiration' }
     ],
     clinicalPearls: [
-        { id: 'tip-consolidation', title: 'Understanding Consolidation', text: 'Consolidation = dullness to percussion + bronchial breath sounds + increased fremitus. White opacity on CXR with air bronchograms.' },
-        { id: 'tip-cap-vs-hap', title: '48-Hour Rule', text: 'CAP = before or <48h after admission (susceptible bugs). HAP = ≥48h (resistant bugs like Pseudomonas, MRSA). Different antibiotics needed!' },
-        { id: 'tip-high-risk', title: 'High-Risk Patients', text: 'Elderly, immunocompromised, COPD, diabetics, and aspiration risk patients need extra vigilance and prevention measures.' },
-        { id: 'tip-assessment-findings', title: 'Consolidation Triad', text: 'Dullness to percussion + bronchial breath sounds + increased tactile fremitus = lung consolidation found!' },
-        { id: 'tip-cxr-interpretation', title: 'CXR Reading', text: 'Normal lung = black (air). Pneumonia = white (consolidation). Look for lobar vs patchy pattern, air bronchograms, and pleural effusion.' },
-        { id: 'tip-antibiotic-timing', title: 'Antibiotic Timing', text: 'First dose within 4 hours (1 hour if severe/sepsis). Delayed antibiotics increase mortality. Don\'t wait for cultures!' },
-        { id: 'tip-incentive-spirometry', title: 'IS Technique', text: 'Sit upright, inhale slowly (3-5 sec), hold 5-10 sec at max. Goal is sustained inspiration, not speed. 10 reps q1-2h while awake.' },
-        { id: 'tip-pediatric-dehydration', title: 'Pediatric Dehydration Risk', text: 'Children with pneumonia dehydrate fast! Tachypnea increases fluid losses, fever increases demands, and sick kids refuse to drink. Monitor output and weights!' },
-        { id: 'tip-sputum-collection', title: 'Sputum Before Antibiotics', text: 'Always collect sputum cultures BEFORE the first antibiotic dose! Even one dose can sterilize cultures. Collect specimen, then immediately give antibiotics.' },
-        { id: 'tip-aspiration-prevention', title: 'Aspiration Prevention', text: 'Three non-negotiables: HOB elevation (check every room entry), swallow status verification (match diet order to evaluation), and oral care q2-4h (reduces aspiration pneumonia by up to 40%).' }
+        { id: 'tip-consolidation', title: 'Understanding Consolidation', text: 'Dullness, bronchial breath sounds and increased fremitus are one fact stated three ways: the lung went solid.' },
+        { id: 'tip-cap-vs-hap', title: 'The 48-Hour Rule', text: 'Under 48 hours is community and susceptible. Forty-eight or more is hospital, Pseudomonas and MRSA. The timeline picks the drug.' },
+        { id: 'tip-high-risk', title: 'The High-Risk Profile', text: 'Risk factors stack. Older smoker with COPD, or a diabetic on steroids who cannot swallow. For them the work is preventive.' },
+        { id: 'tip-assessment-findings', title: 'The Consolidation Triad', text: 'Dull to percussion, bronchial breath sounds in the periphery, increased tactile fremitus. Find all three and you found it.' },
+        { id: 'tip-cxr-interpretation', title: 'Reading a Pneumonia Chest X-Ray', text: 'Air is black, consolidation is white. An air bronchogram is a dark airway inside a white patch.' },
+        { id: 'tip-antibiotic-timing', title: 'Antibiotic Timing', text: 'Four hours from diagnosis, one hour if severe or septic. Culture first, then the drug; it takes two minutes.' },
+        { id: 'tip-incentive-spirometry', title: 'Incentive Spirometry Technique', text: 'Slow breath in over 3 to 5 seconds, hold 5 to 10 at the top, ten times every 1 to 2 hours. Slow is what reopens alveoli.' },
+        { id: 'tip-sputum-collection', title: 'Sputum Before Antibiotics', text: 'One dose can sterilise the culture and cost you the organism for the whole admission.' },
+        { id: 'tip-aspiration-prevention', title: 'Three Non-Negotiables', text: 'Head of bed checked every room entry, swallow status matched to the diet order, and oral care every 2 to 4 hours.' },
+        { id: 'tip-pediatric-dehydration', title: 'Watch for Dehydration', text: 'Fast breathing loses fluid, fever raises demand, and a sick child refuses to drink. Watch output and daily weights.' }
     ]
 };

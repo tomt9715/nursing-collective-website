@@ -148,7 +148,19 @@ img { max-width: 100%; display: block; }
   margin-bottom: 14px;
 }
 
-.cover-logo { height: 30px; width: auto; margin-bottom: 20px; }
+/* .cover-logo is a DIV wrapping the guide icon <img>, so the box is sized
+   here and the image is constrained to it. Sizing the div alone lets a
+   512px icon overflow across the cover. */
+.cover-logo {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 18px;
+}
+.cover-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
 
 .cover-title {
   font-family: 'DM Serif Display', serif;
@@ -380,6 +392,30 @@ img { max-width: 100%; display: block; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 12px;
+}
+
+/* Objectives are often a plain <ul> whose <li> already carries a check
+   icon — suppress the list marker so it isn't bullet + tick. */
+.learning-objectives ul,
+.learning-objectives ol {
+  list-style: none;
+  margin: 0;
+}
+.learning-objectives li {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  margin-bottom: 9px;
+  font-size: 14.5px;
+  line-height: 1.55;
+  color: var(--text);
+}
+.learning-objectives li:last-child { margin-bottom: 0; }
+.learning-objectives li i {
+  flex-shrink: 0;
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--cat);
 }
 
 .objective-card {
@@ -649,26 +685,46 @@ img { max-width: 100%; display: block; }
 
 
 /* ══ Key numbers / stat callouts ══ */
+/* NOTE: .value and .label are generic names used in two very different
+   places — the big stat callout AND the small cover meta. Keep the
+   dramatic treatment scoped to .key-number, or cover meta renders as
+   giant headlines. */
 .key-number {
   display: inline-flex;
   flex-direction: column;
   gap: 2px;
 }
-.key-number .value,
-.value {
+.key-number .value {
   font-family: 'DM Serif Display', serif;
   font-size: 24px;
   color: var(--cat);
   line-height: 1.1;
 }
-.key-number .label,
-.label {
+.key-number .label {
   font-family: 'DM Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-dimmer);
 }
+
+/* Cover meta pairs — small, quiet */
+.cover-meta-item .label {
+  font-family: 'DM Mono', monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dimmer);
+  margin-bottom: 1px;
+}
+.cover-meta-item .value {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  line-height: 1.3;
+}
+.cover-meta-item { flex-direction: column; align-items: flex-start; gap: 0; }
 
 .tag {
   display: inline-flex;
@@ -684,9 +740,13 @@ img { max-width: 100%; display: block; }
 
 
 /* ══ FlorenceBot tip ══ */
+/* DOM is a flat stack — .florencebot-tip-header (icon + label) is a SIBLING
+   of -title and -content, not a wrapper. So the tip is a column; only the
+   header is a row. */
 .florencebot-tip {
   display: flex;
-  gap: 14px;
+  flex-direction: column;
+  gap: 7px;
   background: var(--navy-2);
   border: 0.5px solid var(--border-mid);
   border-radius: 14px;
@@ -698,22 +758,21 @@ img { max-width: 100%; display: block; }
 
 .florencebot-tip-icon {
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
+  font-size: 15px;
   background: var(--teal);
   color: #fff;
 }
 
 .florencebot-tip-header {
   display: flex;
-  align-items: baseline;
-  gap: 9px;
-  margin-bottom: 5px;
+  align-items: center;
+  gap: 10px;
   flex-wrap: wrap;
 }
 

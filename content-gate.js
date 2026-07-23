@@ -124,7 +124,7 @@
                 left: 0;
                 right: 0;
                 bottom: 0;
-                background: rgba(13,27,42,0.85);
+                background: rgba(58,44,26,0.45);
                 -webkit-backdrop-filter: blur(8px);
                 backdrop-filter: blur(8px);
                 z-index: 99999;
@@ -139,8 +139,8 @@
                 to { opacity: 1; }
             }
             .paywall-modal {
-                background: #162032;
-                border: 0.5px solid rgba(255,255,255,0.12);
+                background: #ffffff;
+                border: 0.5px solid rgba(58,44,26,0.17);
                 border-radius: 14px;
                 padding: 40px 36px;
                 max-width: 440px;
@@ -164,17 +164,17 @@
             }
             .paywall-icon i {
                 font-size: 22px;
-                color: #0fbcad;
+                color: #0e9a8f;
             }
             .paywall-modal h2 {
                 font-family: 'DM Serif Display', serif;
                 font-size: 22px;
                 font-weight: 400;
-                color: #e8edf2;
+                color: #2b2621;
                 margin-bottom: 8px;
             }
             .paywall-modal > p {
-                color: #8a9bb0;
+                color: #6a6157;
                 font-size: 14px;
                 line-height: 1.6;
                 margin-bottom: 24px;
@@ -189,15 +189,15 @@
             .paywall-price {
                 font-family: 'Outfit', sans-serif;
                 font-size: 14px;
-                color: #8a9bb0;
+                color: #6a6157;
             }
             .paywall-price strong {
-                color: #0fbcad;
+                color: #0e9a8f;
                 font-weight: 600;
             }
             .paywall-divider {
                 font-family: 'DM Mono', monospace;
-                color: #5f7085;
+                color: #8a8073;
                 font-size: 11px;
                 letter-spacing: 0.06em;
                 margin: 8px 0;
@@ -220,28 +220,28 @@
                 transition: all 0.15s;
             }
             .paywall-btn-primary {
-                background: #0fbcad;
-                color: #0d1b2a;
+                background: #0e9a8f;
+                color: #fff;
             }
             .paywall-btn-primary:hover {
-                background: #0a9086;
+                background: #0b7d74;
             }
             .paywall-btn-secondary {
                 background: transparent;
-                color: #8a9bb0;
-                border: 0.5px solid rgba(255,255,255,0.12);
+                color: #6a6157;
+                border: 0.5px solid rgba(58,44,26,0.17);
             }
             .paywall-btn-secondary:hover {
                 border-color: rgba(255,255,255,0.2);
-                color: #e8edf2;
+                color: #2b2621;
             }
             .paywall-login {
                 margin-top: 16px;
                 font-size: 13px;
-                color: #5f7085;
+                color: #8a8073;
             }
             .paywall-login a {
-                color: #0fbcad;
+                color: #0e9a8f;
                 text-decoration: none;
                 font-weight: 500;
             }

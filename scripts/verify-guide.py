@@ -1,0 +1,85 @@
+#!/usr/bin/env python3
+"""Verify a rebuilt guide against GUIDE_REBUILD_PLAN.md non-negotiables."""
+import re, sys, os, statistics, json
+
+ROOT = '/Users/tomthomas/Discord-and-Website/nursing-collective-website'
+
+def css_classes():
+    have = set()
+    for f in ('guides/guide.css', 'guides/guide-sidebar.css'):
+        have |= set(re.findall(r'\.([a-z][a-z0-9-]*)', open(os.path.join(ROOT, f), encoding='utf-8').read()))
+    return have
+
+HAVE = css_classes()
+
+def check(gid):
+    p = os.path.join(ROOT, 'guides', gid + '.html')
+    s = open(p, encoding='utf-8').read()
+    out = {'guide': gid, 'fail': []}
+
+    nostyle = re.sub(r'<style.*?</style>|<script.*?</script>', '', s, flags=re.S)
+    txt = re.sub(r'<[^>]+>', ' ', nostyle)
+    out['em'] = txt.count('—'); out['en'] = txt.count('–')
+    out['excl'] = txt.count('!'); out['nclex'] = len(re.findall('NCLEX', txt, re.I))
+    out['style_blocks'] = s.count('<style')
+    out['scripts'] = s.count('<script src')
+
+    out['div'] = (len(re.findall(r'<div\b', s)), s.count('</div>'))
+    out['section'] = (len(re.findall(r'<section\b', s)), s.count('</section>'))
+
+    # paragraph-only sentence metric (the reliable one per the plan)
+    body = s.split('<div class="document-content">', 1)[1]
+    t = ' '.join(re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', x))
+                 for x in re.findall(r'<p[^>]*>(.*?)</p>', body, flags=re.S))
+    lens = [len(x.split()) for x in re.split(r'(?<=[.!?]) ', t) if len(x.split()) > 2]
+    out['median'] = statistics.median(lens); out['under8'] = 100 * sum(1 for x in lens if x < 8) // len(lens)
+
+    used = set()
+    for m in re.finditer(r'class="([^"]+)"', re.sub(r'<style.*?</style>', '', s, flags=re.S)):
+        used |= {c for c in m.group(1).split() if not c.startswith('fa')}
+    out['uncovered'] = sorted(used - HAVE)
+
+    # template conversion markers
+    out['tokens_css'] = 'css/tokens.css' in s and 'href="guide.css"' in s
+    out['dm_serif'] = 'DM+Serif+Display' in s
+    out['category'] = bool(re.search(r'<body[^>]*data-category="', s))
+    out['retired_logo'] = 'the-nursing-collective-logo.webp' in s or 'the-nursing-collective-logo.svg' in s
+
+    # config sync
+    cp = os.path.join(ROOT, 'guides', 'configs', gid + '-config.js')
+    c = open(cp, encoding='utf-8').read()
+    html_tips = set(re.findall(r'class="florencebot-tip" id="([^"]+)"', s))
+    cfg_tips = set(re.findall(r"id: '(tip-[^']+)'", c))
+    cfg_sec = set(re.findall(r"id: '([^']+)'", c)) - cfg_tips
+    html_sec = set(re.findall(r'<section class="[^"]*" id="([^"]+)"', s))
+    out['tips_only_cfg'] = sorted(cfg_tips - html_tips)
+    out['tips_only_html'] = sorted(html_tips - cfg_tips)
+    out['sec_only_cfg'] = sorted(cfg_sec - html_sec)
+
+    # quiz deep links
+    qp = os.path.join(ROOT, 'guides', 'quiz', 'data', gid + '-questions.js')
+    out['quiz_missing'] = []
+    if os.path.exists(qp):
+        for qid in sorted(set(re.findall(r'guideSectionId:\s*"([^"]+)"', open(qp, encoding='utf-8').read()))):
+            if 'id="%s"' % qid not in s:
+                out['quiz_missing'].append(qid)
+
+    for cond, msg in [
+        (out['em'] or out['en'], 'dashes'), (out['excl'], 'exclamation'), (out['nclex'], 'NCLEX'),
+        (out['style_blocks'], 'style block'), (out['div'][0] != out['div'][1], 'div unbalanced'),
+        (out['section'][0] != out['section'][1], 'section unbalanced'),
+        (out['uncovered'], 'uncovered classes'), (not out['tokens_css'], 'tokens/guide.css'),
+        (not out['dm_serif'], 'font link'), (not out['category'], 'data-category'),
+        (out['retired_logo'], 'retired logo'), (out['tips_only_cfg'] or out['tips_only_html'], 'tip mismatch'),
+        (out['sec_only_cfg'], 'section mismatch'), (out['quiz_missing'], 'quiz deep link'),
+        (out['median'] > 10, 'median too high'), (out['under8'] < 28, 'under8 too low'),
+    ]:
+        if cond: out['fail'].append(msg)
+    return out
+
+for gid in sys.argv[1:]:
+    r = check(gid)
+    status = 'FAIL: ' + ', '.join(r['fail']) if r['fail'] else 'PASS'
+    print('%-28s median %-4s under8 %2s%%  scripts %s  %s' % (r['guide'], r['median'], r['under8'], r['scripts'], status))
+    for k in ('uncovered', 'tips_only_cfg', 'tips_only_html', 'sec_only_cfg', 'quiz_missing'):
+        if r[k]: print('    %s: %s' % (k, r[k]))

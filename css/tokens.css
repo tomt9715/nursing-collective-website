@@ -1,0 +1,51 @@
+/* ══════════════════════════════════════════════════════════════
+   tokens.css — TNC Design Tokens · SINGLE SOURCE OF TRUTH
+   ══════════════════════════════════════════════════════════════
+
+   Every page stylesheet reads its colors from here. Change a value
+   once and it updates across the whole site.
+
+   Load this BEFORE the page stylesheet:
+     <link rel="stylesheet" href="css/tokens.css">
+     <link rel="stylesheet" href="css/home-redesign.css">
+
+   Page stylesheets must NOT redeclare these in their own :root —
+   that's what forced the same edit through 17 files before.
+
+   Theme: warm light (cream paper, warm ink, teal accent).
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Surfaces ──
+     Historical names (--navy*) kept so existing rules keep working;
+     the values are light. Renaming would touch thousands of lines. */
+  --navy:        #faf7f2;   /* page background (warm paper) */
+  --navy-2:      #ffffff;   /* card / elevated surface */
+  --navy-3:      #f1ece4;   /* hover / sunken surface */
+  --navy-card:   #ffffff;   /* alias used by some pages */
+  --card:        #ffffff;   /* alias used by some pages */
+
+  /* ── Brand + semantic ── */
+  --teal:        #0e9a8f;   /* primary accent (readable on white) */
+  --teal-dim:    #0b7d74;   /* accent hover */
+  --amber:       #c9791a;   /* warning / highlight */
+  --red:         #d64545;   /* error / destructive */
+  --green:       #2fa866;   /* success / operational */
+  --purple:      #6d4bd0;   /* AI tier */
+  --purple-dim:  #5a3cb0;
+  --discord:     #5865F2;   /* Discord brand — do not restyle */
+
+  /* ── Text ── */
+  --text:        #2b2621;   /* primary ink */
+  --text-dim:    #6a6157;   /* supporting */
+  --text-dimmer: #8a8073;   /* labels, meta */
+
+  /* ── Lines ── */
+  --border:      rgba(58,44,26,0.11);
+  --border-mid:  rgba(58,44,26,0.17);
+
+  /* ── Elevation (light theme needs shadow, not just borders) ── */
+  --shadow-sm:   0 1px 2px rgba(58,44,26,0.06), 0 1px 3px rgba(58,44,26,0.05);
+  --shadow-md:   0 6px 20px rgba(58,44,26,0.11);
+  --shadow-lg:   0 12px 40px rgba(58,44,26,0.15);
+}

@@ -3,24 +3,7 @@
    Shared styles for privacy.html, terms.html, contact.html
    ══════════════════════════════════════════════════════════════ */
 
-:root {
-  --navy:        #faf7f2;
-  --navy-2:      #ffffff;
-  --navy-3:      #f1ece4;
-  --teal:        #0e9a8f;
-  --teal-dim:    #0b7d74;
-  --amber:       #c9791a;
-  --red:         #d64545;
-  --green:       #2fa866;
-  --text:        #2b2621;
-  --text-dim:    #6a6157;
-  --text-dimmer: #8a8073;
-  --border:      rgba(58,44,26,0.11);
-  --border-mid:  rgba(58,44,26,0.17);
-  --shadow-sm:   0 1px 2px rgba(58,44,26,0.06), 0 1px 3px rgba(58,44,26,0.05);
-  --shadow-md:   0 6px 20px rgba(58,44,26,0.11);
-  --shadow-lg:   0 12px 40px rgba(58,44,26,0.15);
-}
+/* Palette lives in css/tokens.css (loaded before this file). */
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 

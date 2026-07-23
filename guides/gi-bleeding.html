@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GI Bleeding Study Guide - The Nursing Collective</title>
-    <meta name="description" content="Comprehensive nursing study guide for GI Bleeding. Learn to differentiate upper vs lower GI bleeding, recognize hemodynamic instability, and understand endoscopy indications.">
+    <meta name="description" content="Nursing study guide for GI bleeding. Upper or lower from the stool, why the first hemoglobin lies, transfusion triggers, and what you do in the first hour.">
     <link rel="canonical" href="https://thenursingcollective.pro/guides/gi-bleeding.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/guides/gi-bleeding.html">
     <meta property="og:title" content="GI Bleeding Study Guide - The Nursing Collective">
-    <meta property="og:description" content="Comprehensive nursing study guide for GI Bleeding. Learn to differentiate upper vs lower GI bleeding, recognize hemodynamic instability, and understand endoscopy indications.">
+    <meta property="og:description" content="Nursing study guide for GI bleeding. Upper or lower from the stool, why the first hemoglobin lies, transfusion triggers, and what you do in the first hour.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
     <!-- Favicon -->
@@ -18,1177 +18,25 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/cookie-consent.css">
 
-    <style>
-        /* ============================================
-           GI BLEEDING GUIDE - ANATOMY JOURNEY LAYOUT
-           Top-to-bottom organ flow format
-           Regional sections (upper/lower GI)
-           ============================================ */
-
-        :root {
-            --primary-color: #2E86AB;
-            --primary-dark: #236b8a;
-            --secondary-color: #A23B72;
-            --accent-color: #f59e0b;
-            --text-primary: #1f2937;
-            --text-secondary: #4b5563;
-            --background: #ffffff;
-            --border-color: #e5e7eb;
-            /* GI Bleeding-specific colors */
-            --upper-gi-color: #dc2626;
-            --lower-gi-color: #991b1b;
-            --bleed-red: #ef4444;
-            --bleed-dark: #7f1d1d;
-            --stable-green: #10b981;
-            --unstable-red: #dc2626;
-            --warning-orange: #f59e0b;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--text-primary);
-            background: #f8fafc;
-        }
-
-        /* Download Bar - Fixed at top */
-        .download-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(135deg, #dc2626, #991b1b);
-            color: white;
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .download-bar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-weight: 600;
-        }
-
-        .download-bar-actions {
-            display: flex;
-            gap: 12px;
-        }
-
-        .btn-download {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: white;
-            color: var(--upper-gi-color);
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-download:hover {
-            background: #fef2f2;
-            transform: translateY(-1px);
-        }
-
-        .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: rgba(255,255,255,0.15);
-            color: white;
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .btn-back:hover {
-            background: rgba(255,255,255,0.25);
-        }
-
-        /* Document Container */
-        .document-container {
-            max-width: 900px;
-            margin: 80px auto 40px;
-            background: white;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-        }
-
-        /* Cover Page - Red/Maroon bleeding themed gradient */
-        .cover-page {
-            background: linear-gradient(135deg, #7f1d1d 0%, #dc2626 40%, #991b1b 80%, #450a0a 100%);
-            color: white;
-            padding: 80px 60px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M40 40c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20-20-8.954-20-20zM0 40c0-11.046 8.954-20 20-20s20 8.954 20 20-8.954 20-20 20S0 51.046 0 40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
-        }
-
-        .cover-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cover-logo {
-            width: 90px;
-            height: 90px;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
-            padding: 15px;
-        }
-
-        .cover-logo img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
-        .cover-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 24px;
-            background: rgba(239, 68, 68, 0.3);
-            border: 1px solid rgba(255,255,255,0.3);
-            border-radius: 50px;
-            font-size: 0.85rem;
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-
-        .cover-badge i {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .cover-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.1;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-        }
-
-        .cover-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.95;
-            max-width: 600px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-        }
-
-        .cover-stats {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            flex-wrap: wrap;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-        }
-
-        .cover-stat {
-            text-align: center;
-        }
-
-        .cover-stat .number {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-        }
-
-        .cover-stat .label {
-            font-size: 0.85rem;
-            opacity: 0.85;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-top: 4px;
-        }
-
-        .cover-brand {
-            margin-top: 50px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        /* Document Content */
-        .document-content {
-            padding: 60px;
-        }
-
-        /* Learning Objectives */
-        .learning-objectives {
-            background: linear-gradient(135deg, #fef2f2, #fecaca);
-            border-radius: 16px;
-            padding: 32px;
-            margin-bottom: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .learning-objectives::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(220, 38, 38, 0.1) 0%, transparent 60%);
-        }
-
-        .learning-objectives h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #991b1b;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            position: relative;
-        }
-
-        .learning-objectives-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            position: relative;
-        }
-
-        .objective-card {
-            background: white;
-            border-radius: 12px;
-            padding: 16px 20px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .objective-card i {
-            color: var(--upper-gi-color);
-            font-size: 1.1rem;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-
-        .objective-card span {
-            font-size: 0.98rem;
-            color: var(--text-primary);
-        }
-
-        /* Sticky Navigation */
-        .sticky-nav {
-            background: #f8fafc;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 40px;
-            position: sticky;
-            top: 70px;
-            z-index: 100;
-        }
-
-        .sticky-nav h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 14px;
-        }
-
-        .nav-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .nav-pills a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.2s ease;
-        }
-
-        .nav-pills a:hover {
-            background: var(--upper-gi-color);
-            color: white;
-            border-color: var(--upper-gi-color);
-        }
-
-        .nav-pills a i {
-            font-size: 0.85rem;
-        }
-
-        /* Content Sections */
-        .guide-section {
-            margin-bottom: 50px;
-            scroll-margin-top: 140px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 2px solid var(--border-color);
-        }
-
-        .section-number {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 48px;
-            height: 48px;
-            background: linear-gradient(135deg, var(--upper-gi-color), var(--lower-gi-color));
-            color: white;
-            border-radius: 12px;
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.3rem;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-
-        .section-title-group h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .section-title-group .subtitle {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-top: 4px;
-        }
-
-        .guide-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 28px 0 14px;
-        }
-
-        .guide-section h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--upper-gi-color);
-            margin: 20px 0 10px;
-        }
-
-        .guide-section p {
-            color: var(--text-secondary);
-            font-size: 1.02rem;
-            margin-bottom: 14px;
-        }
-
-        .guide-section ul, .guide-section ol {
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-            padding-left: 24px;
-        }
-
-        .guide-section li {
-            margin-bottom: 8px;
-        }
-
-        .guide-section strong {
-            color: var(--text-primary);
-        }
-
-        /* Anatomy Journey - Organ Flow */
-        .organ-journey {
-            background: linear-gradient(180deg, #fef2f2 0%, #ffffff 50%, #fef2f2 100%);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 24px 0;
-            position: relative;
-        }
-
-        .organ-journey h3 {
-            color: var(--bleed-dark);
-            margin: 0 0 24px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .journey-path {
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .journey-path::before {
-            content: '';
-            position: absolute;
-            left: 16px;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: linear-gradient(180deg, var(--upper-gi-color), var(--lower-gi-color));
-            border-radius: 2px;
-        }
-
-        .journey-stop {
-            position: relative;
-            margin-bottom: 24px;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .journey-stop::before {
-            content: '';
-            position: absolute;
-            left: -32px;
-            top: 24px;
-            width: 20px;
-            height: 20px;
-            background: white;
-            border: 4px solid var(--upper-gi-color);
-            border-radius: 50%;
-        }
-
-        .journey-stop.lower::before {
-            border-color: var(--lower-gi-color);
-        }
-
-        .journey-stop h4 {
-            margin: 0 0 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .journey-stop p {
-            margin: 0;
-            font-size: 0.95rem;
-        }
-
-        /* Region Sections - Upper vs Lower */
-        .region-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            margin: 24px 0;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 2px solid var(--border-color);
-        }
-
-        .region-section {
-            padding: 0;
-        }
-
-        .region-header {
-            padding: 24px;
-            text-align: center;
-            color: white;
-        }
-
-        .region-section.upper .region-header {
-            background: linear-gradient(135deg, #dc2626, #ef4444);
-        }
-
-        .region-section.lower .region-header {
-            background: linear-gradient(135deg, #7f1d1d, #991b1b);
-        }
-
-        .region-header i {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-            display: block;
-        }
-
-        .region-header h4 {
-            color: white;
-            font-size: 1.3rem;
-            margin: 0 0 4px;
-        }
-
-        .region-header .location {
-            font-size: 0.95rem;
-            opacity: 0.9;
-        }
-
-        .region-body {
-            padding: 24px;
-            background: white;
-        }
-
-        .region-body h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin: 0 0 12px;
-            padding-bottom: 8px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .region-body h5:not(:first-child) {
-            margin-top: 20px;
-        }
-
-        .region-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .region-body li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 8px 0;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .region-body li i {
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .region-section.upper .region-body li i { color: var(--upper-gi-color); }
-        .region-section.lower .region-body li i { color: var(--lower-gi-color); }
-
-        /* Symptom Map */
-        .symptom-map {
-            background: #f8fafc;
-            border-radius: 16px;
-            padding: 32px;
-            margin: 24px 0;
-            border: 1px solid var(--border-color);
-        }
-
-        .symptom-map h3 {
-            color: var(--bleed-dark);
-            margin: 0 0 24px;
-            text-align: center;
-        }
-
-        .symptom-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px;
-        }
-
-        .symptom-card {
-            background: white;
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            transition: all 0.2s ease;
-        }
-
-        .symptom-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-
-        .symptom-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, var(--upper-gi-color), var(--lower-gi-color));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 12px;
-            color: white;
-            font-size: 1.3rem;
-        }
-
-        .symptom-card h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0 0 8px;
-        }
-
-        .symptom-card p {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        /* Hemodynamic Status - Stability Assessment */
-        .stability-assessment {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 24px 0;
-        }
-
-        .stability-box {
-            border-radius: 16px;
-            overflow: hidden;
-        }
-
-        .stability-box.stable {
-            border: 2px solid var(--stable-green);
-        }
-
-        .stability-box.unstable {
-            border: 2px solid var(--unstable-red);
-        }
-
-        .stability-header {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-        }
-
-        .stability-box.stable .stability-header {
-            background: linear-gradient(135deg, #059669, #10b981);
-        }
-
-        .stability-box.unstable .stability-header {
-            background: linear-gradient(135deg, #b91c1c, #ef4444);
-        }
-
-        .stability-header i {
-            font-size: 1.5rem;
-        }
-
-        .stability-header h4 {
-            color: white;
-            margin: 0;
-            font-size: 1.1rem;
-        }
-
-        .stability-body {
-            padding: 20px;
-            background: white;
-        }
-
-        .stability-body ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .stability-body li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 10px 0;
-            border-bottom: 1px solid var(--border-color);
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .stability-body li:last-child {
-            border-bottom: none;
-        }
-
-        .stability-body li i {
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-
-        .stability-box.stable .stability-body li i { color: var(--stable-green); }
-        .stability-box.unstable .stability-body li i { color: var(--unstable-red); }
-
-        /* Procedure Visual */
-        .procedure-visual {
-            background: linear-gradient(135deg, #fef3c7, #fde68a);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 24px 0;
-        }
-
-        .procedure-visual h3 {
-            color: #92400e;
-            margin: 0 0 24px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .procedure-timeline {
-            display: flex;
-            justify-content: space-between;
-            position: relative;
-            padding: 20px 0;
-        }
-
-        .procedure-timeline::before {
-            content: '';
-            position: absolute;
-            top: 44px; /* Positioned at center of the 48px markers (24px) + 20px padding */
-            left: 24px;
-            right: 24px;
-            height: 4px;
-            background: linear-gradient(to right, var(--stable-green), var(--warning-orange), var(--upper-gi-color));
-            border-radius: 2px;
-        }
-
-        .procedure-step {
-            position: relative;
-            text-align: center;
-            flex: 1;
-            padding: 0 8px;
-        }
-
-        .procedure-marker {
-            width: 48px;
-            height: 48px;
-            background: white;
-            border: 4px solid;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            position: relative;
-            z-index: 1;
-            font-size: 1.1rem;
-        }
-
-        .procedure-step:nth-child(1) .procedure-marker { border-color: var(--stable-green); color: var(--stable-green); }
-        .procedure-step:nth-child(2) .procedure-marker { border-color: var(--warning-orange); color: var(--warning-orange); }
-        .procedure-step:nth-child(3) .procedure-marker { border-color: var(--upper-gi-color); color: var(--upper-gi-color); }
-        .procedure-step:nth-child(4) .procedure-marker { border-color: var(--bleed-dark); color: var(--bleed-dark); }
-
-        .procedure-label {
-            font-weight: 600;
-            font-size: 0.9rem;
-            color: var(--text-primary);
-            line-height: 1.3;
-        }
-
-        .procedure-desc {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-top: 6px;
-        }
-
-        /* Info Boxes */
-        .info-box {
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin: 20px 0;
-            display: flex;
-            gap: 16px;
-        }
-
-        .info-box-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-
-        .info-box-icon i {
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .info-box-content {
-            flex: 1;
-        }
-
-        .info-box-content h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            margin: 0 0 8px;
-        }
-
-        .info-box-content p {
-            margin: 0;
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-        }
-
-        .info-box-content ul {
-            margin: 8px 0 0;
-            padding-left: 18px;
-        }
-
-        .info-box-content li {
-            margin-bottom: 4px;
-            font-size: 0.95rem;
-        }
-
-        .info-box.warning {
-            background: linear-gradient(135deg, #fef2f2, #fee2e2);
-            border: 1px solid #fecaca;
-        }
-
-        .info-box.warning .info-box-icon { background: linear-gradient(135deg, #ef4444, #dc2626); }
-        .info-box.warning .info-box-content h5 { color: #991b1b; }
-
-        .info-box.clinical {
-            background: linear-gradient(135deg, #fffbeb, #fef3c7);
-            border: 1px solid #fde68a;
-        }
-
-        .info-box.clinical .info-box-icon { background: linear-gradient(135deg, #f59e0b, #d97706); }
-        .info-box.clinical .info-box-content h5 { color: #92400e; }
-
-        .info-box.nclex {
-            background: linear-gradient(135deg, #f5f3ff, #ede9fe);
-            border: 1px solid #ddd6fe;
-        }
-
-        .info-box.nclex .info-box-icon { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
-        .info-box.nclex .info-box-content h5 { color: #5b21b6; }
-
-        .info-box.tip {
-            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-            border: 1px solid #a7f3d0;
-        }
-
-        .info-box.tip .info-box-icon { background: linear-gradient(135deg, #10b981, #059669); }
-        .info-box.tip .info-box-content h5 { color: #065f46; }
-
-        /* Tables */
-        .guide-table-wrapper {
-            overflow-x: auto;
-            margin: 20px 0;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-        }
-
-        .guide-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.92rem;
-        }
-
-        .guide-table thead {
-            background: linear-gradient(135deg, var(--upper-gi-color), var(--lower-gi-color));
-            color: white;
-        }
-
-        .guide-table th {
-            padding: 14px 16px;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        .guide-table tbody tr {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .guide-table tbody tr:hover {
-            background: #f9fafb;
-        }
-
-        .guide-table td {
-            padding: 14px 16px;
-            color: var(--text-secondary);
-        }
-
-        .guide-table td:first-child {
-            font-weight: 600;
-            color: var(--text-primary);
-        }
-
-        /* Intervention Cards */
-        .intervention-cards {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-            margin: 20px 0;
-        }
-
-        .intervention-card {
-            background: white;
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 20px;
-            transition: all 0.2s ease;
-        }
-
-        .intervention-card:hover {
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-            transform: translateY(-2px);
-        }
-
-        .intervention-card-header {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
-
-        .intervention-icon {
-            width: 36px;
-            height: 36px;
-            background: linear-gradient(135deg, var(--upper-gi-color), var(--lower-gi-color));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .intervention-card h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin: 0;
-        }
-
-        .intervention-card p {
-            font-size: 0.92rem;
-            color: var(--text-secondary);
-            margin: 0;
-            line-height: 1.5;
-        }
-
-        /* Key Points Summary */
-        .key-points-summary {
-            background: linear-gradient(135deg, #7f1d1d, #dc2626);
-            border-radius: 16px;
-            padding: 32px;
-            margin: 40px 0 0;
-            color: white;
-        }
-
-        .key-points-summary h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
-            margin: 0 0 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: white;
-        }
-
-        .key-points-list {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 16px;
-        }
-
-        .key-point-item {
-            background: rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 18px;
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .key-point-item i {
-            font-size: 1.2rem;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
-
-        .key-point-item p {
-            margin: 0;
-            font-size: 0.95rem;
-            line-height: 1.5;
-            color: rgba(255,255,255,0.95);
-        }
-
-        .key-point-item strong {
-            color: white;
-        }
-
-        /* Footer */
-        .document-footer {
-            text-align: center;
-            padding: 32px 48px;
-            border-top: 1px solid var(--border-color);
-            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
-        }
-
-        .footer-logo {
-            height: 48px;
-            width: auto;
-            margin-bottom: 12px;
-        }
-
-        .footer-tagline {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            margin-bottom: 16px;
-        }
-
-        .footer-copyright {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        /* Print Styles */
-        @page {
-            margin: 0.6in 0.4in;
-        }
-
-        @media print {
-            .download-bar { display: none !important; }
-            .sticky-nav { position: static; }
-
-            body {
-                background: white !important;
-                margin: 0 !important;
-                padding: 0 !important;
-            }
-
-            .document-container {
-                margin: 0 !important;
-                box-shadow: none !important;
-                max-width: 100% !important;
-                width: 100% !important;
-            }
-
-            * {
-                -webkit-print-color-adjust: exact !important;
-                print-color-adjust: exact !important;
-                color-adjust: exact !important;
-            }
-
-            .cover-page {
-                page-break-after: always;
-                break-after: page;
-            }
-
-            .info-box, .stability-box, .organ-journey, .procedure-visual, .key-points-summary {
-                page-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            .region-comparison { page-break-inside: avoid; break-inside: avoid; }
-            .guide-table-wrapper { page-break-inside: avoid; break-inside: avoid; }
-
-            h2, h3, h4 {
-                page-break-after: avoid;
-                break-after: avoid;
-            }
-
-            a { text-decoration: underline; }
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .download-bar {
-                flex-direction: column;
-                gap: 12px;
-                padding: 12px 16px;
-            }
-            .download-bar-actions {
-                width: 100%;
-                justify-content: center;
-            }
-            .document-container { margin: 120px 10px 20px; }
-            .cover-page { padding: 50px 30px; }
-            .cover-title { font-size: 2.5rem; }
-            .cover-stats { flex-direction: column; gap: 20px; }
-            .document-content { padding: 30px 24px; }
-            .learning-objectives-grid { grid-template-columns: 1fr; }
-            .nav-pills { flex-direction: column; }
-            .nav-pills a { justify-content: center; }
-            .region-comparison { grid-template-columns: 1fr; }
-            .stability-assessment { grid-template-columns: 1fr; }
-            .procedure-timeline { flex-direction: column; gap: 24px; }
-            .procedure-timeline::before { display: none; }
-            .intervention-cards { grid-template-columns: 1fr; }
-            .key-points-list { grid-template-columns: 1fr; }
-            .symptom-grid { grid-template-columns: 1fr; }
-            .sticky-nav { position: static; }
-        }
-    </style>
-
     <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="../css/tokens.css">
+    <link rel="stylesheet" href="guide.css">
     <link rel="stylesheet" href="guide-sidebar.css">
     <script src="../beta-banner.js"></script>
     <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
     <script src="../sentry-init.js"></script>
 </head>
-<body data-product-id="gi-bleeding" data-guide-name="GI-Bleeding">
+<body data-category="gastrointestinal" data-product-id="gi-bleeding" data-guide-name="GI-Bleeding">
     <!-- Download Bar -->
     <div class="download-bar">
         <div class="download-bar-brand">
-            <i class="fas fa-book-medical"></i>
-            <span>The Nursing Collective Study Guide</span>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective">
         </div>
         <div class="download-bar-actions">
             <a href="../my-guides.html" class="btn-back">
@@ -1213,24 +61,25 @@
                     <i class="fas fa-tint"></i>
                     Medical Emergency
                 </div>
+                <div class="cover-category">Gastrointestinal</div>
                 <h1 class="cover-title">GI Bleeding</h1>
-                <p class="cover-subtitle">Master the assessment and management of gastrointestinal hemorrhage. Learn to differentiate upper vs lower GI bleeding, recognize hemodynamic instability, and understand intervention priorities.</p>
-                <div class="cover-stats">
-                    <div class="cover-stat">
-                        <div class="number">80%</div>
-                        <div class="label">Stop Spontaneously</div>
+                <p class="cover-subtitle">One ligament decides which scope the patient gets. One lab value will reassure you while they bleed. And the heart rate moves long before the blood pressure does.</p>
+                <div class="cover-meta">
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">20-25 minutes</div>
                     </div>
-                    <div class="cover-stat">
-                        <div class="number">2-15%</div>
-                        <div class="label">Mortality Rate</div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
                     </div>
-                    <div class="cover-stat">
-                        <div class="number">24 hrs</div>
-                        <div class="label">Urgent Endoscopy</div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">July 2026</div>
                     </div>
                 </div>
                 <div class="cover-brand">
-                    <i class="fas fa-graduation-cap"></i> The Nursing Collective | January 2026
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
                 </div>
             </div>
         </div>
@@ -1238,1063 +87,851 @@
         <!-- Document Content -->
         <div class="document-content">
 
-            <!-- Learning Objectives -->
+            <!-- What you should be able to do without notes -->
             <section class="learning-objectives">
-                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
-                <div class="learning-objectives-grid">
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Differentiate upper GI bleeding from lower GI bleeding based on clinical presentation</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Recognize signs of hemodynamic instability and prioritize interventions</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Understand endoscopy indications, timing, and nursing responsibilities</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Differentiate between melena and hematochezia and their clinical significance</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Prioritize nursing interventions for patients with active GI hemorrhage</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Understand blood product administration and transfusion triggers in GI bleeding</span>
-                    </div>
-                </div>
-            </section>
-
-            <!-- High-Yield Summary -->
-            <section class="high-yield-summary" id="high-yield-summary">
-                <h2><i class="fas fa-bolt"></i> High-Yield Summary — Review This in 60 Seconds</h2>
-                <p class="high-yield-subtitle">The must-know facts from this guide, distilled for quick review.</p>
+                <h2><i class="fas fa-bullseye"></i> By the end, without notes</h2>
                 <ul>
-                    <li><strong>Upper GI bleed</strong> (above ligament of Treitz) = hematemesis (vomiting blood), coffee-ground emesis, melena (black tarry stool). <strong>Lower GI bleed</strong> = hematochezia (bright red blood per rectum).</li>
-                    <li><strong>Most common causes:</strong> Upper = peptic ulcer disease (PUD), esophageal varices. Lower = diverticulosis, colorectal cancer, hemorrhoids.</li>
-                    <li><strong>Esophageal varices</strong> (from portal hypertension/cirrhosis) are the most DANGEROUS upper GI bleeds — massive hemorrhage risk. Treat with octreotide, band ligation, balloon tamponade (Blakemore tube).</li>
-                    <li><strong>Melena</strong> = upper GI bleed (blood digested by gastric acid = black/tarry). <strong>Hematochezia</strong> = usually lower GI bleed, BUT massive upper GI bleed can also cause it.</li>
-                    <li><strong>Priority assessment:</strong> Hemodynamic status first! HR, BP, orthostatic changes. Tachycardia is often the FIRST sign of significant blood loss.</li>
-                    <li><strong>Two large-bore IVs (16–18 gauge)</strong> immediately. Fluid resuscitate with crystalloids, then blood products. Type and crossmatch STAT.</li>
-                    <li><strong>NGT lavage:</strong> Confirms upper GI source. Coffee-ground or bloody return = upper GI bleed. Clear or bilious return = bleeding below the pylorus.</li>
-                    <li><strong>EGD (esophagogastroduodenoscopy)</strong> = gold standard for upper GI bleed diagnosis AND treatment. Colonoscopy for lower GI bleeds.</li>
-                    <li><strong>PPIs (IV pantoprazole/esomeprazole)</strong> reduce rebleeding risk from peptic ulcers. Often given as continuous infusion post-EGD.</li>
-                    <li><strong>Common mistake:</strong> Focusing on Hgb/Hct early in acute bleeding — these values DON'T drop immediately because plasma and RBCs are lost proportionally. Serial values over 6–24 hours show the true picture.</li>
+                    <li><i class="fas fa-check-circle"></i> Say upper or lower from the stool, and name the exception that breaks the rule</li>
+                    <li><i class="fas fa-check-circle"></i> Explain why a normal first hemoglobin does not mean the patient is fine</li>
+                    <li><i class="fas fa-check-circle"></i> Put the first hour in order, and defend the first action</li>
+                    <li><i class="fas fa-check-circle"></i> State the transfusion trigger and say why more blood is not better</li>
+                    <li><i class="fas fa-check-circle"></i> Separate a variceal bleed from an ulcer bleed by what you give</li>
                 </ul>
-                <p class="high-yield-cta">Want the full breakdown? Keep reading below.</p>
             </section>
 
-            <!-- Navigation -->
-            <nav class="sticky-nav">
-                <h3>Quick Navigation</h3>
-                <div class="nav-pills">
-                    <a href="#anatomy"><i class="fas fa-lungs"></i> GI Anatomy</a>
-                    <a href="#types"><i class="fas fa-code-branch"></i> Upper vs Lower</a>
-                    <a href="#assessment"><i class="fas fa-stethoscope"></i> Assessment</a>
-                    <a href="#diagnostics"><i class="fas fa-microscope"></i> Diagnostics</a>
-                    <a href="#interventions"><i class="fas fa-user-nurse"></i> Interventions</a>
-                    <a href="#medications"><i class="fas fa-pills"></i> Medications</a>
+        <!-- ══════════ START HERE ══════════ -->
+        <section class="guide-section" id="start-here">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>What actually gets you</h2>
+            </div>
+
+            <p>GI bleeding is a topic where the reassuring findings are the dangerous ones. The blood pressure is normal. The hemoglobin is normal. The patient is talking to you.</p>
+
+            <p>Points get lost here in three predictable ways.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You believed the first hemoglobin</div>
+                <div class="info-box-content">
+                    <p>In acute bleeding the patient loses red cells and plasma together. Same proportion, so the concentration does not change at first.</p>
+                    <p>The number only falls once fluid moves back in. That takes 24 to 72 hours. A normal hemoglobin in an unstable patient rules out nothing.</p>
                 </div>
-            </nav>
+            </div>
 
-            <!-- Section 1: GI Anatomy & Physiology -->
-            <section class="guide-section" id="anatomy">
-                <div class="section-header">
-                    <div class="section-number">1</div>
-                    <div class="section-title-group">
-                        <h2>GI Tract Anatomy & Blood Supply</h2>
-                        <div class="subtitle">Understanding the anatomical division</div>
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You waited for the blood pressure to fall</div>
+                <div class="info-box-content">
+                    <p>Blood pressure is a late sign. It holds until roughly 30 percent of the volume is gone. Compensation is doing its job.</p>
+                    <p>The heart rate moves first. A rising pulse in someone with melena is the finding. Even with a textbook pressure.</p>
                 </div>
+            </div>
 
-                <p>The gastrointestinal tract is divided into upper and lower portions by the <strong>Ligament of Treitz</strong> (suspensory ligament of the duodenum). This anatomical landmark is critical for classifying GI bleeding and guiding diagnostic and treatment approaches.</p>
-
-                <div class="organ-journey">
-                    <h3><i class="fas fa-route"></i> The GI Tract Journey</h3>
-                    <div class="journey-path">
-                        <div class="journey-stop">
-                            <h4><i class="fas fa-teeth"></i> Esophagus</h4>
-                            <p>Upper GI tract begins here. Common bleeding sources: varices (portal hypertension), Mallory-Weiss tears, esophagitis, esophageal cancer.</p>
-                        </div>
-                        <div class="journey-stop">
-                            <h4><i class="fas fa-circle"></i> Stomach</h4>
-                            <p>Most common source of UGIB. Causes: peptic ulcer disease (PUD), gastritis, gastric cancer, Dieulafoy lesions, angiodysplasia.</p>
-                        </div>
-                        <div class="journey-stop">
-                            <h4><i class="fas fa-circle"></i> Duodenum</h4>
-                            <p>Duodenal ulcers are the #1 cause of UGIB. Posterior ulcers can erode into the gastroduodenal artery causing massive hemorrhage.</p>
-                        </div>
-                        <div class="journey-stop" style="background: #fef3c7; border-color: var(--warning-orange);">
-                            <h4><i class="fas fa-exclamation-triangle" style="color: var(--warning-orange);"></i> Ligament of Treitz</h4>
-                            <p><strong>THE DIVIDING LINE!</strong> Above = Upper GI bleed. Below = Lower GI bleed. This landmark determines classification, workup, and management.</p>
-                        </div>
-
-                        <div class="florencebot-tip" id="tip-ligament-treitz">
-                            <div class="florencebot-tip-header">
-                                <div class="florencebot-tip-icon">
-                                    <i class="fas fa-lightbulb"></i>
-                                </div>
-                                <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                            </div>
-                            <div class="florencebot-tip-title">Ligament of Treitz</div>
-                            <div class="florencebot-tip-content">
-                                <strong>This anatomical landmark is THE dividing line for GI bleeding classification!</strong> The Ligament of Treitz (also called the suspensory ligament of the duodenum) marks the junction between the duodenum and jejunum. Bleeding <strong>above</strong> this point is Upper GI Bleeding (UGIB) - typically presenting with melena (black tarry stool) or hematemesis. Bleeding <strong>below</strong> is Lower GI Bleeding (LGIB) - typically presenting with hematochezia (bright red blood). This classification determines whether the patient needs an upper endoscopy (EGD) or colonoscopy.
-                            </div>
-                        </div>
-
-                        <div class="journey-stop lower">
-                            <h4><i class="fas fa-circle"></i> Jejunum & Ileum</h4>
-                            <p>Small bowel bleeding is rare (5% of GI bleeds). Causes: angiodysplasia, Crohn's disease, tumors, Meckel's diverticulum.</p>
-                        </div>
-                        <div class="journey-stop lower">
-                            <h4><i class="fas fa-circle"></i> Colon</h4>
-                            <p>Most common site of LGIB. Causes: diverticulosis (#1), angiodysplasia, colorectal cancer, hemorrhoids, IBD.</p>
-                        </div>
-                        <div class="journey-stop lower">
-                            <h4><i class="fas fa-circle"></i> Rectum & Anus</h4>
-                            <p>Common sources of bright red blood: hemorrhoids (internal/external), anal fissures, rectal cancer, radiation proctitis.</p>
-                        </div>
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You matched the stool colour to a scope</div>
+                <div class="info-box-content">
+                    <p>Black is upper and red is lower, usually. But a brisk upper bleed moves through fast. The blood never gets digested, so it arrives bright red.</p>
+                    <p>So the unstable patient with bright red blood is probably an upper bleed. Stool colour is a clue. Hemodynamics overrule it.</p>
                 </div>
+            </div>
 
-                <div class="info-box clinical">
-                    <div class="info-box-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Clinical Pearl: Blood Supply</h5>
-                        <p>The GI tract receives approximately <strong>25% of cardiac output</strong> at rest, increasing to 35% after meals. The celiac trunk supplies the upper GI tract (foregut), the superior mesenteric artery (SMA) supplies the midgut (small bowel to mid-transverse colon), and the inferior mesenteric artery (IMA) supplies the hindgut (distal colon to rectum).</p>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Assess the circulation, not the lab value. Heart rate before blood pressure. And when the stool colour and the vital signs disagree, believe the vital signs.
+            </div>
+        </section>
+
+        <!-- ══════════ THE FOUR THINGS ══════════ -->
+        <section class="guide-section" id="high-yield-summary">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The four things</h2>
+            </div>
+
+            <p>For every bleed below, you should be able to say four things with the book closed: where it comes from, the clue you would actually see in a patient, the priority nursing action, and the first-line treatment with its teaching point.</p>
+
+            <p>If you cannot say all four out loud, you do not know it yet. Familiarity is not recall.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Bleed</th>
+                            <th>Where it comes from</th>
+                            <th>Clue in the scenario</th>
+                            <th>Priority action</th>
+                            <th>First-line treatment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Peptic ulcer</strong></td>
+                            <td>Stomach or duodenum. The commonest upper bleed.</td>
+                            <td>Coffee-ground emesis or melena. NSAID use in the history.</td>
+                            <td>Two large-bore IVs and a type and crossmatch.</td>
+                            <td>High-dose IV pantoprazole. Raising the pH lets the clot hold.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Esophageal varices</strong></td>
+                            <td>Collateral veins from portal hypertension, on top of cirrhosis.</td>
+                            <td>Large volume hematemesis in a patient with liver disease.</td>
+                            <td>Airway first, because they can drown in it.</td>
+                            <td>Octreotide, prophylactic ceftriaxone, then urgent banding.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Diverticulosis</strong></td>
+                            <td>Colon. The commonest lower bleed.</td>
+                            <td>Painless bright red blood per rectum, often in an older adult.</td>
+                            <td>Assess hemodynamics before assuming it is minor.</td>
+                            <td>Resuscitate, then colonoscopy. Most stop on their own.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Mallory-Weiss tear</strong></td>
+                            <td>The gastroesophageal junction, torn by forceful vomiting.</td>
+                            <td>Retching first, then blood. The order matters.</td>
+                            <td>Assess the volume. Most are self-limiting.</td>
+                            <td>Supportive care. Endoscopic therapy if it will not stop.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these four rows on one index card, by hand. Ulcer gets a PPI. Varices get octreotide. Diverticulosis gets time. Vomiting before blood means a tear. That card is most of the exam.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ ANATOMY ══════════ -->
+        <section class="guide-section" id="anatomy">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>One ligament divides everything</h2>
+            </div>
+
+            <p>The GI tract splits at the ligament of Treitz, the suspensory ligament of the duodenum. It marks the junction between duodenum and jejunum.</p>
+
+            <p>Above it is an upper bleed, and the patient gets an EGD. Below it is a lower bleed, and the patient gets a colonoscopy. That is why this landmark matters.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Where</th><th>What bleeds there</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Esophagus</strong></td><td>Varices from portal hypertension, Mallory-Weiss tears, esophagitis, cancer</td></tr>
+                        <tr><td><strong>Stomach</strong></td><td>Peptic ulcer disease, gastritis, gastric cancer, Dieulafoy lesions, angiodysplasia</td></tr>
+                        <tr><td><strong>Duodenum</strong></td><td>Duodenal ulcers, the single commonest upper bleed. A posterior ulcer can erode into the gastroduodenal artery.</td></tr>
+                        <tr><td><strong>Ligament of Treitz</strong></td><td>The dividing line itself</td></tr>
+                        <tr><td><strong>Jejunum and ileum</strong></td><td>Rare, about 5 percent. Angiodysplasia, Crohn's, tumours, Meckel's diverticulum</td></tr>
+                        <tr><td><strong>Colon</strong></td><td>Diverticulosis first, then angiodysplasia, cancer, hemorrhoids, inflammatory bowel disease</td></tr>
+                        <tr><td><strong>Rectum and anus</strong></td><td>Hemorrhoids, anal fissures, rectal cancer, radiation proctitis</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="florencebot-tip" id="tip-ligament-treitz">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">The Line That Picks the Scope</div>
+                <div class="florencebot-tip-content">Above the ligament of Treitz means an EGD. Below it means a colonoscopy. Everything else in this guide, the stool colour, the workup, the drugs, follows from which side of that line the blood is coming from.</div>
+            </div>
 
-                <h3>Key Anatomical Considerations</h3>
+            <h3>Why the blood supply matters</h3>
 
-                <ul>
-                    <li><strong>Portal Hypertension:</strong> Causes esophageal/gastric varices via collateral circulation when portal pressure exceeds 12 mmHg</li>
-                    <li><strong>Arterial Supply:</strong> GI arteries are end arteries with limited collateral flow—occlusion causes ischemia</li>
-                    <li><strong>Watershed Areas:</strong> Splenic flexure and rectosigmoid junction are vulnerable to ischemia</li>
-                    <li><strong>Diverticula:</strong> Form at weak points where blood vessels penetrate the muscularis, explaining why diverticular bleeding is arterial</li>
-                </ul>
+            <p>The GI tract takes about 25 percent of cardiac output at rest. After a meal it is nearer 35. That is a lot of blood passing a surface that can ulcerate.</p>
 
-                <div class="bottom-line">
-                    <p>Bottom Line: The ligament of Treitz is the dividing line — above it = upper GI, below it = lower GI. Know the GI anatomy because the location determines the presentation, workup, and treatment approach.</p>
-                </div>
-            </section>
+            <ul>
+                <li><strong>Portal hypertension.</strong> Above a portal pressure of 12 mmHg, collateral vessels open and become esophageal and gastric varices.</li>
+                <li><strong>End arteries.</strong> GI arteries have limited collateral flow, so an occlusion causes ischemia rather than being compensated for.</li>
+                <li><strong>Watershed areas.</strong> The splenic flexure and the rectosigmoid junction sit between two supplies, so they are the first to become ischemic.</li>
+                <li><strong>Diverticula.</strong> They form where vessels penetrate the muscularis, which is why diverticular bleeding is arterial and can be brisk.</li>
+            </ul>
 
-            <!-- Section 2: Upper vs Lower GI Bleeding -->
-            <section class="guide-section" id="types">
-                <div class="section-header">
-                    <div class="section-number">2</div>
-                    <div class="section-title-group">
-                        <h2>Upper vs Lower GI Bleeding</h2>
-                        <div class="subtitle">Key differences in presentation and causes</div>
-                    </div>
-                </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> The ligament of Treitz divides upper from lower, and that division picks the scope. Diverticular bleeding is arterial because diverticula form on vessels.
+            </div>
+        </section>
 
-                <p>Distinguishing between upper and lower GI bleeding is essential because <strong>diagnostic workup and management differ significantly</strong>. The stool characteristics, clinical presentation, and common causes help guide this differentiation.</p>
+        <!-- ══════════ TYPES ══════════ -->
+        <section class="guide-section" id="types">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>Upper or lower</h2>
+            </div>
 
-                <div class="region-comparison">
-                    <div class="region-section upper">
-                        <div class="region-header">
-                            <i class="fas fa-arrow-up"></i>
-                            <h4>Upper GI Bleeding</h4>
-                            <div class="location">Above the Ligament of Treitz</div>
-                        </div>
-                        <div class="region-body">
-                            <h5>Common Causes</h5>
-                            <ul>
-                                <li><i class="fas fa-circle"></i> <strong>Peptic Ulcer Disease (40-50%)</strong> - #1 cause</li>
-                                <li><i class="fas fa-circle"></i> <strong>Esophageal/Gastric Varices</strong> - portal HTN</li>
-                                <li><i class="fas fa-circle"></i> <strong>Erosive Gastritis</strong> - NSAIDs, alcohol</li>
-                                <li><i class="fas fa-circle"></i> <strong>Mallory-Weiss Tear</strong> - forceful vomiting</li>
-                                <li><i class="fas fa-circle"></i> <strong>Malignancy</strong> - gastric/esophageal cancer</li>
-                            </ul>
+            <p class="subtitle">Discrimination axis: how long the blood spent being digested.</p>
 
-                            <h5>Stool Characteristics</h5>
-                            <ul>
-                                <li><i class="fas fa-tint"></i> <strong>Melena</strong> - black, tarry, foul-smelling stool</li>
-                                <li><i class="fas fa-tint"></i> Requires >50-100 mL blood in GI tract</li>
-                                <li><i class="fas fa-tint"></i> Blood oxidized by gastric acid and bacteria</li>
-                            </ul>
+            <p>That single idea explains every stool finding in this section. Blood that sits in the gut turns black. Blood that races through stays red.</p>
 
-                            <h5>Other Signs</h5>
-                            <ul>
-                                <li><i class="fas fa-arrow-right"></i> Hematemesis (vomiting blood - bright red or coffee-ground)</li>
-                                <li><i class="fas fa-arrow-right"></i> Coffee-ground emesis (partially digested blood)</li>
-                                <li><i class="fas fa-arrow-right"></i> Positive NG aspirate for blood</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="region-section lower">
-                        <div class="region-header">
-                            <i class="fas fa-arrow-down"></i>
-                            <h4>Lower GI Bleeding</h4>
-                            <div class="location">Below the Ligament of Treitz</div>
-                        </div>
-                        <div class="region-body">
-                            <h5>Common Causes</h5>
-                            <ul>
-                                <li><i class="fas fa-circle"></i> <strong>Diverticulosis (30-40%)</strong> - #1 cause</li>
-                                <li><i class="fas fa-circle"></i> <strong>Angiodysplasia</strong> - arteriovenous malformations</li>
-                                <li><i class="fas fa-circle"></i> <strong>Colorectal Cancer/Polyps</strong> - occult or overt</li>
-                                <li><i class="fas fa-circle"></i> <strong>Hemorrhoids</strong> - most common benign cause</li>
-                                <li><i class="fas fa-circle"></i> <strong>IBD</strong> - Crohn's, ulcerative colitis</li>
-                            </ul>
-
-                            <h5>Stool Characteristics</h5>
-                            <ul>
-                                <li><i class="fas fa-tint"></i> <strong>Hematochezia</strong> - bright red blood per rectum</li>
-                                <li><i class="fas fa-tint"></i> Blood mixed with or coating stool</li>
-                                <li><i class="fas fa-tint"></i> Maroon stool suggests proximal colonic source</li>
-                            </ul>
-
-                            <h5>Other Signs</h5>
-                            <ul>
-                                <li><i class="fas fa-arrow-right"></i> Usually painless (diverticulosis)</li>
-                                <li><i class="fas fa-arrow-right"></i> Abdominal pain with IBD, ischemia</li>
-                                <li><i class="fas fa-arrow-right"></i> Change in bowel habits may suggest malignancy</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box warning">
-                    <div class="info-box-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Critical: Brisk UGIB Can Cause Hematochezia!</h5>
-                        <p>A <strong>massive upper GI bleed</strong> can present with bright red blood per rectum (hematochezia) because blood moves quickly through the GI tract without time for oxidation. If a patient has hematochezia with hemodynamic instability, consider UGIB and place an NG tube or perform upper endoscopy first!</p>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-massive-ugib">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Massive UGIB Exception</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Don't assume bright red blood always means lower GI bleeding!</strong> When there's a <strong>brisk upper GI bleed</strong>, blood moves so quickly through the intestines that it doesn't have time to be digested and turn black. The result? Hematochezia (bright red blood per rectum) - which you'd normally associate with LGIB. The key clue: if the patient is <strong>hemodynamically unstable</strong> (hypotensive, tachycardic) with BRBPR, think UGIB first! These patients need an upper endoscopy before colonoscopy. The instability suggests massive bleeding, which is more common from upper sources.
-                    </div>
-                </div>
-
-                <h3>Melena vs Hematochezia: Key Differences</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Characteristic</th>
-                                <th>Melena</th>
-                                <th>Hematochezia</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Appearance</td>
-                                <td>Black, tarry, sticky</td>
-                                <td>Bright red, maroon</td>
-                            </tr>
-                            <tr>
-                                <td>Odor</td>
-                                <td>Distinctively foul (digested blood)</td>
-                                <td>Typical stool odor</td>
-                            </tr>
-                            <tr>
-                                <td>Typical Source</td>
-                                <td>Upper GI (proximal to jejunum)</td>
-                                <td>Lower GI (colon, rectum)</td>
-                            </tr>
-                            <tr>
-                                <td>Blood Volume Required</td>
-                                <td>50-100 mL minimum</td>
-                                <td>Variable</td>
-                            </tr>
-                            <tr>
-                                <td>Transit Time</td>
-                                <td>8+ hours in GI tract</td>
-                                <td>Rapid transit or distal source</td>
-                            </tr>
-                            <tr>
-                                <td>Exception</td>
-                                <td>Right-sided colonic bleeding (slow transit)</td>
-                                <td>Massive UGIB (rapid transit)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box nclex">
-                    <div class="info-box-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>NCLEX Alert: Stool Color Clues</h5>
-                        <p><strong>Melena = Upper GI</strong> (usually). <strong>Hematochezia = Lower GI</strong> (usually). But remember: massive UGIB can cause hematochezia, and a slow-bleeding right colon lesion can cause melena. Always assess hemodynamic status and consider the clinical picture!</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">
-                    <p>Bottom Line: Upper GI bleeds (PUD, varices, Mallory-Weiss) are more common and more dangerous. Lower GI bleeds (diverticulosis, cancer) are usually less acute but still require evaluation. Varices = highest mortality.</p>
-                </div>
-            </section>
-
-            <!-- Section 3: Assessment & Clinical Signs -->
-            <section class="guide-section" id="assessment">
-                <div class="section-header">
-                    <div class="section-number">3</div>
-                    <div class="section-title-group">
-                        <h2>Assessment & Hemodynamic Status</h2>
-                        <div class="subtitle">Recognizing severity and instability</div>
-                    </div>
-                </div>
-
-                <p>The initial assessment of a GI bleed patient focuses on <strong>hemodynamic stability</strong>. The severity of bleeding determines the urgency of intervention, resuscitation needs, and timing of endoscopy.</p>
-
-                <div class="symptom-map">
-                    <h3>Signs & Symptoms of GI Bleeding</h3>
-                    <div class="symptom-grid">
-                        <div class="symptom-card">
-                            <div class="symptom-icon"><i class="fas fa-tint"></i></div>
-                            <h5>Hematemesis</h5>
-                            <p>Vomiting blood - bright red (active) or coffee-ground (digested). Indicates UGIB.</p>
-                        </div>
-                        <div class="symptom-card">
-                            <div class="symptom-icon"><i class="fas fa-poop"></i></div>
-                            <h5>Melena/Hematochezia</h5>
-                            <p>Black tarry stool or bright red blood per rectum. Key to localizing source.</p>
-                        </div>
-                        <div class="symptom-card">
-                            <div class="symptom-icon"><i class="fas fa-heartbeat"></i></div>
-                            <h5>Tachycardia</h5>
-                            <p>HR > 100 bpm. Early sign of hypovolemia. May be masked by beta-blockers.</p>
-                        </div>
-                        <div class="symptom-card">
-                            <div class="symptom-icon"><i class="fas fa-compress-arrows-alt"></i></div>
-                            <h5>Hypotension</h5>
-                            <p>SBP < 90 mmHg or drop > 20 mmHg. Indicates significant blood loss (>30%).</p>
-                        </div>
-                        <div class="symptom-card">
-                            <div class="symptom-icon"><i class="fas fa-dizzy"></i></div>
-                            <h5>Orthostatic Changes</h5>
-                            <p>Dizziness on standing. HR increase >20 or SBP drop >20 = positive.</p>
-                        </div>
-                        <div class="symptom-card">
-                            <div class="symptom-icon"><i class="fas fa-user"></i></div>
-                            <h5>Pallor & Diaphoresis</h5>
-                            <p>Pale skin, cool extremities, sweating. Signs of hypovolemic shock.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Hemodynamic Stability Assessment</h3>
-
-                <div class="stability-assessment">
-                    <div class="stability-box stable">
-                        <div class="stability-header">
-                            <i class="fas fa-check-circle"></i>
-                            <h4>Hemodynamically Stable</h4>
-                        </div>
-                        <div class="stability-body">
-                            <ul>
-                                <li><i class="fas fa-check"></i> Normal vital signs (HR < 100, SBP > 100)</li>
-                                <li><i class="fas fa-check"></i> No orthostatic hypotension</li>
-                                <li><i class="fas fa-check"></i> Alert and oriented</li>
-                                <li><i class="fas fa-check"></i> Adequate urine output (> 0.5 mL/kg/hr)</li>
-                                <li><i class="fas fa-check"></i> Warm, well-perfused extremities</li>
-                                <li><i class="fas fa-check"></i> <strong>Management:</strong> Admit to floor, endoscopy within 24 hrs</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="stability-box unstable">
-                        <div class="stability-header">
-                            <i class="fas fa-exclamation-circle"></i>
-                            <h4>Hemodynamically Unstable</h4>
-                        </div>
-                        <div class="stability-body">
-                            <ul>
-                                <li><i class="fas fa-times"></i> Tachycardia (HR > 100) or hypotension (SBP < 90)</li>
-                                <li><i class="fas fa-times"></i> Positive orthostatic changes</li>
-                                <li><i class="fas fa-times"></i> Altered mental status, confusion</li>
-                                <li><i class="fas fa-times"></i> Oliguria (< 0.5 mL/kg/hr)</li>
-                                <li><i class="fas fa-times"></i> Cool, clammy, mottled extremities</li>
-                                <li><i class="fas fa-times"></i> <strong>Management:</strong> ICU, emergent endoscopy, massive transfusion protocol</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Estimating Blood Loss</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Class</th>
-                                <th>Blood Loss</th>
-                                <th>Heart Rate</th>
-                                <th>Blood Pressure</th>
-                                <th>Mental Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Class I</td>
-                                <td>< 15% (< 750 mL)</td>
-                                <td>< 100</td>
-                                <td>Normal</td>
-                                <td>Slightly anxious</td>
-                            </tr>
-                            <tr>
-                                <td>Class II</td>
-                                <td>15-30% (750-1500 mL)</td>
-                                <td>100-120</td>
-                                <td>Normal</td>
-                                <td>Mildly anxious</td>
-                            </tr>
-                            <tr>
-                                <td>Class III</td>
-                                <td>30-40% (1500-2000 mL)</td>
-                                <td>120-140</td>
-                                <td>Decreased</td>
-                                <td>Anxious, confused</td>
-                            </tr>
-                            <tr>
-                                <td>Class IV</td>
-                                <td>> 40% (> 2000 mL)</td>
-                                <td>> 140</td>
-                                <td>Severely decreased</td>
-                                <td>Confused, lethargic</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box clinical">
-                    <div class="info-box-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Clinical Pearl: Initial Hemoglobin Can Be Misleading!</h5>
-                        <p>In acute GI bleeding, the <strong>initial hemoglobin may be normal</strong> because both red cells and plasma are lost proportionally. Hemodilution from fluid resuscitation and equilibration takes 24-72 hours. A "normal" initial Hgb in an unstable patient does NOT rule out significant bleeding!</p>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-hgb-misleading">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Initial Hgb Misleading</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Don't be fooled by a "normal" hemoglobin in acute bleeding!</strong> When someone loses blood, they lose both red cells AND plasma in equal proportions - so the concentration (hemoglobin) initially stays the same. It's only after <strong>hemodilution</strong> occurs (from IV fluid resuscitation and the body pulling fluid from tissues) that the hemoglobin drops. This equilibration takes <strong>24-72 hours</strong>. A patient can be bleeding significantly with a normal initial Hgb. Always assess hemodynamic status (heart rate, blood pressure, mental status) rather than relying on the first lab value.
-                    </div>
-                </div>
-
-                <h3>Risk Stratification: Glasgow-Blatchford Score</h3>
-
-                <p>The Glasgow-Blatchford Score predicts the need for intervention (transfusion, endoscopy, surgery) in UGIB. A score of 0 identifies very low-risk patients who may be candidates for outpatient management.</p>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Variable</th>
-                                <th>Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>BUN 18.2-22.4 mg/dL</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>BUN 22.4-28 mg/dL</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>BUN 28-70 mg/dL</td>
-                                <td>4</td>
-                            </tr>
-                            <tr>
-                                <td>BUN > 70 mg/dL</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>Hemoglobin 12-13 g/dL (men) or 10-12 (women)</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Hemoglobin 10-12 g/dL (men)</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>Hemoglobin < 10 g/dL</td>
-                                <td>6</td>
-                            </tr>
-                            <tr>
-                                <td>SBP 100-109 mmHg</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>SBP 90-99 mmHg</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>SBP < 90 mmHg</td>
-                                <td>3</td>
-                            </tr>
-                            <tr>
-                                <td>Pulse > 100 bpm</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Melena present</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>Syncope</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Hepatic disease</td>
-                                <td>2</td>
-                            </tr>
-                            <tr>
-                                <td>Heart failure</td>
-                                <td>2</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="bottom-line">
-                    <p>Bottom Line: Hemodynamic status FIRST — tachycardia before hypotension. Melena = upper, hematochezia = usually lower. Check orthostatic vitals. Hgb/Hct lag behind — don't be reassured by normal values in acute bleeding.</p>
-                </div>
-            </section>
-
-            <!-- Section 4: Diagnostic Procedures -->
-            <section class="guide-section" id="diagnostics">
-                <div class="section-header">
-                    <div class="section-number">4</div>
-                    <div class="section-title-group">
-                        <h2>Diagnostic Procedures</h2>
-                        <div class="subtitle">Endoscopy and imaging modalities</div>
-                    </div>
-                </div>
-
-                <p>The diagnostic approach to GI bleeding aims to <strong>identify the bleeding source</strong> and provide therapeutic intervention when possible. Endoscopy is the cornerstone of diagnosis and treatment for both upper and lower GI bleeding.</p>
-
-                <div class="procedure-visual">
-                    <h3><i class="fas fa-clock"></i> Endoscopy Timing Guidelines</h3>
-                    <div class="procedure-timeline">
-                        <div class="procedure-step">
-                            <div class="procedure-marker"><i class="fas fa-check"></i></div>
-                            <div class="procedure-label">Stable, Low Risk</div>
-                            <div class="procedure-desc">Within 24 hours</div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="procedure-marker"><i class="fas fa-clock"></i></div>
-                            <div class="procedure-label">High Risk Features</div>
-                            <div class="procedure-desc">Within 12 hours</div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="procedure-marker"><i class="fas fa-exclamation"></i></div>
-                            <div class="procedure-label">Hemodynamically Unstable</div>
-                            <div class="procedure-desc">Emergent (after resuscitation)</div>
-                        </div>
-                        <div class="procedure-step">
-                            <div class="procedure-marker"><i class="fas fa-tint"></i></div>
-                            <div class="procedure-label">Suspected Variceal Bleed</div>
-                            <div class="procedure-desc">Within 12 hours</div>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Upper GI Endoscopy (EGD)</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Aspect</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Indication</td>
-                                <td>Suspected UGIB (hematemesis, coffee-ground emesis, melena, positive NG aspirate)</td>
-                            </tr>
-                            <tr>
-                                <td>Sensitivity</td>
-                                <td>92-98% for identifying bleeding source</td>
-                            </tr>
-                            <tr>
-                                <td>Therapeutic Options</td>
-                                <td>Injection therapy, thermal coagulation, hemoclips, band ligation (varices)</td>
-                            </tr>
-                            <tr>
-                                <td>Pre-Procedure</td>
-                                <td>NPO, IV access, type & screen, resuscitation, consider erythromycin (gastric emptying)</td>
-                            </tr>
-                            <tr>
-                                <td>Post-Procedure</td>
-                                <td>Monitor for rebleeding (H/H q6h), aspiration, perforation</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Colonoscopy</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Aspect</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Indication</td>
-                                <td>Suspected LGIB (hematochezia) after stabilization</td>
-                            </tr>
-                            <tr>
-                                <td>Timing</td>
-                                <td>Within 24 hours of presentation (after bowel prep if possible)</td>
-                            </tr>
-                            <tr>
-                                <td>Challenge</td>
-                                <td>Active bleeding obscures visualization; may need urgent/emergent scope without full prep</td>
-                            </tr>
-                            <tr>
-                                <td>Therapeutic Options</td>
-                                <td>Clips, thermal coagulation, injection, APC (argon plasma coagulation)</td>
-                            </tr>
-                            <tr>
-                                <td>Diagnostic Yield</td>
-                                <td>74-100% with adequate prep; lower with active bleeding</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Other Diagnostic Modalities</h3>
-
-                <div class="intervention-cards">
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-x-ray"></i></div>
-                            <h5>CT Angiography</h5>
-                        </div>
-                        <p>Non-invasive; detects active bleeding > 0.3-0.5 mL/min. Useful when endoscopy is inconclusive or patient is too unstable. Can guide angiographic intervention.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-radiation"></i></div>
-                            <h5>Tagged RBC Scan</h5>
-                        </div>
-                        <p>Nuclear medicine study. Detects bleeding rates as low as 0.1 mL/min. Useful for intermittent bleeding. Takes time; not for emergencies.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-syringe"></i></div>
-                            <h5>Angiography</h5>
-                        </div>
-                        <p>Invasive; requires active bleeding > 0.5-1 mL/min. Allows therapeutic embolization. Reserve for massive bleeding or failed endoscopy.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-capsules"></i></div>
-                            <h5>Capsule Endoscopy</h5>
-                        </div>
-                        <p>Swallowed camera for small bowel evaluation. Used for obscure GI bleeding when EGD and colonoscopy are negative. Not for acute bleeding.</p>
-                    </div>
-                </div>
-
-                <div class="info-box nclex">
-                    <div class="info-box-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>NCLEX Alert: NG Tube in GI Bleeding</h5>
-                        <p>An NG tube aspirate can help differentiate UGIB from LGIB:</p>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Upper: above the ligament</div>
+                    <div class="comparison-card-body">
+                        <p><strong>Commonest causes:</strong></p>
                         <ul>
-                            <li><strong>Bloody or coffee-ground aspirate:</strong> Confirms UGIB</li>
-                            <li><strong>Clear aspirate:</strong> Does NOT rule out UGIB (bleeding may be beyond pylorus or intermittent)</li>
-                            <li><strong>Bilious, non-bloody aspirate:</strong> Makes UGIB unlikely</li>
+                            <li>Peptic ulcer disease, 40 to 50 percent. The leading cause.</li>
+                            <li>Esophageal and gastric varices, from portal hypertension.</li>
+                            <li>Erosive gastritis, from NSAIDs or alcohol.</li>
+                            <li>Mallory-Weiss tear, from forceful vomiting.</li>
+                            <li>Malignancy of the stomach or esophagus.</li>
                         </ul>
-                        <p>NG tubes are NOT routinely placed in all GI bleeds—discuss with the team.</p>
+                        <p><strong>What you see:</strong> melena, which is black tarry foul-smelling stool. Hematemesis, bright red or coffee-ground. A positive NG aspirate.</p>
+                        <p>Melena needs at least 50 to 100 mL of blood, and 8 hours in the gut.</p>
                     </div>
                 </div>
-
-                <div class="bottom-line">
-                    <p>Bottom Line: EGD is the gold standard for upper GI bleeds (both diagnostic and therapeutic). Colonoscopy for lower GI. NGT lavage localizes the source. Type and crossmatch, CBC, coagulation studies, BMP, lactate for all GI bleeds.</p>
-                </div>
-            </section>
-
-            <!-- Section 5: Nursing Interventions -->
-            <section class="guide-section" id="interventions">
-                <div class="section-header">
-                    <div class="section-number">5</div>
-                    <div class="section-title-group">
-                        <h2>Priority Nursing Interventions</h2>
-                        <div class="subtitle">Evidence-based management</div>
-                    </div>
-                </div>
-
-                <p>Nursing care for GI bleeding focuses on <strong>rapid assessment, hemodynamic stabilization, close monitoring, and preparation for diagnostic/therapeutic procedures</strong>. The first hours are critical.</p>
-
-                <h3>Immediate Priorities: ABCs</h3>
-
-                <div class="intervention-cards">
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-wind"></i></div>
-                            <h5>Airway Protection</h5>
-                        </div>
-                        <p>Assess LOC and gag reflex. Massive hematemesis with altered LOC = intubate for airway protection. Position patient on side if vomiting blood.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-heartbeat"></i></div>
-                            <h5>IV Access & Resuscitation</h5>
-                        </div>
-                        <p><strong>Two large-bore IVs (18G or larger).</strong> Start crystalloid resuscitation (NS or LR). Goal: restore perfusion, SBP > 90, HR < 100.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-vial"></i></div>
-                            <h5>Labs & Blood Bank</h5>
-                        </div>
-                        <p>Type & crossmatch (2-6 units), CBC, BMP, coags (PT/INR, PTT), LFTs. Send labs STAT. Have blood available before procedure.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-chart-line"></i></div>
-                            <h5>Continuous Monitoring</h5>
-                        </div>
-                        <p>Cardiac monitor, pulse ox, BP q15min if unstable. Foley catheter for strict I&O. Goal UOP > 0.5 mL/kg/hr.</p>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-goal-uop">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Goal UOP</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Urine output is your best real-time indicator of organ perfusion!</strong> In a bleeding patient, aim for urine output greater than <strong>0.5 mL/kg/hr</strong> (for a 70kg patient, that's about 35 mL/hour or more). Why is this important? The kidneys are very sensitive to blood flow - when cardiac output drops from blood loss, the kidneys are among the first organs to show decreased perfusion. If urine output drops below this threshold (<strong>oliguria</strong>), it signals inadequate resuscitation. Place a Foley catheter for accurate hourly monitoring and document strictly. Trending urine output helps guide fluid and blood product administration.
-                    </div>
-                </div>
-
-                <h3>Blood Product Administration</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Product</th>
-                                <th>Trigger/Indication</th>
-                                <th>Goal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>PRBCs</strong></td>
-                                <td>Hgb < 7 g/dL (or < 8-9 if CAD, symptomatic)</td>
-                                <td>Hgb 7-9 g/dL (restrictive strategy preferred)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Fresh Frozen Plasma</strong></td>
-                                <td>INR > 1.5-2.0, active bleeding</td>
-                                <td>INR < 1.5</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Platelets</strong></td>
-                                <td>Plt < 50,000 with active bleeding</td>
-                                <td>Plt > 50,000</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Massive Transfusion Protocol</strong></td>
-                                <td>Expected > 10 units PRBCs in 24h</td>
-                                <td>1:1:1 ratio (PRBC:FFP:Plt)</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="info-box tip">
-                    <div class="info-box-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Clinical Pearl: Restrictive Transfusion Strategy</h5>
-                        <p>Studies show that a <strong>restrictive transfusion strategy (Hgb trigger 7 g/dL)</strong> is associated with improved outcomes in GI bleeding compared to liberal transfusion. Over-transfusion in variceal bleeding can increase portal pressure and worsen bleeding.</p>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-restrictive-transfusion">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Restrictive Transfusion</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Less is more when it comes to blood transfusions in GI bleeding!</strong> Research shows that a <strong>restrictive transfusion strategy</strong> (transfusing when hemoglobin drops below 7 g/dL) actually leads to better patient outcomes than giving blood more liberally. Why? Over-transfusion can increase blood volume and, in patients with variceal bleeding from liver cirrhosis, this raises <strong>portal pressure</strong> and can make the bleeding worse. Exception: patients with coronary artery disease or symptomatic anemia may need a higher threshold (8-9 g/dL). Always follow your institution's protocol.
-                    </div>
-                </div>
-
-                <h3>Monitoring & Documentation</h3>
-
-                <ul>
-                    <li><strong>Vital signs:</strong> q15min if unstable, q1h when stable. Note trends.</li>
-                    <li><strong>Serial H/H:</strong> q6h for active bleeding; remember initial values may be misleading</li>
-                    <li><strong>I&O:</strong> Strict monitoring. Track all blood product administration.</li>
-                    <li><strong>Stool output:</strong> Document color, consistency, frequency, estimated volume</li>
-                    <li><strong>Neuro checks:</strong> Monitor for changes indicating worsening perfusion</li>
-                    <li><strong>Signs of rebleeding:</strong> Fresh hematemesis, increasing melena/hematochezia, dropping H/H, hemodynamic changes</li>
-                </ul>
-
-                <div class="info-box warning">
-                    <div class="info-box-icon">
-                        <i class="fas fa-exclamation-triangle"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Signs of Rebleeding - Notify MD Immediately!</h5>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Lower: below the ligament</div>
+                    <div class="comparison-card-body">
+                        <p><strong>Commonest causes:</strong></p>
                         <ul>
-                            <li>Fresh hematemesis or increased melena/hematochezia</li>
-                            <li>Drop in Hgb > 2 g/dL despite transfusion</li>
-                            <li>Hemodynamic instability (tachycardia, hypotension)</li>
-                            <li>Increased transfusion requirements</li>
-                            <li>Change in mental status</li>
+                            <li>Diverticulosis, 30 to 40 percent. The leading cause.</li>
+                            <li>Angiodysplasia, meaning arteriovenous malformations.</li>
+                            <li>Colorectal cancer and polyps.</li>
+                            <li>Hemorrhoids, the commonest benign cause.</li>
+                            <li>Inflammatory bowel disease.</li>
                         </ul>
+                        <p><strong>What you see:</strong> hematochezia, bright red blood per rectum, mixed through or coating the stool. Maroon stool suggests a more proximal colonic source.</p>
+                        <p>Usually painless in diverticulosis. Pain suggests inflammatory bowel disease or ischemia.</p>
                     </div>
                 </div>
+            </div>
 
-                <h3>Special Considerations</h3>
+            <h3>Melena or hematochezia</h3>
 
-                <div class="intervention-cards">
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-liver"></i></div>
-                            <h5>Variceal Bleeding</h5>
-                        </div>
-                        <p>Start octreotide infusion. Prophylactic antibiotics (ceftriaxone). Prepare for emergent EGD with band ligation. Have balloon tamponade ready.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-pills"></i></div>
-                            <h5>Anticoagulation Reversal</h5>
-                        </div>
-                        <p>Warfarin: Vitamin K + FFP or 4-factor PCC. DOACs: consider reversal agents (idarucizumab for dabigatran, andexanet for Xa inhibitors).</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-utensils"></i></div>
-                            <h5>NPO Status</h5>
-                        </div>
-                        <p>Keep patient NPO in preparation for endoscopy. Clear liquids may resume after successful procedure if no rebleeding.</p>
-                    </div>
-                    <div class="intervention-card">
-                        <div class="intervention-card-header">
-                            <div class="intervention-icon"><i class="fas fa-head-side-virus"></i></div>
-                            <h5>Hepatic Encephalopathy Prevention</h5>
-                        </div>
-                        <p>In cirrhotics: blood in GI tract = protein load = ammonia. Start lactulose. Monitor mental status closely.</p>
-                    </div>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Feature</th><th>Melena</th><th>Hematochezia</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Appearance</td><td>Black, tarry, sticky</td><td>Bright red or maroon</td></tr>
+                        <tr><td>Smell</td><td>Distinctively foul, because the blood is digested</td><td>Ordinary stool smell</td></tr>
+                        <tr><td>Usual source</td><td>Upper GI, proximal to the jejunum</td><td>Lower GI, colon or rectum</td></tr>
+                        <tr><td>Volume needed</td><td>50 to 100 mL minimum</td><td>Variable</td></tr>
+                        <tr><td>Time in the gut</td><td>8 hours or more</td><td>Rapid transit, or a distal source</td></tr>
+                        <tr><td>The exception</td><td>A slow right-sided colonic bleed</td><td>A massive upper GI bleed</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> The exception that matters</div>
+                <div class="info-box-content">
+                    <p>A brisk upper GI bleed can present as bright red blood per rectum. The blood moves through too fast to be oxidised, so it never turns black.</p>
+                    <p>The clue is the patient, not the stool. Bright red blood <strong>plus hemodynamic instability</strong> points at an upper source. Instability means a large volume bleed, and large bleeds are usually upper.</p>
+                    <p>Those patients get an NG tube or an upper endoscopy first, ahead of the colonoscopy.</p>
                 </div>
+            </div>
 
-                <div class="bottom-line">
-                    <p>Bottom Line: ABCs first, then 2 large-bore IVs, aggressive fluid resuscitation, blood transfusion (crossmatched preferred, O-neg if emergent), NPO status, and prepare for endoscopy. For varices: octreotide + emergency EGD with banding.</p>
+            <div class="florencebot-tip" id="tip-massive-ugib">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
-            </section>
+                <div class="florencebot-tip-title">Unstable and Red Means Look Up</div>
+                <div class="florencebot-tip-content">Bright red blood per rectum in a stable patient is usually the colon. Bright red blood in a hypotensive tachycardic patient is usually a fast upper bleed. Scope the top first in that patient.</div>
+            </div>
 
-            <!-- Section 6: Pharmacology -->
-            <section class="guide-section" id="medications">
-                <div class="section-header">
-                    <div class="section-number">6</div>
-                    <div class="section-title-group">
-                        <h2>Pharmacological Management</h2>
-                        <div class="subtitle">Key medications in GI bleeding</div>
-                    </div>
-                </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Black means it sat and got digested, so upper. Red means it moved fast or started low. Instability breaks the rule and sends you upward.
+            </div>
+        </section>
 
-                <h3>Proton Pump Inhibitors (PPIs)</h3>
+        <!-- ══════════ ASSESSMENT ══════════ -->
+        <section class="guide-section" id="assessment">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>How sick are they</h2>
+            </div>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Drug</th>
-                                <th>Dose</th>
-                                <th>Key Points</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Pantoprazole (Protonix)</strong></td>
-                                <td>80 mg IV bolus, then 8 mg/hr infusion x 72h</td>
-                                <td>High-dose for high-risk ulcer stigmata; promotes clot stability</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Esomeprazole (Nexium)</strong></td>
-                                <td>80 mg IV bolus, then 8 mg/hr infusion</td>
-                                <td>Alternative to pantoprazole; same high-dose regimen</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Oral PPI</strong></td>
-                                <td>40-80 mg BID after endoscopy</td>
-                                <td>Transition to oral after initial IV therapy; continue 6-8 weeks</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+            <p>The whole first assessment is one question. Is this patient hemodynamically stable. The unit, the timing of the scope and the transfusion all follow from the answer.</p>
 
-                <div class="info-box nclex">
-                    <div class="info-box-icon">
-                        <i class="fas fa-graduation-cap"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>NCLEX Alert: Why High-Dose PPI?</h5>
-                        <p>Gastric acid dissolves blood clots. Raising gastric pH > 6 with high-dose PPI stabilizes clots and reduces rebleeding. <strong>High-dose IV PPI is indicated for high-risk ulcers</strong> (active bleeding, visible vessel, adherent clot). Low-risk ulcers may only need oral PPI.</p>
-                    </div>
-                </div>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Finding</th><th>What it means</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Hematemesis</strong></td><td>Vomiting blood. Bright red means active; coffee-ground means digested. Either way, upper.</td></tr>
+                        <tr><td><strong>Melena or hematochezia</strong></td><td>Black tarry stool or bright red blood. This localises the source.</td></tr>
+                        <tr><td><strong>Tachycardia</strong></td><td>Over 100 bpm. The earliest sign of hypovolemia, and it can be masked by a beta-blocker.</td></tr>
+                        <tr><td><strong>Hypotension</strong></td><td>Systolic under 90 mmHg, or a drop of more than 20. That means over 30 percent of volume is gone.</td></tr>
+                        <tr><td><strong>Orthostatic change</strong></td><td>Dizzy on standing. A heart rate rise over 20 or a systolic drop over 20 is positive.</td></tr>
+                        <tr><td><strong>Pallor and diaphoresis</strong></td><td>Pale, cool, sweating. Hypovolemic shock.</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <h3>Vasoactive Medications (for Variceal Bleeding)</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Drug</th>
-                                <th>Dose</th>
-                                <th>Mechanism & Nursing Considerations</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Octreotide (Sandostatin)</strong></td>
-                                <td>50 mcg IV bolus, then 50 mcg/hr infusion x 3-5 days</td>
-                                <td>Decreases splanchnic blood flow, reduces portal pressure. First-line for variceal bleed. Monitor glucose (can cause hyper/hypoglycemia).</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Vasopressin</strong></td>
-                                <td>0.2-0.4 units/min IV</td>
-                                <td>Potent splanchnic vasoconstrictor. Causes coronary vasoconstriction—use with nitroglycerin. Largely replaced by octreotide.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Terlipressin</strong></td>
-                                <td>2 mg IV q4h initially</td>
-                                <td>Vasopressin analog with fewer side effects. Not available in US. Used in Europe.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Other Important Medications</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Drug</th>
-                                <th>Use in GI Bleeding</th>
-                                <th>Nursing Considerations</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Erythromycin</strong></td>
-                                <td>250 mg IV 30-120 min before EGD</td>
-                                <td>Prokinetic - improves gastric emptying and visualization. Give if significant blood in stomach.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Antibiotics (cirrhosis)</strong></td>
-                                <td>Ceftriaxone 1g IV daily x 7 days</td>
-                                <td>Prophylaxis in cirrhotic patients with GI bleed. Reduces infections and mortality.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Lactulose</strong></td>
-                                <td>30-45 mL PO/NG q1h until bowel movement</td>
-                                <td>Prevents hepatic encephalopathy from blood protein load in cirrhotics.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Vitamin K</strong></td>
-                                <td>10 mg IV/PO</td>
-                                <td>For warfarin reversal. Takes 6-24 hours to work; use with FFP for immediate reversal.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Tranexamic Acid (TXA)</strong></td>
-                                <td>1g IV</td>
-                                <td>Antifibrinolytic. Recent trials (HALT-IT) showed no mortality benefit in GI bleeding; not routinely recommended.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Medications to Hold or Avoid</h3>
-
-                <div class="info-box warning">
-                    <div class="info-box-icon">
-                        <i class="fas fa-ban"></i>
-                    </div>
-                    <div class="info-box-content">
-                        <h5>Stop or Hold These Medications!</h5>
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Stable</div>
+                    <div class="comparison-card-body">
                         <ul>
-                            <li><strong>Anticoagulants:</strong> Warfarin, heparin, DOACs - reverse if life-threatening bleeding</li>
-                            <li><strong>Antiplatelet agents:</strong> Aspirin, clopidogrel - hold unless cardiac stent within 30 days</li>
-                            <li><strong>NSAIDs:</strong> Ibuprofen, naproxen - major risk factor for peptic ulcer bleeding</li>
-                            <li><strong>Beta-blockers:</strong> May mask tachycardia response to hypovolemia (don't stop abruptly)</li>
+                            <li>Heart rate under 100, systolic over 100</li>
+                            <li>No orthostatic change</li>
+                            <li>Alert and orientated</li>
+                            <li>Urine output over 0.5 mL/kg/hr</li>
+                            <li>Warm, well perfused extremities</li>
                         </ul>
-                        <p>Always weigh bleeding risk vs. thrombotic risk with the medical team!</p>
+                        <p><strong>Plan:</strong> admit to the floor, endoscopy within 24 hours.</p>
                     </div>
                 </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Unstable</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Heart rate over 100, or systolic under 90</li>
+                            <li>Positive orthostatic change</li>
+                            <li>Altered mental status, confusion</li>
+                            <li>Oliguria, under 0.5 mL/kg/hr</li>
+                            <li>Cool, clammy, mottled extremities</li>
+                        </ul>
+                        <p><strong>Plan:</strong> ICU, emergent endoscopy, massive transfusion protocol on standby.</p>
+                    </div>
+                </div>
+            </div>
 
-                <div class="florencebot-tip" id="tip-hold-anticoagulants">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Hold Anticoagulants</div>
-                    <div class="florencebot-tip-content">
-                        <strong>Stop the blood thinners - but it's not always simple!</strong> In active GI bleeding, hold anticoagulants (warfarin, heparin, DOACs like rivaroxaban, apixaban) and antiplatelet agents (aspirin, clopidogrel). For life-threatening bleeding, consider reversal: <strong>Vitamin K + FFP</strong> (or 4-factor PCC) for warfarin, <strong>idarucizumab</strong> for dabigatran, <strong>andexanet alfa</strong> for Xa inhibitors. But here's the tricky part: these patients are often on blood thinners for a reason (atrial fibrillation, mechanical valve, recent stent). You're trading bleeding risk for clotting risk. <strong>Always discuss with the medical team</strong> to weigh the risks - especially if the patient had a cardiac stent within 30 days.
-                    </div>
-                </div>
+            <h3>How much blood have they lost</h3>
 
-                <div class="bottom-line">
-                    <p>Bottom Line: PPIs (IV pantoprazole) for peptic ulcer bleeds. Octreotide (Sandostatin) for variceal bleeds (reduces portal pressure). Vasopressin for refractory bleeding. Vitamin K and FFP to correct coagulopathy.</p>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Class</th><th>Blood lost</th><th>Heart rate</th><th>Blood pressure</th><th>Mental status</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>I</td><td>Under 15 percent, under 750 mL</td><td>Under 100</td><td>Normal</td><td>Slightly anxious</td></tr>
+                        <tr><td>II</td><td>15 to 30 percent, 750 to 1500 mL</td><td>100 to 120</td><td>Normal</td><td>Mildly anxious</td></tr>
+                        <tr><td>III</td><td>30 to 40 percent, 1500 to 2000 mL</td><td>120 to 140</td><td>Decreased</td><td>Anxious, confused</td></tr>
+                        <tr><td>IV</td><td>Over 40 percent, over 2000 mL</td><td>Over 140</td><td>Severely decreased</td><td>Confused, lethargic</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Read down the blood pressure column. It stays normal through class II. A litre and a half is already gone. That is why heart rate comes first.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-vial"></i> Why the first hemoglobin lies</div>
+                <div class="info-box-content">
+                    <p>Whole blood leaves the body. Red cells and plasma go together, in the ratio they were already in.</p>
+                    <p>So the concentration does not change, and hemoglobin measures concentration. It falls only once fluid shifts back in, from the tissues and from your IV bag. That takes 24 to 72 hours.</p>
+                    <p>A normal hemoglobin in an unstable patient means the bleeding is recent. It does not mean it is small. Trend it every 6 hours and treat the patient in front of you.</p>
                 </div>
-            </section>
+            </div>
+
+            <div class="florencebot-tip" id="tip-hgb-misleading">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Concentration Does Not Change</div>
+                <div class="florencebot-tip-content">Losing whole blood does not dilute what is left. The hemoglobin only drops when fluid comes back in, over 24 to 72 hours. Assess the heart rate, the pressure and the mental status instead of the first lab value.</div>
+            </div>
+
+            <h3>Scoring the risk</h3>
+
+            <p>The Glasgow-Blatchford score predicts who will need an intervention: transfusion, endoscopy or surgery. A score of zero identifies very low risk patients who may be managed as outpatients.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Variable</th><th>Points</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>BUN 18.2 to 22.4 mg/dL</td><td>2</td></tr>
+                        <tr><td>BUN 22.4 to 28 mg/dL</td><td>3</td></tr>
+                        <tr><td>BUN 28 to 70 mg/dL</td><td>4</td></tr>
+                        <tr><td>BUN over 70 mg/dL</td><td>6</td></tr>
+                        <tr><td>Hemoglobin 12 to 13 g/dL in men, or 10 to 12 in women</td><td>1</td></tr>
+                        <tr><td>Hemoglobin 10 to 12 g/dL in men</td><td>3</td></tr>
+                        <tr><td>Hemoglobin under 10 g/dL</td><td>6</td></tr>
+                        <tr><td>Systolic 100 to 109 mmHg</td><td>1</td></tr>
+                        <tr><td>Systolic 90 to 99 mmHg</td><td>2</td></tr>
+                        <tr><td>Systolic under 90 mmHg</td><td>3</td></tr>
+                        <tr><td>Pulse over 100 bpm</td><td>1</td></tr>
+                        <tr><td>Melena present</td><td>1</td></tr>
+                        <tr><td>Syncope</td><td>2</td></tr>
+                        <tr><td>Hepatic disease</td><td>2</td></tr>
+                        <tr><td>Heart failure</td><td>2</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>A rising BUN with a normal creatinine is worth noticing. Blood in the gut is a protein load. Digesting it raises the urea.</p>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Hemodynamics first, and tachycardia before hypotension. Blood pressure holds until 30 percent is gone. The first hemoglobin is not reassurance.
+            </div>
+        </section>
+
+        <!-- ══════════ DIAGNOSTICS ══════════ -->
+        <section class="guide-section" id="diagnostics">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>Finding the source</h2>
+            </div>
+
+            <p>Endoscopy is the cornerstone. It finds the bleeding and treats it in one procedure. Everything else is what you reach for when endoscopy cannot answer the question.</p>
+
+            <h3>When the scope happens</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Patient</th><th>Timing</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Stable, low risk</td><td>Within 24 hours</td></tr>
+                        <tr><td>High-risk features</td><td>Within 12 hours</td></tr>
+                        <tr><td>Suspected variceal bleed</td><td>Within 12 hours</td></tr>
+                        <tr><td>Hemodynamically unstable</td><td>Emergently, after resuscitation</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p>Note the last row. Resuscitation comes before the scope. An unstable patient sedated for endoscopy is a patient who arrests during endoscopy.</p>
+
+            <h3>The two scopes</h3>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">EGD, for upper bleeds</div>
+                    <div class="comparison-card-body">
+                        <p><strong>When:</strong> suspected upper bleed, meaning hematemesis, coffee-ground emesis, melena, or a positive NG aspirate.</p>
+                        <p><strong>How good:</strong> 92 to 98 percent sensitive for finding the source.</p>
+                        <p><strong>What it can do:</strong> injection therapy, thermal coagulation, hemoclips, and band ligation for varices.</p>
+                        <p><strong>Before:</strong> nothing by mouth, IV access, type and screen, resuscitation. Consider erythromycin to empty the stomach.</p>
+                        <p><strong>After:</strong> watch for rebleeding with 6-hourly hemoglobin, and for aspiration and perforation.</p>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Colonoscopy, for lower bleeds</div>
+                    <div class="comparison-card-body">
+                        <p><strong>When:</strong> suspected lower bleed, after the patient is stabilised.</p>
+                        <p><strong>Timing:</strong> within 24 hours, after bowel prep where possible.</p>
+                        <p><strong>The problem:</strong> active bleeding obscures the view. An urgent scope may have to go without a full prep.</p>
+                        <p><strong>What it can do:</strong> clips, thermal coagulation, injection, argon plasma coagulation.</p>
+                        <p><strong>How good:</strong> 74 to 100 percent with an adequate prep, and lower while bleeding is active.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>When the scope is not enough</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Test</th><th>What it detects</th><th>When you use it</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CT angiography</td>
+                            <td>Active bleeding over 0.3 to 0.5 mL/min</td>
+                            <td>Non-invasive. When endoscopy is inconclusive, or the patient is too unstable for it. It can guide an angiographic intervention.</td>
+                        </tr>
+                        <tr>
+                            <td>Tagged red cell scan</td>
+                            <td>Bleeding as slow as 0.1 mL/min</td>
+                            <td>The most sensitive option, useful for intermittent bleeding. It takes time, so not in an emergency.</td>
+                        </tr>
+                        <tr>
+                            <td>Angiography</td>
+                            <td>Active bleeding over 0.5 to 1 mL/min</td>
+                            <td>Invasive, but it allows embolisation. Reserved for massive bleeding or failed endoscopy.</td>
+                        </tr>
+                        <tr>
+                            <td>Capsule endoscopy</td>
+                            <td>Small bowel lesions</td>
+                            <td>A swallowed camera, for obscure bleeding when both scopes were negative. Not for acute bleeding.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Reading an NG aspirate</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li><strong>Bloody or coffee-ground.</strong> Confirms an upper bleed.</li>
+                        <li><strong>Clear.</strong> Does <strong>not</strong> rule an upper bleed out. The source may be past the pylorus, or the bleeding may be intermittent.</li>
+                        <li><strong>Bilious and not bloody.</strong> Now an upper bleed is unlikely, because you have sampled past the pylorus and found nothing.</li>
+                    </ul>
+                    <p>The asymmetry is the point. A positive result proves something; a negative result proves very little. NG tubes are not routinely placed in every GI bleed.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> EGD for upper, colonoscopy for lower, and both diagnose and treat. Resuscitate before you scope. A clear NG aspirate rules nothing out.
+            </div>
+        </section>
+
+        <!-- ══════════ INTERVENTIONS ══════════ -->
+        <section class="guide-section" id="interventions">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2>What you do first</h2>
+            </div>
+
+            <p>Priority questions give you four defensible actions and ask which comes first. All four are things a nurse would do. You are being tested on ordering.</p>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-list-ol"></i> The ordering rules</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li>Airway beats circulation when the patient is vomiting blood into it.</li>
+                        <li>Circulation beats diagnosis. Resuscitate, then scope.</li>
+                        <li>Access beats fluids. You cannot resuscitate through a 22 gauge in the hand.</li>
+                        <li>The culture of this topic is drawing labs before the first intervention, not after.</li>
+                        <li>Assessment beats the lab value. A normal hemoglobin does not change the plan.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Airway.</strong> Check level of consciousness and gag reflex. Massive hematemesis with a reduced conscious level means intubation to protect the airway. Position on the side if they are vomiting blood.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Two large-bore IVs,</strong> 18 gauge or bigger. Start crystalloid, normal saline or lactated Ringer's. Aim to restore perfusion: systolic over 90 and heart rate under 100.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Labs and the blood bank.</strong> Type and crossmatch 2 to 6 units, CBC, metabolic panel, coagulation studies, liver function. Send them urgently, and have blood available before the procedure.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Monitoring.</strong> Cardiac monitor, pulse oximetry, blood pressure every 15 minutes while unstable. A urinary catheter for accurate hourly output, aiming above 0.5 mL/kg/hr.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Nothing by mouth,</strong> in preparation for endoscopy. Clear liquids can resume after a successful procedure if there is no rebleeding.</div>
+                </li>
+            </ol>
+
+            <div class="florencebot-tip" id="tip-goal-uop">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Urine Output Is Real-Time Perfusion</div>
+                <div class="florencebot-tip-content">The kidneys are among the first organs to lose perfusion when cardiac output falls. So urine output tells you whether your resuscitation is working, right now, without waiting for a lab. Over 0.5 mL/kg/hr, which is about 35 mL an hour in a 70 kg adult.</div>
+            </div>
+
+            <h3>Blood products</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Product</th><th>When you give it</th><th>What you are aiming for</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Packed red cells</td>
+                            <td>Hemoglobin under 7 g/dL, or under 8 to 9 with coronary disease or symptoms</td>
+                            <td>Hemoglobin 7 to 9 g/dL. The restrictive strategy.</td>
+                        </tr>
+                        <tr>
+                            <td>Fresh frozen plasma</td>
+                            <td>INR over 1.5 to 2.0 with active bleeding</td>
+                            <td>INR under 1.5</td>
+                        </tr>
+                        <tr>
+                            <td>Platelets</td>
+                            <td>Platelets under 50,000 with active bleeding</td>
+                            <td>Platelets over 50,000</td>
+                        </tr>
+                        <tr>
+                            <td>Massive transfusion protocol</td>
+                            <td>More than 10 units of red cells expected in 24 hours</td>
+                            <td>A 1 to 1 to 1 ratio of red cells, plasma and platelets</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Why less blood is better</div>
+                <div class="info-box-content">
+                    <p>A restrictive strategy means transfusing at a hemoglobin of 7. It produces better outcomes than a liberal one.</p>
+                    <p>The mechanism is clearest in varices. Transfusing raises the circulating volume. That raises portal pressure. Higher portal pressure makes the varices bleed harder. You can transfuse a patient into a worse bleed.</p>
+                    <p>The exception is coronary artery disease or symptomatic anemia, where 8 to 9 is used instead. Follow the local protocol.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-restrictive-transfusion">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">More Blood Can Mean More Bleeding</div>
+                <div class="florencebot-tip-content">In variceal bleeding, transfusion raises volume, volume raises portal pressure, and portal pressure is what is driving the bleed. The trigger is 7 g/dL, and that is a ceiling as much as a floor.</div>
+            </div>
+
+            <h3>What you monitor</h3>
+
+            <ul>
+                <li><strong>Vital signs.</strong> Every 15 minutes while unstable, hourly when stable. Watch the trend, not the single reading.</li>
+                <li><strong>Serial hemoglobin,</strong> every 6 hours during active bleeding. Remember the first one lags.</li>
+                <li><strong>Intake and output,</strong> strictly, including every blood product.</li>
+                <li><strong>Stool.</strong> Colour, consistency, frequency, estimated volume.</li>
+                <li><strong>Neurological status.</strong> A change here means perfusion is failing.</li>
+            </ul>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> Rebleeding: call the provider</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li>Fresh hematemesis, or increasing melena or hematochezia</li>
+                        <li>Hemoglobin falling more than 2 g/dL despite transfusion</li>
+                        <li>New tachycardia or hypotension</li>
+                        <li>Rising transfusion requirement</li>
+                        <li>A change in mental status</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Four situations that change the plan</h3>
+
+            <ul>
+                <li><strong>Variceal bleeding.</strong> Start octreotide. Give prophylactic ceftriaxone. Prepare for urgent EGD with band ligation, and have balloon tamponade available.</li>
+                <li><strong>Anticoagulation.</strong> Warfarin is reversed with vitamin K plus fresh frozen plasma or 4-factor PCC. For DOACs, idarucizumab reverses dabigatran and andexanet reverses the factor Xa inhibitors.</li>
+                <li><strong>Cirrhosis.</strong> Blood in the gut is a protein load, and protein becomes ammonia. Start lactulose and watch the mental status for hepatic encephalopathy.</li>
+                <li><strong>Beta-blockers.</strong> They blunt the tachycardia you are relying on. A normal heart rate in a beta-blocked patient means less than it looks like.</li>
+            </ul>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Airway, two large-bore IVs, crystalloid, crossmatch, nothing by mouth, then the scope. Transfuse at 7. For varices, octreotide and antibiotics before the bands.
+            </div>
+        </section>
+
+        <!-- ══════════ MEDICATIONS ══════════ -->
+        <section class="guide-section" id="medications">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2>The drugs</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: an ulcer bleed gets acid suppression; a variceal bleed gets pressure reduction.</p>
+
+            <p>Two bleeds, two mechanisms, two drugs. Get that pair right and most of the pharmacology follows.</p>
+
+            <h3>Proton pump inhibitors, for ulcers</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Drug</th><th>Dose</th><th>What you need to know</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Pantoprazole</td>
+                            <td>80 mg IV bolus, then 8 mg/hr infusion for 72 hours</td>
+                            <td>High dose for high-risk ulcer appearances. It stabilises the clot.</td>
+                        </tr>
+                        <tr>
+                            <td>Esomeprazole</td>
+                            <td>80 mg IV bolus, then 8 mg/hr infusion</td>
+                            <td>The alternative, on the same regimen.</td>
+                        </tr>
+                        <tr>
+                            <td>Oral PPI</td>
+                            <td>40 to 80 mg twice daily after endoscopy</td>
+                            <td>The step down from IV. Continue for 6 to 8 weeks.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Why the dose is so high</div>
+                <div class="info-box-content">
+                    <p>Gastric acid dissolves clots. A clot over an ulcer sits in the one environment designed to break it down.</p>
+                    <p>Raising gastric pH above 6 lets the clot hold. That is what reduces rebleeding. Ordinary dosing does not get the pH that high, or keep it there.</p>
+                    <p>High-dose IV is for high-risk ulcers: active bleeding, a visible vessel, or an adherent clot. Low-risk ulcers may only need oral.</p>
+                </div>
+            </div>
+
+            <h3>Vasoactive drugs, for varices</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Drug</th><th>Dose</th><th>How it works, and what you watch</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Octreotide</td>
+                            <td>50 mcg IV bolus, then 50 mcg/hr for 3 to 5 days</td>
+                            <td>Reduces splanchnic blood flow, which drops portal pressure. First-line. Monitor glucose, since it can push it either way.</td>
+                        </tr>
+                        <tr>
+                            <td>Vasopressin</td>
+                            <td>0.2 to 0.4 units/min IV</td>
+                            <td>A potent splanchnic vasoconstrictor. It also constricts the coronaries, so it is given with nitroglycerin. Largely replaced by octreotide.</td>
+                        </tr>
+                        <tr>
+                            <td>Terlipressin</td>
+                            <td>2 mg IV every 4 hours initially</td>
+                            <td>A vasopressin analogue with fewer side effects. Used in Europe, not available in the US.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>The rest</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Drug</th><th>Why</th><th>What you need to know</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Erythromycin</td>
+                            <td>250 mg IV, 30 to 120 minutes before EGD</td>
+                            <td>Used as a prokinetic, not an antibiotic. It empties the stomach so the endoscopist can see.</td>
+                        </tr>
+                        <tr>
+                            <td>Ceftriaxone</td>
+                            <td>1 g IV daily for 7 days in cirrhosis</td>
+                            <td>Prophylaxis in any cirrhotic with a GI bleed. It reduces infection and mortality.</td>
+                        </tr>
+                        <tr>
+                            <td>Lactulose</td>
+                            <td>30 to 45 mL orally or by NG every hour until a bowel movement</td>
+                            <td>Prevents hepatic encephalopathy from the protein load of blood in the gut.</td>
+                        </tr>
+                        <tr>
+                            <td>Vitamin K</td>
+                            <td>10 mg IV or orally</td>
+                            <td>For warfarin reversal. It takes 6 to 24 hours, so pair it with plasma when reversal is needed now.</td>
+                        </tr>
+                        <tr>
+                            <td>Tranexamic acid</td>
+                            <td>1 g IV</td>
+                            <td>An antifibrinolytic. The HALT-IT trial found no mortality benefit in GI bleeding, so it is not routinely recommended.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-hand-paper"></i> What you stop</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li><strong>Anticoagulants.</strong> Warfarin, heparin, DOACs. Reverse them if the bleeding is life-threatening.</li>
+                        <li><strong>Antiplatelets.</strong> Aspirin, clopidogrel. Hold them, unless there is a cardiac stent placed within 30 days.</li>
+                        <li><strong>NSAIDs.</strong> A major cause of the ulcer in the first place.</li>
+                        <li><strong>Beta-blockers.</strong> Note that they mask the tachycardia. Do not stop them abruptly.</li>
+                    </ul>
+                    <p>Every one of these was prescribed for a reason. You are trading a bleeding risk for a clotting risk. That is a team decision, not a nursing one.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-hold-anticoagulants">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Stopping Is Also a Risk</div>
+                <div class="florencebot-tip-content">A patient on apixaban has atrial fibrillation. A patient on clopidogrel may have a fresh stent. Holding the drug stops one problem and starts another, so the recent stent is the detail that changes the answer.</div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Ulcers get high-dose IV PPI, because acid dissolves clots. Varices get octreotide and ceftriaxone, because pressure drives the bleed. Hold the blood thinners, with the team.
+            </div>
+        </section>
+
+        <!-- ══════════ NUMBERS ══════════ -->
+        <section class="guide-section" id="numbers-cold">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2>Numbers to have cold</h2>
+            </div>
+
+            <p>These should be automatic. If you have to reason toward one of them, it is not learned yet.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead><tr><th>Number</th><th>Meaning</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>7 g/dL</strong></td><td>Hemoglobin transfusion trigger. 8 to 9 with coronary disease or symptoms.</td></tr>
+                        <tr><td><strong>Two 18 gauge</strong></td><td>Minimum IV access in an active bleed</td></tr>
+                        <tr><td><strong>Over 100 bpm</strong></td><td>Tachycardia, and the earliest sign of hypovolemia</td></tr>
+                        <tr><td><strong>Under 90 mmHg systolic</strong></td><td>Hypotension, meaning over 30 percent of volume gone</td></tr>
+                        <tr><td><strong>Over 20 and over 20</strong></td><td>Heart rate rise or systolic drop that makes orthostatics positive</td></tr>
+                        <tr><td><strong>Over 0.5 mL/kg/hr</strong></td><td>Target urine output</td></tr>
+                        <tr><td><strong>24 to 72 hours</strong></td><td>How long hemoglobin takes to equilibrate after a bleed</td></tr>
+                        <tr><td><strong>Every 6 hours</strong></td><td>Serial hemoglobin during active bleeding</td></tr>
+                        <tr><td><strong>Within 24 hours</strong></td><td>Endoscopy in a stable patient</td></tr>
+                        <tr><td><strong>Within 12 hours</strong></td><td>Endoscopy for high-risk features or suspected varices</td></tr>
+                        <tr><td><strong>50 to 100 mL</strong></td><td>Blood needed to produce melena</td></tr>
+                        <tr><td><strong>8 hours</strong></td><td>Time in the gut needed to turn blood black</td></tr>
+                        <tr><td><strong>40 to 50 percent</strong></td><td>Share of upper bleeds caused by peptic ulcer disease</td></tr>
+                        <tr><td><strong>30 to 40 percent</strong></td><td>Share of lower bleeds caused by diverticulosis</td></tr>
+                        <tr><td><strong>12 mmHg</strong></td><td>Portal pressure above which varices form</td></tr>
+                        <tr><td><strong>80 mg then 8 mg/hr</strong></td><td>High-dose pantoprazole, for 72 hours</td></tr>
+                        <tr><td><strong>pH above 6</strong></td><td>Gastric pH at which a clot is stable</td></tr>
+                        <tr><td><strong>50 mcg then 50 mcg/hr</strong></td><td>Octreotide for varices, 3 to 5 days</td></tr>
+                        <tr><td><strong>1 g daily for 7 days</strong></td><td>Ceftriaxone prophylaxis in cirrhosis</td></tr>
+                        <tr><td><strong>INR under 1.5, platelets over 50,000</strong></td><td>Correction targets in active bleeding</td></tr>
+                        <tr><td><strong>1 to 1 to 1</strong></td><td>Red cells, plasma and platelets in massive transfusion</td></tr>
+                        <tr><td><strong>30 days</strong></td><td>Recent stent window that changes the antiplatelet decision</td></tr>
+                        <tr><td><strong>6 to 24 hours</strong></td><td>Time for vitamin K to reverse warfarin</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write the resuscitation numbers on the back of the index card from section 02. Test yourself on the meaning, not the number; the exam gives you the number and asks what it means.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PRODUCE ══════════ -->
+        <section class="guide-section" id="rebuild">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>Now close the guide</h2>
+            </div>
+
+            <p>Reading this again will not move your score. Producing it will. Everything below is done with the page shut.</p>
+
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <ol>
+                    <li>Two columns, upper and lower. Five causes each, then the stool finding, then the scope.</li>
+                    <li>Write the four classes of blood loss and note which column stays normal longest.</li>
+                    <li>Explain in your own words why the first hemoglobin is normal.</li>
+                    <li>Write the first hour in order, five actions, and defend the first one.</li>
+                    <li>Write the transfusion trigger and the reason more is not better.</li>
+                    <li>Two columns, ulcer and varices. The drug, the dose, the mechanism.</li>
+                </ol>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Say these four out loud</div>
+                <div class="info-box-content">
+                    <p>Pick any bleed from section 02. Without looking, say where it comes from, the clue you would see in a patient, the priority action, and the first-line treatment with its teaching point.</p>
+                    <p>If you can do that for all four, you are ready. If you cannot, you know exactly which section to reopen.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> You will not be asked what GI bleeding is. You will be given a heart rate, a stool colour and a normal hemoglobin, and asked what you do first.
+            </div>
+        </section>
 
             <!-- Practice Questions -->
             <section class="practice-questions" id="practice-questions">
-                <h2><i class="fas fa-flask"></i> NCLEX Challenge — Test Your Knowledge</h2>
+                <h2><i class="fas fa-flask"></i> Test yourself</h2>
                 <div class="quiz-cta-box">
                     <div class="quiz-cta-icon"><i class="fas fa-clipboard-check"></i></div>
                     <div class="quiz-cta-content">
-                        <h3>Ready to Test Your Knowledge?</h3>
-                        <p>10 NCLEX-style questions with detailed rationales covering upper vs lower GI bleed differentiation, hemorrhagic shock classification, transfusion triggers, initial hemoglobin pitfall, NG tube lavage interpretation, and priority interventions. Available in Practice Mode (instant feedback) and Exam Mode (timed, no peeking).</p>
+                        <h3>Can you produce it?</h3>
+                        <p>10 questions with full rationales covering upper versus lower differentiation, hemorrhagic shock classes, transfusion triggers, the initial hemoglobin pitfall, NG lavage interpretation, and priority interventions. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
                         <div class="quiz-cta-stats">
                             <span><i class="fas fa-question-circle"></i> 10 Questions</span>
                             <span><i class="fas fa-clock"></i> ~15 min</span>
@@ -2310,30 +947,38 @@
             <!-- Key Points Summary -->
             <section class="key-points-summary">
                 <h2><i class="fas fa-star"></i> Key Takeaways</h2>
-                <div class="key-points-list">
-                    <div class="key-point-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <p><strong>Ligament of Treitz:</strong> The dividing line. Above = UGIB. Below = LGIB. Critical for determining workup.</p>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-code-branch"></i>
+                        <p><strong>Ligament of Treitz</strong> divides upper from lower, and picks the scope</p>
                     </div>
-                    <div class="key-point-item">
+                    <div class="key-point">
                         <i class="fas fa-poop"></i>
-                        <p><strong>Stool Clues:</strong> Melena = usually UGIB. Hematochezia = usually LGIB. But massive UGIB can cause hematochezia!</p>
+                        <p><strong>Black is digested</strong> so upper. Red moved fast, so usually lower</p>
                     </div>
-                    <div class="key-point-item">
+                    <div class="key-point">
                         <i class="fas fa-heartbeat"></i>
-                        <p><strong>Hemodynamic Status:</strong> Unstable = emergent intervention. Stable = endoscopy within 24 hours.</p>
+                        <p><strong>Tachycardia comes first.</strong> Blood pressure holds until 30 percent is gone</p>
                     </div>
-                    <div class="key-point-item">
+                    <div class="key-point">
+                        <i class="fas fa-vial"></i>
+                        <p><strong>The first hemoglobin is normal</strong> because concentration does not change</p>
+                    </div>
+                    <div class="key-point">
                         <i class="fas fa-syringe"></i>
-                        <p><strong>Large-bore IV Access:</strong> Two 18G or larger IVs. Type & crossmatch. Be ready for massive transfusion.</p>
+                        <p><strong>Two 18 gauge IVs</strong> and a type and crossmatch, immediately</p>
                     </div>
-                    <div class="key-point-item">
+                    <div class="key-point">
                         <i class="fas fa-tint"></i>
-                        <p><strong>Transfusion:</strong> Restrictive strategy preferred (Hgb trigger 7 g/dL). Initial Hgb may be misleading!</p>
+                        <p><strong>Transfuse at 7 g/dL.</strong> More blood raises portal pressure</p>
                     </div>
-                    <div class="key-point-item">
+                    <div class="key-point">
                         <i class="fas fa-pills"></i>
-                        <p><strong>High-dose PPI:</strong> 80 mg bolus + 8 mg/hr infusion for high-risk peptic ulcer bleeding to stabilize clots.</p>
+                        <p><strong>Ulcers get a PPI</strong> because acid dissolves clots</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-wine-bottle"></i>
+                        <p><strong>Varices get octreotide</strong> and prophylactic ceftriaxone</p>
                     </div>
                 </div>
             </section>
@@ -2350,14 +995,14 @@
                 <div class="cross-ref-group">
                     <h3>After this guide, study:</h3>
                     <ul>
-                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Liver Disease — Coming Soon</span></li>
-                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Bowel Obstruction — Coming Soon</span></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Liver Disease, coming soon</span></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Bowel Obstruction, coming soon</span></li>
                     </ul>
                 </div>
                 <div class="cross-ref-group">
                     <h3>Also relevant:</h3>
                     <ul>
-                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Fluid & Electrolytes — Coming Soon</span></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Fluid and Electrolytes, coming soon</span></li>
                     </ul>
                 </div>
             </section>

@@ -504,6 +504,51 @@ img { max-width: 100%; display: block; }
 .info-box.pediatric .info-box-header i { color: #c2306e; }
 
 
+/* ══ Do-this devices ══
+   From the game-plan system: content is separated by what the reader DOES
+   with it, not by topic. Blue = rebuild it from memory. Green = transcribe
+   it by hand. Everything else on the page is commentary. */
+.do-box,
+.copy-box {
+  border-radius: 12px;
+  padding: 18px 20px;
+  margin: 22px 0;
+}
+
+.do-box {
+  background: rgba(37,99,168,0.05);
+  border: 0.5px solid rgba(37,99,168,0.35);
+}
+.copy-box {
+  background: rgba(47,168,102,0.05);
+  border: 0.5px solid rgba(47,168,102,0.35);
+}
+
+.do-box-label,
+.copy-box-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 9px;
+}
+.do-box-label { color: #2563a8; }
+.copy-box-label { color: #2fa866; }
+
+.do-box p, .copy-box p { font-size: 15px; }
+.do-box p:last-child, .copy-box p:last-child { margin-bottom: 0; }
+.do-box ol, .do-box ul,
+.copy-box ol, .copy-box ul { margin: 8px 0 0 18px; }
+.do-box li, .copy-box li { font-size: 15px; margin-bottom: 6px; }
+
+/* Blank table to rebuild from memory */
+.do-box .guide-table-wrapper { background: transparent; box-shadow: none; }
+.do-box .guide-table td { height: 34px; }
+
+
 /* ══ Standalone callouts ══ */
 .clinical-pearl,
 .mnemonic,

@@ -1,6 +1,6 @@
 /**
- * Pediatric Fractures & Immobility Quiz — Question Data
- * NCLEX-style questions covering pediatric fracture types,
+ * Pediatric Fractures & Immobility Quiz - Question Data
+ * Clinical-scenario questions covering pediatric fracture types,
  * neurovascular assessment, cast/traction care, and immobility.
  */
 
@@ -100,7 +100,7 @@ var pediatricFracturesImmobilityQuizData = {
                 c: "Flat legs with weights at the head is not the Bryant's setup.",
                 d: "Prone position is never used for traction; buttocks off the bed means supine with legs up."
             },
-            testTakingTip: "Bryant's = infant traction, BOTH legs 90\u00b0, buttocks slightly off the bed. Classic NCLEX detail.",
+            testTakingTip: "Bryant's = infant traction, BOTH legs 90\u00b0, buttocks slightly off the bed. A detail worth memorizing.",
             guideSection: "Section 3 \u2014 Casts & Traction",
             guideSectionId: "treatment"
         },
@@ -169,7 +169,7 @@ var pediatricFracturesImmobilityQuizData = {
                 c: "Removing weights for 5 minutes is also inappropriate.",
                 d: "Weights are critical for maintaining alignment and reducing pain."
             },
-            testTakingTip: "Traction weights: ALWAYS hang freely. Never lift, never rest on floor, never remove. Classic NCLEX safety item.",
+            testTakingTip: "Traction weights: ALWAYS hang freely. Never lift, never rest on floor, never remove. A classic safety item.",
             guideSection: "Section 3 \u2014 Casts & Traction",
             guideSectionId: "treatment"
         },
@@ -238,7 +238,7 @@ var pediatricFracturesImmobilityQuizData = {
                 c: "Covering the cast with a blanket traps heat and moisture, slowing drying.",
                 d: "Applying a cast too tightly risks compartment syndrome."
             },
-            testTakingTip: "Wet plaster cast = handle with palms, not fingers. NCLEX classic.",
+            testTakingTip: "Wet plaster cast = handle with palms, not fingers. A classic detail.",
             guideSection: "Section 3 \u2014 Casts & Traction",
             guideSectionId: "treatment"
         },

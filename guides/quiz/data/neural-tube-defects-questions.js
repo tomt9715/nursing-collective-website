@@ -1,6 +1,6 @@
 /**
  * Neural Tube Defects Quiz — Question Data
- * NCLEX-style questions covering NTD types, prevention,
+ * Practice questions covering NTD types, prevention,
  * pre/post-op care, latex precautions, and long-term management.
  */
 
@@ -77,7 +77,7 @@ var neuralTubeDefectsQuizData = {
                 c: "Semi-Fowler's still involves some weight on the back.",
                 d: "Trendelenburg increases intracranial pressure and is inappropriate."
             },
-            testTakingTip: "Prone or side-lying for myelomeningocele. Never supine. Classic NCLEX.",
+            testTakingTip: "Prone or side-lying for myelomeningocele. Never supine. A classic priority question.",
             guideSection: "Section 3 \u2014 Pre/Post-Op Nursing Care",
             guideSectionId: "nursing-care"
         },

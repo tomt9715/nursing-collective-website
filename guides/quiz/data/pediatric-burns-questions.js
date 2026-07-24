@@ -1,6 +1,6 @@
 /**
  * Pediatric Burns Quiz — Question Data
- * NCLEX-style questions covering burn depth, BSA estimation,
+ * Practice questions covering burn depth, BSA estimation,
  * Parkland formula, fluid resuscitation, and emergency management.
  */
 
@@ -100,7 +100,7 @@ var pediatricBurnsQuizData = {
                 b: "14% is the pediatric LEG BSA.",
                 d: "21% is too high."
             },
-            testTakingTip: "Pediatric head = 18%. Pediatric leg = 14%. Adult head = 9%, leg = 18%. Classic NCLEX trap.",
+            testTakingTip: "Pediatric head = 18%. Pediatric leg = 14%. Adult head = 9%, leg = 18%. Classic trap.",
             guideSection: "Section 3 \u2014 BSA Estimation",
             guideSectionId: "bsa"
         },

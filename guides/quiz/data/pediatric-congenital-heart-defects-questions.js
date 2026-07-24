@@ -1,6 +1,6 @@
 /**
  * Pediatric Congenital Heart Defects Quiz — Question Data
- * NCLEX-style questions covering classification, TOF, tet spells,
+ * Clinical-scenario questions covering classification, TOF, tet spells,
  * right-sided heart failure, medications, and family education.
  */
 
@@ -31,7 +31,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 c: "Morphine helps but is given AFTER positioning and oxygen. Morphine decreases infundibular spasm and reduces respiratory drive.",
                 d: "Getting IV access is important but takes time. Positioning is faster and can be done while someone else gets supplies."
             },
-            testTakingTip: "For tet spells: 'Knees to chest first' — it requires no equipment, no order, and works immediately. This is the classic NCLEX 'first action' answer for cyanotic CHD.",
+            testTakingTip: "For tet spells: 'Knees to chest first' — it requires no equipment, no order, and works immediately. This is the classic 'first action' answer for cyanotic CHD.",
             guideSection: "Section 6 — Hypercyanotic Tet Spells",
             guideSectionId: "tet-spells"
         },
@@ -124,7 +124,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 b: "Holding upright and patting is a burping position, not a tet-spell rescue. It does not raise SVR enough.",
                 d: "Giving an extra dose of digoxin will not stop a tet spell and risks toxicity."
             },
-            testTakingTip: "Expect NCLEX to test parent understanding of tet-spell management. The knee-chest answer is the right one.",
+            testTakingTip: "Expect parent-understanding items on tet-spell management. The knee-chest answer is the right one.",
             guideSection: "Section 11 — Family Education",
             guideSectionId: "family-education"
         },
@@ -147,7 +147,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 c: "GERD typically presents with regurgitation, arching, and irritability — not diaphoresis with feeds or tachypnea at rest.",
                 d: "RSV causes respiratory distress but is typically acute with nasal congestion and wheezing, not the chronic feeding/growth pattern described."
             },
-            testTakingTip: "The triad of 'tires with feeds + sweats while feeding + poor weight gain' is a high-yield pattern for infant CHF on NCLEX. Memorize it.",
+            testTakingTip: "The triad of 'tires with feeds + sweats while feeding + poor weight gain' is a high-yield pattern for infant CHF. Memorize it.",
             guideSection: "Section 8 — Right-Sided Heart Failure",
             guideSectionId: "right-heart-failure"
         },
@@ -239,7 +239,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 c: "The nurse cannot hold furosemide independently; it requires a provider order. And the more urgent concern is digoxin toxicity risk.",
                 d: "There is no indication of dehydration from the information given; the K+ level is the priority."
             },
-            testTakingTip: "The 'Lasix-lowers-K-makes-dig-toxic' chain is NCLEX gold. Any question with a child on both drugs is almost always testing this interaction.",
+            testTakingTip: "The 'Lasix-lowers-K-makes-dig-toxic' chain is exam gold. Any question with a child on both drugs is almost always testing this interaction.",
             guideSection: "Section 10 — Medications",
             guideSectionId: "medications"
         },
@@ -308,7 +308,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 b: "Flushing is a common PGE1 side effect; not life-threatening.",
                 d: "This BP is within range for a neonate. Severe hypotension would be more concerning, but it does not beat apnea for priority."
             },
-            testTakingTip: "PGE1 = apnea. Always. This is a high-yield NCLEX priority question. Keep BVM and intubation equipment at the bedside.",
+            testTakingTip: "PGE1 = apnea. Always. This is a high-yield priority question. Keep BVM and intubation equipment at the bedside.",
             guideSection: "Section 10 — Medications",
             guideSectionId: "medications"
         },
@@ -354,7 +354,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 c: "Marfan syndrome is associated with aortic root dilation and mitral valve prolapse.",
                 d: "Cystic fibrosis is not typically associated with CHD."
             },
-            testTakingTip: "Genetic → CHD pairings for NCLEX: Down → AVSD/VSD. Turner → coarctation. Marfan → aortic root dilation. DiGeorge (22q11) → TOF, truncus arteriosus.",
+            testTakingTip: "Genetic → CHD pairings to know: Down → AVSD/VSD. Turner → coarctation. Marfan → aortic root dilation. DiGeorge (22q11) → TOF, truncus arteriosus.",
             guideSection: "Section 3 — Increased Flow Defects",
             guideSectionId: "increased-flow"
         },
@@ -400,7 +400,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 b: "Giving a partial dose also risks toxicity and is not standard practice.",
                 d: "Unless the infant is symptomatic (vomiting, bradycardia, lethargy), ED visit is not needed."
             },
-            testTakingTip: "Digoxin spit-up rule: never re-dose. Digoxin missed >4 hours: skip and resume. Memorize these two rules — they are NCLEX-tested.",
+            testTakingTip: "Digoxin spit-up rule: never re-dose. Digoxin missed >4 hours: skip and resume. Memorize these two rules; both get tested.",
             guideSection: "Section 10 — Medications",
             guideSectionId: "medications"
         }

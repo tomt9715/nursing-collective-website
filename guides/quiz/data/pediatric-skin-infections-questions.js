@@ -1,6 +1,6 @@
 /**
  * Pediatric Skin Infections Quiz — Question Data
- * NCLEX-style questions covering bacterial, viral, and fungal
+ * Companion-style questions covering bacterial, viral, and fungal
  * pediatric skin infections and their management.
  */
 
@@ -31,7 +31,7 @@ var pediatricSkinInfectionsQuizData = {
                 c: "Griseofulvin is for fungal tinea capitis, not bacterial impetigo.",
                 d: "Clotrimazole is antifungal \u2014 wrong class for bacterial impetigo."
             },
-            testTakingTip: "Honey-colored crusts = impetigo = mupirocin first-line. Classic NCLEX pattern recognition.",
+            testTakingTip: "Honey-colored crusts = impetigo = mupirocin first-line. Classic pattern to recognize on sight.",
             guideSection: "Section 1 \u2014 Bacterial",
             guideSectionId: "bacterial"
         },
@@ -146,7 +146,7 @@ var pediatricSkinInfectionsQuizData = {
                 b: "Shampoo alone doesn't cure tinea capitis.",
                 d: "Tinea is fungal, not bacterial \u2014 antibiotics are inappropriate."
             },
-            testTakingTip: "Tinea capitis = ORAL antifungal (6\u20138 wk). Shampoo is adjunct. Classic NCLEX distinction.",
+            testTakingTip: "Tinea capitis = ORAL antifungal (6\u20138 wk). Shampoo is adjunct. A distinction worth memorizing.",
             guideSection: "Section 3 \u2014 Fungal",
             guideSectionId: "fungal"
         },
@@ -216,7 +216,7 @@ var pediatricSkinInfectionsQuizData = {
                 c: "Atopic dermatitis typically involves flexor surfaces and face, not diaper area.",
                 d: "Contact dermatitis from wipes wouldn't have satellite lesions."
             },
-            testTakingTip: "Candida = skin FOLDS + SATELLITE lesions. Irritant = SPARES folds. Major NCLEX distinction.",
+            testTakingTip: "Candida = skin FOLDS + SATELLITE lesions. Irritant = SPARES folds. A distinction that comes up often.",
             guideSection: "Section 3 \u2014 Fungal",
             guideSectionId: "fungal"
         },

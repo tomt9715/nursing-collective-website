@@ -1,6 +1,6 @@
 /**
  * Sickle Cell Crisis Quiz — Question Data
- * NCLEX-style questions covering pathophysiology, crisis types, triggers,
+ * Practice questions covering pathophysiology, crisis types, triggers,
  * priority interventions, transfusion therapy and reactions, pain control,
  * and long-term management.
  */

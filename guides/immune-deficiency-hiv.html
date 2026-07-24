@@ -3,1937 +3,872 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Immune Deficiency, HIV & Anaphylaxis Study Guide - The Nursing Collective</title>
-    <meta name="description" content="Pediatric nursing study guide for primary immune deficiency, pediatric HIV, and anaphylaxis. Warning signs, vaccines in immunocompromised kids, anaphylaxis management with IM epinephrine, and HIV home care.">
+    <title>Immune Deficiency, HIV &amp; Anaphylaxis Study Guide - The Nursing Collective</title>
+    <meta name="description" content="Pediatric nursing study guide for primary immune deficiency, pediatric HIV, and anaphylaxis. Recognize anaphylaxis and give IM epinephrine first, hold live vaccines in immunocompromised children, and teach families HIV home care.">
     <link rel="canonical" href="https://thenursingcollective.pro/guides/immune-deficiency-hiv.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/guides/immune-deficiency-hiv.html">
-    <meta property="og:title" content="Immune Deficiency, HIV & Anaphylaxis Study Guide - The Nursing Collective">
+    <meta property="og:title" content="Immune Deficiency, HIV &amp; Anaphylaxis Study Guide - The Nursing Collective">
     <meta property="og:description" content="Pediatric nursing study guide for immune deficiency, HIV, and anaphylaxis.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/cookie-consent.css">
+
+    <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="../css/tokens.css?v=3">
+    <link rel="stylesheet" href="guide.css?v=3">
     <link rel="stylesheet" href="guide-sidebar.css?v=3">
-
-    <style>
-        /* IMMUNE DEFICIENCY, HIV & ANAPHYLAXIS — Pediatric Immune/Rheum */
-        :root {
-            --navy: #0d1b2a;
-            --navy-2: #162032;
-            --navy-3: #1e2d3e;
-            --card-dark: #1a2940;
-            --teal: #0fbcad;
-            --teal-dim: #0a9086;
-            --amber: #f4a535;
-            --green: #3dbd7a;
-            --red: #e05252;
-            --purple: #8b5cf6;
-            --text-inv: #e8edf2;
-            --text-inv-dim: #8a9bb0;
-            --border-inv: rgba(255, 255, 255, 0.07);
-            --border-inv-mid: rgba(255, 255, 255, 0.12);
-
-            --paper: #162032;
-            --paper-warm: #1a2940;
-            --paper-deep: #1e2d3e;
-            --ink: #f1f5f9;
-            --ink-soft: #c4ccd8;
-            --ink-dimmer: #8a9bb0;
-            --rule: rgba(255, 255, 255, 0.08);
-            --rule-mid: rgba(255, 255, 255, 0.14);
-            --rule-soft: rgba(255, 255, 255, 0.04);
-
-            --peds-coral: #ef5a5a;
-            --peds-coral-deep: #dc2f4f;
-            --peds-rose: #fb8989;
-            --peds-blush: rgba(239, 90, 90, 0.12);
-            --peds-blush-2: rgba(239, 90, 90, 0.22);
-            --peds-plum: #fb8989;
-
-            --critical: #dc2626;
-            --safe: #10b981;
-            --warning: #f59e0b;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--ink-soft);
-            background: var(--navy);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .download-bar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(13, 27, 42, 0.92);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-            color: var(--text-inv);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 0.5px solid var(--border-inv);
-        }
-        .download-bar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 0.01em;
-            color: var(--text-inv);
-        }
-        .download-bar-brand i { color: var(--teal); font-size: 16px; }
-        .download-bar-actions { display: flex; gap: 10px; }
-
-        .btn-download, .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-decoration: none;
-            border: 0.5px solid var(--border-inv-mid);
-        }
-        .btn-download { background: var(--teal); color: var(--navy); border-color: var(--teal); }
-        .btn-download:hover { background: var(--teal-dim); border-color: var(--teal-dim); transform: translateY(-1px); }
-        .btn-back { background: transparent; color: var(--text-inv-dim); }
-        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
-
-        .document-container {
-            max-width: 900px;
-            margin: 80px auto 40px;
-            background: var(--paper);
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            border: 0.5px solid var(--rule-mid);
-        }
-
-        .cover-page {
-            background:
-                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
-                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
-            color: white;
-            padding: 72px 60px 56px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 3px solid var(--peds-coral);
-        }
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 120px;
-            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
-            pointer-events: none;
-        }
-        .cover-content { position: relative; z-index: 1; }
-
-        .cover-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 50px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
-
-        .cover-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 14px;
-            line-height: 1.08;
-            letter-spacing: -0.01em;
-        }
-        .cover-subtitle {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.72);
-            max-width: 580px;
-            margin: 0 auto 32px;
-            line-height: 1.55;
-        }
-
-        .cover-meta {
-            display: inline-flex;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 10px 22px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 0.5px solid rgba(255, 255, 255, 0.12);
-            border-radius: 999px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-meta-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.8px;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-        }
-        .cover-meta-item i { color: var(--peds-coral); font-size: 11px; }
-        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
-
-        .document-content { padding: 56px 56px 48px; background: var(--paper); }
-
-        .learning-objectives {
-            background: var(--peds-blush);
-            border: 1px solid var(--peds-blush-2);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 36px;
-        }
-        .learning-objectives h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--peds-rose);
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .learning-objectives h2 i { color: var(--peds-coral); }
-        .learning-objectives-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-        .objective-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .objective-card i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
-        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
-
-        .high-yield-summary {
-            background: linear-gradient(135deg, rgba(244, 165, 53, 0.08), rgba(244, 165, 53, 0.02));
-            border: 1px solid rgba(244, 165, 53, 0.25);
-            border-left: 4px solid var(--amber);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 36px;
-        }
-        .high-yield-summary h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--amber);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .high-yield-summary h2 i { color: var(--amber); }
-        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
-        .high-yield-summary ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 4px;
-        }
-        .high-yield-summary li {
-            background: rgba(0, 0, 0, 0.18);
-            border-radius: 8px;
-            padding: 12px 14px 12px 38px !important;
-            color: var(--ink-soft);
-            font-size: 0.88rem;
-            line-height: 1.55;
-            border-bottom: none !important;
-        }
-        .high-yield-summary li::before {
-            left: 14px !important;
-            top: 14px !important;
-            color: var(--amber) !important;
-            font-size: 0.82rem !important;
-        }
-        .high-yield-summary strong { color: var(--amber); font-weight: 600; }
-        .high-yield-summary li strong { color: var(--amber) !important; }
-        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--amber); font-size: 0.95rem; }
-
-        .sticky-nav {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            padding: 18px 20px;
-            margin-bottom: 36px;
-        }
-        .sticky-nav h3 {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--ink-dimmer);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-        }
-        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-        .nav-pills a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            background: var(--paper-deep);
-            border: 0.5px solid var(--rule);
-            border-radius: 8px;
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.87rem;
-            font-weight: 500;
-            transition: all 0.15s ease;
-        }
-        .nav-pills a:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
-        .nav-pills a i { font-size: 0.82rem; }
-
-        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
-        .section-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--rule);
-        }
-        .section-number {
-            flex-shrink: 0;
-            width: 44px; height: 44px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 12px rgba(239, 90, 90, 0.25);
-        }
-        .section-title-group { flex: 1; min-width: 0; }
-        .section-title-group h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--ink);
-            line-height: 1.2;
-            margin-bottom: 4px;
-        }
-        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
-
-        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
-        .guide-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.22rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 24px 0 12px;
-        }
-        .guide-section h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 18px 0 8px;
-        }
-        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
-        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
-        .guide-section strong { color: var(--ink); font-weight: 600; }
-
-        .guide-table-wrapper {
-            overflow-x: auto;
-            margin: 18px 0;
-            border-radius: 10px;
-            border: 1px solid var(--rule);
-        }
-        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
-        .guide-table thead { background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep)); color: white; }
-        .guide-table th {
-            padding: 12px 14px;
-            text-align: left;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
-        }
-        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
-        .guide-table tbody { background: var(--paper-warm); }
-        .guide-table tbody tr:last-child td { border-bottom: none; }
-        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
-        .guide-table tbody tr:hover { background: var(--peds-blush); }
-        .guide-table td strong { color: var(--ink); }
-
-        .info-box {
-            display: flex;
-            gap: 14px;
-            padding: 18px 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 1px solid var(--rule);
-            border-left-width: 4px;
-        }
-        .info-box-icon {
-            flex-shrink: 0;
-            width: 34px; height: 34px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-        .info-box-content { flex: 1; min-width: 0; }
-        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
-
-        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
-        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-        .info-box.clinical h5 { color: #fbbf24; }
-        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
-        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
-        .info-box.critical h5 { color: #fca5a5; }
-        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
-        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
-        .info-box.nclex h5 { color: #93c5fd; }
-        .info-box.pediatric { background: var(--peds-blush); border-color: var(--peds-blush-2); border-left-color: var(--peds-coral); }
-        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-rose); }
-        .info-box.pediatric h5 { color: var(--peds-rose); }
-        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
-        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
-        .info-box.safe h5 { color: #86efac; }
-        .info-box p { color: var(--ink-soft); }
-        .info-box strong { color: var(--ink); }
-
-        .florencebot-tip {
-            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
-            border: 1px solid rgba(15, 188, 173, 0.22);
-            border-radius: 14px;
-            padding: 22px 24px;
-            margin: 24px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .florencebot-tip::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px; height: 100%;
-            background: var(--teal);
-        }
-        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .florencebot-tip-icon {
-            width: 32px; height: 32px;
-            background: var(--teal);
-            border-radius: 8px;
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-        .florencebot-tip-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--teal);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        .florencebot-tip-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.08rem;
-            font-weight: 600;
-            color: #5eead4;
-            margin-bottom: 8px;
-        }
-        .florencebot-tip-content { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; }
-        .florencebot-tip-content strong { color: var(--ink); }
-
-        .bottom-line {
-            background: linear-gradient(135deg, var(--peds-blush), rgba(239, 90, 90, 0.04));
-            border: 0.5px solid var(--peds-blush-2);
-            border-left: 4px solid var(--peds-coral);
-            padding: 14px 18px;
-            margin: 22px 0 0;
-            border-radius: 0 10px 10px 0;
-            font-weight: 500;
-            color: var(--ink);
-            font-size: 0.95rem;
-        }
-        .bottom-line strong { color: var(--peds-rose); }
-
-        /* Type cards */
-        .type-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin: 20px 0;
-        }
-        .type-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .type-card-header {
-            padding: 14px 18px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .type-card-header.pid { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-        .type-card-header.hiv { background: linear-gradient(135deg, #dc2626, #991b1b); }
-        .type-card-header.anaphylaxis { background: linear-gradient(135deg, #ef5a5a, #b91c1c); }
-        .type-card-header.mild { background: linear-gradient(135deg, #10b981, #047857); }
-        .type-card-header.moderate { background: linear-gradient(135deg, #f59e0b, #b45309); }
-        .type-card-header.severe { background: linear-gradient(135deg, #dc2626, #991b1b); }
-        .type-card-header i { font-size: 1.2rem; }
-        .type-card-header h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            margin: 0;
-        }
-        .type-card-header .tag {
-            margin-left: auto;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.68rem;
-            letter-spacing: 1px;
-            opacity: 0.88;
-            text-transform: uppercase;
-        }
-        .type-card-body { padding: 16px 18px; }
-        .type-card-body h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--peds-rose);
-            margin: 10px 0 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .type-card-body h5:first-child { margin-top: 0; }
-        .type-card-body p, .type-card-body ul { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; margin: 0 0 6px; }
-        .type-card-body ul { padding-left: 18px; }
-        .type-card-body li { margin-bottom: 4px; }
-        .type-card-body strong { color: var(--ink); }
-
-        /* Key point grid */
-        .key-point-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .key-point-item {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        .key-point-item i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
-        .key-point-item p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); }
-        .key-point-item strong { color: var(--ink); }
-
-        /* Red flag cards */
-        .redflag-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .redflag-card {
-            background: rgba(220, 38, 38, 0.08);
-            border: 0.5px solid rgba(220, 38, 38, 0.25);
-            border-left: 3px solid #f87171;
-            border-radius: 10px;
-            padding: 12px 14px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        .redflag-card i { color: #fca5a5; font-size: 0.95rem; margin-top: 3px; flex-shrink: 0; }
-        .redflag-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); }
-        .redflag-card strong { color: #fca5a5; }
-
-        /* Step list */
-        .step-list {
-            list-style: none !important;
-            padding: 0 !important;
-            margin: 20px 0;
-            counter-reset: step;
-        }
-        .step-list li {
-            counter-increment: step;
-            position: relative;
-            padding: 14px 16px 14px 56px;
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            margin-bottom: 10px;
-            font-size: 0.97rem;
-            line-height: 1.6;
-            color: var(--ink-soft);
-        }
-        .step-list li::before {
-            content: counter(step);
-            position: absolute;
-            top: 14px; left: 14px;
-            width: 30px; height: 30px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 0.9rem;
-        }
-        .step-list strong { color: var(--ink); }
-
-        /* Med cards */
-        .med-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 14px;
-            margin: 18px 0;
-        }
-        .med-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            padding: 18px 20px;
-            border-top: 3px solid var(--peds-coral);
-        }
-        .med-card h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 4px;
-        }
-        .med-card .med-class {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--peds-coral);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .med-card p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.55; }
-        .med-card p strong { color: var(--ink); }
-
-        /* Cross refs */
-        .cross-references {
-            margin: 36px 0 8px;
-            padding: 24px;
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-        }
-        .cross-references h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .cross-references h2 i { color: var(--peds-coral); }
-        .cross-ref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .cross-ref-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: var(--paper-deep);
-            border: 0.5px solid var(--rule);
-            border-radius: 8px;
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.15s;
-        }
-        .cross-ref-link:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
-        .cross-ref-link i { font-size: 0.85rem; }
-
-        .quiz-cta {
-            background:
-                radial-gradient(ellipse 60% 80% at 90% 10%, rgba(15, 188, 173, 0.12) 0%, transparent 65%),
-                linear-gradient(135deg, var(--card-dark), var(--navy-3));
-            border: 0.5px solid var(--border-inv-mid);
-            color: white;
-            border-radius: 14px;
-            padding: 28px;
-            margin: 36px 0;
-            text-align: center;
-        }
-        .quiz-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
-        .quiz-cta p { color: rgba(255, 255, 255, 0.88); margin-bottom: 20px; font-size: 0.98rem; }
-        .quiz-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: var(--teal);
-            color: var(--navy);
-            border-radius: 10px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.98rem;
-            text-decoration: none;
-            transition: all 0.15s;
-        }
-        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
-
-        .document-footer {
-            padding: 32px 56px;
-            background: var(--paper-deep);
-            border-top: 0.5px solid var(--rule);
-            text-align: center;
-        }
-        .footer-logo { height: 28px; margin: 0 auto 14px; opacity: 0.9; }
-        .footer-tagline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 4px; }
-        .footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-dimmer); letter-spacing: 0.02em; }
-
-        /* Sidebar overrides */
-        .page-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 80px auto 40px;
-            padding: 0 20px;
-            max-width: 1600px;
-        }
-        .sidebar-left, .sidebar-right {
-            width: 280px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 80px;
-            height: fit-content;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-        }
-
-        .toc-panel {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            color: var(--text-inv) !important;
-            margin-bottom: 16px !important;
-        }
-        .toc-header {
-            padding-bottom: 14px !important;
-            margin-bottom: 14px !important;
-            border-bottom: 0.5px solid var(--border-inv-mid) !important;
-        }
-        .toc-header h3 {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin: 0 !important;
-        }
-        .toc-header i { color: var(--teal) !important; }
-        .toc-link {
-            color: var(--text-inv-dim) !important;
-            font-family: 'Outfit', sans-serif !important;
-            font-weight: 500 !important;
-            font-size: 0.88rem !important;
-            border-left: 2px solid transparent !important;
-            padding: 9px 12px !important;
-            background: transparent !important;
-        }
-        .toc-link:hover { background: rgba(15, 188, 173, 0.08) !important; color: var(--text-inv) !important; }
-        .toc-link.active {
-            background: rgba(15, 188, 173, 0.12) !important;
-            color: var(--teal) !important;
-            border-left-color: var(--teal) !important;
-            font-weight: 600 !important;
-        }
-        .toc-link i { color: inherit !important; }
-
-        .toc-progress {
-            margin-top: 14px !important;
-            padding-top: 14px !important;
-            border-top: 0.5px solid var(--border-inv) !important;
-        }
-        .toc-progress-label {
-            display: flex !important;
-            justify-content: space-between !important;
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.68rem !important;
-            letter-spacing: 1px !important;
-            color: var(--text-inv-dim) !important;
-            margin-bottom: 8px !important;
-        }
-        .toc-progress-percent { color: var(--teal) !important; }
-        .toc-progress-bar {
-            background: rgba(255, 255, 255, 0.06) !important;
-            border-radius: 999px !important;
-            height: 4px !important;
-            overflow: hidden !important;
-        }
-        .toc-progress-fill {
-            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
-            height: 100% !important;
-        }
-
-        .toc-nav-links {
-            margin-top: 14px !important;
-            padding-top: 14px !important;
-            border-top: 0.5px solid var(--border-inv) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 6px !important;
-        }
-        .toc-nav-link {
-            display: flex !important;
-            align-items: center !important;
-            gap: 10px !important;
-            padding: 8px 12px !important;
-            border-radius: 8px !important;
-            color: var(--text-inv-dim) !important;
-            background: transparent !important;
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.84rem !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-            transition: all 0.15s !important;
-        }
-        .toc-nav-link:hover { background: rgba(255, 255, 255, 0.04) !important; color: var(--text-inv) !important; }
-        .toc-nav-link--ai { background: rgba(15, 188, 173, 0.08) !important; color: var(--teal) !important; }
-        .toc-nav-link--ai:hover { background: rgba(15, 188, 173, 0.15) !important; color: var(--teal) !important; }
-
-        .florence-card {
-            background: linear-gradient(135deg, var(--card-dark), var(--navy-3)) !important;
-            border: 0.5px solid var(--border-inv-mid) !important;
-            border-radius: 14px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            margin-bottom: 16px !important;
-            position: relative !important;
-            overflow: hidden !important;
-        }
-        .florence-card::before {
-            content: '' !important;
-            position: absolute !important;
-            top: -40% !important; right: -40% !important;
-            width: 120% !important; height: 120% !important;
-            background: radial-gradient(circle, rgba(15, 188, 173, 0.12) 0%, transparent 60%) !important;
-            pointer-events: none !important;
-        }
-        .florence-header {
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
-            margin-bottom: 14px !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        .florence-avatar {
-            width: 44px !important; height: 44px !important;
-            border-radius: 50% !important;
-            background: rgba(15, 188, 173, 0.15) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
-            padding: 2px !important;
-            box-shadow: none !important;
-        }
-        .florence-info h3 {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.98rem !important;
-            font-weight: 600 !important;
-            color: var(--text-inv) !important;
-            margin: 0 !important;
-        }
-        .florence-info span {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.68rem !important;
-            color: var(--teal) !important;
-            letter-spacing: 1px !important;
-            text-transform: uppercase !important;
-        }
-        .florence-speech {
-            background: rgba(15, 188, 173, 0.06) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            border-radius: 10px !important;
-            padding: 12px 14px !important;
-            box-shadow: none !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        .florence-speech::before {
-            background: var(--card-dark) !important;
-            border-top: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            border-left: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            box-shadow: none !important;
-        }
-        .florence-speech p {
-            color: var(--text-inv) !important;
-            font-size: 0.88rem !important;
-            line-height: 1.55 !important;
-            margin: 0 !important;
-        }
-        .florence-speech p strong { color: var(--teal) !important; }
-
-        .key-numbers-card {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 18px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-            margin-bottom: 16px !important;
-        }
-        .key-numbers-title {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin-bottom: 14px !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-        }
-        .key-numbers-title i { color: var(--teal) !important; }
-        .key-numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-        .key-number {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 10px !important;
-            padding: 12px 10px !important;
-        }
-        .key-number:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important; }
-        .key-number.critical { background: rgba(220, 38, 38, 0.1) !important; border-color: rgba(220, 38, 38, 0.25) !important; }
-        .key-number.critical .key-number-value { color: #fca5a5 !important; }
-        .key-number.time { background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.25) !important; }
-        .key-number.time .key-number-value { color: #fcd34d !important; }
-        .key-number.target { background: rgba(15, 188, 173, 0.1) !important; border-color: rgba(15, 188, 173, 0.25) !important; }
-        .key-number.target .key-number-value { color: #5eead4 !important; }
-        .key-number.success { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
-        .key-number.success .key-number-value { color: #86efac !important; }
-        .key-number.warning { background: rgba(251, 146, 60, 0.1) !important; border-color: rgba(251, 146, 60, 0.25) !important; }
-        .key-number.warning .key-number-value { color: #fdba74 !important; }
-        .key-number.info { background: rgba(139, 92, 246, 0.1) !important; border-color: rgba(139, 92, 246, 0.25) !important; }
-        .key-number.info .key-number-value { color: #c4b5fd !important; }
-        .key-number-value {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 1.05rem !important;
-            font-weight: 700 !important;
-            color: var(--text-inv) !important;
-            line-height: 1.2 !important;
-        }
-        .key-number-label {
-            font-size: 0.68rem !important;
-            color: var(--text-inv-dim) !important;
-            margin-top: 4px !important;
-            line-height: 1.35 !important;
-        }
-
-        .florence-tips-card {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 18px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-        }
-        .florence-tips-header { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 14px !important; }
-        .florence-tips-avatar {
-            width: 28px !important; height: 28px !important;
-            border-radius: 50% !important;
-            background: rgba(15, 188, 173, 0.15) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
-            padding: 2px !important;
-            box-shadow: none !important;
-        }
-        .florence-tips-header h4 {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin: 0 !important;
-        }
-
-        .tip-item {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-left: 3px solid var(--teal) !important;
-            border-radius: 8px !important;
-            padding: 10px 12px !important;
-            margin-bottom: 8px !important;
-            box-shadow: none !important;
-            transition: all 0.15s !important;
-        }
-        .tip-item:hover { background: rgba(15, 188, 173, 0.08) !important; transform: translateX(2px) !important; }
-        .tip-item:last-child { margin-bottom: 0 !important; }
-        .tip-item-title {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.85rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv) !important;
-            margin: 0 !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-        }
-        .tip-item-title::before { color: var(--teal) !important; font-size: 0.72rem !important; }
-        .tip-item-text {
-            font-size: 0.78rem !important;
-            color: var(--text-inv-dim) !important;
-            line-height: 1.5 !important;
-            margin-top: 4px !important;
-        }
-
-        .mobile-nav-fab { background: var(--teal) !important; color: var(--navy) !important; }
-        .mobile-nav-drawer { background: var(--card-dark) !important; color: var(--text-inv) !important; }
-        .mobile-nav-tab { color: var(--text-inv-dim) !important; background: transparent !important; }
-        .mobile-nav-tab.active { color: var(--teal) !important; border-bottom-color: var(--teal) !important; }
-        .mobile-toc-link { color: var(--text-inv-dim) !important; }
-        .mobile-toc-link.active { color: var(--teal) !important; background: rgba(15, 188, 173, 0.1) !important; }
-
-        @media (max-width: 1200px) {
-            .page-wrapper { padding: 0 12px; gap: 16px; }
-            .sidebar-left, .sidebar-right { width: 220px; }
-        }
-
-        @media (max-width: 900px) {
-            .page-wrapper { flex-direction: column; padding: 0 12px; }
-            .sidebar-left, .sidebar-right {
-                width: 100%;
-                max-width: 600px;
-                margin: 0 auto;
-                position: static;
-                max-height: none;
-            }
-            .document-container { margin: 80px 12px 40px; }
-            .document-content { padding: 36px 28px; }
-            .cover-page { padding: 56px 28px 40px; }
-            .cover-title { font-size: 2.1rem; }
-            .cover-meta { gap: 10px; padding: 10px 16px; }
-            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
-            .learning-objectives-grid,
-            .type-grid,
-            .key-point-grid,
-            .redflag-grid,
-            .high-yield-summary ul {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .download-bar { padding: 10px 14px; }
-            .download-bar-brand span:not(.brand-text-long) { display: none; }
-            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
-            .section-header { gap: 12px; }
-            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
-            .section-title-group h2 { font-size: 1.4rem; }
-            .document-content { padding: 28px 20px; }
-            .document-footer { padding: 24px 20px; }
-        }
-    </style>
+    <script src="../beta-banner.js"></script>
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../sentry-init.js"></script>
 </head>
-<body data-product-id="immune-deficiency-hiv" data-guide-name="Immune Deficiency, HIV &amp; Anaphylaxis">
-
-    <header class="download-bar">
+<body data-category="pediatrics" data-product-id="immune-deficiency-hiv" data-guide-name="Immune Deficiency, HIV &amp; Anaphylaxis">
+    <!-- Download Bar -->
+    <div class="download-bar">
         <div class="download-bar-brand">
-            <i class="fas fa-shield-virus"></i>
-            <span>Immune Deficiency, HIV &amp; Anaphylaxis</span>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective">
         </div>
         <div class="download-bar-actions">
             <a href="../my-guides.html" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Back to Guides
             </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
         </div>
-    </header>
+    </div>
 
+    <!-- Document -->
     <div class="document-container">
 
+        <!-- Cover Page -->
         <div class="cover-page">
             <div class="cover-content">
-                <div class="cover-badge">
-                    <i class="fas fa-baby"></i> Pediatric Nursing &middot; Immune &amp; Rheumatology
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/immune-deficiency-hiv.webp" alt="Immune Deficiency, HIV and Anaphylaxis">
                 </div>
+                <div class="cover-category">Pediatric Nursing</div>
                 <h1 class="cover-title">Immune Deficiency, HIV &amp; Anaphylaxis</h1>
-                <p class="cover-subtitle">Primary immune deficiency warning signs, pediatric HIV and ART, and life-saving anaphylaxis care. Vaccines in the immunocompromised, IM epinephrine, and home care for families.</p>
+                <p class="cover-subtitle">One reaction where the antihistamine is the wrong answer, one vaccine rule that flips in an immunocompromised child, and the warning signs that turn "he is always sick" into a diagnosis.</p>
                 <div class="cover-meta">
-                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 7 Sections</span>
-                    <span class="cover-meta-sep"></span>
-                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 14 Quiz Questions</span>
-                    <span class="cover-meta-sep"></span>
-                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~12 Min Read</span>
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">12-15 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">January 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
                 </div>
             </div>
         </div>
 
+        <!-- Document Content -->
         <div class="document-content">
 
-            <div class="learning-objectives">
-                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
-                <div class="learning-objectives-grid">
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Recognize warning signs of primary immune deficiency in children.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Describe pediatric HIV transmission, presentation, and antiretroviral therapy.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Identify anaphylaxis signs and deliver IM epinephrine as the priority intervention.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Apply vaccine rules for immunocompromised children (no live vaccines).</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Teach families HIV home care, adherence, and severe infection signs.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Coach caregivers on epinephrine auto-injector use and biphasic reaction watch.</span>
-                    </div>
+            <!-- What you should be able to do without notes -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> By the end, without notes</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Say whether a reaction is anaphylaxis, and reach for intramuscular epinephrine first</li>
+                    <li><i class="fas fa-check-circle"></i> Name the vaccines you never give an immunocompromised child, and why</li>
+                    <li><i class="fas fa-check-circle"></i> Separate primary from secondary immune deficiency from the history alone</li>
+                    <li><i class="fas fa-check-circle"></i> Explain why an infant born to an HIV-positive mother gets a PCR, not an antibody test</li>
+                    <li><i class="fas fa-check-circle"></i> Order the first five actions in anaphylaxis and defend the first one</li>
+                    <li><i class="fas fa-check-circle"></i> Teach a family the two-epinephrine plan and the fever rule</li>
+                </ul>
+            </section>
+
+        <!-- ══════════ START HERE ══════════ -->
+        <section class="guide-section" id="start-here">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>What actually gets you</h2>
+            </div>
+
+            <p>This guide covers three things that look unrelated. They share one exam theme: the obvious move is often the wrong one. Read these three traps before anything else.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You froze on anaphylaxis and reached for the antihistamine</div>
+                <div class="info-box-content">
+                    <p>A child has hives, lip swelling, wheezing, and a falling blood pressure. Diphenhydramine feels like the allergy answer. It is not. Antihistamines do nothing for airway swelling or hypotension. Airway or blood pressure is the trigger to act, and the action is intramuscular epinephrine in the thigh, first.</p>
                 </div>
             </div>
 
-            <section class="high-yield-summary" id="high-yield-summary">
-                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
-                <p class="high-yield-subtitle">Ten facts that every peds nurse needs to know.</p>
-                <ul>
-                    <li><strong>Primary immune deficiency (PID) warning signs:</strong> <strong>persistent thrush</strong> or skin candidiasis, <strong>two or more serious infections</strong> (sepsis, meningitis, osteomyelitis), <strong>failure to thrive</strong>, <strong>\u2265 2 episodes of pneumonia in 1 year</strong>, family history of PID, poor response to standard antibiotics, recurrent deep infections.</li>
-                    <li><strong>Common PIDs:</strong> SCID (severe combined immune deficiency &mdash; \u201cbubble boy\u201d), Bruton\u2019s X-linked agammaglobulinemia (B-cell defect), DiGeorge syndrome (T-cell defect + cardiac/calcium issues), Wiskott-Aldrich (platelets + eczema + infection).</li>
-                    <li><strong>NO LIVE VACCINES</strong> in immunocompromised children or while on significant immunosuppression. Live vaccines include MMR, varicella, rotavirus, <strong>intranasal influenza</strong>, BCG, yellow fever. Inactivated vaccines (injectable flu, Tdap, pneumococcal) are safe and encouraged.</li>
-                    <li><strong>Pediatric HIV</strong> &mdash; most commonly <strong>perinatal (vertical) transmission</strong>. Prevention: maternal ART, intrapartum zidovudine, C-section if high viral load, infant ART prophylaxis, <strong>avoid breastfeeding in the US</strong>.</li>
-                    <li><strong>HIV presentation:</strong> recurrent/opportunistic infections, failure to thrive, persistent thrush, lymphadenopathy, hepatosplenomegaly, developmental delays. Infant test: <strong>HIV DNA/RNA PCR</strong> (maternal antibodies confound serology until 18&ndash;24 months).</li>
-                    <li><strong>HIV treatment: combination antiretroviral therapy (cART/HAART)</strong> &mdash; typically 3+ drugs from different classes (NRTIs, NNRTIs, protease inhibitors, integrase inhibitors). <strong>Daily adherence is critical</strong> &mdash; missed doses drive resistance. Monitor CD4 count and viral load.</li>
-                    <li><strong>Anaphylaxis</strong> = rapid, life-threatening IgE-mediated systemic allergic reaction. Two or more systems: skin (hives, flushing, angioedema), respiratory (stridor, wheezing, SOB), GI (vomiting, diarrhea, cramps), cardiovascular (hypotension, tachycardia), CNS (altered mental status).</li>
-                    <li><strong>Anaphylaxis treatment: AIRWAY FIRST, then IM EPINEPHRINE 0.01 mg/kg (max 0.3 mg child; 0.5 mg adolescent) in the MID-ANTEROLATERAL THIGH (vastus lateralis).</strong> Repeat every 5&ndash;15 min as needed. Adjuncts: antihistamines, steroids, albuterol, IV fluids &mdash; but epi FIRST.</li>
-                    <li><strong>Biphasic reaction</strong> can occur up to 72 hours after initial resolution. <strong>Observe for 4&ndash;8 hours minimum</strong>. Discharge with 2 epinephrine auto-injectors, action plan, and allergist referral.</li>
-                    <li><strong>HIV home care teaching:</strong> <strong>medication adherence</strong>, nutrition (high-calorie, high-protein), pain management, recognize <strong>signs of severe infection</strong> (fever, cough, thrush, new rash), school/daycare safety, mental health, transition to adult care.</li>
-                </ul>
-                <p class="high-yield-cta">Clinical breakdown below &darr;</p>
-            </section>
-
-            <nav class="sticky-nav">
-                <h3>Jump to section</h3>
-                <div class="nav-pills">
-                    <a href="#fundamentals"><i class="fas fa-shield-virus"></i> Fundamentals</a>
-                    <a href="#pid"><i class="fas fa-dna"></i> Primary Immune Deficiency</a>
-                    <a href="#hiv"><i class="fas fa-virus"></i> Pediatric HIV</a>
-                    <a href="#anaphylaxis"><i class="fas fa-heart-pulse"></i> Anaphylaxis</a>
-                    <a href="#vaccines"><i class="fas fa-syringe"></i> Vaccines</a>
-                    <a href="#nursing"><i class="fas fa-user-nurse"></i> Nursing Priorities</a>
-                    <a href="#family"><i class="fas fa-users"></i> Family Education</a>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You gave a live vaccine to a child who cannot fight it</div>
+                <div class="info-box-content">
+                    <p>MMR, varicella, rotavirus, and intranasal flu are live. In a healthy child they teach immunity. In an immunocompromised child or one with a low CD4 count, a live vaccine can cause the disease. The rule flips, and the exam loves that flip.</p>
                 </div>
-            </nav>
+            </div>
 
-            <!-- Section 1: Fundamentals -->
-            <section class="guide-section" id="fundamentals">
-                <div class="section-header">
-                    <div class="section-number">1</div>
-                    <div class="section-title-group">
-                        <h2>Fundamentals of Immune Function &amp; Failure</h2>
-                        <div class="subtitle">When the immune system doesn\u2019t work, overreacts, or attacks itself</div>
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You called a broken immune system a run of bad luck</div>
+                <div class="info-box-content">
+                    <p>"He is always sick" hides primary immune deficiency. The pattern that gives it away is recurrent, severe, and unusual infections, plus failure to thrive. Two pneumonias in a year is not bad luck. It is a warning sign.</p>
                 </div>
+            </div>
 
-                <p>The immune system has two arms: <strong>innate</strong> (neutrophils, macrophages, complement &mdash; fast, nonspecific) and <strong>adaptive</strong> (B cells making antibodies, T cells recognizing specific antigens). Problems fall into three buckets nurses need to differentiate:</p>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Treat anaphylaxis with epinephrine, not an antihistamine. Hold live vaccines when the immune system cannot fight one. Read recurrent severe infection as a diagnosis, not misfortune.
+            </div>
+        </section>
 
-                <ul>
-                    <li><strong>Immune deficiency</strong> &mdash; the system is broken (primary/inherited or secondary/acquired like HIV, chemo, steroids). Result: recurrent and unusual infections.</li>
-                    <li><strong>Allergy / hypersensitivity</strong> &mdash; the system overreacts to harmless stimuli. Anaphylaxis is the life-threatening end of this spectrum.</li>
-                    <li><strong>Autoimmunity</strong> &mdash; the system attacks the body\u2019s own tissues (JIA, SLE &mdash; covered in the related guide).</li>
-                </ul>
+        <!-- ══════════ THE FOUR THINGS ══════════ -->
+        <section class="guide-section" id="high-yield-summary">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The four things</h2>
+            </div>
 
-                <h3>Three Categories at a Glance</h3>
+            <p>For each condition below, you should be able to say four things with the book closed. The one-sentence definition. The clue you would actually see in a child. The priority nursing action. The first-line treatment with its teaching point.</p>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Problem</th>
-                                <th>Example</th>
-                                <th>Treatment Concept</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Immune deficiency</strong></td><td>SCID, HIV, steroid/chemo suppression</td><td>Replace (IVIG), protect (reverse isolation), treat infection aggressively</td></tr>
-                            <tr><td><strong>Hypersensitivity</strong></td><td>Anaphylaxis, food/drug allergy, asthma</td><td>Avoid trigger + emergency rescue (epi, antihistamines, steroids)</td></tr>
-                            <tr><td><strong>Autoimmunity</strong></td><td>JIA, SLE, autoimmune thyroiditis</td><td>Suppress the overactive system (NSAIDs, DMARDs, biologics, steroids)</td></tr>
-                        </tbody>
-                    </table>
-                </div>
+            <p>If you cannot say all four out loud, you do not know it yet. Familiarity is not recall.</p>
 
-                <div class="bottom-line">Bottom Line: Deficiency = too little immune system. Hypersensitivity = too much. Autoimmunity = pointed the wrong way.</div>
-            </section>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Definition in one sentence</th>
+                            <th>Clue in the scenario</th>
+                            <th>Priority action</th>
+                            <th>First-line treatment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Primary immune deficiency</strong></td>
+                            <td>An inherited defect leaves the immune system unable to fight infection.</td>
+                            <td>Recurrent severe infections, persistent thrush, failure to thrive, family history.</td>
+                            <td>Protect the child; treat any fever urgently.</td>
+                            <td>IVIG for antibody defects; transplant is curative for SCID. No live vaccines.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pediatric HIV</strong></td>
+                            <td>The virus is passed mother to child and destroys immune cells over time.</td>
+                            <td>Failure to thrive, thrush, opportunistic infection, low CD4 count.</td>
+                            <td>Support daily medication adherence relentlessly.</td>
+                            <td>Combination antiretroviral therapy, every day. Formula, not breast milk, in the US.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Anaphylaxis</strong></td>
+                            <td>A rapid IgE-mediated reaction hits two or more body systems and can kill.</td>
+                            <td>Hives plus wheeze, or hives plus a dropping blood pressure, after an exposure.</td>
+                            <td>Airway, then intramuscular epinephrine, first.</td>
+                            <td>IM epinephrine 0.01 mg/kg in the thigh. Everything else is an adjunct.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <!-- Section 2: Primary Immune Deficiency -->
-            <section class="guide-section" id="pid">
-                <div class="section-header">
-                    <div class="section-number">2</div>
-                    <div class="section-title-group">
-                        <h2>Primary Immune Deficiency</h2>
-                        <div class="subtitle">Warning signs every pediatric nurse should know</div>
-                    </div>
-                </div>
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these three rows on one index card, by hand. Deficiency is too little immune system. Anaphylaxis is too much. HIV is an immune system being taken apart. That card frames most of the exam.</p>
+            </div>
+        </section>
 
-                <p>Primary immune deficiencies (PIDs) are inherited disorders of immune function. Early recognition can be life-saving &mdash; many of these children present with severe infections in the first year of life. SCID (severe combined immune deficiency) is often diagnosed on <strong>newborn screening</strong>.</p>
+        <!-- ══════════ PRIMARY IMMUNE DEFICIENCY ══════════ -->
+        <section class="guide-section" id="pid">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>Primary or secondary</h2>
+            </div>
 
-                <h3>Warning Signs of PID</h3>
+            <p class="subtitle">Discrimination axis: was the immune system born broken, or was it broken later.</p>
 
-                <div class="redflag-grid">
-                    <div class="redflag-card">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <p><strong>Persistent thrush</strong> (oral candidiasis) or stubborn skin candidiasis in an infant past the usual age</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <p><strong>Two or more serious infections</strong> in 1 year (sepsis, meningitis, osteomyelitis, cellulitis)</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <p><strong>\u2265 2 episodes of pneumonia</strong> in one year</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <p><strong>\u2265 8 ear infections</strong> or <strong>\u2265 2 sinus infections</strong> in a year</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <p><strong>Failure to thrive</strong>, chronic diarrhea, malabsorption</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <p><strong>Family history</strong> of PID or unexplained childhood deaths</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <p><strong>Poor response to standard antibiotics</strong> or need for IV antibiotics to clear infection</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-triangle-exclamation"></i>
-                        <p><strong>Deep-seated or unusual infections</strong> (deep skin abscesses, Pneumocystis pneumonia, atypical organisms)</p>
-                    </div>
-                </div>
+            <p>The immune system fails in three ways. It can be missing (deficiency), it can overreact (allergy), or it can attack the body (autoimmunity). This guide lives in the first two. Deficiency means too little immune system, and the result is recurrent, unusual infection.</p>
 
-                <h3>Common Pediatric PIDs</h3>
+            <p>Deficiency comes in two flavors. The exam wants you to tell them apart from the history.</p>
 
-                <div class="type-grid">
-                    <div class="type-card">
-                        <div class="type-card-header pid">
-                            <i class="fas fa-dna"></i>
-                            <h4>SCID</h4>
-                            <span class="tag">T + B Cell</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Problem</h5>
-                            <p>Both T and B cell dysfunction &mdash; the classic \u201cbubble boy\u201d disease.</p>
-                            <h5>Findings</h5>
-                            <p>Severe, unusual, opportunistic infections in infancy; FTT, thrush, chronic diarrhea.</p>
-                            <h5>Treatment</h5>
-                            <p><strong>Bone marrow transplant is curative.</strong> Strict protective isolation until transplant.</p>
-                            <h5>Screen</h5>
-                            <p>Now part of universal <strong>newborn screening</strong>.</p>
-                        </div>
-                    </div>
-
-                    <div class="type-card">
-                        <div class="type-card-header pid">
-                            <i class="fas fa-person"></i>
-                            <h4>Bruton\u2019s / XLA</h4>
-                            <span class="tag">B Cell</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Problem</h5>
-                            <p>X-linked agammaglobulinemia &mdash; <strong>no B cells, no antibodies</strong>. Boys only.</p>
-                            <h5>Findings</h5>
-                            <p>Recurrent bacterial infections (encapsulated organisms) after 6 months as maternal IgG wears off.</p>
-                            <h5>Treatment</h5>
-                            <p><strong>Monthly IVIG infusions</strong> to replace antibodies.</p>
-                        </div>
-                    </div>
-
-                    <div class="type-card">
-                        <div class="type-card-header pid">
-                            <i class="fas fa-heart"></i>
-                            <h4>DiGeorge (22q11.2 Deletion)</h4>
-                            <span class="tag">T Cell</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Problem</h5>
-                            <p>Thymic hypoplasia &rarr; low T cells. Also cardiac defects, hypocalcemia from parathyroid hypoplasia.</p>
-                            <h5>CATCH-22 Mnemonic</h5>
-                            <p><strong>C</strong>ardiac, <strong>A</strong>bnormal facies, <strong>T</strong>hymic hypoplasia, <strong>C</strong>left palate, <strong>H</strong>ypocalcemia.</p>
-                            <h5>Treatment</h5>
-                            <p>Calcium, cardiac repair, possibly thymus transplant.</p>
-                        </div>
-                    </div>
-
-                    <div class="type-card">
-                        <div class="type-card-header pid">
-                            <i class="fas fa-droplet"></i>
-                            <h4>Wiskott-Aldrich</h4>
-                            <span class="tag">X-linked</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Problem</h5>
-                            <p>Combined defect; boys only.</p>
-                            <h5>Classic Triad</h5>
-                            <p><strong>Thrombocytopenia (small platelets), eczema, infections.</strong></p>
-                            <h5>Treatment</h5>
-                            <p>IVIG, antibiotics; <strong>HSCT curative</strong>.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-shield-virus"></i></div>
-                    <div class="info-box-content">
-                        <h5>SCID Is a Newborn Emergency</h5>
-                        <p>A baby with confirmed SCID has essentially NO working immune system. <strong>Strict protective isolation</strong>, <strong>no live vaccines</strong>, only <strong>irradiated, CMV-negative, leukoreduced blood products</strong>, and <strong>urgent referral for bone marrow transplant</strong>. Most centers aim for HSCT within the first 3.5 months of life. Delay is life-threatening.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: PID red flags \u2013 persistent thrush, \u22652 severe infections, \u22652 PNA, FTT, family history. SCID, XLA (B cell), DiGeorge (T cell + heart/Ca), WAS.</div>
-            </section>
-
-            <!-- Section 3: Pediatric HIV -->
-            <section class="guide-section" id="hiv">
-                <div class="section-header">
-                    <div class="section-number">3</div>
-                    <div class="section-title-group">
-                        <h2>Pediatric HIV</h2>
-                        <div class="subtitle">Transmission, diagnosis, and lifelong therapy</div>
-                    </div>
-                </div>
-
-                <h3>How Children Get HIV</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-baby"></i>
-                        <p><strong>Perinatal (vertical) transmission</strong> &mdash; most common route: in utero, intrapartum, or via <strong>breastfeeding</strong>.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-syringe"></i>
-                        <p><strong>Bloodborne</strong> &mdash; contaminated needles, rare transfusions in countries without screening.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-heart"></i>
-                        <p><strong>Adolescents</strong> &mdash; sexual transmission, shared needles.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-shield-halved"></i>
-                        <p><strong>Prevention</strong> &mdash; maternal ART during pregnancy reduces transmission from ~25% to &lt;1%.</p>
-                    </div>
-                </div>
-
-                <h3>Preventing Perinatal Transmission</h3>
-
-                <ol class="step-list">
-                    <li><strong>Prenatal HIV testing</strong> for all pregnant patients; if positive, start or continue ART throughout pregnancy.</li>
-                    <li><strong>Intrapartum IV zidovudine</strong> if viral load is detectable near delivery.</li>
-                    <li><strong>Scheduled C-section at 38 weeks</strong> if viral load &gt; 1,000 copies/mL.</li>
-                    <li><strong>Infant post-exposure prophylaxis</strong> &mdash; oral zidovudine \u00b1 additional ART for 4&ndash;6 weeks.</li>
-                    <li><strong>NO breastfeeding in the US</strong> &mdash; formula feeding only (breast milk transmits virus).</li>
-                </ol>
-
-                <h3>Clinical Presentation</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-weight-scale"></i>
-                        <p><strong>Failure to thrive</strong>, poor growth, weight loss.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-circle-nodes"></i>
-                        <p><strong>Lymphadenopathy, hepatosplenomegaly.</strong></p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-brain"></i>
-                        <p>Developmental delays, encephalopathy.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-face-smile"></i>
-                        <p><strong>Persistent thrush</strong>, chronic diarrhea, parotid enlargement.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-lungs"></i>
-                        <p><strong>Opportunistic infections:</strong> <strong>Pneumocystis jirovecii pneumonia (PCP)</strong>, CMV, mycobacteria, candida esophagitis.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-chart-line"></i>
-                        <p>Lower CD4 counts than adults at same age; rapid progression possible in infants.</p>
-                    </div>
-                </div>
-
-                <h3>Diagnosis</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Age</th>
-                                <th>Test of Choice</th>
-                                <th>Why</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Infants &lt; 18 months (perinatally exposed)</strong></td>
-                                <td><strong>HIV DNA/RNA PCR</strong> at birth, 2&ndash;3 weeks, 1\u20132 months, 4\u20136 months</td>
-                                <td>Maternal antibodies cross the placenta, so antibody tests are unreliable until \u226518&ndash;24 months.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Children \u2265 18 months, adolescents, adults</strong></td>
-                                <td>HIV antibody / antigen combo test</td>
-                                <td>Standard serologic testing.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Monitor disease activity</strong></td>
-                                <td><strong>CD4 count</strong> and <strong>viral load</strong> at regular intervals</td>
-                                <td>CD4 = immune status; viral load = disease activity and response to ART.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Treatment (Antiretroviral Therapy / ART)</h3>
-
-                <ul>
-                    <li><strong>Start ART in ALL children with HIV</strong>, regardless of CD4 count or symptoms (modern recommendation).</li>
-                    <li><strong>Combination therapy (cART / HAART)</strong> &mdash; typically 3 or more drugs from different classes.</li>
-                    <li><strong>Drug classes:</strong> NRTIs (zidovudine, lamivudine), NNRTIs (efavirenz, nevirapine), protease inhibitors (lopinavir/ritonavir), integrase inhibitors (dolutegravir, raltegravir), entry inhibitors.</li>
-                    <li><strong>Goal</strong>: undetectable viral load; CD4 count restored and maintained.</li>
-                    <li><strong>Daily adherence is everything.</strong> Missed doses \u2192 resistance \u2192 treatment failure.</li>
-                    <li><strong>Prophylaxis:</strong> TMP-SMX for PCP when CD4 falls; consider azithromycin for MAC.</li>
-                </ul>
-
-                <div class="info-box clinical">
-                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
-                    <div class="info-box-content">
-                        <h5>HIV Is a Chronic, Manageable Condition</h5>
-                        <p>With daily ART, most children and adolescents with HIV achieve <strong>undetectable viral loads</strong> and a <strong>near-normal life expectancy</strong>. Untreatable-to-manageable is one of the most dramatic success stories in pediatric medicine. Your job as the nurse: support adherence relentlessly, coach the family through stigma, and treat this like a chronic condition (diabetes, asthma) &mdash; serious but lived with.</p>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-infant-hiv-testing">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Infant HIV Testing Uses PCR, Not Antibodies</div>
-                    <div class="florencebot-tip-content">
-                        Babies born to HIV-positive mothers have <strong>maternal IgG crossing the placenta</strong>, so an antibody test will be positive without the baby actually being infected. Until ~18 months, the only reliable tests are <strong>HIV DNA or RNA PCR</strong>, which detect viral nucleic acid directly. Two negative PCRs after 1 month of age typically rule out infection; definitive antibody testing at 18&ndash;24 months confirms.
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Perinatal transmission is #1. Maternal ART prevents it. Test infants with PCR. Treat everyone with cART. Adherence is survival.</div>
-            </section>
-
-            <!-- Section 4: Anaphylaxis -->
-            <section class="guide-section" id="anaphylaxis">
-                <div class="section-header">
-                    <div class="section-number">4</div>
-                    <div class="section-title-group">
-                        <h2>Anaphylaxis</h2>
-                        <div class="subtitle">Minutes matter: airway, then IM epinephrine</div>
-                    </div>
-                </div>
-
-                <p>Anaphylaxis is a <strong>rapid, life-threatening IgE-mediated systemic allergic reaction</strong>. The most common pediatric triggers are <strong>food (peanut, tree nuts, milk, egg, shellfish)</strong>, insect stings, medications (beta-lactams), and latex. Severity ranges from cutaneous reactions to cardiovascular collapse and airway compromise.</p>
-
-                <h3>Definition (Any One of These)</h3>
-
-                <ul>
-                    <li>Acute onset of a reaction involving <strong>two or more body systems</strong> (skin, respiratory, GI, CV, CNS) after exposure to a likely allergen.</li>
-                    <li>Rapidly progressive hypotension after exposure to a known allergen.</li>
-                    <li>Acute involvement of skin / mucosa <strong>+</strong> respiratory compromise OR hypotension OR end-organ dysfunction.</li>
-                </ul>
-
-                <h3>System-by-System Findings</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>System</th>
-                                <th>Signs</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Skin</strong></td><td>Flushing, generalized hives (urticaria), pruritus, <strong>angioedema</strong> (lips/tongue/eyelids)</td></tr>
-                            <tr><td><strong>Respiratory</strong></td><td>Stridor, hoarseness, throat tightness, cough, wheezing, dyspnea, hypoxia</td></tr>
-                            <tr><td><strong>GI</strong></td><td>Nausea, vomiting, crampy abdominal pain, diarrhea</td></tr>
-                            <tr><td><strong>Cardiovascular</strong></td><td>Tachycardia, <strong>hypotension</strong>, dizziness, syncope, poor perfusion, shock</td></tr>
-                            <tr><td><strong>CNS</strong></td><td>Anxiety, confusion, altered mental status, \u201csense of doom,\u201d loss of consciousness</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Anaphylaxis Management (In Order)</h3>
-
-                <ol class="step-list">
-                    <li><strong>ASSESS the AIRWAY</strong> &mdash; look for stridor, angioedema, inability to speak. Secure airway if compromised; prepare for intubation or cricothyrotomy if severe.</li>
-                    <li><strong>INTRAMUSCULAR EPINEPHRINE</strong> &mdash; the FIRST medication. <strong>0.01 mg/kg of 1:1,000 concentration IM in the MID-ANTEROLATERAL THIGH (vastus lateralis)</strong>. Max dose: 0.3 mg child, 0.5 mg adolescent. <strong>Repeat every 5\u201315 minutes as needed</strong>.</li>
-                    <li><strong>Remove the trigger</strong> if possible (stop IV antibiotic, remove stinger).</li>
-                    <li><strong>Supine position with legs elevated</strong> (Trendelenburg) for hypotension; sit up if respiratory distress.</li>
-                    <li><strong>High-flow oxygen</strong> and continuous pulse oximetry.</li>
-                    <li><strong>IV access x 2</strong>; large-bore. Rapid <strong>normal saline boluses 20 mL/kg</strong> for hypotension.</li>
-                    <li><strong>Adjunct medications</strong> (NEVER substitute for epi):
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Primary: inherited, present from birth</div>
+                    <div class="comparison-card-body">
                         <ul>
-                            <li><strong>Antihistamines</strong> &mdash; H1 (diphenhydramine), H2 (famotidine) &mdash; for skin/itching.</li>
-                            <li><strong>Bronchodilators</strong> (albuterol nebulizer) for wheezing.</li>
-                            <li><strong>Corticosteroids</strong> (methylprednisolone IV or prednisone PO) &mdash; may reduce biphasic reaction.</li>
+                            <li>A genetic defect in immune cells</li>
+                            <li>Severe infections in the first year</li>
+                            <li>SCID is caught on newborn screening</li>
+                            <li>Family history of PID or early deaths</li>
                         </ul>
-                    </li>
-                    <li><strong>Continuous monitoring</strong>; transfer to the appropriate level of care (ED, PICU).</li>
-                    <li><strong>Observe for biphasic reaction</strong> &mdash; minimum <strong>4\u20138 hours</strong> of observation after symptoms resolve; some centers extend longer for severe cases.</li>
-                    <li><strong>Discharge plan</strong>: 2 epinephrine auto-injectors, written anaphylaxis action plan, allergy referral, avoidance education, MedicAlert bracelet.</li>
-                </ol>
-
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-syringe"></i></div>
-                    <div class="info-box-content">
-                        <h5>Epi First &mdash; Don\u2019t Wait for Full Criteria</h5>
-                        <p>If you\u2019re thinking "maybe anaphylaxis," <strong>give the epinephrine</strong>. There is no safe delay, and delayed epi is the strongest predictor of death. Antihistamines are NOT a substitute for epinephrine &mdash; they don\u2019t treat airway swelling or hypotension. <strong>IM in the vastus lateralis</strong> (mid-anterolateral thigh) for fastest absorption. NOT subQ, NOT deltoid (slower, less reliable).</p>
+                        <p><strong>Named examples:</strong> SCID, Bruton XLA, DiGeorge, Wiskott-Aldrich.</p>
                     </div>
                 </div>
-
-                <h3>Epinephrine Auto-Injectors (EpiPen, Auvi-Q, generics)</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-baby"></i>
-                        <p><strong>EpiPen Jr (0.15 mg)</strong> for children 15\u201330 kg (~33\u201366 lb). <strong>EpiPen (0.3 mg)</strong> for \u226530 kg.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-compass"></i>
-                        <p><strong>Technique:</strong> pull off safety cap, press firmly against the <strong>outer mid-thigh through clothing if needed</strong>, hold 3\u201310 seconds per device instructions.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-ambulance"></i>
-                        <p><strong>Always call 911 AFTER giving</strong> &mdash; epinephrine is a bridge to emergency care, not a substitute.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-clock"></i>
-                        <p>If symptoms persist or worsen, give a <strong>second dose after 5\u201315 minutes</strong>; that\u2019s why families get two devices.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-school"></i>
-                        <p><strong>School action plan</strong> &mdash; auto-injectors stored accessibly (NOT locked away), teachers trained, allergens removed from cafeteria when feasible.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-calendar"></i>
-                        <p><strong>Check expiration</strong> regularly; discolored or cloudy epi should be replaced.</p>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Secondary: acquired, broke later</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>The immune system was working, then something suppressed it</li>
+                            <li>HIV, chemotherapy, high-dose steroids, biologics</li>
+                            <li>Onset tracks the cause, not birth</li>
+                            <li>Often reversible when the cause is removed</li>
+                        </ul>
+                        <p><strong>Nursing overlap:</strong> both need protection, aggressive infection treatment, and no live vaccines.</p>
                     </div>
                 </div>
-
-                <div class="florencebot-tip" id="tip-biphasic-observation">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">The Biphasic Catch</div>
-                    <div class="florencebot-tip-content">
-                        Up to <strong>20% of anaphylaxis cases have a biphasic reaction</strong> &mdash; symptoms recur hours (usually within 8\u201310, but up to 72) after initial resolution. That\u2019s why we observe at least 4\u20138 hours and give families a clear plan. Teach: <strong>\u201cIf any symptoms come back, use the second epinephrine and call 911 again.\u201d</strong> And always discharge with TWO auto-injectors \u2014 not one.
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Airway \u2192 IM epi 0.01 mg/kg vastus lateralis \u2192 O2, IV fluids, position \u2192 antihistamines, steroids, albuterol as ADJUNCTS \u2192 observe 4\u20138 hr for biphasic \u2192 2 epi pens home.</div>
-            </section>
-
-            <!-- Section 5: Vaccines -->
-            <section class="guide-section" id="vaccines">
-                <div class="section-header">
-                    <div class="section-number">5</div>
-                    <div class="section-title-group">
-                        <h2>Vaccines in Immunocompromised Children</h2>
-                        <div class="subtitle">No live vaccines, and why it matters</div>
-                    </div>
-                </div>
-
-                <h3>Live vs Inactivated</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>LIVE &mdash; AVOID if immunocompromised or household contact in some cases</th>
-                                <th>INACTIVATED / Non-live &mdash; Safe</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>MMR</strong> (measles, mumps, rubella)</td>
-                                <td>Injectable influenza</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Varicella (chickenpox)</strong></td>
-                                <td>Tdap / DTaP</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Rotavirus</strong> (oral, infants)</td>
-                                <td>Pneumococcal conjugate (PCV)</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Intranasal (live-attenuated) influenza</strong></td>
-                                <td>Hib, HepA, HepB</td>
-                            </tr>
-                            <tr>
-                                <td>BCG (TB, not routine in US)</td>
-                                <td>Meningococcal conjugate</td>
-                            </tr>
-                            <tr>
-                                <td>Yellow fever</td>
-                                <td>HPV</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Key Vaccine Rules</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO LIVE VACCINES</strong> to immunocompromised children (HIV with low CD4, chemo, biologics, high-dose steroids, SCID) &mdash; risk of vaccine-strain infection.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Inactivated vaccines are SAFE and STRONGLY ENCOURAGED</strong>, though the immune response may be blunted. Boost as recommended.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-house"></i>
-                        <p><strong>Household contacts</strong> of severely immunocompromised kids should get INJECTABLE flu (not nasal); generally safe to receive other live vaccines (MMR, varicella, rotavirus) but monitor for shedding.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-baby"></i>
-                        <p><strong>HIV-exposed and HIV-positive children</strong> &mdash; follow CDC guidance; MMR and varicella may be given if CD4 is adequate; rotavirus per HIV status.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-calendar"></i>
-                        <p><strong>Catch-up immunization</strong> after immune recovery (post-chemo, post-transplant, off biologics) &mdash; work with the team.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-school"></i>
-                        <p>Update school vaccine records; some states allow medical exemption for immunocompromised.</p>
-                    </div>
-                </div>
-
-                <div class="info-box nclex">
-                    <div class="info-box-icon"><i class="fas fa-book-medical"></i></div>
-                    <div class="info-box-content">
-                        <h5>NCLEX Point &mdash; Sibling Flu Shot</h5>
-                        <p>The younger sibling of a child on chemo or biologics wants a flu shot at the pediatrician. The sibling should get the <strong>injectable (inactivated) influenza vaccine</strong>, NOT the intranasal live-attenuated spray. Intranasal flu can shed and potentially infect the immunocompromised sibling.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: No live vaccines (MMR, varicella, rotavirus, nasal flu, BCG) in immunocompromised. Injectable flu, Tdap, pneumo, HPV, etc. are fine. Household: injectable flu.</div>
-            </section>
-
-            <!-- Section 6: Nursing Priorities -->
-            <section class="guide-section" id="nursing">
-                <div class="section-header">
-                    <div class="section-number">6</div>
-                    <div class="section-title-group">
-                        <h2>Nursing Priorities</h2>
-                        <div class="subtitle">Assessment, isolation, medication safety, and emergency readiness</div>
-                    </div>
-                </div>
-
-                <h3>Assessment Priorities</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-temperature-high"></i>
-                        <p><strong>Fever response</strong> &mdash; immunocompromised children may not mount a normal fever; any fever is evaluated urgently.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-weight-scale"></i>
-                        <p><strong>Weight and growth</strong> &mdash; failure to thrive is a hallmark of both PID and HIV. Track at every visit.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-lungs"></i>
-                        <p><strong>Respiratory assessment</strong> &mdash; tachypnea, hypoxia, cough can signal PCP or bacterial pneumonia.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-face-smile"></i>
-                        <p><strong>Oral/mucous membrane exam</strong> &mdash; thrush, ulcers, lesions.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-eye"></i>
-                        <p><strong>Skin</strong> &mdash; eczema (Wiskott-Aldrich), rashes, wounds, central line site.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-brain"></i>
-                        <p><strong>Developmental assessment</strong> &mdash; delays in motor and cognitive milestones.</p>
-                    </div>
-                </div>
-
-                <h3>Protective Measures</h3>
-
-                <ul>
-                    <li><strong>Private room, reverse isolation</strong> for severe PID and profound immunosuppression.</li>
-                    <li><strong>Strict handwashing</strong>, HEPA filtration, limited visitors (no sick contacts).</li>
-                    <li><strong>Avoid live plants, fresh flowers, raw foods</strong> (neutropenic-diet approach).</li>
-                    <li><strong>Irradiated, CMV-negative, leukoreduced</strong> blood products.</li>
-                    <li><strong>Central line care</strong> per strict protocol; monitor for CLABSI.</li>
-                    <li><strong>No live vaccines</strong>; catch up inactivated vaccines per schedule.</li>
-                </ul>
-
-                <h3>Medication Safety</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-pills"></i>
-                        <p><strong>ART adherence</strong> is nonnegotiable in HIV &mdash; missed doses cause resistance. Use pill organizers, reminders, partnership with family.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-shield-virus"></i>
-                        <p><strong>Prophylactic antibiotics</strong> (TMP-SMX for PCP, penicillin for some PIDs) &mdash; teach purpose and stress adherence.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-droplet"></i>
-                        <p><strong>IVIG</strong> infusions for antibody deficiencies &mdash; monitor for reactions (fever, rash, anaphylaxis); pre-medicate per protocol.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-syringe"></i>
-                        <p><strong>Epi pen preparedness</strong> &mdash; for kids with known severe allergies, ensure pens are current, accessible, and family/school know how to use.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-flask"></i>
-                        <p><strong>Lab monitoring</strong> &mdash; CD4 count, viral load (HIV); immunoglobulin levels (PID); routine labs per medication.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-book"></i>
-                        <p><strong>Drug interaction awareness</strong> &mdash; ART has many drug-drug interactions; coordinate with pharmacy.</p>
-                    </div>
-                </div>
-
-                <h3>Anaphylaxis Readiness</h3>
-
-                <div class="redflag-grid">
-                    <div class="redflag-card">
-                        <i class="fas fa-syringe"></i>
-                        <p><strong>Epinephrine at the bedside</strong> for any patient receiving a new biologic, IV antibiotic, or contrast</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-clipboard-check"></i>
-                        <p><strong>Allergy verification</strong> before every medication; clarify the reaction type</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-heart-pulse"></i>
-                        <p><strong>Continuous monitoring</strong> during first doses of biologics and IVIG</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-ambulance"></i>
-                        <p><strong>Rapid-response activation</strong> for any suspected anaphylaxis &mdash; don\u2019t wait for full presentation</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Assess fever/growth/development; protect with isolation + irradiated blood + no live vaccines; ART + IVIG + prophylaxis adherence; epi ready for new infusions.</div>
-            </section>
-
-            <!-- Section 7: Family Education -->
-            <section class="guide-section" id="family">
-                <div class="section-header">
-                    <div class="section-number">7</div>
-                    <div class="section-title-group">
-                        <h2>Family Education &amp; Home Care</h2>
-                        <div class="subtitle">HIV home care, epi plans, and the long road</div>
-                    </div>
-                </div>
-
-                <h3>HIV Home Care (Your Requested Teaching)</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-utensils"></i>
-                        <p><strong>Nutrition</strong> &mdash; high-calorie, high-protein diet; small frequent meals; oral supplements if needed; monitor growth.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-pills"></i>
-                        <p><strong>Medication compliance</strong> &mdash; daily ART exactly as prescribed; pill organizers, phone alarms, pairing with routines (tooth-brushing).</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-comment-medical"></i>
-                        <p><strong>Pain management</strong> &mdash; acetaminophen for fever/mild pain, address chronic pain with provider; avoid aspirin in younger children.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-thermometer-half"></i>
-                        <p><strong>Signs of severe infection</strong> &mdash; fever, cough, new rash, thrush, persistent diarrhea, lethargy, trouble breathing. Call the clinic right away.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-school"></i>
-                        <p><strong>School/daycare</strong> &mdash; standard precautions; confidentiality per state law; IEP or 504 plan if cognitive delays.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-heart"></i>
-                        <p><strong>Mental health, stigma, and adolescent transition</strong> &mdash; ongoing psychosocial support; disclosure counseling when developmentally appropriate.</p>
-                    </div>
-                </div>
-
-                <h3>Epi Pen / Allergy Family Plan</h3>
-
-                <ol class="step-list">
-                    <li><strong>Carry TWO epinephrine auto-injectors</strong> at all times; check expiration dates.</li>
-                    <li>Have a <strong>written Anaphylaxis Action Plan</strong> in the pocket of the carrying case, at school, and at activities.</li>
-                    <li><strong>Teach caregivers, teachers, coaches, and older siblings</strong> how to use the auto-injector.</li>
-                    <li><strong>MedicAlert bracelet</strong> identifying the allergy.</li>
-                    <li>Read all food labels; ask about ingredients when eating out or at social events.</li>
-                    <li><strong>Avoid cross-contamination</strong> in the kitchen; wash hands and surfaces after allergen exposure.</li>
-                    <li>Review action plan with every new school year or activity.</li>
-                </ol>
-
-                <h3>Primary Immune Deficiency &mdash; Home Care</h3>
-
-                <ul>
-                    <li><strong>Strict handwashing</strong> by every caregiver; avoid sick contacts.</li>
-                    <li><strong>No live vaccines</strong>; catch up inactivated vaccines.</li>
-                    <li><strong>Prophylactic antibiotics</strong> if prescribed (TMP-SMX, penicillin) &mdash; daily, don\u2019t miss doses.</li>
-                    <li><strong>Monthly IVIG infusions</strong> for antibody deficiencies &mdash; can be done at home with infusion nurse support.</li>
-                    <li><strong>Early evaluation of any fever or illness</strong>.</li>
-                    <li><strong>Genetic counseling</strong> for family planning.</li>
-                    <li>Connect with <strong>support organizations</strong> (Immune Deficiency Foundation, NIH genetic disorder networks).</li>
-                </ul>
-
-                <h3>When to Call or Go to the ED</h3>
-
-                <div class="redflag-grid">
-                    <div class="redflag-card">
-                        <i class="fas fa-phone"></i>
-                        <p><strong>Fever</strong> in any immunocompromised child &mdash; always call</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-phone"></i>
-                        <p><strong>Signs of anaphylaxis</strong> &mdash; give epi, call 911</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-phone"></i>
-                        <p><strong>Respiratory distress, cough, hypoxia</strong></p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-phone"></i>
-                        <p><strong>Severe diarrhea, dehydration, vomiting</strong></p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-phone"></i>
-                        <p><strong>New rash</strong>, especially with fever</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-phone"></i>
-                        <p><strong>Central line redness/drainage/fever</strong> &mdash; CLABSI risk</p>
-                    </div>
-                </div>
-
-                <div class="info-box safe">
-                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
-                    <div class="info-box-content">
-                        <h5>Chronic, Serious &mdash; but Not Defining</h5>
-                        <p>Children with immune deficiency, HIV, and serious allergies grow up, attend school, play sports, form friendships, and build adult lives. The diagnosis is part of their story, not the whole of it. Your consistent, informed, compassionate nursing care helps families see past the crisis of diagnosis into a sustainable future.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: HIV home care = nutrition + adherence + pain + infection signs + mental health. Anaphylaxis = 2 epi pens + action plan + MedicAlert. PID = antibiotics + IVIG + no live vaccines + fever response.</div>
-            </section>
-
-            <!-- Quiz CTA -->
-            <div class="quiz-cta">
-                <h3>Test your knowledge</h3>
-                <p>14 NCLEX-style questions covering every section of this guide.</p>
-                <a href="quiz/quiz.html?topic=immune-deficiency-hiv" class="quiz-btn">
-                    <i class="fas fa-flask"></i> Start Quiz
-                </a>
             </div>
 
-            <!-- Cross References -->
-            <section class="cross-references" id="cross-references">
-                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
-                <div class="cross-ref-grid">
-                    <a href="jia-lupus.html" class="cross-ref-link">
-                        <i class="fas fa-bone"></i> JIA &amp; Pediatric Lupus
-                    </a>
-                    <a href="hypersensitivity-inflammatory-skin.html" class="cross-ref-link">
-                        <i class="fas fa-hand-dots"></i> Hypersensitivity Skin
-                    </a>
-                    <a href="pediatric-leukemias.html" class="cross-ref-link">
-                        <i class="fas fa-dna"></i> Pediatric Leukemias
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The axis that separates them</div>
+                <div class="info-box-content">
+                    <p>Timing and cause. Primary is inherited and shows up in infancy with no external reason. Secondary has a reason you can name: a virus, a drug, a treatment. The nursing care rhymes; the workup and the counseling do not.</p>
+                </div>
+            </div>
+
+            <h3>The warning signs of primary immune deficiency</h3>
+
+            <p>Do not memorize a random list. Memorize the pattern: recurrent, severe, unusual, and failing to grow.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Red flag</th><th>What counts</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>Persistent infection</td><td>Thrush or skin candidiasis past the usual age</td></tr>
+                        <tr><td>Two serious infections</td><td>Sepsis, meningitis, or osteomyelitis in one year</td></tr>
+                        <tr><td>Recurrent pneumonia</td><td>2 or more episodes in a single year</td></tr>
+                        <tr><td>Recurrent minor infection</td><td>8 or more ear infections, or 2 or more sinus infections, in a year</td></tr>
+                        <tr><td>Failure to thrive</td><td>Poor growth with chronic diarrhea or malabsorption</td></tr>
+                        <tr><td>Family history</td><td>Known PID or unexplained childhood deaths</td></tr>
+                        <tr><td>Poor antibiotic response</td><td>Needs IV antibiotics to clear ordinary infections</td></tr>
+                        <tr><td>Unusual organisms</td><td>Deep abscesses or Pneumocystis pneumonia</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Four named deficiencies worth knowing</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Disorder</th><th>Defect</th><th>Clue</th><th>Treatment</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>SCID</strong></td>
+                            <td>Both T and B cells; the "bubble boy" disease</td>
+                            <td>Severe opportunistic infection in infancy, thrush, diarrhea</td>
+                            <td>Bone marrow transplant is curative; strict isolation until then</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bruton XLA</strong></td>
+                            <td>No B cells, no antibodies; boys only</td>
+                            <td>Recurrent bacterial infection after 6 months, as maternal IgG fades</td>
+                            <td>Monthly IVIG to replace the antibodies he cannot make</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DiGeorge</strong></td>
+                            <td>Thymic hypoplasia, low T cells (22q11.2 deletion)</td>
+                            <td>CATCH-22: cardiac, abnormal facies, thymic, cleft palate, hypocalcemia</td>
+                            <td>Calcium, cardiac repair, possible thymus transplant</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Wiskott-Aldrich</strong></td>
+                            <td>Combined defect; boys only</td>
+                            <td>Triad of thrombocytopenia, eczema, and infection</td>
+                            <td>IVIG and antibiotics; transplant is curative</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-shield-virus"></i> SCID is a newborn emergency</div>
+                <div class="info-box-content">
+                    <p>A baby with SCID has essentially no working immune system. Use strict protective isolation. Give no live vaccines. Transfuse only irradiated, CMV-negative, leukoreduced blood products. Refer urgently for transplant; centers aim for it within the first 3.5 months of life. Delay is life-threatening.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-always-sick">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">"Always sick" has a pattern</div>
+                <div class="florencebot-tip-content">One ear infection is childhood. Recurrent, severe, and unusual infection with failure to thrive is a red flag. When a stem stacks pneumonias, thrush, and poor growth, it is pointing at primary immune deficiency, not a run of colds.</div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Primary is inherited and infant-onset; secondary has a cause you can name. The PID pattern is recurrent, severe, unusual infection plus failure to thrive. SCID and XLA are B-cell heavy; DiGeorge is T-cell plus heart and calcium.
+            </div>
+        </section>
+
+        <!-- ══════════ PEDIATRIC HIV ══════════ -->
+        <section class="guide-section" id="hiv">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>Pediatric HIV</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: an infant's antibody test is the mother's, not the baby's.</p>
+
+            <p>Most children get HIV by perinatal transmission: in utero, during delivery, or through breast milk. Maternal antiretroviral therapy in pregnancy drops that transmission from about a quarter of exposures to under 1 in 100. Prevention is the whole game here.</p>
+
+            <h3>Preventing perinatal transmission</h3>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Test every pregnant patient.</strong> If positive, start or continue ART throughout pregnancy.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Intrapartum IV zidovudine</strong> if the viral load is still detectable near delivery.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Scheduled C-section at 38 weeks</strong> if the viral load is &gt; 1,000 copies/mL.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Infant prophylaxis.</strong> Oral zidovudine, sometimes with added drugs, for 4 to 6 weeks.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>No breastfeeding in the US.</strong> Formula only, because breast milk transmits the virus.</div>
+                </li>
+            </ol>
+
+            <h3>Testing the infant</h3>
+
+            <p>An antibody test in a baby measures the mother's antibodies, which cross the placenta. It stays positive without the baby being infected. So you order a test that finds the virus itself.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Who</th><th>Test</th><th>Why</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Infants under 18 months, perinatally exposed</td>
+                            <td>HIV DNA or RNA PCR, repeated over the first months</td>
+                            <td>Maternal antibodies confound serology until 18 to 24 months</td>
+                        </tr>
+                        <tr>
+                            <td>Children 18 months and older, adolescents</td>
+                            <td>HIV antibody / antigen combo test</td>
+                            <td>Standard serology now reflects the child's own status</td>
+                        </tr>
+                        <tr>
+                            <td>Anyone on treatment</td>
+                            <td>CD4 count and viral load at intervals</td>
+                            <td>CD4 shows immune status; viral load shows disease activity</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Treatment and monitoring</h3>
+
+            <ul>
+                <li><strong>Start ART in every child with HIV</strong>, whatever the CD4 count or symptoms.</li>
+                <li><strong>Combination therapy</strong> uses 3 or more drugs from different classes: NRTIs, NNRTIs, protease inhibitors, integrase inhibitors.</li>
+                <li><strong>Daily adherence is everything.</strong> Missed doses breed resistance, and resistance means treatment failure.</li>
+                <li><strong>Goal:</strong> an undetectable viral load with the CD4 count restored.</li>
+                <li><strong>Prophylaxis:</strong> TMP-SMX for Pneumocystis pneumonia when the CD4 count falls.</li>
+            </ul>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-heart"></i> Treat HIV like a chronic condition</div>
+                <div class="info-box-content">
+                    <p>With daily ART, most children reach an undetectable viral load and a near-normal life expectancy. Your job is steady: support adherence, coach the family through stigma, and manage it like diabetes or asthma. Serious, but lived with.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-infant-hiv-testing">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Infant HIV testing uses PCR, not antibodies</div>
+                <div class="florencebot-tip-content">A baby born to an HIV-positive mother carries the mother's IgG across the placenta, so an antibody test reads positive on its own. Until about 18 months, only HIV DNA or RNA PCR is reliable, because it detects viral nucleic acid directly. Two negative PCRs after 1 month typically rule out infection; antibody testing at 18 to 24 months confirms.</div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Perinatal transmission is number one, and maternal ART prevents it. Test infants with PCR. Treat everyone with combination ART. Adherence is survival, and formula replaces breast milk in the US.
+            </div>
+        </section>
+
+        <!-- ══════════ ANAPHYLAXIS ══════════ -->
+        <section class="guide-section" id="anaphylaxis">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>Anaphylaxis or a milder reaction</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: airway or blood pressure. That is the line.</p>
+
+            <p>Anaphylaxis is a rapid, life-threatening IgE-mediated reaction. The common pediatric triggers are food, insect stings, medications, and latex. The exam question is rarely "is this an allergy." It is "is this the kind that kills," and the answer decides whether you reach for epinephrine.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Milder allergic reaction</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Skin only: hives, flushing, itching</li>
+                            <li>Breathing is comfortable</li>
+                            <li>Blood pressure is normal</li>
+                            <li>No vomiting, no dizziness</li>
+                        </ul>
+                        <p><strong>Action:</strong> an antihistamine is reasonable here. Watch closely, because it can escalate.</p>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Anaphylaxis</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Two or more systems involved</li>
+                            <li>Respiratory: stridor, wheeze, throat tightness</li>
+                            <li>Cardiovascular: hypotension, tachycardia, syncope</li>
+                            <li>Or skin plus a rapid drop in blood pressure</li>
+                        </ul>
+                        <p><strong>Action:</strong> intramuscular epinephrine now. Do not wait for full criteria.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The axis that separates them</div>
+                <div class="info-box-content">
+                    <p>Airway or blood pressure. Skin-only reactions are uncomfortable, not deadly. The moment breathing is threatened or the pressure drops, it is anaphylaxis, and epinephrine is the treatment. An antihistamine treats itch. It does not open an airway or hold up a blood pressure.</p>
+                </div>
+            </div>
+
+            <h3>Signs, system by system</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>System</th><th>Signs</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Skin</strong></td><td>Flushing, hives, itching, angioedema of lips, tongue, and eyelids</td></tr>
+                        <tr><td><strong>Respiratory</strong></td><td>Stridor, hoarseness, throat tightness, cough, wheeze, dyspnea, hypoxia</td></tr>
+                        <tr><td><strong>GI</strong></td><td>Nausea, vomiting, crampy abdominal pain, diarrhea</td></tr>
+                        <tr><td><strong>Cardiovascular</strong></td><td>Tachycardia, hypotension, dizziness, syncope, shock</td></tr>
+                        <tr><td><strong>CNS</strong></td><td>Anxiety, confusion, a sense of doom, loss of consciousness</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-syringe"></i> Epinephrine first, and do not wait</div>
+                <div class="info-box-content">
+                    <p>If you are thinking "maybe anaphylaxis," give the epinephrine. There is no safe delay, and late epinephrine is the strongest predictor of death. Give it IM in the vastus lateralis, the mid-anterolateral thigh, for the fastest absorption. Not subcutaneous. Not deltoid. Antihistamines are not a substitute.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-epi-first">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">The antihistamine is a decoy</div>
+                <div class="florencebot-tip-content">In a "what do you do first" stem, oral diphenhydramine will sit there looking like the allergy answer. It treats itching and nothing else. When the stem has wheeze, throat tightness, or a falling blood pressure, the first action is always IM epinephrine in the thigh.</div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-biphasic-observation">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">The biphasic catch</div>
+                <div class="florencebot-tip-content">Symptoms can return hours after they resolve, usually within 8 to 10 hours, sometimes up to 72. That second wave is why you observe for at least 4 to 8 hours and send the family home with two auto-injectors, not one. Teach the plan: if symptoms come back, use the second pen and call 911 again.</div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Skin only is mild; airway or blood pressure is anaphylaxis. IM epinephrine in the vastus lateralis, first. Antihistamines, steroids, and albuterol are adjuncts. Observe 4 to 8 hours for the biphasic return, then two pens home.
+            </div>
+        </section>
+
+        <!-- ══════════ VACCINES ══════════ -->
+        <section class="guide-section" id="vaccines">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>Live or inactivated</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: does the vaccine contain a living pathogen.</p>
+
+            <p>A live vaccine is a weakened pathogen. A healthy immune system defeats it and learns. A weak one may not, and the vaccine becomes the infection. That single fact drives every vaccine question in an immunocompromised child.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Live: avoid if immunocompromised</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>MMR (measles, mumps, rubella)</li>
+                            <li>Varicella (chickenpox)</li>
+                            <li>Rotavirus (oral, infants)</li>
+                            <li>Intranasal influenza</li>
+                            <li>BCG and yellow fever</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Inactivated: safe and encouraged</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Injectable influenza</li>
+                            <li>Tdap and DTaP</li>
+                            <li>Pneumococcal conjugate</li>
+                            <li>Hib, Hep A, Hep B</li>
+                            <li>Meningococcal and HPV</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The axis that separates them</div>
+                <div class="info-box-content">
+                    <p>Living or not. Hold every live vaccine in a child with HIV and a low CD4, on chemotherapy, on biologics, on high-dose steroids, or with SCID. Give the inactivated vaccines freely; the response may be blunted, but the vaccine is safe. Boost as the schedule recommends.</p>
+                </div>
+            </div>
+
+            <h3>The household rule</h3>
+
+            <p>The people around the child matter too. A live vaccine can shed. Match the family's flu vaccine to the child's fragility.</p>
+
+            <ul>
+                <li><strong>Household contacts get injectable flu</strong>, not the intranasal spray, because the live nasal vaccine can shed virus.</li>
+                <li><strong>Other live vaccines are generally fine for contacts</strong> (MMR, varicella, rotavirus), with monitoring for shedding.</li>
+                <li><strong>HIV-exposed children follow CDC guidance</strong>; MMR and varicella may be given when the CD4 count is adequate.</li>
+                <li><strong>Catch up inactivated vaccines</strong> after immune recovery, working with the team.</li>
+            </ul>
+
+            <div class="florencebot-tip" id="tip-no-live-vaccines">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">The sibling flu shot</div>
+                <div class="florencebot-tip-content">A classic stem: the younger sibling of a child on chemotherapy wants a flu vaccine. The sibling gets the injectable, inactivated shot, not the intranasal spray. The nasal vaccine is live and can shed to the immunocompromised child at home.</div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> No live vaccines (MMR, varicella, rotavirus, nasal flu, BCG) in the immunocompromised. Inactivated vaccines are safe and encouraged. Household contacts take injectable flu, never the nasal spray.
+            </div>
+        </section>
+
+        <!-- ══════════ WHAT YOU DO FIRST ══════════ -->
+        <section class="guide-section" id="nursing">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2>What you do first</h2>
+            </div>
+
+            <p>Two emergencies live in this topic: the anaphylaxis you have to reverse, and the immunocompromised child you have to protect. Both are ordering problems. Know the sequence, not just the pieces.</p>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-list-ol"></i> The ordering rules</div>
+                <div class="info-box-content">
+                    <ul>
+                        <li>Airway beats everything. Assess it before you reach for a drug.</li>
+                        <li>Epinephrine beats the adjuncts. Antihistamines and steroids come after, never instead.</li>
+                        <li>In an immunocompromised child, any fever is urgent, even a low one.</li>
+                        <li>Prevention beats rescue. Protect before the infection starts.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>Anaphylaxis, in order</h3>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Assess the airway.</strong> Look for stridor, angioedema, and trouble speaking. Prepare to secure it if it is failing.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Intramuscular epinephrine.</strong> The first drug. 0.01 mg/kg of 1:1,000 in the vastus lateralis. Repeat every 5 to 15 minutes as needed.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Remove the trigger.</strong> Stop the IV antibiotic; remove the stinger.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Position and oxygen.</strong> Supine with legs raised for hypotension; sit up for respiratory distress. High-flow oxygen with pulse oximetry.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>IV fluids.</strong> Two large-bore lines. Normal saline boluses at 20 mL/kg for hypotension.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">6</div>
+                    <div class="intervention-content"><strong>Adjuncts, never substitutes.</strong> H1 and H2 antihistamines for skin, albuterol for wheeze, corticosteroids to blunt the biphasic wave.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">7</div>
+                    <div class="intervention-content"><strong>Monitor and observe.</strong> Continuous monitoring; watch at least 4 to 8 hours for a biphasic reaction before discharge.</div>
+                </li>
+            </ol>
+
+            <h3>Protecting the immunocompromised child</h3>
+
+            <ul>
+                <li><strong>Private room, reverse isolation</strong> for severe PID and profound immunosuppression.</li>
+                <li><strong>Strict handwashing</strong>, HEPA filtration, and no sick visitors.</li>
+                <li><strong>No live plants, fresh flowers, or raw foods</strong>, the neutropenic-diet approach.</li>
+                <li><strong>Irradiated, CMV-negative, leukoreduced</strong> blood products only.</li>
+                <li><strong>Strict central line care</strong>; watch for a line infection.</li>
+                <li><strong>No live vaccines</strong>; keep inactivated vaccines current.</li>
+            </ul>
+
+            <div class="florencebot-tip" id="tip-fever-response">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">A fever is an emergency here</div>
+                <div class="florencebot-tip-content">An immunocompromised child may not mount a normal fever, so any temperature is treated as serious. Do not wait and watch. Evaluate it urgently, draw cultures, and start antibiotics per protocol. The reassurance you would give a healthy child does not apply.</div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Anaphylaxis order is airway, IM epinephrine, remove trigger, position and oxygen, fluids, then adjuncts. For the immunocompromised child, protect hard and treat every fever as urgent.
+            </div>
+        </section>
+
+        <!-- ══════════ FAMILY EDUCATION ══════════ -->
+        <section class="guide-section" id="family">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2>Send them home knowing</h2>
+            </div>
+
+            <p>These conditions are managed at home, by families, for years. The discharge teaching is the intervention. Three plans go home: HIV daily care, the anaphylaxis plan, and PID protection.</p>
+
+            <h3>HIV home care</h3>
+
+            <ul>
+                <li><strong>Medication adherence</strong> is the whole plan. Daily ART, pill organizers, phone alarms, paired with tooth-brushing.</li>
+                <li><strong>Nutrition</strong>: high-calorie, high-protein, small frequent meals, growth tracked.</li>
+                <li><strong>Watch for severe infection</strong>: fever, cough, new rash, thrush, persistent diarrhea, trouble breathing. Call the clinic.</li>
+                <li><strong>Pain and comfort</strong>: acetaminophen for fever; avoid aspirin in young children.</li>
+                <li><strong>School and mental health</strong>: standard precautions, confidentiality, stigma support, and a plan for adolescent transition.</li>
+            </ul>
+
+            <h3>The anaphylaxis family plan</h3>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Carry two auto-injectors</strong> at all times, and check the expiration dates.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Keep a written action plan</strong> in the case, at school, and at every activity.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Teach the technique</strong> to caregivers, teachers, coaches, and older siblings. Press firmly on the outer thigh, through clothing if needed.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Give the drug, then call 911.</strong> Epinephrine is a bridge to care, not a substitute for it.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Match the device to weight.</strong> EpiPen Jr, 0.15 mg, for 15 to 30 kg; EpiPen, 0.3 mg, at 30 kg and up.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">6</div>
+                    <div class="intervention-content"><strong>Add a MedicAlert bracelet</strong>, read every food label, and avoid cross-contamination at home.</div>
+                </li>
+            </ol>
+
+            <h3>Primary immune deficiency at home</h3>
+
+            <ul>
+                <li><strong>Strict handwashing</strong> by every caregiver, and no sick contacts.</li>
+                <li><strong>Prophylactic antibiotics</strong> if prescribed (TMP-SMX, penicillin), taken daily.</li>
+                <li><strong>Monthly IVIG</strong> for antibody deficiencies, often given at home with nurse support.</li>
+                <li><strong>Early evaluation of any fever or illness.</strong></li>
+                <li><strong>Genetic counseling</strong> for family planning, and support organizations for the long road.</li>
+            </ul>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Serious, but not the whole story</div>
+                <div class="info-box-content">
+                    <p>Children with immune deficiency, HIV, and severe allergies grow up. They attend school, play sports, and build adult lives. The diagnosis is part of their story, not all of it. Steady, informed nursing care is what helps a family see past the crisis of diagnosis.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> HIV home care is adherence, nutrition, and infection watch. Anaphylaxis is two pens, an action plan, and a MedicAlert bracelet. PID is antibiotics, IVIG, no live vaccines, and an urgent fever response.
+            </div>
+        </section>
+
+        <!-- ══════════ NUMBERS ══════════ -->
+        <section class="guide-section" id="numbers-cold">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2>Numbers to have cold</h2>
+            </div>
+
+            <p>These should be automatic. If you have to reason toward one of them, it is not learned yet.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead><tr><th>Number</th><th>Meaning</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>0.01 mg/kg, 1:1,000</strong></td><td>IM epinephrine dose you draw for anaphylaxis</td></tr>
+                        <tr><td><strong>0.3 mg child, 0.5 mg adolescent</strong></td><td>Most epinephrine in a single IM dose</td></tr>
+                        <tr><td><strong>Every 5 to 15 min</strong></td><td>When you repeat epinephrine if symptoms persist</td></tr>
+                        <tr><td><strong>4 to 8 hours</strong></td><td>Minimum observation for a biphasic return</td></tr>
+                        <tr><td><strong>2 auto-injectors</strong></td><td>What the child goes home carrying</td></tr>
+                        <tr><td><strong>0.15 mg, 15 to 30 kg</strong></td><td>EpiPen Jr band; use 0.3 mg at 30 kg and up</td></tr>
+                        <tr><td><strong>20 mL/kg</strong></td><td>Normal saline bolus for anaphylactic hypotension</td></tr>
+                        <tr><td><strong>18 to 24 months</strong></td><td>Age antibody tests become reliable, so infants get PCR</td></tr>
+                        <tr><td><strong>&gt; 1,000 copies/mL</strong></td><td>Viral load that schedules a C-section at 38 weeks</td></tr>
+                        <tr><td><strong>4 to 6 weeks</strong></td><td>Infant zidovudine prophylaxis after birth</td></tr>
+                        <tr><td><strong>3.5 months</strong></td><td>Target age for SCID bone marrow transplant</td></tr>
+                        <tr><td><strong>Undetectable</strong></td><td>ART viral-load goal you monitor toward</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these on one card. Test yourself on what each one makes you do, not on the number alone. The exam hands you the number and asks for the action.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PRODUCE ══════════ -->
+        <section class="guide-section" id="rebuild">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>Now close the guide</h2>
+            </div>
+
+            <p>Reading this again will not move your score. Producing it will. Everything below is done with the page shut.</p>
+
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <ol>
+                    <li>The anaphylaxis order from memory: airway, IM epinephrine, remove trigger, position and oxygen, fluids, adjuncts.</li>
+                    <li>The epinephrine dose, the site, and the max per dose.</li>
+                    <li>The live vaccines you never give, and the safe flu vaccine for a household contact.</li>
+                    <li>Why an infant with HIV gets a PCR instead of an antibody test.</li>
+                    <li>Three PID warning signs that separate it from ordinary childhood illness.</li>
+                </ol>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Say these four out loud</div>
+                <div class="info-box-content">
+                    <p>Pick anaphylaxis, pediatric HIV, or a primary immune deficiency. Without looking, say the one-sentence definition, the clue you would see in a child, the priority action, and the first-line treatment with its teaching point.</p>
+                    <p>If you can do that for all three, you are ready. If you cannot, you know exactly which section to reopen.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> You will not be asked to define these conditions. You will be given a child and four reasonable actions, and asked which comes first. Study the discriminations and the ordering, in that order.
+            </div>
+        </section>
+
+
+        <section class="practice-questions" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> Test yourself</h2>
+                <div class="quiz-cta-box">
+                    <div class="quiz-cta-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="quiz-cta-content">
+                        <h3>Can you produce it?</h3>
+                        <p>14 questions with full rationales covering primary immune deficiency, pediatric HIV, anaphylaxis, vaccines, and family teaching. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
+                        <div class="quiz-cta-stats">
+                            <span><i class="fas fa-question-circle"></i> 14 Questions</span>
+                            <span><i class="fas fa-clock"></i> ~11 min</span>
+                            <span><i class="fas fa-layer-group"></i> Multiple Question Types</span>
+                        </div>
+                    </div>
+                    <a href="quiz/quiz.html?topic=immune-deficiency-hiv" class="quiz-cta-button">
+                        <i class="fas fa-play"></i> Start Quiz
                     </a>
                 </div>
             </section>
 
-        </div><!-- end document-content -->
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-syringe"></i>
+                        <p><strong>Anaphylaxis</strong> = airway, then IM epinephrine 0.01 mg/kg in the vastus lateralis, first</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-ban"></i>
+                        <p><strong>No live vaccines</strong> (MMR, varicella, rotavirus, nasal flu) in immunocompromised children</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-dna"></i>
+                        <p><strong>PID pattern</strong> = recurrent, severe, unusual infection plus failure to thrive</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-vial"></i>
+                        <p><strong>Infant HIV</strong> = PCR, not antibody, because maternal IgG confounds serology</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-pills"></i>
+                        <p><strong>ART</strong> is daily and lifelong; missed doses breed resistance</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-clock"></i>
+                        <p><strong>Biphasic reaction</strong> = observe 4 to 8 hours, then two epinephrine pens home</p>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Cross-References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Guides in the Library</h2>
+                <div class="cross-ref-group">
+                    <h3>Study alongside:</h3>
+                    <ul>
+                        <li><a href="jia-lupus.html"><i class="fas fa-arrow-right"></i> JIA &amp; Pediatric Lupus</a></li>
+                        <li><a href="hypersensitivity-inflammatory-skin.html"><i class="fas fa-arrow-right"></i> Hypersensitivity &amp; Inflammatory Skin</a></li>
+                    </ul>
+                </div>
+                <div class="cross-ref-group">
+                    <h3>Also relevant:</h3>
+                    <ul>
+                        <li><a href="pediatric-leukemias.html"><i class="fas fa-arrow-right"></i> Pediatric Leukemias</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
         <div class="document-footer">
-            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
-            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
             <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
         </div>
 
-    </div><!-- end document-container -->
+    </div>
 
+    <!-- Guide page scripts (external for CSP compliance) -->
     <script src="configs/immune-deficiency-hiv-config.js?v=3"></script>
     <script src="guide-sidebar.js?v=3"></script>
     <script src="guide-script.js?v=3"></script>

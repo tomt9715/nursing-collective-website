@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hypersensitivity &amp; Inflammatory Skin Study Guide - The Nursing Collective</title>
-    <meta name="description" content="Pediatric nursing study guide for atopic dermatitis, contact dermatitis, urticaria, erythema multiforme, and Stevens-Johnson syndrome.">
+    <meta name="description" content="Pediatric nursing study guide for the four hypersensitivity types plus atopic dermatitis, contact dermatitis, urticaria, and the Stevens-Johnson spectrum.">
     <link rel="canonical" href="https://thenursingcollective.pro/guides/hypersensitivity-inflammatory-skin.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/guides/hypersensitivity-inflammatory-skin.html">
@@ -12,1854 +12,950 @@
     <meta property="og:description" content="Pediatric nursing study guide for hypersensitivity and inflammatory skin conditions.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/cookie-consent.css">
+
+    <!-- Shared guide styles -->
+    <link rel="stylesheet" href="../css/tokens.css?v=3">
+    <link rel="stylesheet" href="guide.css?v=3">
     <link rel="stylesheet" href="guide-sidebar.css?v=3">
-
-    <style>
-        /* HYPERSENSITIVITY & INFLAMMATORY SKIN — Pediatric Integumentary */
-        :root {
-            --navy: #0d1b2a;
-            --navy-2: #162032;
-            --navy-3: #1e2d3e;
-            --card-dark: #1a2940;
-            --teal: #0fbcad;
-            --teal-dim: #0a9086;
-            --amber: #f4a535;
-            --green: #3dbd7a;
-            --red: #e05252;
-            --purple: #8b5cf6;
-            --text-inv: #e8edf2;
-            --text-inv-dim: #8a9bb0;
-            --border-inv: rgba(255, 255, 255, 0.07);
-            --border-inv-mid: rgba(255, 255, 255, 0.12);
-
-            --paper: #162032;
-            --paper-warm: #1a2940;
-            --paper-deep: #1e2d3e;
-            --ink: #f1f5f9;
-            --ink-soft: #c4ccd8;
-            --ink-dimmer: #8a9bb0;
-            --rule: rgba(255, 255, 255, 0.08);
-            --rule-mid: rgba(255, 255, 255, 0.14);
-            --rule-soft: rgba(255, 255, 255, 0.04);
-
-            --peds-coral: #ef5a5a;
-            --peds-coral-deep: #dc2f4f;
-            --peds-rose: #fb8989;
-            --peds-blush: rgba(239, 90, 90, 0.12);
-            --peds-blush-2: rgba(239, 90, 90, 0.22);
-            --peds-plum: #fb8989;
-
-            --critical: #dc2626;
-            --safe: #10b981;
-            --warning: #f59e0b;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--ink-soft);
-            background: var(--navy);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .download-bar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(13, 27, 42, 0.92);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-            color: var(--text-inv);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 0.5px solid var(--border-inv);
-        }
-        .download-bar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 0.01em;
-            color: var(--text-inv);
-        }
-        .download-bar-brand i { color: var(--teal); font-size: 16px; }
-        .download-bar-actions { display: flex; gap: 10px; }
-
-        .btn-download, .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-decoration: none;
-            border: 0.5px solid var(--border-inv-mid);
-        }
-        .btn-download { background: var(--teal); color: var(--navy); border-color: var(--teal); }
-        .btn-download:hover { background: var(--teal-dim); border-color: var(--teal-dim); transform: translateY(-1px); }
-        .btn-back { background: transparent; color: var(--text-inv-dim); }
-        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
-
-        .document-container {
-            max-width: 900px;
-            margin: 80px auto 40px;
-            background: var(--paper);
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            border: 0.5px solid var(--rule-mid);
-        }
-
-        .cover-page {
-            background:
-                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
-                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
-            color: white;
-            padding: 72px 60px 56px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 3px solid var(--peds-coral);
-        }
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 120px;
-            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
-            pointer-events: none;
-        }
-        .cover-content { position: relative; z-index: 1; }
-
-        .cover-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 50px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
-
-        .cover-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.7rem;
-            font-weight: 400;
-            margin-bottom: 14px;
-            line-height: 1.1;
-            letter-spacing: -0.01em;
-        }
-        .cover-subtitle {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.72);
-            max-width: 580px;
-            margin: 0 auto 32px;
-            line-height: 1.55;
-        }
-
-        .cover-meta {
-            display: inline-flex;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 10px 22px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 0.5px solid rgba(255, 255, 255, 0.12);
-            border-radius: 999px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-meta-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.8px;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-        }
-        .cover-meta-item i { color: var(--peds-coral); font-size: 11px; }
-        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
-
-        .document-content { padding: 56px 56px 48px; background: var(--paper); }
-
-        .learning-objectives {
-            background: var(--peds-blush);
-            border: 1px solid var(--peds-blush-2);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 36px;
-        }
-        .learning-objectives h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--peds-rose);
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .learning-objectives h2 i { color: var(--peds-coral); }
-        .learning-objectives-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-        .objective-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .objective-card i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
-        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
-
-        .high-yield-summary {
-            background: linear-gradient(135deg, rgba(244, 165, 53, 0.08), rgba(244, 165, 53, 0.02));
-            border: 1px solid rgba(244, 165, 53, 0.25);
-            border-left: 4px solid var(--amber);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 36px;
-        }
-        .high-yield-summary h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--amber);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .high-yield-summary h2 i { color: var(--amber); }
-        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
-        .high-yield-summary ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 4px;
-        }
-        .high-yield-summary li {
-            background: rgba(0, 0, 0, 0.18);
-            border-radius: 8px;
-            padding: 12px 14px 12px 38px !important;
-            color: var(--ink-soft);
-            font-size: 0.88rem;
-            line-height: 1.55;
-            border-bottom: none !important;
-        }
-        .high-yield-summary li::before {
-            left: 14px !important;
-            top: 14px !important;
-            color: var(--amber) !important;
-            font-size: 0.82rem !important;
-        }
-        .high-yield-summary strong { color: var(--amber); font-weight: 600; }
-        .high-yield-summary li strong { color: var(--amber) !important; }
-        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--amber); font-size: 0.95rem; }
-
-        .sticky-nav {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            padding: 18px 20px;
-            margin-bottom: 36px;
-        }
-        .sticky-nav h3 {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--ink-dimmer);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-        }
-        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-        .nav-pills a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            background: var(--paper-deep);
-            border: 0.5px solid var(--rule);
-            border-radius: 8px;
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.87rem;
-            font-weight: 500;
-            transition: all 0.15s ease;
-        }
-        .nav-pills a:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
-        .nav-pills a i { font-size: 0.82rem; }
-
-        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
-        .section-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--rule);
-        }
-        .section-number {
-            flex-shrink: 0;
-            width: 44px; height: 44px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 12px rgba(239, 90, 90, 0.25);
-        }
-        .section-title-group { flex: 1; min-width: 0; }
-        .section-title-group h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--ink);
-            line-height: 1.2;
-            margin-bottom: 4px;
-        }
-        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
-
-        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
-        .guide-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.22rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 24px 0 12px;
-        }
-        .guide-section h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 18px 0 8px;
-        }
-        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
-        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
-        .guide-section strong { color: var(--ink); font-weight: 600; }
-
-        .guide-table-wrapper {
-            overflow-x: auto;
-            margin: 18px 0;
-            border-radius: 10px;
-            border: 1px solid var(--rule);
-        }
-        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
-        .guide-table thead { background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep)); color: white; }
-        .guide-table th {
-            padding: 12px 14px;
-            text-align: left;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
-        }
-        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
-        .guide-table tbody { background: var(--paper-warm); }
-        .guide-table tbody tr:last-child td { border-bottom: none; }
-        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
-        .guide-table tbody tr:hover { background: var(--peds-blush); }
-        .guide-table td strong { color: var(--ink); }
-
-        .info-box {
-            display: flex;
-            gap: 14px;
-            padding: 18px 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 1px solid var(--rule);
-            border-left-width: 4px;
-        }
-        .info-box-icon {
-            flex-shrink: 0;
-            width: 34px; height: 34px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-        .info-box-content { flex: 1; min-width: 0; }
-        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
-
-        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
-        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-        .info-box.clinical h5 { color: #fbbf24; }
-        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
-        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
-        .info-box.critical h5 { color: #fca5a5; }
-        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
-        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
-        .info-box.nclex h5 { color: #93c5fd; }
-        .info-box.pediatric { background: var(--peds-blush); border-color: var(--peds-blush-2); border-left-color: var(--peds-coral); }
-        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-rose); }
-        .info-box.pediatric h5 { color: var(--peds-rose); }
-        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
-        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
-        .info-box.safe h5 { color: #86efac; }
-        .info-box p { color: var(--ink-soft); }
-        .info-box strong { color: var(--ink); }
-
-        .florencebot-tip {
-            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
-            border: 1px solid rgba(15, 188, 173, 0.22);
-            border-radius: 14px;
-            padding: 22px 24px;
-            margin: 24px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .florencebot-tip::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px; height: 100%;
-            background: var(--teal);
-        }
-        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .florencebot-tip-icon {
-            width: 32px; height: 32px;
-            background: var(--teal);
-            border-radius: 8px;
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-        .florencebot-tip-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--teal);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        .florencebot-tip-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.08rem;
-            font-weight: 600;
-            color: #5eead4;
-            margin-bottom: 8px;
-        }
-        .florencebot-tip-content { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; }
-        .florencebot-tip-content strong { color: var(--ink); }
-
-        .bottom-line {
-            background: linear-gradient(135deg, var(--peds-blush), rgba(239, 90, 90, 0.04));
-            border: 0.5px solid var(--peds-blush-2);
-            border-left: 4px solid var(--peds-coral);
-            padding: 14px 18px;
-            margin: 22px 0 0;
-            border-radius: 0 10px 10px 0;
-            font-weight: 500;
-            color: var(--ink);
-            font-size: 0.95rem;
-        }
-        .bottom-line strong { color: var(--peds-rose); }
-
-        /* Condition card */
-        .condition-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin: 20px 0;
-        }
-        .condition-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .condition-card-header {
-            padding: 14px 18px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .condition-card-header.chronic { background: linear-gradient(135deg, #7c3aed, #4c1d95); }
-        .condition-card-header.contact { background: linear-gradient(135deg, #f59e0b, #b45309); }
-        .condition-card-header.urticaria { background: linear-gradient(135deg, #ec4899, #be185d); }
-        .condition-card-header.sjs { background: linear-gradient(135deg, #dc2626, #7f1d1d); }
-        .condition-card-header i { font-size: 1.2rem; }
-        .condition-card-header h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            margin: 0;
-        }
-        .condition-card-header .tag {
-            margin-left: auto;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.68rem;
-            letter-spacing: 1px;
-            opacity: 0.88;
-            text-transform: uppercase;
-        }
-        .condition-card-body { padding: 16px 18px; }
-        .condition-card-body h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--peds-rose);
-            margin: 10px 0 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .condition-card-body h5:first-child { margin-top: 0; }
-        .condition-card-body p, .condition-card-body ul { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; margin: 0 0 6px; }
-        .condition-card-body ul { padding-left: 18px; }
-        .condition-card-body li { margin-bottom: 4px; }
-        .condition-card-body strong { color: var(--ink); }
-
-        /* Key point grid */
-        .key-point-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .key-point-item {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        .key-point-item i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
-        .key-point-item p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); }
-        .key-point-item strong { color: var(--ink); }
-
-        /* Red flag cards */
-        .redflag-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .redflag-card {
-            background: rgba(220, 38, 38, 0.08);
-            border: 0.5px solid rgba(220, 38, 38, 0.25);
-            border-left: 3px solid #f87171;
-            border-radius: 10px;
-            padding: 12px 14px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        .redflag-card i {
-            color: #fca5a5;
-            font-size: 0.95rem;
-            margin-top: 3px;
-            flex-shrink: 0;
-        }
-        .redflag-card p {
-            margin: 0;
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: var(--ink-soft);
-        }
-        .redflag-card strong { color: #fca5a5; }
-
-        /* Step list */
-        .step-list {
-            list-style: none !important;
-            padding: 0 !important;
-            margin: 20px 0;
-            counter-reset: step;
-        }
-        .step-list li {
-            counter-increment: step;
-            position: relative;
-            padding: 14px 16px 14px 56px;
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            margin-bottom: 10px;
-            font-size: 0.97rem;
-            line-height: 1.6;
-            color: var(--ink-soft);
-        }
-        .step-list li::before {
-            content: counter(step);
-            position: absolute;
-            top: 14px; left: 14px;
-            width: 30px; height: 30px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 0.9rem;
-        }
-        .step-list strong { color: var(--ink); }
-
-        /* Med cards */
-        .med-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 14px;
-            margin: 18px 0;
-        }
-        .med-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            padding: 18px 20px;
-            border-top: 3px solid var(--peds-coral);
-        }
-        .med-card h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 4px;
-        }
-        .med-card .med-class {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--peds-coral);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .med-card p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.55; }
-        .med-card p strong { color: var(--ink); }
-
-        /* Cross refs */
-        .cross-references {
-            margin: 36px 0 8px;
-            padding: 24px;
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-        }
-        .cross-references h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .cross-references h2 i { color: var(--peds-coral); }
-        .cross-ref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .cross-ref-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: var(--paper-deep);
-            border: 0.5px solid var(--rule);
-            border-radius: 8px;
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.15s;
-        }
-        .cross-ref-link:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
-        .cross-ref-link i { font-size: 0.85rem; }
-
-        .quiz-cta {
-            background:
-                radial-gradient(ellipse 60% 80% at 90% 10%, rgba(15, 188, 173, 0.12) 0%, transparent 65%),
-                linear-gradient(135deg, var(--card-dark), var(--navy-3));
-            border: 0.5px solid var(--border-inv-mid);
-            color: white;
-            border-radius: 14px;
-            padding: 28px;
-            margin: 36px 0;
-            text-align: center;
-        }
-        .quiz-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
-        .quiz-cta p { color: rgba(255, 255, 255, 0.88); margin-bottom: 20px; font-size: 0.98rem; }
-        .quiz-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: var(--teal);
-            color: var(--navy);
-            border-radius: 10px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.98rem;
-            text-decoration: none;
-            transition: all 0.15s;
-        }
-        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
-
-        .document-footer {
-            padding: 32px 56px;
-            background: var(--paper-deep);
-            border-top: 0.5px solid var(--rule);
-            text-align: center;
-        }
-        .footer-logo { height: 28px; margin: 0 auto 14px; opacity: 0.9; }
-        .footer-tagline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 4px; }
-        .footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-dimmer); letter-spacing: 0.02em; }
-
-        /* Sidebar overrides */
-        .page-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 80px auto 40px;
-            padding: 0 20px;
-            max-width: 1600px;
-        }
-        .sidebar-left, .sidebar-right {
-            width: 280px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 80px;
-            height: fit-content;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-        }
-
-        .toc-panel {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            color: var(--text-inv) !important;
-            margin-bottom: 16px !important;
-        }
-        .toc-header {
-            padding-bottom: 14px !important;
-            margin-bottom: 14px !important;
-            border-bottom: 0.5px solid var(--border-inv-mid) !important;
-        }
-        .toc-header h3 {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin: 0 !important;
-        }
-        .toc-header i { color: var(--teal) !important; }
-        .toc-link {
-            color: var(--text-inv-dim) !important;
-            font-family: 'Outfit', sans-serif !important;
-            font-weight: 500 !important;
-            font-size: 0.88rem !important;
-            border-left: 2px solid transparent !important;
-            padding: 9px 12px !important;
-            background: transparent !important;
-        }
-        .toc-link:hover { background: rgba(15, 188, 173, 0.08) !important; color: var(--text-inv) !important; }
-        .toc-link.active {
-            background: rgba(15, 188, 173, 0.12) !important;
-            color: var(--teal) !important;
-            border-left-color: var(--teal) !important;
-            font-weight: 600 !important;
-        }
-        .toc-link i { color: inherit !important; }
-
-        .toc-progress {
-            margin-top: 14px !important;
-            padding-top: 14px !important;
-            border-top: 0.5px solid var(--border-inv) !important;
-        }
-        .toc-progress-label {
-            display: flex !important;
-            justify-content: space-between !important;
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.68rem !important;
-            letter-spacing: 1px !important;
-            color: var(--text-inv-dim) !important;
-            margin-bottom: 8px !important;
-        }
-        .toc-progress-percent { color: var(--teal) !important; }
-        .toc-progress-bar {
-            background: rgba(255, 255, 255, 0.06) !important;
-            border-radius: 999px !important;
-            height: 4px !important;
-            overflow: hidden !important;
-        }
-        .toc-progress-fill {
-            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
-            height: 100% !important;
-        }
-
-        .toc-nav-links {
-            margin-top: 14px !important;
-            padding-top: 14px !important;
-            border-top: 0.5px solid var(--border-inv) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 6px !important;
-        }
-        .toc-nav-link {
-            display: flex !important;
-            align-items: center !important;
-            gap: 10px !important;
-            padding: 8px 12px !important;
-            border-radius: 8px !important;
-            color: var(--text-inv-dim) !important;
-            background: transparent !important;
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.84rem !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-            transition: all 0.15s !important;
-        }
-        .toc-nav-link:hover { background: rgba(255, 255, 255, 0.04) !important; color: var(--text-inv) !important; }
-        .toc-nav-link--ai { background: rgba(15, 188, 173, 0.08) !important; color: var(--teal) !important; }
-        .toc-nav-link--ai:hover { background: rgba(15, 188, 173, 0.15) !important; color: var(--teal) !important; }
-
-        .florence-card {
-            background: linear-gradient(135deg, var(--card-dark), var(--navy-3)) !important;
-            border: 0.5px solid var(--border-inv-mid) !important;
-            border-radius: 14px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            margin-bottom: 16px !important;
-            position: relative !important;
-            overflow: hidden !important;
-        }
-        .florence-card::before {
-            content: '' !important;
-            position: absolute !important;
-            top: -40% !important; right: -40% !important;
-            width: 120% !important; height: 120% !important;
-            background: radial-gradient(circle, rgba(15, 188, 173, 0.12) 0%, transparent 60%) !important;
-            pointer-events: none !important;
-        }
-        .florence-header {
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
-            margin-bottom: 14px !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        .florence-avatar {
-            width: 44px !important; height: 44px !important;
-            border-radius: 50% !important;
-            background: rgba(15, 188, 173, 0.15) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
-            padding: 2px !important;
-            box-shadow: none !important;
-        }
-        .florence-info h3 {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.98rem !important;
-            font-weight: 600 !important;
-            color: var(--text-inv) !important;
-            margin: 0 !important;
-        }
-        .florence-info span {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.68rem !important;
-            color: var(--teal) !important;
-            letter-spacing: 1px !important;
-            text-transform: uppercase !important;
-        }
-        .florence-speech {
-            background: rgba(15, 188, 173, 0.06) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            border-radius: 10px !important;
-            padding: 12px 14px !important;
-            box-shadow: none !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        .florence-speech::before {
-            background: var(--card-dark) !important;
-            border-top: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            border-left: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            box-shadow: none !important;
-        }
-        .florence-speech p {
-            color: var(--text-inv) !important;
-            font-size: 0.88rem !important;
-            line-height: 1.55 !important;
-            margin: 0 !important;
-        }
-        .florence-speech p strong { color: var(--teal) !important; }
-
-        .key-numbers-card {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 18px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-            margin-bottom: 16px !important;
-        }
-        .key-numbers-title {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin-bottom: 14px !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-        }
-        .key-numbers-title i { color: var(--teal) !important; }
-        .key-numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-        .key-number {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 10px !important;
-            padding: 12px 10px !important;
-        }
-        .key-number:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important; }
-        .key-number.critical { background: rgba(220, 38, 38, 0.1) !important; border-color: rgba(220, 38, 38, 0.25) !important; }
-        .key-number.critical .key-number-value { color: #fca5a5 !important; }
-        .key-number.time { background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.25) !important; }
-        .key-number.time .key-number-value { color: #fcd34d !important; }
-        .key-number.target { background: rgba(15, 188, 173, 0.1) !important; border-color: rgba(15, 188, 173, 0.25) !important; }
-        .key-number.target .key-number-value { color: #5eead4 !important; }
-        .key-number.success { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
-        .key-number.success .key-number-value { color: #86efac !important; }
-        .key-number.warning { background: rgba(251, 146, 60, 0.1) !important; border-color: rgba(251, 146, 60, 0.25) !important; }
-        .key-number.warning .key-number-value { color: #fdba74 !important; }
-        .key-number.info { background: rgba(139, 92, 246, 0.1) !important; border-color: rgba(139, 92, 246, 0.25) !important; }
-        .key-number.info .key-number-value { color: #c4b5fd !important; }
-        .key-number-value {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 1.05rem !important;
-            font-weight: 700 !important;
-            color: var(--text-inv) !important;
-            line-height: 1.2 !important;
-        }
-        .key-number-label {
-            font-size: 0.68rem !important;
-            color: var(--text-inv-dim) !important;
-            margin-top: 4px !important;
-            line-height: 1.35 !important;
-        }
-
-        .florence-tips-card {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 18px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-        }
-        .florence-tips-header { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 14px !important; }
-        .florence-tips-avatar {
-            width: 28px !important; height: 28px !important;
-            border-radius: 50% !important;
-            background: rgba(15, 188, 173, 0.15) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
-            padding: 2px !important;
-            box-shadow: none !important;
-        }
-        .florence-tips-header h4 {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin: 0 !important;
-        }
-
-        .tip-item {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-left: 3px solid var(--teal) !important;
-            border-radius: 8px !important;
-            padding: 10px 12px !important;
-            margin-bottom: 8px !important;
-            box-shadow: none !important;
-            transition: all 0.15s !important;
-        }
-        .tip-item:hover { background: rgba(15, 188, 173, 0.08) !important; transform: translateX(2px) !important; }
-        .tip-item:last-child { margin-bottom: 0 !important; }
-        .tip-item-title {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.85rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv) !important;
-            margin: 0 !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-        }
-        .tip-item-title::before { color: var(--teal) !important; font-size: 0.72rem !important; }
-        .tip-item-text {
-            font-size: 0.78rem !important;
-            color: var(--text-inv-dim) !important;
-            line-height: 1.5 !important;
-            margin-top: 4px !important;
-        }
-
-        .mobile-nav-fab { background: var(--teal) !important; color: var(--navy) !important; }
-        .mobile-nav-drawer { background: var(--card-dark) !important; color: var(--text-inv) !important; }
-        .mobile-nav-tab { color: var(--text-inv-dim) !important; background: transparent !important; }
-        .mobile-nav-tab.active { color: var(--teal) !important; border-bottom-color: var(--teal) !important; }
-        .mobile-toc-link { color: var(--text-inv-dim) !important; }
-        .mobile-toc-link.active { color: var(--teal) !important; background: rgba(15, 188, 173, 0.1) !important; }
-
-        @media (max-width: 1200px) {
-            .page-wrapper { padding: 0 12px; gap: 16px; }
-            .sidebar-left, .sidebar-right { width: 220px; }
-        }
-
-        @media (max-width: 900px) {
-            .page-wrapper { flex-direction: column; padding: 0 12px; }
-            .sidebar-left, .sidebar-right {
-                width: 100%;
-                max-width: 600px;
-                margin: 0 auto;
-                position: static;
-                max-height: none;
-            }
-            .document-container { margin: 80px 12px 40px; }
-            .document-content { padding: 36px 28px; }
-            .cover-page { padding: 56px 28px 40px; }
-            .cover-title { font-size: 2rem; }
-            .cover-meta { gap: 10px; padding: 10px 16px; }
-            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
-            .learning-objectives-grid,
-            .condition-grid,
-            .key-point-grid,
-            .redflag-grid,
-            .high-yield-summary ul {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .download-bar { padding: 10px 14px; }
-            .download-bar-brand span:not(.brand-text-long) { display: none; }
-            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
-            .section-header { gap: 12px; }
-            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
-            .section-title-group h2 { font-size: 1.4rem; }
-            .document-content { padding: 28px 20px; }
-            .document-footer { padding: 24px 20px; }
-        }
-    </style>
+    <script src="../beta-banner.js"></script>
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../sentry-init.js"></script>
 </head>
-<body data-product-id="hypersensitivity-inflammatory-skin" data-guide-name="Hypersensitivity &amp; Inflammatory Skin">
-
-    <header class="download-bar">
+<body data-category="pediatrics" data-product-id="hypersensitivity-inflammatory-skin" data-guide-name="Hypersensitivity & Inflammatory Skin">
+    <!-- Download Bar -->
+    <div class="download-bar">
         <div class="download-bar-brand">
-            <i class="fas fa-allergies"></i>
-            <span>Hypersensitivity &amp; Inflammatory Skin</span>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective">
         </div>
         <div class="download-bar-actions">
             <a href="../my-guides.html" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Back to Guides
             </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
         </div>
-    </header>
+    </div>
 
+    <!-- Document -->
     <div class="document-container">
 
+        <!-- Cover Page -->
         <div class="cover-page">
             <div class="cover-content">
-                <div class="cover-badge">
-                    <i class="fas fa-baby"></i> Pediatric Nursing · Integumentary
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/hypersensitivity-inflammatory-skin.webp" alt="Hypersensitivity and Inflammatory Skin">
                 </div>
+                <div class="cover-category">Pediatric Nursing</div>
                 <h1 class="cover-title">Hypersensitivity &amp; Inflammatory Skin</h1>
-                <p class="cover-subtitle">Atopic dermatitis, contact dermatitis, diaper dermatitis, urticaria, and the Stevens-Johnson spectrum. From daily eczema management to the derm emergencies.</p>
+                <p class="cover-subtitle">Four hypersensitivity types, two look-alike rashes, and the one drug reaction that is a burn-unit emergency. How to place a reaction and know what you do next.</p>
                 <div class="cover-meta">
-                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 6 Sections</span>
-                    <span class="cover-meta-sep"></span>
-                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 14 Quiz Questions</span>
-                    <span class="cover-meta-sep"></span>
-                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~12 Min Read</span>
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">15-20 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">July 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
                 </div>
             </div>
         </div>
 
+        <!-- Document Content -->
         <div class="document-content">
 
-            <div class="learning-objectives">
-                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
-                <div class="learning-objectives-grid">
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Identify atopic dermatitis and apply the daily management ladder (emollients, topical steroids, triggers).</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Differentiate contact dermatitis from atopic dermatitis and from irritant diaper dermatitis.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Recognize urticaria and know when hives escalate to anaphylaxis.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Identify Stevens-Johnson syndrome and toxic epidermal necrolysis early and initiate the right escalation.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Administer antihistamines, corticosteroids, and epinephrine safely.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Coach families on trigger avoidance, "soak and seal" bathing, and when to seek urgent care.</span>
-                    </div>
-                </div>
-            </div>
-
-            <section class="high-yield-summary" id="high-yield-summary">
-                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
-                <p class="high-yield-subtitle">Eight facts that cover the hypersensitivity spectrum.</p>
+            <!-- What you should be able to do without notes -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> By the end, without notes</h2>
                 <ul>
-                    <li><strong>Atopic dermatitis (eczema)</strong> is part of the <strong>atopic triad</strong> (eczema + asthma + allergic rhinitis). The "itch that rashes" &mdash; scratching makes it worse.</li>
-                    <li><strong>Location clues:</strong> infants get eczema on <strong>cheeks, scalp, extensor surfaces</strong>. Older children: <strong>flexural surfaces</strong> (antecubital, popliteal, neck, wrists).</li>
-                    <li><strong>Eczema management ladder:</strong> moisturize daily + "soak and seal" bathing, topical steroids for flares (lowest potency that works), calcineurin inhibitors (tacrolimus) for steroid-sparing, antihistamines for sleep, avoid triggers.</li>
-                    <li><strong>Contact dermatitis:</strong> cell-mediated (Type IV) reaction. <strong>Poison ivy/oak/sumac</strong> (urushiol), nickel, latex, fragrances. Pattern matches contact (linear streaks). Treat with topical steroids &plusmn; oral steroids if widespread.</li>
-                    <li><strong>Irritant diaper dermatitis:</strong> from urine/stool contact. <strong>Spares the skin folds</strong> (affects convex surfaces). Treat with barrier cream, frequent changes, air time. If no improvement in 2&ndash;3 days, consider candidal superinfection.</li>
-                    <li><strong>Urticaria (hives):</strong> wheals that appear and disappear within 24 hours at a given site, move around. Triggers: foods (peanuts, eggs, milk, nuts, shellfish), meds, viral, insect. <strong>H1 antihistamine first-line</strong>.</li>
-                    <li><strong>Anaphylaxis red flags:</strong> hives PLUS respiratory (wheeze, stridor, dyspnea), CV (hypotension), or GI involvement. <strong>IM epinephrine IMMEDIATELY</strong> &mdash; 0.15 mg &lt;30 kg, 0.3 mg &ge;30 kg into vastus lateralis.</li>
-                    <li><strong>SJS / TEN:</strong> severe medication-induced mucocutaneous reaction. <strong>Positive Nikolsky sign</strong> (skin sloughs with lateral pressure), painful mucosal erosions, skin detachment. <strong>ICU/burn unit care</strong>; stop the offending drug immediately.</li>
+                    <li><i class="fas fa-check-circle"></i> Place a reaction in the right hypersensitivity type from the scenario alone</li>
+                    <li><i class="fas fa-check-circle"></i> Tell atopic dermatitis from contact dermatitis, and say what each one changes</li>
+                    <li><i class="fas fa-check-circle"></i> Say when hives are just hives and when they are anaphylaxis</li>
+                    <li><i class="fas fa-check-circle"></i> Spot early SJS in a rash that looks minor, and name the drug link</li>
+                    <li><i class="fas fa-check-circle"></i> State the topical steroid rule: which potency, where, and how long</li>
+                    <li><i class="fas fa-check-circle"></i> Give epinephrine, moisturizer, and barrier care without looking them up</li>
                 </ul>
-                <p class="high-yield-cta">Clinical breakdown below &darr;</p>
             </section>
 
-            <nav class="sticky-nav">
-                <h3>Jump to section</h3>
-                <div class="nav-pills">
-                    <a href="#atopic"><i class="fas fa-hand-dots"></i> Atopic Dermatitis</a>
-                    <a href="#contact"><i class="fas fa-leaf"></i> Contact &amp; Diaper</a>
-                    <a href="#urticaria"><i class="fas fa-bolt"></i> Urticaria</a>
-                    <a href="#sjs"><i class="fas fa-triangle-exclamation"></i> EM, SJS &amp; TEN</a>
-                    <a href="#meds"><i class="fas fa-pills"></i> Medications</a>
-                    <a href="#family"><i class="fas fa-users"></i> Family Education</a>
-                </div>
-            </nav>
-
-            <!-- Section 1: Atopic Dermatitis -->
-            <section class="guide-section" id="atopic">
-                <div class="section-header">
-                    <div class="section-number">1</div>
-                    <div class="section-title-group">
-                        <h2>Atopic Dermatitis (Eczema)</h2>
-                        <div class="subtitle">The chronic itchy disease with a family history of allergy</div>
-                    </div>
-                </div>
-
-                <div class="condition-grid">
-                    <div class="condition-card">
-                        <div class="condition-card-header chronic">
-                            <i class="fas fa-hand-dots"></i>
-                            <h4>Atopic Dermatitis</h4>
-                            <span class="tag">Chronic</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Who gets it</h5>
-                            <p>Starts in <strong>early infancy</strong>; affects up to 20% of children. Part of the <strong>atopic triad</strong> with asthma and allergic rhinitis. Strong genetic and immunologic component (filaggrin mutation).</p>
-
-                            <h5>Classic Findings</h5>
-                            <ul>
-                                <li><strong>Intensely itchy</strong> red, dry, scaly patches</li>
-                                <li><strong>Infants:</strong> cheeks, scalp, extensor surfaces (diaper area often spared)</li>
-                                <li><strong>Older children:</strong> flexural surfaces (antecubital, popliteal, neck, wrists, ankles)</li>
-                                <li>Chronic: thickened, leathery skin (<strong>lichenification</strong>) from chronic scratching</li>
-                                <li>May see allergic shiners (dark circles), Dennie-Morgan lines under eyes</li>
-                            </ul>
-
-                            <h5>Triggers</h5>
-                            <ul>
-                                <li>Dry skin, cold weather</li>
-                                <li>Irritants: soaps, detergents, wool, synthetic fabrics, fragrances</li>
-                                <li>Allergens: dust mites, pet dander, pollen, food (less common trigger in older kids)</li>
-                                <li>Heat, sweating, stress</li>
-                                <li>Secondary infections (Staph, HSV)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="condition-card">
-                        <div class="condition-card-header chronic">
-                            <i class="fas fa-shower"></i>
-                            <h4>Daily Management</h4>
-                            <span class="tag">Prevention</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>The "Soak and Seal" Method</h5>
-                            <ul>
-                                <li><strong>Short (5&ndash;10 min) lukewarm bath</strong> daily</li>
-                                <li>Mild, fragrance-free cleanser (avoid regular soap)</li>
-                                <li><strong>Pat dry (don't rub)</strong></li>
-                                <li><strong>Apply moisturizer within 3 minutes</strong> of patting dry &mdash; traps moisture</li>
-                                <li>Thick emollient (petrolatum-based) preferred over lotion</li>
-                                <li>Reapply moisturizer 2&ndash;3 times daily</li>
-                            </ul>
-
-                            <h5>Lifestyle</h5>
-                            <ul>
-                                <li>Cotton, loose clothing &mdash; avoid wool and synthetics</li>
-                                <li>Short fingernails; cotton gloves at night to prevent scratching</li>
-                                <li>Fragrance-free laundry detergent, double-rinse cycle</li>
-                                <li>Humidifier in winter; avoid overheated rooms</li>
-                                <li>Identify and avoid specific triggers</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="condition-card">
-                        <div class="condition-card-header chronic">
-                            <i class="fas fa-prescription-bottle-medical"></i>
-                            <h4>Treatment Ladder</h4>
-                            <span class="tag">Stepwise</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Flare Control</h5>
-                            <ul>
-                                <li><strong>Topical corticosteroids</strong> &mdash; low potency (hydrocortisone 1%) for face, higher potency (triamcinolone) for body</li>
-                                <li>BID &times; 1&ndash;2 weeks; taper as skin clears</li>
-                                <li><strong>Topical calcineurin inhibitors</strong> (tacrolimus, pimecrolimus) for steroid-sparing, especially on face/folds</li>
-                                <li>Sedating antihistamines (diphenhydramine, hydroxyzine) at night for itch/sleep</li>
-                                <li>Wet wrap therapy for severe flares</li>
-                            </ul>
-
-                            <h5>Severe Disease</h5>
-                            <ul>
-                                <li>Phototherapy (UV)</li>
-                                <li>Oral immunosuppressants (methotrexate, cyclosporine)</li>
-                                <li><strong>Dupilumab</strong> (biologic) for refractory moderate-severe</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="condition-card">
-                        <div class="condition-card-header chronic">
-                            <i class="fas fa-virus"></i>
-                            <h4>Secondary Infection</h4>
-                            <span class="tag">Red Flag</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Watch For</h5>
-                            <ul>
-                                <li><strong>Honey-colored crusts</strong> (secondary Staph impetigo)</li>
-                                <li>Weeping, yellow drainage, new tenderness</li>
-                                <li><strong>Eczema herpeticum</strong> &mdash; HSV infection of eczematous skin: painful vesicles in clusters, fever, may have ocular or systemic involvement</li>
-                                <li>Cellulitis: warm red spreading border, fever</li>
-                            </ul>
-
-                            <h5>Treatment</h5>
-                            <ul>
-                                <li>Bacterial: topical mupirocin or oral antibiotic</li>
-                                <li><strong>Eczema herpeticum = acyclovir IV + emergency ophthalmology if eyes involved</strong></li>
-                                <li>Continue eczema care during and after infection treatment</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-soak-and-seal">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Moisturize Within 3 Minutes of the Bath</div>
-                    <div class="florencebot-tip-content">
-                        The "soak and seal" method works because wet skin absorbs water during the bath, and moisturizer applied right after <strong>seals that water in</strong>. Wait too long (even 5 minutes) and the water evaporates; the moisturizer goes on dry skin and does far less. Teach families this timing explicitly &mdash; it's the single most effective home intervention for mild-to-moderate eczema.
-                    </div>
-                </div>
-
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-virus"></i></div>
-                    <div class="info-box-content">
-                        <h5>Eczema Herpeticum Is an Emergency</h5>
-                        <p>A child with known eczema who develops <strong>painful clustered vesicles, fever, or rapidly spreading lesions</strong> may have eczema herpeticum &mdash; disseminated HSV on eczematous skin. Requires <strong>IV acyclovir immediately</strong>. If near the eyes, emergent ophthalmology referral to prevent corneal scarring and blindness.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Eczema is chronic. Daily moisturize, bath then seal, steroids for flares, avoid triggers, protect nails. Watch for Staph impetigo and eczema herpeticum.</div>
-            </section>
-
-            <!-- Section 2: Contact & Diaper Dermatitis -->
-            <section class="guide-section" id="contact">
-                <div class="section-header">
-                    <div class="section-number">2</div>
-                    <div class="section-title-group">
-                        <h2>Contact &amp; Diaper Dermatitis</h2>
-                        <div class="subtitle">Pattern matters: the rash is where the trigger touched</div>
-                    </div>
-                </div>
-
-                <div class="condition-grid">
-                    <div class="condition-card">
-                        <div class="condition-card-header contact">
-                            <i class="fas fa-leaf"></i>
-                            <h4>Allergic Contact Dermatitis</h4>
-                            <span class="tag">Type IV</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Cause</h5>
-                            <p><strong>Cell-mediated (delayed-type IV) hypersensitivity</strong> reaction to an antigen. Reaction appears 24&ndash;72 hours after exposure in sensitized individuals.</p>
-
-                            <h5>Common Triggers</h5>
-                            <ul>
-                                <li><strong>Poison ivy/oak/sumac</strong> (urushiol oil) &mdash; classic <strong>linear streaks</strong></li>
-                                <li><strong>Nickel</strong> (jewelry, belt buckles, snaps)</li>
-                                <li>Latex (gloves, balloons, medical equipment)</li>
-                                <li>Fragrances, dyes, cosmetics, preservatives</li>
-                                <li>Topical medications (neomycin, bacitracin)</li>
-                            </ul>
-
-                            <h5>Appearance</h5>
-                            <ul>
-                                <li>Very itchy, red, edematous papules/vesicles</li>
-                                <li><strong>Pattern matches contact</strong> &mdash; linear in poison ivy, ring under a watchband</li>
-                                <li>Acute: weeping and oozing; chronic: dry, scaly, lichenified</li>
-                            </ul>
-
-                            <h5>Treatment</h5>
-                            <ul>
-                                <li><strong>Remove / avoid offender</strong> (wash off urushiol ASAP if exposed)</li>
-                                <li>Cool compresses, Burow's (aluminum acetate) solution</li>
-                                <li>Topical corticosteroids (medium-to-high potency)</li>
-                                <li><strong>Oral corticosteroids</strong> for extensive or facial/genital involvement</li>
-                                <li>Antihistamines for itch</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="condition-card">
-                        <div class="condition-card-header contact">
-                            <i class="fas fa-baby"></i>
-                            <h4>Irritant Diaper Dermatitis</h4>
-                            <span class="tag">Common</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Cause</h5>
-                            <p>Skin irritation from prolonged contact with <strong>urine and stool</strong>, friction, and moisture. Not an allergic reaction &mdash; a chemical irritation.</p>
-
-                            <h5>Classic Appearance</h5>
-                            <ul>
-                                <li>Red, shiny skin on <strong>convex surfaces</strong> (buttocks, tops of thighs, pubic area)</li>
-                                <li><strong>SPARES the skin folds</strong> &mdash; key distinguishing feature from candida</li>
-                                <li>Tender; infant may cry with diaper changes</li>
-                            </ul>
-
-                            <h5>Treatment &amp; Prevention</h5>
-                            <ul>
-                                <li><strong>Frequent diaper changes</strong> &mdash; every 2 hours or whenever soiled</li>
-                                <li><strong>Air time</strong> &mdash; expose skin to air without diaper for short periods</li>
-                                <li><strong>Barrier creams</strong>: zinc oxide or petrolatum; apply generously with each change</li>
-                                <li>Gentle cleansing with water; avoid wipes with fragrance/alcohol</li>
-                                <li>If not improving in 2&ndash;3 days: consider candida superinfection (add nystatin or clotrimazole)</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box nclex">
-                    <div class="info-box-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="info-box-content">
-                        <h5>NCLEX: Irritant vs. Candida Diaper Rash</h5>
-                        <p><strong>Irritant diaper dermatitis:</strong> affects convex surfaces, <strong>spares the folds</strong>, no satellite lesions &rarr; barrier cream and frequent changes.<br>
-                        <strong>Candida diaper dermatitis:</strong> involves <strong>skin folds</strong>, <strong>satellite lesions</strong>, bright red &rarr; nystatin or clotrimazole cream.<br>
-                        The fold involvement is the key differentiator on exam questions.</p>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-poison-ivy">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">"Leaves of Three, Let Them Be"</div>
-                    <div class="florencebot-tip-content">
-                        Urushiol oil from poison ivy/oak/sumac penetrates skin within minutes. <strong>Washing the area with soap and water within 15 minutes</strong> of exposure can prevent the reaction entirely. After 30 minutes it's usually too late. The rash itself is NOT contagious &mdash; but the oil on clothing, shoes, and pet fur CAN transfer. Wash all contaminated items.
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Contact dermatitis = pattern matches exposure; remove trigger + topical steroid. Irritant diaper = spares folds, barrier cream fixes it. Candida = folds + satellites, needs antifungal.</div>
-            </section>
-
-            <!-- Section 3: Urticaria & Anaphylaxis -->
-            <section class="guide-section" id="urticaria">
-                <div class="section-header">
-                    <div class="section-number">3</div>
-                    <div class="section-title-group">
-                        <h2>Urticaria &amp; Anaphylaxis</h2>
-                        <div class="subtitle">From hives to airway emergency</div>
-                    </div>
-                </div>
-
-                <div class="condition-grid">
-                    <div class="condition-card">
-                        <div class="condition-card-header urticaria">
-                            <i class="fas fa-bolt"></i>
-                            <h4>Urticaria (Hives)</h4>
-                            <span class="tag">IgE-Mediated</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Appearance</h5>
-                            <ul>
-                                <li><strong>Wheals (hives)</strong> &mdash; raised, red, edematous, intensely itchy</li>
-                                <li>Size variable &mdash; small papules to large plaques</li>
-                                <li><strong>Migratory</strong> &mdash; individual lesions appear and disappear within 24 hours, but new ones continue to emerge</li>
-                                <li>May be accompanied by angioedema (deeper swelling of lips, face, hands)</li>
-                            </ul>
-
-                            <h5>Common Triggers</h5>
-                            <ul>
-                                <li><strong>Foods:</strong> peanuts, tree nuts, eggs, milk, shellfish, wheat, soy</li>
-                                <li><strong>Medications:</strong> penicillins, sulfonamides, NSAIDs, vaccines</li>
-                                <li><strong>Viral infections</strong> &mdash; #1 cause in children</li>
-                                <li>Insect stings, latex</li>
-                                <li>Physical: cold, heat, pressure, exercise</li>
-                            </ul>
-
-                            <h5>Acute vs. Chronic</h5>
-                            <ul>
-                                <li><strong>Acute urticaria:</strong> &lt;6 weeks; usually viral or identifiable trigger</li>
-                                <li><strong>Chronic urticaria:</strong> &ge;6 weeks; often idiopathic or autoimmune</li>
-                            </ul>
-
-                            <h5>Treatment</h5>
-                            <ul>
-                                <li><strong>H1 antihistamines first-line</strong>: cetirizine or loratadine (non-sedating) or diphenhydramine (sedating)</li>
-                                <li>H2 antihistamines (famotidine) may be added for refractory</li>
-                                <li>Oral corticosteroids for severe/widespread</li>
-                                <li>Identify and avoid trigger</li>
-                                <li>Allergy referral for recurrent or chronic cases</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="condition-card">
-                        <div class="condition-card-header urticaria">
-                            <i class="fas fa-heart-pulse"></i>
-                            <h4>Anaphylaxis</h4>
-                            <span class="tag">Emergency</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Definition</h5>
-                            <p>Acute, life-threatening IgE-mediated systemic allergic reaction. Can occur within minutes to 1 hour after exposure.</p>
-
-                            <h5>Signs &amp; Symptoms (Any TWO Systems)</h5>
-                            <ul>
-                                <li><strong>Skin:</strong> hives, angioedema, flushing, itching</li>
-                                <li><strong>Respiratory:</strong> wheezing, stridor, dyspnea, cough, hoarseness, throat tightness</li>
-                                <li><strong>Cardiovascular:</strong> hypotension, tachycardia, syncope</li>
-                                <li><strong>GI:</strong> vomiting, diarrhea, abdominal pain</li>
-                                <li><strong>Sense of impending doom</strong></li>
-                            </ul>
-
-                            <h5>Treatment</h5>
-                            <ol>
-                                <li><strong>IM epinephrine IMMEDIATELY</strong> &mdash; vastus lateralis (outer thigh)
-                                    <ul>
-                                        <li>&lt;30 kg: 0.15 mg (EpiPen Jr)</li>
-                                        <li>&ge;30 kg: 0.3 mg (EpiPen)</li>
-                                        <li>May repeat every 5&ndash;15 min</li>
-                                    </ul>
-                                </li>
-                                <li>Call 911 / rapid response</li>
-                                <li>Airway management, oxygen, position (supine with legs elevated unless vomiting/dyspneic &rarr; seated)</li>
-                                <li>IV fluids for hypotension</li>
-                                <li>H1 + H2 antihistamines, corticosteroids (adjunct, NOT first-line)</li>
-                                <li>Bronchodilators for wheezing</li>
-                                <li><strong>Observation 4&ndash;6 hours</strong> for biphasic reaction</li>
-                            </ol>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-syringe"></i></div>
-                    <div class="info-box-content">
-                        <h5>Epinephrine Is First &mdash; Not Antihistamines</h5>
-                        <p>In anaphylaxis, <strong>IM epinephrine is the ONLY life-saving first-line treatment</strong>. Antihistamines and corticosteroids are adjuncts &mdash; they don't reverse airway or cardiovascular collapse. <strong>Delay in giving epinephrine is the #1 cause of fatal anaphylaxis</strong>. Teach families with auto-injectors: "If in doubt, give it." Over-treating is not dangerous; under-treating is.</p>
-                    </div>
-                </div>
-
-                <div class="florencebot-tip" id="tip-biphasic">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Biphasic Anaphylaxis &mdash; Watch for Round Two</div>
-                    <div class="florencebot-tip-content">
-                        Up to 20% of anaphylaxis cases have a <strong>biphasic reaction</strong> &mdash; symptoms return 4&ndash;12 hours after the initial resolution, without re-exposure. That's why even a child who responds beautifully to one dose of epinephrine needs <strong>observation for 4&ndash;6 hours minimum</strong>. Always discharge with an EpiPen prescription and action plan.
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Hives = H1 antihistamine. Hives + respiratory/CV/GI = anaphylaxis = IM epi (vastus lateralis) IMMEDIATELY. Watch 4&ndash;6 hours for biphasic.</div>
-            </section>
-
-            <!-- Section 4: EM, SJS, TEN -->
-            <section class="guide-section" id="sjs">
-                <div class="section-header">
-                    <div class="section-number">4</div>
-                    <div class="section-title-group">
-                        <h2>Erythema Multiforme, SJS &amp; TEN</h2>
-                        <div class="subtitle">A spectrum from mild to potentially fatal</div>
-                    </div>
-                </div>
-
-                <p>Erythema multiforme (EM), Stevens-Johnson syndrome (SJS), and toxic epidermal necrolysis (TEN) are on a spectrum of hypersensitivity reactions. EM is usually benign; SJS and TEN are dermatologic emergencies with significant mortality.</p>
-
-                <div class="condition-grid">
-                    <div class="condition-card">
-                        <div class="condition-card-header sjs">
-                            <i class="fas fa-bullseye"></i>
-                            <h4>Erythema Multiforme (EM)</h4>
-                            <span class="tag">Usually Benign</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Appearance</h5>
-                            <p><strong>Target / "bull's eye" lesions</strong> &mdash; central dusky zone surrounded by a paler ring and an outer red ring. On palms, soles, and extensor extremities.</p>
-                            <h5>Triggers</h5>
-                            <ul>
-                                <li><strong>HSV (most common)</strong> &mdash; can cause recurrent EM</li>
-                                <li>Mycoplasma pneumoniae</li>
-                                <li>Less often: medications</li>
-                            </ul>
-                            <h5>EM Minor vs. Major</h5>
-                            <ul>
-                                <li><strong>Minor:</strong> skin only, self-limiting, resolves in 2&ndash;3 weeks</li>
-                                <li><strong>Major:</strong> mucosal involvement (mouth most commonly); more serious</li>
-                            </ul>
-                            <h5>Treatment</h5>
-                            <ul>
-                                <li>Supportive; treat underlying trigger (acyclovir if HSV)</li>
-                                <li>Antihistamines for itch; topical steroids; pain control</li>
-                                <li>Mouth care if oral lesions</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="condition-card">
-                        <div class="condition-card-header sjs">
-                            <i class="fas fa-triangle-exclamation"></i>
-                            <h4>SJS / TEN</h4>
-                            <span class="tag">Emergency</span>
-                        </div>
-                        <div class="condition-card-body">
-                            <h5>Definitions</h5>
-                            <ul>
-                                <li><strong>SJS:</strong> &lt;10% BSA skin detachment</li>
-                                <li><strong>SJS/TEN overlap:</strong> 10&ndash;30% BSA</li>
-                                <li><strong>TEN:</strong> &gt;30% BSA; mortality 30&ndash;50%</li>
-                            </ul>
-
-                            <h5>Presentation</h5>
-                            <ul>
-                                <li><strong>Prodrome:</strong> fever, malaise, sore throat, cough (1&ndash;3 days)</li>
-                                <li>Rash: dusky red macules, purpuric spots, vesicles, bullae &mdash; progresses rapidly</li>
-                                <li><strong>Painful mucosal erosions</strong> in mouth, eyes, and genitals</li>
-                                <li><strong>Positive Nikolsky sign</strong> &mdash; lateral pressure causes epidermis to slough</li>
-                                <li>Skin pain out of proportion to appearance</li>
-                            </ul>
-
-                            <h5>Common Triggers</h5>
-                            <ul>
-                                <li><strong>Medications:</strong> anticonvulsants (carbamazepine, lamotrigine, phenytoin), allopurinol, sulfonamides, NSAIDs, some antibiotics</li>
-                                <li>Infections: Mycoplasma pneumoniae</li>
-                            </ul>
-
-                            <h5>Treatment</h5>
-                            <ul>
-                                <li><strong>Immediate discontinuation of offending drug</strong></li>
-                                <li><strong>ICU or burn unit admission</strong></li>
-                                <li>IV fluid replacement, electrolyte correction, nutritional support</li>
-                                <li>Wound care like burns &mdash; sterile handling, dressings</li>
-                                <li>Ophthalmology (eye involvement is common and can blind)</li>
-                                <li>Oral/mouth care for painful erosions</li>
-                                <li>IVIG sometimes; corticosteroids controversial</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-prescription"></i></div>
-                    <div class="info-box-content">
-                        <h5>Always Review the Med List</h5>
-                        <p>If a child develops a widespread painful rash with mucosal involvement within <strong>1&ndash;8 weeks of starting a new medication</strong>, think SJS. <strong>Common culprits:</strong> anticonvulsants (carbamazepine, lamotrigine, phenytoin), sulfonamide antibiotics, allopurinol, NSAIDs. The offending drug must be stopped IMMEDIATELY &mdash; continuing it escalates to TEN and death.</p>
-                    </div>
-                </div>
-
-                <div class="info-box clinical">
-                    <div class="info-box-icon"><i class="fas fa-hand-pointer"></i></div>
-                    <div class="info-box-content">
-                        <h5>Nikolsky Sign &mdash; The Hands-On Diagnostic Clue</h5>
-                        <p>Apply gentle lateral pressure to apparently normal-looking skin near a lesion. <strong>If the epidermis sloughs off</strong>, Nikolsky is positive &mdash; highly suggestive of SJS/TEN. Positive Nikolsky + mucosal involvement + recent new medication = SJS/TEN until proven otherwise. Urgent dermatology consult.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: EM = target lesions, usually HSV, self-limiting. SJS/TEN = mucosal erosions + Nikolsky+, often drug-induced, ICU/burn unit care, stop the drug NOW.</div>
-            </section>
-
-            <!-- Section 5: Medications -->
-            <section class="guide-section" id="meds">
-                <div class="section-header">
-                    <div class="section-number">5</div>
-                    <div class="section-title-group">
-                        <h2>Medications at a Glance</h2>
-                        <div class="subtitle">What to reach for &mdash; and what to reach for FIRST</div>
-                    </div>
-                </div>
-
-                <div class="med-grid">
-                    <div class="med-card">
-                        <h5>Emollients / Moisturizers</h5>
-                        <div class="med-class">Eczema Daily Care</div>
-                        <p>Fragrance-free, thick (petrolatum-based). Apply <strong>within 3 min of bath</strong>, reapply 2&ndash;3&times; daily.</p>
-                        <p>CeraVe, Vanicream, Eucerin, plain petroleum jelly.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Topical Corticosteroids</h5>
-                        <div class="med-class">Eczema &amp; Contact</div>
-                        <p><strong>Low potency</strong> (hydrocortisone 1%) for face, folds, infants.</p>
-                        <p><strong>Medium potency</strong> (triamcinolone 0.1%) for body, limbs.</p>
-                        <p>Apply BID during flares &times; 1&ndash;2 weeks; taper as skin clears.</p>
-                        <p>Long-term use &rarr; skin atrophy, striae.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Topical Calcineurin Inhibitors</h5>
-                        <div class="med-class">Steroid-Sparing</div>
-                        <p>Tacrolimus (Protopic) or pimecrolimus (Elidel).</p>
-                        <p>Good for face and folds where long-term steroids risk atrophy.</p>
-                        <p>Mild burning for first few days is common.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>H1 Antihistamines</h5>
-                        <div class="med-class">Urticaria &amp; Itch</div>
-                        <p><strong>Non-sedating:</strong> cetirizine (Zyrtec), loratadine (Claritin) &mdash; daytime.</p>
-                        <p><strong>Sedating:</strong> diphenhydramine (Benadryl), hydroxyzine (Atarax) &mdash; nighttime itch.</p>
-                        <p>First-line for hives.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Oral Corticosteroids</h5>
-                        <div class="med-class">Severe Inflammation</div>
-                        <p>Prednisone or prednisolone for severe contact dermatitis, widespread eczema flare, severe urticaria.</p>
-                        <p>Short course 5&ndash;7 days; taper if longer.</p>
-                        <p>Watch for mood changes, BG elevation, GI upset.</p>
-                    </div>
-
-                    <div class="med-card" style="border-top-color: var(--critical);">
-                        <h5>Epinephrine (IM)</h5>
-                        <div class="med-class">Anaphylaxis · First-Line</div>
-                        <p><strong>IM into vastus lateralis (outer thigh)</strong>.</p>
-                        <p>0.15 mg if &lt;30 kg (EpiPen Jr); 0.3 mg if &ge;30 kg (EpiPen).</p>
-                        <p>Repeat every 5&ndash;15 min if needed. ALWAYS first, antihistamines second.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Barrier Creams (Zinc Oxide)</h5>
-                        <div class="med-class">Diaper Rash</div>
-                        <p>Desitin, Triple Paste, A+D ointment.</p>
-                        <p>Apply generously with each diaper change to protect skin from urine/stool.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Dupilumab (Biologic)</h5>
-                        <div class="med-class">Refractory Eczema</div>
-                        <p>IL-4/IL-13 inhibitor. Injection every 2 weeks.</p>
-                        <p>For moderate-severe atopic dermatitis refractory to topicals.</p>
-                        <p>Approved down to age 6 months.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Acyclovir</h5>
-                        <div class="med-class">HSV-Triggered EM / Eczema Herpeticum</div>
-                        <p>Oral for recurrent EM from HSV; <strong>IV for eczema herpeticum</strong>.</p>
-                        <p>Adequate hydration to prevent nephrotoxicity.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Moisturize + steroid for eczema. Antihistamine for hives. EPI first for anaphylaxis. Stop the drug for SJS/TEN.</div>
-            </section>
-
-            <!-- Section 6: Family Education -->
-            <section class="guide-section" id="family">
-                <div class="section-header">
-                    <div class="section-number">6</div>
-                    <div class="section-title-group">
-                        <h2>Family Education &amp; Prevention</h2>
-                        <div class="subtitle">The daily habits and the emergency response</div>
-                    </div>
-                </div>
-
-                <h3>Eczema Daily Care</h3>
-
-                <ol class="step-list">
-                    <li><strong>Bath daily for 5&ndash;10 min</strong> in lukewarm water; use mild fragrance-free cleanser.</li>
-                    <li><strong>Pat dry</strong> (don't rub) and <strong>moisturize within 3 minutes</strong>.</li>
-                    <li>Moisturize thickly, 2&ndash;3 times per day; use plain petrolatum or fragrance-free cream.</li>
-                    <li><strong>Use topical steroid</strong> on active red/itchy patches only, BID during flare; stop when clear.</li>
-                    <li>Keep fingernails short; cotton gloves or mittens at night to prevent scratching.</li>
-                    <li>Identify and avoid triggers: wool, synthetics, fragrances, heat, stress, known allergens.</li>
-                    <li>Call provider for: honey-colored crusts, fever, painful clustered vesicles, or spreading red area.</li>
-                </ol>
-
-                <h3>Allergy Avoidance &amp; Auto-Injector Use</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Know the allergen</strong> &mdash; food label reading, ingredient awareness, avoidance at school/parties.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Carry two EpiPens at all times</strong> &mdash; one may be needed, biphasic reactions may require a second dose.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Practice with a trainer</strong> &mdash; teach all caregivers, including daycare/school staff.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Medical alert bracelet</strong> &mdash; identifies allergy in case of emergency.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Action plan</strong> &mdash; written plan at school; review annually.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>If in doubt, give the EpiPen</strong> &mdash; over-treating anaphylaxis is not dangerous; under-treating is.</p>
-                    </div>
-                </div>
-
-                <h3>When to Call or Go to the ED</h3>
-
-                <div class="redflag-grid">
-                    <div class="redflag-card">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>Throat tightness, wheezing, stridor</strong> &mdash; use EpiPen and call 911.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>Facial or lip swelling, difficulty breathing</strong> after medication or food exposure.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>Widespread rash with mucosal erosions</strong> (mouth sores, eye redness) &mdash; rule out SJS.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>Skin sloughs with pressure</strong> or large blisters forming.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>Painful clustered vesicles on eczematous skin</strong> &mdash; possible eczema herpeticum.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <p><strong>Honey-colored crusts, fever, warmth, spreading redness</strong> &mdash; possible Staph infection.</p>
-                    </div>
-                </div>
-
-                <div class="info-box safe">
-                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
-                    <div class="info-box-content">
-                        <h5>Normalize the Skin Journey</h5>
-                        <p>Children with chronic skin conditions often feel self-conscious and frustrated. Acknowledge the emotional toll &mdash; not just the itch, but the stares, the comments, the missed sleep. Reassure families that <strong>many children outgrow atopic dermatitis</strong> by adolescence or adulthood, and that daily care prevents most flares. Empower older children to participate in their own skin care routine; self-efficacy is part of the treatment.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Moisturize daily + steroid for flares. Carry two EpiPens. Know the red flags: anaphylaxis, SJS, eczema herpeticum. Empower the child.</div>
-            </section>
-
-            <!-- Quiz CTA -->
-            <div class="quiz-cta">
-                <h3>Test your knowledge</h3>
-                <p>14 NCLEX-style questions covering every section of this guide.</p>
-                <a href="quiz/quiz.html?topic=hypersensitivity-inflammatory-skin" class="quiz-btn">
-                    <i class="fas fa-flask"></i> Start Quiz
-                </a>
+        <!-- ══════════ START HERE ══════════ -->
+        <section class="guide-section" id="start-here">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>What actually gets you</h2>
             </div>
 
-            <!-- Cross References -->
-            <section class="cross-references" id="cross-references">
-                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
-                <div class="cross-ref-grid">
-                    <a href="pediatric-skin-infections.html" class="cross-ref-link">
-                        <i class="fas fa-viruses"></i> Pediatric Skin Infections
-                    </a>
-                    <a href="asthma.html" class="cross-ref-link">
-                        <i class="fas fa-lungs"></i> Asthma
+            <p>Skin questions are not about naming a rash. They are about placing it. Place the reaction in the right hypersensitivity type. Match the rash to what you do next. The rest follows.</p>
+
+            <p>Points get lost here in three predictable ways. Read these before anything else.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You blurred the four hypersensitivity types</div>
+                <div class="info-box-content">
+                    <p>So a scenario hands you a reaction and you cannot place it. Type I is immediate and IgE-driven. Anaphylaxis and urticaria live there. Type II is cytotoxic. Type III is immune-complex. Type IV is delayed and T-cell driven. Contact dermatitis lives there. If you cannot place it, you cannot predict what it does.</p>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You treated every itchy rash the same</div>
+                <div class="info-box-content">
+                    <p>Atopic dermatitis and contact dermatitis both itch. They need different actions. Atopic is chronic; you repair the barrier and moisturize daily. Contact follows an exposure; you find the trigger and remove it. Same itch, different job.</p>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You read SJS as a bad rash</div>
+                <div class="info-box-content">
+                    <p>It is not a bad rash. It is a dermatologic emergency. A drug triggers it. The mucous membranes erode. The skin sloughs. You stop the drug and treat the child like a burn. Miss it and it climbs toward death.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Do not memorize rashes. Learn three splits. Which hypersensitivity type. Atopic or contact. A bad rash or SJS.
+            </div>
+        </section>
+
+        <!-- ══════════ THE FOUR THINGS ══════════ -->
+        <section class="guide-section" id="high-yield-summary">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The four things</h2>
+            </div>
+
+            <p>For every condition below, say four things with the book closed. The one-sentence definition. The clue you would see in a patient. The priority action. The first-line treatment with its teaching point.</p>
+
+            <p>If you cannot say all four out loud, you do not know it yet. Familiarity is not recall.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Definition in one sentence</th>
+                            <th>Clue in the scenario</th>
+                            <th>Priority action</th>
+                            <th>First-line treatment and teaching</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Atopic dermatitis</strong></td>
+                            <td>A chronic, itchy, barrier-defect rash that runs with allergy.</td>
+                            <td>Itchy, dry, scaly patches on the flexural folds; a child with asthma or hay fever.</td>
+                            <td>Repair the barrier: moisturize daily.</td>
+                            <td>Emollient plus a topical steroid on flares. Moisturize within 3 minutes of the bath.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Contact dermatitis</strong></td>
+                            <td>A delayed reaction where the antigen touched the skin.</td>
+                            <td>An itchy rash whose shape matches the exposure; linear streaks after a hike.</td>
+                            <td>Find the trigger and remove it.</td>
+                            <td>Topical steroid; oral steroid if widespread. Wash urushiol off fast.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Urticaria</strong></td>
+                            <td>Wheals that rise, itch, and move within 24 hours.</td>
+                            <td>Welts that come and go, often after a virus or a food.</td>
+                            <td>Check for airway and circulation involvement first.</td>
+                            <td>An H1 antihistamine. Watch for the hives that turn into anaphylaxis.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>SJS / TEN</strong></td>
+                            <td>A drug-driven reaction that erodes mucosa and sloughs skin.</td>
+                            <td>A painful rash with mouth and eye sores, weeks into a new drug.</td>
+                            <td>Stop the offending drug now.</td>
+                            <td>ICU or burn-unit care; treat the skin like a burn.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these four rows on one index card, by hand. Atopic repairs the barrier. Contact removes the trigger. Hives get an antihistamine. SJS stops the drug. That card is most of the guide.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ THE FOUR TYPES ══════════ -->
+        <section class="guide-section" id="hypersensitivity-types">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>The four hypersensitivity types</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: how fast, and by what mechanism.</p>
+
+            <p>Four types of hypersensitivity exist. Two carry most of this guide. Type I is fast. Type IV is slow. That one split does most of the work.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Type</th>
+                            <th>Mechanism</th>
+                            <th>Timing after exposure</th>
+                            <th>Where you meet it</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Type I</strong></td>
+                            <td>Immediate, IgE-mediated</td>
+                            <td>Minutes to 1 hour</td>
+                            <td>Anaphylaxis, urticaria, the atopic child</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Type II</strong></td>
+                            <td>Cytotoxic, antibody against cells</td>
+                            <td>Variable</td>
+                            <td>Transfusion reactions, hemolysis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Type III</strong></td>
+                            <td>Immune-complex deposition</td>
+                            <td>Hours to days</td>
+                            <td>Serum sickness, lupus, glomerulonephritis</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Type IV</strong></td>
+                            <td>Delayed, T-cell mediated</td>
+                            <td>24 to 72 hours</td>
+                            <td>Contact dermatitis, TB skin test, SJS / TEN</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The axis that separates them</div>
+                <div class="info-box-content">
+                    <p>Speed and mechanism. Type I fires within minutes and rides on IgE. Think anaphylaxis and hives. Type IV takes a day or two and rides on T-cells. Think poison ivy. Fast points to Type I. Delayed points to Type IV.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-fast-slow">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Fast is Type I, Slow is Type IV</div>
+                <div class="florencebot-tip-content">A reaction in minutes is Type I and IgE-mediated; epinephrine is on the table. A reaction a day or two later is Type IV and T-cell mediated; a topical steroid and trigger removal is the job. Speed sorts most scenarios before you read another word.</div>
+            </div>
+        </section>
+
+        <!-- ══════════ ATOPIC ══════════ -->
+        <section class="guide-section" id="atopic">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>Atopic dermatitis</h2>
+            </div>
+
+            <p class="subtitle">The itch that rashes.</p>
+
+            <p>Atopic dermatitis is eczema. The child scratches, and scratching makes it worse. It is chronic. It starts in early infancy. It affects up to 20 percent of children.</p>
+
+            <p>It travels with allergy. It is part of the atopic triad. Eczema, asthma, and allergic rhinitis run together. A filaggrin mutation weakens the skin barrier, so the skin dries and lets irritants in.</p>
+
+            <p>Location dates the child. Infants show it on the cheeks, scalp, and extensor surfaces. The diaper area is usually spared. Older children show it on flexural surfaces. Look in the antecubital and popliteal folds, the neck, the wrists, and the ankles.</p>
+
+            <h3>Classic findings</h3>
+            <ul>
+                <li>Intensely itchy red, dry, scaly patches</li>
+                <li>Thickened, leathery skin (lichenification) from chronic scratching</li>
+                <li>Allergic shiners (dark circles) and Dennie-Morgan lines under the eyes</li>
+            </ul>
+
+            <h3>Triggers</h3>
+            <ul>
+                <li>Dry skin and cold weather</li>
+                <li>Irritants: soaps, detergents, wool, synthetic fabrics, fragrances</li>
+                <li>Allergens: dust mites, pet dander, pollen, and food (a less common trigger in older kids)</li>
+                <li>Heat, sweating, and stress</li>
+                <li>Secondary infection with Staph or HSV</li>
+            </ul>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Soak and seal <span class="tag">Daily</span></div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Short lukewarm bath, 5 to 10 minutes daily</li>
+                            <li>Mild, fragrance-free cleanser; avoid regular soap</li>
+                            <li>Pat dry, do not rub</li>
+                            <li>Apply moisturizer within 3 minutes to trap the water</li>
+                            <li>Thick emollient (petrolatum-based) over lotion</li>
+                            <li>Reapply moisturizer 2 to 3 times a day</li>
+                            <li>Cotton loose clothing; short nails; cotton gloves at night</li>
+                            <li>Fragrance-free detergent, double-rinse; humidifier in winter</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Treatment ladder <span class="tag">Stepwise</span></div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Topical steroid on flares: low potency (hydrocortisone 1%) for the face, higher (triamcinolone) for the body</li>
+                            <li>Apply BID for 1 to 2 weeks; taper as the skin clears</li>
+                            <li>Calcineurin inhibitors (tacrolimus, pimecrolimus) spare steroids on the face and folds</li>
+                            <li>Sedating antihistamines (diphenhydramine, hydroxyzine) at night for itch and sleep</li>
+                            <li>Wet wrap therapy for severe flares</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Severe disease <span class="tag">Refractory</span></div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Phototherapy (UV)</li>
+                            <li>Oral immunosuppressants (methotrexate, cyclosporine)</li>
+                            <li>Dupilumab, a biologic, for refractory moderate-to-severe disease</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Watch for infection <span class="tag">Red flag</span></div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Honey-colored crusts point to secondary Staph impetigo; treat with mupirocin or an oral antibiotic</li>
+                            <li>Weeping, yellow drainage, or new tenderness</li>
+                            <li>Eczema herpeticum: painful clustered vesicles, fever, and possible ocular or systemic spread</li>
+                            <li>Cellulitis: a warm red spreading border with fever</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-soak-and-seal">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Moisturize Within 3 Minutes of the Bath</div>
+                <div class="florencebot-tip-content">Wet skin absorbs water during the bath, and moisturizer applied right after <strong>seals that water in</strong>. Wait even 5 minutes and the water evaporates, so the cream goes on dry skin and does far less. Teach families this timing on its own; it is the single most effective home step for mild-to-moderate eczema.</div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-virus"></i> Eczema herpeticum is an emergency</div>
+                <div class="info-box-content">
+                    <p>A child with known eczema who develops painful clustered vesicles, fever, or rapidly spreading lesions may have eczema herpeticum. This is disseminated HSV on eczematous skin. It needs IV acyclovir at once. Near the eyes, get emergent ophthalmology to prevent corneal scarring and blindness. Continue the eczema care during and after treatment.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Eczema is chronic. Moisturize daily, seal after the bath, steroid the flares, avoid triggers, protect the nails. Watch for Staph impetigo and eczema herpeticum.
+            </div>
+        </section>
+
+        <!-- ══════════ CONTACT ══════════ -->
+        <section class="guide-section" id="contact">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>Contact and diaper dermatitis</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: chronic and flexural, or exposure-patterned.</p>
+
+            <p>Contact dermatitis and atopic dermatitis both itch. The difference is the story. Atopic is chronic and follows the folds. Contact follows an exposure. The rash sits where the trigger touched.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Atopic dermatitis <span class="tag">Chronic</span></div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Chronic and recurring, with a family history of allergy</li>
+                            <li>Sits on the flexural folds in older children</li>
+                            <li>The job is barrier repair: moisturize daily</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Contact dermatitis <span class="tag">Type IV</span></div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Tied to a single exposure, delayed by 24 to 72 hours</li>
+                            <li>The shape matches the contact, like linear streaks</li>
+                            <li>The job is trigger removal: find it and stop it</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The axis that separates them</div>
+                <div class="info-box-content">
+                    <p>The pattern and the story. A chronic itch in the folds, with asthma or hay fever nearby, is atopic. An itch whose shape traces an exposure is contact. That difference changes the action. Atopic repairs the barrier. Contact removes the trigger.</p>
+                </div>
+            </div>
+
+            <h3>The triggers and the rash</h3>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Allergic contact dermatitis <span class="tag">Type IV</span></div>
+                    <div class="comparison-card-body">
+                        <p>A cell-mediated, delayed Type IV reaction to an antigen. It appears 24 to 72 hours after exposure in a sensitized child.</p>
+                        <p><strong>Common triggers:</strong></p>
+                        <ul>
+                            <li>Poison ivy, oak, and sumac (urushiol oil), the classic linear streaks</li>
+                            <li>Nickel (jewelry, belt buckles, snaps)</li>
+                            <li>Latex (gloves, balloons, medical equipment)</li>
+                            <li>Fragrances, dyes, cosmetics, preservatives</li>
+                            <li>Topical medications (neomycin, bacitracin)</li>
+                        </ul>
+                        <p><strong>Appearance:</strong> very itchy red edematous papules and vesicles. The pattern matches the contact, linear in poison ivy or a ring under a watchband. Acute lesions weep; chronic ones go dry and lichenified.</p>
+                        <p><strong>Treatment:</strong> remove or avoid the offender and wash urushiol off fast. Cool compresses and Burow's (aluminum acetate) solution. Topical steroids at medium-to-high potency. Oral steroids for extensive or facial or genital involvement. Antihistamines for itch.</p>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Irritant diaper dermatitis <span class="tag">Common</span></div>
+                    <div class="comparison-card-body">
+                        <p>Skin irritation from prolonged contact with urine and stool, plus friction and moisture. It is chemical irritation, not an allergic reaction.</p>
+                        <p><strong>Appearance:</strong> red, shiny skin on the convex surfaces (buttocks, tops of the thighs, pubic area). It <strong>spares the skin folds</strong>. The infant is tender and may cry with diaper changes.</p>
+                        <p><strong>Treatment:</strong></p>
+                        <ul>
+                            <li>Frequent changes, every 2 hours or whenever soiled</li>
+                            <li>Air time with the diaper off for short periods</li>
+                            <li>Zinc oxide or petrolatum barrier cream, applied generously each change</li>
+                            <li>Gentle cleansing with water; avoid fragrance or alcohol wipes</li>
+                            <li>If no improvement in 2 to 3 days, consider candidal superinfection and add nystatin or clotrimazole</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-baby"></i> Irritant or candida diaper rash</div>
+                <div class="info-box-content">
+                    <p>Irritant diaper dermatitis sits on the convex surfaces, spares the folds, and has no satellite lesions; barrier cream and frequent changes fix it. Candidal diaper dermatitis involves the skin folds, has satellite lesions, and is bright red; it needs nystatin or clotrimazole. The fold involvement is the differentiator.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-poison-ivy">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Leaves of Three, Let Them Be</div>
+                <div class="florencebot-tip-content">Urushiol oil penetrates skin within minutes. <strong>Washing with soap and water within 15 minutes</strong> can prevent the reaction entirely; after 30 minutes it is usually too late. The rash itself is not contagious, but the oil on clothing, shoes, and pet fur can transfer. Wash every contaminated item.</div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Contact dermatitis follows the exposure; remove the trigger and add a topical steroid. Irritant diaper rash spares the folds; barrier cream fixes it. Candida hits the folds with satellites and needs an antifungal.
+            </div>
+        </section>
+
+        <!-- ══════════ URTICARIA ══════════ -->
+        <section class="guide-section" id="urticaria">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>Urticaria and anaphylaxis</h2>
+            </div>
+
+            <p class="subtitle">From hives to an airway emergency.</p>
+
+            <p>Urticaria is hives. Wheals rise, itch, and move. A single welt fades within 24 hours. New ones keep coming. That migration is the tell.</p>
+
+            <p>Hives on their own get an antihistamine. The moment a second body system joins in, you are in anaphylaxis, and the plan changes entirely.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Urticaria (hives) <span class="tag">Type I</span></div>
+                    <div class="comparison-card-body">
+                        <p><strong>Appearance:</strong> raised, red, edematous, intensely itchy wheals. Size ranges from small papules to large plaques. Individual lesions come and go within 24 hours while new ones emerge. Angioedema (deeper swelling of the lips, face, hands) may join in.</p>
+                        <p><strong>Triggers:</strong> foods (peanuts, tree nuts, eggs, milk, shellfish, wheat, soy); medications (penicillins, sulfonamides, NSAIDs, vaccines); viral infection, the number one cause in children; insect stings and latex; physical cold, heat, pressure, and exercise.</p>
+                        <p><strong>Acute or chronic:</strong> acute is under 6 weeks and usually viral or a clear trigger. Chronic is 6 weeks or more and often idiopathic or autoimmune.</p>
+                        <p><strong>Treatment:</strong> an H1 antihistamine first, cetirizine or loratadine by day, diphenhydramine at night. An H2 antihistamine (famotidine) may be added for refractory cases. Oral steroids for severe or widespread hives. Identify the trigger; refer recurrent or chronic cases to allergy.</p>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Anaphylaxis <span class="tag">Emergency</span></div>
+                    <div class="comparison-card-body">
+                        <p>An acute, life-threatening, IgE-mediated systemic reaction. It can start within minutes to 1 hour of exposure.</p>
+                        <p><strong>Any two systems:</strong></p>
+                        <ul>
+                            <li>Skin: hives, angioedema, flushing, itching</li>
+                            <li>Respiratory: wheezing, stridor, dyspnea, cough, hoarseness, throat tightness</li>
+                            <li>Cardiovascular: hypotension, tachycardia, syncope</li>
+                            <li>GI: vomiting, diarrhea, abdominal pain</li>
+                            <li>A sense of impending doom</li>
+                        </ul>
+                        <p><strong>Treatment, in order:</strong> IM epinephrine at once into the vastus lateralis, 0.15 mg if &lt;30 kg (EpiPen Jr) or 0.3 mg if &ge;30 kg (EpiPen), repeat every 5 to 15 minutes. Call 911 or the rapid response. Manage the airway, give oxygen, and position supine with the legs raised unless vomiting or dyspneic, then seated. IV fluids for hypotension. H1 and H2 antihistamines and corticosteroids are adjuncts, not first-line. Bronchodilators for wheezing. Observe 4 to 6 hours for a biphasic reaction.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-syringe"></i> Epinephrine is first, not antihistamines</div>
+                <div class="info-box-content">
+                    <p>In anaphylaxis, IM epinephrine is the only life-saving first-line treatment. Antihistamines and corticosteroids are adjuncts; they do not reverse airway or cardiovascular collapse. Delay in giving epinephrine is the leading cause of fatal anaphylaxis. Teach families with auto-injectors to give it if in doubt. Over-treating is not dangerous; under-treating is.</p>
+                </div>
+            </div>
+
+            <div class="florencebot-tip" id="tip-biphasic">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
+                </div>
+                <div class="florencebot-tip-title">Biphasic Anaphylaxis, Watch for Round Two</div>
+                <div class="florencebot-tip-content">Up to 20 percent of anaphylaxis cases have a <strong>biphasic reaction</strong>; symptoms return 4 to 12 hours after the first resolution, without re-exposure. That is why a child who responds beautifully to one dose still needs <strong>observation for 4 to 6 hours minimum</strong>. Always discharge with an EpiPen prescription and an action plan.</div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Itchy and moving, or painful and fixed</div>
+                <div class="info-box-content">
+                    <p>Hives itch, move, and fade within a day. Early SJS does the opposite. It is painful, it stays put, and it comes with mouth or eye sores and a new drug. When a rash hurts more than it itches, stop calling it hives and look at the next section.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Hives alone get an H1 antihistamine. Hives plus respiratory, cardiovascular, or GI signs is anaphylaxis; give IM epinephrine into the vastus lateralis at once. Then watch 4 to 6 hours for biphasic.
+            </div>
+        </section>
+
+        <!-- ══════════ SJS / TEN ══════════ -->
+        <section class="guide-section" id="sjs">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2>Erythema multiforme, SJS, and TEN</h2>
+            </div>
+
+            <p class="subtitle">A spectrum from mild to potentially fatal.</p>
+
+            <p>Erythema multiforme, SJS, and TEN sit on one spectrum. EM is usually benign. SJS and TEN are emergencies. The mucous membranes and the drug list tell you which one you are looking at.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Hives (urticaria) <span class="tag">Benign</span></div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Itchy, not painful</li>
+                            <li>Wheals move and fade within 24 hours</li>
+                            <li>No mucosal erosion</li>
+                            <li>An H1 antihistamine is the job</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Early SJS <span class="tag">Emergency</span></div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Painful, out of proportion to how it looks</li>
+                            <li>Dusky, fixed lesions that spread</li>
+                            <li>Mouth, eye, or genital erosions</li>
+                            <li>A new drug started 1 to 8 weeks ago</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The axis that separates them</div>
+                <div class="info-box-content">
+                    <p>Pain, mucosa, and a drug. Hives itch and move. Early SJS hurts, stays, and erodes the mucous membranes, and it follows a new medication. Any one of those three should pull you off the hives track.</p>
+                </div>
+            </div>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Erythema multiforme <span class="tag">Usually benign</span></div>
+                    <div class="comparison-card-body">
+                        <p><strong>Appearance:</strong> target or bull's-eye lesions, a central dusky zone with a paler ring and an outer red ring. They sit on the palms, soles, and extensor extremities.</p>
+                        <p><strong>Triggers:</strong> HSV, the most common, which can cause recurrent EM; Mycoplasma pneumoniae; and less often, medications.</p>
+                        <p><strong>Minor or major:</strong> minor is skin only, self-limiting, and resolves in 2 to 3 weeks. Major adds mucosal involvement, most often the mouth, and is more serious.</p>
+                        <p><strong>Treatment:</strong> supportive; treat the trigger with acyclovir if HSV. Antihistamines for itch, topical steroids, pain control, and mouth care for oral lesions.</p>
+                    </div>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">SJS / TEN <span class="tag">Emergency</span></div>
+                    <div class="comparison-card-body">
+                        <p><strong>Definitions by skin detachment:</strong></p>
+                        <ul>
+                            <li>SJS: &lt;10% of body surface area</li>
+                            <li>SJS and TEN overlap: 10 to 30%</li>
+                            <li>TEN: &gt;30%, with mortality of 30 to 50 percent</li>
+                        </ul>
+                        <p><strong>Presentation:</strong> a prodrome of fever, malaise, sore throat, and cough for 1 to 3 days. Then dusky red macules, purpuric spots, vesicles, and bullae that progress rapidly. Painful mucosal erosions of the mouth, eyes, and genitals. A positive Nikolsky sign. Skin pain out of proportion to the appearance.</p>
+                        <p><strong>Triggers:</strong> medications, above all anticonvulsants (carbamazepine, lamotrigine, phenytoin), allopurinol, sulfonamides, NSAIDs, and some antibiotics. Also Mycoplasma pneumoniae.</p>
+                        <p><strong>Treatment:</strong> stop the offending drug immediately. Admit to ICU or a burn unit. Replace IV fluid, correct electrolytes, and support nutrition. Give wound care like a burn with sterile handling and dressings. Involve ophthalmology, since eye involvement is common and can blind. Give oral and mouth care. IVIG is sometimes used; corticosteroids are controversial.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-prescription"></i> Always review the med list</div>
+                <div class="info-box-content">
+                    <p>If a child develops a widespread painful rash with mucosal involvement within 1 to 8 weeks of a new medication, think SJS. Common culprits are anticonvulsants (carbamazepine, lamotrigine, phenytoin), sulfonamide antibiotics, allopurinol, and NSAIDs. Stop the offending drug at once. Continuing it escalates toward TEN and death.</p>
+                </div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-hand-pointer"></i> Nikolsky sign, the hands-on clue</div>
+                <div class="info-box-content">
+                    <p>Apply gentle lateral pressure to normal-looking skin near a lesion. If the epidermis sloughs off, the Nikolsky sign is positive, which strongly suggests SJS or TEN. Positive Nikolsky plus mucosal involvement plus a recent new medication is SJS until proven otherwise. Get an urgent dermatology consult.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> EM is target lesions, usually HSV, self-limiting. SJS and TEN are mucosal erosions plus a positive Nikolsky, often drug-induced; ICU or burn-unit care, and stop the drug now.
+            </div>
+        </section>
+
+        <!-- ══════════ WHAT YOU DO FIRST ══════════ -->
+        <section class="guide-section" id="meds">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2>What you do first</h2>
+            </div>
+
+            <p>Each condition has a first move. Match the move to the reaction. These are in priority order, from the airway emergency down to daily care.</p>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Anaphylaxis: IM epinephrine.</strong> Into the vastus lateralis. 0.15 mg if &lt;30 kg, 0.3 mg if &ge;30 kg. Repeat every 5 to 15 minutes. This comes before antihistamines and steroids.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>SJS or TEN: stop the drug.</strong> Stop the offending medication now. Admit to ICU or a burn unit. Replace fluids, correct electrolytes, and treat the skin like a burn.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Eczema flare: targeted steroid.</strong> Apply a topical steroid to the red, itchy patches only. Low potency (hydrocortisone 1%) on the face, folds, and infants. Medium potency (triamcinolone 0.1%) on the body. BID for 1 to 2 weeks, then taper.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Eczema daily: moisturize and protect.</strong> Apply a thick, fragrance-free emollient within 3 minutes of the bath. Reapply 2 to 3 times a day. Short baths and barrier care hold the skin together.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Hives: H1 antihistamine.</strong> Cetirizine or loratadine by day. Diphenhydramine or hydroxyzine at night. Add an H2 antihistamine or oral steroids only when the hives are refractory or widespread.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">6</div>
+                    <div class="intervention-content"><strong>Contact dermatitis: remove the trigger.</strong> Find the exposure and stop it. Wash urushiol off fast. Add a topical steroid, or an oral steroid if it is widespread.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">7</div>
+                    <div class="intervention-content"><strong>Diaper dermatitis: barrier and air.</strong> Zinc oxide barrier cream with every change. Frequent changes and air time. Add an antifungal only if it is not better in 2 to 3 days.</div>
+                </li>
+            </ol>
+
+            <h3>Medications at a glance</h3>
+
+            <div class="med-grid">
+                <div class="med-card">
+                    <div class="med-class">Eczema daily care</div>
+                    <p><strong>Emollients and moisturizers.</strong> Fragrance-free and thick, petrolatum-based. Apply within 3 minutes of the bath and reapply 2 to 3 times a day.</p>
+                    <p>CeraVe, Vanicream, Eucerin, plain petroleum jelly.</p>
+                </div>
+                <div class="med-card">
+                    <div class="med-class">Eczema and contact</div>
+                    <p><strong>Topical corticosteroids.</strong> Low potency (hydrocortisone 1%) for the face, folds, and infants. Medium potency (triamcinolone 0.1%) for the body and limbs.</p>
+                    <p>Apply BID during flares for 1 to 2 weeks; taper as the skin clears. Long-term use risks skin atrophy and striae.</p>
+                </div>
+                <div class="med-card">
+                    <div class="med-class">Steroid-sparing</div>
+                    <p><strong>Topical calcineurin inhibitors.</strong> Tacrolimus (Protopic) or pimecrolimus (Elidel). Good for the face and folds where long-term steroids risk atrophy.</p>
+                    <p>Mild burning for the first few days is common.</p>
+                </div>
+                <div class="med-card">
+                    <div class="med-class">Urticaria and itch</div>
+                    <p><strong>H1 antihistamines.</strong> Non-sedating cetirizine (Zyrtec) or loratadine (Claritin) by day. Sedating diphenhydramine (Benadryl) or hydroxyzine (Atarax) for nighttime itch.</p>
+                    <p>First-line for hives.</p>
+                </div>
+                <div class="med-card">
+                    <div class="med-class">Severe inflammation</div>
+                    <p><strong>Oral corticosteroids.</strong> Prednisone or prednisolone for severe contact dermatitis, a widespread eczema flare, or severe urticaria.</p>
+                    <p>A short course of 5 to 7 days; taper if longer. Watch for mood changes, blood glucose elevation, and GI upset.</p>
+                </div>
+                <div class="med-card">
+                    <div class="med-class">Anaphylaxis, first-line</div>
+                    <p><strong>Epinephrine (IM).</strong> Into the vastus lateralis. 0.15 mg if &lt;30 kg (EpiPen Jr); 0.3 mg if &ge;30 kg (EpiPen).</p>
+                    <p>Repeat every 5 to 15 minutes if needed. Always first; antihistamines second.</p>
+                </div>
+                <div class="med-card">
+                    <div class="med-class">Diaper rash</div>
+                    <p><strong>Barrier creams (zinc oxide).</strong> Desitin, Triple Paste, A and D ointment.</p>
+                    <p>Apply generously with each change to protect the skin from urine and stool.</p>
+                </div>
+                <div class="med-card">
+                    <div class="med-class">Refractory eczema</div>
+                    <p><strong>Dupilumab (biologic).</strong> An IL-4 and IL-13 inhibitor, injected every 2 weeks, for moderate-to-severe atopic dermatitis refractory to topicals.</p>
+                    <p>Approved down to age 6 months.</p>
+                </div>
+                <div class="med-card">
+                    <div class="med-class">HSV-triggered EM, eczema herpeticum</div>
+                    <p><strong>Acyclovir.</strong> Oral for recurrent EM from HSV; IV for eczema herpeticum.</p>
+                    <p>Keep the child hydrated to prevent nephrotoxicity.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Moisturize plus a steroid for eczema. An antihistamine for hives. Epinephrine first for anaphylaxis. Stop the drug for SJS and TEN.
+            </div>
+        </section>
+
+        <!-- ══════════ FAMILY ══════════ -->
+        <section class="guide-section" id="family">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2>Family education and prevention</h2>
+            </div>
+
+            <p class="subtitle">The daily habits and the emergency response.</p>
+
+            <p>Most of this care happens at home. Teach the routine, then teach the red flags. The family runs both.</p>
+
+            <h3>Eczema daily care</h3>
+
+            <ol class="step-list">
+                <li>Bath daily for 5 to 10 minutes in lukewarm water with a mild, fragrance-free cleanser.</li>
+                <li>Pat dry, do not rub, and moisturize within 3 minutes.</li>
+                <li>Moisturize thickly, 2 to 3 times a day, with plain petrolatum or a fragrance-free cream.</li>
+                <li>Use a topical steroid on active red or itchy patches only, BID during a flare; stop when clear.</li>
+                <li>Keep fingernails short; use cotton gloves or mittens at night to stop scratching.</li>
+                <li>Identify and avoid triggers: wool, synthetics, fragrances, heat, stress, and known allergens.</li>
+                <li>Call the provider for honey-colored crusts, fever, painful clustered vesicles, or a spreading red area.</li>
+            </ol>
+
+            <h3>Allergy avoidance and auto-injector use</h3>
+
+            <div class="key-point-grid">
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Know the allergen.</strong> Read food labels, learn the ingredients, and avoid it at school and parties.</p>
+                </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Carry two EpiPens at all times.</strong> One may fail, and a biphasic reaction may need a second dose.</p>
+                </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Practice with a trainer.</strong> Teach every caregiver, including daycare and school staff.</p>
+                </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Medical alert bracelet.</strong> It names the allergy in an emergency.</p>
+                </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Action plan.</strong> Keep a written plan at school and review it every year.</p>
+                </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>If in doubt, give the EpiPen.</strong> Over-treating anaphylaxis is not dangerous; under-treating is.</p>
+                </div>
+            </div>
+
+            <h3>When to call or go to the ED</h3>
+
+            <div class="redflag-grid">
+                <div class="redflag-card">
+                    <p><strong>Throat tightness, wheezing, stridor.</strong> Use the EpiPen and call 911.</p>
+                </div>
+                <div class="redflag-card">
+                    <p><strong>Facial or lip swelling, difficulty breathing</strong> after a medication or food.</p>
+                </div>
+                <div class="redflag-card">
+                    <p><strong>Widespread rash with mucosal erosions</strong> (mouth sores, eye redness); rule out SJS.</p>
+                </div>
+                <div class="redflag-card">
+                    <p><strong>Skin sloughs with pressure</strong> or large blisters forming.</p>
+                </div>
+                <div class="redflag-card">
+                    <p><strong>Painful clustered vesicles on eczematous skin</strong>; possible eczema herpeticum.</p>
+                </div>
+                <div class="redflag-card">
+                    <p><strong>Honey-colored crusts, fever, warmth, spreading redness</strong>; possible Staph infection.</p>
+                </div>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-heart"></i> Normalize the skin journey</div>
+                <div class="info-box-content">
+                    <p>Children with chronic skin conditions often feel self-conscious and worn down. Acknowledge the toll; not just the itch, but the stares, the comments, and the missed sleep. Reassure families that many children outgrow atopic dermatitis by adolescence or adulthood, and that daily care prevents most flares. Let older children own their skin routine; self-efficacy is part of the treatment.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Moisturize daily and steroid the flares. Carry two EpiPens. Know the red flags: anaphylaxis, SJS, eczema herpeticum. Empower the child.
+            </div>
+        </section>
+
+        <!-- ══════════ NUMBERS ══════════ -->
+        <section class="guide-section" id="numbers-cold">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>Numbers to have cold</h2>
+            </div>
+
+            <p>These should be automatic. If you have to reason toward one, it is not learned yet. Every row changes what you do.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead><tr><th>Number</th><th>What you do with it</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Within 3 minutes</strong></td><td>Moisturize after the bath to seal water in</td></tr>
+                        <tr><td><strong>Hydrocortisone 1%</strong></td><td>Low-potency steroid for the face, folds, and infants</td></tr>
+                        <tr><td><strong>Triamcinolone 0.1%</strong></td><td>Medium-potency steroid for the body and limbs</td></tr>
+                        <tr><td><strong>BID for 1 to 2 weeks</strong></td><td>Topical steroid on a flare, then taper</td></tr>
+                        <tr><td><strong>Within 15 minutes</strong></td><td>Wash urushiol off to prevent the poison ivy rash</td></tr>
+                        <tr><td><strong>0.15 mg, &lt;30 kg</strong></td><td>IM epinephrine dose (EpiPen Jr), vastus lateralis</td></tr>
+                        <tr><td><strong>0.3 mg, &ge;30 kg</strong></td><td>IM epinephrine dose (EpiPen), vastus lateralis</td></tr>
+                        <tr><td><strong>Every 5 to 15 min</strong></td><td>Repeat epinephrine if symptoms persist</td></tr>
+                        <tr><td><strong>4 to 6 hours</strong></td><td>Observe after epinephrine for a biphasic reaction</td></tr>
+                        <tr><td><strong>&lt;10% BSA</strong></td><td>Skin detachment that defines SJS</td></tr>
+                        <tr><td><strong>&gt;30% BSA</strong></td><td>Skin detachment that defines TEN</td></tr>
+                        <tr><td><strong>Every 2 hours</strong></td><td>Change the diaper in irritant diaper dermatitis</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Twelve numbers on the back of the index card. Test yourself on the action, not the value. The scenario gives you the number and asks what you do.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PRODUCE ══════════ -->
+        <section class="guide-section" id="rebuild">
+            <div class="section-header">
+                <div class="section-number">11</div>
+                <h2>Now close the guide</h2>
+            </div>
+
+            <p>Reading this again will not move your score. Producing it will. Everything below is done with the page shut.</p>
+
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <ol>
+                    <li>List the four hypersensitivity types with their timing, and name the two that matter most here.</li>
+                    <li>Two columns, atopic and contact. Write the story that tells them apart and the action each one needs.</li>
+                    <li>Write what turns hives into anaphylaxis, and the first drug you reach for.</li>
+                    <li>Write the three signs that pull a rash off the hives track and onto SJS.</li>
+                    <li>Write both epinephrine doses with their weight cutoff and the injection site.</li>
+                </ol>
+            </div>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Say these four out loud</div>
+                <div class="info-box-content">
+                    <p>Pick any condition in this guide. Without looking, say the one-sentence definition, the clue you would see in a patient, the priority action, and the first-line treatment with its teaching point.</p>
+                    <p>If you can do that for all four, you are ready. If you cannot, you know exactly which section to reopen.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> You will not be asked to name a rash. You will be given a child and asked what you do next. Place the reaction, then act.
+            </div>
+        </section>
+
+
+        <section class="practice-questions" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> Test yourself</h2>
+                <div class="quiz-cta-box">
+                    <div class="quiz-cta-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="quiz-cta-content">
+                        <h3>Can you produce it?</h3>
+                        <p>14 questions with full rationales covering the hypersensitivity types, atopic and contact dermatitis, urticaria and anaphylaxis, and the SJS spectrum. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
+                        <div class="quiz-cta-stats">
+                            <span><i class="fas fa-question-circle"></i> 14 Questions</span>
+                            <span><i class="fas fa-clock"></i> ~12 min</span>
+                            <span><i class="fas fa-layer-group"></i> Priority and Application</span>
+                        </div>
+                    </div>
+                    <a href="quiz/quiz.html?topic=hypersensitivity-inflammatory-skin" class="quiz-cta-button">
+                        <i class="fas fa-play"></i> Start Quiz
                     </a>
                 </div>
             </section>
 
-        </div><!-- end document-content -->
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-stopwatch"></i>
+                        <p><strong>Type I</strong> is fast and IgE-driven; <strong>Type IV</strong> is delayed and T-cell-driven</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-hand-dots"></i>
+                        <p><strong>Atopic</strong> is chronic and flexural; repair the barrier and moisturize daily</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-leaf"></i>
+                        <p><strong>Contact</strong> matches the exposure; find the trigger and remove it</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-syringe"></i>
+                        <p><strong>Anaphylaxis</strong> = IM epinephrine first; antihistamines are adjuncts</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-triangle-exclamation"></i>
+                        <p><strong>SJS / TEN</strong> = Nikolsky positive, drug-driven; stop the drug and treat like a burn</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-baby"></i>
+                        <p><strong>Irritant diaper rash</strong> spares the folds; candida hits the folds with satellites</p>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Cross-References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Guides in the Library</h2>
+                <div class="cross-ref-group">
+                    <h3>Before this guide, review:</h3>
+                    <ul>
+                        <li><a href="assessment-skills.html"><i class="fas fa-arrow-right"></i> Assessment Skills</a></li>
+                    </ul>
+                </div>
+                <div class="cross-ref-group">
+                    <h3>After this guide, study:</h3>
+                    <ul>
+                        <li><a href="pediatric-skin-infections.html"><i class="fas fa-arrow-right"></i> Pediatric Skin Infections</a></li>
+                    </ul>
+                </div>
+                <div class="cross-ref-group">
+                    <h3>Also relevant:</h3>
+                    <ul>
+                        <li><a href="asthma.html"><i class="fas fa-arrow-right"></i> Asthma</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
         <div class="document-footer">
-            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective" class="footer-logo">
             <p class="footer-tagline">Your daily companion through nursing school.</p>
             <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
         </div>
 
-    </div><!-- end document-container -->
+    </div>
 
+    <!-- Guide page scripts (external for CSP compliance) -->
     <script src="configs/hypersensitivity-inflammatory-skin-config.js?v=3"></script>
     <script src="guide-sidebar.js?v=3"></script>
     <script src="guide-script.js?v=3"></script>

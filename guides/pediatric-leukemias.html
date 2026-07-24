@@ -4,2233 +4,1054 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pediatric Leukemias (ALL/AML) Study Guide - The Nursing Collective</title>
-    <meta name="description" content="Pediatric nursing study guide for childhood leukemias. ALL vs AML, classification, clinical presentation, neutropenic precautions, chemotherapy, tumor lysis syndrome, and family support.">
+    <meta name="description" content="Pediatric nursing study guide for childhood leukemias. Tell ALL from AML, map the three cytopenias to their signs, treat neutropenic fever as an emergency, and recognize tumor lysis syndrome.">
     <link rel="canonical" href="https://thenursingcollective.pro/guides/pediatric-leukemias.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/guides/pediatric-leukemias.html">
     <meta property="og:title" content="Pediatric Leukemias (ALL/AML) Study Guide - The Nursing Collective">
-    <meta property="og:description" content="Pediatric nursing study guide for childhood leukemias.">
+    <meta property="og:description" content="Pediatric nursing study guide for childhood leukemias. ALL vs AML, the three cytopenias, neutropenic fever, and tumor lysis syndrome.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/cookie-consent.css">
+
+    <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="../css/tokens.css?v=3">
+    <link rel="stylesheet" href="guide.css?v=3">
     <link rel="stylesheet" href="guide-sidebar.css?v=3">
-
-    <style>
-        /* PEDIATRIC LEUKEMIAS — Pediatric Heme/Onc */
-        :root {
-            --navy: #0d1b2a;
-            --navy-2: #162032;
-            --navy-3: #1e2d3e;
-            --card-dark: #1a2940;
-            --teal: #0fbcad;
-            --teal-dim: #0a9086;
-            --amber: #f4a535;
-            --green: #3dbd7a;
-            --red: #e05252;
-            --purple: #8b5cf6;
-            --text-inv: #e8edf2;
-            --text-inv-dim: #8a9bb0;
-            --border-inv: rgba(255, 255, 255, 0.07);
-            --border-inv-mid: rgba(255, 255, 255, 0.12);
-
-            --paper: #162032;
-            --paper-warm: #1a2940;
-            --paper-deep: #1e2d3e;
-            --ink: #f1f5f9;
-            --ink-soft: #c4ccd8;
-            --ink-dimmer: #8a9bb0;
-            --rule: rgba(255, 255, 255, 0.08);
-            --rule-mid: rgba(255, 255, 255, 0.14);
-            --rule-soft: rgba(255, 255, 255, 0.04);
-
-            --peds-coral: #ef5a5a;
-            --peds-coral-deep: #dc2f4f;
-            --peds-rose: #fb8989;
-            --peds-blush: rgba(239, 90, 90, 0.12);
-            --peds-blush-2: rgba(239, 90, 90, 0.22);
-            --peds-plum: #fb8989;
-
-            --critical: #dc2626;
-            --safe: #10b981;
-            --warning: #f59e0b;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--ink-soft);
-            background: var(--navy);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .download-bar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(13, 27, 42, 0.92);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-            color: var(--text-inv);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 0.5px solid var(--border-inv);
-        }
-        .download-bar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 0.01em;
-            color: var(--text-inv);
-        }
-        .download-bar-brand i { color: var(--teal); font-size: 16px; }
-        .download-bar-actions { display: flex; gap: 10px; }
-
-        .btn-download, .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-decoration: none;
-            border: 0.5px solid var(--border-inv-mid);
-        }
-        .btn-download { background: var(--teal); color: var(--navy); border-color: var(--teal); }
-        .btn-download:hover { background: var(--teal-dim); border-color: var(--teal-dim); transform: translateY(-1px); }
-        .btn-back { background: transparent; color: var(--text-inv-dim); }
-        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
-
-        .document-container {
-            max-width: 900px;
-            margin: 80px auto 40px;
-            background: var(--paper);
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            border: 0.5px solid var(--rule-mid);
-        }
-
-        .cover-page {
-            background:
-                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
-                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
-            color: white;
-            padding: 72px 60px 56px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 3px solid var(--peds-coral);
-        }
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 120px;
-            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
-            pointer-events: none;
-        }
-        .cover-content { position: relative; z-index: 1; }
-
-        .cover-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 50px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
-
-        .cover-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 14px;
-            line-height: 1.08;
-            letter-spacing: -0.01em;
-        }
-        .cover-subtitle {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.72);
-            max-width: 580px;
-            margin: 0 auto 32px;
-            line-height: 1.55;
-        }
-
-        .cover-meta {
-            display: inline-flex;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 10px 22px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 0.5px solid rgba(255, 255, 255, 0.12);
-            border-radius: 999px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-meta-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.8px;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-        }
-        .cover-meta-item i { color: var(--peds-coral); font-size: 11px; }
-        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
-
-        .document-content { padding: 56px 56px 48px; background: var(--paper); }
-
-        .learning-objectives {
-            background: var(--peds-blush);
-            border: 1px solid var(--peds-blush-2);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 36px;
-        }
-        .learning-objectives h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--peds-rose);
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .learning-objectives h2 i { color: var(--peds-coral); }
-        .learning-objectives-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-        .objective-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .objective-card i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
-        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
-
-        .high-yield-summary {
-            background: linear-gradient(135deg, rgba(244, 165, 53, 0.08), rgba(244, 165, 53, 0.02));
-            border: 1px solid rgba(244, 165, 53, 0.25);
-            border-left: 4px solid var(--amber);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 36px;
-        }
-        .high-yield-summary h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--amber);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .high-yield-summary h2 i { color: var(--amber); }
-        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
-        .high-yield-summary ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 4px;
-        }
-        .high-yield-summary li {
-            background: rgba(0, 0, 0, 0.18);
-            border-radius: 8px;
-            padding: 12px 14px 12px 38px !important;
-            color: var(--ink-soft);
-            font-size: 0.88rem;
-            line-height: 1.55;
-            border-bottom: none !important;
-        }
-        .high-yield-summary li::before {
-            left: 14px !important;
-            top: 14px !important;
-            color: var(--amber) !important;
-            font-size: 0.82rem !important;
-        }
-        .high-yield-summary strong { color: var(--amber); font-weight: 600; }
-        .high-yield-summary li strong { color: var(--amber) !important; }
-        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--amber); font-size: 0.95rem; }
-
-        .sticky-nav {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            padding: 18px 20px;
-            margin-bottom: 36px;
-        }
-        .sticky-nav h3 {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--ink-dimmer);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-        }
-        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-        .nav-pills a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            background: var(--paper-deep);
-            border: 0.5px solid var(--rule);
-            border-radius: 8px;
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.87rem;
-            font-weight: 500;
-            transition: all 0.15s ease;
-        }
-        .nav-pills a:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
-        .nav-pills a i { font-size: 0.82rem; }
-
-        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
-        .section-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--rule);
-        }
-        .section-number {
-            flex-shrink: 0;
-            width: 44px; height: 44px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 12px rgba(239, 90, 90, 0.25);
-        }
-        .section-title-group { flex: 1; min-width: 0; }
-        .section-title-group h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--ink);
-            line-height: 1.2;
-            margin-bottom: 4px;
-        }
-        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
-
-        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
-        .guide-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.22rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 24px 0 12px;
-        }
-        .guide-section h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 18px 0 8px;
-        }
-        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
-        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
-        .guide-section strong { color: var(--ink); font-weight: 600; }
-
-        .guide-table-wrapper {
-            overflow-x: auto;
-            margin: 18px 0;
-            border-radius: 10px;
-            border: 1px solid var(--rule);
-        }
-        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
-        .guide-table thead { background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep)); color: white; }
-        .guide-table th {
-            padding: 12px 14px;
-            text-align: left;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
-        }
-        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
-        .guide-table tbody { background: var(--paper-warm); }
-        .guide-table tbody tr:last-child td { border-bottom: none; }
-        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
-        .guide-table tbody tr:hover { background: var(--peds-blush); }
-        .guide-table td strong { color: var(--ink); }
-
-        .info-box {
-            display: flex;
-            gap: 14px;
-            padding: 18px 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 1px solid var(--rule);
-            border-left-width: 4px;
-        }
-        .info-box-icon {
-            flex-shrink: 0;
-            width: 34px; height: 34px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-        .info-box-content { flex: 1; min-width: 0; }
-        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
-
-        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
-        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-        .info-box.clinical h5 { color: #fbbf24; }
-        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
-        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
-        .info-box.critical h5 { color: #fca5a5; }
-        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
-        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
-        .info-box.nclex h5 { color: #93c5fd; }
-        .info-box.pediatric { background: var(--peds-blush); border-color: var(--peds-blush-2); border-left-color: var(--peds-coral); }
-        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-rose); }
-        .info-box.pediatric h5 { color: var(--peds-rose); }
-        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
-        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
-        .info-box.safe h5 { color: #86efac; }
-        .info-box p { color: var(--ink-soft); }
-        .info-box strong { color: var(--ink); }
-
-        .florencebot-tip {
-            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
-            border: 1px solid rgba(15, 188, 173, 0.22);
-            border-radius: 14px;
-            padding: 22px 24px;
-            margin: 24px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .florencebot-tip::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px; height: 100%;
-            background: var(--teal);
-        }
-        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .florencebot-tip-icon {
-            width: 32px; height: 32px;
-            background: var(--teal);
-            border-radius: 8px;
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-        .florencebot-tip-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--teal);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        .florencebot-tip-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.08rem;
-            font-weight: 600;
-            color: #5eead4;
-            margin-bottom: 8px;
-        }
-        .florencebot-tip-content { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; }
-        .florencebot-tip-content strong { color: var(--ink); }
-
-        .bottom-line {
-            background: linear-gradient(135deg, var(--peds-blush), rgba(239, 90, 90, 0.04));
-            border: 0.5px solid var(--peds-blush-2);
-            border-left: 4px solid var(--peds-coral);
-            padding: 14px 18px;
-            margin: 22px 0 0;
-            border-radius: 0 10px 10px 0;
-            font-weight: 500;
-            color: var(--ink);
-            font-size: 0.95rem;
-        }
-        .bottom-line strong { color: var(--peds-rose); }
-
-        /* Type cards (ALL vs AML, chemo phases, etc.) */
-        .type-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 14px;
-            margin: 20px 0;
-        }
-        .type-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            overflow: hidden;
-        }
-        .type-card-header {
-            padding: 14px 18px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .type-card-header.all { background: linear-gradient(135deg, #8b5cf6, #6d28d9); }
-        .type-card-header.aml { background: linear-gradient(135deg, #dc2626, #991b1b); }
-        .type-card-header.cml { background: linear-gradient(135deg, #0891b2, #155e75); }
-        .type-card-header.induction { background: linear-gradient(135deg, #ef5a5a, #b91c1c); }
-        .type-card-header.consolidation { background: linear-gradient(135deg, #f59e0b, #b45309); }
-        .type-card-header.maintenance { background: linear-gradient(135deg, #10b981, #047857); }
-        .type-card-header i { font-size: 1.2rem; }
-        .type-card-header h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            margin: 0;
-        }
-        .type-card-header .tag {
-            margin-left: auto;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.68rem;
-            letter-spacing: 1px;
-            opacity: 0.88;
-            text-transform: uppercase;
-        }
-        .type-card-body { padding: 16px 18px; }
-        .type-card-body h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--peds-rose);
-            margin: 10px 0 4px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .type-card-body h5:first-child { margin-top: 0; }
-        .type-card-body p, .type-card-body ul { font-size: 0.88rem; color: var(--ink-soft); line-height: 1.5; margin: 0 0 6px; }
-        .type-card-body ul { padding-left: 18px; }
-        .type-card-body li { margin-bottom: 4px; }
-        .type-card-body strong { color: var(--ink); }
-
-        /* Key point grid */
-        .key-point-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .key-point-item {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        .key-point-item i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
-        .key-point-item p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); }
-        .key-point-item strong { color: var(--ink); }
-
-        /* Red flag cards */
-        .redflag-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 20px 0;
-        }
-        .redflag-card {
-            background: rgba(220, 38, 38, 0.08);
-            border: 0.5px solid rgba(220, 38, 38, 0.25);
-            border-left: 3px solid #f87171;
-            border-radius: 10px;
-            padding: 12px 14px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        .redflag-card i { color: #fca5a5; font-size: 0.95rem; margin-top: 3px; flex-shrink: 0; }
-        .redflag-card p { margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--ink-soft); }
-        .redflag-card strong { color: #fca5a5; }
-
-        /* Step list */
-        .step-list {
-            list-style: none !important;
-            padding: 0 !important;
-            margin: 20px 0;
-            counter-reset: step;
-        }
-        .step-list li {
-            counter-increment: step;
-            position: relative;
-            padding: 14px 16px 14px 56px;
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            margin-bottom: 10px;
-            font-size: 0.97rem;
-            line-height: 1.6;
-            color: var(--ink-soft);
-        }
-        .step-list li::before {
-            content: counter(step);
-            position: absolute;
-            top: 14px; left: 14px;
-            width: 30px; height: 30px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 0.9rem;
-        }
-        .step-list strong { color: var(--ink); }
-
-        /* Med cards */
-        .med-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 14px;
-            margin: 18px 0;
-        }
-        .med-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            padding: 18px 20px;
-            border-top: 3px solid var(--peds-coral);
-        }
-        .med-card h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 4px;
-        }
-        .med-card .med-class {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--peds-coral);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .med-card p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.55; }
-        .med-card p strong { color: var(--ink); }
-
-        /* Cross refs */
-        .cross-references {
-            margin: 36px 0 8px;
-            padding: 24px;
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-        }
-        .cross-references h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .cross-references h2 i { color: var(--peds-coral); }
-        .cross-ref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .cross-ref-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: var(--paper-deep);
-            border: 0.5px solid var(--rule);
-            border-radius: 8px;
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.15s;
-        }
-        .cross-ref-link:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
-        .cross-ref-link i { font-size: 0.85rem; }
-
-        .quiz-cta {
-            background:
-                radial-gradient(ellipse 60% 80% at 90% 10%, rgba(15, 188, 173, 0.12) 0%, transparent 65%),
-                linear-gradient(135deg, var(--card-dark), var(--navy-3));
-            border: 0.5px solid var(--border-inv-mid);
-            color: white;
-            border-radius: 14px;
-            padding: 28px;
-            margin: 36px 0;
-            text-align: center;
-        }
-        .quiz-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
-        .quiz-cta p { color: rgba(255, 255, 255, 0.88); margin-bottom: 20px; font-size: 0.98rem; }
-        .quiz-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: var(--teal);
-            color: var(--navy);
-            border-radius: 10px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.98rem;
-            text-decoration: none;
-            transition: all 0.15s;
-        }
-        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
-
-        .document-footer {
-            padding: 32px 56px;
-            background: var(--paper-deep);
-            border-top: 0.5px solid var(--rule);
-            text-align: center;
-        }
-        .footer-logo { height: 28px; margin: 0 auto 14px; opacity: 0.9; }
-        .footer-tagline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 4px; }
-        .footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-dimmer); letter-spacing: 0.02em; }
-
-        /* Sidebar overrides */
-        .page-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 80px auto 40px;
-            padding: 0 20px;
-            max-width: 1600px;
-        }
-        .sidebar-left, .sidebar-right {
-            width: 280px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 80px;
-            height: fit-content;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-        }
-
-        .toc-panel {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            color: var(--text-inv) !important;
-            margin-bottom: 16px !important;
-        }
-        .toc-header {
-            padding-bottom: 14px !important;
-            margin-bottom: 14px !important;
-            border-bottom: 0.5px solid var(--border-inv-mid) !important;
-        }
-        .toc-header h3 {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin: 0 !important;
-        }
-        .toc-header i { color: var(--teal) !important; }
-        .toc-link {
-            color: var(--text-inv-dim) !important;
-            font-family: 'Outfit', sans-serif !important;
-            font-weight: 500 !important;
-            font-size: 0.88rem !important;
-            border-left: 2px solid transparent !important;
-            padding: 9px 12px !important;
-            background: transparent !important;
-        }
-        .toc-link:hover { background: rgba(15, 188, 173, 0.08) !important; color: var(--text-inv) !important; }
-        .toc-link.active {
-            background: rgba(15, 188, 173, 0.12) !important;
-            color: var(--teal) !important;
-            border-left-color: var(--teal) !important;
-            font-weight: 600 !important;
-        }
-        .toc-link i { color: inherit !important; }
-
-        .toc-progress {
-            margin-top: 14px !important;
-            padding-top: 14px !important;
-            border-top: 0.5px solid var(--border-inv) !important;
-        }
-        .toc-progress-label {
-            display: flex !important;
-            justify-content: space-between !important;
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.68rem !important;
-            letter-spacing: 1px !important;
-            color: var(--text-inv-dim) !important;
-            margin-bottom: 8px !important;
-        }
-        .toc-progress-percent { color: var(--teal) !important; }
-        .toc-progress-bar {
-            background: rgba(255, 255, 255, 0.06) !important;
-            border-radius: 999px !important;
-            height: 4px !important;
-            overflow: hidden !important;
-        }
-        .toc-progress-fill {
-            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
-            height: 100% !important;
-        }
-
-        .toc-nav-links {
-            margin-top: 14px !important;
-            padding-top: 14px !important;
-            border-top: 0.5px solid var(--border-inv) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 6px !important;
-        }
-        .toc-nav-link {
-            display: flex !important;
-            align-items: center !important;
-            gap: 10px !important;
-            padding: 8px 12px !important;
-            border-radius: 8px !important;
-            color: var(--text-inv-dim) !important;
-            background: transparent !important;
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.84rem !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-            transition: all 0.15s !important;
-        }
-        .toc-nav-link:hover { background: rgba(255, 255, 255, 0.04) !important; color: var(--text-inv) !important; }
-        .toc-nav-link--ai { background: rgba(15, 188, 173, 0.08) !important; color: var(--teal) !important; }
-        .toc-nav-link--ai:hover { background: rgba(15, 188, 173, 0.15) !important; color: var(--teal) !important; }
-
-        .florence-card {
-            background: linear-gradient(135deg, var(--card-dark), var(--navy-3)) !important;
-            border: 0.5px solid var(--border-inv-mid) !important;
-            border-radius: 14px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            margin-bottom: 16px !important;
-            position: relative !important;
-            overflow: hidden !important;
-        }
-        .florence-card::before {
-            content: '' !important;
-            position: absolute !important;
-            top: -40% !important; right: -40% !important;
-            width: 120% !important; height: 120% !important;
-            background: radial-gradient(circle, rgba(15, 188, 173, 0.12) 0%, transparent 60%) !important;
-            pointer-events: none !important;
-        }
-        .florence-header {
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
-            margin-bottom: 14px !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        .florence-avatar {
-            width: 44px !important; height: 44px !important;
-            border-radius: 50% !important;
-            background: rgba(15, 188, 173, 0.15) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
-            padding: 2px !important;
-            box-shadow: none !important;
-        }
-        .florence-info h3 {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.98rem !important;
-            font-weight: 600 !important;
-            color: var(--text-inv) !important;
-            margin: 0 !important;
-        }
-        .florence-info span {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.68rem !important;
-            color: var(--teal) !important;
-            letter-spacing: 1px !important;
-            text-transform: uppercase !important;
-        }
-        .florence-speech {
-            background: rgba(15, 188, 173, 0.06) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            border-radius: 10px !important;
-            padding: 12px 14px !important;
-            box-shadow: none !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        .florence-speech::before {
-            background: var(--card-dark) !important;
-            border-top: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            border-left: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            box-shadow: none !important;
-        }
-        .florence-speech p {
-            color: var(--text-inv) !important;
-            font-size: 0.88rem !important;
-            line-height: 1.55 !important;
-            margin: 0 !important;
-        }
-        .florence-speech p strong { color: var(--teal) !important; }
-
-        .key-numbers-card {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 18px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-            margin-bottom: 16px !important;
-        }
-        .key-numbers-title {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin-bottom: 14px !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-        }
-        .key-numbers-title i { color: var(--teal) !important; }
-        .key-numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-        .key-number {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 10px !important;
-            padding: 12px 10px !important;
-        }
-        .key-number:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important; }
-        .key-number.critical { background: rgba(220, 38, 38, 0.1) !important; border-color: rgba(220, 38, 38, 0.25) !important; }
-        .key-number.critical .key-number-value { color: #fca5a5 !important; }
-        .key-number.time { background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.25) !important; }
-        .key-number.time .key-number-value { color: #fcd34d !important; }
-        .key-number.target { background: rgba(15, 188, 173, 0.1) !important; border-color: rgba(15, 188, 173, 0.25) !important; }
-        .key-number.target .key-number-value { color: #5eead4 !important; }
-        .key-number.success { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
-        .key-number.success .key-number-value { color: #86efac !important; }
-        .key-number.warning { background: rgba(251, 146, 60, 0.1) !important; border-color: rgba(251, 146, 60, 0.25) !important; }
-        .key-number.warning .key-number-value { color: #fdba74 !important; }
-        .key-number.info { background: rgba(139, 92, 246, 0.1) !important; border-color: rgba(139, 92, 246, 0.25) !important; }
-        .key-number.info .key-number-value { color: #c4b5fd !important; }
-        .key-number-value {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 1.05rem !important;
-            font-weight: 700 !important;
-            color: var(--text-inv) !important;
-            line-height: 1.2 !important;
-        }
-        .key-number-label {
-            font-size: 0.68rem !important;
-            color: var(--text-inv-dim) !important;
-            margin-top: 4px !important;
-            line-height: 1.35 !important;
-        }
-
-        .florence-tips-card {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 18px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-        }
-        .florence-tips-header { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 14px !important; }
-        .florence-tips-avatar {
-            width: 28px !important; height: 28px !important;
-            border-radius: 50% !important;
-            background: rgba(15, 188, 173, 0.15) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
-            padding: 2px !important;
-            box-shadow: none !important;
-        }
-        .florence-tips-header h4 {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin: 0 !important;
-        }
-
-        .tip-item {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-left: 3px solid var(--teal) !important;
-            border-radius: 8px !important;
-            padding: 10px 12px !important;
-            margin-bottom: 8px !important;
-            box-shadow: none !important;
-            transition: all 0.15s !important;
-        }
-        .tip-item:hover { background: rgba(15, 188, 173, 0.08) !important; transform: translateX(2px) !important; }
-        .tip-item:last-child { margin-bottom: 0 !important; }
-        .tip-item-title {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.85rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv) !important;
-            margin: 0 !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-        }
-        .tip-item-title::before { color: var(--teal) !important; font-size: 0.72rem !important; }
-        .tip-item-text {
-            font-size: 0.78rem !important;
-            color: var(--text-inv-dim) !important;
-            line-height: 1.5 !important;
-            margin-top: 4px !important;
-        }
-
-        .mobile-nav-fab { background: var(--teal) !important; color: var(--navy) !important; }
-        .mobile-nav-drawer { background: var(--card-dark) !important; color: var(--text-inv) !important; }
-        .mobile-nav-tab { color: var(--text-inv-dim) !important; background: transparent !important; }
-        .mobile-nav-tab.active { color: var(--teal) !important; border-bottom-color: var(--teal) !important; }
-        .mobile-toc-link { color: var(--text-inv-dim) !important; }
-        .mobile-toc-link.active { color: var(--teal) !important; background: rgba(15, 188, 173, 0.1) !important; }
-
-        @media (max-width: 1200px) {
-            .page-wrapper { padding: 0 12px; gap: 16px; }
-            .sidebar-left, .sidebar-right { width: 220px; }
-        }
-
-        @media (max-width: 900px) {
-            .page-wrapper { flex-direction: column; padding: 0 12px; }
-            .sidebar-left, .sidebar-right {
-                width: 100%;
-                max-width: 600px;
-                margin: 0 auto;
-                position: static;
-                max-height: none;
-            }
-            .document-container { margin: 80px 12px 40px; }
-            .document-content { padding: 36px 28px; }
-            .cover-page { padding: 56px 28px 40px; }
-            .cover-title { font-size: 2.1rem; }
-            .cover-meta { gap: 10px; padding: 10px 16px; }
-            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
-            .learning-objectives-grid,
-            .type-grid,
-            .key-point-grid,
-            .redflag-grid,
-            .high-yield-summary ul {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .download-bar { padding: 10px 14px; }
-            .download-bar-brand span:not(.brand-text-long) { display: none; }
-            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
-            .section-header { gap: 12px; }
-            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
-            .section-title-group h2 { font-size: 1.4rem; }
-            .document-content { padding: 28px 20px; }
-            .document-footer { padding: 24px 20px; }
-        }
-    </style>
+    <script src="../beta-banner.js"></script>
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../sentry-init.js"></script>
 </head>
-<body data-product-id="pediatric-leukemias" data-guide-name="Pediatric Leukemias (ALL/AML)">
-
-    <header class="download-bar">
+<body data-category="pediatrics" data-product-id="pediatric-leukemias" data-guide-name="Pediatric Leukemias">
+    <!-- Download Bar -->
+    <div class="download-bar">
         <div class="download-bar-brand">
-            <i class="fas fa-dna"></i>
-            <span>Pediatric Leukemias</span>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective">
         </div>
         <div class="download-bar-actions">
             <a href="../my-guides.html" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Back to Guides
             </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
         </div>
-    </header>
+    </div>
 
+    <!-- Document -->
     <div class="document-container">
 
+        <!-- Cover Page -->
         <div class="cover-page">
             <div class="cover-content">
-                <div class="cover-badge">
-                    <i class="fas fa-baby"></i> Pediatric Nursing &middot; Hematology / Oncology
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/pediatric-leukemias.webp" alt="Pediatric Leukemias">
                 </div>
-                <h1 class="cover-title">Pediatric Leukemias (ALL/AML)</h1>
-                <p class="cover-subtitle">The most common childhood cancer. ALL vs AML, bone marrow failure triad, induction-consolidation-maintenance chemo, neutropenic precautions, tumor lysis syndrome, and the long haul with the family.</p>
+                <div class="cover-category">Pediatric Nursing</div>
+                <h1 class="cover-title">Pediatric Leukemias</h1>
+                <p class="cover-subtitle">Two cell lines to tell apart, three cytopenias that explain every sign, and two emergencies that decide your first move: neutropenic fever and tumor lysis.</p>
                 <div class="cover-meta">
-                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 9 Sections</span>
-                    <span class="cover-meta-sep"></span>
-                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 17 Quiz Questions</span>
-                    <span class="cover-meta-sep"></span>
-                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~20 Min Read</span>
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">15-20 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">January 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
                 </div>
             </div>
         </div>
 
+        <!-- Document Content -->
         <div class="document-content">
 
-            <div class="learning-objectives">
-                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
-                <div class="learning-objectives-grid">
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Differentiate ALL and AML by age, onset, and cell line of origin.</span>
+            <!-- What you should be able to do without notes -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> By the end, without notes</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Say whether a smear points to ALL or AML, and name the finding that told you</li>
+                    <li><i class="fas fa-check-circle"></i> Map each of the three cytopenias to the sign it makes at the bedside</li>
+                    <li><i class="fas fa-check-circle"></i> Treat a fever in a neutropenic child as the emergency it is</li>
+                    <li><i class="fas fa-check-circle"></i> Spot tumor lysis from four electrolyte moves, and say what you do first</li>
+                    <li><i class="fas fa-check-circle"></i> Give the four things for ALL and for AML with the book closed</li>
+                </ul>
+            </section>
+
+        <!-- ══════════ START HERE ══════════ -->
+        <section class="guide-section" id="start-here">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>What actually gets you</h2>
+            </div>
+
+            <p>Pediatric leukemia is not a memory test. It is a small set of discriminations, and the questions live there.</p>
+
+            <p>The marrow fills with blasts. Normal blood cells get crowded out. Almost every sign traces back to that one event.</p>
+
+            <p>Points get lost here in three predictable ways. Read these first.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You learned three cytopenias as a list</div>
+                <div class="info-box-content">
+                    <p>Then a scenario hands you a pale, bruised, feverish child. You cannot say which low count drives which sign. They are not one list. The marrow crowds out three lines. Low red cells give pallor and fatigue. Low platelets give bruising, petechiae, and bleeding. Low neutrophils give infection.</p>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You treated a neutropenic fever as a routine fever</div>
+                <div class="info-box-content">
+                    <p>It is not routine. A single temperature of 100.4&deg;F (38&deg;C) in a neutropenic child is an emergency. Draw two blood cultures. Give broad-spectrum antibiotics within the hour. No rectal temperatures and no suppositories. Start neutropenic precautions.</p>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You missed tumor lysis at induction</div>
+                <div class="info-box-content">
+                    <p>The first chemo doses rupture cells. Their contents spill into the blood. Potassium rises. Phosphorus rises. Uric acid rises. Calcium falls. You prevent it with aggressive hydration and allopurinol or rasburicase.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Stop studying leukemia as one disease. Study it as a few splits: ALL or AML, which cytopenia drives the sign, a fever that is an emergency, and the electrolyte storm at induction.
+            </div>
+        </section>
+
+        <!-- ══════════ THE FOUR THINGS ══════════ -->
+        <section class="guide-section" id="high-yield-summary">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The four things</h2>
+            </div>
+
+            <p>For ALL, for AML, and for the two emergencies below, you should be able to say four things with the book shut. The one-sentence definition. The clue you would actually see. The priority action. The first-line treatment or teaching point.</p>
+
+            <p>If you cannot say all four out loud, you do not know it yet. Recognition is not recall.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Thing</th>
+                            <th>Definition in one sentence</th>
+                            <th>Clue in the scenario</th>
+                            <th>Priority action</th>
+                            <th>First-line treatment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ALL</strong></td>
+                            <td>Lymphoid blasts crowd the marrow; the common childhood leukemia.</td>
+                            <td>Child 2 to 10, pallor, bruising, bone pain, big nodes.</td>
+                            <td>CBC, then bone marrow biopsy.</td>
+                            <td>Multi-drug chemo over 2 to 3 years; intrathecal methotrexate for the CNS.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AML</strong></td>
+                            <td>Myeloid blasts crowd the marrow; more in adolescents and infants.</td>
+                            <td>Auer rods on the smear; gum infiltration; bleeding out of proportion.</td>
+                            <td>CBC and smear, then bone marrow biopsy.</td>
+                            <td>Intense chemo; transplant is often needed.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Neutropenic fever</strong></td>
+                            <td>One fever in a child with too few neutrophils to fight it.</td>
+                            <td>Temp 100.4&deg;F or higher with a known low ANC.</td>
+                            <td>Blood cultures, then antibiotics within the hour.</td>
+                            <td>Broad-spectrum IV antibiotics, given empirically.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tumor lysis syndrome</strong></td>
+                            <td>Dying cells dump their contents at induction.</td>
+                            <td>Potassium up, phosphorus up, uric acid up, calcium down.</td>
+                            <td>Hydrate hard; hold IV potassium.</td>
+                            <td>Allopurinol or rasburicase plus IV fluids.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write those four rows on one index card, by hand. ALL is lymphoid. AML is myeloid. A neutropenic fever is cultures then antibiotics within the hour. Tumor lysis is up, up, up, down. That card is most of the exam.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ FUNDAMENTALS ══════════ -->
+        <section class="guide-section" id="fundamentals">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>What leukemia actually is</h2>
+            </div>
+
+            <p>Leukemia is a malignant overgrowth of white cell precursors, called blasts, in the bone marrow. It is the most common childhood cancer. It makes up about a third of pediatric malignancies.</p>
+
+            <p>The marrow normally builds two lines. The lymphoid line makes B and T cells. The myeloid line makes granulocytes, monocytes, red cells, and platelets.</p>
+
+            <p>In leukemia one line turns malignant. The cells stop maturing. They pile up as blasts. The blasts crowd the normal lines, so red cells, platelets, and neutrophils all fall. That is pancytopenia. The blasts also spread to the liver, spleen, lymph nodes, CNS, and testes.</p>
+
+            <h3>Risk factors</h3>
+
+            <div class="key-point-grid">
+                <div class="key-point-item"><strong>Genetic syndromes:</strong> Down syndrome (10 to 20 times the risk), Li-Fraumeni, Fanconi anemia, neurofibromatosis.</div>
+                <div class="key-point-item"><strong>Previous chemo or radiation.</strong> Secondary AML is a known risk.</div>
+                <div class="key-point-item"><strong>An identical twin with leukemia.</strong> About 25% concordance.</div>
+                <div class="key-point-item"><strong>In utero radiation</strong> and rare chemical exposures such as benzene.</div>
+                <div class="key-point-item"><strong>Most cases have no identifiable cause.</strong> Tell the family this plainly.</div>
+                <div class="key-point-item"><strong>Sex:</strong> boys carry a slightly higher ALL risk; AML risk is about equal.</div>
+            </div>
+
+            <div class="info-box pediatric">
+                <div class="info-box-header"><i class="fas fa-heart"></i> Parents often blame themselves</div>
+                <div class="info-box-content">
+                    <p>Families hearing this diagnosis often ask, "Did we cause this?" Answer firmly. The vast majority of childhood leukemias have no identifiable environmental cause. Something went wrong in the DNA of a single cell. It was not a vaccine, a phone, or a missed meal. Saying so is part of first-day care.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> ALL is lymphoid. AML is myeloid. Either way, blasts crowd the marrow and the counts fall.
+            </div>
+        </section>
+
+        <!-- ══════════ CLASSIFICATION ══════════ -->
+        <section class="guide-section" id="classification">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>ALL or AML</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: which cell line went malignant.</p>
+
+            <p>This is the split the questions start from. The cell line drives the regimen, the prognosis, and whether transplant is likely.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">ALL: acute lymphoblastic</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Cell line: lymphoid, B or T precursor.</li>
+                            <li>Frequency: about 75% of pediatric leukemias.</li>
+                            <li>Peak age: 2 to 10 years, highest at 2 to 5.</li>
+                            <li>Subtypes: pre-B is most common (about 85%, better prognosis); T-cell (older boys, may bring a mediastinal mass); mature B-cell, Burkitt-type (aggressive but highly curable).</li>
+                            <li>CNS involvement is common, so intrathecal chemo is given as prophylaxis.</li>
+                            <li>Prognosis: over 90% five-year survival.</li>
+                        </ul>
                     </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Recognize the bone marrow failure triad: anemia, bleeding, infection.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Describe the diagnostic workup &mdash; CBC, peripheral smear, bone marrow biopsy, LP.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Apply neutropenic precautions and identify ANC-based infection risk.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Recognize and manage tumor lysis syndrome and other chemo complications.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Support the family through diagnosis, treatment, and survivorship.</span>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">AML: acute myelogenous</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Cell line: myeloid precursors.</li>
+                            <li>Frequency: about 20% of pediatric leukemias.</li>
+                            <li>Peak age: any age, more in adolescents and infants under 2.</li>
+                            <li>Subtypes: M0 to M7, eight in the FAB system. M3 is acute promyelocytic (APL), carries DIC risk, responds to ATRA. M5 is monoblastic, gives gum infiltration and skin lesions. M7 is megakaryoblastic, tied to Down syndrome in infants.</li>
+                            <li>Higher relapse risk; transplant is often needed.</li>
+                            <li>Prognosis: about 65 to 70% five-year survival.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <section class="high-yield-summary" id="high-yield-summary">
-                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
-                <p class="high-yield-subtitle">Ten facts that will carry you through any pediatric leukemia question.</p>
-                <ul>
-                    <li><strong>Leukemia is the #1 childhood cancer.</strong> ALL (acute lymphoblastic) accounts for ~75% of pediatric leukemias; AML (acute myelogenous) is the second most common.</li>
-                    <li><strong>ALL peaks ages 2&ndash;10</strong> (classic "toddler-to-school-age" cancer). <strong>AML occurs throughout childhood and is more common in adolescents</strong>; has <strong>8 subtypes (M0&ndash;M7)</strong>.</li>
-                    <li><strong>Bone marrow failure triad:</strong> <strong>anemia</strong> (pallor, fatigue), <strong>thrombocytopenia</strong> (bruising, petechiae, bleeding), <strong>neutropenia</strong> (fever, infection). Plus bone pain, lymphadenopathy, hepatosplenomegaly.</li>
-                    <li><strong>Diagnosis:</strong> CBC shows blasts on smear; <strong>bone marrow biopsy is the gold standard</strong> (&gt;20% blasts = acute leukemia). LP checks for CNS involvement.</li>
-                    <li><strong>Chemo in three phases:</strong> <strong>Induction</strong> (achieve remission, 4&ndash;6 weeks) &rarr; <strong>Consolidation/Intensification</strong> &rarr; <strong>Maintenance</strong> (2&ndash;3 years total in ALL). BMT/HSCT for relapsed or high-risk AML.</li>
-                    <li><strong>Neutropenic precautions:</strong> <strong>NO rectal temps</strong>, NO fresh flowers/plants, reverse isolation, <strong>NO live vaccines</strong>, limit visitors, <strong>NO invasive procedures</strong>, handwashing, cooked food only.</li>
-                    <li><strong>ANC &lt; 500</strong> = severe neutropenia, profound infection risk. ANC = WBC &times; (% neutrophils + % bands) &divide; 100. <strong>Fever &ge; 100.4&deg;F (38&deg;C) in a neutropenic child is an oncologic emergency</strong> &mdash; blood cultures &times; 2, broad-spectrum antibiotics within 1 hour.</li>
-                    <li><strong>Tumor lysis syndrome (TLS):</strong> after chemo, cell contents dump. <strong>K+ UP, phosphorus UP, uric acid UP, calcium DOWN.</strong> Prevent with <strong>hydration + allopurinol or rasburicase.</strong></li>
-                    <li><strong>Blood product transfusion reaction &mdash; first action is STOP the transfusion,</strong> keep line open with normal saline via new tubing, notify provider, send bag/tubing back to blood bank.</li>
-                    <li><strong>ALL has the best prognosis</strong> of any childhood cancer &mdash; &gt;90% 5-year survival. AML survival is lower (~65&ndash;70%). Both are curable; the family journey is long but outcomes are usually good.</li>
-                </ul>
-                <p class="high-yield-cta">Clinical breakdown below &darr;</p>
-            </section>
-
-            <nav class="sticky-nav">
-                <h3>Jump to section</h3>
-                <div class="nav-pills">
-                    <a href="#fundamentals"><i class="fas fa-dna"></i> Fundamentals</a>
-                    <a href="#classification"><i class="fas fa-sitemap"></i> Classification</a>
-                    <a href="#clinical"><i class="fas fa-notes-medical"></i> Clinical Findings</a>
-                    <a href="#diagnosis"><i class="fas fa-microscope"></i> Diagnosis</a>
-                    <a href="#treatment"><i class="fas fa-syringe"></i> Treatment</a>
-                    <a href="#neutropenic"><i class="fas fa-shield-virus"></i> Neutropenic Care</a>
-                    <a href="#complications"><i class="fas fa-triangle-exclamation"></i> Complications</a>
-                    <a href="#nursing"><i class="fas fa-user-nurse"></i> Nursing Priorities</a>
-                    <a href="#family"><i class="fas fa-users"></i> Family Support</a>
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Auer rods mean AML</div>
+                <div class="info-box-content">
+                    <p>Auer rods are needle-shaped inclusions inside the blast cytoplasm. They are pathognomonic for AML, especially the M3 subtype. See them in a stem, and the answer is AML, not ALL.</p>
                 </div>
-            </nav>
+            </div>
 
-            <!-- Section 1: Fundamentals -->
-            <section class="guide-section" id="fundamentals">
-                <div class="section-header">
-                    <div class="section-number">1</div>
-                    <div class="section-title-group">
-                        <h2>Leukemia Fundamentals</h2>
-                        <div class="subtitle">What goes wrong in the bone marrow</div>
-                    </div>
+            <div class="florencebot-tip" id="tip-auer-rods">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Auer Rods = AML</div>
+                <div class="florencebot-tip-content">One finding settles the split on sight. Auer rods live only in myeloid blasts. If the smear shows Auer rods, pick AML. Lymphoblasts alone point to ALL.</div>
+            </div>
 
-                <p>Leukemia is a <strong>malignant proliferation of abnormal white blood cell precursors (blasts)</strong> in the bone marrow. The blasts crowd out normal hematopoiesis, leading to failure of red cells, platelets, and normal WBCs. It is the <strong>most common childhood cancer</strong>, accounting for about one-third of all pediatric malignancies.</p>
+            <h3>Chronic leukemias, rare in kids</h3>
 
-                <h3>How the Normal Marrow Works</h3>
+            <ul>
+                <li><strong>Chronic myelogenous leukemia (CML):</strong> rare; Philadelphia chromosome, t(9;22), positive. Treated with tyrosine kinase inhibitors such as imatinib.</li>
+                <li><strong>Juvenile myelomonocytic leukemia (JMML):</strong> rare, aggressive, in infants and toddlers; usually needs transplant.</li>
+            </ul>
 
-                <ul>
-                    <li>Bone marrow stem cells produce <strong>lymphoid</strong> (B and T cells &rarr; lymphocytes) and <strong>myeloid</strong> (granulocytes, monocytes, RBCs, platelets) lines.</li>
-                    <li>In leukemia, one line becomes malignant &mdash; cells stop maturing and accumulate as immature <strong>blasts</strong>.</li>
-                    <li>Blasts crowd normal cell lines &rarr; <strong>pancytopenia</strong> and systemic spread (liver, spleen, lymph nodes, CNS, testes).</li>
-                </ul>
+            <h3>Risk stratification in ALL</h3>
 
-                <h3>ALL vs AML at a Glance</h3>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Feature</th><th>Standard risk</th><th>High risk</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Age</strong></td><td>1 to 9 years</td><td>&lt; 1 or &ge; 10 years</td></tr>
+                        <tr><td><strong>WBC at diagnosis</strong></td><td>&lt; 50,000/mm&sup3;</td><td>&ge; 50,000/mm&sup3;</td></tr>
+                        <tr><td><strong>Cell line</strong></td><td>B-cell precursor</td><td>T-cell, infant ALL, mature B</td></tr>
+                        <tr><td><strong>CNS involvement</strong></td><td>None</td><td>Present at diagnosis</td></tr>
+                        <tr><td><strong>Response to induction</strong></td><td>Remission by day 28</td><td>Slow, or minimal residual disease</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>ALL (Acute Lymphoblastic)</th>
-                                <th>AML (Acute Myelogenous)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Cell line</strong></td>
-                                <td>Lymphoid (B or T precursor)</td>
-                                <td>Myeloid precursors</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Frequency</strong></td>
-                                <td>~75% of pediatric leukemias</td>
-                                <td>~20% of pediatric leukemias</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Peak age</strong></td>
-                                <td><strong>2&ndash;10 years</strong> (peak 2&ndash;5)</td>
-                                <td>Any age, <strong>more common in adolescents</strong> and &lt;2 yr</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Subtypes</strong></td>
-                                <td>Pre-B (most common), T-cell</td>
-                                <td><strong>M0&ndash;M7 (8 subtypes)</strong> by FAB classification</td>
-                            </tr>
-                            <tr>
-                                <td><strong>CNS involvement</strong></td>
-                                <td>Common &mdash; prophylactic intrathecal chemo</td>
-                                <td>Less common</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Prognosis</strong></td>
-                                <td><strong>&gt;90% 5-year survival</strong></td>
-                                <td>~65&ndash;70% 5-year survival</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Primary treatment</strong></td>
-                                <td>Multi-drug chemo (2&ndash;3 years)</td>
-                                <td>Intense chemo; <strong>BMT/HSCT often needed</strong></td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> ALL is B-cell or T-cell with the best prognosis. AML runs M0 to M7, and Auer rods mean AML. Down syndrome points to M7. CML carries the Philadelphia chromosome.
+            </div>
+        </section>
+
+        <!-- ══════════ CLINICAL ══════════ -->
+        <section class="guide-section" id="clinical">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>The three cytopenias, read as signs</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: which low count is driving what you see.</p>
+
+            <p>Children present with the results of marrow failure, plus signs of organ infiltration. Symptoms build over weeks. Many kids are first worked up for "another virus that will not quit" or for odd bruising.</p>
+
+            <p>Do not memorize the signs as one block. Map each low count to what it does. Then the scenario sorts itself.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Cell line low</th><th>What falls</th><th>What you see</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Red cells</strong></td>
+                            <td>Anemia</td>
+                            <td>Pallor, fatigue, shortness of breath on exertion, tachycardia, poor feeding in infants, pale mucous membranes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Platelets</strong></td>
+                            <td>Thrombocytopenia</td>
+                            <td>Petechiae, purpura, ecchymoses, epistaxis, gum bleeding, prolonged bleeding from small injuries</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Neutrophils</strong></td>
+                            <td>Neutropenia, even when total WBC is high</td>
+                            <td>Fever, recurrent infections, sepsis, mouth ulcers, skin infections that will not heal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Organ infiltration</h3>
+
+            <div class="key-point-grid">
+                <div class="key-point-item"><strong>Bone pain,</strong> often legs or back; the child may limp, refuse to walk, or wake at night. Classic in ALL.</div>
+                <div class="key-point-item"><strong>Lymphadenopathy:</strong> painless, firm, enlarged nodes.</div>
+                <div class="key-point-item"><strong>Hepatosplenomegaly:</strong> palpable, with abdominal fullness and early satiety.</div>
+                <div class="key-point-item"><strong>CNS:</strong> headache, vomiting, cranial nerve palsies, papilledema. More common in ALL.</div>
+                <div class="key-point-item"><strong>Testicular enlargement:</strong> painless; a sanctuary site in ALL.</div>
+                <div class="key-point-item"><strong>"B symptoms":</strong> fever, unintentional weight loss, drenching night sweats.</div>
+            </div>
+
+            <h3>Clues by type</h3>
+
+            <ul>
+                <li><strong>T-cell ALL:</strong> a mediastinal mass. It can compress the SVC and airway, giving facial swelling, stridor, and dyspnea. That is a respiratory emergency.</li>
+                <li><strong>AML M3 (APL):</strong> bleeding out of proportion to the platelet count. Suspect DIC.</li>
+                <li><strong>AML M5 (monoblastic):</strong> gum hyperplasia and skin nodules, called leukemia cutis.</li>
+                <li><strong>Infant leukemia:</strong> often a high WBC, hepatosplenomegaly, and CNS disease.</li>
+            </ul>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> Pallor, bruising, and bone pain together</div>
+                <div class="info-box-content">
+                    <p>One trio should trigger a CBC. Pallor and fatigue from anemia. Petechiae or odd bruising from low platelets. Bone pain or a limp. A child with all three has leukemia until proven otherwise. Other tip-offs: a fever with no source, unexplained big nodes, or early-morning bone pain that wakes the child.</p>
                 </div>
+            </div>
 
-                <h3>Risk Factors</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Genetic syndromes:</strong> Down syndrome (10&ndash;20&times; risk), Li-Fraumeni, Fanconi anemia, neurofibromatosis.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Previous chemo or radiation</strong> &mdash; secondary AML is a known risk.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Identical twin with leukemia</strong> &mdash; 25% concordance rate.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>In utero radiation exposure</strong> and some rare chemical exposures (benzene).</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Most cases have no identifiable cause</strong> &mdash; tell the family this. It is NOT something they caused.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p>Sex: boys slightly higher ALL risk; roughly equal for AML.</p>
-                    </div>
+            <div class="florencebot-tip" id="tip-limping-toddler">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">The Limping Toddler</div>
+                <div class="florencebot-tip-content">A toddler who suddenly will not walk, or wakes crying about leg pain, is not just having growing pains. The differential includes septic joint, osteomyelitis, arthritis, and leukemia. These kids are often pale and bruising more than usual. Check vitals, look at the mucous membranes, and palpate the nodes. The CBC shows the diagnosis.</div>
+            </div>
 
-                <div class="info-box pediatric">
-                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
-                    <div class="info-box-content">
-                        <h5>Parents Often Blame Themselves</h5>
-                        <p>Families hearing a leukemia diagnosis frequently ask, <em>"Did I do something to cause this?"</em> Reassure them firmly: the vast majority of childhood leukemias have <strong>no identifiable environmental cause</strong>. Something went wrong at the level of the DNA in a single cell &mdash; not because of a vaccine, a cell phone, or a missed meal. Normalizing this is part of first-day nursing care.</p>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Marrow failure is anemia plus bleeding plus infection. Add bone pain, big nodes, and hepatosplenomegaly. T-cell ALL brings a mediastinal mass. AML M3 brings DIC.
+            </div>
+        </section>
+
+        <!-- ══════════ DIAGNOSIS ══════════ -->
+        <section class="guide-section" id="diagnosis">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>The workup, in order</h2>
+            </div>
+
+            <p class="subtitle">CBC, then smear, then bone marrow, then LP.</p>
+
+            <p>The diagnosis starts with a CBC and ends with a bone marrow biopsy. Most of it happens in the first 48 to 72 hours. It sets the whole treatment plan.</p>
+
+            <h3>Initial labs</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Test</th><th>Typical finding</th><th>Why you get it</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>CBC with diff</strong></td><td>Anemia and low platelets; WBC may be low, normal, or very high (&gt; 100,000)</td><td>First clue; may show blasts</td></tr>
+                        <tr><td><strong>Peripheral smear</strong></td><td>Blasts present; Auer rods suggest AML</td><td>See the blast shape</td></tr>
+                        <tr><td><strong>Chemistry, phosphorus, uric acid</strong></td><td>May already show a tumor lysis pattern</td><td>Judge tumor lysis risk</td></tr>
+                        <tr><td><strong>LDH</strong></td><td>Elevated from high cell turnover</td><td>Marker of disease activity</td></tr>
+                        <tr><td><strong>Coags: PT, PTT, fibrinogen, D-dimer</strong></td><td>DIC is possible, especially AML M3</td><td>Rule out DIC before procedures</td></tr>
+                        <tr><td><strong>Chest x-ray</strong></td><td>Mediastinal mass in T-cell ALL</td><td>Check airway and SVC risk</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Bone marrow biopsy, the gold standard</h3>
+
+            <ul>
+                <li>Usually aspirated from the posterior iliac crest under sedation.</li>
+                <li>Over 20% blasts in the marrow makes the diagnosis of acute leukemia. Written out, that is &gt; 20%.</li>
+                <li>Sent for morphology, flow cytometry (the cell line), cytogenetics (chromosomes), and molecular testing.</li>
+                <li>Repeated after induction to confirm remission, which is under 5% blasts (&lt; 5%).</li>
+            </ul>
+
+            <h3>Lumbar puncture for CNS status</h3>
+
+            <ul>
+                <li>Done at diagnosis to check for CNS leukemia.</li>
+                <li>Often paired with the first dose of intrathecal methotrexate as prophylaxis.</li>
+                <li>CNS-positive disease raises the risk group and intensifies therapy.</li>
+            </ul>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> Positioning for the LP</div>
+                <div class="info-box-content">
+                    <p>Place the child on their side. Back arched, knees drawn to the chest, the fetal or C position, to open the spaces between vertebrae. In infants, hold a sitting flexed or side-lying position, and do not hyperflex the neck; it compromises the airway. Hold the child still. After intrathecal chemo, keep the child lying flat for several hours to spread the drug and reduce headache.</p>
                 </div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: ALL = lymphoid, 2&ndash;10 yo, best prognosis. AML = myeloid, more in adolescents, 8 subtypes (M0&ndash;M7). Both = blasts crowd marrow &rarr; pancytopenia.</div>
-            </section>
+            <h3>Staging is different here</h3>
 
-            <!-- Section 2: Classification -->
-            <section class="guide-section" id="classification">
-                <div class="section-header">
-                    <div class="section-number">2</div>
-                    <div class="section-title-group">
-                        <h2>Classification &amp; Types</h2>
-                        <div class="subtitle">Knowing the cell line drives the treatment</div>
-                    </div>
-                </div>
+            <p>Acute leukemia is not staged like a solid tumor. Risk is set instead by a few things.</p>
 
-                <p>Subtype matters: it determines the chemo regimen, prognosis, and whether bone marrow transplant (BMT) is likely. You don't need to memorize every subtype, but understanding the major categories helps you anticipate the care plan.</p>
+            <ul>
+                <li>Age and WBC at diagnosis.</li>
+                <li>Cell line and cytogenetics.</li>
+                <li>CNS or testicular involvement.</li>
+                <li>Minimal residual disease after induction.</li>
+            </ul>
 
-                <div class="type-grid">
-                    <div class="type-card">
-                        <div class="type-card-header all">
-                            <i class="fas fa-dna"></i>
-                            <h4>Acute Lymphoblastic Leukemia (ALL)</h4>
-                            <span class="tag">Most common</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Peak Age</h5>
-                            <p><strong>2&ndash;10 years</strong> (highest incidence age 2&ndash;5).</p>
-                            <h5>Subtypes</h5>
-                            <ul>
-                                <li><strong>B-cell precursor (pre-B)</strong> &mdash; most common (~85%), better prognosis.</li>
-                                <li><strong>T-cell ALL</strong> &mdash; more in older boys; may present with mediastinal mass; slightly worse prognosis historically.</li>
-                                <li><strong>Mature B-cell (Burkitt-type)</strong> &mdash; aggressive but highly curable with modern therapy.</li>
-                            </ul>
-                            <h5>Key Features</h5>
-                            <p>CNS involvement in ~5%; prophylactic intrathecal chemo is standard.</p>
-                        </div>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> CBC with blasts, then smear, then bone marrow biopsy at over 20% blasts, then LP to check the CNS. Flow and cytogenetics steer the plan.
+            </div>
+        </section>
 
-                    <div class="type-card">
-                        <div class="type-card-header aml">
-                            <i class="fas fa-bacterium"></i>
-                            <h4>Acute Myelogenous Leukemia (AML)</h4>
-                            <span class="tag">M0&ndash;M7</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Peak Age</h5>
-                            <p>Any age; <strong>more common in adolescents</strong> and infants &lt;2 years.</p>
-                            <h5>FAB Subtypes (M0&ndash;M7)</h5>
-                            <ul>
-                                <li><strong>M0&ndash;M2:</strong> myeloblastic (least differentiated &rarr; more differentiated)</li>
-                                <li><strong>M3:</strong> <strong>acute promyelocytic (APL)</strong> &mdash; classic DIC risk; responds to ATRA (all-trans retinoic acid)</li>
-                                <li><strong>M4:</strong> myelomonocytic</li>
-                                <li><strong>M5:</strong> monoblastic &mdash; gum infiltration, skin lesions common</li>
-                                <li><strong>M6:</strong> erythroleukemia</li>
-                                <li><strong>M7:</strong> megakaryoblastic &mdash; strongly linked to <strong>Down syndrome</strong> in infants</li>
-                            </ul>
-                            <h5>Key Features</h5>
-                            <p>Higher relapse risk; <strong>BMT/HSCT frequently needed</strong>.</p>
-                        </div>
-                    </div>
-                </div>
+        <!-- ══════════ TREATMENT ══════════ -->
+        <section class="guide-section" id="treatment">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2>How it is treated</h2>
+            </div>
 
-                <div class="info-box clinical">
-                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
-                    <div class="info-box-content">
-                        <h5>Auer Rods = AML</h5>
-                        <p><strong>Auer rods</strong> are needle-shaped cytoplasmic inclusions seen on peripheral smear. Their presence is <strong>pathognomonic for AML</strong>, particularly the M3 (APL) subtype. If you see them mentioned in a question stem, AML is the answer &mdash; not ALL.</p>
-                    </div>
-                </div>
+            <p class="subtitle">Three phases, intrathecal prophylaxis, and transplant for some.</p>
 
-                <h3>Chronic Leukemias (Rare in Kids)</h3>
+            <p>Treatment is long. A child with ALL may be on therapy for 2 to 3 years. AML is more intense but shorter. Centers follow standardized Children's Oncology Group protocols.</p>
 
-                <ul>
-                    <li><strong>Chronic myelogenous leukemia (CML)</strong> &mdash; rare in children; <strong>Philadelphia chromosome (t[9;22])</strong> positive. Treated with tyrosine kinase inhibitors (imatinib) which have transformed outcomes.</li>
-                    <li><strong>Juvenile myelomonocytic leukemia (JMML)</strong> &mdash; rare, aggressive infant/toddler leukemia; usually requires BMT.</li>
-                </ul>
+            <h3>The three phases</h3>
 
-                <h3>Risk Stratification in ALL</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Feature</th>
-                                <th>Standard Risk</th>
-                                <th>High Risk</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Age</strong></td><td>1&ndash;9 years</td><td>&lt;1 or &ge;10 years</td></tr>
-                            <tr><td><strong>WBC at diagnosis</strong></td><td>&lt;50,000/mm&sup3;</td><td>&ge;50,000/mm&sup3;</td></tr>
-                            <tr><td><strong>Cell line</strong></td><td>B-cell precursor</td><td>T-cell, infant ALL, mature B</td></tr>
-                            <tr><td><strong>CNS involvement</strong></td><td>None</td><td>Present at diagnosis</td></tr>
-                            <tr><td><strong>Response to induction</strong></td><td>Remission by day 28</td><td>Slow / minimal residual disease</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="bottom-line">Bottom Line: ALL = B-cell or T-cell, best prognosis. AML = M0&ndash;M7 subtypes; Auer rods = AML. Down syndrome &rarr; M7 risk. CML = Philadelphia chromosome.</div>
-            </section>
-
-            <!-- Section 3: Clinical Manifestations -->
-            <section class="guide-section" id="clinical">
-                <div class="section-header">
-                    <div class="section-number">3</div>
-                    <div class="section-title-group">
-                        <h2>Clinical Manifestations</h2>
-                        <div class="subtitle">The bone marrow failure triad plus organ infiltration</div>
+            <div class="type-grid">
+                <div class="type-card">
+                    <div class="type-card-header">1. Induction, 4 to 6 weeks</div>
+                    <div class="type-card-body">
+                        <ul>
+                            <li><strong>Goal:</strong> complete remission, under 5% blasts (&lt; 5%).</li>
+                            <li><strong>ALL drugs:</strong> vincristine, L-asparaginase, a corticosteroid (prednisone or dexamethasone), and an anthracycline (daunorubicin) in high-risk cases.</li>
+                            <li><strong>Watch for:</strong> tumor lysis in the first 48 to 72 hours, neutropenic fever, chemo reactions, mucositis.</li>
+                        </ul>
                     </div>
                 </div>
-
-                <p>Children usually present with the consequences of bone marrow failure plus findings from organ infiltration by leukemic cells. Symptoms may develop over weeks; many kids are initially worked up for "another virus that won't quit" or persistent bruising.</p>
-
-                <h3>The Bone Marrow Failure Triad</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Cell Line Affected</th>
-                                <th>What Goes Low</th>
-                                <th>What You See</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>RBCs</strong></td>
-                                <td>Anemia (Hgb down)</td>
-                                <td>Pallor, fatigue, SOB on exertion, tachycardia, poor feeding (infants), pale mucous membranes</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Platelets</strong></td>
-                                <td>Thrombocytopenia</td>
-                                <td><strong>Petechiae, purpura, ecchymoses, epistaxis, gum bleeding</strong>, prolonged bleeding from minor injuries</td>
-                            </tr>
-                            <tr>
-                                <td><strong>WBCs (neutrophils)</strong></td>
-                                <td>Neutropenia (despite high total WBC)</td>
-                                <td><strong>Fever, recurrent infections, sepsis</strong>, mouth ulcers, skin infections that don't heal</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3>Organ Infiltration Findings</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-bone"></i>
-                        <p><strong>Bone pain</strong> &mdash; particularly in the legs/back; child may limp or refuse to walk; wakes from sleep. Classic in ALL.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-circle-nodes"></i>
-                        <p><strong>Lymphadenopathy</strong> &mdash; painless, enlarged, firm nodes (cervical, supraclavicular, axillary, inguinal).</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-hand-holding-medical"></i>
-                        <p><strong>Hepatosplenomegaly</strong> &mdash; palpable enlargement, abdominal distention, early satiety.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-brain"></i>
-                        <p><strong>CNS involvement:</strong> headache, vomiting, cranial nerve palsies, papilledema. More common in ALL.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-mars"></i>
-                        <p><strong>Testicular enlargement</strong> &mdash; painless; a sanctuary site in ALL.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-weight-scale"></i>
-                        <p><strong>"B symptoms"</strong> &mdash; fever, unintentional weight loss, drenching night sweats.</p>
+                <div class="type-card">
+                    <div class="type-card-header">2. Consolidation and intensification, months</div>
+                    <div class="type-card-body">
+                        <ul>
+                            <li><strong>Goal:</strong> clear residual disease, prevent relapse, block CNS spread.</li>
+                            <li><strong>Drugs:</strong> cyclophosphamide, cytarabine, methotrexate given IV and intrathecally; delayed intensification blocks.</li>
+                            <li><strong>Watch for:</strong> long cytopenias, serious infection, GI toxicity.</li>
+                        </ul>
                     </div>
                 </div>
-
-                <h3>Presentation Clues by Type</h3>
-
-                <ul>
-                    <li><strong>T-cell ALL:</strong> mediastinal mass (superior mediastinum) &mdash; can cause SVC syndrome with facial swelling, stridor, dyspnea. Respiratory emergency.</li>
-                    <li><strong>AML M3 (APL):</strong> presents with bleeding out of proportion to platelet count &mdash; suspect <strong>DIC</strong>. Classic board question.</li>
-                    <li><strong>AML M5 (monoblastic):</strong> gum hyperplasia/infiltration, skin nodules ("leukemia cutis").</li>
-                    <li><strong>Infant leukemia:</strong> often presents with high WBC count, hepatosplenomegaly, CNS disease.</li>
-                </ul>
-
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                    <div class="info-box-content">
-                        <h5>Petechiae + Fatigue + Bone Pain = Think Leukemia</h5>
-                        <p>The classic triad that should trigger a CBC: <strong>pallor/fatigue (anemia) + petechiae or unusual bruising (thrombocytopenia) + bone pain or limp</strong>. A child with these findings has leukemia until proven otherwise. Other tip-offs: persistent fever without a source, unexplained lymphadenopathy, or early morning bone pain that wakes them up.</p>
+                <div class="type-card">
+                    <div class="type-card-header">3. Maintenance, 2 to 3 years total in ALL</div>
+                    <div class="type-card-body">
+                        <ul>
+                            <li><strong>Goal:</strong> hold remission, keep blasts suppressed.</li>
+                            <li><strong>Drugs:</strong> oral 6-mercaptopurine daily and oral methotrexate weekly; periodic vincristine and steroid pulses; intermittent intrathecal methotrexate.</li>
+                            <li><strong>Watch for:</strong> adherence, because the schedule runs for years.</li>
+                        </ul>
                     </div>
                 </div>
-
-                <div class="florencebot-tip" id="tip-bone-pain">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">The Limping Toddler</div>
-                    <div class="florencebot-tip-content">
-                        A toddler who suddenly refuses to walk or wakes at night crying about leg pain is not just "growing pains." The differential includes <strong>septic joint, osteomyelitis, JIA, and leukemia</strong>. Kids with leukemia are often pale and bruising more than usual &mdash; the CBC will show the diagnosis. Always get vitals, look at the mucous membranes, and palpate the lymph nodes when bone pain and fatigue are the story.
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Marrow failure = anemia + bleeding + infection. Plus bone pain, big lymph nodes, hepatosplenomegaly. T-cell ALL &rarr; mediastinal mass. AML M3 &rarr; DIC.</div>
-            </section>
-
-            <!-- Section 4: Diagnosis -->
-            <section class="guide-section" id="diagnosis">
-                <div class="section-header">
-                    <div class="section-number">4</div>
-                    <div class="section-title-group">
-                        <h2>Diagnostic Workup</h2>
-                        <div class="subtitle">CBC &rarr; smear &rarr; bone marrow &rarr; LP</div>
+                <div class="type-card">
+                    <div class="type-card-header">Transplant (HSCT), select cases</div>
+                    <div class="type-card-body">
+                        <ul>
+                            <li><strong>When:</strong> relapsed ALL, most high-risk AML, CML, JMML.</li>
+                            <li><strong>Types:</strong> allogeneic (a donor, ideally a matched sibling) or autologous. Conditioning uses high-dose chemo, sometimes with total body irradiation.</li>
+                            <li><strong>Watch for:</strong> graft-versus-host disease, opportunistic infections, delayed engraftment, long hospital stays.</li>
+                        </ul>
                     </div>
                 </div>
+            </div>
 
-                <p>The diagnosis starts with a CBC and ends with a bone marrow biopsy. The entire workup usually happens in the first 48&ndash;72 hours of admission and drives the treatment plan.</p>
+            <h3>Key chemo agents</h3>
 
-                <h3>Initial Labs</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Test</th>
-                                <th>Typical Finding</th>
-                                <th>Why We Get It</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>CBC with diff</strong></td>
-                                <td>Anemia, thrombocytopenia; WBC may be LOW, NORMAL, or VERY HIGH (&gt;100,000)</td>
-                                <td>First clue; may show blasts on auto-diff</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Peripheral smear</strong></td>
-                                <td><strong>Blasts present</strong>; Auer rods suggest AML</td>
-                                <td>Visualize blast morphology</td>
-                            </tr>
-                            <tr>
-                                <td><strong>BMP / lytes / phos / uric acid</strong></td>
-                                <td>May show TLS pattern at baseline</td>
-                                <td>Prepare for tumor lysis risk</td>
-                            </tr>
-                            <tr>
-                                <td><strong>LDH</strong></td>
-                                <td>Elevated (high cell turnover)</td>
-                                <td>Disease activity marker</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Coags (PT/PTT/fibrinogen/D-dimer)</strong></td>
-                                <td>DIC possible (especially AML M3)</td>
-                                <td>Rule out DIC before procedures</td>
-                            </tr>
-                            <tr>
-                                <td><strong>CXR</strong></td>
-                                <td>Mediastinal mass (T-cell ALL)</td>
-                                <td>Airway/SVC risk assessment</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="med-grid">
+                <div class="med-card">
+                    <div class="med-class">Vincristine</div>
+                    <p>A vinca alkaloid. Key toxicities: peripheral neuropathy, constipation, SIADH, jaw pain. IV only. It is fatal if given intrathecally, and that is a never event.</p>
                 </div>
-
-                <h3>Bone Marrow Biopsy &mdash; The Gold Standard</h3>
-
-                <ul>
-                    <li>Usually aspirated from the <strong>posterior iliac crest</strong> under sedation.</li>
-                    <li><strong>Diagnostic threshold: &gt;20% blasts</strong> in the marrow = acute leukemia.</li>
-                    <li>Sent for morphology, <strong>flow cytometry</strong> (identifies cell line), <strong>cytogenetics</strong> (chromosomal abnormalities), and <strong>molecular testing</strong> (fusion genes, mutations).</li>
-                    <li>Repeated after induction to confirm remission (&lt;5% blasts).</li>
-                </ul>
-
-                <h3>Lumbar Puncture (LP) for CNS Status</h3>
-
-                <ul>
-                    <li>Performed <strong>at diagnosis</strong> to check for CNS leukemia.</li>
-                    <li>Often combined with the first dose of <strong>intrathecal methotrexate</strong> as prophylaxis.</li>
-                    <li>CNS-positive disease upstages the risk group and intensifies therapy.</li>
-                </ul>
-
-                <div class="info-box nclex">
-                    <div class="info-box-icon"><i class="fas fa-book-medical"></i></div>
-                    <div class="info-box-content">
-                        <h5>NCLEX Point &mdash; Positioning for LP</h5>
-                        <p>Position the child on their side with the <strong>back arched and knees drawn up to chest (fetal/C position)</strong> to open the intervertebral spaces. In infants, hold in a sitting flexed position or side-lying &mdash; <strong>do NOT hyperflex the neck</strong> in infants (airway compromise). Hold child still during procedure; distraction and pain management afterward. Lay <strong>flat</strong> for several hours post-procedure if intrathecal chemo was given to allow even distribution and reduce post-LP headache.</p>
-                    </div>
+                <div class="med-card">
+                    <div class="med-class">L-asparaginase</div>
+                    <p>An enzyme that starves leukemic cells of asparagine. Watch for anaphylaxis, pancreatitis, hyperglycemia, and coagulopathy. Give IM or IV with epinephrine at the bedside.</p>
                 </div>
-
-                <h3>Staging &amp; Risk Group Assignment</h3>
-
-                <p>Unlike most cancers, acute leukemia is not "staged" like a solid tumor. Instead, risk is based on:</p>
-
-                <ul>
-                    <li><strong>Age and WBC</strong> at diagnosis</li>
-                    <li><strong>Cell line</strong> and cytogenetics (certain mutations &rarr; better or worse prognosis)</li>
-                    <li><strong>CNS or testicular involvement</strong></li>
-                    <li><strong>Minimal residual disease (MRD)</strong> after induction</li>
-                </ul>
-
-                <div class="bottom-line">Bottom Line: CBC with blasts &rarr; peripheral smear &rarr; bone marrow biopsy (&gt;20% blasts = leukemia) &rarr; LP to stage CNS. Flow + cytogenetics drive the treatment plan.</div>
-            </section>
-
-            <!-- Section 5: Treatment -->
-            <section class="guide-section" id="treatment">
-                <div class="section-header">
-                    <div class="section-number">5</div>
-                    <div class="section-title-group">
-                        <h2>Treatment Overview</h2>
-                        <div class="subtitle">Three phases of chemo, intrathecal prophylaxis, and BMT</div>
-                    </div>
+                <div class="med-card">
+                    <div class="med-class">Corticosteroids</div>
+                    <p>Prednisone or dexamethasone. Cytotoxic to lymphoblasts and a backbone of ALL therapy. Side effects: hyperglycemia, mood changes, big appetite, hypertension, and avascular necrosis with long use.</p>
                 </div>
-
-                <p>Leukemia treatment is <strong>long</strong>. A child with ALL may be on therapy for <strong>2&ndash;3 years</strong>. AML is more intense but shorter. Children's oncology centers follow COG (Children's Oncology Group) protocols with standardized phases.</p>
-
-                <h3>Three Phases of Chemotherapy</h3>
-
-                <div class="type-grid">
-                    <div class="type-card">
-                        <div class="type-card-header induction">
-                            <i class="fas fa-rocket"></i>
-                            <h4>1. Induction</h4>
-                            <span class="tag">4&ndash;6 weeks</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Goal</h5>
-                            <p>Achieve <strong>complete remission</strong> (&lt;5% blasts in marrow).</p>
-                            <h5>Typical Drugs (ALL)</h5>
-                            <p>Vincristine, L-asparaginase, corticosteroid (prednisone or dexamethasone), anthracycline (daunorubicin) in high-risk.</p>
-                            <h5>Watch For</h5>
-                            <p>Tumor lysis syndrome (first 48&ndash;72 hr), neutropenic fever, chemo reactions, mucositis.</p>
-                        </div>
-                    </div>
-
-                    <div class="type-card">
-                        <div class="type-card-header consolidation">
-                            <i class="fas fa-layer-group"></i>
-                            <h4>2. Consolidation / Intensification</h4>
-                            <span class="tag">Months</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Goal</h5>
-                            <p>Eliminate residual disease, prevent relapse, prevent CNS spread.</p>
-                            <h5>Typical Approach</h5>
-                            <p>Cyclophosphamide, cytarabine, methotrexate (IV and <strong>intrathecal</strong>); delayed intensification blocks.</p>
-                            <h5>Watch For</h5>
-                            <p>Prolonged cytopenias; risk of serious infection; GI toxicity.</p>
-                        </div>
-                    </div>
-
-                    <div class="type-card">
-                        <div class="type-card-header maintenance">
-                            <i class="fas fa-seedling"></i>
-                            <h4>3. Maintenance</h4>
-                            <span class="tag">2&ndash;3 yr total (ALL)</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>Goal</h5>
-                            <p>Long-term remission; keep blasts suppressed.</p>
-                            <h5>Typical Approach</h5>
-                            <p>Oral <strong>6-mercaptopurine (6-MP) daily</strong> + oral <strong>methotrexate weekly</strong>; periodic vincristine/steroid pulses; intermittent intrathecal methotrexate.</p>
-                            <h5>Watch For</h5>
-                            <p>Adherence; daily schedule for years; normalcy of life resumes but with frequent clinic visits.</p>
-                        </div>
-                    </div>
-
-                    <div class="type-card">
-                        <div class="type-card-header cml">
-                            <i class="fas fa-hospital-user"></i>
-                            <h4>BMT / HSCT</h4>
-                            <span class="tag">Select Cases</span>
-                        </div>
-                        <div class="type-card-body">
-                            <h5>When</h5>
-                            <p>Relapsed ALL, most high-risk AML, CML, JMML, select high-risk subtypes.</p>
-                            <h5>Types</h5>
-                            <p>Allogeneic (donor, preferred from matched sibling) vs. autologous. Conditioning with high-dose chemo &plusmn; total body irradiation.</p>
-                            <h5>Watch For</h5>
-                            <p><strong>Graft-versus-host disease</strong>, opportunistic infections, engraftment delays, long hospitalization.</p>
-                        </div>
-                    </div>
+                <div class="med-card">
+                    <div class="med-class">Methotrexate</div>
+                    <p>Given IV in high doses and intrathecally for CNS prophylaxis. Toxicities: mucositis, liver injury, kidney injury. Leucovorin rescue follows high-dose infusions.</p>
                 </div>
-
-                <h3>Selected Chemotherapy Agents</h3>
-
-                <div class="med-grid">
-                    <div class="med-card">
-                        <h5>Vincristine</h5>
-                        <div class="med-class">Plant Alkaloid (Vinca)</div>
-                        <p><strong>Key toxicity:</strong> peripheral neuropathy, constipation, SIADH, jaw pain.</p>
-                        <p><strong>IV only</strong> &mdash; <strong>fatal if given intrathecally</strong>. Giving intrathecal vincristine is a never event in oncology.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>L-Asparaginase</h5>
-                        <div class="med-class">Enzyme</div>
-                        <p>Depletes asparagine used by leukemic cells.</p>
-                        <p><strong>Watch for anaphylaxis, pancreatitis, hyperglycemia, coagulopathy.</strong> Given IM or IV with epinephrine at the bedside.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Corticosteroids (Prednisone / Dexamethasone)</h5>
-                        <div class="med-class">Anti-Lymphoid</div>
-                        <p>Cytotoxic to lymphoblasts; backbone of ALL therapy.</p>
-                        <p><strong>Side effects:</strong> hyperglycemia, mood changes, increased appetite, hypertension, avascular necrosis with long exposure.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Methotrexate (IV &amp; IT)</h5>
-                        <div class="med-class">Antimetabolite</div>
-                        <p>Used IV (high-dose) and <strong>intrathecally for CNS prophylaxis</strong>.</p>
-                        <p>Toxicity: mucositis, hepatotoxicity, nephrotoxicity. <strong>Leucovorin rescue</strong> after high-dose.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>6-Mercaptopurine (6-MP)</h5>
-                        <div class="med-class">Antimetabolite &mdash; Maintenance</div>
-                        <p>Oral, daily, for years during maintenance.</p>
-                        <p><strong>Adherence is critical.</strong> Give at bedtime, on empty stomach, away from dairy.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Cytarabine (Ara-C)</h5>
-                        <div class="med-class">Antimetabolite (AML backbone)</div>
-                        <p>Cornerstone of AML induction.</p>
-                        <p>Toxicity: profound cytopenias, mucositis, cerebellar toxicity at high doses, "Ara-C syndrome" (fever, rash, myalgia).</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Anthracyclines (Daunorubicin, Doxorubicin)</h5>
-                        <div class="med-class">Topoisomerase Inhibitor</div>
-                        <p><strong>Cardiotoxicity</strong> is dose-limiting &mdash; baseline and serial echocardiograms.</p>
-                        <p>Vesicant: extravasation causes tissue necrosis. Central line preferred.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Cyclophosphamide</h5>
-                        <div class="med-class">Alkylating Agent</div>
-                        <p>Used in consolidation and BMT conditioning.</p>
-                        <p><strong>Hemorrhagic cystitis risk</strong> &mdash; vigorous hydration and <strong>Mesna</strong>. Bladder cancer is a late effect.</p>
-                    </div>
+                <div class="med-card">
+                    <div class="med-class">6-mercaptopurine</div>
+                    <p>Oral, daily, for years in maintenance. Adherence is critical. Give at bedtime, on an empty stomach, away from dairy.</p>
                 </div>
-
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-skull-crossbones"></i></div>
-                    <div class="info-box-content">
-                        <h5>Vincristine is IV Only &mdash; NEVER Intrathecal</h5>
-                        <p>Accidental intrathecal vincristine is <strong>uniformly fatal</strong>. Oncology units use color-coded syringes, separate labeling, mandatory two-person verification, and time-separated administration from intrathecal chemo to eliminate this error. As the nurse: <strong>read the label, verify the route, and never accept a premixed syringe without a label indicating the route</strong>.</p>
-                    </div>
+                <div class="med-card">
+                    <div class="med-class">Cytarabine (Ara-C)</div>
+                    <p>The backbone of AML induction. Toxicities: deep cytopenias, mucositis, cerebellar effects at high doses, and Ara-C syndrome of fever, rash, and myalgia.</p>
                 </div>
-
-                <h3>Radiation Therapy</h3>
-
-                <ul>
-                    <li>Historical role larger; now reserved for <strong>CNS leukemia</strong>, testicular relapse, and conditioning for BMT.</li>
-                    <li>Late effects: growth failure, cognitive impairment, secondary cancers &mdash; major reason CNS radiation is minimized in modern protocols.</li>
-                </ul>
-
-                <h3>Newer Therapies</h3>
-
-                <ul>
-                    <li><strong>Tyrosine kinase inhibitors</strong> (imatinib, dasatinib) for Philadelphia-positive ALL and CML.</li>
-                    <li><strong>Immunotherapy:</strong> blinatumomab (CD19 bispecific T-cell engager), inotuzumab, <strong>CAR-T cell therapy</strong> (tisagenlecleucel) for relapsed/refractory B-cell ALL.</li>
-                    <li><strong>ATRA (all-trans retinoic acid)</strong> for AML M3 (APL) &mdash; differentiates the promyelocytes; dramatically improves outcomes. Watch for <strong>differentiation syndrome</strong>.</li>
-                </ul>
-
-                <div class="bottom-line">Bottom Line: Induction &rarr; Consolidation &rarr; Maintenance. ALL = 2&ndash;3 yr total. AML is more intense, often needs BMT. Intrathecal methotrexate for CNS. Vincristine = IV only, never IT.</div>
-            </section>
-
-            <!-- Section 6: Neutropenic Precautions -->
-            <section class="guide-section" id="neutropenic">
-                <div class="section-header">
-                    <div class="section-number">6</div>
-                    <div class="section-title-group">
-                        <h2>Neutropenic Precautions &amp; Infection Control</h2>
-                        <div class="subtitle">The highest-yield section for NCLEX and the floor</div>
-                    </div>
+                <div class="med-card">
+                    <div class="med-class">Anthracyclines</div>
+                    <p>Daunorubicin and doxorubicin. Cardiotoxicity is dose-limiting, so get baseline and serial echocardiograms. They are vesicants, so a central line is preferred.</p>
                 </div>
-
-                <p>After chemo, the child's white cell count plummets. They are <strong>functionally immunocompromised</strong> and at extreme risk for infection &mdash; including from their own gut flora and skin. Neutropenic precautions protect the child from organisms we don't usually worry about.</p>
-
-                <h3>Defining Neutropenia by ANC</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>ANC Range (cells/mm&sup3;)</th>
-                                <th>Category</th>
-                                <th>Risk</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>&gt;1,500</td><td>Normal</td><td>Baseline</td></tr>
-                            <tr><td>1,000&ndash;1,500</td><td>Mild neutropenia</td><td>Mildly increased</td></tr>
-                            <tr><td>500&ndash;1,000</td><td>Moderate neutropenia</td><td>Significant infection risk</td></tr>
-                            <tr><td><strong>&lt;500</strong></td><td><strong>Severe neutropenia</strong></td><td><strong>Profound infection risk; strict precautions</strong></td></tr>
-                            <tr><td>&lt;100</td><td>Profound / functional agranulocytosis</td><td>Life-threatening; single-organism sepsis common</td></tr>
-                        </tbody>
-                    </table>
+                <div class="med-card">
+                    <div class="med-class">Cyclophosphamide</div>
+                    <p>An alkylating agent used in consolidation and transplant conditioning. Hemorrhagic cystitis is the risk; prevent it with vigorous hydration and Mesna. Bladder cancer is a late effect.</p>
                 </div>
+            </div>
 
-                <div class="info-box clinical">
-                    <div class="info-box-icon"><i class="fas fa-calculator"></i></div>
-                    <div class="info-box-content">
-                        <h5>ANC Formula</h5>
-                        <p><strong>ANC = WBC &times; (% neutrophils + % bands) &divide; 100</strong>. Example: WBC 2,000 with 20% neutrophils and 5% bands &rarr; ANC = 2,000 &times; (25/100) = 500. <strong>Severe neutropenia</strong>. Many NCLEX questions expect you to calculate and then apply the answer.</p>
-                    </div>
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-skull-crossbones"></i> Vincristine is IV only, never intrathecal</div>
+                <div class="info-box-content">
+                    <p>Intrathecal vincristine is uniformly fatal. Units use color-coded syringes, separate labeling, two-person checks, and timing that separates it from intrathecal chemo. Your part is simple. Read the label. Verify the route. Never accept a premixed syringe with no route on it.</p>
                 </div>
+            </div>
 
-                <h3>Neutropenic Precautions &mdash; What TO Do</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Private room</strong>, ideally with HEPA filtration. Close the door.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Strict handwashing</strong> by every staff member, visitor, and parent entering the room.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Healthy visitors only</strong> &mdash; no one with cough, fever, rash, cold sores. Limit visitor numbers.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Daily oral care</strong> with soft toothbrush or oral sponges; no flossing if platelets low.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Low-microbial / neutropenic diet</strong> &mdash; cooked foods, no raw fruits/vegetables unless peeled, no deli meats, no unpasteurized dairy.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Daily skin assessment</strong> (including perianal and CVC site) for early infection.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Frequent vitals</strong> including temperature checks; parents report fever immediately.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Central line care</strong> per protocol &mdash; CLABSI prevention bundles, hub scrubbing.</p>
-                    </div>
+            <div class="florencebot-tip" id="tip-vincristine">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Vincristine = IV Only</div>
+                <div class="florencebot-tip-content">One route error kills. Vincristine goes IV and only IV. Intrathecal vincristine has no antidote and no survivors. Read the label, say the route out loud, and refuse any unlabeled syringe.</div>
+            </div>
 
-                <h3>Neutropenic Precautions &mdash; What NOT To Do</h3>
+            <h3>Radiation</h3>
 
-                <div class="redflag-grid">
-                    <div class="redflag-card">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO rectal temps, rectal meds, or rectal exams</strong> &mdash; can cause mucosal tears and bacteremia.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO fresh flowers or live plants</strong> &mdash; soil and stagnant water harbor Aspergillus and Pseudomonas.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO fresh fruits/vegetables unwashed</strong>; no raw, undercooked, or unpasteurized foods.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO live vaccines</strong> (MMR, varicella, rotavirus, nasal flu) to child or household contacts during treatment.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO invasive procedures</strong> if avoidable &mdash; IM injections, catheterizations, dental work all increase bacteremia risk.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO aspirin or NSAIDs</strong> (platelet dysfunction + mask fever). Acetaminophen for pain, per oncology team.</p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO sick visitors, siblings with recent live vaccines, or pets with open litter boxes.</strong></p>
-                    </div>
-                    <div class="redflag-card">
-                        <i class="fas fa-ban"></i>
-                        <p><strong>NO group/shared rooms</strong>; avoid the playroom unless policy permits when ANC recovered.</p>
-                    </div>
+            <ul>
+                <li>Now reserved for CNS leukemia, testicular relapse, and transplant conditioning.</li>
+                <li>Late effects: growth failure, cognitive impairment, secondary cancers. That is why CNS radiation is minimized.</li>
+            </ul>
+
+            <h3>Newer therapies</h3>
+
+            <ul>
+                <li>Tyrosine kinase inhibitors (imatinib, dasatinib) for Philadelphia-positive ALL and CML.</li>
+                <li>Immunotherapy: blinatumomab (a CD19 bispecific), inotuzumab, and CAR-T therapy (tisagenlecleucel) for relapsed or refractory B-cell ALL.</li>
+                <li>ATRA (all-trans retinoic acid) for AML M3. It matures the promyelocytes and greatly improves outcomes. Watch for differentiation syndrome.</li>
+            </ul>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Induction, then consolidation, then maintenance. ALL runs 2 to 3 years. AML is more intense and often needs transplant. Intrathecal methotrexate protects the CNS. Vincristine is IV only.
+            </div>
+        </section>
+
+        <!-- ══════════ NEUTROPENIC ══════════ -->
+        <section class="guide-section" id="neutropenic">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2>Neutropenic fever is not an ordinary fever</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: a fever with neutrophils versus a fever without them.</p>
+
+            <p>After chemo the white count drops. The child is functionally immunocompromised. The danger includes the child's own gut and skin flora. Neutropenic precautions guard against organisms we usually ignore.</p>
+
+            <h3>Neutropenia by ANC</h3>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>ANC (cells/mm&sup3;)</th><th>Category</th><th>What it means</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>&gt; 1,500</td><td>Normal</td><td>Baseline</td></tr>
+                        <tr><td>1,000 to 1,500</td><td>Mild</td><td>Slightly higher risk</td></tr>
+                        <tr><td>500 to 1,000</td><td>Moderate</td><td>Real infection risk</td></tr>
+                        <tr><td><strong>&lt; 500</strong></td><td><strong>Severe</strong></td><td><strong>Profound risk; strict precautions</strong></td></tr>
+                        <tr><td>&lt; 100</td><td>Profound</td><td>Life-threatening; single-organism sepsis is common</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-calculator"></i> The ANC formula</div>
+                <div class="info-box-content">
+                    <p>ANC = WBC &times; (% neutrophils + % bands) &divide; 100. Example: a WBC of 2,000 with 20% neutrophils and 5% bands gives 2,000 &times; 25 &divide; 100, which is 500. That is severe neutropenia. Expect to calculate it, then act on the answer.</p>
                 </div>
+            </div>
 
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-temperature-high"></i></div>
-                    <div class="info-box-content">
-                        <h5>Febrile Neutropenia Is an Oncologic Emergency</h5>
-                        <p>A <strong>single temperature &ge; 100.4&deg;F (38&deg;C)</strong> in a neutropenic child is treated as sepsis until proven otherwise. Actions within 60 minutes: <strong>two blood cultures (peripheral + central line lumen)</strong>, urine culture, CBC/CMP/lactate, CXR if respiratory symptoms, and <strong>broad-spectrum IV antibiotics</strong> (typically cefepime or piperacillin-tazobactam). Do NOT wait for the ANC to come back &mdash; treat empirically. Mortality rises sharply with every hour of antibiotic delay.</p>
-                    </div>
+            <h3>Precautions: what to do</h3>
+
+            <div class="key-point-grid">
+                <div class="key-point-item"><strong>Private room,</strong> ideally HEPA-filtered. Keep the door closed.</div>
+                <div class="key-point-item"><strong>Strict handwashing</strong> by every person entering.</div>
+                <div class="key-point-item"><strong>Healthy visitors only.</strong> No cough, fever, rash, or cold sores. Limit the number.</div>
+                <div class="key-point-item"><strong>Daily oral care</strong> with a soft toothbrush or sponge. No flossing when platelets are low.</div>
+                <div class="key-point-item"><strong>A low-microbial diet:</strong> cooked foods, no raw fruit or vegetables unless peeled, no deli meats, no unpasteurized dairy.</div>
+                <div class="key-point-item"><strong>Daily skin checks,</strong> including the perianal area and the central line site.</div>
+                <div class="key-point-item"><strong>Frequent vitals and temperatures.</strong> Parents report any fever at once.</div>
+                <div class="key-point-item"><strong>Central line care</strong> per protocol, with hub scrubbing and the CLABSI bundle.</div>
+            </div>
+
+            <h3>Precautions: what not to do</h3>
+
+            <div class="redflag-grid">
+                <div class="redflag-card"><strong>No rectal temperatures, rectal meds, or rectal exams.</strong> They tear mucosa and seed bacteremia.</div>
+                <div class="redflag-card"><strong>No fresh flowers or live plants.</strong> Soil and standing water carry Aspergillus and Pseudomonas.</div>
+                <div class="redflag-card"><strong>No raw, undercooked, or unpasteurized foods.</strong></div>
+                <div class="redflag-card"><strong>No live vaccines</strong> (MMR, varicella, rotavirus, nasal flu) for the child or household contacts.</div>
+                <div class="redflag-card"><strong>No invasive procedures if avoidable:</strong> IM injections, catheterizations, dental work all raise bacteremia risk.</div>
+                <div class="redflag-card"><strong>No aspirin or NSAIDs.</strong> They impair platelets and can mask fever. Use acetaminophen per the team.</div>
+                <div class="redflag-card"><strong>No sick visitors,</strong> and no pets with open litter boxes.</div>
+                <div class="redflag-card"><strong>No shared rooms.</strong> Skip the playroom until the ANC recovers.</div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-temperature-high"></i> Febrile neutropenia is an oncologic emergency</div>
+                <div class="info-box-content">
+                    <p>A single temperature of 100.4&deg;F (38&deg;C) in a neutropenic child is treated as sepsis. Inside 60 minutes: two blood cultures (peripheral and central lumen), a urine culture, CBC, CMP, lactate, and a chest x-ray if there are respiratory symptoms. Then broad-spectrum IV antibiotics, usually cefepime or piperacillin-tazobactam. Do not wait for the ANC. Treat empirically. Mortality climbs with every hour of delay.</p>
                 </div>
+            </div>
 
-                <div class="info-box nclex">
-                    <div class="info-box-icon"><i class="fas fa-book-medical"></i></div>
-                    <div class="info-box-content">
-                        <h5>NCLEX Point &mdash; Live Vaccines in the Immunocompromised</h5>
-                        <p><strong>Live-attenuated vaccines</strong> (MMR, varicella, rotavirus, intranasal influenza, BCG, yellow fever) should NOT be given to a child on chemotherapy OR to household contacts during active treatment for risk of transmission. <strong>Inactivated vaccines</strong> (injectable flu, Tdap, pneumococcal) are allowed but may have blunted response. Siblings should get the <strong>injectable</strong> flu vaccine, not the intranasal spray.</p>
-                    </div>
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-syringe"></i> Live vaccines and the household</div>
+                <div class="info-box-content">
+                    <p>Live-attenuated vaccines (MMR, varicella, rotavirus, intranasal flu, BCG, yellow fever) are not given to a child on chemo, nor to household contacts during active treatment. Inactivated vaccines (injectable flu, Tdap, pneumococcal) are allowed but may work less well. Siblings get the injectable flu shot, not the nasal spray.</p>
                 </div>
+            </div>
 
-                <div class="florencebot-tip" id="tip-neutropenic-diet">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Remember The Big 4 No&apos;s</div>
-                    <div class="florencebot-tip-content">
-                        The four things NCLEX loves to test about neutropenic care: <strong>NO rectal temps, NO fresh flowers/plants, NO live vaccines, NO raw foods</strong>. Memorize those four and you'll pass most neutropenic-care questions on sight. Everything else (private room, handwashing, sick visitor screening) is a generalization of "protect the immune-compromised child."
-                    </div>
+            <div class="florencebot-tip" id="tip-neutropenic-fever">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Fever Now, Not Later</div>
+                <div class="florencebot-tip-content">The whole section reduces to two habits. Any temperature of 100.4&deg;F or higher gets cultures and antibiotics inside the hour, before the ANC even returns. And remember the four no's: no rectal temps, no flowers or plants, no live vaccines, no raw food. Everything else is just protecting an immune-compromised child.</div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: ANC &lt;500 = severe. Fever = emergency (cultures + abx within 1 hr). NO rectal temps, NO flowers/plants, NO live vaccines, NO raw food.</div>
-            </section>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> ANC under 500 is severe. A fever is an emergency, so cultures and antibiotics within the hour. No rectal temps, no flowers or plants, no live vaccines, no raw food.
+            </div>
+        </section>
 
-            <!-- Section 7: Complications -->
-            <section class="guide-section" id="complications">
-                <div class="section-header">
-                    <div class="section-number">7</div>
-                    <div class="section-title-group">
-                        <h2>Treatment Complications</h2>
-                        <div class="subtitle">Tumor lysis, mucositis, transfusion reactions, late effects</div>
-                    </div>
+        <!-- ══════════ COMPLICATIONS ══════════ -->
+        <section class="guide-section" id="complications">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2>The complications that decide your shift</h2>
+            </div>
+
+            <p class="subtitle">Tumor lysis, mucositis, and transfusion reactions.</p>
+
+            <h3>Tumor lysis syndrome</h3>
+
+            <p>Chemo kills leukemic cells, and their contents pour into the blood. The storm hits in the first 24 to 72 hours of induction. Risk is highest with a high WBC, bulky disease, or T-cell ALL.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr><th>Electrolyte</th><th>Direction</th><th>Why it matters</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Potassium</strong></td><td>Up</td><td>Arrhythmias, cardiac arrest</td></tr>
+                        <tr><td><strong>Phosphorus</strong></td><td>Up</td><td>Binds calcium</td></tr>
+                        <tr><td><strong>Uric acid</strong></td><td>Up</td><td>Crystallizes in the kidneys, causing acute kidney injury</td></tr>
+                        <tr><td><strong>Calcium</strong></td><td>Down</td><td>Tetany and seizures, from the high phosphorus</td></tr>
+                        <tr><td>BUN and creatinine</td><td>Up if injury occurs</td><td>Uric acid nephropathy</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>Prevent and manage it</h4>
+
+            <ol class="step-list">
+                <li><strong>Aggressive IV hydration</strong> at 2 to 3 times maintenance, to keep urine output over 3 mL/kg/hr and flush uric acid. Start before the first chemo dose.</li>
+                <li><strong>Allopurinol</strong> to cut new uric acid formation, for mild or moderate risk.</li>
+                <li><strong>Rasburicase</strong> to break down existing uric acid, for high risk. It is contraindicated in G6PD deficiency because it causes hemolysis. Screen first.</li>
+                <li><strong>Frequent labs,</strong> every 6 to 8 hours, for electrolytes, phosphorus, calcium, uric acid, and renal function.</li>
+                <li><strong>Continuous cardiac monitoring</strong> for hyperkalemia. Treat with calcium gluconate, insulin and dextrose, kayexalate, or dialysis if severe.</li>
+                <li><strong>Keep potassium and phosphorus</strong> out of the IV fluids during induction.</li>
+            </ol>
+
+            <h3>Mucositis</h3>
+
+            <ul>
+                <li>Chemo damages the fast-dividing lining of the GI tract.</li>
+                <li>It shows as painful mouth sores, poor intake, and diarrhea.</li>
+                <li>Care: oral care with a soft sponge or brush, alcohol-free rinses (saline or sodium bicarbonate), magic mouthwash per protocol (lidocaine, diphenhydramine, antacid), and good pain control.</li>
+                <li>Avoid acidic, spicy, and hot foods. Offer cold, soft, bland ones. Use parenteral nutrition if it is severe.</li>
+            </ul>
+
+            <h3>Nausea, vomiting, and poor appetite</h3>
+
+            <ul>
+                <li>Scheduled antiemetics: ondansetron, often with aprepitant and dexamethasone for the most emetogenic regimens.</li>
+                <li>Small frequent meals, the child's own preferences, and calorie supplements.</li>
+                <li>Watch weight and hydration. Use NG feeds or TPN if weight drops.</li>
+            </ul>
+
+            <h3>Transfusion reactions</h3>
+
+            <p>These children get frequent red cell and platelet transfusions. Reactions run from mild, a febrile non-hemolytic reaction, to life-threatening, an acute hemolytic reaction, TRALI, or anaphylaxis.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-hand-paper"></i> Transfusion reaction: stop first</div>
+                <div class="info-box-content">
+                    <p>At the first sign (fever, chills, rash, hypotension, back pain, dyspnea, tachycardia), act in order. First, stop the transfusion. Then keep the line patent with normal saline through new tubing; do not flush the old tubing, since it still holds the reacting blood. Notify the provider and the blood bank. Send the unit, the tubing, and a post-reaction blood and urine sample back. Then support vitals and treat: antihistamines, antipyretics, epinephrine for anaphylaxis. Document everything.</p>
                 </div>
+            </div>
 
-                <h3>Tumor Lysis Syndrome (TLS)</h3>
+            <h4>Types of reaction</h4>
 
-                <p>As chemotherapy destroys leukemic cells, their intracellular contents spill into circulation. This creates a predictable electrolyte storm in the first <strong>24&ndash;72 hours</strong> of induction, especially in kids with high WBC, bulky disease, or T-cell ALL.</p>
+            <ul>
+                <li><strong>Acute hemolytic (ABO mismatch):</strong> fever, chills, back pain, hypotension, hemoglobinuria within minutes. Life-threatening.</li>
+                <li><strong>Febrile non-hemolytic:</strong> the most common; mild fever and chills; treat with acetaminophen; use leukoreduced products.</li>
+                <li><strong>Allergic or anaphylactic:</strong> hives, wheezing, hypotension. Diphenhydramine, then epinephrine and washed products for anaphylaxis.</li>
+                <li><strong>TRALI:</strong> acute dyspnea within 6 hours; bilateral pulmonary edema without fluid overload. Supportive care.</li>
+                <li><strong>TACO:</strong> circulatory overload, like heart failure. Slow the infusion and diurese.</li>
+                <li><strong>Transfusion graft-versus-host disease:</strong> prevented by giving irradiated products to immunocompromised patients. Standard for oncology kids.</li>
+            </ul>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Electrolyte</th>
-                                <th>Direction</th>
-                                <th>Complication</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td><strong>Potassium</strong></td><td>&uarr; UP</td><td>Arrhythmias, cardiac arrest</td></tr>
-                            <tr><td><strong>Phosphorus</strong></td><td>&uarr; UP</td><td>Binds calcium</td></tr>
-                            <tr><td><strong>Uric acid</strong></td><td>&uarr; UP</td><td>Crystallizes in kidneys &rarr; acute kidney injury</td></tr>
-                            <tr><td><strong>Calcium</strong></td><td>&darr; DOWN</td><td>Tetany, seizures (from high phos binding)</td></tr>
-                            <tr><td>BUN/Cr</td><td>&uarr; UP (if AKI)</td><td>Uric acid nephropathy</td></tr>
-                        </tbody>
-                    </table>
+            <h3>Organ toxicity and late effects</h3>
+
+            <ul>
+                <li><strong>Anthracyclines:</strong> cardiomyopathy; follow with baseline and serial echocardiograms.</li>
+                <li><strong>Cyclophosphamide:</strong> hemorrhagic cystitis; prevent with hydration and Mesna; watch for hematuria.</li>
+                <li><strong>Methotrexate and vincristine:</strong> neurotoxicity; check reflexes, grip, and gait.</li>
+                <li><strong>Steroids:</strong> hyperglycemia, mood swings, avascular necrosis, hypertension, weight gain.</li>
+                <li><strong>Late effects:</strong> secondary cancers, late heart failure, endocrine problems (growth, thyroid, fertility), and neurocognitive and psychosocial effects.</li>
+            </ul>
+
+            <div class="florencebot-tip" id="tip-tls">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Up, Up, Up, Down</div>
+                <div class="florencebot-tip-content">Tumor lysis has one shape you can say fast. Potassium up, phosphorus up, uric acid up, calcium down. The potassium is what stops the heart, so it leads. Prevent the whole thing with hydration started before chemo, plus allopurinol or rasburicase.</div>
+            </div>
 
-                <h4>TLS Prevention &amp; Management</h4>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Tumor lysis is up, up, up, down, so hydrate and give allopurinol or rasburicase. A transfusion reaction means stop first, then saline through new tubing. Anthracyclines hit the heart. Late effects are real.
+            </div>
+        </section>
 
-                <ol class="step-list">
-                    <li><strong>Aggressive IV hydration</strong> at 2&ndash;3&times; maintenance to keep urine output &gt;3 mL/kg/hr and flush uric acid through the kidneys. Start BEFORE first chemo dose.</li>
-                    <li><strong>Allopurinol</strong> (xanthine oxidase inhibitor) PO/IV to reduce new uric acid formation &mdash; used for mild/moderate risk.</li>
-                    <li><strong>Rasburicase</strong> (recombinant urate oxidase) &mdash; converts uric acid to allantoin. Used for high risk (high WBC, bulky disease, baseline hyperuricemia). <strong>Contraindicated in G6PD deficiency</strong> (hemolysis risk). Screen first.</li>
-                    <li><strong>Frequent labs</strong> (q6&ndash;8h) monitoring lytes, phos, Ca, uric acid, BUN/Cr.</li>
-                    <li><strong>Continuous cardiac monitoring</strong> for hyperkalemia effects. Treat symptomatic hyperkalemia with calcium gluconate, insulin/dextrose, kayexalate, or dialysis if severe.</li>
-                    <li><strong>Avoid potassium in IV fluids</strong> during induction; avoid phosphorus-containing fluids.</li>
+        <!-- ══════════ NURSING ══════════ -->
+        <section class="guide-section" id="nursing">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>What you do first on the unit</h2>
+            </div>
+
+            <p>These children carry several risks at once. Infection, bleeding, and toxic drugs. Your daily work is to keep each one in check. Order the priorities the way the risks stack up.</p>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Neutropenic precautions.</strong> Private room, strict handwashing, healthy visitors, low-microbial diet. Any temperature of 100.4&deg;F or higher gets reported at once.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Bleeding precautions.</strong> When platelets fall, transfuse near 10,000/mm&sup3;, or higher if the child is bleeding or facing a procedure. Soft toothbrush, no flossing, no aspirin or NSAIDs, no rectal procedures. Hold firm pressure after any stick for 5 to 10 minutes.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Anemia support.</strong> Transfuse red cells for a hemoglobin near 7 to 8 g/dL or for symptoms. Space activity with rest. Every blood product is irradiated and leukoreduced.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Safe chemo handling.</strong> Chemo is hazardous to you too. Wear chemo-rated PPE. Two certified nurses verify patient, drug, dose, route, and time. Use closed-system devices. Pregnant nurses do not administer it.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Central line care.</strong> Most kids have a port, a Broviac or Hickman, or a PICC. Sterile technique for every access and dressing change. Scrub the hub 15 seconds before each access. A line infection is the top line complication.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">6</div>
+                    <div class="intervention-content"><strong>Intrathecal chemo for CNS prophylaxis.</strong> Methotrexate is given into the CSF to reach a sanctuary site. Keep the child flat afterward. And never let vincristine near that route.</div>
+                </li>
+            </ol>
+
+            <h3>Assess every day</h3>
+
+            <div class="key-point-grid">
+                <div class="key-point-item"><strong>Vitals every 4 hours,</strong> more if febrile or unstable. A fever of 100.4&deg;F in a neutropenic child means notify now.</div>
+                <div class="key-point-item"><strong>Full skin check each shift:</strong> line site, perianal area, mouth.</div>
+                <div class="key-point-item"><strong>Daily weight;</strong> it catches fluid shifts and weight loss, and doses are weight-based.</div>
+                <div class="key-point-item"><strong>Strict intake and output;</strong> the goal is over 3 mL/kg/hr during tumor lysis prevention.</div>
+                <div class="key-point-item"><strong>Lab trends:</strong> know today's ANC and platelet count.</div>
+                <div class="key-point-item"><strong>Pain:</strong> mucositis, bone pain, procedures. Use age-appropriate tools.</div>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-user-shield"></i> Chemo is hazardous to you, too</div>
+                <div class="info-box-content">
+                    <p>Use chemo-rated PPE: gown, double gloves, eye protection. Two oncology-certified nurses double-check the five rights. Use closed-system transfer devices. Keep spill kits within reach. Dispose of chemo waste per the hazardous-drug protocol. Pregnant nurses should not administer chemotherapy.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Assess skin, vitals, and weight every day. Verify chemo with two nurses and full PPE. Bleeding precautions for low platelets, irradiated blood through a cared-for line, and vincristine nowhere near the intrathecal route.
+            </div>
+        </section>
+
+        <!-- ══════════ FAMILY ══════════ -->
+        <section class="guide-section" id="family">
+            <div class="section-header">
+                <div class="section-number">11</div>
+                <h2>The family is the other patient</h2>
+            </div>
+
+            <p>A childhood cancer diagnosis lands on the whole family. The journey is long. Siblings, parents, and grandparents all need support. You are often the steadiest presence through months of treatment. Use that trust.</p>
+
+            <h3>The early days</h3>
+
+            <ul>
+                <li>Normalize the guilt. When parents ask what they did, tell them nothing they did caused this.</li>
+                <li>Expect shock, denial, anger, and bargaining. Meet them where they are each day.</li>
+                <li>Use plain, concrete language. Repeat the important parts; people in crisis do not retain much.</li>
+                <li>Introduce the team early: oncologist, nurse, social worker, child life, chaplain, dietitian.</li>
+            </ul>
+
+            <h3>Home care teaching</h3>
+
+            <div class="key-point-grid">
+                <div class="key-point-item"><strong>Fever plan:</strong> 100.4&deg;F means call the clinic and come in. Never wait and see at home.</div>
+                <div class="key-point-item"><strong>Bleeding precautions:</strong> soft toothbrush, no aspirin or NSAIDs, an electric razor, and the signs to call about.</div>
+                <div class="key-point-item"><strong>Medication schedule:</strong> 6-mercaptopurine at bedtime on an empty stomach, methotrexate weekly. Write it down.</div>
+                <div class="key-point-item"><strong>Central line care:</strong> dressing and cap changes, and the signs of infection.</div>
+                <div class="key-point-item"><strong>Sick contacts:</strong> avoid anyone with cough, fever, rash, or chickenpox. No crowds. No household contacts with recent live vaccines.</div>
+                <div class="key-point-item"><strong>Nutrition:</strong> a neutropenic diet when the ANC is low, small frequent meals, and a call for weight loss.</div>
+            </div>
+
+            <h3>Coping and support</h3>
+
+            <ul>
+                <li><strong>Parents:</strong> acknowledge the emotional and financial toll. Social work can line up insurance help, lodging, transport, and meals.</li>
+                <li><strong>Siblings:</strong> often overlooked. Watch for regression, behavior changes, and slipping grades. Include them; child life can help.</li>
+                <li><strong>The child:</strong> honest, developmentally-appropriate talk. School-age kids and teens need body-image and peer support.</li>
+                <li><strong>Groups:</strong> St. Jude, ACCO, and the Leukemia and Lymphoma Society reduce isolation.</li>
+                <li><strong>Spiritual and cultural needs:</strong> offer the chaplain and accommodate practices.</li>
+            </ul>
+
+            <h3>School and survivorship</h3>
+
+            <ul>
+                <li>Most children return to school once the ANC recovers and energy allows, even during maintenance.</li>
+                <li>Build an individualized health plan or a 504 plan with the school nurse.</li>
+                <li>Coordinate absences, make-up work, and a private space for port access.</li>
+                <li>After therapy: off-therapy visits, then a yearly survivorship clinic for at least 10 years.</li>
+                <li>Monitor late effects, re-boost vaccines once immunity recovers (about 6 to 12 months off therapy), and discuss fertility at the right ages.</li>
+            </ul>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Hope is evidence-based</div>
+                <div class="info-box-content">
+                    <p>In the 1960s, childhood leukemia was almost always fatal. Today more than 90% of children with ALL are cured, and AML survival approaches 70%. The treatment is grueling, yet most children walk out cured. Your job is to hold that hope when parents cannot, to mark the small wins, and to be present on the hard days. That presence is worth as much as the chemo.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> The family needs support as much as the child does. Teach the fever plan, the meds, the line, sick contacts, and nutrition. Siblings, school, and survivorship all count.
+            </div>
+        </section>
+
+        <!-- ══════════ NUMBERS ══════════ -->
+        <section class="guide-section" id="numbers-cold">
+            <div class="section-header">
+                <div class="section-number">12</div>
+                <h2>Numbers to have cold</h2>
+            </div>
+
+            <p>These should be automatic. If you have to reason toward one, it is not learned yet.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead><tr><th>Number</th><th>What you do with it</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>ANC &lt; 500/mm&sup3;</strong></td><td>Severe neutropenia; start strict neutropenic precautions</td></tr>
+                        <tr><td><strong>ANC &lt; 100/mm&sup3;</strong></td><td>Profound neutropenia; highest vigilance, single-organism sepsis risk</td></tr>
+                        <tr><td><strong>Temp &ge; 100.4&deg;F (38&deg;C)</strong></td><td>Draw two blood cultures and give broad-spectrum antibiotics within 1 hour</td></tr>
+                        <tr><td><strong>Platelets &lt; 10,000/mm&sup3;</strong></td><td>Transfuse platelets; use a higher threshold if bleeding or pre-procedure</td></tr>
+                        <tr><td><strong>Hemoglobin &lt; 7 to 8 g/dL</strong></td><td>Transfuse red cells, or sooner for symptoms</td></tr>
+                        <tr><td><strong>Urine output &gt; 3 mL/kg/hr</strong></td><td>The hydration target during tumor lysis prevention</td></tr>
+                        <tr><td><strong>IV fluids at 2 to 3x maintenance</strong></td><td>Start before the first chemo dose to prevent tumor lysis</td></tr>
+                        <tr><td><strong>Bone marrow &gt; 20% blasts</strong></td><td>Diagnoses acute leukemia; &lt; 5% confirms remission</td></tr>
+                        <tr><td><strong>Tumor lysis pattern</strong></td><td>Potassium up, phosphorus up, uric acid up, calcium down; hold IV potassium, give allopurinol or rasburicase</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Put these on the back of the index card from section 02. Test yourself on the action, not the number. The stem hands you the number and asks what you do.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ PRODUCE ══════════ -->
+        <section class="guide-section" id="rebuild">
+            <div class="section-header">
+                <div class="section-number">13</div>
+                <h2>Now close the guide</h2>
+            </div>
+
+            <p>Reading this again will not move your score. Producing it will. Do the rest with the page shut.</p>
+
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <ol>
+                    <li>Two columns, ALL and AML. Fill in cell line, peak age, one classic clue, and prognosis for each.</li>
+                    <li>Three cytopenias. Next to each, write the sign it makes at the bedside.</li>
+                    <li>Write the neutropenic-fever rule: the temperature, and the two actions inside the hour.</li>
+                    <li>Write the tumor lysis pattern in four moves, then what you give to prevent it.</li>
+                    <li>Write the one route rule that kills if broken.</li>
                 </ol>
-
-                <h3>Mucositis</h3>
-
-                <ul>
-                    <li>Chemo damages rapidly dividing mucosal cells throughout the GI tract.</li>
-                    <li>Presents as painful mouth sores, decreased intake, diarrhea.</li>
-                    <li>Care: <strong>oral care with soft sponge or soft toothbrush</strong>, alcohol-free rinses (saline or sodium bicarbonate), "magic mouthwash" per protocol (typically lidocaine + diphenhydramine + antacid), adequate pain control.</li>
-                    <li>Avoid acidic/spicy/hot foods; cold/soft/bland preferred. Consider parenteral nutrition if severe.</li>
-                </ul>
-
-                <h3>Nausea, Vomiting &amp; Anorexia</h3>
-
-                <ul>
-                    <li>Scheduled antiemetics (ondansetron, often + aprepitant and dexamethasone for highly emetogenic regimens).</li>
-                    <li>Small frequent meals, child's food preferences, calorie supplements.</li>
-                    <li>Monitor weight and hydration closely; NG feeds or TPN if weight loss.</li>
-                </ul>
-
-                <h3>Blood Product Transfusion Reactions</h3>
-
-                <p>Children with leukemia receive frequent PRBC and platelet transfusions. Transfusion reactions range from mild (febrile non-hemolytic) to life-threatening (acute hemolytic, TRALI, anaphylaxis).</p>
-
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-hand-paper"></i></div>
-                    <div class="info-box-content">
-                        <h5>Transfusion Reaction &mdash; STOP FIRST</h5>
-                        <p>At the first sign of reaction (fever, chills, rash, hypotension, back pain, dyspnea, tachycardia): <strong>1) STOP the transfusion immediately. 2) Keep the IV line patent with normal saline via new tubing</strong> (do not flush the existing line &mdash; it still contains the reacting blood). <strong>3) Notify the provider and blood bank. 4) Send the unit, tubing, and a post-reaction blood sample and urine back to the blood bank</strong>. 5) Support vitals, treat symptoms (antihistamines, antipyretics, epinephrine if anaphylaxis), document everything.</p>
-                    </div>
-                </div>
-
-                <h4>Types of Reactions</h4>
-
-                <ul>
-                    <li><strong>Acute hemolytic</strong> (ABO mismatch) &mdash; fever, chills, back pain, hypotension, hemoglobinuria within minutes. Life-threatening.</li>
-                    <li><strong>Febrile non-hemolytic</strong> &mdash; most common; mild fever/chills; treat with acetaminophen. Use leukoreduced products.</li>
-                    <li><strong>Allergic / anaphylactic</strong> &mdash; hives, wheezing, hypotension. Treat with diphenhydramine; anaphylaxis &rarr; epinephrine, washed products.</li>
-                    <li><strong>TRALI</strong> (transfusion-related acute lung injury) &mdash; acute dyspnea within 6 hours; bilateral pulmonary edema without fluid overload. Supportive care.</li>
-                    <li><strong>TACO</strong> (transfusion-associated circulatory overload) &mdash; fluid overload / CHF-like; slow infusion, diuresis.</li>
-                    <li><strong>Graft-versus-host disease from transfusion</strong> &mdash; prevented by giving <strong>irradiated</strong> blood products to immunocompromised patients. Standard for oncology kids.</li>
-                </ul>
-
-                <h3>Cardiotoxicity &amp; Other Organ Effects</h3>
-
-                <ul>
-                    <li><strong>Anthracyclines</strong> (daunorubicin, doxorubicin) &rarr; cardiomyopathy; monitor with baseline/serial echos.</li>
-                    <li><strong>Cyclophosphamide &rarr; hemorrhagic cystitis</strong>; prevent with hydration + Mesna; watch for hematuria.</li>
-                    <li><strong>Methotrexate/vincristine &rarr; neurotoxicity</strong>; assess DTRs, hand grip, gait.</li>
-                    <li><strong>Steroids</strong> &rarr; hyperglycemia, mood swings, AVN, HTN, weight gain.</li>
-                    <li><strong>L-asparaginase</strong> &rarr; pancreatitis, coagulopathy, anaphylaxis.</li>
-                </ul>
-
-                <h3>Late Effects (Survivorship)</h3>
-
-                <ul>
-                    <li><strong>Secondary cancers</strong> &mdash; AML after alkylators/topoisomerase inhibitors, solid tumors after radiation.</li>
-                    <li><strong>Cardiotoxicity</strong> &mdash; late CHF after anthracyclines.</li>
-                    <li><strong>Endocrine:</strong> growth hormone deficiency, hypothyroidism, infertility, early menopause.</li>
-                    <li><strong>Neurocognitive:</strong> learning/attention issues (especially after CNS radiation or young-age treatment).</li>
-                    <li><strong>Psychosocial:</strong> PTSD, anxiety, depression, "survivor guilt."</li>
-                </ul>
-
-                <div class="bottom-line">Bottom Line: TLS = K up, phos up, uric acid up, Ca down &rarr; hydrate + allopurinol/rasburicase. Transfusion reaction &rarr; STOP FIRST, saline new tubing. Anthracyclines = cardio. Late effects real.</div>
-            </section>
-
-            <!-- Section 8: Nursing Priorities -->
-            <section class="guide-section" id="nursing">
-                <div class="section-header">
-                    <div class="section-number">8</div>
-                    <div class="section-title-group">
-                        <h2>Nursing Priorities &amp; Safety</h2>
-                        <div class="subtitle">Daily care on the oncology unit</div>
-                    </div>
-                </div>
-
-                <h3>Daily Priority Assessment</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-temperature-high"></i>
-                        <p><strong>Vital signs q4h (more if febrile/unstable)</strong>; any fever &ge; 100.4&deg;F in a neutropenic child = notify provider immediately.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-eye"></i>
-                        <p><strong>Full skin assessment</strong> q shift, including CVC site, perianal area, mouth; early catch of cellulitis/typhlitis.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-weight-scale"></i>
-                        <p><strong>Daily weight</strong> &mdash; catches fluid shifts, weight loss, failure to thrive; dose recalculation often based on weight.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-droplet"></i>
-                        <p><strong>Strict I&amp;O</strong> &mdash; goal output usually &ge;3 mL/kg/hr during TLS prevention.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-vial"></i>
-                        <p><strong>Lab trends</strong> &mdash; CBC, chemistries, uric acid, phos; know the current ANC and platelet count.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-comments"></i>
-                        <p><strong>Pain assessment</strong> &mdash; mucositis, bone pain, procedure pain. Use developmentally appropriate tools.</p>
-                    </div>
-                </div>
-
-                <h3>Safe Chemotherapy Administration</h3>
-
-                <div class="info-box clinical">
-                    <div class="info-box-icon"><i class="fas fa-user-shield"></i></div>
-                    <div class="info-box-content">
-                        <h5>Chemo Handling &mdash; Protect Yourself</h5>
-                        <p>Chemotherapy is <strong>hazardous</strong> to staff as well as patients. Use <strong>chemo-rated PPE</strong> (gown, double gloves, eye protection) for administration. <strong>Double-check with two oncology-certified RNs</strong>: right patient, right drug, right dose, right route, right time. Use <strong>closed-system transfer devices</strong>. Spill kits must be readily available. Dispose of chemo waste per institutional hazardous drug protocol. <strong>Pregnant nurses should not administer chemotherapy</strong> per institutional policies.</p>
-                    </div>
-                </div>
-
-                <h3>Bleeding Precautions (Thrombocytopenia)</h3>
-
-                <ul>
-                    <li>Threshold for transfusion typically &lt;10,000/mm&sup3; (or higher if actively bleeding or pre-procedure).</li>
-                    <li><strong>Soft toothbrush or oral sponge</strong>; avoid flossing; electric razors.</li>
-                    <li><strong>No rectal procedures, IM injections, or aspirin/NSAIDs.</strong></li>
-                    <li>Apply firm pressure after any venipuncture/finger stick for 5&ndash;10 min.</li>
-                    <li>Monitor for petechiae, gum bleeding, epistaxis, bloody stools, hematuria.</li>
-                    <li>Fall precautions &mdash; dizziness from anemia plus bleeding risk = bad combo.</li>
-                </ul>
-
-                <h3>Anemia Support</h3>
-
-                <ul>
-                    <li>PRBC transfusion typically for Hgb &lt;7&ndash;8 g/dL (or symptomatic).</li>
-                    <li>Expect tachycardia, pallor, fatigue; space activity with rest.</li>
-                    <li>Remember: <strong>all blood products must be irradiated and leukoreduced</strong> for oncology patients.</li>
-                </ul>
-
-                <h3>Central Line Care</h3>
-
-                <ul>
-                    <li>Most kids have a <strong>port-a-cath, Broviac/Hickman, or PICC</strong>.</li>
-                    <li>Strict sterile technique for accessing, dressing changes, cap changes.</li>
-                    <li>Scrub the hub before every access (15 seconds with alcohol).</li>
-                    <li>Watch for redness, drainage, fever &mdash; CVC infection is the #1 line-related complication.</li>
-                    <li>Heparin flush per protocol; teach family home care.</li>
-                </ul>
-
-                <h3>Nutrition &amp; Activity</h3>
-
-                <ul>
-                    <li>Calorie-dense foods; multivitamins without iron unless directed; nutritional supplements (PediaSure, Pedialyte).</li>
-                    <li>Consult dietitian early.</li>
-                    <li>NG tube feeds or TPN if poor intake.</li>
-                    <li>Age-appropriate activity as tolerated; avoid contact sports during thrombocytopenia.</li>
-                    <li>Child Life Services is essential &mdash; play therapy, procedural prep, school-age academic support.</li>
-                </ul>
-
-                <div class="bottom-line">Bottom Line: Assess skin + vitals + weight daily. Chemo = 2 RN verify, PPE. Bleeding precautions for low platelets. Central line + irradiated blood products. Child Life is your teammate.</div>
-            </section>
-
-            <!-- Section 9: Family Education -->
-            <section class="guide-section" id="family">
-                <div class="section-header">
-                    <div class="section-number">9</div>
-                    <div class="section-title-group">
-                        <h2>Family Support &amp; Education</h2>
-                        <div class="subtitle">The diagnosis hits everyone in the family</div>
-                    </div>
-                </div>
-
-                <p>A childhood cancer diagnosis is a life-changing event for the whole family. The child's journey is long; siblings, parents, and grandparents all need support. The nurse is often the most consistent presence through the months of treatment &mdash; use that trust.</p>
-
-                <h3>Breaking the News &amp; Early Days</h3>
-
-                <ul>
-                    <li>Normalize the parents' guilt reaction &mdash; "What did we do?" &mdash; reassure that nothing they did caused this.</li>
-                    <li>Expect shock, denial, anger, bargaining. Meet them where they are each day.</li>
-                    <li>Use concrete, plain language. Repeat important info; families often can't retain complex medical details in crisis.</li>
-                    <li>Introduce the interdisciplinary team early: oncologist, oncology RN, social worker, child life, chaplain, dietitian.</li>
-                </ul>
-
-                <h3>Home Care Teaching Priorities</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Fever plan:</strong> temp &ge; 100.4&deg;F = call oncology clinic immediately, come to ED. Never wait and see at home.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Bleeding precautions</strong> &mdash; soft toothbrush, no aspirin/NSAIDs, electric razor, signs to call.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Medication schedule</strong> &mdash; 6-MP at bedtime on empty stomach; methotrexate weekly; write it down.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Central line care</strong> &mdash; dressing changes, cap changes, signs of infection.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Sick contacts</strong> &mdash; avoid anyone with cough/fever/rash/chickenpox; no crowds, no live-vaccine household contacts.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Nutrition</strong> &mdash; neutropenic diet when ANC low; small frequent meals; call for weight loss.</p>
-                    </div>
-                </div>
-
-                <h3>Psychosocial &amp; Coping</h3>
-
-                <ul>
-                    <li><strong>Parents:</strong> acknowledge the emotional and financial toll. Many families take leaves of absence or lose income; social work can connect resources (insurance, lodging, transportation via RMH/local charities, meal delivery).</li>
-                    <li><strong>Siblings:</strong> often overlooked. Watch for regression, behavior changes, academic decline. Include them; child life can help.</li>
-                    <li><strong>The child:</strong> developmentally appropriate honesty. School-age and adolescents need body-image and peer support. Protect identity and independence.</li>
-                    <li><strong>Parent advocacy organizations:</strong> St. Jude, ACCO, Leukemia &amp; Lymphoma Society; online communities help reduce isolation.</li>
-                    <li><strong>Spirituality and cultural needs</strong> &mdash; offer chaplain, accommodate religious practices.</li>
-                </ul>
-
-                <h3>School Re-entry</h3>
-
-                <ul>
-                    <li>Most children can return to school once ANC recovers and energy allows, even during maintenance.</li>
-                    <li>Develop an <strong>Individualized Health Plan (IHP) or 504 plan</strong> with the school nurse.</li>
-                    <li>Coordinate with teachers for absences, make-up work, private room for port access if needed.</li>
-                    <li>Pre-return classroom visit or peer presentation (with family consent) normalizes appearance changes (hair loss, port, mask).</li>
-                </ul>
-
-                <h3>Long-Term Survivorship</h3>
-
-                <ul>
-                    <li>After therapy: off-therapy visits, then yearly survivorship clinic for at least 10 years.</li>
-                    <li>Monitor for late effects: echocardiogram for anthracycline exposure, endocrine labs, growth, neurocognitive evaluation.</li>
-                    <li>Vaccine re-boosting after immune recovery (usually 6&ndash;12 months off therapy).</li>
-                    <li>Fertility discussion at age-appropriate points.</li>
-                    <li>Most survivors live full, healthy lives. Emphasize hope grounded in evidence &mdash; this is no longer a universally fatal disease.</li>
-                </ul>
-
-                <div class="info-box safe">
-                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
-                    <div class="info-box-content">
-                        <h5>Hope Is Evidence-Based</h5>
-                        <p>In the 1960s, childhood leukemia was nearly uniformly fatal. Today, <strong>more than 90% of children with ALL are cured</strong>, and AML survival approaches 70%. The treatment is grueling but almost every child walks out of the clinic cured. Your job as the nurse is to hold that hope when parents can't, to celebrate the small wins, and to be present for the hard days. That presence is worth as much as the chemo.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Family needs support as much as the child. Home-care priorities: fever plan, meds, line care, sick contacts, nutrition. Siblings + school + long-term survivorship matter.</div>
-            </section>
-
-            <!-- Quiz CTA -->
-            <div class="quiz-cta">
-                <h3>Test your knowledge</h3>
-                <p>17 NCLEX-style questions covering every section of this guide.</p>
-                <a href="quiz/quiz.html?topic=pediatric-leukemias" class="quiz-btn">
-                    <i class="fas fa-flask"></i> Start Quiz
-                </a>
             </div>
 
-            <!-- Cross References -->
-            <section class="cross-references" id="cross-references">
-                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
-                <div class="cross-ref-grid">
-                    <a href="sickle-cell-crisis.html" class="cross-ref-link">
-                        <i class="fas fa-circle"></i> Sickle Cell Crisis
-                    </a>
-                    <a href="bleeding-disorders.html" class="cross-ref-link">
-                        <i class="fas fa-droplet"></i> Bleeding Disorders
-                    </a>
-                    <a href="pediatric-solid-tumors.html" class="cross-ref-link">
-                        <i class="fas fa-disease"></i> Pediatric Solid Tumors
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Say these four out loud</div>
+                <div class="info-box-content">
+                    <p>Pick ALL or AML. Without looking, say the one-sentence definition, the clue you would see, the priority action, and the first-line treatment. Then do it for the other.</p>
+                    <p>If you can, you are ready. If you cannot, you know exactly which section to reopen.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> You will not be asked to define leukemia. You will be handed a child and a set of reasonable actions, and asked which comes first. Learn the splits and the order, in that order.
+            </div>
+        </section>
+
+
+        <section class="practice-questions" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> Test yourself</h2>
+                <div class="quiz-cta-box">
+                    <div class="quiz-cta-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="quiz-cta-content">
+                        <h3>Can you produce it?</h3>
+                        <p>17 questions with full rationales covering ALL vs AML, the workup, chemo and its emergencies, neutropenic care, and family teaching. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
+                        <div class="quiz-cta-stats">
+                            <span><i class="fas fa-question-circle"></i> 17 Questions</span>
+                            <span><i class="fas fa-clock"></i> ~14 min</span>
+                            <span><i class="fas fa-layer-group"></i> Rationales included</span>
+                        </div>
+                    </div>
+                    <a href="quiz/quiz.html?topic=pediatric-leukemias" class="quiz-cta-button">
+                        <i class="fas fa-play"></i> Start Quiz
                     </a>
                 </div>
             </section>
 
-        </div><!-- end document-content -->
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-dna"></i>
+                        <p><strong>ALL</strong> is lymphoid, ages 2 to 10, the best prognosis of any childhood cancer</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-bacterium"></i>
+                        <p><strong>AML</strong> is myeloid, M0 to M7; Auer rods mean AML</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-droplet"></i>
+                        <p><strong>Marrow failure</strong> is anemia plus bleeding plus infection</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-temperature-high"></i>
+                        <p><strong>Fever 100.4&deg;F</strong> in neutropenia means cultures and antibiotics within 1 hour</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-bolt"></i>
+                        <p><strong>Tumor lysis</strong> is K up, phos up, uric acid up, Ca down; hydrate plus allopurinol or rasburicase</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-syringe"></i>
+                        <p><strong>Vincristine</strong> is IV only; intrathecal is fatal</p>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Cross-References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Guides in the Library</h2>
+                <div class="cross-ref-group">
+                    <h3>Study alongside this guide:</h3>
+                    <ul>
+                        <li><a href="sickle-cell-crisis.html"><i class="fas fa-arrow-right"></i> Sickle Cell Crisis</a></li>
+                        <li><a href="bleeding-disorders.html"><i class="fas fa-arrow-right"></i> Bleeding Disorders</a></li>
+                    </ul>
+                </div>
+                <div class="cross-ref-group">
+                    <h3>After this guide, study:</h3>
+                    <ul>
+                        <li><a href="pediatric-solid-tumors.html"><i class="fas fa-arrow-right"></i> Pediatric Solid Tumors</a></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
         <div class="document-footer">
-            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
-            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
             <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
         </div>
 
-    </div><!-- end document-container -->
+    </div>
 
+    <!-- Guide page scripts (external for CSP compliance) -->
     <script src="configs/pediatric-leukemias-config.js?v=3"></script>
     <script src="guide-sidebar.js?v=3"></script>
     <script src="guide-script.js?v=3"></script>

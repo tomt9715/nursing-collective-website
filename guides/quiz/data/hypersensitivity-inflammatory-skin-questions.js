@@ -1,6 +1,6 @@
 /**
  * Hypersensitivity & Inflammatory Skin Quiz — Question Data
- * NCLEX-style questions covering atopic dermatitis, contact
+ * Clinical-scenario questions covering atopic dermatitis, contact
  * dermatitis, urticaria, anaphylaxis, and SJS/TEN.
  */
 
@@ -77,7 +77,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 c: "Both can be uncomfortable.",
                 d: "Both occur in infants."
             },
-            testTakingTip: "Fold involvement + satellites = candida (nystatin). Spares folds = irritant (barrier cream). NCLEX classic.",
+            testTakingTip: "Fold involvement + satellites = candida (nystatin). Spares folds = irritant (barrier cream). A classic split.",
             guideSection: "Section 2 \u2014 Contact & Diaper Dermatitis",
             guideSectionId: "contact"
         },

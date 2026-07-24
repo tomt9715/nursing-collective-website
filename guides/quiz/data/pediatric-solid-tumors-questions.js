@@ -1,6 +1,6 @@
 /**
  * Pediatric Solid Tumors Quiz — Question Data
- * NCLEX-style questions covering medulloblastoma, neuroblastoma,
+ * Practice questions covering medulloblastoma, neuroblastoma,
  * diagnostic workup, treatment, post-op nursing priorities, and family support.
  */
 
@@ -26,7 +26,7 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Medulloblastoma is the most common malignant CNS tumor in children <14, arising in the cerebellum/posterior fossa. It is the prototype pediatric brain cancer for NCLEX.",
+                correct: "Medulloblastoma is the most common malignant CNS tumor in children <14, arising in the cerebellum/posterior fossa. It is the prototype pediatric brain cancer to know cold.",
                 a: "Glioblastoma is rare in children.",
                 c: "Meningiomas are usually benign and much more common in adults.",
                 d: "Craniopharyngioma occurs in children but is less common than medulloblastoma."

@@ -40,7 +40,7 @@ def check(gid):
     out['uncovered'] = sorted(used - HAVE)
 
     # template conversion markers
-    out['tokens_css'] = 'css/tokens.css' in s and 'href="guide.css"' in s
+    out['tokens_css'] = 'css/tokens.css' in s and bool(re.search(r'href="guide\.css(\?|")', s))
     out['dm_serif'] = 'DM+Serif+Display' in s
     out['category'] = bool(re.search(r'<body[^>]*data-category="', s))
     out['retired_logo'] = 'the-nursing-collective-logo.webp' in s or 'the-nursing-collective-logo.svg' in s

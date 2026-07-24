@@ -1,6 +1,6 @@
 /**
- * Bleeding Disorders Quiz — Question Data
- * NCLEX-style questions covering hemophilia, ITP, diagnostic labs,
+ * Bleeding Disorders Quiz - Question Data
+ * Questions covering hemophilia, ITP, diagnostic labs,
  * treatment, bleeding precautions, and family education.
  */
 

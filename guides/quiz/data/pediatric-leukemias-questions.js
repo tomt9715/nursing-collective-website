@@ -1,6 +1,6 @@
 /**
  * Pediatric Leukemias Quiz — Question Data
- * NCLEX-style questions covering ALL/AML classification, diagnostic workup,
+ * Clinical-judgment questions covering ALL/AML classification, diagnostic workup,
  * chemotherapy, neutropenic precautions, tumor lysis syndrome, transfusion
  * reactions, and family support.
  */

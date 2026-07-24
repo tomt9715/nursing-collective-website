@@ -1,6 +1,6 @@
 /**
- * JIA & Pediatric Lupus Quiz — Question Data
- * NCLEX-style questions covering JIA types, pediatric SLE, labs,
+ * JIA & Pediatric Lupus Quiz - Question Data
+ * Practice questions covering JIA types, pediatric SLE, labs,
  * medication risks, and family education.
  */
 

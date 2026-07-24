@@ -1,6 +1,6 @@
 /**
  * Rheumatic Fever & Infective Endocarditis Quiz — Question Data
- * NCLEX-style questions covering Jones criteria, peripheral IE signs,
+ * Clinical-scenario questions covering Jones criteria, peripheral IE signs,
  * treatment, and SBE/RF prophylaxis.
  */
 
@@ -123,7 +123,7 @@ var rheumaticFeverEndocarditisQuizData = {
                 b: "Roth spots are retinal hemorrhages, seen on fundoscopy.",
                 d: "Erythema marginatum is a ring-shaped rash seen in rheumatic fever, not IE."
             },
-            testTakingTip: "Osler = Ow (painful, tips). Janeway = J-un-painful (painless, palms/soles). This is the most NCLEX-tested IE distinction.",
+            testTakingTip: "Osler = Ow (painful, tips). Janeway = J-un-painful (painless, palms/soles). This is the most tested IE distinction.",
             guideSection: "Section 5 \u2014 IE Peripheral Signs",
             guideSectionId: "ie-signs"
         },
@@ -192,7 +192,7 @@ var rheumaticFeverEndocarditisQuizData = {
                 c: "All cases of confirmed strep pharyngitis should be treated with antibiotics.",
                 d: "Rest and fluids alone are insufficient; antibiotics are essential."
             },
-            testTakingTip: "The NCLEX favorite: finish the full course of antibiotics. Don't stop when the child feels better.",
+            testTakingTip: "The classic teaching point: finish the full course of antibiotics. Don't stop when the child feels better.",
             guideSection: "Section 2 \u2014 Rheumatic Fever",
             guideSectionId: "rheumatic-fever"
         },

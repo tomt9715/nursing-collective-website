@@ -1,6 +1,6 @@
 /**
  * Kawasaki Disease Quiz — Question Data
- * NCLEX-style questions covering criteria, phases, complications,
+ * Questions covering criteria, phases, complications,
  * IVIG + aspirin treatment, and family education.
  */
 
@@ -100,7 +100,7 @@ var kawasakiDiseaseQuizData = {
                 c: "MMR is not contraindicated forever, just delayed.",
                 d: "Two weeks is not long enough for the IVIG antibodies to clear."
             },
-            testTakingTip: "IVIG + live vaccines = delay 11 months. This is a specific, frequently tested NCLEX fact.",
+            testTakingTip: "IVIG + live vaccines = delay 11 months. A specific, frequently tested fact.",
             guideSection: "Section 8 \u2014 Family Education",
             guideSectionId: "family-education"
         },
@@ -169,7 +169,7 @@ var kawasakiDiseaseQuizData = {
                 c: "Doubling the dose increases the risk further.",
                 d: "Acetaminophen does not neutralize the Reye risk from aspirin use during viral illness."
             },
-            testTakingTip: "Aspirin + flu/varicella = STOP and call. This is a high-yield teaching point on NCLEX.",
+            testTakingTip: "Aspirin + flu/varicella = STOP and call. A high-yield teaching point.",
             guideSection: "Section 8 \u2014 Family Education",
             guideSectionId: "family-education"
         },

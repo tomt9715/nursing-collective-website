@@ -1,6 +1,6 @@
 /**
  * Immune Deficiency, HIV & Anaphylaxis Quiz — Question Data
- * NCLEX-style questions covering primary immune deficiency warning signs,
+ * Practice questions covering primary immune deficiency warning signs,
  * pediatric HIV, anaphylaxis management, vaccines, and family education.
  */
 

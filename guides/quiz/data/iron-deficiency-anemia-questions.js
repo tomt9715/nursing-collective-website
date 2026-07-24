@@ -1,6 +1,6 @@
 /**
  * Iron-Deficiency Anemia Quiz — Question Data
- * NCLEX-style questions covering pathophysiology, clinical findings,
+ * Clinical-scenario questions covering pathophysiology, clinical findings,
  * labs, oral iron administration, and iron poisoning.
  */
 

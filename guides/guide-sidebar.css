@@ -28,10 +28,10 @@
 .page-wrapper {
     display: flex;
     justify-content: center;
-    gap: 24px;
+    gap: 32px;
     margin: 80px auto 40px;
-    padding: 0 20px;
-    max-width: 1600px;
+    padding: 0 24px;
+    max-width: 1720px;
 }
 
 .sidebar-left {
@@ -648,7 +648,7 @@
 
 /* ══ Document container inside the three-column shell ══ */
 .page-wrapper .document-container {
-    max-width: 900px;
+    max-width: 1080px;
     flex: 1;
     min-width: 0;
     margin: 0;

@@ -121,28 +121,7 @@ function createRightSidebar(quickRefItems, clinicalPearls) {
     const sidebar = document.createElement('aside');
     sidebar.className = 'sidebar-right';
 
-    // Get guide name for Florence's message
-    const guideName = document.body.dataset.guideName || 'this topic';
-
-    // Florence Study Buddy Card
-    const florenceHtml = `
-        <div class="florence-card">
-            <div class="florence-header">
-                <div class="florence-avatar">
-                    <img src="../assets/images/healthcare.webp" alt="FlorenceBot">
-                </div>
-                <div class="florence-info">
-                    <h3>FlorenceBot</h3>
-                    <span>Your Study Buddy</span>
-                </div>
-            </div>
-            <div class="florence-speech">
-                <p>Hey! I pulled out the <strong>key numbers</strong> you need to memorize for ${guideName}. You've got this!</p>
-            </div>
-        </div>
-    `;
-
-    // Key Numbers Grid (Quick Reference)
+    // Key numbers — a sticky glance-reference that stays with you while you read.
     let keyNumbersHtml = '';
     if (quickRefItems.length > 0) {
         let items = '';
@@ -158,8 +137,8 @@ function createRightSidebar(quickRefItems, clinicalPearls) {
         keyNumbersHtml = `
             <div class="key-numbers-card">
                 <div class="key-numbers-title">
-                    <i class="fas fa-star"></i>
-                    Memorize These
+                    <i class="fas fa-hashtag"></i>
+                    Key numbers
                 </div>
                 <div class="key-numbers-grid">
                     ${items}
@@ -168,12 +147,11 @@ function createRightSidebar(quickRefItems, clinicalPearls) {
         `;
     }
 
-    // FlorenceBot Tips (Clinical Pearls) - Clickable links to inline callouts
+    // Jump to a tip — clickable links to the inline FlorenceBot callouts.
     let tipsHtml = '';
     if (clinicalPearls.length > 0) {
         let tips = '';
-        clinicalPearls.forEach((pearl, index) => {
-            // Generate tip ID from title (lowercase, hyphenated)
+        clinicalPearls.forEach((pearl) => {
             const tipId = pearl.id || `tip-${pearl.title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/-+$/, '')}`;
             tips += `
                 <div class="tip-item" data-tip-target="${tipId}" role="button" tabindex="0">
@@ -184,18 +162,16 @@ function createRightSidebar(quickRefItems, clinicalPearls) {
 
         tipsHtml = `
             <div class="florence-tips-card">
-                <div class="florence-tips-header">
-                    <div class="florence-tips-avatar">
-                        <img src="../assets/images/healthcare.webp" alt="FlorenceBot">
-                    </div>
-                    <h4>FlorenceBot's Pro Tips</h4>
+                <div class="key-numbers-title">
+                    <i class="fas fa-lightbulb"></i>
+                    Jump to a tip
                 </div>
                 ${tips}
             </div>
         `;
     }
 
-    sidebar.innerHTML = florenceHtml + keyNumbersHtml + tipsHtml;
+    sidebar.innerHTML = keyNumbersHtml + tipsHtml;
 
     return sidebar;
 }
@@ -276,7 +252,7 @@ function createMobileNav(config) {
                 '</div>';
             });
             keyNumbersHtml = '<div class="mobile-key-numbers">' +
-                '<div class="mobile-section-label"><i class="fas fa-star"></i> Memorize These</div>' +
+                '<div class="mobile-section-label"><i class="fas fa-hashtag"></i> Key numbers</div>' +
                 '<div class="mobile-key-numbers-grid">' + items + '</div>' +
             '</div>';
         }
@@ -292,7 +268,7 @@ function createMobileNav(config) {
                 '</div>';
             });
             tipsHtml = '<div class="mobile-tips">' +
-                '<div class="mobile-section-label"><i class="fas fa-lightbulb"></i> FlorenceBot Pro Tips</div>' +
+                '<div class="mobile-section-label"><i class="fas fa-lightbulb"></i> Jump to a tip</div>' +
                 tips +
             '</div>';
         }

@@ -362,6 +362,14 @@ img { max-width: 100%; display: block; }
 .guide-section ol { margin: 0 0 15px 20px; }
 .guide-section li { margin-bottom: 7px; color: var(--text); }
 
+/* The column is wide so tables and card grids can breathe. Running prose,
+   though, reads badly past ~75 characters, so cap the text stream while
+   tables, grids, callouts and cards keep the full width. */
+.guide-section > p,
+.guide-section > ul,
+.guide-section > ol,
+.section-desc { max-width: 720px; }
+
 .guide-section strong { color: var(--text); font-weight: 600; }
 
 .subtitle { color: var(--text-dim); font-size: 15px; }

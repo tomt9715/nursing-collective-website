@@ -67,6 +67,9 @@ function initializeGuideSidebars(config) {
 
     // Initialize tip navigation (click on sidebar tips to scroll to inline callouts)
     initializeTipNavigation();
+
+    // Initialize key-number interaction (jump-to-section + Test me recall)
+    initializeKeyNumbers();
 }
 
 function createLeftSidebar(sections) {
@@ -121,13 +124,15 @@ function createRightSidebar(quickRefItems, clinicalPearls) {
     const sidebar = document.createElement('aside');
     sidebar.className = 'sidebar-right';
 
-    // Key numbers — a sticky glance-reference that stays with you while you read.
+    // Key numbers — sticky reference. Click a number to jump to where it is
+    // explained; "Test me" hides the values so you recall them first.
     let keyNumbersHtml = '';
     if (quickRefItems.length > 0) {
         let items = '';
         quickRefItems.forEach(item => {
+            const link = item.section ? ` is-link" data-section="${item.section}" role="button" tabindex="0` : '';
             items += `
-                <div class="key-number ${item.type}">
+                <div class="key-number ${item.type}${link}">
                     <div class="key-number-value">${item.value}</div>
                     <div class="key-number-label">${item.label}</div>
                 </div>
@@ -139,6 +144,7 @@ function createRightSidebar(quickRefItems, clinicalPearls) {
                 <div class="key-numbers-title">
                     <i class="fas fa-hashtag"></i>
                     Key numbers
+                    <button type="button" class="key-numbers-test" aria-pressed="false">Test me</button>
                 </div>
                 <div class="key-numbers-grid">
                     ${items}
@@ -437,45 +443,66 @@ function createMobileNav(config) {
 }
 
 // Handle clicking on sidebar tips to scroll to inline callouts
+// Smooth-scroll to an element by id and flash it, shared by tips and numbers.
+function scrollToTarget(targetId) {
+    const targetElement = document.getElementById(targetId);
+    if (!targetElement) return;
+
+    targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    let scrollTimeout;
+    const onScrollEnd = () => {
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+            window.removeEventListener('scroll', onScrollEnd);
+            targetElement.classList.add('highlight');
+            setTimeout(() => targetElement.classList.remove('highlight'), 250);
+        }, 100);
+    };
+    window.addEventListener('scroll', onScrollEnd);
+    onScrollEnd();
+}
+
 function initializeTipNavigation() {
-    const tipItems = document.querySelectorAll('.tip-item[data-tip-target]');
-
-    tipItems.forEach(item => {
-        const handleClick = () => {
-            const targetId = item.getAttribute('data-tip-target');
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                // Scroll to the tip
-                targetElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-                // Wait for scroll to finish, then flash the glow
-                let scrollTimeout;
-                const onScrollEnd = () => {
-                    clearTimeout(scrollTimeout);
-                    scrollTimeout = setTimeout(() => {
-                        // Scrolling has stopped
-                        window.removeEventListener('scroll', onScrollEnd);
-
-                        // Flash the highlight
-                        targetElement.classList.add('highlight');
-                        setTimeout(() => {
-                            targetElement.classList.remove('highlight');
-                        }, 250);
-                    }, 100); // Wait 100ms after last scroll event
-                };
-
-                window.addEventListener('scroll', onScrollEnd);
-                onScrollEnd(); // Trigger once in case already at position
-            }
-        };
-
+    document.querySelectorAll('.tip-item[data-tip-target]').forEach(item => {
+        const handleClick = () => scrollToTarget(item.getAttribute('data-tip-target'));
         item.addEventListener('click', handleClick);
         item.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                handleClick();
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); handleClick(); }
+        });
+    });
+}
+
+// Key numbers: "Test me" hides values for recall; otherwise a number jumps
+// to the section that explains it.
+function initializeKeyNumbers() {
+    const card = document.querySelector('.key-numbers-card');
+    if (!card) return;
+
+    const toggle = card.querySelector('.key-numbers-test');
+    if (toggle) {
+        toggle.addEventListener('click', () => {
+            const testing = card.classList.toggle('testing');
+            toggle.setAttribute('aria-pressed', testing ? 'true' : 'false');
+            toggle.textContent = testing ? 'Show all' : 'Test me';
+            if (!testing) {
+                card.querySelectorAll('.key-number.revealed').forEach(n => n.classList.remove('revealed'));
             }
+        });
+    }
+
+    card.querySelectorAll('.key-number').forEach(num => {
+        const act = () => {
+            if (card.classList.contains('testing')) {
+                num.classList.toggle('revealed');   // recall mode: reveal this one
+                return;
+            }
+            const section = num.getAttribute('data-section');
+            if (section) scrollToTarget(section);   // read mode: jump to it
+        };
+        num.addEventListener('click', act);
+        num.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); act(); }
         });
     });
 }

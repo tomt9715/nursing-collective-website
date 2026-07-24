@@ -15,12 +15,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-percentage', value: '55-70%', label: 'Normal EF' },
-        { type: 'critical', icon: 'fa-arrow-down', value: '<40%', label: 'HFrEF, cannot squeeze' },
-        { type: 'info', icon: 'fa-arrow-up', value: '>=50%', label: 'HFpEF, cannot fill' },
-        { type: 'warning', icon: 'fa-weight', value: '>2 lbs/day', label: 'Report weight gain' },
-        { type: 'target', icon: 'fa-tint', value: '100 pg/mL', label: 'BNP threshold' },
-        { type: 'critical', icon: 'fa-ban', value: '<60 bpm', label: 'Hold digoxin if HR' }
+        { type: 'target', icon: 'fa-percentage', value: '55-70%', label: 'Normal EF', section: 'systolic-diastolic' },
+        { type: 'critical', icon: 'fa-arrow-down', value: '<40%', label: 'HFrEF, cannot squeeze', section: 'systolic-diastolic' },
+        { type: 'info', icon: 'fa-arrow-up', value: '>=50%', label: 'HFpEF, cannot fill', section: 'systolic-diastolic' },
+        { type: 'warning', icon: 'fa-weight', value: '>2 lbs/day', label: 'Report weight gain', section: 'assessment' },
+        { type: 'target', icon: 'fa-tint', value: '100 pg/mL', label: 'BNP threshold', section: 'assessment' },
+        { type: 'critical', icon: 'fa-ban', value: '<60 bpm', label: 'Hold digoxin if HR', section: 'medications' }
     ],
     clinicalPearls: [
         { id: 'tip-left-lungs', title: 'Left = Lungs', text: 'Left equals lungs. Right equals rest of the body. Two words and the scenario sorts itself.' },

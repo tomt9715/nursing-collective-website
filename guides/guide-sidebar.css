@@ -398,6 +398,49 @@
     color: var(--cat, #0e9a8f);
 }
 
+/* Test me toggle */
+.key-numbers-test {
+    margin-left: auto;
+    font-family: 'DM Mono', 'Outfit', monospace;
+    font-size: 0.58rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cat, #0e9a8f);
+    background: var(--cat-soft, rgba(14,154,143,0.10));
+    border: 0.5px solid var(--border-mid, rgba(58,44,26,0.17));
+    border-radius: 20px;
+    padding: 3px 10px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+}
+.key-numbers-test:hover { border-color: var(--cat, #0e9a8f); }
+
+/* Clickable numbers (read mode: jump to section) */
+.key-numbers-card .key-number.is-link { cursor: pointer; }
+.key-numbers-card .key-number.is-link:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md, 0 6px 20px rgba(58,44,26,0.11));
+}
+
+/* Test mode: hide the value until you tap to reveal it */
+.key-numbers-card.testing .key-number { cursor: pointer; }
+.key-numbers-card.testing .key-number:hover { transform: none; box-shadow: none; }
+.key-numbers-card.testing .key-number .key-number-value {
+    filter: blur(7px);
+    opacity: 0.5;
+    user-select: none;
+    transition: filter 0.15s ease, opacity 0.15s ease;
+}
+.key-numbers-card.testing .key-number.revealed .key-number-value {
+    filter: none;
+    opacity: 1;
+}
+.key-numbers-card.testing .key-number:not(.revealed) .key-number-label::after {
+    content: ' \00b7 tap';
+    color: var(--text-dimmer, #8a8073);
+    font-size: 0.62rem;
+}
+
 .key-numbers-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;

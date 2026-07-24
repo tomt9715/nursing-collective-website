@@ -1,6 +1,6 @@
 /**
  * UTI, VUR & Enuresis Quiz — Question Data
- * NCLEX-style questions covering pediatric UTI presentation,
+ * Practice questions covering pediatric UTI presentation,
  * VCUG/VUR, and enuresis management.
  */
 

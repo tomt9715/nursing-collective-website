@@ -1,6 +1,6 @@
 /**
  * Pediatric Renal Disorders Quiz — Question Data
- * NCLEX-style questions covering nephrotic syndrome, acute
+ * Scenario questions covering nephrotic syndrome, acute
  * glomerulonephritis, HUS, AKI, and CKD.
  */
 
@@ -31,7 +31,7 @@ var pediatricRenalDisordersQuizData = {
                 c: "HUS presents with bloody diarrhea followed by pallor, bruising, oliguria \u2014 not puffy eyes with foamy urine.",
                 d: "ATN typically follows ischemic or nephrotoxic insult with oliguria and rising creatinine, not proteinuria and edema."
             },
-            testTakingTip: "Foamy urine + normal BP + periorbital AM edema = nephrotic syndrome. Classic NCLEX presentation.",
+            testTakingTip: "Foamy urine + normal BP + periorbital AM edema = nephrotic syndrome. The classic presentation.",
             guideSection: "Section 2 \u2014 Nephrotic Syndrome",
             guideSectionId: "nephrotic"
         },
@@ -100,7 +100,7 @@ var pediatricRenalDisordersQuizData = {
                 c: "This describes acute glomerulonephritis.",
                 d: "These are general AKI findings, not the HUS triad."
             },
-            testTakingTip: "HUS triad: anemia + low platelets + AKI. Memorize all three \u2014 they often appear together in the NCLEX stem.",
+            testTakingTip: "HUS triad: anemia + low platelets + AKI. Memorize all three; they often appear together in the stem.",
             guideSection: "Section 5 \u2014 HUS",
             guideSectionId: "hus"
         },

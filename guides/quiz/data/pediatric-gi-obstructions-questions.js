@@ -1,6 +1,6 @@
 /**
  * Pediatric GI Obstructions Quiz — Question Data
- * NCLEX-style questions covering pyloric stenosis, intussusception,
+ * Scenario-based questions covering pyloric stenosis, intussusception,
  * Hirschsprung's disease, and appendicitis.
  */
 

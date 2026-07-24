@@ -1,6 +1,6 @@
 /**
  * Cleft Lip & Palate Quiz — Question Data
- * NCLEX-style questions covering feeding, surgical staging,
+ * Clinical questions covering feeding, surgical staging,
  * post-op positioning, and long-term multi-disciplinary care.
  */
 

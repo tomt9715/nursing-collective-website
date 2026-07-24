@@ -1,6 +1,6 @@
 /**
  * Pediatric GERD Quiz — Question Data
- * NCLEX-style questions covering GER vs GERD, red flags,
+ * Clinical-scenario questions covering GER vs GERD, red flags,
  * conservative management, medications, and family education.
  */
 

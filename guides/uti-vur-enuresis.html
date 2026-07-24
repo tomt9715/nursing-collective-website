@@ -4,1771 +4,870 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UTI, VUR &amp; Enuresis Study Guide - The Nursing Collective</title>
-    <meta name="description" content="Pediatric nursing study guide for urinary tract infections, vesicoureteral reflux, and enuresis. Assessment, diagnosis, treatment, bedwetting management.">
+    <meta name="description" content="Pediatric nursing study guide for urinary tract infection, vesicoureteral reflux, and enuresis. Age-based UTI presentation, correct urine specimen, VUR grading, and first-line enuresis management.">
     <link rel="canonical" href="https://thenursingcollective.pro/guides/uti-vur-enuresis.html">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://thenursingcollective.pro/guides/uti-vur-enuresis.html">
     <meta property="og:title" content="UTI, VUR &amp; Enuresis Study Guide - The Nursing Collective">
-    <meta property="og:description" content="Pediatric nursing study guide for urinary tract infections, vesicoureteral reflux, and enuresis.">
+    <meta property="og:description" content="Pediatric nursing study guide for urinary tract infection, vesicoureteral reflux, and enuresis.">
     <meta property="og:image" content="https://thenursingcollective.pro/assets/images/og-preview.png">
 
+    <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="../favicon.ico">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600;700&family=DM+Serif+Display&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/cookie-consent.css">
+
+    <!-- Sidebar Styles (shared across all guides) -->
+    <link rel="stylesheet" href="../css/tokens.css?v=3">
+    <link rel="stylesheet" href="guide.css?v=3">
     <link rel="stylesheet" href="guide-sidebar.css?v=3">
-
-    <style>
-        /* UTI, VUR & ENURESIS — Pediatric GU */
-        :root {
-            --navy: #0d1b2a;
-            --navy-2: #162032;
-            --navy-3: #1e2d3e;
-            --card-dark: #1a2940;
-            --teal: #0fbcad;
-            --teal-dim: #0a9086;
-            --amber: #f4a535;
-            --green: #3dbd7a;
-            --red: #e05252;
-            --purple: #8b5cf6;
-            --text-inv: #e8edf2;
-            --text-inv-dim: #8a9bb0;
-            --border-inv: rgba(255, 255, 255, 0.07);
-            --border-inv-mid: rgba(255, 255, 255, 0.12);
-
-            --paper: #162032;
-            --paper-warm: #1a2940;
-            --paper-deep: #1e2d3e;
-            --ink: #f1f5f9;
-            --ink-soft: #c4ccd8;
-            --ink-dimmer: #8a9bb0;
-            --rule: rgba(255, 255, 255, 0.08);
-            --rule-mid: rgba(255, 255, 255, 0.14);
-            --rule-soft: rgba(255, 255, 255, 0.04);
-
-            --peds-coral: #ef5a5a;
-            --peds-coral-deep: #dc2f4f;
-            --peds-rose: #fb8989;
-            --peds-blush: rgba(239, 90, 90, 0.12);
-            --peds-blush-2: rgba(239, 90, 90, 0.22);
-            --peds-plum: #fb8989;
-
-            --critical: #dc2626;
-            --safe: #10b981;
-            --warning: #f59e0b;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.7;
-            color: var(--ink-soft);
-            background: var(--navy);
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        .download-bar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: rgba(13, 27, 42, 0.92);
-            -webkit-backdrop-filter: blur(16px);
-            backdrop-filter: blur(16px);
-            color: var(--text-inv);
-            padding: 12px 24px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 1000;
-            border-bottom: 0.5px solid var(--border-inv);
-        }
-        .download-bar-brand {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 0.01em;
-            color: var(--text-inv);
-        }
-        .download-bar-brand i { color: var(--teal); font-size: 16px; }
-        .download-bar-actions { display: flex; gap: 10px; }
-
-        .btn-download, .btn-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            border-radius: 8px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 500;
-            font-size: 13px;
-            cursor: pointer;
-            transition: all 0.15s ease;
-            text-decoration: none;
-            border: 0.5px solid var(--border-inv-mid);
-        }
-        .btn-download { background: var(--teal); color: var(--navy); border-color: var(--teal); }
-        .btn-download:hover { background: var(--teal-dim); border-color: var(--teal-dim); transform: translateY(-1px); }
-        .btn-back { background: transparent; color: var(--text-inv-dim); }
-        .btn-back:hover { background: rgba(255, 255, 255, 0.06); color: var(--text-inv); }
-
-        .document-container {
-            max-width: 900px;
-            margin: 80px auto 40px;
-            background: var(--paper);
-            border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            border: 0.5px solid var(--rule-mid);
-        }
-
-        .cover-page {
-            background:
-                radial-gradient(ellipse 60% 80% at 85% 20%, rgba(239, 90, 90, 0.18) 0%, transparent 70%),
-                linear-gradient(180deg, #121d30 0%, #0d1b2a 100%);
-            color: white;
-            padding: 72px 60px 56px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            border-top: 3px solid var(--peds-coral);
-        }
-        .cover-page::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 120px;
-            background: linear-gradient(180deg, rgba(239, 90, 90, 0.06) 0%, transparent 100%);
-            pointer-events: none;
-        }
-        .cover-content { position: relative; z-index: 1; }
-
-        .cover-logo {
-            width: 68px; height: 68px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(239, 90, 90, 0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            padding: 10px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-logo img { width: 100%; height: 100%; object-fit: contain; }
-
-        .cover-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            background: rgba(255, 255, 255, 0.12);
-            border: 1px solid rgba(255, 255, 255, 0.28);
-            border-radius: 50px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            font-weight: 500;
-            letter-spacing: 1.8px;
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-badge i { color: var(--peds-rose); font-size: 10px; }
-
-        .cover-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3rem;
-            font-weight: 400;
-            margin-bottom: 14px;
-            line-height: 1.08;
-            letter-spacing: -0.01em;
-        }
-        .cover-subtitle {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 300;
-            color: rgba(255, 255, 255, 0.72);
-            max-width: 580px;
-            margin: 0 auto 32px;
-            line-height: 1.55;
-        }
-
-        .cover-meta {
-            display: inline-flex;
-            align-items: center;
-            gap: 18px;
-            flex-wrap: wrap;
-            justify-content: center;
-            padding: 10px 22px;
-            background: rgba(255, 255, 255, 0.04);
-            border: 0.5px solid rgba(255, 255, 255, 0.12);
-            border-radius: 999px;
-            -webkit-backdrop-filter: blur(8px);
-            backdrop-filter: blur(8px);
-        }
-        .cover-meta-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            font-family: 'DM Mono', monospace;
-            font-size: 11px;
-            letter-spacing: 0.8px;
-            color: rgba(255, 255, 255, 0.8);
-            text-transform: uppercase;
-        }
-        .cover-meta-item i { color: var(--peds-coral); font-size: 11px; }
-        .cover-meta-sep { width: 3px; height: 3px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; }
-
-        .document-content { padding: 56px 56px 48px; background: var(--paper); }
-
-        .learning-objectives {
-            background: var(--peds-blush);
-            border: 1px solid var(--peds-blush-2);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 36px;
-        }
-        .learning-objectives h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--peds-rose);
-            margin-bottom: 18px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .learning-objectives h2 i { color: var(--peds-coral); }
-        .learning-objectives-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-        .objective-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-        .objective-card i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
-        .objective-card span { font-size: 0.95rem; color: var(--ink); line-height: 1.5; }
-
-        .high-yield-summary {
-            background: linear-gradient(135deg, rgba(244, 165, 53, 0.08), rgba(244, 165, 53, 0.02));
-            border: 1px solid rgba(244, 165, 53, 0.25);
-            border-left: 4px solid var(--amber);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 36px;
-        }
-        .high-yield-summary h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--amber);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .high-yield-summary h2 i { color: var(--amber); }
-        .high-yield-subtitle { color: var(--ink-dimmer); margin-bottom: 14px; font-style: italic; font-size: 0.95rem; }
-        .high-yield-summary ul {
-            list-style: none;
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-top: 4px;
-        }
-        .high-yield-summary li {
-            background: rgba(0, 0, 0, 0.18);
-            border-radius: 8px;
-            padding: 12px 14px 12px 38px !important;
-            color: var(--ink-soft);
-            font-size: 0.88rem;
-            line-height: 1.55;
-            border-bottom: none !important;
-        }
-        .high-yield-summary li::before {
-            left: 14px !important;
-            top: 14px !important;
-            color: var(--amber) !important;
-            font-size: 0.82rem !important;
-        }
-        .high-yield-summary strong { color: var(--amber); font-weight: 600; }
-        .high-yield-summary li strong { color: var(--amber) !important; }
-        .high-yield-cta { margin-top: 14px; font-weight: 600; color: var(--amber); font-size: 0.95rem; }
-
-        .sticky-nav {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            padding: 18px 20px;
-            margin-bottom: 36px;
-        }
-        .sticky-nav h3 {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            font-weight: 500;
-            color: var(--ink-dimmer);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-        }
-        .nav-pills { display: flex; flex-wrap: wrap; gap: 8px; }
-        .nav-pills a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 14px;
-            background: var(--paper-deep);
-            border: 0.5px solid var(--rule);
-            border-radius: 8px;
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.87rem;
-            font-weight: 500;
-            transition: all 0.15s ease;
-        }
-        .nav-pills a:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
-        .nav-pills a i { font-size: 0.82rem; }
-
-        .guide-section { margin-bottom: 48px; scroll-margin-top: 100px; }
-        .section-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-            margin-bottom: 24px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--rule);
-        }
-        .section-number {
-            flex-shrink: 0;
-            width: 44px; height: 44px;
-            border-radius: 10px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 12px rgba(239, 90, 90, 0.25);
-        }
-        .section-title-group { flex: 1; min-width: 0; }
-        .section-title-group h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.75rem;
-            font-weight: 600;
-            color: var(--ink);
-            line-height: 1.2;
-            margin-bottom: 4px;
-        }
-        .section-title-group .subtitle { font-size: 0.95rem; color: var(--ink-dimmer); font-weight: 400; }
-
-        .guide-section p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
-        .guide-section h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.22rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 24px 0 12px;
-        }
-        .guide-section h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin: 18px 0 8px;
-        }
-        .guide-section ul, .guide-section ol { padding-left: 22px; margin-bottom: 16px; color: var(--ink-soft); }
-        .guide-section li { margin-bottom: 8px; font-size: 1rem; line-height: 1.65; }
-        .guide-section strong { color: var(--ink); font-weight: 600; }
-
-        .guide-table-wrapper {
-            overflow-x: auto;
-            margin: 18px 0;
-            border-radius: 10px;
-            border: 1px solid var(--rule);
-        }
-        .guide-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; }
-        .guide-table thead { background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep)); color: white; }
-        .guide-table th {
-            padding: 12px 14px;
-            text-align: left;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.85rem;
-            letter-spacing: 0.02em;
-        }
-        .guide-table td { padding: 11px 14px; border-bottom: 1px solid var(--rule); color: var(--ink-soft); vertical-align: top; }
-        .guide-table tbody { background: var(--paper-warm); }
-        .guide-table tbody tr:last-child td { border-bottom: none; }
-        .guide-table tbody tr:nth-child(even) { background: var(--paper-deep); }
-        .guide-table tbody tr:hover { background: var(--peds-blush); }
-        .guide-table td strong { color: var(--ink); }
-
-        /* Info boxes */
-        .info-box {
-            display: flex;
-            gap: 14px;
-            padding: 18px 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 1px solid var(--rule);
-            border-left-width: 4px;
-        }
-        .info-box-icon {
-            flex-shrink: 0;
-            width: 34px; height: 34px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-        }
-        .info-box-content { flex: 1; min-width: 0; }
-        .info-box-content h5 { font-family: 'Outfit', sans-serif; font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
-        .info-box-content p { margin: 0; font-size: 0.95rem; line-height: 1.6; }
-
-        .info-box.clinical { background: rgba(245, 158, 11, 0.08); border-color: rgba(245, 158, 11, 0.2); border-left-color: #fbbf24; }
-        .info-box.clinical .info-box-icon { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
-        .info-box.clinical h5 { color: #fbbf24; }
-        .info-box.critical { background: rgba(220, 38, 38, 0.08); border-color: rgba(220, 38, 38, 0.2); border-left-color: #f87171; }
-        .info-box.critical .info-box-icon { background: rgba(220, 38, 38, 0.2); color: #fca5a5; }
-        .info-box.critical h5 { color: #fca5a5; }
-        .info-box.nclex { background: rgba(59, 130, 246, 0.08); border-color: rgba(59, 130, 246, 0.2); border-left-color: #60a5fa; }
-        .info-box.nclex .info-box-icon { background: rgba(59, 130, 246, 0.2); color: #93c5fd; }
-        .info-box.nclex h5 { color: #93c5fd; }
-        .info-box.pediatric { background: var(--peds-blush); border-color: var(--peds-blush-2); border-left-color: var(--peds-coral); }
-        .info-box.pediatric .info-box-icon { background: var(--peds-blush-2); color: var(--peds-rose); }
-        .info-box.pediatric h5 { color: var(--peds-rose); }
-        .info-box.safe { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.2); border-left-color: #4ade80; }
-        .info-box.safe .info-box-icon { background: rgba(16, 185, 129, 0.2); color: #86efac; }
-        .info-box.safe h5 { color: #86efac; }
-        .info-box p { color: var(--ink-soft); }
-        .info-box strong { color: var(--ink); }
-
-        .florencebot-tip {
-            background: linear-gradient(135deg, rgba(15, 188, 173, 0.1), rgba(15, 188, 173, 0.03));
-            border: 1px solid rgba(15, 188, 173, 0.22);
-            border-radius: 14px;
-            padding: 22px 24px;
-            margin: 24px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .florencebot-tip::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0;
-            width: 4px; height: 100%;
-            background: var(--teal);
-        }
-        .florencebot-tip-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-        .florencebot-tip-icon {
-            width: 32px; height: 32px;
-            background: var(--teal);
-            border-radius: 8px;
-            color: var(--navy);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-        }
-        .florencebot-tip-label {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            font-weight: 500;
-            color: var(--teal);
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-        .florencebot-tip-title {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.08rem;
-            font-weight: 600;
-            color: #5eead4;
-            margin-bottom: 8px;
-        }
-        .florencebot-tip-content { font-size: 0.96rem; color: var(--ink-soft); line-height: 1.65; }
-        .florencebot-tip-content strong { color: var(--ink); }
-
-        .bottom-line {
-            background: linear-gradient(135deg, var(--peds-blush), rgba(239, 90, 90, 0.04));
-            border: 0.5px solid var(--peds-blush-2);
-            border-left: 4px solid var(--peds-coral);
-            padding: 14px 18px;
-            margin: 22px 0 0;
-            border-radius: 0 10px 10px 0;
-            font-weight: 500;
-            color: var(--ink);
-            font-size: 0.95rem;
-        }
-        .bottom-line strong { color: var(--peds-rose); }
-
-        /* Condition profile */
-        .disorder-profile {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 14px;
-            overflow: hidden;
-            margin: 20px 0;
-        }
-        .disorder-profile-header {
-            padding: 18px 24px;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        .disorder-profile-header.uti { background: linear-gradient(135deg, #dc2626, #7f1d1d); }
-        .disorder-profile-header.vur { background: linear-gradient(135deg, #7c3aed, #4c1d95); }
-        .disorder-profile-header.enuresis { background: linear-gradient(135deg, #0891b2, #164e63); }
-        .disorder-profile-header i { font-size: 1.3rem; }
-        .disorder-profile-header h3 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: white;
-            margin: 0 !important;
-        }
-        .disorder-profile-header .tag {
-            margin-left: auto;
-            font-family: 'DM Mono', monospace;
-            font-size: 0.72rem;
-            letter-spacing: 1px;
-            opacity: 0.88;
-            text-transform: uppercase;
-        }
-        .disorder-profile-body { padding: 22px 24px; }
-        .disorder-profile-body h4 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: var(--peds-rose);
-            margin: 18px 0 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-        .disorder-profile-body h4:first-child { margin-top: 0; }
-        .disorder-profile-body ul { margin: 0 0 8px 0; padding-left: 22px; }
-        .disorder-profile-body li {
-            margin-bottom: 6px;
-            font-size: 0.95rem;
-            color: var(--ink-soft);
-            line-height: 1.55;
-        }
-        .disorder-profile-body strong { color: var(--ink); }
-
-        /* VUR grade cards */
-        .grade-grid {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 8px;
-            margin: 20px 0;
-        }
-        .grade-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 10px;
-            text-align: center;
-            position: relative;
-            padding-top: 48px;
-        }
-        .grade-card::before {
-            content: attr(data-grade);
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 32px;
-            height: 32px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 1rem;
-        }
-        .grade-card h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 4px;
-        }
-        .grade-card p {
-            font-size: 0.78rem;
-            color: var(--ink-soft);
-            margin: 0;
-            line-height: 1.4;
-        }
-
-        /* Key point grid */
-        .key-point-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin: 20px 0;
-        }
-        .key-point-item {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            padding: 14px 16px;
-            display: flex;
-            gap: 10px;
-            align-items: flex-start;
-        }
-        .key-point-item i { color: var(--peds-coral); font-size: 1rem; margin-top: 3px; flex-shrink: 0; }
-        .key-point-item p { margin: 0; font-size: 0.93rem; line-height: 1.55; color: var(--ink-soft); }
-        .key-point-item strong { color: var(--ink); }
-
-        /* Med cards */
-        .med-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 14px;
-            margin: 18px 0;
-        }
-        .med-card {
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-            padding: 18px 20px;
-            border-top: 3px solid var(--peds-coral);
-        }
-        .med-card h5 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 4px;
-        }
-        .med-card .med-class {
-            font-family: 'DM Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--peds-coral);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-        .med-card p { font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 8px; line-height: 1.55; }
-        .med-card p strong { color: var(--ink); }
-
-        /* Step list */
-        .step-list {
-            list-style: none !important;
-            padding: 0 !important;
-            margin: 20px 0;
-            counter-reset: step;
-        }
-        .step-list li {
-            counter-increment: step;
-            position: relative;
-            padding: 14px 16px 14px 56px;
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 10px;
-            margin-bottom: 10px;
-            font-size: 0.97rem;
-            line-height: 1.6;
-            color: var(--ink-soft);
-        }
-        .step-list li::before {
-            content: counter(step);
-            position: absolute;
-            top: 14px; left: 14px;
-            width: 30px; height: 30px;
-            background: linear-gradient(135deg, var(--peds-coral), var(--peds-coral-deep));
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 0.9rem;
-        }
-        .step-list strong { color: var(--ink); }
-
-        /* Cross refs */
-        .cross-references {
-            margin: 36px 0 8px;
-            padding: 24px;
-            background: var(--paper-warm);
-            border: 0.5px solid var(--rule);
-            border-radius: 12px;
-        }
-        .cross-references h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .cross-references h2 i { color: var(--peds-coral); }
-        .cross-ref-grid { display: flex; flex-wrap: wrap; gap: 10px; }
-        .cross-ref-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 16px;
-            background: var(--paper-deep);
-            border: 0.5px solid var(--rule);
-            border-radius: 8px;
-            color: var(--ink-soft);
-            text-decoration: none;
-            font-family: 'Outfit', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.15s;
-        }
-        .cross-ref-link:hover { background: var(--peds-coral); color: white; border-color: var(--peds-coral); }
-        .cross-ref-link i { font-size: 0.85rem; }
-
-        .quiz-cta {
-            background:
-                radial-gradient(ellipse 60% 80% at 90% 10%, rgba(15, 188, 173, 0.12) 0%, transparent 65%),
-                linear-gradient(135deg, var(--card-dark), var(--navy-3));
-            border: 0.5px solid var(--border-inv-mid);
-            color: white;
-            border-radius: 14px;
-            padding: 28px;
-            margin: 36px 0;
-            text-align: center;
-        }
-        .quiz-cta h3 { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
-        .quiz-cta p { color: rgba(255, 255, 255, 0.88); margin-bottom: 20px; font-size: 0.98rem; }
-        .quiz-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 24px;
-            background: var(--teal);
-            color: var(--navy);
-            border-radius: 10px;
-            font-family: 'Outfit', sans-serif;
-            font-weight: 600;
-            font-size: 0.98rem;
-            text-decoration: none;
-            transition: all 0.15s;
-        }
-        .quiz-btn:hover { background: var(--teal-dim); transform: translateY(-1px); }
-
-        .document-footer {
-            padding: 32px 56px;
-            background: var(--paper-deep);
-            border-top: 0.5px solid var(--rule);
-            text-align: center;
-        }
-        .footer-logo { height: 28px; margin: 0 auto 14px; opacity: 0.9; }
-        .footer-tagline { font-family: 'Outfit', sans-serif; font-size: 0.9rem; color: var(--ink-soft); margin-bottom: 4px; }
-        .footer-copyright { font-family: 'DM Mono', monospace; font-size: 0.72rem; color: var(--ink-dimmer); letter-spacing: 0.02em; }
-
-        /* Sidebar overrides */
-        .page-wrapper {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            margin: 80px auto 40px;
-            padding: 0 20px;
-            max-width: 1600px;
-        }
-        .sidebar-left, .sidebar-right {
-            width: 280px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 80px;
-            height: fit-content;
-            max-height: calc(100vh - 100px);
-            overflow-y: auto;
-        }
-
-        .toc-panel {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            color: var(--text-inv) !important;
-            margin-bottom: 16px !important;
-        }
-        .toc-header {
-            padding-bottom: 14px !important;
-            margin-bottom: 14px !important;
-            border-bottom: 0.5px solid var(--border-inv-mid) !important;
-        }
-        .toc-header h3 {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin: 0 !important;
-        }
-        .toc-header i { color: var(--teal) !important; }
-        .toc-link {
-            color: var(--text-inv-dim) !important;
-            font-family: 'Outfit', sans-serif !important;
-            font-weight: 500 !important;
-            font-size: 0.88rem !important;
-            border-left: 2px solid transparent !important;
-            padding: 9px 12px !important;
-            background: transparent !important;
-        }
-        .toc-link:hover { background: rgba(15, 188, 173, 0.08) !important; color: var(--text-inv) !important; }
-        .toc-link.active {
-            background: rgba(15, 188, 173, 0.12) !important;
-            color: var(--teal) !important;
-            border-left-color: var(--teal) !important;
-            font-weight: 600 !important;
-        }
-        .toc-link i { color: inherit !important; }
-
-        .toc-progress {
-            margin-top: 14px !important;
-            padding-top: 14px !important;
-            border-top: 0.5px solid var(--border-inv) !important;
-        }
-        .toc-progress-label {
-            display: flex !important;
-            justify-content: space-between !important;
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.68rem !important;
-            letter-spacing: 1px !important;
-            color: var(--text-inv-dim) !important;
-            margin-bottom: 8px !important;
-        }
-        .toc-progress-percent { color: var(--teal) !important; }
-        .toc-progress-bar {
-            background: rgba(255, 255, 255, 0.06) !important;
-            border-radius: 999px !important;
-            height: 4px !important;
-            overflow: hidden !important;
-        }
-        .toc-progress-fill {
-            background: linear-gradient(90deg, var(--teal), var(--teal-dim)) !important;
-            height: 100% !important;
-        }
-
-        .toc-nav-links {
-            margin-top: 14px !important;
-            padding-top: 14px !important;
-            border-top: 0.5px solid var(--border-inv) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            gap: 6px !important;
-        }
-        .toc-nav-link {
-            display: flex !important;
-            align-items: center !important;
-            gap: 10px !important;
-            padding: 8px 12px !important;
-            border-radius: 8px !important;
-            color: var(--text-inv-dim) !important;
-            background: transparent !important;
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.84rem !important;
-            font-weight: 500 !important;
-            text-decoration: none !important;
-            transition: all 0.15s !important;
-        }
-        .toc-nav-link:hover { background: rgba(255, 255, 255, 0.04) !important; color: var(--text-inv) !important; }
-        .toc-nav-link--ai { background: rgba(15, 188, 173, 0.08) !important; color: var(--teal) !important; }
-        .toc-nav-link--ai:hover { background: rgba(15, 188, 173, 0.15) !important; color: var(--teal) !important; }
-
-        .florence-card {
-            background: linear-gradient(135deg, var(--card-dark), var(--navy-3)) !important;
-            border: 0.5px solid var(--border-inv-mid) !important;
-            border-radius: 14px !important;
-            padding: 20px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3) !important;
-            margin-bottom: 16px !important;
-            position: relative !important;
-            overflow: hidden !important;
-        }
-        .florence-card::before {
-            content: '' !important;
-            position: absolute !important;
-            top: -40% !important; right: -40% !important;
-            width: 120% !important; height: 120% !important;
-            background: radial-gradient(circle, rgba(15, 188, 173, 0.12) 0%, transparent 60%) !important;
-            pointer-events: none !important;
-        }
-        .florence-header {
-            display: flex !important;
-            align-items: center !important;
-            gap: 12px !important;
-            margin-bottom: 14px !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        .florence-avatar {
-            width: 44px !important; height: 44px !important;
-            border-radius: 50% !important;
-            background: rgba(15, 188, 173, 0.15) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
-            padding: 2px !important;
-            box-shadow: none !important;
-        }
-        .florence-info h3 {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.98rem !important;
-            font-weight: 600 !important;
-            color: var(--text-inv) !important;
-            margin: 0 !important;
-        }
-        .florence-info span {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.68rem !important;
-            color: var(--teal) !important;
-            letter-spacing: 1px !important;
-            text-transform: uppercase !important;
-        }
-        .florence-speech {
-            background: rgba(15, 188, 173, 0.06) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            border-radius: 10px !important;
-            padding: 12px 14px !important;
-            box-shadow: none !important;
-            position: relative !important;
-            z-index: 1 !important;
-        }
-        .florence-speech::before {
-            background: var(--card-dark) !important;
-            border-top: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            border-left: 0.5px solid rgba(15, 188, 173, 0.18) !important;
-            box-shadow: none !important;
-        }
-        .florence-speech p {
-            color: var(--text-inv) !important;
-            font-size: 0.88rem !important;
-            line-height: 1.55 !important;
-            margin: 0 !important;
-        }
-        .florence-speech p strong { color: var(--teal) !important; }
-
-        .key-numbers-card {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 18px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-            margin-bottom: 16px !important;
-        }
-        .key-numbers-title {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin-bottom: 14px !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-        }
-        .key-numbers-title i { color: var(--teal) !important; }
-        .key-numbers-grid { grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
-        .key-number {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 10px !important;
-            padding: 12px 10px !important;
-        }
-        .key-number:hover { transform: translateY(-1px) !important; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25) !important; }
-        .key-number.critical { background: rgba(220, 38, 38, 0.1) !important; border-color: rgba(220, 38, 38, 0.25) !important; }
-        .key-number.critical .key-number-value { color: #fca5a5 !important; }
-        .key-number.time { background: rgba(245, 158, 11, 0.1) !important; border-color: rgba(245, 158, 11, 0.25) !important; }
-        .key-number.time .key-number-value { color: #fcd34d !important; }
-        .key-number.target { background: rgba(15, 188, 173, 0.1) !important; border-color: rgba(15, 188, 173, 0.25) !important; }
-        .key-number.target .key-number-value { color: #5eead4 !important; }
-        .key-number.success { background: rgba(16, 185, 129, 0.1) !important; border-color: rgba(16, 185, 129, 0.25) !important; }
-        .key-number.success .key-number-value { color: #86efac !important; }
-        .key-number.warning { background: rgba(251, 146, 60, 0.1) !important; border-color: rgba(251, 146, 60, 0.25) !important; }
-        .key-number.warning .key-number-value { color: #fdba74 !important; }
-        .key-number.info { background: rgba(139, 92, 246, 0.1) !important; border-color: rgba(139, 92, 246, 0.25) !important; }
-        .key-number.info .key-number-value { color: #c4b5fd !important; }
-        .key-number-value {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 1.05rem !important;
-            font-weight: 700 !important;
-            color: var(--text-inv) !important;
-            line-height: 1.2 !important;
-        }
-        .key-number-label {
-            font-size: 0.68rem !important;
-            color: var(--text-inv-dim) !important;
-            margin-top: 4px !important;
-            line-height: 1.35 !important;
-        }
-
-        .florence-tips-card {
-            background: var(--card-dark) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-radius: 14px !important;
-            padding: 18px !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25) !important;
-        }
-        .florence-tips-header { display: flex !important; align-items: center !important; gap: 10px !important; margin-bottom: 14px !important; }
-        .florence-tips-avatar {
-            width: 28px !important; height: 28px !important;
-            border-radius: 50% !important;
-            background: rgba(15, 188, 173, 0.15) !important;
-            border: 0.5px solid rgba(15, 188, 173, 0.3) !important;
-            padding: 2px !important;
-            box-shadow: none !important;
-        }
-        .florence-tips-header h4 {
-            font-family: 'DM Mono', monospace !important;
-            font-size: 0.7rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv-dim) !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1.5px !important;
-            margin: 0 !important;
-        }
-
-        .tip-item {
-            background: rgba(255, 255, 255, 0.03) !important;
-            border: 0.5px solid var(--border-inv) !important;
-            border-left: 3px solid var(--teal) !important;
-            border-radius: 8px !important;
-            padding: 10px 12px !important;
-            margin-bottom: 8px !important;
-            box-shadow: none !important;
-            transition: all 0.15s !important;
-        }
-        .tip-item:hover { background: rgba(15, 188, 173, 0.08) !important; transform: translateX(2px) !important; }
-        .tip-item:last-child { margin-bottom: 0 !important; }
-        .tip-item-title {
-            font-family: 'Outfit', sans-serif !important;
-            font-size: 0.85rem !important;
-            font-weight: 500 !important;
-            color: var(--text-inv) !important;
-            margin: 0 !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 6px !important;
-        }
-        .tip-item-title::before { color: var(--teal) !important; font-size: 0.72rem !important; }
-        .tip-item-text {
-            font-size: 0.78rem !important;
-            color: var(--text-inv-dim) !important;
-            line-height: 1.5 !important;
-            margin-top: 4px !important;
-        }
-
-        .mobile-nav-fab { background: var(--teal) !important; color: var(--navy) !important; }
-        .mobile-nav-drawer { background: var(--card-dark) !important; color: var(--text-inv) !important; }
-        .mobile-nav-tab { color: var(--text-inv-dim) !important; background: transparent !important; }
-        .mobile-nav-tab.active { color: var(--teal) !important; border-bottom-color: var(--teal) !important; }
-        .mobile-toc-link { color: var(--text-inv-dim) !important; }
-        .mobile-toc-link.active { color: var(--teal) !important; background: rgba(15, 188, 173, 0.1) !important; }
-
-        @media (max-width: 1200px) {
-            .page-wrapper { padding: 0 12px; gap: 16px; }
-            .sidebar-left, .sidebar-right { width: 220px; }
-        }
-
-        @media (max-width: 900px) {
-            .page-wrapper { flex-direction: column; padding: 0 12px; }
-            .sidebar-left, .sidebar-right {
-                width: 100%;
-                max-width: 600px;
-                margin: 0 auto;
-                position: static;
-                max-height: none;
-            }
-            .document-container { margin: 80px 12px 40px; }
-            .document-content { padding: 36px 28px; }
-            .cover-page { padding: 56px 28px 40px; }
-            .cover-title { font-size: 2.1rem; }
-            .cover-meta { gap: 10px; padding: 10px 16px; }
-            .cover-meta-item { font-size: 10px; letter-spacing: 0.6px; }
-            .learning-objectives-grid,
-            .key-point-grid,
-            .high-yield-summary ul {
-                grid-template-columns: 1fr;
-            }
-            .grade-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-
-        @media (max-width: 600px) {
-            .download-bar { padding: 10px 14px; }
-            .download-bar-brand span:not(.brand-text-long) { display: none; }
-            .btn-download, .btn-back { padding: 7px 12px; font-size: 12px; }
-            .section-header { gap: 12px; }
-            .section-number { width: 38px; height: 38px; font-size: 1.1rem; }
-            .section-title-group h2 { font-size: 1.4rem; }
-            .document-content { padding: 28px 20px; }
-            .document-footer { padding: 24px 20px; }
-            .grade-grid { grid-template-columns: 1fr; }
-        }
-    </style>
+    <script src="../beta-banner.js"></script>
+    <script src="https://browser.sentry-cdn.com/8.40.0/bundle.min.js" crossorigin="anonymous"></script>
+    <script src="../sentry-init.js"></script>
 </head>
-<body data-product-id="uti-vur-enuresis" data-guide-name="UTI, VUR &amp; Enuresis">
-
-    <header class="download-bar">
+<body data-category="pediatrics" data-product-id="uti-vur-enuresis" data-guide-name="UTI, VUR &amp; Enuresis">
+    <!-- Download Bar -->
+    <div class="download-bar">
         <div class="download-bar-brand">
-            <i class="fas fa-droplet"></i>
-            <span>UTI, VUR &amp; Enuresis</span>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective">
         </div>
         <div class="download-bar-actions">
             <a href="../my-guides.html" class="btn-back">
                 <i class="fas fa-arrow-left"></i> Back to Guides
             </a>
+            <button class="btn-download" id="download-pdf-btn">
+                <i class="fas fa-file-pdf"></i> Save as PDF
+            </button>
         </div>
-    </header>
+    </div>
 
+    <!-- Document -->
     <div class="document-container">
 
+        <!-- Cover Page -->
         <div class="cover-page">
             <div class="cover-content">
-                <div class="cover-badge">
-                    <i class="fas fa-baby"></i> Pediatric Nursing · Genitourinary
+                <div class="cover-logo">
+                    <img src="../assets/images/guide-icons/uti-vur-enuresis.webp" alt="UTI, VUR and Enuresis">
                 </div>
+                <div class="cover-category">Pediatric Nursing</div>
                 <h1 class="cover-title">UTI, VUR &amp; Enuresis</h1>
-                <p class="cover-subtitle">Three of the most common pediatric GU presentations &mdash; from the infant with unexplained fever to the bedwetting school-ager. Recognizing, diagnosing, and treating each without missing the connection between them.</p>
+                <p class="cover-subtitle">Three conditions that form one chain: the fever you cannot afford to call a virus, the reflux it can be hiding, and the bedwetting you never punish.</p>
                 <div class="cover-meta">
-                    <span class="cover-meta-item"><i class="fas fa-list-ul"></i> 7 Sections</span>
-                    <span class="cover-meta-sep"></span>
-                    <span class="cover-meta-item"><i class="fas fa-flask"></i> 14 Quiz Questions</span>
-                    <span class="cover-meta-sep"></span>
-                    <span class="cover-meta-item"><i class="fas fa-clock"></i> ~11 Min Read</span>
+                    <div class="cover-meta-item">
+                        <div class="label">Reading Time</div>
+                        <div class="value">15-20 minutes</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Difficulty Level</div>
+                        <div class="value">Intermediate</div>
+                    </div>
+                    <div class="cover-meta-item">
+                        <div class="label">Last Updated</div>
+                        <div class="value">January 2026</div>
+                    </div>
+                </div>
+                <div class="cover-brand">
+                    <i class="fas fa-graduation-cap"></i> The Nursing Collective
                 </div>
             </div>
         </div>
 
+        <!-- Document Content -->
         <div class="document-content">
 
-            <div class="learning-objectives">
-                <h2><i class="fas fa-bullseye"></i> Learning Objectives</h2>
-                <div class="learning-objectives-grid">
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Recognize age-specific presentations of pediatric UTI and know why infant UTI often looks like "just a fever."</span>
+            <!-- What you should be able to do without notes -->
+            <section class="learning-objectives">
+                <h2><i class="fas fa-bullseye"></i> By the end, without notes</h2>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Call a UTI in a febrile infant who has no other source, and defend the workup</li>
+                    <li><i class="fas fa-check-circle"></i> Pick the right urine specimen for the age, and say why a bag cannot diagnose</li>
+                    <li><i class="fas fa-check-circle"></i> Trace a febrile UTI to reflux and scarring, and name the test that grades it</li>
+                    <li><i class="fas fa-check-circle"></i> Separate primary from secondary enuresis, and say which one you work up</li>
+                    <li><i class="fas fa-check-circle"></i> Name the first-line treatment for bedwetting, and the DDAVP fluid rule</li>
+                </ul>
+            </section>
+
+        <!-- ══════════ START HERE ══════════ -->
+        <section class="guide-section" id="start-here">
+            <div class="section-header">
+                <div class="section-number">01</div>
+                <h2>What actually gets you</h2>
+            </div>
+
+            <p>These three conditions travel together. A missed UTI can hide reflux. Reflux scars kidneys. Bedwetting can be the flag that something else is wrong.</p>
+
+            <p>Points get lost here in three predictable ways. Read them before anything else.</p>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You waited for the adult UTI story</div>
+                <div class="info-box-content">
+                    <p>An infant cannot tell you it burns. So the signs are nonspecific. Fever without a source, poor feeding, irritability, foul urine. If you wait for dysuria and frequency, you miss it. You also cannot diagnose it from a bag specimen; a bag is contaminated, and culture needs a clean catch or a catheter.</p>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You treated the UTI and stopped there</div>
+                <div class="info-box-content">
+                    <p>A febrile UTI can be the first sign of reflux. Reflux sends urine back up toward the kidney. That is how a bladder infection becomes pyelonephritis, and how the kidney scars. Reflux is graded, and the study that grades it is a VCUG.</p>
+                </div>
+            </div>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-exclamation-triangle"></i> You treated bedwetting like a behavior problem</div>
+                <div class="info-box-content">
+                    <p>It is not a choice, so punishment does not fix it. Enuresis is common, and most cases resolve on their own with time. The first-line treatment is a bedwetting alarm, not a consequence. Shaming the child only delays the day it stops.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Stop studying three separate topics. Study one chain, fever to UTI to reflux to scar, and one rule for the bed, never punish it.
+            </div>
+        </section>
+
+        <!-- ══════════ THE FOUR THINGS ══════════ -->
+        <section class="guide-section" id="high-yield-summary">
+            <div class="section-header">
+                <div class="section-number">02</div>
+                <h2>The four things</h2>
+            </div>
+
+            <p>For each condition, say four things with the book closed. The one-sentence definition. The clue you would see in a patient. The priority action. The first-line treatment and its teaching point.</p>
+
+            <p>If you cannot say all four out loud, you do not know it yet. Familiarity is not recall.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Condition</th>
+                            <th>Definition in one sentence</th>
+                            <th>Clue in the scenario</th>
+                            <th>Priority action</th>
+                            <th>First-line treatment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>UTI</strong></td>
+                            <td>Bacteria, usually E. coli, ascend the urethra and infect the bladder or kidney.</td>
+                            <td>Fever with no source in an infant; dysuria and frequency in an older child.</td>
+                            <td>Get a proper urine specimen for culture before antibiotics.</td>
+                            <td>Age-appropriate antibiotics. Finish the full course.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VUR</strong></td>
+                            <td>The valve at the bladder leaks, so urine flows back up toward the kidney.</td>
+                            <td>Recurrent or febrile UTIs in a young child.</td>
+                            <td>Get imaging; grade the reflux with a VCUG.</td>
+                            <td>Low grade, watch and treat UTIs. High grade, surgery.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Enuresis</strong></td>
+                            <td>Involuntary voiding past the age when dryness is expected, about age 5.</td>
+                            <td>A school-age child who wets the bed at night.</td>
+                            <td>Rule out a secondary cause, then reassure.</td>
+                            <td>Bedwetting alarm first-line. DDAVP short-term.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Write these three rows on one index card, by hand. UTI is the infection. VUR is the plumbing behind a repeat infection. Enuresis is the timing that has not caught up. That card is most of the exam.</p>
+            </div>
+        </section>
+
+        <!-- ══════════ UTI ══════════ -->
+        <section class="guide-section" id="uti">
+            <div class="section-header">
+                <div class="section-number">03</div>
+                <h2>Pediatric UTI</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: age changes the whole presentation.</p>
+
+            <p>One infection, three different faces. The younger the child, the less it looks like a UTI.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Age group</th>
+                            <th>Typical presentation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Infants under 2 months</strong></td>
+                            <td>Fever, poor feeding, vomiting, irritability, jaundice, sepsis-like illness, failure to thrive. Not typical UTI symptoms.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Infants 2 to 24 months</strong></td>
+                            <td>Fever is often the only sign. Add vomiting, poor feeding, foul-smelling urine, irritability, failure to thrive.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Toddlers and preschoolers</strong></td>
+                            <td>Fever, abdominal pain, vomiting, malodorous urine, new wetting after being dry, dysuria if verbal.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>School-age and adolescents</strong></td>
+                            <td>Adult-like dysuria, frequency, urgency, suprapubic pain, hematuria. Pyelonephritis adds fever and flank pain.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Lower or upper</h3>
+
+            <p>Where the infection sits changes how serious it is.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Cystitis, lower UTI</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Bladder infection</li>
+                            <li>Dysuria, frequency, urgency, suprapubic pain</li>
+                            <li>Usually no fever</li>
+                        </ul>
                     </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Select the correct urine collection method for age; understand why bag specimens are inadequate for culture.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Understand VUR grading (I&ndash;V) and the link between reflux, pyelonephritis, and renal scarring.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Distinguish primary from secondary enuresis and identify when workup is needed.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Apply evidence-based behavioral and pharmacologic management for nocturnal enuresis.</span>
-                    </div>
-                    <div class="objective-card">
-                        <i class="fas fa-check-circle"></i>
-                        <span>Educate families about prevention, medication adherence, and the emotional weight of bedwetting.</span>
+                </div>
+                <div class="comparison-card">
+                    <div class="comparison-card-header">Pyelonephritis, upper UTI</div>
+                    <div class="comparison-card-body">
+                        <ul>
+                            <li>Kidney infection, much more serious</li>
+                            <li>Fever at or above 38.5 C, flank pain, CVA tenderness, systemic illness</li>
+                            <li>Carries the risk of renal scarring</li>
+                        </ul>
                     </div>
                 </div>
             </div>
 
-            <section class="high-yield-summary" id="high-yield-summary">
-                <h2><i class="fas fa-bolt"></i> High-Yield Summary</h2>
-                <p class="high-yield-subtitle">Eight facts that cover almost every pediatric GU question.</p>
-                <ul>
-                    <li><strong>Pediatric UTI pathogens:</strong> <strong>E. coli</strong> accounts for ~80%. Others: Klebsiella, Proteus, Enterococcus, Staph saprophyticus.</li>
-                    <li><strong>Age shifts sex risk:</strong> <strong>first year of life &mdash; boys (esp. uncircumcised) are at higher risk</strong>. After age 1, <strong>girls</strong> are far more common because of shorter urethra.</li>
-                    <li><strong>Infant UTI often presents as fever alone</strong> &mdash; any febrile infant without a clear source needs a UA and culture. Missed UTIs in infants can become pyelonephritis with scarring.</li>
-                    <li><strong>Culture collection matters:</strong> bag specimens are fine for screening but <strong>NEVER for culture</strong> (contaminated). For culture: <strong>clean catch (toilet-trained), catheterization, or suprapubic aspiration</strong>.</li>
-                    <li><strong>VUR</strong> = retrograde urine flow from bladder back up ureters. Allows bacteria to reach kidneys &rarr; <strong>pyelonephritis</strong> &rarr; <strong>renal scarring / reflux nephropathy</strong> &rarr; HTN, CKD.</li>
-                    <li><strong>VCUG</strong> (voiding cystourethrogram) is the <strong>gold standard</strong> for diagnosing and grading VUR. Grades I&ndash;V; grades I&ndash;III often resolve spontaneously, IV&ndash;V often need surgery.</li>
-                    <li><strong>Enuresis = involuntary voiding after age 5.</strong> Primary = never dry. Secondary = dry for &ge;6 months, then re-started. Most cases are primary nocturnal (bedwetting) due to maturational delay.</li>
-                    <li><strong>Bedwetting alarms</strong> are the most effective long-term therapy for primary nocturnal enuresis. <strong>Desmopressin (DDAVP)</strong> works short-term (sleepovers, camp). Never shame the child &mdash; it delays resolution.</li>
-                </ul>
-                <p class="high-yield-cta">Clinical breakdown below &darr;</p>
-            </section>
+            <h3>The bugs and who gets them</h3>
 
-            <nav class="sticky-nav">
-                <h3>Jump to section</h3>
-                <div class="nav-pills">
-                    <a href="#uti"><i class="fas fa-bacterium"></i> UTI</a>
-                    <a href="#vur"><i class="fas fa-arrows-up-down"></i> VUR</a>
-                    <a href="#enuresis"><i class="fas fa-moon"></i> Enuresis</a>
-                    <a href="#diagnosis"><i class="fas fa-vial"></i> Diagnosis</a>
-                    <a href="#treatment"><i class="fas fa-pills"></i> Treatment</a>
-                    <a href="#nursing"><i class="fas fa-user-nurse"></i> Nursing &amp; Education</a>
+            <ul>
+                <li><strong>E. coli</strong> causes about 80 percent, straight from bowel flora.</li>
+                <li><strong>Klebsiella, Proteus</strong> show up with structural problems or recent antibiotics.</li>
+                <li><strong>Enterococcus, Staph saprophyticus</strong> appear in adolescent girls.</li>
+                <li><strong>Pseudomonas</strong> is hospitalized, immunocompromised, or catheterized.</li>
+                <li>First year of life, boys, especially uncircumcised, are at higher risk.</li>
+                <li>After age 1, girls predominate, because the shorter urethra is an easier climb.</li>
+            </ul>
+
+            <h3>Risk factors worth flagging</h3>
+
+            <ul>
+                <li>Vesicoureteral reflux, anatomic abnormalities, neurogenic bladder</li>
+                <li><strong>Constipation</strong>, a big risk factor that gets overlooked</li>
+                <li>Holding urine and rushed, incomplete voids</li>
+                <li>Bubble baths and harsh soaps, poor hygiene, wiping the wrong way</li>
+                <li>Sexual activity in adolescents</li>
+            </ul>
+
+            <div class="info-box critical">
+                <div class="info-box-header"><i class="fas fa-thermometer"></i> Fever without a source</div>
+                <div class="info-box-content">
+                    <p>A febrile infant under 24 months with no obvious source needs a urine culture. No cold, no ear infection, no viral rash, so check the urine. UTI is the most common serious bacterial infection at this age. A missed one becomes pyelonephritis with permanent scarring.</p>
                 </div>
-            </nav>
+            </div>
 
-            <!-- Section 1: UTI -->
-            <section class="guide-section" id="uti">
-                <div class="section-header">
-                    <div class="section-number">1</div>
-                    <div class="section-title-group">
-                        <h2>Pediatric Urinary Tract Infection</h2>
-                        <div class="subtitle">From fever-only infants to dysuric teens</div>
-                    </div>
+            <div class="florencebot-tip" id="tip-infant-fever">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">In an infant, the UTI symptom is fever</div>
+                <div class="florencebot-tip-content">Adults say it burns. Infants cannot. For a baby, the UTI symptom is often just the fever, sometimes with vomiting or poor feeding. That is why any febrile infant under 2 years without a clear source gets urine tested. Catching it early is how you prevent the scar.</div>
+            </div>
 
-                <div class="disorder-profile">
-                    <div class="disorder-profile-header uti">
-                        <i class="fas fa-bacterium"></i>
-                        <h3>Pediatric UTI</h3>
-                        <span class="tag">Infection</span>
-                    </div>
-                    <div class="disorder-profile-body">
-                        <h4>Epidemiology</h4>
-                        <ul>
-                            <li>By age 6: ~7% of girls, ~2% of boys will have had a UTI.</li>
-                            <li><strong>First year of life:</strong> boys (especially uncircumcised) are at higher risk.</li>
-                            <li><strong>After age 1:</strong> girls predominate &mdash; shorter urethra = easier bacterial ascent.</li>
-                            <li>Adolescent girls: onset of sexual activity increases risk.</li>
-                        </ul>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Infant UTI is fever, often alone. Older children give you the adult picture. E. coli is the bug, and every unexplained infant fever earns a urine test.
+            </div>
+        </section>
 
-                        <h4>Common Pathogens</h4>
-                        <ul>
-                            <li><strong>E. coli</strong> ~80% of pediatric UTIs (from bowel flora)</li>
-                            <li><strong>Klebsiella, Proteus</strong> &mdash; common in structural abnormalities or recent antibiotics</li>
-                            <li><strong>Enterococcus, Staph saprophyticus</strong> &mdash; adolescent females</li>
-                            <li><strong>Pseudomonas</strong> &mdash; hospitalized, immunocompromised, or catheterized</li>
-                        </ul>
+        <!-- ══════════ VUR ══════════ -->
+        <section class="guide-section" id="vur">
+            <div class="section-header">
+                <div class="section-number">04</div>
+                <h2>Vesicoureteral reflux</h2>
+            </div>
 
-                        <h4>Risk Factors</h4>
-                        <ul>
-                            <li><strong>Vesicoureteral reflux (VUR)</strong>, anatomic abnormalities, neurogenic bladder</li>
-                            <li><strong>Constipation</strong> &mdash; huge risk factor, often overlooked</li>
-                            <li>Poor voiding habits (holding, rushing)</li>
-                            <li>Bubble baths, harsh soaps (irritation)</li>
-                            <li>Poor hygiene, wiping incorrectly</li>
-                            <li>Uncircumcised males (first year)</li>
-                            <li>Sexual activity (adolescents)</li>
-                        </ul>
+            <p class="subtitle">Discrimination axis: the grade decides watch or surgery.</p>
 
-                        <h4>Classification</h4>
-                        <ul>
-                            <li><strong>Cystitis (lower UTI):</strong> bladder infection &mdash; dysuria, frequency, urgency, suprapubic pain. Usually no fever.</li>
-                            <li><strong>Pyelonephritis (upper UTI):</strong> kidney infection &mdash; <strong>fever &ge;38.5&deg;C, flank pain, CVA tenderness, systemic illness</strong>. Much more serious; risk of scarring.</li>
-                        </ul>
-                    </div>
+            <p>Urine should flow one way. Kidney to ureter to bladder, then out. The junction at the bladder works as a one-way valve.</p>
+
+            <p>In reflux, that valve leaks. Urine flows backward, up the ureter toward the kidney. Any bacteria in the bladder ride along.</p>
+
+            <h3>Why it matters</h3>
+
+            <ul>
+                <li>It lets a simple bladder infection become <strong>pyelonephritis</strong>.</li>
+                <li>Repeated kidney infection causes <strong>renal scarring</strong>, called reflux nephropathy.</li>
+                <li>Long term, that means hypertension, proteinuria, and chronic kidney disease.</li>
+                <li>Reflux is the leading structural cause of pediatric CKD progression.</li>
+            </ul>
+
+            <h3>Two types, and who gets it</h3>
+
+            <ul>
+                <li><strong>Primary VUR</strong> is congenital, from an abnormal valve at the junction. It is the common form, and it runs in families.</li>
+                <li><strong>Secondary VUR</strong> is acquired, from outlet obstruction, neurogenic bladder, or posterior urethral valves.</li>
+                <li>About 1 in 100 children have it; up to 40 percent of children with febrile UTIs do.</li>
+                <li>It is often silent until a UTI reveals it. Prenatal hydronephrosis can be the first clue.</li>
+            </ul>
+
+            <h3>Grades I to V</h3>
+
+            <p>The grade tells you how far the urine backs up, and how dilated things get.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Grade</th>
+                            <th>What the VCUG shows</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>I</strong></td><td>Reflux into the ureter only, no dilation.</td></tr>
+                        <tr><td><strong>II</strong></td><td>Reflux up to the renal pelvis, still no dilation.</td></tr>
+                        <tr><td><strong>III</strong></td><td>Mild dilation of ureter and pelvis, calyces stay sharp.</td></tr>
+                        <tr><td><strong>IV</strong></td><td>Moderate dilation, with blunting of the calyces.</td></tr>
+                        <tr><td><strong>V</strong></td><td>Severe dilation, a tortuous ureter, papillary impressions lost.</td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-crosshairs"></i> The grade sets the plan</div>
+                <div class="info-box-content">
+                    <p>Grades I to III often resolve on their own as the child grows. You watch, treat UTIs promptly, and sometimes give prophylactic antibiotics, which is debated. Grades IV to V rarely resolve, so they usually need surgery, either ureteral reimplantation or endoscopic injection of Deflux.</p>
                 </div>
+            </div>
 
-                <h3>Signs &amp; Symptoms by Age</h3>
-
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Age Group</th>
-                                <th>Typical Presentation</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Infants (&lt;2 months)</strong></td>
-                                <td>Fever, poor feeding, vomiting, irritability, jaundice, sepsis-like illness, FTT. NOT typical UTI symptoms.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Infants (2&ndash;24 months)</strong></td>
-                                <td>Fever often the only sign; vomiting, poor feeding, foul-smelling urine, irritability, FTT.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Preschoolers / Toddlers</strong></td>
-                                <td>Fever, abdominal pain, vomiting, malodorous urine, new-onset incontinence after being dry, dysuria if verbal.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>School-age &amp; Adolescents</strong></td>
-                                <td>Classic adult-like symptoms: dysuria, frequency, urgency, suprapubic pain, hematuria, sometimes enuresis. Pyelonephritis adds fever and flank pain.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <div class="florencebot-tip" id="tip-reflux-scar">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Reflux is the reason for the workup</div>
+                <div class="florencebot-tip-content">A recurrent or febrile UTI in a young child is not just an infection to treat. It is a question to answer: is urine going backward? That is why the guideline sends these children to imaging. Find the reflux before the scar forms, because the scar is permanent even after you fix the valve.</div>
+            </div>
 
-                <div class="info-box critical">
-                    <div class="info-box-icon"><i class="fas fa-exclamation-triangle"></i></div>
-                    <div class="info-box-content">
-                        <h5>Fever-Without-a-Source in Infants</h5>
-                        <p>Any <strong>febrile infant under 24 months without an obvious source</strong> (no URI, no ear infection, no viral rash) needs a urine culture. UTI is the most common serious bacterial infection in young infants, and missed UTIs lead to pyelonephritis with permanent renal scarring. Don't assume it's "just a virus" in a febrile baby.</p>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Reflux is backward urine flow that sets up pyelonephritis and scarring. You diagnose and grade it with a VCUG. Low grade, watch. High grade, surgery.
+            </div>
+        </section>
+
+        <!-- ══════════ ENURESIS ══════════ -->
+        <section class="guide-section" id="enuresis">
+            <div class="section-header">
+                <div class="section-number">05</div>
+                <h2>Enuresis</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: primary or secondary.</p>
+
+            <p>Wetting past age 5 has a name. It is common, benign, and frustrating for families. About 15 percent of 5-year-olds and 10 percent of 7-year-olds still wet at night, and most stop by age 10.</p>
+
+            <p>The question is always the same. Was this child ever reliably dry?</p>
+
+            <h3>The types</h3>
+
+            <ul>
+                <li><strong>Primary:</strong> the child has never been consistently dry.</li>
+                <li><strong>Secondary:</strong> dry for at least 6 months, then wetting again.</li>
+                <li><strong>Nocturnal:</strong> only at night, the most common form.</li>
+                <li><strong>Diurnal:</strong> daytime wetting, more concerning, always evaluate for a cause.</li>
+            </ul>
+
+            <h3>Why primary nocturnal enuresis happens</h3>
+
+            <ul>
+                <li><strong>Maturational delay</strong>, the most common cause. Waking to a full bladder lags behind peers, then catches up.</li>
+                <li>Strong family history. One affected parent, about 40 percent risk; both, about 75 percent.</li>
+                <li>Deep sleep and difficulty arousing.</li>
+                <li>A smaller functional bladder capacity.</li>
+                <li>Less nighttime ADH, so urine is not concentrated overnight.</li>
+            </ul>
+
+            <h3>Causes of secondary enuresis, always work these up</h3>
+
+            <ul>
+                <li><strong>UTI</strong></li>
+                <li><strong>Constipation</strong>, where a full rectum presses on the bladder</li>
+                <li><strong>Type 1 diabetes</strong>, with polyuria from osmotic diuresis</li>
+                <li>Diabetes insipidus, or a structural or neurologic disorder</li>
+                <li>Emotional stress, family conflict, abuse, a new sibling, divorce</li>
+            </ul>
+
+            <div class="info-box pediatric">
+                <div class="info-box-header"><i class="fas fa-heart"></i> Never shame or punish</div>
+                <div class="info-box-content">
+                    <p>Bedwetting is not under the child's voluntary control. Shaming and punishment raise anxiety, lower self-esteem, and delay resolution. Coach parents to normalize it, praise dry nights, and stay neutral about wet ones. Your teaching here often does more than any drug.</p>
                 </div>
+            </div>
 
-                <div class="florencebot-tip" id="tip-infant-fever">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Fever Is the UTI Symptom in Infants</div>
-                    <div class="florencebot-tip-content">
-                        Adults complain of "burning when I pee." Infants can't. <strong>For a baby, the UTI symptom is often just &mdash; fever.</strong> Sometimes paired with vomiting, irritability, or poor feeding. That's why the AAP recommends urine testing in any febrile infant under 2 years without a clear explanation. Catching UTI early prevents pyelonephritis and the renal scarring that follows.
-                    </div>
+            <div class="florencebot-tip" id="tip-secondary-enuresis">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">Secondary enuresis is a red flag</div>
+                <div class="florencebot-tip-content">A child who was dry for months, then suddenly wets again, earns a workup. Common causes are a UTI, new type 1 diabetes, constipation, and emotional trauma. Test the urine for glucose and infection, ask about bowel habits, and screen for stressors. This is rarely nothing.</div>
+            </div>
 
-                <div class="bottom-line">Bottom Line: Infant UTI = fever only. Older kids = adult symptoms. E. coli is the bug. Think UTI in every unexplained febrile infant.</div>
-            </section>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Wetting after age 5 counts. Primary, never dry, is usually maturational. Secondary, dry then wet, gets worked up. Never shame.
+            </div>
+        </section>
 
-            <!-- Section 2: VUR -->
-            <section class="guide-section" id="vur">
-                <div class="section-header">
-                    <div class="section-number">2</div>
-                    <div class="section-title-group">
-                        <h2>Vesicoureteral Reflux (VUR)</h2>
-                        <div class="subtitle">Why recurrent UTI in kids always gets a workup</div>
-                    </div>
+        <!-- ══════════ DIAGNOSIS ══════════ -->
+        <section class="guide-section" id="diagnosis">
+            <div class="section-header">
+                <div class="section-number">06</div>
+                <h2>Diagnosis and workup</h2>
+            </div>
+
+            <p class="subtitle">Discrimination axis: the specimen has to match the age.</p>
+
+            <p>How you collect the urine decides whether the result means anything. Get this wrong and you treat a contaminant.</p>
+
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>When to use</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Bag specimen</strong></td>
+                            <td>Screening only, in a non-toilet-trained infant</td>
+                            <td>High contamination. Never use it for culture. A positive bag confirms with a cath or aspiration.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Catheterization, in and out</strong></td>
+                            <td>Definitive culture in a non-toilet-trained infant</td>
+                            <td>Sterile sample. Over 50,000 CFU is diagnostic.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Suprapubic aspiration</strong></td>
+                            <td>Gold standard in infants</td>
+                            <td>Needle draws straight from the bladder. Any growth is diagnostic.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Clean catch midstream</strong></td>
+                            <td>Toilet-trained children</td>
+                            <td>Clean the perineum, start the void, catch the middle. Over 100,000 CFU is diagnostic.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Reading the urine</h3>
+
+            <ul>
+                <li><strong>Dipstick:</strong> leukocyte esterase positive, nitrites positive, blood. Nitrites are highly specific for gram-negative UTI, especially E. coli.</li>
+                <li><strong>Microscopy:</strong> over 5 WBC per high-power field is pyuria, plus bacteria and red cells.</li>
+                <li><strong>Culture:</strong> the gold standard. Growth thresholds depend on the collection method.</li>
+                <li><strong>CBC and CRP:</strong> leukocytosis and a high CRP point toward pyelonephritis.</li>
+                <li><strong>Blood culture:</strong> for an infant with suspected urosepsis.</li>
+            </ul>
+
+            <h3>Imaging after a UTI</h3>
+
+            <ul>
+                <li><strong>Renal ultrasound</strong> comes first, to rule out obstruction or an anatomic problem.</li>
+                <li><strong>VCUG</strong>, the voiding cystourethrogram, is the gold standard for reflux. Contrast goes into the bladder by catheter, and fluoroscopy during voiding shows whether urine refluxes and to what grade.</li>
+                <li><strong>DMSA scan</strong> detects renal scarring and cortical damage from pyelonephritis.</li>
+            </ul>
+
+            <h4>When to image</h4>
+            <ul>
+                <li>A first febrile UTI in a child under 2 years, with renal ultrasound and sometimes VCUG.</li>
+                <li>Recurrent UTIs at any age.</li>
+                <li>An atypical course, such as a poor antibiotic response or a non-E. coli organism.</li>
+                <li>Any suspicion of an anatomic anomaly.</li>
+            </ul>
+
+            <h3>Working up enuresis</h3>
+
+            <ul>
+                <li><strong>History:</strong> nocturnal versus diurnal, primary versus secondary, family history, bowel habits, fluid intake, stressors.</li>
+                <li><strong>Exam:</strong> abdomen for a fecal mass, genitalia, spine for a sacral dimple or tuft, lower-limb neuro.</li>
+                <li><strong>Urinalysis:</strong> rule out UTI, check glucose, check concentration.</li>
+                <li><strong>Voiding diary:</strong> wet and dry nights and daytime voids over 1 to 2 weeks.</li>
+            </ul>
+
+            <div class="florencebot-tip" id="tip-bag-specimen">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">A bag is a screen, never a culture</div>
+                <div class="florencebot-tip-content">A bag sits against contaminated skin, so its culture is meaningless. Use it to screen a baby who cannot void on command. If the screen is positive, confirm with a catheter or a suprapubic aspiration before you commit to antibiotics. In a toilet-trained child, a clean catch does the job.</div>
+            </div>
 
-                <div class="disorder-profile">
-                    <div class="disorder-profile-header vur">
-                        <i class="fas fa-arrows-up-down"></i>
-                        <h3>Vesicoureteral Reflux</h3>
-                        <span class="tag">Structural</span>
-                    </div>
-                    <div class="disorder-profile-body">
-                        <h4>Pathophysiology</h4>
-                        <p>Urine normally flows one way: kidney &rarr; ureter &rarr; bladder. The vesicoureteral junction acts as a one-way valve. When the valve is incompetent, urine can flow <strong>backwards</strong> from the bladder up into the ureters and even the kidney pelvis &mdash; carrying any bacteria from the bladder with it.</p>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Cath or aspiration for an infant culture, clean catch for older kids, bag for screening only. VCUG grades the reflux. For enuresis, history plus a urinalysis.
+            </div>
+        </section>
 
-                        <h4>Why It Matters</h4>
-                        <ul>
-                            <li>Allows a simple bladder infection to become <strong>pyelonephritis</strong></li>
-                            <li>Chronic pyelonephritis causes <strong>renal scarring (reflux nephropathy)</strong></li>
-                            <li>Long-term: <strong>hypertension, proteinuria, chronic kidney disease</strong></li>
-                            <li>VUR is the #1 structural cause of pediatric CKD progression</li>
-                        </ul>
+        <!-- ══════════ TREATMENT ══════════ -->
+        <section class="guide-section" id="treatment">
+            <div class="section-header">
+                <div class="section-number">07</div>
+                <h2>Treatment</h2>
+            </div>
 
-                        <h4>Two Types</h4>
-                        <ul>
-                            <li><strong>Primary VUR</strong> &mdash; congenital, due to abnormal development of the vesicoureteral junction. Most common form. Often runs in families.</li>
-                            <li><strong>Secondary VUR</strong> &mdash; acquired from bladder outlet obstruction, neurogenic bladder, or posterior urethral valves.</li>
-                        </ul>
+            <p>Three problems, three plans. Antibiotics for the infection, grade-based management for the reflux, and a ladder for the bedwetting.</p>
 
-                        <h4>Who Gets It</h4>
-                        <ul>
-                            <li>~1% of all children</li>
-                            <li>Up to <strong>40% of children with febrile UTIs</strong> have underlying VUR</li>
-                            <li>More common in girls; bilateral reflux is not uncommon</li>
-                            <li>May be detected on prenatal ultrasound as hydronephrosis</li>
-                        </ul>
+            <h3>UTI antibiotics</h3>
 
-                        <h4>Signs &amp; Symptoms</h4>
-                        <ul>
-                            <li><strong>Often asymptomatic until a UTI develops</strong></li>
-                            <li>Recurrent or febrile UTIs &mdash; the main red flag</li>
-                            <li>FTT, poor feeding in infants</li>
-                            <li>Hypertension or proteinuria in older children with scarring</li>
-                            <li>Prenatal hydronephrosis may be the first clue</li>
-                        </ul>
-                    </div>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead>
+                        <tr>
+                            <th>Setting</th>
+                            <th>First-line</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Outpatient cystitis</strong></td>
+                            <td>Cephalexin, amoxicillin-clavulanate, TMP-SMX, or nitrofurantoin</td>
+                            <td>Local resistance guides the choice. Nitrofurantoin is not for infants under 1 month or for pyelonephritis. Treat 7 to 10 days in young children, 3 to 5 days for a simple adolescent case.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Pyelonephritis or sepsis</strong></td>
+                            <td>Ceftriaxone, or ampicillin plus gentamicin</td>
+                            <td>Infants under 2 months are almost always admitted for IV treatment and a sepsis workup. Step down to oral once improving and culture data are back.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>VUR prophylaxis</strong></td>
+                            <td>Low-dose TMP-SMX or nitrofurantoin, nightly</td>
+                            <td>Used in selected reflux patients to prevent recurrence. It is debated, weighed against resistance. Continue until reflux resolves or is repaired.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>VUR management</h3>
+
+            <ul>
+                <li><strong>Grades I to III:</strong> watch and wait, treat UTIs promptly, consider prophylaxis. Repeat the VCUG in 1 to 2 years to reassess.</li>
+                <li><strong>Grades IV to V:</strong> surgical correction, either ureteral reimplantation or endoscopic Deflux injection.</li>
+                <li><strong>Post-op:</strong> a urinary catheter for a few days, watch for bleeding and infection, manage pain, keep hydrated.</li>
+                <li><strong>Long term:</strong> monitor blood pressure, growth, urinalysis, and periodic renal ultrasound. Existing scarring is permanent.</li>
+            </ul>
+
+            <h3>Enuresis, in order</h3>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Rule out secondary causes.</strong> Urinalysis, bowel habits, glucose, stressors. Treat what you find.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Reassure and educate.</strong> Most primary nocturnal enuresis resolves. Frame it as timing, not failure.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Behavioral measures.</strong> Limit fluids 2 hours before bed, void before bed, treat constipation, reward charts, gentle night waking.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Bedwetting alarm.</strong> A moisture sensor wakes the child at the start of voiding. First-line behavioral therapy, with the best long-term results. It takes 2 to 3 months, so commitment matters.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Desmopressin, DDAVP.</strong> A synthetic ADH analog that cuts overnight urine. Good short-term, for sleepovers and camp. Limit fluids for 1 hour before and 8 hours after the dose.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">6</div>
+                    <div class="intervention-content"><strong>Imipramine.</strong> An older option, rarely first-line now, given cardiac side effects and overdose risk. Reserved for refractory cases, with referral to urology or nephrology.</div>
+                </li>
+            </ol>
+
+            <div class="info-box clinical">
+                <div class="info-box-header"><i class="fas fa-triangle-exclamation"></i> DDAVP fluid restriction is a safety issue</div>
+                <div class="info-box-content">
+                    <p>Desmopressin concentrates urine by holding water. Drink too much during its window and water intoxication follows. The danger is hyponatremia and seizures. Teach parents: no fluids 1 hour before the dose, none for 8 hours after. Use it for short-term situations, not nightly without specialist guidance.</p>
                 </div>
+            </div>
 
-                <h3>VUR Grading (I&ndash;V)</h3>
-
-                <div class="grade-grid">
-                    <div class="grade-card" data-grade="I">
-                        <h5>Ureter Only</h5>
-                        <p>Reflux into the ureter, no dilation.</p>
-                    </div>
-                    <div class="grade-card" data-grade="II">
-                        <h5>Pelvis, No Dilation</h5>
-                        <p>Reflux to the renal pelvis without dilation.</p>
-                    </div>
-                    <div class="grade-card" data-grade="III">
-                        <h5>Mild Dilation</h5>
-                        <p>Mild ureter and pelvis dilation, calyces sharp.</p>
-                    </div>
-                    <div class="grade-card" data-grade="IV">
-                        <h5>Moderate</h5>
-                        <p>Moderate dilation; blunting of calyces.</p>
-                    </div>
-                    <div class="grade-card" data-grade="V">
-                        <h5>Severe</h5>
-                        <p>Severe dilation + tortuous ureter, papillary impressions lost.</p>
-                    </div>
+            <div class="florencebot-tip" id="tip-ddavp-fluids">
+                <div class="florencebot-tip-header">
+                    <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
+                    <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
                 </div>
+                <div class="florencebot-tip-title">DDAVP plus free fluids equals seizures</div>
+                <div class="florencebot-tip-content">The whole point of DDAVP is to hold water back overnight. So the risk is not the drug, it is the water on top of it. Unrestricted fluids give you hyponatremia and seizures. The teaching is one line: nothing to drink 1 hour before, nothing for 8 hours after.</div>
+            </div>
 
-                <div class="info-box nclex">
-                    <div class="info-box-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <div class="info-box-content">
-                        <h5>Grade = Treatment Approach</h5>
-                        <p><strong>Grades I&ndash;III</strong> typically resolve spontaneously over months to years as the child grows &mdash; managed with <strong>close monitoring and prompt UTI treatment</strong>, sometimes prophylactic antibiotics (controversial).<br>
-                        <strong>Grades IV&ndash;V</strong> rarely resolve on their own &mdash; usually require <strong>surgical correction</strong>: ureteral reimplantation or endoscopic injection (Deflux).</p>
-                    </div>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> UTI gets age-appropriate antibiotics. Low-grade reflux is watched, high-grade is surgery. Enuresis is rule out, then alarm first-line, DDAVP short-term.
+            </div>
+        </section>
+
+        <!-- ══════════ NURSING ══════════ -->
+        <section class="guide-section" id="nursing">
+            <div class="section-header">
+                <div class="section-number">08</div>
+                <h2>Nursing and family teaching</h2>
+            </div>
+
+            <p>Priority questions hand you four reasonable actions and ask which comes first. Order matters more than completeness.</p>
+
+            <ol class="interventions-list">
+                <li class="intervention-item">
+                    <div class="intervention-number">1</div>
+                    <div class="intervention-content"><strong>Workup before reassurance.</strong> A febrile infant with no source gets a urine culture, not a wait-and-see.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">2</div>
+                    <div class="intervention-content"><strong>Right specimen before treatment.</strong> No bag culture. Cath or clean catch, matched to the age, before antibiotics.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">3</div>
+                    <div class="intervention-content"><strong>Treat the infection, then ask why.</strong> A recurrent or febrile UTI earns imaging for reflux.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">4</div>
+                    <div class="intervention-content"><strong>Rule out a cause before you manage bedwetting.</strong> Secondary enuresis is worked up, not coached.</div>
+                </li>
+                <li class="intervention-item">
+                    <div class="intervention-number">5</div>
+                    <div class="intervention-content"><strong>Teach and support before you medicate.</strong> For primary enuresis, education and an alarm come before a drug.</div>
+                </li>
+            </ol>
+
+            <h3>UTI prevention teaching</h3>
+
+            <div class="key-point-grid">
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Wipe front to back</strong> for girls, taught at every age.</p>
                 </div>
-
-                <div class="bottom-line">Bottom Line: VUR = backwards urine flow that sets up pyelonephritis and scarring. Diagnose with VCUG. Low grade = watch. High grade = surgery.</div>
-            </section>
-
-            <!-- Section 3: Enuresis -->
-            <section class="guide-section" id="enuresis">
-                <div class="section-header">
-                    <div class="section-number">3</div>
-                    <div class="section-title-group">
-                        <h2>Enuresis (Bedwetting &amp; Daytime Wetting)</h2>
-                        <div class="subtitle">Primary vs. secondary &mdash; and why you never shame the child</div>
-                    </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Void regularly,</strong> no holding, empty the bladder every 2 to 3 hours.</p>
                 </div>
-
-                <div class="disorder-profile">
-                    <div class="disorder-profile-header enuresis">
-                        <i class="fas fa-moon"></i>
-                        <h3>Enuresis</h3>
-                        <span class="tag">Involuntary Voiding</span>
-                    </div>
-                    <div class="disorder-profile-body">
-                        <h4>Definition</h4>
-                        <p><strong>Involuntary voiding of urine beyond the age when continence is expected</strong> &mdash; conventionally after <strong>age 5</strong>. Common, benign, and frustrating. About 15% of 5-year-olds and 10% of 7-year-olds have nocturnal enuresis; most resolve by age 10.</p>
-
-                        <h4>Types</h4>
-                        <ul>
-                            <li><strong>Primary enuresis:</strong> the child has <strong>never</strong> been consistently dry.</li>
-                            <li><strong>Secondary enuresis:</strong> was dry for &ge;6 months, then started wetting again &mdash; often triggered by stress, UTI, diabetes, constipation, or abuse.</li>
-                            <li><strong>Nocturnal enuresis:</strong> only at night (most common form).</li>
-                            <li><strong>Diurnal enuresis:</strong> daytime wetting; more concerning &mdash; always evaluate for underlying cause.</li>
-                        </ul>
-
-                        <h4>Causes of Primary Nocturnal Enuresis</h4>
-                        <ul>
-                            <li><strong>Maturational delay</strong> &mdash; the most common cause. The ability to wake to a full bladder lags behind peers; eventually catches up.</li>
-                            <li>Strong family history (if one parent had enuresis, ~40% risk in child; both parents ~75%).</li>
-                            <li>Deep sleep / difficulty arousing from sleep.</li>
-                            <li>Smaller functional bladder capacity.</li>
-                            <li>Decreased nighttime ADH production (inadequate urine concentration overnight).</li>
-                        </ul>
-
-                        <h4>Causes of Secondary Enuresis (always work up)</h4>
-                        <ul>
-                            <li><strong>UTI</strong></li>
-                            <li><strong>Constipation</strong> (full rectum compresses bladder)</li>
-                            <li><strong>Type 1 diabetes</strong> (polyuria from osmotic diuresis)</li>
-                            <li>Diabetes insipidus</li>
-                            <li>Structural or neurologic disorder</li>
-                            <li>Emotional stress, family conflict, abuse, new sibling, divorce</li>
-                        </ul>
-                    </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Treat constipation,</strong> since a full rectum presses on the bladder.</p>
                 </div>
-
-                <div class="info-box pediatric">
-                    <div class="info-box-icon"><i class="fas fa-heart"></i></div>
-                    <div class="info-box-content">
-                        <h5>Never Shame or Punish</h5>
-                        <p>Bedwetting is <strong>not under the child's voluntary control</strong>. Shaming, punishment, and blame worsen anxiety, lower self-esteem, and <strong>delay resolution</strong>. Parents should be coached to normalize the situation, praise dry nights, and avoid making the child feel bad about wet ones. The nurse's teaching here is often more valuable than any medication.</p>
-                    </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Encourage daytime fluids</strong> to keep urine flushing through.</p>
                 </div>
-
-                <div class="florencebot-tip" id="tip-secondary-enuresis">
-                    <div class="florencebot-tip-header">
-                        <div class="florencebot-tip-icon"><i class="fas fa-lightbulb"></i></div>
-                        <span class="florencebot-tip-label">FlorenceBot Pro Tip</span>
-                    </div>
-                    <div class="florencebot-tip-title">Secondary Enuresis Is a Red Flag</div>
-                    <div class="florencebot-tip-content">
-                        A child who had been dry for months or years and <strong>suddenly starts wetting again</strong> deserves a workup. Common causes: <strong>UTI, new-onset type 1 diabetes, constipation, emotional trauma</strong>. Test urine (dipstick, glucose, culture), ask about bowel habits, and screen for stressors. This is rarely "nothing."
-                    </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Avoid bubble baths</strong> and harsh soaps; use loose cotton underwear.</p>
                 </div>
-
-                <div class="bottom-line">Bottom Line: Enuresis after age 5 = pathologic. Primary (never dry) = maturational. Secondary (was dry, now wet) = work it up. Never shame.</div>
-            </section>
-
-            <!-- Section 4: Diagnosis -->
-            <section class="guide-section" id="diagnosis">
-                <div class="section-header">
-                    <div class="section-number">4</div>
-                    <div class="section-title-group">
-                        <h2>Diagnosis &amp; Workup</h2>
-                        <div class="subtitle">How to collect urine safely, and when to image</div>
-                    </div>
+                <div class="key-point-item">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Adolescent girls</strong> void after intercourse; cranberry evidence is mixed.</p>
                 </div>
+            </div>
 
-                <h3>Urine Collection by Age</h3>
+            <h3>VUR and VCUG care</h3>
 
-                <div class="guide-table-wrapper">
-                    <table class="guide-table">
-                        <thead>
-                            <tr>
-                                <th>Method</th>
-                                <th>When to Use</th>
-                                <th>Notes</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><strong>Bag specimen</strong></td>
-                                <td>Screening only in non-toilet-trained infants</td>
-                                <td>High contamination rate; <strong>NEVER use for culture alone</strong>. Positive bag UA &rarr; confirm with cath/SPA.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Catheterization (in/out)</strong></td>
-                                <td>Definitive culture in non-toilet-trained infants</td>
-                                <td>Sterile sample; positive culture &gt;50,000 CFU is diagnostic.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Suprapubic aspiration</strong></td>
-                                <td>Gold standard in infants</td>
-                                <td>Direct needle aspiration of bladder; any growth = diagnostic.</td>
-                            </tr>
-                            <tr>
-                                <td><strong>Clean catch midstream</strong></td>
-                                <td>Toilet-trained children</td>
-                                <td>Clean perineum; start void, collect midstream. &gt;100,000 CFU diagnostic.</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <ul>
+                <li>Explain the VCUG at the child's level. The catheter goes in, contrast fills the bladder, the X-ray watches during voiding. Child life services help with the fear.</li>
+                <li>Address embarrassment. Older children feel exposed, so protect privacy and dignity.</li>
+                <li>After the VCUG, push fluids. Burning on the first void or two is normal; real pain or blood is not.</li>
+                <li>After surgery, do catheter care, watch for infection and bleeding, manage pain, follow activity limits.</li>
+            </ul>
+
+            <h3>Enuresis support</h3>
+
+            <ul>
+                <li>Start with reassurance. Most children outgrow it. Frame it as body timing, not a moral failure.</li>
+                <li>Involve the child, with a voiding diary, a reward chart, and their own supplies for sleepovers.</li>
+                <li>Use protective bedding, a waterproof mattress cover, to lower the daily stress.</li>
+                <li>Normalize it. About 1 in 10 seven-year-olds wets the bed; the child is not alone.</li>
+                <li>Coach parents to praise dry nights and stay calm about wet ones.</li>
+            </ul>
+
+            <h3>When to report or return</h3>
+
+            <ul>
+                <li><strong>UTI:</strong> fever past 48 hours on antibiotics, worsening abdominal or flank pain, vomiting, new lethargy.</li>
+                <li><strong>VUR post-op:</strong> fever, worse pain, bloody drainage, or inability to void after the catheter comes out.</li>
+                <li><strong>Enuresis:</strong> secondary onset, daytime wetting, painful voiding, increased thirst and urination, weight loss.</li>
+            </ul>
+
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> You are the confidence-builder</div>
+                <div class="info-box-content">
+                    <p>Children with recurrent UTIs, reflux procedures, or bedwetting often feel different or bad about it. Small reassurances carry weight. This is common. You are doing everything right. It will not last forever. You usually spend more time with the family than the provider, and that time is teaching time.</p>
                 </div>
+            </div>
 
-                <h3>Urinalysis &amp; Culture</h3>
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> Teach hygiene, fluids, and constipation control. Prepare the child for the VCUG. Normalize the bedwetting, coach the parents, build the child's confidence.
+            </div>
+        </section>
 
-                <ul>
-                    <li><strong>UA dipstick:</strong> leukocyte esterase (+), nitrites (+), hematuria. Nitrites are highly specific for gram-negative UTI (especially E. coli).</li>
-                    <li><strong>UA microscopy:</strong> &gt;5 WBC/hpf (pyuria), bacteria, RBCs.</li>
-                    <li><strong>Urine culture:</strong> gold standard. Growth thresholds depend on collection method.</li>
-                    <li><strong>CBC, CRP:</strong> leukocytosis and elevated CRP suggest pyelonephritis.</li>
-                    <li><strong>Blood culture:</strong> in infants with suspected urosepsis.</li>
-                </ul>
+        <!-- ══════════ NUMBERS ══════════ -->
+        <section class="guide-section" id="numbers-cold">
+            <div class="section-header">
+                <div class="section-number">09</div>
+                <h2>Numbers to have cold</h2>
+            </div>
 
-                <h3>Imaging After UTI</h3>
+            <p>These should be automatic. Each one changes what you actually do.</p>
 
-                <ul>
-                    <li><strong>Renal ultrasound</strong> &mdash; initial imaging to rule out obstruction or anatomic abnormalities.</li>
-                    <li><strong>VCUG</strong> &mdash; voiding cystourethrogram. <strong>Gold standard for diagnosing VUR</strong>. Contrast instilled via catheter into bladder; fluoroscopy during voiding reveals presence and grade of reflux.</li>
-                    <li><strong>DMSA scan</strong> &mdash; detects renal scarring from pyelonephritis; sometimes used to identify cortical damage.</li>
-                </ul>
+            <div class="guide-table-wrapper">
+                <table class="guide-table">
+                    <thead><tr><th>Number</th><th>What it changes</th></tr></thead>
+                    <tbody>
+                        <tr><td><strong>Age 5</strong></td><td>The cutoff before wetting is called enuresis and treated</td></tr>
+                        <tr><td><strong>Under 24 months, febrile, no source</strong></td><td>Get a urine culture</td></tr>
+                        <tr><td><strong>Under 2 months with a UTI</strong></td><td>Admit for IV antibiotics and a sepsis workup</td></tr>
+                        <tr><td><strong>Bag specimen</strong></td><td>Screen only, never a culture</td></tr>
+                        <tr><td><strong>Over 50,000 CFU, catheter</strong></td><td>Diagnostic for UTI</td></tr>
+                        <tr><td><strong>Over 100,000 CFU, clean catch</strong></td><td>Diagnostic for UTI</td></tr>
+                        <tr><td><strong>Grade III versus IV</strong></td><td>The line between watching reflux and operating</td></tr>
+                        <tr><td><strong>Fever at or above 38.5 C with flank pain</strong></td><td>Treat as pyelonephritis, the upper UTI</td></tr>
+                        <tr><td><strong>DDAVP: 1 hour before, 8 hours after</strong></td><td>The fluid-free window that prevents seizures</td></tr>
+                        <tr><td><strong>Fluids stop 2 hours before bed</strong></td><td>The behavioral step for nighttime wetting</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-                <h3>When to Image</h3>
+            <div class="copy-box">
+                <div class="copy-box-label"><i class="fas fa-pen"></i> Copy this down</div>
+                <p>Ten numbers, on the back of the card from section 02. Test yourself on the action, not the value. The exam hands you the number and asks what you do.</p>
+            </div>
+        </section>
 
-                <ul>
-                    <li>First febrile UTI in a child &lt;2 years (renal US, sometimes VCUG)</li>
-                    <li>Recurrent UTIs at any age</li>
-                    <li>Atypical UTI course (poor response to appropriate antibiotic, non-E. coli organism, abnormal exam)</li>
-                    <li>Any suspicion of anatomic anomaly</li>
-                </ul>
+        <!-- ══════════ PRODUCE ══════════ -->
+        <section class="guide-section" id="rebuild">
+            <div class="section-header">
+                <div class="section-number">10</div>
+                <h2>Now close the guide</h2>
+            </div>
 
-                <h3>Enuresis Workup</h3>
+            <p>Reading this again will not move your score. Producing it will. Everything below is done with the page shut.</p>
 
-                <ul>
-                    <li><strong>History:</strong> pattern (nocturnal vs diurnal), primary vs secondary, family history, bowel habits, fluid intake, stressors.</li>
-                    <li><strong>Physical exam:</strong> abdomen for fecal mass, external genitalia, spine (sacral dimple/tuft), neuro for lower extremities.</li>
-                    <li><strong>Urinalysis</strong> &mdash; rule out UTI, glucose (diabetes), concentration.</li>
-                    <li><strong>Voiding diary</strong> &mdash; record wet/dry nights and daytime voids for 1&ndash;2 weeks.</li>
-                    <li>Further testing (renal US, urodynamics, labs) for atypical or refractory cases.</li>
-                </ul>
-
-                <div class="bottom-line">Bottom Line: Cath or SPA for infant cultures; clean catch for older kids. Bag is screen-only. VCUG for VUR. UA + history for enuresis.</div>
-            </section>
-
-            <!-- Section 5: Treatment -->
-            <section class="guide-section" id="treatment">
-                <div class="section-header">
-                    <div class="section-number">5</div>
-                    <div class="section-title-group">
-                        <h2>Treatment</h2>
-                        <div class="subtitle">Antibiotics, reflux management, and enuresis strategies</div>
-                    </div>
-                </div>
-
-                <h3>UTI Antibiotics</h3>
-
-                <div class="med-grid">
-                    <div class="med-card">
-                        <h5>Oral First-Line</h5>
-                        <div class="med-class">Outpatient Cystitis</div>
-                        <p><strong>Cephalexin</strong>, amoxicillin-clavulanate, TMP-SMX, or nitrofurantoin (not in &lt;1 month or pyelonephritis).</p>
-                        <p>Local resistance patterns guide choice.</p>
-                        <p>Typical duration: <strong>7&ndash;10 days for young children; 3&ndash;5 days for adolescents with simple cystitis</strong>.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>IV First-Line</h5>
-                        <div class="med-class">Pyelonephritis / Sepsis</div>
-                        <p><strong>Ceftriaxone</strong> or <strong>ampicillin + gentamicin</strong>.</p>
-                        <p>Infants &lt;2 months: almost always admitted for IV treatment and rule-out sepsis workup.</p>
-                        <p>Transition to oral once clinically improving and culture data available.</p>
-                    </div>
-
-                    <div class="med-card">
-                        <h5>Prophylactic Antibiotics</h5>
-                        <div class="med-class">VUR Recurrence Prevention</div>
-                        <p>Low-dose <strong>TMP-SMX or nitrofurantoin</strong> nightly to prevent recurrent UTIs in selected VUR patients.</p>
-                        <p>Use is <strong>controversial</strong> &mdash; benefits weighed against resistance and side effects.</p>
-                        <p>Typically continued until reflux resolves or surgical repair.</p>
-                    </div>
-                </div>
-
-                <h3>VUR Management</h3>
-
-                <ul>
-                    <li><strong>Grades I&ndash;III:</strong> watch and wait; treat UTIs promptly; consider prophylactic antibiotics. Follow-up VCUG in 1&ndash;2 years to reassess.</li>
-                    <li><strong>Grades IV&ndash;V:</strong> surgical correction:
-                        <ul>
-                            <li><strong>Ureteral reimplantation</strong> (open or laparoscopic) &mdash; highly effective</li>
-                            <li><strong>Endoscopic injection (Deflux)</strong> &mdash; minimally invasive bulking agent at the ureteral orifice</li>
-                        </ul>
-                    </li>
-                    <li><strong>Post-op care:</strong> urinary catheter for days, monitor for bleeding/infection, pain management, hydration.</li>
-                    <li><strong>Long-term monitoring:</strong> BP, growth, urinalysis, periodic renal US; scarring is permanent even after reflux is fixed.</li>
-                </ul>
-
-                <h3>Enuresis Management</h3>
-
-                <ol class="step-list">
-                    <li><strong>Rule out secondary causes</strong> &mdash; UA, review bowel habits, glucose, stressors. Treat underlying cause if found.</li>
-                    <li><strong>Reassurance &amp; education</strong> &mdash; most primary nocturnal enuresis resolves on its own; frame as a developmental issue, not a failure.</li>
-                    <li><strong>Behavioral measures:</strong> limit fluids 2 hours before bed, void before bed, treat constipation, reward charts for dry nights, gentle night awakening to void.</li>
-                    <li><strong>Bedwetting (enuresis) alarm</strong> &mdash; moisture sensor wakes the child at the start of voiding. <strong>First-line behavioral therapy with the best long-term success rates.</strong> Takes 2&ndash;3 months to work; commitment is essential.</li>
-                    <li><strong>Desmopressin (DDAVP)</strong> &mdash; synthetic ADH analog. Reduces overnight urine production. Effective short-term (sleepovers, camp). <strong>Limit fluids for 1 hour before and 8 hours after the dose</strong> to avoid hyponatremia and seizures.</li>
-                    <li><strong>Imipramine</strong> &mdash; older option; rarely first-line now due to cardiac side effects and overdose risk. Reserved for refractory cases.</li>
-                    <li><strong>Referral</strong> &mdash; urology or pediatric nephrology for refractory or complex cases (daytime wetting, urgency, infrequent voiding).</li>
+            <div class="do-box">
+                <div class="do-box-label"><i class="fas fa-pencil-alt"></i> Write this down</div>
+                <ol>
+                    <li>Three conditions. For each, the definition, the clue, the priority action, the first-line treatment.</li>
+                    <li>The chain: fever to UTI to reflux to scar. Name the test that grades the reflux.</li>
+                    <li>The specimen by age. Which one can never be a culture, and why.</li>
+                    <li>Primary versus secondary enuresis. Which one you work up, and for what.</li>
+                    <li>The DDAVP fluid rule, in hours.</li>
                 </ol>
-
-                <div class="info-box clinical">
-                    <div class="info-box-icon"><i class="fas fa-lightbulb"></i></div>
-                    <div class="info-box-content">
-                        <h5>DDAVP Fluid Restriction Is a Safety Issue</h5>
-                        <p>Desmopressin works by concentrating urine &mdash; but if the child drinks too much fluid during that window, water intoxication occurs. <strong>Hyponatremia and seizures</strong> are the danger. Teach parents: no fluids 1 hour before the dose, no fluids 8 hours after. Use only for short-term situations (sleepover, camping), not nightly without specialist guidance.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: UTI = age-appropriate antibiotics. VUR low-grade = watch, high-grade = surgery. Enuresis = rule out causes, then alarms first-line, DDAVP short-term.</div>
-            </section>
-
-            <!-- Section 6: Nursing Care & Education -->
-            <section class="guide-section" id="nursing">
-                <div class="section-header">
-                    <div class="section-number">6</div>
-                    <div class="section-title-group">
-                        <h2>Nursing Care &amp; Family Education</h2>
-                        <div class="subtitle">Prevention, support, and confidence-building</div>
-                    </div>
-                </div>
-
-                <h3>UTI Prevention Teaching</h3>
-
-                <div class="key-point-grid">
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Wipe front to back</strong> for girls &mdash; teach at every age.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Void regularly</strong> &mdash; no "holding it"; empty the bladder every 2&ndash;3 hours.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Treat constipation</strong> &mdash; a full rectum presses on the bladder and raises UTI risk.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Encourage adequate fluids</strong> during the day.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Avoid bubble baths</strong> and harsh soaps; loose-fitting cotton underwear.</p>
-                    </div>
-                    <div class="key-point-item">
-                        <i class="fas fa-check-circle"></i>
-                        <p><strong>Adolescent girls:</strong> void after intercourse; consider cranberry products with varying evidence.</p>
-                    </div>
-                </div>
-
-                <h3>During and After a UTI</h3>
-
-                <ul>
-                    <li>Administer antibiotics on schedule; <strong>finish the full course</strong> even if symptoms improve.</li>
-                    <li>Encourage fluids to dilute urine and flush the bladder.</li>
-                    <li>Monitor for fever, improvement of symptoms, and side effects of antibiotics.</li>
-                    <li>Report persistent fever, worsening symptoms, or reappearance of symptoms after treatment completion.</li>
-                </ul>
-
-                <h3>VUR &amp; VCUG Care</h3>
-
-                <ul>
-                    <li><strong>Explain the VCUG in age-appropriate terms:</strong> catheter goes into the bladder, contrast goes in, X-ray watches while the child voids. Child life services can help with anxiety.</li>
-                    <li>Address embarrassment &mdash; older kids may feel exposed. Maintain privacy and dignity.</li>
-                    <li>Post-VCUG: fluids to flush, watch for burning (common for first void), dysuria for 1&ndash;2 voids is normal; significant pain or blood is not.</li>
-                    <li>If surgery: post-op catheter care, monitor for infection/bleeding, pain management, activity restrictions.</li>
-                </ul>
-
-                <h3>Enuresis Support</h3>
-
-                <ul>
-                    <li><strong>Start with reassurance.</strong> Most children outgrow bedwetting. Frame it as a body timing issue, not a moral failure.</li>
-                    <li>Involve the child in management &mdash; voiding diary, reward chart, carrying supplies to friends' houses.</li>
-                    <li>Use protective bedding (waterproof mattress cover). Practical supports reduce stress.</li>
-                    <li>Normalize with the child: <strong>1 in 10 seven-year-olds</strong> wets the bed &mdash; they're not alone.</li>
-                    <li>Coach parents to praise dry nights generously and avoid shaming wet ones.</li>
-                    <li>Provide information about support groups and online resources (AAP family-friendly resources).</li>
-                </ul>
-
-                <h3>When to Report / Return to Clinic</h3>
-
-                <ul>
-                    <li><strong>UTI:</strong> fever persists &gt;48 hours on antibiotics, worsening abdominal/flank pain, vomiting, new-onset lethargy.</li>
-                    <li><strong>VUR post-op:</strong> fever, worsening pain, bloody drainage, inability to void after catheter removal.</li>
-                    <li><strong>Enuresis:</strong> secondary onset, daytime wetting, pain with voiding, increased thirst/urination, weight loss.</li>
-                </ul>
-
-                <div class="info-box safe">
-                    <div class="info-box-icon"><i class="fas fa-check-circle"></i></div>
-                    <div class="info-box-content">
-                        <h5>The Nurse Is the Confidence-Builder</h5>
-                        <p>Children with recurrent UTIs, reflux procedures, or bedwetting often feel "different" or "bad." Small reassurances &mdash; "this is really common," "you're doing everything right," "this won't last forever" &mdash; have outsized effects on compliance and self-esteem. You often spend more time with the child and family than the provider; that time is teaching time.</p>
-                    </div>
-                </div>
-
-                <div class="bottom-line">Bottom Line: Teach hygiene, fluid, and constipation prevention. Support VCUG experiences. Normalize bedwetting and coach parents. Build confidence.</div>
-            </section>
-
-            <!-- Quiz CTA -->
-            <div class="quiz-cta">
-                <h3>Test your knowledge</h3>
-                <p>14 NCLEX-style questions covering every section of this guide.</p>
-                <a href="quiz/quiz.html?topic=uti-vur-enuresis" class="quiz-btn">
-                    <i class="fas fa-flask"></i> Start Quiz
-                </a>
             </div>
 
-            <!-- Cross References -->
-            <section class="cross-references" id="cross-references">
-                <h2><i class="fas fa-book-open"></i> Related Study Guides</h2>
-                <div class="cross-ref-grid">
-                    <a href="pediatric-renal-disorders.html" class="cross-ref-link">
-                        <i class="fas fa-droplet"></i> Pediatric Renal Disorders
-                    </a>
-                    <a href="pediatric-gi-obstructions.html" class="cross-ref-link">
-                        <i class="fas fa-stomach"></i> Pediatric GI Obstructions
+            <div class="info-box safe">
+                <div class="info-box-header"><i class="fas fa-check-circle"></i> Say these four out loud</div>
+                <div class="info-box-content">
+                    <p>Pick any one of the three conditions. Without looking, say the one-sentence definition, the clue you would see in a patient, the priority action, and the first-line treatment with its teaching point.</p>
+                    <p>Do that for all three and you are ready. If you cannot, you know exactly which section to reopen.</p>
+                </div>
+            </div>
+
+            <div class="bottom-line">
+                <strong>Bottom Line:</strong> You will be handed a febrile baby, a repeat UTI, or a wet bed. The answer is the specimen, the reflux workup, or the alarm. Study the discriminations and the order.
+            </div>
+        </section>
+
+
+        <section class="practice-questions" id="practice-questions">
+                <h2><i class="fas fa-flask"></i> Test yourself</h2>
+                <div class="quiz-cta-box">
+                    <div class="quiz-cta-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <div class="quiz-cta-content">
+                        <h3>Can you produce it?</h3>
+                        <p>14 questions with full rationales covering infant UTI, urine specimens, VUR grading and imaging, and enuresis management. Choose Practice Mode for instant feedback or Exam Mode to simulate test conditions.</p>
+                        <div class="quiz-cta-stats">
+                            <span><i class="fas fa-question-circle"></i> 14 Questions</span>
+                            <span><i class="fas fa-clock"></i> ~12 min</span>
+                            <span><i class="fas fa-layer-group"></i> Priority and Analysis</span>
+                        </div>
+                    </div>
+                    <a href="quiz/quiz.html?topic=uti-vur-enuresis" class="quiz-cta-button">
+                        <i class="fas fa-play"></i> Start Quiz
                     </a>
                 </div>
             </section>
 
-        </div><!-- end document-content -->
+            <!-- Key Points Summary -->
+            <section class="key-points-summary">
+                <h2><i class="fas fa-star"></i> Key Takeaways</h2>
+                <div class="key-points-grid">
+                    <div class="key-point">
+                        <i class="fas fa-thermometer"></i>
+                        <p><strong>Infant UTI</strong> often shows only fever; a febrile baby with no source gets a urine culture</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-ban"></i>
+                        <p><strong>Bag specimens</strong> screen only; culture needs clean catch, catheter, or aspiration</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-bacterium"></i>
+                        <p><strong>E. coli</strong> causes about 80 percent of pediatric UTIs</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-x-ray"></i>
+                        <p><strong>VCUG</strong> grades reflux; grades I to III watch, IV to V usually surgery</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-bell"></i>
+                        <p><strong>Bedwetting alarm</strong> is first-line for primary nocturnal enuresis</p>
+                    </div>
+                    <div class="key-point">
+                        <i class="fas fa-tint"></i>
+                        <p><strong>DDAVP</strong> needs fluid limits: 1 hour before, 8 hours after the dose</p>
+                    </div>
+                </div>
+            </section>
 
+            <!-- Cross-References -->
+            <section class="cross-references" id="cross-references">
+                <h2><i class="fas fa-book-open"></i> Related Guides in the Library</h2>
+                <div class="cross-ref-group">
+                    <h3>Also relevant:</h3>
+                    <ul>
+                        <li><a href="urinary-tract-infections.html"><i class="fas fa-arrow-right"></i> Urinary Tract Infections</a></li>
+                        <li><span class="coming-soon"><i class="fas fa-clock"></i> Chronic Kidney Disease, coming soon</span></li>
+                    </ul>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Document Footer -->
         <div class="document-footer">
-            <img src="../assets/images/the-nursing-collective-logo.svg" alt="The Nursing Collective" class="footer-logo">
-            <p class="footer-tagline">Your daily companion through nursing school.</p>
+            <img src="../assets/images/the-nursing-collective-logo-on-light.svg" alt="The Nursing Collective" class="footer-logo">
+            <p class="footer-tagline">Empowering nursing students with evidence-based study resources</p>
             <p class="footer-copyright">&copy; 2026 The Nursing Collective. All rights reserved.</p>
         </div>
 
-    </div><!-- end document-container -->
+    </div>
 
+    <!-- Guide page scripts (external for CSP compliance) -->
     <script src="configs/uti-vur-enuresis-config.js?v=3"></script>
     <script src="guide-sidebar.js?v=3"></script>
     <script src="guide-script.js?v=3"></script>

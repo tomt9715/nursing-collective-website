@@ -422,23 +422,33 @@
     box-shadow: var(--shadow-md, 0 6px 20px rgba(58,44,26,0.11));
 }
 
-/* Test mode: hide the value until you tap to reveal it */
+/* Test mode: genuinely cover the value (a blur is squintable, which defeats
+   self-testing). Tap a card to reveal it; tap again to cover it back. */
 .key-numbers-card.testing .key-number { cursor: pointer; }
 .key-numbers-card.testing .key-number:hover { transform: none; box-shadow: none; }
-.key-numbers-card.testing .key-number .key-number-value {
-    filter: blur(7px);
-    opacity: 0.5;
+.key-numbers-card.testing .key-number:not(.revealed) .key-number-value {
+    color: transparent;
     user-select: none;
-    transition: filter 0.15s ease, opacity 0.15s ease;
+    position: relative;
 }
-.key-numbers-card.testing .key-number.revealed .key-number-value {
-    filter: none;
-    opacity: 1;
-}
-.key-numbers-card.testing .key-number:not(.revealed) .key-number-label::after {
-    content: ' \00b7 tap';
+.key-numbers-card.testing .key-number:not(.revealed) .key-number-value::after {
+    content: 'tap';
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', 'Outfit', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     color: var(--text-dimmer, #8a8073);
-    font-size: 0.62rem;
+}
+/* Revealed cards carry a quiet hint that a second tap re-covers them. */
+.key-numbers-card.testing .key-number.revealed .key-number-label::after {
+    content: ' \00b7 hide';
+    color: var(--text-dimmer, #8a8073);
+    font-size: 0.6rem;
 }
 
 .key-numbers-grid {

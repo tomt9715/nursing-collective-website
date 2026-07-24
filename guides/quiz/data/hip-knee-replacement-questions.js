@@ -1,6 +1,6 @@
 /**
  * Hip & Knee Replacement Quiz — Question Data
- * 10 NCLEX-style questions: 5 Single, 3 Ordering, 2 Matrix
+ * 10 exam-style questions: 5 Single, 3 Ordering, 2 Matrix
  * Types: IDs 1,2,4,6,10=single | IDs 3,7,8=ordering | IDs 5,9=matrix
  */
 
@@ -108,7 +108,7 @@ var hipKneeReplacementQuizData = {
                 c: "While patients with diabetes, immunosuppression, or previous PJI are at HIGHER risk, antibiotic prophylaxis is recommended for ALL patients with prosthetic joints regardless of additional risk factors.",
                 d: "This is incorrect. The AAOS continues to recommend dental antibiotic prophylaxis for patients with joint replacements. This recommendation has NOT been discontinued."
             },
-            testTakingTip: "Prosthetic joint infection prevention: Lifetime dental antibiotic prophylaxis with amoxicillin 2g PO 1 hour before invasive dental procedures. This is a common NCLEX topic for discharge teaching. The prosthesis is a foreign body that bacteria can adhere to — unlike native joints, the immune system cannot effectively clear infections from prosthetic surfaces.",
+            testTakingTip: "Prosthetic joint infection prevention: Lifetime dental antibiotic prophylaxis with amoxicillin 2g PO 1 hour before invasive dental procedures. This is a common discharge-teaching topic. The prosthesis is a foreign body that bacteria can adhere to — unlike native joints, the immune system cannot effectively clear infections from prosthetic surfaces.",
             guideSection: "Section 9 — Complications",
             guideSectionId: "complications"
         },
@@ -158,7 +158,7 @@ var hipKneeReplacementQuizData = {
                 c: "The presentation (shortened, rotated leg with sudden pain) is characteristic of dislocation, not wound dehiscence. Wound dehiscence presents with visible wound separation, not extremity position changes.",
                 d: "While a neurological exam should be performed, the presentation is classic for dislocation, which is the priority diagnosis. A complete neuro exam should occur after the immediate emergency is addressed — the sciatic nerve can be compressed by the dislocated femoral head."
             },
-            testTakingTip: "Posterior dislocation presentation: leg is shortened, externally rotated, and adducted. Anterior dislocation: leg is externally rotated and abducted. Key nursing action: immobilize as found, do NOT attempt reduction. NCLEX trap: the option to 'realign' the leg sounds proactive but is WRONG — this is a surgeon intervention.",
+            testTakingTip: "Posterior dislocation presentation: leg is shortened, externally rotated, and adducted. Anterior dislocation: leg is externally rotated and abducted. Key nursing action: immobilize as found, do NOT attempt reduction. Trap: the option to 'realign' the leg sounds proactive but is WRONG — this is a surgeon intervention.",
             guideSection: "Section 9 — Complications",
             guideSectionId: "complications"
         },
@@ -235,7 +235,7 @@ var hipKneeReplacementQuizData = {
                 d: "ANTERIOR — External rotation combined with extension stresses the anterior capsule. Patients avoid turning the operative foot outward (duck-footed position), especially when lying supine.",
                 e: "POSTERIOR — Internal rotation (turning the foot inward) pushes the femoral head posteriorly. Patients avoid pigeon-toed positioning of the operative leg."
             },
-            testTakingTip: "Think about it anatomically: Posterior approach = don't push the hip BACKWARD (flexion, adduction, internal rotation). Anterior approach = don't push the hip FORWARD (extension, external rotation). The precautions protect the side that was surgically opened. NCLEX loves posterior approach questions — memorize the '3 Don'ts.'",
+            testTakingTip: "Think about it anatomically: Posterior approach = don't push the hip BACKWARD (flexion, adduction, internal rotation). Anterior approach = don't push the hip FORWARD (extension, external rotation). The precautions protect the side that was surgically opened. Exams love posterior approach questions; memorize the '3 Don'ts.'",
             guideSection: "Section 5 — Hip Precautions",
             guideSectionId: "hip-precautions"
         },
@@ -258,7 +258,7 @@ var hipKneeReplacementQuizData = {
                 c: "CT pulmonary angiography is the gold standard diagnostic test for PE, but diagnostics never come before stabilization. The patient needs oxygen and emergency evaluation first.",
                 d: "SCDs are a DVT PREVENTION measure, not a PE treatment. They are useless once embolization has already occurred. Additionally, if the patient has an existing DVT, leg compression could theoretically dislodge additional clot material."
             },
-            testTakingTip: "PE after joint replacement: sudden dyspnea + chest pain + tachycardia + hypoxemia = PE until proven otherwise. First actions: O2 + HOB elevated + rapid response. NCLEX will try to tempt you with heparin or CTPA — but always stabilize (ABC) before diagnostics or medication orders. PE is the #1 cause of death after joint replacement.",
+            testTakingTip: "PE after joint replacement: sudden dyspnea + chest pain + tachycardia + hypoxemia = PE until proven otherwise. First actions: O2 + HOB elevated + rapid response. The question will try to tempt you with heparin or CTPA — but always stabilize (ABC) before diagnostics or medication orders. PE is the #1 cause of death after joint replacement.",
             guideSection: "Section 7 — DVT Prevention",
             guideSectionId: "dvt-prevention"
         }

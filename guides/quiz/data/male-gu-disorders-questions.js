@@ -1,6 +1,6 @@
 /**
  * Male GU Disorders Quiz — Question Data
- * NCLEX-style questions covering phimosis, cryptorchidism,
+ * Exam-style questions covering phimosis, cryptorchidism,
  * and testicular torsion.
  */
 

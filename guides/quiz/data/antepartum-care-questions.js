@@ -1,6 +1,6 @@
 /**
  * Antepartum Care Quiz — Question Data
- * 10 NCLEX-style questions: 5 Single, 2 Priority, 1 Ordering, 1 Matrix, 1 SATA
+ * 10 clinical-scenario questions: 5 Single, 2 Priority, 1 Ordering, 1 Matrix, 1 SATA
  */
 
 /* exported antepartumCareQuizData */
@@ -30,7 +30,7 @@ var antepartumCareQuizData = {
                 c: "December 10 only subtracts 3 months but forgets to add 7 days.",
                 d: "January 10 adds 10 months but does not apply the correct formula."
             },
-            testTakingTip: "Naegele\u2019s rule: LMP \u2212 3 months + 7 days + 1 year (if needed). Practice this calculation \u2014 it appears frequently on the NCLEX. Always use the first day of the LMP, not the last day.",
+            testTakingTip: "Naegele\u2019s rule: LMP \u2212 3 months + 7 days + 1 year (if needed). Practice this calculation until it is automatic \u2014 it shows up on exams and in clinical. Always use the first day of the LMP, not the last day.",
             guideSection: "Section 2 \u2014 Confirmation of Pregnancy",
             guideSectionId: "pregnancy-confirmation"
         },
@@ -76,7 +76,7 @@ var antepartumCareQuizData = {
                 c: "Oxygen may be appropriate as a secondary intervention, but the root cause is positional \u2014 repositioning corrects the problem. Oxygen alone will not resolve the vena cava compression.",
                 d: "Notifying the provider may be needed if symptoms persist after repositioning, but the nurse should intervene with the immediate corrective action first."
             },
-            testTakingTip: "After 20 weeks gestation, NEVER leave a pregnant client supine. If hypotension occurs in the supine position, the first action is ALWAYS to reposition to left lateral. This is the most common NCLEX question on this topic.",
+            testTakingTip: "After 20 weeks gestation, NEVER leave a pregnant client supine. If hypotension occurs in the supine position, the first action is ALWAYS to reposition to left lateral. This is one of the most heavily tested concepts in maternity.",
             guideSection: "Section 3 \u2014 Maternal Physiological Adaptations",
             guideSectionId: "maternal-adaptations"
         },
@@ -103,7 +103,7 @@ var antepartumCareQuizData = {
                 b: "Blood type O negative with a negative antibody screen is expected. The client will need RhoGAM at 28 weeks and after delivery if the infant is Rh positive, but this is routine management, not an immediate concern.",
                 c: "A non-immune rubella titer means the client is susceptible to rubella. The nurse should educate about avoiding exposure, but the MMR vaccine is a live vaccine and CANNOT be given during pregnancy. Vaccination will be given postpartum."
             },
-            testTakingTip: "On the NCLEX, positive infection cultures always require follow-up. GBS in urine is treated immediately AND triggers intrapartum prophylaxis. Know the difference between GBS screening (35-37 weeks, vaginal/rectal) and GBS bacteriuria (urine, treated when found).",
+            testTakingTip: "Positive infection cultures always require follow-up. GBS in urine is treated immediately AND triggers intrapartum prophylaxis. Know the difference between GBS screening (35-37 weeks, vaginal/rectal) and GBS bacteriuria (urine, treated when found).",
             guideSection: "Section 4 \u2014 Prenatal Assessment & Screening",
             guideSectionId: "prenatal-assessment"
         },
@@ -175,7 +175,7 @@ var antepartumCareQuizData = {
                 b: "A prenatal clinic appointment is insufficient for this level of urgency. The client needs continuous monitoring, IV access capability, and the ability to deliver emergently if needed \u2014 only available in L&D or the ED.",
                 d: "Elevating feet and drinking water may help with dependent edema but will not treat preeclampsia. Facial and hand edema with neurological symptoms requires emergent evaluation."
             },
-            testTakingTip: "The preeclampsia danger sign triad: headache + visual changes + facial edema = GO TO THE HOSPITAL NOW. On the NCLEX, any combination of these symptoms in the third trimester warrants immediate emergency evaluation, not watchful waiting.",
+            testTakingTip: "The preeclampsia danger sign triad: headache + visual changes + facial edema = GO TO THE HOSPITAL NOW. Any combination of these symptoms in the third trimester warrants immediate emergency evaluation, not watchful waiting.",
             guideSection: "Section 8 \u2014 Danger Signs in Pregnancy",
             guideSectionId: "danger-signs"
         },
@@ -200,7 +200,7 @@ var antepartumCareQuizData = {
                 c: "CORRECT \u2014 Raw fish, deli meats (listeria risk), and unpasteurized dairy are correctly identified as foods to avoid during pregnancy due to risk of foodborne infections.",
                 d: "NEEDS MORE TEACHING \u2014 Moderate exercise (30 minutes most days) is recommended during uncomplicated pregnancy. Walking, swimming, and prenatal yoga improve circulation, reduce back pain, and may decrease the risk of gestational diabetes. Only high-risk pregnancies may require activity restrictions."
             },
-            testTakingTip: "NCLEX loves testing nutrition and lifestyle in pregnancy. Two common misconceptions to watch for: (1) herbal = safe, and (2) all exercise is dangerous. Both require additional teaching.",
+            testTakingTip: "Nutrition and lifestyle in pregnancy is a favorite exam target. Two common misconceptions to watch for: (1) herbal = safe, and (2) all exercise is dangerous. Both require additional teaching.",
             guideSection: "Section 6 \u2014 Nutrition & Lifestyle in Pregnancy",
             guideSectionId: "nutrition-lifestyle"
         },

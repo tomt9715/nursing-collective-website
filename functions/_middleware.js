@@ -261,9 +261,27 @@ function gatePage(status, { error = '', notice = '', success = '', email = '' } 
     });
 }
 
+/**
+ * Paths served normally even while the gate is up.
+ *
+ * The backend reads guides/catalog.json to know which guides exist. Behind
+ * the gate that fetch returns the coming-soon page, so the API silently fell
+ * back to a vendored copy that went stale for months. Letting this one file
+ * through keeps the two in step. It holds guide titles, descriptions and
+ * category slugs — the same content the pricing page already describes, and
+ * no user data.
+ */
+const PUBLIC_PATHS = new Set([
+    '/guides/catalog.json',
+]);
+
 export async function onRequest(context) {
     const { request, env, next } = context;
     const password = env.SITE_PASSWORD;
+
+    if (PUBLIC_PATHS.has(new URL(request.url).pathname)) {
+        return next();
+    }
 
     // Fail CLOSED: if the password isn't configured, nobody gets in.
     // (Safer than accidentally leaving the whole site open.)

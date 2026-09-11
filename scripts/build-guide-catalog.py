@@ -21,7 +21,8 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 SRC = REPO_ROOT / 'my-guides-script.js'
-OUT = REPO_ROOT / 'guides' / 'catalog.json'
+GUIDES_DIR = REPO_ROOT / 'guides'
+OUT = GUIDES_DIR / 'catalog.json'
 
 
 # ── Keyword enrichment by category slug ──────────────────────────
@@ -73,6 +74,35 @@ def tokenize(s):
     tokens = re.findall(r'[a-zA-Z]+', (s or '').lower())
     STOP = {'and', 'or', 'the', 'a', 'an', 'of', 'in', 'on', 'for', 'to', 'with', 'nursing', 'care', 'disorders', 'disorder'}
     return [t for t in tokens if t not in STOP and len(t) > 1]
+
+
+DESCRIPTION_RE = re.compile(
+    r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']\s*/?>',
+    re.IGNORECASE | re.DOTALL,
+)
+
+
+def read_description(guide_id):
+    """
+    Pull the guide's own <meta name="description"> out of its HTML.
+
+    The guide page is where this copy is already written and kept current,
+    so the catalog quotes it rather than keeping a second version that can
+    drift. Returns '' when the guide has no meta description — callers
+    treat that as "no description", not as an error.
+    """
+    path = GUIDES_DIR / f'{guide_id}.html'
+    if not path.exists():
+        print(f'  ! {guide_id}: no HTML file, description left empty', file=sys.stderr)
+        return ''
+
+    m = DESCRIPTION_RE.search(path.read_text(encoding='utf-8'))
+    if not m:
+        print(f'  ! {guide_id}: no meta description', file=sys.stderr)
+        return ''
+
+    # Collapse the whitespace an HTML author may have wrapped it across.
+    return re.sub(r'\s+', ' ', m.group(1)).strip()
 
 
 def extract_classes(js_src):
@@ -231,6 +261,7 @@ def build_catalog(classes):
 
                 guides[g['file']] = {
                     'title': g['name'],
+                    'description': read_description(g['file']),
                     'class': class_id,
                     'class_name': class_name,
                     'category': category_slug,

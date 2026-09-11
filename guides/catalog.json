@@ -1,9 +1,10 @@
 {
   "version": 1,
-  "generated_at": "2026-09-11T23:35:55.992808+00:00",
+  "generated_at": "2026-09-11T23:53:39.684344+00:00",
   "guides": {
     "assessment-skills": {
       "title": "Assessment Skills",
+      "description": "Nursing study guide for Assessment Skills. Learn the order that never changes, the scales that decide your actions, and the findings that mean call now.",
       "class": "fundamentals",
       "class_name": "Fundamentals of Nursing",
       "category": "assessment-clinical-skills",
@@ -18,6 +19,7 @@
     },
     "infection-control": {
       "title": "Infection Control",
+      "description": "Nursing study guide for infection control. Chain of infection, standard precautions, contact droplet and airborne, PPE order, the two organisms that need soap and water, and protective environments.",
       "class": "fundamentals",
       "class_name": "Fundamentals of Nursing",
       "category": "assessment-clinical-skills",
@@ -34,6 +36,7 @@
     },
     "patient-safety": {
       "title": "Patient Safety",
+      "description": "Nursing study guide for patient safety. Two identifiers, fall prevention, restraint rules and renewal times, medication safety, fire response, and what to do after an error.",
       "class": "fundamentals",
       "class_name": "Fundamentals of Nursing",
       "category": "assessment-clinical-skills",
@@ -50,6 +53,7 @@
     },
     "mobility-transfers": {
       "title": "Mobility & Transfers",
+      "description": "Nursing study guide for mobility and transfers. Safe patient handling, gait belts, which side you stand on, cane and crutch measurement, stairs, positioning, and the complications of immobility.",
       "class": "fundamentals",
       "class_name": "Fundamentals of Nursing",
       "category": "assessment-clinical-skills",
@@ -66,6 +70,7 @@
     },
     "documentation-charting": {
       "title": "Documentation & Charting",
+      "description": "Nursing study guide for documentation and charting. Objective versus subjective, correcting an error, late entries, telephone orders and read-back, SBAR handoff, charting formats and privacy rules.",
       "class": "fundamentals",
       "class_name": "Fundamentals of Nursing",
       "category": "assessment-clinical-skills",
@@ -82,6 +87,7 @@
     },
     "heart-failure": {
       "title": "Heart Failure",
+      "description": "Comprehensive nursing study guide for Heart Failure. Learn to identify left vs right-sided HF, differentiate systolic and diastolic dysfunction, and prioritize nursing interventions.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "cardiovascular",
@@ -100,6 +106,7 @@
     },
     "myocardial-infarction": {
       "title": "Myocardial Infarction",
+      "description": "Nursing study guide for Myocardial Infarction. Separate STEMI from NSTEMI, read the leads to the wall and the wall to the artery, and know which MI makes nitroglycerin the wrong drug.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "cardiovascular",
@@ -119,6 +126,7 @@
     },
     "arrhythmias": {
       "title": "Arrhythmias",
+      "description": "Nursing study guide for cardiac arrhythmias. Read a strip in five steps, separate the look-alike rhythms, and know which patient gets a shock and which gets a drug.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "cardiovascular",
@@ -137,6 +145,7 @@
     },
     "hypertension": {
       "title": "Hypertension",
+      "description": "Nursing study guide for hypertension. Stage a blood pressure correctly, separate urgency from emergency, and know what each drug class costs the patient.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "cardiovascular",
@@ -155,6 +164,7 @@
     },
     "coronary-artery-disease": {
       "title": "Coronary Artery Disease",
+      "description": "Nursing study guide for Coronary Artery Disease. Separate stable from unstable angina, place a patient on the ACS continuum, prep a cath safely, and know what you do first.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "cardiovascular",
@@ -175,6 +185,7 @@
     },
     "peripheral-vascular-disease": {
       "title": "Peripheral Vascular Disease",
+      "description": "Nursing study guide for Peripheral Vascular Disease. Separate arterial from venous, calculate and read an ABI, prevent and treat DVT, and know which way the legs go.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "cardiovascular",
@@ -195,6 +206,7 @@
     },
     "copd": {
       "title": "COPD",
+      "description": "Nursing study guide for COPD. Separate chronic bronchitis from emphysema, give oxygen without causing CO2 narcosis, and teach the breathing that actually helps.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "respiratory",
@@ -212,6 +224,7 @@
     },
     "asthma": {
       "title": "Asthma",
+      "description": "Nursing study guide for Asthma. Sort rescue from controller, read an exacerbation by what the patient can still say, and know why a silent chest is worse than a loud wheeze.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "respiratory",
@@ -229,6 +242,7 @@
     },
     "pneumonia": {
       "title": "Pneumonia",
+      "description": "Nursing study guide for Pneumonia. Use the 48-hour rule to pick the antibiotic, separate bacterial from atypical, and know why confusion in an older patient is a respiratory finding.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "respiratory",
@@ -246,6 +260,7 @@
     },
     "tuberculosis": {
       "title": "Tuberculosis",
+      "description": "Nursing study guide for Tuberculosis. Separate latent from active, read a TST correctly, run airborne isolation, and know what each RIPE drug does to the patient.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "respiratory",
@@ -263,6 +278,7 @@
     },
     "oxygen-therapy": {
       "title": "Oxygen Therapy",
+      "description": "Nursing study guide for Oxygen Therapy. Pick the right device, estimate FiO2, target the right saturation in COPD, and know when the pulse oximeter is lying to you.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "respiratory",
@@ -281,6 +297,7 @@
     },
     "chest-tubes": {
       "title": "Chest Tubes",
+      "description": "Nursing study guide for Chest Tubes. Tell tidaling from an air leak, know the three times clamping is allowed, and know what to do when the tube comes out.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "respiratory",
@@ -299,6 +316,7 @@
     },
     "diabetes-mellitus": {
       "title": "Diabetes Mellitus",
+      "description": "Nursing study guide for Diabetes Mellitus. Separate Type 1 from Type 2, DKA from HHS, and know why potassium is checked before the insulin goes up.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "endocrine",
@@ -316,6 +334,7 @@
     },
     "thyroid-disorders": {
       "title": "Thyroid Disorders",
+      "description": "Nursing study guide for Thyroid Disorders. Read TSH backwards, separate myxedema coma from thyroid storm, and know why airway is the first post-thyroidectomy assessment.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "endocrine",
@@ -332,6 +351,7 @@
     },
     "adrenal-disorders": {
       "title": "Adrenal Disorders",
+      "description": "Nursing study guide for Adrenal Disorders. Cushing's and Addison's as mirror images, adrenal crisis you treat before the labs, steroid tapering, and pheochromocytoma.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "endocrine",
@@ -348,6 +368,7 @@
     },
     "pituitary-disorders": {
       "title": "Pituitary Disorders",
+      "description": "Nursing study guide for pituitary disorders. SIADH and DI as mirror images, why sodium is corrected slowly, transsphenoidal care, acromegaly and prolactinoma.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "endocrine",
@@ -364,6 +385,7 @@
     },
     "stroke": {
       "title": "Stroke",
+      "description": "Nursing study guide for Stroke. Separate clot from bleed before you treat, work the tPA criteria, and know why the blood pressure is allowed to stay high.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "neurological",
@@ -381,6 +403,7 @@
     },
     "seizures": {
       "title": "Seizures / Epilepsy",
+      "description": "Nursing study guide for Seizures and Epilepsy. Classify by where it starts, know the five-minute rule, and learn why nothing goes in the mouth.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "neurological",
@@ -399,6 +422,7 @@
     },
     "gi-bleeding": {
       "title": "GI Bleeding",
+      "description": "Nursing study guide for GI bleeding. Upper or lower from the stool, why the first hemoglobin lies, transfusion triggers, and what you do in the first hour.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "gastrointestinal",
@@ -416,6 +440,7 @@
     },
     "fractures": {
       "title": "Fractures",
+      "description": "Nursing study guide for fractures. The 5 P's, why pain on passive stretch beats a pulse, compartment syndrome in six hours, fat embolism, and Salter-Harris.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "musculoskeletal",
@@ -434,6 +459,7 @@
     },
     "hip-knee-replacement": {
       "title": "Hip & Knee Replacement",
+      "description": "Nursing study guide for hip and knee replacement. Match hip precautions to the surgical approach, catch dislocation and VTE early, and read a weight-bearing order.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "musculoskeletal",
@@ -454,6 +480,7 @@
     },
     "urinary-tract-infections": {
       "title": "UTI & Pyelonephritis",
+      "description": "Nursing study guide for UTI and pyelonephritis. Tell lower from upper with three findings, prevent CAUTI, and catch urosepsis before the blood pressure falls.",
       "class": "med-surg",
       "class_name": "Medical-Surgical Nursing",
       "category": "renal-urinary",
@@ -475,6 +502,7 @@
     },
     "antepartum-care": {
       "title": "Antepartum Care",
+      "description": "Nursing study guide for antepartum care. Confirm and date a pregnancy, screen on schedule, read fetal assessment, catch the danger signs, and get RhoGAM timing right.",
       "class": "maternal-newborn",
       "class_name": "Maternal-Newborn Nursing",
       "category": "maternal-newborn",
@@ -491,6 +519,7 @@
     },
     "pediatric-congenital-heart-defects": {
       "title": "Congenital Heart Defects",
+      "description": "Pediatric nursing study guide for congenital heart defects. Sort defects by one axis, act on a tet spell, catch infant heart failure, and give digoxin and prostaglandin E1 safely.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-cardiac",
@@ -507,6 +536,7 @@
     },
     "kawasaki-disease": {
       "title": "Kawasaki Disease",
+      "description": "Pediatric nursing study guide for Kawasaki Disease. Tell it from a viral rash, protect the coronary arteries, give IVIG inside ten days, and use aspirin the one time you do.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-cardiac",
@@ -524,6 +554,7 @@
     },
     "rheumatic-fever-endocarditis": {
       "title": "Rheumatic Fever & Endocarditis",
+      "description": "Pediatric nursing study guide for Rheumatic Fever and Infective Endocarditis. Tell the immune disease from the valve infection, apply the Jones criteria, read the peripheral signs, and know who needs prophylaxis.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-cardiac",
@@ -542,6 +573,7 @@
     },
     "pediatric-gi-obstructions": {
       "title": "Pediatric GI Obstructions",
+      "description": "Pediatric nursing study guide for GI obstructions: pyloric stenosis, intussusception, Hirschsprung disease, and appendicitis. Tell the four apart, read the vomit, and order pre-op care.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-gi",
@@ -557,6 +589,7 @@
     },
     "cleft-lip-palate": {
       "title": "Cleft Lip & Palate",
+      "description": "Pediatric nursing study guide for cleft lip and palate. Feeding technique, the Rule of 10s, surgical timing, and the two opposite post-op positioning rules.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-gi",
@@ -574,6 +607,7 @@
     },
     "pediatric-gerd": {
       "title": "Pediatric GERD",
+      "description": "Pediatric nursing study guide for GERD. Separate physiologic GER from pathologic GERD, spot the red flags that are not reflux, and order conservative care before medication and surgery.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-gi",
@@ -589,6 +623,7 @@
     },
     "pediatric-renal-disorders": {
       "title": "Pediatric Renal Disorders",
+      "description": "Pediatric nursing study guide for renal disorders: nephrotic syndrome, acute glomerulonephritis, hemolytic uremic syndrome, AKI, and CKD. Read the urine and the pressure, name the HUS triad, and act on potassium.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-gu",
@@ -605,6 +640,7 @@
     },
     "uti-vur-enuresis": {
       "title": "UTI, VUR & Enuresis",
+      "description": "Pediatric nursing study guide for urinary tract infection, vesicoureteral reflux, and enuresis. Age-based UTI presentation, correct urine specimen, VUR grading, and first-line enuresis management.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-gu",
@@ -624,6 +660,7 @@
     },
     "male-gu-disorders": {
       "title": "Male GU Disorders",
+      "description": "Nursing study guide for male genitourinary disorders. Recognize testicular torsion in one look, separate it from epididymitis, and know which babies must not be circumcised.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-gu",
@@ -641,6 +678,7 @@
     },
     "neural-tube-defects": {
       "title": "Neural Tube Defects",
+      "description": "Pediatric nursing study guide for neural tube defects: spina bifida occulta, meningocele, and myelomeningocele. Sac protection, latex precautions, hydrocephalus and shunt care, and long-term management.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-musculoskeletal",
@@ -659,6 +697,7 @@
     },
     "pediatric-fractures-immobility": {
       "title": "Pediatric Fractures & Immobility",
+      "description": "Pediatric nursing study guide for fractures and immobility. Pediatric fracture types, Salter-Harris growth-plate injury, the 6 Ps and compartment syndrome, casts and traction, non-accidental trauma, and immobility complications.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-musculoskeletal",
@@ -676,6 +715,7 @@
     },
     "pediatric-skin-infections": {
       "title": "Pediatric Skin Infections",
+      "description": "Pediatric nursing study guide for bacterial, viral, and fungal skin infections. Sort a childhood rash, pick antibiotic vs antifungal vs antiviral, and teach return-to-school.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-skin",
@@ -692,6 +732,7 @@
     },
     "hypersensitivity-inflammatory-skin": {
       "title": "Hypersensitivity & Inflammatory Skin",
+      "description": "Pediatric nursing study guide for the four hypersensitivity types plus atopic dermatitis, contact dermatitis, urticaria, and the Stevens-Johnson spectrum.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-skin",
@@ -709,6 +750,7 @@
     },
     "pediatric-burns": {
       "title": "Pediatric Burns",
+      "description": "Pediatric nursing study guide for burn care. Burn depth, pediatric BSA estimation, Parkland fluid resuscitation, emergency airway priorities, wound care, and rehabilitation.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-skin",
@@ -725,6 +767,7 @@
     },
     "pediatric-leukemias": {
       "title": "Pediatric Leukemias (ALL/AML)",
+      "description": "Pediatric nursing study guide for childhood leukemias. Tell ALL from AML, map the three cytopenias to their signs, treat neutropenic fever as an emergency, and recognize tumor lysis syndrome.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-hematology-oncology",
@@ -745,6 +788,7 @@
     },
     "sickle-cell-crisis": {
       "title": "Sickle Cell Crisis",
+      "description": "Pediatric nursing study guide for sickle cell crisis. Tell the pain crisis apart from acute chest syndrome and splenic sequestration, order priority care, and know what prevents the next episode.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-hematology-oncology",
@@ -765,6 +809,7 @@
     },
     "pediatric-solid-tumors": {
       "title": "Pediatric Solid Tumors",
+      "description": "Pediatric nursing study guide for neuroblastoma, Wilms tumor, and medulloblastoma. Tell them apart, know why you never palpate an abdominal mass, and act on rising intracranial pressure.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-hematology-oncology",
@@ -784,6 +829,7 @@
     },
     "bleeding-disorders": {
       "title": "Bleeding Disorders (Hemophilia & ITP)",
+      "description": "Pediatric nursing study guide for hemophilia and immune thrombocytopenic purpura (ITP). Tell deep factor bleeds from surface platelet bleeds, read the coag panel, order a head-injury response, and separate a bleeding disorder from abuse.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-hematology-oncology",
@@ -804,6 +850,7 @@
     },
     "iron-deficiency-anemia": {
       "title": "Iron-Deficiency Anemia",
+      "description": "Pediatric nursing study guide for iron-deficiency anemia. Separate it from its look-alikes, give oral iron correctly, and know the numbers that change what you do.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-hematology-oncology",
@@ -824,6 +871,7 @@
     },
     "jia-lupus": {
       "title": "JIA & Pediatric Lupus",
+      "description": "Pediatric nursing study guide for juvenile idiopathic arthritis (JIA) and pediatric systemic lupus erythematosus. Tell inflammatory joint pain from mechanical, screen for silent uveitis, read lupus as a multi-organ disease, and teach methotrexate and steroids safely.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-immune-rheumatology",
@@ -842,6 +890,7 @@
     },
     "immune-deficiency-hiv": {
       "title": "Immune Deficiency, HIV & Anaphylaxis",
+      "description": "Pediatric nursing study guide for primary immune deficiency, pediatric HIV, and anaphylaxis. Recognize anaphylaxis and give IM epinephrine first, hold live vaccines in immunocompromised children, and teach families HIV home care.",
       "class": "pediatrics",
       "class_name": "Pediatric Nursing",
       "category": "pediatric-immune-rheumatology",
@@ -861,6 +910,7 @@
     },
     "cardiac-medications": {
       "title": "Cardiac Medications",
+      "description": "Nursing study guide for cardiac medications. Learn the hold parameter for every class, what each drug does to potassium, and the patient teaching that gets tested.",
       "class": "pharmacology",
       "class_name": "Pharmacology",
       "category": "pharmacology",
@@ -875,6 +925,7 @@
     },
     "antibiotics-antivirals": {
       "title": "Antibiotics & Antivirals",
+      "description": "Nursing pharmacology study guide for antibiotics, antivirals and antifungals. Learn the toxicity that goes with each class, when to draw peaks and troughs, and the order of culture, allergy check and first dose.",
       "class": "pharmacology",
       "class_name": "Pharmacology",
       "category": "pharmacology",
@@ -890,6 +941,7 @@
     },
     "pain-management": {
       "title": "Pain Management",
+      "description": "Nursing study guide for pain management. Sedation before respiratory depression, acetaminophen ceilings, PCA safety, naloxone, and the one pain you never medicate harder.",
       "class": "pharmacology",
       "class_name": "Pharmacology",
       "category": "pharmacology",
@@ -905,6 +957,7 @@
     },
     "iv-medications": {
       "title": "IV Medications",
+      "description": "Nursing study guide for IV medications and IV therapy. High-alert drugs, infiltration versus extravasation, fluid tonicity, central versus peripheral access, transfusion safety, and rate calculations.",
       "class": "pharmacology",
       "class_name": "Pharmacology",
       "category": "pharmacology",
@@ -919,6 +972,7 @@
     },
     "psychotropic-medications": {
       "title": "Psychotropic Medications",
+      "description": "Nursing study guide for psychotropic medications. Antipsychotics and EPS, NMS versus serotonin syndrome, clozapine monitoring after the REMS ended, lithium levels, antidepressant classes and MAOI teaching.",
       "class": "pharmacology",
       "class_name": "Pharmacology",
       "category": "pharmacology",
@@ -933,6 +987,7 @@
     },
     "emergency-medications": {
       "title": "Emergency Medications",
+      "description": "Nursing study guide for emergency medications. Code drugs and doses, atropine and adenosine, vasopressors and extravasation, the antidote table, anaphylaxis, hyperkalemia and status epilepticus.",
       "class": "pharmacology",
       "class_name": "Pharmacology",
       "category": "pharmacology",

@@ -347,12 +347,11 @@
                         { name: 'Cardiac Medications', file: 'cardiac-medications' },
                         { name: 'Antibiotics & Antivirals', file: 'antibiotics-antivirals' },
                         { name: 'Pain Management', file: 'pain-management' },
-                        { name: 'IV Medications', file: 'iv-medications' }
+                        { name: 'IV Medications', file: 'iv-medications' },
+                        { name: 'Psychotropic Medications', file: 'psychotropic-medications' },
+                        { name: 'Emergency Medications', file: 'emergency-medications' }
                     ],
-                    comingSoon: [
-                        { name: 'Psychotropic Medications', icon: 'psychotropic-medications' },
-                        { name: 'Emergency Medications', icon: 'emergency-medications' }
-                    ]
+                    comingSoon: []
                 }
             ]
         }

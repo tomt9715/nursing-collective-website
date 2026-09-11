@@ -3,6 +3,77 @@
 
 // Guide preview content (realistic placeholder - preview of full guide)
 const guidePreviewContent = {
+    'psychotropic-medications': {
+        title: 'Psychotropic Medications',
+        storeUrl: 'pricing.html#psychotropic-medications',
+        content: `
+# Psychotropic Medications Study Guide
+
+## Overview
+Four movement problems that look alike, two emergencies that look like each other, and one drug level where therapeutic and toxic almost touch.
+
+## What You'll Learn
+
+### The four movement problems
+- **Hours** = acute dystonia, an airway emergency
+- **Days** = akathisia, which is not anxiety
+- **Weeks** = pseudoparkinsonism
+- **Months to years** = tardive dyskinesia, which may not reverse
+
+### The two hyperthermic emergencies
+- **Serotonin syndrome**: under 24 hours, clonus, brisk reflexes, dilated pupils
+- **Neuroleptic malignant syndrome**: days to weeks, lead-pipe rigidity, sluggish reflexes
+- Both start with stopping the drug and calling for help
+
+### Lithium
+- Therapeutic **0.6 to 1.2**, toxic above **1.5**, severe above **2.0**
+- Level drawn **12 hours** after the last dose
+- Anything that drops salt or water raises the level
+
+### Clozapine
+- Weekly for 6 months, every 2 weeks for 6 months, then monthly
+- Severe neutropenia under **500** stops the drug
+- What the 2025 end of the REMS actually changed, and what it did not
+
+### Antidepressants
+- **4 to 6 weeks** for full effect, with some lift by 1 to 2 weeks
+- Energy returns before hope does, so early treatment raises risk
+- MAOI teaching: aged, fermented, cured or spoiled, plus the 2 and 5 week washouts
+`
+    },
+    'emergency-medications': {
+        title: 'Emergency Medications',
+        storeUrl: 'pricing.html#emergency-medications',
+        content: `
+# Emergency Medications Study Guide
+
+## Overview
+A short list of drugs you will never have time to look up. The questions are never about the drug; they are about sequence.
+
+## What You'll Learn
+
+### Cardiac arrest
+- **Shockable** (V-fib, pulseless V-tach): defibrillate first, then epinephrine and amiodarone
+- **Not shockable** (asystole, PEA): compressions, epinephrine, and find the cause
+- Epinephrine **1 mg every 3 to 5 minutes**, amiodarone **300 mg**
+
+### Rhythm drugs, and the technique that decides them
+- Atropine **1 mg, max 3 mg**. Doses under 1 mg can slow the heart further
+- Adenosine **6 mg then 12 mg**, pushed over 1 to 2 seconds with a 20 mL flush
+- Defibrillation against synchronized cardioversion, and why the button exists
+
+### The antidote table
+- Ten pairs, and the clock on each one
+- Naloxone lasts **30 to 90 minutes**, shorter than the opioid
+
+### Anaphylaxis
+- **0.01 mg/kg of 1:1,000 IM** in the vastus lateralis, repeated every 5 to 15 minutes
+- The antihistamine is always the decoy
+
+### Hyperkalemia
+- **Protect, shift, remove.** Calcium comes first and changes no number
+`
+    },
     'infection-control': {
         title: 'Infection Control',
         storeUrl: 'pricing.html#infection-control',

@@ -287,6 +287,18 @@
         <priority>0.8</priority>
     </url>
     <url>
+        <loc>https://thenursingcollective.pro/guides/psychotropic-medications.html</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://thenursingcollective.pro/guides/emergency-medications.html</loc>
+        <lastmod>2026-09-11</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://thenursingcollective.pro/guides/pain-management.html</loc>
         <lastmod>2026-07-24</lastmod>
         <changefreq>monthly</changefreq>

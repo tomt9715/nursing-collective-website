@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generated_at": "2026-08-03T18:59:48.530825+00:00",
+  "generated_at": "2026-09-11T23:35:55.992808+00:00",
   "guides": {
     "assessment-skills": {
       "title": "Assessment Skills",
@@ -913,6 +913,34 @@
       "keywords": [
         "drugs",
         "iv",
+        "medications",
+        "pharmacology"
+      ]
+    },
+    "psychotropic-medications": {
+      "title": "Psychotropic Medications",
+      "class": "pharmacology",
+      "class_name": "Pharmacology",
+      "category": "pharmacology",
+      "category_name": "Pharmacology",
+      "population": "mixed",
+      "keywords": [
+        "drugs",
+        "medications",
+        "pharmacology",
+        "psychotropic"
+      ]
+    },
+    "emergency-medications": {
+      "title": "Emergency Medications",
+      "class": "pharmacology",
+      "class_name": "Pharmacology",
+      "category": "pharmacology",
+      "category_name": "Pharmacology",
+      "population": "mixed",
+      "keywords": [
+        "drugs",
+        "emergency",
         "medications",
         "pharmacology"
       ]

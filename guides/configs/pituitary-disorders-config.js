@@ -21,12 +21,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-tachometer-alt', value: '10-12 mEq/L', label: 'Max sodium correction in 24h' },
-        { type: 'warning', icon: 'fa-glass-water', value: '800-1000 mL', label: 'SIADH fluid restriction' },
-        { type: 'critical', icon: 'fa-toilet', value: '>200 mL/hr', label: 'Post-op output meaning DI' },
-        { type: 'info', icon: 'fa-arrows-up-down', value: '30-45°', label: 'Head of bed post-op' },
-        { type: 'target', icon: 'fa-droplet', value: '1.010-1.025', label: 'Normal specific gravity' },
-        { type: 'success', icon: 'fa-vial', value: '135-145', label: 'Normal serum sodium (mEq/L)' }
+        { type: 'critical', icon: 'fa-tachometer-alt', value: '10-12 mEq/L', label: 'Max sodium correction in 24h', section: 'siadh' },
+        { type: 'warning', icon: 'fa-glass-water', value: '800-1000 mL', label: 'SIADH fluid restriction', section: 'siadh' },
+        { type: 'critical', icon: 'fa-toilet', value: '>200 mL/hr', label: 'Post-op output meaning DI', section: 'transsphenoidal' },
+        { type: 'info', icon: 'fa-arrows-up-down', value: '30-45°', label: 'Head of bed post-op', section: 'transsphenoidal' },
+        { type: 'target', icon: 'fa-droplet', value: '1.010-1.025', label: 'Normal specific gravity', section: 'lab-values' },
+        { type: 'success', icon: 'fa-vial', value: '135-145', label: 'Normal serum sodium (mEq/L)', section: 'lab-values' }
     ],
     clinicalPearls: [
         { id: 'tip-adh-regulation', title: 'The Name Tells You Everything', text: 'Anti-diuretic. More ADH means less urine, concentrated. Less ADH means more urine, dilute. Both diseases follow.' },

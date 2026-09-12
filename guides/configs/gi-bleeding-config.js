@@ -15,12 +15,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-tint', value: '7 g/dL', label: 'Transfusion trigger' },
-        { type: 'time', icon: 'fa-clock', value: '24 hrs', label: 'Endoscopy if stable' },
-        { type: 'warning', icon: 'fa-heartbeat', value: '<90 mmHg', label: 'Systolic that means unstable' },
-        { type: 'target', icon: 'fa-syringe', value: '2 x 18G', label: 'Large-bore IV access' },
-        { type: 'info', icon: 'fa-pills', value: '80mg + 8mg/hr', label: 'High-dose PPI' },
-        { type: 'critical', icon: 'fa-exclamation-triangle', value: '>100 bpm', label: 'The earliest sign' }
+        { type: 'critical', icon: 'fa-tint', value: '7 g/dL', label: 'Transfusion trigger', section: 'interventions' },
+        { type: 'time', icon: 'fa-clock', value: '24 hrs', label: 'Endoscopy if stable', section: 'diagnostics' },
+        { type: 'warning', icon: 'fa-heartbeat', value: '<90 mmHg', label: 'Systolic that means unstable', section: 'assessment' },
+        { type: 'target', icon: 'fa-syringe', value: '2 x 18G', label: 'Large-bore IV access', section: 'interventions' },
+        { type: 'info', icon: 'fa-pills', value: '80mg + 8mg/hr', label: 'High-dose PPI', section: 'medications' },
+        { type: 'critical', icon: 'fa-exclamation-triangle', value: '>100 bpm', label: 'The earliest sign', section: 'assessment' }
     ],
     clinicalPearls: [
         { id: 'tip-ligament-treitz', title: 'The Line That Picks the Scope', text: 'Above the ligament of Treitz means an EGD. Below it means a colonoscopy. Everything else follows.' },

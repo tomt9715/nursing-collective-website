@@ -22,14 +22,14 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-heartbeat', value: '60-100', label: 'Normal HR (bpm)' },
-        { type: 'target', icon: 'fa-lungs', value: '12-20', label: 'Normal RR (/min)' },
-        { type: 'target', icon: 'fa-tachometer-alt', value: '<120/80', label: 'Normal BP (mmHg)' },
-        { type: 'target', icon: 'fa-percent', value: '95-100%', label: 'Normal SpO2' },
-        { type: 'critical', icon: 'fa-brain', value: '<=8', label: 'GCS: airway at risk' },
-        { type: 'critical', icon: 'fa-bed', value: '<=12', label: 'Braden: high risk' },
-        { type: 'warning', icon: 'fa-clock', value: '<3 sec', label: 'Normal cap refill' },
-        { type: 'info', icon: 'fa-eye', value: '3-5 mm', label: 'Normal pupil size' }
+        { type: 'target', icon: 'fa-heartbeat', value: '60-100', label: 'Normal HR (bpm)', section: 'vital-signs' },
+        { type: 'target', icon: 'fa-lungs', value: '12-20', label: 'Normal RR (/min)', section: 'vital-signs' },
+        { type: 'target', icon: 'fa-tachometer-alt', value: '<120/80', label: 'Normal BP (mmHg)', section: 'vital-signs' },
+        { type: 'target', icon: 'fa-percent', value: '95-100%', label: 'Normal SpO2', section: 'vital-signs' },
+        { type: 'critical', icon: 'fa-brain', value: '<=8', label: 'GCS: airway at risk', section: 'gcs-assessment' },
+        { type: 'critical', icon: 'fa-bed', value: '<=12', label: 'Braden: high risk', section: 'braden-scale' },
+        { type: 'warning', icon: 'fa-clock', value: '<3 sec', label: 'Normal cap refill', section: 'head-to-toe' },
+        { type: 'info', icon: 'fa-eye', value: '3-5 mm', label: 'Normal pupil size', section: 'head-to-toe' }
     ],
     clinicalPearls: [
         { id: 'tip-ippa-order', title: 'IPPA, Except the Abdomen', text: 'Touching the belly changes the bowel sounds, so there you inspect, auscultate, percuss, palpate.' },

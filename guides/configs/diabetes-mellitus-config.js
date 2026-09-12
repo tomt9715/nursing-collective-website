@@ -18,12 +18,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-tint', value: '>=126', label: 'Fasting glucose diagnoses' },
-        { type: 'critical', icon: 'fa-percentage', value: '>=6.5%', label: 'HbA1c diagnoses' },
-        { type: 'target', icon: 'fa-bullseye', value: '<7%', label: 'HbA1c goal, most adults' },
-        { type: 'warning', icon: 'fa-arrow-down', value: '<70', label: 'Hypoglycemia' },
-        { type: 'info', icon: 'fa-bolt', value: '250-600', label: 'Glucose in DKA' },
-        { type: 'critical', icon: 'fa-tint-slash', value: '>600', label: 'Glucose in HHS' }
+        { type: 'critical', icon: 'fa-tint', value: '>=126', label: 'Fasting glucose diagnoses', section: 'assessment' },
+        { type: 'critical', icon: 'fa-percentage', value: '>=6.5%', label: 'HbA1c diagnoses', section: 'assessment' },
+        { type: 'target', icon: 'fa-bullseye', value: '<7%', label: 'HbA1c goal, most adults', section: 'assessment' },
+        { type: 'warning', icon: 'fa-arrow-down', value: '<70', label: 'Hypoglycemia', section: 'hypoglycemia' },
+        { type: 'info', icon: 'fa-bolt', value: '250-600', label: 'Glucose in DKA', section: 'acute-complications' },
+        { type: 'critical', icon: 'fa-tint-slash', value: '>600', label: 'Glucose in HHS', section: 'acute-complications' }
     ],
     clinicalPearls: [
         { id: 'tip-type1-vs-type2', title: 'No Keys or Rusty Locks', text: 'Type 1 has no keys, so you supply them. Type 2 has rusty locks, so you oil them, make more keys, or supply keys later.' },

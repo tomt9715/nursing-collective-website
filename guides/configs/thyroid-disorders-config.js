@@ -20,12 +20,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'info', icon: 'fa-vial', value: '0.4-4.0', label: 'Normal TSH (mIU/L)' },
-        { type: 'critical', icon: 'fa-arrow-up', value: 'High TSH', label: 'Hypothyroid' },
-        { type: 'warning', icon: 'fa-arrow-down', value: 'Low TSH', label: 'Hyperthyroid' },
-        { type: 'critical', icon: 'fa-thermometer-full', value: '>104 F', label: 'Thyroid storm fever' },
-        { type: 'target', icon: 'fa-pills', value: 'Empty AM', label: 'Levothyroxine timing' },
-        { type: 'critical', icon: 'fa-lungs', value: 'Airway', label: 'First after thyroidectomy' }
+        { type: 'info', icon: 'fa-vial', value: '0.4-4.0', label: 'Normal TSH (mIU/L)', section: 'lab-values' },
+        { type: 'critical', icon: 'fa-arrow-up', value: 'High TSH', label: 'Hypothyroid', section: 'physiology' },
+        { type: 'warning', icon: 'fa-arrow-down', value: 'Low TSH', label: 'Hyperthyroid', section: 'physiology' },
+        { type: 'critical', icon: 'fa-thermometer-full', value: '>104 F', label: 'Thyroid storm fever', section: 'thyroid-storm' },
+        { type: 'target', icon: 'fa-pills', value: 'Empty AM', label: 'Levothyroxine timing', section: 'medications' },
+        { type: 'critical', icon: 'fa-lungs', value: 'Airway', label: 'First after thyroidectomy', section: 'thyroidectomy' }
     ],
     clinicalPearls: [
         { id: 'tip-tsh-inverse', title: 'The TSH Inverse Rule', text: 'TSH measures how loudly the pituitary is asking, not how much hormone there is. Weak thyroid, loud pituitary, high TSH.' },

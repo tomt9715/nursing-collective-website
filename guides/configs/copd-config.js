@@ -16,12 +16,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-percentage', value: '88-92%', label: 'SpO2 target in COPD' },
-        { type: 'critical', icon: 'fa-tachometer-alt', value: '1-2 L/min', label: 'Starting oxygen flow' },
-        { type: 'warning', icon: 'fa-exclamation-triangle', value: '<70%', label: 'FEV1/FVC confirms COPD' },
-        { type: 'info', icon: 'fa-lungs', value: '1:2', label: 'Pursed-lip ratio' },
-        { type: 'critical', icon: 'fa-head-side-cough', value: '50-70', label: 'PaCO2 in a chronic retainer' },
-        { type: 'success', icon: 'fa-mask-face', value: 'Venturi', label: 'Precise FiO2 control' }
+        { type: 'target', icon: 'fa-percentage', value: '88-92%', label: 'SpO2 target in COPD', section: 'oxygen-therapy' },
+        { type: 'critical', icon: 'fa-tachometer-alt', value: '1-2 L/min', label: 'Starting oxygen flow', section: 'oxygen-therapy' },
+        { type: 'warning', icon: 'fa-exclamation-triangle', value: '<70%', label: 'FEV1/FVC confirms COPD', section: 'assessment' },
+        { type: 'info', icon: 'fa-lungs', value: '1:2', label: 'Pursed-lip ratio', section: 'breathing-techniques' },
+        { type: 'critical', icon: 'fa-head-side-cough', value: '50-70', label: 'PaCO2 in a chronic retainer', section: 'oxygen-therapy' },
+        { type: 'success', icon: 'fa-mask-face', value: 'Venturi', label: 'Precise FiO2 control', section: 'oxygen-therapy' }
     ],
     clinicalPearls: [
         { id: 'tip-blue-bloater', title: 'Blue Bloater vs Pink Puffer', text: 'Blue means gas exchange failed and the right heart followed. Pink means they are still compensating, at great cost.' },

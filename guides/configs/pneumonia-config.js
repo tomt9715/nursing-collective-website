@@ -18,12 +18,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-percentage', value: '>=92%', label: 'SpO2 target' },
-        { type: 'time', icon: 'fa-clock', value: '<4 hrs', label: 'First antibiotic dose' },
-        { type: 'critical', icon: 'fa-hospital', value: '>=48h', label: 'HAP starts here' },
-        { type: 'warning', icon: 'fa-bacteria', value: 'S. pneumo', label: 'Leading CAP organism' },
-        { type: 'info', icon: 'fa-lungs', value: 'CURB-65', label: 'Admit or send home' },
-        { type: 'success', icon: 'fa-bed', value: '30-45 deg', label: 'HOB to prevent aspiration' }
+        { type: 'target', icon: 'fa-percentage', value: '>=92%', label: 'SpO2 target', section: 'interventions' },
+        { type: 'time', icon: 'fa-clock', value: '<1 hr', label: 'First dose if septic', section: 'treatment' },
+        { type: 'critical', icon: 'fa-hospital', value: '>=48h', label: 'HAP starts here', section: 'classification' },
+        { type: 'warning', icon: 'fa-bacteria', value: 'S. pneumo', label: 'Leading CAP organism', section: 'organisms' },
+        { type: 'info', icon: 'fa-lungs', value: 'CURB-65', label: 'Admit or send home', section: 'assessment' },
+        { type: 'success', icon: 'fa-bed', value: '30-45 deg', label: 'HOB to prevent aspiration', section: 'interventions' }
     ],
     clinicalPearls: [
         { id: 'tip-consolidation', title: 'Understanding Consolidation', text: 'Dullness, bronchial breath sounds and increased fremitus are one fact stated three ways: the lung went solid.' },

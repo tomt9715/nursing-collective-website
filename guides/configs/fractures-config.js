@@ -17,12 +17,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-clock', value: '6 hrs', label: 'Compartment syndrome window' },
-        { type: 'warning', icon: 'fa-hand-dots', value: "5 P's", label: 'Neurovascular check' },
-        { type: 'success', icon: 'fa-stopwatch', value: 'q1-2h', label: 'Check frequency, first 48h' },
-        { type: 'info', icon: 'fa-lungs', value: '24-72h', label: 'Fat embolism window' },
-        { type: 'critical', icon: 'fa-syringe', value: '1 hr', label: 'Antibiotics, open fracture' },
-        { type: 'target', icon: 'fa-bone', value: '6-8 wks', label: 'Typical healing time' }
+        { type: 'critical', icon: 'fa-clock', value: '6 hrs', label: 'Compartment syndrome window', section: 'compartment-syndrome' },
+        { type: 'warning', icon: 'fa-hand-dots', value: "5 P's", label: 'Neurovascular check', section: 'assessment' },
+        { type: 'success', icon: 'fa-stopwatch', value: 'q1-2h', label: 'Check frequency, first 48h', section: 'assessment' },
+        { type: 'info', icon: 'fa-lungs', value: '24-72h', label: 'Fat embolism window', section: 'complications' },
+        { type: 'critical', icon: 'fa-syringe', value: '1 hr', label: 'Antibiotics, open fracture', section: 'interventions' },
+        { type: 'target', icon: 'fa-bone', value: '6-8 wks', label: 'Typical healing time', section: 'healing' }
     ],
     clinicalPearls: [
         { id: 'tip-5ps', title: 'Do Not Wait for the Other Four', text: 'Pain out of proportion, especially on passive stretch, is the first P. Pulselessness and paralysis mean you were late.' },

@@ -17,12 +17,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'success', icon: 'fa-check', value: '<120/80', label: 'Normal' },
-        { type: 'warning', icon: 'fa-arrow-up', value: '130-139/80-89', label: 'Stage 1' },
-        { type: 'critical', icon: 'fa-exclamation-triangle', value: '>=140/90', label: 'Stage 2' },
-        { type: 'critical', icon: 'fa-bolt', value: '>180/120', label: 'Hypertensive crisis' },
-        { type: 'target', icon: 'fa-utensils', value: '<2,300 mg', label: 'Daily sodium limit' },
-        { type: 'info', icon: 'fa-percentage', value: '25% MAP', label: 'Max drop in hour one' }
+        { type: 'success', icon: 'fa-check', value: '<120/80', label: 'Normal', section: 'classification' },
+        { type: 'warning', icon: 'fa-arrow-up', value: '130-139/80-89', label: 'Stage 1', section: 'classification' },
+        { type: 'critical', icon: 'fa-exclamation-triangle', value: '>=140/90', label: 'Stage 2', section: 'classification' },
+        { type: 'critical', icon: 'fa-bolt', value: '>180/120', label: 'Hypertensive crisis', section: 'crisis' },
+        { type: 'target', icon: 'fa-utensils', value: '<2,300 mg', label: 'Daily sodium limit', section: 'lifestyle' },
+        { type: 'info', icon: 'fa-percentage', value: '25% MAP', label: 'Max drop in hour one', section: 'crisis' }
     ],
     clinicalPearls: [
         { id: 'tip-bp-equation', title: 'BP = CO x SVR', text: 'Two levers, and every drug pulls one. When a pressure will not come down, ask which lever is untreated.' },

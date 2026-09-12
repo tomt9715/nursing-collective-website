@@ -19,12 +19,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-arrow-up', value: 'High cortisol', label: "Cushing's syndrome" },
-        { type: 'warning', icon: 'fa-arrow-down', value: 'Low cortisol', label: "Addison's disease" },
-        { type: 'critical', icon: 'fa-bolt', value: '100 mg IV', label: 'Hydrocortisone in crisis' },
-        { type: 'info', icon: 'fa-clock', value: '6-8 AM', label: 'When cortisol peaks' },
-        { type: 'target', icon: 'fa-pills', value: '2/3 AM', label: 'Hydrocortisone split' },
-        { type: 'critical', icon: 'fa-heartbeat', value: 'Alpha first', label: 'Pheochromocytoma order' }
+        { type: 'critical', icon: 'fa-arrow-up', value: 'High cortisol', label: "Cushing's syndrome", section: 'cushings' },
+        { type: 'warning', icon: 'fa-arrow-down', value: 'Low cortisol', label: "Addison's disease", section: 'addisons' },
+        { type: 'critical', icon: 'fa-bolt', value: '100 mg IV', label: 'Hydrocortisone in crisis', section: 'adrenal-crisis' },
+        { type: 'info', icon: 'fa-clock', value: '6-8 AM', label: 'When cortisol peaks', section: 'physiology' },
+        { type: 'target', icon: 'fa-pills', value: '2/3 AM', label: 'Hydrocortisone split', section: 'addisons-treatment' },
+        { type: 'critical', icon: 'fa-heartbeat', value: 'Alpha first', label: 'Pheochromocytoma order', section: 'pheochromocytoma' }
     ],
     clinicalPearls: [
         { id: 'tip-cortisol-functions', title: 'Derive It, Do Not Memorise It', text: "Cortisol raises glucose, holds sodium, suppresses immunity, breaks down protein. Run those up for Cushing's, down for Addison's." },

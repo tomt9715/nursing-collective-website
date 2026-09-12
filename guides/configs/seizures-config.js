@@ -16,12 +16,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-clock', value: '5 min', label: 'Status epilepticus' },
-        { type: 'target', icon: 'fa-pills', value: '10-20', label: 'Phenytoin level (mcg/mL)' },
-        { type: 'target', icon: 'fa-pills', value: '50-100', label: 'Valproic acid level' },
-        { type: 'time', icon: 'fa-syringe', value: '4 mg IV', label: 'Lorazepam, first line' },
-        { type: 'success', icon: 'fa-shield-alt', value: 'Side', label: 'Recovery position' },
-        { type: 'critical', icon: 'fa-ban', value: 'Never', label: 'Stop an AED abruptly' }
+        { type: 'critical', icon: 'fa-clock', value: '5 min', label: 'Status epilepticus', section: 'status-epilepticus' },
+        { type: 'target', icon: 'fa-pills', value: '10-20', label: 'Phenytoin level (mcg/mL)', section: 'medications' },
+        { type: 'target', icon: 'fa-pills', value: '50-100', label: 'Valproic acid level', section: 'medications' },
+        { type: 'time', icon: 'fa-syringe', value: '4 mg IV', label: 'Lorazepam, first line', section: 'status-epilepticus' },
+        { type: 'success', icon: 'fa-shield-alt', value: 'Side', label: 'Recovery position', section: 'interventions' },
+        { type: 'critical', icon: 'fa-ban', value: 'Never', label: 'Stop an AED abruptly', section: 'medications' }
     ],
     clinicalPearls: [
         { id: 'tip-med-compliance', title: 'Missed Medication Is the Leading Trigger', text: 'Ask about the tablets first after a breakthrough seizure. Seizure-free does not mean epilepsy-free.' },

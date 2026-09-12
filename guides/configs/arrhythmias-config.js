@@ -17,12 +17,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-heart', value: '60-100', label: 'SA node rate (bpm)' },
-        { type: 'warning', icon: 'fa-circle', value: '40-60', label: 'AV junction rate (bpm)' },
-        { type: 'critical', icon: 'fa-exclamation', value: '20-40', label: 'Ventricular rate (bpm)' },
-        { type: 'time', icon: 'fa-ruler', value: '<0.12s', label: 'Normal QRS width' },
-        { type: 'success', icon: 'fa-clock', value: '0.12-0.20s', label: 'Normal PR interval' },
-        { type: 'info', icon: 'fa-bolt', value: '120-200J', label: 'Defibrillation, biphasic' }
+        { type: 'target', icon: 'fa-heart', value: '60-100', label: 'SA node rate (bpm)', section: 'conduction' },
+        { type: 'warning', icon: 'fa-circle', value: '40-60', label: 'AV junction rate (bpm)', section: 'conduction' },
+        { type: 'critical', icon: 'fa-exclamation', value: '20-40', label: 'Ventricular rate (bpm)', section: 'conduction' },
+        { type: 'time', icon: 'fa-ruler', value: '<0.12s', label: 'Normal QRS width', section: 'ecg-basics' },
+        { type: 'success', icon: 'fa-clock', value: '0.12-0.20s', label: 'Normal PR interval', section: 'ecg-basics' },
+        { type: 'info', icon: 'fa-bolt', value: '120-200J', label: 'Defibrillation, biphasic', section: 'defib-cardiovert' }
     ],
     clinicalPearls: [
         { id: 'tip-pacemaker-hierarchy', title: 'Pacemaker Hierarchy', text: 'SA node 60 to 100, AV junction 40 to 60, ventricles 20 to 40. Lower site means slower rate and wider QRS.' },

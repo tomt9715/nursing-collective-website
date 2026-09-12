@@ -17,12 +17,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-tint', value: 'LDL <70', label: 'High-risk goal (mg/dL)' },
-        { type: 'critical', icon: 'fa-heartbeat', value: '<130/80', label: 'BP target (mmHg)' },
-        { type: 'success', icon: 'fa-pills', value: '81 mg', label: 'Aspirin daily dose' },
-        { type: 'time', icon: 'fa-clock', value: '5 min x3', label: 'NTG dosing interval' },
-        { type: 'warning', icon: 'fa-bed', value: '2-6 hrs', label: 'Femoral cath bed rest' },
-        { type: 'info', icon: 'fa-calendar', value: '6-12 mo', label: 'Minimum DAPT duration' }
+        { type: 'target', icon: 'fa-tint', value: 'LDL <70', label: 'High-risk goal (mg/dL)', section: 'management' },
+        { type: 'critical', icon: 'fa-heartbeat', value: '<130/80', label: 'BP target (mmHg)', section: 'management' },
+        { type: 'success', icon: 'fa-pills', value: '81 mg', label: 'Aspirin daily dose', section: 'management' },
+        { type: 'time', icon: 'fa-clock', value: '5 min x3', label: 'NTG dosing interval', section: 'angina' },
+        { type: 'warning', icon: 'fa-bed', value: '2-6 hrs', label: 'Femoral cath bed rest', section: 'catheterization' },
+        { type: 'info', icon: 'fa-calendar', value: '6-12 mo', label: 'Minimum DAPT duration', section: 'interventions' }
     ],
     clinicalPearls: [
         { id: 'tip-plaque-stability', title: 'Stability Beats Size', text: 'The plaque that kills is rarely the biggest one. Statins stabilise the cap, which is why a patient at goal LDL stays on one.' },

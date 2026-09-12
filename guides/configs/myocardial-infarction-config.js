@@ -16,12 +16,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-clock', value: '<90 min', label: 'Door to balloon (PCI)' },
-        { type: 'time', icon: 'fa-syringe', value: '<30 min', label: 'Door to needle (tPA)' },
-        { type: 'success', icon: 'fa-pills', value: '162-325 mg', label: 'Aspirin, chewed' },
-        { type: 'time', icon: 'fa-vial', value: '2-4 hrs', label: 'Troponin starts to rise' },
-        { type: 'warning', icon: 'fa-ban', value: 'SBP <90', label: 'Hold nitroglycerin' },
-        { type: 'info', icon: 'fa-lungs', value: 'SpO2 <90%', label: 'Oxygen only if under' }
+        { type: 'critical', icon: 'fa-clock', value: '<90 min', label: 'Door to balloon (PCI)', section: 'interventions' },
+        { type: 'time', icon: 'fa-syringe', value: '<30 min', label: 'Door to needle (tPA)', section: 'thrombolytics' },
+        { type: 'success', icon: 'fa-pills', value: '162-325 mg', label: 'Aspirin, chewed', section: 'interventions' },
+        { type: 'time', icon: 'fa-vial', value: '2-4 hrs', label: 'Troponin starts to rise', section: 'biomarkers' },
+        { type: 'warning', icon: 'fa-ban', value: 'SBP <90', label: 'Hold nitroglycerin', section: 'interventions' },
+        { type: 'info', icon: 'fa-lungs', value: 'SpO2 <90%', label: 'Oxygen only if under', section: 'interventions' }
     ],
     clinicalPearls: [
         { id: 'tip-time-is-muscle', title: 'Time is Muscle', text: 'Necrosis begins around 20 minutes into a total occlusion. The clock starts at symptom onset, not at arrival.' },

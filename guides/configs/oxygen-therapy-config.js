@@ -17,12 +17,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-percentage', value: '94-98%', label: 'Adult SpO2 target' },
-        { type: 'warning', icon: 'fa-lungs', value: '88-92%', label: 'COPD target' },
-        { type: 'critical', icon: 'fa-chart-line', value: '90/60', label: 'SpO2 to PaO2 pair' },
-        { type: 'info', icon: 'fa-calculator', value: '+4%/L', label: 'Nasal cannula rule' },
-        { type: 'time', icon: 'fa-clock', value: '24-48h', label: 'Toxicity risk above 50%' },
-        { type: 'success', icon: 'fa-mask', value: 'Venturi', label: 'The precise device' }
+        { type: 'target', icon: 'fa-percentage', value: '94-98%', label: 'Adult SpO2 target', section: 'indications' },
+        { type: 'warning', icon: 'fa-lungs', value: '88-92%', label: 'COPD target', section: 'special-populations' },
+        { type: 'critical', icon: 'fa-chart-line', value: '90/60', label: 'SpO2 to PaO2 pair', section: 'physiology' },
+        { type: 'info', icon: 'fa-calculator', value: '+4%/L', label: 'Nasal cannula rule', section: 'fio2-calculations' },
+        { type: 'time', icon: 'fa-clock', value: '24-48h', label: 'Toxicity risk above 50%', section: 'oxygen-toxicity' },
+        { type: 'success', icon: 'fa-mask', value: 'Venturi', label: 'The precise device', section: 'delivery-devices' }
     ],
     clinicalPearls: [
         { id: 'tip-spo2-vs-pao2', title: 'Saturation Is Not Delivery', text: 'Delivery is saturation times hemoglobin times cardiac output. The oximeter measures one of the three.' },

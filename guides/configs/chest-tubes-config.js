@@ -17,12 +17,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-water', value: '2 cm', label: 'Water seal level' },
-        { type: 'info', icon: 'fa-tachometer-alt', value: '-20 cm H2O', label: 'Usual suction' },
-        { type: 'critical', icon: 'fa-tint', value: '>100 mL/hr', label: 'Report drainage' },
-        { type: 'warning', icon: 'fa-ban', value: 'NEVER', label: 'Clamp with an air leak' },
-        { type: 'success', icon: 'fa-wave-square', value: 'Tidaling', label: 'Normal finding' },
-        { type: 'critical', icon: 'fa-arrow-down', value: 'Below chest', label: 'System position' }
+        { type: 'target', icon: 'fa-water', value: '2 cm', label: 'Water seal level', section: 'drainage-systems' },
+        { type: 'info', icon: 'fa-tachometer-alt', value: '-20 cm H2O', label: 'Usual suction', section: 'drainage-systems' },
+        { type: 'critical', icon: 'fa-tint', value: '>100 mL/hr', label: 'Report drainage', section: 'assessment' },
+        { type: 'warning', icon: 'fa-ban', value: 'NEVER', label: 'Clamp with an air leak', section: 'clamping' },
+        { type: 'success', icon: 'fa-wave-square', value: 'Tidaling', label: 'Normal finding', section: 'tidaling-air-leaks' },
+        { type: 'critical', icon: 'fa-arrow-down', value: 'Below chest', label: 'System position', section: 'drainage-systems' }
     ],
     clinicalPearls: [
         { id: 'tip-negative-pressure', title: 'The Seal Is the Whole Thing', text: 'The lung is held open by a vacuum between two membranes. Anything entering that space breaks it.' },

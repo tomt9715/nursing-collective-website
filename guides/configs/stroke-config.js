@@ -15,12 +15,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'time', icon: 'fa-clock', value: '4.5 hrs', label: 'tPA window' },
-        { type: 'critical', icon: 'fa-brain', value: '1.9M', label: 'Neurons lost per minute' },
-        { type: 'target', icon: 'fa-heartbeat', value: '<185/110', label: 'BP before tPA' },
-        { type: 'target', icon: 'fa-tachometer-alt', value: '<180/105', label: 'BP during and after' },
-        { type: 'success', icon: 'fa-stopwatch', value: '<60 min', label: 'Door to needle' },
-        { type: 'time', icon: 'fa-syringe', value: '0.9 mg/kg', label: 'tPA dose, max 90 mg' }
+        { type: 'time', icon: 'fa-clock', value: '4.5 hrs', label: 'tPA window', section: 'tpa' },
+        { type: 'critical', icon: 'fa-brain', value: '1.9M', label: 'Neurons lost per minute', section: 'fast' },
+        { type: 'target', icon: 'fa-heartbeat', value: '<185/110', label: 'BP before tPA', section: 'tpa' },
+        { type: 'target', icon: 'fa-tachometer-alt', value: '<180/105', label: 'BP during and after', section: 'tpa' },
+        { type: 'success', icon: 'fa-stopwatch', value: '<60 min', label: 'Door to needle', section: 'fast' },
+        { type: 'time', icon: 'fa-syringe', value: '0.9 mg/kg', label: 'tPA dose, max 90 mg', section: 'tpa' }
     ],
     clinicalPearls: [
         { id: 'tip-time-brain', title: 'Time = Brain', text: 'Ask the family what time they last saw the patient completely normal. That is the last known well, and it decides eligibility.' },

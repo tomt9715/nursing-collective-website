@@ -17,12 +17,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'target', icon: 'fa-percentage', value: '>=92%', label: 'SpO2 target in asthma' },
-        { type: 'warning', icon: 'fa-exclamation-triangle', value: '<50%', label: 'Peak flow red zone' },
-        { type: 'critical', icon: 'fa-first-aid', value: 'SABA', label: 'First-line rescue' },
-        { type: 'success', icon: 'fa-shield-alt', value: 'ICS', label: 'Best controller' },
-        { type: 'info', icon: 'fa-calendar-day', value: '<=2/wk', label: 'SABA use when controlled' },
-        { type: 'critical', icon: 'fa-syringe', value: '2 g IV', label: 'Magnesium in severe attack' }
+        { type: 'target', icon: 'fa-percentage', value: '>=94%', label: 'SpO2 target in asthma', section: 'numbers-cold' },
+        { type: 'warning', icon: 'fa-exclamation-triangle', value: '<50%', label: 'Peak flow red zone', section: 'numbers-cold' },
+        { type: 'critical', icon: 'fa-first-aid', value: 'SABA', label: 'First-line rescue', section: 'medications' },
+        { type: 'success', icon: 'fa-shield-alt', value: 'ICS', label: 'Best controller', section: 'medications' },
+        { type: 'info', icon: 'fa-calendar-day', value: '<=2/wk', label: 'SABA use when controlled', section: 'numbers-cold' },
+        { type: 'critical', icon: 'fa-syringe', value: '2 g IV', label: 'Magnesium in severe attack', section: 'status-asthmaticus' }
     ],
     clinicalPearls: [
         { id: 'tip-identify-triggers', title: 'Identify Personal Triggers', text: 'A diary of symptoms, exposures and peak flows finds them. Beta-blockers and NSAIDs are the two patients never mention.' },

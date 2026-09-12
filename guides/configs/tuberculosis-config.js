@@ -16,12 +16,12 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'critical', icon: 'fa-head-side-mask', value: 'N95', label: 'Required respirator' },
-        { type: 'warning', icon: 'fa-clock', value: '48-72 hrs', label: 'TST read window' },
-        { type: 'info', icon: 'fa-pills', value: 'RIPE', label: 'First-line therapy' },
-        { type: 'target', icon: 'fa-calendar', value: '6 months', label: 'Minimum treatment' },
-        { type: 'critical', icon: 'fa-vial', value: '3 specimens', label: 'Sputum AFB needed' },
-        { type: 'success', icon: 'fa-capsules', value: 'Pyridoxine', label: 'Give with isoniazid' }
+        { type: 'critical', icon: 'fa-head-side-mask', value: 'N95', label: 'Required respirator', section: 'isolation' },
+        { type: 'warning', icon: 'fa-clock', value: '48-72 hrs', label: 'TST read window', section: 'diagnostics' },
+        { type: 'info', icon: 'fa-pills', value: 'RIPE', label: 'First-line therapy', section: 'ripe-therapy' },
+        { type: 'target', icon: 'fa-calendar', value: '6 months', label: 'Minimum treatment', section: 'ripe-therapy' },
+        { type: 'critical', icon: 'fa-vial', value: '3 specimens', label: 'Sputum AFB needed', section: 'diagnostics' },
+        { type: 'success', icon: 'fa-capsules', value: 'Pyridoxine', label: 'Give with isoniazid', section: 'ripe-therapy' }
     ],
     clinicalPearls: [
         { id: 'tip-granuloma', title: 'A Prison, Not an Execution', text: 'The granuloma contains the bacteria without killing them. That is why TB can wake up decades later.' },

@@ -10,7 +10,7 @@ var pediatricSkinInfectionsQuizData = {
     guideSlug: "pediatric-skin-infections",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 11,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -334,6 +334,26 @@ var pediatricSkinInfectionsQuizData = {
             testTakingTip: "MRSA prevention: hand hygiene, cover wounds, don't share personal items. Decolonization for recurrent.",
             guideSection: "Section 6 - Family Education",
             guideSectionId: "family"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A child is started on topical mupirocin for mild impetigo. The parent asks when the child can return to school. What should the nurse advise?",
+            options: [
+                { id: "a", text: "After 24 hours of treatment, with the lesions covered" },
+                { id: "b", text: "After the lesions have crusted over and dried fully" },
+                { id: "c", text: "After the full 5 to 7 day course has been completed" },
+                { id: "d", text: "Immediately, since impetigo does not spread at school" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The child may return after 24 hours of antibiotic treatment with the lesions covered. The topical mupirocin course itself runs 5 to 7 days, but exclusion from school does not last that long.",
+                b: "Waiting for crusting keeps the child at home longer than infection control requires.",
+                c: "Completing the whole course before returning is unnecessary, since the child is no longer contagious after 24 hours of treatment.",
+                d: "Impetigo is contagious, which is why the 24 hour rule and covering the lesions both exist."
+            },
+            testTakingTip: "24 hours on treatment plus covered lesions is the return to school rule. Do not confuse it with the length of the course.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

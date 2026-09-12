@@ -10,7 +10,7 @@ var pediatricFracturesImmobilityQuizData = {
     guideSlug: "pediatric-fractures-immobility",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -333,6 +333,26 @@ var pediatricFracturesImmobilityQuizData = {
             testTakingTip: "Supracondylar humerus fracture = brachial artery + median/radial nerve risk. Neurovascular check is critical.",
             guideSection: "Section 1 - Pediatric Basics",
             guideSectionId: "basics"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A child has had a long leg cast applied 6 hours ago and now reports pain that is worsening despite medication. Capillary refill distal to the cast is 4 seconds. What should the nurse do?",
+            options: [
+                { id: "a", text: "Complete the 6 Ps and notify the provider immediately" },
+                { id: "b", text: "Give a further dose of analgesia and reassess in an hour" },
+                { id: "c", text: "Elevate the limb above the heart and continue to observe" },
+                { id: "d", text: "Apply ice over the cast and recheck at the next round" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Capillary refill should be under 2 seconds distal to the injury. A slower refill with pain that is escalating despite analgesia points to compartment syndrome, so the full neurovascular assessment is completed and the provider notified at once.",
+                b: "Pain out of proportion that does not respond to analgesia is the warning sign itself, not a reason for more analgesia.",
+                c: "Elevation above heart level can reduce arterial inflow in suspected compartment syndrome, and observing alone wastes the window.",
+                d: "Ice and watchful waiting delay a diagnosis with a 4 to 8 hour window before the damage becomes permanent."
+            },
+            testTakingTip: "4 to 8 hours is the window before compartment damage is permanent. You never wait and see.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

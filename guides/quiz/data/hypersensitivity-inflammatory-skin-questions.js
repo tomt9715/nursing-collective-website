@@ -10,7 +10,7 @@ var hypersensitivityInflammatorySkinQuizData = {
     guideSlug: "hypersensitivity-inflammatory-skin",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -333,6 +333,26 @@ var hypersensitivityInflammatorySkinQuizData = {
             testTakingTip: "Airway > everything. Anaphylaxis patient is always the first priority.",
             guideSection: "Section 3 - Urticaria & Anaphylaxis",
             guideSectionId: "urticaria"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A child develops a red itchy rash on the wrist about 48 hours after wearing a new metal bracelet. Which type of hypersensitivity does this represent?",
+            options: [
+                { id: "a", text: "Type IV, delayed and T-cell mediated" },
+                { id: "b", text: "Type I, immediate and IgE mediated" },
+                { id: "c", text: "Type II, cytotoxic and antibody driven" },
+                { id: "d", text: "Type III, from immune complex deposition" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Contact dermatitis is the classic Type IV reaction, delayed and T-cell mediated, appearing 24 to 72 hours after exposure. The 48 hour delay is the giveaway.",
+                b: "A Type I reaction fires within minutes to an hour and rides on immunoglobulin E (IgE), producing anaphylaxis or hives.",
+                c: "Type II is antibody directed against cells, met in transfusion reactions and hemolysis.",
+                d: "Type III deposits immune complexes over hours to days, as in serum sickness and glomerulonephritis."
+            },
+            testTakingTip: "Speed sorts them. Type I is minutes and immunoglobulin E (IgE); Type IV is a day or two and T cells.",
+            guideSection: "Section 3 - The four hypersensitivity types",
+            guideSectionId: "hypersensitivity-types"
         }
     ]
 };

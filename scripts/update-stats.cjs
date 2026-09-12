@@ -10,14 +10,14 @@
  *
  * Marker format (round-tripped on every run):
  *
- *   <!-- STAT:guides    -->29<!-- /STAT -->
- *   <!-- STAT:questions -->2,500+<!-- /STAT -->
- *   <!-- STAT:topics    -->32+<!-- /STAT -->
+ *   <!-- STAT:guides    -->55<!-- /STAT -->
+ *   <!-- STAT:questions -->3,074<!-- /STAT -->
+ *   <!-- STAT:topics    -->67+<!-- /STAT -->
  *   <!-- STAT:chapters  -->16<!-- /STAT -->
  *
- * Numbers round down to the nearest hundred (with "+") for questions
- * so the value reads as a confident floor rather than a precise count
- * that will go stale between batches. Other stats are exact.
+ * All counts are exact except `topics`, which carries a "+" because it
+ * counts Quiz Bank topics that have questions, not every topic listed.
+ * Run this after shipping a guide or a batch of questions.
  *
  * Usage:
  *   node scripts/update-stats.js
@@ -54,8 +54,11 @@ function countPerGuideQuestions() {
     for (const f of fs.readdirSync(dir)) {
         if (!f.endsWith('.js')) continue;
         const content = fs.readFileSync(path.join(dir, f), 'utf8');
-        // Per-guide questions use numeric IDs (`id: 1, id: 2, ...`)
-        total += (content.match(/^\s+id:\s*\d+,/gm) || []).length;
+        // Count stems, not IDs. Most files number their questions (`id: 1,`)
+        // but some use string keys (`id: "thyroid_001",`), and counting IDs
+        // silently dropped all 100 thyroid-disorders questions. Every question
+        // has exactly one `stem:` whatever its ID style.
+        total += (content.match(/^\s+stem:/gm) || []).length;
     }
     return total;
 }
@@ -80,13 +83,12 @@ function countBuiltGuides() {
         if (!f.endsWith('.html')) continue;
         if (exclude.has(f)) continue;
         if (f.endsWith('-quiz.html')) continue;
+        // `_design-preview-*.html` and friends are scratch files that ship
+        // with the site but are not guides anyone can reach.
+        if (f.startsWith('_')) continue;
         count++;
     }
     return count;
-}
-
-function roundDownHundred(n) {
-    return Math.floor(n / 100) * 100;
 }
 
 // ── Marker replacement ───────────────────────────────────────────────
@@ -110,8 +112,10 @@ function buildStats() {
     }
 
     return {
-        // Question count: round down to nearest 100, append "+"
-        questions: `${roundDownHundred(totalQuestions).toLocaleString()}+`,
+        // Exact. This used to round down to the nearest hundred so the figure
+        // read as a confident floor, but rounding 3,074 to "3,000+" gives away
+        // most of a batch, and the number is regenerated from the files anyway.
+        questions: totalQuestions.toLocaleString('en-US'),
         // Exact counts elsewhere
         guides: String(guides),
         topics: `${populatedTopics}+`,

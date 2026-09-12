@@ -10,7 +10,7 @@ var neuralTubeDefectsQuizData = {
     guideSlug: "neural-tube-defects",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -335,6 +335,26 @@ var neuralTubeDefectsQuizData = {
             testTakingTip: "Hair tuft, dimple, port-wine mark over spine = think occulta. No sac, often asymptomatic.",
             guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A newborn with myelomeningocele is admitted before surgical closure. How should the nurse position the infant?",
+            options: [
+                { id: "a", text: "Prone or side-lying, never on the back" },
+                { id: "b", text: "Supine with the head of the bed flat" },
+                { id: "c", text: "Supine with the head of the bed raised" },
+                { id: "d", text: "Upright in an infant seat between feeds" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The infant is positioned prone or side-lying so that no weight rests on the sac. Lying on the back presses on it, and rupture opens a direct route for infection into the central nervous system.",
+                b: "Supine puts direct pressure on the sac, whatever the bed angle.",
+                c: "Raising the head does not take the weight off the sac.",
+                d: "An infant seat presses the back against a firm surface and is avoided before closure."
+            },
+            testTakingTip: "Before closure the sac governs everything: prone or side-lying, and a sterile saline-moist dressing until surgery.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

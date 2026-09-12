@@ -10,7 +10,7 @@ var kawasakiDiseaseQuizData = {
     guideSlug: "kawasaki-disease",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -333,6 +333,26 @@ var kawasakiDiseaseQuizData = {
             testTakingTip: "Timeline memory trick: Acute = fever + red. Subacute = peeling + platelets. Convalescent = resolution.",
             guideSection: "Section 3 - Three Phases of Kawasaki",
             guideSectionId: "phases"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A child with Kawasaki disease has been receiving high dose aspirin at 90 mg/kg/day. The fever has now resolved. What change should the nurse anticipate?",
+            options: [
+                { id: "a", text: "Stepping the aspirin down to 3 to 5 mg/kg/day" },
+                { id: "b", text: "Stopping the aspirin completely at this point" },
+                { id: "c", text: "Continuing the same high dose for a further week" },
+                { id: "d", text: "Replacing the aspirin with ibuprofen at a low dose" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "High dose aspirin at 80 to 100 mg/kg/day is given for its anti-inflammatory effect while the child is febrile. Once the fever settles the dose steps down to 3 to 5 mg/kg/day, which is the antiplatelet dose that protects the coronary arteries.",
+                b: "Stopping altogether removes the antiplatelet protection during the subacute phase, when the cardiac risk is highest.",
+                c: "Continuing the anti-inflammatory dose after the fever has gone adds toxicity without added benefit.",
+                d: "Ibuprofen interferes with the antiplatelet action of aspirin and does not replace it here."
+            },
+            testTakingTip: "Two aspirin doses, two jobs. High dose while febrile fights inflammation; low dose afterwards protects the coronary arteries.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

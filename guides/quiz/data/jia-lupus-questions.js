@@ -10,7 +10,7 @@ var jiaLupusQuizData = {
     guideSlug: "jia-lupus",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 11,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -338,6 +338,26 @@ var jiaLupusQuizData = {
             testTakingTip: "JIA: keep moving with guidance; avoid high-impact when active.",
             guideSection: "Section 7 - Family Education",
             guideSectionId: "family"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A child with oligoarticular juvenile idiopathic arthritis (JIA) has a normal eye examination and no visual complaints. The parent asks whether eye appointments are still needed. What should the nurse explain?",
+            options: [
+                { id: "a", text: "Slit-lamp screening continues every 3 to 6 months regardless" },
+                { id: "b", text: "Screening can stop now that the examination is normal" },
+                { id: "c", text: "Screening is only needed if the child reports eye pain" },
+                { id: "d", text: "Screening is repeated once a year from this point on" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Uveitis in oligoarticular juvenile idiopathic arthritis (JIA) is silent, so it is found by screening rather than by symptoms. Slit-lamp examination continues every 3 to 6 months and is booked even when the eye looks normal.",
+                b: "A normal examination reflects today only. The risk continues, which is why the schedule does.",
+                c: "Waiting for pain misses the point, because this uveitis does not hurt until damage is done.",
+                d: "Annual screening is too infrequent for the subtype that carries the highest uveitis risk."
+            },
+            testTakingTip: "Oligoarticular drives the eye screening schedule. Silent uveitis is caught by the calendar, not by the child complaining.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

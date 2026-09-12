@@ -10,7 +10,7 @@ var bleedingDisordersQuizData = {
     guideSlug: "bleeding-disorders",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 11,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -338,6 +338,26 @@ var bleedingDisordersQuizData = {
             testTakingTip: "ITP: no ASA/NSAIDs, watch for bleeding, call for red flags.",
             guideSection: "Section 7 - Family Education",
             guideSectionId: "family"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse has just drawn blood from a child with severe hemophilia. What should the nurse do at the puncture site?",
+            options: [
+                { id: "a", text: "Hold firm pressure for 10 minutes without lifting to look" },
+                { id: "b", text: "Hold pressure for 2 minutes, checking the site as you go" },
+                { id: "c", text: "Apply an adhesive bandage and release the site right away" },
+                { id: "d", text: "Rub the site briskly to encourage the clot to form faster" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Pressure is held for a full 10 minutes after any venipuncture, finger stick or injection, and the site is not peeked at. Lifting to check disrupts the fragile clot and the 10 minutes starts again.",
+                b: "Two minutes is enough for normal clotting but not for a child who lacks clotting factor.",
+                c: "A bandage alone does not apply the sustained pressure the clot needs to form.",
+                d: "Rubbing disrupts the forming clot and worsens bleeding into the tissue."
+            },
+            testTakingTip: "10 minutes of pressure, and no peeking. Bleeding past 15 to 20 minutes means calling the hemophilia centre.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

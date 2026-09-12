@@ -9,7 +9,7 @@ var diabetesMellitusQuizData = {
     guideSlug: "diabetes-mellitus",
     category: "Endocrine",
     categoryColor: "#6B8DD6",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -250,6 +250,106 @@ var diabetesMellitusQuizData = {
             testTakingTip: "Pediatric diabetes goals are slightly more relaxed to prevent hypoglycemia, which poses unique risks to the developing brain. The NCLEX tests understanding of WHY goals differ, not just that they differ.",
             guideSection: "Section 9 - Pediatric Considerations",
             guideSectionId: "pediatric"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient has a fasting glucose of 132 mg/dL on two separate days. How should the nurse interpret this?",
+            options: [
+                { id: "a", text: "It meets the diagnostic threshold for diabetes" },
+                { id: "b", text: "It is within the prediabetes range of 100 to 125" },
+                { id: "c", text: "It is a normal fasting value requiring no action" },
+                { id: "d", text: "It cannot be interpreted without a random glucose" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A fasting glucose of 126 mg/dL or more, after 8 hours without food, diagnoses diabetes. It is confirmed on a second day unless the hyperglycemia is unequivocal, and this patient has two such readings.",
+                b: "Prediabetes is a fasting glucose of 100 to 125 mg/dL, and 132 sits above that band.",
+                c: "A normal fasting glucose is below 100 mg/dL.",
+                d: "Any one of the three diagnostic criteria is sufficient. A random glucose is not required."
+            },
+            testTakingTip: "Three ways in: fasting 126 or more, hemoglobin A1c 6.5 percent or more, or random 200 or more with classic symptoms.",
+            guideSection: "Section 4 - The numbers that diagnose it",
+            guideSectionId: "assessment"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient asks why the hemoglobin A1c did not improve after two weeks of careful eating. What should the nurse explain?",
+            options: [
+                { id: "a", text: "It averages the last 2 to 3 months, so it moves slowly" },
+                { id: "b", text: "It reflects only the glucose from the last 24 hours" },
+                { id: "c", text: "It measures how much insulin the pancreas still makes" },
+                { id: "d", text: "It changes only when the fasting glucose is under 100" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Glucose sticks to hemoglobin and a red cell lives about 3 months, so the hemoglobin A1c averages the last 2 to 3 months. No single good or bad stretch moves it much, which is why two weeks shows little change.",
+                b: "A single day is reflected in a fingerstick glucose, not in the hemoglobin A1c.",
+                c: "Insulin production is assessed by other tests such as C-peptide.",
+                d: "The hemoglobin A1c responds to overall glucose exposure rather than to one threshold being crossed."
+            },
+            testTakingTip: "Red cells live about 3 months, so the hemoglobin A1c does too. Use fingersticks for today and the A1c for the season.",
+            guideSection: "Section 4 - The numbers that diagnose it",
+            guideSectionId: "assessment"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient with long standing diabetes has protein in the urine and a rising creatinine. Which medication class should the nurse anticipate for renal protection?",
+            options: [
+                { id: "a", text: "An angiotensin converting enzyme inhibitor" },
+                { id: "b", text: "A loop diuretic such as furosemide" },
+                { id: "c", text: "A nonsteroidal anti-inflammatory drug" },
+                { id: "d", text: "A beta blocker such as metoprolol" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Nephropathy is small vessel damage, where glomerular injury produces protein in the urine and then progressive renal failure. An angiotensin converting enzyme (ACE) inhibitor or an angiotensin receptor blocker is used for renal protection alongside blood pressure control.",
+                b: "A loop diuretic manages fluid but does not protect the glomerulus.",
+                c: "Nonsteroidal anti-inflammatory drugs reduce renal perfusion and are avoided in diabetic kidney disease.",
+                d: "Beta blockers control blood pressure but are not the class chosen for renal protection here."
+            },
+            testTakingTip: "Complications sort by vessel size. Small vessels give retinopathy, nephropathy and neuropathy; large vessels give heart attack, stroke and peripheral arterial disease.",
+            guideSection: "Section 9 - What the sugar breaks",
+            guideSectionId: "chronic-complications"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient who is alert and able to swallow has a glucose of 58 mg/dL. What should the nurse do?",
+            options: [
+                { id: "a", text: "Give 15 grams of carbohydrate and recheck in 15 minutes" },
+                { id: "b", text: "Give 25 to 50 mL of dextrose 50 percent intravenously" },
+                { id: "c", text: "Give 1 mg of glucagon by intramuscular injection now" },
+                { id: "d", text: "Withhold treatment and recheck the glucose in an hour" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Hypoglycemia is a glucose under 70 mg/dL. In a conscious patient who can swallow, the rule of 15 applies: 15 grams of carbohydrate, then recheck after 15 minutes, repeating if the glucose is still low.",
+                b: "Intravenous dextrose is reserved for a patient who is unconscious or cannot swallow safely.",
+                c: "Intramuscular glucagon is for the unconscious patient without intravenous access.",
+                d: "Waiting an hour with a glucose of 58 mg/dL risks a fall into unconsciousness."
+            },
+            testTakingTip: "15 and 15 for the conscious patient. Dextrose 50 percent or glucagon only when they cannot safely swallow.",
+            guideSection: "Section 12 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient with type 2 diabetes has a hemoglobin A1c of 6.1 percent and a fasting glucose of 114 mg/dL, with no prior diagnosis. How should the nurse classify these results?",
+            options: [
+                { id: "a", text: "Prediabetes on both measurements" },
+                { id: "b", text: "Diabetes on both measurements" },
+                { id: "c", text: "Normal results on both measurements" },
+                { id: "d", text: "Diabetes on the glucose but normal A1c" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Prediabetes is a fasting glucose of 100 to 125 mg/dL or a hemoglobin A1c of 5.7 to 6.4 percent. Both of these values sit inside those bands.",
+                b: "Diabetes requires a fasting glucose of 126 mg/dL or more, or a hemoglobin A1c of 6.5 percent or more. Neither threshold is reached.",
+                c: "Normal is a fasting glucose under 100 mg/dL and a hemoglobin A1c under 5.7 percent.",
+                d: "The fasting glucose of 114 mg/dL is below the diabetes threshold as well."
+            },
+            testTakingTip: "Three bands per test. Fasting: under 100 normal, 100 to 125 prediabetes, 126 or more diabetes. A1c: under 5.7, 5.7 to 6.4, then 6.5 or more.",
+            guideSection: "Section 12 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

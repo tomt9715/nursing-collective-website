@@ -10,7 +10,7 @@ var arrhythmiasQuizData = {
     guideSlug: "arrhythmias",
     category: "Cardiovascular",
     categoryColor: "#ef4444",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -246,6 +246,106 @@ var arrhythmiasQuizData = {
             testTakingTip: "This is a high-yield fact: the sync button resets after each shock on most defibrillators. You must re-engage it every time before cardioverting. Forgetting this step = unsynchronized shock on a patient with a pulse = potential V-fib.",
             guideSection: "Section 7 - Defibrillation vs Cardioversion",
             guideSectionId: "defib-cardiovert"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient has a rhythm with no P waves and a wide QRS complex at a rate of 32 beats per minute. Which pacemaker site has taken over?",
+            options: [
+                { id: "a", text: "The Purkinje fibres and ventricles" },
+                { id: "b", text: "The sinoatrial node in the right atrium" },
+                { id: "c", text: "The atrioventricular junction" },
+                { id: "d", text: "An accessory pathway in the atrium" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The heart has a chain of command and each lower level is slower. Purkinje fibres and ventricles fire at 20 to 40 beats per minute and produce a wide QRS over 0.12 seconds with no P waves. This idioventricular rhythm is life threatening.",
+                b: "The sinoatrial node fires at 60 to 100 beats per minute with an upright P wave before every QRS.",
+                c: "A junctional rhythm runs at 40 to 60 beats per minute with absent or inverted P waves, and the QRS stays narrow.",
+                d: "An accessory pathway shortens the PR interval rather than producing a slow wide rhythm."
+            },
+            testTakingTip: "The lower the pacemaker, the slower the rate and the wider the QRS. That one rule replaces memorising three lists.",
+            guideSection: "Section 3 - Where the beat comes from",
+            guideSectionId: "conduction"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse counts 9 QRS complexes in a 6 second rhythm strip. What is the heart rate?",
+            options: [
+                { id: "a", text: "90 beats per minute" },
+                { id: "b", text: "54 beats per minute" },
+                { id: "c", text: "45 beats per minute" },
+                { id: "d", text: "18 beats per minute" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Count the QRS complexes in a 6 second strip and multiply by 10, since there are ten 6 second segments in a minute. Nine complexes gives 90 beats per minute, which is within the normal range.",
+                b: "Multiplying by 6 rather than 10 gives this figure and would apply to a 10 second strip.",
+                c: "Halving the correct answer does not correspond to any step in the method.",
+                d: "Doubling the count rather than multiplying by 10 gives this figure."
+            },
+            testTakingTip: "Rate is step one of five. Count in 6 seconds and multiply by 10, then move to rhythm, P waves, PR interval and QRS width.",
+            guideSection: "Section 4 - Reading a strip in five steps",
+            guideSectionId: "ecg-basics"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A rhythm strip shows no discernible P waves and R to R intervals with no pattern at all. What should the nurse suspect?",
+            options: [
+                { id: "a", text: "Atrial fibrillation, until proven otherwise" },
+                { id: "b", text: "Sinus bradycardia with a slow regular rate" },
+                { id: "c", text: "First degree block with a long PR interval" },
+                { id: "d", text: "Normal sinus rhythm with occasional artefact" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Irregularly irregular means no pattern at all in the R to R spacing, and that phrase means atrial fibrillation until proven otherwise. Absent P waves fit the same conclusion.",
+                b: "Sinus bradycardia is slow but regular, with an upright P wave before every QRS.",
+                c: "A first degree block has a long but constant PR interval, which requires visible P waves.",
+                d: "Normal sinus rhythm is regular with a P wave before each QRS."
+            },
+            testTakingTip: "Learn the phrase. Irregularly irregular with no P waves is atrial fibrillation until something proves otherwise.",
+            guideSection: "Section 4 - Reading a strip in five steps",
+            guideSectionId: "ecg-basics"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nurse measures a PR interval of 0.26 seconds on a rhythm strip. How should this be interpreted?",
+            options: [
+                { id: "a", text: "Prolonged, indicating a conduction block" },
+                { id: "b", text: "Normal, since 0.12 to 0.30 is the range" },
+                { id: "c", text: "Shortened, indicating an accessory pathway" },
+                { id: "d", text: "Unmeasurable without knowing the heart rate" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A normal PR interval is 0.12 to 0.20 seconds, measured from the start of the P wave to the start of the QRS. Longer than 0.20 seconds means the impulse is delayed, which is a block.",
+                b: "The upper limit of normal is 0.20 seconds, not 0.30.",
+                c: "A shortened PR interval is under 0.12 seconds and suggests an accessory pathway.",
+                d: "The PR interval is measured directly from the strip and does not depend on the rate."
+            },
+            testTakingTip: "Two intervals to have cold: PR 0.12 to 0.20 seconds, QRS under 0.12 seconds. Longer PR means block; wider QRS means ventricular.",
+            guideSection: "Section 4 - Reading a strip in five steps",
+            guideSectionId: "ecg-basics"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient has sinus bradycardia at 38 beats per minute with dizziness and a blood pressure of 84/50 mmHg. What should the nurse anticipate?",
+            options: [
+                { id: "a", text: "Atropine 1 mg intravenously, up to a 3 mg maximum" },
+                { id: "b", text: "Observation alone, because sinus rhythms are benign" },
+                { id: "c", text: "Synchronised cardioversion at the lowest energy setting" },
+                { id: "d", text: "A beta blocker to stabilise the conduction system" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Sinus bradycardia needs nothing if the patient is well, but this patient is symptomatic with dizziness and hypotension. Atropine 1 mg intravenously to a maximum of 3 mg is given, with pacing if it does not work.",
+                b: "The rhythm is benign only while the patient tolerates it. Symptoms change the answer.",
+                c: "Cardioversion treats tachyarrhythmias, not a slow rhythm.",
+                d: "A beta blocker slows the heart further and is a cause of bradycardia rather than a treatment."
+            },
+            testTakingTip: "With sinus rhythms the shape is normal and only the speed is off, so the question is about the cause and whether the patient is symptomatic.",
+            guideSection: "Section 5 - Sinus rhythms, and why they are easy",
+            guideSectionId: "sinus-rhythms"
         }
     ]
 };

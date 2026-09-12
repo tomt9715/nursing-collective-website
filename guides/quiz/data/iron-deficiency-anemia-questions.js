@@ -10,7 +10,7 @@ var ironDeficiencyAnemiaQuizData = {
     guideSlug: "iron-deficiency-anemia",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 10,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -315,6 +315,46 @@ var ironDeficiencyAnemiaQuizData = {
             testTakingTip: "Pica + IDA = check blood lead level.",
             guideSection: "Section 2 - Clinical Manifestations",
             guideSectionId: "clinical"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is teaching a parent how to give oral ferrous sulfate to a toddler. Which instruction is correct?",
+            options: [
+                { id: "a", text: "Separate the iron from dairy foods by about 2 hours" },
+                { id: "b", text: "Give the iron together with a glass of milk each time" },
+                { id: "c", text: "Give the iron mixed into a bowl of yogurt at breakfast" },
+                { id: "d", text: "Give the iron with an antacid to protect the stomach" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Calcium blocks iron absorption, so iron is separated from dairy by about 2 hours. Vitamin C, such as orange juice, is given with it instead because it improves absorption.",
+                b: "Milk taken with iron reduces how much is absorbed, which is the opposite of the intent.",
+                c: "Yogurt is dairy, so mixing the dose into it blunts absorption the same way milk does.",
+                d: "Antacids raise gastric pH, and iron needs an acidic environment to be absorbed."
+            },
+            testTakingTip: "Iron likes acid and dislikes calcium. Vitamin C with it, dairy 2 hours away.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A child with iron deficiency anemia started oral iron 3 weeks ago and the hemoglobin has risen by 1.4 g/dL. The parent asks whether the iron can stop now. What should the nurse explain?",
+            options: [
+                { id: "a", text: "Iron continues 2 to 3 months after the hemoglobin normalises" },
+                { id: "b", text: "Iron can stop now that the hemoglobin has clearly responded" },
+                { id: "c", text: "Iron continues for one further week and then is stopped" },
+                { id: "d", text: "Iron is stopped and restarted only if symptoms come back" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A rise of more than 1 g/dL by 2 to 4 weeks confirms the treatment is working, but iron continues for 2 to 3 months after the hemoglobin normalises in order to refill the storage iron. Stopping at correction leaves the stores empty.",
+                b: "A responding hemoglobin means the diagnosis and dose were right, not that the stores are replenished.",
+                c: "One further week is far too short to rebuild ferritin.",
+                d: "Waiting for symptoms to return means treating the same deficiency twice."
+            },
+            testTakingTip: "The hemoglobin corrects long before the stores do. Reticulocytes rise at day 5 to 7, hemoglobin by 2 to 4 weeks, stores months later.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

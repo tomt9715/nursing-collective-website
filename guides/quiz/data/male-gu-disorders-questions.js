@@ -10,7 +10,7 @@ var maleGuDisordersQuizData = {
     guideSlug: "male-gu-disorders",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 11,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -311,6 +311,46 @@ var maleGuDisordersQuizData = {
             testTakingTip: "Intermittent testicular pain in a teen = intermittent torsion until proven otherwise. Refer to urology.",
             guideSection: "Section 3 - Testicular Torsion",
             guideSectionId: "torsion"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A 13-year-old reports sudden severe testicular pain that began 2 hours ago. The scrotum is swollen and the affected testis sits high. What should the nurse do?",
+            options: [
+                { id: "a", text: "Contact the surgeon immediately without awaiting imaging" },
+                { id: "b", text: "Arrange an ultrasound and reassess once it is reported" },
+                { id: "c", text: "Apply ice and elevate the scrotum, then reassess in an hour" },
+                { id: "d", text: "Give analgesia and refer to the clinic the following morning" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Testicular torsion has roughly a 6 hour salvage window. The surgeon is called at once and imaging is not waited for, because the delay is what costs the testis.",
+                b: "Waiting for an ultrasound spends part of a 6 hour window on confirmation rather than treatment.",
+                c: "Ice and elevation treat epididymitis, which comes on gradually rather than suddenly.",
+                d: "Overnight delay guarantees the window closes."
+            },
+            testTakingTip: "6 hours. Sudden, severe and high riding means call the surgeon, not the radiologist.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A parent of an uncircumcised 2-year-old asks how to clean under the foreskin, saying it will not pull back. What should the nurse advise?",
+            options: [
+                { id: "a", text: "Never force the foreskin back; clean only the outside" },
+                { id: "b", text: "Retract it fully at each bath and clean underneath" },
+                { id: "c", text: "Retract it a little further each day until it moves" },
+                { id: "d", text: "Apply petroleum jelly and retract it once every week" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A child's foreskin is normally still attached and is never forced back. Forcing it tears the tissue, and the scarring that follows can cause the pathologic phimosis the parent is trying to avoid.",
+                b: "Full retraction at this age is not expected and causes injury.",
+                c: "Incremental forcing is still forcing, and produces the same scarring.",
+                d: "Lubrication does not make forced retraction safe."
+            },
+            testTakingTip: "No retraction is the rule. Pathologic phimosis is treated with betamethasone 0.05 percent twice daily for 4 to 8 weeks, not by stretching.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

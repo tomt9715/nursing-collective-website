@@ -10,7 +10,7 @@ var pediatricGerdQuizData = {
     guideSlug: "pediatric-gerd",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 10,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -311,6 +311,46 @@ var pediatricGerdQuizData = {
             testTakingTip: "Hold the infant upright after feeds. Small frequent feeds. Burp often. Simple, effective, no meds needed for most.",
             guideSection: "Section 6 - Nursing Care & Family Education",
             guideSectionId: "nursing-care"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is teaching the parent of a 3-month-old with gastroesophageal reflux. How long should the infant be held upright after each feed?",
+            options: [
+                { id: "a", text: "About 30 minutes after every feed" },
+                { id: "b", text: "About 5 minutes after every feed" },
+                { id: "c", text: "About 2 hours after every feed" },
+                { id: "d", text: "Only after the evening feed each day" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The infant is held upright for about 30 minutes after every feed so gravity keeps the stomach contents down while the stomach empties. This is part of conservative management, which is tried before any medication.",
+                b: "Five minutes is too short for the stomach to begin emptying.",
+                c: "Two hours after every feed is impractical and more than is needed.",
+                d: "Reflux follows every feed, so the measure applies to all of them."
+            },
+            testTakingTip: "Conservative care comes first: upright 30 minutes, smaller more frequent feeds, and thickening at 1 teaspoon of rice cereal per ounce.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "A 4-week-old who previously spat up small amounts now has forceful projectile vomiting after every feed and is hungry again immediately. What should the nurse suspect?",
+            options: [
+                { id: "a", text: "Pyloric stenosis, given the age and the pattern" },
+                { id: "b", text: "Normal reflux, which peaks around this same age" },
+                { id: "c", text: "Overfeeding, which commonly causes large vomits" },
+                { id: "d", text: "A milk protein allergy developing at this age" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Projectile vomiting appearing between 2 and 8 weeks points to pyloric stenosis, and the classic picture is an infant who vomits forcefully then feeds hungrily again. This is a red flag that is not reflux.",
+                b: "Normal reflux peaks at 2 to 4 months but produces effortless spit-up, not forceful projectile vomiting.",
+                c: "Overfeeding causes larger spit-ups rather than the projectile pattern with immediate hunger.",
+                d: "Milk protein allergy tends to show with blood or mucus in the stool, eczema and irritability."
+            },
+            testTakingTip: "Separate physiologic reflux from the red flags. Projectile vomiting at 2 to 8 weeks is a surgical problem, not reflux.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

@@ -10,7 +10,7 @@ var cleftLipPalateQuizData = {
     guideSlug: "cleft-lip-palate",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 10,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -310,6 +310,46 @@ var cleftLipPalateQuizData = {
             testTakingTip: "Suture line cleaning: sterile water or saline. Gentle, non-irritating.",
             guideSection: "Section 4 - Post-Op Care",
             guideSectionId: "post-op"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is preparing a family for cleft lip repair. Which set of criteria should be met before surgery?",
+            options: [
+                { id: "a", text: "10 weeks of age, 10 pounds, and hemoglobin of 10" },
+                { id: "b", text: "6 weeks of age, 8 pounds, and hemoglobin of 12" },
+                { id: "c", text: "6 months of age, 15 pounds, and hemoglobin of 10" },
+                { id: "d", text: "12 months of age, 20 pounds, and hemoglobin of 14" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The rule of 10s requires all three: 10 weeks of age, 10 pounds of weight and a hemoglobin of 10. Lip repair is then expected around 2 to 3 months, while palate repair waits until 9 to 18 months so it is done before speech develops.",
+                b: "Six weeks and 8 pounds are below the thresholds, and the hemoglobin figure is not the one used.",
+                c: "Six months is later than lip repair is normally performed.",
+                d: "Twelve months is the palate repair window, not the lip."
+            },
+            testTakingTip: "Three tens, all required. Lip at 2 to 3 months, palate at 9 to 18 months before speech develops.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "An infant has returned to the unit after cleft palate repair. How should the nurse position the infant?",
+            options: [
+                { id: "a", text: "Prone or side-lying, to allow drainage" },
+                { id: "b", text: "Supine, with the head of the bed flat" },
+                { id: "c", text: "Supine, with the head turned to one side" },
+                { id: "d", text: "Upright in an infant seat at all times" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "After palate repair the infant is placed prone or side-lying so secretions and blood drain away from the airway. This is the opposite of lip repair, where the infant is kept supine or side-lying to protect the suture line.",
+                b: "Supine after palate repair lets secretions pool at the back of the throat.",
+                c: "Turning the head does not achieve the drainage that prone or side-lying provides.",
+                d: "An infant seat is not the positioning used immediately after this repair."
+            },
+            testTakingTip: "Two repairs, two opposite positions. Lip means never prone; palate means prone or side-lying for drainage.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

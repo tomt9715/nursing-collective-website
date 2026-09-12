@@ -107,7 +107,7 @@ var sickleCellCrisisQuizData = {
         },
         {
             id: 5,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "Which of the following are potential triggers of sickle cell vaso-occlusive crisis? (Select all that apply.)",

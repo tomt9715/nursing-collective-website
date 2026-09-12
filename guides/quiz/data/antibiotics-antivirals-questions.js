@@ -382,7 +382,7 @@ var antibioticsAntiviralsQuizData = {
         },
         {
             id: 17,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "Which statements by a patient indicate correct understanding of antibiotic stewardship? (Select all that apply.)",

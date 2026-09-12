@@ -198,7 +198,7 @@ var ironDeficiencyAnemiaQuizData = {
         },
         {
             id: 9,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "Which foods should the nurse recommend to help treat iron-deficiency anemia? (Select all that apply.)",

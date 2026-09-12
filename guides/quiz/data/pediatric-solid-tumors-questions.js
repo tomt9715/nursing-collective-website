@@ -244,7 +244,7 @@ var pediatricSolidTumorsQuizData = {
         },
         {
             id: 11,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "Which findings in a 12-year-old with a posterior fossa tumor indicate INCREASED intracranial pressure? (Select all that apply.)",

@@ -175,7 +175,7 @@ var jiaLupusQuizData = {
         },
         {
             id: 8,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "Which patient teaching is appropriate for a child on long-term corticosteroids for lupus? (Select all that apply.)",

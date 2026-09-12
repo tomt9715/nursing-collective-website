@@ -14,7 +14,7 @@ var immuneDeficiencyHivQuizData = {
     questions: [
         {
             id: 1,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "Which findings should prompt evaluation for primary immune deficiency in a child? (Select all that apply.)",

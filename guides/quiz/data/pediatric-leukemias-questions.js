@@ -107,7 +107,7 @@ var pediatricLeukemiasQuizData = {
         },
         {
             id: 5,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "A child with severe neutropenia is admitted to the oncology unit. Which nursing actions should be included in the plan of care? (Select all that apply.)",

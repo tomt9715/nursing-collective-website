@@ -290,7 +290,7 @@ var ivMedicationsQuizData = {
         },
         {
             id: 13,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "Which situations require central rather than peripheral venous access? (Select all that apply.)",

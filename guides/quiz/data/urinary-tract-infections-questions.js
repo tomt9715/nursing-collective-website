@@ -152,7 +152,7 @@ var urinaryTractInfectionsQuizData = {
         },
         {
             id: 7,
-            type: "multiple",
+            type: "sata",
             subtype: "select-all",
             difficulty: "application",
             stem: "Which patients are at increased risk for lower UTI? Select all that apply.",

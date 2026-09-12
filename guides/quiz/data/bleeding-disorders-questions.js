@@ -198,7 +198,7 @@ var bleedingDisordersQuizData = {
         },
         {
             id: 9,
-            type: "multi",
+            type: "sata",
             subtype: null,
             difficulty: "application",
             stem: "Which nursing actions are appropriate for a child with hemophilia? (Select all that apply.)",

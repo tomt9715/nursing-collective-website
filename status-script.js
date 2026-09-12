@@ -2,9 +2,9 @@
 const StatusPage = {
     services: {
         website: { name: 'Website', url: '/' },
-        api: { name: 'API', url: 'https://api.thenursingcollective.pro/api/health' },
+        api: { name: 'API', url: 'https://api.thenursingcollective.pro/health/' },
         payments: { name: 'Payments', url: 'https://api.stripe.com' },
-        discord: { name: 'FlorenceBot', url: 'https://api.thenursingcollective.pro/api/health' }
+        discord: { name: 'FlorenceBot', url: 'https://api.thenursingcollective.pro/health/' }
     },
 
     async checkServices() {

@@ -10,7 +10,7 @@ var assessmentSkillsQuizData = {
     guideSlug: "assessment-skills",
     category: "Fundamentals",
     categoryColor: "#10b981",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -274,6 +274,106 @@ var assessmentSkillsQuizData = {
             testTakingTip: "Critical values that require IMMEDIATE notification: SpO2 <90%, Blood glucose <50 or >400 mg/dL, INR >5.0, K+ <3.0 or >6.0, Na+ <120 or >160, Temp >104°F, new-onset unilateral weakness, chest pain with ECG changes. When in doubt, notify the provider - it's safer to over-communicate than to miss a critical finding.",
             guideSection: "Section 14 - Critical Findings",
             guideSectionId: "critical-findings"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nurse is performing an abdominal assessment. In which order should the four techniques be carried out?",
+            options: [
+                { id: "a", text: "Inspect, auscultate, percuss, then palpate" },
+                { id: "b", text: "Inspect, palpate, percuss, then auscultate" },
+                { id: "c", text: "Auscultate, inspect, palpate, then percuss" },
+                { id: "d", text: "Palpate, inspect, auscultate, then percuss" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Inspection always comes first. For the abdomen the usual order is altered so that auscultation precedes percussion and palpation, because pressing on the abdomen alters bowel sounds and would change the very finding being assessed.",
+                b: "That is the standard order for other systems, but palpating the abdomen before listening changes the bowel sounds.",
+                c: "Inspection comes before anything else, including auscultation.",
+                d: "Palpation is never the first technique in any system."
+            },
+            testTakingTip: "Inspection is always first. The abdomen is the exception where you listen before you touch.",
+            guideSection: "Section 3 - The order that never changes",
+            guideSectionId: "introduction"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient says, \"I have felt dizzy since this morning.\" How should the nurse document this?",
+            options: [
+                { id: "a", text: "As subjective data, quoting the patient's own words" },
+                { id: "b", text: "As objective data, since dizziness can be observed" },
+                { id: "c", text: "As objective data, recorded in measurable terms only" },
+                { id: "d", text: "As an assessment conclusion drawn from the symptom" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Subjective data is what the patient tells you, including symptoms, feelings and perceptions. It is documented in quotation marks as the patient's own words, because mixing it with measured findings is how an assumption ends up in the chart as a fact.",
+                b: "Dizziness is a sensation the patient reports, not something the nurse can observe directly.",
+                c: "Objective data is what the nurse measures, such as a blood pressure of 140 over 90.",
+                d: "Drawing a conclusion at the documentation stage skips the step where the data is simply recorded."
+            },
+            testTakingTip: "Did they tell you, or did you measure it? Subjective goes in quotation marks; objective goes in numbers.",
+            guideSection: "Section 4 - Subjective or objective",
+            guideSectionId: "data-collection"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is counting a patient's respirations. How should this be done?",
+            options: [
+                { id: "a", text: "For a full 60 seconds, noting the effort as well" },
+                { id: "b", text: "For 15 seconds, then multiply the count by four" },
+                { id: "c", text: "For 30 seconds while telling the patient to relax" },
+                { id: "d", text: "From the monitor display without observing the chest" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Respirations are counted for a full 60 seconds, and the effort is noted as well as the rate. Breathing is under partial voluntary control, so a short sample or an announced count gives an unreliable number.",
+                b: "A 15 second sample multiplied up magnifies any irregularity into a large error.",
+                c: "Telling the patient you are counting makes them alter the pattern, which is why it is done discreetly.",
+                d: "Monitor derived rates are prone to artefact and do not capture effort."
+            },
+            testTakingTip: "Normal adult range is 12 to 20 a minute, but the effort matters as much as the number.",
+            guideSection: "Section 5 - Vital signs, and why trends beat values",
+            guideSectionId: "vital-signs"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient with chronic obstructive pulmonary disease (COPD) has an oxygen saturation of 91 percent. The nurse notes this is the patient's usual reading. How should this be interpreted?",
+            options: [
+                { id: "a", text: "It is this patient's baseline and needs no intervention" },
+                { id: "b", text: "It is abnormal, since the normal range starts at 95" },
+                { id: "c", text: "It requires immediate oxygen to reach 95 percent" },
+                { id: "d", text: "It indicates the pulse oximeter probe has failed" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A normal range is a population statement, and the patient is one person. A patient with chronic obstructive pulmonary disease (COPD) runs lower on purpose, so a reading is compared with their own baseline before it is called abnormal.",
+                b: "The 95 to 100 percent range describes most adults and does not describe a chronic retainer.",
+                c: "Driving this patient's saturation to 95 percent risks suppressing the drive to breathe.",
+                d: "A reading consistent with the patient's baseline is evidence the probe is working."
+            },
+            testTakingTip: "One reading tells you almost nothing. Trends beat values, and the patient's own baseline beats the textbook range.",
+            guideSection: "Section 5 - Vital signs, and why trends beat values",
+            guideSectionId: "vital-signs"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nurse is admitting a patient to the medical unit. Which type of assessment is indicated?",
+            options: [
+                { id: "a", text: "Comprehensive, covering head to toe with a full history" },
+                { id: "b", text: "Focused, targeted only at the chief complaint given" },
+                { id: "c", text: "Emergency, covering airway, breathing and circulation" },
+                { id: "d", text: "Ongoing, checking only for change from the baseline" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A comprehensive assessment is performed on admission or at an annual physical. It covers head to toe with a complete history, and it establishes the baseline every later assessment is compared against.",
+                b: "A focused assessment targets a specific complaint and is used once a baseline exists.",
+                c: "An emergency assessment is a rapid primary survey used when something is immediately life threatening.",
+                d: "An ongoing or shift assessment hunts for change from a baseline, which admission is establishing."
+            },
+            testTakingTip: "Four types, four triggers. Admission means comprehensive, because everything afterwards is compared to it.",
+            guideSection: "Section 3 - The order that never changes",
+            guideSectionId: "introduction"
         }
     ]
 };

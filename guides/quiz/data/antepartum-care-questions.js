@@ -9,7 +9,7 @@ var antepartumCareQuizData = {
     guideSlug: "antepartum-care",
     category: "Maternal-Newborn",
     categoryColor: "#EC4899",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -249,6 +249,106 @@ var antepartumCareQuizData = {
             testTakingTip: "Fundal height rule: cm = gestational weeks (\u00b12 cm) between 16-36 weeks. If the measurement is off by more than 2 cm in either direction, notify the provider. Too small = IUGR or oligohydramnios. Too large = macrosomia, polyhydramnios, or multiples.",
             guideSection: "Section 4 - Prenatal Assessment & Screening",
             guideSectionId: "prenatal-assessment"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "application",
+            stem: "A woman's last menstrual period began on 10 May. Using Naegele's rule, what is the estimated due date?",
+            options: [
+                { id: "a", text: "17 February the following year" },
+                { id: "b", text: "10 February the following year" },
+                { id: "c", text: "3 March the following year" },
+                { id: "d", text: "17 August of the same year" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Naegele's rule takes the first day of the last menstrual period, subtracts 3 months and adds 7 days. From 10 May, subtracting 3 months gives 10 February and adding 7 days gives 17 February of the following year.",
+                b: "This subtracts the 3 months but omits the 7 days.",
+                c: "This adds rather than subtracts months, which reverses the rule.",
+                d: "This adds 7 days but moves only 3 months forward instead of back."
+            },
+            testTakingTip: "Last menstrual period minus 3 months, plus 7 days. Do the months first and the days second.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 12, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "A woman at 28 weeks has a fundal height of 24 cm. What should the nurse do?",
+            options: [
+                { id: "a", text: "Notify the provider, since the gap exceeds 2 cm" },
+                { id: "b", text: "Document it as an expected finding for 28 weeks" },
+                { id: "c", text: "Remeasure in two weeks and compare the readings" },
+                { id: "d", text: "Reassure the woman that fundal height varies widely" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Between 16 and 36 weeks the fundal height in centimetres should roughly match the gestation in weeks. A discrepancy of more than 2 cm is reported, and 24 cm at 28 weeks is a 4 cm gap that may indicate growth restriction or low fluid.",
+                b: "A 4 cm shortfall is outside the expected range rather than within it.",
+                c: "Waiting two weeks delays investigation of possible growth restriction.",
+                d: "Reassurance without investigation misses a finding that may reflect a real problem."
+            },
+            testTakingTip: "Centimetres equal weeks from 16 to 36. More than 2 cm either way gets reported.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 13, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A woman at 30 weeks reports she has felt only 4 fetal movements in the last 2 hours. What should the nurse advise?",
+            options: [
+                { id: "a", text: "Come in now, since the count is below the floor" },
+                { id: "b", text: "Continue counting for a further 4 hours at home" },
+                { id: "c", text: "Reassure her, since babies sleep for long periods" },
+                { id: "d", text: "Wait until the next scheduled prenatal appointment" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The kick count floor is 10 movements in 2 hours. Fewer than that means the woman calls and comes in now, because reduced movement can be the first sign of fetal compromise.",
+                b: "Extending the count at home delays assessment when the threshold has already been missed.",
+                c: "Fetal sleep cycles are real, but they are why the threshold spans 2 hours rather than a few minutes.",
+                d: "Waiting for a scheduled visit is unsafe when movements have fallen below the floor."
+            },
+            testTakingTip: "10 movements in 2 hours is the floor. Fewer means call now, not count longer.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A woman at 32 weeks becomes lightheaded and pale while lying flat on her back for an examination. What should the nurse do FIRST?",
+            options: [
+                { id: "a", text: "Turn her onto her left side" },
+                { id: "b", text: "Raise the head of the bed upright" },
+                { id: "c", text: "Give oxygen by face mask at 10 litres" },
+                { id: "d", text: "Obtain a full set of vital signs first" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Past 20 weeks the uterus compresses the inferior vena cava when the woman lies supine, reducing venous return and cardiac output. Turning her to the left side lifts the uterus off the vessel and restores the circulation immediately.",
+                b: "Sitting up does not remove the uterus from the vena cava.",
+                c: "Oxygen does not address the mechanical obstruction causing the problem.",
+                d: "Vital signs are taken, but after the position that reverses the cause."
+            },
+            testTakingTip: "Past 20 weeks, never supine. Left lateral is the position that fixes it, and it is the first action rather than a later one.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A woman has a 1 hour glucose screen result of 152 mg/dL at 26 weeks. What should the nurse anticipate?",
+            options: [
+                { id: "a", text: "A 3 hour glucose tolerance test will be arranged" },
+                { id: "b", text: "Gestational diabetes will be diagnosed on this result" },
+                { id: "c", text: "The screen will simply be repeated in four weeks" },
+                { id: "d", text: "No further testing, since the result is acceptable" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The glucose screen is performed between 24 and 28 weeks, and a value of 140 mg/dL or more earns the 3 hour glucose tolerance test. The screen identifies who needs the diagnostic test rather than making the diagnosis itself.",
+                b: "The screening test does not diagnose gestational diabetes. The 3 hour test does.",
+                c: "Repeating the screen rather than progressing to the diagnostic test delays identification.",
+                d: "A result of 152 mg/dL is above the 140 mg/dL threshold and is not acceptable to leave."
+            },
+            testTakingTip: "24 to 28 weeks and 140 mg/dL are the two numbers. The screen sorts who gets tested; the 3 hour test diagnoses.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

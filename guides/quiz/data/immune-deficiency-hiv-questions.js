@@ -10,7 +10,7 @@ var immuneDeficiencyHivQuizData = {
     guideSlug: "immune-deficiency-hiv",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 11,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -338,6 +338,26 @@ var immuneDeficiencyHivQuizData = {
             testTakingTip: "After epi: stop trigger, O2, IV fluids, adjuncts, monitor 4\u20138 hr.",
             guideSection: "Section 4 - Anaphylaxis",
             guideSectionId: "anaphylaxis"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A 6-year-old weighing 22 kg has been given intramuscular epinephrine for anaphylaxis. Symptoms have improved and the parent asks to take the child home. What should the nurse explain?",
+            options: [
+                { id: "a", text: "The child is observed 4 to 8 hours for a biphasic return" },
+                { id: "b", text: "The child may go home once symptoms have fully settled" },
+                { id: "c", text: "The child is observed for 1 hour and then discharged home" },
+                { id: "d", text: "The child is admitted overnight on every single occasion" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Anaphylaxis can return hours after it appears to have resolved, so the minimum observation is 4 to 8 hours for a biphasic reaction. The child then goes home carrying two auto-injectors.",
+                b: "Resolution of symptoms is exactly when a biphasic reaction is missed, because the second wave has not started yet.",
+                c: "One hour is well short of the window in which a biphasic reaction typically appears.",
+                d: "Routine overnight admission is not required. A defined observation period is."
+            },
+            testTakingTip: "At 22 kg this child is in the 15 to 30 kg band, so the auto-injector is the 0.15 mg device. Two go home with them.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

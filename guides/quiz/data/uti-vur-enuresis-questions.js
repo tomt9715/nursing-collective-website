@@ -10,7 +10,7 @@ var utiVurEnuresisQuizData = {
     guideSlug: "uti-vur-enuresis",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -333,6 +333,26 @@ var utiVurEnuresisQuizData = {
             testTakingTip: "Infant <2 months with UTI = admit + IV antibiotics + sepsis workup. Low threshold for escalation.",
             guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A 6-week-old is diagnosed with a urinary tract infection. What should the nurse anticipate?",
+            options: [
+                { id: "a", text: "Admission for intravenous antibiotics and a sepsis workup" },
+                { id: "b", text: "Discharge home on oral antibiotics with a follow-up visit" },
+                { id: "c", text: "Observation without antibiotics until the culture returns" },
+                { id: "d", text: "A repeat bag specimen to confirm before treatment begins" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "An infant under 2 months with a urinary tract infection is admitted for intravenous antibiotics and a sepsis workup, because an infection at this age can spread rapidly and presents with few localising signs.",
+                b: "Oral treatment at home is not appropriate for an infant this young.",
+                c: "Withholding antibiotics in a febrile infant risks progression to sepsis.",
+                d: "A bag specimen is a screening tool only and is never used as a culture."
+            },
+            testTakingTip: "Under 2 months changes the whole plan. A bag specimen screens; a catheter over 50,000 colony forming units or a clean catch over 100,000 diagnoses.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

@@ -10,7 +10,7 @@ var rheumaticFeverEndocarditisQuizData = {
     guideSlug: "rheumatic-fever-endocarditis",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -333,6 +333,26 @@ var rheumaticFeverEndocarditisQuizData = {
             testTakingTip: "SBE prophylaxis prevents endocarditis on already-damaged valves. Different purpose than RF recurrence prophylaxis.",
             guideSection: "Section 7 - Prophylaxis",
             guideSectionId: "prophylaxis"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A child is diagnosed with streptococcal pharyngitis. The parent asks why the full antibiotic course matters when the child feels better after 3 days. What should the nurse explain?",
+            options: [
+                { id: "a", text: "The full 10 day course is what prevents rheumatic fever" },
+                { id: "b", text: "The full course prevents the sore throat from returning" },
+                { id: "c", text: "The full course is needed to avoid antibiotic resistance" },
+                { id: "d", text: "The full course shortens the illness by several more days" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A complete 10 day oral penicillin course is what prevents rheumatic fever, which appears 2 to 3 weeks after the throat infection. Feeling better is not the endpoint, because the immune complication develops after the symptoms have gone.",
+                b: "Recurrence is not the concern that sets the 10 day rule.",
+                c: "Resistance is a general principle, but the specific reason here is preventing rheumatic fever.",
+                d: "The course length is set by prevention of the complication, not by symptom duration."
+            },
+            testTakingTip: "The 2 to 3 week gap is the point. The child is well by then, which is why the full 10 days has to be finished.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

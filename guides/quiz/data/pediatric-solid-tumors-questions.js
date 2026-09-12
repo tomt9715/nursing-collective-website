@@ -10,7 +10,7 @@ var pediatricSolidTumorsQuizData = {
     guideSlug: "pediatric-solid-tumors",
     category: "Pediatric Nursing",
     categoryColor: "#ef5a5a",
-    estimatedMinutes: 11,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -338,6 +338,26 @@ var pediatricSolidTumorsQuizData = {
             testTakingTip: "Always anticipate late effects; survivorship care matters.",
             guideSection: "Section 7 - Family Coping",
             guideSectionId: "family"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A nurse is admitting a 3-year-old with a suspected Wilms tumor. Which action should the nurse take to protect the child?",
+            options: [
+                { id: "a", text: "Post a sign at the bed that the abdomen is not palpated" },
+                { id: "b", text: "Palpate the abdomen gently once to record the mass size" },
+                { id: "c", text: "Measure the abdominal girth by pressing firmly each shift" },
+                { id: "d", text: "Encourage the parents to feel the mass so they understand" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Do not palpate is the rule for a suspected neuroblastoma or Wilms abdomen. Pressure on the tumour can rupture the capsule and seed malignant cells, so a sign at the bedside warns everyone who comes near.",
+                b: "Even a single gentle palpation carries the rupture risk the rule exists to prevent.",
+                c: "Girth is measured with a tape without pressing on the mass.",
+                d: "Teaching parents to palpate spreads the very risk the precaution removes."
+            },
+            testTakingTip: "A mass crossing the midline points to neuroblastoma, a one-sided mass to Wilms. Either way, the abdomen is not palpated.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

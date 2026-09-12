@@ -1,5 +1,5 @@
 /**
- * GI Bleeding Quiz — Question Data
+ * GI Bleeding Quiz - Question Data
  * 10 NCLEX-style questions: 5 Single, 3 Priority, 1 Ordering, 1 Matrix
  */
 
@@ -25,13 +25,13 @@ var giBleedingQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Melena (black, tarry, foul-smelling stool) is the hallmark sign of UPPER GI bleeding. The black color results from the digestion of blood as it passes through the GI tract — the longer transit time from an upper source allows gastric acid and intestinal bacteria to break down hemoglobin into hematin, which is black. Sources above the ligament of Treitz (esophagus, stomach, duodenum) are classified as upper GI bleeds.",
+                correct: "Melena (black, tarry, foul-smelling stool) is the hallmark sign of UPPER GI bleeding. The black color results from the digestion of blood as it passes through the GI tract - the longer transit time from an upper source allows gastric acid and intestinal bacteria to break down hemoglobin into hematin, which is black. Sources above the ligament of Treitz (esophagus, stomach, duodenum) are classified as upper GI bleeds.",
                 a: "Diverticulosis (lower GI) typically causes bright red blood per rectum (hematochezia), not melena. The short transit time from the colon does not allow for blood digestion.",
                 c: "Hemorrhoidal bleeding produces bright red blood on the stool surface or on toilet paper. It does not cause the diffuse black discoloration of melena.",
-                d: "Colorectal bleeding (lower GI) generally presents as hematochezia — bright red or maroon-colored blood — because there is insufficient transit time for blood digestion."
+                d: "Colorectal bleeding (lower GI) generally presents as hematochezia - bright red or maroon-colored blood - because there is insufficient transit time for blood digestion."
             },
             testTakingTip: "Melena (black/tarry) = upper GI. Hematochezia (bright red) = usually lower GI. Coffee-ground emesis = upper GI (partially digested blood in stomach). Exception: a massive, brisk upper GI bleed can cause hematochezia because the blood moves through so fast it doesn't have time to be digested.",
-            guideSection: "Section 3 — Upper vs Lower GI Bleeding",
+            guideSection: "Section 3 - Upper vs Lower GI Bleeding",
             guideSectionId: "types"
         },
         {
@@ -48,9 +48,9 @@ var giBleedingQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This patient is in hemorrhagic shock — hypotension (86/52), tachycardia (128), tachypnea, confusion, and active hematemesis. The ABC priority is establishing vascular access for fluid resuscitation. Two large-bore IVs (18G or larger, preferably 16G or 14G) in the antecubital veins allow rapid infusion of crystalloids (NS or LR) to restore circulating volume and blood pressure.",
+                correct: "This patient is in hemorrhagic shock - hypotension (86/52), tachycardia (128), tachypnea, confusion, and active hematemesis. The ABC priority is establishing vascular access for fluid resuscitation. Two large-bore IVs (18G or larger, preferably 16G or 14G) in the antecubital veins allow rapid infusion of crystalloids (NS or LR) to restore circulating volume and blood pressure.",
                 a: "An NG tube may be placed for lavage to confirm the upper GI source and assess for active bleeding, but vascular access and resuscitation take priority. You cannot lavage if the patient is in cardiovascular collapse.",
-                c: "Type and crossmatch is essential and should be drawn AT THE SAME TIME as IV access is established, but establishing the IV lines comes first — you need vascular access before you can draw labs or transfuse.",
+                c: "Type and crossmatch is essential and should be drawn AT THE SAME TIME as IV access is established, but establishing the IV lines comes first - you need vascular access before you can draw labs or transfuse.",
                 d: "Endoscopy is the definitive diagnostic and therapeutic intervention for upper GI bleeding, but the patient must be hemodynamically stabilized first. Endoscopy in an unstable patient carries high risk."
             },
             labValues: [
@@ -58,7 +58,7 @@ var giBleedingQuizData = {
                 { name: "Hematocrit", normal: "Male: 42–52%; Female: 37–47%" }
             ],
             testTakingTip: "In active GI bleeding with hemodynamic instability, follow the ABCs: Airway (protect if LOC decreased), Breathing (O2), Circulation (TWO large-bore IVs + fluids). The initial hemoglobin can be MISLEADINGLY NORMAL because it takes 24-72 hours for hemodilution to reflect the true blood loss.",
-            guideSection: "Section 6 — Priority Nursing Interventions",
+            guideSection: "Section 6 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -77,14 +77,14 @@ var giBleedingQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "The correct sequence prioritizes vascular access and volume restoration first, then obtaining essential labs, establishing monitoring, assessing end-organ perfusion, and initiating pharmacological therapy with endoscopy preparation.",
-                a: "FIRST — Establishing vascular access is the highest circulation priority. Two large-bore IVs (16G or larger, preferably in antecubital veins) allow simultaneous fluid resuscitation and blood product administration. Without IV access, no other interventions can be delivered.",
-                b: "SECOND — Labs should be drawn AT THE SAME TIME as IV lines are established. Type and crossmatch enables blood transfusion, CBC provides baseline hemoglobin, BMP reveals BUN elevation (upper GI bleed marker), and coagulation studies guide blood product selection.",
-                c: "THIRD — Continuous cardiac monitoring detects arrhythmias from hemodynamic instability, electrolyte imbalances, or myocardial ischemia from reduced oxygen delivery. This establishes ongoing surveillance once access and labs are in place.",
-                d: "FOURTH — A Foley catheter allows precise hourly urine output measurement as an indicator of end-organ perfusion. Declining UOP suggests worsening shock and the need for more aggressive resuscitation.",
-                e: "FIFTH — Once the patient is being resuscitated and monitored, an IV PPI (not oral) is administered to reduce gastric acid and promote hemostasis. The standard is IV pantoprazole 80 mg bolus followed by 8 mg/hour infusion. Endoscopy preparation begins concurrently for definitive diagnosis and treatment."
+                a: "FIRST - Establishing vascular access is the highest circulation priority. Two large-bore IVs (16G or larger, preferably in antecubital veins) allow simultaneous fluid resuscitation and blood product administration. Without IV access, no other interventions can be delivered.",
+                b: "SECOND - Labs should be drawn AT THE SAME TIME as IV lines are established. Type and crossmatch enables blood transfusion, CBC provides baseline hemoglobin, BMP reveals BUN elevation (upper GI bleed marker), and coagulation studies guide blood product selection.",
+                c: "THIRD - Continuous cardiac monitoring detects arrhythmias from hemodynamic instability, electrolyte imbalances, or myocardial ischemia from reduced oxygen delivery. This establishes ongoing surveillance once access and labs are in place.",
+                d: "FOURTH - A Foley catheter allows precise hourly urine output measurement as an indicator of end-organ perfusion. Declining UOP suggests worsening shock and the need for more aggressive resuscitation.",
+                e: "FIFTH - Once the patient is being resuscitated and monitored, an IV PPI (not oral) is administered to reduce gastric acid and promote hemostasis. The standard is IV pantoprazole 80 mg bolus followed by 8 mg/hour infusion. Endoscopy preparation begins concurrently for definitive diagnosis and treatment."
             },
             testTakingTip: "GI bleed resuscitation priorities: Two large-bore IVs, type & crossmatch, CBC/BMP/coags, Foley catheter (UOP goal >0.5 mL/kg/hr), cardiac monitor, NPO for endoscopy. Remember: IV PPI, not oral, in the acute setting. Morphine is avoided due to hypotension risk.",
-            guideSection: "Section 6 — Priority Nursing Interventions",
+            guideSection: "Section 6 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -101,13 +101,13 @@ var giBleedingQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A bilious (bile-stained) but non-bloody NG aspirate makes active upper GI bleeding UNLIKELY because bile confirms the tube is past the pylorus or that duodenal contents are refluxing into the stomach. However, it does NOT definitively rule out upper GI bleeding — the bleed may be intermittent, distal to the tube tip, or may have stopped temporarily. Endoscopy remains the definitive diagnostic tool.",
+                correct: "A bilious (bile-stained) but non-bloody NG aspirate makes active upper GI bleeding UNLIKELY because bile confirms the tube is past the pylorus or that duodenal contents are refluxing into the stomach. However, it does NOT definitively rule out upper GI bleeding - the bleed may be intermittent, distal to the tube tip, or may have stopped temporarily. Endoscopy remains the definitive diagnostic tool.",
                 a: "A clear NG aspirate does not rule out GI bleeding entirely. The patient may have a lower GI source, an intermittent upper source, or a post-pyloric duodenal bleed that doesn't reflux back to the stomach.",
                 c: "Even if the bleeding has paused, further workup (endoscopy, labs, monitoring) is needed. GI bleeds can recur unpredictably, and the source must be identified for definitive treatment.",
-                d: "The presence of bile actually CONFIRMS proper positioning — it means the tube is in the stomach and gastric/duodenal contents are being aspirated. Bile is an expected and helpful finding."
+                d: "The presence of bile actually CONFIRMS proper positioning - it means the tube is in the stomach and gastric/duodenal contents are being aspirated. Bile is an expected and helpful finding."
             },
             testTakingTip: "NG lavage interpretation: Bloody/coffee-ground = confirms upper GI bleed. Clear with bile = makes upper GI bleed unlikely. Clear WITHOUT bile = does NOT rule out upper GI bleed (could be pre-pyloric and the tube may not be reaching the blood). The key pearl: a negative lavage does not definitively exclude an upper source.",
-            guideSection: "Section 5 — Diagnostic Procedures",
+            guideSection: "Section 5 - Diagnostic Procedures",
             guideSectionId: "diagnostics"
         },
         {
@@ -125,7 +125,7 @@ var giBleedingQuizData = {
             correct: "a",
             rationale: {
                 correct: "In acute hemorrhage, the patient loses whole blood (RBCs + plasma in equal proportion). Because both the numerator (red blood cells) and denominator (plasma volume) decrease together, the hemoglobin CONCENTRATION remains unchanged initially. It takes 24-72 hours for the body to shift interstitial fluid into the vascular space (transcapillary refill) and retain water via ADH/aldosterone, which dilutes the remaining RBCs and reveals the true hemoglobin drop. This is why the vital signs (HR 118, BP 100/68 suggesting Class II-III shock) are more reliable early indicators of blood loss severity than the lab value.",
-                a: "This is the correct physiologic explanation. Hemoglobin is a CONCENTRATION (g/dL) — if both the solute (RBCs) and solvent (plasma) decrease proportionally, the concentration stays the same. Only when the body replaces the lost plasma volume with interstitial fluid (hemodilution) does the Hgb drop to reflect the true loss.",
+                a: "This is the correct physiologic explanation. Hemoglobin is a CONCENTRATION (g/dL) - if both the solute (RBCs) and solvent (plasma) decrease proportionally, the concentration stays the same. Only when the body replaces the lost plasma volume with interstitial fluid (hemodilution) does the Hgb drop to reflect the true loss.",
                 b: "Hemoglobin can be accurately measured from venous, arterial, or capillary samples. The source of the blood draw does not significantly affect hemoglobin accuracy.",
                 c: "Standard laboratory hemoglobin assays are not affected by digested blood products in the patient's GI tract. The blood sample drawn from the vein measures circulating hemoglobin, which is independent of GI contents.",
                 d: "While the bone marrow does increase reticulocyte production in response to blood loss, this process takes days to weeks, not hours. Additionally, reticulocytes ARE counted in standard hemoglobin measurements."
@@ -135,7 +135,7 @@ var giBleedingQuizData = {
                 { name: "Transfusion Trigger", normal: "Hgb <7 g/dL (or <8-9 if cardiac disease)" }
             ],
             testTakingTip: "The NCLEX loves this concept: In acute GI bleeding, the initial hemoglobin is a LIAR. Trust the vital signs more than the lab in the first 24 hours. Tachycardia is the earliest compensatory sign of hemorrhage. This is why serial hemoglobin monitoring is essential.",
-            guideSection: "Section 4 — Assessment & Hemodynamic Status",
+            guideSection: "Section 4 - Assessment & Hemodynamic Status",
             guideSectionId: "assessment"
         },
         {
@@ -157,8 +157,8 @@ var giBleedingQuizData = {
                 c: "Barium is absolutely contraindicated before EGD. Barium coats the mucosa and makes it impossible for the endoscopist to visualize the bleeding source. It also interferes with any subsequent CT angiography or surgery.",
                 d: "The patient should remain NPO before the procedure. Clear liquids would increase aspiration risk during sedation and may obscure the endoscopic view."
             },
-            testTakingTip: "Pre-EGD priorities: NPO (aspiration risk during sedation), type and screen ready (bleeding risk), IV access, consent signed, remove dentures. NEVER give barium before endoscopy \u2014 it blocks visualization and is a classic NCLEX distractor.",
-            guideSection: "Section 5 \u2014 Diagnostic Procedures",
+            testTakingTip: "Pre-EGD priorities: NPO (aspiration risk during sedation), type and screen ready (bleeding risk), IV access, consent signed, remove dentures. NEVER give barium before endoscopy - it blocks visualization and is a classic NCLEX distractor.",
+            guideSection: "Section 5 - Diagnostic Procedures",
             guideSectionId: "diagnostics"
         },
         {
@@ -180,8 +180,8 @@ var giBleedingQuizData = {
                 c: "Lactulose may be needed later if hepatic encephalopathy develops (from blood protein digestion in the gut), but it does not address the acute hemorrhage and is not the priority.",
                 d: "Vitamin K may be needed if the patient has coagulopathy from liver disease (impaired clotting factor synthesis), but it takes 24-48 hours to be effective and does not address the immediate variceal hemorrhage."
             },
-            testTakingTip: "Variceal bleeding triad: (1) IV octreotide (reduces portal pressure), (2) Prophylactic IV antibiotics (reduces infection and rebleeding), (3) Emergent EGD with band ligation (definitive treatment). Know this sequence — it's different from peptic ulcer bleeding (IV PPI + EGD).",
-            guideSection: "Section 7 — Pharmacological Management",
+            testTakingTip: "Variceal bleeding triad: (1) IV octreotide (reduces portal pressure), (2) Prophylactic IV antibiotics (reduces infection and rebleeding), (3) Emergent EGD with band ligation (definitive treatment). Know this sequence - it's different from peptic ulcer bleeding (IV PPI + EGD).",
+            guideSection: "Section 7 - Pharmacological Management",
             guideSectionId: "medications"
         },
         {
@@ -201,11 +201,11 @@ var giBleedingQuizData = {
             correct: { a: "Monitor For", b: "Monitor For", c: "Monitor For", d: "Not a Concern", e: "Monitor For" },
             rationale: {
                 correct: "Massive transfusion complications to monitor for include hypocalcemia (citrate binds calcium), hyperkalemia (potassium leaks from stored RBCs), hypothermia (cold products), and dilutional coagulopathy. Hyperglycemia from storage dextrose is not a clinically significant concern.",
-                a: "MONITOR FOR — Citrate is the anticoagulant used to preserve stored blood. During massive transfusion, excess citrate binds ionized calcium in the patient's blood, causing hypocalcemia. Signs include circumoral tingling, muscle cramping, and QT prolongation.",
-                b: "MONITOR FOR — Stored red blood cells leak potassium into the storage solution over time. Rapid transfusion of multiple units delivers a potassium load that can cause hyperkalemia, especially in patients with renal impairment. ECG changes include peaked T waves.",
-                c: "MONITOR FOR — Blood products are stored at 1-6 degrees C. Rapid infusion of cold products can cause hypothermia, which worsens coagulopathy (the 'triad of death': hypothermia, acidosis, coagulopathy). Blood warmers should be used.",
-                d: "NOT A CONCERN — Blood storage solutions contain a small amount of dextrose, but this is negligible and does not cause clinically significant hyperglycemia. This is not a recognized massive transfusion complication.",
-                e: "MONITOR FOR — PRBCs do not contain significant clotting factors or platelets. Replacing blood volume with only RBCs dilutes the remaining clotting factors, leading to coagulopathy. This is why massive transfusion protocols include FFP and platelets in addition to PRBCs."
+                a: "MONITOR FOR - Citrate is the anticoagulant used to preserve stored blood. During massive transfusion, excess citrate binds ionized calcium in the patient's blood, causing hypocalcemia. Signs include circumoral tingling, muscle cramping, and QT prolongation.",
+                b: "MONITOR FOR - Stored red blood cells leak potassium into the storage solution over time. Rapid transfusion of multiple units delivers a potassium load that can cause hyperkalemia, especially in patients with renal impairment. ECG changes include peaked T waves.",
+                c: "MONITOR FOR - Blood products are stored at 1-6 degrees C. Rapid infusion of cold products can cause hypothermia, which worsens coagulopathy (the 'triad of death': hypothermia, acidosis, coagulopathy). Blood warmers should be used.",
+                d: "NOT A CONCERN - Blood storage solutions contain a small amount of dextrose, but this is negligible and does not cause clinically significant hyperglycemia. This is not a recognized massive transfusion complication.",
+                e: "MONITOR FOR - PRBCs do not contain significant clotting factors or platelets. Replacing blood volume with only RBCs dilutes the remaining clotting factors, leading to coagulopathy. This is why massive transfusion protocols include FFP and platelets in addition to PRBCs."
             },
             labValues: [
                 { name: "Calcium (ionized)", normal: "4.5–5.5 mg/dL" },
@@ -213,8 +213,8 @@ var giBleedingQuizData = {
                 { name: "INR", normal: "0.8–1.1" },
                 { name: "Platelets", normal: "150,000–400,000/mm³" }
             ],
-            testTakingTip: "Massive transfusion complications to memorize: Hypocalcemia (citrate), Hyperkalemia (stored cell leakage), Hypothermia (cold products), Coagulopathy (dilution). Mnemonic: the '3 Hypos + 1 Hyper' — hypocalcemia, hypothermia, hypo-coagulopathy, and hyperkalemia.",
-            guideSection: "Section 6 — Priority Nursing Interventions",
+            testTakingTip: "Massive transfusion complications to memorize: Hypocalcemia (citrate), Hyperkalemia (stored cell leakage), Hypothermia (cold products), Coagulopathy (dilution). Mnemonic: the '3 Hypos + 1 Hyper' - hypocalcemia, hypothermia, hypo-coagulopathy, and hyperkalemia.",
+            guideSection: "Section 6 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -231,7 +231,7 @@ var giBleedingQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "An elevated BUN with a NORMAL creatinine (BUN/Cr ratio >20:1) in a GI bleed patient is a classic finding that points to upper GI bleeding. When blood enters the GI tract, proteins in the blood are digested and absorbed, then metabolized to urea in the liver, raising the BUN. Because this is not a renal problem, the creatinine remains normal — the elevated BUN is from a GI (extra-renal) protein load.",
+                correct: "An elevated BUN with a NORMAL creatinine (BUN/Cr ratio >20:1) in a GI bleed patient is a classic finding that points to upper GI bleeding. When blood enters the GI tract, proteins in the blood are digested and absorbed, then metabolized to urea in the liver, raising the BUN. Because this is not a renal problem, the creatinine remains normal - the elevated BUN is from a GI (extra-renal) protein load.",
                 a: "Acute kidney injury would elevate BOTH BUN and creatinine. A normal creatinine of 1.0 mg/dL argues against renal injury.",
                 b: "CKD also elevates both BUN and creatinine proportionally. The isolated BUN elevation with normal creatinine is not consistent with kidney disease.",
                 d: "While dehydration can cause prerenal azotemia (elevated BUN/Cr ratio), in the context of a known GI bleed, blood protein digestion is the most likely explanation. Dehydration would also typically cause some creatinine elevation."
@@ -242,7 +242,7 @@ var giBleedingQuizData = {
                 { name: "BUN/Cr Ratio", normal: "10:1 to 20:1" }
             ],
             testTakingTip: "Elevated BUN with normal creatinine (ratio >20:1) in a GI bleed patient = blood is being digested in the GI tract, pointing to an UPPER GI source. This lab pattern is part of the Glasgow-Blatchford Score used to risk-stratify GI bleeds. It's also used to differentiate upper from lower GI bleeding.",
-            guideSection: "Section 5 — Diagnostic Procedures",
+            guideSection: "Section 5 - Diagnostic Procedures",
             guideSectionId: "diagnostics"
         },
         {
@@ -265,7 +265,7 @@ var giBleedingQuizData = {
                 d: "Labs are important for guiding transfusion but are not the first priority when the patient is actively vomiting blood and at risk of aspiration."
             },
             testTakingTip: "When a patient is actively vomiting blood and at risk of losing consciousness, think ABCs: Airway FIRST. Position to prevent aspiration (lateral/side-lying), then suction, then address circulation (fluids/blood). If the NCLEX offers an airway option alongside a circulation or diagnostic option, airway always wins.",
-            guideSection: "Section 6 — Priority Nursing Interventions",
+            guideSection: "Section 6 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         }
     ]

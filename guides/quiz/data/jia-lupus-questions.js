@@ -32,7 +32,7 @@ var jiaLupusQuizData = {
                 d: "Multi-organ + ANA + dsDNA = SLE."
             },
             testTakingTip: "Oligo = \u2264 4 joints; Poly = \u2265 5; Systemic = fever + rash + organomegaly.",
-            guideSection: "Section 2 \u2014 JIA Types",
+            guideSection: "Section 2 - JIA Types",
             guideSectionId: "jia"
         },
         {
@@ -50,12 +50,12 @@ var jiaLupusQuizData = {
             correct: "c",
             rationale: {
                 correct: "Oligoarticular JIA can cause asymptomatic chronic uveitis that progresses to blindness if missed. ANA-positive young girls are at highest risk. Slit-lamp exams every 3\u20136 months are standard.",
-                a: "Uveitis is often painless \u2014 waiting for symptoms allows irreversible damage.",
+                a: "Uveitis is often painless - waiting for symptoms allows irreversible damage.",
                 b: "Visual acuity alone misses early uveitis.",
                 d: "Waiting 1 year or starting at a specific age is too late."
             },
             testTakingTip: "Oligoarticular JIA = quiet uveitis = slit lamp every 3\u20136 mo.",
-            guideSection: "Section 2 \u2014 JIA Types",
+            guideSection: "Section 2 - JIA Types",
             guideSectionId: "jia"
         },
         {
@@ -65,8 +65,8 @@ var jiaLupusQuizData = {
             difficulty: "application",
             stem: "A parent of a child with systemic JIA asks why the fever keeps returning even though their child is taking antibiotics. The BEST nursing response is:",
             options: [
-                { id: "a", text: "\u201cThe antibiotics must not be strong enough \u2014 we should switch.\u201d" },
-                { id: "b", text: "\u201cIn systemic JIA, fever is caused by inflammation rather than infection, so antibiotics don\u2019t stop it \u2014 the anti-inflammatory medications will.\u201d" },
+                { id: "a", text: "\u201cThe antibiotics must not be strong enough - we should switch.\u201d" },
+                { id: "b", text: "\u201cIn systemic JIA, fever is caused by inflammation rather than infection, so antibiotics don\u2019t stop it - the anti-inflammatory medications will.\u201d" },
                 { id: "c", text: "\u201cThe child likely has a secondary infection.\u201d" },
                 { id: "d", text: "\u201cDaily fevers are always a sign of worsening disease.\u201d" }
             ],
@@ -78,7 +78,7 @@ var jiaLupusQuizData = {
                 d: "Daily fevers are the characteristic pattern, not necessarily worsening."
             },
             testTakingTip: "Inflammatory fever \u2260 infectious fever. Antibiotics won\u2019t fix it.",
-            guideSection: "Section 1 \u2014 Fundamentals",
+            guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         },
         {
@@ -101,7 +101,7 @@ var jiaLupusQuizData = {
                 d: "Petechiae are seen in ITP, not lupus malar rash."
             },
             testTakingTip: "SLE butterfly rash \u2192 cheeks + nose, spares nasolabial folds.",
-            guideSection: "Section 3 \u2014 Pediatric SLE",
+            guideSection: "Section 3 - Pediatric SLE",
             guideSectionId: "lupus"
         },
         {
@@ -124,7 +124,7 @@ var jiaLupusQuizData = {
                 d: "ESR rises in many inflammatory states."
             },
             testTakingTip: "SLE specific: anti-dsDNA (\u2191 in flare) + anti-Smith.",
-            guideSection: "Section 4 \u2014 Diagnosis",
+            guideSection: "Section 4 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -147,7 +147,7 @@ var jiaLupusQuizData = {
                 d: "Most SLE patients have positive ANA; negative ANA is rare."
             },
             testTakingTip: "Lupus flare: \u2193 complement + \u2191 dsDNA.",
-            guideSection: "Section 4 \u2014 Diagnosis",
+            guideSection: "Section 4 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -170,7 +170,7 @@ var jiaLupusQuizData = {
                 d: "Give on separate days, not simultaneously."
             },
             testTakingTip: "MTX + folic acid = fewer side effects. Separate days.",
-            guideSection: "Section 5 \u2014 Treatment & Meds",
+            guideSection: "Section 5 - Treatment & Meds",
             guideSectionId: "treatment"
         },
         {
@@ -189,16 +189,16 @@ var jiaLupusQuizData = {
             ],
             correct: ["b", "c", "d", "f"],
             rationale: {
-                correct: "Steroids require strict adherence, infection vigilance, awareness of Cushingoid side effects, avoidance of live vaccines, and taking with food. Never stop abruptly \u2014 adrenal crisis risk. Never stop unilaterally.",
+                correct: "Steroids require strict adherence, infection vigilance, awareness of Cushingoid side effects, avoidance of live vaccines, and taking with food. Never stop abruptly - adrenal crisis risk. Never stop unilaterally.",
                 a: "Abrupt stopping causes adrenal crisis.",
-                b: "Correct \u2014 infection risk is high.",
-                c: "Correct \u2014 common, expected side effects.",
-                d: "Correct \u2014 live vaccines may cause infection in immunosuppression.",
+                b: "Correct - infection risk is high.",
+                c: "Correct - common, expected side effects.",
+                d: "Correct - live vaccines may cause infection in immunosuppression.",
                 e: "Do not stop without provider guidance.",
-                f: "Correct \u2014 GI protection."
+                f: "Correct - GI protection."
             },
             testTakingTip: "Steroids: never stop abruptly; watch infection; no live vaccines; expect Cushingoid.",
-            guideSection: "Section 5 \u2014 Treatment & Meds",
+            guideSection: "Section 5 - Treatment & Meds",
             guideSectionId: "treatment"
         },
         {
@@ -221,7 +221,7 @@ var jiaLupusQuizData = {
                 d: "UV exposure worsens lupus."
             },
             testTakingTip: "Lupus sun care: SPF 50+, hat, clothing, avoid peak hours.",
-            guideSection: "Section 6 \u2014 Nursing Priorities",
+            guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -244,7 +244,7 @@ var jiaLupusQuizData = {
                 d: "Oral ulcers are uncomfortable but not fatal."
             },
             testTakingTip: "Pediatric SLE mortality driver = lupus nephritis.",
-            guideSection: "Section 3 \u2014 Pediatric SLE",
+            guideSection: "Section 3 - Pediatric SLE",
             guideSectionId: "lupus"
         },
         {
@@ -255,7 +255,7 @@ var jiaLupusQuizData = {
             stem: "A child with systemic JIA on tocilizumab develops persistent fever, very high ferritin, cytopenias, and hepatitis. The nurse recognizes this as:",
             options: [
                 { id: "a", text: "Benign JIA flare" },
-                { id: "b", text: "Macrophage activation syndrome (MAS) \u2014 an emergency" },
+                { id: "b", text: "Macrophage activation syndrome (MAS) - an emergency" },
                 { id: "c", text: "Expected response to the biologic" },
                 { id: "d", text: "Early sign of medication allergy" }
             ],
@@ -267,7 +267,7 @@ var jiaLupusQuizData = {
                 d: "Allergy doesn\u2019t cause this laboratory picture."
             },
             testTakingTip: "Systemic JIA + extreme ferritin + cytopenias + hepatitis = MAS.",
-            guideSection: "Section 6 \u2014 Nursing Priorities",
+            guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -290,7 +290,7 @@ var jiaLupusQuizData = {
                 d: "Skipping PT worsens function."
             },
             testTakingTip: "Warmth + gentle ROM for morning stiffness. Cold for acute swelling.",
-            guideSection: "Section 6 \u2014 Nursing Priorities",
+            guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -313,7 +313,7 @@ var jiaLupusQuizData = {
                 d: "Acetaminophen doesn\u2019t reactivate TB."
             },
             testTakingTip: "Before biologics (esp. TNF inhibitors) = TB screen.",
-            guideSection: "Section 5 \u2014 Treatment & Meds",
+            guideSection: "Section 5 - Treatment & Meds",
             guideSectionId: "treatment"
         },
         {
@@ -326,7 +326,7 @@ var jiaLupusQuizData = {
                 { id: "a", text: "\u201cYes, she should not do any physical activity.\u201d" },
                 { id: "b", text: "\u201cLow-impact activities like swimming or biking are encouraged, and PT can help guide safe participation. Avoiding movement actually worsens JIA.\u201d" },
                 { id: "c", text: "\u201cShe should continue competitive gymnastics at full intensity.\u201d" },
-                { id: "d", text: "\u201cActivity makes JIA worse \u2014 bed rest is the treatment.\u201d" }
+                { id: "d", text: "\u201cActivity makes JIA worse - bed rest is the treatment.\u201d" }
             ],
             correct: "b",
             rationale: {
@@ -336,7 +336,7 @@ var jiaLupusQuizData = {
                 d: "Bedrest is not treatment."
             },
             testTakingTip: "JIA: keep moving with guidance; avoid high-impact when active.",
-            guideSection: "Section 7 \u2014 Family Education",
+            guideSection: "Section 7 - Family Education",
             guideSectionId: "family"
         }
     ]

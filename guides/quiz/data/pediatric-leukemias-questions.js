@@ -1,5 +1,5 @@
 /**
- * Pediatric Leukemias Quiz — Question Data
+ * Pediatric Leukemias Quiz - Question Data
  * Clinical-judgment questions covering ALL/AML classification, diagnostic workup,
  * chemotherapy, neutropenic precautions, tumor lysis syndrome, transfusion
  * reactions, and family support.
@@ -33,7 +33,7 @@ var pediatricLeukemiasQuizData = {
                 d: "ANC is already confirmed at 280. Waiting for another CBC wastes critical minutes."
             },
             testTakingTip: "Febrile neutropenia: cultures + antibiotics within 1 hour. Don\u2019t delay for ANC confirmation.",
-            guideSection: "Section 6 \u2014 Neutropenic Precautions",
+            guideSection: "Section 6 - Neutropenic Precautions",
             guideSectionId: "neutropenic"
         },
         {
@@ -56,7 +56,7 @@ var pediatricLeukemiasQuizData = {
                 d: "Adult leukemia is a different epidemiology; typically AML predominates."
             },
             testTakingTip: "ALL = toddler-to-school-age. AML = adolescents and infants.",
-            guideSection: "Section 1 \u2014 Fundamentals",
+            guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         },
         {
@@ -76,10 +76,10 @@ var pediatricLeukemiasQuizData = {
                 correct: "At the first sign of a transfusion reaction, STOP the transfusion immediately, keep the IV line patent with normal saline using NEW tubing (the current tubing still contains blood), notify the provider, and send the unit back to the blood bank with a post-reaction blood and urine sample.",
                 a: "Slowing does not stop the immune reaction; this child has signs of an acute hemolytic reaction.",
                 c: "Medications come AFTER the transfusion is stopped and provider is notified.",
-                d: "The existing tubing contains the reacting blood \u2014 flushing that blood into the patient worsens the reaction."
+                d: "The existing tubing contains the reacting blood - flushing that blood into the patient worsens the reaction."
             },
             testTakingTip: "Transfusion reaction: STOP first. Saline via NEW tubing. Then call, then treat.",
-            guideSection: "Section 7 \u2014 Complications",
+            guideSection: "Section 7 - Complications",
             guideSectionId: "complications"
         },
         {
@@ -98,11 +98,11 @@ var pediatricLeukemiasQuizData = {
             rationale: {
                 correct: "TLS: K\u207a UP, phosphorus UP, uric acid UP, calcium DOWN. Option B shows this exact pattern (hyperkalemia, hyperphosphatemia, hyperuricemia, hypocalcemia). Prevention is aggressive hydration plus allopurinol or rasburicase.",
                 a: "All values are normal or low; not TLS.",
-                c: "Normal values \u2014 no TLS.",
+                c: "Normal values - no TLS.",
                 d: "Normal values; hypercalcemia is not typical of TLS."
             },
-            testTakingTip: "TLS mnemonic: \u201cUp, up, up, down\u201d \u2014 K, phos, uric acid up; calcium down.",
-            guideSection: "Section 7 \u2014 Complications",
+            testTakingTip: "TLS mnemonic: \u201cUp, up, up, down\u201d - K, phos, uric acid up; calcium down.",
+            guideSection: "Section 7 - Complications",
             guideSectionId: "complications"
         },
         {
@@ -122,15 +122,15 @@ var pediatricLeukemiasQuizData = {
             correct: ["a", "c", "e", "f"],
             rationale: {
                 correct: "A, C, E, and F are correct. Frequent temperature monitoring, private room, meticulous skin assessment, and withholding live vaccines protect the neutropenic child. Rectal temperatures and fresh flowers/plants are contraindicated (mucosal tears, Aspergillus/Pseudomonas risk).",
-                a: "Correct \u2014 early fever detection is essential.",
-                b: "Rectal temps can tear rectal mucosa and cause bacteremia \u2014 never in neutropenia.",
-                c: "Correct \u2014 reduces environmental exposure.",
+                a: "Correct - early fever detection is essential.",
+                b: "Rectal temps can tear rectal mucosa and cause bacteremia - never in neutropenia.",
+                c: "Correct - reduces environmental exposure.",
                 d: "Fresh flowers and soil harbor fungi (Aspergillus) and Pseudomonas.",
-                e: "Correct \u2014 early infection often starts at skin breakdown sites.",
-                f: "Correct \u2014 live vaccines can cause vaccine-strain infection."
+                e: "Correct - early infection often starts at skin breakdown sites.",
+                f: "Correct - live vaccines can cause vaccine-strain infection."
             },
             testTakingTip: "Big 4 No\u2019s: No rectal temps, no flowers/plants, no live vaccines, no raw food.",
-            guideSection: "Section 6 \u2014 Neutropenic Precautions",
+            guideSection: "Section 6 - Neutropenic Precautions",
             guideSectionId: "neutropenic"
         },
         {
@@ -153,7 +153,7 @@ var pediatricLeukemiasQuizData = {
                 d: "Many acute leukemias have >50% blasts but the diagnostic cutoff is 20%."
             },
             testTakingTip: "Acute leukemia = >20% blasts. Remission = <5%.",
-            guideSection: "Section 4 \u2014 Diagnosis",
+            guideSection: "Section 4 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -171,12 +171,12 @@ var pediatricLeukemiasQuizData = {
             correct: "a",
             rationale: {
                 correct: "Vincristine is administered IV ONLY. Intrathecal vincristine is uniformly fatal. Oncology units use color-coded syringes, two-nurse verification, and time-separated administration from intrathecal chemotherapy to prevent this never event.",
-                b: "Intrathecal vincristine is FATAL \u2014 never give this route.",
+                b: "Intrathecal vincristine is FATAL - never give this route.",
                 c: "IM is not a standard route and increases bleeding risk in thrombocytopenia.",
                 d: "Subcutaneous is not a standard route for vincristine."
             },
             testTakingTip: "Vincristine = IV ONLY. Intrathecal vincristine = fatal error.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -193,13 +193,13 @@ var pediatricLeukemiasQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The vast majority of pediatric leukemias have no identifiable cause. Reassuring parents reduces guilt and supports coping. Known contributors (genetic syndromes like Down syndrome, prior radiation) are exceptions \u2014 not the rule.",
+                correct: "The vast majority of pediatric leukemias have no identifiable cause. Reassuring parents reduces guilt and supports coping. Known contributors (genetic syndromes like Down syndrome, prior radiation) are exceptions - not the rule.",
                 a: "Environmental toxins cause a tiny minority of cases; this response blames the family.",
                 c: "Vaccines do NOT cause leukemia; this response misinforms and blames.",
                 d: "Leukemia is rarely inherited; most cases are acquired genetic changes, not inherited."
             },
             testTakingTip: "Most childhood leukemias have NO identifiable cause. Relieve parental guilt.",
-            guideSection: "Section 9 \u2014 Family Support",
+            guideSection: "Section 9 - Family Support",
             guideSectionId: "family"
         },
         {
@@ -217,12 +217,12 @@ var pediatricLeukemiasQuizData = {
             correct: "c",
             rationale: {
                 correct: "ANC = WBC \u00d7 (% neutrophils + % bands) \u00f7 100 = 1,800 \u00d7 (10 + 5) \u00f7 100 = 1,800 \u00d7 0.15 = 270/mm\u00b3. This is severe neutropenia (<500); strict precautions required.",
-                a: "Calculation error \u2014 used neutrophils alone (1,800 \u00d7 0.05).",
+                a: "Calculation error - used neutrophils alone (1,800 \u00d7 0.05).",
                 b: "Used only neutrophils (1,800 \u00d7 0.10).",
                 d: "Used 30% (0.30) instead of 0.15."
             },
             testTakingTip: "ANC = WBC \u00d7 (%neutrophils + %bands) \u00f7 100. <500 = severe.",
-            guideSection: "Section 6 \u2014 Neutropenic Precautions",
+            guideSection: "Section 6 - Neutropenic Precautions",
             guideSectionId: "neutropenic"
         },
         {
@@ -239,13 +239,13 @@ var pediatricLeukemiasQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "AML M3 (APL) is classically associated with DIC \u2014 widespread activation of the clotting cascade consumes platelets and fibrinogen. Signs: bleeding from multiple sites, low fibrinogen, elevated D-dimer, prolonged PT/PTT. Treated with FFP, cryoprecipitate, platelets, and ATRA (all-trans retinoic acid).",
+                correct: "AML M3 (APL) is classically associated with DIC - widespread activation of the clotting cascade consumes platelets and fibrinogen. Signs: bleeding from multiple sites, low fibrinogen, elevated D-dimer, prolonged PT/PTT. Treated with FFP, cryoprecipitate, platelets, and ATRA (all-trans retinoic acid).",
                 a: "ITP has low platelets but normal coagulation studies.",
-                c: "Hemophilia \u2014 prolonged PTT only, normal PT/fibrinogen; inherited, known history.",
-                d: "VWD \u2014 mucocutaneous bleeding but coagulation factors normal or mildly abnormal."
+                c: "Hemophilia - prolonged PTT only, normal PT/fibrinogen; inherited, known history.",
+                d: "VWD - mucocutaneous bleeding but coagulation factors normal or mildly abnormal."
             },
             testTakingTip: "AML M3 + bleeding = DIC. Look for low fibrinogen, high D-dimer, prolonged PT/PTT.",
-            guideSection: "Section 3 \u2014 Clinical Manifestations",
+            guideSection: "Section 3 - Clinical Manifestations",
             guideSectionId: "clinical"
         },
         {
@@ -263,12 +263,12 @@ var pediatricLeukemiasQuizData = {
             correct: "c",
             rationale: {
                 correct: "Live vaccines given to household contacts can transmit vaccine-strain virus to the immunocompromised patient. The intranasal flu vaccine is LIVE-attenuated and should be avoided in siblings during a child\u2019s active chemo. The INJECTABLE flu vaccine is inactivated and safe.",
-                a: "Injectable flu is inactivated \u2014 safe for household contacts.",
-                b: "Tdap is inactivated \u2014 safe.",
-                d: "Pneumococcal conjugate is inactivated \u2014 safe."
+                a: "Injectable flu is inactivated - safe for household contacts.",
+                b: "Tdap is inactivated - safe.",
+                d: "Pneumococcal conjugate is inactivated - safe."
             },
-            testTakingTip: "Live vaccines: MMR, varicella, rotavirus, intranasal flu, BCG \u2014 avoid in household contacts during chemo.",
-            guideSection: "Section 6 \u2014 Neutropenic Precautions",
+            testTakingTip: "Live vaccines: MMR, varicella, rotavirus, intranasal flu, BCG - avoid in household contacts during chemo.",
+            guideSection: "Section 6 - Neutropenic Precautions",
             guideSectionId: "neutropenic"
         },
         {
@@ -287,11 +287,11 @@ var pediatricLeukemiasQuizData = {
             rationale: {
                 correct: "With platelets <20,000 (bleeding-precaution threshold), use a soft toothbrush or oral sponge, avoid flossing, avoid aspirin/NSAIDs, avoid rectal procedures, and apply firm pressure after any venipuncture.",
                 a: "Flossing can cause gum bleeding in thrombocytopenia.",
-                c: "Ibuprofen impairs platelet function \u2014 contraindicated. Acetaminophen is preferred.",
+                c: "Ibuprofen impairs platelet function - contraindicated. Acetaminophen is preferred.",
                 d: "Rectal procedures are contraindicated in neutropenia AND thrombocytopenia."
             },
             testTakingTip: "Thrombocytopenia: soft brush, no flossing, no NSAIDs, no rectal procedures.",
-            guideSection: "Section 8 \u2014 Nursing Priorities",
+            guideSection: "Section 8 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -314,7 +314,7 @@ var pediatricLeukemiasQuizData = {
                 d: "Target/sickled cells are seen in thalassemia and sickle cell disease."
             },
             testTakingTip: "See Auer rods? Pick AML.",
-            guideSection: "Section 2 \u2014 Classification",
+            guideSection: "Section 2 - Classification",
             guideSectionId: "classification"
         },
         {
@@ -333,11 +333,11 @@ var pediatricLeukemiasQuizData = {
             rationale: {
                 correct: "High WBC, bulky disease, and T-cell ALL signal high TLS risk. Prevention requires aggressive hydration (2\u20133\u00d7 maintenance) and xanthine oxidase inhibition with allopurinol OR rasburicase (screen for G6PD deficiency first for rasburicase).",
                 a: "Fluid restriction worsens uric acid nephropathy.",
-                c: "Potassium in IV fluids is CONTRAINDICATED during TLS prevention \u2014 hyperkalemia is a major risk.",
+                c: "Potassium in IV fluids is CONTRAINDICATED during TLS prevention - hyperkalemia is a major risk.",
                 d: "Premeds help chemo tolerance but don\u2019t address TLS specifically."
             },
             testTakingTip: "TLS prevention: HYDRATE + allopurinol/rasburicase. Hold potassium.",
-            guideSection: "Section 7 \u2014 Complications",
+            guideSection: "Section 7 - Complications",
             guideSectionId: "complications"
         },
         {
@@ -360,7 +360,7 @@ var pediatricLeukemiasQuizData = {
                 d: "NSAIDs are avoided (platelet effect) and do not prevent nausea from 6-MP."
             },
             testTakingTip: "6-MP = bedtime, empty stomach, away from dairy, daily for 2\u20133 years.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -377,13 +377,13 @@ var pediatricLeukemiasQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "T-cell ALL often presents with a mediastinal mass that can compress the SVC and airway, producing SVC syndrome \u2014 facial/neck/upper extremity swelling, distended neck veins, dyspnea, stridor. This is an oncologic emergency requiring urgent treatment.",
-                a: "PE would present with pleuritic chest pain, tachycardia, desaturation \u2014 not facial swelling.",
+                correct: "T-cell ALL often presents with a mediastinal mass that can compress the SVC and airway, producing SVC syndrome - facial/neck/upper extremity swelling, distended neck veins, dyspnea, stridor. This is an oncologic emergency requiring urgent treatment.",
+                a: "PE would present with pleuritic chest pain, tachycardia, desaturation - not facial swelling.",
                 c: "Pneumothorax would show absent breath sounds, tracheal shift, not facial swelling.",
-                d: "Anaphylaxis typically involves urticaria, hypotension, wheezing \u2014 not a mediastinal mass."
+                d: "Anaphylaxis typically involves urticaria, hypotension, wheezing - not a mediastinal mass."
             },
             testTakingTip: "T-cell ALL + facial swelling + stridor = SVC syndrome. Emergency.",
-            guideSection: "Section 3 \u2014 Clinical Manifestations",
+            guideSection: "Section 3 - Clinical Manifestations",
             guideSectionId: "clinical"
         },
         {
@@ -401,12 +401,12 @@ var pediatricLeukemiasQuizData = {
             correct: "b",
             rationale: {
                 correct: "Irradiation prevents transfusion-associated graft-versus-host disease (TA-GVHD) in immunocompromised patients. Leukoreduction reduces febrile non-hemolytic reactions, CMV transmission, and HLA alloimmunization. Both are standard in oncology.",
-                a: "Warming/rate are situational \u2014 not specific to leukemia patients.",
+                a: "Warming/rate are situational - not specific to leukemia patients.",
                 c: "Blood must be ABO and Rh compatible, not Rh-negative only.",
                 d: "Prophylactic heparin is not routine with transfusions."
             },
             testTakingTip: "Oncology blood products = irradiated + leukoreduced.",
-            guideSection: "Section 8 \u2014 Nursing Priorities",
+            guideSection: "Section 8 - Nursing Priorities",
             guideSectionId: "nursing"
         }
     ]

@@ -1,5 +1,5 @@
 /**
- * Sickle Cell Crisis Quiz — Question Data
+ * Sickle Cell Crisis Quiz - Question Data
  * Practice questions covering pathophysiology, crisis types, triggers,
  * priority interventions, transfusion therapy and reactions, pain control,
  * and long-term management.
@@ -33,7 +33,7 @@ var sickleCellCrisisQuizData = {
                 d: "Cold compresses worsen sickling. Exchange transfusion is reserved for ACS, stroke, or multi-organ failure."
             },
             testTakingTip: "Priority = HOPR: Hydration, Oxygen (if hypoxic), Pain, Rest. Warm, not cold.",
-            guideSection: "Section 6 \u2014 Priority Care",
+            guideSection: "Section 6 - Priority Care",
             guideSectionId: "priority"
         },
         {
@@ -56,7 +56,7 @@ var sickleCellCrisisQuizData = {
                 d: "Flushing the existing tubing pushes the reacting blood into the patient."
             },
             testTakingTip: "Transfusion reaction: STOP first. Saline via NEW tubing. Then call, then send bag back.",
-            guideSection: "Section 7 \u2014 Transfusion",
+            guideSection: "Section 7 - Transfusion",
             guideSectionId: "transfusion"
         },
         {
@@ -79,7 +79,7 @@ var sickleCellCrisisQuizData = {
                 d: "Never discharge a febrile child with SCD without evaluation and antibiotics."
             },
             testTakingTip: "Sickle cell fever \u2265 101\u00b0F = cultures + IV ceftriaxone within 1 hour.",
-            guideSection: "Section 4 \u2014 Clinical Manifestations",
+            guideSection: "Section 4 - Clinical Manifestations",
             guideSectionId: "clinical"
         },
         {
@@ -96,13 +96,13 @@ var sickleCellCrisisQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Acute chest syndrome (ACS) \u2014 fever, chest pain, hypoxia, and new infiltrate on CXR \u2014 is the leading cause of mortality in SCD. Vaso-occlusion in pulmonary vessels can progress rapidly. Management: oxygen, antibiotics, cautious IV fluids, pain control, incentive spirometry, and possible exchange transfusion.",
+                correct: "Acute chest syndrome (ACS) - fever, chest pain, hypoxia, and new infiltrate on CXR - is the leading cause of mortality in SCD. Vaso-occlusion in pulmonary vessels can progress rapidly. Management: oxygen, antibiotics, cautious IV fluids, pain control, incentive spirometry, and possible exchange transfusion.",
                 a: "Vaso-occlusive crisis is most common but less often fatal.",
                 b: "Splenic sequestration is dangerous in young children but less common cause of death than ACS.",
                 d: "Aplastic crisis is usually self-limited; supported with transfusion."
             },
             testTakingTip: "Chest pain + hypoxia + new infiltrate in SCD = ACS = #1 killer.",
-            guideSection: "Section 2 \u2014 Crisis Types",
+            guideSection: "Section 2 - Crisis Types",
             guideSectionId: "crisis-types"
         },
         {
@@ -121,16 +121,16 @@ var sickleCellCrisisQuizData = {
             ],
             correct: ["a", "b", "c", "e", "f"],
             rationale: {
-                correct: "Dehydration, hypoxia, cold, infection, and altitude all precipitate sickling (remember HHIDS). A warm bath is actually a beneficial non-pharmacologic pain intervention \u2014 heat promotes vasodilation and comfort.",
-                a: "Correct \u2014 concentrated blood sickles more.",
-                b: "Correct \u2014 HbS polymerizes when deoxygenated.",
-                c: "Correct \u2014 cold causes vasoconstriction.",
+                correct: "Dehydration, hypoxia, cold, infection, and altitude all precipitate sickling (remember HHIDS). A warm bath is actually a beneficial non-pharmacologic pain intervention - heat promotes vasodilation and comfort.",
+                a: "Correct - concentrated blood sickles more.",
+                b: "Correct - HbS polymerizes when deoxygenated.",
+                c: "Correct - cold causes vasoconstriction.",
                 d: "Warm bath is helpful, not a trigger.",
-                e: "Correct \u2014 infection is a leading trigger and cause of death.",
-                f: "Correct \u2014 reduced pO2 at altitude triggers sickling."
+                e: "Correct - infection is a leading trigger and cause of death.",
+                f: "Correct - reduced pO2 at altitude triggers sickling."
             },
-            testTakingTip: "Triggers: Hypoxia, Hydration loss, Infection, Decreased temp, Stress \u2014 HHIDS.",
-            guideSection: "Section 3 \u2014 Triggers",
+            testTakingTip: "Triggers: Hypoxia, Hydration loss, Infection, Decreased temp, Stress - HHIDS.",
+            guideSection: "Section 3 - Triggers",
             guideSectionId: "triggers"
         },
         {
@@ -153,7 +153,7 @@ var sickleCellCrisisQuizData = {
                 d: "Acetaminophen is used as an adjunct; it\u2019s safe."
             },
             testTakingTip: "Avoid meperidine in sickle cell: neurotoxic metabolite.",
-            guideSection: "Section 6 \u2014 Priority Care",
+            guideSection: "Section 6 - Priority Care",
             guideSectionId: "priority"
         },
         {
@@ -176,7 +176,7 @@ var sickleCellCrisisQuizData = {
                 d: "Cold exposure is a trigger, not a remedy."
             },
             testTakingTip: "Heat = helpful. Cold = worse sickling.",
-            guideSection: "Section 9 \u2014 Family Education",
+            guideSection: "Section 9 - Family Education",
             guideSectionId: "family"
         },
         {
@@ -195,11 +195,11 @@ var sickleCellCrisisQuizData = {
             rationale: {
                 correct: "Hydroxyurea increases production of fetal hemoglobin (HbF), which does NOT sickle. Higher HbF levels reduce vaso-occlusive crises, acute chest syndrome, stroke risk, and improve survival.",
                 a: "Hydroxyurea doesn\u2019t directly destroy sickle cells; it shifts hemoglobin production.",
-                c: "Iron supplementation is rarely needed \u2014 patients may have iron overload from transfusions.",
+                c: "Iron supplementation is rarely needed - patients may have iron overload from transfusions.",
                 d: "Hydroxyurea is not a conditioning agent for transplant."
             },
             testTakingTip: "Hydroxyurea = induces HbF = fewer crises.",
-            guideSection: "Section 8 \u2014 Long-Term Management",
+            guideSection: "Section 8 - Long-Term Management",
             guideSectionId: "longterm"
         },
         {
@@ -222,7 +222,7 @@ var sickleCellCrisisQuizData = {
                 d: "Hydroxyurea is a maintenance med, not emergency care."
             },
             testTakingTip: "Splenic sequestration + shock = volume + PRBCs NOW.",
-            guideSection: "Section 2 \u2014 Crisis Types",
+            guideSection: "Section 2 - Crisis Types",
             guideSectionId: "crisis-types"
         },
         {
@@ -245,7 +245,7 @@ var sickleCellCrisisQuizData = {
                 d: "Penicillin and hydroxyurea are independent therapies."
             },
             testTakingTip: "Daily penicillin in SCD = prevent pneumococcal sepsis. Through age 5+.",
-            guideSection: "Section 8 \u2014 Long-Term Management",
+            guideSection: "Section 8 - Long-Term Management",
             guideSectionId: "longterm"
         },
         {
@@ -262,13 +262,13 @@ var sickleCellCrisisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "TCD ultrasound measures cerebral artery blood flow velocity. Velocities >200 cm/sec indicate high stroke risk \u2014 those children start chronic transfusion to keep HbS <30% and prevent first stroke. Screening begins age 2 and continues annually through age 16.",
+                correct: "TCD ultrasound measures cerebral artery blood flow velocity. Velocities >200 cm/sec indicate high stroke risk - those children start chronic transfusion to keep HbS <30% and prevent first stroke. Screening begins age 2 and continues annually through age 16.",
                 a: "EEG measures brain electrical activity, not blood flow.",
                 c: "LP is not a stroke screening tool.",
                 d: "Echo evaluates heart function, not cerebral circulation."
             },
             testTakingTip: "SCD stroke screening = TCD annually age 2\u201316. >200 cm/s = chronic transfusion.",
-            guideSection: "Section 8 \u2014 Long-Term Management",
+            guideSection: "Section 8 - Long-Term Management",
             guideSectionId: "longterm"
         },
         {
@@ -291,7 +291,7 @@ var sickleCellCrisisQuizData = {
                 d: "Continuous bolus levels of fluid risk fluid overload and ACS."
             },
             testTakingTip: "Crisis IV fluids = 1.5\u20132\u00d7 maintenance. D5 1/2NS typical.",
-            guideSection: "Section 6 \u2014 Priority Care",
+            guideSection: "Section 6 - Priority Care",
             guideSectionId: "priority"
         },
         {
@@ -310,11 +310,11 @@ var sickleCellCrisisQuizData = {
             rationale: {
                 correct: "Chronic transfusions cause iron overload; ferritin >1,000 triggers iron chelation therapy (deferasirox, deferoxamine) to prevent iron deposition in heart, liver, and endocrine glands.",
                 a: "More transfusions worsen iron overload.",
-                c: "Iron is NOT needed \u2014 the child has iron overload, not deficiency.",
+                c: "Iron is NOT needed - the child has iron overload, not deficiency.",
                 d: "Folic acid supports marrow and is continued."
             },
             testTakingTip: "Chronic transfusion + ferritin >1,000 = chelation therapy.",
-            guideSection: "Section 7 \u2014 Transfusion",
+            guideSection: "Section 7 - Transfusion",
             guideSectionId: "transfusion"
         },
         {
@@ -333,11 +333,11 @@ var sickleCellCrisisQuizData = {
             rationale: {
                 correct: "Dactylitis (hand-foot syndrome) is often the FIRST sickle cell crisis in infants and toddlers. Vaso-occlusion in the small bones of the hands and feet produces painful swelling. It is self-limited but signals the disease is clinically active.",
                 a: "Kawasaki affects larger vessels and includes fever \u2265 5 days, rash, lymph nodes.",
-                c: "Osteomyelitis is localized bone infection \u2014 consider if fever plus focal bone tenderness.",
+                c: "Osteomyelitis is localized bone infection - consider if fever plus focal bone tenderness.",
                 d: "JIA persistent joint swelling for >6 weeks; different timeline."
             },
             testTakingTip: "Infant + sickle cell + swollen hands/feet = dactylitis.",
-            guideSection: "Section 1 \u2014 Fundamentals",
+            guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         },
         {
@@ -356,11 +356,11 @@ var sickleCellCrisisQuizData = {
             rationale: {
                 correct: "Hydration is the cornerstone of crisis prevention. School accommodations should allow water access at all times, frequent bathroom breaks, and warmth (not cold). Activity is encouraged but in moderation with hydration.",
                 a: "Contact sports increase dehydration and trauma risk.",
-                c: "Cold is a trigger \u2014 avoid direct air conditioning blast.",
+                c: "Cold is a trigger - avoid direct air conditioning blast.",
                 d: "Ice baths worsen sickling."
             },
             testTakingTip: "School plan priorities: water + bathroom + warmth.",
-            guideSection: "Section 9 \u2014 Family Education",
+            guideSection: "Section 9 - Family Education",
             guideSectionId: "family"
         },
         {
@@ -377,13 +377,13 @@ var sickleCellCrisisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This is acute chest syndrome \u2014 the leading cause of mortality in SCD. Treatment includes oxygen, broad-spectrum IV antibiotics to cover atypical and typical pneumonia pathogens, CAUTIOUS IV fluids (avoid overload), adequate pain control to enable deep breathing, and incentive spirometry to prevent atelectasis. Exchange transfusion is considered for severe or worsening disease.",
+                correct: "This is acute chest syndrome - the leading cause of mortality in SCD. Treatment includes oxygen, broad-spectrum IV antibiotics to cover atypical and typical pneumonia pathogens, CAUTIOUS IV fluids (avoid overload), adequate pain control to enable deep breathing, and incentive spirometry to prevent atelectasis. Exchange transfusion is considered for severe or worsening disease.",
                 a: "Oral management is inadequate for ACS.",
                 c: "Exchange transfusion alone without antibiotics/oxygen is incomplete.",
                 d: "ACS cannot be managed outpatient."
             },
             testTakingTip: "ACS bundle: O2, antibiotics, CAUTIOUS fluids, pain, spirometry.",
-            guideSection: "Section 2 \u2014 Crisis Types",
+            guideSection: "Section 2 - Crisis Types",
             guideSectionId: "crisis-types"
         },
         {
@@ -400,13 +400,13 @@ var sickleCellCrisisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Sickle cell disease is autosomal recessive \u2014 the child needs two copies of the sickle gene, one from each parent. Each parent is a carrier (HbAS). Genetic counseling is important for future pregnancies and extended family.",
+                correct: "Sickle cell disease is autosomal recessive - the child needs two copies of the sickle gene, one from each parent. Each parent is a carrier (HbAS). Genetic counseling is important for future pregnancies and extended family.",
                 a: "It is genetic, not environmental.",
                 c: "It is specifically genetic.",
                 d: "Birth weight is not a factor."
             },
             testTakingTip: "SCD = autosomal recessive, needs two copies. Refer for genetic counseling.",
-            guideSection: "Section 1 \u2014 Fundamentals",
+            guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         }
     ]

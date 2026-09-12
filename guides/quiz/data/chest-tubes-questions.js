@@ -1,5 +1,5 @@
 /**
- * Chest Tubes Quiz — Question Data
+ * Chest Tubes Quiz - Question Data
  * 10 NCLEX-style questions: 4 Single, 3 Priority, 2 Matrix, 1 Ordering
  */
 
@@ -19,7 +19,7 @@ var chestTubesQuizData = {
             stem: "A nurse is assessing a patient with a chest tube connected to a water-seal drainage system. The nurse observes the water level in the water-seal chamber rising and falling with the patient's respirations. What does this finding indicate?",
             options: [
                 { id: "a", text: "There is an air leak in the system that needs to be addressed" },
-                { id: "b", text: "The chest tube is functioning properly — this is expected tidaling" },
+                { id: "b", text: "The chest tube is functioning properly - this is expected tidaling" },
                 { id: "c", text: "The chest tube is obstructed and needs to be milked" },
                 { id: "d", text: "The lung has fully re-expanded and the tube can be removed" }
             ],
@@ -31,7 +31,7 @@ var chestTubesQuizData = {
                 d: "The cessation of tidaling (along with no air leak and minimal drainage) suggests lung re-expansion. The PRESENCE of tidaling means the lung is not yet fully expanded."
             },
             testTakingTip: "Tidaling = GOOD (tube is patent). Continuous bubbling = air leak (investigate). Absence of tidaling = tube may be obstructed OR lung has re-expanded (determine which by clinical assessment).",
-            guideSection: "Section 5 — Tidaling vs Air Leaks",
+            guideSection: "Section 5 - Tidaling vs Air Leaks",
             guideSectionId: "tidaling-air-leaks"
         },
         {
@@ -48,13 +48,13 @@ var chestTubesQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Continuous bubbling in the water-seal chamber indicates an air leak somewhere in the system. When the bubbling persists even when the patient holds their breath (which stops air movement from the pleural space), the leak is in the EXTERNAL system — tubing connections, insertion site dressing, or the collection unit. The nurse should systematically check connections from the patient outward to locate and resolve the leak.",
+                correct: "Continuous bubbling in the water-seal chamber indicates an air leak somewhere in the system. When the bubbling persists even when the patient holds their breath (which stops air movement from the pleural space), the leak is in the EXTERNAL system - tubing connections, insertion site dressing, or the collection unit. The nurse should systematically check connections from the patient outward to locate and resolve the leak.",
                 a: "Clamping a chest tube for a pneumothorax is DANGEROUS. If the air leak is from the patient's lung (bronchopleural fistula), clamping traps air in the pleural space and can cause tension pneumothorax. Clamping should only be done briefly and under specific provider orders.",
                 c: "The provider should be notified after the nurse has assessed the system. Many external air leaks can be resolved by tightening connections or reinforcing the dressing. Troubleshoot first, then notify if the leak persists.",
                 d: "Replacing the entire system is not the first action. The leak may be a simple loose connection that can be fixed in seconds. Replacing the system also risks exposing the patient to atmospheric air during the changeover."
             },
-            testTakingTip: "For chest tube air leaks: (1) Have patient hold breath — if bubbling stops, leak is from the patient (internal). If bubbling continues, leak is in the system (external). (2) For external leaks, trace connections from patient outward. NEVER clamp a pneumothorax chest tube as first action.",
-            guideSection: "Section 5 — Tidaling vs Air Leaks",
+            testTakingTip: "For chest tube air leaks: (1) Have patient hold breath - if bubbling stops, leak is from the patient (internal). If bubbling continues, leak is in the system (external). (2) For external leaks, trace connections from patient outward. NEVER clamp a pneumothorax chest tube as first action.",
+            guideSection: "Section 5 - Tidaling vs Air Leaks",
             guideSectionId: "tidaling-air-leaks"
         },
         {
@@ -74,14 +74,14 @@ var chestTubesQuizData = {
             correct: { a: "Report Immediately", b: "Expected Finding", c: "Report Immediately", d: "Expected Finding", e: "Report Immediately" },
             rationale: {
                 correct: "Tidaling and moderate serous drainage are expected chest tube findings, while excessive bloody output, spreading subcutaneous emphysema, and sudden drainage cessation with respiratory distress all require immediate provider notification.",
-                a: "REPORT IMMEDIATELY — More than 200 mL/hour of bloody drainage (or a sudden increase) may indicate hemorrhage or injury to an intercostal vessel. This rate of blood loss requires urgent evaluation.",
-                b: "EXPECTED FINDING — Tidaling is normal and indicates a patent, functioning chest tube. The water level rises during inspiration and falls during expiration, confirming the tube is communicating with the pleural space.",
-                c: "REPORT IMMEDIATELY — Subcutaneous emphysema (air trapped under the skin causing a crackling sensation) that is SPREADING suggests a significant air leak or malpositioned tube. Involvement of the neck raises concern for mediastinal air tracking.",
-                d: "EXPECTED FINDING — Serous (clear/straw-colored) drainage of 150 mL over 8 hours is a normal finding, especially in the first 24-48 hours after insertion.",
-                e: "REPORT IMMEDIATELY — Sudden cessation of all drainage combined with respiratory distress suggests the tube is obstructed (blood clot, kink, or dependent loop). The accumulating fluid or air cannot escape, causing worsening symptoms."
+                a: "REPORT IMMEDIATELY - More than 200 mL/hour of bloody drainage (or a sudden increase) may indicate hemorrhage or injury to an intercostal vessel. This rate of blood loss requires urgent evaluation.",
+                b: "EXPECTED FINDING - Tidaling is normal and indicates a patent, functioning chest tube. The water level rises during inspiration and falls during expiration, confirming the tube is communicating with the pleural space.",
+                c: "REPORT IMMEDIATELY - Subcutaneous emphysema (air trapped under the skin causing a crackling sensation) that is SPREADING suggests a significant air leak or malpositioned tube. Involvement of the neck raises concern for mediastinal air tracking.",
+                d: "EXPECTED FINDING - Serous (clear/straw-colored) drainage of 150 mL over 8 hours is a normal finding, especially in the first 24-48 hours after insertion.",
+                e: "REPORT IMMEDIATELY - Sudden cessation of all drainage combined with respiratory distress suggests the tube is obstructed (blood clot, kink, or dependent loop). The accumulating fluid or air cannot escape, causing worsening symptoms."
             },
             testTakingTip: "For chest tube drainage: Notify if >200 mL/hour (hemorrhage), sudden increase in volume, change from serous to bloody, or sudden stop with symptoms. Serous drainage of 100-300 mL/shift in the first 24-48 hours is typically expected. Tidaling is always a reassuring sign of tube patency.",
-            guideSection: "Section 6 — Systematic Assessment",
+            guideSection: "Section 6 - Systematic Assessment",
             guideSectionId: "assessment"
         },
         {
@@ -103,8 +103,8 @@ var chestTubesQuizData = {
                 c: "The provider must be notified, but calling is NOT the first action. The immediate priority is sealing the open chest wound to prevent respiratory compromise. Apply the dressing first, then call.",
                 d: "A fully occlusive dressing (taped on all four sides) traps air with no escape route. If the patient has a persistent air leak from the lung, this can rapidly cause tension pneumothorax. The three-sided dressing allows air to escape while preventing entry."
             },
-            testTakingTip: "Chest tube dislodgement = three-sided occlusive dressing (flutter valve effect). Chest tube DISCONNECTION from drainage system = submerge the tube end in sterile water (creates a water seal). Know the difference — these are two different emergencies with two different interventions.",
-            guideSection: "Section 8 — Complications & Emergencies",
+            testTakingTip: "Chest tube dislodgement = three-sided occlusive dressing (flutter valve effect). Chest tube DISCONNECTION from drainage system = submerge the tube end in sterile water (creates a water seal). Know the difference - these are two different emergencies with two different interventions.",
+            guideSection: "Section 8 - Complications & Emergencies",
             guideSectionId: "complications"
         },
         {
@@ -123,14 +123,14 @@ var chestTubesQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "The correct sequence ensures pain control first, then preparation of supplies, then airway pressure management during removal, immediate site sealing, and post-procedure assessment.",
-                a: "FIRST — Administer analgesics (typically IV morphine or oral opioid) 30 minutes before the procedure to allow peak effect. Chest tube removal is painful, and pre-medication is essential.",
-                b: "SECOND — Prepare all supplies (petroleum gauze, sterile gauze, tape) at the bedside BEFORE tube removal begins. Having everything ready prevents delays in sealing the site after the tube is pulled.",
-                c: "THIRD — During the actual removal, the patient performs a Valsalva maneuver, which increases intrathoracic pressure and prevents air from being sucked into the pleural space. Note: deep INHALATION is contraindicated as it creates negative pressure that draws air IN.",
-                d: "FOURTH — The occlusive dressing must be applied IMMEDIATELY after tube removal to seal the insertion site. Tape on ALL four sides (unlike the three-sided dressing used for accidental dislodgement) because no ongoing air escape is expected.",
-                e: "FIFTH — After the site is sealed, assess vital signs, breath sounds (to detect pneumothorax), SpO2, and respiratory effort. A post-removal chest X-ray is typically obtained within 1-2 hours to confirm full lung expansion."
+                a: "FIRST - Administer analgesics (typically IV morphine or oral opioid) 30 minutes before the procedure to allow peak effect. Chest tube removal is painful, and pre-medication is essential.",
+                b: "SECOND - Prepare all supplies (petroleum gauze, sterile gauze, tape) at the bedside BEFORE tube removal begins. Having everything ready prevents delays in sealing the site after the tube is pulled.",
+                c: "THIRD - During the actual removal, the patient performs a Valsalva maneuver, which increases intrathoracic pressure and prevents air from being sucked into the pleural space. Note: deep INHALATION is contraindicated as it creates negative pressure that draws air IN.",
+                d: "FOURTH - The occlusive dressing must be applied IMMEDIATELY after tube removal to seal the insertion site. Tape on ALL four sides (unlike the three-sided dressing used for accidental dislodgement) because no ongoing air escape is expected.",
+                e: "FIFTH - After the site is sealed, assess vital signs, breath sounds (to detect pneumothorax), SpO2, and respiratory effort. A post-removal chest X-ray is typically obtained within 1-2 hours to confirm full lung expansion."
             },
             testTakingTip: "During chest tube removal: Valsalva = increased pressure = air stays OUT. Deep inhalation = negative pressure = air gets sucked IN. Post-removal dressing is taped on ALL FOUR sides (not three) because the tube has been intentionally removed and no air escape is needed.",
-            guideSection: "Section 9 — Chest Tube Removal",
+            guideSection: "Section 9 - Chest Tube Removal",
             guideSectionId: "removal"
         },
         {
@@ -149,11 +149,11 @@ var chestTubesQuizData = {
             rationale: {
                 correct: "The drainage system must remain below the chest to maintain the gravity gradient that moves fluid and air from the pleural space into the collection chamber. If raised above chest level, fluid in the tubing could flow backward (retrograde) into the pleural space, potentially causing infection or respiratory compromise.",
                 a: "While preventing kinking is important, keeping the system below chest level is primarily about preventing backflow, not preventing kinks. Tubing can kink regardless of position.",
-                c: "The water-seal mechanism works independent of height — it prevents atmospheric air from entering the pleural space. Suction (if used) is generated by the suction control chamber connected to a wall suction source, not by gravity.",
+                c: "The water-seal mechanism works independent of height - it prevents atmospheric air from entering the pleural space. Suction (if used) is generated by the suction control chamber connected to a wall suction source, not by gravity.",
                 d: "While a lower position may be convenient for measurement, this is not the clinical rationale. Patient safety (preventing backflow) is the reason."
             },
-            testTakingTip: "Chest drainage systems ALWAYS below chest level. If the system is accidentally raised, immediately lower it. If it tips over, right it immediately and assess the water-seal chamber — if the water level has changed, the seal may be compromised.",
-            guideSection: "Section 4 — Chest Drainage Systems",
+            testTakingTip: "Chest drainage systems ALWAYS below chest level. If the system is accidentally raised, immediately lower it. If it tips over, right it immediately and assess the water-seal chamber - if the water level has changed, the seal may be compromised.",
+            guideSection: "Section 4 - Chest Drainage Systems",
             guideSectionId: "drainage-systems"
         },
         {
@@ -163,20 +163,20 @@ var chestTubesQuizData = {
             difficulty: "analysis",
             stem: "A patient with a chest tube suddenly develops severe dyspnea, tracheal deviation to the opposite side of the chest tube, absent breath sounds on the affected side, and hypotension. The nurse observes that the chest tube tubing is clamped. What should the nurse suspect, and what is the priority action?",
             options: [
-                { id: "a", text: "Hemothorax — increase the suction on the drainage system" },
-                { id: "b", text: "Tension pneumothorax — unclamp the chest tube immediately" },
-                { id: "c", text: "Pulmonary embolism — position the patient in Trendelenburg" },
-                { id: "d", text: "Pneumothorax — prepare for a new chest tube insertion" }
+                { id: "a", text: "Hemothorax - increase the suction on the drainage system" },
+                { id: "b", text: "Tension pneumothorax - unclamp the chest tube immediately" },
+                { id: "c", text: "Pulmonary embolism - position the patient in Trendelenburg" },
+                { id: "d", text: "Pneumothorax - prepare for a new chest tube insertion" }
             ],
             correct: "b",
             rationale: {
-                correct: "The presentation — acute dyspnea, tracheal deviation AWAY from the affected side, absent breath sounds, and hypotension — is classic tension pneumothorax. The clamped chest tube is the cause: air cannot escape the pleural space, pressure builds up, shifting the mediastinum and compressing the heart and contralateral lung. Unclamping the tube immediately restores the drainage pathway and relieves the pressure.",
+                correct: "The presentation - acute dyspnea, tracheal deviation AWAY from the affected side, absent breath sounds, and hypotension - is classic tension pneumothorax. The clamped chest tube is the cause: air cannot escape the pleural space, pressure builds up, shifting the mediastinum and compressing the heart and contralateral lung. Unclamping the tube immediately restores the drainage pathway and relieves the pressure.",
                 a: "While hemothorax can cause hypotension, it does not cause tracheal deviation or absent breath sounds in this pattern. Additionally, the clamped tube is the identified problem.",
-                c: "Pulmonary embolism presents with sudden dyspnea, pleuritic chest pain, tachycardia, and possibly hemoptysis — not tracheal deviation or absent breath sounds. The clamped tube points to a mechanical cause.",
-                d: "A new chest tube is not needed — the existing tube just needs to be unclamped. The tube is in place and functional; the clamp is preventing it from working."
+                c: "Pulmonary embolism presents with sudden dyspnea, pleuritic chest pain, tachycardia, and possibly hemoptysis - not tracheal deviation or absent breath sounds. The clamped tube points to a mechanical cause.",
+                d: "A new chest tube is not needed - the existing tube just needs to be unclamped. The tube is in place and functional; the clamp is preventing it from working."
             },
             testTakingTip: "Tracheal deviation + absent breath sounds + hypotension = tension pneumothorax until proven otherwise. In a patient with a clamped chest tube, the answer is always UNCLAMP. This is why the rule exists: NEVER clamp a chest tube for a pneumothorax unless specifically ordered.",
-            guideSection: "Section 7 — When to Clamp Chest Tubes",
+            guideSection: "Section 7 - When to Clamp Chest Tubes",
             guideSectionId: "clamping"
         },
         {
@@ -196,14 +196,14 @@ var chestTubesQuizData = {
             correct: { a: "Inappropriate", b: "Appropriate", c: "Appropriate", d: "Inappropriate", e: "Appropriate" },
             rationale: {
                 correct: "During ambulation, the nurse should keep the drainage system below chest level, secure all connections, and monitor respiratory status. Clamping and disconnecting the tube are both dangerous actions that could lead to tension pneumothorax.",
-                a: "INAPPROPRIATE — Clamping the chest tube during ambulation is NOT recommended. Clamping prevents air and fluid from draining and can lead to tension pneumothorax if there is an ongoing air leak. The tube should remain open to water seal.",
-                b: "APPROPRIATE — The system must remain below the patient's chest to prevent backflow of drainage. The patient or a staff member can carry the unit at a low level, or it can be placed on a mobile IV pole hook at the appropriate height.",
-                c: "APPROPRIATE — Before any movement, verify that all connections are tight and secure to prevent accidental disconnection, which would expose the pleural space to atmospheric air.",
-                d: "INAPPROPRIATE — The chest tube should NEVER be disconnected from the drainage system during ambulation. Disconnection exposes the pleural space to air and can cause pneumothorax. If disconnection occurs accidentally, the tube end should be submerged in sterile water immediately.",
-                e: "APPROPRIATE — The patient should be monitored for any signs of respiratory compromise during and after ambulation, including increased dyspnea, chest pain, decreased SpO2, or changes in drainage."
+                a: "INAPPROPRIATE - Clamping the chest tube during ambulation is NOT recommended. Clamping prevents air and fluid from draining and can lead to tension pneumothorax if there is an ongoing air leak. The tube should remain open to water seal.",
+                b: "APPROPRIATE - The system must remain below the patient's chest to prevent backflow of drainage. The patient or a staff member can carry the unit at a low level, or it can be placed on a mobile IV pole hook at the appropriate height.",
+                c: "APPROPRIATE - Before any movement, verify that all connections are tight and secure to prevent accidental disconnection, which would expose the pleural space to atmospheric air.",
+                d: "INAPPROPRIATE - The chest tube should NEVER be disconnected from the drainage system during ambulation. Disconnection exposes the pleural space to air and can cause pneumothorax. If disconnection occurs accidentally, the tube end should be submerged in sterile water immediately.",
+                e: "APPROPRIATE - The patient should be monitored for any signs of respiratory compromise during and after ambulation, including increased dyspnea, chest pain, decreased SpO2, or changes in drainage."
             },
             testTakingTip: "Two things to NEVER do with a chest tube during ambulation: (1) clamp it, (2) disconnect it. Keep it below chest level, keep connections tight, and monitor the patient. Think: open, low, secure, and watch.",
-            guideSection: "Section 6 — Systematic Assessment",
+            guideSection: "Section 6 - Systematic Assessment",
             guideSectionId: "assessment"
         },
         {
@@ -225,8 +225,8 @@ var chestTubesQuizData = {
                 c: "Covering the end with a glove and tape does not create a functional water seal. Air could still be drawn in during inspiration, and there is no mechanism for air to escape during expiration.",
                 d: "Waiting without intervening exposes the patient to continuous risk of pneumothorax. A new system should be obtained, but an emergency water seal must be established immediately using whatever sterile water is available."
             },
-            testTakingTip: "Chest tube emergencies: Dislodged from chest = three-sided occlusive dressing. Disconnected from drainage system = sterile water seal. Know which intervention matches which emergency — the NCLEX loves to test this distinction.",
-            guideSection: "Section 8 — Complications & Emergencies",
+            testTakingTip: "Chest tube emergencies: Dislodged from chest = three-sided occlusive dressing. Disconnected from drainage system = sterile water seal. Know which intervention matches which emergency - the NCLEX loves to test this distinction.",
+            guideSection: "Section 8 - Complications & Emergencies",
             guideSectionId: "complications"
         },
         {
@@ -243,13 +243,13 @@ var chestTubesQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This patient shows signs of hemorrhage or re-expansion pulmonary edema. The drainage rate exceeds 200 mL/hour, blood pressure is dropping (hypotension), and heart rate is rising (tachycardia — compensatory mechanism). The provider must be notified immediately for possible surgical intervention, blood product transfusion, or autotransfusion. This is beyond nursing-only management.",
+                correct: "This patient shows signs of hemorrhage or re-expansion pulmonary edema. The drainage rate exceeds 200 mL/hour, blood pressure is dropping (hypotension), and heart rate is rising (tachycardia - compensatory mechanism). The provider must be notified immediately for possible surgical intervention, blood product transfusion, or autotransfusion. This is beyond nursing-only management.",
                 a: "Clamping can cause tension pneumothorax and does not address the underlying bleeding. If the provider orders controlled drainage, they will provide specific instructions.",
                 c: "Repositioning to slow drainage does not address the hemodynamic instability. The patient is showing signs of hemorrhagic shock, which requires medical intervention.",
                 d: "While IV fluids may be needed, independently increasing the rate without a provider order does not address the source of bleeding and delays definitive treatment. The provider needs to make decisions about blood products, possible re-exploration, or autotransfusion."
             },
-            testTakingTip: "Chest tube output >200 mL/hour + hemodynamic instability = notify provider STAT. This is a potential surgical emergency. The rapid initial drainage of a large effusion can also cause re-expansion pulmonary edema — another reason for provider notification.",
-            guideSection: "Section 6 — Systematic Assessment",
+            testTakingTip: "Chest tube output >200 mL/hour + hemodynamic instability = notify provider STAT. This is a potential surgical emergency. The rapid initial drainage of a large effusion can also cause re-expansion pulmonary edema - another reason for provider notification.",
+            guideSection: "Section 6 - Systematic Assessment",
             guideSectionId: "assessment"
         }
     ]

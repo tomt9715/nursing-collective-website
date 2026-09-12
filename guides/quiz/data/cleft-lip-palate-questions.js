@@ -1,5 +1,5 @@
 /**
- * Cleft Lip & Palate Quiz — Question Data
+ * Cleft Lip & Palate Quiz - Question Data
  * Clinical questions covering feeding, surgical staging,
  * post-op positioning, and long-term multi-disciplinary care.
  */
@@ -32,7 +32,7 @@ var cleftLipPalateQuizData = {
                 d: "This is well past the palatal fusion window."
             },
             testTakingTip: "Lip = 5\u20136 weeks. Palate = 7\u201312 weeks. Two independent processes.",
-            guideSection: "Section 1 \u2014 Overview & Types",
+            guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         },
         {
@@ -54,8 +54,8 @@ var cleftLipPalateQuizData = {
                 c: "GT placement is only considered after other feeding methods have failed; most cleft infants do well with specialty bottles.",
                 d: "Skipping feeds causes dehydration and failure to thrive, delaying surgery indefinitely."
             },
-            testTakingTip: "For cleft babies, feeding is the first priority \u2014 weight gain IS the path to surgery.",
-            guideSection: "Section 2 \u2014 Feeding",
+            testTakingTip: "For cleft babies, feeding is the first priority - weight gain IS the path to surgery.",
+            guideSection: "Section 2 - Feeding",
             guideSectionId: "feeding"
         },
         {
@@ -78,7 +78,7 @@ var cleftLipPalateQuizData = {
                 d: "Thickening feeds without medical indication is not standard; focus on specialty nipples and technique instead."
             },
             testTakingTip: "Upright + small frequent + burp often. The three pillars of cleft feeding.",
-            guideSection: "Section 2 \u2014 Feeding",
+            guideSection: "Section 2 - Feeding",
             guideSectionId: "feeding"
         },
         {
@@ -96,12 +96,12 @@ var cleftLipPalateQuizData = {
             correct: "c",
             rationale: {
                 correct: "Rule of 10s = 10 weeks old + 10 lb (5 kg) + Hgb \u2265 10 g/dL. This infant meets all three criteria and is ready for cleft lip repair.",
-                a: "Only 4 weeks old and 8 lb \u2014 fails the age and weight criteria.",
+                a: "Only 4 weeks old and 8 lb - fails the age and weight criteria.",
                 b: "9 lb fails the weight criterion.",
                 d: "Hgb of 9 fails the hemoglobin criterion; infant would need iron supplementation before surgery."
             },
             testTakingTip: "Rule of 10s: 10 weeks, 10 lb, Hgb 10. All three must be met.",
-            guideSection: "Section 3 \u2014 Surgical Repair",
+            guideSection: "Section 3 - Surgical Repair",
             guideSectionId: "surgery"
         },
         {
@@ -118,13 +118,13 @@ var cleftLipPalateQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After cleft LIP repair, the infant should be placed supine or side-lying \u2014 NEVER prone. Prone positioning could cause the face to rub against the sheets and disrupt the lip suture line.",
+                correct: "After cleft LIP repair, the infant should be placed supine or side-lying - NEVER prone. Prone positioning could cause the face to rub against the sheets and disrupt the lip suture line.",
                 a: "Prone is contraindicated for cleft lip repair.",
                 c: "Trendelenburg is not indicated and is uncomfortable.",
                 d: "Prone positioning is the contraindication."
             },
             testTakingTip: "Cleft LIP = SUPINE. Cleft PALATE = PRONE. Opposite positions for opposite surgeries.",
-            guideSection: "Section 4 \u2014 Post-Op Care",
+            guideSection: "Section 4 - Post-Op Care",
             guideSectionId: "post-op"
         },
         {
@@ -147,7 +147,7 @@ var cleftLipPalateQuizData = {
                 d: "Reverse Trendelenburg is not standard for this repair."
             },
             testTakingTip: "Palate repair = prone or side-lying. The airway is the priority; drainage must occur.",
-            guideSection: "Section 4 \u2014 Post-Op Care",
+            guideSection: "Section 4 - Post-Op Care",
             guideSectionId: "post-op"
         },
         {
@@ -164,13 +164,13 @@ var cleftLipPalateQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After cleft palate repair, NO hard objects can enter the mouth \u2014 this includes spoons (especially metal), straws, pacifiers, tongue depressors, and hard toys. Hard objects can disrupt the palatal suture line.",
+                correct: "After cleft palate repair, NO hard objects can enter the mouth - this includes spoons (especially metal), straws, pacifiers, tongue depressors, and hard toys. Hard objects can disrupt the palatal suture line.",
                 a: "A soft sippy cup spout is generally allowed; cup drinking with the side (not tip) of a spoon is often acceptable.",
                 c: "A stuffed animal is fine for comfort; cleft infants aren't likely to put it in their mouth past their elbow restraints.",
                 d: "Cup drinking (soft liquids) is expected after cleft palate repair."
             },
             testTakingTip: "Post-palate repair: no hard objects in the mouth. Straws, metal spoons, pacifiers, toothbrushes all off limits.",
-            guideSection: "Section 4 \u2014 Post-Op Care",
+            guideSection: "Section 4 - Post-Op Care",
             guideSectionId: "post-op"
         },
         {
@@ -190,10 +190,10 @@ var cleftLipPalateQuizData = {
                 correct: "Elbow restraints (no-no's) prevent the infant from touching the suture line. They are typically worn for 10\u201314 days and CAN be removed for supervised activities like feeding, cuddling, and play. Parents should be comfortable applying and removing them.",
                 a: "2 months continuous is too long; 10\u201314 days of mostly-continuous use is standard.",
                 c: "Restraints are used awake and asleep because infants can inadvertently touch the site at any time.",
-                d: "Restraints ARE standard care after cleft surgery \u2014 current practice."
+                d: "Restraints ARE standard care after cleft surgery - current practice."
             },
             testTakingTip: "Elbow restraints = remove for supervised activities, re-apply otherwise. 10\u201314 days post-op.",
-            guideSection: "Section 4 \u2014 Post-Op Care",
+            guideSection: "Section 4 - Post-Op Care",
             guideSectionId: "post-op"
         },
         {
@@ -216,7 +216,7 @@ var cleftLipPalateQuizData = {
                 d: "Celiac is unrelated."
             },
             testTakingTip: "Cleft palate \u2192 Eustachian tube dysfunction \u2192 otitis media \u2192 hearing loss \u2192 speech delay. Chain reaction worth knowing.",
-            guideSection: "Section 5 \u2014 Associated Issues",
+            guideSection: "Section 5 - Associated Issues",
             guideSectionId: "associated"
         },
         {
@@ -239,7 +239,7 @@ var cleftLipPalateQuizData = {
                 d: "Dental caries risk is real but not the reason for the timing window."
             },
             testTakingTip: "Palate repair timed to beat speech development. ~9\u201318 months is the sweet spot.",
-            guideSection: "Section 3 \u2014 Surgical Repair",
+            guideSection: "Section 3 - Surgical Repair",
             guideSectionId: "surgery"
         },
         {
@@ -256,13 +256,13 @@ var cleftLipPalateQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Cleft palate is multifactorial \u2014 genetic predisposition combined with environmental factors. Maternal guilt is common and should be addressed directly but compassionately. Validate the feeling, correct the misconception, and offer support resources.",
+                correct: "Cleft palate is multifactorial - genetic predisposition combined with environmental factors. Maternal guilt is common and should be addressed directly but compassionately. Validate the feeling, correct the misconception, and offer support resources.",
                 a: "This response is shaming and factually incomplete.",
                 c: "Dismissing the parent's feelings is not therapeutic.",
                 d: "Deflecting the question avoids the emotional concern."
             },
             testTakingTip: "Validate \u2192 correct misconception \u2192 offer resources. Maternal guilt is a common counseling moment.",
-            guideSection: "Section 6 \u2014 Family Education & Support",
+            guideSection: "Section 6 - Family Education & Support",
             guideSectionId: "family-education"
         },
         {
@@ -285,7 +285,7 @@ var cleftLipPalateQuizData = {
                 d: "Adult bone grafting is rare and reserved for delayed cases or revisions."
             },
             testTakingTip: "Timeline for cleft care: Lip 2\u20133 mo. Palate 9\u201318 mo. Alveolar bone graft 7\u201310 yr. Later revisions through adolescence.",
-            guideSection: "Section 5 \u2014 Associated Issues",
+            guideSection: "Section 5 - Associated Issues",
             guideSectionId: "associated"
         },
         {
@@ -308,7 +308,7 @@ var cleftLipPalateQuizData = {
                 d: "Commercial mouthwash is not intended for surgical wounds and can damage tissue."
             },
             testTakingTip: "Suture line cleaning: sterile water or saline. Gentle, non-irritating.",
-            guideSection: "Section 4 \u2014 Post-Op Care",
+            guideSection: "Section 4 - Post-Op Care",
             guideSectionId: "post-op"
         }
     ]

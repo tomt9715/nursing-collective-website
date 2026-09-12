@@ -29,10 +29,10 @@ var bleedingDisordersQuizData = {
                 correct: "Hemophilia A (classic hemophilia) is caused by a deficiency of factor VIII, X-linked recessive, and accounts for ~80% of hemophilia cases.",
                 a: "Factor VII deficiency is a separate, rare bleeding disorder.",
                 c: "Factor IX deficiency = Hemophilia B (Christmas disease).",
-                d: "Factor XI deficiency is hemophilia C \u2014 different inheritance and rare."
+                d: "Factor XI deficiency is hemophilia C - different inheritance and rare."
             },
             testTakingTip: "A = 8 (factor VIII). B = 9 (factor IX).",
-            guideSection: "Section 2 \u2014 Hemophilia",
+            guideSection: "Section 2 - Hemophilia",
             guideSectionId: "hemophilia"
         },
         {
@@ -51,11 +51,11 @@ var bleedingDisordersQuizData = {
             rationale: {
                 correct: "Hemophilia A and B are X-linked recessive. Most affected children are boys (only one X chromosome). Female carriers pass the gene to 50% of sons (affected) and 50% of daughters (carriers). Refer for genetic counseling.",
                 a: "Vitamin K deficiency causes hemorrhagic disease of the newborn, not hemophilia.",
-                c: "Autosomal dominant would affect both sexes equally \u2014 incorrect for hemophilia.",
+                c: "Autosomal dominant would affect both sexes equally - incorrect for hemophilia.",
                 d: "Hemophilia is genetic, not infectious."
             },
             testTakingTip: "Hemophilia A/B = X-linked recessive. Affects boys. Mothers are carriers.",
-            guideSection: "Section 2 \u2014 Hemophilia",
+            guideSection: "Section 2 - Hemophilia",
             guideSectionId: "hemophilia"
         },
         {
@@ -78,7 +78,7 @@ var bleedingDisordersQuizData = {
                 d: "Delay can be fatal."
             },
             testTakingTip: "Hemophilia + head injury = factor FIRST, then imaging.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -101,7 +101,7 @@ var bleedingDisordersQuizData = {
                 d: "Leukocytosis is not a feature of hemophilia."
             },
             testTakingTip: "Hemophilia = \u2191 PTT, normal PT, normal platelets, low factor.",
-            guideSection: "Section 4 \u2014 Diagnosis",
+            guideSection: "Section 4 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -119,12 +119,12 @@ var bleedingDisordersQuizData = {
             correct: "c",
             rationale: {
                 correct: "ITP is characterized by isolated severe thrombocytopenia in a well-appearing child, often following a viral illness by 1\u20134 weeks. CBC (except platelets), PT, and PTT are normal.",
-                a: "Leukemia typically has additional findings \u2014 anemia, abnormal WBC, fever, hepatosplenomegaly, bone pain.",
+                a: "Leukemia typically has additional findings - anemia, abnormal WBC, fever, hepatosplenomegaly, bone pain.",
                 b: "Hemophilia has prolonged PTT and deep-tissue bleeding, not isolated thrombocytopenia + petechiae.",
                 d: "vWD has prolonged bleeding time and often abnormal PTT; less commonly isolated thrombocytopenia."
             },
             testTakingTip: "Post-viral, isolated low platelets, petechiae/purpura, well child = ITP.",
-            guideSection: "Section 3 \u2014 ITP",
+            guideSection: "Section 3 - ITP",
             guideSectionId: "itp"
         },
         {
@@ -147,7 +147,7 @@ var bleedingDisordersQuizData = {
                 d: "HbS polymerization = sickle cell disease."
             },
             testTakingTip: "ITP = antiplatelet antibodies, spleen destroys platelets.",
-            guideSection: "Section 3 \u2014 ITP",
+            guideSection: "Section 3 - ITP",
             guideSectionId: "itp"
         },
         {
@@ -170,7 +170,7 @@ var bleedingDisordersQuizData = {
                 d: "Factor VIII treats hemophilia, not ITP."
             },
             testTakingTip: "ITP + severe bleeding = IVIG first (fast action).",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -193,7 +193,7 @@ var bleedingDisordersQuizData = {
                 d: "Transfusions do not hyperactivate coagulation in ITP."
             },
             testTakingTip: "Platelet transfusion in ITP = short-lived; antibodies destroy them.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -213,15 +213,15 @@ var bleedingDisordersQuizData = {
             correct: ["a", "b", "e", "f"],
             rationale: {
                 correct: "A, B, E, and F are appropriate. IM injections and NSAIDs (ibuprofen) are contraindicated because they cause deep bleeding and impair platelet function, respectively.",
-                a: "Correct \u2014 soft brush prevents gum bleeding.",
-                b: "Correct \u2014 prolonged pressure is essential.",
+                a: "Correct - soft brush prevents gum bleeding.",
+                b: "Correct - prolonged pressure is essential.",
                 c: "IM injections cause deep tissue bleeding; give vaccines SubQ.",
                 d: "NSAIDs impair platelet function and are contraindicated. Use acetaminophen.",
-                e: "Correct \u2014 contact sports risk serious injury.",
-                f: "Correct \u2014 RICE response to joint bleeds is standard."
+                e: "Correct - contact sports risk serious injury.",
+                f: "Correct - RICE response to joint bleeds is standard."
             },
             testTakingTip: "No IM. No NSAIDs. RICE + soft brush + pressure.",
-            guideSection: "Section 6 \u2014 Nursing Priorities",
+            guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -244,7 +244,7 @@ var bleedingDisordersQuizData = {
                 d: "NSAIDs are contraindicated."
             },
             testTakingTip: "Believe the child\u2019s bleed aura; treat early.",
-            guideSection: "Section 2 \u2014 Hemophilia",
+            guideSection: "Section 2 - Hemophilia",
             guideSectionId: "hemophilia"
         },
         {
@@ -267,7 +267,7 @@ var bleedingDisordersQuizData = {
                 d: "Vitamin K is not indicated without coagulopathy."
             },
             testTakingTip: "Patterned/staged bruises + normal labs = abuse concern. Mandatory report.",
-            guideSection: "Section 4 \u2014 Diagnosis",
+            guideSection: "Section 4 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -290,7 +290,7 @@ var bleedingDisordersQuizData = {
                 d: "Ice hockey = high impact; contraindicated."
             },
             testTakingTip: "Hemophilia = swim, bike, golf. No contact sports.",
-            guideSection: "Section 7 \u2014 Family Education",
+            guideSection: "Section 7 - Family Education",
             guideSectionId: "family"
         },
         {
@@ -313,7 +313,7 @@ var bleedingDisordersQuizData = {
                 d: "DDAVP does not break down clots."
             },
             testTakingTip: "DDAVP releases stored factor VIII/vWF. Mild hemophilia A and vWD.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -330,13 +330,13 @@ var bleedingDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Parents should watch for new bleeding signs (new petechiae, gum or nasal bleeding, severe headache \u2014 potential intracranial bleed). Aspirin and NSAIDs are contraindicated. Contact sports are avoided during low platelets.",
+                correct: "Parents should watch for new bleeding signs (new petechiae, gum or nasal bleeding, severe headache - potential intracranial bleed). Aspirin and NSAIDs are contraindicated. Contact sports are avoided during low platelets.",
                 a: "Aspirin impairs platelets.",
                 b: "Contact sports risk bleeding even with recovering counts.",
                 d: "Ibuprofen impairs platelets."
             },
             testTakingTip: "ITP: no ASA/NSAIDs, watch for bleeding, call for red flags.",
-            guideSection: "Section 7 \u2014 Family Education",
+            guideSection: "Section 7 - Family Education",
             guideSectionId: "family"
         }
     ]

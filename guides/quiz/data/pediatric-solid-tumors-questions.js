@@ -1,5 +1,5 @@
 /**
- * Pediatric Solid Tumors Quiz — Question Data
+ * Pediatric Solid Tumors Quiz - Question Data
  * Practice questions covering medulloblastoma, neuroblastoma,
  * diagnostic workup, treatment, post-op nursing priorities, and family support.
  */
@@ -32,7 +32,7 @@ var pediatricSolidTumorsQuizData = {
                 d: "Craniopharyngioma occurs in children but is less common than medulloblastoma."
             },
             testTakingTip: "Most common childhood malignant brain tumor = medulloblastoma.",
-            guideSection: "Section 2 \u2014 Medulloblastoma",
+            guideSection: "Section 2 - Medulloblastoma",
             guideSectionId: "medulloblastoma"
         },
         {
@@ -55,7 +55,7 @@ var pediatricSolidTumorsQuizData = {
                 d: "Retinoblastoma presents with leukocoria (white pupillary reflex) and eye changes."
             },
             testTakingTip: "Morning HA + AM vomiting + ataxia = medulloblastoma / posterior fossa tumor.",
-            guideSection: "Section 2 \u2014 Medulloblastoma",
+            guideSection: "Section 2 - Medulloblastoma",
             guideSectionId: "medulloblastoma"
         },
         {
@@ -73,12 +73,12 @@ var pediatricSolidTumorsQuizData = {
             correct: "b",
             rationale: {
                 correct: "The neuroblastoma tumor capsule is fragile. Palpation can rupture the capsule and spread malignant cells. Post a bedside sign, educate all caregivers, and limit assessment to inspection and auscultation only.",
-                a: "Repeated palpation can spread tumor cells \u2014 this is dangerous.",
+                a: "Repeated palpation can spread tumor cells - this is dangerous.",
                 c: "Warm compresses don\u2019t address the safety concern.",
                 d: "Prone positioning has no specific role and doesn\u2019t prevent palpation."
             },
             testTakingTip: "Neuroblastoma (or Wilms) abdomen = DO NOT PALPATE.",
-            guideSection: "Section 3 \u2014 Neuroblastoma",
+            guideSection: "Section 3 - Neuroblastoma",
             guideSectionId: "neuroblastoma"
         },
         {
@@ -101,7 +101,7 @@ var pediatricSolidTumorsQuizData = {
                 d: "Hepatoblastoma arises from the liver."
             },
             testTakingTip: "Neuroblastoma = adrenal / retroperitoneum. Follows sympathetic chain.",
-            guideSection: "Section 3 \u2014 Neuroblastoma",
+            guideSection: "Section 3 - Neuroblastoma",
             guideSectionId: "neuroblastoma"
         },
         {
@@ -124,7 +124,7 @@ var pediatricSolidTumorsQuizData = {
                 d: "Urinary pH doesn\u2019t diagnose neuroblastoma."
             },
             testTakingTip: "Neuroblastoma = urine VMA/HVA elevated.",
-            guideSection: "Section 3 \u2014 Neuroblastoma",
+            guideSection: "Section 3 - Neuroblastoma",
             guideSectionId: "neuroblastoma"
         },
         {
@@ -141,13 +141,13 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After a posterior fossa craniotomy, the child is usually positioned flat side-lying (or prone) on the un-operated side. This avoids pressure on the surgical site and prevents increased ICP. Trendelenburg is contraindicated (raises ICP). HOB elevation is surgeon-specific \u2014 often kept flat initially.",
+                correct: "After a posterior fossa craniotomy, the child is usually positioned flat side-lying (or prone) on the un-operated side. This avoids pressure on the surgical site and prevents increased ICP. Trendelenburg is contraindicated (raises ICP). HOB elevation is surgeon-specific - often kept flat initially.",
                 a: "Trendelenburg raises ICP and can cause herniation.",
                 c: "High Fowler\u2019s may not be appropriate immediately post-op and depends on surgeon order.",
                 d: "Early mobilization is usually delayed after intracranial surgery."
             },
             testTakingTip: "Post-posterior fossa = side-lying or prone on UN-operated side. No Trendelenburg.",
-            guideSection: "Section 6 \u2014 Nursing Priorities",
+            guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -164,13 +164,13 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Cushing\u2019s triad \u2014 hypertension, bradycardia, and irregular respirations \u2014 is a late sign of increased ICP and impending herniation. Emergency: notify provider, elevate HOB 30\u00b0, ensure airway, prepare mannitol or hypertonic saline.",
+                correct: "Cushing\u2019s triad - hypertension, bradycardia, and irregular respirations - is a late sign of increased ICP and impending herniation. Emergency: notify provider, elevate HOB 30\u00b0, ensure airway, prepare mannitol or hypertonic saline.",
                 a: "Hypovolemic shock presents with tachycardia and hypotension.",
                 c: "Sepsis usually causes tachycardia and hypotension.",
                 d: "These vitals are NOT normal."
             },
             testTakingTip: "Cushing\u2019s triad = HTN + bradycardia + irregular breathing = emergency ICP.",
-            guideSection: "Section 2 \u2014 Medulloblastoma",
+            guideSection: "Section 2 - Medulloblastoma",
             guideSectionId: "medulloblastoma"
         },
         {
@@ -189,11 +189,11 @@ var pediatricSolidTumorsQuizData = {
             rationale: {
                 correct: "MYCN gene amplification in neuroblastoma cells denotes aggressive, high-risk disease and triggers intensified multi-modal therapy (chemo + surgery + autologous BMT + radiation + immunotherapy).",
                 a: "Philadelphia chromosome is associated with CML.",
-                c: "BCR-ABL is the Philadelphia chromosome fusion \u2014 CML marker.",
+                c: "BCR-ABL is the Philadelphia chromosome fusion - CML marker.",
                 d: "HER2 overexpression is a breast cancer marker."
             },
             testTakingTip: "Neuroblastoma + MYCN amplified = high risk.",
-            guideSection: "Section 3 \u2014 Neuroblastoma",
+            guideSection: "Section 3 - Neuroblastoma",
             guideSectionId: "neuroblastoma"
         },
         {
@@ -203,7 +203,7 @@ var pediatricSolidTumorsQuizData = {
             difficulty: "application",
             stem: "The parents of a child 2 days post-op from a posterior fossa craniotomy report that the child was talking and responsive on day 1 but today is suddenly silent, tearful, and unable to swallow. The nurse recognizes this as:",
             options: [
-                { id: "a", text: "A stroke complication \u2014 call the rapid response team" },
+                { id: "a", text: "A stroke complication - call the rapid response team" },
                 { id: "b", text: "Cerebellar mutism syndrome" },
                 { id: "c", text: "Seizure activity" },
                 { id: "d", text: "Normal healing response" }
@@ -213,10 +213,10 @@ var pediatricSolidTumorsQuizData = {
                 correct: "Cerebellar mutism syndrome occurs in up to 25% of posterior fossa surgeries. The child is initially alert post-op, then 1\u20134 days later develops transient muteness, emotional lability, and dysphagia. Usually resolves over weeks to months; support with speech therapy and reassurance.",
                 a: "Rule out stroke with imaging if deficits are progressive, but classic mutism presentation is cerebellar mutism syndrome.",
                 c: "Seizures would show motor activity or altered awareness, not silent tearfulness.",
-                d: "This is NOT normal \u2014 it requires recognition and support, though it usually resolves."
+                d: "This is NOT normal - it requires recognition and support, though it usually resolves."
             },
             testTakingTip: "Post-posterior fossa + muteness day 1\u20134 = cerebellar mutism syndrome.",
-            guideSection: "Section 6 \u2014 Nursing Priorities",
+            guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -233,13 +233,13 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Periorbital ecchymosis \u2014 \u201craccoon eyes\u201d \u2014 is classic for neuroblastoma with orbital bone metastasis, especially in infants and young children.",
+                correct: "Periorbital ecchymosis - \u201craccoon eyes\u201d - is classic for neuroblastoma with orbital bone metastasis, especially in infants and young children.",
                 a: "Leukocoria is the hallmark of retinoblastoma.",
                 c: "Exophthalmos can occur but is not the classic neuroblastoma sign.",
                 d: "Cataracts are not a neuroblastoma sign."
             },
             testTakingTip: "Raccoon eyes in a toddler = neuroblastoma orbital mets.",
-            guideSection: "Section 3 \u2014 Neuroblastoma",
+            guideSection: "Section 3 - Neuroblastoma",
             guideSectionId: "neuroblastoma"
         },
         {
@@ -259,15 +259,15 @@ var pediatricSolidTumorsQuizData = {
             correct: ["a", "b", "c", "e"],
             rationale: {
                 correct: "Morning headache, papilledema, personality changes, and Cushing\u2019s triad are all signs of increased ICP. Brisk DTRs at baseline and steady weight gain are NOT ICP findings.",
-                a: "Correct \u2014 classic morning HA pattern.",
-                b: "Correct \u2014 papilledema indicates increased ICP.",
-                c: "Correct \u2014 personality change is an early sign in children.",
+                a: "Correct - classic morning HA pattern.",
+                b: "Correct - papilledema indicates increased ICP.",
+                c: "Correct - personality change is an early sign in children.",
                 d: "Brisk DTRs alone are not specific for ICP.",
-                e: "Correct \u2014 Cushing\u2019s triad is late ICP sign.",
+                e: "Correct - Cushing\u2019s triad is late ICP sign.",
                 f: "Weight gain is unrelated."
             },
             testTakingTip: "ICP: morning HA, papilledema, personality change, Cushing\u2019s triad.",
-            guideSection: "Section 2 \u2014 Medulloblastoma",
+            guideSection: "Section 2 - Medulloblastoma",
             guideSectionId: "medulloblastoma"
         },
         {
@@ -284,13 +284,13 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Cisplatin is ototoxic \u2014 it can cause permanent high-frequency hearing loss. Baseline and periodic audiograms are essential. Also monitor renal function (nephrotoxicity).",
+                correct: "Cisplatin is ototoxic - it can cause permanent high-frequency hearing loss. Baseline and periodic audiograms are essential. Also monitor renal function (nephrotoxicity).",
                 a: "Echocardiograms are needed for anthracyclines (doxorubicin), not cisplatin.",
                 c: "PFTs are for bleomycin and radiation patients.",
                 d: "Not routine for cisplatin."
             },
             testTakingTip: "Cisplatin = ototoxic. Check hearing regularly.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -313,7 +313,7 @@ var pediatricSolidTumorsQuizData = {
                 d: "Delay is dangerous."
             },
             testTakingTip: "Neutropenic fever = cultures + antibiotics within 1 hour.",
-            guideSection: "Section 6 \u2014 Nursing Priorities",
+            guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -330,13 +330,13 @@ var pediatricSolidTumorsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Survivorship clinic follow-up helps identify and manage late effects of treatment \u2014 cognitive changes (esp. after CNS radiation), hearing loss (cisplatin), endocrine deficits (radiation), cardiac issues, growth concerns, and secondary cancers. Many children return to school with accommodations and go on to live full lives.",
-                a: "False reassurance \u2014 late effects are real.",
+                correct: "Survivorship clinic follow-up helps identify and manage late effects of treatment - cognitive changes (esp. after CNS radiation), hearing loss (cisplatin), endocrine deficits (radiation), cardiac issues, growth concerns, and secondary cancers. Many children return to school with accommodations and go on to live full lives.",
+                a: "False reassurance - late effects are real.",
                 c: "Follow-up is essential for years.",
                 d: "Children can and usually do return to school, often with a 504 plan or IEP."
             },
             testTakingTip: "Always anticipate late effects; survivorship care matters.",
-            guideSection: "Section 7 \u2014 Family Coping",
+            guideSection: "Section 7 - Family Coping",
             guideSectionId: "family"
         }
     ]

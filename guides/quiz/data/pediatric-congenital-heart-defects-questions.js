@@ -1,5 +1,5 @@
 /**
- * Pediatric Congenital Heart Defects Quiz — Question Data
+ * Pediatric Congenital Heart Defects Quiz - Question Data
  * Clinical-scenario questions covering classification, TOF, tet spells,
  * right-sided heart failure, medications, and family education.
  */
@@ -31,8 +31,8 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 c: "Morphine helps but is given AFTER positioning and oxygen. Morphine decreases infundibular spasm and reduces respiratory drive.",
                 d: "Getting IV access is important but takes time. Positioning is faster and can be done while someone else gets supplies."
             },
-            testTakingTip: "For tet spells: 'Knees to chest first' — it requires no equipment, no order, and works immediately. This is the classic 'first action' answer for cyanotic CHD.",
-            guideSection: "Section 6 — Hypercyanotic Tet Spells",
+            testTakingTip: "For tet spells: 'Knees to chest first' - it requires no equipment, no order, and works immediately. This is the classic 'first action' answer for cyanotic CHD.",
+            guideSection: "Section 6 - Hypercyanotic Tet Spells",
             guideSectionId: "tet-spells"
         },
         {
@@ -50,13 +50,13 @@ var pediatricCongenitalHeartDefectsQuizData = {
             correct: "a",
             rationale: {
                 correct: "TOF = PROV: Pulmonary stenosis, Right ventricular hypertrophy, Overriding aorta, VSD. The pulmonary stenosis raises RV pressure, which shunts blood right-to-left across the VSD → cyanosis.",
-                a: "Correct — Pulmonary stenosis, RV hypertrophy, overriding aorta, VSD.",
+                a: "Correct - Pulmonary stenosis, RV hypertrophy, overriding aorta, VSD.",
                 b: "These defects are not part of TOF. Aortic stenosis and coarctation are separate obstructive lesions.",
                 c: "These are separate cyanotic defects, not components of TOF.",
                 d: "Transposition of the great arteries is its own cyanotic CHD, not part of TOF."
             },
-            testTakingTip: "Memorize PROV or the '4 Hs' — hypertrophy (RV), hole (VSD), hard valve (pulmonary stenosis), horse-riding aorta (overriding). Get this pattern locked in.",
-            guideSection: "Section 5 — Tetralogy of Fallot",
+            testTakingTip: "Memorize PROV or the '4 Hs' - hypertrophy (RV), hole (VSD), hard valve (pulmonary stenosis), horse-riding aorta (overriding). Get this pattern locked in.",
+            guideSection: "Section 5 - Tetralogy of Fallot",
             guideSectionId: "tof"
         },
         {
@@ -79,7 +79,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 d: "The nurse should not delay notification. Holding and calling the provider is the immediate correct action."
             },
             testTakingTip: "Digoxin holding parameters by age: Infant <90-110, Child <70, Adolescent/adult <60. Always check APICAL pulse for a full minute before digoxin.",
-            guideSection: "Section 10 — Medications",
+            guideSection: "Section 10 - Medications",
             guideSectionId: "medications"
         },
         {
@@ -97,12 +97,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             correct: "c",
             rationale: {
                 correct: "Prostaglandin E1 maintains patency of the ductus arteriosus, which is critical in ductal-dependent lesions where the ductus is the only pathway for blood to reach the lungs (or the body). It is a lifesaving bridge until surgery.",
-                a: "This is the OPPOSITE — indomethacin or ibuprofen close a PDA in a premature infant. Giving these to a ductal-dependent baby would be fatal.",
-                b: "PGE1 doesn't raise heart rate — that is not its mechanism.",
+                a: "This is the OPPOSITE - indomethacin or ibuprofen close a PDA in a premature infant. Giving these to a ductal-dependent baby would be fatal.",
+                b: "PGE1 doesn't raise heart rate - that is not its mechanism.",
                 d: "PGE1 does not primarily affect pulmonary vascular resistance."
             },
-            testTakingTip: "Memory trick: 'E for Established' — prostaglandin E1 keeps the ductus ESTABLISHED (open). Indomethacin ends it.",
-            guideSection: "Section 10 — Medications",
+            testTakingTip: "Memory trick: 'E for Established' - prostaglandin E1 keeps the ductus ESTABLISHED (open). Indomethacin ends it.",
+            guideSection: "Section 10 - Medications",
             guideSectionId: "medications"
         },
         {
@@ -125,7 +125,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 d: "Giving an extra dose of digoxin will not stop a tet spell and risks toxicity."
             },
             testTakingTip: "Expect parent-understanding items on tet-spell management. The knee-chest answer is the right one.",
-            guideSection: "Section 11 — Family Education",
+            guideSection: "Section 11 - Family Education",
             guideSectionId: "family-education"
         },
         {
@@ -144,11 +144,11 @@ var pediatricCongenitalHeartDefectsQuizData = {
             rationale: {
                 correct: "These are the classic signs of infant heart failure: prolonged feeding time, diaphoresis with feeds, tachypnea at rest, and failure to thrive. Feeding is the infant's exercise, and a failing heart cannot meet the oxygen demand. This picture warrants urgent cardiology evaluation.",
                 a: "Normal infants feed in 15-30 minutes without sweating and gain weight steadily. This picture is abnormal.",
-                c: "GERD typically presents with regurgitation, arching, and irritability — not diaphoresis with feeds or tachypnea at rest.",
+                c: "GERD typically presents with regurgitation, arching, and irritability - not diaphoresis with feeds or tachypnea at rest.",
                 d: "RSV causes respiratory distress but is typically acute with nasal congestion and wheezing, not the chronic feeding/growth pattern described."
             },
             testTakingTip: "The triad of 'tires with feeds + sweats while feeding + poor weight gain' is a high-yield pattern for infant CHF. Memorize it.",
-            guideSection: "Section 8 — Right-Sided Heart Failure",
+            guideSection: "Section 8 - Right-Sided Heart Failure",
             guideSectionId: "right-heart-failure"
         },
         {
@@ -171,7 +171,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 d: "SBE prophylaxis is for PREVENTING infection during procedures that cause bacteremia (like dental work), not for treating current illness."
             },
             testTakingTip: "Know the SBE prophylaxis groups: unrepaired cyanotic CHD, prosthetic valves, first 6 months after repair with prosthetic material, residual defects adjacent to prosthetic material.",
-            guideSection: "Section 9 — Nursing Care",
+            guideSection: "Section 9 - Nursing Care",
             guideSectionId: "nursing-care"
         },
         {
@@ -194,7 +194,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 d: "Harsh holosystolic murmur at the left lower sternal border = VSD."
             },
             testTakingTip: "Match the murmur to the defect: VSD = holosystolic LLSB. PDA = continuous machinery. ASD = fixed split S2. Coarctation = BP difference between arms and legs.",
-            guideSection: "Section 7 — Obstructive Defects",
+            guideSection: "Section 7 - Obstructive Defects",
             guideSectionId: "obstructive"
         },
         {
@@ -212,12 +212,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             correct: "b",
             rationale: {
                 correct: "Indomethacin is a prostaglandin synthesis inhibitor. Prostaglandins keep the fetal ductus open; blocking them closes the ductus. It is used in premature infants with a hemodynamically significant PDA.",
-                a: "This is prostaglandin E1's job — the opposite of indomethacin.",
+                a: "This is prostaglandin E1's job - the opposite of indomethacin.",
                 c: "Indomethacin does not primarily treat pulmonary hypertension.",
                 d: "Indomethacin is not an afterload reducer."
             },
-            testTakingTip: "NEVER give indomethacin or ibuprofen to an infant with a ductal-dependent lesion. The PDA is keeping them alive — closing it would be fatal.",
-            guideSection: "Section 10 — Medications",
+            testTakingTip: "NEVER give indomethacin or ibuprofen to an infant with a ductal-dependent lesion. The PDA is keeping them alive - closing it would be fatal.",
+            guideSection: "Section 10 - Medications",
             guideSectionId: "medications"
         },
         {
@@ -234,13 +234,13 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Hypokalemia potentiates digoxin toxicity. A potassium below 3.5 mEq/L significantly raises the risk of arrhythmia and digoxin poisoning in an infant already on both drugs. Notify the provider — usually potassium replacement is ordered.",
+                correct: "Hypokalemia potentiates digoxin toxicity. A potassium below 3.5 mEq/L significantly raises the risk of arrhythmia and digoxin poisoning in an infant already on both drugs. Notify the provider - usually potassium replacement is ordered.",
                 a: "Potassium is needed in this situation because of the drug interaction, not for normal growth.",
                 c: "The nurse cannot hold furosemide independently; it requires a provider order. And the more urgent concern is digoxin toxicity risk.",
                 d: "There is no indication of dehydration from the information given; the K+ level is the priority."
             },
             testTakingTip: "The 'Lasix-lowers-K-makes-dig-toxic' chain is exam gold. Any question with a child on both drugs is almost always testing this interaction.",
-            guideSection: "Section 10 — Medications",
+            guideSection: "Section 10 - Medications",
             guideSectionId: "medications"
         },
         {
@@ -257,13 +257,13 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Infants with CHF tire quickly during feeds — feeding is work. Feeds should be limited to about 20-30 minutes to conserve energy. Stopping the feed, holding the infant upright (for reflux and cardiac demand), and documenting intake (with follow-up plan for remaining volume via NG if needed) is appropriate.",
+                correct: "Infants with CHF tire quickly during feeds - feeding is work. Feeds should be limited to about 20-30 minutes to conserve energy. Stopping the feed, holding the infant upright (for reflux and cardiac demand), and documenting intake (with follow-up plan for remaining volume via NG if needed) is appropriate.",
                 a: "Pushing the infant past exhaustion increases cardiac demand and risks aspiration. Do not force feeds.",
                 c: "A SOFTER nipple (preemie/low-flow) is easier. A firm nipple requires MORE sucking effort.",
                 d: "Holding all feeds worsens caloric deficit. Small, frequent feeds are the strategy, not skipping them."
             },
             testTakingTip: "Key feeding principles for CHD/CHF infants: softer nipple, 20-30 min max, small frequent feeds, calorie-dense formula, upright positioning.",
-            guideSection: "Section 9 — Nursing Care",
+            guideSection: "Section 9 - Nursing Care",
             guideSectionId: "nursing-care"
         },
         {
@@ -282,11 +282,11 @@ var pediatricCongenitalHeartDefectsQuizData = {
             rationale: {
                 correct: "The 'boot-shaped heart' (coeur en sabot) is the classic chest X-ray finding of Tetralogy of Fallot, caused by right ventricular hypertrophy lifting the apex of the heart.",
                 a: "Transposition shows an 'egg-on-a-string' appearance on X-ray.",
-                c: "Tricuspid atresia has variable X-ray findings — often decreased pulmonary markings — but is not described as boot-shaped.",
+                c: "Tricuspid atresia has variable X-ray findings - often decreased pulmonary markings - but is not described as boot-shaped.",
                 d: "Coarctation is not a cyanotic defect, and its X-ray findings include rib notching (older children)."
             },
             testTakingTip: "Classic CXR patterns to remember: TOF = boot. TGA = egg on a string. TAPVR = snowman. These are high-yield visual associations.",
-            guideSection: "Section 5 — Tetralogy of Fallot",
+            guideSection: "Section 5 - Tetralogy of Fallot",
             guideSectionId: "tof"
         },
         {
@@ -304,12 +304,12 @@ var pediatricCongenitalHeartDefectsQuizData = {
             correct: "c",
             rationale: {
                 correct: "Apnea is the most serious adverse effect of prostaglandin E1, occurring in 10-12% of neonates usually within the first hour. The nurse must stimulate the infant, ensure airway/breathing, and prepare for possible intubation. Always have intubation supplies at the bedside on a PGE1 infusion.",
-                a: "Fever is an expected side effect of PGE1 and is managed with antipyretics — not immediately life-threatening.",
+                a: "Fever is an expected side effect of PGE1 and is managed with antipyretics - not immediately life-threatening.",
                 b: "Flushing is a common PGE1 side effect; not life-threatening.",
                 d: "This BP is within range for a neonate. Severe hypotension would be more concerning, but it does not beat apnea for priority."
             },
             testTakingTip: "PGE1 = apnea. Always. This is a high-yield priority question. Keep BVM and intubation equipment at the bedside.",
-            guideSection: "Section 10 — Medications",
+            guideSection: "Section 10 - Medications",
             guideSectionId: "medications"
         },
         {
@@ -326,13 +326,13 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Squatting kinks the femoral arteries, raising systemic vascular resistance. Higher SVR forces blood across the VSD toward the lungs (rather than right-to-left), improving oxygenation. This is the same physiology as the knee-to-chest position during a tet spell — it's a self-protective maneuver, not a problem.",
+                correct: "Squatting kinks the femoral arteries, raising systemic vascular resistance. Higher SVR forces blood across the VSD toward the lungs (rather than right-to-left), improving oxygenation. This is the same physiology as the knee-to-chest position during a tet spell - it's a self-protective maneuver, not a problem.",
                 a: "It is not a behavioral habit; it is a compensatory physiologic maneuver.",
                 b: "Squatting INCREASES pulmonary blood flow, not decreases it.",
                 d: "Squatting is typical for children with TOF and, while it indicates the defect is not fully repaired, it is not a sign of acute worsening."
             },
             testTakingTip: "Squatting = SVR increase = more blood to lungs. Same idea as knee-chest during a tet spell. Both increase afterload on the left side.",
-            guideSection: "Section 5 — Tetralogy of Fallot",
+            guideSection: "Section 5 - Tetralogy of Fallot",
             guideSectionId: "tof"
         },
         {
@@ -349,13 +349,13 @@ var pediatricCongenitalHeartDefectsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "AVSD is strongly associated with Trisomy 21 — about 40% of children with Down syndrome have a CHD, and AVSD is the most common type. All infants with Down syndrome should have an echocardiogram at birth.",
+                correct: "AVSD is strongly associated with Trisomy 21 - about 40% of children with Down syndrome have a CHD, and AVSD is the most common type. All infants with Down syndrome should have an echocardiogram at birth.",
                 a: "Turner syndrome is associated with coarctation of the aorta and bicuspid aortic valve.",
                 c: "Marfan syndrome is associated with aortic root dilation and mitral valve prolapse.",
                 d: "Cystic fibrosis is not typically associated with CHD."
             },
             testTakingTip: "Genetic → CHD pairings to know: Down → AVSD/VSD. Turner → coarctation. Marfan → aortic root dilation. DiGeorge (22q11) → TOF, truncus arteriosus.",
-            guideSection: "Section 3 — Increased Flow Defects",
+            guideSection: "Section 3 - Increased Flow Defects",
             guideSectionId: "increased-flow"
         },
         {
@@ -366,7 +366,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
             stem: "A nurse is caring for four pediatric cardiac patients. Which patient should be seen FIRST?",
             options: [
                 { id: "a", text: "A 2-year-old post-VSD repair with stable vitals who is requesting pain medication" },
-                { id: "b", text: "A 6-month-old with unrepaired TOF whose parent reports 'he's acting different — very blue and sleepy'" },
+                { id: "b", text: "A 6-month-old with unrepaired TOF whose parent reports 'he's acting different - very blue and sleepy'" },
                 { id: "c", text: "A 4-year-old with a repaired ASD who needs discharge teaching" },
                 { id: "d", text: "A 10-year-old post-cardiac cath who has mild bruising at the femoral site" }
             ],
@@ -378,7 +378,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 d: "Mild bruising at a cath site is expected. Only a growing hematoma, bleeding, or pulse change would be urgent."
             },
             testTakingTip: "Airway/breathing/circulation > pain > teaching. A cyanotic lethargic child trumps every other task on the floor.",
-            guideSection: "Section 6 — Hypercyanotic Tet Spells",
+            guideSection: "Section 6 - Hypercyanotic Tet Spells",
             guideSectionId: "tet-spells"
         },
         {
@@ -401,7 +401,7 @@ var pediatricCongenitalHeartDefectsQuizData = {
                 d: "Unless the infant is symptomatic (vomiting, bradycardia, lethargy), ED visit is not needed."
             },
             testTakingTip: "Digoxin spit-up rule: never re-dose. Digoxin missed >4 hours: skip and resume. Memorize these two rules; both get tested.",
-            guideSection: "Section 10 — Medications",
+            guideSection: "Section 10 - Medications",
             guideSectionId: "medications"
         }
     ]

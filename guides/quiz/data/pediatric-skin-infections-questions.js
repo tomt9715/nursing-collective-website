@@ -1,5 +1,5 @@
 /**
- * Pediatric Skin Infections Quiz — Question Data
+ * Pediatric Skin Infections Quiz - Question Data
  * Companion-style questions covering bacterial, viral, and fungal
  * pediatric skin infections and their management.
  */
@@ -29,10 +29,10 @@ var pediatricSkinInfectionsQuizData = {
                 correct: "Honey-colored crusts around the nose and mouth are classic for impetigo. Mild/localized impetigo is treated with topical mupirocin TID for 5\u20137 days. Oral antibiotics (cephalexin) are added for widespread or resistant cases.",
                 a: "Acyclovir is for HSV, which presents with clustered vesicles on erythematous base, not honey crusts.",
                 c: "Griseofulvin is for fungal tinea capitis, not bacterial impetigo.",
-                d: "Clotrimazole is antifungal \u2014 wrong class for bacterial impetigo."
+                d: "Clotrimazole is antifungal - wrong class for bacterial impetigo."
             },
             testTakingTip: "Honey-colored crusts = impetigo = mupirocin first-line. Classic pattern to recognize on sight.",
-            guideSection: "Section 1 \u2014 Bacterial",
+            guideSection: "Section 1 - Bacterial",
             guideSectionId: "bacterial"
         },
         {
@@ -55,7 +55,7 @@ var pediatricSkinInfectionsQuizData = {
                 d: "IV vancomycin is reserved for severe/systemic cases, not outpatient abscesses."
             },
             testTakingTip: "Fluctuant abscess = I&D + MRSA-active antibiotic. CA-MRSA often presents as 'spider bite.'",
-            guideSection: "Section 1 \u2014 Bacterial",
+            guideSection: "Section 1 - Bacterial",
             guideSectionId: "bacterial"
         },
         {
@@ -78,7 +78,7 @@ var pediatricSkinInfectionsQuizData = {
                 d: "Elevation above heart level is preferred to reduce swelling."
             },
             testTakingTip: "Mark the cellulitis border. Spread past the line = escalation.",
-            guideSection: "Section 1 \u2014 Bacterial",
+            guideSection: "Section 1 - Bacterial",
             guideSectionId: "bacterial"
         },
         {
@@ -95,13 +95,13 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Any neonate with fever plus vesicles \u2014 or fever + sepsis-like symptoms \u2014 is treated as possible neonatal HSV until proven otherwise. IV acyclovir is started empirically along with a full sepsis workup (blood cultures, CSF, PCR). Delay leads to death or severe neurologic damage.",
+                correct: "Any neonate with fever plus vesicles - or fever + sepsis-like symptoms - is treated as possible neonatal HSV until proven otherwise. IV acyclovir is started empirically along with a full sepsis workup (blood cultures, CSF, PCR). Delay leads to death or severe neurologic damage.",
                 a: "Observation is inappropriate given the severity of neonatal HSV.",
                 b: "Topical treatment is inadequate for disseminated or CNS disease.",
                 d: "Oral acyclovir is inadequate; IV is required for neonatal HSV."
             },
             testTakingTip: "Neonate + fever + vesicles or sepsis-like = IV acyclovir NOW. Don't wait for PCR.",
-            guideSection: "Section 2 \u2014 Viral",
+            guideSection: "Section 2 - Viral",
             guideSectionId: "viral"
         },
         {
@@ -124,7 +124,7 @@ var pediatricSkinInfectionsQuizData = {
                 d: "Varicella has vesicles on erythematous base in different stages (macules, papules, vesicles, crusts), often with fever."
             },
             testTakingTip: "Dome + central dimple/umbilication = molluscum. Usually self-resolves.",
-            guideSection: "Section 2 \u2014 Viral",
+            guideSection: "Section 2 - Viral",
             guideSectionId: "viral"
         },
         {
@@ -141,13 +141,13 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Tinea capitis lives inside the hair shaft, which topical creams cannot penetrate. Systemic (oral) antifungal therapy is required \u2014 griseofulvin or terbinafine for 6\u20138 weeks. Selenium sulfide 2.5% shampoo 2\u20133 times per week reduces spore shedding but doesn't cure the infection.",
+                correct: "Tinea capitis lives inside the hair shaft, which topical creams cannot penetrate. Systemic (oral) antifungal therapy is required - griseofulvin or terbinafine for 6\u20138 weeks. Selenium sulfide 2.5% shampoo 2\u20133 times per week reduces spore shedding but doesn't cure the infection.",
                 a: "Topical therapy alone is insufficient.",
                 b: "Shampoo alone doesn't cure tinea capitis.",
-                d: "Tinea is fungal, not bacterial \u2014 antibiotics are inappropriate."
+                d: "Tinea is fungal, not bacterial - antibiotics are inappropriate."
             },
             testTakingTip: "Tinea capitis = ORAL antifungal (6\u20138 wk). Shampoo is adjunct. A distinction worth memorizing.",
-            guideSection: "Section 3 \u2014 Fungal",
+            guideSection: "Section 3 - Fungal",
             guideSectionId: "fungal"
         },
         {
@@ -164,14 +164,14 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Oral thrush (Candida) in an infant is treated with nystatin oral suspension \u2014 applied to oral mucosa or swish/swallow, 4 times daily for 7\u201314 days. If breastfeeding, the mother's breasts should also be treated (with topical nystatin or similar) to prevent ping-ponging. Pacifiers and bottle nipples should be boiled or replaced.",
+                correct: "Oral thrush (Candida) in an infant is treated with nystatin oral suspension - applied to oral mucosa or swish/swallow, 4 times daily for 7\u201314 days. If breastfeeding, the mother's breasts should also be treated (with topical nystatin or similar) to prevent ping-ponging. Pacifiers and bottle nipples should be boiled or replaced.",
                 a: "Correct approach.",
                 b: "Topical steroids worsen fungal infections.",
                 c: "Acyclovir is for herpes, not candida.",
                 d: "Amoxicillin is antibacterial, not antifungal."
             },
             testTakingTip: "Oral thrush + breastfeeding = treat baby + mother simultaneously. Boil nipples and pacifiers.",
-            guideSection: "Section 3 \u2014 Fungal",
+            guideSection: "Section 3 - Fungal",
             guideSectionId: "fungal"
         },
         {
@@ -184,7 +184,7 @@ var pediatricSkinInfectionsQuizData = {
                 { id: "a", text: "Once all lesions have completely healed" },
                 { id: "b", text: "24 hours after starting antibiotics and with lesions covered" },
                 { id: "c", text: "7 days after starting antibiotics" },
-                { id: "d", text: "Immediately \u2014 impetigo is not contagious" }
+                { id: "d", text: "Immediately - impetigo is not contagious" }
             ],
             correct: "b",
             rationale: {
@@ -194,7 +194,7 @@ var pediatricSkinInfectionsQuizData = {
                 d: "Impetigo IS highly contagious."
             },
             testTakingTip: "Impetigo return-to-school: 24 hr on antibiotics + lesions covered. Key family education.",
-            guideSection: "Section 6 \u2014 Family Education",
+            guideSection: "Section 6 - Family Education",
             guideSectionId: "family"
         },
         {
@@ -217,7 +217,7 @@ var pediatricSkinInfectionsQuizData = {
                 d: "Contact dermatitis from wipes wouldn't have satellite lesions."
             },
             testTakingTip: "Candida = skin FOLDS + SATELLITE lesions. Irritant = SPARES folds. A distinction that comes up often.",
-            guideSection: "Section 3 \u2014 Fungal",
+            guideSection: "Section 3 - Fungal",
             guideSectionId: "fungal"
         },
         {
@@ -234,13 +234,13 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Cephalexin is first-line for outpatient treatment of uncomplicated cellulitis without MRSA risk factors \u2014 it covers Staph aureus (non-MRSA) and GAS, which cause most cellulitis. Clindamycin is an alternative for penicillin-allergic patients.",
+                correct: "Cephalexin is first-line for outpatient treatment of uncomplicated cellulitis without MRSA risk factors - it covers Staph aureus (non-MRSA) and GAS, which cause most cellulitis. Clindamycin is an alternative for penicillin-allergic patients.",
                 a: "Amoxicillin doesn't reliably cover Staph aureus.",
                 c: "IV vancomycin is reserved for severe/systemic disease or MRSA.",
-                d: "Metronidazole covers anaerobes \u2014 not typical for skin infections."
+                d: "Metronidazole covers anaerobes - not typical for skin infections."
             },
             testTakingTip: "Uncomplicated cellulitis = cephalexin. MRSA cellulitis or abscess = clindamycin or Bactrim.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -263,7 +263,7 @@ var pediatricSkinInfectionsQuizData = {
                 d: "Scarring of oral mucosa isn't typical."
             },
             testTakingTip: "Gingivostomatitis in toddler = hydration is the priority. Cool fluids, popsicles, IV if needed.",
-            guideSection: "Section 2 \u2014 Viral",
+            guideSection: "Section 2 - Viral",
             guideSectionId: "viral"
         },
         {
@@ -280,13 +280,13 @@ var pediatricSkinInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A KOH prep of scales from the lesion's active edge shows fungal hyphae under the microscope within minutes \u2014 quick, simple, and highly useful for confirming dermatophyte infection. Fungal culture is more specific but takes 2\u20134 weeks.",
+                correct: "A KOH prep of scales from the lesion's active edge shows fungal hyphae under the microscope within minutes - quick, simple, and highly useful for confirming dermatophyte infection. Fungal culture is more specific but takes 2\u20134 weeks.",
                 a: "Blood cultures are for systemic disease, not localized skin fungal infection.",
                 c: "Wood's lamp has limited utility since the most common US tinea pathogen (T. tonsurans) doesn't fluoresce.",
                 d: "CBC is not diagnostic for skin fungus."
             },
             testTakingTip: "Fungal skin infection = KOH prep. Fast and bedside-friendly.",
-            guideSection: "Section 4 \u2014 Diagnostics",
+            guideSection: "Section 4 - Diagnostics",
             guideSectionId: "diagnostics"
         },
         {
@@ -297,19 +297,19 @@ var pediatricSkinInfectionsQuizData = {
             stem: "A parent is concerned their child's warts on the hand keep coming back. Which statement by the nurse is MOST accurate?",
             options: [
                 { id: "a", text: "'Warts should be surgically removed immediately to prevent spread.'" },
-                { id: "b", text: "'Warts are usually benign and self-limiting \u2014 many resolve in 1\u20132 years. Treatment options include salicylic acid, cryotherapy, or observation.'" },
+                { id: "b", text: "'Warts are usually benign and self-limiting - many resolve in 1\u20132 years. Treatment options include salicylic acid, cryotherapy, or observation.'" },
                 { id: "c", text: "'Warts indicate a serious underlying immune problem.'" },
                 { id: "d", text: "'Warts are best treated with oral antibiotics.'" }
             ],
             correct: "b",
             rationale: {
-                correct: "Warts are caused by HPV and are generally benign, self-limiting conditions \u2014 up to two-thirds resolve spontaneously within 2 years. Treatment options include topical salicylic acid, cryotherapy, duct tape occlusion, or simply observation. Surgical removal is rarely needed.",
+                correct: "Warts are caused by HPV and are generally benign, self-limiting conditions - up to two-thirds resolve spontaneously within 2 years. Treatment options include topical salicylic acid, cryotherapy, duct tape occlusion, or simply observation. Surgical removal is rarely needed.",
                 a: "Immediate surgery is not standard for most warts.",
                 c: "Benign warts don't usually indicate immune disease.",
-                d: "Antibiotics are ineffective \u2014 warts are viral."
+                d: "Antibiotics are ineffective - warts are viral."
             },
             testTakingTip: "Warts = patience. Salicylic acid or cryo; many resolve spontaneously.",
-            guideSection: "Section 2 \u2014 Viral",
+            guideSection: "Section 2 - Viral",
             guideSectionId: "viral"
         },
         {
@@ -332,7 +332,7 @@ var pediatricSkinInfectionsQuizData = {
                 d: "Daily bleach cleaning is excessive and not evidence-based."
             },
             testTakingTip: "MRSA prevention: hand hygiene, cover wounds, don't share personal items. Decolonization for recurrent.",
-            guideSection: "Section 6 \u2014 Family Education",
+            guideSection: "Section 6 - Family Education",
             guideSectionId: "family"
         }
     ]

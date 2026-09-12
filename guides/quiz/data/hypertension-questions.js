@@ -1,5 +1,5 @@
 /**
- * Hypertension Quiz — Question Data
+ * Hypertension Quiz - Question Data
  * Extracted from guides/hypertension.html practice questions section.
  * 8 NCLEX-style questions: 5 Single, 1 Priority, 1 Matrix, 1 Ordering
  */
@@ -34,8 +34,8 @@ var hypertensionQuizData = {
                 b: "Stage 1 hypertension is SBP 130-139 OR DBP 80-89. While the DBP qualifies for Stage 1, the SBP of 142 pushes classification to Stage 2.",
                 d: "Normal BP is < 120/< 80. This reading significantly exceeds normal values."
             },
-            testTakingTip: "When systolic and diastolic fall in different categories, ALWAYS classify by the higher one. This is a common NCLEX trap \u2014 don\u2019t average them or go with the \"lower\" category. Also remember: diagnosis requires 2+ readings on 2+ separate occasions.",
-            guideSection: "Section 2 \u2014 Blood Pressure Classification",
+            testTakingTip: "When systolic and diastolic fall in different categories, ALWAYS classify by the higher one. This is a common NCLEX trap - don\u2019t average them or go with the \"lower\" category. Also remember: diagnosis requires 2+ readings on 2+ separate occasions.",
+            guideSection: "Section 2 - Blood Pressure Classification",
             guideSectionId: "classification"
         },
         {
@@ -58,7 +58,7 @@ var hypertensionQuizData = {
                 d: "Cuff size is the most common source of BP measurement error and significantly affects accuracy."
             },
             testTakingTip: "Remember: small cuff = falsely HIGH, large cuff = falsely LOW. This is a heavily tested concept. The cuff bladder should encircle 80% of the arm circumference. Always select the appropriate cuff size before taking a reading.",
-            guideSection: "Section 2 \u2014 Blood Pressure Classification",
+            guideSection: "Section 2 - Blood Pressure Classification",
             guideSectionId: "classification"
         },
         {
@@ -66,7 +66,7 @@ var hypertensionQuizData = {
             type: "matrix",
             subtype: null,
             difficulty: "application",
-            matrixColumns: ["Evidence-Based \u2014 Recommend", "Not Evidence-Based \u2014 Do Not Recommend"],
+            matrixColumns: ["Evidence-Based - Recommend", "Not Evidence-Based - Do Not Recommend"],
             stem: "A nurse is counseling a patient newly diagnosed with Stage 1 hypertension on lifestyle modifications. For each recommendation, indicate whether it is evidence-based or not evidence-based.",
             options: [
                 { id: "a", text: "Follow the DASH diet emphasizing fruits, vegetables, whole grains, and low-fat dairy" },
@@ -74,16 +74,16 @@ var hypertensionQuizData = {
                 { id: "c", text: "Drink one glass of red wine daily to promote heart health" },
                 { id: "d", text: "Engage in at least 150 minutes per week of moderate-intensity aerobic exercise" }
             ],
-            correct: { a: "Evidence-Based \u2014 Recommend", b: "Evidence-Based \u2014 Recommend", c: "Not Evidence-Based \u2014 Do Not Recommend", d: "Evidence-Based \u2014 Recommend" },
+            correct: { a: "Evidence-Based - Recommend", b: "Evidence-Based - Recommend", c: "Not Evidence-Based - Do Not Recommend", d: "Evidence-Based - Recommend" },
             rationale: {
-                correct: "The DASH diet, sodium restriction, and regular aerobic exercise are all evidence-based lifestyle modifications proven to lower blood pressure. Drinking red wine daily is not an evidence-based recommendation \u2014 alcohol raises blood pressure.",
-                a: "EVIDENCE-BASED \u2014 The DASH diet alone can reduce SBP by approximately 11 mmHg. It is one of the most effective non-pharmacological interventions for hypertension.",
-                b: "EVIDENCE-BASED \u2014 Sodium restriction to <2,300 mg/day (ideally <1,500 mg/day for greater effect) can reduce SBP by 5\u20136 mmHg.",
-                c: "NOT EVIDENCE-BASED \u2014 No guideline recommends initiating alcohol intake for blood pressure management. Alcohol actually raises blood pressure. Guidelines recommend limiting, not starting, alcohol.",
-                d: "EVIDENCE-BASED \u2014 Regular aerobic exercise of 90\u2013150 minutes per week at moderate intensity can reduce SBP by 5\u20138 mmHg."
+                correct: "The DASH diet, sodium restriction, and regular aerobic exercise are all evidence-based lifestyle modifications proven to lower blood pressure. Drinking red wine daily is not an evidence-based recommendation - alcohol raises blood pressure.",
+                a: "EVIDENCE-BASED - The DASH diet alone can reduce SBP by approximately 11 mmHg. It is one of the most effective non-pharmacological interventions for hypertension.",
+                b: "EVIDENCE-BASED - Sodium restriction to <2,300 mg/day (ideally <1,500 mg/day for greater effect) can reduce SBP by 5\u20136 mmHg.",
+                c: "NOT EVIDENCE-BASED - No guideline recommends initiating alcohol intake for blood pressure management. Alcohol actually raises blood pressure. Guidelines recommend limiting, not starting, alcohol.",
+                d: "EVIDENCE-BASED - Regular aerobic exercise of 90\u2013150 minutes per week at moderate intensity can reduce SBP by 5\u20138 mmHg."
             },
-            testTakingTip: "Be cautious of 'health myths' on the NCLEX \u2014 recommending alcohol for heart health is NOT evidence-based nursing practice. Focus on proven modifications: DASH diet, sodium restriction, exercise, weight loss, and alcohol limitation.",
-            guideSection: "Section 6 \u2014 Lifestyle Modifications",
+            testTakingTip: "Be cautious of 'health myths' on the NCLEX - recommending alcohol for heart health is NOT evidence-based nursing practice. Focus on proven modifications: DASH diet, sodium restriction, exercise, weight loss, and alcohol limitation.",
+            guideSection: "Section 6 - Lifestyle Modifications",
             guideSectionId: "lifestyle"
         },
         {
@@ -100,13 +100,13 @@ var hypertensionQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "ACE inhibitors (and ARBs) are specifically preferred for diabetic patients with proteinuria because they dilate the efferent arteriole of the glomerulus, reducing intraglomerular pressure. This decreases proteinuria and slows the progression of diabetic nephropathy. This is a \"compelling indication\" \u2014 a specific comorbidity that makes one drug class clearly preferred over others.",
+                correct: "ACE inhibitors (and ARBs) are specifically preferred for diabetic patients with proteinuria because they dilate the efferent arteriole of the glomerulus, reducing intraglomerular pressure. This decreases proteinuria and slows the progression of diabetic nephropathy. This is a \"compelling indication\" - a specific comorbidity that makes one drug class clearly preferred over others.",
                 a: "ACE inhibitors are not necessarily the most potent BP-lowering agents. Their selection is based on specific organ-protective benefits, not BP-lowering potency alone.",
                 c: "ACE inhibitors do not lower blood glucose. They are chosen for kidney protection, not glucose management.",
                 d: "ACE inhibitors have significant side effects including dry cough (10-20%), hyperkalemia, and angioedema. They are not chosen because they have fewer side effects."
             },
             testTakingTip: "Know the \"compelling indications\": Diabetes with proteinuria = ACE-I/ARB. Heart failure = ACE-I + beta-blocker. Post-MI = ACE-I + beta-blocker. CKD = ACE-I/ARB. The NCLEX frequently tests why a specific drug class is preferred for a specific comorbidity.",
-            guideSection: "Section 7 \u2014 Pharmacological Management",
+            guideSection: "Section 7 - Pharmacological Management",
             guideSectionId: "medications"
         },
         {
@@ -129,7 +129,7 @@ var hypertensionQuizData = {
                 d: "While beta-blockers are antihypertensives, they do not provide the same renoprotective benefits as RAAS blockers. An ARB is the preferred switch because it maintains the same class of RAAS blockade."
             },
             testTakingTip: "ACE inhibitor cough \u2192 switch to ARB. This is one of the most commonly tested pharmacology concepts. Also remember: both ACE-I and ARBs are contraindicated in pregnancy and carry a risk of hyperkalemia and angioedema.",
-            guideSection: "Section 7 \u2014 Pharmacological Management",
+            guideSection: "Section 7 - Pharmacological Management",
             guideSectionId: "medications"
         },
         {
@@ -152,7 +152,7 @@ var hypertensionQuizData = {
                 d: "Targeting DBP < 90 within 30 minutes is far too rapid and could cause organ ischemia. The exception is aortic dissection, which requires rapid SBP reduction to < 120 within 20 minutes."
             },
             testTakingTip: "Hypertensive emergency = gradual reduction. 25% MAP drop in the first hour, then slow. The one exception: aortic dissection requires rapid reduction to SBP < 120 in 20 minutes. If the NCLEX asks about \"too fast\" BP reduction, the danger is organ ischemia from loss of autoregulation.",
-            guideSection: "Section 8 \u2014 Hypertensive Crisis",
+            guideSection: "Section 8 - Hypertensive Crisis",
             guideSectionId: "crisis"
         },
         {
@@ -162,7 +162,7 @@ var hypertensionQuizData = {
             difficulty: "analysis",
             stem: "A patient arrives at the emergency department with a blood pressure of 230/130 mmHg, severe headache, blurred vision, and chest pain. Place the nursing actions in priority order.",
             options: [
-                { id: "a", text: "Assess for end-organ damage \u2014 perform a focused neurological check and place on cardiac monitor" },
+                { id: "a", text: "Assess for end-organ damage - perform a focused neurological check and place on cardiac monitor" },
                 { id: "b", text: "Establish IV access with a large-bore catheter" },
                 { id: "c", text: "Administer IV antihypertensive (e.g., nicardipine or labetalol drip) per protocol" },
                 { id: "d", text: "Initiate continuous blood pressure monitoring every 5\u201315 minutes" },
@@ -171,14 +171,14 @@ var hypertensionQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "The correct sequence prioritizes rapid assessment, then intervention, then ongoing monitoring and diagnostics. First assess for end-organ damage, then establish vascular access, administer antihypertensive, monitor response, and obtain labs.",
-                a: "FIRST \u2014 Assessing for end-organ damage determines the urgency and type of intervention. A quick neuro check and cardiac monitoring identify stroke, MI, or aortic dissection.",
-                b: "SECOND \u2014 IV access must be established before IV medications can be administered. A large-bore catheter allows rapid infusion of antihypertensive drips.",
-                c: "THIRD \u2014 Once IV access is secured, administer the IV antihypertensive per protocol. The goal is to reduce MAP by no more than 25% in the first hour.",
-                d: "FOURTH \u2014 Continuous BP monitoring every 5\u201315 minutes evaluates the response and prevents overly rapid reduction, which could cause organ ischemia.",
-                e: "FIFTH \u2014 Stat labs help identify end-organ damage extent and guide ongoing management."
+                a: "FIRST - Assessing for end-organ damage determines the urgency and type of intervention. A quick neuro check and cardiac monitoring identify stroke, MI, or aortic dissection.",
+                b: "SECOND - IV access must be established before IV medications can be administered. A large-bore catheter allows rapid infusion of antihypertensive drips.",
+                c: "THIRD - Once IV access is secured, administer the IV antihypertensive per protocol. The goal is to reduce MAP by no more than 25% in the first hour.",
+                d: "FOURTH - Continuous BP monitoring every 5\u201315 minutes evaluates the response and prevents overly rapid reduction, which could cause organ ischemia.",
+                e: "FIFTH - Stat labs help identify end-organ damage extent and guide ongoing management."
             },
             testTakingTip: "In hypertensive emergency: ASSESS \u2192 ACCESS \u2192 ACT \u2192 MONITOR \u2192 LABS. The exception: aortic dissection requires SBP <120 in 20 min vs. the standard 25% MAP reduction in 1 hour.",
-            guideSection: "Section 8 \u2014 Hypertensive Crisis",
+            guideSection: "Section 8 - Hypertensive Crisis",
             guideSectionId: "crisis"
         },
         {
@@ -201,7 +201,7 @@ var hypertensionQuizData = {
                 d: "A SBP of 94 with symptoms (dizziness) and a > 20 mmHg drop from baseline is abnormal. The symptoms are directly correlated with the positional BP change."
             },
             testTakingTip: "Orthostatic hypotension criteria: drop of \u2265 20 SBP or \u2265 10 DBP from lying to standing. Always check orthostatic vitals in patients on antihypertensives, especially those on diuretics or vasodilators. Teach patients to change positions slowly and sit on the edge of the bed before standing.",
-            guideSection: "Section 5 \u2014 Nursing Assessment",
+            guideSection: "Section 5 - Nursing Assessment",
             guideSectionId: "assessment"
         }
     ]

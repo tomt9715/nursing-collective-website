@@ -1,5 +1,5 @@
 /**
- * UTI, VUR & Enuresis Quiz — Question Data
+ * UTI, VUR & Enuresis Quiz - Question Data
  * Practice questions covering pediatric UTI presentation,
  * VCUG/VUR, and enuresis management.
  */
@@ -17,7 +17,7 @@ var utiVurEnuresisQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "application",
-            stem: "A 10-month-old is brought to the clinic with a 3-day fever of 39.2\u00b0C, irritability, and decreased appetite. Physical exam is otherwise unremarkable \u2014 no URI, no ear findings, no rash. What is the nurse's priority action?",
+            stem: "A 10-month-old is brought to the clinic with a 3-day fever of 39.2\u00b0C, irritability, and decreased appetite. Physical exam is otherwise unremarkable - no URI, no ear findings, no rash. What is the nurse's priority action?",
             options: [
                 { id: "a", text: "Reassure the parent and send home with acetaminophen" },
                 { id: "b", text: "Obtain a urine sample for urinalysis and culture" },
@@ -26,13 +26,13 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A febrile infant under 24 months without an obvious source requires a UA and urine culture. UTI is the most common serious bacterial infection in this age group, and missed UTIs progress to pyelonephritis and renal scarring. Infants typically show only fever \u2014 no dysuria, no frequency.",
+                correct: "A febrile infant under 24 months without an obvious source requires a UA and urine culture. UTI is the most common serious bacterial infection in this age group, and missed UTIs progress to pyelonephritis and renal scarring. Infants typically show only fever - no dysuria, no frequency.",
                 a: "Sending home without evaluation risks missing a UTI.",
                 c: "Empiric antibiotics without cultures eliminates diagnostic yield.",
                 d: "Chest X-ray would be ordered only if respiratory symptoms present."
             },
             testTakingTip: "Febrile infant w/o source = UA + culture. Don't skip the workup.",
-            guideSection: "Section 1 \u2014 Pediatric UTI",
+            guideSection: "Section 1 - Pediatric UTI",
             guideSectionId: "uti"
         },
         {
@@ -51,11 +51,11 @@ var utiVurEnuresisQuizData = {
             rationale: {
                 correct: "E. coli is the predominant cause of pediatric UTI, accounting for ~80% of cases. It originates from the bowel flora and ascends the urethra, especially in girls.",
                 a: "Staph aureus UTIs are rare and usually associated with hematogenous spread or structural abnormalities.",
-                b: "Pseudomonas is common in hospitalized, catheterized, or immunocompromised patients \u2014 not community-acquired UTIs.",
-                d: "Strep pyogenes causes pharyngitis and skin infections \u2014 not typical for UTI."
+                b: "Pseudomonas is common in hospitalized, catheterized, or immunocompromised patients - not community-acquired UTIs.",
+                d: "Strep pyogenes causes pharyngitis and skin infections - not typical for UTI."
             },
             testTakingTip: "E. coli = first line of thinking for community-acquired pediatric UTI.",
-            guideSection: "Section 1 \u2014 Pediatric UTI",
+            guideSection: "Section 1 - Pediatric UTI",
             guideSectionId: "uti"
         },
         {
@@ -73,12 +73,12 @@ var utiVurEnuresisQuizData = {
             correct: "b",
             rationale: {
                 correct: "In-and-out catheterization produces a sterile sample suitable for culture in non-toilet-trained infants. A growth of >50,000 CFU from a cath specimen is diagnostic.",
-                a: "Bag specimens are highly contaminated and NEVER appropriate for culture \u2014 only for screening.",
+                a: "Bag specimens are highly contaminated and NEVER appropriate for culture - only for screening.",
                 c: "Clean catch is not feasible in a non-toilet-trained 6-month-old.",
                 d: "Diaper collections are contaminated and unsuitable for culture."
             },
             testTakingTip: "Infant urine culture = catheterization or suprapubic aspiration. Bag is never acceptable.",
-            guideSection: "Section 4 \u2014 Diagnosis",
+            guideSection: "Section 4 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -97,11 +97,11 @@ var utiVurEnuresisQuizData = {
             rationale: {
                 correct: "VCUG is the gold standard for diagnosing and grading vesicoureteral reflux (VUR), a common cause of recurrent febrile UTIs. Recurrent UTIs in a young child warrant this imaging to guide management (including possible prophylaxis or surgery).",
                 a: "CT involves radiation and is not first-line for VUR evaluation.",
-                c: "Renal biopsy evaluates glomerular/parenchymal disease \u2014 not reflux.",
+                c: "Renal biopsy evaluates glomerular/parenchymal disease - not reflux.",
                 d: "DMSA detects scarring but doesn't diagnose reflux itself."
             },
             testTakingTip: "VCUG = gold standard for VUR. Renal ultrasound first for structure, then VCUG for function.",
-            guideSection: "Section 2 \u2014 VUR",
+            guideSection: "Section 2 - VUR",
             guideSectionId: "vur"
         },
         {
@@ -124,7 +124,7 @@ var utiVurEnuresisQuizData = {
                 d: "Dialysis is not indicated unless end-stage renal failure develops."
             },
             testTakingTip: "VUR grades I\u2013III usually resolve; IV\u2013V usually need surgery.",
-            guideSection: "Section 2 \u2014 VUR",
+            guideSection: "Section 2 - VUR",
             guideSectionId: "vur"
         },
         {
@@ -147,7 +147,7 @@ var utiVurEnuresisQuizData = {
                 d: "Sedation is not routine but may be used for very anxious children or repeat studies."
             },
             testTakingTip: "VCUG is awake, uncomfortable but brief. Age-appropriate teaching + child life support is standard nursing care.",
-            guideSection: "Section 6 \u2014 Nursing Care",
+            guideSection: "Section 6 - Nursing Care",
             guideSectionId: "nursing"
         },
         {
@@ -170,7 +170,7 @@ var utiVurEnuresisQuizData = {
                 d: "At 12, enuresis is less common but not the initial cutoff for workup."
             },
             testTakingTip: "Age 5 = the clinical enuresis cutoff.",
-            guideSection: "Section 3 \u2014 Enuresis",
+            guideSection: "Section 3 - Enuresis",
             guideSectionId: "enuresis"
         },
         {
@@ -188,12 +188,12 @@ var utiVurEnuresisQuizData = {
             correct: "c",
             rationale: {
                 correct: "Secondary enuresis (dry for >6 months, then wetting again) warrants workup for UTI, type 1 diabetes, constipation, stress/abuse, or structural causes. A urine dipstick, history, and physical exam are the starting points.",
-                a: "DDAVP is for primary enuresis or short-term use \u2014 not before ruling out secondary causes.",
-                b: "Alarm therapy is behavioral \u2014 also for primary enuresis.",
+                a: "DDAVP is for primary enuresis or short-term use - not before ruling out secondary causes.",
+                b: "Alarm therapy is behavioral - also for primary enuresis.",
                 d: "Waiting can miss a treatable cause like UTI or new-onset diabetes."
             },
             testTakingTip: "Secondary enuresis = workup first. Never assume primary when the child was previously dry.",
-            guideSection: "Section 3 \u2014 Enuresis",
+            guideSection: "Section 3 - Enuresis",
             guideSectionId: "enuresis"
         },
         {
@@ -213,10 +213,10 @@ var utiVurEnuresisQuizData = {
                 correct: "Bedwetting alarms condition the child to wake at the onset of voiding. They have the best long-term cure rates for primary nocturnal enuresis but require 2\u20133 months of consistent use and family commitment.",
                 a: "Imipramine has cardiac side effects and overdose risk; rarely first-line now.",
                 b: "DDAVP is effective short-term (sleepovers, camp) but has high relapse rate when stopped.",
-                d: "Total fluid restriction is inappropriate \u2014 only evening fluids should be limited."
+                d: "Total fluid restriction is inappropriate - only evening fluids should be limited."
             },
             testTakingTip: "First-line behavioral: bedwetting alarm. First-line pharmacologic short-term: DDAVP.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -239,7 +239,7 @@ var utiVurEnuresisQuizData = {
                 d: "Doubling up risks toxicity; follow the prescribed dose."
             },
             testTakingTip: "DDAVP + unrestricted fluids = hyponatremia, seizures. Always teach fluid limits.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -262,7 +262,7 @@ var utiVurEnuresisQuizData = {
                 d: "Stopping antibiotics early risks incomplete treatment and recurrence."
             },
             testTakingTip: "Front to back, regular voiding, no bubble baths, treat constipation, finish antibiotics.",
-            guideSection: "Section 6 \u2014 Nursing Care",
+            guideSection: "Section 6 - Nursing Care",
             guideSectionId: "nursing"
         },
         {
@@ -279,13 +279,13 @@ var utiVurEnuresisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Punishment and shaming are counterproductive for enuresis \u2014 they worsen anxiety and delay resolution. Most children outgrow primary nocturnal enuresis; practical supports (waterproof mattress cover), positive reinforcement for dry nights, and patience are the cornerstones.",
+                correct: "Punishment and shaming are counterproductive for enuresis - they worsen anxiety and delay resolution. Most children outgrow primary nocturnal enuresis; practical supports (waterproof mattress cover), positive reinforcement for dry nights, and patience are the cornerstones.",
                 a: "Consequences do not accelerate bladder maturation.",
                 c: "Enuresis is not voluntary; it reflects maturational delay.",
                 d: "Total fluid restriction dehydrates the child; only evening fluids need limits."
             },
             testTakingTip: "Never shame or punish for enuresis. Normalize + positive reinforcement + practical supports.",
-            guideSection: "Section 3 \u2014 Enuresis",
+            guideSection: "Section 3 - Enuresis",
             guideSectionId: "enuresis"
         },
         {
@@ -308,7 +308,7 @@ var utiVurEnuresisQuizData = {
                 d: "Neutral pH is normal, not diagnostic."
             },
             testTakingTip: "Nitrites positive = gram-negative UTI highly likely. Leukocyte esterase + nitrites = strong UTI signal.",
-            guideSection: "Section 4 \u2014 Diagnosis",
+            guideSection: "Section 4 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -331,7 +331,7 @@ var utiVurEnuresisQuizData = {
                 d: "IVIG is not indicated for UTI."
             },
             testTakingTip: "Infant <2 months with UTI = admit + IV antibiotics + sepsis workup. Low threshold for escalation.",
-            guideSection: "Section 5 \u2014 Treatment",
+            guideSection: "Section 5 - Treatment",
             guideSectionId: "treatment"
         }
     ]

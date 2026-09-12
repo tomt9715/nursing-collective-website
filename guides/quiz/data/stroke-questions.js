@@ -1,5 +1,5 @@
 /**
- * Stroke Quiz — Question Data
+ * Stroke Quiz - Question Data
  * 10 NCLEX-style questions: 4 Single, 3 Priority, 2 Matrix, 1 Ordering
  */
 
@@ -19,13 +19,13 @@ var strokeQuizData = {
             stem: "A 68-year-old patient arrives at the emergency department with sudden left-sided facial droop, left arm weakness, and slurred speech. The patient's spouse states symptoms began 90 minutes ago. CT scan shows no hemorrhage. Blood pressure is 192/108 mmHg. What is the nurse's PRIORITY action?",
             options: [
                 { id: "a", text: "Administer an antihypertensive to lower the blood pressure below 140/90 mmHg" },
-                { id: "b", text: "Prepare for tPA administration — obtain consent and verify inclusion criteria" },
+                { id: "b", text: "Prepare for tPA administration - obtain consent and verify inclusion criteria" },
                 { id: "c", text: "Administer aspirin 325 mg orally" },
                 { id: "d", text: "Position the patient flat to maximize cerebral perfusion" }
             ],
             correct: "b",
             rationale: {
-                correct: "This patient has an ischemic stroke (CT negative for hemorrhage) within the 4.5-hour tPA window (90 minutes). The blood pressure of 192/108 is BELOW the tPA threshold of 185/110, meaning tPA can proceed. Time is critical — the door-to-needle goal is <60 minutes. Preparing for tPA is the highest priority.",
+                correct: "This patient has an ischemic stroke (CT negative for hemorrhage) within the 4.5-hour tPA window (90 minutes). The blood pressure of 192/108 is BELOW the tPA threshold of 185/110, meaning tPA can proceed. Time is critical - the door-to-needle goal is <60 minutes. Preparing for tPA is the highest priority.",
                 a: "Aggressively lowering BP below 140/90 is dangerous in acute ischemic stroke. Permissive hypertension is maintained to perfuse the ischemic penumbra. The pre-tPA threshold is <185/110, and this patient is already below that. After tPA, the target is <180/105.",
                 c: "Aspirin is indicated for ischemic stroke but is CONTRAINDICATED within 24 hours of tPA administration. If tPA is given, aspirin must wait 24 hours. Giving aspirin now would delay or preclude tPA.",
                 d: "Flat positioning is sometimes used to improve perfusion, but preparing for definitive thrombolytic therapy takes priority in a tPA-eligible patient. Some patients may also need head of bed elevated 30° for airway protection."
@@ -36,7 +36,7 @@ var strokeQuizData = {
                 { name: "Blood Glucose", normal: "70–100 mg/dL" }
             ],
             testTakingTip: "tPA eligibility checklist: ischemic stroke (CT no hemorrhage), within 4.5 hours, BP <185/110, no contraindications (recent surgery, active bleeding, INR >1.7, platelets <100,000). When a patient meets criteria, preparing for tPA is ALWAYS the priority.",
-            guideSection: "Section 4 — tPA Inclusion & Exclusion Criteria",
+            guideSection: "Section 4 - tPA Inclusion & Exclusion Criteria",
             guideSectionId: "tpa"
         },
         {
@@ -56,14 +56,14 @@ var strokeQuizData = {
             correct: { a: "Positive Indicator", b: "Positive Indicator", c: "Negative Indicator", d: "Negative Indicator", e: "Positive Indicator" },
             rationale: {
                 correct: "Balance loss, sudden vision changes, and unilateral arm drift are all positive (abnormal) stroke indicators in the BE-FAST assessment. Symmetric facial movement and clear speech are negative (normal) findings.",
-                a: "POSITIVE INDICATOR — 'B' = Balance. Sudden loss of balance, coordination, or dizziness is a stroke indicator. The patient listing to one side suggests cerebellar or brainstem involvement.",
-                b: "POSITIVE INDICATOR — 'E' = Eyes. Sudden vision changes including blurred vision, double vision, or vision loss in one or both eyes indicates possible stroke affecting the visual pathways.",
-                c: "NEGATIVE INDICATOR — Symmetric facial movement is a NORMAL finding. A positive 'F' (Face) would show asymmetry — one side drooping when the patient smiles.",
-                d: "NEGATIVE INDICATOR — Clear speech without slurring is a NORMAL finding. A positive 'S' (Speech) would show slurred, garbled, or absent speech.",
-                e: "POSITIVE INDICATOR — 'A' = Arms. Arm drift (one arm drifting downward when both are held outstretched with eyes closed for 10 seconds) indicates contralateral motor weakness, a key stroke sign."
+                a: "POSITIVE INDICATOR - 'B' = Balance. Sudden loss of balance, coordination, or dizziness is a stroke indicator. The patient listing to one side suggests cerebellar or brainstem involvement.",
+                b: "POSITIVE INDICATOR - 'E' = Eyes. Sudden vision changes including blurred vision, double vision, or vision loss in one or both eyes indicates possible stroke affecting the visual pathways.",
+                c: "NEGATIVE INDICATOR - Symmetric facial movement is a NORMAL finding. A positive 'F' (Face) would show asymmetry - one side drooping when the patient smiles.",
+                d: "NEGATIVE INDICATOR - Clear speech without slurring is a NORMAL finding. A positive 'S' (Speech) would show slurred, garbled, or absent speech.",
+                e: "POSITIVE INDICATOR - 'A' = Arms. Arm drift (one arm drifting downward when both are held outstretched with eyes closed for 10 seconds) indicates contralateral motor weakness, a key stroke sign."
             },
-            testTakingTip: "BE-FAST: Balance, Eyes, Face (droop), Arms (drift), Speech (slurred), Time (call 911). For NCLEX, remember that NORMAL findings are negative — only ABNORMAL findings are stroke indicators. Don't be tricked by answer options describing normal exam findings.",
-            guideSection: "Section 3 — FAST Assessment Tool",
+            testTakingTip: "BE-FAST: Balance, Eyes, Face (droop), Arms (drift), Speech (slurred), Time (call 911). For NCLEX, remember that NORMAL findings are negative - only ABNORMAL findings are stroke indicators. Don't be tricked by answer options describing normal exam findings.",
+            guideSection: "Section 3 - FAST Assessment Tool",
             guideSectionId: "fast"
         },
         {
@@ -86,7 +86,7 @@ var strokeQuizData = {
                 d: "Head of bed elevation to 30 degrees promotes venous drainage from the brain, reduces intracranial pressure, and is a standard nursing intervention for both stroke types."
             },
             testTakingTip: "The single most important reason to get an emergent CT scan in acute stroke is to rule out hemorrhage BEFORE giving tPA. Hemorrhagic stroke = NO tPA, EVER. This is the #1 contraindication to remember.",
-            guideSection: "Section 2 — Ischemic vs Hemorrhagic Stroke",
+            guideSection: "Section 2 - Ischemic vs Hemorrhagic Stroke",
             guideSectionId: "types"
         },
         {
@@ -104,13 +104,13 @@ var strokeQuizData = {
             correct: ["a", "b", "c", "d"],
             rationale: {
                 correct: "The correct sequence follows the mnemonic STOP-SIDE-SIGNAL-SCAN: stop the causative agent first, protect the airway, activate the team, then obtain definitive imaging.",
-                a: "FIRST — If the tPA infusion is still running, it must be stopped immediately. The clinical picture suggests hemorrhagic conversion, and continuing tPA would worsen any bleeding. Removing the causative agent is the most time-critical action.",
-                b: "SECOND — The patient is vomiting with a decreased level of consciousness, creating a high aspiration risk. Lateral positioning protects the airway from aspiration. Airway protection is always a top priority after stopping the harmful agent.",
-                c: "THIRD — Notify the stroke team/provider immediately. This is a medical emergency requiring physician involvement for possible emergent neurosurgical intervention, blood product transfusion, or other life-saving measures. The team must be aware to order and interpret the CT scan.",
-                d: "FOURTH — A stat CT scan is needed to determine if intracranial hemorrhage has occurred. This is the definitive diagnostic step and guides all subsequent treatment. It requires the team to be notified first so they can order and act on the results."
+                a: "FIRST - If the tPA infusion is still running, it must be stopped immediately. The clinical picture suggests hemorrhagic conversion, and continuing tPA would worsen any bleeding. Removing the causative agent is the most time-critical action.",
+                b: "SECOND - The patient is vomiting with a decreased level of consciousness, creating a high aspiration risk. Lateral positioning protects the airway from aspiration. Airway protection is always a top priority after stopping the harmful agent.",
+                c: "THIRD - Notify the stroke team/provider immediately. This is a medical emergency requiring physician involvement for possible emergent neurosurgical intervention, blood product transfusion, or other life-saving measures. The team must be aware to order and interpret the CT scan.",
+                d: "FOURTH - A stat CT scan is needed to determine if intracranial hemorrhage has occurred. This is the definitive diagnostic step and guides all subsequent treatment. It requires the team to be notified first so they can order and act on the results."
             },
-            testTakingTip: "Post-tPA neurological deterioration = hemorrhagic conversion until proven otherwise. The mnemonic: STOP (infusion), SIDE (position), SIGNAL (notify team), SCAN (CT). A second dose of tPA is NEVER given — additional thrombolytics would be catastrophic.",
-            guideSection: "Section 5 — Priority Nursing Interventions",
+            testTakingTip: "Post-tPA neurological deterioration = hemorrhagic conversion until proven otherwise. The mnemonic: STOP (infusion), SIDE (position), SIGNAL (notify team), SCAN (CT). A second dose of tPA is NEVER given - additional thrombolytics would be catastrophic.",
+            guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -121,7 +121,7 @@ var strokeQuizData = {
             stem: "A patient with acute ischemic stroke is NOT a candidate for tPA because symptoms began 6 hours ago. The patient's blood pressure is 208/116 mmHg. The nurse anticipates which blood pressure management approach?",
             options: [
                 { id: "a", text: "Aggressively lower BP to <140/90 mmHg within 1 hour" },
-                { id: "b", text: "Allow permissive hypertension — do not treat unless BP exceeds 220/120 mmHg" },
+                { id: "b", text: "Allow permissive hypertension - do not treat unless BP exceeds 220/120 mmHg" },
                 { id: "c", text: "Lower BP to <185/110 mmHg in preparation for possible tPA" },
                 { id: "d", text: "Administer a bolus of IV fluids to increase BP further" }
             ],
@@ -133,7 +133,7 @@ var strokeQuizData = {
                 d: "The patient already has severe hypertension. Increasing BP further would not improve outcomes and could cause end-organ damage."
             },
             testTakingTip: "Stroke BP targets are scenario-specific: Pre-tPA = <185/110. During/after tPA = <180/105. Ischemic, no tPA = allow up to 220/120. Hemorrhagic = SBP <140. The NCLEX will test whether you know WHICH target applies to WHICH scenario.",
-            guideSection: "Section 5 — Priority Nursing Interventions",
+            guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -153,19 +153,19 @@ var strokeQuizData = {
             correct: { a: "Exclusion Criterion", b: "Exclusion Criterion", c: "Inclusion Criterion", d: "Exclusion Criterion", e: "Inclusion Criterion" },
             rationale: {
                 correct: "Symptom onset >4.5 hours, platelets <100,000, and major surgery within 14 days are exclusion criteria. A negative CT for hemorrhage and INR ≤1.7 are inclusion criteria that support tPA eligibility.",
-                a: "EXCLUSION CRITERION — The standard tPA window is 0-3 hours (extended to 4.5 hours with additional criteria). At 5 hours, the patient is outside the treatment window.",
-                b: "EXCLUSION CRITERION — Platelets must be >=100,000/mm3 for tPA. A count of 85,000 increases the risk of hemorrhagic complications. tPA works by breaking down clots, and inadequate platelets cannot provide hemostasis if bleeding occurs.",
-                c: "INCLUSION CRITERION — A CT scan must show NO hemorrhage before tPA can be given. Hemorrhage on CT is the #1 absolute contraindication, so the absence of hemorrhage is a required inclusion criterion.",
-                d: "EXCLUSION CRITERION — Major surgery or serious trauma within 14 days is a contraindication due to the risk of surgical site hemorrhage. The tPA could dissolve clots at the surgical site, causing life-threatening bleeding.",
-                e: "INCLUSION CRITERION — INR must be <=1.7 for tPA eligibility. An INR of 1.4 is below the cutoff and does not preclude tPA administration, making this a finding that supports eligibility."
+                a: "EXCLUSION CRITERION - The standard tPA window is 0-3 hours (extended to 4.5 hours with additional criteria). At 5 hours, the patient is outside the treatment window.",
+                b: "EXCLUSION CRITERION - Platelets must be >=100,000/mm3 for tPA. A count of 85,000 increases the risk of hemorrhagic complications. tPA works by breaking down clots, and inadequate platelets cannot provide hemostasis if bleeding occurs.",
+                c: "INCLUSION CRITERION - A CT scan must show NO hemorrhage before tPA can be given. Hemorrhage on CT is the #1 absolute contraindication, so the absence of hemorrhage is a required inclusion criterion.",
+                d: "EXCLUSION CRITERION - Major surgery or serious trauma within 14 days is a contraindication due to the risk of surgical site hemorrhage. The tPA could dissolve clots at the surgical site, causing life-threatening bleeding.",
+                e: "INCLUSION CRITERION - INR must be <=1.7 for tPA eligibility. An INR of 1.4 is below the cutoff and does not preclude tPA administration, making this a finding that supports eligibility."
             },
             labValues: [
                 { name: "INR (tPA cutoff)", normal: "Must be ≤1.7" },
                 { name: "Platelets (tPA cutoff)", normal: "Must be ≥100,000/mm³" },
                 { name: "PT (tPA cutoff)", normal: "Must be ≤15 seconds" }
             ],
-            testTakingTip: "tPA exclusions to memorize: >4.5 hours, hemorrhage on CT, platelets <100K, INR >1.7, recent major surgery (14 days), active internal bleeding, prior ICH, BP >185/110 (unless controlled). The INR cutoff of 1.7 is commonly tested — don't confuse it with the normal range.",
-            guideSection: "Section 4 — tPA Inclusion & Exclusion Criteria",
+            testTakingTip: "tPA exclusions to memorize: >4.5 hours, hemorrhage on CT, platelets <100K, INR >1.7, recent major surgery (14 days), active internal bleeding, prior ICH, BP >185/110 (unless controlled). The INR cutoff of 1.7 is commonly tested - don't confuse it with the normal range.",
+            guideSection: "Section 4 - tPA Inclusion & Exclusion Criteria",
             guideSectionId: "tpa"
         },
         {
@@ -182,13 +182,13 @@ var strokeQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "After tPA administration, the blood pressure target is <180/105 mmHg for the first 24 hours. This patient's BP of 194/112 exceeds that threshold. The nurse should administer the prescribed PRN antihypertensive (typically IV labetalol or nicardipine) to bring the BP below the target. The neurological status is stable, so this is not a rapid response situation — it's a medication management issue.",
+                correct: "After tPA administration, the blood pressure target is <180/105 mmHg for the first 24 hours. This patient's BP of 194/112 exceeds that threshold. The nurse should administer the prescribed PRN antihypertensive (typically IV labetalol or nicardipine) to bring the BP below the target. The neurological status is stable, so this is not a rapid response situation - it's a medication management issue.",
                 a: "Documenting and waiting is inappropriate when the BP exceeds the post-tPA target. Sustained hypertension above 180/105 after tPA increases the risk of hemorrhagic conversion. Treatment should not be delayed.",
                 c: "The 185/110 threshold is the PRE-tPA target (eligibility). Post-tPA, the target changes to <180/105. While the BP needs treatment, the patient is neurologically stable, and a rapid response is not indicated for isolated hypertension that can be managed with PRN medications.",
                 d: "Neurological assessments must continue on schedule (typically every 15 minutes for the first 2 hours, then every 30 minutes for 6 hours, then every hour for 16 hours). Skipping assessments could miss early signs of hemorrhagic conversion."
             },
             testTakingTip: "Post-tPA BP management: <180/105 for 24 hours. Pre-tPA: <185/110. Note the slight difference. If the question says 'received tPA X hours ago,' use the post-tPA target. If 'being evaluated for tPA,' use the pre-tPA target.",
-            guideSection: "Section 5 — Priority Nursing Interventions",
+            guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -208,10 +208,10 @@ var strokeQuizData = {
                 correct: "The NIHSS quantifies neurological deficit severity on a scale of 0-42. Serial assessments allow the healthcare team to track the patient's trajectory: improvement suggests successful reperfusion, while deterioration may indicate hemorrhagic conversion, cerebral edema, or stroke extension. These changes trigger different interventions.",
                 a: "While accuracy is important, the primary purpose of serial assessments is to track CHANGES over time, not to verify the initial score.",
                 c: "This is not the clinical rationale. The NIHSS is performed because it provides critical clinical information, not for administrative or billing purposes.",
-                d: "The initial NIHSS establishes a baseline and is clinically reliable. Stress does not invalidate the neurological exam — the deficits being measured (facial droop, arm drift, language) are not affected by anxiety."
+                d: "The initial NIHSS establishes a baseline and is clinically reliable. Stress does not invalidate the neurological exam - the deficits being measured (facial droop, arm drift, language) are not affected by anxiety."
             },
             testTakingTip: "Serial neurological assessments (NIHSS, GCS, pupil checks) are the nurse's most important tool for detecting stroke complications. A change of ≥4 points on the NIHSS is clinically significant and warrants immediate provider notification.",
-            guideSection: "Section 3 — FAST Assessment Tool",
+            guideSection: "Section 3 - FAST Assessment Tool",
             guideSectionId: "fast"
         },
         {
@@ -228,13 +228,13 @@ var strokeQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "A wet, gurgling voice quality after swallowing — without coughing — is a hallmark of SILENT aspiration. The patient is aspirating (liquid is entering the airway) but the cough reflex is impaired due to the stroke, so there is no protective coughing. This is extremely dangerous because aspiration pneumonia can develop without obvious warning signs.",
-                a: "A forceful cough after swallowing indicates the patient IS aspirating but has an INTACT cough reflex. While still concerning, this is not 'silent' aspiration — the body is protecting itself. The patient needs a modified diet, but the cough is a good sign.",
+                correct: "A wet, gurgling voice quality after swallowing - without coughing - is a hallmark of SILENT aspiration. The patient is aspirating (liquid is entering the airway) but the cough reflex is impaired due to the stroke, so there is no protective coughing. This is extremely dangerous because aspiration pneumonia can develop without obvious warning signs.",
+                a: "A forceful cough after swallowing indicates the patient IS aspirating but has an INTACT cough reflex. While still concerning, this is not 'silent' aspiration - the body is protecting itself. The patient needs a modified diet, but the cough is a good sign.",
                 b: "The patient's awareness and verbal report indicate intact sensation and a protective response. This is not silent aspiration.",
                 d: "A smooth, unimpeded swallow with no voice changes is a normal finding, suggesting safe oral intake (though a formal speech therapy evaluation may still be warranted)."
             },
             testTakingTip: "Silent aspiration = aspiration WITHOUT coughing (impaired gag/cough reflex). Look for wet/gurgling voice, fever of unknown source, or recurrent pneumonia. Stroke patients are at high risk because the stroke may damage the brainstem swallow centers. Always do a swallow screen before any oral intake.",
-            guideSection: "Section 5 — Priority Nursing Interventions",
+            guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -254,10 +254,10 @@ var strokeQuizData = {
                 correct: "In hemorrhagic stroke, aggressive blood pressure control targeting SBP <140 mmHg is the priority to limit hematoma expansion. Higher blood pressure in the setting of active intracranial bleeding drives more blood into the hemorrhage, increasing brain damage and intracranial pressure. IV antihypertensives (nicardipine or labetalol drip) should be initiated immediately.",
                 a: "tPA is absolutely CONTRAINDICATED in hemorrhagic stroke. It dissolves clots, which would worsen the bleeding and could be fatal. tPA is for ISCHEMIC stroke only.",
                 c: "Aspirin (antiplatelet) and heparin (anticoagulant) would worsen hemorrhagic stroke by impairing the body's ability to stop the bleeding. These are contraindicated in acute hemorrhage.",
-                d: "Permissive hypertension (up to 220/120) is the approach for ISCHEMIC stroke without tPA. In hemorrhagic stroke, the opposite approach is needed — aggressive BP lowering to SBP <140 mmHg to reduce hematoma expansion."
+                d: "Permissive hypertension (up to 220/120) is the approach for ISCHEMIC stroke without tPA. In hemorrhagic stroke, the opposite approach is needed - aggressive BP lowering to SBP <140 mmHg to reduce hematoma expansion."
             },
             testTakingTip: "Hemorrhagic stroke = the opposite of ischemic in almost every way. No tPA, no anticoagulants, no antiplatelets, aggressive BP lowering (SBP <140). 'Worst headache of my life' + hemorrhage on CT = treat the blood pressure aggressively.",
-            guideSection: "Section 5 — Priority Nursing Interventions",
+            guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         }
     ]

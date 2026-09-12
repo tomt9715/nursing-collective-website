@@ -1,5 +1,5 @@
 /**
- * Thyroid Disorders Quiz — Complete Question Bank
+ * Thyroid Disorders Quiz - Complete Question Bank
  * 100 NCLEX-style questions in 2 batches
  *
  * Batch 1 (thyroid_001–050): Physiology, labs, hypothyroidism, levothyroxine,
@@ -18,10 +18,10 @@ var thyroidDisordersQuizData = {
     questions: [
 
         // ================================================================
-        //  SECTION 1 — THYROID PHYSIOLOGY & LAB INTERPRETATION (Q1–Q10)
+        //  SECTION 1 - THYROID PHYSIOLOGY & LAB INTERPRETATION (Q1–Q10)
         // ================================================================
 
-        // Q1 — Feedback Loop Basics (Knowledge, Single)
+        // Q1 - Feedback Loop Basics (Knowledge, Single)
         {
             id: "thyroid_001",
             type: "single",
@@ -36,17 +36,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The thyroid axis operates on a negative feedback loop. When T3/T4 levels fall, there is less inhibition of the hypothalamus and anterior pituitary. The hypothalamus increases TRH, which stimulates the pituitary to increase TSH — essentially 'calling louder' for the thyroid to produce more hormone.",
+                correct: "The thyroid axis operates on a negative feedback loop. When T3/T4 levels fall, there is less inhibition of the hypothalamus and anterior pituitary. The hypothalamus increases TRH, which stimulates the pituitary to increase TSH - essentially 'calling louder' for the thyroid to produce more hormone.",
                 a: "The thyroid does not stimulate the pituitary. The feedback signal is the circulating level of T3/T4 in the blood, not a direct thyroid-to-pituitary signal.",
                 c: "The adrenal glands and cortisol are not part of the hypothalamic-pituitary-thyroid axis. Cortisol can affect thyroid binding proteins but does not drive TSH elevation.",
                 d: "The kidneys do not regulate TSH. The feedback loop is confined to the hypothalamus → pituitary → thyroid axis."
             },
             testTakingTip: "Think of TSH as the pituitary 'yelling' at the thyroid. When T3/T4 drop, the pituitary yells louder (TSH rises). When T3/T4 are high, the pituitary whispers (TSH falls).",
-            guideSection: "Section 1 — Thyroid Physiology",
+            guideSection: "Section 1 - Thyroid Physiology",
             guideSectionId: "physiology"
         },
 
-        // Q2 — Thyroid Storm Emergency (Application, Ordering)
+        // Q2 - Thyroid Storm Emergency (Application, Ordering)
         {
             id: "thyroid_002",
             type: "ordering",
@@ -56,25 +56,25 @@ var thyroidDisordersQuizData = {
             options: [
                 { id: "a", text: "Administer IV propranolol (or esmolol) to control life-threatening tachycardia and prevent cardiac decompensation" },
                 { id: "b", text: "Administer high-dose antithyroid medication (PTU preferred) to block new thyroid hormone synthesis" },
-                { id: "c", text: "Administer IV hydrocortisone \u2014 thyroid storm depletes cortisol and steroids block T4-to-T3 conversion" },
-                { id: "d", text: "Apply cooling blankets and administer acetaminophen for hyperthermia (avoid aspirin \u2014 it displaces T4 from binding proteins)" },
+                { id: "c", text: "Administer IV hydrocortisone - thyroid storm depletes cortisol and steroids block T4-to-T3 conversion" },
+                { id: "d", text: "Apply cooling blankets and administer acetaminophen for hyperthermia (avoid aspirin - it displaces T4 from binding proteins)" },
                 { id: "e", text: "Administer iodine solution (SSKI or Lugol\u2019s) at least 1 hour AFTER antithyroid medication to block hormone release" }
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Thyroid storm management follows a multi-system stabilization approach: control the immediate cardiovascular threat first (beta-blocker), then block hormone production (antithyroid drug), support adrenal function (steroids), manage hyperthermia, and finally block hormone release (iodine \u2014 must be given AFTER antithyroid medication to avoid fueling new synthesis).",
-                a: "FIRST \u2014 Beta-blockers are the most urgent intervention because tachyarrhythmias are the leading cause of death in thyroid storm. Propranolol also partially blocks peripheral T4-to-T3 conversion, providing a dual benefit.",
-                b: "SECOND \u2014 PTU (propylthiouracil) is preferred over methimazole in thyroid storm because it both blocks new hormone synthesis AND inhibits peripheral T4-to-T3 conversion. This must be given BEFORE iodine.",
-                c: "THIRD \u2014 IV hydrocortisone addresses the relative adrenal insufficiency that occurs in thyroid storm (hypermetabolism depletes cortisol) and provides the additional benefit of blocking peripheral conversion of T4 to the more active T3.",
-                d: "FOURTH \u2014 Aggressive temperature management is critical because hyperthermia worsens the hypermetabolic state. Acetaminophen is used instead of aspirin because aspirin displaces T4 from thyroid-binding globulin, increasing free (active) hormone levels.",
-                e: "FIFTH \u2014 Iodine (SSKI or Lugol\u2019s) blocks the release of preformed thyroid hormone via the Wolff-Chaikoff effect. It MUST be given at least 1 hour after PTU \u2014 if given first, the thyroid would use the iodine to make MORE hormone, worsening the crisis."
+                correct: "Thyroid storm management follows a multi-system stabilization approach: control the immediate cardiovascular threat first (beta-blocker), then block hormone production (antithyroid drug), support adrenal function (steroids), manage hyperthermia, and finally block hormone release (iodine - must be given AFTER antithyroid medication to avoid fueling new synthesis).",
+                a: "FIRST - Beta-blockers are the most urgent intervention because tachyarrhythmias are the leading cause of death in thyroid storm. Propranolol also partially blocks peripheral T4-to-T3 conversion, providing a dual benefit.",
+                b: "SECOND - PTU (propylthiouracil) is preferred over methimazole in thyroid storm because it both blocks new hormone synthesis AND inhibits peripheral T4-to-T3 conversion. This must be given BEFORE iodine.",
+                c: "THIRD - IV hydrocortisone addresses the relative adrenal insufficiency that occurs in thyroid storm (hypermetabolism depletes cortisol) and provides the additional benefit of blocking peripheral conversion of T4 to the more active T3.",
+                d: "FOURTH - Aggressive temperature management is critical because hyperthermia worsens the hypermetabolic state. Acetaminophen is used instead of aspirin because aspirin displaces T4 from thyroid-binding globulin, increasing free (active) hormone levels.",
+                e: "FIFTH - Iodine (SSKI or Lugol\u2019s) blocks the release of preformed thyroid hormone via the Wolff-Chaikoff effect. It MUST be given at least 1 hour after PTU - if given first, the thyroid would use the iodine to make MORE hormone, worsening the crisis."
             },
             testTakingTip: "Thyroid storm priority: Beta-blocker first (HR kills), then PTU, then steroids, then cooling, then iodine LAST (and only after antithyroid meds). Remember: aspirin is contraindicated in thyroid storm because it increases free T4. The iodine timing rule is heavily tested on NCLEX.",
-            guideSection: "Section 1 \u2014 Thyroid Physiology",
+            guideSection: "Section 1 - Thyroid Physiology",
             guideSectionId: "physiology"
         },
 
-        // Q3 — Primary Hypothyroidism Labs (Knowledge, Single)
+        // Q3 - Primary Hypothyroidism Labs (Knowledge, Single)
         {
             id: "thyroid_003",
             type: "single",
@@ -92,14 +92,14 @@ var thyroidDisordersQuizData = {
                 correct: "High TSH + low free T4 = primary hypothyroidism. The thyroid gland itself is failing (low T4 output), so the pituitary compensates by producing more TSH to try to stimulate the gland. TSH moves in the OPPOSITE direction of thyroid hormone levels.",
                 a: "Hyperthyroidism would show LOW TSH and HIGH T3/T4. The pituitary suppresses TSH when excess thyroid hormone is present.",
                 b: "In secondary (central) hypothyroidism, the problem is at the pituitary level, so TSH would be LOW or inappropriately normal despite low T4. Here, TSH is significantly elevated.",
-                d: "Subclinical hyperthyroidism shows low TSH with NORMAL T4/T3 levels. This patient has high TSH and low T4 — the opposite pattern."
+                d: "Subclinical hyperthyroidism shows low TSH with NORMAL T4/T3 levels. This patient has high TSH and low T4 - the opposite pattern."
             },
             testTakingTip: "TSH goes OPPOSITE of thyroid function. High TSH = hypothyroid (pituitary is 'yelling' at a failing thyroid). Low TSH = hyperthyroid (pituitary is 'shutting up' because there's too much hormone).",
-            guideSection: "Section 2 — Lab Value Interpretation",
+            guideSection: "Section 2 - Lab Value Interpretation",
             guideSectionId: "lab-values"
         },
 
-        // Q4 — Hyperthyroid Labs (Knowledge, Single)
+        // Q4 - Hyperthyroid Labs (Knowledge, Single)
         {
             id: "thyroid_004",
             type: "single",
@@ -120,11 +120,11 @@ var thyroidDisordersQuizData = {
                 d: "While free T3 can add clinical information, low TSH + elevated free T4 combined with classic hyperthyroid symptoms provides a clear diagnosis. Waiting for additional labs would delay appropriate care."
             },
             testTakingTip: "Always pair TSH with T4 for interpretation: High TSH + Low T4 = hypo. Low TSH + High T4 = hyper. When they move in opposite directions, it's a PRIMARY thyroid disorder.",
-            guideSection: "Section 2 — Lab Value Interpretation",
+            guideSection: "Section 2 - Lab Value Interpretation",
             guideSectionId: "lab-values"
         },
 
-        // Q5 — Subclinical Hypothyroidism (Application, Single)
+        // Q5 - Subclinical Hypothyroidism (Application, Single)
         {
             id: "thyroid_005",
             type: "single",
@@ -144,12 +144,12 @@ var thyroidDisordersQuizData = {
                 c: "This is not severe hypothyroidism. The free T4 is still within normal range. Severe hypothyroidism would show markedly low T4 with very high TSH and significant symptoms.",
                 d: "An elevated TSH indicates the thyroid is UNDERactive, not overactive. If the thyroid were overactive, TSH would be suppressed (low)."
             },
-            testTakingTip: "Subclinical = TSH abnormal but T4 still normal. Think of it as the 'early warning stage' — the pituitary is compensating, but the thyroid is starting to struggle.",
-            guideSection: "Section 2 — Lab Value Interpretation",
+            testTakingTip: "Subclinical = TSH abnormal but T4 still normal. Think of it as the 'early warning stage' - the pituitary is compensating, but the thyroid is starting to struggle.",
+            guideSection: "Section 2 - Lab Value Interpretation",
             guideSectionId: "lab-values"
         },
 
-        // Q6 — T3 vs T4 Understanding (Knowledge, Single)
+        // Q6 - T3 vs T4 Understanding (Knowledge, Single)
         {
             id: "thyroid_006",
             type: "single",
@@ -170,11 +170,11 @@ var thyroidDisordersQuizData = {
                 d: "This is reversed. T3 is the MORE active form, and T4 is the less active precursor. Levothyroxine (synthetic T4) works because the body converts it to active T3."
             },
             testTakingTip: "T4 = Transport form (produced most, less active). T3 = Tissue form (most active, converted from T4). Levothyroxine is synthetic T4 because the body can convert what it needs to T3.",
-            guideSection: "Section 1 — Thyroid Physiology",
+            guideSection: "Section 1 - Thyroid Physiology",
             guideSectionId: "physiology"
         },
 
-        // Q7 — Lab Interpretation Matrix (Analysis, Matrix)
+        // Q7 - Lab Interpretation Matrix (Analysis, Matrix)
         {
             id: "thyroid_007",
             type: "matrix",
@@ -198,18 +198,18 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "In primary hypothyroidism, TSH rises (pituitary compensation), T4 drops, and cholesterol increases due to slowed lipid metabolism. In primary hyperthyroidism, TSH is suppressed by excess hormone, and T3/T4 levels are elevated.",
-                a: "PRIMARY HYPOTHYROIDISM — Elevated TSH is the hallmark of primary hypothyroidism. The pituitary increases TSH output to stimulate the failing thyroid gland.",
-                b: "PRIMARY HYPOTHYROIDISM — Low free T4 confirms the thyroid is not producing adequate hormone, consistent with hypothyroidism.",
-                c: "PRIMARY HYPERTHYROIDISM — TSH is suppressed because the excess thyroid hormone (from the thyroid itself) provides strong negative feedback to the pituitary.",
-                d: "PRIMARY HYPERTHYROIDISM — Elevated free T3 indicates excess thyroid hormone production. T3 is the more metabolically active form and contributes to hypermetabolic symptoms.",
-                e: "PRIMARY HYPOTHYROIDISM — Hypothyroidism slows lipid metabolism, reducing LDL receptor activity and leading to elevated total cholesterol and LDL. This is a commonly overlooked finding."
+                a: "PRIMARY HYPOTHYROIDISM - Elevated TSH is the hallmark of primary hypothyroidism. The pituitary increases TSH output to stimulate the failing thyroid gland.",
+                b: "PRIMARY HYPOTHYROIDISM - Low free T4 confirms the thyroid is not producing adequate hormone, consistent with hypothyroidism.",
+                c: "PRIMARY HYPERTHYROIDISM - TSH is suppressed because the excess thyroid hormone (from the thyroid itself) provides strong negative feedback to the pituitary.",
+                d: "PRIMARY HYPERTHYROIDISM - Elevated free T3 indicates excess thyroid hormone production. T3 is the more metabolically active form and contributes to hypermetabolic symptoms.",
+                e: "PRIMARY HYPOTHYROIDISM - Hypothyroidism slows lipid metabolism, reducing LDL receptor activity and leading to elevated total cholesterol and LDL. This is a commonly overlooked finding."
             },
-            testTakingTip: "Hypothyroidism slows EVERYTHING including lipid clearance, so cholesterol goes UP. This is a high-yield connection — unexplained hyperlipidemia should prompt thyroid screening.",
-            guideSection: "Section 2 — Lab Value Interpretation",
+            testTakingTip: "Hypothyroidism slows EVERYTHING including lipid clearance, so cholesterol goes UP. This is a high-yield connection - unexplained hyperlipidemia should prompt thyroid screening.",
+            guideSection: "Section 2 - Lab Value Interpretation",
             guideSectionId: "lab-values"
         },
 
-        // Q8 — TSH Monitoring Timing (Application, Single)
+        // Q8 - TSH Monitoring Timing (Application, Single)
         {
             id: "thyroid_008",
             type: "single",
@@ -230,11 +230,11 @@ var thyroidDisordersQuizData = {
                 d: "TSH should be monitored on a schedule, not only when symptoms occur. Thyroid dysfunction can be detected by TSH changes before symptoms develop, allowing for proactive dose adjustment."
             },
             testTakingTip: "6-8 weeks is the magic number for TSH rechecks after any levothyroxine dose change. Think: '6-8 weeks to steady state.' Once stable, recheck every 6-12 months.",
-            guideSection: "Section 2 — Lab Value Interpretation",
+            guideSection: "Section 2 - Lab Value Interpretation",
             guideSectionId: "lab-values"
         },
 
-        // Q9 — Iodine and Thyroid Function (Knowledge, Single)
+        // Q9 - Iodine and Thyroid Function (Knowledge, Single)
         {
             id: "thyroid_009",
             type: "single",
@@ -255,11 +255,11 @@ var thyroidDisordersQuizData = {
                 d: "Excess iodine does not always cause hyperthyroidism. In fact, large doses of iodine can temporarily SUPPRESS thyroid function (Wolff-Chaikoff effect). The effect depends on the underlying thyroid condition."
             },
             testTakingTip: "Iodine deficiency = #1 cause of hypothyroidism WORLDWIDE. Hashimoto's = #1 cause in the US. This distinction is high-yield for NCLEX. Remember: T4 has 4 iodines, T3 has 3.",
-            guideSection: "Section 1 — Thyroid Physiology",
+            guideSection: "Section 1 - Thyroid Physiology",
             guideSectionId: "physiology"
         },
 
-        // Q10 — Interpreting Secondary Hypothyroidism (Analysis, Single)
+        // Q10 - Interpreting Secondary Hypothyroidism (Analysis, Single)
         {
             id: "thyroid_010",
             type: "single",
@@ -279,16 +279,16 @@ var thyroidDisordersQuizData = {
                 b: "While TSH falls within the reference range numerically, it is INAPPROPRIATELY normal given the low T4. In a healthy axis, this T4 level would trigger a much higher TSH. Clinical context (pituitary surgery) is essential for interpretation.",
                 d: "The T4 result is consistent with the patient's symptoms of fatigue and cold intolerance. Dismissing it as lab error would leave the patient untreated."
             },
-            testTakingTip: "Secondary hypothyroidism trap: TSH looks 'normal' but T4 is low. The key is the TSH is INAPPROPRIATELY normal — a functioning pituitary would raise TSH much higher. Always consider pituitary history.",
-            guideSection: "Section 2 — Lab Value Interpretation",
+            testTakingTip: "Secondary hypothyroidism trap: TSH looks 'normal' but T4 is low. The key is the TSH is INAPPROPRIATELY normal - a functioning pituitary would raise TSH much higher. Always consider pituitary history.",
+            guideSection: "Section 2 - Lab Value Interpretation",
             guideSectionId: "lab-values"
         },
 
         // ================================================================
-        //  SECTION 2 — HYPOTHYROIDISM, HASHIMOTO'S, LEVOTHYROXINE (Q11–Q30)
+        //  SECTION 2 - HYPOTHYROIDISM, HASHIMOTO'S, LEVOTHYROXINE (Q11–Q30)
         // ================================================================
 
-        // Q11 — Hypothyroidism Signs/Symptoms (Knowledge, Single)
+        // Q11 - Hypothyroidism Signs/Symptoms (Knowledge, Single)
         {
             id: "thyroid_011",
             type: "single",
@@ -304,16 +304,16 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Hypothyroidism causes everything to SLOW DOWN: heart rate decreases (bradycardia), metabolism drops (weight gain despite poor appetite), GI motility slows (constipation), and thermoregulation is impaired (cold intolerance). Think 'slow and low' for hypothyroidism.",
-                a: "These are classic HYPERTHYROID symptoms — everything is sped up. Tachycardia, weight loss, diarrhea, and heat intolerance reflect a hypermetabolic state.",
+                a: "These are classic HYPERTHYROID symptoms - everything is sped up. Tachycardia, weight loss, diarrhea, and heat intolerance reflect a hypermetabolic state.",
                 c: "This cluster suggests pheochromocytoma (catecholamine-secreting adrenal tumor), not hypothyroidism. The paroxysmal hypertension, headache, and diaphoresis triad is classic for pheochromocytoma.",
                 d: "The 3 P's (polyuria, polydipsia, polyphagia) with weight loss are the hallmark presentation of diabetes mellitus, not hypothyroidism."
             },
             testTakingTip: "Hypothyroidism = everything SLOW and LOW. Hyperthyroidism = everything FAST and HIGH. This contrast is the most tested concept in thyroid disorders.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q12 — Hashimoto's Pathophysiology (Knowledge, Single)
+        // Q12 - Hashimoto's Pathophysiology (Knowledge, Single)
         {
             id: "thyroid_012",
             type: "single",
@@ -334,11 +334,11 @@ var thyroidDisordersQuizData = {
                 d: "Thyroid tumors/nodules are a separate entity. Hashimoto's involves diffuse autoimmune destruction, not tumor compression."
             },
             testTakingTip: "Hashimoto's = autoimmune DESTRUCTION (hypo). Graves' = autoimmune STIMULATION (hyper). Both are autoimmune, but the antibodies do opposite things. Anti-TPO antibodies are the marker for Hashimoto's.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q13 — Hypothyroidism Causes Matrix (Application, Matrix)
+        // Q13 - Hypothyroidism Causes Matrix (Application, Matrix)
         {
             id: "thyroid_013",
             type: "matrix",
@@ -362,18 +362,18 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Lithium, amiodarone, radioactive iodine treatment, and Hashimoto's are all well-established causes of hypothyroidism. Metformin is used for diabetes management and does not cause thyroid dysfunction.",
-                a: "CAN CAUSE HYPOTHYROIDISM — Lithium inhibits thyroid hormone synthesis and release. Up to 20-30% of patients on lithium develop thyroid dysfunction. Regular TSH monitoring is essential.",
-                b: "CAN CAUSE HYPOTHYROIDISM — Amiodarone contains large amounts of iodine and can cause either hypothyroidism (more common) or hyperthyroidism. It inhibits peripheral T4-to-T3 conversion and can be directly toxic to thyroid cells.",
-                c: "DOES NOT CAUSE HYPOTHYROIDISM — Metformin is an oral antidiabetic that may lower TSH slightly but does not cause clinically significant hypothyroidism. It is not associated with thyroid dysfunction.",
-                d: "CAN CAUSE HYPOTHYROIDISM — Radioactive iodine (I-131) destroys thyroid tissue by design. Most patients treated with RAI for hyperthyroidism eventually develop hypothyroidism and require lifelong levothyroxine.",
-                e: "CAN CAUSE HYPOTHYROIDISM — Hashimoto's thyroiditis is the #1 cause of hypothyroidism in the US. Autoimmune antibodies (anti-TPO) progressively destroy thyroid tissue."
+                a: "CAN CAUSE HYPOTHYROIDISM - Lithium inhibits thyroid hormone synthesis and release. Up to 20-30% of patients on lithium develop thyroid dysfunction. Regular TSH monitoring is essential.",
+                b: "CAN CAUSE HYPOTHYROIDISM - Amiodarone contains large amounts of iodine and can cause either hypothyroidism (more common) or hyperthyroidism. It inhibits peripheral T4-to-T3 conversion and can be directly toxic to thyroid cells.",
+                c: "DOES NOT CAUSE HYPOTHYROIDISM - Metformin is an oral antidiabetic that may lower TSH slightly but does not cause clinically significant hypothyroidism. It is not associated with thyroid dysfunction.",
+                d: "CAN CAUSE HYPOTHYROIDISM - Radioactive iodine (I-131) destroys thyroid tissue by design. Most patients treated with RAI for hyperthyroidism eventually develop hypothyroidism and require lifelong levothyroxine.",
+                e: "CAN CAUSE HYPOTHYROIDISM - Hashimoto's thyroiditis is the #1 cause of hypothyroidism in the US. Autoimmune antibodies (anti-TPO) progressively destroy thyroid tissue."
             },
-            testTakingTip: "Key medications causing hypothyroidism: Lithium, Amiodarone, Interferon-alpha, and RAI. Remember 'LAIR' — Lithium, Amiodarone, Interferon, Radioactive iodine. If a patient on these develops fatigue/weight gain, check TSH.",
-            guideSection: "Section 3 — Hypothyroidism",
+            testTakingTip: "Key medications causing hypothyroidism: Lithium, Amiodarone, Interferon-alpha, and RAI. Remember 'LAIR' - Lithium, Amiodarone, Interferon, Radioactive iodine. If a patient on these develops fatigue/weight gain, check TSH.",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q14 — Hypothyroidism vs Hyperthyroidism Matrix (Analysis, Matrix)
+        // Q14 - Hypothyroidism vs Hyperthyroidism Matrix (Analysis, Matrix)
         {
             id: "thyroid_014",
             type: "matrix",
@@ -399,19 +399,19 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Hypothyroidism slows everything: metabolism (cold intolerance), skin turnover (dry skin), reflexes (delayed), fluid clearance (edema), and causes heavy menses. Hyperthyroidism speeds everything up: GI transit (diarrhea), metabolism (weight loss), nervous system (tremors, anxiety, insomnia).",
-                a: "HYPOTHYROIDISM — Decreased metabolism reduces heat production (cold intolerance). Slowed skin cell turnover and decreased sebaceous gland activity causes dry, coarse skin.",
-                b: "HYPERTHYROIDISM — Increased metabolic rate causes weight loss even with increased caloric intake. Increased GI motility causes diarrhea or frequent bowel movements.",
-                c: "HYPOTHYROIDISM — Slowed nerve conduction causes delayed (hung) deep tendon reflexes, a classic physical exam finding in hypothyroidism.",
-                d: "HYPERTHYROIDISM — Increased sympathetic nervous system stimulation from excess thyroid hormone causes fine tremors, anxiety, irritability, and insomnia.",
-                e: "HYPOTHYROIDISM — Mucopolysaccharide accumulation in tissues causes non-pitting periorbital edema and facial puffiness (myxedema). This is different from the exophthalmos of Graves' disease.",
-                f: "HYPOTHYROIDISM — Decreased metabolism affects the menstrual cycle, typically causing menorrhagia (heavy, prolonged periods). Hyperthyroidism causes the opposite: oligomenorrhea or amenorrhea (light or absent periods)."
+                a: "HYPOTHYROIDISM - Decreased metabolism reduces heat production (cold intolerance). Slowed skin cell turnover and decreased sebaceous gland activity causes dry, coarse skin.",
+                b: "HYPERTHYROIDISM - Increased metabolic rate causes weight loss even with increased caloric intake. Increased GI motility causes diarrhea or frequent bowel movements.",
+                c: "HYPOTHYROIDISM - Slowed nerve conduction causes delayed (hung) deep tendon reflexes, a classic physical exam finding in hypothyroidism.",
+                d: "HYPERTHYROIDISM - Increased sympathetic nervous system stimulation from excess thyroid hormone causes fine tremors, anxiety, irritability, and insomnia.",
+                e: "HYPOTHYROIDISM - Mucopolysaccharide accumulation in tissues causes non-pitting periorbital edema and facial puffiness (myxedema). This is different from the exophthalmos of Graves' disease.",
+                f: "HYPOTHYROIDISM - Decreased metabolism affects the menstrual cycle, typically causing menorrhagia (heavy, prolonged periods). Hyperthyroidism causes the opposite: oligomenorrhea or amenorrhea (light or absent periods)."
             },
             testTakingTip: "Menstrual changes are a high-yield comparison: Hypo = HEAVY periods (everything accumulates). Hyper = LIGHT/absent periods (everything speeds through). Also, periorbital edema is HYPOthyroid; exophthalmos is Graves' HYPERthyroid.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q15 — Levothyroxine Empty Stomach (Application, Single)
+        // Q15 - Levothyroxine Empty Stomach (Application, Single)
         {
             id: "thyroid_015",
             type: "single",
@@ -432,11 +432,11 @@ var thyroidDisordersQuizData = {
                 d: "Timing with respect to food DOES matter significantly. While consistency is important, taking levothyroxine with breakfast instead of on an empty stomach can reduce absorption by 40-80%, leading to subtherapeutic levels."
             },
             testTakingTip: "Levothyroxine absorption enemies: Food, Fiber, Iron, Calcium, Antacids, Coffee, Soy. Take on empty stomach, 30-60 min before breakfast. Separate from calcium/iron by 4 hours.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q16 — Levothyroxine-Warfarin Interaction (Analysis, Single)
+        // Q16 - Levothyroxine-Warfarin Interaction (Analysis, Single)
         {
             id: "thyroid_016",
             type: "single",
@@ -457,11 +457,11 @@ var thyroidDisordersQuizData = {
                 d: "While TSH is still mildly elevated, this is a dosing concern (the levothyroxine dose may need to be increased), not an immediate safety concern like the supratherapeutic INR."
             },
             testTakingTip: "Levothyroxine + warfarin = increased bleeding risk. When starting levothyroxine in a patient on warfarin, expect to DECREASE the warfarin dose and increase INR monitoring frequency.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q17 — Levothyroxine Drug Interactions Ordering (Application, Ordering)
+        // Q17 - Levothyroxine Drug Interactions Ordering (Application, Ordering)
         {
             id: "thyroid_017",
             type: "ordering",
@@ -477,17 +477,17 @@ var thyroidDisordersQuizData = {
             correct: ["a", "b", "c", "d"],
             rationale: {
                 correct: "Levothyroxine must be taken first thing on an empty stomach. After waiting 30-60 minutes, the patient can eat breakfast and take calcium. The iron-containing multivitamin must be separated by at least 4 hours from levothyroxine because iron, like calcium, significantly decreases levothyroxine absorption by binding to it in the GI tract.",
-                a: "FIRST — Levothyroxine must be taken on an empty stomach with a full glass of water to ensure maximum absorption. No food, beverages (except water), or other medications.",
-                b: "SECOND — A minimum of 30-60 minutes must pass before eating to allow levothyroxine to be absorbed in the stomach without interference from food.",
-                c: "THIRD — Calcium can be taken with breakfast, but it must not be taken at the same time as levothyroxine. Taking it with breakfast provides adequate separation if levothyroxine was taken 30-60 minutes earlier.",
-                d: "FOURTH — Iron decreases levothyroxine absorption and must be separated by at least 4 hours. Taking the iron-containing multivitamin at lunch provides adequate spacing."
+                a: "FIRST - Levothyroxine must be taken on an empty stomach with a full glass of water to ensure maximum absorption. No food, beverages (except water), or other medications.",
+                b: "SECOND - A minimum of 30-60 minutes must pass before eating to allow levothyroxine to be absorbed in the stomach without interference from food.",
+                c: "THIRD - Calcium can be taken with breakfast, but it must not be taken at the same time as levothyroxine. Taking it with breakfast provides adequate separation if levothyroxine was taken 30-60 minutes earlier.",
+                d: "FOURTH - Iron decreases levothyroxine absorption and must be separated by at least 4 hours. Taking the iron-containing multivitamin at lunch provides adequate spacing."
             },
             testTakingTip: "The 4-hour rule for levothyroxine: Calcium, Iron, and Antacids must be separated by at least 4 hours. The simplest schedule: levothyroxine at waking, calcium with breakfast, iron at lunch.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q18 — Levothyroxine Overdose Signs (Application, Single)
+        // Q18 - Levothyroxine Overdose Signs (Application, Single)
         {
             id: "thyroid_018",
             type: "single",
@@ -502,17 +502,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Palpitations, tremors, insomnia, and weight loss are signs of hyperthyroidism — suggesting the levothyroxine dose is too high. The nurse should advise the patient to hold the medication, notify the provider for possible dose reduction, and obtain a TSH level to confirm. These symptoms indicate the patient is receiving more thyroid hormone than needed.",
+                correct: "Palpitations, tremors, insomnia, and weight loss are signs of hyperthyroidism - suggesting the levothyroxine dose is too high. The nurse should advise the patient to hold the medication, notify the provider for possible dose reduction, and obtain a TSH level to confirm. These symptoms indicate the patient is receiving more thyroid hormone than needed.",
                 a: "These are NOT expected therapeutic effects. While it may take weeks to feel the beneficial effects of levothyroxine, symptoms of hyperthyroidism (palpitations, tremors, insomnia) indicate overreplacement, not therapeutic response.",
                 c: "Doubling the dose would WORSEN hyperthyroid symptoms and could be dangerous, potentially causing cardiac arrhythmias or angina. The symptoms indicate the dose is already too HIGH.",
                 d: "Taking levothyroxine with food to slow absorption is not an appropriate solution for overreplacement. The dose needs to be adjusted by the provider based on TSH levels."
             },
-            testTakingTip: "Levothyroxine side effects = signs of HYPERthyroidism (too much replacement). If a hypothyroid patient develops tachycardia, tremors, weight loss, or insomnia — think dose too HIGH, not medication failure.",
-            guideSection: "Section 7 — Thyroid Medications",
+            testTakingTip: "Levothyroxine side effects = signs of HYPERthyroidism (too much replacement). If a hypothyroid patient develops tachycardia, tremors, weight loss, or insomnia - think dose too HIGH, not medication failure.",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q19 — Levothyroxine in Elderly (Analysis, Single)
+        // Q19 - Levothyroxine in Elderly (Analysis, Single)
         {
             id: "thyroid_019",
             type: "single",
@@ -530,14 +530,14 @@ var thyroidDisordersQuizData = {
                 correct: "In elderly patients and those with cardiac disease, levothyroxine must be started at a LOW dose (12.5-25 mcg) and titrated slowly. Thyroid hormone increases myocardial oxygen demand and heart rate. Rapidly normalizing thyroid levels in a cardiac patient can precipitate angina, myocardial infarction, or arrhythmias. The principle is 'start low, go slow.'",
                 a: "A full replacement dose in an elderly cardiac patient could be dangerous. Rapidly increasing metabolic rate increases cardiac workload and oxygen demand, potentially causing MI or arrhythmias in an already compromised heart.",
                 c: "There is no clinical rationale for starting high and tapering. This approach would expose the cardiac patient to unnecessary risk from the initial high dose.",
-                d: "Hypothyroidism should still be treated in elderly patients — untreated hypothyroidism worsens cardiovascular disease (hyperlipidemia, cardiac dysfunction). The key is to start low and titrate carefully, not to avoid treatment."
+                d: "Hypothyroidism should still be treated in elderly patients - untreated hypothyroidism worsens cardiovascular disease (hyperlipidemia, cardiac dysfunction). The key is to start low and titrate carefully, not to avoid treatment."
             },
             testTakingTip: "Elderly + cardiac disease + levothyroxine = 'Start LOW, go SLOW.' Typical starting dose: 12.5-25 mcg (vs 50-100 mcg in healthy younger adults). Monitor for chest pain, palpitations, and shortness of breath.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q20 — Levothyroxine Patient Teaching Matrix (Analysis, Matrix)
+        // Q20 - Levothyroxine Patient Teaching Matrix (Analysis, Matrix)
         {
             id: "thyroid_020",
             type: "matrix",
@@ -561,18 +561,18 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Taking levothyroxine on an empty stomach with water (A) and separating iron by several hours (D) show correct understanding. Stopping medication when TSH normalizes (B), switching brands without notifying the provider (C), and doubling doses (E) all indicate misunderstanding of therapy.",
-                a: "CORRECT UNDERSTANDING — Taking levothyroxine on an empty stomach with water and waiting before eating is the proper administration technique for optimal absorption.",
-                b: "NEEDS MORE TEACHING — Normal TSH means the medication IS WORKING, not that the condition is cured. Hypothyroidism (especially from Hashimoto's) requires lifelong therapy. Stopping medication will cause TSH to rise and symptoms to return.",
-                c: "NEEDS MORE TEACHING — Different levothyroxine brands have different bioavailability despite containing the same dose. Switching brands can alter thyroid hormone levels and may require TSH monitoring and dose adjustment. The provider must be notified.",
-                d: "CORRECT UNDERSTANDING — Separating iron from levothyroxine by taking iron at lunch provides adequate spacing (4+ hours) to prevent the iron-levothyroxine binding interaction that reduces absorption.",
-                e: "NEEDS MORE TEACHING — Patients should NOT double doses. If a dose is missed, take it as soon as remembered unless it is close to the next dose. Doubling can cause hyperthyroid symptoms (palpitations, tremors)."
+                a: "CORRECT UNDERSTANDING - Taking levothyroxine on an empty stomach with water and waiting before eating is the proper administration technique for optimal absorption.",
+                b: "NEEDS MORE TEACHING - Normal TSH means the medication IS WORKING, not that the condition is cured. Hypothyroidism (especially from Hashimoto's) requires lifelong therapy. Stopping medication will cause TSH to rise and symptoms to return.",
+                c: "NEEDS MORE TEACHING - Different levothyroxine brands have different bioavailability despite containing the same dose. Switching brands can alter thyroid hormone levels and may require TSH monitoring and dose adjustment. The provider must be notified.",
+                d: "CORRECT UNDERSTANDING - Separating iron from levothyroxine by taking iron at lunch provides adequate spacing (4+ hours) to prevent the iron-levothyroxine binding interaction that reduces absorption.",
+                e: "NEEDS MORE TEACHING - Patients should NOT double doses. If a dose is missed, take it as soon as remembered unless it is close to the next dose. Doubling can cause hyperthyroid symptoms (palpitations, tremors)."
             },
             testTakingTip: "Three common patient misconceptions about levothyroxine: (1) 'I can stop it when levels are normal,' (2) 'Generic is the same,' and (3) 'Double up if I miss a dose.' All are WRONG. Lifelong therapy, same brand, never double.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q21 — Hypothyroidism and Cholesterol (Application, Single)
+        // Q21 - Hypothyroidism and Cholesterol (Application, Single)
         {
             id: "thyroid_021",
             type: "single",
@@ -593,11 +593,11 @@ var thyroidDisordersQuizData = {
                 d: "CRP is an inflammatory marker used for cardiovascular risk stratification. While useful, it would not identify the underlying cause of elevated cholesterol in this scenario."
             },
             testTakingTip: "Unexplained hyperlipidemia despite lifestyle modifications → screen for hypothyroidism. Treating the thyroid may normalize lipids and avoid unnecessary statin use. This is a classic NCLEX connection.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q22 — Hypothyroidism Assessment Ordering (Application, Ordering)
+        // Q22 - Hypothyroidism Assessment Ordering (Application, Ordering)
         {
             id: "thyroid_022",
             type: "ordering",
@@ -614,18 +614,18 @@ var thyroidDisordersQuizData = {
             correct: ["b", "a", "c", "d", "e"],
             rationale: {
                 correct: "The nursing process guides the order: (1) Collect subjective data through history first (medications like lithium are a key cause), (2) Perform objective physical assessment, (3) Obtain diagnostic labs to confirm, (4) Educate the patient, and (5) Document and plan treatment. History always comes before physical assessment in a non-emergent setting.",
-                b: "FIRST — A thorough history is essential. Medication history (lithium, amiodarone), family history of thyroid/autoimmune disease, and symptom timeline help narrow the differential diagnosis.",
-                a: "SECOND — Physical assessment findings (bradycardia, dry skin, delayed reflexes, thyroid enlargement) provide objective data to support the suspected diagnosis.",
-                c: "THIRD — TSH and free T4 are the confirmatory tests. Labs are obtained after assessment data supports the clinical suspicion.",
-                d: "FOURTH — Patient education about the suspected condition, expected testing, and potential lifelong treatment helps reduce anxiety and promote compliance.",
-                e: "FIFTH — Documentation of all findings and collaboration with the provider ensures continuity of care and appropriate treatment initiation."
+                b: "FIRST - A thorough history is essential. Medication history (lithium, amiodarone), family history of thyroid/autoimmune disease, and symptom timeline help narrow the differential diagnosis.",
+                a: "SECOND - Physical assessment findings (bradycardia, dry skin, delayed reflexes, thyroid enlargement) provide objective data to support the suspected diagnosis.",
+                c: "THIRD - TSH and free T4 are the confirmatory tests. Labs are obtained after assessment data supports the clinical suspicion.",
+                d: "FOURTH - Patient education about the suspected condition, expected testing, and potential lifelong treatment helps reduce anxiety and promote compliance.",
+                e: "FIFTH - Documentation of all findings and collaboration with the provider ensures continuity of care and appropriate treatment initiation."
             },
             testTakingTip: "In non-emergency assessment: History FIRST, then physical exam, then diagnostics, then teaching, then documentation. The nursing process order: Assessment (history + physical) → Diagnosis → Planning → Implementation → Evaluation.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q23 — Levothyroxine Contraindications (Analysis, Single)
+        // Q23 - Levothyroxine Contraindications (Analysis, Single)
         {
             id: "thyroid_023",
             type: "single",
@@ -640,17 +640,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Recent or acute MI is a relative contraindication for initiating levothyroxine, especially at standard doses. Thyroid hormone increases heart rate, myocardial contractility, and oxygen demand — all of which would worsen myocardial ischemia. Treatment should be delayed or started at extremely low doses (12.5 mcg) once the cardiac event is stabilized.",
+                correct: "Recent or acute MI is a relative contraindication for initiating levothyroxine, especially at standard doses. Thyroid hormone increases heart rate, myocardial contractility, and oxygen demand - all of which would worsen myocardial ischemia. Treatment should be delayed or started at extremely low doses (12.5 mcg) once the cardiac event is stabilized.",
                 a: "A full replacement dose would significantly increase cardiac workload and oxygen demand, potentially extending the MI or causing fatal arrhythmias. This is the opposite of safe management.",
                 c: "IV T3 acts even faster than T4 and would be MORE dangerous in the setting of acute MI. Rapid thyroid hormone replacement with an active cardiac event is contraindicated.",
                 d: "Cardiac medications are critical during an acute MI. Thyroid management must be balanced with cardiac care, not substituted for it."
             },
             testTakingTip: "Recent MI = delay or minimize levothyroxine. The heart cannot handle the increased workload. Also remember: untreated adrenal insufficiency is the OTHER major contraindication (give corticosteroids first).",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q24 — Hypothyroidism in Pregnancy (Application, Single)
+        // Q24 - Hypothyroidism in Pregnancy (Application, Single)
         {
             id: "thyroid_024",
             type: "single",
@@ -666,16 +666,16 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Levothyroxine is safe and essential during pregnancy. Untreated maternal hypothyroidism increases risk of miscarriage, preeclampsia, preterm birth, and impaired fetal neurodevelopment. Most women need a 25-50% dose increase during pregnancy because of increased thyroid hormone-binding globulin, expanded blood volume, and fetal demand. TSH should be monitored every 4 weeks in the first trimester.",
-                a: "Levothyroxine is FDA category A and is safe in pregnancy. STOPPING it would be harmful — untreated hypothyroidism has serious consequences for both mother and fetus including intellectual disability in the child.",
+                a: "Levothyroxine is FDA category A and is safe in pregnancy. STOPPING it would be harmful - untreated hypothyroidism has serious consequences for both mother and fetus including intellectual disability in the child.",
                 c: "Natural thyroid supplements (desiccated thyroid) have inconsistent potency and are not recommended as first-line therapy. There is no reason to switch from levothyroxine during pregnancy.",
                 d: "The same dose is usually NOT sufficient during pregnancy. Most women need a 25-50% increase. Maintaining the pre-pregnancy dose risks maternal and fetal complications from inadequate thyroid hormone levels."
             },
             testTakingTip: "Levothyroxine in pregnancy: CONTINUE and expect to INCREASE dose by 25-50%. Untreated maternal hypothyroidism → fetal brain damage. Monitor TSH every 4 weeks in 1st trimester.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q25 — Hypothyroidism Neurological Effects (Knowledge, Single)
+        // Q25 - Hypothyroidism Neurological Effects (Knowledge, Single)
         {
             id: "thyroid_025",
             type: "single",
@@ -690,17 +690,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Thyroid hormone is critical for brain function. Hypothyroidism reduces cerebral blood flow and metabolism, impairs neurotransmitter synthesis (including serotonin), and slows neural processing. This manifests as depression, memory impairment, difficulty concentrating, and cognitive slowing — often misdiagnosed as primary depression or early dementia.",
+                correct: "Thyroid hormone is critical for brain function. Hypothyroidism reduces cerebral blood flow and metabolism, impairs neurotransmitter synthesis (including serotonin), and slows neural processing. This manifests as depression, memory impairment, difficulty concentrating, and cognitive slowing - often misdiagnosed as primary depression or early dementia.",
                 a: "While these symptoms mimic primary depression, initiating antidepressants without checking thyroid function would miss the underlying cause. Depression secondary to hypothyroidism often resolves with levothyroxine alone.",
                 c: "Excess thyroid hormone causes anxiety and irritability (hyperthyroidism), not depression and memory loss. Hypothyroidism causes depressive symptoms due to INSUFFICIENT thyroid hormone.",
                 d: "While hypothyroidism can cause mild electrolyte changes (such as hyponatremia), the cognitive and mood symptoms are primarily due to direct effects of low thyroid hormone on brain metabolism, not electrolyte imbalances."
             },
             testTakingTip: "New-onset depression or cognitive decline → always check TSH. Hypothyroidism is a reversible cause of depression and 'pseudodementia,' especially in older adults. Treat the thyroid first before adding psychotropics.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q26 — Hashimoto's Antibodies (Knowledge, Single)
+        // Q26 - Hashimoto's Antibodies (Knowledge, Single)
         {
             id: "thyroid_026",
             type: "single",
@@ -721,11 +721,11 @@ var thyroidDisordersQuizData = {
                 d: "Anti-smooth muscle antibodies are associated with autoimmune hepatitis, not thyroid disease."
             },
             testTakingTip: "Hashimoto's marker = anti-TPO antibodies (destruction). Graves' marker = TSI (stimulation). Both are autoimmune, but the antibody type determines whether the thyroid is destroyed or overstimulated.",
-            guideSection: "Section 3 — Hypothyroidism",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q27 — Levothyroxine Brand Consistency (Application, Single)
+        // Q27 - Levothyroxine Brand Consistency (Application, Single)
         {
             id: "thyroid_027",
             type: "single",
@@ -746,11 +746,11 @@ var thyroidDisordersQuizData = {
                 d: "Doubling the dose is dangerous and not supported by evidence. Generic medications are not inherently weaker; they simply may have slightly different bioavailability profiles."
             },
             testTakingTip: "Levothyroxine = narrow therapeutic index. Brand switches require provider notification and TSH recheck in 6-8 weeks. This applies to any change: brand to generic, generic to brand, or generic to generic.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q28 — Levothyroxine Teaching Priorities Ordering (Application, Ordering)
+        // Q28 - Levothyroxine Teaching Priorities Ordering (Application, Ordering)
         {
             id: "thyroid_028",
             type: "ordering",
@@ -758,8 +758,8 @@ var thyroidDisordersQuizData = {
             difficulty: "application",
             stem: "A nurse is preparing discharge teaching for a patient newly started on levothyroxine. Rank the following teaching points from MOST to LEAST critical for patient safety.",
             options: [
-                { id: "a", text: "Report chest pain, palpitations, or rapid heartbeat immediately — these may indicate the dose is too high" },
-                { id: "b", text: "Take the medication every day at the same time on an empty stomach — this is lifelong therapy" },
+                { id: "a", text: "Report chest pain, palpitations, or rapid heartbeat immediately - these may indicate the dose is too high" },
+                { id: "b", text: "Take the medication every day at the same time on an empty stomach - this is lifelong therapy" },
                 { id: "c", text: "Separate levothyroxine from calcium, iron, and antacids by at least 4 hours" },
                 { id: "d", text: "Wear a medical alert identification bracelet" },
                 { id: "e", text: "It may take 4-6 weeks before you notice significant symptom improvement" }
@@ -767,18 +767,18 @@ var thyroidDisordersQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "Safety-critical information comes first: (1) Recognizing cardiac danger signs prevents life-threatening complications. (2) Daily adherence and proper administration ensure therapeutic effect. (3) Drug interaction avoidance prevents subtherapeutic levels. (4) Medical alert ID ensures proper emergency care. (5) Expectation setting, while important, is least critical for safety.",
-                a: "MOST CRITICAL — Cardiac symptoms from overreplacement can be life-threatening, especially in elderly patients or those with heart disease. Prompt reporting enables dose adjustment before serious events occur.",
-                b: "SECOND — Understanding that this is lifelong, daily therapy taken on an empty stomach is essential for therapeutic adherence. Non-compliance leads to hypothyroid symptoms and potential myxedema coma.",
-                c: "THIRD — Drug interactions are a common cause of treatment failure. Patients who take calcium or iron with levothyroxine may remain symptomatic despite appropriate dosing.",
-                d: "FOURTH — Medical alert identification ensures emergency providers know about the thyroid condition and medication, which is important if the patient is unable to communicate.",
-                e: "FIFTH — While important for managing expectations and preventing premature discontinuation, this is not a safety-critical teaching point."
+                a: "MOST CRITICAL - Cardiac symptoms from overreplacement can be life-threatening, especially in elderly patients or those with heart disease. Prompt reporting enables dose adjustment before serious events occur.",
+                b: "SECOND - Understanding that this is lifelong, daily therapy taken on an empty stomach is essential for therapeutic adherence. Non-compliance leads to hypothyroid symptoms and potential myxedema coma.",
+                c: "THIRD - Drug interactions are a common cause of treatment failure. Patients who take calcium or iron with levothyroxine may remain symptomatic despite appropriate dosing.",
+                d: "FOURTH - Medical alert identification ensures emergency providers know about the thyroid condition and medication, which is important if the patient is unable to communicate.",
+                e: "FIFTH - While important for managing expectations and preventing premature discontinuation, this is not a safety-critical teaching point."
             },
             testTakingTip: "When ranking teaching priorities: Safety first (danger signs), then adherence (how to take it correctly), then drug interactions, then supportive info. NCLEX loves ranking by urgency.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q29 — Hypothyroidism Skin/Hair Changes (Knowledge, Single)
+        // Q29 - Hypothyroidism Skin/Hair Changes (Knowledge, Single)
         {
             id: "thyroid_029",
             type: "single",
@@ -794,16 +794,16 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Hypothyroidism decreases metabolic activity throughout the body, including the skin and hair follicles. Reduced skin cell turnover causes dryness and coarseness, decreased sebum production compounds skin dryness, and slowed hair follicle cycling leads to brittle hair and hair loss. Loss of the lateral third of the eyebrows (Queen Anne's sign) is a classic physical finding.",
-                a: "INCREASED sebaceous activity occurs in hyperthyroidism (warm, moist skin). Hypothyroidism DECREASES sebaceous activity, causing the opposite — dry, rough skin.",
+                a: "INCREASED sebaceous activity occurs in hyperthyroidism (warm, moist skin). Hypothyroidism DECREASES sebaceous activity, causing the opposite - dry, rough skin.",
                 c: "These changes are from the hypothyroid state itself, not from medication. In fact, these symptoms typically improve with levothyroxine treatment as metabolism normalizes.",
                 d: "While iron deficiency can cause hair loss and brittle nails, the combination of symptoms (especially lateral eyebrow loss and dry coarse skin) is characteristic of hypothyroidism specifically. The findings should improve with thyroid replacement."
             },
-            testTakingTip: "Lateral eyebrow loss (Queen Anne's sign) is a classic hypothyroid finding. The skin/hair changes in hypothyroidism reflect the slowed cellular metabolism throughout the body — everything grows and regenerates more slowly.",
-            guideSection: "Section 3 — Hypothyroidism",
+            testTakingTip: "Lateral eyebrow loss (Queen Anne's sign) is a classic hypothyroid finding. The skin/hair changes in hypothyroidism reflect the slowed cellular metabolism throughout the body - everything grows and regenerates more slowly.",
+            guideSection: "Section 3 - Hypothyroidism",
             guideSectionId: "hypothyroidism"
         },
 
-        // Q30 — Goiter Assessment (Application, Single)
+        // Q30 - Goiter Assessment (Application, Single)
         {
             id: "thyroid_030",
             type: "single",
@@ -824,15 +824,15 @@ var thyroidDisordersQuizData = {
                 d: "Exercise habits are not relevant to the immediate assessment of a symptomatic goiter."
             },
             testTakingTip: "Large goiter + pressure symptoms → assess AIRWAY first. A goiter that causes dysphagia may also cause tracheal compression. Position-dependent dyspnea (worse when supine) is a red flag for surgical referral.",
-            guideSection: "Section 8 — Goiter & Nodules",
+            guideSection: "Section 8 - Goiter & Nodules",
             guideSectionId: "goiter-nodules"
         },
 
         // ================================================================
-        //  SECTION 3 — MYXEDEMA COMA (Q31–Q40)
+        //  SECTION 3 - MYXEDEMA COMA (Q31–Q40)
         // ================================================================
 
-        // Q31 — Myxedema Coma Recognition (Analysis, Single — Priority)
+        // Q31 - Myxedema Coma Recognition (Analysis, Single - Priority)
         {
             id: "thyroid_031",
             type: "single",
@@ -848,16 +848,16 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "This is a classic myxedema coma presentation: hypothermia (<95°F), severe bradycardia, hypotension, hypoventilation, and altered consciousness in a patient with hypothyroid history. This is a medical emergency requiring ICU-level care, IV levothyroxine, IV corticosteroids (for possible coexisting adrenal insufficiency), and supportive measures. Mortality is 30-60% even with treatment.",
-                a: "Thyroid storm presents with the OPPOSITE: high fever (>104°F), tachycardia, hypertension, and agitation. This patient has hypothermia and bradycardia — consistent with severe hypothyroidism, not hyperthyroidism.",
+                a: "Thyroid storm presents with the OPPOSITE: high fever (>104°F), tachycardia, hypertension, and agitation. This patient has hypothermia and bradycardia - consistent with severe hypothyroidism, not hyperthyroidism.",
                 c: "While blood glucose should be checked (myxedema coma can cause hypoglycemia), the overall presentation with hypothermia, bradycardia, and hypothyroid history points to myxedema coma rather than DKA. DKA typically presents with tachycardia, Kussmaul respirations, and hyperglycemia.",
                 d: "While infection can trigger myxedema coma and should be investigated, the primary presentation with hypothermia, severe bradycardia, and hypothyroid history is classic for myxedema coma. Treating the underlying thyroid emergency is the priority."
             },
             testTakingTip: "Myxedema coma hallmark: Hypothermia + Bradycardia + Hypotension + Altered consciousness + Hypothyroid history. It's the opposite of thyroid storm in every way. Think: 'Everything is critically SLOW.'",
-            guideSection: "Section 4 — Myxedema Coma",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q32 — Myxedema Coma Triggers Matrix (Knowledge, Matrix)
+        // Q32 - Myxedema Coma Triggers Matrix (Knowledge, Matrix)
         {
             id: "thyroid_032",
             type: "matrix",
@@ -883,19 +883,19 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Myxedema coma triggers include infection, sedatives/opioids, cold exposure, and medication non-compliance. Exercise and dietary fiber are not precipitating factors for this thyroid emergency.",
-                a: "KNOWN TRIGGER — Infection is the most common precipitant of myxedema coma. Pneumonia and UTI are leading triggers because the body's metabolic demand increases but the hypothyroid state prevents appropriate response.",
-                b: "KNOWN TRIGGER — Sedatives, opioids, and anesthesia further suppress the already-depressed CNS and respiratory drive in hypothyroid patients, potentially tipping them into myxedema coma.",
-                c: "NOT A TRIGGER — Moderate exercise on a warm day is not a precipitating factor. In fact, cold exposure (not warmth) is a trigger. Exercise at a tolerable level is generally safe for hypothyroid patients.",
-                d: "KNOWN TRIGGER — Cold exposure increases metabolic demand for thermogenesis. A severely hypothyroid patient cannot mount an adequate metabolic response, leading to dangerous hypothermia and potential decompensation.",
-                e: "KNOWN TRIGGER — Discontinuing levothyroxine abruptly removes the exogenous thyroid hormone that the patient depends on. Within days to weeks, hormone levels plummet, potentially precipitating myxedema coma.",
-                f: "NOT A TRIGGER — While high-fiber diets can reduce levothyroxine absorption somewhat, eating a high-fiber meal is not a precipitating event for myxedema coma."
+                a: "KNOWN TRIGGER - Infection is the most common precipitant of myxedema coma. Pneumonia and UTI are leading triggers because the body's metabolic demand increases but the hypothyroid state prevents appropriate response.",
+                b: "KNOWN TRIGGER - Sedatives, opioids, and anesthesia further suppress the already-depressed CNS and respiratory drive in hypothyroid patients, potentially tipping them into myxedema coma.",
+                c: "NOT A TRIGGER - Moderate exercise on a warm day is not a precipitating factor. In fact, cold exposure (not warmth) is a trigger. Exercise at a tolerable level is generally safe for hypothyroid patients.",
+                d: "KNOWN TRIGGER - Cold exposure increases metabolic demand for thermogenesis. A severely hypothyroid patient cannot mount an adequate metabolic response, leading to dangerous hypothermia and potential decompensation.",
+                e: "KNOWN TRIGGER - Discontinuing levothyroxine abruptly removes the exogenous thyroid hormone that the patient depends on. Within days to weeks, hormone levels plummet, potentially precipitating myxedema coma.",
+                f: "NOT A TRIGGER - While high-fiber diets can reduce levothyroxine absorption somewhat, eating a high-fiber meal is not a precipitating event for myxedema coma."
             },
-            testTakingTip: "Myxedema coma triggers: remember 'I STOP' — Infection, Sedatives/anesthesia, Trauma/surgery, Omitting thyroid meds, Prolonged cold exposure. These factors push a fragile hypothyroid patient past the tipping point.",
-            guideSection: "Section 4 — Myxedema Coma",
+            testTakingTip: "Myxedema coma triggers: remember 'I STOP' - Infection, Sedatives/anesthesia, Trauma/surgery, Omitting thyroid meds, Prolonged cold exposure. These factors push a fragile hypothyroid patient past the tipping point.",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q33 — Rewarming in Myxedema Coma (Application, Single)
+        // Q33 - Rewarming in Myxedema Coma (Application, Single)
         {
             id: "thyroid_033",
             type: "single",
@@ -910,17 +910,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "PASSIVE rewarming (warm blankets, increased room temperature) is the ONLY safe method for myxedema coma. The goal is gradual temperature increase of no more than 1°F per hour. Active/rapid rewarming causes peripheral vasodilation, which drops blood pressure further in a patient whose cardiovascular system is already severely compromised — potentially causing cardiovascular collapse.",
+                correct: "PASSIVE rewarming (warm blankets, increased room temperature) is the ONLY safe method for myxedema coma. The goal is gradual temperature increase of no more than 1°F per hour. Active/rapid rewarming causes peripheral vasodilation, which drops blood pressure further in a patient whose cardiovascular system is already severely compromised - potentially causing cardiovascular collapse.",
                 a: "Forced-air warming on high heat is active rewarming, which is contraindicated. Rapid vasodilation would worsen the already-critical hypotension and could cause cardiovascular collapse.",
                 b: "Warm water immersion is aggressive active rewarming and is absolutely contraindicated. This would cause rapid vasodilation and cardiovascular collapse in a patient with severe cardiac compromise.",
                 d: "While warmed IV fluids may be used cautiously, rapid infusion is dangerous because myxedema coma patients are at high risk for fluid overload due to impaired cardiac function and altered fluid balance (hyponatremia)."
             },
-            testTakingTip: "Myxedema coma = PASSIVE rewarming ONLY. Active warming → vasodilation → cardiovascular collapse → death. This is the opposite of other hypothermia protocols. Think: this patient's heart can barely function — don't make it work harder.",
-            guideSection: "Section 4 — Myxedema Coma",
+            testTakingTip: "Myxedema coma = PASSIVE rewarming ONLY. Active warming → vasodilation → cardiovascular collapse → death. This is the opposite of other hypothermia protocols. Think: this patient's heart can barely function - don't make it work harder.",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q34 — Myxedema Coma Treatment Ordering (Analysis, Ordering)
+        // Q34 - Myxedema Coma Treatment Ordering (Analysis, Ordering)
         {
             id: "thyroid_034",
             type: "ordering",
@@ -936,19 +936,19 @@ var thyroidDisordersQuizData = {
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Treatment follows the ABCs plus thyroid-specific priorities: (1) Airway/breathing is always first — hypoventilation is life-threatening, (2) Corticosteroids BEFORE thyroid hormone to prevent precipitating adrenal crisis, (3) IV levothyroxine to replace deficient hormone, (4) Passive rewarming to address hypothermia, (5) Metabolic correction for hyponatremia and hypoglycemia.",
-                a: "FIRST — Respiratory failure from hypoventilation is an immediate threat. Many myxedema coma patients require intubation due to respiratory depression, CO2 retention, and inability to protect the airway.",
-                b: "SECOND — Corticosteroids should be given BEFORE or with thyroid hormone. Severe hypothyroidism may coexist with adrenal insufficiency, and giving thyroid hormone alone increases cortisol metabolism, potentially triggering adrenal crisis.",
-                c: "THIRD — IV levothyroxine (loading dose) is the definitive treatment. IV route is essential because GI absorption is severely impaired. Oral levothyroxine cannot be used in an unresponsive patient.",
-                d: "FOURTH — Passive rewarming addresses hypothermia safely. Active rewarming is contraindicated due to risk of vasodilation and cardiovascular collapse.",
-                e: "FIFTH — Electrolyte and glucose correction is important but follows the more immediately life-threatening priorities. Hyponatremia is corrected with fluid restriction, and hypoglycemia with IV dextrose."
+                correct: "Treatment follows the ABCs plus thyroid-specific priorities: (1) Airway/breathing is always first - hypoventilation is life-threatening, (2) Corticosteroids BEFORE thyroid hormone to prevent precipitating adrenal crisis, (3) IV levothyroxine to replace deficient hormone, (4) Passive rewarming to address hypothermia, (5) Metabolic correction for hyponatremia and hypoglycemia.",
+                a: "FIRST - Respiratory failure from hypoventilation is an immediate threat. Many myxedema coma patients require intubation due to respiratory depression, CO2 retention, and inability to protect the airway.",
+                b: "SECOND - Corticosteroids should be given BEFORE or with thyroid hormone. Severe hypothyroidism may coexist with adrenal insufficiency, and giving thyroid hormone alone increases cortisol metabolism, potentially triggering adrenal crisis.",
+                c: "THIRD - IV levothyroxine (loading dose) is the definitive treatment. IV route is essential because GI absorption is severely impaired. Oral levothyroxine cannot be used in an unresponsive patient.",
+                d: "FOURTH - Passive rewarming addresses hypothermia safely. Active rewarming is contraindicated due to risk of vasodilation and cardiovascular collapse.",
+                e: "FIFTH - Electrolyte and glucose correction is important but follows the more immediately life-threatening priorities. Hyponatremia is corrected with fluid restriction, and hypoglycemia with IV dextrose."
             },
             testTakingTip: "Myxedema coma treatment priority: ABC → Steroids BEFORE thyroid hormone → IV levothyroxine → Passive rewarming → Metabolic correction. The steroid-before-T4 rule is NCLEX gold.",
-            guideSection: "Section 4 — Myxedema Coma",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q35 — Myxedema Coma Electrolytes (Application, Single)
+        // Q35 - Myxedema Coma Electrolytes (Application, Single)
         {
             id: "thyroid_035",
             type: "single",
@@ -968,12 +968,12 @@ var thyroidDisordersQuizData = {
                 c: "Dietary sodium restriction is not a standard recommendation for hypothyroidism management. The hyponatremia is from water retention, not sodium depletion.",
                 d: "While excessive IV fluids could worsen hyponatremia, the primary cause in myxedema coma is the pathophysiological impairment in free water excretion from the hypothyroid state itself."
             },
-            testTakingTip: "Myxedema coma hyponatremia = dilutional (too much water, not too little sodium). Treatment = fluid RESTRICTION. This is the same mechanism as SIADH. Don't give more fluids — restrict them.",
-            guideSection: "Section 4 — Myxedema Coma",
+            testTakingTip: "Myxedema coma hyponatremia = dilutional (too much water, not too little sodium). Treatment = fluid RESTRICTION. This is the same mechanism as SIADH. Don't give more fluids - restrict them.",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q36 — Myxedema Coma Nursing Monitoring (Application, Single)
+        // Q36 - Myxedema Coma Nursing Monitoring (Application, Single)
         {
             id: "thyroid_036",
             type: "single",
@@ -994,11 +994,11 @@ var thyroidDisordersQuizData = {
                 d: "Increasing edema and weight gain suggest worsening fluid retention (possibly from overly aggressive fluid replacement) or inadequate treatment response. Improvement would show decreasing edema."
             },
             testTakingTip: "Myxedema coma improvement = gradual normalization of all vitals: temperature rising, heart rate increasing, BP stabilizing, mental status improving. Everything that was 'low and slow' should gradually come back up.",
-            guideSection: "Section 4 — Myxedema Coma",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q37 — Myxedema vs Thyroid Storm Matrix (Analysis, Matrix)
+        // Q37 - Myxedema vs Thyroid Storm Matrix (Analysis, Matrix)
         {
             id: "thyroid_037",
             type: "matrix",
@@ -1024,19 +1024,19 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Myxedema coma and thyroid storm are opposite emergencies. Myxedema = everything CRITICALLY low (temperature, heart rate, respiratory drive, sodium, glucose). Thyroid storm = everything CRITICALLY high (fever, heart rate, agitation). Both are life-threatening but require opposite treatments.",
-                a: "MYXEDEMA COMA — Hypothermia (often <95°F) is the hallmark of myxedema coma. Severely decreased metabolism cannot generate adequate body heat.",
-                b: "THYROID STORM — Severe tachycardia and atrial fibrillation result from excess thyroid hormone's positive chronotropic and inotropic effects on the heart.",
-                c: "MYXEDEMA COMA — Respiratory depression with CO2 retention occurs because decreased metabolic activity reduces respiratory drive. This is a primary cause of death.",
-                d: "THYROID STORM — High fever (often >104°F) results from extreme hypermetabolism. Use acetaminophen, NOT aspirin (aspirin increases free thyroid hormone).",
-                e: "MYXEDEMA COMA — Hyponatremia (dilutional from impaired water excretion) and hypoglycemia (decreased gluconeogenesis) are classic metabolic derangements.",
-                f: "THYROID STORM — CNS hyperexcitability from excess thyroid hormone causes agitation progressing to delirium and psychosis. Myxedema coma causes the opposite: lethargy progressing to coma."
+                a: "MYXEDEMA COMA - Hypothermia (often <95°F) is the hallmark of myxedema coma. Severely decreased metabolism cannot generate adequate body heat.",
+                b: "THYROID STORM - Severe tachycardia and atrial fibrillation result from excess thyroid hormone's positive chronotropic and inotropic effects on the heart.",
+                c: "MYXEDEMA COMA - Respiratory depression with CO2 retention occurs because decreased metabolic activity reduces respiratory drive. This is a primary cause of death.",
+                d: "THYROID STORM - High fever (often >104°F) results from extreme hypermetabolism. Use acetaminophen, NOT aspirin (aspirin increases free thyroid hormone).",
+                e: "MYXEDEMA COMA - Hyponatremia (dilutional from impaired water excretion) and hypoglycemia (decreased gluconeogenesis) are classic metabolic derangements.",
+                f: "THYROID STORM - CNS hyperexcitability from excess thyroid hormone causes agitation progressing to delirium and psychosis. Myxedema coma causes the opposite: lethargy progressing to coma."
             },
             testTakingTip: "Myxedema coma = COLD, SLOW, UNRESPONSIVE. Thyroid storm = HOT, FAST, AGITATED. They are polar opposites. If you can remember one, you know the other by reversal.",
-            guideSection: "Section 4 — Myxedema Coma",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q38 — Myxedema Coma IV vs Oral Levothyroxine (Knowledge, Single)
+        // Q38 - Myxedema Coma IV vs Oral Levothyroxine (Knowledge, Single)
         {
             id: "thyroid_038",
             type: "single",
@@ -1054,14 +1054,14 @@ var thyroidDisordersQuizData = {
                 correct: "In myxedema coma, the GI tract is severely affected by the hypothyroid state: motility is profoundly decreased, mucosal edema impairs absorption, and the patient is typically unresponsive and cannot safely swallow oral medication (aspiration risk). IV administration bypasses these barriers and ensures reliable drug delivery.",
                 a: "While IV does have a more predictable onset and aspiration avoidance is relevant, the primary clinical rationale is impaired GI absorption. Even if the patient could swallow, oral absorption would be unreliable.",
                 b: "Oral levothyroxine is not categorically contraindicated in all emergencies. In less severe acute hypothyroidism where the patient is alert and GI function is intact, oral dosing may be acceptable. The specific impairment in myxedema coma necessitates IV.",
-                d: "IV and oral levothyroxine contain the same active molecule (synthetic T4). The IV formulation is not inherently more potent — the advantage is reliable delivery that bypasses the compromised GI tract."
+                d: "IV and oral levothyroxine contain the same active molecule (synthetic T4). The IV formulation is not inherently more potent - the advantage is reliable delivery that bypasses the compromised GI tract."
             },
             testTakingTip: "Why IV in myxedema coma? The gut doesn't work (decreased motility + edema = poor absorption) AND the patient can't swallow (risk of aspiration). IV bypasses both problems.",
-            guideSection: "Section 4 — Myxedema Coma",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q39 — Myxedema Coma Fluid Management (Analysis, Single)
+        // Q39 - Myxedema Coma Fluid Management (Analysis, Single)
         {
             id: "thyroid_039",
             type: "single",
@@ -1076,17 +1076,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Fluid replacement in myxedema coma requires a delicate balance. The patient needs volume to support blood pressure, but the severely compromised heart cannot handle rapid fluid loading — risk of fluid overload and pulmonary edema. Cautious normal saline with close I&O monitoring, frequent cardiovascular assessment, and lung auscultation is the safest approach.",
+                correct: "Fluid replacement in myxedema coma requires a delicate balance. The patient needs volume to support blood pressure, but the severely compromised heart cannot handle rapid fluid loading - risk of fluid overload and pulmonary edema. Cautious normal saline with close I&O monitoring, frequent cardiovascular assessment, and lung auscultation is the safest approach.",
                 a: "Rapid large-volume infusion is dangerous in myxedema coma. The weakened myocardium cannot handle the fluid load, risking pulmonary edema and cardiovascular collapse. Volume replacement must be cautious and monitored.",
                 b: "Rapid correction of hyponatremia with hypertonic saline risks osmotic demyelination syndrome (central pontine myelinolysis), which can cause permanent neurological damage. Sodium correction should not exceed 8-10 mEq/L in 24 hours.",
-                d: "D5W is a hypotonic solution that would WORSEN the hyponatremia by providing free water without sodium. The hyponatremia in myxedema coma is dilutional — the patient needs less water, not more."
+                d: "D5W is a hypotonic solution that would WORSEN the hyponatremia by providing free water without sodium. The hyponatremia in myxedema coma is dilutional - the patient needs less water, not more."
             },
             testTakingTip: "Myxedema coma fluids = CAUTIOUS normal saline. The heart is too weak for aggressive resuscitation. Monitor I&O closely. Also: correct Na+ SLOWLY (risk of osmotic demyelination if corrected too fast).",
-            guideSection: "Section 4 — Myxedema Coma",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q40 — Myxedema Coma Corticosteroid Rationale (Knowledge, Single)
+        // Q40 - Myxedema Coma Corticosteroid Rationale (Knowledge, Single)
         {
             id: "thyroid_040",
             type: "single",
@@ -1106,16 +1106,16 @@ var thyroidDisordersQuizData = {
                 b: "While cortisol does play a role in free water clearance, the primary reason for giving hydrocortisone is to prevent adrenal crisis, not to treat hyponatremia. Hyponatremia is managed with fluid restriction.",
                 d: "Allergic reactions to IV levothyroxine are extremely rare and are not the rationale for corticosteroid pretreatment. This is not a premedication protocol."
             },
-            testTakingTip: "Steroids BEFORE T4 in myxedema coma — this prevents adrenal crisis. Think: thyroid hormone speeds up cortisol breakdown. If adrenals can't keep up → adrenal crisis on top of myxedema coma.",
-            guideSection: "Section 4 — Myxedema Coma",
+            testTakingTip: "Steroids BEFORE T4 in myxedema coma - this prevents adrenal crisis. Think: thyroid hormone speeds up cortisol breakdown. If adrenals can't keep up → adrenal crisis on top of myxedema coma.",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
         // ================================================================
-        //  SECTION 4 — HYPERTHYROIDISM BASICS (Q41–Q50)
+        //  SECTION 4 - HYPERTHYROIDISM BASICS (Q41–Q50)
         // ================================================================
 
-        // Q41 — Hyperthyroidism Signs (Knowledge, Single)
+        // Q41 - Hyperthyroidism Signs (Knowledge, Single)
         {
             id: "thyroid_041",
             type: "single",
@@ -1130,17 +1130,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This is a classic hyperthyroid presentation: tachycardia, weight loss despite increased appetite, diarrhea/frequent stools, and heat intolerance. Excess thyroid hormone increases metabolic rate, sympathetic nervous system activity, and GI motility — everything speeds up.",
+                correct: "This is a classic hyperthyroid presentation: tachycardia, weight loss despite increased appetite, diarrhea/frequent stools, and heat intolerance. Excess thyroid hormone increases metabolic rate, sympathetic nervous system activity, and GI motility - everything speeds up.",
                 a: "Hypothyroidism presents with the OPPOSITE: bradycardia, weight gain, constipation, and cold intolerance. This patient's symptoms reflect increased, not decreased, metabolism.",
-                c: "Cushing's syndrome (cortisol excess) causes weight GAIN (especially central), moon face, and buffalo hump — not weight loss. While Cushing's can cause tachycardia from hypertension, the weight loss and heat intolerance point to thyroid excess.",
-                d: "Addison's disease causes weight loss but also hypotension, hyperpigmentation, and fatigue — not tachycardia and heat intolerance. The hypermetabolic symptoms distinguish hyperthyroidism."
+                c: "Cushing's syndrome (cortisol excess) causes weight GAIN (especially central), moon face, and buffalo hump - not weight loss. While Cushing's can cause tachycardia from hypertension, the weight loss and heat intolerance point to thyroid excess.",
+                d: "Addison's disease causes weight loss but also hypotension, hyperpigmentation, and fatigue - not tachycardia and heat intolerance. The hypermetabolic symptoms distinguish hyperthyroidism."
             },
-            testTakingTip: "Hyperthyroidism = everything FAST and HIGH: fast heart, fast metabolism (weight loss), fast GI (diarrhea), fast nervous system (anxiety/tremors). If a patient is losing weight while eating more — think thyroid.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            testTakingTip: "Hyperthyroidism = everything FAST and HIGH: fast heart, fast metabolism (weight loss), fast GI (diarrhea), fast nervous system (anxiety/tremors). If a patient is losing weight while eating more - think thyroid.",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q42 — Graves' Disease Pathophysiology (Knowledge, Single)
+        // Q42 - Graves' Disease Pathophysiology (Knowledge, Single)
         {
             id: "thyroid_042",
             type: "single",
@@ -1155,17 +1155,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Graves' disease is an autoimmune condition where the immune system produces thyroid-stimulating immunoglobulins (TSI) that bind to and activate TSH receptors on thyroid cells. This mimics TSH stimulation but is unregulated — the thyroid continuously produces hormone regardless of feedback signals. It is the most common cause of hyperthyroidism.",
+                correct: "Graves' disease is an autoimmune condition where the immune system produces thyroid-stimulating immunoglobulins (TSI) that bind to and activate TSH receptors on thyroid cells. This mimics TSH stimulation but is unregulated - the thyroid continuously produces hormone regardless of feedback signals. It is the most common cause of hyperthyroidism.",
                 a: "This describes a toxic adenoma or toxic multinodular goiter, which are different causes of hyperthyroidism. Graves' disease involves diffuse thyroid stimulation by antibodies, not a tumor.",
                 c: "A TSH-secreting pituitary adenoma (TSHoma) is a rare cause of secondary hyperthyroidism. In Graves' disease, TSH is actually SUPPRESSED because the stimulation comes from TSI, not TSH.",
                 d: "While excess iodine can transiently increase thyroid hormone production (Jod-Basedow phenomenon), this is not the mechanism of Graves' disease. Graves' is autoimmune, not dietary."
             },
             testTakingTip: "Graves' = autoimmune STIMULATION (TSI mimics TSH). Hashimoto's = autoimmune DESTRUCTION (anti-TPO attacks thyroid). Both autoimmune, opposite results. Graves' is the #1 cause of hyperthyroidism.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q43 — Exophthalmos Assessment (Application, Single)
+        // Q43 - Exophthalmos Assessment (Application, Single)
         {
             id: "thyroid_043",
             type: "single",
@@ -1186,11 +1186,11 @@ var thyroidDisordersQuizData = {
                 d: "Fluid restriction does not significantly affect exophthalmos. The proptosis is caused by retroorbital inflammation and glycosaminoglycan deposition, not simple fluid retention."
             },
             testTakingTip: "Exophthalmos priority = CORNEAL PROTECTION. The eyes can't close fully → cornea dries out → ulceration → vision loss. Artificial tears + elevate HOB + tape lids at night. Important: exophthalmos may persist even after thyroid is treated.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q44 — Hyperthyroidism Cardiac Complications (Analysis, Single)
+        // Q44 - Hyperthyroidism Cardiac Complications (Analysis, Single)
         {
             id: "thyroid_044",
             type: "single",
@@ -1211,11 +1211,11 @@ var thyroidDisordersQuizData = {
                 d: "While rate control is important, digoxin is often less effective in thyrotoxic atrial fibrillation because excess thyroid hormone increases digoxin clearance. Beta-blockers are the preferred rate control agents in hyperthyroid states."
             },
             testTakingTip: "New-onset atrial fibrillation (especially in older adults with no cardiac history) → always check TSH. Hyperthyroidism is a reversible cause of A-fib. Beta-blockers are preferred over digoxin for rate control in thyrotoxicosis.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q45 — Hyperthyroidism vs Hypothyroidism GI Matrix (Analysis, Matrix)
+        // Q45 - Hyperthyroidism vs Hypothyroidism GI Matrix (Analysis, Matrix)
         {
             id: "thyroid_045",
             type: "matrix",
@@ -1239,18 +1239,18 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "GI manifestations directly reflect metabolic rate: hypothyroidism slows metabolism (weight gain, decreased appetite, constipation, elevated cholesterol) while hyperthyroidism accelerates it (weight loss, increased appetite, diarrhea). The appetite-weight mismatch is a key differentiator.",
-                a: "HYPOTHYROIDISM — Decreased metabolism means fewer calories burned, leading to weight gain even with reduced food intake. This weight gain is partly from fluid retention (myxedema) and fat accumulation.",
-                b: "HYPERTHYROIDISM — Dramatically increased metabolic rate burns calories faster than the patient can consume them, despite increased appetite. This is one of the most recognizable hyperthyroid symptoms.",
-                c: "HYPOTHYROIDISM — Decreased GI motility from slowed metabolism causes constipation and reduced bowel sounds. Severe cases can cause paralytic ileus.",
-                d: "HYPERTHYROIDISM — Increased GI motility causes frequent, loose stools (not typically true diarrhea) and hyperactive bowel sounds. Malabsorption may contribute to weight loss.",
-                e: "HYPOTHYROIDISM — Slowed lipid metabolism decreases LDL receptor activity, reducing cholesterol clearance and elevating serum levels. This often improves with levothyroxine treatment."
+                a: "HYPOTHYROIDISM - Decreased metabolism means fewer calories burned, leading to weight gain even with reduced food intake. This weight gain is partly from fluid retention (myxedema) and fat accumulation.",
+                b: "HYPERTHYROIDISM - Dramatically increased metabolic rate burns calories faster than the patient can consume them, despite increased appetite. This is one of the most recognizable hyperthyroid symptoms.",
+                c: "HYPOTHYROIDISM - Decreased GI motility from slowed metabolism causes constipation and reduced bowel sounds. Severe cases can cause paralytic ileus.",
+                d: "HYPERTHYROIDISM - Increased GI motility causes frequent, loose stools (not typically true diarrhea) and hyperactive bowel sounds. Malabsorption may contribute to weight loss.",
+                e: "HYPOTHYROIDISM - Slowed lipid metabolism decreases LDL receptor activity, reducing cholesterol clearance and elevating serum levels. This often improves with levothyroxine treatment."
             },
             testTakingTip: "The appetite-weight paradox is key: Hypo = eat LESS but gain weight (metabolism too slow). Hyper = eat MORE but lose weight (metabolism too fast). This mismatch is almost pathognomonic.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q46 — Hyperthyroidism Menstrual Changes (Knowledge, Single)
+        // Q46 - Hyperthyroidism Menstrual Changes (Knowledge, Single)
         {
             id: "thyroid_046",
             type: "single",
@@ -1271,11 +1271,11 @@ var thyroidDisordersQuizData = {
                 d: "While untreated hyperthyroidism can cause temporary infertility due to anovulation, it is NOT permanent. Treating the thyroid condition typically restores normal menstrual function and fertility."
             },
             testTakingTip: "Menstrual changes by thyroid status: Hypo = HEAVY (menorrhagia). Hyper = LIGHT or ABSENT (oligomenorrhea/amenorrhea). Think: hypo slows everything (blood accumulates), hyper speeds everything (periods are brief).",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q47 — Hyperthyroidism Causes (Knowledge, Single)
+        // Q47 - Hyperthyroidism Causes (Knowledge, Single)
         {
             id: "thyroid_047",
             type: "single",
@@ -1296,11 +1296,11 @@ var thyroidDisordersQuizData = {
                 d: "Thyroid cancer rarely causes hyperthyroidism. Most thyroid cancers are well-differentiated and do not produce significant amounts of thyroid hormone."
             },
             testTakingTip: "Most common cause of HYPERthyroidism = Graves' disease (autoimmune stimulation). Most common cause of HYPOthyroidism in US = Hashimoto's (autoimmune destruction). Both autoimmune, both most common for their respective condition.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q48 — Hyperthyroidism Reflexes and Skin (Application, Single)
+        // Q48 - Hyperthyroidism Reflexes and Skin (Application, Single)
         {
             id: "thyroid_048",
             type: "single",
@@ -1321,11 +1321,11 @@ var thyroidDisordersQuizData = {
                 d: "Parkinson's disease causes a resting (pill-rolling) tremor and rigidity, not fine tremors with hyperactive reflexes. Parkinson's tremor decreases with intentional movement; hyperthyroid tremor is a fine postural tremor."
             },
             testTakingTip: "Physical exam contrasts: Hypo = delayed reflexes, dry/coarse skin, brittle hair. Hyper = brisk reflexes, warm/moist skin, fine hair. The reflex test is a quick bedside differentiator between hypo and hyper states.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q49 — Comprehensive Thyroid Comparison Ordering (Analysis, Ordering)
+        // Q49 - Comprehensive Thyroid Comparison Ordering (Analysis, Ordering)
         {
             id: "thyroid_049",
             type: "ordering",
@@ -1341,19 +1341,19 @@ var thyroidDisordersQuizData = {
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Myxedema coma represents the end stage of a progressive decline: (1) Subclinical stage — the thyroid is starting to fail but T4 is maintained through increased TSH, (2) Overt hypothyroidism — T4 drops and classic symptoms appear, (3) Severe hypothyroidism — marked hormone deficiency with significant impairment, (4) A trigger event pushes the body beyond its ability to compensate, (5) Myxedema coma — complete metabolic decompensation.",
-                a: "FIRST — The earliest detectable stage. The pituitary is working harder (high TSH) to maintain normal T4. The patient may have no or minimal symptoms.",
-                b: "SECOND — The thyroid can no longer maintain adequate output. T4 falls, and classic hypothyroid symptoms develop progressively.",
-                c: "THIRD — Without treatment, the condition worsens. Metabolic slowing becomes pronounced, affecting multiple organ systems significantly.",
-                d: "FOURTH — The precipitating event is critical. Myxedema coma almost never occurs spontaneously — it requires a trigger that overwhelms the body's remaining compensatory mechanisms.",
-                e: "FIFTH — Myxedema coma is the most severe, life-threatening manifestation. All metabolic processes are critically impaired, requiring emergency ICU management."
+                correct: "Myxedema coma represents the end stage of a progressive decline: (1) Subclinical stage - the thyroid is starting to fail but T4 is maintained through increased TSH, (2) Overt hypothyroidism - T4 drops and classic symptoms appear, (3) Severe hypothyroidism - marked hormone deficiency with significant impairment, (4) A trigger event pushes the body beyond its ability to compensate, (5) Myxedema coma - complete metabolic decompensation.",
+                a: "FIRST - The earliest detectable stage. The pituitary is working harder (high TSH) to maintain normal T4. The patient may have no or minimal symptoms.",
+                b: "SECOND - The thyroid can no longer maintain adequate output. T4 falls, and classic hypothyroid symptoms develop progressively.",
+                c: "THIRD - Without treatment, the condition worsens. Metabolic slowing becomes pronounced, affecting multiple organ systems significantly.",
+                d: "FOURTH - The precipitating event is critical. Myxedema coma almost never occurs spontaneously - it requires a trigger that overwhelms the body's remaining compensatory mechanisms.",
+                e: "FIFTH - Myxedema coma is the most severe, life-threatening manifestation. All metabolic processes are critically impaired, requiring emergency ICU management."
             },
-            testTakingTip: "Myxedema coma doesn't happen overnight — it's a progressive decline. The key teaching point: taking levothyroxine consistently prevents progression. A trigger event is almost always the 'tipping point.'",
-            guideSection: "Section 4 — Myxedema Coma",
+            testTakingTip: "Myxedema coma doesn't happen overnight - it's a progressive decline. The key teaching point: taking levothyroxine consistently prevents progression. A trigger event is almost always the 'tipping point.'",
+            guideSection: "Section 4 - Myxedema Coma",
             guideSectionId: "myxedema-coma"
         },
 
-        // Q50 — Hyperthyroidism Diagnosis (Application, Single)
+        // Q50 - Hyperthyroidism Diagnosis (Application, Single)
         {
             id: "thyroid_050",
             type: "single",
@@ -1371,17 +1371,17 @@ var thyroidDisordersQuizData = {
                 correct: "The lab pattern for primary hyperthyroidism is LOW TSH + HIGH free T4. The thyroid is overproducing hormone (high T4), and the excess feeds back to the pituitary, suppressing TSH to very low levels. This is the mirror image of primary hypothyroidism (high TSH + low T4).",
                 a: "This pattern (high TSH + low T4) indicates primary HYPOthyroidism, the opposite of what the question asks. The thyroid is failing, and the pituitary is compensating with more TSH.",
                 c: "Normal TSH and T4 indicate euthyroid (normal thyroid function). These results would not explain the patient's hyperthyroid symptoms, which might suggest an alternative diagnosis.",
-                d: "This pattern could represent subclinical hyperthyroidism (slightly low TSH with normal T4) or could be normal. The TSH is at the lower end of normal, and T4 is normal — this does not confirm hyperthyroidism."
+                d: "This pattern could represent subclinical hyperthyroidism (slightly low TSH with normal T4) or could be normal. The TSH is at the lower end of normal, and T4 is normal - this does not confirm hyperthyroidism."
             },
             testTakingTip: "Lab pattern summary: Primary Hypo = ↑TSH ↓T4. Primary Hyper = ↓TSH ↑T4. TSH always goes OPPOSITE of the thyroid problem. When in doubt on the exam, check whether TSH and T4 move in opposite directions.",
-            guideSection: "Section 2 — Lab Value Interpretation",
+            guideSection: "Section 2 - Lab Value Interpretation",
             guideSectionId: "lab-values"
         },
 
         // ================================================================
         // ================================================================
         //
-        //  BATCH 2 — thyroid_051 through thyroid_100
+        //  BATCH 2 - thyroid_051 through thyroid_100
         //  Focus: Graves', antithyroid meds, RAI, Lugol's, beta-blockers,
         //         thyroid storm, thyroidectomy complications, goiter/nodules
         //
@@ -1389,10 +1389,10 @@ var thyroidDisordersQuizData = {
         // ================================================================
 
         // ================================================================
-        //  SECTION 5 — GRAVES' DISEASE, GOITER & NODULES (Q51–Q60)
+        //  SECTION 5 - GRAVES' DISEASE, GOITER & NODULES (Q51–Q60)
         // ================================================================
 
-        // Q51 — Graves' Triad (Knowledge, Single)
+        // Q51 - Graves' Triad (Knowledge, Single)
         {
             id: "thyroid_051",
             type: "single",
@@ -1409,15 +1409,15 @@ var thyroidDisordersQuizData = {
             rationale: {
                 correct: "The classic Graves' disease triad is: (1) diffuse goiter (smooth, symmetrical thyroid enlargement), (2) exophthalmos (bulging eyes from retroorbital inflammation), and (3) pretibial myxedema (thick, non-pitting skin changes on the shins). These three findings are SPECIFIC to Graves' disease and do not occur in other forms of hyperthyroidism.",
                 a: "Weight loss, tachycardia, and heat intolerance are general hyperthyroid symptoms that occur in ALL forms of hyperthyroidism (toxic nodular goiter, thyroiditis, etc.), not just Graves'.",
-                c: "Thyroid nodules with hoarseness and dysphagia suggest thyroid cancer or a large multinodular goiter — not Graves' disease. Graves' causes a diffuse, smooth goiter.",
-                d: "Elevated TSH with low T4 and cold intolerance are signs of hypothyroidism — the opposite of Graves' disease."
+                c: "Thyroid nodules with hoarseness and dysphagia suggest thyroid cancer or a large multinodular goiter - not Graves' disease. Graves' causes a diffuse, smooth goiter.",
+                d: "Elevated TSH with low T4 and cold intolerance are signs of hypothyroidism - the opposite of Graves' disease."
             },
-            testTakingTip: "Graves' disease triad: Goiter + Eyes (exophthalmos) + Skin (pretibial myxedema). Only Graves' has exophthalmos and pretibial myxedema — if you see either on the exam, the answer is Graves'.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            testTakingTip: "Graves' disease triad: Goiter + Eyes (exophthalmos) + Skin (pretibial myxedema). Only Graves' has exophthalmos and pretibial myxedema - if you see either on the exam, the answer is Graves'.",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q52 — Graves' Eye Care (Application, Single)
+        // Q52 - Graves' Eye Care (Application, Single)
         {
             id: "thyroid_052",
             type: "single",
@@ -1433,16 +1433,16 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Exophthalmos management focuses on corneal protection and comfort: artificial tears prevent drying, sunglasses reduce photosensitivity and protect from wind/debris, elevating the HOB reduces periorbital edema, and taping eyelids prevents corneal exposure during sleep. This comprehensive approach prevents vision-threatening corneal ulceration.",
-                a: "The head should be ELEVATED, not flat — flat positioning worsens periorbital edema. Contact lenses can irritate the already-compromised eyes. Warm compresses are not standard therapy.",
+                a: "The head should be ELEVATED, not flat - flat positioning worsens periorbital edema. Contact lenses can irritate the already-compromised eyes. Warm compresses are not standard therapy.",
                 c: "Prophylactic antibiotics are not indicated unless infection is present. Wearing an eye patch at all times can cause corneal drying in the covered eye. Light avoidance is excessive.",
-                d: "Exophthalmos may NOT resolve after hyperthyroid treatment — it can persist or even worsen after radioactive iodine therapy. Ongoing eye care and ophthalmology follow-up are often needed long-term."
+                d: "Exophthalmos may NOT resolve after hyperthyroid treatment - it can persist or even worsen after radioactive iodine therapy. Ongoing eye care and ophthalmology follow-up are often needed long-term."
             },
             testTakingTip: "Graves' eye care: Lubricate (artificial tears) + Protect (sunglasses) + Elevate (HOB) + Tape (lids at night). Important: exophthalmos may be PERMANENT even after thyroid treatment.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q53 — Pretibial Myxedema (Knowledge, Single)
+        // Q53 - Pretibial Myxedema (Knowledge, Single)
         {
             id: "thyroid_053",
             type: "single",
@@ -1458,16 +1458,16 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Pretibial myxedema (Graves' dermopathy) is a characteristic skin finding specific to Graves' disease. It presents as raised, thickened, non-pitting, waxy-appearing skin lesions on the pretibial area (shins). It is caused by glycosaminoglycan deposition in the dermis and is part of the Graves' triad along with goiter and exophthalmos.",
-                a: "Heart failure edema is PITTING and typically involves dependent areas bilaterally (ankles, feet). Pretibial myxedema is NON-pitting with thickened, raised skin — a distinctly different finding.",
-                c: "Peripheral vascular disease causes skin changes such as hair loss, thin/shiny skin, and pallor — not the thick, raised lesions seen in pretibial myxedema.",
+                a: "Heart failure edema is PITTING and typically involves dependent areas bilaterally (ankles, feet). Pretibial myxedema is NON-pitting with thickened, raised skin - a distinctly different finding.",
+                c: "Peripheral vascular disease causes skin changes such as hair loss, thin/shiny skin, and pallor - not the thick, raised lesions seen in pretibial myxedema.",
                 d: "Contact dermatitis presents with erythema, vesicles, and pruritus in the area of contact. Pretibial myxedema has a unique waxy, thickened appearance specific to Graves' disease."
             },
             testTakingTip: "Pretibial myxedema = thick, non-pitting, waxy skin on the shins = Graves' disease. Don't confuse with myxedema (facial puffiness in hypothyroidism). Both use 'myxedema' but are completely different conditions.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q54 — Thyroid Nodule Evaluation (Application, Single)
+        // Q54 - Thyroid Nodule Evaluation (Application, Single)
         {
             id: "thyroid_054",
             type: "single",
@@ -1485,14 +1485,14 @@ var thyroidDisordersQuizData = {
                 correct: "Fine needle aspiration (FNA) biopsy is the gold standard for evaluating thyroid nodules. It provides cytological analysis that can distinguish benign from malignant cells. Ultrasound guidance improves accuracy. FNA determines whether the nodule requires surgery or can be safely monitored.",
                 a: "CT scan can assess the size and extent of a nodule but cannot differentiate benign from malignant tissue. CT with iodinated contrast should actually be avoided if RAI treatment might be needed, as it can interfere with radioactive iodine uptake.",
                 c: "Thyroglobulin is useful for monitoring thyroid cancer AFTER treatment (thyroidectomy), not for initial evaluation of an undiagnosed nodule. Elevated thyroglobulin is nonspecific for the initial workup.",
-                d: "While RAI scans can identify 'hot' (functioning) vs 'cold' (non-functioning) nodules, a cold nodule only indicates increased risk — it doesn't provide a tissue diagnosis. FNA is needed for definitive evaluation."
+                d: "While RAI scans can identify 'hot' (functioning) vs 'cold' (non-functioning) nodules, a cold nodule only indicates increased risk - it doesn't provide a tissue diagnosis. FNA is needed for definitive evaluation."
             },
             testTakingTip: "Thyroid nodule evaluation: FNA biopsy is the gold standard. 'Cold' nodules on RAI scan = higher cancer risk (don't take up iodine). 'Hot' nodules = usually benign. But only FNA gives a definitive tissue diagnosis.",
-            guideSection: "Section 8 — Goiter & Nodules",
+            guideSection: "Section 8 - Goiter & Nodules",
             guideSectionId: "goiter-nodules"
         },
 
-        // Q55 — Thyroid Cancer Risk Factors Matrix (Analysis, Matrix)
+        // Q55 - Thyroid Cancer Risk Factors Matrix (Analysis, Matrix)
         {
             id: "thyroid_055",
             type: "matrix",
@@ -1518,19 +1518,19 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Childhood radiation, cold nodules, hard/fixed/rapidly growing nodules, and family history of thyroid cancer or MEN syndrome all increase cancer risk. Soft/mobile nodules and hot nodules are more likely benign.",
-                a: "INCREASED RISK — Childhood radiation to the head/neck is one of the strongest risk factors for thyroid cancer. The thyroid gland in children is highly sensitive to radiation damage that can trigger malignancy decades later.",
-                b: "INCREASED RISK — Cold nodules do not take up radioactive iodine, suggesting they are non-functioning. About 5-10% of cold nodules are malignant, compared to <1% of hot nodules.",
-                c: "NOT A RISK FACTOR — Soft, mobile, smooth nodules are characteristics of benign lesions. Malignant nodules tend to be hard, fixed, and irregular.",
-                d: "INCREASED RISK — Hard, fixed nodules that grow rapidly are classic warning signs for thyroid malignancy. Fixation to surrounding tissues suggests invasion.",
-                e: "INCREASED RISK — Family history of thyroid cancer, especially medullary thyroid cancer associated with MEN (Multiple Endocrine Neoplasia) syndrome, significantly increases risk.",
-                f: "NOT A RISK FACTOR — Hot (hyperfunctioning) nodules actively produce thyroid hormone and are almost always benign. Malignancy is exceedingly rare in hot nodules."
+                a: "INCREASED RISK - Childhood radiation to the head/neck is one of the strongest risk factors for thyroid cancer. The thyroid gland in children is highly sensitive to radiation damage that can trigger malignancy decades later.",
+                b: "INCREASED RISK - Cold nodules do not take up radioactive iodine, suggesting they are non-functioning. About 5-10% of cold nodules are malignant, compared to <1% of hot nodules.",
+                c: "NOT A RISK FACTOR - Soft, mobile, smooth nodules are characteristics of benign lesions. Malignant nodules tend to be hard, fixed, and irregular.",
+                d: "INCREASED RISK - Hard, fixed nodules that grow rapidly are classic warning signs for thyroid malignancy. Fixation to surrounding tissues suggests invasion.",
+                e: "INCREASED RISK - Family history of thyroid cancer, especially medullary thyroid cancer associated with MEN (Multiple Endocrine Neoplasia) syndrome, significantly increases risk.",
+                f: "NOT A RISK FACTOR - Hot (hyperfunctioning) nodules actively produce thyroid hormone and are almost always benign. Malignancy is exceedingly rare in hot nodules."
             },
-            testTakingTip: "Thyroid cancer red flags: 'CHIRP' — Cold nodule, Hard/fixed, Irradiation history, Rapid growth, Positive family history. Hot nodules are almost always benign.",
-            guideSection: "Section 8 — Goiter & Nodules",
+            testTakingTip: "Thyroid cancer red flags: 'CHIRP' - Cold nodule, Hard/fixed, Irradiation history, Rapid growth, Positive family history. Hot nodules are almost always benign.",
+            guideSection: "Section 8 - Goiter & Nodules",
             guideSectionId: "goiter-nodules"
         },
 
-        // Q56 — Goiter Types and Causes (Knowledge, Single)
+        // Q56 - Goiter Types and Causes (Knowledge, Single)
         {
             id: "thyroid_056",
             type: "single",
@@ -1551,11 +1551,11 @@ var thyroidDisordersQuizData = {
                 d: "While some thyroid conditions have genetic components, a community-wide pattern of goiter points to an environmental cause (iodine deficiency), not genetics."
             },
             testTakingTip: "Goiter worldwide = iodine deficiency. Goiter in the US = Hashimoto's (autoimmune). Key difference: iodized salt eliminated endemic goiter in developed countries but remains a global issue.",
-            guideSection: "Section 8 — Goiter & Nodules",
+            guideSection: "Section 8 - Goiter & Nodules",
             guideSectionId: "goiter-nodules"
         },
 
-        // Q57 — Goitrogens and Diet (Application, Single)
+        // Q57 - Goitrogens and Diet (Application, Single)
         {
             id: "thyroid_057",
             type: "single",
@@ -1570,17 +1570,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Cruciferous vegetables (broccoli, cabbage, cauliflower, Brussels sprouts, kale) contain goitrogens — substances that can interfere with thyroid hormone synthesis. However, the effect is clinically significant only with very large amounts consumed raw AND in the setting of iodine deficiency. Cooking inactivates most goitrogens. Normal dietary amounts are safe, especially in patients on levothyroxine replacement.",
+                correct: "Cruciferous vegetables (broccoli, cabbage, cauliflower, Brussels sprouts, kale) contain goitrogens - substances that can interfere with thyroid hormone synthesis. However, the effect is clinically significant only with very large amounts consumed raw AND in the setting of iodine deficiency. Cooking inactivates most goitrogens. Normal dietary amounts are safe, especially in patients on levothyroxine replacement.",
                 a: "Complete elimination is unnecessary and deprives the patient of important nutrients. Cruciferous vegetables have significant health benefits (fiber, vitamins, cancer-fighting compounds). Moderation is key.",
                 c: "Diet does affect thyroid function. Iodine is essential for thyroid hormone production, goitrogens can interfere with synthesis, and soy/calcium/fiber affect levothyroxine absorption. Telling the patient diet has no effect is inaccurate.",
                 d: "Recommending increased consumption of goitrogen-rich foods to a hypothyroid patient is inappropriate. While normal amounts are fine, excessive intake could theoretically worsen thyroid function."
             },
             testTakingTip: "Goitrogens = cruciferous veggies + soy. Cooking reduces the effect. Normal amounts are fine for hypothyroid patients on levothyroxine. Only a problem with massive RAW consumption + iodine deficiency.",
-            guideSection: "Section 10 — Diet Considerations",
+            guideSection: "Section 10 - Diet Considerations",
             guideSectionId: "diet"
         },
 
-        // Q58 — Graves' TSI Antibodies (Knowledge, Single)
+        // Q58 - Graves' TSI Antibodies (Knowledge, Single)
         {
             id: "thyroid_058",
             type: "single",
@@ -1601,11 +1601,11 @@ var thyroidDisordersQuizData = {
                 d: "While dietary iodine provides substrate for hormone synthesis, it does not drive the overproduction in Graves'. The fundamental problem is the TSI antibody that bypasses normal regulatory mechanisms."
             },
             testTakingTip: "Why does Graves' bypass feedback? TSI mimics TSH but the pituitary can't turn it off. Even with TSH near zero, TSI keeps stimulating. The thyroid can't tell the difference between TSH and TSI.",
-            guideSection: "Section 5 — Hyperthyroidism",
+            guideSection: "Section 5 - Hyperthyroidism",
             guideSectionId: "hyperthyroidism"
         },
 
-        // Q59 — Graves' Treatment Options (Application, Single)
+        // Q59 - Graves' Treatment Options (Application, Single)
         {
             id: "thyroid_059",
             type: "single",
@@ -1626,11 +1626,11 @@ var thyroidDisordersQuizData = {
                 d: "Beta-blockers only manage symptoms (tachycardia, tremors) but do NOT reduce thyroid hormone levels. Uncontrolled hyperthyroidism during pregnancy increases miscarriage risk, preterm birth, and fetal complications."
             },
             testTakingTip: "Pregnancy + hyperthyroidism drug rule: Methimazole normally → switch to PTU in 1st trimester → switch back to methimazole in 2nd/3rd. RAI = ABSOLUTELY contraindicated if pregnant or planning pregnancy within 6-12 months.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q60 — Hot vs Cold Nodule (Knowledge, Single)
+        // Q60 - Hot vs Cold Nodule (Knowledge, Single)
         {
             id: "thyroid_060",
             type: "single",
@@ -1651,15 +1651,15 @@ var thyroidDisordersQuizData = {
                 d: "A cold nodule on an RAI scan is a diagnostic finding, not a response to treatment. It indicates the nodule is not participating in iodine uptake or hormone production."
             },
             testTakingTip: "Hot nodule = takes up iodine = functioning = usually benign. Cold nodule = doesn't take up iodine = non-functioning = needs biopsy (higher cancer risk). Think: 'Cold is Concerning.'",
-            guideSection: "Section 8 — Goiter & Nodules",
+            guideSection: "Section 8 - Goiter & Nodules",
             guideSectionId: "goiter-nodules"
         },
 
         // ================================================================
-        //  SECTION 6 — ANTITHYROID MEDICATIONS (Q61–Q75)
+        //  SECTION 6 - ANTITHYROID MEDICATIONS (Q61–Q75)
         // ================================================================
 
-        // Q61 — Methimazole Mechanism (Knowledge, Single)
+        // Q61 - Methimazole Mechanism (Knowledge, Single)
         {
             id: "thyroid_061",
             type: "single",
@@ -1674,17 +1674,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Methimazole inhibits thyroid peroxidase (TPO), the enzyme responsible for organification of iodine and coupling of iodotyrosines — critical steps in T3/T4 synthesis. By blocking new hormone synthesis, methimazole gradually reduces circulating thyroid hormone levels over 2-8 weeks as existing hormone stores are depleted.",
+                correct: "Methimazole inhibits thyroid peroxidase (TPO), the enzyme responsible for organification of iodine and coupling of iodotyrosines - critical steps in T3/T4 synthesis. By blocking new hormone synthesis, methimazole gradually reduces circulating thyroid hormone levels over 2-8 weeks as existing hormone stores are depleted.",
                 a: "This describes radioactive iodine (I-131) therapy, not methimazole. Methimazole is a medication that blocks synthesis, not a radiation treatment.",
-                c: "This describes levothyroxine (thyroid hormone replacement), used for hypothyroidism. Methimazole does the opposite — it reduces thyroid hormone production.",
+                c: "This describes levothyroxine (thyroid hormone replacement), used for hypothyroidism. Methimazole does the opposite - it reduces thyroid hormone production.",
                 d: "Blocking hormone release describes the mechanism of Lugol's solution (potassium iodide). Methimazole blocks synthesis of NEW hormones, not the release of already-formed hormones."
             },
             testTakingTip: "Antithyroid drug mechanisms: Methimazole/PTU = block SYNTHESIS. Lugol's iodine = block RELEASE. PTU has the bonus of also blocking peripheral T4→T3 conversion (why it's preferred in thyroid storm).",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q62 — Agranulocytosis Warning (Application, Single)
+        // Q62 - Agranulocytosis Warning (Application, Single)
         {
             id: "thyroid_062",
             type: "single",
@@ -1699,17 +1699,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Sore throat, fever, and mouth ulcers in a patient on antithyroid medication (methimazole or PTU) are classic warning signs of agranulocytosis — a life-threatening reduction in white blood cells. The medication must be stopped immediately and a CBC with differential obtained urgently. Agranulocytosis occurs in 0.1-0.5% of patients, most commonly in the first 3 months. Without prompt recognition, it can be fatal from overwhelming infection.",
+                correct: "Sore throat, fever, and mouth ulcers in a patient on antithyroid medication (methimazole or PTU) are classic warning signs of agranulocytosis - a life-threatening reduction in white blood cells. The medication must be stopped immediately and a CBC with differential obtained urgently. Agranulocytosis occurs in 0.1-0.5% of patients, most commonly in the first 3 months. Without prompt recognition, it can be fatal from overwhelming infection.",
                 a: "Dismissing these symptoms as a common cold could be fatal. In a patient on antithyroid drugs, sore throat and fever must be evaluated for agranulocytosis until proven otherwise. This is a medical emergency.",
                 c: "This is not an allergic reaction presentation. Agranulocytosis requires immediate evaluation and drug discontinuation, not antihistamines and watchful waiting. Delaying evaluation by a week could be fatal.",
                 d: "Increasing the dose would worsen agranulocytosis if present. These symptoms indicate a medication side effect, not worsening hyperthyroidism."
             },
             testTakingTip: "Antithyroid drug + sore throat + fever = AGRANULOCYTOSIS until proven otherwise. Stop the drug, get a STAT CBC. This is the #1 tested antithyroid drug side effect on NCLEX. Peak risk: first 3 months.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q63 — PTU Black Box Warning (Knowledge, Single)
+        // Q63 - PTU Black Box Warning (Knowledge, Single)
         {
             id: "thyroid_063",
             type: "single",
@@ -1730,11 +1730,11 @@ var thyroidDisordersQuizData = {
                 d: "While agranulocytosis can occur with PTU (as with methimazole), the BLACK BOX warning is specifically for hepatotoxicity/liver failure, not bone marrow suppression."
             },
             testTakingTip: "PTU black box = LIVER FAILURE. Teach patients to report: jaundice, dark urine, light stools, abdominal pain, fatigue. Methimazole is first-line because of PTU's liver risk. PTU only for: 1st trimester pregnancy + thyroid storm.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q64 — Methimazole vs PTU Comparison Matrix (Analysis, Matrix)
+        // Q64 - Methimazole vs PTU Comparison Matrix (Analysis, Matrix)
         {
             id: "thyroid_064",
             type: "matrix",
@@ -1760,25 +1760,25 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Methimazole advantages: once daily, first-line non-pregnant, less liver toxicity. PTU advantages: safer in 1st trimester, blocks peripheral conversion (useful in thyroid storm). PTU disadvantages: hepatotoxicity black box, multiple daily doses.",
-                a: "METHIMAZOLE — Its longer half-life allows once-daily dosing, which improves patient compliance compared to PTU.",
-                b: "PTU — The FDA Black Box Warning for severe hepatotoxicity (liver failure, death) is specific to PTU. This made methimazole the preferred first-line drug.",
-                c: "PTU — Methimazole is teratogenic in the first trimester (causes aplasia cutis and choanal atresia). PTU crosses the placenta less and is the safer choice in early pregnancy.",
-                d: "METHIMAZOLE — Due to PTU's liver toxicity risk and methimazole's more favorable side effect profile and once-daily dosing, methimazole is the standard first-line antithyroid drug.",
-                e: "PTU — In addition to blocking thyroid hormone synthesis (like methimazole), PTU also inhibits peripheral conversion of T4 to T3 by deiodinase enzymes. This dual action makes PTU preferred in thyroid storm.",
-                f: "PTU — Its shorter half-life requires 2-3 doses per day, which can be a compliance challenge for patients."
+                a: "METHIMAZOLE - Its longer half-life allows once-daily dosing, which improves patient compliance compared to PTU.",
+                b: "PTU - The FDA Black Box Warning for severe hepatotoxicity (liver failure, death) is specific to PTU. This made methimazole the preferred first-line drug.",
+                c: "PTU - Methimazole is teratogenic in the first trimester (causes aplasia cutis and choanal atresia). PTU crosses the placenta less and is the safer choice in early pregnancy.",
+                d: "METHIMAZOLE - Due to PTU's liver toxicity risk and methimazole's more favorable side effect profile and once-daily dosing, methimazole is the standard first-line antithyroid drug.",
+                e: "PTU - In addition to blocking thyroid hormone synthesis (like methimazole), PTU also inhibits peripheral conversion of T4 to T3 by deiodinase enzymes. This dual action makes PTU preferred in thyroid storm.",
+                f: "PTU - Its shorter half-life requires 2-3 doses per day, which can be a compliance challenge for patients."
             },
             testTakingTip: "Methimazole vs PTU quick compare: Methimazole = first-line, once daily, less toxic. PTU = 1st trimester pregnancy, thyroid storm, blocks peripheral conversion, but has liver black box and needs 2-3 daily doses.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q65 — PTU Hepatotoxicity Response Ordering (Application, Ordering)
+        // Q65 - PTU Hepatotoxicity Response Ordering (Application, Ordering)
         {
             id: "thyroid_065",
             type: "ordering",
             subtype: null,
             difficulty: "application",
-            stem: "A patient on PTU calls reporting dark urine, yellowing of the eyes, and right upper quadrant abdominal pain — signs of possible hepatotoxicity. Place the nurse's actions in the correct priority order.",
+            stem: "A patient on PTU calls reporting dark urine, yellowing of the eyes, and right upper quadrant abdominal pain - signs of possible hepatotoxicity. Place the nurse's actions in the correct priority order.",
             options: [
                 { id: "a", text: "Instruct the patient to STOP taking PTU immediately" },
                 { id: "b", text: "Direct the patient to go to the emergency department for urgent liver function testing" },
@@ -1788,19 +1788,19 @@ var thyroidDisordersQuizData = {
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "PTU hepatotoxicity is a Black Box Warning emergency: (1) Stop the drug immediately to prevent further liver damage, (2) Get to the ED for urgent LFTs — fulminant liver failure can develop rapidly, (3) Notify the provider for medical decision-making, (4) Document everything, (5) Plan alternative therapy once the patient is stabilized.",
-                a: "FIRST — Immediate drug discontinuation is the most critical action. Every additional dose of PTU worsens the liver damage. This cannot wait for lab results or provider callback.",
-                b: "SECOND — Emergency liver function testing determines the severity of hepatotoxicity. AST, ALT, bilirubin, INR, and albumin assess liver function. Fulminant failure can develop rapidly.",
-                c: "THIRD — The provider needs to be informed to manage the acute situation and plan alternative treatment. The provider may order additional interventions based on lab results.",
-                d: "FOURTH — Documentation of symptoms, timeline, and nursing actions ensures continuity of care and provides a legal record of appropriate emergency response.",
-                e: "FIFTH — Once the acute crisis is managed, the patient still needs hyperthyroidism treatment. If past the first trimester, methimazole can replace PTU. If still in the first trimester, close collaboration with endocrinology is needed."
+                correct: "PTU hepatotoxicity is a Black Box Warning emergency: (1) Stop the drug immediately to prevent further liver damage, (2) Get to the ED for urgent LFTs - fulminant liver failure can develop rapidly, (3) Notify the provider for medical decision-making, (4) Document everything, (5) Plan alternative therapy once the patient is stabilized.",
+                a: "FIRST - Immediate drug discontinuation is the most critical action. Every additional dose of PTU worsens the liver damage. This cannot wait for lab results or provider callback.",
+                b: "SECOND - Emergency liver function testing determines the severity of hepatotoxicity. AST, ALT, bilirubin, INR, and albumin assess liver function. Fulminant failure can develop rapidly.",
+                c: "THIRD - The provider needs to be informed to manage the acute situation and plan alternative treatment. The provider may order additional interventions based on lab results.",
+                d: "FOURTH - Documentation of symptoms, timeline, and nursing actions ensures continuity of care and provides a legal record of appropriate emergency response.",
+                e: "FIFTH - Once the acute crisis is managed, the patient still needs hyperthyroidism treatment. If past the first trimester, methimazole can replace PTU. If still in the first trimester, close collaboration with endocrinology is needed."
             },
-            testTakingTip: "PTU + jaundice/dark urine/RUQ pain = STOP the drug FIRST, then ED for labs. Remember 'JDAL' — Jaundice, Dark urine, Abdominal pain, Light stools. Any one of these on PTU = stop immediately.",
-            guideSection: "Section 7 — Thyroid Medications",
+            testTakingTip: "PTU + jaundice/dark urine/RUQ pain = STOP the drug FIRST, then ED for labs. Remember 'JDAL' - Jaundice, Dark urine, Abdominal pain, Light stools. Any one of these on PTU = stop immediately.",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q66 — Antithyroid Medication Onset of Action (Application, Single)
+        // Q66 - Antithyroid Medication Onset of Action (Application, Single)
         {
             id: "thyroid_066",
             type: "single",
@@ -1821,11 +1821,11 @@ var thyroidDisordersQuizData = {
                 d: "Methimazole can be taken with or without food. Its absorption is not significantly affected by food. The delayed response is due to existing hormone stores, not administration technique."
             },
             testTakingTip: "Antithyroid drugs take 2-8 weeks to work because the thyroid has hormone STORES that must deplete first. The drugs block new production but can't remove what's already made. Beta-blockers bridge the gap by controlling symptoms.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q67 — PTU in Thyroid Storm Rationale (Analysis, Single)
+        // Q67 - PTU in Thyroid Storm Rationale (Analysis, Single)
         {
             id: "thyroid_067",
             type: "single",
@@ -1840,17 +1840,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "PTU has a unique dual mechanism: it blocks thyroid peroxidase (stopping new hormone synthesis, like methimazole) AND inhibits the peripheral conversion of T4 to T3 by type 1 deiodinase. Since T3 is 3-5 times more biologically active than T4, blocking this conversion rapidly reduces the most active form of thyroid hormone — critical in the emergency of thyroid storm.",
+                correct: "PTU has a unique dual mechanism: it blocks thyroid peroxidase (stopping new hormone synthesis, like methimazole) AND inhibits the peripheral conversion of T4 to T3 by type 1 deiodinase. Since T3 is 3-5 times more biologically active than T4, blocking this conversion rapidly reduces the most active form of thyroid hormone - critical in the emergency of thyroid storm.",
                 a: "A shorter half-life does not equate to faster onset. Both methimazole and PTU block synthesis at similar rates. The advantage of PTU is its ADDITIONAL mechanism of blocking T4→T3 conversion.",
                 c: "Neither PTU nor methimazole is available in standard IV formulations. Both are given orally or via nasogastric tube in thyroid storm. If the patient cannot take oral medications, rectal administration may be used.",
                 d: "PTU actually has MORE side effects than methimazole (black box hepatotoxicity warning). Its use in thyroid storm is based on superior pharmacological activity, not safety."
             },
             testTakingTip: "PTU advantage in thyroid storm: blocks SYNTHESIS + blocks CONVERSION. Methimazole only blocks synthesis. In a life-threatening crisis, you want every mechanism possible to reduce active thyroid hormone.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q68 — Antithyroid Medication Patient Teaching (Application, Single)
+        // Q68 - Antithyroid Medication Patient Teaching (Application, Single)
         {
             id: "thyroid_068",
             type: "single",
@@ -1871,11 +1871,11 @@ var thyroidDisordersQuizData = {
                 d: "Methimazole does not cure Graves' disease. It controls hormone production while on the medication. Relapse rates after discontinuation are 30-70%. Many patients eventually need definitive treatment (RAI or surgery)."
             },
             testTakingTip: "Priority teaching for antithyroid drugs: 'SORE throat + FEVER = Emergency.' This is the #1 safety message. Don't let patients dismiss these symptoms as a common cold.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q69 — Methimazole Monitoring (Application, Single)
+        // Q69 - Methimazole Monitoring (Application, Single)
         {
             id: "thyroid_069",
             type: "single",
@@ -1890,17 +1890,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Monitoring for methimazole includes: (1) CBC with differential — to detect agranulocytosis (WBC/neutrophil count), (2) Liver function tests — to monitor for hepatotoxicity, and (3) Thyroid function tests (TSH, free T4) — to assess treatment response and guide dose adjustments. These are essential during the first months of therapy when side effects are most likely.",
+                correct: "Monitoring for methimazole includes: (1) CBC with differential - to detect agranulocytosis (WBC/neutrophil count), (2) Liver function tests - to monitor for hepatotoxicity, and (3) Thyroid function tests (TSH, free T4) - to assess treatment response and guide dose adjustments. These are essential during the first months of therapy when side effects are most likely.",
                 a: "A1C and fasting glucose are diabetes monitoring tests, not relevant to antithyroid drug therapy. While hyperthyroidism can affect glucose levels, the direct medication monitoring requires CBC and LFTs.",
                 c: "Urinalysis and serum creatinine monitor renal function. Methimazole is not nephrotoxic, and these are not part of routine antithyroid drug monitoring.",
                 d: "Calcium and phosphorus monitoring is relevant after thyroidectomy (parathyroid damage risk) but not for antithyroid medication therapy."
             },
             testTakingTip: "Antithyroid drug monitoring triad: CBC (agranulocytosis), LFTs (hepatotoxicity), TFTs (treatment effectiveness). Particularly important in the first 3 months when agranulocytosis risk peaks.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q70 — Antithyroid Drug Pregnancy Switching Ordering (Analysis, Ordering)
+        // Q70 - Antithyroid Drug Pregnancy Switching Ordering (Analysis, Ordering)
         {
             id: "thyroid_070",
             type: "ordering",
@@ -1917,18 +1917,18 @@ var thyroidDisordersQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "The antithyroid drug protocol for pregnancy follows a careful switching sequence: (1) Stop methimazole because it's teratogenic in the first trimester, (2) Start PTU (safer in first trimester), (3) Monitor closely, (4) Switch back to methimazole at week 13 because PTU has higher hepatotoxicity risk, (5) Continue methimazole for the rest of pregnancy.",
-                a: "FIRST — Methimazole must be stopped immediately because first-trimester exposure is associated with aplasia cutis (skin defects) and choanal atresia in the fetus.",
-                b: "SECOND — PTU is started as the replacement antithyroid drug because it crosses the placenta less than methimazole and is not associated with the same birth defects in early pregnancy.",
-                c: "THIRD — Frequent TFT monitoring is essential during pregnancy because thyroid hormone needs change. The goal is to use the lowest possible dose to maintain free T4 in the upper normal range.",
-                d: "FOURTH — At week 13 (start of second trimester), methimazole replaces PTU because PTU's Black Box Warning for hepatotoxicity makes it unsuitable for long-term use when a safer alternative exists.",
-                e: "FIFTH — Methimazole is continued through the remainder of pregnancy with ongoing monitoring to maintain maternal euthyroid state while minimizing fetal exposure."
+                a: "FIRST - Methimazole must be stopped immediately because first-trimester exposure is associated with aplasia cutis (skin defects) and choanal atresia in the fetus.",
+                b: "SECOND - PTU is started as the replacement antithyroid drug because it crosses the placenta less than methimazole and is not associated with the same birth defects in early pregnancy.",
+                c: "THIRD - Frequent TFT monitoring is essential during pregnancy because thyroid hormone needs change. The goal is to use the lowest possible dose to maintain free T4 in the upper normal range.",
+                d: "FOURTH - At week 13 (start of second trimester), methimazole replaces PTU because PTU's Black Box Warning for hepatotoxicity makes it unsuitable for long-term use when a safer alternative exists.",
+                e: "FIFTH - Methimazole is continued through the remainder of pregnancy with ongoing monitoring to maintain maternal euthyroid state while minimizing fetal exposure."
             },
             testTakingTip: "Pregnancy antithyroid switching: 'Metro → PTU → Metro.' Methimazole normally → PTU in 1st trimester → Methimazole back for 2nd/3rd. Switch point = week 13. Reason: methimazole teratogenic early, PTU hepatotoxic long-term.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q71 — Beta Blockers in Hyperthyroidism (Application, Single)
+        // Q71 - Beta Blockers in Hyperthyroidism (Application, Single)
         {
             id: "thyroid_071",
             type: "single",
@@ -1948,12 +1948,12 @@ var thyroidDisordersQuizData = {
                 c: "Propranolol does not replace or supplement thyroid hormone. It blocks beta-adrenergic receptors to reduce heart rate, tremors, and anxiety caused by excess thyroid hormone stimulation.",
                 d: "They do NOT do the same thing. Methimazole reduces hormone production (addresses the cause). Propranolol blocks symptomatic effects (manages symptoms). They have completely different targets."
             },
-            testTakingTip: "Beta-blockers in hyperthyroidism = symptom bridge. They DON'T treat the thyroid — they treat the dangerous symptoms (tachycardia, tremors) while waiting for antithyroid drugs to work. Usually discontinued once euthyroid.",
-            guideSection: "Section 7 — Thyroid Medications",
+            testTakingTip: "Beta-blockers in hyperthyroidism = symptom bridge. They DON'T treat the thyroid - they treat the dangerous symptoms (tachycardia, tremors) while waiting for antithyroid drugs to work. Usually discontinued once euthyroid.",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q72 — Beta-Blocker Discontinuation (Application, Single)
+        // Q72 - Beta-Blocker Discontinuation (Application, Single)
         {
             id: "thyroid_072",
             type: "single",
@@ -1968,17 +1968,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Beta-blockers must NEVER be stopped abruptly. Sudden discontinuation can cause rebound sympathetic activation — rebound tachycardia, hypertension, and in cardiac patients, angina or MI. The dose should be gradually reduced over several days to a week. This principle applies to all beta-blockers, not just in the thyroid context.",
+                correct: "Beta-blockers must NEVER be stopped abruptly. Sudden discontinuation can cause rebound sympathetic activation - rebound tachycardia, hypertension, and in cardiac patients, angina or MI. The dose should be gradually reduced over several days to a week. This principle applies to all beta-blockers, not just in the thyroid context.",
                 a: "Abrupt discontinuation is dangerous. Even though thyroid levels are normal, stopping propranolol suddenly can cause rebound tachycardia and dangerous blood pressure spikes.",
                 c: "Long-term propranolol is unnecessary once the euthyroid state is maintained. Continued use would cause unnecessary side effects (bradycardia, fatigue, hypotension).",
                 d: "Aspirin is not a substitute for beta-blocker therapy and does not control heart rate. Additionally, aspirin is contraindicated in thyrotoxicosis because it can increase free thyroid hormone levels."
             },
-            testTakingTip: "NEVER stop beta-blockers abruptly — always taper. This rule applies everywhere: HTN, heart failure, hyperthyroidism. Rebound effect = sympathetic surge → tachycardia → hypertension → potential cardiac event.",
-            guideSection: "Section 7 — Thyroid Medications",
+            testTakingTip: "NEVER stop beta-blockers abruptly - always taper. This rule applies everywhere: HTN, heart failure, hyperthyroidism. Rebound effect = sympathetic surge → tachycardia → hypertension → potential cardiac event.",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q73 — Antithyroid Drug Side Effects Matrix (Analysis, Matrix)
+        // Q73 - Antithyroid Drug Side Effects Matrix (Analysis, Matrix)
         {
             id: "thyroid_073",
             type: "matrix",
@@ -2002,18 +2002,18 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Sore throat/fever (agranulocytosis), jaundice/dark urine (hepatotoxicity), and unusual bleeding/bruising (thrombocytopenia) are urgent signs requiring immediate evaluation. Mild rash and mild joint pain are common, non-life-threatening side effects that should be monitored.",
-                a: "REPORT IMMEDIATELY — Sore throat and fever are the hallmark warning signs of agranulocytosis. A CBC with differential must be obtained urgently. Delay can be fatal.",
-                b: "EXPECTED/MONITOR — Mild skin rash and itching occur in 3-5% of patients and may resolve with antihistamines. However, if the rash becomes severe or is accompanied by fever, it requires re-evaluation.",
-                c: "REPORT IMMEDIATELY — Jaundice and dark urine indicate hepatotoxicity. While more common with PTU, it can also occur with methimazole. Liver function tests and drug discontinuation may be needed.",
-                d: "EXPECTED/MONITOR — Mild arthralgia is a relatively common side effect of antithyroid drugs. It usually does not require drug discontinuation unless severe or associated with vasculitis symptoms.",
-                e: "REPORT IMMEDIATELY — Unusual bleeding or bruising may indicate thrombocytopenia (low platelets) or other blood dyscrasias associated with antithyroid drugs. A CBC is needed promptly."
+                a: "REPORT IMMEDIATELY - Sore throat and fever are the hallmark warning signs of agranulocytosis. A CBC with differential must be obtained urgently. Delay can be fatal.",
+                b: "EXPECTED/MONITOR - Mild skin rash and itching occur in 3-5% of patients and may resolve with antihistamines. However, if the rash becomes severe or is accompanied by fever, it requires re-evaluation.",
+                c: "REPORT IMMEDIATELY - Jaundice and dark urine indicate hepatotoxicity. While more common with PTU, it can also occur with methimazole. Liver function tests and drug discontinuation may be needed.",
+                d: "EXPECTED/MONITOR - Mild arthralgia is a relatively common side effect of antithyroid drugs. It usually does not require drug discontinuation unless severe or associated with vasculitis symptoms.",
+                e: "REPORT IMMEDIATELY - Unusual bleeding or bruising may indicate thrombocytopenia (low platelets) or other blood dyscrasias associated with antithyroid drugs. A CBC is needed promptly."
             },
-            testTakingTip: "Antithyroid drug urgent symptoms: 'STJ-BB' — Sore Throat, Jaundice, Bleeding/Bruising. These signal agranulocytosis, liver failure, or thrombocytopenia. Mild rash and joint pain = monitor but don't panic.",
-            guideSection: "Section 7 — Thyroid Medications",
+            testTakingTip: "Antithyroid drug urgent symptoms: 'STJ-BB' - Sore Throat, Jaundice, Bleeding/Bruising. These signal agranulocytosis, liver failure, or thrombocytopenia. Mild rash and joint pain = monitor but don't panic.",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q74 — PTU in Pregnancy First Trimester (Application, Single)
+        // Q74 - PTU in Pregnancy First Trimester (Application, Single)
         {
             id: "thyroid_074",
             type: "single",
@@ -2028,17 +2028,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Methimazole is associated with specific teratogenic effects when used in the first trimester: aplasia cutis (absence of skin patches on the scalp) and choanal atresia (blockage of the nasal passages). PTU has not been associated with these specific birth defects. However, PTU is only preferred in the first trimester — after week 12-13, methimazole becomes preferred due to PTU's hepatotoxicity risk.",
+                correct: "Methimazole is associated with specific teratogenic effects when used in the first trimester: aplasia cutis (absence of skin patches on the scalp) and choanal atresia (blockage of the nasal passages). PTU has not been associated with these specific birth defects. However, PTU is only preferred in the first trimester - after week 12-13, methimazole becomes preferred due to PTU's hepatotoxicity risk.",
                 a: "Both drugs are similarly effective at controlling hyperthyroidism. The preference for PTU is based on SAFETY (teratogenicity difference), not efficacy.",
-                c: "PTU DOES cross the placenta — just less than methimazole. No antithyroid drug is completely safe for the fetus. The goal is to use the lowest effective dose to maintain maternal euthyroid state.",
+                c: "PTU DOES cross the placenta - just less than methimazole. No antithyroid drug is completely safe for the fetus. The goal is to use the lowest effective dose to maintain maternal euthyroid state.",
                 d: "Methimazole is available in the same dosage forms. The issue is not availability but teratogenicity in early pregnancy."
             },
             testTakingTip: "Methimazole teratogenic effects: Aplasia cutis + Choanal atresia (both start with vowels: A and C). These only occur in first trimester. PTU is safer early, but its liver risk makes methimazole safer for long-term use.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q75 — Antithyroid Drugs: Correct vs Needs Teaching Matrix (Analysis, Matrix)
+        // Q75 - Antithyroid Drugs: Correct vs Needs Teaching Matrix (Analysis, Matrix)
         {
             id: "thyroid_075",
             type: "matrix",
@@ -2062,22 +2062,22 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Recognizing agranulocytosis symptoms (A), understanding delayed onset (B), and medication compliance with provider guidance (E) show correct understanding. Self-discontinuation (C) and dismissing sore throat symptoms (D) are dangerous misconceptions.",
-                a: "CORRECT UNDERSTANDING — Sore throat and fever are the critical warning signs of agranulocytosis. Immediate reporting allows for urgent CBC testing and potential drug discontinuation.",
-                b: "CORRECT UNDERSTANDING — Antithyroid drugs take 2-8 weeks to achieve therapeutic effect because they block new synthesis but don't remove existing hormone stores. Setting proper expectations improves compliance.",
-                c: "NEEDS MORE TEACHING — Patients should NEVER stop antithyroid medications without provider guidance. Premature discontinuation can cause hyperthyroid relapse or even thyroid storm. The provider determines when and how to taper.",
-                d: "NEEDS MORE TEACHING — This is the MOST dangerous misconception. Dismissing sore throat as 'just a cold' delays detection of agranulocytosis, which can be fatal. ALL sore throats on antithyroid drugs need evaluation.",
-                e: "CORRECT UNDERSTANDING — Consistent medication compliance and provider-guided decision-making about discontinuation are essential for safe and effective antithyroid therapy."
+                a: "CORRECT UNDERSTANDING - Sore throat and fever are the critical warning signs of agranulocytosis. Immediate reporting allows for urgent CBC testing and potential drug discontinuation.",
+                b: "CORRECT UNDERSTANDING - Antithyroid drugs take 2-8 weeks to achieve therapeutic effect because they block new synthesis but don't remove existing hormone stores. Setting proper expectations improves compliance.",
+                c: "NEEDS MORE TEACHING - Patients should NEVER stop antithyroid medications without provider guidance. Premature discontinuation can cause hyperthyroid relapse or even thyroid storm. The provider determines when and how to taper.",
+                d: "NEEDS MORE TEACHING - This is the MOST dangerous misconception. Dismissing sore throat as 'just a cold' delays detection of agranulocytosis, which can be fatal. ALL sore throats on antithyroid drugs need evaluation.",
+                e: "CORRECT UNDERSTANDING - Consistent medication compliance and provider-guided decision-making about discontinuation are essential for safe and effective antithyroid therapy."
             },
             testTakingTip: "Dismissing sore throat on antithyroid drugs = most dangerous patient misconception. It's never 'just a cold' until agranulocytosis is ruled out with a CBC.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
         // ================================================================
-        //  SECTION 7 — LUGOL'S SOLUTION, RAI, BETA-BLOCKERS (Q76–Q85)
+        //  SECTION 7 - LUGOL'S SOLUTION, RAI, BETA-BLOCKERS (Q76–Q85)
         // ================================================================
 
-        // Q76 — Lugol's Solution Administration (Application, Single)
+        // Q76 - Lugol's Solution Administration (Application, Single)
         {
             id: "thyroid_076",
             type: "single",
@@ -2097,12 +2097,12 @@ var thyroidDisordersQuizData = {
                 c: "Lugol's solution is an ORAL medication, not a topical preparation. It must be ingested to provide the systemic effect of blocking thyroid hormone release and decreasing gland vascularity.",
                 d: "Lugol's solution is administered ORALLY, not intramuscularly. There is no injectable form."
             },
-            testTakingTip: "Lugol's solution: Dilute + Straw + Food + Rinse. Think 'DSFR' — Dilute in juice, Straw to bypass taste buds, Food to prevent GI upset, Rinse mouth after. The straw minimizes the bitter metallic taste.",
-            guideSection: "Section 7 — Thyroid Medications",
+            testTakingTip: "Lugol's solution: Dilute + Straw + Food + Rinse. Think 'DSFR' - Dilute in juice, Straw to bypass taste buds, Food to prevent GI upset, Rinse mouth after. The straw minimizes the bitter metallic taste.",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q77 — Lugol's Preoperative Purpose (Knowledge, Single)
+        // Q77 - Lugol's Preoperative Purpose (Knowledge, Single)
         {
             id: "thyroid_077",
             type: "single",
@@ -2118,16 +2118,16 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Lugol's solution given preoperatively decreases the size, vascularity (blood flow), and friability of the thyroid gland. This makes the surgical field cleaner, reduces intraoperative bleeding risk, and makes the procedure technically easier and safer. It also inhibits thyroid hormone release through the Wolff-Chaikoff effect.",
-                a: "The goal is the OPPOSITE — to reduce thyroid activity before surgery, not increase it. Lugol's solution actually inhibits hormone release.",
-                c: "Lugol's solution contains stable (non-radioactive) iodine, not radioactive iodine (I-131). It does not destroy thyroid cells — it reduces vascularity and blocks hormone release.",
+                a: "The goal is the OPPOSITE - to reduce thyroid activity before surgery, not increase it. Lugol's solution actually inhibits hormone release.",
+                c: "Lugol's solution contains stable (non-radioactive) iodine, not radioactive iodine (I-131). It does not destroy thyroid cells - it reduces vascularity and blocks hormone release.",
                 d: "Lugol's solution is not used as an allergy test. Iodine allergy testing, if needed, would be done differently. The preoperative purpose is specifically to prepare the gland for surgery."
             },
             testTakingTip: "Lugol's before thyroidectomy = reduces VASCULARITY (less bleeding in surgery). Think of it as 'deflating and firming up' the thyroid gland. Given 10-14 days before surgery. It also blocks hormone release.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q78 — Radioactive Iodine Expected Outcome (Application, Single)
+        // Q78 - Radioactive Iodine Expected Outcome (Application, Single)
         {
             id: "thyroid_078",
             type: "single",
@@ -2142,17 +2142,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "This statement shows misunderstanding. RAI destroys thyroid tissue, which means the patient will almost certainly develop HYPOTHYROIDISM and will need LIFELONG levothyroxine replacement. Not needing medication 'ever again' is incorrect — the medication changes from antithyroid drugs to thyroid replacement. Statements A, B, and D are all accurate.",
-                a: "ACCURATE — The expected outcome of RAI is hypothyroidism, requiring lifelong levothyroxine. This is considered a therapeutic success, not a complication.",
-                b: "ACCURATE — Thyroid hormone stored in the gland is released as cells are destroyed, causing a temporary worsening of hyperthyroid symptoms (transient thyroiditis). This is expected and self-limiting.",
-                d: "ACCURATE — RAI takes weeks to months for full effect. The thyroid cells are gradually destroyed by radiation over time. Some patients require a second dose."
+                correct: "This statement shows misunderstanding. RAI destroys thyroid tissue, which means the patient will almost certainly develop HYPOTHYROIDISM and will need LIFELONG levothyroxine replacement. Not needing medication 'ever again' is incorrect - the medication changes from antithyroid drugs to thyroid replacement. Statements A, B, and D are all accurate.",
+                a: "ACCURATE - The expected outcome of RAI is hypothyroidism, requiring lifelong levothyroxine. This is considered a therapeutic success, not a complication.",
+                b: "ACCURATE - Thyroid hormone stored in the gland is released as cells are destroyed, causing a temporary worsening of hyperthyroid symptoms (transient thyroiditis). This is expected and self-limiting.",
+                d: "ACCURATE - RAI takes weeks to months for full effect. The thyroid cells are gradually destroyed by radiation over time. Some patients require a second dose."
             },
-            testTakingTip: "RAI 'cures' hyperthyroidism by creating hypothyroidism. The patient trades one condition for another — but hypothyroidism is much easier to manage (one daily pill). Key teaching: expect lifelong levothyroxine.",
-            guideSection: "Section 7 — Thyroid Medications",
+            testTakingTip: "RAI 'cures' hyperthyroidism by creating hypothyroidism. The patient trades one condition for another - but hypothyroidism is much easier to manage (one daily pill). Key teaching: expect lifelong levothyroxine.",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q79 — RAI Radiation Precautions Ordering (Application, Ordering)
+        // Q79 - RAI Radiation Precautions Ordering (Application, Ordering)
         {
             id: "thyroid_079",
             type: "ordering",
@@ -2169,18 +2169,18 @@ var thyroidDisordersQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "RAI precautions are prioritized by radiation sensitivity of those at risk: (1) Pregnant women and children are most radiosensitive, (2) Close/intimate contact transmits the most radiation, (3) Body fluids (urine, saliva) contain concentrated I-131, (4) Shared utensils can transfer contaminated saliva, (5) Increased fluids speed elimination and reduce radiation exposure time.",
-                a: "MOST IMPORTANT — Pregnant women and young children are extremely sensitive to radiation. Fetal thyroid tissue can be damaged by even small radiation exposure. This is the top safety priority.",
-                b: "SECOND — Sleeping apart and avoiding intimate contact minimize prolonged close-range radiation exposure. Radiation decreases significantly with distance.",
-                c: "THIRD — Urine contains the highest concentration of excreted I-131. Double/triple flushing and handwashing prevent environmental contamination.",
-                d: "FOURTH — Saliva contains I-131. Using separate utensils and washing them separately prevents oral transmission to household members.",
-                e: "FIFTH — Increasing fluid intake promotes renal excretion of I-131, reducing the duration of radioactivity in the body. While important, it has less immediate impact than avoiding vulnerable populations."
+                a: "MOST IMPORTANT - Pregnant women and young children are extremely sensitive to radiation. Fetal thyroid tissue can be damaged by even small radiation exposure. This is the top safety priority.",
+                b: "SECOND - Sleeping apart and avoiding intimate contact minimize prolonged close-range radiation exposure. Radiation decreases significantly with distance.",
+                c: "THIRD - Urine contains the highest concentration of excreted I-131. Double/triple flushing and handwashing prevent environmental contamination.",
+                d: "FOURTH - Saliva contains I-131. Using separate utensils and washing them separately prevents oral transmission to household members.",
+                e: "FIFTH - Increasing fluid intake promotes renal excretion of I-131, reducing the duration of radioactivity in the body. While important, it has less immediate impact than avoiding vulnerable populations."
             },
             testTakingTip: "RAI precaution priority: Protect the MOST VULNERABLE first (pregnant women, children), then minimize DOSE to others (distance, separate items), then SPEED elimination (fluids). Think: People → Distance → Excretion.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q80 — RAI Contraindications (Knowledge, Single)
+        // Q80 - RAI Contraindications (Knowledge, Single)
         {
             id: "thyroid_080",
             type: "single",
@@ -2200,12 +2200,12 @@ var thyroidDisordersQuizData = {
                 c: "While adequate renal function helps excrete the radioactive iodine, it is not the most critical screening test. Pregnancy status takes absolute priority.",
                 d: "A dental exam is not a prerequisite for RAI therapy. Some sources recommend dental work be done before RAI to avoid radiation exposure to the oral cavity during dental procedures, but this is not the critical safety check."
             },
-            testTakingTip: "RAI absolute contraindications: Pregnancy and Breastfeeding. ALWAYS pregnancy test before RAI — no exceptions. Fetal thyroid destruction is permanent. Also: must not plan pregnancy for 6-12 months after RAI.",
-            guideSection: "Section 7 — Thyroid Medications",
+            testTakingTip: "RAI absolute contraindications: Pregnancy and Breastfeeding. ALWAYS pregnancy test before RAI - no exceptions. Fetal thyroid destruction is permanent. Also: must not plan pregnancy for 6-12 months after RAI.",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q81 — RAI Treatment Timeline Ordering (Application, Ordering)
+        // Q81 - RAI Treatment Timeline Ordering (Application, Ordering)
         {
             id: "thyroid_081",
             type: "ordering",
@@ -2222,18 +2222,18 @@ var thyroidDisordersQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "RAI treatment follows a predictable timeline: (1) Pre-treatment safety screening and drug washout, (2) RAI administration with radiation precautions, (3) Transient worsening in the first 1-2 weeks from stored hormone release, (4) Hypothyroidism developing over weeks to months as thyroid tissue is destroyed, (5) Lifelong levothyroxine to replace the now-absent thyroid function.",
-                a: "FIRST — Pregnancy testing is mandatory (RAI is absolutely contraindicated). Antithyroid drugs are held briefly to maximize thyroid iodine uptake for effective treatment.",
-                b: "SECOND — I-131 is given as a single oral dose. Radiation precautions begin immediately: avoid pregnant women/children, sleep alone, separate utensils, flush toilet 2-3 times, increase fluids.",
-                c: "THIRD — In the first 1-2 weeks, thyroid cells damaged by radiation release their stored T3/T4, causing a transient worsening of hyperthyroid symptoms. Patients should be warned about this.",
-                d: "FOURTH — Over 6-12 weeks (sometimes longer), progressive thyroid cell destruction leads to declining hormone levels and emerging hypothyroid symptoms. This is the expected therapeutic outcome.",
-                e: "FIFTH — Once TSH is confirmed elevated and the patient is symptomatic, levothyroxine is initiated. This is lifelong therapy. Post-RAI hypothyroidism = treatment SUCCESS, not failure."
+                a: "FIRST - Pregnancy testing is mandatory (RAI is absolutely contraindicated). Antithyroid drugs are held briefly to maximize thyroid iodine uptake for effective treatment.",
+                b: "SECOND - I-131 is given as a single oral dose. Radiation precautions begin immediately: avoid pregnant women/children, sleep alone, separate utensils, flush toilet 2-3 times, increase fluids.",
+                c: "THIRD - In the first 1-2 weeks, thyroid cells damaged by radiation release their stored T3/T4, causing a transient worsening of hyperthyroid symptoms. Patients should be warned about this.",
+                d: "FOURTH - Over 6-12 weeks (sometimes longer), progressive thyroid cell destruction leads to declining hormone levels and emerging hypothyroid symptoms. This is the expected therapeutic outcome.",
+                e: "FIFTH - Once TSH is confirmed elevated and the patient is symptomatic, levothyroxine is initiated. This is lifelong therapy. Post-RAI hypothyroidism = treatment SUCCESS, not failure."
             },
             testTakingTip: "RAI timeline: Pregnancy test → Single dose → Symptoms briefly WORSE (stored hormone release) → Hypothyroidism develops (weeks-months) → Lifelong levothyroxine. The patient trades hyperthyroidism for manageable hypothyroidism.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q82 — Iodine Solution Timing in Thyroid Storm (Analysis, Single)
+        // Q82 - Iodine Solution Timing in Thyroid Storm (Analysis, Single)
         {
             id: "thyroid_082",
             type: "single",
@@ -2248,17 +2248,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Iodine is the essential building block for T3 and T4. If iodine is given before an antithyroid drug has blocked thyroid peroxidase (the synthesis enzyme), the overactive thyroid will use the incoming iodine to produce even MORE thyroid hormone — the exact opposite of the intended effect. PTU/methimazole must first block the synthesis pathway, and then iodine can safely inhibit RELEASE of preformed hormone (Wolff-Chaikoff effect).",
-                a: "Iodine would have an effect — but a harmful one. Instead of blocking release (the therapeutic goal), it would provide substrate for more hormone production, making the thyroid storm worse.",
+                correct: "Iodine is the essential building block for T3 and T4. If iodine is given before an antithyroid drug has blocked thyroid peroxidase (the synthesis enzyme), the overactive thyroid will use the incoming iodine to produce even MORE thyroid hormone - the exact opposite of the intended effect. PTU/methimazole must first block the synthesis pathway, and then iodine can safely inhibit RELEASE of preformed hormone (Wolff-Chaikoff effect).",
+                a: "Iodine would have an effect - but a harmful one. Instead of blocking release (the therapeutic goal), it would provide substrate for more hormone production, making the thyroid storm worse.",
                 c: "While iodine allergy exists, the timing-dependent risk is not allergic reaction. The danger is pharmacological: providing raw material to an already-overproducing gland.",
                 d: "Lugol's solution (stable iodine) does not destroy the thyroid. That is the mechanism of radioactive iodine (I-131). Stable iodine temporarily blocks release and reduces vascularity."
             },
-            testTakingTip: "PTU BEFORE iodine — ALWAYS. Think: 'Block the factory BEFORE delivering raw materials.' If you deliver iodine to a factory with no brake on production, it makes MORE product. 1-hour minimum gap.",
-            guideSection: "Section 6 — Thyroid Storm",
+            testTakingTip: "PTU BEFORE iodine - ALWAYS. Think: 'Block the factory BEFORE delivering raw materials.' If you deliver iodine to a factory with no brake on production, it makes MORE product. 1-hour minimum gap.",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q83 — Aspirin Contraindication in Thyroid Storm (Knowledge, Single)
+        // Q83 - Aspirin Contraindication in Thyroid Storm (Knowledge, Single)
         {
             id: "thyroid_083",
             type: "single",
@@ -2279,11 +2279,11 @@ var thyroidDisordersQuizData = {
                 d: "Tepid sponge baths help reduce fever without causing shivering (which generates more heat). This is an appropriate nursing intervention."
             },
             testTakingTip: "Thyroid storm: NO ASPIRIN. Aspirin knocks thyroid hormone off its binding protein → more FREE hormone → worse crisis. Use acetaminophen for fever. Also: aspirin is contraindicated in thyrotoxicosis in general, not just storm.",
-            guideSection: "Section 6 — Thyroid Storm",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q84 — Lugol's Solution Side Effects (Knowledge, Single)
+        // Q84 - Lugol's Solution Side Effects (Knowledge, Single)
         {
             id: "thyroid_084",
             type: "single",
@@ -2300,15 +2300,15 @@ var thyroidDisordersQuizData = {
             rationale: {
                 correct: "Iodism is the term for chronic iodine toxicity. Classic symptoms include: metallic taste, burning in the mouth and throat, hypersalivation, sore gums and mucous membranes, skin rash, GI upset, and in severe cases, productive cough and swollen salivary glands. These symptoms should be reported because the provider may need to adjust or discontinue the iodine therapy.",
                 a: "While some mild taste changes may be expected with iodine, the combination of metallic taste, hypersalivation, AND rash at 12 days indicates toxicity, not therapeutic response.",
-                c: "These symptoms are specific to iodine excess, not worsening hyperthyroidism. Hyperthyroid symptoms would include tachycardia, weight loss, and heat intolerance — not metallic taste and hypersalivation.",
+                c: "These symptoms are specific to iodine excess, not worsening hyperthyroidism. Hyperthyroid symptoms would include tachycardia, weight loss, and heat intolerance - not metallic taste and hypersalivation.",
                 d: "The timing and symptom pattern (metallic taste + hypersalivation + rash during iodine therapy) is too specific to be coincidental. This is a classic iodism presentation."
             },
             testTakingTip: "Iodism = chronic iodine toxicity. Key signs: metallic taste, hypersalivation, skin rash. Lugol's solution effectiveness decreases after 1-2 weeks anyway (escape phenomenon), which is why it's used short-term before surgery.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
-        // Q85 — Thyroid Medication Mechanisms Ordering (Analysis, Ordering)
+        // Q85 - Thyroid Medication Mechanisms Ordering (Analysis, Ordering)
         {
             id: "thyroid_085",
             type: "ordering",
@@ -2316,27 +2316,27 @@ var thyroidDisordersQuizData = {
             difficulty: "analysis",
             stem: "A nursing instructor asks students to arrange the following thyroid medications by their mechanism, from blocking hormone SYNTHESIS to blocking hormone RELEASE to blocking sympathetic SYMPTOMS. Place them in the correct mechanistic order.",
             options: [
-                { id: "a", text: "Methimazole or PTU (thionamides) — blocks thyroid peroxidase and new hormone synthesis" },
-                { id: "b", text: "Lugol's solution (potassium iodide) — blocks release of preformed thyroid hormone" },
-                { id: "c", text: "Propranolol (beta-blocker) — blocks adrenergic symptoms without affecting thyroid hormone levels" }
+                { id: "a", text: "Methimazole or PTU (thionamides) - blocks thyroid peroxidase and new hormone synthesis" },
+                { id: "b", text: "Lugol's solution (potassium iodide) - blocks release of preformed thyroid hormone" },
+                { id: "c", text: "Propranolol (beta-blocker) - blocks adrenergic symptoms without affecting thyroid hormone levels" }
             ],
             correct: ["a", "b", "c"],
             rationale: {
                 correct: "This ordering reflects the mechanistic cascade: (1) Thionamides block the creation of NEW hormone at the enzyme level, (2) Iodine solutions block the RELEASE of already-made hormone from the gland, (3) Beta-blockers block the SYMPTOMS caused by circulating hormone at the receptor level. In thyroid storm, all three mechanisms are used together.",
-                a: "FIRST (Block Synthesis) — Methimazole and PTU inhibit thyroid peroxidase, the enzyme needed to organify iodine and couple iodotyrosines. This stops NEW hormone production. PTU additionally blocks peripheral T4→T3 conversion.",
-                b: "SECOND (Block Release) — Lugol's solution (Wolff-Chaikoff effect) blocks the release of preformed T3/T4 stored in thyroid follicles. Also reduces gland vascularity. Must be given AFTER thionamides in thyroid storm.",
-                c: "THIRD (Block Symptoms) — Propranolol blocks beta-adrenergic receptors, reducing tachycardia, tremors, anxiety, and diaphoresis. It does NOT reduce thyroid hormone levels — only the peripheral manifestations."
+                a: "FIRST (Block Synthesis) - Methimazole and PTU inhibit thyroid peroxidase, the enzyme needed to organify iodine and couple iodotyrosines. This stops NEW hormone production. PTU additionally blocks peripheral T4→T3 conversion.",
+                b: "SECOND (Block Release) - Lugol's solution (Wolff-Chaikoff effect) blocks the release of preformed T3/T4 stored in thyroid follicles. Also reduces gland vascularity. Must be given AFTER thionamides in thyroid storm.",
+                c: "THIRD (Block Symptoms) - Propranolol blocks beta-adrenergic receptors, reducing tachycardia, tremors, anxiety, and diaphoresis. It does NOT reduce thyroid hormone levels - only the peripheral manifestations."
             },
             testTakingTip: "Thyroid drug mechanisms cascade: Synthesis → Release → Symptoms. Or: Make → Ship → Feel. Thionamides block making, iodine blocks shipping, beta-blockers block feeling. All three used together in thyroid storm.",
-            guideSection: "Section 7 — Thyroid Medications",
+            guideSection: "Section 7 - Thyroid Medications",
             guideSectionId: "medications"
         },
 
         // ================================================================
-        //  SECTION 8 — THYROID STORM (Q86–Q95)
+        //  SECTION 8 - THYROID STORM (Q86–Q95)
         // ================================================================
 
-        // Q86 — Thyroid Storm Recognition (Analysis, Single — Priority)
+        // Q86 - Thyroid Storm Recognition (Analysis, Single - Priority)
         {
             id: "thyroid_086",
             type: "single",
@@ -2351,17 +2351,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This is a classic thyroid storm presentation: extreme fever (>104°F), severe tachycardia with possible atrial fibrillation, hypertension, agitation, confusion, and diaphoresis — triggered by a UTI in a patient with known Graves' disease. This is a medical emergency with 20-30% mortality requiring ICU management with PTU, iodine, beta-blockers, corticosteroids, cooling measures, and treatment of the precipitating infection.",
+                correct: "This is a classic thyroid storm presentation: extreme fever (>104°F), severe tachycardia with possible atrial fibrillation, hypertension, agitation, confusion, and diaphoresis - triggered by a UTI in a patient with known Graves' disease. This is a medical emergency with 20-30% mortality requiring ICU management with PTU, iodine, beta-blockers, corticosteroids, cooling measures, and treatment of the precipitating infection.",
                 a: "While infection is a trigger and antibiotics are needed, the presentation (extreme hyperthermia, tachycardia, Graves' history) points to thyroid storm as the primary crisis. Septic shock typically presents with hypOtension, not hypertension.",
-                c: "Myxedema coma is the OPPOSITE: hypothermia, bradycardia, hypotension, lethargy. This patient has extreme hyperthermia and tachycardia — consistent with thyroid storm, not myxedema.",
+                c: "Myxedema coma is the OPPOSITE: hypothermia, bradycardia, hypotension, lethargy. This patient has extreme hyperthermia and tachycardia - consistent with thyroid storm, not myxedema.",
                 d: "A panic attack does not cause a temperature of 105.8°F or a heart rate of 168 bpm. These findings indicate a life-threatening medical emergency, not anxiety."
             },
             testTakingTip: "Thyroid storm equation: Known hyperthyroidism + precipitating event (infection, surgery, stress) + fever >104°F + severe tachycardia + altered mental status = thyroid storm until proven otherwise. Mortality 20-30%.",
-            guideSection: "Section 6 — Thyroid Storm",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q87 — Thyroid Storm Triggers Matrix (Knowledge, Matrix)
+        // Q87 - Thyroid Storm Triggers Matrix (Knowledge, Matrix)
         {
             id: "thyroid_087",
             type: "matrix",
@@ -2385,18 +2385,18 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Thyroid storm triggers include medication discontinuation, unprepared thyroid surgery, DKA, and severe stress/trauma. Regular moderate exercise is not a recognized trigger.",
-                a: "KNOWN TRIGGER — Abruptly stopping antithyroid medications (methimazole, PTU) causes a rebound surge in thyroid hormone production that can precipitate thyroid storm.",
-                b: "KNOWN TRIGGER — Operating on a hyperthyroid patient who has not been adequately prepared (made euthyroid with antithyroid drugs and Lugol's) can trigger massive thyroid hormone release from surgical manipulation of the gland.",
-                c: "NOT A TRIGGER — Regular moderate exercise does not precipitate thyroid storm. Hyperthyroid patients may have exercise intolerance, but routine walking is not a crisis trigger.",
-                d: "KNOWN TRIGGER — DKA and other severe metabolic stressors can precipitate thyroid storm in susceptible patients. The physiological stress triggers a massive thyroid hormone surge.",
-                e: "KNOWN TRIGGER — Major physical trauma, severe emotional stress, and significant physiological stressors can trigger thyroid storm by increasing catecholamine levels, which amplify thyroid hormone effects."
+                a: "KNOWN TRIGGER - Abruptly stopping antithyroid medications (methimazole, PTU) causes a rebound surge in thyroid hormone production that can precipitate thyroid storm.",
+                b: "KNOWN TRIGGER - Operating on a hyperthyroid patient who has not been adequately prepared (made euthyroid with antithyroid drugs and Lugol's) can trigger massive thyroid hormone release from surgical manipulation of the gland.",
+                c: "NOT A TRIGGER - Regular moderate exercise does not precipitate thyroid storm. Hyperthyroid patients may have exercise intolerance, but routine walking is not a crisis trigger.",
+                d: "KNOWN TRIGGER - DKA and other severe metabolic stressors can precipitate thyroid storm in susceptible patients. The physiological stress triggers a massive thyroid hormone surge.",
+                e: "KNOWN TRIGGER - Major physical trauma, severe emotional stress, and significant physiological stressors can trigger thyroid storm by increasing catecholamine levels, which amplify thyroid hormone effects."
             },
-            testTakingTip: "Thyroid storm triggers overlap with myxedema coma triggers (infection, surgery, stress, stopping meds) — but they precipitate OPPOSITE crises depending on the underlying thyroid condition. Context is key.",
-            guideSection: "Section 6 — Thyroid Storm",
+            testTakingTip: "Thyroid storm triggers overlap with myxedema coma triggers (infection, surgery, stress, stopping meds) - but they precipitate OPPOSITE crises depending on the underlying thyroid condition. Context is key.",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q88 — Thyroid Storm Treatment Sequence Ordering (Analysis, Ordering)
+        // Q88 - Thyroid Storm Treatment Sequence Ordering (Analysis, Ordering)
         {
             id: "thyroid_088",
             type: "ordering",
@@ -2413,18 +2413,18 @@ var thyroidDisordersQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "Thyroid storm treatment follows the 'Block-Block-Block-Block-Cool' strategy: (1) Block SYNTHESIS with PTU first, (2) Block RELEASE with iodine 1 hour after PTU, (3) Block adrenergic SYMPTOMS with beta-blockers, (4) Block peripheral CONVERSION with corticosteroids, (5) Supportive COOLING. Iodine MUST come after PTU to prevent providing raw material for more hormone production.",
-                a: "FIRST — PTU blocks new hormone synthesis AND peripheral T4→T3 conversion. It MUST precede iodine. Methimazole can be used if PTU is unavailable, but PTU is preferred for its dual mechanism.",
-                b: "SECOND — Lugol's solution blocks release of stored hormone. The 1-hour wait after PTU ensures synthesis is blocked before providing iodine substrate. Giving iodine first would feed the overactive thyroid.",
-                c: "THIRD — IV propranolol rapidly controls the dangerous tachycardia, atrial fibrillation, tremors, and agitation. Propranolol also provides some T4→T3 conversion blockade at high doses.",
-                d: "FOURTH — Corticosteroids (dexamethasone or hydrocortisone) block peripheral T4→T3 conversion and prevent possible adrenal insufficiency from the hypermetabolic state.",
-                e: "FIFTH — Cooling measures address the dangerous hyperthermia. Use acetaminophen ONLY — aspirin is contraindicated because it displaces thyroid hormone from binding proteins, increasing free hormone."
+                a: "FIRST - PTU blocks new hormone synthesis AND peripheral T4→T3 conversion. It MUST precede iodine. Methimazole can be used if PTU is unavailable, but PTU is preferred for its dual mechanism.",
+                b: "SECOND - Lugol's solution blocks release of stored hormone. The 1-hour wait after PTU ensures synthesis is blocked before providing iodine substrate. Giving iodine first would feed the overactive thyroid.",
+                c: "THIRD - IV propranolol rapidly controls the dangerous tachycardia, atrial fibrillation, tremors, and agitation. Propranolol also provides some T4→T3 conversion blockade at high doses.",
+                d: "FOURTH - Corticosteroids (dexamethasone or hydrocortisone) block peripheral T4→T3 conversion and prevent possible adrenal insufficiency from the hypermetabolic state.",
+                e: "FIFTH - Cooling measures address the dangerous hyperthermia. Use acetaminophen ONLY - aspirin is contraindicated because it displaces thyroid hormone from binding proteins, increasing free hormone."
             },
             testTakingTip: "Thyroid storm = 'Block × 4 + Cool.' Synthesis → Release → Symptoms → Conversion → Cool. Critical: PTU BEFORE iodine (1-hour gap). Critical: NO aspirin for fever (use acetaminophen).",
-            guideSection: "Section 6 — Thyroid Storm",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q89 — Thyroid Storm Nursing Care (Application, Single)
+        // Q89 - Thyroid Storm Nursing Care (Application, Single)
         {
             id: "thyroid_089",
             type: "single",
@@ -2441,15 +2441,15 @@ var thyroidDisordersQuizData = {
             rationale: {
                 correct: "Thyroid storm creates an extreme hypermetabolic state. Environmental stimulation (noise, bright lights, excessive activity) further increases sympathetic activation and metabolic demand. A calm, cool, quiet environment minimizes additional stimulation. Continuous cardiac monitoring is essential because life-threatening arrhythmias (atrial fibrillation, heart failure) are the primary cause of death.",
                 a: "Ambulation is inappropriate during thyroid storm. The patient is critically ill with hemodynamic instability. Activity would increase metabolic demand and cardiac workload, potentially worsening heart failure.",
-                c: "Bright lights and loud commands would increase agitation and sympathetic stimulation — exactly what should be MINIMIZED. Neurological assessments should be performed calmly and gently.",
+                c: "Bright lights and loud commands would increase agitation and sympathetic stimulation - exactly what should be MINIMIZED. Neurological assessments should be performed calmly and gently.",
                 d: "While the patient does have increased caloric needs, oral intake during an acute crisis may be unsafe (aspiration risk from agitation/delirium). IV fluids and nutrition are more appropriate initially."
             },
             testTakingTip: "Thyroid storm environment: Cool + Calm + Quiet. Every stimulus = more sympathetic activation = more metabolic demand = worse crisis. Minimize visitors, noise, lights. This is the nursing equivalent of 'do no harm.'",
-            guideSection: "Section 6 — Thyroid Storm",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q90 — Thyroid Storm Cardiac Complications (Analysis, Single)
+        // Q90 - Thyroid Storm Cardiac Complications (Analysis, Single)
         {
             id: "thyroid_090",
             type: "single",
@@ -2467,14 +2467,14 @@ var thyroidDisordersQuizData = {
                 correct: "Pulmonary crackles, JVD, and S3 heart sound form the classic triad of heart failure. In thyroid storm, the sustained tachycardia, increased myocardial oxygen demand, and heightened cardiac workload can overwhelm the heart, leading to high-output heart failure. This is one of the most dangerous complications and a leading cause of mortality in thyroid storm.",
                 a: "Heart failure signs indicate the patient is getting WORSE, not better. Resolution of thyroid storm would show normalizing vital signs, decreased temperature, and improved mental status.",
                 c: "While infection may have triggered the thyroid storm, the specific triad (crackles + JVD + S3) points to cardiac failure rather than pneumonia. Pneumonia would more likely present with productive cough, focal crackles, and infiltrates on chest X-ray.",
-                d: "Beta-blocker allergy typically presents with bronchospasm, rash, or hypotension — not heart failure. In fact, beta-blockers can sometimes WORSEN heart failure, but the presentation described is from the thyroid storm itself."
+                d: "Beta-blocker allergy typically presents with bronchospasm, rash, or hypotension - not heart failure. In fact, beta-blockers can sometimes WORSEN heart failure, but the presentation described is from the thyroid storm itself."
             },
-            testTakingTip: "Crackles + JVD + S3 = heart failure — regardless of the underlying cause. In thyroid storm, the heart can't keep up with the extreme metabolic demand. This is why cardiac monitoring is continuous and beta-blockers are given early.",
-            guideSection: "Section 6 — Thyroid Storm",
+            testTakingTip: "Crackles + JVD + S3 = heart failure - regardless of the underlying cause. In thyroid storm, the heart can't keep up with the extreme metabolic demand. This is why cardiac monitoring is continuous and beta-blockers are given early.",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q91 — Thyroid Storm vs Severe Hyperthyroidism (Analysis, Single)
+        // Q91 - Thyroid Storm vs Severe Hyperthyroidism (Analysis, Single)
         {
             id: "thyroid_091",
             type: "single",
@@ -2489,17 +2489,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Thyroid storm is distinguished from severe hyperthyroidism by the presence of extreme hyperthermia (>104°F), altered mental status (agitation → delirium → coma), and multiorgan dysfunction (cardiac, GI, neurological). T3/T4 levels may be similar to uncomplicated hyperthyroidism — thyroid storm is a CLINICAL diagnosis based on the severity of end-organ manifestations, not just lab values.",
-                a: "Elevated T3 and T4 are present in both thyroid storm AND uncomplicated hyperthyroidism. Hormone levels do not reliably differentiate the two — some patients in thyroid storm have only moderately elevated levels.",
+                correct: "Thyroid storm is distinguished from severe hyperthyroidism by the presence of extreme hyperthermia (>104°F), altered mental status (agitation → delirium → coma), and multiorgan dysfunction (cardiac, GI, neurological). T3/T4 levels may be similar to uncomplicated hyperthyroidism - thyroid storm is a CLINICAL diagnosis based on the severity of end-organ manifestations, not just lab values.",
+                a: "Elevated T3 and T4 are present in both thyroid storm AND uncomplicated hyperthyroidism. Hormone levels do not reliably differentiate the two - some patients in thyroid storm have only moderately elevated levels.",
                 b: "Goiter can be present in any form of hyperthyroidism and is not specific to thyroid storm. It helps identify the underlying thyroid disease but not the severity of the crisis.",
                 d: "Low TSH is present in all forms of primary hyperthyroidism, from mild to thyroid storm. It does not differentiate the severity of the clinical presentation."
             },
             testTakingTip: "Thyroid storm is a CLINICAL diagnosis, not a lab diagnosis. The differentiator is end-organ damage: extreme fever + brain dysfunction + heart failure. Lab values may look the same as 'regular' hyperthyroidism.",
-            guideSection: "Section 6 — Thyroid Storm",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q92 — Post-Thyroid Storm Monitoring (Application, Single)
+        // Q92 - Post-Thyroid Storm Monitoring (Application, Single)
         {
             id: "thyroid_092",
             type: "single",
@@ -2516,15 +2516,15 @@ var thyroidDisordersQuizData = {
             rationale: {
                 correct: "Successful thyroid storm treatment is reflected by normalization of clinical parameters: heart rate decreasing toward normal, temperature returning to near-normal, and improvement in mental status (alertness, orientation). These indicate that the thyroid hormone excess and sympathetic hyperactivation are being controlled.",
                 b: "Persistent tachycardia, confusion, and high fever indicate the thyroid storm is NOT resolving. Treatment modifications may be needed.",
-                c: "New edema and decreased urine output suggest heart failure or renal compromise — complications of thyroid storm, not improvement.",
+                c: "New edema and decreased urine output suggest heart failure or renal compromise - complications of thyroid storm, not improvement.",
                 d: "A TSH change from 0.01 to 0.05 is clinically insignificant. TSH takes weeks to months to normalize after resolving hyperthyroidism. Clinical response is assessed by vital signs and symptoms, not TSH in the acute setting."
             },
-            testTakingTip: "Thyroid storm improvement = vital signs trending toward normal: HR decreasing, temp decreasing, mental status improving. Don't rely on TSH — it's too slow to reflect acute changes. Monitor clinical response.",
-            guideSection: "Section 6 — Thyroid Storm",
+            testTakingTip: "Thyroid storm improvement = vital signs trending toward normal: HR decreasing, temp decreasing, mental status improving. Don't rely on TSH - it's too slow to reflect acute changes. Monitor clinical response.",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q93 — Corticosteroids in Thyroid Storm Rationale (Knowledge, Single)
+        // Q93 - Corticosteroids in Thyroid Storm Rationale (Knowledge, Single)
         {
             id: "thyroid_093",
             type: "single",
@@ -2544,12 +2544,12 @@ var thyroidDisordersQuizData = {
                 c: "Corticosteroids do not enhance beta-blocker effects. Each medication works through independent mechanisms in thyroid storm. Beta-blockers block adrenergic receptors; corticosteroids block T4→T3 conversion.",
                 d: "Corticosteroids do not prevent hypothyroidism. Post-crisis hypothyroidism depends on definitive treatment (RAI, surgery) and is managed with levothyroxine."
             },
-            testTakingTip: "Corticosteroids in thyroid storm: same TWO reasons as in myxedema coma — block T4→T3 conversion + prevent adrenal crisis. Both thyroid emergencies stress the adrenals to the breaking point.",
-            guideSection: "Section 6 — Thyroid Storm",
+            testTakingTip: "Corticosteroids in thyroid storm: same TWO reasons as in myxedema coma - block T4→T3 conversion + prevent adrenal crisis. Both thyroid emergencies stress the adrenals to the breaking point.",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q94 — Thyroid Storm Cooling Measures (Application, Single)
+        // Q94 - Thyroid Storm Cooling Measures (Application, Single)
         {
             id: "thyroid_094",
             type: "single",
@@ -2570,11 +2570,11 @@ var thyroidDisordersQuizData = {
                 d: "Ice packs to large-vessel areas (groin, axillae, neck) are effective adjunctive cooling measures. The nurse should monitor for shivering, which can generate additional heat."
             },
             testTakingTip: "Cooling contrast: Myxedema coma = PASSIVE rewarming only (blankets). Thyroid storm = ACTIVE cooling (blankets, ice, acetaminophen). But BOTH prohibit one thing: myxedema = no active warming, thyroid storm = NO aspirin.",
-            guideSection: "Section 6 — Thyroid Storm",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
-        // Q95 — Thyroid Storm vs Myxedema Coma Treatment Matrix (Analysis, Matrix)
+        // Q95 - Thyroid Storm vs Myxedema Coma Treatment Matrix (Analysis, Matrix)
         {
             id: "thyroid_095",
             type: "matrix",
@@ -2597,29 +2597,29 @@ var thyroidDisordersQuizData = {
                 e: "Thyroid Storm Treatment"
             },
             rationale: {
-                correct: "Thyroid storm (excess hormone) requires drugs to REDUCE hormone and COOL the patient. Myxedema coma (hormone deficiency) requires drugs to REPLACE hormone and WARM the patient — carefully. They are mirror-image emergencies with opposite treatments.",
-                a: "THYROID STORM — Antithyroid drugs block new hormone synthesis. There is no role for antithyroid drugs in myxedema coma, which needs MORE thyroid hormone, not less.",
-                b: "MYXEDEMA COMA — IV levothyroxine replaces the critically deficient thyroid hormone. In thyroid storm, giving more thyroid hormone would be lethal.",
-                c: "THYROID STORM — Active cooling addresses the dangerous hyperthermia (>104°F). Myxedema coma requires warming, not cooling.",
-                d: "MYXEDEMA COMA — Passive rewarming is the only safe method. Active warming causes vasodilation → cardiovascular collapse in a patient whose heart is already severely compromised.",
-                e: "THYROID STORM — Lugol's iodine blocks hormone RELEASE (given after PTU blocks synthesis). In myxedema coma, the goal is the opposite: to restore hormone levels."
+                correct: "Thyroid storm (excess hormone) requires drugs to REDUCE hormone and COOL the patient. Myxedema coma (hormone deficiency) requires drugs to REPLACE hormone and WARM the patient - carefully. They are mirror-image emergencies with opposite treatments.",
+                a: "THYROID STORM - Antithyroid drugs block new hormone synthesis. There is no role for antithyroid drugs in myxedema coma, which needs MORE thyroid hormone, not less.",
+                b: "MYXEDEMA COMA - IV levothyroxine replaces the critically deficient thyroid hormone. In thyroid storm, giving more thyroid hormone would be lethal.",
+                c: "THYROID STORM - Active cooling addresses the dangerous hyperthermia (>104°F). Myxedema coma requires warming, not cooling.",
+                d: "MYXEDEMA COMA - Passive rewarming is the only safe method. Active warming causes vasodilation → cardiovascular collapse in a patient whose heart is already severely compromised.",
+                e: "THYROID STORM - Lugol's iodine blocks hormone RELEASE (given after PTU blocks synthesis). In myxedema coma, the goal is the opposite: to restore hormone levels."
             },
             testTakingTip: "Thyroid storm and myxedema coma are mirror opposites: one has too much hormone, the other too little. If you know the treatment for one, reverse everything for the other. Both use corticosteroids for the same reasons.",
-            guideSection: "Section 6 — Thyroid Storm",
+            guideSection: "Section 6 - Thyroid Storm",
             guideSectionId: "thyroid-storm"
         },
 
         // ================================================================
-        //  SECTION 9 — THYROIDECTOMY COMPLICATIONS (Q96–Q100)
+        //  SECTION 9 - THYROIDECTOMY COMPLICATIONS (Q96–Q100)
         // ================================================================
 
-        // Q96 — Post-Thyroidectomy Hemorrhage Priority (Analysis, Single — Priority)
+        // Q96 - Post-Thyroidectomy Hemorrhage Priority (Analysis, Single - Priority)
         {
             id: "thyroid_096",
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A patient is 4 hours post-thyroidectomy. The nurse observes progressive swelling of the anterior neck, blood-tinged drainage soaking the dressing, and the patient states, \"It feels like something is pressing on my throat — I can't breathe well.\" What is the nurse's PRIORITY action?",
+            stem: "A patient is 4 hours post-thyroidectomy. The nurse observes progressive swelling of the anterior neck, blood-tinged drainage soaking the dressing, and the patient states, \"It feels like something is pressing on my throat - I can't breathe well.\" What is the nurse's PRIORITY action?",
             options: [
                 { id: "a", text: "Elevate the head of bed and apply an ice pack to the neck to reduce swelling." },
                 { id: "b", text: "Administer IV calcium gluconate for possible hypocalcemia." },
@@ -2628,17 +2628,17 @@ var thyroidDisordersQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Neck swelling, bleeding, and dyspnea after thyroidectomy indicate hemorrhage with potential tracheal compression — a life-threatening airway emergency. The surgeon must be notified IMMEDIATELY because the neck sutures/clips may need to be opened AT THE BEDSIDE to evacuate the hematoma and relieve airway pressure. A tracheostomy tray must be readily available for emergency airway access if needed.",
+                correct: "Neck swelling, bleeding, and dyspnea after thyroidectomy indicate hemorrhage with potential tracheal compression - a life-threatening airway emergency. The surgeon must be notified IMMEDIATELY because the neck sutures/clips may need to be opened AT THE BEDSIDE to evacuate the hematoma and relieve airway pressure. A tracheostomy tray must be readily available for emergency airway access if needed.",
                 a: "While head elevation is appropriate positioning, it is NOT the priority. An expanding hematoma compressing the airway requires urgent surgical intervention. Ice and elevation alone will not address this emergency.",
                 b: "Calcium gluconate treats hypocalcemia, not hemorrhage. The presenting symptoms (neck swelling, bleeding, dyspnea) clearly indicate bleeding, not hypocalcemia. Hypocalcemia causes tingling and muscle spasms, not neck swelling.",
-                d: "Pain medication is not appropriate when the patient is showing signs of airway compromise from hemorrhage. Treating pain without addressing the hematoma is dangerous — and opioids could further compromise respiratory drive."
+                d: "Pain medication is not appropriate when the patient is showing signs of airway compromise from hemorrhage. Treating pain without addressing the hematoma is dangerous - and opioids could further compromise respiratory drive."
             },
             testTakingTip: "Post-thyroidectomy: Neck swelling + Dyspnea = HEMORRHAGE → CALL THE SURGEON → suture removal kit ready. The nurse may need to open sutures/clips at the bedside if the airway is obstructed before the surgeon arrives.",
-            guideSection: "Section 9 — Thyroidectomy Nursing Care",
+            guideSection: "Section 9 - Thyroidectomy Nursing Care",
             guideSectionId: "thyroidectomy"
         },
 
-        // Q97 — Post-Thyroidectomy Laryngeal Nerve Damage (Application, Single)
+        // Q97 - Post-Thyroidectomy Laryngeal Nerve Damage (Application, Single)
         {
             id: "thyroid_097",
             type: "single",
@@ -2659,11 +2659,11 @@ var thyroidDisordersQuizData = {
                 d: "Hoarseness is NOT a sign of hypocalcemia. Hypocalcemia causes tingling, numbness, muscle spasms, Chvostek's sign, and Trousseau's sign. While severe hypocalcemia can cause laryngospasm, that presents as stridor and airway obstruction, not hoarseness."
             },
             testTakingTip: "Post-thyroidectomy voice changes: Hoarse/breathy = recurrent laryngeal nerve injury (unilateral). Complete stridor/obstruction = bilateral nerve injury (emergency). Assess voice every 2-4 hours. Always document and notify surgeon.",
-            guideSection: "Section 9 — Thyroidectomy Nursing Care",
+            guideSection: "Section 9 - Thyroidectomy Nursing Care",
             guideSectionId: "thyroidectomy"
         },
 
-        // Q98 — Post-Thyroidectomy Hypocalcemia Signs (Application, Single)
+        // Q98 - Post-Thyroidectomy Hypocalcemia Signs (Application, Single)
         {
             id: "thyroid_098",
             type: "single",
@@ -2679,16 +2679,16 @@ var thyroidDisordersQuizData = {
             correct: "b",
             rationale: {
                 correct: "Trousseau's sign is elicited by inflating a blood pressure cuff above systolic pressure for 3 minutes. A positive result is carpal spasm (hand/wrist contracture), indicating hypocalcemia. After thyroidectomy, hypocalcemia occurs from accidental damage to or removal of the parathyroid glands, which regulate calcium. This typically occurs 24-72 hours post-op.",
-                a: "This is TROUSSEAU'S sign, not Chvostek's. Chvostek's sign is assessed by TAPPING the facial nerve in front of the ear — a positive result is facial muscle twitching on the same side. Both indicate hypocalcemia.",
+                a: "This is TROUSSEAU'S sign, not Chvostek's. Chvostek's sign is assessed by TAPPING the facial nerve in front of the ear - a positive result is facial muscle twitching on the same side. Both indicate hypocalcemia.",
                 c: "Carpal spasm during blood pressure cuff inflation is NOT normal. This is a pathological finding indicating hypocalcemia that requires immediate evaluation and treatment.",
                 d: "Allen's test assesses collateral arterial circulation to the hand (radial/ulnar artery patency), not calcium status. It involves compressing both arteries and observing color return."
             },
             testTakingTip: "Keep them straight: Trousseau's = Trousers (arm cuff) → carpal spasm. Chvostek's = Cheek (facial tap) → facial twitch. Both = hypocalcemia. Remember: 'T for Tourniquet/Trousseau's' and 'C for Cheek/Chvostek's.'",
-            guideSection: "Section 9 — Thyroidectomy Nursing Care",
+            guideSection: "Section 9 - Thyroidectomy Nursing Care",
             guideSectionId: "thyroidectomy"
         },
 
-        // Q99 — Post-Thyroidectomy Comprehensive Care Ordering (Analysis, Ordering)
+        // Q99 - Post-Thyroidectomy Comprehensive Care Ordering (Analysis, Ordering)
         {
             id: "thyroid_099",
             type: "ordering",
@@ -2704,19 +2704,19 @@ var thyroidDisordersQuizData = {
             ],
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
-                correct: "Post-thyroidectomy assessment follows ABC priority: (1) Airway/breathing is always first — the most immediate life threat, (2) Hemorrhage assessment — the most immediate surgical complication, (3) Voice assessment — detects laryngeal nerve damage, (4) Calcium assessment — typically occurs 24-72 hours post-op, (5) Equipment verification — ensures readiness for any emergency. The first four detect the four major complications.",
-                a: "FIRST — Airway assessment is the #1 priority. Post-thyroidectomy patients are at risk for airway compromise from hemorrhage/hematoma, laryngeal edema, or bilateral laryngeal nerve damage. Check breathing, SpO2, stridor.",
-                b: "SECOND — Hemorrhage is the most immediate surgical complication. Inspect the dressing anteriorly AND check behind the neck (blood can pool posteriorly due to gravity). Report increasing drainage.",
-                c: "THIRD — Ask the patient to speak. New hoarseness indicates possible recurrent laryngeal nerve injury. This should be assessed early to establish a baseline and detect injury.",
-                d: "FOURTH — Hypocalcemia from parathyroid damage typically develops 24-72 hours post-op but early assessment establishes a baseline. Check for perioral tingling, Chvostek's, and Trousseau's signs.",
-                e: "FIFTH — While equipment should ideally be verified before the patient arrives, confirming tracheostomy tray, suction, O2, and calcium gluconate at the bedside is essential preparation for potential emergencies."
+                correct: "Post-thyroidectomy assessment follows ABC priority: (1) Airway/breathing is always first - the most immediate life threat, (2) Hemorrhage assessment - the most immediate surgical complication, (3) Voice assessment - detects laryngeal nerve damage, (4) Calcium assessment - typically occurs 24-72 hours post-op, (5) Equipment verification - ensures readiness for any emergency. The first four detect the four major complications.",
+                a: "FIRST - Airway assessment is the #1 priority. Post-thyroidectomy patients are at risk for airway compromise from hemorrhage/hematoma, laryngeal edema, or bilateral laryngeal nerve damage. Check breathing, SpO2, stridor.",
+                b: "SECOND - Hemorrhage is the most immediate surgical complication. Inspect the dressing anteriorly AND check behind the neck (blood can pool posteriorly due to gravity). Report increasing drainage.",
+                c: "THIRD - Ask the patient to speak. New hoarseness indicates possible recurrent laryngeal nerve injury. This should be assessed early to establish a baseline and detect injury.",
+                d: "FOURTH - Hypocalcemia from parathyroid damage typically develops 24-72 hours post-op but early assessment establishes a baseline. Check for perioral tingling, Chvostek's, and Trousseau's signs.",
+                e: "FIFTH - While equipment should ideally be verified before the patient arrives, confirming tracheostomy tray, suction, O2, and calcium gluconate at the bedside is essential preparation for potential emergencies."
             },
-            testTakingTip: "Post-thyroidectomy assessment priority: ABVCE — Airway, Bleeding, Voice, Calcium, Equipment. The four complications to watch for: Hemorrhage, Laryngeal nerve damage, Hypocalcemia, Thyroid storm.",
-            guideSection: "Section 9 — Thyroidectomy Nursing Care",
+            testTakingTip: "Post-thyroidectomy assessment priority: ABVCE - Airway, Bleeding, Voice, Calcium, Equipment. The four complications to watch for: Hemorrhage, Laryngeal nerve damage, Hypocalcemia, Thyroid storm.",
+            guideSection: "Section 9 - Thyroidectomy Nursing Care",
             guideSectionId: "thyroidectomy"
         },
 
-        // Q100 — Comprehensive Thyroidectomy Complications Matrix (Analysis, Matrix)
+        // Q100 - Comprehensive Thyroidectomy Complications Matrix (Analysis, Matrix)
         {
             id: "thyroid_100",
             type: "matrix",
@@ -2742,15 +2742,15 @@ var thyroidDisordersQuizData = {
             },
             rationale: {
                 correct: "Each finding maps to a specific thyroidectomy complication: Chvostek's/Trousseau's signs, paresthesias, muscle cramps, and prolonged QT indicate hypocalcemia. Neck swelling, bleeding, and dyspnea indicate hemorrhage. New hoarseness indicates laryngeal nerve damage.",
-                a: "HYPOCALCEMIA — Positive Chvostek's (facial twitch with nerve tap) and Trousseau's (carpal spasm with BP cuff) are the classic bedside tests for hypocalcemia from parathyroid damage.",
-                b: "HEMORRHAGE — Progressive swelling and visible bleeding indicate post-operative hemorrhage. Blood may also pool behind the neck. The expanding hematoma can compress the trachea.",
-                c: "LARYNGEAL NERVE DAMAGE — New hoarseness indicates unilateral recurrent laryngeal nerve injury affecting vocal cord function. Bilateral damage would cause stridor or complete airway obstruction.",
-                d: "HYPOCALCEMIA — Perioral and fingertip paresthesias (numbness/tingling) are often the EARLIEST symptoms of developing hypocalcemia, preceding Chvostek's and Trousseau's signs.",
-                e: "HEMORRHAGE — Difficulty breathing with choking sensation and neck tightness indicate the hematoma is compressing the trachea — an airway emergency requiring immediate surgeon notification.",
-                f: "HYPOCALCEMIA — Muscle cramps result from increased neuromuscular excitability due to low calcium. Prolonged QT on ECG reflects calcium's role in cardiac repolarization — this can progress to dangerous arrhythmias."
+                a: "HYPOCALCEMIA - Positive Chvostek's (facial twitch with nerve tap) and Trousseau's (carpal spasm with BP cuff) are the classic bedside tests for hypocalcemia from parathyroid damage.",
+                b: "HEMORRHAGE - Progressive swelling and visible bleeding indicate post-operative hemorrhage. Blood may also pool behind the neck. The expanding hematoma can compress the trachea.",
+                c: "LARYNGEAL NERVE DAMAGE - New hoarseness indicates unilateral recurrent laryngeal nerve injury affecting vocal cord function. Bilateral damage would cause stridor or complete airway obstruction.",
+                d: "HYPOCALCEMIA - Perioral and fingertip paresthesias (numbness/tingling) are often the EARLIEST symptoms of developing hypocalcemia, preceding Chvostek's and Trousseau's signs.",
+                e: "HEMORRHAGE - Difficulty breathing with choking sensation and neck tightness indicate the hematoma is compressing the trachea - an airway emergency requiring immediate surgeon notification.",
+                f: "HYPOCALCEMIA - Muscle cramps result from increased neuromuscular excitability due to low calcium. Prolonged QT on ECG reflects calcium's role in cardiac repolarization - this can progress to dangerous arrhythmias."
             },
             testTakingTip: "Post-thyroidectomy complication rapid recognition: SWELLING/BLEEDING → hemorrhage (call surgeon, suture kit ready). VOICE CHANGES → nerve damage (document, notify). TINGLING/SPASMS → hypocalcemia (IV calcium gluconate). Know which emergency equipment matches which complication.",
-            guideSection: "Section 9 — Thyroidectomy Nursing Care",
+            guideSection: "Section 9 - Thyroidectomy Nursing Care",
             guideSectionId: "thyroidectomy"
         }
     ]

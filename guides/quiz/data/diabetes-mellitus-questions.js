@@ -1,5 +1,5 @@
 /**
- * Diabetes Mellitus Quiz — Question Data
+ * Diabetes Mellitus Quiz - Question Data
  * 10 NCLEX-style questions: 5 Single, 2 Priority, 1 Ordering, 1 Matrix, 1 Single
  */
 
@@ -25,13 +25,13 @@ var diabetesMellitusQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Type 1 DM involves autoimmune destruction of pancreatic beta cells, resulting in absolute insulin deficiency — the body produces no insulin at all. Type 2 DM involves cellular resistance to insulin action combined with progressive decline in beta-cell function, resulting in relative insulin deficiency — insulin is present but not effective enough.",
+                correct: "Type 1 DM involves autoimmune destruction of pancreatic beta cells, resulting in absolute insulin deficiency - the body produces no insulin at all. Type 2 DM involves cellular resistance to insulin action combined with progressive decline in beta-cell function, resulting in relative insulin deficiency - insulin is present but not effective enough.",
                 b: "While Type 1 is more commonly diagnosed in youth and Type 2 in adults, both can occur at any age. Type 2 is increasingly diagnosed in children and adolescents, particularly with rising obesity rates.",
                 c: "This is reversed. Type 1 always requires insulin (no endogenous production). Type 2 typically starts with lifestyle modifications and oral agents, though insulin may be needed as the disease progresses.",
                 d: "This is reversed. Obesity is a major risk factor for Type 2 (not Type 1). Type 1 has an autoimmune etiology, sometimes triggered by viral infections or genetic predisposition."
             },
             testTakingTip: "Remember the key words: Type 1 = 'absolute' deficiency (zero insulin). Type 2 = 'relative' deficiency (insulin present but ineffective). This distinction drives all treatment decisions.",
-            guideSection: "Section 1 — Pathophysiology: Type 1 vs Type 2",
+            guideSection: "Section 1 - Pathophysiology: Type 1 vs Type 2",
             guideSectionId: "pathophysiology"
         },
         {
@@ -59,7 +59,7 @@ var diabetesMellitusQuizData = {
                 { name: "Blood Glucose", normal: "70–100 mg/dL (fasting)" }
             ],
             testTakingTip: "In DKA, ALWAYS look at the potassium first. The rule is simple: K+ < 3.3 = hold insulin, replace K+ first. K+ 3.3–5.3 = give K+ with insulin. K+ > 5.3 = hold K+, start insulin. Potassium is the #1 killer in DKA management.",
-            guideSection: "Section 3 — Acute Complications: DKA vs HHS",
+            guideSection: "Section 3 - Acute Complications: DKA vs HHS",
             guideSectionId: "acute-complications"
         },
         {
@@ -76,13 +76,13 @@ var diabetesMellitusQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Metformin must be held before and for 48 hours after IV contrast dye administration. Contrast dye can cause acute kidney injury, and metformin is renally cleared — if kidney function declines, metformin can accumulate and cause life-threatening lactic acidosis. The nurse should verify the medication has been held per protocol.",
+                correct: "Metformin must be held before and for 48 hours after IV contrast dye administration. Contrast dye can cause acute kidney injury, and metformin is renally cleared - if kidney function declines, metformin can accumulate and cause life-threatening lactic acidosis. The nurse should verify the medication has been held per protocol.",
                 a: "Administering metformin before a contrast procedure puts the patient at risk for lactic acidosis if renal function is compromised by the contrast dye.",
                 c: "Switching to insulin is not the standard protocol. The appropriate action is simply to hold metformin before and after the procedure. The provider may order a sliding scale if needed, but the priority nursing action is ensuring metformin is held.",
                 d: "A double dose is never appropriate and would increase GI side effects and lactic acidosis risk. Metformin is resumed at the regular dose 48 hours post-procedure after renal function is confirmed adequate."
             },
             testTakingTip: "Metformin + contrast dye = lactic acidosis risk. Hold metformin before the procedure and for 48 hours after. Renal function should be verified before resuming. This is a classic NCLEX question.",
-            guideSection: "Section 6 — Oral & Injectable Agents",
+            guideSection: "Section 6 - Oral & Injectable Agents",
             guideSectionId: "oral-agents"
         },
         {
@@ -101,14 +101,14 @@ var diabetesMellitusQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "The correct sequence addresses immediate safety (airway), treats the life-threatening hypoglycemia, verifies response, communicates with the provider, and documents/investigates to prevent recurrence.",
-                a: "FIRST — The patient is unconscious, so airway protection is the immediate priority. Positioning on the side prevents aspiration. Never give oral glucose to an unconscious patient.",
-                b: "SECOND — IV D50W is the treatment of choice for severe hypoglycemia in a hospitalized patient with IV access. This rapidly raises blood glucose. If no IV access, administer IM glucagon.",
-                c: "THIRD — After treatment, recheck blood glucose in 15 minutes to verify the intervention was effective. If still < 70 mg/dL, repeat treatment.",
-                d: "FOURTH — Notify the provider of the hypoglycemic event and current glucose level. The insulin regimen may need adjustment.",
-                e: "FIFTH — Document the event thoroughly and investigate the cause (too much insulin, missed meal, increased activity, medication interaction) to prevent recurrence."
+                a: "FIRST - The patient is unconscious, so airway protection is the immediate priority. Positioning on the side prevents aspiration. Never give oral glucose to an unconscious patient.",
+                b: "SECOND - IV D50W is the treatment of choice for severe hypoglycemia in a hospitalized patient with IV access. This rapidly raises blood glucose. If no IV access, administer IM glucagon.",
+                c: "THIRD - After treatment, recheck blood glucose in 15 minutes to verify the intervention was effective. If still < 70 mg/dL, repeat treatment.",
+                d: "FOURTH - Notify the provider of the hypoglycemic event and current glucose level. The insulin regimen may need adjustment.",
+                e: "FIFTH - Document the event thoroughly and investigate the cause (too much insulin, missed meal, increased activity, medication interaction) to prevent recurrence."
             },
             testTakingTip: "For unconscious hypoglycemia: Safety first (airway), then treat (IV D50 or IM glucagon), then verify (recheck BG), then communicate (notify provider), then prevent recurrence (document/investigate).",
-            guideSection: "Section 7 — Hypoglycemia Management",
+            guideSection: "Section 7 - Hypoglycemia Management",
             guideSectionId: "hypoglycemia"
         },
         {
@@ -131,7 +131,7 @@ var diabetesMellitusQuizData = {
                 d: "While both need insulin eventually, the first priority for HHS (Patient B) is aggressive IV fluid replacement. HHS patients are typically 8–12 liters fluid deficit, and rehydration alone will significantly lower glucose. DKA (Patient A) needs fluids too, but also needs to check K+ before starting insulin."
             },
             testTakingTip: "The key differentiators: DKA = ketones + acidosis + Kussmaul breathing. HHS = extreme glucose + no ketones + normal pH + severe dehydration. Treatment priorities differ: DKA = fluids + insulin + K+. HHS = fluids first (massive dehydration).",
-            guideSection: "Section 3 — Acute Complications: DKA vs HHS",
+            guideSection: "Section 3 - Acute Complications: DKA vs HHS",
             guideSectionId: "acute-complications"
         },
         {
@@ -150,13 +150,13 @@ var diabetesMellitusQuizData = {
             correct: { a: "Correct Understanding", b: "Needs More Teaching", c: "Correct Understanding", d: "Needs More Teaching" },
             rationale: {
                 correct: "Taking metformin with food and performing daily foot inspections demonstrate correct understanding. Treating shakiness with metformin and stopping medications when asymptomatic are dangerous misconceptions.",
-                a: "CORRECT UNDERSTANDING — Metformin commonly causes GI side effects (nausea, diarrhea, abdominal discomfort). Taking it with meals minimizes these effects. The extended-release formulation also helps.",
-                b: "NEEDS MORE TEACHING — Shakiness and diaphoresis are signs of hypoglycemia, which requires fast-acting carbohydrates (Rule of 15), not metformin. Metformin does not cause hypoglycemia alone and would not treat it. The patient is confusing diabetes medication with hypoglycemia treatment.",
-                c: "CORRECT UNDERSTANDING — Daily foot inspection is essential for all diabetes patients. Neuropathy causes loss of sensation, meaning injuries can go unnoticed. Never going barefoot prevents foot injuries that could lead to infection and amputation.",
-                d: "NEEDS MORE TEACHING — Type 2 diabetes is often asymptomatic, especially in early stages. Feeling fine does not mean blood glucose is controlled. Stopping medication allows glucose to rise, accelerating organ damage. Diabetes medications are lifelong unless the provider changes the plan."
+                a: "CORRECT UNDERSTANDING - Metformin commonly causes GI side effects (nausea, diarrhea, abdominal discomfort). Taking it with meals minimizes these effects. The extended-release formulation also helps.",
+                b: "NEEDS MORE TEACHING - Shakiness and diaphoresis are signs of hypoglycemia, which requires fast-acting carbohydrates (Rule of 15), not metformin. Metformin does not cause hypoglycemia alone and would not treat it. The patient is confusing diabetes medication with hypoglycemia treatment.",
+                c: "CORRECT UNDERSTANDING - Daily foot inspection is essential for all diabetes patients. Neuropathy causes loss of sensation, meaning injuries can go unnoticed. Never going barefoot prevents foot injuries that could lead to infection and amputation.",
+                d: "NEEDS MORE TEACHING - Type 2 diabetes is often asymptomatic, especially in early stages. Feeling fine does not mean blood glucose is controlled. Stopping medication allows glucose to rise, accelerating organ damage. Diabetes medications are lifelong unless the provider changes the plan."
             },
             testTakingTip: "Two classic 'needs more teaching' red flags: (1) stopping meds because they feel fine, (2) confusing diabetes medication with hypoglycemia treatment. Metformin treats hyperglycemia, not hypoglycemia.",
-            guideSection: "Section 8 — Nursing Management & Patient Teaching",
+            guideSection: "Section 8 - Nursing Management & Patient Teaching",
             guideSectionId: "nursing-management"
         },
         {
@@ -178,8 +178,8 @@ var diabetesMellitusQuizData = {
                 b: "Completely holding both insulins delays necessary glucose management. The Type 1 patient needs basal insulin (NPH). The better approach is to expedite the food, not indefinitely delay insulin.",
                 c: "While NPH provides basal coverage that is less meal-dependent, this approach still delays complete insulin coverage. The best action is to expedite the meal so both insulins can be given on schedule."
             },
-            testTakingTip: "When food and insulin timing don't align, the NCLEX expects you to take action to resolve the conflict — not just hold or just give. Ensure food availability first, then give insulin at the correct timing relative to the meal. Safety first: no food = no mealtime insulin.",
-            guideSection: "Section 5 — Insulin Therapy",
+            testTakingTip: "When food and insulin timing don't align, the NCLEX expects you to take action to resolve the conflict - not just hold or just give. Ensure food availability first, then give insulin at the correct timing relative to the meal. Safety first: no food = no mealtime insulin.",
+            guideSection: "Section 5 - Insulin Therapy",
             guideSectionId: "insulin-therapy"
         },
         {
@@ -202,7 +202,7 @@ var diabetesMellitusQuizData = {
                 d: "Only regular insulin can be given IV. It is the only insulin type approved for intravenous administration. All other types (rapid-acting, NPH, long-acting) are for subcutaneous use only."
             },
             testTakingTip: "Key insulin facts for the NCLEX: NPH = only cloudy insulin (roll, don't shake). Regular = only IV insulin. Glargine/detemir = never mix. When mixing: Regular before NPH ('RN' = clear before cloudy).",
-            guideSection: "Section 5 — Insulin Therapy",
+            guideSection: "Section 5 - Insulin Therapy",
             guideSectionId: "insulin-therapy"
         },
         {
@@ -220,12 +220,12 @@ var diabetesMellitusQuizData = {
             correct: "b",
             rationale: {
                 correct: "This is the #1 sick day mistake. During illness, counter-regulatory stress hormones (cortisol, glucagon, epinephrine) dramatically raise blood glucose even without food intake. Type 1 patients who skip insulin during illness can develop DKA within hours. The nurse should instruct the patient to take insulin, check blood glucose every 4 hours, check urine ketones, and maintain fluid intake.",
-                a: "This is dangerous misinformation. Skipping insulin during illness is the most common cause of DKA in known Type 1 patients. Illness increases glucose — the body needs MORE insulin during sickness, not less.",
+                a: "This is dangerous misinformation. Skipping insulin during illness is the most common cause of DKA in known Type 1 patients. Illness increases glucose - the body needs MORE insulin during sickness, not less.",
                 c: "While dose adjustments may be necessary during illness, this should be determined by the provider based on current glucose readings, not arbitrarily halved. The immediate priority is to resume insulin and check glucose/ketones now.",
-                d: "Stopping all medications is dangerous. Type 1 patients have zero endogenous insulin production — stopping insulin can lead to DKA within hours, which is life-threatening."
+                d: "Stopping all medications is dangerous. Type 1 patients have zero endogenous insulin production - stopping insulin can lead to DKA within hours, which is life-threatening."
             },
             testTakingTip: "Sick day rule #1: NEVER stop insulin when sick. Illness = stress hormones = higher blood glucose, even without eating. This is a top NCLEX topic because the wrong answer seems logical to patients ('not eating = don't need insulin').",
-            guideSection: "Section 8 — Nursing Management & Patient Teaching",
+            guideSection: "Section 8 - Nursing Management & Patient Teaching",
             guideSectionId: "nursing-management"
         },
         {
@@ -248,7 +248,7 @@ var diabetesMellitusQuizData = {
                 d: "While targets are individualized and may change over time, the reason is not simply 'until puberty.' The rationale is protecting the developing brain from hypoglycemia, and individualized goals consider the child's age, hypoglycemia awareness, and activity level."
             },
             testTakingTip: "Pediatric diabetes goals are slightly more relaxed to prevent hypoglycemia, which poses unique risks to the developing brain. The NCLEX tests understanding of WHY goals differ, not just that they differ.",
-            guideSection: "Section 9 — Pediatric Considerations",
+            guideSection: "Section 9 - Pediatric Considerations",
             guideSectionId: "pediatric"
         }
     ]

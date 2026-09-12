@@ -1,5 +1,5 @@
 /**
- * Heart Failure Quiz — Question Data
+ * Heart Failure Quiz - Question Data
  * Extracted from guides/heart-failure.html practice questions section.
  * 8 NCLEX-style questions: 4 Single, 2 Priority, 1 Ordering, 1 Matrix
  */
@@ -27,12 +27,12 @@ var heartFailureQuizData = {
             correct: "b",
             rationale: {
                 correct: "Left-sided heart failure causes blood to back up into the pulmonary system. Orthopnea (needing pillows to sleep upright), dyspnea, and bilateral crackles are hallmark pulmonary congestion signs. The absence of JVD and peripheral edema rules out significant right-sided involvement.",
-                a: "Right-sided HF presents with systemic congestion \u2014 JVD, peripheral edema, hepatomegaly \u2014 which this patient lacks.",
+                a: "Right-sided HF presents with systemic congestion - JVD, peripheral edema, hepatomegaly - which this patient lacks.",
                 c: "Biventricular failure would include both pulmonary AND systemic signs. This patient has no right-sided symptoms.",
                 d: "Cor pulmonale is right-sided HF caused by pulmonary disease. It would present with JVD and edema, not primarily pulmonary symptoms."
             },
             testTakingTip: "Remember: Left = Lung symptoms. Right = Rest of the body. Match the symptoms to the side.",
-            guideSection: "Section 3 \u2014 Left-Sided vs Right-Sided Heart Failure",
+            guideSection: "Section 3 - Left-Sided vs Right-Sided Heart Failure",
             guideSectionId: "left-vs-right"
         },
         {
@@ -55,7 +55,7 @@ var heartFailureQuizData = {
                 d: "Waiting until morning delays intervention. A 3-lb gain in 24 hours exceeds the 2-lb threshold and requires same-day provider communication."
             },
             testTakingTip: "Know the weight thresholds: gain of >2 lbs/day OR >5 lbs/week = notify provider. When the NCLEX asks what to do \"first,\" look for the answer that addresses the immediate clinical concern without overreacting or underreacting.",
-            guideSection: "Section 5 \u2014 Nursing Assessment",
+            guideSection: "Section 5 - Nursing Assessment",
             guideSectionId: "assessment"
         },
         {
@@ -63,7 +63,7 @@ var heartFailureQuizData = {
             type: "ordering",
             subtype: null,
             difficulty: "application",
-            stem: "A patient arrives in the ED with acute decompensated heart failure \u2014 severe dyspnea, crackles throughout all lung fields, SpO2 84%, and BP 158/96 mmHg. Place the following nursing interventions in priority order.",
+            stem: "A patient arrives in the ED with acute decompensated heart failure - severe dyspnea, crackles throughout all lung fields, SpO2 84%, and BP 158/96 mmHg. Place the following nursing interventions in priority order.",
             options: [
                 { id: "a", text: "Position the patient upright (high Fowler\u2019s position)" },
                 { id: "b", text: "Apply high-flow supplemental oxygen" },
@@ -74,14 +74,14 @@ var heartFailureQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "The correct sequence follows ABCs and immediate stabilization: position upright to reduce preload and improve breathing, oxygenate the hypoxic patient, establish access and begin diuresis, obtain diagnostic data, then communicate with the provider for ongoing management.",
-                a: "FIRST \u2014 Positioning the patient upright is the fastest intervention a nurse can perform independently. High Fowler\u2019s reduces venous return (preload), decreases pulmonary congestion, and improves diaphragm excursion.",
-                b: "SECOND \u2014 SpO2 of 84% is critically low and must be addressed immediately after positioning. Supplemental oxygen corrects life-threatening hypoxia.",
-                c: "THIRD \u2014 IV access is needed for medication administration. IV furosemide is the first-line drug for acute fluid overload and begins removing excess fluid from the pulmonary vasculature.",
-                d: "FOURTH \u2014 A 12-lead ECG identifies whether an acute cardiac event (MI, arrhythmia) triggered the decompensation. This is essential diagnostic data but comes after life-saving interventions are initiated.",
-                e: "FIFTH \u2014 After stabilizing interventions are underway and initial data is gathered, the nurse notifies the provider with a complete SBAR report to obtain orders for ongoing management."
+                a: "FIRST - Positioning the patient upright is the fastest intervention a nurse can perform independently. High Fowler\u2019s reduces venous return (preload), decreases pulmonary congestion, and improves diaphragm excursion.",
+                b: "SECOND - SpO2 of 84% is critically low and must be addressed immediately after positioning. Supplemental oxygen corrects life-threatening hypoxia.",
+                c: "THIRD - IV access is needed for medication administration. IV furosemide is the first-line drug for acute fluid overload and begins removing excess fluid from the pulmonary vasculature.",
+                d: "FOURTH - A 12-lead ECG identifies whether an acute cardiac event (MI, arrhythmia) triggered the decompensation. This is essential diagnostic data but comes after life-saving interventions are initiated.",
+                e: "FIFTH - After stabilizing interventions are underway and initial data is gathered, the nurse notifies the provider with a complete SBAR report to obtain orders for ongoing management."
             },
             testTakingTip: "For ordering questions, think ABCs first: Airway/positioning, then Breathing/oxygen, then Circulation/medications. Quick independent nursing actions (positioning, O2) come before actions requiring orders or equipment setup.",
-            guideSection: "Section 6 \u2014 Priority Nursing Interventions",
+            guideSection: "Section 6 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -98,16 +98,16 @@ var heartFailureQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "HFrEF (systolic dysfunction) is defined by an EF < 40%. An EF of 30% means the ventricle cannot contract effectively \u2014 it is weak and dilated. This is the \"reduced\" category.",
+                correct: "HFrEF (systolic dysfunction) is defined by an EF < 40%. An EF of 30% means the ventricle cannot contract effectively - it is weak and dilated. This is the \"reduced\" category.",
                 a: "HFpEF has an EF \u2265 50%. The heart contracts normally but cannot relax and fill properly (diastolic dysfunction).",
                 c: "HFmrEF (midrange) has an EF of 41-49%. This patient\u2019s EF of 30% is below that range.",
                 d: "\"Compensated heart failure\" describes a functional status (symptoms controlled), not an EF classification. This patient has active symptoms."
             },
-            testTakingTip: "Know the EF cutoffs: <40% = HFrEF (reduced), 41-49% = HFmrEF (midrange), \u226550% = HFpEF (preserved). Don\u2019t be tricked by a \"normal\" EF \u2014 HFpEF patients still have heart failure!",
+            testTakingTip: "Know the EF cutoffs: <40% = HFrEF (reduced), 41-49% = HFmrEF (midrange), \u226550% = HFpEF (preserved). Don\u2019t be tricked by a \"normal\" EF - HFpEF patients still have heart failure!",
             labValues: [
                 { name: "Ejection Fraction (EF)", normal: "55\u201370%" }
             ],
-            guideSection: "Section 4 \u2014 Systolic vs Diastolic Dysfunction",
+            guideSection: "Section 4 - Systolic vs Diastolic Dysfunction",
             guideSectionId: "systolic-diastolic"
         },
         {
@@ -136,7 +136,7 @@ var heartFailureQuizData = {
                 d: "Digoxin of 1.8 ng/mL is within the therapeutic range (0.5-2.0 ng/mL), but combined with hypokalemia, even a therapeutic level can produce toxicity."
             },
             testTakingTip: "When a patient takes digoxin, ALWAYS look at the potassium level first. Low potassium + digoxin = toxicity risk, even when the digoxin level appears \"normal.\" This is a classic NCLEX trap.",
-            guideSection: "Section 7 \u2014 Pharmacological Management",
+            guideSection: "Section 7 - Pharmacological Management",
             guideSectionId: "medications"
         },
         {
@@ -155,13 +155,13 @@ var heartFailureQuizData = {
             correct: { a: "Correct Understanding", b: "Needs More Teaching", c: "Correct Understanding", d: "Needs More Teaching" },
             rationale: {
                 correct: "Daily weights and fluid restriction adherence demonstrate proper self-management. Stopping medications independently and complete avoidance of activity are dangerous misconceptions requiring re-education.",
-                a: "CORRECT UNDERSTANDING \u2014 Daily weights at the same time, on the same scale, in similar clothing is the gold standard for monitoring fluid retention. A gain of >2 lbs/day or >5 lbs/week = call provider.",
-                b: "NEEDS MORE TEACHING \u2014 ACE inhibitors like lisinopril are taken for life in HF, regardless of how the patient feels. They reduce afterload, prevent cardiac remodeling, and improve survival. The medication IS the reason the patient feels better.",
-                c: "CORRECT UNDERSTANDING \u2014 Fluid restriction (typically 1.5\u20132 L/day) reduces cardiac workload and prevents fluid overload. Measuring daily intake shows active engagement with the treatment plan.",
-                d: "NEEDS MORE TEACHING \u2014 While patients should avoid overexertion, moderate physical activity (walking, cardiac rehab) is recommended for stable HF patients. Complete bed rest leads to deconditioning, muscle wasting, and DVT risk."
+                a: "CORRECT UNDERSTANDING - Daily weights at the same time, on the same scale, in similar clothing is the gold standard for monitoring fluid retention. A gain of >2 lbs/day or >5 lbs/week = call provider.",
+                b: "NEEDS MORE TEACHING - ACE inhibitors like lisinopril are taken for life in HF, regardless of how the patient feels. They reduce afterload, prevent cardiac remodeling, and improve survival. The medication IS the reason the patient feels better.",
+                c: "CORRECT UNDERSTANDING - Fluid restriction (typically 1.5\u20132 L/day) reduces cardiac workload and prevents fluid overload. Measuring daily intake shows active engagement with the treatment plan.",
+                d: "NEEDS MORE TEACHING - While patients should avoid overexertion, moderate physical activity (walking, cardiac rehab) is recommended for stable HF patients. Complete bed rest leads to deconditioning, muscle wasting, and DVT risk."
             },
             testTakingTip: "Watch for two common HF misconceptions: (1) stopping medications when feeling better, and (2) complete activity avoidance. Both are \"needs more teaching\" red flags on the NCLEX.",
-            guideSection: "Section 7 \u2014 Pharmacological Management",
+            guideSection: "Section 7 - Pharmacological Management",
             guideSectionId: "medications"
         },
         {
@@ -178,7 +178,7 @@ var heartFailureQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The clinical picture \u2014 confusion, muscle cramps, new irregular rhythm, and U waves on the monitor \u2014 is classic hypokalemia. The IV furosemide is causing excessive potassium loss. Obtaining a stat potassium level confirms the suspected electrolyte imbalance and guides the urgency of replacement. This is a \"collect data\" before \"intervene\" situation.",
+                correct: "The clinical picture - confusion, muscle cramps, new irregular rhythm, and U waves on the monitor - is classic hypokalemia. The IV furosemide is causing excessive potassium loss. Obtaining a stat potassium level confirms the suspected electrolyte imbalance and guides the urgency of replacement. This is a \"collect data\" before \"intervene\" situation.",
                 a: "Giving more furosemide would worsen potassium depletion. This is the opposite of what\u2019s needed.",
                 c: "A 12-lead ECG would provide more information about the arrhythmia but does not address the underlying electrolyte problem. The telemetry already shows the rhythm change.",
                 d: "The rapid response team may be needed, but the nurse should first collect the critical data (potassium level) that will guide the team\u2019s interventions. The patient is not in immediate cardiac arrest."
@@ -187,7 +187,7 @@ var heartFailureQuizData = {
             labValues: [
                 { name: "Potassium (K+)", normal: "3.5\u20135.0 mEq/L" }
             ],
-            guideSection: "Section 7 \u2014 Pharmacological Management",
+            guideSection: "Section 7 - Pharmacological Management",
             guideSectionId: "medications"
         },
         {
@@ -204,13 +204,13 @@ var heartFailureQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Beta-blockers reduce heart rate and contractility, which can initially worsen HF symptoms (increased fatigue, fluid retention, hypotension). However, long-term use improves survival by reducing myocardial remodeling and oxygen demand. The \"start low, go slow\" principle is critical \u2014 doses are increased every 2 weeks as tolerated.",
+                correct: "Beta-blockers reduce heart rate and contractility, which can initially worsen HF symptoms (increased fatigue, fluid retention, hypotension). However, long-term use improves survival by reducing myocardial remodeling and oxygen demand. The \"start low, go slow\" principle is critical - doses are increased every 2 weeks as tolerated.",
                 b: "While ACE inhibitors are often started first, the slow beta-blocker titration is due to the drug\u2019s own hemodynamic effects, not a prerequisite relationship with ACE inhibitors.",
                 c: "Beta-blockers do not cause irreversible liver damage. Hepatotoxicity is rare and not the reason for slow titration.",
                 d: "Carvedilol dosing is independent of digoxin levels. They are separate medications with different titration guidelines."
             },
-            testTakingTip: "\"Start low, go slow\" for beta-blockers in HF. They improve long-term survival but can transiently worsen symptoms. Also remember: never stop beta-blockers abruptly \u2014 taper gradually to avoid rebound tachycardia.",
-            guideSection: "Section 7 \u2014 Pharmacological Management",
+            testTakingTip: "\"Start low, go slow\" for beta-blockers in HF. They improve long-term survival but can transiently worsen symptoms. Also remember: never stop beta-blockers abruptly - taper gradually to avoid rebound tachycardia.",
+            guideSection: "Section 7 - Pharmacological Management",
             guideSectionId: "medications"
         }
     ]

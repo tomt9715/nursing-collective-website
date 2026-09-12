@@ -1,5 +1,5 @@
 /**
- * UTI & Pyelonephritis Quiz — Question Data
+ * UTI & Pyelonephritis Quiz - Question Data
  * NCLEX-style questions covering lower UTI, pyelonephritis, CAUTI,
  * urosepsis, and patient education.
  */
@@ -27,12 +27,12 @@ var urinaryTractInfectionsQuizData = {
             correct: "b",
             rationale: {
                 correct: "Dysuria, frequency, urgency, and suprapubic pressure without fever, flank pain, or CVA tenderness is the classic lower UTI presentation.",
-                a: "Pyelonephritis adds fever, chills, flank pain, and CVA tenderness — none described here.",
+                a: "Pyelonephritis adds fever, chills, flank pain, and CVA tenderness - none described here.",
                 c: "Urolithiasis typically presents with severe colicky flank pain radiating to the groin, often with hematuria.",
-                d: "Urosepsis requires systemic signs (hypotension, tachycardia, altered mental status) — she has none."
+                d: "Urosepsis requires systemic signs (hypotension, tachycardia, altered mental status) - she has none."
             },
             testTakingTip: "No fever + no flank pain + no CVA tenderness = lower tract. This is the exam distinction.",
-            guideSection: "Section 3 — Lower UTI",
+            guideSection: "Section 3 - Lower UTI",
             guideSectionId: "lower-uti"
         },
         {
@@ -55,7 +55,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "Nocturia without systemic signs would point to a lower UTI or BPH, not pyelonephritis."
             },
             testTakingTip: "Fever + flank pain + CVA tenderness = upper UTI. Memorize this triad.",
-            guideSection: "Section 4 — Pyelonephritis",
+            guideSection: "Section 4 - Pyelonephritis",
             guideSectionId: "pyelonephritis"
         },
         {
@@ -78,7 +78,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "Glucose is unrelated to infection localization."
             },
             testTakingTip: "Casts form in tubules. WBC casts = kidney-level inflammation.",
-            guideSection: "Section 5 — Lower vs Upper UTI",
+            guideSection: "Section 5 - Lower vs Upper UTI",
             guideSectionId: "compare"
         },
         {
@@ -88,10 +88,10 @@ var urinaryTractInfectionsQuizData = {
             difficulty: "application",
             stem: "A patient with uncomplicated cystitis asks how long they'll be on antibiotics. The best nursing response is:",
             options: [
-                { id: "a", text: "\"Just until your symptoms resolve — usually 2 days.\"" },
+                { id: "a", text: "\"Just until your symptoms resolve - usually 2 days.\"" },
                 { id: "b", text: "\"You'll be on oral antibiotics for 5 to 7 days. Finish the full course even if you feel better.\"" },
                 { id: "c", text: "\"You'll be on IV antibiotics for 2 weeks.\"" },
-                { id: "d", text: "\"A single dose is usually enough — stop when the bottle's empty.\"" }
+                { id: "d", text: "\"A single dose is usually enough - stop when the bottle's empty.\"" }
             ],
             correct: "b",
             rationale: {
@@ -101,7 +101,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "Single-dose therapy is not standard for most uncomplicated UTIs in adults and would not be appropriate teaching."
             },
             testTakingTip: "Lower UTI = 5–7 days oral. Pyelonephritis = ~2 weeks, often IV.",
-            guideSection: "Section 3 — Lower UTI",
+            guideSection: "Section 3 - Lower UTI",
             guideSectionId: "lower-uti"
         },
         {
@@ -124,7 +124,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "Catheter specimens should be collected from the sampling port, never from the drainage bag (contaminated)."
             },
             testTakingTip: "Collect cultures BEFORE starting antibiotics. Two containers. Sample from the port, not the bag.",
-            guideSection: "Section 1 — Kidney & Urinary Assessment",
+            guideSection: "Section 1 - Kidney & Urinary Assessment",
             guideSectionId: "assessment"
         },
         {
@@ -147,7 +147,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "EEG is reserved for suspected seizures."
             },
             testTakingTip: "In older adults: new confusion, falls, or incontinence = rule out UTI first.",
-            guideSection: "Section 3 — Lower UTI",
+            guideSection: "Section 3 - Lower UTI",
             guideSectionId: "lower-uti"
         },
         {
@@ -169,11 +169,11 @@ var urinaryTractInfectionsQuizData = {
                 a: "Diabetes + neuropathy = high glucose in urine + incomplete emptying.",
                 b: "Pregnancy changes urinary tract tone and increases UTI and pyelonephritis risk.",
                 c: "BPH causes retention and stasis.",
-                d: "Healthy without modifiers — baseline risk only.",
+                d: "Healthy without modifiers - baseline risk only.",
                 e: "Neurogenic bladder + catheter = classic high-risk combination."
             },
             testTakingTip: "Anything that causes stasis, sugar in urine, or bypasses defenses = UTI risk.",
-            guideSection: "Section 2 — How Infection Ascends",
+            guideSection: "Section 2 - How Infection Ascends",
             guideSectionId: "pathway"
         },
         {
@@ -191,12 +191,12 @@ var urinaryTractInfectionsQuizData = {
             correct: "c",
             rationale: {
                 correct: "Wiping front to back prevents fecal bacteria from reaching the urethra; voiding after intercourse flushes bacteria introduced during sex.",
-                a: "Fluid restriction concentrates urine and promotes bacterial growth — opposite of what's needed.",
+                a: "Fluid restriction concentrates urine and promotes bacterial growth - opposite of what's needed.",
                 b: "Holding urine allows bacteria to multiply in a stagnant bladder.",
                 d: "Bubble baths irritate the urethra and are associated with UTIs."
             },
             testTakingTip: "Hydrate, void regularly (q2–3h), void after sex, wipe front to back, skip bubble baths.",
-            guideSection: "Section 8 — Prevention & Education",
+            guideSection: "Section 8 - Prevention & Education",
             guideSectionId: "education"
         },
         {
@@ -219,7 +219,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "These are lower-tract symptoms and do not indicate sepsis."
             },
             testTakingTip: "Hypotension + tachycardia + altered mental status + oliguria = sepsis. Call rapid response.",
-            guideSection: "Section 7 — Urosepsis",
+            guideSection: "Section 7 - Urosepsis",
             guideSectionId: "urosepsis"
         },
         {
@@ -242,7 +242,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "Routine catheter irrigation is not indicated and introduces infection risk."
             },
             testTakingTip: "Best CAUTI prevention = don't have a catheter. Second best = take it out early.",
-            guideSection: "Section 6 — CAUTI",
+            guideSection: "Section 6 - CAUTI",
             guideSectionId: "cauti"
         },
         {
@@ -259,13 +259,13 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Anuria is defined as urine output less than 50 mL in 24 hours — a kidney emergency.",
+                correct: "Anuria is defined as urine output less than 50 mL in 24 hours - a kidney emergency.",
                 a: "Oliguria is reduced urine output (typically <0.5 mL/kg/hr) but still present.",
                 b: "Dysuria is painful or difficult urination.",
                 d: "Polyuria is excessive urine output."
             },
             testTakingTip: "Anuria <50 mL/24h. Oliguria <0.5 mL/kg/hr. Memorize the definitions.",
-            guideSection: "Section 1 — Kidney & Urinary Assessment",
+            guideSection: "Section 1 - Kidney & Urinary Assessment",
             guideSectionId: "assessment"
         },
         {
@@ -277,7 +277,7 @@ var urinaryTractInfectionsQuizData = {
             options: [
                 { id: "a", text: "\"Stop the medication immediately and come in.\"" },
                 { id: "b", text: "\"This is an expected harmless effect of the medication.\"" },
-                { id: "c", text: "\"This is a sign of kidney failure — go to the ED.\"" },
+                { id: "c", text: "\"This is a sign of kidney failure - go to the ED.\"" },
                 { id: "d", text: "\"Drink cranberry juice to clear the color.\"" }
             ],
             correct: "b",
@@ -288,7 +288,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "Cranberry juice will not affect the color change from phenazopyridine."
             },
             testTakingTip: "Pyridium → orange/red urine. Warn patients in advance so they don't panic.",
-            guideSection: "Section 3 — Lower UTI",
+            guideSection: "Section 3 - Lower UTI",
             guideSectionId: "lower-uti"
         },
         {
@@ -305,13 +305,13 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Completing the full course prevents recurrence and antibiotic resistance — a cornerstone teaching point for UTI.",
+                correct: "Completing the full course prevents recurrence and antibiotic resistance - a cornerstone teaching point for UTI.",
                 a: "Stopping early is the single most common cause of recurrent UTI and resistance.",
                 c: "Patients should drink 8–10 glasses of water daily; dilution is not a concern.",
                 d: "Voiding every 2–3 hours is recommended, not every 6."
             },
             testTakingTip: "Finish the antibiotic course. Drink 8–10 glasses. Void q2–3h.",
-            guideSection: "Section 8 — Prevention & Education",
+            guideSection: "Section 8 - Prevention & Education",
             guideSectionId: "education"
         },
         {
@@ -328,14 +328,14 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "Follow-up urine culture 2 weeks after completing antibiotics confirms clearance of infection — standard practice for pyelonephritis.",
+                correct: "Follow-up urine culture 2 weeks after completing antibiotics confirms clearance of infection - standard practice for pyelonephritis.",
                 a: "Correct answer.",
                 b: "Follow-up cultures are standard after pyelonephritis due to the risk of persistent infection and scarring.",
                 c: "Routine renal ultrasound every 6 months is not indicated unless structural issues are suspected.",
                 d: "Indefinite prophylactic antibiotics are not standard."
             },
             testTakingTip: "Pyelonephritis → repeat culture 2 weeks after antibiotics to confirm cure.",
-            guideSection: "Section 4 — Pyelonephritis",
+            guideSection: "Section 4 - Pyelonephritis",
             guideSectionId: "pyelonephritis"
         },
         {
@@ -358,7 +358,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "Intermittent clamping is not recommended for indwelling catheters."
             },
             testTakingTip: "Below bladder. Closed system. No dependent loops. Out as soon as possible.",
-            guideSection: "Section 6 — CAUTI",
+            guideSection: "Section 6 - CAUTI",
             guideSectionId: "cauti"
         },
         {
@@ -375,13 +375,13 @@ var urinaryTractInfectionsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Hypotension, tachycardia, tachypnea, and altered mental status meet SIRS/sepsis criteria — likely urosepsis. See this patient first.",
+                correct: "Hypotension, tachycardia, tachypnea, and altered mental status meet SIRS/sepsis criteria - likely urosepsis. See this patient first.",
                 a: "Resolving cystitis on treatment is stable.",
                 c: "Orange urine from Pyridium is expected and non-urgent.",
                 d: "Educational question, non-urgent."
             },
             testTakingTip: "Prioritize: unstable vitals + altered mental status = urosepsis until proven otherwise.",
-            guideSection: "Section 7 — Urosepsis",
+            guideSection: "Section 7 - Urosepsis",
             guideSectionId: "urosepsis"
         },
         {
@@ -399,12 +399,12 @@ var urinaryTractInfectionsQuizData = {
             correct: "b",
             rationale: {
                 correct: "Serum creatinine most directly reflects GFR because it is produced at a relatively constant rate and excreted almost entirely by glomerular filtration.",
-                a: "BUN is useful but is affected by hydration, protein intake, and GI bleeding — less specific than creatinine.",
+                a: "BUN is useful but is affected by hydration, protein intake, and GI bleeding - less specific than creatinine.",
                 c: "Sodium reflects fluid/volume status rather than kidney function directly.",
                 d: "Specific gravity reflects urine concentration, not GFR."
             },
             testTakingTip: "Creatinine = most specific for kidney function. BUN is sensitive but non-specific.",
-            guideSection: "Section 1 — Kidney & Urinary Assessment",
+            guideSection: "Section 1 - Kidney & Urinary Assessment",
             guideSectionId: "assessment"
         },
         {
@@ -427,7 +427,7 @@ var urinaryTractInfectionsQuizData = {
                 d: "Pyelonephritis increases the risk of preterm labor and low birth weight."
             },
             testTakingTip: "Pyelonephritis in pregnancy = admit, IV antibiotics, monitor for preterm labor.",
-            guideSection: "Section 4 — Pyelonephritis",
+            guideSection: "Section 4 - Pyelonephritis",
             guideSectionId: "pyelonephritis"
         }
     ]

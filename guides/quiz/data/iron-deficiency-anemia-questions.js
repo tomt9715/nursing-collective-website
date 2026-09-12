@@ -1,5 +1,5 @@
 /**
- * Iron-Deficiency Anemia Quiz — Question Data
+ * Iron-Deficiency Anemia Quiz - Question Data
  * Clinical-scenario questions covering pathophysiology, clinical findings,
  * labs, oral iron administration, and iron poisoning.
  */
@@ -32,7 +32,7 @@ var ironDeficiencyAnemiaQuizData = {
                 d: "Vitamin D toxicity would require mega-dosing supplements, not milk intake."
             },
             testTakingTip: "Toddler + \u201ctoo much milk\u201d = IDA.",
-            guideSection: "Section 1 \u2014 Fundamentals",
+            guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         },
         {
@@ -55,7 +55,7 @@ var ironDeficiencyAnemiaQuizData = {
                 d: "Fever and splenomegaly suggest infection, leukemia, or EBV, not IDA."
             },
             testTakingTip: "Pallor + fatigue + pica = IDA until proven otherwise.",
-            guideSection: "Section 2 \u2014 Clinical Manifestations",
+            guideSection: "Section 2 - Clinical Manifestations",
             guideSectionId: "clinical"
         },
         {
@@ -78,7 +78,7 @@ var ironDeficiencyAnemiaQuizData = {
                 d: "High ferritin + low TIBC = anemia of chronic disease."
             },
             testTakingTip: "IDA: small, pale RBCs + low ferritin + high TIBC.",
-            guideSection: "Section 3 \u2014 Diagnosis",
+            guideSection: "Section 3 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -95,13 +95,13 @@ var ironDeficiencyAnemiaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Liquid iron stains teeth. Use a straw or syringe aimed toward the back of the cheek, then rinse or brush afterward. Dark green/black stools are NORMAL and expected \u2014 don\u2019t stop. Avoid milk and calcium, which block absorption.",
+                correct: "Liquid iron stains teeth. Use a straw or syringe aimed toward the back of the cheek, then rinse or brush afterward. Dark green/black stools are NORMAL and expected - don\u2019t stop. Avoid milk and calcium, which block absorption.",
                 a: "Milk reduces iron absorption and should be avoided at the same time.",
                 c: "Calcium blocks iron absorption.",
                 d: "Dark stool is expected; stopping early causes relapse."
             },
             testTakingTip: "Straw + vitamin C. No milk/calcium. Dark stool = normal.",
-            guideSection: "Section 5 \u2014 Nursing & Safety",
+            guideSection: "Section 5 - Nursing & Safety",
             guideSectionId: "nursing"
         },
         {
@@ -124,7 +124,7 @@ var ironDeficiencyAnemiaQuizData = {
                 d: "Antacids reduce absorption."
             },
             testTakingTip: "Iron + vitamin C = best absorption. Avoid milk, tea, antacids.",
-            guideSection: "Section 4 \u2014 Treatment",
+            guideSection: "Section 4 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -134,20 +134,20 @@ var ironDeficiencyAnemiaQuizData = {
             difficulty: "application",
             stem: "A parent calls concerned: \u201cMy child\u2019s stool is very dark green, almost black, since starting iron. Should I stop the medication?\u201d The BEST nursing response is:",
             options: [
-                { id: "a", text: "\u201cYes, stop the iron and bring the child in immediately \u2014 it\u2019s likely GI bleeding.\u201d" },
+                { id: "a", text: "\u201cYes, stop the iron and bring the child in immediately - it\u2019s likely GI bleeding.\u201d" },
                 { id: "b", text: "\u201cDark green or black stool is an expected, harmless side effect of iron. Continue giving the medicine.\u201d" },
                 { id: "c", text: "\u201cDouble the dose to make sure it\u2019s absorbing.\u201d" },
                 { id: "d", text: "\u201cSwitch to milk-based formula to lighten the stool.\u201d" }
             ],
             correct: "b",
             rationale: {
-                correct: "Dark green or black stools from iron supplementation are normal and expected \u2014 it\u2019s unabsorbed iron. It does NOT indicate GI bleeding. Melena from true GI bleeding is sticky, tarry, foul-smelling and typically accompanied by other symptoms.",
+                correct: "Dark green or black stools from iron supplementation are normal and expected - it\u2019s unabsorbed iron. It does NOT indicate GI bleeding. Melena from true GI bleeding is sticky, tarry, foul-smelling and typically accompanied by other symptoms.",
                 a: "Dark stool from iron is expected, not a bleed.",
                 c: "Don\u2019t double dose.",
                 d: "Milk reduces iron absorption; irrelevant to stool color anyway."
             },
             testTakingTip: "Dark stool + iron = normal. True melena = sticky + tarry + other symptoms.",
-            guideSection: "Section 5 \u2014 Nursing & Safety",
+            guideSection: "Section 5 - Nursing & Safety",
             guideSectionId: "nursing"
         },
         {
@@ -170,7 +170,7 @@ var ironDeficiencyAnemiaQuizData = {
                 d: "Home observation can be fatal with iron toxicity."
             },
             testTakingTip: "Iron OD = poison control + ED + deferoxamine. No charcoal, no ipecac.",
-            guideSection: "Section 5 \u2014 Nursing & Safety",
+            guideSection: "Section 5 - Nursing & Safety",
             guideSectionId: "nursing"
         },
         {
@@ -187,13 +187,13 @@ var ironDeficiencyAnemiaQuizData = {
             ],
             correct: "d",
             rationale: {
-                correct: "Deferoxamine chelates free iron and is excreted in the urine, turning it reddish-orange \u2014 an expected therapeutic sign.",
+                correct: "Deferoxamine chelates free iron and is excreted in the urine, turning it reddish-orange - an expected therapeutic sign.",
                 a: "Naloxone reverses opioid overdose.",
                 b: "Flumazenil reverses benzodiazepines.",
                 c: "N-acetylcysteine is the acetaminophen antidote."
             },
             testTakingTip: "Iron = Deferoxamine. Acetaminophen = NAC. Opioids = Naloxone. Benzos = Flumazenil.",
-            guideSection: "Section 5 \u2014 Nursing & Safety",
+            guideSection: "Section 5 - Nursing & Safety",
             guideSectionId: "nursing"
         },
         {
@@ -213,15 +213,15 @@ var ironDeficiencyAnemiaQuizData = {
             correct: ["a", "b", "c", "e"],
             rationale: {
                 correct: "Heme iron (meat), fortified cereals, vitamin C sources (strawberries, oranges), and non-heme plant sources (beans, lentils, spinach) all support iron repletion. Tea and milk are INHIBITORS of iron absorption.",
-                a: "Correct \u2014 heme iron is best absorbed.",
-                b: "Correct \u2014 fortified cereal is a standard first solid food.",
-                c: "Correct \u2014 vitamin C enhances absorption.",
+                a: "Correct - heme iron is best absorbed.",
+                b: "Correct - fortified cereal is a standard first solid food.",
+                c: "Correct - vitamin C enhances absorption.",
                 d: "Tea tannins reduce iron absorption.",
-                e: "Correct \u2014 non-heme plant iron plus vitamin C pairing.",
+                e: "Correct - non-heme plant iron plus vitamin C pairing.",
                 f: "Milk blocks absorption; limit dairy around iron intake."
             },
             testTakingTip: "Meat + fortified + vitamin C. Avoid milk + tea at iron times.",
-            guideSection: "Section 6 \u2014 Family Education",
+            guideSection: "Section 6 - Family Education",
             guideSectionId: "family"
         },
         {
@@ -238,13 +238,13 @@ var ironDeficiencyAnemiaQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Serum ferritin reflects stored iron. It is the FIRST lab to drop in iron deficiency \u2014 before hemoglobin or MCV change. Low ferritin with normal hemoglobin identifies early iron deficiency.",
+                correct: "Serum ferritin reflects stored iron. It is the FIRST lab to drop in iron deficiency - before hemoglobin or MCV change. Low ferritin with normal hemoglobin identifies early iron deficiency.",
                 a: "Hemoglobin falls later, after stores are depleted.",
                 b: "MCV decreases after sustained deficiency.",
                 d: "WBC is unrelated."
             },
             testTakingTip: "Ferritin drops FIRST. Hgb drops last.",
-            guideSection: "Section 3 \u2014 Diagnosis",
+            guideSection: "Section 3 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -267,7 +267,7 @@ var ironDeficiencyAnemiaQuizData = {
                 d: "Stopping too early leads to relapse."
             },
             testTakingTip: "Between meals + vitamin C = best absorption.",
-            guideSection: "Section 4 \u2014 Treatment",
+            guideSection: "Section 4 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -290,7 +290,7 @@ var ironDeficiencyAnemiaQuizData = {
                 d: "Decreasing MCV = worsening."
             },
             testTakingTip: "Retic count up + Hgb rising = good response.",
-            guideSection: "Section 4 \u2014 Treatment",
+            guideSection: "Section 4 - Treatment",
             guideSectionId: "treatment"
         },
         {
@@ -313,7 +313,7 @@ var ironDeficiencyAnemiaQuizData = {
                 d: "Iron supplements don\u2019t contain lead."
             },
             testTakingTip: "Pica + IDA = check blood lead level.",
-            guideSection: "Section 2 \u2014 Clinical Manifestations",
+            guideSection: "Section 2 - Clinical Manifestations",
             guideSectionId: "clinical"
         }
     ]

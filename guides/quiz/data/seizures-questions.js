@@ -1,5 +1,5 @@
 /**
- * Seizures & Epilepsy Quiz — Question Data
+ * Seizures & Epilepsy Quiz - Question Data
  * 15 NCLEX-style questions: 6 Single, 3 Priority, 3 Matrix, 2 Ordering, 1 Single (knowledge)
  */
 
@@ -28,10 +28,10 @@ var seizuresQuizData = {
                 correct: "The immediate priority during an active seizure is safety: note the time of onset (to determine if status epilepticus develops) and protect from injury by moving hard objects away and ensuring the patient cannot fall. Timing is critical because if the seizure exceeds 5 minutes, it becomes status epilepticus requiring emergency intervention.",
                 a: "NEVER insert anything into the mouth during an active seizure. This can cause broken teeth, oral lacerations, aspiration, or injury to the nurse's fingers. An oral airway may be placed AFTER the seizure ends if needed.",
                 b: "Restraining a seizing patient can cause musculoskeletal injuries including fractures and dislocations. Guide movements gently but do NOT hold the patient down.",
-                d: "While lorazepam may be needed if the seizure lasts >5 minutes (status epilepticus), the immediate priority is ensuring safety. The seizure has just begun — most seizures self-terminate within 1-2 minutes."
+                d: "While lorazepam may be needed if the seizure lasts >5 minutes (status epilepticus), the immediate priority is ensuring safety. The seizure has just begun - most seizures self-terminate within 1-2 minutes."
             },
             testTakingTip: "During a seizure: Safety FIRST (protect, time, observe). Do NOT insert anything in the mouth. Do NOT restrain. Medications are given only if the seizure is prolonged (>5 min = status epilepticus).",
-            guideSection: "Section 5 — Priority Nursing Interventions",
+            guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -54,7 +54,7 @@ var seizuresQuizData = {
                 d: "Myoclonic seizures are brief, shock-like muscle jerks. They involve visible motor activity, not quiet staring."
             },
             testTakingTip: "Absence seizures = brief staring (looks like daydreaming), no postictal period, occurs many times/day, school-age children. First-line treatment: ethosuximide. Carbamazepine and phenytoin can WORSEN absence seizures.",
-            guideSection: "Section 2 — Seizure Classification",
+            guideSection: "Section 2 - Seizure Classification",
             guideSectionId: "classification"
         },
         {
@@ -74,14 +74,14 @@ var seizuresQuizData = {
             correct: { a: "Focal Seizure Finding", b: "Generalized Seizure Finding", c: "Focal Seizure Finding", d: "Generalized Seizure Finding", e: "Focal Seizure Finding" },
             rationale: {
                 correct: "Auras, automatisms with impaired awareness, and progressive unilateral spread (Jacksonian march) are hallmarks of focal seizures. Bilateral tonic-clonic activity from onset and absence seizures are generalized types.",
-                a: "FOCAL — An aura (unusual smell, taste, deja vu, epigastric rising) is actually a focal aware seizure. It indicates the seizure begins in a specific brain region before potentially spreading.",
-                b: "GENERALIZED — Bilateral tonic-clonic activity involving both sides of the body from the onset indicates a generalized tonic-clonic (grand mal) seizure.",
-                c: "FOCAL — Automatisms (lip smacking, fumbling, picking at clothes) with impaired awareness is the classic presentation of a focal impaired awareness seizure (formerly complex partial). The temporal lobe is the most common origin.",
-                d: "GENERALIZED — Brief staring spells with abrupt onset/offset and no postictal confusion describe absence (petit mal) seizures, which are a generalized seizure type involving both hemispheres.",
-                e: "FOCAL — Jacksonian march (progressive spread of motor activity from one body part to adjacent areas on the same side) is a classic focal motor seizure pattern that follows the motor cortex homunculus."
+                a: "FOCAL - An aura (unusual smell, taste, deja vu, epigastric rising) is actually a focal aware seizure. It indicates the seizure begins in a specific brain region before potentially spreading.",
+                b: "GENERALIZED - Bilateral tonic-clonic activity involving both sides of the body from the onset indicates a generalized tonic-clonic (grand mal) seizure.",
+                c: "FOCAL - Automatisms (lip smacking, fumbling, picking at clothes) with impaired awareness is the classic presentation of a focal impaired awareness seizure (formerly complex partial). The temporal lobe is the most common origin.",
+                d: "GENERALIZED - Brief staring spells with abrupt onset/offset and no postictal confusion describe absence (petit mal) seizures, which are a generalized seizure type involving both hemispheres.",
+                e: "FOCAL - Jacksonian march (progressive spread of motor activity from one body part to adjacent areas on the same side) is a classic focal motor seizure pattern that follows the motor cortex homunculus."
             },
             testTakingTip: "Focal seizure clues: aura, one-sided symptoms, automatisms, Jacksonian march, patient can describe partial events. Generalized clues: both sides from onset, loss of consciousness from start, no aura, bilateral convulsions.",
-            guideSection: "Section 2 — Seizure Classification",
+            guideSection: "Section 2 - Seizure Classification",
             guideSectionId: "classification"
         },
         {
@@ -99,13 +99,13 @@ var seizuresQuizData = {
             correct: ["b", "d", "a", "c"],
             rationale: {
                 correct: "The correct sequence follows ABCs first (safety and airway), then establish access and assess (IV, labs), then first-line medication (benzodiazepine), then second-line if needed (fosphenytoin).",
-                b: "FIRST — Patient safety and airway protection is always the immediate priority. Position on side to prevent aspiration, ensure suction is available, and protect from injury.",
-                d: "SECOND — Confirm IV access (needed for medication) and draw labs to identify reversible causes (hypoglycemia, hyponatremia, subtherapeutic AED levels). Check blood glucose — give D50 if hypoglycemic.",
-                a: "THIRD — Administer the first-line medication: IV lorazepam 4 mg. This is the standard initial treatment for status epilepticus. May repeat once in 5-10 minutes if seizure continues.",
-                c: "FOURTH — If seizure persists after benzodiazepine, prepare the second-line agent: fosphenytoin 20 mg PE/kg IV, or valproic acid, or levetiracetam. This step occurs only if the benzodiazepine fails."
+                b: "FIRST - Patient safety and airway protection is always the immediate priority. Position on side to prevent aspiration, ensure suction is available, and protect from injury.",
+                d: "SECOND - Confirm IV access (needed for medication) and draw labs to identify reversible causes (hypoglycemia, hyponatremia, subtherapeutic AED levels). Check blood glucose - give D50 if hypoglycemic.",
+                a: "THIRD - Administer the first-line medication: IV lorazepam 4 mg. This is the standard initial treatment for status epilepticus. May repeat once in 5-10 minutes if seizure continues.",
+                c: "FOURTH - If seizure persists after benzodiazepine, prepare the second-line agent: fosphenytoin 20 mg PE/kg IV, or valproic acid, or levetiracetam. This step occurs only if the benzodiazepine fails."
             },
-            testTakingTip: "Status epilepticus protocol: Safety/ABCs → IV access + labs → Lorazepam IV → Fosphenytoin if needed → ICU for refractory cases. Always check glucose — hypoglycemia can cause seizures and is easily reversible.",
-            guideSection: "Section 4 — Status Epilepticus",
+            testTakingTip: "Status epilepticus protocol: Safety/ABCs → IV access + labs → Lorazepam IV → Fosphenytoin if needed → ICU for refractory cases. Always check glucose - hypoglycemia can cause seizures and is easily reversible.",
+            guideSection: "Section 4 - Status Epilepticus",
             guideSectionId: "status-epilepticus"
         },
         {
@@ -124,7 +124,7 @@ var seizuresQuizData = {
             rationale: {
                 correct: "The therapeutic range for phenytoin is 10-20 mcg/mL. A level of 25 mcg/mL is toxic. The patient's symptoms (dizziness, nystagmus) are classic signs of phenytoin toxicity. The priority is to HOLD the medication to prevent further accumulation and notify the provider immediately for dose adjustment.",
                 a: "Giving another dose when the level is already toxic would worsen toxicity symptoms and could lead to ataxia, lethargy, seizures (paradoxically), and cardiac arrhythmias.",
-                c: "Simply documenting and rechecking is insufficient when the patient is symptomatic with a toxic drug level. This requires immediate intervention — holding the dose and provider notification.",
+                c: "Simply documenting and rechecking is insufficient when the patient is symptomatic with a toxic drug level. This requires immediate intervention - holding the dose and provider notification.",
                 d: "Phenytoin is highly protein-bound and hepatically metabolized. IV fluid boluses do not significantly enhance clearance. The appropriate intervention is to hold the drug."
             },
             labValues: [
@@ -133,8 +133,8 @@ var seizuresQuizData = {
                 { name: "Ataxia onset", normal: "Typically at >30 mcg/mL" },
                 { name: "Lethargy/coma", normal: "Typically at >40 mcg/mL" }
             ],
-            testTakingTip: "Phenytoin toxicity progression: nystagmus (>20) → ataxia/slurred speech (>30) → lethargy/confusion (>40) → coma. Nystagmus is the EARLIEST sign of phenytoin toxicity — always check the drug level when you see it.",
-            guideSection: "Section 6 — AED Management",
+            testTakingTip: "Phenytoin toxicity progression: nystagmus (>20) → ataxia/slurred speech (>30) → lethargy/confusion (>40) → coma. Nystagmus is the EARLIEST sign of phenytoin toxicity - always check the drug level when you see it.",
+            guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
         {
@@ -156,8 +156,8 @@ var seizuresQuizData = {
                 c: "A postictal patient is drowsy, confused, and may have muscle weakness. Encouraging ambulation immediately after a seizure increases fall risk. The patient should rest until fully recovered.",
                 d: "An emergent CT is not automatically indicated after every seizure, especially in a patient with known epilepsy. CT is indicated for first-time seizures, focal findings, prolonged postictal state, or suspected head injury."
             },
-            testTakingTip: "Postictal care: position on side, quiet environment, assess neuro status, check for injuries (tongue biting, head injury), document. Don't rush reorientation — the patient needs time to recover.",
-            guideSection: "Section 5 — Priority Nursing Interventions",
+            testTakingTip: "Postictal care: position on side, quiet environment, assess neuro status, check for injuries (tongue biting, head injury), document. Don't rush reorientation - the patient needs time to recover.",
+            guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -177,14 +177,14 @@ var seizuresQuizData = {
             correct: { a: "Appropriate Seizure Precaution", b: "Inappropriate Action", c: "Appropriate Seizure Precaution", d: "Appropriate Seizure Precaution", e: "Inappropriate Action" },
             rationale: {
                 correct: "Padded side rails, low bed position, and bedside suction/oxygen are standard seizure precautions. Tongue blades and restraints are contraindicated during seizures and should never be at the bedside for that purpose.",
-                a: "APPROPRIATE — Padded side rails prevent the patient from hitting their head or limbs against hard surfaces during a seizure.",
-                b: "INAPPROPRIATE — Tongue blades (even padded) should NEVER be inserted into the mouth during a seizure. This can cause broken teeth, lacerations, aspiration, and jaw injury. Having one taped to the bed implies it should be used.",
-                c: "APPROPRIATE — The lowest bed position minimizes injury if the patient falls during a seizure.",
-                d: "APPROPRIATE — Suction clears oral secretions after a seizure, and oxygen addresses potential hypoxia during prolonged seizures.",
-                e: "INAPPROPRIATE — Restraints are NEVER used for seizure patients. Restraining a seizing patient causes musculoskeletal injuries including fractures and dislocations."
+                a: "APPROPRIATE - Padded side rails prevent the patient from hitting their head or limbs against hard surfaces during a seizure.",
+                b: "INAPPROPRIATE - Tongue blades (even padded) should NEVER be inserted into the mouth during a seizure. This can cause broken teeth, lacerations, aspiration, and jaw injury. Having one taped to the bed implies it should be used.",
+                c: "APPROPRIATE - The lowest bed position minimizes injury if the patient falls during a seizure.",
+                d: "APPROPRIATE - Suction clears oral secretions after a seizure, and oxygen addresses potential hypoxia during prolonged seizures.",
+                e: "INAPPROPRIATE - Restraints are NEVER used for seizure patients. Restraining a seizing patient causes musculoskeletal injuries including fractures and dislocations."
             },
             testTakingTip: "Seizure precautions: padded rails, low bed, suction, O2, IV access, call light in reach. NEVER: tongue blade, restraints, or anything in the mouth. If you see 'tongue depressor at bedside' in a question, that's the wrong answer.",
-            guideSection: "Section 5 — Priority Nursing Interventions",
+            guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -202,12 +202,12 @@ var seizuresQuizData = {
             correct: "c",
             rationale: {
                 correct: "Doubling doses of AEDs is dangerous and can cause toxicity. If a dose is missed, the patient should take it as soon as remembered (unless it's close to the next dose), but never double up. This statement indicates a need for further teaching.",
-                a: "CORRECT understanding — Lamotrigine carries a risk of Stevens-Johnson syndrome (SJS), a potentially fatal skin reaction. Any rash must be reported immediately and the drug stopped pending evaluation.",
-                b: "CORRECT understanding — Lamotrigine must be titrated very slowly to reduce the risk of Stevens-Johnson syndrome. Rapid titration increases the risk significantly.",
-                d: "CORRECT understanding — Abrupt discontinuation of any AED can trigger rebound seizures or status epilepticus. AEDs should always be tapered under provider supervision."
+                a: "CORRECT understanding - Lamotrigine carries a risk of Stevens-Johnson syndrome (SJS), a potentially fatal skin reaction. Any rash must be reported immediately and the drug stopped pending evaluation.",
+                b: "CORRECT understanding - Lamotrigine must be titrated very slowly to reduce the risk of Stevens-Johnson syndrome. Rapid titration increases the risk significantly.",
+                d: "CORRECT understanding - Abrupt discontinuation of any AED can trigger rebound seizures or status epilepticus. AEDs should always be tapered under provider supervision."
             },
             testTakingTip: "Lamotrigine key facts: slow titration required, Steven-Johnson syndrome risk (STOP if rash), never stop abruptly. 'Need for further teaching' questions = find the WRONG statement.",
-            guideSection: "Section 6 — AED Management",
+            guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
         {
@@ -230,7 +230,7 @@ var seizuresQuizData = {
                 d: "Phenytoin is also teratogenic (fetal hydantoin syndrome) and is NOT a safer alternative. Lamotrigine and levetiracetam are generally considered safer options in pregnancy."
             },
             testTakingTip: "Valproic acid = Category X in pregnancy. Neural tube defects (spina bifida) are the #1 concern. All women of childbearing age on AEDs should take folic acid supplementation. Lamotrigine and levetiracetam are considered relatively safer in pregnancy.",
-            guideSection: "Section 6 — AED Management",
+            guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
         {
@@ -248,13 +248,13 @@ var seizuresQuizData = {
             correct: ["b", "a", "c", "d"],
             rationale: {
                 correct: "The correct sequence ensures safety: cardiac monitoring first (phenytoin causes arrhythmias), then verify compatible IV solution, then infuse slowly with a filter, then continuously monitor for adverse effects.",
-                b: "FIRST — Cardiac monitoring must be in place BEFORE starting the infusion because phenytoin can cause fatal cardiac arrhythmias (bradycardia, heart block, asystole) and hypotension.",
-                a: "SECOND — Phenytoin precipitates in dextrose solutions. It MUST be mixed with and infused in normal saline only. Using an existing dextrose line will cause crystallization and line occlusion.",
-                c: "THIRD — Phenytoin must be infused slowly (no faster than 50 mg/min in adults, 1-3 mg/kg/min in pediatrics) through an in-line filter. Rapid administration causes cardiovascular collapse.",
-                d: "FOURTH — Continuous monitoring of vital signs, heart rhythm, and the IV site during infusion. Watch for purple glove syndrome (tissue necrosis at the IV site), hypotension, and arrhythmias."
+                b: "FIRST - Cardiac monitoring must be in place BEFORE starting the infusion because phenytoin can cause fatal cardiac arrhythmias (bradycardia, heart block, asystole) and hypotension.",
+                a: "SECOND - Phenytoin precipitates in dextrose solutions. It MUST be mixed with and infused in normal saline only. Using an existing dextrose line will cause crystallization and line occlusion.",
+                c: "THIRD - Phenytoin must be infused slowly (no faster than 50 mg/min in adults, 1-3 mg/kg/min in pediatrics) through an in-line filter. Rapid administration causes cardiovascular collapse.",
+                d: "FOURTH - Continuous monitoring of vital signs, heart rhythm, and the IV site during infusion. Watch for purple glove syndrome (tissue necrosis at the IV site), hypotension, and arrhythmias."
             },
             testTakingTip: "Phenytoin IV rules: cardiac monitor ON, normal saline ONLY (no dextrose), slow push (≤50 mg/min), in-line filter, watch for arrhythmias and purple glove syndrome. Fosphenytoin is a safer IV alternative.",
-            guideSection: "Section 6 — AED Management",
+            guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
         {
@@ -271,13 +271,13 @@ var seizuresQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This presentation — generalized seizure, <15 minutes, age 6 months to 5 years, associated with fever, single occurrence, alert afterward — is a classic simple febrile seizure. These are common (2-5% of children), benign, and do not cause brain damage or significantly increase epilepsy risk. Parental reassurance and education is appropriate.",
+                correct: "This presentation - generalized seizure, <15 minutes, age 6 months to 5 years, associated with fever, single occurrence, alert afterward - is a classic simple febrile seizure. These are common (2-5% of children), benign, and do not cause brain damage or significantly increase epilepsy risk. Parental reassurance and education is appropriate.",
                 a: "Simple febrile seizures do NOT require long-term AED therapy. The risk of AED side effects outweighs the benefit for simple febrile seizures.",
                 c: "A single febrile seizure does not diagnose epilepsy. Epilepsy requires 2+ unprovoked seizures. Febrile seizures are provoked (by fever) and have a different prognosis.",
                 d: "Prophylactic antipyretics (Tylenol/ibuprofen) do NOT prevent febrile seizures. They treat fever-related discomfort but do not change seizure risk. This is a common parental misconception."
             },
             testTakingTip: "Simple febrile seizure: generalized, <15 min, no recurrence in 24 hrs, ages 6mo-5yr. Treatment: treat the fever, reassurance. No AEDs needed. Prophylactic antipyretics do NOT prevent febrile seizures.",
-            guideSection: "Section 7 — Pediatric Considerations",
+            guideSection: "Section 7 - Pediatric Considerations",
             guideSectionId: "pediatric"
         },
         {
@@ -297,14 +297,14 @@ var seizuresQuizData = {
             correct: { a: "Correct AED Choice", b: "Incorrect AED Choice", c: "Correct AED Choice", d: "Incorrect AED Choice", e: "Correct AED Choice" },
             rationale: {
                 correct: "Ethosuximide is first-line for absence seizures, lorazepam is first-line for status epilepticus, and levetiracetam is effective for focal seizures. Carbamazepine worsens absence seizures, and valproic acid is teratogenic (Category X in pregnancy).",
-                a: "CORRECT — Ethosuximide (Zarontin) is the first-line drug for absence seizures when absence is the only seizure type. It is effective and well-tolerated for this specific indication.",
-                b: "INCORRECT — Carbamazepine (Tegretol) can actually WORSEN absence seizures. It blocks sodium channels, which does not address the thalamic mechanism of absence seizures. Phenytoin also worsens absence.",
-                c: "CORRECT — Lorazepam (Ativan) IV is the first-line treatment for status epilepticus due to its rapid onset and longer CNS duration compared to diazepam.",
-                d: "INCORRECT — Valproic acid is Category X in pregnancy with significant teratogenic risk (neural tube defects). Women planning pregnancy should be switched to a safer AED (lamotrigine or levetiracetam).",
-                e: "CORRECT — Levetiracetam (Keppra) is effective for focal seizures, has fewer drug interactions than older AEDs, and does not require routine level monitoring."
+                a: "CORRECT - Ethosuximide (Zarontin) is the first-line drug for absence seizures when absence is the only seizure type. It is effective and well-tolerated for this specific indication.",
+                b: "INCORRECT - Carbamazepine (Tegretol) can actually WORSEN absence seizures. It blocks sodium channels, which does not address the thalamic mechanism of absence seizures. Phenytoin also worsens absence.",
+                c: "CORRECT - Lorazepam (Ativan) IV is the first-line treatment for status epilepticus due to its rapid onset and longer CNS duration compared to diazepam.",
+                d: "INCORRECT - Valproic acid is Category X in pregnancy with significant teratogenic risk (neural tube defects). Women planning pregnancy should be switched to a safer AED (lamotrigine or levetiracetam).",
+                e: "CORRECT - Levetiracetam (Keppra) is effective for focal seizures, has fewer drug interactions than older AEDs, and does not require routine level monitoring."
             },
             testTakingTip: "AED matching: Absence → ethosuximide or valproic acid (NOT carbamazepine/phenytoin). Status epilepticus → lorazepam IV. Pregnancy → avoid valproic acid (Category X). Focal seizures → many options (levetiracetam, carbamazepine, phenytoin, lamotrigine).",
-            guideSection: "Section 6 — AED Management",
+            guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
         {
@@ -324,10 +324,10 @@ var seizuresQuizData = {
                 correct: "Alcohol lowers the seizure threshold, and alcohol withdrawal further increases seizure risk. Alcohol also interacts with many AEDs (increases CNS depression, affects metabolism). This statement demonstrates correct understanding.",
                 a: "Most states require a seizure-free period (typically 3-12 months, varies by state) before driving is permitted. The patient cannot simply drive because they feel fine.",
                 c: "AED therapy is typically long-term (2+ years seizure-free before considering withdrawal). A one-month seizure-free period is far too short. Medication changes should only be made under provider supervision.",
-                d: "AEDs must be taken consistently every day as prescribed — they work by maintaining steady blood levels to PREVENT seizures. They are not taken reactively."
+                d: "AEDs must be taken consistently every day as prescribed - they work by maintaining steady blood levels to PREVENT seizures. They are not taken reactively."
             },
             testTakingTip: "Epilepsy patient education: take AEDs daily (not PRN), avoid alcohol, get adequate sleep, know your triggers, wear a medical alert bracelet, driving restrictions apply, never stop meds abruptly.",
-            guideSection: "Section 1 — Pathophysiology & Etiology",
+            guideSection: "Section 1 - Pathophysiology & Etiology",
             guideSectionId: "pathophysiology"
         },
         {
@@ -338,7 +338,7 @@ var seizuresQuizData = {
             stem: "A nurse is monitoring a patient receiving IV phenytoin when the patient reports burning pain at the IV site. The nurse observes swelling and a purplish discoloration around the IV catheter. What complication does the nurse suspect?",
             options: [
                 { id: "a", text: "Phlebitis from the acidic pH of phenytoin" },
-                { id: "b", text: "Purple glove syndrome — a serious extravasation injury specific to phenytoin" },
+                { id: "b", text: "Purple glove syndrome - a serious extravasation injury specific to phenytoin" },
                 { id: "c", text: "An allergic reaction to the phenytoin formulation" },
                 { id: "d", text: "Normal bruising that commonly occurs with IV phenytoin" }
             ],
@@ -346,11 +346,11 @@ var seizuresQuizData = {
             rationale: {
                 correct: "Purple glove syndrome is a serious complication specific to IV phenytoin. It presents with pain, swelling, and purplish discoloration distal to the IV site. It can progress to tissue necrosis, compartment syndrome, and potentially require amputation. The nurse should STOP the infusion immediately, elevate the extremity, and notify the provider.",
                 a: "While phenytoin is alkaline (pH ~12) and can cause phlebitis, the purplish discoloration and swelling pattern described is characteristic of purple glove syndrome, not simple phlebitis.",
-                c: "Allergic reactions would present with urticaria, rash, bronchospasm, or anaphylaxis — not localized purplish discoloration at the IV site.",
+                c: "Allergic reactions would present with urticaria, rash, bronchospasm, or anaphylaxis - not localized purplish discoloration at the IV site.",
                 d: "This is NOT normal bruising. Purple glove syndrome is a serious medical emergency requiring immediate intervention."
             },
-            testTakingTip: "Purple glove syndrome = phenytoin extravasation → pain, swelling, purple discoloration → tissue necrosis. STOP infusion immediately. This is why fosphenytoin (Cerebyx) is preferred for IV use — it has a near-neutral pH and does not cause this complication.",
-            guideSection: "Section 6 — AED Management",
+            testTakingTip: "Purple glove syndrome = phenytoin extravasation → pain, swelling, purple discoloration → tissue necrosis. STOP infusion immediately. This is why fosphenytoin (Cerebyx) is preferred for IV use - it has a near-neutral pH and does not cause this complication.",
+            guideSection: "Section 6 - AED Management",
             guideSectionId: "medications"
         },
         {
@@ -373,7 +373,7 @@ var seizuresQuizData = {
                 d: "Lumbar puncture is used to evaluate for CNS infections (meningitis, encephalitis) that may cause seizures but is not a test for seizure activity itself."
             },
             testTakingTip: "EEG = gold standard for seizure DIAGNOSIS (measures electrical activity). MRI = best for finding structural CAUSES (tumors, sclerosis). CT = emergent use to rule out hemorrhage. Know the difference!",
-            guideSection: "Section 3 — Assessment & Diagnosis",
+            guideSection: "Section 3 - Assessment & Diagnosis",
             guideSectionId: "assessment"
         }
     ]

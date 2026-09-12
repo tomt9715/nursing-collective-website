@@ -17,7 +17,7 @@ var pediatricFracturesImmobilityQuizData = {
             type: "single",
             subtype: null,
             difficulty: "knowledge",
-            stem: "Which fracture type is characterized by an incomplete break where one side of the bone bends while the other breaks \u2014 a pattern unique to pediatric bones?",
+            stem: "Which fracture type is characterized by an incomplete break where one side of the bone bends while the other breaks - a pattern unique to pediatric bones?",
             options: [
                 { id: "a", text: "Torus (buckle) fracture" },
                 { id: "b", text: "Greenstick fracture" },
@@ -27,12 +27,12 @@ var pediatricFracturesImmobilityQuizData = {
             correct: "b",
             rationale: {
                 correct: "Greenstick fractures are incomplete fractures where one cortex breaks and the other side bends (like bending a green stick). This pattern reflects the flexibility of pediatric bones and is the most common pediatric fracture type.",
-                a: "Torus (buckle) fractures involve bone compression/buckling without a break \u2014 common but different mechanism.",
+                a: "Torus (buckle) fractures involve bone compression/buckling without a break - common but different mechanism.",
                 c: "Spiral fractures are caused by twisting forces and raise abuse concern in young non-ambulatory children.",
-                d: "Comminuted fractures have multiple bone fragments \u2014 not unique to pediatrics."
+                d: "Comminuted fractures have multiple bone fragments - not unique to pediatrics."
             },
             testTakingTip: "Greenstick = bends on one side, breaks on the other. Unique to pediatric bones.",
-            guideSection: "Section 1 \u2014 Pediatric Basics",
+            guideSection: "Section 1 - Pediatric Basics",
             guideSectionId: "basics"
         },
         {
@@ -55,7 +55,7 @@ var pediatricFracturesImmobilityQuizData = {
                 d: "Waiting to reassess wastes the 4\u20138 hour window before irreversible muscle/nerve damage."
             },
             testTakingTip: "Pain out of proportion + unrelieved by opioids + worse with passive stretch = compartment syndrome. Time is tissue.",
-            guideSection: "Section 2 \u2014 Neurovascular & Compartment Syndrome",
+            guideSection: "Section 2 - Neurovascular & Compartment Syndrome",
             guideSectionId: "neurovascular"
         },
         {
@@ -72,13 +72,13 @@ var pediatricFracturesImmobilityQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Pain out of proportion to injury, worsening over time, and unrelieved by analgesics is the earliest and most sensitive sign of compartment syndrome. The other Ps (pulselessness, pallor, paralysis) are late and ominous \u2014 by the time pulses are absent, permanent damage has usually occurred.",
-                a: "Pulselessness is a LATE sign \u2014 after irreversible damage has begun.",
-                c: "Pallor develops as circulation compromises \u2014 later than pain.",
+                correct: "Pain out of proportion to injury, worsening over time, and unrelieved by analgesics is the earliest and most sensitive sign of compartment syndrome. The other Ps (pulselessness, pallor, paralysis) are late and ominous - by the time pulses are absent, permanent damage has usually occurred.",
+                a: "Pulselessness is a LATE sign - after irreversible damage has begun.",
+                c: "Pallor develops as circulation compromises - later than pain.",
                 d: "Paralysis is a very late sign indicating extensive nerve damage."
             },
-            testTakingTip: "PAIN is the earliest P. Don't wait for pulselessness \u2014 that's the damage already done.",
-            guideSection: "Section 2 \u2014 Neurovascular & Compartment Syndrome",
+            testTakingTip: "PAIN is the earliest P. Don't wait for pulselessness - that's the damage already done.",
+            guideSection: "Section 2 - Neurovascular & Compartment Syndrome",
             guideSectionId: "neurovascular"
         },
         {
@@ -101,7 +101,7 @@ var pediatricFracturesImmobilityQuizData = {
                 d: "Prone position is never used for traction; buttocks off the bed means supine with legs up."
             },
             testTakingTip: "Bryant's = infant traction, BOTH legs 90\u00b0, buttocks slightly off the bed. A detail worth memorizing.",
-            guideSection: "Section 3 \u2014 Casts & Traction",
+            guideSection: "Section 3 - Casts & Traction",
             guideSectionId: "treatment"
         },
         {
@@ -118,13 +118,13 @@ var pediatricFracturesImmobilityQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "A cool hair dryer directed into the cast opening is a safe way to relieve itching. Nothing should ever be placed inside a cast \u2014 scratching tools break the skin, get stuck, and cause infection. Heat, baby powder, and lotions should also be avoided.",
+                correct: "A cool hair dryer directed into the cast opening is a safe way to relieve itching. Nothing should ever be placed inside a cast - scratching tools break the skin, get stuck, and cause infection. Heat, baby powder, and lotions should also be avoided.",
                 a: "Objects in the cast cause skin breakdown and can get stuck.",
                 b: "Powder clumps and causes skin irritation.",
                 d: "The cast should never be removed at home."
             },
             testTakingTip: "Itchy cast: cool air only. Never hot air, never objects, never powder. Teach this at every cast discharge.",
-            guideSection: "Section 3 \u2014 Casts & Traction",
+            guideSection: "Section 3 - Casts & Traction",
             guideSectionId: "treatment"
         },
         {
@@ -142,12 +142,12 @@ var pediatricFracturesImmobilityQuizData = {
             correct: "b",
             rationale: {
                 correct: "Salter-Harris type II fractures go through the physis and into the metaphysis and are the most common growth plate fracture. Higher-numbered types (III\u2013V) are more severe and carry higher risk of growth arrest.",
-                a: "Type I goes through the physis only \u2014 less common than type II.",
-                c: "Type III goes through the physis and into the epiphysis (joint) \u2014 less common.",
-                d: "Type V is a crush injury of the physis \u2014 least common but most severe."
+                a: "Type I goes through the physis only - less common than type II.",
+                c: "Type III goes through the physis and into the epiphysis (joint) - less common.",
+                d: "Type V is a crush injury of the physis - least common but most severe."
             },
             testTakingTip: "Salter-Harris II = most common. Higher types = higher growth arrest risk.",
-            guideSection: "Section 1 \u2014 Pediatric Basics",
+            guideSection: "Section 1 - Pediatric Basics",
             guideSectionId: "basics"
         },
         {
@@ -158,7 +158,7 @@ var pediatricFracturesImmobilityQuizData = {
             stem: "A nurse is caring for a toddler in Bryant's traction. The parent asks if they can lift the weights for a moment so the child can be repositioned. What is the nurse's best response?",
             options: [
                 { id: "a", text: "'That's fine, just be careful.'" },
-                { id: "b", text: "'The weights must hang freely at all times \u2014 never lift or remove them.'" },
+                { id: "b", text: "'The weights must hang freely at all times - never lift or remove them.'" },
                 { id: "c", text: "'You can remove them for 5 minutes at a time.'" },
                 { id: "d", text: "'The weights don't really matter for alignment.'" }
             ],
@@ -170,7 +170,7 @@ var pediatricFracturesImmobilityQuizData = {
                 d: "Weights are critical for maintaining alignment and reducing pain."
             },
             testTakingTip: "Traction weights: ALWAYS hang freely. Never lift, never rest on floor, never remove. A classic safety item.",
-            guideSection: "Section 3 \u2014 Casts & Traction",
+            guideSection: "Section 3 - Casts & Traction",
             guideSectionId: "treatment"
         },
         {
@@ -193,7 +193,7 @@ var pediatricFracturesImmobilityQuizData = {
                 d: "Sending the child home without a workup puts the child at further risk."
             },
             testTakingTip: "Femur fracture in non-ambulatory infant = abuse workup. Mandatory report in good faith is protected.",
-            guideSection: "Section 5 \u2014 Abuse Concerns",
+            guideSection: "Section 5 - Abuse Concerns",
             guideSectionId: "abuse"
         },
         {
@@ -216,7 +216,7 @@ var pediatricFracturesImmobilityQuizData = {
                 d: "T1DM is autoimmune, not related to immobility."
             },
             testTakingTip: "Disuse osteoporosis = immobilized pediatric bone = can fracture from trivial handling. Careful positioning!",
-            guideSection: "Section 4 \u2014 Immobility Complications",
+            guideSection: "Section 4 - Immobility Complications",
             guideSectionId: "immobility"
         },
         {
@@ -233,13 +233,13 @@ var pediatricFracturesImmobilityQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A wet plaster cast should be handled with palms \u2014 never fingertips. Fingertips leave indentations that create pressure points against the child's skin, causing skin breakdown. Palms distribute pressure evenly across the cast surface.",
+                correct: "A wet plaster cast should be handled with palms - never fingertips. Fingertips leave indentations that create pressure points against the child's skin, causing skin breakdown. Palms distribute pressure evenly across the cast surface.",
                 a: "Fingertips cause indentations and pressure injuries.",
                 c: "Covering the cast with a blanket traps heat and moisture, slowing drying.",
                 d: "Applying a cast too tightly risks compartment syndrome."
             },
             testTakingTip: "Wet plaster cast = handle with palms, not fingers. A classic detail.",
-            guideSection: "Section 3 \u2014 Casts & Traction",
+            guideSection: "Section 3 - Casts & Traction",
             guideSectionId: "treatment"
         },
         {
@@ -258,11 +258,11 @@ var pediatricFracturesImmobilityQuizData = {
             rationale: {
                 correct: "Paresthesia (tingling, numbness) is an early sign of nerve compression and precedes pallor, pulselessness, and paralysis. The cast should be evaluated and, if needed, bivalved before late signs develop.",
                 a: "Pulselessness is a late sign.",
-                b: "Cold, blue toes indicate significant circulatory compromise \u2014 later than paresthesia.",
+                b: "Cold, blue toes indicate significant circulatory compromise - later than paresthesia.",
                 d: "Paralysis is a late sign indicating severe nerve damage."
             },
             testTakingTip: "Order of neurovascular compromise in casts: paresthesia (early) \u2192 pallor \u2192 pulselessness \u2192 paralysis (late).",
-            guideSection: "Section 2 \u2014 Neurovascular & Compartment Syndrome",
+            guideSection: "Section 2 - Neurovascular & Compartment Syndrome",
             guideSectionId: "neurovascular"
         },
         {
@@ -279,13 +279,13 @@ var pediatricFracturesImmobilityQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Splints are used when swelling is expected or monitoring is needed; they allow for expansion and are easier to remove. Stable fractures requiring definitive immobilization are better served by a full cast \u2014 splints are less stable.",
-                a: "Splints accommodate swelling \u2014 correct indication.",
+                correct: "Splints are used when swelling is expected or monitoring is needed; they allow for expansion and are easier to remove. Stable fractures requiring definitive immobilization are better served by a full cast - splints are less stable.",
+                a: "Splints accommodate swelling - correct indication.",
                 c: "Splints are appropriate immediately after reduction when swelling may worsen.",
                 d: "Accommodating swelling is a core reason for splints."
             },
             testTakingTip: "Splint = swelling expected. Cast = definitive stability. Often splint first, then cast at follow-up.",
-            guideSection: "Section 3 \u2014 Casts & Traction",
+            guideSection: "Section 3 - Casts & Traction",
             guideSectionId: "treatment"
         },
         {
@@ -304,11 +304,11 @@ var pediatricFracturesImmobilityQuizData = {
             rationale: {
                 correct: "Parents should return to the ED for signs of neurovascular compromise (blue fingers, severe pain, numbness) or cast problems (foul odor, drainage, fever). This is the correct safety teaching.",
                 a: "High heat can burn skin and damage the cast; cool air is used for itching.",
-                b: "Nothing should go inside the cast \u2014 classic mistake.",
+                b: "Nothing should go inside the cast - classic mistake.",
                 d: "The cast must not get wet; cover with plastic for bathing."
             },
             testTakingTip: "Signs to return: blue, cold, severely painful, numb, foul smell, fever. Teach all five.",
-            guideSection: "Section 6 \u2014 Family Education",
+            guideSection: "Section 6 - Family Education",
             guideSectionId: "family"
         },
         {
@@ -327,11 +327,11 @@ var pediatricFracturesImmobilityQuizData = {
             rationale: {
                 correct: "Supracondylar humerus fractures have a high risk of damaging the brachial artery and the median or radial nerves because these structures pass directly at the fracture site. This is why neurovascular checks are especially critical after supracondylar fractures.",
                 a: "Ulnar nerve is usually spared; median/radial are more at risk.",
-                c: "Sciatic is in the leg \u2014 unrelated.",
+                c: "Sciatic is in the leg - unrelated.",
                 d: "Spinal cord injury is a separate concern, not associated with supracondylar fracture."
             },
             testTakingTip: "Supracondylar humerus fracture = brachial artery + median/radial nerve risk. Neurovascular check is critical.",
-            guideSection: "Section 1 \u2014 Pediatric Basics",
+            guideSection: "Section 1 - Pediatric Basics",
             guideSectionId: "basics"
         }
     ]

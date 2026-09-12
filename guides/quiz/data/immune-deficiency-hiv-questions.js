@@ -1,5 +1,5 @@
 /**
- * Immune Deficiency, HIV & Anaphylaxis Quiz — Question Data
+ * Immune Deficiency, HIV & Anaphylaxis Quiz - Question Data
  * Practice questions covering primary immune deficiency warning signs,
  * pediatric HIV, anaphylaxis management, vaccines, and family education.
  */
@@ -37,7 +37,7 @@ var immuneDeficiencyHivQuizData = {
                 f: "Seasonal allergies are not PID."
             },
             testTakingTip: "PID red flags: thrush, \u22652 serious infections, \u22652 PNA, FTT, family history.",
-            guideSection: "Section 2 \u2014 Primary Immune Deficiency",
+            guideSection: "Section 2 - Primary Immune Deficiency",
             guideSectionId: "pid"
         },
         {
@@ -54,13 +54,13 @@ var immuneDeficiencyHivQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Anaphylaxis requires IMMEDIATE IM epinephrine 0.01 mg/kg (1:1,000 concentration, max 0.3 mg child) in the mid-anterolateral thigh (vastus lateralis) \u2014 the fastest and most reliable route. Antihistamines, fluids, and imaging follow; they are NOT substitutes for epinephrine.",
+                correct: "Anaphylaxis requires IMMEDIATE IM epinephrine 0.01 mg/kg (1:1,000 concentration, max 0.3 mg child) in the mid-anterolateral thigh (vastus lateralis) - the fastest and most reliable route. Antihistamines, fluids, and imaging follow; they are NOT substitutes for epinephrine.",
                 a: "Oral antihistamines don\u2019t treat airway edema or hypotension; epi first.",
                 b: "Fluids come after epi for persistent hypotension.",
                 d: "Imaging delays life-saving treatment."
             },
             testTakingTip: "Anaphylaxis = airway + IM epi in vastus lateralis FIRST.",
-            guideSection: "Section 4 \u2014 Anaphylaxis",
+            guideSection: "Section 4 - Anaphylaxis",
             guideSectionId: "anaphylaxis"
         },
         {
@@ -83,7 +83,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Gluteal is not the emergency site."
             },
             testTakingTip: "Epi = vastus lateralis (outer mid-thigh). Through clothing if needed.",
-            guideSection: "Section 4 \u2014 Anaphylaxis",
+            guideSection: "Section 4 - Anaphylaxis",
             guideSectionId: "anaphylaxis"
         },
         {
@@ -101,12 +101,12 @@ var immuneDeficiencyHivQuizData = {
             correct: "c",
             rationale: {
                 correct: "MMR is a live-attenuated vaccine and can cause vaccine-strain illness in immunocompromised children. Other live vaccines to avoid: varicella, rotavirus, intranasal influenza, BCG, yellow fever. Inactivated vaccines are safe and encouraged.",
-                a: "Injectable flu is inactivated \u2014 safe.",
-                b: "Tdap is inactivated \u2014 safe.",
-                d: "PCV13 is inactivated \u2014 safe."
+                a: "Injectable flu is inactivated - safe.",
+                b: "Tdap is inactivated - safe.",
+                d: "PCV13 is inactivated - safe."
             },
             testTakingTip: "No live vaccines in immunocompromised. MMR, varicella, rotavirus, nasal flu are live.",
-            guideSection: "Section 5 \u2014 Vaccines",
+            guideSection: "Section 5 - Vaccines",
             guideSectionId: "vaccines"
         },
         {
@@ -129,7 +129,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Same limitation as antibody test."
             },
             testTakingTip: "Infant HIV testing = PCR, not antibody. Two negatives confirm absence.",
-            guideSection: "Section 3 \u2014 Pediatric HIV",
+            guideSection: "Section 3 - Pediatric HIV",
             guideSectionId: "hiv"
         },
         {
@@ -152,7 +152,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Transmission risk continues throughout breastfeeding."
             },
             testTakingTip: "US HIV+ mom = no breastfeeding. Formula only.",
-            guideSection: "Section 3 \u2014 Pediatric HIV",
+            guideSection: "Section 3 - Pediatric HIV",
             guideSectionId: "hiv"
         },
         {
@@ -175,7 +175,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Biphasic reactions often happen later than 1 hour."
             },
             testTakingTip: "Anaphylaxis observation = 4\u20138 hr minimum. Biphasic risk up to 72 hr.",
-            guideSection: "Section 4 \u2014 Anaphylaxis",
+            guideSection: "Section 4 - Anaphylaxis",
             guideSectionId: "anaphylaxis"
         },
         {
@@ -198,7 +198,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Albuterol treats bronchospasm only."
             },
             testTakingTip: "Two epi pens + action plan + trained staff. Not locked away.",
-            guideSection: "Section 4 \u2014 Anaphylaxis",
+            guideSection: "Section 4 - Anaphylaxis",
             guideSectionId: "anaphylaxis"
         },
         {
@@ -221,7 +221,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Dose adjustments require provider input."
             },
             testTakingTip: "HIV adherence = daily, no breaks. Missed doses = resistance.",
-            guideSection: "Section 3 \u2014 Pediatric HIV",
+            guideSection: "Section 3 - Pediatric HIV",
             guideSectionId: "hiv"
         },
         {
@@ -244,7 +244,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Routine cleaning is sufficient; bleach isn\u2019t needed for personal items."
             },
             testTakingTip: "Handwashing + avoid sick contacts + call for fever. Not isolation.",
-            guideSection: "Section 7 \u2014 Family Education",
+            guideSection: "Section 7 - Family Education",
             guideSectionId: "family"
         },
         {
@@ -263,11 +263,11 @@ var immuneDeficiencyHivQuizData = {
             rationale: {
                 correct: "Household contacts of immunocompromised patients should receive INACTIVATED (injectable) influenza vaccine. The intranasal live-attenuated vaccine can shed and potentially infect the immunocompromised child.",
                 a: "Live nasal flu can shed virus.",
-                c: "Household flu vaccine reduces transmission \u2014 don\u2019t skip.",
+                c: "Household flu vaccine reduces transmission - don\u2019t skip.",
                 d: "Not a real current option."
             },
             testTakingTip: "Household contacts = injectable flu, NOT intranasal.",
-            guideSection: "Section 5 \u2014 Vaccines",
+            guideSection: "Section 5 - Vaccines",
             guideSectionId: "vaccines"
         },
         {
@@ -290,7 +290,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Splenectomy is not relevant here."
             },
             testTakingTip: "Failing HIV labs \u2192 assess adherence first.",
-            guideSection: "Section 6 \u2014 Nursing Priorities",
+            guideSection: "Section 6 - Nursing Priorities",
             guideSectionId: "nursing"
         },
         {
@@ -313,7 +313,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Live vaccines are still avoided; IVIG doesn\u2019t enable them."
             },
             testTakingTip: "IVIG = replace antibodies for B-cell defect. Monthly, preventive.",
-            guideSection: "Section 2 \u2014 Primary Immune Deficiency",
+            guideSection: "Section 2 - Primary Immune Deficiency",
             guideSectionId: "pid"
         },
         {
@@ -336,7 +336,7 @@ var immuneDeficiencyHivQuizData = {
                 d: "Same-class agents may cross-react."
             },
             testTakingTip: "After epi: stop trigger, O2, IV fluids, adjuncts, monitor 4\u20138 hr.",
-            guideSection: "Section 4 \u2014 Anaphylaxis",
+            guideSection: "Section 4 - Anaphylaxis",
             guideSectionId: "anaphylaxis"
         }
     ]

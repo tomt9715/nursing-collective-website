@@ -1,5 +1,5 @@
 /**
- * Neural Tube Defects Quiz — Question Data
+ * Neural Tube Defects Quiz - Question Data
  * Practice questions covering NTD types, prevention,
  * pre/post-op care, latex precautions, and long-term management.
  */
@@ -29,10 +29,10 @@ var neuralTubeDefectsQuizData = {
                 correct: "The standard recommendation is 400 mcg of folic acid daily for all women of childbearing age, ideally started before conception. This has been shown to reduce NTD risk by up to 70%.",
                 a: "100 mcg is too low to be protective.",
                 c: "1 mg is between standard and high-risk; not the baseline recommendation.",
-                d: "4 mg/day is the HIGH-RISK dose \u2014 for women with a prior NTD pregnancy, not baseline prevention."
+                d: "4 mg/day is the HIGH-RISK dose - for women with a prior NTD pregnancy, not baseline prevention."
             },
             testTakingTip: "400 mcg = standard prevention. 4 mg = high-risk (prior NTD pregnancy, certain anticonvulsants).",
-            guideSection: "Section 1 \u2014 Overview & Types",
+            guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         },
         {
@@ -52,10 +52,10 @@ var neuralTubeDefectsQuizData = {
                 correct: "Women with a prior NTD pregnancy are recommended to take 4 mg folic acid daily, starting at least 1 month before conception and continuing through the first trimester. Higher dose is needed given the elevated recurrence risk.",
                 a: "400 mcg is baseline; this woman needs a higher dose.",
                 c: "Folic acid is MORE important, not less, for high-risk women.",
-                d: "Starting after pregnancy is confirmed is too late \u2014 the neural tube closes by day 28."
+                d: "Starting after pregnancy is confirmed is too late - the neural tube closes by day 28."
             },
             testTakingTip: "High-risk women (prior NTD, anticonvulsants) = 4 mg daily, starting before conception.",
-            guideSection: "Section 1 \u2014 Overview & Types",
+            guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         },
         {
@@ -73,12 +73,12 @@ var neuralTubeDefectsQuizData = {
             correct: "b",
             rationale: {
                 correct: "Prone or side-lying positioning protects the sac from pressure or rupture. Supine positioning can put weight on the sac and damage neural tissue, leak CSF, or introduce infection.",
-                a: "Supine is CONTRAINDICATED in myelomeningocele \u2014 would put pressure on the sac.",
+                a: "Supine is CONTRAINDICATED in myelomeningocele - would put pressure on the sac.",
                 c: "Semi-Fowler's still involves some weight on the back.",
                 d: "Trendelenburg increases intracranial pressure and is inappropriate."
             },
             testTakingTip: "Prone or side-lying for myelomeningocele. Never supine. A classic priority question.",
-            guideSection: "Section 3 \u2014 Pre/Post-Op Nursing Care",
+            guideSection: "Section 3 - Pre/Post-Op Nursing Care",
             guideSectionId: "nursing-care"
         },
         {
@@ -98,10 +98,10 @@ var neuralTubeDefectsQuizData = {
                 correct: "The sac must be kept moist with a sterile saline-moistened dressing to prevent drying, rupture, and damage to exposed neural tissue. Dry dressings adhere and can tear the sac when changed; uncovered sacs dry out and rupture.",
                 a: "Dry dressing allows drying and can adhere, damaging the sac.",
                 c: "Antibiotic ointment directly on neural tissue is not standard; sterile saline is the standard.",
-                d: "Uncovered sacs dry quickly \u2014 never leave exposed."
+                d: "Uncovered sacs dry quickly - never leave exposed."
             },
             testTakingTip: "Sac protection: moist + sterile + non-adherent. Sterile saline-soaked gauze is the go-to.",
-            guideSection: "Section 3 \u2014 Pre/Post-Op Nursing Care",
+            guideSection: "Section 3 - Pre/Post-Op Nursing Care",
             guideSectionId: "nursing-care"
         },
         {
@@ -118,13 +118,13 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Myelomeningocele is the most severe form of spina bifida \u2014 the sac contains both meninges AND spinal cord / nerve roots, resulting in flaccid paralysis, neurogenic bowel/bladder, and typically hydrocephalus.",
-                a: "Occulta is the mildest \u2014 vertebral defect only, often asymptomatic.",
-                b: "Meningocele is intermediate \u2014 meninges in the sac but no neural tissue.",
+                correct: "Myelomeningocele is the most severe form of spina bifida - the sac contains both meninges AND spinal cord / nerve roots, resulting in flaccid paralysis, neurogenic bowel/bladder, and typically hydrocephalus.",
+                a: "Occulta is the mildest - vertebral defect only, often asymptomatic.",
+                b: "Meningocele is intermediate - meninges in the sac but no neural tissue.",
                 d: "Encephalocele is a cranial NTD, not a form of spina bifida."
             },
             testTakingTip: "Severity ladder: occulta \u2192 meningocele \u2192 myelomeningocele (worst). Memorize.",
-            guideSection: "Section 1 \u2014 Overview & Types",
+            guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         },
         {
@@ -147,7 +147,7 @@ var neuralTubeDefectsQuizData = {
                 d: "Pink skin is a healthy finding, not a hydrocephalus sign."
             },
             testTakingTip: "Head circumference daily for myelomeningocele infants. Bulging fontanelle + rapid growth = ICP up = shunt needed.",
-            guideSection: "Section 2 \u2014 Myelomeningocele",
+            guideSection: "Section 2 - Myelomeningocele",
             guideSectionId: "myelomeningocele"
         },
         {
@@ -170,7 +170,7 @@ var neuralTubeDefectsQuizData = {
                 d: "TEF is unrelated."
             },
             testTakingTip: "Myelomeningocele + Chiari II + hydrocephalus + VP shunt = the core pathophysiologic chain.",
-            guideSection: "Section 2 \u2014 Myelomeningocele",
+            guideSection: "Section 2 - Myelomeningocele",
             guideSectionId: "myelomeningocele"
         },
         {
@@ -189,12 +189,12 @@ var neuralTubeDefectsQuizData = {
             rationale: {
                 correct: "Children with myelomeningocele have a very high rate of latex allergy (up to 40\u201365%) from repeated mucosal exposure. All equipment in the OR and clinical setting MUST be latex-free to prevent life-threatening anaphylaxis.",
                 a: "Correct and the top priority.",
-                b: "This is the error \u2014 latex-containing equipment can trigger anaphylaxis.",
+                b: "This is the error - latex-containing equipment can trigger anaphylaxis.",
                 c: "NPO status is standard for surgery; not the unique priority.",
                 d: "IV fluids are standard; not the unique priority here."
             },
             testTakingTip: "Myelomeningocele + surgery = assume latex allergy. Latex-free environment always.",
-            guideSection: "Section 5 \u2014 Latex Safety",
+            guideSection: "Section 5 - Latex Safety",
             guideSectionId: "latex"
         },
         {
@@ -217,7 +217,7 @@ var neuralTubeDefectsQuizData = {
                 d: "Urostomy is reserved for specific refractory cases, not first-line."
             },
             testTakingTip: "CIC every 3\u20134 hours = standard bladder management in myelomeningocele. Teach parents early.",
-            guideSection: "Section 4 \u2014 Long-Term Complications",
+            guideSection: "Section 4 - Long-Term Complications",
             guideSectionId: "complications"
         },
         {
@@ -241,7 +241,7 @@ var neuralTubeDefectsQuizData = {
                 d: "Rh screen identifies isoimmunization risk."
             },
             testTakingTip: "Elevated MSAFP = think NTD (or multiple gestation, abdominal wall defects). Low MSAFP = think trisomies.",
-            guideSection: "Section 1 \u2014 Overview & Types",
+            guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         },
         {
@@ -258,13 +258,13 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Headache, vomiting, and lethargy in a child with a VP shunt suggest shunt malfunction \u2014 the shunt is blocked, disconnected, or infected, allowing ICP to rise. This is an emergency; untreated, it can lead to herniation. Fever would also raise concern for shunt infection.",
+                correct: "Headache, vomiting, and lethargy in a child with a VP shunt suggest shunt malfunction - the shunt is blocked, disconnected, or infected, allowing ICP to rise. This is an emergency; untreated, it can lead to herniation. Fever would also raise concern for shunt infection.",
                 a: "Shunt malfunction must be ruled out first; don't assume benign.",
                 b: "Constipation doesn't cause this triad.",
                 d: "Migraine doesn't typically cause lethargy with vomiting in a child with a shunt."
             },
             testTakingTip: "Child with VP shunt + headache/vomiting/lethargy = shunt malfunction until proven otherwise. Emergency.",
-            guideSection: "Section 4 \u2014 Long-Term Complications",
+            guideSection: "Section 4 - Long-Term Complications",
             guideSectionId: "complications"
         },
         {
@@ -286,8 +286,8 @@ var neuralTubeDefectsQuizData = {
                 c: "Grains are not latex-cross-reactive.",
                 d: "Meats are not latex-cross-reactive."
             },
-            testTakingTip: "Latex cross-reactive foods: BANANA, AVOCADO, KIWI, chestnut, tomato. Memorize the first 3 \u2014 most tested.",
-            guideSection: "Section 5 \u2014 Latex Safety",
+            testTakingTip: "Latex cross-reactive foods: BANANA, AVOCADO, KIWI, chestnut, tomato. Memorize the first 3 - most tested.",
+            guideSection: "Section 5 - Latex Safety",
             guideSectionId: "latex"
         },
         {
@@ -310,7 +310,7 @@ var neuralTubeDefectsQuizData = {
                 d: "Too late; damage accumulates."
             },
             testTakingTip: "Myelomeningocele closure: 24\u201372 hours. Don't confuse with torsion's 6-hour window.",
-            guideSection: "Section 3 \u2014 Pre/Post-Op Nursing Care",
+            guideSection: "Section 3 - Pre/Post-Op Nursing Care",
             guideSectionId: "nursing-care"
         },
         {
@@ -327,13 +327,13 @@ var neuralTubeDefectsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "A small dimple, tuft of hair, lipoma, or port-wine stain over the lower spine in an otherwise normal infant suggests spina bifida occulta \u2014 a hidden vertebral defect without a sac. Most are asymptomatic, though a minority develop tethered cord symptoms later. MRI may be indicated.",
+                correct: "A small dimple, tuft of hair, lipoma, or port-wine stain over the lower spine in an otherwise normal infant suggests spina bifida occulta - a hidden vertebral defect without a sac. Most are asymptomatic, though a minority develop tethered cord symptoms later. MRI may be indicated.",
                 a: "Meningocele has a visible sac.",
                 b: "Myelomeningocele has a visible sac plus neurologic deficits.",
                 d: "Encephalocele is on the cranium, not the lumbar spine."
             },
             testTakingTip: "Hair tuft, dimple, port-wine mark over spine = think occulta. No sac, often asymptomatic.",
-            guideSection: "Section 1 \u2014 Overview & Types",
+            guideSection: "Section 1 - Overview & Types",
             guideSectionId: "overview"
         }
     ]

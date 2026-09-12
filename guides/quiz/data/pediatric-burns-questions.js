@@ -1,5 +1,5 @@
 /**
- * Pediatric Burns Quiz — Question Data
+ * Pediatric Burns Quiz - Question Data
  * Practice questions covering burn depth, BSA estimation,
  * Parkland formula, fluid resuscitation, and emergency management.
  */
@@ -32,7 +32,7 @@ var pediatricBurnsQuizData = {
                 d: "6,000 mL is too much."
             },
             testTakingTip: "Parkland: 4 \u00d7 kg \u00d7 %TBSA = total 24-hour LR. Half in first 8 hr.",
-            guideSection: "Section 6 \u2014 Parkland & Fluids",
+            guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },
         {
@@ -55,7 +55,7 @@ var pediatricBurnsQuizData = {
                 d: "Significant scald requires evaluation for resuscitation needs; don't send home."
             },
             testTakingTip: "Burn priority: Airway first. ABCDE for every burn patient.",
-            guideSection: "Section 5 \u2014 Emergency Management",
+            guideSection: "Section 5 - Emergency Management",
             guideSectionId: "emergency"
         },
         {
@@ -72,13 +72,13 @@ var pediatricBurnsQuizData = {
             ],
             correct: "d",
             rationale: {
-                correct: "Full-thickness burns destroy all layers of the dermis, including nerve endings \u2014 hence the burn area is PAINLESS. Appearance is dry, leathery, white/brown/black; cap refill absent. Pain in the surrounding tissue is from adjacent partial-thickness injury.",
+                correct: "Full-thickness burns destroy all layers of the dermis, including nerve endings - hence the burn area is PAINLESS. Appearance is dry, leathery, white/brown/black; cap refill absent. Pain in the surrounding tissue is from adjacent partial-thickness injury.",
                 a: "Superficial burns are painful; sunburn appearance.",
                 b: "Superficial partial-thickness burns are painful with blisters.",
                 c: "Deep partial-thickness burns are less painful but not completely painless."
             },
             testTakingTip: "Painless burn = full-thickness until proven otherwise. Nerve endings destroyed.",
-            guideSection: "Section 2 \u2014 Burn Depth",
+            guideSection: "Section 2 - Burn Depth",
             guideSectionId: "depth"
         },
         {
@@ -95,13 +95,13 @@ var pediatricBurnsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "In young children (infants/toddlers), the head and neck account for approximately 18% of TBSA using the pediatric Rule of Nines \u2014 not 9% as in adults. This reflects the proportionally larger head in young children. As the child grows, this percentage decreases toward the adult 9%.",
+                correct: "In young children (infants/toddlers), the head and neck account for approximately 18% of TBSA using the pediatric Rule of Nines - not 9% as in adults. This reflects the proportionally larger head in young children. As the child grows, this percentage decreases toward the adult 9%.",
                 a: "9% is the ADULT head BSA.",
                 b: "14% is the pediatric LEG BSA.",
                 d: "21% is too high."
             },
             testTakingTip: "Pediatric head = 18%. Pediatric leg = 14%. Adult head = 9%, leg = 18%. Classic trap.",
-            guideSection: "Section 3 \u2014 BSA Estimation",
+            guideSection: "Section 3 - BSA Estimation",
             guideSectionId: "bsa"
         },
         {
@@ -119,12 +119,12 @@ var pediatricBurnsQuizData = {
             correct: "c",
             rationale: {
                 correct: "Urine output is the gold standard endpoint for burn fluid resuscitation. In young children (<30 kg), target is 1\u20132 mL/kg/hr; in older children, 0.5\u20131 mL/kg/hr. A 10-year-old is approaching adult thresholds, and 1 mL/kg/hr is adequate. If UOP is below target, increase fluids; if above, decrease to avoid over-resuscitation and pulmonary edema.",
-                a: "BP is a late indicator \u2014 children maintain BP until they decompensate.",
+                a: "BP is a late indicator - children maintain BP until they decompensate.",
                 b: "HR alone doesn't confirm adequate resuscitation.",
                 d: "Clear lungs don't indicate volume status."
             },
             testTakingTip: "UOP = the endpoint. 1\u20132 mL/kg/hr in young kids, 0.5\u20131 mL/kg/hr older. Titrate!",
-            guideSection: "Section 6 \u2014 Parkland & Fluids",
+            guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },
         {
@@ -147,7 +147,7 @@ var pediatricBurnsQuizData = {
                 d: "Oral steroids don't help acute inhalation airway edema and couldn't be safely given if airway is compromised."
             },
             testTakingTip: "Inhalation injury signs = early intubation. The airway WILL swell.",
-            guideSection: "Section 5 \u2014 Emergency Management",
+            guideSection: "Section 5 - Emergency Management",
             guideSectionId: "emergency"
         },
         {
@@ -164,13 +164,13 @@ var pediatricBurnsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "The 8-hour clock starts at the TIME OF BURN, not when the child arrives at the ED. If a child arrives 3 hours post-burn, the first 5 hours remaining count as the '8-hour' window \u2014 the child may need accelerated catch-up fluid. This is a commonly tested detail.",
-                a: "ED arrival time is often later \u2014 using it under-resuscitates.",
+                correct: "The 8-hour clock starts at the TIME OF BURN, not when the child arrives at the ED. If a child arrives 3 hours post-burn, the first 5 hours remaining count as the '8-hour' window - the child may need accelerated catch-up fluid. This is a commonly tested detail.",
+                a: "ED arrival time is often later - using it under-resuscitates.",
                 b: "IV access timing is irrelevant to the formula.",
                 d: "Order time is not the starting point."
             },
             testTakingTip: "Parkland 8-hour clock starts at BURN TIME, not ED arrival. Catch up if delayed.",
-            guideSection: "Section 6 \u2014 Parkland & Fluids",
+            guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },
         {
@@ -187,13 +187,13 @@ var pediatricBurnsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "For caustic ingestions (strong acid or alkali like drain cleaner), NEVER induce vomiting \u2014 the chemical causes additional damage coming back up. Do not neutralize with milk (can cause exothermic reaction). Call 911/poison control; rinse the mouth if not at risk of aspiration; go to ED immediately. For dermal contact, copious water irrigation for 20+ minutes.",
+                correct: "For caustic ingestions (strong acid or alkali like drain cleaner), NEVER induce vomiting - the chemical causes additional damage coming back up. Do not neutralize with milk (can cause exothermic reaction). Call 911/poison control; rinse the mouth if not at risk of aspiration; go to ED immediately. For dermal contact, copious water irrigation for 20+ minutes.",
                 a: "Induced vomiting causes repeat caustic injury to esophagus.",
                 b: "Neutralizing can cause exothermic reaction and make damage worse.",
                 d: "Activated charcoal doesn't bind caustic chemicals."
             },
             testTakingTip: "Caustic ingestion: NO vomiting, NO neutralization, YES poison control + ED.",
-            guideSection: "Section 1 \u2014 Fundamentals",
+            guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         },
         {
@@ -216,7 +216,7 @@ var pediatricBurnsQuizData = {
                 d: "Small uncomplicated chest burn can be managed locally."
             },
             testTakingTip: "Burn center criteria: big BSA, any full-thickness, face/hands/feet/perineum/joints, electrical/chemical, inhalation, circumferential.",
-            guideSection: "Section 4 \u2014 Severity & Transfer",
+            guideSection: "Section 4 - Severity & Transfer",
             guideSectionId: "severity"
         },
         {
@@ -239,7 +239,7 @@ var pediatricBurnsQuizData = {
                 d: "NS is used in many settings, not just cardiac."
             },
             testTakingTip: "Large-volume burn resuscitation = LR (not NS). Hyperchloremic acidosis from NS.",
-            guideSection: "Section 6 \u2014 Parkland & Fluids",
+            guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },
         {
@@ -262,7 +262,7 @@ var pediatricBurnsQuizData = {
                 d: "Increasing fluids doesn't address the mechanical obstruction from eschar."
             },
             testTakingTip: "Circumferential burn + decreased pulses = escharotomy. Surgical emergency.",
-            guideSection: "Section 7 \u2014 Ongoing Care",
+            guideSection: "Section 7 - Ongoing Care",
             guideSectionId: "ongoing"
         },
         {
@@ -285,7 +285,7 @@ var pediatricBurnsQuizData = {
                 d: "Appropriate use."
             },
             testTakingTip: "Avoid silver sulfadiazine in infants <2 months, G6PD deficiency, sulfa allergy, and on the face.",
-            guideSection: "Section 7 \u2014 Ongoing Care",
+            guideSection: "Section 7 - Ongoing Care",
             guideSectionId: "ongoing"
         },
         {
@@ -304,11 +304,11 @@ var pediatricBurnsQuizData = {
             rationale: {
                 correct: "Burns cause a massive hypermetabolic state; caloric needs may be 1.5\u20132\u00d7 baseline. Early enteral feeding within 24\u201348 hours preserves gut integrity, reduces bacterial translocation, supports immune function, and promotes wound healing. High-protein diet supports healing.",
                 a: "Prolonged NPO worsens outcomes; burns need aggressive early nutrition.",
-                c: "Low-calorie diet is harmful \u2014 burns need MORE calories.",
+                c: "Low-calorie diet is harmful - burns need MORE calories.",
                 d: "Enteral feeding is preferred over oral alone for significant burns."
             },
             testTakingTip: "Burns = hypermetabolic. Feed early, high-protein, enteral preferred.",
-            guideSection: "Section 7 \u2014 Ongoing Care",
+            guideSection: "Section 7 - Ongoing Care",
             guideSectionId: "ongoing"
         },
         {
@@ -325,13 +325,13 @@ var pediatricBurnsQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Pressure garments worn 23 hours/day for 12\u201324 months prevent hypertrophic scarring. Healing burn skin is highly photosensitive \u2014 sun exposure causes permanent hyperpigmentation. SPF 30+, hats, and sun-protective clothing are essential for at least a year.",
+                correct: "Pressure garments worn 23 hours/day for 12\u201324 months prevent hypertrophic scarring. Healing burn skin is highly photosensitive - sun exposure causes permanent hyperpigmentation. SPF 30+, hats, and sun-protective clothing are essential for at least a year.",
                 a: "Sun exposure causes hyperpigmentation on healing skin.",
-                c: "Tight occlusion isn't appropriate; pressure garments are different \u2014 they're specifically designed.",
+                c: "Tight occlusion isn't appropriate; pressure garments are different - they're specifically designed.",
                 d: "Moisturizing is essential to keep healing skin supple."
             },
             testTakingTip: "Scar management: pressure garments + sun protection. Moisturize. Avoid sun for a year+.",
-            guideSection: "Section 8 \u2014 Rehabilitation",
+            guideSection: "Section 8 - Rehabilitation",
             guideSectionId: "rehab"
         },
         {
@@ -354,7 +354,7 @@ var pediatricBurnsQuizData = {
                 d: "Electrical cord burns are often accidental in toddlers exploring."
             },
             testTakingTip: "Abuse-concerning burns: symmetric, stocking/glove, sharp demarcation, spared folds. Mandatory report.",
-            guideSection: "Section 1 \u2014 Fundamentals",
+            guideSection: "Section 1 - Fundamentals",
             guideSectionId: "fundamentals"
         },
         {
@@ -371,13 +371,13 @@ var pediatricBurnsQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "For a 15 kg child, target UOP is 1\u20132 mL/kg/hr, or 15\u201330 mL/hr. An output of 5 mL/hr is critically low \u2014 indicates inadequate fluid resuscitation and impending shock. Increase the fluid rate immediately and notify the provider.",
+                correct: "For a 15 kg child, target UOP is 1\u20132 mL/kg/hr, or 15\u201330 mL/hr. An output of 5 mL/hr is critically low - indicates inadequate fluid resuscitation and impending shock. Increase the fluid rate immediately and notify the provider.",
                 a: "20 mL/hr is within the target range for a 15 kg child.",
                 b: "Pain during dressing changes is common and manageable with pre-medication.",
                 d: "Mild temperature elevation is expected post-burn."
             },
             testTakingTip: "Pediatric burn UOP target: 1\u20132 mL/kg/hr. Below that = under-resuscitated.",
-            guideSection: "Section 6 \u2014 Parkland & Fluids",
+            guideSection: "Section 6 - Parkland & Fluids",
             guideSectionId: "fluids"
         },
         {
@@ -400,7 +400,7 @@ var pediatricBurnsQuizData = {
                 d: "Renal failure occurs but sepsis is more common."
             },
             testTakingTip: "Burn mortality: shock first 48 hr, then INFECTION. Burn units vigilantly monitor for sepsis.",
-            guideSection: "Section 7 \u2014 Ongoing Care",
+            guideSection: "Section 7 - Ongoing Care",
             guideSectionId: "ongoing"
         },
         {
@@ -423,7 +423,7 @@ var pediatricBurnsQuizData = {
                 d: "Sunscreen prevents sunburn but scalds are the #1 peds burn."
             },
             testTakingTip: "Scalds = #1 pediatric burn. Prevention: water heater <120\u00b0F and test the bath.",
-            guideSection: "Section 9 \u2014 Family Education",
+            guideSection: "Section 9 - Family Education",
             guideSectionId: "family"
         }
     ]

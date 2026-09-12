@@ -1,5 +1,5 @@
 /**
- * Arrhythmias Quiz — Question Data
+ * Arrhythmias Quiz - Question Data
  * Extracted from guides/arrhythmias.html practice questions section.
  * 10 NCLEX-style questions: 6 Single, 2 Priority, 1 Matrix, 1 Ordering
  */
@@ -32,7 +32,7 @@ var arrhythmiasQuizData = {
                 d: "Sinus arrhythmia has normal, upright P waves before each QRS. The variation in rhythm corresponds with respiration. This strip has no P waves."
             },
             testTakingTip: "The key identifier for A-fib is \"irregularly irregular.\" If a rhythm strip description mentions irregular R-R intervals AND no P waves, think A-fib first. Flutter has a \"sawtooth\" and tends to be regular.",
-            guideSection: "Section 4 \u2014 Atrial Arrhythmias",
+            guideSection: "Section 4 - Atrial Arrhythmias",
             guideSectionId: "atrial-rhythms"
         },
         {
@@ -52,10 +52,10 @@ var arrhythmiasQuizData = {
                 correct: "The rhythm described is ventricular fibrillation (chaotic, no identifiable waveforms, no pulse). Per ACLS protocol, the immediate priority is high-quality CPR while preparing for defibrillation. CPR maintains some perfusion to vital organs. The defibrillator should be applied and an unsynchronized shock delivered as soon as it is available.",
                 a: "Epinephrine is given during cardiac arrest but AFTER the first defibrillation attempt and 2 minutes of CPR. It is not the first action.",
                 c: "Amiodarone is given in refractory V-fib/pulseless V-tach AFTER at least one defibrillation and CPR cycle. It is not first-line.",
-                d: "Synchronized cardioversion requires the defibrillator to identify R waves for timing. V-fib has no identifiable R waves \u2014 synchronized mode will not fire. V-fib requires UNSYNCHRONIZED defibrillation."
+                d: "Synchronized cardioversion requires the defibrillator to identify R waves for timing. V-fib has no identifiable R waves - synchronized mode will not fire. V-fib requires UNSYNCHRONIZED defibrillation."
             },
             testTakingTip: "Pulseless = start CPR immediately. V-fib and pulseless V-tach are \"shockable\" rhythms requiring defibrillation (unsynchronized). Synchronized cardioversion is for patients WITH a pulse who are hemodynamically unstable.",
-            guideSection: "Section 5 \u2014 Ventricular Arrhythmias",
+            guideSection: "Section 5 - Ventricular Arrhythmias",
             guideSectionId: "ventricular-rhythms"
         },
         {
@@ -74,11 +74,11 @@ var arrhythmiasQuizData = {
             rationale: {
                 correct: "This is supraventricular tachycardia (SVT): regular, narrow QRS, rapid rate (150-250 bpm), no visible P waves. The patient is hemodynamically stable. After vagal maneuvers fail, adenosine 6 mg rapid IV push is the first-line medication. If the first dose is ineffective, 12 mg may be given. Adenosine has a half-life of less than 10 seconds, so it must be given rapid IV push followed immediately by a 20 mL saline flush.",
                 a: "Amiodarone is used for ventricular arrhythmias (V-tach, V-fib) or refractory SVT. It is not first-line for stable SVT.",
-                c: "Atropine is used for symptomatic bradycardia. This patient has tachycardia \u2014 atropine would worsen the rate.",
+                c: "Atropine is used for symptomatic bradycardia. This patient has tachycardia - atropine would worsen the rate.",
                 d: "Epinephrine is used in cardiac arrest protocols. It increases heart rate and would be harmful in SVT."
             },
             testTakingTip: "SVT treatment ladder: Vagal maneuvers \u2192 Adenosine 6 mg \u2192 Adenosine 12 mg \u2192 Cardioversion if unstable. Remember adenosine\u2019s administration: rapid IV push through the most proximal IV site + 20 mL flush. Warn the patient about transient chest discomfort.",
-            guideSection: "Section 4 \u2014 Atrial Arrhythmias",
+            guideSection: "Section 4 - Atrial Arrhythmias",
             guideSectionId: "atrial-rhythms"
         },
         {
@@ -97,13 +97,13 @@ var arrhythmiasQuizData = {
             correct: { a: "Immediate Defibrillation", b: "Synchronized Cardioversion", c: "Immediate Defibrillation", d: "Synchronized Cardioversion" },
             rationale: {
                 correct: "Pulseless rhythms (V-fib and pulseless V-tach) require immediate unsynchronized defibrillation. Unstable rhythms with a pulse (SVT, A-fib with RVR) require synchronized cardioversion, which times the shock to the R wave to avoid the vulnerable T-wave period.",
-                a: "IMMEDIATE DEFIBRILLATION \u2014 Ventricular fibrillation is a pulseless, chaotic rhythm with no identifiable QRS complexes. Unsynchronized defibrillation is the only option. CPR + early defibrillation is the standard of care.",
-                b: "SYNCHRONIZED CARDIOVERSION \u2014 This patient has SVT with hemodynamic instability but still has a pulse. Synchronized cardioversion delivers the shock timed to the R wave, avoiding the vulnerable T-wave period.",
-                c: "IMMEDIATE DEFIBRILLATION \u2014 Pulseless V-tach is treated identically to V-fib per ACLS protocol. The patient has no cardiac output, so immediate unsynchronized defibrillation is indicated.",
-                d: "SYNCHRONIZED CARDIOVERSION \u2014 Unstable A-fib with rapid ventricular response and hypotension requires urgent rhythm control. The patient has a pulse, so synchronized cardioversion is used."
+                a: "IMMEDIATE DEFIBRILLATION - Ventricular fibrillation is a pulseless, chaotic rhythm with no identifiable QRS complexes. Unsynchronized defibrillation is the only option. CPR + early defibrillation is the standard of care.",
+                b: "SYNCHRONIZED CARDIOVERSION - This patient has SVT with hemodynamic instability but still has a pulse. Synchronized cardioversion delivers the shock timed to the R wave, avoiding the vulnerable T-wave period.",
+                c: "IMMEDIATE DEFIBRILLATION - Pulseless V-tach is treated identically to V-fib per ACLS protocol. The patient has no cardiac output, so immediate unsynchronized defibrillation is indicated.",
+                d: "SYNCHRONIZED CARDIOVERSION - Unstable A-fib with rapid ventricular response and hypotension requires urgent rhythm control. The patient has a pulse, so synchronized cardioversion is used."
             },
             testTakingTip: "The key distinction: pulse or no pulse? No pulse = defibrillation (unsynchronized). Pulse present but unstable = synchronized cardioversion. Remember that most defibrillators reset the sync button after each shock.",
-            guideSection: "Section 4 \u2014 Atrial Arrhythmias",
+            guideSection: "Section 4 - Atrial Arrhythmias",
             guideSectionId: "atrial-rhythms"
         },
         {
@@ -113,20 +113,20 @@ var arrhythmiasQuizData = {
             difficulty: "analysis",
             stem: "A patient\u2019s telemetry strip shows a regular rhythm with a progressive lengthening of the PR interval over several beats, followed by a dropped QRS complex. After the dropped beat, the pattern repeats. The ventricular rate is 56 bpm and the patient is asymptomatic. How should the nurse interpret this rhythm?",
             options: [
-                { id: "a", text: "Second-degree AV block, Type II (Mobitz II) \u2014 prepare for pacemaker" },
-                { id: "b", text: "Second-degree AV block, Type I (Wenckebach) \u2014 continue monitoring" },
-                { id: "c", text: "Third-degree (complete) heart block \u2014 prepare for pacemaker" },
-                { id: "d", text: "First-degree AV block \u2014 continue monitoring" }
+                { id: "a", text: "Second-degree AV block, Type II (Mobitz II) - prepare for pacemaker" },
+                { id: "b", text: "Second-degree AV block, Type I (Wenckebach) - continue monitoring" },
+                { id: "c", text: "Third-degree (complete) heart block - prepare for pacemaker" },
+                { id: "d", text: "First-degree AV block - continue monitoring" }
             ],
             correct: "b",
             rationale: {
-                correct: "The hallmark of Wenckebach (Type I second-degree AV block) is \"longer, longer, longer, DROP\" \u2014 progressive PR prolongation until a QRS is dropped, then the pattern repeats. In an asymptomatic patient, continued monitoring is appropriate. Wenckebach is generally benign and often occurs in the setting of inferior MI or increased vagal tone.",
+                correct: "The hallmark of Wenckebach (Type I second-degree AV block) is \"longer, longer, longer, DROP\" - progressive PR prolongation until a QRS is dropped, then the pattern repeats. In an asymptomatic patient, continued monitoring is appropriate. Wenckebach is generally benign and often occurs in the setting of inferior MI or increased vagal tone.",
                 a: "Mobitz Type II has a CONSTANT PR interval with sudden, unexpected dropped beats (\"same, same, same, DROP\"). The progressive PR lengthening rules this out. Type II is more dangerous and often requires a pacemaker.",
-                c: "Third-degree block shows AV dissociation \u2014 P waves and QRS complexes fire independently with no relationship between them. This pattern shows a clear relationship (progressively longer conduction until a beat drops).",
+                c: "Third-degree block shows AV dissociation - P waves and QRS complexes fire independently with no relationship between them. This pattern shows a clear relationship (progressively longer conduction until a beat drops).",
                 d: "First-degree AV block has a prolonged but CONSTANT PR interval (> 0.20 sec) with no dropped beats. Every P wave conducts."
             },
             testTakingTip: "Heart block patterns: Type I = \"longer, longer, DROP\" (progressive PR). Type II = \"same, same, DROP\" (fixed PR then sudden drop). This distinction is heavily tested. Type I = usually benign. Type II = usually needs a pacemaker.",
-            guideSection: "Section 6 \u2014 Heart Blocks",
+            guideSection: "Section 6 - Heart Blocks",
             guideSectionId: "heart-blocks"
         },
         {
@@ -146,10 +146,10 @@ var arrhythmiasQuizData = {
                 correct: "Atropine is NOT effective for Mobitz Type II block because the block occurs below the AV node (in the bundle of His or bundle branches), where atropine has no effect. When a patient with symptomatic Type II block does not respond to atropine, transcutaneous pacing is the next intervention to maintain an adequate ventricular rate while preparing for transvenous or permanent pacemaker insertion.",
                 a: "Repeating atropine at a higher dose is unlikely to work because the drug\u2019s mechanism (increasing AV node conduction) does not address the infranodal block in Type II. Further doses will not help.",
                 c: "Adenosine slows conduction through the AV node and would worsen bradycardia. It is used for SVT, not bradyarrhythmias.",
-                d: "Cardioversion is for tachyarrhythmias with a pulse. This patient has bradycardia \u2014 cardioversion is not indicated."
+                d: "Cardioversion is for tachyarrhythmias with a pulse. This patient has bradycardia - cardioversion is not indicated."
             },
-            testTakingTip: "Atropine works on the AV node. Mobitz Type II is a block BELOW the AV node \u2014 so atropine is ineffective. This is a critical distinction. Type II block almost always requires pacing. If the NCLEX mentions \"atropine failed + Type II,\" go straight to pacing.",
-            guideSection: "Section 6 \u2014 Heart Blocks",
+            testTakingTip: "Atropine works on the AV node. Mobitz Type II is a block BELOW the AV node - so atropine is ineffective. This is a critical distinction. Type II block almost always requires pacing. If the NCLEX mentions \"atropine failed + Type II,\" go straight to pacing.",
+            guideSection: "Section 6 - Heart Blocks",
             guideSectionId: "heart-blocks"
         },
         {
@@ -166,13 +166,13 @@ var arrhythmiasQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Ventricular tachycardia at 160 bpm with symptoms (dizziness, chest tightness) indicates hemodynamic compromise. V-tach can rapidly deteriorate into ventricular fibrillation and cardiac arrest. This patient is unstable and needs immediate intervention \u2014 likely synchronized cardioversion or IV antiarrhythmics (amiodarone). This is the most time-sensitive situation.",
+                correct: "Ventricular tachycardia at 160 bpm with symptoms (dizziness, chest tightness) indicates hemodynamic compromise. V-tach can rapidly deteriorate into ventricular fibrillation and cardiac arrest. This patient is unstable and needs immediate intervention - likely synchronized cardioversion or IV antiarrhythmics (amiodarone). This is the most time-sensitive situation.",
                 a: "A-fib with a controlled ventricular rate (82 bpm) in a patient who feels fine is stable and well-managed. The warfarin addresses stroke risk.",
                 b: "Sinus bradycardia at 54 bpm in a well-trained athlete is a normal physiological finding. Athletes have enhanced vagal tone and higher stroke volumes, resulting in lower resting heart rates.",
                 d: "First-degree AV block (PR > 0.20) in an asymptomatic patient is benign and requires only monitoring. It is the least severe of the heart blocks."
             },
             testTakingTip: "For \"who to see first\" questions, always assess the patient with the most dangerous rhythm AND symptoms of instability. An arrhythmia + hemodynamic compromise (dizziness, hypotension, chest pain, altered LOC) = priority. Stable patients with benign rhythms can wait.",
-            guideSection: "Section 5 \u2014 Ventricular Arrhythmias",
+            guideSection: "Section 5 - Ventricular Arrhythmias",
             guideSectionId: "ventricular-rhythms"
         },
         {
@@ -192,10 +192,10 @@ var arrhythmiasQuizData = {
                 correct: "Magnesium sulfate 1-2 g IV is the specific first-line treatment for torsades de pointes. Magnesium helps stabilize the cardiac cell membrane, suppress the triggered activity that causes torsades, and shorten the QT interval. If the patient becomes pulseless, defibrillation (unsynchronized) is also indicated.",
                 a: "Amiodarone can actually prolong the QT interval further and may worsen torsades. It is used for monomorphic V-tach and V-fib, not polymorphic V-tach with prolonged QT.",
                 b: "Adenosine is for SVT, not ventricular tachycardia. It has no role in treating torsades.",
-                d: "Atropine treats bradycardia. Torsades is a tachyarrhythmia \u2014 atropine is not indicated."
+                d: "Atropine treats bradycardia. Torsades is a tachyarrhythmia - atropine is not indicated."
             },
             testTakingTip: "Torsades de pointes = magnesium. This is a high-yield one-to-one association. Also remember: torsades is treated with unsynchronized defibrillation (like V-fib) if pulseless, because the twisting morphology makes R-wave detection unreliable for sync mode.",
-            guideSection: "Section 5 \u2014 Ventricular Arrhythmias",
+            guideSection: "Section 5 - Ventricular Arrhythmias",
             guideSectionId: "ventricular-rhythms"
         },
         {
@@ -214,14 +214,14 @@ var arrhythmiasQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "The correct sequence follows ACLS protocol for V-fib arrest: activate the emergency response, begin CPR immediately, defibrillate at the earliest opportunity, administer vasopressors, and reassess rhythm after each 2-minute cycle.",
-                a: "FIRST \u2014 Calling a code activates the full resuscitation team and ensures the defibrillator, crash cart, and additional personnel are en route.",
-                b: "SECOND \u2014 High-quality chest compressions must begin immediately. Rate: 100\u2013120/min, depth: at least 2 inches, full chest recoil, minimal interruptions. CPR is the bridge to defibrillation.",
-                c: "THIRD \u2014 V-fib is a shockable rhythm. Defibrillation is delivered as soon as the defibrillator is available. For every minute without defibrillation, survival decreases by 7\u201310%.",
-                d: "FOURTH \u2014 After the first shock and resumption of CPR, IV or IO access is established. Epinephrine 1 mg IV/IO enhances coronary and cerebral perfusion pressure during CPR.",
-                e: "FIFTH \u2014 After 2 minutes of CPR, the rhythm is reassessed. If V-fib persists, another shock is delivered. This 2-minute cycle continues throughout the resuscitation."
+                a: "FIRST - Calling a code activates the full resuscitation team and ensures the defibrillator, crash cart, and additional personnel are en route.",
+                b: "SECOND - High-quality chest compressions must begin immediately. Rate: 100\u2013120/min, depth: at least 2 inches, full chest recoil, minimal interruptions. CPR is the bridge to defibrillation.",
+                c: "THIRD - V-fib is a shockable rhythm. Defibrillation is delivered as soon as the defibrillator is available. For every minute without defibrillation, survival decreases by 7\u201310%.",
+                d: "FOURTH - After the first shock and resumption of CPR, IV or IO access is established. Epinephrine 1 mg IV/IO enhances coronary and cerebral perfusion pressure during CPR.",
+                e: "FIFTH - After 2 minutes of CPR, the rhythm is reassessed. If V-fib persists, another shock is delivered. This 2-minute cycle continues throughout the resuscitation."
             },
             testTakingTip: "ACLS V-fib protocol: Call \u2192 CPR \u2192 Shock \u2192 Epi \u2192 Reassess. CPR comes BEFORE defibrillation because it takes time to set up the defibrillator. Epinephrine is given DURING CPR, not as a pause.",
-            guideSection: "Section 8 \u2014 Nursing Interventions",
+            guideSection: "Section 8 - Nursing Interventions",
             guideSectionId: "interventions"
         },
         {
@@ -238,13 +238,13 @@ var arrhythmiasQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Most defibrillators automatically revert to unsynchronized mode after delivering a synchronized shock. If the nurse does not re-engage the sync button before the next attempt, the shock will be delivered unsynchronized \u2014 which could land on the T wave (vulnerable period) and trigger ventricular fibrillation. Re-engaging sync mode is a critical safety step before every cardioversion attempt.",
+                correct: "Most defibrillators automatically revert to unsynchronized mode after delivering a synchronized shock. If the nurse does not re-engage the sync button before the next attempt, the shock will be delivered unsynchronized - which could land on the T wave (vulnerable period) and trigger ventricular fibrillation. Re-engaging sync mode is a critical safety step before every cardioversion attempt.",
                 a: "While increasing joules may be appropriate, delivering the shock without re-engaging sync mode is dangerous. The sync button must be verified first.",
                 c: "Switching to unsynchronized mode is incorrect because the patient still has a pulse with an organized rhythm (A-fib). Unsynchronized shocks are reserved for pulseless rhythms (V-fib, pulseless V-tach).",
                 d: "While medications may be added, the immediate need is electrical cardioversion for this hemodynamically unstable patient. Waiting for medication infusion delays critical treatment."
             },
             testTakingTip: "This is a high-yield fact: the sync button resets after each shock on most defibrillators. You must re-engage it every time before cardioverting. Forgetting this step = unsynchronized shock on a patient with a pulse = potential V-fib.",
-            guideSection: "Section 7 \u2014 Defibrillation vs Cardioversion",
+            guideSection: "Section 7 - Defibrillation vs Cardioversion",
             guideSectionId: "defib-cardiovert"
         }
     ]

@@ -1,5 +1,5 @@
 /**
- * Asthma Quiz — Question Data
+ * Asthma Quiz - Question Data
  * Extracted from guides/asthma.html practice questions section.
  * 8 NCLEX-style questions: 4 Single, 2 Priority, 1 Ordering, 1 Matrix
  */
@@ -31,8 +31,8 @@ var asthmaQuizData = {
                 b: "Ipratropium is an anticholinergic used as adjunct therapy in acute exacerbations. It is not a first-line controller for chronic asthma management.",
                 d: "Leukotriene modifiers (montelukast) are alternative controllers but are less effective than ICS. They may be used as add-on therapy or for patients who cannot use ICS."
             },
-            testTakingTip: "ICS = #1 controller for persistent asthma. SABA = #1 rescue. Remember: asthma is an INFLAMMATORY disease, so the best controller targets inflammation (corticosteroid). LABAs must NEVER be used alone \u2014 always with an ICS.",
-            guideSection: "Section 5 \u2014 Rescue vs Controller Medications",
+            testTakingTip: "ICS = #1 controller for persistent asthma. SABA = #1 rescue. Remember: asthma is an INFLAMMATORY disease, so the best controller targets inflammation (corticosteroid). LABAs must NEVER be used alone - always with an ICS.",
+            guideSection: "Section 5 - Rescue vs Controller Medications",
             guideSectionId: "medications"
         },
         {
@@ -40,7 +40,7 @@ var asthmaQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A patient presents to the ED with severe respiratory distress. The patient was wheezing loudly 30 minutes ago, but now the nurse notes a \"silent chest\" \u2014 no wheezing, no air movement on auscultation. SpO2 is 82%, the patient appears confused and is using accessory muscles. The nurse\u2019s priority action is to:",
+            stem: "A patient presents to the ED with severe respiratory distress. The patient was wheezing loudly 30 minutes ago, but now the nurse notes a \"silent chest\" - no wheezing, no air movement on auscultation. SpO2 is 82%, the patient appears confused and is using accessory muscles. The nurse\u2019s priority action is to:",
             options: [
                 { id: "a", text: "Administer a nebulized albuterol treatment" },
                 { id: "b", text: "Prepare for emergent intubation and mechanical ventilation" },
@@ -49,13 +49,13 @@ var asthmaQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "A \"silent chest\" in a patient who was previously wheezing is a life-threatening emergency. It means the airways are so severely constricted that NO air is moving \u2014 not even enough to generate wheezing. Combined with severe hypoxemia (SpO2 82%), confusion (altered mental status indicating hypoxia/hypercapnia), and accessory muscle use, this patient is in impending respiratory arrest and needs emergent intubation.",
+                correct: "A \"silent chest\" in a patient who was previously wheezing is a life-threatening emergency. It means the airways are so severely constricted that NO air is moving - not even enough to generate wheezing. Combined with severe hypoxemia (SpO2 82%), confusion (altered mental status indicating hypoxia/hypercapnia), and accessory muscle use, this patient is in impending respiratory arrest and needs emergent intubation.",
                 a: "Nebulized albuterol should be given but is insufficient as the sole intervention. The airways are too constricted for nebulized medication to reach the lungs effectively. This patient needs definitive airway management.",
                 c: "IV steroids take 4-6 hours for full effect. This patient is in imminent respiratory arrest and cannot wait for steroids to work.",
                 d: "Peak flow measurement requires patient effort and cooperation. This severely distressed, confused patient cannot perform this test, and attempting it wastes critical time."
             },
             testTakingTip: "Silent chest = EMERGENCY. Wheezing requires airflow. No wheezing + respiratory distress = no air movement = near-arrest. This is the most dangerous sign in asthma. NCLEX loves to test: \"Which finding requires IMMEDIATE intervention?\" Silent chest is always the answer.",
-            guideSection: "Section 7 \u2014 Status Asthmaticus",
+            guideSection: "Section 7 - Status Asthmaticus",
             guideSectionId: "status-asthmaticus"
         },
         {
@@ -65,10 +65,10 @@ var asthmaQuizData = {
             difficulty: "application",
             stem: "A patient with asthma uses a peak flow meter at home. The patient\u2019s personal best is 400 L/min. Today\u2019s reading is 220 L/min. According to the peak flow zone system, this reading falls in the:",
             options: [
-                { id: "a", text: "Green zone \u2014 continue current medication plan" },
-                { id: "b", text: "Yellow zone \u2014 use quick-relief inhaler and adjust medications" },
-                { id: "c", text: "Red zone \u2014 take rescue medication and seek emergency care" },
-                { id: "d", text: "Normal range \u2014 no action needed" }
+                { id: "a", text: "Green zone - continue current medication plan" },
+                { id: "b", text: "Yellow zone - use quick-relief inhaler and adjust medications" },
+                { id: "c", text: "Red zone - take rescue medication and seek emergency care" },
+                { id: "d", text: "Normal range - no action needed" }
             ],
             correct: "b",
             rationale: {
@@ -77,8 +77,8 @@ var asthmaQuizData = {
                 c: "Red zone (<50% of personal best) would be below 200 L/min. At 220 (55%), the patient is just above the red zone threshold but still in yellow.",
                 d: "Any reading below 80% of personal best requires action per the asthma action plan."
             },
-            testTakingTip: "Peak flow zones: Green = 80-100% (go!), Yellow = 50-80% (caution \u2014 take rescue meds), Red = <50% (EMERGENCY \u2014 seek care immediately). Always calculate as a percentage of PERSONAL best, not predicted values.",
-            guideSection: "Section 6 \u2014 Nursing Assessment",
+            testTakingTip: "Peak flow zones: Green = 80-100% (go!), Yellow = 50-80% (caution - take rescue meds), Red = <50% (EMERGENCY - seek care immediately). Always calculate as a percentage of PERSONAL best, not predicted values.",
+            guideSection: "Section 6 - Nursing Assessment",
             guideSectionId: "assessment"
         },
         {
@@ -86,7 +86,7 @@ var asthmaQuizData = {
             type: "ordering",
             subtype: null,
             difficulty: "application",
-            stem: "A patient with moderate persistent asthma is experiencing an acute exacerbation at home \u2014 wheezing, shortness of breath, and peak flow at 55% of personal best. Place the asthma action plan steps in the correct order.",
+            stem: "A patient with moderate persistent asthma is experiencing an acute exacerbation at home - wheezing, shortness of breath, and peak flow at 55% of personal best. Place the asthma action plan steps in the correct order.",
             options: [
                 { id: "a", text: "Use rescue inhaler (albuterol) 2\u20134 puffs" },
                 { id: "b", text: "Wait 20 minutes and reassess peak flow" },
@@ -97,14 +97,14 @@ var asthmaQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "The asthma action plan follows a stepwise escalation: rescue medication, reassessment, repeat if needed, oral corticosteroids for sustained inflammation control, and emergency care if failing to improve.",
-                a: "FIRST \u2014 At 55% peak flow (Yellow Zone), use rescue inhaler. Albuterol provides rapid bronchodilation within 5\u201315 minutes.",
-                b: "SECOND \u2014 Wait 20 minutes to allow the medication to take full effect, then reassess peak flow to determine if escalation is needed.",
-                c: "THIRD \u2014 If peak flow remains below 80% after the first dose, repeat albuterol 2\u20134 puffs. Persistent limitation indicates a more significant exacerbation.",
-                d: "FOURTH \u2014 If repeated rescue use is needed, take the prescribed oral corticosteroid (e.g., prednisone). Oral steroids address underlying airway inflammation that bronchodilators alone cannot resolve.",
-                e: "FIFTH \u2014 If symptoms persist despite rescue inhaler and oral corticosteroid, or if peak flow drops below 50% (Red Zone), contact the healthcare provider or go to the ED."
+                a: "FIRST - At 55% peak flow (Yellow Zone), use rescue inhaler. Albuterol provides rapid bronchodilation within 5\u201315 minutes.",
+                b: "SECOND - Wait 20 minutes to allow the medication to take full effect, then reassess peak flow to determine if escalation is needed.",
+                c: "THIRD - If peak flow remains below 80% after the first dose, repeat albuterol 2\u20134 puffs. Persistent limitation indicates a more significant exacerbation.",
+                d: "FOURTH - If repeated rescue use is needed, take the prescribed oral corticosteroid (e.g., prednisone). Oral steroids address underlying airway inflammation that bronchodilators alone cannot resolve.",
+                e: "FIFTH - If symptoms persist despite rescue inhaler and oral corticosteroid, or if peak flow drops below 50% (Red Zone), contact the healthcare provider or go to the ED."
             },
             testTakingTip: "Asthma action plan: Rescue \u2192 Wait and reassess \u2192 Repeat \u2192 Oral steroid \u2192 Seek emergency care. Peak flow zones: Green (80\u2013100%) = go, Yellow (50\u201380%) = caution, Red (<50%) = emergency.",
-            guideSection: "Section 3 \u2014 Pathophysiology & Triggers",
+            guideSection: "Section 3 - Pathophysiology & Triggers",
             guideSectionId: "pathophysiology"
         },
         {
@@ -114,7 +114,7 @@ var asthmaQuizData = {
             difficulty: "application",
             stem: "A patient with moderate persistent asthma is currently on a low-dose ICS (Step 2). The patient reports using the rescue inhaler 4 times per week and waking at night with coughing twice a month. The nurse anticipates the provider will:",
             options: [
-                { id: "a", text: "Continue current treatment \u2014 symptoms are well-controlled" },
+                { id: "a", text: "Continue current treatment - symptoms are well-controlled" },
                 { id: "b", text: "Step up to medium-dose ICS or add a LABA" },
                 { id: "c", text: "Step down to PRN SABA only" },
                 { id: "d", text: "Switch to oral corticosteroids daily" }
@@ -127,7 +127,7 @@ var asthmaQuizData = {
                 d: "Daily oral corticosteroids are reserved for Step 6 (severe persistent) after all other options have failed. Jumping to oral steroids from Step 2 skips multiple intermediate steps."
             },
             testTakingTip: "Control thresholds: Rescue use >2 days/week OR nighttime symptoms >2x/month = NOT well-controlled \u2192 step UP. Well-controlled for \u22653 months \u2192 step DOWN. Remember the \"Rule of 2s\" for control assessment.",
-            guideSection: "Section 4 \u2014 Severity Classification",
+            guideSection: "Section 4 - Severity Classification",
             guideSectionId: "severity"
         },
         {
@@ -150,7 +150,7 @@ var asthmaQuizData = {
                 d: "The \"open mouth\" technique (4 inches away) is an older method. Current guidelines recommend using MDIs with a spacer whenever possible for optimal drug delivery."
             },
             testTakingTip: "MDI technique: Exhale \u2192 Slow inhale + actuate \u2192 Hold 10 sec. A spacer improves delivery by 40-60% and is recommended for all patients, especially children and those with coordination difficulty. Teach patients to demonstrate (teach-back method).",
-            guideSection: "Section 8 \u2014 Patient Education",
+            guideSection: "Section 8 - Patient Education",
             guideSectionId: "education"
         },
         {
@@ -169,13 +169,13 @@ var asthmaQuizData = {
             correct: { a: "Controller (Maintenance)", b: "Rescue (Quick-Relief)", c: "Controller (Maintenance)", d: "Rescue (Quick-Relief)" },
             rationale: {
                 correct: "Controllers are taken daily to prevent symptoms (ICS, LABAs). Rescue medications provide rapid relief during acute episodes (SABAs, ipratropium). Knowing this distinction is essential for patient education.",
-                a: "CONTROLLER \u2014 Inhaled corticosteroids are the most effective first-line controller medications. They reduce airway inflammation and are taken daily. Rinse mouth after use to prevent oral candidiasis.",
-                b: "RESCUE \u2014 Short-acting beta2-agonists like albuterol provide rapid bronchodilation within 5\u201315 minutes. Used PRN for acute symptoms. Needing SABA >2 days/week indicates poorly controlled asthma.",
-                c: "CONTROLLER \u2014 Long-acting beta2-agonists provide sustained bronchodilation for 12 hours. Must ALWAYS be combined with an ICS (never as monotherapy) due to FDA Black Box Warning about increased risk when used alone.",
-                d: "RESCUE \u2014 Ipratropium bromide is a short-acting anticholinergic used as adjunct quick-relief therapy in acute exacerbations, often nebulized with albuterol (DuoNeb) for synergistic bronchodilation."
+                a: "CONTROLLER - Inhaled corticosteroids are the most effective first-line controller medications. They reduce airway inflammation and are taken daily. Rinse mouth after use to prevent oral candidiasis.",
+                b: "RESCUE - Short-acting beta2-agonists like albuterol provide rapid bronchodilation within 5\u201315 minutes. Used PRN for acute symptoms. Needing SABA >2 days/week indicates poorly controlled asthma.",
+                c: "CONTROLLER - Long-acting beta2-agonists provide sustained bronchodilation for 12 hours. Must ALWAYS be combined with an ICS (never as monotherapy) due to FDA Black Box Warning about increased risk when used alone.",
+                d: "RESCUE - Ipratropium bromide is a short-acting anticholinergic used as adjunct quick-relief therapy in acute exacerbations, often nebulized with albuterol (DuoNeb) for synergistic bronchodilation."
             },
-            testTakingTip: "Controllers = daily (ICS, LABAs, leukotriene modifiers). Rescue = PRN (SABAs, ipratropium). Critical safety: LABAs must NEVER be used alone \u2014 always with an ICS.",
-            guideSection: "Section 5 \u2014 Rescue vs Controller Medications",
+            testTakingTip: "Controllers = daily (ICS, LABAs, leukotriene modifiers). Rescue = PRN (SABAs, ipratropium). Critical safety: LABAs must NEVER be used alone - always with an ICS.",
+            guideSection: "Section 5 - Rescue vs Controller Medications",
             guideSectionId: "medications"
         },
         {
@@ -187,7 +187,7 @@ var asthmaQuizData = {
             options: [
                 { id: "a", text: "Stop the nebulization and notify the provider" },
                 { id: "b", text: "Administer a beta-blocker to control the heart rate" },
-                { id: "c", text: "Continue the treatment \u2014 these are expected side effects" },
+                { id: "c", text: "Continue the treatment - these are expected side effects" },
                 { id: "d", text: "Switch to an ipratropium nebulization only" }
             ],
             correct: "a",
@@ -198,7 +198,7 @@ var asthmaQuizData = {
                 d: "Switching medications independently is outside the nurse\u2019s scope of practice without a provider order. Notify the provider to make the treatment decision."
             },
             testTakingTip: "Beta-blockers + asthma = NEVER. This is a high-yield NCLEX concept. Also remember: albuterol side effects (tachycardia, tremors, hypokalemia) are dose-dependent. When side effects become dangerous, stop the drug and notify the provider.",
-            guideSection: "Section 5 \u2014 Rescue vs Controller Medications",
+            guideSection: "Section 5 - Rescue vs Controller Medications",
             guideSectionId: "medications"
         }
     ]

@@ -1,5 +1,5 @@
 /**
- * Pediatric GERD Quiz — Question Data
+ * Pediatric GERD Quiz - Question Data
  * Clinical-scenario questions covering GER vs GERD, red flags,
  * conservative management, medications, and family education.
  */
@@ -20,19 +20,19 @@ var pediatricGerdQuizData = {
             stem: "A parent brings a 3-month-old for a well-child visit. The infant spits up after most feeds, produces adequate wet diapers, is following the 50th percentile for weight, and is generally content. What is the nurse's best interpretation?",
             options: [
                 { id: "a", text: "The infant has GERD and needs medication" },
-                { id: "b", text: "Physiologic GER \u2014 a 'happy spitter' that typically resolves by 12\u201318 months" },
+                { id: "b", text: "Physiologic GER - a 'happy spitter' that typically resolves by 12\u201318 months" },
                 { id: "c", text: "The infant likely has pyloric stenosis" },
                 { id: "d", text: "This is evidence of a cow's milk protein allergy" }
             ],
             correct: "b",
             rationale: {
-                correct: "An infant who spits up but has normal weight gain and is content is a 'happy spitter' with physiologic GER \u2014 the lower esophageal sphincter is immature. This peaks at 2\u20134 months and resolves by 12\u201318 months. Reassurance and conservative measures are all that's needed.",
+                correct: "An infant who spits up but has normal weight gain and is content is a 'happy spitter' with physiologic GER - the lower esophageal sphincter is immature. This peaks at 2\u20134 months and resolves by 12\u201318 months. Reassurance and conservative measures are all that's needed.",
                 a: "Normal weight gain and a content infant rules out GERD.",
                 c: "Pyloric stenosis presents with projectile non-bilious vomiting and the infant is hungry after, not content.",
-                d: "Cow's milk protein allergy typically causes blood in stool, eczema, and poor weight gain \u2014 not described here."
+                d: "Cow's milk protein allergy typically causes blood in stool, eczema, and poor weight gain - not described here."
             },
             testTakingTip: "Happy spitter = GER. Problem spitter (FTT, feeding refusal, apnea) = GERD.",
-            guideSection: "Section 1 \u2014 GER vs GERD",
+            guideSection: "Section 1 - GER vs GERD",
             guideSectionId: "ger-vs-gerd"
         },
         {
@@ -49,13 +49,13 @@ var pediatricGerdQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Bilious (green) vomiting indicates obstruction below the ampulla of Vater \u2014 NEVER normal GERD. Malrotation with volvulus is a surgical emergency that can cause bowel necrosis within hours. An upper GI series is the diagnostic test of choice.",
+                correct: "Bilious (green) vomiting indicates obstruction below the ampulla of Vater - NEVER normal GERD. Malrotation with volvulus is a surgical emergency that can cause bowel necrosis within hours. An upper GI series is the diagnostic test of choice.",
                 a: "Green vomit is never normal reflux.",
                 b: "This is a critical time-sensitive finding; cannot wait 2 weeks.",
                 d: "PPI is inappropriate for suspected obstruction."
             },
             testTakingTip: "Green vomit in an infant = emergency. Never attribute to GERD.",
-            guideSection: "Section 2 \u2014 Red Flags",
+            guideSection: "Section 2 - Red Flags",
             guideSectionId: "red-flags"
         },
         {
@@ -73,12 +73,12 @@ var pediatricGerdQuizData = {
             correct: "b",
             rationale: {
                 correct: "Upright positioning during and 30 minutes after feeds uses gravity to reduce reflux. This is the cornerstone of conservative management for infant GER.",
-                a: "NEVER prone for infants \u2014 SIDS risk outweighs any reflux benefit. Back to sleep, always.",
+                a: "NEVER prone for infants - SIDS risk outweighs any reflux benefit. Back to sleep, always.",
                 c: "Large volumes distend the stomach and WORSEN reflux. Small frequent feeds are preferred.",
                 d: "Pillows in the crib increase SIDS risk and are contraindicated for infants."
             },
             testTakingTip: "Upright for awake time, supine for sleep. Small frequent feeds beat large infrequent ones.",
-            guideSection: "Section 4 \u2014 Conservative Management",
+            guideSection: "Section 4 - Conservative Management",
             guideSectionId: "conservative"
         },
         {
@@ -89,19 +89,19 @@ var pediatricGerdQuizData = {
             stem: "A parent observes their 4-month-old frequently arching the back and twisting the head during feeds. What is this most likely to represent?",
             options: [
                 { id: "a", text: "Seizure activity" },
-                { id: "b", text: "Sandifer syndrome \u2014 posturing from reflux" },
+                { id: "b", text: "Sandifer syndrome - posturing from reflux" },
                 { id: "c", text: "A congenital neurological disorder" },
                 { id: "d", text: "Normal developmental motor behavior" }
             ],
             correct: "b",
             rationale: {
-                correct: "Sandifer syndrome describes the back-arching and head-twisting that infants display during GERD episodes \u2014 it's an attempt to clear the esophagus. It's often misinterpreted as a seizure, but it's not epileptic.",
+                correct: "Sandifer syndrome describes the back-arching and head-twisting that infants display during GERD episodes - it's an attempt to clear the esophagus. It's often misinterpreted as a seizure, but it's not epileptic.",
                 a: "Seizures have other features (loss of consciousness, jerking movements, postictal state). Sandifer is paroxysmal but non-epileptic.",
                 c: "Can mimic neuro disease but is reflux-related; resolves when GERD is treated.",
                 d: "Not a normal developmental motor pattern."
             },
-            testTakingTip: "Sandifer syndrome: reflux mimicking a seizure. Key differentiator \u2014 it's triggered by or during feeds.",
-            guideSection: "Section 1 \u2014 GER vs GERD",
+            testTakingTip: "Sandifer syndrome: reflux mimicking a seizure. Key differentiator - it's triggered by or during feeds.",
+            guideSection: "Section 1 - GER vs GERD",
             guideSectionId: "ger-vs-gerd"
         },
         {
@@ -118,13 +118,13 @@ var pediatricGerdQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "PPIs irreversibly bind proton pumps that are ACTIVELY producing acid \u2014 which happens during meals. Giving the PPI 30\u201360 minutes before eating allows the drug to reach the parietal cells just as they're activated.",
+                correct: "PPIs irreversibly bind proton pumps that are ACTIVELY producing acid - which happens during meals. Giving the PPI 30\u201360 minutes before eating allows the drug to reach the parietal cells just as they're activated.",
                 a: "Taking with meals reduces efficacy significantly.",
-                b: "Too late \u2014 the pumps have already been active.",
+                b: "Too late - the pumps have already been active.",
                 d: "Bedtime on empty stomach doesn't align with acid production peaks."
             },
             testTakingTip: "PPI = 30\u201360 min before breakfast. Timing is critical for efficacy.",
-            guideSection: "Section 5 \u2014 Medications & Surgery",
+            guideSection: "Section 5 - Medications & Surgery",
             guideSectionId: "medications"
         },
         {
@@ -141,13 +141,13 @@ var pediatricGerdQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Falling off the growth curve, feeding refusal, and respiratory symptoms (wheezing, cough, aspiration) are hallmark GERD findings \u2014 reflux is causing complications and affecting quality of life and growth.",
+                correct: "Falling off the growth curve, feeding refusal, and respiratory symptoms (wheezing, cough, aspiration) are hallmark GERD findings - reflux is causing complications and affecting quality of life and growth.",
                 a: "Spitting up alone without complications is usually GER, not GERD.",
                 b: "Stable tracking on any percentile is reassuring.",
-                d: "Upward crossing is excellent growth \u2014 reassuring."
+                d: "Upward crossing is excellent growth - reassuring."
             },
             testTakingTip: "Falling off the growth curve + feeding refusal + respiratory signs = GERD with complications.",
-            guideSection: "Section 1 \u2014 GER vs GERD",
+            guideSection: "Section 1 - GER vs GERD",
             guideSectionId: "ger-vs-gerd"
         },
         {
@@ -170,7 +170,7 @@ var pediatricGerdQuizData = {
                 d: "TUMS is appropriate for intermittent heartburn in older children."
             },
             testTakingTip: "Metoclopramide = EPS risk in children. Avoid unless specifically indicated.",
-            guideSection: "Section 5 \u2014 Medications & Surgery",
+            guideSection: "Section 5 - Medications & Surgery",
             guideSectionId: "medications"
         },
         {
@@ -194,7 +194,7 @@ var pediatricGerdQuizData = {
                 d: "GJ tube placement is a feeding option, not an anti-reflux surgery."
             },
             testTakingTip: "Nissen = fundus wraps around esophagus. Creates a valve to prevent reflux.",
-            guideSection: "Section 5 \u2014 Medications & Surgery",
+            guideSection: "Section 5 - Medications & Surgery",
             guideSectionId: "medications"
         },
         {
@@ -217,7 +217,7 @@ var pediatricGerdQuizData = {
                 d: "Thickening IS a recognized conservative measure, though evidence is mixed."
             },
             testTakingTip: "Thickener: 1 tsp rice per oz formula. Enlarge nipple opening.",
-            guideSection: "Section 4 \u2014 Conservative Management",
+            guideSection: "Section 4 - Conservative Management",
             guideSectionId: "conservative"
         },
         {
@@ -235,12 +235,12 @@ var pediatricGerdQuizData = {
             correct: "c",
             rationale: {
                 correct: "Projectile vomiting in a 2\u20138 week old infant with dehydration is highly suspicious for pyloric stenosis. Lack of wet diapers indicates severe dehydration needing urgent fluid resuscitation and electrolyte correction. This is not GERD.",
-                a: "Happy spitter with normal growth \u2014 no urgency.",
+                a: "Happy spitter with normal growth - no urgency.",
                 b: "Stable and improving.",
                 d: "Improving on treatment is not urgent."
             },
             testTakingTip: "Projectile vomiting + dehydration in a 2\u20138 week old = pyloric stenosis, priority case.",
-            guideSection: "Section 2 \u2014 Red Flags",
+            guideSection: "Section 2 - Red Flags",
             guideSectionId: "red-flags"
         },
         {
@@ -263,7 +263,7 @@ var pediatricGerdQuizData = {
                 d: "Stool studies evaluate for other GI issues, not reflux."
             },
             testTakingTip: "pH probe = gold standard for reflux severity. Impedance probe adds non-acid reflux detection.",
-            guideSection: "Section 3 \u2014 Diagnosis",
+            guideSection: "Section 3 - Diagnosis",
             guideSectionId: "diagnosis"
         },
         {
@@ -276,17 +276,17 @@ var pediatricGerdQuizData = {
                 { id: "a", text: "'Yes, elevate the head of the crib mattress at a 30-degree angle.'" },
                 { id: "b", text: "'Put a pillow under the baby's head to elevate slightly.'" },
                 { id: "c", text: "'Place the baby to sleep on the belly for gravity to help.'" },
-                { id: "d", text: "'Place the baby supine on a flat firm surface \u2014 no elevation or prone positioning.'" }
+                { id: "d", text: "'Place the baby supine on a flat firm surface - no elevation or prone positioning.'" }
             ],
             correct: "d",
             rationale: {
-                correct: "Current AAP guidelines are clear: infants should sleep supine on a firm flat surface with no inclines, wedges, or prone positioning. Despite reflux benefit, SIDS risk outweighs \u2014 and recent evidence shows elevation is not as effective as once believed.",
+                correct: "Current AAP guidelines are clear: infants should sleep supine on a firm flat surface with no inclines, wedges, or prone positioning. Despite reflux benefit, SIDS risk outweighs - and recent evidence shows elevation is not as effective as once believed.",
                 a: "Elevation is no longer recommended for infant sleep due to SIDS and suffocation risk.",
                 b: "Pillows in the crib are a SIDS hazard.",
                 c: "Prone sleep is explicitly contraindicated."
             },
             testTakingTip: "Back to sleep, flat surface, firm mattress, no pillows. No exceptions for GERD.",
-            guideSection: "Section 4 \u2014 Conservative Management",
+            guideSection: "Section 4 - Conservative Management",
             guideSectionId: "conservative"
         },
         {
@@ -309,7 +309,7 @@ var pediatricGerdQuizData = {
                 d: "Antacids are not first-line for infants; conservative measures come first, and medications are prescribed only when needed."
             },
             testTakingTip: "Hold the infant upright after feeds. Small frequent feeds. Burp often. Simple, effective, no meds needed for most.",
-            guideSection: "Section 6 \u2014 Nursing Care & Family Education",
+            guideSection: "Section 6 - Nursing Care & Family Education",
             guideSectionId: "nursing-care"
         }
     ]

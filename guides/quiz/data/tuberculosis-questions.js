@@ -1,5 +1,5 @@
 /**
- * Tuberculosis Quiz — Question Data
+ * Tuberculosis Quiz - Question Data
  * 10 NCLEX-style questions: 5 Single, 3 Priority, 1 Ordering, 1 Matrix
  */
 
@@ -18,20 +18,20 @@ var tuberculosisQuizData = {
             difficulty: "knowledge",
             stem: "A nurse is reading the tuberculin skin test (Mantoux/PPD) of a 42-year-old healthcare worker with no known immunocompromising conditions. The induration measures 9 mm. How should the nurse interpret this result?",
             options: [
-                { id: "a", text: "Positive — all adults with ≥5 mm induration are positive" },
-                { id: "b", text: "Positive — healthcare workers are positive at ≥10 mm" },
-                { id: "c", text: "Negative — this individual requires ≥10 mm for a positive result" },
-                { id: "d", text: "Negative — this individual requires ≥15 mm for a positive result" }
+                { id: "a", text: "Positive - all adults with ≥5 mm induration are positive" },
+                { id: "b", text: "Positive - healthcare workers are positive at ≥10 mm" },
+                { id: "c", text: "Negative - this individual requires ≥10 mm for a positive result" },
+                { id: "d", text: "Negative - this individual requires ≥15 mm for a positive result" }
             ],
             correct: "c",
             rationale: {
                 correct: "Healthcare workers fall into the ≥10 mm positive category due to occupational exposure risk. At 9 mm, this result is just below the threshold and is interpreted as negative for this risk group.",
-                a: "The ≥5 mm threshold applies to HIV-positive individuals, close contacts of active TB cases, immunosuppressed patients, and those with prior TB-consistent chest X-ray changes — not all adults.",
+                a: "The ≥5 mm threshold applies to HIV-positive individuals, close contacts of active TB cases, immunosuppressed patients, and those with prior TB-consistent chest X-ray changes - not all adults.",
                 b: "While healthcare workers do use the 10 mm cutoff, 9 mm is below that threshold and is therefore negative.",
                 d: "The ≥15 mm cutoff applies to individuals with NO known risk factors. Healthcare workers have occupational risk and use the ≥10 mm threshold."
             },
-            testTakingTip: "Know the three PPD cutoffs: ≥5 mm (highest risk — HIV, contacts, immunosuppressed), ≥10 mm (moderate risk — healthcare workers, high-prevalence groups, children <4), ≥15 mm (no risk factors). Always match the patient's risk category first.",
-            guideSection: "Section 5 — Diagnostic Testing",
+            testTakingTip: "Know the three PPD cutoffs: ≥5 mm (highest risk - HIV, contacts, immunosuppressed), ≥10 mm (moderate risk - healthcare workers, high-prevalence groups, children <4), ≥15 mm (no risk factors). Always match the patient's risk category first.",
+            guideSection: "Section 5 - Diagnostic Testing",
             guideSectionId: "diagnostics"
         },
         {
@@ -53,8 +53,8 @@ var tuberculosisQuizData = {
                 b: "Airborne isolation is indicated for suspected or confirmed ACTIVE TB with respiratory symptoms, not solely based on a positive IGRA. The patient needs further workup first.",
                 d: "The TST can produce false negatives in HIV patients due to impaired immune response (anergy). The positive IGRA is the more reliable result here."
             },
-            testTakingTip: "QuantiFERON (IGRA) is more specific than TST and is preferred in immunocompromised patients and BCG-vaccinated individuals. A positive IGRA always warrants further workup — chest X-ray is the next step.",
-            guideSection: "Section 5 — Diagnostic Testing",
+            testTakingTip: "QuantiFERON (IGRA) is more specific than TST and is preferred in immunocompromised patients and BCG-vaccinated individuals. A positive IGRA always warrants further workup - chest X-ray is the next step.",
+            guideSection: "Section 5 - Diagnostic Testing",
             guideSectionId: "diagnostics"
         },
         {
@@ -73,14 +73,14 @@ var tuberculosisQuizData = {
             correct: ["a", "b", "c", "d", "e"],
             rationale: {
                 correct: "Contain the source first (mask the patient), protect yourself (N95), move the patient to the correct environment (AIIR), confirm the room is functioning properly (negative pressure + air exchanges), then obtain diagnostic specimens.",
-                a: "FIRST — Masking the patient immediately reduces droplet nuclei released into the shared environment. This is the fastest way to limit exposure to others.",
-                b: "SECOND — The nurse must don a fit-tested N95 respirator before close contact. A surgical mask does NOT filter the 1–5 micron droplet nuclei that transmit TB.",
-                c: "THIRD — Transfer the patient to a negative-pressure airborne infection isolation room. Negative pressure prevents airborne particles from escaping into hallways.",
-                d: "FOURTH — Verify the room is functioning: negative pressure (check smoke tube or pressure monitor) and 6–12 air exchanges/hour. A non-functioning AIIR provides no protection.",
-                e: "FIFTH — Collect three sputum specimens 8–24 hours apart for AFB smear and culture. These confirm the diagnosis and determine infectiousness. This step requires a functioning AIIR."
+                a: "FIRST - Masking the patient immediately reduces droplet nuclei released into the shared environment. This is the fastest way to limit exposure to others.",
+                b: "SECOND - The nurse must don a fit-tested N95 respirator before close contact. A surgical mask does NOT filter the 1–5 micron droplet nuclei that transmit TB.",
+                c: "THIRD - Transfer the patient to a negative-pressure airborne infection isolation room. Negative pressure prevents airborne particles from escaping into hallways.",
+                d: "FOURTH - Verify the room is functioning: negative pressure (check smoke tube or pressure monitor) and 6–12 air exchanges/hour. A non-functioning AIIR provides no protection.",
+                e: "FIFTH - Collect three sputum specimens 8–24 hours apart for AFB smear and culture. These confirm the diagnosis and determine infectiousness. This step requires a functioning AIIR."
             },
             testTakingTip: "Isolation sequence: contain the source (mask patient) → protect the nurse (N95) → correct environment (AIIR) → verify room function → obtain specimens. Think: 'mask, respirator, room, verify, collect.'",
-            guideSection: "Section 6 — Airborne Isolation Precautions",
+            guideSection: "Section 6 - Airborne Isolation Precautions",
             guideSectionId: "isolation"
         },
         {
@@ -97,8 +97,8 @@ var tuberculosisQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Jaundice (yellowing of the eyes), dark urine, nausea, and RUQ pain are classic signs of hepatotoxicity — a serious adverse effect of three of the four RIPE drugs (rifampin, isoniazid, and pyrazinamide). All hepatotoxic medications must be stopped immediately and the patient evaluated urgently with liver function tests.",
-                a: "While rifampin does cause orange/red discoloration of body fluids (urine, tears, sweat), this patient has JAUNDICE and RUQ pain — signs of liver damage, not the expected benign color change. Confusing these two presentations is dangerous.",
+                correct: "Jaundice (yellowing of the eyes), dark urine, nausea, and RUQ pain are classic signs of hepatotoxicity - a serious adverse effect of three of the four RIPE drugs (rifampin, isoniazid, and pyrazinamide). All hepatotoxic medications must be stopped immediately and the patient evaluated urgently with liver function tests.",
+                a: "While rifampin does cause orange/red discoloration of body fluids (urine, tears, sweat), this patient has JAUNDICE and RUQ pain - signs of liver damage, not the expected benign color change. Confusing these two presentations is dangerous.",
                 c: "Nausea in the context of jaundice and RUQ pain indicates hepatotoxicity, not simple GI intolerance. Taking medications with food would not address liver damage and could worsen it.",
                 d: "Hepatotoxicity is a medical urgency. Delayed evaluation risks fulminant liver failure. This patient needs same-day evaluation."
             },
@@ -108,7 +108,7 @@ var tuberculosisQuizData = {
                 { name: "Total Bilirubin", normal: "0.1–1.2 mg/dL" }
             ],
             testTakingTip: "Three of the four RIPE drugs are hepatotoxic (RIP = Rifampin, Isoniazid, Pyrazinamide). Distinguish normal rifampin orange discoloration from true jaundice: orange urine alone = expected; yellow sclera + dark urine + RUQ pain = STOP meds immediately.",
-            guideSection: "Section 7 — RIPE Therapy",
+            guideSection: "Section 7 - RIPE Therapy",
             guideSectionId: "ripe-therapy"
         },
         {
@@ -125,13 +125,13 @@ var tuberculosisQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Stopping TB medications after 2 months — even if the patient feels better — is the #1 cause of drug-resistant TB. The initial phase (2 months, all 4 drugs) must be followed by a continuation phase (4+ months, rifampin + isoniazid) for a total minimum of 6 months.",
+                correct: "Stopping TB medications after 2 months - even if the patient feels better - is the #1 cause of drug-resistant TB. The initial phase (2 months, all 4 drugs) must be followed by a continuation phase (4+ months, rifampin + isoniazid) for a total minimum of 6 months.",
                 a: "This is CORRECT understanding. Isoniazid depletes vitamin B6 (pyridoxine), causing peripheral neuropathy. B6 supplementation is standard practice during RIPE therapy.",
                 b: "This is CORRECT understanding. Rifampin causes harmless orange-red discoloration of tears, urine, sweat, and saliva. Patients should be warned so they don't mistake it for bleeding.",
                 d: "This is CORRECT understanding. Ethambutol can cause optic neuritis (decreased visual acuity, red-green color blindness). Vision changes must be reported immediately, and baseline eye exams are recommended."
             },
-            testTakingTip: "Read the question carefully — it asks for 'needs additional teaching,' meaning the INCORRECT statement. Only one answer shows misunderstanding: stopping meds early. TB treatment is always 6+ months minimum.",
-            guideSection: "Section 7 — RIPE Therapy",
+            testTakingTip: "Read the question carefully - it asks for 'needs additional teaching,' meaning the INCORRECT statement. Only one answer shows misunderstanding: stopping meds early. TB treatment is always 6+ months minimum.",
+            guideSection: "Section 7 - RIPE Therapy",
             guideSectionId: "ripe-therapy"
         },
         {
@@ -154,7 +154,7 @@ var tuberculosisQuizData = {
                 d: "Treatment of LTBI (typically isoniazid for 9 months or rifampin for 4 months) does not cause the patient to become contagious. Treatment is given to PREVENT progression to active disease."
             },
             testTakingTip: "Key distinction: Latent TB = positive test, NOT infectious, normal CXR, no symptoms, treated to prevent activation. Active TB = positive sputum, IS infectious, abnormal CXR, has symptoms, requires RIPE + isolation.",
-            guideSection: "Section 3 — Latent vs Active TB",
+            guideSection: "Section 3 - Latent vs Active TB",
             guideSectionId: "latent-vs-active"
         },
         {
@@ -177,7 +177,7 @@ var tuberculosisQuizData = {
                 d: "An asymptomatic recently exposed healthcare worker needs TST/IGRA testing (typically 8-10 weeks post-exposure) but shows no signs of active disease. No isolation needed."
             },
             testTakingTip: "When prioritizing TB patients, look for signs of ACTIVE disease: prolonged cough, night sweats, weight loss, hemoptysis, and risk factors (homelessness, incarceration, immunocompromise). Positive PPD alone ≠ isolation.",
-            guideSection: "Section 4 — Clinical Manifestations",
+            guideSection: "Section 4 - Clinical Manifestations",
             guideSectionId: "clinical-manifestations"
         },
         {
@@ -186,7 +186,7 @@ var tuberculosisQuizData = {
             subtype: null,
             difficulty: "analysis",
             stem: "A nurse is monitoring a patient on RIPE therapy for side effects. For each finding, indicate whether it is an expected effect (reassure the patient) or an adverse effect (notify the provider).",
-            matrixColumns: ["Expected Effect — Reassure Patient", "Adverse Effect — Notify Provider"],
+            matrixColumns: ["Expected Effect - Reassure Patient", "Adverse Effect - Notify Provider"],
             options: [
                 { id: "a", text: "Orange-colored urine" },
                 { id: "b", text: "Tingling and numbness in the feet" },
@@ -194,24 +194,24 @@ var tuberculosisQuizData = {
                 { id: "d", text: "Elevated uric acid level of 9.2 mg/dL with joint pain" }
             ],
             correct: {
-                a: "Expected Effect — Reassure Patient",
-                b: "Adverse Effect — Notify Provider",
-                c: "Adverse Effect — Notify Provider",
-                d: "Adverse Effect — Notify Provider"
+                a: "Expected Effect - Reassure Patient",
+                b: "Adverse Effect - Notify Provider",
+                c: "Adverse Effect - Notify Provider",
+                d: "Adverse Effect - Notify Provider"
             },
             rationale: {
                 correct: "Orange body fluids are a benign expected effect of rifampin. Peripheral neuropathy (isoniazid), visual changes (ethambutol), and hyperuricemia (pyrazinamide) are adverse effects that require provider notification and possible drug adjustment.",
-                a: "EXPECTED — Orange-colored urine, tears, and sweat are a benign, expected effect of rifampin. Patients should be educated about this in advance so they don't confuse it with hematuria.",
-                b: "ADVERSE — Tingling and numbness indicate peripheral neuropathy from isoniazid (INH) due to B6 depletion. May require increased pyridoxine supplementation or medication adjustment.",
-                c: "ADVERSE — Blurred vision and red-green color blindness are signs of optic neuritis caused by ethambutol. This is potentially irreversible — the drug must be stopped immediately.",
-                d: "ADVERSE — Pyrazinamide inhibits uric acid excretion, causing hyperuricemia. An elevated uric acid (normal: 3.5–7.2 mg/dL in males) with joint pain suggests gout and requires medication review."
+                a: "EXPECTED - Orange-colored urine, tears, and sweat are a benign, expected effect of rifampin. Patients should be educated about this in advance so they don't confuse it with hematuria.",
+                b: "ADVERSE - Tingling and numbness indicate peripheral neuropathy from isoniazid (INH) due to B6 depletion. May require increased pyridoxine supplementation or medication adjustment.",
+                c: "ADVERSE - Blurred vision and red-green color blindness are signs of optic neuritis caused by ethambutol. This is potentially irreversible - the drug must be stopped immediately.",
+                d: "ADVERSE - Pyrazinamide inhibits uric acid excretion, causing hyperuricemia. An elevated uric acid (normal: 3.5–7.2 mg/dL in males) with joint pain suggests gout and requires medication review."
             },
             labValues: [
                 { name: "Uric Acid (Male)", normal: "3.5–7.2 mg/dL" },
                 { name: "Uric Acid (Female)", normal: "2.6–6.0 mg/dL" }
             ],
             testTakingTip: "Match each RIPE drug to its signature side effect: Rifampin = Red/orange secretions (expected); Isoniazid = peripheral neuropathy + hepatotoxicity; Pyrazinamide = hyperuricemia + hepatotoxicity; Ethambutol = Eye (optic neuritis). Mnemonic: RIPE = Red, Isoniazid-neuropathy, Pee-uric acid, Eyes.",
-            guideSection: "Section 7 — RIPE Therapy",
+            guideSection: "Section 7 - RIPE Therapy",
             guideSectionId: "ripe-therapy"
         },
         {
@@ -234,7 +234,7 @@ var tuberculosisQuizData = {
                 c: "The asymptomatic 12-year-old needs testing as a household contact but is lowest priority among these options due to being older and having a functional immune system."
             },
             testTakingTip: "In contact tracing, prioritize immunocompromised individuals first (HIV, organ transplant, chronic steroids), then children under 5, then other close contacts. Immunosuppression = faster progression from latent to active TB.",
-            guideSection: "Section 8 — Nursing Care & Patient Education",
+            guideSection: "Section 8 - Nursing Care & Patient Education",
             guideSectionId: "nursing-care"
         },
         {
@@ -257,7 +257,7 @@ var tuberculosisQuizData = {
                 d: "Public health notification is important but not the FIRST action. The immediate threat is ongoing transmission in a shared room."
             },
             testTakingTip: "When the NCLEX gives you a patient with suspected TB in a non-isolated setting, the FIRST action is always isolation (protect others). Think safety first: isolate → then diagnose → then notify.",
-            guideSection: "Section 6 — Airborne Isolation Precautions",
+            guideSection: "Section 6 - Airborne Isolation Precautions",
             guideSectionId: "isolation"
         }
     ]

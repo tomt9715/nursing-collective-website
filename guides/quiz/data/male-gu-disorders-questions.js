@@ -1,5 +1,5 @@
 /**
- * Male GU Disorders Quiz — Question Data
+ * Male GU Disorders Quiz - Question Data
  * Exam-style questions covering phimosis, cryptorchidism,
  * and testicular torsion.
  */
@@ -32,7 +32,7 @@ var maleGuDisordersQuizData = {
                 d: "Antibiotic trial is for epididymitis, not torsion."
             },
             testTakingTip: "Classic torsion pattern in a teen = OR ASAP. Time is testicle.",
-            guideSection: "Section 3 \u2014 Testicular Torsion",
+            guideSection: "Section 3 - Testicular Torsion",
             guideSectionId: "torsion"
         },
         {
@@ -55,7 +55,7 @@ var maleGuDisordersQuizData = {
                 d: "48 hours: salvage near 0%."
             },
             testTakingTip: "6 hours is THE number for torsion. Memorize it.",
-            guideSection: "Section 3 \u2014 Testicular Torsion",
+            guideSection: "Section 3 - Testicular Torsion",
             guideSectionId: "torsion"
         },
         {
@@ -78,7 +78,7 @@ var maleGuDisordersQuizData = {
                 d: "Pyuria suggests epididymitis, but can be absent; the cremasteric reflex is more specific."
             },
             testTakingTip: "Torsion = absent cremasteric reflex + negative Prehn's. Epididymitis = present cremasteric + positive Prehn's.",
-            guideSection: "Section 3 \u2014 Testicular Torsion",
+            guideSection: "Section 3 - Testicular Torsion",
             guideSectionId: "torsion"
         },
         {
@@ -95,13 +95,13 @@ var maleGuDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "The infant foreskin is normally adherent to the glans and should not be forcibly retracted \u2014 doing so can tear the adhesions, cause scarring, and risk paraphimosis. Gentle external cleaning is all that's needed. Retraction develops gradually, often by age 5.",
+                correct: "The infant foreskin is normally adherent to the glans and should not be forcibly retracted - doing so can tear the adhesions, cause scarring, and risk paraphimosis. Gentle external cleaning is all that's needed. Retraction develops gradually, often by age 5.",
                 a: "Forceful retraction is contraindicated.",
                 c: "Routine antibiotics are not needed.",
                 d: "Routine circumcision is a family decision, not a phimosis treatment."
             },
             testTakingTip: "Never retract an infant's foreskin. Teach this at every well-child visit for uncircumcised boys.",
-            guideSection: "Section 1 \u2014 Phimosis",
+            guideSection: "Section 1 - Phimosis",
             guideSectionId: "phimosis"
         },
         {
@@ -121,10 +121,10 @@ var maleGuDisordersQuizData = {
                 correct: "Paraphimosis is a urologic emergency. The retracted foreskin acts as a tourniquet, cutting off venous return and causing progressive swelling and ischemia. Immediate manual reduction (with analgesia) is required; refractory cases may need a dorsal slit or emergency circumcision.",
                 a: "Delaying treatment risks ischemic necrosis of the glans.",
                 c: "Outpatient scheduling is inappropriate for an acute compromise.",
-                d: "Teaching is not the priority \u2014 reduction is."
+                d: "Teaching is not the priority - reduction is."
             },
             testTakingTip: "Paraphimosis = emergency. Manual reduction first; don't delay.",
-            guideSection: "Section 1 \u2014 Phimosis",
+            guideSection: "Section 1 - Phimosis",
             guideSectionId: "phimosis"
         },
         {
@@ -147,7 +147,7 @@ var maleGuDisordersQuizData = {
                 d: "Post-pubertal orchiopexy loses fertility benefit and may require orchiectomy if testis is atrophied."
             },
             testTakingTip: "6\u201318 months = sweet spot for orchiopexy. Early enough to preserve fertility, late enough to allow spontaneous descent.",
-            guideSection: "Section 2 \u2014 Cryptorchidism",
+            guideSection: "Section 2 - Cryptorchidism",
             guideSectionId: "cryptorchidism"
         },
         {
@@ -167,10 +167,10 @@ var maleGuDisordersQuizData = {
                 correct: "Untreated cryptorchidism increases testicular cancer risk 4\u20138 times. Early orchiopexy reduces but does not eliminate this risk. Infertility is also a major concern if the testis is not placed in the scrotum before puberty.",
                 a: "Epididymitis is not a known long-term consequence.",
                 c: "BPH is unrelated.",
-                d: "Hypogonadism can occur but isn't the major concern \u2014 cancer risk is."
+                d: "Hypogonadism can occur but isn't the major concern - cancer risk is."
             },
             testTakingTip: "Cryptorchidism \u2192 cancer risk 4\u20138\u00d7. Orchiopexy by 18 months reduces but doesn't eliminate this.",
-            guideSection: "Section 2 \u2014 Cryptorchidism",
+            guideSection: "Section 2 - Cryptorchidism",
             guideSectionId: "cryptorchidism"
         },
         {
@@ -187,14 +187,14 @@ var maleGuDisordersQuizData = {
             ],
             correct: "a",
             rationale: {
-                correct: "The bell clapper deformity \u2014 where the testis is not properly fixed to the scrotal wall \u2014 allows the testis to rotate freely on the spermatic cord and is the most common anatomic risk factor for torsion. This is why contralateral orchiopexy is performed at the time of detorsion.",
+                correct: "The bell clapper deformity - where the testis is not properly fixed to the scrotal wall - allows the testis to rotate freely on the spermatic cord and is the most common anatomic risk factor for torsion. This is why contralateral orchiopexy is performed at the time of detorsion.",
                 a: "Correct.",
                 b: "Patent processus vaginalis is associated with inguinal hernia and hydrocele.",
                 c: "Hypospadias is a urethral opening location abnormality.",
                 d: "Epispadias is also a urethral abnormality (opens on dorsum)."
             },
             testTakingTip: "Bell clapper = testis not fixed = torsion risk. Bilateral fixation is the surgical fix.",
-            guideSection: "Section 3 \u2014 Testicular Torsion",
+            guideSection: "Section 3 - Testicular Torsion",
             guideSectionId: "torsion"
         },
         {
@@ -217,7 +217,7 @@ var maleGuDisordersQuizData = {
                 d: "It's preventive, not cosmetic."
             },
             testTakingTip: "Torsion is usually bilateral risk. Fix both sides at surgery.",
-            guideSection: "Section 5 \u2014 Treatment & Post-Op Care",
+            guideSection: "Section 5 - Treatment & Post-Op Care",
             guideSectionId: "treatment"
         },
         {
@@ -234,13 +234,13 @@ var maleGuDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Monthly self-exam in the shower is recommended \u2014 the scrotum is warm and relaxed, making palpation easier. Each testis is gently rolled between thumb and fingers to assess for lumps, changes in size or consistency, and tenderness.",
+                correct: "Monthly self-exam in the shower is recommended - the scrotum is warm and relaxed, making palpation easier. Each testis is gently rolled between thumb and fingers to assess for lumps, changes in size or consistency, and tenderness.",
                 a: "Yearly is too infrequent to catch early changes.",
-                c: "Self-exam is for detecting changes early \u2014 before symptoms occur.",
+                c: "Self-exam is for detecting changes early - before symptoms occur.",
                 d: "Daily is overkill; monthly is the standard recommendation."
             },
             testTakingTip: "Testicular self-exam = monthly, in the shower. Teach this to every adolescent male at well-child visits.",
-            guideSection: "Section 6 \u2014 Nursing Care & Education",
+            guideSection: "Section 6 - Nursing Care & Education",
             guideSectionId: "nursing"
         },
         {
@@ -263,7 +263,7 @@ var maleGuDisordersQuizData = {
                 d: "Hydrocele is a fluid collection around the testis, not an empty scrotum."
             },
             testTakingTip: "Retractile = brings down, stays down. Cryptorchid = can't bring down or slips back up. Major clinical distinction.",
-            guideSection: "Section 2 \u2014 Cryptorchidism",
+            guideSection: "Section 2 - Cryptorchidism",
             guideSectionId: "cryptorchidism"
         },
         {
@@ -286,7 +286,7 @@ var maleGuDisordersQuizData = {
                 d: "Tight pressure isn't appropriate; gentle care is."
             },
             testTakingTip: "Post-orchiopexy: no straddle toys, no rough play, for 2\u20134 weeks. Follow-up with urology.",
-            guideSection: "Section 6 \u2014 Nursing Care & Education",
+            guideSection: "Section 6 - Nursing Care & Education",
             guideSectionId: "nursing"
         },
         {
@@ -303,13 +303,13 @@ var maleGuDisordersQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Intermittent testicular pain suggests INTERMITTENT torsion \u2014 the testis twists and spontaneously untwists. This is a red flag for future complete torsion and warrants urology referral for evaluation and often prophylactic bilateral orchiopexy.",
-                a: "Normal exam doesn't rule out intermittent torsion \u2014 history is critical.",
-                c: "Not growing pains \u2014 this pattern is concerning.",
+                correct: "Intermittent testicular pain suggests INTERMITTENT torsion - the testis twists and spontaneously untwists. This is a red flag for future complete torsion and warrants urology referral for evaluation and often prophylactic bilateral orchiopexy.",
+                a: "Normal exam doesn't rule out intermittent torsion - history is critical.",
+                c: "Not growing pains - this pattern is concerning.",
                 d: "NSAIDs don't address the structural issue."
             },
             testTakingTip: "Intermittent testicular pain in a teen = intermittent torsion until proven otherwise. Refer to urology.",
-            guideSection: "Section 3 \u2014 Testicular Torsion",
+            guideSection: "Section 3 - Testicular Torsion",
             guideSectionId: "torsion"
         }
     ]

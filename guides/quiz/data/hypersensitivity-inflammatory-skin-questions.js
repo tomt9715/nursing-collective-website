@@ -1,5 +1,5 @@
 /**
- * Hypersensitivity & Inflammatory Skin Quiz — Question Data
+ * Hypersensitivity & Inflammatory Skin Quiz - Question Data
  * Clinical-scenario questions covering atopic dermatitis, contact
  * dermatitis, urticaria, anaphylaxis, and SJS/TEN.
  */
@@ -32,7 +32,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 d: "Fragrances and antibacterial soaps irritate eczema skin."
             },
             testTakingTip: "Soak and seal: 3-minute window post-bath. Memorize this timing.",
-            guideSection: "Section 1 \u2014 Atopic Dermatitis",
+            guideSection: "Section 1 - Atopic Dermatitis",
             guideSectionId: "atopic"
         },
         {
@@ -49,13 +49,13 @@ var hypersensitivityInflammatorySkinQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "This is anaphylaxis \u2014 hives plus respiratory (wheezing) and cardiovascular (hypotension) involvement. IM epinephrine into the vastus lateralis is the ONLY life-saving first-line treatment. A 10-year-old is typically \u226530 kg, so 0.3 mg is the appropriate dose. Antihistamines and corticosteroids are adjuncts, not first-line.",
+                correct: "This is anaphylaxis - hives plus respiratory (wheezing) and cardiovascular (hypotension) involvement. IM epinephrine into the vastus lateralis is the ONLY life-saving first-line treatment. A 10-year-old is typically \u226530 kg, so 0.3 mg is the appropriate dose. Antihistamines and corticosteroids are adjuncts, not first-line.",
                 a: "Antihistamines don't reverse airway or cardiovascular collapse.",
                 b: "IV fluids are adjunctive for hypotension but come AFTER epinephrine.",
                 d: "Corticosteroids don't work fast enough for anaphylaxis."
             },
             testTakingTip: "Anaphylaxis = IM epinephrine FIRST. Delay in epi is the #1 cause of anaphylaxis death.",
-            guideSection: "Section 3 \u2014 Urticaria & Anaphylaxis",
+            guideSection: "Section 3 - Urticaria & Anaphylaxis",
             guideSectionId: "urticaria"
         },
         {
@@ -72,13 +72,13 @@ var hypersensitivityInflammatorySkinQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Candidal diaper dermatitis involves SKIN FOLDS and has SATELLITE LESIONS (smaller spots outside the main rash). Irritant dermatitis SPARES the folds and affects convex surfaces (buttocks, tops of thighs). This distinction drives treatment \u2014 candidal needs antifungal, irritant needs barrier cream.",
+                correct: "Candidal diaper dermatitis involves SKIN FOLDS and has SATELLITE LESIONS (smaller spots outside the main rash). Irritant dermatitis SPARES the folds and affects convex surfaces (buttocks, tops of thighs). This distinction drives treatment - candidal needs antifungal, irritant needs barrier cream.",
                 a: "Both are red.",
                 c: "Both can be uncomfortable.",
                 d: "Both occur in infants."
             },
             testTakingTip: "Fold involvement + satellites = candida (nystatin). Spares folds = irritant (barrier cream). A classic split.",
-            guideSection: "Section 2 \u2014 Contact & Diaper Dermatitis",
+            guideSection: "Section 2 - Contact & Diaper Dermatitis",
             guideSectionId: "contact"
         },
         {
@@ -101,7 +101,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 d: "Urticaria has migratory wheals, not linear vesicles tied to a contact event."
             },
             testTakingTip: "Linear streaks + hiking exposure = poison ivy. 'Leaves of three, let them be.'",
-            guideSection: "Section 2 \u2014 Contact & Diaper Dermatitis",
+            guideSection: "Section 2 - Contact & Diaper Dermatitis",
             guideSectionId: "contact"
         },
         {
@@ -124,7 +124,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 d: "Topical steroids are inadequate; systemic management is required."
             },
             testTakingTip: "SJS/TEN = stop the drug immediately + ICU/burn unit. Time is tissue.",
-            guideSection: "Section 4 \u2014 EM, SJS & TEN",
+            guideSection: "Section 4 - EM, SJS & TEN",
             guideSectionId: "sjs"
         },
         {
@@ -147,7 +147,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 d: "Wool irritates eczema skin; cotton is preferred."
             },
             testTakingTip: "Topical steroid = targeted + short course. Moisturize = everywhere + daily.",
-            guideSection: "Section 1 \u2014 Atopic Dermatitis",
+            guideSection: "Section 1 - Atopic Dermatitis",
             guideSectionId: "atopic"
         },
         {
@@ -167,10 +167,10 @@ var hypersensitivityInflammatorySkinQuizData = {
                 correct: "Migratory wheals that appear and disappear within 24 hours describe urticaria (hives). H1 antihistamines are first-line: cetirizine or loratadine (non-sedating) or diphenhydramine (sedating). If there are signs of anaphylaxis (respiratory, CV, GI), then epinephrine is indicated.",
                 a: "Topical steroids are less effective than systemic antihistamines for generalized hives.",
                 c: "Acyclovir is antiviral, not indicated for hives.",
-                d: "Epinephrine is for anaphylaxis \u2014 hives alone without systemic signs don't warrant it."
+                d: "Epinephrine is for anaphylaxis - hives alone without systemic signs don't warrant it."
             },
             testTakingTip: "Hives alone = H1 antihistamine. Hives + systemic signs = anaphylaxis = epinephrine.",
-            guideSection: "Section 3 \u2014 Urticaria & Anaphylaxis",
+            guideSection: "Section 3 - Urticaria & Anaphylaxis",
             guideSectionId: "urticaria"
         },
         {
@@ -193,7 +193,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 d: "Additional doses of epinephrine may be needed every 5\u201315 minutes if symptoms persist."
             },
             testTakingTip: "EpiPen given = go to ED + observe 4\u20136 hr. Biphasic reactions happen.",
-            guideSection: "Section 3 \u2014 Urticaria & Anaphylaxis",
+            guideSection: "Section 3 - Urticaria & Anaphylaxis",
             guideSectionId: "urticaria"
         },
         {
@@ -210,13 +210,13 @@ var hypersensitivityInflammatorySkinQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Painful clustered vesicles on eczematous skin plus fever suggests eczema herpeticum \u2014 disseminated HSV on broken eczema skin. It's an emergency that requires IV acyclovir. If near the eyes, emergent ophthalmology consult to prevent corneal scarring.",
+                correct: "Painful clustered vesicles on eczematous skin plus fever suggests eczema herpeticum - disseminated HSV on broken eczema skin. It's an emergency that requires IV acyclovir. If near the eyes, emergent ophthalmology consult to prevent corneal scarring.",
                 a: "A typical flare doesn't have vesicles or fever.",
                 c: "Contact dermatitis is itchy, not painful clustered vesicles.",
                 d: "Dry skin alone doesn't cause fever or vesicles."
             },
             testTakingTip: "Eczema + painful clustered vesicles + fever = eczema herpeticum = IV acyclovir urgently.",
-            guideSection: "Section 1 \u2014 Atopic Dermatitis",
+            guideSection: "Section 1 - Atopic Dermatitis",
             guideSectionId: "atopic"
         },
         {
@@ -233,13 +233,13 @@ var hypersensitivityInflammatorySkinQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "Past reactions do NOT predict future severity \u2014 a previous mild hives-only reaction can be followed by severe anaphylaxis the next time. Anyone with a confirmed food allergy should carry TWO EpiPens at all times (first may fail or biphasic reaction may need a second dose), know how to use them, and have an action plan.",
-                a: "Restricting EpiPens to 'severe' reactions is dangerous \u2014 can't predict severity.",
+                correct: "Past reactions do NOT predict future severity - a previous mild hives-only reaction can be followed by severe anaphylaxis the next time. Anyone with a confirmed food allergy should carry TWO EpiPens at all times (first may fail or biphasic reaction may need a second dose), know how to use them, and have an action plan.",
+                a: "Restricting EpiPens to 'severe' reactions is dangerous - can't predict severity.",
                 c: "Anaphylaxis can happen anywhere.",
                 d: "Antihistamines don't treat anaphylaxis."
             },
             testTakingTip: "Food allergy + hives history = ALWAYS carry two EpiPens. Past reactions don't predict future.",
-            guideSection: "Section 6 \u2014 Family Education",
+            guideSection: "Section 6 - Family Education",
             guideSectionId: "family"
         },
         {
@@ -262,7 +262,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 d: "Target lesions are erythema multiforme (EM), usually benign."
             },
             testTakingTip: "Nikolsky+ mucosal involvement = SJS/TEN emergency. Target alone + skin only = EM (milder).",
-            guideSection: "Section 4 \u2014 EM, SJS & TEN",
+            guideSection: "Section 4 - EM, SJS & TEN",
             guideSectionId: "sjs"
         },
         {
@@ -285,7 +285,7 @@ var hypersensitivityInflammatorySkinQuizData = {
                 d: "Immunosuppressants are reserved for chronic refractory cases."
             },
             testTakingTip: "Urticaria first-line = H1 antihistamine. H2 blocker adjunct for refractory. Steroids for severe.",
-            guideSection: "Section 5 \u2014 Medications",
+            guideSection: "Section 5 - Medications",
             guideSectionId: "meds"
         },
         {
@@ -303,12 +303,12 @@ var hypersensitivityInflammatorySkinQuizData = {
             correct: "b",
             rationale: {
                 correct: "Red shiny patches on convex surfaces sparing the skin folds is classic irritant diaper dermatitis. Treatment: frequent diaper changes, zinc oxide barrier cream generously applied, and air time. If no improvement in 2\u20133 days, then consider candidal superinfection and add nystatin or clotrimazole.",
-                a: "Antifungal is second-line \u2014 irritant diaper rash responds to barrier cream first.",
+                a: "Antifungal is second-line - irritant diaper rash responds to barrier cream first.",
                 c: "Antibiotics aren't indicated for irritant dermatitis.",
                 d: "Scented/alcohol wipes irritate the skin further."
             },
             testTakingTip: "Irritant diaper rash first-line: barrier cream + frequent changes + air time.",
-            guideSection: "Section 2 \u2014 Contact & Diaper Dermatitis",
+            guideSection: "Section 2 - Contact & Diaper Dermatitis",
             guideSectionId: "contact"
         },
         {
@@ -325,13 +325,13 @@ var hypersensitivityInflammatorySkinQuizData = {
             ],
             correct: "c",
             rationale: {
-                correct: "Anaphylaxis \u2014 hives + facial swelling + wheezing after food allergen exposure \u2014 is the most urgent priority. IM epinephrine is needed immediately. The other patients have less urgent needs: mild eczema care, diaper rash teaching, and simple urticaria.",
+                correct: "Anaphylaxis - hives + facial swelling + wheezing after food allergen exposure - is the most urgent priority. IM epinephrine is needed immediately. The other patients have less urgent needs: mild eczema care, diaper rash teaching, and simple urticaria.",
                 a: "Moisturizer education can wait.",
                 b: "Diaper rash teaching can wait.",
                 d: "Simple urticaria without respiratory or CV signs is not emergent."
             },
             testTakingTip: "Airway > everything. Anaphylaxis patient is always the first priority.",
-            guideSection: "Section 3 \u2014 Urticaria & Anaphylaxis",
+            guideSection: "Section 3 - Urticaria & Anaphylaxis",
             guideSectionId: "urticaria"
         }
     ]

@@ -9,7 +9,7 @@ var giBleedingQuizData = {
     guideSlug: "gi-bleeding",
     category: "Gastrointestinal",
     categoryColor: "#f59e0b",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -267,6 +267,106 @@ var giBleedingQuizData = {
             testTakingTip: "When a patient is actively vomiting blood and at risk of losing consciousness, think ABCs: Airway FIRST. Position to prevent aspiration (lateral/side-lying), then suction, then address circulation (fluids/blood). If the NCLEX offers an airway option alongside a circulation or diagnostic option, airway always wins.",
             guideSection: "Section 6 - Priority Nursing Interventions",
             guideSectionId: "interventions"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nurse is reviewing gastrointestinal anatomy. Which landmark divides an upper from a lower gastrointestinal bleed?",
+            options: [
+                { id: "a", text: "The ligament of Treitz" },
+                { id: "b", text: "The ileocecal valve" },
+                { id: "c", text: "The pyloric sphincter" },
+                { id: "d", text: "The hepatic flexure" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The ligament of Treitz, the suspensory ligament of the duodenum, marks the junction between duodenum and jejunum. Above it is an upper bleed and the patient gets an esophagogastroduodenoscopy; below it is a lower bleed and the patient gets a colonoscopy.",
+                b: "The ileocecal valve separates small from large bowel, which does not define this distinction.",
+                c: "The pyloric sphincter separates stomach from duodenum, and both sit above the dividing line.",
+                d: "The hepatic flexure is a bend in the colon, well into lower tract territory."
+            },
+            testTakingTip: "One landmark decides the scope. Above the ligament of Treitz means a camera down; below it means a camera up.",
+            guideSection: "Section 3 - One ligament divides everything",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks which lesion is the single commonest cause of an upper gastrointestinal bleed. What should the nurse answer?",
+            options: [
+                { id: "a", text: "A duodenal ulcer" },
+                { id: "b", text: "Esophageal varices" },
+                { id: "c", text: "A Mallory-Weiss tear" },
+                { id: "d", text: "Gastric cancer" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Duodenal ulcers are the single commonest upper gastrointestinal bleed. A posterior duodenal ulcer can erode into the gastroduodenal artery, which is why the bleeding can be brisk.",
+                b: "Varices from portal hypertension bleed dramatically but are less common overall.",
+                c: "A Mallory-Weiss tear follows retching and is usually self limiting.",
+                d: "Gastric cancer can bleed but accounts for far fewer presentations."
+            },
+            testTakingTip: "Commonest is not the same as most dramatic. Duodenal ulcers are commonest; varices are the ones that exsanguinate.",
+            guideSection: "Section 3 - One ligament divides everything",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 13, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient with an active gastrointestinal bleed needs intravenous access established. What should the nurse obtain?",
+            options: [
+                { id: "a", text: "Two large bore 18 gauge peripheral lines" },
+                { id: "b", text: "One 22 gauge line in the dominant forearm" },
+                { id: "c", text: "A single 20 gauge line with a saline lock" },
+                { id: "d", text: "A midline catheter placed by the vascular team" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Two 18 gauge peripheral lines are the minimum in an active bleed. Large bore short catheters allow rapid volume and blood product administration, which a narrow or long line cannot.",
+                b: "A 22 gauge line is too narrow to resuscitate a bleeding patient.",
+                c: "A single 20 gauge line gives neither the flow rate nor the redundancy required.",
+                d: "A midline is long and narrow, so flow is slow, and placement takes time this patient does not have."
+            },
+            testTakingTip: "Two 18 gauge lines is the minimum in an active bleed. Short and wide beats long and narrow for flow.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient with a gastrointestinal bleed has a hemoglobin of 11.8 g/dL one hour after presenting. How should the nurse interpret this?",
+            options: [
+                { id: "a", text: "It may be falsely reassuring, since equilibration takes time" },
+                { id: "b", text: "It rules out significant blood loss at this point in time" },
+                { id: "c", text: "It confirms the bleeding has stopped without intervention" },
+                { id: "d", text: "It means a transfusion should be given straight away now" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Hemoglobin takes 24 to 72 hours to equilibrate after an acute bleed, because whole blood is lost and the concentration only falls once plasma volume is replaced. An early value can look normal while a large volume has been lost, so serial levels are drawn every 6 hours.",
+                b: "An early normal hemoglobin excludes nothing, which is the trap this question tests.",
+                c: "A single value says nothing about whether bleeding continues.",
+                d: "The transfusion trigger is a hemoglobin of 7 g/dL, or 8 to 9 with coronary disease or symptoms."
+            },
+            testTakingTip: "Watch the heart rate and blood pressure before the hemoglobin. Tachycardia over 100 is the earliest sign of hypovolemia.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient with a gastrointestinal bleed and no cardiac history has a hemoglobin of 6.6 g/dL. What should the nurse anticipate?",
+            options: [
+                { id: "a", text: "Transfusion, since the trigger is 7 g/dL" },
+                { id: "b", text: "Observation, since the trigger is 5 g/dL" },
+                { id: "c", text: "Oral iron therapy started before discharge" },
+                { id: "d", text: "Repeating the sample before any treatment" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The hemoglobin transfusion trigger is 7 g/dL for most patients, rising to 8 or 9 g/dL for those with coronary disease or symptoms. At 6.6 g/dL this patient is below the threshold.",
+                b: "There is no 5 g/dL threshold in this guideline, and waiting that long is unsafe.",
+                c: "Oral iron replaces stores over weeks and does nothing for an acute deficit.",
+                d: "Repeating the sample delays a transfusion the value already justifies."
+            },
+            testTakingTip: "7 g/dL for most, 8 to 9 with coronary disease or symptoms. The comorbidity raises the trigger.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

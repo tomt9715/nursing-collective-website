@@ -9,7 +9,7 @@ var oxygenTherapyQuizData = {
     guideSlug: "oxygen-therapy",
     category: "Respiratory",
     categoryColor: "#3b82f6",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -268,6 +268,106 @@ var oxygenTherapyQuizData = {
             testTakingTip: "Always start with the least invasive, lowest effective oxygen device. Match the device to the severity: mild hypoxemia = nasal cannula, moderate = mask, severe = NRB. Also consider patient comfort - if they need to eat/drink, a nasal cannula is preferred.",
             guideSection: "Section 4 - Oxygen Delivery Devices",
             guideSectionId: "delivery-devices"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks how much of the oxygen in arterial blood is carried on hemoglobin. What should the nurse answer?",
+            options: [
+                { id: "a", text: "About 98.5 percent, with the rest dissolved in plasma" },
+                { id: "b", text: "About 50 percent, with the rest dissolved in plasma" },
+                { id: "c", text: "About 75 percent, with the rest bound to plasma protein" },
+                { id: "d", text: "Almost none, since most of it dissolves in the plasma" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Almost all oxygen in blood rides on hemoglobin, about 98.5 percent, with each molecule carrying four. Only a small fraction is dissolved in plasma, which is what the partial pressure of oxygen measures.",
+                b: "Half would leave far too little carrying capacity to meet tissue demand.",
+                c: "Oxygen is not carried bound to plasma proteins in any meaningful quantity.",
+                d: "The dissolved fraction is small, which is precisely why hemoglobin matters so much."
+            },
+            testTakingTip: "Two numbers, two different things. Saturation is how full the hemoglobin is; the partial pressure is what is dissolved.",
+            guideSection: "Section 3 - What the number actually means",
+            guideSectionId: "physiology"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient has arrived after a house fire with suspected carbon monoxide poisoning. The pulse oximeter reads 99 percent. What should the nurse anticipate?",
+            options: [
+                { id: "a", text: "Giving 100 percent oxygen regardless of the saturation" },
+                { id: "b", text: "Withholding oxygen because the saturation is normal" },
+                { id: "c", text: "Giving 2 litres by nasal cannula and reassessing later" },
+                { id: "d", text: "Titrating the oxygen down to keep saturation near 94" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Carbon monoxide poisoning is treated with 100 percent oxygen regardless of the saturation reading. Carbon monoxide binds hemoglobin far more avidly than oxygen does, and the oximeter cannot tell the two apart, so the reading is falsely reassuring.",
+                b: "The normal reading is exactly the trap. It reflects saturated hemoglobin, not hemoglobin saturated with oxygen.",
+                c: "A low flow cannula does not deliver the concentration needed to displace carbon monoxide.",
+                d: "Titrating down treats a number that is not measuring what it appears to measure."
+            },
+            testTakingTip: "A pulse oximeter cannot distinguish carbon monoxide from oxygen. In a fire victim, ignore the number and give 100 percent.",
+            guideSection: "Section 4 - When oxygen is the answer",
+            guideSectionId: "indications"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient with an acute myocardial infarction has an oxygen saturation of 96 percent on room air. What should the nurse do about oxygen?",
+            options: [
+                { id: "a", text: "Withhold oxygen, since it is given below 94 percent" },
+                { id: "b", text: "Start oxygen at 2 litres per minute by nasal cannula" },
+                { id: "c", text: "Start oxygen by non-rebreather mask at 15 litres" },
+                { id: "d", text: "Start oxygen only once chest pain has been relieved" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "In acute myocardial infarction oxygen is given only if the saturation is under 94 percent. Routine oxygen in a patient who is not hypoxemic offers no benefit and may cause harm through vasoconstriction.",
+                b: "Starting oxygen at a saturation of 96 percent treats a number that is already adequate.",
+                c: "A non-rebreather is far more than this patient needs and carries the same concern.",
+                d: "Pain relief is not the trigger for oxygen. The saturation is."
+            },
+            testTakingTip: "Oxygen is a drug with an order, a dose and a target. In myocardial infarction the trigger is a saturation under 94 percent.",
+            guideSection: "Section 4 - When oxygen is the answer",
+            guideSectionId: "indications"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient has been on 70 percent fraction of inspired oxygen for 36 hours. Which risk should the nurse recognise?",
+            options: [
+                { id: "a", text: "Oxygen toxicity, from free radicals damaging the lung" },
+                { id: "b", text: "Oxygen dependence, meaning the drive to breathe is lost" },
+                { id: "c", text: "Carbon dioxide narcosis from suppressed respirations" },
+                { id: "d", text: "Nitrogen accumulation causing alveolar over-distension" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Above 50 percent fraction of inspired oxygen held for 24 to 48 hours, oxygen begins damaging the lung it was given to help. Free radicals injure membranes, surfactant production fails, nitrogen is washed out causing absorption atelectasis, and inflammation follows.",
+                b: "Loss of respiratory drive is the concern in chronic carbon dioxide retainers, a different mechanism at much lower concentrations.",
+                c: "Carbon dioxide narcosis relates to hypoventilation rather than to a high concentration over 36 hours.",
+                d: "High oxygen washes nitrogen out rather than accumulating it, and the result is collapse rather than over-distension."
+            },
+            testTakingTip: "Above 50 percent for 24 to 48 hours is the toxicity threshold. Use the lowest concentration that meets the target.",
+            guideSection: "Section 8 - When oxygen becomes the injury",
+            guideSectionId: "oxygen-toxicity"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why washing out nitrogen with high concentration oxygen causes alveoli to collapse. Which explanation is correct?",
+            options: [
+                { id: "a", text: "Nitrogen splints alveoli open and is not absorbed" },
+                { id: "b", text: "Nitrogen dissolves surfactant and holds alveoli open" },
+                { id: "c", text: "Nitrogen carries oxygen across the alveolar membrane" },
+                { id: "d", text: "Nitrogen stimulates the alveoli to produce more mucus" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Nitrogen is not absorbed into the blood, so it stays in the alveolus and splints it open. A high fraction of inspired oxygen washes that nitrogen out, and once the oxygen is absorbed nothing is left holding the alveolus open. That is absorption atelectasis.",
+                b: "Nitrogen does not dissolve surfactant. Free radicals injure the cells that produce it, which is a separate mechanism.",
+                c: "Nitrogen is inert and plays no part in carrying oxygen.",
+                d: "Mucus production is unrelated to alveolar nitrogen."
+            },
+            testTakingTip: "Nitrogen is the scaffolding. Wash it out with high oxygen and the alveolus has nothing left to hold it open.",
+            guideSection: "Section 8 - When oxygen becomes the injury",
+            guideSectionId: "oxygen-toxicity"
         }
     ]
 };

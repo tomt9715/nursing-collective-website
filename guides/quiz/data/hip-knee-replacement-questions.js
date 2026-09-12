@@ -10,7 +10,7 @@ var hipKneeReplacementQuizData = {
     guideSlug: "hip-knee-replacement",
     category: "Musculoskeletal",
     categoryColor: "#8b5cf6",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -261,6 +261,106 @@ var hipKneeReplacementQuizData = {
             testTakingTip: "PE after joint replacement: sudden dyspnea + chest pain + tachycardia + hypoxemia = PE until proven otherwise. First actions: O2 + HOB elevated + rapid response. The question will try to tempt you with heparin or CTPA - but always stabilize (ABC) before diagnostics or medication orders. PE is the #1 cause of death after joint replacement.",
             guideSection: "Section 7 - DVT Prevention",
             guideSectionId: "dvt-prevention"
+        },
+        {
+            id: 11, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient who had a posterior approach total hip replacement is being helped into a chair. What should the nurse ensure?",
+            options: [
+                { id: "a", text: "The hip is not flexed beyond 90 degrees" },
+                { id: "b", text: "The hip is flexed to at least 110 degrees" },
+                { id: "c", text: "The legs are crossed to stabilise the pelvis" },
+                { id: "d", text: "The operative leg is rotated inward slightly" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "After a posterior approach hip replacement the hip is not flexed beyond 90 degrees, because further flexion levers the prosthetic head out of the socket. A raised seat and a reclined chair position keep the patient inside that limit.",
+                b: "Flexing past 90 degrees is precisely the movement that causes dislocation.",
+                c: "Crossing the legs is adduction across the midline, another prohibited movement.",
+                d: "Internal rotation of the operative leg is the third prohibited movement in this group."
+            },
+            testTakingTip: "Three prohibited movements after a posterior hip: flexion past 90 degrees, crossing the midline, and internal rotation.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient's activity order after joint replacement reads toe touch weight bearing (TTWB). What does the nurse teach the patient?",
+            options: [
+                { id: "a", text: "The toes touch for balance, with no weight through the leg" },
+                { id: "b", text: "Full weight may be placed on the leg as comfort allows" },
+                { id: "c", text: "About half of the body weight may go through the leg" },
+                { id: "d", text: "The foot does not contact the floor at any point at all" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Toe touch weight bearing means the toes may rest on the floor for balance, but no body weight is transmitted through the leg. It sits between non weight bearing and partial weight bearing.",
+                b: "Full weight as tolerated is weight bearing as tolerated, the standard order for cemented joints.",
+                c: "A set percentage of body weight describes partial weight bearing, often 50 percent.",
+                d: "No contact at all describes non weight bearing."
+            },
+            testTakingTip: "Four orders on a scale: non weight bearing, toe touch, partial, then weight bearing as tolerated.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 13, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "On the third day after a total knee replacement the nurse finds the operative calf is 4 cm larger than the other side. What should the nurse do?",
+            options: [
+                { id: "a", text: "Hold walking and notify the provider" },
+                { id: "b", text: "Massage the calf to improve venous return" },
+                { id: "c", text: "Encourage walking to reduce the swelling" },
+                { id: "d", text: "Apply heat and reassess at the end of shift" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A calf more than 3 cm larger than the other side raises suspicion of a deep vein thrombosis. Walking is held and the provider notified, because mobilising a possible clot risks a pulmonary embolism.",
+                b: "Massaging a limb with a suspected clot can dislodge it.",
+                c: "Encouraging walking before the clot is excluded carries the same embolic risk.",
+                d: "Heat and a delayed reassessment leave a possible clot untreated for hours."
+            },
+            testTakingTip: "3 cm difference is the number. Suspect a deep vein thrombosis, stop walking, and notify.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient is preparing for discharge after a total knee replacement. Which degree of knee flexion is the goal before going home?",
+            options: [
+                { id: "a", text: "About 90 degrees of flexion" },
+                { id: "b", text: "About 45 degrees of flexion" },
+                { id: "c", text: "About 120 degrees of flexion" },
+                { id: "d", text: "Full extension only, with no flexion" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Roughly 90 degrees of knee flexion is the target before a total knee replacement patient goes home, because that is what sitting, using stairs and getting into a car require.",
+                b: "Forty five degrees is not enough to manage normal daily activities safely.",
+                c: "One hundred and twenty degrees is a longer term rehabilitation goal rather than a discharge criterion.",
+                d: "Extension matters, but flexion is the movement being measured here."
+            },
+            testTakingTip: "90 degrees means two different things in this topic. For a posterior hip it is the ceiling; for a knee it is the goal.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient who had a hip replacement 4 weeks ago asks when the hip precautions can be relaxed. What should the nurse advise?",
+            options: [
+                { id: "a", text: "They remain in force for 6 to 12 weeks after surgery" },
+                { id: "b", text: "They may be stopped now that 4 weeks have passed" },
+                { id: "c", text: "They remain in force for the rest of the patient's life" },
+                { id: "d", text: "They may be stopped as soon as the pain has settled" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Hip precautions stay in force for 6 to 12 weeks, which is the time the soft tissue around the prosthesis needs to heal enough to hold the joint stable. At 4 weeks the patient is still inside that window.",
+                b: "Four weeks is short of the minimum, and the risk of dislocation is highest early.",
+                c: "The precautions are not lifelong for most patients, though some surgeons individualise them.",
+                d: "Pain settles well before the soft tissue has healed, so comfort is not the guide."
+            },
+            testTakingTip: "6 to 12 weeks for hip precautions. Comfort returns long before the tissue is strong enough.",
+            guideSection: "Section 8 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

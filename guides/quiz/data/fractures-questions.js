@@ -9,7 +9,7 @@ var fracturesQuizData = {
     guideSlug: "fractures",
     category: "Musculoskeletal",
     categoryColor: "#8b5cf6",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -257,6 +257,106 @@ var fracturesQuizData = {
             testTakingTip: "The key differentiator between open and closed fracture management is INFECTION RISK. Open = broken skin = contamination = antibiotics + sterile dressing + OR debridement + tetanus. Closed = skin intact = RICE + immobilization + outpatient management possible. If the NCLEX describes bone visible through a wound, think open fracture protocol.",
             guideSection: "Section 3 - Fracture Types",
             guideSectionId: "fracture-types"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why fractures are so painful. Which structure explains this?",
+            options: [
+                { id: "a", text: "The periosteum, which carries vessels and nerves" },
+                { id: "b", text: "The cortical bone, which forms the dense outer shaft" },
+                { id: "c", text: "The cancellous bone, which holds the red marrow" },
+                { id: "d", text: "The medullary cavity, which stores yellow marrow" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The periosteum is a dense fibrous membrane over the bone surface carrying both vessels and nerves. That nerve supply is why fractures hurt, and the blood supply is why the periosteum is essential to healing.",
+                b: "Cortical bone provides strength and rigidity but does not carry the nerve supply that generates the pain.",
+                c: "Cancellous bone absorbs shock and holds red marrow.",
+                d: "The medullary cavity stores yellow marrow and is not the source of fracture pain."
+            },
+            testTakingTip: "Bone is living tissue with a blood supply and a nerve supply, and both show up clinically. The periosteum carries them.",
+            guideSection: "Section 3 - Why bone behaves the way it does",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient is 5 days after a tibial fracture. Which stage of bone healing is in progress?",
+            options: [
+                { id: "a", text: "Fibrocartilaginous callus, which is fragile" },
+                { id: "b", text: "Hematoma formation with clot across the site" },
+                { id: "c", text: "Bony callus, with calcium being laid down" },
+                { id: "d", text: "Remodelling, with the bone returning to shape" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The soft or fibrocartilaginous callus runs from about 3 days to 2 weeks. Fibroblasts and chondroblasts bridge the gap with granulation tissue and cartilage, and that callus is fragile and must be protected from stress.",
+                b: "The hematoma stage covers the first 0 to 3 days.",
+                c: "The bony callus stage runs from about 2 to 6 weeks, when osteoblasts lay down calcium.",
+                d: "Remodelling is the final stage, taking months to years."
+            },
+            testTakingTip: "Knowing the stage tells you what the patient can safely do. At 5 days the bridge is cartilage, not bone.",
+            guideSection: "Section 5 - How it heals",
+            guideSectionId: "healing"
+        },
+        {
+            id: 13, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "A patient with a forearm fracture in a cast reports pain that spikes sharply when the fingers are passively stretched. Distal pulses are present. What should the nurse recognise?",
+            options: [
+                { id: "a", text: "The earliest sign of compartment syndrome" },
+                { id: "b", text: "Expected discomfort from immobilisation" },
+                { id: "c", text: "A reassuring finding, since pulses are present" },
+                { id: "d", text: "A sign that the cast needs to be tightened" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Pain out of proportion, and pain that spikes on passive stretch, is the earliest of the 5 Ps. Pulselessness is a late sign, so present pulses do not exclude compartment syndrome.",
+                b: "Ordinary cast discomfort does not escalate sharply on passive stretching of the digits.",
+                c: "Treating present pulses as reassurance is the classic error, because the pulse disappears only once damage is advanced.",
+                d: "Tightening a cast raises compartment pressure and would worsen the problem."
+            },
+            testTakingTip: "Pain first, pulselessness last. If you wait for the pulse to go, you have waited too long.",
+            guideSection: "Section 6 - The 5 P's",
+            guideSectionId: "assessment"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is performing neurovascular checks on a patient with a fresh cast. How should the assessment be carried out?",
+            options: [
+                { id: "a", text: "Distal to the injury, compared with the other limb" },
+                { id: "b", text: "Proximal to the injury, compared with the other limb" },
+                { id: "c", text: "Over the cast itself, at the level of the fracture" },
+                { id: "d", text: "Distal to the injury, without comparing the limbs" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Neurovascular assessment is always performed distal to the injury, because that is the tissue at risk, and always compared with the other limb, because the patient's own opposite side is the baseline.",
+                b: "Assessing above the injury misses the circulation that the swelling or cast is compromising.",
+                c: "Nothing useful can be assessed through the cast material itself.",
+                d: "Without a comparison, a subtle difference in colour, warmth or refill is easy to miss."
+            },
+            testTakingTip: "Always distal, always compared, and hourly in the first 24 hours after injury or casting.",
+            guideSection: "Section 6 - The 5 P's",
+            guideSectionId: "assessment"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nurse is caring for a patient with a newly applied plaster cast. How should the cast be handled while it dries?",
+            options: [
+                { id: "a", text: "With the palms of the hands, keeping the limb elevated" },
+                { id: "b", text: "With the fingertips, to avoid pressing the surface" },
+                { id: "c", text: "With a towel wrapped tightly around the whole cast" },
+                { id: "d", text: "Not at all, because the limb must remain undisturbed" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A plaster cast is still wet for 24 to 48 hours. It is handled with the palms rather than the fingers, because fingertips press indentations into soft plaster that then become pressure points against the skin, and the limb is kept elevated to limit swelling.",
+                b: "Fingertips are exactly what create the indentations that cause pressure injuries.",
+                c: "Wrapping a drying cast traps heat and slows drying.",
+                d: "The limb does need repositioning and elevation; it simply has to be handled correctly."
+            },
+            testTakingTip: "24 to 48 hours wet for plaster. Palms not fingers, and keep it elevated.",
+            guideSection: "Section 6 - The 5 P's",
+            guideSectionId: "assessment"
         }
     ]
 };

@@ -52,7 +52,7 @@ var pneumoniaQuizData = {
                 correct: "This elderly patient shows signs of sepsis secondary to pneumonia: confusion (altered mental status), hypotension (BP 86/52), tachypnea (RR 28), and hypoxemia (SpO2 88%). This meets SIRS/sepsis criteria and indicates organ dysfunction. The elderly often present atypically - confusion may be the only early sign. This patient needs immediate IV fluids, oxygen, blood cultures, and antibiotics.",
                 a: "Fever and productive cough are expected pneumonia symptoms and are not acutely life-threatening.",
                 c: "Pleuritic chest pain is common with pneumonia and, while important to manage, is not immediately life-threatening compared to sepsis.",
-                d: "While timely antibiotic administration is important (within 4 hours of diagnosis), this patient\u2019s vitals appear stable, unlike patient B who is hemodynamically unstable."
+                d: "While timely antibiotic administration is important (as soon as possible after diagnosis, within 1 hour if severe or septic), this patient\u2019s vitals appear stable, unlike patient B who is hemodynamically unstable."
             },
             testTakingTip: "Priority questions: Look for hemodynamic instability. Confusion + hypotension + tachypnea in an elderly patient = sepsis until proven otherwise. The elderly often don\u2019t mount fevers - confusion may be the ONLY early sign of serious infection. Always prioritize ABCs.",
             guideSection: "Section 8 - Nursing Interventions",
@@ -77,7 +77,7 @@ var pneumoniaQuizData = {
                 a: "FIRST - SpO2 of 89% with tachypnea indicates significant hypoxemia. Apply supplemental oxygen targeting SpO2 \u226594%. Oxygenation is always the top priority.",
                 b: "SECOND - Blood cultures (2 sets from 2 sites) must be drawn BEFORE the first antibiotic dose. Antibiotics can sterilize blood within minutes, making cultures falsely negative.",
                 c: "THIRD - Obtain sputum from a deep cough for culture and Gram stain before antibiotics are given. This helps identify the causative organism.",
-                d: "FOURTH - Administer antibiotics as soon as cultures are obtained. CMS quality measures require antibiotics within 4 hours (within 1 hour for severe cases).",
+                d: "FOURTH - Administer antibiotics as soon as cultures are obtained. The first dose is given as soon as possible after diagnosis, and within 1 hour if the patient is severe or septic. The old 4 hour quality measure was retired in 2012.",
                 e: "FIFTH - IV hydration supports increased metabolic needs from fever and tachypnea, thins secretions, and maintains hemodynamic stability."
             },
             testTakingTip: "Pneumonia bundle: O2 first (ABCs) \u2192 Cultures BEFORE antibiotics \u2192 Antibiotics within 1 hour \u2192 IV fluids. The 'cultures before antibiotics' rule is one of the most tested pneumonia concepts.",

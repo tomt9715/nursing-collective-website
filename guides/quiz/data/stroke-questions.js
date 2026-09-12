@@ -16,7 +16,7 @@ var strokeQuizData = {
             type: "single",
             subtype: "priority",
             difficulty: "analysis",
-            stem: "A 68-year-old patient arrives at the emergency department with sudden left-sided facial droop, left arm weakness, and slurred speech. The patient's spouse states symptoms began 90 minutes ago. CT scan shows no hemorrhage. Blood pressure is 192/108 mmHg. What is the nurse's PRIORITY action?",
+            stem: "A 68-year-old patient arrives at the emergency department with sudden left-sided facial droop, left arm weakness, and slurred speech. The patient's spouse states symptoms began 90 minutes ago. CT scan shows no hemorrhage. Blood pressure is 178/102 mmHg. What is the nurse's PRIORITY action?",
             options: [
                 { id: "a", text: "Administer an antihypertensive to lower the blood pressure below 140/90 mmHg" },
                 { id: "b", text: "Prepare for tPA administration - obtain consent and verify inclusion criteria" },
@@ -25,7 +25,7 @@ var strokeQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This patient has an ischemic stroke (CT negative for hemorrhage) within the 4.5-hour tPA window (90 minutes). The blood pressure of 192/108 is BELOW the tPA threshold of 185/110, meaning tPA can proceed. Time is critical - the door-to-needle goal is <60 minutes. Preparing for tPA is the highest priority.",
+                correct: "This patient has an ischemic stroke (CT negative for hemorrhage) within the 4.5-hour tPA window (90 minutes). The blood pressure of 178/102 is BELOW the tPA threshold of 185/110, meaning tPA can proceed. Time is critical - the door-to-needle goal is <60 minutes. Preparing for tPA is the highest priority.",
                 a: "Aggressively lowering BP below 140/90 is dangerous in acute ischemic stroke. Permissive hypertension is maintained to perfuse the ischemic penumbra. The pre-tPA threshold is <185/110, and this patient is already below that. After tPA, the target is <180/105.",
                 c: "Aspirin is indicated for ischemic stroke but is CONTRAINDICATED within 24 hours of tPA administration. If tPA is given, aspirin must wait 24 hours. Giving aspirin now would delay or preclude tPA.",
                 d: "Flat positioning is sometimes used to improve perfusion, but preparing for definitive thrombolytic therapy takes priority in a tPA-eligible patient. Some patients may also need head of bed elevated 30° for airway protection."

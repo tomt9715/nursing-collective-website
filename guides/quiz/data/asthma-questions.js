@@ -10,7 +10,7 @@ var asthmaQuizData = {
     guideSlug: "asthma",
     category: "Respiratory",
     categoryColor: "#3b82f6",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -200,6 +200,146 @@ var asthmaQuizData = {
             testTakingTip: "Beta-blockers + asthma = NEVER. This is a high-yield NCLEX concept. Also remember: albuterol side effects (tachycardia, tremors, hypokalemia) are dose-dependent. When side effects become dangerous, stop the drug and notify the provider.",
             guideSection: "Section 5 - Rescue vs Controller Medications",
             guideSectionId: "medications"
+        },
+        {
+            id: 9, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient arrives in the emergency department with an acute asthma exacerbation, sitting forward and audibly wheezing. All four of the following are ordered. Which should the nurse do FIRST?",
+            options: [
+                { id: "a", text: "Place the patient in high Fowler's position" },
+                { id: "b", text: "Administer the ordered systemic corticosteroid" },
+                { id: "c", text: "Obtain a peak expiratory flow measurement now" },
+                { id: "d", text: "Start an intravenous line for fluid replacement" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Sitting the patient up costs nothing, needs no order and helps immediately by letting the accessory muscles work. Position and oxygenate comes before giving drugs in the ordering rules.",
+                b: "The steroid matters, but it takes hours to work. A bronchodilator opens the airway in minutes, and positioning works at once.",
+                c: "A peak flow measurement is useful data but it does not treat anything, and a patient in distress may not manage the manoeuvre.",
+                d: "Hydration keeps secretions thin and is part of care, but it is not the first action in acute distress."
+            },
+            testTakingTip: "Priority questions give four defensible actions. You are being tested on ordering, not correctness. Sit them up first.",
+            guideSection: "Section 8 - What you do first",
+            guideSectionId: "interventions"
+        },
+        {
+            id: 10, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "A patient being treated for a severe asthma exacerbation becomes quieter, and the wheezing that was loud on arrival can no longer be heard. The patient is drowsy. What should the nurse do?",
+            options: [
+                { id: "a", text: "Call for immediate help and prepare for intubation" },
+                { id: "b", text: "Document that the wheezing has resolved with treatment" },
+                { id: "c", text: "Reduce the oxygen because the patient is now settled" },
+                { id: "d", text: "Leave the patient to rest and recheck in thirty minutes" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A chest going quiet in a patient who was wheezing means too little air is moving to make the sound, and a falling level of consciousness outranks every number on the monitor. This is impending respiratory failure.",
+                b: "Silence after loud wheezing is deterioration, not improvement. Wheeze requires airflow to exist.",
+                c: "Reducing oxygen in a patient who is decompensating removes the little support they have.",
+                d: "Leaving a drowsy asthmatic alone is the most dangerous option here. Staying with the patient is itself an intervention."
+            },
+            testTakingTip: "A silent chest in asthma is an emergency, not a success. So is drowsiness.",
+            guideSection: "Section 8 - What you do first",
+            guideSectionId: "interventions"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why a child in respiratory distress can deteriorate faster than an adult with the same degree of airway swelling. Which explanation is correct?",
+            options: [
+                { id: "a", text: "A smaller airway loses a greater share of its opening" },
+                { id: "b", text: "Children produce far more mucus than adults do" },
+                { id: "c", text: "Children have a weaker cough than adults of any age" },
+                { id: "d", text: "Children absorb inhaled medication more slowly overall" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The same amount of swelling closes a much larger proportion of a small airway, and children have less respiratory reserve to spend. So a child in distress can reach failure quickly. Treat it as urgent, reassess often, and do not leave them alone.",
+                b: "Mucus contributes to obstruction, but the geometry of a narrow airway is what makes children deteriorate faster.",
+                c: "Cough strength varies with age but is not the reason for rapid decompensation.",
+                d: "Inhaled medication is delivered differently by age, though absorption speed is not what drives the risk."
+            },
+            testTakingTip: "Small airway plus small reserve equals fast decline. A calm looking child can be closer to failure than they appear.",
+            guideSection: "Section 10 - Children are not small adults",
+            guideSectionId: "pediatrics"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is planning to give a bronchodilator to an 18-month-old with asthma. Which delivery method is most appropriate for this age?",
+            options: [
+                { id: "a", text: "A nebuliser with a mask, or an inhaler with a spacer and mask" },
+                { id: "b", text: "A metered dose inhaler used alone, without any spacer device" },
+                { id: "c", text: "A dry powder inhaler that the child activates by breathing in" },
+                { id: "d", text: "An inhaler with a spacer and a mouthpiece held between the lips" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Infants and toddlers cannot coordinate an inhaler, so a nebuliser with a mask, or a metered dose inhaler with a spacer and mask, is used. A mouthpiece becomes workable from about age 3.",
+                b: "Using a metered dose inhaler alone requires timing a breath with an actuation, which a toddler cannot do.",
+                c: "A dry powder inhaler needs a forceful inward breath the child cannot reliably generate.",
+                d: "A mouthpiece requires a seal and a held breath, which is why a mask is used until about age 3."
+            },
+            testTakingTip: "Mask until roughly age 3, then a mouthpiece. Expect toddlers to fight the mask, so involve the parent and keep it calm.",
+            guideSection: "Section 10 - Children are not small adults",
+            guideSectionId: "pediatrics"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient with asthma reports using a short acting beta agonist (SABA) rescue inhaler four times a week and waking at night about once a week. How should the nurse interpret this?",
+            options: [
+                { id: "a", text: "The asthma is not controlled and the plan needs review" },
+                { id: "b", text: "The asthma is well controlled and no change is needed" },
+                { id: "c", text: "The rescue inhaler should be stopped to avoid tolerance" },
+                { id: "d", text: "The night waking is expected and only the daytime counts" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Short acting beta agonist (SABA) use more than 2 days a week, or night waking more than 2 nights a month, means the asthma is not controlled. This patient exceeds both thresholds, so the controller plan is reviewed.",
+                b: "Both figures sit above the control thresholds, so this cannot be called controlled.",
+                c: "The rescue inhaler is not stopped. Frequent need for it signals that the controller therapy is insufficient.",
+                d: "Night waking is one of the two control thresholds and counts as much as daytime use."
+            },
+            testTakingTip: "Two control numbers to have cold: rescue inhaler more than 2 days a week, or waking more than 2 nights a month.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient measures a peak expiratory flow of 45 percent of personal best at home. What should the nurse advise?",
+            options: [
+                { id: "a", text: "This is the red zone, so seek emergency care now" },
+                { id: "b", text: "This is the yellow zone, so repeat it in four hours" },
+                { id: "c", text: "This is the green zone, so continue the usual plan" },
+                { id: "d", text: "This is within normal variation, so no action is needed" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Peak flow under 50 percent of personal best is the red zone and an emergency. The green zone is 80 to 100 percent and the yellow zone is 50 to 79 percent, so 45 percent falls below both.",
+                b: "The yellow zone runs from 50 to 79 percent. At 45 percent the patient is past it.",
+                c: "The green zone starts at 80 percent, well above this reading.",
+                d: "A reading under half of personal best is never normal variation."
+            },
+            testTakingTip: "Peak flow zones work like traffic lights against personal best: green 80 to 100, yellow 50 to 79, red under 50.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient who gets wheezy while running asks when to use the rescue inhaler before exercise. What should the nurse advise?",
+            options: [
+                { id: "a", text: "About 15 minutes before starting the exercise" },
+                { id: "b", text: "About 2 hours before starting the exercise" },
+                { id: "c", text: "Immediately at the first wheeze during exercise" },
+                { id: "d", text: "Only afterwards, once the exercise is finished" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A short acting beta agonist (SABA) is taken about 15 minutes before exercise, which matches its 5 to 15 minute onset so the airway is already open when the effort starts.",
+                b: "Two hours ahead wastes much of the 4 to 6 hour duration before the exercise begins.",
+                c: "Waiting for the wheeze means treating an attack rather than preventing one.",
+                d: "Using it only afterwards offers no protection during the activity that triggers the symptoms."
+            },
+            testTakingTip: "Match the timing to the onset. A short acting beta agonist (SABA) works in 5 to 15 minutes, so dose 15 minutes before exercise.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

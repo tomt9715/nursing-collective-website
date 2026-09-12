@@ -10,7 +10,7 @@ var peripheralVascularDiseaseQuizData = {
     guideSlug: "peripheral-vascular-disease",
     category: "Cardiovascular",
     categoryColor: "#ef4444",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -53,11 +53,11 @@ var peripheralVascularDiseaseQuizData = {
             ],
             rationale: {
                 correct: "An ABI \u22640.4 indicates critical limb ischemia (CLI) - the most severe form of PAD with high risk for tissue loss and amputation. These patients typically have rest pain, non-healing wounds, and gangrene. Urgent vascular intervention (angioplasty, stenting, or bypass surgery) is needed to prevent limb loss.",
-                a: "Normal ABI is 0.9-1.3. An ABI of 0.35 is severely abnormal.",
+                a: "Normal ankle-brachial index (ABI) is 1.00 to 1.30. An ankle-brachial index of 0.35 is severely abnormal.",
                 b: "Mild PAD corresponds to ABI 0.7-0.9, presenting with intermittent claudication.",
                 c: "Moderate PAD corresponds to ABI 0.4-0.7, with more significant claudication and possible early rest pain."
             },
-            testTakingTip: "ABI values: 0.9-1.3 = normal. 0.7-0.9 = mild. 0.4-0.7 = moderate. \u22640.4 = critical (limb threat). >1.3 = calcified/incompressible vessels (unreliable, common in diabetics). An ABI cannot diagnose DVT - it only measures arterial flow.",
+            testTakingTip: "Ankle-brachial index (ABI) bands: 1.00 to 1.30 normal, 0.91 to 0.99 borderline, 0.41 to 0.90 mild to moderate peripheral arterial disease, 0.40 or less critical limb ischemia, above 1.30 calcified and unreliable so use a toe-brachial index. An ankle-brachial index measures arterial flow and cannot diagnose a deep vein thrombosis (DVT).",
             guideSection: "Section 4 - Ankle-Brachial Index",
             guideSectionId: "abi"
         },
@@ -207,6 +207,146 @@ var peripheralVascularDiseaseQuizData = {
             testTakingTip: "Acute arterial occlusion = 6 P\u2019s = emergency. Think \"time is tissue\" (like \"time is brain\" for stroke). No heat, no elevation, no delay. Keep leg DOWN and call for help immediately. This has a 4-6 hour window before irreversible damage.",
             guideSection: "Section 3 - Peripheral Arterial Disease",
             guideSectionId: "pad"
+        },
+        {
+            id: 9, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why immobility is such a strong risk factor for deep vein thrombosis (DVT). Which explanation by the nurse is correct?",
+            options: [
+                { id: "a", text: "The calf muscle is the pump that returns venous blood" },
+                { id: "b", text: "The vein walls constrict when the leg is not being used" },
+                { id: "c", text: "The arterial supply to the leg falls sharply during rest" },
+                { id: "d", text: "The venous valves close permanently after hours of rest" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Leg veins must move blood uphill with no pump of their own. The calf muscle is that pump, and each contraction squeezes the deep veins upward while the valves stop backflow. Immobility switches off half of venous return, which is the mechanism behind every deep vein thrombosis (DVT) prevention order.",
+                b: "Vein walls are thin and do not constrict to drive flow. That is an arterial property.",
+                c: "Arterial supply is not what fails in venous thrombosis.",
+                d: "Valves do not close permanently with rest. They fail over time from damage, which is a separate problem."
+            },
+            testTakingTip: "The calf is the second heart. Every prevention order, from walking to compression devices, is an attempt to run that pump.",
+            guideSection: "Section 3 - Two systems, one pump you forget",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 10, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is locating the posterior tibial pulse. Where should the nurse palpate?",
+            options: [
+                { id: "a", text: "Behind and just below the medial malleolus" },
+                { id: "b", text: "On the top of the foot, lateral to the tendon" },
+                { id: "c", text: "Deep in the popliteal fossa with the knee bent" },
+                { id: "d", text: "At the midpoint of the inguinal ligament in the groin" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The posterior tibial pulse is found behind and just below the medial malleolus, the bony prominence on the inner ankle. Always compare left with right and document on the 0 to 4 plus scale.",
+                b: "That describes the dorsalis pedis, on the top of the foot lateral to the extensor hallucis longus tendon.",
+                c: "That describes the popliteal pulse, which is easier to find with the knee slightly flexed.",
+                d: "That describes the femoral pulse."
+            },
+            testTakingTip: "Four pulses to know by landmark: femoral, popliteal, dorsalis pedis and posterior tibial. Compare sides every time.",
+            guideSection: "Section 3 - Two systems, one pump you forget",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient has brown discoloration of the lower legs, hard fibrotic skin giving an inverted champagne bottle shape, and a shallow ulcer at the medial malleolus. What do these findings indicate?",
+            options: [
+                { id: "a", text: "Chronic venous insufficiency from sustained venous pressure" },
+                { id: "b", text: "Peripheral arterial disease from progressive atherosclerosis" },
+                { id: "c", text: "Acute arterial occlusion requiring immediate reperfusion now" },
+                { id: "d", text: "Cellulitis of the lower leg requiring systemic antibiotics" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Venous hypertension pushes fluid and red cells into the tissue. The broken down hemoglobin causes hemosiderin staining, chronic inflammation becomes the fibrosis of lipodermatosclerosis, and the ulcer that results is shallow and sits at the medial malleolus.",
+                b: "Arterial ulcers are punched out, painful and found on the toes or pressure points, with a pale cool foot.",
+                c: "Acute occlusion presents suddenly with pain, pallor, pulselessness and a cold limb, not with years of skin change.",
+                d: "Cellulitis is acutely red, hot and tender rather than brown, fibrotic and chronic."
+            },
+            testTakingTip: "Location sorts the ulcer. Medial malleolus and shallow means venous; toes and punched out means arterial.",
+            guideSection: "Section 7 - When the valves give up",
+            guideSectionId: "venous"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient with chronic venous insufficiency asks what will help most. Which intervention is the cornerstone of management?",
+            options: [
+                { id: "a", text: "Graduated compression stockings at 30 to 40 mmHg" },
+                { id: "b", text: "Keeping the legs dependent for most of the day" },
+                { id: "c", text: "Long periods of standing still to use the leg muscles" },
+                { id: "d", text: "Daily antibiotic therapy to prevent skin breakdown" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Graduated compression at 30 to 40 mmHg is the cornerstone of venous insufficiency management, not an add-on. It is combined with elevation above heart level three or four times a day and with walking to run the calf pump.",
+                b: "Dependent legs raise venous pressure further. Elevation above heart level is what reduces it.",
+                c: "Standing still is specifically avoided. Walking works because the calf pump contracts.",
+                d: "Antibiotics treat infection when it occurs and do nothing for the underlying venous pressure."
+            },
+            testTakingTip: "Check the ankle-brachial index before compression. Below 0.5 compression is contraindicated, because the arterial supply cannot tolerate it.",
+            guideSection: "Section 7 - When the valves give up",
+            guideSectionId: "venous"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient admitted after neurosurgery has active bleeding risk and cannot receive anticoagulants. What venous thromboembolism prophylaxis should the nurse expect?",
+            options: [
+                { id: "a", text: "Mechanical prophylaxis alone, such as compression devices" },
+                { id: "b", text: "No prophylaxis, because anticoagulation is contraindicated" },
+                { id: "c", text: "A reduced dose of enoxaparin given once daily instead" },
+                { id: "d", text: "Warfarin titrated to a lower international normalised ratio" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A patient who cannot be anticoagulated is not a patient with no prophylaxis. Mechanical methods carry the whole load, using sequential compression devices or graduated stockings.",
+                b: "Omitting prophylaxis entirely leaves a high risk patient unprotected.",
+                c: "A reduced dose of low molecular weight heparin is still anticoagulation, which is what the bleeding risk forbids.",
+                d: "Warfarin at any target is anticoagulation and carries the same bleeding risk."
+            },
+            testTakingTip: "High bleeding risk changes the method, not the need. Mechanical prophylaxis takes over completely.",
+            guideSection: "Section 9 - Stopping it before it starts",
+            guideSectionId: "prevention"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A nurse finds that a patient's sequential compression devices have been switched off since the patient left for a test 3 hours ago. What should the nurse recognise?",
+            options: [
+                { id: "a", text: "The protective benefit has been lost and they go back on now" },
+                { id: "b", text: "The devices may stay off until the next scheduled assessment" },
+                { id: "c", text: "The devices are optional once the patient is walking to tests" },
+                { id: "d", text: "The devices should be replaced with stockings for the rest of the day" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Sequential compression devices imitate walking and drive venous return, but off for more than 2 hours and the benefit falls away. At 3 hours the protection is gone, so they are reapplied immediately.",
+                b: "Waiting until the next assessment extends an interruption that has already passed the threshold.",
+                c: "A short walk to a test does not replace continuous prophylaxis in an at risk patient.",
+                d: "Stockings and compression devices are different tools, and swapping one for the other is a prescribing decision."
+            },
+            testTakingTip: "2 hours off is the number. Compression devices only work while they are actually on the patient.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient with diabetes has an ankle-brachial index (ABI) of 1.42. How should the nurse interpret this result?",
+            options: [
+                { id: "a", text: "Calcified vessels, so a toe-brachial index is needed" },
+                { id: "b", text: "A normal result that rules out arterial disease here" },
+                { id: "c", text: "Mild to moderate peripheral arterial disease is present" },
+                { id: "d", text: "Critical limb ischemia requiring urgent vascular review" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "An ankle-brachial index (ABI) above 1.30 means the vessels are calcified and will not compress, so the reading is falsely high and unreliable. A toe-brachial index is used instead, because the digital arteries calcify far less.",
+                b: "Normal is 1.00 to 1.30. A value above that range is not normal, it is uninterpretable.",
+                c: "Mild to moderate disease is 0.41 to 0.90, well below this value.",
+                d: "Critical limb ischemia is 0.40 or less."
+            },
+            testTakingTip: "A high ankle-brachial index is not a reassuring one. Above 1.30 in a patient with diabetes means calcified vessels and a falsely high number.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

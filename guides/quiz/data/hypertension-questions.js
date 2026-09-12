@@ -10,7 +10,7 @@ var hypertensionQuizData = {
     guideSlug: "hypertension",
     category: "Cardiovascular",
     categoryColor: "#ef4444",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -203,6 +203,146 @@ var hypertensionQuizData = {
             testTakingTip: "Orthostatic hypotension criteria: drop of \u2265 20 SBP or \u2265 10 DBP from lying to standing. Always check orthostatic vitals in patients on antihypertensives, especially those on diuretics or vasodilators. Teach patients to change positions slowly and sit on the edge of the bed before standing.",
             guideSection: "Section 5 - Nursing Assessment",
             guideSectionId: "assessment"
+        },
+        {
+            id: 9, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks how the many antihypertensive drug classes relate to one another. Which statement describes the organising principle?",
+            options: [
+                { id: "a", text: "Each one lowers either cardiac output or vascular resistance" },
+                { id: "b", text: "Each one lowers either blood volume or the blood viscosity" },
+                { id: "c", text: "Each one blocks either the kidney or the adrenal gland itself" },
+                { id: "d", text: "Each one slows either the heart rate or the breathing rate" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Blood pressure equals cardiac output times systemic vascular resistance. Every antihypertensive attacks one side of that equation, so beta blockers and diuretics lower output while angiotensin converting enzyme (ACE) inhibitors, angiotensin receptor blockers, calcium channel blockers and vasodilators lower resistance.",
+                b: "Volume is one route to lowering cardiac output rather than a separate half of the equation, and viscosity is not a drug target here.",
+                c: "Some drugs act on the kidney or adrenal system, but organ of action is not what sorts the classes.",
+                d: "Respiratory rate is unrelated to blood pressure control."
+            },
+            testTakingTip: "Blood pressure equals cardiac output times resistance. Decide which side the drug attacks and the mechanism follows.",
+            guideSection: "Section 3 - What the number is made of",
+            guideSectionId: "overview"
+        },
+        {
+            id: 10, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient has a blood pressure of 168/76 mmHg. What does the pulse pressure of 92 mmHg suggest to the nurse?",
+            options: [
+                { id: "a", text: "Stiff arteries, since a normal pulse pressure is 30 to 40" },
+                { id: "b", text: "Dehydration, since a narrow pulse pressure means low volume" },
+                { id: "c", text: "An error, since pulse pressure cannot be calculated this way" },
+                { id: "d", text: "Normal ageing, since pulse pressure is expected to be this wide" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Pulse pressure is systolic minus diastolic, and the normal range is 30 to 40 mmHg. A wide pulse pressure means stiff arteries, which drive the systolic up while the diastolic stays low.",
+                b: "A narrow pulse pressure suggests low stroke volume. This one is wide, not narrow.",
+                c: "Systolic minus diastolic is exactly how pulse pressure is derived.",
+                d: "Arteries do stiffen with age, but 92 mmHg is well outside the normal range and is a finding, not an expectation."
+            },
+            testTakingTip: "Pulse pressure is systolic minus diastolic, normally 30 to 40 mmHg. Wide means stiff vessels.",
+            guideSection: "Section 3 - What the number is made of",
+            guideSectionId: "overview"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A 26-year-old develops hypertension suddenly and it does not respond to three medications. What should the nurse suspect?",
+            options: [
+                { id: "a", text: "Secondary hypertension with an identifiable underlying cause" },
+                { id: "b", text: "Primary hypertension that has simply been missed for years" },
+                { id: "c", text: "White coat hypertension from the clinic setting and anxiety" },
+                { id: "d", text: "Normal variation that requires no further investigation now" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Primary hypertension is slow, expected and stubborn. Secondary is fast, unexpected, or refuses to respond. Onset before age 30 with resistance to treatment is a red flag, and secondary hypertension is potentially curable if the cause is fixed.",
+                b: "Primary hypertension builds gradually over years rather than appearing suddenly in a young adult.",
+                c: "White coat readings are raised in clinic but do not resist three medications.",
+                d: "Sudden resistant hypertension in a young adult always warrants investigation."
+            },
+            testTakingTip: "Red flags for secondary hypertension: under 30 or over 55, sudden onset, or refusing to respond to treatment.",
+            guideSection: "Section 5 - Primary or secondary",
+            guideSectionId: "types"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient with long standing hypertension has a rising creatinine, a falling glomerular filtration rate and protein in the urine. Which organ is showing the damage?",
+            options: [
+                { id: "a", text: "The kidneys, through nephrosclerosis from vessel injury" },
+                { id: "b", text: "The heart, through hypertrophy of the left ventricle wall" },
+                { id: "c", text: "The brain, through small vessel ischemic change over time" },
+                { id: "d", text: "The retina, through narrowing of the small vessels of the eye" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Hypertension damages vessels everywhere, and every complication is the same injury in a different organ. In the kidney it shows as nephrosclerosis, with a rising creatinine and blood urea nitrogen, a falling glomerular filtration rate and protein in the urine.",
+                b: "Cardiac damage shows as a fourth heart sound, a displaced apical impulse, chest pain and electrocardiogram changes.",
+                c: "Brain involvement shows as neurological deficits, altered consciousness or cognitive change.",
+                d: "Retinal damage is found on fundoscopy as arteriovenous nicking, copper or silver wiring, hemorrhages and exudates."
+            },
+            testTakingTip: "BREAK: Brain, Retina, Extremities and vessels, Aorta and heart, Kidneys. Five organs, one injury.",
+            guideSection: "Section 6 - What the pressure breaks",
+            guideSectionId: "complications"
+        },
+        {
+            id: 13, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "A patient in hypertensive crisis has a mean arterial pressure of 160 mmHg. What is the maximum the nurse should expect it to be lowered in the first hour?",
+            options: [
+                { id: "a", text: "By no more than 25 percent of the starting value" },
+                { id: "b", text: "By no more than 50 percent of the starting value" },
+                { id: "c", text: "To a normal mean arterial pressure within that hour" },
+                { id: "d", text: "As quickly as the medication infusion will allow it" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The mean arterial pressure is lowered by no more than 25 percent in the first hour. Dropping it faster outruns the brain's ability to autoregulate and can cause ischemic injury in an organ already adapted to a high pressure.",
+                b: "Halving the pressure in an hour is far too fast and risks cerebral and renal ischemia.",
+                c: "Normalising the pressure within the hour is exactly what is avoided in a crisis.",
+                d: "The infusion is titrated deliberately against the mean arterial pressure, not run to maximum effect."
+            },
+            testTakingTip: "25 percent in the first hour is the ceiling. The exception is aortic dissection, where the systolic target is under 120 within 20 minutes.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient's blood pressure is 134/84 mmHg on two separate occasions. How should the nurse classify this reading?",
+            options: [
+                { id: "a", text: "Stage 1 hypertension" },
+                { id: "b", text: "Stage 2 hypertension" },
+                { id: "c", text: "Elevated blood pressure" },
+                { id: "d", text: "Normal blood pressure" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Stage 1 hypertension is a systolic of 130 to 139 or a diastolic of 80 to 89. Both of this patient's numbers fall inside that band, and either one alone would be enough.",
+                b: "Stage 2 begins at a systolic of 140 or a diastolic of 90.",
+                c: "Elevated means a systolic of 120 to 129 with a diastolic under 80, so the diastolic of 84 rules it out.",
+                d: "Normal is under 120 over 80, which this reading exceeds on both numbers."
+            },
+            testTakingTip: "The higher of the two numbers decides the stage. Systolic 130 to 139 or diastolic 80 to 89 is Stage 1.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse measures a blood pressure of 152/94 mmHg in the right arm and 138/82 mmHg in the left. What should the nurse recognise about this difference?",
+            options: [
+                { id: "a", text: "It suggests vascular disease and should be investigated" },
+                { id: "b", text: "It is normal, since arms always differ by this much" },
+                { id: "c", text: "It means the cuff was too small for the larger arm" },
+                { id: "d", text: "It means the patient moved during the first measurement" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A difference of 10 to 15 mmHg or more between arms suggests vascular disease, such as narrowing on one side, and warrants investigation. The higher arm is then used for future readings.",
+                b: "Small differences between arms occur, but a gap of this size is a finding rather than normal variation.",
+                c: "A cuff that is too small falsely raises the reading, and it would not create a consistent side to side gap.",
+                d: "Movement produces an unreliable single reading rather than a reproducible difference between arms."
+            },
+            testTakingTip: "10 to 15 mmHg between arms points at vascular disease. Measure both arms at the first visit and use the higher one after that.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

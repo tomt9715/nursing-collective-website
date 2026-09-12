@@ -10,7 +10,7 @@ var coronaryArteryDiseaseQuizData = {
     guideSlug: "coronary-artery-disease",
     category: "Cardiovascular",
     categoryColor: "#ef4444",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -200,6 +200,146 @@ var coronaryArteryDiseaseQuizData = {
             testTakingTip: "Post-femoral cath priorities: (1) Neurovascular checks q15min \u00d74, then hourly (pulse, color, temp, sensation). (2) Bed rest 2\u20136 hours, leg STRAIGHT. (3) Watch for retroperitoneal bleed (back pain + hypotension + dry dressing = hidden bleeding). (4) Encourage fluids to flush contrast dye.",
             guideSection: "Section 6 - Post-Catheterization Complications",
             guideSectionId: "catheterization"
+        },
+        {
+            id: 9, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient is admitted with an inferior wall myocardial infarction. Which complication should the nurse anticipate based on the artery most likely involved?",
+            options: [
+                { id: "a", text: "Bradycardia and heart block from loss of nodal supply" },
+                { id: "b", text: "Loss of the largest area of left ventricular muscle" },
+                { id: "c", text: "Immediate death from occlusion of the left main artery" },
+                { id: "d", text: "Isolated damage to the lateral left ventricular wall" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "An inferior myocardial infarction points to the right coronary artery, which supplies the right ventricle, the inferior left ventricle and both the sinoatrial and atrioventricular nodes. When the nodes lose their supply, bradycardia and heart blocks follow.",
+                b: "The largest area of muscle is lost in an anterior infarction from the left anterior descending artery.",
+                c: "Left main occlusion is the widow maker and is often fatal, but it does not produce an isolated inferior pattern.",
+                d: "The lateral and posterior walls are supplied by the left circumflex artery."
+            },
+            testTakingTip: "Learn four vessels and the region each feeds. Inferior means right coronary artery, so watch the rate and the conduction.",
+            guideSection: "Section 3 - Which artery, which damage",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 10, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why beta blockers are considered cornerstone therapy in coronary artery disease rather than simply blood pressure drugs. Which explanation is correct?",
+            options: [
+                { id: "a", text: "Slowing the rate lengthens diastole, when the coronaries fill" },
+                { id: "b", text: "Slowing the rate lengthens systole, when the coronaries fill" },
+                { id: "c", text: "Blocking beta receptors dilates the coronary arteries directly" },
+                { id: "d", text: "Blocking beta receptors dissolves the plaque within the vessel" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Every other organ perfuses during systole, but the contracting heart squeezes its own vessels shut, so the coronaries fill during diastole. Slowing the rate lengthens diastole and buys coronary filling time, which is why tachycardia is dangerous here.",
+                b: "The coronaries fill during diastole, not systole, which is the whole point of the rule.",
+                c: "Beta blockade lowers demand. Coronary dilation is what nitrates do.",
+                d: "No drug dissolves an established plaque. Statins stabilise the cap rather than remove it."
+            },
+            testTakingTip: "The heart is the one organ that perfuses in diastole. Anything shortening diastole starves it.",
+            guideSection: "Section 3 - Which artery, which damage",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient with only mild narrowing on angiography has a myocardial infarction, while another with 80 percent stenosis has been stable for years. Which statement explains this?",
+            options: [
+                { id: "a", text: "Plaque stability matters more than plaque size does" },
+                { id: "b", text: "Plaque size matters more than plaque stability does" },
+                { id: "c", text: "Angiography cannot detect narrowing under 50 percent" },
+                { id: "d", text: "Stable patients have no plaque, only arterial spasm" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A large plaque with a thick fibrous cap narrows the vessel and causes predictable exertional angina, but rarely ruptures. A smaller plaque with a thin inflamed cap barely narrows anything and can tear open today. The plaque that kills is usually not the biggest one.",
+                b: "Size predicts symptoms on exertion. It does not predict rupture, which is what causes an infarction.",
+                c: "Angiography visualises lesser degrees of narrowing perfectly well.",
+                d: "The stable patient in this scenario has substantial plaque, and spasm is a separate mechanism."
+            },
+            testTakingTip: "Stability beats size. It is also why statins matter beyond the cholesterol number, because they thicken and stabilise the cap.",
+            guideSection: "Section 4 - How a plaque turns dangerous",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient has left main coronary stenosis of 60 percent and three vessel disease with diabetes. Which treatment should the nurse anticipate?",
+            options: [
+                { id: "a", text: "Coronary artery bypass graft surgery" },
+                { id: "b", text: "Percutaneous coronary intervention with a stent" },
+                { id: "c", text: "Medication therapy alone without a procedure" },
+                { id: "d", text: "Repeat angiography in six months before deciding" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Bypass surgery is preferred for left main disease at 50 percent stenosis or more, and for three vessel disease, especially with diabetes or a reduced ejection fraction. This patient meets several of those criteria.",
+                b: "Percutaneous coronary intervention suits one or two vessel disease, acute infarction, or patients too high risk for surgery.",
+                c: "Drugs alone are insufficient once the anatomy reaches this severity.",
+                d: "Delaying six months with left main disease leaves a large territory at risk."
+            },
+            testTakingTip: "Left main at 50 percent or more, or three vessel disease with diabetes, sends the patient to surgery rather than a stent.",
+            guideSection: "Section 10 - PCI or bypass",
+            guideSectionId: "interventions"
+        },
+        {
+            id: 13, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "A patient who received a drug eluting stent 2 months ago says they stopped the clopidogrel because it was expensive. What should the nurse do?",
+            options: [
+                { id: "a", text: "Contact cardiology urgently and explain the clot risk" },
+                { id: "b", text: "Reassure the patient that aspirin alone is sufficient" },
+                { id: "c", text: "Suggest restarting it at the next scheduled appointment" },
+                { id: "d", text: "Advise taking it every other day to reduce the cost" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A fresh stent is bare metal in an artery until endothelium grows over it, which takes 6 to 12 months. Stopping the P2Y12 inhibitor early lets the stent clot, and acute stent thrombosis carries 20 to 40 percent mortality. This is urgent.",
+                b: "Aspirin alone does not protect a stent inside the dual antiplatelet window.",
+                c: "Waiting for the next appointment leaves the patient unprotected for days or weeks.",
+                d: "Halving the frequency is not a recognised regimen and does not maintain platelet inhibition."
+            },
+            testTakingTip: "Teach dual antiplatelet therapy as an absolute for 6 to 12 months. Never stopped without calling cardiology first.",
+            guideSection: "Section 10 - PCI or bypass",
+            guideSectionId: "interventions"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient with stable angina takes one sublingual nitroglycerin tablet for chest pain. Five minutes later the pain is unchanged. What should the patient be taught to do?",
+            options: [
+                { id: "a", text: "Call 911 and then take a second tablet" },
+                { id: "b", text: "Take two more tablets before calling for help" },
+                { id: "c", text: "Wait fifteen minutes before taking another tablet" },
+                { id: "d", text: "Take no further tablets and rest until it passes" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Emergency services are called if the pain is unrelieved 5 minutes after the first tablet. Up to three tablets may be taken 5 minutes apart, but the call is made at the 5 minute mark rather than after all three.",
+                b: "Finishing all three tablets before calling delays help by 10 minutes or more.",
+                c: "The interval between tablets is 5 minutes, not fifteen.",
+                d: "Chest pain unrelieved by nitroglycerin is treated as an emergency, not waited out."
+            },
+            testTakingTip: "One tablet, then call at 5 minutes. Up to three tablets, 5 minutes apart, but the call does not wait for the third.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient recovering from coronary artery bypass graft surgery asks about lifting restrictions at home. What should the nurse advise?",
+            options: [
+                { id: "a", text: "Avoid lifting over 5 to 10 pounds for 6 to 8 weeks" },
+                { id: "b", text: "Avoid lifting over 20 to 25 pounds for 2 to 3 weeks" },
+                { id: "c", text: "Avoid lifting anything at all for a full 6 months" },
+                { id: "d", text: "Resume normal lifting as soon as the pain settles" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The sternum takes 6 to 8 weeks to heal after bypass surgery, and lifting more than 5 to 10 pounds during that window strains the healing bone.",
+                b: "Twenty five pounds is far too heavy for a sternum that has not yet knitted.",
+                c: "Six months of no lifting is longer than the bone needs and would prevent normal recovery.",
+                d: "Pain settles well before the sternum has healed, so comfort is not the guide."
+            },
+            testTakingTip: "Sternal precautions run 6 to 8 weeks. Nothing heavier than 5 to 10 pounds, roughly a gallon of milk.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

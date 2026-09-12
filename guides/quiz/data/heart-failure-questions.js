@@ -10,7 +10,7 @@ var heartFailureQuizData = {
     guideSlug: "heart-failure",
     category: "Cardiovascular",
     categoryColor: "#ef4444",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -212,6 +212,167 @@ var heartFailureQuizData = {
             testTakingTip: "\"Start low, go slow\" for beta-blockers in HF. They improve long-term survival but can transiently worsen symptoms. Also remember: never stop beta-blockers abruptly - taper gradually to avoid rebound tachycardia.",
             guideSection: "Section 7 - Pharmacological Management",
             guideSectionId: "medications"
+        },
+        {
+            id: 9,
+            type: "single",
+            subtype: null,
+            difficulty: "knowledge",
+            stem: "A nursing student asks why a beta blocker is prescribed for heart failure when it slows a heart that is already struggling. Which explanation by the nurse is correct?",
+            options: [
+                { id: "a", text: "It interrupts sympathetic compensation, which buys time but costs muscle" },
+                { id: "b", text: "It raises contractility so the ventricle empties more completely" },
+                { id: "c", text: "It increases renal blood flow so sodium and water are excreted faster" },
+                { id: "d", text: "It dilates the coronary arteries so the muscle receives more oxygen" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Sympathetic activation raises heart rate and contractility to defend output, but a faster rate means less filling time and higher oxygen demand. Beta blockers deliberately interrupt that compensation, which is why the drug looks backwards and still improves survival.",
+                b: "Beta blockers lower contractility rather than raise it. A drug that increased contractility would add to the oxygen demand that is already the problem.",
+                c: "Sodium and water handling is the target of diuretics and of renin angiotensin aldosterone system (RAAS) blockade, not of beta blockade.",
+                d: "Coronary dilation describes nitrates. Beta blockers help by lowering demand rather than by raising supply."
+            },
+            testTakingTip: "When a heart failure drug looks backwards, ask which compensation it switches off. Sympathetic activation, renin angiotensin aldosterone system (RAAS) activation and ventricular remodelling all help briefly and harm eventually.",
+            guideSection: "Section 3 - How the heart fails",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 10,
+            type: "single",
+            subtype: null,
+            difficulty: "application",
+            stem: "A patient with heart failure has jugular venous distention, peripheral edema and an enlarged liver. The lungs are clear on auscultation. Which explanation fits these findings?",
+            options: [
+                { id: "a", text: "Blood is backing up behind the failing right ventricle into the body" },
+                { id: "b", text: "Blood is backing up behind the failing left ventricle into the lungs" },
+                { id: "c", text: "Blood is being lost from the circulation into the abdominal cavity" },
+                { id: "d", text: "Blood is bypassing the lungs through an opening in the septum" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Heart failure is a pump problem, not a plumbing problem. Blood is not lost, it backs up behind the chamber that failed. Right sided failure backs up into the systemic circulation, which produces jugular venous distention, peripheral edema and hepatomegaly.",
+                b: "Left sided failure backs up into the lungs and would produce crackles, dyspnea and orthopnea. This patient's lungs are clear.",
+                c: "Blood volume is not lost in heart failure. Fluid shifts outward because pressure rises behind the failing chamber.",
+                d: "A septal opening is a structural shunt, a separate problem from pump failure, and would not explain this pattern."
+            },
+            testTakingTip: "Find the failing chamber and the symptoms tell themselves. Left is Lungs, Right is the Rest of the body.",
+            guideSection: "Section 3 - How the heart fails",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 11,
+            type: "single",
+            subtype: null,
+            difficulty: "knowledge",
+            stem: "A patient is admitted with shortness of breath of unclear cause. The B-type natriuretic peptide (BNP) result is 640 pg/mL. How should the nurse interpret this value?",
+            options: [
+                { id: "a", text: "It is consistent with heart failure, being above 100 pg/mL" },
+                { id: "b", text: "It is a normal result and rules heart failure out" },
+                { id: "c", text: "It indicates a myocardial infarction rather than heart failure" },
+                { id: "d", text: "It reflects kidney disease and says nothing about the heart" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "B-type natriuretic peptide (BNP) is released when the ventricle is stretched by volume overload. Over 100 pg/mL is consistent with heart failure, and this result is more than six times that threshold.",
+                b: "Over 100 pg/mL is the cut off. A result of 640 pg/mL is far above it and cannot be called normal.",
+                c: "Troponin is the marker that rises with myocardial infarction. B-type natriuretic peptide (BNP) reflects ventricular stretch.",
+                d: "Kidney disease can raise B-type natriuretic peptide (BNP), but the value still reflects ventricular stretch and is not disregarded."
+            },
+            testTakingTip: "Over 100 pg/mL is the B-type natriuretic peptide (BNP) number to have cold. The exam gives you the value and asks what it means.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 12,
+            type: "single",
+            subtype: "priority",
+            difficulty: "application",
+            stem: "A patient with heart failure is due for a scheduled dose of lisinopril. The morning potassium is 5.8 mEq/L. What should the nurse do?",
+            options: [
+                { id: "a", text: "Hold the dose and notify the provider" },
+                { id: "b", text: "Give the dose and recheck the potassium tomorrow" },
+                { id: "c", text: "Give the dose along with a potassium supplement" },
+                { id: "d", text: "Hold the dose and give an extra dose of furosemide" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Angiotensin converting enzyme (ACE) inhibitors raise potassium. Above 5.5 mEq/L is the threshold at which the dose is held and the provider is notified, and this patient is at 5.8 mEq/L.",
+                b: "Giving an angiotensin converting enzyme (ACE) inhibitor to a patient already above 5.5 mEq/L pushes potassium higher and risks a lethal arrhythmia.",
+                c: "Adding potassium to a patient who is already hyperkalemic compounds the very problem that requires the hold.",
+                d: "Changing the diuretic dose is a provider decision. Holding the angiotensin converting enzyme (ACE) inhibitor is the action the potassium calls for."
+            },
+            testTakingTip: "Above 5.5 mEq/L is the potassium at which the angiotensin converting enzyme (ACE) inhibitor is held. Hold and notify is almost always the pair.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 13,
+            type: "single",
+            subtype: "priority",
+            difficulty: "application",
+            stem: "A patient with heart failure is prescribed digoxin. The apical pulse is 52 beats per minute and the most recent digoxin level is 1.2 ng/mL. What should the nurse do FIRST?",
+            options: [
+                { id: "a", text: "Hold the dose and notify the provider" },
+                { id: "b", text: "Give the dose because the level is therapeutic" },
+                { id: "c", text: "Give the dose and recheck the pulse in one hour" },
+                { id: "d", text: "Hold the dose and repeat the digoxin level now" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Digoxin is held when the heart rate is under 60 beats per minute, whatever the level shows. A therapeutic level does not make bradycardia safe, because digoxin slows conduction further.",
+                b: "The level of 1.2 ng/mL does sit inside the 0.5 to 2.0 ng/mL range, but it is the rate that triggers the hold.",
+                c: "Giving the dose and reassessing afterwards is the wrong order when the rate is already below the hold threshold.",
+                d: "Repeating a level that is already therapeutic delays the action the heart rate requires."
+            },
+            testTakingTip: "Two digoxin numbers to have cold: hold under 60 beats per minute, and 0.5 to 2.0 ng/mL is therapeutic. The rate holds the dose even when the level is fine.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14,
+            type: "single",
+            subtype: "priority",
+            difficulty: "application",
+            stem: "A nurse begins the shift assessment on a patient with acute heart failure who is short of breath and coughing up pink frothy sputum. Which assessment should the nurse perform FIRST?",
+            options: [
+                { id: "a", text: "Auscultate the lungs and check oxygen saturation" },
+                { id: "b", text: "Obtain the daily weight before the patient eats" },
+                { id: "c", text: "Grade the peripheral edema on both lower legs" },
+                { id: "d", text: "Measure jugular venous distention at 45 degrees" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Airway and breathing come first. Pink frothy sputum with shortness of breath points to pulmonary edema, and a patient who cannot breathe does not need a weight first.",
+                b: "Daily weight is the earliest reliable sign of fluid retention, but it belongs to step four, after breathing and perfusion.",
+                c: "Grading edema is part of fluid status, which follows airway, perfusion and cardiovascular assessment.",
+                d: "Jugular venous distention belongs to the cardiovascular step and is assessed after airway and breathing."
+            },
+            testTakingTip: "Assessment questions usually ask what you check FIRST, not what you check. Airway and breathing, then perfusion, then cardiovascular, then fluid, then function.",
+            guideSection: "Section 6 - Assessment, in order",
+            guideSectionId: "assessment"
+        },
+        {
+            id: 15,
+            type: "single",
+            subtype: null,
+            difficulty: "knowledge",
+            stem: "A nurse is teaching a patient with heart failure how to take a daily weight at home. Which instruction by the nurse is correct?",
+            options: [
+                { id: "a", text: "Weigh at the same time daily, after voiding and before eating" },
+                { id: "b", text: "Weigh whenever swelling is noticed, on any available scale" },
+                { id: "c", text: "Weigh after breakfast each day, in outdoor clothing and shoes" },
+                { id: "d", text: "Weigh twice each week and average the two readings together" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Same time, same scale, same clothing, after voiding and before eating. Change the conditions and the number means nothing, because comparing one day to the next is the entire point.",
+                b: "Waiting for visible swelling defeats the purpose. Edema needs several litres before it shows, and the scale catches the gain first.",
+                c: "Weighing after a meal and in outdoor clothing adds weight that has nothing to do with fluid.",
+                d: "A gain of more than 2 pounds in 24 hours is reportable, and a twice weekly schedule cannot detect it."
+            },
+            testTakingTip: "Report more than 2 pounds in a day, or more than 5 pounds in a week. Weight is the earliest reliable sign of fluid retention.",
+            guideSection: "Section 6 - Assessment, in order",
+            guideSectionId: "assessment"
         }
     ]
 };

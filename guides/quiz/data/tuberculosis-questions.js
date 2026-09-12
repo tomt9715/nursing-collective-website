@@ -9,7 +9,7 @@ var tuberculosisQuizData = {
     guideSlug: "tuberculosis",
     category: "Respiratory",
     categoryColor: "#3b82f6",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -259,6 +259,106 @@ var tuberculosisQuizData = {
             testTakingTip: "When the NCLEX gives you a patient with suspected TB in a non-isolated setting, the FIRST action is always isolation (protect others). Think safety first: isolate → then diagnose → then notify.",
             guideSection: "Section 6 - Airborne Isolation Precautions",
             guideSectionId: "isolation"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why a surgical mask and a standard room are not sufficient for a patient with active tuberculosis. Which explanation is correct?",
+            options: [
+                { id: "a", text: "The particles stay suspended in air for hours and drift" },
+                { id: "b", text: "The particles are heavy and settle onto surfaces quickly" },
+                { id: "c", text: "The organism spreads mainly through contaminated hands" },
+                { id: "d", text: "The organism spreads through contact with body fluids" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Tuberculosis spreads in droplet nuclei of 1 to 5 micrometres. They stay suspended for hours, drift on air currents across a room and do not fall to the floor, which is why airborne precautions and a negative pressure room are required rather than droplet precautions.",
+                b: "Larger droplets settle quickly, which is what makes droplet precautions sufficient for other organisms. These do not settle.",
+                c: "Hand transmission is not the route for tuberculosis, though hand hygiene remains standard practice.",
+                d: "Tuberculosis is not transmitted through contact with body fluids in the way bloodborne organisms are."
+            },
+            testTakingTip: "Airborne, not droplet. A single cough makes about 3,000 droplet nuclei, and they do not fall to the floor.",
+            guideSection: "Section 3 - How it gets in and stays",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why tuberculosis treatment lasts months rather than days. Which feature of the organism explains this?",
+            options: [
+                { id: "a", text: "A waxy cell wall and slow growth protect the organism" },
+                { id: "b", text: "The organism divides every twenty minutes in the lung" },
+                { id: "c", text: "The organism lives inside red blood cells for protection" },
+                { id: "d", text: "The organism produces a toxin that neutralises antibiotics" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Mycobacterium tuberculosis is a slow growing acid-fast bacillus with a waxy cell wall. That wall is why it survives, and its slow growth is why drugs that act on dividing organisms need months rather than days to clear it.",
+                b: "Rapid division describes organisms that respond to short courses. Tuberculosis is the opposite.",
+                c: "Tuberculosis is not an intracellular parasite of red blood cells.",
+                d: "Resistance in tuberculosis arises through mutation, not through an antibiotic neutralising toxin."
+            },
+            testTakingTip: "The waxy wall explains almost everything: the acid-fast stain, the slow growth, and the length of treatment.",
+            guideSection: "Section 3 - How it gets in and stays",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A healthcare worker with no other risk factors has a tuberculin skin test reading of 12 mm of induration. How should the nurse interpret this?",
+            options: [
+                { id: "a", text: "Positive, since 10 mm is the cut off for this group" },
+                { id: "b", text: "Negative, since 15 mm is the cut off for everyone" },
+                { id: "c", text: "Positive, since any induration at all is significant" },
+                { id: "d", text: "Invalid, since the test must be read within 24 hours" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The cut off depends on the group. For healthcare workers, high prevalence groups and children under 4 years, 10 mm of induration is positive. This reading of 12 mm exceeds that threshold.",
+                b: "The 15 mm threshold applies to people with no risk factors at all, which does not describe a healthcare worker.",
+                c: "Small amounts of induration are not automatically positive. The number has to be matched to the risk group.",
+                d: "The test is read at 48 to 72 hours, not within 24."
+            },
+            testTakingTip: "Three cut offs, by risk: 5 mm for the highest risk, 10 mm for healthcare workers and high prevalence groups, 15 mm for no risk factors.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient with active tuberculosis has completed 2 weeks of therapy and asks when airborne isolation can be lifted. What should the nurse explain?",
+            options: [
+                { id: "a", text: "Three negative sputum smears are also required first" },
+                { id: "b", text: "Isolation is lifted automatically after the 2 weeks" },
+                { id: "c", text: "Isolation continues until the full course is completed" },
+                { id: "d", text: "Isolation is lifted once the cough has fully resolved" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Two conditions have to be met together. A minimum of 2 weeks of therapy, and three negative sputum smears. Time on treatment alone is not sufficient.",
+                b: "The 2 weeks is a minimum rather than the whole requirement.",
+                c: "Isolation does not continue for the entire 6 month course once both criteria are met.",
+                d: "Symptom resolution is not one of the criteria, because a patient can remain infectious after the cough settles."
+            },
+            testTakingTip: "Two conditions, both required: 2 weeks minimum of therapy plus three negative smears.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is collecting sputum specimens to diagnose tuberculosis. How should they be obtained?",
+            options: [
+                { id: "a", text: "Three specimens on separate days, 8 to 24 hours apart" },
+                { id: "b", text: "One specimen collected at any convenient time of day" },
+                { id: "c", text: "Two specimens collected one hour apart on the same day" },
+                { id: "d", text: "Three specimens collected together in a single session" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Three sputum specimens are collected on separate days, 8 to 24 hours apart, because the organism is shed intermittently and a single sample can miss it. The culture then takes 2 to 6 weeks to grow.",
+                b: "One specimen risks a false negative in a disease where missing the diagnosis has public health consequences.",
+                c: "An hour between samples does not span the intermittent shedding the schedule is designed to catch.",
+                d: "Three samples taken at once are effectively one sample repeated."
+            },
+            testTakingTip: "Three specimens, separate days, 8 to 24 hours apart. Culture confirms but takes 2 to 6 weeks, which is why treatment starts before it returns.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

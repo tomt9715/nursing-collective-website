@@ -9,7 +9,7 @@ var chestTubesQuizData = {
     guideSlug: "chest-tubes",
     category: "Respiratory",
     categoryColor: "#3b82f6",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -74,13 +74,13 @@ var chestTubesQuizData = {
             correct: { a: "Report Immediately", b: "Expected Finding", c: "Report Immediately", d: "Expected Finding", e: "Report Immediately" },
             rationale: {
                 correct: "Tidaling and moderate serous drainage are expected chest tube findings, while excessive bloody output, spreading subcutaneous emphysema, and sudden drainage cessation with respiratory distress all require immediate provider notification.",
-                a: "REPORT IMMEDIATELY - More than 200 mL/hour of bloody drainage (or a sudden increase) may indicate hemorrhage or injury to an intercostal vessel. This rate of blood loss requires urgent evaluation.",
+                a: "REPORT IMMEDIATELY - More than 100 mL per hour of bloody drainage for 3 hours running, or any sudden increase, may indicate hemorrhage or injury to an intercostal vessel. That rate of blood loss requires urgent evaluation.",
                 b: "EXPECTED FINDING - Tidaling is normal and indicates a patent, functioning chest tube. The water level rises during inspiration and falls during expiration, confirming the tube is communicating with the pleural space.",
                 c: "REPORT IMMEDIATELY - Subcutaneous emphysema (air trapped under the skin causing a crackling sensation) that is SPREADING suggests a significant air leak or malpositioned tube. Involvement of the neck raises concern for mediastinal air tracking.",
                 d: "EXPECTED FINDING - Serous (clear/straw-colored) drainage of 150 mL over 8 hours is a normal finding, especially in the first 24-48 hours after insertion.",
                 e: "REPORT IMMEDIATELY - Sudden cessation of all drainage combined with respiratory distress suggests the tube is obstructed (blood clot, kink, or dependent loop). The accumulating fluid or air cannot escape, causing worsening symptoms."
             },
-            testTakingTip: "For chest tube drainage: Notify if >200 mL/hour (hemorrhage), sudden increase in volume, change from serous to bloody, or sudden stop with symptoms. Serous drainage of 100-300 mL/shift in the first 24-48 hours is typically expected. Tidaling is always a reassuring sign of tube patency.",
+            testTakingTip: "For chest tube drainage, notify for more than 100 mL per hour for 3 hours running, a sudden increase in volume, a change from serous to bloody, or a sudden stop with symptoms. Serous drainage of 100 to 300 mL per shift in the first 24 to 48 hours is typically expected. Tidaling is always a reassuring sign of tube patency.",
             guideSection: "Section 6 - Systematic Assessment",
             guideSectionId: "assessment"
         },
@@ -243,14 +243,114 @@ var chestTubesQuizData = {
             ],
             correct: "b",
             rationale: {
-                correct: "This patient shows signs of hemorrhage or re-expansion pulmonary edema. The drainage rate exceeds 200 mL/hour, blood pressure is dropping (hypotension), and heart rate is rising (tachycardia - compensatory mechanism). The provider must be notified immediately for possible surgical intervention, blood product transfusion, or autotransfusion. This is beyond nursing-only management.",
+                correct: "This patient shows signs of hemorrhage or re-expansion pulmonary edema. The drainage rate is far above the 100 mL per hour reporting threshold, blood pressure is dropping (hypotension), and heart rate is rising (tachycardia - compensatory mechanism). The provider must be notified immediately for possible surgical intervention, blood product transfusion, or autotransfusion. This is beyond nursing-only management.",
                 a: "Clamping can cause tension pneumothorax and does not address the underlying bleeding. If the provider orders controlled drainage, they will provide specific instructions.",
                 c: "Repositioning to slow drainage does not address the hemodynamic instability. The patient is showing signs of hemorrhagic shock, which requires medical intervention.",
                 d: "While IV fluids may be needed, independently increasing the rate without a provider order does not address the source of bleeding and delays definitive treatment. The provider needs to make decisions about blood products, possible re-exploration, or autotransfusion."
             },
-            testTakingTip: "Chest tube output >200 mL/hour + hemodynamic instability = notify provider STAT. This is a potential surgical emergency. The rapid initial drainage of a large effusion can also cause re-expansion pulmonary edema - another reason for provider notification.",
+            testTakingTip: "Chest tube output above 100 mL per hour for 3 hours running, or any brisk bloody output with hemodynamic instability, means notify the provider immediately. This is a potential surgical emergency. The rapid initial drainage of a large effusion can also cause re-expansion pulmonary edema - another reason for provider notification.",
             guideSection: "Section 6 - Systematic Assessment",
             guideSectionId: "assessment"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks what keeps the lung expanded against the chest wall. Which explanation is correct?",
+            options: [
+                { id: "a", text: "Negative pressure in the pleural space holds the seal" },
+                { id: "b", text: "Positive pressure in the pleural space pushes it open" },
+                { id: "c", text: "Cartilage rings hold the lung against the chest wall" },
+                { id: "d", text: "Surfactant glues the two pleural membranes together" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The pleural space holds 10 to 20 mL of serous fluid at a negative pressure of about minus 4 to minus 8 cm of water. Like two sheets of glass with water between them, the seal is what makes the lung follow the chest wall outward on every breath.",
+                b: "Positive pressure in that space is exactly what breaks the seal and collapses the lung.",
+                c: "Cartilage rings hold the trachea and bronchi open. They do not attach the lung to the chest wall.",
+                d: "Surfactant lowers surface tension inside the alveoli, a separate mechanism from the pleural seal."
+            },
+            testTakingTip: "One idea carries this whole topic. Break the seal and the lung falls away; the chest tube removes whatever broke it.",
+            guideSection: "Section 3 - Why the lung stays up",
+            guideSectionId: "pleural-space"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A chest tube is being inserted for a pneumothorax. Where should the nurse expect the tube to be placed?",
+            options: [
+                { id: "a", text: "2nd or 3rd intercostal space, midclavicular line" },
+                { id: "b", text: "5th or 6th intercostal space, midaxillary line" },
+                { id: "c", text: "8th or 9th intercostal space, posterior axillary" },
+                { id: "d", text: "4th or 5th intercostal space, sternal border" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Air rises, so a tube draining a pneumothorax goes high, at the 2nd or 3rd intercostal space in the midclavicular line. Expect an air leak at first and very little fluid.",
+                b: "That is where a tube goes for blood or fluid, because they sink.",
+                c: "That position is lower than either standard site.",
+                d: "The sternal border is not a standard chest tube insertion site."
+            },
+            testTakingTip: "Air rises and fluid sinks, so the tube goes where the problem collects. High for air, low for blood.",
+            guideSection: "Section 4 - Air or fluid, high or low",
+            guideSectionId: "indications"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A tall thin young man develops sudden shortness of breath and pleuritic chest pain with no history of trauma. Which type of pneumothorax is most likely?",
+            options: [
+                { id: "a", text: "Spontaneous, from a ruptured bleb" },
+                { id: "b", text: "Traumatic, from a blunt chest injury" },
+                { id: "c", text: "Iatrogenic, following a recent procedure" },
+                { id: "d", text: "Tension, with mediastinal shift present" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A spontaneous pneumothorax occurs with no trauma, and the classic picture is a tall thin young man with a ruptured bleb at the lung apex.",
+                b: "Traumatic pneumothorax follows penetrating or blunt chest injury, which this patient has not had.",
+                c: "Iatrogenic pneumothorax follows a central line, thoracentesis or biopsy.",
+                d: "A tension pneumothorax is an emergency with tracheal deviation and hemodynamic collapse, not this presentation."
+            },
+            testTakingTip: "The absence of trauma is the clue. Spontaneous is the one that arrives with no explanation at all.",
+            guideSection: "Section 4 - Air or fluid, high or low",
+            guideSectionId: "indications"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient with a chest tube has drained 130 mL of bloody fluid per hour for the last 3 hours. What should the nurse do?",
+            options: [
+                { id: "a", text: "Notify the provider immediately" },
+                { id: "b", text: "Document it as an expected finding" },
+                { id: "c", text: "Strip the tubing to improve drainage" },
+                { id: "d", text: "Clamp the tube and reassess in an hour" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "More than 100 mL per hour of bloody drainage for 3 hours running is the reporting threshold, because it suggests ongoing bleeding that may need surgical intervention. So is a sudden stop in drainage with symptoms.",
+                b: "This rate exceeds the threshold and is not an expected finding.",
+                c: "Stripping or milking the tubing generates high negative pressure and can damage lung tissue.",
+                d: "Clamping a chest tube risks converting a leak into a tension pneumothorax."
+            },
+            testTakingTip: "Over 100 mL per hour for 3 hours gets reported, and so does no drainage at all when the patient has symptoms.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient with a tension pneumothorax requires emergency needle decompression. Which site should the nurse prepare?",
+            options: [
+                { id: "a", text: "2nd intercostal space, midclavicular line" },
+                { id: "b", text: "5th intercostal space, midaxillary line" },
+                { id: "c", text: "4th intercostal space, at the sternal edge" },
+                { id: "d", text: "7th intercostal space, posterior to the scapula" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Needle decompression for a tension pneumothorax is performed at the 2nd intercostal space in the midclavicular line, because the trapped air under pressure sits high and must be released immediately.",
+                b: "That site is used for draining blood or fluid, which collect low.",
+                c: "The sternal edge risks the internal mammary vessels and is not the decompression site.",
+                d: "A posterior site does not reach the trapped air quickly in an emergency."
+            },
+            testTakingTip: "Same landmark as the pneumothorax tube: 2nd intercostal space, midclavicular. Air rises, so that is where you go for it.",
+            guideSection: "Section 11 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

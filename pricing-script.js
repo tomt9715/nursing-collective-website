@@ -570,62 +570,6 @@ document.addEventListener('DOMContentLoaded', function() {
     })();
 
     // ==========================================================================
-    // FREE GUIDE PDF DOWNLOAD
-    // ==========================================================================
-
-    const freeGuideButtons = document.querySelectorAll('[data-free-guide]');
-
-    freeGuideButtons.forEach(button => {
-        button.addEventListener('click', async function() {
-            const guideId = this.getAttribute('data-free-guide');
-            const originalText = this.innerHTML;
-
-            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
-            this.disabled = true;
-
-            try {
-                const apiUrl = (typeof apiService !== 'undefined' && apiService.baseUrl)
-                    ? apiService.baseUrl
-                    : 'https://api.thenursingcollective.pro';
-
-                const response = await fetch(`${apiUrl}/api/guides/free/${guideId}/pdf`, {
-                    method: 'GET'
-                });
-
-                if (!response.ok) {
-                    const errorData = await response.json().catch(() => ({}));
-                    throw new Error(errorData.message || 'Failed to generate PDF');
-                }
-
-                const blob = await response.blob();
-                const url = window.URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `TNC-${guideId}.pdf`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                window.URL.revokeObjectURL(url);
-
-                this.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.disabled = false;
-                }, 2000);
-
-            } catch (error) {
-                console.error('Free guide PDF download error:', error);
-                this.innerHTML = '<i class="fas fa-exclamation-circle"></i> Error';
-                setTimeout(() => {
-                    this.innerHTML = originalText;
-                    this.disabled = false;
-                }, 2000);
-                showPricingToast('Unable to download PDF. Please try again or contact support.');
-            }
-        });
-    });
-
-    // ==========================================================================
     // FAQ ACCORDION
     // ==========================================================================
 

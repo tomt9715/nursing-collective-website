@@ -10,7 +10,7 @@ var copdQuizData = {
     guideSlug: "copd",
     category: "Respiratory",
     categoryColor: "#3b82f6",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -206,6 +206,146 @@ var copdQuizData = {
             ],
             guideSection: "Section 3 - ABG Interpretation in COPD",
             guideSectionId: "oxygen-therapy"
+        },
+        {
+            id: 9, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why a patient with chronic obstructive pulmonary disease (COPD) develops a barrel chest and a flattened diaphragm. Which explanation is correct?",
+            options: [
+                { id: "a", text: "Air is trapped because it cannot get back out of the lungs" },
+                { id: "b", text: "Air cannot get into the lungs because the airways collapse" },
+                { id: "c", text: "Fluid collects in the pleural space and pushes the ribs out" },
+                { id: "d", text: "The rib cage stiffens because of long standing inflammation" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Chronic obstructive pulmonary disease (COPD) is airflow limitation that does not fully reverse. Air goes in reasonably well but cannot get back out. Trapped air barrels the chest, flattens the diaphragm, and is why exhalation rather than inhalation is the problem.",
+                b: "Getting air in is not the difficulty. The obstruction shows itself on exhalation.",
+                c: "Pleural fluid is a separate problem and does not explain a barrel chest.",
+                d: "The chest changes shape because of the volume of trapped air, not because the ribs themselves stiffen."
+            },
+            testTakingTip: "Hold one idea for chronic obstructive pulmonary disease (COPD): air gets in, air cannot get out. Most findings follow from trapped air.",
+            guideSection: "Section 3 - How the airway closes",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 10, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient with chronic obstructive pulmonary disease (COPD) asks which change would actually slow the disease rather than just ease symptoms. What should the nurse answer?",
+            options: [
+                { id: "a", text: "Stopping smoking, at any stage of the disease" },
+                { id: "b", text: "Using the rescue inhaler more consistently" },
+                { id: "c", text: "Taking daily inhaled corticosteroids as ordered" },
+                { id: "d", text: "Increasing the home oxygen flow rate slightly" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Stopping smoking is the only intervention shown to slow the progression of chronic obstructive pulmonary disease (COPD). Everything else treats symptoms. It helps even in advanced disease, which is why it is raised at every visit.",
+                b: "Rescue inhalers relieve bronchospasm as it happens. They do not change the trajectory of the disease.",
+                c: "Inhaled corticosteroids reduce inflammation and exacerbations, but they do not slow the underlying decline.",
+                d: "Raising the oxygen flow treats hypoxemia and, in a chronic retainer, can be harmful. It does not slow progression."
+            },
+            testTakingTip: "Smoking cessation is the answer to a surprising number of long term management questions in chronic obstructive pulmonary disease (COPD).",
+            guideSection: "Section 3 - How the airway closes",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A young adult with no smoking history is diagnosed with emphysema. Which cause should the nurse anticipate being investigated?",
+            options: [
+                { id: "a", text: "Alpha-1 antitrypsin deficiency, an inherited cause" },
+                { id: "b", text: "Occupational exposure to dust, chemicals and fumes" },
+                { id: "c", text: "Indoor and outdoor air pollution over many years" },
+                { id: "d", text: "Repeated respiratory infections during childhood" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Alpha-1 antitrypsin deficiency is a genetic cause accounting for 1 to 2 percent of cases, and it is the reason emphysema appears in a young patient without a smoking history. Those patients are tested for it.",
+                b: "Occupational exposure is a real risk for miners, farmers and textile workers, but it takes years of exposure this patient has not had.",
+                c: "Air pollution contributes over a long period and would not explain disease at a young age on its own.",
+                d: "Childhood infections may cap the lung function a person ever reaches, but they do not produce emphysema by themselves."
+            },
+            testTakingTip: "Emphysema in a young patient who never smoked means test for alpha-1 antitrypsin deficiency.",
+            guideSection: "Section 3 - How the airway closes",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 12, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient with chronic obstructive pulmonary disease (COPD) and known carbon dioxide retention has an oxygen saturation of 97 percent on 4 litres per minute by nasal cannula. What should the nurse do?",
+            options: [
+                { id: "a", text: "Lower the flow rate and reassess the saturation" },
+                { id: "b", text: "Continue the current flow rate and document it" },
+                { id: "c", text: "Raise the flow rate to keep the saturation above 98" },
+                { id: "d", text: "Remove the oxygen entirely and monitor the patient" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The saturation target in chronic obstructive pulmonary disease (COPD) with chronic retention is 88 to 92 percent. A reading of 97 percent means too much oxygen is being given, so the flow is reduced and the patient reassessed.",
+                b: "Leaving the saturation at 97 percent in a chronic retainer risks suppressing the drive to breathe.",
+                c: "Pushing the saturation higher moves further away from the 88 to 92 percent target.",
+                d: "Removing oxygen altogether swings the patient to the opposite risk. The flow is reduced, not stopped."
+            },
+            testTakingTip: "88 to 92 percent is the saturation target in chronic retention. Both a low and a high reading are findings that need action.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient has spirometry showing a forced expiratory volume in one second over forced vital capacity (FEV1 over FVC) ratio of 62 percent. How should the nurse interpret this?",
+            options: [
+                { id: "a", text: "It confirms obstruction, being under 70 percent" },
+                { id: "b", text: "It is a normal ratio and rules out obstruction" },
+                { id: "c", text: "It confirms a restrictive rather than obstructive defect" },
+                { id: "d", text: "It cannot be interpreted without an arterial blood gas" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A forced expiratory volume in one second over forced vital capacity (FEV1 over FVC) ratio under 70 percent confirms obstruction. At 62 percent this patient is clearly below that line.",
+                b: "Under 70 percent is the threshold, and 62 percent sits below it.",
+                c: "A restrictive defect lowers volumes while preserving the ratio. A reduced ratio points to obstruction.",
+                d: "An arterial blood gas describes gas exchange. The diagnosis of obstruction comes from spirometry."
+            },
+            testTakingTip: "Under 70 percent on the forced expiratory volume in one second over forced vital capacity (FEV1 over FVC) ratio confirms obstruction. The forced expiratory volume percentage then stages it.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient with chronic obstructive pulmonary disease (COPD) has an arterial blood gas showing a pH of 7.36, a partial pressure of carbon dioxide (PaCO2) of 62 mmHg and a partial pressure of oxygen (PaO2) of 64 mmHg. How should the nurse interpret these values?",
+            options: [
+                { id: "a", text: "They are the expected baseline for a chronic retainer" },
+                { id: "b", text: "They show acute respiratory failure needing intubation" },
+                { id: "c", text: "They show the patient is being over oxygenated right now" },
+                { id: "d", text: "They show a metabolic problem rather than a lung problem" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A compensated chronic retainer runs a pH of 7.35 to 7.38, a partial pressure of carbon dioxide (PaCO2) of 50 to 70 mmHg and a partial pressure of oxygen (PaO2) of 60 to 70 mmHg. All three values sit inside that baseline, so this is the patient's normal.",
+                b: "Acute failure would show a falling pH rather than a compensated one. This pH is within the compensated range.",
+                c: "A partial pressure of oxygen (PaO2) of 64 mmHg sits inside the acceptable range for this patient, not above it.",
+                d: "The raised carbon dioxide with a near normal pH is respiratory with renal compensation, not a primary metabolic problem."
+            },
+            testTakingTip: "Do not treat a chronic retainer's baseline gas as an emergency. Compare it with their usual numbers before acting.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nurse is teaching pursed lip breathing to a patient with chronic obstructive pulmonary disease (COPD). Which instruction reflects the correct ratio?",
+            options: [
+                { id: "a", text: "Breathe in for two counts and out for four counts" },
+                { id: "b", text: "Breathe in for four counts and out for two counts" },
+                { id: "c", text: "Breathe in and out for two counts each, evenly" },
+                { id: "d", text: "Breathe in for one count and out for one count" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Pursed lip breathing uses a one to two ratio, in for two counts and out for four. The long exhalation keeps a small back pressure in the airways so they stay open while trapped air escapes.",
+                b: "Reversing the ratio shortens the exhalation, which is the part of the breath this patient cannot complete.",
+                c: "An even ratio gives no extra time for the slow exhalation the technique depends on.",
+                d: "Short equal breaths increase the rate and worsen air trapping."
+            },
+            testTakingTip: "Exhalation is the problem in chronic obstructive pulmonary disease (COPD), so the technique doubles it. In for two, out for four.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

@@ -10,7 +10,7 @@ var myocardialInfarctionQuizData = {
     guideSlug: "myocardial-infarction",
     category: "Cardiovascular",
     categoryColor: "#ef4444",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -200,6 +200,146 @@ var myocardialInfarctionQuizData = {
             testTakingTip: "Reperfusion arrhythmias (PVCs, brief V-tach, accelerated idioventricular rhythm) are a GOOD sign - they mean blood flow has been restored. Look at the full clinical picture: pain resolving + ST normalizing + arrhythmias = success.",
             guideSection: "Section 6 - Thrombolytic Therapy",
             guideSectionId: "thrombolytics"
+        },
+        {
+            id: 9, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient with ongoing chest pain has a heart rate of 128 beats per minute. Why does the tachycardia make the ischemia worse?",
+            options: [
+                { id: "a", text: "Diastole shortens, so demand rises while coronary supply falls" },
+                { id: "b", text: "Systole shortens, so the ventricle ejects less blood each beat" },
+                { id: "c", text: "Preload rises, so the coronary arteries are compressed shut" },
+                { id: "d", text: "Hemoglobin falls, so arterial oxygen content drops sharply" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The heart perfuses itself during diastole, not systole. Speeding the rate shortens diastole first, so a fast heart raises oxygen demand and cuts coronary supply at the same time. That is why rate control matters in a patient with chest pain.",
+                b: "Systole does shorten at very high rates, but the ischemic problem is the loss of diastolic time, which is when the coronary arteries actually fill.",
+                c: "Preload raises wall tension and therefore demand, but it does not compress the coronary arteries shut.",
+                d: "Hemoglobin is one determinant of oxygen supply, but a fast heart rate does not lower it."
+            },
+            testTakingTip: "Coronary arteries fill during diastole. Anything that shortens diastole cuts supply and raises demand at the same time.",
+            guideSection: "Section 3 - How the muscle dies",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 10, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks how the medications used in myocardial infarction are organised. Which statement describes the underlying principle?",
+            options: [
+                { id: "a", text: "Every treatment either raises oxygen supply or lowers oxygen demand" },
+                { id: "b", text: "Every treatment either dissolves the clot or prevents a new clot" },
+                { id: "c", text: "Every treatment either lowers cholesterol or lowers blood pressure" },
+                { id: "d", text: "Every treatment either slows the rate or raises the blood pressure" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A myocardial infarction is a supply problem with a deadline. Oxygen and nitrates raise supply, while beta blockers, rest and morphine lower demand. That one split organises the whole pharmacology of the topic.",
+                b: "Thrombolytics and antiplatelets matter a great deal, but they are one way of raising supply rather than the organising idea.",
+                c: "Lipid and blood pressure control are secondary prevention. They do not describe what is given during the infarction.",
+                d: "Raising blood pressure is not a goal. Higher afterload raises wall tension and therefore raises demand."
+            },
+            testTakingTip: "Sort every myocardial infarction drug into raises supply or lowers demand. Nothing in this topic sits outside those two.",
+            guideSection: "Section 3 - How the muscle dies",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient has ischemic chest pain. The electrocardiogram shows ST depression with T wave inversion, and the troponin is elevated. How should the nurse interpret this?",
+            options: [
+                { id: "a", text: "Non-ST elevation myocardial infarction (NSTEMI)" },
+                { id: "b", text: "ST elevation myocardial infarction (STEMI)" },
+                { id: "c", text: "Unstable angina without infarction" },
+                { id: "d", text: "Stable angina brought on by exertion" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Troponin is what separates infarction from angina, and the absence of ST elevation is what separates it from a ST elevation myocardial infarction (STEMI). Positive troponin without ST elevation is a non-ST elevation myocardial infarction (NSTEMI), meaning partial or intermittent occlusion.",
+                b: "A ST elevation myocardial infarction (STEMI) requires ST elevation in two or more neighbouring leads. This tracing shows depression instead.",
+                c: "Unstable angina is ischemic pain with a negative troponin. This troponin is elevated.",
+                d: "Stable angina is predictable, brought on by exertion and relieved by rest, and it does not raise troponin."
+            },
+            testTakingTip: "Two data points sort this family. ST elevation splits the top off, then troponin splits the bottom two.",
+            guideSection: "Section 4 - Complete or partial",
+            guideSectionId: "stemi-nstemi"
+        },
+        {
+            id: 12, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "A patient arrives with crushing chest pain and 2 mm of ST elevation in leads II, III and aVF. The nearest facility able to perform percutaneous coronary intervention (PCI) is a 3 hour transfer away. What should the nurse anticipate?",
+            options: [
+                { id: "a", text: "Giving thrombolytics rather than transferring for the procedure" },
+                { id: "b", text: "Transferring immediately for the procedure despite the distance" },
+                { id: "c", text: "Waiting for a repeat troponin before deciding on any treatment" },
+                { id: "d", text: "Starting anticoagulation and scheduling catheterisation later" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "When percutaneous coronary intervention (PCI) is more than 120 minutes away, thrombolytics are given instead, as long as the patient is within 12 hours of symptom onset. A 3 hour transfer is well outside that threshold.",
+                b: "Transferring past the 120 minute threshold spends the deadline the muscle is dying against.",
+                c: "ST elevation in two or more neighbouring leads is already diagnostic. Waiting for troponin only delays reperfusion.",
+                d: "Anticoagulation with catheterisation in 24 to 72 hours is the non-ST elevation pathway, not the ST elevation one."
+            },
+            testTakingTip: "120 minutes is the deciding number. Further than that from percutaneous coronary intervention (PCI) means thrombolytics, inside 12 hours of symptom onset.",
+            guideSection: "Section 4 - Complete or partial",
+            guideSectionId: "stemi-nstemi"
+        },
+        {
+            id: 13, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient with chest pain has an order for sublingual nitroglycerin. The blood pressure is 86/54 mmHg. What should the nurse do?",
+            options: [
+                { id: "a", text: "Hold the dose and notify the provider" },
+                { id: "b", text: "Give the dose and recheck in five minutes" },
+                { id: "c", text: "Give the dose with the patient lying flat" },
+                { id: "d", text: "Give half the dose and monitor closely" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Nitroglycerin is held when the systolic pressure is under 90 mmHg. It is a vasodilator, and giving it to a patient already at 86 mmHg systolic drops coronary perfusion further.",
+                b: "Giving first and rechecking afterwards accepts a fall in pressure this patient cannot afford.",
+                c: "Position does not make a vasodilator safe below the systolic threshold.",
+                d: "Splitting a dose is not a nursing decision, and any amount lowers the pressure further."
+            },
+            testTakingTip: "Under 90 mmHg systolic holds nitroglycerin. Also hold it within 24 to 48 hours of a phosphodiesterase type 5 (PDE5) inhibitor.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient presents 3 hours after the onset of chest pain and the first troponin is normal. How should the nurse interpret this result?",
+            options: [
+                { id: "a", text: "Troponin may not have risen yet, so it is repeated on a schedule" },
+                { id: "b", text: "Myocardial infarction is ruled out and the patient may be discharged" },
+                { id: "c", text: "The result confirms unstable angina and no further testing is needed" },
+                { id: "d", text: "The sample was drawn incorrectly and should be collected again now" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Troponin starts to rise 2 to 4 hours after injury begins and peaks at 12 to 24 hours. A single normal value at 3 hours is too early to exclude infarction, so serial samples are drawn.",
+                b: "One early troponin cannot rule out an infarction. Discharging on it risks sending home an evolving myocardial infarction.",
+                c: "Unstable angina is diagnosed after serial troponins stay negative, not after the first one.",
+                d: "A normal early troponin is an expected finding at 3 hours, not evidence of a collection error."
+            },
+            testTakingTip: "Troponin rises at 2 to 4 hours, peaks at 12 to 24 hours and stays up 7 to 14 days. Early normal means too early, not negative.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A patient arrives in the emergency department reporting chest pain. Within what time frame should the 12 lead electrocardiogram be obtained?",
+            options: [
+                { id: "a", text: "Within 10 minutes of arrival" },
+                { id: "b", text: "Within 30 minutes of arrival" },
+                { id: "c", text: "Within 60 minutes of arrival" },
+                { id: "d", text: "Within 90 minutes of arrival" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The electrocardiogram is obtained within 10 minutes of arrival, because every later decision depends on whether ST elevation is present. It is the first link in the chain.",
+                b: "30 minutes is the door to needle target for thrombolytics, not the target for the electrocardiogram.",
+                c: "60 minutes does not match any target in this chain.",
+                d: "90 minutes is the door to balloon target for percutaneous coronary intervention (PCI)."
+            },
+            testTakingTip: "Chain of numbers: electrocardiogram in 10 minutes, needle in 30, balloon in 90.",
+            guideSection: "Section 10 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

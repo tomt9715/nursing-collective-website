@@ -10,7 +10,7 @@ var pneumoniaQuizData = {
     guideSlug: "pneumonia",
     category: "Respiratory",
     categoryColor: "#3b82f6",
-    estimatedMinutes: 12,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -200,6 +200,146 @@ var pneumoniaQuizData = {
             testTakingTip: "48-72 hour reassessment rule: If the patient isn\u2019t improving after 48-72 hours of antibiotics, suspect treatment failure - resistant organism, wrong diagnosis, or complication. Get new cultures, imaging, and involve the provider. Don\u2019t just keep doing the same thing.",
             guideSection: "Section 7 - Treatment & Antibiotics",
             guideSectionId: "treatment"
+        },
+        {
+            id: 9, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks why smoking is such a strong risk factor for pneumonia. Which explanation by the nurse is correct?",
+            options: [
+                { id: "a", text: "It paralyses the cilia, so the mucociliary escalator stops" },
+                { id: "b", text: "It thins the surfactant layer, so the alveoli collapse shut" },
+                { id: "c", text: "It narrows the bronchioles, so organisms are trapped below" },
+                { id: "d", text: "It raises the white cell count, so inflammation runs high" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The lung is sterile because it constantly cleans itself. Cilia beat upward and carry trapped particles out, and smoking paralyses them, so the escalator stops and organisms stay where they land.",
+                b: "Surfactant does carry antimicrobial proteins, but the defence smoking disables first is ciliary clearance.",
+                c: "Airway narrowing matters in obstructive disease. Pneumonia risk comes from the failure of clearance.",
+                d: "A raised white count is a response to infection, not the reason infection takes hold."
+            },
+            testTakingTip: "Learn the four defences and you can derive the risk factor list instead of memorising it. Every risk factor is one of them breaking.",
+            guideSection: "Section 3 - How the alveolus fills",
+            guideSectionId: "pathophysiology"
+        },
+        {
+            id: 10, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A college student has had a persistent dry hacking cough, headache and sore throat for two weeks. The chest film shows patchy infiltrates and looks worse than the patient appears. Which pattern does this fit?",
+            options: [
+                { id: "a", text: "Atypical pneumonia, commonly Mycoplasma pneumoniae" },
+                { id: "b", text: "Bacterial pneumonia, commonly Streptococcus pneumoniae" },
+                { id: "c", text: "Viral pneumonia, commonly influenza A or influenza B" },
+                { id: "d", text: "Aspiration pneumonia from an unrecognised swallowing problem" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Atypical or walking pneumonia starts insidiously with a dry hacking cough and symptoms outside the chest, and the film characteristically looks worse than the patient. Mycoplasma pneumoniae is the commonest cause, particularly at this age.",
+                b: "Bacterial pneumonia starts suddenly with high fever, shaking chills, purulent sputum and lobar consolidation.",
+                c: "Viral pneumonia comes on over days with a dry cough, but the infiltrates are diffuse and interstitial rather than patchy.",
+                d: "Aspiration requires a reason for material to enter the airway, such as dysphagia or reduced consciousness."
+            },
+            testTakingTip: "When the film looks worse than the patient and the cough is dry and hacking, think atypical.",
+            guideSection: "Section 4 - Bacterial, viral or atypical",
+            guideSectionId: "organisms"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "analysis",
+            stem: "An 82-year-old resident of a nursing home has become newly confused and has stopped eating. The temperature is 37.1 degrees Celsius. What should the nurse suspect?",
+            options: [
+                { id: "a", text: "Pneumonia presenting atypically, as it often does with age" },
+                { id: "b", text: "Early dementia, since confusion is the presenting complaint" },
+                { id: "c", text: "Dehydration alone, given the reduced food and fluid intake" },
+                { id: "d", text: "A normal variation, because the temperature is not raised" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Older adults present atypically. Confusion, a fall or a lost appetite replace fever and cough, and their baseline temperature is lower, so an infection can run without a recorded fever. New confusion is often the earliest sign and a marker of severity.",
+                b: "Dementia develops gradually. A sudden change in mental status is treated as a sign of acute illness until proven otherwise.",
+                c: "Dehydration may well be present, but it does not explain away new confusion in this age group.",
+                d: "A normal temperature does not exclude infection in an older adult, because their baseline is lower."
+            },
+            testTakingTip: "In an older adult, new confusion is a vital sign. Do not wait for fever and a productive cough.",
+            guideSection: "Section 6 - Who gets it",
+            guideSectionId: "high-risk"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse examining a patient finds dullness to percussion over the right lower lobe, bronchial breath sounds in that area and increased tactile fremitus. What do these three findings together indicate?",
+            options: [
+                { id: "a", text: "Consolidation, where solid tissue has replaced air filled lung" },
+                { id: "b", text: "A pleural effusion collecting in the space around the lung" },
+                { id: "c", text: "A pneumothorax with air trapped outside the lung itself" },
+                { id: "d", text: "Emphysema with trapped air enlarging the alveolar spaces" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Dullness, bronchial breath sounds where they do not belong, and increased tactile fremitus are the consolidation triad. Sound travels better through solid than through air, which is why fremitus rises rather than falls.",
+                b: "An effusion is also dull, but breath sounds and fremitus are reduced over fluid rather than increased.",
+                c: "A pneumothorax gives hyperresonance with absent breath sounds and reduced fremitus.",
+                d: "Emphysema produces hyperresonance and diminished sounds from trapped air, the opposite pattern."
+            },
+            testTakingTip: "Ask the patient to say ninety-nine while you palpate. Stronger vibration over the area means solid lung underneath.",
+            guideSection: "Section 7 - Assessment, in order",
+            guideSectionId: "assessment"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nurse calculates a CURB-65 score of 4 for a patient with pneumonia. What question does this score answer?",
+            options: [
+                { id: "a", text: "Whether the patient needs admission rather than home care" },
+                { id: "b", text: "Which antibiotic the patient should be started on first" },
+                { id: "c", text: "Which organism is most likely to be causing the illness" },
+                { id: "d", text: "How long the course of antibiotics will need to continue" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "CURB-65 answers one question, and it is not which antibiotic. It scores severity to decide whether this patient goes home. A score of 3 to 5 means admit now.",
+                b: "Antibiotic choice follows the setting and the likely organism, not the severity score.",
+                c: "The score uses confusion, urea, respiratory rate, blood pressure and age. None of those identify an organism.",
+                d: "Duration follows the response to treatment and the organism, not the admission score."
+            },
+            testTakingTip: "CURB-65 decides disposition. A score of 3 to 5 means admit now.",
+            guideSection: "Section 7 - Assessment, in order",
+            guideSectionId: "assessment"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "application",
+            stem: "A nurse is assessing a 2-year-old with suspected pneumonia who is crying during the examination. What should the nurse do to obtain an accurate respiratory rate?",
+            options: [
+                { id: "a", text: "Wait until the child is calm, then count for a full minute" },
+                { id: "b", text: "Count for 15 seconds while crying and multiply the result" },
+                { id: "c", text: "Record the rate from the cardiac monitor already in place" },
+                { id: "d", text: "Ask the parent how fast the child has been breathing today" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Tachypnea is usually the first and most sensitive sign of pneumonia in a child, so the number has to be reliable. Count for a full 60 seconds while the child is calm. A rate counted on a crying child is worth nothing.",
+                b: "Crying raises the rate, and a 15 second sample multiplied up magnifies the error.",
+                c: "Monitor derived rates are prone to artefact from movement, and a crying child moves.",
+                d: "Parent report is useful background but does not replace a counted rate."
+            },
+            testTakingTip: "Respiratory rate is the earliest thing that moves in a child. Count it for a full minute, and only when the child is settled.",
+            guideSection: "Section 11 - Children are not small adults",
+            guideSectionId: "pediatrics"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient is diagnosed with pneumonia and meets the criteria for sepsis. The provider has ordered antibiotics. Within what time frame should the first dose be given?",
+            options: [
+                { id: "a", text: "Within 1 hour of the diagnosis being made" },
+                { id: "b", text: "Within 4 hours of the diagnosis being made" },
+                { id: "c", text: "After the sputum culture result has returned" },
+                { id: "d", text: "After the chest film has been formally reported" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "When the patient is severe or septic, the first antibiotic dose is given within 1 hour. Otherwise it is given as soon as possible after diagnosis. Improvement is then expected in 48 to 72 hours.",
+                b: "Four hours is too long for a septic patient, in whom delay costs survival.",
+                c: "Cultures are drawn before antibiotics where possible, but treatment is empiric and does not wait for the result.",
+                d: "Waiting for a formal report delays a time critical dose."
+            },
+            testTakingTip: "Severe or septic means the first dose inside 1 hour. Draw cultures first if you can, but do not let that delay the antibiotic.",
+            guideSection: "Section 12 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

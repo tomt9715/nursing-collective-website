@@ -11,6 +11,7 @@
  * Marker format (round-tripped on every run):
  *
  *   <!-- STAT:guides    -->55<!-- /STAT -->
+ *   <!-- STAT:resources -->17<!-- /STAT -->
  *   <!-- STAT:questions -->3,074<!-- /STAT -->
  *   <!-- STAT:topics    -->67+<!-- /STAT -->
  *   <!-- STAT:chapters  -->16<!-- /STAT -->
@@ -71,6 +72,15 @@ function loadRegistry() {
     return fn();
 }
 
+function countFreeResources() {
+    // Everything under resources/ is reachable without a subscription:
+    // content-gate.js only gates /guides/, so nothing here sits behind the
+    // paywall regardless of what FREE_PATHS lists.
+    const dir = path.join(WEBSITE_ROOT, 'resources');
+    if (!fs.existsSync(dir)) return 0;
+    return fs.readdirSync(dir).filter((f) => f.endsWith('.html')).length;
+}
+
 function countBuiltGuides() {
     // A "built" guide is an HTML file in guides/ that isn't a quiz page
     // and isn't a partial/utility. Pragmatic: count *.html in guides/
@@ -99,6 +109,7 @@ function buildStats() {
     const guideQuestions = countPerGuideQuestions();
     const totalQuestions = qbQuestions + guideQuestions;
     const guides = countBuiltGuides();
+    const resources = countFreeResources();
 
     let chapters = 0;
     let populatedTopics = 0;
@@ -118,10 +129,11 @@ function buildStats() {
         questions: totalQuestions.toLocaleString('en-US'),
         // Exact counts elsewhere
         guides: String(guides),
+        resources: String(resources),
         topics: `${populatedTopics}+`,
         chapters: String(chapters),
         // Detail values for the build log
-        _detail: { qbQuestions, guideQuestions, totalQuestions, guides, chapters, populatedTopics },
+        _detail: { qbQuestions, guideQuestions, totalQuestions, guides, resources, chapters, populatedTopics },
     };
 }
 
@@ -165,6 +177,7 @@ console.log(`  Quiz Bank: ${stats._detail.qbQuestions} questions`);
 console.log(`  Per-guide: ${stats._detail.guideQuestions} questions`);
 console.log(`  Total questions: ${stats._detail.totalQuestions} → display "${stats.questions}"`);
 console.log(`  Built guides: ${stats.guides}`);
+console.log(`  Free resources: ${stats.resources}`);
 console.log(`  Populated topics: ${stats._detail.populatedTopics} → display "${stats.topics}"`);
 console.log(`  Chapters: ${stats.chapters}`);
 

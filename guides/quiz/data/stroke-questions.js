@@ -9,7 +9,7 @@ var strokeQuizData = {
     guideSlug: "stroke",
     category: "Neurological",
     categoryColor: "#8b5cf6",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         {
             id: 1,
@@ -259,6 +259,106 @@ var strokeQuizData = {
             testTakingTip: "Hemorrhagic stroke = the opposite of ischemic in almost every way. No tPA, no anticoagulants, no antiplatelets, aggressive BP lowering (SBP <140). 'Worst headache of my life' + hemorrhage on CT = treat the blood pressure aggressively.",
             guideSection: "Section 5 - Priority Nursing Interventions",
             guideSectionId: "interventions"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient has sudden weakness that is worse in the leg than the arm, a marked personality change and new urinary incontinence. Which artery is most likely involved?",
+            options: [
+                { id: "a", text: "Anterior cerebral artery" },
+                { id: "b", text: "Middle cerebral artery" },
+                { id: "c", text: "Posterior cerebral artery" },
+                { id: "d", text: "Vertebral artery" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The anterior cerebral artery supplies the frontal lobe and the inner surface of the hemisphere, where the leg is represented. Closure gives leg weakness greater than arm weakness, personality change and urinary incontinence.",
+                b: "A middle cerebral artery stroke weakens the arm and face more than the leg, with aphasia or neglect depending on the side.",
+                c: "A posterior cerebral artery stroke affects the occipital lobe, producing visual field loss and visual agnosia.",
+                d: "A vertebral artery stroke affects the medulla and cerebellum, giving vertigo, ataxia and trouble swallowing."
+            },
+            testTakingTip: "Leg worse than arm points anterior. Arm and face worse than leg points middle. Learn the map and reason backwards from symptom to vessel.",
+            guideSection: "Section 3 - Which artery, which deficit",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient with a stroke has left sided weakness and does not recognise the left side of the body as belonging to them, eating only from the right half of the plate. Which hemisphere is affected?",
+            options: [
+                { id: "a", text: "The right hemisphere, producing neglect" },
+                { id: "b", text: "The left hemisphere, producing aphasia" },
+                { id: "c", text: "The brainstem, producing locked-in syndrome" },
+                { id: "d", text: "The cerebellum, producing ataxia and vertigo" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Weakness appears on the side opposite the lesion, so left sided weakness means a right hemisphere stroke. Neglect is the right hemisphere pattern, where the patient does not recognise the left side of the world as theirs.",
+                b: "A left hemisphere stroke gives right sided weakness with aphasia, because language sits on the left in almost everyone.",
+                c: "Locked-in syndrome follows a basilar artery stroke affecting the brainstem.",
+                d: "Ataxia and vertigo follow cerebellar or vertebral territory strokes."
+            },
+            testTakingTip: "The axis is what the patient cannot do, not which side is weak. Left hemisphere means language lost; right hemisphere means the left world lost.",
+            guideSection: "Section 3 - Which artery, which deficit",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient has an ischemic stroke caused by atrial fibrillation. Which class of medication should the nurse anticipate for preventing the next one?",
+            options: [
+                { id: "a", text: "An anticoagulant, because the clot formed in the heart" },
+                { id: "b", text: "An antiplatelet, because all strokes are platelet driven" },
+                { id: "c", text: "A statin alone, because cholesterol caused the blockage" },
+                { id: "d", text: "A thrombolytic, given daily to prevent further clotting" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The choice depends on where the clot was made, not on how bad the stroke was. A clot formed in a fibrillating atrium is treated with an anticoagulant such as warfarin, apixaban or rivaroxaban.",
+                b: "Antiplatelets are first line for a clot formed on an arterial plaque, which is platelet driven. This clot came from the heart.",
+                c: "A statin is part of the regimen, but it does not address a clot forming in the atrium.",
+                d: "Thrombolytics dissolve an acute clot in a narrow time window and are never used as daily prevention."
+            },
+            testTakingTip: "Ask where the clot was made. Arterial plaque means antiplatelet; fibrillating atrium means anticoagulant.",
+            guideSection: "Section 8 - The drugs",
+            guideSectionId: "medications"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient who is otherwise a candidate for alteplase has a blood pressure of 196/116 mmHg. What should the nurse anticipate?",
+            options: [
+                { id: "a", text: "Giving intravenous labetalol before the alteplase" },
+                { id: "b", text: "Giving the alteplase immediately at this pressure" },
+                { id: "c", text: "Cancelling thrombolysis permanently for this patient" },
+                { id: "d", text: "Waiting for the pressure to fall without treatment" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The blood pressure must be under 185/110 mmHg before alteplase is given, because thrombolysis at a higher pressure raises the risk of bleeding into the brain. Labetalol or nicardipine is used to bring it down and preserve eligibility.",
+                b: "Giving alteplase above 185/110 mmHg accepts an avoidable hemorrhage risk.",
+                c: "A high pressure is a treatable barrier rather than a permanent exclusion.",
+                d: "Waiting passively spends the time window, which is at most 4.5 hours from last known well."
+            },
+            testTakingTip: "Under 185/110 before alteplase, then under 180/105 during and for 24 hours after.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
+        },
+        {
+            id: 15, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient arrives with stroke symptoms. The point of care glucose is 44 mg/dL. What should the nurse do FIRST?",
+            options: [
+                { id: "a", text: "Treat the hypoglycemia and reassess the symptoms" },
+                { id: "b", text: "Proceed directly to the computed tomography scan" },
+                { id: "c", text: "Prepare alteplase while the glucose is rechecked" },
+                { id: "d", text: "Give insulin to bring the glucose into target range" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A glucose under 50 mg/dL is corrected first, because hypoglycemia mimics stroke and the deficits may resolve entirely once it is treated. The target in acute stroke is then 140 to 180 mg/dL.",
+                b: "Imaging still matters, but giving thrombolysis for what is actually hypoglycemia exposes the patient to risk for no benefit.",
+                c: "Preparing a thrombolytic before excluding a reversible mimic puts the sequence in the wrong order.",
+                d: "Insulin would drive an already low glucose lower and is the opposite of what is needed."
+            },
+            testTakingTip: "Check the glucose in every suspected stroke. Under 50 mg/dL is a mimic you can reverse in minutes.",
+            guideSection: "Section 9 - Numbers to have cold",
+            guideSectionId: "numbers-cold"
         }
     ]
 };

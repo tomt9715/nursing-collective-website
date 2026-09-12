@@ -10,7 +10,7 @@ var adrenalDisordersQuizData = {
     guideSlug: "adrenal-disorders",
     category: "Endocrine",
     categoryColor: "#7C3AED",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         // ============================================================
         // Q1: Cushing's vs Addison's Identification (Knowledge)
@@ -290,6 +290,106 @@ var adrenalDisordersQuizData = {
             testTakingTip: "Addison's stress dosing: minor illness = double the dose. Severe illness = triple. Surgery/major trauma = IV hydrocortisone. If patient can't keep oral meds down (vomiting) = needs IM/IV hydrocortisone. NEVER stop steroids when sick - the body needs MORE, not less.",
             guideSection: "Section 5 - Addison's Treatment",
             guideSectionId: "addisons-treatment"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student is learning the adrenal cortex. Which hormone class does the outermost layer, the zona glomerulosa, produce?",
+            options: [
+                { id: "a", text: "Mineralocorticoids, meaning aldosterone" },
+                { id: "b", text: "Glucocorticoids, meaning cortisol" },
+                { id: "c", text: "Androgens, meaning dehydroepiandrosterone" },
+                { id: "d", text: "Catecholamines, meaning epinephrine" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The cortex runs salt, sugar, sex from outside in. The outermost zona glomerulosa makes aldosterone, which holds on to sodium and water, excretes potassium, and sets blood pressure and volume under control of the renin angiotensin aldosterone system (RAAS).",
+                b: "Cortisol comes from the middle layer, the zona fasciculata.",
+                c: "Androgens come from the innermost cortical layer, the zona reticularis.",
+                d: "Catecholamines come from the medulla, which is a separate organ inside the gland."
+            },
+            testTakingTip: "Salt, sugar, sex from outside in. The deeper you go the sweeter it gets, and the medulla is a different organ entirely.",
+            guideSection: "Section 3 - One hormone, four actions",
+            guideSectionId: "physiology"
+        },
+        {
+            id: 12, type: "single", subtype: "priority", difficulty: "application",
+            stem: "A patient has been taking prednisone daily for 8 months and asks to stop it because the condition has settled. What should the nurse explain?",
+            options: [
+                { id: "a", text: "The dose is tapered gradually over weeks to months" },
+                { id: "b", text: "The medication may be stopped once symptoms resolve" },
+                { id: "c", text: "The dose is halved each day until the supply runs out" },
+                { id: "d", text: "The medication is stopped and restarted if symptoms return" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Long term steroid use suppresses the hypothalamic pituitary adrenal (HPA) axis, and the adrenal glands atrophy. Stopping abruptly leaves the patient unable to produce cortisol, so the dose is tapered gradually over weeks to months while the axis wakes up.",
+                b: "Symptom resolution says nothing about whether the adrenal glands have recovered their function.",
+                c: "Halving daily is far too fast for a suppressed axis and can precipitate adrenal crisis.",
+                d: "Stopping and restarting exposes the patient to crisis in the gap."
+            },
+            testTakingTip: "Never stop a long term steroid abruptly. The gland has to be given time to wake up.",
+            guideSection: "Section 5 - Treating too much",
+            guideSectionId: "cushings-treatment"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient is scheduled for adrenalectomy to remove a pheochromocytoma. What should the nurse confirm before surgery?",
+            options: [
+                { id: "a", text: "That alpha blockade has run for 10 to 14 days" },
+                { id: "b", text: "That beta blockade was started 24 hours ago" },
+                { id: "c", text: "That the patient has fasted for a full 24 hours" },
+                { id: "d", text: "That the potassium has been deliberately lowered" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "A pheochromocytoma releases catecholamines, and handling the tumour during surgery can trigger a hypertensive crisis. Alpha blockade is confirmed for 10 to 14 days beforehand so the vasculature is already relaxed.",
+                b: "Beta blockade without adequate alpha blockade first leaves unopposed vasoconstriction and can worsen the crisis.",
+                c: "A 24 hour fast is not the preoperative requirement here.",
+                d: "Electrolytes are corrected before surgery, not deliberately deranged."
+            },
+            testTakingTip: "Alpha before beta in pheochromocytoma, and expect hypotension after the tumour is out because the catecholamine source has gone.",
+            guideSection: "Section 10 - After the gland comes out",
+            guideSectionId: "adrenalectomy"
+        },
+        {
+            id: 14, type: "single", subtype: "priority", difficulty: "analysis",
+            stem: "A patient is 2 hours post bilateral adrenalectomy. The blood pressure has fallen from 118/70 to 82/48 mmHg. What should the nurse recognise?",
+            options: [
+                { id: "a", text: "Expected hypotension requiring steroid replacement and support" },
+                { id: "b", text: "Expected pain response that will settle with analgesia alone" },
+                { id: "c", text: "An anticipated finding needing no intervention at this stage" },
+                { id: "d", text: "A sign of fluid overload requiring diuretic administration" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "After bilateral adrenalectomy the patient produces no cortisol or aldosterone and needs both for life. Blood pressure is monitored every 15 to 30 minutes at first, and hypotension is treated with steroid replacement, fluids and vasopressors if needed.",
+                b: "Pain typically raises blood pressure rather than dropping it by this much.",
+                c: "Hypotension after this surgery is anticipated but is very much treated, not merely observed.",
+                d: "A falling pressure with no cortisol or aldosterone is the opposite of fluid overload."
+            },
+            testTakingTip: "Bilateral means lifelong cortisol and aldosterone. Unilateral means temporary support while the remaining gland recovers.",
+            guideSection: "Section 10 - After the gland comes out",
+            guideSectionId: "adrenalectomy"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks what the adrenal medulla produces. What should the nurse answer?",
+            options: [
+                { id: "a", text: "Catecholamines, meaning epinephrine and norepinephrine" },
+                { id: "b", text: "Aldosterone, which retains sodium and excretes potassium" },
+                { id: "c", text: "Cortisol, which raises glucose and suppresses immunity" },
+                { id: "d", text: "Dehydroepiandrosterone, a precursor to the sex hormones" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Each adrenal gland is really two organs stacked together. The medulla sits inside and makes catecholamines, epinephrine and norepinephrine, which drive the immediate fight or flight response.",
+                b: "Aldosterone is made by the zona glomerulosa in the cortex.",
+                c: "Cortisol is made by the zona fasciculata in the cortex.",
+                d: "Dehydroepiandrosterone is made by the zona reticularis in the cortex."
+            },
+            testTakingTip: "Cortex and medulla are two organs in one gland. The cortex makes steroids; the medulla makes catecholamines.",
+            guideSection: "Section 3 - One hormone, four actions",
+            guideSectionId: "physiology"
         }
     ]
 };

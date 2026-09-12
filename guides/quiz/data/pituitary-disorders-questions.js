@@ -10,7 +10,7 @@ var pituitaryDisordersQuizData = {
     guideSlug: "pituitary-disorders",
     category: "Endocrine",
     categoryColor: "#0EA5E9",
-    estimatedMinutes: 15,
+    estimatedMinutes: 20,
     questions: [
         // ============================================================
         // Q1: SIADH vs DI Lab Interpretation (Knowledge)
@@ -290,6 +290,106 @@ var pituitaryDisordersQuizData = {
             testTakingTip: "Match the drug to its purpose: Desmopressin REPLACES ADH (for DI). Tolvaptan BLOCKS ADH (for SIADH). Octreotide SUPPRESSES GH (for acromegaly). Somatropin REPLACES GH (for deficiency). Cabergoline INHIBITS prolactin (for prolactinoma). Each drug is the opposite of the disease.",
             guideSection: "Section 11 - Medication Comparison",
             guideSectionId: "medications"
+        },
+        {
+            id: 11, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student asks which hormones the posterior pituitary produces. What should the nurse explain?",
+            options: [
+                { id: "a", text: "None; it stores and releases hormones made elsewhere" },
+                { id: "b", text: "Six hormones, under hypothalamic releasing instructions" },
+                { id: "c", text: "Two hormones, made within the lobe from raw precursors" },
+                { id: "d", text: "Only growth hormone, released in pulses during sleep" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "The posterior lobe is a warehouse, not a factory. It makes nothing. It stores and releases two hormones produced in the hypothalamus, antidiuretic hormone and oxytocin.",
+                b: "Six hormones under hypothalamic instruction describes the anterior lobe, remembered as FLAT PiG.",
+                c: "The posterior lobe does not synthesise anything, which is the point of the distinction.",
+                d: "Growth hormone is an anterior lobe product."
+            },
+            testTakingTip: "Anterior is a factory, posterior is a warehouse. Confusing the two lobes is the first mistake available in this topic.",
+            guideSection: "Section 3 - Two lobes, two jobs",
+            guideSectionId: "anatomy"
+        },
+        {
+            id: 12, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A patient has a serum sodium of 122 mEq/L, a serum osmolality of 260 mOsm/kg and concentrated urine. Which condition do these values indicate?",
+            options: [
+                { id: "a", text: "Syndrome of inappropriate antidiuretic hormone (SIADH)" },
+                { id: "b", text: "Diabetes insipidus with excessive water loss" },
+                { id: "c", text: "Dehydration from inadequate fluid intake" },
+                { id: "d", text: "Adrenal insufficiency causing salt wasting" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "In the syndrome of inappropriate antidiuretic hormone (SIADH) water is retained, so the serum dilutes. Sodium falls under 135 mEq/L and osmolality under 275 mOsm/kg, while the urine stays inappropriately concentrated.",
+                b: "Diabetes insipidus produces the opposite picture, with a sodium over 145 mEq/L, osmolality over 295 mOsm/kg and dilute urine.",
+                c: "Dehydration raises serum osmolality rather than lowering it.",
+                d: "Adrenal insufficiency can lower sodium, but the concentrated urine with low serum osmolality is the antidiuretic hormone pattern."
+            },
+            testTakingTip: "Water in dilutes the serum and concentrates the urine. Water out does the reverse. That one idea sorts the two conditions.",
+            guideSection: "Section 7 - Reading the labs",
+            guideSectionId: "lab-values"
+        },
+        {
+            id: 13, type: "single", subtype: null, difficulty: "application",
+            stem: "A patient has a urine specific gravity of 1.002 and is passing 8 litres of urine a day. Which condition should the nurse suspect?",
+            options: [
+                { id: "a", text: "Diabetes insipidus" },
+                { id: "b", text: "Syndrome of inappropriate antidiuretic hormone" },
+                { id: "c", text: "Acute kidney injury" },
+                { id: "d", text: "Nephrotic syndrome" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Diabetes insipidus means antidiuretic hormone is missing or not working, so water pours out. The urine is dilute with a specific gravity under 1.005, and output runs from 3 to 20 litres a day.",
+                b: "In the syndrome of inappropriate antidiuretic hormone the urine is concentrated with a specific gravity over 1.030 and output falls.",
+                c: "Acute kidney injury usually reduces urine output rather than producing litres of dilute urine.",
+                d: "Nephrotic syndrome is defined by heavy protein loss with edema, not by dilute polyuria."
+            },
+            testTakingTip: "Normal specific gravity is 1.010 to 1.025. Under 1.005 with huge volumes is antidiuretic hormone failure.",
+            guideSection: "Section 7 - Reading the labs",
+            guideSectionId: "lab-values"
+        },
+        {
+            id: 14, type: "single", subtype: null, difficulty: "analysis",
+            stem: "A woman has galactorrhea and a raised prolactin level. Which cause should the nurse expect to be excluded first?",
+            options: [
+                { id: "a", text: "Pregnancy, since it is physiological and common" },
+                { id: "b", text: "A prolactinoma, since it is the commonest tumour" },
+                { id: "c", text: "Hypothyroidism, since it raises prolactin indirectly" },
+                { id: "d", text: "Antipsychotic medication, since it blocks dopamine" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "Pregnancy and breastfeeding raise prolactin physiologically, and pregnancy is the first thing to exclude before investigating a pathological cause.",
+                b: "A prolactinoma is the commonest pathological cause and about 40 percent of adenomas, but it is not what is ruled out first.",
+                c: "Hypothyroidism does raise prolactin through thyrotropin releasing hormone, which is why the thyroid stimulating hormone is always checked, but pregnancy comes first.",
+                d: "Dopamine blocking drugs are a common cause and are reviewed, but again after pregnancy is excluded."
+            },
+            testTakingTip: "Dopamine holds prolactin down, so anything blocking dopamine raises it. Still, exclude pregnancy before anything else.",
+            guideSection: "Section 9 - Too much prolactin",
+            guideSectionId: "hyperprolactinemia"
+        },
+        {
+            id: 15, type: "single", subtype: null, difficulty: "knowledge",
+            stem: "A nursing student uses the mnemonic FLAT PiG for the anterior pituitary hormones. Which hormone does the G represent?",
+            options: [
+                { id: "a", text: "Growth hormone" },
+                { id: "b", text: "Glucagon" },
+                { id: "c", text: "Gonadotropin releasing hormone" },
+                { id: "d", text: "Glucocorticoid" }
+            ],
+            correct: "a",
+            rationale: {
+                correct: "FLAT PiG covers the six anterior pituitary hormones: follicle stimulating hormone, luteinising hormone, adrenocorticotropic hormone, thyroid stimulating hormone, prolactin and growth hormone. The G is growth hormone.",
+                b: "Glucagon is made by the alpha cells of the pancreas, not the pituitary.",
+                c: "Gonadotropin releasing hormone comes from the hypothalamus and instructs the pituitary rather than being made by it.",
+                d: "Glucocorticoids are made by the adrenal cortex in response to adrenocorticotropic hormone."
+            },
+            testTakingTip: "FLAT PiG is the anterior six. The posterior lobe only stores two, antidiuretic hormone and oxytocin.",
+            guideSection: "Section 3 - Two lobes, two jobs",
+            guideSectionId: "anatomy"
         }
     ]
 };

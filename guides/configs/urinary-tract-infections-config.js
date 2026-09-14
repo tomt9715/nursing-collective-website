@@ -16,7 +16,7 @@ const sidebarConfig = {
         { id: 'cross-references', icon: 'fa-book-open', title: 'Related Guides' }
     ],
     quickRef: [
-        { type: 'time', icon: 'fa-pills', value: '5-7 days', label: 'Lower UTI course', section: 'lower-uti' },
+        { type: 'time', icon: 'fa-pills', value: '1-7 days', label: 'Lower UTI course, by drug', section: 'lower-uti' },
         { type: 'time', icon: 'fa-hospital', value: '~2 wks', label: 'Pyelonephritis course', section: 'pyelonephritis' },
         { type: 'target', icon: 'fa-glass-water', value: '8-10', label: 'Glasses of water daily', section: 'education' },
         { type: 'warning', icon: 'fa-toilet', value: 'q2-3h', label: 'Voiding frequency', section: 'education' },

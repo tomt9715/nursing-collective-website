@@ -137,21 +137,21 @@ var immuneDeficiencyHivQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "The parent of an infant with HIV asks, \u201cCan I breastfeed?\u201d The nurse\u2019s BEST response is:",
+            stem: "A mother with HIV has taken antiretroviral therapy throughout pregnancy, and her viral load has stayed undetectable. She asks, \u201cCan I breastfeed my baby?\u201d The nurse\u2019s BEST response is:",
             options: [
-                { id: "a", text: "\u201cYes, breastfeeding passes along antibodies that protect your baby from HIV.\u201d" },
-                { id: "b", text: "\u201cIn the United States, formula feeding is recommended because HIV can pass through breast milk.\u201d" },
-                { id: "c", text: "\u201cYou can breastfeed as long as you\u2019re on antiretroviral therapy.\u201d" },
-                { id: "d", text: "\u201cBreastfeeding is fine once the baby is 6 months old and eating solid foods.\u201d" }
+                { id: "a", text: "\u201cYes, breast milk passes along antibodies that protect your baby from catching HIV.\u201d" },
+                { id: "b", text: "\u201cFormula removes the risk completely, but breastfeeding is an option we can plan with your care team.\u201d" },
+                { id: "c", text: "\u201cYes. An undetectable viral load means HIV can\u2019t pass through breast milk at all.\u201d" },
+                { id: "d", text: "\u201cBreastfeeding is safe once your baby is 6 months old and eating solid foods.\u201d" }
             ],
             correct: "b",
             rationale: {
-                correct: "In resource-rich countries like the US, formula feeding is recommended for all infants born to HIV-positive mothers. Breast milk can transmit the virus. In resource-limited settings, WHO guidelines may differ because of clean water access and formula availability.",
-                a: "Breast milk CAN transmit HIV.",
-                c: "US guidelines recommend formula regardless of maternal ART.",
-                d: "Transmission risk continues throughout breastfeeding."
+                correct: "Since 2024, US perinatal HIV guidelines support shared decision-making for a mother on antiretroviral therapy with a sustained undetectable viral load who wants to breastfeed. Formula or pasteurized donor milk is the only way to remove the risk entirely, so the nurse presents both options. A mother who breastfeeds needs frequent viral load checks, and the infant needs repeated HIV testing. A mother who is not virally suppressed should not breastfeed.",
+                a: "Breast milk CAN transmit HIV. Maternal antibodies do not protect the infant from the virus.",
+                c: "An undetectable viral load makes transmission through breast milk rare, not impossible. That is why breastfeeding comes with close monitoring of mother and baby.",
+                d: "Transmission risk continues for as long as breastfeeding continues. Starting solid foods does not make it safe."
             },
-            testTakingTip: "US HIV+ mom = no breastfeeding. Formula only.",
+            testTakingTip: "Undetectable on antiretroviral therapy = breastfeeding is a shared decision with close monitoring. Formula is the only zero-risk option. Not suppressed = no breastfeeding.",
             guideSection: "Section 3 - Pediatric HIV",
             guideSectionId: "hiv"
         },

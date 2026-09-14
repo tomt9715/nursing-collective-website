@@ -391,7 +391,7 @@ Primary immune deficiency warning signs, pediatric HIV, and life-saving anaphyla
 ### Pediatric HIV
 - **Perinatal transmission** is #1 route
 - Prevent with maternal ART, IV zidovudine, C-section, infant prophylaxis
-- **NO breastfeeding in the US**
+- **Infant feeding:** formula is zero-risk; breastfeeding only if the mother is undetectable on ART (shared decision)
 - Infant testing: **HIV DNA/RNA PCR** (not antibody)
 - Treatment: **combination ART** daily; adherence is critical
 - Monitor CD4 count and viral load

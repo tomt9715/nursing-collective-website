@@ -63,21 +63,21 @@ var rheumaticFeverEndocarditisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A 12-year-old with a history of rheumatic fever 3 years ago is scheduled for a dental cleaning. The echo shows residual mild mitral regurgitation. The nurse expects the provider to order:",
+            stem: "A 12-year-old who was treated for infective endocarditis last year is scheduled for a dental cleaning. The child has no drug allergies. The nurse expects the provider to order:",
             options: [
                 { id: "a", text: "Cefazolin IV 30 minutes before the procedure" },
                 { id: "b", text: "Amoxicillin 50 mg/kg PO 30\u201360 minutes before the procedure" },
-                { id: "c", text: "Nothing - prophylaxis is only for children with prosthetic valves" },
+                { id: "c", text: "Nothing - the endocarditis was fully treated and has not come back" },
                 { id: "d", text: "A 10-day course of penicillin starting the day before" }
             ],
             correct: "b",
             rationale: {
-                correct: "SBE prophylaxis for dental procedures in high-risk patients (including rheumatic heart disease with residual valve damage) is amoxicillin 50 mg/kg PO (max 2 g) taken 30\u201360 minutes before the procedure.",
+                correct: "A history of infective endocarditis places the child in the AHA highest-risk group for life. Prophylaxis before dental work involving the gums is amoxicillin 50 mg/kg PO (max 2 g) taken 30\u201360 minutes before the procedure.",
                 a: "IV cefazolin is reserved for patients who cannot take PO; oral amoxicillin is first-line.",
-                c: "Residual valvular damage from rheumatic fever is an indication for SBE prophylaxis.",
+                c: "Previous endocarditis is a lifelong indication for prophylaxis, even after a full cure, because the risk of a second episode stays high.",
                 d: "Prophylaxis is a single dose before the procedure, not a 10-day course."
             },
-            testTakingTip: "SBE prophylaxis = amoxicillin 50 mg/kg PO × 1, taken 30\u201360 minutes before. Clindamycin if PCN allergic.",
+            testTakingTip: "SBE prophylaxis = amoxicillin 50 mg/kg PO × 1, taken 30\u201360 minutes before, and only for the highest-risk groups: prosthetic valve, prior endocarditis, certain congenital heart disease.",
             guideSection: "Section 7 - Prophylaxis",
             guideSectionId: "prophylaxis"
         },
@@ -316,21 +316,21 @@ var rheumaticFeverEndocarditisQuizData = {
             type: "single",
             subtype: null,
             difficulty: "application",
-            stem: "A parent asks why their child with a history of rheumatic heart disease needs antibiotics before a dental cleaning even though the heart is 'fine' now. The nurse's best response is:",
+            stem: "A parent asks whether their 10-year-old, who has mild mitral regurgitation from rheumatic heart disease and has never had valve surgery, needs antibiotics before a dental cleaning. The nurse's best response is:",
             options: [
-                { id: "a", text: "'The antibiotics treat any leftover strep infection from the rheumatic fever years ago.'" },
-                { id: "b", text: "'Dental work can put bacteria in the blood, which can stick to damaged valves and cause endocarditis.'" },
-                { id: "c", text: "'It's a precaution in case the dentist finds a cavity that is already infected.'" },
-                { id: "d", text: "'It keeps rheumatic fever from coming back and damaging the heart again.'" }
+                { id: "a", text: "'Yes. Any valve damage from rheumatic fever means amoxicillin before every dental visit.'" },
+                { id: "b", text: "'Not for rheumatic valve damage alone. Keep up the monthly penicillin shots and daily brushing.'" },
+                { id: "c", text: "'Yes, but only for fillings or pulled teeth. A routine cleaning doesn't put bacteria in the blood.'" },
+                { id: "d", text: "'No, because the monthly penicillin shots already protect the valve during dental work.'" }
             ],
             correct: "b",
             rationale: {
-                correct: "Dental procedures cause transient bacteremia. In a heart with damaged valves (from previous RF), those bacteria can attach and cause infective endocarditis. Amoxicillin 30\u201360 minutes before the procedure provides bloodstream coverage during the bacteremia window.",
-                a: "Antibiotics for RF prophylaxis are separate and continue regardless of dental work.",
-                c: "Prophylaxis is about preventing bacteremia-induced endocarditis, not cavities.",
-                d: "RF recurrence is prevented by ongoing monthly penicillin, not the dental-visit dose."
+                correct: "Current AHA guidance limits endocarditis prophylaxis to the highest-risk patients, such as those with a prosthetic valve or previous endocarditis. Rheumatic valve damage alone is not on that list. What protects this child is continuing secondary RF prophylaxis and good daily oral hygiene, since everyday brushing and chewing cause bacteremia far more often than dental visits do.",
+                a: "This was the older teaching. Rheumatic valve disease without a prosthetic valve or prior endocarditis no longer qualifies for dental prophylaxis.",
+                c: "Cleanings manipulate the gums and do cause transient bacteremia. This child needs no prophylaxis because of the risk group, not the type of procedure.",
+                d: "The answer is right but the reason is wrong. Monthly penicillin prevents strep infection and RF recurrence. It is not endocarditis prophylaxis."
             },
-            testTakingTip: "SBE prophylaxis prevents endocarditis on already-damaged valves. Different purpose than RF recurrence prophylaxis.",
+            testTakingTip: "Rheumatic heart disease alone does NOT need dental prophylaxis. Prosthetic valve, prior endocarditis, or certain congenital heart disease does. Monthly penicillin is a different job.",
             guideSection: "Section 7 - Prophylaxis",
             guideSectionId: "prophylaxis"
         },

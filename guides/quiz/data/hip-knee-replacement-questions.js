@@ -96,19 +96,19 @@ var hipKneeReplacementQuizData = {
             difficulty: "application",
             stem: "A nurse is providing discharge education to a patient who had a total knee replacement 3 days ago. The patient asks, \"Do I really need to take antibiotics before going to the dentist?\" Which response by the nurse is MOST accurate?",
             options: [
-                { id: "a", text: "\"You only need dental antibiotics for the first 6 months after surgery while the prosthesis integrates.\"" },
-                { id: "b", text: "\"Guidelines recommend lifetime antibiotic prophylaxis before dental work involving the gums to prevent joint infection.\"" },
-                { id: "c", text: "\"Dental antibiotics are only needed if you have other risk factors like diabetes or immunosuppression.\"" },
-                { id: "d", text: "\"Dental antibiotics are no longer recommended for anyone - that guideline was discontinued years ago.\"" }
+                { id: "a", text: "\"Only for the first 2 years after surgery, while the new joint is at its highest risk.\"" },
+                { id: "b", text: "\"Most people don't need them routinely now. Your surgeon decides, based on risks like a weak immune system.\"" },
+                { id: "c", text: "\"Yes, everyone with a joint replacement takes antibiotics before any dental work, for life.\"" },
+                { id: "d", text: "\"No, because bacteria in your blood can't reach a joint that is sealed inside bone.\"" }
             ],
             correct: "b",
             rationale: {
-                correct: "The American Academy of Orthopaedic Surgeons (AAOS) recommends LIFETIME antibiotic prophylaxis before invasive dental procedures for patients with prosthetic joints. Dental procedures can cause transient bacteremia (bacteria entering the bloodstream from oral flora), which can seed a prosthetic joint and cause devastating prosthetic joint infection (PJI). Amoxicillin 2g orally 1 hour before the procedure is the standard regimen (clindamycin if penicillin-allergic).",
-                a: "The prosthesis is a permanent foreign body that remains susceptible to hematogenous seeding for life. The risk does not end after an integration period. Even years after surgery, a dental bacteremia can cause prosthetic joint infection.",
-                c: "While patients with diabetes, immunosuppression, or previous PJI are at HIGHER risk, antibiotic prophylaxis is recommended for ALL patients with prosthetic joints regardless of additional risk factors.",
-                d: "This is incorrect. The AAOS continues to recommend dental antibiotic prophylaxis for patients with joint replacements. This recommendation has NOT been discontinued."
+                correct: "Current American Academy of Orthopaedic Surgeons (AAOS) and American Dental Association (ADA) guidance does not recommend routine antibiotics before dental work for patients with joint replacements. The evidence does not show that dental procedures cause most prosthetic joint infections (PJI), and antibiotics carry their own risks. The surgeon may still prescribe prophylaxis for higher-risk patients, such as those with a weakened immune system, poorly controlled diabetes, or a previous joint infection. When prescribed, the usual dose is amoxicillin 2 g by mouth 1 hour before the procedure.",
+                a: "An older advisory did use a 2-year window after surgery. Current guidance bases the decision on the patient's individual risk, not on time since surgery.",
+                c: "Lifetime prophylaxis for every patient was the older teaching. It is no longer recommended routinely because the evidence did not show a benefit that outweighs the harms of repeated antibiotics.",
+                d: "Bacteria can reach a prosthetic joint through the blood at any time, which is why patients report infections promptly. Prophylaxis is not routine because of weak evidence of benefit, not because the risk is zero."
             },
-            testTakingTip: "Prosthetic joint infection prevention: Lifetime dental antibiotic prophylaxis with amoxicillin 2g PO 1 hour before invasive dental procedures. This is a common discharge-teaching topic. The prosthesis is a foreign body that bacteria can adhere to - unlike native joints, the immune system cannot effectively clear infections from prosthetic surfaces.",
+            testTakingTip: "Dental antibiotics after a joint replacement are NOT routine anymore. The surgeon decides for higher-risk patients (weakened immune system, poorly controlled diabetes, prior joint infection). Teach good oral hygiene and to tell every dentist about the joint. Older sources that say 'for life' are out of date.",
             guideSection: "Section 9 - Complications",
             guideSectionId: "complications"
         },
@@ -171,7 +171,7 @@ var hipKneeReplacementQuizData = {
             options: [
                 { id: "a", text: "Review hip precautions: no flexion >90°, no crossing legs, no internal rotation - demonstrate use of adaptive equipment (reacher, sock aid, raised toilet seat)" },
                 { id: "b", text: "Teach signs of complications requiring immediate medical attention: sudden leg pain/swelling (DVT), chest pain/dyspnea (PE), fever >101.5°F/wound drainage (infection), sudden severe hip pain with leg shortening (dislocation)" },
-                { id: "c", text: "Review medication regimen: anticoagulant therapy (duration, administration, bleeding precautions), pain management schedule, and lifetime dental antibiotic prophylaxis" },
+                { id: "c", text: "Review medication regimen: anticoagulant therapy (duration, administration, bleeding precautions), pain management schedule, and whether the surgeon wants antibiotics before dental work" },
                 { id: "d", text: "Confirm home safety modifications: remove throw rugs, install grab bars, ensure adequate lighting, arrange ground-floor living if possible" }
             ],
             correct: ["a", "b", "c", "d"],
@@ -179,7 +179,7 @@ var hipKneeReplacementQuizData = {
                 correct: "Discharge teaching prioritizes the most critical safety information first: hip precautions (prevent dislocation), complication recognition (prevent delayed treatment), medication management (prevent DVT/bleeding), and home safety (prevent falls).",
                 a: "FIRST - Hip precautions are the highest priority because hip dislocation is the most common early complication of total hip replacement. Patients must understand and demonstrate proper positioning, adaptive equipment use, and movement restrictions before going home.",
                 b: "SECOND - Patients must know the warning signs of the most serious complications (DVT, PE, infection, dislocation) and when to seek immediate medical attention. Delayed recognition of these complications can be life-threatening.",
-                c: "THIRD - Medication teaching ensures adherence to anticoagulation therapy (typically 2-6 weeks post-op), proper pain management, and understanding of lifetime dental antibiotic prophylaxis to prevent prosthetic joint infection.",
+                c: "THIRD - Medication teaching ensures adherence to anticoagulation therapy (typically 2-6 weeks post-op), proper pain management, and whether the surgeon wants antibiotics before dental work, which is decided by the patient's infection risk.",
                 d: "FOURTH - Home safety assessment and modifications reduce fall risk. Falls are a major threat after joint replacement because they can dislocate the prosthesis or cause periprosthetic fracture. Arrange for home health or physical therapy evaluation if needed."
             },
             testTakingTip: "Discharge teaching priority order: Safety (precautions) → Complications (what to watch for) → Medications (what to take) → Environment (home modifications). Always teach the patient what can KILL them or cause the MOST HARM first. Dislocation and DVT/PE are the big threats early post-op.",

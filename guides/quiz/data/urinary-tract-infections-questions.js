@@ -88,19 +88,19 @@ var urinaryTractInfectionsQuizData = {
             difficulty: "application",
             stem: "A patient with uncomplicated cystitis asks how long they'll be on antibiotics. The best nursing response is:",
             options: [
-                { id: "a", text: "\"Just take them until your symptoms resolve - usually about 2 days.\"" },
-                { id: "b", text: "\"You'll take oral antibiotics for 5 to 7 days. Finish them even if you feel better.\"" },
+                { id: "a", text: "\"Just take them until the burning stops, which is usually about 2 days in.\"" },
+                { id: "b", text: "\"It depends on the drug, often 3 to 5 days, and some are a single dose. Finish what's prescribed.\"" },
                 { id: "c", text: "\"You'll be on IV antibiotics for 2 weeks, so you'll need to stay admitted.\"" },
-                { id: "d", text: "\"A single dose is usually enough - you can stop once the bottle is empty.\"" }
+                { id: "d", text: "\"Plan on at least 14 days of pills so the bladder infection is completely gone.\"" }
             ],
             correct: "b",
             rationale: {
-                correct: "Uncomplicated lower UTI is treated with oral antibiotics for 5–7 days. Completing the full course prevents recurrence and resistance.",
-                a: "Stopping when symptoms resolve is how recurrent and resistant infections develop.",
-                c: "IV × 2 weeks is pyelonephritis, not uncomplicated cystitis.",
-                d: "Single-dose therapy is not standard for most uncomplicated UTIs in adults and would not be appropriate teaching."
+                correct: "Uncomplicated cystitis is treated with a short oral course, and the drug sets the length: nitrofurantoin for 5 days, trimethoprim-sulfamethoxazole (TMP-SMX) for 3 days, fosfomycin as a single dose. Finishing exactly what is prescribed prevents recurrence and resistance.",
+                a: "Stopping when symptoms fade, before the prescribed course is done, invites recurrence and resistance.",
+                c: "Admission for IV antibiotics is for severe upper-tract infection or sepsis, not uncomplicated cystitis.",
+                d: "Two weeks is far longer than uncomplicated cystitis needs. Longer courses add side effects and resistance without adding benefit."
             },
-            testTakingTip: "Lower UTI = 5–7 days oral. Pyelonephritis = ~2 weeks, often IV.",
+            testTakingTip: "Uncomplicated cystitis = short oral course, 1 to 7 days depending on the drug (fosfomycin is one dose). Pyelonephritis = longer, and IV if severe.",
             guideSection: "Section 3 - Lower UTI",
             guideSectionId: "lower-uti"
         },

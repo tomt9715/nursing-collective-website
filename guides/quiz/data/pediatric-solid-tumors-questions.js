@@ -228,14 +228,14 @@ var pediatricSolidTumorsQuizData = {
             options: [
                 { id: "a", text: "Leukocoria (white pupillary reflex)" },
                 { id: "b", text: "Periorbital ecchymosis (raccoon eyes)" },
-                { id: "c", text: "Exophthalmos (bulging of the eye)" },
+                { id: "c", text: "Blue sclerae (bluish whites of the eyes)" },
                 { id: "d", text: "Cataracts (clouding of the lens)" }
             ],
             correct: "b",
             rationale: {
-                correct: "Periorbital ecchymosis - \u201craccoon eyes\u201d - is classic for neuroblastoma with orbital bone metastasis, especially in infants and young children.",
+                correct: "Periorbital ecchymosis - \u201craccoon eyes\u201d - is classic for neuroblastoma with orbital bone metastasis, especially in infants and young children. The eye may also bulge (proptosis) from the same spread.",
                 a: "Leukocoria is the hallmark of retinoblastoma.",
-                c: "Exophthalmos can occur but is not the classic neuroblastoma sign.",
+                c: "Blue sclerae point to osteogenesis imperfecta, not neuroblastoma.",
                 d: "Cataracts are not a neuroblastoma sign."
             },
             testTakingTip: "Raccoon eyes in a toddler = neuroblastoma orbital mets.",

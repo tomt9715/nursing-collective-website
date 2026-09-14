@@ -282,34 +282,6 @@ document.querySelectorAll('.table-of-contents a').forEach(link => {
     });
 });
 
-// Track download event
-async function trackDownload(source) {
-    try {
-        const token = getAuthToken();
-        if (!token) {
-            return;
-        }
-
-        const response = await fetch(`${API_URL}/api/downloads/track`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            credentials: 'include',
-            body: JSON.stringify({
-                product_id: PRODUCT_ID,
-                source: source,
-                timestamp: new Date().toISOString()
-            })
-        });
-
-        // Download tracked successfully
-    } catch (error) {
-        console.error('Failed to track download:', error);
-    }
-}
-
 // Download PDF from R2 storage via presigned URL
 async function downloadPDF(btn) {
     const originalText = btn ? btn.innerHTML : '';
@@ -320,9 +292,6 @@ async function downloadPDF(btn) {
     }
 
     try {
-        // Track the download
-        await trackDownload('guide_page');
-
         const token = getAuthToken();
         if (!token) {
             throw new Error('Please log in to download guides');

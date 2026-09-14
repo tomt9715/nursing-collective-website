@@ -119,7 +119,6 @@ Test that:
 - "Continue Studying" button on dashboard opens the guide at `/guides/[product-id].html`
 - PDF button on dashboard generates and downloads PDF
 - PDF button within the guide page (in the download bar) also works
-- Both PDF buttons track downloads via `/cart/downloads/track` endpoint
 
 ### 8. Commit and Push
 

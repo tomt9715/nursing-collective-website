@@ -28,6 +28,11 @@ function showAccessDenied(message, showLoginButton = true) {
         documentContainer.style.display = 'none';
     }
 
+    // content-gate.js's paywall already covers this page; don't stack a second overlay
+    if (document.getElementById('content-paywall')) {
+        return;
+    }
+
     // Create access denied overlay
     const overlay = document.createElement('div');
     overlay.className = 'access-denied-overlay';

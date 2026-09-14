@@ -1,7 +1,11 @@
 /**
  * Content Gating Script
- * Include this on any page that requires subscription access
- * Must be loaded AFTER api-service.js
+ * Shows the subscription paywall on study guide pages when the visitor has
+ * no access. Self-contained: guide pages do not load api-service.js.
+ *
+ * The access decision uses /api/guides/purchased, the same endpoint
+ * guides/guide-script.js checks, so the two can never disagree about who
+ * gets in (it counts is_premium, admins, and cancelled-but-paid-up plans).
  */
 
 (function() {
@@ -29,43 +33,37 @@
         return '/' + normalized;
     }
 
-    // Check if current path is a paid guide
+    // Check if current path is a study guide page. Production serves guides
+    // at clean URLs (/guides/copd), local files keep the extension
+    // (/guides/copd.html). Quiz pages under /guides/quiz/ are not matched.
     function isPaidGuide(path) {
         const normalized = normalizePath(path);
-        return normalized.startsWith('/guides/') && normalized.endsWith('.html');
+        return /^\/guides\/[a-z0-9-]+(\.html)?$/i.test(normalized);
     }
 
-    // Check if user is an admin (admins always have access)
-    async function checkAdmin() {
-        if (!isAuthenticated()) return false;
-        try {
-            const data = await apiService.get('/api/user/profile');
-            return data && data.user && data.user.is_admin === true;
-        } catch (e) {
-            return false;
-        }
-    }
-
-    // Check subscription status (uses apiService for automatic token refresh)
-    async function checkSubscription() {
-        if (!isAuthenticated()) {
-            return { hasAccess: false, subscription: null };
+    // Check access. `unknown` means the check could not be completed (network
+    // error, expired session): guide-script.js already explains those, so the
+    // paywall must not appear over a paying user who merely hit an error.
+    async function checkAccess() {
+        const token = localStorage.getItem('accessToken');
+        if (!token) {
+            return { hasAccess: false, unknown: false };
         }
 
         try {
-            // Admin users always have access
-            const [subData, isAdmin] = await Promise.all([
-                apiService.get('/api/subscription-status'),
-                checkAdmin()
-            ]);
-
-            return {
-                hasAccess: subData.has_access || isAdmin,
-                subscription: subData.subscription
-            };
+            const response = await fetch(`${API_URL}/api/guides/purchased`, {
+                method: 'GET',
+                headers: { 'Authorization': `Bearer ${token}` },
+                credentials: 'include'
+            });
+            if (!response.ok) {
+                return { hasAccess: false, unknown: true };
+            }
+            const data = await response.json();
+            return { hasAccess: !!(data.has_premium || data.all_guides_access), unknown: false };
         } catch (error) {
-            console.error('Subscription check error:', error);
-            return { hasAccess: false, subscription: null };
+            console.error('Access check error:', error);
+            return { hasAccess: false, unknown: true };
         }
     }
 
@@ -75,6 +73,10 @@
         if (document.getElementById('content-paywall')) {
             return;
         }
+
+        // One overlay at a time: the paywall replaces guide-script.js's
+        // generic "Access Restricted" box if that got there first.
+        document.querySelectorAll('.access-denied-overlay').forEach(el => el.remove());
 
         // Create overlay
         const overlay = document.createElement('div');
@@ -257,10 +259,9 @@
             return;
         }
 
-        // Check subscription status
-        const { hasAccess } = await checkSubscription();
+        const { hasAccess, unknown } = await checkAccess();
 
-        if (!hasAccess) {
+        if (!hasAccess && !unknown) {
             // Store intended destination for redirect after subscription
             sessionStorage.setItem('redirectAfterSubscribe', path);
             showPaywall();
